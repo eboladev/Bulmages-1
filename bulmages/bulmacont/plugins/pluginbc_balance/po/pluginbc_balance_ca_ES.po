@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -19,7 +19,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginbc_balance.cpp:91
+#: pluginbc_balance.cpp:54
 #, fuzzy
 msgid "&Balance jerarquico"
 msgstr "Balanç jeràrquic"
@@ -36,7 +36,7 @@ msgstr "&Kugar"
 msgid "&Texto Plano"
 msgstr "&Text pla"
 
-#: pluginbc_balance.cpp:87
+#: pluginbc_balance.cpp:52
 msgid "&Ver"
 msgstr "&Veure"
 
@@ -163,20 +163,20 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: balanceview.cpp:77 balanceprintview.cpp:64
+#: balanceprintview.cpp:64 balanceview.cpp:77
 msgid "Cuenta Final:"
 msgstr ""
 
-#: balanceview.cpp:68 balanceprintview.cpp:56
+#: balanceprintview.cpp:56 balanceview.cpp:68
 msgid "Cuenta Inicial:"
 msgstr ""
 
-#: ui_balancebase.h:441 ui_balancetreebase.h:404
+#: ui_balancetreebase.h:404 ui_balancebase.h:441
 #, fuzzy
 msgid "Cuenta final:"
 msgstr "Data final:"
 
-#: ui_balancebase.h:439 ui_balancetreebase.h:407
+#: ui_balancetreebase.h:407 ui_balancebase.h:439
 #, fuzzy
 msgid "Cuenta inicial:"
 msgstr "Data inicial:"
@@ -217,11 +217,11 @@ msgstr "Data final"
 msgid "Fecha Inicial"
 msgstr "Data inicial"
 
-#: ui_balancebase.h:440 ui_balancetreebase.h:405
+#: ui_balancetreebase.h:405 ui_balancebase.h:440
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_balancebase.h:438 ui_balancetreebase.h:406
+#: ui_balancetreebase.h:406 ui_balancebase.h:438
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
@@ -303,16 +303,16 @@ msgstr "Incloure resultats parcials"
 msgid "Nivel de Cuentas"
 msgstr "Tipus de compte"
 
-#: ui_balancebase.h:442 ui_balancetreebase.h:408
+#: ui_balancetreebase.h:408 ui_balancebase.h:442
 msgid "Nivel:"
 msgstr ""
 
-#: pluginbc_balance.cpp:92
+#: pluginbc_balance.cpp:55
 #, fuzzy
 msgid "Permite realizar balances"
 msgstr "Actualitza balanç"
 
-#: pluginbc_balance.cpp:93
+#: pluginbc_balance.cpp:56
 msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
@@ -334,12 +334,12 @@ msgstr "Saldo"
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 
-#: ui_balancebase.h:449 ui_balancetreebase.h:410
+#: ui_balancetreebase.h:410 ui_balancebase.h:449
 #, fuzzy
 msgid "Saldo anterior:"
 msgstr "Saldo anterior"
 
-#: ui_balancebase.h:447 ui_balancetreebase.h:413
+#: ui_balancetreebase.h:413 ui_balancebase.h:447
 #, fuzzy
 msgid "Saldo:"
 msgstr "Saldo"

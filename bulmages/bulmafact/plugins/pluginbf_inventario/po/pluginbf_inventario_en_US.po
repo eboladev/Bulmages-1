@@ -1,189 +1,246 @@
-#: ui_inventariobase.h:365
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 17:55+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_inventariobase.h:340
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accept"
 
-#: ui_inventariobase.h:366
+#: pluginbf_inventario.cpp:51
+msgid "&Articulos"
+msgstr "&Article"
+
+#: ui_inventariobase.h:341
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancel"
 
-#: ui_inventariobase.h:364
+#: ui_inventariobase.h:339
+#, fuzzy
 msgid "&Detalle"
-msgstr ""
+msgstr "&Details"
 
-#: plugininventario.cpp:72
+#: pluginbf_inventario.cpp:55
+#, fuzzy
 msgid "&Inventarios"
-msgstr ""
+msgstr "&Commentaries:"
 
-#: ui_inventariobase.h:341 ui_inventariobase.h:346
+#: ui_inventariobase.h:323 ui_inventariobase.h:326
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Update listing"
 
-#: plugininventario.cpp:116
+#: pluginbf_inventario.cpp:93
 msgid "Almacen"
-msgstr ""
+msgstr "Warehouse"
 
-#: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
-#: ui_inventariosbase.h:181 ui_inventariosbase.h:186
+#: inventarioview.cpp:105 ui_inventariobase.h:302 ui_inventariobase.h:305
+#: ui_inventariosbase.h:180 ui_inventariosbase.h:183
+#, fuzzy
 msgid "Borrar inventario"
-msgstr ""
+msgstr "Erase seat"
 
 #: listcontrolstockview.cpp:35
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Code warehouse"
 
 #: listcontrolstockview.cpp:37
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Complete code article"
 
-#: ui_inventariobase.h:361
+#: ui_inventariobase.h:336
 msgid "Descripcion:"
-msgstr ""
+msgstr "Description:"
 
-#: ui_inventariosbase.h:170 ui_inventariosbase.h:175
+#: ui_inventariosbase.h:173 ui_inventariosbase.h:176
+#, fuzzy
 msgid "Editar inventario"
-msgstr ""
+msgstr "Publish client"
 
 #: inventarioview.cpp:106
+#, fuzzy
 msgid "Esta a punto de borrar un inventario. Desea continuar?"
-msgstr ""
+msgstr "This on the verge of erasing article. These data can give problems."
 
-#: ui_inventariobase.h:360
+#: ui_inventariobase.h:335
 msgid "Familia"
-msgstr ""
+msgstr "Family"
 
-#: ui_inventariobase.h:362
+#: ui_inventariobase.h:337
+#, fuzzy
 msgid "Fecha creacion:"
-msgstr ""
+msgstr "Initial date:"
 
-#: inventariosview.cpp:281
+#: inventariosview.cpp:285
+#, fuzzy
 msgid "Fecha del inventario"
-msgstr ""
+msgstr "Date of the seat"
 
-#: inventario.cpp:42
+#: inventario.cpp:43
+#, fuzzy
 msgid "Fecha inventario"
-msgstr ""
+msgstr "Date of the seat"
 
-#: ui_inventariobase.h:319 ui_inventariobase.h:324
+#: ui_inventariobase.h:309 ui_inventariobase.h:312
 msgid "Filtrar listado"
-msgstr ""
+msgstr "Filter listing"
 
-#: ui_inventariobase.h:297 ui_inventariobase.h:302
+#: ui_inventariobase.h:295 ui_inventariobase.h:298
+#, fuzzy
 msgid "Guardar inventario"
+msgstr "Keep seat"
+
+#: pluginbf_inventario.cpp:96
+msgid "ID validacion"
 msgstr ""
 
-#: plugininventario.cpp:120
-msgid "ID Trabajador"
-msgstr ""
-
-#: plugininventario.cpp:119
-msgid "ID Validacion"
-msgstr ""
-
-#: plugininventario.cpp:117
+#: pluginbf_inventario.cpp:94
+#, fuzzy
 msgid "Id Almacen"
-msgstr ""
+msgstr "id warehouse"
 
 #: listcontrolstockview.cpp:41
 msgid "Id articulo"
-msgstr ""
+msgstr "Id article"
 
-#: inventariosview.cpp:279
+#: inventariosview.cpp:283
+#, fuzzy
 msgid "Id inventario"
-msgstr ""
+msgstr "Id seat"
 
-#: inventario.cpp:41
+#: pluginbf_inventario.cpp:97
+#, fuzzy
+msgid "Id trabajador"
+msgstr "Worker"
+
+#: inventario.cpp:42
+#, fuzzy
 msgid "Identificador inventario"
-msgstr ""
+msgstr "Identifier"
 
-#: ui_inventariosbase.h:192 ui_inventariosbase.h:197 ui_inventariosbase.h:203
-#: ui_inventariosbase.h:208
+#: ui_inventariosbase.h:187 ui_inventariosbase.h:190 ui_inventariosbase.h:194
+#: ui_inventariosbase.h:197
+#, fuzzy
 msgid "Imprimir Stocks Actuales"
-msgstr ""
+msgstr "Print accounts"
 
-#: ui_inventariobase.h:330 ui_inventariobase.h:335
+#: ui_inventariobase.h:316 ui_inventariobase.h:319
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Print listing"
 
-#: inventario.cpp:38 ui_inventariobase.h:294
+#: inventario.cpp:39 ui_inventariobase.h:293
+#, fuzzy
 msgid "Inventario"
-msgstr ""
+msgstr "Commentary"
 
-#: plugininventario.cpp:73 plugininventario.cpp:74
+#: pluginbf_inventario.cpp:56 pluginbf_inventario.cpp:57
+#, fuzzy
 msgid "Inventarios"
 msgstr ""
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comments\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"Commentaries"
 
-#: ui_inventariosbase.h:156
+#: ui_inventariosbase.h:164
+#, fuzzy
 msgid "Listado de inventarios"
-msgstr ""
+msgstr "Listing of accounts"
 
-#: plugininventario.cpp:118
+#: pluginbf_inventario.cpp:95
 msgid "Minimo"
 msgstr ""
 
-#: plugininventario.cpp:112
+#: pluginbf_inventario.cpp:89
+#, fuzzy
 msgid "Minimos almacen"
-msgstr ""
+msgstr "Code warehouse"
 
 #: inventarioview.cpp:107
+#, fuzzy
 msgid "No"
-msgstr ""
+msgstr "&No"
 
 #: listcontrolstockview.cpp:36
 msgid "Nombre almacen"
-msgstr ""
+msgstr "Name warehouse"
 
 #: listcontrolstockview.cpp:38
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Name article"
 
-#: inventariosview.cpp:280
+#: inventariosview.cpp:284
+#, fuzzy
 msgid "Nombre del inventario"
-msgstr ""
+msgstr "Name of the client"
 
-#: inventario.cpp:43
+#: inventario.cpp:44
+#, fuzzy
 msgid "Nombre inventario"
-msgstr ""
+msgstr "Name account"
 
-#: ui_inventariosbase.h:159 ui_inventariosbase.h:164
+#: ui_inventariosbase.h:166 ui_inventariosbase.h:169
+#, fuzzy
 msgid "Nuevo inventario"
-msgstr ""
+msgstr "New seat"
 
-#: ui_inventariobase.h:352 ui_inventariobase.h:357
+#: ui_inventariobase.h:330 ui_inventariobase.h:333
+#, fuzzy
 msgid "Pregenerar inventario"
-msgstr ""
+msgstr "Generate seat"
 
-#: ui_inventariobase.h:363
+#: ui_inventariobase.h:338
+#, fuzzy
 msgid "Procesado"
-msgstr ""
+msgstr "Pro&cessings"
 
 #: listcontrolstockview.cpp:34
+#, fuzzy
 msgid "Punteado"
-msgstr ""
+msgstr "Punteo"
 
 #: inventariosview.cpp:97
+#, fuzzy
 msgid "Selector de Inventarios"
-msgstr ""
+msgstr "Selector of article"
 
 #: inventarioview.cpp:107
+#, fuzzy
 msgid "Si"
-msgstr ""
+msgstr "&Yes"
 
 #: listcontrolstockview.cpp:39
+#, fuzzy
 msgid "Stock anterior"
-msgstr ""
+msgstr "Previous balance"
 
-#: plugininventario.cpp:205
+#: pluginbf_inventario.cpp:182
 msgid "Stock minimo superado"
 msgstr ""
 
 #: listcontrolstockview.cpp:40
+#, fuzzy
 msgid "Stock revisado"
-msgstr ""
+msgstr "Been brief"
 
 #: inventarioview.cpp:74
+#, fuzzy
 msgid "Tiene que escribir una descripcion de inventario antes de guardar"
-msgstr ""
+msgstr "It must select an mode of payment before erasing it"
 
-#: inventariosview.cpp:122 inventariosview.cpp:148
+#: inventariosview.cpp:124 inventariosview.cpp:151
+#, fuzzy
 msgid "Tiene que seleccionar un inventario"
-msgstr ""
+msgstr "Must select an element"

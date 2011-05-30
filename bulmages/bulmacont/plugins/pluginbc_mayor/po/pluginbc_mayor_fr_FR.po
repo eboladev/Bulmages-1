@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:38+0200\n"
 "PO-Revision-Date: 2011-02-01 10:11+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
-"Language: frX-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: frX-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 "X-Language: fr_FR\n"
@@ -35,7 +35,7 @@ msgstr "&Imprimer"
 msgid "&Incluir asientos abiertos"
 msgstr "&Inclure les écritures ouvertes"
 
-#: pluginbc_mayor.cpp:101
+#: pluginbc_mayor.cpp:93
 msgid "&Libro Mayor"
 msgstr "&Grand livre"
 
@@ -47,7 +47,7 @@ msgstr "&Texte plat"
 msgid "&Todos"
 msgstr "&Todos"
 
-#: pluginbc_mayor.cpp:97
+#: pluginbc_mayor.cpp:91
 msgid "&Ver"
 msgstr "&Afficher"
 
@@ -263,11 +263,11 @@ msgstr "Occulter les ouvertures et les fermetures"
 msgid "Orden"
 msgstr "Ordre"
 
-#: pluginbc_mayor.cpp:102
+#: pluginbc_mayor.cpp:94
 msgid "Permite ver el mayor"
 msgstr "Afficher le grand livre"
 
-#: pluginbc_mayor.cpp:103
+#: pluginbc_mayor.cpp:95
 msgid "Podra disponer de la informacion del mayor"
 msgstr "Disponibilité de l'information du grand livre"
 
@@ -309,9 +309,10 @@ msgstr "Solde partiel :"
 
 #: bcextractoview.cpp:624
 msgid ""
-"Se dispone a borrar el punteo. Este cambio                                   "
-"              es irrecuperable si no ha guardado su punteo.                  "
-"                               Desea continuar?"
+"Se dispone a borrar el punteo. Este "
+"cambio                                                 es irrecuperable si "
+"no ha guardado su punteo.                                                 "
+"Desea continuar?"
 msgstr ""
 "Vous vous préparez à effacer le pointage. Ce changement est irréversible si "
 "le pointage n'a pas été sauvegardé.   Désirez vous continuer ?"
@@ -367,4 +368,3 @@ msgstr "Marque de réconciliation"
 #: bcextractosubform.cpp:63
 msgid "tipocuenta"
 msgstr "type de compte"
-

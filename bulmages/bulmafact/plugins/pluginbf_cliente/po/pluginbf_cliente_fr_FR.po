@@ -5,13 +5,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:46+0200\n"
 "PO-Revision-Date: 2011-02-08 09:14+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
@@ -25,7 +25,7 @@ msgstr "&Accepter"
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: pluginbf_cliente.cpp:96
+#: pluginbf_cliente.cpp:59
 msgid "&Clientes"
 msgstr "&Clients"
 
@@ -49,7 +49,7 @@ msgstr "Forme de paiement :"
 msgid "&Nombre completo:"
 msgstr "Nom complet :"
 
-#: pluginbf_cliente.cpp:104
+#: pluginbf_cliente.cpp:68
 msgid "&Nuevo cliente"
 msgstr "&Nouveau client"
 
@@ -69,6 +69,10 @@ msgstr "Régime fiscal :"
 msgid "&Telefono fijo:"
 msgstr "Téléphone fixe :"
 
+#: pluginbf_cliente.cpp:54
+msgid "&Ventas"
+msgstr ""
+
 #: ui_clientslistbase.h:320 ui_clientslistbase.h:323
 msgid "Actualizar listado"
 msgstr "Actualiser la liste"
@@ -81,7 +85,7 @@ msgstr "Appliquer la recharge d'équivalence "
 msgid "Borrar"
 msgstr "Effacer"
 
-#: clientslist.cpp:329 ui_clientebase.h:579 ui_clientebase.h:582
+#: clientslist.cpp:332 ui_clientebase.h:579 ui_clientebase.h:582
 msgid "Borrar cliente"
 msgstr "Effacer le client "
 
@@ -89,7 +93,7 @@ msgstr "Effacer le client "
 msgid "Buscar:"
 msgstr "Chercher :"
 
-#: clientslist.cpp:352
+#: clientslist.cpp:355
 msgid "C.I.F."
 msgstr "C.I.F."
 
@@ -109,11 +113,11 @@ msgstr "Client"
 msgid "Cliente inactivo"
 msgstr "Client inactif"
 
-#: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:275
+#: pluginbf_cliente.cpp:61 pluginbf_cliente.cpp:62 ui_clientslistbase.h:275
 msgid "Clientes"
 msgstr "Clients"
 
-#: clientslist.cpp:199 clientslist.cpp:222
+#: clientslist.cpp:202 clientslist.cpp:225
 msgid "Clientes (*.xml)"
 msgstr "Clients (*.xml)"
 
@@ -121,7 +125,7 @@ msgstr "Clients (*.xml)"
 msgid "Codi&go postal:"
 msgstr "&Code postal :"
 
-#: clienteview.cpp:76 clientslist.cpp:351
+#: clientslist.cpp:354 clienteview.cpp:76
 msgid "Codigo"
 msgstr "Code"
 
@@ -129,7 +133,7 @@ msgstr "Code"
 msgid "Codigo de c&liente:"
 msgstr "Code c&lient :"
 
-#: clienteview.cpp:63 clientslist.cpp:358
+#: clientslist.cpp:361 clienteview.cpp:63
 msgid "Codigo postal"
 msgstr "Code postal"
 
@@ -137,7 +141,7 @@ msgstr "Code postal"
 msgid "Comen&tarios:"
 msgstr "&Libellés :"
 
-#: clienteview.cpp:72 clientslist.cpp:366
+#: clientslist.cpp:369 clienteview.cpp:72
 msgid "Comentarios"
 msgstr "Libellés"
 
@@ -169,15 +173,15 @@ msgstr "Données de commerce &électronique :"
 msgid "Datos de comercio electronico"
 msgstr "Données de commerce électronique"
 
-#: clienteview.cpp:60 clientslist.cpp:356
+#: clientslist.cpp:359 clienteview.cpp:60
 msgid "Direccion"
 msgstr "Direction"
 
-#: clientslist.cpp:362
+#: clientslist.cpp:365
 msgid "Direccion URL"
 msgstr "Direction d'URL"
 
-#: clientslist.cpp:361
+#: clientslist.cpp:364
 msgid "Direccion de correo electronica"
 msgstr "Direction du courrier électronique"
 
@@ -189,19 +193,19 @@ msgstr "Direction électronique"
 msgid "Editar"
 msgstr "Editer"
 
-#: clientslist.cpp:328
+#: clientslist.cpp:331
 msgid "Editar cliente"
 msgstr "Éditer le client"
 
-#: clientslist.cpp:197 clientslist.cpp:220
+#: clientslist.cpp:200 clientslist.cpp:223
 msgid "Elija el archivo"
 msgstr "Choisir le fichier"
 
-#: clienteview.cpp:77 clientslist.cpp:363
+#: clientslist.cpp:366 clienteview.cpp:77
 msgid "Empresa"
 msgstr "Entreprise"
 
-#: clientslist.cpp:182
+#: clientslist.cpp:185
 msgid "Error al borrar un cliente"
 msgstr "Erreur d'effacement d'un client"
 
@@ -213,11 +217,11 @@ msgstr "Erreur dans la création du client"
 msgid "Exportar"
 msgstr "Exporter"
 
-#: clienteview.cpp:70 clientslist.cpp:364
+#: clientslist.cpp:367 clienteview.cpp:70
 msgid "Fecha de alta del cliente"
 msgstr "Date d'incorporation du client"
 
-#: clienteview.cpp:71 clientslist.cpp:365
+#: clientslist.cpp:368 clienteview.cpp:71
 msgid "Fecha de baja del cliente"
 msgstr "Date de cessation du client"
 
@@ -233,7 +237,7 @@ msgstr "Forme de paiement"
 msgid "Guardar cliente"
 msgstr "Sauvegarder le client"
 
-#: clienteview.cpp:55 clientslist.cpp:350
+#: clientslist.cpp:353 clienteview.cpp:55
 msgid "ID cliente"
 msgstr "Id client"
 
@@ -253,7 +257,7 @@ msgstr "Imprimer le rapport"
 msgid "Imprimir listado"
 msgstr "Imprimer la liste"
 
-#: clientslist.cpp:158
+#: clientslist.cpp:161
 msgid "Listado de Clientes"
 msgstr "Liste de clients"
 
@@ -261,11 +265,11 @@ msgstr "Liste de clients"
 msgid "No&mbre comercial:"
 msgstr "No&m commercial :"
 
-#: clienteview.cpp:57 clientslist.cpp:354
+#: clientslist.cpp:357 clienteview.cpp:57
 msgid "Nombre alternativo del cliente"
 msgstr "Nom alternatif du client"
 
-#: clientslist.cpp:353
+#: clientslist.cpp:356
 msgid "Nombre de cliente"
 msgstr "Nom du client"
 
@@ -277,11 +281,11 @@ msgstr "Nom du client"
 msgid "Nuevo"
 msgstr "Nouveau"
 
-#: clientslist.cpp:308 pluginbf_cliente.cpp:106 pluginbf_cliente.cpp:107
+#: pluginbf_cliente.cpp:70 pluginbf_cliente.cpp:71 clientslist.cpp:311
 msgid "Nuevo cliente"
 msgstr "Nouveau client"
 
-#: clienteview.cpp:59 clientslist.cpp:355
+#: clientslist.cpp:358 clienteview.cpp:59
 msgid "Numero cuenta corriente"
 msgstr "Numéro de compte courant"
 
@@ -289,11 +293,11 @@ msgstr "Numéro de compte courant"
 msgid "Numero de fa&x:"
 msgstr "Numéro de fa&x :"
 
-#: clienteview.cpp:67 clientslist.cpp:360
+#: clientslist.cpp:363 clienteview.cpp:67
 msgid "Numero de fax"
 msgstr "Numéro de fax"
 
-#: clienteview.cpp:64 clientslist.cpp:359
+#: clientslist.cpp:362 clienteview.cpp:64
 msgid "Numero de telefono"
 msgstr "Numéro de téléphone"
 
@@ -309,7 +313,7 @@ msgstr "Numéro de téléphone portable"
 msgid "Pagina &web:"
 msgstr "Page &web:"
 
-#: clienteview.cpp:61 clientslist.cpp:357
+#: clientslist.cpp:360 clienteview.cpp:61
 msgid "Poblacion"
 msgstr "Population "
 
@@ -352,4 +356,3 @@ msgstr "Téléphone &portable :"
 #: clienteview.cpp:191
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
-

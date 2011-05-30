@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:36+0200\n"
 "PO-Revision-Date: 2011-02-15 09:39+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -115,11 +115,11 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pluginbc_balancearbol.cpp:96
+#: pluginbc_balancearbol.cpp:51
 msgid "&Balance jerarquico"
 msgstr "&Balance hiérarchique"
 
-#: pluginbc_balancearbol.cpp:92
+#: pluginbc_balancearbol.cpp:49
 msgid "&Ver"
 msgstr "&Afficher"
 
@@ -155,7 +155,7 @@ msgstr "Débit"
 msgid "Debe ejercicio"
 msgstr "Débit de l'exercice"
 
-#: balance1view.cpp:294 balance1view.cpp:348
+#: balance1view.cpp:298 balance1view.cpp:352
 msgid "Error con la base de datos"
 msgstr "Erreur dans la base de données"
 
@@ -187,11 +187,11 @@ msgstr "Crédit de l'exercice"
 msgid "Imprimir"
 msgstr "Imprimer"
 
-#: balance1view.cpp:336
+#: balance1view.cpp:340
 msgid "Introduzca la Fecha Final"
 msgstr "Introduire la Date  finale "
 
-#: balance1view.cpp:331
+#: balance1view.cpp:335
 msgid "Introduzca la Fecha Inicial"
 msgstr "Introduire la Date  initiale"
 
@@ -207,11 +207,11 @@ msgstr "Niveau :"
 msgid "Nombre de la cuenta"
 msgstr "Nom du compte"
 
-#: pluginbc_balancearbol.cpp:97
+#: pluginbc_balancearbol.cpp:52
 msgid "Permite realizar balances"
 msgstr "Réaliser les balances"
 
-#: pluginbc_balancearbol.cpp:98
+#: pluginbc_balancearbol.cpp:53
 msgid "Podra disponer de la informacion del balance"
 msgstr "Disponibilité des infos de la balance "
 
@@ -243,27 +243,26 @@ msgstr "Débit total :"
 msgid "Total Haber:"
 msgstr "Crédit total :"
 
-#: balance1view.cpp:583
+#: balance1view.cpp:587
 msgid "Ver Diario (este anyo)"
 msgstr "Afficher le journal (de cette année)"
 
-#: balance1view.cpp:581
+#: balance1view.cpp:585
 msgid "Ver Diario (este dia)"
 msgstr "Afficher le journal (d'aujourd'hui)"
 
-#: balance1view.cpp:582
+#: balance1view.cpp:586
 msgid "Ver Diario (este mes)"
 msgstr "Afficher le journal (de ce mois)"
 
-#: balance1view.cpp:587
+#: balance1view.cpp:591
 msgid "Ver extracto (este anyo)"
 msgstr "Afficher l'extrait (de cette année)"
 
-#: balance1view.cpp:585
+#: balance1view.cpp:589
 msgid "Ver extracto (este dia)"
 msgstr "Afficher l'extrait (d'aujourd'hui)"
 
-#: balance1view.cpp:586
+#: balance1view.cpp:590
 msgid "Ver extracto (este mes)"
 msgstr "Afficher l'extrait (de ce mois)"
-

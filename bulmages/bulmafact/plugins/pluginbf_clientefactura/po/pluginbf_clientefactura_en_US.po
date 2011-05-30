@@ -1,599 +1,695 @@
-#: listdescfacturaview.cpp:44 listlinfacturaview.cpp:57
-msgid "% Descuento"
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: listdescfacturaview.cpp:42 listlinfacturaview.cpp:57
+msgid "% Descuento"
+msgstr "% Discount"
 
 #: listlinfacturaview.cpp:56
 msgid "% Recargo E.Q."
-msgstr ""
+msgstr "% Surcharge E.Q."
 
-#: ui_facturabase.h:722 ui_albaranclientebase.h:788 ui_pedidoclientebase.h:714
+#: ui_facturabase.h:726 ui_albaranclientebase.h:798 ui_pedidoclientebase.h:743
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accept"
 
-#: ui_facturabase.h:723 ui_albaranclientebase.h:789 ui_pedidoclientebase.h:715
+#: ui_facturabase.h:727 ui_albaranclientebase.h:799 ui_pedidoclientebase.h:744
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancel"
 
-#: ui_facturabase.h:709 ui_pedidoclientebase.h:701
+#: ui_facturabase.h:713 ui_pedidoclientebase.h:730
+#, fuzzy
 msgid "&Comentarios"
-msgstr ""
+msgstr "&Commentaries:"
 
-#: ui_facturabase.h:707 ui_albaranclientebase.h:771 ui_pedidoclientebase.h:699
+#: ui_facturabase.h:711 ui_albaranclientebase.h:781 ui_pedidoclientebase.h:728
+#, fuzzy
 msgid "&Detalle"
-msgstr ""
+msgstr "&Details"
 
-#: pluginfactura.cpp:98
+#: pluginbf_clientefactura.cpp:59
+#, fuzzy
 msgid "&Facturas a clientes"
-msgstr ""
+msgstr "Selector of clients"
 
-#: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
-#: genfacqtoolbutton.cpp:423
+#: genfacqtoolbutton.cpp:164 genfacqtoolbutton.cpp:297
+#: genfacqtoolbutton.cpp:429
 msgid "&No"
-msgstr ""
+msgstr "&No"
 
-#: pluginfactura.cpp:106
+#: pluginbf_clientefactura.cpp:66
+#, fuzzy
 msgid "&Nueva factura a cliente"
-msgstr ""
+msgstr "New client"
 
-#: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
-#: genfacqtoolbutton.cpp:423
+#: genfacqtoolbutton.cpp:164 genfacqtoolbutton.cpp:297
+#: genfacqtoolbutton.cpp:429
 msgid "&Si"
+msgstr "&Yes"
+
+#: pluginbf_clientefactura.cpp:54
+msgid "&Ventas"
 msgstr ""
 
-#: ui_facturabase.h:716 ui_facturabase.h:717 ui_facturabase.h:718
-#: ui_facturabase.h:719 ui_facturabase.h:720 ui_facturabase.h:721
-#: ui_albaranclientebase.h:782 ui_albaranclientebase.h:783
-#: ui_albaranclientebase.h:784 ui_albaranclientebase.h:785
-#: ui_albaranclientebase.h:786 ui_albaranclientebase.h:787
-#: ui_pedidoclientebase.h:708 ui_pedidoclientebase.h:709
-#: ui_pedidoclientebase.h:710 ui_pedidoclientebase.h:711
-#: ui_pedidoclientebase.h:712 ui_pedidoclientebase.h:713
+#: ui_facturabase.h:720 ui_facturabase.h:721 ui_facturabase.h:722
+#: ui_facturabase.h:723 ui_facturabase.h:724 ui_facturabase.h:725
+#: ui_albaranclientebase.h:792 ui_albaranclientebase.h:793
+#: ui_albaranclientebase.h:794 ui_albaranclientebase.h:795
+#: ui_albaranclientebase.h:796 ui_albaranclientebase.h:797
+#: ui_pedidoclientebase.h:737 ui_pedidoclientebase.h:738
+#: ui_pedidoclientebase.h:739 ui_pedidoclientebase.h:740
+#: ui_pedidoclientebase.h:741 ui_pedidoclientebase.h:742
 msgid "0.00"
 msgstr ""
 
-#: facturaview.cpp:207
-msgid "ALBARAN: Num "
-msgstr ""
-
-#: ui_facturaslistbase.h:509 ui_facturaslistbase.h:514
-#: ui_albaranclientelistbase.h:514 ui_albaranclientelistbase.h:519
-#: ui_pedidosclientelistbase.h:455 ui_pedidosclientelistbase.h:460
+#: ui_facturaslistbase.h:529 ui_facturaslistbase.h:532
+#: ui_albaranclientelistbase.h:504 ui_albaranclientelistbase.h:507
+#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:434
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Update listing"
 
-#: ui_facturabase.h:680 ui_facturabase.h:685
-msgid "Agregar albaran a la factura"
-msgstr ""
-
-#: facturaview.cpp:75
+#: facturaview.cpp:74
+#, fuzzy
 msgid "Al&macen"
-msgstr ""
+msgstr "Warehouse"
 
-#: genfacqtoolbutton.cpp:292
+#: genfacqtoolbutton.cpp:295
 msgid "Albaran ya existe"
 msgstr ""
 
-#: ui_albaranclientelistbase.h:434
+#: ui_albaranclientelistbase.h:448
+#, fuzzy
 msgid "Albaranes a clientes"
-msgstr ""
-
-#: facturaview.cpp:63
-msgid "Almacen"
-msgstr ""
-
-#: ui_facturabase.h:706 ui_albaranclientebase.h:770 ui_pedidoclientebase.h:698
-msgid "Almacen:"
-msgstr ""
-
-#: facturaslist.cpp:366
-msgid "Base imponible"
-msgstr ""
-
-#: ui_facturabase.h:711 ui_facturaslistbase.h:431 ui_albaranclientebase.h:777
-#: ui_pedidoclientebase.h:703
-msgid "Base imponible:"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:466 ui_albaranclientelistbase.h:471
-#: ui_albaranclientebase.h:719 ui_albaranclientebase.h:724
-msgid "Borrar albaran"
-msgstr ""
-
-#: ui_facturabase.h:648 ui_facturabase.h:653 ui_facturaslistbase.h:461
-#: ui_facturaslistbase.h:466
-msgid "Borrar factura"
-msgstr ""
-
-#: ui_pedidoclientebase.h:658 ui_pedidoclientebase.h:663
-#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:412
-msgid "Borrar pedido"
-msgstr ""
-
-#: ui_facturaslistbase.h:519 ui_albaranclientelistbase.h:524
-#: ui_pedidosclientelistbase.h:465
-msgid "Buscar:"
-msgstr ""
-
-#: facturaslist.cpp:374
-msgid "CIF cliente"
-msgstr ""
-
-#: listlinfacturaview.cpp:53
-msgid "Cantidad"
-msgstr ""
+msgstr "Name of client"
 
 #: facturaview.cpp:62
+msgid "Almacen"
+msgstr "Warehouse"
+
+#: ui_facturabase.h:708 ui_facturaslistbase.h:541 ui_albaranclientebase.h:780
+#: ui_pedidoclientebase.h:727
+#, fuzzy
+msgid "Almacen:"
+msgstr "Warehouse"
+
+#: facturaslist.cpp:435
+#, fuzzy
+msgid "Base imponible"
+msgstr "Tax basis"
+
+#: ui_facturabase.h:715 ui_facturaslistbase.h:476 ui_albaranclientebase.h:787
+#: ui_pedidoclientebase.h:732
+#, fuzzy
+msgid "Base imponible:"
+msgstr "Tax basis"
+
+#: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
+#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
+msgid "Borrar albaran"
+msgstr "Erase letters patent"
+
+#: ui_facturabase.h:676 ui_facturabase.h:679 ui_facturaslistbase.h:497
+#: ui_facturaslistbase.h:500
+#, fuzzy
+msgid "Borrar factura"
+msgstr "Erase quota"
+
+#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+#: ui_pedidoclientebase.h:698 ui_pedidoclientebase.h:701
+#, fuzzy
+msgid "Borrar pedido"
+msgstr ""
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+" Erase punteo\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Erase punteo"
+
+#: ui_facturaslistbase.h:536 ui_albaranclientelistbase.h:511
+#: ui_pedidosclientelistbase.h:438
+msgid "Buscar:"
+msgstr "Look for:"
+
+#: facturaslist.cpp:443
+#, fuzzy
+msgid "CIF cliente"
+msgstr "ID client"
+
+#: listlinfacturaview.cpp:52
+msgid "Cantidad"
+msgstr "Amount"
+
+#: facturaview.cpp:61
 msgid "Cliente"
-msgstr ""
+msgstr "Client"
 
-#: facturaslist.cpp:56 facturaslist.cpp:89 facturaview.cpp:96
+#: facturaview.cpp:96 facturaslist.cpp:56 facturaslist.cpp:91
 msgid "Cliente:"
-msgstr ""
+msgstr "Client:"
 
-#: facturaslist.cpp:375
+#: facturaslist.cpp:444
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Code warehouse"
 
-#: listlinfacturaview.cpp:49
+#: listlinfacturaview.cpp:48
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Complete code article"
 
-#: facturaview.cpp:68
+#: facturaview.cpp:67
 msgid "Comentario"
-msgstr ""
+msgstr "Commentary"
 
-#: facturaslist.cpp:377
+#: facturaslist.cpp:446
+#, fuzzy
 msgid "Comentario factura"
-msgstr ""
+msgstr "Commentary"
 
-#: ui_albaranclientebase.h:775
+#: ui_albaranclientebase.h:785
+#, fuzzy
 msgid "Comentario&s"
 msgstr ""
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comments\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"Commentaries"
 
-#: ui_albaranclientebase.h:774
+#: ui_albaranclientebase.h:784
+#, fuzzy
 msgid "Comentarios privados:"
-msgstr ""
+msgstr "Commentaries:"
 
-#: ui_albaranclientebase.h:773
+#: ui_albaranclientebase.h:783
+#, fuzzy
 msgid "Comentarios publicos:"
-msgstr ""
+msgstr "Commentaries:"
 
-#: listdescfacturaview.cpp:43
+#: listdescfacturaview.cpp:41
 msgid "Concepto descuento"
 msgstr ""
 
-#: ui_facturaslistbase.h:497 ui_facturaslistbase.h:502
-#: ui_albaranclientelistbase.h:502 ui_albaranclientelistbase.h:507
-#: ui_pedidosclientelistbase.h:443 ui_pedidosclientelistbase.h:448
+#: ui_facturaslistbase.h:521 ui_facturaslistbase.h:524
+#: ui_albaranclientelistbase.h:496 ui_albaranclientelistbase.h:499
+#: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
 msgid "Configurar listado"
-msgstr ""
+msgstr "Form listing"
 
-#: facturaslist.cpp:376
+#: facturaslist.cpp:445
+#, fuzzy
 msgid "Contact factura"
-msgstr ""
+msgstr "<HR><B>Treating Invoice "
 
-#: ui_facturaslistbase.h:506 ui_albaranclientelistbase.h:511
-#: ui_pedidosclientelistbase.h:452
+#: ui_facturaslistbase.h:527 ui_albaranclientelistbase.h:502
+#: ui_pedidosclientelistbase.h:429
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
-#: ui_facturaslistbase.h:470 ui_albaranclientelistbase.h:475
-#: ui_pedidosclientelistbase.h:416
+#: ui_facturaslistbase.h:503 ui_albaranclientelistbase.h:478
+#: ui_pedidosclientelistbase.h:405
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
-#: ui_facturaslistbase.h:458 ui_albaranclientelistbase.h:463
-#: ui_pedidosclientelistbase.h:404
+#: ui_facturaslistbase.h:495 ui_albaranclientelistbase.h:470
+#: ui_pedidosclientelistbase.h:397
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
-#: ui_facturaslistbase.h:494 ui_albaranclientelistbase.h:499
-#: ui_pedidosclientelistbase.h:440
+#: ui_facturaslistbase.h:519 ui_albaranclientelistbase.h:494
+#: ui_pedidosclientelistbase.h:421
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
-#: ui_facturaslistbase.h:446 ui_albaranclientelistbase.h:451
-#: ui_pedidosclientelistbase.h:392
+#: ui_facturaslistbase.h:487 ui_albaranclientelistbase.h:462
+#: ui_pedidosclientelistbase.h:389
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
-#: ui_facturaslistbase.h:482 ui_albaranclientelistbase.h:487
-#: ui_pedidosclientelistbase.h:428
+#: ui_facturaslistbase.h:511 ui_albaranclientelistbase.h:486
+#: ui_pedidosclientelistbase.h:413
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
-#: facturaslist.cpp:259
+#: facturaslist.cpp:298
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "It must select a family"
 
-#: ui_facturabase.h:708 ui_pedidoclientebase.h:700
+#: ui_facturabase.h:712 ui_pedidoclientebase.h:729
+#, fuzzy
 msgid "Desc&uentos"
-msgstr ""
+msgstr "Discount"
 
-#: facturaslist.cpp:370 listlinfacturaview.cpp:52 facturaview.cpp:70
+#: facturaview.cpp:69 listlinfacturaview.cpp:51 facturaslist.cpp:439
 msgid "Descripcion"
-msgstr ""
+msgstr "Description"
 
-#: ui_facturabase.h:700 ui_albaranclientebase.h:762 ui_pedidoclientebase.h:690
+#: ui_facturabase.h:709 ui_albaranclientebase.h:772 ui_pedidoclientebase.h:719
 msgid "Descripcion:"
-msgstr ""
+msgstr "Description:"
 
-#: ui_albaranclientebase.h:772
+#: ui_albaranclientebase.h:782
+#, fuzzy
 msgid "Descuen&tos"
-msgstr ""
+msgstr "Discount"
 
-#: ui_facturabase.h:710 ui_albaranclientebase.h:776 ui_pedidoclientebase.h:702
+#: ui_facturabase.h:714 ui_albaranclientebase.h:786 ui_pedidoclientebase.h:731
+#, fuzzy
 msgid "Descuentos:"
-msgstr ""
+msgstr "Discount:"
 
-#: ui_albaranclientelistbase.h:454 ui_albaranclientelistbase.h:459
+#: ui_albaranclientelistbase.h:464 ui_albaranclientelistbase.h:467
+#, fuzzy
 msgid "Editar albaran"
-msgstr ""
+msgstr "Id letters patent"
 
-#: ui_facturaslistbase.h:449 ui_facturaslistbase.h:454
+#: ui_facturaslistbase.h:489 ui_facturaslistbase.h:492
+#, fuzzy
 msgid "Editar factura"
-msgstr ""
+msgstr "Publish article"
 
-#: ui_pedidosclientelistbase.h:395 ui_pedidosclientelistbase.h:400
+#: ui_pedidosclientelistbase.h:391 ui_pedidosclientelistbase.h:394
+#, fuzzy
 msgid "Editar pedido"
-msgstr ""
+msgstr "Publish article"
 
-#: facturaslist.cpp:273
+#: facturaslist.cpp:312
+#, fuzzy
 msgid "Error al borrar la factura a cliente"
-msgstr ""
+msgstr "Error when erasing a client"
 
-#: facturaview.cpp:116
+#: facturaview.cpp:118
+#, fuzzy
 msgid "Error al crear la factura"
-msgstr ""
+msgstr "Error when creating article"
 
-#: genfacqtoolbutton.cpp:234 genfacqtoolbutton.cpp:360
-#: genfacqtoolbutton.cpp:489 facturaview.cpp:268
+#: facturaview.cpp:203 genfacqtoolbutton.cpp:237 genfacqtoolbutton.cpp:366
+#: genfacqtoolbutton.cpp:499
+#, fuzzy
 msgid "Error inesperado"
-msgstr ""
+msgstr "</B> Inserted"
 
-#: genfacqtoolbutton.cpp:293
+#: genfacqtoolbutton.cpp:296
 msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: genfacqtoolbutton.cpp:165
+#: genfacqtoolbutton.cpp:163
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: genfacqtoolbutton.cpp:422
+#: genfacqtoolbutton.cpp:428
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: ui_facturaslistbase.h:518 ui_albaranclientelistbase.h:523
-#: ui_pedidosclientelistbase.h:464
+#: ui_facturaslistbase.h:535 ui_albaranclientelistbase.h:510
+#: ui_pedidosclientelistbase.h:437
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
-#: facturaview.cpp:58
+#: facturaview.cpp:57
 msgid "Factura"
-msgstr ""
+msgstr "Invoice"
 
-#: genfacqtoolbutton.cpp:164
+#: genfacqtoolbutton.cpp:162
 msgid "Factura existente"
 msgstr ""
 
-#: genfacqtoolbutton.cpp:421
+#: genfacqtoolbutton.cpp:427
 msgid "Factura ya existe"
 msgstr ""
 
-#: pluginfactura.cpp:100 pluginfactura.cpp:101 facturaslist.cpp:240
-#: ui_facturaslistbase.h:427
+#: pluginbf_clientefactura.cpp:61 pluginbf_clientefactura.cpp:62
+#: facturaslist.cpp:279 ui_facturaslistbase.h:475
+#, fuzzy
 msgid "Facturas a clientes"
-msgstr ""
+msgstr "Selector of clients"
 
-#: facturaslist.cpp:118
+#: facturaslist.cpp:147
 msgid "Facturas no procesadas"
 msgstr ""
 
-#: facturaslist.cpp:117
+#: facturaslist.cpp:146
 msgid "Facturas procesadas"
 msgstr ""
 
-#: facturaslist.cpp:363
+#: facturaslist.cpp:432
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
-#: ui_facturabase.h:704 ui_albaranclientebase.h:766 ui_pedidoclientebase.h:694
+#: ui_facturabase.h:706 ui_albaranclientebase.h:776 ui_pedidoclientebase.h:723
+#, fuzzy
 msgid "Fecha de creacion:"
-msgstr ""
+msgstr "&Date of the seat:"
 
-#: ui_facturaslistbase.h:430 ui_albaranclientelistbase.h:437
-#: ui_pedidosclientelistbase.h:378
+#: ui_facturaslistbase.h:538 ui_albaranclientelistbase.h:451
+#: ui_pedidosclientelistbase.h:379
+#, fuzzy
 msgid "Fecha final:"
-msgstr ""
+msgstr "Final &date:"
 
-#: ui_facturaslistbase.h:429 ui_albaranclientelistbase.h:436
-#: ui_pedidosclientelistbase.h:377
+#: ui_facturaslistbase.h:537 ui_albaranclientelistbase.h:450
+#: ui_pedidosclientelistbase.h:378
+#, fuzzy
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Initial &date:"
 
-#: facturaview.cpp:207
-msgid "Fecha:"
-msgstr ""
-
-#: facturaview.cpp:65
+#: facturaview.cpp:64
+#, fuzzy
 msgid "Ffactura"
-msgstr ""
+msgstr "Invoice"
 
-#: ui_albaranclientelistbase.h:490 ui_albaranclientelistbase.h:495
+#: ui_albaranclientelistbase.h:488 ui_albaranclientelistbase.h:491
+#, fuzzy
 msgid "Filtrar albaranes"
-msgstr ""
+msgstr "Filter balance"
 
-#: ui_facturaslistbase.h:485 ui_facturaslistbase.h:490
+#: ui_facturaslistbase.h:513 ui_facturaslistbase.h:516
+#, fuzzy
 msgid "Filtrar facturas"
-msgstr ""
+msgstr "Fit heights"
 
-#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:436
+#: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
+#, fuzzy
 msgid "Filtrar pedidos"
-msgstr ""
+msgstr "Filter listing"
 
-#: facturaview.cpp:72
+#: facturaview.cpp:71
 msgid "Forma de pago"
-msgstr ""
+msgstr "Mode of payment"
 
-#: ui_facturabase.h:705 ui_albaranclientebase.h:768 ui_pedidoclientebase.h:696
+#: ui_facturabase.h:707 ui_albaranclientebase.h:778 ui_pedidoclientebase.h:725
 msgid "Forma de pago:"
-msgstr ""
+msgstr "Mode of payment:"
 
-#: ui_albaranclientebase.h:708 ui_albaranclientebase.h:713
+#: ui_albaranclientebase.h:737 ui_albaranclientebase.h:740
+#, fuzzy
 msgid "Guardar albaran"
-msgstr ""
+msgstr "Keep balance"
 
-#: ui_facturabase.h:637 ui_facturabase.h:642
+#: ui_facturabase.h:669 ui_facturabase.h:672
+#, fuzzy
 msgid "Guardar factura"
-msgstr ""
+msgstr "Keep account"
 
-#: ui_pedidoclientebase.h:647 ui_pedidoclientebase.h:652
+#: ui_pedidoclientebase.h:691 ui_pedidoclientebase.h:694
+#, fuzzy
 msgid "Guardar pedido"
-msgstr ""
+msgstr "Keep punteo"
 
-#: ui_facturabase.h:712 ui_albaranclientebase.h:778 ui_pedidoclientebase.h:704
+#: ui_facturabase.h:716 ui_albaranclientebase.h:788 ui_pedidoclientebase.h:733
+#, fuzzy
 msgid "I.R.P.F.:"
-msgstr ""
+msgstr "I.R.P.F (-"
 
 #: listlinfacturaview.cpp:55
 msgid "I.V.A."
-msgstr ""
+msgstr "I.V.A."
 
-#: facturaslist.cpp:380
+#: facturaslist.cpp:449
 msgid "Id almacen"
-msgstr ""
+msgstr "id warehouse"
 
-#: listlinfacturaview.cpp:48
+#: listlinfacturaview.cpp:47
 msgid "Id articulo"
-msgstr ""
+msgstr "Id article"
 
-#: facturaslist.cpp:379
+#: facturaslist.cpp:448
+#, fuzzy
 msgid "Id cliente"
-msgstr ""
+msgstr "ID client"
 
-#: listdescfacturaview.cpp:42
+#: listdescfacturaview.cpp:40
 msgid "Id descuento"
 msgstr ""
 
-#: facturaslist.cpp:371 listdescfacturaview.cpp:45 listlinfacturaview.cpp:58
-#: facturaview.cpp:61
+#: listdescfacturaview.cpp:43 facturaview.cpp:60 listlinfacturaview.cpp:58
+#: facturaslist.cpp:440
+#, fuzzy
 msgid "Id factura"
+msgstr "Invoice"
+
+#: listlinfacturaview.cpp:50
+msgid "Id linea factura"
 msgstr ""
 
-#: facturaslist.cpp:378
+#: facturaslist.cpp:447
+#, fuzzy
 msgid "Id trabajador"
-msgstr ""
+msgstr "Worker"
 
-#: listlinfacturaview.cpp:51
-msgid "Idl factura"
-msgstr ""
-
-#: ui_albaranclientebase.h:730 ui_albaranclientebase.h:735
+#: ui_albaranclientebase.h:751 ui_albaranclientebase.h:754
 msgid "Imprimir albaran"
-msgstr ""
+msgstr "Print letters patent"
 
-#: ui_facturabase.h:659 ui_facturabase.h:664
+#: ui_facturabase.h:683 ui_facturabase.h:686
+#, fuzzy
 msgid "Imprimir factura"
-msgstr ""
+msgstr "Print letters patent"
 
-#: ui_facturaslistbase.h:473 ui_facturaslistbase.h:478
-#: ui_albaranclientelistbase.h:478 ui_albaranclientelistbase.h:483
-#: ui_pedidosclientelistbase.h:419 ui_pedidosclientelistbase.h:424
+#: ui_facturaslistbase.h:505 ui_facturaslistbase.h:508
+#: ui_albaranclientelistbase.h:480 ui_albaranclientelistbase.h:483
+#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Print listing"
 
-#: ui_pedidoclientebase.h:669 ui_pedidoclientebase.h:674
+#: ui_pedidoclientebase.h:705 ui_pedidoclientebase.h:708
 msgid "Imprimir pedido"
-msgstr ""
+msgstr "Print order"
 
-#: facturaslist.cpp:367
+#: facturaslist.cpp:436
+#, fuzzy
 msgid "Impuestos"
-msgstr ""
+msgstr "Imputation"
 
-#: ui_facturabase.h:713 ui_facturaslistbase.h:432 ui_albaranclientebase.h:779
-#: ui_pedidoclientebase.h:705
+#: ui_facturabase.h:717 ui_facturaslistbase.h:477 ui_albaranclientebase.h:789
+#: ui_pedidoclientebase.h:734
+#, fuzzy
 msgid "Impuestos:"
-msgstr ""
+msgstr "Imputation"
 
-#: ui_facturabase.h:691 ui_facturabase.h:696 ui_albaranclientebase.h:753
-#: ui_albaranclientebase.h:758 ui_pedidoclientebase.h:681
-#: ui_pedidoclientebase.h:686
+#: ui_facturabase.h:690 ui_facturabase.h:693 ui_albaranclientebase.h:758
+#: ui_albaranclientebase.h:761 ui_pedidoclientebase.h:712
+#: ui_pedidoclientebase.h:715
+#, fuzzy
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Show/hide filter"
 
-#: ui_facturaslistbase.h:428 ui_albaranclientelistbase.h:435
-#: ui_pedidosclientelistbase.h:379
+#: ui_facturaslistbase.h:539 ui_albaranclientelistbase.h:449
+#: ui_pedidosclientelistbase.h:380
+#, fuzzy
 msgid "Mostrar:"
-msgstr ""
+msgstr "Show seat"
 
-#: ui_facturabase.h:701
+#: ui_facturabase.h:710
+#, fuzzy
 msgid "N&umero de factura:"
-msgstr ""
+msgstr "Number of fax:"
 
-#: facturaview.cpp:264
+#: facturaview.cpp:199
 msgid "No hay albaranes con esta referencia"
 msgstr ""
 
-#: listlinfacturaview.cpp:50
+#: listlinfacturaview.cpp:49
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Name article"
 
-#: facturaslist.cpp:364
+#: facturaslist.cpp:433
+#, fuzzy
 msgid "Nombre cliente"
-msgstr ""
+msgstr "Name of client"
 
-#: ui_facturaslistbase.h:437 ui_facturaslistbase.h:442
+#: ui_facturaslistbase.h:481 ui_facturaslistbase.h:484
+#, fuzzy
 msgid "Nueva factura"
-msgstr ""
+msgstr "Invoice"
 
-#: pluginfactura.cpp:108 pluginfactura.cpp:109 ui_facturabase.h:634
+#: pluginbf_clientefactura.cpp:68 pluginbf_clientefactura.cpp:69
+#: ui_facturabase.h:667
+#, fuzzy
 msgid "Nueva factura a cliente"
-msgstr ""
+msgstr "New client"
 
-#: ui_albaranclientelistbase.h:442 ui_albaranclientelistbase.h:447
+#: ui_albaranclientelistbase.h:456 ui_albaranclientelistbase.h:459
+#, fuzzy
 msgid "Nuevo albaran"
-msgstr ""
+msgstr "Id letters patent"
 
-#: ui_albaranclientebase.h:705
+#: ui_albaranclientebase.h:735
+#, fuzzy
 msgid "Nuevo albaran a cliente"
-msgstr ""
+msgstr "New client"
 
-#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:388
+#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
+#, fuzzy
 msgid "Nuevo pedido"
-msgstr ""
+msgstr "New &supplier..."
 
-#: ui_pedidoclientebase.h:644
+#: ui_pedidoclientebase.h:689
+#, fuzzy
 msgid "Nuevo pedido de cliente"
-msgstr ""
+msgstr "Code of client:"
 
-#: genfacqtoolbutton.cpp:605
+#: genfacqtoolbutton.cpp:615
+#, fuzzy
 msgid "Num. albaran"
-msgstr ""
+msgstr "Id letters patent"
 
-#: facturaslist.cpp:362
+#: facturaslist.cpp:431
+#, fuzzy
 msgid "Numero"
-msgstr ""
+msgstr "New"
 
-#: ui_albaranclientebase.h:763
-msgid "Numero de albaran:"
-msgstr ""
-
-#: ui_pedidoclientebase.h:691
+#: ui_pedidoclientebase.h:720
+#, fuzzy
 msgid "Numero de pedido:"
-msgstr ""
+msgstr "Number of terms:"
 
-#: facturaview.cpp:64
+#: facturaview.cpp:63
+#, fuzzy
 msgid "Numero factura"
+msgstr "Invoice"
+
+#: ui_albaranclientebase.h:773
+msgid "Número:"
 msgstr ""
 
 #: listlinfacturaview.cpp:59
 msgid "Orden"
-msgstr ""
+msgstr "Order"
 
-#: listlinfacturaview.cpp:54
+#: listlinfacturaview.cpp:53
 msgid "P.V.P."
-msgstr ""
+msgstr "P.V.P."
 
-#: ui_pedidosclientelistbase.h:376
+#: ui_pedidosclientelistbase.h:377
+#, fuzzy
 msgid "Pedidos de clientes"
-msgstr ""
+msgstr "Code of client:"
 
-#: ui_albaranclientebase.h:767 ui_pedidoclientebase.h:695
+#: ui_albaranclientebase.h:777 ui_pedidoclientebase.h:724
+#, fuzzy
 msgid "Persona de contacto:"
-msgstr ""
+msgstr "Account of assets:"
 
-#: facturaslist.cpp:369 ui_facturabase.h:702
+#: facturaslist.cpp:438 ui_facturabase.h:703
+#, fuzzy
 msgid "Procesada"
-msgstr ""
+msgstr "Pro&cessings"
 
-#: facturaview.cpp:66
+#: facturaview.cpp:65
+#, fuzzy
 msgid "Procesada factura"
-msgstr ""
+msgstr "Series of invoice"
 
-#: ui_albaranclientebase.h:764 ui_pedidoclientebase.h:692
+#: ui_albaranclientebase.h:774 ui_pedidoclientebase.h:721
+#, fuzzy
 msgid "Procesado"
-msgstr ""
+msgstr "Pro&cessings"
 
-#: ui_facturabase.h:714 ui_albaranclientebase.h:780 ui_pedidoclientebase.h:706
+#: ui_facturabase.h:718 ui_albaranclientebase.h:790 ui_pedidoclientebase.h:735
+#, fuzzy
 msgid "R.E.:"
-msgstr ""
+msgstr "R.E."
 
-#: facturaslist.cpp:372
+#: facturaslist.cpp:441
+#, fuzzy
 msgid "Ref factura"
-msgstr ""
+msgstr "Invoice"
 
-#: facturaview.cpp:207
-msgid "Ref:"
-msgstr ""
-
-#: facturaview.cpp:69
+#: facturaview.cpp:68
 msgid "Referencia"
-msgstr ""
+msgstr "Reference"
 
-#: ui_facturabase.h:688 ui_albaranclientebase.h:750 ui_pedidoclientebase.h:678
+#: ui_facturabase.h:702 ui_albaranclientebase.h:771 ui_pedidoclientebase.h:718
+#, fuzzy
 msgid "Referencia:"
-msgstr ""
+msgstr "Reference"
 
-#: genfacqtoolbutton.cpp:580
+#: genfacqtoolbutton.cpp:590
 msgid "Seleccione la factura a la que agregar el albaran."
 msgstr ""
 
-#: facturaslist.cpp:373 facturaview.cpp:67
+#: facturaview.cpp:66 facturaslist.cpp:442
 msgid "Serie"
 msgstr ""
 
-#: ui_facturabase.h:703
+#: ui_facturabase.h:705 ui_facturaslistbase.h:540
 msgid "Serie:"
 msgstr ""
 
-#: ui_albaranclientebase.h:769 ui_pedidoclientebase.h:697
+#: ui_albaranclientebase.h:779 ui_pedidoclientebase.h:726
+#, fuzzy
 msgid "Telefono de contacto:"
-msgstr ""
+msgstr "Description of the account"
 
-#: facturaslist.cpp:365
+#: facturaslist.cpp:434
+#, fuzzy
 msgid "Telefono factura"
-msgstr ""
+msgstr "Description of the account"
 
-#: genfacqtoolbutton.cpp:149 genfacqtoolbutton.cpp:277
-#: genfacqtoolbutton.cpp:406
+#: genfacqtoolbutton.cpp:147 genfacqtoolbutton.cpp:280
+#: genfacqtoolbutton.cpp:412
+#, fuzzy
 msgid "Tiene que seleccionar un cliente"
-msgstr ""
+msgstr "Must select an element"
 
-#: facturaslist.cpp:116
+#: facturaslist.cpp:145
+#, fuzzy
 msgid "Todas las facturas"
-msgstr ""
+msgstr "<HR><B>Treating Invoice "
 
-#: facturaslist.cpp:368
+#: facturaslist.cpp:437
 msgid "Total"
+msgstr "Total"
+
+#: listlinfacturaview.cpp:54
+msgid "Total linea"
 msgstr ""
 
-#: ui_facturabase.h:715 ui_facturaslistbase.h:433 ui_albaranclientebase.h:781
-#: ui_pedidoclientebase.h:707 ui_pedidosclientelistbase.h:466
+#: ui_facturabase.h:719 ui_facturaslistbase.h:478 ui_albaranclientebase.h:791
+#: ui_pedidosclientelistbase.h:439 ui_pedidoclientebase.h:736
+#, fuzzy
 msgid "Total:"
-msgstr ""
+msgstr "Total"
 
-#: ui_albaranclientelistbase.h:438
+#: ui_albaranclientelistbase.h:453
+#, fuzzy
 msgid "Total: "
-msgstr ""
+msgstr "Total"
 
-#: facturaview.cpp:71
+#: facturaview.cpp:70 ui_albaranclientelistbase.h:452
 msgid "Trabajador"
-msgstr ""
+msgstr "Worker"
 
-#: ui_albaranclientebase.h:765 ui_pedidoclientebase.h:693
+#: ui_facturabase.h:704 ui_albaranclientebase.h:775 ui_pedidoclientebase.h:722
+#, fuzzy
 msgid "Trabajador:"
-msgstr ""
+msgstr "Worker"
 
-#: ui_facturabase.h:670 ui_facturabase.h:675
+#: ui_facturabase.h:697 ui_facturabase.h:700
+#, fuzzy
 msgid "Ver albaranes con la misma referencia"
-msgstr ""
+msgstr "All with the same date"
 
-#: ui_albaranclientebase.h:741 ui_albaranclientebase.h:746
+#: ui_albaranclientebase.h:765 ui_albaranclientebase.h:768
+#, fuzzy
 msgid "Ver pedidos con la misma referencia"
-msgstr ""
+msgstr "All with the same date"

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:37+0200\n"
 "PO-Revision-Date: 2009-10-12 13:48+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_bcdiarioprintbase.h:159
@@ -38,7 +38,7 @@ msgstr "&Incloure assentaments oberts"
 msgid "&Kugar"
 msgstr "&Kugar"
 
-#: pluginbc_diario.cpp:97
+#: pluginbc_diario.cpp:89
 msgid "&Libro Diario"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "&Texto Plano"
 msgstr "&Text pla"
 
-#: pluginbc_diario.cpp:93
+#: pluginbc_diario.cpp:87
 msgid "&Ver"
 msgstr "&Veure"
 
@@ -206,11 +206,11 @@ msgstr "Mostra l'extracte (mes)"
 msgid "Mostrar/ocultar filtro"
 msgstr "Mostrar/ocultar capçalera"
 
-#: pluginbc_diario.cpp:98
+#: pluginbc_diario.cpp:90
 msgid "Permite ver el diario"
 msgstr ""
 
-#: pluginbc_diario.cpp:99
+#: pluginbc_diario.cpp:91
 msgid "Podra disponer de la informacion del diario"
 msgstr ""
 

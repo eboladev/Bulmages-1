@@ -8,91 +8,116 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-14 14:33+0100\n"
+"POT-Creation-Date: 2011-05-30 17:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
-#: carterapagoslist.cpp:61 vencimientopview.cpp:59
-msgid "Proveedor:"
+#: pluginbf_carterapagos.cpp:55
+msgid "&Cartera de Pagos"
 msgstr ""
 
-#: vencimientopview.cpp:68
-msgid "Id pago"
+#: pluginbf_carterapagos.cpp:53
+msgid "&Compras"
 msgstr ""
 
-#: vencimientopview.cpp:69
-msgid "Referencia de Vencimiento"
-msgstr ""
+#: pluginbf_carterapagos.cpp:215
+msgid "Cantidad"
+msgstr "Quantitat"
 
-#: vencimientopview.cpp:70
-msgid "Descripcion"
+#: pluginbf_carterapagos.cpp:56 pluginbf_carterapagos.cpp:57
+msgid "Cartera de Pagos"
 msgstr ""
 
 #: vencimientopview.cpp:71
 msgid "Comentarios"
+msgstr "Comentaris"
+
+#: vencimientopview.cpp:70
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: pluginbf_carterapagos.cpp:96
+msgid "Dias tras Factura"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:132
+msgid "El total de la factura es :"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:214
+msgid "Fecha"
+msgstr "Data"
+
+#: vencimientopview.cpp:73
+msgid "Fecha Efectiva"
 msgstr ""
 
 #: vencimientopview.cpp:72
 msgid "Fecha de Vencimiento"
 msgstr ""
 
-#: vencimientopview.cpp:73
-msgid "Fecha Efectiva"
+#: pluginbf_carterapagos.cpp:98 pluginbf_carterapagos.cpp:216
+msgid "Forma de Pago"
+msgstr "Forma de pagament"
+
+#: pluginbf_carterapagos.cpp:177
+msgid "Hay Vencimientos generados para esta factura. Que desea hacer?"
 msgstr ""
 
-#: vencimientopview.cpp:74
-msgid "estado de Vencimiento"
+#: pluginbf_carterapagos.cpp:100 pluginbf_carterapagos.cpp:219
+msgid "ID Forma de Pago"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:95 pluginbf_carterapagos.cpp:213
+msgid "ID Vencimiento"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:99 pluginbf_carterapagos.cpp:218
+#, fuzzy
+msgid "Id Articulo"
+msgstr "<P> Article <B>"
+
+#: pluginbf_carterapagos.cpp:220
+#, fuzzy
+msgid "Id Proveedor"
+msgstr "NIF del proveïdor"
+
+#: vencimientopview.cpp:68
+#, fuzzy
+msgid "Id pago"
+msgstr "<LI> Forma de pagament <B>"
+
+#: pluginbf_carterapagos.cpp:97
+msgid "Porcentaje"
+msgstr "Percentual"
+
+#: pluginbf_carterapagos.cpp:217
+#, fuzzy
+msgid "Procesado"
+msgstr "Propietari"
+
+#: carterapagoslist.cpp:61 vencimientopview.cpp:59
+msgid "Proveedor:"
+msgstr "Proveïdor:"
+
+#: vencimientopview.cpp:69
+msgid "Referencia de Vencimiento"
 msgstr ""
 
 #: vencimientopview.cpp:75
 msgid "cantidad de Vencimiento"
 msgstr ""
 
+#: vencimientopview.cpp:74
+msgid "estado de Vencimiento"
+msgstr ""
+
 #: vencimientopview.cpp:76
+#, fuzzy
 msgid "idproveedor de Vencimiento"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:128 pluginbf_carterapagos.cpp:246
-msgid "ID Vencimiento"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:129
-msgid "Dias tras Factura"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:130
-msgid "Porcentaje"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:131 pluginbf_carterapagos.cpp:249
-msgid "Forma de Pago"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:132 pluginbf_carterapagos.cpp:251
-msgid "Id Articulo"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:133 pluginbf_carterapagos.cpp:252
-msgid "ID Forma de Pago"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:247
-msgid "Fecha"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:248
-msgid "Cantidad"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:250
-msgid "Procesado"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:253
-msgid "Id Proveedor"
-msgstr ""
+msgstr "Data de l'assentament"

@@ -8,14 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbc_bloqueofechas.cpp:50
+msgid "&Herramientas"
+msgstr ""
+
+#: pluginbc_bloqueofechas.cpp:52
+msgid "&Bloqueo de Fechas"
+msgstr ""
+
+#: pluginbc_bloqueofechas.cpp:53 pluginbc_bloqueofechas.cpp:54
+msgid "Bloqueo de Fechas"
+msgstr ""
 
 #: bcbloqueafechaview.cpp:77
 msgid "Bloquear Fechas"
@@ -95,18 +106,6 @@ msgstr ""
 
 #: bcbloqueafechaview.cpp:270
 msgid "Ejercicios ya contemplado"
-msgstr ""
-
-#: pluginbc_bloqueofechas.cpp:88
-msgid "&Herramientas"
-msgstr ""
-
-#: pluginbc_bloqueofechas.cpp:92
-msgid "&Bloqueo de Fechas"
-msgstr ""
-
-#: pluginbc_bloqueofechas.cpp:93 pluginbc_bloqueofechas.cpp:94
-msgid "Bloqueo de Fechas"
 msgstr ""
 
 #: ui_bcbloqueafechabase.h:134

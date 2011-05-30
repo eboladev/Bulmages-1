@@ -8,11 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,89 +25,89 @@ msgid "Cobro"
 msgstr ""
 
 #: pluginbt_cambioivaincluido.cpp:92
-msgid "pagado"
+msgid "Pagado"
 msgstr ""
 
 #: pluginbt_cambioivaincluido.cpp:93
-msgid "cambio"
+msgid "Cambio"
 msgstr ""
 
 #: pluginbt_cambioivaincluido.cpp:94
-msgid "total"
-msgstr ""
-
-#: ui_cambiobase.h:344
-msgid "Dialog"
-msgstr ""
-
-#: ui_cambiobase.h:345
-msgid "Total a cobrar:"
-msgstr ""
-
-#: ui_cambiobase.h:346
-msgid "Entregado:"
-msgstr ""
-
-#: ui_cambiobase.h:347
-msgid "A devolver:"
-msgstr ""
-
-#: ui_cambiobase.h:348
-msgid "7"
-msgstr ""
-
-#: ui_cambiobase.h:349
-msgid "8"
-msgstr ""
-
-#: ui_cambiobase.h:350
-msgid "9"
-msgstr ""
-
-#: ui_cambiobase.h:351
-msgid "4"
-msgstr ""
-
-#: ui_cambiobase.h:352
-msgid "5"
-msgstr ""
-
-#: ui_cambiobase.h:353
-msgid "6"
+msgid "Total"
 msgstr ""
 
 #: ui_cambiobase.h:354
-msgid "1"
+msgid "Dialog"
 msgstr ""
 
 #: ui_cambiobase.h:355
-msgid "2"
+msgid "Total a cobrar:"
 msgstr ""
 
 #: ui_cambiobase.h:356
-msgid "3"
+msgid "Entregado:"
 msgstr ""
 
 #: ui_cambiobase.h:357
-msgid "0"
+msgid "A devolver:"
 msgstr ""
 
 #: ui_cambiobase.h:358
-msgid "."
+msgid "7"
 msgstr ""
 
 #: ui_cambiobase.h:359
-msgid "C"
+msgid "8"
 msgstr ""
 
 #: ui_cambiobase.h:360
-msgid "EFECTIVO"
+msgid "9"
 msgstr ""
 
 #: ui_cambiobase.h:361
-msgid "VISA"
+msgid "4"
 msgstr ""
 
 #: ui_cambiobase.h:362
+msgid "5"
+msgstr ""
+
+#: ui_cambiobase.h:363
+msgid "6"
+msgstr ""
+
+#: ui_cambiobase.h:364
+msgid "1"
+msgstr ""
+
+#: ui_cambiobase.h:365
+msgid "2"
+msgstr ""
+
+#: ui_cambiobase.h:366
+msgid "3"
+msgstr ""
+
+#: ui_cambiobase.h:367
+msgid "0"
+msgstr ""
+
+#: ui_cambiobase.h:368
+msgid "."
+msgstr ""
+
+#: ui_cambiobase.h:369
+msgid "C"
+msgstr ""
+
+#: ui_cambiobase.h:370
+msgid "EFECTIVO"
+msgstr ""
+
+#: ui_cambiobase.h:371
+msgid "VISA"
+msgstr ""
+
+#: ui_cambiobase.h:372
 msgid "CANCELAR"
 msgstr ""

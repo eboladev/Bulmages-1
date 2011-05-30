@@ -8,40 +8,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-26 07:04+0100\n"
+"POT-Creation-Date: 2011-05-30 17:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_bldblogindialogbase.h:151
+#: ui_bldblogindialogbase.h:150
 msgid "Lanzador Bulmages"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:152
+#: ui_bldblogindialogbase.h:151
 msgid "Mensaje de error:"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:154
+#: ui_bldblogindialogbase.h:153
 msgid "Registro de entrada:"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:155
+#: ui_bldblogindialogbase.h:154
 msgid "Nombre de usuario:"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:156
+#: ui_bldblogindialogbase.h:155
 msgid "Contrasenya:"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:157
+#: ui_bldblogindialogbase.h:156
 msgid "&Validar"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:158
+#: ui_bldblogindialogbase.h:157
 msgid "&Cerrar el programa"
 msgstr ""
 
@@ -74,15 +73,15 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_blerrordialogbase.h:111
+#: ui_blerrordialogbase.h:110
 msgid "Mensaje"
 msgstr ""
 
-#: ui_blerrordialogbase.h:113
+#: ui_blerrordialogbase.h:112
 msgid "&Detalles"
 msgstr ""
 
-#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:681
+#: ui_blerrordialogbase.h:113 ui_blsubformbase.h:681
 msgid "&Cerrar"
 msgstr ""
 
@@ -190,7 +189,7 @@ msgstr ""
 msgid "Databse Scripting"
 msgstr ""
 
-#: ui_blformconfigbase.h:337 blformlist.cpp:439
+#: ui_blformconfigbase.h:337 blformlist.cpp:448
 msgid "Editar"
 msgstr ""
 
@@ -333,56 +332,56 @@ msgstr ""
 msgid "Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:387
+#: blfunctions.cpp:395
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:393
+#: blfunctions.cpp:412
 msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:407
+#: blfunctions.cpp:437
 msgid "Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:428
+#: blfunctions.cpp:458
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:442
+#: blfunctions.cpp:472
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
 msgstr ""
 
-#: blfunctions.cpp:461
+#: blfunctions.cpp:491
 msgid "Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"
 msgstr ""
 
-#: blfunctions.cpp:587
+#: blfunctions.cpp:617
 msgid "Informacion de depuracion"
 msgstr ""
 
-#: blfunctions.cpp:589 blfunctions.cpp:618 blfunctions.cpp:628
-#: blfunctions.cpp:638
+#: blfunctions.cpp:619 blfunctions.cpp:648 blfunctions.cpp:658
+#: blfunctions.cpp:668
 msgid "&Continuar"
 msgstr ""
 
-#: blfunctions.cpp:590
+#: blfunctions.cpp:620
 msgid "&Omitir"
 msgstr ""
 
-#: blfunctions.cpp:591
+#: blfunctions.cpp:621
 msgid "Omitir &clase"
 msgstr ""
 
-#: blfunctions.cpp:617
+#: blfunctions.cpp:647
 msgid "Informacion del programa"
 msgstr ""
 
-#: blfunctions.cpp:627
+#: blfunctions.cpp:657
 msgid "Aviso del programa"
 msgstr ""
 
-#: blfunctions.cpp:637
+#: blfunctions.cpp:667
 msgid "Error del programa"
 msgstr ""
 
@@ -390,27 +389,27 @@ msgstr ""
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr ""
 
-#: blcompanydialog.cpp:212
+#: blcompanydialog.cpp:221
 msgid "&Cierra el programa"
 msgstr ""
 
-#: blcompanydialog.cpp:284
+#: blcompanydialog.cpp:293
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr ""
 
-#: blcompanydialog.cpp:498 blsubform.cpp:239
+#: blcompanydialog.cpp:507 blsubform.cpp:239
 msgid "Nombre"
 msgstr ""
 
-#: blcompanydialog.cpp:498
+#: blcompanydialog.cpp:507
 msgid "Anyo"
 msgstr ""
 
-#: blcompanydialog.cpp:498
+#: blcompanydialog.cpp:507
 msgid "Archivo"
 msgstr ""
 
-#: blcompanydialog.cpp:498
+#: blcompanydialog.cpp:507
 msgid "Tipo"
 msgstr ""
 
@@ -717,43 +716,55 @@ msgstr ""
 msgid "Error al intentar borrar"
 msgstr ""
 
-#: blsubform.cpp:2678
+#: blsubform.cpp:2719
 msgid "Imprimiendo "
 msgstr ""
 
-#: blsubform.cpp:2774 blsubform.cpp:2792
+#: blsubform.cpp:2815 blsubform.cpp:2833
 msgid "no se ha inicializado bien la clase"
 msgstr ""
 
-#: blsubform.cpp:2928 blsubform.cpp:2940
+#: blsubform.cpp:2969 blsubform.cpp:2981
 msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
 msgstr ""
 
-#: blsubform.cpp:3074
+#: blsubform.cpp:3150
 msgid "Borrar registro"
 msgstr ""
 
-#: blsubform.cpp:3079 bltreewidget.cpp:71
+#: blsubform.cpp:3155
+msgid "Subir fila"
+msgstr ""
+
+#: blsubform.cpp:3158
+msgid "Bajar fila"
+msgstr ""
+
+#: blsubform.cpp:3162
+msgid "Usar editor"
+msgstr ""
+
+#: blsubform.cpp:3165 bltreewidget.cpp:71
 msgid "Ajustar columa"
 msgstr ""
 
-#: blsubform.cpp:3081
+#: blsubform.cpp:3167
 msgid "Ajustar altura"
 msgstr ""
 
-#: blsubform.cpp:3084 bltreewidget.cpp:74
+#: blsubform.cpp:3170 bltreewidget.cpp:74
 msgid "Ajustar columnas"
 msgstr ""
 
-#: blsubform.cpp:3086
+#: blsubform.cpp:3172
 msgid "Ajustar alturas"
 msgstr ""
 
-#: blsubform.cpp:3090
+#: blsubform.cpp:3176
 msgid "Ver/Ocultar menu de subformulario"
 msgstr ""
 
-#: blsubform.cpp:3092
+#: blsubform.cpp:3178
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr ""
 
@@ -765,7 +776,7 @@ msgstr ""
 msgid "Esc"
 msgstr ""
 
-#: blform.cpp:424 blformlist.cpp:440
+#: blform.cpp:424 blformlist.cpp:449
 msgid "Borrar"
 msgstr ""
 
@@ -824,7 +835,7 @@ msgid ""
 "El programa no funcionara adecuadamente.\n"
 msgstr ""
 
-#: blformlist.cpp:388
+#: blformlist.cpp:397
 msgid "Tiene que seleccionar un elemento"
 msgstr ""
 

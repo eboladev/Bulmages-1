@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -123,23 +123,27 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
+#: pluginbf_tipotrabajo.cpp:48
+msgid "&Tipos de trabajo"
+msgstr ""
+
 #: listtipostrabajoview.cpp:57
 msgid "Color tipo trabajo"
 msgstr "Color tipo trabajo"
 
-#: pluginbf_tipotrabajo.cpp:207
+#: pluginbf_tipotrabajo.cpp:175
 msgid "ID almacen"
 msgstr "ID almacen"
 
-#: pluginbf_tipotrabajo.cpp:205
+#: pluginbf_tipotrabajo.cpp:173
 msgid "ID nombre del tipo de trabajo"
 msgstr "ID nombre del tipo de trabajo"
 
-#: pluginbf_tipotrabajo.cpp:208
+#: pluginbf_tipotrabajo.cpp:176
 msgid "ID tipo de trabajo"
 msgstr "ID tipo de trabajo"
 
-#: pluginbf_tipotrabajo.cpp:209
+#: pluginbf_tipotrabajo.cpp:177
 msgid "Id tipo de trabajo"
 msgstr "Id tipo de trabajo"
 
@@ -151,13 +155,21 @@ msgstr "Id tipo trabajo"
 msgid "Nombre tipo trabajo"
 msgstr "Nombre tipo trabajo"
 
-#: pluginbf_tipotrabajo.cpp:206
+#: pluginbf_tipotrabajo.cpp:174
 msgid "Numero de cargos necesarios"
 msgstr "Numero de cargos necesarios"
+
+#: pluginbf_tipotrabajo.cpp:89
+msgid "Tipo de trabajo"
+msgstr ""
 
 #: ui_listtipostrabajobase.h:113
 msgid "Tipos de Trabajo"
 msgstr "Tipos de Trabajo"
+
+#: pluginbf_tipotrabajo.cpp:49 pluginbf_tipotrabajo.cpp:50
+msgid "Tipos de trabajo"
+msgstr ""
 
 #: listtipostrabajoview.cpp:48
 msgid "almacen"

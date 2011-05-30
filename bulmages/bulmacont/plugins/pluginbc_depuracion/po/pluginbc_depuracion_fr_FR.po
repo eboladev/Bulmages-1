@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 19:41+0200\n"
 "PO-Revision-Date: 2011-02-01 09:46+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
-"Language: frX-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: frX-Generator: Lokalize 1.2\n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -116,19 +116,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
-#: pluginbc_depuracion.cpp:95
+#: pluginbc_depuracion.cpp:50
 msgid "&Modo debug"
 msgstr "&Mode débogue"
 
-#: pluginbc_depuracion.cpp:88
+#: pluginbc_depuracion.cpp:46
 msgid "&Ver"
 msgstr "&Afficher"
 
-#: pluginbc_depuracion.cpp:104
+#: pluginbc_depuracion.cpp:59
 msgid "Activa/Desactiva el modo debug"
 msgstr "Activer/Désactiver le mode débogue"
 
-#: pluginbc_depuracion.cpp:105
+#: pluginbc_depuracion.cpp:60
 msgid ""
 "Debug.\n"
 "\n"
@@ -137,4 +137,3 @@ msgstr ""
 "Déboguer.\n"
 "\n"
 "Activer/Désactiver  le mode déboguer"
-

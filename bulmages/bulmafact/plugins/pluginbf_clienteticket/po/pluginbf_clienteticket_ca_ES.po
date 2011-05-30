@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -19,7 +19,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
+#: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
 msgid "% Descuento"
 msgstr "% Descompte"
 
@@ -49,16 +49,20 @@ msgstr "&Detalls"
 msgid "&No"
 msgstr "&No"
 
-#: pluginbf_clienteticket.cpp:107
-msgid "&Nuevo albaran a cliente"
-msgstr "&Nou albarà a client"
+#: pluginbf_clienteticket.cpp:68
+msgid "&Nuevo ticket a cliente"
+msgstr ""
 
 #: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
 msgid "&Si"
 msgstr "&Sí"
 
-#: pluginbf_clienteticket.cpp:99
+#: pluginbf_clienteticket.cpp:59
 msgid "&Ticketes a clientes"
+msgstr ""
+
+#: pluginbf_clienteticket.cpp:55
+msgid "&Ventas"
 msgstr ""
 
 #: ui_ticketclientebase.h:788 ui_ticketclientebase.h:789
@@ -81,7 +85,7 @@ msgstr "<LI> Magatzem <B>"
 msgid "Almacen:"
 msgstr "<LI> Magatzem <B>"
 
-#: ticketclientelist.cpp:432
+#: ticketclientelist.cpp:435
 #, fuzzy
 msgid "Base imponible"
 msgstr "Empreses disponibles:"
@@ -112,7 +116,7 @@ msgstr "Quantitat"
 msgid "Cliente"
 msgstr "Següent"
 
-#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
+#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"
@@ -121,7 +125,7 @@ msgstr "Pendent:"
 msgid "Codigo completo articulo"
 msgstr "Codi complet article"
 
-#: ticketclientelist.cpp:420
+#: ticketclientelist.cpp:423
 #, fuzzy
 msgid "Codigo de almacen"
 msgstr "Tipus de balanç"
@@ -144,7 +148,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ticketclientelist.cpp:430
+#: ticketclientelist.cpp:433
 #, fuzzy
 msgid "Comentarios del albaran"
 msgstr "Comentaris de l'assentament"
@@ -192,17 +196,17 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ticketclientelist.cpp:319
+#: ticketclientelist.cpp:322
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: ticketclientelist.cpp:422 ticketclienteview.cpp:80
-#: bfclientealbaransubform.cpp:49
+#: ticketclienteview.cpp:80 bfclientealbaransubform.cpp:49
+#: ticketclientelist.cpp:425
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: ticketclientelist.cpp:426
+#: ticketclientelist.cpp:429
 #, fuzzy
 msgid "Descripcion de forma de pago"
 msgstr "Descripció del compte"
@@ -227,7 +231,7 @@ msgstr "Document:"
 msgid "Editar albaran"
 msgstr "Esborra albarà"
 
-#: ticketclientelist.cpp:333
+#: ticketclientelist.cpp:336
 msgid "Error al borrar el albaran a cliente"
 msgstr "Error al esborrar l'albarà a client"
 
@@ -263,7 +267,7 @@ msgstr "F5"
 msgid "Factura ya existe"
 msgstr "Factura"
 
-#: ticketclientelist.cpp:423
+#: ticketclientelist.cpp:426
 #, fuzzy
 msgid "Fecha de albaran"
 msgstr "Data de la compra"
@@ -318,32 +322,32 @@ msgstr "C.I.F.:"
 msgid "I.V.A."
 msgstr "I.V.A."
 
-#: ticketclientelist.cpp:429
+#: ticketclientelist.cpp:432
 #, fuzzy
 msgid "ID albaran"
 msgstr "Imprimeix albarà"
 
-#: ticketclientelist.cpp:431
+#: ticketclientelist.cpp:434
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: ticketclientelist.cpp:428
+#: ticketclientelist.cpp:431
 #, fuzzy
 msgid "ID cliente"
 msgstr "ID compte"
 
-#: ticketclientelist.cpp:425
+#: ticketclientelist.cpp:428
 #, fuzzy
 msgid "ID forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: ticketclientelist.cpp:427
+#: ticketclientelist.cpp:430
 msgid "ID trabajador"
 msgstr "ID treballador"
 
-#: ticketclienteview.cpp:68 bfclientealbarandescuentosubform.cpp:44
-#: bfclientealbaransubform.cpp:57
+#: ticketclienteview.cpp:68 bfclientealbaransubform.cpp:57
+#: bfclientealbarandescuentosubform.cpp:44
 #, fuzzy
 msgid "Id albaran"
 msgstr "Imprimeix albarà"
@@ -368,7 +372,7 @@ msgstr "Imprimeix la comanda"
 msgid "Imprimir ticket"
 msgstr "Imprimeix comptes"
 
-#: ticketclientelist.cpp:433
+#: ticketclientelist.cpp:436
 #, fuzzy
 msgid "Impuestos"
 msgstr "Imputació"
@@ -392,7 +396,7 @@ msgstr "Mostrar assentament"
 msgid "Nombre articulo"
 msgstr "Nom d'usuari:"
 
-#: ticketclientelist.cpp:424
+#: ticketclientelist.cpp:427
 #, fuzzy
 msgid "Nombre de cliente"
 msgstr "Nom del compte"
@@ -402,16 +406,12 @@ msgstr "Nom del compte"
 msgid "Nuevo albaran"
 msgstr "Esborra albarà"
 
-#: pluginbf_clienteticket.cpp:109 pluginbf_clienteticket.cpp:110
-#, fuzzy
-msgid "Nuevo albaran a cliente"
-msgstr "Nou assentament"
-
+#: pluginbf_clienteticket.cpp:70 pluginbf_clienteticket.cpp:71
 #: ui_ticketclientebase.h:735
 msgid "Nuevo ticket a cliente"
 msgstr ""
 
-#: ticketclientelist.cpp:421 ticketclienteview.cpp:71
+#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Nombre de quotes"
@@ -457,7 +457,7 @@ msgstr "C.P.:"
 msgid "Referencia"
 msgstr "Referència"
 
-#: ticketclientelist.cpp:419
+#: ticketclientelist.cpp:422
 msgid "Referencia de albaran"
 msgstr "Referència d'albarà"
 
@@ -495,8 +495,8 @@ msgstr ""
 msgid "Ticket ya existe"
 msgstr ""
 
-#: ticketclientelist.cpp:344 pluginbf_clienteticket.cpp:101
-#: pluginbf_clienteticket.cpp:102
+#: pluginbf_clienteticket.cpp:61 pluginbf_clienteticket.cpp:62
+#: ticketclientelist.cpp:347
 msgid "Ticketes a clientes"
 msgstr ""
 
@@ -504,11 +504,11 @@ msgstr ""
 msgid "Tickets a clientes"
 msgstr ""
 
-#: ticketclientelist.cpp:206
+#: ticketclientelist.cpp:209
 msgid "Tickets no procesados"
 msgstr ""
 
-#: ticketclientelist.cpp:205
+#: ticketclientelist.cpp:208
 msgid "Tickets procesados"
 msgstr ""
 
@@ -517,11 +517,11 @@ msgstr ""
 msgid "Tiene que seleccionar un cliente"
 msgstr "Ha de seleccionar un element"
 
-#: ticketclientelist.cpp:204
+#: ticketclientelist.cpp:207
 msgid "Todos los tickets"
 msgstr ""
 
-#: ticketclientelist.cpp:434
+#: ticketclientelist.cpp:437
 #, fuzzy
 msgid "Total"
 msgstr "Totals:"
@@ -551,6 +551,9 @@ msgstr "Treballador:"
 #~ msgid "&Albaranes a clientes"
 #~ msgstr "&Albarans a clients"
 
+#~ msgid "&Nuevo albaran a cliente"
+#~ msgstr "&Nou albarà a client"
+
 #~ msgid "Albaran"
 #~ msgstr "Albarà"
 
@@ -573,6 +576,10 @@ msgstr "Treballador:"
 #, fuzzy
 #~ msgid "No hay pedidos con la misma referencia."
 #~ msgstr "&No."
+
+#, fuzzy
+#~ msgid "Nuevo albaran a cliente"
+#~ msgstr "Nou assentament"
 
 #, fuzzy
 #~ msgid "Numero de albaran:"

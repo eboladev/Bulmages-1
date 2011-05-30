@@ -6,43 +6,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-14 14:33+0100\n"
+"POT-Creation-Date: 2011-05-30 17:48+0200\n"
 "PO-Revision-Date: 2011-02-24 16:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: listmodificadoresview.cpp:46 pluginbf_modificadores.cpp:83
-#: pluginbf_modificadores.cpp:84
-msgid "Modificadores"
-msgstr "Modificateurs"
+#: pluginbf_modificadores.cpp:74
+msgid "Alt. precio"
+msgstr ""
 
-#: listmodificadoresview.cpp:80 pluginbf_modificadores.cpp:142
-msgid "Nombre Modificador"
-msgstr "Nom du modificateur"
+#: pluginbf_modificadores.cpp:120
+msgid "Hubo un error al guardar los alias"
+msgstr ""
 
-#: listmodificadoresview.cpp:81 pluginbf_modificadores.cpp:143
-msgid "Alt. Precio"
-msgstr "Prix"
+#: pluginbf_modificadores.cpp:73
+msgid "Nombre modificador"
+msgstr ""
 
-#: pluginbf_modificadores.cpp:81
-msgid "&Modificadores"
-msgstr "&Modificateurs"
+#~ msgid "&Aceptar"
+#~ msgstr "&Accepter"
 
-#: ui_listmodificadoresbase.h:84
-msgid "Modificadores de Articulo"
-msgstr "Modificateurs de l'article"
+#~ msgid "&Cancelar"
+#~ msgstr "&Annuler"
 
-#: ui_listmodificadoresbase.h:85
-msgid "&Cancelar"
-msgstr "&Annuler"
+#~ msgid "&Modificadores"
+#~ msgstr "&Modificateurs"
 
-#: ui_listmodificadoresbase.h:86
-msgid "&Aceptar"
-msgstr "&Accepter"
+#~ msgid "Alt. Precio"
+#~ msgstr "Prix"
 
+#~ msgid "Modificadores"
+#~ msgstr "Modificateurs"
+
+#~ msgid "Modificadores de Articulo"
+#~ msgstr "Modificateurs de l'article"
+
+#~ msgid "Nombre Modificador"
+#~ msgstr "Nom du modificateur"

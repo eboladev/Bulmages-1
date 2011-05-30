@@ -1,75 +1,123 @@
-#: ui_z2zbase.h:397
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_z2zbase.h:384
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accept"
 
-#: ui_z2zbase.h:398
+#: ui_z2zbase.h:385
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancel"
 
-#: ui_z2zbase.h:404
+#: ui_z2zbase.h:391
+#, fuzzy
 msgid "&Detalle"
+msgstr "&Details"
+
+#: pluginbf_z2z.cpp:55
+msgid "&Herramientas"
+msgstr "&Tools"
+
+#: pluginbf_z2z.cpp:59
+msgid "&Traspaso de Z"
 msgstr ""
 
-#: ui_z2zbase.h:406
+#: ui_z2zbase.h:394
 msgid "1"
 msgstr ""
 
-#: ui_z2zbase.h:377 ui_z2zbase.h:382
+#: ui_z2zbase.h:371 ui_z2zbase.h:374
+#, fuzzy
 msgid "Borrar factura"
-msgstr ""
+msgstr "Erase quota"
 
-#: z2zview.cpp:56
+#: z2zview.cpp:59
+#, fuzzy
 msgid "Error al crear la factura"
+msgstr "Error when creating article"
+
+#: z2zview.cpp:272
+msgid "Error en el traspaso"
 msgstr ""
 
-#: ui_z2zbase.h:407
+#: ui_z2zbase.h:395
+#, fuzzy
 msgid "Excluir Articulo"
-msgstr ""
+msgstr "Publish article"
 
-#: ui_z2zbase.h:405
+#: ui_z2zbase.h:392
+#, fuzzy
 msgid "Excluir Familias"
-msgstr ""
+msgstr "Family"
 
-#: ui_z2zbase.h:366 ui_z2zbase.h:371
+#: ui_z2zbase.h:364 ui_z2zbase.h:367
+#, fuzzy
 msgid "Guardar factura"
-msgstr ""
+msgstr "Keep account"
 
-#: ui_z2zbase.h:388 ui_z2zbase.h:393
+#: ui_z2zbase.h:378 ui_z2zbase.h:381
+#, fuzzy
 msgid "Imprimir factura"
+msgstr "Print letters patent"
+
+#: z2zview.cpp:108
+msgid "Lista vacia"
 msgstr ""
 
-#: ui_z2zbase.h:409
+#: ui_z2zbase.h:397
+#, fuzzy
 msgid "No cambiar precios de articulos"
-msgstr ""
+msgstr "Article name"
 
-#: ui_z2zbase.h:408
+#: ui_z2zbase.h:396
 msgid "Num Minimo lineas ticket"
 msgstr ""
 
-#: ui_z2zbase.h:410
+#: ui_z2zbase.h:398
+#, fuzzy
 msgid "Opciones"
-msgstr ""
+msgstr "Observations"
 
-#: ui_z2zbase.h:399
+#: ui_z2zbase.h:386
+#, fuzzy
 msgid "Referencias"
-msgstr ""
+msgstr "Reference"
 
-#: ui_z2zbase.h:400
+#: ui_z2zbase.h:387
+#, fuzzy
 msgid "Total Tickets"
-msgstr ""
+msgstr "Desc Total."
 
-#: ui_z2zbase.h:401
+#: ui_z2zbase.h:388
+#, fuzzy
 msgid "Total Traspasable"
-msgstr ""
+msgstr "Total To have:"
 
-#: ui_z2zbase.h:402
+#: ui_z2zbase.h:389
 msgid "Total aprox a Traspasar"
 msgstr ""
 
-#: ui_z2zbase.h:403
+#: ui_z2zbase.h:390
+#, fuzzy
 msgid "Traspasar"
-msgstr ""
+msgstr "Worker"
 
-#: ui_z2zbase.h:363
+#: pluginbf_z2z.cpp:60 pluginbf_z2z.cpp:61 ui_z2zbase.h:362
+#, fuzzy
 msgid "Traspaso de Z"
-msgstr ""
+msgstr "Rates of IVA"

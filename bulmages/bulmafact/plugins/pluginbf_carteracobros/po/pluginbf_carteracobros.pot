@@ -8,54 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:245
-msgid "Id vencimiento"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:127
-msgid "Dias tras factura"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:128
-msgid "Porcentaje"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:129 pluginbf_carteracobros.cpp:248
-msgid "Forma de pago"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:130 pluginbf_carteracobros.cpp:252
-msgid "Id cliente"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:131 pluginbf_carteracobros.cpp:251
-msgid "Id forma de pago"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:246
-msgid "Fecha"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:247
-msgid "Cantidad"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:249
-msgid "Procesado"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:250
-msgid "Id factura"
-msgstr ""
 
 #: vencimientocview.cpp:61 carteracobroslist.cpp:64
 msgid "Cliente:"
@@ -95,4 +54,60 @@ msgstr ""
 
 #: vencimientocview.cpp:77
 msgid "idcliente de Vencimiento"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:54
+msgid "&Compras"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:56
+msgid "&Cartera de cobros"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:57 pluginbf_carteracobros.cpp:58
+msgid "Cartera de cobros"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:98 pluginbf_carteracobros.cpp:217
+msgid "Id vencimiento"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:99
+msgid "Dias tras factura"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:100
+msgid "Porcentaje"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:101 pluginbf_carteracobros.cpp:220
+msgid "Forma de pago"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:224
+msgid "Id cliente"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:103 pluginbf_carteracobros.cpp:223
+msgid "Id forma de pago"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:135
+msgid "El total de la factura es :"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:218
+msgid "Fecha"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:219
+msgid "Cantidad"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:221
+msgid "Procesado"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:222
+msgid "Id factura"
 msgstr ""

@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:54+0200\n"
 "PO-Revision-Date: 2011-02-23 12:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 
@@ -24,13 +24,9 @@ msgstr ""
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: pluginbc_cuentasanuales.cpp:103
+#: pluginbc_cuentasanuales.cpp:60 pluginbc_cuentasanuales.cpp:63
 msgid "&Cuentas Anuales"
 msgstr "&Comptes annuels"
-
-#: pluginbc_cuentasanuales.cpp:99
-msgid "&Listados"
-msgstr "&Listes"
 
 #: ui_bccuentasanualesimprimirbase.h:202
 msgid "Acep&tar"
@@ -48,7 +44,7 @@ msgstr "Balance"
 msgid "Cuentas Anuales"
 msgstr "Comptes annuels"
 
-#: pluginbc_cuentasanuales.cpp:104 pluginbc_cuentasanuales.cpp:105
+#: pluginbc_cuentasanuales.cpp:64 pluginbc_cuentasanuales.cpp:65
 msgid "Cuentas anuales"
 msgstr "Comptes annuels"
 
@@ -72,5 +68,5 @@ msgstr "Première Période"
 msgid "Segundo Periodo"
 msgstr "Deuxième Période"
 
-
-
+#~ msgid "&Listados"
+#~ msgstr "&Listes"

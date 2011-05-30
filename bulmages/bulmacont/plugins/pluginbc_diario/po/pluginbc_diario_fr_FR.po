@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:37+0200\n"
 "PO-Revision-Date: 2011-01-27 17:21+0100\n"
 "Last-Translator: Girard Henri <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
-"Language: frX-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: frX-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 "X-Language: fr_FR\n"
@@ -42,7 +42,7 @@ msgstr "&Inclure les écritures ouvertes"
 msgid "&Kugar"
 msgstr "&Kugar"
 
-#: pluginbc_diario.cpp:97
+#: pluginbc_diario.cpp:89
 msgid "&Libro Diario"
 msgstr "&Journal"
 
@@ -50,7 +50,7 @@ msgstr "&Journal"
 msgid "&Texto Plano"
 msgstr "&Texte plan"
 
-#: pluginbc_diario.cpp:93
+#: pluginbc_diario.cpp:87
 msgid "&Ver"
 msgstr "&Afficher"
 
@@ -202,11 +202,11 @@ msgstr "Afficher l'extrait (mois)"
 msgid "Mostrar/ocultar filtro"
 msgstr "Montrer/Occulter le filtre"
 
-#: pluginbc_diario.cpp:98
+#: pluginbc_diario.cpp:90
 msgid "Permite ver el diario"
 msgstr "Permettre de voir le journal"
 
-#: pluginbc_diario.cpp:99
+#: pluginbc_diario.cpp:91
 msgid "Podra disponer de la informacion del diario"
 msgstr "Disponibilité de l'information du journal"
 
@@ -265,5 +265,3 @@ msgstr "idtypetva"
 #: bcdiariosubform.cpp:48
 msgid "tipocuenta"
 msgstr "typecompte"
-
-

@@ -8,24 +8,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:52+0200\n"
 "PO-Revision-Date: 2011-02-24 16:55+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 
-#: pluginbf_carteracobros.cpp:247
+#: pluginbf_carteracobros.cpp:56
+msgid "&Cartera de cobros"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:54
+msgid "&Compras"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:219
 msgid "Cantidad"
 msgstr "Quantité"
 
 #: vencimientocview.cpp:76
 msgid "Cantidad de vencimiento"
 msgstr "Quantité d'échéance"
+
+#: pluginbf_carteracobros.cpp:57 pluginbf_carteracobros.cpp:58
+msgid "Cartera de cobros"
+msgstr ""
 
 #: vencimientocview.cpp:61 carteracobroslist.cpp:64
 msgid "Cliente:"
@@ -39,15 +51,19 @@ msgstr "Libellés"
 msgid "Descripcion"
 msgstr "Description"
 
-#: pluginbf_carteracobros.cpp:127
+#: pluginbf_carteracobros.cpp:99
 msgid "Dias tras factura"
 msgstr "Jours après facturation"
+
+#: pluginbf_carteracobros.cpp:135
+msgid "El total de la factura es :"
+msgstr ""
 
 #: vencimientocview.cpp:75
 msgid "Estado de vencimiento"
 msgstr "Etat d'écheance"
 
-#: pluginbf_carteracobros.cpp:246
+#: pluginbf_carteracobros.cpp:218
 msgid "Fecha"
 msgstr "Date"
 
@@ -59,11 +75,11 @@ msgstr "Date d'échéance"
 msgid "Fecha efectiva"
 msgstr "Date effective"
 
-#: pluginbf_carteracobros.cpp:129 pluginbf_carteracobros.cpp:248
+#: pluginbf_carteracobros.cpp:101 pluginbf_carteracobros.cpp:220
 msgid "Forma de pago"
 msgstr "Forme de paiement"
 
-#: pluginbf_carteracobros.cpp:130 pluginbf_carteracobros.cpp:252
+#: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:224
 msgid "Id cliente"
 msgstr "Id Client "
 
@@ -71,23 +87,23 @@ msgstr "Id Client "
 msgid "Id cobro"
 msgstr "Id Encaissement"
 
-#: pluginbf_carteracobros.cpp:250
+#: pluginbf_carteracobros.cpp:222
 msgid "Id factura"
 msgstr "Id facture"
 
-#: pluginbf_carteracobros.cpp:131 pluginbf_carteracobros.cpp:251
+#: pluginbf_carteracobros.cpp:103 pluginbf_carteracobros.cpp:223
 msgid "Id forma de pago"
 msgstr "Id Forme de paiement"
 
-#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:245
+#: pluginbf_carteracobros.cpp:98 pluginbf_carteracobros.cpp:217
 msgid "Id vencimiento"
 msgstr "Id d'échéance"
 
-#: pluginbf_carteracobros.cpp:128
+#: pluginbf_carteracobros.cpp:100
 msgid "Porcentaje"
 msgstr "Pourcentage"
 
-#: pluginbf_carteracobros.cpp:249
+#: pluginbf_carteracobros.cpp:221
 msgid "Procesado"
 msgstr "Accusé"
 
@@ -98,5 +114,3 @@ msgstr "Référence d'échéance"
 #: vencimientocview.cpp:77
 msgid "idcliente de Vencimiento"
 msgstr "Id client d'échéance"
-
-

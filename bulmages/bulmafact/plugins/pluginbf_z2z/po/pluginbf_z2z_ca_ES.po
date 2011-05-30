@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -59,6 +59,14 @@ msgstr ""
 #, fuzzy
 msgid "&Detalle"
 msgstr "&Detalls"
+
+#: pluginbf_z2z.cpp:55
+msgid "&Herramientas"
+msgstr "&Eines"
+
+#: pluginbf_z2z.cpp:59
+msgid "&Traspaso de Z"
+msgstr ""
 
 #: ui_z2zbase.h:394
 #, fuzzy
@@ -137,6 +145,6 @@ msgstr "Total aprox a traspassar"
 msgid "Traspasar"
 msgstr ""
 
-#: ui_z2zbase.h:362
+#: pluginbf_z2z.cpp:60 pluginbf_z2z.cpp:61 ui_z2zbase.h:362
 msgid "Traspaso de Z"
 msgstr ""

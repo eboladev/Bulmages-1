@@ -8,28 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
-#: ui_listtipoivabase.h:118 ui_listtasaivabase.h:119
+#: ui_listtasaivabase.h:119 ui_listtipoivabase.h:118
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_listtipoivabase.h:119 ui_listtasaivabase.h:120
+#: ui_listtasaivabase.h:120 ui_listtipoivabase.h:119
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginbf_iva.cpp:116
+#: pluginbf_iva.cpp:67
 msgid "&Tasas de IVA"
 msgstr "&Tasas de IVA"
 
-#: pluginbf_iva.cpp:104
+#: pluginbf_iva.cpp:57
 msgid "&Tipos de IVA"
 msgstr "&Tipos de IVA"
 
@@ -65,7 +65,7 @@ msgstr "Porcentaje Recargo Equivalencia"
 msgid "Tasa IVA"
 msgstr "Tasa IVA"
 
-#: pluginbf_iva.cpp:118 pluginbf_iva.cpp:119 ui_listtasaivabase.h:118
+#: pluginbf_iva.cpp:69 pluginbf_iva.cpp:70 ui_listtasaivabase.h:118
 msgid "Tasas de IVA"
 msgstr "Tasas de IVA"
 
@@ -73,6 +73,6 @@ msgstr "Tasas de IVA"
 msgid "Tipo IVA"
 msgstr "Tipo IVA"
 
-#: pluginbf_iva.cpp:106 pluginbf_iva.cpp:107 ui_listtipoivabase.h:117
+#: pluginbf_iva.cpp:59 pluginbf_iva.cpp:60 ui_listtipoivabase.h:117
 msgid "Tipos de IVA"
 msgstr "Tipos de IVA"

@@ -3,15 +3,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbf_trazabilidad.cpp:55
+msgid "&Movimientos"
+msgstr ""
 
 #: ui_movimientosbase.h:293 ui_movimientosbase.h:296
 msgid "Actualizar listado"
@@ -104,6 +108,8 @@ msgstr "Id article"
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
+#: pluginbf_trazabilidad.cpp:91 pluginbf_trazabilidad.cpp:104
+#: pluginbf_trazabilidad.cpp:118 pluginbf_trazabilidad.cpp:132
 #: movimientosview.cpp:182
 msgid "Lote"
 msgstr "Lot"
@@ -112,7 +118,7 @@ msgstr "Lot"
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
-#: ui_movimientosbase.h:266
+#: pluginbf_trazabilidad.cpp:57 ui_movimientosbase.h:266
 #, fuzzy
 msgid "Movimientos"
 msgstr "Assentaments"
@@ -128,6 +134,10 @@ msgstr "Nom article"
 #: movimientosview.cpp:89
 msgid "Todas las facturas"
 msgstr "Totes les factures"
+
+#: pluginbf_trazabilidad.cpp:56
+msgid "Ventana de Movimientos"
+msgstr ""
 
 #: movimientosview.cpp:176
 msgid "idarticulo"

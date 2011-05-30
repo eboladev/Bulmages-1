@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:54+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9,10 +9,30 @@ msgstr ""
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
 
-#: pluginbf_abrecodigobarras.cpp:73
+#: pluginbf_abrecodigobarras.cpp:62
+msgid "&Apertura Rapida"
+msgstr ""
+
+#: pluginbf_abrecodigobarras.cpp:60
+msgid "&Herramientas"
+msgstr "&Outils"
+
+#: pluginbf_abrecodigobarras.cpp:63 pluginbf_abrecodigobarras.cpp:64
+msgid "Abre documentos a partir del codigo de barras"
+msgstr ""
+
+#: pluginbf_abrecodigobarras.cpp:77
 msgid "Introduzca codigo"
 msgstr "Introduction du code"
 
-#: pluginbf_abrecodigobarras.cpp:72
+#: pluginbf_abrecodigobarras.cpp:84 pluginbf_abrecodigobarras.cpp:127
+msgid "No se pudo crear instancia de factura"
+msgstr ""
+
+#: pluginbf_abrecodigobarras.cpp:98 pluginbf_abrecodigobarras.cpp:112
+msgid "No se pudo crear instancia de pedido cliente"
+msgstr ""
+
+#: pluginbf_abrecodigobarras.cpp:76
 msgid "QInputDialog::getText()"
 msgstr "QInputDialog::getText()"

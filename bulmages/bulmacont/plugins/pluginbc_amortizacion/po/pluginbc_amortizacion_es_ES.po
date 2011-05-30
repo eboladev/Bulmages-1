@@ -8,21 +8,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:44+0200\n"
 "PO-Revision-Date: 2009-12-30 00:06+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_bcamortizacionbase.h:675
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: pluginbc_amortizacion.cpp:101
+#: pluginbc_amortizacion.cpp:57
 msgid "&Amortizaciones"
 msgstr "&Amortizaciones"
 
@@ -42,7 +42,7 @@ msgstr "&Decremental"
 msgid "&Incremental"
 msgstr "&Incremental"
 
-#: pluginbc_amortizacion.cpp:97
+#: pluginbc_amortizacion.cpp:55
 msgid "&Ver"
 msgstr "&Ver"
 
@@ -195,8 +195,8 @@ msgstr "Generar asiento"
 msgid "Guardar amortizacion"
 msgstr "Guardar amortización"
 
-#: bcamortizacionview.cpp:87 bcamortizacionview.cpp:99
-#: bcamortizacionlistview.cpp:47
+#: bcamortizacionlistview.cpp:47 bcamortizacionview.cpp:87
+#: bcamortizacionview.cpp:99
 msgid "Id amortizacion"
 msgstr "ID amortización"
 
@@ -286,11 +286,11 @@ msgstr "Periodicidad"
 msgid "Periodicidad:"
 msgstr "Periodicidad:"
 
-#: pluginbc_amortizacion.cpp:102
+#: pluginbc_amortizacion.cpp:58
 msgid "Permite ver las amortizaciones"
 msgstr ""
 
-#: pluginbc_amortizacion.cpp:103
+#: pluginbc_amortizacion.cpp:59
 msgid "Podra disponer de la informacion de las amortizaciones"
 msgstr ""
 
@@ -325,4 +325,3 @@ msgstr "Valor de la compra"
 #: bcamortizacionview.cpp:402 bcamortizacionview.cpp:446
 msgid "Ver asiento"
 msgstr "Ver asiento"
-

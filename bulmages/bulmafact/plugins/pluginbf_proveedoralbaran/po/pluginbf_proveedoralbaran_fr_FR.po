@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: 2011-02-24 21:08+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
 
 #: listdescalbaranprovview.cpp:42
 msgid "% Descuento"
@@ -24,7 +24,7 @@ msgstr "% Remise"
 msgid "&Aceptar"
 msgstr "&Accepter"
 
-#: pluginbf_proveedoralbaran.cpp:97
+#: pluginbf_proveedoralbaran.cpp:55
 msgid "&Albaranes de proveedores"
 msgstr "&Bulletin de fournisseurs"
 
@@ -36,6 +36,10 @@ msgstr "&Annuler"
 msgid "&Comentarios"
 msgstr "&Libellés "
 
+#: pluginbf_proveedoralbaran.cpp:52
+msgid "&Compras"
+msgstr ""
+
 #: ui_albaranproveedorbase.h:626
 msgid "&Detalle"
 msgstr "&Détail"
@@ -44,7 +48,7 @@ msgstr "&Détail"
 msgid "&No"
 msgstr "&Non"
 
-#: pluginbf_proveedoralbaran.cpp:105
+#: pluginbf_proveedoralbaran.cpp:63
 msgid "&Nuevo albaran de proveedor"
 msgstr "&Nouveau bulletin fournisseur"
 
@@ -74,7 +78,7 @@ msgstr "Bulletin fournisseur existant"
 msgid "Albaranes de proveedor"
 msgstr "Bulletin fournisseur"
 
-#: pluginbf_proveedoralbaran.cpp:99 pluginbf_proveedoralbaran.cpp:100
+#: pluginbf_proveedoralbaran.cpp:57 pluginbf_proveedoralbaran.cpp:58
 msgid "Albaranes de proveedores"
 msgstr "Bulletin de fournisseurs"
 
@@ -323,7 +327,7 @@ msgstr "Nom du fournisseur"
 msgid "Nuevo albaran"
 msgstr "Nouveau bulletin"
 
-#: pluginbf_proveedoralbaran.cpp:107 pluginbf_proveedoralbaran.cpp:108
+#: pluginbf_proveedoralbaran.cpp:65 pluginbf_proveedoralbaran.cpp:66
 #: ui_albaranproveedorbase.h:587
 msgid "Nuevo albaran de proveedor"
 msgstr "Nouveau bulletin fournisseur"
@@ -388,4 +392,3 @@ msgstr "Total : "
 #: ui_albaranproveedorbase.h:614 ui_albaranproveedorbase.h:617
 msgid "Ver pedidos a proveedor"
 msgstr "Afficher les commandes du fournisseur"
-

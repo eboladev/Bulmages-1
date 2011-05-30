@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:47+0200\n"
 "PO-Revision-Date: 2011-02-19 16:09+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
-"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: Catalan\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_fpagobase.h:354
@@ -26,7 +26,7 @@ msgstr "&Accepta"
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: pluginbf_formasdepago.cpp:81
+#: pluginbf_formasdepago.cpp:52
 msgid "&Formas de pago"
 msgstr "&Formes de pagament"
 
@@ -42,11 +42,11 @@ msgstr "Esborra forma de pagament"
 msgid "Descuento:"
 msgstr "Descompte"
 
-#: fpagoview.cpp:198
+#: fpagoview.cpp:206
 msgid "Desea guardar los cambios."
 msgstr "Desitgeu desar els canvis."
 
-#: fpagoview.cpp:255
+#: fpagoview.cpp:263
 #, fuzzy
 msgid "Error al intentar borrar la forma de pago"
 msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
@@ -59,12 +59,12 @@ msgstr "Forma de pagament"
 msgid "Forma de pago:"
 msgstr "Forma de pagament"
 
-#: pluginbf_formasdepago.cpp:83 pluginbf_formasdepago.cpp:84
+#: pluginbf_formasdepago.cpp:54 pluginbf_formasdepago.cpp:55
 #: ui_fpagobase.h:321
 msgid "Formas de pago"
 msgstr "Formes de pagament"
 
-#: fpagoview.cpp:197 ui_fpagobase.h:348 ui_fpagobase.h:351
+#: fpagoview.cpp:205 ui_fpagobase.h:348 ui_fpagobase.h:351
 msgid "Guardar forma de pago"
 msgstr "Desa forma de pagament"
 

@@ -5,13 +5,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:00+0200\n"
 "PO-Revision-Date: 2011-02-14 09:10+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -29,6 +29,10 @@ msgstr "Quantité"
 msgid "Cliente"
 msgstr "Client"
 
+#: plufinbf_resumenarticulo.cpp:58
+msgid "Compras"
+msgstr "Achats"
+
 #: listlresarticulo.cpp:40 listlresarticulo.cpp:83 listlresarticulo.cpp:126
 #: listlresarticulo.cpp:170
 msgid "Descripcion"
@@ -38,6 +42,10 @@ msgstr "Description "
 #: listlresarticulo.cpp:174
 msgid "Descuento"
 msgstr "Remise"
+
+#: plufinbf_resumenarticulo.cpp:70
+msgid "Entregas"
+msgstr ""
 
 #: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
 #: listlresarticulo.cpp:169
@@ -73,6 +81,14 @@ msgstr "Prix de ventes /TVA"
 msgid "Proveedor"
 msgstr "Fournisseur"
 
+#: plufinbf_resumenarticulo.cpp:76
+msgid "Recogidas"
+msgstr ""
+
 #: listlresarticulo.cpp:37
 msgid "Serie Factura"
 msgstr "Série de facture"
+
+#: plufinbf_resumenarticulo.cpp:64
+msgid "Ventas"
+msgstr "Ventes"

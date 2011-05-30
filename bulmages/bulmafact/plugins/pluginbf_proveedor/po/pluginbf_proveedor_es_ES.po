@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -135,6 +135,10 @@ msgstr "&Codigo:"
 msgid "&Comentarios:"
 msgstr "&Comentarios:"
 
+#: pluginbf_proveedor.cpp:53
+msgid "&Compras"
+msgstr ""
+
 #: ui_proveditbase.h:894
 msgid "&Contratos"
 msgstr "&Contratos"
@@ -151,11 +155,11 @@ msgstr "&IRPF que aplica:"
 msgid "&Nombre empresa:"
 msgstr "&Nombre empresa:"
 
-#: pluginbf_proveedor.cpp:104
+#: pluginbf_proveedor.cpp:65
 msgid "&Nuevo proveedor"
 msgstr "&Nuevo proveedor"
 
-#: pluginbf_proveedor.cpp:96
+#: pluginbf_proveedor.cpp:57
 msgid "&Proveedores"
 msgstr "&Proveedores"
 
@@ -187,7 +191,7 @@ msgstr "Buscar:"
 msgid "C.I.&F. / N.I.F."
 msgstr "C.I.&F. / N.I.F."
 
-#: providerslist.cpp:336
+#: providerslist.cpp:340
 msgid "C.I.F."
 msgstr "C.I.F."
 
@@ -195,11 +199,11 @@ msgstr "C.I.F."
 msgid "C.I.F. del proveedor"
 msgstr "C.I.F. del proveedor"
 
-#: providerslist.cpp:349
+#: providerslist.cpp:353
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clave de acceso a la web del proveedor"
 
-#: providerslist.cpp:335 providerslist.cpp:339 provedit.cpp:61
+#: provedit.cpp:61 providerslist.cpp:339 providerslist.cpp:343
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -211,11 +215,11 @@ msgstr "Codigo &postal:"
 msgid "Codigo cliente"
 msgstr "Codigo cliente"
 
-#: providerslist.cpp:344 provedit.cpp:54
+#: provedit.cpp:54 providerslist.cpp:348
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
-#: providerslist.cpp:341 provedit.cpp:59
+#: provedit.cpp:59 providerslist.cpp:345
 msgid "Comentarios"
 msgstr "Comentarios"
 
@@ -251,15 +255,15 @@ msgstr "Di&visiones"
 msgid "Direccio&n:"
 msgstr "Direccio&n:"
 
-#: providerslist.cpp:342 provedit.cpp:51
+#: provedit.cpp:51 providerslist.cpp:346
 msgid "Direccion"
 msgstr "Direccion"
 
-#: providerslist.cpp:348
+#: providerslist.cpp:352
 msgid "Direccion de URL"
 msgstr "Direccion de URL"
 
-#: providerslist.cpp:347
+#: providerslist.cpp:351
 msgid "Direccion de correo electronico"
 msgstr "Direccion de correo electronico"
 
@@ -279,11 +283,11 @@ msgstr "Editar"
 msgid "El CIF del proveedor no parece ser valido. Digito:"
 msgstr ""
 
-#: providerslist.cpp:284
+#: providerslist.cpp:288
 msgid "Elija el archivo"
 msgstr "Elija el archivo"
 
-#: providerslist.cpp:243
+#: providerslist.cpp:247
 msgid "Error al borrar el proveedor"
 msgstr "Error al borrar el proveedor"
 
@@ -312,7 +316,7 @@ msgstr "Forma_Pago"
 msgid "Guardar proveedor"
 msgstr "Guardar proveedor"
 
-#: providerslist.cpp:334 provedit.cpp:45
+#: provedit.cpp:45 providerslist.cpp:338
 msgid "ID proveedor"
 msgstr "ID proveedor"
 
@@ -328,15 +332,15 @@ msgstr "Importar"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: providerslist.cpp:255
+#: providerslist.cpp:259
 msgid "Listado de Proveedores"
 msgstr "Listado de Proveedores"
 
-#: providerslist.cpp:337
+#: providerslist.cpp:341
 msgid "Nombre"
 msgstr "Nombre"
 
-#: providerslist.cpp:338
+#: providerslist.cpp:342
 msgid "Nombre alternativo"
 msgstr "Nombre alternativo"
 
@@ -360,7 +364,7 @@ msgstr "Nuestro codigo de c&liente:"
 msgid "Nuevo"
 msgstr "Nuevo"
 
-#: providerslist.cpp:190 pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
+#: pluginbf_proveedor.cpp:67 pluginbf_proveedor.cpp:68 providerslist.cpp:194
 msgid "Nuevo proveedor"
 msgstr "Nuevo proveedor"
 
@@ -368,15 +372,15 @@ msgstr "Nuevo proveedor"
 msgid "Numero de &fax:"
 msgstr "Numero de &fax:"
 
-#: providerslist.cpp:340
+#: providerslist.cpp:344
 msgid "Numero de cuenta corriente"
 msgstr "Numero de cuenta corriente"
 
-#: providerslist.cpp:346 provedit.cpp:56
+#: provedit.cpp:56 providerslist.cpp:350
 msgid "Numero de fax"
 msgstr "Numero de fax"
 
-#: providerslist.cpp:345 provedit.cpp:55
+#: provedit.cpp:55 providerslist.cpp:349
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
@@ -388,7 +392,7 @@ msgstr "Pagina &web:"
 msgid "Poblacio&n:"
 msgstr "Poblacio&n:"
 
-#: providerslist.cpp:343 provedit.cpp:52
+#: provedit.cpp:52 providerslist.cpp:347
 msgid "Poblacion"
 msgstr "Poblacion"
 
@@ -404,12 +408,12 @@ msgstr "Productos &suministrados"
 msgid "Proveedor"
 msgstr "Proveedor"
 
-#: pluginbf_proveedor.cpp:98 pluginbf_proveedor.cpp:99
+#: pluginbf_proveedor.cpp:59 pluginbf_proveedor.cpp:60
 #: ui_providerslistbase.h:267
 msgid "Proveedores"
 msgstr "Proveedores"
 
-#: providerslist.cpp:268 providerslist.cpp:286
+#: providerslist.cpp:272 providerslist.cpp:290
 msgid "Proveedores (*.xml)"
 msgstr "Proveedores (*.xml)"
 
@@ -437,7 +441,7 @@ msgstr "Regimen Fiscal"
 msgid "Resumen por articulos"
 msgstr "Resumen por articulos"
 
-#: providerslist.cpp:266
+#: providerslist.cpp:270
 msgid "Seleccione el archivo"
 msgstr "Seleccione el archivo"
 

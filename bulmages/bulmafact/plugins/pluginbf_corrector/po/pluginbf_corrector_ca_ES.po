@@ -4,20 +4,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbf_corrector.cpp:72
+msgid "&Corrector"
+msgstr "&Corrector"
 
 #: ui_confreglasbase.h:284
 #, fuzzy
@@ -68,6 +72,16 @@ msgstr "Arranjament"
 msgid "Corrector"
 msgstr "Corrector"
 
+#: pluginbf_corrector.cpp:75
+msgid ""
+"Corrector.\n"
+"\n"
+"Muestra/oculta el corrector"
+msgstr ""
+"Corrector.\n"
+"\n"
+"Mostra/amaga el corrector"
+
 #: ui_correctorbase.h:95 ui_correctorbase.h:98
 #, fuzzy
 msgid "Corregir"
@@ -81,6 +95,10 @@ msgstr ""
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
 "Cal que existeixin registres que compleixin aquesta condició en el període"
+
+#: pluginbf_corrector.cpp:74
+msgid "Muestra/oculta el corrector"
+msgstr ""
 
 #: ui_confreglasbase.h:294
 msgid "Periodicidad"

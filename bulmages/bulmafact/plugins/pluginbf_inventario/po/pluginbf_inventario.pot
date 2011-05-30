@@ -8,11 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,43 +34,6 @@ msgstr ""
 
 #: inventariosview.cpp:285
 msgid "Fecha del inventario"
-msgstr ""
-
-#: inventario.cpp:39 ui_inventariobase.h:293
-msgid "Inventario"
-msgstr ""
-
-#: inventario.cpp:42
-msgid "Identificador inventario"
-msgstr ""
-
-#: inventario.cpp:43
-msgid "Fecha inventario"
-msgstr ""
-
-#: inventario.cpp:44
-msgid "Nombre inventario"
-msgstr ""
-
-#: inventarioview.cpp:74
-msgid "Tiene que escribir una descripcion de inventario antes de guardar"
-msgstr ""
-
-#: inventarioview.cpp:105 ui_inventariobase.h:302 ui_inventariobase.h:305
-#: ui_inventariosbase.h:180 ui_inventariosbase.h:183
-msgid "Borrar inventario"
-msgstr ""
-
-#: inventarioview.cpp:106
-msgid "Esta a punto de borrar un inventario. Desea continuar?"
-msgstr ""
-
-#: inventarioview.cpp:107
-msgid "Si"
-msgstr ""
-
-#: inventarioview.cpp:107
-msgid "No"
 msgstr ""
 
 #: listcontrolstockview.cpp:34
@@ -106,40 +68,81 @@ msgstr ""
 msgid "Id articulo"
 msgstr ""
 
-#: pluginbf_inventario.cpp:78
+#: pluginbf_inventario.cpp:51
+msgid "&Articulos"
+msgstr ""
+
+#: pluginbf_inventario.cpp:55
 msgid "&Inventarios"
 msgstr ""
 
-#: pluginbf_inventario.cpp:79 pluginbf_inventario.cpp:80
+#: pluginbf_inventario.cpp:56 pluginbf_inventario.cpp:57
 msgid "Inventarios"
 msgstr ""
 
-#: pluginbf_inventario.cpp:121
+#: pluginbf_inventario.cpp:89
 msgid "Minimos almacen"
 msgstr ""
 
-#: pluginbf_inventario.cpp:125
+#: pluginbf_inventario.cpp:93
 msgid "Almacen"
 msgstr ""
 
-#: pluginbf_inventario.cpp:126
+#: pluginbf_inventario.cpp:94
 msgid "Id Almacen"
 msgstr ""
 
-#: pluginbf_inventario.cpp:127
+#: pluginbf_inventario.cpp:95
 msgid "Minimo"
 msgstr ""
 
-#: pluginbf_inventario.cpp:128
-msgid "ID Validacion"
+#: pluginbf_inventario.cpp:96
+msgid "ID validacion"
 msgstr ""
 
-#: pluginbf_inventario.cpp:129
-msgid "ID Trabajador"
+#: pluginbf_inventario.cpp:97
+msgid "Id trabajador"
 msgstr ""
 
-#: pluginbf_inventario.cpp:214
+#: pluginbf_inventario.cpp:182
 msgid "Stock minimo superado"
+msgstr ""
+
+#: inventarioview.cpp:74
+msgid "Tiene que escribir una descripcion de inventario antes de guardar"
+msgstr ""
+
+#: inventarioview.cpp:105 ui_inventariobase.h:302 ui_inventariobase.h:305
+#: ui_inventariosbase.h:180 ui_inventariosbase.h:183
+msgid "Borrar inventario"
+msgstr ""
+
+#: inventarioview.cpp:106
+msgid "Esta a punto de borrar un inventario. Desea continuar?"
+msgstr ""
+
+#: inventarioview.cpp:107
+msgid "Si"
+msgstr ""
+
+#: inventarioview.cpp:107
+msgid "No"
+msgstr ""
+
+#: inventario.cpp:39 ui_inventariobase.h:293
+msgid "Inventario"
+msgstr ""
+
+#: inventario.cpp:42
+msgid "Identificador inventario"
+msgstr ""
+
+#: inventario.cpp:43
+msgid "Fecha inventario"
+msgstr ""
+
+#: inventario.cpp:44
+msgid "Nombre inventario"
 msgstr ""
 
 #: ui_inventariobase.h:295 ui_inventariobase.h:298

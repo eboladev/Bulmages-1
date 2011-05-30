@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: 2011-02-24 21:11+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
 
 #: ui_pagobase.h:332
 msgid "&Aceptar"
@@ -24,11 +24,15 @@ msgstr "&Accepter"
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: pluginbf_proveedorpago.cpp:104
+#: pluginbf_proveedorpago.cpp:52
+msgid "&Compras"
+msgstr ""
+
+#: pluginbf_proveedorpago.cpp:64
 msgid "&Nuevo pago a proveedor"
 msgstr "&Nouveau paiement Fournisseur"
 
-#: pluginbf_proveedorpago.cpp:96
+#: pluginbf_proveedorpago.cpp:56
 msgid "&Pagos a proveedores"
 msgstr "&Paiement Fournisseurs"
 
@@ -36,20 +40,20 @@ msgstr "&Paiement Fournisseurs"
 msgid "Actualizar listado"
 msgstr "Actualiser la liste"
 
-#: pagoslist.cpp:270
+#: pagoslist.cpp:273
 msgid "Apellidos trabajador"
 msgstr "Nom du Salarié"
 
-#: pagoview.cpp:68 pagoslist.cpp:264
+#: pagoslist.cpp:267 pagoview.cpp:68
 msgid "Banco"
 msgstr "Banque"
 
-#: ui_pagobase.h:331 ui_pagoslistbase.h:371
+#: ui_pagoslistbase.h:371 ui_pagobase.h:331
 msgid "Banco:"
 msgstr "Banque :"
 
-#: ui_pagobase.h:319 ui_pagobase.h:322 ui_pagoslistbase.h:392
-#: ui_pagoslistbase.h:395
+#: ui_pagoslistbase.h:392 ui_pagoslistbase.h:395 ui_pagobase.h:319
+#: ui_pagobase.h:322
 msgid "Borrar pago"
 msgstr "Effacer le paiement"
 
@@ -57,11 +61,11 @@ msgstr "Effacer le paiement"
 msgid "Buscar:"
 msgstr "Chercher :"
 
-#: pagoslist.cpp:259
+#: pagoslist.cpp:262
 msgid "C.I.F. proveedor"
 msgstr "C.I.F. du fournisseur"
 
-#: pagoview.cpp:66 pagoslist.cpp:263
+#: pagoslist.cpp:266 pagoview.cpp:66
 msgid "Cantidad"
 msgstr "Quantité"
 
@@ -69,7 +73,7 @@ msgstr "Quantité"
 msgid "Comentario del pago"
 msgstr "Libellé"
 
-#: pagoslist.cpp:267
+#: pagoslist.cpp:270
 msgid "Comentario pago"
 msgstr "Libellé"
 
@@ -77,7 +81,11 @@ msgstr "Libellé"
 msgid "Configurar listado"
 msgstr "Configurer la liste"
 
-#: pagoslist.cpp:207
+#: impqtoolbutton.cpp:106 impqtoolbutton.cpp:157 impqtoolbutton.cpp:206
+msgid "Crear"
+msgstr ""
+
+#: pagoslist.cpp:210
 msgid "Debe seleccionar una linea"
 msgstr "Vous devez sélectionner une ligne"
 
@@ -85,15 +93,19 @@ msgstr "Vous devez sélectionner une ligne"
 msgid "Descripcion del pago:"
 msgstr "Description de l'encaissement :"
 
+#: impqtoolbutton.cpp:105 impqtoolbutton.cpp:156 impqtoolbutton.cpp:205
+msgid "Desea abrir el pago existente, registrar un nuevo pago o salir?"
+msgstr ""
+
 #: ui_pagoslistbase.h:385 ui_pagoslistbase.h:388
 msgid "Editar pago"
 msgstr "Editer"
 
-#: pagoslist.cpp:261
+#: pagoslist.cpp:264
 msgid "Email proveedor"
 msgstr "Courriel Fournisseur "
 
-#: pagoslist.cpp:219
+#: pagoslist.cpp:222
 msgid "Error al borrar el pago"
 msgstr "Erreur d'effacement du paiement"
 
@@ -101,7 +113,7 @@ msgstr "Erreur d'effacement du paiement"
 msgid "Error al crear el pago"
 msgstr "Erreur en création de paiement"
 
-#: pagoview.cpp:64 pagoslist.cpp:262
+#: pagoslist.cpp:265 pagoview.cpp:64
 msgid "Fecha de pago"
 msgstr "Date de paiement"
 
@@ -121,19 +133,23 @@ msgstr "Date initiale :"
 msgid "Filtrar pagos"
 msgstr "Filtrer les paiements"
 
+#: impqtoolbutton.cpp:77 impqtoolbutton.cpp:78
+msgid "Generar pago"
+msgstr ""
+
 #: ui_pagobase.h:312 ui_pagobase.h:315
 msgid "Guardar pago"
 msgstr "Garder le paiement"
 
-#: pagoview.cpp:61 pagoslist.cpp:256
+#: pagoslist.cpp:259 pagoview.cpp:61
 msgid "Id pago"
 msgstr "Id paiement"
 
-#: pagoview.cpp:62 pagoslist.cpp:257
+#: pagoslist.cpp:260 pagoview.cpp:62
 msgid "Id proveedor"
 msgstr "Id fournisseur"
 
-#: pagoslist.cpp:268
+#: pagoslist.cpp:271
 msgid "Id trabajador"
 msgstr "Id Salarié"
 
@@ -141,11 +157,11 @@ msgstr "Id Salarié"
 msgid "Imprimir listado"
 msgstr "Imprimer la liste"
 
-#: pagoslist.cpp:269
+#: pagoslist.cpp:272
 msgid "Nombre de trabajador"
 msgstr "Nom du Salarié"
 
-#: pagoslist.cpp:258
+#: pagoslist.cpp:261
 msgid "Nombre proveedor"
 msgstr "Nom du fournisseur"
 
@@ -153,7 +169,7 @@ msgstr "Nom du fournisseur"
 msgid "Nuevo pago"
 msgstr "Nouveau paiement "
 
-#: pluginbf_proveedorpago.cpp:106 pluginbf_proveedorpago.cpp:107
+#: pluginbf_proveedorpago.cpp:66 pluginbf_proveedorpago.cpp:67
 #: ui_pagobase.h:309
 msgid "Nuevo pago a proveedor"
 msgstr "Nouveau paiement Fournisseur"
@@ -162,8 +178,8 @@ msgstr "Nouveau paiement Fournisseur"
 msgid "Pago"
 msgstr "Paiement"
 
-#: pluginbf_proveedorpago.cpp:98 pluginbf_proveedorpago.cpp:99
-#: pagoslist.cpp:197 ui_pagoslistbase.h:370
+#: pagoslist.cpp:200 pluginbf_proveedorpago.cpp:58
+#: pluginbf_proveedorpago.cpp:59 ui_pagoslistbase.h:370
 msgid "Pagos a proveedores"
 msgstr "Paiement Fournisseurs"
 
@@ -175,7 +191,7 @@ msgstr "Paiements effectifs"
 msgid "Previcion de pago"
 msgstr "Prévision de paiement "
 
-#: pagoslist.cpp:266
+#: pagoslist.cpp:269
 msgid "Prevision pago"
 msgstr "Prévision de paiement"
 
@@ -183,7 +199,7 @@ msgstr "Prévision de paiement"
 msgid "Previsiones de Pago"
 msgstr "Prévision de paiement"
 
-#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:76
+#: pagoslist.cpp:49 pagoslist.cpp:76 pagoview.cpp:71
 msgid "Proveedor:"
 msgstr "Fournisseur :"
 
@@ -191,7 +207,7 @@ msgstr "Fournisseur :"
 msgid "Provision de fondos"
 msgstr "Provision de fonds"
 
-#: pagoview.cpp:65 pagoslist.cpp:265
+#: pagoslist.cpp:268 pagoview.cpp:65
 msgid "Referencia de pago"
 msgstr "Référence de paiement"
 
@@ -199,7 +215,7 @@ msgstr "Référence de paiement"
 msgid "Referencia:"
 msgstr "Référence :"
 
-#: pagoslist.cpp:260
+#: pagoslist.cpp:263
 msgid "Telefono proveedor"
 msgstr "Téléphone du fournisseur"
 
@@ -211,3 +227,6 @@ msgstr "Total paiement :"
 msgid "Total:"
 msgstr "Total :"
 
+#: impqtoolbutton.cpp:104 impqtoolbutton.cpp:155 impqtoolbutton.cpp:204
+msgid "Ya existe un pago con esta referencia\n"
+msgstr ""

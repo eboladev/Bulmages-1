@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:54+0200\n"
 "PO-Revision-Date: 2009-12-30 14:15+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_bccuentabase.h:851
@@ -30,7 +30,7 @@ msgstr ""
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: pluginbc_cuenta.cpp:96
+#: pluginbc_cuenta.cpp:61
 msgid "&Cuentas Contables"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr "&Altres dades"
 msgid "&Pasivo"
 msgstr "&Pasiu"
 
-#: pluginbc_cuenta.cpp:100
+#: pluginbc_cuenta.cpp:65
 msgid "&Plan Contable"
 msgstr "&Pla comptable"
 
@@ -258,7 +258,7 @@ msgstr "Ctrl+S"
 msgid "Cuenta"
 msgstr "Compte"
 
-#: bccuentaview.cpp:86
+#: bccuentaview.cpp:90
 msgid "Cuenta Padre:"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr "Correu electrònic del compte"
 msgid "Editar articulo"
 msgstr "Edita Article"
 
-#: pluginbc_cuenta.cpp:175 pluginbc_cuenta.cpp:192
+#: pluginbc_cuenta.cpp:132 pluginbc_cuenta.cpp:149
 #: ui_bcplancontablelistbase.h:298 ui_bcplancontablelistbase.h:301
 #, fuzzy
 msgid "Editar cuenta"
@@ -355,7 +355,7 @@ msgstr "Haver"
 msgid "Haber:"
 msgstr "Haver"
 
-#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:388
+#: bccuentaview.cpp:43 bccuentalistview.cpp:388 bcplancontablelistview.cpp:55
 msgid "ID cuenta"
 msgstr "ID compte"
 
@@ -429,7 +429,7 @@ msgstr "Nom del compte"
 msgid "Nombre:"
 msgstr "Nom:"
 
-#: pluginbc_cuenta.cpp:173 pluginbc_cuenta.cpp:198
+#: pluginbc_cuenta.cpp:130 pluginbc_cuenta.cpp:155
 #: ui_bcplancontablelistbase.h:290 ui_bcplancontablelistbase.h:293
 #, fuzzy
 msgid "Nueva cuenta"
@@ -444,7 +444,7 @@ msgstr "Tipus de compte"
 msgid "Padre"
 msgstr "Pare"
 
-#: pluginbc_cuenta.cpp:101 pluginbc_cuenta.cpp:102
+#: pluginbc_cuenta.cpp:66 pluginbc_cuenta.cpp:67
 msgid "Permite ver y modificar el plan contable"
 msgstr ""
 
@@ -462,10 +462,19 @@ msgstr ""
 msgid "Plan de cuentas"
 msgstr "CP del compte"
 
+#: bccuentaview.cpp:66
+#, fuzzy
+msgid "Poblacion"
+msgstr "Paginació"
+
 #: ui_bccuentabase.h:848
 #, fuzzy
 msgid "Poblacion:"
 msgstr "Paginació"
+
+#: bccuentaview.cpp:65
+msgid "Provincia"
+msgstr "Provincia"
 
 #: ui_bccuentabase.h:846
 #, fuzzy
@@ -495,7 +504,7 @@ msgstr "Saldo"
 msgid "Se procedera a borrar la cuenta."
 msgstr "S'esborrarà el compte"
 
-#: pluginbc_cuenta.cpp:177 pluginbc_cuenta.cpp:196
+#: pluginbc_cuenta.cpp:134 pluginbc_cuenta.cpp:153
 msgid "Seleccionar cuenta"
 msgstr ""
 
@@ -542,7 +551,6 @@ msgstr "URL de la pàgina web:"
 #: bccuentaview.cpp:62
 msgid "Web de la cuenta"
 msgstr "Web del compte"
-
 
 #~ msgid "&Ver"
 #~ msgstr "&Veure"

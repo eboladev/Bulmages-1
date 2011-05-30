@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulmalib_es_ES\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-26 07:04+0100\n"
+"POT-Creation-Date: 2011-05-30 17:29+0200\n"
 "PO-Revision-Date: 2009-05-08 23:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -27,24 +27,24 @@ msgstr "&Borrar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:681
+#: ui_blerrordialogbase.h:113 ui_blsubformbase.h:681
 msgid "&Cerrar"
 msgstr "&Cerrar"
 
-#: ui_bldblogindialogbase.h:158
+#: ui_bldblogindialogbase.h:157
 msgid "&Cerrar el programa"
 msgstr "&Cerrar el programa"
 
-#: blcompanydialog.cpp:212
+#: blcompanydialog.cpp:221
 msgid "&Cierra el programa"
 msgstr "&Cierra el programa"
 
-#: blfunctions.cpp:589 blfunctions.cpp:618 blfunctions.cpp:628
-#: blfunctions.cpp:638
+#: blfunctions.cpp:619 blfunctions.cpp:648 blfunctions.cpp:658
+#: blfunctions.cpp:668
 msgid "&Continuar"
 msgstr "&Continuar"
 
-#: ui_blerrordialogbase.h:113
+#: ui_blerrordialogbase.h:112
 msgid "&Detalles"
 msgstr "&Detalles"
 
@@ -60,7 +60,7 @@ msgstr "&Guardar"
 msgid "&No"
 msgstr "&No"
 
-#: blfunctions.cpp:590
+#: blfunctions.cpp:620
 msgid "&Omitir"
 msgstr "&Omitir"
 
@@ -68,7 +68,7 @@ msgstr "&Omitir"
 msgid "&Si"
 msgstr "&Sí"
 
-#: ui_bldblogindialogbase.h:157
+#: ui_bldblogindialogbase.h:156
 msgid "&Validar"
 msgstr "&Validar"
 
@@ -136,19 +136,19 @@ msgstr "Actualizar listado"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualizar <B>Listado de empresas</B>"
 
-#: blsubform.cpp:3081
+#: blsubform.cpp:3167
 msgid "Ajustar altura"
 msgstr "Ajustar altura"
 
-#: blsubform.cpp:3086
+#: blsubform.cpp:3172
 msgid "Ajustar alturas"
 msgstr "Ajustar alturas"
 
-#: blsubform.cpp:3079 bltreewidget.cpp:71
+#: blsubform.cpp:3165 bltreewidget.cpp:71
 msgid "Ajustar columa"
 msgstr "Ajustar columa"
 
-#: blsubform.cpp:3084 bltreewidget.cpp:74
+#: blsubform.cpp:3170 bltreewidget.cpp:74
 msgid "Ajustar columnas"
 msgstr "Ajustar columnas"
 
@@ -161,7 +161,7 @@ msgstr "<LI> Almacén <B>"
 msgid "Anual"
 msgstr "Anual"
 
-#: blcompanydialog.cpp:498
+#: blcompanydialog.cpp:507
 msgid "Anyo"
 msgstr "Año"
 
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Application name"
 msgstr "Application name"
 
-#: blcompanydialog.cpp:498
+#: blcompanydialog.cpp:507
 msgid "Archivo"
 msgstr "Archivo"
 
@@ -186,9 +186,13 @@ msgstr "Archivo"
 msgid "Articulo"
 msgstr "<P> Artículo <B>"
 
-#: blfunctions.cpp:627
+#: blfunctions.cpp:657
 msgid "Aviso del programa"
 msgstr "Aviso del programa"
+
+#: blsubform.cpp:3158
+msgid "Bajar fila"
+msgstr ""
 
 #: blperiodicitycombobox.cpp:76
 msgid "Bienal"
@@ -198,7 +202,7 @@ msgstr "Bienal"
 msgid "BlSearchWidget"
 msgstr "BlSearchWidget"
 
-#: blform.cpp:424 blformlist.cpp:440
+#: blform.cpp:424 blformlist.cpp:449
 msgid "Borrar"
 msgstr "Borrar"
 
@@ -206,7 +210,7 @@ msgstr "Borrar"
 msgid "Borrar pais"
 msgstr "Borrar país"
 
-#: blsubform.cpp:3074
+#: blsubform.cpp:3150
 msgid "Borrar registro"
 msgstr "Borrar registro"
 
@@ -254,7 +258,7 @@ msgstr ""
 msgid "Configuracion Subformularios"
 msgstr "Configuración subformularios"
 
-#: ui_bldblogindialogbase.h:156
+#: ui_bldblogindialogbase.h:155
 msgid "Contrasenya:"
 msgstr "Contraseña:"
 
@@ -330,7 +334,7 @@ msgstr "¿Desea eliminar '"
 msgid "Desea guardar los cambios?"
 msgstr "¿Desea guardar los cambios?"
 
-#: ui_blformconfigbase.h:337 blformlist.cpp:439
+#: ui_blformconfigbase.h:337 blformlist.cpp:448
 msgid "Editar"
 msgstr "Editar"
 
@@ -374,7 +378,7 @@ msgstr "El proveedor ya existe, se pueden hacer modificaciones"
 msgid "Empresas disponibles:"
 msgstr "Empresas disponibles:"
 
-#: blfunctions.cpp:387
+#: blfunctions.cpp:395
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
@@ -394,7 +398,7 @@ msgstr ""
 msgid "Error al crear el banco"
 msgstr "Error al crear el banco"
 
-#: blfunctions.cpp:393
+#: blfunctions.cpp:412
 msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr ""
 
@@ -404,19 +408,19 @@ msgid ""
 "() ]."
 msgstr ""
 
-#: blfunctions.cpp:428
+#: blfunctions.cpp:458
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:442
+#: blfunctions.cpp:472
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
 msgstr ""
 
-#: blfunctions.cpp:407
+#: blfunctions.cpp:437
 msgid "Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:461
+#: blfunctions.cpp:491
 msgid "Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"
 msgstr ""
 
@@ -432,7 +436,7 @@ msgstr "Error al intentar borrar"
 msgid "Error al intentar borrar el pais"
 msgstr "Error al intentar borrar el país"
 
-#: blfunctions.cpp:637
+#: blfunctions.cpp:667
 msgid "Error del programa"
 msgstr "Error del programa"
 
@@ -468,7 +472,7 @@ msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuario y/o contraseña incorrectos"
 
-#: blsubform.cpp:2928 blsubform.cpp:2940
+#: blsubform.cpp:2969 blsubform.cpp:2981
 msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
 msgstr ""
 
@@ -545,7 +549,7 @@ msgstr "ID país"
 msgid "Id provincia"
 msgstr "ID provincia"
 
-#: blsubform.cpp:2678
+#: blsubform.cpp:2719
 msgid "Imprimiendo "
 msgstr "Imprimiendo "
 
@@ -557,11 +561,11 @@ msgstr "Imprimir ficha"
 msgid "Indexador"
 msgstr "Indexador"
 
-#: blfunctions.cpp:587
+#: blfunctions.cpp:617
 msgid "Informacion de depuracion"
 msgstr "Información de depuración"
 
-#: blfunctions.cpp:617
+#: blfunctions.cpp:647
 msgid "Informacion del programa"
 msgstr "Información del programa"
 
@@ -593,7 +597,7 @@ msgid ""
 "El programa no funcionara adecuadamente.\n"
 msgstr ""
 
-#: ui_bldblogindialogbase.h:151
+#: ui_bldblogindialogbase.h:150
 msgid "Lanzador Bulmages"
 msgstr "Lanzador Bulmagés"
 
@@ -605,11 +609,11 @@ msgstr "Limpiar campo"
 msgid "Limpiar el filtro"
 msgstr ""
 
-#: ui_blerrordialogbase.h:111
+#: ui_blerrordialogbase.h:110
 msgid "Mensaje"
 msgstr "Mensaje"
 
-#: ui_bldblogindialogbase.h:152
+#: ui_bldblogindialogbase.h:151
 msgid "Mensaje de error:"
 msgstr "Mensaje de error:"
 
@@ -643,7 +647,7 @@ msgstr "No se ha podido cargar la libreria: "
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No se pudo cerrar la ventana debido a un error"
 
-#: blcompanydialog.cpp:498 blsubform.cpp:239
+#: blcompanydialog.cpp:507 blsubform.cpp:239
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -655,7 +659,7 @@ msgstr "Nombre del campo"
 msgid "Nombre de la Tabla"
 msgstr "Nombre de la tabla"
 
-#: ui_bldblogindialogbase.h:155
+#: ui_bldblogindialogbase.h:154
 msgid "Nombre de usuario:"
 msgstr "Nombre de usuario:"
 
@@ -671,7 +675,7 @@ msgstr "Nombre país"
 msgid "Nuevo pais"
 msgstr "Nuevo país"
 
-#: blfunctions.cpp:591
+#: blfunctions.cpp:621
 msgid "Omitir &clase"
 msgstr "Omitir &clase"
 
@@ -707,7 +711,7 @@ msgstr "País"
 msgid "Paises"
 msgstr "Países"
 
-#: blcompanydialog.cpp:284
+#: blcompanydialog.cpp:293
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Para entrar, antes tiene que seleccionar una empresa."
 
@@ -736,7 +740,7 @@ msgstr "Consulta SQL"
 msgid "Quincenal"
 msgstr "Quincenal"
 
-#: ui_bldblogindialogbase.h:154
+#: ui_bldblogindialogbase.h:153
 msgid "Registro de entrada:"
 msgstr "Registro de entrada:"
 
@@ -772,15 +776,19 @@ msgstr "Semanal"
 msgid "Semestral"
 msgstr "Semestral"
 
+#: blsubform.cpp:3155
+msgid "Subir fila"
+msgstr ""
+
 #: ui_blprogressbarbase.h:69
 msgid "TextLabel"
 msgstr "TextLabel"
 
-#: blformlist.cpp:388
+#: blformlist.cpp:397
 msgid "Tiene que seleccionar un elemento"
 msgstr "Debe seleccionar un elemento"
 
-#: blcompanydialog.cpp:498
+#: blcompanydialog.cpp:507
 msgid "Tipo"
 msgstr "Tipo"
 
@@ -869,6 +877,10 @@ msgstr "Tratando presupuesto"
 msgid "Trimestral"
 msgstr "Trimestral"
 
+#: blsubform.cpp:3162
+msgid "Usar editor"
+msgstr ""
+
 #: ui_blformconfigbase.h:334
 msgid "User Preferences"
 msgstr "Preferencias de usuario"
@@ -877,11 +889,11 @@ msgstr "Preferencias de usuario"
 msgid "Usuario Actual"
 msgstr "Usuario actual"
 
-#: blsubform.cpp:3092
+#: blsubform.cpp:3178
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Ver/Ocultar configurador de subformulario"
 
-#: blsubform.cpp:3090
+#: blsubform.cpp:3176
 msgid "Ver/Ocultar menu de subformulario"
 msgstr ""
 
@@ -913,7 +925,7 @@ msgstr "insertada"
 msgid "insertado"
 msgstr "insertado"
 
-#: blsubform.cpp:2774 blsubform.cpp:2792
+#: blsubform.cpp:2815 blsubform.cpp:2833
 msgid "no se ha inicializado bien la clase"
 msgstr "no se ha inicializado bien la clase"
 

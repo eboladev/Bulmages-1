@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -115,17 +115,17 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_partidasbase.h:337 ui_presupuestocontablebase.h:364
-#: ui_acontablebase.h:192
+#: ui_acontablebase.h:192 ui_presupuestocontablebase.h:364
+#: ui_partidasbase.h:337
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: pluginbf_minicontabilidad.cpp:117
+#: pluginbf_minicontabilidad.cpp:69
 msgid "&Anotaciones contables"
 msgstr ""
 
-#: ui_partidasbase.h:338 ui_presupuestocontablebase.h:365
-#: ui_acontablebase.h:193
+#: ui_acontablebase.h:193 ui_presupuestocontablebase.h:365
+#: ui_partidasbase.h:338
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -133,11 +133,11 @@ msgstr "&Cancelar"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: pluginbf_minicontabilidad.cpp:109
+#: pluginbf_minicontabilidad.cpp:61
 msgid "&Partidas contables"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:125
+#: pluginbf_minicontabilidad.cpp:77
 msgid "&Previsiones"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgstr "1"
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: pluginbf_minicontabilidad.cpp:119 pluginbf_minicontabilidad.cpp:120
+#: pluginbf_minicontabilidad.cpp:71 pluginbf_minicontabilidad.cpp:72
 msgid "Anotaciones contables"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr "Borrar cobro"
 msgid "Borrar presupuesto"
 msgstr "Borrar presupuesto"
 
-#: presupuestocontablelist.cpp:200
+#: presupuestocontablelist.cpp:205
 msgid "Borrar presupuestocontable"
 msgstr ""
 
@@ -183,12 +183,12 @@ msgstr ""
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: presupuestocontablelist.cpp:222
+#: presupuestocontablelist.cpp:227
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: partidasview.cpp:50 partidasview.cpp:527 presupuestocontablelist.cpp:221
-#: presupuestocontableview.cpp:66
+#: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
+#: partidasview.cpp:50 partidasview.cpp:527
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -208,8 +208,8 @@ msgstr "Codigo completo:"
 msgid "Codigo reducido:"
 msgstr "Codigo reducido:"
 
-#: acontableview.cpp:63 presupuestocontableview.cpp:58
-#: presupuestocontableview.cpp:67
+#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
+#: acontableview.cpp:63
 msgid "Concepto"
 msgstr "Concepto"
 
@@ -221,7 +221,7 @@ msgstr "Configurar listado"
 msgid "Contenido de la partida"
 msgstr ""
 
-#: ui_presupuestocontablebase.h:343 ui_acontablebase.h:183
+#: ui_acontablebase.h:183 ui_presupuestocontablebase.h:343
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -237,7 +237,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_presupuestocontablebase.h:335 ui_acontablebase.h:175
+#: ui_acontablebase.h:175 ui_presupuestocontablebase.h:335
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: ui_partidasbase.h:333 ui_presupuestocontablebase.h:360
+#: ui_presupuestocontablebase.h:360 ui_partidasbase.h:333
 msgid "Descripcion:"
 msgstr "Descripcion:"
 
@@ -269,7 +269,7 @@ msgstr "Desea guardar los cambios?"
 msgid "Diario Contable"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:105
+#: pluginbf_minicontabilidad.cpp:57
 msgid "Economia"
 msgstr ""
 
@@ -277,7 +277,7 @@ msgstr ""
 msgid "Editar"
 msgstr "Editar"
 
-#: presupuestocontablelist.cpp:199
+#: presupuestocontablelist.cpp:204
 msgid "Editar presupuestocontable"
 msgstr ""
 
@@ -285,7 +285,7 @@ msgstr ""
 msgid "Error al borrar la partida"
 msgstr ""
 
-#: presupuestocontablelist.cpp:152
+#: presupuestocontablelist.cpp:157
 msgid "Error al borrar un presupuestocontable"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Error al guardar la partida"
 msgstr ""
 
-#: acontableview.cpp:60 presupuestocontableview.cpp:57
+#: presupuestocontableview.cpp:57 acontableview.cpp:60
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -321,7 +321,7 @@ msgstr "Filtrar listado"
 msgid "Gasto"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:435 pluginbf_minicontabilidad.cpp:450
+#: pluginbf_minicontabilidad.cpp:390 pluginbf_minicontabilidad.cpp:405
 msgid "Gestionar partidas"
 msgstr ""
 
@@ -353,7 +353,7 @@ msgstr ""
 msgid "ID presupuesto contable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:220
+#: presupuestocontablelist.cpp:225
 msgid "ID presupuestocontable"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgstr "Imprimir presupuesto"
 msgid "Ingreso"
 msgstr ""
 
-#: presupuestocontablelist.cpp:128
+#: presupuestocontablelist.cpp:133
 msgid "Listado de Presupuestos Contables"
 msgstr ""
 
@@ -397,7 +397,7 @@ msgstr "Mostrar / Ocultar Detalle"
 msgid "Mostrar/Ocultar cabecera"
 msgstr "Mostrar/ocultar cabecera"
 
-#: partidasview.cpp:50 partidasview.cpp:528 presupuestocontableview.cpp:68
+#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:528
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -421,7 +421,7 @@ msgstr "Nuevo"
 msgid "Nuevo presupuesto a cliente"
 msgstr "Nuevo presupuesto a cliente"
 
-#: presupuestocontablelist.cpp:183
+#: presupuestocontablelist.cpp:188
 msgid "Nuevo presupuestocontable"
 msgstr ""
 
@@ -433,7 +433,7 @@ msgstr ""
 msgid "Partidas Contables"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:111 pluginbf_minicontabilidad.cpp:112
+#: pluginbf_minicontabilidad.cpp:63 pluginbf_minicontabilidad.cpp:64
 msgid "Partidas contables"
 msgstr ""
 
@@ -441,11 +441,11 @@ msgstr ""
 msgid "Presupuesto Contable"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:127
+#: pluginbf_minicontabilidad.cpp:79
 msgid "Presupuesto Contables"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:128 ui_presupuestocontablelistbase.h:238
+#: pluginbf_minicontabilidad.cpp:80 ui_presupuestocontablelistbase.h:238
 msgid "Presupuestos Contables"
 msgstr ""
 
@@ -457,7 +457,7 @@ msgstr "Pro&cesados"
 msgid "Saldo"
 msgstr "Saldo"
 
-#: pluginbf_minicontabilidad.cpp:436 pluginbf_minicontabilidad.cpp:452
+#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:407
 msgid "Seleccionar partida"
 msgstr ""
 

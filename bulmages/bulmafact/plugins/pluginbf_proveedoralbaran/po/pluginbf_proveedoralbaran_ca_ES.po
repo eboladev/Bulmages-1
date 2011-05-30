@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -51,7 +51,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: pluginbf_proveedoralbaran.cpp:97
+#: pluginbf_proveedoralbaran.cpp:55
 #, fuzzy
 msgid "&Albaranes de proveedores"
 msgstr "Nom del proveïdor"
@@ -74,6 +74,10 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
+#: pluginbf_proveedoralbaran.cpp:52
+msgid "&Compras"
+msgstr ""
+
 #: ui_albaranproveedorbase.h:626
 #, fuzzy
 msgid "&Detalle"
@@ -83,7 +87,7 @@ msgstr "&Detalls"
 msgid "&No"
 msgstr "&No"
 
-#: pluginbf_proveedoralbaran.cpp:105
+#: pluginbf_proveedoralbaran.cpp:63
 #, fuzzy
 msgid "&Nuevo albaran de proveedor"
 msgstr "Nom del proveïdor"
@@ -117,7 +121,7 @@ msgstr "El magatzem del pressupost no existeix<BR>"
 msgid "Albaranes de proveedor"
 msgstr "Nom del proveïdor"
 
-#: pluginbf_proveedoralbaran.cpp:99 pluginbf_proveedoralbaran.cpp:100
+#: pluginbf_proveedoralbaran.cpp:57 pluginbf_proveedoralbaran.cpp:58
 #, fuzzy
 msgid "Albaranes de proveedores"
 msgstr "Nom del proveïdor"
@@ -400,7 +404,7 @@ msgstr "Nom del proveïdor"
 msgid "Nuevo albaran"
 msgstr "Esborra albarà"
 
-#: pluginbf_proveedoralbaran.cpp:107 pluginbf_proveedoralbaran.cpp:108
+#: pluginbf_proveedoralbaran.cpp:65 pluginbf_proveedoralbaran.cpp:66
 #: ui_albaranproveedorbase.h:587
 #, fuzzy
 msgid "Nuevo albaran de proveedor"

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -129,6 +129,10 @@ msgstr "Cantidad"
 msgid "Cliente"
 msgstr "Cliente"
 
+#: plufinbf_resumenarticulo.cpp:58
+msgid "Compras"
+msgstr "Compras"
+
 #: listlresarticulo.cpp:40 listlresarticulo.cpp:83 listlresarticulo.cpp:126
 #: listlresarticulo.cpp:170
 msgid "Descripcion"
@@ -138,6 +142,10 @@ msgstr "Descripcion"
 #: listlresarticulo.cpp:174
 msgid "Descuento"
 msgstr "Descuento"
+
+#: plufinbf_resumenarticulo.cpp:70
+msgid "Entregas"
+msgstr ""
 
 #: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
 #: listlresarticulo.cpp:169
@@ -173,6 +181,14 @@ msgstr "Precio Venta"
 msgid "Proveedor"
 msgstr "Proveedor"
 
+#: plufinbf_resumenarticulo.cpp:76
+msgid "Recogidas"
+msgstr ""
+
 #: listlresarticulo.cpp:37
 msgid "Serie Factura"
 msgstr "Serie Factura"
+
+#: plufinbf_resumenarticulo.cpp:64
+msgid "Ventas"
+msgstr "Ventas"

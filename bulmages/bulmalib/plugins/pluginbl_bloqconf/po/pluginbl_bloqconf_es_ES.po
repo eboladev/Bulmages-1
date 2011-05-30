@@ -8,43 +8,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:34+0200\n"
 "PO-Revision-Date: 2009-05-06 21:07+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
-#: pluginbl_bloqconf.cpp:181
+#: pluginbl_bloqconf.cpp:179
 msgid "&Bloquear Configuraciones"
 msgstr ""
 
-#: pluginbl_bloqconf.cpp:192
+#: pluginbl_bloqconf.cpp:190
 msgid "&Borrar Configuraciones"
 msgstr ""
 
-#: pluginbl_bloqconf.cpp:186
+#: pluginbl_bloqconf.cpp:184
 msgid "&Desbloquear Configuraciones"
 msgstr ""
 
-#: pluginbl_bloqconf.cpp:202
+#: pluginbl_bloqconf.cpp:200
 msgid "&Herramientas"
 msgstr "&Herramientas"
 
-#: pluginbl_bloqconf.cpp:182 pluginbl_bloqconf.cpp:183
+#: pluginbl_bloqconf.cpp:180 pluginbl_bloqconf.cpp:181
 msgid "Bloquear Configuraciones"
 msgstr ""
 
-#: pluginbl_bloqconf.cpp:144
+#: pluginbl_bloqconf.cpp:142
 msgid "Bloqueo Configuracion"
 msgstr "Bloqueo de la configuración"
 
-#: pluginbl_bloqconf.cpp:193 pluginbl_bloqconf.cpp:194
+#: pluginbl_bloqconf.cpp:191 pluginbl_bloqconf.cpp:192
 msgid "Borrar Configuraciones"
 msgstr ""
 
-#: pluginbl_bloqconf.cpp:187 pluginbl_bloqconf.cpp:188
+#: pluginbl_bloqconf.cpp:185 pluginbl_bloqconf.cpp:186
 msgid "Desbloquear Configuraciones"
 msgstr ""

@@ -8,19 +8,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-08 13:51+0100\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
 "PO-Revision-Date: 2011-02-19 16:10+0100\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_profesorbase.h:528
 msgid "&Aceptar"
 msgstr "&Accepta"
+
+#: pluginbf_profesor.cpp:57
+msgid "&Activitats"
+msgstr ""
 
 #: ui_profesorbase.h:529
 msgid "&Cancelar"
@@ -30,13 +34,13 @@ msgstr "&Cancel·la"
 msgid "&Datos generales"
 msgstr "&Dades generals"
 
-#: pluginbf_profesor.cpp:114
-msgid "&Monitores"
-msgstr "&Monitors"
+#: pluginbf_profesor.cpp:72
+msgid "&Nuevo profesor"
+msgstr "&Nou professor"
 
-#: pluginbf_profesor.cpp:122
-msgid "&Nuevo monitor"
-msgstr "&Nou Monitor"
+#: pluginbf_profesor.cpp:63
+msgid "&Profesores"
+msgstr "&Professors"
 
 #: ui_aboutfapacbase.h:146
 msgid ""
@@ -62,8 +66,8 @@ msgstr ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
 "p></body></html>"
 
-#: pluginbf_profesor.cpp:130 pluginbf_profesor.cpp:131
-#: pluginbf_profesor.cpp:132 ui_aboutfapacbase.h:144
+#: pluginbf_profesor.cpp:81 pluginbf_profesor.cpp:82 pluginbf_profesor.cpp:83
+#: ui_aboutfapacbase.h:144
 msgid "About FAPAC"
 msgstr "Quant a FAPAC"
 
@@ -92,7 +96,7 @@ msgstr "Esborra Monitor"
 msgid "Borrar cobro"
 msgstr "Esborra cobrament"
 
-#: profesoreslist.cpp:282
+#: profesoreslist.cpp:286
 msgid "Borrar profesor"
 msgstr "Esborra professor"
 
@@ -172,7 +176,7 @@ msgstr "Ctrl+S"
 msgid "D.N.I."
 msgstr "D.N.I"
 
-#: profesoreslist.cpp:337
+#: profesoreslist.cpp:341
 msgid "DNI"
 msgstr "DNI"
 
@@ -180,11 +184,11 @@ msgstr "DNI"
 msgid "DNI del profesor"
 msgstr "DNI del monitor"
 
-#: profesoreslist.cpp:262
+#: profesoreslist.cpp:266
 msgid "Debe seleccionar una fila primero"
 msgstr "Heu de seleccionar una fila primer"
 
-#: profesoreslist.cpp:219
+#: profesoreslist.cpp:223
 msgid "Debe seleccionar una linea"
 msgstr "Heu de seleccionar una línia"
 
@@ -200,11 +204,11 @@ msgstr "Adreça:"
 msgid "Editar Monitor"
 msgstr "Edita Monitor"
 
-#: profesoreslist.cpp:281
+#: profesoreslist.cpp:285
 msgid "Editar profesor"
 msgstr "Edita monitor"
 
-#: profesoreslist.cpp:234
+#: profesoreslist.cpp:238
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error en esborrar el cobrament a client"
 
@@ -268,7 +272,7 @@ msgstr "ID Activitat"
 msgid "ID profesor"
 msgstr "ID monitor"
 
-#: profesoreslist.cpp:335
+#: profesoreslist.cpp:339
 msgid "Id profesor"
 msgstr "ID professor"
 
@@ -284,8 +288,7 @@ msgstr "Lleida"
 msgid "Monitor"
 msgstr "Monitor"
 
-#: pluginbf_profesor.cpp:116 pluginbf_profesor.cpp:117 profesoreslist.cpp:201
-#: ui_profesoreslistbase.h:309
+#: profesoreslist.cpp:205 ui_profesoreslistbase.h:309
 msgid "Monitores"
 msgstr "Monitors"
 
@@ -293,7 +296,7 @@ msgstr "Monitors"
 msgid "Movil del profesor"
 msgstr "Mòbil del monitor"
 
-#: profesorview.cpp:83 profesoreslist.cpp:336
+#: profesoreslist.cpp:340 profesorview.cpp:83
 msgid "Nombre"
 msgstr "Nom"
 
@@ -310,7 +313,7 @@ msgstr "Nom del monitor"
 msgid "Nuevo Monitor"
 msgstr "Nou Monitor"
 
-#: pluginbf_profesor.cpp:124 pluginbf_profesor.cpp:125
+#: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
 msgid "Nuevo profesor"
 msgstr "Nou monitor"
 
@@ -326,7 +329,7 @@ msgstr "Altres Dades"
 msgid "Pagina web:"
 msgstr "Pàgina web"
 
-#: profesoreslist.cpp:339
+#: profesoreslist.cpp:343
 msgid "Poblacion"
 msgstr "Població"
 
@@ -342,6 +345,10 @@ msgstr "Població"
 msgid "Precio"
 msgstr "Preu"
 
+#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+msgid "Profesores"
+msgstr ""
+
 #: ui_profesorbase.h:507
 msgid "Provincia:"
 msgstr "Provincia:"
@@ -350,7 +357,7 @@ msgstr "Provincia:"
 msgid "Tarragona"
 msgstr "Tarragona"
 
-#: profesoreslist.cpp:338
+#: profesoreslist.cpp:342
 msgid "Telefono"
 msgstr "Telèfon"
 
@@ -381,3 +388,9 @@ msgstr "Web del monitor"
 #: profesorview.cpp:64
 msgid "eMail del profesor"
 msgstr "e-mail del monitor"
+
+#~ msgid "&Monitores"
+#~ msgstr "&Monitors"
+
+#~ msgid "&Nuevo monitor"
+#~ msgstr "&Nou Monitor"

@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:53+0100\n"
+"POT-Creation-Date: 2011-05-30 17:43+0200\n"
 "PO-Revision-Date: 2011-03-27 10:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: French <kde l10n>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 "X-Language: fr_FR\n"
@@ -28,11 +28,11 @@ msgstr ""
 msgid "&Aceptar"
 msgstr "&Accepter"
 
-#: pluginbc_asiento.cpp:254
+#: pluginbc_asiento.cpp:64
 msgid "&Asiento"
 msgstr "&Ecriture"
 
-#: pluginbc_asiento.cpp:258
+#: pluginbc_asiento.cpp:66
 msgid "&Asiento Contable"
 msgstr "&Ecriture comptable"
 
@@ -48,7 +48,7 @@ msgstr "&Concept :"
 msgid "&Ejercicio:"
 msgstr "&Exercice :"
 
-#: pluginbc_asiento.cpp:277
+#: pluginbc_asiento.cpp:85
 msgid "&Espaciar Asientos Contables"
 msgstr "&Ecritures espacées"
 
@@ -56,7 +56,7 @@ msgstr "&Ecritures espacées"
 msgid "&Fecha del asiento:"
 msgstr "&Date de l'écriture :"
 
-#: pluginbc_asiento.cpp:267
+#: pluginbc_asiento.cpp:75
 msgid "&Lista de Asientos Contables"
 msgstr "&Liste des écritures"
 
@@ -76,7 +76,7 @@ msgstr "&Partie égale à :"
 msgid "&Plantilla:"
 msgstr "&Personnel :"
 
-#: pluginbc_asiento.cpp:284
+#: pluginbc_asiento.cpp:92
 msgid "&Reordenar Asientos Contables"
 msgstr "&Réordonner les écritures"
 
@@ -120,27 +120,27 @@ msgstr "Ecriture"
 msgid "Asiento Contable"
 msgstr "Ecriture comptable"
 
-#: pluginbc_asiento.cpp:298
+#: pluginbc_asiento.cpp:106
 msgid "Asiento de &cierre"
 msgstr "Ecriture de &fermeture"
 
-#: pluginbc_asiento.cpp:304
+#: pluginbc_asiento.cpp:112
 msgid "Asiento de &regularizacion"
 msgstr "Ecriture de &régularisation"
 
-#: pluginbc_asiento.cpp:292
+#: pluginbc_asiento.cpp:100
 msgid "Asiento de a&pertura"
 msgstr "Ecriture d'&ouverture"
 
-#: pluginbc_asiento.cpp:293 pluginbc_asiento.cpp:294
+#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
 msgid "Asiento de apertura"
 msgstr "Ecriture d'ouverture"
 
-#: pluginbc_asiento.cpp:299 pluginbc_asiento.cpp:300
+#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
 msgid "Asiento de cierre"
 msgstr "Ecriture de fermeture"
 
-#: pluginbc_asiento.cpp:305 pluginbc_asiento.cpp:306
+#: pluginbc_asiento.cpp:113 pluginbc_asiento.cpp:114
 msgid "Asiento de regularizacion"
 msgstr "Ecriture de régulation"
 
@@ -216,8 +216,8 @@ msgstr "Raison"
 msgid "Conciliacion"
 msgstr "Conciliation"
 
-#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494 ui_bcasientobase.h:524
-#: ui_bcasientobase.h:527
+#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
 msgid "Configurar"
 msgstr "Configurer"
 
@@ -249,7 +249,7 @@ msgstr "Ctrl+M"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bcasientobase.h:500 ui_bcasientointeligentebase.h:211
+#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -313,7 +313,8 @@ msgstr "Exporter l'écriture"
 msgid "Extender asiento"
 msgstr "Arborer l'écriture"
 
-#: bcasientosubform.cpp:40 bcasientolistsubform.cpp:38 pluginbc_asiento.cpp:148
+#: pluginbc_asiento.cpp:176 bcasientosubform.cpp:40
+#: bcasientolistsubform.cpp:38
 msgid "Fecha"
 msgstr "Date"
 
@@ -333,31 +334,31 @@ msgstr "Date de facture "
 msgid "Fecha del asiento"
 msgstr "Date de l'écriture "
 
-#: pluginbc_asiento.cpp:181 pluginbc_asiento.cpp:216
+#: pluginbc_asiento.cpp:203 pluginbc_asiento.cpp:231
 msgid "Fecha final"
 msgstr "Date finale "
 
-#: pluginbc_asiento.cpp:181
+#: pluginbc_asiento.cpp:203
 msgid "Fecha final ejercicio:"
 msgstr "Date finale de l'exercice :"
 
-#: pluginbc_asiento.cpp:216
+#: pluginbc_asiento.cpp:231
 msgid "Fecha final regularizacion:"
 msgstr "Date finale de régulation :"
 
-#: pluginbc_asiento.cpp:172 pluginbc_asiento.cpp:207
+#: pluginbc_asiento.cpp:193 pluginbc_asiento.cpp:222
 msgid "Fecha inicial"
 msgstr "Date initiale "
 
-#: pluginbc_asiento.cpp:172
+#: pluginbc_asiento.cpp:193
 msgid "Fecha inicial ejercicio:"
 msgstr "Date initiale de l'exercice :"
 
-#: pluginbc_asiento.cpp:207
+#: pluginbc_asiento.cpp:222
 msgid "Fecha inicial regularizacion:"
 msgstr "Date finale de régulation :"
 
-#: pluginbc_asiento.cpp:148 ui_bcasientobase.h:560
+#: pluginbc_asiento.cpp:176 ui_bcasientobase.h:560
 msgid "Fecha:"
 msgstr "Date :"
 
@@ -368,6 +369,14 @@ msgstr "Filtrer"
 #: ui_bcasientobase.h:494 ui_bcasientobase.h:497
 msgid "Guardar asiento"
 msgstr "Sauvegarder l'écriture "
+
+#: pluginbc_asiento.cpp:150
+msgid "Ha habido un error al espaciar los asientos"
+msgstr ""
+
+#: pluginbc_asiento.cpp:164
+msgid "Ha habido un error al ordenar los asientos"
+msgstr ""
 
 #: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
 msgid "Haber"
@@ -393,7 +402,7 @@ msgstr "ID canal"
 msgid "Id apunte"
 msgstr "ID NOTE"
 
-#: bcasientoform.cpp:45 bcasientosubform.cpp:57 bcasientolistsubform.cpp:46
+#: bcasientosubform.cpp:57 bcasientolistsubform.cpp:46 bcasientoform.cpp:45
 msgid "Id asiento"
 msgstr "ID de l'écriture"
 
@@ -433,23 +442,23 @@ msgstr "Date initiale postérieure à la date finale."
 msgid "Listado de asientos"
 msgstr "Liste des écritures"
 
-#: bcasientosubform.cpp:89 bcasientosubform.cpp:106 bcasientolistsubform.cpp:79
-#: bcasientolistsubform.cpp:96
+#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
+#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 msgid "Mostrar asiento"
 msgstr "Afficher l'écriture"
 
-#: bcasientosubform.cpp:93 bcasientosubform.cpp:112 bcasientolistsubform.cpp:83
-#: bcasientolistsubform.cpp:104
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
+#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 msgid "Mostrar extracto (ano)"
 msgstr "Afficher l'extrait (an)"
 
-#: bcasientosubform.cpp:91 bcasientosubform.cpp:108 bcasientolistsubform.cpp:81
-#: bcasientolistsubform.cpp:100
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
+#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (dia)"
 msgstr "Afficher l'extrait (jour)"
 
-#: bcasientosubform.cpp:92 bcasientosubform.cpp:110 bcasientolistsubform.cpp:82
-#: bcasientolistsubform.cpp:102
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
+#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
 msgid "Mostrar extracto (mes)"
 msgstr "Afficher l'extrait (mois)"
 
@@ -482,23 +491,23 @@ msgstr "Ordre de l'écriture"
 msgid "Orden del asiento:"
 msgstr "Ordre de l'écriture :"
 
-#: pluginbc_asiento.cpp:285 pluginbc_asiento.cpp:286
+#: pluginbc_asiento.cpp:93 pluginbc_asiento.cpp:94
 msgid "Ordena los asientos"
 msgstr "Trier les écritures"
 
-#: pluginbc_asiento.cpp:278 pluginbc_asiento.cpp:279
+#: pluginbc_asiento.cpp:86 pluginbc_asiento.cpp:87
 msgid "Ordena los asientos dejando espacios entre ellos"
 msgstr "Trier les écritures en laissant des espaces entre elles"
 
-#: pluginbc_asiento.cpp:268 pluginbc_asiento.cpp:269
+#: pluginbc_asiento.cpp:76 pluginbc_asiento.cpp:77
 msgid "Permite ver el listado de asientos"
 msgstr "Permettre de voir la liste des écritures"
 
-#: pluginbc_asiento.cpp:259
+#: pluginbc_asiento.cpp:67
 msgid "Permite ver y modificar asientos"
 msgstr "Permettre de voir et modifier les écritures"
 
-#: pluginbc_asiento.cpp:260
+#: pluginbc_asiento.cpp:68
 msgid "Podra disponer de la informacion del asiento"
 msgstr "Disponibilité de l'information de l'écriture"
 
@@ -514,11 +523,11 @@ msgstr "Retour"
 msgid "Saldo:"
 msgstr "Solde :"
 
-#: pluginbc_asiento.cpp:105
+#: pluginbc_asiento.cpp:147
 msgid "Se han espaciado los asientos"
 msgstr "Ecritures espacées"
 
-#: pluginbc_asiento.cpp:126
+#: pluginbc_asiento.cpp:161
 msgid "Se han ordenado los asientos"
 msgstr "Ecritures triées"
 
@@ -553,4 +562,3 @@ msgstr "et   ( >="
 #: ui_bcasientolistbase.h:470
 msgid "y <="
 msgstr "et <="
-

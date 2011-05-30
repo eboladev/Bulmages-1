@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -289,11 +289,11 @@ msgstr "Banco"
 #: q19writer.cpp:456
 #, qt-format
 msgid ""
-"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. "
-"%4), para cliente %5 (%6)"
+"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %"
+"4), para cliente %5 (%6)"
 msgstr ""
-"Banco de Cliente '%1'  (para mi '%2') inválido en el recibo con id %3 (ref. "
-"%4), para cliente %5 (%6)"
+"Banco de Cliente '%1'  (para mi '%2') inválido en el recibo con id %3 (ref. %"
+"4), para cliente %5 (%6)"
 
 #: ui_q19base.h:310
 msgid "Cancelar"
@@ -307,7 +307,7 @@ msgstr "Concepto"
 msgid "Datos de recibos incorrectos"
 msgstr "Datos de recibos incorrectos"
 
-#: q19writer.cpp:455
+#: q19writer.cpp:434 q19writer.cpp:438 q19writer.cpp:455
 msgid "Datos incorrectos"
 msgstr "Datos incorrectos"
 
@@ -315,7 +315,7 @@ msgstr "Datos incorrectos"
 msgid "Dias"
 msgstr "Días"
 
-#: q19writer.cpp:477
+#: q19writer.cpp:389 q19writer.cpp:477
 msgid "El CIF del ordenante"
 msgstr "El CIF del ordenante"
 
@@ -326,6 +326,10 @@ msgstr "El CIF del presentador (propiedades de Empresa)"
 #: q19view.cpp:66
 msgid "Error al crear el archivo"
 msgstr "Error al crear el archivo"
+
+#: q19view.cpp:192
+msgid "Error al generar remesa bancaria"
+msgstr ""
 
 #: q19writer.cpp:236
 #, qt-format
@@ -377,6 +381,30 @@ msgstr "Fichero(s) generado(s)"
 msgid "Generacion Q19"
 msgstr "Generacion Q19"
 
+#: q19qtoolbutton.cpp:82 q19qtoolbutton1.cpp:72
+msgid "Generar Q19"
+msgstr ""
+
+#: q19qtoolbutton.cpp:83 q19qtoolbutton1.cpp:73
+msgid "Generar archivo Q19 de los elementos seleccionados."
+msgstr ""
+
+#: q19writer.cpp:438
+#, qt-format
+msgid ""
+"Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 "
+"decimales "
+msgstr ""
+
+#: q19writer.cpp:434
+#, qt-format
+msgid "Importe negativo (%1) ! "
+msgstr ""
+
+#: q19writer.cpp:404
+msgid "Los digitos de control de su cuenta bancaria"
+msgstr ""
+
 #: ui_q19base.h:279
 msgid "Meses"
 msgstr "Meses"
@@ -425,11 +453,15 @@ msgstr "Remesa vacía"
 msgid "Semanas"
 msgstr "Semanas"
 
-#: q19writer.cpp:356
+#: q19writer.cpp:356 q19writer.cpp:399
 msgid "Su entidad bancaria"
 msgstr "Su entidad bancaria"
 
-#: q19writer.cpp:358
+#: q19writer.cpp:407
+msgid "Su numero de cuenta bancaria"
+msgstr ""
+
+#: q19writer.cpp:358 q19writer.cpp:401
 msgid "Su oficina bancaria"
 msgstr "Su oficina bancaria"
 

@@ -5,18 +5,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:33+0200\n"
 "PO-Revision-Date: 2011-02-25 17:11+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
 
-#: pluginbl_importcsv.cpp:56
+#: pluginbl_importcsv.cpp:99
+msgid "&Herramientas"
+msgstr "&Outils"
+
+#: pluginbl_importcsv.cpp:92
 msgid "&Importacion CSV"
 msgstr "&Importer le CSV"
 
@@ -52,7 +56,7 @@ msgstr "Composition des champs"
 msgid "Error al crear la ventana de importacion"
 msgstr "Erreur en création de la fenêtre d'importation"
 
-#: pluginbl_importcsv.cpp:57 pluginbl_importcsv.cpp:58
+#: pluginbl_importcsv.cpp:93 pluginbl_importcsv.cpp:94
 msgid "Importacion CSV"
 msgstr "Importer le CSV"
 
@@ -79,4 +83,3 @@ msgstr "Séparateur de champs"
 #: ui_importcsvbase.h:205
 msgid "Tabla Destino"
 msgstr "Table de destination"
-

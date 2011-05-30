@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -119,9 +119,17 @@ msgstr ""
 msgid "..."
 msgstr "..."
 
+#: archmenu.cpp:103 archmenu.cpp:149
+msgid "Abrir"
+msgstr ""
+
 #: ui_archivobase.h:104
 msgid "Aceptar"
 msgstr "Aceptar"
+
+#: archmenu.cpp:93 archmenu.cpp:140
+msgid "Agregar Archivo "
+msgstr ""
 
 #: archivo.cpp:66
 msgid "All files (*)"
@@ -130,6 +138,14 @@ msgstr "Todos los ficheros (*)"
 #: ui_archivobase.h:102
 msgid "Archivo"
 msgstr "Archivo"
+
+#: archmenu.cpp:137
+msgid "Archivo Documental"
+msgstr ""
+
+#: archmenu.cpp:108 archmenu.cpp:153
+msgid "Borrar"
+msgstr "Borrar"
 
 #: ui_archivobase.h:105
 msgid "Cancelar"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-05-30 17:38+0200\n"
 "PO-Revision-Date: 2011-02-01 09:45+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -115,15 +115,11 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pluginbc_cuentaresumen.cpp:86
+#: pluginbc_cuentaresumen.cpp:78
 msgid "&Resumen Cta"
 msgstr "&Résumer Cta"
 
-#: pluginbc_cuentaresumen.cpp:79
-msgid "&Ver"
-msgstr "&Afficher"
-
-#: pluginbc_cuentaresumen.cpp:90
+#: pluginbc_cuentaresumen.cpp:82
 msgid ""
 "Corrector.\n"
 "\n"
@@ -133,7 +129,7 @@ msgstr ""
 "\n"
 "Montrer/Occulter  le correcteur"
 
-#: pluginbc_cuentaresumen.cpp:89
+#: pluginbc_cuentaresumen.cpp:81
 msgid "Muestra/oculta el resumen de cuenta"
 msgstr "Montrer/Occulter  le résumé de compte "
 
@@ -145,4 +141,5 @@ msgstr "Résumé de compte "
 msgid "Resumen de Cuenta"
 msgstr "Résumé de compte "
 
-
+#~ msgid "&Ver"
+#~ msgstr "&Afficher"

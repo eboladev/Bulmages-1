@@ -8,57 +8,144 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: clienteview.cpp:52 ui_clientebase.h:568
-msgid "Cliente"
+#: pluginbf_cliente.cpp:54
+msgid "&Ventas"
 msgstr ""
 
-#: clienteview.cpp:55 clientslist.cpp:350
+#: pluginbf_cliente.cpp:59
+msgid "&Clientes"
+msgstr ""
+
+#: pluginbf_cliente.cpp:61 pluginbf_cliente.cpp:62 ui_clientslistbase.h:275
+msgid "Clientes"
+msgstr ""
+
+#: pluginbf_cliente.cpp:68
+msgid "&Nuevo cliente"
+msgstr ""
+
+#: pluginbf_cliente.cpp:70 pluginbf_cliente.cpp:71 clientslist.cpp:311
+msgid "Nuevo cliente"
+msgstr ""
+
+#: clientslist.cpp:62
+msgid "Selector de clientes"
+msgstr ""
+
+#: clientslist.cpp:161
+msgid "Listado de Clientes"
+msgstr ""
+
+#: clientslist.cpp:185
+msgid "Error al borrar un cliente"
+msgstr ""
+
+#: clientslist.cpp:200 clientslist.cpp:223
+msgid "Elija el archivo"
+msgstr ""
+
+#: clientslist.cpp:202 clientslist.cpp:225
+msgid "Clientes (*.xml)"
+msgstr ""
+
+#: clientslist.cpp:331
+msgid "Editar cliente"
+msgstr ""
+
+#: clientslist.cpp:332 ui_clientebase.h:579 ui_clientebase.h:582
+msgid "Borrar cliente"
+msgstr ""
+
+#: clientslist.cpp:353 clienteview.cpp:55
 msgid "ID cliente"
+msgstr ""
+
+#: clientslist.cpp:354 clienteview.cpp:76
+msgid "Codigo"
+msgstr ""
+
+#: clientslist.cpp:355
+msgid "C.I.F."
+msgstr ""
+
+#: clientslist.cpp:356
+msgid "Nombre de cliente"
+msgstr ""
+
+#: clientslist.cpp:357 clienteview.cpp:57
+msgid "Nombre alternativo del cliente"
+msgstr ""
+
+#: clientslist.cpp:358 clienteview.cpp:59
+msgid "Numero cuenta corriente"
+msgstr ""
+
+#: clientslist.cpp:359 clienteview.cpp:60
+msgid "Direccion"
+msgstr ""
+
+#: clientslist.cpp:360 clienteview.cpp:61
+msgid "Poblacion"
+msgstr ""
+
+#: clientslist.cpp:361 clienteview.cpp:63
+msgid "Codigo postal"
+msgstr ""
+
+#: clientslist.cpp:362 clienteview.cpp:64
+msgid "Numero de telefono"
+msgstr ""
+
+#: clientslist.cpp:363 clienteview.cpp:67
+msgid "Numero de fax"
+msgstr ""
+
+#: clientslist.cpp:364
+msgid "Direccion de correo electronica"
+msgstr ""
+
+#: clientslist.cpp:365
+msgid "Direccion URL"
+msgstr ""
+
+#: clientslist.cpp:366 clienteview.cpp:77
+msgid "Empresa"
+msgstr ""
+
+#: clientslist.cpp:367 clienteview.cpp:70
+msgid "Fecha de alta del cliente"
+msgstr ""
+
+#: clientslist.cpp:368 clienteview.cpp:71
+msgid "Fecha de baja del cliente"
+msgstr ""
+
+#: clientslist.cpp:369 clienteview.cpp:72
+msgid "Comentarios"
+msgstr ""
+
+#: clienteview.cpp:52 ui_clientebase.h:568
+msgid "Cliente"
 msgstr ""
 
 #: clienteview.cpp:56
 msgid "Nombre del cliente"
 msgstr ""
 
-#: clienteview.cpp:57 clientslist.cpp:354
-msgid "Nombre alternativo del cliente"
-msgstr ""
-
 #: clienteview.cpp:58
 msgid "C.I.F. del cliente"
 msgstr ""
 
-#: clienteview.cpp:59 clientslist.cpp:355
-msgid "Numero cuenta corriente"
-msgstr ""
-
-#: clienteview.cpp:60 clientslist.cpp:356
-msgid "Direccion"
-msgstr ""
-
-#: clienteview.cpp:61 clientslist.cpp:357
-msgid "Poblacion"
-msgstr ""
-
 #: clienteview.cpp:62
 msgid "Provincia"
-msgstr ""
-
-#: clienteview.cpp:63 clientslist.cpp:358
-msgid "Codigo postal"
-msgstr ""
-
-#: clienteview.cpp:64 clientslist.cpp:359
-msgid "Numero de telefono"
 msgstr ""
 
 #: clienteview.cpp:65
@@ -69,28 +156,12 @@ msgstr ""
 msgid "Numero de telefono movil"
 msgstr ""
 
-#: clienteview.cpp:67 clientslist.cpp:360
-msgid "Numero de fax"
-msgstr ""
-
 #: clienteview.cpp:68
 msgid "Direccion electronica"
 msgstr ""
 
 #: clienteview.cpp:69
 msgid "Identificador de presupuesto"
-msgstr ""
-
-#: clienteview.cpp:70 clientslist.cpp:364
-msgid "Fecha de alta del cliente"
-msgstr ""
-
-#: clienteview.cpp:71 clientslist.cpp:365
-msgid "Fecha de baja del cliente"
-msgstr ""
-
-#: clienteview.cpp:72 clientslist.cpp:366
-msgid "Comentarios"
 msgstr ""
 
 #: clienteview.cpp:73
@@ -103,14 +174,6 @@ msgstr ""
 
 #: clienteview.cpp:75
 msgid "Regimen fiscal"
-msgstr ""
-
-#: clienteview.cpp:76 clientslist.cpp:351
-msgid "Codigo"
-msgstr ""
-
-#: clienteview.cpp:77 clientslist.cpp:363
-msgid "Empresa"
 msgstr ""
 
 #: clienteview.cpp:78
@@ -127,66 +190,6 @@ msgstr ""
 
 #: clienteview.cpp:191
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-
-#: clientslist.cpp:62
-msgid "Selector de clientes"
-msgstr ""
-
-#: clientslist.cpp:158
-msgid "Listado de Clientes"
-msgstr ""
-
-#: clientslist.cpp:182
-msgid "Error al borrar un cliente"
-msgstr ""
-
-#: clientslist.cpp:197 clientslist.cpp:220
-msgid "Elija el archivo"
-msgstr ""
-
-#: clientslist.cpp:199 clientslist.cpp:222
-msgid "Clientes (*.xml)"
-msgstr ""
-
-#: clientslist.cpp:308 pluginbf_cliente.cpp:106 pluginbf_cliente.cpp:107
-msgid "Nuevo cliente"
-msgstr ""
-
-#: clientslist.cpp:328
-msgid "Editar cliente"
-msgstr ""
-
-#: clientslist.cpp:329 ui_clientebase.h:579 ui_clientebase.h:582
-msgid "Borrar cliente"
-msgstr ""
-
-#: clientslist.cpp:352
-msgid "C.I.F."
-msgstr ""
-
-#: clientslist.cpp:353
-msgid "Nombre de cliente"
-msgstr ""
-
-#: clientslist.cpp:361
-msgid "Direccion de correo electronica"
-msgstr ""
-
-#: clientslist.cpp:362
-msgid "Direccion URL"
-msgstr ""
-
-#: pluginbf_cliente.cpp:96
-msgid "&Clientes"
-msgstr ""
-
-#: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:275
-msgid "Clientes"
-msgstr ""
-
-#: pluginbf_cliente.cpp:104
-msgid "&Nuevo cliente"
 msgstr ""
 
 #: ui_clientslistbase.h:278 ui_clientslistbase.h:281

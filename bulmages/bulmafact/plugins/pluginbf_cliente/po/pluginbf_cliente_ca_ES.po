@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:46+0200\n"
 "PO-Revision-Date: 2011-02-22 15:54+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
-"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: Catalan\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_clientebase.h:593
@@ -25,7 +25,7 @@ msgstr "&Accepta"
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: pluginbf_cliente.cpp:96
+#: pluginbf_cliente.cpp:59
 msgid "&Clientes"
 msgstr "&Clients"
 
@@ -49,7 +49,7 @@ msgstr "&Forma de pagament"
 msgid "&Nombre completo:"
 msgstr "&Nom complet:"
 
-#: pluginbf_cliente.cpp:104
+#: pluginbf_cliente.cpp:68
 msgid "&Nuevo cliente"
 msgstr "&Nou client"
 
@@ -69,6 +69,10 @@ msgstr "&Règim fiscal:"
 msgid "&Telefono fijo:"
 msgstr "&Telèfon fix:"
 
+#: pluginbf_cliente.cpp:54
+msgid "&Ventas"
+msgstr ""
+
 #: ui_clientslistbase.h:320 ui_clientslistbase.h:323
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
@@ -81,7 +85,7 @@ msgstr "Aplica Recàrregc d'equivalència"
 msgid "Borrar"
 msgstr "Esborra"
 
-#: clientslist.cpp:329 ui_clientebase.h:579 ui_clientebase.h:582
+#: clientslist.cpp:332 ui_clientebase.h:579 ui_clientebase.h:582
 msgid "Borrar cliente"
 msgstr "Esborra client"
 
@@ -89,7 +93,7 @@ msgstr "Esborra client"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: clientslist.cpp:352
+#: clientslist.cpp:355
 msgid "C.I.F."
 msgstr "C.I.F.:"
 
@@ -109,11 +113,11 @@ msgstr "Client"
 msgid "Cliente inactivo"
 msgstr "Client inactiu"
 
-#: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:275
+#: pluginbf_cliente.cpp:61 pluginbf_cliente.cpp:62 ui_clientslistbase.h:275
 msgid "Clientes"
 msgstr "Clients"
 
-#: clientslist.cpp:199 clientslist.cpp:222
+#: clientslist.cpp:202 clientslist.cpp:225
 msgid "Clientes (*.xml)"
 msgstr "Clients (*.xml)"
 
@@ -121,7 +125,7 @@ msgstr "Clients (*.xml)"
 msgid "Codi&go postal:"
 msgstr "Codi& postal:"
 
-#: clienteview.cpp:76 clientslist.cpp:351
+#: clientslist.cpp:354 clienteview.cpp:76
 msgid "Codigo"
 msgstr "Codi"
 
@@ -129,7 +133,7 @@ msgstr "Codi"
 msgid "Codigo de c&liente:"
 msgstr "Codi de c&lient:"
 
-#: clienteview.cpp:63 clientslist.cpp:358
+#: clientslist.cpp:361 clienteview.cpp:63
 msgid "Codigo postal"
 msgstr "Codi postal"
 
@@ -137,7 +141,7 @@ msgstr "Codi postal"
 msgid "Comen&tarios:"
 msgstr "Comen&taris:"
 
-#: clienteview.cpp:72 clientslist.cpp:366
+#: clientslist.cpp:369 clienteview.cpp:72
 msgid "Comentarios"
 msgstr "Comentaris"
 
@@ -169,15 +173,15 @@ msgstr "Dades de comerç &electrònic::"
 msgid "Datos de comercio electronico"
 msgstr "Dades de comerç electrònic"
 
-#: clienteview.cpp:60 clientslist.cpp:356
+#: clientslist.cpp:359 clienteview.cpp:60
 msgid "Direccion"
 msgstr "Adreça:"
 
-#: clientslist.cpp:362
+#: clientslist.cpp:365
 msgid "Direccion URL"
 msgstr "Adreça URL"
 
-#: clientslist.cpp:361
+#: clientslist.cpp:364
 msgid "Direccion de correo electronica"
 msgstr "Adreça de correu electrònic"
 
@@ -189,19 +193,19 @@ msgstr "Adreça electrònica"
 msgid "Editar"
 msgstr "Edita"
 
-#: clientslist.cpp:328
+#: clientslist.cpp:331
 msgid "Editar cliente"
 msgstr "Edita compte"
 
-#: clientslist.cpp:197 clientslist.cpp:220
+#: clientslist.cpp:200 clientslist.cpp:223
 msgid "Elija el archivo"
 msgstr "Trieu l'arxiu"
 
-#: clienteview.cpp:77 clientslist.cpp:363
+#: clientslist.cpp:366 clienteview.cpp:77
 msgid "Empresa"
 msgstr "&Empresa"
 
-#: clientslist.cpp:182
+#: clientslist.cpp:185
 msgid "Error al borrar un cliente"
 msgstr "Error en esborrar el client"
 
@@ -213,11 +217,11 @@ msgstr "Error en crear el client"
 msgid "Exportar"
 msgstr "Exporta"
 
-#: clienteview.cpp:70 clientslist.cpp:364
+#: clientslist.cpp:367 clienteview.cpp:70
 msgid "Fecha de alta del cliente"
 msgstr "Data d'alta del client"
 
-#: clienteview.cpp:71 clientslist.cpp:365
+#: clientslist.cpp:368 clienteview.cpp:71
 msgid "Fecha de baja del cliente"
 msgstr "Data de baixa del client"
 
@@ -233,7 +237,7 @@ msgstr "Forma de pagament:"
 msgid "Guardar cliente"
 msgstr "Desa client"
 
-#: clienteview.cpp:55 clientslist.cpp:350
+#: clientslist.cpp:353 clienteview.cpp:55
 msgid "ID cliente"
 msgstr "Id client"
 
@@ -253,7 +257,7 @@ msgstr "Imprimeix informe"
 msgid "Imprimir listado"
 msgstr "Imprimeix llistat"
 
-#: clientslist.cpp:158
+#: clientslist.cpp:161
 msgid "Listado de Clientes"
 msgstr "Llistat de clients"
 
@@ -261,11 +265,11 @@ msgstr "Llistat de clients"
 msgid "No&mbre comercial:"
 msgstr "No&m comercial:"
 
-#: clienteview.cpp:57 clientslist.cpp:354
+#: clientslist.cpp:357 clienteview.cpp:57
 msgid "Nombre alternativo del cliente"
 msgstr "Nom alternatiu del client"
 
-#: clientslist.cpp:353
+#: clientslist.cpp:356
 msgid "Nombre de cliente"
 msgstr "Nom del client"
 
@@ -277,11 +281,11 @@ msgstr "Nom del client"
 msgid "Nuevo"
 msgstr "Nou"
 
-#: clientslist.cpp:308 pluginbf_cliente.cpp:106 pluginbf_cliente.cpp:107
+#: pluginbf_cliente.cpp:70 pluginbf_cliente.cpp:71 clientslist.cpp:311
 msgid "Nuevo cliente"
 msgstr "Nou client"
 
-#: clienteview.cpp:59 clientslist.cpp:355
+#: clientslist.cpp:358 clienteview.cpp:59
 msgid "Numero cuenta corriente"
 msgstr "Codi de compte corrent"
 
@@ -289,11 +293,11 @@ msgstr "Codi de compte corrent"
 msgid "Numero de fa&x:"
 msgstr "Número de fa&x:"
 
-#: clienteview.cpp:67 clientslist.cpp:360
+#: clientslist.cpp:363 clienteview.cpp:67
 msgid "Numero de fax"
 msgstr "Número de fax"
 
-#: clienteview.cpp:64 clientslist.cpp:359
+#: clientslist.cpp:362 clienteview.cpp:64
 msgid "Numero de telefono"
 msgstr "Número de telèfon"
 
@@ -309,7 +313,7 @@ msgstr "Número de telèfon mòbil"
 msgid "Pagina &web:"
 msgstr "Pàgina &web:"
 
-#: clienteview.cpp:61 clientslist.cpp:357
+#: clientslist.cpp:360 clienteview.cpp:61
 msgid "Poblacion"
 msgstr "Població"
 

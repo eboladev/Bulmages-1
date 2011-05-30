@@ -1,193 +1,267 @@
-#: ui_pagobase.h:340
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_pagobase.h:332
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accept"
 
-#: ui_pagobase.h:341
+#: ui_pagobase.h:333
 msgid "&Cancelar"
+msgstr "&Cancel"
+
+#: pluginbf_proveedorpago.cpp:52
+msgid "&Compras"
 msgstr ""
 
-#: pluginpagos.cpp:104
+#: pluginbf_proveedorpago.cpp:64
+#, fuzzy
 msgid "&Nuevo pago a proveedor"
-msgstr ""
+msgstr "New &supplier..."
 
-#: pluginpagos.cpp:96
+#: pluginbf_proveedorpago.cpp:56
+#, fuzzy
 msgid "&Pagos a proveedores"
-msgstr ""
+msgstr "&Suppliers"
 
-#: ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
+#: ui_pagoslistbase.h:420 ui_pagoslistbase.h:423
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Update listing"
 
-#: pagoslist.cpp:260
+#: pagoslist.cpp:273
+#, fuzzy
 msgid "Apellidos trabajador"
-msgstr ""
+msgstr "New worker"
 
-#: pagoview.cpp:69 pagoslist.cpp:254
+#: pagoslist.cpp:267 pagoview.cpp:68
 msgid "Banco"
-msgstr ""
+msgstr "Bank"
 
-#: ui_pagoslistbase.h:372 ui_pagobase.h:339
+#: ui_pagoslistbase.h:371 ui_pagobase.h:331
+#, fuzzy
 msgid "Banco:"
-msgstr ""
+msgstr "Bank"
 
-#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:324
-#: ui_pagobase.h:329
+#: ui_pagoslistbase.h:392 ui_pagoslistbase.h:395 ui_pagobase.h:319
+#: ui_pagobase.h:322
+#, fuzzy
 msgid "Borrar pago"
-msgstr ""
+msgstr "Erase"
 
-#: ui_pagoslistbase.h:455
+#: ui_pagoslistbase.h:426
 msgid "Buscar:"
-msgstr ""
+msgstr "Look for:"
 
-#: pagoslist.cpp:249
+#: pagoslist.cpp:262
+#, fuzzy
 msgid "C.I.F. proveedor"
-msgstr ""
+msgstr "C.I.F. of the supplier"
 
-#: pagoview.cpp:67 pagoslist.cpp:253
+#: pagoslist.cpp:266 pagoview.cpp:66
 msgid "Cantidad"
-msgstr ""
+msgstr "Amount"
 
-#: pagoview.cpp:68
+#: pagoview.cpp:67
+#, fuzzy
 msgid "Comentario del pago"
-msgstr ""
+msgstr "Commentaries of the seat"
 
-#: pagoslist.cpp:257
+#: pagoslist.cpp:270
+#, fuzzy
 msgid "Comentario pago"
-msgstr ""
+msgstr "Commentary"
 
-#: ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
+#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:416
 msgid "Configurar listado"
+msgstr "Form listing"
+
+#: impqtoolbutton.cpp:106 impqtoolbutton.cpp:157 impqtoolbutton.cpp:206
+msgid "Crear"
 msgstr ""
 
-#: pagoslist.cpp:197
+#: pagoslist.cpp:210
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "It must select a family"
 
-#: ui_pagobase.h:336
+#: ui_pagobase.h:328
+#, fuzzy
 msgid "Descripcion del pago:"
+msgstr "Description of the seat"
+
+#: impqtoolbutton.cpp:105 impqtoolbutton.cpp:156 impqtoolbutton.cpp:205
+msgid "Desea abrir el pago existente, registrar un nuevo pago o salir?"
 msgstr ""
 
-#: ui_pagoslistbase.h:391 ui_pagoslistbase.h:396
+#: ui_pagoslistbase.h:385 ui_pagoslistbase.h:388
+#, fuzzy
 msgid "Editar pago"
-msgstr ""
+msgstr "Publish"
 
-#: pagoslist.cpp:251
+#: pagoslist.cpp:264
+#, fuzzy
 msgid "Email proveedor"
-msgstr ""
+msgstr "ID supplier"
 
-#: pagoslist.cpp:209
+#: pagoslist.cpp:222
+#, fuzzy
 msgid "Error al borrar el pago"
-msgstr ""
+msgstr "Error when erasing article"
 
 #: pagoview.cpp:81
+#, fuzzy
 msgid "Error al crear el pago"
-msgstr ""
+msgstr "Error when creating the seat"
 
-#: pagoview.cpp:65 pagoslist.cpp:252
+#: pagoslist.cpp:265 pagoview.cpp:64
+#, fuzzy
 msgid "Fecha de pago"
-msgstr ""
+msgstr "Mode of payment"
 
-#: ui_pagobase.h:334
+#: ui_pagobase.h:326
+#, fuzzy
 msgid "Fecha de pago:"
-msgstr ""
-
-#: ui_pagoslistbase.h:375
-msgid "Fecha final:"
-msgstr ""
-
-#: ui_pagoslistbase.h:376
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_pagoslistbase.h:424 ui_pagoslistbase.h:429
-msgid "Filtrar pagos"
-msgstr ""
-
-#: ui_pagobase.h:313 ui_pagobase.h:318
-msgid "Guardar pago"
-msgstr ""
-
-#: pagoview.cpp:62 pagoslist.cpp:246
-msgid "Id pago"
-msgstr ""
-
-#: pagoview.cpp:63 pagoslist.cpp:247
-msgid "Id proveedor"
-msgstr ""
-
-#: pagoslist.cpp:258
-msgid "Id trabajador"
-msgstr ""
-
-#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:418
-msgid "Imprimir listado"
-msgstr ""
-
-#: pagoslist.cpp:259
-msgid "Nombre de trabajador"
-msgstr ""
-
-#: pagoslist.cpp:248
-msgid "Nombre proveedor"
-msgstr ""
-
-#: ui_pagoslistbase.h:380 ui_pagoslistbase.h:385
-msgid "Nuevo pago"
-msgstr ""
-
-#: pluginpagos.cpp:106 pluginpagos.cpp:107 ui_pagobase.h:309
-msgid "Nuevo pago a proveedor"
-msgstr ""
-
-#: pagoview.cpp:59
-msgid "Pago"
-msgstr ""
-
-#: pagoslist.cpp:187 pluginpagos.cpp:98 pluginpagos.cpp:99
-#: ui_pagoslistbase.h:371
-msgid "Pagos a proveedores"
-msgstr ""
+msgstr "Mode of payment:"
 
 #: ui_pagoslistbase.h:374
+#, fuzzy
+msgid "Fecha final:"
+msgstr "Final &date:"
+
+#: ui_pagoslistbase.h:375
+#, fuzzy
+msgid "Fecha inicial:"
+msgstr "Initial &date:"
+
+#: ui_pagoslistbase.h:406 ui_pagoslistbase.h:409
+#, fuzzy
+msgid "Filtrar pagos"
+msgstr "Filter listing"
+
+#: impqtoolbutton.cpp:77 impqtoolbutton.cpp:78
+msgid "Generar pago"
+msgstr ""
+
+#: ui_pagobase.h:312 ui_pagobase.h:315
+#, fuzzy
+msgid "Guardar pago"
+msgstr "Keep"
+
+#: pagoslist.cpp:259 pagoview.cpp:61
+#, fuzzy
+msgid "Id pago"
+msgstr "Mode of payment"
+
+#: pagoslist.cpp:260 pagoview.cpp:62
+#, fuzzy
+msgid "Id proveedor"
+msgstr "ID supplier"
+
+#: pagoslist.cpp:271
+#, fuzzy
+msgid "Id trabajador"
+msgstr "Worker"
+
+#: ui_pagoslistbase.h:399 ui_pagoslistbase.h:402
+msgid "Imprimir listado"
+msgstr "Print listing"
+
+#: pagoslist.cpp:272
+#, fuzzy
+msgid "Nombre de trabajador"
+msgstr "New worker"
+
+#: pagoslist.cpp:261
+#, fuzzy
+msgid "Nombre proveedor"
+msgstr "Name of the supplier"
+
+#: ui_pagoslistbase.h:378 ui_pagoslistbase.h:381
+#, fuzzy
+msgid "Nuevo pago"
+msgstr "New seat"
+
+#: pluginbf_proveedorpago.cpp:66 pluginbf_proveedorpago.cpp:67
+#: ui_pagobase.h:309
+#, fuzzy
+msgid "Nuevo pago a proveedor"
+msgstr "New &supplier..."
+
+#: pagoview.cpp:58
+#, fuzzy
+msgid "Pago"
+msgstr "Paid"
+
+#: pagoslist.cpp:200 pluginbf_proveedorpago.cpp:58
+#: pluginbf_proveedorpago.cpp:59 ui_pagoslistbase.h:370
+#, fuzzy
+msgid "Pagos a proveedores"
+msgstr "Suppliers"
+
+#: ui_pagoslistbase.h:373
 msgid "Pagos efectivos"
 msgstr ""
 
-#: pagoview.cpp:64
+#: pagoview.cpp:63
+#, fuzzy
 msgid "Previcion de pago"
-msgstr ""
+msgstr "New mode of payment"
 
-#: pagoslist.cpp:256
+#: pagoslist.cpp:269
 msgid "Prevision pago"
 msgstr ""
 
-#: ui_pagoslistbase.h:373
+#: ui_pagoslistbase.h:372
 msgid "Previsiones de Pago"
 msgstr ""
 
-#: pagoview.cpp:72 pagoslist.cpp:49 pagoslist.cpp:74
+#: pagoslist.cpp:49 pagoslist.cpp:76 pagoview.cpp:71
 msgid "Proveedor:"
-msgstr ""
+msgstr "Supplier:"
 
-#: ui_pagobase.h:335
+#: ui_pagobase.h:327
 msgid "Provision de fondos"
 msgstr ""
 
-#: pagoview.cpp:66 pagoslist.cpp:255
+#: pagoslist.cpp:268 pagoview.cpp:65
+#, fuzzy
 msgid "Referencia de pago"
-msgstr ""
+msgstr "Reference"
 
-#: ui_pagobase.h:333
+#: ui_pagobase.h:325
+#, fuzzy
 msgid "Referencia:"
-msgstr ""
+msgstr "Reference"
 
-#: pagoslist.cpp:250
+#: pagoslist.cpp:263
+#, fuzzy
 msgid "Telefono proveedor"
-msgstr ""
+msgstr "Telephone of the supplier"
 
-#: ui_pagobase.h:337
+#: ui_pagobase.h:329
+#, fuzzy
 msgid "Total pago:"
-msgstr ""
+msgstr "Total pages:"
 
-#: ui_pagoslistbase.h:456
+#: ui_pagoslistbase.h:427
+#, fuzzy
 msgid "Total:"
+msgstr "Total"
+
+#: impqtoolbutton.cpp:104 impqtoolbutton.cpp:155 impqtoolbutton.cpp:204
+msgid "Ya existe un pago con esta referencia\n"
 msgstr ""

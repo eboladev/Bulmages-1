@@ -6,43 +6,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:56+0200\n"
 "PO-Revision-Date: 2011-02-14 09:41+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ui_listcoloresbase.h:118 ui_listtallasbase.h:118
+#: ui_listtallasbase.h:118 ui_listcoloresbase.h:118
 msgid "&Aceptar"
 msgstr "&Accepter"
 
-#: ui_listcoloresbase.h:119 ui_listtallasbase.h:119
+#: ui_listtallasbase.h:119 ui_listcoloresbase.h:119
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: pluginbf_tallascolores.cpp:83
+#: plugin_tallascolores.cpp:78
 msgid "&Colores"
 msgstr "&Couleurs"
 
-#: pluginbf_tallascolores.cpp:77
+#: plugin_tallascolores.cpp:71
 msgid "&Tallas"
 msgstr "&Tailles"
 
-#: pluginbf_tallascolores.cpp:72
+#: plugin_tallascolores.cpp:66
 msgid "&Tallas y colores"
 msgstr "&Tailles et couleurs"
 
-#: plugin_tc_articulos.cpp:80
+#: plugin_tallascolores.cpp:132
 msgid "Alias"
 msgstr "Alias"
 
-#: listcoloresview.cpp:49 pluginbf_tallascolores.cpp:84 pluginbf_tallascolores.cpp:85
-#: ui_listcoloresbase.h:117
+#: plugin_tallascolores.cpp:346 plugin_tallascolores.cpp:368
+#: plugin_tallascolores.cpp:391 plugin_tallascolores.cpp:420
+#, fuzzy
+msgid "Color"
+msgstr "Valeur"
+
+#: listcoloresview.cpp:49 plugin_tallascolores.cpp:79
+#: plugin_tallascolores.cpp:80 ui_listcoloresbase.h:117
 msgid "Colores"
 msgstr "Couleurs"
 
@@ -50,7 +56,11 @@ msgstr "Couleurs"
 msgid "Error al guardar los colores"
 msgstr "Erreur en sauvegarde des couleurs"
 
-#: plugin_tc_articulos.cpp:81
+#: plugin_tallascolores.cpp:190
+msgid "Hubo un error al guardar los alias"
+msgstr ""
+
+#: plugin_tallascolores.cpp:133
 msgid "Id Articulo"
 msgstr "Id article"
 
@@ -66,15 +76,15 @@ msgstr "Id couleur"
 msgid "Nombre Color"
 msgstr "Nom de couleur"
 
-#: plugin_tc_articulos.cpp:86 plugin_tc_articulos.cpp:296
-#: plugin_tc_articulos.cpp:318 plugin_tc_articulos.cpp:341
-#: plugin_tc_articulos.cpp:370
+#: plugin_tallascolores.cpp:138 plugin_tallascolores.cpp:348
+#: plugin_tallascolores.cpp:370 plugin_tallascolores.cpp:393
+#: plugin_tallascolores.cpp:422
 msgid "Nombre color"
 msgstr "Nom de couleur"
 
-#: plugin_tc_articulos.cpp:87 plugin_tc_articulos.cpp:297
-#: plugin_tc_articulos.cpp:319 plugin_tc_articulos.cpp:342
-#: plugin_tc_articulos.cpp:371 listtallasview.cpp:101
+#: plugin_tallascolores.cpp:139 plugin_tallascolores.cpp:349
+#: plugin_tallascolores.cpp:371 plugin_tallascolores.cpp:394
+#: plugin_tallascolores.cpp:423 listtallasview.cpp:101
 msgid "Nombre talla"
 msgstr "Nom de la taille"
 
@@ -82,19 +92,21 @@ msgstr "Nom de la taille"
 msgid "RGB Color"
 msgstr "RGB couleur"
 
-#: plugin_tc_articulos.cpp:83 plugin_tc_articulos.cpp:295
-#: plugin_tc_articulos.cpp:317 plugin_tc_articulos.cpp:340
-#: plugin_tc_articulos.cpp:369
+#: plugin_tallascolores.cpp:135 plugin_tallascolores.cpp:347
+#: plugin_tallascolores.cpp:369 plugin_tallascolores.cpp:392
+#: plugin_tallascolores.cpp:421
 msgid "Talla"
 msgstr "Taille"
 
-#: pluginbf_tallascolores.cpp:78 pluginbf_tallascolores.cpp:79 listtallasview.cpp:49
-#: ui_listtallasbase.h:117
+#: plugin_tallascolores.cpp:72 plugin_tallascolores.cpp:73
+#: listtallasview.cpp:49 ui_listtallasbase.h:117
 msgid "Tallas"
 msgstr "Tailles"
 
-#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:294
-#: plugin_tc_articulos.cpp:316 plugin_tc_articulos.cpp:339
-#: plugin_tc_articulos.cpp:368
+#: plugin_tallascolores.cpp:150
+msgid "Tallas y colores"
+msgstr ""
+
+#: plugin_tallascolores.cpp:134
 msgid "color"
 msgstr "Couleur"

@@ -5,13 +5,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"POT-Creation-Date: 2011-05-30 17:55+0200\n"
 "PO-Revision-Date: 2011-02-10 17:33+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -27,9 +27,17 @@ msgstr "&Annuler"
 msgid "&Comentarios"
 msgstr "&Libellés "
 
+#: pluginbf_contrato.cpp:62
+msgid "&Contratos"
+msgstr "&Contracts"
+
 #: ui_contratobase.h:489
 msgid "&Facturas"
 msgstr "&Factures"
+
+#: pluginbf_contrato.cpp:60
+msgid "&Ventas"
+msgstr ""
 
 #: ui_contratoslistbase.h:300 ui_contratoslistbase.h:303
 msgid "Actualizar listado"
@@ -51,7 +59,7 @@ msgstr "Effacer le contrat"
 msgid "Buscar:"
 msgstr "Chercher :"
 
-#: contratoslist.cpp:328
+#: contratoslist.cpp:333
 msgid "C.I.F."
 msgstr "C.I.F."
 
@@ -75,7 +83,7 @@ msgstr "Client"
 msgid "Cliente:"
 msgstr "Client :"
 
-#: contratoslist.cpp:327
+#: contratoslist.cpp:332
 msgid "Codigo"
 msgstr "Code"
 
@@ -103,7 +111,7 @@ msgstr "Contact de la Facture"
 msgid "Contrato"
 msgstr "Contrat"
 
-#: ui_contratoslistbase.h:255
+#: pluginbf_contrato.cpp:104 ui_contratoslistbase.h:255
 msgid "Contratos"
 msgstr "Contrats"
 
@@ -128,7 +136,7 @@ msgstr "Détail"
 msgid "Editar contrato"
 msgstr "Editer le contrat "
 
-#: contratoslist.cpp:100
+#: contratoslist.cpp:105
 msgid "Error al borrar un contrato"
 msgstr "Erreur d'effacement d'un contrat"
 
@@ -136,8 +144,8 @@ msgstr "Erreur d'effacement d'un contrat"
 msgid "Error al crear la contrato"
 msgstr "Erreur en création du contrat"
 
-#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
-#: ui_contratoslistbase.h:310
+#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
+#: ui_contratobase.h:472
 msgid "Facturar Periodos Pendientes"
 msgstr "Facturer des Périodes en suspens"
 
@@ -145,11 +153,11 @@ msgstr "Facturer des Périodes en suspens"
 msgid "Fecha"
 msgstr "Date"
 
-#: contratoslist.cpp:332
+#: contratoslist.cpp:337
 msgid "Fecha de alta del contrato"
 msgstr "Date d'incorporation du contrat "
 
-#: contratoslist.cpp:333 contratoslist.cpp:334
+#: contratoslist.cpp:338 contratoslist.cpp:339
 msgid "Fecha de baja del contrato"
 msgstr "Date d'incorporation du contrat "
 
@@ -169,7 +177,7 @@ msgstr "Filtrer les contrats"
 msgid "Guardar Contrato"
 msgstr "Sauvegarder le Contrat"
 
-#: contratoslist.cpp:326
+#: contratoslist.cpp:331
 msgid "ID contrato"
 msgstr "ID Contrat"
 
@@ -185,7 +193,7 @@ msgstr "Id article"
 msgid "Id cliente"
 msgstr "Id client"
 
-#: listlincontratoview.cpp:47 contrato.cpp:42
+#: contrato.cpp:42 listlincontratoview.cpp:47
 msgid "Id contrato"
 msgstr "Id Contrat"
 
@@ -209,15 +217,19 @@ msgstr "Imprimer la liste"
 msgid "Impuestos"
 msgstr "Impôts"
 
-#: contratoslist.cpp:108
+#: contratoslist.cpp:113
 msgid "Listado de Contratos"
 msgstr "Liste des contrats"
+
+#: pluginbf_contrato.cpp:63 pluginbf_contrato.cpp:64
+msgid "Listado de contratos"
+msgstr ""
 
 #: ui_contratobase.h:477 ui_contratobase.h:480
 msgid "Mostrar/ocultar cabecera"
 msgstr "Montrer/cacher l'entête"
 
-#: contratoslist.cpp:331
+#: contratoslist.cpp:336
 msgid "Nombre alternativo del contrato"
 msgstr "Nom alternatif du contrat"
 
@@ -229,7 +241,7 @@ msgstr "Nom de l'article"
 msgid "Nombre cliente"
 msgstr "Nom du client"
 
-#: contratoslist.cpp:330
+#: contratoslist.cpp:335
 msgid "Nombre de contrato"
 msgstr "Nom du contrat"
 
@@ -265,7 +277,7 @@ msgstr "Accusée"
 msgid "Ref factura"
 msgstr "Réf. : Facture"
 
-#: contratoslist.cpp:329
+#: contratoslist.cpp:334
 msgid "Referencia"
 msgstr "Référence"
 
@@ -296,3 +308,8 @@ msgstr "Total"
 #: ui_contratobase.h:485
 msgid "Ubicacion:"
 msgstr "Situation"
+
+#: contratoview.cpp:319
+#, fuzzy
+msgid "no se pudo crear instancia de factura"
+msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"

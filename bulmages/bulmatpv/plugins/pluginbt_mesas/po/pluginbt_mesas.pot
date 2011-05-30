@@ -8,54 +8,65 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mesas.cpp:255
+#: mesas.cpp:382
 msgid "Sin definir"
 msgstr ""
 
-#: ui_distromesasbase.h:163 ui_mesasbase.h:60
+#: ui_distromesasbase.h:205 ui_mesasbase.h:60
 msgid "Form"
 msgstr ""
 
-#: ui_distromesasbase.h:165
+#: ui_distromesasbase.h:207
 msgid "Nueva mesa"
 msgstr ""
 
-#: ui_distromesasbase.h:167 ui_distromesasbase.h:171 ui_distromesasbase.h:175
-#: ui_distromesasbase.h:179 ui_distromesasbase.h:183 ui_distromesasbase.h:187
-#: ui_distromesasbase.h:191
+#: ui_distromesasbase.h:209 ui_distromesasbase.h:213 ui_distromesasbase.h:217
+#: ui_distromesasbase.h:221 ui_distromesasbase.h:225 ui_distromesasbase.h:229
+#: ui_distromesasbase.h:233 ui_distromesasbase.h:238 ui_distromesasbase.h:242
 msgid "..."
 msgstr ""
 
-#: ui_distromesasbase.h:169
+#: ui_distromesasbase.h:211
 msgid "Borrar mesa"
 msgstr ""
 
-#: ui_distromesasbase.h:173
+#: ui_distromesasbase.h:215
 msgid "Ver ticket de la mesa"
 msgstr ""
 
-#: ui_distromesasbase.h:177
+#: ui_distromesasbase.h:219
 msgid "Editar nombre"
 msgstr ""
 
-#: ui_distromesasbase.h:181
+#: ui_distromesasbase.h:223
 msgid "Cambiar imagen de la mesa"
 msgstr ""
 
-#: ui_distromesasbase.h:185
+#: ui_distromesasbase.h:227
+msgid "Añadir Pantalla"
+msgstr ""
+
+#: ui_distromesasbase.h:231
+msgid "Eliminar Pantalla"
+msgstr ""
+
+#: ui_distromesasbase.h:234
+msgid "Unir"
+msgstr ""
+
+#: ui_distromesasbase.h:236
 msgid "Configurar mesas"
 msgstr ""
 
-#: ui_distromesasbase.h:189
+#: ui_distromesasbase.h:240
 msgid "Cerrar vista mesas"
 msgstr ""
 

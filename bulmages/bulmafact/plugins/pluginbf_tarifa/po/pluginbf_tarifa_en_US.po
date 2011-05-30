@@ -1,127 +1,182 @@
-#: ui_tarifabase.h:270
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 17:45+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_tarifabase.h:259
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accept"
 
-#: ui_tarifabase.h:271
+#: pluginbf_tarifa.cpp:54
+msgid "&Articulos"
+msgstr "&Article"
+
+#: ui_tarifabase.h:260
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancel"
 
-#: tarifaview.cpp:243
+#: tarifaview.cpp:245
 msgid "&No"
-msgstr ""
+msgstr "&No"
 
-#: tarifaview.cpp:243
+#: tarifaview.cpp:245
 msgid "&Si"
-msgstr ""
+msgstr "&Yes"
 
-#: plugintarifas.cpp:76
+#: pluginbf_tarifa.cpp:58
 msgid "&Tarifas"
 msgstr ""
 
-#: ui_tarifalistbase.h:179 ui_tarifalistbase.h:184 ui_tarifabase.h:258
-#: ui_tarifabase.h:263
+#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
+#: ui_tarifalistbase.h:170
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Update listing"
 
-#: plugintarifas.cpp:182
+#: pluginbf_tarifa.cpp:159
 msgid "Almacen"
-msgstr ""
+msgstr "Warehouse"
 
-#: ui_tarifabase.h:269
+#: ui_tarifabase.h:258
+#, fuzzy
 msgid "Almacen:"
-msgstr ""
+msgstr "Warehouse"
 
-#: ui_tarifabase.h:247 ui_tarifabase.h:252
+#: ui_tarifabase.h:243 ui_tarifabase.h:246
+#, fuzzy
 msgid "Borrar"
 msgstr ""
+"#-#-#-#-#  bulmalib_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Erase\n"
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Delete\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"Erase"
 
-#: tarifaview.cpp:241 ui_tarifalistbase.h:169 ui_tarifalistbase.h:174
+#: tarifaview.cpp:243 ui_tarifalistbase.h:161 ui_tarifalistbase.h:164
+#, fuzzy
 msgid "Borrar tarifa"
-msgstr ""
+msgstr "Erase"
 
-#: plugintarifas.cpp:183
+#: pluginbf_tarifa.cpp:160
 msgid "Cantidad mayor o igual que"
 msgstr ""
 
 #: listltarifaview.cpp:41 listltarifaview.cpp:58
 msgid "Codigo completo del articulo"
-msgstr ""
+msgstr "Complete code of article"
 
-#: ui_tarifalistbase.h:159 ui_tarifalistbase.h:164
+#: ui_tarifalistbase.h:155 ui_tarifalistbase.h:158
+#, fuzzy
 msgid "Editar tarifa"
+msgstr "Publish article"
+
+#: tarifaview.cpp:191
+msgid "El nombre de la tarifa no puede estar vacio."
 msgstr ""
 
-#: tarifaview.cpp:242
+#: tarifaview.cpp:244
+#, fuzzy
 msgid "Esta a punto de borrar una tarifa. Desea continuar?"
-msgstr ""
+msgstr "This on the verge of erasing article. These data can give problems."
 
-#: ui_tarifabase.h:268
+#: ui_tarifabase.h:257
+#, fuzzy
 msgid "Filtrado de articulos:"
-msgstr ""
+msgstr "Type of article:"
 
-#: ui_tarifabase.h:237 ui_tarifabase.h:242
+#: ui_tarifabase.h:237 ui_tarifabase.h:240
 msgid "Guardar"
-msgstr ""
+msgstr "Keep"
 
-#: plugintarifas.cpp:181 listltarifaview.cpp:38 listltarifaview.cpp:62
+#: pluginbf_tarifa.cpp:158 listltarifaview.cpp:38 listltarifaview.cpp:62
+#, fuzzy
 msgid "ID almacen"
-msgstr ""
+msgstr "id warehouse"
 
-#: plugintarifas.cpp:178 listltarifaview.cpp:37 listltarifaview.cpp:61
+#: pluginbf_tarifa.cpp:155 listltarifaview.cpp:37 listltarifaview.cpp:61
 msgid "ID articulo"
-msgstr ""
+msgstr "ID article"
 
-#: tarifalistsubform.cpp:37 tarifaview.cpp:50 plugintarifas.cpp:179
-#: listltarifaview.cpp:39 listltarifaview.cpp:63
+#: pluginbf_tarifa.cpp:156 tarifalistsubform.cpp:37 listltarifaview.cpp:39
+#: listltarifaview.cpp:63 tarifaview.cpp:50
+#, fuzzy
 msgid "ID tarifa"
 msgstr ""
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Id type iva\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Id type IVA "
 
-#: plugintarifas.cpp:177
+#: pluginbf_tarifa.cpp:154
 msgid "ID variacion tarifa"
+msgstr ""
+
+#: tarifalistview.cpp:109
+msgid "No ha seleccionado ninguna tarifa"
 msgstr ""
 
 #: listltarifaview.cpp:35 listltarifaview.cpp:57
 msgid "Nombre almacen"
-msgstr ""
+msgstr "Name warehouse"
 
 #: listltarifaview.cpp:59
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Name article"
 
-#: tarifalistsubform.cpp:36 tarifaview.cpp:51 listltarifaview.cpp:65
+#: tarifalistsubform.cpp:36 listltarifaview.cpp:65 tarifaview.cpp:51
+#, fuzzy
 msgid "Nombre de la tarifa"
-msgstr ""
+msgstr "Field name"
 
-#: ui_tarifabase.h:267
+#: ui_tarifabase.h:256
+#, fuzzy
 msgid "Nombre de la tarifa:"
-msgstr ""
+msgstr "Name of the organization:"
 
 #: listltarifaview.cpp:42
 msgid "Nombre del articulo"
-msgstr ""
+msgstr "Article name"
 
 #: listltarifaview.cpp:34
+#, fuzzy
 msgid "Nombre tarifa"
-msgstr ""
+msgstr "Name"
 
-#: ui_tarifalistbase.h:149 ui_tarifalistbase.h:154
+#: tarifalistview.cpp:89 ui_tarifalistbase.h:149 ui_tarifalistbase.h:152
+#, fuzzy
 msgid "Nueva tarifa"
-msgstr ""
+msgstr "New femily"
 
 #: listltarifaview.cpp:40 listltarifaview.cpp:64
+#, fuzzy
 msgid "Num de linea"
-msgstr ""
+msgstr "Name of client"
 
-#: plugintarifas.cpp:184
+#: pluginbf_tarifa.cpp:161
+#, fuzzy
 msgid "Porcentaje variacion"
-msgstr ""
+msgstr "Percentage of load..."
 
 #: listltarifaview.cpp:36 listltarifaview.cpp:60
+#, fuzzy
 msgid "Precio de venta"
-msgstr ""
+msgstr "Description of the account"
 
-#: tarifaview.cpp:47 tarifaview.cpp:100 tarifaview.cpp:159
-#: plugintarifas.cpp:180 ui_tarifabase.h:233
+#: pluginbf_tarifa.cpp:157 tarifaview.cpp:47 tarifaview.cpp:102
+#: tarifaview.cpp:161 ui_tarifabase.h:234
 msgid "Tarifa"
 msgstr ""
 
@@ -129,11 +184,15 @@ msgstr ""
 msgid "Tarifa edicion"
 msgstr ""
 
-#: plugintarifas.cpp:77 plugintarifas.cpp:78 plugintarifas.cpp:161
-#: tarifalistview.cpp:43 ui_tarifalistbase.h:146
+#: pluginbf_tarifa.cpp:59 pluginbf_tarifa.cpp:60 pluginbf_tarifa.cpp:138
+#: tarifalistview.cpp:43 ui_tarifalistbase.h:147
 msgid "Tarifas"
 msgstr ""
 
-#: plugintarifas.cpp:114
+#: pluginbf_tarifa.cpp:168
+msgid "Variacion de tarifas"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:91
 msgid "plugintarifas"
 msgstr ""

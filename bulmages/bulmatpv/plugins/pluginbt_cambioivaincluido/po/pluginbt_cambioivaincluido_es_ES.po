@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -115,71 +115,75 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_cambiobase.h:358
+#: ui_cambiobase.h:368
 msgid "."
 msgstr "."
 
-#: ui_cambiobase.h:357
+#: ui_cambiobase.h:367
 msgid "0"
 msgstr "0"
 
-#: ui_cambiobase.h:354
+#: ui_cambiobase.h:364
 msgid "1"
 msgstr "1"
 
-#: ui_cambiobase.h:355
+#: ui_cambiobase.h:365
 msgid "2"
 msgstr "2"
 
-#: ui_cambiobase.h:356
+#: ui_cambiobase.h:366
 msgid "3"
 msgstr "3"
 
-#: ui_cambiobase.h:351
+#: ui_cambiobase.h:361
 msgid "4"
 msgstr "4"
 
-#: ui_cambiobase.h:352
+#: ui_cambiobase.h:362
 msgid "5"
 msgstr "5"
 
-#: ui_cambiobase.h:353
+#: ui_cambiobase.h:363
 msgid "6"
 msgstr "6"
 
-#: ui_cambiobase.h:348
+#: ui_cambiobase.h:358
 msgid "7"
 msgstr "7"
 
-#: ui_cambiobase.h:349
+#: ui_cambiobase.h:359
 msgid "8"
 msgstr "8"
 
-#: ui_cambiobase.h:350
+#: ui_cambiobase.h:360
 msgid "9"
 msgstr "9"
 
-#: ui_cambiobase.h:347
+#: ui_cambiobase.h:357
 msgid "A devolver:"
 msgstr "A devolver:"
 
-#: ui_cambiobase.h:359
+#: ui_cambiobase.h:369
 msgid "C"
 msgstr "C"
 
-#: ui_cambiobase.h:362
+#: ui_cambiobase.h:372
 msgid "CANCELAR"
 msgstr "CANCELAR"
+
+#: pluginbt_cambioivaincluido.cpp:93
+msgid "Cambio"
+msgstr ""
 
 #: pluginbt_cambioivaincluido.cpp:79
 msgid "Cobro"
 msgstr "Cobro"
 
-#: ui_cambiobase.h:344
+#: ui_cambiobase.h:354
 msgid "Dialog"
 msgstr "Dialog"
 
-#: ui_cambiobase.h:360
+#: ui_cambiobase.h:370
 msgid "EFECTIVO"
 msgstr "EFECTIVO"
 
@@ -187,29 +191,25 @@ msgstr "EFECTIVO"
 msgid "El ticket esta vacio."
 msgstr "El ticket está vacío."
 
-#: ui_cambiobase.h:346
+#: ui_cambiobase.h:356
 msgid "Entregado:"
 msgstr "Entregado:"
 
-#: ui_cambiobase.h:345
+#: pluginbt_cambioivaincluido.cpp:92
+msgid "Pagado"
+msgstr "Pagado"
+
+#: pluginbt_cambioivaincluido.cpp:94
+msgid "Total"
+msgstr "Total"
+
+#: ui_cambiobase.h:355
 msgid "Total a cobrar:"
 msgstr "Total a cobrar:"
 
-#: ui_cambiobase.h:361
+#: ui_cambiobase.h:371
 msgid "VISA"
 msgstr "VISA"
-
-#: pluginbt_cambioivaincluido.cpp:93
-msgid "cambio"
-msgstr ""
-
-#: pluginbt_cambioivaincluido.cpp:92
-msgid "pagado"
-msgstr ""
-
-#: pluginbt_cambioivaincluido.cpp:94
-msgid "total"
-msgstr ""
 
 #~ msgid "00"
 #~ msgstr "00"

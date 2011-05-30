@@ -8,85 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbc_mayor.cpp:97
+#: pluginbc_mayor.cpp:91
 msgid "&Ver"
 msgstr ""
 
-#: pluginbc_mayor.cpp:101
+#: pluginbc_mayor.cpp:93
 msgid "&Libro Mayor"
 msgstr ""
 
-#: pluginbc_mayor.cpp:102
+#: pluginbc_mayor.cpp:94
 msgid "Permite ver el mayor"
 msgstr ""
 
-#: pluginbc_mayor.cpp:103
+#: pluginbc_mayor.cpp:95
 msgid "Podra disponer de la informacion del mayor"
-msgstr ""
-
-#: bcextractoview.cpp:52 ui_bcextractobase.h:714
-msgid "Extracto de Cuentas"
-msgstr ""
-
-#: bcextractoview.cpp:59
-msgid "Cuenta Inicial:"
-msgstr ""
-
-#: bcextractoview.cpp:66
-msgid "Cuenta Final:"
-msgstr ""
-
-#: bcextractoview.cpp:73
-msgid "Cuenta Contrapartida:"
-msgstr ""
-
-#: bcextractoview.cpp:547
-msgid "Cargando Extracto de Cuentas"
-msgstr ""
-
-#: bcextractoview.cpp:585 ui_bcextractobase.h:769 ui_bcextractobase.h:772
-msgid "Guardar punteo"
-msgstr ""
-
-#: bcextractoview.cpp:587
-msgid "Punteos (*.pto)"
-msgstr ""
-
-#: bcextractoview.cpp:623 ui_bcextractobase.h:783 ui_bcextractobase.h:786
-msgid "Borrar punteo"
-msgstr ""
-
-#: bcextractoview.cpp:624
-msgid ""
-"Se dispone a borrar el punteo. Este "
-"cambio                                                 es irrecuperable si "
-"no ha guardado su punteo.                                                 "
-"Desea continuar?"
-msgstr ""
-
-#: bcextractoview.cpp:639
-msgid "Se ha producido un error"
-msgstr ""
-
-#: bcextractoview.cpp:655 ui_bcextractobase.h:776 ui_bcextractobase.h:779
-msgid "Cargar punteo"
-msgstr ""
-
-#: bcextractoview.cpp:657
-msgid "Punteo (*.pto);;Todos los archivos (*)"
-msgstr ""
-
-#: bcextractoview.cpp:924
-msgid "Generando Extracto "
 msgstr ""
 
 #: bcextractosubform.cpp:46
@@ -211,6 +154,62 @@ msgstr ""
 
 #: bcextractosubform.cpp:98 bcextractosubform.cpp:117
 msgid "Mostrar diario (ano)"
+msgstr ""
+
+#: bcextractoview.cpp:52 ui_bcextractobase.h:714
+msgid "Extracto de Cuentas"
+msgstr ""
+
+#: bcextractoview.cpp:59
+msgid "Cuenta Inicial:"
+msgstr ""
+
+#: bcextractoview.cpp:66
+msgid "Cuenta Final:"
+msgstr ""
+
+#: bcextractoview.cpp:73
+msgid "Cuenta Contrapartida:"
+msgstr ""
+
+#: bcextractoview.cpp:547
+msgid "Cargando Extracto de Cuentas"
+msgstr ""
+
+#: bcextractoview.cpp:585 ui_bcextractobase.h:769 ui_bcextractobase.h:772
+msgid "Guardar punteo"
+msgstr ""
+
+#: bcextractoview.cpp:587
+msgid "Punteos (*.pto)"
+msgstr ""
+
+#: bcextractoview.cpp:623 ui_bcextractobase.h:783 ui_bcextractobase.h:786
+msgid "Borrar punteo"
+msgstr ""
+
+#: bcextractoview.cpp:624
+msgid ""
+"Se dispone a borrar el punteo. Este "
+"cambio                                                 es irrecuperable si "
+"no ha guardado su punteo.                                                 "
+"Desea continuar?"
+msgstr ""
+
+#: bcextractoview.cpp:639
+msgid "Se ha producido un error"
+msgstr ""
+
+#: bcextractoview.cpp:655 ui_bcextractobase.h:776 ui_bcextractobase.h:779
+msgid "Cargar punteo"
+msgstr ""
+
+#: bcextractoview.cpp:657
+msgid "Punteo (*.pto);;Todos los archivos (*)"
+msgstr ""
+
+#: bcextractoview.cpp:924
+msgid "Generando Extracto "
 msgstr ""
 
 #: ui_bcextractobase.h:715

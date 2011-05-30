@@ -1,60 +1,113 @@
-#: ui_zbase.h:327
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 18:00+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_familiastpvbase.h:140 ui_articulotpvbase.h:154
+msgid "#0000; "
+msgstr ""
+
+#: ui_zbase.h:314
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accept"
 
-#: ui_zbase.h:328
+#: ui_zbase.h:315
 msgid "&Cancelar"
+msgstr "&Cancel"
+
+#: pluginbf_bulmatpv.cpp:69
+msgid "&Cuadres de Caja"
 msgstr ""
 
-#: ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289 ui_zlistbase.h:294
+#: pluginbf_bulmatpv.cpp:63
+msgid "&Ventas"
+msgstr ""
+
+#: ui_articulotpvbase.h:155
+msgid "0"
+msgstr ""
+
+#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Update listing"
 
-#: zview.cpp:64 zlist.cpp:61 ui_zbase.h:321
+#: zview.cpp:64 zlist.cpp:60 ui_zbase.h:308
 msgid "Almacen"
-msgstr ""
+msgstr "Warehouse"
 
-#: zlist.cpp:192
+#: zlist.cpp:196
 msgid "Almacenes"
-msgstr ""
+msgstr "Warehouses"
 
 #: zview.cpp:80
+#, fuzzy
 msgid "Anulado"
+msgstr "Annual"
+
+#: ui_articulotpvbase.h:150
+msgid "Articulo visible en TPV."
 msgstr ""
 
 #: zview.cpp:83
 msgid "Base Imponible"
-msgstr ""
+msgstr "Tax basis"
 
-#: ui_zbase.h:300 ui_zbase.h:305
+#: ui_zbase.h:294 ui_zbase.h:297
+#, fuzzy
 msgid "Borrar almacen"
-msgstr ""
+msgstr "Erase letters patent"
 
-#: ui_zlistbase.h:245 ui_zlistbase.h:250
+#: ui_zlistbase.h:237 ui_zlistbase.h:240
+#, fuzzy
 msgid "Borrar contrato"
-msgstr ""
+msgstr "Erase quota"
 
-#: ui_zlistbase.h:298
+#: ui_zlistbase.h:271
 msgid "Buscar:"
-msgstr ""
+msgstr "Look for:"
 
-#: ui_zlistbase.h:299
+#: ui_zlistbase.h:272
 msgid "Caducados"
 msgstr ""
 
-#: ui_zlistbase.h:278 ui_zlistbase.h:283
+#: ui_familiastpvbase.h:142 ui_articulotpvbase.h:157
+msgid "Codigo color:"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:105
+msgid "Color en TPV"
+msgstr ""
+
+#: ui_familiastpvbase.h:141 ui_articulotpvbase.h:156
+msgid "Color recuadro:"
+msgstr ""
+
+#: ui_zlistbase.h:258 ui_zlistbase.h:261
 msgid "Configurar listado"
-msgstr ""
+msgstr "Form listing"
 
-#: ui_zbase.h:309
+#: ui_zbase.h:300
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
-#: ui_zbase.h:297
+#: ui_zbase.h:292
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
-#: ui_zbase.h:284
+#: ui_zbase.h:283
 msgid "Cuadre de Caja"
 msgstr ""
 
@@ -62,106 +115,166 @@ msgstr ""
 msgid "Cuadre de caja"
 msgstr ""
 
-#: ui_zlistbase.h:219
+#: ui_zlistbase.h:220
 msgid "Cuadres de Caja"
 msgstr ""
 
 #: zview.cpp:74
 msgid "Descripcion"
-msgstr ""
+msgstr "Description"
 
-#: ui_zlistbase.h:234 ui_zlistbase.h:239
+#: ui_zlistbase.h:230 ui_zlistbase.h:233
+#, fuzzy
 msgid "Editar contrato"
-msgstr ""
+msgstr "Publish client"
 
-#: zview.cpp:93
+#: zview.cpp:94
+#, fuzzy
 msgid "Error al crear el almacen"
-msgstr ""
+msgstr "Error when creating the seat"
 
-#: zlist.cpp:180
+#: zlist.cpp:184
+#, fuzzy
 msgid "Error al editar el almacen"
+msgstr "Error when creating the seat"
+
+#: pluginbf_bulmatpv.cpp:103
+msgid "Etiqueta visible en TPV"
 msgstr ""
 
-#: zview.cpp:59 zview.cpp:76 zlist.cpp:59 ui_zbase.h:322
+#: ui_articulotpvbase.h:151
+msgid "Etiqueta visible en TPV."
+msgstr ""
+
+#: ui_familiastpvbase.h:137
+msgid "Familia visible en TPV."
+msgstr ""
+
+#: zview.cpp:59 zview.cpp:76 zlist.cpp:58 ui_zbase.h:309
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
-#: ui_zlistbase.h:267 ui_zlistbase.h:272
+#: ui_zlistbase.h:251 ui_zlistbase.h:254
+#, fuzzy
 msgid "Filtrar contratos"
-msgstr ""
+msgstr "Filter listing"
 
 #: zview.cpp:79
 msgid "Forma de pago"
-msgstr ""
+msgstr "Mode of payment"
 
-#: ui_zbase.h:326
+#: ui_zbase.h:313
 msgid "General"
-msgstr ""
+msgstr "General"
 
-#: ui_zbase.h:288 ui_zbase.h:293
+#: ui_zbase.h:286 ui_zbase.h:289
+#, fuzzy
 msgid "Guardar almacen"
-msgstr ""
+msgstr "Keep balance"
 
-#: zview.cpp:60 zview.cpp:81 zlist.cpp:60 ui_zbase.h:323
+#: zview.cpp:60 zview.cpp:81 zlist.cpp:59 ui_zbase.h:310
+#, fuzzy
 msgid "Hora"
 msgstr ""
+"#-#-#-#-#  bulmalib_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Erase\n"
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Delete\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"Erase"
 
-#: zlist.cpp:58
+#: zlist.cpp:57
 msgid "ID Z"
 msgstr ""
 
 #: zview.cpp:58
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: zview.cpp:72
 msgid "Id albaran"
-msgstr ""
+msgstr "Id letters patent"
 
 #: zview.cpp:78
+#, fuzzy
 msgid "Id forma de pago"
-msgstr ""
+msgstr "Mode of payment"
 
-#: zview.cpp:63 zlist.cpp:64
+#: zview.cpp:63 zlist.cpp:63
+#, fuzzy
 msgid "Id. almacen"
-msgstr ""
+msgstr "id warehouse"
 
-#: ui_zlistbase.h:256 ui_zlistbase.h:261
+#: ui_zlistbase.h:244 ui_zlistbase.h:247
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Print listing"
 
 #: zview.cpp:84
+#, fuzzy
 msgid "Impuestos"
+msgstr "Imputation"
+
+#: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
+msgid "Listado de Cuadres de Caja"
 msgstr ""
 
-#: ui_zlistbase.h:223 ui_zlistbase.h:228
+#: ui_zlistbase.h:223 ui_zlistbase.h:226
+#, fuzzy
 msgid "Nuevo contrato"
-msgstr ""
+msgstr "New account"
 
-#: ui_zbase.h:324
+#: ui_zbase.h:311
+#, fuzzy
 msgid "Num. Tickets"
-msgstr ""
+msgstr "Number of quotas"
 
 #: zview.cpp:62
+#, fuzzy
 msgid "Num. tickets"
-msgstr ""
+msgstr "Number of quotas"
 
 #: zview.cpp:73
+#, fuzzy
 msgid "Numero"
+msgstr "New"
+
+#: ui_familiastpvbase.h:138 ui_articulotpvbase.h:152
+msgid "Orden de aparicion:"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:104
+msgid "Orden en TPV"
+msgstr ""
+
+#: ui_familiastpvbase.h:139 ui_articulotpvbase.h:153
+msgid "Orden:"
 msgstr ""
 
 #: zview.cpp:77
+#, fuzzy
 msgid "Procesado"
-msgstr ""
+msgstr "Pro&cessings"
 
 #: zview.cpp:75
 msgid "Referencia"
+msgstr "Reference"
+
+#: ui_familiastpvbase.h:143 ui_articulotpvbase.h:158
+msgid "Seleccionar color"
 msgstr ""
 
-#: zlist.cpp:63
+#: pluginbf_bulmatpv.cpp:110 pluginbf_bulmatpv.cpp:123
+msgid "T.P.V."
+msgstr ""
+
+#: zlist.cpp:62
 msgid "Tickets"
 msgstr ""
 
-#: zview.cpp:61 zview.cpp:82 zlist.cpp:62 ui_zbase.h:325
+#: zview.cpp:61 zview.cpp:82 zlist.cpp:61 ui_zbase.h:312
 msgid "Total"
+msgstr "Total"
+
+#: pluginbf_bulmatpv.cpp:102
+msgid "Visible en TPV"
 msgstr ""

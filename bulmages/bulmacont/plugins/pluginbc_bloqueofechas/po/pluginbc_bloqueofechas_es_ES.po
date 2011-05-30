@@ -8,21 +8,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:54+0200\n"
 "PO-Revision-Date: 2009-11-27 17:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: pluginbc_bloqueofechas.cpp:92
+#: pluginbc_bloqueofechas.cpp:52
 msgid "&Bloqueo de Fechas"
 msgstr ""
 
-#: pluginbc_bloqueofechas.cpp:88
+#: pluginbc_bloqueofechas.cpp:50
 msgid "&Herramientas"
 msgstr "&Herramientas"
 
@@ -62,7 +62,7 @@ msgstr "Bloquear fechas"
 msgid "Bloquear fechas"
 msgstr "Bloquear fechas"
 
-#: pluginbc_bloqueofechas.cpp:93 pluginbc_bloqueofechas.cpp:94
+#: pluginbc_bloqueofechas.cpp:53 pluginbc_bloqueofechas.cpp:54
 msgid "Bloqueo de Fechas"
 msgstr ""
 
@@ -137,4 +137,3 @@ msgstr "Ponga el año:"
 #: bcbloqueafechaview.cpp:162
 msgid "Septiembre"
 msgstr "Septiembre"
-

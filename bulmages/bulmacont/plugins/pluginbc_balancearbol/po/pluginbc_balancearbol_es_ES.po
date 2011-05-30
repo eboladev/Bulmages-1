@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -115,11 +115,11 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbc_balancearbol.cpp:96
+#: pluginbc_balancearbol.cpp:51
 msgid "&Balance jerarquico"
 msgstr "&Balance jerarquico"
 
-#: pluginbc_balancearbol.cpp:92
+#: pluginbc_balancearbol.cpp:49
 msgid "&Ver"
 msgstr "&Ver"
 
@@ -155,7 +155,7 @@ msgstr "Debe"
 msgid "Debe ejercicio"
 msgstr "Debe ejercicio"
 
-#: balance1view.cpp:294 balance1view.cpp:348
+#: balance1view.cpp:298 balance1view.cpp:352
 msgid "Error con la base de datos"
 msgstr "Error con la base de datos"
 
@@ -187,11 +187,11 @@ msgstr "Haber ejercicio"
 msgid "Imprimir"
 msgstr "Imprimir"
 
-#: balance1view.cpp:336
+#: balance1view.cpp:340
 msgid "Introduzca la Fecha Final"
 msgstr "Introduzca la Fecha Final"
 
-#: balance1view.cpp:331
+#: balance1view.cpp:335
 msgid "Introduzca la Fecha Inicial"
 msgstr "Introduzca la Fecha Inicial"
 
@@ -207,11 +207,11 @@ msgstr "Nivel:"
 msgid "Nombre de la cuenta"
 msgstr "Nombre de la cuenta"
 
-#: pluginbc_balancearbol.cpp:97
+#: pluginbc_balancearbol.cpp:52
 msgid "Permite realizar balances"
 msgstr "Permite realizar balances"
 
-#: pluginbc_balancearbol.cpp:98
+#: pluginbc_balancearbol.cpp:53
 msgid "Podra disponer de la informacion del balance"
 msgstr "Podra disponer de la informacion del balance"
 
@@ -243,27 +243,27 @@ msgstr "Total Debe:"
 msgid "Total Haber:"
 msgstr "Total Haber:"
 
-#: balance1view.cpp:583
+#: balance1view.cpp:587
 msgid "Ver Diario (este anyo)"
 msgstr "Ver Diario (este anyo)"
 
-#: balance1view.cpp:581
+#: balance1view.cpp:585
 msgid "Ver Diario (este dia)"
 msgstr "Ver Diario (este dia)"
 
-#: balance1view.cpp:582
+#: balance1view.cpp:586
 msgid "Ver Diario (este mes)"
 msgstr "Ver Diario (este mes)"
 
-#: balance1view.cpp:587
+#: balance1view.cpp:591
 msgid "Ver extracto (este anyo)"
 msgstr "Ver extracto (este anyo)"
 
-#: balance1view.cpp:585
+#: balance1view.cpp:589
 msgid "Ver extracto (este dia)"
 msgstr "Ver extracto (este dia)"
 
-#: balance1view.cpp:586
+#: balance1view.cpp:590
 msgid "Ver extracto (este mes)"
 msgstr "Ver extracto (este mes)"
 

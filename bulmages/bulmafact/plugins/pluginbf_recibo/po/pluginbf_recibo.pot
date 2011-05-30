@@ -8,11 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,101 +20,161 @@ msgstr ""
 msgid "Actividad:"
 msgstr ""
 
-#: reciboslist.cpp:126
+#: reciboslist.cpp:131
 msgid "Todos los recibos"
 msgstr ""
 
-#: reciboslist.cpp:127
+#: reciboslist.cpp:132
 msgid "Recibos pagados"
 msgstr ""
 
-#: reciboslist.cpp:128
+#: reciboslist.cpp:133
 msgid "Recibos no pagados"
 msgstr ""
 
-#: reciboslist.cpp:211 pluginbf_recibo.cpp:117 pluginbf_recibo.cpp:118
+#: reciboslist.cpp:217 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
 #: ui_reciboslistbase.h:305
 msgid "Recibos"
 msgstr ""
 
-#: reciboslist.cpp:228
+#: reciboslist.cpp:234
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: reciboslist.cpp:243
+#: reciboslist.cpp:249
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: reciboslist.cpp:271
+#: reciboslist.cpp:277
 msgid "Debe seleccionar una fila primero"
 msgstr ""
 
-#: reciboslist.cpp:289
+#: reciboslist.cpp:296
 msgid "Editar recibo"
 msgstr ""
 
-#: reciboslist.cpp:290
+#: reciboslist.cpp:297
 msgid "Borrar recibo"
 msgstr ""
 
-#: reciboslist.cpp:343
+#: reciboslist.cpp:351
 msgid "ID Recibo"
 msgstr ""
 
-#: reciboslist.cpp:344 emitirrecibosview.cpp:57 reciboview.cpp:52
+#: reciboslist.cpp:352 reciboview.cpp:53 emitirrecibosview.cpp:57
 msgid "Cantidad"
 msgstr ""
 
-#: reciboslist.cpp:345 reciboview.cpp:57 ui_recibobase.h:381
+#: reciboslist.cpp:353 reciboview.cpp:58 ui_recibobase.h:381
 msgid "Pagado"
 msgstr ""
 
-#: reciboslist.cpp:346 reciboview.cpp:58 ui_recibobase.h:382
+#: reciboslist.cpp:354 reciboview.cpp:59 ui_recibobase.h:382
 msgid "Devuelto"
 msgstr ""
 
-#: reciboslist.cpp:347 ui_recibobase.h:384
+#: reciboslist.cpp:355 ui_recibobase.h:384
 msgid "Fecha"
 msgstr ""
 
-#: reciboslist.cpp:348
+#: reciboslist.cpp:356
 msgid "ID Tutor"
 msgstr ""
 
-#: reciboslist.cpp:349 ui_recibobase.h:383
+#: reciboslist.cpp:357 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr ""
 
-#: reciboslist.cpp:350
+#: reciboslist.cpp:358
 msgid "Tutor"
 msgstr ""
 
-#: pluginbf_recibo.cpp:115
+#: pluginbf_recibo.cpp:55
+msgid "&Economia"
+msgstr ""
+
+#: pluginbf_recibo.cpp:58
 msgid "&Recibos"
 msgstr ""
 
-#: pluginbf_recibo.cpp:123
+#: pluginbf_recibo.cpp:66
 msgid "&Nuevo recibo"
 msgstr ""
 
-#: pluginbf_recibo.cpp:125 pluginbf_recibo.cpp:126
+#: pluginbf_recibo.cpp:68 pluginbf_recibo.cpp:69
 msgid "Nuevo recibo"
 msgstr ""
 
-#: pluginbf_recibo.cpp:132
+#: pluginbf_recibo.cpp:75
 msgid "Recibos &Automaticos"
 msgstr ""
 
-#: pluginbf_recibo.cpp:134 pluginbf_recibo.cpp:135
+#: pluginbf_recibo.cpp:77 pluginbf_recibo.cpp:78
 msgid "Emitir recibos"
 msgstr ""
 
-#: emitirrecibosview.cpp:53
-msgid "EmitirRecibos"
+#: pluginbf_recibo.cpp:141 pluginbf_recibo.cpp:142
+msgid "Generar pedido"
 msgstr ""
 
-#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:80
+#: reciboview.cpp:49
+msgid "Recibo"
+msgstr ""
+
+#: reciboview.cpp:52 reciboview.cpp:81 emitirrecibosview.cpp:56
 msgid "ID recibo"
+msgstr ""
+
+#: reciboview.cpp:54
+msgid "ID cliente"
+msgstr ""
+
+#: reciboview.cpp:55
+msgid "ID Forma Pago"
+msgstr ""
+
+#: reciboview.cpp:56
+msgid "Descripcion"
+msgstr ""
+
+#: reciboview.cpp:57
+msgid "Fecha de creacion"
+msgstr ""
+
+#: reciboview.cpp:67
+msgid "Tutor/Socio:"
+msgstr ""
+
+#: reciboview.cpp:80
+msgid "Identificador"
+msgstr ""
+
+#: reciboview.cpp:82
+msgid "Cantidad Linea Recibo"
+msgstr ""
+
+#: reciboview.cpp:83
+msgid "Concepto"
+msgstr ""
+
+#: reciboview.cpp:94 emitirrecibosview.cpp:73
+msgid "Error al crear el recibo"
+msgstr ""
+
+#: reciboview.cpp:128
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: reciboview.cpp:226
+msgid "Recibo reemitido"
+msgstr ""
+
+#: reciboview.cpp:228
+msgid "Error en la creacion del recibo"
+msgstr ""
+
+#: emitirrecibosview.cpp:53 ui_emitirrecibosbase.h:240
+msgid "Emitir Recibos"
 msgstr ""
 
 #: emitirrecibosview.cpp:58
@@ -126,116 +185,43 @@ msgstr ""
 msgid "Id Forma PAgo"
 msgstr ""
 
-#: emitirrecibosview.cpp:73 reciboview.cpp:93
-msgid "Error al crear el recibo"
-msgstr ""
-
 #: emitirrecibosview.cpp:161
 msgid "Terminado"
 msgstr ""
 
-#: reciboview.cpp:48
-msgid "Recibo"
+#: ui_emitirrecibosbase.h:237
+msgid "Recibos Automaticos"
 msgstr ""
 
-#: reciboview.cpp:53
-msgid "ID cliente"
+#: ui_emitirrecibosbase.h:243
+msgid "Emiitr Recibos"
 msgstr ""
 
-#: reciboview.cpp:54
-msgid "ID Forma Pago"
+#: ui_emitirrecibosbase.h:246 ui_reciboslistbase.h:318
+msgid "Ctrl+N"
 msgstr ""
 
-#: reciboview.cpp:55
-msgid "Descripcion"
+#: ui_emitirrecibosbase.h:247
+msgid "Emitir las Cuotas de Socios"
 msgstr ""
 
-#: reciboview.cpp:56
-msgid "Fecha de creacion"
+#: ui_emitirrecibosbase.h:248
+msgid "Emitir todas las Actividades"
 msgstr ""
 
-#: reciboview.cpp:66
-msgid "Tutor/Socio:"
+#: ui_emitirrecibosbase.h:249
+msgid "Emitir sólo la actividad Seleccionada"
 msgstr ""
 
-#: reciboview.cpp:79
-msgid "Identificador"
+#: ui_emitirrecibosbase.h:250
+msgid "Notificar por e-mail"
 msgstr ""
 
-#: reciboview.cpp:81
-msgid "Cantidad Linea Recibo"
-msgstr ""
-
-#: reciboview.cpp:82
-msgid "Concepto"
-msgstr ""
-
-#: reciboview.cpp:124
-msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-
-#: reciboview.cpp:217
-msgid "Recibo reemitido"
-msgstr ""
-
-#: ui_recibobase.h:347
-msgid "Nuevo Recibo"
-msgstr ""
-
-#: ui_recibobase.h:350 ui_recibobase.h:353
-msgid "Guardar cobro"
-msgstr ""
-
-#: ui_recibobase.h:356
-msgid "Ctrl+S"
-msgstr ""
-
-#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
-#: ui_recibobase.h:369
-msgid "Borrar cobro"
-msgstr ""
-
-#: ui_recibobase.h:364 ui_reciboslistbase.h:334
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_recibobase.h:372 ui_recibobase.h:380
-msgid "Ctrl+I"
-msgstr ""
-
-#: ui_recibobase.h:374 ui_recibobase.h:377
-msgid "Reemitir Recibo"
-msgstr ""
-
-#: ui_recibobase.h:385
-msgid "Total"
-msgstr ""
-
-#: ui_recibobase.h:386
-msgid "&Datos generales"
-msgstr ""
-
-#: ui_recibobase.h:387
-msgid "Comentarios:"
-msgstr ""
-
-#: ui_recibobase.h:388
-msgid "Otros datos"
-msgstr ""
-
-#: ui_recibobase.h:389
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_recibobase.h:390
-msgid "&Cancelar"
-msgstr ""
-
-#: ui_reciboslistbase.h:306 ui_emitirrecibosbase.h:251
+#: ui_emitirrecibosbase.h:251 ui_reciboslistbase.h:306
 msgid "Fecha inicial:"
 msgstr ""
 
-#: ui_reciboslistbase.h:307 ui_emitirrecibosbase.h:252
+#: ui_emitirrecibosbase.h:252 ui_reciboslistbase.h:307
 msgid "Fecha final:"
 msgstr ""
 
@@ -251,10 +237,6 @@ msgstr ""
 msgid "Nuevo Actividad"
 msgstr ""
 
-#: ui_reciboslistbase.h:318 ui_emitirrecibosbase.h:246
-msgid "Ctrl+N"
-msgstr ""
-
 #: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
 msgid "Editar Actividad"
 msgstr ""
@@ -265,6 +247,10 @@ msgstr ""
 
 #: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
 msgid "Borrar Actividad"
+msgstr ""
+
+#: ui_reciboslistbase.h:334 ui_recibobase.h:364
+msgid "Ctrl+D"
 msgstr ""
 
 #: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
@@ -303,30 +289,51 @@ msgstr ""
 msgid "Buscar:"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:237
-msgid "Recibos Automaticos"
+#: ui_recibobase.h:347
+msgid "Nuevo Recibo"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:240
-msgid "Emitir Recibos"
+#: ui_recibobase.h:350 ui_recibobase.h:353
+msgid "Guardar cobro"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:243
-msgid "Emiitr Recibos"
+#: ui_recibobase.h:356
+msgid "Ctrl+S"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:247
-msgid "Emitir las Cuotas de Socios"
+#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
+#: ui_recibobase.h:369
+msgid "Borrar cobro"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:248
-msgid "Emitir todas las Actividades"
+#: ui_recibobase.h:372 ui_recibobase.h:380
+msgid "Ctrl+I"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:249
-msgid "Emitir sólo la actividad Seleccionada"
+#: ui_recibobase.h:374 ui_recibobase.h:377
+msgid "Reemitir Recibo"
 msgstr ""
 
-#: ui_emitirrecibosbase.h:250
-msgid "Notificar por e-mail"
+#: ui_recibobase.h:385
+msgid "Total"
+msgstr ""
+
+#: ui_recibobase.h:386
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_recibobase.h:387
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_recibobase.h:388
+msgid "Otros datos"
+msgstr ""
+
+#: ui_recibobase.h:389
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_recibobase.h:390
+msgid "&Cancelar"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-05-30 17:36+0200\n"
 "PO-Revision-Date: 2011-02-01 09:44+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
@@ -116,11 +116,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
-#: pluginbc_corrector.cpp:81
+#: correctorwidget.cpp:313
+msgid " a "
+msgstr ""
+
+#: pluginbc_corrector.cpp:73
 msgid "&Corrector"
 msgstr "&Correcteur"
 
-#: pluginbc_corrector.cpp:75
+#: pluginbc_corrector.cpp:69
 msgid "&Ver"
 msgstr "&Afficher"
 
@@ -136,6 +140,14 @@ msgstr "Note avec description "
 msgid "Apunte con Saldo"
 msgstr "Note avec solde"
 
+#: correctorwidget.cpp:320
+msgid "Cambiado con exito."
+msgstr ""
+
+#: correctorwidget.cpp:313
+msgid "Cambiar codigo de cuenta?"
+msgstr ""
+
 #: ui_confreglasbase.h:295
 msgid "Cerrar"
 msgstr "Fermer"
@@ -148,15 +160,15 @@ msgstr "Vérification des écritures"
 msgid "Condicion:"
 msgstr "Condition :"
 
-#: ui_correctorbase.h:102 ui_correctorbase.h:105
+#: ui_correctorbase.h:104 ui_correctorbase.h:107
 msgid "Configurar"
 msgstr "Configurer"
 
-#: pluginbc_corrector.cpp:55 ui_correctorbase.h:93
+#: pluginbc_corrector.cpp:55 ui_correctorbase.h:95
 msgid "Corrector"
 msgstr "Correcteur"
 
-#: pluginbc_corrector.cpp:85
+#: pluginbc_corrector.cpp:77
 msgid ""
 "Corrector.\n"
 "\n"
@@ -166,23 +178,29 @@ msgstr ""
 "\n"
 "Montrer/Occulter  le correcteur"
 
-#: ui_correctorbase.h:95 ui_correctorbase.h:98
+#: ui_correctorbase.h:97 ui_correctorbase.h:100
 msgid "Corregir"
 msgstr "Corriger"
 
 #: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
-msgstr "Il doit exister des registres qui remplissent cette condition dans cette période"
+msgstr ""
+"Il doit exister des registres qui remplissent cette condition dans cette "
+"période"
 
-#: pluginbc_corrector.cpp:84
+#: correctorwidget.cpp:313
+msgid "El codigo de la cuenta: "
+msgstr ""
+
+#: pluginbc_corrector.cpp:76
 msgid "Muestra/oculta el corrector"
 msgstr "Montrer/Occulter  le correcteur"
 
-#: correctorwidget.cpp:211
+#: correctorwidget.cpp:329
 msgid "No se puede acceder al error"
 msgstr "On ne peut pas accéder à l'erreur"
 
-#: correctorwidget.cpp:211
+#: correctorwidget.cpp:329
 msgid "Opcion no implementada"
 msgstr "Option non implémentée"
 
@@ -214,5 +232,6 @@ msgstr "plus grand"
 msgid "menor"
 msgstr "plus petit"
 
-
-
+#: correctorwidget.cpp:313
+msgid "se cambiara de "
+msgstr ""

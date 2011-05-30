@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -115,7 +115,11 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbl_importcsv.cpp:56
+#: pluginbl_importcsv.cpp:99
+msgid "&Herramientas"
+msgstr "&Herramientas"
+
+#: pluginbl_importcsv.cpp:92
 msgid "&Importacion CSV"
 msgstr "&Importacion CSV"
 
@@ -151,7 +155,7 @@ msgstr "Composicion de Campos"
 msgid "Error al crear la ventana de importacion"
 msgstr "Error al crear la ventana de importacion"
 
-#: pluginbl_importcsv.cpp:57 pluginbl_importcsv.cpp:58
+#: pluginbl_importcsv.cpp:93 pluginbl_importcsv.cpp:94
 msgid "Importacion CSV"
 msgstr "Importacion CSV"
 

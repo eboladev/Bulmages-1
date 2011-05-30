@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:38+0200\n"
 "PO-Revision-Date: 2009-10-17 21:59+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_bcextractoimprimirbase.h:141
@@ -30,7 +30,7 @@ msgstr "&Imprimeix"
 msgid "&Incluir asientos abiertos"
 msgstr "&Incloure assentaments oberts"
 
-#: pluginbc_mayor.cpp:101
+#: pluginbc_mayor.cpp:93
 msgid "&Libro Mayor"
 msgstr ""
 
@@ -42,7 +42,7 @@ msgstr "&Text pla"
 msgid "&Todos"
 msgstr "&Tots"
 
-#: pluginbc_mayor.cpp:97
+#: pluginbc_mayor.cpp:91
 msgid "&Ver"
 msgstr "&Veure"
 
@@ -283,11 +283,11 @@ msgstr ""
 msgid "Orden"
 msgstr "Ordre"
 
-#: pluginbc_mayor.cpp:102
+#: pluginbc_mayor.cpp:94
 msgid "Permite ver el mayor"
 msgstr ""
 
-#: pluginbc_mayor.cpp:103
+#: pluginbc_mayor.cpp:95
 msgid "Podra disponer de la informacion del mayor"
 msgstr ""
 

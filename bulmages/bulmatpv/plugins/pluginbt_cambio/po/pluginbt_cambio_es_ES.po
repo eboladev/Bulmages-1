@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -171,6 +171,10 @@ msgstr "C"
 msgid "CANCELAR"
 msgstr "CANCELAR"
 
+#: pluginbt_cambio.cpp:92
+msgid "Cambio"
+msgstr ""
+
 #: pluginbt_cambio.cpp:79
 msgid "Cobro"
 msgstr "Cobro"
@@ -191,6 +195,10 @@ msgstr "El ticket está vacío."
 msgid "Entregado:"
 msgstr "Entregado:"
 
+#: pluginbt_cambio.cpp:91
+msgid "Pagado"
+msgstr "Pagado"
+
 #: ui_cambiobase.h:507
 msgid "Total a cobrar:"
 msgstr "Total a cobrar:"
@@ -198,11 +206,3 @@ msgstr "Total a cobrar:"
 #: ui_cambiobase.h:523
 msgid "VISA"
 msgstr "VISA"
-
-#: pluginbt_cambio.cpp:92
-msgid "cambio"
-msgstr ""
-
-#: pluginbt_cambio.cpp:91
-msgid "pagado"
-msgstr ""

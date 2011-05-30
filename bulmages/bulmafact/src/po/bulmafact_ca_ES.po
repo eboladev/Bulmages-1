@@ -4,14 +4,14 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:53+0100\n"
+"POT-Creation-Date: 2011-05-30 17:44+0200\n"
 "PO-Revision-Date: 2011-02-22 15:31+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team:  Catalan\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: bfproveedoralbaransubform.cpp:57
@@ -242,8 +242,8 @@ msgid "F11"
 msgstr "F11"
 
 #: bfcompany.cpp:99
-msgid "Facturacion GPL"
-msgstr "Facturació GPL"
+msgid "Facturación GPL"
+msgstr ""
 
 #: bfinformereferencia.cpp:141 bfinformereferencia.cpp:173
 #: bfinformereferencia.cpp:211 bfinformereferencia.cpp:258
@@ -340,7 +340,7 @@ msgstr "Mest&re"
 msgid "Municipio"
 msgstr "Municipi"
 
-#: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:213
+#: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:216
 msgid "Nombre"
 msgstr "Nom"
 
@@ -417,11 +417,11 @@ msgstr "R.E."
 msgid "Referencia"
 msgstr "Referència"
 
-#: bfbulmafact.cpp:199
+#: bfbulmafact.cpp:202
 msgid "Se perderan los cambios no guardados"
 msgstr "Es perdran els canvis no desats"
 
-#: bfbulmafact.cpp:198
+#: bfbulmafact.cpp:201
 msgid "Seguro que desea abandonar el programa "
 msgstr "Segur que desitgeu abandonar el programa"
 
@@ -465,7 +465,7 @@ msgstr "Total Desc."
 msgid "Total Linea"
 msgstr "Total Línia"
 
-#: bfconfiguracionview.cpp:214
+#: bfconfiguracionview.cpp:217
 msgid "Valor"
 msgstr "Valor"
 
@@ -509,6 +509,9 @@ msgstr "Web"
 
 #~ msgid "Concepto descuento"
 #~ msgstr "Concepte descompte"
+
+#~ msgid "Facturacion GPL"
+#~ msgstr "Facturació GPL"
 
 #~ msgid "Id descuento"
 #~ msgstr "Id descompte"

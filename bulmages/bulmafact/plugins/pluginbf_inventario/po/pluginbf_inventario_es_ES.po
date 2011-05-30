@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"POT-Creation-Date: 2011-05-30 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -119,6 +119,10 @@ msgstr ""
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
+#: pluginbf_inventario.cpp:51
+msgid "&Articulos"
+msgstr "&Artículos"
+
 #: ui_inventariobase.h:341
 msgid "&Cancelar"
 msgstr "&Cancelar"
@@ -127,7 +131,7 @@ msgstr "&Cancelar"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: pluginbf_inventario.cpp:78
+#: pluginbf_inventario.cpp:55
 msgid "&Inventarios"
 msgstr "&Inventarios"
 
@@ -135,7 +139,7 @@ msgstr "&Inventarios"
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: pluginbf_inventario.cpp:125
+#: pluginbf_inventario.cpp:93
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -188,15 +192,11 @@ msgstr "Filtrar listado"
 msgid "Guardar inventario"
 msgstr "Guardar inventario"
 
-#: pluginbf_inventario.cpp:129
-msgid "ID Trabajador"
-msgstr "ID Trabajador"
+#: pluginbf_inventario.cpp:96
+msgid "ID validacion"
+msgstr ""
 
-#: pluginbf_inventario.cpp:128
-msgid "ID Validacion"
-msgstr "ID Validacion"
-
-#: pluginbf_inventario.cpp:126
+#: pluginbf_inventario.cpp:94
 msgid "Id Almacen"
 msgstr "Id Almacen"
 
@@ -207,6 +207,10 @@ msgstr "Id articulo"
 #: inventariosview.cpp:283
 msgid "Id inventario"
 msgstr "Id inventario"
+
+#: pluginbf_inventario.cpp:97
+msgid "Id trabajador"
+msgstr "ID trabajador"
 
 #: inventario.cpp:42
 msgid "Identificador inventario"
@@ -225,7 +229,7 @@ msgstr "Imprimir listado"
 msgid "Inventario"
 msgstr "Inventario"
 
-#: pluginbf_inventario.cpp:79 pluginbf_inventario.cpp:80
+#: pluginbf_inventario.cpp:56 pluginbf_inventario.cpp:57
 msgid "Inventarios"
 msgstr "Inventarios"
 
@@ -233,11 +237,11 @@ msgstr "Inventarios"
 msgid "Listado de inventarios"
 msgstr "Listado de inventarios"
 
-#: pluginbf_inventario.cpp:127
+#: pluginbf_inventario.cpp:95
 msgid "Minimo"
 msgstr "Minimo"
 
-#: pluginbf_inventario.cpp:121
+#: pluginbf_inventario.cpp:89
 msgid "Minimos almacen"
 msgstr "Minimos almacen"
 
@@ -289,7 +293,7 @@ msgstr "Si"
 msgid "Stock anterior"
 msgstr "Stock anterior"
 
-#: pluginbf_inventario.cpp:214
+#: pluginbf_inventario.cpp:182
 msgid "Stock minimo superado"
 msgstr "Stock minimo superado"
 
@@ -304,3 +308,9 @@ msgstr "Tiene que escribir una descripcion de inventario antes de guardar"
 #: inventariosview.cpp:124 inventariosview.cpp:151
 msgid "Tiene que seleccionar un inventario"
 msgstr "Tiene que seleccionar un inventario"
+
+#~ msgid "ID Trabajador"
+#~ msgstr "ID Trabajador"
+
+#~ msgid "ID Validacion"
+#~ msgstr "ID Validacion"

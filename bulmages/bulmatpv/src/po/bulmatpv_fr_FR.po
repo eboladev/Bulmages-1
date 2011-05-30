@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:09+0200\n"
+"POT-Creation-Date: 2011-05-30 18:06+0200\n"
 "PO-Revision-Date: 2011-02-15 09:12+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -123,6 +123,14 @@ msgstr "&A propos de"
 msgid "&Cerrar"
 msgstr "&Fermer"
 
+#: btcompany.cpp:1001
+msgid "' en '"
+msgstr ""
+
+#: btcompany.cpp:1001
+msgid "'?"
+msgstr ""
+
 #: ui_btaboutbase.h:287
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -141,8 +149,8 @@ msgstr ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:112pt; font-"
-"weight:4120; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:112pt; "
+"font-weight:4120; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
 "p></body></html>"
@@ -168,8 +176,8 @@ msgstr ""
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
 "weight:600; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Terminal Point de Vente"
-"GPL - Version 0.13.0 -</p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Terminal Point de VenteGPL "
+"- Version 0.13.0 -</p></body></html>"
 
 #: ui_btaboutbase.h:292
 msgid "A&utores"
@@ -203,11 +211,19 @@ msgstr "Bloqué"
 msgid "Borrar"
 msgstr "Effacer"
 
-#: btticket.cpp:117
+#: btticket.cpp:72
+msgid "Cambios"
+msgstr ""
+
+#: btticket.cpp:74
+msgid "Cambios tras guardar"
+msgstr ""
+
+#: btticket.cpp:132
 msgid "Cantidad"
 msgstr "Quantité"
 
-#: main.cxx:162
+#: main.cxx:165
 msgid "Cargando plugins"
 msgstr "Charger le greffon"
 
@@ -219,7 +235,7 @@ msgstr "Fermer"
 msgid "Cliente"
 msgstr "Client"
 
-#: btticket.cpp:125
+#: btticket.cpp:140
 msgid "Codigo articulo"
 msgstr "Code de l'article"
 
@@ -231,15 +247,15 @@ msgstr "Compiler avec la version QT :"
 msgid "Descripcion"
 msgstr "Description "
 
-#: btticket.cpp:120
+#: btticket.cpp:135
 msgid "Descuento"
 msgstr "Remise"
 
-#: btticket.cpp:1051
+#: btticket.cpp:558
 msgid "El ticket esta vacio."
 msgstr "Le ticket est vide"
 
-#: main.cxx:224
+#: main.cxx:233
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr "Erreur inattendu dans BulmaTPV. Le programme se fermera."
 
@@ -255,15 +271,15 @@ msgstr "F11"
 msgid "Hora"
 msgstr "Heure"
 
-#: btticket.cpp:119
+#: btticket.cpp:134
 msgid "IVA"
 msgstr "TVA"
 
-#: btticket.cpp:60 btticket.cpp:115
+#: btticket.cpp:60 btticket.cpp:130
 msgid "Id albaran"
 msgstr "Id bulletin"
 
-#: btticket.cpp:124
+#: btticket.cpp:139
 msgid "Id articulo"
 msgstr "Id article"
 
@@ -275,7 +291,7 @@ msgstr "Id date de bulletin"
 msgid "Id forma de pago"
 msgstr "Id Forme de paiement"
 
-#: btticket.cpp:116
+#: btticket.cpp:131
 msgid "Id linea albaran"
 msgstr "Id ligne de bulletin"
 
@@ -287,11 +303,11 @@ msgstr "Identification"
 msgid "Iglues/BtBulmaTPV"
 msgstr "Iglues/BulmaTPV"
 
-#: main.cxx:174
+#: main.cxx:177
 msgid "Inicializando componentes"
 msgstr "Initier les composants"
 
-#: btcompany.cpp:95
+#: btcompany.cpp:123
 msgid "Inicializando listado de articulos"
 msgstr "Initier la liste d'articles"
 
@@ -299,11 +315,11 @@ msgstr "Initier la liste d'articles"
 msgid "Iniciando clases"
 msgstr "Initier les classes"
 
-#: main.cxx:168
+#: main.cxx:171
 msgid "Lanzando plugins"
 msgstr "Lancer les greffons"
 
-#: main.cxx:131
+#: main.cxx:134
 msgid "Leyendo configuracion"
 msgstr "Lire la configuration"
 
@@ -315,7 +331,7 @@ msgstr "Modifier"
 msgid "Nombre"
 msgstr "Nom"
 
-#: btticket.cpp:126 btticket.cpp:127
+#: btticket.cpp:141 btticket.cpp:142
 msgid "Nombre articulo"
 msgstr "Nom de l'article"
 
@@ -323,7 +339,7 @@ msgstr "Nom de l'article"
 msgid "Num"
 msgstr "Numéro"
 
-#: btticket.cpp:121
+#: btticket.cpp:136
 msgid "Orden"
 msgstr "Ordre"
 
@@ -331,7 +347,7 @@ msgstr "Ordre"
 msgid "Pendiente"
 msgstr "En suspens"
 
-#: btticket.cpp:118
+#: btticket.cpp:133
 msgid "Precio"
 msgstr "Prix"
 
@@ -343,7 +359,7 @@ msgstr "Préference "
 msgid "Referencia"
 msgstr "Référence"
 
-#: btticket.cpp:122
+#: btticket.cpp:137
 msgid "Req. eq."
 msgstr "Req. eq."
 
@@ -363,11 +379,11 @@ msgstr "Sur Qt"
 msgid "Sopor&te"
 msgstr "Suppor&t"
 
-#: main.cxx:180
+#: main.cxx:183
 msgid "Terminado"
 msgstr "Fini"
 
-#: btcompany.cpp:135
+#: btcompany.cpp:160
 msgid "Terminal Punto de Venta GPL"
 msgstr "Terminal Point de Vente GPL"
 
@@ -375,13 +391,21 @@ msgstr "Terminal Point de Vente GPL"
 msgid "Ticket"
 msgstr "Ticket"
 
-#: btticket.cpp:82
+#: btticket.cpp:86
 msgid "Ticket actual"
 msgstr "Ticket actuel"
 
 #: btticket.cpp:63
 msgid "Trabajador"
 msgstr "Salarié"
+
+#: btcompany.cpp:1001
+msgid "Unir ticket '"
+msgstr ""
+
+#: btcompany.cpp:1000
+msgid "Unir tickets"
+msgstr ""
 
 #: ui_btbulmatpvbase.h:105
 msgid "Ventana &Completa"
