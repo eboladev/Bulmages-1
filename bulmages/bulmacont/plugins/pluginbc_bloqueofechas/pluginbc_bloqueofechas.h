@@ -25,27 +25,10 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "pdefs_pluginbc_bloqueofechas.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_BLOQUEOFECHAS_EXPORT int entryPoint ( BcBulmaCont * );
-
-
-class PluginBc_BloqueFechas : public QObject
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    PluginBc_BloqueFechas();
-    ~PluginBc_BloqueFechas();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-};
-
+extern "C" PLUGINBC_BLOQUEOFECHAS_EXPORT int BlAction_triggered( BlAction * );
 
 #endif
 

@@ -36,81 +36,7 @@
 #include "bccuentaview.h"
 
 BcPlanContableListView *g_plancontable;
-
-///
-/**
-**/
-PluginBc_Cuenta::PluginBc_Cuenta()
-{
-    blDebug ( "PluginBc_Cuenta::PluginBc_Cuenta", 0 );
-    blDebug ( "END PluginBc_Cuenta::PluginBc_Cuenta", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Cuenta::~PluginBc_Cuenta()
-{
-    blDebug ( "PluginBc_Cuenta::~PluginBc_Cuenta", 0 );
-    blDebug ( "END PluginBc_Cuenta::~PluginBc_Cuenta", 0 );
-}
-
-
-
-///
-/**
-**/
-void PluginBc_Cuenta::elslot()
-{
-    blDebug ( "PluginBc_Cuenta::elslot", 0 );
-    if (g_plancontable == NULL) {
-      g_plancontable = new BcPlanContableListView ( ( BcCompany * ) mainCompany(), 0 );
-      g_plancontable->inicializa();
-      mainCompany() ->pWorkspace() ->addSubWindow ( g_plancontable );
-    } // end if
-    g_plancontable->hide();
-    g_plancontable->show();
-    blDebug ( "END PluginBc_Cuenta::elslot", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_Cuenta::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( "PluginBc_Cuenta::inicializa", 0 );
-
-    /// Creamos el men&uacute;.
-    setMainCompany ( (BlMainCompany *)bges->company() );
-    m_bulmacont = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuCuentas" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Cuentas Contables" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCuentas" ) );
-    } // end if
-
-    QAction *accion = new QAction ( _ ( "&Plan Contable" ), 0 );
-    accion->setStatusTip ( _ ( "Permite ver y modificar el plan contable" ) );
-    accion->setWhatsThis ( _ ( "Permite ver y modificar el plan contable" ) );
-    accion->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
-    bges->toolBar->addAction ( accion );
-
-    blDebug ( "END PluginBc_Cuenta::inicializa", 0 );
-}
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -123,15 +49,46 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
+    g_bcont = bcont;
     g_plancontable = NULL;
 
-    PluginBc_Cuenta *plug = new PluginBc_Cuenta();
-    plug->inicializa ( bcont );
+    QMenu *pPluginMenu;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( "menuCuentas" );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( _ ( "&Cuentas Contables" ), bcont->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCuentas" ) );
+    } // end if
+
+    BlAction *accionA = new BlAction ( _ ( "&Plan Contable" ), 0 );
+    accionA->setStatusTip ( _ ( "Permite ver y modificar el plan contable" ) );
+    accionA->setWhatsThis ( _ ( "Permite ver y modificar el plan contable" ) );
+    accionA->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
+    pPluginMenu->addAction ( accionA );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bcont->menuBar() ->insertMenu ( bcont->menuMaestro->menuAction(), pPluginMenu );
+    bcont->toolBar->addAction ( accionA );
 
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionPlanContable") {
+        if (g_plancontable == NULL) {
+            g_plancontable = new BcPlanContableListView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_plancontable->inicializa();
+            g_bcont->company()->pWorkspace() ->addSubWindow ( g_plancontable );
+        } // end if
+        g_plancontable->hide();
+        g_plancontable->show();
+    } // end if
+    return 0;
+}
+
 
 /// --------------------------------------------------------------
 /// --------- Implemento la edicion de articulos -----------------

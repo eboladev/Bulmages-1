@@ -97,13 +97,12 @@ void MTicketIVAInc::pintar()
 	} // end if
 	
     query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + ticket->dbValue ( "idcliente" );
-		BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
+    BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
 	if (rsCliente) {
 		plainTextContent += "Cliente: " + rsCliente->value ( "nomcliente" ) + "\n";
 		htmlContent += "Cliente: " + rsCliente->value ( "nomcliente" ) + "<br>";
 		delete rsCliente;
 	} // end if
-
 
     htmlContent += "<table border=\"0\" width=\"100%\">";
 

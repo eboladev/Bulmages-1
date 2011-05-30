@@ -28,6 +28,7 @@
 #include "bcsubform.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbc_cuenta.h"
+#include "blaction.h"
 
 
 extern "C" PLUGINBC_CUENTA_EXPORT int entryPoint ( BcBulmaCont * );
@@ -40,26 +41,7 @@ extern "C" PLUGINBC_CUENTA_EXPORT int BlSubForm_editFinished ( BlSubForm * );
 extern "C" PLUGINBC_CUENTA_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm *, void **);
 extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
-
-
-
-class PluginBc_Cuenta : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    PluginBc_Cuenta();
-    ~PluginBc_Cuenta();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-
-};
-
+extern "C" PLUGINBC_CUENTA_EXPORT int BlAction_triggered ( BlAction *);
 
 class Subform_Cuenta : public QObject
 {

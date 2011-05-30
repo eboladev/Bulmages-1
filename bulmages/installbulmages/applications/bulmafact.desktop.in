@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=0.13.1
 Terminal=false
-Icon=@CMAKE_INSTALL_PREFIX@/share/pixmaps/bulmafact.xpm
+Icon=@CMAKE_INSTALL_PREFIX@/share/pixmaps/bulmafact.svg
 Type=Application
 Categories=Office;
 Exec=bulmafact
