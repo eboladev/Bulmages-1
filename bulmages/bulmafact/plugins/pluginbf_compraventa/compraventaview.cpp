@@ -129,7 +129,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         /// Conectamos algunos elementos para que funcionen.
 //     connect ( mui_idalmacen, SIGNAL ( valueChanged ( QString ) ), this, SLOT ( on_mui_idalmacen_valueChanged ( QString ) ) );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "CompraVentaView_CompraVentaView_Post", this );
@@ -164,7 +164,7 @@ void CompraVentaView::inicializar()
     blDebug ( "CompraVentaView::inicializar", 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END CompraVentaView::inicializar", 0 );
 }
 
@@ -233,9 +233,9 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
         QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= " + id + ")";
         BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            m_albaranp->setDbValue ( "idproveedor", cur->valor ( "idproveedor" ) );
-            subform3->setIdProveedor ( cur->valor ( "idproveedor" ) );
-            m_descuentos3->setIdProveedor ( cur->valor ( "idproveedor" ) );
+            m_albaranp->setDbValue ( "idproveedor", cur->value( "idproveedor" ) );
+            subform3->setIdProveedor ( cur->value( "idproveedor" ) );
+            m_descuentos3->setIdProveedor ( cur->value( "idproveedor" ) );
         } else {
             blMsgInfo ( "No hay proveedor para este cliente" );
         } // end if
@@ -346,9 +346,9 @@ int CompraVentaView::cargarPost ( QString idalbaran )
         QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + dbValue ( "refalbaran" ) + "'";
         BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            m_albaranp->cargar ( cur->valor ( "idalbaranp" ) );
-            subform3->cargar ( cur->valor ( "idalbaranp" ) );
-            m_descuentos3->cargar ( cur->valor ( "idalbaranp" ) );
+            m_albaranp->cargar ( cur->value( "idalbaranp" ) );
+            subform3->cargar ( cur->value( "idalbaranp" ) );
+            m_descuentos3->cargar ( cur->value( "idalbaranp" ) );
         } // end if
         delete cur;
 
@@ -468,9 +468,9 @@ void CompraVentaView::generarFacturaProveedor()
                                          _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            SQLQuery = "DELETE FROM lfacturap WHERE idfacturap=" + cur->valor ( "idfacturap" );
+            SQLQuery = "DELETE FROM lfacturap WHERE idfacturap=" + cur->value( "idfacturap" );
             mainCompany()->runQuery ( SQLQuery );
-            SQLQuery = "DELETE FROM facturap WHERE idfacturap = " + cur->valor ( "idfacturap" );
+            SQLQuery = "DELETE FROM facturap WHERE idfacturap = " + cur->value( "idfacturap" );
             mainCompany()->runQuery ( SQLQuery );
 
         } // end if
@@ -598,7 +598,7 @@ void CompraVentaView::generarFactura()
             } // end if
             bud = ( FacturaView * ) g_plugParams;
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idfactura" ) );
+            bud->cargar ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if

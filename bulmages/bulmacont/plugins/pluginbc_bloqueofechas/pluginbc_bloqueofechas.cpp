@@ -60,7 +60,7 @@ PluginBc_BloqueFechas::~PluginBc_BloqueFechas()
 void PluginBc_BloqueFechas::elslot()
 {
     blDebug ( "PluginBc_BloqueFechas::elslot", 0 );
-    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->empresaactual(), 0 );
+    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->company(), 0 );
     m_bulmacont->workspace()->addSubWindow ( tip );
     tip->show();
     blDebug ( "END PluginBc_BloqueFechas::elslot", 0 );
@@ -104,7 +104,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_bloqueofechas", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_bloqueofechas", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_BloqueFechas *my = new PluginBc_BloqueFechas();
     my->inicializa ( bcont );

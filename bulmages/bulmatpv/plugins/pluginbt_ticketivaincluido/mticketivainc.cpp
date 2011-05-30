@@ -89,6 +89,7 @@ void MTicketIVAInc::pintar()
 
     query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + ticket->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany()->loadQuery ( query );
+<<<<<<< HEAD:bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
 	if (rsTrabajador) {
 		plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
 		htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<br>";
@@ -102,6 +103,17 @@ void MTicketIVAInc::pintar()
 		htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<br>";
 		delete rsCliente;
 	} // end if
+=======
+    plainTextContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "\n";
+    htmlContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "<br>";
+    delete rsTrabajador;
+
+    query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + ticket->dbValue ( "idcliente" );
+    BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
+    plainTextContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "\n";
+    htmlContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "<br>";
+    delete rsCliente;
+>>>>>>> bdf11afad51e27c6fdb6711ee46147b545eeaa4f:bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
 
     htmlContent += "<table border=\"0\" width=\"100%\">";
 
@@ -163,7 +175,7 @@ void MTicketIVAInc::pintar()
 		htmlContent += "<tr>";
 		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
 		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->valor("nombremodificador") + "</TD>";
+		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
 		delete rsModificador;
 		htmlContent += "</tr>";
 	    } // end if

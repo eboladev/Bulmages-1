@@ -9,7 +9,7 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_tpv.h pdefs_pluginbf_bulmatpv.h)
+file(GLOB plugin_NO_MOCS pluginbf_bulmatpv.h pdefs_pluginbf_bulmatpv.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)

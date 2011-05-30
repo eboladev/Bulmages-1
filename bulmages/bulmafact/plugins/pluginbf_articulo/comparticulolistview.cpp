@@ -78,8 +78,8 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col, BlDbSubFormRecord
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo=" + idArticle );
     if ( !cur->eof() ) {
         rec->setDbValue ( "idcomponente", idArticle );
-        rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+        rec->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+        rec->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     blDebug ( "END ListCompArticuloView::pressedAsterisk", 0 );
 }
@@ -99,9 +99,9 @@ void ListCompArticuloView::editFinished ( int row, int col, BlDbSubFormRecord *r
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
         if ( !cur->eof() ) {
-            rec->setDbValue ( "idcomponente", cur->valor ( "idarticulo" ) );
-            rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+            rec->setDbValue ( "idcomponente", cur->value( "idarticulo" ) );
+            rec->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+            rec->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
 	    rec->setDbValue ( "cantcomparticulo", "1.00" );
         } // end if
     } // end if

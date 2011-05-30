@@ -87,13 +87,13 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
         mui_listvalidaciones->setInsert ( FALSE );
         mui_listvalidaciones->setDelete ( FALSE );
         mui_listvalidaciones->setSortingEnabled ( FALSE );
-        dialogChanges_setQObjectExcluido ( mui_listvalidaciones->mui_list );
+        dialogChanges_setExcludedObject ( mui_listvalidaciones->mui_list );
 
 
         inicializaCuadrante ( QDate::currentDate() );
 
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al iniciar el cuadrante" ) );
@@ -129,16 +129,16 @@ void CuadranteDiarioView::inicializaTrabajadores()
     if ( cur ) {
         while ( !cur->eof() ) {
             QTreeWidgetItem * it = new QTreeWidgetItem ( mui_listtrabajadores );
-            it->setText ( 0, cur->valor ( "nomtipotrabajo" ) );
+            it->setText ( 0, cur->value( "nomtipotrabajo" ) );
             it->setTextColor ( 0, QColor ( "#FF0000" ) );
 
             /// Cargamos los trabajadores correspondientes a este tipo de trabajo.
-            BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtipotrabajo = " + cur->valor ( "idtipotrabajo" ) + "ORDER BY nomtrabajador, apellidostrabajador" );
+            BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtipotrabajo = " + cur->value( "idtipotrabajo" ) + "ORDER BY nomtrabajador, apellidostrabajador" );
             if ( curtrab ) {
                 while ( !curtrab->eof() ) {
                     QTreeWidgetItem * itt = new QTreeWidgetItem ( it );
-                    itt->setText ( 0, curtrab->valor ( "nomtrabajador" ) + " " + curtrab->valor ( "apellidostrabajador" ) );
-                    itt->setText ( 1, curtrab->valor ( "idtrabajador" ) );
+                    itt->setText ( 0, curtrab->value( "nomtrabajador" ) + " " + curtrab->value( "apellidostrabajador" ) );
+                    itt->setText ( 1, curtrab->value( "idtrabajador" ) );
                     itt->setTextColor ( 0, QColor ( "#000000" ) );
                     curtrab->nextRecord();
                 } // end while
@@ -205,7 +205,7 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 
                 CuadranteQTextDocument *newItem = new CuadranteQTextDocument ( mainCompany(), mui_cuadrante );
 
-                newItem->setAlmFecha ( cur->valor ( "idalmacen" ), date );
+                newItem->setAlmFecha ( cur->value( "idalmacen" ), date );
 
                 mui_cuadrante->setCellWidget ( row, column, newItem );
 
@@ -353,26 +353,26 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         while ( !cur->eof() ) {
             query = "UPDATE cuadrante SET ";
-            query += " comentcuadrante = '" + cur->valor ( "comentcuadrante" ) + "'";
-            query += ", aperturacuadrante = " + ( ( cur->valor ( "aperturacuadrante" ) == "" ) ? "NULL" : "'" + cur->valor ( "aperturacuadrante" ) + "'" );
-            query += ", cierrecuadrante = " + ( ( cur->valor ( "cierrecuadrante" ) == "" ) ? "NULL" : "'" + cur->valor ( "cierrecuadrante" ) + "'" );
-            query += ", apertura1cuadrante = " + ( ( cur->valor ( "apertura1cuadrante" ) == "" ) ? "NULL" : "'" + cur->valor ( "apertura1cuadrante" ) + "'" );
-            query += ", cierre1cuadrante = " + ( ( cur->valor ( "cierre1cuadrante" ) == "" ) ? "NULL" : "'" + cur->valor ( "cierre1cuadrante" ) + "'" );
-            query += ", fiestacuadrante = '" + cur->valor ( "fiestacuadrante" ) + "'";
-            query += " WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" );
+            query += " comentcuadrante = '" + cur->value( "comentcuadrante" ) + "'";
+            query += ", aperturacuadrante = " + ( ( cur->value( "aperturacuadrante" ) == "" ) ? "NULL" : "'" + cur->value( "aperturacuadrante" ) + "'" );
+            query += ", cierrecuadrante = " + ( ( cur->value( "cierrecuadrante" ) == "" ) ? "NULL" : "'" + cur->value( "cierrecuadrante" ) + "'" );
+            query += ", apertura1cuadrante = " + ( ( cur->value( "apertura1cuadrante" ) == "" ) ? "NULL" : "'" + cur->value( "apertura1cuadrante" ) + "'" );
+            query += ", cierre1cuadrante = " + ( ( cur->value( "cierre1cuadrante" ) == "" ) ? "NULL" : "'" + cur->value( "cierre1cuadrante" ) + "'" );
+            query += ", fiestacuadrante = '" + cur->value( "fiestacuadrante" ) + "'";
+            query += " WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->value( "idalmacen" );
             mainCompany() ->runQuery ( query );
 
-            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" ) );
-            QString idcuadrante = cur1->valor ( "idcuadrante" );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->value( "idalmacen" ) );
+            QString idcuadrante = cur1->value( "idcuadrante" );
             delete cur1;
 
-            BlDbRecordSet *cur2 = mainCompany() ->loadQuery ( "SELECT * FROM horario WHERE idcuadrante=" + cur->valor ( "idcuadrante" ) );
+            BlDbRecordSet *cur2 = mainCompany() ->loadQuery ( "SELECT * FROM horario WHERE idcuadrante=" + cur->value( "idcuadrante" ) );
             while ( !cur2->eof() ) {
                 query = "INSERT INTO horario (idtrabajador, idcuadrante, horainhorario, horafinhorario) VALUES (";
-                query += cur2->valor ( "idtrabajador" );
+                query += cur2->value( "idtrabajador" );
                 query += "," + idcuadrante;
-                query += ",'" + cur2->valor ( "horainhorario" ) + "'";
-                query += ",'" + cur2->valor ( "horafinhorario" ) + "'";
+                query += ",'" + cur2->value( "horainhorario" ) + "'";
+                query += ",'" + cur2->value( "horafinhorario" ) + "'";
                 query += ")";
                 mainCompany() ->runQuery ( query );
                 cur2->nextRecord();
@@ -397,9 +397,9 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
 {
     blDebug ( "CuadranteDiarioView::on_mui_imprimir_clicked", 0 );
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "cuadrante.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "cuadrante.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -415,10 +415,10 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
@@ -489,7 +489,7 @@ void CuadranteDiarioView::guardaconfig()
 {
     blDebug ( "CuadranteDiarioView::guardaconfig", 0 );
     QString aux = "";
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -516,7 +516,7 @@ void CuadranteDiarioView::guardaconfig()
 void CuadranteDiarioView::cargaconfig()
 {
     blDebug ( "CuadranteDiarioView::cargaconfig", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {

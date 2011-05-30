@@ -49,7 +49,7 @@ private:
 
 
 public:
-    /// Constructor de la clase que inicializa las variables empresaactual y dbConnection.
+    /// Constructor de la clase que inicializa las variables company y dbConnection.
     BcAsientoInteligenteImportarXML ( BcCompany * );
     /// Elemento del analizador (parser) de SAX que se dispara al encontrar un tag de inicio.
     bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );

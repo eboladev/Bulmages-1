@@ -46,8 +46,8 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
 
     setupUi ( this );
     m_modo = 0;
-    inicializatabla();
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    inicializaTabla();
+    mainCompany() ->insertWindow ( windowTitle(), this );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -61,7 +61,7 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
 BcCuentasAnualesView::~BcCuentasAnualesView()
 {
     blDebug ( "BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
 }
 
@@ -69,22 +69,22 @@ BcCuentasAnualesView::~BcCuentasAnualesView()
 ///
 /**
 **/
-void BcCuentasAnualesView::setmodoselector()
+void BcCuentasAnualesView::setModoSelector()
 {
-    blDebug ( "BcCuentasAnualesView::setmodoselector", 0 );
+    blDebug ( "BcCuentasAnualesView::setModoSelector", 0 );
     m_modo = 1;
-    blDebug ( "END BcCuentasAnualesView::setmodoselector", 0 );
+    blDebug ( "END BcCuentasAnualesView::setModoSelector", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCuentasAnualesView::setmodoeditor()
+void BcCuentasAnualesView::setModoEditor()
 {
-    blDebug ( "BcCuentasAnualesView::setmodoeditor", 0 );
+    blDebug ( "BcCuentasAnualesView::setModoEditor", 0 );
     m_modo = 0;
-    blDebug ( "END BcCuentasAnualesView::setmodoeditor", 0 );
+    blDebug ( "END BcCuentasAnualesView::setModoEditor", 0 );
 }
 
 
@@ -116,9 +116,9 @@ QString BcCuentasAnualesView::idBalance()
 /**
 \return
 **/
-void BcCuentasAnualesView::inicializatabla()
+void BcCuentasAnualesView::inicializaTabla()
 {
-    blDebug ( "BcCuentasAnualesView::inicializatabla", 0 );
+    blDebug ( "BcCuentasAnualesView::inicializaTabla", 0 );
 
     mui_listado->clear();
     mui_listado->setColumnCount ( 2 );
@@ -130,7 +130,7 @@ void BcCuentasAnualesView::inicializatabla()
     mui_listado->setColumnWidth ( COL_NOMBRE, 290 );
     mui_listado->hideColumn ( COL_ARCHIVO );
 
-    QDir dir ( g_confpr->valor ( CONF_DIR_CANUALES ) );
+    QDir dir ( g_confpr->value( CONF_DIR_CANUALES ) );
 
     dir.setFilter ( QDir::Files );
     dir.setSorting ( QDir::Size | QDir::Reversed );
@@ -159,7 +159,7 @@ void BcCuentasAnualesView::inicializatabla()
 
         mui_listado->setItem ( i, COL_NOMBRE, newItem2 );
     } // end for
-    blDebug ( "END BcCuentasAnualesView::inicializatabla", 0 );
+    blDebug ( "END BcCuentasAnualesView::inicializaTabla", 0 );
 }
 
 

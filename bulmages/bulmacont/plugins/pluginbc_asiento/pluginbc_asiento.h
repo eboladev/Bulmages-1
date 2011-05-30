@@ -26,35 +26,12 @@
 #include "bccompany.h"
 #include "pdefs_pluginbc_asiento.h"
 #include "bcasientoview.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_ASIENTO_EXPORT BcAsientoView *g_asiento;
 extern "C" PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
-
-
-class PluginBc_Asiento : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    PluginBc_Asiento();
-    ~PluginBc_Asiento();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
-    void elslot3();
-    void elslot4();
-    void elslot5();
-    void elslot6();
-};
-
+extern "C" PLUGINBC_ASIENTO_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

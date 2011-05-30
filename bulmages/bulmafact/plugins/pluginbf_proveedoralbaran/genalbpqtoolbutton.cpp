@@ -152,7 +152,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             } // end if
             AlbaranProveedorView *bud = new AlbaranProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idalbaranp" ) );
+            bud->cargar ( cur->value( "idalbaranp" ) );
             bud->show();
             return;
         } // end if

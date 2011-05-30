@@ -85,26 +85,26 @@ int entryPoint ( BcBulmaCont *bcont )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_registroiva", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_registroiva", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "regiva") {
-	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_bcont->empresaactual(), "0" );
+	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_bcont->company(), "0" );
 	perd->inicializa();
-	g_bcont->empresaactual() ->pWorkspace() ->addSubWindow ( perd );
+	g_bcont->company() ->pWorkspace() ->addSubWindow ( perd );
 	perd->show();
     } // end if
     
     if (accion->objectName() == "cobrospagos") {
-	cobropagoview *adoc = new cobropagoview ( g_bcont->empresaactual(), 0 );
-	g_bcont->empresaactual() ->pWorkspace() ->addSubWindow ( adoc );
+	cobropagoview *adoc = new cobropagoview ( g_bcont->company(), 0 );
+	g_bcont->company() ->pWorkspace() ->addSubWindow ( adoc );
 	adoc->show();
     } // end if
     if (accion->objectName() == "m347") {
-      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->empresaactual(), "0" );
+      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->company(), "0" );
       dlg347->exec();
       delete dlg347;
     } // end if
@@ -161,7 +161,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
     BlDbRecordSet *curvalor = companyact->loadQuery ( query );
     while ( !curvalor->eof() ) {
         /// Preparamos una expresi&oacute;n regular para usar en la consulta.
-        cuentas += curvalor->valor ( "valor" ) + "%|";
+        cuentas += curvalor->value( "valor" ) + "%|";
         curvalor->nextRecord();
     } // end while
     delete curvalor;
@@ -174,7 +174,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 
     BlDbRecordSet *cursborr = companyact->loadQuery ( SQLQuery );
     while ( !cursborr->eof() ) {
-        int idborrador = cursborr->valor ( "contra" ).toInt();
+        int idborrador = cursborr->value( "contra" ).toInt();
         RegistroIvaView *reg = new RegistroIvaView ( companyact, 0 );
         reg->inicializa1 ( idborrador );
         companyact->pWorkspace() ->addSubWindow ( reg );

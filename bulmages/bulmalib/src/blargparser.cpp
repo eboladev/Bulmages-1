@@ -97,7 +97,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
 
 
 /// Mostar la ayuda si se debe hacer y devolver true si se hizo.
-bool BlArgParser::ShowHelp()
+bool BlArgParser::showHelp()
 {
    if( m_showHelp ) {
       QTextStream(stdout)
@@ -116,7 +116,7 @@ bool BlArgParser::ShowHelp()
 
 
 /// Mostar la versi&oacute;n si se debe hacer y devolver true si se hizo.
-bool BlArgParser::ShowVersion()
+bool BlArgParser::showVersion()
 {
    if( m_showVersion || m_showHelp ) {
       QTextStream(stdout)

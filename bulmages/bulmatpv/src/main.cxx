@@ -64,7 +64,7 @@ int main ( int argc, char **argv )
 
         /// Inicializa el sistema de traducciones 'gettext'.
         setlocale(LC_ALL, "");
-        blBindTextDomain ("bulmatpv", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        blBindTextDomain ("bulmatpv", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
         blTextDomain ("bulmatpv");
 
         /// Iniciamos la clase QApplication para el uso de las Qt.
@@ -77,21 +77,21 @@ int main ( int argc, char **argv )
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-        g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+        g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
         /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
         BlArgParser* argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
 
-        if( ! argParser->Host().isEmpty() ) {
-            g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
+        if( ! argParser->host().isEmpty() ) {
+            g_confpr->setValue( CONF_SERVIDOR, argParser->host() );
         } // end if
         
-        if( ! argParser->Port().isEmpty() ) {
-            g_confpr->setValor( CONF_PUERTO, argParser->Port() );
+        if( ! argParser->port().isEmpty() ) {
+            g_confpr->setValue( CONF_PUERTO, argParser->port() );
         } // end if
 
         /// Salir ordenadamente del programa si s&oacute;lo se ha pedido ver la ayuda o la versi&oacute;n.
-        if ( argParser->ShowHelp() | argParser->ShowVersion() ) {
+        if ( argParser->showHelp() | argParser->showVersion() ) {
             delete argParser;
             delete g_theApp;
             delete g_confpr;
@@ -99,15 +99,15 @@ int main ( int argc, char **argv )
         } // end if
 
         /// Cargamos el BlSplashScreen.
-        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
+        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->value( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
         splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
         /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
         BlDbLoginDialog* login1 = new BlDbLoginDialog ( 0, "" );
-        if ( !login1->authOK() || argParser->AskPassword() ) {
-            if ( !argParser->UserName().isEmpty() ) {
-                login1->m_login->setText( argParser->UserName() );
+        if ( !login1->authOK() || argParser->askPassword() ) {
+            if ( !argParser->userName().isEmpty() ) {
+                login1->m_login->setText( argParser->userName() );
                 login1->m_password->setFocus();
             } // end if
             login1->exec();
@@ -120,7 +120,7 @@ int main ( int argc, char **argv )
         
         delete login1;
 
-        BtBulmaTPV* bges = new BtBulmaTPV ( argParser->DbName() );
+        BtBulmaTPV* bges = new BtBulmaTPV ( argParser->dbName() );
         bges->hide();
         g_main = bges;
 
@@ -142,21 +142,21 @@ int main ( int argc, char **argv )
             QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
             fprintf ( stderr, "%s", mensaje.toAscii().constData() );
         } else {
-            g_confpr->leeconfig ( confEsp );
+            g_confpr->readConfig ( confEsp );
         } // end if
 
         // Pone el color de fondo del workspace si esta definido y es un color valido.
-        if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
-            bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
+        if ( QColor(g_confpr->value( CONF_BACKGROUND_COLOR )).isValid() ) {
+            bges->workspace()->setBackground(QBrush(QColor( g_confpr->value( CONF_BACKGROUND_COLOR ) )));
         } // end if
 
         // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-        if ( !QPixmap(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-            bges->workspace()->setBackground(QBrush( QPixmap(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+        if ( !QPixmap(g_confpr->value( CONF_BACKGROUND_IMAGE )).isNull() ) {
+            bges->workspace()->setBackground(QBrush( QPixmap(g_confpr->value( CONF_BACKGROUND_IMAGE )) ));
         } // end if
 
         /// Hacemos la carga de las hojas de estilo.
-        QFile arch(g_confpr->valor(CONF_STYLESHEET));
+        QFile arch(g_confpr->value(CONF_STYLESHEET));
         if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QString style = arch.readAll();
             g_theApp->setStyleSheet(style);
@@ -166,7 +166,7 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 10 );
 
         /// Hacemos la carga de las librerias que contienen los plugins.
-        g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMATPV ) );
+        g_plugins->cargaLibs ( g_confpr->value( CONF_PLUGINS_BULMATPV ) );
 
         splashScr->mensaje ( _( "Lanzando plugins" ) );
         splashScr->setBarraProgreso ( 20 );
@@ -187,7 +187,7 @@ int main ( int argc, char **argv )
         
         
         // Ponemos el TPV en modo a pantalla completa si asi se nos pide
-        if (g_confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
+        if (g_confpr->value(CONF_TPV_FULLSCREEN) == "TRUE") {
             bges->showFullScreen();
         } else {
             bges->showMaximized();
@@ -195,7 +195,7 @@ int main ( int argc, char **argv )
 
 
         // Bloqueamos el esquema de ventanas si asi se nos pide
-        if (g_confpr->valor(CONF_BLOCK_WINDOWS) == "TRUE") {
+        if (g_confpr->value(CONF_BLOCK_WINDOWS) == "TRUE") {
         
             QList<QDockWidget *> dockedList = bges->findChildren<QDockWidget *>();
             int listItems = dockedList.count();

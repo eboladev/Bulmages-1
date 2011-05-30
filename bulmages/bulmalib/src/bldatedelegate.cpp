@@ -75,7 +75,7 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
 	fecha = QDate::currentDate().toString("dd/MM/yyyy");
    }
 
-   ds->setfecha ( fecha );
+   ds->setDate ( fecha );
 
    blDebug ( "END BlDateDelegate::setEditorData", 0 ) ;
 }

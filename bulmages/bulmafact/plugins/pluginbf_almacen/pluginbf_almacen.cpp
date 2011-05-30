@@ -25,74 +25,7 @@
 #include "blfunctions.h"
 #include "listalmacenview.h"
 
-
-
-
-///
-/**
-**/
-PluginBf_Almacen::PluginBf_Almacen()
-{
-    blDebug ( "PluginBf_Almacen::PluginBf_Almacen", 0 );
-    blDebug ( "END PluginBf_Almacen::PluginBf_Almacen", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Almacen::~PluginBf_Almacen()
-{
-    blDebug ( "PluginBf_Almacen::~PluginBf_Almacen", 0 );
-    blDebug ( "END PluginBf_Almacen::~PluginBf_Almacen", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Almacen::elslot1()
-{
-    blDebug ( "PluginBf_Almacen::elslot1", 0 );
-    ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Almacen::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Almacen::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Almacen::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Almacenes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Almacenes" ) );
-        planCuentas->setWhatsThis ( _ ( "Almacenes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Almacen::inicializa", 0 );
-}
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -106,14 +39,37 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_almacen", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_almacen", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Almacen *plug = new PluginBf_Almacen();
-    plug->inicializa ( bges );
-    return 0;
+
+    if ( bges->company()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        g_bges = bges;
+        BlAction *accion = new BlAction ( _ ( "&Almacenes" ), 0 );
+        accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
+        accion->setStatusTip ( _ ( "Almacenes" ) );
+        accion->setWhatsThis ( _ ( "Almacenes" ) );
+        accion->setObjectName("mui_actionAlmacen");
+        pPluginMenu->addAction ( accion );
+        bges->Listados->addAction ( accion );
+        return 0;
+    }
 }
 
-
+int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_Almacen::BlAction_triggered\n", 0 );
+    if (accion->objectName() == "mui_actionAlmacen") {
+        ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+    blDebug ( "END PluginBf_Almacen::BlAction_triggered\n", 0 );
+    return 0;
+}
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.

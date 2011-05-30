@@ -100,7 +100,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "PresupuestoView_PresupuestoView_Post", this );
 	blScript(this);
@@ -119,7 +119,7 @@ void PresupuestoView::inicializar()
     blDebug ( "PresupuestoView::inicializar", 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END PresupuestoView::inicializar", 0 );
 }
 
@@ -249,7 +249,7 @@ void PresupuestoView::generarPedidoCliente()
 
                 bud = mainCompany() ->newPedidoClienteView();
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->valor ( "idpedidocliente" ) );
+                bud->cargar ( cur->value( "idpedidocliente" ) );
                 bud->show();
                 delete cur;
                 return;
@@ -428,21 +428,21 @@ QString PresupuestoView::detalleArticulos()
         } // end if
         texto += "<tr>\n";
         if ( i ) {
-            texto += "<td><h1>" + cur->valor ( "nomarticulo" ) + "</h1>";
-            texto += "<para><pre>" + cur->valor ( "obserarticulo" ) + "</pre></para></td>\n";
+            texto += "<td><h1>" + cur->value( "nomarticulo" ) + "</h1>";
+            texto += "<para><pre>" + cur->value( "obserarticulo" ) + "</pre></para></td>\n";
         } // end if
-        QString file = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur->valor ( "codigocompletoarticulo" ) + ".jpg";
+        QString file = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + cur->value( "codigocompletoarticulo" ) + ".jpg";
         QFile f ( file );
         if ( f.exists() ) {
             texto += "    <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                     "        <image file=\"" + g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur->valor ( "codigocompletoarticulo" ) + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "        <image file=\"" + g_confpr->value( CONF_DIR_IMG_ARTICLES ) + cur->value( "codigocompletoarticulo" ) + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                      "        </illustration></td>\n";
         } else {
             texto += "<td></td>\n";
         } // end if
         if ( !i ) {
-            texto += "<td><h1>" + cur->valor ( "nomarticulo" ) + "</h1>";
-            texto += "<para><pre>" + cur->valor ( "obserarticulo" ) + "</pre></para></td>\n";
+            texto += "<td><h1>" + cur->value( "nomarticulo" ) + "</h1>";
+            texto += "<para><pre>" + cur->value( "obserarticulo" ) + "</pre></para></td>\n";
         } // end if
         texto += "</tr>\n";
         texto += "</blockTable>";

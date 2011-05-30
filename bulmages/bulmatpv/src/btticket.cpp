@@ -74,11 +74,11 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     addDbField ( "cambiospostalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Cambios tras guardar" ) );
 
     setDbValue ( "ticketalbaran", "TRUE" );
-    setDbValue ( "idalmacen", g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
-    setDbValue ( "idcliente", g_confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
-    setDbValue ( "idtrabajador", g_confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
+    setDbValue ( "idalmacen", g_confpr->value( CONF_IDALMACEN_DEFECTO ) );
+    setDbValue ( "idcliente", g_confpr->value( CONF_IDCLIENTE_DEFECTO ) );
+    setDbValue ( "idtrabajador", g_confpr->value( CONF_IDTRABAJADOR_DEFECTO ) );
     setDbValue ( "descalbaran", "Ticket de venta" );
-    setDbValue ( "idforma_pago", g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
+    setDbValue ( "idforma_pago", g_confpr->value( CONF_IDFORMA_PAGO_CONTADO ) );
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<BlDbRecord *>;
@@ -203,11 +203,11 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
 
         if ( !cur->eof() ) {
-            m_lineaActual->setDbValue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
-            m_lineaActual->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            m_lineaActual->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
-            m_lineaActual->setDbValue ( "desclalbaran", cur->valor ( "nomarticulo" ) );
-            m_lineaActual->setDbValue ( "ivalalbaran", cur->valor ( "porcentasa_iva") );
+            m_lineaActual->setDbValue ( "pvplalbaran", cur->value( "pvparticulo" ) );
+            m_lineaActual->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+            m_lineaActual->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
+            m_lineaActual->setDbValue ( "desclalbaran", cur->value( "nomarticulo" ) );
+            m_lineaActual->setDbValue ( "ivalalbaran", cur->value( "porcentasa_iva") );
 
         } // end if
         delete cur;
@@ -277,7 +277,7 @@ void  BtTicket::setDescuentoGlobal ( BlFixed descuento )
 
 void BtTicket::abrircajon()
 {
-    QString filestr = g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
+    QString filestr = g_confpr->value(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
     
     QFile file ( filestr );
     
@@ -285,7 +285,7 @@ void BtTicket::abrircajon()
         blDebug ( "Error en la Impresion de ticket", 2 );
     } // end if
 
-    QStringList secuencia = g_confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
+    QStringList secuencia = g_confpr->value(CONF_CASHBOX_OPEN_CODE).split(",");
 
     /// El comando de apertura de cajon
     for (int i = 0; i < secuencia.size(); ++i) {
@@ -296,14 +296,13 @@ void BtTicket::abrircajon()
     file.close();
 
 
-    if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+    if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
-        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
-        system ( comando.toAscii().data() );
+		blRawPrint( "bulmatpv_abrircajon.txt");
     } // end if
 
 
@@ -336,10 +335,10 @@ void BtTicket::imprimir(bool save)
     generaRML("ticket_normal.txt");
 
 
-    if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+    if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
 		blRawPrint( "ticket_normal.txt");
@@ -448,7 +447,7 @@ void BtTicket::ponerCantidad ( QString cantidad )
 
 void BtTicket::ponerPrecio ( QString precio )
 {
-    BlFixed valor ( precio );
+    BlFixed valor( precio );
     
    
     /// Comprueba la existencia de la linea de ticket.
@@ -480,7 +479,7 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     
     if ( !cur->eof() ) {
-        insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
+        insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
     
     delete cur;
@@ -500,7 +499,7 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     
     if ( !cur->eof() ) {
-        insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
+        insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), TRUE );
     } // end if
     
     delete cur;
@@ -562,7 +561,7 @@ int BtTicket::guardar()
 
         QString id;
         mainCompany() ->begin();
-        DBsave ( id );
+        dbSave ( id );
 
         BlDbRecord *item;
         
@@ -578,8 +577,8 @@ int BtTicket::guardar()
         
         setDbValue("idalbaran", id);
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM albaran WHERE idalbaran = " + id );
-        setDbValue("refalbaran", cur->valor("refalbaran"));
-        setDbValue("numalbaran", cur->valor("numalbaran"));
+        setDbValue("refalbaran", cur->value("refalbaran"));
+        setDbValue("numalbaran", cur->value("numalbaran"));
 
         mainCompany() ->commit();
 

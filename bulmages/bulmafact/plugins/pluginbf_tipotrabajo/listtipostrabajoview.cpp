@@ -58,7 +58,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->setInsert ( TRUE );
 
     mui_listado->cargar ( "SELECT * FROM tipotrabajo" );
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END ListTiposTrabajoView::ListTiposTrabajoView", 1 );
 }
@@ -71,6 +71,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
 {
     try {
         mui_listado->guardar();
+        g_theApp->emitDbTableChanged ( "tipotrabajo" );
         close();
     } catch ( ... ) {
         blMsgInfo ( "Error al guardar los tipos de trabajo" );

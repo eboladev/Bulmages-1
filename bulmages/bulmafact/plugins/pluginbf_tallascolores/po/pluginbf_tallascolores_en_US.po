@@ -24,15 +24,15 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
-#: plugarticulos.cpp:83
+#: pluginbf_tallascolores.cpp:83
 msgid "&Colores"
 msgstr ""
 
-#: plugarticulos.cpp:77
+#: pluginbf_tallascolores.cpp:77
 msgid "&Tallas"
 msgstr ""
 
-#: plugarticulos.cpp:72
+#: pluginbf_tallascolores.cpp:72
 msgid "&Tallas y colores"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Alias"
 msgstr ""
 
-#: plugarticulos.cpp:84 plugarticulos.cpp:85 listcoloresview.cpp:49
+#: pluginbf_tallascolores.cpp:84 pluginbf_tallascolores.cpp:85 listcoloresview.cpp:49
 #: ui_listcoloresbase.h:116
 msgid "Colores"
 msgstr ""
@@ -87,7 +87,7 @@ msgstr ""
 msgid "Talla"
 msgstr ""
 
-#: listtallasview.cpp:49 plugarticulos.cpp:78 plugarticulos.cpp:79
+#: listtallasview.cpp:49 pluginbf_tallascolores.cpp:78 pluginbf_tallascolores.cpp:79
 #: ui_listtallasbase.h:116
 msgid "Tallas"
 msgstr ""

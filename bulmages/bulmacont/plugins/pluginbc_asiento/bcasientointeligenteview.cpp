@@ -71,8 +71,8 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
     /// Cada apunte la tiene o no la tiene, pero no se debe aplicar.
     indvariablesapunte = 1;
     variablesapunte[VAR_APUNT_CIFCUENTA][0] = "$cifcuenta$";
-    mainCompany() ->meteWindow ( windowTitle(), this );
-    setmodo ( 0 );
+    mainCompany() ->insertWindow ( windowTitle(), this );
+    setModo ( 0 );
     g_asiento->mui_inteligente->setDisabled ( TRUE );
     /// Llamamos a los scripts
     blScript(this);
@@ -87,7 +87,7 @@ BcAsientoInteligenteView::~BcAsientoInteligenteView()
 {
     blDebug ( "BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
     borrawidgets();
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     g_asiento->mui_inteligente->setEnabled ( TRUE );
     blDebug ( "END BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
 }
@@ -103,7 +103,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
     numasiento = idasiento;
     inicializavariables();
 
-    QDir dir ( g_confpr->valor ( CONF_DIR_AINTELIGENTES ) );
+    QDir dir ( g_confpr->value( CONF_DIR_AINTELIGENTES ) );
     dir.setFilter ( QDir::Files );
     dir.setNameFilters ( QStringList ( "*.xml" ) );
     dir.setSorting ( QDir::Size | QDir::Reversed );
@@ -127,7 +127,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
         mainCompany() ->begin();
         QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
         BlDbRecordSet *cursoraux1 = mainCompany() ->loadQuery ( query1, "codcuenta" );
-        numdigitos = cursoraux1->valor ( 2 ).length();
+        numdigitos = cursoraux1->value( 2 ).length();
         mainCompany() ->commit();
         delete cursoraux1;
 
@@ -158,7 +158,7 @@ void BcAsientoInteligenteView::inicializavariables()
     mainCompany() ->commit();
     if ( !cur->eof() ) {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][0] = "$fechaasiento$";
-        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = cur->valor ( "fecha" );
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = cur->value( "fecha" );
     } else {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][0] = "$fechaasiento$";
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = "";
@@ -185,7 +185,7 @@ void BcAsientoInteligenteView::cifcuenta ( int idcuenta )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "cursor" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
-        variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->valor ( "cifent_cuenta" );
+        variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->value( "cifent_cuenta" );
     } else {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = "";
     } // end if
@@ -262,14 +262,14 @@ void BcAsientoInteligenteView::on_mui_comboainteligentes_activated ( int )
 /**
 \param plantilla
 **/
-void BcAsientoInteligenteView::muestraplantilla ( QString plantilla )
+void BcAsientoInteligenteView::muestraPlantilla ( QString plantilla )
 {
-    blDebug ( "BcAsientoInteligenteView::muestraplantilla", 0 );
+    blDebug ( "BcAsientoInteligenteView::muestraPlantilla", 0 );
     int i = mui_comboainteligentes->findText ( plantilla );
     if ( i >= 0 )
         mui_comboainteligentes->setCurrentIndex ( i );
     mostrarplantilla();
-    blDebug ( "BcAsientoInteligenteView::muestraplantilla", 0 );
+    blDebug ( "BcAsientoInteligenteView::muestraPlantilla", 0 );
 }
 
 
@@ -296,12 +296,12 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
             recogevalores();
             g_asiento ->setFecha ( fechaasiento->text() );
             g_asiento ->vaciar();
-            g_asiento ->dialogChanges_cargaInicial();
+            g_asiento ->dialogChanges_readValues();
             g_asiento ->iniciar_asiento_nuevo();
             numasiento = g_asiento ->idasiento().toInt();
             creaasiento();
             g_asiento ->cerrar();
-            g_asiento ->dialogChanges_cargaInicial();
+            g_asiento ->dialogChanges_readValues();
             numasiento = 0;
             fechaasiento->selectAll();
             fechaasiento->setFocus();
@@ -501,9 +501,9 @@ void BcAsientoInteligenteView::mostrarplantilla()
 \param var
 \param val
 **/
-void BcAsientoInteligenteView::setvalores ( QString var, QString val )
+void BcAsientoInteligenteView::setValores ( QString var, QString val )
 {
-    blDebug ( "BcAsientoInteligenteView::setvalores", 0 );
+    blDebug ( "BcAsientoInteligenteView::setValores", 0 );
     for ( int i = 0;i < indvariablescta; i++ ) {
         if ( variablescta[i][0] == var ) {
             varcta[i]->setText ( val );
@@ -524,7 +524,7 @@ void BcAsientoInteligenteView::setvalores ( QString var, QString val )
             vartexto[i]->setText ( val );
         } // end if
     } // end for
-    blDebug ( "END BcAsientoInteligenteView::setvalores", 0 );
+    blDebug ( "END BcAsientoInteligenteView::setValores", 0 );
 }
 
 
@@ -585,7 +585,7 @@ void BcAsientoInteligenteView::creaasiento()
         cur1 = mainCompany() ->loadQuery ( query );
         if ( !cur1 ) throw - 1;
         if ( !cur1->eof() ) {
-            orden = cur1->valor ( "ordmax" ).toInt() + 1;
+            orden = cur1->value( "ordmax" ).toInt() + 1;
         } // end if
         delete cur1;
         QDomNodeList litems = m_doc.elementsByTagName ( "binteligente" );
@@ -596,7 +596,7 @@ void BcAsientoInteligenteView::creaasiento()
             cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
-                idcuenta = atoi ( cur1->valor ( "idcuenta" ).toAscii().constData() );
+                idcuenta = atoi ( cur1->value( "idcuenta" ).toAscii().constData() );
             } // end if
             delete cur1;
 
@@ -605,7 +605,7 @@ void BcAsientoInteligenteView::creaasiento()
             cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
-                idcontrapartida = cur1->valor ( "idcuenta" );
+                idcontrapartida = cur1->value( "idcuenta" );
             } else {
                 idcontrapartida = "NULL";
             } // end if
@@ -922,11 +922,11 @@ void BcAsientoInteligenteView::selectsiguiente ( QObject *edit )
 /**
 \param fecha
 **/
-void BcAsientoInteligenteView::setfechaasiento ( QString fecha )
+void BcAsientoInteligenteView::setFechaAsiento ( QString fecha )
 {
-    blDebug ( "BcAsientoInteligenteView::setfechaasiento", 0 );
+    blDebug ( "BcAsientoInteligenteView::setFechaAsiento", 0 );
     fechaasiento->setText ( fecha );
-    blDebug ( "END BcAsientoInteligenteView::setfechaasiento", 0 );
+    blDebug ( "END BcAsientoInteligenteView::setFechaAsiento", 0 );
 }
 
 
@@ -935,11 +935,11 @@ void BcAsientoInteligenteView::setfechaasiento ( QString fecha )
 /**
 \param i
 **/
-void BcAsientoInteligenteView::setmodo ( int i )
+void BcAsientoInteligenteView::setModo ( int i )
 {
-    blDebug ( "BcAsientoInteligenteView::setmodo", 0 );
+    blDebug ( "BcAsientoInteligenteView::setModo", 0 );
     modo = i;
-    blDebug ( "END BcAsientoInteligenteView::setmodo", 0 );
+    blDebug ( "END BcAsientoInteligenteView::setModo", 0 );
 }
 
 

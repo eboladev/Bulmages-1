@@ -32,7 +32,7 @@
 #include "blform.h"
 #include "facturaview.h"
 #include "pdefs_pluginbf_carteracobros.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
@@ -41,7 +41,7 @@ extern "C" PLUGINBF_CARTERACOBROS_EXPORT int BlForm_guardar_Post (BlForm *);
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_FacturaView (FacturaView *);
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_cargarPost_Post ( FacturaView * );
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_borrarPre ( FacturaView * );
-
+extern "C" PLUGINBF_CARTERACOBROS_EXPORT int BlAction_triggered(BlAction *);
 
 void generarVencimientos (FacturaView *);
 

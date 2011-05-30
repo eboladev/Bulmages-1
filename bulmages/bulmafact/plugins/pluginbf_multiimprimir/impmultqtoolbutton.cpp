@@ -106,7 +106,7 @@ void ImpQToolButton::click()
     blDebug ( "ImpQToolButton::click", 0 );
 
 	/// Hacer comprobacion de la variable PRINTER
-	if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 	    blMsgInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
         blDebug ( "END ImpQToolButton::click", 0 );
 	    return;
@@ -145,9 +145,9 @@ void ImpQToolButton::click()
 
                         blCreatePDF ( "presupuesto" );
 
-                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+                        QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
                         system ( cad.toAscii().data() );
-                        res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+                        res += g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
                     } // end if
                     pres->close();
                 } // end if
@@ -183,9 +183,9 @@ void ImpQToolButton::click()
 
                         blCreatePDF ( "factura" );
 
-                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf";
+                        QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "factura.pdf " + g_confpr->value( CONF_DIR_USER ) + "factura" + id + ".pdf";
                         system ( cad.toAscii().data() );
-                        res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf ";
+                        res += g_confpr->value( CONF_DIR_USER ) + "factura" + id + ".pdf ";
                     } // end if
                     pres->close();
                 } // end if
@@ -218,9 +218,9 @@ void ImpQToolButton::click()
 
                         blCreatePDF ( "pedidocliente" );
 
-                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                        QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
                         system ( cad.toAscii().data() );
-                        res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+                        res += g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
                     } // end if
                     pres->close();
                 } // end if
@@ -255,9 +255,9 @@ void ImpQToolButton::click()
 
                         blCreatePDF ( "albaran" );
 
-                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                        QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
                         system ( cad.toAscii().data() );
-                        res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+                        res += g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
                     } // end if
                     pres->close();
                 } // end if
@@ -272,9 +272,9 @@ void ImpQToolButton::click()
             QString txt = "";
 
 
-            QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "recibos.rml";
-            QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "recibos.rml";
-            QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+            QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "recibos.rml";
+            QString archivod = g_confpr->value( CONF_DIR_USER ) + "recibos.rml";
+            QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
             /// Copiamos el archivo.
@@ -290,10 +290,10 @@ void ImpQToolButton::click()
             /// Copiamos el logo
 #ifdef Q_OS_WIN32
 
-            archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+            archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-            archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+            archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
             system ( archivologo.toAscii().constData() );
@@ -345,9 +345,9 @@ void ImpQToolButton::click()
                         QString query = "SELECT * FROM banco WHERE idbanco =" + pres->dbValue ( "idbanco" );
                         cur1 = m_companyact->loadQuery ( query );
                         if ( !cur1->eof() ) {
-                            txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4.4 ) + "cm\">" + cur1->valor ( "nombanco" ) + "</drawString>\n";
-                            txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4 ) + "cm\">" + cur1->valor ( "pobbanco" ) + "</drawString>\n";
-                            txt += " <drawString x=\"12.4cm\" y=\"" + QString::number ( col + 3.5 ) + "cm\">" + cur1->valor ( "codentidadbanco" ) + " " + cur1->valor ( "codagenciabanco" ) + " " + cur1->valor ( "dcbanco" ) + " " + cur1->valor ( "numcuentabanco" ) + "</drawString>\n";
+                            txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4.4 ) + "cm\">" + cur1->value( "nombanco" ) + "</drawString>\n";
+                            txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4 ) + "cm\">" + cur1->value( "pobbanco" ) + "</drawString>\n";
+                            txt += " <drawString x=\"12.4cm\" y=\"" + QString::number ( col + 3.5 ) + "cm\">" + cur1->value( "codentidadbanco" ) + " " + cur1->value( "codagenciabanco" ) + " " + cur1->value( "dcbanco" ) + " " + cur1->value( "numcuentabanco" ) + "</drawString>\n";
                         } // end if
                         delete cur1;
                     } // end if
@@ -357,10 +357,10 @@ void ImpQToolButton::click()
                         QString query = "SELECT * FROM cliente WHERE idcliente =" + pres->dbValue ( "idcliente" );
                         cur = m_companyact->loadQuery ( query );
                         if ( !cur->eof() ) {
-                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 2.3 ) + "cm\">" + cur->valor ( "nomcliente" ) + "</drawString>\n";
-//    txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
-                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.5 ) + "cm\">" + cur->valor ( "dircliente" ) + "</drawString>\n";
-                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.1 ) + "cm\">" + cur->valor ( "cpcliente" ) + "</drawString>\n";
+                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 2.3 ) + "cm\">" + cur->value( "nomcliente" ) + "</drawString>\n";
+//    txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->value("nomaltcliente")+"</drawString>\n";
+                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.5 ) + "cm\">" + cur->value( "dircliente" ) + "</drawString>\n";
+                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.1 ) + "cm\">" + cur->value( "cpcliente" ) + "</drawString>\n";
                         } // end if
                         delete cur;
                     } // end if
@@ -382,7 +382,7 @@ void ImpQToolButton::click()
 
             buff.replace ( "[story]", txt );
 
-            res = g_confpr->valor ( CONF_DIR_USER ) + "recibos.pdf ";
+            res = g_confpr->value( CONF_DIR_USER ) + "recibos.pdf ";
 
 
             /// En la version para windows hay problemas con las imagenes,
@@ -430,16 +430,16 @@ void ImpQToolButton::click()
 
                         blCreatePDF ( "recibo" );
 
-                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + id + ".pdf";
+                        QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->value( CONF_DIR_USER ) + "recibo" + id + ".pdf";
                         system ( cad.toAscii().data() );
-                        res += g_confpr->valor ( CONF_DIR_USER ) + "recibo" + id + ".pdf ";
+                        res += g_confpr->value( CONF_DIR_USER ) + "recibo" + id + ".pdf ";
                     } // end if
                     pres->close();
                 } // end if
             } // end for
         } // end if
 
-	    QString comando = "lp -d" +g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
+	    QString comando = "lp -d" +g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
 	    system ( comando.toAscii().data() );
 	    comando = "rm " + res;
 	    system ( comando.toAscii().data() );
@@ -621,7 +621,7 @@ void EmailQToolButton::click()
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-                QString email = curs->valor ( "mailcliente" );
+                QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
@@ -637,12 +637,12 @@ void EmailQToolButton::click()
 
                     blCreatePDF ( "presupuesto" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+                    QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
                     system ( cad.toAscii().data() );
 
-                    cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
+                    cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
                     system ( cad.toAscii().data() );
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+                    res += g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
                 } // end if
                 pres->close();
             } // end if
@@ -665,7 +665,7 @@ void EmailQToolButton::click()
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-                QString email = curs->valor ( "mailcliente" );
+                QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
@@ -681,12 +681,12 @@ void EmailQToolButton::click()
 
                     blCreatePDF ( "pedidocliente" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                    QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
                     system ( cad.toAscii().data() );
 
-                    cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
+                    cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
                     system ( cad.toAscii().data() );
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+                    res += g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
                 } // end if
                 pres->close();
             } // end if
@@ -710,7 +710,7 @@ void EmailQToolButton::click()
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-                QString email = curs->valor ( "mailcliente" );
+                QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
@@ -725,12 +725,12 @@ void EmailQToolButton::click()
 
                     blCreatePDF ( "albaran" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                    QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
                     system ( cad.toAscii().data() );
 
-                    cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
+                    cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
                     system ( cad.toAscii().data() );
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+                    res += g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
                 } // end if
                 pres->close();
             } // end if
@@ -759,7 +759,7 @@ void EmailQToolButton::click()
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-                QString email = curs->valor ( "mailcliente" );
+                QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
@@ -775,18 +775,18 @@ void EmailQToolButton::click()
 
                     blCreatePDF ( "factura" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+                    QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "factura.pdf " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
                     system ( cad.toAscii().data() );
 
 
                     cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
                     cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
                     cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
-                    cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
+                    cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
 
                     system ( cad.toAscii().data() );
 
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
+                    res += g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
                 } // end if
                 pres->close();
             } // end if
@@ -810,24 +810,24 @@ void EmailQToolButton::click()
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-                QString email = curs->valor ( "mailcliente" );
+                QString email = curs->value( "mailcliente" );
 
                 CobroView *pres = new CobroView ( m_companyact, 0 );
                 pres->cargar ( id );
 
                 blCreatePDF ( "recibo" );
 
-                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
+                QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
                 system ( cad.toAscii().data() );
 
 
                 cad = "kmail -s \"Recibo " + fecha + ref + "\" --body \"Estimado cliente,\n\n";
                 cad += "Adjunto le enviamos el recibo numero " + fecha + ref + " con fecha " + fecha + "\n";
                 cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
-                cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf " + email;
+                cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf " + email;
                 system ( cad.toAscii().data() );
 
-                res += g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf ";
+                res += g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf ";
                 delete pres;
             } // end if
         } // end for
@@ -1089,7 +1089,7 @@ void SumarQToolButton::setBoton()
     setStatusTip ( _ ( "Totalizar elementos seleccionados" ) );
     setToolTip ( _ ( "Totalizar elementos seleccionados" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon (  g_confpr->valor ( CONF_PROGDATA ) + "icons/suma.png" ) );
+    setIcon ( QIcon (  g_confpr->value( CONF_PROGDATA ) + "icons/suma.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     blDebug ( "END SumarQToolButton::setBoton", 0 );
 }
@@ -1127,7 +1127,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalpresupuesto), 0) AS total FROM  presupuesto WHERE idpresupuesto in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          blMsgInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->value( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1154,7 +1154,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalpedidocliente), 0) AS total FROM  pedidocliente WHERE idpedidocliente in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          blMsgInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->value( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1181,7 +1181,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalalbaran), 0) AS total FROM  albaran WHERE idalbaran in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          blMsgInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->value( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1209,7 +1209,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalfactura), 0) AS total FROM  factura WHERE idfactura in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          blMsgInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->value( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1233,7 +1233,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(cantcobro), 0) AS total FROM  cobro WHERE idcobro in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          blMsgInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->value( "total" ));
           delete curs;
         } // end if
     } // end if

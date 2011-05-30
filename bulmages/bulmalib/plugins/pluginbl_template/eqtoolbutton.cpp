@@ -80,7 +80,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	QMenu *menu = new QMenu(this);
 	
 	/// Buscamos ficheros que tengan el nombre de la tabla
-	QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+	QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
 	dir.setFilter ( QDir::Files | QDir::NoSymLinks );
 	dir.setSorting ( QDir::Size | QDir::Reversed );
 	/// Hacemos un filtrado de busqueda
@@ -100,7 +100,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 
 
 	    QFile file;
-	    file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+	    file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
 	    file.open ( QIODevice::ReadOnly );
 	    QTextStream stream ( &file );
 	    QString buff = stream.readAll();
@@ -156,7 +156,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
     QMenu *ajust = menu->addMenu (QIcon(":/Images/template2rml.png"), _ ( "Informes personales" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -171,7 +171,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 
 
         QFile file;
-        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();
@@ -215,7 +215,7 @@ void EQToolButton::trataMenu ( QAction *action )
     if (action ) {
       
 	/// Buscamos ficheros que tengan el nombre de la tabla
-	QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+	QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
 	dir.setFilter ( QDir::Files | QDir::NoSymLinks );
 	dir.setSorting ( QDir::Size | QDir::Reversed );
 	/// Hacemos un filtrado de busqueda

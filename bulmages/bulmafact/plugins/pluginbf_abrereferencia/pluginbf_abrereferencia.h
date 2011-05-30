@@ -30,25 +30,5 @@ extern "C" PLUGINBF_ABREREFERENCIA_EXPORT int BfBuscarReferencia_on_mui_rferenci
 extern "C" PLUGINBF_ABREREFERENCIA_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-// 
-
-/*
-class myplugin : public QObject {
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *dbConnection;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa(bulmafact *);
-
-public slots:
-    void elslot();
-};
-
-*/
-
 #endif
 

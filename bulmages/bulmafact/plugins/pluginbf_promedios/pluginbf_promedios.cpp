@@ -25,40 +25,6 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "promedioview.h"
-//#include "busquedatarifa.h"
-// #include "listltarifaview.h"
-// #include "tarifalistview.h"
-
-
-/*
-myplugin1::myplugin1() {}
-
-
-myplugin1::~myplugin1() {}
-
-
-void myplugin1::elslot() {
-
-//    TarifaListView *tar = new TarifaListView(m_companyact, NULL);
-//    m_companyact->m_pWorkspace->addSubWindow(tar);
-//    tar->show();
-}
-
-
-void myplugin1::inicializa(bulmafact *bges) {
-    /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-    m_companyact = bges->company();
-    QAction *planCuentas = new QAction("&Promedios", 0);
-    planCuentas->setStatusTip("Promedios");
-    planCuentas->setWhatsThis("Promedios");
-    bges->menuArticulos->addSeparator();
-    bges->menuArticulos->addAction(planCuentas);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
-}
-
-
-*/
-
 
 ///
 /**
@@ -70,10 +36,8 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_promedios", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_promedios", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-//    myplugin1 *plug = new myplugin1();
-//    plug->inicializa(bges);
     return 0;
 }
 

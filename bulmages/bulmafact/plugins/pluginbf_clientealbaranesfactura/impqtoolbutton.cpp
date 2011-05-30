@@ -139,7 +139,7 @@ void ImpQToolButton::click()
                     return;
                 } // end if
                 m_companyact->pWorkspace() ->addSubWindow ( pres );
-                m_companyact->meteWindow ( pres->windowTitle(), pres, FALSE );
+                m_companyact->insertWindow ( pres->windowTitle(), pres, FALSE );
                 pres->show();
 
                 // El calculo de descuentos es complejo

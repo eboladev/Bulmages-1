@@ -91,7 +91,7 @@ int IncidenciaComercial::cargar ( QString id )
     }
     delete cur;
     setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END IncidenciaComercial::cargar", 0 );
     return 0;
 }

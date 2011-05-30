@@ -161,12 +161,12 @@ DROP FUNCTION aux() CASCADE;
 --CREATE FUNCTION tc_insertlalbaran() RETURNS "trigger"
 --AS '
 --DECLARE
---   bs RECORD;
+--   rsa RECORD;
 --   stockalmacen RECORD;
 --   m_idalmacen INTEGER;
 --BEGIN
---    SELECT INTO bs * FROM albaran WHERE idalbaran = NEW.idalbaran;
---    m_idalmacen := bs.idalmacen;
+--    SELECT INTO rsa * FROM albaran WHERE idalbaran = NEW.idalbaran;
+--    m_idalmacen := rsa.idalmacen;
 
     -- Tratamos el control de stock general.
 --    SELECT INTO stockalmacen * FROM tc_stock_almacen WHERE idalmacen = m_idalmacen AND idarticulo = NEW.idarticulo;
@@ -179,7 +179,7 @@ DROP FUNCTION aux() CASCADE;
 
     -- Tratamos el control de stock para tallas y colores.
 --    IF NEW.idtalla IS NOT NULL OR NEW.idcolor IS NOT NULL THEN
---	SELECT INTO bs * FROM tc_stock_tallacolor WHERE idstock_almacen = stockalmacen.idstock_almacen AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor;
+--	SELECT INTO rsa * FROM tc_stock_tallacolor WHERE idstock_almacen = stockalmacen.idstock_almacen AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor;
 --	IF NOT FOUND THEN
 --		INSERT INTO tc_stock_tallacolor (idstock_almacen, idtalla, idcolor, cantstock_tallacolor) VALUES (stockalmacen.idstock_almacen, NEW.idtalla, NEW.idcolor, -NEW.cantlalbaran);
 --	ELSE
@@ -213,20 +213,20 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rsa RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Tallas-y-Colores'';
+	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_TallasColores'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Tallas-y-Colores'';
+		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBf_TallasColores'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Tallas-y-Colores'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_TallasColores'', ''0.11.1-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.11.1"
+\echo "Actualizada la revision de la base de datos a la version 0.11.1-0002"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;

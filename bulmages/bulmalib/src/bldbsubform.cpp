@@ -62,12 +62,12 @@ BlDbSubFormRecord::~BlDbSubFormRecord()
 \param id Devuelve el identificador del registro guardado
 \return Si todo ha ido bien devuelve 0
 **/
-int BlDbSubFormRecord::DBsave ( QString &id )
+int BlDbSubFormRecord::dbSave ( QString &id )
 {
-    blDebug ( "BlDbSubFormRecord::DBsave", 0 );
+    blDebug ( "BlDbSubFormRecord::dbSave", 0 );
     refresh();
-    blDebug ( "END BlDbSubFormRecord::DBsave", 0 );
-    return BlDbRecord::DBsave ( id );
+    blDebug ( "END BlDbSubFormRecord::dbSave", 0 );
+    return BlDbRecord::dbSave ( id );
 }
 
 
@@ -197,7 +197,7 @@ int BlDbSubFormField::set ( QString val )
     } else {
 	  setText ( valorcampo() );
 
-	  if ( g_confpr->valor ( CONF_CENTER_TEXT_FIELDS ) == "TRUE"
+	  if ( g_confpr->value( CONF_CENTER_TEXT_FIELDS ) == "TRUE"
 	  && dbFieldType() == BlDbField::DbVarChar )
 	  {
 		setTextAlignment(Qt::AlignCenter);

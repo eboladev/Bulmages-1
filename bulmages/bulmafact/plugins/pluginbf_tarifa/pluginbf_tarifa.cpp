@@ -28,64 +28,7 @@
 #include "listlvartarifaview.h"
 #include "tarifalistview.h"
 
-
-///
-/**
-**/
-PluginBf_Tarifa::PluginBf_Tarifa() : BlMainCompanyPointer()
-{
-    blDebug ( "PluginBf_Tarifa::PluginBf_Tarifa", 0 );
-    blDebug ( "END PluginBf_Tarifa::PluginBf_Tarifa", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Tarifa::~PluginBf_Tarifa()
-{
-    blDebug ( "PluginBf_Tarifa::~PluginBf_Tarifa", 0 );
-    blDebug ( "END PluginBf_Tarifa::~PluginBf_Tarifa", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Tarifa::elslot()
-{
-    blDebug ( "PluginBf_Tarifa::elslot", 0 );
-    TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) mainCompany() ), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
-    tar->show();
-    blDebug ( "END PluginBf_Tarifa::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Tarifa::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Tarifa::inicializa", 0 );
-    /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-    m_bges = bges;
-    setMainCompany ( bges->company() );
-
-    /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
-    pPluginMenu->addSeparator();
-
-
-    QAction *planCuentas = new QAction ( _ ( "&Tarifas" ), 0 );
-    planCuentas->setStatusTip ( _ ( "Tarifas" ) );
-    planCuentas->setWhatsThis ( _ ( "Tarifas" ) );
-
-    pPluginMenu->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_Tarifa::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -99,15 +42,41 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_VariacionTarifa", "0.11.1-0001");
+    g_bges = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tarifa", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tarifa", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Tarifa *plug = new PluginBf_Tarifa();
-    plug->inicializa ( bges );
+
+
+    /// Miramos si existe un menu Articulos
+    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
+    pPluginMenu->addSeparator();
+
+
+    BlAction *accion = new BlAction ( _ ( "&Tarifas" ), 0 );
+    accion->setStatusTip ( _ ( "Tarifas" ) );
+    accion->setWhatsThis ( _ ( "Tarifas" ) );
+    accion->setObjectName("mui_actionTarifas");
+
+    pPluginMenu->addAction ( accion );
+ 
     return 0;
 }
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionTarifas") {
+        blDebug ( "PluginBf_Tarifa::BlAction_triggered::mui_actionTarifas", 0 );
+        TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) g_bges->company() ), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( tar );
+        blDebug ( "END PluginBf_Tarifa::BlAction_triggered::mui_actionTarifas", 0 );
+        tar->show();        
+    } // end if
+    return 0;
+}
+
 
 
 ///
@@ -117,7 +86,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView ( ClienteView *cli )
 {
-    blDebug ( "dentro del plugin", 0 );
+    blDebug ( "ClienteView_ClienteView", 0 );
 
     cli->addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, _ ( "plugintarifas" ) );
 
@@ -194,7 +163,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, _("Variacion de tarifas") );
 
@@ -321,7 +290,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
     /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.
     if ( cur->numregistros() > 0 ) {
-        variacionpvp = cur->valor ( "porcentajevariacion" );
+        variacionpvp = cur->value( "porcentajevariacion" );
 
         /// Aplica al precio la variacion correspondiente.
         QString res = sub->mainCompany()->PGEval ( pvpactual + " * (1 + " + variacionpvp + " / 100)", 2 );

@@ -27,28 +27,10 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_banco.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_BANCO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_BANCO_EXPORT int SNewBancoView (BfCompany *);
-
-
-class PluginBf_Banco : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Banco();
-    ~PluginBf_Banco();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot1();
-};
-
-
+extern "C" PLUGINBF_BANCO_EXPORT int BlAction_triggered(BlAction *);
 #endif
 

@@ -60,7 +60,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     pintar();
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END TipoActividadView::TipoActividadView", 0 );
 }
@@ -89,12 +89,12 @@ void TipoActividadView::pintar()
     } // end if
     m_cursortipoactividades = mainCompany() ->loadQuery ( "SELECT * FROM tipoactividad ORDER BY ascii(nombretipoactividad), nombretipoactividad" );
     while ( !m_cursortipoactividades->eof() ) {
-        new QListWidgetItem ( m_cursortipoactividades->valor ( "nombretipoactividad" ), mui_lista );
+        new QListWidgetItem ( m_cursortipoactividades->value( "nombretipoactividad" ), mui_lista );
         m_cursortipoactividades->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END TipoActividadView::pintar", 0 );
 }
 
@@ -125,8 +125,8 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
 
     int row = mui_lista->row ( cur );
     trataModificado();
-    mdb_idtipoactividad = m_cursortipoactividades->valor ( "idtipoactividad", row );
-    m_nombretipoactividad->setText ( m_cursortipoactividades->valor ( "nombretipoactividad", row ) );
+    mdb_idtipoactividad = m_cursortipoactividades->value( "idtipoactividad", row );
+    m_nombretipoactividad->setText ( m_cursortipoactividades->value( "nombretipoactividad", row ) );
 
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
@@ -136,7 +136,7 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
         return;
     } // end if
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
     blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
@@ -174,7 +174,7 @@ void TipoActividadView::on_mui_guardar_clicked()
         g_theApp->emitDbTableChanged ( "tipoactividad" );
 
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar el tipoactividad" ) );
         mainCompany() ->rollback();
@@ -193,7 +193,7 @@ bool TipoActividadView::trataModificado()
 {
     blDebug ( "TipoActividadView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar datos del tipoactividad" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -222,7 +222,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtipoactividad) AS idtipoactividad FROM tipoactividad" );
         mainCompany() ->commit();
-        mdb_idtipoactividad = cur->valor ( "idtipoactividad" );
+        mdb_idtipoactividad = cur->value( "idtipoactividad" );
         delete cur;
         pintar();
         blDebug ( "END TipoActividadView::on_mui_nuevo_clicked", 0 );

@@ -183,7 +183,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     presentar();
     mdb_idalbaran = "";
     if ( modoEdicion() )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
@@ -264,7 +264,7 @@ void AlbaranClienteList::presentar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
     /// Esta consulta podria resultar NULA y debe tratarse el caso
     if ( cur ) {
-        m_total->setText ( cur->valor ( "total" ) );
+        m_total->setText ( cur->value( "total" ) );
         delete cur;
     } // end if
 

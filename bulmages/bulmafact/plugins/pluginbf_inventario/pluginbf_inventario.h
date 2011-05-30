@@ -26,31 +26,14 @@
 #include "blwidget.h"
 #include "articuloview.h"
 #include "pdefs_pluginbf_inventario.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_INVENTARIO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_guardar_Post ( BlForm * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
-
-
-class PluginBf_Inventario : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Inventario();
-    ~PluginBf_Inventario();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
-
+extern "C" PLUGINBF_INVENTARIO_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

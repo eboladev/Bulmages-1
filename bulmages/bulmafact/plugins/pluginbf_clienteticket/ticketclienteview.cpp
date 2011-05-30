@@ -110,7 +110,7 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setFieldValue ( "0" );
         mui_idtrabajador->setFieldValue ( "0" );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "TicketClienteView_TicketClienteView_Post", this );
 	blScript(this);
@@ -143,7 +143,7 @@ void TicketClienteView::inicializar()
     blDebug ( "TicketClienteView::inicializar", 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END TicketClienteView::inicializar", 0 );
 }
 

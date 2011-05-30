@@ -70,9 +70,9 @@ void BfInformeCliente::setCliente ( QString val )
 void BfInformeCliente::generarInforme()
 {
     blDebug ( "BfInformeCliente::generarInforme", 0 );
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "informecliente.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informecliente.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "informecliente.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "informecliente.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
     archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
@@ -84,9 +84,9 @@ void BfInformeCliente::generarInforme()
 
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
+    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
@@ -101,10 +101,10 @@ void BfInformeCliente::generarInforme()
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + m_idcliente;
     BlDbRecordSet *cur = companyact->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        buff.replace ( "[nomcliente]", cur->valor ( "nomcliente" ) );
-        buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );
-        buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
-        buff.replace ( "[poblcliente]", cur->valor ( "poblcliente" ) );
+        buff.replace ( "[nomcliente]", cur->value( "nomcliente" ) );
+        buff.replace ( "[telcliente]", cur->value( "telcliente" ) );
+        buff.replace ( "[dircliente]", cur->value( "dircliente" ) );
+        buff.replace ( "[poblcliente]", cur->value( "poblcliente" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -122,7 +122,7 @@ void BfInformeCliente::generarInforme()
         delete cur;
     } else {
       while ( !cur->eof() ) {
-	  referencias += coma + "'" + cur->valor ( "referencia" ) + "' ";
+	  referencias += coma + "'" + cur->value( "referencia" ) + "' ";
 	  coma = ",";
 	  cur->nextRecord();
       }
@@ -150,11 +150,11 @@ void BfInformeCliente::generarInforme()
       cur = companyact->loadQuery ( SQLQuery );
       while ( !cur->eof() ) {
 	  fitxersortidatxt += "<tr>\n";
-	  fitxersortidatxt += "<td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
-	  fitxersortidatxt += "<td>" + cur->valor ( "cantlpresupuestot" ) + "</td>\n";
-	  fitxersortidatxt += "<td>" + cur->valor ( "cantlpedidoclientet" ) + "</td>\n";
-	  fitxersortidatxt += "<td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
-	  fitxersortidatxt += "<td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->value( "nomarticulo" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->value( "cantlpresupuestot" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->value( "cantlpedidoclientet" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->value( "cantlalbarant" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->value( "cantlfacturat" ) + "</td>\n";
 	  fitxersortidatxt += "</tr>\n";
 	  cur->nextRecord();
       } // end while
@@ -186,10 +186,10 @@ void BfInformeCliente::generarInforme()
       cur = companyact->loadQuery ( SQLQuery );
       while ( !cur->eof() ) {
 	  fitxersortidatxt += "<tr>\n";
-	  fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
-	  fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoproveedort" ) + "</td>\n";
-	  fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
-	  fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->value( "nomarticulo" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->value( "cantlpedidoproveedort" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->value( "cantlalbaranpt" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->value( "cantlfacturapt" ) + "</td>\n";
 	  fitxersortidatxt += "</tr>\n";
 	  cur->nextRecord();
       } // end while
@@ -218,31 +218,31 @@ void BfInformeCliente::generarInforme()
       /// Total presupuestado.
       SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "tpres" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "tpres" ) + "</td>\n";
       delete cur;
 
       /// Total pedido.
       SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "tpedcli" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "tpedcli" ) + "</td>\n";
       delete cur;
 
       /// Total trabajado.
       SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "talb" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "talb" ) + "</td>\n";
       delete cur;
 
       /// Total facturado.
       SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "tfact" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "tfact" ) + "</td>\n";
       delete cur;
 
       /// Total cobrado.
       SQLQuery = "SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "     <td>" + cur->valor ( "tcobro" ) + "</td>\n";
+      fitxersortidatxt += "     <td>" + cur->value( "tcobro" ) + "</td>\n";
       delete cur;
 
       fitxersortidatxt += "</tr>\n";
@@ -265,25 +265,25 @@ void BfInformeCliente::generarInforme()
       /// Total pedido.
       SQLQuery = "SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "tpedpro" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "tpedpro" ) + "</td>\n";
       delete cur;
 
       /// Total trabajado.
       SQLQuery = "SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "talbp" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "talbp" ) + "</td>\n";
       delete cur;
 
       /// Total facturado.
       SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "    <td>" + cur->valor ( "tfactp" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + cur->value( "tfactp" ) + "</td>\n";
       delete cur;
 
       /// Total cobrado.
       SQLQuery = "SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago IN " + referencias;
       cur = companyact->loadQuery ( SQLQuery );
-      fitxersortidatxt += "     <td>" + cur->valor ( "tpago" ) + "</td>\n";
+      fitxersortidatxt += "     <td>" + cur->value( "tpago" ) + "</td>\n";
       delete cur;
 
       fitxersortidatxt += "</tr>\n";

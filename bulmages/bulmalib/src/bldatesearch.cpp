@@ -57,11 +57,11 @@ BlDateSearch::~BlDateSearch()
 /**
 \param val
 **/
-void BlDateSearch::setfecha ( QString val )
+void BlDateSearch::setDate ( QString val )
 {
-    blDebug ( "BlDateSearch::setfecha", 0 );
+    blDebug ( "BlDateSearch::setDate", 0 );
     m_textoFecha->setText ( val.left(10) );
-    blDebug ( "END BlDateSearch::setfecha", 0 );
+    blDebug ( "END BlDateSearch::setDate", 0 );
 }
 
 ///

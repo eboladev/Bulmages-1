@@ -71,10 +71,10 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     vboxlayout->addWidget ( m_pb );
 
 
-    m_empresaactual = new BcCompany ( this );
-    m_empresaactual->setProgressBar ( m_pb );
-    m_empresaactual->init ( DB, "BulmaCont" );
-    m_empresaactual->setWorkspace ( m_pWorkspace );
+    m_company = new BcCompany ( this );
+    m_company->setProgressBar ( m_pb );
+    m_company->init ( DB, "BulmaCont" );
+    m_company->setWorkspace ( m_pWorkspace );
 
 #ifdef AREA_QMDI
     connect ( m_pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
@@ -93,7 +93,7 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
 
     addDockWidget ( Qt::LeftDockWidgetArea, m_list );
 
-    m_empresaactual->setListVentanas ( m_list );
+    m_company->setListVentanas ( m_list );
 
     m_list->setVisible ( TRUE );
     m_pb->setVisible ( FALSE );
@@ -125,11 +125,11 @@ BcBulmaCont::~BcBulmaCont()
 /**
 \return
 **/
-BcCompany *BcBulmaCont::empresaactual()
+BcCompany *BcBulmaCont::company()
 {
-    blDebug ( "BcBulmaCont::empresaactual", 0 );
-    blDebug ( "END BcBulmaCont::empresaactual", 0 );
-    return m_empresaactual;
+    blDebug ( "BcBulmaCont::company", 0 );
+    blDebug ( "END BcBulmaCont::company", 0 );
+    return m_company;
 }
 
 
@@ -164,7 +164,7 @@ QMenu *BcBulmaCont::mui_MenuVer()
 void BcBulmaCont::s_asiento1()
 {
     blDebug ( "BcBulmaCont::s_asiento1", 0 );
-    m_empresaactual->s_asiento1();
+    m_company->s_asiento1();
     blDebug ( "END BcBulmaCont::s_asiento1", 0 );
 }
 
@@ -175,7 +175,7 @@ void BcBulmaCont::s_asiento1()
 void BcBulmaCont::on_actionTipos_de_IVA_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionTipos_de_IVA_triggered", 0 );
-    m_empresaactual->tiposIVA();
+    m_company->tiposIVA();
     blDebug ( "END BcBulmaCont::on_actionTipos_de_IVA_triggered", 0 );
 }
 
@@ -186,7 +186,7 @@ void BcBulmaCont::on_actionTipos_de_IVA_triggered()
 void BcBulmaCont::on_actionCerrar_Asientos_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionCerrar_Asientos_triggered", 0 );
-    m_empresaactual->cerrarAsientos();
+    m_company->cerrarAsientos();
     blDebug ( "END BcBulmaCont::on_actionCerrar_Asientos_triggered", 0 );
 }
 
@@ -196,7 +196,7 @@ void BcBulmaCont::on_actionCerrar_Asientos_triggered()
 void BcBulmaCont::on_actionFormas_de_Pago_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionFormas_de_Pago_triggered", 0 );
-    m_empresaactual->fPago();
+    m_company->fPago();
     blDebug ( "END BcBulmaCont::on_actionFormas_de_Pago_triggered", 0 );
 }
 
@@ -207,7 +207,7 @@ void BcBulmaCont::on_actionFormas_de_Pago_triggered()
 void BcBulmaCont::on_actionConfiguracion_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionConfiguracion_triggered", 0 );
-    m_empresaactual->propiedadempresa();
+    m_company->propiedadempresa();
     blDebug ( "END BcBulmaCont::on_actionConfiguracion_triggered", 0 );
 }
 
@@ -219,7 +219,7 @@ void BcBulmaCont::on_actionConfiguracion_triggered()
 void BcBulmaCont::on_actionPlan_Contable_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionPlan_Contable_triggered", 0 );
-    m_empresaactual->muestracuentas();
+    m_company->muestracuentas();
     blDebug ( "END BcBulmaCont::on_actionPlan_Contable_triggered", 0 );
 }
 
@@ -232,7 +232,7 @@ void BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered", 0 );
     blDebug ( "END BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered", 0 );
-    m_empresaactual->recalculasaldos();
+    m_company->recalculasaldos();
 }
 
 
@@ -242,7 +242,7 @@ void BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered()
 void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionSustituir_Cuentas_triggered", 0 );
-    m_empresaactual->reemplazacuentaenasientos();
+    m_company->reemplazacuentaenasientos();
     blDebug ( "BcBulmaCont::on_actionSustituir_Cuentas_triggered", 0 );
 }
 
@@ -253,7 +253,7 @@ void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
 void BcBulmaCont::on_actionCanal_por_Defecto_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionCanal_por_Defecto_triggered", 0 );
-    m_empresaactual->canaldefecto();
+    m_company->canaldefecto();
     blDebug ( "END BcBulmaCont::on_actionCanal_por_Defecto_triggered", 0 );
 }
 
@@ -263,7 +263,7 @@ void BcBulmaCont::on_actionCanal_por_Defecto_triggered()
 void BcBulmaCont::on_actionCentros_de_Coste_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionCentros_de_Coste_triggered", 0 );
-    m_empresaactual->ccostes();
+    m_company->ccostes();
     blDebug ( "END BcBulmaCont::on_actionCentros_de_Coste_triggered", 0 );
 }
 
@@ -274,7 +274,7 @@ void BcBulmaCont::on_actionCentros_de_Coste_triggered()
 void BcBulmaCont::on_actionCanales_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionCanales_triggered", 0 );
-    m_empresaactual->canales();
+    m_company->canales();
     blDebug ( "END BcBulmaCont::on_actionCanales_triggered", 0 );
 }
 
@@ -285,7 +285,7 @@ void BcBulmaCont::on_actionCanales_triggered()
 void BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered", 0 );
-    m_empresaactual->centrocostedefecto();
+    m_company->centrocostedefecto();
     blDebug ( "END BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered", 0 );
 }
 
@@ -330,7 +330,7 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 void BcBulmaCont::on_actionCuentas_Anuales_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionCuentas_Anuales_triggered", 0 );
-    m_empresaactual->compbalance();
+    m_company->compbalance();
     blDebug ( "END BcBulmaCont::on_actionCuentas_Anuales_triggered", 0 );
 }
 
@@ -341,7 +341,7 @@ void BcBulmaCont::on_actionCuentas_Anuales_triggered()
 void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionMasas_Patrimoniales_triggered", 0 );
-    m_empresaactual->mpatrimoniales();
+    m_company->mpatrimoniales();
     blDebug ( "END BcBulmaCont::on_actionMasas_Patrimoniales_triggered", 0 );
 }
 
@@ -353,7 +353,7 @@ void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 void BcBulmaCont::on_actionListado_347_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionListado_347_triggered", 0 );
-    m_empresaactual->listado347();
+    m_company->listado347();
     blDebug ( "END BcBulmaCont::on_actionListado_347_triggered", 0 );
 }
 #endif
@@ -364,7 +364,7 @@ void BcBulmaCont::on_actionListado_347_triggered()
 void BcBulmaCont::on_actionAmortizaciones_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionAmortizaciones_triggered", 0 );
-    m_empresaactual->amortizaciones();
+    m_company->amortizaciones();
     blDebug ( "END BcBulmaCont::on_actionAmortizaciones_triggered", 0 );
 }
 
@@ -391,9 +391,9 @@ void BcBulmaCont::on_actionIndexador_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionIndexador_triggered", 0 );
     if ( actionIndexador->isChecked() == TRUE ) {
-        m_empresaactual->s_indexadorCambiaEstado ( TRUE );
+        m_company->s_indexadorCambiaEstado ( TRUE );
     } else {
-        m_empresaactual->s_indexadorCambiaEstado ( FALSE );
+        m_company->s_indexadorCambiaEstado ( FALSE );
     } // end if
     blDebug ( "END BcBulmaCont::on_actionIndexador_triggered", 0 );
 }
@@ -555,7 +555,7 @@ void BcBulmaCont::slotListadoCuentas()
 void BcBulmaCont::slotCentrosCoste()
 {
     blDebug ( "BcBulmaCont::slotCentrosCoste", 0 );
-    m_empresaactual->ccostes();
+    m_company->ccostes();
     blDebug ( "END BcBulmaCont::slotCentrosCoste", 0 );
 }
 
@@ -566,7 +566,7 @@ void BcBulmaCont::slotCentrosCoste()
 void BcBulmaCont::slotCanales()
 {
     blDebug ( "BcBulmaCont::slotCanales", 0 );
-    m_empresaactual->canales();
+    m_company->canales();
     blDebug ( "END BcBulmaCont::slotCanales", 0 );
 }
 
@@ -577,7 +577,7 @@ void BcBulmaCont::slotCanales()
 void BcBulmaCont::slotCompBalance()
 {
     blDebug ( "BcBulmaCont::slotCompBalance", 0 );
-    m_empresaactual->compbalance();
+    m_company->compbalance();
     blDebug ( "END BcBulmaCont::slotCompBalance", 0 );
 }
 
@@ -621,7 +621,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->valor ( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
@@ -638,8 +638,8 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 
     g_plugins->lanza ( "BcBulmaCont_closeEvent", this );
 
-    delete m_empresaactual;
-    m_empresaactual = NULL;
+    delete m_company;
+    m_company = NULL;
     delete m_list;
     m_list = NULL;
 
@@ -663,7 +663,7 @@ void BcBulmaCont::on_actionAyuda_triggered()
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
     QStringList parametros;
-    parametros << "-profile" << QString ( g_confpr->valor ( CONF_PROGDATA ) + "ayuda/bulmacont/bulmacont.adp" );
+    parametros << "-profile" << QString ( g_confpr->value( CONF_PROGDATA ) + "ayuda/bulmacont/bulmacont.adp" );
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     */
@@ -689,7 +689,7 @@ void BcBulmaCont::on_actionAcerca_de_triggered()
 void BcBulmaCont::on_actionPaises_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionPaises_triggered", 0 );
-    m_empresaactual->muestraPaises();
+    m_company->muestraPaises();
     blDebug ( "BcBulmaCont::on_actionPaises_triggered", 0 );
 }
 
@@ -711,18 +711,18 @@ void BcBulmaCont::on_actionPaises_triggered()
 {
     blDebug ( "BcBulmaCont::informaindexador", 0 );
     /// No existe una ventana que activar.
-    if ( m_empresaactual == NULL ) {
+    if ( m_company == NULL ) {
         blDebug ( "END BcBulmaCont::informaindexador", 0, "Sin empresa" );
         return;
     } // end if
 
     if ( w == NULL ) {
-        m_empresaactual->deSeleccionaWindow();
+        m_company->deselectWindow();
         blDebug ( "END BcBulmaCont::informaindexador", 0, "Sin Widget" );
         return;
     } // end if
-    m_empresaactual->deSeleccionaWindow();
-    m_empresaactual->seleccionaWindow ( w->windowTitle(), w );
+    m_company->deselectWindow();
+    m_company->selectWindow ( w->windowTitle(), w );
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toAscii().constData() );

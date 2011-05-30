@@ -44,7 +44,7 @@ int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
     QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
     BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
+        tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
     delete cur;
     blDebug ( "END PluginBt_AliasTallasYColores2::BtTicket_insertarArticuloNL_Post", 0 );
@@ -63,7 +63,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
+            tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ) );
         } // end if
         delete cur;
         valor = 0;

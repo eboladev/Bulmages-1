@@ -167,7 +167,7 @@ void CobrarParcialView::pintarOrigen()
 		htmlContent += "<tr>";
 		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
 		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->valor("nombremodificador") + "</TD>";
+		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
 		delete rsModificador;
 		htmlContent += "</tr>";
 	    } // end if
@@ -272,7 +272,7 @@ void CobrarParcialView::pintarDestino()
 		htmlContent += "<tr>";
 		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
 		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->valor("nombremodificador") + "</TD>";
+		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
 		delete rsModificador;
 		htmlContent += "</tr>";
 	    } // end if

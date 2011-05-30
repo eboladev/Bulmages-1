@@ -150,7 +150,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_socio", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_socio", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
@@ -242,14 +242,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 //	blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idalumno", cur->valor ( "idalumno" ) );
+            sub->m_registrolinea->setDbValue ( "idalumno", cur->value( "idalumno" ) );
         } // end if
         delete cur;
     } // end if
     if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente FROM cliente WHERE upper(nomcliente) = upper('" + sub->m_campoactual->text() + "')" );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
+            sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
         } // end if
         delete cur;
     } // end if
@@ -282,13 +282,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = " ";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
@@ -336,7 +336,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idCliente );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idcliente", idCliente );
-        sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ));
+        sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ));
     } // end if
     
     delete cur;
@@ -487,8 +487,8 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idTutor );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcliente", idTutor );
-        sub->lineaact()->setDbValue ( "cifcliente", cur->valor ( "cifcliente" ) );
-        sub->lineaact()->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+        sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
+        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
     } // end if
     delete cur;
 

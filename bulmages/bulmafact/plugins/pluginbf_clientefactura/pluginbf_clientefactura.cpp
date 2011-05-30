@@ -32,91 +32,7 @@
 
 
 FacturasList *g_facturasList = NULL;
-
-///
-/**
-**/
-PluginBf_ClienteFactura::PluginBf_ClienteFactura()
-{
-    blDebug ( "PluginBf_ClienteFactura::PluginBf_ClienteFactura", 0 );
-    blDebug ( "END PluginBf_ClienteFactura::PluginBf_ClienteFactura", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_ClienteFactura::~PluginBf_ClienteFactura()
-{
-    blDebug ( "PluginBf_ClienteFactura::~PluginBf_ClienteFactura", 0 );
-    blDebug ( "END PluginBf_ClienteFactura::~PluginBf_ClienteFactura", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_ClienteFactura::elslot()
-{
-    blDebug ( "PluginBf_ClienteFactura::elslot", 0 );
-    if ( g_facturasList ) {
-        g_facturasList->hide();
-        g_facturasList->show();
-    }// end if
-    blDebug ( "END PluginBf_ClienteFactura::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_ClienteFactura::elslot1()
-{
-    blDebug ( "PluginBf_ClienteFactura::elslot1", 0 );
-    FacturaView * bud = new FacturaView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    blDebug ( "END PluginBf_ClienteFactura::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_ClienteFactura::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_ClienteFactura::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "factura", "SELECT" ) ) {
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Facturas a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Facturas a clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Facturas a clientes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nueva factura a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
-        npago->setStatusTip ( _ ( "Nueva factura a cliente" ) );
-        npago->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
-    }// end if
-    blDebug ( "END PluginBf_ClienteFactura::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -130,13 +46,55 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clientefactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clientefactura", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_ClienteFactura *plug = new PluginBf_ClienteFactura();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "factura", "SELECT" ) ) {
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        g_bges = bges;
+        
+        BlAction *accionA = new BlAction ( _ ( "&Facturas a clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Facturas a clientes" ) );
+        accionA->setWhatsThis ( _ ( "Facturas a clientes" ) );
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nueva factura a cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nueva factura a cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+
+    }// end if
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionFacturasClientes") {
+        if ( g_facturasList ) {
+            g_facturasList->hide();
+            g_facturasList->show();
+        }// end if    
+    } // end if
+
+    if (accion->objectName() == "mui_actionNuevaFacturaCliente") {         
+        FacturaView * bud = new FacturaView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->inicializar();
+        bud->show();
+            
+            
+    } // end if
+
+    return 0;
+}
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
@@ -180,7 +138,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         FacturaView * bud = new FacturaView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->valor ( "idfactura" ) );
+        bud->cargar ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while

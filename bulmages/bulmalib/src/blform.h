@@ -63,8 +63,8 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int borrar();
-    virtual int sacaWindow();
-    virtual void meteWindow ( QString , QObject *, bool compdup = TRUE, QString titulo = "" );
+    virtual int removeWindow();
+    virtual void insertWindow ( QString , QObject *, bool compdup = TRUE, QString titulo = "" );
     void setDbTableName ( QString nom );
     void setTitleName ( QString nom );
     virtual void pintar();

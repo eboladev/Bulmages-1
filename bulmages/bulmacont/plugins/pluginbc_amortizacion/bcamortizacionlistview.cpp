@@ -52,7 +52,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
     mui_listado->setInsert ( FALSE );
     presentar();
 
-    meteWindow ( windowTitle() );
+    insertWindow ( windowTitle() );
    
     /// Lanzamos los posibles scripts
     blScript(this);
@@ -69,7 +69,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
 BcAmortizacionListView::~BcAmortizacionListView()
 {
     blDebug ( "BcAmortizacionListView::~BcAmortizacionListView", 0 );
-    sacaWindow();
+    removeWindow();
     blDebug ( "END BcAmortizacionListView::~BcAmortizacionListView", 0 );
 }
 

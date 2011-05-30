@@ -51,7 +51,7 @@ int entryPoint ( QMainWindow *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_formlock", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_formlock", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return ( 0 );
 }
@@ -81,7 +81,7 @@ int BlForm_cargar ( BlForm *ficha )
 
     if ( !cur1->eof() ) {
        blMsgInfo ( _ ( "Esta ficha está siendo utilizada por el usuario \"%1\". Usted no podrá hacer cambios en este momento." )
-               .arg( cur1->valor("usuariobloqueo") ) );
+               .arg( cur1->value("usuariobloqueo") ) );
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
         QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );
@@ -131,7 +131,7 @@ int BlForm_DesBlForm ( BlForm *ficha )
 	    QString usuario = "";
 	    BlDbRecordSet *cur = ficha->mainCompany()->loadQuery ( "SELECT current_user" );
 	    if ( !cur->eof() ) {
-		usuario = cur->valor ( "current_user" );
+		usuario = cur->value( "current_user" );
 	    } // end if
 	    delete cur;
 	    query = "SELECT * FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2 AND usuariobloqueo = $3";

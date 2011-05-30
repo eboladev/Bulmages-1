@@ -51,10 +51,10 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbascula", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbascula", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
-    QString portName = g_confpr->valor ( CONF_TPV_BASCULA_FILE );              // update this to use your port of choice
+    QString portName = g_confpr->value( CONF_TPV_BASCULA_FILE );              // update this to use your port of choice
     g_listener = new PortListener(portName, tpv->empresaTPV());
     
     blDebug ( "END entryPoint", 0 );

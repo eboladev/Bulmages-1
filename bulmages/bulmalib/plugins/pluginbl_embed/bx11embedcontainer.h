@@ -35,7 +35,7 @@ class BX11EmbedContainer : public QX11EmbedContainer, public BlMainCompanyPointe
 public:
     BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent = 0 );
     virtual ~BX11EmbedContainer();
-    int sacaWindow();
+    int removeWindow();
 };
 
 

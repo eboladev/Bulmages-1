@@ -64,7 +64,7 @@ void TicketQToolButton::setBoton()
     setStatusTip ( _ ( "Imprimir Etiquetas" ) );
     setToolTip ( _ ( "Imprimir Etiquetas" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png" ) );
+    setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/ticket.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     blDebug ( "END TicketQToolButton::setBoton", 0 );
 }
@@ -78,9 +78,9 @@ void TicketQToolButton::click()
     blDebug ( "ImpQToolButton::click", 2 );
     QString txt = "";
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "etiquetas.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "etiquetas.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "etiquetas.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "etiquetas.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -96,10 +96,10 @@ void TicketQToolButton::click()
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
@@ -118,13 +118,13 @@ void TicketQToolButton::click()
     BlDbRecordSet *cur = m_companyact->loadQuery ( query );
     while ( !cur->eof() ) {
         int i = 0;
-        while ( i < cur->valor ( "cantidad" ).toInt() ) {
+        while ( i < cur->value( "cantidad" ).toInt() ) {
             fitxersortidatxt += "<blockTable><tr><td>";
-            fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->valor ( "nomarticulo" ) + "</font></para>\n";
-            fitxersortidatxt += "<barCode code=\"code128\" height=\"0.60cm\">" + cur->valor ( "codigocompletoarticulo" ) + "</barCode>\n";
-            fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->valor ( "codigocompletoarticulo" ) + " - (" + m_albaranProveedorView->dbValue ( "fechaalbaranp" ).left ( 10 ) + ")</font></para>\n";
+            fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->value( "nomarticulo" ) + "</font></para>\n";
+            fitxersortidatxt += "<barCode code=\"code128\" height=\"0.60cm\">" + cur->value( "codigocompletoarticulo" ) + "</barCode>\n";
+            fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->value( "codigocompletoarticulo" ) + " - (" + m_albaranProveedorView->dbValue ( "fechaalbaranp" ).left ( 10 ) + ")</font></para>\n";
 //     if (cur->numcampo("lotelalbaranp") != -1)
-//             fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\"> Lote: " + cur->valor("lotelalbaranp") + "</font></para>\n";
+//             fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\"> Lote: " + cur->value("lotelalbaranp") + "</font></para>\n";
             fitxersortidatxt += "</td></tr></blockTable>";
             fitxersortidatxt += "<spacer length=\"0.5cm\"/>\n";
             i++;

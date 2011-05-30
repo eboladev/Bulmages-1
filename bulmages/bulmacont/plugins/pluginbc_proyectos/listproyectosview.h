@@ -44,7 +44,7 @@ private:
 public:
     ListProyectosView ( BcCompany *emp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~ListProyectosView();
-    void inicializatabla();
+    void inicializaTabla();
     void editar ( int );
     virtual void crear();
     virtual void borrar();

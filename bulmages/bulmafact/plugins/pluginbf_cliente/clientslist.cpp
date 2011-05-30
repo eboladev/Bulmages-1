@@ -57,7 +57,7 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de clientes" ) );
         mui_editar->setHidden ( TRUE );
@@ -198,7 +198,7 @@ void ClientsList::on_mui_exportar_clicked()
     QFile filexml ( QFileDialog::getSaveFileName (
                         this,
                         _ ( "Elija el archivo" ),
-                        g_confpr->valor ( CONF_DIR_USER ),
+                        g_confpr->value( CONF_DIR_USER ),
                         _ ( "Clientes (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_CLIENTES );
@@ -221,7 +221,7 @@ void ClientsList::on_mui_importar_clicked()
     QFile filexml ( QFileDialog::getOpenFileName (
                         this,
                         _ ( "Elija el archivo" ),
-                        g_confpr->valor ( CONF_DIR_USER ),
+                        g_confpr->value( CONF_DIR_USER ),
                         _ ( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
@@ -287,7 +287,7 @@ void ClientsList::crear()
 	QString idclienteold = "";
 	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idcliente) AS id FROM cliente");
 	if( !curold->eof()) {
-		      idclienteold = curold->valor("id");
+		      idclienteold = curold->value("id");
 	} // end if
 	delete curold;
 	
@@ -296,8 +296,8 @@ void ClientsList::crear()
       
 	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idcliente) AS id FROM cliente");
 	if( !cur->eof()) {
-		  if (cur->valor("id") != idclienteold) {
-		      mdb_idcliente = cur->valor("id");
+		  if (cur->value("id") != idclienteold) {
+		      mdb_idcliente = cur->value("id");
 	              emit ( selected ( mdb_idcliente ) );
 		  } // end if
 	} // end if

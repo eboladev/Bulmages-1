@@ -28,7 +28,7 @@
 #include "blsearchwidget.h"
 #include "bfsubform.h"
 #include "pdefs_pluginbf_formasdepago.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int SNewFPagoView (BfCompany *);
@@ -36,22 +36,7 @@ extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_createEditor(BlSub
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubForm_editFinished(BlSubForm *);
-
-class PluginBf_FormasDePago : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_FormasDePago();
-    ~PluginBf_FormasDePago();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot1();
-};
+extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlAction_triggered(BlAction *);
 
 
 #endif

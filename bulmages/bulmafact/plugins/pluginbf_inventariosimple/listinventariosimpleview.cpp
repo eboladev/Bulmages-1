@@ -53,7 +53,7 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
     mui_listado->setMainCompany ( comp );
     mui_listado->inicializar();
     mui_listado->cargar();
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END ListInventarioSimpleView::ListInventarioSimpleView", 1 );
 }

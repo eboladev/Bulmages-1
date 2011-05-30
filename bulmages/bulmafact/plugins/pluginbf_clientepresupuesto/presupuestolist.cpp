@@ -96,7 +96,7 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     presentar();
     m_idpresupuesto = "";
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -224,7 +224,7 @@ void PresupuestoList::presentar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
     /// Si por un problema de permisos este query devuelve NULL debe contemplarse el caso.
     if ( cur ) {
-        m_total->setText ( cur->valor ( "total" ) );
+        m_total->setText ( cur->value( "total" ) );
         delete cur;
     } // end if
 

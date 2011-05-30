@@ -18,29 +18,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef TIPTRAB_H
-#define TIPTRAB_H
+#ifndef PLUGINBF_TALLASCOLORES_H
+#define PLUGINBF_TALLASCOLORES_H
 
 #include <QObject>
+
+
 #include "bfbulmafact.h"
+#include "articuloview.h"
+#include "blsearchwidget.h"
+#include "bfproveedoralbaransubform.h"
+#include "bfclientealbaransubform.h"
+#include "listlinfacturaview.h"
+#include "listlinfacturapview.h"
+#include "pdefs_pluginbf_tallascolores.h"
+#include "blaction.h"
 #include "bfsubform.h"
 
 
-class mytiptrab : public QObject
-{
-    Q_OBJECT
 
-public:
-    BfBulmaFact *m_bulmafact;
 
-public:
-    mytiptrab();
-    ~mytiptrab();
-    void inicializa ( BfBulmaFact * );
 
-public slots:
-    void elslot();
-};
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int entryPoint ( BfBulmaFact * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BlAction_triggered(BlAction *);
 
 
 /// Clase BfSubFormDelegate
@@ -54,6 +70,8 @@ public:
     virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 };
+
+
 
 #endif
 

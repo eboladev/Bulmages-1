@@ -79,7 +79,7 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        mainCompany()->meteWindow ( windowTitle(), this, FALSE );
+        mainCompany()->insertWindow ( windowTitle(), this, FALSE );
     } // end if
 
     pintar();
@@ -125,15 +125,15 @@ void PartidasView::pintar()
 
     cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM partida WHERE padre IS NULL ORDER BY idpartida" );
     while ( !cursoraux1->eof() ) {
-        padre = cursoraux1->valor ( "padre" ).toInt();
-        idpartida = cursoraux1->valor ( "idpartida" ).toInt();
+        padre = cursoraux1->value( "padre" ).toInt();
+        idpartida = cursoraux1->value( "idpartida" ).toInt();
         it = new QTreeWidgetItem ( m_init );
         Lista1[idpartida] = it;
-        it->setText ( COL_NOMBREPARTIDA, cursoraux1->valor ( "nombrepartida" ) );
-        it->setText ( COL_CODIGOPARTIDA, cursoraux1->valor ( "codigopartida" ) );
-        it->setText ( COL_DESCPARTIDA, cursoraux1->valor ( "descpartida" ) );
-        it->setText ( COL_IDPARTIDA, cursoraux1->valor ( "idpartida" ) );
-        it->setText ( COL_CODIGOCOMPLETOPARTIDA, cursoraux1->valor ( "codigocompletopartida" ) );
+        it->setText ( COL_NOMBREPARTIDA, cursoraux1->value( "nombrepartida" ) );
+        it->setText ( COL_CODIGOPARTIDA, cursoraux1->value( "codigopartida" ) );
+        it->setText ( COL_DESCPARTIDA, cursoraux1->value( "descpartida" ) );
+        it->setText ( COL_IDPARTIDA, cursoraux1->value( "idpartida" ) );
+        it->setText ( COL_CODIGOCOMPLETOPARTIDA, cursoraux1->value( "codigocompletopartida" ) );
 
         m_listPartidas->expandItem ( it );
         cursoraux1->nextRecord();
@@ -141,22 +141,22 @@ void PartidasView::pintar()
     delete cursoraux1;
     cursoraux2 = mainCompany()->loadQuery ( "SELECT * FROM partida WHERE padre IS NOT NULL ORDER BY idpartida" );
     while ( !cursoraux2->eof() ) {
-        padre = cursoraux2->valor ( "padre" ).toInt();
-        idpartida = cursoraux2->valor ( "idpartida" ).toInt();
+        padre = cursoraux2->value( "padre" ).toInt();
+        idpartida = cursoraux2->value( "idpartida" ).toInt();
         it = new QTreeWidgetItem ( Lista1[padre] );
         Lista1[idpartida] = it;
-        it->setText ( COL_NOMBREPARTIDA, cursoraux2->valor ( "nombrepartida" ) );
-        it->setText ( COL_CODIGOPARTIDA, cursoraux2->valor ( "codigopartida" ) );
-        it->setText ( COL_DESCPARTIDA, cursoraux2->valor ( "descpartida" ) );
-        it->setText ( COL_IDPARTIDA, cursoraux2->valor ( "idpartida" ) );
-        it->setText ( COL_CODIGOCOMPLETOPARTIDA, cursoraux2->valor ( "codigocompletopartida" ) );
+        it->setText ( COL_NOMBREPARTIDA, cursoraux2->value( "nombrepartida" ) );
+        it->setText ( COL_CODIGOPARTIDA, cursoraux2->value( "codigopartida" ) );
+        it->setText ( COL_DESCPARTIDA, cursoraux2->value( "descpartida" ) );
+        it->setText ( COL_IDPARTIDA, cursoraux2->value( "idpartida" ) );
+        it->setText ( COL_CODIGOCOMPLETOPARTIDA, cursoraux2->value( "codigocompletopartida" ) );
         m_listPartidas->expandItem ( it );
         cursoraux2->nextRecord();
     } // end while
     delete cursoraux2;
     m_idpartida = "";
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
     blDebug ( "END PartidasView::pintar", 0 );
 }
@@ -283,10 +283,10 @@ void PartidasView::mostrarplantilla()
         query = "SELECT * from partida WHERE idpartida = " + m_idpartida;
         BlDbRecordSet *cursorpartida = mainCompany()->loadQuery ( query );
         if ( !cursorpartida->eof() ) {
-            mui_nombrePartida->setText ( cursorpartida->valor ( "nombrepartida" ) );
-            mui_descPartida->setPlainText ( cursorpartida->valor ( "descpartida" ) );
-            mui_codigoCompletoPartida->setText ( cursorpartida->valor ( "codigocompletopartida" ) );
-            mui_codigoPartida->setText ( cursorpartida->valor ( "codigopartida" ) );
+            mui_nombrePartida->setText ( cursorpartida->value( "nombrepartida" ) );
+            mui_descPartida->setPlainText ( cursorpartida->value( "descpartida" ) );
+            mui_codigoCompletoPartida->setText ( cursorpartida->value( "codigocompletopartida" ) );
+            mui_codigoPartida->setText ( cursorpartida->value( "codigopartida" ) );
         } // end if
         delete cursorpartida;
     } else {
@@ -300,7 +300,7 @@ void PartidasView::mostrarplantilla()
         mui_codigoPartida->setText ( "" );
     } // end if
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END PartidasView::mostrarplantilla", 0 );
 }
 
@@ -313,7 +313,7 @@ bool PartidasView::trataModificado()
 {
     blDebug ( "PartidasView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar partida" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -358,7 +358,7 @@ int PartidasView::guardar()
             /// Pintamos los datos en el listado.
             pintar ( posicionCursor );
         } // end if
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blDebug ( "END PartidasView::guardar", 0 );
         return 0;
     } catch ( ... ) {
@@ -378,11 +378,11 @@ void PartidasView::pintar ( QTreeWidgetItem *it )
     if ( it ) {
         BlDbRecordSet * cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM partida WHERE idpartida = " + idpartida );
         if ( !cursoraux1->eof() ) {
-            it->setText ( COL_NOMBREPARTIDA, cursoraux1->valor ( "nombrepartida" ) );
-            it->setText ( COL_CODIGOPARTIDA, cursoraux1->valor ( "codigopartida" ) );
-            it->setText ( COL_DESCPARTIDA, cursoraux1->valor ( "descpartida" ) );
-            it->setText ( COL_IDPARTIDA, cursoraux1->valor ( "idpartida" ) );
-            it->setText ( COL_CODIGOCOMPLETOPARTIDA, cursoraux1->valor ( "codigocompletopartida" ) );
+            it->setText ( COL_NOMBREPARTIDA, cursoraux1->value( "nombrepartida" ) );
+            it->setText ( COL_CODIGOPARTIDA, cursoraux1->value( "codigopartida" ) );
+            it->setText ( COL_DESCPARTIDA, cursoraux1->value( "descpartida" ) );
+            it->setText ( COL_IDPARTIDA, cursoraux1->value( "idpartida" ) );
+            it->setText ( COL_CODIGOCOMPLETOPARTIDA, cursoraux1->value( "codigocompletopartida" ) );
         } // end if
         delete cursoraux1;
     } // end if
@@ -415,7 +415,7 @@ void PartidasView::on_mui_crear_clicked()
         } // end if
         BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT max(idpartida) AS idpartida FROM partida" );
         mainCompany()->commit();
-        m_idpartida = cur->valor ( "idpartida" );
+        m_idpartida = cur->value( "idpartida" );
         delete cur;
         pintar();
         blDebug ( "END PartidasView::on_mui_crear_clicked", 0 );
@@ -441,7 +441,7 @@ void PartidasView::on_mui_borrar_clicked()
 
     if ( val == QMessageBox::Yes ) {
         if ( !borrar() ) {
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
@@ -470,7 +470,7 @@ int PartidasView::borrar()
             throw - 1;
         } // end if
         m_idpartida = "";
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         pintar();
         blDebug ( "END PartidasView::borrar", 0 );
     } catch ( ... ) {
@@ -488,9 +488,9 @@ void PartidasView::on_mui_imprimir_clicked()
 {
     blDebug ( "PartidasView::on_mui_imprimir_clicked", 0 );
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "partidas.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "partidas.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "partidas.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "partidas.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -505,10 +505,10 @@ void PartidasView::on_mui_imprimir_clicked()
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy "  + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy "  + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -531,8 +531,8 @@ void PartidasView::on_mui_imprimir_clicked()
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM partida ORDER BY codigocompletopartida" );
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "        <td>" + cur->valor ( "codigocompletopartida" ) + "</td>";
-        fitxersortidatxt += "        <td>" + cur->valor ( "nombrepartida" ) + "</td>";
+        fitxersortidatxt += "        <td>" + cur->value( "codigocompletopartida" ) + "</td>";
+        fitxersortidatxt += "        <td>" + cur->value( "nombrepartida" ) + "</td>";
         fitxersortidatxt += "</tr>";
         cur->nextRecord();
     } // end if

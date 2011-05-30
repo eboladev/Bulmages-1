@@ -27,66 +27,8 @@
 
 #include "actividadview.h"
 
-///
-/**
-**/
-PluginBf_InventarioSimple::PluginBf_InventarioSimple()
-{
-    blDebug ( "PluginBf_InventarioSimple::PluginBf_InventarioSimple", 0 );
-    blDebug ( "END PluginBf_InventarioSimple::PluginBf_InventarioSimple", 0 );
-}
 
-
-///
-/**
-**/
-PluginBf_InventarioSimple::~PluginBf_InventarioSimple()
-{
-    blDebug ( "PluginBf_InventarioSimple::~PluginBf_InventarioSimple", 0 );
-    blDebug ( "END PluginBf_InventarioSimple::~PluginBf_InventarioSimple", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_InventarioSimple::elslot()
-{
-    blDebug ( "PluginBf_InventarioSimple::elslot", 0 );
-
-    ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
-    tar->show();
-
-    blDebug ( "END PluginBf_InventarioSimple::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_InventarioSimple::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_InventarioSimple::inicializa", 0 );
-    /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-    m_bges = bges;
-    setMainCompany ( bges->company() );
-
-    /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( _("&Inventari"), "menuInventari", "menuMaestro" );
-    pPluginMenu->addSeparator();
-
-
-    QAction *planCuentas = new QAction ( _ ( "&Inventarios" ), 0 );
-    planCuentas->setStatusTip ( _ ( "Inventarios" ) );
-    planCuentas->setWhatsThis ( _ ( "Inventarios" ) );
-
-    pPluginMenu->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_InventarioSimple::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -102,12 +44,32 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_InventarioSimple *plug = new PluginBf_InventarioSimple();
-    plug->inicializa ( bges );
+
+    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
+    pPluginMenu->addSeparator();
+
+
+    BlAction *accionA = new BlAction ( _ ( "&Inventarios" ), 0 );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
+    accionA->setStatusTip ( _ ( "Inventarios" ) );
+    accionA->setWhatsThis ( _ ( "Inventarios" ) );
+    accionA->setObjectName("mui_actionInventarios");
+    pPluginMenu->addAction ( accionA );
+
     return 0;
 }
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionInventarios") {
+        ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( tar );
+        tar->show();
+    } // end if
+    return 0;
+}
+
 
 
 int ActividadView_ActividadView(ActividadView *act) {
@@ -128,7 +90,7 @@ int ActividadView_ActividadView(ActividadView *act) {
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    act->dialogChanges_setQObjectExcluido ( l->mui_list );
+    act->dialogChanges_setExcludedObject ( l->mui_list );
 
     act->mui_tab->addTab ( l, "Material" );
     l->cargar("SELECT * FROM prestamo NATURAL LEFT JOIN inventariosimple WHERE idprestamo IS NULL");
@@ -237,7 +199,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM inventariosimple WHERE idinventariosimple = " + idinv );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idinventariosimple", idinv );
-        sub->m_registrolinea->setDbValue ( "nominventariosimple", cur->valor( "nominventariosimple") );
+        sub->m_registrolinea->setDbValue ( "nominventariosimple", cur->value( "nominventariosimple") );
     } // end if
     
     delete cur;
@@ -268,19 +230,19 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 /**
 \param parent
 **/
-MyPlugInv1::MyPlugInv1 ( BlSubForm *parent ) : QObject ( parent )
+SubForm_InventarioSimple::SubForm_InventarioSimple ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugInv1::MyPlugInv1", 0 );
-    blDebug ( "END MyPlugInv1::MyPlugInv1", 0 );
+    blDebug ( "SubForm_InventarioSimple::SubForm_InventarioSimple", 0 );
+    blDebug ( "END SubForm_InventarioSimple::SubForm_InventarioSimple", 0 );
 }
 
 ///
 /**
 **/
-MyPlugInv1::~MyPlugInv1()
+SubForm_InventarioSimple::~SubForm_InventarioSimple()
 {
-    blDebug ( "MyPlugInv1::~MyPlugInv1", 0 );
-    blDebug ( "END MyPlugInv1::~MyPlugInv1", 0 );
+    blDebug ( "SubForm_InventarioSimple::~SubForm_InventarioSimple", 0 );
+    blDebug ( "END SubForm_InventarioSimple::~SubForm_InventarioSimple", 0 );
 }
 
 
@@ -288,9 +250,9 @@ MyPlugInv1::~MyPlugInv1()
 /**
 \param menu
 **/
-void MyPlugInv1::s_pintaMenu ( QMenu *menu )
+void SubForm_InventarioSimple::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugInv1::s_pintaMenu", 0 );
+    blDebug ( "SubForm_InventarioSimple::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nominventariosimple" );
     if ( header ) {
@@ -299,7 +261,7 @@ void MyPlugInv1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/Images/product-family.png" ), _ ( "Seleccionar Material" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPlugInv1::s_pintaMenu", 0 );
+    blDebug ( "END SubForm_InventarioSimple::s_pintaMenu", 0 );
 }
 
 
@@ -307,22 +269,22 @@ void MyPlugInv1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPlugInv1::s_trataMenu ( QAction *action )
+void SubForm_InventarioSimple::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugInv1::s_trataMenu", 0 );
+    blDebug ( "SubForm_InventarioSimple::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Seleccionar Material" ) ) {
         seleccionarMaterial ();
     } // end if
     
-    blDebug ( "END MyPlugInv1::s_trataMenu", 0 );
+    blDebug ( "END SubForm_InventarioSimple::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
+void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
 {
     blDebug ( metaObject()->className()+ QString("::seleccionarMaterial"), 0 );
     
@@ -358,7 +320,7 @@ void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
     delete list;
     
     if ( idinv == "" ) {
-        blDebug ( "END MyPlugInv1::editarMaterial" );
+        blDebug ( "END SubForm_InventarioSimple::editarMaterial" );
         return ;
     } // end if
 
@@ -366,13 +328,13 @@ void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idinventariosimple", idinv );
-        sub->lineaact()->setDbValue ( "nominventariosimple", cur->valor( "nominventariosimple") );
+        sub->lineaact()->setDbValue ( "nominventariosimple", cur->value( "nominventariosimple") );
     } // end if
     
     delete cur;
 
 
-    blDebug ( "END MyPlugInv1::seleccionarMaterial", 0 );
+    blDebug ( "END SubForm_InventarioSimple::seleccionarMaterial", 0 );
 }
 
 
@@ -384,7 +346,7 @@ void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPlugInv1 *subformods = new MyPlugInv1 ( (BfSubForm *) sub );
+    SubForm_InventarioSimple *subformods = new SubForm_InventarioSimple ( (BfSubForm *) sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -406,7 +368,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     if (!header) 
         header = sub->header ( "nominventariosimple" );
     if ( header ) {
-        MyPlugInv1 *subformods = new MyPlugInv1 ( sub );
+        SubForm_InventarioSimple *subformods = new SubForm_InventarioSimple ( sub );
         
         QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
         if ( !m_hboxLayout1 ) {

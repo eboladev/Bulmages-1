@@ -32,115 +32,8 @@
 #include "emitirrecibosview.h"
 
 RecibosList *g_recibosList = NULL;
+BfBulmaFact *g_bges = NULL;
 
-///
-/**
-**/
-PluginBf_Recibo::PluginBf_Recibo()
-{
-    blDebug ( "PluginBf_Recibo::PluginBf_Recibo", 0 );
-    blDebug ( "END PluginBf_Recibo::PluginBf_Recibo", 0 );
-}
-
-///
-/**
-**/
-PluginBf_Recibo::~PluginBf_Recibo()
-{
-    blDebug ( "PluginBf_Recibo::~PluginBf_Recibo", 0 );
-    blDebug ( "END PluginBf_Recibo::~PluginBf_Recibo", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Recibo::elslot()
-{
-    blDebug ( "PluginBf_Recibo::elslot", 0 );
-    
-    if ( g_recibosList ) {
-        g_recibosList->hide();
-        g_recibosList->show();
-    } // end if
-    
-    blDebug ( "END PluginBf_Recibo::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Recibo::elslot1()
-{
-    blDebug ( "PluginBf_Recibo::elslot1", 0 );
-    
-    ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    
-    blDebug ( "END PluginBf_Recibo::elslot1", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Recibo::elslot2()
-{
-    blDebug ( "PluginBf_Recibo::elslot2", 0 );
-    
-    EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    
-    blDebug ( "END PluginBf_Recibo::elslot2", 0 );
-}
-
-///
-/**
-\param bges
-**/
-void PluginBf_Recibo::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Recibo::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( _("&Economia"), "menuEconomia", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *listRecibos = new QAction ( _ ( "&Recibos" ), 0 );
-        listRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-        listRecibos->setStatusTip ( _ ( "Recibos" ) );
-        listRecibos->setWhatsThis ( _ ( "Recibos" ) );
-        pPluginMenu->addAction ( listRecibos );
-        bges->Listados->addAction ( listRecibos );
-        connect ( listRecibos, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *nuevoRecibo = new QAction ( _ ( "&Nuevo recibo" ), 0 );
-        nuevoRecibo->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
-        nuevoRecibo->setStatusTip ( _ ( "Nuevo recibo" ) );
-        nuevoRecibo->setWhatsThis ( _ ( "Nuevo recibo" ) );
-        pPluginMenu->addAction ( nuevoRecibo );
-        bges->Fichas->addAction ( nuevoRecibo );
-        connect ( nuevoRecibo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
-        QAction *emitirRecibos = new QAction ( _ ( "Recibos &Automaticos" ), 0 );
-        emitirRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.png" ) ) );
-        emitirRecibos->setStatusTip ( _ ( "Emitir recibos" ) );
-        emitirRecibos->setWhatsThis ( _ ( "Emitir recibos" ) );
-        pPluginMenu->addAction ( emitirRecibos );
-        bges->Fichas->addAction ( emitirRecibos );
-        connect ( emitirRecibos, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-
-    } // end if
-    
-    blDebug ( "END PluginBf_Recibo::inicializa", 0 );
-}
 
 ///
 /**
@@ -149,15 +42,75 @@ void PluginBf_Recibo::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de recibos\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Recibo\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_recibo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_recibo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Recibo *plug = new PluginBf_Recibo();
-    plug->inicializa ( bges );
-    
+    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Economia"), "menuEconomia", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        BlAction *accionA = new BlAction ( _ ( "&Recibos" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Recibos" ) );
+        accionA->setWhatsThis ( _ ( "Recibos" ) );
+        accionA->setObjectName("mui_actionRecibos");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo recibo" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo recibo" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo recibo" ) );
+        accionB->setObjectName("mui_actionReciboNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+
+        BlAction *accionC = new BlAction ( _ ( "Recibos &Automaticos" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.png" ) ) );
+        accionC->setStatusTip ( _ ( "Emitir recibos" ) );
+        accionC->setWhatsThis ( _ ( "Emitir recibos" ) );
+        accionC->setObjectName("mui_actionRecibosEmitir");
+        pPluginMenu->addAction ( accionC );
+        bges->Fichas->addAction ( accionC );
+
+    } // end if
+
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionRecibos") {
+        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+        if ( g_recibosList ) {
+            g_recibosList->hide();
+            g_recibosList->show();
+        } // end if
+        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+    } // end if
+
+    if (accion->objectName() == "mui_actionReciboNuevo") {
+        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionReciboNuevo", 0 );
+        ReciboView * bud = new ReciboView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionReciboNuevo", 0 );
+    } // end if
+
+    if (accion->objectName() == "mui_actionRecibosEmitir") {
+        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibosEmitir", 0 );
+        EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibosEmitir", 0 );
+    } // end if
+
     return 0;
 }
 
@@ -167,7 +120,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_recibosList = new RecibosList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_recibosList );
         g_recibosList->hide();
-    }// end if
+    } // end if
     
     return 0;
 }
@@ -204,7 +157,7 @@ int ActividadView_ActividadView ( ActividadView *l )
         m_hboxLayout1->setSpacing ( 5 );
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    }// end if
+    } // end if
     p->m_actividad = l;
     m_hboxLayout1->addWidget ( mui_generar_recibos );
     p->connect(mui_generar_recibos, SIGNAL(released()), p, SLOT(elslot()));

@@ -39,7 +39,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_subform2sxc", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_subform2sxc", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
     return 0;
 }
@@ -100,7 +100,7 @@ void PluginBl_SubForm2SXC::sacaSXC()
 {
     blDebug ( "PluginBl_SubForm2SXC::sacaSXC", 0 );
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listadosxc.perl";
     BlSubForm * subf = ( BlSubForm * ) parent();
 
 
@@ -188,7 +188,7 @@ void PluginBl_SubForm2SXC::sacaSXC()
     fitxersortidatxt += "exit;\n";
 
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "listadosxc.sxc";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -201,9 +201,9 @@ void PluginBl_SubForm2SXC::sacaSXC()
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + archivod;
     system ( cadena.toAscii() );
-    cadena = g_confpr->valor(CONF_SXC) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
+    cadena = g_confpr->value(CONF_SXC) + " " + g_confpr->value( CONF_DIR_USER ) + "listadosxc.sxc &";
     system ( cadena.toAscii() );
 
     blDebug ( "END PluginBl_SubForm2SXC::sacaSXC", 0 );

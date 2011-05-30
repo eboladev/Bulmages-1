@@ -43,7 +43,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugintecladonumerico", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugintecladonumerico", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _ ( "Teclado Numerico" ), tpv, "tecladonumericodock" );

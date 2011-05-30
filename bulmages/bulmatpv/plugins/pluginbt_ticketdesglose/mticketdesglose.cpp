@@ -43,11 +43,11 @@ void MTicketDesglose::pintar()
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( querytrab );
-    html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
+    html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->value( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
-    html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
+    html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->value( "nomcliente" ) + "<BR>";
     delete cur1;
 
     html += "<TABLE border=\"0\">";
@@ -78,7 +78,7 @@ void MTicketDesglose::pintar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
-            irpf = BlFixed ( cur->valor ( "valor" ) );
+            irpf = BlFixed ( cur->value( "valor" ) );
         } // end if
         delete cur;
     } // end if

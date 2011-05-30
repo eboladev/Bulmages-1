@@ -42,7 +42,7 @@ class QT_WIDGET_PLUGIN_EXPORT PluginBc_Estadisticas : public QObject
 
 public:
     BlPostgreSqlClient *dbConnection;
-    empresa *empresaactual;
+    empresa *company;
 
 public:
     PluginBc_Estadisticas();

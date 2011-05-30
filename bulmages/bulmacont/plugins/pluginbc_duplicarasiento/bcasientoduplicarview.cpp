@@ -66,7 +66,7 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "hola" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
-        foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
+        foinicial->setText ( cur->value( "fecha" ).left ( 10 ) );
     } // end if
     delete cur;
     aoinicial->selectAll();
@@ -86,7 +86,7 @@ void DuplicarAsientoView::lostFocus()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "hola" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
-        foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
+        foinicial->setText ( cur->value( "fecha" ).left ( 10 ) );
     } // end if
     delete cur;
     blDebug ( "END DuplicarAsientoView::lostFocus", 0 );
@@ -118,15 +118,15 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
         mainCompany()->begin();
         BlDbRecordSet *cur = mainCompany()->loadQuery(query);
         if (!cur->eof()) {
-            ordeninicial = atoi(cur->valor("orden").toAscii()) + 1;
+            ordeninicial = atoi(cur->value("orden").toAscii()) + 1;
         } // end if
         delete cur;
 
         query1 = "SELECT max(idasiento) AS maxim FROM asiento";
         BlDbRecordSet *cursaux = mainCompany()->loadQuery(query1);
         if (!cursaux->eof()) {
-            idasiento = atoi(cursaux->valor("maxim").toAscii());
-            idasientoinicial = atoi(cursaux->valor("maxim").toAscii()) + 1;
+            idasiento = atoi(cursaux->value("maxim").toAscii());
+            idasientoinicial = atoi(cursaux->value("maxim").toAscii()) + 1;
         } // end if
         delete cursaux;
     */
@@ -135,43 +135,43 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     BlDbRecordSet *curasiento = mainCompany() ->loadQuery ( query1 );
     while ( !curasiento->eof() ) {
 
-        query1 = "INSERT INTO asiento (descripcion, fecha, comentariosasiento) VALUES('" + curasiento->valor ( "descripcion" ) + "','" + fedinicial.toString ( "dd/MM/yyyy" ) + "','" + curasiento->valor ( "comentariosasiento" ) + "')";
+        query1 = "INSERT INTO asiento (descripcion, fecha, comentariosasiento) VALUES('" + curasiento->value( "descripcion" ) + "','" + fedinicial.toString ( "dd/MM/yyyy" ) + "','" + curasiento->value( "comentariosasiento" ) + "')";
         mainCompany() ->runQuery ( query1 );
 
 
         query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
         BlDbRecordSet *cursaux = mainCompany() ->loadQuery ( query1 );
         if ( !cursaux->eof() ) {
-            idasiento = cursaux->valor ( "idasiento" );
-            ordenasiento = cursaux->valor ( "ordenasiento" );
+            idasiento = cursaux->value( "idasiento" );
+            ordenasiento = cursaux->value( "ordenasiento" );
         } // end if
         delete cursaux;
 
 
 
-        query2 = "SELECT * FROM borrador WHERE idasiento = " + curasiento->valor ( "idasiento" );
+        query2 = "SELECT * FROM borrador WHERE idasiento = " + curasiento->value( "idasiento" );
         BlDbRecordSet *curborrador = mainCompany() ->loadQuery ( query2 );
 
         while ( !curborrador->eof() ) {
-            QString textiddiario = curborrador->valor ( "iddiario" );
+            QString textiddiario = curborrador->value( "iddiario" );
             if ( textiddiario == "" ) {
                 textiddiario = "NULL";
             } // end if
-            QString textfecha = curborrador->valor ( "fecha" );
+            QString textfecha = curborrador->value( "fecha" );
             textfecha = fedinicial.toString ( "dd/MM/yyyy" );
-            QString textconceptocontable = curborrador->valor ( "conceptocontable" );
-            QString textidcuenta = curborrador->valor ( "idcuenta" );
+            QString textconceptocontable = curborrador->value( "conceptocontable" );
+            QString textidcuenta = curborrador->value( "idcuenta" );
             if ( textidcuenta == "" ) {
                 textidcuenta = "NULL";
             } // end if
-            QString textdescripcion = curborrador->valor ( "descripcion" );
-            QString textdebe = curborrador->valor ( "debe" );
-            QString texthaber = curborrador->valor ( "haber" );
-            QString textcontrapartida = curborrador->valor ( "contrapartida" );
+            QString textdescripcion = curborrador->value( "descripcion" );
+            QString textdebe = curborrador->value( "debe" );
+            QString texthaber = curborrador->value( "haber" );
+            QString textcontrapartida = curborrador->value( "contrapartida" );
             if ( textcontrapartida == "" ) {
                 textcontrapartida = "NULL";
             } // end if
-            QString textorden = curborrador->valor ( "orden" );
+            QString textorden = curborrador->value( "orden" );
             if ( textorden == "" ) {
                 textorden = "0";
             } // end if

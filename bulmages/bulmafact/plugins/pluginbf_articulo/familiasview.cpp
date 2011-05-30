@@ -86,7 +86,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        mainCompany()->meteWindow ( windowTitle(), this, FALSE );
+        mainCompany()->insertWindow ( windowTitle(), this, FALSE );
     } // end if
 
     pintar();
@@ -134,39 +134,39 @@ void FamiliasView::pintar()
 
     cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia" );
     while ( !cursoraux1->eof() ) {
-        padre = cursoraux1->valor ( "padrefamilia" ).toInt();
-        idfamilia = cursoraux1->valor ( "idfamilia" ).toInt();
+        padre = cursoraux1->value( "padrefamilia" ).toInt();
+        idfamilia = cursoraux1->value( "idfamilia" ).toInt();
         it = new QTreeWidgetItem ( m_init );
         Lista1[idfamilia] = it;
-        it->setText ( COL_NOMFAMILIA, cursoraux1->valor ( "nombrefamilia" ) );
-        it->setText ( COL_CODFAMILIA, cursoraux1->valor ( "codigofamilia" ) );
-        it->setText ( COL_DESCFAMILIA, cursoraux1->valor ( "descfamilia" ) );
-        it->setText ( COL_IDFAMILIA, cursoraux1->valor ( "idfamilia" ) );
-        it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux1->valor ( "codigocompletofamilia" ) );
-        it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux1->valor ( "productofisicofamilia" ) );
+        it->setText ( COL_NOMFAMILIA, cursoraux1->value( "nombrefamilia" ) );
+        it->setText ( COL_CODFAMILIA, cursoraux1->value( "codigofamilia" ) );
+        it->setText ( COL_DESCFAMILIA, cursoraux1->value( "descfamilia" ) );
+        it->setText ( COL_IDFAMILIA, cursoraux1->value( "idfamilia" ) );
+        it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux1->value( "codigocompletofamilia" ) );
+        it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux1->value( "productofisicofamilia" ) );
         m_listFamilias->expandItem ( it );
         cursoraux1->nextRecord();
     } // end while
     delete cursoraux1;
     cursoraux2 = mainCompany()->loadQuery ( "SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia" );
     while ( !cursoraux2->eof() ) {
-        padre = cursoraux2->valor ( "padrefamilia" ).toInt();
-        idfamilia = cursoraux2->valor ( "idfamilia" ).toInt();
+        padre = cursoraux2->value( "padrefamilia" ).toInt();
+        idfamilia = cursoraux2->value( "idfamilia" ).toInt();
         it = new QTreeWidgetItem ( Lista1[padre] );
         Lista1[idfamilia] = it;
-        it->setText ( COL_NOMFAMILIA, cursoraux2->valor ( "nombrefamilia" ) );
-        it->setText ( COL_CODFAMILIA, cursoraux2->valor ( "codigofamilia" ) );
-        it->setText ( COL_DESCFAMILIA, cursoraux2->valor ( "descfamilia" ) );
-        it->setText ( COL_IDFAMILIA, cursoraux2->valor ( "idfamilia" ) );
-        it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux2->valor ( "codigocompletofamilia" ) );
-        it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux2->valor ( "productofisicofamilia" ) );
+        it->setText ( COL_NOMFAMILIA, cursoraux2->value( "nombrefamilia" ) );
+        it->setText ( COL_CODFAMILIA, cursoraux2->value( "codigofamilia" ) );
+        it->setText ( COL_DESCFAMILIA, cursoraux2->value( "descfamilia" ) );
+        it->setText ( COL_IDFAMILIA, cursoraux2->value( "idfamilia" ) );
+        it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux2->value( "codigocompletofamilia" ) );
+        it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux2->value( "productofisicofamilia" ) );
         m_listFamilias->expandItem ( it );
         cursoraux2->nextRecord();
     } // end while
     delete cursoraux2;
     m_idfamilia = "";
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
     blDebug ( "END FamiliasView::pintar", 0 );
 }
@@ -308,12 +308,12 @@ void FamiliasView::mostrarplantilla()
         query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
         BlDbRecordSet *cursorfamilia = mainCompany()->loadQuery ( query );
         if ( !cursorfamilia->eof() ) {
-            mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
-            mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
-            mui_codCompletoFamilia->setText ( cursorfamilia->valor ( "codigocompletofamilia" ) );
-            mui_codFamilia->setText ( cursorfamilia->valor ( "codigofamilia" ) );
+            mui_nomFamilia->setText ( cursorfamilia->value( "nombrefamilia" ) );
+            mui_descFamilia->setPlainText ( cursorfamilia->value( "descfamilia" ) );
+            mui_codCompletoFamilia->setText ( cursorfamilia->value( "codigocompletofamilia" ) );
+            mui_codFamilia->setText ( cursorfamilia->value( "codigofamilia" ) );
 
-            if ( cursorfamilia->valor ( "productofisicofamilia" ) == "t" ) {
+            if ( cursorfamilia->value( "productofisicofamilia" ) == "t" ) {
                 mui_productofamilia->setChecked ( TRUE );
             } else {
                 mui_serviciofamilia->setChecked ( TRUE );
@@ -331,7 +331,7 @@ void FamiliasView::mostrarplantilla()
         mui_codFamilia->setText ( "" );
     } // end if
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END FamiliasView::mostrarplantilla", 0 );
 }
 
@@ -344,7 +344,7 @@ bool FamiliasView::trataModificado()
 {
     blDebug ( "FamiliasView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar familia" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -410,7 +410,7 @@ int FamiliasView::guardar()
             /// Pintamos los datos en el listado.
             pintar ( posicionCursor );
         } // end if
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blDebug ( "END FamiliasView::guardar", 0 );
 
 	mainCompany()->commit();
@@ -433,12 +433,12 @@ void FamiliasView::pintar ( QTreeWidgetItem *it )
     if ( it ) {
         BlDbRecordSet * cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM familia WHERE idfamilia = " + idfamilia );
         if ( !cursoraux1->eof() ) {
-            it->setText ( COL_NOMFAMILIA, cursoraux1->valor ( "nombrefamilia" ) );
-            it->setText ( COL_CODFAMILIA, cursoraux1->valor ( "codigofamilia" ) );
-            it->setText ( COL_DESCFAMILIA, cursoraux1->valor ( "descfamilia" ) );
-            it->setText ( COL_IDFAMILIA, cursoraux1->valor ( "idfamilia" ) );
-            it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux1->valor ( "codigocompletofamilia" ) );
-            it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux1->valor ( "productofisicofamilia" ) );
+            it->setText ( COL_NOMFAMILIA, cursoraux1->value( "nombrefamilia" ) );
+            it->setText ( COL_CODFAMILIA, cursoraux1->value( "codigofamilia" ) );
+            it->setText ( COL_DESCFAMILIA, cursoraux1->value( "descfamilia" ) );
+            it->setText ( COL_IDFAMILIA, cursoraux1->value( "idfamilia" ) );
+            it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux1->value( "codigocompletofamilia" ) );
+            it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux1->value( "productofisicofamilia" ) );
         } // end if
         delete cursoraux1;
     } // end if
@@ -471,7 +471,7 @@ void FamiliasView::on_mui_crear_clicked()
         } // end if
         BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
         mainCompany()->commit();
-        m_idfamilia = cur->valor ( "idfamilia" );
+        m_idfamilia = cur->value( "idfamilia" );
         delete cur;
         pintar();
         blDebug ( "END FamiliasView::on_mui_crear_clicked", 0 );
@@ -497,7 +497,7 @@ void FamiliasView::on_mui_borrar_clicked()
 
     if ( val == QMessageBox::Yes ) {
         if ( !borrar() ) {
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
@@ -526,7 +526,7 @@ int FamiliasView::borrar()
             throw - 1;
         } // end if
         m_idfamilia = "";
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         pintar();
         blDebug ( "END FamiliasView::borrar", 0 );
     } catch ( ... ) {
@@ -544,9 +544,9 @@ void FamiliasView::on_mui_imprimir_clicked()
 {
     blDebug ( "FamiliasView::on_mui_imprimir_clicked", 0 );
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "familias.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "familias.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "familias.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "familias.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -558,9 +558,9 @@ void FamiliasView::on_mui_imprimir_clicked()
     system ( archivo.toAscii().constData() );
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
+    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -583,8 +583,8 @@ void FamiliasView::on_mui_imprimir_clicked()
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM familia ORDER BY codigocompletofamilia" );
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "        <td>" + cur->valor ( "codigocompletofamilia" ) + "</td>";
-        fitxersortidatxt += "        <td>" + cur->valor ( "nombrefamilia" ) + "</td>";
+        fitxersortidatxt += "        <td>" + cur->value( "codigocompletofamilia" ) + "</td>";
+        fitxersortidatxt += "        <td>" + cur->value( "nombrefamilia" ) + "</td>";
         fitxersortidatxt += "</tr>";
         cur->nextRecord();
     } // end if

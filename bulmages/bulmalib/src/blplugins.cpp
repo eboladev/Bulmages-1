@@ -78,7 +78,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
         return;
     } // end if
 
-    QStringList dirs = g_confpr->valor ( CONF_DIR_PLUGINS ).split ( ";" );
+    QStringList dirs = g_confpr->value( CONF_DIR_PLUGINS ).split ( ";" );
 
     QStringList plugins = cad.split ( ";" );
     QString libErrorString;

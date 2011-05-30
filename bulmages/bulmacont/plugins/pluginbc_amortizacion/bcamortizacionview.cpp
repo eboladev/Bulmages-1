@@ -101,7 +101,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     mui_listcuotas->setOrdenEnabled ( FALSE );
 
     /// Fin de nuevas amortizaciones
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
 
     /// Llamamos a los scripts
     blScript(this);
@@ -157,7 +157,7 @@ int BcAmortizacionView::guardar()
         setDbValue ( "agrupacion", agrupacion->text() );
 
         QString id = "";
-        BlDbRecord::DBsave ( id );
+        BlDbRecord::dbSave ( id );
 
         /// Guardamos las lineas de amortizacion.
         mui_listcuotas->setColumnValue ( "idamortizacion", id );
@@ -206,7 +206,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
         BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
         if ( !curs->eof() ) {
-            amortizado->setText ( curs->valor ( "amortizado" ) );
+            amortizado->setText ( curs->value( "amortizado" ) );
         } // end if
         delete curs;
 
@@ -214,15 +214,15 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
         query = "SELECT sum(cantidad) AS pdte FROM linamortizacion WHERE idasiento IS NULL AND idamortizacion = " + m_idamortizacion;
         curs = mainCompany() ->loadQuery ( query, "pdte" );
         if ( !curs->eof() ) {
-            pendiente->setText ( curs->valor ( "pdte" ) );
+            pendiente->setText ( curs->value( "pdte" ) );
         } // end if
         delete curs;
 
         /// Deshabilitamos el bot&oacute;n de calcular, porque la amortizaci&oacute;n ya
         /// est&aacute; hecha.
         mui_btcalcular->setDisabled ( TRUE );
-        dialogChanges_cargaInicial();
-        mainCompany() ->meteWindow ( windowTitle() + dbValue ( "idamortizacion" ), this );
+        dialogChanges_readValues();
+        mainCompany() ->insertWindow ( windowTitle() + dbValue ( "idamortizacion" ), this );
 
         blDebug ( "END BcAmortizacionView::cargar", 0 );
         return 0;
@@ -482,17 +482,17 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + dbValue ( "idamortizacion" );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( ! cur->eof() ) {
-            query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaactivo" );
+            query = "SELECT codigo from cuenta where idcuenta=" + cur->value( "idcuentaactivo" );
             BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
             if ( ! cur1->eof() ) {
-                cuenta = cur1->valor ( "codigo" );
+                cuenta = cur1->value( "codigo" );
             } // end if
             delete cur1;
 
-            query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaamortizacion" );
+            query = "SELECT codigo from cuenta where idcuenta=" + cur->value( "idcuentaamortizacion" );
             cur1 = mainCompany() ->loadQuery ( query );
             if ( ! cur1->eof() ) {
-                cuentaamort = cur1->valor ( "codigo" );
+                cuentaamort = cur1->value( "codigo" );
             } // end if
             delete cur1;
 
@@ -502,16 +502,16 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( ( ( BcCompany * ) mainCompany() ), 0 );
         nueva->inicializa ( 0 );
 
-        nueva->muestraplantilla ( "amortizacion" );
-        nueva->setvalores ( "$cuenta$", cuentaamort );
-        nueva->setvalores ( "$cuentabien$", cuenta );
-        nueva->setvalores ( "$fechaasiento$", fecha );
-        nueva->setvalores ( "$cuota$", cant.replace ( ',', '.' ) );
+        nueva->muestraPlantilla ( "amortizacion" );
+        nueva->setValores ( "$cuenta$", cuentaamort );
+        nueva->setValores ( "$cuentabien$", cuenta );
+        nueva->setValores ( "$fechaasiento$", fecha );
+        nueva->setValores ( "$cuota$", cant.replace ( ',', '.' ) );
         /// Ponemos la fecha del asiento para evitar escribir.
-        nueva->setfechaasiento ( fecha );
+        nueva->setFechaAsiento ( fecha );
         /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar
         /// el control en cuanto se haya hecho la inserci&oacute;n del asiento.
-        nueva->setmodo ( 1 );
+        nueva->setModo ( 1 );
         mainCompany() ->pWorkspace() ->addSubWindow ( nueva );
         nueva->show();
         nueva->on_mui_aceptar_clicked();
@@ -532,7 +532,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         cur = mainCompany() ->loadQuery ( SQLQuery );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            ordenasiento = cur->valor ( "ordenasiento" );
+            ordenasiento = cur->value( "ordenasiento" );
         } // end if
         delete cur;
         /// Debemos guardar la modificaci&oacute;n en la l&iacute;nea de amortizaci&oacute;n.

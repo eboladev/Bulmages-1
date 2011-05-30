@@ -61,7 +61,7 @@ bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QStri
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            tvalores["idainteligente"] = cur->valor ( "idainteligente" );
+            tvalores["idainteligente"] = cur->value( "idainteligente" );
         } // end if
         delete cur;
     } // end if
@@ -73,7 +73,7 @@ bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QStri
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            tvalores["idbinteligente"] = cur->valor ( "idbinteligente" );
+            tvalores["idbinteligente"] = cur->value( "idbinteligente" );
         } // end if
         delete cur;
     } // end if

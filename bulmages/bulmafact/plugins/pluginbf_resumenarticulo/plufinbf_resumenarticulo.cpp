@@ -33,11 +33,11 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Resumen de Articulos\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_ResumenArticulo \n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_resumenarticulo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_resumenarticulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }

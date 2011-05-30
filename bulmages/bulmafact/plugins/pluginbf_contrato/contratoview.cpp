@@ -68,7 +68,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["nomcliente"] = "";
         /// Inicializamos BfForm
         setListaLineas ( mui_lineas );
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la contrato" ) );
     }
@@ -96,7 +96,7 @@ void ContratoView::inicializar()
 {
     blDebug ( "ContratoView::inicializar", 0 );
     subform2->inicializar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END ContratoView::inicializar", 0 );
 }
 
@@ -116,11 +116,11 @@ int ContratoView::cargar ( QString id )
         Contrato::cargar ( id );
         if ( dbValue ( "idcontrato" ) != "" ) {
             setWindowTitle ( _ ( "Contrato" ) + " " + dbValue ( "refcontrato" ) + " " + dbValue ( "idcontrato" ) );
-            meteWindow ( windowTitle(), this );
+            insertWindow ( windowTitle(), this );
         } // end if
         mui_lineas->cargar ( id );
         subform2->cargar ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + id + " AND reffactura = '" + dbValue ( "refcontrato" ) + "'" );
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } catch ( ... ) {
         return -1;
     } // end try
@@ -151,7 +151,7 @@ int ContratoView::guardar()
         setDbValue ( "descontrato", mui_descontrato->toPlainText() );
         setDbValue ( "periodicidadcontrato", mui_periodicidadcontrato->periodo() );
         Contrato::guardar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } catch ( ... ) {
         blDebug ( "ContratoView::guardar error al guardar", 0 );
         throw - 1;
@@ -301,15 +301,15 @@ void ContratoView::on_mui_facturar_clicked()
         query += ", ('" + dbValue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo ) + "* '" + dbValue ( "periodicidadcontrato" ) + "'::INTERVAL) AS ffinperiodo";
         BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
 
-        query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '" + cur1->valor ( "finperiodo" ) + "'";
-        query += " AND ffactura <  '" + cur1->valor ( "ffinperiodo" ) + "'";
+        query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '" + cur1->value( "finperiodo" ) + "'";
+        query += " AND ffactura <  '" + cur1->value( "ffinperiodo" ) + "'";
         query += " AND reffactura = '" + dbValue ( "refcontrato" ) + "'";
         query += " AND idcliente = " + dbValue ( "idcliente" );
 
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
-        if ( cur->valor ( "cuenta" ) != "0" ) {
-            if ( cur->valor ( "cuenta" ) != "1" ) {
-                blDebug ( "Detectada doble factura en un periodo", 2, cur->valor ( "cuenta" ) );
+        if ( cur->value( "cuenta" ) != "0" ) {
+            if ( cur->value( "cuenta" ) != "1" ) {
+                blDebug ( "Detectada doble factura en un periodo", 2, cur->value( "cuenta" ) );
             } // end if
         } else {
             // GENERAMOS LA FACTURA
@@ -326,7 +326,7 @@ void ContratoView::on_mui_facturar_clicked()
             fac->show();
             fac->setDbValue ( "reffactura", dbValue ( "refcontrato" ) );
             fac->setDbValue ( "idcliente", dbValue ( "idcliente" ) );
-            fac->setDbValue ( "descfactura", dbValue ( "nomcontrato" ) + " Periodo:  " + cur1->valor ( "finperiodo" ).left ( 10 ) + " -- " + cur1->valor ( "ffinperiodo" ).left ( 10 ) );
+            fac->setDbValue ( "descfactura", dbValue ( "nomcontrato" ) + " Periodo:  " + cur1->value( "finperiodo" ).left ( 10 ) + " -- " + cur1->value( "ffinperiodo" ).left ( 10 ) );
 
             BlDbRecordSet *curcliente = mainCompany() ->loadQuery ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + dbValue ( "idcliente" ) );
             if ( ! curcliente ) {
@@ -354,15 +354,15 @@ void ContratoView::on_mui_facturar_clicked()
                     linea1->setDbValue ( "pvplfactura", linea->dbValue ( "pvplcontrato" ) );
                     /// Buscamos el tipo de iva que corresponde al articulo y lo ponemos.
                     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + linea->dbValue ( "idarticulo" ) );
-                    BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+                    BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
                     if ( !cur->eof() ) {
 
-                        if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
-                            linea1->setDbValue ( "ivalfactura", cur1->valor ( "porcentasa_iva" ) );
+                        if ( curcliente->value( "regimenfiscalcliente" ) == "Normal" ) {
+                            linea1->setDbValue ( "ivalfactura", cur1->value( "porcentasa_iva" ) );
                         } // end if
 
-                        if ( curcliente->valor ( "recargoeqcliente" ) == "t" ) {
-                            linea1->setDbValue ( "reqeqlfactura", cur1->valor ( "porcentretasa_iva" ) );
+                        if ( curcliente->value( "recargoeqcliente" ) == "t" ) {
+                            linea1->setDbValue ( "reqeqlfactura", cur1->value( "porcentretasa_iva" ) );
                         } // end if
 
                     } // end if
@@ -383,7 +383,7 @@ void ContratoView::on_mui_facturar_clicked()
 
         query = "SELECT (now() < '" + dbValue ( "fincontrato" ) + "'::DATE + '" + dbValue ( "periodicidadcontrato" ) + "'::INTERVAL *" + QString::number ( periodo ) + " ) AS dato";
         cur = mainCompany() ->loadQuery ( query );
-        if ( cur->valor ( "dato" ) == "t" ) {
+        if ( cur->value( "dato" ) == "t" ) {
             end = TRUE;
         }// end if
         delete cur1;

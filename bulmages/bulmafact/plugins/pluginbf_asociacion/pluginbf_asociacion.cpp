@@ -28,191 +28,10 @@
 #include "convreunionlist.h"
 #include "convreunionview.h"
 #include "comisioneslist.h"
-
-///
-/**
-**/
-PluginBf_Asociacion::PluginBf_Asociacion()
-{
-    blDebug ( "PluginBf_Asociacion::PluginBf_Asociacion", 0 );
-    blDebug ( "END PluginBf_Asociacion::PluginBf_Asociacion", 0 );
-}
+#include "comisionview.h"
 
 
-///
-/**
-**/
-PluginBf_Asociacion::~PluginBf_Asociacion()
-{
-    blDebug ( "PluginBf_Asociacion::~PluginBf_Asociacion", 0 );
-    blDebug ( "END PluginBf_Asociacion::~PluginBf_Asociacion", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Asociacion::elslot()
-{
-    blDebug ( "PluginBf_Asociacion::elslot", 0 );
-    blDebug ( "END PluginBf_Asociacion::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Asociacion::elslot1()
-{
-    blDebug ( "PluginBf_Asociacion::elslot1", 0 );
-    JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Asociacion::elslot1", 0 );
-}
-
-
-
-
-///
-/**
-**/
-void PluginBf_Asociacion::comision()
-{
-    blDebug ( "PluginBf_Asociacion::comision", 0 );
-    ComisionesList * bud = new ComisionesList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Asociacion::comision", 0 );
-}
-
-
-
-
-///
-/** Convocar Asamblea
-**/
-void PluginBf_Asociacion::convjunta()
-{
-    blDebug ( "PluginBf_Asociacion::convjunta", 0 );
-    JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    bud->pintar();
-//     bud->junta();
-    blDebug ( "END PluginBf_Asociacion::convjunta", 0 );
-}
-
-///
-/** Convocar Asamblea
-**/
-void PluginBf_Asociacion::elslot2()
-{
-    blDebug ( "PluginBf_Asociacion::elslot2", 0 );
-    ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    bud->pintar();
-    blDebug ( "END PluginBf_Asociacion::elslot2", 0 );
-}
-
-
-///
-/** Lista de Reuniones
-**/
-void PluginBf_Asociacion::elslot3()
-{
-    blDebug ( "PluginBf_Asociacion::elslot2", 0 );
-    ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Asociacion::elslot2", 0 );
-}
-
-///
-/**
-\param bges
-**/
-void PluginBf_Asociacion::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Asociacion::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( _("&Asociacion"), "menuAsociacion", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-	
-/*
-        QAction *asociacion = new QAction ( _ ( "&Asociacion" ), 0 );
-        asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
-        asociacion->setStatusTip ( _ ( "Asociacion" ) );
-        asociacion->setWhatsThis ( _ ( "Asociacion" ) );
-        pPluginMenu->addAction ( asociacion );
-        bges->Listados->addAction ( asociacion );
-        connect ( asociacion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-*/
-
-        QAction *jdirectiva = new QAction ( _ ( "&Juntas Directivas" ), 0 );
-        jdirectiva->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/jdirectiva-list.png" ) ) );
-        jdirectiva->setStatusTip ( _ ( "Juntas Directivas" ) );
-        jdirectiva->setWhatsThis ( _ ( "Juntas Directivas" ) );
-        pPluginMenu->addAction ( jdirectiva );
-        bges->Fichas->addAction ( jdirectiva );
-        connect ( jdirectiva, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-        QAction *convjd = new QAction ( _ ( "&Convocar Junta Directiva" ), 0 );
-        convjd->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/jdirectiva-new.png" ) ) );
-        convjd->setStatusTip ( _ ( "Convocar Junta Directiva" ) );
-        convjd->setWhatsThis ( _ ( "Convocar Junta Directiva" ) );
-        pPluginMenu->addAction ( convjd );
-        bges->Fichas->addAction ( convjd );
-        connect ( convjd, SIGNAL ( activated() ), this, SLOT ( convjunta() ) );
-        
-        pPluginMenu->addSeparator();
-        QAction *reuniones = new QAction ( _ ( "&Reuniones" ), 0 );
-        reuniones->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/reunion-list.png" ) ) );
-        reuniones->setStatusTip ( _ ( "Reuniones" ) );
-        reuniones->setWhatsThis ( _ ( "Reuniones" ) );
-        pPluginMenu->addAction ( reuniones );
-        bges->Fichas->addAction ( reuniones );
-        connect ( reuniones, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
-        
-        QAction *convreunion = new QAction ( _ ( "&Convocar Reunion" ), 0 );
-        convreunion->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/reunion-new.png" ) ) );
-        convreunion->setStatusTip ( _ ( "Convocar Reunion" ) );
-        convreunion->setWhatsThis ( _ ( "Convocar Reunion" ) );
-        pPluginMenu->addAction ( convreunion );
-        bges->Fichas->addAction ( convreunion );
-        connect ( convreunion, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-
-        QAction *comision = new QAction ( _ ( "&Comisiones" ), 0 );
-        comision->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/comision-list.png" ) ) );
-        comision->setStatusTip ( _ ( "Comisiones" ) );
-        comision->setWhatsThis ( _ ( "Comisiones" ) );
-        pPluginMenu->addAction ( comision );
-        bges->Fichas->addAction ( comision );
-        connect ( comision, SIGNAL ( activated() ), this, SLOT ( comision() ) );
-                
-        QAction *convas = new QAction ( _ ( "&Convocar Asamblea" ), 0 );
-        convas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/asamblea-new.png" ) ) );
-        convas->setStatusTip ( _ ( "Convocar Asamblea" ) );
-        convas->setWhatsThis ( _ ( "Convocar Asamblea" ) );
-        pPluginMenu->addAction ( convas );
-        bges->Fichas->addAction ( convas );
-        connect ( convas, SIGNAL ( activated() ), this, SLOT ( convjunta() ) );
-        
-        pPluginMenu->addSeparator();        
-
-    } // end if
-    
-    blDebug ( "END PluginBf_Asociacion::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -225,13 +44,117 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_asociacion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_asociacion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Asociacion *plug = new PluginBf_Asociacion();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Asociacion"), "menuAsociacion", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+
+
+        BlAction *accionA = new BlAction ( _ ( "&Juntas directivas" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/jdirectiva-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Juntas directivas" ) );
+        accionA->setWhatsThis ( _ ( "Juntas directivas" ) );
+        accionA->setObjectName("mui_actionJuntasDirectivas");
+        pPluginMenu->addAction ( accionA );
+        bges->Fichas->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Convocar junta directiva" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/jdirectiva-new.png" ) ) );
+        accionB->setStatusTip ( _ ( "Convocar junta directiva" ) );
+        accionB->setWhatsThis ( _ ( "Convocar junta directiva" ) );
+        accionB->setObjectName("mui_actionJuntaDirectivaConvocar");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+        
+        pPluginMenu->addSeparator();
+        BlAction *accionC = new BlAction ( _ ( "&Reuniones" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/reunion-list.png" ) ) );
+        accionC->setStatusTip ( _ ( "Reuniones" ) );
+        accionC->setWhatsThis ( _ ( "Reuniones" ) );
+        accionC->setObjectName("mui_actionReunion");
+        pPluginMenu->addAction ( accionC );
+        bges->Fichas->addAction ( accionC );
+        
+        BlAction *accionD = new BlAction ( _ ( "&Convocar reunion" ), 0 );
+        accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/reunion-new.png" ) ) );
+        accionD->setStatusTip ( _ ( "Convocar reunion" ) );
+        accionD->setWhatsThis ( _ ( "Convocar reunion" ) );
+        accionD->setObjectName("mui_actionReunionConvocar");
+        pPluginMenu->addAction ( accionD );
+        bges->Fichas->addAction ( accionD );
+
+        BlAction *accionE = new BlAction ( _ ( "&Comisiones" ), 0 );
+        accionE->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/comision-list.png" ) ) );
+        accionE->setStatusTip ( _ ( "Comisiones" ) );
+        accionE->setWhatsThis ( _ ( "Comisiones" ) );
+        accionE->setObjectName("mui_actionComisiones");
+        pPluginMenu->addAction ( accionE );
+        bges->Fichas->addAction ( accionE );
+                
+        BlAction *accionF = new BlAction ( _ ( "&Convocar comision" ), 0 );
+        accionF->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/comision-new.png" ) ) );
+        accionF->setStatusTip ( _ ( "Convocar comision" ) );
+        accionF->setWhatsThis ( _ ( "Convocar comision" ) );
+        accionF->setObjectName("mui_actionComisionConvocar");
+        pPluginMenu->addAction ( accionF );
+        bges->Fichas->addAction ( accionF );
+        
+        pPluginMenu->addSeparator();        
+
+    } // end if
+
     return 0;
 }
 
+int BlAction_triggered(BlAction *accion) {
+   
+   blDebug ( "PluginBf_Asociacion:BlAction_triggered", 0 );
+   if (accion->objectName() == "mui_actionJuntasDirectivas") {
+       JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) g_bges->company(), NULL );
+       g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+       bud->show();
+    }
+
+   if (accion->objectName() == "mui_actionJuntaConvocar") {
+       JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) g_bges->company(), 0 );
+       g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+       bud->show();
+       bud->pintar();
+    }
+
+   if (accion->objectName() == "mui_actionReunion") {
+       ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) g_bges->company(), NULL );
+       g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+       bud->show();
+    }
+
+   if (accion->objectName() == "mui_actionReunionConvocar") {
+       ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) g_bges->company(), 0 );
+       g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+       bud->show();
+       bud->pintar();
+    }
+
+    if (accion->objectName() == "mui_actionComisiones") {
+        ComisionesList * bud = new ComisionesList ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    }
+
+    if (accion->objectName() == "mui_actionComisionConvocar") {
+        ComisionView *bud = new ComisionView ( ( BfCompany * ) g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+        bud->pintar();
+    }
+    blDebug ( "END PluginBf_Asociacion:BlAction_triggered", 0 );
+    return 0;
+}
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

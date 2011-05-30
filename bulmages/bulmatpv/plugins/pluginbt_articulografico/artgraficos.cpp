@@ -43,7 +43,7 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
     blDebug("ArtGraficos::on_mui_list_cellClicked");
 
-    QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
+    QString artvarios = g_confpr->value( CONF_ARTICULOS_VARIOS );
     QString codigo = m_articulos[row][column];
     QString idArticulo = m_nodarticulos[row][column].firstChildElement("IDARTICULO").toElement().text();
     BtTicket *tick = (( BtCompany * ) mainCompany() ) ->ticketActual();
@@ -165,17 +165,17 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                 /// El escalado lateral tambien tarda demasiado
 //                lab->setPixmap(QPixmap("/var/bulmages/articles/"+text+".jpg").scaledToWidth(cellwidth.toInt()));
                 /// Ponemos las imagenes sin escalado.
-//                lab->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
+//                lab->setPixmap ( QPixmap ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
 
 // Probamos con una Picture
                 QPicture picture;
                 QPainter painter;
                 painter.begin ( &picture );        // paint in picture
-//  painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+//  painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
-//                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
+//                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
 
-                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 25, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
+                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 25, QPixmap ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
 
 //         painter.drawEllipse(10,20, 80,70); // draw an ellipse
                 painter.setPen ( QColor ( 0, 0, 0 ) );
@@ -233,29 +233,29 @@ void ArtGraficos::cargaXML ( QString filename )
         if ( !cur->eof() ) {
 
 		QDomElement tag = m_doc.createElement( "PVPIVAINCARTICULO" );
-		tag.appendChild( m_doc.createTextNode( cur->valor("pvpivaincarticulo") ) );
+		tag.appendChild( m_doc.createTextNode( cur->value("pvpivaincarticulo") ) );
 		nodos.item(i).appendChild( tag );
 
 		QDomElement tag4 = m_doc.createElement( "PVPARTICULO" );
-		tag4.appendChild( m_doc.createTextNode( cur->valor("pvparticulo") ) );
+		tag4.appendChild( m_doc.createTextNode( cur->value("pvparticulo") ) );
 		nodos.item(i).appendChild( tag4 );
 
 		QDomElement tag1 = m_doc.createElement( "IDARTICULO" );
-		tag1.appendChild( m_doc.createTextNode( cur->valor("idarticulo") ) );
+		tag1.appendChild( m_doc.createTextNode( cur->value("idarticulo") ) );
 		nodos.item(i).appendChild( tag1 );
 
 		QDomElement tag2 = m_doc.createElement( "NOMARTICULO" );
-		tag2.appendChild( m_doc.createTextNode( cur->valor("nomarticulo") ) );
+		tag2.appendChild( m_doc.createTextNode( cur->value("nomarticulo") ) );
 		nodos.item(i).appendChild( tag2 );
 
 		QDomElement tag3 = m_doc.createElement( "IVAARTICULO" );
-		tag3.appendChild( m_doc.createTextNode( cur->valor("porcentasa_iva") ) );
+		tag3.appendChild( m_doc.createTextNode( cur->value("porcentasa_iva") ) );
 		nodos.item(i).appendChild( tag3 );
 
 		/// Ponemos todos los campos del registro cargado para que esten cacheados.
 		for (int j = 0; j < cur->numcampos(); j++) {
 			QDomElement tag3 = m_doc.createElement(cur->nomcampo(j) );
-			tag3.appendChild( m_doc.createTextNode( cur->valor(j) ) );
+			tag3.appendChild( m_doc.createTextNode( cur->value(j) ) );
 			nodos.item(i).appendChild( tag3 );
 		} // end for
 

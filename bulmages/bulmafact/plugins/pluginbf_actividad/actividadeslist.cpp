@@ -86,7 +86,7 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     mdb_idactividad = "";
     
     if ( modoEdicion() )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
     

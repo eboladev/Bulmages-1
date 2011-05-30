@@ -59,7 +59,7 @@ PluginBc_Debug::~PluginBc_Debug()
 void PluginBc_Debug::cambia ( bool valor )
 {
     blDebug ( "PluginBc_Debug::cambia", 0 );
-    g_confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
+    g_confpr->setValue ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
     blDebug ( "END PluginBc_Debug::cambia", 0 );
 }
 
@@ -75,7 +75,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_depuracion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_depuracion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_Debug *corr = new PluginBc_Debug();
 
@@ -86,7 +86,7 @@ int entryPoint ( BcBulmaCont *bcont )
     QAction *viewCorrector = new QAction ( _ ( "&Modo debug" ), 0 );
     viewCorrector->setCheckable ( TRUE );
 
-    if ( g_confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
         viewCorrector->setChecked ( TRUE );
     } else {
         viewCorrector->setChecked ( FALSE );

@@ -48,7 +48,7 @@ QWebCamView::QWebCamView ( BfCompany *comp, QWidget *parent )
 QWebCamView::~QWebCamView()
 {
     blDebug ( "QWebCamView::~QWebCamView", 0 );
-    m_companyact->sacaWindow ( this );
+    m_companyact->removeWindow ( this );
     blDebug ( "END QWebCamView::~QWebCamView", 0 );
 }
 

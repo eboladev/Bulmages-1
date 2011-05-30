@@ -69,7 +69,7 @@ void PluginBl_BloqConf::elslot( )
 {
     blDebug ( "PluginBl_BloqConf::elslot", 0 );
 
-    QString cad = "chmod a-w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
+    QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
     blDebug ( "END PluginBl_BloqConf::elslot", 0 );
@@ -82,7 +82,7 @@ void PluginBl_BloqConf::elslot1( )
 {
     blDebug ( "PluginBl_BloqConf::elslot", 0 );
 
-    QString cad = "chmod a+w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
+    QString cad = "chmod a+w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
 
@@ -96,7 +96,7 @@ void PluginBl_BloqConf::elslot2( )
 {
     blDebug ( "PluginBl_BloqConf::elslot2", 0 );
 
-    QString cad = "rm" + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
+    QString cad = "rm" + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
 
@@ -118,7 +118,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
     menu->addSeparator();
     QAction * ac = new QAction("Bloqueo Configuracion" , menu);
     ac -> setCheckable(TRUE);
-            QString archivo = g_confpr->valor ( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
+            QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
             if (file.permissions() & QFile::WriteOwner) {
               ac->setChecked(FALSE);
@@ -142,7 +142,7 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
     if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
             BlSubForm *sub = (BlSubForm *) sender();
             int modo = !sub->modoEdicion();
-            QString archivo = g_confpr->valor ( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
+            QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
             if (file.permissions() & QFile::WriteOwner) {
               sub->guardaconfig();
@@ -168,7 +168,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_bloqconf", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_bloqconf", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
     PluginBl_BloqConf *mcont = new PluginBl_BloqConf;

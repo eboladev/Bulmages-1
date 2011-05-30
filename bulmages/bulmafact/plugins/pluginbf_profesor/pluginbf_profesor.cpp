@@ -31,112 +31,8 @@
 #include "aboutfapacview.h"
 
 ProfesoresList *g_profesoresList = NULL;
+BfBulmaFact *g_bges = NULL;
 
-///
-/**
-**/
-PluginBf_Profesor::PluginBf_Profesor()
-{
-    blDebug ( "PluginBf_Profesor::PluginBf_Profesor", 0 );
-    blDebug ( "END PluginBf_Profesor::PluginBf_Profesor", 0 );
-}
-
-///
-/**
-**/
-PluginBf_Profesor::~PluginBf_Profesor()
-{
-    blDebug ( "PluginBf_Profesor::~PluginBf_Profesor", 0 );
-    blDebug ( "END PluginBf_Profesor::~PluginBf_Profesor", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Profesor::elslot()
-{
-    blDebug ( "PluginBf_Profesor::elslot", 0 );
-    
-    if ( g_profesoresList ) {
-        g_profesoresList->hide();
-        g_profesoresList->show();
-    } // end if
-    
-    blDebug ( "END PluginBf_Profesor::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Profesor::elslot1()
-{
-    blDebug ( "PluginBf_Profesor::elslot1", 0 );
-    
-    ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    
-    blDebug ( "END PluginBf_Profesor::elslot1", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Profesor::elslot2()
-{
-    blDebug ( "PluginBf_Profesor::elslot2", 0 );
-    
-    AboutFapacView *afv = new AboutFapacView();
-    afv->show();
-    
-    blDebug ( "END PluginBf_Profesor::elslot2", 0 );
-}
-
-///
-/**
-\param bges
-**/
-void PluginBf_Profesor::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Profesor::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Docencia
-        QMenu *pPluginMenu = bges->newMenu ( "&Activitats", "menuActivitats", "menuMaestro" );
-
-        /// Agregamos un separador
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Monitores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
-        planCuentas->setStatusTip ( _ ( "Monitores" ) );
-        planCuentas->setWhatsThis ( _ ( "Monitores" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo monitor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor_add.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo profesor" ) );
-        npago->setWhatsThis ( _ ( "Nuevo profesor" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-        QAction *nfapac = new QAction ( _ ( "About FAPAC" ), 0 );
-        nfapac->setStatusTip ( _ ( "About FAPAC" ) );
-        nfapac->setWhatsThis ( _ ( "About FAPAC" ) );
-        bges->menuAcerca_de->addAction ( nfapac );
-        connect ( nfapac, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-
-    } // end if
-    
-    blDebug ( "END PluginBf_Profesor::inicializa", 0 );
-}
 
 ///
 /**
@@ -145,21 +41,74 @@ void PluginBf_Profesor::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Monitores", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Profesor", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_Profesor", "0.12.1-0002");
+    bges->company()->dbPatchVersionCheck("PluginBf_Profesor", "0.12.1-0003");
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_profesor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_profesor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Profesor *plug = new PluginBf_Profesor();
-    plug->inicializa ( bges );
-    
-    blDebug ( "END Punto de Entrada del plugin de Monitores", 0 );
+    if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Docencia
+        QMenu *pPluginMenu = bges->newMenu ( _("&Activitats"), "menuActivitats", "menuMaestro" );
+
+        /// Agregamos un separador
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        BlAction *accionA = new BlAction ( _ ( "&Profesores" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
+        accionA->setStatusTip ( _ ( "Profesores" ) );
+        accionA->setWhatsThis ( _ ( "Profesores" ) );
+        accionA->setObjectName("mui_actionProfesores");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo profesor" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor_add.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo profesor" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo profesor" ) );
+        accionB->setObjectName("mui_actionProfesorNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+        BlAction *accionC = new BlAction ( _ ( "About FAPAC" ), 0 );
+        accionC->setStatusTip ( _ ( "About FAPAC" ) );
+        accionC->setWhatsThis ( _ ( "About FAPAC" ) );
+        accionC->setObjectName("mui_actionAboutFapac");
+        bges->menuAcerca_de->addAction ( accionC );
+        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+
+    } // end if
+
+    blDebug ( "END Punto de entrada de PluginBf_Profesor", 0 );
     
     return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionProfesores") {
+        if ( g_profesoresList ) {
+            g_profesoresList->hide();
+            g_profesoresList->show();
+        } // end if       
+    } // end if
+
+    if (accion->objectName() == "mui_actionProfesorNuevo") {
+        ProfesorView * bud = new ProfesorView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();       
+    } // end if
+    if (accion->objectName() == "mui_actionAboutFapac") {
+        AboutFapacView *afv = new AboutFapacView();
+        afv->show();       
+    } // end if
 }
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )

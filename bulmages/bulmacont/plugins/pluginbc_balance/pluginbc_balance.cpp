@@ -76,7 +76,7 @@ void PluginBc_Balance::inicializa ( BcBulmaCont *bges )
 {
     blDebug ( "PluginBc_Balance::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
+    setMainCompany ( bges->company() );
     m_bulmacont = bges;
     QMenu *pPluginMenu = bges->newMenu("&Ver", "menuVer", "menuMaestro");
 
@@ -103,7 +103,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_balance", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_balance", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_Balance *plug = new PluginBc_Balance();
     plug->inicializa ( bcont );

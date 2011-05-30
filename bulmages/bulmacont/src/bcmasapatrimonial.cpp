@@ -86,7 +86,7 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
     BlDbRecordSet *cursor = mainCompany() ->loadQuery ( query, "micursor" );
     mainCompany() ->commit();
     if ( !cursor->eof() ) {
-        descmpatrimonial->setText ( cursor->valor ( "descmpatrimonial" ) );
+        descmpatrimonial->setText ( cursor->value( "descmpatrimonial" ) );
     } // end if
     delete cursor;
 
@@ -99,13 +99,13 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
     while ( !cursoraux->eof() ) {
         /// Anyade una nueva fila a la tabla.
         componentessuma->insertRow ( i );
-        it1 = new QTableWidgetItem ( cursoraux->valor ( "codigo" ) );
+        it1 = new QTableWidgetItem ( cursoraux->value( "codigo" ) );
         componentessuma->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux->valor ( "descripcion" ) );
+        it2 = new QTableWidgetItem ( cursoraux->value( "descripcion" ) );
         componentessuma->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "cuenta" );
         componentessuma->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux->valor ( "idcuenta" ) );
+        it0 = new QTableWidgetItem ( cursoraux->value( "idcuenta" ) );
         componentessuma->setItem ( i, 0, it0 );
         cursoraux->nextRecord();
         i++;
@@ -122,11 +122,11 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
         componentessuma->insertRow ( i );
         it1 = new QTableWidgetItem ( "" );
         componentessuma->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux->valor ( "descmpatrimonial" ) );
+        it2 = new QTableWidgetItem ( cursoraux->value( "descmpatrimonial" ) );
         componentessuma->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "masa patrimonial" );
         componentessuma->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux->valor ( "idmpatrimonial" ) );
+        it0 = new QTableWidgetItem ( cursoraux->value( "idmpatrimonial" ) );
         componentessuma->setItem ( i, 0, it0 );
         i++;
         cursoraux->nextRecord();
@@ -141,13 +141,13 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
     i = 0;
     while ( !cursoraux1->eof() ) {
         componentesresta->insertRow ( i );
-        it1 = new QTableWidgetItem ( cursoraux1->valor ( "codigo" ) );
+        it1 = new QTableWidgetItem ( cursoraux1->value( "codigo" ) );
         componentesresta->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux1->valor ( "descripcion" ) );
+        it2 = new QTableWidgetItem ( cursoraux1->value( "descripcion" ) );
         componentesresta->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "cuenta" );
         componentesresta->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
+        it0 = new QTableWidgetItem ( cursoraux1->value( "idcuenta" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
         cursoraux1->nextRecord();
@@ -164,11 +164,11 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
         componentesresta->insertRow ( i );
         it1 = new QTableWidgetItem ( "" );
         componentesresta->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux->valor ( "descmpatrimonial" ) );
+        it2 = new QTableWidgetItem ( cursoraux->value( "descmpatrimonial" ) );
         componentesresta->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "masa patrimonial" );
         componentesresta->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux->valor ( "idmpatrimonial" ) );
+        it0 = new QTableWidgetItem ( cursoraux->value( "idmpatrimonial" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
         cursoraux->nextRecord();
@@ -200,13 +200,13 @@ void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
     i = componentessuma->rowCount();
     while ( !cursoraux1->eof() ) {
         componentessuma->insertRow ( i );
-        it1 = new QTableWidgetItem ( cursoraux1->valor ( "codigo" ) );
+        it1 = new QTableWidgetItem ( cursoraux1->value( "codigo" ) );
         componentessuma->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux1->valor ( "descripcion" ) );
+        it2 = new QTableWidgetItem ( cursoraux1->value( "descripcion" ) );
         componentessuma->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "cuenta" );
         componentessuma->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
+        it0 = new QTableWidgetItem ( cursoraux1->value( "idcuenta" ) );
         componentessuma->setItem ( i, 0, it0 );
         i++;
         cursoraux1->nextRecord();
@@ -223,11 +223,11 @@ void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
         componentessuma->insertRow ( i );
         it1 = new QTableWidgetItem ( "" );
         componentessuma->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux1->valor ( "descmpatrimonial" ) );
+        it2 = new QTableWidgetItem ( cursoraux1->value( "descmpatrimonial" ) );
         componentessuma->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "masa patrimonial" );
         componentessuma->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux1->valor ( "idmpatrimonial" ) );
+        it0 = new QTableWidgetItem ( cursoraux1->value( "idmpatrimonial" ) );
         componentessuma->setItem ( i, 0, it0 );
         i++;
         cursoraux1->nextRecord();
@@ -269,13 +269,13 @@ void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
     i = componentesresta->rowCount();
     while ( !cursoraux1->eof() ) {
         componentesresta->insertRow ( i );
-        it1 = new QTableWidgetItem ( cursoraux1->valor ( "codigo" ) );
+        it1 = new QTableWidgetItem ( cursoraux1->value( "codigo" ) );
         componentesresta->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux1->valor ( "descripcion" ) );
+        it2 = new QTableWidgetItem ( cursoraux1->value( "descripcion" ) );
         componentesresta->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "cuenta" );
         componentesresta->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
+        it0 = new QTableWidgetItem ( cursoraux1->value( "idcuenta" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
         cursoraux1->nextRecord();
@@ -292,11 +292,11 @@ void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
         componentesresta->insertRow ( i );
         it1 = new QTableWidgetItem ( "" );
         componentesresta->setItem ( i, 1, it1 );
-        it2 = new QTableWidgetItem ( cursoraux1->valor ( "descmpatrimonial" ) );
+        it2 = new QTableWidgetItem ( cursoraux1->value( "descmpatrimonial" ) );
         componentesresta->setItem ( i, 2, it2 );
         it3 = new QTableWidgetItem ( "masa patrimonial" );
         componentesresta->setItem ( i, 3, it3 );
-        it0 = new QTableWidgetItem ( cursoraux1->valor ( "idmpatrimonial" ) );
+        it0 = new QTableWidgetItem ( cursoraux1->value( "idmpatrimonial" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
         cursoraux1->nextRecord();
@@ -324,7 +324,7 @@ void BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked()
     blDebug ( "BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked", 0 );
     BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( ( BcCompany * ) mainCompany(), 0 );
     nuevae->inicializa();
-    nuevae->setmodoselector();
+    nuevae->setModoSelector();
     nuevae->exec();
     mpatrimonial->setText ( nuevae->getidmasa() );
     delete nuevae;
@@ -360,7 +360,7 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
         query.sprintf ( "SELECT MAX(idmpatrimonial) as id FROM mpatrimonial" );
         BlDbRecordSet *curs = mainCompany() ->loadQuery ( query, "cargaid" );
         mainCompany() ->commit();
-        idmpatrimonial = curs->valor ( "id" ).toAscii();
+        idmpatrimonial = curs->value( "id" ).toAscii();
     } // end if
 
     /// Ponemos los datos correctos sobre la masa patrimonial.

@@ -85,7 +85,7 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
     if ( !cur->eof() ) {
-        setId ( cur->valor ( "idtipo_articulo" ) );
+        setId ( cur->value( "idtipo_articulo" ) );
     } else {
         setId ( "" );
     } // end if

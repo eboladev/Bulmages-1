@@ -58,7 +58,7 @@ RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
     mui_idcliente->m_valores["cifcliente"] = "";
     mui_idcliente->m_valores["nomcliente"] = "";
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
     blDebug ( "END RutaComercialView::RutaComercialView", 0 );
 }
@@ -81,7 +81,7 @@ RutaComercialView::RutaComercialView ( QWidget *parent )
     mui_idcliente->m_valores["cifcliente"] = "";
     mui_idcliente->m_valores["nomcliente"] = "";
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END RutaComercialView::RutaComercialView", 0 );
 }
 
@@ -143,7 +143,7 @@ int RutaComercialView::cargar ( QString id )
     mui_comentrutacomercial->setPlainText ( dbValue ( "comentariosrutacomercial" ) );
     mui_horarutacomercial->setText ( dbValue ( "horarutacomercial" ) );
     mui_refrutacomercial->setText ( dbValue ( "refrutacomercial" ) );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END RutaComercialView::cargar", 0 );
     return err;
 }

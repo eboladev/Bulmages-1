@@ -119,9 +119,9 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 // =========================================
 
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blScript(this);
     } catch ( ... ) {
     
@@ -147,7 +147,7 @@ void SocioView::on_mui_sociocliente_toggled ( bool state )
     if ( mui_numsociocliente->text() == "" && state ) {
         QString query = "SELECT COALESCE(max(numsociocliente) + 1 , 0) AS numsoc FROM cliente";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
-        mui_numsociocliente->setText ( cur->valor ( "numsoc" ) );
+        mui_numsociocliente->setText ( cur->value( "numsoc" ) );
     } // end if
     
     blDebug ( "END SocioView::on_mui_sociocliente_toggled", 0 );
@@ -222,7 +222,7 @@ int SocioView::cargarPost ( QString id )
         QString query1 = "SELECT * FROM socio WHERE idcliente = " + id;
         BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
         if (!cur->eof()) {
-          mui_numsocio->setText(cur->valor("numsocio"));
+          mui_numsocio->setText(cur->value("numsocio"));
         } // end if
         delete cur;
     */

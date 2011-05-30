@@ -29,90 +29,7 @@
 
 
 ClientsList *g_clientesList = NULL;
-
-///
-/**
-**/
-PluginBf_Cliente::PluginBf_Cliente()
-{
-    blDebug ( "PluginBf_Cliente::PluginBf_Cliente", 0 );
-    blDebug ( "END PluginBf_Cliente::PluginBf_Cliente", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Cliente::~PluginBf_Cliente()
-{
-    blDebug ( "PluginBf_Cliente::~PluginBf_Cliente", 0 );
-    blDebug ( "END PluginBf_Cliente::~PluginBf_Cliente", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Cliente::elslot()
-{
-    blDebug ( "PluginBf_Cliente::elslot", 0 );
-    if ( g_clientesList ) {
-        g_clientesList->hide();
-        g_clientesList->show();
-    }// end if
-    blDebug ( "END PluginBf_Cliente::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Cliente::elslot1()
-{
-    blDebug ( "PluginBf_Cliente::elslot1", 0 );
-    ClienteView * bud = new ClienteView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Cliente::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Cliente::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Cliente::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Clientes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo cliente" ) );
-        npago->setWhatsThis ( _ ( "Nuevo cliente" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Cliente::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 
 
@@ -128,12 +45,57 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_cliente", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_cliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Cliente *plug = new PluginBf_Cliente();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        g_bges = bges;
+        
+        BlAction *accionA = new BlAction ( _ ( "&Clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Clientes" ) );
+        accionA->setWhatsThis ( _ ( "Clientes" ) );
+        accionA->setObjectName("mui_actionClientes");
+
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo cliente" ) );
+        accionB->setObjectName("mui_actionNuevoCliente");
+
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+    } // end if
+
+
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionClientes") {
+        if ( g_clientesList ) {
+            g_clientesList->hide();
+            g_clientesList->show();
+        }// end if
+    } // end if
+    
+    if (accion->objectName() == "mui_actionNuevoCliente") {
+        ClienteView * bud = new ClienteView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+    
+    return 0;
+} // end if
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )

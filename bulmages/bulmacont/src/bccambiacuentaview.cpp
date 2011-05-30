@@ -107,7 +107,7 @@ void BcCambiaCuentaView::accept()
         cur->firstRecord();
 	while ( !cur->eof() ) {
 	    // Abre los asientos
-	    mainCompany()->runQuery("SELECT abreasiento(" + cur->valor("idasiento") + ")");
+	    mainCompany()->runQuery("SELECT abreasiento(" + cur->value("idasiento") + ")");
 	    cur->nextRecord();
 	} // end while
     } // end if
@@ -162,7 +162,7 @@ void BcCambiaCuentaView::accept()
         cur->firstRecord();
 	while ( !cur->eof() ) {
 	    // Abre los asientos
-	    mainCompany()->runQuery("SELECT cierraasiento(" + cur->valor("idasiento") + ")");
+	    mainCompany()->runQuery("SELECT cierraasiento(" + cur->value("idasiento") + ")");
 	    cur->nextRecord();
 	} // end while
     } // end if

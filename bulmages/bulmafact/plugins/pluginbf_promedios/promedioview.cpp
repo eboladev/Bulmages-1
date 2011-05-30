@@ -48,7 +48,7 @@ PromedioView::PromedioView ( BfCompany *comp, QWidget *parent )
 PromedioView::~PromedioView()
 {
     blDebug ( "PromedioView::~PromedioView", 0 );
-    m_companyact->sacaWindow ( this );
+    m_companyact->removeWindow ( this );
     blDebug ( "END PromedioView::~PromedioView", 0 );
 }
 
@@ -68,28 +68,28 @@ int PromedioView::cargar ( QString idarticulo )
 
     BlDbRecordSet *cur = m_companyact->loadQuery ( "SELECT sum(pvplalbaranp*cantlalbaranp)::NUMERIC(12,2) AS tot, sum(cantlalbaranp) as und, max(pvplalbaranp) AS mayor, min(pvplalbaranp) AS menor, avg(pvplalbaranp)::NUMERIC(12,2) AS media, max(cantlalbaranp) as undmayorcompras, min(cantlalbaranp) AS undmenorcompras, avg(cantlalbaranp)::NUMERIC(12,2) AS undavgcompras  FROM lalbaranp WHERE idarticulo=" + idarticulo );
     if ( !cur->eof() ) {
-        mui_totalcompras->setText ( cur->valor ( "tot" ) );
-        mui_mayorcompras->setText ( cur->valor ( "mayor" ) );
-        mui_menorcompras->setText ( cur->valor ( "menor" ) );
-        mui_avgcompras->setText ( cur->valor ( "media" ) );
-        mui_undcompras->setText ( cur->valor ( "und" ) );
-        mui_undmayorcompras->setText ( cur->valor ( "undmayorcompras" ) );
-        mui_undmenorcompras->setText ( cur->valor ( "undmenorcompras" ) );
-        mui_undavgcompras->setText ( cur->valor ( "undavgcompras" ) );
+        mui_totalcompras->setText ( cur->value( "tot" ) );
+        mui_mayorcompras->setText ( cur->value( "mayor" ) );
+        mui_menorcompras->setText ( cur->value( "menor" ) );
+        mui_avgcompras->setText ( cur->value( "media" ) );
+        mui_undcompras->setText ( cur->value( "und" ) );
+        mui_undmayorcompras->setText ( cur->value( "undmayorcompras" ) );
+        mui_undmenorcompras->setText ( cur->value( "undmenorcompras" ) );
+        mui_undavgcompras->setText ( cur->value( "undavgcompras" ) );
     } // end if
     delete cur;
 
 
     BlDbRecordSet *cur1 = m_companyact->loadQuery ( "SELECT sum(pvplalbaran*cantlalbaran)::NUMERIC(12,2) AS tot, sum(cantlalbaran) as und, max(pvplalbaran) AS mayor, min(pvplalbaran) AS menor, avg(pvplalbaran)::NUMERIC(12,2) AS media, max(cantlalbaran) as undmayorventas, min(cantlalbaran) AS undmenorventas, avg(cantlalbaran)::NUMERIC(12,2) AS undavgventas  FROM lalbaran WHERE idarticulo=" + idarticulo );
     if ( !cur1->eof() ) {
-        mui_totalventas->setText ( cur1->valor ( "tot" ) );
-        mui_mayorventas->setText ( cur1->valor ( "mayor" ) );
-        mui_menorventas->setText ( cur1->valor ( "menor" ) );
-        mui_avgventas->setText ( cur1->valor ( "media" ) );
-        mui_undventas->setText ( cur1->valor ( "und" ) );
-        mui_undmayorventas->setText ( cur1->valor ( "undmayorventas" ) );
-        mui_undmenorventas->setText ( cur1->valor ( "undmenorventas" ) );
-        mui_undavgventas->setText ( cur1->valor ( "undavgventas" ) );
+        mui_totalventas->setText ( cur1->value( "tot" ) );
+        mui_mayorventas->setText ( cur1->value( "mayor" ) );
+        mui_menorventas->setText ( cur1->value( "menor" ) );
+        mui_avgventas->setText ( cur1->value( "media" ) );
+        mui_undventas->setText ( cur1->value( "und" ) );
+        mui_undmayorventas->setText ( cur1->value( "undmayorventas" ) );
+        mui_undmenorventas->setText ( cur1->value( "undmenorventas" ) );
+        mui_undavgventas->setText ( cur1->value( "undavgventas" ) );
     } // end if
     delete cur1;
 

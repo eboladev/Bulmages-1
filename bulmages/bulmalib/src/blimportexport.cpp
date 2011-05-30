@@ -324,10 +324,10 @@ int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
     dbConnection->commit();
     while ( !curcta->eof() ) {
         QString linea = "";
-        linea += ( curcta->valor ( "codigo" ) + strblancomax ).left ( LEN_CODIGO_CUENTA );
-        linea += ( curcta->valor ( "descripcion" ) + strblancomax ).left ( LEN_TITULO );
-        linea += ( curcta->valor ( "cifent_cuenta" ) + strblancomax ).left ( LEN_NIF );
-        linea += ( curcta->valor ( "dirent_cuenta" ) + strblancomax ).left ( LEN_DOMICILIO );
+        linea += ( curcta->value( "codigo" ) + strblancomax ).left ( LEN_CODIGO_CUENTA );
+        linea += ( curcta->value( "descripcion" ) + strblancomax ).left ( LEN_TITULO );
+        linea += ( curcta->value( "cifent_cuenta" ) + strblancomax ).left ( LEN_NIF );
+        linea += ( curcta->value( "dirent_cuenta" ) + strblancomax ).left ( LEN_DOMICILIO );
         linea += ( strblancomax ).left ( LEN_POBLACION );
         linea += ( strblancomax ).left ( LEN_CODPOSTAL );
         linea += ( strblancomax ).left ( LEN_DIVISA );
@@ -354,17 +354,17 @@ int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
     while ( !curas->eof() ) {
         alerta ( i++, numreg );
         QString linea = "";
-        linea += ( strblancomax + curas->valor ( "ordenasiento" ) ).right ( LEN_ASIEN );
-        QString fecha = curas->valor ( "fecha" );
+        linea += ( strblancomax + curas->value( "ordenasiento" ) ).right ( LEN_ASIEN );
+        QString fecha = curas->value( "fecha" );
         fecha = fecha.mid ( 6, 4 ) + fecha.mid ( 3, 2 ) + fecha.mid ( 0, 2 );
         linea += ( fecha + strblancomax ).left ( LEN_FECHA );
-        linea += ( curas->valor ( "codigo" ) + strblancomax ).left ( LEN_SUBCTA );
+        linea += ( curas->value( "codigo" ) + strblancomax ).left ( LEN_SUBCTA );
         linea += ( strblancomax ).left ( LEN_CONTRA );
         QString cadaux;
-        cadaux.sprintf ( "%2.2f", curas->valor ( "debe" ).toFloat() );
+        cadaux.sprintf ( "%2.2f", curas->value( "debe" ).toFloat() );
         linea += ( strblancomax + cadaux ).right ( LEN_PTADEBE );
-        linea += ( curas->valor ( "conceptocontable" ) + strblancomax ).left ( LEN_CONCEPTO );
-        cadaux.sprintf ( "%2.2f", curas->valor ( "haber" ).toFloat() );
+        linea += ( curas->value( "conceptocontable" ) + strblancomax ).left ( LEN_CONCEPTO );
+        cadaux.sprintf ( "%2.2f", curas->value( "haber" ).toFloat() );
         linea += ( strblancomax + cadaux ).right ( LEN_PTAHABER );
         linea += ( strblancomax ).left ( LEN_FACTURA );
         linea += ( strblancomax ).left ( LEN_BASEIMPO );
@@ -388,17 +388,17 @@ int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
         linea += ( "2" + strblancomax ).left ( LEN_MONEDAUSO );
         /// Para evitar redondeos usamos el valor devuelto en forma de texto por la
         /// base de datos que ya opera ella en punto fijo.
-        cadaux.sprintf ( "%2.2f", curas->valor ( "debe" ).toFloat() );
-        cadaux = curas->valor ( "debe" );
+        cadaux.sprintf ( "%2.2f", curas->value( "debe" ).toFloat() );
+        cadaux = curas->value( "debe" );
         linea += ( strblancomax + cadaux ).right ( LEN_EURODEBE );
-        cadaux.sprintf ( "%2.2f", curas->valor ( "haber" ).toFloat() );
-        cadaux = curas->valor ( "haber" );
+        cadaux.sprintf ( "%2.2f", curas->value( "haber" ).toFloat() );
+        cadaux = curas->value( "haber" );
         linea += ( strblancomax + cadaux ).right ( LEN_EUROHABER );
         linea += ( strblancomax + "0.00" ).right ( LEN_BASEEURO );
         linea += ( "F" + strblancomax ).left ( LEN_NOCONV );
         linea += ( strblancomax ).left ( LEN_NUMEROINV );
         linea += "\n";
-        mensajeria ( _ ( "Exportando :" ) + curas->valor ( "codigo" ) + "--" + fecha + "\n" );
+        mensajeria ( _ ( "Exportando :" ) + curas->value( "codigo" ) + "--" + fecha + "\n" );
         streamas << linea;
         curas->nextRecord();
     } // end while
@@ -585,7 +585,7 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
                 } // end if
                 query = "SELECT max(idasiento) as idasiento FROM asiento";
                 BlDbRecordSet *cur = dbConnection->loadQuery ( query );
-                idasiento = cur->valor ( "idasiento" );
+                idasiento = cur->value( "idasiento" );
                 dbConnection->commit();
                 delete cur;
                 napunte = 0;
@@ -659,7 +659,7 @@ QString BlImportExport::searchParent ( QString cod )
         BlDbRecordSet *cur = dbConnection->loadQuery ( query, "unquery" );
         dbConnection->commit();
         if ( !cur->eof() ) {
-            padre = cur->valor ( "idcuenta" );
+            padre = cur->value( "idcuenta" );
         } else {
             fin = 1;
         } // end if
@@ -691,10 +691,10 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FORMA_PAGO>\n";
-            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->value( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->value( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->value( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->value( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             stream << "</FORMA_PAGO>\n";
             mensajeria ( "<LI>" + _("Exportando nueva forma de pago") + "</LI>\n" );
             curc->nextRecord();
@@ -707,16 +707,16 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ALMACEN>\n";
-            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
-            stream << "\t<FAXALMACEN>" << blXMLEncode ( curc->valor ( "faxalmacen" ) ) << "</FAXALMACEN>\n";
-            stream << "\t<EMAILALMACEN>" << blXMLEncode ( curc->valor ( "emailalmacen" ) ) << "</EMAILALMACEN>\n";
-            stream << "\t<INACTIVOALMACEN>" << blXMLEncode ( curc->valor ( "inactivoalmacen" ) ) << "</INACTIVOALMACEN>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->value( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->value( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->value( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->value( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->value( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->value( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->value( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<FAXALMACEN>" << blXMLEncode ( curc->value( "faxalmacen" ) ) << "</FAXALMACEN>\n";
+            stream << "\t<EMAILALMACEN>" << blXMLEncode ( curc->value( "emailalmacen" ) ) << "</EMAILALMACEN>\n";
+            stream << "\t<INACTIVOALMACEN>" << blXMLEncode ( curc->value( "inactivoalmacen" ) ) << "</INACTIVOALMACEN>\n";
             stream << "</ALMACEN>\n";
             curc->nextRecord();
         } // end while
@@ -728,16 +728,16 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<TRABAJADOR>\n";
-            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
-            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
-            stream << "\t<FOTOTRABAJADOR>" << blXMLEncode ( curc->valor ( "fototrabajador" ) ) << "</FOTOTRABAJADOR>\n";
-            stream << "\t<ACTIVOTRABAJADOR>" << blXMLEncode ( curc->valor ( "activotrabajador" ) ) << "</ACTIVOTRABAJADOR>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->value( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->value( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->value( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->value( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->value( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->value( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->value( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->value( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<FOTOTRABAJADOR>" << blXMLEncode ( curc->value( "fototrabajador" ) ) << "</FOTOTRABAJADOR>\n";
+            stream << "\t<ACTIVOTRABAJADOR>" << blXMLEncode ( curc->value( "activotrabajador" ) ) << "</ACTIVOTRABAJADOR>\n";
             stream << "</TRABAJADOR>\n";
             curc->nextRecord();
         } // end while
@@ -749,30 +749,30 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<CLIENTE>\n";
-            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<CODCLIENTE>" << blXMLEncode ( curc->valor ( "codcliente" ) ) << "</CODCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<TELTRABCLIENTE>" << blXMLEncode ( curc->valor ( "teltrabcliente" ) ) << "</TELTRABCLIENTE>\n";
-            stream << "\t<MOVILCLIENTE>" << blXMLEncode ( curc->valor ( "movilcliente" ) ) << "</MOVILCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<CORPCLIENTE>" << blXMLEncode ( curc->valor ( "corpcliente" ) ) << "</CORPCLIENTE>\n";
-            stream << "\t<FALTACLIENTE>" << blXMLEncode ( curc->valor ( "faltacliente" ) ) << "</FALTACLIENTE>\n";
-            stream << "\t<FBAJACLIENTE>" << blXMLEncode ( curc->valor ( "fbajacliente" ) ) << "</FBAJACLIENTE>\n";
-            stream << "\t<REGIMENFISCALCLIENTE>" << blXMLEncode ( curc->valor ( "regimenfiscalcliente" ) ) << "</REGIMENFISCALCLIENTE>\n";
-            stream << "\t<COMENTCLIENTE>" << blXMLEncode ( curc->valor ( "comentcliente" ) ) << "</COMENTCLIENTE>\n";
-            stream << "\t<ECOMMERCEDATACLIENTE>" << blXMLEncode ( curc->valor ( "ecommercedatacliente" ) ) << "</ECOMMERCEDATACLIENTE>\n";
-            stream << "\t<INACTIVOCLIENTE>" << blXMLEncode ( curc->valor ( "inactivocliente" ) ) << "</INACTIVOCLIENTE>\n";
-            stream << "\t<RECARGOEQCLIENTE>" << blXMLEncode ( curc->valor ( "recargoeqcliente" ) ) << "</RECARGOEQCLIENTE>\n";
-            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDPROVINCIA>" << blXMLEncode ( curc->valor ( "idprovincia" ) ) << "</IDPROVINCIA>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->value( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->value( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->value( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<CODCLIENTE>" << blXMLEncode ( curc->value( "codcliente" ) ) << "</CODCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->value( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->value( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->value( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->value( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->value( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<TELTRABCLIENTE>" << blXMLEncode ( curc->value( "teltrabcliente" ) ) << "</TELTRABCLIENTE>\n";
+            stream << "\t<MOVILCLIENTE>" << blXMLEncode ( curc->value( "movilcliente" ) ) << "</MOVILCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->value( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->value( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->value( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<CORPCLIENTE>" << blXMLEncode ( curc->value( "corpcliente" ) ) << "</CORPCLIENTE>\n";
+            stream << "\t<FALTACLIENTE>" << blXMLEncode ( curc->value( "faltacliente" ) ) << "</FALTACLIENTE>\n";
+            stream << "\t<FBAJACLIENTE>" << blXMLEncode ( curc->value( "fbajacliente" ) ) << "</FBAJACLIENTE>\n";
+            stream << "\t<REGIMENFISCALCLIENTE>" << blXMLEncode ( curc->value( "regimenfiscalcliente" ) ) << "</REGIMENFISCALCLIENTE>\n";
+            stream << "\t<COMENTCLIENTE>" << blXMLEncode ( curc->value( "comentcliente" ) ) << "</COMENTCLIENTE>\n";
+            stream << "\t<ECOMMERCEDATACLIENTE>" << blXMLEncode ( curc->value( "ecommercedatacliente" ) ) << "</ECOMMERCEDATACLIENTE>\n";
+            stream << "\t<INACTIVOCLIENTE>" << blXMLEncode ( curc->value( "inactivocliente" ) ) << "</INACTIVOCLIENTE>\n";
+            stream << "\t<RECARGOEQCLIENTE>" << blXMLEncode ( curc->value( "recargoeqcliente" ) ) << "</RECARGOEQCLIENTE>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->value( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDPROVINCIA>" << blXMLEncode ( curc->value( "idprovincia" ) ) << "</IDPROVINCIA>\n";
             stream << "</CLIENTE>\n";
             curc->nextRecord();
         } // end while
@@ -784,23 +784,23 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PROVEEDOR>\n";
-            stream << "\t<IDPROVEEDOR>" << blXMLEncode ( curc->valor ( "idproveedor" ) ) << "</IDPROVEEDOR>\n";
-            stream << "\t<NOMPROVEEDOR>" << blXMLEncode ( curc->valor ( "nomproveedor" ) ) << "</NOMPROVEEDOR>\n";
-            stream << "\t<NOMALTPROVEEDOR>" << blXMLEncode ( curc->valor ( "nomaltproveedor" ) ) << "</NOMALTPROVEEDOR>\n";
-            stream << "\t<CIFPROVEEDOR>" << blXMLEncode ( curc->valor ( "cifproveedor" ) ) << "</CIFPROVEEDOR>\n";
-            stream << "\t<CODICLIPROVEEDOR>" << blXMLEncode ( curc->valor ( "codicliproveedor" ) ) << "</CODICLIPROVEEDOR>\n";
-            stream << "\t<CBANCPROVEEDOR>" << blXMLEncode ( curc->valor ( "cbancproveedor" ) ) << "</CBANCPROVEEDOR>\n";
-            stream << "\t<COMENTPROVEEDOR>" << blXMLEncode ( curc->valor ( "comentproveedor" ) ) << "</COMENTPROVEEDOR>\n";
-            stream << "\t<DIRPROVEEDOR>" << blXMLEncode ( curc->valor ( "dirproveedor" ) ) << "</DIRPROVEEDOR>\n";
-            stream << "\t<POBLPROVEEDOR>" << blXMLEncode ( curc->valor ( "poblproveedor" ) ) << "</POBLPROVEEDOR>\n";
-            stream << "\t<CPPROVEEDOR>" << blXMLEncode ( curc->valor ( "cpproveedor" ) ) << "</CPPROVEEDOR>\n";
-            stream << "\t<TELPROVEEDOR>" << blXMLEncode ( curc->valor ( "telproveedor" ) ) << "</TELPROVEEDOR>\n";
-            stream << "\t<FAXPROVEEDOR>" << blXMLEncode ( curc->valor ( "faxproveedor" ) ) << "</FAXPROVEEDOR>\n";
-            stream << "\t<EMAILPROVEEDOR>" << blXMLEncode ( curc->valor ( "emailproveedor" ) ) << "</EMAILPROVEEDOR>\n";
-            stream << "\t<URLPROVEEDOR>" << blXMLEncode ( curc->valor ( "urlproveedor" ) ) << "</URLPROVEEDOR>\n";
-            stream << "\t<CLAVEPROVEEDOR>" << blXMLEncode ( curc->valor ( "clavewebproveedor" ) ) << "</CLAVEPROVEEDOR>\n";
-            stream << "\t<INACTIVOPROVEEDOR>" << blXMLEncode ( curc->valor ( "inactivoproveedor" ) ) << "</INACTIVOPROVEEDOR>\n";
-            stream << "\t<PROVPROVEEDOR>" << blXMLEncode ( curc->valor ( "idprovincia" ) ) << "</PROVPROVEEDOR>\n";
+            stream << "\t<IDPROVEEDOR>" << blXMLEncode ( curc->value( "idproveedor" ) ) << "</IDPROVEEDOR>\n";
+            stream << "\t<NOMPROVEEDOR>" << blXMLEncode ( curc->value( "nomproveedor" ) ) << "</NOMPROVEEDOR>\n";
+            stream << "\t<NOMALTPROVEEDOR>" << blXMLEncode ( curc->value( "nomaltproveedor" ) ) << "</NOMALTPROVEEDOR>\n";
+            stream << "\t<CIFPROVEEDOR>" << blXMLEncode ( curc->value( "cifproveedor" ) ) << "</CIFPROVEEDOR>\n";
+            stream << "\t<CODICLIPROVEEDOR>" << blXMLEncode ( curc->value( "codicliproveedor" ) ) << "</CODICLIPROVEEDOR>\n";
+            stream << "\t<CBANCPROVEEDOR>" << blXMLEncode ( curc->value( "cbancproveedor" ) ) << "</CBANCPROVEEDOR>\n";
+            stream << "\t<COMENTPROVEEDOR>" << blXMLEncode ( curc->value( "comentproveedor" ) ) << "</COMENTPROVEEDOR>\n";
+            stream << "\t<DIRPROVEEDOR>" << blXMLEncode ( curc->value( "dirproveedor" ) ) << "</DIRPROVEEDOR>\n";
+            stream << "\t<POBLPROVEEDOR>" << blXMLEncode ( curc->value( "poblproveedor" ) ) << "</POBLPROVEEDOR>\n";
+            stream << "\t<CPPROVEEDOR>" << blXMLEncode ( curc->value( "cpproveedor" ) ) << "</CPPROVEEDOR>\n";
+            stream << "\t<TELPROVEEDOR>" << blXMLEncode ( curc->value( "telproveedor" ) ) << "</TELPROVEEDOR>\n";
+            stream << "\t<FAXPROVEEDOR>" << blXMLEncode ( curc->value( "faxproveedor" ) ) << "</FAXPROVEEDOR>\n";
+            stream << "\t<EMAILPROVEEDOR>" << blXMLEncode ( curc->value( "emailproveedor" ) ) << "</EMAILPROVEEDOR>\n";
+            stream << "\t<URLPROVEEDOR>" << blXMLEncode ( curc->value( "urlproveedor" ) ) << "</URLPROVEEDOR>\n";
+            stream << "\t<CLAVEPROVEEDOR>" << blXMLEncode ( curc->value( "clavewebproveedor" ) ) << "</CLAVEPROVEEDOR>\n";
+            stream << "\t<INACTIVOPROVEEDOR>" << blXMLEncode ( curc->value( "inactivoproveedor" ) ) << "</INACTIVOPROVEEDOR>\n";
+            stream << "\t<PROVPROVEEDOR>" << blXMLEncode ( curc->value( "idprovincia" ) ) << "</PROVPROVEEDOR>\n";
             stream << "</PROVEEDOR>\n";
             curc->nextRecord();
         } // end while
@@ -812,12 +812,12 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FAMILIA>\n";
-            stream << "\t<IDFAMILIA>" << blXMLEncode ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
-            stream << "\t<CODIGOFAMILIA>" << blXMLEncode ( curc->valor ( "codigofamilia" ) ) << "</CODIGOFAMILIA>\n";
-            stream << "\t<NOMBREFAMILIA>" << blXMLEncode ( curc->valor ( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
-            stream << "\t<DESCFAMILIA>" << blXMLEncode ( curc->valor ( "descfamilia" ) ) << "</DESCFAMILIA>\n";
-            stream << "\t<PADREFAMILIA>" << blXMLEncode ( curc->valor ( "padrefamilia" ) ) << "</PADREFAMILIA>\n";
-            stream << "\t<CODIGOCOMPLETOFAMILIA>" << blXMLEncode ( curc->valor ( "codigocompletofamilia" ) ) << "</CODIGOCOMPLETOFAMILIA>\n";
+            stream << "\t<IDFAMILIA>" << blXMLEncode ( curc->value( "idfamilia" ) ) << "</IDFAMILIA>\n";
+            stream << "\t<CODIGOFAMILIA>" << blXMLEncode ( curc->value( "codigofamilia" ) ) << "</CODIGOFAMILIA>\n";
+            stream << "\t<NOMBREFAMILIA>" << blXMLEncode ( curc->value( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
+            stream << "\t<DESCFAMILIA>" << blXMLEncode ( curc->value( "descfamilia" ) ) << "</DESCFAMILIA>\n";
+            stream << "\t<PADREFAMILIA>" << blXMLEncode ( curc->value( "padrefamilia" ) ) << "</PADREFAMILIA>\n";
+            stream << "\t<CODIGOCOMPLETOFAMILIA>" << blXMLEncode ( curc->value( "codigocompletofamilia" ) ) << "</CODIGOCOMPLETOFAMILIA>\n";
             stream << "</FAMILIA>\n";
             curc->nextRecord();
         }// end while
@@ -832,26 +832,26 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ARTICULO>\n";
-            stream << "\t<IDARTICULO>" << blXMLEncode ( curc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
-            stream << "\t<CODARTICULO>" << blXMLEncode ( curc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-            stream << "\t<NOMARTICULO>" << blXMLEncode ( curc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-            stream << "\t<ABREVARTICULO>" << blXMLEncode ( curc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-            stream << "\t<OBSERARTICULO>" << blXMLEncode ( curc->valor ( "obserarticulo" ) ) << "</OBSERARTICULO>\n";
-            stream << "\t<PRESENTABLEARTICULO>" << blXMLEncode ( curc->valor ( "presentablearticulo" ) ) << "</PRESENTABLEARTICULO>\n";
-            stream << "\t<CONTROLSTOCKARTICULO>" << blXMLEncode ( curc->valor ( "controlstockarticulo" ) ) << "</CONTROLSTOCKARTICULO>\n";
-            stream << "\t<IDTIPO_ARTICULO>" << blXMLEncode ( curc->valor ( "idtipo_articulo" ) ) << "</IDTIPO_ARTICULO>\n";
-            stream << "\t<IDTIPO_IVA>" << blXMLEncode ( curc->valor ( "idtipo_iva" ) ) << "</IDTIPO_IVA>\n";
-            stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
-            stream << "\t<IDFAMILIA>" << blXMLEncode ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
-            stream << "\t<STOCKARTICULO>" << blXMLEncode ( curc->valor ( "stockarticulo" ) ) << "</STOCKARTICULO>\n";
-            stream << "\t<INACTIVOARTICULO>" << blXMLEncode ( curc->valor ( "inactivoarticulo" ) ) << "</INACTIVOARTICULO>\n";
-            stream << "\t<PVPARTICULO>" << blXMLEncode ( curc->valor ( "pvparticulo" ) ) << "</PVPARTICULO>\n";
+            stream << "\t<IDARTICULO>" << blXMLEncode ( curc->value( "idarticulo" ) ) << "</IDARTICULO>\n";
+            stream << "\t<CODARTICULO>" << blXMLEncode ( curc->value( "codarticulo" ) ) << "</CODARTICULO>\n";
+            stream << "\t<NOMARTICULO>" << blXMLEncode ( curc->value( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+            stream << "\t<ABREVARTICULO>" << blXMLEncode ( curc->value( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+            stream << "\t<OBSERARTICULO>" << blXMLEncode ( curc->value( "obserarticulo" ) ) << "</OBSERARTICULO>\n";
+            stream << "\t<PRESENTABLEARTICULO>" << blXMLEncode ( curc->value( "presentablearticulo" ) ) << "</PRESENTABLEARTICULO>\n";
+            stream << "\t<CONTROLSTOCKARTICULO>" << blXMLEncode ( curc->value( "controlstockarticulo" ) ) << "</CONTROLSTOCKARTICULO>\n";
+            stream << "\t<IDTIPO_ARTICULO>" << blXMLEncode ( curc->value( "idtipo_articulo" ) ) << "</IDTIPO_ARTICULO>\n";
+            stream << "\t<IDTIPO_IVA>" << blXMLEncode ( curc->value( "idtipo_iva" ) ) << "</IDTIPO_IVA>\n";
+            stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curc->value( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+            stream << "\t<IDFAMILIA>" << blXMLEncode ( curc->value( "idfamilia" ) ) << "</IDFAMILIA>\n";
+            stream << "\t<STOCKARTICULO>" << blXMLEncode ( curc->value( "stockarticulo" ) ) << "</STOCKARTICULO>\n";
+            stream << "\t<INACTIVOARTICULO>" << blXMLEncode ( curc->value( "inactivoarticulo" ) ) << "</INACTIVOARTICULO>\n";
+            stream << "\t<PVPARTICULO>" << blXMLEncode ( curc->value( "pvparticulo" ) ) << "</PVPARTICULO>\n";
             /// Campos adicionales a los articulos.
-            stream << "\t<CODIGOCOMPLETOFAMILIA>" << blXMLEncode ( curc->valor ( "codigocompletofamilia" ) )   << "</CODIGOCOMPLETOFAMILIA>\n";
-            stream << "\t<NOMBREFAMILIA>" << blXMLEncode ( curc->valor ( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
-            stream << "\t<CODTIPO_ARTICULO>" << blXMLEncode ( curc->valor ( "codtipo_articulo" ) ) << "</CODTIPO_ARTICULO>\n";
-            stream << "\t<DESCTIPO_ARTICULO>" << blXMLEncode ( curc->valor ( "desctipo_articulo" ) ) << "</DESCTIPO_ARTICULO>\n";
-            stream << "\t<DESCTIPO_IVA>" << blXMLEncode ( curc->valor ( "desctipo_iva" ) ) << "</DESCTIPO_IVA>\n";
+            stream << "\t<CODIGOCOMPLETOFAMILIA>" << blXMLEncode ( curc->value( "codigocompletofamilia" ) )   << "</CODIGOCOMPLETOFAMILIA>\n";
+            stream << "\t<NOMBREFAMILIA>" << blXMLEncode ( curc->value( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
+            stream << "\t<CODTIPO_ARTICULO>" << blXMLEncode ( curc->value( "codtipo_articulo" ) ) << "</CODTIPO_ARTICULO>\n";
+            stream << "\t<DESCTIPO_ARTICULO>" << blXMLEncode ( curc->value( "desctipo_articulo" ) ) << "</DESCTIPO_ARTICULO>\n";
+            stream << "\t<DESCTIPO_IVA>" << blXMLEncode ( curc->value( "desctipo_iva" ) ) << "</DESCTIPO_IVA>\n";
             stream << "</ARTICULO>\n";
             curc->nextRecord();
         } // end while
@@ -868,83 +868,83 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FACTURA>\n";
-            stream << "\t<IDFACTURA>" << blXMLEncode ( curc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
-            stream << "\t<CODIGOSERIE_FACTURA>" << blXMLEncode ( curc->valor ( "codigoserie_factura" ) ) << "</CODIGOSERIE_FACTURA>\n";
-            stream << "\t<NUMFACTURA>" << blXMLEncode ( curc->valor ( "numfactura" ) ) << "</NUMFACTURA>\n";
-            stream << "\t<REFFACTURA>" << blXMLEncode ( curc->valor ( "reffactura" ) ) << "</REFFACTURA>\n";
-            stream << "\t<FFACTURA>" << blXMLEncode ( curc->valor ( "ffactura" ) ) << "</FFACTURA>\n";
-            stream << "\t<DESCFACTURA>" << blXMLEncode ( curc->valor ( "descfactura" ) ) << "</DESCFACTURA>\n";
-            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<CONTACTFACTURA>" << blXMLEncode ( curc->valor ( "contactfactura" ) ) << "</CONTACTFACTURA>\n";
-            stream << "\t<TELFACTURA>" << blXMLEncode ( curc->valor ( "telfactura" ) ) << "</TELFACTURA>\n";
-            stream << "\t<COMENTFACTURA>" << blXMLEncode ( curc->valor ( "comentfactura" ) ) << "</COMENTFACTURA>\n";
-            stream << "\t<PROCESADAFACTURA>" << blXMLEncode ( curc->valor ( "procesadafactura" ) ) << "</PROCESADAFACTURA>\n";
-            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDFACTURA>" << blXMLEncode ( curc->value( "idfactura" ) ) << "</IDFACTURA>\n";
+            stream << "\t<CODIGOSERIE_FACTURA>" << blXMLEncode ( curc->value( "codigoserie_factura" ) ) << "</CODIGOSERIE_FACTURA>\n";
+            stream << "\t<NUMFACTURA>" << blXMLEncode ( curc->value( "numfactura" ) ) << "</NUMFACTURA>\n";
+            stream << "\t<REFFACTURA>" << blXMLEncode ( curc->value( "reffactura" ) ) << "</REFFACTURA>\n";
+            stream << "\t<FFACTURA>" << blXMLEncode ( curc->value( "ffactura" ) ) << "</FFACTURA>\n";
+            stream << "\t<DESCFACTURA>" << blXMLEncode ( curc->value( "descfactura" ) ) << "</DESCFACTURA>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->value( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<CONTACTFACTURA>" << blXMLEncode ( curc->value( "contactfactura" ) ) << "</CONTACTFACTURA>\n";
+            stream << "\t<TELFACTURA>" << blXMLEncode ( curc->value( "telfactura" ) ) << "</TELFACTURA>\n";
+            stream << "\t<COMENTFACTURA>" << blXMLEncode ( curc->value( "comentfactura" ) ) << "</COMENTFACTURA>\n";
+            stream << "\t<PROCESADAFACTURA>" << blXMLEncode ( curc->value( "procesadafactura" ) ) << "</PROCESADAFACTURA>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->value( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->value( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->value( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->value( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para la factura que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->value( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->value( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->value( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->value( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->value( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->value( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->value( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->value( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->value( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->value( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->value( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->value( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->value( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->value( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->value( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->value( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->value( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->value( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador
-            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->value( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->value( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->value( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->value( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->value( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->value( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->value( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago
-            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->value( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->value( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->value( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
 
             /// Incorporamos las lineas de detalles de la factura.
-            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura = " + curc->valor ( "idfactura" ) );
+            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura = " + curc->value( "idfactura" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LFACTURA>\n";
-                stream << "\t\t\t<IDLFACTURA>" << blXMLEncode ( curlc->valor ( "idlfactura" ) ) << "</IDLFACTURA>\n";
-                stream << "\t\t\t<DESCLFACTURA>" << blXMLEncode ( curlc->valor ( "desclfactura" ) ) << "</DESCLFACTURA>\n";
-                stream << "\t\t\t<CANTLFACTURA>" << blXMLEncode ( curlc->valor ( "cantlfactura" ) ) << "</CANTLFACTURA>\n";
-                stream << "\t\t\t<PVPLFACTURA>" << blXMLEncode ( curlc->valor ( "pvplfactura" ) ) << "</PVPLFACTURA>\n";
-                stream << "\t\t\t<IVALFACTURA>" << blXMLEncode ( curlc->valor ( "ivalfactura" ) ) << "</IVALFACTURA>\n";
-                stream << "\t\t\t<DESCUENTOLFACTURA>" << blXMLEncode ( curlc->valor ( "descuentolfactura" ) ) << "</DESCUENTOLFACTURA>\n";
-                stream << "\t\t\t<IDFACTURA>" << blXMLEncode ( curlc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
-                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t\t<IDLFACTURA>" << blXMLEncode ( curlc->value( "idlfactura" ) ) << "</IDLFACTURA>\n";
+                stream << "\t\t\t<DESCLFACTURA>" << blXMLEncode ( curlc->value( "desclfactura" ) ) << "</DESCLFACTURA>\n";
+                stream << "\t\t\t<CANTLFACTURA>" << blXMLEncode ( curlc->value( "cantlfactura" ) ) << "</CANTLFACTURA>\n";
+                stream << "\t\t\t<PVPLFACTURA>" << blXMLEncode ( curlc->value( "pvplfactura" ) ) << "</PVPLFACTURA>\n";
+                stream << "\t\t\t<IVALFACTURA>" << blXMLEncode ( curlc->value( "ivalfactura" ) ) << "</IVALFACTURA>\n";
+                stream << "\t\t\t<DESCUENTOLFACTURA>" << blXMLEncode ( curlc->value( "descuentolfactura" ) ) << "</DESCUENTOLFACTURA>\n";
+                stream << "\t\t\t<IDFACTURA>" << blXMLEncode ( curlc->value( "idfactura" ) ) << "</IDFACTURA>\n";
+                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->value( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo
-                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->value( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->value( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->value( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->value( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LFACTURA>\n";
                 curlc->nextRecord();
             } // end while
             delete curlc;
             /// Incorporamos los descuentos de la factura.
-            curlc = dbConnection->loadQuery ( "SELECT * FROM dfactura WHERE idfactura = " + curc->valor ( "idfactura" ) );
+            curlc = dbConnection->loadQuery ( "SELECT * FROM dfactura WHERE idfactura = " + curc->value( "idfactura" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DFACTURA>\n";
-                stream << "\t\t\t<IDDFACTURA>" << blXMLEncode ( curlc->valor ( "iddfactura" ) ) << "</IDDFACTURA>\n";
-                stream << "\t\t\t<CONCEPTDFACTURA>" << blXMLEncode ( curlc->valor ( "conceptdfactura" ) ) << "</CONCEPTDFACTURA>\n";
-                stream << "\t\t\t<PROPORCIONDFACTURA>" << blXMLEncode ( curlc->valor ( "proporciondfactura" ) ) << "</PROPORCIONDFACTURA>\n";
-                stream << "\t\t\t<IDFACTURA>" << blXMLEncode ( curlc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
+                stream << "\t\t\t<IDDFACTURA>" << blXMLEncode ( curlc->value( "iddfactura" ) ) << "</IDDFACTURA>\n";
+                stream << "\t\t\t<CONCEPTDFACTURA>" << blXMLEncode ( curlc->value( "conceptdfactura" ) ) << "</CONCEPTDFACTURA>\n";
+                stream << "\t\t\t<PROPORCIONDFACTURA>" << blXMLEncode ( curlc->value( "proporciondfactura" ) ) << "</PROPORCIONDFACTURA>\n";
+                stream << "\t\t\t<IDFACTURA>" << blXMLEncode ( curlc->value( "idfactura" ) ) << "</IDFACTURA>\n";
                 stream << "\t\t</DFACTURA>\n";
                 curlc->nextRecord();
             } // end while
@@ -965,82 +965,82 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PRESUPUESTO>\n";
-            stream << "\t<IDPRESUPUESTO>" << blXMLEncode ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
-            stream << "\t<NUMPRESUPUESTO>" << blXMLEncode ( curc->valor ( "numpresupuesto" ) ) << "</NUMPRESUPUESTO>\n";
-            stream << "\t<REFPRESUPUESTO>" << blXMLEncode ( curc->valor ( "refpresupuesto" ) ) << "</REFPRESUPUESTO>\n";
-            stream << "\t<FPRESUPUESTO>" << blXMLEncode ( curc->valor ( "fpresupuesto" ) ) << "</FPRESUPUESTO>\n";
-            stream << "\t<DESCPRESUPUESTO>" << blXMLEncode ( curc->valor ( "descpresupuesto" ) ) << "</DESCPRESUPUESTO>\n";
-            stream << "\t<CONTACTPRESUPUESTO>" << blXMLEncode ( curc->valor ( "contactpresupuesto" ) ) << "</CONTACTPRESUPUESTO>\n";
-            stream << "\t<TELPRESUPUESTO>" << blXMLEncode ( curc->valor ( "telpresupuesto" ) ) << "</TELPRESUPUESTO>\n";
-            stream << "\t<VENCPRESUPUESTO>" << blXMLEncode ( curc->valor ( "vencpresupuesto" ) ) << "</VENCPRESUPUESTO>\n";
-            stream << "\t<COMENTPRESUPUESTO>" << blXMLEncode ( curc->valor ( "comentpresupuesto" ) ) << "</COMENTPRESUPUESTO>\n";
-            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<PROCESADOPRESUPUESTO>" << blXMLEncode ( curc->valor ( "procesadopresupuesto" ) ) << "</PROCESADOPRESUPUESTO>\n";
-            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDPRESUPUESTO>" << blXMLEncode ( curc->value( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+            stream << "\t<NUMPRESUPUESTO>" << blXMLEncode ( curc->value( "numpresupuesto" ) ) << "</NUMPRESUPUESTO>\n";
+            stream << "\t<REFPRESUPUESTO>" << blXMLEncode ( curc->value( "refpresupuesto" ) ) << "</REFPRESUPUESTO>\n";
+            stream << "\t<FPRESUPUESTO>" << blXMLEncode ( curc->value( "fpresupuesto" ) ) << "</FPRESUPUESTO>\n";
+            stream << "\t<DESCPRESUPUESTO>" << blXMLEncode ( curc->value( "descpresupuesto" ) ) << "</DESCPRESUPUESTO>\n";
+            stream << "\t<CONTACTPRESUPUESTO>" << blXMLEncode ( curc->value( "contactpresupuesto" ) ) << "</CONTACTPRESUPUESTO>\n";
+            stream << "\t<TELPRESUPUESTO>" << blXMLEncode ( curc->value( "telpresupuesto" ) ) << "</TELPRESUPUESTO>\n";
+            stream << "\t<VENCPRESUPUESTO>" << blXMLEncode ( curc->value( "vencpresupuesto" ) ) << "</VENCPRESUPUESTO>\n";
+            stream << "\t<COMENTPRESUPUESTO>" << blXMLEncode ( curc->value( "comentpresupuesto" ) ) << "</COMENTPRESUPUESTO>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->value( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<PROCESADOPRESUPUESTO>" << blXMLEncode ( curc->value( "procesadopresupuesto" ) ) << "</PROCESADOPRESUPUESTO>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->value( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->value( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->value( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->value( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el presupuesto  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->value( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->value( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->value( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->value( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->value( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->value( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->value( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->value( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->value( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->value( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->value( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->value( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->value( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->value( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->value( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->value( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->value( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->value( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador.
-            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->value( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->value( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->value( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->value( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->value( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->value( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->value( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago.
-            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->value( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->value( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->value( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
+            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + curc->value( "idpresupuesto" ) );
             while ( !curlc->eof() ) {
                 stream << "\t<LPRESUPUESTO>\n";
-                stream << "\t\t<IDLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "idlpresupuesto" ) ) << "</IDLPRESUPUESTO>\n";
-                stream << "\t\t\t<DESCLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "desclpresupuesto" ) ) << "</DESCLPRESUPUESTO>\n";
-                stream << "\t\t<CANTLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "cantlpresupuesto" ) ) << "</CANTLPRESUPUESTO>\n";
-                stream << "\t\t<PVPLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "pvplpresupuesto" ) ) << "</PVPLPRESUPUESTO>\n";
-                stream << "\t\t<IVALPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "ivalpresupuesto" ) ) << "</IVALPRESUPUESTO>\n";
-                stream << "\t\t<DESCUENTOLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "descuentolpresupuesto" ) ) << "</DESCUENTOLPRESUPUESTO>\n";
-                stream << "\t\t<IDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
-                stream << "\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t<IDLPRESUPUESTO>" << blXMLEncode ( curlc->value( "idlpresupuesto" ) ) << "</IDLPRESUPUESTO>\n";
+                stream << "\t\t\t<DESCLPRESUPUESTO>" << blXMLEncode ( curlc->value( "desclpresupuesto" ) ) << "</DESCLPRESUPUESTO>\n";
+                stream << "\t\t<CANTLPRESUPUESTO>" << blXMLEncode ( curlc->value( "cantlpresupuesto" ) ) << "</CANTLPRESUPUESTO>\n";
+                stream << "\t\t<PVPLPRESUPUESTO>" << blXMLEncode ( curlc->value( "pvplpresupuesto" ) ) << "</PVPLPRESUPUESTO>\n";
+                stream << "\t\t<IVALPRESUPUESTO>" << blXMLEncode ( curlc->value( "ivalpresupuesto" ) ) << "</IVALPRESUPUESTO>\n";
+                stream << "\t\t<DESCUENTOLPRESUPUESTO>" << blXMLEncode ( curlc->value( "descuentolpresupuesto" ) ) << "</DESCUENTOLPRESUPUESTO>\n";
+                stream << "\t\t<IDPRESUPUESTO>" << blXMLEncode ( curlc->value( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+                stream << "\t\t<IDARTICULO>" << blXMLEncode ( curlc->value( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo
-                stream << "\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t<CODARTICULO>" << blXMLEncode ( curlc->value( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t<NOMARTICULO>" << blXMLEncode ( curlc->value( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->value( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->value( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t</LPRESUPUESTO>\n";
                 curlc->nextRecord();
             } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = dbConnection->loadQuery ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
+            curlc = dbConnection->loadQuery ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + curc->value( "idpresupuesto" ) );
             while ( !curlc->eof() ) {
                 stream << "\t<DPRESUPUESTO>\n";
-                stream << "\t\t<IDDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "iddpresupuesto" ) ) << "</IDDPRESUPUESTO>\n";
-                stream << "\t\t<CONCEPTDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "conceptdpresupuesto" ) ) << "</CONCEPTDPRESUPUESTO>\n";
-                stream << "\t\t<PROPORCIONDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "proporciondpresupuesto" ) ) << "</PROPORCIONDPRESUPUESTO>\n";
-                stream << "\t\t<IDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+                stream << "\t\t<IDDPRESUPUESTO>" << blXMLEncode ( curlc->value( "iddpresupuesto" ) ) << "</IDDPRESUPUESTO>\n";
+                stream << "\t\t<CONCEPTDPRESUPUESTO>" << blXMLEncode ( curlc->value( "conceptdpresupuesto" ) ) << "</CONCEPTDPRESUPUESTO>\n";
+                stream << "\t\t<PROPORCIONDPRESUPUESTO>" << blXMLEncode ( curlc->value( "proporciondpresupuesto" ) ) << "</PROPORCIONDPRESUPUESTO>\n";
+                stream << "\t\t<IDPRESUPUESTO>" << blXMLEncode ( curlc->value( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
                 stream << "\t</DPRESUPUESTO>\n";
                 curlc->nextRecord();
             } // end while
@@ -1061,82 +1061,82 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PEDIDOCLIENTE>\n";
-            stream << "\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
-            stream << "\t<NUMPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "numpedidocliente" ) ) << "</NUMPEDIDOCLIENTE>\n";
-            stream << "\t<FECHAPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "fechapedidocliente" ) ) << "</FECHAPEDIDOCLIENTE>\n";
-            stream << "\t<REFPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "refpedidocliente" ) ) << "</REFPEDIDOCLIENTE>\n";
-            stream << "\t<DESCPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "descpedidocliente" ) ) << "</DESCPEDIDOCLIENTE>\n";
-            stream << "\t<CONTACTPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "contactpedidocliente" ) ) << "</CONTACTPEDIDOCLIENTE>\n";
-            stream << "\t<TELPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "telpedidocliente" ) ) << "</TELPEDIDOCLIENTE>\n";
-            stream << "\t<IDPRESUPUESTO>" << blXMLEncode ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
-            stream << "\t<COMENTPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "comentpedidocliente" ) ) << "</COMENTPEDIDOCLIENTE>\n";
-            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<PROCESADOPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "procesadopedidocliente" ) ) << "</PROCESADOPEDIDOCLIENTE>\n";
-            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
+            stream << "\t<NUMPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "numpedidocliente" ) ) << "</NUMPEDIDOCLIENTE>\n";
+            stream << "\t<FECHAPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "fechapedidocliente" ) ) << "</FECHAPEDIDOCLIENTE>\n";
+            stream << "\t<REFPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "refpedidocliente" ) ) << "</REFPEDIDOCLIENTE>\n";
+            stream << "\t<DESCPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "descpedidocliente" ) ) << "</DESCPEDIDOCLIENTE>\n";
+            stream << "\t<CONTACTPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "contactpedidocliente" ) ) << "</CONTACTPEDIDOCLIENTE>\n";
+            stream << "\t<TELPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "telpedidocliente" ) ) << "</TELPEDIDOCLIENTE>\n";
+            stream << "\t<IDPRESUPUESTO>" << blXMLEncode ( curc->value( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+            stream << "\t<COMENTPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "comentpedidocliente" ) ) << "</COMENTPEDIDOCLIENTE>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->value( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<PROCESADOPEDIDOCLIENTE>" << blXMLEncode ( curc->value( "procesadopedidocliente" ) ) << "</PROCESADOPEDIDOCLIENTE>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->value( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->value( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->value( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->value( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el presupuesto  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->value( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->value( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->value( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->value( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->value( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->value( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->value( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->value( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->value( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->value( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->value( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->value( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->value( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->value( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->value( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->value( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->value( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->value( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador
-            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->value( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->value( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->value( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->value( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->value( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->value( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->value( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago
-            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->value( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->value( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->value( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
+            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + curc->value( "idpedidocliente" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "idlpedidocliente" ) ) << "</IDLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<DESCLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "desclpedidocliente" ) ) << "</DESCLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<CANTLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "cantlpedidocliente" ) ) << "</CANTLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<PVPLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "pvplpedidocliente" ) ) << "</PVPLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IVALPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "ivalpedidocliente" ) ) << "</IVALPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>" << blXMLEncode ( curlc->valor ( "descuentolpedidocliente" ) ) << "</DESCUENTOLPEDIDOCLIENTEO>\n";
-                stream << "\t\t\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "idpresupuesto" ) ) << "</IDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t\t<IDLPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "idlpedidocliente" ) ) << "</IDLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<DESCLPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "desclpedidocliente" ) ) << "</DESCLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<CANTLPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "cantlpedidocliente" ) ) << "</CANTLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<PVPLPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "pvplpedidocliente" ) ) << "</PVPLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IVALPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "ivalpedidocliente" ) ) << "</IVALPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>" << blXMLEncode ( curlc->value( "descuentolpedidocliente" ) ) << "</DESCUENTOLPEDIDOCLIENTEO>\n";
+                stream << "\t\t\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "idpresupuesto" ) ) << "</IDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->value( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo.
-                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->value( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->value( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->value( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->value( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LPRESUPUESTO>\n";
                 curlc->nextRecord();
             } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = dbConnection->loadQuery ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
+            curlc = dbConnection->loadQuery ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + curc->value( "idpedidocliente" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "iddpedidocliente" ) ) << "</IDDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "conceptdpedidocliente" ) ) << "</CONCEPTDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "proporciondpedidocliente" ) ) << "</PROPORCIONDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDDPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "iddpedidocliente" ) ) << "</IDDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "conceptdpedidocliente" ) ) << "</CONCEPTDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "proporciondpedidocliente" ) ) << "</PROPORCIONDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curlc->value( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
                 stream << "\t\t</DPEDIDOCLIENTE>\n";
                 curlc->nextRecord();
             } // end while
@@ -1157,81 +1157,81 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ALBARAN>\n";
-            stream << "\t<IDALBARAN>" << blXMLEncode ( curc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
-            stream << "\t<NUMALBARAN>" << blXMLEncode ( curc->valor ( "numalbaran" ) ) << "</NUMALBARAN>\n";
-            stream << "\t<DESCALBARAN>" << blXMLEncode ( curc->valor ( "descalbaran" ) ) << "</DESCALBARAN>\n";
-            stream << "\t<REFALBARAN>" << blXMLEncode ( curc->valor ( "refalbaran" ) ) << "</REFALBARAN>\n";
-            stream << "\t<FECHAALBARAN>" << blXMLEncode ( curc->valor ( "fechaalbaran" ) ) << "</FECHAALBARAN>\n";
-            stream << "\t<COMENTALBARAN>" << blXMLEncode ( curc->valor ( "comentalbaran" ) ) << "</COMENTALBARAN>\n";
-            stream << "\t<PROCESADOALBARAN>" << blXMLEncode ( curc->valor ( "procesadoalbaran" ) ) << "</PROCESADOALBARAN>\n";
-            stream << "\t<CONTACTALBARAN>" << blXMLEncode ( curc->valor ( "contactalbaran" ) ) << "</CONTACTALBARAN>\n";
-            stream << "\t<TELALBARAN>" << blXMLEncode ( curc->valor ( "telalbaran" ) ) << "</TELALBARAN>\n";
-            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDALBARAN>" << blXMLEncode ( curc->value( "idalbaran" ) ) << "</IDALBARAN>\n";
+            stream << "\t<NUMALBARAN>" << blXMLEncode ( curc->value( "numalbaran" ) ) << "</NUMALBARAN>\n";
+            stream << "\t<DESCALBARAN>" << blXMLEncode ( curc->value( "descalbaran" ) ) << "</DESCALBARAN>\n";
+            stream << "\t<REFALBARAN>" << blXMLEncode ( curc->value( "refalbaran" ) ) << "</REFALBARAN>\n";
+            stream << "\t<FECHAALBARAN>" << blXMLEncode ( curc->value( "fechaalbaran" ) ) << "</FECHAALBARAN>\n";
+            stream << "\t<COMENTALBARAN>" << blXMLEncode ( curc->value( "comentalbaran" ) ) << "</COMENTALBARAN>\n";
+            stream << "\t<PROCESADOALBARAN>" << blXMLEncode ( curc->value( "procesadoalbaran" ) ) << "</PROCESADOALBARAN>\n";
+            stream << "\t<CONTACTALBARAN>" << blXMLEncode ( curc->value( "contactalbaran" ) ) << "</CONTACTALBARAN>\n";
+            stream << "\t<TELALBARAN>" << blXMLEncode ( curc->value( "telalbaran" ) ) << "</TELALBARAN>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->value( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->value( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->value( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->value( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->value( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el albaran  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->value( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->value( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->value( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->value( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->value( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->value( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->value( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->value( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->value( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->value( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->value( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->value( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->value( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->value( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->value( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->value( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->value( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->value( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador.
-            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->value( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->value( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->value( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->value( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->value( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->value( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->value( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago.
-            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->value( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->value( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->value( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
+            BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + curc->value( "idalbaran" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LALBARAN>\n";
-                stream << "\t\t\t<IDLALBARAN>" << blXMLEncode ( curlc->valor ( "idlalbaran" ) ) << "</IDLALBARAN>\n";
-                stream << "\t\t\t<DESCLALBARAN>" << blXMLEncode ( curlc->valor ( "desclalbaran" ) ) << "</DESCLPRESUPUESTO>\n";
-                stream << "\t\t\t<CANTLALBARANE>" << blXMLEncode ( curlc->valor ( "cantlalbaran" ) ) << "</CANTLALBARANE>\n";
-                stream << "\t\t\t<PVPLALBARAN>" << blXMLEncode ( curlc->valor ( "pvplalbaran" ) ) << "</PVPLALBARAN>\n";
-                stream << "\t\t\t<IVALALBARAN>" << blXMLEncode ( curlc->valor ( "ivalalbaran" ) ) << "</IVALALBARAN>\n";
-                stream << "\t\t\t<DESCUENTOLALBARAN>" << blXMLEncode ( curlc->valor ( "descuentolalbaran" ) ) << "</DESCUENTOLALBARAN>\n";
-                stream << "\t\t\t<IDALBARAN>" << blXMLEncode ( curlc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
-                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t\t<IDLALBARAN>" << blXMLEncode ( curlc->value( "idlalbaran" ) ) << "</IDLALBARAN>\n";
+                stream << "\t\t\t<DESCLALBARAN>" << blXMLEncode ( curlc->value( "desclalbaran" ) ) << "</DESCLPRESUPUESTO>\n";
+                stream << "\t\t\t<CANTLALBARANE>" << blXMLEncode ( curlc->value( "cantlalbaran" ) ) << "</CANTLALBARANE>\n";
+                stream << "\t\t\t<PVPLALBARAN>" << blXMLEncode ( curlc->value( "pvplalbaran" ) ) << "</PVPLALBARAN>\n";
+                stream << "\t\t\t<IVALALBARAN>" << blXMLEncode ( curlc->value( "ivalalbaran" ) ) << "</IVALALBARAN>\n";
+                stream << "\t\t\t<DESCUENTOLALBARAN>" << blXMLEncode ( curlc->value( "descuentolalbaran" ) ) << "</DESCUENTOLALBARAN>\n";
+                stream << "\t\t\t<IDALBARAN>" << blXMLEncode ( curlc->value( "idalbaran" ) ) << "</IDALBARAN>\n";
+                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->value( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo.
-                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->value( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->value( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->value( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->value( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LALBARAN>\n";
                 curlc->nextRecord();
             } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = dbConnection->loadQuery ( "SELECT * FROM dalbaran WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
+            curlc = dbConnection->loadQuery ( "SELECT * FROM dalbaran WHERE idalbaran = " + curc->value( "idalbaran" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DALBARAN>\n";
-                stream << "\t\t\t<IDDALBARAN>" << blXMLEncode ( curlc->valor ( "iddalbaran" ) ) << "</IDDALBARAN>\n";
-                stream << "\t\t\t<CONCEPTDALBARAN>" << blXMLEncode ( curlc->valor ( "conceptdalbaran" ) ) << "</CONCEPTDALBARAN>\n";
-                stream << "\t\t\t<PROPORCIONDALBARAN>" << blXMLEncode ( curlc->valor ( "proporciondalbaran" ) ) << "</PROPORCIONDALBARAN>\n";
-                stream << "\t\t\t<IDALBARAN>" << blXMLEncode ( curlc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
+                stream << "\t\t\t<IDDALBARAN>" << blXMLEncode ( curlc->value( "iddalbaran" ) ) << "</IDDALBARAN>\n";
+                stream << "\t\t\t<CONCEPTDALBARAN>" << blXMLEncode ( curlc->value( "conceptdalbaran" ) ) << "</CONCEPTDALBARAN>\n";
+                stream << "\t\t\t<PROPORCIONDALBARAN>" << blXMLEncode ( curlc->value( "proporciondalbaran" ) ) << "</PROPORCIONDALBARAN>\n";
+                stream << "\t\t\t<IDALBARAN>" << blXMLEncode ( curlc->value( "idalbaran" ) ) << "</IDALBARAN>\n";
                 stream << "\t\t</DALBARAN>\n";
                 curlc->nextRecord();
             } // end while
@@ -1275,24 +1275,24 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         BlDbRecordSet *curcta = dbConnection->loadQuery ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
-            stream << "\t<IDCUENTA>" << blXMLEncode ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
-            stream << "\t<CODIGO>" << blXMLEncode ( curcta->valor ( "codigo" ) ) << "</CODIGO>\n";
-            stream << "\t<DESCRIPCION>" << blXMLEncode ( curcta->valor ( "descripcion" ) ) << "</DESCRIPCION>\n";
-            stream << "\t<CIFENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
-            stream << "\t<DIRENT_CUENTA>" << blXMLEncode ( curcta->valor ( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
-            stream << "\t<BLOQUEADA>" << blXMLEncode ( curcta->valor ( "bloqueada" ) ) << "</BLOQUEADA>\n";
-            stream << "\t<NODEBE>" << blXMLEncode ( curcta->valor ( "nodebe" ) ) << "</NODEBE>\n";
-            stream << "\t<NOHABER>" << blXMLEncode ( curcta->valor ( "nohaber" ) ) << "</NOHABER>\n";
-            stream << "\t<NOMBREENT_CUENTA>" << blXMLEncode ( curcta->valor ( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
-            stream << "\t<TIPOCUENTA>" << blXMLEncode ( curcta->valor ( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
-            stream << "\t<WEBENT_CUENTA>" << blXMLEncode ( curcta->valor ( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
-            stream << "\t<EMAILENT_CUENTA>" << blXMLEncode ( curcta->valor ( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
-            stream << "\t<BANCOENT_CUENTA>" << blXMLEncode ( curcta->valor ( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
-            stream << "\t<COMENT_CUENTA>" << blXMLEncode ( curcta->valor ( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
-            stream << "\t<TELENT_CUENTA>" << blXMLEncode ( curcta->valor ( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
-            stream << "\t<CPENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
-            stream << "\t<REGULARIZACION>" << blXMLEncode ( curcta->valor ( "regularizacion" ) ) << "</REGULARIZACION>\n";
-            stream << "\t<IMPUTACION>" << blXMLEncode ( curcta->valor ( "imputacion" ) ) << "</IMPUTACION>\n";
+            stream << "\t<IDCUENTA>" << blXMLEncode ( curcta->value( "idcuenta" ) ) << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>" << blXMLEncode ( curcta->value( "codigo" ) ) << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>" << blXMLEncode ( curcta->value( "descripcion" ) ) << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>" << blXMLEncode ( curcta->value( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>" << blXMLEncode ( curcta->value( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
+            stream << "\t<BLOQUEADA>" << blXMLEncode ( curcta->value( "bloqueada" ) ) << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>" << blXMLEncode ( curcta->value( "nodebe" ) ) << "</NODEBE>\n";
+            stream << "\t<NOHABER>" << blXMLEncode ( curcta->value( "nohaber" ) ) << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>" << blXMLEncode ( curcta->value( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>" << blXMLEncode ( curcta->value( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>" << blXMLEncode ( curcta->value( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>" << blXMLEncode ( curcta->value( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>" << blXMLEncode ( curcta->value( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>" << blXMLEncode ( curcta->value( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>" << blXMLEncode ( curcta->value( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>" << blXMLEncode ( curcta->value( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
+            stream << "\t<REGULARIZACION>" << blXMLEncode ( curcta->value( "regularizacion" ) ) << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>" << blXMLEncode ( curcta->value( "imputacion" ) ) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
             curcta->nextRecord();
         } // end while
@@ -1301,25 +1301,25 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         curcta = dbConnection->loadQuery ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
-            stream << "\t<IDCUENTA>" << blXMLEncode ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
-            stream << "\t<CODIGO>" << blXMLEncode ( curcta->valor ( "codigo" ) ) << "</CODIGO>\n";
-            stream << "\t<DESCRIPCION>" << blXMLEncode ( curcta->valor ( "descripcion" ) ) << "</DESCRIPCION>\n";
-            stream << "\t<CIFENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
-            stream << "\t<DIRENT_CUENTA>" << blXMLEncode ( curcta->valor ( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
-            stream << "\t<CODPADRE>" << blXMLEncode ( curcta->valor ( "codpadre" ) ) << "</CODPADRE>\n";
-            stream << "\t<BLOQUEADA>" << blXMLEncode ( curcta->valor ( "bloqueada" ) ) << "</BLOQUEADA>\n";
-            stream << "\t<NODEBE>" << blXMLEncode ( curcta->valor ( "nodebe" ) ) << "</NODEBE>\n";
-            stream << "\t<NOHABER>" << blXMLEncode ( curcta->valor ( "nohaber" ) ) << "</NOHABER>\n";
-            stream << "\t<NOMBREENT_CUENTA>" << blXMLEncode ( curcta->valor ( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
-            stream << "\t<TIPOCUENTA>" << blXMLEncode ( curcta->valor ( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
-            stream << "\t<WEBENT_CUENTA>" << blXMLEncode ( curcta->valor ( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
-            stream << "\t<EMAILENT_CUENTA>" << blXMLEncode ( curcta->valor ( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
-            stream << "\t<BANCOENT_CUENTA>" << blXMLEncode ( curcta->valor ( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
-            stream << "\t<COMENT_CUENTA>" << blXMLEncode ( curcta->valor ( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
-            stream << "\t<TELENT_CUENTA>" << blXMLEncode ( curcta->valor ( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
-            stream << "\t<CPENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
-            stream << "\t<REGULARIZACION>" << blXMLEncode ( curcta->valor ( "regularizacion" ) ) << "</REGULARIZACION>\n";
-            stream << "\t<IMPUTACION>" << blXMLEncode ( curcta->valor ( "imputacion" ) ) << "</IMPUTACION>\n";
+            stream << "\t<IDCUENTA>" << blXMLEncode ( curcta->value( "idcuenta" ) ) << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>" << blXMLEncode ( curcta->value( "codigo" ) ) << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>" << blXMLEncode ( curcta->value( "descripcion" ) ) << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>" << blXMLEncode ( curcta->value( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>" << blXMLEncode ( curcta->value( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
+            stream << "\t<CODPADRE>" << blXMLEncode ( curcta->value( "codpadre" ) ) << "</CODPADRE>\n";
+            stream << "\t<BLOQUEADA>" << blXMLEncode ( curcta->value( "bloqueada" ) ) << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>" << blXMLEncode ( curcta->value( "nodebe" ) ) << "</NODEBE>\n";
+            stream << "\t<NOHABER>" << blXMLEncode ( curcta->value( "nohaber" ) ) << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>" << blXMLEncode ( curcta->value( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>" << blXMLEncode ( curcta->value( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>" << blXMLEncode ( curcta->value( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>" << blXMLEncode ( curcta->value( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>" << blXMLEncode ( curcta->value( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>" << blXMLEncode ( curcta->value( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>" << blXMLEncode ( curcta->value( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>" << blXMLEncode ( curcta->value( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
+            stream << "\t<REGULARIZACION>" << blXMLEncode ( curcta->value( "regularizacion" ) ) << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>" << blXMLEncode ( curcta->value( "imputacion" ) ) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
             curcta->nextRecord();
         } // end while
@@ -1333,10 +1333,10 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         BlDbRecordSet *curtiva = dbConnection->loadQuery ( query );
         while ( !curtiva->eof() ) {
             stream << "<TIPOIVA>\n";
-            stream << "\t<IDTIPOIVA>" << blXMLEncode ( curtiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
-            stream << "\t<NOMBRETIPOIVA>" << blXMLEncode ( curtiva->valor ( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
-            stream << "\t<PORCENTAJETIPOIVA>" << blXMLEncode ( curtiva->valor ( "porcentajetipoiva" ) ) << "</PORCENTAJETIPOIVA>\n";
-            stream << "\t<CUENTATIPOIVA>" << blXMLEncode ( curtiva->valor ( "codigo" ) ) << "</CUENTATIPOIVA>\n";
+            stream << "\t<IDTIPOIVA>" << blXMLEncode ( curtiva->value( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
+            stream << "\t<NOMBRETIPOIVA>" << blXMLEncode ( curtiva->value( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
+            stream << "\t<PORCENTAJETIPOIVA>" << blXMLEncode ( curtiva->value( "porcentajetipoiva" ) ) << "</PORCENTAJETIPOIVA>\n";
+            stream << "\t<CUENTATIPOIVA>" << blXMLEncode ( curtiva->value( "codigo" ) ) << "</CUENTATIPOIVA>\n";
             stream << "</TIPOIVA>\n";
             curtiva->nextRecord();
         } // end while
@@ -1359,58 +1359,58 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         while ( !curas->eof() ) {
             alerta ( i++, numreg );
             stream << "<ASIENTO>\n";
-            stream << "\t<ORDENASIENTO>" << curas->valor ( "ordenasiento" ) << "</ORDENASIENTO>\n";
-            QString fechas = curas->valor ( "fecha" );
+            stream << "\t<ORDENASIENTO>" << curas->value( "ordenasiento" ) << "</ORDENASIENTO>\n";
+            QString fechas = curas->value( "fecha" );
             fechas = fechas.mid ( 6, 4 ) + fechas.mid ( 3, 2 ) + fechas.mid ( 0, 2 );
             stream << "\t<FECHA>" << fechas << "</FECHA>\n";
             query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta ";
             query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal ";
             query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
             query += "LEFT JOIN (SELECT codigo AS codcontrapartida, idcuenta FROM cuenta) AS contra ON contra.idcuenta = apunte.contrapartida ";
-            query += " WHERE " + curas->valor ( "idasiento" ) + " = apunte.idasiento ";
+            query += " WHERE " + curas->value( "idasiento" ) + " = apunte.idasiento ";
             BlDbRecordSet *curap = dbConnection->loadQuery ( query, "masquery1" );
             while ( !curap->eof() ) {
                 stream << "\t<APUNTE>\n";
-                QString fecha = curap->valor ( "fecha" );
+                QString fecha = curap->value( "fecha" );
                 fecha = fecha.mid ( 6, 4 ) + fecha.mid ( 3, 2 ) + fecha.mid ( 0, 2 );
                 stream << "\t\t<FECHA>" << blXMLEncode ( fecha ) << "</FECHA>\n";
-                stream << "\t\t<CODIGO>" << blXMLEncode ( curap->valor ( "codigo" ) ) << "</CODIGO>\n";
-                stream << "\t\t<DEBE>" << blXMLEncode ( curap->valor ( "debe" ) ) << "</DEBE>\n";
-                stream << "\t\t<HABER>" << blXMLEncode ( curap->valor ( "haber" ) ) << "</HABER>\n";
-                stream << "\t\t<CONCEPTOCONTABLE>" << blXMLEncode ( curap->valor ( "conceptocontable" ) ) << "</CONCEPTOCONTABLE>\n";
-                stream << "\t\t<IDCANAL>" << blXMLEncode ( curap->valor ( "idcanal" ) ) << "</IDCANAL>\n";
-                stream << "\t\t<CANAL>" << blXMLEncode ( curap->valor ( "nomcanal" ) ) << "</CANAL>\n";
-                stream << "\t\t<IDC_COSTE>" << blXMLEncode ( curap->valor ( "idc_coste" ) ) << "</IDC_COSTE>\n";
-                stream << "\t\t<C_COSTE>" << blXMLEncode ( curap->valor ( "nc_coste" ) ) << "</C_COSTE>\n";
-                stream << "\t\t<PUNTEO>" << blXMLEncode ( curap->valor ( "punteo" ) ) << "</PUNTEO>\n";
-                stream << "\t\t<ORDEN>" << blXMLEncode ( curap->valor ( "orden" ) ) << "</ORDEN>\n";
-                stream << "\t\t<CONTRAPARTIDA>" << blXMLEncode ( curap->valor ( "codcontrapartida" ) ) << "</CONTRAPARTIDA>\n";
+                stream << "\t\t<CODIGO>" << blXMLEncode ( curap->value( "codigo" ) ) << "</CODIGO>\n";
+                stream << "\t\t<DEBE>" << blXMLEncode ( curap->value( "debe" ) ) << "</DEBE>\n";
+                stream << "\t\t<HABER>" << blXMLEncode ( curap->value( "haber" ) ) << "</HABER>\n";
+                stream << "\t\t<CONCEPTOCONTABLE>" << blXMLEncode ( curap->value( "conceptocontable" ) ) << "</CONCEPTOCONTABLE>\n";
+                stream << "\t\t<IDCANAL>" << blXMLEncode ( curap->value( "idcanal" ) ) << "</IDCANAL>\n";
+                stream << "\t\t<CANAL>" << blXMLEncode ( curap->value( "nomcanal" ) ) << "</CANAL>\n";
+                stream << "\t\t<IDC_COSTE>" << blXMLEncode ( curap->value( "idc_coste" ) ) << "</IDC_COSTE>\n";
+                stream << "\t\t<C_COSTE>" << blXMLEncode ( curap->value( "nc_coste" ) ) << "</C_COSTE>\n";
+                stream << "\t\t<PUNTEO>" << blXMLEncode ( curap->value( "punteo" ) ) << "</PUNTEO>\n";
+                stream << "\t\t<ORDEN>" << blXMLEncode ( curap->value( "orden" ) ) << "</ORDEN>\n";
+                stream << "\t\t<CONTRAPARTIDA>" << blXMLEncode ( curap->value( "codcontrapartida" ) ) << "</CONTRAPARTIDA>\n";
                 /// Hacemos la exportacion de registros de IVA.
                 query  = "SELECT * FROM registroiva";
                 query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
-                query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=" + curas->valor ( "idasiento" ) + " AND orden = " + curap->valor ( "orden" ) + ")";
+                query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=" + curas->value( "idasiento" ) + " AND orden = " + curap->value( "orden" ) + ")";
                 BlDbRecordSet *curreg = dbConnection->loadQuery ( query, "queryregiva" );
                 while ( !curreg->eof() ) {
                     stream << "\t\t<REGISTROIVA>\n";
-                    stream << "\t\t\t<CONTRAPARTIDA>" << blXMLEncode ( curreg->valor ( "codigo" ) ) << "</CONTRAPARTIDA>\n";
-                    stream << "\t\t\t<BASEIMP>" << blXMLEncode ( curreg->valor ( "baseimp" ) ) << "</BASEIMP>\n";
-                    stream << "\t\t\t<IVA>" << blXMLEncode ( curreg->valor ( "iva" ) ) << "</IVA>\n";
-                    stream << "\t\t\t<FFACTURA>" << blXMLEncode ( curreg->valor ( "ffactura" ) ) << "</FFACTURA>\n";
-                    stream << "\t\t\t<FACTURA>" << blXMLEncode ( curreg->valor ( "factura" ) ) << "</FACTURA>\n";
-                    stream << "\t\t\t<NUMORDEN>" << blXMLEncode ( curreg->valor ( "numorden" ) ) << "</NUMORDEN>\n";
-                    stream << "\t\t\t<CIF>" << blXMLEncode ( curreg->valor ( "cif" ) ) << "</CIF>\n";
-                    stream << "\t\t\t<IDFPAGO>" << blXMLEncode ( curreg->valor ( "idfpago" ) ) << "</IDFPAGO>\n";
-                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>" << blXMLEncode ( curreg->valor ( "rectificaaregistroiva" ) ) << "</RECTIFICAAREGISTROIVA>\n";
+                    stream << "\t\t\t<CONTRAPARTIDA>" << blXMLEncode ( curreg->value( "codigo" ) ) << "</CONTRAPARTIDA>\n";
+                    stream << "\t\t\t<BASEIMP>" << blXMLEncode ( curreg->value( "baseimp" ) ) << "</BASEIMP>\n";
+                    stream << "\t\t\t<IVA>" << blXMLEncode ( curreg->value( "iva" ) ) << "</IVA>\n";
+                    stream << "\t\t\t<FFACTURA>" << blXMLEncode ( curreg->value( "ffactura" ) ) << "</FFACTURA>\n";
+                    stream << "\t\t\t<FACTURA>" << blXMLEncode ( curreg->value( "factura" ) ) << "</FACTURA>\n";
+                    stream << "\t\t\t<NUMORDEN>" << blXMLEncode ( curreg->value( "numorden" ) ) << "</NUMORDEN>\n";
+                    stream << "\t\t\t<CIF>" << blXMLEncode ( curreg->value( "cif" ) ) << "</CIF>\n";
+                    stream << "\t\t\t<IDFPAGO>" << blXMLEncode ( curreg->value( "idfpago" ) ) << "</IDFPAGO>\n";
+                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>" << blXMLEncode ( curreg->value( "rectificaaregistroiva" ) ) << "</RECTIFICAAREGISTROIVA>\n";
                     /// Hacemos la exportacion de IVAs.
                     query  = "SELECT * FROM iva ";
                     query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
-                    query += " WHERE idregistroiva = " + curreg->valor ( "idregistroiva" );
+                    query += " WHERE idregistroiva = " + curreg->value( "idregistroiva" );
                     BlDbRecordSet *curiva = dbConnection->loadQuery ( query, "queryiva" );
                     while ( !curiva->eof() ) {
                         stream << "\t\t\t<RIVA>\n";
-                        stream << "\t\t\t\t<IDTIPOIVA>" << blXMLEncode ( curiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
-                        stream << "\t\t\t\t<NOMBRETIPOIVA>" << blXMLEncode ( curiva->valor ( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
-                        stream << "\t\t\t\t<BASEIVA>" << blXMLEncode ( curiva->valor ( "baseiva" ) ) << "</BASEIVA>\n";
+                        stream << "\t\t\t\t<IDTIPOIVA>" << blXMLEncode ( curiva->value( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
+                        stream << "\t\t\t\t<NOMBRETIPOIVA>" << blXMLEncode ( curiva->value( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
+                        stream << "\t\t\t\t<BASEIVA>" << blXMLEncode ( curiva->value( "baseiva" ) ) << "</BASEIVA>\n";
                         stream << "\t\t\t</RIVA>\n";
                         curiva->nextRecord();
                     } // end while
@@ -1419,7 +1419,7 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                     curreg->nextRecord();
                 } // end while
                 delete curreg;
-                mensajeria ( _ ( "Exportando :" ) + curap->valor ( "codigo" ) + "--" + fecha + "\n" );
+                mensajeria ( _ ( "Exportando :" ) + curap->value( "codigo" ) + "--" + fecha + "\n" );
                 curap->nextRecord();
                 stream << "\t</APUNTE>\n";
             } // end while
@@ -1548,7 +1548,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         BlDbRecordSet *cur = dbConnection->loadQuery ( "SELECT MAX(idasiento) AS max FROM asiento", "otroquery" );
         dbConnection->commit();
         if ( !cur->eof() ) {
-            idasiento = cur->valor ( "max" );
+            idasiento = cur->value( "max" );
         } // end if
         /// Iniciamos el orden para que los apuntes salgan en orden empezando desde cero.
         m_ordenapunte = 0;
@@ -1561,7 +1561,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         BlDbRecordSet *cur = dbConnection->loadQuery ( "SELECT MAX(idborrador) AS max FROM borrador", "otroquery1" );
         dbConnection->commit();
         if ( !cur->eof() ) {
-            idborrador = cur->valor ( "max" );
+            idborrador = cur->value( "max" );
         } // end if
         delete cur;
         tagpadre = "APUNTE";
@@ -1573,7 +1573,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         BlDbRecordSet *cur = dbConnection->loadQuery ( "SELECT MAX(idregistroiva) AS max FROM registroiva", "otroquery13" );
         dbConnection->commit();
         if ( !cur->eof() ) {
-            m_idRegistroIva = cur->valor ( "max" );
+            m_idRegistroIva = cur->value( "max" );
         } // end if
         delete cur;
         tagpadre = "REGISTROIVA";
@@ -1728,7 +1728,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
         dbConnection->begin();
         BlDbRecordSet * cur = dbConnection->loadQuery ( query1, "elqueryd" );
         if ( !cur->eof() ) {
-            QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES (" + m_idRegistroIva + ", " + cur->valor ( "idtipoiva" ) + ", " + m_baseIva + ")";
+            QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES (" + m_idRegistroIva + ", " + cur->value( "idtipoiva" ) + ", " + m_baseIva + ")";
             dbConnection->runQuery ( query );
         } // end if
         delete cur;
@@ -2153,7 +2153,7 @@ int ImportBulmaFact::trataFamilia()
         query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigopadre + "'";
         cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idpadre = cur->valor ( "idfamilia" );
+            idpadre = cur->value( "idfamilia" );
         } else {
             pgimport->mensajeria ( "<P> " + _ ( "No se ha encontrado el padre de esta familia." ) + "</P>" );
         } // end if
@@ -2221,7 +2221,7 @@ int ImportBulmaFact::trataArticulo()
     query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigocompletofamilia + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idfamilia = cur->valor ( "idfamilia" );
+        idfamilia = cur->value( "idfamilia" );
     } else {
         pgimport->mensajeria ( _ ( "La familia del articulo no existe" ) + "<BR>\n" );
         idfamilia = "";
@@ -2231,7 +2231,7 @@ int ImportBulmaFact::trataArticulo()
     query = "SELECT * from tipo_articulo WHERE codtipo_articulo = '" + codtipo_articulo + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idtipo_articulo = cur->valor ( "idtipo_articulo" );
+        idtipo_articulo = cur->value( "idtipo_articulo" );
     } else {
         idtipo_articulo = "NULL";
     } // end if
@@ -2240,7 +2240,7 @@ int ImportBulmaFact::trataArticulo()
     query = "SELECT * from tipo_iva WHERE desctipo_iva = '" + desctipo_iva + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idtipo_iva = cur->valor ( "idtipo_iva" );
+        idtipo_iva = cur->value( "idtipo_iva" );
     } else {
         idtipo_iva = "NULL";
     } // end if
@@ -2391,7 +2391,7 @@ int ImportBulmaFact::trataPedidoCliente()
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idalmacen = cur->valor ( "idalmacen" );
+        idalmacen = cur->value( "idalmacen" );
     } else {
         pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
@@ -2401,7 +2401,7 @@ int ImportBulmaFact::trataPedidoCliente()
     query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idcliente = cur->valor ( "idcliente" );
+        idcliente = cur->value( "idcliente" );
     } else {
         pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
@@ -2411,7 +2411,7 @@ int ImportBulmaFact::trataPedidoCliente()
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idforma_pago = cur->valor ( "idforma_pago" );
+        idforma_pago = cur->value( "idforma_pago" );
     } else {
         pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
@@ -2421,7 +2421,7 @@ int ImportBulmaFact::trataPedidoCliente()
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idtrabajador = cur->valor ( "idtrabajador" );
+        idtrabajador = cur->value( "idtrabajador" );
     } else {
         pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
@@ -2448,7 +2448,7 @@ int ImportBulmaFact::trataPedidoCliente()
     dbConnection->begin();
     dbConnection->runQuery ( query );
     cur = dbConnection->loadQuery ( "SELECT MAX(idpedidocliente) AS id FROM pedidocliente" );
-    idpedidocliente = cur->valor ( "id" );
+    idpedidocliente = cur->value( "id" );
     delete cur;
     dbConnection->commit();
     /// Tratamos la insercion de las lineas de albaran.
@@ -2472,7 +2472,7 @@ int ImportBulmaFact::trataPedidoCliente()
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
         cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idarticulo = cur->valor ( "idarticulo" );
+            idarticulo = cur->value( "idarticulo" );
         } else {
             pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
@@ -2620,7 +2620,7 @@ int ImportBulmaFact::trataAlbaran()
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idalmacen = cur->valor ( "idalmacen" );
+        idalmacen = cur->value( "idalmacen" );
     } else {
         pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
@@ -2630,7 +2630,7 @@ int ImportBulmaFact::trataAlbaran()
     query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idcliente = cur->valor ( "idcliente" );
+        idcliente = cur->value( "idcliente" );
     } else {
         pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
@@ -2639,7 +2639,7 @@ int ImportBulmaFact::trataAlbaran()
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idforma_pago = cur->valor ( "idforma_pago" );
+        idforma_pago = cur->value( "idforma_pago" );
     } else {
         pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
@@ -2648,7 +2648,7 @@ int ImportBulmaFact::trataAlbaran()
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idtrabajador = cur->valor ( "idtrabajador" );
+        idtrabajador = cur->value( "idtrabajador" );
     } else {
         pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
@@ -2674,7 +2674,7 @@ int ImportBulmaFact::trataAlbaran()
     dbConnection->begin();
     dbConnection->runQuery ( query );
     cur = dbConnection->loadQuery ( "SELECT MAX(idalbaran) AS id FROM albaran" );
-    idalbaran = cur->valor ( "id" );
+    idalbaran = cur->value( "id" );
     delete cur;
     dbConnection->commit();
     /// Tratamos la insercion de las lineas de albaran.
@@ -2698,7 +2698,7 @@ int ImportBulmaFact::trataAlbaran()
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
         cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idarticulo = cur->valor ( "idarticulo" );
+            idarticulo = cur->value( "idarticulo" );
         } else {
             pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
@@ -2845,7 +2845,7 @@ int ImportBulmaFact::trataFactura()
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idalmacen = cur->valor ( "idalmacen" );
+        idalmacen = cur->value( "idalmacen" );
     } else {
         pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
@@ -2854,7 +2854,7 @@ int ImportBulmaFact::trataFactura()
     query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idcliente = cur->valor ( "idcliente" );
+        idcliente = cur->value( "idcliente" );
     } else {
         pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
@@ -2863,7 +2863,7 @@ int ImportBulmaFact::trataFactura()
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idforma_pago = cur->valor ( "idforma_pago" );
+        idforma_pago = cur->value( "idforma_pago" );
     } else {
         pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
@@ -2873,7 +2873,7 @@ int ImportBulmaFact::trataFactura()
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idtrabajador = cur->valor ( "idtrabajador" );
+        idtrabajador = cur->value( "idtrabajador" );
     } else {
         pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
@@ -2912,7 +2912,7 @@ int ImportBulmaFact::trataFactura()
     dbConnection->begin();
     dbConnection->runQuery ( query );
     cur = dbConnection->loadQuery ( "SELECT MAX(idfactura) AS id FROM factura" );
-    idfactura = cur->valor ( "id" );
+    idfactura = cur->value( "id" );
     delete cur;
     dbConnection->commit();
     /// Tratamos la insercion de las lineas de presupuesto.
@@ -2936,7 +2936,7 @@ int ImportBulmaFact::trataFactura()
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
         cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idarticulo = cur->valor ( "idarticulo" );
+            idarticulo = cur->value( "idarticulo" );
         } else {
             pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
@@ -3083,7 +3083,7 @@ int ImportBulmaFact::trataPresupuesto()
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idalmacen = cur->valor ( "idalmacen" );
+        idalmacen = cur->value( "idalmacen" );
     } else {
         pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
@@ -3093,7 +3093,7 @@ int ImportBulmaFact::trataPresupuesto()
     query = "SELECT * FROM cliente WHERE cifcliente='" + cifcliente + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idcliente = cur->valor ( "idcliente" );
+        idcliente = cur->value( "idcliente" );
     } else {
         pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
@@ -3103,7 +3103,7 @@ int ImportBulmaFact::trataPresupuesto()
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idforma_pago = cur->valor ( "idforma_pago" );
+        idforma_pago = cur->value( "idforma_pago" );
     } else {
         pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
@@ -3113,7 +3113,7 @@ int ImportBulmaFact::trataPresupuesto()
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        idtrabajador = cur->valor ( "idtrabajador" );
+        idtrabajador = cur->value( "idtrabajador" );
     } else {
         pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
@@ -3140,7 +3140,7 @@ int ImportBulmaFact::trataPresupuesto()
     dbConnection->begin();
     dbConnection->runQuery ( query );
     cur = dbConnection->loadQuery ( "SELECT MAX(idpresupuesto) AS id FROM presupuesto" );
-    idpresupuesto = cur->valor ( "id" );
+    idpresupuesto = cur->value( "id" );
     delete cur;
     dbConnection->commit();
 
@@ -3165,7 +3165,7 @@ int ImportBulmaFact::trataPresupuesto()
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
         cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idarticulo = cur->valor ( "idarticulo" );
+            idarticulo = cur->value( "idarticulo" );
         } else {
             pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";

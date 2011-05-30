@@ -32,145 +32,8 @@
 #include "claseview.h"
 
 AlumnosList *g_alumnosList = NULL;
+BfBulmaFact *g_bges = NULL;
 
-///
-/**
-**/
-PluginBf_Alumno::PluginBf_Alumno()
-{
-    blDebug ( "PluginBf_Alumno::PluginBf_Alumno", 0 );
-    blDebug ( "END PluginBf_Alumno::PluginBf_Alumno", 0 );
-}
-
-///
-/**
-**/
-PluginBf_Alumno::~PluginBf_Alumno()
-{
-    blDebug ( "PluginBf_Alumno::~PluginBf_Alumno", 0 );
-    blDebug ( "END PluginBf_Alumno::~PluginBf_Alumno", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Alumno::elslot()
-{
-    blDebug ( "PluginBf_Alumno::elslot", 0 );
-    
-    if ( g_alumnosList ) {
-        g_alumnosList->hide();
-        g_alumnosList->show();
-    } // end if
-    
-    blDebug ( "END PluginBf_Alumno::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Alumno::elslot1()
-{
-    blDebug ( "PluginBf_Alumno::elslot1", 0 );
-    
-    AlumnoView * bud = new AlumnoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany()->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    
-    blDebug ( "END PluginBf_Alumno::elslot1", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Alumno::elslot2()
-{
-    blDebug ( "PluginBf_Alumno::elslot2", 0 );
-    
-    ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany()->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    
-    blDebug ( "END PluginBf_Alumno::elslot2", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Alumno::elslot3()
-{
-    blDebug ( "PluginBf_Alumno::elslot3", 0 );
-    ClaseView * bud = new ClaseView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Alumno::elslot3", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Alumno::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Alumno::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "alumno", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Docencia
-        QMenu *pPluginMenu = bges->newMenu ( "&Associats", "menuAssociats", "menuMaestro" );
-
-        /// Agrego un separador
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        
-        QAction *alumnos = new QAction ( _ ( "&Alumnos" ), 0 );
-        alumnos->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-list.png" ) ) );
-        alumnos->setStatusTip ( _ ( "Alumnos" ) );
-        alumnos->setWhatsThis ( _ ( "Alumnos" ) );
-        pPluginMenu->addAction ( alumnos );
-        bges->Listados->addAction ( alumnos );
-        connect ( alumnos, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *nalumno = new QAction ( _ ( "&Nuevo alumno" ), 0 );
-        nalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-new.png" ) ) );
-        nalumno->setStatusTip ( _ ( "Nuevo alumno" ) );
-        nalumno->setWhatsThis ( _ ( "Nuevo alumno" ) );
-        pPluginMenu->addAction ( nalumno );
-        bges->Fichas->addAction ( nalumno );
-        connect ( nalumno, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-        /// Miramos si existe un menu Docencia
-        QMenu *pGesMenu = bges->newMenu ( "&Associats", "menuAssociats", "menuMaestro" );
-
-        /// Agrego un separador
-        pGesMenu->addSeparator();
-
-        QAction *cuotaspalumno = new QAction ( _ ( "&Cuotas Socio" ), 0 );
-        cuotaspalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
-        cuotaspalumno->setStatusTip ( _ ( "Cuotas por alumno" ) );
-        cuotaspalumno->setWhatsThis ( _ ( "Cuotas por alumno" ) );
-        pGesMenu->addAction ( cuotaspalumno );
-        bges->Fichas->addAction ( cuotaspalumno );
-        connect ( cuotaspalumno, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-
-        /// Agrego un separador
-        pGesMenu->addSeparator();
-
-        QAction *clases = new QAction ( _ ( "&Clases" ), 0 );
-        clases->setStatusTip ( _ ( "Clases" ) );
-        clases->setWhatsThis ( _ ( "Clases" ) );
-        clases->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/warehouse.png" ) ) );
-        pGesMenu->addAction ( clases );
-        bges->Fichas->addAction ( clases );
-        connect ( clases, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
-
-    } // end if
-    
-    blDebug ( "END PluginBf_Alumno::inicializa", 0 );
-}
 
 ///
 /**
@@ -183,15 +46,103 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_alumno", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_alumno", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Alumno *plug = new PluginBf_Alumno();
-    plug->inicializa ( bges );
-    
+
+    if ( bges->company()->hasTablePrivilege ( "alumno", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Docencia
+        QMenu *pPluginMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
+
+        /// Agrego un separador
+        pPluginMenu->addSeparator();
+
+        BlAction *accionA = new BlAction ( _ ( "&Alumnos" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Alumnos" ) );
+        accionA->setWhatsThis ( _ ( "Alumnos" ) );
+        accionA->setObjectName("mui_actionAlumnos");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo alumno" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-new.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo alumno" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo alumno" ) );
+        accionB->setObjectName("mui_actionAlumnoNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+        /// Miramos si existe un menu Docencia
+        QMenu *pGesMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
+
+        /// Agrego un separador
+        pGesMenu->addSeparator();
+
+        BlAction *accionC = new BlAction ( _ ( "&Cuotas Socio" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
+        accionC->setStatusTip ( _ ( "Cuotas por alumno" ) );
+        accionC->setWhatsThis ( _ ( "Cuotas por alumno" ) );
+        accionC->setObjectName("mui_actionAlumnoCuotas");
+        pGesMenu->addAction ( accionC );
+        bges->Fichas->addAction ( accionC );
+        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+
+        /// Agrego un separador
+        pGesMenu->addSeparator();
+
+        BlAction *accionD = new BlAction ( _ ( "&Clases" ), 0 );
+        accionD->setStatusTip ( _ ( "Clases" ) );
+        accionD->setWhatsThis ( _ ( "Clases" ) );
+        accionD->setObjectName("mui_actionClases");
+        accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/warehouse.png" ) ) );
+        pGesMenu->addAction ( accionD );
+        bges->Fichas->addAction ( accionD );
+        //connect ( accionD, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
+
+    } // end if
+
     blDebug ( "END Punto de entrada del plugin de alumnos\n", 0 );
     
     return 0;
 }
+
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_Alumno::BlAction_triggered\n", 0 );
+    if (accion->objectName() == "mui_actionAlumnos") {
+        if ( g_alumnosList ) {
+            g_alumnosList->hide();
+            g_alumnosList->show();
+        } // end if
+    } // end if
+
+    if (accion->objectName() == "mui_actionAlumnoNuevo") {
+        AlumnoView * bud = new AlumnoView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+
+    if (accion->objectName() == "mui_actionAlumnoCuotas") {
+        ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if 
+    
+    if (accion->objectName() == "mui_actionClases") {
+        ClaseView * bud = new ClaseView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+    blDebug ( "END PluginBf_Alumno::BlAction_triggered\n", 0 );
+
+    return 0;
+}
+
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
@@ -240,7 +191,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idalumno", idAlumno );
-        sub->m_registrolinea->setDbValue ( "nombrealumno1", cur->valor( "apellido1alumno") + " " + cur->valor("apellido2alumno") + ", " + cur->valor ( "nombrealumno" ));
+        sub->m_registrolinea->setDbValue ( "nombrealumno1", cur->value( "apellido1alumno") + " " + cur->value("apellido2alumno") + ", " + cur->value( "nombrealumno" ));
     } // end if
     
     delete cur;
@@ -448,7 +399,7 @@ void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idalumno", idAlumno );
-        sub->lineaact()->setDbValue ( "nombrealumno1", cur->valor ( "nombrealumno" ) );
+        sub->lineaact()->setDbValue ( "nombrealumno1", cur->value( "nombrealumno" ) );
     } // end if
     delete cur;
 

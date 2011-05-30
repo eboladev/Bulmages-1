@@ -29,89 +29,7 @@
 
 
 ProveedorList *g_providersList = NULL;
-
-///
-/**
-**/
-PluginBf_Proveedor::PluginBf_Proveedor()
-{
-    blDebug ( "PluginBf_Proveedor::PluginBf_Proveedor", 0 );
-    blDebug ( "END PluginBf_Proveedor::PluginBf_Proveedor", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Proveedor::~PluginBf_Proveedor()
-{
-    blDebug ( "PluginBf_Proveedor::~PluginBf_Proveedor", 0 );
-    blDebug ( "END PluginBf_Proveedor::~PluginBf_Proveedor", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Proveedor::elslot()
-{
-    blDebug ( "PluginBf_Proveedor::elslot", 0 );
-    if ( g_providersList ) {
-        g_providersList->hide();
-        g_providersList->show();
-    }// end if
-    blDebug ( "END PluginBf_Proveedor::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Proveedor::elslot1()
-{
-    blDebug ( "PluginBf_Proveedor::elslot1", 0 );
-    ProveedorView * bud = new ProveedorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Proveedor::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Proveedor::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Proveedor::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Compras", "menuCompras", "menuMaestro" );
-        pPluginMenu->addSeparator();
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Proveedores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Proveedores" ) );
-        planCuentas->setWhatsThis ( _ ( "Proveedores" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo proveedor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo proveedor" ) );
-        npago->setWhatsThis ( _ ( "Nuevo proveedor" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Proveedor::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 
@@ -122,14 +40,61 @@ void PluginBf_Proveedor::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de proveedores\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Proveedor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_proveedor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_proveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Proveedor *plug = new PluginBf_Proveedor();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Compras"), "menuCompras", "menuMaestro" );
+        pPluginMenu->addSeparator();
+        
+        /// El men&uacute; de proveedores
+        BlAction *accionA = new BlAction ( _ ( "&Proveedores" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Proveedores" ) );
+        accionA->setWhatsThis ( _ ( "Proveedores" ) );
+        accionA->setObjectName("mui_actionProveedores");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo proveedor" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo proveedor" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo proveedor" ) );
+        accionB->setObjectName("mui_actionProveedorNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+    } // end if
+
+    return 0;
+}
+
+
+int BlAction_triggered(BlAction *accion) {
+
+    if (accion->objectName() == "mui_actionProveedores") {
+        blDebug ( "PluginBf_Proveedor::BlAction_triggered::mui_actionProveedores", 0 );
+        if ( g_providersList ) {
+            g_providersList->hide();
+            g_providersList->show();
+        } // end if
+        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedores", 0 );
+
+    } // end if
+
+    if (accion->objectName() == "mui_actionProveedorNuevo") {
+        blDebug ( "PluginBf_Proveedor::BlAction_triggered::mui_actionProveedorNuevo", 0 );
+        ProveedorView * bud = new ProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedorNuevo", 0 );
+    } // end if
     return 0;
 }
 
@@ -140,7 +105,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_providersList = new ProveedorList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_providersList );
         g_providersList->hide();
-    }// end if
+    } // end if
     return 0;
 }
 

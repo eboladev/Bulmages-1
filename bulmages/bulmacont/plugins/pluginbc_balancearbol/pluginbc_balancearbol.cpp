@@ -44,7 +44,7 @@ int entryPoint ( BcBulmaCont *bcont )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugincc_balancearbol", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugincc_balancearbol", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
 
@@ -64,8 +64,8 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "balancejearbol") {
          
-	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->empresaactual(), 0 );
-	g_bcont -> empresaactual() ->pWorkspace() ->addSubWindow ( cuad );
+	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->company(), 0 );
+	g_bcont -> company() ->pWorkspace() ->addSubWindow ( cuad );
 	cuad->show();
 
     } // end if

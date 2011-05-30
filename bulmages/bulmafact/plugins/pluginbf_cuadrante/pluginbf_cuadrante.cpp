@@ -35,90 +35,7 @@
 #include "cuadranteview.h"
 #include "cuadrantediarioview.h"
 
-
-///
-/**
-**/
-PlugibnBf_Cuadrante::PlugibnBf_Cuadrante()
-{
-    blDebug ( "PlugibnBf_Cuadrante::PlugibnBf_Cuadrante", 0 );
-    blDebug ( "END PlugibnBf_Cuadrante::PlugibnBf_Cuadrante", 0 );
-}
-
-
-///
-/**
-**/
-PlugibnBf_Cuadrante::~PlugibnBf_Cuadrante()
-{
-    blDebug ( "PlugibnBf_Cuadrante::~PlugibnBf_Cuadrante", 0 );
-    blDebug ( "END PlugibnBf_Cuadrante::~PlugibnBf_Cuadrante", 0 );
-}
-
-
-///
-/**
-**/
-void PlugibnBf_Cuadrante::elslot()
-{
-    blDebug ( "PlugibnBf_Cuadrante::elslot", 0 );
-    CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
-    cuad->show();
-    blDebug ( "END PlugibnBf_Cuadrante::elslot", 0 );
-}
-
-
-///
-/**
-**/
-void PlugibnBf_Cuadrante::elslot1()
-{
-    blDebug ( "PlugibnBf_Cuadrante::elslot1", 0 );
-    CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
-    cuad->show();
-    blDebug ( "END PlugibnBf_Cuadrante::elslot1", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PlugibnBf_Cuadrante::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PlugibnBf_Cuadrante::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->company() );
-    m_bulmafact = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
-    } // end if
-
-    QAction *accion = new QAction ( "&Cuadrante Semanal", 0 );
-    accion->setStatusTip ( "Permite realizar Plannings Laborales" );
-    accion->setWhatsThis ( "Podra destinar los trabajadores a distintos almacenes" );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    QAction *accion1 = new QAction ( "&Cuadrante Diario", 0 );
-    accion1->setStatusTip ( "Permite realizar Plannings Laborales" );
-    accion1->setWhatsThis ( "Podra destinar los trabajadores a distintos almacenes" );
-    connect ( accion1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    pPluginMenu->addAction ( accion1 );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    blDebug ( "END PlugibnBf_Cuadrante::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -133,14 +50,63 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_cuadrante", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_cuadrante", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PlugibnBf_Cuadrante *plug = new PlugibnBf_Cuadrante();
-    plug->inicializa ( bges );
+    /// Creamos el men&uacute;.
+    QMenu *pPluginMenu;
+    
+    /// Miramos si existe un menu Herramientas
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( _("&Herramientas"), bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
+    } // end if
+
+    BlAction *accionA = new BlAction ( _("&Cuadrante Semanal"), 0 );
+    accionA->setStatusTip ( _("Permite realizar Plannings Laborales") );
+    accionA->setWhatsThis ( _("Podra destinar los trabajadores a distintos almacenes") );
+    accionA->setObjectName("mui_actionCuadranteSemanal");
+    pPluginMenu->addAction ( accionA );
+
+    BlAction *accionB = new BlAction ( _("&Cuadrante Diario"), 0 );
+    accionB->setStatusTip ( _("Permite realizar Plannings Laborales") );
+    accionB->setWhatsThis ( _("Podra destinar los trabajadores a distintos almacenes") );
+    accionB->setObjectName("mui_actionCuadranteDiario");
+    pPluginMenu->addAction ( accionB );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
 
     blDebug ( "END entryPoint", 0 );
     return 0;
 }
+
+
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ("BlAction_Triggered", 0 );
+    if (accion->objectName() == "mui_actionCuadranteSemanal") {
+        blDebug ( "mui_actionCuadranteSemanal", 0);
+        CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) g_bges->company(), 0 );
+        g_bges->company()->pWorkspace() ->addSubWindow ( cuad );
+        cuad->show();
+        blDebug ( "END mui_actionCuadranteSemanal", 0);
+    } // end if
+    if (accion->objectName() == "mui_actionCuadranteDiario") {
+        blDebug ( "mui_actionCuadranteDiario", 0);
+        CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) g_bges->company(), 0 );
+        g_bges->company()->pWorkspace() ->addSubWindow ( cuad );
+        cuad->show();
+        blDebug ( "END mui_actionCuadranteDiario", 0);
+    } // end if
+
+    return 0;
+    blDebug ("END BlAction_Triggered", 0 );
+}
+
 
 
 ///
@@ -255,7 +221,7 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
     trab->mui_tab->addTab ( l, "Ausencias" );
-    trab->dialogChanges_setQObjectExcluido ( l->mui_list );
+    trab->dialogChanges_setExcludedObject ( l->mui_list );
 
     blDebug ( "END TrabajadorView_TrabajadorView", 0 );
     return 0;

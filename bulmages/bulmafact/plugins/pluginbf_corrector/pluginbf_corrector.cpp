@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_corrector", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_corrector", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BlMainCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
@@ -69,17 +69,17 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    viewCorrector = new QAction ( "&Corrector", 0 );
+    viewCorrector = new QAction ( _("&Corrector"), 0 );
     viewCorrector->setCheckable ( TRUE );
-    viewCorrector->setStatusTip ( "Muestra/oculta el corrector" );
-    viewCorrector->setWhatsThis ( "Corrector.\n\nMuestra/oculta el corrector" );
+    viewCorrector->setStatusTip ( _("Muestra/oculta el corrector") );
+    viewCorrector->setWhatsThis ( _("Corrector.\n\nMuestra/oculta el corrector") );
 
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( cambiaVisible ( bool ) ) );
     QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), viewCorrector, SLOT ( setChecked ( bool ) ) );
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( viewCorrector );
 
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -99,7 +99,7 @@ int entryPoint ( BfBulmaFact *bcont )
 int BfBulmaFact_closeEvent ( BfBulmaFact *bcont )
 {
     BlMainCompany * emp = bcont->company();
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

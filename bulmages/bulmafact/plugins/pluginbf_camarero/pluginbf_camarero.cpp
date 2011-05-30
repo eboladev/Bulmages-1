@@ -39,7 +39,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_camarero", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_camarero", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -152,9 +152,9 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 	if (l) {
 	    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
 	    if ( !cur->eof() ) {
-		l->setText ( cur->valor ( "passwordtrabajador" ) );
-		l1->setChecked(cur -> valor("admintrabajador") == "t");
-		l2->setChecked(cur -> valor("gerentetrabajador") == "t");
+		l->setText ( cur->value( "passwordtrabajador" ) );
+		l1->setChecked(cur -> value("admintrabajador") == "t");
+		l2->setChecked(cur -> value("gerentetrabajador") == "t");
 	    } // end if
 	    delete cur;
 	} // end if

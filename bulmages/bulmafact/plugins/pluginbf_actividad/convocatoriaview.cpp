@@ -52,7 +52,7 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
         addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del actividad" ) );
         addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id profesor" ) );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 
         /// Establecemos los parametros de busqueda de Profesor
         mui_idprofesor->setMainCompany ( comp );
@@ -62,7 +62,7 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
 
 
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el actividad" ), this );

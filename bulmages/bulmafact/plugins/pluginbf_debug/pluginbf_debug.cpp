@@ -35,39 +35,6 @@
 
 ///
 /**
-**/
-PluginBf_Debug::PluginBf_Debug()
-{
-    blDebug ( "PluginBf_Debug::PluginBf_Debug", 0 );
-    blDebug ( "END PluginBf_Debug::PluginBf_Debug", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Debug::~PluginBf_Debug()
-{
-    blDebug ( "PluginBf_Debug::~PluginBf_Debug", 0 );
-    blDebug ( "END PluginBf_Debug::~PluginBf_Debug", 0 );
-}
-
-
-///
-/**
-\return
-**/
-void PluginBf_Debug::cambia ( bool valor )
-{
-    blDebug ( "PluginBf_Debug::cambia", 0 );
-    g_confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
-    blDebug ( "END PluginBf_Debug::cambia", 0 );
-}
-
-
-
-///
-/**
 \param bcont
 **/
 int entryPoint ( BfBulmaFact *bcont )
@@ -76,27 +43,38 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_debug", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-    PluginBf_Debug *corr = new PluginBf_Debug();
+    blBindTextDomain ( "pluginbf_debug", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
-    /// acceder al corrector.
-    QAction *viewCorrector = new QAction ( "&Modo depuracion", 0 );
-    viewCorrector->setCheckable ( TRUE );
+    /// acceder al modo de depuraci&oacuteMm.
+    BlAction *accionA = new BlAction ( _("&Modo depuracion"), 0 );
+    accionA->setCheckable ( TRUE );
 
-    if ( g_confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
-        viewCorrector->setChecked ( TRUE );
+    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
+        accionA->setChecked ( TRUE );
     } else {
-        viewCorrector->setChecked ( FALSE );
+        accionA->setChecked ( FALSE );
     }
 
-    viewCorrector->setStatusTip ( _ ( "Activa/desactiva el modo de depuracion" ) );
-    viewCorrector->setWhatsThis ( _ ( "Depuracion.\n\nActiva/desactiva el modo de depuracion" ) );
-    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
+    accionA->setStatusTip ( _ ( "Activa/desactiva el modo de depuracion" ) );
+    accionA->setWhatsThis ( _ ( "Depuracion.\n\nActiva/desactiva el modo de depuracion" ) );
+    accionA->setObjectName("mui_actionDebug");
     bcont->menuVentana->addSeparator();
-    bcont->menuVentana->addAction ( viewCorrector );
+    bcont->menuVentana->addAction ( accionA );
     blDebug ( "END: Plugin depuracion", 10 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionDebug") {
+
+        if (accion->isChecked ()) {
+            g_confpr->setValue( CONF_DEBUG, "TRUE");
+        } else {
+            g_confpr->setValue( CONF_DEBUG, "FALSE");
+        } // end if
+
+    } // end if
+    return 0;
+}

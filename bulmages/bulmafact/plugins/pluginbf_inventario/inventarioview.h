@@ -41,10 +41,10 @@ class InventarioView : public Inventario, public Ui_InventarioBase
 public:
     InventarioView ( BfCompany *, QWidget *parent = 0 );
     ~InventarioView();
-    void pintaidinventario ( QString );
-    void pintafechainventario ( QString id );
-    void pintanominventario ( QString id );
-    virtual int sacaWindow();
+    void pintaIdInventario ( QString );
+    void pintaFechaInventario ( QString id );
+    void pintaNomInventario ( QString id );
+    virtual int removeWindow();
     virtual int cargar ( QString id );
 
 public slots:

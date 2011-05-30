@@ -38,270 +38,7 @@
 
 BcAsientoView *g_asiento;
 BcAsientoListView *g_listasientos;
-
-
-
-///
-/**
-**/
-PluginBc_Asiento::PluginBc_Asiento()
-{
-    blDebug ( "PluginBc_Asiento::PluginBc_Asiento", 0 );
-    blDebug ( "END PluginBc_Asiento::PluginBc_Asiento", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Asiento::~PluginBc_Asiento()
-{
-    blDebug ( "PluginBc_Asiento::~PluginBc_Asiento", 0 );
-    blDebug ( "END PluginBc_Asiento::~PluginBc_Asiento", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_Asiento::elslot()
-{
-    blDebug ( "PluginBc_Asiento::elslot", 0 );
-    if (g_asiento == NULL) {
-      g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() -> addSubWindow ( g_asiento );
-    } // end if
-    g_asiento->hide();
-    g_asiento->show();
-    blDebug ( "END PluginBc_Asiento::elslot", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_Asiento::elslot1()
-{
-    blDebug ( "PluginBc_Asiento::elslot1", 0 );
-    if (g_listasientos == NULL) {
-      g_listasientos = new BcAsientoListView ( ( BcCompany * ) mainCompany() );
-      g_listasientos->presentar();
-      mainCompany()-> pWorkspace() -> addSubWindow ( g_listasientos );
-    } // end if
-    g_listasientos->hide();
-    g_listasientos->show();
-    blDebug ( "END PluginBc_Asiento::elslot1", 0 );
-}
-
-/// Espaciar Asientos
-/**
-**/
-void PluginBc_Asiento::elslot2()
-{
-    blDebug ( "PluginBc_Asiento::elslot2", 0 );
-    BlDbRecordSet *cur = NULL;
-    try {
-        cur = mainCompany()->loadQuery ( "SELECT abreasientos()" );
-        g_main->statusBar() ->showMessage ( _ ( "Se han espaciado los asientos" ), 2000 );
-        delete cur;
-        blDebug ( "END BcCompany::Abrirasientos", 0 );
-    } catch ( ... ) {
-        blMsgError ( _("Ha habido un error al espaciar los asientos") );
-        if ( cur ) delete cur;
-        return;
-    } // end try
-    blDebug ( "END PluginBc_Asiento::elslot2", 0 );
-}
-
-/// Ordenar Asientos
-/**
-**/
-void PluginBc_Asiento::elslot3()
-{
-    blDebug ( "PluginBc_Asiento::elslot3", 0 );
-    QString query = "SELECT reordenaasientosall()";
-    BlDbRecordSet *cur = NULL;
-    try {
-        cur = mainCompany()->loadQuery ( query );
-        g_main->statusBar() ->showMessage ( _ ( "Se han ordenado los asientos" ), 2000 );
-        delete cur;
-        blDebug ( "END BcCompany::Ordenarasientos", 10 );
-    } catch ( ... ) {
-        blMsgError ( _("Ha habido un error al ordenar los asientos") );
-        if ( cur ) delete cur;
-        return;
-    }
-    blDebug ( "END PluginBc_Asiento::elslot3", 0 );
-}
-
-/// Asiento de Apertura
-/**
-**/
-void PluginBc_Asiento::elslot4()
-{
-    blDebug ( "PluginBc_Asiento::elslot4", 0 );
-    QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
-    QString finicial = "01/01/" + hoy.right ( 4 );
-
-    bool ok;
-    QString text1 = QInputDialog::getText ( 0,
-                                            _ ( "Fecha" ), _ ( "Fecha:" ), QLineEdit::Normal,
-                                            hoy, &ok );
-    if ( ok && !text1.isEmpty() ) {
-        hoy = text1;
-    } else {
-        return;
-    } // end if
-
-    g_asiento->show();
-    g_asiento->asiento_apertura ( hoy );
-    blDebug ( "END PluginBc_Asiento::elslot4", 0 );
-}
-
-/// Asiento de Cierre
-/**
-**/
-void PluginBc_Asiento::elslot5()
-{
-    blDebug ( "PluginBc_Asiento::elslot5", 0 );
-    QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
-    QString finicial = "01/01/" + hoy.right ( 4 );
-
-    bool ok;
-    QString text = QInputDialog::getText ( 0,
-                                           _ ( "Fecha inicial" ), _ ( "Fecha inicial ejercicio:" ), QLineEdit::Normal,
-                                           finicial, &ok );
-    if ( ok && !text.isEmpty() ) {
-        finicial = text;
-    } else {
-        return;
-    } // end if
-
-    QString text1 = QInputDialog::getText ( 0,
-                                            _ ( "Fecha final" ), _ ( "Fecha final ejercicio:" ), QLineEdit::Normal,
-                                            hoy, &ok );
-    if ( ok && !text1.isEmpty() ) {
-        hoy = text1;
-    } else {
-        return;
-    } // end if
-
-    g_asiento->show();
-    g_asiento->asiento_cierre ( finicial, hoy );
-    blDebug ( "END PluginBc_Asiento::elslot5", 0 );
-}
-
-/// Asiento de Regularización
-/**
-**/
-void PluginBc_Asiento::elslot6()
-{
-    blDebug ( "PluginBc_Asiento::elslot6", 0 );
-
-
-    QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
-    QString finicial = "01/01/" + hoy.right ( 4 );
-
-    bool ok;
-    QString text = QInputDialog::getText ( 0,
-                                           _ ( "Fecha inicial" ), _ ( "Fecha inicial regularizacion:" ), QLineEdit::Normal,
-                                           finicial, &ok );
-    if ( ok && !text.isEmpty() ) {
-        finicial = text;
-    } else {
-        return;
-    } // end if
-
-    QString text1 = QInputDialog::getText ( 0,
-                                            _ ( "Fecha final" ), _ ( "Fecha final regularizacion:" ), QLineEdit::Normal,
-                                            hoy, &ok );
-    if ( ok && !text1.isEmpty() ) {
-        hoy = text1;
-    } else {
-        return;
-    } // end if
-
-
-    g_asiento->show();
-    g_asiento->asiento_regularizacion ( finicial, hoy );
-
-
-    blDebug ( "END PluginBc_Asiento::elslot6", 0 );
-}
-
-///
-/**
-\param bges
-**/
-void PluginBc_Asiento::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( "PluginBc_Asiento::inicializa", 0 );
-
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
-
-    /// Creamos la ventana de asientos que va a ser fija.
-    g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addSubWindow ( g_asiento );
-
-    m_bulmacont = bges;
-    QMenu *pPluginMenu = bges->newMenu(_("&Asiento"), "menuAsiento", "menuMaestro");
-
-    QAction *accion = new QAction ( _ ( "&Asiento Contable" ), 0 );
-    accion->setStatusTip ( _ ( "Permite ver y modificar asientos" ) );
-    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del asiento" ) );
-    accion->setIcon(QIcon(QString::fromUtf8(":/Images/book.png")));
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-    bges->toolBar->addAction ( accion );
-
-
-    QAction *accion2 = new QAction ( _ ( "&Lista de Asientos Contables" ), 0 );
-    accion2->setStatusTip ( _ ( "Permite ver el listado de asientos" ) );
-    accion2->setWhatsThis ( _ ( "Permite ver el listado de asientos" ) );
-    accion2->setIcon(QIcon(QString::fromUtf8(":/Images/book-list.png")));
-    connect ( accion2, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    pPluginMenu->addAction ( accion2 );
-    bges->toolBar->addAction ( accion2 );
-
-    pPluginMenu->addSeparator();
-
-    QAction *accion3 = new QAction ( _ ( "&Espaciar Asientos Contables" ), 0 );
-    accion3->setStatusTip ( _ ( "Ordena los asientos dejando espacios entre ellos" ) );
-    accion3->setWhatsThis ( _ ( "Ordena los asientos dejando espacios entre ellos" ) );
-    connect ( accion3, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-    pPluginMenu->addAction ( accion3 );
-
-
-    QAction *accion4 = new QAction ( _ ( "&Reordenar Asientos Contables" ), 0 );
-    accion4->setStatusTip ( _ ( "Ordena los asientos" ) );
-    accion4->setWhatsThis ( _ ( "Ordena los asientos" ) );
-    connect ( accion4, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
-    pPluginMenu->addAction ( accion4 );
-
-    pPluginMenu->addSeparator();
-
-    QAction *accion5 = new QAction ( _ ( "Asiento de a&pertura" ), 0 );
-    accion5->setStatusTip ( _ ( "Asiento de apertura" ) );
-    accion5->setWhatsThis ( _ ( "Asiento de apertura" ) );
-    connect ( accion5, SIGNAL ( activated() ), this, SLOT ( elslot4() ) );
-    pPluginMenu->addAction ( accion5 );
-
-    QAction *accion6 = new QAction ( _ ( "Asiento de &cierre" ), 0 );
-    accion6->setStatusTip ( _ ( "Asiento de cierre" ) );
-    accion6->setWhatsThis ( _ ( "Asiento de cierre" ) );
-    connect ( accion6, SIGNAL ( activated() ), this, SLOT ( elslot5() ) );
-    pPluginMenu->addAction ( accion6 );
-
-    QAction *accion7 = new QAction ( _ ( "Asiento de &regularizacion" ), 0 );
-    accion7->setStatusTip ( _ ( "Asiento de regularizacion" ) );
-    accion7->setWhatsThis ( _ ( "Asiento de regularizacion" ) );
-    connect ( accion7, SIGNAL ( activated() ), this, SLOT ( elslot6() ) );
-    pPluginMenu->addAction ( accion7 );
-
-    blDebug ( "END PluginBc_Asiento::inicializa", 0 );
-}
-
+BcBulmaCont *g_bcont = NULL;
 
 
 ///
@@ -310,19 +47,201 @@ void PluginBc_Asiento::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint, Punto de entrada de PluginBc_asiento", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_asiento", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_asiento", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_asiento = NULL;
+    g_bcont = bcont;
 
-    PluginBc_Asiento *plug = new PluginBc_Asiento();
-    plug->inicializa ( bcont );
+
+    /// Creamos la ventana de asientos que va a ser fija.
+    g_asiento = new BcAsientoView ( ( BcCompany * ) g_bcont->company(), 0 );
+    g_bcont->company()->pWorkspace() ->addSubWindow ( g_asiento );
+
+    QMenu *pPluginMenu = bcont->newMenu(_("&Asiento"), "menuAsiento", "menuMaestro");
+
+    BlAction *accionA = new BlAction ( _ ( "&Asiento Contable" ), 0 );
+    accionA->setStatusTip ( _ ( "Permite ver y modificar asientos" ) );
+    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del asiento" ) );
+    accionA->setIcon(QIcon(QString::fromUtf8(":/Images/book.png")));
+    accionA->setObjectName("mui_actionAsientoContable");
+    pPluginMenu->addAction ( accionA );
+    bcont->toolBar->addAction ( accionA );
+
+
+    BlAction *accionB = new BlAction ( _ ( "&Lista de Asientos Contables" ), 0 );
+    accionB->setStatusTip ( _ ( "Permite ver el listado de asientos" ) );
+    accionB->setWhatsThis ( _ ( "Permite ver el listado de asientos" ) );
+    accionB->setIcon(QIcon(QString::fromUtf8(":/Images/book-list.png")));
+    accionB->setObjectName("mui_actionAsientoContableLista");
+    pPluginMenu->addAction ( accionB );
+    bcont->toolBar->addAction ( accionB );
+
+    pPluginMenu->addSeparator();
+
+    BlAction *accionC = new BlAction ( _ ( "&Espaciar Asientos Contables" ), 0 );
+    accionC->setStatusTip ( _ ( "Ordena los asientos dejando espacios entre ellos" ) );
+    accionC->setWhatsThis ( _ ( "Ordena los asientos dejando espacios entre ellos" ) );
+    accionC->setObjectName("mui_actionAsientoContableEspaciar");
+    pPluginMenu->addAction ( accionC );
+
+
+    BlAction *accionD = new BlAction ( _ ( "&Reordenar Asientos Contables" ), 0 );
+    accionD->setStatusTip ( _ ( "Ordena los asientos" ) );
+    accionD->setWhatsThis ( _ ( "Ordena los asientos" ) );
+    accionD->setObjectName("mui_actionAsientoContableOrdenar");
+    pPluginMenu->addAction ( accionD );
+
+    pPluginMenu->addSeparator();
+
+    BlAction *accionE = new BlAction ( _ ( "Asiento de a&pertura" ), 0 );
+    accionE->setStatusTip ( _ ( "Asiento de apertura" ) );
+    accionE->setWhatsThis ( _ ( "Asiento de apertura" ) );
+    accionE->setObjectName("mui_actionAsientoApertura");
+    pPluginMenu->addAction ( accionE );
+
+    BlAction *accionF = new BlAction ( _ ( "Asiento de &cierre" ), 0 );
+    accionF->setStatusTip ( _ ( "Asiento de cierre" ) );
+    accionF->setWhatsThis ( _ ( "Asiento de cierre" ) );
+    accionF->setObjectName("mui_actionAsientoCierre");
+    pPluginMenu->addAction ( accionF );
+
+    BlAction *accionG = new BlAction ( _ ( "Asiento de &regularizacion" ), 0 );
+    accionG->setStatusTip ( _ ( "Asiento de regularizacion" ) );
+    accionG->setWhatsThis ( _ ( "Asiento de regularizacion" ) );
+    accionG->setObjectName("mui_actionAsientoRegularizacion");
+    pPluginMenu->addAction ( accionG );
+
+
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+
+    if (accion->objectName() == "mui_actionAsientoContable") {
+        if (g_asiento == NULL) {
+            g_asiento = new BcAsientoView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_bcont->company()->pWorkspace() -> addSubWindow ( g_asiento );
+        } // end if
+        g_asiento->hide();
+        g_asiento->show();
+    } // end if
+    if (accion->objectName() == "mui_actionAsientoContableLista") {
+        if (g_listasientos == NULL) {
+            g_listasientos = new BcAsientoListView ( ( BcCompany * ) g_bcont->company() );
+            g_listasientos->presentar();
+            g_bcont->company()->pWorkspace() -> addSubWindow ( g_listasientos );
+        } // end if
+        g_listasientos->hide();
+        g_listasientos->show();
+    } // end if
+
+    if (accion->objectName() == "mui_actionAsientoContableEspaciar") {
+        BlDbRecordSet *cur = NULL;
+        try {
+            cur = g_bcont->company()->loadQuery ( "SELECT abreasientos()" );
+            g_main->statusBar() ->showMessage ( _ ( "Se han espaciado los asientos" ), 2000 );
+            delete cur;
+        } catch ( ... ) {
+            blMsgError ( _("Ha habido un error al espaciar los asientos") );
+            if ( cur ) delete cur;
+        return 1;
+        } // end try
+    } // end if
+
+    if (accion->objectName() == "mui_actionAsientoContableOrdenar") {
+        QString query = "SELECT reordenaasientosall()";
+        BlDbRecordSet *cur = NULL;
+        try {
+            cur = g_bcont->company()->loadQuery ( query );
+            g_main->statusBar() ->showMessage ( _ ( "Se han ordenado los asientos" ), 2000 );
+            delete cur;
+        } catch ( ... ) {
+            blMsgError ( _("Ha habido un error al ordenar los asientos") );
+            if ( cur ) delete cur;
+            return 1;
+        }
+    } // end if
+
+    if (accion->objectName() == "mui_actionAsientoApertura") {
+        QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
+        QString finicial = "01/01/" + hoy.right ( 4 );
+        bool ok;
+    
+        QString text1 = QInputDialog::getText ( 0,
+                _ ( "Fecha" ), _ ( "Fecha:" ), QLineEdit::Normal,
+                hoy, &ok );
+        if ( ok && !text1.isEmpty() ) {
+            hoy = text1;
+        } else {
+            return 0;
+        } // end if
+        g_asiento->show();
+        g_asiento->asiento_apertura ( hoy );
+    } // end if
+
+    if (accion->objectName() == "mui_actionAsientoCierre") {
+        QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
+        QString finicial = "01/01/" + hoy.right ( 4 );
+    
+        bool ok;
+        QString text = QInputDialog::getText ( 0,
+                _ ( "Fecha inicial" ), _ ( "Fecha inicial ejercicio:" ), QLineEdit::Normal,
+                finicial, &ok );
+    
+        if ( ok && !text.isEmpty() ) {
+            finicial = text;
+        } else {
+            return 0;
+        } // end if
+    
+        QString text1 = QInputDialog::getText ( 0,
+                _ ( "Fecha final" ), _ ( "Fecha final ejercicio:" ), QLineEdit::Normal,
+                hoy, &ok );
+
+        if ( ok && !text1.isEmpty() ) {   
+            hoy = text1;
+        } else {
+            return 0;
+        } // end if
+
+        g_asiento->show();
+        g_asiento->asiento_cierre ( finicial, hoy );
+
+        } // end if
+        if (accion->objectName() == "mui_actionAsientoRegularizacion") {
+            QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
+            QString finicial = "01/01/" + hoy.right ( 4 );
+
+            bool ok;
+            QString text = QInputDialog::getText ( 0,
+                    _ ( "Fecha inicial" ), _ ( "Fecha inicial regularizacion:" ), QLineEdit::Normal,
+                    finicial, &ok );
+            if ( ok && !text.isEmpty() ) {
+                finicial = text;
+            } else {
+                return 0;
+            } // end if
+   
+            QString text1 = QInputDialog::getText ( 0,
+                    _ ( "Fecha final" ), _ ( "Fecha final regularizacion:" ), QLineEdit::Normal,
+                    hoy, &ok );
+            if ( ok && !text1.isEmpty() ) {
+                hoy = text1;
+            } else {
+                return 0;
+            } // end if
+            g_asiento->show();
+            g_asiento->asiento_regularizacion ( finicial, hoy );
+        } // end if
+
+        return 0;
+}
+
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.

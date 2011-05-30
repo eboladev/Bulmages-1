@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugin_tc_articulos
+#plugin_tallascolores
 
 set (plugin pluginbf_tallascolores)
 
@@ -11,7 +11,7 @@ file(GLOB plugin_UIS *.ui)
 
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbf_tallascolores.h plugin_tc_articulos.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_tallascolores.h pluginbf_tallascolores.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 
@@ -123,7 +123,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 
 
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedoralbaran)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)

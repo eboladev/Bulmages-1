@@ -23,7 +23,7 @@ ArchivoSQLdeins: pluginbf_inventario-rm.sql
 
 Dependencias: libpluginbf_articulo.so; libpluginbf_almacen.so
 
-Incompatibles:
+Incompatibles: libpluginbf_inventariosimple.so
 
 Categorias: Facturacion generica; Experimentales;
 

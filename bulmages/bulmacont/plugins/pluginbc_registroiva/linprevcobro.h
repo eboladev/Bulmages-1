@@ -51,7 +51,7 @@ private:
     /// pinta en muchas partes.
     QString mdb_nomcuenta;
     QString mdb_nomctacliente;
-    BcCompany *empresaactual;
+    BcCompany *company;
     BlPostgreSqlClient *dbConnection;
 
 public:

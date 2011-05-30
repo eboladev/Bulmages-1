@@ -43,17 +43,17 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server'";
 //  BlDbRecordSet *cur1 = mainCompany()->loadQuery(query);
-//  mui_URLServidorTiempo->setText(cur1->valor("valor"));
+//  mui_URLServidorTiempo->setText(cur1->value("valor"));
 //  delete cur1;
 //
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_certificado'";
 //  BlDbRecordSet *cur2 = mainCompany()->loadQuery(query);
-//  mui_ficheroECertificado->setText(cur2->valor("valor"));
+//  mui_ficheroECertificado->setText(cur2->value("valor"));
 //  delete cur2;
 //
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server_valida'";
 //  BlDbRecordSet *cur3 = mainCompany()->loadQuery(query);
-//  mui_URLServidorValidaCert->setText(cur3->valor("valor"));
+//  mui_URLServidorValidaCert->setText(cur3->value("valor"));
 //  delete cur3;
 
     blScript(this);
@@ -141,7 +141,7 @@ void EFactura::on_mui_cancelar_clicked()
 //  BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 //
 //  while(!cur->eof()) {
-//   blDebug(cur->valor("nombre"), 0);
+//   blDebug(cur->value("nombre"), 0);
 //   cur->nextRecord();
 //  } // end while
 //

@@ -71,9 +71,9 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         
         mui_list->cargar("SELECT * from miembrocomision NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el comision" ), this );

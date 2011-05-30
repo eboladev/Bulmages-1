@@ -53,7 +53,7 @@ public:
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaTipoTrabajo : public QComboBox, public BlMainCompanyPointer
+class BusquedaTipoTrabajo : public BlComboBox
 {
     Q_OBJECT
 
@@ -66,8 +66,8 @@ private:
 public:
     BusquedaTipoTrabajo ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaTipoTrabajo();
-    virtual void setidtipotrabajo ( QString idtipotrabajo );
-    QString idtipotrabajo();
+    virtual void setId ( QString idtipotrabajo );
+    QString id();
 
 public slots:
     void m_activated ( int index );

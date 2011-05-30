@@ -47,7 +47,7 @@ public:
     bool authOK();
 
 public slots:
-    virtual void validar();
+    virtual void validate();
 };
 
 #endif

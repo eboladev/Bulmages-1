@@ -47,7 +47,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_clipboard", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_clipboard", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
     return 0;

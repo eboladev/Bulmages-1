@@ -49,12 +49,12 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_documentoadjunto", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_documentoadjunto", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     QPixmap *img = new QPixmap ( napuntedoc );
     QPixmap *img1 = new QPixmap ( ndoc );
 
-    BcCompany *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->company();
     BcAsientoView *intapunts = emp->intapuntsempresa();
 
     myplugin1 *pub = new myplugin1 ( emp );

@@ -28,91 +28,7 @@
 #include "blsearchwidget.h"
 
 TutoresList *g_tutoresList = NULL;
-
-///
-/**
-**/
-PluginBf_Tutor::PluginBf_Tutor()
-{
-    blDebug ( "PluginBf_Tutor::PluginBf_Tutor", 0 );
-    blDebug ( "END PluginBf_Tutor::PluginBf_Tutor", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Tutor::~PluginBf_Tutor()
-{
-    blDebug ( "PluginBf_Tutor::~PluginBf_Tutor", 0 );
-    blDebug ( "END PluginBf_Tutor::~PluginBf_Tutor", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Tutor::elslot()
-{
-    blDebug ( "PluginBf_Tutor::elslot", 0 );
-    if ( g_tutoresList ) {
-        g_tutoresList->hide();
-        g_tutoresList->show();
-    }// end if
-    blDebug ( "END PluginBf_Tutor::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Tutor::elslot1()
-{
-    blDebug ( "PluginBf_Tutor::elslot1", 0 );
-    TutorView * bud = new TutorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Tutor::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Tutor::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Tutor::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
-
-	/// Agrego un Separador
-	pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Padres/Socios" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Padres/Socios" ) );
-        planCuentas->setWhatsThis ( _ ( "Padres/Socios" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo padre/socio" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo padre/socio" ) );
-        npago->setWhatsThis ( _ ( "Nuevo padre/socio" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    }// end if
-    blDebug ( "END PluginBf_Tutor::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -122,17 +38,65 @@ void PluginBf_Tutor::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de tutores\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Tutor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tutor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tutor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Tutor *plug = new PluginBf_Tutor();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
+
+        /// Agrego un Separador
+        pPluginMenu->addSeparator();
+
+        BlAction *accionA = new BlAction ( _ ( "&Padres/Socios" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Padres/Socios" ) );
+        accionA->setWhatsThis ( _ ( "Padres/Socios" ) );
+        accionA->setObjectName("mui_actionSocio");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo padre/socio" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo padre/socio" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo padre/socio" ) );
+        accionB->setObjectName("mui_actionSocioNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+    } // end if
+
+    blDebug ( "END Punto de entrada de PluginBf_Tutor\n", 0 );
+    
     return 0;
 }
 
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionSocio") {
+        blDebug ( "PluginBf_Tutor::BlAction_triggered::mui_actionSocio", 0 );
+        if ( g_tutoresList ) {
+            g_tutoresList->hide();
+            g_tutoresList->show();
+        } // end if
+        blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocio", 0 );
+    } // end if
+
+    if (accion->objectName() == "mui_actionSocioNuevo") {
+        blDebug ( "PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
+        TutorView * bud = new TutorView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+        blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
+    } // end if
+
+    return 0;
+}
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
@@ -220,19 +184,19 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 //	blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idalumno", cur->valor ( "idalumno" ) );
+            sub->m_registrolinea->setDbValue ( "idalumno", cur->value( "idalumno" ) );
         } // end if
         delete cur;
     } // end if
     if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper(apellido1cliente || ' ' || apellido2cliente || ' ' || nomcliente) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
+            sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
 	    if (sub->existsHeader("apellido1cliente"))
-	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->valor ( "apellido1cliente" ) );
+	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->value( "apellido1cliente" ) );
 	    if (sub->existsHeader("apellido2cliente"))
-            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->valor ( "apellido2cliente" ) );
-            sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->value( "apellido2cliente" ) );
+            sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
         } // end if
         delete cur;
     } // end if
@@ -265,13 +229,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = " ";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
@@ -319,7 +283,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idCliente );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idcliente", idCliente );
-        sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ));
+        sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ));
     } // end if
     
     delete cur;
@@ -521,8 +485,8 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idTutor );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcliente", idTutor );
-        sub->lineaact()->setDbValue ( "cifcliente", cur->valor ( "cifcliente" ) );
-        sub->lineaact()->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+        sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
+        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
     } // end if
     delete cur;
 

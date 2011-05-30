@@ -93,7 +93,7 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     m_cliente->m_valores["nomcliente"] = "";
 
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -146,7 +146,7 @@ void PedidosClienteList::presentar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
     /// Esta consulta podria resultar NULL por problemas de permisos y debe tratarse el caso.
     if ( cur ) {
-        m_total->setText ( cur->valor ( "total" ) );
+        m_total->setText ( cur->value( "total" ) );
         delete cur;
     } // end if
     blDebug ( "END PedidosClienteList::presenta", 0 );

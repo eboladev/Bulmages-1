@@ -96,7 +96,7 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmafact->statusBar() ->showMessage ( dbName(), 2000 );
-    m_bulmafact->setWindowTitle ( g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Facturación GPL" ) : g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() );
+    m_bulmafact->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Facturación GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() );
 
     blDebug ( "END BfCompany::createMainWindows", 0 );
 }
@@ -246,7 +246,7 @@ void BfCompany::s_TasaIVAView()
 void BfCompany::guardaConf()
 {
     blDebug ( "BfCompany::guardaConf", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
 
@@ -297,7 +297,7 @@ void BfCompany::guardaConf()
 void BfCompany::cargaConf()
 {
     blDebug ( "BfCompany::cargaConf", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

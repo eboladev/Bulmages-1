@@ -30,11 +30,13 @@
 #include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
 #include "pdefs_pluginbf_example.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_EXAMPLE_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_EXAMPLE_EXPORT int BlAction_triggered(BlAction *);
 
-
+//Metodo antiguo
+/************
 class PluginBf_Example : public QObject
 {
     Q_OBJECT
@@ -50,7 +52,7 @@ public:
 public slots:
     void elslot();
 };
-
+***************/
 
 #endif
 

@@ -48,10 +48,10 @@ BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
     m_desccanal->setPlainText ( "" );
 
     idcanal = 0;
-    dialogChanges_setQObjectExcluido ( mui_idcanal );
-    dialogChanges_cargaInicial();
+    dialogChanges_setExcludedObject ( mui_idcanal );
+    dialogChanges_readValues();
     on_mui_idcanal_valueChanged ( 0 );
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     blDebug ( "END BcCanalView::BcCanalView", 0 );
 }
 
@@ -62,7 +62,7 @@ BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
 BcCanalView::~BcCanalView()
 {
     blDebug ( "BcCanalView::~BcCanalView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcCanalView::~BcCanalView", 0 );
 }
 
@@ -101,7 +101,7 @@ void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
     int idcanal1 = numcombo.toInt();
     static bool flipflop = FALSE;
 
-    if ( dialogChanges_hayCambios() && flipflop ) {
+    if ( dialogChanges_isChanged() && flipflop ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar canal" ),
                                     _ ( "Desea guardar los cambios." ),
@@ -141,11 +141,11 @@ void BcCanalView::mostrarplantilla()
     QTextStream ( &query ) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
     BlDbRecordSet *cursorcanal = mainCompany() ->loadQuery ( query );
     if ( !cursorcanal->eof() ) {
-        mui_nomcanal->setText ( cursorcanal->valor ( "nombre" ) );
-        mui_desccanal->setPlainText ( cursorcanal->valor ( "descripcion" ) );
+        mui_nomcanal->setText ( cursorcanal->value( "nombre" ) );
+        mui_desccanal->setPlainText ( cursorcanal->value( "descripcion" ) );
     } // end if
     mui_idcanal->setId ( QString::number ( idcanal ) );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BcCanalView::mostrarplantilla", 0 );
 
 }
@@ -166,7 +166,7 @@ void BcCanalView::on_mui_guardar_clicked()
     << mainCompany() ->sanearCadena ( desc ).toAscii().constData()
     << "' WHERE idcanal = '" << idcanal << "'";
     mainCompany() ->runQuery ( query );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     pintar();
     blDebug ( "END BcCanalView::on_mui_guardar_clicked", 0 );
 }
@@ -179,7 +179,7 @@ void BcCanalView::on_mui_crear_clicked()
 {
     blDebug ( "BcCanalView::on_mui_crear_clicked", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar canal" ),
                                     _ ( "Desea guardar los cambios." ),
@@ -193,7 +193,7 @@ void BcCanalView::on_mui_crear_clicked()
     query = "";
     QTextStream ( &query ) << "SELECT MAX(idcanal) AS id FROM canal";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "queryy" );
-    idcanal = atoi ( cur->valor ( "id" ).toAscii() );
+    idcanal = atoi ( cur->value( "id" ).toAscii() );
     delete cur;
     mainCompany() ->commit();
     pintar();
@@ -231,7 +231,7 @@ void BcCanalView::on_mui_borrar_clicked()
 void BcCanalView::closeEvent ( QCloseEvent *e )
 {
     blDebug ( "BcCentroCosteView::closeEvent", 0 );
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         int val = QMessageBox::warning ( this,
                                          _ ( "Guardar canal" ),
                                          _ ( "Desea guardar los cambios?" ),

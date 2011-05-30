@@ -37,7 +37,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clienteproveedor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clienteproveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -81,7 +81,7 @@ int BlForm_guardar_Post ( BlForm *l )
         QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + l->dbValue ( "cifcliente" ) + "'";
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            fich->cargar ( cur->valor ( "idproveedor" ) );
+            fich->cargar ( cur->value( "idproveedor" ) );
             guardar = TRUE;
         } else {
             if ( QMessageBox::question ( l, "Crear proveedor", "Desea crear un proveedor con los datos del cliente", QMessageBox::Yes | QMessageBox::No ) == QMessageBox::Yes ) {

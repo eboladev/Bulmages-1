@@ -40,7 +40,7 @@ public:
     virtual void setFieldValue ( QString val );
     virtual QString text();
     virtual QString fieldValue();
-    void checkDC();
+    void checkControlDigit();
 
 public slots:
     virtual void s_cuentatextChanged ( const QString & );

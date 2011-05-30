@@ -83,7 +83,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 
         setListaLineas ( mui_list );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "PresupuestoContableView_PresupuestoContableView_Post", this );
 	blScript(this);
@@ -101,7 +101,7 @@ void PresupuestoContableView::inicializar()
 {
     blDebug ( "PresupuestoContableView::inicializar", 0 );
     mui_list->inicializar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END PresupuestoContableView::inicializar", 0 );
 }
 

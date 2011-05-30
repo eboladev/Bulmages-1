@@ -39,7 +39,7 @@ BX11EmbedContainer::BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent ) :
 BX11EmbedContainer::~BX11EmbedContainer()
 {
     blDebug ( "BX11EmbedContainer::~BX11EmbedContainer", 0, this->windowTitle() );
-    sacaWindow();
+    removeWindow();
     blDebug ( "END BX11EmbedContainer::~BX11EmbedContainer", 0 );
 }
 
@@ -48,14 +48,14 @@ BX11EmbedContainer::~BX11EmbedContainer()
 /**
 \return
 **/
-int BX11EmbedContainer::sacaWindow()
+int BX11EmbedContainer::removeWindow()
 {
-    blDebug ( "BX11EmbedContainer::sacaWindow", 0 );
+    blDebug ( "BX11EmbedContainer::removeWindow", 0 );
     discardClient();
     if ( mainCompany() != NULL ) {
-        mainCompany() ->sacaWindow ( this );
+        mainCompany() ->removeWindow ( this );
     } // end if
-    blDebug ( "END BX11EmbedContainer::sacaWindow", 0 );
+    blDebug ( "END BX11EmbedContainer::removeWindow", 0 );
     return 0;
 }
 

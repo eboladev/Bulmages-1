@@ -42,7 +42,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_subform2ods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_subform2ods", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
     return 0;
@@ -140,7 +140,7 @@ void PluginBl_SubForm2ODS::sacaods()
 {
     blDebug ( "PluginBl_SubForm2ODS::sacaods", 0 );
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listadoods.py";
     BlSubForm * subf = ( BlSubForm * ) parent();
 
 
@@ -237,7 +237,7 @@ void PluginBl_SubForm2ODS::sacaods()
     QString cadena2;
 
 #ifdef Q_OS_WIN32
-    cadena1 = g_confpr->valor ( CONF_DIR_USER );
+    cadena1 = g_confpr->value( CONF_DIR_USER );
     cadena1.replace("/", "\\");
     cadena1 = "\"del \"" + cadena1 + "listadoods.ods\"\"";
 
@@ -245,7 +245,7 @@ void PluginBl_SubForm2ODS::sacaods()
     cadena2.replace("/", "\\");
     cadena2 = "\"del \"" + cadena2 + "\"\"";
 #else
-    cadena1 = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
+    cadena1 = "rm " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods";
     cadena2 = "rm " + archivod;
 #endif
 
@@ -264,20 +264,20 @@ void PluginBl_SubForm2ODS::sacaods()
 
 #ifdef Q_OS_WIN32
 
-    cadena = g_confpr->valor ( CONF_DIR_USER );
+    cadena = g_confpr->value( CONF_DIR_USER );
     cadena.replace("/", "\\");
 
     cadena = "\"cd \"" + cadena + "\" & ";
-    cadena = cadena + "\"" + g_confpr->valor ( CONF_PYTHON ) + "\" \"" + archivod + "\"\"";
+    cadena = cadena + "\"" + g_confpr->value( CONF_PYTHON ) + "\" \"" + archivod + "\"\"";
 
 #else
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
 #endif
 
     system ( cadena.toAscii().data() );
 
     /// Si no existe el archivo avisamos
-    if (!QFile::exists(g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods") ) {
+    if (!QFile::exists(g_confpr->value( CONF_DIR_USER ) + "listadoods.ods") ) {
 	  blMsgInfo ("Ha ocurrido un error. Verifique que la libreria python-ooolib esta correctamente instalada");
           blDebug ( "END PluginBl_SubForm2ODS::sacaods", 0 );
 	  return;
@@ -285,15 +285,15 @@ void PluginBl_SubForm2ODS::sacaods()
     
 
 #ifdef Q_OS_WIN32
-    if (g_confpr->valor ( CONF_ODS ).isEmpty()) {
+    if (g_confpr->value( CONF_ODS ).isEmpty()) {
 	    /// Abre con el programa por defecto del sistema.
-	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods" + "\"\"";
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods" + "\"\"";
     } else {
 	    /// Abre con la configuracion forzada.
-	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_ODS ) + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods" + "\"\"";
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_ODS ) + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods" + "\"\"";
     } // end if
 #else
-    cadena = g_confpr->valor(CONF_ODS)  + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
+    cadena = g_confpr->value(CONF_ODS)  + " " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods &";
 #endif
 
     int result = system ( cadena.toAscii().data() );
@@ -316,7 +316,7 @@ void PluginBl_SubForm2ODS::sacaods1()
 {
     blDebug ( "PluginBl_SubForm2ODS::sacaods", 0 );
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listadoods.py";
     BlTreeWidget * subf = ( BlTreeWidget * ) parent();
 
 
@@ -414,7 +414,7 @@ void PluginBl_SubForm2ODS::sacaods1()
 
     fitxersortidatxt += "doc.save(\"listadoods.ods\")\n";
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -427,9 +427,9 @@ void PluginBl_SubForm2ODS::sacaods1()
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = g_confpr->valor(CONF_ODS) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
+    cadena = g_confpr->value(CONF_ODS) + " " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
     blDebug ( "END PluginBl_SubForm2ODS::sacaods", 0 );

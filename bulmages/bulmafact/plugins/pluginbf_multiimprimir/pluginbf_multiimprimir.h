@@ -45,26 +45,5 @@ extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int RecibosListSubForm_RecibosListSubFo
 extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int RecibosList_RecibosList ( RecibosList * );
 extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int entryPoint ( BfBulmaFact * );
 
-
-// 
-
-/*
-class myplugin : public QObject {
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *dbConnection;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa(bulmafact *);
-
-public slots:
-    void elslot();
-};
-
-*/
-
 #endif
 

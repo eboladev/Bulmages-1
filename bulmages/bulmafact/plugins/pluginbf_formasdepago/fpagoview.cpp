@@ -53,7 +53,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
 
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     pintar();
     blScript(this);
     blDebug ( "END FPagoView::FPagoView", 0 );
@@ -86,11 +86,11 @@ void FPagoView::pintar()
     if ( !m_cursorFPagoView ) return;
     mui_lista->clear();
     while ( !m_cursorFPagoView->eof() ) {
-        new QListWidgetItem ( m_cursorFPagoView->valor ( "descforma_pago" ), mui_lista );
+        new QListWidgetItem ( m_cursorFPagoView->value( "descforma_pago" ), mui_lista );
         m_cursorFPagoView->nextRecord();
     } // end while
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END FPagoView::pintar", 0 );
 }
 
@@ -119,15 +119,15 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
     trataModificado();
-    mui_descforma_pago->setText ( m_cursorFPagoView->valor ( "descforma_pago", row ) );
-    mui_dias1tforma_pago->setText ( m_cursorFPagoView->valor ( "dias1tforma_pago", row ) );
-    mui_descuentoforma_pago->setText ( m_cursorFPagoView->valor ( "descuentoforma_pago", row ) );
-    mui_idbanco->setidbanco(m_cursorFPagoView->valor("idbanco", row ) );
-    mdb_idforma_pago = m_cursorFPagoView->valor ( "idforma_pago", row );
+    mui_descforma_pago->setText ( m_cursorFPagoView->value( "descforma_pago", row ) );
+    mui_dias1tforma_pago->setText ( m_cursorFPagoView->value( "dias1tforma_pago", row ) );
+    mui_descuentoforma_pago->setText ( m_cursorFPagoView->value( "descuentoforma_pago", row ) );
+    mui_idbanco->setidbanco(m_cursorFPagoView->value("idbanco", row ) );
+    mdb_idforma_pago = m_cursorFPagoView->value( "idforma_pago", row );
     m_item = cur;
 
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
@@ -178,7 +178,7 @@ int FPagoView::guardar()
             m_item->setText ( mui_descforma_pago->text() );
         } // end if
         
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 
         /// Emitimos la se&ntilde;al apropiada en el BlApplication.
         g_theApp->emitDbTableChanged ( "forma_pago" );
@@ -200,7 +200,7 @@ bool FPagoView::trataModificado()
 {
     blDebug ( "FPagoView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar forma de pago" ),
                                     _ ( "Desea guardar los cambios." ),
@@ -235,7 +235,7 @@ void FPagoView::on_mui_crear_clicked()
     } // end if
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
     mainCompany() ->commit();
-    mdb_idforma_pago = cur->valor ( "idFPagoView" );
+    mdb_idforma_pago = cur->value( "idFPagoView" );
     delete cur;
     pintar();
     blDebug ( "END FPagoView::on_mui_crear_clicked", 0 );

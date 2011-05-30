@@ -29,7 +29,7 @@
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "pdefs_pluginbf_proveedoralbaran.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int SNewAlbaranProveedorView (BfCompany *);
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int entryPoint ( BfBulmaFact * );
@@ -38,25 +38,7 @@ extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int ProveedorView_ProveedorView_Post
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
-
-
-class PluginBf_ProveedorAlbaran : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ProveedorAlbaran();
-    ~PluginBf_ProveedorAlbaran();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
+extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

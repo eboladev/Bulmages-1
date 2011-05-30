@@ -70,7 +70,7 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
       
       rec = m_bancoview->mainCompany()->loadQuery(query);
       
-      m_bancoview->findChild<QLineEdit *>("mui_cuenta_banco")->setText( rec->valor("prefcuentabanco") );
+      m_bancoview->findChild<QLineEdit *>("mui_cuenta_banco")->setText( rec->value("prefcuentabanco") );
       
       m_bancoview->mainCompany()->commit();
       */
@@ -91,10 +91,10 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
 
 	    m_bancoview->mainCompany()->run("SELECT conectabulmacont()");
 	    
-	    QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentabanco") + "' LIMIT 1";
+	    QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentabanco") + "' LIMIT 1";
 	    rec = m_bancoview->mainCompany()->loadQuery(query);
 	    
-	    m_bancoview->findChild<QLineEdit *>("mui_cuenta_banco")->setText( rec->valor("codigo") );
+	    m_bancoview->findChild<QLineEdit *>("mui_cuenta_banco")->setText( rec->value("codigo") );
 	   
 	} // end if
     
@@ -102,7 +102,7 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
 	m_bancoview->mainCompany()->commit();
       
     } // end if
-    m_bancoview->dialogChanges_cargaInicial();
+    m_bancoview->dialogChanges_readValues();
 
 }
 

@@ -1044,5 +1044,5 @@ msgstr "no s'ha inicialitzat bé la classe"
 #~ msgid "idpais"
 #~ msgstr "idpais"
 
-#~ msgid "listventanas::meteWindow ventana duplicada"
-#~ msgstr "listventanas::meteWindow finestra duplicada"
+#~ msgid "listventanas::insertWindow ventana duplicada"
+#~ msgstr "listventanas::insertWindow finestra duplicada"

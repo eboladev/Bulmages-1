@@ -146,7 +146,7 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 	if ( fk_id.isEmpty() )
 		continue;
 
-	QString valor = m_company->loadQuery ( query_only_one ( fk_id ) )->valor ( m_text_field );
+	QString valor = m_company->loadQuery ( query_only_one ( fk_id ) )->value( m_text_field );
 
 	m_subform->setDbValue(combo_field_name, i, valor);
    } // end for

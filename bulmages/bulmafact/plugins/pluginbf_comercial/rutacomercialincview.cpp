@@ -52,7 +52,7 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
     setupUi ( this );
     mui_rutacomercial->setMainCompany ( comp );
     mui_incidenciacomercial->setMainCompany ( comp );
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END RutaComercialIncView::RutaComercialIncView", 0 );
 }
@@ -64,7 +64,7 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
 RutaComercialIncView::~RutaComercialIncView()
 {
     blDebug ( "RutaComercialIncView::~RutaComercialIncView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END RutaComercialIncView::~RutaComercialIncView", 0 );
 }
 
@@ -129,7 +129,7 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
     int err = mui_rutacomercial->cargar ( id );
     err = mui_incidenciacomercial->cargar ( id1 );
     setWindowTitle ( _ ( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blDebug ( "END RutaComercialIncView::cargar", 0 );
     return err;
 }

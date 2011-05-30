@@ -62,7 +62,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
 
     
@@ -78,7 +78,7 @@ Importa el script y lo lanza.
 */
 void BlForm::blScript(QObject * obj) {
     
-    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+metaObject()->className()+".qs";
+    QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+metaObject()->className()+".qs";
     QFile scriptFile1(fileName);
     if (scriptFile1.open(QIODevice::ReadOnly)) {
 	  QTextStream stream(&scriptFile1);
@@ -97,7 +97,7 @@ void BlForm::blScript(QObject * obj) {
     } // end if
     
     
-    fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform"+".qs";
+    fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform"+".qs";
     scriptFile1.setFileName(fileName);
     if (scriptFile1.open(QIODevice::ReadOnly)) {
 	  QTextStream stream(&scriptFile1);
@@ -136,10 +136,10 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     
     /// By R. Cabezas
-    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform.qs";
+    QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform.qs";
     QFile scriptFile(fileName);
     if (scriptFile.open(QIODevice::ReadOnly)) {
 	  // handle error
@@ -167,7 +167,7 @@ BlForm::~BlForm()
 {
     blDebug ( "BlForm::~BlForm", 0, this->windowTitle() );
     g_plugins->lanza ( "BlForm_DesBlForm", this );
-    sacaWindow();
+    removeWindow();
     blDebug ( "END BlForm::~BlForm", 0 );
 }
 
@@ -428,7 +428,7 @@ void BlForm::on_mui_borrar_clicked()
 
     if ( val == QMessageBox::Yes ) {
         if ( !borrar() ) {
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
             close();
         } else {
@@ -453,7 +453,7 @@ void BlForm::closeEvent ( QCloseEvent *e )
 	  QPushButton * p = findChild<QPushButton *> ( "mui_aceptar" );
 
 	  if ( ( !p || !p->isHidden() )
-	  && ( dialogChanges_hayCambios() ) ) {
+	  && ( dialogChanges_isChanged() ) ) {
             int val = QMessageBox::warning ( this,
                                              _ ( "Guardar" ) + " " + windowTitle(),
                                              _ ( "Desea guardar los cambios?" ),
@@ -466,9 +466,9 @@ void BlForm::closeEvent ( QCloseEvent *e )
                 return;
             } // end if
         } // end if
-        /// \TODO Este sacaWindow encubre un bug. Debe tratarse de otra forma el
+        /// \TODO Este removeWindow encubre un bug. Debe tratarse de otra forma el
         /// sacar las ventanas de listventanas.
-//        sacaWindow();
+//        removeWindow();
     } catch ( ... ) {
         blMsgInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
@@ -481,13 +481,13 @@ void BlForm::closeEvent ( QCloseEvent *e )
 /**
 \return
 **/
-int BlForm::sacaWindow()
+int BlForm::removeWindow()
 {
-    blDebug ( "BlForm::sacaWindow", 0 );
+    blDebug ( "BlForm::removeWindow", 0 );
     if ( mainCompany() != NULL ) {
-        mainCompany() ->sacaWindow ( this );
+        mainCompany() ->removeWindow ( this );
     } // end if
-    blDebug ( "END BlForm::sacaWindow", 0 );
+    blDebug ( "END BlForm::removeWindow", 0 );
     return 0;
 }
 
@@ -498,11 +498,11 @@ int BlForm::sacaWindow()
 \param obj
 \param compdup
 **/
-void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
+void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
 {
-    blDebug ( "BlForm::meteWindow", 0 );
+    blDebug ( "BlForm::insertWindow", 0 );
     if ( mainCompany() != NULL ) {
-        mainCompany() ->meteWindow ( nom, obj, compdup, titulo );
+        mainCompany() ->insertWindow ( nom, obj, compdup, titulo );
     } // end if
 
     /// De Forma rapida hacemos un tratamiento de los permisos
@@ -510,7 +510,7 @@ void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup, QString titul
     /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
     /// De configuracion por lo que si no es este no es ninguno.
     cargaSpecs();
-    blDebug ( "END BlForm::meteWindow", 0 );
+    blDebug ( "END BlForm::insertWindow", 0 );
 }
 
 
@@ -528,7 +528,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     creaMenu ( popup );
     QAction *avconfig = NULL;
-    if (g_confpr->valor(CONF_MODO_EXPERTO) == "TRUE") {
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
       avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
     } // end if
 
@@ -682,7 +682,7 @@ void BlForm::pintar()
             /// Cargamos el query y lo recorremos
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
             if ( !cur->eof() ) {
-                l8->setDecimals(cur->valor("numeric_scale").toInt());
+                l8->setDecimals(cur->value("numeric_scale").toInt());
             } // end if
             delete cur;
 
@@ -854,8 +854,8 @@ int BlForm::cargar ( QString id, bool paint )
             pintar();
         } // end if
 
-        dialogChanges_cargaInicial();
-        meteWindow ( m_title + dbValue(m_campoid), this, TRUE, wtitle );
+        dialogChanges_readValues();
+        insertWindow ( m_title + dbValue(m_campoid), this, TRUE, wtitle );
     } catch ( ... ) {
         blDebug ( "END BlForm::cargar", 0, "Error en la carga" );
         return -1;
@@ -883,7 +883,7 @@ int BlForm::guardar()
 
         guardarPre();
 
-        DBsave ( id );
+        dbSave ( id );
         setDbValue ( m_campoid, id );
 
         /// Lanzamos los plugins.
@@ -897,7 +897,7 @@ int BlForm::guardar()
         cargar ( id );
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
-        if (g_confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
+        if (g_confpr->value(CONF_REFRESH_LIST) == "TRUE") {
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {
@@ -955,7 +955,7 @@ int BlForm::borrar()
         err =  BlDbRecord::borrar();
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
-        if (g_confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
+        if (g_confpr->value(CONF_REFRESH_LIST) == "TRUE") {
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {
@@ -1355,7 +1355,7 @@ QString BlForm::trataIf ( const QString &query, const QString &datos, const QStr
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
-        if ( cur->valor ( "res" ) == "t" ) {
+        if ( cur->value( "res" ) == "t" ) {
             result = datos;
         } else {
             result = datos1;
@@ -1433,13 +1433,13 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) )  );
                     break;
                 case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) )  );
                     break;
                 default:
-                    salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ) );
+                    salidatemp.replace ( pos, rx.matchedLength(), cur->value( rx.cap ( 1 ), -1, TRUE ) );
                     break;
                 } // emd switch
                 pos = 0;

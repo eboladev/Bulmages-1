@@ -31,91 +31,8 @@
 
 
 PedidosClienteList *g_pedidosClienteList = NULL;
+BfBulmaFact *g_bges = NULL;
 
-///
-/**
-**/
-PluginBf_ClientePedido::PluginBf_ClientePedido()
-{
-    blDebug ( "PluginBf_ClientePedido::PluginBf_ClientePedido", 0 );
-    blDebug ( "END PluginBf_ClientePedido::PluginBf_ClientePedido", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_ClientePedido::~PluginBf_ClientePedido()
-{
-    blDebug ( "PluginBf_ClientePedido::~PluginBf_ClientePedido", 0 );
-    blDebug ( "END PluginBf_ClientePedido::~PluginBf_ClientePedido", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_ClientePedido::elslot()
-{
-    blDebug ( "PluginBf_ClientePedido::elslot", 0 );
-    if ( g_pedidosClienteList ) {
-        g_pedidosClienteList->hide();
-        g_pedidosClienteList->show();
-    }// end if
-    blDebug ( "END PluginBf_ClientePedido::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_ClientePedido::elslot1()
-{
-    blDebug ( "PluginBf_ClientePedido::elslot1", 0 );
-    PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    blDebug ( "END PluginBf_ClientePedido::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_ClientePedido::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_ClientePedido::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Pedidos de clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Pedidos de clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Pedidos de clientes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo pedido de cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo pedido de cliente" ) );
-        npago->setWhatsThis ( _ ( "Nuevo pedido de cliente" ) );
-        pPluginMenu->addAction ( npago );
-        pPluginMenu->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
-    }// end if
-    blDebug ( "END PluginBf_ClientePedido::inicializa", 0 );
-}
 
 
 ///
@@ -129,12 +46,56 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clientepedido", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clientepedido", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
+    
+    if ( bges->company()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
 
-    PluginBf_ClientePedido *plug = new PluginBf_ClientePedido();
-    plug->inicializa ( bges );
+        BlAction *accionA = new BlAction ( _ ( "&Pedidos de clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Pedidos de clientes" ) );
+        accionA->setWhatsThis ( _ ( "Pedidos de clientes" ) );
+        accionA->setObjectName("mui_actionClientePedido");
+
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo pedido de cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo pedido de cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo pedido de cliente" ) );
+        accionB->setObjectName("mui_actionClienteNuevoPedido");
+
+        pPluginMenu->addAction ( accionB );
+
+
+    } // end if   
+    
     return 0;
 }
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionClientePedido") {
+        if ( g_pedidosClienteList ) {
+            g_pedidosClienteList->hide();
+            g_pedidosClienteList->show();
+        } // end if        
+    } // end if
+    
+    if (accion->objectName() == "mui_actionClienteNuevoPedido") {
+        PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->inicializar();
+        bud->show();
+    
+    } // end if           
+    return 0;
+} // end if
+
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
@@ -179,7 +140,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->valor ( "idpedidocliente" ) );
+        bud->cargar ( cur->value( "idpedidocliente" ) );
         bud->show();
         cur->nextRecord();
     } // end while

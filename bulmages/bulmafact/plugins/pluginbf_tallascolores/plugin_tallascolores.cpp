@@ -27,13 +27,15 @@
 #include <QApplication>
 #include <QObject>
 
-#include "plugin_tc_articulos.h"
+#include "plugin_tallascolores.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugarticulos.h"
 #include "busquedacolor.h"
 #include "busquedatalla.h"
+#include "listcoloresview.h"
+#include "listtallasview.h"
 
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -41,19 +43,69 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de tallas y colores", 0 );
+    blDebug ( "Punto de entrada de PluginBf_TallasColores", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_Tallas-y-Colores", "0.11.1-0001");
+    bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0002");
+    g_bges = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugin_tc_articulos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "PluginBf_TallasColores", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    plugin_tc_articulos *plug = new plugin_tc_articulos();
-    plug->inicializa ( bges );
+
+
+
+
+    QMenu *pPluginMenuTallasColores;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ("Tallas y colores");
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenuTallasColores ) {
+        pPluginMenuTallasColores = new QMenu ( _ ( "&Tallas y colores" ), bges->menuBar() );
+        pPluginMenuTallasColores->setObjectName ( QString::fromUtf8 ( "Tallas y colores" ) );
+    } // end if
+    /// Creamos el men&uacute;.
+
+    BlAction *accionA = new BlAction ( _ ( "&Tallas" ), 0 );
+    accionA->setStatusTip ( _ ( "Tallas" ) );
+    accionA->setWhatsThis ( _ ( "Tallas" ) );
+    accionA->setObjectName("mui_actionTallas");    
+    
+    pPluginMenuTallasColores->addAction ( accionA );
+
+    BlAction *accionB = new BlAction ( _ ( "&Colores" ), 0 );
+    accionB->setStatusTip ( _ ( "Colores" ) );
+    accionB->setWhatsThis ( _ ( "Colores" ) );
+    accionB->setObjectName("mui_actionColores");
+
+    pPluginMenuTallasColores->addAction ( accionB );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenuTallasColores );
+
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_TallasColores::BlAction_triggered", 0 );
+    if (accion->objectName() == "mui_actionTallas") {
+        ListTallasView *tallas = new ListTallasView ( g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( tallas );
+        tallas->show();
+    } // end if
+
+    if (accion->objectName() == "mui_actionColores") {
+        ListColoresView *colores = new ListColoresView ( g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( colores );
+        colores->show();
+    } // end if
+    blDebug ( "PluginBf_TallasColores::BlAction_triggered", 0 );
+
+    return 0;
+}
+
 
 
 ///
@@ -93,7 +145,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, _("Tallas y colores") );
 
@@ -268,7 +320,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
         QString SQLQuery = "SELECT * FROM tc_articulo_alias LEFT JOIN articulo ON tc_articulo_alias.idarticulo = articulo.idarticulo WHERE aliastc_articulo_tallacolor = '" + val + "'";
         BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
-            busc->setId ( cur->valor ( "idarticulo" ) );
+            busc->setId ( cur->value( "idarticulo" ) );
             encontrado = TRUE;
         }
         delete cur;

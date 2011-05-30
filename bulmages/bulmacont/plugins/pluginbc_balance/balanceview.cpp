@@ -109,7 +109,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     m_fechafinal1->setText ( cadena );
 
 
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -217,7 +217,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         BcPlanContableArbol *arbol;
         arbol = new BcPlanContableArbol;
         while ( !ramas->eof() ) {
-            if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta ra&iacute;z.
+            if ( ramas->value( "nivel" ).toInt() == 2 ) { /// Cuenta ra&iacute;z.
                 /// Se crea una rama en el &aacute;rbol (de las primeritas que salen
                 /// de una ra&iacute;z).
                 arbol->nuevaRama ( ramas );

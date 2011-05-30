@@ -22,7 +22,6 @@
 #define PLUGINBF_CARTERAPAGOS_H
 
 #include <QStringList>
-#include <QWidget>
 #include <QIcon>
 #include <QApplication>
 #include <QObject>
@@ -32,6 +31,7 @@
 #include "provedit.h"
 #include "blform.h"
 #include "facturapview.h"
+#include "blaction.h"
 #include "pdefs_pluginbf_carterapagos.h"
 
 
@@ -41,7 +41,7 @@ extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int ProveedorView_cargarPost_Post(Provee
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlForm_guardar_Post (BlForm *);
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *);
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView * );
-
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlAction_triggered(BlAction *);
 
 void generarVencimientos (FacturaProveedorView *);
 

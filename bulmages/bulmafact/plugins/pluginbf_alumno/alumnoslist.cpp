@@ -81,7 +81,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     mdb_idalumno = "";
 
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de alumnos" ) );
         mui_editar->setHidden ( TRUE );
@@ -184,7 +184,7 @@ void AlumnosList::crear()
 	QString idalumnoold = "";
 	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idalumno) AS id FROM alumno");
 	if( !curold->eof()) {
-		      idalumnoold = curold->valor("id");
+		      idalumnoold = curold->value("id");
 	} // end if
 	delete curold;
 	
@@ -192,8 +192,8 @@ void AlumnosList::crear()
       
 	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idalumno) AS id FROM alumno");
 	if( !cur->eof()) {
-		      if (idalumnoold != cur->valor("id")) {
-			mdb_idalumno = cur->valor("id");
+		      if (idalumnoold != cur->value("id")) {
+			mdb_idalumno = cur->value("id");
 			close();
 			emit ( selected ( mdb_idalumno ) );
 		      } // end if

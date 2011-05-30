@@ -79,8 +79,8 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
 
-        dialogChanges_cargaInicial();
-        meteWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );

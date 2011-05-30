@@ -153,7 +153,7 @@ void GenPedQToolButton::generarFactura1()
             } // end if
             bud = new PedidoClienteView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idpedidocliente" ) );
+            bud->cargar ( cur->value( "idpedidocliente" ) );
             bud->show();
             return;
         } // end if

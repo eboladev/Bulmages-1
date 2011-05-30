@@ -52,8 +52,8 @@
 public:
     BlWorkspace ( QWidget * );
     ~BlWorkspace();
-    
-#ifdef AREA_QMDI    
+
+#ifdef AREA_QMDI
     void addSubWindow ( QWidget * );
     QWidget *activeWindow () const;
 #else
@@ -61,7 +61,7 @@ public:
     void addSubWindow ( QWidget * );
 #endif
 
-#ifdef AREA_QMDI    
+#ifdef AREA_QMDI
   signals:
     void deselectDockAll();
 #endif

@@ -83,7 +83,7 @@ void BfBuscarArticulo::setcodigocompletoarticulo ( QString val )
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo=$1";
     BlDbRecordSet *cur = mainCompany() ->load ( SQLQuery, val );
     if ( !cur->eof() ) {
-        setId ( cur->valor ( "idarticulo" ) );
+        setId ( cur->value( "idarticulo" ) );
     } else {
         setId ( "" );
     } // end if
@@ -196,9 +196,9 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
                 m_cursorcombo = mainCompany() ->load( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE ($1||'%')::text ORDER BY codigocompletoarticulo", 0, 25 );
                 clear();
                 while ( !m_cursorcombo->eof() ) {
-                    addItem ( m_cursorcombo->valor ( "codigocompletoarticulo" )
-                              + ".-" + m_cursorcombo->valor ( "nomarticulo" )
-                              , QVariant ( m_cursorcombo->valor ( "codigocompletoarticulo" ) ) );
+                    addItem ( m_cursorcombo->value( "codigocompletoarticulo" )
+                              + ".-" + m_cursorcombo->value( "nomarticulo" )
+                              , QVariant ( m_cursorcombo->value( "codigocompletoarticulo" ) ) );
                     m_cursorcombo->nextRecord();
                 } // end while
                 delete m_cursorcombo;

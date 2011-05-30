@@ -70,7 +70,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_qwebcam", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_qwebcam", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 //    myplugin1 *plug = new myplugin1();
 //    plug->inicializa(bges);

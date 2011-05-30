@@ -80,11 +80,11 @@ void BfBuscarTipoIVA::setId ( QString idtipo_iva )
     while ( !m_comboRecordSet->eof() ) {
         i ++;
 
-        if ( m_comboRecordSet->valor ( "idtipo_iva" ) == idtipo_iva ) {
+        if ( m_comboRecordSet->value( "idtipo_iva" ) == idtipo_iva ) {
             i1 = i;
         } // end if
 
-        addItem ( m_comboRecordSet->valor ( "desctipo_iva" ) );
+        addItem ( m_comboRecordSet->value( "desctipo_iva" ) );
         m_comboRecordSet->nextRecord();
     } // end while
 
@@ -108,7 +108,7 @@ QString BfBuscarTipoIVA::id()
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
     if ( !m_comboRecordSet ) return "0";
 
-    return m_comboRecordSet->valor ( "idtipo_iva", currentIndex() - 1 );
+    return m_comboRecordSet->value( "idtipo_iva", currentIndex() - 1 );
 }
 
 
@@ -122,7 +122,7 @@ void BfBuscarTipoIVA::m_activated ( int index )
     blDebug ( "BfBuscarTipoIVA::m_activated", 0 );
 
     if ( index > 0 ) {
-        emit ( valueChanged ( m_comboRecordSet->valor ( "idtipo_iva", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "idtipo_iva", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -189,9 +189,9 @@ void BfBuscarTipoIVADelegate::set ( const QString &cod )
     clear();
 
     while ( !m_comboRecordSet->eof() ) {
-        addItem ( m_comboRecordSet->valor ( "desctipo_iva" ) );
+        addItem ( m_comboRecordSet->value( "desctipo_iva" ) );
         m_comboRecordSet->nextRecord();
-        if ( m_comboRecordSet->valor ( "desctipo_iva" ) == cod )
+        if ( m_comboRecordSet->value( "desctipo_iva" ) == cod )
             index = m_comboRecordSet->currentRecord();
     } // end while
 

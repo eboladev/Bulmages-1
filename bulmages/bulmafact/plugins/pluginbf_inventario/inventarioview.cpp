@@ -48,7 +48,7 @@ InventarioView::InventarioView ( BfCompany *comp, QWidget *parent )
     subform2->setMainCompany ( comp );
     mui_idfamilia->setMainCompany ( comp );
     setListControlStock ( subform2 );
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     blDebug ( "END InventarioView::InventarioView", 0 );
 }
 
@@ -74,8 +74,8 @@ void InventarioView::on_mui_guardar2_clicked()
         blMsgInfo ( _ ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
         return;
     } // end if
-    setfechainventario ( mui_fechainventario->text() );
-    setnominventario ( mui_nominventario->text() );
+    setFechaInventario ( mui_fechainventario->text() );
+    setNomInventario ( mui_nominventario->text() );
     Inventario::guardar();
     blDebug ( "END InventarioView::on_mui_guardar2_clicked", 0 );
 }
@@ -85,12 +85,12 @@ void InventarioView::on_mui_guardar2_clicked()
 /**
 \return
 **/
-int InventarioView::sacaWindow()
+int InventarioView::removeWindow()
 {
-    blDebug ( "InventarioView::sacaWindow", 0 );
-    companyact->sacaWindow ( this );
+    blDebug ( "InventarioView::removeWindow", 0 );
+    companyact->removeWindow ( this );
     return 0;
-    blDebug ( "END InventarioView::sacaWindow", 0 );
+    blDebug ( "END InventarioView::removeWindow", 0 );
 }
 
 
@@ -115,10 +115,10 @@ void InventarioView::on_mui_borrar2_clicked()
 ///
 /**
 **/
-void InventarioView::pintaidinventario ( QString )
+void InventarioView::pintaIdInventario ( QString )
 {
-    blDebug ( "InventarioView::pintaidinventario", 0 );
-    blDebug ( "END InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaIdInventario", 0 );
+    blDebug ( "END InventarioView::pintaIdInventario", 0 );
 }
 
 
@@ -126,11 +126,11 @@ void InventarioView::pintaidinventario ( QString )
 /**
 \param id
 **/
-void InventarioView::pintafechainventario ( QString id )
+void InventarioView::pintaFechaInventario ( QString id )
 {
-    blDebug ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaIdInventario", 0 );
     mui_fechainventario->setText ( id );
-    blDebug ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaIdInventario", 0 );
 }
 
 
@@ -138,11 +138,11 @@ void InventarioView::pintafechainventario ( QString id )
 /**
 \param id
 **/
-void InventarioView::pintanominventario ( QString id )
+void InventarioView::pintaNomInventario ( QString id )
 {
-    blDebug ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaIdInventario", 0 );
     mui_nominventario->setText ( id );
-    blDebug ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaIdInventario", 0 );
 }
 
 
@@ -152,8 +152,8 @@ void InventarioView::pintanominventario ( QString id )
 void InventarioView::on_mui_aceptar_clicked()
 {
     blDebug ( "InventarioView::on_mui_aceptar_clicked", 0 );
-    setfechainventario ( mui_fechainventario->text() );
-    setnominventario ( mui_nominventario->text() );
+    setFechaInventario ( mui_fechainventario->text() );
+    setNomInventario ( mui_nominventario->text() );
     if ( !Inventario::guardar() ) {
         close();
     } // end if

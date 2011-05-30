@@ -69,14 +69,14 @@ void BfBuscarSerieFactura::setId ( QString codigo )
     /// Prevalece el valor de la configuracion en la base de datos sobre el valor en el archivo de configuracion.
 
     if ( codigo.isEmpty() || codigo == "0" ) {
-        codigo = g_confpr->valor ( CONF_SERIE_FACTURA_DEFECTO );
+        codigo = g_confpr->value( CONF_SERIE_FACTURA_DEFECTO );
     } // end if
 
     if ( codigo.isEmpty() || codigo == "0" ) {
       BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
       if ( !cur ) return;
       if ( !cur->eof() ) {
-	  codigo = cur->valor ( "valor" );
+	  codigo = cur->value( "valor" );
       } // end if
       delete cur;
     } // end if
@@ -92,11 +92,11 @@ void BfBuscarSerieFactura::setId ( QString codigo )
     addItem ( "--" );
     while ( !m_comboRecordSet->eof() ) {
         i ++;
-        if ( m_comboRecordSet->valor ( "codigoserie_factura" ) == m_codigoserie_factura )
+        if ( m_comboRecordSet->value( "codigoserie_factura" ) == m_codigoserie_factura )
             i2 = i;
-        if ( m_comboRecordSet->valor ( "codigoserie_factura" ) == codigo )
+        if ( m_comboRecordSet->value( "codigoserie_factura" ) == codigo )
             i1 = i;
-        addItem ( m_comboRecordSet->valor ( "codigoserie_factura" ) + ".-" + m_comboRecordSet->valor ( "descserie_factura" ) );
+        addItem ( m_comboRecordSet->value( "codigoserie_factura" ) + ".-" + m_comboRecordSet->value( "descserie_factura" ) );
         m_comboRecordSet->nextRecord();
     } // end if
     if ( i1 != 0 ) {
@@ -116,7 +116,7 @@ void BfBuscarSerieFactura::m_activated ( int index )
 {
     blDebug ( "BfBuscarSerieFactura::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_comboRecordSet->valor ( "codigoserie_factura", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "codigoserie_factura", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -133,7 +133,7 @@ QString BfBuscarSerieFactura::id()
     blDebug ( "BfBuscarSerieFactura::codigoserie_factura", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        return ( m_comboRecordSet->valor ( "codigoserie_factura", index - 1 ) );
+        return ( m_comboRecordSet->value( "codigoserie_factura", index - 1 ) );
     } else {
         return "";
     } // end if
@@ -155,7 +155,7 @@ void BfBuscarSerieFactura::setMainCompany ( BfCompany *comp )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
     if ( !cur ) return;
     if ( !cur->eof() ) {
-        m_codigoserie_factura = cur->valor ( "valor" );
+        m_codigoserie_factura = cur->value( "valor" );
     } // end if
     delete cur;
     blDebug ( "END BfBuscarSerieFactura::setMainCompany", 0 );

@@ -67,7 +67,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion()) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de contratos" ) );
         mui_editar->setHidden ( TRUE );
@@ -128,7 +128,7 @@ void ContratosList::presentar()
 ContratosList::~ContratosList()
 {
     blDebug ( "ContratosList::~ContratosList", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END ContratosList::~ContratosList", 0 );
 }
 
@@ -294,7 +294,7 @@ void ContratosList::on_mui_facturar_clicked()
         cur = mainCompany() ->loadQuery ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
         while ( !cur->eof() ) {
             ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
-            if ( prov->cargar ( cur->valor ( "idcontrato" ) ) ) {
+            if ( prov->cargar ( cur->value( "idcontrato" ) ) ) {
                 delete prov;
             } // end if
 //        mainCompany() ->m_pWorkspace->addSubWindow ( prov );

@@ -26,7 +26,7 @@
 #include "blwidget.h"
 #include "actividadview.h"
 #include "pdefs_pluginbf_inventariosimple.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int ActividadView_ActividadView(ActividadView *);
@@ -35,33 +35,15 @@ extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlForm_cargar(BlForm *);
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlAction_triggered ( BlAction * );
 
-class PluginBf_InventarioSimple : public QObject, BlMainCompanyPointer
+class SubForm_InventarioSimple : public QObject
 {
     Q_OBJECT
 
 public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_InventarioSimple();
-    ~PluginBf_InventarioSimple();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
-
-
-
-
-class MyPlugInv1 : public QObject
-{
-    Q_OBJECT
-
-public:
-    MyPlugInv1 ( BlSubForm * );
-    ~MyPlugInv1();
+    SubForm_InventarioSimple ( BlSubForm * );
+    ~SubForm_InventarioSimple();
 
 
 public slots:

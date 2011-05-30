@@ -80,7 +80,7 @@ void FPagoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
       
       rec = m_fpagoview->mainCompany()->loadQuery(query);
       
-      m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText( rec->valor("prefcuentaforma_pago") );
+      m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText( rec->value("prefcuentaforma_pago") );
       
       m_fpagoview->mainCompany()->commit();
       */
@@ -100,10 +100,10 @@ void FPagoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
 
 	    m_fpagoview->mainCompany()->run("SELECT conectabulmacont()");
 	    
-	    QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentaforma_pago") + "' LIMIT 1";
+	    QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentaforma_pago") + "' LIMIT 1";
 	    rec = m_fpagoview->mainCompany()->loadQuery(query);
 	    
-	    m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText( rec->valor("codigo") );
+	    m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText( rec->value("codigo") );
 	   
 	} // end if
     
@@ -111,7 +111,7 @@ void FPagoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
 	m_fpagoview->mainCompany()->commit();
 
     } // end if
-    m_fpagoview->dialogChanges_cargaInicial();
+    m_fpagoview->dialogChanges_readValues();
 
 }
 

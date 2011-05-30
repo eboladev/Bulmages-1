@@ -77,9 +77,9 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
     mui_list->setColumnWidth ( 0, 200 );
     mui_list->setHeaderLabels ( headers );
     mui_list->setColumnHidden ( COL_IDC_COSTE, TRUE );
-    dialogChanges_setQObjectExcluido ( mui_list );
-    dialogChanges_cargaInicial();
-    meteWindow ( windowTitle(), this );
+    dialogChanges_setExcludedObject ( mui_list );
+    dialogChanges_readValues();
+    insertWindow ( windowTitle(), this );
     repintar();
     blDebug ( "END BcCentroCosteView::BcCentroCosteView", 0 );
 }
@@ -91,7 +91,7 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
 BcCentroCosteView::~BcCentroCosteView()
 {
     blDebug ( "BcCentroCosteView::~BcCentroCosteView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcCentroCosteView::~BcCentroCosteView", 0 );
 }
 
@@ -114,13 +114,13 @@ void BcCentroCosteView::repintar()
     /// Cargamos las cuentas de primer nivel.
     cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
     while ( !cursoraux1->eof() ) {
-        padre = atoi ( cursoraux1->valor ( "padre" ).toAscii() );
-        idc_coste1 = atoi ( cursoraux1->valor ( "idc_coste" ).toAscii() );
+        padre = atoi ( cursoraux1->value( "padre" ).toAscii() );
+        idc_coste1 = atoi ( cursoraux1->value( "idc_coste" ).toAscii() );
         it = new QTreeWidgetItem ( mui_list );
         Lista[idc_coste1] = it;
-        it->setText ( COL_IDC_COSTE, cursoraux1->valor ( "idc_coste" ) );
-        it->setText ( COL_DESC_COSTE, cursoraux1->valor ( "descripcion" ) );
-        it->setText ( COL_NOM_COSTE, cursoraux1->valor ( "nombre" ) );
+        it->setText ( COL_IDC_COSTE, cursoraux1->value( "idc_coste" ) );
+        it->setText ( COL_DESC_COSTE, cursoraux1->value( "descripcion" ) );
+        it->setText ( COL_NOM_COSTE, cursoraux1->value( "nombre" ) );
         mui_list->expandItem ( it );
         cursoraux1->nextRecord();
     } // end while
@@ -129,14 +129,14 @@ void BcCentroCosteView::repintar()
     /// Cargamos las cuentas hijas
     cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
     while ( !cursoraux2->eof() ) {
-        padre = cursoraux2->valor ( "padre" ).toInt();
-        idc_coste1 = cursoraux2->valor ( "idc_coste" ).toInt();
+        padre = cursoraux2->value( "padre" ).toInt();
+        idc_coste1 = cursoraux2->value( "idc_coste" ).toInt();
         if ( Lista[padre] ) {
             it = new QTreeWidgetItem ( Lista[padre] );
             Lista[idc_coste1] = it;
-            it->setText ( COL_IDC_COSTE, cursoraux2->valor ( "idc_coste" ) );
-            it->setText ( COL_DESC_COSTE, cursoraux2->valor ( "descripcion" ) );
-            it->setText ( COL_NOM_COSTE, cursoraux2->valor ( "nombre" ) );
+            it->setText ( COL_IDC_COSTE, cursoraux2->value( "idc_coste" ) );
+            it->setText ( COL_DESC_COSTE, cursoraux2->value( "descripcion" ) );
+            it->setText ( COL_NOM_COSTE, cursoraux2->value( "nombre" ) );
             mui_list->expandItem ( it );
         } else {
             blDebug ( _ ( "Error en la carga de centros de coste" ), 2 );
@@ -161,7 +161,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 {
     blDebug ( "BcCentroCosteView::on_mui_list_itemClicked", 0 );
     int previdccoste = it->text ( COL_IDC_COSTE ).toInt();
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar centro de coste" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -191,7 +191,7 @@ void BcCentroCosteView::mostrarplantilla()
     mui_cdistribuidos->cargar ( query );
 
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BcCentroCosteView::mostrarplantilla", 0 );
 }
 
@@ -207,7 +207,7 @@ int BcCentroCosteView::guardar()
     mui_cdistribuidos->setColumnValue ( "iddestc_coste", QString::number ( idc_coste ) );
     mui_cdistribuidos->guardar();
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     repintar();
     blDebug ( "END BcCentroCosteView::guardar", 0 );
     return 0;
@@ -221,7 +221,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
 {
     blDebug ( "BcCentroCosteView::on_mui_crear_clicked", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar centro de coste" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -246,7 +246,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
     } // end if
     query.sprintf ( "SELECT MAX(idc_coste) AS id_coste FROM c_coste" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
-    idc_coste = atoi ( cur->valor ( "id_coste" ).toAscii() );
+    idc_coste = atoi ( cur->value( "id_coste" ).toAscii() );
     delete cur;
     mainCompany() ->commit();
     repintar();

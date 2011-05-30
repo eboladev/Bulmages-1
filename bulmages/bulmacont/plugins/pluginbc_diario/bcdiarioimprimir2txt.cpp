@@ -98,21 +98,21 @@ void BcDiarioImprimir2TXT::accept()
         mainCompany() ->begin();
         cursoraux = mainCompany() -> loadQuery ( "SELECT * FROM asiento WHERE fecha >= '" + QString ( finicial ) + "' AND fecha <= '" + QString ( ffinal ) + "' ORDER BY fecha" );
         for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
-            fechaasiento = cursoraux->valor ( "fechaasiento" ).toAscii().constData();
-            idasiento = atoi ( cursoraux->valor ( "idasiento" ).toAscii() );
-            cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM apunte where idasiento = " + cursoraux->valor ( "idasiento" ) + " ORDER BY idapunte" );
+            fechaasiento = cursoraux->value( "fechaasiento" ).toAscii().constData();
+            idasiento = atoi ( cursoraux->value( "idasiento" ).toAscii() );
+            cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM apunte where idasiento = " + cursoraux->value( "idasiento" ) + " ORDER BY idapunte" );
             for ( ; !cursoraux1->eof(); cursoraux1->nextRecord() ) {
-                fecha = cursoraux1->valor ( 4 ).toAscii().constData();
-                descripcion = cursoraux1->valor ( 5 ).toAscii().constData();
-                concepto = cursoraux->valor ( 1 ).toAscii().constData();
-                debe = atof ( cursoraux1->valor ( 8 ).toAscii() );
-                haber = atof ( cursoraux1->valor ( 9 ).toAscii() );
-                idcuenta = atoi ( cursoraux1->valor ( "idcuenta" ).toAscii() );
+                fecha = cursoraux1->value( 4 ).toAscii().constData();
+                descripcion = cursoraux1->value( 5 ).toAscii().constData();
+                concepto = cursoraux->value( 1 ).toAscii().constData();
+                debe = atof ( cursoraux1->value( 8 ).toAscii() );
+                haber = atof ( cursoraux1->value( 9 ).toAscii() );
+                idcuenta = atoi ( cursoraux1->value( "idcuenta" ).toAscii() );
 
-                cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->valor ( "idcuenta" ) );
+                cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->value( "idcuenta" ) );
 
                 if ( !cursoraux2->eof() ) {
-                    codigocuenta = cursoraux2->valor ( "codigo" ).toAscii().constData();
+                    codigocuenta = cursoraux2->value( "codigo" ).toAscii().constData();
                 } // end if
                 cursoraux2->cerrar();
                 delete cursoraux2;
@@ -128,7 +128,7 @@ void BcDiarioImprimir2TXT::accept()
     } // end if
 
     /// Hacemos la llamada de sistema para imprimir.
-    QString cadaux = g_confpr->valor ( CONF_EDITOR ) + " diario.txt";
+    QString cadaux = g_confpr->value( CONF_EDITOR ) + " diario.txt";
     system ( cadaux.toAscii().constData() );
     blDebug ( "END BcDiarioImprimir2TXT::accept", 0 );
 }

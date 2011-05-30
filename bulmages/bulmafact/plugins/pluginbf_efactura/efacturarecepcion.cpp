@@ -80,7 +80,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
 
     /// Comprobamos que el directorio especificado existeAboutView
 
-    QDir *direfactura = new QDir ( dirEmail->valor ( "valor" ) );
+    QDir *direfactura = new QDir ( dirEmail->value( "valor" ) );
 
     if ( !direfactura->exists() ) {
         blDebug ( "El directorio especificado en la configuracion para la eFactura no existe. Por favor, creelo e intentelo de nuevo", 2 );
@@ -90,7 +90,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
 
     /// Llamamos al script para recibir e-mails con los parametros obtenidos
 
-    QString llamada_qstring = "cd " + dirEmail->valor ( "valor" ) + " ; python /home/arturo/bulmages/trunk/bulmages/installbulmages/efactura/recibemail.py " + serverRec->valor ( "valor" ) + " " + Email->valor ( "valor" ) + " " + Password->valor ( "valor" );
+    QString llamada_qstring = "cd " + dirEmail->value( "valor" ) + " ; python /home/arturo/bulmages/trunk/bulmages/installbulmages/efactura/recibemail.py " + serverRec->value( "valor" ) + " " + Email->value( "valor" ) + " " + Password->value( "valor" );
 
     char llamada[512];
 

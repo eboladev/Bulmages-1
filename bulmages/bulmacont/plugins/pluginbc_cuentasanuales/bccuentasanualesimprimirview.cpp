@@ -108,8 +108,8 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
                 QString query = "SELECT saldototal('" + e1.text() + "','" + finicial + "','" + ffinal + "') AS valoract, saldototal('" + e1.text() + "','" + finicial1 + "','" + ffinal1 + "') AS valorant";
                 BlDbRecordSet *cur = mainCompany()->loadQuery(query);
                 if (!cur->eof()) {
-                    QString valoract = cur->valor("valoract");
-                    QString valorant = cur->valor("valorant");
+                    QString valoract = cur->value("valoract");
+                    QString valorant = cur->value("valorant");
                     QDomNode c = e1.parentNode();
                     agregaValores(c, valoract, valorant);
                 } // end if
@@ -134,7 +134,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
     arbolP1 = new BcPlanContableArbol;
     arbolP2 = new BcPlanContableArbol;
     while ( !ramas->eof() ) {
-        if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
+        if ( atoi ( ramas->value( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
             arbolP1->nuevaRama ( ramas );
             arbolP2->nuevaRama ( ramas );
         } // end if
@@ -292,7 +292,7 @@ bool BcCuentasAnualesImprimirView::procesaFormula ( const QDomNode &formula )
 }
 
 /** Pseudocodigo
-    Si el operador ya tiene valor (devuelve TRUE)
+    Si el operador ya tiene value(devuelve TRUE)
     Si la formula ya tiene valor le ponemos el valor y devuelve TRUE
     devuelve FALSe */
 /**
@@ -433,9 +433,9 @@ void BcCuentasAnualesImprimirView::agregaValores ( const QDomNode &nodo, const Q
 void BcCuentasAnualesImprimirView::imprimir ( QString periodo1finicial, QString periodo1ffinal, QString periodo2finicial, QString periodo2ffinal )
 {
     blDebug ( "BcCuentasAnualesImprimirView::imprimir", 0 );
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "canuales.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "canuales.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "canuales.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "canuales.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
 
@@ -449,10 +449,10 @@ void BcCuentasAnualesImprimirView::imprimir ( QString periodo1finicial, QString 
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );

@@ -53,7 +53,7 @@ BfForm::~BfForm()
 {
     blDebug ( "BfForm::~BfForm", 0, this->windowTitle() );
     
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     
     blDebug ( "END BfForm::~BfForm", 0 );
 }
@@ -93,7 +93,7 @@ void BfForm::calculaypintatotales()
     
     if ( cur ) {
         if ( !cur->eof() ) {
-            irpf = BlFixed ( cur->valor ( "valor" ) );
+            irpf = BlFixed ( cur->value( "valor" ) );
         } // end if
         delete cur;
     } // end if
@@ -102,7 +102,7 @@ void BfForm::calculaypintatotales()
         cur = mainCompany() ->loadQuery ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" ) );
         if ( cur ) {
             if ( !cur->eof() ) {
-                irpf = BlFixed ( cur->valor ( "irpfproveedor" ) );
+                irpf = BlFixed ( cur->value( "irpfproveedor" ) );
             } // end if
             delete cur;
         } // end if
@@ -298,7 +298,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         
         if ( cur ) {
             if ( !cur->eof() ) {
-                irpf = BlFixed ( cur->valor ( "valor" ) );
+                irpf = BlFixed ( cur->value( "valor" ) );
             } // end if
             delete cur;
         } // end if
@@ -745,7 +745,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
-            irpf = BlFixed ( cur->valor ( "valor" ) );
+            irpf = BlFixed ( cur->value( "valor" ) );
         } // end if
         delete cur;
     } // end if
@@ -754,7 +754,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
         cur = mainCompany() ->loadQuery ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" ) );
         if ( cur ) {
             if ( !cur->eof() ) {
-                irpf = BlFixed ( cur->valor ( "irpfproveedor" ) );
+                irpf = BlFixed ( cur->value( "irpfproveedor" ) );
             } // end if
             delete cur;
         } // end if

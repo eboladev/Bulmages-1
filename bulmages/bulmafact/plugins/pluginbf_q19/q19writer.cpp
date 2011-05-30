@@ -94,7 +94,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 		d'ordenant com dates encara que sempre sigui el mateix ordenant.
 
 		*/
-		bool bancUnic = ( curcobro->valor ( "idbanco",0 ) == curcobro->valor ( "idbanco",curcobro->numregistros()-1 ) );
+		bool bancUnic = ( curcobro->value( "idbanco",0 ) == curcobro->value( "idbanco",curcobro->numregistros()-1 ) );
 		blDebug ( "bancUnic=",0,bancUnic?"si":"no" );
 		QString idbanc ( "" );
 		QFile file;
@@ -112,7 +112,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 		QString sufijo;
 		QDate fechaCargo = ( curcobro->eof() ?
 		                     QDate()
-		                     : QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) ) ;
+		                     : QDate::fromString ( curcobro->value( "fechavenccobro" ),"dd/MM/yyyy" ) ) ;
 		BlFixed impOrdenante ( 0,2 );
 		BlFixed impPresentador ( 0,2 );
 		QString resultats ( "" );
@@ -125,12 +125,12 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 		int sensevenc=0;
 		while ( !curcobro->eof() )
 		{
-			if ( QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ).isValid() )
+			if ( QDate::fromString ( curcobro->value( "fechavenccobro" ),"dd/MM/yyyy" ).isValid() )
 			{
-				if ( ( !curcobro->valor ( "idbanco" ).isNull() ) && ( curcobro->valor ( "idbanco" ).length() >0 ) )
+				if ( ( !curcobro->value( "idbanco" ).isNull() ) && ( curcobro->value( "idbanco" ).length() >0 ) )
 				{
 
-					if ( QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) != fechaCargo )
+					if ( QDate::fromString ( curcobro->value( "fechavenccobro" ),"dd/MM/yyyy" ) != fechaCargo )
 					{
 						registrosPresentador++;
 						registrosOrdenante++;
@@ -138,10 +138,10 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 						                 cobramentsOrdenante, registrosOrdenante );
 						ordenants++;
 					}
-					if ( curcobro->valor ( "idbanco" ) != idbanc )
+					if ( curcobro->value( "idbanco" ) != idbanc )
 					{
 						// canvi de banc on cobrem els rebuts, canvi de fitxer
-						idbanc=curcobro->valor ( "idbanco" );
+						idbanc=curcobro->value( "idbanco" );
 						if ( file.handle() !=-1 )
 						{
 							registrosPresentador++;
@@ -152,7 +152,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 
 						}
 						curbanc = m_empresa->loadQuery ( "SELECT * FROM banco WHERE idbanco = $1",1,&idbanc );
-                                                sufijo = curbanc->valor("sufijobanco");
+                                                sufijo = curbanc->value("sufijobanco");
 						if ( bancUnic )
 						{
 							file.setFileName ( fileName );
@@ -168,7 +168,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 								extensio = ext.cap ( 1 );
 							}
 							nomNou.replace ( ext,"" );
-							nomNou+="_"+curbanc->valor ( "nombanco" ).replace ( QRegExp ( "[^a-zA-Z0-9_]" ),"-" )
+							nomNou+="_"+curbanc->value( "nombanco" ).replace ( QRegExp ( "[^a-zA-Z0-9_]" ),"-" )
 							        +extensio;
 							file.setFileName ( nomNou );
 							blDebug ( "creare' el nom que m'he muntat: ",0,fileName );
@@ -180,11 +180,11 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 						registrosPresentador=1;
 						impPresentador=0;
 						ordenants=0;
-						fechaCargo=QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) ;
+						fechaCargo=QDate::fromString ( curcobro->value( "fechavenccobro" ),"dd/MM/yyyy" ) ;
 					}
-					if ( ( QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) != fechaCargo ) || ( registrosPresentador==1 ) )
+					if ( ( QDate::fromString ( curcobro->value( "fechavenccobro" ),"dd/MM/yyyy" ) != fechaCargo ) || ( registrosPresentador==1 ) )
 					{
-						fechaCargo = QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" );
+						fechaCargo = QDate::fromString ( curcobro->value( "fechavenccobro" ),"dd/MM/yyyy" );
 						registrosPresentador++;
 						cabeceraOrdenante ( out, sufijo , curbanc, fechaCargo );
 						cobramentsOrdenante=0;
@@ -192,18 +192,18 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 						impOrdenante=0;
 					}
 
-					refActual=curcobro->valor ( "refcobro" );
+					refActual=curcobro->value( "refcobro" );
 					int registres = cobroQ19 ( out, sufijo, curcobro );
                                         if (idsGenerats) 
                                         { 
-                                           idsGenerats->append(curcobro->valor("idcobro"));
+                                           idsGenerats->append(curcobro->value("idcobro"));
                                         }
 					registrosOrdenante+=registres;
 					registrosPresentador+=registres;
 					cobramentsOrdenante++;
 					cobramentsPresentador++;
-					impOrdenante=impOrdenante+BlFixed ( curcobro->valor ( "cantcobro" ) );
-					impPresentador=impPresentador+BlFixed ( curcobro->valor ( "cantcobro" ) );
+					impOrdenante=impOrdenante+BlFixed ( curcobro->value( "cantcobro" ) );
+					impPresentador=impPresentador+BlFixed ( curcobro->value( "cantcobro" ) );
 				}
 				else
 				{
@@ -255,7 +255,7 @@ QString Q19Writer::nifOrdenante ( void )
 	if ( m_nif.isNull() )
 	{
 		BlDbRecordSet *cur = m_empresa ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
-		m_nif = cur->valor ( "valor" );
+		m_nif = cur->value( "valor" );
 		delete cur;
 		if ( m_nif.isNull() )
 		{
@@ -278,7 +278,7 @@ QString Q19Writer::nombreEmpresa ( void )
 	if ( m_nombreOrdenante.isNull() )
 	{
 		BlDbRecordSet *cur = m_empresa ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-		m_nombreOrdenante = cur->valor ( "valor" );
+		m_nombreOrdenante = cur->value( "valor" );
 		delete cur;
 		if ( m_nombreOrdenante.isNull() )
 		{
@@ -353,9 +353,9 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 	/// Espacio libre Longitud: 20
 	<< QString ( 20,' ' )
 	/// Entidad Receptora del fichero Longitud: 4
-	<< comprova ( curbanco->valor ( "codentidadbanco" ),-4,_ ( "Su entidad bancaria" ),'0' )
+	<< comprova ( curbanco->value( "codentidadbanco" ),-4,_ ( "Su entidad bancaria" ),'0' )
 	/// Oficina Receptora del fichero Longitud: 4
-	<< comprova ( curbanco->valor ( "codagenciabanco" ),-4,_ ( "Su oficina bancaria" ),'0' )
+	<< comprova ( curbanco->value( "codagenciabanco" ),-4,_ ( "Su oficina bancaria" ),'0' )
 	/// Espacio libre Longitud: 12
 	<<  QString ( 12, ' ' )
 	/// Espacio libre Longitud: 40
@@ -396,14 +396,14 @@ void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecor
 	/// Nombre del cliente Ordenante Longitud: 40
 	<< nombreOrdenante().leftJustified ( 40,' ',true )
 	/// Entidad Receptora del fichero Longitud: 4
-	<< comprova ( curbanco->valor ( "codentidadbanco" ),-4,_ ( "Su entidad bancaria" ),'0' )
+	<< comprova ( curbanco->value( "codentidadbanco" ),-4,_ ( "Su entidad bancaria" ),'0' )
 	/// Oficina Receptora del fichero Longitud: 4
-	<< comprova ( curbanco->valor ( "codagenciabanco" ),-4,_ ( "Su oficina bancaria" ),'0' )
+	<< comprova ( curbanco->value( "codagenciabanco" ),-4,_ ( "Su oficina bancaria" ),'0' )
 	/// DC Receptora del fichero Longitud: 2
-	<< comprova ( curbanco->valor ( "dcbanco" ) ,-2,
+	<< comprova ( curbanco->value( "dcbanco" ) ,-2,
 	              _ ( "Los digitos de control de su cuenta bancaria" ),'0' )
 	/// Oficina Receptora del fichero Longitud: 10
-	<< comprova ( curbanco->valor ( "numcuentabanco" ), -10,
+	<< comprova ( curbanco->value( "numcuentabanco" ), -10,
 	              _ ( "Su numero de cuenta bancaria" ) ,'0' )
 	/// Espacio libre Longitud: 8
 	<<  QString ( 8, ' ' )
@@ -421,7 +421,7 @@ void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecor
 QString Q19Writer::import ( BlDbRecordSet *cur, QString nomcamp, int longitud )
 {
 
-	return import ( BlFixed ( cur->valor ( nomcamp ) ),longitud ) ;
+	return import ( BlFixed ( cur->value( nomcamp ) ),longitud ) ;
 }
 
 QString Q19Writer::import ( BlFixed f, int longitud )
@@ -449,21 +449,21 @@ QString Q19Writer::import ( BlFixed f, int longitud )
 int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *curcobro )
 {
 	blDebug ( "Q19Writer::cobroQ19", 0 );
-	QString bancocliente = curcobro->valor ( "bancocliente" ).remove ( QRegExp ( "[^0-9]" ) );
+	QString bancocliente = curcobro->value( "bancocliente" ).remove ( QRegExp ( "[^0-9]" ) );
 	if ( bancocliente.size() != 20 )
 	{
 		throw _ ( "Datos incorrectos" ) + "\n"+
 		_ ( "Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %4), para cliente %5 (%6)" )
-		.arg ( curcobro->valor ( "bancocliente" ) )
+		.arg ( curcobro->value( "bancocliente" ) )
 		.arg ( bancocliente )
-		.arg ( curcobro->valor ( "idcobro" ) )
-		.arg ( curcobro->valor ( "refcobro" ) )
-		.arg ( curcobro->valor ( "nomcliente" ) )
-		.arg ( curcobro->valor ( "idcliente" ) );
+		.arg ( curcobro->value( "idcobro" ) )
+		.arg ( curcobro->value( "refcobro" ) )
+		.arg ( curcobro->value( "nomcliente" ) )
+		.arg ( curcobro->value( "idcliente" ) );
 	}
-	QString concepte = ( // "Ref:" + curcobro->valor ( "refcobro" )
+	QString concepte = ( // "Ref:" + curcobro->value( "refcobro" )
 	                     // +". "+
-                             curcobro->valor ( "comentcobro" ) ).simplified();
+                             curcobro->value( "comentcobro" ) ).simplified();
 	int i=0;
 	for ( i=0; ( i<=5 ) && ( (i==0) || (concepte.length() >0) );i++ )   //num de registres d'aquest rebut depen de long de concepte
 	{
@@ -477,12 +477,12 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 		<< comprova ( nifOrdenante(),9,_ ( "El CIF del ordenante" ),'0' )
 		<< sufijo.rightJustified ( 3,'0',true )
 		/// Codigo de referencia Longitud: 12
-		<< curcobro->valor ( "idcliente" ).rightJustified ( 12, '0',true );
+		<< curcobro->value( "idcliente" ).rightJustified ( 12, '0',true );
 
 		if ( i==0 ) // registre individual obligatori
 		{
 			/// Nombre del titular de la domiciliacion: 40
-			out << curcobro->valor ( "nomcliente" ).replace ( "\x0a"," " ).leftJustified ( 40, ' ', true )
+			out << curcobro->value( "nomcliente" ).replace ( "\x0a"," " ).leftJustified ( 40, ' ', true )
 			/// Entidad domiciliacion del fichero Longitud: 4
 			/// Oficina domiciliacion del fichero Longitud: 4
 			/// DC domiciliacion del fichero Longitud: 2
@@ -493,9 +493,9 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 			<< import ( curcobro, "cantcobro" , 10 )
 
 			/// Codigo para devoluciones: 6
-			<< curcobro->valor ( "idcobro" ).leftJustified ( 6, ' ', true )
+			<< curcobro->value( "idcobro" ).leftJustified ( 6, ' ', true )
 			/// Codigo para referencia interna
-			<< curcobro->valor ( "idcobro" ).leftJustified ( 10, ' ', true )
+			<< curcobro->value( "idcobro" ).leftJustified ( 10, ' ', true )
 			/// Primer campo de concepto Longitud: 40
 			<< concepte.leftJustified ( 40, ' ',true )
 

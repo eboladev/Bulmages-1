@@ -25,65 +25,7 @@
 #include "blfunctions.h"
 #include "inventariosview.h"
 
-
-///
-/**
-**/
-PluginBf_Inventario::PluginBf_Inventario()
-{
-    blDebug ( "PluginBf_Inventario::PluginBf_Inventario", 0 );
-    blDebug ( "END PluginBf_Inventario::PluginBf_Inventario", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Inventario::~PluginBf_Inventario()
-{
-    blDebug ( "PluginBf_Inventario::~PluginBf_Inventario", 0 );
-    blDebug ( "END PluginBf_Inventario::~PluginBf_Inventario", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Inventario::elslot()
-{
-    blDebug ( "PluginBf_Inventario::elslot", 0 );
-    InventariosView *tar = new InventariosView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
-    tar->show();
-    blDebug ( "END PluginBf_Inventario::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Inventario::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Inventario::inicializa", 0 );
-    /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-    m_bges = bges;
-    setMainCompany ( bges->company() );
-
-    /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
-    pPluginMenu->addSeparator();
-
-
-    QAction *planCuentas = new QAction ( _ ( "&Inventarios" ), 0 );
-    planCuentas->setStatusTip ( _ ( "Inventarios" ) );
-    planCuentas->setWhatsThis ( _ ( "Inventarios" ) );
-
-    pPluginMenu->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_Inventario::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -99,10 +41,36 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_inventario", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_inventario", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Inventario *plug = new PluginBf_Inventario();
-    plug->inicializa ( bges );
+
+
+    g_bges = bges;
+
+    /// Miramos si existe un menu Inventario
+    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
+    pPluginMenu->addSeparator();
+
+
+    BlAction *accionA = new BlAction ( _ ( "&Inventarios" ), 0 );
+    accionA->setStatusTip ( _ ( "Inventarios" ) );
+    accionA->setWhatsThis ( _ ( "Inventarios" ) );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
+    accionA->setObjectName("mui_actionInventario");
+
+    pPluginMenu->addAction ( accionA );
+
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionInventario") {
+        blDebug ( "PluginBf_Inventario::BlAction_triggered::mui_actionInventario", 0 );
+        InventariosView *tar = new InventariosView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( tar );
+        tar->show();
+        blDebug ( "END PluginBf_Inventario::BlAction_triggered::mui_actionInventario", 0 );    
+    } // end if
     return 0;
 }
 
@@ -130,7 +98,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
@@ -198,7 +166,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         BlFixed stock ( "0" );
         if ( !cur1 ) return 0;
         if ( !cur1->eof() ) {
-            stock = BlFixed ( cur1->valor ( "stock" ) );
+            stock = BlFixed ( cur1->value( "stock" ) );
         } // end if
         delete cur1;
 
@@ -208,7 +176,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
-            BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );
+            BlFixed val = BlFixed ( cur->value( "valminimsalmacen" ) );
             BlFixed valb = BlFixed ( camp->valorcampo() );
             if ( stock - valb <= val )
                 blMsgWarning ( _ ( "Stock minimo superado" ) );

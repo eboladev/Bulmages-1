@@ -51,9 +51,9 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_cuentaresumen", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_cuentaresumen", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    BcCompany *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( _ ( "Resumen cuenta" ), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
@@ -86,7 +86,7 @@ int entryPoint ( BcBulmaCont *bcont )
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );
 
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -129,10 +129,10 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
         QString mensaje = "<HTML><BODY>";
         mensaje += "<B>Codigo:</B> " + cod + "<BR>";
         mensaje += "<B>Nombre:</B> " + nom + "<BR>";
-        mensaje += "<B>Debe:</B> " + cur->valor ( "debe" ) + "<BR>";
-        mensaje += "<B>Haber:</B> " + cur->valor ( "haber" ) + "<BR>";
+        mensaje += "<B>Debe:</B> " + cur->value( "debe" ) + "<BR>";
+        mensaje += "<B>Haber:</B> " + cur->value( "haber" ) + "<BR>";
         mensaje += "<HR>";
-        mensaje += "<B>Saldo:</B> " + cur->valor ( "saldo" ) + "<BR>";
+        mensaje += "<B>Saldo:</B> " + cur->value( "saldo" ) + "<BR>";
         mensaje += "</BODY></HTML>";
         g_res->setMensaje ( mensaje );
     } // end if
@@ -164,10 +164,10 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
             QString mensaje = "<HTML><BODY>";
             mensaje += "<B>Codigo:</B> " + cod + "<BR>";
             mensaje += "<B>Nombre:</B> " + nom + "<BR>";
-            mensaje += "<B>Debe:</B> " + cur->valor ( "debe" ) + "<BR>";
-            mensaje += "<B>Haber:</B> " + cur->valor ( "haber" ) + "<BR>";
+            mensaje += "<B>Debe:</B> " + cur->value( "debe" ) + "<BR>";
+            mensaje += "<B>Haber:</B> " + cur->value( "haber" ) + "<BR>";
             mensaje += "<HR>";
-            mensaje += "<B>Saldo:</B> " + cur->valor ( "saldo" ) + "<BR>";
+            mensaje += "<B>Saldo:</B> " + cur->value( "saldo" ) + "<BR>";
             mensaje += "</BODY></HTML>";
             g_res->setMensaje ( mensaje );
         } // end if
@@ -182,8 +182,8 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 **/
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
     blDebug("BcBulmaCont_closeEvent");
-//    BcCompany * emp = bcont->empresaactual();
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
+//    BcCompany * emp = bcont->company();
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

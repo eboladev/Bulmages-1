@@ -149,7 +149,7 @@ void BlSearchWidget::setId ( QString val, bool cargarvalores )
             QMapIterator<QString, QString> i ( m_valores );
             while ( i.hasNext() ) {
                 i.next();
-                m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+                m_valores.insert ( i.key(), cur->value( i.key() ) );
             } // end while
         } // end if
         delete cur;
@@ -203,7 +203,7 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
         QMapIterator<QString, QString> i ( m_valores );
         while ( i.hasNext() ) {
             i.next();
-            m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+            m_valores.insert ( i.key(), cur->value( i.key() ) );
         } // end while
     } else {
         /// Inicializamos los valores de vuelta a ""
@@ -306,12 +306,12 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_id = cur->valor ( m_campoid );
+        mdb_id = cur->value( m_campoid );
         /// Inicializamos los valores de vuelta a ""
         QMapIterator<QString, QString> i ( m_valores );
         while ( i.hasNext() ) {
             i.next();
-            m_valores[i.key() ] = cur->valor ( i.key() );
+            m_valores[i.key() ] = cur->value( i.key() );
         } // end while
         encontrado = TRUE;
     } // end if
@@ -335,12 +335,12 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
-            mdb_id = cur->valor ( m_campoid );
+            mdb_id = cur->value( m_campoid );
             /// Inicializamos los valores de vuelta a ""
             QMapIterator<QString, QString> i ( m_valores );
             while ( i.hasNext() ) {
                 i.next();
-                m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+                m_valores.insert ( i.key(), cur->value( i.key() ) );
             } // end while
             encontrado = TRUE;
         } // end if
@@ -564,13 +564,13 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + m_cursorcombo->valor ( i.key() ) + sep;
+                        cad = cad + m_cursorcombo->value( i.key() ) + sep;
                         if ( sep == ".- " ) {
                             cad1 = i.key();
                             sep = " ";
                         } // end if
                     } // end while
-                    addItem ( cad , QVariant ( m_cursorcombo->valor ( cad1 ) ) );
+                    addItem ( cad , QVariant ( m_cursorcombo->value( cad1 ) ) );
                     m_cursorcombo->nextRecord();
                 } // end while
                 delete m_cursorcombo;

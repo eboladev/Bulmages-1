@@ -32,7 +32,7 @@
 #include "presupuestoview.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbf_clientefactura.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int SNewFacturaView (BfCompany *);
 extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
@@ -43,24 +43,6 @@ extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int BfBuscarReferencia_on_mui_abrirtod
 extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
-
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int BlAction_triggered(BlAction *);
  
-class PluginBf_ClienteFactura : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ClienteFactura();
-    ~PluginBf_ClienteFactura();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
-
 #endif

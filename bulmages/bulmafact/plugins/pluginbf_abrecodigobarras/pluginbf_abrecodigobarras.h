@@ -31,26 +31,10 @@
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "pdefs_pluginbf_abrecodigobarras.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_ABRECODIGOBARRAS_EXPORT int entryPoint ( BfBulmaFact * );
-
-
-class PluginBf_AbreCodigoBarras : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bulmafact;
-
-public:
-    PluginBf_AbreCodigoBarras();
-    ~PluginBf_AbreCodigoBarras();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
+extern "C" PLUGINBF_ABRECODIGOBARRAS_EXPORT int BlAction_triggered(BlAction *);
 
 
 #endif

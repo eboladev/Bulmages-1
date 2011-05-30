@@ -27,31 +27,15 @@
 #include "provedit.h"
 #include "bfbuscarreferencia.h"
 #include "pdefs_pluginbf_proveedorpedido.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BlAction_triggered(BlAction *);
 
-
-class PluginBf_ProveedorPedido : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ProveedorPedido();
-    ~PluginBf_ProveedorPedido();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
 
 
 #endif

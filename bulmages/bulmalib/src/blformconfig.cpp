@@ -49,7 +49,7 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
     int i = 0;
     while ( !cur->eof() ) {
         for ( int j = 0 ; j < cur->numcampos() ; j++ ) {
-            QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( j, i ) );
+            QTableWidgetItem *newItem = new QTableWidgetItem ( cur->value( j, i ) );
             mui_databasetable->setItem ( i, j, newItem );
         } // end for
         cur->nextRecord();
@@ -91,7 +91,7 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
     i = 0;
     while ( !cur->eof() ) {
         for ( int j = 0 ; j < cur->numcampos() ; j++ ) {
-            QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( j, i ) );
+            QTableWidgetItem *newItem = new QTableWidgetItem ( cur->value( j, i ) );
             mui_usertable->setItem ( i, j, newItem );
         } // end for
         cur->nextRecord();
@@ -102,12 +102,12 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
     cur = mainCompany() ->loadQuery ( "SELECT user" );
     if ( !cur ) return;
 
-    mui_currentuser->setText ( cur->valor ( "current_user" ) );
+    mui_currentuser->setText ( cur->value( "current_user" ) );
     delete cur;
     
-    archivoScript->setText(g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent->metaObject()->className()+".qs");
+    archivoScript->setText(g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+parent->metaObject()->className()+".qs");
     
-    if (!QFile::exists(g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent->metaObject()->className()+".qs")) {
+    if (!QFile::exists(g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+parent->metaObject()->className()+".qs")) {
       editarScript->setText(_("Crear"));
     } // end if
   
@@ -120,8 +120,8 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
     cur = mainCompany() ->loadQuery ( queryTriggers );
     QString texto = "";
     while ( !cur->eof() ) {
-	texto += cur->valor("proname") + " \n==================================\n";
-	texto += cur->valor("prosrc") + "\n\n==================================\n\n";
+	texto += cur->value("proname") + " \n==================================\n";
+	texto += cur->value("prosrc") + "\n\n==================================\n\n";
         cur->nextRecord();
     } // end while
     delete cur;
@@ -134,9 +134,9 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
 }
 
 void BlFormConfig::on_editarScript_released() {
-  QString cadena = "touch " +g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs";
+  QString cadena = "touch " +g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs";
   system ( cadena.toAscii().data() );
-  cadena = g_confpr->valor (CONF_EDITOR) +" "+ g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs &";
+  cadena = g_confpr->value(CONF_EDITOR) +" "+ g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs &";
   int result = system ( cadena.toAscii().data() );
 }
 

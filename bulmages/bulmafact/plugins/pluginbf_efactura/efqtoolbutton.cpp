@@ -31,7 +31,7 @@
 #include <QtXml/QXmlInputSource>
 #include <QtXml/QXmlSimpleReader>
 
-#define _PLANTILLA_ g_confpr->valor(CONF_PROGDATA) + "efactura/plantilla_efactura.xml"
+#define _PLANTILLA_ g_confpr->value(CONF_PROGDATA) + "efactura/plantilla_efactura.xml"
 #define _RESULTADO_ "/tmp/efactura"
 
 
@@ -71,13 +71,13 @@ void EFQToolButton::escribe_descuento_factura ( QString &string, BlDbRecordSet *
     blDebug ( "EFQToolButton::escribe_descuento_factura", 0 );
 
     BlFixed descuentoFactura = "0.00";
-    descuentoFactura = BlFixed ( descuentos_factura->valor ( "proporciondfactura" ) );
+    descuentoFactura = BlFixed ( descuentos_factura->value( "proporciondfactura" ) );
     descuentoFactura = descuentoFactura * bimpfactura;
     descuentoFactura = descuentoFactura * BlFixed ( "0.01" );
 
     string += "\t<cac:AllowanceCharge>\n";
     string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
-    string += "\t\t<cbc:MultiplierFactorNumeric>" + descuentos_factura->valor ( "proporciondfactura" ) + "</cbc:MultiplierFactorNumeric>\n";
+    string += "\t\t<cbc:MultiplierFactorNumeric>" + descuentos_factura->value( "proporciondfactura" ) + "</cbc:MultiplierFactorNumeric>\n";
     string += "\t\t<cbc:Amount amountCurrencyID=\"EUR\">" + descuentoFactura.toQString() + "</cbc:Amount>\n";
     string += "\t</cac:AllowanceCharge>\n";
     string += "\n";
@@ -99,12 +99,12 @@ void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfac
 
     QString numero = QString::number ( numerolinea );
 
-    QString query = "SELECT * FROM articulo WHERE idarticulo = " + lfactura->valor ( "idarticulo" );
+    QString query = "SELECT * FROM articulo WHERE idarticulo = " + lfactura->value( "idarticulo" );
     BlDbRecordSet *articulo = mainCompany() ->loadQuery ( query );
 
-    QString string_iva = lfactura->valor ( "ivalfactura" );
-    QString string_bimp = lfactura->valor ( "pvplfactura" );
-    QString string_descuento = lfactura->valor ( "descuentolfactura" );
+    QString string_iva = lfactura->value( "ivalfactura" );
+    QString string_bimp = lfactura->value( "pvplfactura" );
+    QString string_descuento = lfactura->value( "descuentolfactura" );
 
     BlFixed iva ( string_iva ); // es un porcentaje
     BlFixed bimp ( string_bimp );
@@ -119,15 +119,15 @@ void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfac
     string += "\t<cac:ID>" + numero + "</cac:ID>\n";
 
     // Cantidad de elementos en la linea
-    string += "\t<cbc:InvoicedQuantity quantityUnitCode=\"UNIT\">" + lfactura->valor ( "cantlfactura" ) + "</cbc:InvoicedQuantity>\n";
+    string += "\t<cbc:InvoicedQuantity quantityUnitCode=\"UNIT\">" + lfactura->value( "cantlfactura" ) + "</cbc:InvoicedQuantity>\n";
 
     // PVP de la linea
-    string += "\t<cbc:LineExtensionAmount amountCurrencyCodeListVersionID=\"0.3\" amountCurrencyID=\"EUR\">" + lfactura->valor ( "pvplfactura" ) + "</cbc:LineExtensionAmount>\n";
+    string += "\t<cbc:LineExtensionAmount amountCurrencyCodeListVersionID=\"0.3\" amountCurrencyID=\"EUR\">" + lfactura->value( "pvplfactura" ) + "</cbc:LineExtensionAmount>\n";
 
     // Descuentos o recargos. El false nos dice que es descuento.
     string += "\t<cac:AllowanceCharge>\n";
     string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
-    string += "\t\t<cbc:MultiplierFactorNumeric>" + lfactura->valor ( "descuentolfactura" ) + "</cbc:MultiplierFactorNumeric>\n";
+    string += "\t\t<cbc:MultiplierFactorNumeric>" + lfactura->value( "descuentolfactura" ) + "</cbc:MultiplierFactorNumeric>\n";
     string += "\t\t<cbc:Amount amountCurrencyID=\"EUR\">" + descuento_lfactura.toQString() + "</cbc:Amount>\n";
     string += "\t</cac:AllowanceCharge>\n";
 
@@ -138,22 +138,22 @@ void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfac
 
     // Descripcion del elemento de la linea
     string += "\t<cac:Item>\n";
-    string += "\t\t<cbc:Description>" + lfactura->valor ( "desclfactura" ) + "</cbc:Description>\n";
+    string += "\t\t<cbc:Description>" + lfactura->value( "desclfactura" ) + "</cbc:Description>\n";
     // Codigo de articulo
     string += "\t\t<cac:SellersItemIdentification>\n";
-    string += "\t\t\t<cac:ID>" + articulo->valor ( "codigocompletoarticulo" ) + "</cac:ID>\n";
+    string += "\t\t\t<cac:ID>" + articulo->value( "codigocompletoarticulo" ) + "</cac:ID>\n";
     string += "\t\t</cac:SellersItemIdentification>\n";
     // Tipo de Impuestos
     string += "\t\t<cac:TaxCategory>\n";
-    string += "\t\t\t<cac:ID>" + lfactura->valor ( "ivalfactura" ) + "</cac:ID>\n";
-    string += "\t\t\t<cbc:Percent>" + lfactura->valor ( "ivalfactura" ) + "</cbc:Percent>\n";
+    string += "\t\t\t<cac:ID>" + lfactura->value( "ivalfactura" ) + "</cac:ID>\n";
+    string += "\t\t\t<cbc:Percent>" + lfactura->value( "ivalfactura" ) + "</cbc:Percent>\n";
     string += "\t\t\t<cac:TaxScheme>\n";
     string += "\t\t\t\t<cac:TaxTypeCode>IVA</cac:TaxTypeCode>\n";
     string += "\t\t\t</cac:TaxScheme>\n";
     string += "\t\t</cac:TaxCategory>\n";
     // PVP de un articulo
     string += "\t\t<cac:BasePrice>\n";
-    string += "\t\t\t<cbc:PriceAmount amountCurrencyCodeListVersionID=\"0.3\" amountCurrencyID=\"EUR\">" + articulo->valor ( "pvparticulo" ) + "</cbc:PriceAmount>\n";
+    string += "\t\t\t<cbc:PriceAmount amountCurrencyCodeListVersionID=\"0.3\" amountCurrencyID=\"EUR\">" + articulo->value( "pvparticulo" ) + "</cbc:PriceAmount>\n";
     string += "\t\t</cac:BasePrice>\n";
     string += "\t</cac:Item>\n";
 
@@ -279,27 +279,27 @@ void EFQToolButton::exporta_factura_ubl()
     query = "SELECT * FROM configuracion WHERE nombre = 'CodPostal'";
     BlDbRecordSet *cp_empresa = mainCompany() ->loadQuery ( query );
 
-    if ( nombre_empresa->valor ( "valor" ).isEmpty() ) {
+    if ( nombre_empresa->value( "valor" ).isEmpty() ) {
         blDebug ( "El campo valor con nombre nombre_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
-    if ( cif_empresa->valor ( "valor" ).isEmpty() ) {
+    if ( cif_empresa->value( "valor" ).isEmpty() ) {
         blDebug ( "El campo valor con nombre cif_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
-    if ( dir_empresa->valor ( "valor" ).isEmpty() ) {
+    if ( dir_empresa->value( "valor" ).isEmpty() ) {
         blDebug ( "El campo valor con nombre dir_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
-    if ( ciudad_empresa->valor ( "valor" ).isEmpty() ) {
+    if ( ciudad_empresa->value( "valor" ).isEmpty() ) {
         blDebug ( "El campo valor con nombre ciudad_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
-    if ( cp_empresa->valor ( "valor" ).isEmpty() ) {
+    if ( cp_empresa->value( "valor" ).isEmpty() ) {
         blDebug ( "El campo valor con nombre cp_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
@@ -326,29 +326,29 @@ void EFQToolButton::exporta_factura_ubl()
     FacturaXml.replace ( "[numfactura]", m_factura->dbValue ( "numfactura" ) );
     FacturaXml.replace ( "[ffactura]", m_factura->dbValue ( "ffactura" ) );
     FacturaXml.replace ( "[descfactura]", m_factura->dbValue ( "descfactura" ) );
-    FacturaXml.replace ( "[impfactura]", factura_totales->valor ( "impfactura" ) );
-    FacturaXml.replace ( "[bimpfactura]", factura_totales->valor ( "bimpfactura" ) );
-    FacturaXml.replace ( "[totalfactura]", factura_totales->valor ( "totalfactura" ) );
+    FacturaXml.replace ( "[impfactura]", factura_totales->value( "impfactura" ) );
+    FacturaXml.replace ( "[bimpfactura]", factura_totales->value( "bimpfactura" ) );
+    FacturaXml.replace ( "[totalfactura]", factura_totales->value( "totalfactura" ) );
 
-    FacturaXml.replace ( "[nomcliente]", cliente->valor ( "nomcliente" ) );
-    FacturaXml.replace ( "[cifcliente]", cliente->valor ( "cifcliente" ) );
-    FacturaXml.replace ( "[departamento]", cliente->valor ( "departamento" ) );
-    FacturaXml.replace ( "[dircliente]", cliente->valor ( "dircliente" ) );
-    FacturaXml.replace ( "[pobcliente]", cliente->valor ( "poblcliente" ) );
-    FacturaXml.replace ( "[cpcliente]", cliente->valor ( "cpcliente" ) );
+    FacturaXml.replace ( "[nomcliente]", cliente->value( "nomcliente" ) );
+    FacturaXml.replace ( "[cifcliente]", cliente->value( "cifcliente" ) );
+    FacturaXml.replace ( "[departamento]", cliente->value( "departamento" ) );
+    FacturaXml.replace ( "[dircliente]", cliente->value( "dircliente" ) );
+    FacturaXml.replace ( "[pobcliente]", cliente->value( "poblcliente" ) );
+    FacturaXml.replace ( "[cpcliente]", cliente->value( "cpcliente" ) );
 
-    FacturaXml.replace ( "[nombre_empresa]", nombre_empresa->valor ( "valor" ) );
-    FacturaXml.replace ( "[cif_empresa]", cif_empresa->valor ( "valor" ) );
-    FacturaXml.replace ( "[dir_empresa]", dir_empresa->valor ( "valor" ) );
-    FacturaXml.replace ( "[ciudad_empresa]", ciudad_empresa->valor ( "valor" ) );
-    FacturaXml.replace ( "[cp_empresa]", cp_empresa->valor ( "valor" ) );
+    FacturaXml.replace ( "[nombre_empresa]", nombre_empresa->value( "valor" ) );
+    FacturaXml.replace ( "[cif_empresa]", cif_empresa->value( "valor" ) );
+    FacturaXml.replace ( "[dir_empresa]", dir_empresa->value( "valor" ) );
+    FacturaXml.replace ( "[ciudad_empresa]", ciudad_empresa->value( "valor" ) );
+    FacturaXml.replace ( "[cp_empresa]", cp_empresa->value( "valor" ) );
 
     if ( trabajador != NULL )
-        FacturaXml.replace ( "[trabajador]", trabajador->valor ( "nomtrabajador" ) + " " + trabajador->valor ( "apellidostrabajador" ) );
+        FacturaXml.replace ( "[trabajador]", trabajador->value( "nomtrabajador" ) + " " + trabajador->value( "apellidostrabajador" ) );
     else
         FacturaXml.replace ( "[trabajador]", "--" );
 
-    FacturaXml.replace ( "[forma_de_pago]", forma_pago->valor ( "descforma_pago" ) );
+    FacturaXml.replace ( "[forma_de_pago]", forma_pago->value( "descforma_pago" ) );
 
     /// Obtenemos las lineas de factura y las escribimos en el buffer
 
@@ -368,7 +368,7 @@ void EFQToolButton::exporta_factura_ubl()
     while ( !lfacturas->eof() ) {
         escribe_linea_factura ( LineasFactura, lfacturas, numerolinea );
 
-        totalFactura = totalFactura + ( BlFixed ( lfacturas->valor ( "cantlfactura" ) ) * BlFixed ( lfacturas->valor ( "pvplfactura" ) ) );
+        totalFactura = totalFactura + ( BlFixed ( lfacturas->value( "cantlfactura" ) ) * BlFixed ( lfacturas->value( "pvplfactura" ) ) );
 
         lfacturas->nextRecord();
         numerolinea++;
@@ -454,7 +454,7 @@ void EFQToolButton::click()
 
     blDebug ( "EFQToolButton::click", 0 );
 
-    if ( ( !m_factura->dialogChanges_hayCambios() ) && ( m_factura->dbValue ( "idfactura" ) != "" ) ) {
+    if ( ( !m_factura->dialogChanges_isChanged() ) && ( m_factura->dbValue ( "idfactura" ) != "" ) ) {
         exporta_factura_ubl();
     } else {
         blDebug ( "Es necesario Guardar la factura antes de exportarla a UBL", 2 );

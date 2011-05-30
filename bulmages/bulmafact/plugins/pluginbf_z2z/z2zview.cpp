@@ -52,7 +52,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 
     try {
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
     
@@ -113,7 +113,7 @@ void Z2ZView::calculaTotalTickets()
     QString query = "SELECT sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) IN (" + listarefs + ")";
 
     BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
-    mui_totaltickets->setText ( cur->valor ( "tot" ) );
+    mui_totaltickets->setText ( cur->value( "tot" ) );
     delete cur;
 
     BlFixed total ( "0.00" );
@@ -123,12 +123,12 @@ void Z2ZView::calculaTotalTickets()
 
         QString query1 = "SELECT COALESCE(sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2), 0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item ( i )->text() + "')";
         BlDbRecordSet *cur1 = mainCompany()->loadQuery ( query1 );
-        total = total + BlFixed ( cur1->valor ( "tot" ) );
+        total = total + BlFixed ( cur1->value( "tot" ) );
         delete cur1;
 
         QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item ( i )->text() + "')";
         BlDbRecordSet *cur2 = mainCompany()->loadQuery ( query2 );
-        min = min + BlFixed ( cur2->valor ( "tot" ) );
+        min = min + BlFixed ( cur2->value( "tot" ) );
         delete cur2;
 
     } // end for
@@ -148,23 +148,23 @@ void Z2ZView::on_mui_traspasar_clicked()
         BlFixed totaltraspasable ( mui_totaltraspasado->text() );
         BlFixed totaltraspasado ( "0.00" );
 
-        if ( g_confpr->valor ( CONF_FACT_ALT ) == "" ) {
+        if ( g_confpr->value( CONF_FACT_ALT ) == "" ) {
             blMsgInfo ( "Debe configurar el parametro CONF_FACT_ALT" );
             return;
         } // end if
         BlPostgreSqlClient *db;
         db = new BlPostgreSqlClient();
-        db->inicializa ( g_confpr->valor ( CONF_FACT_ALT ) );
+        db->inicializa ( g_confpr->value( CONF_FACT_ALT ) );
         db->begin();
 
-        QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        QFile file ( g_confpr->value( CONF_DIR_USER ) + "z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file.open ( QIODevice::WriteOnly ) ) {
             return;
         } // end if
         QTextStream stream ( &file );
 
-        QFile file1 ( g_confpr->valor ( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        QFile file1 ( g_confpr->value( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file1.open ( QIODevice::WriteOnly ) ) {
             file.close();
@@ -172,7 +172,7 @@ void Z2ZView::on_mui_traspasar_clicked()
         } // end if
         QTextStream stream1 ( &file1 );
 
-        QFile file2 ( g_confpr->valor ( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        QFile file2 ( g_confpr->value( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file2.open ( QIODevice::WriteOnly ) ) {
             file.close();
@@ -181,7 +181,7 @@ void Z2ZView::on_mui_traspasar_clicked()
         } // end if
         QTextStream stream2 ( &file2 );
 
-        QFile file3 ( g_confpr->valor ( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        QFile file3 ( g_confpr->value( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file3.open ( QIODevice::WriteOnly ) ) {
             file.close();
@@ -208,14 +208,14 @@ void Z2ZView::on_mui_traspasar_clicked()
             /// Buscamos el minimo del albaran pasado.
             QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item ( i )->text() + "')";
             BlDbRecordSet *cur2 = mainCompany()->loadQuery ( query2 );
-            QString min = cur2->valor ( "tot" );
+            QString min = cur2->value( "tot" );
             delete cur2;
 
             QString query3 = "SELECT * FROM  albaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item ( i )->text() + "')";
             BlDbRecordSet *cur3 = mainCompany()->loadQuery ( query3 );
 
             /// Los albaranes con visa no los ponemos
-            if ( cur3->valor ( "idforma_pago" ) != "2" ) {
+            if ( cur3->value( "idforma_pago" ) != "2" ) {
 
 
                 /// Iteramos sobre las lineas de albaran.
@@ -223,7 +223,7 @@ void Z2ZView::on_mui_traspasar_clicked()
                 BlDbRecordSet *cur1 = mainCompany()->loadQuery ( query1 );
 
                 if ( !cur1->eof() && totaltraspasado < totaltraspasable ) {
-                    QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz, idforma_pago) VALUES ('" + cur3->valor ( "refalbaran" ) + "', " + cur3->valor ( "idcliente" ) + ", " + cur3->valor ( "idalmacen" ) + ", " + curz->valor ( "idz" ) + ", " + cur3->valor ( "idforma_pago" ) + ")";
+                    QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz, idforma_pago) VALUES ('" + cur3->value( "refalbaran" ) + "', " + cur3->value( "idcliente" ) + ", " + cur3->value( "idalmacen" ) + ", " + curz->value( "idz" ) + ", " + cur3->value( "idforma_pago" ) + ")";
                     db->runQuery ( query4 );
                     delete cur3;
                 } // end if
@@ -234,18 +234,18 @@ void Z2ZView::on_mui_traspasar_clicked()
                 while ( !cur1->eof() && totaltraspasado < totaltraspasable ) {
 
                     /// Generamos el archivo de cambios.
-                    stream << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES (" + cur1->valor ( "cantlalbaran" ) + "," + cur1->valor ( "pvpivainclalbaran" ) + ",'" + cur1->valor ( "desclalbaran" ) + "'," + cur1->valor ( "idarticulo" ) + ", " + cur4->valor ( "idalbaran" ) + ");" << endl;
+                    stream << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES (" + cur1->value( "cantlalbaran" ) + "," + cur1->value( "pvpivainclalbaran" ) + ",'" + cur1->value( "desclalbaran" ) + "'," + cur1->value( "idarticulo" ) + ", " + cur4->value( "idalbaran" ) + ");" << endl;
 
-                    QString query6 = "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, ivalalbaran, desclalbaran, idarticulo, idalbaran ) VALUES (" + cur1->valor ( "cantlalbaran" ) + "," + cur1->valor ( "pvpivainclalbaran" ) + ", 0,'" + cur1->valor ( "desclalbaran" ) + "'," + cur1->valor ( "idarticulo" ) + ", " + cur4->valor ( "idalbaran" ) + ")";
+                    QString query6 = "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, ivalalbaran, desclalbaran, idarticulo, idalbaran ) VALUES (" + cur1->value( "cantlalbaran" ) + "," + cur1->value( "pvpivainclalbaran" ) + ", 0,'" + cur1->value( "desclalbaran" ) + "'," + cur1->value( "idarticulo" ) + ", " + cur4->value( "idalbaran" ) + ")";
                     db->runQuery ( query6 );
 
-                    totaltraspasado = totaltraspasado + BlFixed ( cur1->valor ( "cantlalbaran" ) ) * BlFixed ( cur1->valor ( "pvpivainclalbaran" ) );
+                    totaltraspasado = totaltraspasado + BlFixed ( cur1->value( "cantlalbaran" ) ) * BlFixed ( cur1->value( "pvpivainclalbaran" ) );
 
                     /// Hacemos el reversible para que pueda volverse atras el paso.
-                    stream1 << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES (" + cur1->valor ( "cantlalbaran" ) + "," + cur1->valor ( "pvpivainclalbaran" ) + ",'" + cur1->valor ( "desclalbaran" ) + "'," + cur1->valor ( "idarticulo" ) + "," + cur1->valor ( "idalbaran" ) + ");" << endl;
+                    stream1 << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES (" + cur1->value( "cantlalbaran" ) + "," + cur1->value( "pvpivainclalbaran" ) + ",'" + cur1->value( "desclalbaran" ) + "'," + cur1->value( "idarticulo" ) + "," + cur1->value( "idalbaran" ) + ");" << endl;
 
-                    stream2 << "DELETE FROM lalbaran WHERE numlalbaran=" + cur1->valor ( "numlalbaran" ) << endl;
-                    QString query9 = "DELETE FROM lalbaran WHERE numlalbaran = " + cur1->valor ( "numlalbaran" );
+                    stream2 << "DELETE FROM lalbaran WHERE numlalbaran=" + cur1->value( "numlalbaran" ) << endl;
+                    QString query9 = "DELETE FROM lalbaran WHERE numlalbaran = " + cur1->value( "numlalbaran" );
                     mainCompany()->runQuery ( query9 );
 
                     cur1->nextRecord();

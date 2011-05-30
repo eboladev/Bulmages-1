@@ -165,7 +165,7 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     presentar();
     mdb_idalbaranp = "";
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -237,7 +237,7 @@ void AlbaranesProveedor::presentar()
                              "WHERE 1 = 1 " + generaFiltro() );
         /// En caso de que el query haya fallado salimos.
         if ( !cur ) return;
-        m_total->setText ( cur->valor ( "total" ) );
+        m_total->setText ( cur->value( "total" ) );
         delete cur;
     }
     blDebug ( "END AlbaranesProveedor::presentar", 0 );

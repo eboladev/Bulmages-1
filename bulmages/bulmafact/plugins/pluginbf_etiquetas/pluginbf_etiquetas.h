@@ -36,26 +36,5 @@ extern "C" PLUGINBF_ETIQUETAS_EXPORT int FacturaView_FacturaView(FacturaView *);
 */
 extern "C" PLUGINBF_ETIQUETAS_EXPORT int entryPoint ( BfBulmaFact * );
 
-
-// 
-
-/*
-class myplugin : public QObject {
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *dbConnection;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa(bulmafact *);
-
-public slots:
-    void elslot();
-};
-
-*/
-
 #endif
 

@@ -27,28 +27,11 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_almacen.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_ALMACEN_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ALMACEN_EXPORT int SNewAlmacenView (BfCompany *);
-
-
-class PluginBf_Almacen : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Almacen();
-    ~PluginBf_Almacen();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot1();
-};
-
+extern "C" PLUGINBF_ALMACEN_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

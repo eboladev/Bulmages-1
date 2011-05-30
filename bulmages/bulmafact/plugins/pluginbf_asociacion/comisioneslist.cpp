@@ -81,7 +81,7 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     presentar();
     mdb_idcomision = "";
     if ( modoEdicion() )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );

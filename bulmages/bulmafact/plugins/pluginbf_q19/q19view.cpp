@@ -59,8 +59,8 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
         mui_fecha->setDate(QDate::currentDate());
         mui_fecha->calendarWidget()->setFirstDayOfWeek(Qt::Monday);
 
-        meteWindow ( windowTitle(), this, FALSE );
-        dialogChanges_cargaInicial();
+        insertWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el archivo" ) );
@@ -185,7 +185,7 @@ void Q19View::on_mui_aceptar_clicked()
               m_q19->genera ( cur,mui_archivo->text() );
               delete cur;
 
-              dialogChanges_cargaInicial();
+              dialogChanges_readValues();
               close();
           }
     } catch ( ... ) {

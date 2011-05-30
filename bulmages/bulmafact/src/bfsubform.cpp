@@ -144,7 +144,7 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( !cur->eof() ) {
-        rec->setDbValue ( camp->nomcampo(), cur->valor ( "obserarticulo" ) );
+        rec->setDbValue ( camp->nomcampo(), cur->value( "obserarticulo" ) );
     } // end if
     delete cur;
 
@@ -175,30 +175,30 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     if ( camp->nomcampo() == "desctipo_iva" ) {
         cur = mainCompany() ->load ( "SELECT * FROM tipo_iva WHERE desctipo_iva = $1",  camp->text());
         if ( !cur->eof() ) {
-            rec->setDbValue ( "idtipo_iva", cur->valor ( "idtipo_iva" ) );
+            rec->setDbValue ( "idtipo_iva", cur->value( "idtipo_iva" ) );
         } // end if
     } // end if
 
     if ( camp->nomcampo() == "nomtrabajador" ) {
         cur = mainCompany() ->load ( "SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = $1'", camp->text()  );
         if ( !cur->eof() ) {
-            rec->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
+            rec->setDbValue ( "idtrabajador", cur->value( "idtrabajador" ) );
         } // end if
     } // end if
 
     if ( camp->nomcampo() == "nomalmacen" ) {
         cur = mainCompany() ->load ( "SELECT * FROM almacen WHERE nomalmacen ||', '||codigoalmacen = $1" , camp->text() );
         if ( !cur->eof() ) {
-            rec->setDbValue ( "idalmacen", cur->valor ( "idalmacen" ) );
+            rec->setDbValue ( "idalmacen", cur->value( "idalmacen" ) );
         } // end if
     } // end if
 
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         cur = mainCompany() ->load( "SELECT * FROM articulo WHERE codigocompletoarticulo = $1", camp->text()  );
         if ( !cur->eof() ) {
-            rec->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
-            rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+            rec->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
+            rec->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+            rec->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
             if ( m_tablename == "lpresupuesto"
                     || m_tablename == "lpedidoproveedor"
                     || m_tablename == "lpedidocliente"
@@ -206,7 +206,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                     || m_tablename == "lfacturap"
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura" ) {
-                rec->setDbValue ( "desc" + m_tablename, cur->valor ( "nomarticulo" ) );
+                rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) );
                 rec->setDbValue ( "cant" + m_tablename, "1.00" );
                 rec->setDbValue ( "descuento" + m_tablename, "0.00" );
                 calculaPVP ( rec );
@@ -325,15 +325,15 @@ void BfSubForm::setIdCliente ( QString id )
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
-            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1" );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1" );
             if ( !cur->eof() ) {
 
-                if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
-                    rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                if ( curcliente->value( "regimenfiscalcliente" ) == "Normal" ) {
+                    rec->setDbValue ( "iva" + m_tablename, cur1->value( "porcentasa_iva" ) );
                 } // end if
 
-                if ( curcliente->valor ( "recargoeqcliente" ) == "t" ) {
-                    rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                if ( curcliente->value( "recargoeqcliente" ) == "t" ) {
+                    rec->setDbValue ( "reqeq" + m_tablename, cur1->value( "porcentretasa_iva" ) );
                 } // end if
 
             } // end if
@@ -386,13 +386,13 @@ void BfSubForm::setIdProveedor ( QString id )
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
-            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1" );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1" );
             if ( !cur->eof() ) {
-                if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
-                    rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                if ( curproveedor->value( "regimenfiscalproveedor" ) == "Normal" ) {
+                    rec->setDbValue ( "iva" + m_tablename, cur1->value( "porcentasa_iva" ) );
                 } // end if
-                if ( curproveedor->valor ( "recargoeqproveedor" ) == "t" ) {
-                    rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                if ( curproveedor->value( "recargoeqproveedor" ) == "t" ) {
+                    rec->setDbValue ( "reqeq" + m_tablename, cur1->value( "porcentretasa_iva" ) );
                 } // end if
 
             } // end if
@@ -700,12 +700,12 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
         /// el cliente y la tarifa asignada si procede.
         if ( !mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty() ) {
             /// Se ha seleccionado un cliente.
-            m_idArticulo = cur->valor ( "idarticulo" );
+            m_idArticulo = cur->value( "idarticulo" );
             cur3 = mainCompany() ->loadQuery ( "SELECT cliente.idtarifa, ltarifa.pvpltarifa, ltarifa.idalmacen FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE ltarifa.idalmacen = " + m_idAlmacen + " AND cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + m_idArticulo );
-            m_idTarifa = cur3->valor ( "idtarifa" );
+            m_idTarifa = cur3->value( "idtarifa" );
             if ( cur3->numregistros() > 0 ) {
                 /// A) Se dispone de tarifa especial.
-                rec->setDbValue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
+                rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
 
                 /// Disparamos los plugins.
                 int res = g_plugins->lanza ( "BfSubForm_calculaPVP", this );
@@ -716,11 +716,11 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
 
             } else {
                 /// B) No tiene tarifa especial se usa la asignada por defecto.
-                rec->setDbValue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+                rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
             } // end if
         } else {
             /// Sin cliente asignado se usa la tarifa asignada por defecto.
-            rec->setDbValue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+            rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
         } // end if
 
 
@@ -729,7 +729,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
 
 // ==============================
         // Miramos el IVA del articulo y lo ponemos.
-	QString query = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1";
+	QString query = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1";
 
         cur1 = mainCompany() ->loadQuery ( query );
         if ( !cur1->eof() ) {
@@ -741,22 +741,22 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
                     || m_tablename == "lfacturap"
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura" ) {
-                rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                rec->setDbValue ( "iva" + m_tablename, cur1->value( "porcentasa_iva" ) );
 
                 /// Calculamos el recargo equivalente.
                 if ( mdb_idcliente != "" ) {
                     cur2 = mainCompany() ->loadQuery ( "SELECT recargoeqcliente FROM cliente WHERE idcliente = " + mdb_idcliente );
                     if ( !cur2->eof() ) {
-                        if ( cur2->valor ( "recargoeqcliente" ) == "t" ) {
-                            rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                        if ( cur2->value( "recargoeqcliente" ) == "t" ) {
+                            rec->setDbValue ( "reqeq" + m_tablename, cur1->value( "porcentretasa_iva" ) );
                         } // end if
                     } // end if
                     delete cur2;
                 } else if ( mdb_idproveedor != "" ) {
                     cur2 = mainCompany() ->loadQuery ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + mdb_idproveedor );
                     if ( !cur2->eof() ) {
-                        if ( cur2->valor ( "recargoeqproveedor" ) == "t" ) {
-                            rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                        if ( cur2->value( "recargoeqproveedor" ) == "t" ) {
+                            rec->setDbValue ( "reqeq" + m_tablename, cur1->value( "porcentretasa_iva" ) );
                         } // end if
                     } // end if
                     delete cur2;

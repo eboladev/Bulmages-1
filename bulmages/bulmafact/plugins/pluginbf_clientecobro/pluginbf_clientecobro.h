@@ -30,7 +30,7 @@
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
 #include "pdefs_pluginbf_clientecobro.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int SNewCobroView (BfCompany *);
@@ -41,25 +41,7 @@ extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-
-
-class PluginBf_ClienteCobro : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ClienteCobro();
-    ~PluginBf_ClienteCobro();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
+extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

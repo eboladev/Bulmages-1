@@ -92,7 +92,7 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     mui_listado->cargar();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de Inventarios" ) );
     } // end if
@@ -173,9 +173,9 @@ void InventariosView::on_mui_imprimir_clicked()
 {
     blDebug ( "InventariosView::on_mui_imprimir_clicked", 0 );
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -190,10 +190,10 @@ void InventariosView::on_mui_imprimir_clicked()
     /// Copiamos el logo
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -213,10 +213,10 @@ void InventariosView::on_mui_imprimir_clicked()
     QString query = "SELECT * FROM articulo ";
     BlDbRecordSet *almacenes = mainCompany() ->loadQuery ( "SELECT * FROM almacen" );
     while ( !almacenes->eof() ) {
-        QString idalmacen = almacenes->valor ( "idalmacen" );
-        query += " LEFT JOIN ( SELECT stock AS stock" + idalmacen + ", idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
+        QString idalmacen = almacenes->value( "idalmacen" );
+        query += " LEFT JOIN ( SELECT stock AS stock" + idalmacen + ", idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->value( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
 
-        txt += "\t<td>" + almacenes->valor ( "nomalmacen" ) + "</td>\n";
+        txt += "\t<td>" + almacenes->value( "nomalmacen" ) + "</td>\n";
         almacenes->nextRecord();
     } // end while
     txt += "</tr>\n";
@@ -226,10 +226,10 @@ void InventariosView::on_mui_imprimir_clicked()
     BlDbRecordSet *cstock = mainCompany() ->loadQuery ( query );
     while ( !cstock->eof() ) {
         txt += "<tr>\n";
-        txt += "\t<td>" + cstock->valor ( "nomarticulo" ) + "</td>\n";
+        txt += "\t<td>" + cstock->value( "nomarticulo" ) + "</td>\n";
         almacenes->firstRecord();
         while ( !almacenes->eof() ) {
-            txt += "\t<td>" + cstock->valor ( "stock" + almacenes->valor ( "idalmacen" ) ) + "</td>\n";
+            txt += "\t<td>" + cstock->value( "stock" + almacenes->value( "idalmacen" ) ) + "</td>\n";
             almacenes->nextRecord();
         } // end while
         cstock->nextRecord();

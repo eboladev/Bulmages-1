@@ -60,11 +60,11 @@
 /**
 \param pNomDB
 **/
-void BlCompanyDialog::setNomDB ( QString pNomDB )
+void BlCompanyDialog::setDbName ( QString pNomDB )
 {
-    blDebug ( "BlCompanyDialog::setNomDB", 0 );
+    blDebug ( "BlCompanyDialog::setDbName", 0 );
     m_empresabd = pNomDB;
-    blDebug ( "END BlCompanyDialog::setNomDB", 0 );
+    blDebug ( "END BlCompanyDialog::setDbName", 0 );
 }
 
 
@@ -72,11 +72,11 @@ void BlCompanyDialog::setNomDB ( QString pNomDB )
 /**
 \param pNomEmpresa
 **/
-void BlCompanyDialog::setNomEmpresa ( QString pNomEmpresa )
+void BlCompanyDialog::setCompanyName ( QString pNomEmpresa )
 {
-    blDebug ( "BlCompanyDialog::setNomEmpresa", 0 );
+    blDebug ( "BlCompanyDialog::setCompanyName", 0 );
     m_nombreempresa = pNomEmpresa;
-    blDebug ( "END BlCompanyDialog::setNomEmpresa", 0 );
+    blDebug ( "END BlCompanyDialog::setCompanyName", 0 );
 }
 
 
@@ -84,11 +84,11 @@ void BlCompanyDialog::setNomEmpresa ( QString pNomEmpresa )
 /**
 \param pTipoEmpresa
 **/
-void BlCompanyDialog::setTipoEmpresa ( QString pTipoEmpresa )
+void BlCompanyDialog::setCompanyType ( QString pTipoEmpresa )
 {
-    blDebug ( "BlCompanyDialog::setTipoEmpresa", 0 );
+    blDebug ( "BlCompanyDialog::setCompanyType", 0 );
     m_tipoempresa = pTipoEmpresa;
-    blDebug ( "END BlCompanyDialog::setTipoEmpresa", 0 );
+    blDebug ( "END BlCompanyDialog::setCompanyType", 0 );
 
 }
 
@@ -109,11 +109,11 @@ bool BlCompanyDialog::modoDestructivo()
 /**
 \param pModo
 **/
-void BlCompanyDialog::setModoDestructivo ( bool pModo )
+void BlCompanyDialog::setDestroyMode ( bool pModo )
 {
-    blDebug ( "BlCompanyDialog::setModoDestructivo", 0 );
+    blDebug ( "BlCompanyDialog::setDestroyMode", 0 );
     m_modo = pModo;
-    blDebug ( "END BlCompanyDialog::setModoDestructivo", 0 );
+    blDebug ( "END BlCompanyDialog::setDestroyMode", 0 );
 }
 
 
@@ -121,10 +121,10 @@ void BlCompanyDialog::setModoDestructivo ( bool pModo )
 /**
 \return
 **/
-QString BlCompanyDialog::nomDB()
+QString BlCompanyDialog::dbName()
 {
-    blDebug ( "BlCompanyDialog::nomDB", 0 );
-    blDebug ( "END BlCompanyDialog::nomDB", 0 );
+    blDebug ( "BlCompanyDialog::dbName", 0 );
+    blDebug ( "END BlCompanyDialog::dbName", 0 );
     return m_empresabd;
 }
 
@@ -133,10 +133,10 @@ QString BlCompanyDialog::nomDB()
 /**
 \return
 **/
-QString BlCompanyDialog::nomEmpresa()
+QString BlCompanyDialog::companyName()
 {
-    blDebug ( "BlCompanyDialog::nomEmpresa", 0 );
-    blDebug ( "END BlCompanyDialog::nomEmpresa", 0 );
+    blDebug ( "BlCompanyDialog::companyName", 0 );
+    blDebug ( "END BlCompanyDialog::companyName", 0 );
     return m_nombreempresa;
 }
 
@@ -145,10 +145,10 @@ QString BlCompanyDialog::nomEmpresa()
 /**
 \return
 **/
-QString BlCompanyDialog::tipoEmpresa()
+QString BlCompanyDialog::companyType()
 {
-    blDebug ( "BlCompanyDialog::tipoEmpresa", 0 );
-    blDebug ( "END BlCompanyDialog::tipoEmpresa", 0 );
+    blDebug ( "BlCompanyDialog::companyType", 0 );
+    blDebug ( "END BlCompanyDialog::companyType", 0 );
     return m_tipoempresa;
 }
 
@@ -194,7 +194,7 @@ bool BlCompanyDialog::close ( bool )
 
 /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para
 /// hacer la presentaci&oacute;n.
-/// Llama a la funci&oacute;n 'cargaArchivo'.
+/// Llama a la funci&oacute;n 'loadFile'.
 /// @param parent La ventana que hace la llamada.
 /// @param tipo Cadena de texto que indica si es contabilidad o facturaci&oacute;n.
 /// @param name Nombre de la ventana.
@@ -213,14 +213,14 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
                        SLOT ( mui_empresasdobleclick() ) );
 
     m_tipo = tipo;
-    setTipoEmpresa ( "" );
-    setModoDestructivo ( FALSE );
+    setCompanyType ( "" );
+    setDestroyMode ( FALSE );
     /// Si el m_modo es false (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if ( !modoDestructivo() )
         mui_cancelar->setText ( _ ( "&Cierra el programa" ) );
     // end if
-    cargaArchivo();
+    loadFile();
     /// Seleccionar la primera empresa de la lista inicialmente, de este modo,
     /// si s&oacute;lo hay una empresa o se quiere entrar a la primera bastar&aacute; con pulsar la tecla intro.
     mui_empresas->selectRow(0);
@@ -283,11 +283,11 @@ void BlCompanyDialog::accept()
     if ( ( mui_empresas->currentRow() != -1 ) &&
             ( mui_empresas->isItemSelected ( mui_empresas->item ( mui_empresas->currentRow(), 0 ) ) == TRUE ) ) {
         itemfilaactual0 = mui_empresas->item ( mui_empresas->currentRow(), 0 );
-        setNomEmpresa ( itemfilaactual0->text() );
+        setCompanyName ( itemfilaactual0->text() );
         itemfilaactual2 = mui_empresas->item ( mui_empresas->currentRow(), 2 );
-        setNomDB ( itemfilaactual2->text() );
+        setDbName ( itemfilaactual2->text() );
         itemfilaactual3 = mui_empresas->item ( mui_empresas->currentRow(), 3 );
-        setTipoEmpresa ( itemfilaactual3->text() );
+        setCompanyType ( itemfilaactual3->text() );
         done ( 0 );
     } else
         blMsgInfo ( _ ( "Para entrar, antes tiene que seleccionar una empresa." ) );
@@ -310,11 +310,11 @@ void BlCompanyDialog::mui_empresasdobleclick()
 /**
 \return
 **/
-void BlCompanyDialog::cargaArchivo()
+void BlCompanyDialog::loadFile()
 {
-    blDebug ( "BlCompanyDialog::cargaArchivo", 0 );
+    blDebug ( "BlCompanyDialog::loadFile", 0 );
     mui_empresas->setSortingEnabled(FALSE);
-    QString dir1 = g_confpr->valor ( CONF_DIR_USER ) + LISTEMPRESAS;
+    QString dir1 = g_confpr->value( CONF_DIR_USER ) + LISTEMPRESAS;
 
     /// Si el archivo no existe hacemos una recarga.
     blDebug ( "Vamos a comprobar la existencia", 1 );
@@ -352,7 +352,7 @@ void BlCompanyDialog::cargaArchivo()
     } // end while
     file.close();
     mui_empresas->setSortingEnabled(TRUE);
-    blDebug ( "END BlCompanyDialog::cargaArchivo", 0 );
+    blDebug ( "END BlCompanyDialog::loadFile", 0 );
 }
 
 
@@ -361,9 +361,9 @@ void BlCompanyDialog::cargaArchivo()
 /**
 \return
 **/
-void BlCompanyDialog::guardaArchivo()
+void BlCompanyDialog::saveFile()
 {
-    blDebug ( "BlCompanyDialog::guardaArchivo", 0 );
+    blDebug ( "BlCompanyDialog::saveFile", 0 );
 
 #ifndef Q_OS_WIN32
     QString dirusuario = getenv ( "HOME" );
@@ -379,8 +379,8 @@ void BlCompanyDialog::guardaArchivo()
 
     /// Deshabilitamos las alertas para que no aparezcan avisos con bases de datos
     /// que no son del sistema.
-    QString alertas = g_confpr->valor ( CONF_ALERTAS_DB );
-    g_confpr->setValor ( CONF_ALERTAS_DB, "No" );
+    QString alertas = g_confpr->value( CONF_ALERTAS_DB );
+    g_confpr->setValue ( CONF_ALERTAS_DB, "No" );
     /// Nos conectamos a la base de datos 'template1' para obtener un listado de todas
     /// las bases de datos existentes.
     BlPostgreSqlClient *db;
@@ -396,14 +396,14 @@ void BlCompanyDialog::guardaArchivo()
 
     /// Para cada base de datos nos intentamos conectanos y mirar de qu&eacute; tipo es.
     while ( !curs->eof() ) {
-        trataEmpresa ( curs->valor ( "datname" ), &file );
+        trataEmpresa ( curs->value( "datname" ), &file );
         curs->nextRecord();
     } // end while
     delete curs;
     delete db;
-    g_confpr->setValor ( CONF_ALERTAS_DB, alertas );
+    g_confpr->setValue ( CONF_ALERTAS_DB, alertas );
     file.close();
-    blDebug ( "END BlCompanyDialog::guardaArchivo", 0 );
+    blDebug ( "END BlCompanyDialog::saveFile", 0 );
 }
 
 
@@ -437,7 +437,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
             cursa = db1->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'Tipo'" );
             if ( !cursa ) return;
             if ( !cursa->eof() ) {
-                tipo = cursa->valor ( "valor" );
+                tipo = cursa->value( "valor" );
                 nomdb = empresa;
                 delete cursa;
             } else {
@@ -447,7 +447,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
             cursa = db1->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'" );
             if ( !cursa ) return;
             if ( !cursa->eof() ) {
-                nombre = cursa->valor ( "valor" );
+                nombre = cursa->value( "valor" );
                 delete cursa;
             } else {
                 delete cursa;
@@ -456,7 +456,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
             cursa = db1->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'Ejercicio'" );
             if ( cursa ) {
                 if ( !cursa->eof() )
-                    ano = cursa->valor ( "valor" );
+                    ano = cursa->value( "valor" );
                 // end if
                 delete cursa;
             } // end if
@@ -489,7 +489,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
 void BlCompanyDialog::on_mui_actualizar_clicked()
 {
     blDebug ( "BlCompanyDialog::on_mui_actualizar_clicked", 0 );
-    guardaArchivo();
+    saveFile();
     blDebug ( "END BlCompanyDialog::on_mui_actualizar_clicked", 0 );
 }
 

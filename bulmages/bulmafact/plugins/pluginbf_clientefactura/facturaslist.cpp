@@ -120,7 +120,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
 
     mdb_idfactura = "";
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -176,9 +176,9 @@ void FacturasList::presentar()
     /// Esta consulta podria resultar en NULL y por tanto debe tratarse el caso
     /// Usamos el localeformat porque los datos son presentados en pantalla y el punto decimal debe salir bien.
     if ( cur ) {
-        mui_totalbimponible->setText ( cur->valor ( "base", -1, TRUE ) );
-        mui_totalimpuestos->setText ( cur->valor ( "impuestos", -1, TRUE ) );
-        mui_totalfacturas->setText ( cur->valor ( "total", -1, TRUE ) );
+        mui_totalbimponible->setText ( cur->value( "base", -1, TRUE ) );
+        mui_totalimpuestos->setText ( cur->value( "impuestos", -1, TRUE ) );
+        mui_totalfacturas->setText ( cur->value( "total", -1, TRUE ) );
         delete cur;
     } // end if
 

@@ -87,11 +87,11 @@ void estadisticasview::presentar()
     cursorapt = dbConnection->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
-        query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
+        query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->value( "idcuenta" ).ascii() );
         BlDbRecordSet *mycur = dbConnection->loadQuery ( query, "cursorrefresco" );
 
-        query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
-//   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
+        query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->value( "tsaldo" ).ascii() ), atof ( mycur->value( "tdebe" ).ascii() ), atof ( mycur->value( "thaber" ).ascii() ), atof ( mycur->value( "asaldo" ).ascii() ),  atoi ( mycur->value( "padre" ).ascii() ) );
+//   fprintf(stderr,"%s para el codigo\n",query, cursorapt->value("codigo").c_str());
         dbConnection->runQuery ( query );
         delete mycur;
         cursorapt->nextRecord();
@@ -122,25 +122,25 @@ void estadisticasview::presentar()
 #endif
     while ( !cursorapt->eof() ) {
         // Acumulamos los totales para al final poder escribirlos
-        float valor =  atof ( cursorapt->valor ( "tsaldo" ).ascii() );
+        float valor =  atof ( cursorapt->value( "tsaldo" ).ascii() );
         if ( valor > 0 ) {
 #ifdef ESTADISTICAS
-            m_pie->addValue ( valor, cursorapt->valor ( "descripcion" ).mid ( 0, 15 ).ascii() );
+            m_pie->addValue ( valor, cursorapt->value( "descripcion" ).mid ( 0, 15 ).ascii() );
 #endif
 #ifdef GDCHART
             label[j] = new char[30];
-            strcpy ( label[j], cursorapt->valor ( "descripcion" ).mid ( 0, 15 ).ascii() );
+            strcpy ( label[j], cursorapt->value( "descripcion" ).mid ( 0, 15 ).ascii() );
             p[j] = valor;
             fprintf ( stderr, "%s %d", label[j], p[j] );
 #endif
 
         } else {
 #ifdef ESTADISTICAS
-            m_pie->addValue ( -valor, cursorapt->valor ( "descripcion" ).mid ( 0, 15 ).ascii() );
+            m_pie->addValue ( -valor, cursorapt->value( "descripcion" ).mid ( 0, 15 ).ascii() );
 #endif
 #ifdef GDCHART
             label[j] = new char[30];
-            strcpy ( label[j], cursorapt->valor ( "descripcion" ).mid ( 0, 15 ).ascii() );
+            strcpy ( label[j], cursorapt->value( "descripcion" ).mid ( 0, 15 ).ascii() );
             p[j] = -valor;
             fprintf ( stderr, "%s %d", label[j], p[j] );
 #endif

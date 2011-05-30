@@ -102,9 +102,9 @@ void Inventario::vaciaInventario()
 void Inventario::pintaInventario()
 {
     blDebug ( "pintaInventario\n", 0 );
-    pintaidinventario ( dbValue ( "idinventario" ) );
-    pintanominventario ( dbValue ( "nominventario" ) );
-    pintafechainventario ( dbValue ( "fechainventario" ) );
+    pintaIdInventario ( dbValue ( "idinventario" ) );
+    pintaNomInventario ( dbValue ( "nominventario" ) );
+    pintaFechaInventario ( dbValue ( "fechainventario" ) );
 }
 
 
@@ -121,8 +121,8 @@ int Inventario::guardar()
     companyact->begin();
     try {
         QString id;
-        DBsave ( id );
-        setidinventario ( id );
+        dbSave ( id );
+        setIdInventario ( id );
         listalineas->guardar();
         companyact->commit();
         cargar ( id );
@@ -176,30 +176,30 @@ ListControlStockView *Inventario::getlistalineas()
 ///
 /**
 **/
-void Inventario::pintaidinventario ( QString )
+void Inventario::pintaIdInventario ( QString )
 {
-    blDebug ( "Inventario::pintaidinventario", 0 );
-    blDebug ( "END Inventario::pintaidinventario", 0 );
+    blDebug ( "Inventario::pintaIdInventario", 0 );
+    blDebug ( "END Inventario::pintaIdInventario", 0 );
 }
 
 
 ///
 /**
 **/
-void Inventario::pintafechainventario ( QString )
+void Inventario::pintaFechaInventario ( QString )
 {
-    blDebug ( "Inventario::pintafechainventario", 0 );
-    blDebug ( "END Inventario::pintafechainventario", 0 );
+    blDebug ( "Inventario::pintaFechaInventario", 0 );
+    blDebug ( "END Inventario::pintaFechaInventario", 0 );
 }
 
 
 ///
 /**
 **/
-void Inventario::pintanominventario ( QString )
+void Inventario::pintaNomInventario ( QString )
 {
-    blDebug ( "Inventario::pintanominventario", 0 );
-    blDebug ( "END Inventario::pintanominventario", 0 );
+    blDebug ( "Inventario::pintaNomInventario", 0 );
+    blDebug ( "END Inventario::pintaNomInventario", 0 );
 }
 
 
@@ -207,12 +207,12 @@ void Inventario::pintanominventario ( QString )
 /**
 \param val
 **/
-void Inventario::setidinventario ( QString val )
+void Inventario::setIdInventario ( QString val )
 {
-    blDebug ( "Inventario::setidinventario", 0 );
+    blDebug ( "Inventario::setIdInventario", 0 );
     setDbValue ( "idinventario", val );
     listalineas->setColumnValue ( "idinventario", val );
-    blDebug ( "END Inventario::setidinventario", 0 );
+    blDebug ( "END Inventario::setIdInventario", 0 );
 }
 
 
@@ -220,11 +220,11 @@ void Inventario::setidinventario ( QString val )
 /**
 \param val
 **/
-void Inventario::setfechainventario ( QString val )
+void Inventario::setFechaInventario ( QString val )
 {
-    blDebug ( "Inventario::setfechainventario", 0 );
+    blDebug ( "Inventario::setFechaInventario", 0 );
     setDbValue ( "fechainventario", val );
-    blDebug ( "END Inventario::setfechainventario", 0 );
+    blDebug ( "END Inventario::setFechaInventario", 0 );
 }
 
 
@@ -232,11 +232,11 @@ void Inventario::setfechainventario ( QString val )
 /**
 \param val
 **/
-void Inventario::setnominventario ( QString val )
+void Inventario::setNomInventario ( QString val )
 {
-    blDebug ( "Inventario::setnominventario", 0 );
+    blDebug ( "Inventario::setNomInventario", 0 );
     setDbValue ( "nominventario", val );
-    blDebug ( "END Inventario::setnominventario", 0 );
+    blDebug ( "END Inventario::setNomInventario", 0 );
 }
 
 
@@ -252,9 +252,9 @@ void Inventario::imprimirInventario()
     QString query = "SELECT idarticulo, codigocompeltoarticulo, nomarticulo FROM articulo ";
     BlDbRecordSet *almacenes = companyact->loadQuery ( "SELECT * FROM almacen" );
     while ( !almacenes->eof() ) {
-        QString idalmacen = almacenes->valor ( "idalmacen" );
-        query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
-        txt += "<td>" + almacenes->valor ( "nomalmacen" ) + "</td>";
+        QString idalmacen = almacenes->value( "idalmacen" );
+        query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->value( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
+        txt += "<td>" + almacenes->value( "nomalmacen" ) + "</td>";
         almacenes->nextRecord();
     } // end while
     delete almacenes;
@@ -263,9 +263,9 @@ void Inventario::imprimirInventario()
     BlDbRecordSet *cstock = companyact->loadQuery ( query );
     while ( !cstock->eof() ) {
         txt += "<tr>\n";
-        txt += "<td>" + cstock->valor ( "nomarticulo" );
+        txt += "<td>" + cstock->value( "nomarticulo" );
         for ( int i = 0; i < cstock->numcampos(); i++ ) {
-            txt += "<td>" + cstock->valor ( i ) + "</td>";
+            txt += "<td>" + cstock->value( i ) + "</td>";
         } // end for
         cstock->nextRecord();
         txt += "\n";

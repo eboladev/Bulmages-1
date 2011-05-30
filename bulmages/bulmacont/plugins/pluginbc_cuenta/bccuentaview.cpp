@@ -93,8 +93,8 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_padre->m_valores["descripcion"] = "";
     mui_padre->m_valores["codigo"] = "";
 
-    dialogChanges_cargaInicial();
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    dialogChanges_readValues();
+    mainCompany() ->insertWindow ( windowTitle(), this );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -129,7 +129,7 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
     query = "SELECT * FROM cuenta WHERE padre = id_cuenta('" + codpadre + "') ORDER BY codigo DESC";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
-        long int valor = cur->valor ( "codigo" ).toLong();
+        long int valor = cur->value( "codigo" ).toLong();
         valor ++;
         cpadreaux.setNum ( valor );
         mui_codigo->setText ( cpadreaux );
@@ -138,7 +138,7 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
         QString query2 = "SELECT * FROM cuenta WHERE codigo = '" + codpadre + "'";
 	BlDbRecordSet *cur2 = mainCompany() ->loadQuery ( query2 );
 
-        int tipocuenta = cur2->valor ( "tipocuenta" ).toInt();
+        int tipocuenta = cur2->value( "tipocuenta" ).toInt();
         switch ( tipocuenta ) {
         case 0:
             mui_tipocuenta_0->setChecked ( TRUE );

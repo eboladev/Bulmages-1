@@ -25,7 +25,7 @@ DockApp::DockApp ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     setupUi ( this );
 
     /// Cambiamos el icono de las mesas.
-    mui_dockapp->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
+    mui_dockapp->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/table.svg" ) );
 
     g_doc2 = new QDockWidget ( "Docked", g_main );
     g_doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );

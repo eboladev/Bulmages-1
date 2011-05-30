@@ -32,7 +32,7 @@
 linprevcobro::linprevcobro ( BcCompany *comp )
 {
     blDebug ( "linprevcobro::linprevcobro", 0 );
-    empresaactual = comp;
+    company = comp;
     dbConnection = comp->bdempresa();
     vacialinprevcobro();
     blDebug ( "END linprevcobro::linprevcobro", 0 );
@@ -47,7 +47,7 @@ linprevcobro::linprevcobro ( BcCompany *comp )
 linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 {
     blDebug ( "linprevcobro::linprevcobro", 0 );
-    empresaactual = comp;
+    company = comp;
     dbConnection = comp->bdempresa();
     QString SQLQuery = "SELECT * FROM prevcobro "
                        "LEFT JOIN  cuenta ON prevcobro.idcuenta = cuenta.idcuenta "
@@ -55,22 +55,22 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
                        "WHERE idprevcobro = " + idprevcobro;
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_idprevcobro = cur->valor ( "idprevcobro" );
-        mdb_fprevistaprevcobro = cur->valor ( "fprevistaprevcobro" );
-        mdb_fcobroprevcobro = cur->valor ( "fcobroprevcobro" );
-        mdb_idfpago = cur->valor ( "idfpago" );
-        mdb_idcuenta = cur->valor ( "idcuenta" );
-        mdb_idasiento = cur->valor ( "idasiento" );
-        mdb_cantidadprevistaprevcobro = cur->valor ( "cantidadprevistaprevcobro" );
-        mdb_cantidadprevcobro = cur->valor ( "cantidadprevcobro" );
-        mdb_idregistroiva = cur->valor ( "idregistroiva" );
-        mdb_tipoprevcobro = cur->valor ( "tipoprevcobro" );
-        mdb_docprevcobro = cur->valor ( "docprevcobro" );
-        mdb_codigocuenta = cur->valor ( "codigo" );
-        mdb_nomcuenta = cur->valor ( "descripcion" );
-        mdb_idctacliente = cur->valor ( "idctacliente" );
-        mdb_codigoctacliente = cur->valor ( "codigoctacliente" );
-        mdb_nomctacliente = cur->valor ( "nomctacliente" );
+        mdb_idprevcobro = cur->value( "idprevcobro" );
+        mdb_fprevistaprevcobro = cur->value( "fprevistaprevcobro" );
+        mdb_fcobroprevcobro = cur->value( "fcobroprevcobro" );
+        mdb_idfpago = cur->value( "idfpago" );
+        mdb_idcuenta = cur->value( "idcuenta" );
+        mdb_idasiento = cur->value( "idasiento" );
+        mdb_cantidadprevistaprevcobro = cur->value( "cantidadprevistaprevcobro" );
+        mdb_cantidadprevcobro = cur->value( "cantidadprevcobro" );
+        mdb_idregistroiva = cur->value( "idregistroiva" );
+        mdb_tipoprevcobro = cur->value( "tipoprevcobro" );
+        mdb_docprevcobro = cur->value( "docprevcobro" );
+        mdb_codigocuenta = cur->value( "codigo" );
+        mdb_nomcuenta = cur->value( "descripcion" );
+        mdb_idctacliente = cur->value( "idctacliente" );
+        mdb_codigoctacliente = cur->value( "codigoctacliente" );
+        mdb_nomctacliente = cur->value( "nomctacliente" );
     } else {
         vacialinprevcobro();
     }// end if
@@ -101,7 +101,7 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 linprevcobro::linprevcobro ( BcCompany *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente )
 {
     blDebug ( "linprevcobro::linprevcobro", 0 );
-    empresaactual = comp;
+    company = comp;
     dbConnection = comp->bdempresa();
     mdb_idprevcobro = a;
     mdb_fprevistaprevcobro = b;
@@ -208,7 +208,7 @@ void linprevcobro::guardalinprevcobro()
         dbConnection->runQuery ( SQLQuery );
         BlDbRecordSet *cur = dbConnection->loadQuery ( "SELECT MAX(idprevcobro) AS m FROM prevcobro " );
         if ( !cur->eof() ) {
-            mdb_idprevcobro = cur->valor ( "m" );
+            mdb_idprevcobro = cur->value( "m" );
         } // end if
         delete cur;
         dbConnection->commit();
@@ -242,12 +242,12 @@ void linprevcobro::setcodigocuenta ( QString val )
 {
     blDebug ( "linprevcobro::setcodigocuenta", 0 );
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
-    mdb_codigocuenta = blExtendStringWithZeros ( val, empresaactual->numdigitosempresa() );
+    mdb_codigocuenta = blExtendStringWithZeros ( val, company->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_nomcuenta = cur->valor ( "descripcion" );
-        mdb_idcuenta = cur->valor ( "idcuenta" );
+        mdb_nomcuenta = cur->value( "descripcion" );
+        mdb_idcuenta = cur->value( "idcuenta" );
     } // end if
     delete cur;
     blDebug ( "END linprevcobro::setcodigocuenta", 0 );
@@ -266,8 +266,8 @@ void linprevcobro::setidcuenta ( QString val )
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idcuenta + "";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_nomcuenta = cur->valor ( "descripcion" );
-        mdb_codigocuenta = cur->valor ( "codigo" );
+        mdb_nomcuenta = cur->value( "descripcion" );
+        mdb_codigocuenta = cur->value( "codigo" );
     } // end if
     delete cur;
     fprintf ( stderr, "end setidcuenta\n" );
@@ -307,7 +307,7 @@ int linprevcobro::creaPago()
         QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion = valor AND configuracion.nombre = 'Cobro'";
         BlDbRecordSet *cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idainteligente = cur->valor ( "idainteligente" );
+            idainteligente = cur->value( "idainteligente" );
         } else {
             return 0;
         }  // end if
@@ -317,7 +317,7 @@ int linprevcobro::creaPago()
         QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion = valor AND configuracion.nombre = 'Pago'";
         BlDbRecordSet *cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
-            idainteligente = cur->valor ( "idainteligente" );
+            idainteligente = cur->value( "idainteligente" );
         } else {
             return 0;
         } // end if
@@ -326,26 +326,26 @@ int linprevcobro::creaPago()
     /// Para saber si al final se ha hecho el asiento o no almacenamos el valor
     /// actual del asiento para ver despues cual es el numero de asiento y comprobar
     /// si ha cambiado o no.
-//    QString idasiento = empresaactual->intapuntsempresa() ->idasiento();
+//    QString idasiento = company->intapuntsempresa() ->idasiento();
     QString idasiento = g_asiento ->idasiento();
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
     /// Se va a generar el asiento.
     int numasiento = 0;
-    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( empresaactual, diag );
+    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( company, diag );
     nueva->inicializa ( numasiento );
-    nueva->muestraplantilla ( idainteligente );
-    nueva->setfechaasiento ( fecha );
-    nueva->setvalores ( "$fecha$", fecha );
-    nueva->setvalores ( "$codbanco$", codbanco );
-    nueva->setvalores ( "$codcuenta$", codcuenta );
-    nueva->setvalores ( "$total$", total );
-    nueva->setmodo ( 1 );
+    nueva->muestraPlantilla ( idainteligente );
+    nueva->setFechaAsiento ( fecha );
+    nueva->setValores ( "$fecha$", fecha );
+    nueva->setValores ( "$codbanco$", codbanco );
+    nueva->setValores ( "$codcuenta$", codcuenta );
+    nueva->setValores ( "$total$", total );
+    nueva->setModo ( 1 );
 
     diag->exec();
 
-//    QString idasiento1 = empresaactual->intapuntsempresa() ->idasiento();
+//    QString idasiento1 = company->intapuntsempresa() ->idasiento();
     QString idasiento1 = g_asiento ->idasiento();
     if ( idasiento1 == idasiento ) {
         delete diag;
@@ -367,12 +367,12 @@ void linprevcobro::setcodigoctacliente ( QString val )
 {
     blDebug ( "linprevcobro::setcodigoctacliente", 0 );
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
-    mdb_codigoctacliente = blExtendStringWithZeros ( val, empresaactual->numdigitosempresa() );
+    mdb_codigoctacliente = blExtendStringWithZeros ( val, company->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_nomctacliente = cur->valor ( "descripcion" );
-        mdb_idctacliente = cur->valor ( "idcuenta" );
+        mdb_nomctacliente = cur->value( "descripcion" );
+        mdb_idctacliente = cur->value( "idcuenta" );
     }// end if
     delete cur;
     blDebug ( "END linprevcobro::setcodigoctacliente", 0 );
@@ -391,8 +391,8 @@ void linprevcobro::setidctacliente ( QString val )
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idctacliente + "";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_nomctacliente = cur->valor ( "descripcion" );
-        mdb_codigoctacliente = cur->valor ( "codigo" );
+        mdb_nomctacliente = cur->value( "descripcion" );
+        mdb_codigoctacliente = cur->value( "codigo" );
     } // end if
     delete cur;
     fprintf ( stderr, "end setidcuenta\n" );

@@ -26,33 +26,10 @@
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "pdefs_pluginbf_asociacion.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_ASOCIACION_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ASOCIACION_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-
-
-class PluginBf_Asociacion : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Asociacion();
-    ~PluginBf_Asociacion();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
-    void elslot3();
-    void convjunta();
-    void comision();
-};
-
-
+extern "C" PLUGINBF_ASOCIACION_EXPORT int BlAction_triggered(BlAction *);
 #endif
 

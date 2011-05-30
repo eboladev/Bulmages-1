@@ -89,7 +89,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
     m_fechafinal1->setText ( cadena );
     m_cursorcta = NULL;
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
 
     m_tratarpunteos = TRUE;
 
@@ -115,7 +115,7 @@ BcExtractoView::~BcExtractoView()
     blDebug ( "BcExtractoView::~BcExtractoView", 0 );
     guardar();
     delete m_cursorcta;
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcExtractoView::~BcExtractoView", 0 );
 }
 
@@ -287,7 +287,7 @@ void BcExtractoView::boton_guardar()
 /*
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar libro diario" ),
-                 g_confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->value( CONF_DIR_USER ),
                  _ ( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -393,10 +393,10 @@ void BcExtractoView::presentar()
         if ( m_cursorcta->eof() || m_cursorcta->bof() )
             return;
 
-        idcuenta = m_cursorcta->valor ( "idcuenta" );
+        idcuenta = m_cursorcta->value( "idcuenta" );
         /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
-        codigocuenta->setText ( m_cursorcta->valor ( "codigo" ) );
-        nombrecuenta->setText ( m_cursorcta->valor ( "descripcion" ) );
+        codigocuenta->setText ( m_cursorcta->value( "codigo" ) );
+        nombrecuenta->setText ( m_cursorcta->value( "descripcion" ) );
         /// Hacemos la consulta de los apuntes a listar en la base de datos.
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
@@ -457,8 +457,8 @@ void BcExtractoView::presentar()
             query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte LEFT JOIN asiento ON apunte.idasiento = asiento.idasiento WHERE idcuenta =" + idcuenta + " AND apunte.fecha < '" + finicial + "'" + clase;
             cursoraux = mainCompany() ->loadQuery ( query );
             if ( !cursoraux->eof() ) {
-                debeinicial = BlFixed ( cursoraux->valor ( "tdebe" ) );
-                haberinicial = BlFixed ( cursoraux->valor ( "thaber" ) );
+                debeinicial = BlFixed ( cursoraux->value( "tdebe" ) );
+                haberinicial = BlFixed ( cursoraux->value( "thaber" ) );
                 saldoinicial = debeinicial - haberinicial;
             } // end if
             delete cursoraux;
@@ -475,8 +475,8 @@ void BcExtractoView::presentar()
             /// Recorremos la lista agregando el campo de saldo.
             int i = 0;
             while ( !cursorapt->eof() ) {
-                debe = BlFixed ( cursorapt->valor ( "debe" ) );
-                haber = BlFixed ( cursorapt->valor ( "haber" ) );
+                debe = BlFixed ( cursorapt->value( "debe" ) );
+                haber = BlFixed ( cursorapt->value( "haber" ) );
                 saldoparcial = saldoparcial + debe - haber;
                 saldo = saldo + debe - haber;
                 debefinal = debefinal + debe;
@@ -539,20 +539,20 @@ void BcExtractoView::on_mui_casacion_clicked()
 {
     blDebug ( "BcExtractoView::on_mui_casacion_clicked", 0 );
     try {
-        QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
+        QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
         BlDbRecordSet *curshaber = mainCompany() ->loadQuery ( query );
         BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
         barra.setText ( _ ( "Cargando Extracto de Cuentas" ) );
         while ( !curshaber->eof() ) {
-            query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->valor ( "haber" ) + " AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
+            query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->value( "haber" ) + " AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
             BlDbRecordSet *cursdebe = mainCompany() ->loadQuery ( query.toAscii(), "cursdebe" );
             if ( !cursdebe->eof() ) {
-                query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->valor ( "idapunte" );
+                query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->value( "idapunte" );
                 mainCompany() ->begin();
                 mainCompany() ->runQuery ( query );
-                query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + cursdebe->valor ( "idapunte" );
+                query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + cursdebe->value( "idapunte" );
                 mainCompany() ->runQuery ( query );
                 mainCompany() ->commit();
             } // end if
@@ -583,7 +583,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
 
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar punteo" ),
-                 g_confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->value( CONF_DIR_USER ),
                  _ ( "Punteos (*.pto)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -598,7 +598,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
             query = "SELECT * FROM apunte WHERE punteo = TRUE";
             BlDbRecordSet *cursp = mainCompany() ->loadQuery ( query );
             while ( !cursp->eof() ) {
-                fprintf ( mifile, "%s\n", cursp->valor ( "idapunte" ).toAscii().constData() );
+                fprintf ( mifile, "%s\n", cursp->value( "idapunte" ).toAscii().constData() );
                 cursp->nextRecord();
             } // end while
             delete cursp;
@@ -628,7 +628,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
         if ( valor == QMessageBox::Yes ) {
 
             mainCompany() ->begin();
-            mainCompany() ->runQuery ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->valor ( "idcuenta" ) );
+            mainCompany() ->runQuery ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->value( "idcuenta" ) );
             mainCompany() ->commit();
 
 	    m_tratarpunteos = FALSE;
@@ -653,7 +653,7 @@ void BcExtractoView::on_mui_cargarpunteos_clicked()
     try {
         QString fn = QFileDialog::getOpenFileName ( this,
                      _ ( "Cargar punteo" ),
-                     g_confpr->valor ( CONF_DIR_USER ),
+                     g_confpr->value( CONF_DIR_USER ),
                      _ ( "Punteo (*.pto);;Todos los archivos (*)" ) );
 
         if ( !fn.isEmpty() ) {
@@ -773,8 +773,8 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
             throw - 1;
         } // end if
         if ( !cursoraux->eof() ) {
-            debeinicial = BlFixed ( cursoraux->valor ( "tdebe" ) );
-            haberinicial = BlFixed ( cursoraux->valor ( "thaber" ) );
+            debeinicial = BlFixed ( cursoraux->value( "tdebe" ) );
+            haberinicial = BlFixed ( cursoraux->value( "thaber" ) );
             saldoinicial = debeinicial - haberinicial;
             debefinal = debeinicial;
             haberfinal = haberinicial;
@@ -789,7 +789,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 
         salida += "<blockTable style=\"tabla\">\n";
         salida += "<tr>";
-        salida += "<td> " + cursorcta->valor ( "codigo" ) + " -" + cursorcta->valor ( "descripcion" ) + " </td>";
+        salida += "<td> " + cursorcta->value( "codigo" ) + " -" + cursorcta->value( "descripcion" ) + " </td>";
         salida += "<td> Debe Inicial: " + debeinicial.toQString() + " </td>";
         salida += "<td> Haber Inicial: " + haberinicial.toQString() + " </td>";
         salida += "<td> Saldo Inicial: " + saldoinicial.toQString() + "</td>";
@@ -825,19 +825,19 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 
         while ( ! cursorapt->eof() ) {
 
-            debefinal = debefinal + BlFixed ( cursorapt->valor ( "debe" ) );
-            haberfinal = haberfinal + BlFixed ( cursorapt->valor ( "haber" ) );
+            debefinal = debefinal + BlFixed ( cursorapt->value( "debe" ) );
+            haberfinal = haberfinal + BlFixed ( cursorapt->value( "haber" ) );
             saldofinal = debefinal - haberfinal;
 
             salida +=  "<tr>\n";
-            salida +=  "<td>" + cursorapt->valor ( "fecha" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "ordenasiento" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "conceptocontable" ) + "-" + cursorapt->valor ( "descripcion" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "debe" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "haber" ) + "</td>";
+            salida +=  "<td>" + cursorapt->value( "fecha" ) + "</td>";
+            salida +=  "<td>" + cursorapt->value( "ordenasiento" ) + "</td>";
+            salida +=  "<td>" + cursorapt->value( "conceptocontable" ) + "-" + cursorapt->value( "descripcion" ) + "</td>";
+            salida +=  "<td>" + cursorapt->value( "debe" ) + "</td>";
+            salida +=  "<td>" + cursorapt->value( "haber" ) + "</td>";
             salida +=  "<td>" + saldofinal.toQString() + "</td>";
             if ( !mui_asAbiertos->isChecked() ) {
-                salida +=  "<td>" + cursorapt->valor ( "codcontrapartida" ) + " - " + cursorapt->valor ( "desccontrapartida" ) + "</td>";
+                salida +=  "<td>" + cursorapt->value( "codcontrapartida" ) + " - " + cursorapt->value( "desccontrapartida" ) + "</td>";
             } // end if
             salida +=  "</tr>\n";
             cursorapt->nextRecord();
@@ -880,9 +880,9 @@ void BcExtractoView::imprimir()
     blDebug ( "BcExtractoView::on_mui_imprimir_clicked", 0 );
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "extracto.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "extracto.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "extracto.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
 
@@ -896,10 +896,10 @@ void BcExtractoView::imprimir()
     /// Copiamos el logo
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -954,7 +954,7 @@ void BcExtractoView::imprimir()
     barra->setRange ( 0, curcta->numregistros() );
     int i = 0;
     while ( ! curcta->eof() ) {
-        fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
+        fitxersortidatxt += imprimeExtractoCuenta ( curcta->value( "idcuenta" ) );
         curcta->nextRecord();
         barra->setValue ( i++ );
     }// end while

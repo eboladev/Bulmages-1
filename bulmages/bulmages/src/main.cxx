@@ -54,7 +54,7 @@ int main ( int argc, char **argv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    blBindTextDomain ("bulmages", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    blBindTextDomain ("bulmages", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
     blTextDomain ("bulmages");
 
     QApplication app(argc, argv);

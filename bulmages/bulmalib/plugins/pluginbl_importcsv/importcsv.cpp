@@ -45,7 +45,7 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
         setupUi ( this );
         rellenarTablas();
 
-        mainCompany()->meteWindow ( windowTitle(), this );
+        mainCompany()->insertWindow ( windowTitle(), this );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
@@ -204,7 +204,7 @@ void ImportCSV::rellenarTablas()
     BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
     mui_combotablas->clear();
     while ( !cur->eof() ) {
-        mui_combotablas->addItem ( cur->valor ( "table_name" ) );
+        mui_combotablas->addItem ( cur->value( "table_name" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -223,8 +223,8 @@ void ImportCSV::on_mui_combotablas_activated ( const QString & text )
     mui_list->setColumnCount ( cur->numregistros() );
     int col = 0;
     while ( !cur->eof() ) {
-        QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( "field" ) );
-	lista_campos << cur->valor( "field" );
+        QTableWidgetItem *newItem = new QTableWidgetItem ( cur->value( "field" ) );
+	lista_campos << cur->value( "field" );
         mui_list->setItem ( 0, col, newItem );
         cur->nextRecord();
         col ++;

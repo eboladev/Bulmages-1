@@ -49,7 +49,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         setDbTableName ( "acontable" );
         setDbFieldId ( "idacontable" );
 	
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 
         /// Activamos el listado de lineas de recibo
         mui_list->setMainCompany( comp );
@@ -71,7 +71,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
 
         pintar();
 	cargar("0");
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );

@@ -31,30 +31,70 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 
-
 ///
 /**
 **/
-PluginBf_Example::PluginBf_Example()
+int entryPoint ( BfBulmaFact *bges )
+{
+    blDebug ( "Estoy dentro del plugin de demo", 0 );
+    
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    blBindTextDomain ( "pluginbf_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    
+    /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
+    /// del programa para indicar que el plugin se ha cargado.
+    bges->setWindowTitle ( _ ( "Prueba de plugin para BfBulmaFact." ) );
+
+    QMenu *pPluginMenu;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( _ ( "&Herramientas" ), bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
+    } // end if
+   
+    /// Creamos el men&uacute;.
+    BlAction *accionA = new BlAction ( _ ( "&Prueba de plugin" ), 0 );
+    accionA->setStatusTip ( _ ( "Muestra statustip" ) );
+    accionA->setWhatsThis ( _ ( "Muestra que es esto" ) );
+    accionA->setObjectName("mui_actionExample");
+    pPluginMenu->addAction ( accionA );
+   
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionExample") {
+        fprintf ( stderr, "S'ha activado el slot\n" );
+        QMessageBox::warning ( 0,
+                _ ( "Titulo de la ventana" ),
+                _ ( "Mensaje." ),
+                QMessageBox::Ok,
+                QMessageBox::Cancel );
+        } // end if
+    return 0;
+}        
+
+
+// A partir de esta linea, todo procede según el metodo anterior.
+/***
+ PluginBf_Example::PluginBf_Example()
 {
     blDebug ( "PluginBf_Example::PluginBf_Example", 0 );
     blDebug ( "END PluginBf_Example::PluginBf_Example", 0 );
 }
 
-
-///
-/**
-**/
 PluginBf_Example::~PluginBf_Example()
 {
     blDebug ( "PluginBf_Example::~PluginBf_Example", 0 );
     blDebug ( "END PluginBf_Example::~PluginBf_Example", 0 );
 }
 
-
-///
-/**
-**/
 void PluginBf_Example::elslot()
 {
     blDebug ( "PluginBf_Example::elslot", 0 );
@@ -68,10 +108,6 @@ void PluginBf_Example::elslot()
 }
 
 
-///
-/**
-\param bges
-**/
 void PluginBf_Example::inicializa ( BfBulmaFact *bges )
 {
     blDebug ( "PluginBf_Example::inicializa", 0 );
@@ -97,17 +133,13 @@ void PluginBf_Example::inicializa ( BfBulmaFact *bges )
 }
 
 
-///
-/**
-\param bges
-**/
 int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "Estoy dentro del plugin de demo", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_example", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBf_Example *plug = new PluginBf_Example();
     plug->inicializa ( bges );
@@ -116,4 +148,4 @@ int entryPoint ( BfBulmaFact *bges )
     bges->setWindowTitle ( _ ( "Prueba de plugin para BfBulmaFact." ) );
     return 0;
 }
-
+*/

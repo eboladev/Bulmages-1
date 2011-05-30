@@ -74,9 +74,9 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
 
     m_countryId = "0";
 
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     pintar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BlCountryView::BlCountryView", 0 );
 }
 
@@ -111,7 +111,7 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
     /// Busca el item correcto.
     QString previdpais = mui_list->dbValue ( "idpais" );
 
-    if ( m_countryId != "0" && dialogChanges_hayCambios() ) {
+    if ( m_countryId != "0" && dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar pais" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -141,7 +141,7 @@ void BlCountryView::mostrarplantilla()
 
         mui_listprovincias->cargar ( "SELECT * FROM provincia WHERE idpais=" + m_countryId );
 
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } // end if
 
     blDebug ( "END BlCountryView::mostrarplantilla", 0 );
@@ -163,11 +163,11 @@ int BlCountryView::guardar()
         setDbValue ( "cod2pais", mui_cod2pais->text() );
         setDbValue ( "cod3pais", mui_cod3pais->text() );
         mainCompany() ->begin();
-        DBsave ( id );
+        dbSave ( id );
         mui_listprovincias->setColumnValue ( "idpais", id );
         mui_listprovincias->guardar();
         mainCompany() ->commit();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         pintar();
     }
     blDebug ( "END BlCountryView::on_mui_guardar_clicked", 0 );
@@ -183,7 +183,7 @@ void BlCountryView::on_mui_crear_clicked()
     blDebug ( "BlCountryView::on_mui_crear_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
-        if ( dialogChanges_hayCambios() ) {
+        if ( dialogChanges_isChanged() ) {
             if ( QMessageBox::warning ( this,
                                         _ ( "Guardar pais" ),
                                         _ ( "Desea guardar los cambios?" ),

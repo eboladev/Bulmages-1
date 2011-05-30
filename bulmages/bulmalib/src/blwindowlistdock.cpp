@@ -92,12 +92,12 @@ void BlListWidgetItem::setObject ( QObject *m )
 /**
 \param m
 **/
-void BlListWidgetItem::setNombre ( QString m )
+void BlListWidgetItem::setName ( QString m )
 {
-    blDebug ( "BlListWidgetItem::setNombre", 0 );
+    blDebug ( "BlListWidgetItem::setName", 0 );
     m_nombre = m;
 //    setText ( m );
-    blDebug ( "END BlListWidgetItem::setNombre", 0 );
+    blDebug ( "END BlListWidgetItem::setName", 0 );
 }
 
 
@@ -105,12 +105,12 @@ void BlListWidgetItem::setNombre ( QString m )
 /**
 \param m
 **/
-void BlListWidgetItem::setTitulo ( QString titulo )
+void BlListWidgetItem::setTitle ( QString titulo )
 {
-    blDebug ( "BlListWidgetItem::setTitulo", 0 );
+    blDebug ( "BlListWidgetItem::setTitle", 0 );
     m_titulo = titulo;
     setText ( titulo );
-    blDebug ( "END BlListWidgetItem::setTitulo", 0 );
+    blDebug ( "END BlListWidgetItem::setTitle", 0 );
 }
 
 ///
@@ -129,7 +129,7 @@ QObject *BlListWidgetItem::object()
 /**
 \return
 **/
-QString BlListWidgetItem::nombre()
+QString BlListWidgetItem::name()
 {
     blDebug ( "BlListWidgetItem::nombre", 0 );
     blDebug ( "END BlListWidgetItem::nombre", 0 );
@@ -298,9 +298,9 @@ void BlWindowListDock::vaciarCompleto()
 \param compdup
 \return
 **/
-int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, QString titulo )
+int BlWindowListDock::insertWindow ( QString nombre, QObject *obj, bool compdup, QString titulo )
 {
-    blDebug ( "BlWindowListDock::meteWindow", 0, nombre );
+    blDebug ( "BlWindowListDock::insertWindow", 0, nombre );
     try {
 
 
@@ -313,18 +313,18 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Si la ventana ya esta en la lista.
             if ( m->object() == obj ) {
-                blDebug ( "END BlWindowListDock::meteWindow", 0, "Ya existe" + nombre );
-                m->setNombre ( nombre );
-		m->setTitulo ( titulo );
+                blDebug ( "END BlWindowListDock::insertWindow", 0, "Ya existe" + nombre );
+                m->setName ( nombre );
+		m->setTitle ( titulo );
                 return 0;
             } // end if
 
             /// Comprobamos ventanas duplicadas.
-            if ( m->nombre() == nombre && compdup ) {
+            if ( m->name() == nombre && compdup ) {
                 ( ( QWidget * ) m->object() ) ->hide();
                 ( ( QWidget * ) m->object() ) ->show();
                 nombre = nombre + "(i)";
-//                sacaWindow ( obj );
+//                removeWindow ( obj );
 //                throw - 1;
             } // end if
             i++;
@@ -333,14 +333,14 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
             QPixmap icon = ( ( QWidget * ) obj ) ->windowIcon().pixmap ( 32, 32 );
             BlListWidgetItem *m = new BlListWidgetItem ( m_listBox, icon );
             m->setObject ( obj );
-            m->setNombre ( nombre );
-	    m->setTitulo ( titulo );
+            m->setName ( nombre );
+	    m->setTitle ( titulo );
         } // end if
     } catch ( ... ) {
-        blDebug ( "END BlWindowListDock::meteWindow", 0, " ventana duplicada" );
+        blDebug ( "END BlWindowListDock::insertWindow", 0, " ventana duplicada" );
         return - 1;
     } // end try
-    blDebug ( "END BlWindowListDock::meteWindow", 0 );
+    blDebug ( "END BlWindowListDock::insertWindow", 0 );
     return 0;
 }
 
@@ -352,12 +352,12 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
 \return
 **/
 #ifdef AREA_QMDI
-  int BlWindowListDock::seleccionaWindow ( QString nombre, QMdiSubWindow *obj )
+  int BlWindowListDock::selectWindow ( QString nombre, QMdiSubWindow *obj )
 #else
-  int BlWindowListDock::seleccionaWindow ( QString nombre, QObject *obj )
+  int BlWindowListDock::selectWindow ( QString nombre, QObject *obj )
 #endif
 {
-    blDebug ( "BlWindowListDock::seleccionaWindow", 0 );
+    blDebug ( "BlWindowListDock::selectWindow", 0 );
     try {
         int i = 0;
         while ( i < m_listBox->count() ) {
@@ -368,7 +368,7 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
 #else
 	    if ( m->object() == obj ) {
 #endif
-                blDebug ( "END BlWindowListDock::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre );
+                blDebug ( "END BlWindowListDock::selectWindow", 0, "Se ha encontrado la ventana" + nombre );
                 m_listBox->setCurrentItem ( m );
                 return 0;
             } // end if
@@ -377,7 +377,7 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
     } catch ( ... ) {
         throw - 1;
     } // end try
-    blDebug ( "END BlWindowListDock::seleccionaWindow", 0 );
+    blDebug ( "END BlWindowListDock::selectWindow", 0 );
     return 0;
 }
 
@@ -386,16 +386,16 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
 /**
 \return
 **/
-int BlWindowListDock::deSeleccionaWindow()
+int BlWindowListDock::deselectWindow()
 {
-    blDebug ( "BlWindowListDock::deSeleccionaWindow", 0 );
+    blDebug ( "BlWindowListDock::deselectWindow", 0 );
     try {
         m_listBox->clearSelection();
     } catch ( ... ) {
-        blDebug ( "BlWindowListDock::deSeleccionaWindow", 2, "Error en la Seleccion" );
+        blDebug ( "BlWindowListDock::deselectWindow", 2, "Error en la Seleccion" );
         throw - 1;
     } // end try
-    blDebug ( "END BlWindowListDock::deSeleccionaWindow", 0 );
+    blDebug ( "END BlWindowListDock::deselectWindow", 0 );
     return 0;
 }
 
@@ -404,15 +404,15 @@ int BlWindowListDock::deSeleccionaWindow()
 /**
 \param obj
 **/
-void BlWindowListDock::sacaWindow ( QObject *obj )
+void BlWindowListDock::removeWindow ( QObject *obj )
 {
-    blDebug ( "BlWindowListDock::sacaWindow", 0 );
+    blDebug ( "BlWindowListDock::removeWindow", 0 );
     /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
         BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
         if ( m->object() == obj ) {
-            blDebug ( "Ventana encontrada y vamos a sacarla", 0, m->nombre() );
+            blDebug ( "Ventana encontrada y vamos a sacarla", 0, m->name() );
             m_listBox->takeItem ( i );
             delete m;
             break;
@@ -421,8 +421,8 @@ void BlWindowListDock::sacaWindow ( QObject *obj )
     } // end while
     /// Deseleccionamos cualquier elemento del listado para que no se quede marcado si
     /// ninguna otra ventana recoge el foco.
-    deSeleccionaWindow();
-    blDebug ( "END BlWindowListDock::sacaWindow", 0 );
+    deselectWindow();
+    blDebug ( "END BlWindowListDock::removeWindow", 0 );
 }
 
 

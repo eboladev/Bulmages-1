@@ -37,7 +37,7 @@ class BL_EXPORT BlDateSearch : public BlWidget, public Ui_BlDateSearchBase
 public:
     BlDateSearch ( QWidget *parent = 0 );
     ~BlDateSearch();
-    virtual void setfecha ( QString val );
+    virtual void setDate ( QString val );
     virtual void setText ( QString val );
     virtual void setFieldValue ( QString val );
     virtual QString fecha();

@@ -49,7 +49,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
     m_cursortiposocio = NULL;
     m_item = NULL;
     pintar();
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END TiposocioView::TiposocioView", 0 );
 }
@@ -67,12 +67,12 @@ void TiposocioView::pintar()
     } // end if
     m_cursortiposocio = mainCompany() ->loadQuery ( "SELECT * FROM tiposocio ORDER BY nombretiposocio" );
     while ( !m_cursortiposocio->eof() ) {
-        new QListWidgetItem ( m_cursortiposocio->valor ( "nombretiposocio" ) , mui_lista );
+        new QListWidgetItem ( m_cursortiposocio->value( "nombretiposocio" ) , mui_lista );
         m_cursortiposocio->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END TiposocioView::pintar", 0 );
 }
 
@@ -100,13 +100,13 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
         groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
     trataModificado();
-    mui_nombretiposocio->setText ( m_cursortiposocio->valor ( "nombretiposocio", row ) );
-    mdb_idtiposocio = m_cursortiposocio->valor ( "idtiposocio", row );
-    mui_cuotatiposocio->setText ( m_cursortiposocio->valor ( "cuotatiposocio", row ) );
-    mui_comentariotiposocio->setText ( m_cursortiposocio->valor ( "comentariotiposocio", row ) );
+    mui_nombretiposocio->setText ( m_cursortiposocio->value( "nombretiposocio", row ) );
+    mdb_idtiposocio = m_cursortiposocio->value( "idtiposocio", row );
+    mui_cuotatiposocio->setText ( m_cursortiposocio->value( "cuotatiposocio", row ) );
+    mui_comentariotiposocio->setText ( m_cursortiposocio->value( "comentariotiposocio", row ) );
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
@@ -141,7 +141,7 @@ int TiposocioView::guardar()
             m_item->setText ( mui_nombretiposocio->text() );
         } // end if
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blDebug ( "END TiposocioView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
@@ -159,7 +159,7 @@ bool TiposocioView::trataModificado()
 {
     blDebug ( "TiposocioView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar datos del tipo de socio" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -188,7 +188,7 @@ void TiposocioView::on_mui_nuevo_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtiposocio) AS idtiposocio FROM tiposocio" );
         mainCompany() ->commit();
-        mdb_idtiposocio = cur->valor ( "idtiposocio" );
+        mdb_idtiposocio = cur->value( "idtiposocio" );
         delete cur;
         pintar();
         blDebug ( "END TiposocioView::on_mui_nuevo_clicked", 0 );

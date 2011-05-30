@@ -53,11 +53,11 @@ BcTipoIVAView::BcTipoIVAView ( BcCompany *emp, QWidget *parent )
 
     m_curtipoiva = NULL;
 
-    dialogChanges_setQObjectExcluido ( mui_comboTipoIVA );
+    dialogChanges_setExcludedObject ( mui_comboTipoIVA );
 
     pintar();
-    dialogChanges_cargaInicial();
-    meteWindow ( windowTitle(), this );
+    dialogChanges_readValues();
+    insertWindow ( windowTitle(), this );
     blDebug ( "END BcTipoIVAView::BcTipoIVAView", 0 );
 }
 
@@ -71,7 +71,7 @@ BcTipoIVAView::~BcTipoIVAView()
     blDebug ( "BcTipoIVAView::~BcTipoIVAView", 0 );
     if ( m_curtipoiva != NULL )
         delete m_curtipoiva;
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcTipoIVAView::~BcTipoIVAView", 0 );
 }
 
@@ -92,8 +92,8 @@ void BcTipoIVAView::pintar ( QString idtipoiva )
     mui_comboTipoIVA->clear();
     int i = 0;
     while ( !m_curtipoiva->eof() ) {
-        mui_comboTipoIVA->insertItem ( i, m_curtipoiva->valor ( "nombretipoiva" ) );
-        if ( idtipoiva == m_curtipoiva->valor ( "idtipoiva" ) )
+        mui_comboTipoIVA->insertItem ( i, m_curtipoiva->value( "nombretipoiva" ) );
+        if ( idtipoiva == m_curtipoiva->value( "idtipoiva" ) )
             posicion = i;
         m_curtipoiva->nextRecord();
         i++;
@@ -109,7 +109,7 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
 {
     blDebug ( "BcTipoIVAView::mostrarplantilla", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar tipo de IVA" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -122,10 +122,10 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
             mui_comboTipoIVA->setCurrentIndex ( pos );
         m_posactual = mui_comboTipoIVA->currentIndex();
 
-        cargar ( m_curtipoiva->valor ( "idtipoiva", m_posactual ) );
+        cargar ( m_curtipoiva->value( "idtipoiva", m_posactual ) );
 
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } // end if
     blDebug ( "END BcTipoIVAView::mostrarplantilla", 0 );
 }
@@ -152,7 +152,7 @@ void BcTipoIVAView::on_mui_crear_clicked()
     blDebug ( "BcTipoIVAView::on_mui_nuevo2_clicked()", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
-        if ( dialogChanges_hayCambios() && m_curtipoiva->numregistros() != 0 ) {
+        if ( dialogChanges_isChanged() && m_curtipoiva->numregistros() != 0 ) {
             if ( QMessageBox::warning ( this,
                                         _ ( "Guardar tipo de IVA" ),
                                         _ ( "Desea guardar los cambios?" ),
@@ -176,7 +176,7 @@ void BcTipoIVAView::on_mui_crear_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
         mainCompany() ->commit();
-        pintar ( cur->valor ( "idtipoiva" ) );
+        pintar ( cur->value( "idtipoiva" ) );
         delete cur;
     } catch ( ... ) {
         mainCompany() ->rollback();

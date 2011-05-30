@@ -27,30 +27,13 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_cliente.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTE_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CLIENTE_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_CLIENTE_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" PLUGINBF_CLIENTE_EXPORT int SNewClienteView (BfCompany *);
-
-
-class PluginBf_Cliente : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Cliente();
-    ~PluginBf_Cliente();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
+extern "C" PLUGINBF_CLIENTE_EXPORT int BlAction_triggered(BlAction *);
 
 
 #endif

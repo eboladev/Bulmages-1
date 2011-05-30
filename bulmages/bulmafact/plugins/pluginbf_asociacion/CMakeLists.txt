@@ -35,8 +35,9 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_profesor/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_profesor/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_asociacion/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_asociacion/
+    )
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -109,7 +110,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 
 
 
-add_dependencies(${plugin} bulmafact bulmalib)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_profesor pluginbf_tutor)
 
 install(DIRECTORY openreports/ 
       DESTINATION share/bulmages/openreports

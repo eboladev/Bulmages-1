@@ -25,23 +25,9 @@
 #include "blpostgresqlclient.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbf_debug.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_DEBUG_EXPORT int entryPoint ( BfBulmaFact * );
-
-
-class PluginBf_Debug : public QObject
-{
-    Q_OBJECT
-
-public:
-    PluginBf_Debug();
-    ~PluginBf_Debug();
-
-public slots:
-    void cambia ( bool );
-};
-
-
+extern "C" PLUGINBF_DEBUG_EXPORT int BlAction_triggered(BlAction *);
 #endif
 

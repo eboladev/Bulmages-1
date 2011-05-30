@@ -139,7 +139,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
             m_error = TRUE;
             blDebug ( PQerrorMessage ( conn ) );
             blDebug ( "QUERY command failed [" + SQLQuery + "]", 10 );
-            if ( g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( g_confpr->value( CONF_ALERTAS_DB ) == "Yes" ) {
                 BlErrorDialog ( _ ( "Error al hacer la consulta con la base de datos." ) + QString ( "\n:: " ) + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
@@ -269,7 +269,7 @@ int BlDbRecordSet::dbFieldType ( int posicion )
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posicion.
-QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
+QString BlDbRecordSet::value( int posicion, int registro, bool localeformat )
 {
     blDebug ( "BlDbRecordSet::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
 
@@ -314,7 +314,7 @@ QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
-QString BlDbRecordSet::valor ( const QString &campo, int registro, bool localeformat )
+QString BlDbRecordSet::value( const QString &campo, int registro, bool localeformat )
 {
     blDebug ( "BlDbRecordSet::valor", 0, campo + " " + QString::number ( registro ) );
     int i = 0;
@@ -327,7 +327,7 @@ QString BlDbRecordSet::valor ( const QString &campo, int registro, bool localefo
         return "";
     } // end if
     blDebug ( "END BlDbRecordSet::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
-    return valor ( i, registro, localeformat );
+    return value( i, registro, localeformat );
 }
 
 /// Esta funci&oacute;n devuelve el valor entero del campo posicion del registro
@@ -551,14 +551,14 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
 {
     blDebug ( "BlPostgreSqlClient::inicializa", 0, nomdb );
     m_pgDbName = nomdb;
-    m_pgHost = g_confpr->valor ( CONF_SERVIDOR ); /// host name of the backend server.
-    m_pgPort = g_confpr->valor ( CONF_PUERTO ); /// port of the backend server.
+    m_pgHost = g_confpr->value( CONF_SERVIDOR ); /// host name of the backend server.
+    m_pgPort = g_confpr->value( CONF_PUERTO ); /// port of the backend server.
     m_pgOptions = ""; /// special options to start up the backend server.
     m_pgTty = ""; /// debugging tty for the backend server.
     QString conexion;
 
-    QString user = g_confpr->valor ( CONF_LOGIN_USER );
-    QString passwd = g_confpr->valor ( CONF_PASSWORD_USER );
+    QString user = g_confpr->value( CONF_LOGIN_USER );
+    QString passwd = g_confpr->value( CONF_PASSWORD_USER );
     blDebug(" usuari "+user,0);
     try {
         /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
@@ -579,7 +579,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
         conn = PQconnectdb ( conexion.toAscii().data() );
         if ( PQstatus ( conn ) == CONNECTION_BAD ) {
             blDebug ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
-            if ( passwd != "" && g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( passwd != "" && g_confpr->value( CONF_ALERTAS_DB ) == "Yes" ) {
                 blDebug ( PQerrorMessage ( conn ), 2 );
             } else {
                 blDebug ( PQerrorMessage ( conn ), 0 );
@@ -592,7 +592,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
         /// Buscamos cual es el usuario ejecutando y lo almacenamos.
         BlDbRecordSet *rs = loadQuery ( "SELECT current_user" );
         if ( !rs->eof() ) {
-            m_currentUser = rs->valor ( "current_user" );
+            m_currentUser = rs->value( "current_user" );
         } else {
             m_currentUser = "";
         } // end if
@@ -855,7 +855,7 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
     PGresult *result = NULL;
     try {
         /// Prova de control de permisos.
-        if ( g_confpr->valor ( CONF_PRIVILEGIOS_USUARIO ) != "1" && ( Query.left ( 6 ) == "DELETE" || Query.left ( 6 ) == "UPDATE" || Query.left ( 6 ) == "INSERT" ) )
+        if ( g_confpr->value( CONF_PRIVILEGIOS_USUARIO ) != "1" && ( Query.left ( 6 ) == "DELETE" || Query.left ( 6 ) == "UPDATE" || Query.left ( 6 ) == "INSERT" ) )
             throw 42501;
         /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result=PQexecParams(  conn, ( const char * ) Query.toUtf8()  , 
@@ -909,7 +909,7 @@ QString BlPostgreSqlClient::searchParent ( QString cod )
         BlDbRecordSet *rs = loadQuery ( query, "unquery" );
         commit();
         if ( !rs->eof() ) {
-            padre = rs->valor ( "codigo" );
+            padre = rs->value( "codigo" );
         } else {
             fin = 1;
         } // end if
@@ -1019,7 +1019,7 @@ bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
     BlDbRecordSet *rs = loadQuery ( "SELECT has_table_privilege('" + table + "', '" + privilege + "') AS pins" );
     bool hasPrivilege = FALSE;
     if ( rs ) {
-        if ( rs->valor ( "pins" ) == "t" ) {
+        if ( rs->value( "pins" ) == "t" ) {
             hasPrivilege = TRUE;
         } // end if
         delete rs;
@@ -1066,7 +1066,7 @@ QString BlPostgreSqlClient::PGEval ( QString evalexp, int precision )
     QString query = "SELECT (" + evalexp + ")::NUMERIC(12," + QString::number ( precision ) + ") AS res";
     BlDbRecordSet *rs = loadQuery ( query );
     if ( rs ) {
-        res = rs->valor ( "res" );
+        res = rs->value( "res" );
         delete rs;
     } // end if
     return res;

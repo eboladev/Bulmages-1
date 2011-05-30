@@ -95,8 +95,8 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idprovincia->setId ( "" );
 
 
-        meteWindow ( windowTitle(), this, FALSE );
-        dialogChanges_cargaInicial();
+        insertWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );

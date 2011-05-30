@@ -20,7 +20,6 @@
 
 #include <stdio.h>
 #include <QTime>
-#include <QWidget>
 
 #include "pluginbf_carterapagos.h"
 #include "bfcompany.h"
@@ -28,68 +27,7 @@
 #include "carterapagoslist.h"
 
 
-
-///
-/**
-**/
-PluginBf_CarteraPagos::PluginBf_CarteraPagos()
-{
-    blDebug ( "PluginBf_CarteraPagos::PluginBf_CarteraPagos", 0 );
-    blDebug ( "END PluginBf_CarteraPagos::PluginBf_CarteraPagos", 0 );
-}
-
-///
-/**
-**/
-PluginBf_CarteraPagos::~PluginBf_CarteraPagos()
-{
-    blDebug ( "PluginBf_CarteraPagos::~PluginBf_CarteraPagos", 0 );
-    blDebug ( "END PluginBf_CarteraPagos::~PluginBf_CarteraPagos", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_CarteraPagos::elslot()
-{
-    blDebug ( "PluginBf_CarteraPagos::elslot", 0 );
-    CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * ) m_conexionbase );
-    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
-    vehiculoview->show();
-    blDebug ( "END PluginBf_CarteraPagos::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_CarteraPagos::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_CarteraPagos::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    m_conexionbase = bges->company();
-    m_bulmafact = bges;
-
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
-
-    QAction *accion = new QAction ( "&Cartera de Pagos", 0 );
-    accion->setStatusTip ( "Cartera de Pagos" );
-    accion->setWhatsThis ( "Cartera de Pagos" );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-	bges->Listados->addAction (accion);
-    blDebug ( "END PluginBf_CarteraPagos::inicializa", 0 );
-}
-
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -99,16 +37,45 @@ void PluginBf_CarteraPagos::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Cartera de Pagos\n", 0 );
+    blDebug ( "entryPoint, 0, Punto de Entrada del plugin de Cartera de Pagos\n" );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraPagos", "0.11.1-0001");
-    
-    PluginBf_CarteraPagos *plug = new PluginBf_CarteraPagos();
-    plug->inicializa ( bges );
+
+    g_bges = bges;
+ 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
+    /// Creamos el men&uacute;.
+    /// Miramos si existe un menu Ventas
+	QMenu *pPluginMenu = bges->newMenu( _("&Compras"), "menuCompras", "menuMaestro");
+
+    BlAction *accion = new BlAction ( _("&Cartera de Pagos"), 0 );
+    accion->setStatusTip ( _("Cartera de Pagos" ));
+    accion->setWhatsThis ( _("Cartera de Pagos" ) );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
+    accion->setObjectName("mui_actionCarteraPagos");
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accion );
+	g_bges->Listados->addAction (accion);
+
     return 0;
+    blDebug ("END entryPoint, 0, Punto de Entrada del plugin de Cartera pagos\n");
 }
 
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "carteraPagos") {
+        CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * )  g_bges->company() );
+        g_bges->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
+        //m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
+        vehiculoview->show();
+    } // endi if
+    return 0;
+}
 
 ///
 /**
@@ -134,7 +101,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientoproveedor WHERE idproveedor IS NULL");
@@ -162,19 +129,19 @@ int ProveedorView_cargarPost_Post ( ProveedorView *art )
 
 void generarVencimientos (FacturaProveedorView *art) {
 			BlDbRecordSet *cur1 = art->mainCompany()->loadQuery("SELECT totalfacturap FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap"));
-			blMsgInfo( "El total de la factura es :" + cur1->valor("totalfacturap"));
+			blMsgInfo( _("El total de la factura es :") + cur1->value("totalfacturap"));
 			BlFixed contado("0.00");
 
 			BlDbRecordSet *cur = art->mainCompany()->loadQuery("SELECT * FROM vencimientoproveedor WHERE idproveedor = " + art->dbValue("idproveedor"));
 			while (!cur->eof())  {
-				QString query = "SELECT ffacturap + " + cur->valor("diasvencimientoproveedor") + " AS fechav, totalfacturap / 100 * "+cur->valor("porcentajevencimientoproveedor")+" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
+				QString query = "SELECT ffacturap + " + cur->value("diasvencimientoproveedor") + " AS fechav, totalfacturap / 100 * "+cur->value("porcentajevencimientoproveedor")+" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
 				if (cur->isLastRecord()) {
-					query = "SELECT ffacturap + " + cur->valor("diasvencimientoproveedor") + " AS fechav, totalfacturap - "+ contado.toQString('.') +" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
+					query = "SELECT ffacturap + " + cur->value("diasvencimientoproveedor") + " AS fechav, totalfacturap - "+ contado.toQString('.') +" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
 				} //end if
 				BlDbRecordSet *cur2 = art->mainCompany()->loadQuery(query);
 				/// REALIZAMOS EL QUERY
-				query = "INSERT INTO vencimientop (idfacturap, fechavencimientop, cantvencimientop, idforma_pago, refvencimientop, idproveedor) VALUES ("+art->dbValue("idfacturap")+",'"+cur2->valor("fechav")+"',"+cur2->valor("porcent")+","+cur->valor("idforma_pago")+",'"+art->dbValue("reffacturap")+"',"+art->dbValue("idproveedor")+")";
-				contado = contado + BlFixed(cur2->valor("porcent"));
+				query = "INSERT INTO vencimientop (idfacturap, fechavencimientop, cantvencimientop, idforma_pago, refvencimientop, idproveedor) VALUES ("+art->dbValue("idfacturap")+",'"+cur2->value("fechav")+"',"+cur2->value("porcent")+","+cur->value("idforma_pago")+",'"+art->dbValue("reffacturap")+"',"+art->dbValue("idproveedor")+")";
+				contado = contado + BlFixed(cur2->value("porcent"));
 				art->mainCompany()->runQuery(query);
 				delete cur2;
 				cur->nextRecord();
@@ -207,7 +174,7 @@ int BlForm_guardar_Post ( BlForm *art )
 		if (l1->rowCount() > 1) {
 
 			QMessageBox msgBox;
-			msgBox.setText("Hay Vencimientos generados para esta factura. Que desea hacer?");
+			msgBox.setText(_("Hay Vencimientos generados para esta factura. Que desea hacer?"));
 			QPushButton *guardarButton = msgBox.addButton("Guardar", QMessageBox::ActionRole);
 			QPushButton *regenerarButton = msgBox.addButton("Regenerar", QMessageBox::ActionRole);
 			QPushButton *nadaButton = msgBox.addButton("Dejar Actuales", QMessageBox::ActionRole);
@@ -254,7 +221,7 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    factp->dialogChanges_setQObjectExcluido ( l->mui_list );
+    factp->dialogChanges_setExcludedObject ( l->mui_list );
 
     factp->discounts->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientop WHERE idfacturap IS NULL");

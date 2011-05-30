@@ -103,8 +103,8 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         mui_gastos->setOrdenPorQuery ( FALSE );
 
 
-        dialogChanges_cargaInicial();
-        meteWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
+        insertWindow ( windowTitle(), this, FALSE );
 	/// Llamamos a los scripts
         blScript(this);
 
@@ -164,7 +164,7 @@ void ProyectoView::on_mui_geninforme_clicked()
 {
     int row = 1;
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.py";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "informeproyectoc.py";
     QString fitxersortidatxt = "";
 
     fitxersortidatxt += "#!/usr/bin/python\n";
@@ -186,37 +186,37 @@ void ProyectoView::on_mui_geninforme_clicked()
     QString queryej = "SELECT distinct ej from (select ejerciciolgaspresupuestoc AS ej FROM lgaspresupuestoc WHERE idpresupuestoc = " + dbValue ( "idpresupuestoc" ) + ")AS t1  UNION  (select ejerciciolingpresupuestoc as ej FROM lingpresupuestoc WHERE idpresupuestoc = " + dbValue ( "idpresupuestoc" ) + ")";
     BlDbRecordSet *curej = mainCompany()->loadQuery ( queryej );
     while ( !curej->eof() ) {
-        fitxersortidatxt += "doc.set_cell_value( 1 ," + QString::number ( row++ ) + ", 'float' , '" + curej->valor ( "ej" ) + "')\n\n";
+        fitxersortidatxt += "doc.set_cell_value( 1 ," + QString::number ( row++ ) + ", 'float' , '" + curej->value( "ej" ) + "')\n\n";
 
-        QString querycta = "SELECT distinct idcuenta from ( SELECT idcuenta FROM lgaspresupuestoc WHERE idpresupuestoc = " + dbValue ( "idpresupuestoc" ) + " AND ejerciciolgaspresupuestoc = " + curej->valor ( "ej" ) + " ) AS t1 UNION (SELECT idcuenta FROM lingpresupuestoc WHERE idpresupuestoc = " + dbValue ( "idpresupuestoc" ) + " AND ejerciciolingpresupuestoc = " + curej->valor ( "ej" ) + " ) UNION (SELECT idcuenta FROM apunte WHERE fecha >= '01/01/" + curej->valor ( "ej" ) + "' AND fecha <= '31/12/" + curej->valor ( "ej" ) + "' AND idc_coste = " + dbValue ( "idc_coste" ) + " )";
+        QString querycta = "SELECT distinct idcuenta from ( SELECT idcuenta FROM lgaspresupuestoc WHERE idpresupuestoc = " + dbValue ( "idpresupuestoc" ) + " AND ejerciciolgaspresupuestoc = " + curej->value( "ej" ) + " ) AS t1 UNION (SELECT idcuenta FROM lingpresupuestoc WHERE idpresupuestoc = " + dbValue ( "idpresupuestoc" ) + " AND ejerciciolingpresupuestoc = " + curej->value( "ej" ) + " ) UNION (SELECT idcuenta FROM apunte WHERE fecha >= '01/01/" + curej->value( "ej" ) + "' AND fecha <= '31/12/" + curej->value( "ej" ) + "' AND idc_coste = " + dbValue ( "idc_coste" ) + " )";
         BlDbRecordSet *curcta = mainCompany()->loadQuery ( querycta );
         while ( !curcta->eof() ) {
 
-            fitxersortidatxt += "doc.set_cell_value( 1 ," + QString::number ( row ) + ", 'float' , '" + curcta->valor ( "idcuenta" ) + "')\n\n";
+            fitxersortidatxt += "doc.set_cell_value( 1 ," + QString::number ( row ) + ", 'float' , '" + curcta->value( "idcuenta" ) + "')\n\n";
 
             /// Ponemos el detalle de las cuentas para los datos contables.
-            QString queryinc = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta = " + curcta->valor ( "idcuenta" ) + " AND fecha >= '01/01/" + curej->valor ( "ej" ) + "' AND fecha <= '31/12/" + curej->valor ( "ej" ) + "' AND idc_coste = " + dbValue ( "idc_coste" );
+            QString queryinc = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta = " + curcta->value( "idcuenta" ) + " AND fecha >= '01/01/" + curej->value( "ej" ) + "' AND fecha <= '31/12/" + curej->value( "ej" ) + "' AND idc_coste = " + dbValue ( "idc_coste" );
             BlDbRecordSet * curing = mainCompany()->loadQuery ( queryinc );
             while ( !curing->eof() ) {
-                fitxersortidatxt += "doc.set_cell_value( 2 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "tdebe" ) + "')\n\n";
-                fitxersortidatxt += "doc.set_cell_value( 3 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "thaber" ) + "')\n\n";
-                fitxersortidatxt += "doc.set_cell_value( 4 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "tdebe" ) + "-" + curing->valor ( "thaber" ) + "')\n\n";
+                fitxersortidatxt += "doc.set_cell_value( 2 ," + QString::number ( row ) + ", 'float' , '" + curing->value( "tdebe" ) + "')\n\n";
+                fitxersortidatxt += "doc.set_cell_value( 3 ," + QString::number ( row ) + ", 'float' , '" + curing->value( "thaber" ) + "')\n\n";
+                fitxersortidatxt += "doc.set_cell_value( 4 ," + QString::number ( row ) + ", 'float' , '" + curing->value( "tdebe" ) + "-" + curing->value( "thaber" ) + "')\n\n";
                 curing->nextRecord();
             } // end while
             delete curing;
 
-            QString queryling = "SELECT * FROM lingpresupuestoc WHERE idcuenta = " + curcta->valor ( "idcuenta" ) + " AND idpresupuestoc=" + dbValue ( "idpresupuestoc" ) + " AND ejerciciolingpresupuestoc = " + curej->valor ( "ej" );
+            QString queryling = "SELECT * FROM lingpresupuestoc WHERE idcuenta = " + curcta->value( "idcuenta" ) + " AND idpresupuestoc=" + dbValue ( "idpresupuestoc" ) + " AND ejerciciolingpresupuestoc = " + curej->value( "ej" );
             BlDbRecordSet *curling = mainCompany()->loadQuery ( queryling );
             while ( !curling->eof() ) {
-                fitxersortidatxt += "doc.set_cell_value( 5 ," + QString::number ( row ) + ", 'float' , '" + curling->valor ( "cantlingpresupuestoc" ) + "*" + curling->valor ( "precioundlingpresupuestoc" ) + "')\n\n";
+                fitxersortidatxt += "doc.set_cell_value( 5 ," + QString::number ( row ) + ", 'float' , '" + curling->value( "cantlingpresupuestoc" ) + "*" + curling->value( "precioundlingpresupuestoc" ) + "')\n\n";
                 curling->nextRecord();
             } // end while
             delete curling;
 
-            QString querylgas = "SELECT * FROM lgaspresupuestoc WHERE idcuenta = " + curcta->valor ( "idcuenta" ) + " AND idpresupuestoc=" + dbValue ( "idpresupuestoc" ) + " AND ejerciciolgaspresupuestoc = " + curej->valor ( "ej" );
+            QString querylgas = "SELECT * FROM lgaspresupuestoc WHERE idcuenta = " + curcta->value( "idcuenta" ) + " AND idpresupuestoc=" + dbValue ( "idpresupuestoc" ) + " AND ejerciciolgaspresupuestoc = " + curej->value( "ej" );
             BlDbRecordSet *curlgas = mainCompany()->loadQuery ( querylgas );
             while ( !curlgas->eof() ) {
-                fitxersortidatxt += "doc.set_cell_value( 6 ," + QString::number ( row ) + ", 'float' , '" + curlgas->valor ( "cantlgaspresupuestoc" ) + "*" + curlgas->valor ( "precioundlgaspresupuestoc" ) + "')\n\n";
+                fitxersortidatxt += "doc.set_cell_value( 6 ," + QString::number ( row ) + ", 'float' , '" + curlgas->value( "cantlgaspresupuestoc" ) + "*" + curlgas->value( "precioundlgaspresupuestoc" ) + "')\n\n";
                 curlgas->nextRecord();
             } // end while
             delete curlgas;
@@ -234,7 +234,7 @@ void ProyectoView::on_mui_geninforme_clicked()
 
     fitxersortidatxt += "doc.save(\"informeproyectoc.ods\")\n";
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "informeproyectoc.ods";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -247,9 +247,9 @@ void ProyectoView::on_mui_geninforme_clicked()
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = g_confpr->valor ( CONF_ODS )  + " " + g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods &";
+    cadena = g_confpr->value( CONF_ODS )  + " " + g_confpr->value( CONF_DIR_USER ) + "informeproyectoc.ods &";
     system ( cadena.toAscii() );
 
 }

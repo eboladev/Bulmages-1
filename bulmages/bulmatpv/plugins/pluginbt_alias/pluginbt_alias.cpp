@@ -45,7 +45,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
     cur = tick->mainCompany() ->loadQuery ( query );
     if ( cur ) {
         if ( !cur->eof() ) {
-            tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
+            tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ) );
         } // end if
 
 
@@ -68,7 +68,7 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
+            tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ) );
         } // end if
         delete cur;
         valor = 0;

@@ -117,8 +117,8 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
 
     if ( txt | html ) {
 
-        QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "iva.txt";
-        QString archivohtml = g_confpr->valor ( CONF_DIR_USER ) + "iva.html";
+        QString archivo = g_confpr->value( CONF_DIR_USER ) + "iva.txt";
+        QString archivohtml = g_confpr->value( CONF_DIR_USER ) + "iva.html";
 
 
         QFile filehtml;
@@ -168,26 +168,26 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripcion</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             } // end if
             while ( !cursorapt->eof() ) {
-                datahora = cursorapt->valor ( "fecha" );
+                datahora = cursorapt->value( "fecha" );
                 data = datahora.mid ( 0, 10 );
-                int baseimp = cursorapt->valor ( "baseimp" ).replace ( ".", "" ).toInt();
-                int total = baseimp * cursorapt->valor ( "baseimp" ).replace ( ".", "" ).toInt() / 10000;
+                int baseimp = cursorapt->value( "baseimp" ).replace ( ".", "" ).toInt();
+                int total = baseimp * cursorapt->value( "baseimp" ).replace ( ".", "" ).toInt() / 10000;
                 QString numberstr = QString::number ( total );
                 numberstr = numberstr.left ( numberstr.length() - 2 ) + "." + numberstr.right ( 2 );
                 if ( txt ) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << cursorapt->valor ( "ordenasiento" ).toAscii().data() << " " <<
+                    fitxersortidatxt << cursorapt->value( "ordenasiento" ).toAscii().data() << " " <<
                     data.toAscii().constData() << " " <<
-                    cursorapt->valor ( "contrapartida" ).toAscii().constData() << " " << cursorapt->valor ( "descripcion" ).toAscii().constData() << " " << cursorapt->valor ( "baseimp" ).toAscii().constData() << " " <<
-                    cursorapt->valor ( "iva" ).toAscii().constData() << " " <<
+                    cursorapt->value( "contrapartida" ).toAscii().constData() << " " << cursorapt->value( "descripcion" ).toAscii().constData() << " " << cursorapt->value( "baseimp" ).toAscii().constData() << " " <<
+                    cursorapt->value( "iva" ).toAscii().constData() << " " <<
                     numberstr.toAscii().constData() << " " <<
-                    cursorapt->valor ( "factura" ).toAscii().constData() << " " <<
-                    cursorapt->valor ( "cif" ).toAscii().constData() << " " <<
+                    cursorapt->value( "factura" ).toAscii().constData() << " " <<
+                    cursorapt->value( "cif" ).toAscii().constData() << " " <<
                     endl;
                 } // end if
                 if ( html ) {
                     /// Presentaci&oacute;n html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor ( "idasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->valor ( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->valor ( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->valor ( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->valor ( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << numberstr.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->valor ( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->valor ( "cif" ).toAscii().constData() << "</td></tr> \n";
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->value( "idasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->value( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->value( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->value( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->value( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << numberstr.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->value( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->value( "cif" ).toAscii().constData() << "</td></tr> \n";
                 } // end if
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
                 cursorapt->nextRecord();
@@ -204,17 +204,17 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             BlFixed tivar ( "0" );
             BlFixed tbaseimpr ( "0" );
             while ( !cur->eof() ) {
-                BlFixed baseiva ( cur->valor ( "tbaseiva" ).replace ( ".", "" ).toAscii().constData() );
-                BlFixed porcent ( cur->valor ( "porcentajetipoiva" ).replace ( ".", "" ).toAscii().constData() );
+                BlFixed baseiva ( cur->value( "tbaseiva" ).replace ( ".", "" ).toAscii().constData() );
+                BlFixed porcent ( cur->value( "porcentajetipoiva" ).replace ( ".", "" ).toAscii().constData() );
                 BlFixed baseimp = baseiva * 1000000 / porcent;
                 QString numberstr = baseimp.toQString();
 
                 /// Pasamos al formato de representaci&oacute;n espa&ntilde;ol las
                 /// cantidades a mostrar.
-                QString iva = QString::number ( cursorapt->valor ( "tbaseiva" ).toDouble(), 'f', 2 );
+                QString iva = QString::number ( cursorapt->value( "tbaseiva" ).toDouble(), 'f', 2 );
                 QString bi = QString::number ( numberstr.toDouble(), 'f', 2 );
 
-                fitxersortidatxt << cur->valor ( "nombretipoiva" ).toAscii().constData() << " IVA: ";
+                fitxersortidatxt << cur->value( "nombretipoiva" ).toAscii().constData() << " IVA: ";
                 fitxersortidatxt << iva.toAscii().constData() << " BI: ";
                 fitxersortidatxt << bi.toAscii().constData() << endl;
 
@@ -253,25 +253,25 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Fecha </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripcion</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             }
             while ( !cursorapt->eof() ) {
-                datahora = cursorapt->valor ( "fecha" );
+                datahora = cursorapt->value( "fecha" );
                 data = datahora.mid ( 0, 10 );
                 /// Pasamos al formato de representacion espanyol las cantidades a mostrar.
-                QString bi = QString::number ( cursorapt->valor ( "baseimp" ).toDouble(), 'f', 2 );
-                QString iva = QString::number ( cursorapt->valor ( "iva" ).toDouble(), 'f', 2 );
-                QString total = QString::number ( cursorapt->valor ( "total" ).toDouble(), 'f', 2 );
+                QString bi = QString::number ( cursorapt->value( "baseimp" ).toDouble(), 'f', 2 );
+                QString iva = QString::number ( cursorapt->value( "iva" ).toDouble(), 'f', 2 );
+                QString total = QString::number ( cursorapt->value( "total" ).toDouble(), 'f', 2 );
                 /// Hacemos el c&aacute;lculo de la cuota (as&iacute; nos sirve para ver
                 /// si se c&aacute;lculo el % correcto).
-                // int calculo = round(cursorapt->valor("iva").toDouble()/cursorapt->valor("baseimp").toDouble()*100);
+                // int calculo = round(cursorapt->value("iva").toDouble()/cursorapt->value("baseimp").toDouble()*100);
                 // QString cuota = QString::number(calculo);
-                QString cuota = QString::number ( cursorapt->valor ( "cuota" ).toInt() );
+                QString cuota = QString::number ( cursorapt->value( "cuota" ).toInt() );
                 /// Acumulamos los totales para al final poder escribirlos.
                 if ( txt ) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << cursorapt->valor ( "ordenasiento" ).toAscii().constData() <<  data.toAscii().constData() <<  cursorapt->valor ( "codigo" ).toAscii().constData() <<  cursorapt->valor ( "descripcion" ).left ( 30 ).toAscii().constData() << " " <<   bi.toAscii().constData() << " " <<  cuota.toAscii().constData() << "%" <<  iva.toAscii().constData() <<  total.toAscii().constData() <<  "  " <<  cursorapt->valor ( "factura" ).right ( 8 ).toAscii().constData() <<   cursorapt->valor ( "cif" ).toAscii().constData() << endl;
+                    fitxersortidatxt << cursorapt->value( "ordenasiento" ).toAscii().constData() <<  data.toAscii().constData() <<  cursorapt->value( "codigo" ).toAscii().constData() <<  cursorapt->value( "descripcion" ).left ( 30 ).toAscii().constData() << " " <<   bi.toAscii().constData() << " " <<  cuota.toAscii().constData() << "%" <<  iva.toAscii().constData() <<  total.toAscii().constData() <<  "  " <<  cursorapt->value( "factura" ).right ( 8 ).toAscii().constData() <<   cursorapt->value( "cif" ).toAscii().constData() << endl;
                 }
                 if ( html ) {
                     /// Presentaci&oacute;n html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor ( "ordenasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->valor ( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->valor ( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->valor ( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->valor ( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << total.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->valor ( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->valor ( "cif" ).toAscii().constData() << "</td></tr> \n";
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->value( "ordenasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->value( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->value( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->value( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->value( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << total.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->value( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->value( "cif" ).toAscii().constData() << "</td></tr> \n";
                 }
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
                 cursorapt->nextRecord();
@@ -288,20 +288,20 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             BlFixed tivas ( "0" );
             BlFixed tbaseimps ( "0" );
             while ( !cur->eof() ) {
-                BlFixed baseiva ( cur->valor ( "tbaseiva" ).toAscii().constData() );
-                BlFixed porcent ( cur->valor ( "porcentajetipoiva" ).toAscii().constData() );
+                BlFixed baseiva ( cur->value( "tbaseiva" ).toAscii().constData() );
+                BlFixed porcent ( cur->value( "porcentajetipoiva" ).toAscii().constData() );
                 BlFixed ivacalculado = baseiva * porcent / 100;
                 QString numberstr = ivacalculado.toQString();
 
                 /// Pasamos al formato de representaci&oacute;n espa&ntilde;ol las
                 /// cantidades a mostrar.
-                QString bi = QString::number ( cur->valor ( "tbaseiva" ).toDouble(), 'f', 2 );
+                QString bi = QString::number ( cur->value( "tbaseiva" ).toDouble(), 'f', 2 );
                 QString iva = QString::number ( numberstr.toDouble(), 'f', 2 );
 
                 if ( j == 0 ) {
                     fitxersortidatxt << endl;
                 } // end if
-                fitxersortidatxt << cur->valor ( "nombretipoiva" ).toAscii().constData() << " BI: ";
+                fitxersortidatxt << cur->value( "nombretipoiva" ).toAscii().constData() << " BI: ";
                 fitxersortidatxt <<  bi.toAscii().constData() << " IVA: ";
                 fitxersortidatxt << iva.toAscii().constData() << endl;
 
@@ -315,14 +315,14 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             /// Ahora cerramos los ficheros.
             if ( txt ) {
                 filetxt.close();
-                QString comando = g_confpr->valor ( CONF_EDITOR ) + " " + archivo + " &";
+                QString comando = g_confpr->value( CONF_EDITOR ) + " " + archivo + " &";
                 system ( comando.toAscii() );
             } // end if
             if ( html ) {
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";
                 filehtml.close();
                 /// Presentaci&oacute;n html normal.
-                QString comando = g_confpr->valor ( CONF_NAVEGADOR ) + " " + archivohtml + " &";
+                QString comando = g_confpr->value( CONF_NAVEGADOR ) + " " + archivohtml + " &";
                 system ( comando.toAscii() );
             } // end if
         }

@@ -38,7 +38,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_preciocoste", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_preciocoste", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -135,7 +135,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         QString query = "SELECT preciocostearticulo FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" );
         cur = subform->mainCompany() ->loadQuery ( query );
         if ( ! cur->eof() ) {
-            if ( "'" + cur->valor ( "preciocostearticulo" ) + "'" == camp->valorcampoprep ( err ) ) {
+            if ( "'" + cur->value( "preciocostearticulo" ) + "'" == camp->valorcampoprep ( err ) ) {
                 delete cur;
                 return 0;
             } // end if
@@ -160,16 +160,16 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
         cur = subform->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
-            rec->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
-            rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+            rec->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
+            rec->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+            rec->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
             if (  subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"
                     || subform->tableName() == "lfacturap" ) {
-                rec->setDbValue ( "desc" + subform->tableName(), cur->valor ( "nomarticulo" ) );
+                rec->setDbValue ( "desc" + subform->tableName(), cur->value( "nomarticulo" ) );
                 rec->setDbValue ( "cant" + subform->tableName(), "1.00" );
                 rec->setDbValue ( "descuento" + subform->tableName(), "0.00" );
-                rec->setDbValue ( "pvp" + subform->tableName(), cur->valor ( "preciocostearticulo" ) );
+                rec->setDbValue ( "pvp" + subform->tableName(), cur->value( "preciocostearticulo" ) );
             } // end if
         } else {
 	    /// No hace falta avisar que el articulo es inexistente porque ya se hace en BlSubForm::editFinished.
@@ -177,19 +177,19 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             return -1;
         } // end if
 
-        cur1 = subform->mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+        cur1 = subform->mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
         if ( !cur->eof() ) {
             if ( subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"
                     || subform->tableName() == "lfacturap" ) {
-                rec->setDbValue ( "iva" + subform->tableName(), cur1->valor ( "porcentasa_iva" ) );
+                rec->setDbValue ( "iva" + subform->tableName(), cur1->value( "porcentasa_iva" ) );
 
 
                 if ( subform->idproveedor() != "" ) {
                     cur2 = subform->mainCompany() ->loadQuery ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + subform->idproveedor() );
                     if ( !cur2->eof() ) {
-                        if ( cur2->valor ( "recargoeqproveedor" ) == "t" ) {
-                            rec->setDbValue ( "reqeq" + subform->tableName(), cur1->valor ( "porcentretasa_iva" ) );
+                        if ( cur2->value( "recargoeqproveedor" ) == "t" ) {
+                            rec->setDbValue ( "reqeq" + subform->tableName(), cur1->value( "porcentretasa_iva" ) );
                         } // end if
                     } // end if
                     delete cur2;

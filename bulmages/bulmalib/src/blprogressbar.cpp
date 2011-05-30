@@ -30,7 +30,7 @@
 BlProgressBar::BlProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 {
     blDebug ( "BlProgressBar::BlProgressBar", 0 );
-    if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         setupUi ( this );
         QDesktopWidget *pantalla = new QDesktopWidget();
         setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() / 2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
@@ -47,7 +47,7 @@ void BlProgressBar::setText ( const QString &tex )
 {
     blDebug ( "BlProgressBar::setText", 0 );
 
-    if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         mui_label1->setText ( tex );
         /// Si no hacemos una espera no se pinta bien el setText.
         for ( int i = 0; i < 20; i++ )
@@ -73,7 +73,7 @@ BlProgressBar::~BlProgressBar()
 void BlProgressBar::setValue ( int value )
 {
     blDebug ( "BlProgressBar::setValue", 0 );
-    if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
+    if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setValue ( value );
     blDebug ( "END BlProgressBar::setValue", 0 );
 
@@ -87,7 +87,7 @@ int BlProgressBar::value()
 {
     blDebug ( "BlProgressBar::value", 0 );
     blDebug ( "END BlProgressBar::value", 0 );
-    if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         return mui_progressBar->value();
     } else {
         return 0;
@@ -101,7 +101,7 @@ int BlProgressBar::value()
 void BlProgressBar::setRange ( int range,  int range1 )
 {
     blDebug ( "BlProgressBar::setRange", 0 );
-    if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
+    if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setRange ( range, range1 );
     blDebug ( "END BlProgressBar::setRange", 0 );
 }
@@ -113,7 +113,7 @@ void BlProgressBar::setRange ( int range,  int range1 )
 void BlProgressBar::show (  )
 {
     blDebug ( "BlProgressBar::show", 0 );
-    if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         QWidget::show();
     } // end if
     blDebug ( "END BlProgressBar::show", 0 );

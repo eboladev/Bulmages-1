@@ -146,8 +146,8 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario" );
     if ( !cur1 ) throw - 1;
     while ( !cur1->eof() ) {
-        QAction * ac = menu1->addAction ( cur1->valor ( "nomtrabajador" ) + "(" + cur1->valor ( "horainhorario" ) + ":" + cur1->valor ( "horafinhorario" ) + ")" );
-        horarios[ac] = cur1->valor ( "idhorario" );
+        QAction * ac = menu1->addAction ( cur1->value( "nomtrabajador" ) + "(" + cur1->value( "horainhorario" ) + ":" + cur1->value( "horafinhorario" ) + ")" );
+        horarios[ac] = cur1->value( "idhorario" );
         cur1->nextRecord();
     } // end while
     delete cur1;
@@ -252,14 +252,14 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( querycuad );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
-            if ( cur->valor ( "aperturacuadrante" ) != "" )
-                horain = cur->valor ( "aperturacuadrante" );
-            if ( cur->valor ( "cierrecuadrante" ) != "" )
-                horafin = cur->valor ( "cierrecuadrante" );
-            if ( cur->valor ( "apertura1cuadrante" ) != "" )
-                horain1 = cur->valor ( "apertura1cuadrante" );
-            if ( cur->valor ( "cierre1cuadrante" ) != "" )
-                horafin1 = cur->valor ( "cierre1cuadrante" );
+            if ( cur->value( "aperturacuadrante" ) != "" )
+                horain = cur->value( "aperturacuadrante" );
+            if ( cur->value( "cierrecuadrante" ) != "" )
+                horafin = cur->value( "cierrecuadrante" );
+            if ( cur->value( "apertura1cuadrante" ) != "" )
+                horain1 = cur->value( "apertura1cuadrante" );
+            if ( cur->value( "cierre1cuadrante" ) != "" )
+                horafin1 = cur->value( "cierre1cuadrante" );
         } // end if
 
         QString query = "INSERT INTO horario (idtrabajador, idcuadrante, horainhorario, horafinhorario) VALUES (" + idtrabajador + "," + mdb_idcuadrante + ",'" + horain + "','" + horafin + "')";
@@ -417,10 +417,10 @@ const QString CuadranteQTextDocument::impresion()
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
-            if ( cur->valor ( "fiestacuadrante" ) == "t" ) {
+            if ( cur->value( "fiestacuadrante" ) == "t" ) {
                 style = " style=\"festivo\"";
             }
-            html += "<para " + style + "> <b><font color=\"red\" size=\"5\">" + cur->valor ( "nomalmacen" ) + "</font></b><font size=\"5\">: " + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "</font></para><spacer length=\"0.1cm\"/>\n";
+            html += "<para " + style + "> <b><font color=\"red\" size=\"5\">" + cur->value( "nomalmacen" ) + "</font></b><font size=\"5\">: " + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "</font></para><spacer length=\"0.1cm\"/>\n";
         } // end if
 
 
@@ -429,19 +429,19 @@ const QString CuadranteQTextDocument::impresion()
         BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, horainhorario, nomtrabajador" );
         if ( !cur1 ) throw - 1;
         while ( !cur1->eof() ) {
-            if ( oldnomtipotrabajo != cur1->valor ( "nomtipotrabajo" ) ) {
-                html +=  "<para " + style + "><font color=\"red\" size=\"5\">" + cur1->valor ( "nomtipotrabajo" ) + ":</font></para><spacer length=\"0.1cm\"/>\n";
-                oldnomtipotrabajo = cur1->valor ( "nomtipotrabajo" );
+            if ( oldnomtipotrabajo != cur1->value( "nomtipotrabajo" ) ) {
+                html +=  "<para " + style + "><font color=\"red\" size=\"5\">" + cur1->value( "nomtipotrabajo" ) + ":</font></para><spacer length=\"0.1cm\"/>\n";
+                oldnomtipotrabajo = cur1->value( "nomtipotrabajo" );
             } // end if
-            html += "<para " + style + "><font face=\"Helvetica\" size=\"6\" color=\"" + cur1->valor ( "colortipotrabajo" ) + "\">" + cur1->valor ( "nomtrabajador" ) + " " + cur1->valor ( "apellidostrabajador" );
-            html += "<sup>(" + cur1->valor ( "horainhorario" ).left ( 5 ) + "--" + cur1->valor ( "horafinhorario" ).left ( 5 ) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
+            html += "<para " + style + "><font face=\"Helvetica\" size=\"6\" color=\"" + cur1->value( "colortipotrabajo" ) + "\">" + cur1->value( "nomtrabajador" ) + " " + cur1->value( "apellidostrabajador" );
+            html += "<sup>(" + cur1->value( "horainhorario" ).left ( 5 ) + "--" + cur1->value( "horafinhorario" ).left ( 5 ) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
 
             cur1->nextRecord();
         } // end while
         delete cur1;
 
-        if ( cur->valor ( "comentcuadrante" ) != "" ) {
-            html += "<para " + style + "><font face=\"Helvetica\" size=\"5\" color=\"black\">" + cur->valor ( "comentcuadrante" ).replace ( "\n", "<spacer length=\"0.1cm\"/>\n" ) + "</font></para>";
+        if ( cur->value( "comentcuadrante" ) != "" ) {
+            html += "<para " + style + "><font face=\"Helvetica\" size=\"5\" color=\"black\">" + cur->value( "comentcuadrante" ).replace ( "\n", "<spacer length=\"0.1cm\"/>\n" ) + "</font></para>";
         } // end if
 
         delete cur;
@@ -500,13 +500,13 @@ void ImpCuadrante::generar()
         cur = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
-            if ( cur->valor ( "fiestacuadrante" ) == "t" ) {
+            if ( cur->value( "fiestacuadrante" ) == "t" ) {
                 html += "<table width=\"240\" height=\"300\" bgcolor=\"#999999\"><tr><td>";
             } else {
                 html += "<table width=\"240\" height=\"300\" bgcolor=\"#FFFFFF\"><tr><td>";
             }
-            html += "<font size=\"2\" color=\"#660000\"><B>" + cur->valor ( "nomalmacen" ) + "</B>: " + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "</font><BR>";
-            mdb_idcuadrante = cur->valor ( "idcuadrante" );
+            html += "<font size=\"2\" color=\"#660000\"><B>" + cur->value( "nomalmacen" ) + "</B>: " + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "</font><BR>";
+            mdb_idcuadrante = cur->value( "idcuadrante" );
         } // end if
 
         QString oldnomtipotrabajo = "";
@@ -516,25 +516,25 @@ void ImpCuadrante::generar()
         while ( !cur1->eof() ) {
 
 
-            if ( oldnomtipotrabajo != cur1->valor ( "nomtipotrabajo" ) ) {
-                html += "<font size=\"2\" color=\"#00FF00\" >" + cur1->valor ( "nomtipotrabajo" ) + ":</font><BR>";
-                oldnomtipotrabajo = cur1->valor ( "nomtipotrabajo" );
+            if ( oldnomtipotrabajo != cur1->value( "nomtipotrabajo" ) ) {
+                html += "<font size=\"2\" color=\"#00FF00\" >" + cur1->value( "nomtipotrabajo" ) + ":</font><BR>";
+                oldnomtipotrabajo = cur1->value( "nomtipotrabajo" );
             } // end if
 
             /// Si hay conflictos con el trabajador.
-            if ( buscaConflictos ( cur1->valor ( "idtrabajador" ), mdb_fechacuadrante, cur1->valor ( "horainhorario" ).left ( 5 ), cur1->valor ( "horafinhorario" ).left ( 5 ) ) ) {
+            if ( buscaConflictos ( cur1->value( "idtrabajador" ), mdb_fechacuadrante, cur1->value( "horainhorario" ).left ( 5 ), cur1->value( "horafinhorario" ).left ( 5 ) ) ) {
                 html += "<font size=\"3\" color=\"#FF0000\">ERROR</FONT> ";
             }
 
-            html += "<font size=\"3\" color=\"" + cur1->valor ( "colortipotrabajo" ) + "\">" + cur1->valor ( "nomtrabajador" ) + " " + cur1->valor ( "apellidostrabajador" );
-            html += " (" + cur1->valor ( "horainhorario" ).left ( 5 ) + "--" + cur1->valor ( "horafinhorario" ).left ( 5 ) + ") </font><BR>";
+            html += "<font size=\"3\" color=\"" + cur1->value( "colortipotrabajo" ) + "\">" + cur1->value( "nomtrabajador" ) + " " + cur1->value( "apellidostrabajador" );
+            html += " (" + cur1->value( "horainhorario" ).left ( 5 ) + "--" + cur1->value( "horafinhorario" ).left ( 5 ) + ") </font><BR>";
 
             cur1->nextRecord();
         } // end while
         delete cur1;
 
-        if ( cur->valor ( "comentcuadrante" ) != "" ) {
-            html += "<HR><font size=\"2\" color=\"#000000\">" + cur->valor ( "comentcuadrante" ).replace ( "\n", "<BR>" ) + "</font>";
+        if ( cur->value( "comentcuadrante" ) != "" ) {
+            html += "<HR><font size=\"2\" color=\"#000000\">" + cur->value( "comentcuadrante" ).replace ( "\n", "<BR>" ) + "</font>";
         } // end if
         delete cur;
 

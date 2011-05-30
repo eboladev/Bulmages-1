@@ -74,7 +74,7 @@ class PLUGINBC_ASIENTO_EXPORT BcAsientoView : public BcAsientoList, public Ui_Bc
     Q_OBJECT
 
 private:
-    void pintafecha ( QString val );
+    void pintaFecha ( QString val );
     void pintaordenasiento ( QString val );
     void pintaclase ( QString val );
     void pintacomentariosasiento ( QString text );
@@ -86,8 +86,8 @@ public:
     ~BcAsientoView();
     void muestraasiento ( QString v );
     void muestraasiento ( int v );
-    /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
-    virtual int sacaWindow();
+    /// Desabilitamos el removeWindow ya que esta ventana no debe ser sacada ante un close.
+    virtual int removeWindow();
     virtual int guardarPost();
 
 public:

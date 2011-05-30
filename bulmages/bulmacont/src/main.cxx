@@ -67,7 +67,7 @@ int main ( int argc, char **argv )
 
       /// Inicializa el sistema de traducciones 'gettext'.
       setlocale(LC_ALL, "");
-      blBindTextDomain ("bulmacont", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+      blBindTextDomain ("bulmacont", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
       blTextDomain ("bulmacont");
 
       /// Iniciamos la clase QApplication para el uso de las Qt.
@@ -80,20 +80,20 @@ int main ( int argc, char **argv )
       QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
       QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-      g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
       /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
       argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
 
-      if( ! argParser->Host().isEmpty() ) {
-         g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
+      if( ! argParser->host().isEmpty() ) {
+         g_confpr->setValue( CONF_SERVIDOR, argParser->host() );
       } // end if
-      if( ! argParser->Port().isEmpty() ) {
-         g_confpr->setValor( CONF_PUERTO, argParser->Port() );
+      if( ! argParser->port().isEmpty() ) {
+         g_confpr->setValue( CONF_PUERTO, argParser->port() );
       } // end if
 
       /// Salir ordenadamente del programa si s&oacute;lo se ha pedido ver la ayuda o la versi&oacute;n.
-      if( argParser->ShowHelp() | argParser->ShowVersion() ) {
+      if( argParser->showHelp() | argParser->showVersion() ) {
          delete argParser;
          delete g_theApp;
          delete g_confpr;
@@ -101,15 +101,15 @@ int main ( int argc, char **argv )
       } // end if
 
       /// Cargamos el BlSplashScreen.
-      splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMACONT ), "Iglues/BulmaCont", CONFIG_VERSION );
+      splashScr = new BlSplashScreen ( g_confpr->value( CONF_SPLASH_BULMACONT ), "Iglues/BulmaCont", CONFIG_VERSION );
       splashScr->mensaje ( _( "Iniciando clases" ) );
       splashScr->setBarraProgreso ( 1 );
 
       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
       login1 = new BlDbLoginDialog ( 0, "" );
-      if ( !login1->authOK() || argParser->AskPassword() ) {
-         if( !argParser->UserName().isEmpty() ) {
-            login1->m_login->setText( argParser->UserName() );
+      if ( !login1->authOK() || argParser->askPassword() ) {
+         if( !argParser->userName().isEmpty() ) {
+            login1->m_login->setText( argParser->userName() );
             login1->m_password->setFocus();
          } // end if
          login1->exec();
@@ -120,7 +120,7 @@ int main ( int argc, char **argv )
       } // end if
       delete login1;
 
-      bges = new BcBulmaCont ( 0, Qt::Window, argParser->DbName() );
+      bges = new BcBulmaCont ( 0, Qt::Window, argParser->dbName() );
       bges->hide();
       g_main = bges;
 
@@ -128,34 +128,34 @@ int main ( int argc, char **argv )
       delete argParser;
 
       /// Verifica la version de la base de datos para funcionar adecuadamente.
-      bges->empresaactual()->dbVersionCheck("DatabaseRevision", "0.13.1-0000");
+      bges->company()->dbVersionCheck("DatabaseRevision", "0.13.1-0000");
 
       splashScr->show();
       splashScr->mensaje ( _( "Leyendo configuracion" ) );
       splashScr->setBarraProgreso ( 2 );
 
       /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-      QString confEsp = CONFGLOBAL + bges->empresaactual() ->dbName() + ".conf";
+      QString confEsp = CONFGLOBAL + bges->company() ->dbName() + ".conf";
       QDir archivoConf;
       if ( !archivoConf.exists ( confEsp ) ) {
          QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
          fprintf ( stderr, "%s", mensaje.toAscii().constData() );
       } else {
-         g_confpr->leeconfig ( confEsp );
+         g_confpr->readConfig ( confEsp );
       } // end if
 
       // Pone el color de fondo del workspace si esta definido y es un color valido.
-      if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
-         bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
+      if ( QColor(g_confpr->value( CONF_BACKGROUND_COLOR )).isValid() ) {
+         bges->workspace()->setBackground(QBrush(QColor( g_confpr->value( CONF_BACKGROUND_COLOR ) )));
       } // end if
 
       // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-      if ( !QPixmap(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-         bges->workspace()->setBackground(QBrush( QPixmap(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+      if ( !QPixmap(g_confpr->value( CONF_BACKGROUND_IMAGE )).isNull() ) {
+         bges->workspace()->setBackground(QBrush( QPixmap(g_confpr->value( CONF_BACKGROUND_IMAGE )) ));
       } // end if
 
       /// Hacemos la carga de las hojas de estilo.
-      QFile arch(g_confpr->valor(CONF_STYLESHEET));
+      QFile arch(g_confpr->value(CONF_STYLESHEET));
       if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
          QString style = arch.readAll();
          g_theApp->setStyleSheet(style);
@@ -165,7 +165,7 @@ int main ( int argc, char **argv )
       splashScr->setBarraProgreso ( 10 );
 
       /// Hacemos la carga de las librerias que contienen los plugins.
-      g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMACONT ) );
+      g_plugins->cargaLibs ( g_confpr->value( CONF_PLUGINS_BULMACONT ) );
 
       splashScr->mensaje ( _( "Lanzando plugins" ) );
       splashScr->setBarraProgreso ( 20 );
@@ -177,7 +177,7 @@ int main ( int argc, char **argv )
       splashScr->setBarraProgreso ( 30 );
 
       /// Lanzamos la creacion de las ventanas principales.
-      bges->empresaactual()->createMainWindows ( splashScr );
+      bges->company()->createMainWindows ( splashScr );
 
       splashScr->mensaje ( _( "Terminado" ) );
       splashScr->setBarraProgreso ( 100 );

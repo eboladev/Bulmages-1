@@ -69,7 +69,7 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if ( idtrabajador == "0" ) {
-        idtrabajador = g_confpr->valor ( CONF_IDTRABAJADOR_DEFECTO );
+        idtrabajador = g_confpr->value( CONF_IDTRABAJADOR_DEFECTO );
     } // end if
 
     if ( m_comboRecordSet != NULL ) {
@@ -86,11 +86,11 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
     while ( !m_comboRecordSet->eof() ) {
         i ++;
 
-        if ( m_comboRecordSet->valor ( "idtrabajador" ) == idtrabajador ) {
+        if ( m_comboRecordSet->value( "idtrabajador" ) == idtrabajador ) {
             i1 = i;
         } // end if
 
-        addItem ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) );
+        addItem ( m_comboRecordSet->value( "apellidostrabajador" ) + ", " + m_comboRecordSet->value( "nomtrabajador" ) );
         m_comboRecordSet->nextRecord();
     } // end while
 
@@ -115,7 +115,7 @@ QString BfBuscarTrabajador::id()
         return "0";
     } // end if
 
-    return m_comboRecordSet->valor ( "idtrabajador", currentIndex() - 1 );
+    return m_comboRecordSet->value( "idtrabajador", currentIndex() - 1 );
 }
 
 
@@ -131,7 +131,7 @@ void BfBuscarTrabajador::m_activated ( int index )
     blDebug ( "BfBuscarTrabajador::m_activated", 0 );
 
     if ( index > 0 ) {
-        emit ( valueChanged ( m_comboRecordSet->valor ( "idtrabajador", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "idtrabajador", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -198,9 +198,9 @@ void BfBuscarTrabajadorDelegate::set ( const QString &cod )
     clear();
 
     while ( !m_comboRecordSet->eof() ) {
-        addItem ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) );
+        addItem ( m_comboRecordSet->value( "apellidostrabajador" ) + ", " + m_comboRecordSet->value( "nomtrabajador" ) );
         m_comboRecordSet->nextRecord();
-        if ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) == cod )
+        if ( m_comboRecordSet->value( "apellidostrabajador" ) + ", " + m_comboRecordSet->value( "nomtrabajador" ) == cod )
             index = m_comboRecordSet->currentRecord();
     } // end while
 

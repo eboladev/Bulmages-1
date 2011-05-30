@@ -85,7 +85,7 @@ void EmailThunderbirdQToolButton::setBoton()
     setToolTip ( _ ( "Enviar por e-mail con Thunderbird al cliente" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/icon_mozilla-thunderbird.xpm"  ) );
+    setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/icon_mozilla-thunderbird.xpm"  ) );
     setIconSize ( QSize ( 22, 22 ) );
 
     blDebug ( "END EmailThunderbirdQToolButton::setBoton", 0 );
@@ -119,21 +119,21 @@ void EmailThunderbirdQToolButton::click()
         }
         
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->valor ( "mailcliente" );
+        QString email = curs->value( "mailcliente" );
 
         if ( m_presupuestoView->generaRML() ) {
             blCreatePDF ( "presupuesto" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf" + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf"+ CAD_COMILLAS;
+            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf" + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf"+ CAD_COMILLAS;
 #ifdef Q_OS_WIN32
 			cad.replace("/","\\");
 #endif
             system ( cad.toAscii().data() );
 
 #ifdef Q_OS_WIN32
-            cad = CAD_THUNDERBIRD + " -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + " Atentamente\',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + " -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + " Atentamente\',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
 #else
-            cad = CAD_THUNDERBIRD + " -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + " -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
 #endif
             system ( cad.toAscii().data() );
         } // end if
@@ -161,21 +161,21 @@ void EmailThunderbirdQToolButton::click()
         }
         
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->valor ( "mailcliente" );
+        QString email = curs->value( "mailcliente" );
 
         if ( m_pedidoClienteView->generaRML() ) {
             blCreatePDF ( "pedidocliente" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf" + CAD_COMILLAS;
+            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf" + CAD_COMILLAS;
 #ifdef Q_OS_WIN32
 			cad.replace("/","\\");
 #endif
             system ( cad.toAscii().data() );
 
 #ifdef Q_OS_WIN32
-            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + " Atentamente',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + " Atentamente',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
 #else
-            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
 #endif
             system ( cad.toAscii().data() );
         } // end if
@@ -203,21 +203,21 @@ void EmailThunderbirdQToolButton::click()
         }
         
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->valor ( "mailcliente" );
+        QString email = curs->value( "mailcliente" );
 
         if ( m_albaranClienteView->generaRML() ) {
             blCreatePDF ( "albaran" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf"+ CAD_COMILLAS;
+            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf"+ CAD_COMILLAS;
 #ifdef Q_OS_WIN32
 			cad.replace("/","\\");
 #endif
             system ( cad.toAscii().data() );
 
 #ifdef Q_OS_WIN32
-            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + " Atentamente',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + " Atentamente',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
 #else
-            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
 #endif
             system ( cad.toAscii().data() );
         } // end if
@@ -247,20 +247,20 @@ void EmailThunderbirdQToolButton::click()
         }
         
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->valor ( "mailcliente" );
+        QString email = curs->value( "mailcliente" );
 
         if ( m_facturaView->generaRML() ) {
             blCreatePDF ( "factura" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf "  + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf" + CAD_COMILLAS;
+            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "factura.pdf "  + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf" + CAD_COMILLAS;
 			cad.replace("/","\\");
 
             system ( cad.toAscii().data() );
 			
 #ifdef Q_OS_WIN32
-            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente: Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + " Sin otro particular reciba un cordial saludo.',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente: Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + " Sin otro particular reciba un cordial saludo.',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
 #else
-            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente:\n\nAdjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\nSin otro particular reciba un cordial saludo.\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
+            cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente:\n\nAdjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\nSin otro particular reciba un cordial saludo.\n',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
 #endif
             system ( cad.toAscii().data() );
         } // end if

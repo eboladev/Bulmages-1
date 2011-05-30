@@ -160,7 +160,7 @@ void GenAlbQToolButton::generarFactura1()
             } // end if
             bud = new TicketClienteView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idalbaran" ) );
+            bud->cargar ( cur->value( "idalbaran" ) );
             bud->show();
             return;
         } // end if
@@ -292,7 +292,7 @@ void GenAlbQToolButton::generarFactura2()
             } // end if
             bud = new TicketClienteView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idalbaran" ) );
+            bud->cargar ( cur->value( "idalbaran" ) );
             bud->show();
             return;
         } // end if

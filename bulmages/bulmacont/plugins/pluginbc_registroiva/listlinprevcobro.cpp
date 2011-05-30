@@ -146,22 +146,22 @@ int ListLinPrevCobro::chargeBudgetLines()
     while ( !cur->eof() ) {
         /// Creamos un elemento del tipo linprevcobro y lo agregamos a la lista.
         linprevcobro * lin = new linprevcobro ( m_companyact,
-                                                cur->valor ( "idprevcobro" ),
-                                                cur->valor ( "fprevistaprevcobro" ),
-                                                cur->valor ( "fcobroprevcobro" ),
-                                                cur->valor ( "idfpago" ),
-                                                cur->valor ( "idcuenta" ),
-                                                cur->valor ( "idasiento" ),
-                                                cur->valor ( "cantidadprevistaprevcobro" ),
-                                                cur->valor ( "cantidadprevcobro" ),
-                                                cur->valor ( "idregistroiva" ),
-                                                cur->valor ( "tipoprevcobro" ),
-                                                cur->valor ( "docprevcobro" ),
-                                                cur->valor ( "codigo" ),
-                                                cur->valor ( "descripcion" ),
-                                                cur->valor ( "idctacliente" ),
-                                                cur->valor ( "codigoctacliente" ),
-                                                cur->valor ( "nomctacliente" ) );
+                                                cur->value( "idprevcobro" ),
+                                                cur->value( "fprevistaprevcobro" ),
+                                                cur->value( "fcobroprevcobro" ),
+                                                cur->value( "idfpago" ),
+                                                cur->value( "idcuenta" ),
+                                                cur->value( "idasiento" ),
+                                                cur->value( "cantidadprevistaprevcobro" ),
+                                                cur->value( "cantidadprevcobro" ),
+                                                cur->value( "idregistroiva" ),
+                                                cur->value( "tipoprevcobro" ),
+                                                cur->value( "docprevcobro" ),
+                                                cur->value( "codigo" ),
+                                                cur->value( "descripcion" ),
+                                                cur->value( "idctacliente" ),
+                                                cur->value( "codigoctacliente" ),
+                                                cur->value( "nomctacliente" ) );
         m_lista.append ( lin );
         i++;
         cur->nextRecord();

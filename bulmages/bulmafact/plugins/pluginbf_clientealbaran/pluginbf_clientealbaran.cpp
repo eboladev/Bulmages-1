@@ -31,91 +31,8 @@
 
 
 AlbaranClienteList *g_albaranClienteList = NULL;
+BfBulmaFact *g_bges = NULL;
 
-///
-/**
-**/
-PluginBf_ClienteAlbaran::PluginBf_ClienteAlbaran()
-{
-    blDebug ( "PluginBf_ClienteAlbaran::PluginBf_ClienteAlbaran", 0 );
-    blDebug ( "END PluginBf_ClienteAlbaran::PluginBf_ClienteAlbaran", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_ClienteAlbaran::~PluginBf_ClienteAlbaran()
-{
-    blDebug ( "PluginBf_ClienteAlbaran::~PluginBf_ClienteAlbaran", 0 );
-    blDebug ( "END PluginBf_ClienteAlbaran::~PluginBf_ClienteAlbaran", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_ClienteAlbaran::elslot()
-{
-    blDebug ( "PluginBf_ClienteAlbaran::elslot", 0 );
-    if ( g_albaranClienteList ) {
-        g_albaranClienteList->hide();
-        g_albaranClienteList->show();
-    }// end if
-    blDebug ( "END PluginBf_ClienteAlbaran::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_ClienteAlbaran::elslot1()
-{
-    blDebug ( "PluginBf_ClienteAlbaran::elslot1", 0 );
-    AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    blDebug ( "END PluginBf_ClienteAlbaran::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_ClienteAlbaran::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_ClienteAlbaran::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Albaranes a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Albaranes a clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Albaranes a clientes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo albaran a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
-        npago->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
-    }// end if
-    blDebug ( "END PluginBf_ClienteAlbaran::inicializa", 0 );
-}
 
 
 ///
@@ -129,12 +46,59 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_ClienteAlbaran *plug = new PluginBf_ClienteAlbaran();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        g_bges = bges;
+
+        BlAction *accionA = new BlAction ( _ ( "&Albaranes a clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Albaranes a clientes" ) );
+        accionA->setWhatsThis ( _ ( "Albaranes a clientes" ) );
+        accionA->setObjectName("mui_actionAlbaranesClientes");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo albaran a cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
+        accionB->setObjectName("mui_actionNuevoAlbaranCliente");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+    }// end if
+
+
     return 0;
 }
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionAlbaranesClientes") {
+        if ( g_albaranClienteList ) {
+            g_albaranClienteList->hide();
+            g_albaranClienteList->show();
+        }// end if
+    } // end if
+
+    if (accion->objectName() == "mui_actionNuevoAlbaranCliente") {                
+        AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->inicializar();
+        bud->show();
+
+    } // end if
+
+    return 0;
+} // end if
+
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
@@ -179,7 +143,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->valor ( "idfactura" ) );
+        bud->cargar ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while

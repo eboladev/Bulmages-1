@@ -52,7 +52,7 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END ListTipoIVAView::ListTipoIVAView", 1 );
 }
@@ -84,10 +84,10 @@ ListTipoIVAView::~ListTipoIVAView()
 }
 
 /*
-int ListTipoIVAView::sacaWindow() {
-    blDebug("ListTipoIVAView::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    blDebug("END ListTipoIVAView::sacaWindow", 0);
+int ListTipoIVAView::removeWindow() {
+    blDebug("ListTipoIVAView::removeWindow", 0);
+    companyact->removeWindow(this);
+    blDebug("END ListTipoIVAView::removeWindow", 0);
     return 0;
 }
 */

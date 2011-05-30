@@ -112,7 +112,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
         m_totalfactura->setReadOnly ( TRUE );
         m_totalfactura->setAlignment ( Qt::AlignRight );
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la factura" ), this );
@@ -143,7 +143,7 @@ void FacturaView::inicializar()
     subform2->inicializar();
     m_descuentos->inicializar();
     pintar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END FacturaView::inicializar", 0 );
 }
 
@@ -191,7 +191,7 @@ void FacturaView::on_mui_veralbaranes_clicked()
             while ( !cur->eof() ) {
                 bud = new AlbaranClienteView ( mainCompany(), NULL );
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->valor ( "idalbaran" ) );
+                bud->cargar ( cur->value( "idalbaran" ) );
                 bud->show();
                 cur->nextRecord();
             } // end while

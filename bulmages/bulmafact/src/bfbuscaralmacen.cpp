@@ -70,7 +70,7 @@ void BfBuscarAlmacen::setId ( QString idalmacen )
 
         /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
         if ( idalmacen.isEmpty() || idalmacen == "0" ) {
-            idalmacen = g_confpr->valor ( CONF_IDALMACEN_DEFECTO );
+            idalmacen = g_confpr->value( CONF_IDALMACEN_DEFECTO );
         } // end if
 
         /// Si ya esta creado el cursorcombo lo borramos.
@@ -87,11 +87,11 @@ void BfBuscarAlmacen::setId ( QString idalmacen )
         addItem ( "--" );
         while ( !m_comboRecordSet->eof() ) {
             i++;
-            if ( m_comboRecordSet->valor ( "codigoalmacen" ) == m_codigoalmacen )
+            if ( m_comboRecordSet->value( "codigoalmacen" ) == m_codigoalmacen )
                 i2 = i;
-            if ( m_comboRecordSet->valor ( "idalmacen" ) == idalmacen )
+            if ( m_comboRecordSet->value( "idalmacen" ) == idalmacen )
                 i1 = i;
-            addItem ( m_comboRecordSet->valor ( "nomalmacen" ) );
+            addItem ( m_comboRecordSet->value( "nomalmacen" ) );
             m_comboRecordSet->nextRecord();
         } //end while
         if ( i1 != 0 ) {
@@ -117,8 +117,8 @@ QString BfBuscarAlmacen::id()
     int index = currentIndex();
 
     if ( index > 0 ) {
-        blDebug ( "END BfBuscarAlmacen::idalmacen", 0, m_comboRecordSet->valor ( "idalmacen", index - 1 ) );
-        return ( m_comboRecordSet->valor ( "idalmacen", index - 1 ) );
+        blDebug ( "END BfBuscarAlmacen::idalmacen", 0, m_comboRecordSet->value( "idalmacen", index - 1 ) );
+        return ( m_comboRecordSet->value( "idalmacen", index - 1 ) );
     } else {
         blDebug ( "END BfBuscarAlmacen::idalmacen", 0 );
         return "";
@@ -136,7 +136,7 @@ void BfBuscarAlmacen::setMainCompany ( BfCompany *comp )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
     if ( cur ) {
         if ( !cur->eof() ) {
-            m_codigoalmacen = cur->valor ( "valor" );
+            m_codigoalmacen = cur->value( "valor" );
         } // end if
         delete cur;
     } // end if
@@ -153,7 +153,7 @@ void BfBuscarAlmacen::m_activated ( int index )
     blDebug ( "BfBuscarAlmacen::m_activated", 0 );
 
     if ( index > 0 ) {
-        emit ( valueChanged ( m_comboRecordSet->valor ( "idalmacen", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "idalmacen", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -216,10 +216,10 @@ void BfBuscarAlmacenDelegate::set ( const QString &cod )
     clear();
 
     while ( !m_comboRecordSet->eof() ) {
-        addItem ( m_comboRecordSet->valor ( "nomalmacen" ) + ", " + m_comboRecordSet->valor ( "codigoalmacen" ) );
+        addItem ( m_comboRecordSet->value( "nomalmacen" ) + ", " + m_comboRecordSet->value( "codigoalmacen" ) );
         m_comboRecordSet->nextRecord();
 
-        if ( m_comboRecordSet->valor ( "nomalmacen" ) + ", " + m_comboRecordSet->valor ( "codigoalmacen" ) == cod ) {
+        if ( m_comboRecordSet->value( "nomalmacen" ) + ", " + m_comboRecordSet->value( "codigoalmacen" ) == cod ) {
             index = m_comboRecordSet->currentRecord();
         } // end if
 

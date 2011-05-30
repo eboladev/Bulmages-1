@@ -63,7 +63,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
 
 
     on_mui_actualizar_clicked();
-    m_companyact->meteWindow ( windowTitle(), this );
+    m_companyact->insertWindow ( windowTitle(), this );
     blDebug ( "END cobropagoview::cobropagoview", 0 );
 }
 
@@ -74,7 +74,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
 cobropagoview::~cobropagoview()
 {
     blDebug ( "cobropagoview::~cobropagoview", 0 );
-    m_companyact->sacaWindow ( this );
+    m_companyact->removeWindow ( this );
     blDebug ( "END cobropagoview::~cobropagoview", 0 );
 }
 

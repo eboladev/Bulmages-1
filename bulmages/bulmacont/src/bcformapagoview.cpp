@@ -41,11 +41,11 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
     setupUi ( this );
     m_curfpago = NULL;
 
-    dialogChanges_setQObjectExcluido ( mui_comboFPago );
+    dialogChanges_setExcludedObject ( mui_comboFPago );
 
     pintar();
-    dialogChanges_cargaInicial();
-    emp->meteWindow ( windowTitle(), this );
+    dialogChanges_readValues();
+    emp->insertWindow ( windowTitle(), this );
 
     blDebug ( "END BcFormaPagoView::BcFormaPagoView", 0 );
 }
@@ -62,7 +62,7 @@ BcFormaPagoView::~BcFormaPagoView()
     if ( m_curfpago != NULL ) {
         delete m_curfpago;
     } /// end if
-    sacaWindow();
+    removeWindow();
     blDebug ( "END BcFormaPagoView::~BcFormaPagoView", 0 );
 }
 
@@ -96,8 +96,8 @@ void BcFormaPagoView::pintar ( QString idfpago )
     mui_comboFPago->clear();
     int i = 0;
     while ( !m_curfpago->eof() ) {
-        mui_comboFPago->insertItem ( i, m_curfpago->valor ( "nomfpago" ) );
-        if ( idfpago == m_curfpago->valor ( "idfpago" ) )
+        mui_comboFPago->insertItem ( i, m_curfpago->value( "nomfpago" ) );
+        if ( idfpago == m_curfpago->value( "idfpago" ) )
             posicion = i;
         m_curfpago->nextRecord();
         i++;
@@ -141,7 +141,7 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
 {
     blDebug ( "BcFormaPagoView::mostrarplantilla", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar forma de pago" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -153,14 +153,14 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
             mui_comboFPago->setCurrentIndex ( pos );
         } // end if
         m_posactual = mui_comboFPago->currentIndex();
-        mui_nombreFPago->setText ( m_curfpago->valor ( "nomfpago", m_posactual ) );
-        mui_plazoPrimerPago->setText ( m_curfpago->valor ( "plazoprimerpagofpago", m_posactual ) );
-        mui_numeroPlazos->setText ( m_curfpago->valor ( "nplazosfpago", m_posactual ) );
-        mui_tipoPlazoPrimerPago->setText ( m_curfpago->valor ( "tipoplazoprimerpagofpago", m_posactual ) );
-        mui_plazoEntreRecibos->setText ( m_curfpago->valor ( "plazoentrerecibofpago", m_posactual ) );
-        mui_tipoPlazoEntreRecibos->setText ( m_curfpago->valor ( "tipoplazoentrerecibofpago", m_posactual ) );
+        mui_nombreFPago->setText ( m_curfpago->value( "nomfpago", m_posactual ) );
+        mui_plazoPrimerPago->setText ( m_curfpago->value( "plazoprimerpagofpago", m_posactual ) );
+        mui_numeroPlazos->setText ( m_curfpago->value( "nplazosfpago", m_posactual ) );
+        mui_tipoPlazoPrimerPago->setText ( m_curfpago->value( "tipoplazoprimerpagofpago", m_posactual ) );
+        mui_plazoEntreRecibos->setText ( m_curfpago->value( "plazoentrerecibofpago", m_posactual ) );
+        mui_tipoPlazoEntreRecibos->setText ( m_curfpago->value( "tipoplazoentrerecibofpago", m_posactual ) );
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } // end if
     blDebug ( "END BcFormaPagoView::mostrarplantilla", 0 );
 }
@@ -185,11 +185,11 @@ void BcFormaPagoView::cambiacombo ( int )
 int BcFormaPagoView::guardar()
 {
     blDebug ( "BcFormaPagoView::on_mui_guardarFPago_clicked", 0 );
-    QString idfpago = m_curfpago->valor ( "idfpago", m_posactual );
-    QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor ( "idfpago", m_posactual );
+    QString idfpago = m_curfpago->value( "idfpago", m_posactual );
+    QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->value( "idfpago", m_posactual );
     mainCompany() ->runQuery ( query );
-    dialogChanges_cargaInicial();
-    pintar ( m_curfpago->valor ( "idfpago", m_posactual ) );
+    dialogChanges_readValues();
+    pintar ( m_curfpago->value( "idfpago", m_posactual ) );
     blDebug ( "END BcFormaPagoView::on_mui_guardarFPago_clicked", 0 );
     return 0;
 }
@@ -203,7 +203,7 @@ void BcFormaPagoView::on_mui_crear_clicked()
 {
     blDebug ( "BcFormaPagoView::crear", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar forma de pago" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -216,7 +216,7 @@ void BcFormaPagoView::on_mui_crear_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idfpago) AS idfpago FROM fpago" );
         mainCompany() ->commit();
-        pintar ( cur->valor ( "idfpago" ) );
+        pintar ( cur->value( "idfpago" ) );
         delete cur;
     } catch ( ... ) {
         mainCompany() ->rollback();
@@ -243,7 +243,7 @@ void BcFormaPagoView::on_mui_borrar_clicked()
                                         _ ( "Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n" ),
                                         QMessageBox::Ok, QMessageBox::Cancel ) ) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            mainCompany() ->runQuery ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );
+            mainCompany() ->runQuery ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->value( "idfpago", mui_comboFPago->currentIndex() ) );
             pintar();
             break;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.

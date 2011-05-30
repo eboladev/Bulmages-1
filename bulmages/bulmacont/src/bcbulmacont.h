@@ -54,7 +54,7 @@ class BC_EXPORT BcBulmaCont : public BlMainWindow, public Ui_BcBulmaContBase
     Q_OBJECT
 
 private:
-    BcCompany *m_empresaactual;
+    BcCompany *m_company;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
     BlWorkspace *m_pWorkspace;
     BlWindowListDock *m_list;
@@ -62,7 +62,7 @@ private:
 public:
     BcBulmaCont ( QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "" );
     ~BcBulmaCont();
-    BcCompany *empresaactual();
+    BcCompany *company();
     /// Exporta menues.
     QMenu *mui_MenuHerramientas();
 //    QMenu *mui_MenuVer();

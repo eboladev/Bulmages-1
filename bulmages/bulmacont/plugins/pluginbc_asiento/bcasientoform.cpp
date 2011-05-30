@@ -69,27 +69,27 @@ BcAsientoForm::~BcAsientoForm()
 ///
 /**
 **/
-void BcAsientoForm::pintaidasiento ( QString )
+void BcAsientoForm::pintaIdAsiento ( QString )
 {
-    blDebug ( "funcion no implementada pintaidasiento" );
+    blDebug ( "funcion no implementada pintaIdAsiento" );
 }
 
 
 ///
 /**
 **/
-void BcAsientoForm::pintadescripcion ( QString )
+void BcAsientoForm::pintaDescripcion ( QString )
 {
-    blDebug ( "funcion no implementada pintadescripcion" );
+    blDebug ( "funcion no implementada pintaDescripcion" );
 }
 
 
 ///
 /**
 **/
-void BcAsientoForm::pintafecha ( QString )
+void BcAsientoForm::pintaFecha ( QString )
 {
-    blDebug ( "funcion no implementada pintafecha" );
+    blDebug ( "funcion no implementada pintaFecha" );
 }
 
 
@@ -174,7 +174,7 @@ int BcAsientoForm::borrar ( bool atendido )
                 } // end if
                 mainCompany() ->commit();
                 vaciar();
-                dialogChanges_cargaInicial();
+                dialogChanges_readValues();
                 return 3;
             case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
                 return 2;
@@ -190,7 +190,7 @@ int BcAsientoForm::borrar ( bool atendido )
             } // end if
             mainCompany() ->commit();
             vaciar();
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             return 3;
         } // end if
     } // end if
@@ -220,9 +220,9 @@ void BcAsientoForm::vaciar()
 void BcAsientoForm::pintar()
 {
     blDebug ( "BcAsientoForm::pintar", 0, idasiento() );
-    pintaidasiento ( idasiento() );
-    pintadescripcion ( dbValue ( "descripcion" ) );
-    pintafecha ( dbValue ( "fecha" ) );
+    pintaIdAsiento ( idasiento() );
+    pintaDescripcion ( dbValue ( "descripcion" ) );
+    pintaFecha ( dbValue ( "fecha" ) );
     pintacomentariosasiento ( dbValue ( "comentariosasiento" ) );
     pintaordenasiento ( dbValue ( "ordenasiento" ) );
     pintaclase ( dbValue ( "clase" ) );
@@ -242,7 +242,7 @@ int BcAsientoForm::cargar ( QString idasiento )
 {
     blDebug ( "BcAsientoForm::cargar", 0, idasiento );
 
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         switch ( QMessageBox::warning ( this, "BulmaCont",
                                         "Asiento cambiado.\n"
                                         "Desea guardar los cambios \n\n ",
@@ -272,7 +272,7 @@ int BcAsientoForm::cargar ( QString idasiento )
     listalineas->cargar ( idasiento );
     pintar();
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BcAsientoForm::cargar", 0, idasiento );
     return 0;
 }
@@ -343,7 +343,7 @@ void BcAsientoForm::cerrar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT cierraasiento(" + id + ")" );
     delete cur;
     vaciar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     cargar ( id );
     blDebug ( "END BcAsientoForm::cerrar", 0 );
 }
@@ -363,12 +363,12 @@ BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
 
     QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + dbValue ( "idasiento" );
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( SQLQuery1 );
-    QString numap = cur1->valor ( "cuenta1" );
+    QString numap = cur1->value( "cuenta1" );
     delete cur1;
 
     QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + dbValue ( "idasiento" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
-    QString numborr = cur->valor ( "cuenta" );
+    QString numborr = cur->value( "cuenta" );
     delete cur;
 
 
@@ -395,7 +395,7 @@ int BcAsientoForm::guardar()
     QString id;
     mainCompany() ->begin();
     try {
-        DBsave ( id );
+        dbSave ( id );
         setidasiento ( id );
         listalineas->guardar();
 
@@ -410,7 +410,7 @@ int BcAsientoForm::guardar()
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT cierraasiento(" + id + ")" );
             delete cur;
         } // end if
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         cargar ( id );
         g_main->statusBar() ->showMessage ( _ ( "El asiento se ha guardado correctamente." ), 2000 );
         blDebug ( "END BcAsientoForm::guardar", 0 );

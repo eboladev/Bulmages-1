@@ -87,7 +87,7 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
 
     installEventFilter ( this );
     if ( m_modo == BL_EDIT_MODE )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
 
     /// De forma predeterminada los botones de busqueda 'anterior' y 'siguiente' estan deshabilitados.
     mui_anterior->setDisabled(true);
@@ -106,7 +106,7 @@ BcPlanContableListView::~BcPlanContableListView()
 {
     blDebug ( "BcPlanContableListView::~BcPlanContableListView", 10 );
     if ( m_modo == BL_EDIT_MODE ) {
-        mainCompany() ->sacaWindow ( this );
+        mainCompany() ->removeWindow ( this );
     }// end if
     blDebug ( "END BcPlanContableListView::~BcPlanContableListView", 10 );
 }
@@ -144,8 +144,8 @@ int BcPlanContableListView::inicializa()
         BlDbRecordSet *ctas = mainCompany() ->loadQuery ( "SELECT * FROM cuenta ORDER BY codigo" );
         while ( !ctas->eof() ) {
 
-            idcuenta = ctas->valor ( "idcuenta" ).toInt();
-            padre = ctas->valor ( "padre" ).toInt();
+            idcuenta = ctas->value( "idcuenta" ).toInt();
+            padre = ctas->value( "padre" ).toInt();
 
             if ( padre == 0 ) {
 
@@ -158,27 +158,27 @@ int BcPlanContableListView::inicializa()
             } // end if
 
 
-            it->setText ( ccuenta, ctas->valor ( "codigo" ) );
-            it->setText ( cdesccuenta, ctas->valor ( "descripcion" ) );
-            it->setText ( cidcuenta, ctas->valor ( "idcuenta" ) );
-            it->setText ( cbloqueada, ctas->valor ( "bloqueada" ) );
-            it->setText ( cnodebe, ctas->valor ( "nodebe" ) );
-            it->setText ( cnohaber, ctas->valor ( "nohaber" ) );
-            it->setText ( cregularizacion, ctas->valor ( "regularizacion" ) );
-            it->setText ( cimputacion, ctas->valor ( "imputacion" ) );
-            it->setText ( cdebe, ctas->valor ( "debe" ) );
-            it->setText ( chaber, ctas->valor ( "haber" ) );
+            it->setText ( ccuenta, ctas->value( "codigo" ) );
+            it->setText ( cdesccuenta, ctas->value( "descripcion" ) );
+            it->setText ( cidcuenta, ctas->value( "idcuenta" ) );
+            it->setText ( cbloqueada, ctas->value( "bloqueada" ) );
+            it->setText ( cnodebe, ctas->value( "nodebe" ) );
+            it->setText ( cnohaber, ctas->value( "nohaber" ) );
+            it->setText ( cregularizacion, ctas->value( "regularizacion" ) );
+            it->setText ( cimputacion, ctas->value( "imputacion" ) );
+            it->setText ( cdebe, ctas->value( "debe" ) );
+            it->setText ( chaber, ctas->value( "haber" ) );
 
             /// Ponemos los iconos.
-            if ( ctas->valor ( "tipocuenta" ) == "1" )
+            if ( ctas->value( "tipocuenta" ) == "1" )
                 it->setIcon ( ccuenta, QPixmap ( cactivo ) );
-            else if ( ctas->valor ( "tipocuenta" ) == "2" )
+            else if ( ctas->value( "tipocuenta" ) == "2" )
                 it->setIcon ( ccuenta, QPixmap ( cpasivo ) );
-            else if ( ctas->valor ( "tipocuenta" ) == "3" )
+            else if ( ctas->value( "tipocuenta" ) == "3" )
                 it->setIcon ( ccuenta, QPixmap ( cneto ) );
-            else if ( ctas->valor ( "tipocuenta" ) == "4" )
+            else if ( ctas->value( "tipocuenta" ) == "4" )
                 it->setIcon ( ccuenta, QPixmap ( cingresos ) );
-            else if ( ctas->valor ( "tipocuenta" ) == "5" )
+            else if ( ctas->value( "tipocuenta" ) == "5" )
                 it->setIcon ( ccuenta, QPixmap ( cgastos ) );
 
             ctas->nextRecord();
@@ -190,7 +190,7 @@ int BcPlanContableListView::inicializa()
         /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
         numdigitos = mainCompany() ->numdigitosempresa();
 
-        inicializatabla();
+        inicializaTabla();
     } catch ( ... ) {
         blMsgInfo ( "Error en la carga" );
         blDebug ( "END BcPlanContableListView::inicializa", 0, "Error en la carga" );
@@ -206,9 +206,9 @@ int BcPlanContableListView::inicializa()
     dem&aacute;s elementos ocultos. */
 /**
 **/
-void BcPlanContableListView::inicializatabla()
+void BcPlanContableListView::inicializaTabla()
 {
-    blDebug ( "BcPlanContableListView::inicializatabla", 0 );
+    blDebug ( "BcPlanContableListView::inicializaTabla", 0 );
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
     BlDbRecordSet *cursoraux1 = mainCompany() ->loadQuery ( query );
@@ -216,28 +216,28 @@ void BcPlanContableListView::inicializatabla()
     int i = 0;
     QTableWidgetItem *dato;
     while ( !cursoraux1->eof() ) {
-        dato = new QTableWidgetItem ( cursoraux1->valor ( "codigo" ) );
+        dato = new QTableWidgetItem ( cursoraux1->value( "codigo" ) );
         dato->setFlags ( Qt::ItemIsEnabled );
         /// Ponemos los iconos.
-        if ( cursoraux1->valor ( "tipocuenta" ) == "1" )
+        if ( cursoraux1->value( "tipocuenta" ) == "1" )
             dato->setIcon ( QPixmap ( cactivo ) );
-        else if ( cursoraux1->valor ( "tipocuenta" ) == "2" )
+        else if ( cursoraux1->value( "tipocuenta" ) == "2" )
             dato->setIcon ( QPixmap ( cpasivo ) );
-        else if ( cursoraux1->valor ( "tipocuenta" ) == "3" )
+        else if ( cursoraux1->value( "tipocuenta" ) == "3" )
             dato->setIcon ( QPixmap ( cneto ) );
-        else if ( cursoraux1->valor ( "tipocuenta" ) == "4" )
+        else if ( cursoraux1->value( "tipocuenta" ) == "4" )
             dato->setIcon ( QPixmap ( cingresos ) );
-        else if ( cursoraux1->valor ( "tipocuenta" ) == "5" )
+        else if ( cursoraux1->value( "tipocuenta" ) == "5" )
             dato->setIcon ( QPixmap ( cgastos ) );
         mui_tablacuentas->setItem ( i, 0, dato );
-        dato = new QTableWidgetItem ( cursoraux1->valor ( "descripcion" ) );
+        dato = new QTableWidgetItem ( cursoraux1->value( "descripcion" ) );
         dato->setFlags ( Qt::ItemIsEnabled );
         mui_tablacuentas->setItem ( i, 1, dato );
         dato->setFlags ( Qt::ItemIsEnabled );
-        dato = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
+        dato = new QTableWidgetItem ( cursoraux1->value( "idcuenta" ) );
         mui_tablacuentas->setItem ( i, 2, dato );
 
-        QString codigo = cursoraux1->valor ( "codigo" );
+        QString codigo = cursoraux1->value( "codigo" );
         if ( ( unsigned int ) codigo.length() != numdigitos ) {
             mui_tablacuentas->hideRow ( i );
         } // end if
@@ -245,7 +245,7 @@ void BcPlanContableListView::inicializatabla()
         i++;
     } // end while
     delete cursoraux1;
-    blDebug ( "END BcPlanContableListView::inicializatabla", 0 );
+    blDebug ( "END BcPlanContableListView::inicializaTabla", 0 );
 }
 
 
@@ -548,9 +548,9 @@ void BcPlanContableListView::on_mui_busqueda_editFinished()
 void BcPlanContableListView::imprimir()
 {
     blDebug ( "BcPlanContableListView::imprimir", 0 );
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
 
@@ -564,10 +564,10 @@ void BcPlanContableListView::imprimir()
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -591,10 +591,10 @@ void BcPlanContableListView::imprimir()
     fitxersortidatxt += "<td>Haber</td></tr>\n";
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "codigo" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "descripcion" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "debe" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "haber" ) + "</td>\n";
+        fitxersortidatxt += "<td>" + cur->value( "codigo" ) + "</td>\n";
+        fitxersortidatxt += "<td>" + cur->value( "descripcion" ) + "</td>\n";
+        fitxersortidatxt += "<td>" + cur->value( "debe" ) + "</td>\n";
+        fitxersortidatxt += "<td>" + cur->value( "haber" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->nextRecord();
     } // end while
@@ -623,7 +623,7 @@ void BcPlanContableListView::on_mui_exportar_clicked()
     blDebug ( "BcPlanContableListView::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->value( CONF_DIR_USER ),
                     _ ( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmages2XML ( filexml, IMPORT_CUENTAS );

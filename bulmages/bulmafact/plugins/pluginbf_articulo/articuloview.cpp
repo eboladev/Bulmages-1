@@ -103,21 +103,21 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         
         mui_abrevarticulo->setMaxLength ( 30 );
 
-        dialogChanges_setQObjectExcluido ( m_componentes );
-        dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
+        dialogChanges_setExcludedObject ( m_componentes );
+        dialogChanges_setExcludedObject ( m_componentes->mui_list );
         m_archivoimagen = "";
 
 #ifdef Q_OS_WIN32
-	mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "\\" + "images/logopeq.png" ) );
+	mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "\\" + "images/logopeq.png" ) );
 #else
-	mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "/" + "images/logopeq.png" ) );
+	mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "/" + "images/logopeq.png" ) );
 #endif
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ArticuloView_ArticuloView_Post", this );
 
-        meteWindow ( windowTitle(), this, FALSE );
-        dialogChanges_cargaInicial();
+        insertWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
 	
 	blScript(this);  /// La clase se hace scriptable.
 	
@@ -153,9 +153,9 @@ void ArticuloView::pintarPost()
     QString archivoimagen;
 
 #ifdef Q_OS_WIN32
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "\\" + mui_codigocompletoarticulo->text() + ".png";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "\\" + mui_codigocompletoarticulo->text() + ".png";
 #else
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
 #endif
 
     QFile archivo;
@@ -168,9 +168,9 @@ void ArticuloView::pintarPost()
         /// Muestra la imagen por defecto.
 
 #ifdef Q_OS_WIN32
-        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "\\" + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "\\" + "images/logopeq.png" ) );
 #else
-        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "/" + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "/" + "images/logopeq.png" ) );
 #endif
 
     } // end if
@@ -222,7 +222,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQlQuery );
     if ( !cur ) return;
     if ( !cur->eof() ) {
-        cargar ( cur->valor ( "idarticulo" ) );
+        cargar ( cur->value( "idarticulo" ) );
     } // end if
     delete cur;
     blDebug ( "END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
@@ -251,10 +251,10 @@ int ArticuloView::guardarPost()
 	bool result;
 
 #ifdef Q_OS_WIN32
-	QString g = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "\\" + cur1->valor ( "codigocompletoarticulo" ) + ".png";
+	QString g = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "\\" + cur1->value( "codigocompletoarticulo" ) + ".png";
 	result = mui_imagen->pixmap()->save ( g, "PNG" );
 #else
-	QString g = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "/" + cur1->valor ( "codigocompletoarticulo" ) + ".png";
+	QString g = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "/" + cur1->value( "codigocompletoarticulo" ) + ".png";
 	result = mui_imagen->pixmap()->save ( g, "PNG" );
 #endif
 
@@ -340,9 +340,9 @@ void ArticuloView::on_mui_borrarimagen_clicked()
     QString archivoimagen;
 
 #ifdef Q_OS_WIN32
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "\\" + mui_codigocompletoarticulo->text() + ".png";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "\\" + mui_codigocompletoarticulo->text() + ".png";
 #else
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
 #endif
 
     QFile archivo;
@@ -379,7 +379,7 @@ void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
 	/// Protege de errores en la consulta a la base de datos y cuando no devuelven informacion.
 	if ( cur != NULL ) {
 	  if( !cur->eof()) {
-	      mui_codarticulo->setText(cur->valor("maximo").rightJustified(cur->valor("long").toInt(), '0'));
+	      mui_codarticulo->setText(cur->value("maximo").rightJustified(cur->value("long").toInt(), '0'));
 	  } // end if
 	} // end if
         delete cur;

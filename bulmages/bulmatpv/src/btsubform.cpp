@@ -162,15 +162,15 @@ void BtSubForm::setIdCliente ( QString id )
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
-            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
 
-                if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
-                    rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                if ( curcliente->value( "regimenfiscalcliente" ) == "Normal" ) {
+                    rec->setDbValue ( "iva" + m_tablename, cur1->value( "porcentasa_iva" ) );
                 } // end if
 
-                if ( curcliente->valor ( "recargoeqcliente" ) == "t" ) {
-                    rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                if ( curcliente->value( "recargoeqcliente" ) == "t" ) {
+                    rec->setDbValue ( "reqeq" + m_tablename, cur1->value( "porcentretasa_iva" ) );
                 } // end if
 
             } // end if
@@ -216,13 +216,13 @@ void BtSubForm::setIdProveedor ( QString id )
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
-            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
-                if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
-                    rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                if ( curproveedor->value( "regimenfiscalproveedor" ) == "Normal" ) {
+                    rec->setDbValue ( "iva" + m_tablename, cur1->value( "porcentasa_iva" ) );
                 } // end if
-                if ( curproveedor->valor ( "recargoeqproveedor" ) == "t" ) {
-                    rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                if ( curproveedor->value( "recargoeqproveedor" ) == "t" ) {
+                    rec->setDbValue ( "reqeq" + m_tablename, cur1->value( "porcentretasa_iva" ) );
                 } // end if
 
             } // end if

@@ -31,13 +31,13 @@ class BL_EXPORT BlArgParser
 {
 public:
    BlArgParser( int argc, char **argv );
-   QString DbName();
-   QString Host();
-   QString Port();
-   QString UserName();
-   bool AskPassword();
-   bool ShowVersion();
-   bool ShowHelp();
+   QString dbName();
+   QString host();
+   QString port();
+   QString userName();
+   bool askPassword();
+   bool showVersion();
+   bool showHelp();
 
 private:
     QString m_dbName;
@@ -50,27 +50,27 @@ private:
     bool m_showHelp;
 };
 
-inline QString BlArgParser::DbName()
+inline QString BlArgParser::dbName()
 {
    return m_dbName;
 }
 
-inline QString BlArgParser::Host()
+inline QString BlArgParser::host()
 {
       return m_host;
 }
 
-inline QString BlArgParser::Port()
+inline QString BlArgParser::port()
 {
       return m_port;
 }
 
-inline QString BlArgParser::UserName()
+inline QString BlArgParser::userName()
 {
       return m_userName;
 }
 
-inline bool BlArgParser::AskPassword()
+inline bool BlArgParser::askPassword()
 {
    return m_askPassword;
 }

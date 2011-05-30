@@ -113,7 +113,7 @@ void GenPagoQToolButton::click()
                 while ( !cur->eof() ) {
 		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
 		    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                    bud->cargar ( cur->valor ( "idpago" ) );
+                    bud->cargar ( cur->value( "idpago" ) );
                     bud->pintar();
                     bud->show();
                     cur->nextRecord();
@@ -164,7 +164,7 @@ void GenPagoQToolButton::click()
                 while ( !cur->eof() ) {
 		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
 		    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                    bud->cargar ( cur->valor ( "idpago" ) );
+                    bud->cargar ( cur->value( "idpago" ) );
                     bud->pintar();
                     bud->show();
                     cur->nextRecord();
@@ -213,7 +213,7 @@ void GenPagoQToolButton::click()
                 while ( !cur->eof() ) {
 		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
 		    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                    bud->cargar ( cur->valor ( "idpago" ) );
+                    bud->cargar ( cur->value( "idpago" ) );
                     bud->pintar();
                     bud->show();
                     cur->nextRecord();
