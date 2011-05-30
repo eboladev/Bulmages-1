@@ -1061,19 +1061,19 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
 void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter) {
 		QString printer = "";
 		if (printer.isEmpty()) {
-			printer = g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER);
+			printer = g_confpr->value(CONF_CUPS_DEFAULT_PRINTER);
 		} // end if
 
 		QString dir = "";
 		if (diruser) {
-			dir = g_confpr->valor(CONF_DIR_USER);
+			dir = g_confpr->value(CONF_DIR_USER);
 		} // end if
 
 		#ifdef Q_OS_WIN32
 			QString comando = "lp -d" + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );
 		#else
-			QString comando = g_confpr->valor(CONF_SPOOL) + " " + printer + " " + dir + archivo;
+			QString comando = g_confpr->value(CONF_SPOOL) + " " + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );		
 		#endif
 
