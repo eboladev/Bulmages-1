@@ -224,12 +224,12 @@ float blFloatRound ( float n, unsigned d )
 
 /// Esta funcion convierte un numero con decimales a un entero. Usando la regla
 /// que si el el primer decimal es mayor o igual a 5 se devuelve el entero superior.
-/// valor = Numero a convertir.
-int blDoubleToInt ( double valor )
+/// value = Numero a convertir.
+int blDoubleToInt ( double value )
 {
     int retorno;
-    double mayor = floor ( valor );
-    if ( ( mayor - valor ) >= 0.5 )
+    double mayor = floor ( value );
+    if ( ( mayor - value ) >= 0.5 )
         retorno = ( int ) mayor - 1;
     else
         retorno = ( int ) mayor;
@@ -1061,19 +1061,19 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
 void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter) {
 		QString printer = "";
 		if (printer.isEmpty()) {
-			printer = g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER);
+			printer = g_confpr->value(CONF_CUPS_DEFAULT_PRINTER);
 		} // end if
 
 		QString dir = "";
 		if (diruser) {
-			dir = g_confpr->valor(CONF_DIR_USER);
+			dir = g_confpr->value(CONF_DIR_USER);
 		} // end if
 
 		#ifdef Q_OS_WIN32
 			QString comando = "lp -d" + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );
 		#else
-			QString comando = g_confpr->valor(CONF_SPOOL) + " " + printer + " " + dir + archivo;
+			QString comando = g_confpr->value(CONF_SPOOL) + " " + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );		
 		#endif
 
