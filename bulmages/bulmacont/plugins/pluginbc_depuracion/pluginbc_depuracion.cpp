@@ -31,40 +31,6 @@
 #include "pluginbc_depuracion.h"
 #include "blconfiguration.h"
 
-
-///
-/**
-**/
-PluginBc_Debug::PluginBc_Debug()
-{
-    blDebug ( "PluginBc_Debug::PluginBc_Debug", 0 );
-    blDebug ( "END PluginBc_Debug::PluginBc_Debug", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Debug::~PluginBc_Debug()
-{
-    blDebug ( "PluginBc_Debug::~PluginBc_Debug", 0 );
-    blDebug ( "END PluginBc_Debug::~PluginBc_Debug", 0 );
-}
-
-
-///
-/**
-\return
-**/
-void PluginBc_Debug::cambia ( bool valor )
-{
-    blDebug ( "PluginBc_Debug::cambia", 0 );
-    g_confpr->setValue ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
-    blDebug ( "END PluginBc_Debug::cambia", 0 );
-}
-
-
-
 ///
 /**
 \param bcont
@@ -77,27 +43,36 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_depuracion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBc_Debug *corr = new PluginBc_Debug();
-
-    QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
+    QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro" );
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    QAction *viewCorrector = new QAction ( _ ( "&Modo debug" ), 0 );
-    viewCorrector->setCheckable ( TRUE );
+    BlAction *accionA = new BlAction ( _ ( "&Modo debug" ), 0 );
+    accionA->setCheckable ( TRUE );
 
     if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
-        viewCorrector->setChecked ( TRUE );
+        accionA->setChecked ( TRUE );
     } else {
-        viewCorrector->setChecked ( FALSE );
+        accionA->setChecked ( FALSE );
     }
 
-    viewCorrector->setStatusTip ( _ ( "Activa/Desactiva el modo debug" ) );
-    viewCorrector->setWhatsThis ( _ ( "Debug.\n\nActiva/Desactiva el modo debug" ) );
-    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
+    accionA->setStatusTip ( _ ( "Activa/Desactiva el modo debug" ) );
+    accionA->setWhatsThis ( _ ( "Debug.\n\nActiva/Desactiva el modo debug" ) );
+    accionA->setObjectName("mui_actionDebug");
     pPluginMenu ->addSeparator();
-    pPluginMenu ->addAction ( viewCorrector );
+    pPluginMenu ->addAction ( accionA );
     blDebug ( "Iniciado correctamente el plugin Corrector", 10 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionDebug") {
+        if (accion->isChecked ()) {
+            g_confpr->setValue( CONF_DEBUG, "TRUE");
+        } else {
+            g_confpr->setValue( CONF_DEBUG, "FALSE");
+        } // end if
+    } // end if
+    return 0;
+}

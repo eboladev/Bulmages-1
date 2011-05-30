@@ -24,23 +24,10 @@
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "pdefs_pluginbc_depuracion.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_DEPURACION_EXPORT int entryPoint ( BcBulmaCont * );
-
-
-class PluginBc_Debug : public QObject
-{
-    Q_OBJECT
-
-public:
-    PluginBc_Debug();
-    ~PluginBc_Debug();
-
-public slots:
-    void cambia ( bool );
-};
-
+extern "C" PLUGINBC_DEPURACION_EXPORT int BlAction_triggered ( BlAction * );
 
 #endif
 
