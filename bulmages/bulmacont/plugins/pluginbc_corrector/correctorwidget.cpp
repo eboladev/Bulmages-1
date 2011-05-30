@@ -260,9 +260,9 @@ void correctorwidget::alink ( const QUrl &url )
     
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( list[0] == "ver" ) {
-        empresaactual->muestracuentas();
+        company->muestracuentas();
     } else if ( list[0] == "idasiento" ) {
-//        BcAsientoView * view = empresaactual->intapuntsempresa();
+//        BcAsientoView * view = company->intapuntsempresa();
         BcAsientoView * view = g_asiento;
         bool ok;
         view->muestraasiento ( list[1].toInt ( &ok ) );
@@ -322,7 +322,7 @@ void correctorwidget::alink ( const QUrl &url )
       
       
     } else {
-        /*        BcAsientoView *view = empresaactual->intapuntsempresa();
+        /*        BcAsientoView *view = company->intapuntsempresa();
                 bool ok;
                 view->muestraasiento(linker.toInt(&ok));
         */

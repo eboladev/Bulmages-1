@@ -40,7 +40,7 @@ class myplugin1 : public QObject
     Q_OBJECT
 
 public:
-    BcCompany *empresaactual;
+    BcCompany *company;
     BlPostgreSqlClient *dbConnection;
 
 public:
@@ -59,7 +59,7 @@ class adocumental : public QDialog, public Ui_adocumentalbase
     Q_OBJECT
 
 private:
-    BcCompany *empresaactual;
+    BcCompany *company;
     BlPostgreSqlClient *dbConnection;
     QString RutaADocumental;
     /// En el modo edicion la ventana responde como si fuese un listado sobre el que se

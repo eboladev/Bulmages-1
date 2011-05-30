@@ -84,7 +84,7 @@ void PluginBc_CuentasAnuales::inicializa ( BcBulmaCont *bges )
     blDebug ( "PluginBc_CuentasAnuales::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
+    setMainCompany ( bges->company() );
 
     /// Creamos la ventana de asientos que va a ser fija.
     g_cuentasAnuales = NULL;

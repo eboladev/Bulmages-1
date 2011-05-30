@@ -85,7 +85,7 @@ void PluginBc_Cuenta::inicializa ( BcBulmaCont *bges )
     blDebug ( "PluginBc_Cuenta::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    setMainCompany ( (BlMainCompany *)bges->empresaactual() );
+    setMainCompany ( (BlMainCompany *)bges->company() );
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
@@ -209,9 +209,9 @@ void Subform_Cuenta::s_trataMenu ( QAction *action )
 void Subform_Cuenta::editarCuenta ( QString idcuenta )
 {
     blDebug ( "Subform_Cuenta::editarCuenta", 0 );
-        BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
+        BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->company(), 0 );
         nuevae->cargar ( idcuenta );
-        ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addSubWindow ( nuevae );
+        ((BcBulmaCont *)g_main)->company() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
 }
@@ -223,8 +223,8 @@ void Subform_Cuenta::editarCuenta ( QString idcuenta )
 void Subform_Cuenta::nuevoCuenta( )
 {
     blDebug ( "Subform_Cuenta::editarCuenta", 0 );
-        BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
-        ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addSubWindow ( nuevae );
+        BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->company(), 0 );
+        ((BcBulmaCont *)g_main)->company() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->mui_padre->setEnabled(TRUE);
         nuevae->show();
     blDebug ( "END Subform_Cuenta::editarCuenta", 0 );

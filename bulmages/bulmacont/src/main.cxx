@@ -128,14 +128,14 @@ int main ( int argc, char **argv )
       delete argParser;
 
       /// Verifica la version de la base de datos para funcionar adecuadamente.
-      bges->empresaactual()->dbVersionCheck("DatabaseRevision", "0.13.1-0000");
+      bges->company()->dbVersionCheck("DatabaseRevision", "0.13.1-0000");
 
       splashScr->show();
       splashScr->mensaje ( _( "Leyendo configuracion" ) );
       splashScr->setBarraProgreso ( 2 );
 
       /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-      QString confEsp = CONFGLOBAL + bges->empresaactual() ->dbName() + ".conf";
+      QString confEsp = CONFGLOBAL + bges->company() ->dbName() + ".conf";
       QDir archivoConf;
       if ( !archivoConf.exists ( confEsp ) ) {
          QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
@@ -177,7 +177,7 @@ int main ( int argc, char **argv )
       splashScr->setBarraProgreso ( 30 );
 
       /// Lanzamos la creacion de las ventanas principales.
-      bges->empresaactual()->createMainWindows ( splashScr );
+      bges->company()->createMainWindows ( splashScr );
 
       splashScr->mensaje ( _( "Terminado" ) );
       splashScr->setBarraProgreso ( 100 );

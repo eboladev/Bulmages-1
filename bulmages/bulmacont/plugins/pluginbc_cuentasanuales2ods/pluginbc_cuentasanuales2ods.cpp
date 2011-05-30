@@ -463,7 +463,7 @@ void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
 //    bcont->menuBar() ->addMenu ( pPluginMenu );
 
-    empresaact = bcont->empresaactual();
+    empresaact = bcont->company();
     dbConnection = empresaact->bdempresa();
 
     blDebug ( "END PluginBc_CuentasAnuales2ODS::inicializa", 0 );

@@ -76,7 +76,7 @@ void PluginBc_Balance::inicializa ( BcBulmaCont *bges )
 {
     blDebug ( "PluginBc_Balance::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
+    setMainCompany ( bges->company() );
     m_bulmacont = bges;
     QMenu *pPluginMenu = bges->newMenu("&Ver", "menuVer", "menuMaestro");
 

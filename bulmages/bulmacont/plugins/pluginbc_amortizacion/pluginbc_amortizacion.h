@@ -25,27 +25,10 @@
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
 #include "pdefs_pluginbc_amortizacion.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_AMORTIZACION_EXPORT int entryPoint ( BcBulmaCont * );
-
-
-class PluginBc_Amortizacion : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    PluginBc_Amortizacion();
-    ~PluginBc_Amortizacion();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-
-};
+extern "C" PLUGINBC_AMORTIZACION_EXPORT int BlAction_triggered(BlAction *);
 
 
 #endif

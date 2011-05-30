@@ -64,8 +64,8 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "balancejearbol") {
          
-	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->empresaactual(), 0 );
-	g_bcont -> empresaactual() ->pWorkspace() ->addSubWindow ( cuad );
+	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->company(), 0 );
+	g_bcont -> company() ->pWorkspace() ->addSubWindow ( cuad );
 	cuad->show();
 
     } // end if

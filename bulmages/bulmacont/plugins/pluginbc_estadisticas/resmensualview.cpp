@@ -45,7 +45,7 @@
 resmensualview::resmensualview ( empresa *emp, QWidget *parent, const char *name ) : resmensualdlg ( parent, name )
 {
 
-    empresaactual = emp;
+    company = emp;
     dbConnection = emp->bdempresa();
 // Inicializamos los valores de las masas patrimoniales.
     idmpatrimonial1 = "";
@@ -147,7 +147,7 @@ void resmensualview::presentar()
 
 void resmensualview::buscacodigocta()
 {
-    BcPlanContableListView * listcuentas = new BcPlanContableListView ( empresaactual );
+    BcPlanContableListView * listcuentas = new BcPlanContableListView ( company );
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
@@ -158,7 +158,7 @@ void resmensualview::buscacodigocta()
 
 void resmensualview::buscacodigocta1()
 {
-    BcPlanContableListView * listcuentas = new BcPlanContableListView ( empresaactual );
+    BcPlanContableListView * listcuentas = new BcPlanContableListView ( company );
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
@@ -168,7 +168,7 @@ void resmensualview::buscacodigocta1()
 
 void resmensualview::buscacodigocta2()
 {
-    BcPlanContableListView * listcuentas = new BcPlanContableListView ( empresaactual );
+    BcPlanContableListView * listcuentas = new BcPlanContableListView ( company );
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();

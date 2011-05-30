@@ -82,7 +82,7 @@ void PluginBc_Diario::inicializa ( BcBulmaCont *bges )
     blDebug ( "PluginBc_Diario::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
+    setMainCompany ( bges->company() );
     m_bulmacont = bges;
     QMenu *pPluginMenu = bges->newMenu(_("&Ver"), "menuVer", "menuMaestro");
 

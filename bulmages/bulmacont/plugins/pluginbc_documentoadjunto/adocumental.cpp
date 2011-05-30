@@ -41,7 +41,7 @@
 myplugin1::myplugin1 ( BcCompany *emp )
 {
     blDebug ( "myplugin1::myplugin1", 0 );
-    empresaactual = emp;
+    company = emp;
     dbConnection = emp->bdempresa();
     blDebug ( "END myplugin1::myplugin1", 0 );
 }
@@ -64,9 +64,9 @@ myplugin1::~myplugin1()
 void myplugin1::boton_nuevoasientodocumental()
 {
     blDebug ( "myplugin1::boton_nuevoasientodocumental", 10 );
-    adocumental *adoc = new adocumental ( empresaactual, 0 );
+    adocumental *adoc = new adocumental ( company, 0 );
     adoc->presentaprimervacio();
-    BcAsientoView *intapunts = empresaactual->intapuntsempresa();
+    BcAsientoView *intapunts = company->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
     adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
@@ -80,11 +80,11 @@ void myplugin1::boton_nuevoasientodocumental()
 void myplugin1::boton_adjuntar()
 {
     blDebug ( "myplugin1::boton_adjuntar", 10 );
-    adocumental *adoc = new adocumental ( empresaactual, 0 );
+    adocumental *adoc = new adocumental ( company, 0 );
     adoc->setModoConsulta();
     adoc->exec();
     /// Falta por resolver esta salvedad.
-    BcAsientoView *intapunts = empresaactual->intapuntsempresa();
+    BcAsientoView *intapunts = company->intapuntsempresa();
     if ( intapunts->idasiento() != "-1" )
         adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
@@ -103,7 +103,7 @@ void myplugin1::boton_adjuntar()
 void myplugin1::archDoc()
 {
     blDebug ( "myplugin1::archDoc", 10 );
-    adocumental *adoc = new adocumental ( empresaactual, 0 );
+    adocumental *adoc = new adocumental ( company, 0 );
     adoc->exec();
     delete adoc;
     blDebug ( "END myplugin1::archDoc", 10 );
@@ -122,7 +122,7 @@ adocumental::adocumental ( BcCompany *emp, QWidget *parent )
 
     setupUi ( this );
 
-    empresaactual = emp;
+    company = emp;
     dbConnection = emp->bdempresa();
     modo = 0;
     idadocumental = "";

@@ -119,7 +119,7 @@ int entryPoint ( BcBulmaCont *bcont )
 {
     blDebug ( "Estoy dentro del plugin\n", 0 );
 
-    g_comp = bcont->empresaactual();
+    g_comp = bcont->company();
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

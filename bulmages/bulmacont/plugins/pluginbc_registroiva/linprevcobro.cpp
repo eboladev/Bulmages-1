@@ -32,7 +32,7 @@
 linprevcobro::linprevcobro ( BcCompany *comp )
 {
     blDebug ( "linprevcobro::linprevcobro", 0 );
-    empresaactual = comp;
+    company = comp;
     dbConnection = comp->bdempresa();
     vacialinprevcobro();
     blDebug ( "END linprevcobro::linprevcobro", 0 );
@@ -47,7 +47,7 @@ linprevcobro::linprevcobro ( BcCompany *comp )
 linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 {
     blDebug ( "linprevcobro::linprevcobro", 0 );
-    empresaactual = comp;
+    company = comp;
     dbConnection = comp->bdempresa();
     QString SQLQuery = "SELECT * FROM prevcobro "
                        "LEFT JOIN  cuenta ON prevcobro.idcuenta = cuenta.idcuenta "
@@ -101,7 +101,7 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 linprevcobro::linprevcobro ( BcCompany *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente )
 {
     blDebug ( "linprevcobro::linprevcobro", 0 );
-    empresaactual = comp;
+    company = comp;
     dbConnection = comp->bdempresa();
     mdb_idprevcobro = a;
     mdb_fprevistaprevcobro = b;
@@ -242,7 +242,7 @@ void linprevcobro::setcodigocuenta ( QString val )
 {
     blDebug ( "linprevcobro::setcodigocuenta", 0 );
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
-    mdb_codigocuenta = blExtendStringWithZeros ( val, empresaactual->numdigitosempresa() );
+    mdb_codigocuenta = blExtendStringWithZeros ( val, company->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
@@ -326,14 +326,14 @@ int linprevcobro::creaPago()
     /// Para saber si al final se ha hecho el asiento o no almacenamos el valor
     /// actual del asiento para ver despues cual es el numero de asiento y comprobar
     /// si ha cambiado o no.
-//    QString idasiento = empresaactual->intapuntsempresa() ->idasiento();
+//    QString idasiento = company->intapuntsempresa() ->idasiento();
     QString idasiento = g_asiento ->idasiento();
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
     /// Se va a generar el asiento.
     int numasiento = 0;
-    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( empresaactual, diag );
+    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( company, diag );
     nueva->inicializa ( numasiento );
     nueva->muestraPlantilla ( idainteligente );
     nueva->setFechaAsiento ( fecha );
@@ -345,7 +345,7 @@ int linprevcobro::creaPago()
 
     diag->exec();
 
-//    QString idasiento1 = empresaactual->intapuntsempresa() ->idasiento();
+//    QString idasiento1 = company->intapuntsempresa() ->idasiento();
     QString idasiento1 = g_asiento ->idasiento();
     if ( idasiento1 == idasiento ) {
         delete diag;
@@ -367,7 +367,7 @@ void linprevcobro::setcodigoctacliente ( QString val )
 {
     blDebug ( "linprevcobro::setcodigoctacliente", 0 );
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
-    mdb_codigoctacliente = blExtendStringWithZeros ( val, empresaactual->numdigitosempresa() );
+    mdb_codigoctacliente = blExtendStringWithZeros ( val, company->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {

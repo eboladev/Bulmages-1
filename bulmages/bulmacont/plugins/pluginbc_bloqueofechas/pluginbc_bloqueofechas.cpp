@@ -60,7 +60,7 @@ PluginBc_BloqueFechas::~PluginBc_BloqueFechas()
 void PluginBc_BloqueFechas::elslot()
 {
     blDebug ( "PluginBc_BloqueFechas::elslot", 0 );
-    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->empresaactual(), 0 );
+    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->company(), 0 );
     m_bulmacont->workspace()->addSubWindow ( tip );
     tip->show();
     blDebug ( "END PluginBc_BloqueFechas::elslot", 0 );

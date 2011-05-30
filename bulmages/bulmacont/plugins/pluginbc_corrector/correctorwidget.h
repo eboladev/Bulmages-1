@@ -48,7 +48,7 @@ public:
     /// Base de datos con la que se esta operando.
     BlPostgreSqlClient *dbConnection;
     /// Empresa que ha hecho la instancia del corrector.
-    BcCompany *empresaactual;
+    BcCompany *company;
     /// El informe generado se forma en HTML y se presenta mediante este QString.
     QString textBrowser;
     /// El corrector es una ventana del tipo dock, que se puede anexar a las esquinas
@@ -65,7 +65,7 @@ public:
     /// funcion setCompany  para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
     void setCompany  ( BcCompany *empres ) {
-        empresaactual = empres;
+        company = empres;
         dbConnection = empres->bdempresa();
     }
     void agregarError ( QString, QString, QString );

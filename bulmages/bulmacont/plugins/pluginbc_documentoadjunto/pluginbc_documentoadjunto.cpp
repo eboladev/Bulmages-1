@@ -54,7 +54,7 @@ int entryPoint ( BcBulmaCont *bcont )
     QPixmap *img = new QPixmap ( napuntedoc );
     QPixmap *img1 = new QPixmap ( ndoc );
 
-    BcCompany *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->company();
     BcAsientoView *intapunts = emp->intapuntsempresa();
 
     myplugin1 *pub = new myplugin1 ( emp );

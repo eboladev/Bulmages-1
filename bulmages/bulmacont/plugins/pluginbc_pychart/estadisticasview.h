@@ -46,7 +46,7 @@ class myplugin : public QObject
 
 public:
     BlPostgreSqlClient *dbConnection;
-    empresa *empresaactual;
+    empresa *company;
 
 public:
     myplugin();

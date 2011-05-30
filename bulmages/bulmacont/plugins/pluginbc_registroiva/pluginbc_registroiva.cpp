@@ -92,19 +92,19 @@ int entryPoint ( BcBulmaCont *bcont )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "regiva") {
-	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_bcont->empresaactual(), "0" );
+	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_bcont->company(), "0" );
 	perd->inicializa();
-	g_bcont->empresaactual() ->pWorkspace() ->addSubWindow ( perd );
+	g_bcont->company() ->pWorkspace() ->addSubWindow ( perd );
 	perd->show();
     } // end if
     
     if (accion->objectName() == "cobrospagos") {
-	cobropagoview *adoc = new cobropagoview ( g_bcont->empresaactual(), 0 );
-	g_bcont->empresaactual() ->pWorkspace() ->addSubWindow ( adoc );
+	cobropagoview *adoc = new cobropagoview ( g_bcont->company(), 0 );
+	g_bcont->company() ->pWorkspace() ->addSubWindow ( adoc );
 	adoc->show();
     } // end if
     if (accion->objectName() == "m347") {
-      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->empresaactual(), "0" );
+      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->company(), "0" );
       dlg347->exec();
       delete dlg347;
     } // end if

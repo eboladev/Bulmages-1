@@ -238,7 +238,7 @@ void PluginBc_Asiento::inicializa ( BcBulmaCont *bges )
     blDebug ( "PluginBc_Asiento::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
+    setMainCompany ( bges->company() );
 
     /// Creamos la ventana de asientos que va a ser fija.
     g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );

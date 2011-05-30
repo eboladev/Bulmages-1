@@ -86,7 +86,7 @@ void PluginBc_Mayor::inicializa ( BcBulmaCont *bges )
     blDebug ( "PluginBc_Mayor::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    setMainCompany ( (BlMainCompany *)bges->empresaactual() );
+    setMainCompany ( (BlMainCompany *)bges->company() );
     m_bulmacont = bges;
     QMenu *pPluginMenu = bges->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 

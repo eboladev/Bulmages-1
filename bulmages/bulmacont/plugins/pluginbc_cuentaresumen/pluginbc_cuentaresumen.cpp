@@ -53,7 +53,7 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_cuentaresumen", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    BcCompany *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( _ ( "Resumen cuenta" ), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
@@ -182,7 +182,7 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 **/
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
     blDebug("BcBulmaCont_closeEvent");
-//    BcCompany * emp = bcont->empresaactual();
+//    BcCompany * emp = bcont->company();
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();

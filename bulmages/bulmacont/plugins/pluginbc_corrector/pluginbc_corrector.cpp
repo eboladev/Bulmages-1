@@ -50,7 +50,7 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_corrector", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    BcCompany *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
     doc1 = new BlDockWidget ( _ ( "Corrector" ), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
@@ -106,7 +106,7 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )
 {
-    BcCompany * emp = bcont->empresaactual();
+    BcCompany * emp = bcont->company();
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();

@@ -41,7 +41,7 @@ class resmensualview : public resmensualdlg
     Q_OBJECT
 
 private:
-    empresa *empresaactual;
+    empresa *company;
     BlPostgreSqlClient *dbConnection;
 
 public:

@@ -34,77 +34,7 @@
 #include "bcamortizacionlistview.h"
 
 BcAmortizacionListView *g_amortizacionlist;
-
-
-
-
-
-///
-/**
-**/
-PluginBc_Amortizacion::PluginBc_Amortizacion()
-{
-    blDebug ( "PluginBc_Amortizacion::PluginBc_Amortizacion", 0 );
-    blDebug ( "END PluginBc_Amortizacion::PluginBc_Amortizacion", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Amortizacion::~PluginBc_Amortizacion()
-{
-    blDebug ( "PluginBc_Amortizacion::~PluginBc_Amortizacion", 0 );
-    blDebug ( "END PluginBc_Amortizacion::~PluginBc_Amortizacion", 0 );
-}
-
-
-
-///
-/**
-**/
-void PluginBc_Amortizacion::elslot()
-{
-    blDebug ( "PluginBc_Amortizacion::elslot", 0 );
-    if (g_amortizacionlist == NULL) {
-      g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() ->addSubWindow ( g_amortizacionlist );
-    } // end if
-    g_amortizacionlist->hide();
-    g_amortizacionlist->show();
-    blDebug ( "END PluginBc_Amortizacion::elslot", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_Amortizacion::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( "PluginBc_Amortizacion::inicializa", 0 );
-
-    /// Creamos el men&uacute;.
-    setMainCompany ( (BlMainCompany *)bges->empresaactual() );
-    m_bulmacont = bges;
-    QMenu *pPluginMenu = bges->newMenu(_("&Ver"), "menuVer", "menuMaestro");
-
-    QAction *accion = new QAction ( _ ( "&Amortizaciones" ), 0 );
-    accion->setStatusTip ( _ ( "Permite ver las amortizaciones" ) );
-    accion->setWhatsThis ( _ ( "Podra disponer de la informacion de las amortizaciones" ) );
-    accion->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/png/i_bulmacont_amortizaciones.png")));
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->toolBar->addAction ( accion );
-
-    blDebug ( "END PluginBc_Amortizacion::inicializa", 0 );
-}
-
-
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -119,11 +49,39 @@ int entryPoint ( BcBulmaCont *bcont )
     blBindTextDomain ( "pluginbc_amortizacion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_amortizacionlist = NULL;
+    g_bcont = bcont;
 
-    PluginBc_Amortizacion *plug = new PluginBc_Amortizacion();
-    plug->inicializa ( bcont );
+    /// Creamos el men&uacute;.
+    QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
+
+    BlAction *accionA = new BlAction ( _ ( "&Amortizaciones" ), 0 );
+    accionA->setStatusTip ( _ ( "Permite ver las amortizaciones" ) );
+    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion de las amortizaciones" ) );
+    accionA->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/png/i_bulmacont_amortizaciones.png")));
+    accionA->setObjectName("mui_actionAmortizaciones");
+    //connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    pPluginMenu->addAction ( accionA );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bcont->toolBar->addAction ( accionA );
+
 
     blDebug ( "END entryPoint::entryPoint", 0 );
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ( "END PluginBc_Amortizacion::BlAction_triggered", 0 );
+    if (accion->objectName() == "mui_actionAmortizaciones") {
+        if (g_amortizacionlist == NULL) {
+            g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_bcont->company()->pWorkspace() ->addSubWindow ( g_amortizacionlist );
+        } // end if
+        g_amortizacionlist->hide();
+        g_amortizacionlist->show();
+    } // end if
+    blDebug ( "END PluginBc_Amortizacion::BlAction_triggered", 0 );
+
     return 0;
 }
 
