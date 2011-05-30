@@ -112,38 +112,32 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_Alumno::BlAction_triggered\n", 0 );
     if (accion->objectName() == "mui_actionAlumnos") {
-        blDebug ( "PluginBf_Alumno::BlAction_triggered::mui_actionAlumnos\n", 0 );
         if ( g_alumnosList ) {
             g_alumnosList->hide();
             g_alumnosList->show();
         } // end if
-        blDebug ( "END PluginBf_Alumno::BlAction_triggered::mui_actionAlumnos\n", 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionAlumnoNuevo") {
-        blDebug ( "PluginBf_Alumno::BlAction_triggered::mui_actionAlumnoNuevo\n", 0 );
         AlumnoView * bud = new AlumnoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Alumno::BlAction_triggered::mui_actionAlumnoNuevo\n", 0 );    
     } // end if
 
     if (accion->objectName() == "mui_actionAlumnoCuotas") {
-        blDebug ( "PluginBf_Alumno::BlAction_triggered::mui_actionAlumnoCuotas\n", 0 );
         ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Alumno::BlAction_triggered::mui_actionAlumnoCuotas\n", 0 );
     } // end if 
     
     if (accion->objectName() == "mui_actionClases") {
-        blDebug ( "PluginBf_Alumno::BlAction_triggered::mui_actionClases\n", 0 );
         ClaseView * bud = new ClaseView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Alumno::BlAction_triggered::mui_actionClases\n", 0 );
     } // end if
+    blDebug ( "END PluginBf_Alumno::BlAction_triggered\n", 0 );
 
     return 0;
 }

@@ -40,133 +40,7 @@
 #include "albaranclienteview.h"
 #include "pedidoproveedorview.h"
 
-
-///
-/**
-**/
-PluginBf_AbreCodigoBarras::PluginBf_AbreCodigoBarras()
-{
-    blDebug ( "PluginBf_AbreCodigoBarras::PluginBf_AbreCodigoBarras", 0 );
-    blDebug ( "END PluginBf_AbreCodigoBarras::PluginBf_AbreCodigoBarras", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_AbreCodigoBarras::~PluginBf_AbreCodigoBarras()
-{
-    blDebug ( "PluginBf_AbreCodigoBarras::~PluginBf_AbreCodigoBarras", 0 );
-    blDebug ( "END PluginBf_AbreCodigoBarras::~PluginBf_AbreCodigoBarras", 0 );
-}
-
-
-///
-/**
-\return
-**/
-void PluginBf_AbreCodigoBarras::elslot()
-{
-    blDebug ( "PluginBf_AbreCodigoBarras::elslot", 0 );
-    bool ok;
-    QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),
-                                           _ ( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
-    if ( ok && !text.isEmpty() ) {
-        QStringList listaelem = text.split ( " " );
-        if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
-            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
-            if ( !resur ) {
-                blMsgInfo ( "no se pudo crear instancia de factura" );
-                return;
-            } // end if
-            FacturaView *prov = ( FacturaView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
-                delete prov;
-                return;
-            } // end if
-            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
-            prov->show();
-        } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
-            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewPresupuestoView", ( BfCompany * ) mainCompany() );
-            if ( !resur ) {
-                blMsgInfo ( "no se pudo crear instancia de pedido cliente" );
-                return;
-            } // end if
-            PresupuestoView * prov =  ( PresupuestoView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
-                delete prov;
-                return;
-            } // end if
-            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
-            prov->show();
-        } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
-            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewPedidoClienteView", ( BfCompany * ) mainCompany() );
-            if ( !resur ) {
-                blMsgInfo ( "no se pudo crear instancia de pedido cliente" );
-                return;
-            } // end if
-            PedidoClienteView * prov = ( PedidoClienteView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
-                delete prov;
-                return;
-            } // end if
-            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
-            prov->show();
-        } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
-
-            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewAlbaranClienteView", ( BfCompany * ) mainCompany() );
-            if ( !resur ) {
-                blMsgInfo ( "no se pudo crear instancia de factura" );
-                return;
-            } // end if
-            AlbaranClienteView *prov = ( AlbaranClienteView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
-                delete prov;
-                return;
-            } // end if
-            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
-            prov->show();
-        } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
-
-            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
-                delete prov;
-                return;
-            } // end if
-            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
-            prov->show();
-        } // end if
-    } // end if
-    blDebug ( "END PluginBf_AbreCodigoBarras::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_AbreCodigoBarras::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_AbreCodigoBarras::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->company() );
-    m_bulmafact = bges;
-
-    /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bges->newMenu ( "&Herramientas", "menuHerramientas", "menuAcerca_de" );
-
-    QAction *accion = new QAction ( "&Apertura Rapida", 0 );
-    accion->setStatusTip ( "Abre documentos a partir del codigo de barras" );
-    accion->setWhatsThis ( "Abre documentos a partir del codigo de barras" );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-    blDebug ( "END PluginBf_AbreCodigoBarras::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -180,9 +54,97 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_abrecodigobarras", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_AbreCodigoBarras *plug = new PluginBf_AbreCodigoBarras();
-    plug->inicializa ( bges );
-    blDebug ( "END entryPoint", 0 );
+    g_bges = bges;
+
+    /// Miramos si existe un menu Herramientas
+    QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );
+
+    BlAction *accionA = new BlAction ( _("&Apertura Rapida"), 0 );
+    accionA->setStatusTip ( _("Abre documentos a partir del codigo de barras") );
+    accionA->setWhatsThis ( _("Abre documentos a partir del codigo de barras") );
+    accionA->setObjectName("mui_actionAperturaRapida");
+
+
+    blDebug ( "END entryPoint,0, Punto de entrada de  PluginBf_AbreCodigoBarras", 0 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionAperturaRapida") {
+    bool ok;
+    QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),
+                                           _ ( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
+    if ( ok && !text.isEmpty() ) {
+        QStringList listaelem = text.split ( " " );
+        if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) g_bges->company() );
+            if ( !resur ) {
+                blMsgInfo ( _("No se pudo crear instancia de factura") );
+                return 0;
+            } // end if
+            FacturaView *prov = ( FacturaView * ) g_plugParams;
+            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+                delete prov;
+                return 0;
+            } // end if
+            g_bges->company() ->m_pWorkspace->addSubWindow ( prov );
+            prov->show();
+        } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewPresupuestoView", ( BfCompany * ) g_bges->company() );
+            if ( !resur ) {
+                blMsgInfo ( _("No se pudo crear instancia de pedido cliente") );
+                return 0;
+            } // end if
+            PresupuestoView * prov =  ( PresupuestoView * ) g_plugParams;
+            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+                delete prov;
+                return 0;
+            } // end if
+            g_bges->company() ->m_pWorkspace->addSubWindow ( prov );
+            prov->show();
+        } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewPedidoClienteView", ( BfCompany * ) g_bges->company() );
+            if ( !resur ) {
+                blMsgInfo ( _("No se pudo crear instancia de pedido cliente") );
+                return 0;
+            } // end if
+            PedidoClienteView * prov = ( PedidoClienteView * ) g_plugParams;
+            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+                delete prov;
+                return 0;
+            } // end if
+            g_bges->company() ->m_pWorkspace->addSubWindow ( prov );
+            prov->show();
+        } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
+
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewAlbaranClienteView", ( BfCompany * ) g_bges->company() );
+            if ( !resur ) {
+                blMsgInfo ( _("No se pudo crear instancia de factura") );
+                return 0;
+            } // end if
+            AlbaranClienteView *prov = ( AlbaranClienteView * ) g_plugParams;
+            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+                delete prov;
+                return 0;
+            } // end if
+            g_bges->company()->m_pWorkspace->addSubWindow ( prov );
+            prov->show();
+        } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
+
+            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) g_bges->company(), 0 );
+            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+                delete prov;
+                return 0;
+            } // end if
+            g_bges->company()->m_pWorkspace->addSubWindow ( prov );
+            prov->show();
+            } // end if
+        } // end if
+    } // end if
+    return 0;
+}

@@ -88,6 +88,8 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( "pluginbf_actividad::BlAction_triggered", 0 );
+
     if (accion->objectName() == "mui_actionActividades") {
         if ( g_actividadesList ) {
             g_actividadesList->hide();
@@ -104,6 +106,8 @@ int BlAction_triggered(BlAction *accion) {
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     }
+    blDebug ( "END pluginbf_actividad::BlAction_triggeredr", 0 );
+
     return 0;
 }
 int BfCompany_createMainWindows_Post ( BfCompany *comp )

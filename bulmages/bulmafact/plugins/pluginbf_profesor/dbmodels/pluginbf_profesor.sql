@@ -595,9 +595,9 @@ DECLARE
 BEGIN
 	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_Profesor'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0003'' WHERE nombre=''PluginBf_Profesor'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Profesor'', ''0.12.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Profesor'', ''0.12.1-0003'');
 	END IF;
 	RETURN 0;
 END;

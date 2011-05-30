@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "Punto de entrada de PluginBf_TallasColores", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0001");
+    bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0002");
     g_bges = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
@@ -59,7 +59,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     QMenu *pPluginMenuTallasColores;
     /// Miramos si existe un menu Herramientas
-    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ( "Tallas y colores" );
+    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ( _("Tallas y colores") );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenuTallasColores ) {
@@ -89,21 +89,19 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_TallasColores::BlAction_triggered", 0 );
     if (accion->objectName() == "mui_actionTallas") {
-        blDebug ( "PluginBf_TallasColores::BlAction_triggered::mui_actionTallas", 0 );
         ListTallasView *tallas = new ListTallasView ( g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( tallas );
         tallas->show();
-        blDebug ( "END PluginBf_TallasColores::BlAction_triggered::mui_actionTallas", 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionColores") {
-        blDebug ( "PluginBf_TallasColores::BlAction_triggered::mui_actionColores", 0 );
         ListColoresView *colores = new ListColoresView ( g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( colores );
         colores->show();
-        blDebug ( "END PluginBf_TallasColores::BlAction_triggered::mui_actionColores", 0 );
     } // end if
+    blDebug ( "PluginBf_TallasColores::BlAction_triggered", 0 );
 
     return 0;
 }

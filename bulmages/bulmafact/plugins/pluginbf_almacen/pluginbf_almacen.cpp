@@ -61,11 +61,13 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_Almacen::BlAction_triggered\n", 0 );
     if (accion->objectName() == "mui_actionAlmacen") {
         ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-    } // end if            
+    } // end if
+    blDebug ( "END PluginBf_Almacen::BlAction_triggered\n", 0 );
     return 0;
 }
 
