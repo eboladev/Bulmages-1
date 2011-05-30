@@ -96,10 +96,10 @@ JDirectivaView::~JDirectivaView()
 }
 
 
-QString JDirectivaView::nombrePlantilla ( void )
+QString JDirectivaView::templateName ( void )
 {
-    blDebug ( "JDirectivaView::~nombrePlantilla", 0 );
-    blDebug ( "END JDirectivaView::~nombrePlantilla", 0 );
+    blDebug ( "JDirectivaView::~templateName", 0 );
+    blDebug ( "END JDirectivaView::~templateName", 0 );
     
     return QString ( "jdirectiva" );
 }

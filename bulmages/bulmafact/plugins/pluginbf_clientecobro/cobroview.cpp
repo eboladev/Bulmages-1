@@ -90,7 +90,7 @@ CobroView::~CobroView()
     blDebug ( "END CobroView::~CobroView", 0 );
 }
 
-int CobroView::trataTags ( QString &buff )
+int CobroView::parseTags ( QString &buff )
 {
     // pillar los datos de cliente equivale a un <!--QUERY-->      implicito que contiene toda la plantilla.
     QString params[1] = {dbValue ( "idcliente" ) };
@@ -107,11 +107,11 @@ int CobroView::trataTags ( QString &buff )
 
     // admitimos sustituciones , QUERY, IFACE, SETVAR... y los
     // nombres de campos de BD para cobros
-    BfForm::trataTags ( buff );
+    BfForm::parseTags ( buff );
     return 0;
 }
 
-QString CobroView::nombrePlantilla ( void )
+QString CobroView::templateName ( void )
 {
     return QString ( "recibo" );
 }

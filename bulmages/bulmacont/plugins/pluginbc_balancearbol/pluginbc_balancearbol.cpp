@@ -46,13 +46,13 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "plugincc_balancearbol", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
+    QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro" );
 
     BlAction *accion = new BlAction ( _ ( "&Balance jerarquico" ), 0 );
     accion->setStatusTip ( _ ( "Permite realizar balances" ) );
     accion->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_arbolBalance.xpm" ) ) );
-    accion->setObjectName("balancejearbol");
+    accion->setObjectName("mui_actionBalanceJerarquico");
     bcont->toolBar->addAction ( accion );
     pPluginMenu->addAction ( accion );
     
@@ -62,12 +62,12 @@ int entryPoint ( BcBulmaCont *bcont )
 
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "balancejearbol") {
-         
-	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->company(), 0 );
-	g_bcont -> company() ->pWorkspace() ->addSubWindow ( cuad );
-	cuad->show();
-
+    blDebug ( "PluginBc_BalanceArbol::BlAction_triggered" );
+    if (accion->objectName() == "mui_actionBalanceJerarquico") {
+    	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->company(), 0 );
+    	g_bcont -> company() ->pWorkspace() ->addSubWindow ( cuad );
+    	cuad->show();
     } // end if
+    blDebug ( "PluginBc_BalanceArbol::BlAction_triggered" );
     return 0;    
 } // end if

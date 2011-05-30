@@ -68,7 +68,7 @@ public:
                     };
 
 private:
-    QString m_nomcampo;          ///< El nombre del campo
+    QString m_fieldName;          ///< El nombre del campo
     QString m_valorcampo;         ///< El valor actual del campo, en el registro, no en la base de datos
     QString m_nompresentacion;         ///< El nombre que se mostrara en los mensajes de error y presentacion
     int m_restrict;          ///< Las restricciones del campo
@@ -86,7 +86,7 @@ public:
     DbType dbFieldType();
     virtual int set ( QString val );
     int restrictcampo();
-    QString nomcampo();
+    QString fieldName();
     QString nompresentacion();
     QString valorcampo();
     QString valorcampoprep ( int &error );
@@ -140,20 +140,20 @@ public:
     virtual void vaciar();
     virtual void imprimir();
     virtual int cargar ( QString );
-    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
-//    virtual int trataTags ( QByteArray &buff, int tipoEscape = 0 );
+    virtual int parseTags ( QString &buff, int tipoEscape = 0 );
+//    virtual int parseTags ( QByteArray &buff, int tipoEscape = 0 );
     virtual QString story ( void );
     virtual int generaRML ( const QString & );
     virtual void substrConf( QString &buff) ;
     virtual void substrConf( QByteArray &buff) ;
-    virtual QString nombrePlantilla(void);
+    virtual QString templateName(void);
     virtual int generaRML ( void );
     virtual QString exportXML();
     virtual void syncXML(const QString &);
 
     //===========
-    virtual int trataTags ( QByteArray &buff, int tipoEscape = 0 );
-    virtual int trataTagsPost ( QByteArray &buff, int tipoEscape = 0 );
+    virtual int parseTags ( QByteArray &buff, int tipoEscape = 0 );
+    virtual int parseTagsPost ( QByteArray &buff, int tipoEscape = 0 );
     virtual QByteArray trataIncludeFileTXT ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataIncludeImg ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataPngRaw64 ( const QByteArray &data, int tipoEscape = 0 );
@@ -166,7 +166,7 @@ public:
     virtual QByteArray trataSetDoubleStrike( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataTurnUpsideDown( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataTurn90CWRotation( const QString &param, const QString &param1, int tipoEscape = 0 );
-    virtual QByteArray trataQuery ( const QString &query, const QByteArray &datos, int tipoEscape = 0 );
+    virtual QByteArray parseQuery ( const QString &query, const QByteArray &datos, int tipoEscape = 0 );
     virtual QByteArray trataTurnWhiteBlack( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataSetColor( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataHorizontalTab( int tipoEscape = 0 );
@@ -191,8 +191,8 @@ public:
     virtual QByteArray trataLeftJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
 //    virtual QByteArray trataLineasDetalle( const QByteArray &datos, int tipoEscape=0 );
     QByteArray trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
-    virtual QByteArray trataIfQuery ( const QString &query, const QByteArray &datos );
-    virtual QByteArray trataIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 );
+    virtual QByteArray parseIfQuery ( const QString &query, const QByteArray &datos );
+    virtual QByteArray parseIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 );
     virtual QByteArray trataExists ( const QString &query, const QByteArray &datos );
     void substrVars(QByteArray &buff, int tipoEscape = 0);
     void setVar(const QString &varname, const QString &varvalue);

@@ -267,8 +267,8 @@ void ImportCSV::on_mui_combotablas_activated ( const QString & text )
 	mui_list->setRowCount ( row + 1 );
 	/// Ahora buscamos los valores en la tabla y los vamos colocando segun aparezcan.
 	for (int campo = 0; campo < lista_campos.size(); ++campo) {
-	    QString nomcampo = lista_campos.at(campo);
-	    int index = list1.indexOf("\""+nomcampo+"\"");
+	    QString fieldName = lista_campos.at(campo);
+	    int index = list1.indexOf("\""+fieldName+"\"");
 	    if (index != -1) {
 		/// Se ha encontrado un elemento y podemos poner el texto.
 		QTableWidgetItem *newItem = new QTableWidgetItem ( list2.at(index) );

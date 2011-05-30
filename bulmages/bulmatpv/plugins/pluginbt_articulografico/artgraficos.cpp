@@ -254,7 +254,7 @@ void ArtGraficos::cargaXML ( QString filename )
 
 		/// Ponemos todos los campos del registro cargado para que esten cacheados.
 		for (int j = 0; j < cur->numcampos(); j++) {
-			QDomElement tag3 = m_doc.createElement(cur->nomcampo(j) );
+			QDomElement tag3 = m_doc.createElement(cur->fieldName(j) );
 			tag3.appendChild( m_doc.createTextNode( cur->value(j) ) );
 			nodos.item(i).appendChild( tag3 );
 		} // end for

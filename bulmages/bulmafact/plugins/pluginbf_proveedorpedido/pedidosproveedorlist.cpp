@@ -194,7 +194,7 @@ QString PedidosProveedorList::generarFiltro()
 void PedidosProveedorList::imprimir()
 {
     blDebug ( "PedidosProveedorList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Pedidos a proveedores" ) );
+    mui_list->printPDF ( _ ( "Pedidos a proveedores" ) );
     blDebug ( "END PedidosProveedorList::imprimir", 0 );
 }
 

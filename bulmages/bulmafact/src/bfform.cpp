@@ -209,9 +209,9 @@ fprintf(stderr, "IVA\n");
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int BfForm::trataTags ( QString &buff, int tipoEscape )
+int BfForm::parseTags ( QString &buff, int tipoEscape )
 {
-    blDebug ( "BfForm::trataTags", 0 );
+    blDebug ( "BfForm::parseTags", 0 );
     
     int pos =  0;
 
@@ -271,18 +271,18 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    int ret = BlForm::trataTags ( buff, tipoEscape );
+    int ret = BlForm::parseTags ( buff, tipoEscape );
 
-    trataTagsBf ( buff, tipoEscape );
+    parseTagsBf ( buff, tipoEscape );
     
-    blDebug ( "END BfForm::trataTags", 0 );
+    blDebug ( "END BfForm::parseTags", 0 );
     
     return ret;
 }
 
-void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
+void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
 {
-    blDebug ( "BfForm::trataTagsBf", 0 );
+    blDebug ( "BfForm::parseTagsBf", 0 );
 
     QString fitxersortidatxt = "";
     BlDbRecordSet *cur = NULL;
@@ -334,7 +334,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 
         /// Si no hay lista de lineas salimos.
         if (!m_listalineas) {
-            blDebug ( "END BfForm::trataTagsBf", 0 );
+            blDebug ( "END BfForm::parseTagsBf", 0 );
             return;
         } // end if
 
@@ -568,7 +568,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 #endif
 
 // a ver. No se porque pongo esto aqui.
-// Como que he sacado codigo de generaRML(arch) para ponerlo aqui (porque me parece quees trataTags
+// Como que he sacado codigo de generaRML(arch) para ponerlo aqui (porque me parece que es parseTags
 // quien deberia tratar todos los tags y porque asi aprovecho el proceso de escribir el fichero en el
 // encoding correcto que ya esta hecho en Ficha) pues he copiado tambien esto, pero yo hubiera dicho
 // que C++ ya haria el delete solito y si
@@ -580,7 +580,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         
     }
 
-    blDebug ( "END BfForm::trataTagsBf", 0 );
+    blDebug ( "END BfForm::parseTagsBf", 0 );
 }
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
@@ -971,10 +971,10 @@ int BfForm::generaRML ( void )
 }
 
 
-QString BfForm::nombrePlantilla ( void )
+QString BfForm::templateName ( void )
 {
-    blDebug ( "BfForm::nombrePlantilla", 0 );
-    blDebug ( "END BfForm::nombrePlantilla", 0 );
+    blDebug ( "BfForm::templateName", 0 );
+    blDebug ( "END BfForm::templateName", 0 );
     
     return m_tablename;
 }

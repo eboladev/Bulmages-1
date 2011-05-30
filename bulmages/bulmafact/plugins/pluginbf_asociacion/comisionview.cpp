@@ -91,7 +91,7 @@ ComisionView::~ComisionView()
 }
 
 
-QString ComisionView::nombrePlantilla ( void )
+QString ComisionView::templateName ( void )
 {
     return QString ( "comision" );
 }

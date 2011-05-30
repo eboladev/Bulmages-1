@@ -42,7 +42,7 @@ public:
     ~DatosView();
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_cancelar_clicked();
-    virtual int trataTags(QString &buff, int tipoEscape = 0);
+    virtual int parseTags(QString &buff, int tipoEscape = 0);
 
 // mui_fechainicialactual
 // mui_fechafinalactual

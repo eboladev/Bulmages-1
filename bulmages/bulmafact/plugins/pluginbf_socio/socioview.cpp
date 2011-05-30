@@ -153,10 +153,10 @@ void SocioView::on_mui_sociocliente_toggled ( bool state )
     blDebug ( "END SocioView::on_mui_sociocliente_toggled", 0 );
 }
 
-QString SocioView::nombrePlantilla ( void )
+QString SocioView::templateName ( void )
 {
-    blDebug ( "SocioView::nombrePlantilla", 0 );
-    blDebug ( "END SocioView::nombrePlantilla", 0 );
+    blDebug ( "SocioView::templateName", 0 );
+    blDebug ( "END SocioView::templateName", 0 );
     
     return QString ( "tutor" );
 }

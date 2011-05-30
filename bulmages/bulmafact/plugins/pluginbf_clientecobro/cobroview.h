@@ -50,8 +50,8 @@ public:
     CobroView ( BfCompany *, QWidget * );
     ~CobroView();
     virtual void imprimir();
-    virtual int trataTags ( QString &buff );
-    virtual QString nombrePlantilla(void) ;
+    virtual int parseTags ( QString &buff );
+    virtual QString templateName(void) ;
     virtual int guardarPost();
 };
 

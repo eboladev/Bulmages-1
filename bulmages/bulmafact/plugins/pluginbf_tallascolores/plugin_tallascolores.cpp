@@ -233,13 +233,13 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 {
     blDebug ( "QSubForm3BfDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
+    linea = m_subform->headerList() ->at ( index.column() );
 
-    if ( linea->nomcampo() == "nomtc_color" ) {
+    if ( linea->fieldName() == "nomtc_color" ) {
         BusquedaColorDelegate * editor = new BusquedaColorDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
-    } else if ( linea->nomcampo() == "nomtc_talla" ) {
+    } else if ( linea->fieldName() == "nomtc_talla" ) {
         BusquedaTallaDelegate * editor = new BusquedaTallaDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
@@ -266,13 +266,13 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         return;
 
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "nomtc_color" ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "nomtc_color" ) {
         BusquedaColorDelegate * comboBox = static_cast<BusquedaColorDelegate*> ( editor );
         QString value = comboBox->currentText();
 	model->setData(index, value);
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_color", comboBox->id(value) );
-    } else     if ( linea->nomcampo() == "nomtc_talla" ) {
+    } else     if ( linea->fieldName() == "nomtc_talla" ) {
         BusquedaTallaDelegate * comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
         QString value = comboBox->currentText();
 	model->setData(index, value);
@@ -293,12 +293,12 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
 {
     blDebug ( "QSubForm3BfDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "nomtc_color" ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "nomtc_color" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaColorDelegate *comboBox = static_cast<BusquedaColorDelegate*> ( editor );
         comboBox->setId ( value );
-    } else if ( linea->nomcampo() == "nomtc_talla" ) {
+    } else if ( linea->fieldName() == "nomtc_talla" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTallaDelegate *comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
         comboBox->setId ( value );

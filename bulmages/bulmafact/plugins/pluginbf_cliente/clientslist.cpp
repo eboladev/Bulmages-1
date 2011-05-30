@@ -158,7 +158,7 @@ void ClientsList::editar ( int row )
 void ClientsList::imprimir()
 {
     blDebug ( "ClientsList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Listado de Clientes" ) );
+    mui_list->printPDF ( _ ( "Listado de Clientes" ) );
     blDebug ( "ClientsList::on_mui_imprimir_clicked", 0 );
 }
 

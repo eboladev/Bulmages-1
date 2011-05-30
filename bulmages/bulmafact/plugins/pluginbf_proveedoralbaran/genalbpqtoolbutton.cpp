@@ -179,7 +179,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclalbaranp", linea->dbValue ( "desclpedidoproveedor" ) );
                 linea1->setDbValue ( "cantlalbaranp", linea->dbValue ( "cantlpedidoproveedor" ) );

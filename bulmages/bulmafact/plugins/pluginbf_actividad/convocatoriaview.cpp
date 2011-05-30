@@ -80,7 +80,7 @@ ConvocatoriaView::~ConvocatoriaView()
 }
 
 
-QString ConvocatoriaView::nombrePlantilla ( void )
+QString ConvocatoriaView::templateName ( void )
 {
     return QString ( "recibo" );
 }

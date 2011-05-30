@@ -113,10 +113,10 @@ ConvReunionView::~ConvReunionView()
     blDebug ( "END ConvReunionView::~ConvReunionView", 0 );
 }
 
-QString ConvReunionView::nombrePlantilla ( void )
+QString ConvReunionView::templateName ( void )
 {
-    blDebug ( "ConvReunionView::nombrePlantilla", 0 );
-    blDebug ( "END ConvReunionView::nombrePlantilla", 0 );
+    blDebug ( "ConvReunionView::templateName", 0 );
+    blDebug ( "END ConvReunionView::templateName", 0 );
 
     return QString ( "reunion" );
 }
@@ -220,7 +220,7 @@ void ConvReunionView::on_m_agregarconvocados_clicked()
     
     while ( !cur->eof() ) {
         linea1 = mui_list->lineaat ( mui_list->rowCount() - 1 );
-        mui_list->nuevoRegistro();
+        mui_list->newRecord();
         mui_list->setProcesarCambios ( FALSE );
         linea1->setDbValue ( "idcliente", cur->value( "idcliente" ) );
         linea1->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
@@ -247,7 +247,7 @@ int ConvReunionView::junta()
     
     while (! cur->eof()) {
         linea1 = mui_list->lineaat ( mui_list->rowCount() - 1 );
-        mui_list->nuevoRegistro();
+        mui_list->newRecord();
         mui_list->setProcesarCambios ( FALSE );
         linea1->setDbValue ( "idcliente", cur->value( "idcliente" ) );
         linea1->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );

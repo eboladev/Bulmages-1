@@ -94,13 +94,13 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
 
     /// Si no es un campo de tipo debe o haber salimos.
     /*
-        if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" && camp->nomcampo() != "fecha" ) {
+        if ( camp->fieldName() != "debe" && camp->fieldName() != "haber" && camp->fieldName() != "fecha" ) {
             blDebug ( "END BcSubForm::pressedPlus", 0, "Campo incorrecto" );
             return;
         } // end if
     */
 
-    if ( camp->nomcampo() == "fecha" ) {
+    if ( camp->fieldName() == "fecha" ) {
         BlDbSubFormRecord *recant = lineaat ( row - 1 );
         if ( recant ) {
             rec->setDbValue ( "fecha", recant->dbValue ( "fecha" ) );
@@ -108,7 +108,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
         return;
     } // end if
 
-    if ( camp->nomcampo() == "debe" || camp->nomcampo() == "haber" ) {
+    if ( camp->fieldName() == "debe" || camp->fieldName() == "haber" ) {
 
         /// Ponemos los campos a cero en esta fila
         rec->setDbValue ( "debe", "0" );
@@ -133,7 +133,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
 
     BlDbSubFormRecord *recant = lineaat ( row - 1 );
     if ( recant ) {
-        rec->setDbValue ( camp->nomcampo(), recant->dbValue ( camp->nomcampo() ) );
+        rec->setDbValue ( camp->fieldName(), recant->dbValue ( camp->fieldName() ) );
         return;
     } // end if
 
@@ -152,7 +152,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     blDebug ( "BcSubForm::pressedAsterisk", 0 );
 
     /// Si no es un campo de tipo codigo salimos.
-    if ( camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente" )
+    if ( camp->fieldName() != "codigo" && camp->fieldName() != "codigoctacliente" )
         return;
 
     /// Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
@@ -173,7 +173,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            if ( camp->nomcampo() == "codigo" ) {
+            if ( camp->fieldName() == "codigo" ) {
                 rec->setDbValue ( "idcuenta", cur->value( "idcuenta" ) );
                 rec->setDbValue ( "codigo", cur->value( "codigo" ) );
                 rec->setDbValue ( "tipocuenta", cur->value( "tipocuenta" ) );
@@ -187,7 +187,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
                 } // end if
 
             } // end if
-            if ( camp->nomcampo() == "codigoctacliente" ) {
+            if ( camp->fieldName() == "codigoctacliente" ) {
                 rec->setDbValue ( "idctacliente", cur->value( "idcuenta" ) );
                 rec->setDbValue ( "codigoctacliente", cur->value( "codigo" ) );
                 rec->setDbValue ( "tipoctacliente", cur->value( "tipocuenta" ) );
@@ -212,21 +212,21 @@ void BcSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 {
     blDebug ( "BcSubForm::pressedSlash", 0 );
 
-    if ( camp->nomcampo() == "fecha" ) {
+    if ( camp->fieldName() == "fecha" ) {
         if ( row > 0 ) {
             BlDbSubFormField * campoant = ( BlDbSubFormField * ) item ( row - 1, col );
             camp->set ( campoant->text() );
         } // end if
         return;
     } // end if
-    if ( camp->nomcampo() == "descripcion" ) {
+    if ( camp->fieldName() == "descripcion" ) {
         if ( row > 0 ) {
             BlDbSubFormField * campoant = ( BlDbSubFormField * ) item ( row - 1, col );
             camp->set ( campoant->text() );
         } // end if
         return;
     } // end if
-    if ( camp->nomcampo() == "conceptocontable" ) {
+    if ( camp->fieldName() == "conceptocontable" ) {
         if ( row > 0 ) {
             BlDbSubFormField * campoant = ( BlDbSubFormField * ) item ( row - 1, col );
             camp->set ( campoant->text() );
@@ -255,7 +255,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         return;
     } // end if
 
-    if ( camp->nomcampo() == "codigo" && camp->text() != "*" ) {
+    if ( camp->fieldName() == "codigo" && camp->text() != "*" ) {
         QString codigoext = blExtendStringWithZeros ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -277,7 +277,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
         delete cur;
     } // end if
-    if ( camp->nomcampo() == "nomcanal" ) {
+    if ( camp->fieldName() == "nomcanal" ) {
         QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
@@ -287,7 +287,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
         delete cur;
     } // end if
-    if ( camp->nomcampo() == "nomc_coste" ) {
+    if ( camp->fieldName() == "nomc_coste" ) {
         QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
@@ -297,16 +297,16 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
         delete cur;
     } // end if
-    if ( camp->nomcampo() == "fecha" ) {
+    if ( camp->fieldName() == "fecha" ) {
         QString nfecha = blNormalizeDate ( camp->text() ).toString ( "dd/MM/yyyy" );
         rec->setDbValue ( "fecha", nfecha );
     } // end if
-    if ( camp->nomcampo() == "debe" ) {
+    if ( camp->fieldName() == "debe" ) {
         if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
             rec->setDbValue ( "haber", "0.00" );
         } // end if
     } // end if
-    if ( camp->nomcampo() == "haber" ) {
+    if ( camp->fieldName() == "haber" ) {
         if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
             rec->setDbValue ( "debe", "0.00" );
         } // end if
@@ -515,33 +515,33 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 {
     blDebug ( "BcSubFormDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
+    linea = m_subform->headerList() ->at ( index.column() );
     blDebug ( "BcSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
     blDebug ( "BcSubFormDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
 
-    if ( linea->nomcampo().startsWith ( "desc" ) ) {
+    if ( linea->fieldName().startsWith ( "desc" ) ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
         blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlTextEditDelegate" );
         return editor;
-    } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
+    } else if ( linea->fieldName() == "debe" || linea->fieldName() == "haber" ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
         editor->setDecimals(linea->numericPrecision());
         blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
-    } else if ( linea->nomcampo() == "nomcanal" ) {
+    } else if ( linea->fieldName() == "nomcanal" ) {
         BcBuscarCanalDelegate * editor = new BcBuscarCanalDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
         blDebug ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCanalDelegate" );
         return editor;
-    } else if ( linea->nomcampo() == "nomc_coste" ) {
+    } else if ( linea->fieldName() == "nomc_coste" ) {
         BcBuscarCentroCosteDelegate * editor = new BcBuscarCentroCosteDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
         blDebug ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCentroCosteDelegate" );
         return editor;
-    } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
+    } else if ( linea->fieldName().startsWith ( "fecha" ) ) {
         BlDateLineEdit * editor = new BlDateLineEdit ( parent );
         blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlDateLineEdit" );
         return editor;
@@ -579,10 +579,10 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } // end if
 
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo().startsWith ( "desc" ) ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName().startsWith ( "desc" ) ) {
 
-//    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
+//    if (linea->fieldName() == "desc" + m_subform->tableName()) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
 
@@ -592,23 +592,23 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         // TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
         //        con decimales. Ademas no se que es lo que tiene que hacer
         //
-        //    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
-    } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
+        //    } else if (linea->fieldName() == "debe" || linea->fieldName() == "haber" + m_subform->tableName()) {
+    } else if ( linea->fieldName() == "debe" || linea->fieldName() == "haber" ) {
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
         model->setData ( index, value );
-    } else if ( linea->nomcampo() == "nomcanal" ) {
+    } else if ( linea->fieldName() == "nomcanal" ) {
         BcBuscarCanalDelegate * comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idcanal", comboBox->id(value) );
-    } else if ( linea->nomcampo() == "nomc_coste" ) {
+    } else if ( linea->fieldName() == "nomc_coste" ) {
         BcBuscarCentroCosteDelegate * comboBox = static_cast<BcBuscarCentroCosteDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idc_coste", comboBox->id(value) );
-    } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
+    } else if ( linea->fieldName().startsWith ( "fecha" ) ) {
         BlDateLineEdit * comboBox = static_cast<BlDateLineEdit*> ( editor );
         QString value = ( ( QLineEdit * ) comboBox ) ->text();
         model->setData ( index, value );
@@ -643,27 +643,27 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
 {
     blDebug ( "BcSubFormDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    //if (linea->nomcampo() == "desc" + m_subform->tableName()) {
-    if ( linea->nomcampo().startsWith ( "desc" ) ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    //if (linea->fieldName() == "desc" + m_subform->tableName()) {
+    if ( linea->fieldName().startsWith ( "desc" ) ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
         textedit->selectAll();
-    } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
+    } else if ( linea->fieldName() == "debe" || linea->fieldName() == "haber" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
-    } else if ( linea->nomcampo() == "nomcanal" ) {
+    } else if ( linea->fieldName() == "nomcanal" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BcBuscarCanalDelegate *comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
         comboBox->setId ( value, "nombre" );
-    } else if ( linea->nomcampo() == "nomc_coste" ) {
+    } else if ( linea->fieldName() == "nomc_coste" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BcBuscarCentroCosteDelegate *comboBox = static_cast<BcBuscarCentroCosteDelegate*> ( editor );
         comboBox->setId ( value, "nombre" );
-    } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
+    } else if ( linea->fieldName().startsWith ( "fecha" ) ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDateLineEdit *bf = static_cast<BlDateLineEdit*> ( editor );
         ( ( QLineEdit * ) bf ) ->setText ( value );

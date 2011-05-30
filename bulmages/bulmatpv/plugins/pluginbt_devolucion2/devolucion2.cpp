@@ -460,11 +460,11 @@ void Devolucion::on_mui_efectivoButton_clicked() {
             QList<BlDbField *> *lista = item->lista();
             for ( int j = 0; j < lista->size(); ++j ) {
                 BlDbField * camp = lista->at ( j );
-                if ( camp->nomcampo() != "numlalbaran" ) {
-                    nitem->setDbValue ( camp->nomcampo(), camp->valorcampo() );
+                if ( camp->fieldName() != "numlalbaran" ) {
+                    nitem->setDbValue ( camp->fieldName(), camp->valorcampo() );
                 }
-                if ( camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
-                    nitem->setDbValue ( camp->nomcampo(), "-" + mui_devolverTable->item ( i, 0 )->text() );
+                if ( camp->fieldName() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
+                    nitem->setDbValue ( camp->fieldName(), "-" + mui_devolverTable->item ( i, 0 )->text() );
                 }
             } // end for
         } // end for

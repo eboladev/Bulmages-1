@@ -126,7 +126,7 @@ void DatosView::on_mui_cancelar_clicked()
 }
 
 
-int DatosView::trataTags(QString &buff, int)
+int DatosView::parseTags(QString &buff, int)
 {
 
     buff.replace ( "[CONF_DBNAME]", blPythonEscape ( mainCompany()->dbName() ) );

@@ -61,7 +61,7 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
 void ListCompArticuloView::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     blDebug ( "ListCompArticuloView::pressedAsterisk", 0 );
-    if ( camp->nomcampo() != "codigocompletoarticulo" )
+    if ( camp->fieldName() != "codigocompletoarticulo" )
         return;
     blDebug ( "ListCompArticuloView::searchArticle", 0 );
     ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) mainCompany(), NULL, 0, BL_SELECT_MODE );
@@ -96,7 +96,7 @@ void ListCompArticuloView::editFinished ( int row, int col, BlDbSubFormRecord *r
 {
     blDebug ( "ListCompArticuloView::editFinished", 0 );
     camp->refresh();
-    if ( camp->nomcampo() == "codigocompletoarticulo" ) {
+    if ( camp->fieldName() == "codigocompletoarticulo" ) {
         BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idcomponente", cur->value( "idarticulo" ) );

@@ -163,7 +163,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
     blDebug ( "BfSubForm_pressedAsterisk" );
 
-    if ( sub->m_campoactual->nomcampo() != "nombrealumno1" ) {
+    if ( sub->m_campoactual->fieldName() != "nombrealumno1" ) {
         blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if

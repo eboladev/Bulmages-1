@@ -344,7 +344,7 @@ void AlbaranClienteList::borrar()
 void AlbaranClienteList::imprimir()
 {
     blDebug ( "AlbaranClienteList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Albaranes a clientes" ) );
+    mui_list->printPDF ( _ ( "Albaranes a clientes" ) );
     blDebug ( "END AlbaranClienteList::imprimir", 0 );
 }
 

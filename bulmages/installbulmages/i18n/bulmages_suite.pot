@@ -13274,7 +13274,7 @@ msgid "no se ha inicializado bien la clase"
 msgstr ""
 
 #: blsubform.cpp:2928 blsubform.cpp:2940
-msgid "Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"
+msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
 msgstr ""
 
 #: blsubform.cpp:3090

@@ -214,7 +214,7 @@ void RecibosList::imprimir()
 {
     blDebug ( "RecibosList::imprimir", 0 );
     
-    mui_list->imprimirPDF ( _ ( "Recibos" ) );
+    mui_list->printPDF ( _ ( "Recibos" ) );
     
     blDebug ( "END RecibosList::imprimir", 0 );
 }

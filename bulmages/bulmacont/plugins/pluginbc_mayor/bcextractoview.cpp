@@ -130,7 +130,7 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
     blDebug ( "asientosview::on_mui_list_cellDoubleClicked", 0 );
 
     QString textoHeader;
-    textoHeader =  mui_list->cabecera() ->at ( columna ) ->nomcampo().toAscii();
+    textoHeader =  mui_list->headerList() ->at ( columna ) ->fieldName().toAscii();
     //if ( textoHeader == "ordenasiento" ) {
         QString idasiento = mui_list->dbValue ( "idasiento" );
 

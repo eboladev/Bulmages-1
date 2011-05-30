@@ -147,7 +147,7 @@ QString MovimientosView::generaFiltro()
 void MovimientosView::on_mui_imprimir_clicked()
 {
     blDebug ( "MovimientosView::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Facturas a clientes" ) );
+    mui_list->printPDF ( _ ( "Facturas a clientes" ) );
     blDebug ( "MovimientosView::on_mui_imprimir_clicked", 0 );
 }
 

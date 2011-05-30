@@ -193,7 +193,7 @@ void ZList::editar ( int row )
 void ZList::imprimir()
 {
     blDebug ( "ZList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Almacenes" ) );
+    mui_list->printPDF ( _ ( "Almacenes" ) );
     blDebug ( "END ZList::imprimir", 0 );
 }
 

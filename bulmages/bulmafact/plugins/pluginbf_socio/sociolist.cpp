@@ -168,7 +168,7 @@ void SociosList::crear()
 void SociosList::imprimir()
 {
     blDebug ( "SociosList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Padres" ) );
+    mui_list->printPDF ( _ ( "Padres" ) );
     blDebug ( "END SociosList::imprimir", 0 );
 }
 

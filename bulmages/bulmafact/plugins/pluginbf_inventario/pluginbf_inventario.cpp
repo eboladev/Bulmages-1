@@ -142,7 +142,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->currentRow(), subform->currentColumn() - 1 );
     camp->refresh();
 
-    if ( camp->nomcampo() == "cant" + subform->tableName() ) {
+    if ( camp->fieldName() == "cant" + subform->tableName() ) {
         BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
         QObject *wid = subform->parent();
         while ( wid

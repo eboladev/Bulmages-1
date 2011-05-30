@@ -26,27 +26,10 @@
 #include "bccompany.h"
 #include "blmaincompanypointer.h"
 #include "pdefs_pluginbc_balance.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_BALANCE_EXPORT int entryPoint ( BcBulmaCont * );
-
-
-class PluginBc_Balance : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    PluginBc_Balance();
-    ~PluginBc_Balance();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-};
-
+extern "C" PLUGINBC_BALANCE_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

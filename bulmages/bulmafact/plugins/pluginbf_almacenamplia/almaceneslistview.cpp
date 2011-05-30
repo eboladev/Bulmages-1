@@ -219,7 +219,7 @@ void AlmacenesListView::editar ( int row )
 void AlmacenesListView::imprimir()
 {
     blDebug ( "AlmacenesListView::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Almacenes" ) );
+    mui_list->printPDF ( _ ( "Almacenes" ) );
     blDebug ( "END AlmacenesListView::imprimir", 0 );
 }
 

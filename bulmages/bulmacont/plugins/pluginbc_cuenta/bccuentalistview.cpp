@@ -238,7 +238,7 @@ QString BcCuentaListView::formaQuery()
 void BcCuentaListView::imprimir()
 {
     blDebug ( "BcCuentaListView::s_imprimir1", 0 );
-    mui_list->imprimirPDF ( "Listado de cuentas" );
+    mui_list->printPDF ( "Listado de cuentas" );
     blDebug ( "END BcCuentaListView::s_imprimir1", 0 );
 }
 

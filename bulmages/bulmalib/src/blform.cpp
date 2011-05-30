@@ -627,26 +627,26 @@ void BlForm::pintar()
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
         /// Buscamos los QLineEdit con nombre coincidente.
-        QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
+        QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->fieldName() );
         if ( l1 ) {
             l1->setText ( campo->valorcampo() );
 		if ( readOnly ) l1->setReadOnly ( true );
         } // end if
         /// Buscamos los QPlainTextEdit con nombre coincidente.
-        QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
+        QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->fieldName() );
         if ( l2 ) {
             l2->setPlainText( campo->valorcampo() );
 		if ( readOnly ) l2->setReadOnly ( true );
 	   } // end if
         /// Buscamos los QTextEdit con nombre coincidente.
-        QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
+        QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->fieldName() );
         if ( l3 ) {
             l3->setText ( campo->valorcampo() );
 		if ( readOnly ) l3->setReadOnly ( true );
         } // end if
         /// Buscamos BlWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
+        BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->fieldName() );
         if ( l4 ) {
             l4->setFieldValue ( campo->valorcampo() );
 		if ( readOnly ) l4->setDisabled( true );
@@ -654,18 +654,18 @@ void BlForm::pintar()
 
         /// Buscamos BlComboBox que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
+        BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->fieldName() );
         if ( l5 ) {
             l5->setperiodo ( campo->valorcampo() );
         } else {
-            BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+            BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->fieldName() );
             if ( l6 ) {
                 l6->setFieldValue ( campo->valorcampo() );
 		    if ( readOnly ) l6->setDisabled( true );
             } else {
                 /// Buscamos BlComboBox que coincidan con el campo supuestamente
                 /// sirve para los campos personales.
-                QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+                QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->fieldName() );
                 if ( l7 ) {
                     l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
                 } // end if
@@ -673,12 +673,12 @@ void BlForm::pintar()
         } // end if
 
         /// Buscamos un BlDoubleSpinBox con nombre coincidente.
-        BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
+        BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->fieldName() );
         if ( l8 ) {
             l8->setValue ( campo->valorcampo().toDouble() );
 		if ( readOnly ) l8->setDisabled( true );
             /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
-            QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->nomcampo()+"';";
+            QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->fieldName()+"';";
             /// Cargamos el query y lo recorremos
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
             if ( !cur->eof() ) {
@@ -690,7 +690,7 @@ void BlForm::pintar()
 
 
         /// Buscamos los QCheckBox con nombre coincidente.
-        QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
+        QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->fieldName() );
         if ( l9 ) {
             if ( campo->valorcampo() == "t" ) {
                 l9->setCheckState( Qt::Checked );
@@ -704,7 +704,7 @@ void BlForm::pintar()
 	   } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
-        QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->fieldName() + "_*" ) );
         for ( int i = 0; i < l10.size(); ++i ) {
             if ( l10.at ( i ) ->fieldValue() == campo->valorcampo() ) {
                 l10.at ( i ) ->setChecked ( TRUE );
@@ -734,36 +734,36 @@ void BlForm::recogeValores()
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
         /// Buscamos un QLineEdit con nombre coincidente.
-        QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
+        QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->fieldName() );
         if ( l1 )
             campo->set ( l1->text() );
 
         /// Buscamos un QPlainTextEdit con nombre coincidente.
-        QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
+        QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->fieldName() );
         if ( l2 )
             campo->set ( l2->toPlainText() );
 
         /// Buscamos un QTextEdit con nombre coincidente.
-        QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
+        QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->fieldName() );
         if ( l3 )
             campo->set ( l3->toPlainText() );
 
         /// Buscamos BlWidgets que coincidan con el campo. Supuestamente sirve para los campos personales.
-        BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
+        BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->fieldName() );
         if ( l4 )
             campo->set ( l4->fieldValue() );
 
         /// Buscamos BlComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-        BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
+        BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->fieldName() );
         if ( l5 ) {
             campo->set(l5->periodo() );
         } else {
-            BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+            BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->fieldName() );
             if ( l6 ) {
                 campo->set ( l6->fieldValue() );
             } else {
                 /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-                QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+                QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->fieldName() );
                 if ( l7 ) {
                     campo->set ( l7->currentText() );
                 } // end if
@@ -771,12 +771,12 @@ void BlForm::recogeValores()
         } // end if
 
         /// Buscamos un BlDoubleSpinBox con nombre coincidente.
-        BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
+        BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->fieldName() );
         if ( l8 )
             campo->set ( QString::number(l8->value()) );
 
         /// Buscamos un QCheckBox con nombre coincidente.
-        QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
+        QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->fieldName() );
         if ( l9 ) {
             switch ( l9->checkState() ) {
                 case Qt::Checked:
@@ -794,7 +794,7 @@ void BlForm::recogeValores()
         } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
-        QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->fieldName() + "_*" ) );
         if ( l10.size() > 0 ) {
             int aux = 0;
             for ( int i = 0; i < l10.size(); ++i ) {
@@ -1095,9 +1095,9 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int BlForm::trataTags ( QString &buff, int tipoEscape )
+int BlForm::parseTags ( QString &buff, int tipoEscape )
 {
-    blDebug ( "BlForm::trataTags", 0 );
+    blDebug ( "BlForm::parseTags", 0 );
 
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
@@ -1260,7 +1260,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
     rx4.setMinimal ( TRUE );
     while ( ( pos = rx4.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
+        QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
         buff.replace ( pos, rx4.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1270,7 +1270,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
     rx1.setMinimal ( TRUE );
     while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ), tipoEscape );
+        QString ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ), tipoEscape );
         buff.replace ( pos, rx1.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1280,7 +1280,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
     rx14.setMinimal ( TRUE );
     while ( ( pos = rx14.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ) );
+        QString ldetalle = parseIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ) );
         buff.replace ( pos, rx14.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1290,7 +1290,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
     rx7.setMinimal ( TRUE );
     while ( ( pos = rx7.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ), tipoEscape );
+        QString ldetalle = parseQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ), tipoEscape );
         buff.replace ( pos, rx7.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1300,12 +1300,12 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
     rx11.setMinimal ( TRUE );
     while ( ( pos = rx11.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap ( 3 ) );
+        QString ldetalle = parseIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap ( 3 ) );
         buff.replace ( pos, rx11.matchedLength(), ldetalle );
         pos = 0;
     } // end while
 
-    blDebug ( "END BlForm::trataTags", 0 );
+    blDebug ( "END BlForm::parseTags", 0 );
     return 1;
 }
 
@@ -1315,9 +1315,9 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
+QString BlForm::parseIfQuery ( const QString &query, const QString &datos )
 {
-    blDebug ( "BlForm::trataIfQuery", 0 );
+    blDebug ( "BlForm::parseIfQuery", 0 );
     QString result = "";
     QString query1 = query;
 
@@ -1331,7 +1331,7 @@ QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
         result = datos;
     } // end while
     delete cur;
-    blDebug ( "END BlForm::trataIfQuery", 0 );
+    blDebug ( "END BlForm::parseIfQuery", 0 );
     return result;
 }
 
@@ -1341,9 +1341,9 @@ QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString BlForm::trataIf ( const QString &query, const QString &datos, const QString &datos1 )
+QString BlForm::parseIf ( const QString &query, const QString &datos, const QString &datos1 )
 {
-    blDebug ( "BlForm::trataIfQuery", 0 );
+    blDebug ( "BlForm::parseIfQuery", 0 );
     QString result = "";
     QString query1 = query;
 
@@ -1362,7 +1362,7 @@ QString BlForm::trataIf ( const QString &query, const QString &datos, const QStr
         } // end if
     } // end while
     delete cur;
-    blDebug ( "END BlForm::trataIf", 0 );
+    blDebug ( "END BlForm::parseIf", 0 );
     return result;
 }
 
@@ -1398,9 +1398,9 @@ QString BlForm::trataIncludeFile ( const QString &file, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QString BlForm::trataQuery ( const QString &query, const QString &datos, int tipoEscape )
+QString BlForm::parseQuery ( const QString &query, const QString &datos, int tipoEscape )
 {
-    blDebug ( "BlForm::trataQuery", 0 );
+    blDebug ( "BlForm::parseQuery", 0 );
     QString result = "";
     QString query1 = query;
 
@@ -1409,7 +1409,7 @@ QString BlForm::trataQuery ( const QString &query, const QString &datos, int tip
 
     /// Cargamos el query y lo recorremos
     result = trataCursor ( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape );
-    blDebug ( "END BlForm::trataQuery", 0 );
+    blDebug ( "END BlForm::parseQuery", 0 );
     return result;
 
 }

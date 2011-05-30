@@ -110,7 +110,7 @@ void ContratosList::borrar() {
 void ContratosList::imprimir()
 {
     blDebug ( "ContratosList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Listado de Contratos" ) );
+    mui_list->printPDF ( _ ( "Listado de Contratos" ) );
     blDebug ( "END ContratosList::on_mui_imprimir_clicked", 0 );
 }
 

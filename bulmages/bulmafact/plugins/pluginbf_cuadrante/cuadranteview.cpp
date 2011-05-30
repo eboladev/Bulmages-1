@@ -82,7 +82,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
 CuadranteView::~CuadranteView()
 {
     blDebug ( "CuadranteView::~CuadranteView", 0 );
-    guardaconfig();
+    saveConfig();
     blDebug ( "END CuadranteView::~CuadranteView", 0 );
 }
 
@@ -137,7 +137,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
     try {
         /// Si el cuadrante ha sido manipulado guardamos las configuracion del mismo.
         if ( mui_cuadrante->rowCount() != 0 )
-            guardaconfig();
+            saveConfig();
 
         mui_cuadrante->clear();
 
@@ -183,7 +183,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
             row++;
             barra.setValue ( row );
         } // end while
-        cargaconfig();
+        loadConfig();
     } catch ( ... ) {
         blDebug ( "Error en la carga del calendario", 2 );
         return;
@@ -446,9 +446,9 @@ void CuadranteView::on_mui_imprimir_clicked()
 /// Guardamos el archivo de configuracion.
 /**
 **/
-void CuadranteView::guardaconfig()
+void CuadranteView::saveConfig()
 {
-    blDebug ( "CuadranteView::guardaconfig", 0 );
+    blDebug ( "CuadranteView::saveConfig", 0 );
     QString aux = "";
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
@@ -467,16 +467,16 @@ void CuadranteView::guardaconfig()
 
         file.close();
     } // end if
-    blDebug ( "END CuadranteView::guardaconfig", 0 );
+    blDebug ( "END CuadranteView::saveConfig", 0 );
 }
 
 
 ///
 /**
 **/
-void CuadranteView::cargaconfig()
+void CuadranteView::loadConfig()
 {
-    blDebug ( "CuadranteView::cargaconfig", 0 );
+    blDebug ( "CuadranteView::loadConfig", 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantecfn.cfn" );
     QString line;
     int error = 1;
@@ -516,6 +516,6 @@ void CuadranteView::cargaconfig()
     }
 
     file.close();
-    blDebug ( "END CuadranteView::cargaconfig", 0 );
+    blDebug ( "END CuadranteView::loadConfig", 0 );
 }
 

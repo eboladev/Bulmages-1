@@ -146,7 +146,7 @@ void ConvReunionList::crear()
 void ConvReunionList::imprimir()
 {
     blDebug ( "ConvReunionList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Reuniones" ) );
+    mui_list->printPDF ( _ ( "Reuniones" ) );
     blDebug ( "END ConvReunionList::imprimir", 0 );
 }
 

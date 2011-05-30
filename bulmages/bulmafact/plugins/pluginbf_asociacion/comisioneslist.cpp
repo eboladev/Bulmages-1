@@ -146,7 +146,7 @@ void ComisionesList::crear()
 void ComisionesList::imprimir()
 {
     blDebug ( "ComisionesList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Actividades" ) );
+    mui_list->printPDF ( _ ( "Actividades" ) );
     blDebug ( "END ComisionesList::imprimir", 0 );
 }
 

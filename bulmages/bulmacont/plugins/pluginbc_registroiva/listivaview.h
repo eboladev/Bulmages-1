@@ -46,8 +46,8 @@ public:
     virtual bool eventFilter ( QObject *obj, QEvent *ev );
     Iva *lineaat ( int );
     Iva *lineaact();
-    void guardaconfig();
-    void cargaconfig();
+    void saveConfig();
+    void loadConfig();
 
 public slots:
     virtual void valueBudgetLineChanged ( int row, int col );

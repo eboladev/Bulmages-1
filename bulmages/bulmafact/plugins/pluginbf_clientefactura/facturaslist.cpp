@@ -276,7 +276,7 @@ void FacturasList::editar ( int row )
 void FacturasList::imprimir()
 {
     blDebug ( "FacturasList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Facturas a clientes" ) );
+    mui_list->printPDF ( _ ( "Facturas a clientes" ) );
     blDebug ( "FacturasList::on_mui_imprimir_clicked", 0 );
 }
 

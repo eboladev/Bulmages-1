@@ -157,7 +157,7 @@ void ActividadesList::imprimir()
 {
     blDebug ( "ActividadesList::imprimir", 0 );
     
-    mui_list->imprimirPDF ( _ ( "Actividades" ) );
+    mui_list->printPDF ( _ ( "Actividades" ) );
     
     blDebug ( "END ActividadesList::imprimir", 0 );
 }

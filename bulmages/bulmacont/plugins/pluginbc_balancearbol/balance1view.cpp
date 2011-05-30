@@ -700,7 +700,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //         fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 //         fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
 //         fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-//         fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cursorapt1->nomcampo ( h ) ) + "\");\n";
+//         fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cursorapt1->fieldName ( h ) ) + "\");\n";
 //         fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 //         fitxersortidatxt += "\n";
 //

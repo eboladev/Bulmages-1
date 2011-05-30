@@ -223,8 +223,8 @@ void Devolucion::pintar()
         html += "<TD>SEL</TD>";
         for ( int z = 0; z < m_ticket->listaLineas()->at ( 0 )->lista()->size(); ++z ) {
             BlDbField *head = m_ticket->listaLineas()->at ( 0 )->lista()->at ( z );
-            if ( head->nomcampo().left ( 2 ) != "id" && head->nomcampo().left ( 3 ) != "num" )
-                html += "<TD>" + head->nomcampo().left ( 4 ) + "</TD>";
+            if ( head->fieldName().left ( 2 ) != "id" && head->fieldName().left ( 3 ) != "num" )
+                html += "<TD>" + head->fieldName().left ( 4 ) + "</TD>";
         } // end for
         html += "</TR>";
 
@@ -236,7 +236,7 @@ void Devolucion::pintar()
             html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->dbValue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->dbValue ( "numlalbaran" ) + "\">-</A></td>";
             for ( int j = 0; j < item->lista()->size(); ++j ) {
                 BlDbField *camp = item->lista()->at ( j );
-                if ( camp->nomcampo().left ( 2 ) != "id" && camp->nomcampo().left ( 3 ) != "num" )
+                if ( camp->fieldName().left ( 2 ) != "id" && camp->fieldName().left ( 3 ) != "num" )
                     html += "<TD>" + camp->valorcampo() + "</TD>";
             } // end for
 
@@ -370,11 +370,11 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
                 QList<BlDbField *> *lista = item->lista();
                 for ( int j = 0; j < lista->size(); ++j ) {
                     BlDbField * camp = lista->at ( j );
-                    if ( camp->nomcampo() != "numlalbaran" ) {
-                        nitem->setDbValue ( camp->nomcampo(), camp->valorcampo() );
+                    if ( camp->fieldName() != "numlalbaran" ) {
+                        nitem->setDbValue ( camp->fieldName(), camp->valorcampo() );
                     } // end if
-                    if ( camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
-                        nitem->setDbValue ( camp->nomcampo(), "-1" );
+                    if ( camp->fieldName() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
+                        nitem->setDbValue ( camp->fieldName(), "-1" );
                     }// end if
                 } // end if
             } // end for

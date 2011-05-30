@@ -325,7 +325,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         rec->setDbValue ( "proporciondfacturap", mapa_dfactura["proporciondfactura"] );
 
         descuentos->setInsert ( TRUE );
-        descuentos->nuevoRegistro();
+        descuentos->newRecord();
 
         rec = descuentos->lista() ->last();
     } // end for
@@ -421,7 +421,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         rec->setDbValue ( "descuentolfacturap", mapa_lfactura["descuentolfactura"] );
 
         lineas->setInsert ( TRUE );
-        lineas->nuevoRegistro();
+        lineas->newRecord();
 
         rec = lineas->lista() ->last();
     } // end for

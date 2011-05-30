@@ -130,7 +130,7 @@ void PresupuestoContableList::editar ( int row )
 void PresupuestoContableList::imprimir()
 {
     blDebug ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Listado de Presupuestos Contables" ) );
+    mui_list->printPDF ( _ ( "Listado de Presupuestos Contables" ) );
     blDebug ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
 }
 

@@ -165,10 +165,10 @@ void TutorView::on_mui_sociocliente_toggled ( bool state )
     blDebug ( "END TutorView::on_mui_sociocliente_toggled", 0 );
 }
 
-QString TutorView::nombrePlantilla ( void )
+QString TutorView::templateName ( void )
 {
-    blDebug ( "TutorView::nombrePlantilla", 0 );
-    blDebug ( "END TutorView::nombrePlantilla", 0 );
+    blDebug ( "TutorView::templateName", 0 );
+    blDebug ( "END TutorView::templateName", 0 );
     
     return QString ( "tutor" );
 }

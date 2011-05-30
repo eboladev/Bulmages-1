@@ -150,7 +150,7 @@ public:
     /// Libera la memoria que se ha ocupado en las consultas.
     void cerrar();
     /// Devuelve el nombre del campo de una columna determinada de la consulta.
-    QString nomcampo ( int );
+    QString fieldName ( int );
     /// Devuelve el n&uacute;mero de columna que tiene una columna referenciada por el nombre.
     int numcampo ( const QString & );
     /// Devuelve el n&uacute;mero total de columnas que tiene la consulta.

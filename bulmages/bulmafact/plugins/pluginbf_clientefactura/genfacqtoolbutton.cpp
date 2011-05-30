@@ -196,7 +196,7 @@ void GenFacQToolButton::generarFactura()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );
@@ -221,7 +221,7 @@ void GenFacQToolButton::generarFactura()
                 linea->setDbValue ( "conceptdfactura", linea1->dbValue ( "conceptdalbaran" ) );
                 linea->setDbValue ( "proporciondfactura", linea1->dbValue ( "proporciondalbaran" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                bud->getlistadescuentos() ->nuevoRegistro();
+                bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
 
@@ -328,7 +328,7 @@ void GenFacQToolButton::generarFactura1()
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclpedidocliente" ) );
                 linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlpedidocliente" ) );
@@ -351,7 +351,7 @@ void GenFacQToolButton::generarFactura1()
                 linea->setDbValue ( "conceptdfactura", linea1->dbValue ( "conceptdpedidocliente" ) );
                 linea->setDbValue ( "proporciondfactura", linea1->dbValue ( "proporciondpedidocliente" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                bud->getlistadescuentos() ->nuevoRegistro();
+                bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
         /// Pintamos el pedido y lo presentamos.
@@ -460,7 +460,7 @@ void GenFacQToolButton::generarFactura2()
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclpresupuesto" ) );
                 linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlpresupuesto" ) );
@@ -483,7 +483,7 @@ void GenFacQToolButton::generarFactura2()
                 linea->setDbValue ( "conceptdfactura", linea1->dbValue ( "conceptdpresupuesto" ) );
                 linea->setDbValue ( "proporciondfactura", linea1->dbValue ( "proporciondpresupuesto" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                bud->getlistadescuentos() ->nuevoRegistro();
+                bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
         /// Pintamos el pedido y lo presentamos.
@@ -633,7 +633,7 @@ void AgFacQToolButton::generarFactura()
             linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
             linea1->setDbValue ( "ivalfactura", linea->dbValue ( "ivalalbaran" ) );
             bud->getlistalineas() ->setProcesarCambios ( TRUE );
-            bud->getlistalineas() ->nuevoRegistro();
+            bud->getlistalineas() ->newRecord();
         } // end if
     } // end for
     bud->calculaypintatotales();

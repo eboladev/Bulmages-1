@@ -332,7 +332,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     blDebug ( "pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "codigo" || g_nomcampo == "codigo1" ) {
+    if ( g_fieldName == "codigo" || g_fieldName == "codigo1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditCodigoCuenta" );
         editor->setMainCompany ( ( BcCompany * ) bl->m_subform->mainCompany() );
@@ -384,7 +384,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbc_cuenta::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "codigo" ) {
+    if ( sub->m_campoactual->fieldName() == "codigo" ) {
    QString query = "SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('" + sub->m_campoactual->text() + "%')";
 // blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );

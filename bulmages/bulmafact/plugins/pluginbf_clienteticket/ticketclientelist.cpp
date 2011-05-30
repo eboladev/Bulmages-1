@@ -344,7 +344,7 @@ void TicketClienteList::borrar()
 void TicketClienteList::imprimir()
 {
     blDebug ( "TicketClienteList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Ticketes a clientes" ) );
+    mui_list->printPDF ( _ ( "Ticketes a clientes" ) );
     blDebug ( "END TicketClienteList::imprimir", 0 );
 }
 

@@ -306,7 +306,7 @@ void BcAsientoListView::presentar()
 void BcAsientoListView::imprimir()
 {
     blDebug ( "BcAsientoListView::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Asientos" ) );
+    mui_list->printPDF ( _ ( "Asientos" ) );
     blDebug ( "END BcAsientoListView::on_mui_imprimir_clicked", 0 );
 }
 

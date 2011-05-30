@@ -254,7 +254,7 @@ void PedidosClienteList::editar ( int row )
 void PedidosClienteList::imprimir()
 {
     blDebug ( "PedidosClienteList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Pedidos de clientes" ) );
+    mui_list->printPDF ( _ ( "Pedidos de clientes" ) );
     blDebug ( "END PedidosClienteList::imprimir", 0 );
 }
 

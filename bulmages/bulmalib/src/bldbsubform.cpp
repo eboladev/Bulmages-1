@@ -171,7 +171,7 @@ para la presentacion de valores corregidos a un estandar.
 **/
 int BlDbSubFormField::set ( QString val )
 {
-    blDebug ( "BlDbSubFormField::set", 0, nomcampo() + " = " + val );
+    blDebug ( "BlDbSubFormField::set", 0, fieldName() + " = " + val );
 
     BlDbField::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
@@ -223,14 +223,14 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
         QString val = ot->valorcampo();
 
         if ( this->dbFieldType() == BlDbField::DbNumeric || this->dbFieldType() == BlDbField::DbInt ) {
-            blDebug ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
+            blDebug ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
             double db1 = this->valorcampo().toDouble();
             double db2 = val.toDouble();
             return ( db1 < db2 );
         } // end if
 
         if ( this->dbFieldType() == BlDbField::DbDate ) {
-            blDebug ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
+            blDebug ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
 		QDate fech = blNormalizeDate ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
 		QDate fech1 = blNormalizeDate ( val );
@@ -239,7 +239,7 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
         } // end if
 
         if ( this->dbFieldType() == BlDbField::DbVarChar ) {
-            blDebug ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
+            blDebug ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
             return ( this->valorcampo() < val );
         } // end if
         blDebug ( "tipo desconocido", 0 );

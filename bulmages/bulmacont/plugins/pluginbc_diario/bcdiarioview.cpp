@@ -303,7 +303,7 @@ void BcDiarioView::presentar()
 void BcDiarioView::on_mui_imprimir_clicked()
 {
     blDebug ( "BcDiarioView::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( "diario" );
+    mui_list->printPDF ( "diario" );
     blDebug ( "END BcDiarioView::on_mui_imprimir_clicked", 0 );
 }
 

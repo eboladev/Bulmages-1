@@ -123,10 +123,10 @@ ActividadView::~ActividadView()
     blDebug ( "END ActividadView::~ActividadView", 0 );
 }
 
-QString ActividadView::nombrePlantilla ( void )
+QString ActividadView::templateName ( void )
 {
-    blDebug ( "ActividadView::nombrePlantilla", 0 );
-    blDebug ( "END ActividadView::nombrePlantilla", 0 );
+    blDebug ( "ActividadView::templateName", 0 );
+    blDebug ( "END ActividadView::templateName", 0 );
     
     return QString ( "actividad" );
 }

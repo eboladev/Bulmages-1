@@ -104,7 +104,7 @@ void PluginBl_SubForm2PDF::imprimir()
 
     BlSubForm * subf = ( BlSubForm * ) parent();
 
-    subf->imprimirPDF ( "" );
+    subf->printPDF ( "" );
     blDebug ( "END PluginBl_SubForm2PDF::sacaods", 0 );
 }
 
