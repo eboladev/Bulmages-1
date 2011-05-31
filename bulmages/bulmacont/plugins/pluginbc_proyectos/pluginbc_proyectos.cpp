@@ -23,63 +23,10 @@
 #include <QToolButton>
 
 #include "pluginbc_proyectos.h"
-#include "proyectos.h"
 #include "blformlist.h"
 #include "listproyectosview.h"
 
-
-///
-/**
-**/
-PluginBc_Proyectos::PluginBc_Proyectos()
-{
-    blDebug ( "PluginBc_Proyectos::PluginBc_Proyectos", 0 );
-    blDebug ( "END PluginBc_Proyectos::PluginBc_Proyectos", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Proyectos::~PluginBc_Proyectos()
-{
-    blDebug ( "PluginBc_Proyectos::~PluginBc_Proyectos", 0 );
-    blDebug ( "END PluginBc_Proyectos::~PluginBc_Proyectos", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_Proyectos::elslot()
-{
-    blDebug ( "PluginBc_Proyectos::elslot", 0 );
-    /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView ( m_bulmacont->company(), 0, 0, BL_EDIT_MODE );
-    l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
-//    m_bulmacont->company()->insertWindow(l);
-    m_bulmacont->workspace() ->addSubWindow ( l );
-    l->show();
-    blDebug ( "END PluginBc_Proyectos::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_Proyectos::inicializa ( BcBulmaCont *bges )
-{
-    /// Creamos el men&uacute;.
-    m_bulmacont = bges;
-    QAction *accion = new QAction ( _ ( "&Proyectos" ), 0 );
-    accion->setStatusTip ( _ ( "Proyectos" ) );
-    accion->setWhatsThis ( _ ( "Proyectos" ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuMaestro->insertAction ( bges->actionPaises, accion );
-}
-
+BcBulmaCont *g_bges = NULL;
 
 ///
 /**
@@ -97,8 +44,26 @@ int entryPoint ( BcBulmaCont *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_proyectos", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBc_Proyectos *plug = new PluginBc_Proyectos();
-    plug->inicializa ( bges );
+    g_bges = bges;
+    BlAction *accionA = new BlAction ( _ ( "&Proyectos" ), 0 );
+    accionA->setStatusTip ( _ ( "Proyectos" ) );
+    accionA->setWhatsThis ( _ ( "Proyectos" ) );
+    accionA->setObjectName("mui_actionProyectos");
+    bges->menuMaestro->insertAction ( bges->actionPaises, accionA );
+
+    return 0;
+}
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionProyectos") {
+        /// Agregamos el subformulario de proyectos.
+        ListProyectosView *l = new ListProyectosView ( g_bges->company(), 0, 0, BL_EDIT_MODE );
+        l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
+        //m_bulmacont->company()->insertWindow(l);
+        g_bges->workspace() ->addSubWindow ( l );
+        l->show();    
+    } // end if
     return 0;
 }
 
