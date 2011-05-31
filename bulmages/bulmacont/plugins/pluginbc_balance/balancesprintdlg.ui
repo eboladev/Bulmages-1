@@ -12,7 +12,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Impresion de Balances</string>
+   <string>Impresion de balances</string>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -59,7 +59,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2" >
        <property name="text" >
-        <string>Fecha Inicial</string>
+        <string>Fecha inicial</string>
        </property>
        <property name="wordWrap" >
         <bool>false</bool>
@@ -72,7 +72,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2_2" >
        <property name="text" >
-        <string>Fecha Final</string>
+        <string>Fecha final</string>
        </property>
        <property name="wordWrap" >
         <bool>false</bool>

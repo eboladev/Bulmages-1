@@ -16,12 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: balanceprintview.cpp:56 balanceview.cpp:68
-msgid "Cuenta Inicial:"
+#: balanceprintview.cpp:56 balanceview.cpp:68 ui_balancetreebase.h:407 ui_balancebase.h:439
+
+msgid "Cuenta inicial:"
 msgstr ""
 
-#: balanceprintview.cpp:64 balanceview.cpp:77
-msgid "Cuenta Final:"
+#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancetreebase.h:404 ui_balancebase.h:441
+msgid "Cuenta final:"
 msgstr ""
 
 #: balancesubform.cpp:36
@@ -149,7 +150,7 @@ msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
 #: ui_balancetreebase.h:382
-msgid "Balance jerarquico de Cuentas"
+msgid "Balance jerarquico de cuentas"
 msgstr ""
 
 #: ui_balancetreebase.h:384 ui_balancetreebase.h:387
@@ -161,9 +162,6 @@ msgstr ""
 msgid "Imprimir albaran"
 msgstr ""
 
-#: ui_balancetreebase.h:404 ui_balancebase.h:441
-msgid "Cuenta final:"
-msgstr ""
 
 #: ui_balancetreebase.h:405 ui_balancebase.h:440
 msgid "Fecha final:"
@@ -171,10 +169,6 @@ msgstr ""
 
 #: ui_balancetreebase.h:406 ui_balancebase.h:438
 msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_balancetreebase.h:407 ui_balancebase.h:439
-msgid "Cuenta inicial:"
 msgstr ""
 
 #: ui_balancetreebase.h:408 ui_balancebase.h:442
@@ -202,7 +196,7 @@ msgid "Saldo:"
 msgstr ""
 
 #: ui_balanceprintbase.h:312
-msgid "Impresion del Balance de Sumas y Saldos"
+msgid "Impresion del balance de sumas y saldos"
 msgstr ""
 
 #: ui_balanceprintbase.h:316
@@ -210,23 +204,23 @@ msgid "Datos del listado:"
 msgstr ""
 
 #: ui_balanceprintbase.h:317
-msgid "Codigo Inicial\n"
+msgid "Codigo inicial\n"
 msgstr ""
 
 #: ui_balanceprintbase.h:319 ui_balancesprintdlg.h:199
-msgid "Fecha Inicial"
+msgid "Fecha inicial"
 msgstr ""
 
 #: ui_balanceprintbase.h:320
-msgid "Codigo Final"
+msgid "Codigo final"
 msgstr ""
 
 #: ui_balanceprintbase.h:321 ui_balancesprintdlg.h:200
-msgid "Fecha Final"
+msgid "Fecha final"
 msgstr ""
 
 #: ui_balanceprintbase.h:322
-msgid "Nivel de Cuentas"
+msgid "Nivel de cuentas"
 msgstr ""
 
 #: ui_balanceprintbase.h:323

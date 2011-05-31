@@ -53,7 +53,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     blDebug ( "BalancePrintView::BalancePrintView", 0 );
     setupUi ( this );
     m_codigoinicial->setMainCompany ( emp );
-    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
     m_codigoinicial->setTableName ( "cuenta" );
     m_codigoinicial->setFieldId("idcuenta");
     m_codigoinicial->m_valores["descripcion"] = "";
@@ -61,7 +61,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     m_codigoinicial->hideLabel();
 
     m_codigofinal->setMainCompany ( emp );
-    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setLabel ( _ ( "Cuenta final:" ) );
     m_codigofinal->setTableName ( "cuenta" );
     m_codigofinal->setFieldId("idcuenta");
     m_codigofinal->m_valores["descripcion"] = "";

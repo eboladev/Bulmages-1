@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Impresion del Balance de Sumas y Saldos</string>
+   <string>Impresion del balance de sumas y saldos</string>
   </property>
   <layout class="QVBoxLayout">
    <property name="spacing">
@@ -182,7 +182,7 @@
           <item>
            <widget class="QLabel" name="textLabel1">
             <property name="text">
-             <string>Codigo Inicial
+             <string>Codigo inicial
 </string>
             </property>
            </widget>
@@ -203,7 +203,7 @@
           <item>
            <widget class="QLabel" name="textLabel1_3">
             <property name="text">
-             <string>Fecha Inicial</string>
+             <string>Fecha inicial</string>
             </property>
            </widget>
           </item>
@@ -233,7 +233,7 @@
           <item>
            <widget class="QLabel" name="textLabel1_2">
             <property name="text">
-             <string>Codigo Final</string>
+             <string>Codigo final</string>
             </property>
            </widget>
           </item>
@@ -253,7 +253,7 @@
           <item>
            <widget class="QLabel" name="textLabel1_2_2">
             <property name="text">
-             <string>Fecha Final</string>
+             <string>Fecha final</string>
             </property>
            </widget>
           </item>
