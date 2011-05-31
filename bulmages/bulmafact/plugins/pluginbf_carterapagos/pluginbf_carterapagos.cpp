@@ -68,7 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "carteraPagos") {
+    if (accion->objectName() == "mui_actionCarteraPagos") {
         CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * )  g_bges->company() );
         g_bges->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
         //m_bulmafact->workspace() ->addSubWindow ( vehiculoview );

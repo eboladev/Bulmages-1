@@ -71,7 +71,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "carteraCobros") {
+    if (accion->objectName() == "mui_actionCarteraCobros") {
         CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) g_bges->company() );
         g_bges->company()->m_pWorkspace->addSubWindow ( carteracobrosview );
         carteracobrosview->show();

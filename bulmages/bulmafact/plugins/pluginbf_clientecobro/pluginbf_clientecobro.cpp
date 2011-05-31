@@ -68,7 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
-        accionB->setObjectName("mui_actionNuevoCobroCliente");
+        accionB->setObjectName("mui_actionCobroClienteNuevo");
 
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
@@ -85,7 +85,7 @@ int BlAction_triggered(BlAction *accion) {
         }// end if
     } // end if
 
-    if (accion->objectName() == "mui_actionNuevoCobroCliente") {
+    if (accion->objectName() == "mui_actionCobroClienteNuevo") {
         CobroView * bud = new CobroView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();                 

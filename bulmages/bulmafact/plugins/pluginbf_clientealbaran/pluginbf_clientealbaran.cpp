@@ -69,7 +69,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
-        accionB->setObjectName("mui_actionNuevoAlbaranCliente");
+        accionB->setObjectName("mui_actionAlbaranClienteNuevo");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
 
@@ -88,7 +88,7 @@ int BlAction_triggered(BlAction *accion) {
         }// end if
     } // end if
 
-    if (accion->objectName() == "mui_actionNuevoAlbaranCliente") {                
+    if (accion->objectName() == "mui_actionAlbaranClienteNuevo") {                
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();

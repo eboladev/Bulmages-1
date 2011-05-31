@@ -67,7 +67,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo presupuesto a cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo presupuesto a cliente" ) );
-        accionB->setObjectName("mui_actionClienteNuevoPresupuesto");
+        accionB->setObjectName("mui_actionClientePresupuestoNuevo");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
     } // end if
@@ -82,7 +82,7 @@ int BlAction_triggered(BlAction *accion) {
             g_presupuestosList->show();
         } // end if
     } // end if
-    if (accion->objectName() == "mui_actionClienteNuevoPresupuesto") {
+    if (accion->objectName() == "mui_actionClientePresupuestoNuevo") {
         PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();

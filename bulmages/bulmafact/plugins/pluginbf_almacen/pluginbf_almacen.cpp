@@ -49,13 +49,13 @@ int entryPoint ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         g_bges = bges;
-        BlAction *accion = new BlAction ( _ ( "&Almacenes" ), 0 );
-        accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
-        accion->setStatusTip ( _ ( "Almacenes" ) );
-        accion->setWhatsThis ( _ ( "Almacenes" ) );
-        accion->setObjectName("mui_actionAlmacen");
-        pPluginMenu->addAction ( accion );
-        bges->Listados->addAction ( accion );
+        BlAction *accionA = new BlAction ( _ ( "&Almacenes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Almacenes" ) );
+        accionA->setWhatsThis ( _ ( "Almacenes" ) );
+        accionA->setObjectName("mui_actionAlmacen");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
         return 0;
     }
 }

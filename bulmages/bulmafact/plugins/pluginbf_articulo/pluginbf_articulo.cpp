@@ -120,7 +120,7 @@ int BlAction_triggered(BlAction *accion) {
         pag->show();
         blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticulosTipo", 0 );   
     } // end if
-    if (accion->objectName() == "") {
+    if (accion->objectName() == "mui_actionFamilias") {
         blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionFamilias", 0 );
         FamiliasView *pag = new FamiliasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
         g_bges->company()->m_pWorkspace->addSubWindow ( pag );

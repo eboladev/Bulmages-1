@@ -67,7 +67,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo pedido de cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo pedido de cliente" ) );
-        accionB->setObjectName("mui_actionClienteNuevoPedido");
+        accionB->setObjectName("mui_actionClientePedidoNuevo");
 
         pPluginMenu->addAction ( accionB );
 
@@ -86,7 +86,7 @@ int BlAction_triggered(BlAction *accion) {
         } // end if        
     } // end if
     
-    if (accion->objectName() == "mui_actionClienteNuevoPedido") {
+    if (accion->objectName() == "mui_actionClientePedidoNuevo") {
         PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
