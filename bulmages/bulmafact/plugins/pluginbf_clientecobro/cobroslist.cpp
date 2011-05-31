@@ -92,7 +92,7 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     
     presentar();
     mdb_idcobro = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -121,7 +121,7 @@ void CobrosList::presentar()
     blDebug ( "CobrosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
 	QString query = "SELECT * FROM cobro LEFT JOIN cliente ON cliente.idcliente = cobro.idcliente LEFT JOIN forma_pago ON cobro.idforma_pago = forma_pago.idforma_pago LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador WHERE 1 = 1 " + generaFiltro();
-        mui_list->cargar ( query );
+        mui_list->load ( query );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantcobro" );
         m_total->setText ( total.toQString() );
@@ -206,7 +206,7 @@ void CobrosList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void CobrosList::borrar()
+void CobrosList::remove()
 {
     blDebug ( "CobrosList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -216,9 +216,9 @@ void CobrosList::borrar()
     } // end if
     try {
         mdb_idcobro = mui_list->dbValue ( "idcobro" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             CobroView * cv = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idcobro ) )
+            if ( cv->load ( mdb_idcobro ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -240,9 +240,9 @@ void CobrosList::editar ( int )
     blDebug ( "CobrosList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idcobro = mui_list->dbValue ( "idcobro" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idcobro ) ) {
+            if ( bud->load ( mdb_idcobro ) ) {
                 delete bud;
                 return;
             } // end if

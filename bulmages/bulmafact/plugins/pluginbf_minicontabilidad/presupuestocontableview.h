@@ -50,8 +50,8 @@ public:
     PresupuestoContableView ( BfCompany *, QWidget * );
     ~PresupuestoContableView();
     virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     void inicializar();
 
 };

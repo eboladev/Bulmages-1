@@ -70,7 +70,7 @@ ListLinFacturaView::ListLinFacturaView ( QWidget *parent ) : BfSubForm ( parent 
 /**
 \param idfactura
 **/
-void ListLinFacturaView::cargar ( QString idfactura )
+void ListLinFacturaView::load ( QString idfactura )
 {
     blDebug ( "ListLinFacturaView::cargar", 0 );
     mdb_idfactura = idfactura;
@@ -78,7 +78,7 @@ void ListLinFacturaView::cargar ( QString idfactura )
     int res = g_plugins->lanza ( "ListLinFacturaView_cargar", this );
     if ( res != 0 )
         return;
-    BlSubForm::cargar ( "SELECT *, (pvplfactura * cantlfactura)::NUMERIC(12,2) AS totallfactura FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura + " ORDER BY ordenlfactura" );
+    BlSubForm::load ( "SELECT *, (pvplfactura * cantlfactura)::NUMERIC(12,2) AS totallfactura FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura + " ORDER BY ordenlfactura" );
     blDebug ( "END ListLinFacturaView::cargar", 0 );
 }
 

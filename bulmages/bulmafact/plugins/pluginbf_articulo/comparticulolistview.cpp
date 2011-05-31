@@ -125,11 +125,11 @@ ListCompArticuloView::~ListCompArticuloView()
 /**
 \param idarticulo
 **/
-void ListCompArticuloView::cargar ( QString idarticulo )
+void ListCompArticuloView::load ( QString idarticulo )
 {
     blDebug ( "ListCompActiculo::cargar", 0 );
     mdb_idarticulo = idarticulo;
-    BlSubForm::cargar ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
+    BlSubForm::load ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
     blDebug ( "END ListCompActiculo::cargar", 0 );
 }
 

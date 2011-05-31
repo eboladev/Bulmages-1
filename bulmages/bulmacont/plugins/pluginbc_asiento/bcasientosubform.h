@@ -38,7 +38,7 @@ class PLUGINBC_ASIENTO_EXPORT BcAsientoSubForm : public BcSubForm
 public:
     BcAsientoSubForm ( QWidget *parent = 0, const char *name = 0 );
     ~BcAsientoSubForm();
-    virtual void cargar ( QString );
+    virtual void load ( QString );
     BlFixed totaldebe ( QString );
     BlFixed totalhaber ( QString );
 

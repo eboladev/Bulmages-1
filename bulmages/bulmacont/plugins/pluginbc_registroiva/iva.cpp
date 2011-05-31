@@ -118,7 +118,7 @@ void Iva::vaciaIva()
 /**
 \return
 **/
-int Iva::borrar()
+int Iva::remove()
 {
     blDebug ( "Iva::borrar", 0 );
     if ( dbValue ( "idiva" ) != "" ) {

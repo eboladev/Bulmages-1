@@ -49,7 +49,7 @@ public:
     virtual ~ListCuotasPorAlumnoSubForm() {};
 
 public slots:
-    virtual void cargar();
+    virtual void load();
 };
 
 

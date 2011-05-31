@@ -88,7 +88,7 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
         boton_asiento();
     } // end if
     if ( opcion == del ) {
-        borrar ( row );
+        remove ( row );
     } // end if
     if ( opcion == ajust ) {
         resizeColumnsToContents();

@@ -52,8 +52,8 @@ public:
     ~ApunteContableView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardar();
-    virtual int cargar(QString );
+    virtual int save();
+    virtual int load(QString );
 
 };
 

@@ -310,22 +310,22 @@ void BlForm::generaCampo ( const QString &objname, const QString &textname, cons
 ///
 /**
 **/
-void BlForm::setModoConsulta()
+void BlForm::setSelectMode()
 {
-    blDebug ( "BlForm::setModoConsulta", 0 );
+    blDebug ( "BlForm::setSelectMode", 0 );
     m_modo = BL_SELECT_MODE;
-    blDebug ( "END BlForm::setModoConsulta", 0 );
+    blDebug ( "END BlForm::setSelectMode", 0 );
 }
 
 
 ///
 /**
 **/
-void BlForm::setModoEdicion()
+void BlForm::setEditMode()
 {
-    blDebug ( "BlForm::setModoEdicion", 0 );
+    blDebug ( "BlForm::setEditMode", 0 );
     m_modo = BL_EDIT_MODE;
-    blDebug ( "END BlForm::setModoEdicion", 0 );
+    blDebug ( "END BlForm::setEditMode", 0 );
 }
 
 
@@ -333,10 +333,10 @@ void BlForm::setModoEdicion()
 /**
 \return
 **/
-bool BlForm::modoEdicion()
+bool BlForm::editMode()
 {
-    blDebug ( "BlForm::modoEdicion", 0 );
-    blDebug ( "END BlForm::modoEdicion", 0 );
+    blDebug ( "BlForm::editMode", 0 );
+    blDebug ( "END BlForm::editMode", 0 );
     return m_modo == BL_EDIT_MODE;
 }
 
@@ -345,10 +345,10 @@ bool BlForm::modoEdicion()
 /**
 \return
 **/
-bool BlForm::modoConsulta()
+bool BlForm::selectMode()
 {
-    blDebug ( "BlForm::modoConsulta", 0 );
-    blDebug ( "END BlForm::modoConsulta", 0 );
+    blDebug ( "BlForm::selectMode", 0 );
+    blDebug ( "END BlForm::selectMode", 0 );
     return m_modo == BL_SELECT_MODE;
 }
 
@@ -370,7 +370,7 @@ void BlForm::on_mui_cancelar_clicked()
 void BlForm::on_mui_guardar_clicked()
 {
     blDebug ( "BlForm::on_mui_guardar_clicked", 0 );
-    guardar();
+    save();
     blDebug ( "END BlForm::on_mui_guardar_clicked", 0 );
 }
 
@@ -382,7 +382,7 @@ void BlForm::on_mui_aceptar_clicked()
 {
     blDebug ( "BlForm::on_mui_aceptar_clicked", 0 );
     try {
-        if ( guardar() ) {
+        if ( save() ) {
             throw - 1;
         } // end if
         close();
@@ -427,7 +427,7 @@ void BlForm::on_mui_borrar_clicked()
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
     if ( val == QMessageBox::Yes ) {
-        if ( !borrar() ) {
+        if ( !remove() ) {
             dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
             close();
@@ -459,7 +459,7 @@ void BlForm::closeEvent ( QCloseEvent *e )
                                              _ ( "Desea guardar los cambios?" ),
                                              _ ( "&Si" ), _ ( "&No" ), _ ( "&Cancelar" ), 0, 2 );
             if ( val == 0 ) {
-                guardar();
+                save();
             } // end if
             if ( val == 2 ) {
                 e->ignore();
@@ -818,11 +818,11 @@ void BlForm::recogeValores()
 \param id
 \return
 **/
-int BlForm::cargar ( QString id, bool paint )
+int BlForm::load ( QString id, bool paint )
 {
     blDebug ( "BlForm::cargar", 0, id );
     try {
-        if ( BlDbRecord::cargar ( id ) ) {
+        if ( BlDbRecord::load ( id ) ) {
             throw - 1;
         } // end if
         /// Lanzamos los plugins.
@@ -868,11 +868,11 @@ int BlForm::cargar ( QString id, bool paint )
 /// Guarda los datos de la ficha en la base de datos.
 /**
   Este metodo guarda los contenidos de la Ficha (siempre que esta haya sido inicializada).
-  Luego llama a plugins y a guardarPost por si se quieren hacer acciones adicionales de guardado.
+  Luego llama a plugins y a afterSave por si se quieren hacer acciones adicionales de guardado.
   Tras guardar todos los elementos hace una carga.
 \return 0 Si no hay problemas. -1 Si ha habido problemas.
 **/
-int BlForm::guardar()
+int BlForm::save()
 {
     blDebug ( "BlForm::guardar", 0 );
 
@@ -881,7 +881,7 @@ int BlForm::guardar()
         recogeValores();
         mainCompany() ->begin();
 
-        guardarPre();
+        beforeSave();
 
         dbSave ( id );
         setDbValue ( m_campoid, id );
@@ -889,12 +889,12 @@ int BlForm::guardar()
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "BlForm_guardar_Post", this ) ) return 0;
 
-        guardarPost();
+        afterSave();
 
 	mainCompany() ->commit();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
-        cargar ( id );
+        load ( id );
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
         if (g_confpr->value(CONF_REFRESH_LIST) == "TRUE") {
@@ -930,10 +930,10 @@ int BlForm::guardar()
 }
 
 
-int BlForm::borrarPre()
+int BlForm::beforeDelete()
 {
-    blDebug ( "BlForm::borrarPre", 0 );
-    blDebug ( "END BlForm::borrarPre", 0 );
+    blDebug ( "BlForm::beforeDelete", 0 );
+    blDebug ( "END BlForm::beforeDelete", 0 );
     return 0;
 }
 
@@ -944,15 +944,15 @@ int BlForm::borrarPre()
 /**
 \return
 **/
-int BlForm::borrar()
+int BlForm::remove()
 {
     blDebug ( "BlForm::borrar", 0 );
     try {
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "BlForm_borrar", this ) ) return 0;
-        borrarPre();
+        beforeDelete();
         int err;
-        err =  BlDbRecord::borrar();
+        err =  BlDbRecord::remove();
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
         if (g_confpr->value(CONF_REFRESH_LIST) == "TRUE") {
@@ -977,10 +977,10 @@ int BlForm::borrar()
 /**
 \return
 **/
-int BlForm::guardarPre()
+int BlForm::beforeSave()
 {
-    blDebug ( "BlForm::guardarPre", 0 );
-    blDebug ( "END BlForm::guardarPre", 0 );
+    blDebug ( "BlForm::beforeSave", 0 );
+    blDebug ( "END BlForm::beforeSave", 0 );
     return 0;
 }
 
@@ -989,10 +989,10 @@ int BlForm::guardarPre()
 /**
 \return
 **/
-int BlForm::guardarPost()
+int BlForm::afterSave()
 {
-    blDebug ( "BlForm::guardarPost", 0 );
-    blDebug ( "END BlForm::guardarPost", 0 );
+    blDebug ( "BlForm::afterSave", 0 );
+    blDebug ( "END BlForm::afterSave", 0 );
     return 0;
 }
 
@@ -1250,7 +1250,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
     rx9.setMinimal ( TRUE );
     while ( ( pos = rx9.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataExists ( rx9.cap ( 1 ), rx9.cap ( 2 ) );
+        QString ldetalle = parseExists ( rx9.cap ( 1 ), rx9.cap ( 2 ) );
         buff.replace ( pos, rx9.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1462,9 +1462,9 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString BlForm::trataExists ( const QString &query, const QString &datos )
+QString BlForm::parseExists ( const QString &query, const QString &datos )
 {
-    blDebug ( "BlForm::trataExists", 0 );
+    blDebug ( "BlForm::parseExists", 0 );
 
     QString result = "";
     QString query1 = query;
@@ -1475,7 +1475,7 @@ QString BlForm::trataExists ( const QString &query, const QString &datos )
     QFile file ( query1 );
     if ( file.exists() )
         result = datos;
-    blDebug ( "END BlForm::trataExists", 0 );
+    blDebug ( "END BlForm::parseExists", 0 );
 
     return result;
 }

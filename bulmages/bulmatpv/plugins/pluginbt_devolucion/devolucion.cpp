@@ -25,7 +25,7 @@ Devolucion::~Devolucion()
 
 void Devolucion::on_mui_devolver_clicked()
 {
-    m_ticket->guardar();
+    m_ticket->save();
     m_ticket->imprimir();
     ( ( QDialog * ) parent() )->accept();
 }
@@ -172,7 +172,7 @@ void Devolucion::on_mui_vale_clicked()
     pr.cutPaperAndFeed ( TRUE, 10 );
     pr.print();
 
-    m_ticket->guardar();
+    m_ticket->save();
     m_ticket->imprimir();
     ( ( QDialog * ) parent() )->accept();
 }
@@ -189,7 +189,7 @@ void Devolucion::on_mui_ref_returnPressed()
     BlDbRecordSet *curs = mainCompany()->loadQuery ( query1 );
     if ( !curs->eof() ) {
         m_ticket = new BtTicket ( mainCompany(), NULL );
-        m_ticket->cargar ( curs->value( "idalbaran" ) );
+        m_ticket->load ( curs->value( "idalbaran" ) );
     }
     delete curs;
     m_totalin = "";

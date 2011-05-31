@@ -124,12 +124,12 @@ PresupuestoContableView::~PresupuestoContableView()
 /**
 \return
 **/
-int PresupuestoContableView::borrarPre()
+int PresupuestoContableView::beforeDelete()
 {
     blDebug ( "PresupuestoContableView::borrar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "PresupuestoContableView_borrarPre", this );
-    mui_list->borrar();
+    g_plugins->lanza ( "PresupuestoContableView_beforeDelete", this );
+    mui_list->remove();
     blDebug ( "END PresupuestoContableView::borrar", 0 );
     return 0;
 }
@@ -145,7 +145,7 @@ int PresupuestoContableView::cargarPost ( QString idbudget )
     blDebug ( "PresupuestoContableView::cargarPost", 0 );
 
     QString query = "SELECT * FROM ( SELECT * FROM partida WHERE idpartida NOT IN (SELECT DISTINCT COALESCE(padre,0) FROM partida) ) AS t1 LEFT JOIN (SELECT idlpresupuestocontable, coalesce(saldolpresupuestocontable, 0) AS saldolpresupuestocontable, idpartida, idpresupuestocontable, conceptolpresupuestocontable FROM lpresupuestocontable) AS t2 ON t2.idpartida = t1.idpartida AND t2.idpresupuestocontable = "+idbudget;
-    mui_list->cargar ( query );
+    mui_list->load ( query );
 
     blDebug ( "END PresupuestoContableView::cargar", 0 );
     return 0;
@@ -156,15 +156,15 @@ int PresupuestoContableView::cargarPost ( QString idbudget )
 /**
 \return
 **/
-int PresupuestoContableView::guardarPost()
+int PresupuestoContableView::afterSave()
 {
-    blDebug ( "PresupuestoContableView::guardarPost", 0 );
+    blDebug ( "PresupuestoContableView::afterSave", 0 );
 
     mui_list->setColumnValue ( "idpresupuestocontable", dbValue ( "idpresupuestocontable" ) );
 
-    mui_list->guardar();
+    mui_list->save();
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "PresupuestoContableView_guardarPost_Post", this );
+    g_plugins->lanza ( "PresupuestoContableView_afterSave_Post", this );
 
     blDebug ( "END PresupuestoContableView::guardar", 0 );
     return 0;

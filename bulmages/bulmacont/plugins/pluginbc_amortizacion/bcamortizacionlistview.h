@@ -48,7 +48,7 @@ public:
     void inicializaTabla();
     void editar ( int );
     virtual void crear();
-    virtual void borrar();
+    virtual void remove();
 
 signals:
     void selected ( QString );

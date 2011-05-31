@@ -52,8 +52,8 @@ public:
 public:
     virtual void pintarPost();
     virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
 
 public slots:
     virtual void on_mui_codigocompletoarticulo_editingFinished();

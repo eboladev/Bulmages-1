@@ -31,7 +31,7 @@
 extern "C" PLUGINBF_TARIFA_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_TARIFA_EXPORT int ClienteView_ClienteView ( ClienteView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_load ( ArticuloView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_borrar ( ArticuloView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );

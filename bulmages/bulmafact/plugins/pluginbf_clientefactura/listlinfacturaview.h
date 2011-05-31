@@ -42,7 +42,7 @@ public:
     ~ListLinFacturaView() {};
 
 public slots:
-    virtual void cargar ( QString idfactura );
+    virtual void load ( QString idfactura );
 };
 
 #endif

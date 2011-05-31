@@ -115,7 +115,7 @@ ZView::~ZView()
 **/
 int ZView::cargarPost ( QString idz )
 {
-    mui_list->cargar ( "SELECT * FROM albaran NATURAL LEFT JOIN forma_pago WHERE idz=" + idz );
+    mui_list->load ( "SELECT * FROM albaran NATURAL LEFT JOIN forma_pago WHERE idz=" + idz );
     return 0;
 }
 
@@ -144,7 +144,7 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
     if ( g_plugins->lanza ( "SNewAlbaranClienteView", mainCompany() ) ) {
 
         AlbaranClienteView * prov = ( AlbaranClienteView * ) g_plugParams;
-        if ( prov->cargar ( idalbaran ) ) {
+        if ( prov->load ( idalbaran ) ) {
             delete prov;
             return;
         } // end if
@@ -157,6 +157,6 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
 
 void ZView::on_mui_actualizar_clicked()
 {
-    cargar ( dbValue ( "idz" ) );
+    load ( dbValue ( "idz" ) );
 }
 

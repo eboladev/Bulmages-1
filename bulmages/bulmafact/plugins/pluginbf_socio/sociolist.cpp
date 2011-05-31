@@ -76,7 +76,7 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     
 
     mdb_idcliente = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -110,7 +110,7 @@ void SociosList::presentar()
 {
     blDebug ( "SociosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     } // end if
     blDebug ( "END SociosList::presentar", 0 );
 }
@@ -122,10 +122,10 @@ void SociosList::on_mui_sociocliente_activated( int index )
     blDebug ( "SociosList::on_mui_sociocliente_activated", 0 );
 
     if(index){
-      mui_list->cargar ( "SELECT * FROM cliente WHERE sociocliente = true " + generaFiltro() );
+      mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = true " + generaFiltro() );
     }
     else{
-      mui_list->cargar ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
+      mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     }
 
     blDebug ( "END SociosList::on_mui_sociocliente_activated", 0 );
@@ -179,7 +179,7 @@ void SociosList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void SociosList::borrar()
+void SociosList::remove()
 {
     blDebug ( "SociosList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -189,9 +189,9 @@ void SociosList::borrar()
     } // end if
     try {
         mdb_idcliente = mui_list->dbValue ( "idcliente" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             SocioView * cv = new SocioView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idcliente ) )
+            if ( cv->load ( mdb_idcliente ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -213,9 +213,9 @@ void SociosList::editar ( int )
     blDebug ( "SociosList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idcliente = mui_list->dbValue ( "idcliente" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             SocioView * bud = new SocioView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idcliente ) ) {
+            if ( bud->load ( mdb_idcliente ) ) {
                 delete bud;
                 return;
             } // end if

@@ -42,7 +42,7 @@
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int entryPoint ( BfBulmaFact * );
 
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_load ( ArticuloView * );
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
@@ -52,9 +52,9 @@ extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_BfClienteAl
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 
-extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_load ( BfClienteAlbaranSubForm * );
 
-extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_load ( ListLinFacturaView * );
 
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BlAction_triggered(BlAction *);
 

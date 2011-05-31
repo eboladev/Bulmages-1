@@ -43,9 +43,9 @@ public:
     BfConfiguracionSubForm ( QWidget *parent = 0 );
     ~BfConfiguracionSubForm() {}
 public slots:
-    virtual void cargar() {
+    virtual void load() {
         blDebug ( "BfConfiguracionSubForm::cargar\n", 0 );
-        BlSubForm::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
+        BlSubForm::load ( "SELECT *, nombre AS nombreorig FROM configuracion" );
     };
 };
 

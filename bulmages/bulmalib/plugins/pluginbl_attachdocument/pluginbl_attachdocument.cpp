@@ -55,7 +55,7 @@ int entryPoint ( QMainWindow *bcont )
 }
 
 
-int BlForm_cargar ( BlForm *ficha )
+int BlForm_load ( BlForm *ficha )
 {
     blDebug ( "PluginBl_AttachDocument::BlForm_cargar", 0 );
     EQToolButton *eq = ficha->findChild<EQToolButton *>("BotonArchDoc");

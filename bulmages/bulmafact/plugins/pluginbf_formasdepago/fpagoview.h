@@ -44,7 +44,7 @@ private:
     QString mdb_idforma_pago;
     /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento
     /// del doble click sobre la lista)
-    bool m_modoConsulta;
+    bool m_selectMode;
     QListWidgetItem *m_item;
 
 private:
@@ -55,11 +55,11 @@ private:
 public:
     FPagoView ( BfCompany * emp, QWidget *parent = 0 );
     ~FPagoView();
-    void setModoConsulta();
-    void setModoEdicion();
+    void setSelectMode();
+    void setEditMode();
     bool trataModificado();
     QString idFormaPago();
-    virtual int guardar();
+    virtual int save();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked();
 

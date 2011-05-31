@@ -38,9 +38,9 @@
 /**
 \param comp
 \param parent
-\param modoConsulta
+\param selectMode
 **/
-PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool modoConsulta )
+PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool selectMode )
         : BfForm ( comp, parent )
 {
     blDebug ( "PartidasView::PartidasView", 0 );
@@ -66,8 +66,8 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     mui_codigoPartida->setEnabled ( FALSE );
 
 
-    if ( modoConsulta ) {
-        setModoConsulta();
+    if ( selectMode ) {
+        setSelectMode();
         groupBox1->hide();
         mui_detalles->hide();
         mui_crear->hide();
@@ -77,7 +77,7 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
         mui_aceptar->hide();
         mui_imprimir->hide();
     } else {
-        setModoEdicion();
+        setEditMode();
         setAttribute ( Qt::WA_DeleteOnClose );
         mainCompany()->insertWindow ( windowTitle(), this, FALSE );
     } // end if
@@ -219,7 +219,7 @@ QString PartidasView::nombrePartida()
 void PartidasView::on_m_listPartidas_itemDoubleClicked ( QTreeWidgetItem *it )
 {
     blDebug ( "PartidasView::on_m_listPartidas_itemDoubleClicked", 0 );
-    if ( m_modoConsulta ) {
+    if ( m_selectMode ) {
         m_idpartida = it->text ( COL_IDPARTIDA );
 	if ( !m_idpartida.isEmpty() ) {
 	  emit selected ( m_idpartida );
@@ -332,7 +332,7 @@ bool PartidasView::trataModificado()
 /**
 \return
 **/
-int PartidasView::guardar()
+int PartidasView::save()
 {
     blDebug ( "PartidasView::guardar", 0 );
     QString prodfam;
@@ -440,7 +440,7 @@ void PartidasView::on_mui_borrar_clicked()
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
     if ( val == QMessageBox::Yes ) {
-        if ( !borrar() ) {
+        if ( !remove() ) {
             dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
@@ -456,7 +456,7 @@ void PartidasView::on_mui_borrar_clicked()
 /**
 \return
 **/
-int PartidasView::borrar()
+int PartidasView::remove()
 {
     blDebug ( "PartidasView::borrar", 0 );
     if ( m_idpartida == "" ) {
@@ -571,18 +571,18 @@ void PartidasView::on_mui_aceptar_clicked()
 ///
 /**
 **/
-void PartidasView::setModoConsulta()
+void PartidasView::setSelectMode()
 {
-    m_modoConsulta = TRUE;
+    m_selectMode = TRUE;
 }
 
 
 ///
 /**
 **/
-void PartidasView::setModoEdicion()
+void PartidasView::setEditMode()
 {
-    m_modoConsulta = FALSE;
+    m_selectMode = FALSE;
 }
 
 

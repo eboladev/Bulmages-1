@@ -52,7 +52,7 @@ public:
         blDebug ( "Esta funcion aun no ha sido implementada\n", 2 );
     };
     int cargaListIva ( QString );
-    void borrar();
+    void remove();
     Iva *linpos ( int );
     void append ( Iva *iva ) {
         m_lista.append ( iva );

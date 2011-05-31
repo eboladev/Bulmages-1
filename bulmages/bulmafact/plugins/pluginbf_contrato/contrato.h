@@ -41,10 +41,10 @@ public:
     virtual ~Contrato();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
-    virtual int cargar ( QString );
+    virtual int load ( QString );
     void pintar();
-    virtual int guardar();
-    virtual int  borrar();
+    virtual int save();
+    virtual int  remove();
 
     void vaciaContrato();
 

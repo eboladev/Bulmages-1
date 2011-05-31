@@ -51,9 +51,9 @@ BfClienteAlbaranDescuentoSubForm::BfClienteAlbaranDescuentoSubForm ( QWidget *pa
 /**
 \param idalbaran
 **/
-void BfClienteAlbaranDescuentoSubForm::cargar ( QString idalbaran )
+void BfClienteAlbaranDescuentoSubForm::load ( QString idalbaran )
 {
     blDebug ( "BfClienteAlbaranDescuentoSubForm::cargar", 0 );
     mdb_idalbaran = idalbaran;
-    BlSubForm::cargar ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
+    BlSubForm::load ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
 }

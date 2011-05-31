@@ -30,7 +30,7 @@
 
 extern "C" PLUGINBF_QWEBCAM_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_QWEBCAM_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" PLUGINBF_QWEBCAM_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_QWEBCAM_EXPORT int ArticuloView_load ( ArticuloView * );
 
 
 /*

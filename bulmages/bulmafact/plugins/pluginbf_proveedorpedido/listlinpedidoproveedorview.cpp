@@ -60,11 +60,11 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
 /**
 \param idpedidoproveedor
 **/
-void ListLinPedidoProveedorView::cargar ( QString idpedidoproveedor )
+void ListLinPedidoProveedorView::load ( QString idpedidoproveedor )
 {
     blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idpedidoproveedor = idpedidoproveedor;
-    BlSubForm::cargar ( "SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor" );
+    BlSubForm::load ( "SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor" );
     blDebug ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 

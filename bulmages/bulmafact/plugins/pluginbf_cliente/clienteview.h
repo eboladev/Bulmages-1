@@ -43,8 +43,8 @@ public:
     int cargarPost ( QString client );
     void activateDocuments();
     void deactivateDocuments();
-    virtual int guardarPre();
-    virtual int guardarPost();
+    virtual int beforeSave();
+    virtual int afterSave();
 
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.

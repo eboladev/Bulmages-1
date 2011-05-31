@@ -949,6 +949,6 @@ void BcAsientoInteligenteView::setModo ( int i )
 void BcAsientoInteligenteView::on_mui_guardar_clicked()
 {
     blDebug ( "BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
-    guardar();
+    save();
     blDebug ( "END BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
 }

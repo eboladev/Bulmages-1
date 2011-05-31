@@ -88,7 +88,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     mdb_idrecibo = "";
     
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany()->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
@@ -147,7 +147,7 @@ void RecibosList::presentar()
     
     if ( mainCompany() != NULL ) {
 	QString query = "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() ;
-        mui_list->cargar ( query );
+        mui_list->load ( query );
     } // end if
     
     blDebug ( "END RecibosList::presentar", 0 );
@@ -225,7 +225,7 @@ void RecibosList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void RecibosList::borrar()
+void RecibosList::remove()
 {
     blDebug ( "RecibosList::borrar", 0 );
     
@@ -237,9 +237,9 @@ void RecibosList::borrar()
     
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ReciboView * cv = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idrecibo ) )
+            if ( cv->load ( mdb_idrecibo ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -262,9 +262,9 @@ void RecibosList::editar ( int )
     
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idrecibo ) ) {
+            if ( bud->load ( mdb_idrecibo ) ) {
                 delete bud;
                 return;
             } // end if

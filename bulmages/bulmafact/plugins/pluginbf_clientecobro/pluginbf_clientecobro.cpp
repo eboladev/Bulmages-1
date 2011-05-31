@@ -112,7 +112,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
         CobrosList *pagosList = new CobrosList ( NULL, 0, BL_SELECT_MODE );
 	pagosList->setMainCompany(( BfCompany * ) prov->mainCompany());
-        pagosList->setModoEdicion();
+        pagosList->setEditMode();
         pagosList->setObjectName ( "listcobrosproveedor" );
         pagosList->hideBusqueda();
         prov->mui_tab->addTab ( pagosList, "Cobros" );
@@ -138,7 +138,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         CobroView * bud = new CobroView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idcobro" ) );
+        bud->load ( cur->value( "idcobro" ) );
         bud->show();
         cur->nextRecord();
     } // end while

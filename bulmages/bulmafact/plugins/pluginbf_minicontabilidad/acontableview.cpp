@@ -70,7 +70,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         // ======================================================
 
         pintar();
-	cargar("0");
+	load("0");
         dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
@@ -116,22 +116,22 @@ void ApunteContableView::imprimir()
     blDebug ( "END ApunteContableView::imprimir", 0 );
 }
 
-int ApunteContableView::guardar()
+int ApunteContableView::save()
 {
-    blDebug ( "ApunteContableView::guardarPost", 0 );
+    blDebug ( "ApunteContableView::afterSave", 0 );
 
-    mui_list->guardar();
+    mui_list->save();
 
-    blDebug ( "END ApunteContableView::guardarPost", 0 );
+    blDebug ( "END ApunteContableView::afterSave", 0 );
     return 0;
 }
 
 
-int ApunteContableView::cargar ( QString id )
+int ApunteContableView::load ( QString id )
 {
     blDebug ( "ApunteContableView::cargarPost", 0 );
 
-    mui_list->cargar ("SELECT * FROM acontable NATURAL LEFT JOIN partida" );
+    mui_list->load ("SELECT * FROM acontable NATURAL LEFT JOIN partida" );
     
     blDebug ( "END ApunteContableView::cargarPost", 0 );
     

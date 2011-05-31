@@ -34,7 +34,7 @@ public:
     RutaComercial ( BfCompany *, QWidget * );
     virtual ~RutaComercial();
     virtual void pintar();
-    virtual int cargar ( QString id );
+    virtual int load ( QString id );
 };
 
 #endif

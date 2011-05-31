@@ -85,7 +85,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_list->setInsert ( TRUE );
         mui_list->setOrdenEnabled ( TRUE );
 
-        mui_list->cargar("SELECT * from lrecibo WHERE 1=2");
+        mui_list->load("SELECT * from lrecibo WHERE 1=2");
 
         pintar();
         dialogChanges_readValues();
@@ -142,25 +142,25 @@ void ReciboView::imprimir()
 }
 
 
-int ReciboView::guardarPost()
+int ReciboView::afterSave()
 {
-    blDebug ( "ReciboView::guardarPost", 0 );
+    blDebug ( "ReciboView::afterSave", 0 );
 
     mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
-    mui_list->guardar();
+    mui_list->save();
 
-    blDebug ( "END ReciboView::guardarPost", 0 );
+    blDebug ( "END ReciboView::afterSave", 0 );
     return 0;
 }
 
 
-int ReciboView::borrarPre()
+int ReciboView::beforeDelete()
 {
-    blDebug ( "ReciboView::borrarPre", 0 );
+    blDebug ( "ReciboView::beforeDelete", 0 );
 
     mainCompany()->runQuery("DELETE FROM lrecibo WHERE idrecibo = " + dbValue("idrecibo") );
 
-    blDebug ( "END ReciboView::borrarPre", 0 );
+    blDebug ( "END ReciboView::beforeDelete", 0 );
     
     return 0;
 }
@@ -170,7 +170,7 @@ int ReciboView::cargarPost ( QString id )
 {
     blDebug ( "ReciboView::cargarPost", 0 );
 
-    mui_list->cargar ("SELECT * FROM lrecibo WHERE idrecibo = " + id );
+    mui_list->load ("SELECT * FROM lrecibo WHERE idrecibo = " + id );
     
     QString total = mui_list->sumarCampo("cantlrecibo").toQString();
     m_cantrecibo->setText(total);
@@ -214,7 +214,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
    setDbValue ( m_campoid, id );
    mainCompany() ->commit();
    mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
-   mui_list->guardar();
+   mui_list->save();
 
    BlDbRecordSet *curcuota = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CuotaReemisionRecibo'" );
    if (!curcuota->eof()) {
@@ -222,7 +222,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
       mainCompany()->runQuery(query);
    } // end if
 
-   cargar(dbValue("idrecibo"));
+   load(dbValue("idrecibo"));
    blMsgInfo(_("Recibo reemitido"));
    } catch(...) {
       blMsgError(_("Error en la creacion del recibo"));

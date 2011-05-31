@@ -52,7 +52,7 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     mui_listado->setInsert ( FALSE );
 
     presentar();
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de Proyectos" ) );
@@ -99,7 +99,7 @@ void ListProyectosView::crear()
 /// La que esta seleccionada en el listado.
 /**
 **/
-void ListProyectosView::borrar()
+void ListProyectosView::remove()
 {
     blDebug ( "ListProyectosView::on_mui_borrar_clicked", 0 );
     try {
@@ -136,10 +136,10 @@ void ListProyectosView::editar ( int row )
     blDebug ( "ListProyectosView::editAmortizacion " + row, 0 );
     mdb_idpresupuestoc = mui_listado->dbValue ( "idpresupuestoc" );
     mdb_nompresupuestoc = mui_listado->dbValue ( "nompresupuestoc" );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         /// Creamos el objeto BcMasaPatrimonialView, y lo lanzamos.
         ProyectoView * amor = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
-        amor->cargar ( mdb_idpresupuestoc );
+        amor->load ( mdb_idpresupuestoc );
         mainCompany() ->pWorkspace() ->addSubWindow ( amor );
         amor->show();
     } else {

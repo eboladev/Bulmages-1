@@ -47,7 +47,7 @@ void InventariosView::on_mui_crear_clicked()
 {
     blDebug ( "InventariosView::on_mui_crear_clicked", 0 );
     InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
-    if ( bud->cargar ( "0" ) )
+    if ( bud->load ( "0" ) )
         return;
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
@@ -73,7 +73,7 @@ void InventariosView::on_mui_listado_itemDoubleClicked()
 void InventariosView::presentar()
 {
     blDebug ( "InventariosView::presentar", 0 );
-    mui_listado->cargar();
+    mui_listado->load();
     blDebug ( "END InventariosView::presentar", 0 );
 }
 
@@ -89,9 +89,9 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de Inventarios" ) );
@@ -127,7 +127,7 @@ void InventariosView::on_mui_editar_clicked()
         QString idinventario = mui_listado->dbValue ( "idinventario" );
         if ( idinventario != "" ) {
             InventarioView * bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( idinventario ) )
+            if ( bud->load ( idinventario ) )
                 return;
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
@@ -155,10 +155,10 @@ void InventariosView::on_mui_borrar2_clicked()
         if ( idinventario != "" ) {
             InventarioView * inv = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
             mainCompany() ->m_pWorkspace->addSubWindow ( inv );
-            inv->cargar ( idinventario );
+            inv->load ( idinventario );
             /// Hacemos el borrado sin mostrar pantalla ni nada.
             inv->on_mui_borrar2_clicked();
-            mui_listado->cargar();
+            mui_listado->load();
         } // end if
     } // end if
     presentar();
@@ -262,11 +262,11 @@ void InventariosView::on_mui_imprimir_clicked()
 ///
 /**
 **/
-void InventariosSubForm::cargar()
+void InventariosSubForm::load()
 {
     blDebug ( "InventariosSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM inventario";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END InventariosSubForm::cargar", 0 );
 }
 

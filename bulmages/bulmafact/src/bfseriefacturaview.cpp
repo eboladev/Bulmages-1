@@ -50,7 +50,7 @@ BfSerieFacturaView::BfSerieFacturaView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this );
     blDebug ( "END_BfSerieFacturaView::BfSerieFacturaView", 1 );
 }

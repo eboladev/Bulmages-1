@@ -167,7 +167,7 @@ void AlmacenesListView::presentar()
     blDebug ( "AlmacenesListView::presentar", 0 );
 
     /// Hacemos el listado y lo presentamos.
-    mui_list->cargar ( "SELECT * FROM almacen" );
+    mui_list->load ( "SELECT * FROM almacen" );
 
     blDebug ( "END AlmacenesListView::presentar", 0 );
 }
@@ -198,11 +198,11 @@ void AlmacenesListView::editar ( int row )
     try {
         m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ), row );
 
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
             mainCompany() ->pWorkspace() ->addSubWindow ( alm );
             alm->show();
-            alm->cargar ( m_idalmacen );
+            alm->load ( m_idalmacen );
         } else {
             emit ( selected ( m_idalmacen ) );
         } // end if
@@ -228,7 +228,7 @@ void AlmacenesListView::imprimir()
 /**
 \return
 **/
-void AlmacenesListView::borrar()
+void AlmacenesListView::remove()
 {
     blDebug ( "AlmacenesListView::borrar", 0 );
     int a = mui_list->currentRow();
@@ -238,16 +238,16 @@ void AlmacenesListView::borrar()
     } // end if
     try {
         m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ) );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
             mainCompany() ->pWorkspace() ->addSubWindow ( alm );
 //            alm->show();
-            alm->cargar ( m_idalmacen );
+            alm->load ( m_idalmacen );
             alm->on_mui_borrar_clicked();
             alm->close();
             /*
                         PresupuestoView *pv = ((BfCompany *)mainCompany())->nuevoPresupuestoView();
-                        if (pv->cargar(m_idalmacen))
+                        if (pv->load(m_idalmacen))
                             throw -1;
                         pv->on_mui_borrar_clicked();
                         pv->close();

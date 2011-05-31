@@ -198,7 +198,7 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
 {
     blDebug ( "BcAsientoSubForm_boton_iva", 0 );
     
-    as->guardar();
+    as->save();
     try {
         int idborrador = as->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->mainCompany(), 0 );

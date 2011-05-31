@@ -112,7 +112,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
     blDebug ( "PluginBl_BloqConf::s_pintaMenu", 0 );
     
     BlSubForm *sub = (BlSubForm *) sender();
-    int modo = !sub->modoEdicion();
+    int modo = !sub->editMode();
     
     
     menu->addSeparator();
@@ -141,7 +141,7 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
     blDebug ( "PluginBl_BloqConf::s_trataMenu", 0 );
     if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
             BlSubForm *sub = (BlSubForm *) sender();
-            int modo = !sub->modoEdicion();
+            int modo = !sub->editMode();
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
             if (file.permissions() & QFile::WriteOwner) {

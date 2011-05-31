@@ -102,7 +102,7 @@ int ClienteView_ClienteView ( ClienteView *art )
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, _("Contratos") );
-    l->setModoEdicion();
+    l->setEditMode();
     blDebug ( "END ClienteView_ClienteView", 0 );
     return 0;
 }
@@ -113,7 +113,7 @@ int ClienteView_ClienteView ( ClienteView *art )
 \param fich
 \return
 **/
-int BlForm_cargar ( BlForm *fich )
+int BlForm_load ( BlForm *fich )
 {
     blDebug ( "BlForm_cargar", 0 );
     ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );

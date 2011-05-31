@@ -48,9 +48,9 @@ public:
     ~BfSerieFacturaSubForm() {}
 
 public slots:
-    virtual void cargar() {
+    virtual void load() {
         blDebug ( "BfSerieFacturaSubForm::cargar\n", 0 );
-        BlSubForm::cargar ( "SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura" );
+        BlSubForm::load ( "SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura" );
     }
 };
 
@@ -70,7 +70,7 @@ public:
 
 public slots:
     virtual void on_mui_aceptar_clicked() {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     }
 

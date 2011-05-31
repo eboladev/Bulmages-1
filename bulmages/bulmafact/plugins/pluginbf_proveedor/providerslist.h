@@ -39,8 +39,8 @@ public:
     ~ProveedorListSubform() {}
 
 public slots:
-    virtual void cargar();
-    virtual void cargar ( QString a );
+    virtual void load();
+    virtual void load ( QString a );
 };
 
 
@@ -65,7 +65,7 @@ public:
     void editar ( int );
     void imprimir();
     void crear();
-    void borrar();
+    void remove();
     QString idprovider();
     QString cifprovider();
     QString nomprovider();

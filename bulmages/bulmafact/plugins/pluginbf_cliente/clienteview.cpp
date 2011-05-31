@@ -123,7 +123,7 @@ ClienteView::~ClienteView()
 }
 
 
-int ClienteView::guardarPre()
+int ClienteView::beforeSave()
 {
 	int res1;
 
@@ -136,7 +136,7 @@ int ClienteView::guardarPre()
 }
 
 
-int ClienteView::guardarPost()
+int ClienteView::afterSave()
 {
 
 	int res1;

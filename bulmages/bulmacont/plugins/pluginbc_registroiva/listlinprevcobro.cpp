@@ -206,7 +206,7 @@ void ListLinPrevCobro::vaciar()
 ///
 /**
 **/
-void ListLinPrevCobro::borrar()
+void ListLinPrevCobro::remove()
 {
     blDebug ( "ListLinPrevCobro::borrar", 0 );
     if ( mdb_idregistroiva != "" )  {
@@ -225,7 +225,7 @@ void ListLinPrevCobro::borralinprevcobro ( int pos )
     blDebug ( "ListLinPrevCobro::borralinprevcobro", 0 );
     linprevcobro *linea;
     linea = m_lista.at ( pos );
-    linea->borrar();
+    linea->remove();
     m_lista.removeAt ( pos );
     pintaListLinPrevCobro();
     blDebug ( "END ListLinPrevCobro::borralinprevcobro", 0 );

@@ -114,10 +114,10 @@ public:
         pintabaseimp ( base.toQString() );
         pintaiva ( iva.toQString() );
     };
-    virtual int guardar();
-    int cargar ( QString id );
-    virtual int borrar() {
-        return RegistroIva::borrar();
+    virtual int save();
+    int load ( QString id );
+    virtual int remove() {
+        return RegistroIva::remove();
     };
 
 private:

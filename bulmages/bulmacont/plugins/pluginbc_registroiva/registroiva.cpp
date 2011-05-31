@@ -81,7 +81,7 @@ RegistroIva::~RegistroIva()
 /**
 \return
 **/
-int RegistroIva::borrar()
+int RegistroIva::remove()
 {
     blDebug ( "RegistroIva::borraRegistroIva", 0 );
     if ( dbValue ( "idregistroiva" ) != "" ) {
@@ -153,7 +153,7 @@ void RegistroIva::pintaRegistroIva()
 \param id
 \return
 **/
-int RegistroIva::cargar ( QString id )
+int RegistroIva::load ( QString id )
 {
     blDebug ( "RegistroIva::cargaRegistroIva", 0 );
     int error = 0;
@@ -184,7 +184,7 @@ int RegistroIva::cargar ( QString id )
 /**
 \param return
 **/
-int RegistroIva::guardar()
+int RegistroIva::save()
 {
     blDebug ( "RegistroIva::guardaRegistroIva", 0 );
     QString id;
@@ -405,7 +405,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
     BlDbRecordSet *cursoriva = mainCompany() ->loadQuery ( query );
     if ( !cursoriva->eof() ) {
         /// El registro ya existe.
-        cargar ( cursoriva->value( "idregistroiva" ) );
+        load ( cursoriva->value( "idregistroiva" ) );
     } else {
         /// El registro no existe y hay que hacer la propuesta m&aacute;s acertada de registro.
         /// Buscamos en todo el asiento las cuentas de IVA y lo reflejamos.
@@ -464,7 +464,7 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         SQLQuery += " LEFT JOIN (SELECT *, ivadebe AS debe, ivahaber AS haber FROM lacosa) AS lacosa ON tipoiva.idcuenta = lacosa.idcuenta ";
         //22/09/07 Ahora se pasa el query
         //BlDbRecordSet *cur = mainCompany()->loadQuery(SQLQuery);
-        m_lineas->cargar ( SQLQuery );
+        m_lineas->load ( SQLQuery );
         recalculaIva();
         blDebug ( "limpiamos la base de datos" );
         SQLQuery = "DROP TABLE lacosa";

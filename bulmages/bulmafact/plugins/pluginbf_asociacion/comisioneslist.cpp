@@ -80,7 +80,7 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     
     presentar();
     mdb_idcomision = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -108,7 +108,7 @@ void ComisionesList::presentar()
 {
     blDebug ( "ComisionesList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM comision  WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM comision  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     blDebug ( "END ComisionesList::presentar", 0 );
 }
@@ -157,7 +157,7 @@ void ComisionesList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void ComisionesList::borrar()
+void ComisionesList::remove()
 {
     blDebug ( "ComisionesList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -167,9 +167,9 @@ void ComisionesList::borrar()
     } // end if
     try {
         mdb_idcomision = mui_list->dbValue ( "idcomision" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ComisionView * cv = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idcomision ) )
+            if ( cv->load ( mdb_idcomision ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -191,9 +191,9 @@ void ComisionesList::editar ( int )
     blDebug ( "ComisionesList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idcomision = mui_list->dbValue ( "idcomision" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ComisionView * bud = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idcomision ) ) {
+            if ( bud->load ( mdb_idcomision ) ) {
                 delete bud;
                 return;
             } // end if

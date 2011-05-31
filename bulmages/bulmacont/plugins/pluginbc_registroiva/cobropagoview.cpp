@@ -88,7 +88,7 @@ void cobropagoview::on_mui_actualizar_clicked()
 
     /// Hacemos la presentacion con la nueva clase
     QString cadwhere = "";
-    mui_listado->cargar ( "SELECT * FROM prevcobro "
+    mui_listado->load ( "SELECT * FROM prevcobro "
                           " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
                           " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                           " WHERE 1=1 " + cadwhere );
@@ -103,7 +103,7 @@ void cobropagoview::on_mui_actualizar_clicked()
 void cobropagoview::s_guardar()
 {
     blDebug ( "cobropagoview::s_guardar", 0 );
-    mui_listado->guardar();
+    mui_listado->save();
     blDebug ( "END cobropagoview::s_guardar", 0 );
 }
 

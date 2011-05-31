@@ -108,7 +108,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
         PresupuestoList *presupuestosList = new PresupuestoList ( NULL, 0, BL_SELECT_MODE );
 	presupuestosList->setMainCompany(( BfCompany * ) prov->mainCompany());
-        presupuestosList->setModoEdicion();
+        presupuestosList->setEditMode();
         presupuestosList->setObjectName ( "listpresupuestos" );
         presupuestosList->hideBusqueda();
         prov->mui_tab->addTab ( presupuestosList, "Presupuestos" );
@@ -134,7 +134,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idpresupuesto" ) );
+        bud->load ( cur->value( "idpresupuesto" ) );
         bud->show();
         cur->nextRecord();
     } // end while

@@ -62,7 +62,7 @@ QWebCamView::~QWebCamView()
 \param idarticulo
 \return
 **/
-int QWebCamView::cargar ( QString idarticulo )
+int QWebCamView::load ( QString idarticulo )
 {
     blDebug ( "QWebCamView::cargar", 0, idarticulo );
 

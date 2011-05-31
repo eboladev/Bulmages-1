@@ -80,7 +80,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     mdb_idalumno = "";
 
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de alumnos" ) );
@@ -125,7 +125,7 @@ void AlumnosList::presentar()
 {
     blDebug ( "AlumnosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM alumno WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM alumno WHERE 1 = 1 " + generaFiltro() );
     } // end if
     blDebug ( "END AlumnosList::presentar", 0 );
 }
@@ -159,7 +159,7 @@ void AlumnosList::crear()
 {
     blDebug ( "AlumnosList::crear", 0 );
     
-    if (modoConsulta()) {
+    if (selectMode()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -226,7 +226,7 @@ void AlumnosList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void AlumnosList::borrar()
+void AlumnosList::remove()
 {
     blDebug ( "AlumnosList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -236,9 +236,9 @@ void AlumnosList::borrar()
     } // end if
     try {
         mdb_idalumno = mui_list->dbValue ( "idalumno" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             AlumnoView * cv = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idalumno ) )
+            if ( cv->load ( mdb_idalumno ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -260,9 +260,9 @@ void AlumnosList::editar ( int )
     blDebug ( "AlumnosList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idalumno = mui_list->dbValue ( "idalumno" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             AlumnoView * bud = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idalumno ) ) {
+            if ( bud->load ( mdb_idalumno ) ) {
                 delete bud;
                 return;
             } // end if

@@ -53,7 +53,7 @@ public:
     ~ListAlumnosActividadView() {};
     
 public slots:
-    virtual void cargar ( QString idactividad );
+    virtual void load ( QString idactividad );
 };
 
 
@@ -68,7 +68,7 @@ public:
     ~ListTutoresActividadView() {};
     
 public slots:
-    virtual void cargar ( QString idactividad );
+    virtual void load ( QString idactividad );
 };
 
 
@@ -84,7 +84,7 @@ public:
     ~ListFaltasAsistenciaActividadView() {};
     
 public slots:
-    virtual void cargar ( QString idactividad );
+    virtual void load ( QString idactividad );
 };
 
 
@@ -103,8 +103,8 @@ public:
     ~ActividadView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     virtual int cargarPost(QString );
 };
 

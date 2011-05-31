@@ -71,7 +71,7 @@ protected:
 public:
     BfSubForm ( QWidget *parent = 0 );
     virtual ~BfSubForm();
-    virtual void cargar ( QString query );
+    virtual void load ( QString query );
     virtual void setMainCompany ( BlMainCompany * );
     virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );

@@ -168,7 +168,7 @@ void Subform_Cuenta::editarCuenta ( QString idcuenta )
 {
     blDebug ( "Subform_Cuenta::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->company(), 0 );
-        nuevae->cargar ( idcuenta );
+        nuevae->load ( idcuenta );
         ((BcBulmaCont *)g_main)->company() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     blDebug ( "END Subform_Cuenta::editarCuenta", 0 );

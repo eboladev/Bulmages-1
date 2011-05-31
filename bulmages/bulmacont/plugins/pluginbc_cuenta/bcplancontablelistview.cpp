@@ -332,7 +332,7 @@ void BcPlanContableListView::on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidget
     mdb_desccuenta = it->text ( cdesccuenta );
     if ( m_modo == BL_EDIT_MODE ) {
         BcCuentaView * nuevae = new BcCuentaView ( mainCompany(), 0 );
-        nuevae->cargar ( idcuenta() );
+        nuevae->load ( idcuenta() );
         inicializa();
         mainCompany() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
@@ -455,7 +455,7 @@ void BcPlanContableListView::on_mui_editar_clicked()
     mdb_idcuenta = it->text ( cidcuenta );
     mdb_desccuenta = it->text ( cdesccuenta );
     BcCuentaView *nuevae = new BcCuentaView ( mainCompany(), 0 );
-    nuevae->cargar ( idcuenta() );
+    nuevae->load ( idcuenta() );
     mainCompany() ->pWorkspace() ->addSubWindow ( nuevae );
     nuevae->show();
     blDebug ( "END BcPlanContableListView::on_mui_editar_clicked", 0 );

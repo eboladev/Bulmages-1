@@ -44,7 +44,7 @@
 \param editmode
 \return
 **/
-CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode modo )
         : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
 {
     blDebug ( "CarteraPagosList::CarteraPagosList", 0 );
@@ -70,10 +70,10 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
 
     mui_estadovencimientop->setCurrentIndex ( mui_estadovencimientop->findText("Pendiente") );
 
-    m_modo = editmode;
+    m_modo = modo;
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( m_modo == EditMode ) {
+    if ( m_modo == BL_EDIT_MODE ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( tr ( "Selector de vencimientops" ) );
@@ -132,7 +132,7 @@ void CarteraPagosList::presenta()
 	where += " AND vencimientop.idforma_pago = " + mui_idforma_pago->id();
 
 
-    mui_list->cargar ( "SELECT * FROM vencimientop LEFT JOIN facturap AS t1 ON vencimientop.idfacturap = t1.idfacturap LEFT JOIN proveedor AS t2 ON t2.idproveedor = vencimientop.idproveedor LEFT JOIN forma_pago  AS t3 ON t3.idforma_pago = vencimientop.idforma_pago  WHERE nomproveedor LIKE '%" + m_texto->text() + "%' " + where + " ORDER BY nomproveedor" );
+    mui_list->load ( "SELECT * FROM vencimientop LEFT JOIN facturap AS t1 ON vencimientop.idfacturap = t1.idfacturap LEFT JOIN proveedor AS t2 ON t2.idproveedor = vencimientop.idproveedor LEFT JOIN forma_pago  AS t3 ON t3.idforma_pago = vencimientop.idforma_pago  WHERE nomproveedor LIKE '%" + m_texto->text() + "%' " + where + " ORDER BY nomproveedor" );
     blDebug ( "END CarteraPagosList::presenta", 0 );
 }
 
@@ -142,9 +142,9 @@ void CarteraPagosList::editar ( int )
 {
     blDebug ( "CarteraPagosList::editar", 0 );
     mdb_idvencimientop = mui_list->dbValue ( "idvencimientop" );
-    if ( modoEdicion() && mdb_idvencimientop != "" ) {
+    if ( editMode() && mdb_idvencimientop != "" ) {
         VencimientoPView *bud = new VencimientoPView( ( BfCompany * ) mainCompany(), 0 );
-        if ( bud->cargar ( mdb_idvencimientop ) ) {
+        if ( bud->load ( mdb_idvencimientop ) ) {
             delete bud;
             return;
         } // end if
@@ -189,18 +189,18 @@ void CarteraPagosList::on_mui_actualizar_clicked()
 */
 /**
 **/
-void CarteraPagosList::borrar()
+void CarteraPagosList::remove()
 {
     blDebug ( "CarteraPagosList::on_mui_borrar_clicked", 0 );
     try {
 
                 QString idvencimientop = mui_list->dbValue("idvencimientop");
 	        VencimientoPView *bud = new VencimientoPView( ( BfCompany * ) mainCompany(), 0 );
-                if (bud->cargar(idvencimientop)) {
+                if (bud->load(idvencimientop)) {
                     delete bud;
                     throw -1;
                 } // end if
-                bud->borrar();
+                bud->remove();
                 delete bud;
                 presenta();
     } catch ( ... ) {
@@ -209,26 +209,6 @@ void CarteraPagosList::borrar()
     blDebug ( "END:CarteraPagosList::on_mui_borrar_clicked", 0 );
 }
 
-
-/// Establece el modo de funcionamiento como selector para esta ventana
-/**
-**/
-void CarteraPagosList::selectMode()
-{
-    blDebug ( "CarteraPagosList::selectMode", 0 );
-    m_modo = SelectMode;
-    blDebug ( "END CarteraPagosList::selectMode", 0 );
-}
-
-/// Establece el modo de funcionamiento como selector para edicion para esta ventana
-/**
-**/
-void CarteraPagosList::editMode()
-{
-    blDebug ( "CarteraPagosList::editMode", 0 );
-    m_modo = EditMode;
-    blDebug ( "END CarteraPagosList::editMode", 0 );
-}
 
 /// Devuelve el identificador del vencimientop seleccionado
 /**
@@ -308,7 +288,7 @@ void CarteraPagosList::on_m_filtro_textChanged ( const QString &text )
 void CarteraPagosList::crear()
 {
     blDebug ( "CarteraPagosList::on_mui_crear_clicked", 0 );
-    if ( modoEdicion()  ) {
+    if ( editMode()  ) {
         VencimientoPView *bud = new VencimientoPView( ( BfCompany * ) mainCompany(), 0 );
         mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();

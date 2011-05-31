@@ -39,10 +39,10 @@ public:
     ~ListDescuentoFacturaView() {};
 
 public slots:
-    virtual void cargar ( QString idfactura ) {
+    virtual void load ( QString idfactura ) {
         blDebug ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
         mdb_idfactura = idfactura;
-        BlSubForm::cargar ( "SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura );
+        BlSubForm::load ( "SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura );
     };
 };
 

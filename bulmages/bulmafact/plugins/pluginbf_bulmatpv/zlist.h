@@ -44,7 +44,7 @@ public:
     ~ZList();
     void presentar();
     void editar ( int );
-    void borrar();
+    void remove();
     void crear();
     QString idalmacen();
     void setMainCompany ( BfCompany *comp );

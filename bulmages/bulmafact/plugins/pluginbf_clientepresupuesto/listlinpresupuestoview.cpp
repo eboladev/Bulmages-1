@@ -70,12 +70,12 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
 /**
 \param idpresupuesto
 **/
-void ListLinPresupuestoView::cargar ( QString idpresupuesto )
+void ListLinPresupuestoView::load ( QString idpresupuesto )
 {
     blDebug ( "ListLinPresupuestoView::cargar", 0 );
     mdb_idpresupuesto = idpresupuesto;
     /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
-    BlSubForm::cargar ( "SELECT *, (cantlpresupuesto * pvplpresupuesto)::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
+    BlSubForm::load ( "SELECT *, (cantlpresupuesto * pvplpresupuesto)::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
     blDebug ( "END ListLinPresupuestoView::cargar", 0 );
 }
 

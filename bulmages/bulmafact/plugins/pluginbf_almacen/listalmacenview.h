@@ -49,7 +49,7 @@ public:
     virtual ~ListAlmacenSubForm() {};
 
 public slots:
-    virtual void cargar();
+    virtual void load();
 };
 
 

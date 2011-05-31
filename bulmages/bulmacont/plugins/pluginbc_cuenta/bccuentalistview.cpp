@@ -62,7 +62,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
@@ -92,7 +92,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
 void BcCuentaListView::presentar()
 {
     blDebug ( "BcCuentaListView::presentar", 0 );
-    mui_list->cargar ( formaQuery() );
+    mui_list->load ( formaQuery() );
     blDebug ( "BcCuentaListView::END presentar", 0 );
 }
 
@@ -115,12 +115,12 @@ void BcCuentaListView::editar ( int row )
     mdb_idcuenta = mui_list->dbValue ( "idcuenta", row );
     mdb_nombrecuenta = mui_list->dbValue ( "descripcion", row );
     mdb_codigocuenta = mui_list->dbValue ( "codigo", row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         /*
                 ArticuloView * art = ( ( BcCompany * ) BlMainCompany() ) ->newArticuloView();
                 BlMainCompany() ->m_pWorkspace->addSubWindow ( art );
                 /// Si la carga no va bien entonces terminamos.
-                if ( art->cargar ( mdb_idarticulo ) ) {
+                if ( art->load ( mdb_idarticulo ) ) {
                     delete art;
                     blDebug ( "END BcCuentaListView::editar", 0, "Carga Erronea" );
                     return;
@@ -154,7 +154,7 @@ BcCuentaListView::~BcCuentaListView()
 /**
 \return
 **/
-void BcCuentaListView::borrar()
+void BcCuentaListView::remove()
 {
     /*
         blDebug ( "BcCuentaListView::on_mui_borrar_clicked", 0 );

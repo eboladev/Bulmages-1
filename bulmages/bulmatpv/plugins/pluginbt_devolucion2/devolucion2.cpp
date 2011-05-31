@@ -125,7 +125,7 @@ void Devolucion::on_mui_refLineEdit_returnPressed()
     BlDbRecordSet *curs = mainCompany()->loadQuery ( query1 );
     if ( !curs->eof() ) {
         m_ticket = new BtTicket ( mainCompany(), NULL );
-        m_ticket->cargar ( curs->value( "idalbaran" ) );
+        m_ticket->load ( curs->value( "idalbaran" ) );
         this->mui_tablesFrame->setEnabled ( TRUE );
         pintar();
 
@@ -469,7 +469,7 @@ void Devolucion::on_mui_efectivoButton_clicked() {
             } // end for
         } // end for
 
-        m_ticket->guardar();
+        m_ticket->save();
 
         ( ( QDialog* ) this )->close();
     } // end if

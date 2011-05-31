@@ -218,7 +218,7 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
         /// Hacemos la carga de las validaciones del dia.
         QString query1 = "SELECT * FROM valasterisk LEFT JOIN trabajador ON trabajador.idtrabajador = valasterisk.idtrabajador ";
         query1 += " LEFT JOIN almacen ON valasterisk.idalmacen = almacen.idalmacen WHERE fechavalasterisk = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'";
-        mui_listvalidaciones->cargar ( query1 );
+        mui_listvalidaciones->load ( query1 );
 
 
         loadConfig();
@@ -272,8 +272,8 @@ void CuadranteDiarioView::on_mui_editar_clicked()
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
     CuadranteQTextDocument *newItem = ( CuadranteQTextDocument * ) mui_cuadrante->cellWidget ( mui_cuadrante->currentRow(), mui_cuadrante->currentColumn() );
-    newItem->connect ( cuad, SIGNAL ( save() ), newItem, SLOT ( refresh() ) );
-    cuad->cargar ( newItem->idcuadrante() );
+    newItem->connect ( cuad, SIGNAL ( saved() ), newItem, SLOT ( refresh() ) );
+    cuad->load ( newItem->idcuadrante() );
 }
 
 

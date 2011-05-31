@@ -44,7 +44,7 @@ BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
     inicializa();
 
     mui_subform->setMainCompany ( mainCompany() );
-    mui_subform->cargar();
+    mui_subform->load();
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 
     mainCompany() ->insertWindow ( windowTitle(), this );
@@ -94,7 +94,7 @@ void BcConfiguracionView::on_mui_guardar_clicked()
     blDebug ( "BcConfiguracionView::on_mui_guardar_clicked", 0 );
     /// Iniciamos transaccion.
     mainCompany() ->begin();
-    mui_subform->guardar();
+    mui_subform->save();
 
     /// Procesamos la transaccion.
     mainCompany() ->commit();
@@ -199,9 +199,9 @@ BcConfiguracionSubForm::BcConfiguracionSubForm ( QWidget *parent ) : BcSubForm (
 ///
 /**
 **/
-void BcConfiguracionSubForm::cargar()
+void BcConfiguracionSubForm::load()
 {
     blDebug ( "BcConfiguracionSubForm::cargar", 0 );
-    BlSubForm::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
+    BlSubForm::load ( "SELECT *, nombre AS nombreorig FROM configuracion" );
 }
 

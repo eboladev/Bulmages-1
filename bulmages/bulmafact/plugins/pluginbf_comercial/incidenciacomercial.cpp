@@ -81,7 +81,7 @@ void IncidenciaComercial::pintar()
 \param id
 \return
 **/
-int IncidenciaComercial::cargar ( QString id )
+int IncidenciaComercial::load ( QString id )
 {
     blDebug ( "IncidenciaComercial::cargar", 0 );
     QString query = "SELECT * FROM incidenciacomercial WHERE idincidenciacomercial = " + id;

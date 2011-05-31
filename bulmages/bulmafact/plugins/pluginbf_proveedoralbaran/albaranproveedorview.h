@@ -52,9 +52,9 @@ public:
     void inicializar();
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
-    virtual int guardarPost();
+    virtual int afterSave();
     virtual int cargarPost ( QString id );
-    virtual int borrarPre();
+    virtual int beforeDelete();
 
 public slots:
     virtual void on_m_descuentos_editFinish ( int, int );

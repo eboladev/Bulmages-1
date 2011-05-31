@@ -52,7 +52,7 @@ public:
     virtual void imprimir();
     virtual int parseTags ( QString &buff );
     virtual QString templateName(void) ;
-    virtual int guardarPost();
+    virtual int afterSave();
 };
 
 #endif

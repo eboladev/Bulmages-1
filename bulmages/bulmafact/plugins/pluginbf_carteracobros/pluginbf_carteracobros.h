@@ -40,7 +40,7 @@ extern "C" PLUGINBF_CARTERACOBROS_EXPORT int ClienteView_cargarPost_Post(Cliente
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int BlForm_guardar_Post (BlForm *);
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_FacturaView (FacturaView *);
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_cargarPost_Post ( FacturaView * );
-extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_borrarPre ( FacturaView * );
+extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_beforeDelete ( FacturaView * );
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int BlAction_triggered(BlAction *);
 
 void generarVencimientos (FacturaView *);

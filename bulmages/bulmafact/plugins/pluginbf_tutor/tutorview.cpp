@@ -128,7 +128,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         m_idalumno4->m_valores["nombrealumno"] = "";
 	
 	/// Simulamos una carga para que el subformulario este operativo desde el principio.
-        mui_alumnosList->cargar ( "0" );
+        mui_alumnosList->load ( "0" );
 
 	
         insertWindow ( windowTitle(), this, FALSE );
@@ -197,12 +197,12 @@ void TutorView::imprimir()
     blDebug ( "END TutorView::imprimir", 0 );
 }
 
-int TutorView::guardarPost()
+int TutorView::afterSave()
 {
-    blDebug ( "TutorView::guardarPost", 0 );
+    blDebug ( "TutorView::afterSave", 0 );
 
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
-    mui_alumnosList->guardar();
+    mui_alumnosList->save();
 
     if (m_idalumno1->id() != "") {
 	    QString sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+m_idalumno1->id()+","+dbValue("idcliente")+")";
@@ -315,14 +315,14 @@ int TutorView::guardarPost()
       } // end if
     */
     
-    blDebug ( "END TutorView::guardarPost", 0 );
+    blDebug ( "END TutorView::afterSave", 0 );
     
     return 0;
 }
 
-int TutorView::borrarPre()
+int TutorView::beforeDelete()
 {
-    blDebug ( "TutorView::borrarPre", 0 );
+    blDebug ( "TutorView::beforeDelete", 0 );
 
     /*
         QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
@@ -332,7 +332,7 @@ int TutorView::borrarPre()
     QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue ( "idcliente" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( "END TutorView::borrarPre", 0 );
+    blDebug ( "END TutorView::beforeDelete", 0 );
     
     return 0;
 }
@@ -350,9 +350,9 @@ int TutorView::cargarPost ( QString id )
         delete cur;
     */
     
-    mui_alumnosList->cargar ( id );
+    mui_alumnosList->load ( id );
 
-    mui_listrecibos->cargar("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
+    mui_listrecibos->load("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
 
     blDebug ( "END TutorView::cargarPost", 0 );
     
@@ -389,11 +389,11 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 /**
 \param idcliente
 **/
-void ListAlumnosTutorView::cargar ( QString idcliente )
+void ListAlumnosTutorView::load ( QString idcliente )
 {
     blDebug ( "ListAlumnosTutorView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT *, (COALESCE(apellido1alumno,'-') || ' ' || COALESCE(apellido2alumno,'-') || ', ' || COALESCE(nombrealumno,'-') ) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
+    BlSubForm::load ( "SELECT *, (COALESCE(apellido1alumno,'-') || ' ' || COALESCE(apellido2alumno,'-') || ', ' || COALESCE(nombrealumno,'-') ) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     
     blDebug ( "END ListAlumnosTutorView::cargar", 0 );
 }

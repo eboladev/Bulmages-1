@@ -33,11 +33,11 @@
 ///
 /**
 **/
-void AlbaranClienteListSubform::cargar()
+void AlbaranClienteListSubform::load()
 {
     blDebug ( "AlbaranClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaran";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
@@ -46,10 +46,10 @@ void AlbaranClienteListSubform::cargar()
 /**
 \param query
 **/
-void AlbaranClienteListSubform::cargar ( QString query )
+void AlbaranClienteListSubform::load ( QString query )
 {
     blDebug ( "AlbaranClienteListSubform::cargar", 0 );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
@@ -182,7 +182,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     
     presentar();
     mdb_idalbaran = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -258,7 +258,7 @@ void AlbaranClienteList::presentar()
 {
     blDebug ( "AlbaranClienteList::presentar" );
 
-    mui_list->cargar ( "SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro() );
+    mui_list->load ( "SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro() );
 
     /// Hacemos el calculo del total.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
@@ -290,9 +290,9 @@ void AlbaranClienteList::editar ( int row )
 {
     blDebug ( "AlbaranClienteList::editar", 0 );
     mdb_idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         AlbaranClienteView * prov = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
-        if ( prov->cargar ( mdb_idalbaran ) ) {
+        if ( prov->load ( mdb_idalbaran ) ) {
             delete prov;
             return;
         } // end if
@@ -314,7 +314,7 @@ void AlbaranClienteList::editar ( int row )
 /**
 \return
 **/
-void AlbaranClienteList::borrar()
+void AlbaranClienteList::remove()
 {
     blDebug ( "AlbaranClienteList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -324,9 +324,9 @@ void AlbaranClienteList::borrar()
     } // end if
     try {
         mdb_idalbaran = mui_list->dbValue ( QString ( "idalbaran" ) );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             AlbaranClienteView * acv = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( acv->cargar ( mdb_idalbaran ) )
+            if ( acv->load ( mdb_idalbaran ) )
                 throw - 1;
             acv->on_mui_borrar_clicked();
             acv->close();

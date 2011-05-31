@@ -45,8 +45,8 @@ public:
     ~RutaComercialView();
     virtual void pintar() {};
     void setMainCompany ( BfCompany *comp );
-    virtual int guardar();
-    virtual int cargar ( QString id );
+    virtual int save();
+    virtual int load ( QString id );
 };
 
 #endif

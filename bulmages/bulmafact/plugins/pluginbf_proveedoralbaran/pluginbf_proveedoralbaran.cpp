@@ -112,7 +112,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
         AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-        albaranesProveedor->setModoEdicion();
+        albaranesProveedor->setEditMode();
         albaranesProveedor->setObjectName ( "listalbaranesproveedor" );
         albaranesProveedor->hideBusqueda();
         prov->mui_tab->addTab ( albaranesProveedor, "Albaranes" );
@@ -138,7 +138,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idalbaranp" ) );
+        bud->load ( cur->value( "idalbaranp" ) );
         bud->show();
         cur->nextRecord();
     } // end while

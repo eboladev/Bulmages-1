@@ -191,7 +191,7 @@ void FacturaView::on_mui_veralbaranes_clicked()
             while ( !cur->eof() ) {
                 bud = new AlbaranClienteView ( mainCompany(), NULL );
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->value( "idalbaran" ) );
+                bud->load ( cur->value( "idalbaran" ) );
                 bud->show();
                 cur->nextRecord();
             } // end while
@@ -248,12 +248,12 @@ void FacturaView::on_subform2_editFinish ( int, int )
 /**
 \return
 **/
-int FacturaView::borrarPre()
+int FacturaView::beforeDelete()
 {
-    blDebug ( "FacturaView::borrarPre", 0 );
-    int error = m_listalineas->borrar();
-    error = m_listadescuentos->borrar();
-    blDebug ( "END FacturaView::borrarPre", 0 );
+    blDebug ( "FacturaView::beforeDelete", 0 );
+    int error = m_listalineas->remove();
+    error = m_listadescuentos->remove();
+    blDebug ( "END FacturaView::beforeDelete", 0 );
     return 0;
 }
 
@@ -268,8 +268,8 @@ int FacturaView::cargarPost ( QString idbudget )
 {
     blDebug ( "FacturaView::cargarPost", 0 );
 
-    m_listalineas->cargar ( idbudget );
-    m_listadescuentos->cargar ( idbudget );
+    m_listalineas->load ( idbudget );
+    m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "FacturaView_cargarPost_Post", this );
@@ -286,14 +286,14 @@ int FacturaView::cargarPost ( QString idbudget )
 /**
 \return
 **/
-int FacturaView::guardarPost()
+int FacturaView::afterSave()
 {
-    blDebug ( "FacturaView::guardarPost", 0 );
+    blDebug ( "FacturaView::afterSave", 0 );
     m_listadescuentos->setColumnValue ( "idfactura", dbValue ( "idfactura" ) );
     m_listalineas->setColumnValue ( "idfactura", dbValue ( "idfactura" ) );
-    m_listalineas->guardar();
-    m_listadescuentos->guardar();
-    blDebug ( "END FacturaView::guardarPost", 0 );
+    m_listalineas->save();
+    m_listadescuentos->save();
+    blDebug ( "END FacturaView::afterSave", 0 );
     return 0;
 }
 

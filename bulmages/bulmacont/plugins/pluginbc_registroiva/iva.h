@@ -81,7 +81,7 @@ public:
     inline void setivaiva ( QString val ) {
         setDbValue ( "ivaiva", val );
     };
-    int borrar();
+    int remove();
 };
 
 #endif

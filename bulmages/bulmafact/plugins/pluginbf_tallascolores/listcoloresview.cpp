@@ -51,7 +51,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END ListColoresView::ListColoresView", 1 );
@@ -66,7 +66,7 @@ void ListColoresView::on_mui_aceptar_clicked()
 {
     blDebug ( "ListColoresView::on_mui_aceptar_clicked", 0 );
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los colores" ) );
@@ -109,10 +109,10 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent 
 /**
 **/
 
-void ListColoresSubForm::cargar()
+void ListColoresSubForm::load()
 {
     blDebug ( "ListColoresSubForm::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM tc_color" );
+    BlSubForm::load ( "SELECT * FROM tc_color" );
     blDebug ( "END ListColoresSubForm::cargar", 0 );
 }
 

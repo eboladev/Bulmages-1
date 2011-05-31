@@ -140,9 +140,9 @@ void CobroView::imprimir()
 
 /** Cuando hacemos un cobro y el valor del cobro es igual por referencia que todas las facturas
      con la misma referencia se procesan dichas facturas **/
-int CobroView::guardarPost()
+int CobroView::afterSave()
 {
-    blDebug ( "CobroView::guardarPost", 0 );
+    blDebug ( "CobroView::afterSave", 0 );
 
     QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + dbValue ( "refcobro" ) + "'";
     BlDbRecordSet *cur1 = mainCompany()->loadQuery ( query1 );
@@ -157,7 +157,7 @@ int CobroView::guardarPost()
     } // end if
     delete cur;
     delete cur1;
-    blDebug ( "END CobroView::guardarPost", 0 );
+    blDebug ( "END CobroView::afterSave", 0 );
     return 0;
 }
 

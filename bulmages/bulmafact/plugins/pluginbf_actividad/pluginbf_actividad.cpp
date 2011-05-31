@@ -269,7 +269,7 @@ void SubForm_Actividad::editarActividad ( QString idactividad )
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
-    if ( art->cargar ( idactividad ) ) {
+    if ( art->load ( idactividad ) ) {
         delete art;
         blDebug ( "END ActividadesList::editar", 0, "Carga Erronea" );
         return;

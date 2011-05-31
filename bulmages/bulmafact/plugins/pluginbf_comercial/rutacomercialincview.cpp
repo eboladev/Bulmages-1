@@ -79,8 +79,8 @@ void RutaComercialIncView::on_mui_borrar_clicked()
                                 _ ( "BulmaFact - Rutas comerciales" ),
                                 _ ( "Desea borrar esta ruta?" ),
                                 _ ( "&Si" ), _ ( "&No" ) ) == 0 ) {
-        mui_rutacomercial->borrar();
-        mui_incidenciacomercial->borrar();
+        mui_rutacomercial->remove();
+        mui_incidenciacomercial->remove();
     } // end if
     blDebug ( "END RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
 }
@@ -111,8 +111,8 @@ void RutaComercialIncView::pintar()
 void RutaComercialIncView::on_mui_guardar_clicked()
 {
     blDebug ( "RutaComercialIncView::on_mui_guardar_clicked", 0 );
-    mui_rutacomercial->guardar();
-    mui_incidenciacomercial->guardar();
+    mui_rutacomercial->save();
+    mui_incidenciacomercial->save();
     blDebug ( "END RutaComercialIncView::on_mui_guardar_clicked", 0 );
 }
 
@@ -123,11 +123,11 @@ void RutaComercialIncView::on_mui_guardar_clicked()
 \param id1
 \return
 **/
-int RutaComercialIncView::cargar ( QString id, QString id1 )
+int RutaComercialIncView::load ( QString id, QString id1 )
 {
     blDebug ( "RutaComercialIncView::cargar", 0 );
-    int err = mui_rutacomercial->cargar ( id );
-    err = mui_incidenciacomercial->cargar ( id1 );
+    int err = mui_rutacomercial->load ( id );
+    err = mui_incidenciacomercial->load ( id1 );
     setWindowTitle ( _ ( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
     insertWindow ( windowTitle(), this );
     blDebug ( "END RutaComercialIncView::cargar", 0 );

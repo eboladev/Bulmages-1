@@ -233,8 +233,8 @@ void CuadranteView::on_mui_editar_clicked()
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
     CuadranteQTextDocument *newItem = ( CuadranteQTextDocument * ) mui_cuadrante->cellWidget ( mui_cuadrante->currentRow(), mui_cuadrante->currentColumn() );
-    newItem->connect ( cuad, SIGNAL ( save() ), newItem, SLOT ( refresh() ) );
-    cuad->cargar ( newItem->idcuadrante() );
+    newItem->connect ( cuad, SIGNAL ( saved() ), newItem, SLOT ( refresh() ) );
+    cuad->load ( newItem->idcuadrante() );
 }
 
 

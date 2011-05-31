@@ -85,7 +85,7 @@ void RegIVAQToolButton::click()
 
     BlSubForm *las = m_asiento1View->findChild<BlSubForm *> ("mui_list");
 //    BcAsientoSubForm *las = m_asiento1View->mui_list;
-    las->guardar();
+    las->save();
     try {
         int idborrador = las->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) las->mainCompany(), 0 );

@@ -75,10 +75,10 @@ private:
 public:
     adocumental ( BcCompany *, QWidget *parent = 0 );
     ~adocumental();
-    void setModoEdicion() {
+    void setEditMode() {
         modo = 0;
     };
-    void setModoConsulta() {
+    void setSelectMode() {
         modo = 1;
     };
     QString getidadocumental();

@@ -79,7 +79,7 @@ private:
     void pintaclase ( QString val );
     void pintacomentariosasiento ( QString text );
     virtual void calculaypintatotales();
-    void prepguardar();
+    void prepareSave();
 
 public:
     BcAsientoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
@@ -88,7 +88,7 @@ public:
     void muestraasiento ( int v );
     /// Desabilitamos el removeWindow ya que esta ventana no debe ser sacada ante un close.
     virtual int removeWindow();
-    virtual int guardarPost();
+    virtual int afterSave();
 
 public:
     void setFecha ( QString val );

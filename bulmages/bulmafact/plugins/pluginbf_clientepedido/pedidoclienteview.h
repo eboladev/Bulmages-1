@@ -49,8 +49,8 @@ public:
     PedidoClienteView ( BfCompany *, QWidget *parent = 0 );
     ~PedidoClienteView();
     virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     void generarAlbaran();
     void inicializar();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed, BlFixed );

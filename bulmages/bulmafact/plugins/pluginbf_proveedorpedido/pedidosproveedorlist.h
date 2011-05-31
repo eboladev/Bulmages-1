@@ -39,8 +39,8 @@ class PLUGINBF_PROVEEDORPEDIDO_EXPORT PedidosProveedorListSubform : public BfSub
 public:
     PedidosProveedorListSubform ( QWidget *parent = 0 );
     ~PedidosProveedorListSubform();
-    virtual void cargar();
-    virtual void cargar ( QString query );
+    virtual void load();
+    virtual void load ( QString query );
 };
 
 
@@ -67,7 +67,7 @@ public:
     void setidproveedor ( QString val );
     QString generarFiltro();
     void editar ( int );
-    void borrar();
+    void remove();
     void crear();
     void iniciaForm();
 

@@ -134,7 +134,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     ListLTarifaView *l1 = new ListLTarifaView ( art );
     l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
     l1->setMainCompany ( art->mainCompany() );
-    l1->cargar ( "0" );
+    l1->load ( "0" );
     art->mui_tab->addTab ( l1, _ ( "Tarifas" ) );
 
     /// VARIACION DE TARIFAS
@@ -183,17 +183,17 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 \param art
 \return
 **/
-int ArticuloView_cargar ( ArticuloView *art )
+int ArticuloView_load ( ArticuloView *art )
 {
     blDebug ( "ArticuloView_cargar", 0 );
     ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
-    l1->cargar ( art->dbValue ( "idarticulo" ) );
+    l1->load ( art->dbValue ( "idarticulo" ) );
 
     /// Variacion de tarifas.
     BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
     if ( l ) {
         QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->dbValue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
-        l->cargar ( SQLQuery );
+        l->load ( SQLQuery );
     } // end if
 
     blDebug ( "END ArticuloView_cargar", 0 );
@@ -217,8 +217,8 @@ int ArticuloView_guardar_post ( ArticuloView *art )
         BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
-        l1->guardar();
-        l->guardar();
+        l1->save();
+        l->save();
 
         return 0;
     } catch ( ... ) {
@@ -243,8 +243,8 @@ int ArticuloView_borrar ( ArticuloView *art )
         BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
-        l1->borrar();
-        l->borrar();
+        l1->remove();
+        l->remove();
         return 0;
     } catch ( ... ) {
         blDebug ( "Hubo un error al borrar las tarifas", 0 );

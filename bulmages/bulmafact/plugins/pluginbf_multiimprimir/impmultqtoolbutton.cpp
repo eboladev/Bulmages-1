@@ -138,7 +138,7 @@ void ImpQToolButton::click()
                         return;
                     } // end if
                     PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
-                    pres->cargar ( id );
+                    pres->load ( id );
 
                     if ( pres->generateRML() ) {
 
@@ -176,7 +176,7 @@ void ImpQToolButton::click()
                     } // end if
                     FacturaView *pres = ( FacturaView * ) g_plugParams;
 
-                    pres->cargar ( id );
+                    pres->load ( id );
 
                     if ( pres->generateRML() ) {
 
@@ -211,7 +211,7 @@ void ImpQToolButton::click()
                         return;
                     } // end if
                     PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
-                    pres->cargar ( id );
+                    pres->load ( id );
 
                     if ( pres->generateRML() ) {
 
@@ -248,7 +248,7 @@ void ImpQToolButton::click()
                         return;
                     } // end if
                     AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;
-                    pres->cargar ( id );
+                    pres->load ( id );
 
                     if ( pres->generateRML() ) {
 
@@ -323,7 +323,7 @@ void ImpQToolButton::click()
                         return;
                     } // end if
                     CobroView *pres = ( CobroView * ) g_plugParams;
-                    pres->cargar ( id );
+                    pres->load ( id );
 
 
                     int col1 = j % 3;
@@ -423,7 +423,7 @@ void ImpQToolButton::click()
                         return;
                     } // end if
                     ReciboView *pres = ( ReciboView * ) g_plugParams;
-                    pres->cargar ( id );
+                    pres->load ( id );
 
                     if ( pres->generateRML() ) {
 
@@ -630,7 +630,7 @@ void EmailQToolButton::click()
                     return;
                 } // end if
                 PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
-                pres->cargar ( id );
+                pres->load ( id );
 
                 if ( pres->generateRML() ) {
 
@@ -674,7 +674,7 @@ void EmailQToolButton::click()
                     return;
                 } // end if
                 PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
-                pres->cargar ( id );
+                pres->load ( id );
 
                 if ( pres->generateRML() ) {
 
@@ -718,7 +718,7 @@ void EmailQToolButton::click()
                     blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                     return;
                 } // end if
-                PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;                pres->cargar ( id );
+                PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;                pres->load ( id );
 
                 if ( pres->generateRML() ) {
 
@@ -768,7 +768,7 @@ void EmailQToolButton::click()
                     return;
                 } // end if
                 FacturaView *pres = ( FacturaView * ) g_plugParams;
-                pres->cargar ( id );
+                pres->load ( id );
 
                 if ( pres->generateRML() ) {
 
@@ -813,7 +813,7 @@ void EmailQToolButton::click()
                 QString email = curs->value( "mailcliente" );
 
                 CobroView *pres = new CobroView ( m_companyact, 0 );
-                pres->cargar ( id );
+                pres->load ( id );
 
                 blCreatePDF ( "recibo" );
 

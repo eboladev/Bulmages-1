@@ -44,22 +44,22 @@ private:
     QString m_idtipo;
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
-    bool m_modoConsulta;
+    bool m_selectMode;
     /// Este semaforo indica si se esta en el proceso de pintado.
     bool m_semaforoPintar;
 
 public:
-    TipoArticuloList ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
+    TipoArticuloList ( BfCompany *, QWidget *parent = 0, bool selectMode = FALSE );
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();
-    void setModoConsulta();
-    void setModoEdicion();
+    void setSelectMode();
+    void setEditMode();
     QString codtipo_articulo();
     QString idtipo_articulo();
     QString desctipo_articulo();
-    virtual int guardar();
-    virtual int borrar();
+    virtual int save();
+    virtual int remove();
     virtual void on_mui_borrar_clicked();
     void pintar ( QTreeWidgetItem * );
 

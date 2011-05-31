@@ -52,7 +52,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     m_archivoimagen = "";
-    setModoEdicion();
+    setEditMode();
     m_cursortipoactividades = NULL;
     m_item = NULL;
     res = g_plugins->lanza ( "TipoActividadView_TipoActividadView_Post", this );

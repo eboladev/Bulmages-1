@@ -115,7 +115,7 @@ int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
     ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
     l->mui_actualizar->setDisabled ( TRUE );
-//    l->setModoEdicion();
+//    l->setEditMode();
     ccoste->tabWidget->addTab ( l, _ ( "Proyectos asociados" ) );
     return 0;
 }
@@ -126,11 +126,11 @@ int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
 \param ficha
 \return
 **/
-int BlForm_cargar ( BlForm *ficha )
+int BlForm_load ( BlForm *ficha )
 {
     ListProyectosView * l = ficha->findChild<ListProyectosView *> ( "mui_proyectos" );
     if ( l )
-        l->mui_listado->cargar ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->dbValue ( "idc_coste" ) );
+        l->mui_listado->load ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->dbValue ( "idc_coste" ) );
     return 0;
 }
 

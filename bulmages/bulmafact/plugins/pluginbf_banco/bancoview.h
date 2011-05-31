@@ -54,7 +54,7 @@ public:
     ~BancoView();
     bool trataModificado();
     QString idBanco();
-    virtual int guardar();
+    virtual int save();
     virtual void on_mui_borrar_clicked();
 
 private slots:

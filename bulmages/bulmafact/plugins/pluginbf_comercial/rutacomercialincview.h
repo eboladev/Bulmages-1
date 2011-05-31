@@ -44,7 +44,7 @@ public:
 
 public slots:
     virtual void on_mui_guardar_clicked();
-    virtual int cargar ( QString id, QString id1 );
+    virtual int load ( QString id, QString id1 );
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked();
 };

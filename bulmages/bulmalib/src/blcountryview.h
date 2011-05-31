@@ -47,7 +47,7 @@ public:
     void pintar();
     void mostrarplantilla();
     virtual void on_mui_borrar_clicked();
-    virtual int guardar();
+    virtual int save();
 
 public slots:
     virtual void on_mui_crear_clicked();

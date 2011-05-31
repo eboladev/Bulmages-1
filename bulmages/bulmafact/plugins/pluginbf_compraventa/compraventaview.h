@@ -52,7 +52,7 @@ class CompraVentaView : public BfForm, public Ui_CompraVentaBase
 
 public:
     BlDbRecord *m_albaranp;
-    virtual int borrarPre();
+    virtual int beforeDelete();
     virtual int cargarPost ( QString );
     CompraVentaView ( BfCompany *, QWidget * );
     ~CompraVentaView();
@@ -61,7 +61,7 @@ public:
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     void generarFactura();
     void generarFacturaProveedor();
-    virtual int guardarPost();
+    virtual int afterSave();
     void imprimir();
 
 public slots:

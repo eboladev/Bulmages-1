@@ -105,7 +105,7 @@ void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
                                          _ ( "Guardar la incidencia" ),
                                          _ ( "Desea guardar los cambios?" ), _ ( "&Si" ), _ ( "&No" ), _ ( "&Cancelar" ), 0, 2 );
         if ( val == 0 )
-            guardar();
+            save();
         if ( val == 2 )
             e->ignore();
     } // end if
@@ -132,7 +132,7 @@ void IncidenciaComercialView::setMainCompany ( BfCompany *comp )
 /**
 \return
 **/
-int IncidenciaComercialView::guardar()
+int IncidenciaComercialView::save()
 {
     blDebug ( "IncidenciaComercialView::guardar", 0 );
     if ( mui_fechaincidenciacomercial->text() == "" )
@@ -144,7 +144,7 @@ int IncidenciaComercialView::guardar()
     setDbValue ( "estadoincidenciacomercial", mui_estadoincidenciacomercial->estado() );
     setDbValue ( "horaincidenciacomercial", mui_horaincidenciacomercial->text() );
     setDbValue ( "refincidenciacomercial", mui_refincidenciacomercial->text() );
-    int err = IncidenciaComercial::guardar();
+    int err = IncidenciaComercial::save();
     blDebug ( "END IncidenciaComercialView::guardar", 0 );
     return err;
 }
@@ -155,10 +155,10 @@ int IncidenciaComercialView::guardar()
 \param id
 \return
 **/
-int IncidenciaComercialView::cargar ( QString id )
+int IncidenciaComercialView::load ( QString id )
 {
     blDebug ( "IncidenciaComercialView::cargar", 0 );
-    int err = IncidenciaComercial::cargar ( id );
+    int err = IncidenciaComercial::load ( id );
     setWindowTitle ( _ ( "Incidencia comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
     mui_fechaincidenciacomercial->setText ( dbValue ( "fechaincidenciacomercial" ) );
     mui_idcliente->setId ( dbValue ( "idcliente" ) );

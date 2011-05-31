@@ -112,7 +112,7 @@ void RutaComercialView::setMainCompany ( BfCompany *comp )
 /**
 \return
 **/
-int RutaComercialView::guardar()
+int RutaComercialView::save()
 {
     blDebug ( "RutaComercialView::guardar", 0 );
     if ( mui_fecharutacomercial->text() == "" )
@@ -122,7 +122,7 @@ int RutaComercialView::guardar()
     setDbValue ( "comentariosrutacomercial", mui_comentrutacomercial->toPlainText() );
     setDbValue ( "horarutacomercial", mui_horarutacomercial->text() );
     setDbValue ( "refrutacomercial", mui_refrutacomercial->text() );
-    int err = RutaComercial::guardar();
+    int err = RutaComercial::save();
     blDebug ( "END RutaComercialView::guardar", 0 );
     return err;
 }
@@ -133,10 +133,10 @@ int RutaComercialView::guardar()
 \param id
 \return
 **/
-int RutaComercialView::cargar ( QString id )
+int RutaComercialView::load ( QString id )
 {
     blDebug ( "RutaComercialView::cargar", 0 );
-    int err = RutaComercial::cargar ( id );
+    int err = RutaComercial::load ( id );
     setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idrutacomercial" ) );
     mui_fecharutacomercial->setText ( dbValue ( "fecharutacomercial" ) );
     mui_idcliente->setId ( dbValue ( "idcliente" ) );

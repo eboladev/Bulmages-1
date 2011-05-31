@@ -35,7 +35,7 @@ public:
     TarifaListView ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~TarifaListView();
     void editar(int);
-    void borrar();
+    void remove();
     void crear();
 
 public slots:
