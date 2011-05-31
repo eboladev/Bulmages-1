@@ -50,7 +50,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     ctaactivo->setMainCompany ( emp );
     /// Arreglamos la cuenta
     ctaactivo->setMainCompany(mainCompany());
-    ctaactivo->setLabel ( _ ( "Cuenta Activo:" ) );
+    ctaactivo->setLabel ( _ ( "Cuenta activa:" ) );
     ctaactivo->setTableName ( "cuenta" );
     ctaactivo->setFieldId("idcuenta");
     ctaactivo->m_valores["descripcion"] = "";
@@ -60,7 +60,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     ctaamortizacion->setMainCompany ( emp );
     /// Arreglamos la cuenta
     ctaamortizacion->setMainCompany(mainCompany());
-    ctaamortizacion->setLabel ( _ ( "Cuenta de Amortizacion:" ) );
+    ctaamortizacion->setLabel ( _ ( "Cuenta de amortizacion:" ) );
     ctaamortizacion->setTableName ( "cuenta" );
     ctaamortizacion->setFieldId("idcuenta");
     ctaamortizacion->m_valores["descripcion"] = "";

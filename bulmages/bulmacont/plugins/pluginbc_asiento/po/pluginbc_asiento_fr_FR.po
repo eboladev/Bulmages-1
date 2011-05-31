@@ -371,12 +371,14 @@ msgid "Guardar asiento"
 msgstr "Sauvegarder l'écriture "
 
 #: pluginbc_asiento.cpp:150
+#, fuzzy
 msgid "Ha habido un error al espaciar los asientos"
-msgstr ""
+msgstr "Il y avait une erreur lors de séparer les écritures"
 
 #: pluginbc_asiento.cpp:164
+#, fuzzy
 msgid "Ha habido un error al ordenar los asientos"
-msgstr ""
+msgstr "Il y avait une erreur lors de trier les écritures"
 
 #: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
 msgid "Haber"

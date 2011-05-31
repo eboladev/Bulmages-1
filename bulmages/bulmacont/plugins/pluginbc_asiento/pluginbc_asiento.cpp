@@ -63,7 +63,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     QMenu *pPluginMenu = bcont->newMenu(_("&Asiento"), "menuAsiento", "menuMaestro");
 
-    BlAction *accionA = new BlAction ( _ ( "&Asiento Contable" ), 0 );
+    BlAction *accionA = new BlAction ( _ ( "&Asiento contable" ), 0 );
     accionA->setStatusTip ( _ ( "Permite ver y modificar asientos" ) );
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del asiento" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/book.png")));
@@ -72,7 +72,7 @@ int entryPoint ( BcBulmaCont *bcont )
     bcont->toolBar->addAction ( accionA );
 
 
-    BlAction *accionB = new BlAction ( _ ( "&Lista de Asientos Contables" ), 0 );
+    BlAction *accionB = new BlAction ( _ ( "&Lista de asientos contables" ), 0 );
     accionB->setStatusTip ( _ ( "Permite ver el listado de asientos" ) );
     accionB->setWhatsThis ( _ ( "Permite ver el listado de asientos" ) );
     accionB->setIcon(QIcon(QString::fromUtf8(":/Images/book-list.png")));
@@ -82,14 +82,14 @@ int entryPoint ( BcBulmaCont *bcont )
 
     pPluginMenu->addSeparator();
 
-    BlAction *accionC = new BlAction ( _ ( "&Espaciar Asientos Contables" ), 0 );
+    BlAction *accionC = new BlAction ( _ ( "&Espaciar asientos contables" ), 0 );
     accionC->setStatusTip ( _ ( "Ordena los asientos dejando espacios entre ellos" ) );
     accionC->setWhatsThis ( _ ( "Ordena los asientos dejando espacios entre ellos" ) );
     accionC->setObjectName("mui_actionAsientoContableEspaciar");
     pPluginMenu->addAction ( accionC );
 
 
-    BlAction *accionD = new BlAction ( _ ( "&Reordenar Asientos Contables" ), 0 );
+    BlAction *accionD = new BlAction ( _ ( "&Reordenar asientos contables" ), 0 );
     accionD->setStatusTip ( _ ( "Ordena los asientos" ) );
     accionD->setWhatsThis ( _ ( "Ordena los asientos" ) );
     accionD->setObjectName("mui_actionAsientoContableOrdenar");

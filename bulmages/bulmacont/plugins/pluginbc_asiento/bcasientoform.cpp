@@ -39,7 +39,7 @@
 BcAsientoForm::BcAsientoForm ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
 {
     blDebug ( "BcAsientoForm::BcAsientoForm", 0 );
-    setTitleName ( _ ( "Asiento Contable" ) );
+    setTitleName ( _ ( "Asiento contable" ) );
     setDbTableName ( "asiento" );
     setDbFieldId ( "idasiento" );
     addDbField ( "idasiento", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id asiento" ) );
@@ -160,7 +160,7 @@ int BcAsientoForm::borrar ( bool atendido )
         if ( atendido ) {
             switch ( QMessageBox::warning ( 0,
                                             _ ( "Borrar asiento" ),
-                                            _ ( "Se va a borrar el asiento. Esta seguro?" ),
+                                            _ ( "Se va a borrar el asiento. ¿Esta seguro?" ),
                                             QMessageBox::Ok,
                                             QMessageBox::Cancel ) ) {
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
@@ -306,12 +306,12 @@ void BcAsientoForm::abrir()
 {
     blDebug ( "BcAsientoForm::abreBcAsientoForm", 0 );
     if ( estadoBcAsientoForm() != ASCerrado ) {
-        blDebug ( "END BcAsientoForm::abreBcAsientoForm", 0, "Asiento Abierto" );
+        blDebug ( "END BcAsientoForm::abreBcAsientoForm", 0, "Asiento abierto" );
         return;
     } // end if
     QString id = dbValue ( "idasiento" );
     if ( id == "" ) {
-        blDebug ( "END BcAsientoForm::abreBcAsientoForm", 0, "Asiento Inexistente" );
+        blDebug ( "END BcAsientoForm::abreBcAsientoForm", 0, "Asiento inexistente" );
         return;
     }
     BlDbRecordSet *cursoraux = mainCompany() ->loadQuery ( "SELECT abreasiento(" + id + ")" );
@@ -357,7 +357,7 @@ BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
 {
     blDebug ( "BcAsientoForm::estadoasiento", 0 );
     if ( dbValue ( "idasiento" ) == "" ) {
-        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento Vacio" );
+        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento vacio" );
         return ASVacio;
     } // end if
 
@@ -373,13 +373,13 @@ BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
 
 
     if ( numborr == "0" ) {
-        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento Vacio" );
+        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento vacio" );
         return ASVacio;
     } else if ( numap != "0" ) {
-        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento Cerrado" );
+        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento cerrado" );
         return ASCerrado;
     } else {
-        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento Abierto" );
+        blDebug ( "END BcAsientoForm::estadoasiento", 0, "Asiento abierto" );
         return ASAbierto;
     } // end if
 }

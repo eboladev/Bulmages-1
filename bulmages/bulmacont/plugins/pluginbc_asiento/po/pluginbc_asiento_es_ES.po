@@ -27,7 +27,7 @@ msgid "&Asiento"
 msgstr ""
 
 #: pluginbc_asiento.cpp:66
-msgid "&Asiento Contable"
+msgid "&Asiento contable"
 msgstr ""
 
 #: ui_bcasientointeligentebase.h:217
@@ -43,7 +43,7 @@ msgid "&Ejercicio:"
 msgstr "&Ejercicio:"
 
 #: pluginbc_asiento.cpp:85
-msgid "&Espaciar Asientos Contables"
+msgid "&Espaciar asientos contables"
 msgstr ""
 
 #: ui_bcasientointeligentebase.h:212
@@ -51,7 +51,7 @@ msgid "&Fecha del asiento:"
 msgstr "&Fecha del asiento:"
 
 #: pluginbc_asiento.cpp:75
-msgid "&Lista de Asientos Contables"
+msgid "&Lista de asientos contables"
 msgstr ""
 
 #: ui_bcasientolistbase.h:463
@@ -71,7 +71,7 @@ msgid "&Plantilla:"
 msgstr "&Plantilla:"
 
 #: pluginbc_asiento.cpp:92
-msgid "&Reordenar Asientos Contables"
+msgid "&Reordenar asientos contables"
 msgstr ""
 
 #: bcasientoview.cpp:338
@@ -99,7 +99,7 @@ msgid "Apertura"
 msgstr "Apertura"
 
 #: ui_bcasientointeligentebase.h:210
-msgid "Aplicar Asiento Inteligente"
+msgid "Aplicar asiento anteligente"
 msgstr "Aplicar asiento inteligente"
 
 #: bcasientolistsubform.cpp:39
@@ -111,7 +111,7 @@ msgid "Asiento"
 msgstr "Asiento"
 
 #: bcasientoform.cpp:42
-msgid "Asiento Contable"
+msgid "Asiento contable"
 msgstr "Asiento contable"
 
 #: pluginbc_asiento.cpp:106
@@ -147,7 +147,7 @@ msgid "Asientos"
 msgstr "Asientos"
 
 #: ui_bcasientobase.h:553 ui_bcasientobase.h:556
-msgid "Asientos Inteligentes"
+msgid "Asientos inteligentes"
 msgstr "Asientos inteligentes"
 
 #: bcasientolistview.cpp:46
@@ -288,7 +288,7 @@ msgid "Descuadre:"
 msgstr "Descuadre:"
 
 #: bcasientoview.cpp:337
-msgid "Desea crear un nuevo asiento en esa posicion?"
+msgid "¿Desea crear un nuevo asiento en esa posicion?"
 msgstr "¿Desea crear un nuevo asiento en esa posición?"
 
 #: bcasientoform.cpp:415
@@ -526,7 +526,7 @@ msgid "Se han ordenado los asientos"
 msgstr "Se han ordenado los asientos"
 
 #: bcasientoform.cpp:163
-msgid "Se va a borrar el asiento. Esta seguro?"
+msgid "Se va a borrar el asiento. ¿Esta seguro?"
 msgstr "Se va a borrar el asiento. ¿Está seguro?"
 
 #: bcasientoform.cpp:50

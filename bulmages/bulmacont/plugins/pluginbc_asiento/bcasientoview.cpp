@@ -1072,7 +1072,7 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         BlDbRecordSet *cursor = mainCompany() ->loadQuery ( query, "cursor" );
 
         int orden = 0;
-        QString concepto = "Asiento de Cierre";
+        QString concepto = _("Asiento de cierre");
         QString fecha = ffinal;
         while ( ! cursor->eof() ) {
             orden++;
@@ -1141,7 +1141,7 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         delete cur;
 
         /// Preparamos los datos.
-        QString concepto = "Asiento de Apertura";
+        QString concepto = _("Asiento de apertura");
         QString fecha = ffinal;
         QString idasientocierre;
 
