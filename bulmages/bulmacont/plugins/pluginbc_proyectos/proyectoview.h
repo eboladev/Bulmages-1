@@ -40,13 +40,13 @@ public:
     ProyectoView ( BcCompany *, QWidget * );
     ~ProyectoView();
     int cargarPost ( QString );
-    int guardarPost();
+    int afterSave();
 
 public slots:
     void on_mui_geninforme_clicked();
 
 signals:
-    void save();
+    void saved();
 };
 
 #endif

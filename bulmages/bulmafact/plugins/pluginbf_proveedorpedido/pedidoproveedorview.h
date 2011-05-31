@@ -54,8 +54,8 @@ public:
     void inicialize();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     virtual void imprimir();
 
 public slots:

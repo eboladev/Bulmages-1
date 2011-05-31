@@ -46,7 +46,7 @@ public:
     virtual ~ListTallasSubForm() {};
 
 public slots:
-    virtual void cargar();
+    virtual void load();
 };
 
 

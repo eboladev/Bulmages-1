@@ -112,7 +112,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "pago", "SELECT" ) ) {
         PagosList *pagosList = new PagosList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-        pagosList->setModoEdicion();
+        pagosList->setEditMode();
         pagosList->setObjectName ( "listpagosproveedor" );
         pagosList->hideBusqueda();
         prov->mui_tab->addTab ( pagosList, "Pagos" );
@@ -138,7 +138,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         PagoView * bud = new PagoView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idpago" ) );
+        bud->load ( cur->value( "idpago" ) );
         bud->show();
         cur->nextRecord();
     } // end while

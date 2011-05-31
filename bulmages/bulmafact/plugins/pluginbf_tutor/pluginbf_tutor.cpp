@@ -415,7 +415,7 @@ void SubForm_Tutor::editarTutor ( QString idtutor )
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
-    if ( art->cargar ( idtutor ) ) {
+    if ( art->load ( idtutor ) ) {
         delete art;
         blDebug ( "END SubForm_Tutor::editarTutor", 0, "Carga Erronea" );
         return;

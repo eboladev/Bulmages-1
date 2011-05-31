@@ -74,7 +74,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         mui_list->setSortingEnabled ( FALSE );
         
 	// Cargar una contradiccion para que el subformulario deje insertar elementos.
-        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
+        mui_list->load("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
         insertWindow ( windowTitle(), this, FALSE );
         pintar();
@@ -129,18 +129,18 @@ void JDirectivaView::imprimir()
     blDebug ( "END JDirectivaView::imprimir", 0 );
 }
 
-int JDirectivaView::guardarPost()
+int JDirectivaView::afterSave()
 {
-    blDebug ( "JDirectivaView::guardarPost", 0 );
+    blDebug ( "JDirectivaView::afterSave", 0 );
     
     mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
-    mui_list->guardar();
+    mui_list->save();
     
-    blDebug ( "END JDirectivaView::guardarPost", 0 );
+    blDebug ( "END JDirectivaView::afterSave", 0 );
     return 0;
 }
 
-int JDirectivaView::borrarPre()
+int JDirectivaView::beforeDelete()
 {
     return 0;
 }
@@ -149,7 +149,7 @@ int JDirectivaView::cargarPost ( QString id )
 {
     blDebug ( "JDirectivaView::cargarPost", 0 );
     
-    mui_list->cargar("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
+    mui_list->load("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
     
     blDebug ( "END JDirectivaView::cargarPost", 0 );
     

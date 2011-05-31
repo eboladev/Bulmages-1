@@ -38,14 +38,14 @@ public:
     ~RutaComercialListSubForm() {};
 
 public slots:
-    virtual void cargar() {
+    virtual void load() {
         blDebug ( "RutaComercialListSubForm::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM presupuesto";
-        BlSubForm::cargar ( SQLQuery );
+        BlSubForm::load ( SQLQuery );
     };
-    virtual void cargar ( QString query ) {
+    virtual void load ( QString query ) {
         blDebug ( "RutaComercialListSubForm::cargar\n", 0 );
-        BlSubForm::cargar ( query );
+        BlSubForm::load ( query );
     };
 };
 
@@ -72,7 +72,7 @@ public:
     QString generaFiltro();
     void editar ( int );
     virtual void crear();
-    virtual void borrar();
+    virtual void remove();
 
 signals:
     void selected ( QString );

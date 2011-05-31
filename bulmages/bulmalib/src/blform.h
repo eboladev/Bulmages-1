@@ -48,28 +48,28 @@ private:
     QScriptEngine m_myEngine;
     
 protected:
-    void setModoConsulta();
-    void setModoEdicion();
-    bool modoEdicion();
-    bool modoConsulta();
+    void setSelectMode();
+    void setEditMode();
+    bool editMode();
+    bool selectMode();
 
 public:
     BlForm ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
     BlForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
     void substrVars(QString &buff, int tipoEscape = 0);
     virtual ~BlForm();
-    virtual int guardar();
-    virtual int guardarPre();
-    virtual int guardarPost();
-    virtual int borrarPre();
-    virtual int borrar();
+    virtual int save();
+    virtual int beforeSave();
+    virtual int afterSave();
+    virtual int beforeDelete();
+    virtual int remove();
     virtual int removeWindow();
     virtual void insertWindow ( QString , QObject *, bool compdup = TRUE, QString titulo = "" );
     void setDbTableName ( QString nom );
     void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();
-    virtual int cargar ( QString id, bool paint = TRUE );
+    virtual int load ( QString id, bool paint = TRUE );
     virtual int cargarPost ( QString id );
     virtual void recogeValores();
     virtual void creaMenu ( QMenu * );
@@ -82,7 +82,7 @@ public:
     QString parseRecordset ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
     virtual QString parseIfQuery ( const QString &query, const QString &datos );
     virtual QString parseIf ( const QString &query, const QString &datos, const QString &datos1 );
-    virtual QString trataExists ( const QString &query, const QString &datos );
+    virtual QString parseExists ( const QString &query, const QString &datos );
     void setVar(const QString &varname, const QString &varvalue);
     void clearVars();
     virtual void loadSpecs();

@@ -43,28 +43,28 @@ private:
     QString m_idfamilia;
     /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento del
     /// doble click sobre la lista).
-    bool m_modoConsulta;
+    bool m_selectMode;
     /// Este semaforo indica si se esta en el proceso de pintado.
     bool m_semaforoPintar;
     QTreeWidgetItem *m_init;
     
 public:
-    FamiliasView ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
+    FamiliasView ( BfCompany *, QWidget *parent = 0, bool selectMode = FALSE );
     ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();
-    void setModoConsulta();
-    void setModoEdicion();
+    void setSelectMode();
+    void setEditMode();
     QString codigoCompletoFamilia();
     QString idFamiliaModified();
     QString idFamilia();
     QString nombreFamilia();
     void pintar ( QTreeWidgetItem * );
-    virtual int borrar();
+    virtual int remove();
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();
-    virtual int guardar();
+    virtual int save();
 
 public slots:
     virtual void pintar();

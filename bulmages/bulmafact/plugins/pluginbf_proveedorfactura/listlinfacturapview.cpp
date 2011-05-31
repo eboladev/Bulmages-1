@@ -70,10 +70,10 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
 /**
 \param idfacturap
 **/
-void ListLinFacturaProveedorView::cargar ( QString idfacturap )
+void ListLinFacturaProveedorView::load ( QString idfacturap )
 {
     blDebug ( "ListLinFacturaProveedorView::cargar", 0 );
     mdb_idfacturap = idfacturap;
-    BlSubForm::cargar ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
+    BlSubForm::load ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
     blDebug ( "END ListLinFacturaProveedorView::cargar", 0 );
 }

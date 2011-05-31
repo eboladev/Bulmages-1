@@ -54,25 +54,25 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     ListCompras *lc = new ListCompras ( art );
     lc->setObjectName ( QString::fromUtf8 ( "lcompras" ) );
     lc->setMainCompany ( art->mainCompany() );
-    lc->cargar ( "0" );
+    lc->load ( "0" );
     art->mui_tab->addTab ( lc, _("Compras") );
 
     ListLResArticulo *l = new ListLResArticulo ( art );
     l->setObjectName ( QString::fromUtf8 ( "lresfacturacion" ) );
     l->setMainCompany ( art->mainCompany() );
-    l->cargar ( "0" );
+    l->load ( "0" );
     art->mui_tab->addTab ( l, _("Ventas") );
 
     ListEntregas *l1 = new ListEntregas ( art );
     l1->setObjectName ( QString::fromUtf8 ( "lentregas" ) );
     l1->setMainCompany ( art->mainCompany() );
-    l1->cargar ( "0" );
+    l1->load ( "0" );
     art->mui_tab->addTab ( l1, _("Entregas") );
 
     ListRecogidas *lr = new ListRecogidas ( art );
     lr->setObjectName ( QString::fromUtf8 ( "lrecogidas" ) );
     lr->setMainCompany ( art->mainCompany() );
-    lr->cargar ( "0" );
+    lr->load ( "0" );
     art->mui_tab->addTab ( lr, _("Recogidas") );
 
     blDebug ( "END ArticuloView_ArticuloView", 0 );
@@ -85,20 +85,20 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 \param art
 \return
 **/
-int ArticuloView_cargar ( ArticuloView *art )
+int ArticuloView_load ( ArticuloView *art )
 {
     blDebug ( "ArticuloView_cargar", 0 );
     ListLResArticulo *l = art->findChild<ListLResArticulo *> ( "lresfacturacion" );
-    l->cargar ( art->dbValue ( "idarticulo" ) );
+    l->load ( art->dbValue ( "idarticulo" ) );
 
     ListEntregas *l1 = art->findChild<ListEntregas *> ( "lentregas" );
-    l1->cargar ( art->dbValue ( "idarticulo" ) );
+    l1->load ( art->dbValue ( "idarticulo" ) );
 
     ListCompras *lc = art->findChild<ListCompras *> ( "lcompras" );
-    lc->cargar ( art->dbValue ( "idarticulo" ) );
+    lc->load ( art->dbValue ( "idarticulo" ) );
 
     ListRecogidas *llr = art->findChild<ListRecogidas *> ( "lrecogidas" );
-    llr->cargar ( art->dbValue ( "idarticulo" ) );
+    llr->load ( art->dbValue ( "idarticulo" ) );
 
     blDebug ( "END ArticuloView_cargar", 0 );
     return 0;

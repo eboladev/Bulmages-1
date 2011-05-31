@@ -80,7 +80,7 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     
     presentar();
     mdb_idreunion = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -108,7 +108,7 @@ void ConvReunionList::presentar()
 {
     blDebug ( "ConvReunionList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM reunion  WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM reunion  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     blDebug ( "END ConvReunionList::presentar", 0 );
 }
@@ -157,7 +157,7 @@ void ConvReunionList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void ConvReunionList::borrar()
+void ConvReunionList::remove()
 {
     blDebug ( "ConvReunionList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -167,9 +167,9 @@ void ConvReunionList::borrar()
     } // end if
     try {
         mdb_idreunion = mui_list->dbValue ( "idreunion" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ConvReunionView * cv = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idreunion ) )
+            if ( cv->load ( mdb_idreunion ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -191,9 +191,9 @@ void ConvReunionList::editar ( int )
     blDebug ( "ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idreunion = mui_list->dbValue ( "idreunion" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ConvReunionView * bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idreunion ) ) {
+            if ( bud->load ( mdb_idreunion ) ) {
                 delete bud;
                 return;
             } // end if

@@ -37,8 +37,8 @@ class PLUGINBF_PROVEEDOR_EXPORT ProveedorView : public BfForm, public Ui_Proveed
 public:
     ProveedorView ( BfCompany *comp, QWidget *parent = 0 );
     ~ProveedorView();
-    virtual int guardarPre();
-    virtual int guardarPost();
+    virtual int beforeSave();
+    virtual int afterSave();
 
 public slots:
     virtual void on_mui_cifproveedor_lostFocus();

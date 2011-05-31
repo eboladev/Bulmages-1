@@ -219,8 +219,8 @@ void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent *  )
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
 //    CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(mui_cuadrante->currentRow(), mui_cuadrante->currentColumn());
-    connect ( cuad, SIGNAL ( save() ), this, SLOT ( refresh() ) );
-    cuad->cargar ( idcuadrante() );
+    connect ( cuad, SIGNAL ( saved() ), this, SLOT ( refresh() ) );
+    cuad->load ( idcuadrante() );
 }
 
 

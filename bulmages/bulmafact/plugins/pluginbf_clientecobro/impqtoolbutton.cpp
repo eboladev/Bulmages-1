@@ -112,7 +112,7 @@ void GenCobroQToolButton::click()
                 while ( !cur->eof() ) {
                     CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
                     fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                    bud->cargar ( cur->value( "idcobro" ) );
+                    bud->load ( cur->value( "idcobro" ) );
                     bud->pintar();
                     bud->show();
                     cur->nextRecord();
@@ -166,7 +166,7 @@ void GenCobroQToolButton::click()
                 while ( !cur->eof() ) {
                     CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
                     fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                    bud->cargar ( cur->value( "idcobro" ) );
+                    bud->load ( cur->value( "idcobro" ) );
                     bud->pintar();
                     bud->show();
                     cur->nextRecord();
@@ -216,7 +216,7 @@ void GenCobroQToolButton::click()
                 while ( !cur->eof() ) {
                     CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
                     fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                    bud->cargar ( cur->value( "idcobro" ) );
+                    bud->load ( cur->value( "idcobro" ) );
                     bud->pintar();
                     bud->show();
                     cur->nextRecord();

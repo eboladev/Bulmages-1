@@ -45,7 +45,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     groupBox1->setDisabled ( TRUE );
-    setModoEdicion();
+    setEditMode();
     m_cursortiposocio = NULL;
     m_item = NULL;
     pintar();
@@ -115,7 +115,7 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
 /**
 \return
 **/
-int TiposocioView::guardar()
+int TiposocioView::save()
 {
     blDebug ( "TiposocioView::on_mui_guardar_clicked", 0 );
     try {

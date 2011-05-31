@@ -118,7 +118,7 @@ ProveedorView::~ProveedorView()
 }
 
 
-int ProveedorView::guardarPre()
+int ProveedorView::beforeSave()
 {
 	int res1;
 
@@ -131,7 +131,7 @@ int ProveedorView::guardarPre()
 }
 
 
-int ProveedorView::guardarPost()
+int ProveedorView::afterSave()
 {
  
 	int res1;

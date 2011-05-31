@@ -153,7 +153,7 @@ public:
     inline void setnomctacliente ( QString val ) {
         mdb_nomctacliente = val;
     };
-    void borrar();
+    void remove();
 };
 
 #endif

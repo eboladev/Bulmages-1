@@ -190,11 +190,11 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 \param fich
 \return
 **/
-int BlForm_cargar ( BlForm *fich )
+int BlForm_load ( BlForm *fich )
 {
     BlSubForm * form = fich->findChild<BlSubForm *> ( "mui_tipostrabajo" );
     if ( form )
-        form->cargar ( "SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->dbValue ( "idalmacen" ) );
+        form->load ( "SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->dbValue ( "idalmacen" ) );
     return 0;
 }
 
@@ -210,7 +210,7 @@ int BlForm_guardar_Post ( BlForm *fich )
     BlSubForm * form = fich->findChild<BlSubForm *> ( "mui_tipostrabajo" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->dbValue ( "idalmacen" ) );
-        form->guardar();
+        form->save();
     }
     blDebug ( "END BlForm_guardar_Post", 0 );
     return 0;

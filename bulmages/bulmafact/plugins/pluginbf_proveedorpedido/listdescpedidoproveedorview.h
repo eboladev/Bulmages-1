@@ -39,10 +39,10 @@ public:
     ~ListDescuentoPedidoProveedorView() {};
 
 public slots:
-    virtual void cargar ( QString idpedidoproveedor ) {
+    virtual void load ( QString idpedidoproveedor ) {
 	blDebug ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
 	mdb_idpedidoproveedor = idpedidoproveedor;
-	BlSubForm::cargar ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
+	BlSubForm::load ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
     };
 
 };

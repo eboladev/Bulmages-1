@@ -69,7 +69,7 @@ public:
     QString nomcontrato();
     QString refcontrato();
     void editar ( int );
-    void borrar ();
+    void remove ();
     void imprimir ();
     void presentar ();
     virtual void on_mui_actualizar_clicked();

@@ -90,12 +90,12 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 \param art
 \return
 **/
-int ArticuloView_cargar ( ArticuloView *art )
+int ArticuloView_load ( ArticuloView *art )
 {
     blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "lmodificadores" );
     if ( l ) {
-        l->cargar ( "SELECT * FROM modificador WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
+        l->load ( "SELECT * FROM modificador WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
     } // end if
     blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
@@ -113,7 +113,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "lmodificadores" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
-        l->guardar();
+        l->save();
 //        invalidaEstadAlias();
         return 0;
     } catch ( ... ) {

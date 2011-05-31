@@ -81,7 +81,7 @@ int BlForm_guardar_Post ( BlForm *l )
         QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + l->dbValue ( "cifcliente" ) + "'";
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            fich->cargar ( cur->value( "idproveedor" ) );
+            fich->load ( cur->value( "idproveedor" ) );
             guardar = TRUE;
         } else {
             if ( QMessageBox::question ( l, "Crear proveedor", "Desea crear un proveedor con los datos del cliente", QMessageBox::Yes | QMessageBox::No ) == QMessageBox::Yes ) {
@@ -101,7 +101,7 @@ int BlForm_guardar_Post ( BlForm *l )
         fich->setDbValue ( "telproveedor", l->dbValue ( "telcliente" ) );
 
         if ( guardar )
-            fich->guardar();
+            fich->save();
         delete fich;
     } // end if
     blDebug ( "END BlForm_guardar_Post", 0 );

@@ -249,7 +249,7 @@ void PresupuestoView::generarPedidoCliente()
 
                 bud = mainCompany() ->newPedidoClienteView();
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->value( "idpedidocliente" ) );
+                bud->load ( cur->value( "idpedidocliente" ) );
                 bud->show();
                 delete cur;
                 return;
@@ -259,7 +259,7 @@ void PresupuestoView::generarPedidoCliente()
 
             /// Creamos el pedido.
             bud = mainCompany() ->newPedidoClienteView();
-            bud->cargar ( "0" );
+            bud->load ( "0" );
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
             /// Traspasamos toda la informacion del presupuesto al pedido.
@@ -356,13 +356,13 @@ void PresupuestoView::on_mui_idalmacen_valueChanged ( QString id )
 /**
 \return
 **/
-int PresupuestoView::borrarPre()
+int PresupuestoView::beforeDelete()
 {
     blDebug ( "PresupuestoView::borrar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "Presupuesto_borrarPre", this );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    g_plugins->lanza ( "Presupuesto_beforeDelete", this );
+    m_listalineas->remove();
+    m_listadescuentos->remove();
 
     blDebug ( "END PresupuestoView::borrar", 0 );
     return 0;
@@ -378,8 +378,8 @@ int PresupuestoView::cargarPost ( QString idbudget )
 {
     blDebug ( "PresupuestoView::cargarPost", 0 );
 
-    m_listalineas->cargar ( idbudget );
-    m_listadescuentos->cargar ( idbudget );
+    m_listalineas->load ( idbudget );
+    m_listadescuentos->load ( idbudget );
 
     calculaypintatotales();
 
@@ -392,17 +392,17 @@ int PresupuestoView::cargarPost ( QString idbudget )
 /**
 \return
 **/
-int PresupuestoView::guardarPost()
+int PresupuestoView::afterSave()
 {
-    blDebug ( "PresupuestoView::guardarPost", 0 );
+    blDebug ( "PresupuestoView::afterSave", 0 );
 
     m_listalineas->setColumnValue ( "idpresupuesto", dbValue ( "idpresupuesto" ) );
     m_listadescuentos->setColumnValue ( "idpresupuesto", dbValue ( "idpresupuesto" ) );
 
-    m_listalineas->guardar();
-    m_listadescuentos->guardar();
+    m_listalineas->save();
+    m_listadescuentos->save();
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "Presupuesto_guardarPost_Post", this );
+    g_plugins->lanza ( "Presupuesto_afterSave_Post", this );
 
     blDebug ( "END PresupuestoView::guardar", 0 );
     return 0;

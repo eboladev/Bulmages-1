@@ -37,7 +37,7 @@ public:
     ~ListLResArticulo() {};
 
 public slots:
-    virtual void cargar ( QString idarticulo );
+    virtual void load ( QString idarticulo );
 };
 
 
@@ -51,7 +51,7 @@ public:
     ~ListEntregas() {};
 
 public slots:
-    virtual void cargar ( QString idarticulo );
+    virtual void load ( QString idarticulo );
 };
 
 class ListCompras : public BfSubForm
@@ -64,7 +64,7 @@ public:
     ~ListCompras() {};
 
 public slots:
-    virtual void cargar ( QString idarticulo );
+    virtual void load ( QString idarticulo );
 };
 
 class ListRecogidas : public BfSubForm
@@ -77,7 +77,7 @@ public:
     ~ListRecogidas() {};
 
 public slots:
-    virtual void cargar ( QString idarticulo );
+    virtual void load ( QString idarticulo );
 };
 
 #endif

@@ -51,8 +51,8 @@ public:
     void inicializar();
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
 
 public slots:
     virtual void on_m_descuentos_editFinish ( int, int );

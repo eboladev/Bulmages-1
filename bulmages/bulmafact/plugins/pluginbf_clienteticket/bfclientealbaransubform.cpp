@@ -69,7 +69,7 @@ BfClienteTicketSubForm::BfClienteTicketSubForm ( QWidget *parent )
 /**
 \param idalbaran
 **/
-void BfClienteTicketSubForm::cargar ( QString idalbaran )
+void BfClienteTicketSubForm::load ( QString idalbaran )
 {
     blDebug ( "BfClienteTicketSubForm::cargar", 0 );
     mdb_idalbaran = idalbaran;
@@ -78,7 +78,7 @@ void BfClienteTicketSubForm::cargar ( QString idalbaran )
     if ( res != 0 )
         return;
 
-    BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvpivainclalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
+    BlSubForm::load ( "SELECT *, (cantlalbaran * pvpivainclalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
     blDebug ( "END BfClienteTicketSubForm::cargar", 0 );
 }
 

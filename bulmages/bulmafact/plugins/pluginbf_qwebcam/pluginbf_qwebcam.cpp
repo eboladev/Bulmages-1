@@ -99,11 +99,11 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 \param art
 \return
 **/
-int ArticuloView_cargar ( ArticuloView *art )
+int ArticuloView_load ( ArticuloView *art )
 {
     blDebug ( "ArticuloView_cargar", 0 );
     QWebCamView *l = art->findChild<QWebCamView *> ( "lpromedios" );
-    l->cargar ( art->dbValue ( "idarticulo" ) );
+    l->load ( art->dbValue ( "idarticulo" ) );
     blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }

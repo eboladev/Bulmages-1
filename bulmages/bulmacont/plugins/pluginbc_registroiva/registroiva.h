@@ -197,10 +197,10 @@ public:
         blDebug ( "funcion no implementada", 2 );
     };
     virtual ~RegistroIva();
-    virtual int cargar ( QString );
+    virtual int load ( QString );
     virtual void pintaRegistroIva();
-    virtual int guardar();
-    virtual int borrar();
+    virtual int save();
+    virtual int remove();
     virtual void calculaypintatotales() {}
     ;
     virtual void recalculaIva() {

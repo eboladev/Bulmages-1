@@ -70,11 +70,11 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
 /**
 \param isalbaranp
 **/
-void BfProveedorAlbaranSubForm::cargar ( QString idalbaranp )
+void BfProveedorAlbaranSubForm::load ( QString idalbaranp )
 {
     blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idalbaranp = idalbaranp;
-    BlSubForm::cargar ( "SELECT *, (cantlalbaranp * pvplalbaranp)::NUMERIC(12,2) AS totallalbaranp FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
+    BlSubForm::load ( "SELECT *, (cantlalbaranp * pvplalbaranp)::NUMERIC(12,2) AS totallalbaranp FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
     blDebug ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 

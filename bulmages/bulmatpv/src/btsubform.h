@@ -71,7 +71,7 @@ protected:
 public:
     BtSubForm ( QWidget *parent = 0 );
     virtual ~BtSubForm();
-    virtual void cargar ( QString query );
+    virtual void load ( QString query );
     virtual void setMainCompany ( BlMainCompany * );
     virtual void on_mui_list_cellChanged ( int row, int col );
     virtual int cerrarEditor();

@@ -661,8 +661,8 @@ void BtCompany::cobrar(bool imprimir)
     // Si el albaran existe, es que ya lo hemos sacado como ticket por la impresora
     if ( m_ticketActual->dbValue ( "idalbaran" ) != "" ) {
 
-        if ( m_ticketActual->guardar() == -1) {
-            blDebug ( "Error en la llamada a guardar()", 0 );
+        if ( m_ticketActual->save() == -1) {
+            blDebug ( "Error en la llamada a save()", 0 );
             return;
         }// end if
 
@@ -674,8 +674,8 @@ void BtCompany::cobrar(bool imprimir)
     // Si no, guardamos e imprimimos tambien si se nos indica
     } else {
     
-        if ( m_ticketActual->guardar() == -1) {
-            blDebug ( "Error en la llamada a guardar()", 0 );
+        if ( m_ticketActual->save() == -1) {
+            blDebug ( "Error en la llamada a save()", 0 );
             return;
         }// end if
     

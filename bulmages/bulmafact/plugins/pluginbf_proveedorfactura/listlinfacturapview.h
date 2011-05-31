@@ -42,7 +42,7 @@ public:
     ~ListLinFacturaProveedorView() {};
 
 public slots:
-    virtual void cargar ( QString idfacturap );
+    virtual void load ( QString idfacturap );
 };
 
 #endif

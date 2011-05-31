@@ -61,7 +61,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
 
     /// Fin de nuevas amortizaciones
     mainCompany() ->insertWindow ( windowTitle(), this );
-    cargar ( "1" );
+    load ( "1" );
     blScript(this);
     blDebug ( "END VehiculoView::VehiculoView", 0 );
 }
@@ -82,7 +82,7 @@ VehiculoView::~VehiculoView()
 /**
 \return
 **/
-int VehiculoView::guardar()
+int VehiculoView::save()
 {
     blDebug ( "VehiculoView::guardar", 0 );
     try {
@@ -95,7 +95,7 @@ int VehiculoView::guardar()
         QString id = "";
         BlDbRecord::dbSave ( id );
         mui_listadomantvehiculo->setColumnValue ( "idvehiculo", id );
-        mui_listadomantvehiculo->guardar();
+        mui_listadomantvehiculo->save();
         dialogChanges_readValues();
         return 0;
     } catch ( ... ) {
@@ -111,11 +111,11 @@ int VehiculoView::guardar()
 \param idvehiculo
 \return
 **/
-int VehiculoView::cargar ( QString idvehiculo )
+int VehiculoView::load ( QString idvehiculo )
 {
     blDebug ( "VehiculoView::cargar", 0 );
     try {
-        BlDbRecord::cargar ( idvehiculo );
+        BlDbRecord::load ( idvehiculo );
 
         // Se pinta.
         mui_matriculavehiculo->setText ( dbValue ( "matriculavehiculo" ) );
@@ -125,7 +125,7 @@ int VehiculoView::cargar ( QString idvehiculo )
         mui_preciovehiculo->setText ( dbValue ( "preciovehiculo" ) );
 
         QString mantenimientos = "SELECT * FROM mantvehiculo WHERE idvehiculo = '" + idvehiculo + "'";
-        mui_listadomantvehiculo->cargar ( mantenimientos );
+        mui_listadomantvehiculo->load ( mantenimientos );
 
         dialogChanges_readValues();
         mainCompany() ->insertWindow ( windowTitle(), this );

@@ -40,7 +40,7 @@ public:
     ~ListAlumnosSocioView() {};
     
 public slots:
-    virtual void cargar ( QString idcontrato );
+    virtual void load ( QString idcontrato );
 };
 
 #include "ui_sociobase.h"
@@ -54,8 +54,8 @@ public:
     ~SocioView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     virtual int cargarPost(QString id);
     
 public slots:

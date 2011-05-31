@@ -190,7 +190,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         AlbaranProveedorView * albpro = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        albpro->cargar ( cur->value( "idalbaranp" ) );
+        albpro->load ( cur->value( "idalbaranp" ) );
         mainCompany() ->m_pWorkspace->addSubWindow ( albpro );
         albpro->show();
         cur->nextRecord();
@@ -223,11 +223,11 @@ void FacturaProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 /**
 \return
 **/
-int FacturaProveedorView::borrarPre()
+int FacturaProveedorView::beforeDelete()
 {
     blDebug ( "FacturaProveedorView::borrar", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    m_listalineas->remove();
+    m_listadescuentos->remove();
     blDebug ( "END FacturaProveedorView::borrar", 0 );
     return 0;
 }
@@ -247,8 +247,8 @@ int FacturaProveedorView::borrarPre()
 int FacturaProveedorView::cargarPost ( QString idfacturap )
 {
     blDebug ( "FacturaProveedorView::cargar", 0 );
-    m_listalineas->cargar ( idfacturap );
-    m_listadescuentos->cargar ( idfacturap );
+    m_listalineas->load ( idfacturap );
+    m_listadescuentos->load ( idfacturap );
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "FacturaProveedorView_cargarPost_Post", this );
@@ -267,14 +267,14 @@ int FacturaProveedorView::cargarPost ( QString idfacturap )
 /**
 \return
 **/
-int FacturaProveedorView::guardarPost()
+int FacturaProveedorView::afterSave()
 {
-    blDebug ( "FacturaProveedorView::guardar()", 0 );
+    blDebug ( "FacturaProveedorView::save()", 0 );
     m_listalineas->setColumnValue ( "idfacturap", dbValue ( "idfacturap" ) );
     m_listadescuentos->setColumnValue ( "idfacturap", dbValue ( "idfacturap" ) );
-    m_listalineas->guardar();
-    m_listadescuentos->guardar();
-    blDebug ( "END FacturaProveedorView::guardar()", 0 );
+    m_listalineas->save();
+    m_listadescuentos->save();
+    blDebug ( "END FacturaProveedorView::save()", 0 );
     return 0;
 }
 

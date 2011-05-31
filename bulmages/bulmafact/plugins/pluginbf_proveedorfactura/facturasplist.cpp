@@ -95,7 +95,7 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     m_proveedor->setTableName ( "proveedor" );
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
@@ -152,7 +152,7 @@ FacturasProveedorList::~FacturasProveedorList()
 void FacturasProveedorList::presentar()
 {
     blDebug ( "FacturasProveedorList::presentar", 0 );
-    mui_list->cargar ( "SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
+    mui_list->load ( "SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
 
     /// Hacemos el calculo del total.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
@@ -218,9 +218,9 @@ void FacturasProveedorList::editar ( int row )
     blDebug ( "FacturasProveedorList::editar", 0 );
     try {
         mdb_idfacturap = mui_list->dbValue ( QString ( "idfacturap" ), row );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             FacturaProveedorView * prov = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( prov->cargar ( mdb_idfacturap ) ) {
+            if ( prov->load ( mdb_idfacturap ) ) {
                 delete prov;
                 return;
             } // end if
@@ -244,7 +244,7 @@ void FacturasProveedorList::editar ( int row )
 /**
 \return
 **/
-void FacturasProveedorList::borrar()
+void FacturasProveedorList::remove()
 {
     blDebug ( "FacturasProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -255,7 +255,7 @@ void FacturasProveedorList::borrar()
     try {
         mdb_idfacturap = mui_list->dbValue ( "idfacturap" );
         FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        bud->cargar ( mdb_idfacturap );
+        bud->load ( mdb_idfacturap );
         bud->on_mui_borrar_clicked();
         delete bud;
         presentar();
@@ -398,11 +398,11 @@ FacturasProveedorListSubform::~FacturasProveedorListSubform()
 ///
 /**
 **/
-void FacturasProveedorListSubform::cargar()
+void FacturasProveedorListSubform::load()
 {
     blDebug ( "FacturasProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM facturap";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END FacturasProveedorListSubform::cargar", 0 );
 }
 
@@ -411,10 +411,10 @@ void FacturasProveedorListSubform::cargar()
 /**
 \param query
 **/
-void FacturasProveedorListSubform::cargar ( QString query )
+void FacturasProveedorListSubform::load ( QString query )
 {
     blDebug ( "FacturasProveedorListSubform::cargar", 0 );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END FacturasProveedorListSubform::cargar", 0 );
 }
 

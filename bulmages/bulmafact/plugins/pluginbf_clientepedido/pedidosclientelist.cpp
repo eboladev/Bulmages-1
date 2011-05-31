@@ -92,7 +92,7 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
 
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
@@ -140,7 +140,7 @@ void PedidosClienteList::presentar()
 {
     blDebug ( "PedidosClienteList::presenta", 0 );
     /// Hacemos el listado y lo presentamos.
-    mui_list->cargar ( "SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, imppedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente = cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
+    mui_list->load ( "SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, imppedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente = cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
 
     /// Hacemos el calculo del total.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
@@ -230,9 +230,9 @@ void PedidosClienteList::editar ( int row )
     blDebug ( "ProveedorList::editar", 0 );
     try {
         m_idpedidocliente = mui_list->dbValue ( QString ( "idpedidocliente" ), row );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             PedidoClienteView * prov = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( prov->cargar ( m_idpedidocliente ) ) {
+            if ( prov->load ( m_idpedidocliente ) ) {
                 delete prov;
                 return;
             } // end if
@@ -263,7 +263,7 @@ void PedidosClienteList::imprimir()
 /**
 \return
 **/
-void PedidosClienteList::borrar()
+void PedidosClienteList::remove()
 {
     blDebug ( "PedidosClienteList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -273,9 +273,9 @@ void PedidosClienteList::borrar()
     } // end if
     try {
         m_idpedidocliente = mui_list->dbValue ( QString ( "idpedidocliente" ) );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             PedidoClienteView * pcv = new PedidoClienteView ( ( BfCompany * ) mainCompany() );
-            if ( pcv->cargar ( m_idpedidocliente ) ) {
+            if ( pcv->load ( m_idpedidocliente ) ) {
                 throw - 1;
             } // end if
             pcv->on_mui_borrar_clicked();
@@ -367,11 +367,11 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
 ///
 /**
 **/
-void PedidosClienteListSubform::cargar()
+void PedidosClienteListSubform::load()
 {
     blDebug ( "PedidosClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM pedidocliente";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END PedidosClienteListSubform::cargar", 0 );
 }
 
@@ -380,10 +380,10 @@ void PedidosClienteListSubform::cargar()
 /**
 \param query
 **/
-void PedidosClienteListSubform::cargar ( QString query )
+void PedidosClienteListSubform::load ( QString query )
 {
     blDebug ( "PedidosClienteListSubform::cargar", 0 );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END PedidosClienteListSubform::cargar", 0 );
 }
 

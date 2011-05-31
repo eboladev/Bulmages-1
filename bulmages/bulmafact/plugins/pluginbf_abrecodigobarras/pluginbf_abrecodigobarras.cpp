@@ -85,7 +85,7 @@ int BlAction_triggered(BlAction *accion) {
                 return 0;
             } // end if
             FacturaView *prov = ( FacturaView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+            if ( prov->load ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return 0;
             } // end if
@@ -99,7 +99,7 @@ int BlAction_triggered(BlAction *accion) {
                 return 0;
             } // end if
             PresupuestoView * prov =  ( PresupuestoView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+            if ( prov->load ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return 0;
             } // end if
@@ -113,7 +113,7 @@ int BlAction_triggered(BlAction *accion) {
                 return 0;
             } // end if
             PedidoClienteView * prov = ( PedidoClienteView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+            if ( prov->load ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return 0;
             } // end if
@@ -128,7 +128,7 @@ int BlAction_triggered(BlAction *accion) {
                 return 0;
             } // end if
             AlbaranClienteView *prov = ( AlbaranClienteView * ) g_plugParams;
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+            if ( prov->load ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return 0;
             } // end if
@@ -137,7 +137,7 @@ int BlAction_triggered(BlAction *accion) {
         } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
 
             PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) g_bges->company(), 0 );
-            if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
+            if ( prov->load ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return 0;
             } // end if

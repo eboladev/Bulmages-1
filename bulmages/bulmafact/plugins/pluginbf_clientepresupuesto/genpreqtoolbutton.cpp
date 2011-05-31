@@ -174,7 +174,7 @@ void GenPreQToolButton::generarFactura()
             }
             bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfactura" ) );
+            bud->load ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if
@@ -185,7 +185,7 @@ void GenPreQToolButton::generarFactura()
         fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
-        bud->cargar ( "0" );
+        bud->load ( "0" );
 
         /// Traspasamos los datos a la factura.
         fpv->recogeValores();
@@ -303,7 +303,7 @@ void GenPreQToolButton::generarFactura1()
             } // end if
             bud = new FacturaView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfactura" ) );
+            bud->load ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if
@@ -312,7 +312,7 @@ void GenPreQToolButton::generarFactura1()
         /// Creamos el albaran.
         bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( "0" );
+        bud->load ( "0" );
 
         /// Traspasamos los datos al albaran.
         fpv->recogeValores();
@@ -433,7 +433,7 @@ void GenPreQToolButton::generarFactura2()
             } // end if
             bud = new FacturaView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfactura" ) );
+            bud->load ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if
@@ -442,7 +442,7 @@ void GenPreQToolButton::generarFactura2()
         /// Creamos el albaran.
         bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( "0" );
+        bud->load ( "0" );
 
         /// Traspasamos los datos al albaran.
         fpv->recogeValores();
@@ -611,7 +611,7 @@ void VerPreQToolButton::verPresupuesto()
             while ( !cur->eof() ) {
                 bud = new PresupuestoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
                 fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                if ( bud->cargar ( cur->value( "idpresupuesto" ) ) ) {
+                if ( bud->load ( cur->value( "idpresupuesto" ) ) ) {
                     delete bud;
                     return;
                 } // end if

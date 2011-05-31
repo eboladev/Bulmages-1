@@ -116,7 +116,7 @@ void ImpQToolButton::click()
         m_companyact->m_pWorkspace->addSubWindow ( fac );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
-        fac->cargar ( "0" );
+        fac->load ( "0" );
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -133,7 +133,7 @@ void ImpQToolButton::click()
                     return;
                 } // end if
                 AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;
-                pres->cargar ( id );
+                pres->load ( id );
                 if ( pres->mui_procesadoalbaran->isChecked() ) {
                     pres->close();
                     return;

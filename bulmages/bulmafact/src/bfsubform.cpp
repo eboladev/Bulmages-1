@@ -74,10 +74,10 @@ BfSubForm::~BfSubForm()
 /**
 \param query Una consulta SQL valida.
 **/
-void BfSubForm::cargar ( QString query )
+void BfSubForm::load ( QString query )
 {
     blDebug ( "BfSubForm::cargar", 0, query );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END BfSubForm::cargar", 0 );
 }
 

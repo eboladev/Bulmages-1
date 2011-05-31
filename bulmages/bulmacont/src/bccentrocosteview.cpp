@@ -185,10 +185,10 @@ void BcCentroCosteView::mostrarplantilla()
     QString query;
 
     blDebug ( "mostrarplantilla", 2, QString::number ( idc_coste ) );
-    BcForm::cargar ( QString::number ( idc_coste ) );
+    BcForm::load ( QString::number ( idc_coste ) );
 
     query = "SELECT * FROM c_costedist LEFT JOIN (SELECT idc_coste AS idcc, nombre AS nomc_coste FROM c_coste) AS t1 ON c_costedist.idc_Coste = t1.idcc WHERE iddestc_coste=" + QString::number ( idc_coste );
-    mui_cdistribuidos->cargar ( query );
+    mui_cdistribuidos->load ( query );
 
 
     dialogChanges_readValues();
@@ -199,13 +199,13 @@ void BcCentroCosteView::mostrarplantilla()
 ///
 /**
 **/
-int BcCentroCosteView::guardar()
+int BcCentroCosteView::save()
 {
     blDebug ( "BcCentroCosteView::guardar", 0 );
-    BcForm::guardar();
+    BcForm::save();
 
     mui_cdistribuidos->setColumnValue ( "iddestc_coste", QString::number ( idc_coste ) );
-    mui_cdistribuidos->guardar();
+    mui_cdistribuidos->save();
 
     dialogChanges_readValues();
     repintar();

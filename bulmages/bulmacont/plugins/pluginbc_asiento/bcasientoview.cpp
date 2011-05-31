@@ -269,7 +269,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
     /// Cambiar la fecha del asiento.
     if ( estadoBcAsientoForm() != BcAsientoForm::ASCerrado && estadoBcAsientoForm() != BcAsientoForm::ASVacio ) {
         setDbValue ( "fecha", mui_fecha->text() );
-        BcAsientoForm::guardar();
+        BcAsientoForm::save();
     } else {
         iniciar_asiento_nuevo();
     } // end if
@@ -329,7 +329,7 @@ void BcAsientoView::boton_cargarasiento()
     BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
     if ( !curs->eof() ) {
         idas = curs->value( "idasiento" );
-        cargar ( idas );
+        load ( idas );
     } else {
         /// Si el asiento no existe se da la posibilidad de crear uno nuevo.
         if ( QMessageBox::question ( this,
@@ -353,7 +353,7 @@ void BcAsientoView::muestraasiento ( QString v )
 {
     blDebug ( "BcAsientoView::muestraasiento ", 0 );
     situarasiento ( v );
-    cargar ( v );
+    load ( v );
     blDebug ( "END BcAsientoView::muestraasiento ", 0 );
 }
 
@@ -361,24 +361,24 @@ void BcAsientoView::muestraasiento ( QString v )
 /// Prepara para guardar.
 /**
 **/
-void BcAsientoView::prepguardar()
+void BcAsientoView::prepareSave()
 {
-    blDebug ( "BcAsientoView::prepguardar", 0 );
+    blDebug ( "BcAsientoView::prepareSave", 0 );
     setDbValue ( "fecha", mui_fecha->text() );
     setDbValue ( "ordenasiento", mui_ordenasiento->text() );
     setDbValue ( "comentariosasiento", mui_comentariosAsiento->toPlainText() );
     setDbValue ( "clase", QString::number ( mui_claseAsiento->currentIndex() ) );
-    blDebug ( "END BcAsientoView::prepguardar", 0 );
+    blDebug ( "END BcAsientoView::prepareSave", 0 );
 }
 
 
 /// Post Guardado se hace una carga ya que la base de datos podria haber modificado cosas.
 /**
 **/
-int BcAsientoView::guardarPost()
+int BcAsientoView::afterSave()
 {
-    blDebug ( "BcAsientoView::guardarPost", 0 );
-    blDebug ( "BcAsientoView::guardarPost", 0 );
+    blDebug ( "BcAsientoView::afterSave", 0 );
+    blDebug ( "BcAsientoView::afterSave", 0 );
     return 0;
 }
 
@@ -403,7 +403,7 @@ void BcAsientoView::on_mui_borrar_clicked ( bool atendido )
     QString idasientosig = idasientosiguiente();
     QString idasientoant = idasientoanterior();
     int resultadoborrar;
-    resultadoborrar = BcAsientoForm::borrar ( atendido );
+    resultadoborrar = BcAsientoForm::remove ( atendido );
 
     /// Comprueba si se ha cancelado el borrado.
     if ( resultadoborrar == 2 ) return;
@@ -545,7 +545,7 @@ void BcAsientoList::boton_inicio()
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->firstRecord();
-        cargar ( cursorasientos->value( "idasiento" ) );
+        load ( cursorasientos->value( "idasiento" ) );
     } // end if
     } // end if
     blDebug ( "END BcAsientoList::boton_inicio", 0 );
@@ -564,7 +564,7 @@ void BcAsientoList::boton_fin()
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->lastRecord();
-        cargar ( cursorasientos->value( "idasiento" ) );
+        load ( cursorasientos->value( "idasiento" ) );
     } // end if
     } // end if
     blDebug ( "END BcAsientoList::boton_fin", 0 );
@@ -588,7 +588,7 @@ void BcAsientoList::boton_siguiente()
     } // end if
     if ( !cursorasientos->isLastRecord() ) {
         cursorasientos->nextRecord();
-        cargar ( cursorasientos->value( "idasiento" ) );
+        load ( cursorasientos->value( "idasiento" ) );
     }// end if
     } // end if
     blDebug ( "END BcAsientoList::boton_siguiente", 0 );
@@ -613,7 +613,7 @@ void BcAsientoList::boton_anterior()
     } // end if
     if ( !cursorasientos->isFirstRecord() ) {
         cursorasientos->previousRecord();
-        cargar ( cursorasientos->value( "idasiento" ) );
+        load ( cursorasientos->value( "idasiento" ) );
     } // end if
     } // end if
     blDebug ( "END BcAsientoList::boton_anterior", 0 );
@@ -860,7 +860,7 @@ void BcAsientoView::on_mui_cerrarasiento_clicked()
         blDebug ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0, "Descuadrado" );
         return;
     } // end if
-    prepguardar();
+    prepareSave();
     cerrar();
     blDebug ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
 }
@@ -872,8 +872,8 @@ void BcAsientoView::on_mui_cerrarasiento_clicked()
 void BcAsientoView::on_mui_guardarasiento_clicked()
 {
     blDebug ( "BcAsientoView::on_mui_guardarasiento_clicked", 0 );
-    prepguardar();
-    BcAsientoForm::guardar();
+    prepareSave();
+    BcAsientoForm::save();
     blDebug ( "END BcAsientoView::on_mui_guardarasiento_clicked", 0 );
 }
 
@@ -929,7 +929,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         while (!curcomp -> eof() ) {                                                       
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
                 muestraasiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::borrar ( FALSE );                                                
+                BcAsientoForm::remove ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
         delete curcomp;*/ 
@@ -1048,7 +1048,7 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         while (!curcomp -> eof() ) {                                                       
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
                 muestraasiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::borrar ( FALSE );                                                
+                BcAsientoForm::remove ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
         delete curcomp; 
@@ -1126,7 +1126,7 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         while (!curcomp -> eof() ) {                                                       
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
                 muestraasiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::borrar ( FALSE );                                                
+                BcAsientoForm::remove ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
         delete curcomp; 

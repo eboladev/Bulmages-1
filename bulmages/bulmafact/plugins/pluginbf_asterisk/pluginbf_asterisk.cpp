@@ -206,7 +206,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 
     BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
     l1->setColumnValue ( "idtrabajador", trab->mdb_idtrabajador );
-    l1->guardar();
+    l1->save();
     trab->mainCompany() ->commit();
     return 0;
 }
@@ -231,7 +231,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 
     /// Cargamos las validaciones de asterisk.
     BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
-    l1->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->mdb_idtrabajador + " ORDER BY fechavalasterisk, horavalasterisk" );
+    l1->load ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->mdb_idtrabajador + " ORDER BY fechavalasterisk, horavalasterisk" );
 
     return 0;
 }
@@ -242,11 +242,11 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 \param fich
 \return
 **/
-int BlForm_cargar ( BlForm *fich )
+int BlForm_load ( BlForm *fich )
 {
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_validacionesalm" );
     if ( form )
-        form->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->dbValue ( "idalmacen" ) + " ORDER BY fechavalasterisk, horavalasterisk" );
+        form->load ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->dbValue ( "idalmacen" ) + " ORDER BY fechavalasterisk, horavalasterisk" );
     return 0;
 }
 
@@ -256,7 +256,7 @@ int BlForm_guardar_Post ( BlForm *fich )
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_validacionesalm" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->dbValue ( "idalmacen" ) );
-        form->guardar();
+        form->save();
     }
     return 0;
 }

@@ -38,7 +38,7 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_list->setMainCompany ( mainCompany() );
-    mui_list->cargar();
+    mui_list->load();
     mui_list->setColumnWidth ( 0, 250 );
     mainCompany() ->insertWindow ( _ ( "Tarifas" ), this );
     setSubForm ( mui_list );
@@ -71,7 +71,7 @@ void TarifaListView::editar ( int row )
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
-    tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
+    tar->load ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
     blDebug ( "END TarifaListView::editar", 0 );
 }
@@ -95,14 +95,14 @@ void TarifaListView::crear()
 ///
 /**
 **/
-void TarifaListView::borrar()
+void TarifaListView::remove()
 {
     blDebug ( "TarifaListView::borrar\n", 0 );
     int a = mui_list->currentRow();
     if ( a >= 0 ) {
         TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
         QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
-        tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), a ) );
+        tar->load ( mui_list->dbValue ( QString ( "idtarifa" ), a ) );
         tar->on_mui_borrar_clicked();
         delete tar;
     } else {
@@ -118,7 +118,7 @@ void TarifaListView::borrar()
 void TarifaListView::actualizar()
 {
     blDebug ( "TarifaListView::actualizar\n", 0 );
-    mui_list->cargar();
+    mui_list->load();
     blDebug ( "END TarifaListView::actualizar\n", 0 );
 }
 

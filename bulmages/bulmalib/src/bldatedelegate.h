@@ -29,7 +29,7 @@
 /** Calendario flotante para seleccionar fechas en un campo de listado.
 Modo de empleo:
 Agregar esta l&iacute;nea en el m&eacute;todo "cargar" del listado que hereda de BlSubForm,
-justo despu&eucte;s de BfSubForm::cargar ( consulta ):
+justo despu&eucte;s de BfSubForm::load ( consulta ):
 mui_list->setItemDelegateForColumn ( <columna>, new BlDateDelegate ( mainCompany(), this ) );
 */
 class BL_EXPORT BlDateDelegate: public QStyledItemDelegate

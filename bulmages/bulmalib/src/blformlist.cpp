@@ -85,11 +85,11 @@ void BlFormList::blScript(QObject * obj) {
 ///
 /**
 **/
-void BlFormList::setModoConsulta()
+void BlFormList::setSelectMode()
 {
-    blDebug ( "BlFormList::setModoConsulta", 0 );
+    blDebug ( "BlFormList::setSelectMode", 0 );
     m_modo = BL_SELECT_MODE;
-    blDebug ( "END BlFormList::setModoConsulta", 0 );
+    blDebug ( "END BlFormList::setSelectMode", 0 );
 
 }
 
@@ -97,11 +97,11 @@ void BlFormList::setModoConsulta()
 ///
 /**
 **/
-void BlFormList::setModoEdicion()
+void BlFormList::setEditMode()
 {
-    blDebug ( "BlFormList::setModoEdicion", 0 );
+    blDebug ( "BlFormList::setEditMode", 0 );
     m_modo = BL_EDIT_MODE;
-    blDebug ( "END BlFormList::setModoEdicion", 0 );
+    blDebug ( "END BlFormList::setEditMode", 0 );
 }
 
 
@@ -109,10 +109,10 @@ void BlFormList::setModoEdicion()
 /**
 \return
 **/
-bool BlFormList::modoEdicion()
+bool BlFormList::editMode()
 {
-    blDebug ( "BlFormList::modoEdicion", 0 );
-    blDebug ( "END BlFormList::modoEdicion", 0 );
+    blDebug ( "BlFormList::editMode", 0 );
+    blDebug ( "END BlFormList::editMode", 0 );
     return m_modo == BL_EDIT_MODE;
 }
 
@@ -121,10 +121,10 @@ bool BlFormList::modoEdicion()
 /**
 \return
 **/
-bool BlFormList::modoConsulta()
+bool BlFormList::selectMode()
 {
-    blDebug ( "BlFormList::modoConsulta", 0 );
-    blDebug ( "END BlFormList::modoConsulta", 0 );
+    blDebug ( "BlFormList::selectMode", 0 );
+    blDebug ( "END BlFormList::selectMode", 0 );
     return m_modo == BL_SELECT_MODE;
 }
 
@@ -234,7 +234,7 @@ void BlFormList::crear()
 ///
 /**
 **/
-void BlFormList::borrar()
+void BlFormList::remove()
 {
     blDebug ( "metodo para ser reimplementado en clases hijas", 2 );
 }
@@ -258,7 +258,7 @@ void BlFormList::presentar()
 {
     blDebug ( "BlFormList::presentar", 0 );
     QString query = "SELECT * FROM " + m_listado->tableName();
-    m_listado->cargar ( query );
+    m_listado->load ( query );
     blDebug ( "END BlFormList::presentar", 0 );
 }
 
@@ -273,9 +273,9 @@ void BlFormList::setSubForm ( BlSubForm *list )
     m_listado = list;
     /// Establecemos el mismo modo en el subformulario que en el listado.
     if ( m_modo == BL_EDIT_MODE ) {
-        m_listado->setModoEdicion();
+        m_listado->setEditMode();
     } else {
-        m_listado->setModoConsulta();
+        m_listado->setSelectMode();
     } // end if
     blDebug ( "END BlFormList::setSubForm", 0 );
 }
@@ -378,7 +378,7 @@ void BlFormList::on_mui_crear_clicked()
 void BlFormList::on_mui_borrar_clicked()
 {
     blDebug ( "BlFormList::on_mui_borrar_clicked", 0 );
-    borrar();
+    remove();
     blDebug ( "END BlFormList::on_mui_borrar_clicked", 0 );
 }
 

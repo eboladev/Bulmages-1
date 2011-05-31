@@ -173,12 +173,12 @@ void PedidoProveedorView::on_mui_lineasDetalle_editFinish ( int, int )
 /**
 \return
 **/
-int PedidoProveedorView::borrarPre()
+int PedidoProveedorView::beforeDelete()
 {
-    blDebug ( "PedidoProveedor::borrarPre", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
-    blDebug ( "END PedidoProveedor::borrarPre", 0 );
+    blDebug ( "PedidoProveedor::beforeDelete", 0 );
+    m_listalineas->remove();
+    m_listadescuentos->remove();
+    blDebug ( "END PedidoProveedor::beforeDelete", 0 );
     return 0;
 }
 
@@ -192,8 +192,8 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
 {
     blDebug ( "PedidoProveedor::cargarPost", 0 );
 
-    m_listalineas->cargar ( idbudget );
-    m_listadescuentos->cargar ( idbudget );
+    m_listalineas->load ( idbudget );
+    m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "PedidoProveedorView_cargarPost_Post", this );
@@ -209,15 +209,15 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
 /**
 \return
 **/
-int PedidoProveedorView::guardarPost()
+int PedidoProveedorView::afterSave()
 {
     blDebug ( "PedidoProveedor::guardar", 0 );
 
     m_listalineas->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
     m_listadescuentos->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
 
-    m_listalineas->guardar();
-    m_listadescuentos->guardar();
+    m_listalineas->save();
+    m_listadescuentos->save();
     return 0;
 }
 

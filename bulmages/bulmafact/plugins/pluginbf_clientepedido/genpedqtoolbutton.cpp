@@ -153,7 +153,7 @@ void GenPedQToolButton::generarFactura1()
             } // end if
             bud = new PedidoClienteView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idpedidocliente" ) );
+            bud->load ( cur->value( "idpedidocliente" ) );
             bud->show();
             return;
         } // end if
@@ -162,7 +162,7 @@ void GenPedQToolButton::generarFactura1()
         /// Creamos el pedidocliente.
         bud = new PedidoClienteView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( "0" );
+        bud->load ( "0" );
 
         /// Traspasamos los datos al pedidocliente.
         fpv->recogeValores();

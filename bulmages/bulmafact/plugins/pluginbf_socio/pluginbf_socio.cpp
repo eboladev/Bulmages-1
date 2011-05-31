@@ -434,7 +434,7 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
-    if ( art->cargar ( idtutor ) ) {
+    if ( art->load ( idtutor ) ) {
         delete art;
         blDebug ( "END MyPlugTutor1::editarTutor", 0, "Carga Erronea" );
         return;

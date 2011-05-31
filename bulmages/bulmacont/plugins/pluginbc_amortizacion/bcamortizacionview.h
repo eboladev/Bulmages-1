@@ -69,9 +69,9 @@ private:
 public:
     BcAmortizacionView ( BcCompany *, QWidget * );
     ~BcAmortizacionView();
-    virtual int cargar ( QString idamortizacion );
-    virtual int guardar();
-    virtual int borrar();
+    virtual int load ( QString idamortizacion );
+    virtual int save();
+    virtual int remove();
 
 public slots:
     virtual void on_mui_btcalcular_clicked();

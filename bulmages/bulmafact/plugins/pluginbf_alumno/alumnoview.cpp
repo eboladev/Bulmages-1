@@ -74,7 +74,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 
 	
 	/// Presentamos una carga ficticia para que se acabe de iniciar el subformulario.
-        mui_tutoresList->cargar ( "0" );
+        mui_tutoresList->load ( "0" );
 
 	
 
@@ -168,15 +168,15 @@ void AlumnoView::pintarPost()
     blDebug ( "END AlumnoView::pintar", 0 );
 }
 
-int AlumnoView::guardarPost()
+int AlumnoView::afterSave()
 {
-    blDebug ( "AlumnoView::guardarPost", 0 );
+    blDebug ( "AlumnoView::afterSave", 0 );
     
     mui_tutoresList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
-    mui_tutoresList->guardar();
+    mui_tutoresList->save();
 
     mui_actividadesList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
-    mui_actividadesList->guardar();
+    mui_actividadesList->save();
     
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
@@ -191,13 +191,13 @@ int AlumnoView::guardarPost()
         
     } // end if
 
-    blDebug ( "END AlumnoView::guardarPost", 0 );
+    blDebug ( "END AlumnoView::afterSave", 0 );
     return 0;
 }
 
-int AlumnoView::borrarPre()
+int AlumnoView::beforeDelete()
 {
-    blDebug ( "AlumnoView::borrarPre", 0 );
+    blDebug ( "AlumnoView::beforeDelete", 0 );
     
     /// Borramos la imagen
     QString archivoimagen;
@@ -223,7 +223,7 @@ int AlumnoView::borrarPre()
     query = "DELETE FROM faltaasistenciaalumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( "END AlumnoView::borrarPre", 0 );
+    blDebug ( "END AlumnoView::beforeDelete", 0 );
 
     return 0;
 }
@@ -232,8 +232,8 @@ int AlumnoView::cargarPost ( QString id )
 {
     blDebug ( "AlumnoView::cargarPost", 0 );
 
-    mui_tutoresList->cargar ( id );
-    mui_actividadesList->cargar ( id );
+    mui_tutoresList->load ( id );
+    mui_actividadesList->load ( id );
 
     blDebug ( "END AlumnoView::cargarPost", 0 );
     
@@ -340,10 +340,10 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 /**
 \param idalumno
 **/
-void ListAlumnosTutorView::cargar ( QString idalumno )
+void ListAlumnosTutorView::load ( QString idalumno )
 {
     blDebug ( "ListAlumnosTutorView::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM alumnocliente LEFT JOIN cliente ON alumnocliente.idcliente = cliente.idcliente  WHERE alumnocliente.idalumno =" + idalumno  );
+    BlSubForm::load ( "SELECT * FROM alumnocliente LEFT JOIN cliente ON alumnocliente.idcliente = cliente.idcliente  WHERE alumnocliente.idalumno =" + idalumno  );
     blDebug ( "END ListAlumnosTutorView::cargar", 0 );
 }
 
@@ -372,11 +372,11 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 /**
 \param idalumno
 **/
-void ListAlumnosActividadView::cargar ( QString idalumno )
+void ListAlumnosActividadView::load ( QString idalumno )
 {
     blDebug ( "ListAlumnosActividadView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT * FROM alumnoactividad LEFT JOIN actividad ON alumnoactividad.idactividad = actividad.idactividad  WHERE alumnoactividad.idalumno =" + idalumno  );
+    BlSubForm::load ( "SELECT * FROM alumnoactividad LEFT JOIN actividad ON alumnoactividad.idactividad = actividad.idactividad  WHERE alumnoactividad.idalumno =" + idalumno  );
     
     blDebug ( "END ListAlumnosActividadView::cargar", 0 );
 }

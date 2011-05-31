@@ -69,7 +69,7 @@ public:
         blDebug ( "La funcion pintaListLinPrevCobro aun no ha sido implementada", 10 );
     };
     int chargeBudgetLines();
-    void borrar();
+    void remove();
     void nuevalinea ( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
     linprevcobro *linpos ( int );
     void borralinprevcobro ( int );

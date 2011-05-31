@@ -65,7 +65,7 @@ public:
     void setidproveedor ( QString val );
     QString generaFiltro();
     void crear();
-    void borrar();
+    void remove();
     void editar ( int );
 
 };

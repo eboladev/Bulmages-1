@@ -97,7 +97,7 @@ BlCountryView::~BlCountryView()
 void BlCountryView::pintar()
 {
     blDebug ( "BlCountryView::pintar", 0 );
-    mui_list->cargar ( "SELECT * FROM pais ORDER BY descpais" );
+    mui_list->load ( "SELECT * FROM pais ORDER BY descpais" );
     blDebug ( "END BlCountryView::pintar", 0 );
 }
 
@@ -134,12 +134,12 @@ void BlCountryView::mostrarplantilla()
 
     if ( m_countryId != "0" ) {
         mui_datospais->setEnabled ( TRUE );
-        cargar ( m_countryId, FALSE );
+        load ( m_countryId, FALSE );
         mui_descpais->setText ( dbValue ( "descpais" ) );
         mui_cod2pais->setText ( dbValue ( "cod2pais" ) );
         mui_cod3pais->setText ( dbValue ( "cod3pais" ) );
 
-        mui_listprovincias->cargar ( "SELECT * FROM provincia WHERE idpais=" + m_countryId );
+        mui_listprovincias->load ( "SELECT * FROM provincia WHERE idpais=" + m_countryId );
 
         dialogChanges_readValues();
     } // end if
@@ -151,7 +151,7 @@ void BlCountryView::mostrarplantilla()
 ///
 /**
 **/
-int BlCountryView::guardar()
+int BlCountryView::save()
 {
     blDebug ( "BlCountryView::on_mui_guardar_clicked", 0 );
     QString id;
@@ -165,7 +165,7 @@ int BlCountryView::guardar()
         mainCompany() ->begin();
         dbSave ( id );
         mui_listprovincias->setColumnValue ( "idpais", id );
-        mui_listprovincias->guardar();
+        mui_listprovincias->save();
         mainCompany() ->commit();
         dialogChanges_readValues();
         pintar();

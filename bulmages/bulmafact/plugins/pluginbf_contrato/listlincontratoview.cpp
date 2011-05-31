@@ -56,11 +56,11 @@ ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( paren
 /**
 \param idcontrato
 **/
-void ListLinContratoView::cargar ( QString idcontrato )
+void ListLinContratoView::load ( QString idcontrato )
 {
     blDebug ( "ListLinContratoView::cargar", 0 );
     mdb_idcontrato = idcontrato;
-    BlSubForm::cargar ( "SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato" );
+    BlSubForm::load ( "SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato" );
     blDebug ( "END ListLinContratoView::cargar", 0 );
 }
 

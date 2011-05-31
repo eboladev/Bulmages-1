@@ -137,11 +137,11 @@ void ProfesorView::imprimir()
     blDebug ( "END ProfesorView::imprimir", 0 );
 }
 
-int ProfesorView::guardarPost()
+int ProfesorView::afterSave()
 {
-    blDebug ( "ProfesorView::guardarPost", 0 );
+    blDebug ( "ProfesorView::afterSave", 0 );
 
-    blDebug ( "END ProfesorView::guardarPost", 0 );
+    blDebug ( "END ProfesorView::afterSave", 0 );
     return 0;
 }
 
@@ -149,7 +149,7 @@ int ProfesorView::cargarPost(QString id)
 {
     blDebug ( "ProfesorView::cargarPost", 0 );
 
-    m_actividades->cargar("SELECT * FROM actividad NATURAL LEFT JOIN tipoactividad WHERE idprofesor = " + id);
+    m_actividades->load("SELECT * FROM actividad NATURAL LEFT JOIN tipoactividad WHERE idprofesor = " + id);
     blDebug ( "END ProfesorView::cargarPost", 0 );
     return 0;
 }

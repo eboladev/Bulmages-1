@@ -64,7 +64,7 @@ public:
     void editar ( int );
     void imprimir();
     void crear();
-    void borrar();
+    void remove();
     QString idpresupuestocontable();
     QString conceptopresupuestocontable();
     void submenu ( const QPoint & );

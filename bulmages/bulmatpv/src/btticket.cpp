@@ -239,7 +239,7 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
     agregarLog("BORRAR ARTICULO "+m_lineaActual->dbValue("nomarticulo")+"  Cantidad:"+cantidad.toQString('.'));
 
 
-    m_lineaActual->borrar();
+    m_lineaActual->remove();
 }
 
 void  BtTicket::vaciarBtTicket()
@@ -310,15 +310,15 @@ void BtTicket::abrircajon()
 
 
 
-void BtTicket::imprimir(bool save)
+void BtTicket::imprimir(bool doSave)
 {
 
     blDebug("BtTicket::imprimir",0);
 
-    if (save) {
+    if (doSave) {
         
-        if ( guardar() == -1) {
-            blDebug ( "Error en la llamada a guardar()", 0 );
+        if ( save() == -1) {
+            blDebug ( "Error en la llamada a save()", 0 );
             return;
         } // end if
         
@@ -510,7 +510,7 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
 }
 
 
-int BtTicket::cargar ( QString id )
+int BtTicket::load ( QString id )
 {
     try {
         
@@ -544,11 +544,11 @@ int BtTicket::cargar ( QString id )
 /// Guarda los datos de la ficha en la base de datos.
 /**
   Este metodo guarda los contenidos de la Ficha (siempre que esta haya sido inicializada).
-  Luego llama a plugins y a guardarPost por si se quieren hacer acciones adicionales de guardado.
+  Luego llama a plugins y a afterSave por si se quieren hacer acciones adicionales de guardado.
   Tras guardar todos los elementos hace una carga.
 \return 0 Si no hay problemas. -1 Si ha habido problemas.
 **/
-int BtTicket::guardar()
+int BtTicket::save()
 {
     blDebug ( "BtTicket::guardar", 0 );
 
@@ -572,7 +572,7 @@ int BtTicket::guardar()
             item->setDbValue ( "ordenlalbaran", QString::number ( i ) );
             /// TODO: Recargo de equivalencia siempre a 0 ?? Algo hay que poner.
             item->setDbValue ( "reqeqlalbaran", QString::number ( 0 ) );
-            item->guardar();
+            item->save();
         } // end for
         
         setDbValue("idalbaran", id);
@@ -628,7 +628,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
     } // end if
     
-    linea->borrar();
+    linea->remove();
 }
 
 

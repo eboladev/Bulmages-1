@@ -74,7 +74,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     setSubForm ( mui_list );
 
     mdb_idcliente = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -108,7 +108,7 @@ void TutoresList::presentar()
 {
     blDebug ( "TutoresList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM cliente WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM cliente WHERE 1 = 1 " + generaFiltro() );
     } // end if
     blDebug ( "END TutoresList::presentar", 0 );
 }
@@ -163,7 +163,7 @@ void TutoresList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void TutoresList::borrar()
+void TutoresList::remove()
 {
     blDebug ( "TutoresList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -173,9 +173,9 @@ void TutoresList::borrar()
     } // end if
     try {
         mdb_idcliente = mui_list->dbValue ( "idcliente" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             TutorView * cv = new TutorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idcliente ) )
+            if ( cv->load ( mdb_idcliente ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -197,9 +197,9 @@ void TutoresList::editar ( int )
     blDebug ( "TutoresList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idcliente = mui_list->dbValue ( "idcliente" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             TutorView * bud = new TutorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idcliente ) ) {
+            if ( bud->load ( mdb_idcliente ) ) {
                 delete bud;
                 return;
             } // end if

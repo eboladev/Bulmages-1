@@ -51,7 +51,7 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END ListTipoIVAView::ListTipoIVAView", 1 );
@@ -65,7 +65,7 @@ void ListTipoIVAView::on_mui_aceptar_clicked()
 {
     blDebug ( "ListTipoIVAView::on_mui_aceptar_clicked", 0 );
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los tipos de IVA" ) );
@@ -113,10 +113,10 @@ ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
 ///
 /**
 **/
-void ListTipoIVASubForm::cargar()
+void ListTipoIVASubForm::load()
 {
     blDebug ( "ListTipoIVASubForm::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM tipo_iva" );
+    BlSubForm::load ( "SELECT * FROM tipo_iva" );
     blDebug ( "END ListTipoIVASubForm::cargar", 0 );
 }
 

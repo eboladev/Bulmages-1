@@ -41,8 +41,8 @@ public:
     ~PedidosClienteListSubform() {};
 
 public slots:
-    virtual void cargar();
-    virtual void cargar ( QString query );
+    virtual void load();
+    virtual void load ( QString query );
 };
 
 
@@ -65,7 +65,7 @@ public:
     void presentar();
     void imprimir();
     void editar ( int );
-    void borrar();
+    void remove();
     void crear();
     void setMainCompany ( BfCompany *comp );
     void setidcliente ( QString val );

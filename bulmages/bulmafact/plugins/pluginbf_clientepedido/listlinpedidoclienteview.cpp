@@ -72,11 +72,11 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
 /**
 \param idpedidocliente
 **/
-void ListLinPedidoClienteView::cargar ( QString idpedidocliente )
+void ListLinPedidoClienteView::load ( QString idpedidocliente )
 {
     blDebug ( "ListLinPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    BlSubForm::cargar ( "SELECT *, (cantlpedidocliente * pvplpedidocliente)::NUMERIC(12,2) AS totallpedidocliente FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
+    BlSubForm::load ( "SELECT *, (cantlpedidocliente * pvplpedidocliente)::NUMERIC(12,2) AS totallpedidocliente FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
     blDebug ( "END ListLinPedidoClienteView::cargar", 0 );
 }
 

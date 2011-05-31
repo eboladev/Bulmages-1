@@ -152,7 +152,7 @@ void BcAsientoForm::trataestadoBcAsientoForm()
 \param atendido
 \return
 **/
-int BcAsientoForm::borrar ( bool atendido )
+int BcAsientoForm::remove ( bool atendido )
 {
     blDebug ( "BcAsientoForm::borrar", 0 );
     int error;
@@ -165,7 +165,7 @@ int BcAsientoForm::borrar ( bool atendido )
                                             QMessageBox::Cancel ) ) {
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
                 mainCompany() ->begin();
-                listalineas->borrar();
+                listalineas->remove();
                 error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
                 error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
                 if ( error ) {
@@ -181,7 +181,7 @@ int BcAsientoForm::borrar ( bool atendido )
             } // end switch
         } else {
             mainCompany() ->begin();
-            listalineas->borrar();
+            listalineas->remove();
             error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
             error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
             if ( error ) {
@@ -238,7 +238,7 @@ void BcAsientoForm::pintar()
 \param idasiento
 \return
 **/
-int BcAsientoForm::cargar ( QString idasiento )
+int BcAsientoForm::load ( QString idasiento )
 {
     blDebug ( "BcAsientoForm::cargar", 0, idasiento );
 
@@ -251,7 +251,7 @@ int BcAsientoForm::cargar ( QString idasiento )
                                         QMessageBox::Save ) ) {
         case QMessageBox::Save: // The user clicked the Retry again button or pressed Enter
             // try again
-            guardar();
+            save();
             break;
         case QMessageBox::Discard: // The user clicked the Quit or pressed Escape
             // exit
@@ -269,7 +269,7 @@ int BcAsientoForm::cargar ( QString idasiento )
     } // end if
     delete cur;
     trataestadoBcAsientoForm();
-    listalineas->cargar ( idasiento );
+    listalineas->load ( idasiento );
     pintar();
 
     dialogChanges_readValues();
@@ -332,7 +332,7 @@ void BcAsientoForm::cerrar()
         blDebug ( "BcAsientoForm::cerrar" , 0, "asiento no abierto" );
         return;
     } // end if
-    if ( guardar() )
+    if ( save() )
         return;
     QString id = dbValue ( "idasiento" );
     if ( id == "" ) {
@@ -344,7 +344,7 @@ void BcAsientoForm::cerrar()
     delete cur;
     vaciar();
     dialogChanges_readValues();
-    cargar ( id );
+    load ( id );
     blDebug ( "END BcAsientoForm::cerrar", 0 );
 }
 
@@ -389,7 +389,7 @@ BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
 /**
 \return
 **/
-int BcAsientoForm::guardar()
+int BcAsientoForm::save()
 {
     blDebug ( "BcAsientoForm::guardar", 0 );
     QString id;
@@ -397,7 +397,7 @@ int BcAsientoForm::guardar()
     try {
         dbSave ( id );
         setidasiento ( id );
-        listalineas->guardar();
+        listalineas->save();
 
         /// Disparamos los plugins
         int res = g_plugins->lanza ( "BcAsientoForm_guardaAsiento1_post", this );
@@ -411,7 +411,7 @@ int BcAsientoForm::guardar()
             delete cur;
         } // end if
         dialogChanges_readValues();
-        cargar ( id );
+        load ( id );
         g_main->statusBar() ->showMessage ( _ ( "El asiento se ha guardado correctamente." ), 2000 );
         blDebug ( "END BcAsientoForm::guardar", 0 );
         return 0;

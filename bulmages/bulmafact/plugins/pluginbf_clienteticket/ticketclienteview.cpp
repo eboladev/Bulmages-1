@@ -279,11 +279,11 @@ void TicketClienteView::on_subform2_editFinish ( int, int )
 /**
 \return
 **/
-int TicketClienteView::borrarPre()
+int TicketClienteView::beforeDelete()
 {
     blDebug ( "TicketClienteView::borrar", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    m_listalineas->remove();
+    m_listadescuentos->remove();
     blDebug ( "END TicketClienteView::borrar", 0 );
     return 0;
 }
@@ -303,8 +303,8 @@ int TicketClienteView::cargarPost ( QString idalbaran )
 {
     blDebug ( "TicketClienteView::cargar", 0 );
 
-    m_listalineas->cargar ( idalbaran );
-    m_listadescuentos->cargar ( idalbaran );
+    m_listalineas->load ( idalbaran );
+    m_listadescuentos->load ( idalbaran );
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "TicketCliente_cargarPost_Post", this );
@@ -327,16 +327,16 @@ int TicketClienteView::cargarPost ( QString idalbaran )
 /**
 \return
 **/
-int TicketClienteView::guardarPost()
+int TicketClienteView::afterSave()
 {
-    blDebug ( "TicketClienteView::guardarPost", 0 );
+    blDebug ( "TicketClienteView::afterSave", 0 );
 
     m_listalineas->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
-    m_listalineas->guardar();
+    m_listalineas->save();
     m_listadescuentos->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
-    m_listadescuentos->guardar();
+    m_listadescuentos->save();
 
-    blDebug ( "END TicketClienteView::guardarPost", 0 );
+    blDebug ( "END TicketClienteView::afterSave", 0 );
     return 0;
 }
 

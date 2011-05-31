@@ -93,7 +93,7 @@ int ActividadView_ActividadView(ActividadView *act) {
     act->dialogChanges_setExcludedObject ( l->mui_list );
 
     act->mui_tab->addTab ( l, "Material" );
-    l->cargar("SELECT * FROM prestamo NATURAL LEFT JOIN inventariosimple WHERE idprestamo IS NULL");
+    l->load("SELECT * FROM prestamo NATURAL LEFT JOIN inventariosimple WHERE idprestamo IS NULL");
     blDebug("END pluginbf_inventariosimple::ActividadView_ActividadView", 0);
     return 0;
 }
@@ -115,7 +115,7 @@ int BlForm_guardar_Post ( BlForm *art )
         BfSubForm *l = art->findChild<BfSubForm *> ( "prestamo" );
         if (l) {
           l->setColumnValue ( "idactividad", art->dbValue ( "idactividad" ) );
-          l->guardar();
+          l->save();
         } // end if
 
        blDebug ( "END pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
@@ -133,14 +133,14 @@ int BlForm_guardar_Post ( BlForm *art )
 \param art
 \return
 **/
-int BlForm_cargar ( BlForm *art )
+int BlForm_load ( BlForm *art )
 {
     blDebug ( "pluginbf_inventariosimple::BlForm_cargar", 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "prestamo" );
         if (l) {
-          l->cargar("SELECT * FROM prestamo LEFT JOIN inventariosimple ON prestamo.idinventariosimple = inventariosimple.idinventariosimple WHERE idactividad = " + art->dbValue("idactividad"));
+          l->load("SELECT * FROM prestamo LEFT JOIN inventariosimple ON prestamo.idinventariosimple = inventariosimple.idinventariosimple WHERE idactividad = " + art->dbValue("idactividad"));
         } // end if
 
        blDebug ( "END pluginbf_inventariosimple::BlForm_cargar", 0 );
@@ -174,8 +174,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     list->addSubFormHeader ( "stockinventariosimple", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Stock" ) );
     list->setInsert ( FALSE );
     list->setOrdenEnabled ( TRUE );
-    list->cargar("SELECT * FROM inventariosimple");
-    list->setModoConsulta();
+    list->load("SELECT * FROM inventariosimple");
+    list->setSelectMode();
     sub->connect(list, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), list, SLOT(hide()));
     sub->connect(list, SIGNAL(editFinish(int, int)), list, SLOT(hide()));
 
@@ -302,8 +302,8 @@ void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
     list->addSubFormHeader ( "stockinventariosimple", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Stock" ) );
     list->setInsert ( FALSE );
     list->setOrdenEnabled ( TRUE );
-    list->cargar("SELECT * FROM inventariosimple");
-    list->setModoConsulta();
+    list->load("SELECT * FROM inventariosimple");
+    list->setSelectMode();
     sub->connect(list, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), list, SLOT(hide()));
     sub->connect(list, SIGNAL(editFinish(int, int)), list, SLOT(hide()));
 

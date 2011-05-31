@@ -26,7 +26,7 @@
 
 
 extern "C" PLUGINBL_FORMLOCK_EXPORT int entryPoint ( QMainWindow * );
-extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_load ( BlForm * );
 extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_DesBlForm ( BlForm * );
 extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_BlForm ( BlForm * );
 

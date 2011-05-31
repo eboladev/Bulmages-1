@@ -57,7 +57,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->addSubFormHeader ( "colortipotrabajo", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _ ( "Color tipo trabajo" ) );
     mui_listado->setInsert ( TRUE );
 
-    mui_listado->cargar ( "SELECT * FROM tipotrabajo" );
+    mui_listado->load ( "SELECT * FROM tipotrabajo" );
     insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END ListTiposTrabajoView::ListTiposTrabajoView", 1 );
@@ -70,7 +70,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
 void ListTiposTrabajoView::on_mui_aceptar_clicked()
 {
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         g_theApp->emitDbTableChanged ( "tipotrabajo" );
         close();
     } catch ( ... ) {

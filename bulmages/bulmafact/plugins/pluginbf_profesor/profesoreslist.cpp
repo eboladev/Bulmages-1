@@ -85,7 +85,7 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     presentar();
     mdb_idprofesor = "";
     
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
@@ -116,7 +116,7 @@ void ProfesoresList::presentar()
     blDebug ( "ProfesoresList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM profesor WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM profesor WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
     blDebug ( "END ProfesoresList::presentar", 0 );
@@ -146,7 +146,7 @@ void ProfesoresList::crear()
 {
     blDebug ( "ProfesoresList::crear", 0 );
     
-    if (modoConsulta()) {
+    if (selectMode()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -213,7 +213,7 @@ void ProfesoresList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void ProfesoresList::borrar()
+void ProfesoresList::remove()
 {
     blDebug ( "ProfesoresList::borrar", 0 );
     
@@ -226,9 +226,9 @@ void ProfesoresList::borrar()
     
     try {
         mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ProfesorView * cv = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idprofesor ) )
+            if ( cv->load ( mdb_idprofesor ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -251,9 +251,9 @@ void ProfesoresList::editar ( int )
     
     try {
         mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idprofesor ) ) {
+            if ( bud->load ( mdb_idprofesor ) ) {
                 delete bud;
                 return;
             } // end if

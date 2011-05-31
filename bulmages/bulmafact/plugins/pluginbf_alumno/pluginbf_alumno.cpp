@@ -330,7 +330,7 @@ void SubForm_Alumno::editarAlumno ( QString idalumno )
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
-    if ( art->cargar ( idalumno ) ) {
+    if ( art->load ( idalumno ) ) {
         delete art;
         blDebug ( "END AlumnosList::editar", 0, "Carga Erronea" );
         return;

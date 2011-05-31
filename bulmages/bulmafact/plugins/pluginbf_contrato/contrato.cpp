@@ -73,17 +73,17 @@ Contrato::~Contrato()
 /**
 \return
 **/
-int Contrato::borrar()
+int Contrato::remove()
 {
     blDebug ( "Contrato::borrar", 0 );
     if ( dbValue ( "idcontrato" ) != "" ) {
         mainCompany() ->begin();
-        int error = m_listalineas->borrar();
+        int error = m_listalineas->remove();
         if ( error ) {
             mainCompany() ->rollback();
             return -1;
         } // end if
-        error = BlDbRecord::borrar();
+        error = BlDbRecord::remove();
         if ( error ) {
             mainCompany() ->rollback();
             return -1;
@@ -142,7 +142,7 @@ void Contrato::pintar()
 \param idbudget
 \return
 **/
-int Contrato::cargar ( QString idbudget )
+int Contrato::load ( QString idbudget )
 {
     blDebug ( "Contrato::cargar", 0 );
     inicialize();
@@ -152,7 +152,7 @@ int Contrato::cargar ( QString idbudget )
         DBload ( cur );
     } // end if
     delete cur;
-    m_listalineas->cargar ( idbudget );
+    m_listalineas->load ( idbudget );
     pintar();
     blDebug ( "END Contrato::cargar", 0 );
     return 0;
@@ -170,7 +170,7 @@ int Contrato::cargar ( QString idbudget )
 /**
 \return
 **/
-int Contrato::guardar()
+int Contrato::save()
 {
     blDebug ( "Contrato::guardar", 0 );
     QString fecha;
@@ -181,16 +181,16 @@ int Contrato::guardar()
         dbSave ( id );
         setDbValue ( "idcontrato", id );
         m_listalineas->setColumnValue ( "idcontrato", id );
-        m_listalineas->guardar();
+        m_listalineas->save();
         mainCompany() ->commit();
 
         /// Hacemos una carga para recuperar datos como la referencia
-        cargar ( id );
+        load ( id );
 
         blDebug ( "END Contrato::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        blDebug ( "Contrato::guardar() se produjo un error guardando la contrato", 0 );
+        blDebug ( "Contrato::save() se produjo un error guardando la contrato", 0 );
         mainCompany() ->rollback();
         throw  - 1;
     } // end try

@@ -41,7 +41,7 @@ public:
     ~BfProveedorAlbaranSubForm() {};
 
 public slots:
-    virtual void cargar ( QString idalbaranp );
+    virtual void load ( QString idalbaranp );
 };
 
 #endif

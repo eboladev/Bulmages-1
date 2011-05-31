@@ -195,7 +195,7 @@ void ListIva::vaciar()
 /**
 \return
 **/
-void ListIva::borrar()
+void ListIva::remove()
 {
     blDebug ( "ListIva::borrar", 0 );
     if ( mdb_idregistroiva != "" )  {
@@ -220,7 +220,7 @@ void ListIva::borraIva ( int pos )
     blDebug ( "ListIva::borraIva", 0 );
     Iva *linea;
     linea = m_lista.at ( pos );
-    linea->borrar();
+    linea->remove();
     m_lista.removeAt ( pos );
     pintaListIva();
     blDebug ( "ListIva::borraIva", 0 );

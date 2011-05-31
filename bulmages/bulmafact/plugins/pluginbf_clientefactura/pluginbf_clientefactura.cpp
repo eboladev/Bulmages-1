@@ -114,7 +114,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
         FacturasList *facturasList = new FacturasList ( NULL, 0, BL_SELECT_MODE );
 	facturasList->setMainCompany(( BfCompany * ) prov->mainCompany() );
-        facturasList->setModoEdicion();
+        facturasList->setEditMode();
         facturasList->setObjectName ( "listfacturas" );
         facturasList->hideBusqueda();
         prov->mui_tab->addTab ( facturasList, "Facturas" );
@@ -140,7 +140,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         FacturaView * bud = new FacturaView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idfactura" ) );
+        bud->load ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while

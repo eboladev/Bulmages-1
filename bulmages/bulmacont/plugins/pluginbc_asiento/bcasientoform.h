@@ -47,19 +47,19 @@ public:
     BcAsientoForm ( BcCompany *, QWidget *parent );
     virtual ~BcAsientoForm();
     BcCompany *companyact();
-    int cargar ( QString );
+    int load ( QString );
     BlFixed totaldebe ( QString );
     BlFixed totalhaber ( QString );
     void vaciar();
     void abrir();
     void cerrar();
     estadoasiento estadoBcAsientoForm();
-    int guardar();
+    int save();
     void setidasiento ( QString val );
     QString idasiento();
     /// Establece cual es la lista subformulario del presupuesto.
     void setListLinAsiento1 ( BcAsientoSubForm *a );
-    virtual int borrar ( bool );
+    virtual int remove ( bool );
     virtual void pintaIdAsiento ( QString );
     virtual void pintaDescripcion ( QString );
     virtual void pintaFecha ( QString );

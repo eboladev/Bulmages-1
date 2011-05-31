@@ -93,7 +93,7 @@ void BcAmortizacionListView::crear()
 /// La que esta seleccionada en el listado.
 /**
 **/
-void BcAmortizacionListView::borrar()
+void BcAmortizacionListView::remove()
 {
     blDebug ( "BcAmortizacionListView::on_mui_borrar_clicked", 0 );
     try {
@@ -130,10 +130,10 @@ void BcAmortizacionListView::editar ( int row )
     blDebug ( "BcAmortizacionListView::editAmortizacion " + row, 0 );
     mdb_idamortizacion = mui_listado->dbValue ( "idamortizacion" );
     mdb_nomamortizacion = mui_listado->dbValue ( "nomamortizacion" );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         /// Creamos el objeto BcMasaPatrimonialView, y lo lanzamos.
         BcAmortizacionView * amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
-        amor->cargar ( mdb_idamortizacion );
+        amor->load ( mdb_idamortizacion );
         mainCompany() ->pWorkspace() ->addSubWindow ( amor );
         amor->show();
     } else {

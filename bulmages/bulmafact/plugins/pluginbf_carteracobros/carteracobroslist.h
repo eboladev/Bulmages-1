@@ -53,12 +53,6 @@ class PLUGINBF_CARTERACOBROS_EXPORT CarteraCobrosList : public BlFormList, publi
 {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0,
-        SelectMode = 1
-    };
-
 private:
     /// Indica si la pantalla esta en modo edicion o en modo seleccion.
     edmode m_modo;
@@ -71,10 +65,8 @@ private:
 
 
 public:
-    CarteraCobrosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    CarteraCobrosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode modo = BL_EDIT_MODE );
     ~CarteraCobrosList();
-    void selectMode();
-    void editMode();
     void presenta();
     QString idvencimientoc();
     void hideBotonera();
@@ -84,7 +76,7 @@ public:
     void editar ( int );
     virtual void crear();
     virtual void on_mui_imprimir_clicked();
-    virtual void borrar();
+    virtual void remove();
     virtual void on_m_filtro_textChanged ( const QString &text );
     virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_actualizar_clicked();

@@ -95,7 +95,7 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     
     presentar();
     m_idpresupuesto = "";
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
@@ -218,7 +218,7 @@ void PresupuestoList::presentar()
     blDebug ( "PresupuestoList::presentar", 0 );
 
     /// Hacemos el listado y lo presentamos.
-    mui_list->cargar ( "SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
+    mui_list->load ( "SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
 
     /// Hacemos el calculo del total.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
@@ -284,9 +284,9 @@ void PresupuestoList::editar ( int row )
     blDebug ( "PresupuestoList::editar", 0 );
     try {
         m_idpresupuesto = mui_list->dbValue ( QString ( "idpresupuesto" ), row );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             PresupuestoView * prov = new PresupuestoView ( ( BfCompany * ) mainCompany() , 0 );
-            if ( prov->cargar ( m_idpresupuesto ) ) {
+            if ( prov->load ( m_idpresupuesto ) ) {
                 delete prov;
                 return;
             }
@@ -318,7 +318,7 @@ void PresupuestoList::imprimir()
 /**
 \return
 **/
-void PresupuestoList::borrar()
+void PresupuestoList::remove()
 {
     blDebug ( "PresupuestoList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -328,9 +328,9 @@ void PresupuestoList::borrar()
     } // end if
     try {
         m_idpresupuesto = mui_list->dbValue ( QString ( "idpresupuesto" ) );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( pv->cargar ( m_idpresupuesto ) )
+            if ( pv->load ( m_idpresupuesto ) )
                 throw - 1;
             pv->on_mui_borrar_clicked();
             pv->close();
@@ -391,11 +391,11 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
 ///
 /**
 **/
-void PresupuestoListSubForm::cargar()
+void PresupuestoListSubForm::load()
 {
     blDebug ( "PresupuestoListSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM presupuesto";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END PresupuestoListSubForm::cargar", 0 );
 }
 
@@ -404,9 +404,9 @@ void PresupuestoListSubForm::cargar()
 /**
 \param query
 **/
-void PresupuestoListSubForm::cargar ( QString query )
+void PresupuestoListSubForm::load ( QString query )
 {
     blDebug ( "PresupuestoListSubForm::cargar", 0, query );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END PresupuestoListSubForm::cargar", 0 );
 }

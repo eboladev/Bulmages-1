@@ -162,7 +162,7 @@ void linprevcobro::vacialinprevcobro()
 ///
 /**
 **/
-void linprevcobro::borrar()
+void linprevcobro::remove()
 {
     blDebug ( "linprevcobro::borrar", 0 );
     if ( mdb_idprevcobro != "" ) {

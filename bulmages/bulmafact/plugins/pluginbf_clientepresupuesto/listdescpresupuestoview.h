@@ -39,10 +39,10 @@ public:
     ~ListDescuentoPresupuestoView() {};
 
 public slots:
-    virtual void cargar ( QString idpresupuesto ) {
+    virtual void load ( QString idpresupuesto ) {
         blDebug ( "ListDescuentoPresupuestoView::cargar\n", 0 );
         mdb_idpresupuesto = idpresupuesto;
-        BlSubForm::cargar ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto );
+        BlSubForm::load ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto );
     };
 };
 

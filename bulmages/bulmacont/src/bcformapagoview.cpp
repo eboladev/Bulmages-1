@@ -182,7 +182,7 @@ void BcFormaPagoView::cambiacombo ( int )
 /** Lo que hace es que se hace un update de todos los campos. */
 /**
 **/
-int BcFormaPagoView::guardar()
+int BcFormaPagoView::save()
 {
     blDebug ( "BcFormaPagoView::on_mui_guardarFPago_clicked", 0 );
     QString idfpago = m_curfpago->value( "idfpago", m_posactual );
