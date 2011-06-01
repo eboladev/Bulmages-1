@@ -69,7 +69,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
     } // end if
-
+    return 0;
 }
 
 
