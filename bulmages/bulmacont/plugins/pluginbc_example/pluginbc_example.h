@@ -31,27 +31,10 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "pdefs_pluginbc_example.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_EXAMPLE_EXPORT int entryPoint ( BcBulmaCont * );
-
-
-class PluginBc_Example : public QObject
-{
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *dbConnection;
-
-public:
-    PluginBc_Example();
-    ~PluginBc_Example();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-};
-
+extern "C" PLUGINBC_EXAMPLE_EXPORT int BlAction_triggered (BlAction *);
 
 #endif
 
