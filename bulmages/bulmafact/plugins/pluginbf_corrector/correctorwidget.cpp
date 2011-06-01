@@ -169,7 +169,7 @@ void correctorwidget::alink ( const QUrl &url )
             return;
         } // end if
         ClienteView *prov = ( ClienteView * ) g_plugParams;
-        if ( prov->cargar ( list[1] ) ) {
+        if ( prov->load ( list[1] ) ) {
             delete prov;
             return;
         } // end if
@@ -183,7 +183,7 @@ void correctorwidget::alink ( const QUrl &url )
             return;
         } // end if
         FacturaView *prov = ( FacturaView * ) g_plugParams;
-        if ( prov->cargar ( list[1] ) ) {
+        if ( prov->load ( list[1] ) ) {
             delete prov;
             return;
         } // end if
@@ -197,7 +197,7 @@ void correctorwidget::alink ( const QUrl &url )
             return;
         } // end if
         ProveedorView *prov = ( ProveedorView * ) g_plugParams;
-        if ( prov->cargar ( list[1] ) ) {
+        if ( prov->load ( list[1] ) ) {
             delete prov;
             return;
         } // end if

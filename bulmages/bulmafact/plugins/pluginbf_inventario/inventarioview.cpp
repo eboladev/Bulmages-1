@@ -76,7 +76,7 @@ void InventarioView::on_mui_guardar2_clicked()
     } // end if
     setFechaInventario ( mui_fechainventario->text() );
     setNomInventario ( mui_nominventario->text() );
-    Inventario::guardar();
+    Inventario::save();
     blDebug ( "END InventarioView::on_mui_guardar2_clicked", 0 );
 }
 
@@ -105,7 +105,7 @@ void InventarioView::on_mui_borrar2_clicked()
                                      _ ( "Borrar inventario" ),
                                      _ ( "Esta a punto de borrar un inventario. Desea continuar?" ),
                                      _ ( "Si" ), _ ( "No" ), 0, 1, 0 ) == 0 ) {
-            Inventario::borrar();
+            Inventario::remove();
         } // end if
     } // end if
     blDebug ( "END InventarioView::on_mui_borrar2_clicked", 0 );
@@ -154,7 +154,7 @@ void InventarioView::on_mui_aceptar_clicked()
     blDebug ( "InventarioView::on_mui_aceptar_clicked", 0 );
     setFechaInventario ( mui_fechainventario->text() );
     setNomInventario ( mui_nominventario->text() );
-    if ( !Inventario::guardar() ) {
+    if ( !Inventario::save() ) {
         close();
     } // end if
     blDebug ( "END InventarioView::on_mui_aceptar_clicked", 0 );
@@ -178,7 +178,7 @@ void InventarioView::on_mui_pregenerar_clicked()
 void InventarioView::on_mui_actualizar_clicked()
 {
     blDebug ( "InventarioView::on_mui_actualizar_clicked", 0 );
-    cargar ( dbValue ( "idinventario" ) );
+    load ( dbValue ( "idinventario" ) );
     blDebug ( "END InventarioView::on_mui_actualizar_clicked", 0 );
 }
 
@@ -188,7 +188,7 @@ void InventarioView::on_mui_actualizar_clicked()
 \param idbudget
 \return
 **/
-int InventarioView::cargar ( QString idbudget )
+int InventarioView::load ( QString idbudget )
 {
     if ( idbudget == "" ) idbudget = "0";
     QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
@@ -206,7 +206,7 @@ int InventarioView::cargar ( QString idbudget )
         SQLQuery += " WHERE t1.idfamilia = " + mui_idfamilia->idfamilia();
     } // end if
 
-    listalineas->cargar ( SQLQuery );
+    listalineas->load ( SQLQuery );
     pintaInventario();
 
     return 0;

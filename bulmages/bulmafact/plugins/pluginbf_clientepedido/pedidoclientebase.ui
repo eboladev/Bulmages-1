@@ -220,7 +220,7 @@
          </widget>
         </item>
         <item>
-         <spacer>
+         <spacer name="spacer_3">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -255,7 +255,7 @@
          </widget>
         </item>
         <item>
-         <spacer>
+         <spacer name="spacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -315,104 +315,10 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout">
       <property name="margin">
        <number>0</number>
       </property>
-      <item row="0" column="0" colspan="2">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QLabel" name="label6">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Descripcion:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <property name="buddy">
-           <cstring>mui_descpedidocliente</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="mui_descpedidocliente">
-          <property name="maxLength">
-           <number>500</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label7">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Numero de pedido:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <property name="buddy">
-           <cstring>mui_numpedidocliente</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="mui_numpedidocliente">
-          <property name="minimumSize">
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0" rowspan="3">
-       <widget class="BlSearchWidget" name="mui_idcliente" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>150</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="mui_procesadopedidocliente">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Procesado</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
@@ -457,7 +363,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -621,23 +527,103 @@
         </item>
        </layout>
       </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="mui_procesadopedidocliente">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Procesado</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" rowspan="3">
+       <widget class="BlSearchWidget" name="mui_idcliente" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="_3">
+        <item>
+         <widget class="QLabel" name="label6">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Descripcion:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy">
+           <cstring>mui_descpedidocliente</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mui_descpedidocliente">
+          <property name="maxLength">
+           <number>500</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label7">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Numero de pedido:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy">
+           <cstring>mui_numpedidocliente</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mui_numpedidocliente">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
      <zorder>mui_procesadopedidocliente</zorder>
      <zorder>mui_idcliente</zorder>
-     <zorder>label_4</zorder>
-     <zorder>mui_idtrabajador</zorder>
-     <zorder>label</zorder>
-     <zorder>mui_fechapedidocliente</zorder>
-     <zorder>label10</zorder>
-     <zorder>mui_contactpedidocliente</zorder>
-     <zorder>label_2</zorder>
-     <zorder>mui_idforma_pago</zorder>
-     <zorder>label8</zorder>
-     <zorder>mui_telpedidocliente</zorder>
-     <zorder>label_3</zorder>
-     <zorder>mui_idalmacen</zorder>
-     <zorder></zorder>
-     <zorder>mui_descpedidocliente</zorder>
     </widget>
    </item>
    <item row="2" column="0" colspan="6">
@@ -1249,7 +1235,7 @@
     </widget>
    </item>
    <item row="5" column="0" colspan="6">
-    <layout class="QHBoxLayout">
+    <layout class="QHBoxLayout" name="_2">
      <property name="spacing">
       <number>5</number>
      </property>
@@ -1257,7 +1243,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
+      <spacer name="spacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>

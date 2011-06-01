@@ -68,7 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "carteraPagos") {
+    if (accion->objectName() == "mui_actionCarteraPagos") {
         CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * )  g_bges->company() );
         g_bges->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
         //m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
@@ -104,7 +104,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
     art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Vencimientos" );
-    l->cargar("SELECT * FROM vencimientoproveedor WHERE idproveedor IS NULL");
+    l->load("SELECT * FROM vencimientoproveedor WHERE idproveedor IS NULL");
     blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
@@ -120,7 +120,7 @@ int ProveedorView_cargarPost_Post ( ProveedorView *art )
     blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoproveedor" );
     if ( l ) {
-        l->cargar ( "SELECT * FROM vencimientoproveedor LEFT JOIN forma_pago ON vencimientoproveedor.idforma_pago = forma_pago.idforma_pago WHERE idproveedor =  " + art->dbValue("idproveedor"));
+        l->load ( "SELECT * FROM vencimientoproveedor LEFT JOIN forma_pago ON vencimientoproveedor.idforma_pago = forma_pago.idforma_pago WHERE idproveedor =  " + art->dbValue("idproveedor"));
     } // end if
     blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
@@ -164,7 +164,7 @@ int BlForm_guardar_Post ( BlForm *art )
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoproveedor" );
 	if (l) {
 		l->setColumnValue ( "idproveedor", art->dbValue ( "idproveedor" ) );
-		l->guardar();
+		l->save();
         }
 
 	
@@ -182,7 +182,7 @@ int BlForm_guardar_Post ( BlForm *art )
 			if (msgBox.clickedButton() == guardarButton) {
 				l1->setColumnValue ( "idfacturap", art->dbValue ( "idfacturap" ) );
 				l1->setColumnValue ( "idproveedor", art->dbValue ( "idproveedor" ) );
-				l1->guardar();
+				l1->save();
 			} else if (msgBox.clickedButton() == regenerarButton) {
 				QString query = "DELETE FROM vencimientop WHERE idfacturap="+ art->dbValue("idfacturap");
 				art->mainCompany()->runQuery(query);
@@ -224,7 +224,7 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
     factp->dialogChanges_setExcludedObject ( l->mui_list );
 
     factp->discounts->addTab ( l, "Vencimientos" );
-    l->cargar("SELECT * FROM vencimientop WHERE idfacturap IS NULL");
+    l->load("SELECT * FROM vencimientop WHERE idfacturap IS NULL");
     blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
@@ -239,7 +239,7 @@ int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView *art )
     blDebug ( "FacturaProveedorView_cargarPost_Post", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientop" );
     if ( l ) {
-        l->cargar ( "SELECT * FROM vencimientop LEFT JOIN forma_pago ON vencimientop.idforma_pago = forma_pago.idforma_pago WHERE idfacturap =  " + art->dbValue("idfacturap"));
+        l->load ( "SELECT * FROM vencimientop LEFT JOIN forma_pago ON vencimientop.idforma_pago = forma_pago.idforma_pago WHERE idfacturap =  " + art->dbValue("idfacturap"));
     } // end if
     blDebug ( "END FacturaProveedorView_cargarPost_Post", 0 );
     return 0;

@@ -61,7 +61,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     /// Presentamos el widget
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
 
-    g_doc1->cargaconf();
+    g_doc1->loadConfig();
     g_doc1->show();
 
     blDebug ( "END pluginticketbasico::entryPoint", 0 );

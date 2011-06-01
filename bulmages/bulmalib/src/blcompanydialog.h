@@ -55,7 +55,7 @@ public:
     /// Devuelve el tipo de empresa que se ha seleccionado.
     QString companyType();
     /// Devuelve si se est&aacute; en modo destructivo o no.
-    bool modoDestructivo();
+    bool isDestroyMode();
 
 public slots:
     /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar INTRO.
@@ -86,7 +86,7 @@ private:
     /// Inserta una compa&ntilde;ia en el QList mui_empresas definido en el di&aacute;logo.
     void insertCompany ( QString, QString, QString, QString );
     void preparamui_empresas();
-    void trataEmpresa ( QString, QFile * );
+    void findCompanyDatabase ( QString, QFile * );
 
     /// Asigna el nombre de la base de datos seleccionada.
     void setDbName ( QString );

@@ -65,7 +65,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     numdigitos = mainCompany() ->numdigitosempresa();
     m_codigoinicial->setMainCompany ( emp );
     /// Arreglamos la cuenta
-    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
     m_codigoinicial->setTableName ( "cuenta" );
     m_codigoinicial->setFieldId("idcuenta");
     m_codigoinicial->m_valores["descripcion"] = "";
@@ -74,7 +74,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 
     m_codigofinal->setMainCompany ( emp );
     /// Arreglamos la cuenta
-    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setLabel ( _ ( "Cuenta final:" ) );
     m_codigofinal->setTableName ( "cuenta" );
     m_codigofinal->setFieldId("idcuenta");
     m_codigofinal->m_valores["descripcion"] = "";

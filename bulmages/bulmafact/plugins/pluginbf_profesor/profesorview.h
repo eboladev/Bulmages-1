@@ -51,7 +51,7 @@ public:
     ~ProfesorView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardarPost();
+    virtual int afterSave();
     virtual int cargarPost(QString id);
 };
 

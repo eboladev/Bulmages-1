@@ -239,7 +239,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 
     BfSubForm *l = trab->findChild<BfSubForm *> ( "m_ausencias" );
     if (l) {
-      l->cargar ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->mdb_idtrabajador );
+      l->load ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->mdb_idtrabajador );
     } // end if
     blDebug ( "END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
     return 0;
@@ -256,7 +256,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     BfSubForm * l = trab->findChild<BfSubForm *> ( "m_ausencias" );
     if (l) {
       l->setColumnValue ( "idtrabajador", trab->mdb_idtrabajador );
-      l->guardar();
+      l->save();
     } // end if
     return 0;
 }

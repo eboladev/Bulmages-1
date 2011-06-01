@@ -47,7 +47,7 @@ public:
     ~ListCompArticuloView();
 
 public slots:
-    virtual void cargar ( QString idarticulo );
+    virtual void load ( QString idarticulo );
     virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
 };

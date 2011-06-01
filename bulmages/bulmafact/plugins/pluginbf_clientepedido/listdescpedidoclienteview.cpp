@@ -46,11 +46,11 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView ( QWidget *parent
 }
 
 
-void ListDescuentoPedidoClienteView::cargar ( QString idpedidocliente )
+void ListDescuentoPedidoClienteView::load ( QString idpedidocliente )
 {
     blDebug ( "ListDescuentoPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    BlSubForm::cargar ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente );
+    BlSubForm::load ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente );
     blDebug ( "END ListDescuentoPedidoClienteView::cargar", 0 );
 }
 

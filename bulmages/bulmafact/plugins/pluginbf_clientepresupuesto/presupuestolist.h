@@ -42,8 +42,8 @@ public:
     ~PresupuestoListSubForm() {};
 
 public slots:
-    virtual void cargar();
-    virtual void cargar ( QString query );
+    virtual void load();
+    virtual void load ( QString query );
 };
 
 
@@ -65,7 +65,7 @@ public:
     ~PresupuestoList();
     void presentar();
     void editar ( int );
-    void borrar();
+    void remove();
     void crear();
     QString idpresupuesto();
     void setMainCompany ( BfCompany *comp );

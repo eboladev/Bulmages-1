@@ -41,8 +41,8 @@ public:
     ~FacturasProveedorListSubform();
 
 public slots:
-    virtual void cargar();
-    virtual void cargar ( QString query );
+    virtual void load();
+    virtual void load ( QString query );
 };
 
 
@@ -69,7 +69,7 @@ public:
     void setidproveedor ( QString val );
     void setidarticulo ( QString val );
     void editar ( int );
-    void borrar();
+    void remove();
     void crear();
     void imprimir();
     void iniciaForm();

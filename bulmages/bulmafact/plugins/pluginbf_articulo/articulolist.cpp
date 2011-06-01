@@ -69,7 +69,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     setSubForm ( mui_list );
     m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
@@ -100,7 +100,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
 void ArticuloList::presentar()
 {
     blDebug ( "ArticuloList::INIT_presenta", 0 );
-    mui_list->cargar ( formaQuery() );
+    mui_list->load ( formaQuery() );
     blDebug ( "ArticuloList::END_presenta", 0 );
 }
 
@@ -123,11 +123,11 @@ void ArticuloList::editar ( int row )
     mdb_idarticulo = mui_list->dbValue ( "idarticulo", row );
     mdb_nomarticulo = mui_list->dbValue ( "nomarticulo", row );
     mdb_codigocompletoarticulo = mui_list->dbValue ( "codigocompletoarticulo", row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany(), 0 );
         mainCompany() ->m_pWorkspace->addSubWindow ( art );
         /// Si la carga no va bien entonces terminamos.
-        if ( art->cargar ( mdb_idarticulo ) ) {
+        if ( art->load ( mdb_idarticulo ) ) {
             delete art;
             blDebug ( "END ArticuloList::editar", 0, "Carga Erronea" );
             return;
@@ -160,7 +160,7 @@ ArticuloList::~ArticuloList()
 /**
 \return
 **/
-void ArticuloList::borrar()
+void ArticuloList::remove()
 {
     blDebug ( "ArticuloList::on_mui_borrar_clicked", 0 );
     int a = mui_list->currentRow();
@@ -333,7 +333,7 @@ void ArticuloList::submenu ( const QPoint & )
 void ArticuloList::crear()
 {
     blDebug ( "ArticuloList::crear", 0 );
-    if (modoConsulta()) {
+    if (selectMode()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );

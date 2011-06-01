@@ -34,7 +34,7 @@ public:
     ~TarifaListSubform() {}    ;
 
 public slots:
-    virtual void cargar();
+    virtual void load();
 };
 
 #endif

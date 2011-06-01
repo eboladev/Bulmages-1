@@ -114,7 +114,7 @@ void MovimientosView::presenta()
 {
     blDebug ( "MovimientosView::presenta", 0 );
 
-    mui_list->cargar ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
+    mui_list->load ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
 
     blDebug ( "END MovimientosView::presenta", 0 );
 }

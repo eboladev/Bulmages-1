@@ -735,7 +735,7 @@
       <attribute name="title">
        <string>Registro</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>

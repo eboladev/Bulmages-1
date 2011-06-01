@@ -45,8 +45,8 @@ public:
     void setListControlStock ( ListControlStockView *a );
     ListControlStockView *getlistalineas();
     void pintaInventario();
-    virtual int guardar();
-    virtual int borrar();
+    virtual int save();
+    virtual int remove();
     void imprimirInventario();
     virtual void pintaIdInventario ( QString );
     virtual void pintaFechaInventario ( QString );

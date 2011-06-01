@@ -207,7 +207,7 @@ void PedidoClienteView::generarAlbaran()
                 } // end if
                 bud = new AlbaranClienteView ( mainCompany(), NULL );
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->value( "idalbaran" ) );
+                bud->load ( cur->value( "idalbaran" ) );
                 bud->show();
                 return;
             } // end if
@@ -216,7 +216,7 @@ void PedidoClienteView::generarAlbaran()
             /// Creamos el albaran.
             bud = mainCompany() ->newAlbaranClienteView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( "0" );
+            bud->load ( "0" );
 
             /// Traspasamos los datos al albaran.
             recogeValores();
@@ -294,11 +294,11 @@ void PedidoClienteView::on_mui_idcliente_valueChanged ( QString id )
 /**
 \return
 **/
-int PedidoClienteView::borrarPre()
+int PedidoClienteView::beforeDelete()
 {
     blDebug ( "PedidoClienteView::borrar", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    m_listalineas->remove();
+    m_listadescuentos->remove();
     blDebug ( "PedidoClienteView::borrar", 0 );
     return 0;
 }
@@ -313,8 +313,8 @@ int PedidoClienteView::cargarPost ( QString idbudget )
 {
     blDebug ( "PedidoClienteView::cargarPost", 0 );
 
-    m_listalineas->cargar ( idbudget );
-    m_listadescuentos->cargar ( idbudget );
+    m_listalineas->load ( idbudget );
+    m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "PedidoClienteView_cargarPost_Post", this );
@@ -330,13 +330,13 @@ int PedidoClienteView::cargarPost ( QString idbudget )
 /**
 \return
 **/
-int PedidoClienteView::guardarPost()
+int PedidoClienteView::afterSave()
 {
     blDebug ( "PedidoClienteView::guardar", 0 );
     m_listalineas->setColumnValue ( "idpedidocliente", dbValue ( "idpedidocliente" ) );
-    m_listalineas->guardar();
+    m_listalineas->save();
     m_listadescuentos->setColumnValue ( "idpedidocliente", dbValue ( "idpedidocliente" ) );
-    m_listadescuentos->guardar();
+    m_listadescuentos->save();
     return 0;
 }
 

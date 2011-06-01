@@ -568,11 +568,11 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
 #endif
 
 // a ver. No se porque pongo esto aqui.
-// Como que he sacado codigo de generaRML(arch) para ponerlo aqui (porque me parece que es parseTags
+// Como que he sacado codigo de generateRML(arch) para ponerlo aqui (porque me parece que es parseTags
 // quien deberia tratar todos los tags y porque asi aprovecho el proceso de escribir el fichero en el
 // encoding correcto que ya esta hecho en Ficha) pues he copiado tambien esto, pero yo hubiera dicho
 // que C++ ya haria el delete solito y si
-// no es asi, porque en generaRML había dos catchs y solo uno hacia delete?
+// no es asi, porque en generateRML había dos catchs y solo uno hacia delete?
     } catch ( ... ) {
     
         if ( cur ) delete cur;
@@ -961,11 +961,11 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
     return result;
 }
 
-int BfForm::generaRML ( void )
+int BfForm::generateRML ( void )
 {
-    blDebug ( "BfForm::generaRML(void)", 0 );
-    int err = BlForm::generaRML();
-    blDebug ( "END BfForm::generaRML(void)", 0 );
+    blDebug ( "BfForm::generateRML(void)", 0 );
+    int err = BlForm::generateRML();
+    blDebug ( "END BfForm::generateRML(void)", 0 );
     return err;
     
 }
@@ -984,9 +984,9 @@ QString BfForm::templateName ( void )
 \param arch archivo a generar
 \return 0 si ha ocurrido un error, != 0 si todo ha ido bien.
 **/
-int BfForm::generaRML ( const QString &arch )
+int BfForm::generateRML ( const QString &arch )
 {
-    blDebug ( "BfForm::generaRML, con argumento const QString &arch", 0, arch );
+    blDebug ( "BfForm::generateRML, con argumento const QString &arch", 0, arch );
     
     try {
 
@@ -995,14 +995,14 @@ int BfForm::generaRML ( const QString &arch )
         } // end if
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "BfForm_generaRML", this );
+        int res = g_plugins->lanza ( "BfForm_generateRML", this );
         if ( res != 0 ) {
             return 1;
         } // end if
 
-        BlForm::generaRML ( arch );
+        BlForm::generateRML ( arch );
 
-        blDebug ( "END BfForm::generaRML, con argumento const QString &arch", 0 );
+        blDebug ( "END BfForm::generateRML, con argumento const QString &arch", 0 );
         
         return 1;
 

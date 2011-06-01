@@ -51,9 +51,9 @@ BfClienteTicketDescuentoSubForm::BfClienteTicketDescuentoSubForm ( QWidget *pare
 /**
 \param idalbaran
 **/
-void BfClienteTicketDescuentoSubForm::cargar ( QString idalbaran )
+void BfClienteTicketDescuentoSubForm::load ( QString idalbaran )
 {
     blDebug ( "BfClienteTicketDescuentoSubForm::cargar", 0 );
     mdb_idalbaran = idalbaran;
-    BlSubForm::cargar ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
+    BlSubForm::load ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
 }

@@ -122,7 +122,7 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
             mui_comboTipoIVA->setCurrentIndex ( pos );
         m_posactual = mui_comboTipoIVA->currentIndex();
 
-        cargar ( m_curtipoiva->value( "idtipoiva", m_posactual ) );
+        load ( m_curtipoiva->value( "idtipoiva", m_posactual ) );
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_readValues();

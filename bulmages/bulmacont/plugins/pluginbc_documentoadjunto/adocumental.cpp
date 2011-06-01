@@ -81,7 +81,7 @@ void myplugin1::boton_adjuntar()
 {
     blDebug ( "myplugin1::boton_adjuntar", 10 );
     adocumental *adoc = new adocumental ( company, 0 );
-    adoc->setModoConsulta();
+    adoc->setSelectMode();
     adoc->exec();
     /// Falta por resolver esta salvedad.
     BcAsientoView *intapunts = company->intapuntsempresa();

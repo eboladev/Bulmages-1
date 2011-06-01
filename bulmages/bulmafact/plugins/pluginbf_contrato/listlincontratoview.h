@@ -39,7 +39,7 @@ public:
     ListLinContratoView ( QWidget *parent = 0 );
     ~ListLinContratoView() {};
 public slots:
-    virtual void cargar ( QString idcontrato );
+    virtual void load ( QString idcontrato );
 };
 
 #endif

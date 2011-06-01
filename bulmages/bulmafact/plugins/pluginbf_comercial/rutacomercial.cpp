@@ -81,7 +81,7 @@ void RutaComercial::pintar()
 \param id
 \return
 **/
-int RutaComercial::cargar ( QString id )
+int RutaComercial::load ( QString id )
 {
     blDebug ( "RutaComercial::cargar", 0 );
     QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;

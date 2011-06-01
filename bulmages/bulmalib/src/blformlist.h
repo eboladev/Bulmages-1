@@ -24,7 +24,6 @@
 
 #include <QWidget>
 #include <QCloseEvent>
-/// by R. Cabezas
 #include <QtScript>
 #include <QScriptEngine>
 
@@ -63,15 +62,15 @@ public:
     virtual int insertWindow ( QString title );
     virtual void submenu ( const QPoint & );
     virtual void crear();
-    virtual void borrar();
+    virtual void remove();
     void hideBotonera();
     void showBotonera();
     void hideBusqueda();
     void showBusqueda();
-    void setModoConsulta();
-    void setModoEdicion();
-    bool modoEdicion();
-    bool modoConsulta();
+    void setSelectMode();
+    void setEditMode();
+    bool editMode();
+    bool selectMode();
     void trataPermisos ( QString nomtabla );
     BlSubForm *subForm();
     void blScript(QObject * obj);

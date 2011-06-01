@@ -67,7 +67,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo pedido de cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo pedido de cliente" ) );
-        accionB->setObjectName("mui_actionClienteNuevoPedido");
+        accionB->setObjectName("mui_actionClientePedidoNuevo");
 
         pPluginMenu->addAction ( accionB );
 
@@ -86,7 +86,7 @@ int BlAction_triggered(BlAction *accion) {
         } // end if        
     } // end if
     
-    if (accion->objectName() == "mui_actionClienteNuevoPedido") {
+    if (accion->objectName() == "mui_actionClientePedidoNuevo") {
         PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
@@ -114,7 +114,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
         PedidosClienteList *pedidosClienteList = new PedidosClienteList ( NULL, 0, BL_SELECT_MODE );
 	pedidosClienteList->setMainCompany(( BfCompany * ) prov->mainCompany());
-        pedidosClienteList->setModoEdicion();
+        pedidosClienteList->setEditMode();
         pedidosClienteList->setObjectName ( "listpedidoclientees" );
         pedidosClienteList->hideBusqueda();
         prov->mui_tab->addTab ( pedidosClienteList, "Pedidos" );
@@ -140,7 +140,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idpedidocliente" ) );
+        bud->load ( cur->value( "idpedidocliente" ) );
         bud->show();
         cur->nextRecord();
     } // end while

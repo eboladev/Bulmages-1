@@ -51,7 +51,7 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END ListAlmacenView::ListAlmacenView", 1 );
@@ -65,7 +65,7 @@ void ListAlmacenView::on_mui_aceptar_clicked()
 {
     blDebug ( "ListAlmacenView::on_mui_aceptar_clicked", 0 );
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los almacenes" ) );
@@ -105,10 +105,10 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent 
 ///
 /**
 **/
-void ListAlmacenSubForm::cargar()
+void ListAlmacenSubForm::load()
 {
     blDebug ( "ListAlmacenSubForm::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM almacen" );
+    BlSubForm::load ( "SELECT * FROM almacen" );
     blDebug ( "END ListAlmacenSubForm::cargar", 0 );
 }
 

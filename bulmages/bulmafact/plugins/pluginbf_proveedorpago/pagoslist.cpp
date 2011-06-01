@@ -84,7 +84,7 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     presentar();
     mdb_idpago = "";
     setSubForm ( mui_list );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
@@ -109,7 +109,7 @@ void PagosList::presentar()
 {
     blDebug ( "PagosList::presentar()", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantpago" );
         m_total->setText ( total.toQString() );
@@ -163,9 +163,9 @@ QString PagosList::generaFiltro()
 void PagosList::editar ( int )
 {
     mdb_idpago = mui_list->dbValue ( "idpago" );
-    if ( modoEdicion() && mdb_idpago != "" ) {
+    if ( editMode() && mdb_idpago != "" ) {
         PagoView *bud = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
-        if ( bud->cargar ( mdb_idpago ) ) {
+        if ( bud->load ( mdb_idpago ) ) {
             delete bud;
             return;
         } // end if
@@ -202,7 +202,7 @@ void PagosList::imprimir()
 }
 
 
-void PagosList::borrar()
+void PagosList::remove()
 {
     blDebug ( "PagosList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -212,10 +212,10 @@ void PagosList::borrar()
     } // end if
     try {
         mdb_idpago = mui_list->dbValue ( "idpago" );
-        if ( modoEdicion() && mdb_idpago != "" ) {
+        if ( editMode() && mdb_idpago != "" ) {
             PagoView * bud = new PagoView ( ( BfCompany * ) mainCompany(), NULL );
-            bud->cargar ( mdb_idpago );
-            bud->borrar();
+            bud->load ( mdb_idpago );
+            bud->remove();
         } // end if
         presentar();
     } catch ( ... )  {

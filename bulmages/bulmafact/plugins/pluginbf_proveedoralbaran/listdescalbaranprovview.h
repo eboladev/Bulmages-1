@@ -39,10 +39,10 @@ public:
     ~ListDescuentoAlbaranProvView() {};
 
 public slots:
-    virtual void cargar ( QString idalbaranp ) {
+    virtual void load ( QString idalbaranp ) {
         blDebug ( "ListDescuentoAlbaranProvView::cargar\n", 0 );
         mdb_idalbaranp = idalbaranp;
-        BlSubForm::cargar ( "SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp );
+        BlSubForm::load ( "SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp );
     };
 };
 

@@ -49,8 +49,8 @@ public:
     BfSubForm* getlistadescuentos();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int generaRML ( void );
-    virtual int generaRML ( const QString &arch );
+    virtual int generateRML ( void );
+    virtual int generateRML ( const QString &arch );
     virtual void calculaypintatotales();
     virtual void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed ) {};
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );

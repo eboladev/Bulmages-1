@@ -40,7 +40,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     groupBox1->setDisabled ( TRUE );
     setTitleName ( _ ( "Forma de Pago" ) );
     setDbTableName ( "forma_pago" );
-    setModoEdicion();
+    setEditMode();
     m_cursorFPagoView = NULL;
     m_item = NULL;
 
@@ -135,7 +135,7 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 /**
 \return
 **/
-int FPagoView::guardar()
+int FPagoView::save()
 {
     blDebug ( "FPagoView::on_mui_guardar_clicked", 0 );
     if ( mdb_idforma_pago == "" || mdb_idforma_pago == "0" ) return 0;
@@ -269,22 +269,22 @@ void FPagoView::on_mui_borrar_clicked()
 ///
 /**
 **/
-void FPagoView::setModoConsulta()
+void FPagoView::setSelectMode()
 {
-    blDebug ( "FPagoView::setModoConsulta", 0 );
-    m_modoConsulta = TRUE;
-    blDebug ( "END FPagoView::setModoConsulta", 0 );
+    blDebug ( "FPagoView::setSelectMode", 0 );
+    m_selectMode = TRUE;
+    blDebug ( "END FPagoView::setSelectMode", 0 );
 }
 
 
 ///
 /**
 **/
-void FPagoView::setModoEdicion()
+void FPagoView::setEditMode()
 {
-    blDebug ( "FPagoView::setModoEdicion", 0 );
-    m_modoConsulta = FALSE;
-    blDebug ( "END FPagoView::setModoEdicion", 0 );
+    blDebug ( "FPagoView::setEditMode", 0 );
+    m_selectMode = FALSE;
+    blDebug ( "END FPagoView::setEditMode", 0 );
 }
 
 

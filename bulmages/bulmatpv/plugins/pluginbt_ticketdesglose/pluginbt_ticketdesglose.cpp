@@ -53,7 +53,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
-    g_doc1->cargaconf();
+    g_doc1->loadConfig();
     g_doc1->show();
 
     blDebug ( "END PluginBt_TicketDesglose::entryPoint", 0 );

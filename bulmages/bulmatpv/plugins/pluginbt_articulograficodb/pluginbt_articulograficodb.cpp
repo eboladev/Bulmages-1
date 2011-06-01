@@ -52,7 +52,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_pantallas );
     g_pantallas->show();
-    g_pantallas->cargaconf();
+    g_pantallas->loadConfig();
 
     blDebug ( "END entryPoint", 0 );
 

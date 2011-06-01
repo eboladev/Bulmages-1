@@ -49,9 +49,9 @@ public:
 
     virtual void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
-    virtual int guardarPost();
+    virtual int afterSave();
     virtual int cargarPost ( QString id );
-    virtual int borrarPre();
+    virtual int beforeDelete();
     virtual void imprimirFacturaProveedor();
 
 public slots:

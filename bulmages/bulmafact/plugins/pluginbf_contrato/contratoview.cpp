@@ -109,17 +109,17 @@ void ContratoView::inicializar()
 \param id
 \return
 **/
-int ContratoView::cargar ( QString id )
+int ContratoView::load ( QString id )
 {
     blDebug ( "ContratoView::cargar", 0 );
     try {
-        Contrato::cargar ( id );
+        Contrato::load ( id );
         if ( dbValue ( "idcontrato" ) != "" ) {
             setWindowTitle ( _ ( "Contrato" ) + " " + dbValue ( "refcontrato" ) + " " + dbValue ( "idcontrato" ) );
             insertWindow ( windowTitle(), this );
         } // end if
-        mui_lineas->cargar ( id );
-        subform2->cargar ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + id + " AND reffactura = '" + dbValue ( "refcontrato" ) + "'" );
+        mui_lineas->load ( id );
+        subform2->load ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + id + " AND reffactura = '" + dbValue ( "refcontrato" ) + "'" );
         dialogChanges_readValues();
     } catch ( ... ) {
         return -1;
@@ -131,14 +131,14 @@ int ContratoView::cargar ( QString id )
 
 /** Guardado de la ficha en la base de datos.
     Utiliza los metodos setXXX para establecer los valores de la Ficha en el BlDbRecord
-    y luego llama a \ref Contrato::guardar() para el guardado en la base de datos.
+    y luego llama a \ref Contrato::save() para el guardado en la base de datos.
 */
 /// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el
 /// control de cambios que deberia estar en el metodo de carga.
 /**
 \return
 **/
-int ContratoView::guardar()
+int ContratoView::save()
 {
     blDebug ( "ContratoView::guardar", 0 );
     try {
@@ -150,7 +150,7 @@ int ContratoView::guardar()
         setDbValue ( "loccontrato", mui_loccontrato->text() );
         setDbValue ( "descontrato", mui_descontrato->toPlainText() );
         setDbValue ( "periodicidadcontrato", mui_periodicidadcontrato->periodo() );
-        Contrato::guardar();
+        Contrato::save();
         dialogChanges_readValues();
     } catch ( ... ) {
         blDebug ( "ContratoView::guardar error al guardar", 0 );
@@ -277,7 +277,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
     blDebug ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
     QString idfactura = subform2->dbValue ( QString ( "idfactura" ), subform2->currentRow() );
     FacturaView *prov = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
-    if ( prov->cargar ( idfactura ) ) {
+    if ( prov->load ( idfactura ) ) {
         delete prov;
         return;
     } // end if
@@ -322,7 +322,7 @@ void ContratoView::on_mui_facturar_clicked()
             FacturaView *fac = ( FacturaView * ) g_plugParams;	    
 	    
             mainCompany() ->m_pWorkspace->addSubWindow ( fac );
-            fac->cargar ( "0" );
+            fac->load ( "0" );
             fac->show();
             fac->setDbValue ( "reffactura", dbValue ( "refcontrato" ) );
             fac->setDbValue ( "idcliente", dbValue ( "idcliente" ) );

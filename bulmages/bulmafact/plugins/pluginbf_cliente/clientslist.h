@@ -66,7 +66,7 @@ public:
     void editar ( int );
     void imprimir();
     void crear();
-    void borrar();
+    void remove();
     QString idclient();
     QString nomclient();
     QString cifclient();

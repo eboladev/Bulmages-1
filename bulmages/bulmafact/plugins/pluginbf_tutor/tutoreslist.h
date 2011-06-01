@@ -65,7 +65,7 @@ public:
     QString idcliente();
     void imprimir();
     QString generaFiltro();
-    void borrar();
+    void remove();
     void crear();
     void editar ( int );
     void submenu ( const QPoint & );

@@ -388,12 +388,12 @@ msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr "Erreur en effacement. [BlSubForm::borrar]"
 
 #: bldb.cpp:978
-msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
-msgstr "Erreur en copie du fichier RML [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
+msgstr "Erreur en copie du fichier RML [ bldb->generateRML() ]"
 
 #: bldb.cpp:990
-msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
-msgstr "Erreur en copie du fichier de logo [ [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
+msgstr "Erreur en copie du fichier de logo [ [ bldb->generateRML() ]"
 
 #: blcountryview.cpp:206
 msgid "Error al crear el banco"

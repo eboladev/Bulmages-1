@@ -185,21 +185,21 @@ void SocioView::imprimir()
     blDebug ( "END SocioView::imprimir", 0 );
 }
 
-int SocioView::guardarPost()
+int SocioView::afterSave()
 {
-    blDebug ( "SocioView::guardarPost", 0 );
+    blDebug ( "SocioView::afterSave", 0 );
 
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
-    mui_alumnosList->guardar();
+    mui_alumnosList->save();
     
-    blDebug ( "END SocioView::guardarPost", 0 );
+    blDebug ( "END SocioView::afterSave", 0 );
     
     return 0;
 }
 
-int SocioView::borrarPre()
+int SocioView::beforeDelete()
 {
-    blDebug ( "SocioView::borrarPre", 0 );
+    blDebug ( "SocioView::beforeDelete", 0 );
 
     /*
         QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
@@ -209,7 +209,7 @@ int SocioView::borrarPre()
     QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue ( "idcliente" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( "END SocioView::borrarPre", 0 );
+    blDebug ( "END SocioView::beforeDelete", 0 );
     
     return 0;
 }
@@ -227,9 +227,9 @@ int SocioView::cargarPost ( QString id )
         delete cur;
     */
     
-    mui_alumnosList->cargar ( id );
+    mui_alumnosList->load ( id );
 
-    mui_listrecibos->cargar("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
+    mui_listrecibos->load("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
 
     blDebug ( "END SocioView::cargarPost", 0 );
     
@@ -266,11 +266,11 @@ ListAlumnosSocioView::ListAlumnosSocioView ( QWidget *parent ) : BfSubForm ( par
 /**
 \param idcliente
 **/
-void ListAlumnosSocioView::cargar ( QString idcliente )
+void ListAlumnosSocioView::load ( QString idcliente )
 {
     blDebug ( "ListAlumnosSocioView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
+    BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     
     blDebug ( "END ListAlumnosSocioView::cargar", 0 );
 }

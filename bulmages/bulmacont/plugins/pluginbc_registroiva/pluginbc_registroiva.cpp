@@ -50,60 +50,57 @@ int entryPoint ( BcBulmaCont *bcont )
 {
     blDebug ( "Punto de entrada del plugin registroIVA", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    blBindTextDomain ( "pluginbc_registroiva", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
     g_bcont = bcont;
     
     QMenu *pPluginMenu = bcont->newMenu(_("&Iva"), "menuIva", "menuMaestro");
 
     /// Creamos el men&uacute;.
 
-    BlAction *accion = new BlAction ( _ ( "&Registro de IVA" ), 0 );
-    accion->setStatusTip ( _ ( "Registro de IVA" ) );
-    accion->setWhatsThis ( _ ( "Registro de IVA" ) );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
-    accion->setObjectName("regiva");
-    
-    BlAction *accion1 = new BlAction ( _ ( "&Cobros y pagos" ), 0 );
-    accion1->setStatusTip ( _ ( "Cobros y pagos" ) );
-    accion1->setWhatsThis ( _ ( "Cobros y pagos" ) );
-    accion1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank-list.png") ) );
-    accion1->setObjectName ("cobrospagos");
+    BlAction *accionA = new BlAction ( _ ( "&Registro de IVA" ), 0 );
+    accionA->setStatusTip ( _ ( "Registro de IVA" ) );
+    accionA->setWhatsThis ( _ ( "Registro de IVA" ) );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
+    accionA->setObjectName("mui_actionRegistroIVA");
+    pPluginMenu->addAction ( accionA );
+    bcont->toolBar->addAction ( accionA );
 
-    BlAction *accion2 = new BlAction ( _ ( "&Modelo 347" ), 0 );
-    accion2->setStatusTip ( _ ( "Modelo 347" ) );
-    accion2->setWhatsThis ( _ ( "Modelo 347" ) );
+    BlAction *accionB = new BlAction ( _ ( "&Cobros y pagos" ), 0 );
+    accionB->setStatusTip ( _ ( "Cobros y pagos" ) );
+    accionB->setWhatsThis ( _ ( "Cobros y pagos" ) );
+    accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank-list.png") ) );
+    accionB->setObjectName ("mui_actionCobrosYPagos");
+    pPluginMenu->addAction ( accionB );
+    bcont->toolBar->addAction ( accionB );
+
+
+    BlAction *accionC = new BlAction ( _ ( "&Modelo 347" ), 0 );
+    accionC->setStatusTip ( _ ( "Modelo 347" ) );
+    accionC->setWhatsThis ( _ ( "Modelo 347" ) );
 //    accion2->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank-list.png") ) );
-    accion2->setObjectName ("m347");
-    
-    pPluginMenu->addAction ( accion );
-    pPluginMenu->addAction ( accion1 );
-    pPluginMenu->addAction ( accion2 );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bcont->toolBar->addAction ( accion );
-    bcont->toolBar->addAction ( accion1 );
-    
-    
-    /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_registroiva", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    accionC->setObjectName ("mui_actionModelo347");
+    pPluginMenu->addAction ( accionC );
 
     return 0;
 }
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "regiva") {
+    if (accion->objectName() == "mui_actionRegistroIVA") {
 	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_bcont->company(), "0" );
 	perd->inicializa();
 	g_bcont->company() ->pWorkspace() ->addSubWindow ( perd );
 	perd->show();
     } // end if
     
-    if (accion->objectName() == "cobrospagos") {
+    if (accion->objectName() == "mui_actionCobrosYPagos") {
 	cobropagoview *adoc = new cobropagoview ( g_bcont->company(), 0 );
 	g_bcont->company() ->pWorkspace() ->addSubWindow ( adoc );
 	adoc->show();
     } // end if
-    if (accion->objectName() == "m347") {
+    if (accion->objectName() == "mui_actionModelo347") {
       BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->company(), "0" );
       dlg347->exec();
       delete dlg347;
@@ -198,7 +195,7 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
 {
     blDebug ( "BcAsientoSubForm_boton_iva", 0 );
     
-    as->guardar();
+    as->save();
     try {
         int idborrador = as->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->mainCompany(), 0 );

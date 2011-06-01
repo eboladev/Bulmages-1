@@ -162,8 +162,8 @@ void RegistroIvaView::on_mui_borrar_clicked() {
                              _("Desea borrar este registro"),
                              _("&Si"),
                              _("&No")) == 0) {
-        mui_listIva->borrar();
-        borrar();
+        mui_listIva->remove();
+        remove();
     } // end if
     blDebug("END RegistroIvaView::on_mui_borrar_clicked", 0);
 }
@@ -175,16 +175,16 @@ void RegistroIvaView::on_mui_borrar_clicked() {
 \param id
 \return
 **/
-int RegistroIvaView::cargar ( QString id )
+int RegistroIvaView::load ( QString id )
 {
     int error = 0;
-    error = RegistroIva::cargar ( id );
+    error = RegistroIva::load ( id );
     if ( error ) {
         return -1;
     } // end if
-    mui_listIva->cargar ( "SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva=" + id + " ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo" );
+    mui_listIva->load ( "SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva=" + id + " ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo" );
 
-    mui_listPrevCobro->cargar ( "SELECT * FROM prevcobro "
+    mui_listPrevCobro->load ( "SELECT * FROM prevcobro "
                                 " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
                                 " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente, tipocuenta AS tipoctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                                 " WHERE idregistroiva = " + id + " ORDER BY fcobroprevcobro " );
@@ -199,7 +199,7 @@ int RegistroIvaView::cargar ( QString id )
 /**
 \return
 **/
-int RegistroIvaView::guardar()
+int RegistroIvaView::save()
 {
     blDebug ( "RegistroIvaView::guardar", 0 );
     try {
@@ -215,11 +215,11 @@ int RegistroIvaView::guardar()
         setfactemitida ( m_factEmitida->isChecked() ? "t" : "f" );
         setfemisionregistroiva ( m_femisionregistroiva->text() );
         setserieregistroiva ( m_serieregistroiva->text() );
-        RegistroIva::guardar();
+        RegistroIva::save();
         mui_listIva->setColumnValue ( "idregistroiva", dbValue ( "idregistroiva" ) );
-        mui_listIva->guardar();
+        mui_listIva->save();
         mui_listPrevCobro->setColumnValue ( "idregistroiva", dbValue ( "idregistroiva" ) );
-        mui_listPrevCobro->guardar();
+        mui_listPrevCobro->save();
         mainCompany() ->commit();
         dialogChanges_readValues();
     } catch ( ... ) {

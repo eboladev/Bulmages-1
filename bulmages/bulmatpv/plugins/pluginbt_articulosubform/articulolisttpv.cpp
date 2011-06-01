@@ -88,7 +88,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 void ArticuloList1::presentar()
 {
     blDebug ( "ArticuloList1::INIT_presenta", 0 );
-    mui_list->cargar ( formaQuery() );
+    mui_list->load ( formaQuery() );
     blDebug ( "ArticuloList1::END_presenta", 0 );
 }
 

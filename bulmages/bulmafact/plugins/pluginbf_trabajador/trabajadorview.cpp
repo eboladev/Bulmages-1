@@ -52,7 +52,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     m_archivoimagen = "";
-    setModoEdicion();
+    setEditMode();
     m_cursortrabajadores = NULL;
     m_item = NULL;
     res = g_plugins->lanza ( "TrabajadorView_TrabajadorView_Post", this );

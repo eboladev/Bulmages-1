@@ -119,7 +119,7 @@ void RutaComercialList::presenta()
 {
     blDebug ( "RutaComercialList::presenta()\n", 0 );
     QString SQLQuery = "SELECT * FROM (SELECT * FROM rutacomercial NATURAL LEFT JOIN incidenciacomercial UNION SELECT * FROM rutacomercial NATURAL RIGHT JOIN incidenciacomercial WHERE incidenciacomercial.idrutacomercial IS NULL) AS t1 NATURAL LEFT JOIN trabajador LEFT JOIN (SELECT * FROM cliente NATURAL LEFT JOIN zonacomercial) AS t2 ON t1.idcliente = t2.idcliente WHERE 1 = 1 " + generaFiltro();
-    mui_list->cargar ( SQLQuery );
+    mui_list->load ( SQLQuery );
     blDebug ( "end RutaComercialList::presenta()\n", 0 );
 }
 
@@ -156,7 +156,7 @@ void RutaComercialList::editar ( int row )
     QString idrutacomercial = mui_list->dbValue ( "idrutacomercial", row );
     QString idincidenciacomercial = mui_list->dbValue ( "idincidenciacomercial", row );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
-    if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
+    if ( rut->load ( idrutacomercial, idincidenciacomercial ) )
         return;
     mainCompany() ->m_pWorkspace->addSubWindow ( rut );
     mainCompany() ->insertWindow ( _ ( "Nueva incidencia comercial" ), rut );
@@ -237,13 +237,13 @@ void RutaComercialList::imprimir()
 /**
 \return
 **/
-void RutaComercialList::borrar()
+void RutaComercialList::remove()
 {
     blDebug ( "RutaComercialList::borrar", 0 );
     QString idrutacomercial = mui_list->dbValue ( "idrutacomercial" );
     QString idincidenciacomercial = mui_list->dbValue ( "idincidenciacomercial" );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
-    if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
+    if ( rut->load ( idrutacomercial, idincidenciacomercial ) )
         return;
     rut->on_mui_borrar_clicked();
     blDebug ( "END RutaComercialList::borrar", 0 );

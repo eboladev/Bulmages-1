@@ -43,10 +43,10 @@ TarifaListSubform::TarifaListSubform ( QWidget *parent )
 ///
 /**
 **/
-void TarifaListSubform::cargar()
+void TarifaListSubform::load()
 {
     blDebug ( "TarifaListSubform::cargar\n", 0 );
     QString SQLQuery = "SELECT * FROM tarifa ORDER BY idtarifa";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
 }
 

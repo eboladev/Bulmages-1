@@ -135,8 +135,8 @@ ProyectoView::~ProyectoView()
 **/
 int ProyectoView::cargarPost ( QString idcuadrante )
 {
-    mui_ingresos->cargar ( "SELECT idlingpresupuestoc, idpresupuestoc, ordenlingpresupuestoc, lingpresupuestoc.idcuenta, cantlingpresupuestoc, precioundlingpresupuestoc, ejerciciolingpresupuestoc, comentlingpresupuestoc, desclingpresupuestoc, t1.codigo, t1.descripcion AS descripcioncuenta FROM lingpresupuestoc LEFT JOIN (SELECT *  FROM cuenta) AS t1 ON lingpresupuestoc.idcuenta = t1.idcuenta WHERE idpresupuestoc=" + dbValue ( "idpresupuestoc" ) );
-    mui_gastos->cargar ( "SELECT idlgaspresupuestoc, idpresupuestoc, ordenlgaspresupuestoc, lgaspresupuestoc.idcuenta, cantlgaspresupuestoc, precioundlgaspresupuestoc, ejerciciolgaspresupuestoc, comentlgaspresupuestoc, desclgaspresupuestoc, t1.codigo, t1.descripcion AS descripcioncuenta  FROM lgaspresupuestoc LEFT JOIN (SELECT *  FROM cuenta) AS t1 ON lgaspresupuestoc.idcuenta = t1.idcuenta WHERE idpresupuestoc=" + dbValue ( "idpresupuestoc" ) );
+    mui_ingresos->load ( "SELECT idlingpresupuestoc, idpresupuestoc, ordenlingpresupuestoc, lingpresupuestoc.idcuenta, cantlingpresupuestoc, precioundlingpresupuestoc, ejerciciolingpresupuestoc, comentlingpresupuestoc, desclingpresupuestoc, t1.codigo, t1.descripcion AS descripcioncuenta FROM lingpresupuestoc LEFT JOIN (SELECT *  FROM cuenta) AS t1 ON lingpresupuestoc.idcuenta = t1.idcuenta WHERE idpresupuestoc=" + dbValue ( "idpresupuestoc" ) );
+    mui_gastos->load ( "SELECT idlgaspresupuestoc, idpresupuestoc, ordenlgaspresupuestoc, lgaspresupuestoc.idcuenta, cantlgaspresupuestoc, precioundlgaspresupuestoc, ejerciciolgaspresupuestoc, comentlgaspresupuestoc, desclgaspresupuestoc, t1.codigo, t1.descripcion AS descripcioncuenta  FROM lgaspresupuestoc LEFT JOIN (SELECT *  FROM cuenta) AS t1 ON lgaspresupuestoc.idcuenta = t1.idcuenta WHERE idpresupuestoc=" + dbValue ( "idpresupuestoc" ) );
     return 0;
 }
 
@@ -145,12 +145,12 @@ int ProyectoView::cargarPost ( QString idcuadrante )
 /**
 \return
 **/
-int ProyectoView::guardarPost()
+int ProyectoView::afterSave()
 {
     mui_ingresos->setColumnValue ( "idpresupuestoc", dbValue ( "idpresupuestoc" ) );
-    mui_ingresos->guardar();
+    mui_ingresos->save();
     mui_gastos->setColumnValue ( "idpresupuestoc", dbValue ( "idpresupuestoc" ) );
-    mui_gastos->guardar();
+    mui_gastos->save();
     emit ( save() );
     return 0;
 }

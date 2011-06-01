@@ -42,7 +42,7 @@ public:
     ~ListLinPedidoClienteView() {};
 
 public slots:
-    virtual void cargar ( QString idpedidocliente );
+    virtual void load ( QString idpedidocliente );
 };
 
 #endif

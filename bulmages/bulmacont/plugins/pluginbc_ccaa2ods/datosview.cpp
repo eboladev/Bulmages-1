@@ -101,7 +101,7 @@ void DatosView::on_mui_aceptar_clicked() {
 
    // Se pulso el boton 'cancelar'
    if ( resultado ) {
-      if ( generaRML ( m_informe ) )
+      if ( generateRML ( m_informe ) )
       {
          BlProgressBar barra;
          barra.setRange ( 0, 21 );

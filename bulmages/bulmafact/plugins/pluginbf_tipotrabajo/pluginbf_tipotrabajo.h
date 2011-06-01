@@ -37,7 +37,7 @@ extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int TrabajadorView_TrabajadorView_Post ( 
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
-extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_load ( BlForm * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_guardar_Post ( BlForm * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlAction_triggered(BlAction *);
 

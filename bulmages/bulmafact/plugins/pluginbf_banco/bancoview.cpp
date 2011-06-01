@@ -45,7 +45,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     groupBox1->setDisabled ( TRUE );
-    setModoEdicion();
+    setEditMode();
     m_cursorbancos = NULL;
     m_item = NULL;
 
@@ -145,7 +145,7 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 /**
 \return
 **/
-int BancoView::guardar()
+int BancoView::save()
 {
     blDebug ( "BancoView::guardar", 0 );
     try {

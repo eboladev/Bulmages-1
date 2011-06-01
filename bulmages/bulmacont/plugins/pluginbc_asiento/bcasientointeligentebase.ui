@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Aplicar Asiento Inteligente</string>
+   <string>Aplicar asiento inteligente</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">

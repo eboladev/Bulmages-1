@@ -5774,12 +5774,12 @@ msgid "Error al cargar la factura proveedor"
 msgstr "Error when creating the supplier"
 
 #: bldb.cpp:978
-msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
-msgstr "RML file copy error [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
+msgstr "RML file copy error [ bldb->generateRML() ]"
 
 #: bldb.cpp:990
-msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
-msgstr "Logo file copy error [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
+msgstr "Logo file copy error [ bldb->generateRML() ]"
 
 #: actividadview.cpp:112 convocatoriaview.cpp:68
 #, fuzzy

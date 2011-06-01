@@ -107,7 +107,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
         PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-        pedidosProveedorList->setModoEdicion();
+        pedidosProveedorList->setEditMode();
         pedidosProveedorList->setObjectName ( "listPedidosProveedorList" );
         pedidosProveedorList->hideBusqueda();
         prov->mui_tab->addTab ( pedidosProveedorList, "Pedidos" );
@@ -133,7 +133,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         PedidoProveedorView * bud = new PedidoProveedorView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idpedidoproveedor" ) );
+        bud->load ( cur->value( "idpedidoproveedor" ) );
         bud->show();
         cur->nextRecord();
     } // end while

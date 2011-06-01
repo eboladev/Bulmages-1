@@ -77,7 +77,7 @@ ConvocatoriasList::ConvocatoriasList ( BfCompany *comp, QWidget *parent, Qt::WFl
     
     presentar();
     mdb_idactividad = "";
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -105,7 +105,7 @@ void ConvocatoriasList::presentar()
 {
     blDebug ( "ConvocatoriasList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM actividad WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM actividad WHERE 1 = 1 " + generaFiltro() );
     } // end if
     blDebug ( "END ConvocatoriasList::presentar", 0 );
 }
@@ -158,7 +158,7 @@ void ConvocatoriasList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void ConvocatoriasList::borrar()
+void ConvocatoriasList::remove()
 {
     blDebug ( "ConvocatoriasList::borrar", 0 );
     int a = mui_list->currentRow();
@@ -168,9 +168,9 @@ void ConvocatoriasList::borrar()
     } // end if
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ConvocatoriaView * cv = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idactividad ) )
+            if ( cv->load ( mdb_idactividad ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -192,9 +192,9 @@ void ConvocatoriasList::editar ( int )
     blDebug ( "ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ConvocatoriaView * bud = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idactividad ) ) {
+            if ( bud->load ( mdb_idactividad ) ) {
                 delete bud;
                 return;
             } // end if

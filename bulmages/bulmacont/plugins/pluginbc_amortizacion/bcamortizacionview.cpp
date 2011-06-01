@@ -50,7 +50,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     ctaactivo->setMainCompany ( emp );
     /// Arreglamos la cuenta
     ctaactivo->setMainCompany(mainCompany());
-    ctaactivo->setLabel ( _ ( "Cuenta Activo:" ) );
+    ctaactivo->setLabel ( _ ( "Cuenta activa:" ) );
     ctaactivo->setTableName ( "cuenta" );
     ctaactivo->setFieldId("idcuenta");
     ctaactivo->m_valores["descripcion"] = "";
@@ -60,7 +60,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     ctaamortizacion->setMainCompany ( emp );
     /// Arreglamos la cuenta
     ctaamortizacion->setMainCompany(mainCompany());
-    ctaamortizacion->setLabel ( _ ( "Cuenta de Amortizacion:" ) );
+    ctaamortizacion->setLabel ( _ ( "Cuenta de amortizacion:" ) );
     ctaamortizacion->setTableName ( "cuenta" );
     ctaamortizacion->setFieldId("idcuenta");
     ctaamortizacion->m_valores["descripcion"] = "";
@@ -123,7 +123,7 @@ BcAmortizacionView::~BcAmortizacionView()
 /**
 \return
 **/
-int BcAmortizacionView::borrar()
+int BcAmortizacionView::remove()
 {
     blDebug ( "BcAmortizacionView::borrar", 0 );
     if ( m_idamortizacion != "" ) {
@@ -142,7 +142,7 @@ int BcAmortizacionView::borrar()
 /**
 \return
 **/
-int BcAmortizacionView::guardar()
+int BcAmortizacionView::save()
 {
     blDebug ( "BcAmortizacionView::guardar", 0 );
     try {
@@ -161,8 +161,8 @@ int BcAmortizacionView::guardar()
 
         /// Guardamos las lineas de amortizacion.
         mui_listcuotas->setColumnValue ( "idamortizacion", id );
-        mui_listcuotas->guardar();
-        cargar ( id );
+        mui_listcuotas->save();
+        load ( id );
         blDebug ( "END BcAmortizacionView::guardar", 0 );
         return 0;
     } catch ( ... ) {
@@ -178,12 +178,12 @@ int BcAmortizacionView::guardar()
 \param idamortizacion
 \param
 **/
-int BcAmortizacionView::cargar ( QString idamortizacion )
+int BcAmortizacionView::load ( QString idamortizacion )
 {
     blDebug ( "BcAmortizacionView::cargar", 0, idamortizacion );
     try {
         m_idamortizacion = idamortizacion;
-        BlDbRecord::cargar ( m_idamortizacion );
+        BlDbRecord::load ( m_idamortizacion );
 
         mui_listcuotas->setInsert ( TRUE );
 
@@ -200,7 +200,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
         agrupacion->setText ( dbValue ( "agrupacion" ) );
 
         QString query = "SELECT *, fechaprevista <= now() AS ant FROM linamortizacion LEFT JOIN asiento ON linamortizacion.idasiento = asiento.idasiento WHERE idamortizacion = " + m_idamortizacion + " ORDER BY fechaprevista";
-        mui_listcuotas->cargar ( query );
+        mui_listcuotas->load ( query );
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;

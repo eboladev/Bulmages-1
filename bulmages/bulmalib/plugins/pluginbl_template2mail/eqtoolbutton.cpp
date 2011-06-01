@@ -129,7 +129,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
 
         if ( action->objectName() == "em_" + fileInfo.fileName() ) {
 
-            if ( m_BlForm->generaRML ( fileInfo.fileName() ) ) {
+            if ( m_BlForm->generateRML ( fileInfo.fileName() ) ) {
 
                 QString email = "";
                 QString id = m_BlForm->dbValue ( "id" + m_BlForm->tableName() );

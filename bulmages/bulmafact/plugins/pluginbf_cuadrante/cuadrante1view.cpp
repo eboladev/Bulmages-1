@@ -107,7 +107,7 @@ Cuadrante1View::~Cuadrante1View()
 **/
 int Cuadrante1View::cargarPost ( QString idcuadrante )
 {
-    mui_list->cargar ( "SELECT * FROM horario LEFT JOIN trabajador ON horario.idtrabajador = trabajador.idtrabajador WHERE idcuadrante=" + idcuadrante );
+    mui_list->load ( "SELECT * FROM horario LEFT JOIN trabajador ON horario.idtrabajador = trabajador.idtrabajador WHERE idcuadrante=" + idcuadrante );
     return 0;
 }
 
@@ -116,11 +116,11 @@ int Cuadrante1View::cargarPost ( QString idcuadrante )
 /**
 \return
 **/
-int Cuadrante1View::guardarPost()
+int Cuadrante1View::afterSave()
 {
     mui_list->setColumnValue ( "idcuadrante", dbValue ( "idcuadrante" ) );
-    mui_list->guardar();
-    emit ( save() );
+    mui_list->save();
+    emit ( saved() );
     return 0;
 }
 

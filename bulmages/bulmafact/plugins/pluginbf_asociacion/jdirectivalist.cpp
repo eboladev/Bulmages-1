@@ -86,7 +86,7 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     presentar();
     mdb_idjdirectiva = "";
     
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
@@ -116,7 +116,7 @@ void JDirectivaList::presentar()
     blDebug ( "JDirectivaList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM jdirectiva  WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM jdirectiva  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
     blDebug ( "END JDirectivaList::presentar", 0 );
@@ -167,7 +167,7 @@ void JDirectivaList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void JDirectivaList::borrar()
+void JDirectivaList::remove()
 {
     blDebug ( "JDirectivaList::borrar", 0 );
     
@@ -180,9 +180,9 @@ void JDirectivaList::borrar()
     
     try {
         mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             JDirectivaView * cv = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idjdirectiva ) )
+            if ( cv->load ( mdb_idjdirectiva ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -201,9 +201,9 @@ void JDirectivaList::editar ( int )
     
     try {
         mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             JDirectivaView * bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idjdirectiva ) ) {
+            if ( bud->load ( mdb_idjdirectiva ) ) {
                 delete bud;
                 return;
             } // end if

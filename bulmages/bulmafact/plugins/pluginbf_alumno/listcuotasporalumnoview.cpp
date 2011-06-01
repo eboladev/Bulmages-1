@@ -51,7 +51,7 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END ListCuotasPorAlumnoView::ListCuotasPorAlumnoView", 1 );
@@ -65,7 +65,7 @@ void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
     blDebug ( "ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );
     
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar las cuotas" ) );
@@ -104,11 +104,11 @@ ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfS
 ///
 /**
 **/
-void ListCuotasPorAlumnoSubForm::cargar()
+void ListCuotasPorAlumnoSubForm::load()
 {
     blDebug ( "ListCuotasPorAlumnoSubForm::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT * FROM cuotaporalumno" );
+    BlSubForm::load ( "SELECT * FROM cuotaporalumno" );
     
     blDebug ( "END ListCuotasPorAlumnoSubForm::cargar", 0 );
 }

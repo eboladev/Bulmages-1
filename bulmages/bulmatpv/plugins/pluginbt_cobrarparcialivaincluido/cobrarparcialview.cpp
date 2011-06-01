@@ -344,7 +344,7 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 	/// Vacia el ticket actual de lineas.
 	int nLineas = actTicket->listaLineas()->size();
 	for (int i = 0; i < nLineas; ++i) {
-	    actTicket->listaLineas()->takeFirst()->borrar();
+	    actTicket->listaLineas()->takeFirst()->remove();
 	} // end for
 	
 	/// Coge el ticket origen y va transcribiendo la informacion de las lineas en el ticket actual.
@@ -379,10 +379,10 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 	/// Si el ticket actual se imprimio entonces tiene informacion del albaran
 	/// 'idalbaran' e 'numlalbaran'. Si es asi se tiene que guardar el nuevo ticket en
-	/// un nuevo albaran. Llamando a 'guardar()' es suficiente para tener informacion actualizada.
+	/// un nuevo albaran. Llamando a 'save()' es suficiente para tener informacion actualizada.
 	if (necesitaGuardar) {
-	    ticketDestino->guardar();
-	    actTicket->guardar();
+	    ticketDestino->save();
+	    actTicket->save();
 	} // end if
 
 

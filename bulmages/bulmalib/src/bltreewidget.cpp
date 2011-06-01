@@ -86,7 +86,7 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
     } // end if
 
 //    if ( opcion == del )
-//        borrar ( row );
+//        remove ( row );
     if ( opcion == ajust ) {
 	for (int i=0; i<columnCount(); i++) {
 	    resizeColumnToContents (i);

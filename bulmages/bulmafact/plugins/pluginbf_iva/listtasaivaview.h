@@ -45,7 +45,7 @@ public:
     virtual ~ListTasaIVASubForm() {};
 
 public slots:
-    virtual void cargar();
+    virtual void load();
 };
 
 

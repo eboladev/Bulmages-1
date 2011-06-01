@@ -119,7 +119,7 @@ void BcAsientoSubForm::s_trataMenu ( QAction *action )
 /**
 \param idasiento
 **/
-void BcAsientoSubForm::cargar ( QString idasiento )
+void BcAsientoSubForm::load ( QString idasiento )
 {
     blDebug ( "AsientoSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM borrador ";
@@ -128,7 +128,7 @@ void BcAsientoSubForm::cargar ( QString idasiento )
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nomc_coste, descripcion AS descc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador AS idborriva FROM registroiva) AS t4 ON borrador.idborrador = t4.idborriva ";
     SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
-    BcSubForm::cargar ( SQLQuery );
+    BcSubForm::load ( SQLQuery );
     blDebug ( "END AsientoSubForm::cargar", 0 );
 }
 

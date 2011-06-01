@@ -52,7 +52,7 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     m_archivoimagen = "";
-    setModoEdicion();
+    setEditMode();
     m_cursorclasees = NULL;
     m_item = NULL;
     res = g_plugins->lanza ( "ClaseView_ClaseView_Post", this );

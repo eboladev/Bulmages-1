@@ -57,7 +57,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     m_idprovider = "";
     m_cifprovider = "";
     m_nomprovider = "";
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de proveedores" ) );
@@ -133,7 +133,7 @@ QString ProveedorList::nomprovider()
 void ProveedorList::presentar()
 {
     blDebug ( "ProveedorList::presentar", 0 );
-    mui_list->cargar ( "SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifproveedor) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomproveedor" );
+    mui_list->load ( "SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifproveedor) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomproveedor" );
     blDebug ( "END ProveedorList::presentar", 0 );
 }
 
@@ -145,7 +145,7 @@ void ProveedorList::crear()
 {
     blDebug ( "ProveedorList::crear", 0 );
     
-    if (modoConsulta()) {
+    if (selectMode()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -193,7 +193,7 @@ void ProveedorList::crear()
 	prov->show();
 	prov->setWindowTitle ( _ ( "Nuevo proveedor" ) );
 	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
-	prov->desactivaDocumentos();
+	prov->deactivateDocuments();
 	prov->mui_cifproveedor->setFocus ( Qt::OtherFocusReason );
     } // end if
     blDebug ( "END ProveedorList::crear", 0 );
@@ -211,9 +211,9 @@ void ProveedorList::editar ( int row )
     m_idprovider = mui_list->dbValue ( QString ( "idproveedor" ), row );
     m_cifprovider = mui_list->dbValue ( QString ( "cifproveedor" ), row );
     m_nomprovider = mui_list->dbValue ( QString ( "nomproveedor" ), row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         ProveedorView * prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
-        if ( prov->cargar ( mui_list->dbValue ( QString ( "idproveedor" ), row ) ) ) {
+        if ( prov->load ( mui_list->dbValue ( QString ( "idproveedor" ), row ) ) ) {
             delete prov;
             return;
         } // end if
@@ -233,13 +233,13 @@ void ProveedorList::editar ( int row )
 /// Se procede a borrar el proveedor.
 /**
 **/
-void ProveedorList::borrar()
+void ProveedorList::remove()
 {
     blDebug ( "ProveedorList::borrar", 0 );
     try {
         QString idprov = mui_list->dbValue ( QString ( "idproveedor" ) );
         ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
-        prov->cargar ( idprov );
+        prov->load ( idprov );
         prov->on_mui_borrar_clicked();
         delete prov;
         presentar();
@@ -305,11 +305,11 @@ void ProveedorList::on_mui_importar_clicked()
 ///
 /**
 **/
-void ProveedorListSubform::cargar()
+void ProveedorListSubform::load()
 {
     blDebug ( "ProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM proveedor";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END ProveedorListSubform::cargar", 0 );
 }
 
@@ -318,10 +318,10 @@ void ProveedorListSubform::cargar()
 /**
 \param a
 **/
-void ProveedorListSubform::cargar ( QString a )
+void ProveedorListSubform::load ( QString a )
 {
     blDebug ( "ProveedorListSubform::cargar", 0 );
-    BlSubForm::cargar ( a );
+    BlSubForm::load ( a );
     blDebug ( "END ProveedorListSubform::cargar", 0 );
 }
 

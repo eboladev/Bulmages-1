@@ -156,7 +156,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             } // end if
             FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfacturap" ) );
+            bud->load ( cur->value( "idfacturap" ) );
             bud->show();
             return;
         } // end if
@@ -263,7 +263,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             } // end if
             FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfacturap" ) );
+            bud->load ( cur->value( "idfacturap" ) );
             bud->show();
             return;
         } // end if

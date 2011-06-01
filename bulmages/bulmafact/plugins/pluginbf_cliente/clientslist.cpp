@@ -56,7 +56,7 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     mdb_nomcliente = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de clientes" ) );
@@ -94,7 +94,7 @@ ClientsList::~ClientsList()
 void ClientsList::presentar()
 {
     blDebug ( "ClientsList::presenta", 0 );
-    mui_list->cargar ( "SELECT * FROM cliente WHERE 1=1 " + generaFiltro() );
+    mui_list->load ( "SELECT * FROM cliente WHERE 1=1 " + generaFiltro() );
     blDebug ( "END ClientsList::presenta", 0 );
 }
 
@@ -137,9 +137,9 @@ void ClientsList::editar ( int row )
     mdb_idcliente = mui_list->dbValue ( "idcliente", row );
     mdb_cifcliente = mui_list->dbValue ( "cifcliente", row );
     mdb_nomcliente = mui_list->dbValue ( "nomcliente", row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         ClienteView * prov = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
-        if ( prov->cargar ( mdb_idcliente ) ) {
+        if ( prov->load ( mdb_idcliente ) ) {
             delete prov;
             return;
         } // end if
@@ -168,13 +168,13 @@ void ClientsList::imprimir()
     Instancia la clase ClienteView, lo inicializa con el cliente seleccionado y le lanza el evento de borrar.
     Esta es la forma adecuada de borrar desde el listado ya que asi preservamos el tema plugins.
 */
-void ClientsList::borrar()
+void ClientsList::remove()
 {
     blDebug ( "ClientsList::on_mui_borrar_clicked", 0 );
     try {
         QString idcliente = mui_list->dbValue ( "idcliente" );
         ClienteView *cli = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
-        if ( cli->cargar ( idcliente ) ) {
+        if ( cli->load ( idcliente ) ) {
             delete cli;
             throw - 1;
         } // end if
@@ -262,7 +262,7 @@ QString ClientsList::cifclient()
 void ClientsList::crear()
 {
     blDebug ( "ClientsList::crear", 0 );
-    if (modoConsulta()) {
+    if (selectMode()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -310,7 +310,7 @@ void ClientsList::crear()
 	bud->show();
 	bud->setWindowTitle ( _ ( "Nuevo cliente" ) );
 	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
-	bud->desactivaDocumentos();
+	bud->deactivateDocuments();
 	bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
     } // end if
     blDebug ( "END ClientsList::crear", 0 );

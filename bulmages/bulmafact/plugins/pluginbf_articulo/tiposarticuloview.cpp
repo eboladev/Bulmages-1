@@ -34,9 +34,9 @@
 /**
 \param comp
 \param parent
-\param modoConsultas
+\param selectMode
 **/
-TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modoConsulta )
+TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool selectMode )
         : BfForm ( comp, parent )
 {
     blDebug ( "TipoArticuloList::TipoArticuloList", 0 );
@@ -50,8 +50,8 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modo
 
     mui_codigotipo_articulo->setEnabled ( FALSE );
     mui_desctipo_articulo->setEnabled ( FALSE );
-    if ( modoConsulta ) {
-        setModoConsulta();
+    if ( selectMode ) {
+        setSelectMode();
         groupBox1->hide();
         mui_detalles->hide();
         mui_crear->hide();
@@ -60,7 +60,7 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modo
         mui_cancelar->hide();
         mui_aceptar->hide();
     } else {
-        setModoEdicion();
+        setEditMode();
         setAttribute ( Qt::WA_DeleteOnClose );
         mainCompany()->insertWindow ( windowTitle(), this, FALSE );
     } // end if
@@ -83,22 +83,22 @@ TipoArticuloList::~TipoArticuloList()
 ///
 /**
 **/
-void TipoArticuloList::setModoConsulta()
+void TipoArticuloList::setSelectMode()
 {
-    blDebug ( "TipoArticuloList::setModoConsulta", 0 );
-    m_modoConsulta = TRUE;
-    blDebug ( "TipoArticuloList::setModoConsulta", 0 );
+    blDebug ( "TipoArticuloList::setSelectMode", 0 );
+    m_selectMode = TRUE;
+    blDebug ( "TipoArticuloList::setSelectMode", 0 );
 }
 
 
 ///
 /**
 **/
-void TipoArticuloList::setModoEdicion()
+void TipoArticuloList::setEditMode()
 {
-    blDebug ( "TipoArticuloList::setModoEdicion", 0 );
-    m_modoConsulta = FALSE;
-    blDebug ( "END TipoArticuloList::setModoEdicion", 0 );
+    blDebug ( "TipoArticuloList::setEditMode", 0 );
+    m_selectMode = FALSE;
+    blDebug ( "END TipoArticuloList::setEditMode", 0 );
 }
 
 
@@ -202,7 +202,7 @@ QString TipoArticuloList::desctipo_articulo()
 **/
 void TipoArticuloList::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem *item, int )
 {
-    if ( m_modoConsulta ) {
+    if ( m_selectMode ) {
         blDebug ( "TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0 );
         m_idtipo = item->text ( COL_IDTIPOARTICULO );
         emit selected ( m_idtipo );
@@ -305,7 +305,7 @@ bool TipoArticuloList::trataModificado()
 /**
 \return
 **/
-int TipoArticuloList::guardar()
+int TipoArticuloList::save()
 {
     if ( m_idtipo.isEmpty() )
         return 0;
@@ -388,7 +388,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
     if ( val == QMessageBox::Yes ) {
-        if ( !borrar() ) {
+        if ( !remove() ) {
             dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
@@ -405,7 +405,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
 /**
 \return
 **/
-int TipoArticuloList::borrar()
+int TipoArticuloList::remove()
 {
     blDebug ( "TipoArticuloList::borrar", 0 );
     if ( m_idtipo == "" ) {

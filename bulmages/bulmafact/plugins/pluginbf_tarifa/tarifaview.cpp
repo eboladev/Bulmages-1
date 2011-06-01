@@ -142,9 +142,9 @@ QString TarifaView::formaQuery ( QString idtarifa )
 \param idtarifa
 \return
 **/
-int TarifaView::cargar ( QString idtarifa )
+int TarifaView::load ( QString idtarifa )
 {
-    blDebug ( "TarifaView::cargar(" + idtarifa + ")\n", 0 );
+    blDebug ( "TarifaView::load(" + idtarifa + ")\n", 0 );
     int error = 0;
     m_idtarifa = idtarifa;
 
@@ -155,8 +155,8 @@ int TarifaView::cargar ( QString idtarifa )
     mui_borrar->setEnabled ( TRUE );
 
     setDbValue ( "idtarifa", m_idtarifa );
-    BlDbRecord::cargar ( m_idtarifa );
-    mui_list->cargar ( formaQuery ( m_idtarifa ) );
+    BlDbRecord::load ( m_idtarifa );
+    mui_list->load ( formaQuery ( m_idtarifa ) );
 
     setWindowTitle ( _ ( "Tarifa" ) + " " + dbValue ( "nomtarifa" ) );
     insertWindow ( windowTitle(), this );
@@ -178,7 +178,7 @@ int TarifaView::cargar ( QString idtarifa )
 /**
 \return
 **/
-int TarifaView::guardar()
+int TarifaView::save()
 {
     blDebug ( "TarifaView::INIT_s_grabarClicked()\n", 0 );
 
@@ -193,14 +193,14 @@ int TarifaView::guardar()
     } // end if
 
     setDbValue ( "nomtarifa", mui_nomtarifa->text() );
-    BlDbRecord::guardar();
+    BlDbRecord::save();
     /// Guardamos la lista de componentes.
     mui_list->setColumnValue ( "idtarifa", dbValue ( "idtarifa" ) );
-    mui_list->guardar();
+    mui_list->save();
     dialogChanges_readValues();
 
     /// Se recarga el listado de articulos para poder establecer precios a esa tarifa.
-    cargar ( dbValue ( "idtarifa" ) );
+    load ( dbValue ( "idtarifa" ) );
 
     emit guardartarifa();
 
@@ -227,7 +227,7 @@ void TarifaView::on_mui_crear_clicked()
 void TarifaView::on_mui_actualizar_clicked()
 {
     blDebug ( "TarifaView::INIT_boton_nuevo()\n", 0 );
-    cargar ( m_idtarifa );
+    load ( m_idtarifa );
     blDebug ( "TarifaView::END_boton_nuevo()\n", 0 );
 }
 
@@ -237,15 +237,15 @@ void TarifaView::on_mui_actualizar_clicked()
 **/
 void TarifaView::on_mui_borrar_clicked()
 {
-    blDebug ( "TarifaView::INIT_boton_borrar()\n", 0 );
+    blDebug ( "TarifaView::on_mui_borrar_clicked()\n", 0 );
     if ( dbValue ( "idtarifa" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _ ( "Borrar tarifa" ),
                                      _ ( "Esta a punto de borrar una tarifa. Desea continuar?" ),
                                      _ ( "&Si" ), _ ( "&No" ), 0, 1, 0 ) == 0 ) {
             mainCompany() ->begin();
-            int error = mui_list->borrar();
-            error += borrar();
+            int error = mui_list->remove();
+            error += remove();
             if ( error ) {
                 mainCompany() ->rollback();
             } else {
@@ -256,6 +256,6 @@ void TarifaView::on_mui_borrar_clicked()
             close();
         } // end if
     } // end if
-    blDebug ( "TarifaView::END_boton_borrar()\n", 0 );
+    blDebug ( "END TarifaView::on_mui_borrar_clicked()\n", 0 );
 }
 

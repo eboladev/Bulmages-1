@@ -60,6 +60,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
         accionA->setStatusTip ( _ ( "Facturas a clientes" ) );
         accionA->setWhatsThis ( _ ( "Facturas a clientes" ) );
+        accionA->setObjectName("mui_actionFacturasClientes");
         pPluginMenu->addAction ( accionA );
         bges->Listados->addAction ( accionA );
 
@@ -67,6 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
         accionB->setStatusTip ( _ ( "Nueva factura a cliente" ) );
         accionB->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
+        accionA->setObjectName("mui_actionFacturaClienteNueva");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
 
@@ -84,7 +86,7 @@ int BlAction_triggered(BlAction *accion) {
         }// end if    
     } // end if
 
-    if (accion->objectName() == "mui_actionNuevaFacturaCliente") {         
+    if (accion->objectName() == "mui_actionFacturaClienteNueva") {         
         FacturaView * bud = new FacturaView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
@@ -112,7 +114,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
         FacturasList *facturasList = new FacturasList ( NULL, 0, BL_SELECT_MODE );
 	facturasList->setMainCompany(( BfCompany * ) prov->mainCompany() );
-        facturasList->setModoEdicion();
+        facturasList->setEditMode();
         facturasList->setObjectName ( "listfacturas" );
         facturasList->hideBusqueda();
         prov->mui_tab->addTab ( facturasList, "Facturas" );
@@ -138,7 +140,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         FacturaView * bud = new FacturaView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idfactura" ) );
+        bud->load ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while

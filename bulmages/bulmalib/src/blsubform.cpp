@@ -332,7 +332,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
       } // end for
     } // end if
 
-    cargaSpecs();
+    loadSpecs();
     blDebug ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
 
@@ -340,19 +340,19 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 ///
 /**
 **/
-void BlSubForm::cargaSpecs()
+void BlSubForm::loadSpecs()
 {
-    blDebug ( "BlSubForm::cargaSpecs", 0 );
+    blDebug ( "BlSubForm::loadSpecs", 0 );
 //    QFile file(g_confpr->value(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-        blDebug ( "END BlSubForm::cargaSpecs", 0, "No se pudo abrir archivo" );
+        blDebug ( "END BlSubForm::loadSpecs", 0, "No se pudo abrir archivo" );
         return;
     }
     if ( !doc.setContent ( &file ) ) {
         file.close();
-        blDebug ( "END BlSubForm::cargaSpecs", 0, "XML no valido" );
+        blDebug ( "END BlSubForm::loadSpecs", 0, "XML no valido" );
         return;
     }
     file.close();
@@ -430,7 +430,7 @@ void BlSubForm::cargaSpecs()
         } // end if
     } // end for
 
-    blDebug ( "END BlSubForm::cargaSpecs", 0 );
+    blDebug ( "END BlSubForm::loadSpecs", 0 );
 }
 
 
@@ -1186,7 +1186,7 @@ void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
 }
 
 
-/// Cuando tenemos un registro que no se tiene que cargar (pq es nuevo o algo
+/// Cuando tenemos un registro que no se tiene que load (pq es nuevo o algo
 /// asi) de la base de datos, con la funcion pintar lo dejamos en un estado que
 /// se podria considerar presentable para poder operar con el subformulario.
 /**
@@ -1328,7 +1328,7 @@ void BlSubForm::ponItemColorFondo ( QTableWidget *twidget, int filainicial, int 
 /**
 \param cur
 **/
-void BlSubForm::cargar ( BlDbRecordSet *cur )
+void BlSubForm::load ( BlDbRecordSet *cur )
 {
     blDebug ( "BlSubForm::cargar", 0, objectName() );
     m_procesacambios = FALSE;
@@ -1590,7 +1590,7 @@ void BlSubForm::setOrdenPorQuery ( bool ordenactivado )
 \param query La consulta SQL a cargar en el subformulario.
 **/
 /*
-void BlSubForm::cargar ( QString query )
+void BlSubForm::load ( QString query )
 {
     blDebug ( "BlSubForm::cargar", 0 );
     /// Si el query no existe no hacemos nada.
@@ -1617,7 +1617,7 @@ void BlSubForm::cargar ( QString query )
 
         if (!cur) throw -1;
 
-        cargar ( cur );
+        load ( cur );
         delete cur;
     } catch ( ... ) {
         blDebug ( "BlSubForm::cargar", 2, "Error en la carga de datos" );
@@ -1627,7 +1627,7 @@ void BlSubForm::cargar ( QString query )
 */
 
 
-void BlSubForm::cargar ( QString query )
+void BlSubForm::load ( QString query )
 {
     blDebug ( "BlSubForm::cargar", 0 );
     /// Si el query no existe no hacemos nada.
@@ -1683,7 +1683,7 @@ void BlSubForm::cargar ( QString query )
 
         if (!cur) throw -1;
 
-        cargar ( cur );
+        load ( cur );
         delete cur;
 
         /// Restaurar la posición anterior a la carga si es posible
@@ -2092,7 +2092,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
 /**
 \return
 **/
-int BlSubForm::guardar()
+int BlSubForm::save()
 {
     blDebug ( "BlSubForm::guardar", 0 );
     try {
@@ -2101,7 +2101,7 @@ int BlSubForm::guardar()
         while ( !m_listaborrar.isEmpty() ) {
             rec = m_listaborrar.takeFirst();
             if ( rec ) {
-                rec->borrar();
+                rec->remove();
             } // end if
         } // end while
 
@@ -2125,7 +2125,7 @@ int BlSubForm::guardar()
                     rec->setDbValue ( "orden" + m_tablename, QString::number ( j ) );
                 } // end if
                 rec->refresh();
-                rec->guardar();
+                rec->save();
             } // end if
         } // end for
 
@@ -2135,7 +2135,7 @@ int BlSubForm::guardar()
             if ( m_orden )
                 rec->setDbValue ( "orden" + m_tablename, QString::number ( mui_list->rowCount() - 1 ) );
             rec->refresh();
-            rec->guardar();
+            rec->save();
         } // end if
 
         /// Liberamos memoria
@@ -2163,14 +2163,14 @@ int BlSubForm::guardar()
 int BlSubForm::deleteCurrentRow() {
       blDebug ( "BlSubForm::deleteCurrentRow", 0 );
       blDebug ( "BlSubForm::deleteCurrentRow", 0 );
-      return 	borrar(currentRow());
+      return remove(currentRow());
 }
 
 ///
 /**
 \return
 **/
-int BlSubForm::borrar()
+int BlSubForm::remove()
 {
     blDebug ( "BlSubForm::borrar", 0 );
     BlDbSubFormRecord *rec;
@@ -2185,13 +2185,13 @@ int BlSubForm::borrar()
 
     try {
         for ( rec = m_lista.at ( i++ ); i < m_lista.count(); rec = m_lista.at ( i++ ) ) {
-            error = rec->borrar();
+            error = rec->remove();
             if ( error )
                 return -1;
         } // end for
         if ( !m_insercion ) {
             rec = m_lista.at ( m_lista.count() - 1 );
-            error = rec->borrar();
+            error = rec->remove();
         } // end if
         blDebug ( "END BlSubForm::borrar", 0 );
         return error;
@@ -2207,7 +2207,7 @@ int BlSubForm::borrar()
 \param row
 \return
 **/
-int BlSubForm::borrar ( int row )
+int BlSubForm::remove ( int row )
 {
     blDebug ( "BlSubForm::borrar", 0 );
     try {
@@ -2816,8 +2816,8 @@ void BlSubForm::on_mui_confquery_clicked()
         return;
     } // end if
     mui_paginaact->setValue ( 1 );
-    cargar ( mui_query->toPlainText() );
-//  cargar(m_query);
+    load ( mui_query->toPlainText() );
+//  load(m_query);
     blDebug ( "END BlSubForm::on_mui_confquery_clicked ", 0 );
 }
 
@@ -2834,7 +2834,7 @@ void BlSubForm::confquery()
         return;
     } // end if
 
-    cargar ( m_query );
+    load ( m_query );
 
     blDebug ( "END BlSubForm::confquery ", 0 );
 }
@@ -3186,7 +3186,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
 	blDebug ( "END BlSubForm::contextMenuEvent", 0 );
     } // end if
     if ( opcion == del )
-        borrar ( row );
+        remove ( row );
     if ( opcion == ajust )
         resizeColumnsToContents();
     if ( opcion == ajusta )
@@ -3399,11 +3399,11 @@ QString BlSubForm::fileConfig (  )
 ///
 /**
 **/
-void BlSubForm::setModoConsulta()
+void BlSubForm::setSelectMode()
 {
-    blDebug ( "BlSubForm::setModoConsulta", 0 );
+    blDebug ( "BlSubForm::setSelectMode", 0 );
     m_modo = BL_SELECT_MODE;
-    blDebug ( "END BlSubForm::setModoConsulta", 0 );
+    blDebug ( "END BlSubForm::setSelectMode", 0 );
 
 }
 
@@ -3411,11 +3411,11 @@ void BlSubForm::setModoConsulta()
 ///
 /**
 **/
-void BlSubForm::setModoEdicion()
+void BlSubForm::setEditMode()
 {
-    blDebug ( "BlSubForm::setModoEdicion", 0 );
+    blDebug ( "BlSubForm::setEditMode", 0 );
     m_modo = BL_EDIT_MODE;
-    blDebug ( "END BlSubForm::setModoEdicion", 0 );
+    blDebug ( "END BlSubForm::setEditMode", 0 );
 }
 
 
@@ -3423,10 +3423,10 @@ void BlSubForm::setModoEdicion()
 /**
 \return
 **/
-bool BlSubForm::modoEdicion()
+bool BlSubForm::editMode()
 {
-    blDebug ( "BlSubForm::modoEdicion", 0 );
-    blDebug ( "END BlSubForm::modoEdicion", 0 );
+    blDebug ( "BlSubForm::editMode", 0 );
+    blDebug ( "END BlSubForm::editMode", 0 );
     return m_modo == BL_EDIT_MODE;
 }
 
@@ -3435,10 +3435,10 @@ bool BlSubForm::modoEdicion()
 /**
 \return
 **/
-bool BlSubForm::modoConsulta()
+bool BlSubForm::selectMode()
 {
-    blDebug ( "BlSubForm::modoConsulta", 0 );
-    blDebug ( "END BlSubForm::modoConsulta", 0 );
+    blDebug ( "BlSubForm::selectMode", 0 );
+    blDebug ( "END BlSubForm::selectMode", 0 );
     return m_modo == BL_SELECT_MODE;
 }
 

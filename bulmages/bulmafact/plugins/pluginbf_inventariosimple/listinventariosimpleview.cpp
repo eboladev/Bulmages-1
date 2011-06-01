@@ -52,7 +52,7 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->inicializar();
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END ListInventarioSimpleView::ListInventarioSimpleView", 1 );
@@ -66,7 +66,7 @@ void ListInventarioSimpleView::on_mui_aceptar_clicked()
     blDebug ( "ListInventarioSimpleView::on_mui_aceptar_clicked", 0 );
     
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar el inventario" ) );
@@ -106,11 +106,11 @@ ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : B
 ///
 /**
 **/
-void ListInventarioSimpleSubForm::cargar()
+void ListInventarioSimpleSubForm::load()
 {
     blDebug ( "ListInventarioSimpleSubForm::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT * FROM inventariosimple" );
+    BlSubForm::load ( "SELECT * FROM inventariosimple" );
     
     blDebug ( "END ListInventarioSimpleSubForm::cargar", 0 );
 }

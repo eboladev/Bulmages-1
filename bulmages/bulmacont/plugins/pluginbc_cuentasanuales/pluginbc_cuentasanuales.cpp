@@ -60,9 +60,10 @@ int entryPoint ( BcBulmaCont *bcont )
     QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
 
 
-    QAction *accionA = new QAction ( _ ( "&Cuentas Anuales" ), 0 );
+    BlAction *accionA = new BlAction ( _ ( "&Cuentas Anuales" ), 0 );
     accionA->setStatusTip ( _ ( "Cuentas anuales" ) );
     accionA->setWhatsThis ( _ ( "Cuentas anuales" ) );
+    accionA->setObjectName("mui_actionCuentasAnuales");
     pPluginMenu->addAction ( accionA );
     
     blDebug ( "END entryPoint::entryPoint", 0 );

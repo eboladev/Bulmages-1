@@ -47,8 +47,8 @@ public:
     ~FacturasContratoListSubForm() {}
 
 public slots:
-    virtual void cargar ( QString query ) {
-        BlSubForm::cargar ( query );
+    virtual void load ( QString query ) {
+        BlSubForm::load ( query );
     }
 };
 
@@ -74,10 +74,10 @@ public:
     void pintaloccontrato ( QString id );
 
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
-    virtual int guardar();
-    virtual int cargar ( QString id );
-    virtual int borrar() {
-        return Contrato::borrar();
+    virtual int save();
+    virtual int load ( QString id );
+    virtual int remove() {
+        return Contrato::remove();
     };
 
 public slots:

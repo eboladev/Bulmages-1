@@ -36,69 +36,11 @@
 
 
 BcDiarioView *g_diario;
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
 **/
-PluginBc_Diario::PluginBc_Diario()
-{
-    blDebug ( "PluginBc_Diario::PluginBc_Diario", 0 );
-    blDebug ( "END PluginBc_Diario::PluginBc_Diario", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Diario::~PluginBc_Diario()
-{
-    blDebug ( "PluginBc_Diario::~PluginBc_Diario", 0 );
-    blDebug ( "END PluginBc_Diario::~PluginBc_Diario", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_Diario::elslot()
-{
-    blDebug ( "PluginBc_Diario::elslot", 0 );
-    if (g_diario == NULL) {
-      g_diario = new BcDiarioView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() ->addSubWindow ( g_diario );
-    } // end if
-    g_diario->hide();
-    g_diario->show();
-    blDebug ( "END PluginBc_Diario::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_Diario::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( "PluginBc_Diario::inicializa", 0 );
-
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->company() );
-    m_bulmacont = bges;
-    QMenu *pPluginMenu = bges->newMenu(_("&Ver"), "menuVer", "menuMaestro");
-
-    QAction *accion = new QAction ( _ ( "&Libro Diario" ), 0 );
-    accion->setStatusTip ( _ ( "Permite ver el diario" ) );
-    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del diario" ) );
-    accion->setIcon(QIcon(QString::fromUtf8(":/Images/balance-sheet.png")));
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->toolBar->addAction ( accion );
-
-    blDebug ( "END PluginBc_Diario::inicializa", 0 );
-}
-
 
 
 ///
@@ -114,10 +56,35 @@ int entryPoint ( BcBulmaCont *bcont )
     blBindTextDomain ( "pluginbc_diario", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_diario = NULL;
+    g_bcont = bcont;
 
-    PluginBc_Diario *plug = new PluginBc_Diario();
-    plug->inicializa ( bcont );
+    QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
+
+    BlAction *accionA = new BlAction ( _ ( "&Libro Diario" ), 0 );
+    accionA->setStatusTip ( _ ( "Permite ver el diario" ) );
+    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del diario" ) );
+    accionA->setIcon(QIcon(QString::fromUtf8(":/Images/balance-sheet.png")));
+    accionA->setObjectName("mui_actionDiario");
+    pPluginMenu->addAction ( accionA );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bcont->toolBar->addAction ( accionA );
+
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ("PluginBc_Diario::BlAction_triggered" );
+    if (accion->objectName() == "mui_actionDiario") {
+        if (g_diario == NULL) {
+            g_diario = new BcDiarioView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_bcont->company()->pWorkspace() ->addSubWindow ( g_diario );
+        } // end if
+    g_diario->hide();
+    g_diario->show();
+    } // end if
+    blDebug ("END PluginBc_Diario::BlAction_triggered" );
+    return 0;
+}

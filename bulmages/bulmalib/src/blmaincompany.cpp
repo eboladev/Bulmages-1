@@ -222,7 +222,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
 void BlMainCompany::s_indexadorCambiaEstado ( bool visible )
 {
     blDebug ( "BlMainCompany::s_indexadorCambiaEstado", 0 );
-    m_listventanas->cambiaVisible ( visible );
+    m_listventanas->setVisibilityState ( visible );
     blDebug ( "END BlMainCompany::s_indexadorCambiaEstado", 0 );
 }
 

@@ -89,7 +89,7 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace ( m_pWorkspace );
 
-    connect ( m_list, SIGNAL ( cambiaEstadoVisible ( bool ) ), this, SLOT ( setActionIndexador ( bool ) ) );
+    connect ( m_list, SIGNAL ( visibilityStateChanged ( bool ) ), this, SLOT ( setActionIndexador ( bool ) ) );
 
     addDockWidget ( Qt::LeftDockWidgetArea, m_list );
 

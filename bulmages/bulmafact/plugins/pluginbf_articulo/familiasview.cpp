@@ -39,9 +39,9 @@
 /**
 \param comp
 \param parent
-\param modoConsulta
+\param selectMode
 **/
-FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta )
+FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
         : BfForm ( comp, parent )
 {
     blDebug ( "FamiliasView::FamiliasView", 0 );
@@ -73,8 +73,8 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
 	return;
     } // end if
 
-    if ( modoConsulta ) {
-        setModoConsulta();
+    if ( selectMode ) {
+        setSelectMode();
         mui_tab->hide();
 //        mui_detalles->hide();
 //        mui_crear->hide();
@@ -84,7 +84,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
         mui_aceptar->hide();
         mui_imprimir->hide();
     } else {
-        setModoEdicion();
+        setEditMode();
         setAttribute ( Qt::WA_DeleteOnClose );
         mainCompany()->insertWindow ( windowTitle(), this, FALSE );
     } // end if
@@ -239,7 +239,7 @@ QString FamiliasView::nombreFamilia()
 void FamiliasView::on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem *it )
 {
     blDebug ( "FamiliasView::on_m_listFamilias_itemDoubleClicked", 0 );
-    if ( m_modoConsulta ) {
+    if ( m_selectMode ) {
         m_idfamilia = it->text ( COL_IDFAMILIA );
         emit selected ( m_idfamilia );
     } // end if
@@ -363,7 +363,7 @@ bool FamiliasView::trataModificado()
 /**
 \return
 **/
-int FamiliasView::guardar()
+int FamiliasView::save()
 {
     blDebug ( "FamiliasView::guardar", 0 );
     QString prodfam;
@@ -496,7 +496,7 @@ void FamiliasView::on_mui_borrar_clicked()
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
     if ( val == QMessageBox::Yes ) {
-        if ( !borrar() ) {
+        if ( !remove() ) {
             dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
@@ -512,7 +512,7 @@ void FamiliasView::on_mui_borrar_clicked()
 /**
 \return
 **/
-int FamiliasView::borrar()
+int FamiliasView::remove()
 {
     blDebug ( "FamiliasView::borrar", 0 );
     if ( m_idfamilia == "" ) {
@@ -623,18 +623,18 @@ void FamiliasView::on_mui_aceptar_clicked()
 ///
 /**
 **/
-void FamiliasView::setModoConsulta()
+void FamiliasView::setSelectMode()
 {
-    m_modoConsulta = TRUE;
+    m_selectMode = TRUE;
 }
 
 
 ///
 /**
 **/
-void FamiliasView::setModoEdicion()
+void FamiliasView::setEditMode()
 {
-    m_modoConsulta = FALSE;
+    m_selectMode = FALSE;
 }
 
 

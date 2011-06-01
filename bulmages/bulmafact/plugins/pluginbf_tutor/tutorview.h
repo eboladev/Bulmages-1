@@ -43,7 +43,7 @@ public:
     ~ListAlumnosTutorView() {};
     
 public slots:
-    virtual void cargar ( QString idcontrato );
+    virtual void load ( QString idcontrato );
 };
 
 
@@ -59,8 +59,8 @@ public:
     ~TutorView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     virtual int cargarPost(QString id);
     
 public slots:

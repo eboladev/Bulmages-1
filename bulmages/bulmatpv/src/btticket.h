@@ -68,16 +68,16 @@ public:
     BlDbRecord *lineaActBtTicket();
     void setLineaActual ( BlDbRecord * );
     void setDescuentoGlobal ( BlFixed descuento );
-    virtual void imprimir(bool save = TRUE);
+    virtual void imprimir(bool doSave = TRUE);
     virtual void abrircajon();
-    int guardar();
-    int cargar ( QString );
+    int save();
+    int load ( QString );
     void borrarLinea ( BlDbRecord *linea );
     virtual QString exportXML();
     virtual bool syncXML(const QString &text, bool insertarSiempre = FALSE);
 /*
-    virtual int generaRML ( const QString & );
-    virtual int generaRML ( void );
+    virtual int generateRML ( const QString & );
+    virtual int generateRML ( void );
 */
     void agregarLog(const QString &log);
     

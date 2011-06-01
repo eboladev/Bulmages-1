@@ -61,10 +61,10 @@ BtSubForm::~BtSubForm()
 /**
 \param query
 **/
-void BtSubForm::cargar ( QString query )
+void BtSubForm::load ( QString query )
 {
     blDebug ( "BtSubForm::cargar", 0 );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END BtSubForm::cargar", 0 );
 }
 

@@ -24,7 +24,7 @@
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
 #set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true) #by R. Cabezas
+set(QT_USE_QTSCRIPT true)
 
 #set(QT_USE_QTUITOOLS true)
 #INCLUDE(${QT_USE_FILE})

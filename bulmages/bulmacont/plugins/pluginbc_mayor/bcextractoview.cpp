@@ -113,7 +113,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 BcExtractoView::~BcExtractoView()
 {
     blDebug ( "BcExtractoView::~BcExtractoView", 0 );
-    guardar();
+    save();
     delete m_cursorcta;
     mainCompany() ->removeWindow ( this );
     blDebug ( "END BcExtractoView::~BcExtractoView", 0 );
@@ -217,7 +217,7 @@ void BcExtractoView::boton_siguiente()
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           if ( !m_cursorcta->isLastRecord() ) {
-              guardar();
+              save();
               m_cursorcta->nextRecord();
               presentar();
           } // end if
@@ -236,7 +236,7 @@ void BcExtractoView::boton_anterior()
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           if ( !m_cursorcta->isFirstRecord() ) {
-              guardar();
+              save();
               m_cursorcta->previousRecord();
               presentar();
           } // end if
@@ -253,7 +253,7 @@ void BcExtractoView::boton_inicio()
     blDebug ( "BcExtractoView::boton_inicio", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
-          guardar();
+          save();
           m_cursorcta->firstRecord();
           presentar();
       } // end if
@@ -269,7 +269,7 @@ void BcExtractoView::boton_fin()
     blDebug ( "BcExtractoView::boton_fin", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
-          guardar();
+          save();
           m_cursorcta->lastRecord();
           presentar();
       } // end if
@@ -337,12 +337,12 @@ void BcExtractoView::ajustes()
 ///
 /**
 **/
-int BcExtractoView::guardar()
+int BcExtractoView::save()
 {
     blDebug ( "BcExtractoView::on_mui_guardar_clicked", 0 );
     if (m_tratarpunteos) {
 	if (! mui_asAbiertos->isChecked() ) 
-	    mui_list->guardar();
+	    mui_list->save();
     } // end if
     return 0;
     blDebug ( "END BcExtractoView::on_mui_guardar_clicked", 0 );
@@ -360,7 +360,7 @@ void BcExtractoView::presentar()
     blDebug ( "BcExtractoView::presentar", 0 );
 
     /// Guardamos el punteo
-    guardar();
+    save();
 
 
     BlFixed debe ( "0.00" ), haber ( "0.00" ), saldo ( "0.00" );
@@ -447,7 +447,7 @@ void BcExtractoView::presentar()
         query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = t1.contrapartida WHERE 1=1 " + clase;
         query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
 
-        mui_list->cargar ( query );
+        mui_list->load ( query );
 
 
         cursorapt = mainCompany() ->loadQuery ( query );
@@ -579,7 +579,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
     blDebug ( "BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
 
     /// Guardamos el punteo por lo que pueda ser.
-    guardar();
+    save();
 
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar punteo" ),

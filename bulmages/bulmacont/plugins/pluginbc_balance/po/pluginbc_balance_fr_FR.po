@@ -185,7 +185,7 @@ msgid "Balance jerarquico"
 msgstr "Balance hiérarchique"
 
 #: ui_balancetreebase.h:382
-msgid "Balance jerarquico de Cuentas"
+msgid "Balance jerarquico de cuentas"
 msgstr "Balance hiérarchique des comptes"
 
 #: ui_balancetreebase.h:384 ui_balancetreebase.h:387
@@ -205,11 +205,11 @@ msgid "Codigo"
 msgstr "Code"
 
 #: ui_balanceprintbase.h:320
-msgid "Codigo Final"
+msgid "Codigo final"
 msgstr "Code final"
 
 #: ui_balanceprintbase.h:317
-msgid "Codigo Inicial\n"
+msgid "Codigo inicial\n"
 msgstr "Code initial\n"
 
 #: ui_balancebase.h:431 ui_balancebase.h:434
@@ -228,19 +228,11 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: balanceprintview.cpp:64 balanceview.cpp:77
-msgid "Cuenta Final:"
-msgstr "Compte final :"
-
-#: balanceprintview.cpp:56 balanceview.cpp:68
-msgid "Cuenta Inicial:"
-msgstr "Compte initial :"
-
-#: ui_balancetreebase.h:404 ui_balancebase.h:441
+#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancetreebase.h:404 ui_balancebase.h:441
 msgid "Cuenta final:"
 msgstr "Compte final :"
 
-#: ui_balancetreebase.h:407 ui_balancebase.h:439
+#: balanceprintview.cpp:56 balanceview.cpp:68 ui_balancetreebase.h:407 ui_balancebase.h:439
 msgid "Cuenta inicial:"
 msgstr "Compte initial :"
 
@@ -269,11 +261,11 @@ msgid "F5"
 msgstr "F5"
 
 #: ui_balanceprintbase.h:321 ui_balancesprintdlg.h:200
-msgid "Fecha Final"
+msgid "Fecha final"
 msgstr "Date finale"
 
 #: ui_balanceprintbase.h:319 ui_balancesprintdlg.h:199
-msgid "Fecha Inicial"
+msgid "Fecha inicial"
 msgstr "Date initiale"
 
 #: ui_balancetreebase.h:405 ui_balancebase.h:440
@@ -325,7 +317,7 @@ msgid "Impresion de Balances"
 msgstr "Impression des Balances"
 
 #: ui_balanceprintbase.h:312
-msgid "Impresion del Balance de Sumas y Saldos"
+msgid "Impresion del balance de sumas y saldos"
 msgstr "Impression de la balance des sommes et des soldes"
 
 #: ui_balancetreebase.h:391 ui_balancetreebase.h:394 ui_balancetreebase.h:398

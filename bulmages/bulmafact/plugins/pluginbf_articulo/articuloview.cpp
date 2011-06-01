@@ -197,7 +197,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
     } // end if
 
     /// Cargamos los componentes.
-    m_componentes->cargar ( idarticulo );
+    m_componentes->load ( idarticulo );
 
     blDebug ( "END ArticuloView::cargar", 0 );
     return 0;
@@ -222,7 +222,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQlQuery );
     if ( !cur ) return;
     if ( !cur->eof() ) {
-        cargar ( cur->value( "idarticulo" ) );
+        load ( cur->value( "idarticulo" ) );
     } // end if
     delete cur;
     blDebug ( "END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
@@ -238,9 +238,9 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 /**
 \return
 **/
-int ArticuloView::guardarPost()
+int ArticuloView::afterSave()
 {
-    blDebug ( "ArticuloView::guardarPost", 0 );
+    blDebug ( "ArticuloView::afterSave", 0 );
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
         BlDbRecordSet * cur1 = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + dbValue ( "idarticulo" ) );
@@ -267,13 +267,13 @@ int ArticuloView::guardarPost()
 
     /// Guardamos la lista de componentes.
     m_componentes->setColumnValue ( "idarticulo", dbValue ( "idarticulo" ) );
-    if ( m_componentes->guardar() != 0 ) {
+    if ( m_componentes->save() != 0 ) {
         throw - 1;
     } // end if
     /// Disparamos los plugins
     g_plugins->lanza ( "ArticuloView_guardar_post", this );
 
-    blDebug ( "END ArticuloView::guardarPost", 0 );
+    blDebug ( "END ArticuloView::afterSave", 0 );
     return 0;
 
 }
@@ -291,10 +291,10 @@ int ArticuloView::guardarPost()
 /**
 \return
 **/
-int ArticuloView::borrarPre()
+int ArticuloView::beforeDelete()
 {
     blDebug ( "ArticuloView::borrar", 0 );
-    m_componentes->borrar();
+    m_componentes->remove();
     blDebug ( "END ArticuloView::borrar", 0 );
     return 0;
 }

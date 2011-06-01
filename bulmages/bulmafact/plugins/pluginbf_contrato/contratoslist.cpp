@@ -66,7 +66,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     mui_idcliente->m_valores["nomcliente"] = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( modoEdicion()) {
+    if ( editMode()) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de contratos" ) );
@@ -89,12 +89,12 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 }
 
 
-void ContratosList::borrar() {
+void ContratosList::remove() {
     blDebug ( "ContratosList::on_mui_borrar_clicked", 0 );
     try {
         QString idcontrato = mui_list->dbValue ( "idcontrato" );
         ContratoView *cont = new ContratoView ( ( BfCompany * ) mainCompany(), 0 ) ;
-        if ( cont->cargar ( idcontrato ) ) {
+        if ( cont->load ( idcontrato ) ) {
             delete cont;
             throw - 1;
         } // end if
@@ -117,7 +117,7 @@ void ContratosList::imprimir()
 void ContratosList::presentar()
 {
     blDebug ("ContratosList::presenta", 0 );
-    mui_list->cargar ( "SELECT * FROM contrato ORDER BY idcontrato " );
+    mui_list->load ( "SELECT * FROM contrato ORDER BY idcontrato " );
     blDebug ("END ContratosList::presenta", 0 );
 }
 
@@ -147,7 +147,7 @@ void ContratosList::presenta()
         where = " AND contrato.idcliente = " + mui_idcliente->id();
     } // end if
 
-    mui_list->cargar ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
+    mui_list->load ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
     blDebug ( "END ContratosList::presenta", 0 );
 }
 
@@ -168,9 +168,9 @@ void ContratosList::editar ( int row )
     mdb_idcontrato = mui_list->dbValue ( "idcontrato", row );
     mdb_refcontrato = mui_list->dbValue ( "refcontrato", row );
     mdb_nomcontrato = mui_list->dbValue ( "nomcontrato", row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
-        if ( prov->cargar ( mdb_idcontrato ) ) {
+        if ( prov->load ( mdb_idcontrato ) ) {
             delete prov;
             return;
         } // end if
@@ -244,7 +244,7 @@ void ContratosList::on_mui_crear_clicked()
 {
     blDebug ( "ContratosList::on_mui_crear_clicked", 0 );
     ContratoView *prov = new ContratoView ( ( BfCompany * ) mainCompany() );
-    prov->cargar ( "0" );
+    prov->load ( "0" );
     mainCompany() ->m_pWorkspace->addSubWindow ( prov );
     prov->show();
     blDebug ( "END ContratosList::on_mui_crear_clicked", 0 );
@@ -294,7 +294,7 @@ void ContratosList::on_mui_facturar_clicked()
         cur = mainCompany() ->loadQuery ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
         while ( !cur->eof() ) {
             ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
-            if ( prov->cargar ( cur->value( "idcontrato" ) ) ) {
+            if ( prov->load ( cur->value( "idcontrato" ) ) ) {
                 delete prov;
             } // end if
 //        mainCompany() ->m_pWorkspace->addSubWindow ( prov );

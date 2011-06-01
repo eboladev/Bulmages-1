@@ -779,7 +779,7 @@ int BlDbRecord::addDbField ( QString nom, BlDbField::DbType typ, int res, QStrin
 /**
 \return si no se han producido errores devuelve 0 en caso contrario devuelve -1
 **/
-int BlDbRecord::borrar()
+int BlDbRecord::remove()
 {
     blDebug ( "BlDbRecord::borrar", 0 );
     try {
@@ -818,7 +818,7 @@ int BlDbRecord::borrar()
         return 0;
     } catch ( ... ) {
         blMsgInfo ( "se produjo un error al borrar el elemento" );
-        blDebug ( "BlDbRecord::borrar() Error al borrar elemento", 3 );
+        blDebug ( "BlDbRecord::remove() Error al borrar elemento", 3 );
         throw - 1;
     }
 }
@@ -830,7 +830,7 @@ Esta funcion, de un nivel algo superior a la llamada dbSave hace el guardado y m
 excepciones que se hayan podido producir
 \return si no se producen errores devuelve 0 en caso contrario genera una excepcion
 **/
-int BlDbRecord::guardar()
+int BlDbRecord::save()
 {
     blDebug ( "BlDbRecord::guardar", 0 );
     QString id;
@@ -852,7 +852,7 @@ int BlDbRecord::guardar()
 \param id Identificador del registro a cargar en la tabla por defecto.
 \return Si no hay errores devuelve 0 sino devuelve -1
 **/
-int BlDbRecord::cargar ( QString id )
+int BlDbRecord::load ( QString id )
 {
     blDebug ( "BlDbRecord::cargar", 0 );
     try {
@@ -944,12 +944,12 @@ QString BlDbRecord::story ( void )
     return fitxersortidatxt;
 }
 
-int BlDbRecord::generaRML ( const QString &arch )
+int BlDbRecord::generateRML ( const QString &arch )
 {
-    blDebug ( "BlDbRecord::generaRML", 0 );
+    blDebug ( "BlDbRecord::generateRML", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlDbRecord_generaRML", this );
+    int res = g_plugins->lanza ( "BlDbRecord_generateRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if
@@ -975,7 +975,7 @@ int BlDbRecord::generaRML ( const QString &arch )
 
     int result1 = system ( archivo.toAscii().constData() );
     if (result1 == -1) {
-	blMsgError(_("Error al copiar el archivo RML [ bldb->generaRML() ]"));
+	blMsgError(_("Error al copiar el archivo RML [ bldb->generateRML() ]"));
     } // end if
     
     /// Copiamos el logo
@@ -987,7 +987,7 @@ int BlDbRecord::generaRML ( const QString &arch )
 
     int result2 = system ( archivologo.toAscii().constData() );
     if (result2 == -1) {
-	blMsgError(_("Error al copiar el archivo de logo [ bldb->generaRML() ]"));
+	blMsgError(_("Error al copiar el archivo de logo [ bldb->generateRML() ]"));
     } // end if
     
     QFile file;
@@ -1110,7 +1110,7 @@ if (tipoescape != 0) {
         file.close();
     } // end if
 } // end if
-    blDebug ( "END BlDbRecord::generaRML", 0 );
+    blDebug ( "END BlDbRecord::generateRML", 0 );
     return 1;
 }
 
@@ -1119,9 +1119,9 @@ QString BlDbRecord::templateName ( void )
     return QString ( "ficha" );
 }
 
-int BlDbRecord::generaRML ( void )
+int BlDbRecord::generateRML ( void )
 {
-    return generaRML ( templateName() + ".rml" );
+    return generateRML ( templateName() + ".rml" );
 }
 
 /// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
@@ -1132,7 +1132,7 @@ void BlDbRecord::imprimir()
     /// Usa la plantilla ficha.rml para realizar la impresion.
     blDebug ( "BlDbRecord::imprimir", 0, templateName() );
 
-    if ( generaRML() ) {
+    if ( generateRML() ) {
         blCreateAndLoadPDF ( templateName() );
     } // end if
 
@@ -1404,7 +1404,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx19.setMinimal ( TRUE );
     while ( ( pos = rx19.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataIncludeFileTXT ( rx19.cap ( 1 ), tipoEscape );
+        QString ldetalle = parseIncludeFileTXT ( rx19.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx19.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1417,7 +1417,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
     rx9.setMinimal ( TRUE );
     while ( ( pos = rx9.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataExists ( rx9.cap ( 1 ), rx9.cap ( 2 ).toAscii() );
+        QString ldetalle = parseExists ( rx9.cap ( 1 ), rx9.cap ( 2 ).toAscii() );
         buff.replace ( pos, rx9.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1496,7 +1496,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx39 ( "<!--\\s*SETCHARACTERPRINTMODE\\s*\"([^\"]*)\"\\s*-->" );
     rx39.setMinimal ( TRUE );
     while ( ( pos = rx39.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetCharacterPrintMode ( rx39.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetCharacterPrintMode ( rx39.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx39.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- SETCHARACTERPRINTMODE");
@@ -1512,7 +1512,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx49 ( "<!--\\s*SETCHARACTERSPACING\\s*\"([^\"]*)\"\\s*-->" );
     rx49.setMinimal ( TRUE );
     while ( ( pos = rx49.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetCharacterSpacing ( rx49.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetCharacterSpacing ( rx49.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx49.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1525,7 +1525,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx59 ( "<!--\\s*SETCHARACTERCODETABLE\\s*\"([^\"]*)\"\\s*-->" );
     rx59.setMinimal ( TRUE );
     while ( ( pos = rx59.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetCharacterCodeTable ( rx59.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetCharacterCodeTable ( rx59.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx59.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1538,7 +1538,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx69 ( "<!--\\s*SETUNDERLINEMODE\\s*\"([^\"]*)\"\\s*-->" );
     rx69.setMinimal ( TRUE );
     while ( ( pos = rx69.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetUnderlineMode ( rx69.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetUnderlineMode ( rx69.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx69.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- SETUNDERLINEMODE");
@@ -1555,7 +1555,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx79 ( "<!--\\s*SETCHARACTERSIZE\\s*\"([^\"]*)\"\\s*-->" );
     rx79.setMinimal ( TRUE );
     while ( ( pos = rx79.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetCharacterSize ( rx79.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetCharacterSize ( rx79.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx79.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- SETCHARACTERSIZE");
@@ -1571,7 +1571,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx89 ( "<!--\\s*SETSMOOTHING\\s*\"([^\"]*)\"\\s*-->" );
     rx89.setMinimal ( TRUE );
     while ( ( pos = rx89.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetCharacterSize ( rx89.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetCharacterSize ( rx89.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx89.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1584,7 +1584,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx99 ( "<!--\\s*SETDOUBLESTRIKE\\s*\"([^\"]*)\"\\s*-->" );
     rx99.setMinimal ( TRUE );
     while ( ( pos = rx99.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetDoubleStrike ( rx99.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetDoubleStrike ( rx99.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx99.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1597,7 +1597,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx02 ( "<!--\\s*TURNUPSIDEDOWN\\s*\"([^\"]*)\"\\s*-->" );
     rx02.setMinimal ( TRUE );
     while ( ( pos = rx02.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataTurnUpsideDown ( rx02.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseTurnUpsideDown ( rx02.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx02.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1610,7 +1610,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx12 ( "<!--\\s*TURN90CWROTATION\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx12.setMinimal ( TRUE );
     while ( ( pos = rx12.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataTurn90CWRotation (rx12.cap(1), rx12.cap(2), tipoEscape );
+        QByteArray ldetalle = parseTurn90CWRotation (rx12.cap(1), rx12.cap(2), tipoEscape );
         buff.replace ( pos, rx12.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- TURN90CWROTATION");
@@ -1626,7 +1626,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx22 ( "<!--\\s*TURNWHITEBLACK\\s*\"([^\"]*)\"\\s*-->" );
     rx22.setMinimal ( TRUE );
     while ( ( pos = rx22.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataTurnWhiteBlack( rx22.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseTurnWhiteBlack( rx22.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx22.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- TURNWHITEBLACK");
@@ -1642,7 +1642,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx32 ( "<!--\\s*SETCOLOR\\s*\"([^\"]*)\"\\s*-->" );
     rx32.setMinimal ( TRUE );
     while ( ( pos = rx32.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetColor( rx32.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetColor( rx32.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx32.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1655,7 +1655,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx42 ( "<!--\\s*HORIZONTALTAB\\s*-->" );
     rx42.setMinimal ( TRUE );
     while ( ( pos = rx42.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataHorizontalTab( tipoEscape );
+        QByteArray ldetalle = parseHorizontalTab( tipoEscape );
         buff.replace ( pos, rx42.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1668,7 +1668,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx52 ( "<!--\\s*SETHORIZONTALTABPOS\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx52.setMinimal ( TRUE );
     while ( ( pos = rx52.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetHorizontalTabPos (rx52.cap(1), rx52.cap(2), tipoEscape );
+        QByteArray ldetalle = parseSetHorizontalTabPos (rx52.cap(1), rx52.cap(2), tipoEscape );
         buff.replace ( pos, rx52.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1682,7 +1682,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx62 ( "<!--\\s*SETLEFTMARGIN\\s*\"([^\"]*)\"\\s*-->" );
     rx62.setMinimal ( TRUE );
     while ( ( pos = rx62.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetLeftMargin( rx62.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetLeftMargin( rx62.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx62.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1695,7 +1695,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx72 ( "<!--\\s*SETPRINTINGAREAWIDTH\\s*\"([^\"]*)\"\\s*-->" );
     rx72.setMinimal ( TRUE );
     while ( ( pos = rx72.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetPrintingAreaWidth( rx72.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetPrintingAreaWidth( rx72.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx72.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1708,7 +1708,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx92 ( "<!--\\s*SETHABSOLUTEPOS\\s*\"([^\"]*)\"\\s*-->" );
     rx92.setMinimal ( TRUE );
     while ( ( pos = rx92.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetHAbsolutePos( rx92.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetHAbsolutePos( rx92.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx92.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1722,7 +1722,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx03 ( "<!--\\s*SETHRELATIVEPOS\\s*\"([^\"]*)\"\\s*-->" );
     rx03.setMinimal ( TRUE );
     while ( ( pos = rx03.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetHRelativePos( rx03.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetHRelativePos( rx03.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx03.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1735,7 +1735,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx13 ( "<!--\\s*SETBARCODEFORMAT\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx13.setMinimal ( TRUE );
     while ( ( pos = rx13.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetBarcodeFormat( rx13.cap ( 1 ), rx13.cap ( 2 ),rx13.cap ( 3 ),rx13.cap ( 4 ),tipoEscape );
+        QByteArray ldetalle = parseSetBarcodeFormat( rx13.cap ( 1 ), rx13.cap ( 2 ),rx13.cap ( 3 ),rx13.cap ( 4 ),tipoEscape );
         buff.replace ( pos, rx13.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1748,7 +1748,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx23.setMinimal ( TRUE );
     while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataPrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
+        QByteArray ldetalle = parsePrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
         buff.replace ( pos, rx23.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1761,7 +1761,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
     rx33.setMinimal ( TRUE );
     while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx33.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1774,7 +1774,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx34 ( "<!--\\s*SETBARCODEWIDTH\\s*\"([^\"]*)\"\\s*-->" );
     rx34.setMinimal ( TRUE );
     while ( ( pos = rx34.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetBarCodeWidth( rx34.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetBarCodeWidth( rx34.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx34.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1787,7 +1787,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx35 ( "<!--\\s*SELECTPAGEMODE\\s*-->" );
     rx35.setMinimal ( TRUE );
     while ( ( pos = rx35.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSelectPageMode( tipoEscape );
+        QByteArray ldetalle = parseSelectPageMode( tipoEscape );
         buff.replace ( pos, rx35.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1800,7 +1800,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx36 ( "<!--\\s*SETPRINTAREA\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx36.setMinimal ( TRUE );
     while ( ( pos = rx36.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetPrintArea( rx36.cap ( 1 ), rx36.cap ( 2 ), rx36.cap ( 3 ), rx36.cap ( 4 ), tipoEscape );
+        QByteArray ldetalle = parseSetPrintArea( rx36.cap ( 1 ), rx36.cap ( 2 ), rx36.cap ( 3 ), rx36.cap ( 4 ), tipoEscape );
         buff.replace ( pos, rx36.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1813,7 +1813,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx37 ( "<!--\\s*SETPRINTDIRECTION\\s*\"([^\"]*)\"\\s*-->" );
     rx37.setMinimal ( TRUE );
     while ( ( pos = rx37.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetPrintDirection( rx37.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetPrintDirection( rx37.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx37.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1826,7 +1826,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx38 ( "<!--\\s*SETVABSOLUTEPOS\\s*\"([^\"]*)\"\\s*-->" );
     rx38.setMinimal ( TRUE );
     while ( ( pos = rx38.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetVAbsolutePos( rx38.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetVAbsolutePos( rx38.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx38.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1839,7 +1839,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx41 ( "<!--\\s*SETVRELATIVEPOS\\s*\"([^\"]*)\"\\s*-->" );
     rx41.setMinimal ( TRUE );
     while ( ( pos = rx41.indexIn ( buff, pos ) ) != -1 ) {
-        QByteArray ldetalle = trataSetVRelativePos( rx41.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetVRelativePos( rx41.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx41.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1852,7 +1852,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx45 ( "<!--\\s*CUTPAPER\\s*\"([^\"]*)\"\\s*-->" );
     rx45.setMinimal ( TRUE );
     while ( ( pos = rx45.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataCutPaper( rx45.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseCutPaper( rx45.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx45.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1865,7 +1865,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx46.setMinimal ( TRUE );
     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+        QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
         buff.replace ( pos, rx46.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
@@ -1882,7 +1882,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx44.setMinimal ( TRUE );
     while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
+        QByteArray ldetalle = parseCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
         buff.replace ( pos, rx44.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1922,7 +1922,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx82 ( "<!--\\s*SETJUSTIFICATION\\s*\"([^\"]*)\"\\s*-->" );
     rx82.setMinimal ( TRUE );
     while ( ( pos = rx82.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetJustification( rx82.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetJustification( rx82.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx82.matchedLength(), ldetalle );
 	buff = cadant + buff;
 	pos = buff.indexOf("<!-- SETJUSTIFICATION");
@@ -1939,7 +1939,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx23.setMinimal ( TRUE );
     while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataPrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
+        QByteArray ldetalle = parsePrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
         buff.replace ( pos, rx23.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1952,7 +1952,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
     rx33.setMinimal ( TRUE );
     while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx33.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1966,7 +1966,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx46.setMinimal ( TRUE );
     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+        QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
         buff.replace ( pos, rx46.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
@@ -1982,7 +1982,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx47 ( "<!--\\s*LEFTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx47.setMinimal ( TRUE );
     while ( ( pos = rx47.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
+        QByteArray ldetalle = parseLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
         buff.replace ( pos, rx47.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- LEFTJUSTIFIED");
@@ -1998,7 +1998,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
     rx44.setMinimal ( TRUE );
     while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
+        QByteArray ldetalle = parseCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
         buff.replace ( pos, rx44.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -2011,7 +2011,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx29 ( "<!--\\s*IMG\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx29.setMinimal ( TRUE );
     while ( ( pos = rx29.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataIncludeImg ( rx29.cap ( 1 ), tipoEscape );
+        QByteArray ldetalle = parseIncludeImg ( rx29.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx29.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- IMG");
@@ -2027,7 +2027,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     QRegExp rx791 ( "<!--\\s*PNGRAW64\\s*DATA\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx791.setMinimal ( TRUE );
     while ( ( pos = rx791.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataPngRaw64 ( rx791.cap ( 1 ).toAscii(), tipoEscape );
+        QByteArray ldetalle = parsePngRaw64 ( rx791.cap ( 1 ).toAscii(), tipoEscape );
         buff.replace ( pos, rx791.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- PNGRAW64");
@@ -2104,9 +2104,9 @@ QByteArray BlDbRecord::parseIf ( const QString &query, const QByteArray &datos, 
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataIncludeFileTXT ( const QString &file, int tipoEscape )
+QByteArray BlDbRecord::parseIncludeFileTXT ( const QString &file, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataIncludeFileTXT", 0 );
+    blDebug ( "BlDbRecord::parseIncludeFileTXT", 0 );
     QByteArray read = "";
     QFile arch ( file );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
@@ -2117,7 +2117,7 @@ QByteArray BlDbRecord::trataIncludeFileTXT ( const QString &file, int tipoEscape
     substrVars ( read, tipoEscape );
 
 
-    blDebug ( "END BlDbRecord::trataIncludeFileTXT", 0 );
+    blDebug ( "END BlDbRecord::parseIncludeFileTXT", 0 );
     return read;
 
 }
@@ -2128,13 +2128,13 @@ QByteArray BlDbRecord::trataIncludeFileTXT ( const QString &file, int tipoEscape
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataIncludeImg ( const QString &file, int tipoEscape )
+QByteArray BlDbRecord::parseIncludeImg ( const QString &file, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataIncludeImg", 0 );
+    blDebug ( "BlDbRecord::parseIncludeImg", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     pr.printImage(file);
-    blDebug ( "END BlDbRecord::trataIncludeImg", 0 );
+    blDebug ( "END BlDbRecord::parseIncludeImg", 0 );
     return pr.buffer();
 
 }
@@ -2145,15 +2145,15 @@ QByteArray BlDbRecord::trataIncludeImg ( const QString &file, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataPngRaw64 ( const QByteArray &data, int tipoEscape )
+QByteArray BlDbRecord::parsePngRaw64 ( const QByteArray &data, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataPngRaw64", 0 );
+    blDebug ( "BlDbRecord::parsePngRaw64", 0 );
 //    blMsgInfo("pngRawData");
     BlEscPrinter pr;
     pr.clearBuffer();
     QByteArray dataq = QByteArray::fromBase64(data);
     pr.printImageRaw(dataq);
-    blDebug ( "END BlDbRecord::trataPngRaw64", 0 );
+    blDebug ( "END BlDbRecord::parsePngRaw64", 0 );
 //    blMsgInfo(pr.buffer());
     return pr.buffer();
 
@@ -2164,11 +2164,11 @@ QByteArray BlDbRecord::trataPngRaw64 ( const QByteArray &data, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetCharacterPrintMode ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetCharacterPrintMode ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetCharacterPrintMode", 0 );
+    blDebug ( "BlDbRecord::parseSetCharacterPrintMode", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("CHARACTER_FONTA_SELECTED"))
@@ -2185,7 +2185,7 @@ QByteArray BlDbRecord::trataSetCharacterPrintMode ( const QString &param, int ti
         modo |= UNDERLINE_MODE;
 
     pr.setCharacterPrintMode(modo);
-    blDebug ( "END BlDbRecord::trataSetCharacterPrintMode", 0 );
+    blDebug ( "END BlDbRecord::parseSetCharacterPrintMode", 0 );
     return pr.buffer();
 
 }
@@ -2195,16 +2195,16 @@ QByteArray BlDbRecord::trataSetCharacterPrintMode ( const QString &param, int ti
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetCharacterSpacing ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetCharacterSpacing ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetCharacterSpacing", 0 );
+    blDebug ( "BlDbRecord::parseSetCharacterSpacing", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setCharacterSpacing(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetCharacterSpacing", 0 );
+    blDebug ( "END BlDbRecord::parseSetCharacterSpacing", 0 );
     return pr.buffer();
 
 }
@@ -2216,9 +2216,9 @@ QByteArray BlDbRecord::trataSetCharacterSpacing ( const QString &param, int tipo
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetCharacterCodeTable ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetCharacterCodeTable ( const QString &param, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataSetCharacterCodeTable", 0 );
+    blDebug ( "BlDbRecord::parseSetCharacterCodeTable", 0 );
     characterCodeTable codetable=page0;
     BlEscPrinter pr;
     pr.clearBuffer();
@@ -2236,7 +2236,7 @@ QByteArray BlDbRecord::trataSetCharacterCodeTable ( const QString &param, int ti
         codetable = page5;
 
     pr.setCharacterCodeTable(codetable);
-    blDebug ( "END BlDbRecord::trataSetCharacterCodeTable", 0 );
+    blDebug ( "END BlDbRecord::parseSetCharacterCodeTable", 0 );
     return pr.buffer();
 
 }
@@ -2246,11 +2246,11 @@ QByteArray BlDbRecord::trataSetCharacterCodeTable ( const QString &param, int ti
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetUnderlineMode ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetUnderlineMode ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataSetUnderlineMode", 0 );
+    blDebug ( "BlDbRecord::parseSetUnderlineMode", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2261,7 +2261,7 @@ QByteArray BlDbRecord::trataSetUnderlineMode ( const QString &param, int tipoEsc
         modo = TRUE;
 
     pr.setUnderlineMode(modo);
-    blDebug ( "END BlDbRecord::trataSetUnderlineMode", 0 );
+    blDebug ( "END BlDbRecord::parseSetUnderlineMode", 0 );
     return pr.buffer();
 
 }
@@ -2271,16 +2271,16 @@ QByteArray BlDbRecord::trataSetUnderlineMode ( const QString &param, int tipoEsc
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetCharacterSize ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetCharacterSize ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetCharacterSpacing", 0 );
+    blDebug ( "BlDbRecord::parseSetCharacterSpacing", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setCharacterSize(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetCharacterSpacing", 0 );
+    blDebug ( "END BlDbRecord::parseSetCharacterSpacing", 0 );
     return pr.buffer();
 
 }
@@ -2290,11 +2290,11 @@ QByteArray BlDbRecord::trataSetCharacterSize ( const QString &param, int tipoEsc
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetSmoothing ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetSmoothing ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataSetSmoothing", 0 );
+    blDebug ( "BlDbRecord::parseSetSmoothing", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2305,21 +2305,21 @@ QByteArray BlDbRecord::trataSetSmoothing ( const QString &param, int tipoEscape 
         modo = TRUE;
 
     pr.setSmoothing(modo);
-    blDebug ( "END BlDbRecord::trataSetSmoothing", 0 );
+    blDebug ( "END BlDbRecord::parseSetSmoothing", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetDoubleStrike
+/// Trata el parseSetDoubleStrike
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetDoubleStrike ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetDoubleStrike ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataSetDoubleStrike", 0 );
+    blDebug ( "BlDbRecord::parseSetDoubleStrike", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2330,21 +2330,21 @@ QByteArray BlDbRecord::trataSetDoubleStrike ( const QString &param, int tipoEsca
         modo = TRUE;
 
     pr.setDoubleStrike(modo);
-    blDebug ( "END BlDbRecord::trataSetDoubleStrike", 0 );
+    blDebug ( "END BlDbRecord::parseSetDoubleStrike", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataTurnUpsideDown
+/// Trata el parseTurnUpsideDown
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataTurnUpsideDown ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseTurnUpsideDown ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataTurnUpsideDown", 0 );
+    blDebug ( "BlDbRecord::parseTurnUpsideDown", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2355,23 +2355,23 @@ QByteArray BlDbRecord::trataTurnUpsideDown ( const QString &param, int tipoEscap
         modo = TRUE;
 
     pr.turnUpsideDown(modo);
-    blDebug ( "END BlDbRecord::trataTurnUpsideDown", 0 );
+    blDebug ( "END BlDbRecord::parseTurnUpsideDown", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataTurn90CWRotation
+/// Trata el parseTurn90CWRotation
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataTurn90CWRotation ( const QString &param, const QString &param1, int tipoEscape )
+QByteArray BlDbRecord::parseTurn90CWRotation ( const QString &param, const QString &param1, int tipoEscape )
 {
 
     bool modo=FALSE;
     bool extra = FALSE;
-    blDebug ( "BlDbRecord::trataTurn90CWRotation", 0 );
+    blDebug ( "BlDbRecord::parseTurn90CWRotation", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2385,22 +2385,22 @@ QByteArray BlDbRecord::trataTurn90CWRotation ( const QString &param, const QStri
         extra = TRUE;
 
     pr.turn90CWRotation(modo,extra);
-    blDebug ( "END BlDbRecord::trataTurn90CWRotation", 0 );
+    blDebug ( "END BlDbRecord::parseTurn90CWRotation", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataTurnWhiteBlack
+/// Trata el parseTurnWhiteBlack
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataTurnWhiteBlack ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseTurnWhiteBlack ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataTurnWhiteBlack", 0 );
+    blDebug ( "BlDbRecord::parseTurnWhiteBlack", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2411,19 +2411,19 @@ QByteArray BlDbRecord::trataTurnWhiteBlack ( const QString &param, int tipoEscap
         modo = TRUE;
 
     pr.turnWhiteBlack(modo);
-    blDebug ( "END BlDbRecord::trataTurnWhiteBlack", 0 );
+    blDebug ( "END BlDbRecord::parseTurnWhiteBlack", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetColor
+/// Trata el parseSetColor
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetColor ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetColor ( const QString &param, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataSetColor", 0 );
+    blDebug ( "BlDbRecord::parseSetColor", 0 );
     printColor color=black;
     BlEscPrinter pr;
     pr.clearBuffer();
@@ -2433,95 +2433,95 @@ QByteArray BlDbRecord::trataSetColor ( const QString &param, int tipoEscape )
         color = red;
 
     pr.setColor(color);
-    blDebug ( "END BlDbRecord::trataSetColor", 0 );
+    blDebug ( "END BlDbRecord::parseSetColor", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetColor
+/// Trata el parseSetColor
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataHorizontalTab ( int tipoEscape )
+QByteArray BlDbRecord::parseHorizontalTab ( int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataHorizontalTab", 0 );
+    blDebug ( "BlDbRecord::parseHorizontalTab", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     pr.horizontalTab();
-    blDebug ( "END BlDbRecord::trataHorizontalTab", 0 );
+    blDebug ( "END BlDbRecord::parseHorizontalTab", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataTurn90CWRotation
+/// Trata el parseTurn90CWRotation
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetHorizontalTabPos ( const QString &param, const QString &param1, int tipoEscape )
+QByteArray BlDbRecord::parseSetHorizontalTabPos ( const QString &param, const QString &param1, int tipoEscape )
 {
 
-    blDebug ( "BlDbRecord::trataSetHorizontalTabPos", 0 );
+    blDebug ( "BlDbRecord::parseSetHorizontalTabPos", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setHorizontalTabPos(param.toInt(),param1.toLatin1().data());
-    blDebug ( "END BlDbRecord::trataSetHorizontalTabPos", 0 );
+    blDebug ( "END BlDbRecord::parseSetHorizontalTabPos", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataSetLeftMargin
+/// Trata el parseSetLeftMargin
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetLeftMargin ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetLeftMargin ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetLeftMargin", 0 );
+    blDebug ( "BlDbRecord::parseSetLeftMargin", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setLeftMargin(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetLeftMargin", 0 );
+    blDebug ( "END BlDbRecord::parseSetLeftMargin", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetPrintingAreaWidth
+/// Trata el parseSetPrintingAreaWidth
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetPrintingAreaWidth ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetPrintingAreaWidth ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetPrintingAreaWidth", 0 );
+    blDebug ( "BlDbRecord::parseSetPrintingAreaWidth", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setPrintingAreaWidth(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetPrintingAreaWidth", 0 );
+    blDebug ( "END BlDbRecord::parseSetPrintingAreaWidth", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataSetJustification
+/// Trata el parseSetJustification
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetJustification ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetJustification ( const QString &param, int tipoEscape )
 {
 
     BlEscPrinter::justification modo = BlEscPrinter::left ;
-    blDebug ( "BlDbRecord::trataSetJustification", 0 );
+    blDebug ( "BlDbRecord::parseSetJustification", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("LEFT"))
@@ -2532,61 +2532,61 @@ QByteArray BlDbRecord::trataSetJustification ( const QString &param, int tipoEsc
         modo = BlEscPrinter::right;
 
     pr.setJustification(modo);
-    blDebug ( "END BlDbRecord::trataSetJustification", 0 );
+    blDebug ( "END BlDbRecord::parseSetJustification", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetHAbsolutePos
+/// Trata el parseSetHAbsolutePos
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetHAbsolutePos ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetHAbsolutePos ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetHAbsolutePos", 0 );
+    blDebug ( "BlDbRecord::parseSetHAbsolutePos", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setHAbsolutePos(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetHAbsolutePos", 0 );
+    blDebug ( "END BlDbRecord::parseSetHAbsolutePos", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetHRelativePos
+/// Trata el parseSetHRelativePos
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetHRelativePos ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetHRelativePos ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetHRelativePos", 0 );
+    blDebug ( "BlDbRecord::parseSetHRelativePos", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setHRelativePos(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetHRelativePos", 0 );
+    blDebug ( "END BlDbRecord::parseSetHRelativePos", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataSetBarcodeFormat
+/// Trata el parseSetBarcodeFormat
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetBarcodeFormat ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
+QByteArray BlDbRecord::parseSetBarcodeFormat ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
 {
 
     barCodeTextPos pos = notPrinted;
     printerFont    font = fontA;
-    blDebug ( "BlDbRecord::trataSetHRelativePos", 0 );
+    blDebug ( "BlDbRecord::parseSetHRelativePos", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
@@ -2603,23 +2603,23 @@ QByteArray BlDbRecord::trataSetBarcodeFormat ( const QString &param, const QStri
         font = fontB;
 
     pr.setBarcodeFormat(param.toInt(), param1.toInt(), pos, font);
-    blDebug ( "END BlDbRecord::trataSetHRelativePos", 0 );
+    blDebug ( "END BlDbRecord::parseSetHRelativePos", 0 );
     return pr.buffer();
 
 }
 
 
 
-/// Trata el trataPrintBarCode
+/// Trata el parsePrintBarCode
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataPrintBarCode ( const QString &param, const QString &param1,const QString &param2,int tipoEscape )
+QByteArray BlDbRecord::parsePrintBarCode ( const QString &param, const QString &param1,const QString &param2,int tipoEscape )
 {
 
     barcodeSystem system = upca;
-    blDebug ( "BlDbRecord::trataPrintBarCode", 0 );
+    blDebug ( "BlDbRecord::parsePrintBarCode", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
@@ -2644,21 +2644,21 @@ QByteArray BlDbRecord::trataPrintBarCode ( const QString &param, const QString &
 
 
     pr.printBarCode(system, param1.toInt(), param2.toAscii().data());
-    blDebug ( "END BlDbRecord::trataPrintBarCode", 0 );
+    blDebug ( "END BlDbRecord::parsePrintBarCode", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataPrintBarCode
+/// Trata el parsePrintBarCode
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataRightJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
+QByteArray BlDbRecord::parseRightJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
 {
 
-    blDebug ( "BlDbRecord::trataRightJustified", 0 );
+    blDebug ( "BlDbRecord::parseRightJustified", 0 );
     bool truncate = FALSE;
     if (param3.contains("TRUE"))
         truncate = TRUE;
@@ -2667,19 +2667,19 @@ QByteArray BlDbRecord::trataRightJustified ( const QString &param, const QString
     if (param3.contains("1"))
         truncate = TRUE;
 
-    blDebug ( "END BlDbRecord::trataRightJustified", 0 );
+    blDebug ( "END BlDbRecord::parseRightJustified", 0 );
     return param.rightJustified(param1.toInt(), param2.at(0), truncate).toAscii();
 }
 
-/// Trata el trataLeftJustified
+/// Trata el parseLeftJustified
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataLeftJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
+QByteArray BlDbRecord::parseLeftJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
 {
 
-    blDebug ( "BlDbRecord::trataLeftJustified", 0 );
+    blDebug ( "BlDbRecord::parseLeftJustified", 0 );
     bool truncate = FALSE;
     if (param3.contains("TRUE"))
         truncate = TRUE;
@@ -2688,7 +2688,7 @@ QByteArray BlDbRecord::trataLeftJustified ( const QString &param, const QString 
     if (param3.contains("1"))
         truncate = TRUE;
 
-    blDebug ( "END BlDbRecord::trataLeftJustified", 0 );
+    blDebug ( "END BlDbRecord::parseLeftJustified", 0 );
     return param.leftJustified(param1.toInt(), param2.at(0), truncate).toAscii();
 }
 
@@ -2698,16 +2698,16 @@ QByteArray BlDbRecord::trataLeftJustified ( const QString &param, const QString 
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetBarCodeWidth ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetBarCodeWidth ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetBarCodeWidth", 0 );
+    blDebug ( "BlDbRecord::parseSetBarCodeWidth", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setBarCodeWidth(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetBarCodeWidth", 0 );
+    blDebug ( "END BlDbRecord::parseSetBarCodeWidth", 0 );
     return pr.buffer();
 
 }
@@ -2717,50 +2717,50 @@ QByteArray BlDbRecord::trataSetBarCodeWidth ( const QString &param, int tipoEsca
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetBarCodeHeight ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetBarCodeHeight ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetBarCodeHeight", 0 );
+    blDebug ( "BlDbRecord::parseSetBarCodeHeight", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setBarCodeHeight(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetBarCodeHeight", 0 );
+    blDebug ( "END BlDbRecord::parseSetBarCodeHeight", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSelectPageMode
+/// Trata el parseSelectPageMode
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSelectPageMode ( int tipoEscape )
+QByteArray BlDbRecord::parseSelectPageMode ( int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSelectPageMode", 0 );
+    blDebug ( "BlDbRecord::parseSelectPageMode", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.selectPageMode();
-    blDebug ( "END BlDbRecord::trataSelectPageMode", 0 );
+    blDebug ( "END BlDbRecord::parseSelectPageMode", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataSetPrintDirection
+/// Trata el parseSetPrintDirection
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetPrintDirection ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetPrintDirection ( const QString &param, int tipoEscape )
 {
 
     printDirection direc = leftToRight;
-    blDebug ( "BlDbRecord::trataSetPrintDirection", 0 );
+    blDebug ( "BlDbRecord::parseSetPrintDirection", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
@@ -2775,7 +2775,7 @@ QByteArray BlDbRecord::trataSetPrintDirection ( const QString &param, int tipoEs
 
 
     pr.setPrintDirection( direc);
-    blDebug ( "END BlDbRecord::trataSetPrintDirection", 0 );
+    blDebug ( "END BlDbRecord::parseSetPrintDirection", 0 );
     return pr.buffer();
 
 }
@@ -2783,74 +2783,74 @@ QByteArray BlDbRecord::trataSetPrintDirection ( const QString &param, int tipoEs
 
 
 
-/// Trata el trataSetPrintArea
+/// Trata el parseSetPrintArea
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetPrintArea ( const QString &param,  const QString &param1,  const QString &param2,  const QString &param3, int tipoEscape )
+QByteArray BlDbRecord::parseSetPrintArea ( const QString &param,  const QString &param1,  const QString &param2,  const QString &param3, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetPrintArea", 0 );
+    blDebug ( "BlDbRecord::parseSetPrintArea", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setPrintArea(param.toInt(), param1.toInt(), param2.toInt(), param3.toInt());
-    blDebug ( "END BlDbRecord::trataSetPrintArea", 0 );
+    blDebug ( "END BlDbRecord::parseSetPrintArea", 0 );
     return pr.buffer();
 
 }
 
 
-/// Trata el trataSetVAbsolutePos
+/// Trata el parseSetVAbsolutePos
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetVAbsolutePos ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetVAbsolutePos ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetVAbsolutePos", 0 );
+    blDebug ( "BlDbRecord::parseSetVAbsolutePos", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setVAbsolutePos(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetVAbsolutePos", 0 );
+    blDebug ( "END BlDbRecord::parseSetVAbsolutePos", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataSetVRelativePos
+/// Trata el parseSetVRelativePos
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataSetVRelativePos ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseSetVRelativePos ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    blDebug ( "BlDbRecord::trataSetVRelativePos", 0 );
+    blDebug ( "BlDbRecord::parseSetVRelativePos", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
 
     pr.setVRelativePos(param.toInt());
-    blDebug ( "END BlDbRecord::trataSetVRelativePos", 0 );
+    blDebug ( "END BlDbRecord::parseSetVRelativePos", 0 );
     return pr.buffer();
 
 }
 
-/// Trata el trataCutPaper
+/// Trata el parseCutPaper
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataCutPaper ( const QString &param, int tipoEscape )
+QByteArray BlDbRecord::parseCutPaper ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataCutPaper", 0 );
+    blDebug ( "BlDbRecord::parseCutPaper", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2861,23 +2861,23 @@ QByteArray BlDbRecord::trataCutPaper ( const QString &param, int tipoEscape )
         modo = TRUE;
 
     pr.cutPaper(modo);
-    blDebug ( "END BlDbRecord::trataCutPaper", 0 );
+    blDebug ( "END BlDbRecord::parseCutPaper", 0 );
     return pr.buffer();
 
 }
 
 
 
-/// Trata el trataCutPaperAndFeed
+/// Trata el parseCutPaperAndFeed
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataCutPaperAndFeed ( const QString &param, const QString &param1, int tipoEscape )
+QByteArray BlDbRecord::parseCutPaperAndFeed ( const QString &param, const QString &param1, int tipoEscape )
 {
 
     bool modo=FALSE;
-    blDebug ( "BlDbRecord::trataCutPaperAndFeed", 0 );
+    blDebug ( "BlDbRecord::parseCutPaperAndFeed", 0 );
     BlEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2888,7 +2888,7 @@ QByteArray BlDbRecord::trataCutPaperAndFeed ( const QString &param, const QStrin
         modo = TRUE;
 
     pr.cutPaperAndFeed(modo, param1.toInt());
-    blDebug ( "END BlDbRecord::trataCutPaperAndFeed", 0 );
+    blDebug ( "END BlDbRecord::parseCutPaperAndFeed", 0 );
     return pr.buffer();
 
 }
@@ -2964,7 +2964,7 @@ QByteArray BlDbRecord::parseQuery ( const QString &query, const QByteArray &dato
     substrVars ( query1, tipoEscape );
 
     /// Cargamos el query y lo recorremos
-    result = trataCursor ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
+    result = parseRecordset ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
     blDebug ( "END BlDbRecord::parseQuery", 0 );
     return result;
 
@@ -3015,13 +3015,13 @@ QByteArray BlDbRecord::trataLineasDetalle( const QByteArray &datos, int tipoEsca
 }
 */
 
-QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
+QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataCursor", 0 );
+    blDebug ( "BlDbRecord::parseRecordset", 0 );
     QByteArray result = "";
     
     if ( !cur ) {
-        blDebug ( "END BlDbRecord::trataCursor", 0 , "cur==NULL" );
+        blDebug ( "END BlDbRecord::parseRecordset", 0 , "cur==NULL" );
         return "";
     };
     while ( !cur->eof() ) {
@@ -3055,7 +3055,7 @@ QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::trataCursor", 0 );
+    blDebug ( "END BlDbRecord::parseRecordset", 0 );
     return result;
 }
 
@@ -3065,9 +3065,9 @@ QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QByteArray BlDbRecord::trataExists ( const QString &query, const QByteArray &datos )
+QByteArray BlDbRecord::parseExists ( const QString &query, const QByteArray &datos )
 {
-    blDebug ( "BlDbRecord::trataExists", 0 );
+    blDebug ( "BlDbRecord::parseExists", 0 );
 
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
@@ -3078,7 +3078,7 @@ QByteArray BlDbRecord::trataExists ( const QString &query, const QByteArray &dat
     QFile file ( query1 );
     if ( file.exists() )
         result = datos;
-    blDebug ( "END BlDbRecord::trataExists", 0 );
+    blDebug ( "END BlDbRecord::parseExists", 0 );
 
     return result;
 }

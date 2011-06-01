@@ -65,7 +65,7 @@ int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
         QString query = "SELECT * FROM " + ficha->tableName() + " WHERE ref" + ficha->tableName() + " = '" + l->text() + "'";
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            ficha->cargar ( cur->value( "id" + ficha->tableName() ) );
+            ficha->load ( cur->value( "id" + ficha->tableName() ) );
         } // end if
         delete cur;
     }// end if

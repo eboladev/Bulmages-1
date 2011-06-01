@@ -71,7 +71,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "carteraCobros") {
+    if (accion->objectName() == "mui_actionCarteraCobros") {
         CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) g_bges->company() );
         g_bges->company()->m_pWorkspace->addSubWindow ( carteracobrosview );
         carteracobrosview->show();
@@ -107,7 +107,7 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
     art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Vencimientos" );
-    l->cargar("SELECT * FROM vencimientocliente WHERE idcliente IS NULL");
+    l->load("SELECT * FROM vencimientocliente WHERE idcliente IS NULL");
     blDebug ( "END ClienteView_ClienteView_Post", 0 );
     return 0;
 }
@@ -123,7 +123,7 @@ int ClienteView_cargarPost_Post ( ClienteView *art )
     blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
     if ( l ) {
-        l->cargar ( "SELECT * FROM vencimientocliente LEFT JOIN forma_pago ON vencimientocliente.idforma_pago = forma_pago.idforma_pago WHERE idcliente =  " + art->dbValue("idcliente"));
+        l->load ( "SELECT * FROM vencimientocliente LEFT JOIN forma_pago ON vencimientocliente.idforma_pago = forma_pago.idforma_pago WHERE idcliente =  " + art->dbValue("idcliente"));
     } // end if
     blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
@@ -167,7 +167,7 @@ int BlForm_guardar_Post ( BlForm *art )
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
 	if (l) {
 		l->setColumnValue ( "idcliente", art->dbValue ( "idcliente" ) );
-		l->guardar();
+		l->save();
         } // end if
 
 	
@@ -185,7 +185,7 @@ int BlForm_guardar_Post ( BlForm *art )
 			if (msgBox.clickedButton() == guardarButton) {
 				l1->setColumnValue ( "idfactura", art->dbValue ( "idfactura" ) );
 				l1->setColumnValue ( "idcliente", art->dbValue ( "idcliente" ) );
-				l1->guardar();
+				l1->save();
 			} else if (msgBox.clickedButton() == regenerarButton) {
 				QString query = "DELETE FROM vencimientoc WHERE idfactura="+ art->dbValue("idfactura");
 				art->mainCompany()->runQuery(query);
@@ -228,7 +228,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
     factp->dialogChanges_setExcludedObject ( l->mui_list );
 
     factp->m_desdfgs->addTab ( l, "Vencimientos" );
-    l->cargar("SELECT * FROM vencimientoc WHERE idfactura IS NULL");
+    l->load("SELECT * FROM vencimientoc WHERE idfactura IS NULL");
     blDebug ( "END FacturaView_FacturaView", 0 );
     return 0;
 }
@@ -247,7 +247,7 @@ int FacturaView_cargarPost_Post ( FacturaView *art )
 
 	BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoc" );
 	if ( l ) {
-		l->cargar ( "SELECT * FROM vencimientoc LEFT JOIN forma_pago ON vencimientoc.idforma_pago = forma_pago.idforma_pago WHERE idfactura =  " + art->dbValue("idfactura"));
+		l->load ( "SELECT * FROM vencimientoc LEFT JOIN forma_pago ON vencimientoc.idforma_pago = forma_pago.idforma_pago WHERE idfactura =  " + art->dbValue("idfactura"));
 	} // end if
     } // end if
     blDebug ( "END FacturaView_cargarPost_Post", 0 );
@@ -260,9 +260,9 @@ int FacturaView_cargarPost_Post ( FacturaView *art )
 \param art
 \return
 **/
-int FacturaView_borrarPre ( FacturaView *art )
+int FacturaView_beforeDelete ( FacturaView *art )
 {
-    blDebug ( "FacturaView_borrarPre", 0 );
+    blDebug ( "FacturaView_beforeDelete", 0 );
 
     /// Para que funcione el identificador de factura debe ser valido
     if (art->dbValue("idfactura") != "") {
@@ -272,6 +272,6 @@ int FacturaView_borrarPre ( FacturaView *art )
 		l->mainCompany()->runQuery ( "DELETE FROM vencimientoc WHERE idfactura =  " + art->dbValue("idfactura"));
 	} // end if
     } // end if
-    blDebug ( "END FacturaView_borrarPre", 0 );
+    blDebug ( "END FacturaView_beforeDelete", 0 );
     return 0;
 }

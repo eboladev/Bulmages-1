@@ -69,7 +69,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
-        accionB->setObjectName("mui_actionNuevoAlbaranCliente");
+        accionB->setObjectName("mui_actionAlbaranClienteNuevo");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
 
@@ -88,7 +88,7 @@ int BlAction_triggered(BlAction *accion) {
         }// end if
     } // end if
 
-    if (accion->objectName() == "mui_actionNuevoAlbaranCliente") {                
+    if (accion->objectName() == "mui_actionAlbaranClienteNuevo") {                
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
@@ -117,7 +117,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
         AlbaranClienteList *albaranesList = new AlbaranClienteList ( NULL, 0, BL_SELECT_MODE );
 	albaranesList->setMainCompany(( BfCompany * ) prov->mainCompany());
-        albaranesList->setModoEdicion();
+        albaranesList->setEditMode();
         albaranesList->setObjectName ( "listalbaranes" );
         albaranesList->hideBusqueda();
         prov->mui_tab->addTab ( albaranesList, "Albaranes" );
@@ -143,7 +143,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idfactura" ) );
+        bud->load ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while
@@ -278,7 +278,7 @@ int BlToolButton_released(BlToolButton *bot) {
 
 	/// Creamos la factura.
 	AlbaranClienteView *bud = new AlbaranClienteView ( fact1->mainCompany(), NULL );
-	bud->cargar ( idalbaran );
+	bud->load ( idalbaran );
 
 	/// Agregamos a comentarios que albaran se corresponde.
 	QString comm = fact1->dbValue ( "comentfactura" ) + "(" + _ ( "ALBARAN: Num " ) + bud->dbValue ( "numalbaran" ) + _ ( "Ref:" ) + " " + bud->dbValue ( "refalbaran" ) + _ ( "Fecha:" ) + " " + bud->dbValue ( "fechaalbaran" ) + ")\n";
@@ -307,7 +307,7 @@ int BlToolButton_released(BlToolButton *bot) {
 
 	/// Procesamos el albaran.
 	bud->mui_procesadoalbaran->setChecked ( TRUE );
-	bud->guardar();
+	bud->save();
 	delete bud;
 
 	/// Pintamos los totales.

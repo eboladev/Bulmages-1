@@ -51,7 +51,7 @@ ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
-    mui_listado->cargar();
+    mui_listado->load();
     insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END ListTasaIVAView::ListTasaIVAView", 1 );
@@ -65,7 +65,7 @@ void ListTasaIVAView::on_mui_aceptar_clicked()
 {
     blDebug ( "ListTasaIVAView::on_mui_aceptar_clicked", 0 );
     try {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar las tasas de IVA" ) );
@@ -105,10 +105,10 @@ ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
 ///
 /**
 **/
-void ListTasaIVASubForm::cargar()
+void ListTasaIVASubForm::load()
 {
     blDebug ( "ListTasaIVASubForm::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva" );
+    BlSubForm::load ( "SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva" );
     blDebug ( "END ListTasaIVASubForm::cargar", 0 );
 }
 

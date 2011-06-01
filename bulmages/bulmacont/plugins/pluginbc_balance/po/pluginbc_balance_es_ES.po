@@ -204,12 +204,12 @@ msgid "Codigo"
 msgstr "Codigo"
 
 #: ui_balanceprintbase.h:320
-msgid "Codigo Final"
-msgstr "Codigo Final"
+msgid "Codigo final"
+msgstr "Codigo final"
 
 #: ui_balanceprintbase.h:317
-msgid "Codigo Inicial\n"
-msgstr "Codigo Inicial\n"
+msgid "Codigo inicial\n"
+msgstr "Codigo inicial\n"
 
 #: ui_balancebase.h:431 ui_balancebase.h:434
 msgid "Configurar"
@@ -227,21 +227,13 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: balanceprintview.cpp:64 balanceview.cpp:77
-msgid "Cuenta Final:"
-msgstr ""
-
-#: balanceprintview.cpp:56 balanceview.cpp:68
-msgid "Cuenta Inicial:"
-msgstr ""
-
-#: ui_balancetreebase.h:404 ui_balancebase.h:441
+#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancetreebase.h:404 ui_balancebase.h:441
 msgid "Cuenta final:"
-msgstr "Cuenta final:"
+msgstr ""
 
-#: ui_balancetreebase.h:407 ui_balancebase.h:439
+#: ui_balancetreebase.h:407 ui_balancebase.h:439 balanceprintview.cpp:56 balanceview.cpp:68
 msgid "Cuenta inicial:"
-msgstr "Cuenta inicial:"
+msgstr ""
 
 #: ui_balanceprintbase.h:316
 msgid "Datos del listado:"
@@ -268,12 +260,12 @@ msgid "F5"
 msgstr "F5"
 
 #: ui_balanceprintbase.h:321 ui_balancesprintdlg.h:200
-msgid "Fecha Final"
-msgstr "Fecha Final"
+msgid "Fecha final"
+msgstr "Fecha final"
 
 #: ui_balanceprintbase.h:319 ui_balancesprintdlg.h:199
-msgid "Fecha Inicial"
-msgstr "Fecha Inicial"
+msgid "Fecha inicial"
+msgstr "Fecha inicial"
 
 #: ui_balancetreebase.h:405 ui_balancebase.h:440
 msgid "Fecha final:"
@@ -324,8 +316,8 @@ msgid "Impresion de Balances"
 msgstr "Impresion de Balances"
 
 #: ui_balanceprintbase.h:312
-msgid "Impresion del Balance de Sumas y Saldos"
-msgstr "Impresion del Balance de Sumas y Saldos"
+msgid "Impresion del balance de sumas y saldos"
+msgstr "Impresión del balance de sumas y saldos"
 
 #: ui_balancetreebase.h:391 ui_balancetreebase.h:394 ui_balancetreebase.h:398
 #: ui_balancetreebase.h:401

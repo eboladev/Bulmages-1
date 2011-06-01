@@ -71,7 +71,7 @@ void PluginBl_Report::elslot1( )
     blDebug ( "PluginBl_Report::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
-    if ( !ficha->generaRML ( sender()->objectName() ) ) return;
+    if ( !ficha->generateRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
     blDebug ( "END PluginBl_Report::elslot", 0 );

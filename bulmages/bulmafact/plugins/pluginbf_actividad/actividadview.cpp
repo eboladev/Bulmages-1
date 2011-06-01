@@ -155,26 +155,26 @@ void ActividadView::imprimir()
     blDebug ( "END ActividadView::imprimir", 0 );
 }
 
-int ActividadView::guardarPost()
+int ActividadView::afterSave()
 {
-    blDebug ( "ActividadView::guardarPost", 0 );
+    blDebug ( "ActividadView::afterSave", 0 );
     
     mui_alumnosList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
-    mui_alumnosList->guardar();
+    mui_alumnosList->save();
     
     mui_faltasAsistenciaList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
-    mui_faltasAsistenciaList->guardar();
+    mui_faltasAsistenciaList->save();
     
     mui_tutoresList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
-    mui_tutoresList->guardar();
+    mui_tutoresList->save();
     
-    blDebug ( "END ActividadView::guardarPost", 0 );
+    blDebug ( "END ActividadView::afterSave", 0 );
     return 0;
 }
 
-int ActividadView::borrarPre()
+int ActividadView::beforeDelete()
 {
-    blDebug ( "ActividadView::borrarPre", 0 );
+    blDebug ( "ActividadView::beforeDelete", 0 );
     
     QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue ( "idactividad" );
     mainCompany()->runQuery ( query );
@@ -182,7 +182,7 @@ int ActividadView::borrarPre()
     query = "DELETE FROM clienteactividad WHERE idactividad=" + dbValue ( "idactividad" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( "END ActividadView::borrarPre", 0 );
+    blDebug ( "END ActividadView::beforeDelete", 0 );
     
     return 0;
 }
@@ -191,9 +191,9 @@ int ActividadView::cargarPost ( QString id )
 {
     blDebug ( "ActividadView::cargarPost", 0 );
 
-    mui_alumnosList->cargar ( id );
-    mui_faltasAsistenciaList->cargar ( id );
-    mui_tutoresList->cargar ( id );
+    mui_alumnosList->load ( id );
+    mui_faltasAsistenciaList->load ( id );
+    mui_tutoresList->load ( id );
 
     blDebug ( "END ActividadView::cargarPost", 0 );
     
@@ -229,11 +229,11 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 /**
 \param idactividad
 **/
-void ListAlumnosActividadView::cargar ( QString idactividad )
+void ListAlumnosActividadView::load ( QString idactividad )
 {
     blDebug ( "ListAlumnosActividadView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno WHERE alumnoactividad.idactividad=" + idactividad  );
+    BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno WHERE alumnoactividad.idactividad=" + idactividad  );
     
     blDebug ( "END ListAlumnosActividadView::cargar", 0 );
 }
@@ -266,11 +266,11 @@ ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubFo
 /**
 \param idactividad
 **/
-void ListTutoresActividadView::cargar ( QString idactividad )
+void ListTutoresActividadView::load ( QString idactividad )
 {
     blDebug ( "ListTutoresActividadView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT *, ( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ', ' || COALESCE(nomcliente,'')) AS nombretutor1 FROM clienteactividad LEFT JOIN cliente ON clienteactividad.idcliente = cliente.idcliente WHERE clienteactividad.idactividad=" + idactividad  );
+    BlSubForm::load ( "SELECT *, ( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ', ' || COALESCE(nomcliente,'')) AS nombretutor1 FROM clienteactividad LEFT JOIN cliente ON clienteactividad.idcliente = cliente.idcliente WHERE clienteactividad.idactividad=" + idactividad  );
     
     blDebug ( "END ListTutoresActividadView::cargar", 0 );
 }
@@ -306,11 +306,11 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
 /**
 \param idactividad
 **/
-void ListFaltasAsistenciaActividadView::cargar ( QString idactividad )
+void ListFaltasAsistenciaActividadView::load ( QString idactividad )
 {
     blDebug ( "ListAlumnosActividadView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM faltaasistenciaalumnoactividad LEFT JOIN alumno ON faltaasistenciaalumnoactividad.idalumno = alumno.idalumno WHERE faltaasistenciaalumnoactividad.idactividad=" + idactividad  );
+    BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM faltaasistenciaalumnoactividad LEFT JOIN alumno ON faltaasistenciaalumnoactividad.idalumno = alumno.idalumno WHERE faltaasistenciaalumnoactividad.idactividad=" + idactividad  );
     
     blDebug ( "END ListAlumnosActividadView::cargar", 0 );
 }

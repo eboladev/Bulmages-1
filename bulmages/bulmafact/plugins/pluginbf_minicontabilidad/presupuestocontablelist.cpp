@@ -55,7 +55,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     mdb_conceptopresupuestocontable = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de presupuesto contable" ) );
@@ -93,7 +93,7 @@ PresupuestoContableList::~PresupuestoContableList()
 void PresupuestoContableList::presentar()
 {
     blDebug ( "PresupuestoContableList::presenta", 0 );
-    mui_list->cargar ( "SELECT * FROM presupuestocontable  WHERE lower(conceptopresupuestocontable) LIKE lower('%" + m_filtro->text() + "%') ORDER BY conceptopresupuestocontable" );
+    mui_list->load ( "SELECT * FROM presupuestocontable  WHERE lower(conceptopresupuestocontable) LIKE lower('%" + m_filtro->text() + "%') ORDER BY conceptopresupuestocontable" );
     blDebug ( "END PresupuestoContableList::presenta", 0 );
 }
 
@@ -109,9 +109,9 @@ void PresupuestoContableList::editar ( int row )
     blDebug ( "PresupuestoContableList::editar", 0 );
     mdb_idpresupuestocontable = mui_list->dbValue ( "idpresupuestocontable", row );
     mdb_conceptopresupuestocontable = mui_list->dbValue ( "conceptopresupuestocontable", row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         PresupuestoContableView * prov = new PresupuestoContableView ( ( BfCompany * ) mainCompany(), 0 ) ;
-        if ( prov->cargar ( mdb_idpresupuestocontable ) ) {
+        if ( prov->load ( mdb_idpresupuestocontable ) ) {
             delete prov;
             return;
         } // end if
@@ -140,13 +140,13 @@ void PresupuestoContableList::imprimir()
     Instancia la clase PresupuestoContableView, lo inicializa con el presupuestocontable seleccionado y le lanza el evento de borrar.
     Esta es la forma adecuada de borrar desde el listado ya que asi preservamos el tema plugins.
 */
-void PresupuestoContableList::borrar()
+void PresupuestoContableList::remove()
 {
     blDebug ( "PresupuestoContableList::on_mui_borrar_clicked", 0 );
     try {
         QString idpresupuestocontable = mui_list->dbValue ( "idpresupuestocontable" );
         PresupuestoContableView *cli = new PresupuestoContableView ( ( BfCompany * ) mainCompany(), 0 ) ;
-        if ( cli->cargar ( idpresupuestocontable ) ) {
+        if ( cli->load ( idpresupuestocontable ) ) {
             delete cli;
             throw - 1;
         } // end if
@@ -187,7 +187,7 @@ void PresupuestoContableList::crear()
     bud->show();
     bud->setWindowTitle ( _ ( "Nuevo presupuestocontable" ) );
     /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo presupuestocontable.
-    bud->desactivaDocumentos();
+    bud->deactivateDocuments();
 }
 
 

@@ -134,7 +134,7 @@ public:
     BlDbSubFormField  *m_campoactual;
     
 private:
-    virtual void cargar ( BlDbRecordSet *cur );
+    virtual void load ( BlDbRecordSet *cur );
     const QString nameFileConfig(); 
     const QString nameFileDefaultConfig(); 
 
@@ -193,7 +193,7 @@ protected:
     /// Carga la configuración de especificaciones.
     /// Los specs son archivos en /etc/bulmages que suplen o Incrementan los campos presentados en un subformulario.
     /// Son utiles para hacer ampliaciones sin programacion.
-    void cargaSpecs();
+    void loadSpecs();
     /// Prepara las columnas de la tabla del formulario y pone en
     /// ella los encabezados.
     virtual void pintaCabeceras();
@@ -313,9 +313,9 @@ public:
     BlDbSubFormRecord *lineaact();
     BlDbSubFormRecord *lineaat ( int row );
     virtual void newRecord();
-    virtual int borrar ( int );
-    virtual int guardar();
-    virtual void cargar ( QString query );
+    virtual int remove ( int );
+    virtual int save();
+    virtual void load ( QString query );
     virtual int inicializar();
     virtual void pintar();
     virtual void creaMenu ( QMenu * );
@@ -330,10 +330,10 @@ public:
     BlDbField::DbType dbFieldTypeByColumnId ( int columna );
 
     /// Funciones para manipular los modos.
-    void setModoConsulta();
-    void setModoEdicion();
-    bool modoEdicion();
-    bool modoConsulta();
+    void setSelectMode();
+    void setEditMode();
+    bool editMode();
+    bool selectMode();
     edmode mode();
 
     /// Metodos relacionados con el menu superior del SubFormulario
@@ -343,7 +343,7 @@ public:
 
 public slots:
     virtual void printPDF ( const QString & );
-    virtual int borrar();
+    virtual int remove();
     void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );
     void on_mui_list_cellChanged ( int, int );

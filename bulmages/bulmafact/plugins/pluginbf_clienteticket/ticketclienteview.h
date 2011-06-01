@@ -46,8 +46,8 @@ class PLUGINBF_CLIENTETICKET_EXPORT TicketClienteView : public BfForm, public Ui
     Q_OBJECT
 
 public:
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     virtual int cargarPost ( QString );
     TicketClienteView ( BfCompany *, QWidget * );
     ~TicketClienteView();

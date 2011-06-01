@@ -61,7 +61,7 @@ Inventario::~Inventario()
 /**
 \return
 **/
-int Inventario::borrar()
+int Inventario::remove()
 {
     blDebug ( "Inventario::borrar", 0 );
     if ( dbValue ( "idinventario" ) != "" ) 
@@ -69,7 +69,7 @@ int Inventario::borrar()
 	blDebug ( "vamos a borrar las lineas del inventario", 0 );
 	companyact->begin();
 
-	listalineas->borrar();
+	listalineas->remove();
 	blDebug ( "Vamos a borrar el resto", 0 );
 	int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + dbValue ( "idinventario" ) );
         if ( error ) {
@@ -115,23 +115,23 @@ void Inventario::pintaInventario()
 /**
 \return
 **/
-int Inventario::guardar()
+int Inventario::save()
 {
-    blDebug ( "Inventario::guardar()", 0 );
+    blDebug ( "Inventario::save()", 0 );
     companyact->begin();
     try {
         QString id;
         dbSave ( id );
         setIdInventario ( id );
-        listalineas->guardar();
+        listalineas->save();
         companyact->commit();
-        cargar ( id );
-        blDebug ( "END Inventario::guardar()", 0 );
+        load ( id );
+        blDebug ( "END Inventario::save()", 0 );
         return 0;
     } catch ( ... ) {
         blDebug ( "Error guardando el inventario", 2 );
         companyact->rollback();
-        blDebug ( "END Inventario::guardar()", 0 );
+        blDebug ( "END Inventario::save()", 0 );
         return -1;
     } // end try
 }

@@ -191,7 +191,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         PedidoProveedorView * pedpro = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        pedpro->cargar ( cur->value( "idpedidoproveedor" ) );
+        pedpro->load ( cur->value( "idpedidoproveedor" ) );
         mainCompany() ->m_pWorkspace->addSubWindow ( pedpro );
         pedpro->show();
         cur->nextRecord();
@@ -222,11 +222,11 @@ void AlbaranProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 /**
 \return
 **/
-int AlbaranProveedorView::borrarPre()
+int AlbaranProveedorView::beforeDelete()
 {
     blDebug ( "AlbaranProveedorView::borrar", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    m_listalineas->remove();
+    m_listadescuentos->remove();
     blDebug ( "END AlbaranProveedorView::borrar", 0 );
     return 0;
 }
@@ -244,8 +244,8 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
 {
     blDebug ( "AlbaranProveedorView::cargar", 0 );
 
-    m_listalineas->cargar ( idbudget );
-    m_listadescuentos->cargar ( idbudget );
+    m_listalineas->load ( idbudget );
+    m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "AlbaranProveedorView_cargarPost_Post", this );
@@ -266,15 +266,15 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
 /**
 \return
 **/
-int AlbaranProveedorView::guardarPost()
+int AlbaranProveedorView::afterSave()
 {
     blDebug ( "AlbaranProveedorView::guardar", 0 );
 
     m_listalineas->setColumnValue ( "idalbaranp", dbValue ( "idalbaranp" ) );
     m_listadescuentos->setColumnValue ( "idalbaranp", dbValue ( "idalbaranp" ) );
 
-    m_listalineas->guardar();
-    m_listadescuentos->guardar();
+    m_listalineas->save();
+    m_listadescuentos->save();
 
     blDebug ( "END AlbaranProveedorView::guardar", 0 );
     return 0;

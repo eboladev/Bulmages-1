@@ -85,7 +85,7 @@ void PluginBl_Embed::embedPYS( )
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
-    if ( !ficha->generaRML ( sender()->objectName() ) ) return;
+    if ( !ficha->generateRML ( sender()->objectName() ) ) return;
 
     QString archivod = sender()->objectName();
     QString archivo =  sender()->objectName().left ( sender()->objectName().size() - 4 );

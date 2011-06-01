@@ -37,8 +37,8 @@ class VehiculoView : public BfForm, Ui_VehiculoBase
 public:
     VehiculoView ( BfCompany *, QWidget *parent = 0 );
     ~VehiculoView();
-    virtual int cargar ( QString idvehiculo );
-    virtual int guardar();
+    virtual int load ( QString idvehiculo );
+    virtual int save();
 };
 
 #endif

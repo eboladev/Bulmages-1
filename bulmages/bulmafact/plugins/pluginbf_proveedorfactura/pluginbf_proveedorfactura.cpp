@@ -111,7 +111,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
         FacturasProveedorList *facturasProveedorList = new FacturasProveedorList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-        facturasProveedorList->setModoEdicion();
+        facturasProveedorList->setEditMode();
         facturasProveedorList->setObjectName ( "listpagosproveedor" );
         facturasProveedorList->hideBusqueda();
         prov->mui_tab->addTab ( facturasProveedorList, "Facturas" );
@@ -137,7 +137,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idfacturap" ) );
+        bud->load ( cur->value( "idfacturap" ) );
         bud->show();
         cur->nextRecord();
     } // end while

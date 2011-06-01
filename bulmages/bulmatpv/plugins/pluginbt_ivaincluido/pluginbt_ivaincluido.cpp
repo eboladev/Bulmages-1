@@ -141,7 +141,7 @@ int BtCompany_z(BtCompany * emp)
         
         delete cur;
 
-	emp->ticketActual() -> generaRML("informe_Z.txt");
+	emp->ticketActual() -> generateRML("informe_Z.txt");
 
 	if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 	    QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );

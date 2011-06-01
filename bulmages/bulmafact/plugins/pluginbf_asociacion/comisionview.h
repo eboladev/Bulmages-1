@@ -56,8 +56,8 @@ public:
     ~ComisionView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardarPost();
-    virtual int borrarPre();
+    virtual int afterSave();
+    virtual int beforeDelete();
     virtual int cargarPost(QString );
 };
 

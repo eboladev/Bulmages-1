@@ -16,12 +16,11 @@ file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui ../pluginbf_clientealbaran/*.ui ../pluginbf_clientepedido/*.ui ../pluginbf_clientefactura/*.ui)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientepresupuesto.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientepresupuesto.h pluginbf_clientepresupuesto.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
-#by R. Cabezas
 set(QT_USE_QTSCRIPT true)
 
 INCLUDE(${QT_USE_FILE})

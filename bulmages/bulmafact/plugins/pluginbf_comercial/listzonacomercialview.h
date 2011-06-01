@@ -42,9 +42,9 @@ public:
     ~ListZonaComercialSubForm() {};
 
 public slots:
-    virtual void cargar() {
+    virtual void load() {
         blDebug ( "ListZonaComercialSubForm::cargar\n", 0 );
-        BlSubForm::cargar ( "SELECT * FROM zonacomercial" );
+        BlSubForm::load ( "SELECT * FROM zonacomercial" );
     };
 };
 
@@ -62,7 +62,7 @@ public:
 
 public slots:
     virtual void on_mui_aceptar_clicked() {
-        mui_listado->guardar();
+        mui_listado->save();
         close();
     };
 };

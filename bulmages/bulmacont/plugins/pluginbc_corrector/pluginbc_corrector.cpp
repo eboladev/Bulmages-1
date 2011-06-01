@@ -77,7 +77,7 @@ int entryPoint ( BcBulmaCont *bcont )
     viewCorrector->setWhatsThis ( _ ( "Corrector.\n\nMuestra/oculta el corrector" ) );
 
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
-    QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
+    QObject::connect ( doc1, SIGNAL ( visibilityStateChanged ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
 
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );

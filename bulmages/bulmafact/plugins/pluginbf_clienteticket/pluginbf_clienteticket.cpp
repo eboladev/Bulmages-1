@@ -116,7 +116,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
         TicketClienteList *albaranesList = new TicketClienteList ( NULL, 0, BL_SELECT_MODE );
 	albaranesList->setMainCompany(( BfCompany * ) prov->mainCompany());
-        albaranesList->setModoEdicion();
+        albaranesList->setEditMode();
         albaranesList->setObjectName ( "listalbaranes" );
         albaranesList->hideBusqueda();
         prov->mui_tab->addTab ( albaranesList, "Ticketes" );
@@ -142,7 +142,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         TicketClienteView * bud = new TicketClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idfactura" ) );
+        bud->load ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while

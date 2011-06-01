@@ -122,8 +122,8 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         mui_idtrabajador->setFieldValue ( "0" );
 
 
-        subform3->cargar ( "0" );
-        subform2->cargar ( "0" );
+        subform3->load ( "0" );
+        subform2->load ( "0" );
 
 
         /// Conectamos algunos elementos para que funcionen.
@@ -309,11 +309,11 @@ void CompraVentaView::on_subform2_editFinish ( int, int )
 /**
 \return
 **/
-int CompraVentaView::borrarPre()
+int CompraVentaView::beforeDelete()
 {
     blDebug ( "CompraVentaView::borrar", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    m_listalineas->remove();
+    m_listadescuentos->remove();
     blDebug ( "END CompraVentaView::borrar", 0 );
     return 0;
 }
@@ -335,8 +335,8 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 {
     blDebug ( "CompraVentaView::cargar", 0 );
     try {
-        m_listalineas->cargar ( idalbaran );
-        m_listadescuentos->cargar ( idalbaran );
+        m_listalineas->load ( idalbaran );
+        m_listadescuentos->load ( idalbaran );
 
         /// Establecemos los valores del albaran de proveedor por si acaso el albaran de proveedor no existiese.
         m_albaranp->setDbValue ( "refalbaranp", dbValue ( "refalbaran" ) );
@@ -346,9 +346,9 @@ int CompraVentaView::cargarPost ( QString idalbaran )
         QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + dbValue ( "refalbaran" ) + "'";
         BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            m_albaranp->cargar ( cur->value( "idalbaranp" ) );
-            subform3->cargar ( cur->value( "idalbaranp" ) );
-            m_descuentos3->cargar ( cur->value( "idalbaranp" ) );
+            m_albaranp->load ( cur->value( "idalbaranp" ) );
+            subform3->load ( cur->value( "idalbaranp" ) );
+            m_descuentos3->load ( cur->value( "idalbaranp" ) );
         } // end if
         delete cur;
 
@@ -377,38 +377,38 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 /**
 \return
 **/
-int CompraVentaView::guardarPost()
+int CompraVentaView::afterSave()
 {
-    blDebug ( "CompraVentaView::guardarPost", 0 );
+    blDebug ( "CompraVentaView::afterSave", 0 );
     try {
 // setDbValue("idalmacen" , mdb_idalmacen->text());
-// BlDbRecord::guardar();
-// guardar();
-// cargar(id);
+// BlDbRecord::save();
+// save();
+// load(id);
         m_listalineas->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
-        m_listalineas->guardar();
+        m_listalineas->save();
         m_listadescuentos->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
-        m_listadescuentos->guardar();
+        m_listadescuentos->save();
 
         /// Cargamos el albaran para que se refresquen los valores puestos por la base de datos.
-        cargar ( dbValue ( "idalbaran" ) );
+        load ( dbValue ( "idalbaran" ) );
         generarFactura();
 
 
         if ( subform3->rowCount() > 1 ) {
             m_albaranp->setDbValue ( "refalbaranp", dbValue ( "refalbaran" ) );
             m_albaranp->setDbValue ( "idalmacen", dbValue ( "idalmacen" ) );
-            m_albaranp->BlDbRecord::guardar();
+            m_albaranp->BlDbRecord::save();
             subform3->setColumnValue ( "idalbaranp", m_albaranp->dbValue ( "idalbaranp" ) );
             m_descuentos3->setColumnValue ( "idalbaranp", m_albaranp->dbValue ( "idalbaranp" ) );
-            subform3->guardar();
-            m_descuentos3->guardar();
-            m_albaranp->BlDbRecord::cargar ( m_albaranp->dbValue ( "idalbaranp" ) );
+            subform3->save();
+            m_descuentos3->save();
+            m_albaranp->BlDbRecord::load ( m_albaranp->dbValue ( "idalbaranp" ) );
 
             generarFacturaProveedor();
         } // end if
 
-        blDebug ( "END CompraVentaView::guardarPost", 0 );
+        blDebug ( "END CompraVentaView::afterSave", 0 );
     } catch ( ... ) {
         blDebug ( "error en la funicon", 2 );
     } // end try
@@ -527,7 +527,7 @@ void CompraVentaView::generarFacturaProveedor()
         } // end for
 
         bud->pintar();
-        bud->guardar();
+        bud->save();
         bud->close();
 
     } catch ( ... ) {
@@ -598,7 +598,7 @@ void CompraVentaView::generarFactura()
             } // end if
             bud = ( FacturaView * ) g_plugParams;
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfactura" ) );
+            bud->load ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if
@@ -618,7 +618,7 @@ void CompraVentaView::generarFactura()
         mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
-        bud->cargar ( "0" );
+        bud->load ( "0" );
 
         /// Traspasamos los datos a la factura.
         recogeValores();
@@ -676,7 +676,7 @@ void CompraVentaView::generarFactura()
         } // end if
 
         bud->pintar();
-        bud->guardar();
+        bud->save();
         bud->close();
 
         mui_procesadoalbaran->setChecked ( TRUE );
@@ -700,7 +700,7 @@ void CompraVentaView::imprimir()
 
         /// Si devuelve 0 significa que el archivo RML se ha generado mal
         /// el PDF correspondiente.
-        if ( generaRML ( "compraventa.rml" ) ) {
+        if ( generateRML ( "compraventa.rml" ) ) {
             blCreateAndLoadPDF ( "compraventa" );
         } // end if
 

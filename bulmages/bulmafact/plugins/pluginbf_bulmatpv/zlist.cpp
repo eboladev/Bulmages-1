@@ -139,7 +139,7 @@ void ZList::presentar()
     blDebug ( "ZList::presentar", 0 );
 
     /// Hacemos el listado y lo presentamos.
-    mui_list->cargar ( "SELECT * FROM z NATURAL LEFT JOIN almacen" );
+    mui_list->load ( "SELECT * FROM z NATURAL LEFT JOIN almacen" );
 
     blDebug ( "END ZList::presentar", 0 );
 }
@@ -171,11 +171,11 @@ void ZList::editar ( int row )
     try {
         m_idz = mui_list->dbValue ( QString ( "idz" ), row );
 
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ZView * alm = new ZView ( ( BfCompany * ) mainCompany(), 0 );
             mainCompany() ->pWorkspace() ->addSubWindow ( alm );
             alm->show();
-            alm->cargar ( m_idz );
+            alm->load ( m_idz );
         } else {
             emit ( selected ( m_idz ) );
         } // end if
@@ -202,7 +202,7 @@ void ZList::imprimir()
 /**
 \return
 **/
-void ZList::borrar()
+void ZList::remove()
 {
     blDebug ( "ZList::borrar", 0 );
     /*
@@ -213,11 +213,11 @@ void ZList::borrar()
         } // end if
         try {
             m_idz = mui_list->dbValue(QString("idalmacen"));
-            if (modoEdicion()) {
+            if (editMode()) {
                 ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
                 mainCompany()->pWorkspace()->addSubWindow(alm);
     //            alm->show();
-                alm->cargar(m_idz);
+                alm->load(m_idz);
          alm->on_mui_borrar_clicked();
          alm->close();
 

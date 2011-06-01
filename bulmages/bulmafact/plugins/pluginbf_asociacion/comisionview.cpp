@@ -69,7 +69,7 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
         
-        mui_list->cargar("SELECT * from miembrocomision NATURAL LEFT JOIN cliente WHERE 1 = 2");
+        mui_list->load("SELECT * from miembrocomision NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
         insertWindow ( windowTitle(), this, FALSE );
         pintar();
@@ -118,17 +118,17 @@ void ComisionView::imprimir()
 }
 
 
-int ComisionView::guardarPost()
+int ComisionView::afterSave()
 {
-    blDebug ( " ComisionView::guardarPost", 0 );
+    blDebug ( " ComisionView::afterSave", 0 );
     mui_list->setColumnValue("idcomision", dbValue("idcomision") );
-    mui_list->guardar();
-    blDebug ( "END ComisionView::guardarPost", 0 );
+    mui_list->save();
+    blDebug ( "END ComisionView::afterSave", 0 );
     return 0;
 }
 
 
-int ComisionView::borrarPre()
+int ComisionView::beforeDelete()
 {
 
     return 0;
@@ -139,7 +139,7 @@ int ComisionView::borrarPre()
 int ComisionView::cargarPost ( QString id )
 {
     blDebug ( " ComisionView::cargarPost", 0 );
-    mui_list->cargar("SELECT * FROM miembrocomision NATURAL LEFT JOIN cliente WHERE idcomision = " + id);
+    mui_list->load("SELECT * FROM miembrocomision NATURAL LEFT JOIN cliente WHERE idcomision = " + id);
     blDebug ( "END ComisionView::cargarPost", 0 );
     return 0;
 }

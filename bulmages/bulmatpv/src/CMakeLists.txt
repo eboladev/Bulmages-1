@@ -16,9 +16,7 @@ set(bulmatpv_MOCS btbulmatpv.h
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
 set(QT_USE_QTUITOOLS true)
-#by R. Cabezas
 set(QT_USE_QTSCRIPT true)
-
 
 
 INCLUDE(${QT_USE_FILE})

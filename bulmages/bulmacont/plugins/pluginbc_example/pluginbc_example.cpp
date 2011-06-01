@@ -31,66 +31,7 @@
 #include "bccompany.h"
 #include "blfunctions.h"
 
-
-///
-/**
-**/
-PluginBc_Example::PluginBc_Example()
-{
-    blDebug ( "PluginBc_Example::PluginBc_Example", 0 );
-    blDebug ( "PluginBc_Example::PluginBc_Example", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Example::~PluginBc_Example()
-{
-    blDebug ( "PluginBc_Example::~PluginBc_Example", 0 );
-    blDebug ( "PluginBc_Example::~PluginBc_Example", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_Example::elslot()
-{
-    blDebug ( "PluginBc_Example::elslot", 0 );
-    fprintf ( stderr, "Sa ha activado el slot\n" );
-    QMessageBox::warning ( 0,
-                           _ ( "Titulo de la ventana" ),
-                           ( "Mensaje." ),
-                           QMessageBox::Ok,
-                           QMessageBox::Cancel );
-    blDebug ( "END PluginBc_Example::elslot", 0 );
-}
-
-
-///
-/**
-\param bcont
-**/
-void PluginBc_Example::inicializa ( BcBulmaCont *bcont )
-{
-    blDebug ( "PluginBc_Example::inicializa", 0 );
-
-    /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-    /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = bcont->newMenu ( _ ( "&Plugin" ), "menuPlugin", "menuHerramientas" );
-    QAction *accion = new QAction ( _ ( "&Prueba de plugin BcBulmaCont" ), 0 );
-    accion->setStatusTip ( _ ( "Muestra statustip" ) );
-    accion->setWhatsThis ( _ ( "Muestra que es esto" ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    blDebug ( "END PluginBc_Example::inicializa", 0 );
-}
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -98,12 +39,39 @@ void PluginBc_Example::inicializa ( BcBulmaCont *bcont )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "Estoy dentro del plugin\n", 0 );
-    PluginBc_Example *plug = new PluginBc_Example();
-    plug->inicializa ( bcont );
+    blDebug ( "entryPoint", 0, "Punto de entrade de PluginBc_Example\n" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    blBindTextDomain ( "pluginbc_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bcont = bcont;
+
+
+    /// Creamos el men&uacute;.
+    QMenu *pPluginMenu = bcont->newMenu ( _ ( "&Plugin" ), "menuPlugin", "menuHerramientas" );
+    BlAction *accionA = new BlAction ( _ ( "&Prueba de plugin BcBulmaCont" ), 0 );
+    accionA->setStatusTip ( _ ( "Muestra statustip" ) );
+    accionA->setWhatsThis ( _ ( "Muestra que es esto" ) );
+    accionA->setObjectName("mui_actionExample");
+    pPluginMenu->addAction ( accionA );
+
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
     bcont->setWindowTitle ( _ ( "Prueba de plugin BcBulmaCont." ) );
+    blDebug ( "END entryPoint", 0, "Punto de entrade de PluginBc_Example" );
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBc_Example::BlAction_triggered", 0 );    
+    if (accion->objectName() == "mui_actionExample") {
+        QMessageBox::warning ( 0,
+                _ ( "Titulo de la ventana" ),
+                ( "Mensaje." ),
+                QMessageBox::Ok,
+                QMessageBox::Cancel );
+    } // end if
+    blDebug ( "END PluginBc_Example::BlAction_triggered", 0 );
     return 0;
 }
 

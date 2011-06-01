@@ -85,7 +85,7 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     presentar();
     mdb_idactividad = "";
     
-    if ( modoEdicion() )
+    if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
@@ -114,7 +114,7 @@ void ActividadesList::presentar()
     blDebug ( "ActividadesList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM actividad LEFT JOIN tipoactividad ON tipoactividad.idtipoactividad = actividad.idtipoactividad LEFT JOIN profesor ON profesor.idprofesor = actividad.idprofesor WHERE 1 = 1 " + generaFiltro() );
+        mui_list->load ( "SELECT * FROM actividad LEFT JOIN tipoactividad ON tipoactividad.idtipoactividad = actividad.idtipoactividad LEFT JOIN profesor ON profesor.idprofesor = actividad.idprofesor WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
     blDebug ( "END ActividadesList::presentar", 0 );
@@ -168,7 +168,7 @@ void ActividadesList::imprimir()
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void ActividadesList::borrar()
+void ActividadesList::remove()
 {
     blDebug ( "ActividadesList::borrar", 0 );
     
@@ -181,9 +181,9 @@ void ActividadesList::borrar()
     
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ActividadView * cv = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idactividad ) )
+            if ( cv->load ( mdb_idactividad ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -206,9 +206,9 @@ void ActividadesList::editar ( int )
     
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             ActividadView * bud = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idactividad ) ) {
+            if ( bud->load ( mdb_idactividad ) ) {
                 delete bud;
                 return;
             } // end if

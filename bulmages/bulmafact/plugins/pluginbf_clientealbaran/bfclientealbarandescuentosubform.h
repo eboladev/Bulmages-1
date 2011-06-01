@@ -39,7 +39,7 @@ public:
     ;
 
 public slots:
-    virtual void cargar ( QString idalbaran );
+    virtual void load ( QString idalbaran );
 };
 
 #endif

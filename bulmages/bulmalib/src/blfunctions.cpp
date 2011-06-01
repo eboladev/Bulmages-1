@@ -121,7 +121,7 @@ QString blStringEscape ( const QString &param, int tipoEscape )
 /// no soportados en el encoding. Ya no hace tanta falta
 /// esta funcion, y creo que con escapeXml pasamos (para
 /// listados rml al menos). Podemos tener el buffer en
-/// memoria en unicode hasta escribirlo a fichero en ficha::generaRML
+/// memoria en unicode hasta escribirlo a fichero en ficha::generateRML
 QString blXMLEncode ( const QString &string )
 {
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y

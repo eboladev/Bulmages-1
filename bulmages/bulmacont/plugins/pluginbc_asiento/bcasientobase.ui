@@ -517,10 +517,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Asientos Inteligentes</string>
+           <string>Asientos inteligentes</string>
           </property>
           <property name="whatsThis">
-           <string>Asientos Inteligentes</string>
+           <string>Asientos inteligentes</string>
           </property>
           <property name="text">
            <string/>

@@ -29,7 +29,7 @@
 /** Lista desplegable en campo de listado.
 Modo de empleo:
 Agregar estas l&iacute;neas en el m&eacute;todo cargar del listado que hereda de BlSubForm,
-justo despu&eucte;s de BfSubForm::cargar ( consulta ):
+justo despu&eucte;s de BfSubForm::load ( consulta ):
 BlGenericComboBoxDelegate *cbd = new BlGenericComboBoxDelegate ( mainCompany(), this );
 cbd->set_foreign_table ( <tabla ajena>, <campo id en la tabla ajena>, <campo de la tabla ajena a mostrar en el desplegable> );
 cbd->set_foreign_field ( <nº de la columna que referencia a un elemento de la tabla ajena>, <nombre del mismo campo de antes> );

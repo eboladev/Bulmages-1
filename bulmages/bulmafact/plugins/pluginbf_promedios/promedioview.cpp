@@ -62,7 +62,7 @@ PromedioView::~PromedioView()
 \param idarticulo
 \return
 **/
-int PromedioView::cargar ( QString idarticulo )
+int PromedioView::load ( QString idarticulo )
 {
     blDebug ( "PromedioView::cargar", 0, idarticulo );
 

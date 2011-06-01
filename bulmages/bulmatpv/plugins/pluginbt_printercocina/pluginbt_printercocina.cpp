@@ -256,7 +256,7 @@ int impresionCocina(BtTicket *tick) {
       tick->setVar("idprintercocina", curimpresoras->value("idprintercocina"));
 //      tick->clearVars();
 
-      tick->generaRML("ticket_cocina.txt");
+      tick->generateRML("ticket_cocina.txt");
       
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {

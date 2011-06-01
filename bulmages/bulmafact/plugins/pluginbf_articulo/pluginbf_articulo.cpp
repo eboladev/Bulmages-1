@@ -120,7 +120,7 @@ int BlAction_triggered(BlAction *accion) {
         pag->show();
         blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticulosTipo", 0 );   
     } // end if
-    if (accion->objectName() == "") {
+    if (accion->objectName() == "mui_actionFamilias") {
         blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionFamilias", 0 );
         FamiliasView *pag = new FamiliasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
@@ -367,7 +367,7 @@ void SubForm_Articulo::editarArticulo ( QString idarticulo )
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
-    if ( art->cargar ( idarticulo ) ) {
+    if ( art->load ( idarticulo ) ) {
         delete art;
         blDebug ( "END ArticuloList::editar", 0, "Carga erronea" );
         return;

@@ -224,7 +224,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
                 } // end if
                 bud = ( PedidoClienteView * ) g_plugParams;
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->value( "idpedidocliente" ) );
+                bud->load ( cur->value( "idpedidocliente" ) );
                 bud->show();
                 cur->nextRecord();
             } // end while
@@ -301,7 +301,7 @@ void AlbaranClienteView::generarFactura()
                 }
                 bud = mainCompany() ->newFacturaView();
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->value( "idfactura" ) );
+                bud->load ( cur->value( "idfactura" ) );
                 bud->show();
                 return;
             } // end if
@@ -312,7 +312,7 @@ void AlbaranClienteView::generarFactura()
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
             /// Cargamos un elemento que no existe para inicializar bien la clase.
-            bud->cargar ( "0" );
+            bud->load ( "0" );
 
             /// Traspasamos los datos a la factura.
             recogeValores();
@@ -406,7 +406,7 @@ void AlbaranClienteView::agregarFactura()
 
         /// Creamos la factura.
         FacturaView *bud = mainCompany() ->newFacturaView();
-        bud->cargar ( idfactura );
+        bud->load ( idfactura );
 
         /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
         bud->setDbValue ( "comentfactura", bud->dbValue ( "comentfactura" ) + _( "Num. albaran" ) + dbValue ( "numalbaran" ) + "\n" );
@@ -526,11 +526,11 @@ void AlbaranClienteView::on_subform2_editFinish ( int, int )
 /**
 \return
 **/
-int AlbaranClienteView::borrarPre()
+int AlbaranClienteView::beforeDelete()
 {
     blDebug ( "AlbaranClienteView::borrar", 0 );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
+    m_listalineas->remove();
+    m_listadescuentos->remove();
     blDebug ( "END AlbaranClienteView::borrar", 0 );
     return 0;
 }
@@ -550,8 +550,8 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
 {
     blDebug ( "AlbaranClienteView::cargar", 0 );
 
-    m_listalineas->cargar ( idalbaran );
-    m_listadescuentos->cargar ( idalbaran );
+    m_listalineas->load ( idalbaran );
+    m_listadescuentos->load ( idalbaran );
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
@@ -574,16 +574,16 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
 /**
 \return
 **/
-int AlbaranClienteView::guardarPost()
+int AlbaranClienteView::afterSave()
 {
-    blDebug ( "AlbaranClienteView::guardarPost", 0 );
+    blDebug ( "AlbaranClienteView::afterSave", 0 );
 
     m_listalineas->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
-    m_listalineas->guardar();
+    m_listalineas->save();
     m_listadescuentos->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
-    m_listadescuentos->guardar();
+    m_listadescuentos->save();
 
-    blDebug ( "END AlbaranClienteView::guardarPost", 0 );
+    blDebug ( "END AlbaranClienteView::afterSave", 0 );
     return 0;
 }
 

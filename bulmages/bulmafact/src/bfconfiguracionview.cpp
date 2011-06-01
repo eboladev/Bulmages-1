@@ -55,7 +55,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     mui_listado->setMainCompany ( mainCompany() );
-    mui_listado->cargar();
+    mui_listado->load();
     if (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE") {
      tabWidget->removeTab(tabWidget->indexOf(tab_2));
     } // end if
@@ -161,7 +161,7 @@ BfConfiguracionView::~BfConfiguracionView()
 }
 
 void BfConfiguracionView::on_mui_aceptar_clicked() {
-        mui_listado->guardar();
+        mui_listado->save();
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='NombreEmpresa'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','"+m_nombre->text()+"')");

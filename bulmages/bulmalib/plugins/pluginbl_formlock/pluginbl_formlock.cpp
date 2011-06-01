@@ -66,7 +66,7 @@ int entryPoint ( QMainWindow *bcont )
 \param ficha
 \return
 **/
-int BlForm_cargar ( BlForm *ficha )
+int BlForm_load ( BlForm *ficha )
 {
     blDebug ( "Plugin formlock::BlForm_cargar", 0 );
 

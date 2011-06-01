@@ -37,7 +37,7 @@ public:
     ~InventariosSubForm() {};
 
 public slots:
-    virtual void cargar();
+    virtual void load();
 };
 
 

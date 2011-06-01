@@ -107,11 +107,11 @@ void ConvocatoriaView::imprimir()
 }
 
 
-int ConvocatoriaView::guardarPost()
+int ConvocatoriaView::afterSave()
 {
-    blDebug ( " ConvocatoriaView::guardarPost", 0 );
+    blDebug ( " ConvocatoriaView::afterSave", 0 );
 
-    blDebug ( "END ConvocatoriaView::guardarPost", 0 );
+    blDebug ( "END ConvocatoriaView::afterSave", 0 );
 
     return 0;
 }

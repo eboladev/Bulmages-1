@@ -39,13 +39,13 @@ public:
     ~MovimientosSubform() {}
 
 public slots:
-    virtual void cargar() {
+    virtual void load() {
         blDebug ( "MovimientosSubform::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM factura";
-        BlSubForm::cargar ( SQLQuery );
+        BlSubForm::load ( SQLQuery );
     }
-    virtual void cargar ( QString query ) {
-        BlSubForm::cargar ( query );
+    virtual void load ( QString query ) {
+        BlSubForm::load ( query );
     }
 };
 

@@ -387,12 +387,12 @@ msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr "Error en esborrar. [BlSubForm::borrar]"
 
 #: bldb.cpp:978
-msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
-msgstr "Error en copiar el fitxer RML [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
+msgstr "Error en copiar el fitxer RML [ bldb->generateRML() ]"
 
 #: bldb.cpp:990
-msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
-msgstr "Error en copiar el fitxer de logo [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
+msgstr "Error en copiar el fitxer de logo [ bldb->generateRML() ]"
 
 #: blcountryview.cpp:206
 msgid "Error al crear el banco"

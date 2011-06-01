@@ -430,15 +430,15 @@ void BlWindowListDock::removeWindow ( QObject *obj )
 /**
 \param visible
 **/
-void BlWindowListDock::cambiaVisible ( bool visible )
+void BlWindowListDock::setVisibilityState ( bool visible )
 {
-    blDebug ( "BlWindowListDock::cambiaVisible", 0 );
+    blDebug ( "BlWindowListDock::setVisibilityState", 0 );
     if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    blDebug ( "END BlWindowListDock::cambiaVisible", 0 );
+    blDebug ( "END BlWindowListDock::setVisibilityState", 0 );
 }
 
 
@@ -448,7 +448,7 @@ void BlWindowListDock::cambiaVisible ( bool visible )
 void BlWindowListDock::closeEvent ( QCloseEvent * )
 {
     blDebug ( "BlWindowListDock::closeEvent", 0 );
-    emit ( cambiaEstadoVisible ( FALSE ) );
+    emit ( visibilityStateChanged ( FALSE ) );
     blDebug ( "END BlWindowListDock::closeEvent", 0 );
 }
 

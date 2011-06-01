@@ -71,7 +71,7 @@ public:
     void presentar();
     void editar ( int );
     void imprimir();
-    void borrar();
+    void remove();
     void crear();
     void submenu ( const QPoint & );
 

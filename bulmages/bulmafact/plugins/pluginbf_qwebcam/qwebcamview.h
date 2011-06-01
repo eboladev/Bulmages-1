@@ -45,7 +45,7 @@ public:
     };
 
 public:
-    int cargar ( QString );
+    int load ( QString );
 
 };
 

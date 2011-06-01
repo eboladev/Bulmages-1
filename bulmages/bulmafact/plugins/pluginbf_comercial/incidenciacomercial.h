@@ -34,7 +34,7 @@ public:
     IncidenciaComercial ( BfCompany *, QWidget * );
     virtual ~IncidenciaComercial();
     virtual void pintar();
-    virtual int cargar ( QString );
+    virtual int load ( QString );
 };
 
 #endif

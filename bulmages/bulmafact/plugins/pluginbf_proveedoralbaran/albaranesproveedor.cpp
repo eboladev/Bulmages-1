@@ -164,7 +164,7 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     setSubForm ( mui_list );
     presentar();
     mdb_idalbaranp = "";
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
@@ -220,7 +220,7 @@ void AlbaranesProveedor::presentar()
 {
     blDebug ( "AlbaranesProveedor::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT *, totalalbaranp AS total, " \
+        mui_list->load ( "SELECT *, totalalbaranp AS total, " \
                            "bimpalbaranp AS base, impalbaranp AS impuestos " \
                            "FROM albaranp LEFT " \
                            "JOIN proveedor ON albaranp.idproveedor = " \
@@ -297,9 +297,9 @@ void AlbaranesProveedor::editar ( int row )
 {
     blDebug ( "AlbaranesProveedor::editar", 0 );
     mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ), row );
-    if ( modoEdicion() ) {
+    if ( editMode() ) {
         AlbaranProveedorView * prov = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        if ( prov->cargar ( mdb_idalbaranp ) ) {
+        if ( prov->load ( mdb_idalbaranp ) ) {
             delete prov;
             return;
         } // end if
@@ -334,7 +334,7 @@ void AlbaranesProveedor::imprimir()
 /**
 \return
 **/
-void AlbaranesProveedor::borrar()
+void AlbaranesProveedor::remove()
 {
     blDebug ( "AlbaranesProveedor::borrar", 0 );
     int a = mui_list->currentRow();
@@ -344,9 +344,9 @@ void AlbaranesProveedor::borrar()
     } // end if
     try {
         mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ) );
-        if ( modoEdicion() ) {
+        if ( editMode() ) {
             AlbaranProveedorView * apv = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( apv->cargar ( mdb_idalbaranp ) ) {
+            if ( apv->load ( mdb_idalbaranp ) ) {
                 throw - 1;
             } // end if
             apv->on_mui_borrar_clicked();
@@ -413,11 +413,11 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
 ///
 /**
 **/
-void AlbaranesProveedorListSubform::cargar()
+void AlbaranesProveedorListSubform::load()
 {
     blDebug ( "AlbaranesProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaranp";
-    BlSubForm::cargar ( SQLQuery );
+    BlSubForm::load ( SQLQuery );
     blDebug ( "END AlbaranesProveedorListSubform::cargar", 0 );
 }
 
@@ -426,10 +426,10 @@ void AlbaranesProveedorListSubform::cargar()
 /**
 \param query
 **/
-void AlbaranesProveedorListSubform::cargar ( QString query )
+void AlbaranesProveedorListSubform::load ( QString query )
 {
     blDebug ( "AlbaranesProveedorListSubform::cargar", 0 );
-    BlSubForm::cargar ( query );
+    BlSubForm::load ( query );
     blDebug ( "END AlbaranesProveedorListSubform::cargar", 0 );
 }
 

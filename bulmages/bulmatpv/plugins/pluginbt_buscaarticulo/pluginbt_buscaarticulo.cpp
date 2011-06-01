@@ -61,7 +61,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
-    g_doc1->cargaconf();
+    g_doc1->loadConfig();
     blDebug ( "END pluginbuscaarticulo::entryPoint", 0 );
     return 0;
 }

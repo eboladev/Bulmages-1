@@ -74,7 +74,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         mui_list->setSortingEnabled ( FALSE );
 
 	 /// Hacemos una carga vacia para que se inicie bien el subformulario
-         mui_list->cargar("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
+         mui_list->load("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
 
         mui_ordendia->setMainCompany( comp );
         mui_ordendia->setDbTableName ( "ordendiareunion" );
@@ -90,7 +90,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         mui_ordendia->setSortingEnabled ( FALSE );
         
 	 /// Hacemos una carga vacia para que se inicie bien el subformulario
-         mui_ordendia->cargar("SELECT * from ordendiareunion WHERE 1 = 2");
+         mui_ordendia->load("SELECT * from ordendiareunion WHERE 1 = 2");
 
         insertWindow ( windowTitle(), this, FALSE );
         pintar();
@@ -147,24 +147,24 @@ void ConvReunionView::imprimir()
     blDebug ( "END ConvReunionView::imprimir", 0 );
 }
 
-int ConvReunionView::guardarPost()
+int ConvReunionView::afterSave()
 {
-    blDebug ( " ConvReunionView::guardarPost", 0 );
+    blDebug ( " ConvReunionView::afterSave", 0 );
     
     mui_list->setColumnValue("idreunion", dbValue("idreunion") );
-    mui_list->guardar();
+    mui_list->save();
     
     mui_ordendia->setColumnValue("idreunion", dbValue("idreunion") );
-    mui_ordendia->guardar();
+    mui_ordendia->save();
     
-    blDebug ( "END ConvReunionView::guardarPost", 0 );
+    blDebug ( "END ConvReunionView::afterSave", 0 );
     return 0;
 }
 
-int ConvReunionView::borrarPre()
+int ConvReunionView::beforeDelete()
 {
-    blDebug ( "ConvReunionView::borrarPre", 0 );
-    blDebug ( "END ConvReunionView::borrarPre", 0 );
+    blDebug ( "ConvReunionView::beforeDelete", 0 );
+    blDebug ( "END ConvReunionView::beforeDelete", 0 );
 
     return 0;
 }
@@ -173,8 +173,8 @@ int ConvReunionView::cargarPost ( QString id )
 {
     blDebug ( " ConvReunionView::cargarPost", 0 );
     
-    mui_list->cargar("SELECT * FROM asistentereunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
-    mui_ordendia->cargar("SELECT * FROM ordendiareunion WHERE idreunion = " + id);
+    mui_list->load("SELECT * FROM asistentereunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
+    mui_ordendia->load("SELECT * FROM ordendiareunion WHERE idreunion = " + id);
     
     blDebug ( "END ConvReunionView::cargarPost", 0 );
     

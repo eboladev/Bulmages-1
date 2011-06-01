@@ -53,7 +53,7 @@ public:
     void ajustes();
     void boton_filtrar();
     QString imprimeExtractoCuenta ( QString );
-    int guardar();
+    int save();
     void imprimir();
 
 public slots:

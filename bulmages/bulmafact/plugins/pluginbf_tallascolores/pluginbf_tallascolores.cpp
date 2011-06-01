@@ -27,13 +27,14 @@
 #include <QApplication>
 #include <QObject>
 
-#include "plugin_tallascolores.h"
+#include "pluginbf_tallascolores.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "busquedacolor.h"
 #include "busquedatalla.h"
 #include "listcoloresview.h"
 #include "listtallasview.h"
+
 
 BfBulmaFact *g_bges = NULL;
 
@@ -159,13 +160,13 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 \param art
 \return
 **/
-int ArticuloView_cargar ( ArticuloView *art )
+int ArticuloView_load ( ArticuloView *art )
 {
     blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
     if ( l ) {
         QString query = "SELECT *, tc_articulo_alias.idtc_talla AS idtc_tallaa, tc_articulo_alias.idtc_color AS idtc_colora FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->dbValue ( "idarticulo" );
-        l->cargar ( query );
+        l->load ( query );
     } // end if
     blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
@@ -184,7 +185,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
-        l->guardar();
+        l->save();
         return 0;
     } catch ( ... ) {
         blDebug ( _("Hubo un error al guardar los alias"), 2 );
@@ -401,10 +402,10 @@ int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *s
 }
 
 
-int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm *subform )
+int BfClienteAlbaranSubForm_load ( BfClienteAlbaranSubForm *subform )
 {
     QString query = "SELECT *, (pvplalbaran * cantlalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo AS t1 ON lalbaran.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lalbaran.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lalbaran.idtc_talla WHERE idalbaran=" + subform->mdb_idalbaran + "   ORDER BY ordenlalbaran";
-    subform->BlSubForm::cargar ( query );
+    subform->BlSubForm::load ( query );
     return -1;
 }
 
@@ -430,10 +431,10 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 }
 
 
-
-int ListLinFacturaView_cargar ( ListLinFacturaView *subform )
+int ListLinFacturaView_load ( ListLinFacturaView *subform )
 {
     QString query = "SELECT *, (pvplfactura * cantlfactura)::NUMERIC(12,2) AS totallfactura FROM lfactura LEFT JOIN articulo AS t1 ON lfactura.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lfactura.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lfactura.idtc_talla WHERE idfactura=" + subform->mdb_idfactura + "   ORDER BY ordenlfactura";
-    subform->BlSubForm::cargar ( query );
+    subform->BlSubForm::load ( query );
     return -1;
 }
+

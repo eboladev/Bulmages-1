@@ -68,7 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
         accionB->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
-        accionB->setObjectName("mui_actionNuevoCobroCliente");
+        accionB->setObjectName("mui_actionCobroClienteNuevo");
 
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
@@ -85,7 +85,7 @@ int BlAction_triggered(BlAction *accion) {
         }// end if
     } // end if
 
-    if (accion->objectName() == "mui_actionNuevoCobroCliente") {
+    if (accion->objectName() == "mui_actionCobroClienteNuevo") {
         CobroView * bud = new CobroView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();                 
@@ -112,7 +112,7 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
     if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
         CobrosList *pagosList = new CobrosList ( NULL, 0, BL_SELECT_MODE );
 	pagosList->setMainCompany(( BfCompany * ) prov->mainCompany());
-        pagosList->setModoEdicion();
+        pagosList->setEditMode();
         pagosList->setObjectName ( "listcobrosproveedor" );
         pagosList->hideBusqueda();
         prov->mui_tab->addTab ( pagosList, "Cobros" );
@@ -138,7 +138,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         CobroView * bud = new CobroView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->value( "idcobro" ) );
+        bud->load ( cur->value( "idcobro" ) );
         bud->show();
         cur->nextRecord();
     } // end while

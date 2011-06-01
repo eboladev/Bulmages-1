@@ -42,7 +42,7 @@ public:
     ~ListLinPresupuestoView() {};
 
 public slots:
-    virtual void cargar ( QString idpresupuesto );
+    virtual void load ( QString idpresupuesto );
 };
 
 #endif

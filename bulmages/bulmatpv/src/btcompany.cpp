@@ -217,7 +217,7 @@ void BtCompany::z()
 
         commit();
 	
-	m_ticketActual -> generaRML("informe_Z.txt");
+	m_ticketActual -> generateRML("informe_Z.txt");
 
 	if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 	    QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
@@ -459,7 +459,7 @@ void BtCompany::x()
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
         return;
 
-    m_ticketActual -> generaRML("informe_X.txt");
+    m_ticketActual -> generateRML("informe_X.txt");
 
     if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
@@ -661,8 +661,8 @@ void BtCompany::cobrar(bool imprimir)
     // Si el albaran existe, es que ya lo hemos sacado como ticket por la impresora
     if ( m_ticketActual->dbValue ( "idalbaran" ) != "" ) {
 
-        if ( m_ticketActual->guardar() == -1) {
-            blDebug ( "Error en la llamada a guardar()", 0 );
+        if ( m_ticketActual->save() == -1) {
+            blDebug ( "Error en la llamada a save()", 0 );
             return;
         }// end if
 
@@ -674,8 +674,8 @@ void BtCompany::cobrar(bool imprimir)
     // Si no, guardamos e imprimimos tambien si se nos indica
     } else {
     
-        if ( m_ticketActual->guardar() == -1) {
-            blDebug ( "Error en la llamada a guardar()", 0 );
+        if ( m_ticketActual->save() == -1) {
+            blDebug ( "Error en la llamada a save()", 0 );
             return;
         }// end if
     

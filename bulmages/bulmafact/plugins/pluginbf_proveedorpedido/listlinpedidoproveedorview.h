@@ -44,7 +44,7 @@ public:
     virtual ~ListLinPedidoProveedorView() {};
 
 public slots:
-    virtual void cargar ( QString idpedidoproveedor );
+    virtual void load ( QString idpedidoproveedor );
 };
 
 #endif

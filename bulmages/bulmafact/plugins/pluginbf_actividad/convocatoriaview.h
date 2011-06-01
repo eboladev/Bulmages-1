@@ -54,7 +54,7 @@ public:
     ~ConvocatoriaView();
     virtual void imprimir();
     virtual QString templateName(void) ;
-    virtual int guardarPost();
+    virtual int afterSave();
 };
 
 #endif

@@ -48,10 +48,10 @@ public:
     Cuadrante1View ( BfCompany *, QWidget * );
     ~Cuadrante1View();
     int cargarPost ( QString );
-    int guardarPost();
+    int afterSave();
 
 signals:
-    void save();
+    void saved();
 };
 
 #endif

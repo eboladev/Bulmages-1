@@ -69,7 +69,7 @@ void BfBuscarReferencia::on_mui_informe_clicked()
     newfich.setTitleName ( _ ( "Informe" ) );
     newfich.addDbField ( "referencia", BlDbField::DbVarChar, BlDbField::DbPrimaryKey, _ ( "Referencia" ) );
     newfich.setDbValue ( "referencia", mui_referencia->text() );
-    if ( newfich.generaRML ( "informereferencia.rml" ) ) {
+    if ( newfich.generateRML ( "informereferencia.rml" ) ) {
         blCreateAndLoadPDF ( "informereferencia" );
     } // end if
 
@@ -125,7 +125,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             PresupuestoView * bud = ( ( BfCompany * ) mainCompany() ) ->nuevoPresupuestoView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idpresupuesto" ) );
+            bud->load ( cur->value( "idpresupuesto" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -137,7 +137,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             PedidoClienteView * bud = ( ( BfCompany * ) mainCompany() ) ->newPedidoClienteView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idpedidocliente" ) );
+            bud->load ( cur->value( "idpedidocliente" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -149,7 +149,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             AlbaranClienteView * bud = ( ( BfCompany * ) mainCompany() ) ->newAlbaranClienteView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idalbaran" ) );
+            bud->load ( cur->value( "idalbaran" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -162,7 +162,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             FacturaView * bud = ( ( BfCompany * ) mainCompany() ) ->newFacturaView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfactura" ) );
+            bud->load ( cur->value( "idfactura" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -175,7 +175,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             CobroView * bud = ( ( BfCompany * ) mainCompany() ) ->newCobroView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idcobro" ) );
+            bud->load ( cur->value( "idcobro" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -188,7 +188,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             PedidoProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->nuevoPedidoProveedorView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idpedidoproveedor" ) );
+            bud->load ( cur->value( "idpedidoproveedor" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -201,7 +201,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             AlbaranProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->newAlbaranProveedorView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idalbaranp" ) );
+            bud->load ( cur->value( "idalbaranp" ) );
             bud->show();
             cur->nextRecord();
         } // end while
@@ -214,7 +214,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         while ( !cur->eof() ) {
             FacturaProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->newFacturaProveedorView();
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->value( "idfacturap" ) );
+            bud->load ( cur->value( "idfacturap" ) );
             bud->show();
             cur->nextRecord();
         } // end while

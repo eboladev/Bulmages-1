@@ -45,8 +45,8 @@ public:
 
 public:
     void pintar();
-    int cargar ( QString );
-    int guardar();
+    int load ( QString );
+    int save();
     int cargarcomboiva ( QString );
     QString formaQuery ( QString );
     void on_mui_borrar_clicked();

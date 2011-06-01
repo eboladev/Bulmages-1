@@ -108,7 +108,7 @@ void EmailQToolButton::click()
         delete curs;
 
 
-        if ( m_presupuestoView->generaRML() ) {
+        if ( m_presupuestoView->generateRML() ) {
             blCreatePDF ( "presupuesto" );
 
             QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
@@ -134,7 +134,7 @@ void EmailQToolButton::click()
         delete curs;
 
 
-        if ( m_pedidoClienteView->generaRML() ) {
+        if ( m_pedidoClienteView->generateRML() ) {
             blCreatePDF ( "pedidocliente" );
 
             QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
@@ -161,7 +161,7 @@ void EmailQToolButton::click()
         delete curs;
 
 
-        if ( m_albaranClienteView->generaRML() ) {
+        if ( m_albaranClienteView->generateRML() ) {
             blCreatePDF ( "albaran" );
 
             QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
@@ -189,7 +189,7 @@ void EmailQToolButton::click()
         QString email = curs->value( "mailcliente" );
         delete curs;
 
-        if ( m_facturaView->generaRML() ) {
+        if ( m_facturaView->generateRML() ) {
             blCreatePDF ( "factura" );
 
             QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "factura.pdf " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";

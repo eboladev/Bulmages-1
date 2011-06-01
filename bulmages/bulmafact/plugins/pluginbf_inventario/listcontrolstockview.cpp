@@ -54,7 +54,7 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
 \return
 **/
 /*
-int ListControlStockView::borrar()
+int ListControlStockView::remove()
 {
 //    blDebug ( "ListControlStockView::borrar", 0 );
     fprintf(stderr, "f");
@@ -76,7 +76,7 @@ void ListControlStockView::pregenerar()
     blDebug ( "ListControlStockView::pregenerar", 0 );
     QString query;
     query = "SELECT * FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN (SELECT stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = 1) AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ORDER BY codigoalmacen, codigocompletoarticulo;";
-//    BlSubForm::cargar ( query );
+//    BlSubForm::load ( query );
     blDebug ( "END ListControlStockView::pregenerar", 0 );
 }
 
@@ -96,10 +96,10 @@ ListControlStockView::~ListControlStockView()
 \return
 **/
 /*
-int ListControlStockView::guardar()
+int ListControlStockView::save()
 {
     blDebug ( "ListControlStockView::guardar", 0 );
-    BfSubForm::guardar();
+    BfSubForm::save();
     blDebug ( "END ListControlStockView::guardar", 0 );
     return 0;
 }

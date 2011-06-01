@@ -54,12 +54,12 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 /**
 \param idarticulo
 **/
-void ListLResArticulo::cargar ( QString idarticulo )
+void ListLResArticulo::load ( QString idarticulo )
 {
     blDebug ( "ListLResArticulo::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfactura LEFT JOIN factura ON factura.idfactura= lfactura.idfactura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente WHERE idarticulo =" + mdb_idarticulo;
-    BfSubForm::cargar ( SQLQuery );
+    BfSubForm::load ( SQLQuery );
     blDebug ( "END ListLResArticulo::cargar\n", 0 );
 }
 
@@ -97,12 +97,12 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 /**
 \param idarticulo
 **/
-void ListEntregas::cargar ( QString idarticulo )
+void ListEntregas::load ( QString idarticulo )
 {
     blDebug ( "ListEntregas::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente WHERE idarticulo =" + mdb_idarticulo;
-    BfSubForm::cargar ( SQLQuery );
+    BfSubForm::load ( SQLQuery );
     blDebug ( "END ListEntregas::cargar\n", 0 );
 }
 
@@ -140,12 +140,12 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 /**
 \param idarticulo
 **/
-void ListCompras::cargar ( QString idarticulo )
+void ListCompras::load ( QString idarticulo )
 {
     blDebug ( "ListCompras::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfacturap LEFT JOIN facturap ON facturap.idfacturap= lfacturap.idfacturap LEFT JOIN proveedor ON proveedor.idproveedor = facturap.idproveedor WHERE idarticulo =" + mdb_idarticulo;
-    BfSubForm::cargar ( SQLQuery );
+    BfSubForm::load ( SQLQuery );
     blDebug ( "END ListCompras::cargar\n", 0 );
 }
 
@@ -184,12 +184,12 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 /**
 \param idarticulo
 **/
-void ListRecogidas::cargar ( QString idarticulo )
+void ListRecogidas::load ( QString idarticulo )
 {
     blDebug ( "ListRecogidas::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaranp LEFT JOIN albaranp ON albaranp.idalbaranp= lalbaranp.idalbaranp LEFT JOIN proveedor ON proveedor.idproveedor = albaranp.idproveedor WHERE idarticulo =" + mdb_idarticulo;
-    BfSubForm::cargar ( SQLQuery );
+    BfSubForm::load ( SQLQuery );
     blDebug ( "END ListRecogidas::cargar\n", 0 );
 }
 

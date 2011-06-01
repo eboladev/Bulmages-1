@@ -97,10 +97,10 @@ void BlCompanyDialog::setCompanyType ( QString pTipoEmpresa )
 /**
 \return
 **/
-bool BlCompanyDialog::modoDestructivo()
+bool BlCompanyDialog::isDestroyMode()
 {
-    blDebug ( "BlCompanyDialog::modoDestructivo", 0 );
-    blDebug ( "END BlCompanyDialog::modoDestructivo", 0 );
+    blDebug ( "BlCompanyDialog::isDestroyMode", 0 );
+    blDebug ( "END BlCompanyDialog::isDestroyMode", 0 );
     return m_modo;
 }
 
@@ -170,7 +170,7 @@ void BlCompanyDialog::on_mui_aceptar_clicked()
 void BlCompanyDialog::on_mui_cancelar_clicked()
 {
     blDebug ( "BlCompanyDialog::on_mui_cancelar_clicked", 0 );
-    if ( !modoDestructivo() )
+    if ( !isDestroyMode() )
         exit ( 1 );
     else
         done ( 1 );
@@ -217,7 +217,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
     setDestroyMode ( FALSE );
     /// Si el m_modo es false (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
-    if ( !modoDestructivo() )
+    if ( !isDestroyMode() )
         mui_cancelar->setText ( _ ( "&Cierra el programa" ) );
     // end if
     loadFile();
@@ -396,7 +396,7 @@ void BlCompanyDialog::saveFile()
 
     /// Para cada base de datos nos intentamos conectanos y mirar de qu&eacute; tipo es.
     while ( !curs->eof() ) {
-        trataEmpresa ( curs->value( "datname" ), &file );
+        findCompanyDatabase ( curs->value( "datname" ), &file );
         curs->nextRecord();
     } // end while
     delete curs;
@@ -413,9 +413,9 @@ void BlCompanyDialog::saveFile()
 \param file
 \return
 **/
-void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
+void BlCompanyDialog::findCompanyDatabase ( QString empresa, QFile *file )
 {
-    blDebug ( "BlCompanyDialog::trataEmpresa", 0, empresa );
+    blDebug ( "BlCompanyDialog::findCompanyDatabase", 0, empresa );
     QTextStream filestr ( file );
     BlPostgreSqlClient *db1;
     QString nombre;
@@ -477,7 +477,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
         delete db1;
     } // end if
     mui_empresas->setSortingEnabled(TRUE);
-    blDebug ( "END BlCompanyDialog::trataEmpresa", 0, empresa );
+    blDebug ( "END BlCompanyDialog::findCompanyDatabase", 0, empresa );
 }
 
 
