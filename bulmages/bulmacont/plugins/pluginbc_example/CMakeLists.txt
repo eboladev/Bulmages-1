@@ -11,13 +11,12 @@ file(GLOB plugin_UIS *.ui)
 
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbc_example.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbc_example.h pluginbf_example.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
-#by R. Cabezas
 set(QT_USE_QTSCRIPT true)
 
 INCLUDE( ${QT_USE_FILE} )

@@ -32,9 +32,6 @@
 
 
 
-
-
-/// By R. Cabezas
 /**  procedimiento de QtScript
 Importa el objeto que se pasa como referencia al engine de script
 Busca el archivo en el directorio de openreports que tenga el mismo nombre que la clase
@@ -81,6 +78,7 @@ void BlFormList::blScript(QObject * obj) {
 	  } // end if
     } // end if
 }
+
 
 ///
 /**

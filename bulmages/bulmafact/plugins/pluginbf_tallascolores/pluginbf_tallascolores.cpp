@@ -27,13 +27,14 @@
 #include <QApplication>
 #include <QObject>
 
-#include "plugin_tallascolores.h"
+#include "pluginbf_tallascolores.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "busquedacolor.h"
 #include "busquedatalla.h"
 #include "listcoloresview.h"
 #include "listtallasview.h"
+
 
 BfBulmaFact *g_bges = NULL;
 
@@ -430,10 +431,10 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 }
 
 
-
 int ListLinFacturaView_load ( ListLinFacturaView *subform )
 {
     QString query = "SELECT *, (pvplfactura * cantlfactura)::NUMERIC(12,2) AS totallfactura FROM lfactura LEFT JOIN articulo AS t1 ON lfactura.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lfactura.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lfactura.idtc_talla WHERE idfactura=" + subform->mdb_idfactura + "   ORDER BY ordenlfactura";
     subform->BlSubForm::load ( query );
     return -1;
 }
+

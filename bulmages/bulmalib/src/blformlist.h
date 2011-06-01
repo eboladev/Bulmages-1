@@ -24,7 +24,6 @@
 
 #include <QWidget>
 #include <QCloseEvent>
-/// by R. Cabezas
 #include <QtScript>
 #include <QScriptEngine>
 

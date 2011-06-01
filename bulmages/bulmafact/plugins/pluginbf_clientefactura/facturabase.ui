@@ -350,7 +350,6 @@
        <zorder>mui_borrar</zorder>
        <zorder>mui_imprimir</zorder>
        <zorder>mui_veralbaranes</zorder>
-       <zorder>mui_agregaralbaran</zorder>
        <zorder>mui_plugbotones</zorder>
        <zorder>label5</zorder>
        <zorder>mui_reffactura</zorder>
@@ -1333,7 +1332,6 @@
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_veralbaranes</tabstop>
-  <tabstop>mui_agregaralbaran</tabstop>
   <tabstop>mui_reffactura</tabstop>
   <tabstop>mui_descfactura</tabstop>
   <tabstop>mui_numfactura</tabstop>

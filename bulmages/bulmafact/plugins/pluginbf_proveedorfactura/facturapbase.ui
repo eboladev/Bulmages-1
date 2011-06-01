@@ -466,7 +466,6 @@
      </layout>
      <zorder>mui_procesadafacturap</zorder>
      <zorder>mui_idproveedor</zorder>
-     <zorder></zorder>
     </widget>
    </item>
    <item row="2" column="0" colspan="6">

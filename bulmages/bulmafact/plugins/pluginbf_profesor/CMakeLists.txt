@@ -16,13 +16,12 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
 
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbf_profesor.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_profesor.h pluginbf_profesor.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
-#by R. Cabezas
 set(QT_USE_QTSCRIPT true)
 
 set(pluginprofesor_RCCS gestionaula.qrc)

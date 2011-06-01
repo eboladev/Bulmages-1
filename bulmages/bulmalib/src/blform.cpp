@@ -69,7 +69,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     blDebug ( "END BlForm::BlForm", 0 );
 }
 
-/// By R. Cabezas
+
 /**  procedimiento de QtScript
 Importa el objeto que se pasa como referencia al engine de script
 Busca el archivo en el directorio de openreports que tenga el mismo nombre que la clase
@@ -138,7 +138,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     m_modo = modo;
     dialogChanges_readValues();
     
-    /// By R. Cabezas
+    
     QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform.qs";
     QFile scriptFile(fileName);
     if (scriptFile.open(QIODevice::ReadOnly)) {

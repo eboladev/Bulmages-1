@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2007 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   <tborras@conetxia.com>                                                *
+ *   Ruben Cabezas Siguenza (c) 2010 (QScript support)                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -111,10 +112,8 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
       editarScript->setText(_("Crear"));
     } // end if
   
-// by Ruben Cabezas
-/// Rellenamos los campos de DatabaseScript y QtScript con los algoritmos que encontramos.
-//    QString queryTriggers = "select tgname, prosrc from pg_trigger,pg_proc where  pg_proc.oid=pg_trigger.tgfoid  and pg_trigger.tgname LIKE '%"+m_BlForm->tableName()+"%'";
-    
+    /// Rellenamos los campos de DatabaseScript y QtScript con los algoritmos que encontramos.
+    //    QString queryTriggers = "select tgname, prosrc from pg_trigger,pg_proc where  pg_proc.oid=pg_trigger.tgfoid  and pg_trigger.tgname LIKE '%"+m_BlForm->tableName()+"%'";
     QString queryTriggers = "select proname, prosrc from pg_proc where proname LIKE '%"+m_BlForm->tableName()+"%'";
     
     cur = mainCompany() ->loadQuery ( queryTriggers );

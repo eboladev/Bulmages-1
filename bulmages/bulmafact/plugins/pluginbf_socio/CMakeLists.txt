@@ -17,7 +17,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
-#by R. Cabezas
 set(QT_USE_QTSCRIPT true)
 
 #set(plugintutor_RCCS gestionaula.qrc)
