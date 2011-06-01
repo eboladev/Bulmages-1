@@ -83,10 +83,10 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     vboxlayout->addWidget ( pWorkspace );
     vboxlayout->addWidget ( m_pb );
 
-    m_empresaTPV = new BtCompany ( this );
-    m_empresaTPV->setProgressBar ( m_pb );
-    m_empresaTPV->init ( bd, "BulmaFact" );
-    m_empresaTPV->setWorkspace ( pWorkspace );
+    m_company = new BtCompany ( this );
+    m_company->setProgressBar ( m_pb );
+    m_company->init ( bd, "BulmaFact" );
+    m_company->setWorkspace ( pWorkspace );
 
     setCorner ( Qt::TopLeftCorner, Qt::TopDockWidgetArea );
     setCorner ( Qt::TopRightCorner, Qt::RightDockWidgetArea );
@@ -100,7 +100,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     list->setWorkspace ( pWorkspace );
 
-    m_empresaTPV->setListVentanas ( list );
+    m_company->setListVentanas ( list );
 
     m_pb->setVisible ( FALSE );
     statusBar() ->showMessage ( bd, 2000 );
@@ -117,7 +117,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 {
     blDebug ( "BtBulmaTPV::createMainWindows", 0 );
-    m_empresaTPV->createMainWindows ( splashScr );
+    m_company->createMainWindows ( splashScr );
     blDebug ( "END BtBulmaTPV::createMainWindows", 0 );
 }
 
@@ -128,7 +128,7 @@ void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 BtBulmaTPV::~BtBulmaTPV()
 {
     blDebug ( "BtBulmaTPV::~BtBulmaTPV", 0 );
-    delete m_empresaTPV;
+    delete m_company;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef Q_OS_WIN32
@@ -214,14 +214,14 @@ BlWorkspace * BtBulmaTPV::workspace()
 void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 {
     blDebug ( "BtBulmaTPV::keyReleaseEvent", 0 );
-    m_empresaTPV->keyPressEvent ( e );
+    m_company->keyPressEvent ( e );
     blDebug ( "END BtBulmaTPV::keyReleaseEvent", 0 );
 }
 
 
-BtCompany *BtBulmaTPV::empresaTPV()
+BtCompany *BtBulmaTPV::company()
 {
-    return m_empresaTPV;
+    return m_company;
 }
 
 

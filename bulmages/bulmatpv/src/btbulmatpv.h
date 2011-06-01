@@ -49,7 +49,7 @@ private:
     /// El workSpace que se va a usar con la aplicacion.
     BlWorkspace *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    BtCompany *m_empresaTPV;
+    BtCompany *m_company;
     QStackedWidget *m_stackedWidget;
 
 public:
@@ -57,7 +57,7 @@ public:
     ~BtBulmaTPV();
     BlWorkspace *workspace();
     void createMainWindows ( BlSplashScreen * );
-    BtCompany *empresaTPV();
+    BtCompany *company();
     virtual void keyReleaseEvent ( QKeyEvent *e );
 
 public slots:

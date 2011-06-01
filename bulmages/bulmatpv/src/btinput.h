@@ -15,7 +15,7 @@ class BT_EXPORT BtInput : public QLineEdit
     Q_OBJECT
 
 private:
-    BtCompany *m_empresaTPV;
+    BtCompany *m_company;
 
 public:
     BtInput ( BtCompany * );

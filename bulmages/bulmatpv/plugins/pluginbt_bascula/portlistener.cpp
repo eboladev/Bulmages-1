@@ -11,7 +11,7 @@ PortListener::PortListener(const QString & portName, BtCompany *tpv)
 {
     qDebug() << "hi there";
     
-    m_empresaTPV = tpv;
+    m_company = tpv;
     
     port = new QextSerialPort(portName, QextSerialPort::EventDriven);
     port->setBaudRate(BAUD9600);
@@ -42,13 +42,13 @@ void PortListener::comm() {
     char buffer[50];
     buffer[0] = 2;
     
-    if (!m_empresaTPV->ticketActual())
+    if (!m_company->ticketActual())
       return;
        
-    if (!m_empresaTPV->ticketActual() ->lineaActBtTicket()) 
+    if (!m_company->ticketActual() ->lineaActBtTicket()) 
       return;
     
-    QString pvp = m_empresaTPV->ticketActual() ->lineaActBtTicket()->dbValue("pvpivainclalbaran");
+    QString pvp = m_company->ticketActual() ->lineaActBtTicket()->dbValue("pvpivainclalbaran");
     pvp.replace(".","");
     pvp.replace(",","");
     pvp = pvp.rightJustified(5, '0');
@@ -142,7 +142,7 @@ void PortListener::comm() {
     buffer[5] = 0;
     QString cantidad(buffer);
     cantidad = cantidad.left(2) + "." + cantidad.right(3);
-    m_empresaTPV->ticketActual() ->ponerCantidad (cantidad);
+    m_company->ticketActual() ->ponerCantidad (cantidad);
 }
 
 
@@ -177,7 +177,7 @@ void PortListener::onReadyRead()
       
       if (BlFixed(cant) > BlFixed("0.01")) {
 	cant.replace(".",",");
-	m_empresaTPV->ticketActual() ->ponerCantidad (cant );
+	m_company->ticketActual() ->ponerCantidad (cant );
       } // end if
       buffer = "";
       buffer.clear();

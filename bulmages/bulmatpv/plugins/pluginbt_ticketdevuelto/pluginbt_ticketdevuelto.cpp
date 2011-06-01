@@ -91,7 +91,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     blDebug ( "entryPoint", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    tpv->empresaTPV()->dbPatchVersionCheck("PluginBt_TicketDevuelto", "0.11.1-0001");
+    tpv->company()->dbPatchVersionCheck("PluginBt_TicketDevuelto", "0.11.1-0001");
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

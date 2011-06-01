@@ -8,7 +8,7 @@ BtInput::BtInput ( BtCompany *emp )
     /// Establece valores iniciales.
     setText ( "" );
     setMaxLength ( 13 );
-    m_empresaTPV = emp;
+    m_company = emp;
 }
 
 BtInput::~BtInput()
@@ -32,42 +32,42 @@ void BtInput::keyPressEvent ( QKeyEvent *e )
             setText ( "" );
             break;
         case Qt::Key_F5:
-            m_empresaTPV->cobrar();
+            m_company->cobrar();
             break;
         case Qt::Key_F6:
-            m_empresaTPV->ticketActual() ->imprimir();
+            m_company->ticketActual() ->imprimir();
             break;
         case Qt::Key_F7:
-            m_empresaTPV->ticketActual() ->abrircajon();
+            m_company->ticketActual() ->abrircajon();
             break;
         case Qt::Key_Up:
-            m_empresaTPV->ticketActual() ->subir();
+            m_company->ticketActual() ->subir();
             break;
         case Qt::Key_Down:
-            m_empresaTPV->ticketActual() ->bajar();
+            m_company->ticketActual() ->bajar();
             break;
         case Qt::Key_Plus:
-            m_empresaTPV->ticketActual() ->agregarCantidad ( text() );
+            m_company->ticketActual() ->agregarCantidad ( text() );
             setText ( "" );
             break;
         case Qt::Key_Minus:
-            m_empresaTPV->ticketActual() ->agregarCantidad ( "-" + text() );
+            m_company->ticketActual() ->agregarCantidad ( "-" + text() );
             setText ( "" );
             break;
         case Qt::Key_Asterisk:
-            m_empresaTPV->ticketActual() ->ponerCantidad ( text() );
+            m_company->ticketActual() ->ponerCantidad ( text() );
             setText ( "" );
             break;
         case Qt::Key_Slash:
-            m_empresaTPV->ticketActual() ->ponerPrecio ( text() );
+            m_company->ticketActual() ->ponerPrecio ( text() );
             setText ( "" );
             break;
         case Qt::Key_Return:
-            m_empresaTPV->ticketActual() ->insertarArticuloCodigo ( text() );
+            m_company->ticketActual() ->insertarArticuloCodigo ( text() );
             setText ( "" );
             break;
         case Qt::Key_Enter:
-            m_empresaTPV->ticketActual() ->insertarArticuloCodigoNL ( text() );
+            m_company->ticketActual() ->insertarArticuloCodigoNL ( text() );
             setText ( "" );
             break;
         default:

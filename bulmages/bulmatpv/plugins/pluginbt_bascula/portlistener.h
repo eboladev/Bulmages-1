@@ -15,7 +15,7 @@ public:
 
 private:
     QextSerialPort *port;
-    BtCompany *m_empresaTPV;
+    BtCompany *m_company;
     
 public:
     void comm();

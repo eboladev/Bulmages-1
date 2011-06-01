@@ -51,7 +51,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_buscacliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_emp = tpv->empresaTPV();
+    g_emp = tpv->company();
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _ ( "Cliente" ), tpv, "buscaclientedock" );

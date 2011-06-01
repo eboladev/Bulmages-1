@@ -59,7 +59,7 @@ PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido()
 void PluginBt_CobrarParcialIVAIncluido::inicializa( BtBulmaTPV *btpv)
 {
 
-    setMainCompany( btpv->empresaTPV() );
+    setMainCompany( btpv->company() );
 }
 
 
