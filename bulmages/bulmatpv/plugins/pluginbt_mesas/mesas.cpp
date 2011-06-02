@@ -434,11 +434,11 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
     }// end for
     painter.drawText(0, 10, m_nombreMesa);
 
-if (m_escalando == 0)  {
-        QSvgRenderer arender(QString(m_filename), this);
-//        arender.render(&painter, QRectF (0, 15, g_escala, g_escala));
-        arender.render(&painter, QRectF (0, 15, m_XScale, m_YScale));
-}
+    if (m_escalando == 0)  {
+	    QSvgRenderer arender(QString(m_filename), this);
+    //        arender.render(&painter, QRectF (0, 15, g_escala, g_escala));
+	    arender.render(&painter, QRectF (0, 15, m_XScale, m_YScale));
+    }
 
     if (g_mesaAct == this) {
         if (!g_bloqueo) {
@@ -471,7 +471,7 @@ if (m_escalando == 0)  {
 
 }
 
-// "offset" is a member variable of type QPoint
+// "m_offset" is a member variable of type QPoint
 
 void Mesa::mousePressEvent(QMouseEvent* event)
 {
@@ -484,30 +484,33 @@ void Mesa::mousePressEvent(QMouseEvent* event)
         repaint();
       } // end if
       if (isWindow())
-          offset = event->globalPos() - pos();
+          m_offset = event->globalPos() - pos();
       else
-          offset = event->pos();
+          m_offset = event->pos();
 
       /// Hacemos la comprobacion de escalado hacia abajo.
       if (!g_bloqueo) {
-          if (offset.x() > m_XScale -6 && offset.y() > m_YScale - 6) {
+          if (m_offset.x() > m_XScale -6 && m_offset.y() > m_YScale - 6) {
+	      /// Abajo a la derecha
               m_escalando = 1;
-          } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() > m_YScale - 6) {
+          } else if (m_offset.x() > m_XScale /2-3 && m_offset.x() < m_XScale /2 +3 && m_offset.y() > m_YScale - 6) {
+	      /// Abajo en el centro
               m_escalando = 2;
-          } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() > m_XScale - 6) {
+          } else if (m_offset.y() > m_YScale /2-3 && m_offset.y() < m_YScale /2 +3 && m_offset.x() > m_XScale - 6) {
+	      /// A la derecha en el centro.
               m_escalando = 3;
-          } else if (offset.x() < 6  && offset.y() < 6) {
+          } else if (m_offset.x() < 6  && m_offset.y() < 6) {
               m_escalando = 4;
-          } else if (offset.x() > m_XScale -6 && offset.y() < 6) {
+          } else if (m_offset.x() > m_XScale -6 && m_offset.y() < 6) {
               /// Arriba a la derecha
               m_escalando = 5;
-          } else if (offset.y() > m_YScale -6 && offset.x() < 6) {
+          } else if (m_offset.y() > m_YScale -6 && m_offset.x() < 6) {
               /// Abajo a la izquierda
               m_escalando = 6;
-          } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() < 6) {
+          } else if (m_offset.y() > m_YScale /2-3 && m_offset.y() < m_YScale /2 +3 && m_offset.x() < 6) {
               /// Enmedio a la izquierda
               m_escalando = 7;
-          } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() < 6) {
+          } else if (m_offset.x() > m_XScale /2-3 && m_offset.x() < m_XScale /2 +3 && m_offset.y() < 6) {
               /// Arriba enmedio
               m_escalando = 8;
           } else {
@@ -523,103 +526,105 @@ void Mesa::mouseMoveEvent(QMouseEvent* event)
     if (!g_bloqueo) {
       if (m_escalando > 0 && m_escalando < 9 ) {
         if (m_escalando == 1) {
+	  /// Abajo a la derecha
           if (isWindow()) {
-              m_XScale += (event->globalPos().x() - offset.x());
-              m_YScale += (event->globalPos().y() - offset.y());
+              m_XScale += (event->globalPos().x() - m_offset.x());
+              m_YScale += (event->globalPos().y() - m_offset.y());
           } else {
-              m_XScale += (event->pos().x() - offset.x());
-              m_YScale += (event->pos().y() - offset.y());
+	      m_XScale = event->pos().x();
+	      m_YScale = event->pos().y();
           } // end if
         } else if (m_escalando == 2) {
+	  /// Abajo en el centro.
           if (isWindow()) {
-              m_YScale += (event->globalPos().y() - offset.y());
+              m_YScale += (event->globalPos().y() - m_offset.y());
           } else {
-              m_YScale += (event->pos().y() - offset.y());
+	      m_YScale = event->pos().y();
           } // end if
         } else if (m_escalando == 3) {
+	  /// A la derecha en el centro
           if (isWindow()) {
-              m_XScale += (event->globalPos().x() - offset.x());
+              m_XScale += (event->globalPos().x() - m_offset.x());
           } else {
-              m_XScale += (event->pos().x() - offset.x());
+	      m_XScale = event->pos().x();
           } // end if
         } else if (m_escalando == 4) {
           /// Arriba a la izquierda
           if (isWindow()) {
-              m_XScale -= (event->globalPos().x() - offset.x());
-              m_YScale -= (event->globalPos().y() - offset.y());
-              move(event->globalPos() - offset);
+              m_XScale -= (event->globalPos().x() - m_offset.x());
+              m_YScale -= (event->globalPos().y() - m_offset.y());
+              move(event->globalPos() - m_offset);
           } else {
-              m_XScale -= (event->pos().x() - offset.x());
-              m_YScale -= (event->pos().y() - offset.y());
-              move(mapToParent(event->pos() - offset));
+              m_XScale -= (event->pos().x() - m_offset.x());
+              m_YScale -= (event->pos().y() - m_offset.y());
+              move(mapToParent(event->pos() - m_offset));
           } // end if
         } else if (m_escalando == 5) {
           /// Arriba a la derecha
           if (isWindow()) {
-              m_XScale += (event->globalPos().x() - offset.x());
-              m_YScale -= (event->globalPos().y() - offset.y());
-              QPoint roffset = event->globalPos() - offset;
-              roffset.setX(x());
-              move(roffset);
+              m_XScale += (event->globalPos().x() - m_offset.x());
+              m_YScale -= (event->globalPos().y() - m_offset.y());
+              QPoint rm_offset = event->globalPos() - m_offset;
+              rm_offset.setX(x());
+              move(rm_offset);
           } else {
-              m_XScale += (event->pos().x() - offset.x());
-              m_YScale -= (event->pos().y() - offset.y());
-              QPoint roffset = event->pos() - offset;
-              roffset.setX(mapFromParent(pos()).x());
-              move(mapToParent(roffset));
+	      m_XScale = event->pos().x();
+              m_YScale -= (event->pos().y() - m_offset.y());
+              QPoint rm_offset = event->pos() - m_offset;
+              rm_offset.setX(mapFromParent(pos()).x());
+              move(mapToParent(rm_offset));
           } // end if
         } else if (m_escalando == 6) {
           /// Abajo a la izquierda
           if (isWindow()) {
-              m_XScale -= (event->globalPos().x() - offset.x());
-              m_YScale += (event->globalPos().y() - offset.y());
-              QPoint roffset = event->globalPos() - offset;
-              roffset.setY(y());
-              move(roffset);
+              m_XScale -= (event->globalPos().x() - m_offset.x());
+              m_YScale += (event->globalPos().y() - m_offset.y());
+              QPoint rm_offset = event->globalPos() - m_offset;
+              rm_offset.setY(y());
+              move(rm_offset);
           } else {
-              m_XScale -= (event->pos().x() - offset.x());
-              m_YScale += (event->pos().y() - offset.y());
-              QPoint roffset = event->pos() - offset;
-              roffset.setY(mapFromParent(pos()).y());
-              move(mapToParent(roffset));
+              m_XScale -= (event->pos().x() - m_offset.x());
+	      m_YScale = event->pos().y();
+              QPoint rm_offset = event->pos() - m_offset;
+              rm_offset.setY(mapFromParent(pos()).y());
+              move(mapToParent(rm_offset));
           } // end if
         } else if (m_escalando == 7) {
           /// Enmedio a la izquierda
           if (isWindow()) {
-              m_XScale -= (event->globalPos().x() - offset.x());
-              QPoint roffset = event->globalPos() - offset;
-              roffset.setY(y());
-              move(roffset);
+              m_XScale -= (event->globalPos().x() - m_offset.x());
+              QPoint rm_offset = event->globalPos() - m_offset;
+              rm_offset.setY(y());
+              move(rm_offset);
           } else {
-              m_XScale -= (event->pos().x() - offset.x());
-              QPoint roffset = event->pos() - offset;
-              roffset.setY(mapFromParent(pos()).y());
-              move(mapToParent(roffset));
+              m_XScale -= (event->pos().x() - m_offset.x());
+              QPoint rm_offset = event->pos() - m_offset;
+              rm_offset.setY(mapFromParent(pos()).y());
+              move(mapToParent(rm_offset));
           } // end if
         } else if (m_escalando == 8) {   
           /// El cuadro de arriba en el centro
           if (isWindow()) {
-              m_YScale -= (event->globalPos().y() - offset.y());
-              QPoint roffset = event->globalPos() - offset;
-              roffset.setX(x());
-              move(roffset);
+              m_YScale -= (event->globalPos().y() - m_offset.y());
+              QPoint rm_offset = event->globalPos() - m_offset;
+              rm_offset.setX(x());
+              move(rm_offset);
           } else {
-              m_YScale -= (event->pos().y() - offset.y());
-              QPoint roffset = event->pos() - offset;
-              roffset.setX(mapFromParent(pos()).x());
-              move(mapToParent(roffset));
+              m_YScale -= (event->pos().y() - m_offset.y());
+              QPoint rm_offset = event->pos() - m_offset;
+              rm_offset.setX(mapFromParent(pos()).x());
+              move(mapToParent(rm_offset));
           } // end if
         }
 
-//          setGeometry(posx.text().toInt(),posy.text().toInt(),m_XScale , m_YScale );
-          if (m_XScale > 20 && m_YScale > 20)
-            setFixedSize(m_XScale+10 ,m_YScale+10);
+        if (m_XScale > 20 && m_YScale > 20)
+          setFixedSize(m_XScale+10 ,m_YScale+10);
               
       } else if (m_escalando == 9) {
           if (isWindow())
-              move(event->globalPos() - offset);
+              move(event->globalPos() - m_offset);
           else
-              move(mapToParent(event->pos() - offset));
+              move(mapToParent(event->pos() - m_offset));
       } // end if
       event->accept(); // do not propagate
   } // end if
@@ -633,7 +638,6 @@ void Mesa::mouseReleaseEvent(QMouseEvent* event)
     if (event -> button() == Qt::LeftButton) {
       if (!g_bloqueo) {
         event->accept(); // do not propagate
-        offset = QPoint();
         if (m_escalando > 0) {
           m_escalando = 0;
           repaint();
@@ -859,7 +863,6 @@ void Mesa::importXML(const QString val) {
     
     QDomElement posx = docElem.firstChildElement ( "POSX" );
     QDomElement posy = docElem.firstChildElement ( "POSY" );
-//    setGeometry(posx.text().toInt(),posy.text().toInt(),g_escala + 20 , g_escala + 20);
 
     QDomElement xscale = docElem.firstChildElement ( "XSCALE" );
     QDomElement yscale = docElem.firstChildElement ( "YSCALE" );

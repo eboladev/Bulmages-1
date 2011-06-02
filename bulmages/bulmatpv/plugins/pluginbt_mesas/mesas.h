@@ -70,7 +70,7 @@ class Mesa : public BlWidget
     Q_OBJECT
 
 public:
-  QPoint offset;
+  QPoint m_offset;
   QString m_filename;
   QString m_nombreMesa;
   QString m_pantalla;
