@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Mode Debug
+
+Biblioteca: libpluginbt_debug.so
+
+Descripción: <H1>Mode Debug</H1>
+<P>Afegeix al menú veure l'opció Mode Debug que comença a fer les traces del programa per poder ser depurat, també habilita l'aparició de warning (si es produeixen) a finestres emergents. <br><br>Sols té interès per als desenvolupadors.</P>
+<B>Author:</B>Tomeu Borrás (dripoll.public@gmail.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilitats avançades;
+
+Orden: 90
+
+Comentarios: Sols té interès per als desenvolupadors.

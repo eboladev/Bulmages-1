@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110211
+
+Nombre: Mode debogue
+
+Biblioteca: libpluginbt_debug.so
+
+Descripción: <H1>Mode debogue</H1>
+<P>Il ajoute dans le menu afficher l'option Débogue qui commence à faire les plans du programme pour pouvoir être épuré, ainsi elle habilite l'apparition de warnings (s'ils sont produits) dans des fenêtres émergentes. <br><br>N'a d'intérêt que pour le développement.</P>
+<B>Author:</B>Daniel Ripoll (dripoll.public@gmail.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilites avancees;
+
+Orden: 90
+
+Comentarios: N'a d'intérêt que pour le développement.

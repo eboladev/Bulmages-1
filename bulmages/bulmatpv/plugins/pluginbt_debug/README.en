@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Modo Debug
+
+Biblioteca: libpluginbt_debug.so
+
+Descripción: <H1>Debug Mode</H1>
+<P>Adds a widget that allows a checkbox to activate the Debug Mode that begins to trace the program to be debugged, also enables the warnings (if they occur) in emergent dialog. Just <br> <br> interest to developers.</P>
+<B>Author:</B>Daniel Ripoll (dripoll.public@gmail.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Generic utilities;
+
+Orden: 90
+
+Comentarios: Sólo tiene interés para los desarrolladores.

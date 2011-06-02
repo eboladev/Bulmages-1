@@ -1,0 +1,30 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2011 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-06-03 17:18+0200\n"
+"PO-Revision-Date: 2011-06-03 17:18+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: debug.cpp:30 debug.cpp:63
+msgid "Debug activado"
+msgstr "Depuració activada"
+
+#: debug.cpp:33 debug.cpp:66
+msgid "Debug desactivado"
+msgstr "Depuració desactivada"
+
+#: ui_debugbase.h:51
+msgid "Modo depuracion"
+msgstr "Mode depuració"
