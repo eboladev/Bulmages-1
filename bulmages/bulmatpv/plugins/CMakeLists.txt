@@ -34,6 +34,7 @@ add_subdirectory(pluginbt_teclado)
 add_subdirectory(pluginbt_cliente)
 add_subdirectory(pluginbt_cobrarparcialivaincluido)
 add_subdirectory(pluginbt_debug)
+add_subdirectory(pluginbt_example)
 
 if(NOT WIN32)
 add_subdirectory(pluginbt_bascula)

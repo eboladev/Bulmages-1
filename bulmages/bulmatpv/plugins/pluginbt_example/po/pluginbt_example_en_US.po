@@ -1,0 +1,49 @@
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-06-04 22:50+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <es@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: example.cpp:55
+msgid "Activado"
+msgstr "Enabled"
+
+#: example.cpp:49
+msgid "Desactivado"
+msgstr "Disabled"
+
+#: pluginbt_example.cpp:71
+msgid "Ejemplo"
+msgstr "Example"
+
+#: ui_examplebase.h:70
+#, fuzzy
+msgid "Form"
+msgstr "Form"
+
+#: ui_examplebase.h:71
+msgid "Hazme Click!"
+msgstr "Click me!"
+
+#: pluginbt_example.cpp:51 pluginbt_example.cpp:57
+msgid "Punto de entrada de PluginBt_Example"
+msgstr "Entry point for PluginBt_example"

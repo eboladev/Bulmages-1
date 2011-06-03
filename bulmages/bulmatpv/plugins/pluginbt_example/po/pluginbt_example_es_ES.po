@@ -1,0 +1,46 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2011 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-06-04 22:50+0200\n"
+"PO-Revision-Date: 2011-06-04 22:53+0100\n"
+"Last-Translator: Daniel Ripoll Osma <dripoll.public@gmail.com>\n"
+"Language-Team: Bulmages\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: SPAIN\n"
+
+#: pluginbt_example.cpp:51
+#: pluginbt_example.cpp:57
+msgid "Punto de entrada de PluginBt_Example"
+msgstr ""
+
+#: pluginbt_example.cpp:71
+msgid "Ejemplo"
+msgstr ""
+
+#: example.cpp:49
+msgid "Desactivado"
+msgstr ""
+
+#: example.cpp:55
+msgid "Activado"
+msgstr ""
+
+#: ui_examplebase.h:70
+msgid "Form"
+msgstr "Form"
+
+#: ui_examplebase.h:71
+msgid "Hazme Click!"
+msgstr "¡Hazme click!"
+
