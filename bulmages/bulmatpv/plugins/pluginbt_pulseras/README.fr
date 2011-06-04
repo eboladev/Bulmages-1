@@ -1,0 +1,29 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110220
+
+Nombre: Contrôle de tables
+
+Biblioteca: libpluginbt_pulseras.so
+
+Descripción: <H1>Contrôle de tables</H1>
+<P>Il permet de montrer graphiquement la distribution des tables pour le traitement des tickets.</P>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbt_accesobotones.so
+
+Incompatibles:
+
+Categorias: Utilites avancees; Experimental; Restauration;
+
+Orden: 5
+
+Comentarios: 

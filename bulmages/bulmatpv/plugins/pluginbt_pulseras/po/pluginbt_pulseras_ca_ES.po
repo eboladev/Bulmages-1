@@ -1,0 +1,80 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-30 18:21+0200\n"
+"PO-Revision-Date: 2010-04-28 14:15+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_distromesasbase.h:209 ui_distromesasbase.h:213 ui_distromesasbase.h:217
+#: ui_distromesasbase.h:221 ui_distromesasbase.h:225 ui_distromesasbase.h:229
+#: ui_distromesasbase.h:233 ui_distromesasbase.h:238 ui_distromesasbase.h:242
+msgid "..."
+msgstr "..."
+
+#: ui_distromesasbase.h:227
+msgid "Añadir Pantalla"
+msgstr ""
+
+#: ui_distromesasbase.h:211
+msgid "Borrar mesa"
+msgstr ""
+
+#: ui_distromesasbase.h:223
+msgid "Cambiar imagen de la mesa"
+msgstr ""
+
+#: ui_distromesasbase.h:240
+msgid "Cerrar vista mesas"
+msgstr ""
+
+#: ui_distromesasbase.h:236
+msgid "Configurar mesas"
+msgstr ""
+
+#: ui_distromesasbase.h:219
+msgid "Editar nombre"
+msgstr ""
+
+#: ui_distromesasbase.h:231
+msgid "Eliminar Pantalla"
+msgstr ""
+
+#: ui_distromesasbase.h:205 ui_mesasbase.h:60
+msgid "Form"
+msgstr "Form"
+
+#: ui_mesasbase.h:61
+msgid "Mesas"
+msgstr ""
+
+#: ui_distromesasbase.h:207
+msgid "Nueva mesa"
+msgstr ""
+
+#: mesas.cpp:382
+msgid "Sin definir"
+msgstr ""
+
+#: ui_distromesasbase.h:234
+msgid "Unir"
+msgstr ""
+
+#: ui_distromesasbase.h:215
+msgid "Ver ticket de la mesa"
+msgstr ""
+
+#~ msgid "Salir"
+#~ msgstr "Abandona"
