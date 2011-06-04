@@ -99,6 +99,56 @@ void Abrevs::on_mui_aparcar_clicked()
 
 void Abrevs::on_mui_recuperar_clicked()
 {
+  
+  
+    BtCompany * emp = ( BtCompany * ) mainCompany();
+    
+    /// Si hay algun input primero miramos si este se corresponde con una mesa y lo mostramos directamente
+    QString nommesa = emp->valorBtInput();
+    if (nommesa != "") {
+      
+	for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
+	    BtTicket *ticket = emp->listaTickets() ->at ( i );
+	    if (ticket->dbValue ( "nomticket" ) == nommesa &&  ticket->dbValue ( "idtrabajador" ) == emp->ticketActual() ->dbValue ( "idtrabajador" ) ) {
+	      
+
+	      /// Si el ticket seleccionado es el actual salimos sin hacer nada
+	      if (ticket == emp ->ticketActual()) {
+		/// Borra el valor del Input.
+		emp->pulsaTecla ( Qt::Key_F4, "" );
+		return;
+	      } // end if	
+	  
+	      /// Pintamos los tickets bloqueados como no seleccionables.
+	      if (ticket->dbValue( "bloqueadoticket") == "TRUE" ) {
+		    if( QMessageBox::warning(this, _("Ticket bloqueado"),
+				  _("Este ticket esta bloqueado por otro terminal.\nDesea abrirlo de todos modos?"),
+				  QMessageBox::Yes
+				  | QMessageBox::No,
+				  QMessageBox::No) == QMessageBox::No) {
+		      blDebug("END Tickets::ticketClicked");
+		      /// Borra el valor del Input.
+		      emp->pulsaTecla ( Qt::Key_F4, "" );
+		      return;
+		    } // end if
+		      
+	      } // end if	  
+	    
+	    
+	      emp ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+	      emp ->setTicketActual ( ticket );
+	      ticket->setDbValue("bloqueadoticket", "TRUE");
+	      ticket->pintar();
+	      
+	      /// Borra el valor del Input.
+	      emp->pulsaTecla ( Qt::Key_F4, "" );	      
+	      
+	      return;
+	    } // end if
+	}// end for
+      
+    } // end if
+  
     Tickets * trab = new Tickets ( mainCompany(), 0 );
     trab->exec();
     /// Llamamos a plugins para poder hacer lo pertinente
