@@ -49,14 +49,14 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-    blDebug ( "END MTicket::MTicket", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 MTicket::~MTicket()
 {
     blDebug ( "MTicket::~MTicket", 0 );
-    blDebug ( "END MTicket::~MTicket", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,7 +65,7 @@ void MTicket::pintar()
     blDebug ( "MTicket::pintar", 0 );
 
     if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
-        blDebug ( "END MTicket::pintar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
 
@@ -150,7 +150,7 @@ void MTicket::pintar()
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
     
-    blDebug ( "END MTicket::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -161,7 +161,7 @@ void MTicket::on_mui_subir_clicked()
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 
-    blDebug ( "END MTicket::on_mui_subir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -172,7 +172,7 @@ void MTicket::on_mui_bajar_clicked()
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 
-    blDebug ( "END MTicket::on_mui_bajar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -185,7 +185,7 @@ void MTicket::on_mui_borrar_clicked()
 
     pintar();
 
-    blDebug ( "END MTicket::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -196,7 +196,7 @@ void MTicket::on_mui_imprimir_clicked()
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F6 );
 
-    blDebug ( "END MTicket::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -233,7 +233,7 @@ void MTicket::on_mui_reimprimir_clicked()
 
     delete cur;
 
-    blDebug ( "END MTicket::on_mui_reimprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void MTicket::on_mui_borrarticket_clicked()
@@ -269,13 +269,13 @@ void MTicket::on_mui_borrarticket_clicked()
     
     ticket->pintar();
     
-    blDebug ( "END MTicket::on_mui_borrarticket_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void MTicket::on_mui_formatear_clicked()
 {
     blDebug ( "MTicket::on_mui_formatear_clicked", 0 );
     
-    blDebug ( "END MTicket::on_mui_formatear_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

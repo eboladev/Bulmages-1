@@ -40,7 +40,7 @@
 */
 ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "ConvReunionView::ConvReunionView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -102,28 +102,28 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         
     } // end try
     
-    blDebug ( "END ConvReunionView::ConvReunionView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ConvReunionView::~ConvReunionView()
 {
-    blDebug ( "ConvReunionView::~ConvReunionView", 0 );
-    blDebug ( "END ConvReunionView::~ConvReunionView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString ConvReunionView::templateName ( void )
 {
-    blDebug ( "ConvReunionView::templateName", 0 );
-    blDebug ( "END ConvReunionView::templateName", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return QString ( "reunion" );
 }
 
 void ConvReunionView::imprimir()
 {
-    blDebug ( "ConvReunionView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el reunion.
     QString SQLQuery = "";
@@ -131,25 +131,25 @@ void ConvReunionView::imprimir()
     if ( dbValue ( "idreunion" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
-        blDebug ( "END ConvReunionView::imprimir", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
     
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
-        blDebug ( "END ConvReunionView::imprimir", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
     
     BfForm::imprimir();
     
-    blDebug ( "END ConvReunionView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int ConvReunionView::afterSave()
 {
-    blDebug ( " ConvReunionView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->setColumnValue("idreunion", dbValue("idreunion") );
     mui_list->save();
@@ -157,33 +157,33 @@ int ConvReunionView::afterSave()
     mui_ordendia->setColumnValue("idreunion", dbValue("idreunion") );
     mui_ordendia->save();
     
-    blDebug ( "END ConvReunionView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 int ConvReunionView::beforeDelete()
 {
-    blDebug ( "ConvReunionView::beforeDelete", 0 );
-    blDebug ( "END ConvReunionView::beforeDelete", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
 
 int ConvReunionView::cargarPost ( QString id )
 {
-    blDebug ( " ConvReunionView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->load("SELECT * FROM asistentereunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
     mui_ordendia->load("SELECT * FROM ordendiareunion WHERE idreunion = " + id);
     
-    blDebug ( "END ConvReunionView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
 
 void ConvReunionView::on_mui_email_clicked (  )
 {
-    blDebug ( " ConvReunionView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
 //    cad = "kmail -s \" El Subject\" --body \" Adjunto remito \n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + doc + num + ".pdf " + email;
     QString bcc = "";
@@ -203,12 +203,12 @@ void ConvReunionView::on_mui_email_clicked (  )
     QString cad = "kmail -s \" El Subject\" --body \" Adjunto remito \n Atentamente\n\"  -b \"" + bcc + "\"";
     system ( cad.toAscii().data() );
 
-    blDebug ( "END ConvReunionView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ConvReunionView::on_m_agregarconvocados_clicked() 
 {
-    blDebug ( "ConvReunionView::on_m_agregarconvocados_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlDbSubFormRecord *linea1;
 
@@ -230,12 +230,12 @@ void ConvReunionView::on_m_agregarconvocados_clicked()
     
     delete cur;
 
-    blDebug ( "END ConvReunionView::on_m_agregarconvocados_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int ConvReunionView::junta()
 {
-    blDebug ( "ConvReunionView::junta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlDbSubFormRecord *linea1;
 
@@ -257,6 +257,6 @@ int ConvReunionView::junta()
     
     delete cur;
 
-    blDebug ( "END ConvReunionView::junta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

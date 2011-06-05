@@ -34,7 +34,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de envio de e-mail", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
-    blDebug ( "PresupuestoView_PresupuestoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton ( l, NULL, NULL,  NULL, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -65,7 +65,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PresupuestoView_PresupuestoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -77,7 +77,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 **/
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
-    blDebug ( "PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton ( NULL, l, NULL, NULL, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -91,7 +91,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -103,7 +103,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 **/
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
-    blDebug ( "FacturaView_FacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton ( NULL, NULL, l, NULL, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -117,7 +117,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END FacturaView_FacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -129,7 +129,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 **/
 int FacturaView_FacturaView ( FacturaView *l )
 {
-    blDebug ( "FacturaView_FacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton ( NULL, NULL, NULL, l, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -143,7 +143,7 @@ int FacturaView_FacturaView ( FacturaView *l )
 
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END FacturaView_FacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

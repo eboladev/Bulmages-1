@@ -38,7 +38,7 @@ QWebCamView::QWebCamView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     m_companyact = comp;
     setupUi ( this );
-    blDebug ( "END QWebCamView::QWebCamView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -49,7 +49,7 @@ QWebCamView::~QWebCamView()
 {
     blDebug ( "QWebCamView::~QWebCamView", 0 );
     m_companyact->removeWindow ( this );
-    blDebug ( "END QWebCamView::~QWebCamView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -66,7 +66,7 @@ int QWebCamView::load ( QString idarticulo )
 {
     blDebug ( "QWebCamView::cargar", 0, idarticulo );
 
-    blDebug ( "END QWebCamView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

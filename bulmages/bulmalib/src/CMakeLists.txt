@@ -233,21 +233,24 @@ ENDIF(USE_GETTEXT)
 
 
 # i18n
-#if(WIN32)
-#ADD_DEFINITIONS("-D_(String)=blI18n(\\\"bulmalib\\\",String)" )
-#ADD_DEFINITIONS("-DN_(String,Int)=blI18n(\\\"bulmalib\\\",String)" )
-#endif(WIN32)
+if(WIN32)
+ADD_DEFINITIONS("-D_(String)=blI18n(\\\"bulmalib\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=blI18n(\\\"bulmalib\\\",String)" )
+endif(WIN32)
 
-#if(NOT WIN32)
-#ADD_DEFINITIONS("-D'_(String)=blI18n(\"bulmalib\",String)'" )
-#ADD_DEFINITIONS("-D'N_(String,Int)=blI18n(\"bulmalib\",String)'" )
-#endif(NOT WIN32)
+if(NOT WIN32)
+ADD_DEFINITIONS("-D'_(String)=blI18n(\"bulmalib\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=blI18n(\"bulmalib\",String)'" )
+endif(NOT WIN32)
+
 
 if(USE_GETTEXT)
-   set(bulmalib_STR ${bulmalib} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
+   set(bulmalib_i18n ${bulmalibEx} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
                 ${bulmalib_UIS_H} ${bulmalib_SRC} ${bulmalib_SRCS})
-   GETTEXT_CREATE_TEMPLATE("bulmalib" ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR} bulmalib_STR)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmalib.pot ALL LANGUAGES es_ES ca_ES en_US fr_FR)
+   GETTEXT_CREATE_TEMPLATE(bulmalib ${CMAKE_CURRENT_BINARY_DIR}
+                                ${CMAKE_CURRENT_SOURCE_DIR} bulmalib_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmalib.pot
+                                ALL LANGUAGES es_ES ca_ES en_US fr_FR)
 endif(USE_GETTEXT)
 
 
@@ -255,13 +258,6 @@ install_targets(/lib bulmalib)
 install (FILES ${bulmalib_HDRS} DESTINATION include)
 
 
-# TRANSLATIONS += bulmalib_es.ts 
-#                 bulmalib_ca.ts 
-#                 bulmalib_en.ts 
-#                 bulmalib_fr.ts 
-#                 bulmalib_de.ts 
-#                 bulmalib_zz.ts 
-# 
 
 if(USE_PCH)
    add_dependencies( bulmalib  bulmalib_pch )

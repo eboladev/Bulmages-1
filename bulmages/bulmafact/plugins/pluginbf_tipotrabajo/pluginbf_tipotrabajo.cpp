@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
     bges->menuMaestro->addAction ( accion );
                     
     return 0;
-    blDebug ( "END Punto de entrada de PluginBf_TipoTrabajo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int BlAction_triggered(BlAction *accion) {
@@ -212,7 +212,7 @@ int BlForm_guardar_Post ( BlForm *fich )
         form->setColumnValue ( "idalmacen", fich->dbValue ( "idalmacen" ) );
         form->save();
     }
-    blDebug ( "END BlForm_guardar_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -230,7 +230,7 @@ int BlForm_guardar_Post ( BlForm *fich )
 QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
     blDebug ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
-    blDebug ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -240,7 +240,7 @@ QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDele
 QSubForm3BfDelegate::~QSubForm3BfDelegate()
 {
     blDebug ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
-    blDebug ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -264,7 +264,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    blDebug ( "END QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -293,7 +293,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( "END QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -314,7 +314,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( "END QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

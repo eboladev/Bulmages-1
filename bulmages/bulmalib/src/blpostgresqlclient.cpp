@@ -38,7 +38,7 @@
 bool BlDbRecordSet::error()
 {
     blDebug ( "BlDbRecordSet::error", 0 );
-    blDebug ( "END BlDbRecordSet::error", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_error;
 }
 
@@ -50,14 +50,14 @@ bool BlDbRecordSet::error()
 QString BlDbRecordSet::query()
 {
     blDebug ( "BlDbRecordSet::query", 0 );
-    blDebug ( "END BlDbRecordSet::query", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_query;
 }
 
 QString BlDbRecordSet::pristineQuery()
 {
     blDebug ( "BlDbRecordSet::query", 0 );
-    blDebug ( "END BlDbRecordSet::query", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_pristineQuery;
 }
 
@@ -68,7 +68,7 @@ QString BlDbRecordSet::pristineQuery()
 int BlDbRecordSet::currentRecord()
 {
     blDebug ( "BlDbRecordSet::currentRecord", 0 );
-    blDebug ( "END BlDbRecordSet::currentRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return registroactual;
 }
 
@@ -167,7 +167,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
         blDebug ( "BlDbRecordSet::BlDbRecordSet: Error en la consulta: " + SQLQuery, 2 );
         throw - 1;
     } // end try
-    blDebug ( "END BlDbRecordSet::BlDbRecordSet", 0, " Numero de registros: " + QString::number ( nregistros ) + ", Numero de campos: " + QString::number ( ncampos ) );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -178,7 +178,7 @@ BlDbRecordSet::~BlDbRecordSet()
 {
     blDebug ( "BlDbRecordSet::~BlDbRecordSet", 0 );
     cerrar();
-    blDebug ( "END BlDbRecordSet::~BlDbRecordSet", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -189,7 +189,7 @@ void BlDbRecordSet::cerrar()
 {
     blDebug ( "BlDbRecordSet::cerrar", 0 );
     PQclear ( result );
-    blDebug ( "END BlDbRecordSet::cerrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -200,7 +200,7 @@ void BlDbRecordSet::cerrar()
 int BlDbRecordSet::numregistros()
 {
     blDebug ( "BlDbRecordSet::numregistros", 0 );
-    blDebug ( "END BlDbRecordSet::numregistros", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return nregistros;
 }
 
@@ -213,7 +213,7 @@ int BlDbRecordSet::numregistros()
 int BlDbRecordSet::numcampos()
 {
     blDebug ( "BlDbRecordSet::numcampos", 0 );
-    blDebug ( "END BlDbRecordSet::numcampos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ncampos;
 }
 
@@ -226,7 +226,7 @@ int BlDbRecordSet::numcampos()
 QString BlDbRecordSet::fieldName ( int campo )
 {
     blDebug ( "BlDbRecordSet::fieldName", 0 );
-    blDebug ( "END BlDbRecordSet::fieldName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     if ( campo >= 0 ) {
         return ( ( QString ) PQfname ( result, campo ) );
     } else {
@@ -248,7 +248,7 @@ int BlDbRecordSet::numcampo ( const QString &campo )
     int val = -1;
     if ( m_campos.contains ( campo ) )
         val =  m_campos.value ( campo );
-    blDebug ( "END BlDbRecordSet::numcampo", 0 , QString::number ( val ) );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return val;
 }
 
@@ -258,7 +258,7 @@ int BlDbRecordSet::numcampo ( const QString &campo )
 int BlDbRecordSet::dbFieldType ( int posicion )
 {
     blDebug ( "BlDbRecordSet::tipo", 0, QString::number ( posicion ) );
-    blDebug ( "END BlDbRecordSet::tipo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( PQftype ( result, posicion ) );
 }
 
@@ -303,7 +303,7 @@ QString BlDbRecordSet::value( int posicion, int registro, bool localeformat )
 	    
         } // end if
     } // end if
-    blDebug ( "END BlDbRecordSet::valor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( val );
 }
 
@@ -323,10 +323,10 @@ QString BlDbRecordSet::value( const QString &campo, int registro, bool localefor
     } // end if
     i = numcampo ( campo );
     if ( i == -1 ) {
-        blDebug ( "END BlDbRecordSet::valor ", 0, "No hay valor" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("No hay valor") );
         return "";
     } // end if
-    blDebug ( "END BlDbRecordSet::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return value( i, registro, localeformat );
 }
 
@@ -345,13 +345,13 @@ int BlDbRecordSet::valorInt ( int posicion, int registro , int siNull )
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
-    blDebug ( "END BlDbRecordSet::valor", 0 );
+
     if ( PQgetisnull ( result, registro, posicion ) ) {
-        blDebug ( "END BlDbRecordSet::valor ", 0, " ----- Valor: null" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Valor es NULL") );
         return siNull;
     }
-    blDebug ( "END BlDbRecordSet::valor ", 0,  ( QString ) " ----- Valor:" + PQgetvalue ( result, registro, posicion ) );
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( atoi ( PQgetvalue ( result, registro, posicion  ) ) );
 }
 
@@ -370,9 +370,11 @@ int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull )
     int i = 0;
     i = numcampo ( campo );
     if ( i == -1 ) {
-        blDebug ( "END BlDbRecordSet::valor ", 0, "No hay valor" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("No hay valor") );
         return siNull;
     } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valorInt ( i, registro, siNull );
 }
 
@@ -383,7 +385,7 @@ int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull )
 int BlDbRecordSet::nextRecord()
 {
     blDebug ( "BlDbRecordSet::nextRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
-    blDebug ( "END BlDbRecordSet::nextRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ++registroactual;
 }
 
@@ -407,7 +409,7 @@ int BlDbRecordSet::firstRecord()
 {
     blDebug ( "BlDbRecordSet::firstRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = 0;
-    blDebug ( "END BlDbRecordSet::firstRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -420,7 +422,7 @@ int BlDbRecordSet::lastRecord()
 {
     blDebug ( "BlDbRecordSet::lastRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = nregistros - 1;
-    blDebug ( "END BlDbRecordSet::lastRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return registroactual;
 }
 
@@ -440,7 +442,7 @@ bool BlDbRecordSet::eof()
         result = TRUE;
     } // end if
     result = registroactual >= nregistros;
-    blDebug ( "END BlDbRecordSet::eof", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -455,7 +457,7 @@ bool BlDbRecordSet::bof()
     if ( nregistros == 0 ) {
         return ( true );
     } // end if
-    blDebug ( "END BlDbRecordSet::bof", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( registroactual < 0 );
 }
 
@@ -467,7 +469,7 @@ bool BlDbRecordSet::bof()
 bool BlDbRecordSet::isLastRecord()
 {
     blDebug ( "BlDbRecordSet::isLastRecord", 0 );
-    blDebug ( "END BlDbRecordSet::isLastRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( registroactual == nregistros - 1 );
 }
 
@@ -479,7 +481,7 @@ bool BlDbRecordSet::isLastRecord()
 bool BlDbRecordSet::isFirstRecord()
 {
     blDebug ( "BlDbRecordSet::isFirstRecord", 0 );
-    blDebug ( "END BlDbRecordSet::isFirstRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( registroactual == 0 );
 }
 
@@ -494,7 +496,7 @@ bool BlDbRecordSet::isFirstRecord()
 QString BlPostgreSqlClient::dbName()
 {
     blDebug ( "BlPostgreSqlClient::dbName", 0 );
-    blDebug ( "END BlPostgreSqlClient::dbName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_pgDbName;
 }
 
@@ -506,7 +508,7 @@ BlPostgreSqlClient::BlPostgreSqlClient()
 {
     blDebug ( "BlPostgreSqlClient::BlPostgreSqlClient", 0 );
     m_insideTransaction = FALSE;
-    blDebug ( "END BlPostgreSqlClient::BlPostgreSqlClient", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -517,7 +519,7 @@ void BlPostgreSqlClient::terminar()
 {
     blDebug ( "BlPostgreSqlClient::terminar", 0 );
     PQfinish ( conn );
-    blDebug ( "END BlPostgreSqlClient::terminar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -530,14 +532,14 @@ BlPostgreSqlClient::~BlPostgreSqlClient()
     blDebug ( "BlPostgreSqlClient::~BlPostgreSqlClient", 0 );
     /// close the connection to the database and cleanup.
     PQfinish ( conn );
-    blDebug ( "END BlPostgreSqlClient::~BlPostgreSqlClient", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 // escapa una cadena per a posar-la a la cadena de connexió a PostgreSQL
 QString & BlPostgreSqlClient::escCadConn(QString t) {
     blDebug ( "BlPostgreSqlClient::escCadConn", 0, t );
-    blDebug ( "END BlPostgreSqlClient::escCadConn", 0 );
-     return (t.isNull()? t : t.replace(QRegExp("([\\\'])"),"\\\\1"));
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    return (t.isNull()? t : t.replace(QRegExp("([\\\'])"),"\\\\1"));
    
 }
 /// Inicializa la conexi&oacute;n con la base de datos mediante los par&aacute;metro
@@ -601,7 +603,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
         blDebug ( "Error en la conexion postgresifcace2::inicializa", 2 );
     } // end try
 
-    blDebug ( "END BlPostgreSqlClient::inicializa", 0, nomdb );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -639,7 +641,7 @@ int BlPostgreSqlClient::formatofecha()
     } // end if
     PQclear ( res );
 
-    blDebug ( "END BlPostgreSqlClient::formatofecha", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -664,7 +666,7 @@ int BlPostgreSqlClient::begin()
     } // end if
     PQclear ( res );
     m_insideTransaction = TRUE;
-    blDebug ( "END BlPostgreSqlClient::begin", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( 0 );
 }
 
@@ -679,14 +681,14 @@ void BlPostgreSqlClient::commit()
 {
     blDebug ( "BlPostgreSqlClient::commit", 0 );
     if ( !m_insideTransaction ) {
-        blDebug ( "END BlPostgreSqlClient::commit", 0, "No estamos en ninguna transaccion" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("No estamos en ninguna transaccion") );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "COMMIT" );
     PQclear ( res );
     m_insideTransaction = FALSE;
-    blDebug ( "END BlPostgreSqlClient::commit", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -700,14 +702,14 @@ void BlPostgreSqlClient::rollback()
 {
     blDebug ( "BlPostgreSqlClient::rollback", 0 );
     if ( !m_insideTransaction ) {
-        blDebug ( "END BlPostgreSqlClient::rollback", 0, "No estamos en ninguna transaccion" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("No estamos en ninguna transaccion") );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "ROLLBACK" );
     PQclear ( res );
     m_insideTransaction = FALSE;
-    blDebug ( "END BlPostgreSqlClient::rollback", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -785,12 +787,11 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
 
         rs = new BlDbRecordSet ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
 
-        blDebug ( "END BlPostgreSqlClient::loadQuery", 0, nomcursor );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     } catch ( ... ) {
         if ( rs ) delete rs;
-        blDebug ( "La consulta: \"" + query + "\" Ha generado un error", 2 );
-        blDebug ( "END BlPostgreSqlClient::loadQuery", 0, "Error en la base de datos" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Error en la base de datos. La consulta '%1' ha generado un error")).arg(query) );
         rs = NULL;
     } // end try
     return rs;
@@ -866,24 +867,24 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
         if ( PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus ( result ) != 2 )
             throw - 1;
         PQclear ( result );
-        blDebug ( "END BlPostgreSqlClient::runQuery", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( int e ) {
         if ( e == 42501 ) {
-            blDebug ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
+	    blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La consulta '%1' ha generado un error")).arg(Query) );
             QString mensaje = "No tiene permisos suficientes para ejecutar el comando SQL:\n";
             BlErrorDialog ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } else {
-            blDebug ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
+	    blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La consulta '%1' ha generado un error")).arg(Query) );
             QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " + QString::number ( PQresultStatus ( result ) ) + "\n";
             BlErrorDialog ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } // end if
     } catch ( ... ) {
-        blDebug ( "END BlPostgreSqlClient::run", 0, "SQL command failed: " + Query );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La consulta '%1' ha generado un error")).arg(Query) );
         throw - 1;
     } // end try
 }
@@ -916,7 +917,7 @@ QString BlPostgreSqlClient::searchParent ( QString cod )
         delete rs;
         i++;
     } // end while
-    blDebug ( "END BlPostgreSqlClient::searchParent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return padre;
 }
 
@@ -941,7 +942,7 @@ QString BlPostgreSqlClient::sanearCadena ( QString cadena )
     PQescapeString ( buffer, cadena.toAscii().constData(), cadena.toAscii().size() );
     cadenaLimpia = QString::fromAscii ( buffer );
     free ( buffer );
-    blDebug ( "END BlPostgreSqlClient::sanearCadena", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return cadenaLimpia;
 }
 
@@ -967,7 +968,7 @@ QString BlPostgreSqlClient::sanearCadenaUtf8 ( QString cadena )
     PQescapeStringConn ( conn, buffer, ba.constData(), longitud , 0 );
     cadenaLimpia = QString::fromUtf8 ( buffer );
     free ( buffer );
-    blDebug ( "END postgresiface2::sanearCadenaUtf8", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return cadenaLimpia;
 }
 
@@ -1002,7 +1003,7 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
         value = PQgetvalue ( result, 0, 2 );
     } // end if
     PQclear ( result );
-    blDebug ( "END BlPostgreSqlClient::propiedadempresa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return value;
 }
 
@@ -1024,7 +1025,7 @@ bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
         } // end if
         delete rs;
     } // end if
-    blDebug ( "END BlPostgreSqlClient::hasTablePrivilege", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return hasPrivilege;
 }
 
@@ -1052,7 +1053,7 @@ bool BlPostgreSqlClient::existsAnyRecord ( QString table, QString cond )
 
    BlDbRecordSet rs = *loadQuery ( cons );
 
-   blDebug ( "END BlPostgreSqlClient::existsAnyRecord", 0 );
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
    return ( !rs.eof() );
 }
 

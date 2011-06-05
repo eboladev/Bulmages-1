@@ -39,7 +39,7 @@ BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
     m_valores["codtipo_articulo"] = "";
     m_valores["desctipo_articulo"] = "";
 
-    blDebug ( "END BfBuscarTipoArticulo::BfBuscarTipoArticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
 BfBuscarTipoArticulo::~BfBuscarTipoArticulo()
 {
     blDebug ( "BfBuscarTipoArticulo::~BfBuscarTipoArticulo", 0 );
-    blDebug ( "END BfBuscarTipoArticulo::~BfBuscarTipoArticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,7 +65,7 @@ void BfBuscarTipoArticulo::setidtipo_articulo ( QString val )
 {
     blDebug ( "BfBuscarTipoArticulo::setidtipo_articulo", 0 );
     setId ( val );
-    blDebug ( "END BfBuscarTipoArticulo::setidtipo_articulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -92,7 +92,7 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 
     delete cur;
 
-    blDebug ( "END BfBuscarTipoArticulo::setcodtipo_articulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -106,7 +106,7 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 QString BfBuscarTipoArticulo::codtipo_articulo()
 {
     blDebug ( "BfBuscarTipoArticulo::codtipo_articulo", 0 );
-    blDebug ( "END BfBuscarTipoArticulo::codtipo_articulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["codtipo_articulo"];
 }
 
@@ -120,7 +120,7 @@ QString BfBuscarTipoArticulo::codtipo_articulo()
 QString BfBuscarTipoArticulo::idtipo_articulo()
 {
     blDebug ( "BfBuscarTipoArticulo::idtipo_articulo", 0 );
-    blDebug ( "END BfBuscarTipoArticulo::idtipo_articulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return id();
 }
 
@@ -135,7 +135,7 @@ QString BfBuscarTipoArticulo::idtipo_articulo()
 QString BfBuscarTipoArticulo::desctipo_articulo()
 {
     blDebug ( "BfBuscarTipoArticulo::desctipo_articulo", 0 );
-    blDebug ( "END BfBuscarTipoArticulo::desctipo_articulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["desctipo_articulo"];
 }
 

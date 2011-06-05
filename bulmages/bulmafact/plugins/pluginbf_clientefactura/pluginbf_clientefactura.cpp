@@ -42,7 +42,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Facturas a Clientes\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -157,7 +157,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
 
-    blDebug ( "PluginFactura_AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     GenFacQToolButton *mui_exporta_efactura2 = new GenFacQToolButton ( l, l->mui_plugbotones );
     AgFacQToolButton *mui_exporta_efactura = new AgFacQToolButton ( l, l->mui_plugbotones );
 
@@ -172,7 +172,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     m_hboxLayout1->addWidget ( mui_exporta_efactura );
 
-    blDebug ( "END PluginFactura_AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -185,7 +185,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    blDebug ( "PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     GenFacQToolButton *mui_exporta_efactura2 = new GenFacQToolButton ( l, l->mui_plugbotones );
 
@@ -199,7 +199,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -213,7 +213,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
 
-    blDebug ( "PluginFactura_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     GenFacQToolButton *mui_exporta_efactura2 = new GenFacQToolButton ( l, l->mui_plugbotones );
 
@@ -227,7 +227,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PluginFactura_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

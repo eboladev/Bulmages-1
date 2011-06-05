@@ -146,7 +146,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     delete cur;
     
     insertWindow ( windowTitle(), this, FALSE );
-    blDebug ( "END BfConfiguracionView::BfConfiguracionView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -157,7 +157,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
 BfConfiguracionView::~BfConfiguracionView()
 {
     blDebug ( "BfConfiguracionView::~BfConfiguracionView", 0 );
-    blDebug ( "END BfConfiguracionView::~BfConfiguracionView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void BfConfiguracionView::on_mui_aceptar_clicked() {
@@ -217,6 +217,6 @@ BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
-    blDebug ( "END BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

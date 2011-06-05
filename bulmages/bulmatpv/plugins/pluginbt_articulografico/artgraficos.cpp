@@ -28,14 +28,14 @@ ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( em
     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
     ponPantallas();
     muestraPantalla ( 0 );
-    blDebug ( "END ArtGraficos::~ArtGraficos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 ArtGraficos::~ArtGraficos()
 {
     blDebug ( "ArtGraficos::~ArtGraficos", 0 );
-    blDebug ( "END ArtGraficos::~ArtGraficos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

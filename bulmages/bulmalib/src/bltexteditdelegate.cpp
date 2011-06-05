@@ -32,7 +32,7 @@ BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent 
 {
     blDebug ( "BlTextEditDelegate::BlTextEditDelegate", 0 );
     installEventFilter ( this );
-    blDebug ( "END BlTextEditDelegate::BlTextEditDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -42,7 +42,7 @@ BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent 
 BlTextEditDelegate::~BlTextEditDelegate()
 {
     blDebug ( "BlTextEditDelegate::~BlTextEditDelegate", 0 );
-    blDebug ( "END BlTextEditDelegate::~BlTextEditDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,12 +65,12 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
 	  case Qt::Key_Return:
 	  case Qt::Key_Enter:
 		event->ignore();
-		blDebug ( "END BlTextEditDelegate::eventFilter()", 0 );
+		blDebug ( ("END ", Q_FUNC_INFO), 0 );
 		return TRUE;
 	      break;
 	  } // end switch
     } // end if
-    blDebug ( "END BlTextEditDelegate::eventFilter()", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return QTextEdit::eventFilter ( obj, event );
 }
 

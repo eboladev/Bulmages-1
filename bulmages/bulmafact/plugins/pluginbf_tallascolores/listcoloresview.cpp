@@ -54,7 +54,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( "END ListColoresView::ListColoresView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -71,7 +71,7 @@ void ListColoresView::on_mui_aceptar_clicked()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los colores" ) );
     } // end try
-    blDebug ( "END ListColoresView::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -82,7 +82,7 @@ void ListColoresView::on_mui_aceptar_clicked()
 ListColoresView::~ListColoresView()
 {
     blDebug ( "ListColoresView::~ListColoresView", 0 );
-    blDebug ( "END ListColoresView::~ListColoresView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,7 +101,7 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "rgbtc_color", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "RGB Color" ) );
     addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Color" ) );
     setInsert ( TRUE );
-    blDebug ( "END ListColoresSubForm::ListColoresSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -113,6 +113,6 @@ void ListColoresSubForm::load()
 {
     blDebug ( "ListColoresSubForm::cargar", 0 );
     BlSubForm::load ( "SELECT * FROM tc_color" );
-    blDebug ( "END ListColoresSubForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

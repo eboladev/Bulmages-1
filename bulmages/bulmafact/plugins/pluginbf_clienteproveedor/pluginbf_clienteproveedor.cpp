@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de Cliente Proveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int BlForm_guardar_Post ( BlForm *l )
 {
-    blDebug ( "BlForm_guardar_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     bool guardar = FALSE;
     if ( l->tableName() == "cliente" ) {
 
@@ -104,7 +104,7 @@ int BlForm_guardar_Post ( BlForm *l )
             fich->save();
         delete fich;
     } // end if
-    blDebug ( "END BlForm_guardar_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

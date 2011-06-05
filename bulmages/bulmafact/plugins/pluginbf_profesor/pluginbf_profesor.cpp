@@ -87,7 +87,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     } // end if
 
-    blDebug ( "END Punto de entrada de PluginBf_Profesor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -121,7 +121,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_profesoresList->hide();
     } // end if
     
-    blDebug ( "END BfCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -161,7 +161,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         
     } // end if
     
-    blDebug ( "END Busqueda_on_mui_buscar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 

@@ -128,9 +128,9 @@ public slots:
     virtual void on_mui_generarPrevisiones_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void on_mui_listIva_editFinish ( int, int ) {
-        blDebug ( "RegistroIvaView::on_mui_listIva_editFinish", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         recalculaIva();
-        blDebug ( "END RegistroIvaView::on_mui_listIva_editFinish", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     };
 };
 

@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de informe Clientes", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int ClientsList_ClientsList ( ClientsList *l )
 {
-    blDebug ( "ClientsList_ClientsList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 //================================
     InformeQToolButton *mui_exporta_efactura2 = new InformeQToolButton ( l,  l->mui_plugbotones );
 
@@ -62,7 +62,7 @@ int ClientsList_ClientsList ( ClientsList *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    blDebug ( "END ClientsList_ClientsList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -74,7 +74,7 @@ int ClientsList_ClientsList ( ClientsList *l )
 **/
 int ArticuloList_ArticuloList ( ArticuloList *l )
 {
-    blDebug ( "ArticuloList_ArticuloList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 //================================
     InformeArtQToolButton *mui_exporta_efactura2 = new InformeArtQToolButton ( l,  l->mui_plugbotones );
 
@@ -87,7 +87,7 @@ int ArticuloList_ArticuloList ( ArticuloList *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    blDebug ( "END ArticuloList_ArticuloList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

@@ -73,7 +73,7 @@ int entryPoint ( BlMainWindow *bges )
     doc1->show();
     doc1->loadConfig();
 
-    blDebug ( "END myplugincont::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

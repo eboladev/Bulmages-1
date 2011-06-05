@@ -30,12 +30,12 @@
 BcBuscarCentroCoste::BcBuscarCentroCoste ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    blDebug ( "BcBuscarCentroCoste::BcBuscarCentroCoste", 0 );    
+    blDebug ( Q_FUNC_INFO, 0 );
     setQuery ( "SELECT idc_coste, nombre FROM c_coste ORDER BY nombre" );
     setTableName ( "c_coste" );
     setFieldId ( "idc_coste" );
     m_valores["nombre"] = "";
-    blDebug ( "END BcBuscarCentroCoste::BcBuscarCentroCoste", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -44,8 +44,8 @@ BcBuscarCentroCoste::BcBuscarCentroCoste ( QWidget *parent, const char * )
 **/
 BcBuscarCentroCoste::~BcBuscarCentroCoste()
 {
-    blDebug ( "BcBuscarCentroCoste::~BcBuscarCentroCoste", 0 );
-    blDebug ( "END BcBuscarCentroCoste::~BcBuscarCentroCoste", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -63,12 +63,12 @@ BcBuscarCentroCoste::~BcBuscarCentroCoste()
 BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate ( QWidget *parent )
         : BlComboBoxDelegate ( parent )
 {
-    blDebug ( "BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setQuery ( "SELECT idc_coste, nombre FROM c_coste ORDER BY nombre" );
     setTableName ( "c_coste" );
     setFieldId ( "idc_coste" );
     m_valores["nombre"] = "";
-    blDebug ( "END BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -77,8 +77,8 @@ BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate ( QWidget *parent )
 **/
 BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate()
 {
-    blDebug ( "BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate", 10 );
-    blDebug ( "END BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

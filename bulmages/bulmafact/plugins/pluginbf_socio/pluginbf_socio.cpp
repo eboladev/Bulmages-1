@@ -37,7 +37,7 @@ SociosList *g_sociosList = NULL;
 MyPlugProf::MyPlugProf()
 {
     blDebug ( "MyPlugProf::MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -47,7 +47,7 @@ MyPlugProf::MyPlugProf()
 MyPlugProf::~MyPlugProf()
 {
     blDebug ( "MyPlugProf::~MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -61,7 +61,7 @@ void MyPlugProf::elslot()
         g_sociosList->hide();
         g_sociosList->show();
     }// end if
-    blDebug ( "END MyPlugProf::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -73,7 +73,7 @@ void MyPlugProf::elslot1()
     SocioView * bud = new SocioView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -85,7 +85,7 @@ void MyPlugProf::elslot2()
     TiposocioView * bud = new TiposocioView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -132,7 +132,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( tiposoc );
         connect ( tiposoc, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
     }// end if
-    blDebug ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -166,7 +166,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         comp->m_pWorkspace->addSubWindow ( g_sociosList );
         g_sociosList->hide();
     }// end if
-    blDebug ( "END pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -196,7 +196,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_socio::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return ret;
 }
@@ -215,7 +215,7 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_socio::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
@@ -230,7 +230,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_socio::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
@@ -253,7 +253,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    blDebug ( "END pluginbf_socio::BlSubForm_editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -309,7 +309,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     blDebug ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->fieldName() != "nomcliente" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } // end if
 
@@ -329,7 +329,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCliente == "" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } // end if
 
@@ -341,7 +341,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
     
-    blDebug ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -367,7 +367,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
 {
     blDebug ( "MyPlugTutor1::MyPlugTutor1", 0 );
-    blDebug ( "END MyPlugTutor1::MyPlugTutor1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -376,7 +376,7 @@ MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
 MyPlugTutor1::~MyPlugTutor1()
 {
     blDebug ( "MyPlugTutor1::~MyPlugTutor1", 0 );
-    blDebug ( "END MyPlugTutor1::~MyPlugTutor1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -398,7 +398,7 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar socio" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPlugTutor1::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -420,7 +420,7 @@ void MyPlugTutor1::s_trataMenu ( QAction *action )
         nuevoTutor();
     } // end if
 
-    blDebug ( "END MyPlugTutor1::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -436,12 +436,12 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idtutor ) ) {
         delete art;
-        blDebug ( "END MyPlugTutor1::editarTutor", 0, "Carga Erronea" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Carga erronea") );
         return;
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -457,7 +457,7 @@ void MyPlugTutor1::nuevoTutor( )
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     art->hide();
     art->show();
-    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -480,7 +480,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idTutor == "" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
 
@@ -492,7 +492,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -507,6 +507,6 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

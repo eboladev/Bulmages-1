@@ -49,7 +49,7 @@ ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *p
     blDebug ( "ModificadoresQToolButton::ModificadoresQToolButton", 0 );
     m_companyact = emp;
     setBoton();
-    blDebug ( "END ModificadoresQToolButton::ModificadoresQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -59,7 +59,7 @@ ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *p
 ModificadoresQToolButton::~ModificadoresQToolButton()
 {
     blDebug ( "ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
-    blDebug ( "END ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -76,7 +76,7 @@ void ModificadoresQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END ModificadoresQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -99,7 +99,7 @@ void ModificadoresQToolButton::click()
 	ticket->pintar();      
     } // end if
     
-    blDebug ( "END ModificadoresQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -119,7 +119,7 @@ MTabletQToolButton::MTabletQToolButton ( BtCompany * emp, QWidget *parent ) : QT
     blDebug ( "MTabletQToolButton::MTabletQToolButton", 0 );
     m_companyact = emp;
     setBoton();
-    blDebug ( "END MTabletQToolButton::MTabletQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -129,7 +129,7 @@ MTabletQToolButton::MTabletQToolButton ( BtCompany * emp, QWidget *parent ) : QT
 MTabletQToolButton::~MTabletQToolButton()
 {
     blDebug ( "MTabletQToolButton::~MTabletQToolButton", 0 );
-    blDebug ( "END MTabletQToolButton::~MTabletQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -146,7 +146,7 @@ void MTabletQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END ModificadoresQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -171,7 +171,7 @@ void MTabletQToolButton::click()
 	  } // end if
 	 ticket->pintar();
     */
-    blDebug ( "END ModificadoresQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 

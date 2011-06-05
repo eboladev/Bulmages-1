@@ -36,7 +36,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de demo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -85,32 +85,31 @@ int BlAction_triggered(BlAction *accion) {
 /***
  PluginBf_Example::PluginBf_Example()
 {
-    blDebug ( "PluginBf_Example::PluginBf_Example", 0 );
-    blDebug ( "END PluginBf_Example::PluginBf_Example", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 PluginBf_Example::~PluginBf_Example()
 {
-    blDebug ( "PluginBf_Example::~PluginBf_Example", 0 );
-    blDebug ( "END PluginBf_Example::~PluginBf_Example", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void PluginBf_Example::elslot()
 {
-    blDebug ( "PluginBf_Example::elslot", 0 );
-    fprintf ( stderr, "S'ha activado el slot\n" );
+    blDebug ( Q_FUNC_INFO, 0 );
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            _ ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    blDebug ( "END PluginBf_Example::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 void PluginBf_Example::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "PluginBf_Example::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
@@ -129,13 +128,13 @@ void PluginBf_Example::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    blDebug ( "END PluginBf_Example::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de demo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

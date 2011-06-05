@@ -41,7 +41,7 @@
 JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "JDirectivaList::JDirectivaList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -56,7 +56,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END JDirectivaList::JDirectivaList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Inicializa todos los componentes.
@@ -66,7 +66,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
 JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "JDirectivaList::JDirectivaList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -96,15 +96,15 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END JDirectivaList::JDirectivaList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No requiere acciones especiales en el destructor.
 */
 JDirectivaList::~JDirectivaList()
 {
-    blDebug ( "JDirectivaList::~JDirectivaList", 0 );
-    blDebug ( "END JDirectivaList::~JDirectivaList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Hace la carag del listado.
@@ -113,52 +113,54 @@ JDirectivaList::~JDirectivaList()
 */
 void JDirectivaList::presentar()
 {
-    blDebug ( "JDirectivaList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM jdirectiva  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
-    blDebug ( "END JDirectivaList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
 QString JDirectivaList::generaFiltro()
 {
-    blDebug ( "JDirectivaList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QString filtro = "";
 
-    blDebug ( "END JDirectivaList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return ( filtro );
 }
+
 
 /** SLOT que responde a la pulsacion del boton de crear en el listado.
     Instancia la clase JDirectivaView, y la presenta.
 */
 void JDirectivaList::crear()
 {
-    blDebug ( "JDirectivaList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
-    
-    blDebug ( "JDirectivaList::crear", 0 );
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );    
 }
+
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void JDirectivaList::imprimir()
 {
-    blDebug ( "JDirectivaList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->printPDF ( _ ( "Actividades" ) );
     
-    blDebug ( "END JDirectivaList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -169,7 +171,7 @@ void JDirectivaList::imprimir()
 */
 void JDirectivaList::remove()
 {
-    blDebug ( "JDirectivaList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int a = mui_list->currentRow();
     
@@ -192,12 +194,12 @@ void JDirectivaList::remove()
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    blDebug ( "END:JDirectivaList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void JDirectivaList::editar ( int )
 {
-    blDebug ( "JDirectivaList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     try {
         mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
@@ -216,7 +218,7 @@ void JDirectivaList::editar ( int )
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    blDebug ( "END JDirectivaList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
@@ -224,7 +226,7 @@ void JDirectivaList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void JDirectivaList::submenu ( const QPoint & )
 {
-    blDebug ( "JDirectivaList::submenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int a = mui_list->currentRow();
     
@@ -244,7 +246,7 @@ void JDirectivaList::submenu ( const QPoint & )
         
     delete popup;
     
-    blDebug ( "JDirectivaList::submenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -259,8 +261,8 @@ void JDirectivaList::setMainCompany ( BfCompany *comp )
 **/
 QString JDirectivaList::idjdirectiva()
 {
-    blDebug ( "JDirectivaList::idjdirectiva", 0 );
-    blDebug ( "END JDirectivaList::idjdirectiva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return mdb_idjdirectiva;
 }
@@ -273,7 +275,7 @@ QString JDirectivaList::idjdirectiva()
 */
 JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "JDirectivaListSubForm::JDirectivaListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "JDirectivaListSubForm_JDirectivaListSubForm", this );
@@ -290,11 +292,11 @@ JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( p
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( "END JDirectivaListSubForm::JDirectivaListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 JDirectivaListSubForm::~JDirectivaListSubForm()
 {
-    blDebug ( "JDirectivaListSubForm::~JDirectivaListSubForm", 0 );
-    blDebug ( "END JDirectivaListSubForm::~JDirectivaListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

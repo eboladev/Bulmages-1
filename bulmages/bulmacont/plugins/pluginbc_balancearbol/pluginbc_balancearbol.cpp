@@ -38,7 +38,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     g_bcont = bcont;
     
@@ -56,18 +56,18 @@ int entryPoint ( BcBulmaCont *bcont )
     bcont->toolBar->addAction ( accion );
     pPluginMenu->addAction ( accion );
     
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( "PluginBc_BalanceArbol::BlAction_triggered" );
+    blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionBalanceJerarquico") {
     	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->company(), 0 );
     	g_bcont -> company() ->pWorkspace() ->addSubWindow ( cuad );
     	cuad->show();
     } // end if
-    blDebug ( "PluginBc_BalanceArbol::BlAction_triggered" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;    
 } // end if

@@ -44,7 +44,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -66,7 +66,7 @@ int entryPoint ( BcBulmaCont *bcont )
     accionA->setObjectName("mui_actionCuentasAnuales");
     pPluginMenu->addAction ( accionA );
     
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

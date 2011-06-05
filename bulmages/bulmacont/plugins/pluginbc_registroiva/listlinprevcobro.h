@@ -66,7 +66,7 @@ public:
     void guardaListLinPrevCobro();
     void vaciar();
     virtual void pintaListLinPrevCobro() {
-        blDebug ( "La funcion pintaListLinPrevCobro aun no ha sido implementada", 10 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("La funcion 'pintaListLinPrevCobro' aun no ha sido implementada") );
     };
     int chargeBudgetLines();
     void remove();

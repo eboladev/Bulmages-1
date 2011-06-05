@@ -53,7 +53,7 @@ int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubf
 {
     blDebug ( "PedidosClienteListSubform_PedidosClienteListSubform", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    blDebug ( "END PedidosClienteListSubform_PedidosClienteListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -69,7 +69,7 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
     if ( !l->existsHeader ( "selector" ) ) {
         l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     } // end if
-    blDebug ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -83,7 +83,7 @@ int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 {
     blDebug ( "FacturasListSubform_FacturasListSubform", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    blDebug ( "END FacturasListSubform_FacturasListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -97,7 +97,7 @@ int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 {
     blDebug ( "PresupuestoListSubForm_PresupuestoListSubForm", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    blDebug ( "END PresupuestoListSubForm_PresupuestoListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -159,7 +159,7 @@ int CobrosList_CobrosList ( CobrosList *l )
     m_hboxLayout1->addWidget ( sumar);
 
 
-    blDebug ( "END CobrosList_CobrosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -194,7 +194,7 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
     m_hboxLayout1->addWidget ( sumar);
 
 
-    blDebug ( "END PresupuestoList_PresupuestoList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -229,7 +229,7 @@ int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
     m_hboxLayout1->addWidget ( sumar);
 
 
-    blDebug ( "END PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -265,7 +265,7 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 
 
 
-    blDebug ( "END PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -298,7 +298,7 @@ int FacturasList_FacturasList ( FacturasList *l )
     m_hboxLayout1->addWidget ( procesar);
     m_hboxLayout1->addWidget ( sumar);
 
-    blDebug ( "END FacturasList_FacturasList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -326,7 +326,7 @@ int RecibosList_RecibosList ( RecibosList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
 
-    blDebug ( "END RecibosList_RecibosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

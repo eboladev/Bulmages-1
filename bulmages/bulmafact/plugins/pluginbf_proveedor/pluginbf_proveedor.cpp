@@ -84,7 +84,7 @@ int BlAction_triggered(BlAction *accion) {
             g_providersList->hide();
             g_providersList->show();
         } // end if
-        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedores", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     } // end if
 
@@ -93,7 +93,7 @@ int BlAction_triggered(BlAction *accion) {
         ProveedorView * bud = new ProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedorNuevo", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     return 0;
 }

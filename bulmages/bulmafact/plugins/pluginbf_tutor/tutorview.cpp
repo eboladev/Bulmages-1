@@ -141,7 +141,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         
     } // end try
     
-    blDebug ( "END TutorView::TutorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
@@ -149,7 +149,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 TutorView::~TutorView()
 {
     blDebug ( "TutorView::~TutorView", 0 );
-    blDebug ( "END TutorView::~TutorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void TutorView::on_mui_sociocliente_toggled ( bool state )
@@ -162,13 +162,13 @@ void TutorView::on_mui_sociocliente_toggled ( bool state )
         mui_numsociocliente->setText ( cur->value( "numsoc" ) );
     } // end if
     
-    blDebug ( "END TutorView::on_mui_sociocliente_toggled", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString TutorView::templateName ( void )
 {
     blDebug ( "TutorView::templateName", 0 );
-    blDebug ( "END TutorView::templateName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "tutor" );
 }
@@ -194,7 +194,7 @@ void TutorView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( "END TutorView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int TutorView::afterSave()
@@ -315,7 +315,7 @@ int TutorView::afterSave()
       } // end if
     */
     
-    blDebug ( "END TutorView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -332,7 +332,7 @@ int TutorView::beforeDelete()
     QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue ( "idcliente" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( "END TutorView::beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -354,7 +354,7 @@ int TutorView::cargarPost ( QString id )
 
     mui_listrecibos->load("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
 
-    blDebug ( "END TutorView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -382,7 +382,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( "END ListAlumnosTutorView::ListAlumnosTutorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -395,5 +395,5 @@ void ListAlumnosTutorView::load ( QString idcliente )
     
     BlSubForm::load ( "SELECT *, (COALESCE(apellido1alumno,'-') || ' ' || COALESCE(apellido2alumno,'-') || ', ' || COALESCE(nombrealumno,'-') ) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     
-    blDebug ( "END ListAlumnosTutorView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

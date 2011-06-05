@@ -28,7 +28,7 @@
 QString BlPeriodicityComboBox::periodo()
 {
     blDebug ( "BlPeriodicityComboBox::periodo", 0 );
-    blDebug ( "END BlPeriodicityComboBox::periodo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores[currentIndex() ];
 }
 
@@ -40,7 +40,7 @@ QString BlPeriodicityComboBox::periodo()
 QString BlPeriodicityComboBox::fieldValue()
 {
     blDebug ( "BlPeriodicityComboBox::fieldValue", 0 );
-    blDebug ( "END BlPeriodicityComboBox::fieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores[currentIndex() ];
 }
 
@@ -93,7 +93,7 @@ BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( p
     } // end while
 
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( s_activated ( int ) ) );
-    blDebug ( "END BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -103,7 +103,7 @@ BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( p
 BlPeriodicityComboBox::~BlPeriodicityComboBox()
 {
     blDebug ( "BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
-    blDebug ( "END BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -127,7 +127,7 @@ void BlPeriodicityComboBox::setperiodo ( QString periodo )
     } else {
         setCurrentIndex ( 0 );
     } // end if
-    blDebug ( "END BlPeriodicityComboBox::setperiodo", 0, periodo );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -139,7 +139,7 @@ void BlPeriodicityComboBox::setFieldValue ( QString periodo )
 {
     blDebug ( "BlPeriodicityComboBox::setFieldValue", 0 );
     setperiodo ( periodo );
-    blDebug ( "END BlPeriodicityComboBox::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

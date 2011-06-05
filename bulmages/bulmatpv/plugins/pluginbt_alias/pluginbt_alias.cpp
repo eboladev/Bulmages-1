@@ -29,7 +29,7 @@
 int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 {
     blDebug ( "PluginBt_Alias::BtTicket_agregarLinea_Post", 0 );
-    blDebug ( "END PluginBt_Alias::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -52,7 +52,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         delete cur;
     } // end if
 
-    blDebug ( "END PluginBt_Alias::BtTicket_insertarArticuloCodigoNL_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -74,6 +74,6 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         valor = 0;
         semaforo = 0;
     } // end if
-    blDebug ( "END PluginBt_Alias::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }

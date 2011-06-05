@@ -42,8 +42,8 @@ BcDiarioView *g_diario;
 **/
 PluginBc_Diario::PluginBc_Diario()
 {
-    blDebug ( "PluginBc_Diario::PluginBc_Diario", 0 );
-    blDebug ( "END PluginBc_Diario::PluginBc_Diario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -52,8 +52,8 @@ PluginBc_Diario::PluginBc_Diario()
 **/
 PluginBc_Diario::~PluginBc_Diario()
 {
-    blDebug ( "PluginBc_Diario::~PluginBc_Diario", 0 );
-    blDebug ( "END PluginBc_Diario::~PluginBc_Diario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,14 +62,14 @@ PluginBc_Diario::~PluginBc_Diario()
 **/
 void PluginBc_Diario::elslot()
 {
-    blDebug ( "PluginBc_Diario::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if (g_diario == NULL) {
       g_diario = new BcDiarioView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addSubWindow ( g_diario );
     } // end if
     g_diario->hide();
     g_diario->show();
-    blDebug ( "END PluginBc_Diario::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -79,7 +79,7 @@ void PluginBc_Diario::elslot()
 **/
 void PluginBc_Diario::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "PluginBc_Diario::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
@@ -96,7 +96,7 @@ void PluginBc_Diario::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->toolBar->addAction ( accion );
 
-    blDebug ( "END PluginBc_Diario::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -107,7 +107,7 @@ void PluginBc_Diario::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -117,7 +117,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     PluginBc_Diario *plug = new PluginBc_Diario();
     plug->inicializa ( bcont );
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

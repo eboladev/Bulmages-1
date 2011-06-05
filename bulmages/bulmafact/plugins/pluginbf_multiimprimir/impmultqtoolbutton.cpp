@@ -66,7 +66,7 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( "END ImpQToolButton::ImpQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -76,7 +76,7 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 ImpQToolButton::~ImpQToolButton()
 {
     blDebug ( "ImpQToolButton::~ImpQToolButton", 0 );
-    blDebug ( "END ImpQToolButton::~ImpQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -93,7 +93,7 @@ void ImpQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_print1.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END ImpQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -108,7 +108,7 @@ void ImpQToolButton::click()
 	/// Hacer comprobacion de la variable PRINTER
 	if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 	    blMsgInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
-        blDebug ( "END ImpQToolButton::click", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
 	    return;
 	} // end if
 
@@ -443,7 +443,7 @@ void ImpQToolButton::click()
 	    system ( comando.toAscii().data() );
 	    comando = "rm " + res;
 	    system ( comando.toAscii().data() );
-        blDebug ( "END ImpQToolButton::click", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     } catch ( ... ) {
         blMsgInfo ( "Error en los calculos" );
@@ -475,7 +475,7 @@ SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
     m_cobrosList = cob;
     m_listado = (BlFormList *) parent->parent()->parent();
     setBoton();
-    blDebug ( "END SelQToolButton::SelQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -485,7 +485,7 @@ SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 SelQToolButton::~SelQToolButton()
 {
     blDebug ( "SelQToolButton::~SelQToolButton", 0 );
-    blDebug ( "END SelQToolButton::~SelQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -503,7 +503,7 @@ void SelQToolButton::setBoton()
     setIconSize ( QSize ( 22, 22 ) );
 
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
-    blDebug ( "END SelQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -535,7 +535,7 @@ void SelQToolButton::click()
         } // end for
     }
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 // ==================================================================================
@@ -562,7 +562,7 @@ EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( "END EmailQToolButton::EmailQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -572,7 +572,7 @@ EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *
 EmailQToolButton::~EmailQToolButton()
 {
     blDebug ( "EmailQToolButton::~EmailQToolButton", 0 );
-    blDebug ( "END EmailQToolButton::~EmailQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -589,7 +589,7 @@ void EmailQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END EmailQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -834,7 +834,7 @@ void EmailQToolButton::click()
     } // end if
 
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -867,7 +867,7 @@ ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosCliente
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( "END ProcesarQToolButton::ProcesarQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -877,7 +877,7 @@ ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosCliente
 ProcesarQToolButton::~ProcesarQToolButton()
 {
     blDebug ( "ProcesarQToolButton::~ProcesarQToolButton", 0 );
-    blDebug ( "END ProcesarQToolButton::~ProcesarQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -894,7 +894,7 @@ void ProcesarQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_ok.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END ProcesarQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -910,7 +910,7 @@ void ProcesarQToolButton::click()
                                   _ ( "Va a procesar todos los elementos seleccionados. Desea continuar ?" ),
                                   _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
 
-        blDebug ( "END ProcesarQToolButton::click", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     }
 
@@ -1032,7 +1032,7 @@ void ProcesarQToolButton::click()
     } // end if
 
 
-    blDebug ( "END ProcesarQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1064,7 +1064,7 @@ SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( "END SumarQToolButton::SumarQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1074,7 +1074,7 @@ SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *
 SumarQToolButton::~SumarQToolButton()
 {
     blDebug ( "SumarQToolButton::~SumarQToolButton", 0 );
-    blDebug ( "END SumarQToolButton::~SumarQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1091,7 +1091,7 @@ void SumarQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon (  g_confpr->value( CONF_PROGDATA ) + "icons/suma.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END SumarQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1239,7 +1239,7 @@ void SumarQToolButton::click()
     } // end if
 
 
-    blDebug ( "END SumarQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

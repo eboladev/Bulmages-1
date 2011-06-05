@@ -33,7 +33,7 @@ void BlMainCompany::setListVentanas ( BlWindowListDock *doc )
 {
     blDebug ( "BlMainCompany::setListVentanas", 0 );
     m_listventanas = doc;
-    blDebug ( "END BlMainCompany::setListVentanas", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -44,7 +44,7 @@ void BlMainCompany::setListVentanas ( BlWindowListDock *doc )
 BlWorkspace *BlMainCompany::pWorkspace()
 {
     blDebug ( "BlMainCompany::pWorkspace", 0 );
-    blDebug ( "END BlMainCompany::pWorkspace", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_pWorkspace;
 }
 
@@ -56,7 +56,7 @@ BlWorkspace *BlMainCompany::pWorkspace()
 BlWindowListDock *BlMainCompany::listVentanas()
 {
     blDebug ( "BlMainCompany::listVentanas", 0 );
-    blDebug ( "END BlMainCompany::listVentanas", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_listventanas;
 }
 
@@ -72,7 +72,7 @@ void BlMainCompany::setWorkspace ( BlWorkspace *qw )
     blDebug ( "BlMainCompany::setWorkspace", 0 );
     m_pWorkspace = qw;
     connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deselectWindow() ) );
-    blDebug ( "END BlMainCompany::setWorkspace", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -84,7 +84,7 @@ void BlMainCompany::setProgressBar ( QProgressBar *pb )
 {
     blDebug ( "BlMainCompany::setProgressBar", 0 );
     m_progressbar = pb;
-    blDebug ( "END BlMainCompany::setProgressBar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -98,7 +98,7 @@ void BlMainCompany::setProgressBar ( QProgressBar *pb )
 int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
 {
     blDebug ( "BlMainCompany::insertWindow", 0 );
-    blDebug ( "END BlMainCompany::insertWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_listventanas->insertWindow ( nom, obj, compdup, titulo );
 }
 
@@ -116,7 +116,7 @@ int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QStri
 #endif
 {
     blDebug ( "BlMainCompany::selectWindow", 0 );
-    blDebug ( "END BlMainCompany::selectWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_listventanas->selectWindow ( nom, obj );
 }
 
@@ -128,7 +128,7 @@ int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QStri
 int BlMainCompany::deselectWindow()
 {
     blDebug ( "BlMainCompany::deselectWindow", 0 );
-    blDebug ( "END BlMainCompany::deselectWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_listventanas->deselectWindow();
 }
 
@@ -141,7 +141,7 @@ void BlMainCompany::removeWindow ( QObject *nom )
 {
     blDebug ( "BlMainCompany::removeWindow", 0 );
     m_listventanas->removeWindow ( nom );
-    blDebug ( "END BlMainCompany::removeWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -151,7 +151,7 @@ void BlMainCompany::removeWindow ( QObject *nom )
 BlMainCompany::BlMainCompany()
 {
   blDebug ( "BlMainCompany::BlMainCompany", 0 );  
-  blDebug ( "END BlMainCompany::BlMainCompany", 0 );
+  blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -164,7 +164,7 @@ BlMainCompany::~BlMainCompany()
     /// cerramos todas las ventanas y las DestructiveClose se borran.
     m_listventanas->vaciar();
     /// \NOTE: El vaciado de las ventanas debe hacerse en la clase hija ya que el destructor de la clase derivada se ejecuta primero y se generaria un segfault.
-    blDebug ( "END BlMainCompany::~BlMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -185,7 +185,7 @@ void BlMainCompany::init ( QString bd, QString tipo )
     m_progressbar->setVisible ( TRUE );
 
     inicializa ( bd );
-    blDebug ( "END BlMainCompany::init", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -210,7 +210,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
     if ( bd == "" ) {
         exit ( 1 );
     } // end if
-    blDebug ( "END BlMainCompany::searchCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return bd;
 }
 
@@ -223,7 +223,7 @@ void BlMainCompany::s_indexadorCambiaEstado ( bool visible )
 {
     blDebug ( "BlMainCompany::s_indexadorCambiaEstado", 0 );
     m_listventanas->setVisibilityState ( visible );
-    blDebug ( "END BlMainCompany::s_indexadorCambiaEstado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -236,7 +236,7 @@ void BlMainCompany::muestraPaises()
     BlCountryView *pais = new BlCountryView ( this, 0 );
     m_pWorkspace->addSubWindow ( pais );
     pais->show();
-    blDebug ( "END BlMainCompany::muestrapaises", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

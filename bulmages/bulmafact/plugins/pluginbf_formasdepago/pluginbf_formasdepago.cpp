@@ -36,7 +36,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Entra plugin pluginbf_formasdepago\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -85,7 +85,7 @@ int SNewFPagoView ( BfCompany *v )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_formasdepago::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_fieldName == "descforma_pago" ) {
         BlComboBox * editor = new BlComboBox ( g_editor );
@@ -102,7 +102,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    blDebug ( "END pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return ret;
 }
@@ -111,7 +111,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditFormaPago" ) {
         BlComboBox * comboBox = ( BlComboBox * ) g_editor;
@@ -119,14 +119,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditFormaPago" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -134,14 +134,14 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->setId ( value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( sub->m_campoactual->fieldName() == "descforma_pago" ) {
         QString params[1]= {  sub->m_campoactual->text() };
 	QString query = "SELECT idforma_pago FROM forma_pago WHERE descforma_pago = $1";
@@ -151,7 +151,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    blDebug ( "END pluginbf_articulo::BlSubForm_editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

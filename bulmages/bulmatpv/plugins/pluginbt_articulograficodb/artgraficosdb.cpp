@@ -83,7 +83,7 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     // Muestra la primera pantalla creada
     muestraPantalla ( 0 );
 
-    blDebug ( "END ArtGraficosDb::ArtGraficosDb", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ArtGraficosDb::~ArtGraficosDb()
@@ -96,7 +96,7 @@ ArtGraficosDb::~ArtGraficosDb()
         delete pantalla;
     } // end for
 
-    blDebug ( "END ArtGraficosDb::~ArtGraficosDb", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ArtGraficosDb::cellClicked ( int row, int column )
@@ -108,7 +108,7 @@ void ArtGraficosDb::cellClicked ( int row, int column )
 
     // Celda vacia. No hacemos nada.
     if ( label == NULL ) {
-	blDebug ( "END ArtGraficosDb::cellClicked", 0, "Celda Vacia" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Celda vacia") );
         return;
     }
 
@@ -123,7 +123,7 @@ void ArtGraficosDb::cellClicked ( int row, int column )
         ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( codigo );
     } // end if
 
-    blDebug ( "END ArtGraficosDb::cellClicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ArtGraficosDb::on_mui_botonSiguiente_pressed()
@@ -140,7 +140,7 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
     setUpdatesEnabled ( false );
 */
 
-    blDebug ( "END ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ArtGraficosDb::on_mui_botonAnterior_pressed()
@@ -154,7 +154,7 @@ void ArtGraficosDb::on_mui_botonAnterior_pressed()
     repaint();
     setUpdatesEnabled ( false );
 */
-    blDebug ( "END ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -180,7 +180,7 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
     mui_stack->setCurrentIndex ( numPantalla );
     mui_titulo->setText ( pantalla->accessibleName() );
 
-    blDebug ( "END ArtGraficosDb::muestraPantalla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -354,7 +354,7 @@ void ArtGraficosDb::renderPantallas ()
 //        mui_stack->setSizePolicy( QSizePolicy() );
 
     } // end for
-    blDebug ( "END ArtGraficosDb::muestraPantalla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -478,7 +478,7 @@ void ArtGraficosDb::ponPantallas()
 
     g_pantallas->setWidget ( widget );
 
-    blDebug ( "END ArtGraficosDb::ponPantallas", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -495,5 +495,5 @@ void ArtGraficosDb::pulsadoBoton()
     setUpdatesEnabled ( false );
 */
 
-    blDebug ( "END ArtGraficosDb::pulsadoBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

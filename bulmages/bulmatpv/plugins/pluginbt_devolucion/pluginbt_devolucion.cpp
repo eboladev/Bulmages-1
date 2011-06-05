@@ -40,7 +40,7 @@ MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *em
     blDebug ( "MyDevButton::MyDevButton", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    blDebug ( "END MyDevButton::MyDevButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *em
 MyDevButton::~MyDevButton()
 {
     blDebug ( "MyDevButton::~MyDevButton", 0 );
-    blDebug ( "END MyDevButton::~MyDevButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -78,7 +78,7 @@ void MyDevButton::on_click (  )
 
     delete diag;
 
-    blDebug ( "END MyDevButton::cambia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -94,7 +94,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_devolucion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

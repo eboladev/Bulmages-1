@@ -51,7 +51,7 @@ SociosList::SociosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END SociosList::SociosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -89,7 +89,7 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END SociosList::SociosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -98,7 +98,7 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
 SociosList::~SociosList()
 {
     blDebug ( "SociosList::~SociosList", 0 );
-    blDebug ( "END SociosList::~SociosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -112,7 +112,7 @@ void SociosList::presentar()
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     } // end if
-    blDebug ( "END SociosList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Seleccionar si queremos ver clientes o socios
@@ -128,7 +128,7 @@ void SociosList::on_mui_sociocliente_activated( int index )
       mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     }
 
-    blDebug ( "END SociosList::on_mui_sociocliente_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -143,7 +143,7 @@ QString SociosList::generaFiltro()
         filtro += " ) ";
     } // end if
 
-    blDebug ( "END SociosList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -169,7 +169,7 @@ void SociosList::imprimir()
 {
     blDebug ( "SociosList::imprimir", 0 );
     mui_list->printPDF ( _ ( "Padres" ) );
-    blDebug ( "END SociosList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -200,7 +200,7 @@ void SociosList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    blDebug ( "END:SociosList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -228,7 +228,7 @@ void SociosList::editar ( int )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    blDebug ( "END SociosList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -266,7 +266,7 @@ void SociosList::setMainCompany ( BfCompany *comp )
 QString SociosList::idcliente()
 {
     blDebug ( "SociosList::idcliente", 0 );
-    blDebug ( "END SociosList::idcliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idcliente;
 }
 
@@ -311,14 +311,14 @@ SociosListSubForm::SociosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END SociosListSubForm::SociosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 SociosListSubForm::~SociosListSubForm()
 {
     blDebug ( "SociosListSubForm::~SociosListSubForm", 0 );
-    blDebug ( "END SociosListSubForm::~SociosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

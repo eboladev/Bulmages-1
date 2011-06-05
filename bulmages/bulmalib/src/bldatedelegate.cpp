@@ -34,7 +34,7 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allo
 {
    blDebug ( "BlDateDelegate::BlDateDelegate", 0 ) ;
 
-   blDebug ( "END BlDateDelegate::BlDateDelegate", 0 ) ;
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -51,7 +51,7 @@ QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewI
    BlDateSearch *ds = new BlDateSearch ( parent ) ;
    ds->setMainCompany ( m_company ) ;
 
-   blDebug ( "END BlDateDelegate::createEditor", 0 ) ;
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
    return ds;
 }
@@ -77,7 +77,7 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
 
    ds->setDate ( fecha );
 
-   blDebug ( "END BlDateDelegate::setEditorData", 0 ) ;
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -94,7 +94,7 @@ void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, 
    QString fecha = ( ( BlDateSearch * ) editor ) ->text();
    model->setData ( index, fecha ) ;
 
-   blDebug ( "END BlDateDelegate::setModelData", 0 ) ;
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -110,7 +110,7 @@ void BlDateDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionV
 
    editor->setGeometry ( vis.rect ) ;
 
-   blDebug ( "END BlDateDelegate::updateEditorGeometry", 0 ) ;
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

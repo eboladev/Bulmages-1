@@ -34,7 +34,7 @@ BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
     blDebug ( "BusquedaColor::BusquedaColor", 0 );
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    blDebug ( "END BusquedaColor::BusquedaColor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -45,7 +45,7 @@ BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
 BusquedaColor::~BusquedaColor()
 {
     blDebug ( "BusquedaColor::~BusquedaColor", 0 );
-    blDebug ( "END BusquedaColor::~BusquedaColor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -82,7 +82,7 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
     } else {
         setCurrentIndex ( i2 );
     } // end if
-    blDebug ( "END BusquedaColor::setidtc_color", 0, idtc_color );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -94,7 +94,7 @@ void BusquedaColor::setFieldValue ( QString idtc_color )
 {
     blDebug ( "BusquedaColor::setFieldValue", 0 );
     setidtc_color ( idtc_color );
-    blDebug ( "END BusquedaColor::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -107,10 +107,10 @@ QString BusquedaColor::idtc_color()
     blDebug ( "BusquedaColor::idtc_color", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( "END BusquedaColor::idtc_color", 0, m_comboRecordSet->value( "idtc_color", index - 1 ) );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return ( m_comboRecordSet->value( "idtc_color", index - 1 ) );
     } else {
-        blDebug ( "END BusquedaColor::idtc_color", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return "";
     } // end if
 }
@@ -123,7 +123,7 @@ QString BusquedaColor::idtc_color()
 QString BusquedaColor::fieldValue()
 {
     blDebug ( "BusquedaColor::fieldValue", 0 );
-    blDebug ( "END BusquedaColor::fieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return idtc_color();
 }
 
@@ -136,7 +136,7 @@ void BusquedaColor::setMainCompany ( BfCompany *comp )
 {
     blDebug ( "BusquedaColor::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
-    blDebug ( "END BusquedaColor::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -152,7 +152,7 @@ void BusquedaColor::m_activated ( int index )
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    blDebug ( "END BusquedaColor::m_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// ========================= ITEM DELEGATE ===============================0
@@ -174,7 +174,7 @@ BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
     setFieldId ( "idtc_color" );
     m_valores["nomtc_color"] = "";
     setAllowNull(FALSE);
-    blDebug ( "END BusquedaColorDelegate::BusquedaColorDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -185,6 +185,6 @@ BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
 BusquedaColorDelegate::~BusquedaColorDelegate()
 {
     blDebug ( "BusquedaColorDelegate::~BusquedaColorDelegate", 0 );
-    blDebug ( "END BusquedaColorDelegate::~BusquedaColorDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

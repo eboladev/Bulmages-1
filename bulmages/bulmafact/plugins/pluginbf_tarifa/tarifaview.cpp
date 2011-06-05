@@ -100,7 +100,7 @@ void TarifaView::pintar()
     blDebug ( "TarifaView::pintar", 0 );
     mui_nomtarifa->setText ( dbValue ( "nomtarifa" ) );
     setWindowTitle ( _ ( "Tarifa" ) + " " + mui_nomtarifa->text() );
-    blDebug ( "END TarifaView::pintar", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -132,7 +132,7 @@ QString TarifaView::formaQuery ( QString idtarifa )
 
     QString SQLQuery = "SELECT * FROM (SELECT * FROM (SELECT * FROM almacen " + wherealmacen + ") AS t6, (SELECT * FROM articulo " + wherearticulo + ") AS t5, (SELECT * FROM tarifa WHERE idtarifa = " + idtarifa + ") AS t2 ) AS t3 ";
     SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idtarifa = " + idtarifa + ") as t1 ON t1.idtarifa = t3.idtarifa AND t1.idalmacen = t3.idalmacen AND t1.idarticulo = t3.idarticulo";
-    blDebug ( "END TarifaView::formaQuery", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return SQLQuery;
 }
 
@@ -169,7 +169,7 @@ int TarifaView::load ( QString idtarifa )
     pintar();
 
     dialogChanges_readValues();
-    blDebug ( "END TarifaView::cargar\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -256,6 +256,6 @@ void TarifaView::on_mui_borrar_clicked()
             close();
         } // end if
     } // end if
-    blDebug ( "END TarifaView::on_mui_borrar_clicked()\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

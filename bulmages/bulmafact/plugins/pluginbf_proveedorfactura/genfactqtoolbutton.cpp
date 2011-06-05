@@ -51,7 +51,7 @@ GenFacProQToolButton::GenFacProQToolButton ( QWidget *fac , QWidget *parent ) : 
     blDebug ( "GenFacProQToolButton::GenFacProQToolButton", 0 );
     m_object = fac;
     setBoton();
-    blDebug ( "END GenFacProQToolButton::GenFacProQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -61,7 +61,7 @@ GenFacProQToolButton::GenFacProQToolButton ( QWidget *fac , QWidget *parent ) : 
 GenFacProQToolButton::~GenFacProQToolButton()
 {
     blDebug ( "GenFacProQToolButton::~GenFacProQToolButton", 0 );
-    blDebug ( "END GenFacProQToolButton::~GenFacProQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -80,7 +80,7 @@ void GenFacProQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( "END GenFacProQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -100,7 +100,7 @@ void GenFacProQToolButton::click()
         generarFacturaProveedor1();
     }// end if
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -205,7 +205,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( "END GenFacProQToolButton::generarFacturaProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -311,7 +311,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( "END GenFacProQToolButton::generarFactura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -10,14 +10,14 @@
 
 PluginBc_Online:: PluginBc_Online()
 {
-    blDebug ( "PluginBc_Online::PluginBc_Online", 0 );
-    blDebug ( "END PluginBc_Online::PluginBc_Online", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 PluginBc_Online::~PluginBc_Online()
 {
-    blDebug ( "PluginBc_Online::~PluginBc_Online", 0 );
-    blDebug ( "END PluginBc_Online::~PluginBc_Online", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -42,7 +42,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -66,12 +66,12 @@ int entryPoint ( BcBulmaCont *bcont )
     bcont->toolBar->addAction ( accionA );
 
 
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( "END PluginBc_Amortizacion::BlAction_triggered", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionAmortizaciones") {
         if (g_amortizacionlist == NULL) {
             g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) g_bcont->company(), 0 );
@@ -80,7 +80,7 @@ int BlAction_triggered(BlAction *accion) {
         g_amortizacionlist->hide();
         g_amortizacionlist->show();
     } // end if
-    blDebug ( "END PluginBc_Amortizacion::BlAction_triggered", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

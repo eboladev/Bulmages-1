@@ -56,7 +56,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
     item->addDbField ( "idmodificador8", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador9", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
 
-    blDebug ( "END PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -89,7 +89,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_tablet->setWindowIcon(QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadoresg.png"  ));
     */
     
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -169,7 +169,7 @@ int BtTicket_imprimir_Post(BtTicket *tick)
 {
     blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
     impresionCocina(tick);
-    blDebug ( "END PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 */
@@ -181,7 +181,7 @@ int BtTicket_exportXML_Post( BtTicket *tick)
     blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
     QString filename ("/tmp/guardado_"+tick->dbValue("nomticket")+".jpg");
     filename.remove(' ');
-    blDebug ( "END PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -197,7 +197,7 @@ int BtCompany_setTicketActual(BtCompany *comp) {
       } // end if
     } // end if
     } // end if
-    blDebug ( "END PluginBt_Modificadores::BtCompany_setTicketActual", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -213,7 +213,7 @@ int BtCompany_setTicketActual_Post(BtCompany *comp) {
 	} // end if
       } // end if
     } // end if
-    blDebug ( "END PluginBt_Modificadores::BtCompany_setTicketActual_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -251,7 +251,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         semaforo = 0;
     } // end if
     */
-    blDebug ( "END PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return valor;
 }

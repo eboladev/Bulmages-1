@@ -35,7 +35,7 @@
 **/
 Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "Contrato::Contrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Contrato" ) );
     setDbTableName ( "contrato" );
     setDbFieldId ( "idcontrato" );
@@ -49,7 +49,7 @@ Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent 
     addDbField ( "fincontrato",  BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
     addDbField ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
     blScript(this);
-    blDebug ( "END Contrato::Contrato", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -59,8 +59,8 @@ Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent 
 **/
 Contrato::~Contrato()
 {
-    blDebug ( "Contrato::~Contrato", 0 );
-    blDebug ( "END Contrato::~Contrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -75,7 +75,7 @@ Contrato::~Contrato()
 **/
 int Contrato::remove()
 {
-    blDebug ( "Contrato::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( dbValue ( "idcontrato" ) != "" ) {
         mainCompany() ->begin();
         int error = m_listalineas->remove();
@@ -90,7 +90,7 @@ int Contrato::remove()
         } // end if
         mainCompany() ->commit();
     } // end if
-    blDebug ( "END Contrato::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -101,9 +101,9 @@ int Contrato::remove()
 **/
 void Contrato::vaciaContrato()
 {
-    blDebug ( "Contrato::vaciaContrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     DBclear();
-    blDebug ( "END Contrato::vaciaContrato", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -115,7 +115,7 @@ void Contrato::vaciaContrato()
 **/
 void Contrato::pintar()
 {
-    blDebug ( "pintaContrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     pintaidcliente ( dbValue ( "idcliente" ) );
     pintafincontrato ( dbValue ( "fincontrato" ) );
     pintaffincontrato ( dbValue ( "ffincontrato" ) );
@@ -126,7 +126,7 @@ void Contrato::pintar()
     pintaloccontrato ( dbValue ( "loccontrato" ) );
     /// Pintamoslas lineas
     m_listalineas->pintar();
-    blDebug ( "END pintaContrato", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -144,7 +144,7 @@ void Contrato::pintar()
 **/
 int Contrato::load ( QString idbudget )
 {
-    blDebug ( "Contrato::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     inicialize();
     QString query = "SELECT * FROM contrato WHERE idcontrato = " + idbudget;
     BlDbRecordSet * cur = mainCompany() ->loadQuery ( query );
@@ -154,7 +154,7 @@ int Contrato::load ( QString idbudget )
     delete cur;
     m_listalineas->load ( idbudget );
     pintar();
-    blDebug ( "END Contrato::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -172,7 +172,7 @@ int Contrato::load ( QString idbudget )
 **/
 int Contrato::save()
 {
-    blDebug ( "Contrato::guardar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString fecha;
     try {
         /// Calculamos el proximo numero de contrato para poder insertarlo en caso de que este sea nulo.
@@ -187,11 +187,11 @@ int Contrato::save()
         /// Hacemos una carga para recuperar datos como la referencia
         load ( id );
 
-        blDebug ( "END Contrato::guardar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
-        blDebug ( "Contrato::save() se produjo un error guardando la contrato", 0 );
         mainCompany() ->rollback();
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error") );
         throw  - 1;
     } // end try
 }
@@ -206,8 +206,8 @@ int Contrato::save()
 **/
 void Contrato::pintaidcliente ( QString )
 {
-    blDebug ( "Contrato::pintaidcliente", 0 );
-    blDebug ( "END Contrato::pintaidcliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -216,8 +216,8 @@ void Contrato::pintaidcliente ( QString )
 **/
 void Contrato::pintarefcontrato ( QString )
 {
-    blDebug ( "Contrato::pintarefcontrato", 0 );
-    blDebug ( "Contrato::pintarefcontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -226,8 +226,8 @@ void Contrato::pintarefcontrato ( QString )
 **/
 void Contrato::pintafincontrato ( QString )
 {
-    blDebug ( "Contrato::pintafincontrato", 0 );
-    blDebug ( "END Contrato::pintafincontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -236,8 +236,8 @@ void Contrato::pintafincontrato ( QString )
 **/
 void Contrato::pintadescontrato ( QString )
 {
-    blDebug ( "Contrato::pintadescontrato", 0 );
-    blDebug ( "END Contrato::pintadescontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -246,8 +246,8 @@ void Contrato::pintadescontrato ( QString )
 **/
 void Contrato::pintanomcontrato ( QString )
 {
-    blDebug ( "Contrato::pintanomcontrato", 0 );
-    blDebug ( "END Contrato::pintanomcontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -256,8 +256,8 @@ void Contrato::pintanomcontrato ( QString )
 **/
 void Contrato::pintaffincontrato ( QString )
 {
-    blDebug ( "Contrato::pintaffincontrato", 0 );
-    blDebug ( "END Contrato::pintaffincontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -266,8 +266,8 @@ void Contrato::pintaffincontrato ( QString )
 **/
 void Contrato::pintaloccontrato ( QString )
 {
-    blDebug ( "Contrato::pintaloccontrato", 0 );
-    blDebug ( "END Contrato::pintaloccontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -276,8 +276,8 @@ void Contrato::pintaloccontrato ( QString )
 **/
 void Contrato::pintaperiodicidadcontrato ( QString )
 {
-    blDebug ( "Contrato::pintaperiodicidadcontrato", 0 );
-    blDebug ( "END Contrato::pintaperiodicidadcontrato", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -286,8 +286,8 @@ void Contrato::pintaperiodicidadcontrato ( QString )
 **/
 void Contrato::inicialize()
 {
-    blDebug ( "Contrato::inicialize", 0 );
-    blDebug ( "END Contrato::inicialize", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -297,8 +297,8 @@ void Contrato::inicialize()
 **/
 QString Contrato::calculateValues()
 {
-    blDebug ( "Contrato::calculateValues", 0 );
-    blDebug ( "END Contrato::calculateValues", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 

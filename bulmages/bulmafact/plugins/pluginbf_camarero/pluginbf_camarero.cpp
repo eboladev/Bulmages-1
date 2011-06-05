@@ -32,7 +32,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de iva incluido", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Camarero", "0.12.1-0000");
@@ -52,7 +52,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
-    blDebug ( "PluginBfCamarero::TrabajadorView_TrabajadorView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -92,7 +92,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 
     m_hboxLayout1->addLayout ( hboxLayout160 );
     
-    blDebug ( _("END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"), 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -144,7 +144,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
-    blDebug("pluginbf_camarero::TrabajadorView_on_mui_lista_currentItemChanged_Post");
+    blDebug ( Q_FUNC_INFO, 0 );
     if (trab) {
 	QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passwordtrabajador" );
 	QCheckBox * l1 = trab->findChild<QCheckBox *> ( "mui_admintrabajador" );

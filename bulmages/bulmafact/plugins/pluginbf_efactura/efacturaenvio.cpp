@@ -33,13 +33,13 @@
 **/
 EFacturaEnvio::EFacturaEnvio ( BfCompany *emp, QWidget *parent ) : QWidget ( parent )
 {
-    blDebug ( "EFacturaEnvio::EFacturaEnvio", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query;
 
     setupUi ( this );  // Para que el form se inicialice bien
 
     //mainCompany() = emp;
-    blDebug ( "END EFacturaEnvio::EFacturaEnvio", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -48,8 +48,8 @@ EFacturaEnvio::EFacturaEnvio ( BfCompany *emp, QWidget *parent ) : QWidget ( par
 **/
 EFacturaEnvio::~EFacturaEnvio()
 {
-    blDebug ( "EFacturaEnvio::~EFacturaEnvio", 0 );
-    blDebug ( "EFacturaEnvio::~EFacturaEnvio", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

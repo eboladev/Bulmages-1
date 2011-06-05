@@ -27,11 +27,11 @@
 **/
 datosView::datosView ( QWidget *parent ) : QDialog ( parent )
 {
-    blDebug ( "datosView::datosView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setupUi ( this );
 
-    blDebug ( "END datosView::datosView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -40,8 +40,8 @@ datosView::datosView ( QWidget *parent ) : QDialog ( parent )
 **/
 datosView::~datosView()
 {
-    blDebug ( "END datosView::~datosView", 0 );
-    blDebug ( "datosView::~datosView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,10 +50,10 @@ datosView::~datosView()
 **/
 void datosView::on_mui_cancelar_clicked()
 {
-    blDebug ( "datosView::on_mui_cancelar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     close();
     setResult ( Rejected );
-    blDebug ( "END datosView::on_mui_cancelar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,9 +62,9 @@ void datosView::on_mui_cancelar_clicked()
 **/
 void datosView::on_mui_aceptar_clicked()
 {
-    blDebug ( "datosView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     close();
     setResult ( Accepted );
-    blDebug ( "END datosView::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

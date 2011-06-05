@@ -33,7 +33,7 @@
 bool BlDbLoginDialog::authOK()
 {
     blDebug ( "BlDbLogindialog::authOK", 0 );
-    blDebug ( "END BlDbLoginDialog::authOK", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_authOK;
 }
 
@@ -52,7 +52,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
     validate();
-    blDebug ( "END BlDbLoginDialog::BlDbLoginDialog", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,7 +62,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
 BlDbLoginDialog::~BlDbLoginDialog()
 {
     blDebug ( "BlDbLoginDialog::~BlDbLoginDialog", 0 );
-    blDebug ( "END BlDbLoginDialog::~BlDbLoginDialog", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -112,6 +112,6 @@ void BlDbLoginDialog::validate()
         m_password->setText ( "" );
         m_login->setFocus();
     } // end if
-    blDebug ( "END BlDbLoginDialog::validate" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -47,7 +47,7 @@
 CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "CuadranteView::CuadranteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -70,7 +70,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
-    blDebug ( "END CuadranteView::CuadranteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -81,9 +81,9 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
 **/
 CuadranteView::~CuadranteView()
 {
-    blDebug ( "CuadranteView::~CuadranteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     saveConfig();
-    blDebug ( "END CuadranteView::~CuadranteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -93,7 +93,7 @@ CuadranteView::~CuadranteView()
 **/
 void CuadranteView::inicializaTrabajadores()
 {
-    blDebug ( "CuadranteView::inicializaTrabajadores", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_listtrabajadores->clear();
     mui_listtrabajadores->setColumnCount ( 2 );
     mui_listtrabajadores->hideColumn ( 1 );
@@ -121,7 +121,7 @@ void CuadranteView::inicializaTrabajadores()
         } // end if
         delete cur;
     } // end if
-    blDebug ( "END CuadranteView::inicializaTrabajadores", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -133,7 +133,7 @@ void CuadranteView::inicializaTrabajadores()
 **/
 void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 {
-    blDebug ( "CuadranteView::inicializaCuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         /// Si el cuadrante ha sido manipulado guardamos las configuracion del mismo.
         if ( mui_cuadrante->rowCount() != 0 )
@@ -185,9 +185,9 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
         } // end while
         loadConfig();
     } catch ( ... ) {
-        blDebug ( "Error en la carga del calendario", 2 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga") );
         return;
-    }
+    } // end try
 }
 
 
@@ -197,8 +197,9 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 **/
 void CuadranteView::on_mui_calendario_clicked ( const QDate &date )
 {
-    blDebug ( "CuadranteView::on_mui_calendario_clicked", 0, date.toString ( "dd/MM/yyyy" ) );
+    blDebug ( Q_FUNC_INFO, 0 );
     inicializaCuadrante ( date );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -208,7 +209,7 @@ void CuadranteView::on_mui_calendario_clicked ( const QDate &date )
 **/
 void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidgetItem *item, int )
 {
-    blDebug ( "elementos dobleclickados", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString item1 = item->text ( 1 );
 
     QList<QTableWidgetSelectionRange> selectionranges = mui_cuadrante->selectedRanges();
@@ -228,7 +229,7 @@ void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidgetItem 
 **/
 void CuadranteView::on_mui_editar_clicked()
 {
-    blDebug ( "editar cuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Cuadrante1View *cuad = new Cuadrante1View ( mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
@@ -244,7 +245,7 @@ void CuadranteView::on_mui_editar_clicked()
 **/
 void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint & pos )
 {
-    blDebug ( "CuadranteView::on_mui_calendario_customContextMenuRequested", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QMenu *popup = new QMenu ( mui_calendario );
 
     popup->addSeparator();
@@ -265,7 +266,7 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
     } // end if
 
     inicializaCuadrante ( mui_calendario->selectedDate() );
-    blDebug ( "END CuadranteView::on_mui_calendario_customContextMenuRequested", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -274,10 +275,10 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
 **/
 void CuadranteView::on_mui_actualizar_clicked()
 {
-    blDebug ( "CuadranteView::on_mui_actualizar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     inicializaTrabajadores();
     inicializaCuadrante ( mui_calendario->selectedDate() );
-    blDebug ( "CuadranteView::on_mui_actualizar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -286,7 +287,7 @@ void CuadranteView::on_mui_actualizar_clicked()
 **/
 void CuadranteView::on_mui_limpiar_clicked()
 {
-    blDebug ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 );
     QDate datefin = date.addDays ( 6 );
     QString query = "DELETE FROM horario WHERE idcuadrante IN (SELECT idcuadrante FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "')";
@@ -294,7 +295,7 @@ void CuadranteView::on_mui_limpiar_clicked()
     query = "DELETE FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "'";
     mainCompany() ->runQuery ( query );
     on_mui_actualizar_clicked();
-    blDebug ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -304,13 +305,13 @@ void CuadranteView::on_mui_limpiar_clicked()
 **/
 void CuadranteView::on_mui_duplicar_clicked()
 {
-    blDebug ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     for ( QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 )
                        ; date <= mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 7 )
             ; date = date.addDays ( 1 ) ) {
         QDate fechaant = date.addDays ( -7 );
         QString query = "SELECT * FROM cuadrante WHERE fechacuadrante = '" + fechaant.toString ( "dd/MM/yyyy" ) + "'";
-        blDebug ( query, 2 );
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'")).arg(query) );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         while ( !cur->eof() ) {
             query = "UPDATE cuadrante SET ";
@@ -347,7 +348,7 @@ void CuadranteView::on_mui_duplicar_clicked()
 
     } // end for
     on_mui_actualizar_clicked();
-    blDebug ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -356,7 +357,7 @@ void CuadranteView::on_mui_duplicar_clicked()
 **/
 void CuadranteView::on_mui_imprimir_clicked()
 {
-    blDebug ( "CuadranteView::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "cuadrante.rml";
@@ -438,7 +439,7 @@ void CuadranteView::on_mui_imprimir_clicked()
         file.close();
     } // end if
     blCreateAndLoadPDF ( "cuadrante" );
-    blDebug ( "END CuadranteView::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -448,7 +449,7 @@ void CuadranteView::on_mui_imprimir_clicked()
 **/
 void CuadranteView::saveConfig()
 {
-    blDebug ( "CuadranteView::saveConfig", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString aux = "";
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
@@ -467,7 +468,7 @@ void CuadranteView::saveConfig()
 
         file.close();
     } // end if
-    blDebug ( "END CuadranteView::saveConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -476,7 +477,7 @@ void CuadranteView::saveConfig()
 **/
 void CuadranteView::loadConfig()
 {
-    blDebug ( "CuadranteView::loadConfig", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantecfn.cfn" );
     QString line;
     int error = 1;
@@ -516,6 +517,6 @@ void CuadranteView::loadConfig()
     }
 
     file.close();
-    blDebug ( "END CuadranteView::loadConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

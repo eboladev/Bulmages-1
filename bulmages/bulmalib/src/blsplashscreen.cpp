@@ -86,7 +86,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     colorfondobarra.setAlpha ( 100 );
     pbarra.setBrush ( QPalette::Base, colorfondobarra );
     m_barra->setPalette ( pbarra );
-    blDebug ( "END BlSplashScreen::BlSplashScreen", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -102,7 +102,7 @@ BlSplashScreen::~BlSplashScreen()
     delete m_image0;
     delete m_brush;
     delete m_barra;
-    blDebug ( "END BlSplashScreen::~BlSplashScreen", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -127,7 +127,7 @@ void BlSplashScreen::mensaje ( QString mens )
     m_label->repaint();
     repaint();
     cadant = cad;
-    blDebug ( "END BlSplashScreen::mensaje", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -139,7 +139,7 @@ void BlSplashScreen::setBarraProgreso ( int progreso )
 {
     blDebug ( "BlSplashScreen::setBarraProgreso", 0 );
     m_barra->setValue ( progreso );
-    blDebug ( "END BlSplashScreen::setBarraProgreso", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -154,6 +154,6 @@ void BlSplashScreen::barraprogreso()
     } else {
         m_barra->setValue ( 0 );
     } // end if
-    blDebug ( "END BlSplashScreen::barraprogreso", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

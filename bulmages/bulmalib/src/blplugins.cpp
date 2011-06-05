@@ -47,7 +47,7 @@ void initPlugins()
 BlPlugins::BlPlugins()
 {
     blDebug ( "BlPlugins::BlPlugins", 0 );
-    blDebug ( "END BlPlugins::BlPlugins", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -57,7 +57,7 @@ BlPlugins::BlPlugins()
 BlPlugins::~BlPlugins()
 {
     blDebug ( "BlPlugins::~BlPlugins", 0 );
-    blDebug ( "END BlPlugins::~BlPlugins", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -74,7 +74,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
     QString cad = libs;
 
     if ( cad == "" ) {
-        blDebug ( "END BlPlugins::cargaLibs", 0, cad );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
 
@@ -98,7 +98,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             blMsgInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
         } // end if
     } // end for
-    blDebug ( "END BlPlugins::cargaLibs", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -148,7 +148,7 @@ int BlPlugins::lanza ( const char *func, void *clase )
     
     } // end for
 
-    blDebug ( "END BlPlugins::lanza", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return a;
 }
 
@@ -198,7 +198,7 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
     
     } // end for
 
-    blDebug ( "END BlPlugins::lanza", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return a;
 }
 

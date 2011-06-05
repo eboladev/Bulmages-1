@@ -41,7 +41,7 @@
 JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "JDirectivaView::JDirectivaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -84,22 +84,22 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _ ( "Error al crear el jdirectiva" ), this );
     } // end try
     
-    blDebug ( "END JDirectivaView::JDirectivaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 JDirectivaView::~JDirectivaView()
 {
-    blDebug ( "JDirectivaView::~JDirectivaView", 0 );
-    blDebug ( "END JDirectivaView::~JDirectivaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 QString JDirectivaView::templateName ( void )
 {
-    blDebug ( "JDirectivaView::~templateName", 0 );
-    blDebug ( "END JDirectivaView::~templateName", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "jdirectiva" );
 }
@@ -107,7 +107,7 @@ QString JDirectivaView::templateName ( void )
 
 void JDirectivaView::imprimir()
 {
-    blDebug ( "JDirectivaView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el jdirectiva.
     QString SQLQuery = "";
@@ -126,17 +126,17 @@ void JDirectivaView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( "END JDirectivaView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int JDirectivaView::afterSave()
 {
-    blDebug ( "JDirectivaView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
     mui_list->save();
     
-    blDebug ( "END JDirectivaView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -147,11 +147,11 @@ int JDirectivaView::beforeDelete()
 
 int JDirectivaView::cargarPost ( QString id )
 {
-    blDebug ( "JDirectivaView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->load("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
     
-    blDebug ( "END JDirectivaView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }

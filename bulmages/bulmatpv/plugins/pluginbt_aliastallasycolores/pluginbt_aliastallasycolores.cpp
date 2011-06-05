@@ -47,7 +47,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick)
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
     rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Talla" ) );
     rec->addDbField ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Color" ) );
-    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -74,7 +74,7 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }
 
@@ -101,7 +101,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }
 
@@ -274,7 +274,7 @@ int MTicket_pintar ( MTicket *mtick )
     cursor.clearSelection();
     mtick->mui_browser->setTextCursor( cursor );
     
-    blDebug ( "END pluginbt_aliastallasycolores::MTicket::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return -1;
 }
 
@@ -395,7 +395,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   cursor.clearSelection();
   mtick->mui_browser->setTextCursor( cursor );
   
-  blDebug ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
+  blDebug ( ("END ", Q_FUNC_INFO), 0 );
   
   return -1;
   
@@ -542,7 +542,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 // 
 //     /// Pintamos el HTML en el textBrowser
 //     mtick->mui_browser->setText ( html );
-//     blDebug ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
+//     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 //     return -1;
 }
 
@@ -960,7 +960,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
         system ( comando.toAscii().data() );
     } // end if
-    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 

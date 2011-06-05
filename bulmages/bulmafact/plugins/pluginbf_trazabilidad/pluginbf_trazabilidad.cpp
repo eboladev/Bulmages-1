@@ -62,7 +62,7 @@ int entryPoint ( BfBulmaFact *bges )
     bges->menuMaestro->addAction ( accionA );
 
 
-    blDebug ( "END entryPoint", 0, "Punto de Entrada de PluginBf_Trazabilidad" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -73,7 +73,7 @@ int BlAction_triggered(BlAction *accion) {
         MovimientosView *mov = new MovimientosView ( ( BfCompany * ) g_bges->company() );
         g_bges->company() ->pWorkspace() ->addSubWindow ( mov );
         mov->show();
-        blDebug ( "END PluginBf_Trazabilidad::BlAction_triggered::mui_actionMovimientos", 0 );        
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     return 0;
 }
@@ -89,7 +89,7 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
 {
     blDebug ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
     subform->addSubFormHeader ( "lotelalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _("Lote") );
-    blDebug ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -102,7 +102,7 @@ int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *s
 {
     blDebug ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     subform->addSubFormHeader ( "lotelalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _("Lote") );
-    blDebug ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -116,7 +116,7 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
     blDebug ( "ListLinFacturaView_ListLinFacturaView", 0 );
     subform->addSubFormHeader ( "lotelfactura", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _("Lote") );
-    blDebug ( "END ListLinFacturaView_ListLinFacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -130,7 +130,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 {
     blDebug ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
     subform->addSubFormHeader ( "lotelfacturap", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _("Lote") );
-    blDebug ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -176,5 +176,5 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
     */
     return 0;
 
-    blDebug ( "END BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

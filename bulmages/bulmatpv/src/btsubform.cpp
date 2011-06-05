@@ -42,7 +42,7 @@ BtSubForm::BtSubForm ( QWidget *parent ) : BlSubForm ( parent )
     m_delegate = new BtSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
-    blDebug ( "END BtSubForm::BtSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -53,7 +53,7 @@ BtSubForm::~BtSubForm()
 {
     blDebug ( "BtSubForm::~BtSubForm", 0 );
     delete m_delegate;
-    blDebug ( "END BtSubForm::~BtSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,7 +65,7 @@ void BtSubForm::load ( QString query )
 {
     blDebug ( "BtSubForm::cargar", 0 );
     BlSubForm::load ( query );
-    blDebug ( "END BtSubForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -78,7 +78,7 @@ void BtSubForm::load ( QString query )
 void BtSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     blDebug ( "BtSubForm::pressedAsterisk", 0 );
-    blDebug ( "END BtSubForm::pressedAsterisk", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -93,7 +93,7 @@ void BtSubForm::on_mui_list_pressedSlash ( int row, int col )
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     QString text = blTextEditor ( camp->text() );
     camp->set ( text );
-    blDebug ( "END BtSubForm::pressedSlash", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -105,7 +105,7 @@ void BtSubForm::on_mui_list_pressedSlash ( int row, int col )
 void BtSubForm::on_mui_list_pressedMinus ( int row, int col )
 {
     blDebug ( "BtSubForm::pressedMinus", 0 );
-    blDebug ( "END BtSubForm::pressedMinus", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -118,7 +118,7 @@ void BtSubForm::on_mui_list_pressedMinus ( int row, int col )
 void BtSubForm::on_mui_list_cellChanged ( int row, int col )
 {
     blDebug ( "BtSubForm::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) );
-    blDebug ( "END BtSubForm::on_mui_list_editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -151,7 +151,7 @@ void BtSubForm::setIdCliente ( QString id )
 
     /// Si el idcliente no existe salimos.
     if ( id == "" ) {
-        blDebug ( "END BtSubForm::setIdCliente", 0, "idcliente invalido" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("'idcliente' no valido") );
         return;
     } // end if
 
@@ -179,7 +179,7 @@ void BtSubForm::setIdCliente ( QString id )
         } // end for
     } // end if
     delete curcliente;
-    blDebug ( "END BtSubForm::setIdCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -231,7 +231,7 @@ void BtSubForm::setIdProveedor ( QString id )
         } // end for
     } // end if
     delete curproveedor;
-    blDebug ( "END BtSubForm::setIdProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -244,7 +244,7 @@ void BtSubForm::setMainCompany ( BlMainCompany *c )
     blDebug ( "BtSubForm::setcompany", 0 );
     BlSubForm::setMainCompany ( c );
     m_delegate->setMainCompany ( c );
-    blDebug ( "END BtSubForm::setcompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -257,7 +257,7 @@ int BtSubForm::cerrarEditor()
     blDebug ( "BtSubForm::cerrarEditor", 0 );
     QWidget *editor = mui_list->QAbstractItemView::indexWidget ( mui_list->currentIndex() );
     m_delegate->cerrarEditor ( editor );
-    blDebug ( "END BtSubForm::cerrarEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -274,7 +274,7 @@ BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelega
     blDebug ( "BtSubFormDelegate::BtSubFormDelegate", 0 );
     m_subform = ( BtSubForm * ) parent;
     installEventFilter ( this );
-    blDebug ( "END BtSubFormDelegate::BtSubFormDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -284,7 +284,7 @@ BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelega
 BtSubFormDelegate::~BtSubFormDelegate()
 {
     blDebug ( "BtSubFormDelegate::~BtSubFormDelegate", 0 );
-    blDebug ( "END BtSubFormDelegate::~BtSubFormDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -320,7 +320,7 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } // end if
     return QStyledItemDelegate::createEditor ( parent, option, index );
-    blDebug ( "END BtSubFormDelegate::createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
    return 0;
 }
 
@@ -381,7 +381,7 @@ void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } else {
         QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( "END BtSubFormDelegate::setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -434,7 +434,7 @@ void BtSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     } else {
         QStyledItemDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( "END BtSubFormDelegate::setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -501,7 +501,7 @@ int BtSubFormDelegate::cerrarEditor ( QWidget *editor )
 {
     blDebug ( "BtSubFormDelegate::cerrarEditor", 0 );
     emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
-    blDebug ( "END BtSubFormDelegate::cerrarEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

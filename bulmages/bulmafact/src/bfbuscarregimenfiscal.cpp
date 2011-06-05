@@ -38,7 +38,7 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
     addItem ( "Normal" );
     addItem ( "Intracomunitario" );
     addItem ( "Extracomunitario" );
-    blDebug ( "END BfBuscarRegimenFiscal::BfBuscarRegimenFiscal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -49,7 +49,7 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
 BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal()
 {
     blDebug ( "BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
-    blDebug ( "END BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -71,7 +71,7 @@ void BfBuscarRegimenFiscal::setRegimenFiscal ( QString regimen )
     } else if ( regimen == "Extracomunitario" ) {
         setCurrentIndex ( 2 );
     } // end if
-    blDebug ( "END BfBuscarRegimenFiscal::setRegimenFiscal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,7 +83,7 @@ void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
 {
     blDebug ( "BfBuscarRegimenFiscal::setFieldValue", 0 );
     setRegimenFiscal ( regimen );
-    blDebug ( "END BfBuscarRegimenFiscal::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -99,7 +99,7 @@ void BfBuscarRegimenFiscal::m_activated ( int index )
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    blDebug ( "END BfBuscarRegimenFiscal::m_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -111,7 +111,7 @@ void BfBuscarRegimenFiscal::m_activated ( int index )
 QString BfBuscarRegimenFiscal::regimenFiscal()
 {
     blDebug ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
-    blDebug ( "END BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( currentText() );
 }
 
@@ -124,7 +124,7 @@ QString BfBuscarRegimenFiscal::regimenFiscal()
 QString BfBuscarRegimenFiscal::fieldValue()
 {
     blDebug ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
-    blDebug ( "END BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( currentText() );
 }
 

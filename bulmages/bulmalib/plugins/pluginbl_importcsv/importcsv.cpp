@@ -49,7 +49,7 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
-    blDebug ( "END ImportCSV::ImportCSV", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
@@ -59,7 +59,7 @@ ImportCSV::~ImportCSV()
     blDebug ( "ImportCSV::~ImportCSV", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
-    blDebug ( "END ImportCSV::~ImportCSV", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ImportCSV::on_mui_buscarArchivo_clicked()
@@ -117,7 +117,7 @@ void ImportCSV::on_mui_aceptar_clicked()
     } // end try
     file.close();
 
-    blDebug ( "END ImportCSV::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -66,7 +66,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
 
 
     
-    blDebug ( "END BlForm::BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -156,7 +156,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
 	  } // end if
     } // end if
     
-    blDebug ( "END BlForm::BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -168,7 +168,7 @@ BlForm::~BlForm()
     blDebug ( "BlForm::~BlForm", 0, this->windowTitle() );
     g_plugins->lanza ( "BlForm_DesBlForm", this );
     removeWindow();
-    blDebug ( "END BlForm::~BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -183,19 +183,19 @@ void BlForm::loadSpecs()
         /// Disparamos los plugins
     int res1 = g_plugins->lanza ( "BlForm_loadSpecs", this );
     if ( res1 != 0 ) {
-        blDebug ( "END BlForm::loadSpecs", 0, "Salida por plugins" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
         return;
     } // end if
     
     QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-        blDebug ( "END BlForm::loadSpecs", 0, "Fichero no se puede abrir" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error. No se puede abrir el archivo") );
         return;
     } // end if
     if ( !doc.setContent ( &file ) ) {
         file.close();
-        blDebug ( "END BlForm::loadSpecs", 0, "XML Invalido" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
         return;
     } // end if
     file.close();
@@ -262,7 +262,7 @@ void BlForm::loadSpecs()
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BlForm_loadSpecs_Post", this );
 
-    blDebug ( "END BlForm::loadSpecs", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -314,7 +314,7 @@ void BlForm::setSelectMode()
 {
     blDebug ( "BlForm::setSelectMode", 0 );
     m_modo = BL_SELECT_MODE;
-    blDebug ( "END BlForm::setSelectMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -325,7 +325,7 @@ void BlForm::setEditMode()
 {
     blDebug ( "BlForm::setEditMode", 0 );
     m_modo = BL_EDIT_MODE;
-    blDebug ( "END BlForm::setEditMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -336,7 +336,7 @@ void BlForm::setEditMode()
 bool BlForm::editMode()
 {
     blDebug ( "BlForm::editMode", 0 );
-    blDebug ( "END BlForm::editMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_modo == BL_EDIT_MODE;
 }
 
@@ -348,7 +348,7 @@ bool BlForm::editMode()
 bool BlForm::selectMode()
 {
     blDebug ( "BlForm::selectMode", 0 );
-    blDebug ( "END BlForm::selectMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_modo == BL_SELECT_MODE;
 }
 
@@ -360,7 +360,7 @@ void BlForm::on_mui_cancelar_clicked()
 {
     blDebug ( "BlForm::on_mui_cancelar_clicked", 0 );
     close();
-    blDebug ( "END BlForm::on_mui_cancelar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -371,7 +371,7 @@ void BlForm::on_mui_guardar_clicked()
 {
     blDebug ( "BlForm::on_mui_guardar_clicked", 0 );
     save();
-    blDebug ( "END BlForm::on_mui_guardar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -389,7 +389,7 @@ void BlForm::on_mui_aceptar_clicked()
     } catch ( ... ) {
         blDebug ( "Error al guardar la ficha", 2 );
     } // end try
-    blDebug ( "END BlForm::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -400,7 +400,7 @@ void BlForm::on_mui_imprimir_clicked()
 {
     blDebug ( "BlForm::on_mui_imprimir_clicked", 0 );
     imprimir();
-    blDebug ( "END BlForm::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -435,7 +435,7 @@ void BlForm::on_mui_borrar_clicked()
             blMsgInfo ( windowTitle() + _ ( "No se ha podido borrar" ) );
         }// end if
     } // end if
-    blDebug ( "END BlForm::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -473,7 +473,7 @@ void BlForm::closeEvent ( QCloseEvent *e )
         blMsgInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
     } // end try
-    blDebug ( "END BlForm::closeEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -487,7 +487,7 @@ int BlForm::removeWindow()
     if ( mainCompany() != NULL ) {
         mainCompany() ->removeWindow ( this );
     } // end if
-    blDebug ( "END BlForm::removeWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -510,7 +510,7 @@ void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString tit
     /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
     /// De configuracion por lo que si no es este no es ninguno.
     loadSpecs();
-    blDebug ( "END BlForm::insertWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -549,7 +549,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     } // end if
 
     delete popup;
-    blDebug ( "END BlForm::on_customContextMenuRequested", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -597,7 +597,7 @@ void BlForm::setDbTableName ( QString nom )
         } // end if
     } // end if
 
-    blDebug ( "END BlForm::setDbTableName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -609,7 +609,7 @@ void BlForm::setTitleName ( QString nom )
 {
     blDebug ( "BlForm::setTitleName" );
     m_title = nom;
-    blDebug ( "END BlForm::setTitleName" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -715,7 +715,7 @@ void BlForm::pintar()
         } // end for
     } // end for
     pintarPost();
-    blDebug ( "END BlForm::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -809,7 +809,7 @@ void BlForm::recogeValores()
         } // end if
 
     } // end for
-    blDebug ( "END BlForm::recogeValores", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -857,10 +857,10 @@ int BlForm::load ( QString id, bool paint )
         dialogChanges_readValues();
         insertWindow ( m_title + dbValue(m_campoid), this, TRUE, wtitle );
     } catch ( ... ) {
-        blDebug ( "END BlForm::cargar", 0, "Error en la carga" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga") );
         return -1;
     } // end try
-    blDebug ( "END BlForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -911,7 +911,7 @@ int BlForm::save()
                 } // end for
         } // end if
 
-        blDebug ( "END BlForm::guardar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( int valor ) {
         /// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
@@ -933,7 +933,7 @@ int BlForm::save()
 int BlForm::beforeDelete()
 {
     blDebug ( "BlForm::beforeDelete", 0 );
-    blDebug ( "END BlForm::beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -964,10 +964,10 @@ int BlForm::remove()
                 } // end for
         } // end if
 
-        blDebug ( "END BlForm::borrar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return err;
     } catch ( ... ) {
-        blDebug ( "END BlForm::borrar", 0, "Error en el guardado" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar") );
         return -1;
     } // end try
 }
@@ -980,7 +980,7 @@ int BlForm::remove()
 int BlForm::beforeSave()
 {
     blDebug ( "BlForm::beforeSave", 0 );
-    blDebug ( "END BlForm::beforeSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -992,7 +992,7 @@ int BlForm::beforeSave()
 int BlForm::afterSave()
 {
     blDebug ( "BlForm::afterSave", 0 );
-    blDebug ( "END BlForm::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -1004,7 +1004,7 @@ int BlForm::afterSave()
 int BlForm::cargarPost ( QString )
 {
     blDebug ( "BlForm::cargarPost", 0 );
-    blDebug ( "END BlForm::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -1015,7 +1015,7 @@ int BlForm::cargarPost ( QString )
 void BlForm::pintarPost()
 {
     blDebug ( "BlForm::pintarPost", 0 );
-    blDebug ( "END BlForm::pintarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1305,7 +1305,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    blDebug ( "END BlForm::parseTags", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 
@@ -1331,7 +1331,7 @@ QString BlForm::parseIfQuery ( const QString &query, const QString &datos )
         result = datos;
     } // end while
     delete cur;
-    blDebug ( "END BlForm::parseIfQuery", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -1362,7 +1362,7 @@ QString BlForm::parseIf ( const QString &query, const QString &datos, const QStr
         } // end if
     } // end while
     delete cur;
-    blDebug ( "END BlForm::parseIf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -1388,7 +1388,7 @@ QString BlForm::parseIncludeFile ( const QString &file, int tipoEscape )
     substrVars ( read, tipoEscape );
 
 
-    blDebug ( "END BlForm::parseIncludeFile", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return read;
 
 }
@@ -1409,7 +1409,7 @@ QString BlForm::parseQuery ( const QString &query, const QString &datos, int tip
 
     /// Cargamos el query y lo recorremos
     result = parseRecordset ( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape );
-    blDebug ( "END BlForm::parseQuery", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 
 }
@@ -1420,7 +1420,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
     QString result = "";
     
     if ( !cur ) {
-        blDebug ( "END BlForm::parseRecordset", 0 , "cur==NULL" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "cur == NULL" );
         return "";
     };
     while ( !cur->eof() ) {
@@ -1452,7 +1452,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( "END BlForm::parseRecordset", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -1475,7 +1475,7 @@ QString BlForm::parseExists ( const QString &query, const QString &datos )
     QFile file ( query1 );
     if ( file.exists() )
         result = datos;
-    blDebug ( "END BlForm::parseExists", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return result;
 }
@@ -1485,7 +1485,7 @@ int BlForm::generateRML ( void )
 {
     blDebug ( "BlForm::generateRML", 0 );
     int err = BlDbRecord::generateRML();
-    blDebug ( "END BlForm::generateRML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return err;
 }
 
@@ -1515,7 +1515,7 @@ int BlForm::generateRML ( const QString &arch )
 
     res = BlDbRecord::generateRML ( arch );
 
-    blDebug ( "END BlForm::generateRML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return res;
 }
 
@@ -1526,7 +1526,7 @@ int BlForm::generateRML ( const QString &arch )
 void BlForm::activateDocuments ()
 {
     blDebug ( "BlForm::activateDocuments", 0 );
-    blDebug ( "END BlForm::activateDocuments", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -1535,5 +1535,5 @@ void BlForm::activateDocuments ()
 void BlForm::deactivateDocuments ()
 {
     blDebug ( "BlForm::deactivateDocuments", 0 );
-    blDebug ( "END BlForm::deactivateDocuments", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

@@ -38,7 +38,7 @@
 myplugin::myplugin()
 {
     blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "END myplugin::myplugin", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -48,7 +48,7 @@ myplugin::myplugin()
 myplugin::~myplugin()
 {
     blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "END myplugin::~myplugin", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -61,7 +61,7 @@ void myplugin::elslot()
     VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
-    blDebug ( "END myplugin::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,7 +83,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->addMenu ( pPluginMenu );
-    blDebug ( "END myplugin::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -105,7 +105,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginVehiculosBF" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

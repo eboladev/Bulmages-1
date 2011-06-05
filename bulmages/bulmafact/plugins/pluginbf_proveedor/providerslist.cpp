@@ -77,7 +77,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     trataPermisos ( "proveedor" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END ProveedorList::ProveedorList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -87,7 +87,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 ProveedorList::~ProveedorList()
 {
     blDebug ( "ProveedorList::~ProveedorList", 0 );
-    blDebug ( "END ProveedorList::~ProveedorList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -99,7 +99,7 @@ ProveedorList::~ProveedorList()
 QString ProveedorList::idprovider()
 {
     blDebug ( "ProveedorList::idprovider", 0 );
-    blDebug ( "END ProveedorList::idprovider", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_idprovider;
 }
 
@@ -110,7 +110,7 @@ QString ProveedorList::idprovider()
 QString ProveedorList::cifprovider()
 {
     blDebug ( "ProveedorList::cifprovider", 0 );
-    blDebug ( "END ProveedorList::cifprovider", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_cifprovider;
 }
 
@@ -122,7 +122,7 @@ QString ProveedorList::cifprovider()
 QString ProveedorList::nomprovider()
 {
     blDebug ( "ProveedorList::nomprovider", 0 );
-    blDebug ( "END ProveedorList::nomprovider", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_nomprovider;
 }
 
@@ -134,7 +134,7 @@ void ProveedorList::presentar()
 {
     blDebug ( "ProveedorList::presentar", 0 );
     mui_list->load ( "SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifproveedor) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomproveedor" );
-    blDebug ( "END ProveedorList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -196,7 +196,7 @@ void ProveedorList::crear()
 	prov->deactivateDocuments();
 	prov->mui_cifproveedor->setFocus ( Qt::OtherFocusReason );
     } // end if
-    blDebug ( "END ProveedorList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -222,7 +222,7 @@ void ProveedorList::editar ( int row )
     } else {
         emit ( selected ( m_idprovider ) );
     } // end if
-    blDebug ( "END ProveedorList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -246,7 +246,7 @@ void ProveedorList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el proveedor" ) );
     } // end try
-    blDebug ( "END ProveedorList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -257,7 +257,7 @@ void ProveedorList::imprimir()
 {
     blDebug ( "ProveedorList::on_mui_imprimir_clicked", 0 );
     mui_list->printPDF ( _ ( "Listado de Proveedores" ) );
-    blDebug ( "END ProveedorList::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -310,7 +310,7 @@ void ProveedorListSubform::load()
     blDebug ( "ProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM proveedor";
     BlSubForm::load ( SQLQuery );
-    blDebug ( "END ProveedorListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -322,7 +322,7 @@ void ProveedorListSubform::load ( QString a )
 {
     blDebug ( "ProveedorListSubform::cargar", 0 );
     BlSubForm::load ( a );
-    blDebug ( "END ProveedorListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -354,6 +354,6 @@ ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( par
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END ProveedorListSubform::ProveedorListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

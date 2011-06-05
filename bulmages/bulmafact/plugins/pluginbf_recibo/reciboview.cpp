@@ -94,7 +94,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
 
-    blDebug ( "END ReciboView::ReciboView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -103,14 +103,14 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 ReciboView::~ReciboView()
 {
     blDebug ( "ReciboView::~ReciboView", 0 );
-    blDebug ( "END ReciboView::~ReciboView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 QString ReciboView::templateName ( void )
 {
     blDebug ( "ReciboView::templateName", 0 );
-    blDebug ( "END ReciboView::templateName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "recibod" );
 }
@@ -138,7 +138,7 @@ void ReciboView::imprimir()
 
     BfForm::imprimir();
 
-    blDebug ( "END ReciboView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -149,7 +149,7 @@ int ReciboView::afterSave()
     mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
     mui_list->save();
 
-    blDebug ( "END ReciboView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -160,7 +160,7 @@ int ReciboView::beforeDelete()
 
     mainCompany()->runQuery("DELETE FROM lrecibo WHERE idrecibo = " + dbValue("idrecibo") );
 
-    blDebug ( "END ReciboView::beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -176,7 +176,7 @@ int ReciboView::cargarPost ( QString id )
     m_cantrecibo->setText(total);
     setDbValue("cantrecibo", total);
 
-    blDebug ( "END ReciboView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -191,7 +191,7 @@ void ReciboView::on_mui_list_editFinish ( int, int )
     
     m_cantrecibo->setText(mui_list->sumarCampo("cantlrecibo").toQString());
     
-    blDebug ( "END ReciboView::on_mui_list_editFinish", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -228,7 +228,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
       blMsgError(_("Error en la creacion del recibo"));
    } // end try
 
-    blDebug ( "END ReciboView::on_mui_reemitir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -245,6 +245,6 @@ QString ReciboView::exportXML() {
     val += "</RECIBOVIEW>\n";
 
     return val;
-    blDebug ( "END ReciboView::exportXML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de facturar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,11 +49,11 @@ int entryPoint ( BfBulmaFact * )
 **/
 int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform *l )
 {
-    blDebug ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( !l->existsHeader ( "selector" ) ) {
         l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     } // end if
-    blDebug ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -65,7 +65,7 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
 **/
 int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 {
-    blDebug ( "AlbaranClienteList_AlbaranClienteList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     ImpQToolButton *imp = new ImpQToolButton ( NULL,  NULL, l, NULL, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -77,7 +77,7 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
     } // end if
     m_hboxLayout1->addWidget ( imp );
 
-    blDebug ( "END AlbaranClienteList_AlbaranClienteList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

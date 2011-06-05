@@ -39,7 +39,7 @@ BlDbSubFormRecord::BlDbSubFormRecord ( BlMainCompany *con ) : BlDbRecord ( con )
     blDebug ( "BlDbSubFormRecord::BlDbSubFormRecord", 0 );
     static int creaciones = 0;
     creaciones++;
-    blDebug ( "END BlDbSubFormRecord::BlDbSubFormRecord", 0, "Creaciones" + QString::number ( creaciones ) );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -53,7 +53,7 @@ BlDbSubFormRecord::~BlDbSubFormRecord()
     static int destrucciones = 0;
     blDebug ( "BlDbSubFormRecord::~BlDbSubFormRecord", 0 );
     destrucciones++;
-    blDebug ( "END BlDbSubFormRecord::~BlDbSubFormRecord", 0, "Destrucciones " + QString::number ( destrucciones ) );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -66,7 +66,7 @@ int BlDbSubFormRecord::dbSave ( QString &id )
 {
     blDebug ( "BlDbSubFormRecord::dbSave", 0 );
     refresh();
-    blDebug ( "END BlDbSubFormRecord::dbSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return BlDbRecord::dbSave ( id );
 }
 
@@ -83,7 +83,7 @@ void BlDbSubFormRecord::refresh()
         camp = ( BlDbSubFormField * ) m_lista.at ( i );
         camp->refresh();
     } // end for
-    blDebug ( "END BlDbSubFormRecord::refresh", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,7 +101,7 @@ int BlDbSubFormRecord::addDbField ( QString nom, BlDbField::DbType typ, int res,
     BlDbSubFormField *camp = new BlDbSubFormField ( this, m_dbConnection, nom, typ, res, nomp );
     camp->set ( "" );
     m_lista.append ( camp );
-    blDebug ( "END BlDbSubFormRecord::addDbField", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -120,7 +120,7 @@ BlDbSubFormField::BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient 
 {
     blDebug ( "BlDbSubFormField::BlDbSubFormField", 0 );
     m_pare = par;
-    blDebug ( "END BlDbSubFormField::BlDbSubFormField", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -130,7 +130,7 @@ BlDbSubFormField::BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient 
 BlDbSubFormField::~BlDbSubFormField()
 {
     blDebug ( "BlDbSubFormField::~BlDbSubFormField()", 0 );
-    blDebug ( "END BlDbSubFormField::~BlDbSubFormField()", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -158,7 +158,7 @@ void BlDbSubFormField::refresh()
      } else {
         BlDbField::set ( text() );
      } // end if
-    blDebug ( "END BlDbSubFormField::refresh", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -204,7 +204,7 @@ int BlDbSubFormField::set ( QString val )
 	  }
     } // end if
 
-    blDebug ( "END BlDbSubFormField::set", 0, val );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -244,7 +244,7 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
         } // end if
         blDebug ( "tipo desconocido", 0 );
     }
-    blDebug ( "END BlDbSubFormField::operator <", 0, text() );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return FALSE;
 }
 
@@ -258,7 +258,7 @@ pertencecen
 BlDbSubFormRecord *BlDbSubFormField::pare()
 {
     blDebug ( "BlDbSubFormField::pare", 0 );
-    blDebug ( "END BlDbSubFormField::pare", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_pare;
 }
 

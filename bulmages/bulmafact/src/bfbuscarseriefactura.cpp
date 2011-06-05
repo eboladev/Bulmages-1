@@ -39,7 +39,7 @@ BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
     m_comboRecordSet = NULL;
     m_codigoserie_factura = "";
     m_table = "serie_factura";
-    blDebug ( "END BfBuscarSerieFactura::BfBuscarSerieFactura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
 BfBuscarSerieFactura::~BfBuscarSerieFactura()
 {
     blDebug ( "BfBuscarSerieFactura::~BfBuscarSerieFactura", 0 );
-    blDebug ( "END BfBuscarSerieFactura::~BfBuscarSerieFactura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -104,7 +104,7 @@ void BfBuscarSerieFactura::setId ( QString codigo )
     } else {
         setCurrentIndex ( i2 );
     } // end if
-    blDebug ( "END BfBuscarSerieFactura::setcodigoserie_factura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -120,7 +120,7 @@ void BfBuscarSerieFactura::m_activated ( int index )
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    blDebug ( "END BfBuscarSerieFactura::m_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -137,7 +137,7 @@ QString BfBuscarSerieFactura::id()
     } else {
         return "";
     } // end if
-    blDebug ( "END BfBuscarSerieFactura::codigoserie_factura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -158,6 +158,6 @@ void BfBuscarSerieFactura::setMainCompany ( BfCompany *comp )
         m_codigoserie_factura = cur->value( "valor" );
     } // end if
     delete cur;
-    blDebug ( "END BfBuscarSerieFactura::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

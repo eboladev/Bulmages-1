@@ -47,7 +47,7 @@ BlMainCompany *g_emp = NULL;
 PluginBl_Report2ODS::PluginBl_Report2ODS()
 {
     blDebug ( "PluginBl_Report2ODS::PluginBl_Report2ODS", 0 );
-    blDebug ( "END PluginBl_Report2ODS::PluginBl_Report2ODS", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -56,7 +56,7 @@ PluginBl_Report2ODS::PluginBl_Report2ODS()
 PluginBl_Report2ODS::~PluginBl_Report2ODS()
 {
     blDebug ( "PluginBl_Report2ODS::~PluginBl_Report2ODS", 0 );
-    blDebug ( "END PluginBl_Report2ODS::~PluginBl_Report2ODS", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -78,7 +78,7 @@ void PluginBl_Report2ODS::elslot1( )
     blCreateAndLoadODS ( archivo );
 
     delete ficha;
-    blDebug ( "END PluginBl_Report2ODS::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

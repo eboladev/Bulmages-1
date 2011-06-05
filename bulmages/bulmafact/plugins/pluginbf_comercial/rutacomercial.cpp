@@ -35,7 +35,7 @@
 RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
 
-    blDebug ( "RutaComercial::RutaComercial", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Ruta comercial" ) );
     setDbTableName ( "rutacomercial" );
     setDbFieldId ( "idrutacomercial" );
@@ -46,7 +46,7 @@ RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( com
     addDbField ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
     addDbField ( "refrutacomercial",  BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
     blScript(this);
-    blDebug ( "END RutaComercial::RutaComercial", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -55,8 +55,8 @@ RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( com
 **/
 RutaComercial::~RutaComercial()
 {
-    blDebug ( "RutaComercial::~RutaComercial", 0 );
-    blDebug ( "END RutaComercial::~RutaComercial", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -66,13 +66,14 @@ RutaComercial::~RutaComercial()
 **/
 void RutaComercial::pintar()
 {
-    blDebug ( "RutaComercial::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza ( "RutaComercial_pintar", this );
-    if ( res != 0 )
+    if ( res != 0 ) {
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en plugin") );
         return;
-    blDebug ( "funcion no sobrecargada", 2 );
-    blDebug ( "END RutaComercial::pintar", 0 );
+    } // end if
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,14 +84,14 @@ void RutaComercial::pintar()
 **/
 int RutaComercial::load ( QString id )
 {
-    blDebug ( "RutaComercial::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() )  {
         DBload ( cur );
     }
     delete cur;
-    blDebug ( "END RutaComercial::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

@@ -39,7 +39,7 @@
 TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    blDebug ( "TipoActividadView::TipoActividadView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setTitleName ( _ ( "TipoActividad" ) );
     setDbTableName ( "tipoactividad" );
@@ -62,7 +62,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
     pintar();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( "END TipoActividadView::TipoActividadView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -71,8 +71,8 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
 **/
 void TipoActividadView::imprimir()
 {
-    blDebug ( "TipoActividadView::imprimir", 0 );
-    blDebug ( "END TipoActividadView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Carga el query de la base de datos y carga el qlistview.
@@ -80,7 +80,7 @@ void TipoActividadView::imprimir()
 **/
 void TipoActividadView::pintar()
 {
-    blDebug ( "TipoActividadView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_lista->clear();
 
@@ -95,7 +95,7 @@ void TipoActividadView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( "END TipoActividadView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -104,11 +104,11 @@ void TipoActividadView::pintar()
 **/
 TipoActividadView::~TipoActividadView()
 {
-    blDebug ( "TipoActividadView::~TipoActividadView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_cursortipoactividades != NULL ) {
         delete m_cursortipoactividades;
     } // end if
-    blDebug ( "END TipoActividadView::~TipoActividadView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -119,7 +119,7 @@ TipoActividadView::~TipoActividadView()
 **/
 void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    blDebug ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( !cur ) return;
     mui_tab->setEnabled ( TRUE );
 
@@ -138,7 +138,7 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
 
     dialogChanges_readValues();
 
-    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -148,7 +148,7 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
 **/
 void TipoActividadView::on_mui_guardar_clicked()
 {
-    blDebug ( "TipoActividadView::on_mui_guardar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
 
     try {
@@ -181,7 +181,7 @@ void TipoActividadView::on_mui_guardar_clicked()
     } // end try
 
 
-    blDebug ( "END TipoActividadView::on_mui_guardar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -191,7 +191,7 @@ void TipoActividadView::on_mui_guardar_clicked()
 **/
 bool TipoActividadView::trataModificado()
 {
-    blDebug ( "TipoActividadView::trataModificado", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -201,7 +201,7 @@ bool TipoActividadView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    blDebug ( "END TipoActividadView::trataModificado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( FALSE );
 }
 
@@ -213,7 +213,7 @@ bool TipoActividadView::trataModificado()
 **/
 void TipoActividadView::on_mui_nuevo_clicked()
 {
-    blDebug ( "TipoActividadView::on_mui_nuevo_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -225,7 +225,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
         mdb_idtipoactividad = cur->value( "idtipoactividad" );
         delete cur;
         pintar();
-        blDebug ( "END TipoActividadView::on_mui_nuevo_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear un nuevo TipoActividad" ) );
         mainCompany() ->rollback();
@@ -240,7 +240,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
 **/
 void TipoActividadView::on_mui_borrar_clicked()
 {
-    blDebug ( "TipoActividadView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mui_tab->setDisabled ( TRUE );
         trataModificado();
@@ -250,7 +250,7 @@ void TipoActividadView::on_mui_borrar_clicked()
         mainCompany() ->commit();
         mdb_idtipoactividad = "";
         pintar();
-        blDebug ( "END TipoActividadView::on_mui_borrar_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el TipoActividad" ) );
         mainCompany() ->rollback();
@@ -266,8 +266,8 @@ void TipoActividadView::on_mui_borrar_clicked()
 **/
 QString TipoActividadView::idtipoactividad()
 {
-    blDebug ( "TipoActividadView::idtipoactividad", 0 );
-    blDebug ( "END TipoActividadView::idtipoactividad", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idtipoactividad;
 }
 

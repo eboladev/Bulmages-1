@@ -43,7 +43,7 @@ int entryPoint ( QApplication * )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_subform2pdf", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -55,7 +55,7 @@ int entryPoint ( QApplication * )
 PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( parent )
 {
     blDebug ( "PluginBl_SubForm2PDF::PluginBl_SubForm2PDF", 0 );
-    blDebug ( "END PluginBl_SubForm2PDF::PluginBl_SubForm2PDF", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -64,7 +64,7 @@ PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( par
 PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 {
     blDebug ( "PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF", 0 );
-    blDebug ( "END PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -77,7 +77,7 @@ void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
     blDebug ( "PluginBl_SubForm2PDF::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ) );
-    blDebug ( "END PluginBl_SubForm2PDF::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -91,7 +91,7 @@ void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
     if ( action->text() == _ ( "Imprimir" ) ) {
         imprimir();
     } // end if
-    blDebug ( "END PluginBl_SubForm2PDF::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -105,7 +105,7 @@ void PluginBl_SubForm2PDF::imprimir()
     BlSubForm * subf = ( BlSubForm * ) parent();
 
     subf->printPDF ( "" );
-    blDebug ( "END PluginBl_SubForm2PDF::sacaods", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -120,7 +120,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -153,7 +153,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
       m_hboxLayout1->addWidget ( sel );
       sel->connect (sel, SIGNAL(released()), subformods, SLOT(imprimir ( )));
 
-    blDebug ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

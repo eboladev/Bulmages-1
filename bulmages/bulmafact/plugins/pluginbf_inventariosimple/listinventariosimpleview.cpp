@@ -44,7 +44,7 @@
 ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ListInventarioSimpleView::ListInventarioSimpleView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setTitleName ( _ ( "InventarioSimple" ) );
     setDbTableName ( "inventariosimple" );
@@ -55,7 +55,7 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( "END ListInventarioSimpleView::ListInventarioSimpleView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -63,7 +63,7 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
 **/
 void ListInventarioSimpleView::on_mui_aceptar_clicked()
 {
-    blDebug ( "ListInventarioSimpleView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     try {
         mui_listado->save();
@@ -72,7 +72,7 @@ void ListInventarioSimpleView::on_mui_aceptar_clicked()
         blMsgInfo ( _ ( "Error al guardar el inventario" ) );
     } // end try
     
-    blDebug ( "END ListInventarioSimpleView::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -80,8 +80,8 @@ void ListInventarioSimpleView::on_mui_aceptar_clicked()
 **/
 ListInventarioSimpleView::~ListInventarioSimpleView()
 {
-    blDebug ( "ListInventarioSimpleView::~ListInventarioSimpleView", 0 );
-    blDebug ( "END ListInventarioSimpleView::~ListInventarioSimpleView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// ===================================== SUBFORMULARIO ===============================================
@@ -91,7 +91,7 @@ ListInventarioSimpleView::~ListInventarioSimpleView()
 **/
 ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListInventarioSimpleSubForm::ListInventarioSimpleSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setDbTableName ( "inventariosimple" );
     setDbFieldId ( "idinventariosimple" );
@@ -100,7 +100,7 @@ ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : B
     addSubFormHeader ( "stockinventariosimple", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Stock" ) );
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
-    blDebug ( "END ListInventarioSimpleSubForm::ListInventarioSimpleSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -108,9 +108,9 @@ ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : B
 **/
 void ListInventarioSimpleSubForm::load()
 {
-    blDebug ( "ListInventarioSimpleSubForm::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlSubForm::load ( "SELECT * FROM inventariosimple" );
     
-    blDebug ( "END ListInventarioSimpleSubForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

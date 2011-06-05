@@ -35,10 +35,10 @@
 **/
 void TicketClienteListSubform::load()
 {
-    blDebug ( "TicketClienteListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString SQLQuery = "SELECT * FROM albaran";
     BlSubForm::load ( SQLQuery );
-    blDebug ( "END TicketClienteListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -48,9 +48,9 @@ void TicketClienteListSubform::load()
 **/
 void TicketClienteListSubform::load ( QString query )
 {
-    blDebug ( "TicketClienteListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( query );
-    blDebug ( "END TicketClienteListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -60,9 +60,9 @@ void TicketClienteListSubform::load ( QString query )
 **/
 void TicketClienteList::setidcliente ( QString val )
 {
-    blDebug ( "TicketClienteList::setidcliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_cliente->setId ( val );
-    blDebug ( "END TicketClienteList::setidcliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,8 +72,8 @@ void TicketClienteList::setidcliente ( QString val )
 **/
 QString TicketClienteList::idCliDelivNote()
 {
-    blDebug ( "TicketClienteList::idCliDelivNote", 0 );
-    blDebug ( "END TicketClienteList::idCliDelivNote", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idalbaran;
 }
 
@@ -83,7 +83,7 @@ QString TicketClienteList::idCliDelivNote()
 **/
 void TicketClienteList::crear()
 {
-    blDebug ( "TicketClienteList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     TicketClienteView *acv = new TicketClienteView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->m_pWorkspace->addSubWindow ( acv );
     acv->inicializar();
@@ -97,7 +97,7 @@ void TicketClienteList::crear()
 
     acv->show();
     acv->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
-    blDebug ( "END TicketClienteList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -117,7 +117,7 @@ void TicketClienteList::crear()
 TicketClienteList::TicketClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "TicketClienteList::TicketClienteList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TicketClienteList_TicketClienteList", this );
@@ -129,7 +129,7 @@ TicketClienteList::TicketClienteList ( QWidget *parent, Qt::WFlags flag, edmode 
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END TicketClienteList::TicketClienteList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -149,7 +149,7 @@ TicketClienteList::TicketClienteList ( QWidget *parent, Qt::WFlags flag, edmode 
 TicketClienteList::TicketClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "TicketClienteList::TicketClienteList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TicketClienteList_TicketClienteList", this );
@@ -189,7 +189,7 @@ TicketClienteList::TicketClienteList ( BfCompany *comp, QWidget *parent, Qt::WFl
     trataPermisos ( "albaran" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END TicketClienteList::TicketClienteList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -199,7 +199,7 @@ TicketClienteList::TicketClienteList ( BfCompany *comp, QWidget *parent, Qt::WFl
 **/
 void TicketClienteList::iniciaForm()
 {
-    blDebug ( "TicketClienteList::iniciaForm" );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TicketClienteList_iniciaForm", this );
     if ( res != 0 )
@@ -208,7 +208,7 @@ void TicketClienteList::iniciaForm()
     mui_procesada->insertItem ( 1, _ ( "Tickets procesados" ) );
     mui_procesada->insertItem ( 2, _ ( "Tickets no procesados" ) );
     mui_procesada->setCurrentIndex ( 2 );
-    blDebug ( "END TicketClienteList::iniciaForm" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -218,7 +218,7 @@ void TicketClienteList::iniciaForm()
 **/
 void TicketClienteList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "TicketClienteList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
@@ -235,7 +235,7 @@ void TicketClienteList::setMainCompany ( BfCompany *comp )
     m_idtrabajador->setAllowNull ( TRUE );   
     m_idtrabajador->setId("");
     
-    blDebug ( "END TicketClienteList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -244,8 +244,8 @@ void TicketClienteList::setMainCompany ( BfCompany *comp )
 **/
 TicketClienteList::~TicketClienteList()
 {
-    blDebug ( "TicketClienteList::~TicketClienteList", 0 );
-    blDebug ( "END TicketClienteList::~TicketClienteList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -256,7 +256,7 @@ TicketClienteList::~TicketClienteList()
 **/
 void TicketClienteList::presentar()
 {
-    blDebug ( "TicketClienteList::presentar" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->load ( "SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro() );
 
@@ -268,7 +268,7 @@ void TicketClienteList::presentar()
         delete cur;
     } // end if
 
-    blDebug ( "END TicketClienteList::presentar" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -288,7 +288,7 @@ void TicketClienteList::presentar()
 **/
 void TicketClienteList::editar ( int row )
 {
-    blDebug ( "TicketClienteList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
     if ( editMode() ) {
         TicketClienteView * prov = new TicketClienteView ( ( BfCompany * ) mainCompany(), 0 );
@@ -301,7 +301,7 @@ void TicketClienteList::editar ( int row )
     } else {
         emit ( selected ( mdb_idalbaran ) );
     } // end if
-    blDebug ( "END TicketClienteList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -316,7 +316,7 @@ void TicketClienteList::editar ( int row )
 **/
 void TicketClienteList::remove()
 {
-    blDebug ( "TicketClienteList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -335,7 +335,7 @@ void TicketClienteList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el albaran a cliente" ), this );
     } // end try
-    blDebug ( "END TicketClienteList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -343,9 +343,9 @@ void TicketClienteList::remove()
 */
 void TicketClienteList::imprimir()
 {
-    blDebug ( "TicketClienteList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Ticketes a clientes" ) );
-    blDebug ( "END TicketClienteList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -358,7 +358,7 @@ void TicketClienteList::imprimir()
 QString TicketClienteList::generarFiltro()
 {
     /// Tratamiento de los filtros.
-    blDebug ( "TicketClienteList::generarFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString filtro = "";
 
     if ( m_filtro->text() != "" ) {
@@ -394,7 +394,7 @@ QString TicketClienteList::generarFiltro()
 	filtro += " AND idtrabajador = " + m_idtrabajador->id();
     } // end if
     
-    blDebug ( "END TicketClienteList::generarFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -411,7 +411,7 @@ QString TicketClienteList::generarFiltro()
 **/
 TicketClienteListSubform::TicketClienteListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "TicketClienteListSubform::TicketClienteListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TicketClienteListSubform_TicketClienteListSubform", this );
@@ -438,7 +438,7 @@ TicketClienteListSubform::TicketClienteListSubform ( QWidget *parent ) : BfSubFo
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END TicketClienteListSubform::TicketClienteListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -447,6 +447,6 @@ TicketClienteListSubform::TicketClienteListSubform ( QWidget *parent ) : BfSubFo
 **/
 TicketClienteListSubform::~TicketClienteListSubform()
 {
-    blDebug ( "TicketClienteListSubform::~TicketClienteListSubform", 0 );
-    blDebug ( "END TicketClienteListSubform::~TicketClienteListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

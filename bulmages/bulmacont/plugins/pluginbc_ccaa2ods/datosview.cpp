@@ -29,7 +29,7 @@
 **/
 DatosView::DatosView ( BlMainCompany *emp, QWidget *parent , Qt::WFlags f , edmode modo ) : BlForm ( emp, parent, f, modo )
 {
-    blDebug ( "DatosView::DatosView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     resultado = false; 
 
     setupUi ( this );
@@ -47,7 +47,7 @@ DatosView::DatosView ( BlMainCompany *emp, QWidget *parent , Qt::WFlags f , edmo
 // mui_fechainicialanterior
 // mui_fechafinalanterior
 
-    blDebug ( "END DatosView::DatosView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -56,8 +56,8 @@ DatosView::DatosView ( BlMainCompany *emp, QWidget *parent , Qt::WFlags f , edmo
 **/
 DatosView::~DatosView()
 {
-    blDebug ( "END DatosView::~DatosView", 0 );
-    blDebug ( "DatosView::~DatosView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

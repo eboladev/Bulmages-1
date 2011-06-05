@@ -106,7 +106,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
 
-    blDebug ( "END BtBulmaTPV::BtBulmaTPV", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
@@ -118,7 +118,7 @@ void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 {
     blDebug ( "BtBulmaTPV::createMainWindows", 0 );
     m_empresaTPV->createMainWindows ( splashScr );
-    blDebug ( "END BtBulmaTPV::createMainWindows", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Libera memoria destruyendo todos los objetos creados.
@@ -136,7 +136,7 @@ BtBulmaTPV::~BtBulmaTPV()
     exit ( 0 );
 #endif
 
-    blDebug ( "END BtBulmaTPV::~BtBulmaTPV", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Intercambia entre el modo ventana completa y el modo ventana normal
@@ -153,7 +153,7 @@ void BtBulmaTPV::s_ventanaCompleta()
         showFullScreen();
     } // end if
 
-    blDebug ( "END BtBulmaTPV::s_ventanaCompleta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -164,7 +164,7 @@ void BtBulmaTPV::on_actionVentana_Completa_triggered()
 {
     blDebug ( "BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
     s_ventanaCompleta();
-    blDebug ( "END BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Metodo que responde a la pulsacion de About en el menu.
@@ -179,7 +179,7 @@ void BtBulmaTPV::s_About()
     BtAboutView about;
     about.exec();
     
-    blDebug ( "END BtBulmaTPV::s_About", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -195,7 +195,7 @@ void BtBulmaTPV::closeEvent ( QCloseEvent * )
     exit ( 0 );
 #endif
 
-    blDebug ( "END BtBulmaTPV::closeEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -206,7 +206,7 @@ void BtBulmaTPV::closeEvent ( QCloseEvent * )
 BlWorkspace * BtBulmaTPV::workspace()
 {
     blDebug ( "BtBulmaTPV::workspace", 0 );
-    blDebug ( "END BtBulmaTPV::workspace", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pWorkspace;
 }
 
@@ -215,7 +215,7 @@ void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 {
     blDebug ( "BtBulmaTPV::keyReleaseEvent", 0 );
     m_empresaTPV->keyPressEvent ( e );
-    blDebug ( "END BtBulmaTPV::keyReleaseEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

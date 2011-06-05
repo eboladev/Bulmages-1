@@ -74,7 +74,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     trataPermisos ( "presupuestocontable" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END PresupuestoContableList::PresupuestoContableList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,7 +83,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
 PresupuestoContableList::~PresupuestoContableList()
 {
     blDebug ( "PresupuestoContableList::~PresupuestoContableList", 0 );
-    blDebug ( "END PresupuestoContableList::~PresupuestoContableList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -94,7 +94,7 @@ void PresupuestoContableList::presentar()
 {
     blDebug ( "PresupuestoContableList::presenta", 0 );
     mui_list->load ( "SELECT * FROM presupuestocontable  WHERE lower(conceptopresupuestocontable) LIKE lower('%" + m_filtro->text() + "%') ORDER BY conceptopresupuestocontable" );
-    blDebug ( "END PresupuestoContableList::presenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -120,7 +120,7 @@ void PresupuestoContableList::editar ( int row )
     } else {
         emit ( selected ( mdb_idpresupuestocontable ) );
     } // end if
-    blDebug ( "END PresupuestoContableList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -156,7 +156,7 @@ void PresupuestoContableList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar un presupuestocontable" ) );
     } // end try
-    blDebug ( "END:PresupuestoContableList::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -228,11 +228,11 @@ PresupuestoContableListSubform::PresupuestoContableListSubform ( QWidget *parent
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END PresupuestoContableListSubform::PresupuestoContableListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 PresupuestoContableListSubform::~PresupuestoContableListSubform()
 {
     blDebug ( "PresupuestoContableListSubform::~PresupuestoContableListSubform", 0 );
-    blDebug ( "END PresupuestoContableListSubform::~PresupuestoContableListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

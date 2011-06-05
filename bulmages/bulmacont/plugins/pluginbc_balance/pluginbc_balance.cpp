@@ -42,7 +42,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint", 0, "Punto de entrada de PluginBc_Balance" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -59,13 +59,13 @@ int entryPoint ( BcBulmaCont *bcont )
     pPluginMenu->addAction ( accionA );
 
 
-    blDebug ( "END entryPoint", 0, "Punto de entrada de PluginBc_Balance" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ("PluginBc_Balance::BlAction_triggered");
+    blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionBalance") {
         BalanceView *cuad = new BalanceView ( ( BcCompany * ) g_bcont->company(), 0 );
         g_bcont->company()->pWorkspace() ->addSubWindow ( cuad );

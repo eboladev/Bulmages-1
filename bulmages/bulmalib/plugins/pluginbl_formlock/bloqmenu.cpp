@@ -47,7 +47,7 @@ BloqMenu::BloqMenu ( QWidget *parent ) : QWidget ( parent )
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
-    blDebug ( "END BloqMenu::BloqMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -57,7 +57,7 @@ BloqMenu::BloqMenu ( QWidget *parent ) : QWidget ( parent )
 BloqMenu::~BloqMenu()
 {
     blDebug ( "BloqMenu::~BloqMenu", 0 );
-    blDebug ( "END BloqMenu::~BloqMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -71,7 +71,7 @@ void BloqMenu::pintaMenu ( QMenu *menu )
     QAction *ajust = menu->addAction ( _ ( "Desbloquear ficha" ) );
     ajust->setObjectName ( "desbloquearficha" );
 
-    blDebug ( "END BloqMenu::pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,7 +101,7 @@ void BloqMenu::trataMenu ( QAction *action )
         if ( peliminar ) peliminar->setEnabled ( TRUE );
 
     } // end if
-    blDebug ( "END BloqMenu::trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

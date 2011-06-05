@@ -64,7 +64,7 @@ void BlCompanyDialog::setDbName ( QString pNomDB )
 {
     blDebug ( "BlCompanyDialog::setDbName", 0 );
     m_empresabd = pNomDB;
-    blDebug ( "END BlCompanyDialog::setDbName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -76,7 +76,7 @@ void BlCompanyDialog::setCompanyName ( QString pNomEmpresa )
 {
     blDebug ( "BlCompanyDialog::setCompanyName", 0 );
     m_nombreempresa = pNomEmpresa;
-    blDebug ( "END BlCompanyDialog::setCompanyName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,7 +88,7 @@ void BlCompanyDialog::setCompanyType ( QString pTipoEmpresa )
 {
     blDebug ( "BlCompanyDialog::setCompanyType", 0 );
     m_tipoempresa = pTipoEmpresa;
-    blDebug ( "END BlCompanyDialog::setCompanyType", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -100,7 +100,7 @@ void BlCompanyDialog::setCompanyType ( QString pTipoEmpresa )
 bool BlCompanyDialog::isDestroyMode()
 {
     blDebug ( "BlCompanyDialog::isDestroyMode", 0 );
-    blDebug ( "END BlCompanyDialog::isDestroyMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_modo;
 }
 
@@ -113,7 +113,7 @@ void BlCompanyDialog::setDestroyMode ( bool pModo )
 {
     blDebug ( "BlCompanyDialog::setDestroyMode", 0 );
     m_modo = pModo;
-    blDebug ( "END BlCompanyDialog::setDestroyMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -124,7 +124,7 @@ void BlCompanyDialog::setDestroyMode ( bool pModo )
 QString BlCompanyDialog::dbName()
 {
     blDebug ( "BlCompanyDialog::dbName", 0 );
-    blDebug ( "END BlCompanyDialog::dbName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_empresabd;
 }
 
@@ -136,7 +136,7 @@ QString BlCompanyDialog::dbName()
 QString BlCompanyDialog::companyName()
 {
     blDebug ( "BlCompanyDialog::companyName", 0 );
-    blDebug ( "END BlCompanyDialog::companyName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_nombreempresa;
 }
 
@@ -148,7 +148,7 @@ QString BlCompanyDialog::companyName()
 QString BlCompanyDialog::companyType()
 {
     blDebug ( "BlCompanyDialog::companyType", 0 );
-    blDebug ( "END BlCompanyDialog::companyType", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_tipoempresa;
 }
 
@@ -160,7 +160,7 @@ void BlCompanyDialog::on_mui_aceptar_clicked()
 {
     blDebug ( "BlCompanyDialog::on_mui_aceptar_clicked", 0 );
     accept();
-    blDebug ( "END BlCompanyDialog::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -175,7 +175,7 @@ void BlCompanyDialog::on_mui_cancelar_clicked()
     else
         done ( 1 );
     // end if
-    blDebug ( "END BlCompanyDialog::on_mui_cancelar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -187,7 +187,7 @@ bool BlCompanyDialog::close ( bool )
 {
     blDebug ( "BlCompanyDialog::close", 0 );
     on_mui_cancelar_clicked();
-    blDebug ( "END BlCompanyDialog::close", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -224,7 +224,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
     /// Seleccionar la primera empresa de la lista inicialmente, de este modo,
     /// si s&oacute;lo hay una empresa o se quiere entrar a la primera bastar&aacute; con pulsar la tecla intro.
     mui_empresas->selectRow(0);
-    blDebug ( "END BlCompanyDialog::BlCompanyDialog", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -234,7 +234,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
 BlCompanyDialog::~BlCompanyDialog()
 {
     blDebug ( "BlCompanyDialog::~BlCompanyDialog", 0 );
-    blDebug ( "END BlCompanyDialog::~BlCompanyDialog", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -259,7 +259,7 @@ void BlCompanyDialog::insertCompany ( QString nombre, QString ano, QString archi
     mui_empresas->setItem ( mui_empresas->rowCount() - 1, 2, nuevoItemArchivo );
     QTableWidgetItem *nuevoItemTipo = new QTableWidgetItem ( tipo );
     mui_empresas->setItem ( mui_empresas->rowCount() - 1, 3, nuevoItemTipo );
-    blDebug ( "END BlCompanyDialog::insertCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -291,7 +291,7 @@ void BlCompanyDialog::accept()
         done ( 0 );
     } else
         blMsgInfo ( _ ( "Para entrar, antes tiene que seleccionar una empresa." ) );
-    blDebug ( "END BlCompanyDialog::accept", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -302,7 +302,7 @@ void BlCompanyDialog::mui_empresasdobleclick()
 {
     blDebug ( "BlCompanyDialog::mui_empresasdobleclick", 0 );
     accept();
-    blDebug ( "END BlCompanyDialog::mui_empresasdobleclick", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -352,7 +352,7 @@ void BlCompanyDialog::loadFile()
     } // end while
     file.close();
     mui_empresas->setSortingEnabled(TRUE);
-    blDebug ( "END BlCompanyDialog::loadFile", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -403,7 +403,7 @@ void BlCompanyDialog::saveFile()
     delete db;
     g_confpr->setValue ( CONF_ALERTAS_DB, alertas );
     file.close();
-    blDebug ( "END BlCompanyDialog::saveFile", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -477,7 +477,7 @@ void BlCompanyDialog::findCompanyDatabase ( QString empresa, QFile *file )
         delete db1;
     } // end if
     mui_empresas->setSortingEnabled(TRUE);
-    blDebug ( "END BlCompanyDialog::findCompanyDatabase", 0, empresa );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -490,7 +490,7 @@ void BlCompanyDialog::on_mui_actualizar_clicked()
 {
     blDebug ( "BlCompanyDialog::on_mui_actualizar_clicked", 0 );
     saveFile();
-    blDebug ( "END BlCompanyDialog::on_mui_actualizar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -514,7 +514,7 @@ void BlCompanyDialog::preparamui_empresas()
     if ( m_tipo == "BulmaFact" )
         mui_empresas->hideColumn ( ABRE_ANO );
     // end if
-    blDebug ( "END BlCompanyDialog::preparamui_empresas", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -539,14 +539,14 @@ bool BlCompanyDialog::eventFilter ( QObject *obj, QEvent *ev )
                 // end if
                 break;
             } // end switch
-            blDebug ( "END BlCompanyDialog::eventFilter", 0, "Pulsacion de Tecla" );
+	    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Pulacion de tecla") );
             return false;
         } else {
-            blDebug ( "END BlCompanyDialog::eventFilter", 0, "Evento sin interes" );
+            blDebug ( ("END ", Q_FUNC_INFO), 0, _("Evento sin interes") );
             return false;
         } // end if
     } // end if
-    blDebug ( "END BlCompanyDialog::eventFilter", 0, "Objeto no deseado" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return QDialog::eventFilter ( obj, ev );
     // end if
 }

@@ -58,7 +58,7 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END AlbaranesProveedor::AlbaranesProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -79,7 +79,7 @@ void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
 
-    blDebug ( "END AlbaranesProveedor::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -104,7 +104,7 @@ void AlbaranesProveedor::crear()
         apv->show();
         apv->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
     }// end if
-    blDebug ( "END AlbaranesProveedor::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -116,7 +116,7 @@ void AlbaranesProveedor::setidproveedor ( QString val )
 {
     blDebug ( "AlbaranesProveedor::setidproveedor", 0 );
     m_proveedor->setId ( val );
-    blDebug ( "END AlbaranesProveedor::setidproveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -139,7 +139,7 @@ void AlbaranesProveedor::setidarticulo ( QString val )
 QString AlbaranesProveedor::idalbaranp()
 {
     blDebug ( "AlbaranesProveedor::idalbaranp", 0 );
-    blDebug ( "END AlbaranesProveedor::idalbaranp", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idalbaranp;
 }
 
@@ -173,7 +173,7 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     trataPermisos ( "albaranp" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END AlbaranesProveedor::AlbaranesProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -187,13 +187,13 @@ void AlbaranesProveedor::iniciaForm()
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranesProveedor_iniciaForm", this );
     if ( res != 0 ) {
-        blDebug ( "END AlbaranesProveedor::iniciaForm", 0, "Salida por Plugin" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
         return;
     } // end if
     mui_procesada->insertItem ( 0, _ ( "Todos los albaranes" ) );
     mui_procesada->insertItem ( 1, _ ( "Albaranes procesados" ) );
     mui_procesada->insertItem ( 2, _ ( "Albaranes no procesados" ) );
-    blDebug ( "END AlbaranesProveedor::iniciaForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -205,7 +205,7 @@ void AlbaranesProveedor::iniciaForm()
 AlbaranesProveedor::~AlbaranesProveedor()
 {
     blDebug ( "AlbaranesProveedor::~AlbaranesProveedor", 0 );
-    blDebug ( "END AlbaranesProveedor::~AlbaranesProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -240,7 +240,7 @@ void AlbaranesProveedor::presentar()
         m_total->setText ( cur->value( "total" ) );
         delete cur;
     }
-    blDebug ( "END AlbaranesProveedor::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -280,7 +280,7 @@ QString AlbaranesProveedor::generaFiltro()
         filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
     if ( m_fechafin->text() != "" )
         filtro += " AND fechaalbaranp <= '" + m_fechafin->text() + "' ";
-    blDebug ( "END AlbaranesProveedor::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -308,7 +308,7 @@ void AlbaranesProveedor::editar ( int row )
     } else {
         emit ( selected ( mdb_idalbaranp ) );
     } // end if
-    blDebug ( "END AlbaranesProveedor::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -321,7 +321,7 @@ void AlbaranesProveedor::imprimir()
 {
     blDebug ( "AlbaranesProveedor::imprimir", 0 );
     mui_list->printPDF ( _ ( "Albaranes de proveedor" ) );
-    blDebug ( "END AlbaranesProveedor::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -356,7 +356,7 @@ void AlbaranesProveedor::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar albaran de proveedor" ), this );
     } // end try
-    blDebug ( "END AlbaranesProveedor::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -374,7 +374,7 @@ void AlbaranesProveedor::remove()
 AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 {
     blDebug ( "AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform", 0 );
-    blDebug ( "END AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -406,7 +406,7 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -418,7 +418,7 @@ void AlbaranesProveedorListSubform::load()
     blDebug ( "AlbaranesProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaranp";
     BlSubForm::load ( SQLQuery );
-    blDebug ( "END AlbaranesProveedorListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -430,6 +430,6 @@ void AlbaranesProveedorListSubform::load ( QString query )
 {
     blDebug ( "AlbaranesProveedorListSubform::cargar", 0 );
     BlSubForm::load ( query );
-    blDebug ( "END AlbaranesProveedorListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

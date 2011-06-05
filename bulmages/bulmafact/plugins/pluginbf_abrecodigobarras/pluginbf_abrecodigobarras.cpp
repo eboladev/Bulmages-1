@@ -48,7 +48,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -65,7 +65,7 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setObjectName("mui_actionAperturaRapida");
 
 
-    blDebug ( "END entryPoint,0, Punto de entrada de  PluginBf_AbreCodigoBarras", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

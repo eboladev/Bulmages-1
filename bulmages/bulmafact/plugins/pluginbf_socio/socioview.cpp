@@ -129,7 +129,7 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         
     } // end try
     
-    blDebug ( "END SocioView::SocioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
@@ -137,7 +137,7 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 SocioView::~SocioView()
 {
     blDebug ( "SocioView::~SocioView", 0 );
-    blDebug ( "END SocioView::~SocioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void SocioView::on_mui_sociocliente_toggled ( bool state )
@@ -150,13 +150,13 @@ void SocioView::on_mui_sociocliente_toggled ( bool state )
         mui_numsociocliente->setText ( cur->value( "numsoc" ) );
     } // end if
     
-    blDebug ( "END SocioView::on_mui_sociocliente_toggled", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString SocioView::templateName ( void )
 {
     blDebug ( "SocioView::templateName", 0 );
-    blDebug ( "END SocioView::templateName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "tutor" );
 }
@@ -182,7 +182,7 @@ void SocioView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( "END SocioView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int SocioView::afterSave()
@@ -192,7 +192,7 @@ int SocioView::afterSave()
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
     mui_alumnosList->save();
     
-    blDebug ( "END SocioView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -209,7 +209,7 @@ int SocioView::beforeDelete()
     QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue ( "idcliente" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( "END SocioView::beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -231,7 +231,7 @@ int SocioView::cargarPost ( QString id )
 
     mui_listrecibos->load("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
 
-    blDebug ( "END SocioView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -259,7 +259,7 @@ ListAlumnosSocioView::ListAlumnosSocioView ( QWidget *parent ) : BfSubForm ( par
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( "END ListAlumnosSocioView::ListAlumnosSocioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -272,5 +272,5 @@ void ListAlumnosSocioView::load ( QString idcliente )
     
     BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     
-    blDebug ( "END ListAlumnosSocioView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

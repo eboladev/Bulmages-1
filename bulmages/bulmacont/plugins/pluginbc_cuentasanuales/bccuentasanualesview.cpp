@@ -37,7 +37,7 @@
 BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( "BcCuentasAnualesView::BcCuentasAnualesView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Cuentas Anuales" ) );
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
@@ -51,7 +51,7 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
     /// Llamamos a los scripts
     blScript(this);
 
-    blDebug ( "END BcCuentasAnualesView::BcCuentasAnualesView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -60,9 +60,9 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
 **/
 BcCuentasAnualesView::~BcCuentasAnualesView()
 {
-    blDebug ( "BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
-    blDebug ( "END BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -71,9 +71,9 @@ BcCuentasAnualesView::~BcCuentasAnualesView()
 **/
 void BcCuentasAnualesView::setModoSelector()
 {
-    blDebug ( "BcCuentasAnualesView::setModoSelector", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_modo = 1;
-    blDebug ( "END BcCuentasAnualesView::setModoSelector", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -82,9 +82,9 @@ void BcCuentasAnualesView::setModoSelector()
 **/
 void BcCuentasAnualesView::setModoEditor()
 {
-    blDebug ( "BcCuentasAnualesView::setModoEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_modo = 0;
-    blDebug ( "END BcCuentasAnualesView::setModoEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -94,8 +94,8 @@ void BcCuentasAnualesView::setModoEditor()
 **/
 QString BcCuentasAnualesView::nomBalance()
 {
-    blDebug ( "BcCuentasAnualesView::nomBalance", 0 );
-    blDebug ( "END BcCuentasAnualesView::nomBalance", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_nomBalance;
 }
 
@@ -106,8 +106,8 @@ QString BcCuentasAnualesView::nomBalance()
 **/
 QString BcCuentasAnualesView::idBalance()
 {
-    blDebug ( "BcCuentasAnualesView::idBalance", 0 );
-    blDebug ( "END BcCuentasAnualesView::idBalance", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_idBalance;
 }
 
@@ -118,7 +118,7 @@ QString BcCuentasAnualesView::idBalance()
 **/
 void BcCuentasAnualesView::inicializaTabla()
 {
-    blDebug ( "BcCuentasAnualesView::inicializaTabla", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_listado->clear();
     mui_listado->setColumnCount ( 2 );
@@ -159,7 +159,7 @@ void BcCuentasAnualesView::inicializaTabla()
 
         mui_listado->setItem ( i, COL_NOMBRE, newItem2 );
     } // end for
-    blDebug ( "END BcCuentasAnualesView::inicializaTabla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -168,9 +168,9 @@ void BcCuentasAnualesView::inicializaTabla()
 **/
 void BcCuentasAnualesView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 {
-    blDebug ( "BcCuentasAnualesView::on_listado_itemDoubleclicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     imprimir();
-    blDebug ( "END BcCuentasAnualesView::on_listado_itemDoubleclicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -179,13 +179,13 @@ void BcCuentasAnualesView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem *
 **/
 void BcCuentasAnualesView::imprimir()
 {
-    blDebug ( "BcCuentasAnualesView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString idbalance = mui_listado->item ( mui_listado->currentRow(), COL_ARCHIVO ) ->text();
     BcCuentasAnualesImprimirView *b = new BcCuentasAnualesImprimirView ( mainCompany(), 0 );
     b->setidbalance ( idbalance );
     b->exec();
     delete b;
-    blDebug ( "END BcCuentasAnualesView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 

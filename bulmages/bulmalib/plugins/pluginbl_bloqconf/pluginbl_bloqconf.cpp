@@ -47,7 +47,7 @@ BlMainCompany *g_emp = NULL;
 PluginBl_BloqConf::PluginBl_BloqConf()
 {
     blDebug ( "PluginBl_BloqConf::PluginBl_BloqConf", 0 );
-    blDebug ( "END PluginBl_BloqConf::PluginBl_BloqConf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -56,7 +56,7 @@ PluginBl_BloqConf::PluginBl_BloqConf()
 PluginBl_BloqConf::~PluginBl_BloqConf()
 {
     blDebug ( "PluginBl_BloqConf::~PluginBl_BloqConf", 0 );
-    blDebug ( "END PluginBl_BloqConf::~PluginBl_BloqConf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,7 +72,7 @@ void PluginBl_BloqConf::elslot( )
     QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
-    blDebug ( "END PluginBl_BloqConf::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -86,7 +86,7 @@ void PluginBl_BloqConf::elslot1( )
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
 
-    blDebug ( "END PluginBl_BloqConf::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -100,7 +100,7 @@ void PluginBl_BloqConf::elslot2( )
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
 
-    blDebug ( "END PluginBl_BloqConf::elslot2", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -128,7 +128,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
     
     
     menu->addAction ( ac );
-    blDebug ( "END PluginBl_BloqConf::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -154,7 +154,7 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
               system ( cad.toAscii().constData() );
             } // end if
     } // end if
-    blDebug ( "END PluginBl_BloqConf::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -235,7 +235,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     PluginBl_BloqConf *subformods = new PluginBl_BloqConf (  );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

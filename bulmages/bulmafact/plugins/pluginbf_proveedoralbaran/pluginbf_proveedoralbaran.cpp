@@ -83,7 +83,7 @@ int BlAction_triggered(BlAction *accion) {
             g_albaranesProveedor->hide();
             g_albaranesProveedor->show();
         } // end if
-        blDebug ( "END PluginBf_ProveedorAlbaran::BlAction_triggered::mui_actionProveedoresAlbaran", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionProveedAlbaranNuevo") {
@@ -92,7 +92,7 @@ int BlAction_triggered(BlAction *accion) {
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
-        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedAlbaranNuevo", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     return 0;
 }
@@ -169,7 +169,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

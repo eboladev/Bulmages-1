@@ -38,7 +38,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de IVA\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -77,19 +77,20 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-     if (accion->objectName() == "mui_actionIVATipos") {
-         blDebug ( "PluginBf_IVA::BlAction_triggered::mui_actionIVATipos", 0 );
+    blDebug ( Q_FUNC_INFO, 0, _("PluginBf_IVA") );
+
+    if (accion->objectName() == "mui_actionIVATipos") {
          ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) g_bges->company(), NULL );
          g_bges->company()->m_pWorkspace->addSubWindow ( pag );
          pag->show();
-         blDebug ( "END PluginBf_IVA::BlAction_triggered::mui_actionIVATipos", 0 );
-    }
-     if (accion->objectName() == "mui_actionIVATasas") {
-         blDebug ( "PluginBf_IVA::PluginBf_IVA::BlAction_triggered::mui_actionIVATasas", 0 );
+    } // end if
+
+    if (accion->objectName() == "mui_actionIVATasas") {
          ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) g_bges->company(), NULL );
          g_bges->company()->m_pWorkspace->addSubWindow ( pag );
          pag->show();
-         blDebug ( "END PluginBf_IVA::PluginBf_IVA::BlAction_triggered::mui_actionIVATasas", 0 );
-    }
+    } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

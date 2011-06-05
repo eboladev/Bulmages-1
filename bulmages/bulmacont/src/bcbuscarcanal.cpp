@@ -29,12 +29,12 @@
 BcBuscarCanal::BcBuscarCanal ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BcBuscarCanal::BcBuscarCanal", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setQuery ( "SELECT idcanal, nombre FROM canal ORDER BY nombre" );
     setTableName ( "canal" );
     setFieldId ( "idcanal" );
     m_valores["nombre"] = "";
-    blDebug ( "END BcBuscarCanal::BcBuscarCanal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -43,8 +43,8 @@ BcBuscarCanal::BcBuscarCanal ( QWidget *parent )
 **/
 BcBuscarCanal::~BcBuscarCanal()
 {
-    blDebug ( "BcBuscarCanal::~BcBuscarCanal", 0 );
-    blDebug ( "END BcBuscarCanal::~BcBuscarCanal", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -59,12 +59,12 @@ BcBuscarCanal::~BcBuscarCanal()
 BcBuscarCanalDelegate::BcBuscarCanalDelegate ( QWidget *parent )
         : BlComboBoxDelegate ( parent )
 {
-    blDebug ( "BcBuscarCanalDelegate::BcBuscarCanalDelegate", 10 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setQuery ( "SELECT idcanal, nombre FROM canal ORDER BY nombre" );
     setTableName ( "canal" );
     setFieldId ( "idcanal" );
     m_valores["nombre"] = "";
-    blDebug ( "END BcBuscarCanalDelegate::BcBuscarCanalDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -74,8 +74,8 @@ BcBuscarCanalDelegate::BcBuscarCanalDelegate ( QWidget *parent )
 **/
 BcBuscarCanalDelegate::~BcBuscarCanalDelegate()
 {
-    blDebug ( "BcBuscarCanalDelegate::~BcBuscarCanalDelegate", 10 );
-    blDebug ( "END BcBuscarCanalDelegate::~BcBuscarCanalDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

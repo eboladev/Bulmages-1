@@ -92,7 +92,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
       } // end if
    } // end for
 
-   blDebug ( "END BlArgParser::BlArgParser", 0 );
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

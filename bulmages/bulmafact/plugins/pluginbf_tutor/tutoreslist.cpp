@@ -50,7 +50,7 @@ TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END TutoresList::TutoresList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -87,7 +87,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END TutoresList::TutoresList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -96,7 +96,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 TutoresList::~TutoresList()
 {
     blDebug ( "TutoresList::~TutoresList", 0 );
-    blDebug ( "END TutoresList::~TutoresList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -110,7 +110,7 @@ void TutoresList::presentar()
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM cliente WHERE 1 = 1 " + generaFiltro() );
     } // end if
-    blDebug ( "END TutoresList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -127,7 +127,7 @@ QString TutoresList::generaFiltro()
         filtro += " ) ";
     } // end if
 
-    blDebug ( "END TutoresList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -153,7 +153,7 @@ void TutoresList::imprimir()
 {
     blDebug ( "TutoresList::imprimir", 0 );
     mui_list->printPDF ( _ ( "Padres" ) );
-    blDebug ( "END TutoresList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -184,7 +184,7 @@ void TutoresList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    blDebug ( "END:TutoresList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -212,7 +212,7 @@ void TutoresList::editar ( int )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    blDebug ( "END TutoresList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -250,7 +250,7 @@ void TutoresList::setMainCompany ( BfCompany *comp )
 QString TutoresList::idcliente()
 {
     blDebug ( "TutoresList::idcliente", 0 );
-    blDebug ( "END TutoresList::idcliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idcliente;
 }
 
@@ -297,13 +297,13 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END TutoresListSubForm::TutoresListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 TutoresListSubForm::~TutoresListSubForm()
 {
     blDebug ( "TutoresListSubForm::~TutoresListSubForm", 0 );
-    blDebug ( "END TutoresListSubForm::~TutoresListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

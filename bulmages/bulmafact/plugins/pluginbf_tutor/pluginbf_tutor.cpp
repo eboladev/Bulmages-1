@@ -70,8 +70,7 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Fichas->addAction ( accionB );
     } // end if
 
-    blDebug ( "END Punto de entrada de PluginBf_Tutor\n", 0 );
-    
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -84,7 +83,6 @@ int BlAction_triggered(BlAction *accion) {
             g_tutoresList->hide();
             g_tutoresList->show();
         } // end if
-        blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocio", 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionSocioNuevo") {
@@ -92,9 +90,9 @@ int BlAction_triggered(BlAction *accion) {
         TutorView * bud = new TutorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
     } // end if
 
+    blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
     return 0;
 }
 
@@ -106,7 +104,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         comp->m_pWorkspace->addSubWindow ( g_tutoresList );
         g_tutoresList->hide();
     }// end if
-    blDebug ( "END pluginbf_tutor::BfCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -138,7 +136,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_tutor::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return ret;
 }
@@ -157,7 +155,7 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_tutor::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
@@ -172,7 +170,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbf_tutor::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
@@ -200,7 +198,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    blDebug ( "END pluginbf_tutor::BlSubForm_editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -256,7 +254,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     blDebug ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->fieldName() != "nomcliente" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } // end if
 
@@ -276,7 +274,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCliente == "" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } // end if
 
@@ -288,7 +286,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
     
-    blDebug ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -346,7 +344,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 {
     blDebug ( "SubForm_Tutor::SubForm_Tutor", 0 );
-    blDebug ( "END SubForm_Tutor::SubForm_Tutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -355,7 +353,7 @@ SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 SubForm_Tutor::~SubForm_Tutor()
 {
     blDebug ( "SubForm_Tutor::~SubForm_Tutor", 0 );
-    blDebug ( "END SubForm_Tutor::~SubForm_Tutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -379,7 +377,7 @@ void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ), _ ( "Seleccionar tutor" ) );
         } // end if
     } // end if
-    blDebug ( "END SubForm_Tutor::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -401,7 +399,7 @@ void SubForm_Tutor::s_trataMenu ( QAction *action )
         nuevoTutor();
     } // end if
 
-    blDebug ( "END SubForm_Tutor::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -417,12 +415,12 @@ void SubForm_Tutor::editarTutor ( QString idtutor )
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idtutor ) ) {
         delete art;
-        blDebug ( "END SubForm_Tutor::editarTutor", 0, "Carga Erronea" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Carga erronea") );
         return;
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END SubForm_Tutor::editarTutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -453,7 +451,7 @@ void SubForm_Tutor::nuevoTutor( )
     } // end if
     delete art;  
     
-    blDebug ( "END SubForm_Tutor::nuevoTutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -478,7 +476,7 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idTutor == "" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
 
@@ -490,7 +488,7 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END SubForm_Tutor::editarTutor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -505,7 +503,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     SubForm_Tutor *subformods = new SubForm_Tutor ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -555,7 +553,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     } // end if
     
 
-    blDebug ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

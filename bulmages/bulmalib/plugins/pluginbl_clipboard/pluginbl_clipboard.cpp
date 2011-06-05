@@ -49,7 +49,7 @@ int entryPoint ( QApplication * )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_clipboard", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -65,7 +65,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     PluginBl_Clipboard *subformclip = new PluginBl_Clipboard ( sub );
     sub->connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformclip, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformclip, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -77,7 +77,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent )
 {
     blDebug ( "PluginBl_Clipboard::PluginBl_Clipboard", 0 );
-    blDebug ( "END PluginBl_Clipboard::PluginBl_Clipboard", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -87,7 +87,7 @@ PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent 
 PluginBl_Clipboard::~PluginBl_Clipboard()
 {
     blDebug ( "PluginBl_Clipboard::~PluginBl_Clipboard", 0 );
-    blDebug ( "END PluginBl_Clipboard::~PluginBl_Clipboard", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -109,7 +109,7 @@ void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
         menu->addAction (QIcon( ":/Images/clipboard.png" ), _ ( "Actualizar desde hoja de calculo" ) );
     } // end if
 
-    blDebug ( "END PluginBl_Clipboard::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -174,7 +174,7 @@ void PluginBl_Clipboard::pegaSXC()
             linea1->setDbValue ( campos.at ( j ), valorcampo );
         } // end for
     } // end for
-    blDebug ( "END PluginBl_Clipboard::pegaSXC", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -245,7 +245,7 @@ void PluginBl_Clipboard::pegaActualizaODS()
     
 
 
-    blDebug ( "END PluginBl_Clipboard::pegaActualizaODS", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -284,7 +284,7 @@ void PluginBl_Clipboard::pegaODS()
             linea1->setDbValue ( campos.at ( j ), campos_valores.at ( j ) );
         } // end for
     } // end for
-    blDebug ( "END PluginBl_Clipboard::pegaODS", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -316,7 +316,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
       m_hboxLayout1->addWidget ( sel );
 
     } // end if
-    blDebug ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

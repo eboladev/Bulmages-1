@@ -34,7 +34,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de bancos\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -63,13 +63,13 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( "PluginBf_Banco::BlAction_triggered", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionBancos") {
         BancoView * bud = new BancoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-    blDebug ( "END PluginBf_Banco::BlAction_triggered", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
  
 

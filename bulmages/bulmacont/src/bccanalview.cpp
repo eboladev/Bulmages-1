@@ -31,7 +31,7 @@
 BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( "BcCanalView::BcCanalView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setTitleName ( _ ( "Canal" ) );
     /// EStablezco cual es la tabla en la que basarse para los permisos
@@ -52,7 +52,7 @@ BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
     dialogChanges_readValues();
     on_mui_idcanal_valueChanged ( 0 );
     mainCompany() ->insertWindow ( windowTitle(), this );
-    blDebug ( "END BcCanalView::BcCanalView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -61,9 +61,9 @@ BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
 **/
 BcCanalView::~BcCanalView()
 {
-    blDebug ( "BcCanalView::~BcCanalView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
-    blDebug ( "END BcCanalView::~BcCanalView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,7 +72,7 @@ BcCanalView::~BcCanalView()
 **/
 void BcCanalView::pintar()
 {
-    blDebug ( "BcCanalView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si el combocoste no esta vacio se muestra el registro que contiene.
     if ( idcanal != 0 ) {
         /// Habilita los campos para ser editados.
@@ -87,7 +87,7 @@ void BcCanalView::pintar()
     /// Si se han cambiado los canales, se rehace el selector de canales.
     BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
     scanal->cargacanales();
-    blDebug ( "END BcCanalView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -97,7 +97,7 @@ void BcCanalView::pintar()
 **/
 void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
 {
-    blDebug ( "BcCanalView::on_mui_idcanal_valueChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int idcanal1 = numcombo.toInt();
     static bool flipflop = FALSE;
 
@@ -127,7 +127,7 @@ void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
     flipflop = TRUE;
     idcanal = idcanal1;
     mostrarplantilla();
-    blDebug ( "END BcCanalView::on_mui_idcanal_valueChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -136,7 +136,7 @@ void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
 **/
 void BcCanalView::mostrarplantilla()
 {
-    blDebug ( "BcCanalView::mostrarplantilla", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query;
     QTextStream ( &query ) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
     BlDbRecordSet *cursorcanal = mainCompany() ->loadQuery ( query );
@@ -146,7 +146,7 @@ void BcCanalView::mostrarplantilla()
     } // end if
     mui_idcanal->setId ( QString::number ( idcanal ) );
     dialogChanges_readValues();
-    blDebug ( "END BcCanalView::mostrarplantilla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -156,7 +156,7 @@ void BcCanalView::mostrarplantilla()
 **/
 void BcCanalView::on_mui_guardar_clicked()
 {
-    blDebug ( "BcCanalView::on_mui_guardar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString nom = mui_nomcanal->text();
     QString desc = mui_desccanal->toPlainText();
     QString query;
@@ -168,7 +168,7 @@ void BcCanalView::on_mui_guardar_clicked()
     mainCompany() ->runQuery ( query );
     dialogChanges_readValues();
     pintar();
-    blDebug ( "END BcCanalView::on_mui_guardar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -177,7 +177,7 @@ void BcCanalView::on_mui_guardar_clicked()
 **/
 void BcCanalView::on_mui_crear_clicked()
 {
-    blDebug ( "BcCanalView::on_mui_crear_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -197,7 +197,7 @@ void BcCanalView::on_mui_crear_clicked()
     delete cur;
     mainCompany() ->commit();
     pintar();
-    blDebug ( "END BcCanalView::on_mui_crear_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -206,7 +206,7 @@ void BcCanalView::on_mui_crear_clicked()
 **/
 void BcCanalView::on_mui_borrar_clicked()
 {
-    blDebug ( "BcCanalView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     switch ( QMessageBox::warning ( this,
                                     _ ( "Borrar canal" ),
                                     _ ( "Se va a borrar este canal.\nEsto puede ocasionar perdida de datos." ),
@@ -220,7 +220,7 @@ void BcCanalView::on_mui_borrar_clicked()
         idcanal = 0;
         pintar();
     } // end switch
-    blDebug ( "END BcCanalView::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -230,7 +230,7 @@ void BcCanalView::on_mui_borrar_clicked()
 **/
 void BcCanalView::closeEvent ( QCloseEvent *e )
 {
-    blDebug ( "BcCentroCosteView::closeEvent", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( dialogChanges_isChanged() ) {
         int val = QMessageBox::warning ( this,
                                          _ ( "Guardar canal" ),
@@ -241,6 +241,6 @@ void BcCanalView::closeEvent ( QCloseEvent *e )
         if ( val == 2 )
             e->ignore();
     } // end if
-    blDebug ( "END BcCentroCosteView::closeEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

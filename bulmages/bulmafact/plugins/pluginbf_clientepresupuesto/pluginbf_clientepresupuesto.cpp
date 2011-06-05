@@ -41,7 +41,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de presupuestos a clientes\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -153,7 +153,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    blDebug ( "PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     VerPreQToolButton *mui_exporta_epresupuesto2 = new VerPreQToolButton ( l, l->mui_plugbotones );
 
@@ -167,7 +167,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_epresupuesto2 );
 
-    blDebug ( "END PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

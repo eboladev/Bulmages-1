@@ -40,7 +40,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "Punto de entrada del plugin bloqueo de Fechas", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

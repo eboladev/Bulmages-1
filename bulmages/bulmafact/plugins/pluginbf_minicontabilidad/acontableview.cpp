@@ -37,7 +37,7 @@
 */
 ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "ApunteContableView::ApunteContableView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
 //    setAttribute ( Qt::WA_DeleteOnClose );
 
@@ -77,28 +77,28 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
 
-    blDebug ( "END ApunteContableView::ApunteContableView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ApunteContableView::~ApunteContableView()
 {
-    blDebug ( "ApunteContableView::~ApunteContableView", 0 );
-    blDebug ( "END ApunteContableView::~ApunteContableView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString ApunteContableView::templateName ( void )
 {
-    blDebug ( "ApunteContableView::templateName", 0 );
-    blDebug ( "END ApunteContableView::templateName", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "acontable" );
 }
 
 void ApunteContableView::imprimir()
 {
-    blDebug ( "ApunteContableView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -113,27 +113,27 @@ void ApunteContableView::imprimir()
 
     BfForm::imprimir();
 
-    blDebug ( "END ApunteContableView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int ApunteContableView::save()
 {
-    blDebug ( "ApunteContableView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->save();
 
-    blDebug ( "END ApunteContableView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int ApunteContableView::load ( QString id )
 {
-    blDebug ( "ApunteContableView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->load ("SELECT * FROM acontable NATURAL LEFT JOIN partida" );
     
-    blDebug ( "END ApunteContableView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }

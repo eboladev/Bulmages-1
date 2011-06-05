@@ -55,13 +55,13 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     connect (m_socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
 
     g_plugins->lanza ( "ClientSync_ClientSync_Post", this );
-    blDebug ( "END ClientSync::ClientSync", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ClientSync::~ClientSync()
 {
     blDebug ( "ClientSync::~ClientSync", 0 );
-    blDebug ( "END ClientSync::~ClientSync", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,7 +83,7 @@ void ClientSync::readyRead() {
 	array = "";
     }// end while
     mui_plainText->appendPlainText(mensaje);    
-    blDebug ( "END ClientSync::readyRead", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ClientSync::readChannelFinished() {
@@ -92,12 +92,12 @@ void ClientSync::readChannelFinished() {
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
     blMsgInfo("Error de comunicacion con el servidor");
-    blDebug ( "END ClientSync::readyRead", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ClientSync::send(const QString & texto) {
     blDebug ( "ClientSync::send", 0 );
     m_socket->write(texto.toLatin1());
     mui_plainText->appendPlainText("Enviando mensaje a:" + m_socket->peerAddress().toString() + "\n" );  
-    blDebug ( "END ClientSync::send", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

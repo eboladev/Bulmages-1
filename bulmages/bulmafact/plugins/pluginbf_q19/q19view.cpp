@@ -65,7 +65,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el archivo" ) );
     } // end try
-    blDebug ( "END Q19View::Q19View", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -77,7 +77,7 @@ Q19View::~Q19View()
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
     delete m_q19;
-    blDebug ( "END Q19View::~Q19View", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
  
@@ -191,7 +191,7 @@ void Q19View::on_mui_aceptar_clicked()
     } catch ( ... ) {
        blDebug ( _("Error al generar remesa bancaria"), 2 );
     } // end try
-    blDebug ( "END Q19View::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -199,7 +199,7 @@ void Q19View::closeEvent ( QCloseEvent *e ) {
   //no hay nada que guardar
    blDebug ( "Q19View::closeEvent", 0, windowTitle() );
    
-   blDebug ( "END Q19View::closeEvent", 0 );
+   blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

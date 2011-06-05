@@ -34,7 +34,7 @@
 BfClienteAlbaranDescuentoSubForm::BfClienteAlbaranDescuentoSubForm ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( "BfClienteAlbaranDescuentoSubForm::BfClienteAlbaranDescuentoSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setDbTableName ( "dalbaran" );
     setDbFieldId ( "iddalbaran" );
@@ -43,7 +43,7 @@ BfClienteAlbaranDescuentoSubForm::BfClienteAlbaranDescuentoSubForm ( QWidget *pa
     addSubFormHeader ( "proporciondalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
     setInsert ( TRUE );
-    blDebug ( "END BfClienteAlbaranDescuentoSubForm::BfClienteAlbaranDescuentoSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -53,7 +53,7 @@ BfClienteAlbaranDescuentoSubForm::BfClienteAlbaranDescuentoSubForm ( QWidget *pa
 **/
 void BfClienteAlbaranDescuentoSubForm::load ( QString idalbaran )
 {
-    blDebug ( "BfClienteAlbaranDescuentoSubForm::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idalbaran = idalbaran;
     BlSubForm::load ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
 }

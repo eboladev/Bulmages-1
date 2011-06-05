@@ -84,14 +84,14 @@ int BlAction_triggered(BlAction *accion) {
             g_pagosList->hide();
             g_pagosList->show();
         } // end if
-        blDebug ( "END PluginBf_ProveedorPago::BlAction_triggered::mui_actionProveedoresPagos", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     if (accion->objectName() == "mui_actionProveedorPagoNuevo") {
         blDebug ( "PluginBf_ProveedorPago::BlAction_triggered::mui_actionProveedorPagoNuevo", 0 );
         PagoView * bud = new PagoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_ProveedorPago::BlAction_triggered::mui_actionProveedorPagoNuevo", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     return 0;
 }
@@ -168,7 +168,7 @@ int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    blDebug ( "END PluginPagos_FacturaProveedorView_FacturaProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -191,7 +191,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    blDebug ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -214,7 +214,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

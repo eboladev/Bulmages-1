@@ -100,7 +100,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido a proveedor" ), this );
     } // end try
-    blDebug ( "END PedidoProveedorView::PedidoProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -110,7 +110,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
 PedidoProveedorView::~PedidoProveedorView()
 {
     blDebug ( "PedidoProveedorView::~PedidoProveedorView", 0 );
-    blDebug ( "END PedidoProveedorView::~PedidoProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -132,7 +132,7 @@ void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tota
     mui_totalDescuentos->setText ( desc.toQString() );
     mui_totalIRPF->setText ( QString ( irpf.toQString() ) );
     mui_totalRecargo->setText ( QString ( reqeq.toQString() ) );
-    blDebug ( "END PedidoProveedorView::pintatotales", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -147,7 +147,7 @@ void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
     blDebug ( "PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
     mui_lineasDetalle->setColumnValue ( "idproveedor", id );
     mui_idforma_pago->setIdProveedor ( id );
-    blDebug ( "END PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -178,7 +178,7 @@ int PedidoProveedorView::beforeDelete()
     blDebug ( "PedidoProveedor::beforeDelete", 0 );
     m_listalineas->remove();
     m_listadescuentos->remove();
-    blDebug ( "END PedidoProveedor::beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -200,7 +200,7 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
 
     calculaypintatotales();
 
-    blDebug ( "END PedidoProveedor::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

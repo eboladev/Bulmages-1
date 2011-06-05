@@ -37,8 +37,8 @@
 **/
 PluginBc_Example::PluginBc_Example()
 {
-    blDebug ( "PluginBc_Example::PluginBc_Example", 0 );
-    blDebug ( "PluginBc_Example::PluginBc_Example", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -47,8 +47,8 @@ PluginBc_Example::PluginBc_Example()
 **/
 PluginBc_Example::~PluginBc_Example()
 {
-    blDebug ( "PluginBc_Example::~PluginBc_Example", 0 );
-    blDebug ( "PluginBc_Example::~PluginBc_Example", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -57,14 +57,14 @@ PluginBc_Example::~PluginBc_Example()
 **/
 void PluginBc_Example::elslot()
 {
-    blDebug ( "PluginBc_Example::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     fprintf ( stderr, "Sa ha activado el slot\n" );
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    blDebug ( "END PluginBc_Example::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -74,7 +74,7 @@ void PluginBc_Example::elslot()
 **/
 void PluginBc_Example::inicializa ( BcBulmaCont *bcont )
 {
-    blDebug ( "PluginBc_Example::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -88,7 +88,7 @@ void PluginBc_Example::inicializa ( BcBulmaCont *bcont )
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
 
-    blDebug ( "END PluginBc_Example::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -98,7 +98,7 @@ void PluginBc_Example::inicializa ( BcBulmaCont *bcont )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "Estoy dentro del plugin\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBc_Example *plug = new PluginBc_Example();
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal

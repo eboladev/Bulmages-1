@@ -34,7 +34,7 @@
 **/
 ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListLinContratoView::ListLinContratoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lcontrato" );
     setDbFieldId ( "idlcontrato" );
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
@@ -48,7 +48,7 @@ ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( paren
     addSubFormHeader ( "ordenlcontrato", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
-    blDebug ( "END ListLinContratoView::ListLinContratoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -58,10 +58,10 @@ ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( paren
 **/
 void ListLinContratoView::load ( QString idcontrato )
 {
-    blDebug ( "ListLinContratoView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idcontrato = idcontrato;
     BlSubForm::load ( "SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato" );
-    blDebug ( "END ListLinContratoView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

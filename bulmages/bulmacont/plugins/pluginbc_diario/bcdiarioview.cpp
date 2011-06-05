@@ -46,7 +46,7 @@
 BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
         : BcForm ( emp, parent )
 {
-    blDebug ( "BcDiarioView::BcDiarioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
 
     setTitleName ( _ ( "Diario" ) );
@@ -71,7 +71,7 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     /// Llamamos a los scripts
     blScript(this);
 
-    blDebug ( "END BcDiarioView::BcDiarioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -80,9 +80,9 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
 **/
 BcDiarioView::~BcDiarioView()
 {
-    blDebug ( "BcDiarioView::~BcDiarioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
-    blDebug ( "END BcDiarioView::~BcDiarioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -90,9 +90,9 @@ BcDiarioView::~BcDiarioView()
 **/
 void BcDiarioView::on_mui_actualizar_clicked()
 {
-    blDebug ( "BcDiarioView::on_mui_actualizar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     accept();
-    blDebug ( "END BcDiarioView::on_mui_actualizar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,9 +101,9 @@ void BcDiarioView::on_mui_actualizar_clicked()
 **/
 void BcDiarioView::on_mui_configurar_clicked()
 {
-    blDebug ( "BcDiarioView::on_mui_configurar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->showConfig();
-    blDebug ( "END BcDiarioView::on_mui_configurar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -114,7 +114,7 @@ void BcDiarioView::on_mui_configurar_clicked()
 **/
 void BcDiarioView::inicializa1 ( QString finicial, QString ffinal, int )
 {
-    blDebug ( "BcDiarioView::inicializa1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString s1, s2, s3;
     QDate fecha1aux;
     int dia, mes, ano;
@@ -141,7 +141,7 @@ void BcDiarioView::inicializa1 ( QString finicial, QString ffinal, int )
     fecha1aux.setYMD ( ano, mes, dia );
     cadena2.sprintf ( "%2.2d/%2.2d/%4.4d", fecha1aux.day(), fecha1aux.month(), fecha1aux.year() );
     mui_fechafinal->setText ( cadena2 );
-    blDebug ( "END BcDiarioView::inicializa1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -151,10 +151,10 @@ void BcDiarioView::inicializa1 ( QString finicial, QString ffinal, int )
 **/
 void BcDiarioView::boton_imprimir()
 {
-    blDebug ( "BcDiarioView::boton_imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BcDiarioPrintView *print = new BcDiarioPrintView ( mainCompany(), 0 );
     print->exec();
-    blDebug ( "END BcDiarioView::boton_imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -163,7 +163,7 @@ void BcDiarioView::boton_imprimir()
 **/
 void BcDiarioView::boton_guardar()
 {
-    blDebug ( "BcDiarioView::boton_guardar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar Libro Diario" ),
                  g_confpr->value( CONF_DIR_USER ),
@@ -180,7 +180,7 @@ void BcDiarioView::boton_guardar()
         diariop.inicializa2 ( ( char * ) fn.toAscii().constData() );
         diariop.accept();
     } // end if
-    blDebug ( "END BcDiarioView::boton_guardar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -189,9 +189,9 @@ void BcDiarioView::boton_guardar()
 **/
 void BcDiarioView::accept()
 {
-    blDebug ( "BcDiarioView::accept", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     presentar();
-    blDebug ( "END BcDiarioView::accept", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -200,7 +200,7 @@ void BcDiarioView::accept()
 **/
 void BcDiarioView::presentar()
 {
-    blDebug ( "BcDiarioView::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlDbRecordSet *cur = NULL;
     try {
         QString tabla = "apunte";
@@ -289,7 +289,7 @@ void BcDiarioView::presentar()
             totalhaber->setText ( cur->value( "totalhaber" ) );
         } // end if
         delete cur;
-        blDebug ( "END BcDiarioView::presentar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( "Error en los calculos" );
         /// Liberamos memoria que pueda haber quedado reservada.
@@ -302,8 +302,8 @@ void BcDiarioView::presentar()
 **/
 void BcDiarioView::on_mui_imprimir_clicked()
 {
-    blDebug ( "BcDiarioView::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( "diario" );
-    blDebug ( "END BcDiarioView::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

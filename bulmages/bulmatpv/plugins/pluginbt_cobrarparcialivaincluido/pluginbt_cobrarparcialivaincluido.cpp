@@ -39,7 +39,7 @@ PluginBt_CobrarParcialIVAIncluido *g_PluginBt_CobrarParcialIVAIncluido;
 PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 {
     blDebug ( "PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido", 0 );
-    blDebug ( "END PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -49,7 +49,7 @@ PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido()
 {
     blDebug ( "PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido", 0 );
-    blDebug ( "END PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

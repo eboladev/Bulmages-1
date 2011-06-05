@@ -31,8 +31,8 @@
 **/
 PluginBf_CompraVenta::PluginBf_CompraVenta()
 {
-    blDebug ( "PluginBf_CompraVenta::PluginBf_CompraVenta", 0 );
-    blDebug ( "END PluginBf_CompraVenta::PluginBf_CompraVenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -41,8 +41,8 @@ PluginBf_CompraVenta::PluginBf_CompraVenta()
 **/
 PluginBf_CompraVenta::~PluginBf_CompraVenta()
 {
-    blDebug ( "PluginBf_CompraVenta::~PluginBf_CompraVenta", 0 );
-    blDebug ( "END PluginBf_CompraVenta::~PluginBf_CompraVenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -51,13 +51,13 @@ PluginBf_CompraVenta::~PluginBf_CompraVenta()
 **/
 void PluginBf_CompraVenta::elslot()
 {
-    blDebug ( "PluginBf_CompraVenta::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
 
-    blDebug ( "END PluginBf_CompraVenta::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -67,7 +67,7 @@ void PluginBf_CompraVenta::elslot()
 **/
 void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "PluginBf_CompraVenta::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -82,7 +82,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( planCuentas );
     bges->Listados->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_CompraVenta::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -93,7 +93,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de CompraVenta\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -42,7 +42,7 @@ Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButt
     m_recibosList=NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
-    blDebug ( "END Q19QToolButton::Q19QToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -57,7 +57,7 @@ Q19QToolButton::Q19QToolButton ( RecibosList *cob , QWidget *parent ) : QToolBut
     m_cobrosList = NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
-    blDebug ( "END Q19QToolButton::Q19QToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -67,7 +67,7 @@ Q19QToolButton::~Q19QToolButton()
 {
     blDebug ( "Q19QToolButton::~Q19QToolButton", 0 );
      delete m_q19;
-    blDebug ( "END Q19QToolButton::~Q19QToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -84,7 +84,7 @@ void Q19QToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END Q19QToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -147,6 +147,6 @@ void Q19QToolButton::click()
        delete curcobro;
      }
 
-    blDebug ( "END Q19QToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

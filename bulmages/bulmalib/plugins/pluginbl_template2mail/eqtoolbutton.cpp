@@ -44,7 +44,7 @@ EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
-    blDebug ( "END EQToolButtonMail::EQToolButtonMail", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -54,7 +54,7 @@ EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
 EQToolButtonMail::~EQToolButtonMail()
 {
     blDebug ( "EQToolButtonMail::~EQToolButtonMail", 0 );
-    blDebug ( "END EQToolButtonMail::~EQToolButtonMail", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,7 +101,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
         QAction * action = ajust->addAction ( titulo );
         action->setObjectName ( "em_" + fileInfo.fileName() );
     }
-    blDebug ( "END EQToolButtonMail::pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -159,7 +159,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
             } // end if
         } // end if
     }
-    blDebug ( "END EQToolButtonMail::trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

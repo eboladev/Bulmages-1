@@ -55,13 +55,13 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
 	
     pintar();
 	
-	blDebug ( "END MTicketIVAInc::MTicketIVAInc", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 MTicketIVAInc::~MTicketIVAInc()
 {
     blDebug ( "MTicketIVAInc::~MTicketIVAInc", 0 );
-    blDebug ( "END MTicketIVAInc::~MTicketIVAInc", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void MTicketIVAInc::pintar()
@@ -72,7 +72,7 @@ void MTicketIVAInc::pintar()
     BlDbRecord *item;
 
     if ( g_plugins->lanza ( "MTicketIVAInc_pintar", this ) ) {
-        blDebug ( "END MTicketIVAInc::pintar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
 	
@@ -188,7 +188,7 @@ void MTicketIVAInc::pintar()
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
 	
-    blDebug ( "END MTicketIVAInc::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void MTicketIVAInc::on_mui_subir_clicked()

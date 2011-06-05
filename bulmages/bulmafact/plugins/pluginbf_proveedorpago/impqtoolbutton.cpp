@@ -52,7 +52,7 @@ GenPagoQToolButton::GenPagoQToolButton ( QWidget *fac , QWidget *parent ) : QToo
     blDebug ( "GenPagoQToolButton::GenPagoQToolButton", 0 );
     m_object = fac;
     setBoton();
-    blDebug ( "END GenPagoQToolButton::GenPagoQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,7 +62,7 @@ GenPagoQToolButton::GenPagoQToolButton ( QWidget *fac , QWidget *parent ) : QToo
 GenPagoQToolButton::~GenPagoQToolButton()
 {
     blDebug ( "GenPagoQToolButton::~GenPagoQToolButton", 0 );
-    blDebug ( "END GenPagoQToolButton::~GenPagoQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -81,7 +81,7 @@ void GenPagoQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( "END GenPagoQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -241,7 +241,7 @@ void GenPagoQToolButton::click()
 
     } // end if
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

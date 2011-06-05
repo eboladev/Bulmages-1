@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
         g_file->flush();
         g_file->close();
     } // end if
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -72,7 +72,7 @@ int exitPoint ( BtBulmaTPV *tpv )
         g_file->close();
     } // end if
     delete g_file;
-    blDebug ( "END pluginvisor::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -89,7 +89,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         g_file->flush();
         g_file->close();
     } // end if
-    blDebug ( "END pluginvisor::Ticket_insertarArticulo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

@@ -105,7 +105,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _( "Error al crear el proveedor" ) );
     } // end try
 
-    blDebug ( "END ProveedorView::ProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -114,7 +114,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
 ProveedorView::~ProveedorView()
 {
     blDebug ( "ProveedorView::~ProveedorView", 0 );
-    blDebug ( "END ProveedorView::~ProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -156,7 +156,7 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
     if ( !blValidateSpainCIFNIFCode ( mui_cifproveedor->text(), digito ) ) {
         blMsgInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
     } // end if
-    blDebug ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -174,7 +174,7 @@ int ProveedorView::cargarPost ( QString idprov )
     blDebug ( "ProveedorView::cargar", 0, idprov );
     /// Lanzamos los plugins de carga
     g_plugins->lanza ( "ProveedorView_cargarPost_Post", this );
-    blDebug ( "END ProveedorView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

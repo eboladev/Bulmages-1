@@ -38,7 +38,7 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
     
     /// Establecemos el FocusProxy para que el foco funcione bien
     setFocusProxy(m_entidad);
-    blDebug ( "END BlBankEdit::BlBankEdit", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -48,7 +48,7 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
 BlBankEdit::~BlBankEdit()
 {
     blDebug ( "BlBankEdit::~BlBankEdit", 0 );
-    blDebug ( "END BlBankEdit::~BlBankEdit", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -89,7 +89,7 @@ void BlBankEdit::checkControlDigit()
       blMsgInfo (_ ( "Cuenta bancaria incorrecta" ));
         throw - 1;
     } // end if
-    blDebug ( "END BlBankEdit::checkControlDigit", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -105,7 +105,7 @@ void BlBankEdit::setText ( QString val )
     m_oficina->setText ( val.left ( 8 ).right ( 4 ) );
     m_dc->setText ( val.left ( 10 ).right ( 2 ) );
     m_cuenta->setText ( val.left ( 20 ).right ( 10 ) );
-    blDebug ( "END BlBankEdit::setText", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -117,7 +117,7 @@ void BlBankEdit::setFieldValue ( QString val )
 {
     blDebug ( "BlBankEdit::setFieldValue", 0 );
     setText ( val );
-    blDebug ( "END BlBankEdit::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -130,7 +130,7 @@ void BlBankEdit::setFieldValue ( QString val )
 QString BlBankEdit::text()
 {
     blDebug ( "BlBankEdit::text", 0 );
-    blDebug ( "END BlBankEdit::text", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     s_cuentalostFocus();
     QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     checkControlDigit();
@@ -145,7 +145,7 @@ QString BlBankEdit::text()
 QString BlBankEdit::fieldValue()
 {
     blDebug ( "BlBankEdit::fieldValue", 0 );
-    blDebug ( "END BlBankEdit::fieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return text();
 }
 
@@ -158,7 +158,7 @@ void BlBankEdit::s_returnPressed()
     blDebug ( "BlBankEdit::s_enterPressed", 0 );
     s_cuentalostFocus();
     emit returnPressed();
-    blDebug ( "END BlBankEdit::s_enterPressed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -169,7 +169,7 @@ void BlBankEdit::selectAll()
 {
     blDebug ( "BlBankEdit::selectAll", 0 );
     m_cuenta->selectAll();
-    blDebug ( "END BlBankEdit::selectAll", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -180,7 +180,7 @@ void BlBankEdit::setFocus()
 {
     blDebug ( "BlBankEdit::setFocus", 0 );
     m_cuenta->setFocus ( Qt::OtherFocusReason );
-    blDebug ( "END BlBankEdit::setFocus", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -204,7 +204,7 @@ void BlBankEdit::s_cuentatextChanged ( const QString &texto )
         } // end if
     */
     emit ( valueChanged ( m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text() ) );
-    blDebug ( "END BlBankEdit::s_fechatextChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -218,6 +218,6 @@ void BlBankEdit::s_cuentalostFocus()
     QString fech = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     if ( fech != "" )
         s_cuentatextChanged ( fech );
-    blDebug ( "END BlBankEdit::s_cuentalostFocus", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

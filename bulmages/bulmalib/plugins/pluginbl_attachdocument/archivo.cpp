@@ -47,7 +47,7 @@ Archivo::Archivo ( BlMainCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
-    blDebug ( "END Archivo::Archivo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
@@ -57,7 +57,7 @@ Archivo::~Archivo()
     blDebug ( "Archivo::~Archivo", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
-    blDebug ( "END Archivo::~Archivo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void Archivo::on_mui_buscarArchivo_clicked()
@@ -89,5 +89,5 @@ void Archivo::on_mui_aceptar_clicked()
         mainCompany()->commit();
         file.close();
     */
-    blDebug ( "END Archivo::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

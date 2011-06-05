@@ -166,7 +166,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -191,7 +191,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

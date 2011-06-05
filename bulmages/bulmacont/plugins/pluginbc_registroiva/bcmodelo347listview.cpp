@@ -37,7 +37,7 @@
 BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, QWidget *parent, Qt::WFlags f )
         : QDialog ( parent, f ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( "BcModelo347ListView::BcModelo347ListView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     importe->setText ( "3005.06" );
     finicial->setText ( blNormalizeDate ( "01/01/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
@@ -45,7 +45,7 @@ BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, Q
     /// Carga las tablas en pantalla.
     on_m_boton_recalcular_clicked();
     blCenterOnScreen ( this );
-    blDebug ( "END BcModelo347ListView::BcModelo347ListView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -54,9 +54,9 @@ BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, Q
 **/
 BcModelo347ListView::~BcModelo347ListView()
 {
-    blDebug ( "BcModelo347ListView::~BcModelo347ListView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blCenterOnScreen ( this );
-    blDebug ( "END BcModelo347ListView::~BcModelo347ListView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,7 +65,7 @@ BcModelo347ListView::~BcModelo347ListView()
 **/
 void BcModelo347ListView::on_m_boton_recalcular_clicked()
 {
-    blDebug ( "BcModelo347ListView::click_recargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
     QLocale spanish;
@@ -149,7 +149,7 @@ void BcModelo347ListView::on_m_boton_recalcular_clicked()
 
     QLocale::setDefault ( QLocale::C );
 
-    blDebug ( "END BcModelo347ListView::click_recargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -158,7 +158,7 @@ void BcModelo347ListView::on_m_boton_recalcular_clicked()
 **/
 void BcModelo347ListView::on_m_boton_imprimir_clicked()
 {
-    blDebug ( "BcModelo347ListView::click_imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int i, numventas, numcompras;
     QString codigo, descripcion, cif, importe, cp;
     QFile fichero ( g_confpr->value( CONF_DIR_USER ) + "listado347.txt" );
@@ -193,7 +193,7 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
     QString comando = g_confpr->value( CONF_EDITOR ).toAscii() + " " + fichero.fileName();
     system ( comando.toAscii().constData() );
 
-    blDebug ( "END BcModelo347ListView::click_imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -202,9 +202,9 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
 **/
 void BcModelo347ListView::on_finicial_editingFinished()
 {
-    blDebug ( "BcModelo347ListView::finicial_exit", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     finicial->setText ( blNormalizeDate ( finicial->text() ).toString ( "dd/MM/yyyy" ) );
-    blDebug ( "END BcModelo347ListView::finicial_exit", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -213,8 +213,8 @@ void BcModelo347ListView::on_finicial_editingFinished()
 **/
 void BcModelo347ListView::on_ffinal_editingFinished()
 {
-    blDebug ( "BcModelo347ListView::ffinal_exit", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     ffinal->setText ( blNormalizeDate ( ffinal->text() ).toString ( "dd/MM/yyyy" ) );
-    blDebug ( "END BcModelo347ListView::ffinal_exit", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

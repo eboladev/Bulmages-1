@@ -80,7 +80,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, "Modificadores" );
 
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -97,7 +97,7 @@ int ArticuloView_load ( ArticuloView *art )
     if ( l ) {
         l->load ( "SELECT * FROM modificador WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
     } // end if
-    blDebug ( "END ArticuloView_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

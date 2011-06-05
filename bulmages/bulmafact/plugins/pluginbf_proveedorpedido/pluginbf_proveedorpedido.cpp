@@ -80,7 +80,7 @@ int BlAction_triggered(BlAction *accion) {
             g_pedidosProveedorList->hide();
             g_pedidosProveedorList->show();
         } // end if
-        blDebug ( "END PluginBf_ProveedorPedido::BlAction_triggered::mui_actionProveedoresPedidos", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     if (accion->objectName() == "mui_actionProveedorPedidoNuevo") {
         blDebug ( "PluginBf_ProveedorPedido::BlAction_triggered::mui_actionProveedorPedidoNuevo", 0 );

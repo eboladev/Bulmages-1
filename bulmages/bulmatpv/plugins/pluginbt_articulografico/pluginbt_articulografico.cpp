@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_pantallas->show();
     g_pantallas->loadConfig();
 
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

@@ -41,7 +41,7 @@ MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *
     blDebug ( "MyDevButton1::MyDevButton1", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    blDebug ( "END MyDevButton1::MyDevButton1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -51,7 +51,7 @@ MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *
 MyDevButton1::~MyDevButton1()
 {
     blDebug ( "MyDevButton1::~MyDevButton1", 0 );
-    blDebug ( "END MyDevButton1::~MyDevButton1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -64,7 +64,7 @@ void MyDevButton1::on_click (  )
     blDebug ( "MyDevButton1::cambia", 0 );
     Compra *camb = new Compra ( m_emp, 0 );
     camb->show();
-    blDebug ( "END MyDevButton1::cambia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,7 +88,7 @@ int entryPoint ( BtBulmaTPV *tpv )
         tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
         g_doc1->show();
     */
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

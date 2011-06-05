@@ -34,7 +34,7 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
     m_cursorcombo = NULL;
     setMouseTracking ( TRUE );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    blDebug ( "END BusquedaTarifa::BusquedaTarifa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -44,7 +44,7 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
 BusquedaTarifa::~BusquedaTarifa()
 {
     blDebug ( "BusquedaTarifa::~BusquedaTarifa", 0 );
-    blDebug ( "END BusquedaTarifa::~BusquedaTarifa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,7 +73,7 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
         m_cursorcombo->nextRecord();
     }
     setCurrentIndex ( i1 );
-    blDebug ( "END BusquedaTarifa::setIdTarifa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -86,7 +86,7 @@ void BusquedaTarifa::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    blDebug ( "END BusquedaTarifa::m_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -97,10 +97,10 @@ QString BusquedaTarifa::idtarifa()
 
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( "END BusquedaTarifa::idtarifa", 0, m_cursorcombo->value( "idtarifa", index - 1 ) );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return ( m_cursorcombo->value( "idtarifa", index - 1 ) );
     } else {
-        blDebug ( "END BusquedaTarifa::idtarifa", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return "";
     } // end if
 
@@ -110,7 +110,7 @@ QString BusquedaTarifa::idtarifa()
 QString BusquedaTarifa::fieldValue()
 {
     blDebug ( "BusquedaTarifa::fieldValue", 0 );
-    blDebug ( "END BusquedaTarifa::fieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return idtarifa();
 }
 
@@ -119,6 +119,6 @@ void BusquedaTarifa::setFieldValue ( QString idtarifa )
 {
     blDebug ( "BusquedaTarifa::setFieldValue", 0 );
     setIdTarifa ( idtarifa );
-    blDebug ( "END BusquedaTarifa::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

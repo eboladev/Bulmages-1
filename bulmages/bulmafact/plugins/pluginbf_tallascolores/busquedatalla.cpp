@@ -37,7 +37,7 @@ BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
     setTableName ( "tc_talla" );
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
-    blDebug ( "END BusquedaTalla::BusquedaTalla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -48,7 +48,7 @@ BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
 BusquedaTalla::~BusquedaTalla()
 {
     blDebug ( "BusquedaTalla::~BusquedaTalla", 0 );
-    blDebug ( "END BusquedaTalla::~BusquedaTalla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,7 +72,7 @@ BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
     setAllowNull(FALSE);
-    blDebug ( "END BusquedaTallaDelegate::BusquedaTallaDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,6 +83,6 @@ BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
 BusquedaTallaDelegate::~BusquedaTallaDelegate()
 {
     blDebug ( "BusquedaTallaDelegate::~BusquedaTallaDelegate", 0 );
-    blDebug ( "END BusquedaTallaDelegate::~BusquedaTallaDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

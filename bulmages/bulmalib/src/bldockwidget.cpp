@@ -41,7 +41,7 @@ void BlDockWidget::setWorkspace ( BlWorkspace *w )
 {
     blDebug ( "BlDockWidget::setWorkspace", 0 );
     m_pWorkspace = w;
-    blDebug ( "END BlDockWidget::setWorkspace", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -56,7 +56,7 @@ BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QStr
     m_name = name;
     setObjectName ( name );
     connect ( this, SIGNAL ( dockLocationChanged ( Qt::DockWidgetArea ) ), this, SLOT ( mi_dockLocationChanged ( Qt::DockWidgetArea ) ) );
-    blDebug ( "END BlDockWidget::BlDockWidget", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -67,7 +67,7 @@ BlDockWidget::~BlDockWidget()
 {
     blDebug ( "BlDockWidget::~BlDockWidget", 0 );
     saveConfig();
-    blDebug ( "END BlDockWidget::~BlDockWidget", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -84,7 +84,7 @@ void BlDockWidget::setVisibilityState ( bool visible )
     } else {
         this->hide();
     } // end if
-    blDebug ( "END BlDockWidget::setVisibilityState", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -95,7 +95,7 @@ void BlDockWidget::closeEvent ( QCloseEvent * )
 {
     blDebug ( "BlDockWidget::closeEvent", 0 );
     emit ( visibilityStateChanged ( FALSE ) );
-    blDebug ( "END BlDockWidget::closeEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void BlDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
@@ -151,7 +151,7 @@ void BlDockWidget::saveConfig()
         stream << lheight << "\n";
         file.close();
     } // end if
-    blDebug ( "END BlDockWidget::saveConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
