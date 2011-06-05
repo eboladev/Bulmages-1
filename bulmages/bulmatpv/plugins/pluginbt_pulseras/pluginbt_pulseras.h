@@ -21,6 +21,8 @@
 #ifndef PLUGINBT_PULSERAS_H
 #define PLUGINBT_PULSERAS_H
 
+#include "bltoolbutton.h"
+#include "btticket.h"
 #include "blfunctions.h"
 #include "btbulmatpv.h"
 #include "btcompany.h"
@@ -29,7 +31,9 @@
 
 extern "C" PLUGINBT_PULSERAS_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_PULSERAS_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-
-
+extern "C" PLUGINBT_PULSERAS_EXPORT int BlToolButton_released(BlToolButton *);
+extern "C" PLUGINBT_PULSERAS_EXPORT int BtCompany_cobrar(BtCompany *);
+extern "C" PLUGINBT_PULSERAS_EXPORT int BtTicket_pintar(BtTicket *);
+extern "C" PLUGINBT_PULSERAS_EXPORT int BtTicket_borrarArticulo(BtTicket *);
 #endif
 

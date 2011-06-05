@@ -235,6 +235,9 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
         return;
     } // end if
 
+    /// Disparamos los plugins.
+    g_plugins->lanza ( "BtTicket_borrarArticulo", this );
+
     /// Registramos el cambio en el control de logs.
     agregarLog("BORRAR ARTICULO "+m_lineaActual->dbValue("nomarticulo")+"  Cantidad:"+cantidad.toQString('.'));
 

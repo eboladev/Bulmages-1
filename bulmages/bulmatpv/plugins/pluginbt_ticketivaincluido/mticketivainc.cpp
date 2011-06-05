@@ -174,8 +174,6 @@ void MTicketIVAInc::pintar()
     } // end for
 
     plainTextContent += "----------------------------------------\n";
-
-
     htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
     htmlContent += "</table>";
     htmlContent += "</p>";
