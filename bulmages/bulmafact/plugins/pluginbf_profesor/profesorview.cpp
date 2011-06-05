@@ -97,7 +97,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _ ( "Error al crear el profesor" ), this );
     } // end try
     
-    blDebug ( "END ProfesorView::ProfesorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
@@ -105,7 +105,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
 ProfesorView::~ProfesorView()
 {
     blDebug ( "ProfesorView::~ProfesorView", 0 );
-    blDebug ( "END ProfesorView::~ProfesorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString ProfesorView::templateName ( void )
@@ -134,14 +134,14 @@ void ProfesorView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( "END ProfesorView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 int ProfesorView::afterSave()
 {
     blDebug ( "ProfesorView::afterSave", 0 );
 
-    blDebug ( "END ProfesorView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -150,6 +150,6 @@ int ProfesorView::cargarPost(QString id)
     blDebug ( "ProfesorView::cargarPost", 0 );
 
     m_actividades->load("SELECT * FROM actividad NATURAL LEFT JOIN tipoactividad WHERE idprofesor = " + id);
-    blDebug ( "END ProfesorView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

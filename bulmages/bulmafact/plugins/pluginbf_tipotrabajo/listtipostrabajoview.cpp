@@ -60,7 +60,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->load ( "SELECT * FROM tipotrabajo" );
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( "END ListTiposTrabajoView::ListTiposTrabajoView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -85,7 +85,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
 ListTiposTrabajoView::~ListTiposTrabajoView()
 {
     blDebug ( "ListTiposTrabajoView::~ListTiposTrabajoView", 0 );
-    blDebug ( "END ListTiposTrabajoView::~ListTiposTrabajoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -44,7 +44,7 @@
 bool BlDbField::cambiado()
 {
     blDebug ( "BlDbField::cambiado", 0 );
-    blDebug ( "END BlDbField::cambiado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valorcampo != m_valorcampoorig;
 }
 
@@ -56,7 +56,7 @@ void BlDbField::resetCambio()
 {
     blDebug ( "BlDbField::resetCambio", 0 );
     m_valorcampoorig = m_valorcampo;
-    blDebug ( "END BlDbField::resetCambio", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -66,7 +66,7 @@ void BlDbField::resetCambio()
 BlDbField::~BlDbField()
 {
     blDebug ( "BlDbField::~BlDbField", 0 );
-    blDebug ( "END BlDbField::~BlDbField", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -77,7 +77,7 @@ BlDbField::~BlDbField()
 BlPostgreSqlClient *BlDbField::dbConnection()
 {
     blDebug ( "BlDbField::dbConnection", 0 );
-    blDebug ( "END BlDbField::dbConnection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_dbConnection;
 }
 
@@ -90,7 +90,7 @@ void BlDbField::setDbConnection ( BlPostgreSqlClient *comp )
 {
     blDebug ( "BlDbField::setDbConnection", 0 );
     m_dbConnection = comp;
-    blDebug ( "END BlDbField::setDbConnection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,7 +101,7 @@ void BlDbField::setDbConnection ( BlPostgreSqlClient *comp )
 BlDbField::DbType BlDbField::dbFieldType()
 {
     blDebug ( "BlDbField::tipo", 0 );
-    blDebug ( "END BlDbField::tipo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_tipo;
 }
 
@@ -115,7 +115,7 @@ int BlDbField::set ( QString val )
 {
     blDebug ( "BlDbField::set", 0 );
     m_valorcampo = val;
-    blDebug ( "END BlDbField::set", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -127,7 +127,7 @@ int BlDbField::set ( QString val )
 int BlDbField::restrictcampo()
 {
     blDebug ( "BlDbField::restrictcampo", 0 );
-    blDebug ( "END BlDbField::restrictcampo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_restrict;
 }
 
@@ -139,7 +139,7 @@ int BlDbField::restrictcampo()
 QString BlDbField::fieldName()
 {
     blDebug ( "BlDbField::fieldName", 0 );
-    blDebug ( "END BlDbField::fieldName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_fieldName;
 }
 
@@ -151,7 +151,7 @@ QString BlDbField::fieldName()
 QString BlDbField::nompresentacion()
 {
     blDebug ( "BlDbField::nompresentacion", 0 );
-    blDebug ( "END BlDbField::nompresentacion", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_nompresentacion;
 }
 
@@ -172,7 +172,7 @@ QString BlDbField::valorcampo()
             valor.replace ( ".", locale.decimalPoint () );
         } // end if
     } // end if
-    blDebug ( "END BlDbField::valorcampo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }
 
@@ -195,7 +195,7 @@ BlDbField::BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res
     m_nompresentacion = nomp;
     m_valorcampo = "";
     m_valorcampoorig = "";
-    blDebug ( "END BlDbField::BlDbField", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -213,7 +213,7 @@ QString BlDbField::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             blMsgWarning ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -20200;
-            blDebug ( "END BlDbField::valorcampoprep", 0, m_fieldName + " " + m_valorcampo + "-->" + valor );
+            blDebug ( ("END ", Q_FUNC_INFO), 0 );
             return valor;
         } // end if
     } // end if
@@ -262,7 +262,7 @@ QString BlDbField::valorcampoprep ( int &error )
         error = -1;
     } // end switch
 
-    blDebug ( "END BlDbField::valorcampoprep", 0, m_fieldName + " " + m_valorcampo + "-->" + valor );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }
 
@@ -285,7 +285,7 @@ QString BlDbField::exportXML() {
     val += "\t<TIPO>"+ blXMLEncode(QString::number(m_tipo))+"</TIPO>\n";
     val += "</BLDBFIELD>\n";
     return val;
-    blDebug ( "END BlDbField::exportXML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -298,7 +298,7 @@ void BlDbField::syncXML(const QString &text) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
-        blDebug ( "END BlDbField::syncXML", 0, "XML Invalido" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML invalido") );
         return;
     } // end if
 
@@ -324,7 +324,7 @@ BlDbRecord::BlDbRecord ( BlMainCompany *con )
     m_dbConnection = con;
     m_nuevoCampo = TRUE;
     m_tablename="";
-    blDebug ( "END BlDbRecord::BlDbRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -337,7 +337,7 @@ BlDbRecord::~BlDbRecord()
 {
     blDebug ( "BlDbRecord::~BlDbRecord", 0 );
     m_lista.clear();
-    blDebug ( "END BlDbRecord::~BlDbRecord", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Establece la base de datos que debe utilizar la clase.
@@ -350,7 +350,7 @@ void BlDbRecord::setDbConnection ( BlMainCompany *comp )
 {
     blDebug ( "BlDbRecord::setDbConnection", 0 );
     m_dbConnection = comp;
-    blDebug ( "END BlDbRecord::setDbConnection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -361,7 +361,7 @@ void BlDbRecord::setDbConnection ( BlMainCompany *comp )
 BlMainCompany *BlDbRecord::dbConnection()
 {
     blDebug ( "BlDbRecord::dbConnection", 0 );
-    blDebug ( "END BlDbRecord::dbConnection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_dbConnection;
 }
 
@@ -376,7 +376,7 @@ void BlDbRecord::setDbTableName ( QString nom )
 {
     blDebug ( "BlDbRecord::setDbTableName", 0 );
     m_tablename = nom;
-    blDebug ( "END BlDbRecord::setDbTableName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -394,7 +394,7 @@ void BlDbRecord::setNuevo ( bool n )
 {
     blDebug ( "BlDbRecord::setNuevo", 0 );
     m_nuevoCampo = n;
-    blDebug ( "END BlDbRecord::setNuevo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -405,7 +405,7 @@ void BlDbRecord::setNuevo ( bool n )
 QString BlDbRecord::tableName()
 {
     blDebug ( "BlDbRecord::tableName", 0 );
-    blDebug ( "END BlDbRecord::tableName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_tablename;
 }
 
@@ -428,7 +428,7 @@ QString BlDbRecord::fieldId()
 	  m_campoid = "num" + m_tablename;
 	} // end if
     } // end if
-    blDebug ( "END BlDbRecord::fieldId", 0, m_campoid );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_campoid;
 }
 
@@ -441,7 +441,7 @@ void BlDbRecord::setDbFieldId ( QString nom )
 {
     blDebug ( "BlDbRecord::setDbFieldId", 0 );
     m_campoid = nom;
-    blDebug ( "END BlDbRecord::setDbFieldId", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -453,7 +453,7 @@ Normalmente coincide esta lista con la definicion de la tabla con la que opera.
 QList<BlDbField *> *BlDbRecord::lista()
 {
     blDebug ( "BlDbRecord::lista", 0 );
-    blDebug ( "END BlDbRecord::lista", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return &m_lista;
 }
 
@@ -465,7 +465,7 @@ void BlDbRecord::vaciar()
 {
     blDebug ( "BlDbRecord::vaciar", 0 );
     DBclear();
-    blDebug ( "END BlDbRecord::vaciar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -497,10 +497,10 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
                 campo->resetCambio();
             } // end if
         } // end for
-        blDebug ( "END BlDbRecord::DBload", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return error;
     } catch ( ... ) {
-        blDebug ( "EXCEPTION BlDbRecord::DBload", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error") );
         return -1;
     } // end try
 }
@@ -518,7 +518,7 @@ void BlDbRecord::DBclear()
         campo = m_lista.at ( i );
         campo->set ( "" );
     } // end for
-    blDebug ( "END BlDbRecord::DBclear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -556,7 +556,7 @@ int BlDbRecord::dbSave ( QString &id )
             if ( ! ( campo->restrictcampo() & BlDbField::DbNoSave ) ) {
                 if ( campo->restrictcampo() & BlDbField::DbRequired ) {
                     if ( campo->valorcampo() == "" ) {
-                        blDebug ( "END BlDbRecord::dbSave", 0, "Campo requerido vacio" );
+		        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Campo requerido vacio") );
                         return 0;
                     } // end if
                 } // end if
@@ -604,10 +604,10 @@ int BlDbRecord::dbSave ( QString &id )
         g_theApp->emitDbTableChanged ( m_tablename );
 
     } catch ( int error ) {
-        blDebug ( "END BlDbRecord::dbSave", 0, "Error de guardado" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar") );
         throw error;
     } // end try
-    blDebug ( "END BlDbRecord::DBSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -639,7 +639,7 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
         error = campo->set ( valor );
     } // end if
 
-    blDebug ( "END BlDbRecord::setDbValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return error;
 }
 
@@ -666,7 +666,7 @@ QString BlDbRecord::dbValue ( QString nomb )
     } else if ( campo->fieldName() == nomb ) {
         valor = campo->valorcampo();
     } // end if
-    blDebug ( "END BlDbRecord::dbValue", 0, nomb );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }
 
@@ -703,7 +703,7 @@ bool BlDbRecord::exists ( QString nomb )
       } // end if
     } // end if
  
-    blDebug ( "END BlDbRecord::exists", 0, nomb );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return existe;
 }
 
@@ -734,7 +734,7 @@ QString BlDbRecord::dbValueprep ( QString nomb )
         return campo->valorcampoprep ( err );
     } // end if
 
-    blDebug ( "END BlDbRecord::dbValueprep", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -761,7 +761,7 @@ int BlDbRecord::addDbField ( QString nom, BlDbField::DbType typ, int res, QStrin
         ( "" );
         m_lista.append ( camp );
 
-        blDebug ( "END BlDbRecord::addDbField", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
 
 
@@ -814,7 +814,7 @@ int BlDbRecord::remove()
             m_dbConnection->runQuery ( "DELETE FROM " + m_tablename + " WHERE " + querywhere );
         } // end if
 
-        blDebug ( "END BlDbRecord::borrar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
         blMsgInfo ( "se produjo un error al borrar el elemento" );
@@ -837,7 +837,7 @@ int BlDbRecord::save()
     try {
         dbSave ( id );
         setDbValue ( m_campoid, id );
-        blDebug ( "END BlDbRecord::guardar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
         blMsgError ( "BlDbRecord:: Se ha producido un error al guardar los datos." );
@@ -863,7 +863,7 @@ int BlDbRecord::load ( QString id )
             DBload ( cur );
         } // end if
         delete cur;
-        blDebug ( "END BlDbRecord::cargar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
         blMsgError ( "BlDbRecord::cargar Se ha producido un error al cargar el registro." );
@@ -1091,7 +1091,7 @@ if (tipoescape != 0) {
                     stream << "&#" << codepoint << ";" ;
                 } // end if
             } // end for
-            blDebug ( "END Llistat amb referencies de caracters", 0 );
+            blDebug ( ("END ", Q_FUNC_INFO), 0 );
         }
         file.close();
     } // end if
@@ -1110,7 +1110,7 @@ if (tipoescape != 0) {
         file.close();
     } // end if
 } // end if
-    blDebug ( "END BlDbRecord::generateRML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 
@@ -1136,7 +1136,7 @@ void BlDbRecord::imprimir()
         blCreateAndLoadPDF ( templateName() );
     } // end if
 
-    blDebug ( "END BlDbRecord::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1164,7 +1164,7 @@ QString BlDbRecord::exportXML() {
     val += "</BLDBRECORD>\n";
 
     return val;
-    blDebug ( "END BlDbRecord::exportXML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void BlDbRecord::syncXML(const QString &text) {
@@ -1174,7 +1174,7 @@ void BlDbRecord::syncXML(const QString &text) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
-        blDebug ( "END BlDbRecord::syncXML", 0, "XML Invalido" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML invalido") );
         return;
     } // end if
 
@@ -1894,7 +1894,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     } // end if
     
     
-    blDebug ( "END BlDbRecord::parseTags", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 
@@ -2036,7 +2036,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     } // end while
     buff = cadant + buff;
     
-    blDebug ( "END BlDbRecord::parseTagsPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 
@@ -2063,7 +2063,7 @@ QByteArray BlDbRecord::parseIfQuery ( const QString &query, const QByteArray &da
         result = datos;
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::parseIfQuery", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -2094,7 +2094,7 @@ QByteArray BlDbRecord::parseIf ( const QString &query, const QByteArray &datos, 
         } // end if
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::parseIf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -2117,7 +2117,7 @@ QByteArray BlDbRecord::parseIncludeFileTXT ( const QString &file, int tipoEscape
     substrVars ( read, tipoEscape );
 
 
-    blDebug ( "END BlDbRecord::parseIncludeFileTXT", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return read;
 
 }
@@ -2134,7 +2134,7 @@ QByteArray BlDbRecord::parseIncludeImg ( const QString &file, int tipoEscape )
     BlEscPrinter pr;
     pr.clearBuffer();
     pr.printImage(file);
-    blDebug ( "END BlDbRecord::parseIncludeImg", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2153,7 +2153,7 @@ QByteArray BlDbRecord::parsePngRaw64 ( const QByteArray &data, int tipoEscape )
     pr.clearBuffer();
     QByteArray dataq = QByteArray::fromBase64(data);
     pr.printImageRaw(dataq);
-    blDebug ( "END BlDbRecord::parsePngRaw64", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 //    blMsgInfo(pr.buffer());
     return pr.buffer();
 
@@ -2185,7 +2185,7 @@ QByteArray BlDbRecord::parseSetCharacterPrintMode ( const QString &param, int ti
         modo |= UNDERLINE_MODE;
 
     pr.setCharacterPrintMode(modo);
-    blDebug ( "END BlDbRecord::parseSetCharacterPrintMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2204,7 +2204,7 @@ QByteArray BlDbRecord::parseSetCharacterSpacing ( const QString &param, int tipo
     pr.clearBuffer();
 
     pr.setCharacterSpacing(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetCharacterSpacing", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2236,7 +2236,7 @@ QByteArray BlDbRecord::parseSetCharacterCodeTable ( const QString &param, int ti
         codetable = page5;
 
     pr.setCharacterCodeTable(codetable);
-    blDebug ( "END BlDbRecord::parseSetCharacterCodeTable", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2261,7 +2261,7 @@ QByteArray BlDbRecord::parseSetUnderlineMode ( const QString &param, int tipoEsc
         modo = TRUE;
 
     pr.setUnderlineMode(modo);
-    blDebug ( "END BlDbRecord::parseSetUnderlineMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2280,7 +2280,7 @@ QByteArray BlDbRecord::parseSetCharacterSize ( const QString &param, int tipoEsc
     pr.clearBuffer();
 
     pr.setCharacterSize(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetCharacterSpacing", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2305,7 +2305,7 @@ QByteArray BlDbRecord::parseSetSmoothing ( const QString &param, int tipoEscape 
         modo = TRUE;
 
     pr.setSmoothing(modo);
-    blDebug ( "END BlDbRecord::parseSetSmoothing", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2330,7 +2330,7 @@ QByteArray BlDbRecord::parseSetDoubleStrike ( const QString &param, int tipoEsca
         modo = TRUE;
 
     pr.setDoubleStrike(modo);
-    blDebug ( "END BlDbRecord::parseSetDoubleStrike", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2355,7 +2355,7 @@ QByteArray BlDbRecord::parseTurnUpsideDown ( const QString &param, int tipoEscap
         modo = TRUE;
 
     pr.turnUpsideDown(modo);
-    blDebug ( "END BlDbRecord::parseTurnUpsideDown", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2385,7 +2385,7 @@ QByteArray BlDbRecord::parseTurn90CWRotation ( const QString &param, const QStri
         extra = TRUE;
 
     pr.turn90CWRotation(modo,extra);
-    blDebug ( "END BlDbRecord::parseTurn90CWRotation", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2411,7 +2411,7 @@ QByteArray BlDbRecord::parseTurnWhiteBlack ( const QString &param, int tipoEscap
         modo = TRUE;
 
     pr.turnWhiteBlack(modo);
-    blDebug ( "END BlDbRecord::parseTurnWhiteBlack", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2433,7 +2433,7 @@ QByteArray BlDbRecord::parseSetColor ( const QString &param, int tipoEscape )
         color = red;
 
     pr.setColor(color);
-    blDebug ( "END BlDbRecord::parseSetColor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2449,7 +2449,7 @@ QByteArray BlDbRecord::parseHorizontalTab ( int tipoEscape )
     BlEscPrinter pr;
     pr.clearBuffer();
     pr.horizontalTab();
-    blDebug ( "END BlDbRecord::parseHorizontalTab", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2467,7 +2467,7 @@ QByteArray BlDbRecord::parseSetHorizontalTabPos ( const QString &param, const QS
     pr.clearBuffer();
 
     pr.setHorizontalTabPos(param.toInt(),param1.toLatin1().data());
-    blDebug ( "END BlDbRecord::parseSetHorizontalTabPos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2487,7 +2487,7 @@ QByteArray BlDbRecord::parseSetLeftMargin ( const QString &param, int tipoEscape
     pr.clearBuffer();
 
     pr.setLeftMargin(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetLeftMargin", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2506,7 +2506,7 @@ QByteArray BlDbRecord::parseSetPrintingAreaWidth ( const QString &param, int tip
     pr.clearBuffer();
 
     pr.setPrintingAreaWidth(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetPrintingAreaWidth", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2532,7 +2532,7 @@ QByteArray BlDbRecord::parseSetJustification ( const QString &param, int tipoEsc
         modo = BlEscPrinter::right;
 
     pr.setJustification(modo);
-    blDebug ( "END BlDbRecord::parseSetJustification", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2551,7 +2551,7 @@ QByteArray BlDbRecord::parseSetHAbsolutePos ( const QString &param, int tipoEsca
     pr.clearBuffer();
 
     pr.setHAbsolutePos(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetHAbsolutePos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2570,7 +2570,7 @@ QByteArray BlDbRecord::parseSetHRelativePos ( const QString &param, int tipoEsca
     pr.clearBuffer();
 
     pr.setHRelativePos(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetHRelativePos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2603,7 +2603,7 @@ QByteArray BlDbRecord::parseSetBarcodeFormat ( const QString &param, const QStri
         font = fontB;
 
     pr.setBarcodeFormat(param.toInt(), param1.toInt(), pos, font);
-    blDebug ( "END BlDbRecord::parseSetHRelativePos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2644,7 +2644,7 @@ QByteArray BlDbRecord::parsePrintBarCode ( const QString &param, const QString &
 
 
     pr.printBarCode(system, param1.toInt(), param2.toAscii().data());
-    blDebug ( "END BlDbRecord::parsePrintBarCode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2667,7 +2667,7 @@ QByteArray BlDbRecord::parseRightJustified ( const QString &param, const QString
     if (param3.contains("1"))
         truncate = TRUE;
 
-    blDebug ( "END BlDbRecord::parseRightJustified", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return param.rightJustified(param1.toInt(), param2.at(0), truncate).toAscii();
 }
 
@@ -2688,7 +2688,7 @@ QByteArray BlDbRecord::parseLeftJustified ( const QString &param, const QString 
     if (param3.contains("1"))
         truncate = TRUE;
 
-    blDebug ( "END BlDbRecord::parseLeftJustified", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return param.leftJustified(param1.toInt(), param2.at(0), truncate).toAscii();
 }
 
@@ -2707,7 +2707,7 @@ QByteArray BlDbRecord::parseSetBarCodeWidth ( const QString &param, int tipoEsca
     pr.clearBuffer();
 
     pr.setBarCodeWidth(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetBarCodeWidth", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2726,7 +2726,7 @@ QByteArray BlDbRecord::parseSetBarCodeHeight ( const QString &param, int tipoEsc
     pr.clearBuffer();
 
     pr.setBarCodeHeight(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetBarCodeHeight", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2745,7 +2745,7 @@ QByteArray BlDbRecord::parseSelectPageMode ( int tipoEscape )
     pr.clearBuffer();
 
     pr.selectPageMode();
-    blDebug ( "END BlDbRecord::parseSelectPageMode", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2775,7 +2775,7 @@ QByteArray BlDbRecord::parseSetPrintDirection ( const QString &param, int tipoEs
 
 
     pr.setPrintDirection( direc);
-    blDebug ( "END BlDbRecord::parseSetPrintDirection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2797,7 +2797,7 @@ QByteArray BlDbRecord::parseSetPrintArea ( const QString &param,  const QString 
     pr.clearBuffer();
 
     pr.setPrintArea(param.toInt(), param1.toInt(), param2.toInt(), param3.toInt());
-    blDebug ( "END BlDbRecord::parseSetPrintArea", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2817,7 +2817,7 @@ QByteArray BlDbRecord::parseSetVAbsolutePos ( const QString &param, int tipoEsca
     pr.clearBuffer();
 
     pr.setVAbsolutePos(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetVAbsolutePos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2836,7 +2836,7 @@ QByteArray BlDbRecord::parseSetVRelativePos ( const QString &param, int tipoEsca
     pr.clearBuffer();
 
     pr.setVRelativePos(param.toInt());
-    blDebug ( "END BlDbRecord::parseSetVRelativePos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2861,7 +2861,7 @@ QByteArray BlDbRecord::parseCutPaper ( const QString &param, int tipoEscape )
         modo = TRUE;
 
     pr.cutPaper(modo);
-    blDebug ( "END BlDbRecord::parseCutPaper", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2888,7 +2888,7 @@ QByteArray BlDbRecord::parseCutPaperAndFeed ( const QString &param, const QStrin
         modo = TRUE;
 
     pr.cutPaperAndFeed(modo, param1.toInt());
-    blDebug ( "END BlDbRecord::parseCutPaperAndFeed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return pr.buffer();
 
 }
@@ -2965,7 +2965,7 @@ QByteArray BlDbRecord::parseQuery ( const QString &query, const QByteArray &dato
 
     /// Cargamos el query y lo recorremos
     result = parseRecordset ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
-    blDebug ( "END BlDbRecord::parseQuery", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 
 }
@@ -3010,7 +3010,7 @@ QByteArray BlDbRecord::trataLineasDetalle( const QByteArray &datos, int tipoEsca
         result += salidatemp;
     } // end for
 
-    blDebug ( "END BlDbRecord::trataLineasDetalle", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 */
@@ -3021,7 +3021,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
     QByteArray result = "";
     
     if ( !cur ) {
-        blDebug ( "END BlDbRecord::parseRecordset", 0 , "cur==NULL" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "cur == NULL" );
         return "";
     };
     while ( !cur->eof() ) {
@@ -3055,7 +3055,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::parseRecordset", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return result;
 }
 
@@ -3078,7 +3078,7 @@ QByteArray BlDbRecord::parseExists ( const QString &query, const QByteArray &dat
     QFile file ( query1 );
     if ( file.exists() )
         result = datos;
-    blDebug ( "END BlDbRecord::parseExists", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return result;
 }

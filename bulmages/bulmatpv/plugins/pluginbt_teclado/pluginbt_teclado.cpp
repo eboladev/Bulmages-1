@@ -55,7 +55,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_teclado", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -156,7 +156,7 @@ int exitPoint ( BtBulmaTPV *tpv )
     g_proc->kill();
     delete g_proc;
     delete g_docteclado;
-    blDebug ( "END pluginbt_telcado::exitPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

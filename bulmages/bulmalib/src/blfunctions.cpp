@@ -207,7 +207,7 @@ QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
             cod.replace ( pos, 1, str7 );
         } // end if
     } // end if
-    blDebug ( "END BlFunctions::blExtendStringWithZeros", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( cod );
 }
 
@@ -370,7 +370,7 @@ void blCreatePDF ( const QString arch )
 
 #endif
 
-    blDebug ( "END blCreatePDF " + arch, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -632,12 +632,6 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
     }
 }
 
-//#else
-//
-//inline void blDebug ( const QString &, int , const QString & )
-//{
-//    return;
-//}
 #endif
 
 void blMsgInfo ( QString cad, QWidget *parent )

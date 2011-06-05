@@ -34,7 +34,7 @@
 BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent )
         : BlFormList ( emp, parent )
 {
-    blDebug ( "BcAmortizacionListView::BcAmortizacionListView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -57,7 +57,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
     /// Lanzamos los posibles scripts
     blScript(this);
 
-    blDebug ( "END BcAmortizacionListView::BcAmortizacionListView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -68,9 +68,9 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
 **/
 BcAmortizacionListView::~BcAmortizacionListView()
 {
-    blDebug ( "BcAmortizacionListView::~BcAmortizacionListView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     removeWindow();
-    blDebug ( "END BcAmortizacionListView::~BcAmortizacionListView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -81,11 +81,11 @@ BcAmortizacionListView::~BcAmortizacionListView()
 **/
 void BcAmortizacionListView::crear()
 {
-    blDebug ( "BcAmortizacionListView::on_mui_crear_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BcAmortizacionView *amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( amor );
     amor->show();
-    blDebug ( "END BcAmortizacionListView::on_mui_crear_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -95,7 +95,7 @@ void BcAmortizacionListView::crear()
 **/
 void BcAmortizacionListView::remove()
 {
-    blDebug ( "BcAmortizacionListView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
@@ -108,9 +108,10 @@ void BcAmortizacionListView::remove()
             presentar();
         } // end if
     } catch ( ... ) {
-        blDebug ( _ ( "Error al borrar la amortizacion" ), 2 );
+	blDebug ( Q_FUNC_INFO, 0, _("Error al borrar la amortizacion.") );
+	blMsgError(_("Error al borrar la amortizacion."));
     } // end try
-    blDebug ( "END BcAmortizacionListView::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -127,7 +128,7 @@ void BcAmortizacionListView::remove()
 **/
 void BcAmortizacionListView::editar ( int row )
 {
-    blDebug ( "BcAmortizacionListView::editAmortizacion " + row, 0 );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Fila '$1'")).arg(QString::number(row)) );
     mdb_idamortizacion = mui_listado->dbValue ( "idamortizacion" );
     mdb_nomamortizacion = mui_listado->dbValue ( "nomamortizacion" );
     if ( editMode() ) {
@@ -140,6 +141,6 @@ void BcAmortizacionListView::editar ( int row )
         close();
         emit ( selected ( mdb_idamortizacion ) );
     } // end if
-    blDebug ( "END BcAmortizacionListView::editAmortizacion", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

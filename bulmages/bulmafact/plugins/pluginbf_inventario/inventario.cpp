@@ -34,7 +34,7 @@
 **/
 Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "Inventario::Inventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     companyact = comp;
     setTitleName ( _ ( "Inventario" ) );
     setDbTableName ( "inventario" );
@@ -43,7 +43,7 @@ Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
     addDbField ( "fechainventario", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha inventario" ) );
     addDbField ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre inventario" ) );
     blScript(this);
-    blDebug ( "END Inventario::Inventario", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -52,8 +52,8 @@ Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 **/
 Inventario::~Inventario()
 {
-    blDebug ( "Inventario::~Inventario", 0 );
-    blDebug ( "END Inventario::~Inventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -63,24 +63,27 @@ Inventario::~Inventario()
 **/
 int Inventario::remove()
 {
-    blDebug ( "Inventario::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( dbValue ( "idinventario" ) != "" ) 
     {
-	blDebug ( "vamos a borrar las lineas del inventario", 0 );
+	/// Vamos a borrar las lineas del inventario.
 	companyact->begin();
 
 	listalineas->remove();
-	blDebug ( "Vamos a borrar el resto", 0 );
+
+	/// Vamos a borrar el resto.
 	int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + dbValue ( "idinventario" ) );
         if ( error ) {
     	    companyact->rollback();
+	    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al borrar") );
             return -1;
         } // end if
         companyact->commit();
     } // end if
-    return 0;
+
     presentar();
-    blDebug ( "END Inventario::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    return 0;
 }
 
 
@@ -90,9 +93,9 @@ int Inventario::remove()
 **/
 void Inventario::vaciaInventario()
 {
-    blDebug ( "Inventario::vaciaInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     DBclear();
-    blDebug ( "END Inventario::vaciaInventario", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -101,10 +104,11 @@ void Inventario::vaciaInventario()
 **/
 void Inventario::pintaInventario()
 {
-    blDebug ( "pintaInventario\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     pintaIdInventario ( dbValue ( "idinventario" ) );
     pintaNomInventario ( dbValue ( "nominventario" ) );
     pintaFechaInventario ( dbValue ( "fechainventario" ) );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -117,7 +121,7 @@ void Inventario::pintaInventario()
 **/
 int Inventario::save()
 {
-    blDebug ( "Inventario::save()", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     companyact->begin();
     try {
         QString id;
@@ -126,12 +130,12 @@ int Inventario::save()
         listalineas->save();
         companyact->commit();
         load ( id );
-        blDebug ( "END Inventario::save()", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
-        blDebug ( "Error guardando el inventario", 2 );
+	blMsgError(_("Error guardando el inventario."));
         companyact->rollback();
-        blDebug ( "END Inventario::save()", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error guardando el inventario.") );
         return -1;
     } // end try
 }
@@ -142,9 +146,9 @@ int Inventario::save()
 **/
 void Inventario::pregenerar()
 {
-    blDebug ( "Inventario::pregenerar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     listalineas->pregenerar();
-    blDebug ( "END Inventario::pregenerar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -154,10 +158,10 @@ void Inventario::pregenerar()
 **/
 void Inventario::setListControlStock ( ListControlStockView *a )
 {
-    blDebug ( "Inventario::setListControlStock", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     listalineas = a;
     listalineas->setMainCompany ( companyact );
-    blDebug ( "END Inventario::setListControlStock", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -167,8 +171,8 @@ void Inventario::setListControlStock ( ListControlStockView *a )
 **/
 ListControlStockView *Inventario::getlistalineas()
 {
-    blDebug ( "Inventario::getlistalineas", 0 );
-    blDebug ( "Inventario::getlistalineas", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return listalineas;
 }
 
@@ -178,8 +182,8 @@ ListControlStockView *Inventario::getlistalineas()
 **/
 void Inventario::pintaIdInventario ( QString )
 {
-    blDebug ( "Inventario::pintaIdInventario", 0 );
-    blDebug ( "END Inventario::pintaIdInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -188,8 +192,8 @@ void Inventario::pintaIdInventario ( QString )
 **/
 void Inventario::pintaFechaInventario ( QString )
 {
-    blDebug ( "Inventario::pintaFechaInventario", 0 );
-    blDebug ( "END Inventario::pintaFechaInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -198,8 +202,8 @@ void Inventario::pintaFechaInventario ( QString )
 **/
 void Inventario::pintaNomInventario ( QString )
 {
-    blDebug ( "Inventario::pintaNomInventario", 0 );
-    blDebug ( "END Inventario::pintaNomInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -209,10 +213,10 @@ void Inventario::pintaNomInventario ( QString )
 **/
 void Inventario::setIdInventario ( QString val )
 {
-    blDebug ( "Inventario::setIdInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbValue ( "idinventario", val );
     listalineas->setColumnValue ( "idinventario", val );
-    blDebug ( "END Inventario::setIdInventario", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -222,9 +226,9 @@ void Inventario::setIdInventario ( QString val )
 **/
 void Inventario::setFechaInventario ( QString val )
 {
-    blDebug ( "Inventario::setFechaInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbValue ( "fechainventario", val );
-    blDebug ( "END Inventario::setFechaInventario", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -234,9 +238,9 @@ void Inventario::setFechaInventario ( QString val )
 **/
 void Inventario::setNomInventario ( QString val )
 {
-    blDebug ( "Inventario::setNomInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbValue ( "nominventario", val );
-    blDebug ( "END Inventario::setNomInventario", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -245,7 +249,7 @@ void Inventario::setNomInventario ( QString val )
 **/
 void Inventario::imprimirInventario()
 {
-    blDebug ( "Inventario::imprimirInventario", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString txt = "<blockTable>\n";
     txt += "<tr><td></td>\n";
 
@@ -273,7 +277,6 @@ void Inventario::imprimirInventario()
     } // end while
     delete cstock;
 
-    blDebug ( txt, 2 );
-    blDebug ( "END Inventario::imprimirInventario", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

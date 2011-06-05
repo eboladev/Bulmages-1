@@ -56,7 +56,7 @@ BlMainCompany *g_emp = NULL;
 MyPluginEmbedODS::MyPluginEmbedODS()
 {
     blDebug ( "MyPluginEmbedODS::MyPluginEmbedODS", 0 );
-    blDebug ( "END MyPluginEmbedODS::MyPluginEmbedODS", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 */
 
@@ -69,7 +69,7 @@ MyPluginEmbedODS::MyPluginEmbedODS()
 MyPluginEmbedODS::~MyPluginEmbedODS()
 {
     blDebug ( "MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
-    blDebug ( "END MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 */
 
@@ -146,7 +146,7 @@ void PluginBl_Embed::embedPYS( )
         container->show();
     } // end if
     
-    blDebug ( "END MyPluginEmbedODS::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -156,7 +156,7 @@ void PluginBl_Embed::embedPYS( )
 PluginBl_Embed::PluginBl_Embed()
 {
     blDebug ( "PluginBl_Embed::PluginBl_Embed", 0 );
-    blDebug ( "END PluginBl_Embed::PluginBl_Embed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -165,7 +165,7 @@ PluginBl_Embed::PluginBl_Embed()
 PluginBl_Embed::~PluginBl_Embed()
 {
     blDebug ( "PluginBl_Embed::~PluginBl_Embed", 0 );
-    blDebug ( "END PluginBl_Embed::~PluginBl_Embed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -194,7 +194,7 @@ void PluginBl_Embed::elslot()
     container->embedClient ( winId.toInt() );
     doc1->setWidget ( container );
 
-    blDebug ( "END PluginBl_Embed::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -217,7 +217,7 @@ void PluginBl_Embed::elslot1()
         container->show();
     } // end if
 
-    blDebug ( "END PluginBl_Embed::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

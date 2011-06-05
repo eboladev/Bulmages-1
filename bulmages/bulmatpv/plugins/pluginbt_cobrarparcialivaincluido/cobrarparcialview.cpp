@@ -194,7 +194,7 @@ void CobrarParcialView::pintarOrigen()
     /// Pinta total.
     pintarTotal(ticketOrigen, mui_total_ticket_origen);
     
-    blDebug ( "END CobrarParcialView::pintarOrigen", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -299,7 +299,7 @@ void CobrarParcialView::pintarDestino()
     /// Pinta total.
     pintarTotal(ticketDestino, mui_total_ticket_destino);
     
-    blDebug ( "END CobrarParcialView::pintarDestino", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -310,7 +310,7 @@ void CobrarParcialView::pintar()
     pintarOrigen();
     pintarDestino();
     
-    blDebug ( "END CobrarParcialView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

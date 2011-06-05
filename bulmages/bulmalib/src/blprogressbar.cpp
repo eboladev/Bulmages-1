@@ -36,7 +36,7 @@ BlProgressBar::BlProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
         setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() / 2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
         delete pantalla;
     } // end if
-    blDebug ( "END BlProgressBar::BlProgressBar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -53,7 +53,7 @@ void BlProgressBar::setText ( const QString &tex )
         for ( int i = 0; i < 20; i++ )
             repaint();
     } // end if
-    blDebug ( "END BlProgressBar::setText", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -63,7 +63,7 @@ void BlProgressBar::setText ( const QString &tex )
 BlProgressBar::~BlProgressBar()
 {
     blDebug ( "BlProgressBar::~BlProgressBar", 0 );
-    blDebug ( "END BlProgressBar::~BlProgressBar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -75,7 +75,7 @@ void BlProgressBar::setValue ( int value )
     blDebug ( "BlProgressBar::setValue", 0 );
     if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setValue ( value );
-    blDebug ( "END BlProgressBar::setValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -86,7 +86,7 @@ void BlProgressBar::setValue ( int value )
 int BlProgressBar::value()
 {
     blDebug ( "BlProgressBar::value", 0 );
-    blDebug ( "END BlProgressBar::value", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         return mui_progressBar->value();
     } else {
@@ -103,7 +103,7 @@ void BlProgressBar::setRange ( int range,  int range1 )
     blDebug ( "BlProgressBar::setRange", 0 );
     if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setRange ( range, range1 );
-    blDebug ( "END BlProgressBar::setRange", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -116,6 +116,6 @@ void BlProgressBar::show (  )
     if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         QWidget::show();
     } // end if
-    blDebug ( "END BlProgressBar::show", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

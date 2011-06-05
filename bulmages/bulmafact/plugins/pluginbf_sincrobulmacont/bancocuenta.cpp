@@ -37,7 +37,7 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
     
     connect ( parent->findChild<QWidget *>("mui_lista"), SIGNAL(currentItemChanged ( QListWidgetItem *, QListWidgetItem * )), this, SLOT( mui_lista_currentItemChanged ( QListWidgetItem *, QListWidgetItem * ) ) );
     
-    blDebug ( "END BancoCuenta::BancoCuenta", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -48,7 +48,7 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
 BancoCuenta::~BancoCuenta()
 {
     blDebug ( "BancoCuenta::~BancoCuenta", 0 );
-    blDebug ( "END BancoCuenta::~BancoCuenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

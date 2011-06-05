@@ -52,7 +52,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );
-    blDebug ( "END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,6 +65,6 @@ void ListLinPedidoProveedorView::load ( QString idpedidoproveedor )
     blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idpedidoproveedor = idpedidoproveedor;
     BlSubForm::load ( "SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor" );
-    blDebug ( "END ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

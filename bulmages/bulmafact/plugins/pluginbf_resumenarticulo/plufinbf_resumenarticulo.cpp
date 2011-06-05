@@ -75,7 +75,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     lr->load ( "0" );
     art->mui_tab->addTab ( lr, _("Recogidas") );
 
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -100,7 +100,7 @@ int ArticuloView_load ( ArticuloView *art )
     ListRecogidas *llr = art->findChild<ListRecogidas *> ( "lrecogidas" );
     llr->load ( art->dbValue ( "idarticulo" ) );
 
-    blDebug ( "END ArticuloView_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

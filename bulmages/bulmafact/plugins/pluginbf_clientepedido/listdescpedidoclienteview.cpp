@@ -34,7 +34,7 @@
 ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( "ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "dpedidocliente" );
     setDbFieldId ( "iddpedidocliente" );
     addSubFormHeader ( "iddpedidocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
@@ -42,15 +42,15 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView ( QWidget *parent
     addSubFormHeader ( "proporciondpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pedido" ) );
     setInsert ( TRUE );
-    blDebug ( "END ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 void ListDescuentoPedidoClienteView::load ( QString idpedidocliente )
 {
-    blDebug ( "ListDescuentoPedidoClienteView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idpedidocliente = idpedidocliente;
     BlSubForm::load ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente );
-    blDebug ( "END ListDescuentoPedidoClienteView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

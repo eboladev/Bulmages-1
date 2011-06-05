@@ -41,7 +41,7 @@
 ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
         : BlFormList ( comp, parent, flag )
 {
-    blDebug ( "ZList::ZList(2)", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -77,7 +77,7 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     trataPermisos ( "almacen" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END ZList::ZList(2)", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -86,8 +86,8 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
 **/
 ZList::~ZList()
 {
-    blDebug ( "ZList::~ZList", 0 );
-    blDebug ( "END ZList::~ZList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -97,8 +97,8 @@ ZList::~ZList()
 **/
 QString ZList::idalmacen()
 {
-    blDebug ( "ZList::idalmacenk", 0 );
-    blDebug ( "END ZList::idalmacenk", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_idz;
 }
 
@@ -109,10 +109,10 @@ QString ZList::idalmacen()
 **/
 void ZList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "ZList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    blDebug ( "END ZList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -121,13 +121,13 @@ void ZList::setMainCompany ( BfCompany *comp )
 **/
 void ZList::crear()
 {
-    blDebug ( "ZList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /*
         ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
         mainCompany()->pWorkspace()->addSubWindow(alm);
         alm->show();
     */
-    blDebug ( "END ZList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -136,12 +136,12 @@ void ZList::crear()
 **/
 void ZList::presentar()
 {
-    blDebug ( "ZList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Hacemos el listado y lo presentamos.
     mui_list->load ( "SELECT * FROM z NATURAL LEFT JOIN almacen" );
 
-    blDebug ( "END ZList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -151,12 +151,12 @@ void ZList::presentar()
 **/
 QString ZList::generaFiltro()
 {
-    blDebug ( "ZList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
     return ( filtro );
-    blDebug ( "END ZList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -166,7 +166,7 @@ QString ZList::generaFiltro()
 **/
 void ZList::editar ( int row )
 {
-    blDebug ( "ZList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     try {
         m_idz = mui_list->dbValue ( QString ( "idz" ), row );
@@ -179,7 +179,7 @@ void ZList::editar ( int row )
         } else {
             emit ( selected ( m_idz ) );
         } // end if
-        blDebug ( "END ZList::editar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al editar el almacen" ) );
     } // end try
@@ -192,9 +192,9 @@ void ZList::editar ( int row )
 **/
 void ZList::imprimir()
 {
-    blDebug ( "ZList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Almacenes" ) );
-    blDebug ( "END ZList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -204,7 +204,7 @@ void ZList::imprimir()
 **/
 void ZList::remove()
 {
-    blDebug ( "ZList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /*
         int a = mui_list->currentRow();
         if (a < 0) {
@@ -227,7 +227,7 @@ void ZList::remove()
             blMsgInfo(tr("Error al borrar el almacen"));
         } // end try
     */
-    blDebug ( "END ZList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -39,7 +39,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint, 0, Punto de Entrada el pluginbf_contrato\n");
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraCobros", "0.11.1-0001");
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact *bges )
     blBindTextDomain ( "pluginbf_carteracobros", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
  
     /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu( _("&Compras"), "menuVentas", "menuMaestro");
+    QMenu *pPluginMenu = bges->newMenu( _("&Compras"), "menuVentas", "menuMaestro");
 
     BlAction *accionA = new BlAction ( _("&Cartera de cobros"), 0 );
     accionA->setStatusTip ( _("Cartera de cobros") );
@@ -62,11 +62,10 @@ int entryPoint ( BfBulmaFact *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accionA );
-	bges->Listados->addAction (accionA);
+    bges->Listados->addAction (accionA);
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
-
-    blDebug("entryPoint, 0, Punto de salida del pluginbf_contrato");
 }
 
 
@@ -87,7 +86,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ClienteView_ClienteView_Post ( ClienteView *art )
 {
-    blDebug ( "ClienteView_ClienteView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -108,7 +107,7 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->load("SELECT * FROM vencimientocliente WHERE idcliente IS NULL");
-    blDebug ( "END ClienteView_ClienteView_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -120,12 +119,12 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
 **/
 int ClienteView_cargarPost_Post ( ClienteView *art )
 {
-    blDebug ( "ArticuloView_cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
     if ( l ) {
         l->load ( "SELECT * FROM vencimientocliente LEFT JOIN forma_pago ON vencimientocliente.idforma_pago = forma_pago.idforma_pago WHERE idcliente =  " + art->dbValue("idcliente"));
     } // end if
-    blDebug ( "END ArticuloView_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -161,7 +160,7 @@ void generarVencimientos (FacturaView *art) {
 **/
 int BlForm_guardar_Post ( BlForm *art )
 {
-    blDebug ( "BlForm_guardar_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
@@ -195,11 +194,12 @@ int BlForm_guardar_Post ( BlForm *art )
 			generarVencimientos((FacturaView *)art);
 		} // end if
         } // end if
-            blDebug ( "END BlForm_guardar_Post", 0 );
+
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
-        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
-        return 0;
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar") );
+        return 1;
     } // end try
 }
 
@@ -207,7 +207,7 @@ int BlForm_guardar_Post ( BlForm *art )
 
 
 int FacturaView_FacturaView (FacturaView *factp) {
-    blDebug ( "FacturaView_FacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( factp );
     l->setObjectName ( QString::fromUtf8 ( "vencimientoc" ) );
@@ -229,7 +229,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
 
     factp->m_desdfgs->addTab ( l, "Vencimientos" );
     l->load("SELECT * FROM vencimientoc WHERE idfactura IS NULL");
-    blDebug ( "END FacturaView_FacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -240,7 +240,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
 **/
 int FacturaView_cargarPost_Post ( FacturaView *art )
 {
-    blDebug ( "FacturaView_cargarPost_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Para que funcione el identificador de factura debe ser valido
     if (art->dbValue("idfactura") != "") {
@@ -250,7 +250,7 @@ int FacturaView_cargarPost_Post ( FacturaView *art )
 		l->load ( "SELECT * FROM vencimientoc LEFT JOIN forma_pago ON vencimientoc.idforma_pago = forma_pago.idforma_pago WHERE idfactura =  " + art->dbValue("idfactura"));
 	} // end if
     } // end if
-    blDebug ( "END FacturaView_cargarPost_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -262,7 +262,7 @@ int FacturaView_cargarPost_Post ( FacturaView *art )
 **/
 int FacturaView_beforeDelete ( FacturaView *art )
 {
-    blDebug ( "FacturaView_beforeDelete", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Para que funcione el identificador de factura debe ser valido
     if (art->dbValue("idfactura") != "") {
@@ -272,6 +272,6 @@ int FacturaView_beforeDelete ( FacturaView *art )
 		l->mainCompany()->runQuery ( "DELETE FROM vencimientoc WHERE idfactura =  " + art->dbValue("idfactura"));
 	} // end if
     } // end if
-    blDebug ( "END FacturaView_beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

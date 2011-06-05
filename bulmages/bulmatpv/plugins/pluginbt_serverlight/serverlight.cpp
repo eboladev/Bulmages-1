@@ -56,14 +56,14 @@ ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
     connect(m_tcpServer, SIGNAL(newConnection()), this, SLOT(conection()));
 
     g_plugins->lanza ( "ServerLight_ServerLight_Post", this );
-    blDebug ( "END ServerLight::ServerLight", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 ServerLight::~ServerLight()
 {
     blDebug ( "ServerLight::~ServerLight", 0 );
-    blDebug ( "END ServerLight::~ServerLight", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -80,7 +80,7 @@ void ServerLight::conection()
     g_buffers[socket] = "";
 
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    blDebug ( "END ServerLight::conection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -128,7 +128,7 @@ void ServerLight::readyRead() {
 
     } // end if
 
-    blDebug ( "END ServerLight::readyRead", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -147,7 +147,7 @@ void ServerLight::send(const QString & texto) {
 	} // end if
     } // end for
     //fprintf(stderr, "FIN ENVIO");
-    blDebug ( "END ServerLight::send", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

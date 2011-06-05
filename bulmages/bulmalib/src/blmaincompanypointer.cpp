@@ -29,7 +29,7 @@ BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 {
     blDebug ( "BlMainCompanyPointer::BlMainCompanyPointer", 0 );
     m_mainCompany = emp;
-    blDebug ( "END BlMainCompanyPointer::BlMainCompanyPointer", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -40,7 +40,7 @@ BlMainCompanyPointer::BlMainCompanyPointer()
 {
     blDebug ( "BlMainCompanyPointer::BlMainCompanyPointers", 0 );
     m_mainCompany = NULL;
-    blDebug ( "END BlMainCompanyPointer::BlMainCompanyPointers", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ BlMainCompanyPointer::BlMainCompanyPointer()
 BlMainCompanyPointer::~BlMainCompanyPointer()
 {
     blDebug ( "BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
-    blDebug ( "END BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,7 +62,7 @@ void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 {
     blDebug ( "BlMainCompanyPointer::setMainCompany", 0 );
     m_mainCompany = emp;
-    blDebug ( "END BlMainCompanyPointer::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,7 +73,7 @@ void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 BlMainCompany *BlMainCompanyPointer::mainCompany()
 {
     blDebug ( "BlMainCompanyPointer::mainCompany", 0 );
-    blDebug ( "END BlMainCompanyPointer::mainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_mainCompany;
 }
 

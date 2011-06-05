@@ -51,12 +51,12 @@
 BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "BcCuentaListView::BcCuentaListView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BcCuentaListView_BcCuentaListView", this );
     if ( res != 0 ) {
-        blDebug ( "END BcCuentaListView::BcCuentaListView", 0, "Salida por plugin" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
     mui_list->setMainCompany ( comp );
@@ -82,7 +82,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     trataPermisos ( "cuenta" );
     /// Lanzamos los posibles scripts
     blScript(this);
-    blDebug ( "END BcCuentaListView::BcCuentaListView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -91,7 +91,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
 **/
 void BcCuentaListView::presentar()
 {
-    blDebug ( "BcCuentaListView::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->load ( formaQuery() );
     blDebug ( "BcCuentaListView::END presentar", 0 );
 }
@@ -111,7 +111,7 @@ void BcCuentaListView::presentar()
 **/
 void BcCuentaListView::editar ( int row )
 {
-    blDebug ( "BcCuentaListView::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idcuenta = mui_list->dbValue ( "idcuenta", row );
     mdb_nombrecuenta = mui_list->dbValue ( "descripcion", row );
     mdb_codigocuenta = mui_list->dbValue ( "codigo", row );
@@ -122,7 +122,7 @@ void BcCuentaListView::editar ( int row )
                 /// Si la carga no va bien entonces terminamos.
                 if ( art->load ( mdb_idarticulo ) ) {
                     delete art;
-                    blDebug ( "END BcCuentaListView::editar", 0, "Carga Erronea" );
+                    blDebug ( ("END ", Q_FUNC_INFO), 0 );
                     return;
                 } // end if
                 art->hide();
@@ -132,7 +132,7 @@ void BcCuentaListView::editar ( int row )
         close();
         emit ( selected ( mdb_idcuenta ) );
     } // end if
-    blDebug ( "END BcCuentaListView::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -141,8 +141,8 @@ void BcCuentaListView::editar ( int row )
 **/
 BcCuentaListView::~BcCuentaListView()
 {
-    blDebug ( "BcCuentaListView::~BcCuentaListView", 0 );
-    blDebug ( "END BcCuentaListView::~BcCuentaListView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -157,7 +157,7 @@ BcCuentaListView::~BcCuentaListView()
 void BcCuentaListView::remove()
 {
     /*
-        blDebug ( "BcCuentaListView::on_mui_borrar_clicked", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         int a = mui_list->currentRow();
         if ( a < 0 ) {
             blMsgInfo ( _( "Tiene que seleccionar un articulo" ), this );
@@ -175,7 +175,7 @@ void BcCuentaListView::remove()
                     throw - 1;
                 presentar();
             } // end if
-            blDebug ( "END BcCuentaListView::on_mui_borrar_clicked", 0 );
+            blDebug ( ("END ", Q_FUNC_INFO), 0 );
         } catch ( ... ) {
             blMsgInfo ( _( "Error al borrar el articulo" ), this );
         } // end try
@@ -191,7 +191,7 @@ void BcCuentaListView::remove()
 **/
 QString BcCuentaListView::formaQuery()
 {
-    blDebug ( "BcCuentaListView::formaQuery", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query = "";
 
     query = "SELECT * FROM cuenta WHERE 1=1 ";
@@ -237,9 +237,9 @@ QString BcCuentaListView::formaQuery()
 **/
 void BcCuentaListView::imprimir()
 {
-    blDebug ( "BcCuentaListView::s_imprimir1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( "Listado de cuentas" );
-    blDebug ( "END BcCuentaListView::s_imprimir1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -249,7 +249,7 @@ void BcCuentaListView::imprimir()
 void BcCuentaListView::on_mui_exportar_clicked()
 {
     /*
-        blDebug ( "BcCuentaListView::on_mui_exportar_clicked", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         QFile filexml ( QFileDialog::getSaveFileName ( this,
                         _( "Elija el archivo" ),
                         g_confpr->value( CONF_DIR_USER ),
@@ -259,10 +259,11 @@ void BcCuentaListView::on_mui_exportar_clicked()
             bulmafact2XML ( filexml, IMPORT_ARTICULOS );
             filexml.close();
         } else {
-            blDebug ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
+            blMsgError(_("Error al abrir el archivo."));
+	    blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
         } // end if
 
-        blDebug ( "END BcCuentaListView::on_mui_exportar_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     */
 }
 
@@ -276,7 +277,7 @@ void BcCuentaListView::on_mui_exportar_clicked()
 void BcCuentaListView::on_mui_importar_clicked()
 {
     /*
-        blDebug ( "BcCuentaListView::INIT_s_importar", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         QFile filexml ( QFileDialog::getOpenFileName ( this,
                         _( "Elija el archivo" ),
                         g_confpr->value( CONF_DIR_USER ),
@@ -287,7 +288,8 @@ void BcCuentaListView::on_mui_importar_clicked()
             filexml.close();
             presentar();
         } else {
-            blDebug ( "ERROR AL ABRIR EL ARCHIVO", 2 );
+            blMsgError(_("Error al abrir el archivo."));
+	    blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
         } // end if
         blDebug ( "BcCuentaListView::END_s_importar", 0 );
     */
@@ -303,7 +305,7 @@ void BcCuentaListView::on_mui_importar_clicked()
 void BcCuentaListView::submenu ( const QPoint & )
 {
 
-    blDebug ( "BcCuentaListView::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -325,9 +327,9 @@ void BcCuentaListView::submenu ( const QPoint & )
 void BcCuentaListView::crear()
 {
     /*
-        blDebug ( "BcCuentaListView::crear", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         ( ( BcCompany * ) BlMainCompany() ) ->s_newArticulo();
-        blDebug ( "END BcCuentaListView::crear", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     */
 }
 
@@ -338,8 +340,8 @@ void BcCuentaListView::crear()
 **/
 QString BcCuentaListView::idcuenta()
 {
-    blDebug ( "BcCuentaListView::idarticulo", 0 );
-    blDebug ( "END BcCuentaListView::idarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idcuenta;
 }
 
@@ -350,8 +352,8 @@ QString BcCuentaListView::idcuenta()
 **/
 QString BcCuentaListView::nombrecuenta()
 {
-    blDebug ( "BcCuentaListView::nombrecuenta", 0 );
-    blDebug ( "END BcCuentaListView::nombrecuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_nombrecuenta;
 }
 
@@ -362,8 +364,8 @@ QString BcCuentaListView::nombrecuenta()
 **/
 QString BcCuentaListView::codigocuenta()
 {
-    blDebug ( "BcCuentaListView::codigocompletoarticulo", 0 );
-    blDebug ( "END BcCuentaListView::codigocompletoarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_codigocuenta;
 }
 
@@ -380,7 +382,7 @@ QString BcCuentaListView::codigocuenta()
 BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
-    blDebug ( "BcCuentaListSubForm::BcCuentaListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "cuenta" );
     setDbFieldId ( "idcuenta" );
 
@@ -401,7 +403,7 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
-    blDebug ( "END BcCuentaListSubForm::BcCuentaListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -411,8 +413,8 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
 
 BcCuentaListSubForm::~BcCuentaListSubForm()
 {
-    blDebug ( "BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
-    blDebug ( "END BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 

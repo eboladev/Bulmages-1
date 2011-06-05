@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     QString portName = g_confpr->value( CONF_TPV_BASCULA_FILE );              // update this to use your port of choice
     g_listener = new PortListener(portName, tpv->company());
     
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -68,7 +68,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 {
     blDebug ( "pluginbascula::entryPoint", 0 );
 
-    blDebug ( "END pluginbascula::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

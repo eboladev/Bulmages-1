@@ -36,7 +36,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de informe ClientesSXC", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -52,7 +52,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int ClientsList_ClientsList ( ClientsList *l )
 {
-    blDebug ( "ClientsList_ClientsList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     InformeQToolButton *mui_exporta_efactura2 = new InformeQToolButton ( l,  l->mui_plugbotones );
     InformeQToolButton1 *mui_exporta_efactura3 = new InformeQToolButton1 ( l,  l->mui_plugbotones );
 
@@ -65,7 +65,7 @@ int ClientsList_ClientsList ( ClientsList *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     m_hboxLayout1->addWidget ( mui_exporta_efactura3 );
-    blDebug ( "END ClientsList_ClientsList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -77,7 +77,7 @@ int ClientsList_ClientsList ( ClientsList *l )
 **/
 int ProveedorList_ProveedorList ( ProveedorList *l )
 {
-    blDebug ( "ProveedorList_ProveedorList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     InformeProveedorQToolButton *mui_exporta_efactura2 = new InformeProveedorQToolButton ( l,  l->mui_plugbotones );
     InformeProveedorQToolButton1 *mui_exporta_efactura3 = new InformeProveedorQToolButton1 ( l,  l->mui_plugbotones );
 
@@ -90,7 +90,7 @@ int ProveedorList_ProveedorList ( ProveedorList *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     m_hboxLayout1->addWidget ( mui_exporta_efactura3 );
-    blDebug ( "END ProveedorList_ProveedorList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

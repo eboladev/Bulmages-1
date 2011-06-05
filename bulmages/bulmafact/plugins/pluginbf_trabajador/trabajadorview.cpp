@@ -62,7 +62,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
     pintar();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( "END TrabajadorView::TrabajadorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,7 +72,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
 void TrabajadorView::imprimir()
 {
     blDebug ( "TrabajadorView::imprimir", 0 );
-    blDebug ( "END TrabajadorView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Carga el query de la base de datos y carga el qlistview.
@@ -99,7 +99,7 @@ void TrabajadorView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( "END TrabajadorView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -112,7 +112,7 @@ TrabajadorView::~TrabajadorView()
     if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
-    blDebug ( "END TrabajadorView::~TrabajadorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -147,12 +147,12 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", this );
     if ( res != 0 ) {
-	blDebug ( "END on_mui_lista_currentItemChanged", 0, "Salida por Plugins" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
         return;
     } // end if
     dialogChanges_readValues();
     m_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
-    blDebug ( "END TrabajadorView::on_mui_lista_currentItemChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -210,7 +210,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         blMsgInfo ( _ ( "Error al guardar el trabajador" ) );
         mainCompany() ->rollback();
     } // end try
-    blDebug ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -230,7 +230,7 @@ bool TrabajadorView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    blDebug ( "END TrabajadorView::trataModificado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( FALSE );
 }
 
@@ -254,7 +254,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         mdb_idtrabajador = cur->value( "idtrabajador" );
         delete cur;
         pintar();
-        blDebug ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear un nuevo Trabajador" ) );
         mainCompany() ->rollback();
@@ -279,7 +279,7 @@ void TrabajadorView::on_mui_borrar_clicked()
         mainCompany() ->commit();
         mdb_idtrabajador = "";
         pintar();
-        blDebug ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el Trabajador" ) );
         mainCompany() ->rollback();
@@ -299,7 +299,7 @@ void TrabajadorView::on_mui_imagen_clicked()
                       "",
                       _ ( "Imagenes (*.jpg)" ) );
     m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
-    blDebug ( "END TrabajadorView::on_mui_imagen_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -310,7 +310,7 @@ void TrabajadorView::on_mui_imagen_clicked()
 QString TrabajadorView::idtrabajador()
 {
     blDebug ( "TrabajadorView::idtrabajador", 0 );
-    blDebug ( "END TrabajadorView::idtrabajador", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idtrabajador;
 }
 

@@ -135,7 +135,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	hide();
     } // end if
     
-    blDebug ( "END EQToolButton::EQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -145,7 +145,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 EQToolButton::~EQToolButton()
 {
     blDebug ( "EQToolButton::~EQToolButton", 0 );
-    blDebug ( "END EQToolButton::~EQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -200,7 +200,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         accion->setObjectName ( fileInfo.fileName() );
 	accion->setIcon(QIcon(icon));
     }
-    blDebug ( "END EQToolButton::pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -235,7 +235,7 @@ void EQToolButton::trataMenu ( QAction *action )
 	    } // end if
 	}
     } // end if
-    blDebug ( "END EQToolButton::trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

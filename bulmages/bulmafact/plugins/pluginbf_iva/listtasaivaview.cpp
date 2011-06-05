@@ -45,7 +45,7 @@
 ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ListTasaIVAView::ListTasaIVAView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Tasa IVA" ) );
     setDbTableName ( "tasa_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -54,7 +54,7 @@ ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( "END ListTasaIVAView::ListTasaIVAView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -63,21 +63,21 @@ ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
 **/
 void ListTasaIVAView::on_mui_aceptar_clicked()
 {
-    blDebug ( "ListTasaIVAView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar las tasas de IVA" ) );
     } // end try
-    blDebug ( "END ListTasaIVAView::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 ListTasaIVAView::~ListTasaIVAView()
 {
-    blDebug ( "ListTasaIVAView::~ListTasaIVAView", 0 );
-    blDebug ( "END ListTasaIVAView::~ListTasaIVAView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,7 +88,7 @@ ListTasaIVAView::~ListTasaIVAView()
 **/
 ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListTasaIVASubForm::ListTasaIVASubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "tasa_iva" );
     setDbFieldId ( "idtasa_iva" );
     addSubFormHeader ( "idtasa_iva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Tasa IVA" ) );
@@ -98,7 +98,7 @@ ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "porcentretasa_iva", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Porcentaje Recargo Equivalencia" ) );
     addSubFormHeader ( "fechatasa_iva", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha Entrada en Vigor" ) );
     setInsert ( TRUE );
-    blDebug ( "END ListTasaIVASubForm::ListTasaIVASubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -107,8 +107,8 @@ ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
 **/
 void ListTasaIVASubForm::load()
 {
-    blDebug ( "ListTasaIVASubForm::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( "SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva" );
-    blDebug ( "END ListTasaIVASubForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

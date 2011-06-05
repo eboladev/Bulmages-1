@@ -31,7 +31,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de iva incluido", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_IVAIncluido", "0.12.1-0000");
@@ -54,10 +54,11 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
-    blDebug ( "ArticuloView_ArticuloView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     IVAincluidoView *i = new IVAincluidoView(trab);
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

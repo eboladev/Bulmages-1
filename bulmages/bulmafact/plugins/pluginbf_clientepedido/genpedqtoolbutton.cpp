@@ -47,10 +47,10 @@
 **/
 GenPedQToolButton::GenPedQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "GenPedQToolButton::GenPedQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_object = fac;
     setBoton();
-    blDebug ( "END GenPedQToolButton::GenPedQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -59,8 +59,8 @@ GenPedQToolButton::GenPedQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 GenPedQToolButton::~GenPedQToolButton()
 {
-    blDebug ( "GenPedQToolButton::~GenPedQToolButton", 0 );
-    blDebug ( "END GenPedQToolButton::~GenPedQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -69,7 +69,7 @@ GenPedQToolButton::~GenPedQToolButton()
 **/
 void GenPedQToolButton::setBoton()
 {
-    blDebug ( "GenPedQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Pedido" );
@@ -79,7 +79,7 @@ void GenPedQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-to-order.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( "END GenPedQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,14 +88,14 @@ void GenPedQToolButton::setBoton()
 **/
 void GenPedQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_object->objectName() == "PresupuestoClienteBase" ) {
         generarFactura1();
     }// end if
 
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -110,7 +110,7 @@ void GenPedQToolButton::click()
 **/
 void GenPedQToolButton::generarFactura1()
 {
-    blDebug ( "GenPedQToolButton::generarFactura1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -223,7 +223,7 @@ void GenPedQToolButton::generarFactura1()
     } // end try
 
 
-    blDebug ( "END GenPedQToolButton::generarFactura1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

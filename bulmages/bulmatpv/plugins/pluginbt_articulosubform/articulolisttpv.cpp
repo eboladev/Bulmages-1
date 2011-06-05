@@ -63,7 +63,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList1_ArticuloList1", this );
     if ( res != 0 ) {
-        blDebug ( "END ArticuloList1::ArticuloList1", 0, "Salida por plugin" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en plugin") );
         return;
     } // end if
     m_tipoarticulo->setMainCompany ( comp );
@@ -78,7 +78,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "articulo" );
-    blDebug ( "END ArticuloList1::ArticuloList1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -100,7 +100,7 @@ void ArticuloList1::presentar()
 ArticuloList1::~ArticuloList1()
 {
     blDebug ( "ArticuloList1::~ArticuloList1", 0 );
-    blDebug ( "END ArticuloList1::~ArticuloList1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -176,7 +176,7 @@ void ArticuloList1::submenu ( const QPoint & )
 QString ArticuloList1::idarticulo()
 {
     blDebug ( "ArticuloList1::idarticulo", 0 );
-    blDebug ( "END ArticuloList1::idarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idarticulo;
 }
 
@@ -188,7 +188,7 @@ QString ArticuloList1::idarticulo()
 QString ArticuloList1::nomarticulo()
 {
     blDebug ( "ArticuloList1::nomarticulo", 0 );
-    blDebug ( "END ArticuloList1::nomarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_nomarticulo;
 }
 
@@ -200,7 +200,7 @@ QString ArticuloList1::nomarticulo()
 QString ArticuloList1::codigocompletoarticulo()
 {
     blDebug ( "ArticuloList1::codigocompletoarticulo", 0 );
-    blDebug ( "END ArticuloList1::codigocompletoarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_codigocompletoarticulo;
 }
 
@@ -213,7 +213,7 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
     blDebug ( "ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    blDebug ( "END ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -226,7 +226,7 @@ void ArticuloList1::on_mui_seleccionar_clicked()
     /// Se ejecuta la misma accion que generando un doble click en la fila seleccionada en el listado.
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    blDebug ( "END ArticuloList1::on_mui_seleccionar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -267,7 +267,7 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "ArticuloList1SubForm1_ArticuloList1SubForm1_Post", this );
-    blDebug ( "END ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -277,6 +277,6 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
 ArticuloList1SubForm1::~ArticuloList1SubForm1()
 {
     blDebug ( "ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
-    blDebug ( "END ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }

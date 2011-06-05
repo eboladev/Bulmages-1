@@ -43,8 +43,9 @@ public:
 
 public slots:
     virtual void load() {
-        blDebug ( "ListZonaComercialSubForm::cargar\n", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         BlSubForm::load ( "SELECT * FROM zonacomercial" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
     };
 };
 

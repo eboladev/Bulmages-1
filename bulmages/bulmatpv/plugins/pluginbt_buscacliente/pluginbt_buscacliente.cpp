@@ -61,7 +61,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
     g_doc1->loadConfig();
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

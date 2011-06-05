@@ -71,7 +71,7 @@ int BlAction_triggered(BlAction *accion) {
         blDebug ( "PluginBf_Tarifa::BlAction_triggered::mui_actionTarifas", 0 );
         TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) g_bges->company() ), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( tar );
-        blDebug ( "END PluginBf_Tarifa::BlAction_triggered::mui_actionTarifas", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         tar->show();        
     } // end if
     return 0;
@@ -173,7 +173,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setColumnWidth ( 3, 250 );
     l->setColumnWidth ( 4, 200 );
 
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -196,7 +196,7 @@ int ArticuloView_load ( ArticuloView *art )
         l->load ( SQLQuery );
     } // end if
 
-    blDebug ( "END ArticuloView_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -262,7 +262,7 @@ int BfSubForm_BfSubForm ( BfSubForm *sub )
     /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
     /// calculo del PVP en funcion del cliente y otros parametros.
     QObject::connect ( sub->m_delegate, SIGNAL ( cant_changed ( BlDbSubFormRecord * ) ), sub, SLOT ( calculaPVP ( BlDbSubFormRecord * ) ) );
-    blDebug ( "END PluginTarifas BfSubForm_BfSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -282,7 +282,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
     /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.
     if ( sub->idArticulo().isEmpty() || sub->idTarifa().isEmpty() || sub->idAlmacen().isEmpty() ) {
-        blDebug ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sin suficientes datos") );
         return 0;
     } else {
         cur = sub->mainCompany()->loadQuery ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
@@ -297,6 +297,6 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
         sub->m_registrolinea->setDbValue ( "pvp" + sub->tableName(), res );
     } // end if
 
-    blDebug ( "END PluginTarifas BfSubForm_calculaPVP", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

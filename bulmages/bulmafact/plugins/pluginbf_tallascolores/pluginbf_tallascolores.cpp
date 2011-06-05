@@ -150,7 +150,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, _("Tallas y colores") );
 
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -168,7 +168,7 @@ int ArticuloView_load ( ArticuloView *art )
         QString query = "SELECT *, tc_articulo_alias.idtc_talla AS idtc_tallaa, tc_articulo_alias.idtc_color AS idtc_colora FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->dbValue ( "idarticulo" );
         l->load ( query );
     } // end if
-    blDebug ( "END ArticuloView_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -209,7 +209,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
     blDebug ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
-    blDebug ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -219,7 +219,7 @@ QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDele
 QSubForm3BfDelegate::~QSubForm3BfDelegate()
 {
     blDebug ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
-    blDebug ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -247,7 +247,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    blDebug ( "END QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -281,7 +281,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( "END QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -306,7 +306,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( "END QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -353,7 +353,7 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
 
-    blDebug ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -374,7 +374,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    blDebug ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -397,7 +397,7 @@ int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *s
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    blDebug ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -426,7 +426,7 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    blDebug ( "END ListLinFacturaView_ListLinFacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

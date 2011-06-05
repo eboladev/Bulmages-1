@@ -22,6 +22,7 @@
 
 #include "blapplication.h"
 #include "blform.h"
+#include "blfunctions.h"
 
 
 
@@ -37,7 +38,7 @@ BlApplication *g_theApp;
 BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, argv )
 {
     blDebug ( "BlApplication::BlApplication", 0 );
-    blDebug ( "END BlApplication::BlApplication", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -47,7 +48,7 @@ BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, a
 BlApplication::~BlApplication()
 {
     blDebug ( "BlApplication::~BlApplication", 0 );
-    blDebug ( "END BlApplication::~BlApplication", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -61,11 +62,10 @@ bool BlApplication::notify ( QObject *o, QEvent *e )
 {
 //    blDebug ( "BlApplication::notify", 0 );
     try {
-//        blDebug ( "END BlApplication::notify", 0 );
+//        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return QApplication::notify ( o, e );
     } catch ( ... ) {
-//        blDebug ( "END BlApplication::notify", 0, "Error inesperado en la aplicacion" );
-        blDebug ( "END BlApplication::notify", 2, "Error inesperado en la aplicacion" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error inesperado en la aplicacion") );
         return FALSE;
     } // end try
 }
@@ -75,6 +75,6 @@ void BlApplication::emitDbTableChanged ( const QString &t )
 {
     blDebug ( "BlApplication::emitDbTableChanged", 0 );
     emit dbTableChanged ( t );
-    blDebug ( "END BlApplication::emitDbTableChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

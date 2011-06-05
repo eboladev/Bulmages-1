@@ -40,8 +40,8 @@
 **/
 PluginBf_Comercial::PluginBf_Comercial() : QObject()
 {
-    blDebug ( "PluginBf_Comercial::PluginBf_Comercial", 0 );
-    blDebug ( "END PluginBf_Comercial::PluginBf_Comercial", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,8 +50,8 @@ PluginBf_Comercial::PluginBf_Comercial() : QObject()
 **/
 PluginBf_Comercial::~PluginBf_Comercial()
 {
-    blDebug ( "PluginBf_Comercial::~PluginBf_Comercial", 0 );
-    blDebug ( "END PluginBf_Comercial::~PluginBf_Comercial", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -60,11 +60,11 @@ PluginBf_Comercial::~PluginBf_Comercial()
 **/
 void PluginBf_Comercial::elslot()
 {
-    blDebug ( "PluginBf_Comercial::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     RutaComercialList *list  = new RutaComercialList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( list );
     list->show();
-    blDebug ( "END PluginBf_Comercial::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,11 +73,11 @@ void PluginBf_Comercial::elslot()
 **/
 void PluginBf_Comercial::elslot1()
 {
-    blDebug ( "PluginBf_Comercial::elslot1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     ListZonaComercialView *list = new ListZonaComercialView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( list );
     list->show();
-    blDebug ( "END PluginBf_Comercial::elslot1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -87,7 +87,7 @@ void PluginBf_Comercial::elslot1()
 **/
 void PluginBf_Comercial::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "PluginBf_Comercial::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// El men&uacute; de empresa.
     m_bges = bges;
     /// Cogemos la 'company' para tener acceso a todo y sobretodo a BD.
@@ -106,7 +106,7 @@ void PluginBf_Comercial::inicializa ( BfBulmaFact *bges )
     planCuentas->setWhatsThis ( _ ( "Rutas comerciales" ) );
     bges->menuMaestro->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_Comercial::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -118,7 +118,7 @@ void PluginBf_Comercial::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Comercial", "0.5.9");
@@ -129,7 +129,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     PluginBf_Comercial *plug = new PluginBf_Comercial();
     plug->inicializa ( bges );
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -141,7 +141,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView_Post ( ClienteView *cli )
 {
-    blDebug ( "ClienteView_ClienteView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Agregamos los campos de registro que hacen falta.
     cli->addDbField ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Zona comercial" ) );
     cli->addDbField ( "fechabasecomercialcliente", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha base" ) );
@@ -152,7 +152,7 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
     l->setMainCompany ( cli->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "lcomercial" ) );
     cli->mui_tab->addTab ( l, _ ( "&Comercial" ) );
-    blDebug ( "END ClienteView_ClienteView_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -164,17 +164,17 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
 **/
 int ClienteView_Des_ClienteView_Post ( ClienteView *cli )
 {
-    blDebug ( "ClienteView_Des_ClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *bus = cli->findChild<ComercialClienteView *> ( "lcomercial" );
     delete bus;
-    blDebug ( "END ClienteView_Des_ClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 /*
 int ClienteView_saveClient(ClienteView *cli) {
-    blDebug("ClienteView_saveClient", 0);
+    blDebug ( Q_FUNC_INFO, 0 );
     ComercialClienteView *bus = cli->findChild<ComercialClienteView *>("lcomercial");
     cli->setDbValue("idzonacomercial", bus->mui_zonacomercial->idzonacomercial());
     cli->setDbValue("fechabasecomercialcliente", bus->mui_fechabasecomercialcliente->fecha());
@@ -187,7 +187,7 @@ int ClienteView_saveClient(ClienteView *cli) {
 
 
 int Cliente_pintaCliente(Cliente *cli) {
-    blDebug("Cliente_pintaCliente", 0);
+    blDebug ( Q_FUNC_INFO, 0 );
     ClienteView *clo = (ClienteView *) cli;
     ComercialClienteView *bus = clo->findChild<ComercialClienteView *>("lcomercial");
     bus->mui_zonacomercial->setidzonacomercial(clo->dbValue("idzonacomercial"));

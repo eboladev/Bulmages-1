@@ -51,7 +51,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
     pintar();
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( "END TiposocioView::TiposocioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,7 +73,7 @@ void TiposocioView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( "END TiposocioView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -86,7 +86,7 @@ TiposocioView::~TiposocioView()
     if ( m_cursortiposocio != NULL ) {
         delete m_cursortiposocio;
     } // end if
-    blDebug ( "END TiposocioView::~TiposocioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -107,7 +107,7 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -142,7 +142,7 @@ int TiposocioView::save()
         } // end if
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_readValues();
-        blDebug ( "END TiposocioView::on_mui_guardar_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar" ) );
@@ -167,7 +167,7 @@ bool TiposocioView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    blDebug ( "END TiposocioView::trataModificado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( FALSE );
 }
 
@@ -191,7 +191,7 @@ void TiposocioView::on_mui_nuevo_clicked()
         mdb_idtiposocio = cur->value( "idtiposocio" );
         delete cur;
         pintar();
-        blDebug ( "END TiposocioView::on_mui_nuevo_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error inesperado al crear el Tipo de socio" ) );
         mainCompany() ->rollback();
@@ -218,7 +218,7 @@ void TiposocioView::on_mui_borrar_clicked()
         } // end if
         mainCompany() ->commit();
         pintar();
-        blDebug ( "END TiposocioView::on_mui_borrar_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error inesperado al borrar el Tipo de socio" ) );
         mainCompany() ->rollback();
@@ -232,5 +232,5 @@ void TiposocioView::on_mui_borrar_clicked()
 void TiposocioView::imprimir()
 {
     blDebug ( "TiposocioView::imprimir", 0 );
-    blDebug ( "END TiposocioView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

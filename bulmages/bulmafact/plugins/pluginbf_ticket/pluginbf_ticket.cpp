@@ -93,7 +93,7 @@ int TicketClienteView_TicketClienteView ( TicketClienteView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    blDebug ( "END AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -118,6 +118,6 @@ int FacturaView_FacturaView ( FacturaView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    blDebug ( "END FacturaView_FacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

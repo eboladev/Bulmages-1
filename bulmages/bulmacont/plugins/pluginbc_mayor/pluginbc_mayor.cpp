@@ -44,8 +44,8 @@ BcExtractoView *g_mayor;
 **/
 PluginBc_Mayor::PluginBc_Mayor()
 {
-    blDebug ( "PluginBc_Mayor::PluginBc_Mayor", 0 );
-    blDebug ( "END PluginBc_Mayor::PluginBc_Mayor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -54,8 +54,8 @@ PluginBc_Mayor::PluginBc_Mayor()
 **/
 PluginBc_Mayor::~PluginBc_Mayor()
 {
-    blDebug ( "PluginBc_Mayor::~PluginBc_Mayor", 0 );
-    blDebug ( "END PluginBc_Mayor::~PluginBc_Mayor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,14 +65,14 @@ PluginBc_Mayor::~PluginBc_Mayor()
 **/
 void PluginBc_Mayor::elslot()
 {
-    blDebug ( "PluginBc_Mayor::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if (g_mayor == NULL) {
       g_mayor = new BcExtractoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addSubWindow ( g_mayor );
     } // end if
     g_mayor->hide();
     g_mayor->show();
-    blDebug ( "END PluginBc_Mayor::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,7 +83,7 @@ void PluginBc_Mayor::elslot()
 **/
 void PluginBc_Mayor::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "PluginBc_Mayor::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->company() );
@@ -100,7 +100,7 @@ void PluginBc_Mayor::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->toolBar->addAction ( accion );
 
-    blDebug ( "END PluginBc_Mayor::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -112,7 +112,7 @@ void PluginBc_Mayor::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -123,7 +123,7 @@ int entryPoint ( BcBulmaCont *bcont )
     PluginBc_Mayor *plug = new PluginBc_Mayor();
     plug->inicializa ( bcont );
 
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

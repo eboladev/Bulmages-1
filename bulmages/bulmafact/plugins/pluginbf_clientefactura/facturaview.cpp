@@ -50,7 +50,7 @@
 FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "FacturaView::FacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
@@ -117,7 +117,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la factura" ), this );
     }
-    blDebug ( "END FacturaView::FacturaView" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -128,8 +128,8 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
 **/
 FacturaView::~FacturaView()
 {
-    blDebug ( "FacturaView::~FacturaView", 0 );
-    blDebug ( "END FacturaView::~FacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -139,12 +139,12 @@ FacturaView::~FacturaView()
 **/
 void FacturaView::inicializar()
 {
-    blDebug ( "FacturaView::inicializar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
     pintar();
     dialogChanges_readValues();
-    blDebug ( "END FacturaView::inicializar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -161,14 +161,14 @@ void FacturaView::inicializar()
 **/
 void FacturaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( "FacturaView::pintatotales", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_totalBases->setText ( base.toQString() );
     m_totalTaxes->setText ( iva.toQString() );
     m_totalfactura->setText ( total.toQString() );
     m_totalDiscounts->setText ( desc.toQString() );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    blDebug ( "END FacturaView::pintatotales", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -181,7 +181,7 @@ void FacturaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFix
 **/
 void FacturaView::on_mui_veralbaranes_clicked()
 {
-    blDebug ( "FacturaView::on_mui_veralbaranes_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     AlbaranClienteView *bud = NULL;
     BlDbRecordSet *cur = NULL;
     try {
@@ -204,7 +204,7 @@ void FacturaView::on_mui_veralbaranes_clicked()
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
-    blDebug ( "END FacturaView::on_mui_veralbaranes_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -214,10 +214,10 @@ void FacturaView::on_mui_veralbaranes_clicked()
 **/
 void FacturaView::on_mui_idcliente_valueChanged ( QString id )
 {
-    blDebug ( "FacturaView::on_m_cliente_valueChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     subform2->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    blDebug ( "END FacturaView::on_m_cliente_valueChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -226,9 +226,9 @@ void FacturaView::on_mui_idcliente_valueChanged ( QString id )
 **/
 void FacturaView::on_m_descuentos_editFinish ( int, int )
 {
-    blDebug ( "FacturaView::on_m_descuentos_editFinish", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     calculaypintatotales();
-    blDebug ( "END FacturaView::on_m_descuentos_editFinish", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -237,9 +237,9 @@ void FacturaView::on_m_descuentos_editFinish ( int, int )
 **/
 void FacturaView::on_subform2_editFinish ( int, int )
 {
-    blDebug ( "FacturaView::on_subform2_editFinish", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     calculaypintatotales();
-    blDebug ( "END FacturaView::on_subform2_editFinish", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -250,10 +250,10 @@ void FacturaView::on_subform2_editFinish ( int, int )
 **/
 int FacturaView::beforeDelete()
 {
-    blDebug ( "FacturaView::beforeDelete", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int error = m_listalineas->remove();
     error = m_listadescuentos->remove();
-    blDebug ( "END FacturaView::beforeDelete", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -266,7 +266,7 @@ int FacturaView::beforeDelete()
 **/
 int FacturaView::cargarPost ( QString idbudget )
 {
-    blDebug ( "FacturaView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_listalineas->load ( idbudget );
     m_listadescuentos->load ( idbudget );
@@ -276,7 +276,7 @@ int FacturaView::cargarPost ( QString idbudget )
 
     calculaypintatotales();
 
-    blDebug ( "END FacturaView::cargarPost", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -288,12 +288,12 @@ int FacturaView::cargarPost ( QString idbudget )
 **/
 int FacturaView::afterSave()
 {
-    blDebug ( "FacturaView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_listadescuentos->setColumnValue ( "idfactura", dbValue ( "idfactura" ) );
     m_listalineas->setColumnValue ( "idfactura", dbValue ( "idfactura" ) );
     m_listalineas->save();
     m_listadescuentos->save();
-    blDebug ( "END FacturaView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -304,9 +304,9 @@ int FacturaView::afterSave()
 **/
 void FacturaView::on_mui_idalmacen_valueChanged ( QString id )
 {
-    blDebug ( "FacturaView::on_mui_idalmacen_valueChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_listalineas->setIdAlmacen ( id );
-    blDebug ( "END FacturaView::on_mui_idalmacen_valueChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

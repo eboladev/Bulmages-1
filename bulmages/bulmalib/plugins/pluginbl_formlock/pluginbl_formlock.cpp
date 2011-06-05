@@ -107,7 +107,7 @@ int BlForm_load ( BlForm *ficha )
     } // end if
 
     delete cur1;
-    blDebug ( "END Plugin formlock::BlForm_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -149,7 +149,7 @@ int BlForm_DesBlForm ( BlForm *ficha )
 	} // end if
     } // end if
     } // end if
-    blDebug ( "END Plugin formlock::BlForm_DesBlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -168,6 +168,6 @@ int BlForm_BlForm ( BlForm *l )
     l->mainCompany()->dbPatchVersionCheck("PluginBl_FormLock", "0.11.1-0001");
     
     new BloqMenu ( l );
-    blDebug ( "END Plugin formlock::BlForm_BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

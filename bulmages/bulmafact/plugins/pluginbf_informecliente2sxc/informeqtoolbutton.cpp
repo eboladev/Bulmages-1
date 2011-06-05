@@ -44,10 +44,10 @@
 **/
 InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "InformeQToolButton::InformeQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_clientsList = art;
     setBoton();
-    blDebug ( "END InformeQToolButton::InformeQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -56,8 +56,8 @@ InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : 
 **/
 InformeQToolButton::~InformeQToolButton()
 {
-    blDebug ( "InformeQToolButton::~InformeQToolButton", 0 );
-    blDebug ( "END InformeQToolButton::~InformeQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -65,7 +65,7 @@ InformeQToolButton::~InformeQToolButton()
 **/
 void InformeQToolButton::setBoton()
 {
-    blDebug ( "InformeQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Informe en Hoja de Calculo" );
@@ -73,7 +73,7 @@ void InformeQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END InformeQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -82,7 +82,7 @@ void InformeQToolButton::setBoton()
 **/
 void InformeQToolButton::click()
 {
-    blDebug ( "InformeQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     int y = 0;
 
@@ -240,7 +240,7 @@ void InformeQToolButton::click()
     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc &";
     system ( cadena.toAscii() );
 
-    blDebug ( "END InformeQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -253,7 +253,7 @@ void InformeQToolButton::click()
 **/
 QString InformeQToolButton::generarCliente ( QString idcliente, int row, int anyo )
 {
-    blDebug ( "InformeQToolButton::generarCliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString fitxersortidatxt = "";
 
 
@@ -282,7 +282,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente, int row, int any
         fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
         fitxersortidatxt += "$doc->oooSet(\"italic\", \"off\");\n";
     } // end if
-    blDebug ( "END InformeQToolButton::generarCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return fitxersortidatxt;
 }
 
@@ -298,10 +298,10 @@ QString InformeQToolButton::generarCliente ( QString idcliente, int row, int any
 **/
 InformeProveedorQToolButton::InformeProveedorQToolButton ( ProveedorList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "InformeProveedorQToolButton::InformeProveedorQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_proveedorList = art;
     setBoton();
-    blDebug ( "END InformeProveedorQToolButton::InformeProveedorQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -310,8 +310,8 @@ InformeProveedorQToolButton::InformeProveedorQToolButton ( ProveedorList *art , 
 **/
 InformeProveedorQToolButton::~InformeProveedorQToolButton()
 {
-    blDebug ( "InformeProveedorQToolButton::~InformeProveedorQToolButton", 0 );
-    blDebug ( "END InformeProveedorQToolButton::~InformeProveedorQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -319,7 +319,7 @@ InformeProveedorQToolButton::~InformeProveedorQToolButton()
 **/
 void InformeProveedorQToolButton::setBoton()
 {
-    blDebug ( "InformeProveedorQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Informe en Hoja de Calculo" );
@@ -327,7 +327,7 @@ void InformeProveedorQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END InformeProveedorQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -336,7 +336,7 @@ void InformeProveedorQToolButton::setBoton()
 **/
 void InformeProveedorQToolButton::click()
 {
-    blDebug ( "InformeProveedorQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     int y = 0;
 
@@ -492,7 +492,7 @@ void InformeProveedorQToolButton::click()
     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
     system ( cadena.toAscii() );
 
-    blDebug ( "END InformeProveedorQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -504,7 +504,7 @@ void InformeProveedorQToolButton::click()
 **/
 QString InformeProveedorQToolButton::generarProveedor ( QString idproveedor, int row, int anyo )
 {
-    blDebug ( "InformeProveedorQToolButton::generarProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString fitxersortidatxt = "";
 
     /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias
@@ -531,7 +531,7 @@ QString InformeProveedorQToolButton::generarProveedor ( QString idproveedor, int
         fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
         fitxersortidatxt += "$doc->oooSet(\"italic\", \"off\");\n";
     } // end if
-    blDebug ( "END InformeProveedorQToolButton::generarProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return fitxersortidatxt;
 }
 

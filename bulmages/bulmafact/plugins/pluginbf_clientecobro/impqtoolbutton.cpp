@@ -48,10 +48,10 @@
 **/
 GenCobroQToolButton::GenCobroQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "GenCobroQToolButton::GenCobroQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_object = fac;
     setBoton();
-    blDebug ( "END GenCobroQToolButton::GenCobroQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -60,8 +60,8 @@ GenCobroQToolButton::GenCobroQToolButton ( QWidget *fac , QWidget *parent ) : QT
 **/
 GenCobroQToolButton::~GenCobroQToolButton()
 {
-    blDebug ( "GenCobroQToolButton::~GenCobroQToolButton", 0 );
-    blDebug ( "END GenCobroQToolButton::~GenCobroQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -70,7 +70,7 @@ GenCobroQToolButton::~GenCobroQToolButton()
 **/
 void GenCobroQToolButton::setBoton()
 {
-    blDebug ( "GenCobroQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Cobro" );
@@ -80,7 +80,7 @@ void GenCobroQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( "END GenCobroQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -89,7 +89,7 @@ void GenCobroQToolButton::setBoton()
 **/
 void GenCobroQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_object->objectName() == "FacturaBase" ) {
         FacturaView *fpv = ( FacturaView * ) m_object;
@@ -244,7 +244,7 @@ void GenCobroQToolButton::click()
         } // end if
     }// end if
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

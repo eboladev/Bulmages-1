@@ -38,10 +38,6 @@
 BcDiarioView *g_diario;
 BcBulmaCont *g_bcont = NULL;
 
-///
-/**
-**/
-
 
 ///
 /**
@@ -49,7 +45,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,8 +57,8 @@ int entryPoint ( BcBulmaCont *bcont )
     QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 
     BlAction *accionA = new BlAction ( _ ( "&Libro Diario" ), 0 );
-    accionA->setStatusTip ( _ ( "Permite ver el diario" ) );
-    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del diario" ) );
+    accionA->setStatusTip ( _ ( "Permite ver el Diario" ) );
+    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del Diario" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/balance-sheet.png")));
     accionA->setObjectName("mui_actionDiario");
     pPluginMenu->addAction ( accionA );
@@ -70,21 +66,24 @@ int entryPoint ( BcBulmaCont *bcont )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->toolBar->addAction ( accionA );
 
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ("PluginBc_Diario::BlAction_triggered" );
+    blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Diario") );
+
     if (accion->objectName() == "mui_actionDiario") {
         if (g_diario == NULL) {
             g_diario = new BcDiarioView ( ( BcCompany * ) g_bcont->company(), 0 );
             g_bcont->company()->pWorkspace() ->addSubWindow ( g_diario );
         } // end if
-    g_diario->hide();
-    g_diario->show();
+        
+	g_diario->hide();
+        g_diario->show();
     } // end if
-    blDebug ("END PluginBc_Diario::BlAction_triggered" );
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

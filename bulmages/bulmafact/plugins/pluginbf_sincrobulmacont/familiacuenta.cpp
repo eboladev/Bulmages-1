@@ -49,7 +49,7 @@ FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
     frame->setLayout(layout_cuenta);
 
     
-    blDebug ( "END FamiliaCuenta::FamiliaCuenta", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -59,7 +59,7 @@ FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
 FamiliaCuenta::~FamiliaCuenta()
 {
     blDebug ( "FamiliaCuenta::~FamiliaCuenta", 0 );
-    blDebug ( "END FamiliaCuenta::~FamiliaCuenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

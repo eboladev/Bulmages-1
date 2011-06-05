@@ -46,7 +46,7 @@
 CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "CuadranteDiarioView::CuadranteDiarioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -98,7 +98,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al iniciar el cuadrante" ) );
     } // end try
-    blDebug ( "END CuadranteDiarioView::CuadranteDiarioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -109,9 +109,9 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 **/
 CuadranteDiarioView::~CuadranteDiarioView()
 {
-    blDebug ( "CuadranteDiarioView::~CuadranteDiarioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     saveConfig();
-    blDebug ( "END CuadranteDiarioView::~CuadranteDiarioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -121,7 +121,7 @@ CuadranteDiarioView::~CuadranteDiarioView()
 **/
 void CuadranteDiarioView::inicializaTrabajadores()
 {
-    blDebug ( "CuadranteDiarioView::inicializaTrabajadores", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_listtrabajadores->clear();
     mui_listtrabajadores->setColumnCount ( 2 );
     mui_listtrabajadores->hideColumn ( 1 );
@@ -149,7 +149,7 @@ void CuadranteDiarioView::inicializaTrabajadores()
         } // end if
         delete cur;
     } // end if
-    blDebug ( "END CuadranteDiarioView::inicializaTrabajadores", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -161,7 +161,7 @@ void CuadranteDiarioView::inicializaTrabajadores()
 **/
 void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 {
-    blDebug ( "CuadranteDiarioView::inicializaCuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString diassem[7];
     diassem[0] = _ ( "Lunes" );
     diassem[1] = _ ( "Martes" );
@@ -222,9 +222,9 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 
 
         loadConfig();
-        blDebug ( "CuadranteDiarioView::inicializaCuadrante", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
-        blDebug ( "Error en la carga del calendario", 2 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga") );
         return;
     }
 }
@@ -236,8 +236,9 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 **/
 void CuadranteDiarioView::on_mui_calendario_clicked ( const QDate &date )
 {
-    blDebug ( "CuadranteDiarioView::on_mui_calendario_clicked", 0, date.toString ( "dd/MM/yyyy" ) );
+    blDebug ( Q_FUNC_INFO, 0 );
     inicializaCuadrante ( date );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -247,7 +248,7 @@ void CuadranteDiarioView::on_mui_calendario_clicked ( const QDate &date )
 **/
 void CuadranteDiarioView::on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidgetItem *item, int )
 {
-    blDebug ( "elementos dobleclickados", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString item1 = item->text ( 1 );
 
     QList<QTableWidgetSelectionRange> selectionranges = mui_cuadrante->selectedRanges();
@@ -267,7 +268,7 @@ void CuadranteDiarioView::on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidge
 **/
 void CuadranteDiarioView::on_mui_editar_clicked()
 {
-    blDebug ( "editar cuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Cuadrante1View *cuad = new Cuadrante1View ( mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
@@ -283,7 +284,7 @@ void CuadranteDiarioView::on_mui_editar_clicked()
 **/
 void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const QPoint & pos )
 {
-    blDebug ( "CuadranteDiarioView::on_mui_calendario_customContextMenuRequested", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QMenu *popup = new QMenu ( mui_calendario );
 
     popup->addSeparator();
@@ -304,7 +305,7 @@ void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const Q
     } // end if
 
     inicializaCuadrante ( mui_calendario->selectedDate() );
-    blDebug ( "END CuadranteDiarioView::on_mui_calendario_customContextMenuRequested", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -313,10 +314,10 @@ void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const Q
 **/
 void CuadranteDiarioView::on_mui_actualizar_clicked()
 {
-    blDebug ( "CuadranteDiarioView::on_mui_actualizar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     inicializaTrabajadores();
     inicializaCuadrante ( mui_calendario->selectedDate() );
-    blDebug ( "CuadranteDiarioView::on_mui_actualizar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -325,7 +326,7 @@ void CuadranteDiarioView::on_mui_actualizar_clicked()
 **/
 void CuadranteDiarioView::on_mui_limpiar_clicked()
 {
-    blDebug ( "CuadranteDiarioView::on_mui_limpiar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 );
     QDate datefin = date.addDays ( 6 );
     QString query = "DELETE FROM horario WHERE idcuadrante IN (SELECT idcuadrante FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "')";
@@ -333,7 +334,7 @@ void CuadranteDiarioView::on_mui_limpiar_clicked()
     query = "DELETE FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "'";
     mainCompany() ->runQuery ( query );
     on_mui_actualizar_clicked();
-    blDebug ( "CuadranteDiarioView::on_mui_limpiar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -343,13 +344,13 @@ void CuadranteDiarioView::on_mui_limpiar_clicked()
 **/
 void CuadranteDiarioView::on_mui_duplicar_clicked()
 {
-    blDebug ( "CuadranteDiarioView::on_mui_limpiar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     for ( QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 )
                        ; date <= mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 7 )
             ; date = date.addDays ( 1 ) ) {
         QDate fechaant = date.addDays ( -7 );
         QString query = "SELECT * FROM cuadrante WHERE fechacuadrante = '" + fechaant.toString ( "dd/MM/yyyy" ) + "'";
-        blDebug ( query, 2 );
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'")).arg(query) );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         while ( !cur->eof() ) {
             query = "UPDATE cuadrante SET ";
@@ -386,7 +387,7 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
 
     } // end for
     on_mui_actualizar_clicked();
-    blDebug ( "CuadranteDiarioView::on_mui_limpiar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -395,7 +396,7 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
 **/
 void CuadranteDiarioView::on_mui_imprimir_clicked()
 {
-    blDebug ( "CuadranteDiarioView::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "cuadrante.rml";
@@ -477,7 +478,7 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
         file.close();
     } // end if
     blCreateAndLoadPDF ( "cuadrante" );
-    blDebug ( "END CuadranteDiarioView::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -487,7 +488,7 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
 **/
 void CuadranteDiarioView::saveConfig()
 {
-    blDebug ( "CuadranteDiarioView::saveConfig", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString aux = "";
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
@@ -506,7 +507,7 @@ void CuadranteDiarioView::saveConfig()
 
         file.close();
     } // end if
-    blDebug ( "END CuadranteDiarioView::saveConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -515,7 +516,7 @@ void CuadranteDiarioView::saveConfig()
 **/
 void CuadranteDiarioView::loadConfig()
 {
-    blDebug ( "CuadranteDiarioView::loadConfig", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     QString line;
     int error = 1;
@@ -555,6 +556,6 @@ void CuadranteDiarioView::loadConfig()
     }
 
     file.close();
-    blDebug ( "END CuadranteDiarioView::loadConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

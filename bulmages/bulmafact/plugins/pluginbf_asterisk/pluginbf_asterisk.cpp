@@ -31,7 +31,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de validacion con Asterisk", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Asterisk", "0.11-002");
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
-    blDebug ( "TrabajadorView_TrabajadorView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     trab->addDbField ( "passasterisktrabajador", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Password." ) );
     trab->addDbField ( "validasiempreasterisktrabajador", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Valida siempre." ) );
@@ -126,7 +126,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 **/
 int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
-    blDebug ( "AlmacenView_AlmacenView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     alm->addDbField ( "extasteriskalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Extension." ) );
 
@@ -176,7 +176,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 
     alm->mui_tab->addTab ( l, "Validaciones Asterisk" );
 
-    blDebug ( "END AlmacenView_AlmacenView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

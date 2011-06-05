@@ -61,7 +61,7 @@ int BlForm_load ( BlForm *ficha )
     EQToolButton *eq = ficha->findChild<EQToolButton *>("BotonArchDoc");
     eq->hazMenu();
     return 0;
-    blDebug ( "END PluginBl_AttachDocument::BlForm_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -89,7 +89,7 @@ int BlForm_BlForm ( BlForm *l )
     new EQToolButton( l );
 */
 
-    blDebug ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -104,7 +104,7 @@ int BlForm_loadSpecs ( BlForm *l )
 {
     blDebug ( "BlForm_BlForm", 0 );
     new EQToolButton ( l );
-    blDebug ( "END BlForm_BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

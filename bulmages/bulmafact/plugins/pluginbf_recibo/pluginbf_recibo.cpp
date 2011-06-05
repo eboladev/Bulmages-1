@@ -92,7 +92,7 @@ int BlAction_triggered(BlAction *accion) {
             g_recibosList->hide();
             g_recibosList->show();
         } // end if
-        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionReciboNuevo") {
@@ -100,7 +100,7 @@ int BlAction_triggered(BlAction *accion) {
         ReciboView * bud = new ReciboView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionReciboNuevo", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionRecibosEmitir") {
@@ -108,7 +108,7 @@ int BlAction_triggered(BlAction *accion) {
         EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibosEmitir", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     return 0;
@@ -161,7 +161,7 @@ int ActividadView_ActividadView ( ActividadView *l )
     p->m_actividad = l;
     m_hboxLayout1->addWidget ( mui_generar_recibos );
     p->connect(mui_generar_recibos, SIGNAL(released()), p, SLOT(elslot()));
-    blDebug ( "END PluginRecibo_ActividadView_ActividadView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -177,7 +177,7 @@ int ActividadView_ActividadView ( ActividadView *l )
 EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 {
     blDebug ( "EmitirRecibos::EmitirRecibos", 0 );
-    blDebug ( "END EmitirRecibos::EmitirRecibos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -186,7 +186,7 @@ EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 EmitirRecibos::~EmitirRecibos()
 {
     blDebug ( "EmitirRecibos::~EmitirRecibos", 0 );
-    blDebug ( "END EmitirRecibos::~EmitirRecibos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -202,7 +202,7 @@ void EmitirRecibos::elslot()
     bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
     bud->show();
     
-    blDebug ( "END EmitirRecibos::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 // ==========================

@@ -45,7 +45,7 @@
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "Entrada del plugin ADocumental.", 10 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -85,8 +85,8 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Pone la opcion dentro del menu HERRAMIENTAS.
     bcont->mui_MenuHerramientas() ->addSeparator();
     bcont->mui_MenuHerramientas() ->addAction ( ArchDoc );
-    blDebug ( "Iniciado correctamente el plugin ADocumental.", 10 );
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

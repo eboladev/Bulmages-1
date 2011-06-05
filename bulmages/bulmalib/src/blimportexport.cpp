@@ -208,7 +208,7 @@ private:
 void BlImportExport::alerta ( int, int )
 {
     blDebug ( "BlImportExport::alerta", 0 );
-    blDebug ( "END BlImportExport::alerta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -229,7 +229,7 @@ void BlImportExport::setFInicial ( QString f )
 {
     blDebug ( "BlImportExport::setFInicial", 0 );
     m_fInicial = f;
-    blDebug ( "END BlImportExport::setFInicial", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -241,7 +241,7 @@ void BlImportExport::setFFinal ( QString f )
 {
     blDebug ( "BlImportExport::setFFinal", 0 );
     m_fFinal = f;
-    blDebug ( "END BlImportExport::setFFinal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -252,7 +252,7 @@ void BlImportExport::setModoTest()
 {
     blDebug ( "BlImportExport::setModoTest", 0 );
     m_modoTest = TRUE;
-    blDebug ( "END BlImportExport::setModoTest", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -263,7 +263,7 @@ void BlImportExport::setModoNormal()
 {
     blDebug ( "BlImportExport::setModoNormal", 0 );
     m_modoTest = FALSE;
-    blDebug ( "END BlImportExport::setModoNormal", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -274,7 +274,7 @@ void BlImportExport::setModoNormal()
 bool BlImportExport::modoTest()
 {
     blDebug ( "BlImportExport::modoTest", 0 );
-    blDebug ( "END BlImportExport::modoTest", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( m_modoTest == TRUE );
 }
 
@@ -284,7 +284,7 @@ bool BlImportExport::modoTest()
 BlImportExport::~BlImportExport()
 {
     blDebug ( "BlImportExport::~BlImportExport", 0 );
-    blDebug ( "END BlImportExport::~BlImportExport", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -298,7 +298,7 @@ BlImportExport::BlImportExport ( BlPostgreSqlClient *con )
     m_fInicial = "";
     m_fFinal = "";
     setModoNormal();
-    blDebug ( "END BlImportExport::BlImportExport", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Esta funcion se encarga de pasar los datos de BulmaGes a Contaplus.
@@ -404,7 +404,7 @@ int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
     } // end while
     delete curas;
     alerta ( 100, 100 );
-    blDebug ( "END BlImportExport::bulmages2Contaplus", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 } // end if
 
@@ -634,7 +634,7 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
     } // end if
     mensajeria ( _ ( "<LI>Terminado</LI>\n" ) );
     alerta ( subcuentas.size() + asientos.size(), subcuentas.size() + asientos.size() );
-    blDebug ( "END BlImportExport::contaplus2Bulmages", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -666,7 +666,7 @@ QString BlImportExport::searchParent ( QString cod )
         delete cur;
         i++;
     } // end while
-    blDebug ( "END BlImportExport::searchParent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return padre;
 }
 
@@ -1243,7 +1243,7 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
     } // end if
     stream << "</FUGIT>\n";
     alerta ( 100, 100 );
-    blDebug ( "END BlImportExport::bulmafact2XML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -1431,7 +1431,7 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
     } // end if
     stream << "</FUGIT>\n";
     alerta ( numreg, numreg );
-    blDebug ( "END BlImportExport::bulmages2XML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -1453,7 +1453,7 @@ int BlImportExport::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
     reader.setContentHandler ( &handler );
     reader.parse ( source );
     alerta ( 100, 100 );
-    blDebug ( "END BlImportExport::XML2Bulmages", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -1479,7 +1479,7 @@ int BlImportExport::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
         QMessageBox::warning ( 0, _ ( "Application name" ), _ ( "Error en el XML.\nDocumento mal formado." ), "OK", 0, 0 );
     }
     alerta ( 100, 100 );
-    blDebug ( "END BlImportExport::XML2BulmaFact", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -1502,7 +1502,7 @@ StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
         dbConnection->runQuery ( query2 );
     } // end for
     dbConnection->commit();
-    blDebug ( "END StructureParser::StructureParser", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1514,7 +1514,7 @@ StructureParser::~StructureParser()
     blDebug ( "StructureParser::~StructureParser", 0 );
     QString query = "DELETE FROM cuenta WHERE codigo = 'AUX'";
     dbConnection->runQuery ( query );
-    blDebug ( "END StructureParser::~StructureParser", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -1525,7 +1525,7 @@ bool StructureParser::startDocument()
 {
     blDebug ( "StructureParser::startDocument", 0 );
     indent = "";
-    blDebug ( "END StructureParser::startDocument", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1593,7 +1593,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         m_tipoCuenta = "";
     } // end if
     cadintermedia = "";
-    blDebug ( "END StructureParser::startElement", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1741,7 +1741,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
     if ( qName == "BASEIVA" && tagpadre == "RIVA" )
         m_baseIva = cadintermedia;
     cadintermedia = "";
-    blDebug ( "END StructureParser::endElement", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1754,7 +1754,7 @@ bool StructureParser::characters ( const QString& n1 )
 {
     blDebug ( "StructureParser::characters", 0 );
     cadintermedia += n1;
-    blDebug ( "END StructureParser::characters", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1772,7 +1772,7 @@ ImportBulmaFact::ImportBulmaFact ( BlImportExport *imp, BlPostgreSqlClient *con,
     dbConnection = con;
     pgimport = imp;
     m_tipo = tip;
-    blDebug ( "END ImportBulmaFact::ImportBulmaFact", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1782,7 +1782,7 @@ ImportBulmaFact::ImportBulmaFact ( BlImportExport *imp, BlPostgreSqlClient *con,
 ImportBulmaFact::~ImportBulmaFact()
 {
     blDebug ( "ImportBulmaFact::~ImportBulmaFact", 0 );
-    blDebug ( "END ImportBulmaFact::~ImportBulmaFact", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1794,7 +1794,7 @@ bool ImportBulmaFact::startDocument()
 {
     blDebug ( "ImportBulmaFact::startDocument", 0 );
     indent = "";
-    blDebug ( "END ImportBulmaFact::startDocument", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1807,7 +1807,7 @@ bool ImportBulmaFact::startElement ( const QString&, const QString&, const QStri
 {
     blDebug ( "ImportBulmaFact::startElement", 0 );
     cadintermedia = "";
-    blDebug ( "END ImportBulmaFact::startElement", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1859,7 +1859,7 @@ bool ImportBulmaFact::endElement ( const QString&, const QString&, const QString
         trataLPedidoCliente();
     if ( qName == "DPEDIDOCLIENTE" )
         trataDPedidoCliente();
-    blDebug ( "END ImportBulmaFact::endElement", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1876,7 +1876,7 @@ bool ImportBulmaFact::characters ( const QString& n1 )
     if ( val == "\n" )
         val = "";
     cadintermedia += val;
-    blDebug ( "END ImportBulmaFact::characters", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return TRUE;
 }
 
@@ -1895,7 +1895,7 @@ void ImportBulmaFact::printcontents()
                   it.value().toAscii().data() );
     } // end for
     fprintf ( stderr, "Fin de impresion de contenidos\n" );
-    blDebug ( "END ImportBulmaFact::characters", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -1994,7 +1994,7 @@ int ImportBulmaFact::trataCliente()
     
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2029,7 +2029,7 @@ int ImportBulmaFact::trataProveedor()
     } // end if
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2072,7 +2072,7 @@ int ImportBulmaFact::trataFormaPago()
     pgimport->mensajeria ( "<LI>" + _ ( "Forma de pago" ) + " <B>" + descforma_pago + "</B> " + _ ( "Insertada" ) );
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataFormaPago", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2120,7 +2120,7 @@ int ImportBulmaFact::trataAlmacen()
     /// Finalizamos.
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataAlmacen", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2181,7 +2181,7 @@ int ImportBulmaFact::trataFamilia()
     /// Finalizamos.
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataFamilia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2281,7 +2281,7 @@ int ImportBulmaFact::trataArticulo()
     dbConnection->runQuery ( query );
     pgimport->mensajeria ( "<P>" + _ ( "Articulo" ) + " <B>" + codigocompletoarticulo + "</B> " + _ ( "insertado" ) + "</P>" );
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataArticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2309,7 +2309,7 @@ int ImportBulmaFact::trataLPedidoCliente()
     lpedidoclientemap.insert ( "ABREVARTICULO", valores["ABREVARTICULO"] );
     lpedidoclientemap.insert ( "CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"] );
     listalpedidocliente.append ( lpedidoclientemap );
-    blDebug ( "END ImportBulmaFact::trataLPedidoCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2328,7 +2328,7 @@ int ImportBulmaFact::trataDPedidoCliente()
     dpedidoclientemap.insert ( "CONCEPTDPEDIDOCLIENTE", valores["CONCEPTDPEDIDOCLIENTE"] );
     dpedidoclientemap.insert ( "PROPORCIONDPEDIDOCLIENTE", valores["PROPORCIONDPEDIDOCLIENTE"] );
     listadpedidocliente.append ( dpedidoclientemap );
-    blDebug ( "END ImportBulmaFact::trataDPedidoCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2508,7 +2508,7 @@ int ImportBulmaFact::trataPedidoCliente()
         dbConnection->runQuery ( query );
     } // end for
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataPedidoCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2536,7 +2536,7 @@ int ImportBulmaFact::trataLAlbaran()
     lalbaranmap.insert ( "ABREVARTICULO", valores["ABREVARTICULO"] );
     lalbaranmap.insert ( "CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"] );
     listalalbaran.append ( lalbaranmap );
-    blDebug ( "END ImportBulmaFact::trataLAlbaran", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2555,7 +2555,7 @@ int ImportBulmaFact::trataDAlbaran()
     dalbaranmap.insert ( "CONCEPTDALBARAN", valores["CONCEPTDALBARAN"] );
     dalbaranmap.insert ( "PROPORCIONDALBARAN", valores["PROPORCIONDALBARAN"] );
     listadalbaran.append ( dalbaranmap );
-    blDebug ( "END ImportBulmaFact::trataDAlbaran", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2734,7 +2734,7 @@ int ImportBulmaFact::trataAlbaran()
         dbConnection->runQuery ( query );
     } // end for
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataAlbaran", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2762,7 +2762,7 @@ int ImportBulmaFact::trataLFactura()
     lfacturamap.insert ( "ABREVARTICULO", valores["ABREVARTICULO"] );
     lfacturamap.insert ( "CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"] );
     listalfactura.append ( lfacturamap );
-    blDebug ( "END ImportBulmaFact::trataLFactura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2781,7 +2781,7 @@ int ImportBulmaFact::trataDFactura()
     dfacturamap.insert ( "CONCEPTDFACTURA", valores["CONCEPTDFACTURA"] );
     dfacturamap.insert ( "PROPORCIONDFACTURA", valores["PROPORCIONDFACTURA"] );
     listadfactura.append ( dfacturamap );
-    blDebug ( "END ImportBulmaFact::trataDFactura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -2972,7 +2972,7 @@ int ImportBulmaFact::trataFactura()
         dbConnection->runQuery ( query );
     } // end for
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataFactura", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -3000,7 +3000,7 @@ int ImportBulmaFact::trataLPresupuesto()
     lpresupuestomap.insert ( "ABREVARTICULO", valores["ABREVARTICULO"] );
     lpresupuestomap.insert ( "CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"] );
     listalpresupuesto.append ( lpresupuestomap );
-    blDebug ( "END ImportBulmaFact::trataLPresupuesto", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -3019,7 +3019,7 @@ int ImportBulmaFact::trataDPresupuesto()
     dpresupuestomap.insert ( "CONCEPTDPRESUPUESTO", valores["CONCEPTDPRESUPUESTO"] );
     dpresupuestomap.insert ( "PROPORCIONDPRESUPUESTO", valores["PROPORCIONDPRESUPUESTO"] );
     listadpresupuesto.append ( dpresupuestomap );
-    blDebug ( "END ImportBulmaFact::trataDPresupuesto", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -3201,7 +3201,7 @@ int ImportBulmaFact::trataPresupuesto()
         dbConnection->runQuery ( query );
     } // end for
     valores.clear();
-    blDebug ( "END ImportBulmaFact::trataPresupuesto", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

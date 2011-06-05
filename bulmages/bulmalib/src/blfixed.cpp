@@ -26,7 +26,7 @@ BlFixed::BlFixed ( int x, int p )
     blDebug ( "BlFixed::BlFixed", 0 );
     value = x;
     m_precision = p;
-    blDebug ( "END BlFixed::BlFixed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -38,7 +38,7 @@ BlFixed::BlFixed ( QString a )
 {
     blDebug ( "BlFixed::BlFixed", 0 );
     fromBlFixed ( a.toAscii() );
-    blDebug ( "END BlFixed::BlFixed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ BlFixed::BlFixed ( const char *a )
 {
     blDebug ( "BlFixed::BlFixed", 0 );
     fromBlFixed ( a );
-    blDebug ( "END BlFixed::BlFixed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,7 +62,7 @@ BlFixed::BlFixed()
     blDebug ( "BlFixed::BlFixed", 0 );
     value = 0;
     m_precision = 1;
-    blDebug ( "END BlFixed::BlFixed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -213,7 +213,7 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
         } // end while
     } // end if
 
-    blDebug ( "END BlFixed::toQString", 0, buffer );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return buffer;
 }
 
@@ -253,7 +253,7 @@ void BlFixed::equalize_precision ( BlFixed &x )
         x.value *= 10 ;
         x.m_precision ++;
     } // end while
-    blDebug ( "END BlFixed::equalize_precision", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -277,7 +277,7 @@ void BlFixed::setPrecision ( int prec )
         } // end if
         m_precision--;
     } // end while
-    blDebug ( "END BlFixed::setPrecision", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -320,7 +320,7 @@ void BlFixed::fromBlFixed ( const char *s )
     if ( value == 0 )
         m_precision = 1;
 
-    blDebug ( "END BlFixed::fromBlFixed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -370,7 +370,7 @@ BlFixed BlFixed::operator [] ( int p ) const
 {
     blDebug ( "BlFixed::operator[]" );
     BlFixed x ( 0, p );
-    blDebug ( "END BlFixed::operator[]" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return x;
 }
 

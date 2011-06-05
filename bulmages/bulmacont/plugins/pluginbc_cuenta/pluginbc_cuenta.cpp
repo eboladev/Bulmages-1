@@ -44,7 +44,7 @@ BcBulmaCont *g_bcont = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -73,7 +73,7 @@ int entryPoint ( BcBulmaCont *bcont )
     bcont->menuBar() ->insertMenu ( bcont->menuMaestro->menuAction(), pPluginMenu );
     bcont->toolBar->addAction ( accionA );
 
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -103,8 +103,8 @@ int BlAction_triggered(BlAction *accion) {
 **/
 Subform_Cuenta::Subform_Cuenta ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "Subform_Cuenta::Subform_Cuenta", 0 );
-    blDebug ( "END Subform_Cuenta::Subform_Cuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -112,8 +112,8 @@ Subform_Cuenta::Subform_Cuenta ( BlSubForm *parent ) : QObject ( parent )
 **/
 Subform_Cuenta::~Subform_Cuenta()
 {
-    blDebug ( "Subform_Cuenta::~Subform_Cuenta", 0 );
-    blDebug ( "END Subform_Cuenta::~Subform_Cuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -123,7 +123,7 @@ Subform_Cuenta::~Subform_Cuenta()
 **/
 void Subform_Cuenta::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "Subform_Cuenta::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm *sub = ( BlSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigo" );
     if ( header ) {
@@ -135,7 +135,7 @@ void Subform_Cuenta::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar cuenta" ) );
         } // end if
     } // end if
-    blDebug ( "END Subform_Cuenta::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -145,7 +145,7 @@ void Subform_Cuenta::s_pintaMenu ( QMenu *menu )
 **/
 void Subform_Cuenta::s_trataMenu ( QAction *action )
 {
-    blDebug ( "Subform_Cuenta::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm *sub = ( BlSubForm * ) parent();
     if ( action->text() == _ ( "Editar cuenta" ) ) {
         QString idcuenta = sub->dbValue ( "idcuenta" );
@@ -157,7 +157,7 @@ void Subform_Cuenta::s_trataMenu ( QAction *action )
         nuevoCuenta();
     } // end if
 
-    blDebug ( "END Subform_Cuenta::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -166,12 +166,12 @@ void Subform_Cuenta::s_trataMenu ( QAction *action )
 **/
 void Subform_Cuenta::editarCuenta ( QString idcuenta )
 {
-    blDebug ( "Subform_Cuenta::editarCuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->company(), 0 );
         nuevae->load ( idcuenta );
         ((BcBulmaCont *)g_main)->company() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
-    blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -180,12 +180,12 @@ void Subform_Cuenta::editarCuenta ( QString idcuenta )
 **/
 void Subform_Cuenta::nuevoCuenta( )
 {
-    blDebug ( "Subform_Cuenta::editarCuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->company(), 0 );
         ((BcBulmaCont *)g_main)->company() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->mui_padre->setEnabled(TRUE);
         nuevae->show();
-    blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -194,7 +194,7 @@ void Subform_Cuenta::nuevoCuenta( )
 **/
 void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
 {
-    blDebug ( "Subform_Cuenta::editarCuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 /*
     CuentaList *artlist = new CuentaList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -208,7 +208,7 @@ void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
 
     /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        blDebug ( "END BlSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
     } // end if
 
@@ -220,7 +220,7 @@ void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
     } // end if
     delete cur;
 */
-    blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -231,18 +231,18 @@ void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Subform_Cuenta *subformods = new Subform_Cuenta ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    blDebug("pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
+    blDebug ( Q_FUNC_INFO, 0 );
     int val = 0;
     if ( busq->tableName() == "cuenta" ) {
 
@@ -288,7 +288,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_fieldName == "codigo" || g_fieldName == "codigo1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -301,7 +301,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    blDebug ( "END pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return ret;
 }
@@ -311,7 +311,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de cuenta
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCuenta" || g_editor->objectName() == "EditNombreCliente" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -320,14 +320,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCuenta" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -335,13 +335,13 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    blDebug ( "END pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ret;
 }
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( "pluginbc_cuenta::BlSubForm_editFinished", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( sub->m_campoactual->fieldName() == "codigo" ) {
    QString query = "SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('" + sub->m_campoactual->text() + "%')";
 // blMsgInfo(query);
@@ -351,14 +351,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    blDebug ( "END pluginbc_cuenta::BlSubForm_editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
 {
-  blDebug("BlDbCompleterComboBox_textChanged", 0);
+  blDebug ( Q_FUNC_INFO, 0 );
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "cuenta") {
                 QString cadwhere = "";
@@ -404,7 +404,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
 
 int BcSubForm_pressedAsterisk ( BcSubForm *sub, void **ppCodigo )
 {
-    blDebug ( "BcSubForm_pressedAsterisk", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -423,7 +423,7 @@ int BcSubForm_pressedAsterisk ( BcSubForm *sub, void **ppCodigo )
 
     delete diag;
 
-    blDebug ( "END BfSubForm_pressedAsterisk", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

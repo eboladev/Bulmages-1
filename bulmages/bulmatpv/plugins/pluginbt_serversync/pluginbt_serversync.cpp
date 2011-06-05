@@ -62,7 +62,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     g_doc1->show();
 
-    blDebug ( "END pluginbt_serversync::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -77,7 +77,7 @@ int exitPoint ( BtBulmaTPV *tpv )
     
     delete g_doc1;
     
-    blDebug ( "END pluginbt_serversync::exitPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -89,7 +89,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     g_bud =  new ServerSync ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
-    blDebug ( "END pluginbt_serversync::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }

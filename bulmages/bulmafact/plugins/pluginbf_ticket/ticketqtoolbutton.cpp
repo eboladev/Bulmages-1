@@ -55,7 +55,7 @@ TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView 
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    blDebug ( "END TicketQToolButton::TicketQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -65,7 +65,7 @@ TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView 
 TicketQToolButton::~TicketQToolButton()
 {
     blDebug ( "TicketQToolButton::~TicketQToolButton", 0 );
-    blDebug ( "END TicketQToolButton::~TicketQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -82,7 +82,7 @@ void TicketQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END TicketQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -114,7 +114,7 @@ void TicketQToolButton::click()
 
     
     } // end if
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

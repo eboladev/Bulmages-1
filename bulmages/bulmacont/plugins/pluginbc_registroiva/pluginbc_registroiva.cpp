@@ -48,7 +48,7 @@ BcBulmaCont *g_bcont;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "Punto de entrada del plugin registroIVA", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -120,7 +120,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
-    blDebug ( "BcAsientoView_BcAsientoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QFrame *plug = l->findChild<QFrame *> ("mui_plugbotones");
 
@@ -136,7 +136,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 	} // end if
 	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     } // end if
-    blDebug ( "END BcAsientoView_BcAsientoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -149,7 +149,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 **/
 int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 {
-    blDebug ( "BcAsientoForm_guardaAsiento1_post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     
     BcCompany *companyact = as->companyact();
@@ -180,7 +180,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
     } // end while
     delete cursborr;
     
-    blDebug ( "END BcAsientoForm_guardaAsiento1_post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -193,7 +193,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 **/
 int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
 {
-    blDebug ( "BcAsientoSubForm_boton_iva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     as->save();
     try {
@@ -207,6 +207,6 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
         return 0;
     } // end try
     
-    blDebug ( "END BcAsientoSubForm_boton_iva", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

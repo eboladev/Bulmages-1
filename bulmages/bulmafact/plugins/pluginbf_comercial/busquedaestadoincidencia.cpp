@@ -31,7 +31,7 @@
 BusquedaEstadoIncidencia::BusquedaEstadoIncidencia ( QWidget *parent )
         : QComboBox ( parent )
 {
-    blDebug ( "BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_textos[0] = _ ( "Pendiente" );
     m_textos[1] = _ ( "Terminada" );
     m_textos[2] = _ ( "No quiere nada" );
@@ -53,7 +53,7 @@ BusquedaEstadoIncidencia::BusquedaEstadoIncidencia ( QWidget *parent )
     } // end while
 
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( s_activated ( int ) ) );
-    blDebug ( "END BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,8 +62,8 @@ BusquedaEstadoIncidencia::BusquedaEstadoIncidencia ( QWidget *parent )
 **/
 BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia()
 {
-    blDebug ( "BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0 );
-    blDebug ( "END BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,7 +73,7 @@ BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia()
 **/
 void BusquedaEstadoIncidencia::setestado ( QString estado )
 {
-    blDebug ( "BusquedaEstadoIncidencia::setestado", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int i = 0;
     while ( m_valores[i] != estado && i <= 5 ) {
         i ++;
@@ -82,6 +82,6 @@ void BusquedaEstadoIncidencia::setestado ( QString estado )
         setCurrentIndex ( i );
     else
         setCurrentIndex ( 0 );
-    blDebug ( "END BusquedaEstadoIncidencia::setestado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -33,7 +33,7 @@
 BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( "BcConfiguracionView::BcConfiguracionView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setTitleName ( _ ( "Configuracion" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
@@ -48,7 +48,7 @@ BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 
     mainCompany() ->insertWindow ( windowTitle(), this );
-    blDebug ( "END BcConfiguracionView::BcConfiguracionView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -57,9 +57,9 @@ BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
 **/
 BcConfiguracionView::~BcConfiguracionView()
 {
-    blDebug ( "BcConfiguracionView::~BcConfiguracionView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
-    blDebug ( "END BcConfiguracionView::~BcConfiguracionView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -70,7 +70,7 @@ BcConfiguracionView::~BcConfiguracionView()
 **/
 int BcConfiguracionView::inicializa()
 {
-    blDebug ( "BcConfiguracionView::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int num;
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
@@ -81,7 +81,7 @@ int BcConfiguracionView::inicializa()
     } // end if
     delete curs;
 
-    blDebug ( "END BcConfiguracionView::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -91,7 +91,7 @@ int BcConfiguracionView::inicializa()
 **/
 void BcConfiguracionView::on_mui_guardar_clicked()
 {
-    blDebug ( "BcConfiguracionView::on_mui_guardar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Iniciamos transaccion.
     mainCompany() ->begin();
     mui_subform->save();
@@ -99,7 +99,7 @@ void BcConfiguracionView::on_mui_guardar_clicked()
     /// Procesamos la transaccion.
     mainCompany() ->commit();
     dialogChanges_readValues();
-    blDebug ( "END BcConfiguracionView::on_mui_guardar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -109,7 +109,7 @@ void BcConfiguracionView::on_mui_guardar_clicked()
 **/
 bool BcConfiguracionView::close()
 {
-    blDebug ( "BcConfiguracionView::close", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::question ( this,
@@ -119,7 +119,7 @@ bool BcConfiguracionView::close()
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    blDebug ( "END BcConfiguracionView::close", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return QWidget::close();
 }
 
@@ -135,7 +135,7 @@ bool BcConfiguracionView::close()
 **/
 void BcConfiguracionView::on_mui_modificarplan_clicked()
 {
-    blDebug ( "BcConfiguracionView::on_mui_modificarplan_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
@@ -161,7 +161,7 @@ void BcConfiguracionView::on_mui_modificarplan_clicked()
         exit ( 1 );
     } // end if
     dialogChanges_readValues();
-    blDebug ( "END BcConfiguracionView::on_mui_modificarplan_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -173,8 +173,8 @@ void BcConfiguracionView::on_mui_modificarplan_clicked()
 **/
 BcConfiguracionSubForm::~BcConfiguracionSubForm()
 {
-    blDebug ( "BcConfiguracionSubForm::~BcConfiguracionSubForm", 0 );
-    blDebug ( "END BcConfiguracionSubForm::~BcConfiguracionSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -184,7 +184,7 @@ BcConfiguracionSubForm::~BcConfiguracionSubForm()
 **/
 BcConfiguracionSubForm::BcConfiguracionSubForm ( QWidget *parent ) : BcSubForm ( parent )
 {
-    blDebug ( "BcConfiguracionSubForm::BcConfiguracionSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView, "Nombre" );
@@ -192,7 +192,7 @@ BcConfiguracionSubForm::BcConfiguracionSubForm ( QWidget *parent ) : BcSubForm (
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
-    blDebug ( "END BcConfiguracionSubForm::BcConfiguracionSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -201,7 +201,7 @@ BcConfiguracionSubForm::BcConfiguracionSubForm ( QWidget *parent ) : BcSubForm (
 **/
 void BcConfiguracionSubForm::load()
 {
-    blDebug ( "BcConfiguracionSubForm::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( "SELECT *, nombre AS nombreorig FROM configuracion" );
 }
 

@@ -63,7 +63,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     mainCompany() ->insertWindow ( windowTitle(), this );
     load ( "1" );
     blScript(this);
-    blDebug ( "END VehiculoView::VehiculoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -74,7 +74,7 @@ VehiculoView::~VehiculoView()
 {
     blDebug ( "VehiculoView::~VehiculoView", 0 );
     mainCompany() ->removeWindow ( this );
-    blDebug ( "END VehiculoView::~VehiculoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -102,7 +102,7 @@ int VehiculoView::save()
         blMsgInfo ( _ ( "Error al guardar la ficha" ) );
         return -1;
     } // end try
-    blDebug ( "END VehiculoView::guardar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -129,7 +129,7 @@ int VehiculoView::load ( QString idvehiculo )
 
         dialogChanges_readValues();
         mainCompany() ->insertWindow ( windowTitle(), this );
-        blDebug ( "END VehiculoView::cargar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al cargar los datos en la ficha." ) );

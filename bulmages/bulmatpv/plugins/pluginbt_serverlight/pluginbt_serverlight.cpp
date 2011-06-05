@@ -37,7 +37,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale(LC_ALL, "");
     blBindTextDomain ("pluginbt_ServerLight", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
 
-    blDebug ( "END pluginbt_ServerLight::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -49,7 +49,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
     g_sl = new ServerLight ( etpv );
 
-    blDebug ( "END pluginbt_ServerLight::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

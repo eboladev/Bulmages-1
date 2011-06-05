@@ -35,7 +35,7 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
     m_comboRecordSet = NULL;
     m_null = TRUE;
 
-    blDebug ( "END BlComboBoxDelegate::BlComboBoxDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -47,7 +47,7 @@ BlComboBoxDelegate::~BlComboBoxDelegate()
     blDebug ( "BlComboBoxDelegate::~BlComboBoxDelegate", 0 );
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    blDebug ( "END BlComboBoxDelegate::~BlComboBoxDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -109,7 +109,7 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
     } // end while
 
     setCurrentIndex ( i1 );
-    blDebug ( "END BlComboBoxDelegate::setId", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -121,7 +121,7 @@ void BlComboBoxDelegate::setFieldValue ( QString id )
 {
     blDebug ( "BlComboBoxDelegate::setFieldValue", 0 );
     setId ( id );
-    blDebug ( "END BlComboBoxDelegate::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -149,7 +149,7 @@ QString BlComboBoxDelegate::id()
         } // end if
 
     } // end if
-    blDebug ( "END BlComboBoxDelegate::id", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -176,14 +176,14 @@ QString BlComboBoxDelegate::id(QString value)
         } // end while      
       
        if (cad == value) {
-	  blDebug ( "END BlComboBoxDelegate::id", 0, value );
+          blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Valor: '$1'")).arg(value) );
 	  return m_comboRecordSet->value( m_fieldId );
        } // end if
        m_comboRecordSet->nextRecord();
     } // end while
     
 
-    blDebug ( "END BlComboBoxDelegate::id", 0, value );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -194,7 +194,7 @@ QString BlComboBoxDelegate::id(QString value)
 QString BlComboBoxDelegate::fieldValue()
 {
     blDebug ( "BlComboBoxDelegate::fieldValue", 0 );
-    blDebug ( "END BlComboBoxDelegate::fieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return id();
 }
 

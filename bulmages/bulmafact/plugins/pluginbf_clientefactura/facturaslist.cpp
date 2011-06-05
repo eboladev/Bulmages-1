@@ -44,7 +44,7 @@
 FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "FacturasList::FacturasList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "FacturasList_FacturasList", this );
@@ -61,7 +61,7 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END FacturasList::FacturasList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -76,7 +76,7 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "FacturasList::FacturasList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "FacturasList_FacturasList", this );
@@ -127,7 +127,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     trataPermisos ( "factura" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END FacturasList::FacturasList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -137,7 +137,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
 **/
 void FacturasList::iniciaForm()
 {
-    blDebug ( "FacturasList::iniciaForm" );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "FacturasList_iniciaForm", this );
     if ( res != 0 )
@@ -146,7 +146,7 @@ void FacturasList::iniciaForm()
     mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
     mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
     mui_procesada->setCurrentIndex ( 2 );
-    blDebug ( "END FacturasList::iniciaForm" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -156,8 +156,8 @@ void FacturasList::iniciaForm()
 **/
 FacturasList::~FacturasList()
 {
-    blDebug ( "FacturasList::~FacturasList", 0 );
-    blDebug ( "END FacturasList::~FacturasList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -167,7 +167,7 @@ FacturasList::~FacturasList()
 **/
 void FacturasList::presentar()
 {
-    blDebug ( "FacturasList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->load ( "SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
 
@@ -182,7 +182,7 @@ void FacturasList::presentar()
         delete cur;
     } // end if
 
-    blDebug ( "END FacturasList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -193,7 +193,7 @@ void FacturasList::presentar()
 **/
 QString FacturasList::generaFiltro()
 {
-    blDebug ( "FacturasList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -235,7 +235,7 @@ QString FacturasList::generaFiltro()
     } // end if
     
     
-    blDebug ( "END FacturasList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -250,7 +250,7 @@ QString FacturasList::generaFiltro()
 **/
 void FacturasList::editar ( int row )
 {
-    blDebug ( "FacturasList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idfactura = mui_list->dbValue ( QString ( "idfactura" ), row );
     if ( editMode() ) {
         FacturaView * prov = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
@@ -263,7 +263,7 @@ void FacturasList::editar ( int row )
     } else {
         emit ( selected ( mdb_idfactura ) );
     } // end if
-    blDebug ( "END FacturasList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -275,9 +275,9 @@ void FacturasList::editar ( int row )
 **/
 void FacturasList::imprimir()
 {
-    blDebug ( "FacturasList::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Facturas a clientes" ) );
-    blDebug ( "FacturasList::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -292,7 +292,7 @@ void FacturasList::imprimir()
 **/
 void FacturasList::remove()
 {
-    blDebug ( "FacturasList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -311,7 +311,7 @@ void FacturasList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar la factura a cliente" ), this );
     } // end try
-    blDebug ( "END FacturasList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -321,7 +321,7 @@ void FacturasList::remove()
 **/
 void FacturasList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "FacturasList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
@@ -348,7 +348,7 @@ void FacturasList::setMainCompany ( BfCompany *comp )
     mui_almacen->setId("");
 
     
-    blDebug ( "END FacturasList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -358,8 +358,8 @@ void FacturasList::setMainCompany ( BfCompany *comp )
 **/
 QString FacturasList::idfactura()
 {
-    blDebug ( "FacturasList::idfacturae", 0 );
-    blDebug ( "END FacturasList::idfactura", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idfactura;
 }
 
@@ -370,9 +370,9 @@ QString FacturasList::idfactura()
 **/
 void FacturasList::setidcliente ( QString val )
 {
-    blDebug ( "FacturasList::setidcliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_cliente->setId ( val );
-    blDebug ( "END FacturasList::setidcliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -382,9 +382,9 @@ void FacturasList::setidcliente ( QString val )
 **/
 void FacturasList::setidarticulo ( QString val )
 {
-    blDebug ( "FacturasList::setidarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_articulo->setidarticulo ( val );
-    blDebug ( "END FacturasList::setidarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -393,7 +393,7 @@ void FacturasList::setidarticulo ( QString val )
 **/
 void FacturasList::crear()
 {
-    blDebug ( "FacturasList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     FacturaView *fv = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->m_pWorkspace->addSubWindow ( fv );
     fv->inicializar();
@@ -407,7 +407,7 @@ void FacturasList::crear()
     
     fv->show();
     fv->mui_descfactura->setFocus ( Qt::OtherFocusReason );
-    blDebug ( "END FacturasList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// =============================================================================
@@ -421,7 +421,7 @@ void FacturasList::crear()
 **/
 FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( "FacturasListSubform::FacturasListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "FacturasListSubform_FacturasListSubform", this );
     if ( res != 0 )
@@ -450,7 +450,7 @@ FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfS
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END FacturasListSubform::FacturasListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -459,8 +459,8 @@ FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfS
 **/
 FacturasListSubform::~FacturasListSubform()
 {
-    blDebug ( "FacturasListSubform::~FacturasListSubform", 0 );
-    blDebug ( "END FacturasListSubform::~FacturasListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -469,7 +469,7 @@ FacturasListSubform::~FacturasListSubform()
 **/
 void FacturasListSubform::load()
 {
-    blDebug ( "FacturasListSubform::cargar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString SQLQuery = "SELECT * FROM factura";
     BlSubForm::load ( SQLQuery );
 }
@@ -481,8 +481,8 @@ void FacturasListSubform::load()
 **/
 void FacturasListSubform::load ( QString query )
 {
-    blDebug ( "FacturasListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( query );
-    blDebug ( "END FacturasListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -39,7 +39,7 @@
 ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ConvocatoriaView::ConvocatoriaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -67,7 +67,7 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
-    blDebug ( "END ConvocatoriaView::ConvocatoriaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -75,8 +75,8 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
 */
 ConvocatoriaView::~ConvocatoriaView()
 {
-    blDebug ( "ConvocatoriaView::~ConvocatoriaView", 0 );
-    blDebug ( "END ConvocatoriaView::~ConvocatoriaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -87,7 +87,7 @@ QString ConvocatoriaView::templateName ( void )
 
 void ConvocatoriaView::imprimir()
 {
-    blDebug ( "ConvocatoriaView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
@@ -103,15 +103,15 @@ void ConvocatoriaView::imprimir()
     } // end if
     BfForm::imprimir();
 
-    blDebug ( "END ConvocatoriaView::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 int ConvocatoriaView::afterSave()
 {
-    blDebug ( " ConvocatoriaView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
-    blDebug ( "END ConvocatoriaView::afterSave", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

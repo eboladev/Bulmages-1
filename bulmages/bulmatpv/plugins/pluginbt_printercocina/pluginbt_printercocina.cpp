@@ -57,7 +57,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
     item->addDbField ( "unidadescocina", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Unidades en Cocina" ) );
     item->setDbValue("unidadescocina", "0");
     
-    blDebug ( "END PluginBt_PrinterCocina::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -277,7 +277,7 @@ int BtTicket_imprimir_Post(BtTicket *tick)
 {
     blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
     impresionCocina(tick);
-    blDebug ( "END PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 1;
 }
 
@@ -285,7 +285,7 @@ int Abrevs_on_mui_aparcar_clicked( Abrevs *av)
 {
     blDebug ( "PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
     impresionCocina(((BtCompany *)av->mainCompany())->ticketActual());
-    blDebug ( "END PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -299,6 +299,6 @@ int ticket_aparcado_remotamente(BtTicket *tick) {
 int BtCompany_cobrar_1(BtCompany *comp) {
     blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
     impresionCocina(comp->ticketActual());
-    blDebug ( "END PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

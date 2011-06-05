@@ -55,7 +55,7 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Listados->addAction ( accionA );
 
     } // end if
-    blDebug ( "END Punto de Entrada de PluginBf_SeriesFactura\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

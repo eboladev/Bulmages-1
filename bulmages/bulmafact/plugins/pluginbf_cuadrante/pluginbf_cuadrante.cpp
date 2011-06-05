@@ -43,7 +43,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Cuadrante", "0.9.3-0002");
@@ -80,31 +80,27 @@ int entryPoint ( BfBulmaFact *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
 
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ("BlAction_Triggered", 0 );
+    blDebug ( Q_FUNC_INFO, 0, "pluginbf_cuadrante" );
     if (accion->objectName() == "mui_actionCuadranteSemanal") {
-        blDebug ( "mui_actionCuadranteSemanal", 0);
         CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) g_bges->company(), 0 );
         g_bges->company()->pWorkspace() ->addSubWindow ( cuad );
         cuad->show();
-        blDebug ( "END mui_actionCuadranteSemanal", 0);
     } // end if
     if (accion->objectName() == "mui_actionCuadranteDiario") {
-        blDebug ( "mui_actionCuadranteDiario", 0);
         CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) g_bges->company(), 0 );
         g_bges->company()->pWorkspace() ->addSubWindow ( cuad );
         cuad->show();
-        blDebug ( "END mui_actionCuadranteDiario", 0);
     } // end if
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
-    blDebug ("END BlAction_Triggered", 0 );
 }
 
 
@@ -116,7 +112,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
-    blDebug ( "esxtoy en la clase almacen", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     alm->addDbField ( "aperturaalmacen", BlDbField::DbVarChar, BlDbField::DbNothing,  "Apertura Manyana" );
     alm->addDbField ( "cierrealmacen", BlDbField::DbVarChar, BlDbField::DbNothing, "Cierre Manyana" );
@@ -206,7 +202,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 **/
 int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
 {
-    blDebug ( "TrabajadorView_TrabajadorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_ausencias" ) );
     l->setMainCompany ( trab->mainCompany() );
@@ -223,7 +219,7 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     trab->mui_tab->addTab ( l, "Ausencias" );
     trab->dialogChanges_setExcludedObject ( l->mui_list );
 
-    blDebug ( "END TrabajadorView_TrabajadorView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -235,13 +231,13 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
-    blDebug ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BfSubForm *l = trab->findChild<BfSubForm *> ( "m_ausencias" );
     if (l) {
       l->load ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->mdb_idtrabajador );
     } // end if
-    blDebug ( "END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

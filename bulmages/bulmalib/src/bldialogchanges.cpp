@@ -36,7 +36,7 @@ BlDialogChanges::BlDialogChanges ( QObject *ob )
 {
     blDebug ( "BlDialogChanges::BlDialogChanges", 0 );
     m_obje = ob;
-    blDebug ( "END BlDialogChanges::BlDialogChanges", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -46,7 +46,7 @@ BlDialogChanges::BlDialogChanges ( QObject *ob )
 BlDialogChanges::~BlDialogChanges()
 {
     blDebug ( "BlDialogChanges::~BlDialogChanges", 0 );
-    blDebug ( "END BlDialogChanges::~BlDialogChanges", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -69,7 +69,7 @@ bool BlDialogChanges::dialogChanges_isObjectExcluded ( QObject *item )
             excluido = TRUE;
         } // end if
     } // end while
-    blDebug ( "END BlDialogChanges::dialogChanges_isObjectExcluded", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return excluido;
 }
 
@@ -155,9 +155,9 @@ void BlDialogChanges::dialogChanges_readValues()
 	  } // end while
 
         m_valorinicial = calculateValues();
-        blDebug ( "END BlDialogChanges::dialogChanges_readValues", 0, m_valorinicial.toAscii() );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
-        blDebug ( "ERROR BlDialogChanges::dialogChanges_readValues", 0, " error en el calculo" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error de calculo de valores") );
         return;
     } // end try
 }
@@ -171,7 +171,7 @@ bool BlDialogChanges::dialogChanges_isChanged()
 {
     blDebug ( "BlDialogChanges::dialogChanges_isChanged", 0 );
     QString valorfinal = calculateValues();
-    blDebug ( "END BlDialogChanges::dialogChanges_isChanged", 0, m_valorinicial + "==== " + valorfinal );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( m_valorinicial != valorfinal );
 }
 
@@ -191,7 +191,7 @@ QString BlDialogChanges::calculateValues()
     values += retrieveValues ( "QCheckBox" );
     values += retrieveValues ( "BlDateSearch" );
 
-    blDebug ( "END BlDialogChanges::calculateValues", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return values;
 }
 
@@ -204,7 +204,7 @@ void BlDialogChanges::dialogChanges_setExcludedObject ( QObject *objetoexcluido 
 {
     blDebug ( "BlDialogChanges::dialogChanges_setExcludedObject", 0 );
     m_listaExcluidos.append ( objetoexcluido );
-    blDebug ( "END BlDialogChanges::dialogChanges_setExcludedObject", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -315,10 +315,10 @@ QString BlDialogChanges::retrieveValues ( QString qsWidget )
 		} // end for
 	  } // end if
 
-        blDebug ( "END BlDialogChanges::retrieveValues", 0, values );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return values;
     } catch ( ... ) {
-        blDebug ( "ERROR BlDialogChanges::retrieveValue", 2, "error en el calculo" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Erro de calculo de valores") );
         return "";
     } // end try
 }

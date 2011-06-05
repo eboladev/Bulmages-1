@@ -53,7 +53,7 @@ ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( "END_ListSerieFacturaView::ListSerieFacturaView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -63,7 +63,7 @@ ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
 ListSerieFacturaView::~ListSerieFacturaView()
 {
     blDebug ( "ListSerieFacturaView::~ListSerieFacturaView", 0 );
-    blDebug ( "END ListSerieFacturaView::~ListSerieFacturaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -81,6 +81,6 @@ ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : BfSubForm
     addSubFormHeader ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo serie factura" ) );
     addSubFormHeader ( "descserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion serie factura" ) );
     setInsert ( TRUE );
-    blDebug ( "END ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

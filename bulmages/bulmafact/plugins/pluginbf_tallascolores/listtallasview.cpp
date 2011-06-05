@@ -54,7 +54,7 @@ ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( "END ListTallasView::ListTallasView", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -71,7 +71,7 @@ void ListTallasView::on_mui_aceptar_clicked()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los colores" ), this );
     } // end try
-    blDebug ( "END ListTallasView::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -82,7 +82,7 @@ void ListTallasView::on_mui_aceptar_clicked()
 ListTallasView::~ListTallasView()
 {
     blDebug ( "ListTallasView::~ListTallasView", 0 );
-    blDebug ( "END ListTallasView::~ListTallasView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -100,7 +100,7 @@ ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id color" ) );
     addSubFormHeader ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre talla" ) );
     setInsert ( TRUE );
-    blDebug ( "END ListTallasSubForm::ListTallasSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -112,6 +112,6 @@ void ListTallasSubForm::load()
 {
     blDebug ( "ListTallasSubForm::cargar", 0 );
     BlSubForm::load ( "SELECT * FROM tc_talla" );
-    blDebug ( "END ListTallasSubForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -42,7 +42,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Pedidos de Clientes\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -157,7 +157,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
 
-    blDebug ( "PluginPedidoCliente_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     GenPedQToolButton *mui_exporta_efactura2 = new GenPedQToolButton ( l, l->mui_plugbotones );
 
@@ -171,7 +171,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( "END PluginPedidoCliente_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }

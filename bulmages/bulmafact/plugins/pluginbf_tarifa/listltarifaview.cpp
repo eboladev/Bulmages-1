@@ -41,7 +41,7 @@ ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Codigo completo del articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Nombre del articulo" ) );
     setInsert ( FALSE );
-    blDebug ( "END ListLTarifaView::ListLTarifaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

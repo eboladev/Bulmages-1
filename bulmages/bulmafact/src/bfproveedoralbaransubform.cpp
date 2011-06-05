@@ -62,7 +62,7 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm_Post", this );
-    blDebug ( "END BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -75,7 +75,7 @@ void BfProveedorAlbaranSubForm::load ( QString idalbaranp )
     blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idalbaranp = idalbaranp;
     BlSubForm::load ( "SELECT *, (cantlalbaranp * pvplalbaranp)::NUMERIC(12,2) AS totallalbaranp FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
-    blDebug ( "END ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

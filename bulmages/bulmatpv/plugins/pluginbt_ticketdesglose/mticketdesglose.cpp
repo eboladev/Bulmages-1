@@ -20,14 +20,14 @@ MTicketDesglose::MTicketDesglose ( BtCompany *emp, QWidget *parent ) : QTextBrow
     blDebug ( "MTicketDesglose::MTicketDesglose", 0 );
 //    emp->pWorkspace() ->addSubWindow ( this );
 //    setWindowTitle ( "Ticket" );
-    blDebug ( "END MTicketDesglose::MTicketDesglose", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 MTicketDesglose::~MTicketDesglose()
 {
     blDebug ( "MTicketDesglose::~MTicketDesglose", 0 );
-    blDebug ( "END MTicketDesglose::~MTicketDesglose", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -177,6 +177,6 @@ void MTicketDesglose::pintar()
 // ======================================
     /// Pintamos el HTML en el textBrowser
     setText ( html1 );
-    blDebug ( "END MTicketDesglose::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

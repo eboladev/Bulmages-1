@@ -38,7 +38,7 @@ BfInformeCliente::BfInformeCliente ( BfCompany *comp )
 {
     blDebug ( "BfInformeCliente::BfInformeCliente", 0 );
     companyact = comp;
-    blDebug ( "END BfInformeCliente::BfInformeCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -48,7 +48,7 @@ BfInformeCliente::BfInformeCliente ( BfCompany *comp )
 BfInformeCliente::~BfInformeCliente()
 {
     blDebug ( "BfInformeCliente::~BfInformeCliente", 0 );
-    blDebug ( "END BfInformeCliente::~BfInformeCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -60,7 +60,7 @@ void BfInformeCliente::setCliente ( QString val )
 {
     blDebug ( "BfInformeCliente::setCliente", 0 );
     m_idcliente = val;
-    blDebug ( "END BfInformeCliente::setCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -299,7 +299,7 @@ void BfInformeCliente::generarInforme()
         file.close();
     } // end if
     blCreateAndLoadPDF ( "informecliente" );
-    blDebug ( "END BfInformeCliente::generarInforme", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

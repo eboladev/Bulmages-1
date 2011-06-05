@@ -39,7 +39,7 @@
 CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "CobrosList::CobrosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "CobrosList_CobrosList", this );
@@ -59,7 +59,7 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     mui_tipocobro->setCurrentIndex ( 1 );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END CobrosList::CobrosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -70,7 +70,7 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "CobrosList::CobrosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "CobrosList_CobrosList", this );
@@ -99,7 +99,7 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     trataPermisos ( "cobro" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END CobrosList::CobrosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -107,8 +107,8 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
 */
 CobrosList::~CobrosList()
 {
-    blDebug ( "CobrosList::~CobrosList", 0 );
-    blDebug ( "END CobrosList::~CobrosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -118,7 +118,7 @@ CobrosList::~CobrosList()
 */
 void CobrosList::presentar()
 {
-    blDebug ( "CobrosList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mainCompany() != NULL ) {
 	QString query = "SELECT * FROM cobro LEFT JOIN cliente ON cliente.idcliente = cobro.idcliente LEFT JOIN forma_pago ON cobro.idforma_pago = forma_pago.idforma_pago LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador WHERE 1 = 1 " + generaFiltro();
         mui_list->load ( query );
@@ -126,7 +126,7 @@ void CobrosList::presentar()
         BlFixed total = mui_list->sumarCampo ( "cantcobro" );
         m_total->setText ( total.toQString() );
     } // end if
-    blDebug ( "END CobrosList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -134,7 +134,7 @@ void CobrosList::presentar()
 */
 QString CobrosList::generaFiltro()
 {
-    blDebug ( "CobrosList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(comentcobro) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -163,7 +163,7 @@ QString CobrosList::generaFiltro()
     if ( mui_formapago->id() != "" )
         filtro += " AND cobro.idforma_pago = " + mui_formapago->id() ;
 
-    blDebug ( "END CobrosList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -174,7 +174,7 @@ QString CobrosList::generaFiltro()
 */
 void CobrosList::crear()
 {
-    blDebug ( "CobrosList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     CobroView *cv = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( cv );
     cv->pintar();
@@ -186,7 +186,7 @@ void CobrosList::crear()
     } // end if
 
     cv->show();
-    blDebug ( "CobrosList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 }
 
 
@@ -194,9 +194,9 @@ void CobrosList::crear()
 */
 void CobrosList::imprimir()
 {
-    blDebug ( "CobrosList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Cobros a clientes" ) );
-    blDebug ( "END CobrosList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -208,7 +208,7 @@ void CobrosList::imprimir()
 */
 void CobrosList::remove()
 {
-    blDebug ( "CobrosList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -227,7 +227,7 @@ void CobrosList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    blDebug ( "END:CobrosList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -237,7 +237,7 @@ void CobrosList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void CobrosList::editar ( int )
 {
-    blDebug ( "CobrosList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mdb_idcobro = mui_list->dbValue ( "idcobro" );
         if ( editMode() ) {
@@ -254,7 +254,7 @@ void CobrosList::editar ( int )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    blDebug ( "END CobrosList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -263,7 +263,7 @@ void CobrosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void CobrosList::submenu ( const QPoint & )
 {
-    blDebug ( "CobrosList::submenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -276,7 +276,7 @@ void CobrosList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    blDebug ( "END CobrosList::submenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -294,8 +294,8 @@ void CobrosList::setMainCompany ( BfCompany *comp )
 **/
 QString CobrosList::idcobro()
 {
-    blDebug ( "CobrosList::idcobro", 0 );
-    blDebug ( "END CobrosList::idcobro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idcobro;
 }
 
@@ -304,9 +304,9 @@ QString CobrosList::idcobro()
 **/
 void CobrosList::setidcliente ( QString val )
 {
-    blDebug ( "CobrosList::setidcliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_cliente->setId ( val );
-    blDebug ( "END CobrosList::setidcliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// =============================================================================
@@ -317,7 +317,7 @@ void CobrosList::setidcliente ( QString val )
 */
 CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "CobrosListSubForm::CobrosListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "CobrosListSubForm_CobrosListSubForm", this );
     if ( res != 0 )
@@ -343,13 +343,13 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END CobrosListSubForm::CobrosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 CobrosListSubForm::~CobrosListSubForm()
 {
-    blDebug ( "CobrosListSubForm::~CobrosListSubForm", 0 );
-    blDebug ( "END CobrosListSubForm::~CobrosListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

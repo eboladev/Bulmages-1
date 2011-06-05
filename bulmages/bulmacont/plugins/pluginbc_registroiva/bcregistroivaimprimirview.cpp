@@ -40,10 +40,10 @@ extern BcModelo300Imprimir2PS *modelo;
 BcRegistroIVAImprimirView::BcRegistroIVAImprimirView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( "BcRegistroIVAImprimirView::BcRegistroIVAImprimirView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     fichero = NULL;
-    blDebug ( "END BcRegistroIVAImprimirView::BcRegistroIVAImprimirView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -52,8 +52,8 @@ BcRegistroIVAImprimirView::BcRegistroIVAImprimirView ( BcCompany *emp, QWidget *
 **/
 BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView()
 {
-    blDebug ( "BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView", 0 );
-    blDebug ( "END BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,7 +62,7 @@ BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView()
 **/
 void BcRegistroIVAImprimirView::accept()
 {
-    blDebug ( "BcRegistroIVAImprimirView::accept", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( radiotexto->isChecked() )
         presentar ( "txt" );
     if ( radiohtml->isChecked() )
@@ -73,7 +73,7 @@ void BcRegistroIVAImprimirView::accept()
         /// (listivaview--->modelo, en vez de BcRegistroIVAImprimirView--->modelo)
         /// modelo->exec();
     } // end if
-    blDebug ( "END BcRegistroIVAImprimirView::accept", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -84,10 +84,10 @@ void BcRegistroIVAImprimirView::accept()
 **/
 void BcRegistroIVAImprimirView::inicializa1 ( QString finicial1, QString ffinal1 )
 {
-    blDebug ( "BcRegistroIVAImprimirView::inicializa1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     fechainicial1->setText ( finicial1 );
     fechafinal1->setText ( ffinal1 );
-    blDebug ( "END BcRegistroIVAImprimirView::inicializa1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -97,7 +97,7 @@ void BcRegistroIVAImprimirView::inicializa1 ( QString finicial1, QString ffinal1
 **/
 void BcRegistroIVAImprimirView::presentar ( const char *tipus )
 {
-    blDebug ( "BcRegistroIVAImprimirView::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 #ifndef Q_OS_WIN32
     int txt, html, txtapren, htmlapren;
     QString data;
@@ -329,6 +329,6 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
     }
 
 #endif
-    blDebug ( "END BcRegistroIVAImprimirView::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

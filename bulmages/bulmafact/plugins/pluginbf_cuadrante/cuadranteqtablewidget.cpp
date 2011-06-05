@@ -40,9 +40,9 @@ un eventHandler especifico
 **/
 CuadranteQTableWidget::CuadranteQTableWidget ( QWidget *parent ) : QTableWidget ( parent )
 {
-    blDebug ( "CuadranteQTableWidget::CuadranteQTableWidget", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( contextMenuRequested ( int, int, const QPoint & ) ), this, SLOT ( on_contextMenuRequested ( int, int, const QPoint & ) ) );
-    blDebug ( "END CuadranteQTableWidget::CuadranteQTableWidget", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -51,7 +51,7 @@ CuadranteQTableWidget::CuadranteQTableWidget ( QWidget *parent ) : QTableWidget 
 **/
 CuadranteQTableWidget::~CuadranteQTableWidget()
 {
-    blDebug ( "END ~CuadranteQTableWidget", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -61,9 +61,9 @@ CuadranteQTableWidget::~CuadranteQTableWidget()
 **/
 void CuadranteQTableWidget::dragEnterEvent ( QDragEnterEvent *event )
 {
-    blDebug ( "CuadranteQTableWidget::dragEnterEvent", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     event->acceptProposedAction();
-    blDebug ( "END CuadranteQTableWidget::dragEnterEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,9 +73,9 @@ void CuadranteQTableWidget::dragEnterEvent ( QDragEnterEvent *event )
 **/
 void CuadranteQTableWidget::dragMoveEvent ( QDragMoveEvent *event )
 {
-    blDebug ( "CuadranteQTableWidget::dragMoveEvent", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     event->acceptProposedAction();
-    blDebug ( "END CuadranteQTableWidget::dragMoveEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -84,9 +84,9 @@ void CuadranteQTableWidget::dragMoveEvent ( QDragMoveEvent *event )
 **/
 void CuadranteQTableWidget::dropEvent ( QDropEvent *event )
 {
-    blDebug ( "CuadranteQTableWidget::dropEvent", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QTableWidget::dropEvent ( event );
-    blDebug ( "END CuadranteQTableWidget::dropEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -99,19 +99,20 @@ void CuadranteQTableWidget::dropEvent ( QDropEvent *event )
 **/
 bool CuadranteQTableWidget::dropMimeData ( int row, int column, const QMimeData *data, Qt::DropAction )
 {
-    blDebug ( "CuadranteQTableWidget::dropMimeData", 0  );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( data->hasText() ) {
         ( ( CuadranteQTextDocument * ) cellWidget ( row, column ) ) ->addTrabajador ( data->text() );
     }
-    blDebug ( "END CuadranteQTableWidget::dropMimeData", 0  );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( TRUE );
 }
 
 
 void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &  )
 {
-    blDebug ( "CuadranteQTableWidget::contextMenuRequested", 2 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -126,11 +127,11 @@ void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &
 **/
 CuadranteQTextDocument::CuadranteQTextDocument ( BfCompany *emp, QWidget *parent ) : QLabel ( parent ),/* QTableWidgetItem(QTableWidgetItem::UserType),*/  BlMainCompanyPointer ( emp )
 {
-    blDebug ( "CuadranteQTextDocument::CuadranteQTextDocument", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &  ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint &  ) ) );
     resize ( 400, 400 );
-    blDebug ( "END CuadranteQTextDocument::CuadranteQTextDocument", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -230,7 +231,8 @@ void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent *  )
 **/
 CuadranteQTextDocument::~CuadranteQTextDocument()
 {
-    blDebug ( "~CuadranteQTextDocument", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -240,7 +242,7 @@ CuadranteQTextDocument::~CuadranteQTextDocument()
 **/
 void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
 {
-    blDebug ( "CuadranteQTextDocument::addTrabajador", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlDbRecordSet *cur = NULL;
     try {
         QString horain = "08:00";
@@ -269,13 +271,13 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
         mainCompany() ->runQuery ( query1 );
         mainCompany() ->commit();
         pintaCuadrante ( mdb_idalmacen, mdb_fechacuadrante );
-        blDebug ( "END CuadranteQTextDocument::addTrabajador", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         mainCompany() ->rollback();
         if ( cur ) delete cur;
         blMsgInfo ( "Error al agregar el trabajador al cuadrante" );
     } // end try
-    blDebug ( "END CuadranteQTextDocument::addTrabajador", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -287,7 +289,7 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
 **/
 void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date )
 {
-    blDebug ( "CuadranteQTextDocument::setAlmFecha", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlDbRecordSet *cur1 = NULL;
     try {
         /// Comprobamos que exista el cuadrante y si no existe lo creamos.
@@ -307,7 +309,7 @@ void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date 
         if ( cur1 ) delete cur1;
         return;
     } // end try
-    blDebug ( "END CuadranteQTextDocument::setAlmFecha", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -318,7 +320,7 @@ void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date 
 **/
 void CuadranteQTextDocument::pintaCuadrante ( QString idalmacen, const QDate &date )
 {
-    blDebug ( "CuadranteQTextDocument::pintaCuadrante", 0, idalmacen );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idalmacen = idalmacen;
     mdb_fechacuadrante = date;
 
@@ -329,7 +331,7 @@ void CuadranteQTextDocument::pintaCuadrante ( QString idalmacen, const QDate &da
     QLabel::setAlignment ( Qt::AlignTop );
     QLabel::setText ( imp->m_html );
     mdb_idcuadrante = imp->mdb_idcuadrante;
-    blDebug ( "END CuadranteQTextDocument::pintaCuadrante", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return;
 }
 
@@ -340,8 +342,8 @@ void CuadranteQTextDocument::pintaCuadrante ( QString idalmacen, const QDate &da
 **/
 QString CuadranteQTextDocument::idcuadrante()
 {
-    blDebug ( "CuadranteQTextDocument::idcuadrante", 0 );
-    blDebug ( "END CuadranteQTextDocument::idcuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idcuadrante;
 }
 
@@ -352,8 +354,8 @@ QString CuadranteQTextDocument::idcuadrante()
 **/
 QDate CuadranteQTextDocument::fechacuadrante()
 {
-    blDebug ( "CuadranteQTextDocument::fechacuadrante", 0 );
-    blDebug ( "END CuadranteQTextDocument::fechacuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_fechacuadrante;
 }
 
@@ -364,8 +366,8 @@ QDate CuadranteQTextDocument::fechacuadrante()
 **/
 QString CuadranteQTextDocument::idalmacen()
 {
-    blDebug ( "CuadranteQTextDocument::idalmacen", 0 );
-    blDebug ( "END CuadranteQTextDocument::idalmacen", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idalmacen;
 }
 
@@ -375,9 +377,9 @@ QString CuadranteQTextDocument::idalmacen()
 **/
 void CuadranteQTextDocument::refresh()
 {
-    blDebug ( "CuadranteQTextDocument::refresh", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     pintaCuadrante ( mdb_idalmacen, mdb_fechacuadrante );
-    blDebug ( "END CuadranteQTextDocument::refresh", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -386,9 +388,9 @@ void CuadranteQTextDocument::refresh()
 **/
 void CuadranteQTextDocument::setText ( QString text )
 {
-    blDebug ( "CuadranteQTextDocument::setText", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QLabel::setText ( text );
-    blDebug ( "END CuadranteQTextDocument::setText", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -397,9 +399,9 @@ void CuadranteQTextDocument::setText ( QString text )
 **/
 void CuadranteQTextDocument::setidcuadrante ( QString text )
 {
-    blDebug ( "CuadranteQTextDocument::setidcuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idcuadrante = text;
-    blDebug ( "END CuadranteQTextDocument::setidcuadrante", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -408,7 +410,7 @@ void CuadranteQTextDocument::setidcuadrante ( QString text )
 **/
 const QString CuadranteQTextDocument::impresion()
 {
-    blDebug ( "CuadranteQTextDocument::impresion", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     try {
         QString html = "";
@@ -448,7 +450,7 @@ const QString CuadranteQTextDocument::impresion()
 
         html += "</td>\n";
 
-        blDebug ( "END CuadranteQTextDocument::impresion", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return html;
     } catch ( ... ) {} // end try
     return "";
@@ -464,8 +466,8 @@ const QString CuadranteQTextDocument::impresion()
 **/
 ImpCuadrante::ImpCuadrante ( BfCompany *emp ) :  BlMainCompanyPointer ( emp )
 {
-    blDebug ( "ImpCuadrante::ImpCuadrante", 0 );
-    blDebug ( "END ImpCuadrante::ImpCuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -474,7 +476,8 @@ ImpCuadrante::ImpCuadrante ( BfCompany *emp ) :  BlMainCompanyPointer ( emp )
 **/
 ImpCuadrante::~ImpCuadrante()
 {
-    blDebug ( "~ImpCuadrante", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -485,7 +488,7 @@ ImpCuadrante::~ImpCuadrante()
 **/
 void ImpCuadrante::generar()
 {
-    blDebug ( "ImpCuadrante::generar", 0, mdb_idalmacen );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlDbRecordSet *cur = NULL;
     BlDbRecordSet *cur1 = NULL;
 
@@ -540,7 +543,7 @@ void ImpCuadrante::generar()
 
         html += "</td></tr></table>";
         m_html = html;
-        blDebug ( "END ImpCuadrante::generar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( "Error en el pintado" );
         if ( cur ) delete cur;
@@ -560,7 +563,7 @@ void ImpCuadrante::generar()
 **/
 bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QString horain, QString horafin )
 {
-    blDebug ( "ImpCuadrante::buscaConflictos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     bool conflicto = FALSE;
     QString query = "SELECT * FROM horario NATURAL LEFT JOIN cuadrante  WHERE idtrabajador = " + idtrabajador;
@@ -588,6 +591,6 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
         delete cur;
     } // end if
 
-    blDebug ( "END ImpCuadrante::buscaConflictos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return conflicto;
 }

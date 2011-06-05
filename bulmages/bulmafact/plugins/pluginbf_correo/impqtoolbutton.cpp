@@ -47,13 +47,13 @@
 **/
 EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "EmailQToolButton::EmailQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    blDebug ( "END EmailQToolButton::EmailQToolButton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,8 +62,8 @@ EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *p
 **/
 EmailQToolButton::~EmailQToolButton()
 {
-    blDebug ( "EmailQToolButton::~EmailQToolButton", 0 );
-    blDebug ( "END EmailQToolButton::~EmailQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,7 +72,7 @@ EmailQToolButton::~EmailQToolButton()
 **/
 void EmailQToolButton::setBoton()
 {
-    blDebug ( "EmailQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Enviar por e-mail al cliente" ) );
@@ -81,7 +81,7 @@ void EmailQToolButton::setBoton()
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END EmailQToolButton::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -90,7 +90,7 @@ void EmailQToolButton::setBoton()
 **/
 void EmailQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
 
 
@@ -204,7 +204,7 @@ void EmailQToolButton::click()
         } // end if
     } // end if
 
-    blDebug ( "END ImpQToolButton::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

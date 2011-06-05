@@ -71,7 +71,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
     } // end if
     hideBusqueda();
     blScript(this);
-    blDebug ( "END MovimientosView::MovimientosView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -89,7 +89,7 @@ void MovimientosView::iniciaForm()
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
     mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
     mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
-    blDebug ( "END MovimientosView::iniciaForm" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -102,7 +102,7 @@ MovimientosView::~MovimientosView()
 {
     blDebug ( "MovimientosView::~MovimientosView", 0 );
     mainCompany() ->removeWindow ( this );
-    blDebug ( "END MovimientosView::~MovimientosView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -116,7 +116,7 @@ void MovimientosView::presenta()
 
     mui_list->load ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
 
-    blDebug ( "END MovimientosView::presenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -131,7 +131,7 @@ QString MovimientosView::generaFiltro()
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    blDebug ( "END MovimientosView::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -189,6 +189,6 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( FALSE );
-    blDebug ( "END MovimientosSubform::MovimientosSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

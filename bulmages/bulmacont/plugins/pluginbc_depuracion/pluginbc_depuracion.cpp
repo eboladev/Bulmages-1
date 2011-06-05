@@ -37,7 +37,7 @@
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "Entrada del plugin Corrector", 10 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,7 +61,8 @@ int entryPoint ( BcBulmaCont *bcont )
     accionA->setObjectName("mui_actionDebug");
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( accionA );
-    blDebug ( "Iniciado correctamente el plugin Corrector", 10 );
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

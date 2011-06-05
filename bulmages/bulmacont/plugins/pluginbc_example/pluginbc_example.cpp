@@ -33,23 +33,23 @@
 
 BcBulmaCont *g_bcont = NULL;
 
+
 ///
 /**
 \param bcont
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint", 0, "Punto de entrade de PluginBc_Example\n" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bcont = bcont;
 
-
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = bcont->newMenu ( _ ( "&Plugin" ), "menuPlugin", "menuHerramientas" );
-    BlAction *accionA = new BlAction ( _ ( "&Prueba de plugin BcBulmaCont" ), 0 );
+    BlAction *accionA = new BlAction ( _ ( "&Prueba de plugin BulmaCont" ), 0 );
     accionA->setStatusTip ( _ ( "Muestra statustip" ) );
     accionA->setWhatsThis ( _ ( "Muestra que es esto" ) );
     accionA->setObjectName("mui_actionExample");
@@ -57,21 +57,25 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bcont->setWindowTitle ( _ ( "Prueba de plugin BcBulmaCont." ) );
-    blDebug ( "END entryPoint", 0, "Punto de entrade de PluginBc_Example" );
+    bcont->setWindowTitle ( _ ( "Prueba de plugin BulmaCont." ) );
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
+
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( "PluginBc_Example::BlAction_triggered", 0 );    
+    blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Example") );
+
     if (accion->objectName() == "mui_actionExample") {
         QMessageBox::warning ( 0,
-                _ ( "Titulo de la ventana" ),
-                ( "Mensaje." ),
+                _( "Titulo de la ventana" ),
+                _( "Mensaje." ),
                 QMessageBox::Ok,
                 QMessageBox::Cancel );
     } // end if
-    blDebug ( "END PluginBc_Example::BlAction_triggered", 0 );
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

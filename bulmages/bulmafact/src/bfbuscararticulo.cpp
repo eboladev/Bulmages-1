@@ -39,7 +39,7 @@ BfBuscarArticulo::BfBuscarArticulo ( QWidget *parent )
     m_valores["codigocompletoarticulo"] = "";
     m_valores["nomarticulo"] = "";
 
-    blDebug ( "END BfBuscarArticulo::BfBuscarArticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ BfBuscarArticulo::BfBuscarArticulo ( QWidget *parent )
 BfBuscarArticulo::~BfBuscarArticulo()
 {
     blDebug ( "BfBuscarArticulo::~BfBuscarArticulo", 0 );
-    blDebug ( "END BfBuscarArticulo::~BfBuscarArticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -64,7 +64,7 @@ void BfBuscarArticulo::setidarticulo ( QString val )
 {
     blDebug ( "BfBuscarArticulo::setidarticulo", 0 );
     setId ( val );
-    blDebug ( "END BfBuscarArticulo::setidarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,7 +88,7 @@ void BfBuscarArticulo::setcodigocompletoarticulo ( QString val )
         setId ( "" );
     } // end if
     delete cur;
-    blDebug ( "END BfBuscarArticulo::setcodigocompletoarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -100,7 +100,7 @@ void BfBuscarArticulo::setcodigocompletoarticulo ( QString val )
 QString BfBuscarArticulo::codigocompletoarticulo()
 {
     blDebug ( "BfBuscarArticulo::codigocompletoarticulo", 0 );
-    blDebug ( "END BfBuscarArticulo::codigocompletoarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["codigocompletoarticulo"];
 }
 
@@ -121,7 +121,7 @@ QString BfBuscarArticulo::idarticulo()
 QString BfBuscarArticulo::nomarticulo()
 {
     blDebug ( "BfBuscarArticulo::nomarticulo", 0 );
-    blDebug ( "END BfBuscarArticulo::nomarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["nomarticulo"];
 }
 
@@ -146,7 +146,7 @@ BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
     setEditable ( true );
 //    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
-    blDebug ( "END BfBuscarArticuloDelegate::BfBuscarArticuloDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -156,7 +156,7 @@ BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
 BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate()
 {
     blDebug ( "BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate", 0 );
-    blDebug ( "END BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -173,10 +173,8 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
     blDebug ( "BfBuscarArticuloDelegate::s_editTextChanged : " + cod, 0 );
     static bool semaforo = FALSE;
 
-
-
     if ( semaforo ) {
-        blDebug ( "END BfBuscarArticuloDelegate::s_editTextChanged (semafor ocupat)", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Semaforo ocupado") );
         return;
     } else {
         semaforo = TRUE;
@@ -211,7 +209,7 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
     setEditText ( cod );
 
     semaforo = FALSE;
-    blDebug ( "END BfBuscarArticuloDelegate::s_editTextChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Retorna el codi d'article associat a la unica entrada del combo que
@@ -250,7 +248,7 @@ QString BfBuscarArticuloDelegate::eligeUnico ( void )
         blDebug ( "elec=" + elec, 0 );
         setEditText ( elec );
     }
-    blDebug ( "END BfBuscarArticuloDelegate::eligeUnico." , 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return elec;
 }
 
@@ -263,7 +261,7 @@ void BfBuscarArticuloDelegate::focusOutEvent ( QFocusEvent * event )
     eligeUnico();
     blDebug ( "crido pare", 0 );
     BlComboBox::focusOutEvent ( event );
-    blDebug ( "END BfBuscarArticuloDelegate::focusOutEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString BfBuscarArticuloDelegate::entrada()

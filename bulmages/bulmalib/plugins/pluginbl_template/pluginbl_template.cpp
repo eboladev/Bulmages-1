@@ -36,7 +36,7 @@ int entryPoint ( QApplication * )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_template", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -50,6 +50,6 @@ int BlForm_loadSpecs ( BlForm *l )
 {
     blDebug ( "BlForm_BlForm", 0 );
     new EQToolButton ( l );
-    blDebug ( "END BlForm_BlForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

@@ -53,7 +53,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END PagosList::PagosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -92,14 +92,14 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     trataPermisos ( "pago" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END PagosList::PagosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 PagosList::~PagosList()
 {
     blDebug ( "PagosList::~PagosList", 0 );
-    blDebug ( "END PagosList::~PagosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -114,7 +114,7 @@ void PagosList::presentar()
         BlFixed total = mui_list->sumarCampo ( "cantpago" );
         m_total->setText ( total.toQString() );
     } // end if
-    blDebug ( "END PagosList::presentar()", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -152,7 +152,7 @@ QString PagosList::generaFiltro()
     if ( mui_idbanco->idbanco() != "" )
         filtro += " AND idbanco = " + mui_idbanco->idbanco();
 
-    blDebug ( "END PagosList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -198,7 +198,7 @@ void PagosList::imprimir()
 {
     blDebug ( "PagosList::imprimir", 0 );
     mui_list->printPDF ( _ ( "Pagos a proveedores" ) );
-    blDebug ( "END PagosList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -221,7 +221,7 @@ void PagosList::remove()
     } catch ( ... )  {
         blMsgInfo ( _ ( "Error al borrar el pago" ), this );
     } // end try
-    blDebug ( "END PagosList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void PagosList::setMainCompany ( BfCompany *comp )
@@ -232,7 +232,7 @@ void PagosList::setMainCompany ( BfCompany *comp )
     mui_list->setMainCompany ( comp );
     mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
-    blDebug ( "END PagosList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

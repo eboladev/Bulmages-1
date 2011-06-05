@@ -65,7 +65,7 @@ int CobrosList_CobrosList ( CobrosList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
 
-    blDebug ( "END CobrosList_CobrosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -89,7 +89,7 @@ int FacturasList_FacturasList ( FacturasList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
 
-    blDebug ( "END FacturasList_FacturasList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -114,7 +114,7 @@ int RecibosList_RecibosList ( RecibosList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
 
-    blDebug ( "END RecibosList_RecibosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

@@ -77,7 +77,7 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
     insertWindow ( windowTitle(), this );
     pintar();
     dialogChanges_readValues();
-    blDebug ( "END BlCountryView::BlCountryView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -87,7 +87,7 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
 BlCountryView::~BlCountryView()
 {
     blDebug ( "BlCountryView::~BlCountryView", 0 );
-    blDebug ( "END BlCountryView::~BlCountryView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -98,7 +98,7 @@ void BlCountryView::pintar()
 {
     blDebug ( "BlCountryView::pintar", 0 );
     mui_list->load ( "SELECT * FROM pais ORDER BY descpais" );
-    blDebug ( "END BlCountryView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -121,7 +121,7 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
     } // end if
     m_countryId = previdpais;
     mostrarplantilla();
-    blDebug ( "END BlCountryView::on_mui_list_itemSelectionChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -144,7 +144,7 @@ void BlCountryView::mostrarplantilla()
         dialogChanges_readValues();
     } // end if
 
-    blDebug ( "END BlCountryView::mostrarplantilla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -170,7 +170,7 @@ int BlCountryView::save()
         dialogChanges_readValues();
         pintar();
     }
-    blDebug ( "END BlCountryView::on_mui_guardar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -201,7 +201,7 @@ void BlCountryView::on_mui_crear_clicked()
         pintar();
         mui_list->setCurrentItem ( mui_list->rowCount(), 1 );
         mostrarplantilla();
-        blDebug ( "END BlCountryView::on_mui_crear_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el banco" ) );
         mainCompany() ->rollback();
@@ -238,7 +238,7 @@ void BlCountryView::on_mui_borrar_clicked()
             mainCompany() ->rollback();
         } // end try
     } // end switch
-    blDebug ( "END BlCountryView::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

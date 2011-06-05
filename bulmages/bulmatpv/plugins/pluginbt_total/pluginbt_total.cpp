@@ -57,7 +57,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->loadConfig();
     g_doc1->show();
 
-    blDebug ( "END plugintotal::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -67,7 +67,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
     g_tot = new Total ( etpv, g_doc1 );
     g_doc1->setWidget ( g_tot );
-    blDebug ( "END plugintotal::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -81,7 +81,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 {
     blDebug ( "plugintotal::exitPoint", 0 );
     delete g_doc1;
-    blDebug ( "END plugintotal::exitPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -186,7 +186,7 @@ int BtTicket_pintar ( BtTicket *tick )
         g_tot->mui_total->setText ( total.toQString('0', maxprecision) );
     } // end if
 
-    blDebug ( "END plugintotal::Ticket_pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 

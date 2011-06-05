@@ -43,7 +43,7 @@ BlComboBox::BlComboBox ( QWidget *parent )
     connect ( g_theApp, SIGNAL ( dbTableChanged ( const QString & ) ), this, SLOT ( onDbTableChanged ( const QString & ) ) );
     m_null = TRUE;
 
-    blDebug ( "END BlComboBox::BlComboBox", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -55,7 +55,7 @@ BlComboBox::~BlComboBox()
     blDebug ( "BlComboBox::~BlComboBox", 0 );
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    blDebug ( "END BlComboBox::~BlComboBox", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -68,7 +68,7 @@ void BlComboBox::onDbTableChanged ( const QString &t )
     if ( m_table == t ) {
         setId ( id() );
     } // end if
-    blDebug ( "END BlComboBox::onDbTableChanged", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -121,7 +121,7 @@ void BlComboBox::setId ( QString id )
     } // end while
 
     setCurrentIndex ( i1 );
-    blDebug ( "END BlComboBox::setIdProvincia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -133,7 +133,7 @@ void BlComboBox::setFieldValue ( QString id )
 {
     blDebug ( "BlComboBox::setFieldValue", 0 );
     setId ( id );
-    blDebug ( "END BlComboBox::setFieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -153,7 +153,7 @@ void BlComboBox::m_activated ( int index )
     } else {
         emit ( valueChanged ( "" ) );
     }
-    blDebug ( "END BlComboBox::m_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -181,7 +181,7 @@ QString BlComboBox::id()
         } // end if
 
     } // end if
-    blDebug ( "END BlComboBox::id", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -193,7 +193,7 @@ QString BlComboBox::id()
 QString BlComboBox::fieldValue()
 {
     blDebug ( "BlComboBox::fieldValue", 0 );
-    blDebug ( "END BlComboBox::fieldValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return id();
 }
 

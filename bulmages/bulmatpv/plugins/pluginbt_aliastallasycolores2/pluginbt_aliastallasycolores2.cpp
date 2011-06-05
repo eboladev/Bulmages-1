@@ -32,7 +32,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
     blDebug ( "PluginBt_AliasTallasYColores2::BtTicket_agregarLinea_Post", 0 );
     item->addDbField ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Talla" ) );
     item->addDbField ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Color" ) );
-    blDebug ( "END PluginBt_AliasTallasYColores2::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -47,7 +47,7 @@ int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
         tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
     delete cur;
-    blDebug ( "END PluginBt_AliasTallasYColores2::BtTicket_insertarArticuloNL_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -69,6 +69,6 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         valor = 0;
         semaforo = 0;
     } // end if
-    blDebug ( "END PluginBt_AliasTallasYColores2::BtTicket_insertarArticulo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }

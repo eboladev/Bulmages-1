@@ -57,7 +57,7 @@ public slots:
 MyPlugArticuloSubForm::MyPlugArticuloSubForm()
 {
     blDebug ( "MyPlugArticuloSubForm::MyPlugArticuloSubForm", 0 );
-    blDebug ( "END MyPlugArticuloSubForm::MyPlugArticuloSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -67,7 +67,7 @@ MyPlugArticuloSubForm::MyPlugArticuloSubForm()
 MyPlugArticuloSubForm::~MyPlugArticuloSubForm()
 {
     blDebug ( "MyPlugArticuloSubForm::~MyPlugArticuloSubForm", 0 );
-    blDebug ( "END MyPlugArticuloSubForm::~MyPlugArticuloSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -79,7 +79,7 @@ void MyPlugArticuloSubForm::elslot ( QString item )
     blDebug ( "MyPlugArticuloSubForm::elslot", 0 );
     QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    blDebug ( "END MyPlugArticuloSubForm::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,7 +88,7 @@ void MyPlugArticuloSubForm::elslot1 ( QTableWidgetItem *item )
     blDebug ( "MyPlugArticuloSubForm::elslot", 0 );
     QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    blDebug ( "END MyPlugArticuloSubForm::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -99,7 +99,7 @@ void MyPlugArticuloSubForm::inicializa ( BtCompany *etpv )
 {
     blDebug ( "MyPlugArticuloSubForm::inicializa", 0 );
     m_etpv = etpv;
-    blDebug ( "END MyPlugArticuloSubForm::inicializa", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 #endif
@@ -115,7 +115,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_articulosubform", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    blDebug ( "END entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

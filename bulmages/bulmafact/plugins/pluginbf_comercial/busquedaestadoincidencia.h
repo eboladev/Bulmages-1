@@ -44,12 +44,13 @@ public:
 
 public slots:
     void s_activated ( int index ) {
-        blDebug ( "Activado el combo box", 0 );
+        blDebug ( Q_FUNC_INFO, 0 );
         if ( index > 0 ) {
             emit ( valueChanged ( m_valores[currentIndex() ] ) );
         } else {
             emit ( valueChanged ( "" ) );
-        }
+        } // end if
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
     };
 
 signals:

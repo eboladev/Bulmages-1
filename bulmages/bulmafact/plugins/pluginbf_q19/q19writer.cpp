@@ -40,7 +40,7 @@ Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
 	blDebug ( "Q19Writer::Q19Writer", 0 );
 	m_empresa = emp;
 	regex=QRegExp ( "(.{1,40})\\s(.*)",Qt::CaseInsensitive,QRegExp::RegExp2 );
-	blDebug ( "END Q19Writer::Q19Writer", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
 Q19Writer::~Q19Writer()
 {
 	blDebug ( "Q19Writer::~Q19Writer", 0 );
-	blDebug ( "END Q19Writer::~Q19Writer", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -247,7 +247,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
                 }
 	}
       }
-	blDebug ( "END Q19Writer::genera", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QString Q19Writer::nifOrdenante ( void )
@@ -364,7 +364,7 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 	<< QString ( 14, ' ' )
 	/// Hi ha d'haver salts de linia o no?. Un fitxer d'exemple que tinc en porta.
 	<< "\x0a";
-	blDebug ( "END Q19Writer::cabeceraPresentador", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -540,7 +540,7 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 		} // fi else registre opcional
 
 	} //fi for i registres del rebut
-	blDebug ( "END Q19Writer::cobroQ19", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 	return i;
 }
 
@@ -588,7 +588,7 @@ void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordS
 	/// Espacio libre Longitud: 18
 	<< QString ( 20+18, ' ' )
 	<<"\x0a";
-	blDebug ( "END Q19Writer::totalOrdenante", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -631,7 +631,7 @@ void Q19Writer::totalPresentador ( QTextStream &out,  QString sufijo , BlDbRecor
 	/// Espacio libre Longitud: 18
 	<< QString ( 20+18, ' ' )
 	<<"\x0a";
-	blDebug ( "END Q19Writer::totalPresentador", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 

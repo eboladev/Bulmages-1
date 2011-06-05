@@ -37,7 +37,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Inventario Simple\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_InventarioSimple", "0.11.1-0001");
@@ -73,7 +73,7 @@ int BlAction_triggered(BlAction *accion) {
 
 
 int ActividadView_ActividadView(ActividadView *act) {
-  blDebug("pluginbf_inventariosimple::ActividadView_ActividadView", 0);
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( act );
@@ -109,7 +109,7 @@ int ActividadView_ActividadView(ActividadView *act) {
 **/
 int BlForm_guardar_Post ( BlForm *art )
 {
-    blDebug ( "pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "prestamo" );
@@ -118,10 +118,11 @@ int BlForm_guardar_Post ( BlForm *art )
           l->save();
         } // end if
 
-       blDebug ( "END pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
-        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
+	blMsgError(_("Error al guardar."));
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar.") );
         return 0;
     } // end try
 }
@@ -135,7 +136,7 @@ int BlForm_guardar_Post ( BlForm *art )
 **/
 int BlForm_load ( BlForm *art )
 {
-    blDebug ( "pluginbf_inventariosimple::BlForm_cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "prestamo" );
@@ -143,10 +144,11 @@ int BlForm_load ( BlForm *art )
           l->load("SELECT * FROM prestamo LEFT JOIN inventariosimple ON prestamo.idinventariosimple = inventariosimple.idinventariosimple WHERE idactividad = " + art->dbValue("idactividad"));
         } // end if
 
-       blDebug ( "END pluginbf_inventariosimple::BlForm_cargar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( ... ) {
-        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
+	blMsgError(_("Error en la carga."));
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga.") );
         return 0;
     } // end try
 }
@@ -157,10 +159,10 @@ int BlForm_load ( BlForm *art )
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    blDebug ( "BfSubForm_pressedAsterisk" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( sub->m_campoactual->fieldName() != "nominventariosimple" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } // end if
 
@@ -192,7 +194,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     delete list;
 
     if ( idinv == "" ) {
-        blDebug ( "END BfSubForm_pressedAsterisk" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } // end if
 
@@ -206,7 +208,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     
     
-    blDebug ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -232,8 +234,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 **/
 SubForm_InventarioSimple::SubForm_InventarioSimple ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "SubForm_InventarioSimple::SubForm_InventarioSimple", 0 );
-    blDebug ( "END SubForm_InventarioSimple::SubForm_InventarioSimple", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -241,8 +243,8 @@ SubForm_InventarioSimple::SubForm_InventarioSimple ( BlSubForm *parent ) : QObje
 **/
 SubForm_InventarioSimple::~SubForm_InventarioSimple()
 {
-    blDebug ( "SubForm_InventarioSimple::~SubForm_InventarioSimple", 0 );
-    blDebug ( "END SubForm_InventarioSimple::~SubForm_InventarioSimple", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -252,7 +254,7 @@ SubForm_InventarioSimple::~SubForm_InventarioSimple()
 **/
 void SubForm_InventarioSimple::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "SubForm_InventarioSimple::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nominventariosimple" );
     if ( header ) {
@@ -261,7 +263,7 @@ void SubForm_InventarioSimple::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/Images/product-family.png" ), _ ( "Seleccionar Material" ) );
         } // end if
     } // end if
-    blDebug ( "END SubForm_InventarioSimple::s_pintaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -271,13 +273,13 @@ void SubForm_InventarioSimple::s_pintaMenu ( QMenu *menu )
 **/
 void SubForm_InventarioSimple::s_trataMenu ( QAction *action )
 {
-    blDebug ( "SubForm_InventarioSimple::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Seleccionar Material" ) ) {
         seleccionarMaterial ();
     } // end if
     
-    blDebug ( "END SubForm_InventarioSimple::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -286,11 +288,9 @@ void SubForm_InventarioSimple::s_trataMenu ( QAction *action )
 **/
 void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
 {
-    blDebug ( metaObject()->className()+ QString("::seleccionarMaterial"), 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if (!sub) sub= (BfSubForm *) parent();
-    
-    
     
     BlSubForm *list = new BlSubForm ( NULL);
     list->setMainCompany(( BfCompany * ) sub->mainCompany());
@@ -320,7 +320,7 @@ void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
     delete list;
     
     if ( idinv == "" ) {
-        blDebug ( "END SubForm_InventarioSimple::editarMaterial" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return ;
     } // end if
 
@@ -334,7 +334,7 @@ void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
     delete cur;
 
 
-    blDebug ( "END SubForm_InventarioSimple::seleccionarMaterial", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -345,11 +345,11 @@ void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     SubForm_InventarioSimple *subformods = new SubForm_InventarioSimple ( (BfSubForm *) sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -362,7 +362,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlSubFormHeader *header = sub->header ( "nominventariosimple" );
     if (!header) 
@@ -391,7 +391,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     } // end if
     
 
-    blDebug ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

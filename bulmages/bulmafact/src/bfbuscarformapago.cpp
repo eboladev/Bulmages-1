@@ -39,7 +39,7 @@ BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
     m_table = "forma_pago";
     m_null = TRUE;
 
-    blDebug ( "END BfBuscarFormaPago::BfBuscarFormaPago", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -50,7 +50,7 @@ BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
 BfBuscarFormaPago::~BfBuscarFormaPago()
 {
     blDebug ( "BfBuscarFormaPago::~BfBuscarFormaPago", 0 );
-    blDebug ( "END BfBuscarFormaPago::~BfBuscarFormaPago", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -99,7 +99,7 @@ void BfBuscarFormaPago::setId ( QString idforma_pago )
 
     setCurrentIndex ( i1 );
 
-    blDebug ( "END BfBuscarFormaPago::setidforma_pago", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -114,7 +114,7 @@ void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 
     /// Si el idcliente no existe salimos.
     if ( idcliente == "" ) {
-        blDebug ( "END BfBuscarFormaPago::setIdCliente", 0, "idcliente invalido" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("'idcliente' invalido") );
         return;
     } // end if
 
@@ -126,7 +126,7 @@ void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 
     delete cur;
 
-    blDebug ( "END BfBuscarFormaPago::setIdCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -149,7 +149,7 @@ void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
         setId ( cur->value( "idforma_pago" ) );
     } // end if
     delete cur;
-    blDebug ( "END BfBuscarFormaPago::setIdProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -167,7 +167,7 @@ void BfBuscarFormaPago::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    blDebug ( "END BfBuscarFormaPago::m_activated", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -179,7 +179,7 @@ void BfBuscarFormaPago::m_activated ( int index )
 QString BfBuscarFormaPago::id()
 {
     blDebug ( "BfBuscarFormaPago::idforma_pago", 0 );
-    blDebug ( "END BfBuscarFormaPago::idforma_pago", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     if ( !m_comboRecordSet ) return "0";
 

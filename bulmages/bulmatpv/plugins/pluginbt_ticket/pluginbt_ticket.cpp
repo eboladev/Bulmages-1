@@ -64,7 +64,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->loadConfig();
     g_doc1->show();
 
-    blDebug ( "END pluginticketbasico::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -80,7 +80,7 @@ int exitPoint ( BtBulmaTPV *tpv )
     
     delete g_doc1;
     
-    blDebug ( "END pluginticketbasico::exitPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -93,7 +93,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     g_bud =  new MTicket ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
-    blDebug ( "END pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return 0;
 }
@@ -106,7 +106,7 @@ int BtTicket_pintar ( BtTicket * )
     if (g_bud)
         g_bud->pintar();
     
-    blDebug ( "END pluginticketbasico::BtTicket_pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }

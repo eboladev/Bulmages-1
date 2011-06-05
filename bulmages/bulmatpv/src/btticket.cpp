@@ -89,14 +89,14 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
     start();
     
-    blDebug ( "END BtTicket::BtTicket", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 BtTicket::~BtTicket()
 {
     blDebug ( "BtTicket::~BtTicket", 0 );
     g_plugins->lanza ( "Des_BtTicket_BtTicket_Post", this );
-    blDebug ( "END BtTicket::~BtTicket", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -104,7 +104,7 @@ QString BtTicket::nomTicketDefecto()
 {
     blDebug ( "BtTicket::nomTicketDefecto", 0 );
     return m_nomTicketDefecto;
-    blDebug ( "END BtTicket::nomTicketDefecto", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -151,7 +151,7 @@ BlDbRecord * BtTicket::agregarLinea()
     g_plugParams = (void *) item;
     g_plugins->lanza("BtTicket_agregarLinea_Post", this);
 
-    blDebug ( "END BtTicket::agregarLinea", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return item;
 }
 
@@ -163,7 +163,7 @@ void BtTicket::pintar()
     if ( res != 0 ) {
         return;
     } // end if
-    blDebug ( "END BtTicket::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 QList<BlDbRecord *> *BtTicket::listaLineas()
@@ -223,7 +223,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
     /// Pintamos el ticket ya que se ha modificado.
     pintar();
 
-    blDebug ( "END BtTicket::insertarArticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_lineaActual;
 }
 
@@ -489,7 +489,7 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
 
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigo_Post", this );
     
-    blDebug ( "END BtTicket::insertarArticuloCodigo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -586,7 +586,7 @@ int BtTicket::save()
         mainCompany() ->commit();
 
         delete cur;
-        blDebug ( "END BtTicket::guardar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         
         return 0;
         
@@ -658,7 +658,7 @@ QString BtTicket::exportXML() {
     val += "</BTTICKET>\n";
 
     return val;
-    blDebug ( "END BtTicket::exportXML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -669,7 +669,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
-        blDebug ( "END BtCompany::syncXML", 0, "XML Invalido" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
         return 0;
     } // end if
 
@@ -735,7 +735,7 @@ int BtTicket::generateRML ( void )
 {
     blDebug ( "BtTicket::generateRML", 0 );
     int err = BlDbRecord::generateRML();
-    blDebug ( "END BtTicket::generateRML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return err;
 }
 
@@ -761,10 +761,9 @@ int BtTicket::generateRML ( const QString &arch )
 
     res = BlDbRecord::generateRML ( arch );
 
-    blDebug ( "END BtTicket::generateRML", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return res;
 }
-
 
 
 #endif

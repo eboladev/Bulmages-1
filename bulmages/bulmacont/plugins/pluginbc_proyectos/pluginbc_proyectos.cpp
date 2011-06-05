@@ -35,7 +35,7 @@ BcBulmaCont *g_bges = NULL;
 **/
 int entryPoint ( BcBulmaCont *bges )
 {
-    blDebug ( "Estoy dentro del plugin de proyectos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBc_Proyectos", "0.10.1-0001");
@@ -74,7 +74,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
 {
-    blDebug ( "BcCentroCosteView_BcCentroCosteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BL_SELECT_MODE );

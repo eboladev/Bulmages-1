@@ -37,7 +37,7 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
     frame->setLayout(layout_fpago);
 
 
-    blDebug ( "END FPagoCuentaCuenta::FPagoCuentaCuenta", 1 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -48,7 +48,7 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
 FPagoCuenta::~FPagoCuenta()
 {
     blDebug ( "FPagoCuenta::~FPagoCuenta", 0 );
-    blDebug ( "END FPagoCuenta::~FPagoCuenta", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

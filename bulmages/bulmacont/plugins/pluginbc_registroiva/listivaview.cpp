@@ -44,7 +44,7 @@
 **/
 void ListIvaView::saveConfig()
 {
-    blDebug ( "ListIvaView::saveConfig", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString aux = "";
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "confListIvaView.cfn" );
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -55,7 +55,7 @@ void ListIvaView::saveConfig()
         } // end for
         file.close();
     } // end if
-    blDebug ( "END ListIvaView::saveConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -64,7 +64,7 @@ void ListIvaView::saveConfig()
 **/
 void ListIvaView::loadConfig()
 {
-    blDebug ( "ListIvaView::loadConfig", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "confListIvaView.cfn" );
     QString line;
     if ( file.open ( QIODevice::ReadOnly ) ) {
@@ -75,7 +75,7 @@ void ListIvaView::loadConfig()
         } // end for
         file.close();
     } // end if
-    blDebug ( "END ListIvaView::loadConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -85,7 +85,7 @@ void ListIvaView::loadConfig()
 **/
 ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva()
 {
-    blDebug ( "ListIvaView::ListIvaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Inicializamos la tabla de lineas de presupuesto
     setColumnCount ( 8 );
     setRowCount ( 0 );
@@ -118,7 +118,7 @@ ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva
     connect ( this, SIGNAL ( contextMenuRequested ( int, int, const QPoint & ) ), this, SLOT ( contextMenu ( int, int, const QPoint & ) ) );
     installEventFilter ( this );
     loadConfig();
-    blDebug ( "END ListIvaView::ListIvaView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -127,9 +127,9 @@ ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva
 **/
 ListIvaView::~ListIvaView()
 {
-    blDebug ( "ListIvaView::~ListIvaView()", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     saveConfig();
-    blDebug ( "END ListIvaView::~ListIvaView()", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -138,7 +138,7 @@ ListIvaView::~ListIvaView()
 **/
 void ListIvaView::pintaListIva()
 {
-    blDebug ( "ListIvaView::pintaListIva\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setRowCount ( 0 );
     setRowCount ( m_lista.count() );
     /// TODO Habra que vaciar la tabla para que el pintado fuera exacto.
@@ -157,7 +157,7 @@ void ListIvaView::pintaListIva()
         i++;
     } // end while
 
-    blDebug ( "END ListIvaView::pintaListIva\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -168,7 +168,7 @@ void ListIvaView::pintaListIva()
 **/
 void ListIvaView::contextMenu ( int row, int, const QPoint & pos )
 {
-    blDebug ( "ListIvaView::contextMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QMenu *popup = new QMenu();
     QAction *borrarlinea = popup->addAction ( _ ( "Borrar linea" ) );
     QAction *opcion = popup->exec ( pos );
@@ -176,7 +176,7 @@ void ListIvaView::contextMenu ( int row, int, const QPoint & pos )
     if ( opcion == borrarlinea ) {
         borraIva ( row );
     } // end if
-    blDebug ( "END ListIvaView::contextMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -185,9 +185,9 @@ void ListIvaView::contextMenu ( int row, int, const QPoint & pos )
 **/
 void ListIvaView::borraIvaAct()
 {
-    blDebug ( "ListIvaView::borraIvaAct", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     borraIva ( currentRow() );
-    blDebug ( "END ListIvaView::borraIvaAct", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -197,7 +197,7 @@ void ListIvaView::borraIvaAct()
 **/
 void ListIvaView::pintaIva ( int pos )
 {
-    blDebug ( "ListIvaView::pintaIva\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Iva *linea;
     linea = m_lista.at ( pos );
 
@@ -211,7 +211,7 @@ void ListIvaView::pintaIva ( int pos )
     item ( pos, COL_IVAIVA ) ->setText ( linea->ivaiva() );
     resizeRowToContents ( pos );
 
-    blDebug ( "END ListIvaView::pintaIva\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -223,7 +223,7 @@ void ListIvaView::pintaIva ( int pos )
 **/
 bool ListIvaView::eventFilter ( QObject *obj, QEvent *ev )
 {
-    blDebug ( "ListIvaView::eventFilter()\n", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /*
         QString idArticle;
         //    linpresupuesto *linea=lineaact();
@@ -274,7 +274,7 @@ bool ListIvaView::eventFilter ( QObject *obj, QEvent *ev )
 **/
 void ListIvaView::valueBudgetLineChanged ( int row, int col )
 {
-    blDebug ( "valueBudgetLineChanged \n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Iva *linea;
     linea = lineaat ( row );
     if ( linea != NULL ) {
@@ -292,7 +292,7 @@ void ListIvaView::valueBudgetLineChanged ( int row, int col )
         } // end switch
         pintaIva ( row );
     } // end if
-    blDebug ( "END valueBudgetLineChanged \n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -302,7 +302,7 @@ void ListIvaView::valueBudgetLineChanged ( int row, int col )
 **/
 Iva *ListIvaView::lineaact()
 {
-    blDebug ( "ListIvaView::lineaact()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     return lineaat ( currentRow() );
 }
 
@@ -315,7 +315,7 @@ Iva *ListIvaView::lineaact()
 **/
 Iva *ListIvaView::lineaat ( int row )
 {
-    blDebug ( "ListIvaView::lineaat\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Iva *linea;
     if ( row >= 0 ) {
         while ( m_lista.at ( row ) == 0 ) {
@@ -326,9 +326,10 @@ Iva *ListIvaView::lineaat ( int row )
         } // end while
         return ( m_lista.at ( row ) );
     } else {
-        blDebug ( "Linea inexistente\n", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Linea inexistente") );
         return NULL;
-    }// end if
+    } // end if
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -46,7 +46,7 @@ BlMainCompany *g_emp_importcsv = NULL;
 PluginBl_ImportCSV::PluginBl_ImportCSV()
 {
     blDebug ( "PluginBl_ImportCSV::PluginBl_ImportCSV", 0 );
-    blDebug ( "END PluginBl_ImportCSV::PluginBl_ImportCSV", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -55,7 +55,7 @@ PluginBl_ImportCSV::PluginBl_ImportCSV()
 PluginBl_ImportCSV::~PluginBl_ImportCSV()
 {
     blDebug ( "PluginBl_ImportCSV::~PluginBl_ImportCSV", 0 );
-    blDebug ( "END PluginBl_ImportCSV::~PluginBl_ImportCSV", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -70,7 +70,7 @@ void PluginBl_ImportCSV::elslot()
     g_emp_importcsv->pWorkspace() ->addSubWindow ( imp );
     imp->show();
 
-    blDebug ( "END PluginBl_ImportCSV::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

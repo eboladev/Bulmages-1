@@ -38,7 +38,7 @@ PromedioView::PromedioView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     m_companyact = comp;
     setupUi ( this );
-    blDebug ( "END PromedioView::PromedioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -49,7 +49,7 @@ PromedioView::~PromedioView()
 {
     blDebug ( "PromedioView::~PromedioView", 0 );
     m_companyact->removeWindow ( this );
-    blDebug ( "END PromedioView::~PromedioView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -93,7 +93,7 @@ int PromedioView::load ( QString idarticulo )
     } // end if
     delete cur1;
 
-    blDebug ( "END PromedioView::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

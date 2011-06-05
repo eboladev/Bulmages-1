@@ -73,7 +73,7 @@ void TarifaListView::editar ( int row )
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->load ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
-    blDebug ( "END TarifaListView::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -88,7 +88,7 @@ void TarifaListView::crear()
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->setWindowTitle ( _ ( "Nueva tarifa" ) );
     tar->show();
-    blDebug ( "END  TarifaListView::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -108,7 +108,7 @@ void TarifaListView::remove()
     } else {
         blMsgInfo ( _ ( "No ha seleccionado ninguna tarifa" ) );
     } // end if
-    blDebug ( "END TarifaListView::borrar\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -119,6 +119,6 @@ void TarifaListView::actualizar()
 {
     blDebug ( "TarifaListView::actualizar\n", 0 );
     mui_list->load();
-    blDebug ( "END TarifaListView::actualizar\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -41,7 +41,7 @@ BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
     /// Establecemos el focusProxy
     setFocusProxy (mui_referencia);
     
-    blDebug ( "END BfBuscarReferencia::BfBuscarReferencia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -52,7 +52,7 @@ BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
 BfBuscarReferencia::~BfBuscarReferencia()
 {
     blDebug ( "BfBuscarReferencia::~BfBuscarReferencia", 0 );
-    blDebug ( "END BfBuscarReferencia::~BfBuscarReferencia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -73,7 +73,7 @@ void BfBuscarReferencia::on_mui_informe_clicked()
         blCreateAndLoadPDF ( "informereferencia" );
     } // end if
 
-    blDebug ( "END BfBuscarReferencia::on_mui_buscar_clicked\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 
@@ -87,7 +87,7 @@ void BfBuscarReferencia::on_mui_referencia_editingFinished()
 {
     blDebug ( "BfBuscarReferencia::on_mui_referencia_editingFinished", 0 );
     emit ( valueChanged ( mui_referencia->text() ) );
-    blDebug ( "END BfBuscarReferencia::on_mui_referencia_editingFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -104,7 +104,7 @@ void BfBuscarReferencia::on_mui_rferencia_returnPressed()
     if ( res == 0 ) {
         emit ( returnPressed ( ) );
     } // end if
-    blDebug ( "END BfBuscarReferencia::on_mui_referencia_returnPressed", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -222,7 +222,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
     */
     g_plugins->lanza ( "BfBuscarReferencia_on_mui_abrirtodo_clicked_Post", this );
 
-    blDebug ( "END BfBuscarReferencia::on_mui_abrirtodo_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -235,7 +235,7 @@ void BfBuscarReferencia::setText ( QString val )
 {
     blDebug ( "BfBuscarReferencia::setText", 0 );
     mui_referencia->setText ( val );
-    blDebug ( "END BfBuscarReferencia::setText", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -248,7 +248,7 @@ void BfBuscarReferencia::setFieldValue ( QString val )
 {
     blDebug ( "BfBuscarReferencia::setText", 0 );
     mui_referencia->setText ( val );
-    blDebug ( "END BfBuscarReferencia::setText", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -260,7 +260,7 @@ void BfBuscarReferencia::setFieldValue ( QString val )
 QString BfBuscarReferencia::text()
 {
     blDebug ( "BfBuscarReferencia::text", 0 );
-    blDebug ( "END BfBuscarReferencia::text", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mui_referencia->text();
 }
 
@@ -273,7 +273,7 @@ QString BfBuscarReferencia::text()
 QString BfBuscarReferencia::fieldValue()
 {
     blDebug ( "BfBuscarReferencia::text", 0 );
-    blDebug ( "END BfBuscarReferencia::text", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mui_referencia->text();
 }
 

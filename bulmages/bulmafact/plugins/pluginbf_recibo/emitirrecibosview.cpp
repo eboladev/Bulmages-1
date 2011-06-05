@@ -74,7 +74,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
         
     } // end try
     
-    blDebug ( "END EmitirRecibosView::EmitirRecibosView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
@@ -82,7 +82,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
 EmitirRecibosView::~EmitirRecibosView()
 {
     blDebug ( "EmitirRecibosView::~EmitirRecibosView", 0 );
-    blDebug ( "END EmitirRecibosView::~EmitirRecibosView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void EmitirRecibosView::on_mui_crear_clicked() {
@@ -162,5 +162,5 @@ void EmitirRecibosView::on_mui_crear_clicked() {
     
     m_progreso->setValue(0);
     
-    blDebug ( "END EmitirRecibosView::on_mui_crear_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

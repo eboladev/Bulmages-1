@@ -38,7 +38,7 @@
 RutaComercialList::RutaComercialList ( QWidget *parent )
         : BlFormList ( NULL, parent )
 {
-    blDebug ( "RutaComercialList::RutaComercialList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_idpresupuesto = "";
@@ -50,7 +50,7 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
     m_idcliente->m_valores["nomcliente"] = "";
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END RutaComercialList::RutaComercialList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -62,7 +62,7 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
 RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
         : BlFormList ( comp, parent )
 {
-    blDebug ( "RutaComercialList::RutaComercialList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setSubForm ( mui_list );
@@ -76,7 +76,7 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
     m_idpresupuesto = "";
     hideBusqueda();
     mainCompany() ->insertWindow ( windowTitle(), this );
-    blDebug ( "END RutaComercialList::RutaComercialList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     /// Establecemos los parametros de busqueda del Cliente
     m_idcliente->setMainCompany ( comp );
@@ -94,8 +94,8 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
 **/
 RutaComercialList::~RutaComercialList()
 {
-    blDebug ( "RutaComercialList::~RutaComercialList", 0 );
-    blDebug ( "END RutaComercialList::~RutaComercialList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -105,10 +105,10 @@ RutaComercialList::~RutaComercialList()
 **/
 void RutaComercialList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "RutaComercialList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_idcliente->setMainCompany ( comp );
-    blDebug ( "RutaComercialList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -117,10 +117,10 @@ void RutaComercialList::setMainCompany ( BfCompany *comp )
 **/
 void RutaComercialList::presenta()
 {
-    blDebug ( "RutaComercialList::presenta()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString SQLQuery = "SELECT * FROM (SELECT * FROM rutacomercial NATURAL LEFT JOIN incidenciacomercial UNION SELECT * FROM rutacomercial NATURAL RIGHT JOIN incidenciacomercial WHERE incidenciacomercial.idrutacomercial IS NULL) AS t1 NATURAL LEFT JOIN trabajador LEFT JOIN (SELECT * FROM cliente NATURAL LEFT JOIN zonacomercial) AS t2 ON t1.idcliente = t2.idcliente WHERE 1 = 1 " + generaFiltro();
     mui_list->load ( SQLQuery );
-    blDebug ( "end RutaComercialList::presenta()\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -130,7 +130,7 @@ void RutaComercialList::presenta()
 **/
 QString RutaComercialList::generaFiltro()
 {
-    blDebug ( "RutaComercialList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
     if ( m_idcliente->id() != "" ) {
@@ -140,7 +140,7 @@ QString RutaComercialList::generaFiltro()
         filtro += " AND t1.fechaincidenciacomercial >= '" + m_fechain->text() + "' ";
     if ( m_fechafin->text() != "" )
         filtro += " AND t1.fechaincidenciacomercial <= '" + m_fechafin->text() + "' ";
-    blDebug ( "END RutaComercialList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -152,7 +152,7 @@ QString RutaComercialList::generaFiltro()
 **/
 void RutaComercialList::editar ( int row )
 {
-    blDebug ( "RutaComercialList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString idrutacomercial = mui_list->dbValue ( "idrutacomercial", row );
     QString idincidenciacomercial = mui_list->dbValue ( "idincidenciacomercial", row );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
@@ -161,7 +161,7 @@ void RutaComercialList::editar ( int row )
     mainCompany() ->m_pWorkspace->addSubWindow ( rut );
     mainCompany() ->insertWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
-    blDebug ( "END RutaComercialList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -170,12 +170,12 @@ void RutaComercialList::editar ( int row )
 **/
 void RutaComercialList::crear()
 {
-    blDebug ( "RutaComercialList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( rut );
     mainCompany() ->insertWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
-    blDebug ( "END RutaComercialList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -184,7 +184,7 @@ void RutaComercialList::crear()
 **/
 void RutaComercialList::imprimir()
 {
-    blDebug ( "RutaComercialList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "rutascomerciales.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "rutascomerciales.rml";
     QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -229,7 +229,7 @@ void RutaComercialList::imprimir()
     } // end if
     /// Crea el pdf y lo muestra.
     blCreateAndLoadPDF ( "rutascomerciales" );
-    blDebug ( "END RutaComercialList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -239,14 +239,14 @@ void RutaComercialList::imprimir()
 **/
 void RutaComercialList::remove()
 {
-    blDebug ( "RutaComercialList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString idrutacomercial = mui_list->dbValue ( "idrutacomercial" );
     QString idincidenciacomercial = mui_list->dbValue ( "idincidenciacomercial" );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->load ( idrutacomercial, idincidenciacomercial ) )
         return;
     rut->on_mui_borrar_clicked();
-    blDebug ( "END RutaComercialList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -256,8 +256,8 @@ void RutaComercialList::remove()
 **/
 QString RutaComercialList::idpresupuesto()
 {
-    blDebug ( "RutaComercialList::idpresupuesto", 0 );
-    blDebug ( "END RutaComercialList::idpresupuesto", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_idpresupuesto;
 }
 
@@ -268,9 +268,9 @@ QString RutaComercialList::idpresupuesto()
 **/
 void RutaComercialList::setidcliente ( QString val )
 {
-    blDebug ( "RutaComercialList::setidcliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_idcliente->setId ( val );
-    blDebug ( "END RutaComercialList::setidcliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -285,7 +285,7 @@ void RutaComercialList::setidcliente ( QString val )
 **/
 RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "RutaComercialListSubForm::RutaComercialListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "rutacomercial" );
     setDbFieldId ( "idrutacomercial" );
     addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "CIF del cliente" ) );
@@ -310,6 +310,6 @@ RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia de la incidencia" ) );
     addSubFormHeader ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora de la incidencia" ) );
     setInsert ( FALSE );
-    blDebug ( "END RutaComercialListSubForm::RutaComercialListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 };
 

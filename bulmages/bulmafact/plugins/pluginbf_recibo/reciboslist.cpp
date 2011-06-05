@@ -56,7 +56,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END RecibosList::RecibosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Inicializa todos los componentes.
@@ -106,7 +106,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END RecibosList::RecibosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -115,7 +115,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 RecibosList::~RecibosList()
 {
     blDebug ( "RecibosList::~RecibosList", 0 );
-    blDebug ( "END RecibosList::~RecibosList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -133,7 +133,7 @@ void RecibosList::iniciaForm()
     mui_procesada->insertItem ( 2, _ ( "Recibos no pagados" ) );
     mui_procesada->setCurrentIndex ( 0 );
     
-    blDebug ( "END RecibosList::iniciaForm" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -150,7 +150,7 @@ void RecibosList::presentar()
         mui_list->load ( query );
     } // end if
     
-    blDebug ( "END RecibosList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -188,7 +188,7 @@ QString RecibosList::generaFiltro()
 	QString nombreactividad = mui_idactividad->fieldValue("nombreactividad");
 	filtro += " AND idrecibo IN (SELECT idrecibo FROM lrecibo WHERE conceptolrecibo LIKE '%" + nombreactividad + "%')";
     } // end if
-    blDebug ( "END RecibosList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return ( filtro );
 }
@@ -205,7 +205,7 @@ void RecibosList::crear()
     bud->show();
     bud->pintar();
     
-    blDebug ( "END RecibosList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
@@ -216,7 +216,7 @@ void RecibosList::imprimir()
     
     mui_list->printPDF ( _ ( "Recibos" ) );
     
-    blDebug ( "END RecibosList::imprimir", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -249,7 +249,7 @@ void RecibosList::remove()
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    blDebug ( "END:RecibosList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** SLOT que responde al doble click en el subformulario.
@@ -277,7 +277,7 @@ void RecibosList::editar ( int )
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    blDebug ( "END RecibosList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -305,7 +305,7 @@ void RecibosList::submenu ( const QPoint & )
         
     delete popup;
     
-    blDebug ( "END RecibosList::submenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -317,7 +317,7 @@ void RecibosList::setMainCompany ( BfCompany *comp )
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
-    blDebug ( "END RecibosList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Devuelve el identificador del cobro seleccionado
@@ -325,7 +325,7 @@ void RecibosList::setMainCompany ( BfCompany *comp )
 QString RecibosList::idrecibo()
 {
     blDebug ( "RecibosList::idrecibo", 0 );
-    blDebug ( "END RecibosList::idrecibo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return mdb_idrecibo;
 }
@@ -361,13 +361,13 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( "END RecibosListSubForm::RecibosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 RecibosListSubForm::~RecibosListSubForm()
 {
     blDebug ( "RecibosListSubForm::~RecibosListSubForm", 0 );
-    blDebug ( "END RecibosListSubForm::~RecibosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

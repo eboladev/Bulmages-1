@@ -39,7 +39,7 @@
 **/
 PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento(BcAsientoView * as, BcCompany *comp, QWidget *parent ) : BlMainCompanyPointer(comp), QToolButton(parent)
 {
-    blDebug ( "PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setObjectName ( QString::fromUtf8 ( "PluginBc_DuplicarAsiento" ) );
     setStatusTip ( _ ( "Duplicar Asiento" ) );
     setToolTip ( _ ( "Duplicar Asiento" ) );
@@ -49,7 +49,7 @@ PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento(BcAsientoView * as, BcCompany
     setIconSize ( QSize ( 32, 32 ) );
     m_asiento = as;
     connect (this, SIGNAL(released()), this, SLOT(elslot()));
-    blDebug ( "END PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -58,8 +58,8 @@ PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento(BcAsientoView * as, BcCompany
 **/
 PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento()
 {
-    blDebug ( "PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento", 0 );
-    blDebug ( "END PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -68,7 +68,7 @@ PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento()
 **/
 void PluginBc_DuplicarAsiento::elslot()
 {
-    blDebug ( "PluginBc_DuplicarAsiento::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     DuplicarAsientoView *dupli = new DuplicarAsientoView ( (BcCompany *)mainCompany(), 0 );
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
     dupli->inicializa ( m_asiento->mui_ordenasiento->text(), m_asiento->mui_ordenasiento->text() );
@@ -76,7 +76,7 @@ void PluginBc_DuplicarAsiento::elslot()
     m_asiento->cargaasientos();
     m_asiento->boton_fin();
     delete dupli;
-    blDebug ( "END PluginBc_DuplicarAsiento::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -86,13 +86,13 @@ void PluginBc_DuplicarAsiento::elslot()
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_duplicarasiento", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -103,7 +103,7 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
-    blDebug ( "BcAsientoView_BcAsientoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBc_DuplicarAsiento *mui_exporta_efactura2 = new PluginBc_DuplicarAsiento ( l, l->mainCompany(),  l );
     mui_exporta_efactura2->setObjectName("m_duplicarasiento");
     
@@ -119,7 +119,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     } // end if
 
-    blDebug ( "END BcAsientoView_BcAsientoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

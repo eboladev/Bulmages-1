@@ -31,7 +31,7 @@ BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
     installEventFilter ( this );
     setAlignment ( Qt::AlignRight );
     setButtonSymbols ( QAbstractSpinBox::PlusMinus );
-    blDebug ( "END BlDoubleSpinBox::BlDoubleSpinBox", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -41,7 +41,7 @@ BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
 BlDoubleSpinBox::~BlDoubleSpinBox()
 {
     blDebug ( "BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
-    blDebug ( "END BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -58,7 +58,7 @@ QString const BlDoubleSpinBox::text()
     QLocale locale;
     a = locale.toString((locale.toDouble(a))); //ARON
 */
-    blDebug ( "END BlDoubleSpinBox::text", 0, a );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return a;
 }
 
@@ -71,7 +71,7 @@ void BlDoubleSpinBox::setValue ( double valor )
 {
     blDebug ( "BlDoubleSpinBox::setValue", 0 );
     QDoubleSpinBox::setValue ( valor );
-    blDebug ( "END BlDoubleSpinBox::setValue", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -102,7 +102,7 @@ bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end switch
     } // end if
-    blDebug ( "END BlDoubleSpinBox::eventFilter", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return QDoubleSpinBox::eventFilter ( obj, event );
 }
 

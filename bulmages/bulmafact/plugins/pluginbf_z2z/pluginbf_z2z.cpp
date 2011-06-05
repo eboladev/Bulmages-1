@@ -63,7 +63,7 @@ int entryPoint ( BfBulmaFact *bges )
     //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accionA );
-    blDebug ( "END Entrada del PluginBf_Z2Z", 10 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -74,7 +74,7 @@ int BlAction_triggered(BlAction *accion) {
         Z2ZView * bud = new Z2ZView ( g_bges, NULL );
         g_bges->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Z2Z::BlAction_triggered::mui_actionZ2Z", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     
     return 0;

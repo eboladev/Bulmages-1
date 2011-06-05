@@ -31,10 +31,10 @@
 **/
 ListIva::ListIva ( BcCompany *comp )
 {
-    blDebug ( "ListIva::ListIva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     companyact = comp;
     mdb_idregistroiva = "";
-    blDebug ( "END ListIva::ListIva", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -43,9 +43,10 @@ ListIva::ListIva ( BcCompany *comp )
 **/
 ListIva::ListIva()
 {
-    blDebug ( "Constructor de ListIva\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     companyact = NULL;
     mdb_idregistroiva = "";
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -54,8 +55,8 @@ ListIva::ListIva()
 **/
 ListIva::~ListIva()
 {
-    blDebug ( "ListIva::~ListIva", 0 );
-    blDebug ( "ListIva::~ListIva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -66,8 +67,8 @@ ListIva::~ListIva()
 **/
 Iva *ListIva::linpos ( int pos )
 {
-    blDebug ( "ListIva::linpos", 0 );
-    blDebug ( "END ListIva::linpos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_lista.at ( pos );
 }
 
@@ -79,7 +80,7 @@ Iva *ListIva::linpos ( int pos )
 **/
 int ListIva::cargaListIva ( QString idregistroiva )
 {
-    blDebug ( "ListIva::cargaListIva\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int error = 0;
     vaciar();
     mdb_idregistroiva = idregistroiva;
@@ -98,11 +99,11 @@ int ListIva::cargaListIva ( QString idregistroiva )
 
     /// Tratamiento de excepciones.
     if ( error ) {
-        blDebug ( "Error en la carga de Iva\n", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga del IVA") );
         return 1;
     } // end if
 
-    blDebug ( "END ListIva::cargaListIva\n", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -112,7 +113,7 @@ int ListIva::cargaListIva ( QString idregistroiva )
 **/
 void ListIva::guardaListIva()
 {
-    blDebug ( "ListIva::guardaListIva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Iva *linea;
 
     QMutableListIterator<Iva*> m_ilista ( m_lista );
@@ -127,7 +128,7 @@ void ListIva::guardaListIva()
         } // end if
     } // end while
 
-    blDebug ( "END ListIva::guardaListIva", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -137,7 +138,7 @@ void ListIva::guardaListIva()
 **/
 BlFixed ListIva::calculabase()
 {
-    blDebug ( "ListIva::calculabase", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlFixed base ( "0.00" );
     Iva *linea;
 
@@ -150,7 +151,7 @@ BlFixed ListIva::calculabase()
         linea = m_ilista.next();
         base = base + BlFixed ( linea->baseiva() );
     } // end while
-    blDebug ( "END ListIva::calculabase", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return base;
 }
 
@@ -161,7 +162,7 @@ BlFixed ListIva::calculabase()
 **/
 BlFixed ListIva::calculaiva()
 {
-    blDebug ( "ListIva::calculaiva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlFixed iva ( "0.00" );
     Iva *linea;
 
@@ -174,7 +175,7 @@ BlFixed ListIva::calculaiva()
         linea = m_ilista.next();
         iva = iva + BlFixed ( linea->ivaiva() );
     } // end while
-    blDebug ( "END ListIva::calculaiva", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return iva;
 }
 
@@ -184,10 +185,10 @@ BlFixed ListIva::calculaiva()
 **/
 void ListIva::vaciar()
 {
-    blDebug ( "ListIva::vaciar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idregistroiva = "";
     m_lista.clear();
-    blDebug ( "END ListIva::vaciar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -197,7 +198,7 @@ void ListIva::vaciar()
 **/
 void ListIva::remove()
 {
-    blDebug ( "ListIva::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mdb_idregistroiva != "" )  {
         companyact->begin();
         int error = companyact->runQuery ( "DELETE FROM iva WHERE idregistroiva = " + mdb_idregistroiva );
@@ -207,7 +208,7 @@ void ListIva::remove()
         } // end if
         companyact->commit();
     } // end if
-    blDebug ( "END ListIva::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -217,13 +218,13 @@ void ListIva::remove()
 **/
 void ListIva::borraIva ( int pos )
 {
-    blDebug ( "ListIva::borraIva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     Iva *linea;
     linea = m_lista.at ( pos );
     linea->remove();
     m_lista.removeAt ( pos );
     pintaListIva();
-    blDebug ( "ListIva::borraIva", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

@@ -42,7 +42,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 
     item->addDbField ( "pvpivainclalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "IVA inc." ) );
     
-    blDebug ( "END PluginBt_IvaIncluido::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }
@@ -71,7 +71,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         semaforo = 0;
     } // end if
     
-    blDebug ( "END PluginBt_IvaIncluido::BtTicket_insertarArticulo_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return valor;
 }
@@ -81,7 +81,7 @@ int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
 	
     tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", tick->lineaActBtTicket()->dbValue("pvplalbaran"));
     
-    blDebug ( "END PluginBt_IvaIncluido::BtTicket_ponerPrecio_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -360,7 +360,7 @@ int BtCompany_z(BtCompany * emp)
     } // end while
 
 
-    blDebug ( "END PluginBt_IvaIncluido::BtCompany_z", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     return -1;
 }
@@ -372,7 +372,7 @@ int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
     
 	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
 	
-    blDebug ( "END PluginBt_IvaIncluido::ArticuloListSubForm_ArticuloListSubForm_Post", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return 0;
 }

@@ -60,7 +60,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 
     }
 
-    blDebug ( "END Z2ZView::Z2ZView" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -72,7 +72,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 Z2ZView::~Z2ZView()
 {
     blDebug ( "Z2ZView::~Z2ZView", 0 );
-    blDebug ( "END Z2ZView::~Z2ZView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

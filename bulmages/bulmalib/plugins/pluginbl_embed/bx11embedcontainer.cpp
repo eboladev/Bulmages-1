@@ -29,7 +29,7 @@
 **/
 BX11EmbedContainer::BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent ) : QX11EmbedContainer ( parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( "END BX11EmbedContainer::BX11EmbedContainer", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -40,7 +40,7 @@ BX11EmbedContainer::~BX11EmbedContainer()
 {
     blDebug ( "BX11EmbedContainer::~BX11EmbedContainer", 0, this->windowTitle() );
     removeWindow();
-    blDebug ( "END BX11EmbedContainer::~BX11EmbedContainer", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -55,7 +55,7 @@ int BX11EmbedContainer::removeWindow()
     if ( mainCompany() != NULL ) {
         mainCompany() ->removeWindow ( this );
     } // end if
-    blDebug ( "END BX11EmbedContainer::removeWindow", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

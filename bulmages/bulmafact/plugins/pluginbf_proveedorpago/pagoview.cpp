@@ -81,7 +81,7 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _ ( "Error al crear el pago" ), this );
     } // end try
     blDebug ( "Fin de la inicializacion de PagoView\n", 0 );
-    blDebug ( "END PagoView::PagoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -91,6 +91,6 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
 PagoView::~PagoView()
 {
     blDebug ( "PagoView::~PagoView", 0 );
-    blDebug ( "END PagoView::~PagoView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

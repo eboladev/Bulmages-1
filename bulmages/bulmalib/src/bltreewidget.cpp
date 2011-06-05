@@ -81,7 +81,7 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
 
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
     if ( !opcion ) {
-	blDebug ( "END BlTreeWidget::contextMenuEvent", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 	return;
     } // end if
 
@@ -108,6 +108,6 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
     procesaMenu ( opcion );
 
     delete popup;
-    blDebug ( "END BlTreeWidget::contextMenuEvent", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -232,7 +232,7 @@ void DistroMesas::importXML(const QString val) {
 
     if (file.exists()) {
         if ( !file.open ( QIODevice::ReadOnly ) ) {
-            blDebug ( "END DistroMesas::syncXML", 0, "Fichero no se puede abrir" );
+            blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error. El fichero no se puede abrir") );
             return;
         } // end if
         QString result (file.readAll());
@@ -242,7 +242,7 @@ void DistroMesas::importXML(const QString val) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( result ) ) {
-        blDebug ( "END Mesa::importXML", 0, "XML Invalido" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
         return;
     } // end if
 
@@ -846,7 +846,7 @@ void Mesa::importXML(const QString val) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( val ) ) {
-        blDebug ( "END Mesa::importXML", 0, "XML Invalido" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
         return;
     } // end if
 

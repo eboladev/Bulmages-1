@@ -46,7 +46,7 @@
 QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
     blDebug ( "QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
-    blDebug ( "END QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -56,7 +56,7 @@ QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 )
 QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 {
     blDebug ( "QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
-    blDebug ( "END QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -76,10 +76,12 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
     if ( linea->fieldName() == "nomtarifa" ) {
         BusquedaTarifa *editor = new BusquedaTarifa ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("BusquedaTarifa") );
         return editor;
     } else if ( linea->fieldName() == "nomalmacen" ) {
         BfBuscarAlmacen *editor = new BfBuscarAlmacen ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("BfBuscarAlmacen") );
         return editor;
 
     } else if ( linea->fieldName() == "cantidadmayoroigualque"
@@ -88,13 +90,13 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
-        blDebug ( "END QSubFormVarTarifaBfDelegate::createEditor", 0, "QSPinBox" );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("BlDoubleSpinBox") );
         return editor;
 
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    blDebug ( "END QSubFormVarTarifaBfDelegate::createEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -139,7 +141,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( "END QSubFormVarTarifaBfDelegate::setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -173,7 +175,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( "END QSubFormVarTarifaBfDelegate::setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

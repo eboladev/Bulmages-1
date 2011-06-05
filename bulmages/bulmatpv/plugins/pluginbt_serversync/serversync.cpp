@@ -55,13 +55,13 @@ ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
 
     g_plugins->lanza ( "ServerSync_ServerSync_Post", this );
-    blDebug ( "END ServerSync::ServerSync", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ServerSync::~ServerSync()
 {
     blDebug ( "ServerSync::~ServerSync", 0 );
-    blDebug ( "END ServerSync::~ServerSync", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -79,7 +79,7 @@ void ServerSync::conection()
     
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     connect (socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
-    blDebug ( "END ServerSync::conection", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ServerSync::readyRead() {
@@ -98,7 +98,7 @@ void ServerSync::readyRead() {
 	((BtCompany *)mainCompany())->syncXML(texto);
 	array = "";
     }// end while
-    blDebug ( "END ServerSync::readyRead", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ServerSync::readChannelFinished() {
@@ -107,7 +107,7 @@ void ServerSync::readChannelFinished() {
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
     m_listaSockets.removeAll( socket);
-    blDebug ( "END ServerSync::readyRead", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void ServerSync::send(const QString & texto) {
@@ -121,5 +121,5 @@ void ServerSync::send(const QString & texto) {
 	  socket->write(texto.toLatin1());
 	} // end if
     } // end for
-    blDebug ( "END ServerSync::send", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

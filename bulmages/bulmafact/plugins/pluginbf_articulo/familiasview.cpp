@@ -44,7 +44,7 @@
 FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
         : BfForm ( comp, parent )
 {
-    blDebug ( "FamiliasView::FamiliasView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     m_listFamilias->setColumnCount ( 3 );
     QStringList headers;
@@ -91,7 +91,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
 
     pintar();
     blScript(this);
-    blDebug ( "END FamiliasView::FamiliasView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -100,8 +100,8 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
 **/
 FamiliasView::~FamiliasView()
 {
-    blDebug ( "FamiliasView::~FamiliasView", 0 );
-    blDebug ( "END FamiliasView::~FamiliasView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -110,7 +110,7 @@ FamiliasView::~FamiliasView()
 **/
 void FamiliasView::pintar()
 {
-    blDebug ( "FamiliasView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Activamos el semaforo de pintado para que no haya slots concurrentes.
     m_semaforoPintar = TRUE;
     QTreeWidgetItem *it;
@@ -168,7 +168,7 @@ void FamiliasView::pintar()
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
     m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
-    blDebug ( "END FamiliasView::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -178,12 +178,12 @@ void FamiliasView::pintar()
 **/
 QString FamiliasView::codigoCompletoFamilia()
 {
-    blDebug ( "FamiliasView::codigoCompletoFamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if ( it ) {
         return it->text ( COL_CODCOMPLETOFAMILIA );
     } // end if
-    blDebug ( "END FamiliasView::codigoCompletoFamilia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -194,12 +194,12 @@ QString FamiliasView::codigoCompletoFamilia()
 **/
 QString FamiliasView::idFamilia()
 {
-    blDebug ( "FamiliasView::idFamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if ( it ) {
         return it->text ( COL_IDFAMILIA );
     } // end if
-    blDebug ( "END FamiliasView::idFamilia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -220,12 +220,12 @@ QString FamiliasView::idFamiliaModified()
 **/
 QString FamiliasView::nombreFamilia()
 {
-    blDebug ( "FamiliasView::nombreFamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if ( it ) {
         return it->text ( COL_NOMFAMILIA );
     } // end if
-    blDebug ( "END FamiliasView::nombreFamilia", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 
@@ -238,12 +238,12 @@ QString FamiliasView::nombreFamilia()
 **/
 void FamiliasView::on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem *it )
 {
-    blDebug ( "FamiliasView::on_m_listFamilias_itemDoubleClicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_selectMode ) {
         m_idfamilia = it->text ( COL_IDFAMILIA );
         emit selected ( m_idfamilia );
     } // end if
-    blDebug ( "END FamiliasView::on_m_listFamilias_itemDoubleClicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -257,10 +257,10 @@ void FamiliasView::on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem *it )
 **/
 void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous )
 {
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_semaforoPintar ) return;
     m_semaforoPintar = TRUE;
-    blDebug ( "FamiliasView::on_m_listFamilias_currentItemChanged", 0, m_idfamilia );
 
     /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.    
     if ( previous ) {
@@ -287,8 +287,9 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
     } // end if
 
     mostrarplantilla();
-    blDebug ( "END FamiliasView::on_m_listFamilias_currentItemChanged", 0 );
     m_semaforoPintar = FALSE;
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -297,7 +298,7 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
 **/
 void FamiliasView::mostrarplantilla()
 {
-    blDebug ( "FamiliasView::mostrarplantilla", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query;
     if ( !m_idfamilia.isEmpty() ) {
         mui_nomFamilia->setEnabled ( TRUE );
@@ -332,7 +333,7 @@ void FamiliasView::mostrarplantilla()
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( "END FamiliasView::mostrarplantilla", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -342,7 +343,7 @@ void FamiliasView::mostrarplantilla()
 **/
 bool FamiliasView::trataModificado()
 {
-    blDebug ( "FamiliasView::trataModificado", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -353,7 +354,7 @@ bool FamiliasView::trataModificado()
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    blDebug ( "END FamiliasView::trataModificado", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( FALSE );
 }
 
@@ -365,7 +366,7 @@ bool FamiliasView::trataModificado()
 **/
 int FamiliasView::save()
 {
-    blDebug ( "FamiliasView::guardar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString prodfam;
     try {
         if ( m_idfamilia.isEmpty() ) {
@@ -411,7 +412,7 @@ int FamiliasView::save()
             pintar ( posicionCursor );
         } // end if
         dialogChanges_readValues();
-        blDebug ( "END FamiliasView::guardar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 	mainCompany()->commit();
         return 0;
@@ -451,7 +452,7 @@ void FamiliasView::pintar ( QTreeWidgetItem *it )
 **/
 void FamiliasView::on_mui_crear_clicked()
 {
-    blDebug ( "FamiliasView::on_mui_crear_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
@@ -474,7 +475,7 @@ void FamiliasView::on_mui_crear_clicked()
         m_idfamilia = cur->value( "idfamilia" );
         delete cur;
         pintar();
-        blDebug ( "END FamiliasView::on_mui_crear_clicked", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
         blMsgInfo ( _ ( "Error al crear la familia" ) );
@@ -487,7 +488,7 @@ void FamiliasView::on_mui_crear_clicked()
 **/
 void FamiliasView::on_mui_borrar_clicked()
 {
-    blDebug ( "FamiliasView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     int val = QMessageBox::question ( this,
                                       _ ( "Borrar" ) + " " + windowTitle(),
@@ -498,12 +499,13 @@ void FamiliasView::on_mui_borrar_clicked()
     if ( val == QMessageBox::Yes ) {
         if ( !remove() ) {
             dialogChanges_readValues();
-            blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
+	    blDebug ( Q_FUNC_INFO, 0, QString(_("'$1' borrado")).arg(windowTitle()) );
         } else {
+	    blDebug ( Q_FUNC_INFO, 0, QString(_("Error al borrar '$1'")).arg(windowTitle()) );
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
-    blDebug ( "END FamiliasView::on_mui_borrar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -514,7 +516,7 @@ void FamiliasView::on_mui_borrar_clicked()
 **/
 int FamiliasView::remove()
 {
-    blDebug ( "FamiliasView::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_idfamilia == "" ) {
         blMsgInfo ( _ ( "Debe seleccionar una familia" ) );
         return -1;
@@ -528,8 +530,9 @@ int FamiliasView::remove()
         m_idfamilia = "";
         dialogChanges_readValues();
         pintar();
-        blDebug ( "END FamiliasView::borrar", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } catch ( ... ) {
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al borrar la familia") );
         blMsgInfo ( _ ( "Error al borrar la familia" ) );
         return -1;
     } // end try
@@ -542,7 +545,7 @@ int FamiliasView::remove()
 **/
 void FamiliasView::on_mui_imprimir_clicked()
 {
-    blDebug ( "FamiliasView::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "familias.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "familias.rml";
@@ -599,7 +602,7 @@ void FamiliasView::on_mui_imprimir_clicked()
         file.close();
     } // end if
     blCreateAndLoadPDF ( "familias" );
-    blDebug ( "END FamiliasView::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -608,7 +611,7 @@ void FamiliasView::on_mui_imprimir_clicked()
 **/
 void FamiliasView::on_mui_aceptar_clicked()
 {
-    blDebug ( "FamiliasView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if ( it ) {
         m_idfamilia = it->text ( COL_IDFAMILIA );
@@ -616,7 +619,7 @@ void FamiliasView::on_mui_aceptar_clicked()
         m_idfamilia = "";
     } // end if
     BfForm::on_mui_aceptar_clicked();
-    blDebug ( "END FamiliasView::on_mui_aceptar_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

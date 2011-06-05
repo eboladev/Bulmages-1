@@ -112,7 +112,7 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "END FacturasProveedorList::FacturasProveedorList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -130,7 +130,7 @@ void FacturasProveedorList::iniciaForm()
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
     mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
     mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
-    blDebug ( "END FacturasProveedorList::iniciaForm" );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -140,7 +140,7 @@ void FacturasProveedorList::iniciaForm()
 FacturasProveedorList::~FacturasProveedorList()
 {
     blDebug ( "FacturasProveedorList::~FacturasProveedorList", 0 );
-    blDebug ( "END FacturasProveedorList::~FacturasProveedorList", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -160,7 +160,7 @@ void FacturasProveedorList::presentar()
     if ( !cur ) return;
     m_total->setText ( cur->value( "total" ) );
     delete cur;
-    blDebug ( "END FacturasProveedorList::presentar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -202,7 +202,7 @@ QString FacturasProveedorList::generaFiltro()
     if ( m_fechafin->text() != "" )
         filtro += " AND ffacturap <= '" + m_fechafin->text() + "' ";
 
-    blDebug ( "END FacturasProveedorList::generaFiltro", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( filtro );
 }
 
@@ -232,7 +232,7 @@ void FacturasProveedorList::editar ( int row )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al cargar la factura proveedor" ), this );
     } // end try
-    blDebug ( "END FacturasProveedorList::editar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -262,7 +262,7 @@ void FacturasProveedorList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar la factura de proveedor" ), this );
     } // end try
-    blDebug ( "END FacturasProveedorList::borrar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -274,7 +274,7 @@ void FacturasProveedorList::imprimir()
 {
     blDebug ( "FacturasProveedorList::on_mui_imprimir_clicked", 0 );
     mui_list->printPDF ( _ ( "Facturas de proveedores" ) );
-    blDebug ( "END FacturasProveedorList::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -289,7 +289,7 @@ void FacturasProveedorList::setMainCompany ( BfCompany *comp )
     m_proveedor->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    blDebug ( "END FacturasProveedorList::setMainCompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -301,7 +301,7 @@ QString FacturasProveedorList::idfacturap()
 {
     blDebug ( "FacturasProveedorList::idfacturap", 0 );
     return mdb_idfacturap;
-    blDebug ( "END FacturasProveedorList::idfacturap", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -313,7 +313,7 @@ void FacturasProveedorList::setidproveedor ( QString val )
 {
     blDebug ( "FacturasProveedorList::setidproveedor", 0 );
     m_proveedor->setId ( val );
-    blDebug ( "END FacturasProveedorList::setidproveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -325,7 +325,7 @@ void FacturasProveedorList::setidarticulo ( QString val )
 {
     blDebug ( "FacturasProveedorList::setidarticulo", 0 );
     m_articulo->setidarticulo ( val );
-    blDebug ( "END FacturasProveedorList::setidarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -349,7 +349,7 @@ void FacturasProveedorList::crear()
     
     fpv->show();
     fpv->mui_descfacturap->setFocus ( Qt::OtherFocusReason );
-    blDebug ( "END FacturasProveedorList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -381,7 +381,7 @@ FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) :
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( "END FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -391,7 +391,7 @@ FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) :
 FacturasProveedorListSubform::~FacturasProveedorListSubform()
 {
     blDebug ( "FacturasProveedorListSubform::~FacturasProveedorListSubform", 0 );
-    blDebug ( "END FacturasProveedorListSubform::~FacturasProveedorListSubform", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -403,7 +403,7 @@ void FacturasProveedorListSubform::load()
     blDebug ( "FacturasProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM facturap";
     BlSubForm::load ( SQLQuery );
-    blDebug ( "END FacturasProveedorListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -415,6 +415,6 @@ void FacturasProveedorListSubform::load ( QString query )
 {
     blDebug ( "FacturasProveedorListSubform::cargar", 0 );
     BlSubForm::load ( query );
-    blDebug ( "END FacturasProveedorListSubform::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

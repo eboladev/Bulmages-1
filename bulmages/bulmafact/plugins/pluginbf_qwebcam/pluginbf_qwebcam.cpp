@@ -89,7 +89,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     QWebCamView *l = new QWebCamView ( art->mainCompany(), art );
     l->setObjectName ( QString::fromUtf8 ( "lpromedios" ) );
     art->mui_tab->addTab ( l, _("Webcams") );
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -104,7 +104,7 @@ int ArticuloView_load ( ArticuloView *art )
     blDebug ( "ArticuloView_cargar", 0 );
     QWebCamView *l = art->findChild<QWebCamView *> ( "lpromedios" );
     l->load ( art->dbValue ( "idarticulo" ) );
-    blDebug ( "END ArticuloView_cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

@@ -47,7 +47,7 @@ Q19QToolButton1::Q19QToolButton1 ( FacturasList *cob , QWidget *parent ) : QTool
     blDebug ( "Q19QToolButton1::Q19QToolButton1", 0 );
     m_facturasList = cob;
     setBoton();
-    blDebug ( "END Q19QToolButton1::Q19QToolButton1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -57,7 +57,7 @@ Q19QToolButton1::Q19QToolButton1 ( FacturasList *cob , QWidget *parent ) : QTool
 Q19QToolButton1::~Q19QToolButton1()
 {
     blDebug ( "Q19QToolButton1::~Q19QToolButton1", 0 );
-    blDebug ( "END Q19QToolButton1::~Q19QToolButton1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -74,7 +74,7 @@ void Q19QToolButton1::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( "END Q19QToolButton1::setBoton", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -131,7 +131,7 @@ void Q19QToolButton1::click()
         file.close();
 
     */
-    blDebug ( "END Q19QToolButton1::click", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
 

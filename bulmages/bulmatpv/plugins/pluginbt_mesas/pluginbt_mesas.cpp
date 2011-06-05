@@ -43,7 +43,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_mesas", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END pluginbt_mesas::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -55,7 +55,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 {
     blDebug ( "pluginbt_mesas::exitPoint", 0 );
     delete g_admin;
-    blDebug ( "END pluginbt_mesas::exitPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

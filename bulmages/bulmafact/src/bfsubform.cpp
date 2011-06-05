@@ -51,11 +51,11 @@ BfSubForm::BfSubForm ( QWidget *parent ) : BlSubForm ( parent )
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfSubForm_BfSubForm", this );
     if ( res != 0 ) {
-        blDebug ( "END BfSubForm::BfSubForm", 0, "Salida por plugins" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
         return;
     } // end if
 
-    blDebug ( "END BfSubForm::BfSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -66,7 +66,7 @@ BfSubForm::~BfSubForm()
 {
     blDebug ( "BfSubForm::~BfSubForm", 0 );
     delete m_delegate;
-    blDebug ( "END BfSubForm::~BfSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -78,7 +78,7 @@ void BfSubForm::load ( QString query )
 {
     blDebug ( "BfSubForm::cargar", 0, query );
     BlSubForm::load ( query );
-    blDebug ( "END BfSubForm::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -99,11 +99,11 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfSubForm_pressedAsterisk", this );
     if ( res != 0 ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0, "Salida por plugins" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
         return;
     } // end if
 
-    blDebug ( "END BfSubForm::pressedAsterisk", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -117,7 +117,7 @@ void BfSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     blDebug ( "BfSubForm::pressedSlash", 0 );
     QString text = blTextEditor ( camp->text() );
     camp->set ( text );
-    blDebug ( "END BfSubForm::pressedSlash", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -133,13 +133,13 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     /// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
 
     if ( !rec->exists ( "idarticulo" ) ) {
-        blDebug ( "END BfSubForm::pressedMinus", 0, "No hay un idarticulo" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("No existe 'idarticulo'") );
         return;
     } // end if
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
     if ( !cur ) {
-        blDebug ( "END BfSubForm::pressedMinus", 0, "No hay un idarticulo" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("No existe articulo") );
         return;
     } // end if
 
@@ -148,7 +148,7 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
     delete cur;
 
-    blDebug ( "END BfSubForm::pressedMinus", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -249,7 +249,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             */
 
             delete cur;
-            blDebug ( "END BfSubForm::editFinished", 0, "Articulo inexistente" );
+            blDebug ( ("END ", Q_FUNC_INFO), 0, _("El articulo no existe") );
             return;
         } // end if
 
@@ -262,7 +262,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
     if ( res != 0 ) {
-        blDebug ( "END BfSubForm::editFinished", 0, "Salida por plugins" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
         return;
     } // end if
 
@@ -277,7 +277,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     
     /// Refrescamos el registro.
     rec->refresh();
-    blDebug ( "END BfSubForm::editFinished", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -293,13 +293,13 @@ void BfSubForm::setIdCliente ( QString id )
     /// En la primera carga no hay reajustes, pero si actualizacion del cliente.
     if ( mdb_idcliente  == "" ) {
         mdb_idcliente = id;
-        blDebug ( "END BfSubForm::setIdCliente", 0, "Primera carga" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Primera carga") );
         return;
     } // end if
 
     /// En las cargas sucesivas si el idcliente no ha cambiado no se hace nada
     if ( mdb_idcliente == id ) {
-        blDebug ( "END BfSubForm::setIdCliente", 0, "cliente sin cambios" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Cliente sin cambios") );
         return;
     } // end if
 
@@ -314,7 +314,7 @@ void BfSubForm::setIdCliente ( QString id )
 
     /// Si el idcliente no existe salimos.
     if ( id == "" ) {
-        blDebug ( "END BfSubForm::setIdCliente", 0, "idcliente invalido" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("'idcliente' no valido") );
         return;
     } // end if
 
@@ -342,7 +342,7 @@ void BfSubForm::setIdCliente ( QString id )
         } // end for
     } // end if
     delete curcliente;
-    blDebug ( "END BfSubForm::setIdCliente", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -375,7 +375,7 @@ void BfSubForm::setIdProveedor ( QString id )
 
     /// Si el idproveedor no existe salimos.
     if ( id == "" ) {
-        blDebug ( "END BfSubForm::setIdProveedor", 0, "idproveedor invalido" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("'idproveedor' no valido") );
         return;
     } // end if
 
@@ -401,7 +401,7 @@ void BfSubForm::setIdProveedor ( QString id )
         } // end for
     } // end if
     delete curproveedor;
-    blDebug ( "END BfSubForm::setIdProveedor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -413,7 +413,7 @@ void BfSubForm::setIdAlmacen ( QString id )
 {
     blDebug ( "BfSubForm::setIdAlmacen", 0 );
     m_idAlmacen = id;
-    blDebug ( "END BfSubForm::setIdAlmacen", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -426,7 +426,7 @@ void BfSubForm::setMainCompany ( BlMainCompany *c )
     blDebug ( "BfSubForm::setcompany", 0 );
     BlSubForm::setMainCompany ( c );
     m_delegate->setMainCompany ( c );
-    blDebug ( "END BfSubForm::setcompany", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -439,7 +439,7 @@ int BfSubForm::cerrarEditor()
     blDebug ( "BfSubForm::cerrarEditor", 0 );
     QWidget *editor = mui_list->QAbstractItemView::indexWidget ( mui_list->currentIndex() );
     m_delegate->cerrarEditor ( editor );
-    blDebug ( "END BfSubForm::cerrarEditor", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -470,7 +470,7 @@ QString BfSubForm::idproveedor()
 QString BfSubForm::idAlmacen ()
 {
     blDebug ( "BfSubForm::idAlmacen", 0 );
-    blDebug ( "END BfSubForm::idAlmacen", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_idAlmacen;
 }
 
@@ -487,7 +487,7 @@ BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate
     blDebug ( "BfSubFormDelegate::BfSubFormDelegate", 0 );
 //    m_subform = ( BlSubForm * ) parent;
 //    installEventFilter ( this );
-    blDebug ( "END BfSubFormDelegate::BfSubFormDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -497,7 +497,7 @@ BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate
 BfSubFormDelegate::~BfSubFormDelegate()
 {
     blDebug ( "BfSubFormDelegate::~BfSubFormDelegate", 0 );
-    blDebug ( "END BfSubFormDelegate::~BfSubFormDelegate", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -516,7 +516,7 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     if ( linea->fieldName() == "desc" + m_subform->tableName() ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
-        blDebug ( "END BfSubFormDelegate::createEditor", 0, "QTextEdit" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "BlTextEditDelegate" );
         return editor;
     } else if ( linea->fieldName() == "cant" + m_subform->tableName()
                 || linea->fieldName() == "pvp" + m_subform->tableName()
@@ -528,25 +528,25 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setMinimum ( -10000000 );
         editor->setMaximum ( 10000000 );
         editor->setDecimals(linea->numericPrecision());
-        blDebug ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "BlDoubleSpinBox" );
         return editor;
     } else if ( linea->fieldName() == "desctipo_iva" ) {
         BfBuscarTipoIVADelegate * editor = new BfBuscarTipoIVADelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        blDebug ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarTipoIVA" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "BfBuscarTipoIVADelegate" );
         return editor;
     } else if ( linea->fieldName() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
         BfBuscarTrabajadorDelegate * editor = new BfBuscarTrabajadorDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        blDebug ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarTrabajadorDelegate" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "BfBuscarTrabajadorDelegate" );
         return editor;
     } else if ( linea->fieldName() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
         BfBuscarAlmacenDelegate * editor = new BfBuscarAlmacenDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        blDebug ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarAlmacenDelegate" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, "BfBuscarAlamacenDelegate" );
         return editor;
     } else  {
-        blDebug ( "END BfSubFormDelegate::createEditor", 0, "Default Editor" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Editor por defecto") );
         return BlSubFormDelegate::createEditor ( parent, option, index );
     } // end if
 }
@@ -565,7 +565,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 
     /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-        blDebug ( "END BfSubFormDelegate::setModelData", 0, "Fila o columna invalida" );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Fila o columna invalida") );
         return;
     } // end if
 
@@ -609,7 +609,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } else {
         BlSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( "END BfSubFormDelegate::setModelData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -652,7 +652,7 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     } else {
         BlSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( "END BfSubFormDelegate::setEditorData", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -710,7 +710,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
                 /// Disparamos los plugins.
                 int res = g_plugins->lanza ( "BfSubForm_calculaPVP", this );
                 if ( res != 0 ) {
-                    blDebug ( "END BfSubForm::calculapvp", 0, "Salida por plugins" );
+		    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
                     return;
                 } // end if
 
@@ -774,7 +774,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
 
     delete cur;
     delete cur3;
-    blDebug ( "END BfSubForm::calculaPVP", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 

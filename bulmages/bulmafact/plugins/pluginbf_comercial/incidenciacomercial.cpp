@@ -34,7 +34,7 @@
 **/
 IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "IncidenciaComercial::IncidenciaComercial", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Incidencia comercial" ) );
     setDbTableName ( "incidenciacomercial" );
     setDbFieldId ( "idincidenciacomercial" );
@@ -47,7 +47,7 @@ IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : 
     addDbField ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
     addDbField ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
     blScript(this);
-    blDebug ( "END IncidenciaComercial::IncidenciaComercial", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -56,8 +56,8 @@ IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : 
 **/
 IncidenciaComercial::~IncidenciaComercial()
 {
-    blDebug ( "IncidenciaComercial::~IncidenciaComercial", 0 );
-    blDebug ( "END IncidenciaComercial::~IncidenciaComercial", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -67,12 +67,12 @@ IncidenciaComercial::~IncidenciaComercial()
 **/
 void IncidenciaComercial::pintar()
 {
-    blDebug ( "IncidenciaComercial::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins con IncidenciaComercial_pintar
     int res = g_plugins->lanza ( "IncidenciaComercial_pintar", this );
     if ( res != 0 )
         return;
-    blDebug ( "END IncidenciaComercial::pintar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -83,7 +83,7 @@ void IncidenciaComercial::pintar()
 **/
 int IncidenciaComercial::load ( QString id )
 {
-    blDebug ( "IncidenciaComercial::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query = "SELECT * FROM incidenciacomercial WHERE idincidenciacomercial = " + id;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() )  {
@@ -92,6 +92,6 @@ int IncidenciaComercial::load ( QString id )
     delete cur;
     setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
     dialogChanges_readValues();
-    blDebug ( "END IncidenciaComercial::cargar", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

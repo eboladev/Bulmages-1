@@ -42,7 +42,7 @@ BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
     m_listalineas = NULL;
     m_listadescuentos = NULL;
     
-    blDebug ( "END BfForm::BfForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -55,7 +55,7 @@ BfForm::~BfForm()
     
     mainCompany() ->removeWindow ( this );
     
-    blDebug ( "END BfForm::~BfForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -65,7 +65,7 @@ BfForm::~BfForm()
 BfCompany * BfForm::mainCompany()
 {
     blDebug ( "BfForm::company", 0 );
-    blDebug ( "END BfForm::company", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return ( BfCompany * ) BlForm::mainCompany();
 }
@@ -201,7 +201,7 @@ fprintf(stderr, "IVA\n");
     BlFixed totirpf = totbaseimp * irpf / 100;
     pintatotales ( totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, ( basei * porcentt / 100 ) + descuentolinea, totirpf, totreqeq );
     
-    blDebug ( "END BfForm::calculaypintatotales", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
@@ -275,7 +275,7 @@ int BfForm::parseTags ( QString &buff, int tipoEscape )
 
     parseTagsBf ( buff, tipoEscape );
     
-    blDebug ( "END BfForm::parseTags", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return ret;
 }
@@ -334,7 +334,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
 
         /// Si no hay lista de lineas salimos.
         if (!m_listalineas) {
-            blDebug ( "END BfForm::parseTagsBf", 0 );
+            blDebug ( ("END ", Q_FUNC_INFO), 0 );
             return;
         } // end if
 
@@ -580,7 +580,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
         
     }
 
-    blDebug ( "END BfForm::parseTagsBf", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
@@ -649,7 +649,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         
     } // end for
 
-    blDebug ( "END BfForm::trataLineasDetalle", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return result;
 }
@@ -717,7 +717,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
         
     } // end for
     
-    blDebug ( "END BfForm::trataLineasDescuento", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return result;
 }
@@ -956,7 +956,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
 
     } // end switch
 
-    blDebug ( "END BfForm::trataTotales", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return result;
 }
@@ -965,7 +965,7 @@ int BfForm::generateRML ( void )
 {
     blDebug ( "BfForm::generateRML(void)", 0 );
     int err = BlForm::generateRML();
-    blDebug ( "END BfForm::generateRML(void)", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return err;
     
 }
@@ -974,7 +974,7 @@ int BfForm::generateRML ( void )
 QString BfForm::templateName ( void )
 {
     blDebug ( "BfForm::templateName", 0 );
-    blDebug ( "END BfForm::templateName", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return m_tablename;
 }
@@ -1002,16 +1002,15 @@ int BfForm::generateRML ( const QString &arch )
 
         BlForm::generateRML ( arch );
 
-        blDebug ( "END BfForm::generateRML, con argumento const QString &arch", 0 );
-        
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 1;
 
     } catch ( int e ) {
-        blDebug ( "Error en el procesado del archivo RML", 2 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en el procesado del archivo RML") );
         throw e;
 
     } catch ( ... ) {
-        blDebug ( "Error en el procesado del archivo RML", 2 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en el procesado del archivo RML") );
         throw ( -1 );
     } // end try
 }
@@ -1033,7 +1032,7 @@ void BfForm::imprimir()
 
         BlForm::imprimir();
 
-        blDebug ( "END BfForm::imprimir", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     } catch ( int e ) {
         if ( e == 100 ) {
@@ -1055,7 +1054,7 @@ void BfForm::setListaLineas ( BfSubForm *form )
     
     m_listalineas = form;
     
-    blDebug ( "END BfForm::setListaLineas", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -1068,7 +1067,7 @@ void BfForm::setListaDescuentos ( BfSubForm *form )
     
     m_listadescuentos = form;
     
-    blDebug ( "END BfForm::setListaDescuentos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 ///
@@ -1078,7 +1077,7 @@ void BfForm::setListaDescuentos ( BfSubForm *form )
 BfSubForm* BfForm::getlistalineas()
 {
     blDebug ( "BfForm::getlistalineas", 0 );
-    blDebug ( "END BfForm::getlistalineas", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return m_listalineas;
 }
@@ -1090,7 +1089,7 @@ BfSubForm* BfForm::getlistalineas()
 BfSubForm* BfForm::getlistadescuentos()
 {
     blDebug ( "BfForm::getlistadescuentos", 0 );
-    blDebug ( "END BfForm::getlistadescuentos", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return m_listadescuentos;
 }

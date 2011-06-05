@@ -53,7 +53,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->show();
     g_doc1->loadConfig();
-    blDebug ( "END plugintecladonumerico::entryPoint", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

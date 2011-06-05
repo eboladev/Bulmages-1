@@ -129,7 +129,7 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
     //databaseScript->setDocument(doc);
     databaseScript->setPlainText(texto);
     
-    blDebug ( "END BlFormConfig::BlFormConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void BlFormConfig::on_editarScript_released() {
@@ -145,6 +145,6 @@ void BlFormConfig::on_editarScript_released() {
 BlFormConfig::~BlFormConfig()
 {
     blDebug ( "BlFormConfig::~BlFormConfig", 0 );
-    blDebug ( "END BlFormConfig::~BlFormConfig", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

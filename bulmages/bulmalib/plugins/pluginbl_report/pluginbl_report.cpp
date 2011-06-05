@@ -49,7 +49,7 @@ BlMainCompany *g_emp = NULL;
 PluginBl_Report::PluginBl_Report()
 {
     blDebug ( "PluginBl_Report::PluginBl_Report", 0 );
-    blDebug ( "END PluginBl_Report::PluginBl_Report", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -59,7 +59,7 @@ PluginBl_Report::PluginBl_Report()
 PluginBl_Report::~PluginBl_Report()
 {
     blDebug ( "PluginBl_Report::~PluginBl_Report", 0 );
-    blDebug ( "END PluginBl_Report::~PluginBl_Report", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -74,7 +74,7 @@ void PluginBl_Report::elslot1( )
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
-    blDebug ( "END PluginBl_Report::elslot", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
