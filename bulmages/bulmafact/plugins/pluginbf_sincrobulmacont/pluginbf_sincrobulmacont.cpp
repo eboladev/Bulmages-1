@@ -38,7 +38,7 @@
 **/
 int entryPoint ( BfBulmaFact *bf )
 {
-    blDebug ( "Estoy dentro del plugin SincroBulmacont", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bf->company()->dbPatchVersionCheck("PluginBf_SincroBulmaCont", "0.9.1-003");

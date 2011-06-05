@@ -101,31 +101,25 @@ int BlAction_triggered(BlAction *accion) {
         if ( g_articulosList ) {
             g_articulosList->hide();
             g_articulosList->show();
-        }// end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
-   
+        } // end if
     } // end if
 
     if (accion->objectName() == "mui_actionArticuloNuevo") {
         ArticuloView * bud = new ArticuloView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
-   
     } // end if
 
     if (accion->objectName() == "mui_actionArticulosTipo") {
         TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) g_bges->company(), 0, FALSE );
         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionFamilias") {
         FamiliasView *pag = new FamiliasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

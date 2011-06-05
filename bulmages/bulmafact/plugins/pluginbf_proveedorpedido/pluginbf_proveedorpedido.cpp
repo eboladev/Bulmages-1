@@ -39,7 +39,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada de PluginBf_ProveedorPedido\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -74,21 +74,22 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorPedido" );
+
     if (accion->objectName() == "mui_actionProveedoresPedidos") {
-        blDebug ( "PluginBf_ProveedorPedido::BlAction_triggered::mui_actionProveedoresPedidos", 0 );
         if ( g_pedidosProveedorList ) {
             g_pedidosProveedorList->hide();
             g_pedidosProveedorList->show();
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
+
     if (accion->objectName() == "mui_actionProveedorPedidoNuevo") {
-        blDebug ( "PluginBf_ProveedorPedido::BlAction_triggered::mui_actionProveedorPedidoNuevo", 0 );
         PedidoProveedorView * bud = new PedidoProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "PluginBf_ProveedorPedido::BlAction_triggered::mui_actionProveedorPedidoNuevo", 0 );
     } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

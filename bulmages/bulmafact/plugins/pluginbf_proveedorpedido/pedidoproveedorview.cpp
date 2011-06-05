@@ -43,7 +43,7 @@
 PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "PedidoProveedorView::PedidoProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -109,7 +109,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
 **/
 PedidoProveedorView::~PedidoProveedorView()
 {
-    blDebug ( "PedidoProveedorView::~PedidoProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -125,7 +125,7 @@ PedidoProveedorView::~PedidoProveedorView()
 **/
 void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( "PedidoProveedorView::pintatotales", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_totalBaseImponible->setText ( base.toQString() );
     mui_totalImpuestos->setText ( iva.toQString() );
     mui_totalPedido->setText ( total.toQString() );
@@ -144,7 +144,7 @@ void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tota
 **/
 void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
 {
-    blDebug ( "PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_lineasDetalle->setColumnValue ( "idproveedor", id );
     mui_idforma_pago->setIdProveedor ( id );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -175,7 +175,7 @@ void PedidoProveedorView::on_mui_lineasDetalle_editFinish ( int, int )
 **/
 int PedidoProveedorView::beforeDelete()
 {
-    blDebug ( "PedidoProveedor::beforeDelete", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_listalineas->remove();
     m_listadescuentos->remove();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -190,7 +190,7 @@ int PedidoProveedorView::beforeDelete()
 **/
 int PedidoProveedorView::cargarPost ( QString idbudget )
 {
-    blDebug ( "PedidoProveedor::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_listalineas->load ( idbudget );
     m_listadescuentos->load ( idbudget );
@@ -211,7 +211,7 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
 **/
 int PedidoProveedorView::afterSave()
 {
-    blDebug ( "PedidoProveedor::guardar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_listalineas->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
     m_listadescuentos->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
@@ -228,7 +228,7 @@ int PedidoProveedorView::afterSave()
 **/
 void PedidoProveedorView::imprimir()
 {
-    blDebug ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlDbRecordSet *cur = NULL;
 
     try {
@@ -392,11 +392,12 @@ void PedidoProveedorView::imprimir()
         }
 
         blCreateAndLoadPDF ( "pedidoproveedor" );
-        blDebug ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return;
 
     } catch ( ... ) {
         if ( cur ) delete cur;
+        blDebug ( Q_FUNC_INFO, 0, _("Error.") );
         throw - 1;
     } // end try
 }

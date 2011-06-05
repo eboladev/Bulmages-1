@@ -128,7 +128,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             /// Entramos en el directorio
 
             if ( !direfactura->cd ( fileInfo->fileName() ) ) {
-		blDebug ( Q_FUNC_INFO, 0, QString(_("Error intentando entrar en '$1'")).arg(fileInfo->fileName()) );
+		blDebug ( Q_FUNC_INFO, 0, QString(_("Error intentando entrar en '$1'.")).arg(fileInfo->fileName()) );
 		blMsgError(QString(_("Error intentando entrar en '$1'")).arg(fileInfo->fileName()));
                 continue;
             }

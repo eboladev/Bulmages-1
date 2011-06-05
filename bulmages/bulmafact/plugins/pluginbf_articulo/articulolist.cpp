@@ -272,7 +272,7 @@ void ArticuloList::on_mui_exportar_clicked()
         bulmafact2XML ( filexml, IMPORT_ARTICULOS );
         filexml.close();
     } else {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo") );
+	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
     } // end if
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -298,7 +298,7 @@ void ArticuloList::on_mui_importar_clicked()
         filexml.close();
         presentar();
     } else {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo") );
+	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
     } // end if
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

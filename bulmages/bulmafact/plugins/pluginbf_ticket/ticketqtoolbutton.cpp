@@ -49,7 +49,7 @@
 **/
 TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, TicketClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "TicketQToolButton::TicketQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
@@ -64,7 +64,7 @@ TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView 
 **/
 TicketQToolButton::~TicketQToolButton()
 {
-    blDebug ( "TicketQToolButton::~TicketQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -74,7 +74,7 @@ TicketQToolButton::~TicketQToolButton()
 **/
 void TicketQToolButton::setBoton()
 {
-    blDebug ( "TicketQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Imprimir Ticket" ) );
@@ -91,22 +91,17 @@ void TicketQToolButton::setBoton()
 **/
 void TicketQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
-
-
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_albaranClienteView != NULL ) {
-
-
     
     m_albaranClienteView->generateRML("ticket_normal.txt");
-
 
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+	blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
     } else {
         QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt";
         system ( comando.toAscii().data() );

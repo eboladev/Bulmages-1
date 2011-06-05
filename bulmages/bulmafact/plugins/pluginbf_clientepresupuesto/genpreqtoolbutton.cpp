@@ -620,7 +620,7 @@ void VerPreQToolButton::verPresupuesto()
             } // end while
         } else {
             blMsgInfo ( _ ( "No hay presupuestos con la misma referencia." ), this );
-            blDebug ( Q_FUNC_INFO, 0, _("No hay presupuestos con la misma referencia") );
+            blDebug ( Q_FUNC_INFO, 0, _("No hay presupuestos con la misma referencia.") );
         } // end if
 
         delete cur;

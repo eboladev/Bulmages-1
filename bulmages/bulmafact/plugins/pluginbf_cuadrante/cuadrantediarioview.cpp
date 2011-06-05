@@ -350,7 +350,7 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
             ; date = date.addDays ( 1 ) ) {
         QDate fechaant = date.addDays ( -7 );
         QString query = "SELECT * FROM cuadrante WHERE fechacuadrante = '" + fechaant.toString ( "dd/MM/yyyy" ) + "'";
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'")).arg(query) );
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'.")).arg(query) );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         while ( !cur->eof() ) {
             query = "UPDATE cuadrante SET ";

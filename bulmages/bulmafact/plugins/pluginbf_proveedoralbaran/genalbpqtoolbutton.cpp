@@ -47,7 +47,7 @@
 **/
 GenAlbProQToolButton::GenAlbProQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "GenAlbProQToolButton::GenAlbProQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_object = fac;
     setBoton();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -59,7 +59,7 @@ GenAlbProQToolButton::GenAlbProQToolButton ( QWidget *fac , QWidget *parent ) : 
 **/
 GenAlbProQToolButton::~GenAlbProQToolButton()
 {
-    blDebug ( "GenAlbProQToolButton::~GenAlbProQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -69,7 +69,7 @@ GenAlbProQToolButton::~GenAlbProQToolButton()
 **/
 void GenAlbProQToolButton::setBoton()
 {
-    blDebug ( "GenAlbProQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Albaran Proveedor") );
@@ -88,7 +88,7 @@ void GenAlbProQToolButton::setBoton()
 **/
 void GenAlbProQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
 //        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
@@ -110,7 +110,7 @@ void GenAlbProQToolButton::click()
 **/
 void GenAlbProQToolButton::generarAlbaranProveedor()
 {
-    blDebug ( "GenAlbProQToolButton::generarAlbaranProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
 
 

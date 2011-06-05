@@ -41,7 +41,7 @@
 RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "RecibosList::RecibosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setupUi ( this );
     
@@ -66,7 +66,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "RecibosList::RecibosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setupUi ( this );
     
@@ -114,14 +114,14 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 RecibosList::~RecibosList()
 {
-    blDebug ( "RecibosList::~RecibosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 void RecibosList::iniciaForm()
 {
-    blDebug ( "RecibosList::iniciaForm" );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "RecibosList_iniciaForm", this );
@@ -143,7 +143,7 @@ void RecibosList::iniciaForm()
 */
 void RecibosList::presentar()
 {
-    blDebug ( "RecibosList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if ( mainCompany() != NULL ) {
 	QString query = "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() ;
@@ -158,7 +158,7 @@ void RecibosList::presentar()
 */
 QString RecibosList::generaFiltro()
 {
-    blDebug ( "RecibosList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QString filtro = "";
     
@@ -198,7 +198,7 @@ QString RecibosList::generaFiltro()
 */
 void RecibosList::crear()
 {
-    blDebug ( "RecibosList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     ReciboView *bud = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
@@ -212,7 +212,7 @@ void RecibosList::crear()
 */
 void RecibosList::imprimir()
 {
-    blDebug ( "RecibosList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->printPDF ( _ ( "Recibos" ) );
     
@@ -227,7 +227,7 @@ void RecibosList::imprimir()
 */
 void RecibosList::remove()
 {
-    blDebug ( "RecibosList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int a = mui_list->currentRow();
     if ( a < 0 ) {
@@ -258,7 +258,7 @@ void RecibosList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void RecibosList::editar ( int )
 {
-    blDebug ( "RecibosList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
@@ -286,7 +286,7 @@ void RecibosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void RecibosList::submenu ( const QPoint & )
 {
-    blDebug ( "RecibosList::submenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int a = mui_list->currentRow();
     if ( a < 0 )
@@ -312,7 +312,7 @@ void RecibosList::submenu ( const QPoint & )
 **/
 void RecibosList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "RecibosList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
@@ -324,7 +324,7 @@ void RecibosList::setMainCompany ( BfCompany *comp )
 **/
 QString RecibosList::idrecibo()
 {
-    blDebug ( "RecibosList::idrecibo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return mdb_idrecibo;
@@ -339,7 +339,7 @@ QString RecibosList::idrecibo()
 */
 RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "RecibosListSubForm::RecibosListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "RecibosListSubForm_RecibosListSubForm", this );
@@ -367,7 +367,7 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
 
 RecibosListSubForm::~RecibosListSubForm()
 {
-    blDebug ( "RecibosListSubForm::~RecibosListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -30,7 +30,7 @@
 BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BusquedaTarifa::BusquedaTarifa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_cursorcombo = NULL;
     setMouseTracking ( TRUE );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
@@ -43,7 +43,7 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
 **/
 BusquedaTarifa::~BusquedaTarifa()
 {
-    blDebug ( "BusquedaTarifa::~BusquedaTarifa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -54,7 +54,7 @@ BusquedaTarifa::~BusquedaTarifa()
 **/
 void BusquedaTarifa::setIdTarifa ( QString idtarifa )
 {
-    blDebug ( "BusquedaTarifa::setIdTarifa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 //    mdb_idtarifa = idtarifa;
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
@@ -79,7 +79,7 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
 
 void BusquedaTarifa::m_activated ( int index )
 {
-    blDebug ( "BusquedaTarifa::m_activated", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->value( "idtarifa", index - 1 ) ) );
     } else {
@@ -93,7 +93,7 @@ void BusquedaTarifa::m_activated ( int index )
 
 QString BusquedaTarifa::idtarifa()
 {
-    blDebug ( "BusquedaTarifa::idtarifa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     int index = currentIndex();
     if ( index > 0 ) {
@@ -109,7 +109,7 @@ QString BusquedaTarifa::idtarifa()
 
 QString BusquedaTarifa::fieldValue()
 {
-    blDebug ( "BusquedaTarifa::fieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return idtarifa();
 }
@@ -117,7 +117,7 @@ QString BusquedaTarifa::fieldValue()
 
 void BusquedaTarifa::setFieldValue ( QString idtarifa )
 {
-    blDebug ( "BusquedaTarifa::setFieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setIdTarifa ( idtarifa );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

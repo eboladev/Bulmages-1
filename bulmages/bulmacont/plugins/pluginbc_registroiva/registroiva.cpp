@@ -96,11 +96,11 @@ int RegistroIva::remove()
             if ( error ) throw - 1;
 
             mainCompany() ->commit();
-	    blDebug ( Q_FUNC_INFO, 0, _("Registro borrado correctamente") );
+	    blDebug ( Q_FUNC_INFO, 0, _("Registro borrado correctamente.") );
             dialogChanges_readValues();
             close();
         } catch ( ... ) {
-	    blDebug ( Q_FUNC_INFO, 0, _("Error. No se pudo borrar el registro de IVA") );
+	    blDebug ( Q_FUNC_INFO, 0, _("Error. No se pudo borrar el registro de IVA.") );
             mainCompany() ->rollback();
         } // end try
     } // end if
@@ -298,7 +298,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error en la transaccion") );
+	blDebug ( Q_FUNC_INFO, 0, _("Error en la transaccion.") );
         mainCompany() ->rollback();
     } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -369,7 +369,7 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error en la busqueda") );
+	blDebug ( Q_FUNC_INFO, 0, _("Error en la busqueda.") );
         mainCompany() ->rollback();
     } // end try
 
@@ -448,13 +448,13 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
         error = mainCompany() ->runQuery ( SQLQuery );
         if ( error ) {
-	    blDebug ( Q_FUNC_INFO, 0, QString(_("Error en la consulta: '$1'")).arg(SQLQuery) );
+	    blDebug ( Q_FUNC_INFO, 0, QString(_("Error en la consulta: '$1'.")).arg(SQLQuery) );
         } // end if
 
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
         error = mainCompany() ->runQuery ( SQLQuery );
         if ( error ) {
-	    blDebug ( Q_FUNC_INFO, 0, QString(_("Error en la consulta: '$1'")).arg(SQLQuery) );
+	    blDebug ( Q_FUNC_INFO, 0, QString(_("Error en la consulta: '$1'.")).arg(SQLQuery) );
         } // end if
 
         /// Cargamos los registros que quedan porque seguro que son de IVA.
@@ -465,12 +465,12 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         m_lineas->load ( SQLQuery );
         recalculaIva();
 
-	blDebug ( Q_FUNC_INFO, 0, _("Limpiamos la base de datos") );
+	blDebug ( Q_FUNC_INFO, 0, _("Limpiamos la base de datos.") );
         SQLQuery = "DROP TABLE lacosa";
         error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error en la busqueda") );
+	blDebug ( Q_FUNC_INFO, 0, _("Error en la busqueda.") );
         mainCompany() ->rollback();
     } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

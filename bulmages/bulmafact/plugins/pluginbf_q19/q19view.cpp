@@ -40,7 +40,7 @@
 Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "Q19View::Q19View", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -73,7 +73,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
 */
 Q19View::~Q19View()
 {
-    blDebug ( "Q19View::~Q19View", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
     delete m_q19;
@@ -123,7 +123,7 @@ Q19View::~Q19View()
 **/
 void Q19View::on_mui_aceptar_clicked()
 {
-    blDebug ( "Q19View::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
 
 
@@ -189,16 +189,16 @@ void Q19View::on_mui_aceptar_clicked()
               close();
           }
     } catch ( ... ) {
-       blDebug ( _("Error al generar remesa bancaria"), 2 );
+	blDebug ( Q_FUNC_INFO, 0, _("Error al generar remesa bancaria.") );
+	blMsgError(_("Error al generar remesa bancaria."));
     } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 void Q19View::closeEvent ( QCloseEvent *e ) {
-  //no hay nada que guardar
-   blDebug ( "Q19View::closeEvent", 0, windowTitle() );
-   
+   //no hay nada que guardar
+   blDebug ( Q_FUNC_INFO, 0 ); 
    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

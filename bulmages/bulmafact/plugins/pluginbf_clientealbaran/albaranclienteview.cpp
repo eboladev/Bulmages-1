@@ -230,7 +230,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             } // end while
         } else {
             blMsgInfo ( _ ( "No hay pedidos con la misma referencia." ), this );
-	    blDebug ( Q_FUNC_INFO, 0, _("No hay pedidos con esta referencia") );
+	    blDebug ( Q_FUNC_INFO, 0, _("No hay pedidos con esta referencia.") );
         } // end if
 
         delete cur;

@@ -45,7 +45,7 @@
 AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     mdb_idalbaranp = "";
     setSubForm ( mui_list );
@@ -68,7 +68,7 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
 **/
 void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "AlbaranesProveedor::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_proveedor->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
@@ -88,7 +88,7 @@ void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
 **/
 void AlbaranesProveedor::crear()
 {
-    blDebug ( "AlbaranesProveedor::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mainCompany() != NULL ) {
         AlbaranProveedorView *apv = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         mainCompany()->pWorkspace()->addSubWindow ( apv );
@@ -114,7 +114,7 @@ void AlbaranesProveedor::crear()
 **/
 void AlbaranesProveedor::setidproveedor ( QString val )
 {
-    blDebug ( "AlbaranesProveedor::setidproveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_proveedor->setId ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -126,9 +126,9 @@ void AlbaranesProveedor::setidproveedor ( QString val )
 **/
 void AlbaranesProveedor::setidarticulo ( QString val )
 {
-    blDebug ( "AlbaranesProveedor::setidarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_articulo->setidarticulo ( val );
-    blDebug ( "AlbaranesProveedor::setidarticulo", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -138,7 +138,7 @@ void AlbaranesProveedor::setidarticulo ( QString val )
 **/
 QString AlbaranesProveedor::idalbaranp()
 {
-    blDebug ( "AlbaranesProveedor::idalbaranp", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idalbaranp;
 }
@@ -158,7 +158,7 @@ QString AlbaranesProveedor::idalbaranp()
 AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     setMainCompany ( comp );
     setSubForm ( mui_list );
@@ -183,7 +183,7 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
 **/
 void AlbaranesProveedor::iniciaForm()
 {
-    blDebug ( "FacturasProveedorList::iniciaForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranesProveedor_iniciaForm", this );
     if ( res != 0 ) {
@@ -204,7 +204,7 @@ void AlbaranesProveedor::iniciaForm()
 **/
 AlbaranesProveedor::~AlbaranesProveedor()
 {
-    blDebug ( "AlbaranesProveedor::~AlbaranesProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -218,7 +218,7 @@ AlbaranesProveedor::~AlbaranesProveedor()
 **/
 void AlbaranesProveedor::presentar()
 {
-    blDebug ( "AlbaranesProveedor::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT *, totalalbaranp AS total, " \
                            "bimpalbaranp AS base, impalbaranp AS impuestos " \
@@ -252,7 +252,7 @@ void AlbaranesProveedor::presentar()
 **/
 QString AlbaranesProveedor::generaFiltro()
 {
-    blDebug ( "AlbaranesProveedor::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString filtro = "";
 
     if ( m_filtro->text() != "" ) {
@@ -295,7 +295,7 @@ QString AlbaranesProveedor::generaFiltro()
 **/
 void AlbaranesProveedor::editar ( int row )
 {
-    blDebug ( "AlbaranesProveedor::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ), row );
     if ( editMode() ) {
         AlbaranProveedorView * prov = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
@@ -319,7 +319,7 @@ void AlbaranesProveedor::editar ( int row )
 **/
 void AlbaranesProveedor::imprimir()
 {
-    blDebug ( "AlbaranesProveedor::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Albaranes de proveedor" ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -336,7 +336,7 @@ void AlbaranesProveedor::imprimir()
 **/
 void AlbaranesProveedor::remove()
 {
-    blDebug ( "AlbaranesProveedor::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -373,7 +373,7 @@ void AlbaranesProveedor::remove()
 **/
 AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 {
-    blDebug ( "AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -384,7 +384,7 @@ AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 **/
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "albaranp" );
     setDbFieldId ( "idalbaranp" );
     addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID albaran" ) );
@@ -415,7 +415,7 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
 **/
 void AlbaranesProveedorListSubform::load()
 {
-    blDebug ( "AlbaranesProveedorListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString SQLQuery = "SELECT * FROM albaranp";
     BlSubForm::load ( SQLQuery );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -428,7 +428,7 @@ void AlbaranesProveedorListSubform::load()
 **/
 void AlbaranesProveedorListSubform::load ( QString query )
 {
-    blDebug ( "AlbaranesProveedorListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( query );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

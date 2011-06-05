@@ -56,7 +56,7 @@
 **/
 ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "ImpQToolButton::ImpQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -75,7 +75,7 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 **/
 ImpQToolButton::~ImpQToolButton()
 {
-    blDebug ( "ImpQToolButton::~ImpQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -85,7 +85,7 @@ ImpQToolButton::~ImpQToolButton()
 **/
 void ImpQToolButton::setBoton()
 {
-    blDebug ( "ImpQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Imprimir elementos seleccionados" ) );
@@ -103,7 +103,7 @@ void ImpQToolButton::setBoton()
 **/
 void ImpQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
 	/// Hacer comprobacion de la variable PRINTER
 	if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
@@ -467,7 +467,7 @@ void ImpQToolButton::click()
 **/
 SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac , CobrosList *cob, QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "SelQToolButton::SelQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -484,7 +484,7 @@ SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 **/
 SelQToolButton::~SelQToolButton()
 {
-    blDebug ( "SelQToolButton::~SelQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -494,7 +494,7 @@ SelQToolButton::~SelQToolButton()
 **/
 void SelQToolButton::setBoton()
 {
-    blDebug ( "SelQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Invertir seleccion de elementos" ) );
     setToolTip ( _ ( "Invertir seleccion de elementos" ) );
@@ -511,7 +511,7 @@ void SelQToolButton::setBoton()
 **/
 void SelQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
@@ -552,7 +552,7 @@ void SelQToolButton::click()
 **/
 EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "EmailQToolButton::EmailQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -571,7 +571,7 @@ EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *
 **/
 EmailQToolButton::~EmailQToolButton()
 {
-    blDebug ( "EmailQToolButton::~EmailQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -581,7 +581,7 @@ EmailQToolButton::~EmailQToolButton()
 **/
 void EmailQToolButton::setBoton()
 {
-    blDebug ( "EmailQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Enviar elementos seleccionados por e-mail" ) );
@@ -598,7 +598,7 @@ void EmailQToolButton::setBoton()
 **/
 void EmailQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
@@ -857,7 +857,7 @@ void EmailQToolButton::click()
 **/
 ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "ProcesarQToolButton::ProcesarQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -876,7 +876,7 @@ ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosCliente
 **/
 ProcesarQToolButton::~ProcesarQToolButton()
 {
-    blDebug ( "ProcesarQToolButton::~ProcesarQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -886,7 +886,7 @@ ProcesarQToolButton::~ProcesarQToolButton()
 **/
 void ProcesarQToolButton::setBoton()
 {
-    blDebug ( "ProcesarQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "procesa" ) );
     setStatusTip ( _ ( "Procesar elementos seleccionados" ) );
@@ -903,7 +903,7 @@ void ProcesarQToolButton::setBoton()
 **/
 void ProcesarQToolButton::click()
 {
-    blDebug ( "ProcesarQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( QMessageBox::question ( this,
                                   _ ( "Procesar elementos" ),
@@ -1054,7 +1054,7 @@ void ProcesarQToolButton::click()
 **/
 SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "SumarQToolButton::SumarQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -1073,7 +1073,7 @@ SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *
 **/
 SumarQToolButton::~SumarQToolButton()
 {
-    blDebug ( "SumarQToolButton::~SumarQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -1083,7 +1083,7 @@ SumarQToolButton::~SumarQToolButton()
 **/
 void SumarQToolButton::setBoton()
 {
-    blDebug ( "SumarQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "procesa" ) );
     setStatusTip ( _ ( "Totalizar elementos seleccionados" ) );
@@ -1100,7 +1100,7 @@ void SumarQToolButton::setBoton()
 **/
 void SumarQToolButton::click()
 {
-    blDebug ( "SumarQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui

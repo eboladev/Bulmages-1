@@ -30,7 +30,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de Impresion en Cocina", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_PrinterCocina", "0.12.1-0001");
@@ -54,7 +54,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
-    blDebug ( "ArticuloView_ArticuloView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     trab->addDbField ( "idprintercocina", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Impresion en Cocina" ) );
 

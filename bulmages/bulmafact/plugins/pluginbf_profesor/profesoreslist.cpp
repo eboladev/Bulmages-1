@@ -41,7 +41,7 @@
 ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "ProfesoresList::ProfesoresList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setupUi ( this );
     
@@ -65,7 +65,7 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
 ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "ProfesoresList::ProfesoresList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setupUi ( this );
     
@@ -102,7 +102,7 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 */
 ProfesoresList::~ProfesoresList()
 {
-    blDebug ( "ProfesoresList::~ProfesoresList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -113,7 +113,7 @@ ProfesoresList::~ProfesoresList()
 */
 void ProfesoresList::presentar()
 {
-    blDebug ( "ProfesoresList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM profesor WHERE 1 = 1 " + generaFiltro() );
@@ -126,7 +126,7 @@ void ProfesoresList::presentar()
 */
 QString ProfesoresList::generaFiltro()
 {
-    blDebug ( "ProfesoresList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -144,7 +144,7 @@ QString ProfesoresList::generaFiltro()
 */
 void ProfesoresList::crear()
 {
-    blDebug ( "ProfesoresList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if (selectMode()) {
 	/// El modo consulta funciona algo diferente
@@ -193,14 +193,14 @@ void ProfesoresList::crear()
       bud->show();
       bud->pintar();
     }
-    blDebug ( "ProfesoresList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void ProfesoresList::imprimir()
 {
-    blDebug ( "ProfesoresList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mui_list->printPDF ( _ ( "Monitores" ) );
     
@@ -215,7 +215,7 @@ void ProfesoresList::imprimir()
 */
 void ProfesoresList::remove()
 {
-    blDebug ( "ProfesoresList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int a = mui_list->currentRow();
     
@@ -247,7 +247,7 @@ void ProfesoresList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void ProfesoresList::editar ( int )
 {
-    blDebug ( "ProfesoresList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     try {
         mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
@@ -274,7 +274,7 @@ void ProfesoresList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void ProfesoresList::submenu ( const QPoint & )
 {
-    blDebug ( "ProfesoresList::submenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int a = mui_list->currentRow();
     
@@ -301,7 +301,7 @@ void ProfesoresList::submenu ( const QPoint & )
 **/
 void ProfesoresList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "ProfesoresList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
@@ -313,7 +313,7 @@ void ProfesoresList::setMainCompany ( BfCompany *comp )
 **/
 QString ProfesoresList::idprofesor()
 {
-    blDebug ( "ProfesoresList::idprofesor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return mdb_idprofesor;
@@ -327,7 +327,7 @@ QString ProfesoresList::idprofesor()
 */
 ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ProfesoresListSubForm::ProfesoresListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ProfesoresListSubForm_ProfesoresListSubForm", this );
@@ -351,6 +351,6 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
 
 ProfesoresListSubForm::~ProfesoresListSubForm()
 {
-    blDebug ( "ProfesoresListSubForm::~ProfesoresListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

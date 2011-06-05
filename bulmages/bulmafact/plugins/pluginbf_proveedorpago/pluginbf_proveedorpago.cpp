@@ -39,7 +39,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de PluginBf_ProveedorPago\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -78,21 +78,22 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorPago" );
+
     if (accion->objectName() == "mui_actionProveedoresPagos") {
-        blDebug ( "PluginBf_ProveedorPago::BlAction_triggered::mui_actionProveedoresPagos", 0 );
         if ( g_pagosList ) {
             g_pagosList->hide();
             g_pagosList->show();
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
+
     if (accion->objectName() == "mui_actionProveedorPagoNuevo") {
-        blDebug ( "PluginBf_ProveedorPago::BlAction_triggered::mui_actionProveedorPagoNuevo", 0 );
         PagoView * bud = new PagoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -156,7 +157,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
 {
-    blDebug ( "PluginPagos_FacturaProveedorView_FacturaProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     GenPagoQToolButton *mui_exporta_efactura2 = new GenPagoQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -179,7 +180,7 @@ int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    blDebug ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     GenPagoQToolButton *mui_exporta_efactura2 = new GenPagoQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -202,7 +203,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    blDebug ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     GenPagoQToolButton *mui_exporta_efactura2 = new GenPagoQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );

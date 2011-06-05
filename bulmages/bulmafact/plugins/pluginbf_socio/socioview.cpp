@@ -41,7 +41,7 @@
 */
 SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "SocioView::SocioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -136,13 +136,13 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 */
 SocioView::~SocioView()
 {
-    blDebug ( "SocioView::~SocioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 void SocioView::on_mui_sociocliente_toggled ( bool state )
 {
-    blDebug ( "SocioView::on_mui_sociocliente_toggled", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if ( mui_numsociocliente->text() == "" && state ) {
         QString query = "SELECT COALESCE(max(numsociocliente) + 1 , 0) AS numsoc FROM cliente";
@@ -155,7 +155,7 @@ void SocioView::on_mui_sociocliente_toggled ( bool state )
 
 QString SocioView::templateName ( void )
 {
-    blDebug ( "SocioView::templateName", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "tutor" );
@@ -163,7 +163,7 @@ QString SocioView::templateName ( void )
 
 void SocioView::imprimir()
 {
-    blDebug ( "SocioView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -187,7 +187,7 @@ void SocioView::imprimir()
 
 int SocioView::afterSave()
 {
-    blDebug ( "SocioView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
     mui_alumnosList->save();
@@ -199,7 +199,7 @@ int SocioView::afterSave()
 
 int SocioView::beforeDelete()
 {
-    blDebug ( "SocioView::beforeDelete", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /*
         QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
@@ -216,7 +216,7 @@ int SocioView::beforeDelete()
 
 int SocioView::cargarPost ( QString id )
 {
-    blDebug ( " SocioView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /*
         QString query1 = "SELECT * FROM socio WHERE idcliente = " + id;
@@ -246,7 +246,7 @@ int SocioView::cargarPost ( QString id )
 **/
 ListAlumnosSocioView::ListAlumnosSocioView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListAlumnosSocioView::ListAlumnosSocioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setDbTableName ( "alumnocliente" );
     setDbFieldId ( "idalumnocliente" );
@@ -268,7 +268,7 @@ ListAlumnosSocioView::ListAlumnosSocioView ( QWidget *parent ) : BfSubForm ( par
 **/
 void ListAlumnosSocioView::load ( QString idcliente )
 {
-    blDebug ( "ListAlumnosSocioView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     

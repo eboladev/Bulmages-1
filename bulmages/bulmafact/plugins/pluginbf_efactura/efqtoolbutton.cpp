@@ -181,8 +181,8 @@ void EFQToolButton::exporta_factura_ubl()
     QFile *file_in  = new QFile ( _PLANTILLA_ );
 
     if ( !file_in->open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al abir la plantilla de factura") );
-	blMsgError (_("Error al abir la plantilla de factura"));
+	blDebug ( Q_FUNC_INFO, 0, _("Error al abir la plantilla de factura.") );
+	blMsgError (_("Error al abir la plantilla de factura."));
         exit ( -1 );
     }
 

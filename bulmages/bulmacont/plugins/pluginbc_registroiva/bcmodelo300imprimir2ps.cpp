@@ -193,7 +193,7 @@ void BcModelo300Imprimir2PS::generaps()
             m_output.setDevice ( &m_fich );
             m_fichlec.setFileName ( tempname );
             if ( !m_fichlec.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
-		blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el fichero") );
+		blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el fichero.") );
                 exit ( 1 );
             } // end if
             inputstr.setDevice( &m_fichlec );
@@ -259,7 +259,7 @@ void BcModelo300Imprimir2PS::generaps()
             command = "rm " + tempname + "; kghostview " + psname;
             system ( command.toAscii().constData() );
         } else {
-	    blDebug ( Q_FUNC_INFO, 0, _("Error, no se ha abierto el archivo") );
+	    blDebug ( Q_FUNC_INFO, 0, _("Error, no se ha abierto el archivo.") );
         } // end if
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

@@ -74,7 +74,7 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
-        blMsgInfo ( _ ( "Error al crear el almacen" ) );
+        blMsgInfo ( _ ( "Error al crear el almacen." ) );
     } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

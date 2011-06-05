@@ -45,7 +45,7 @@
 FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "FacturaProveedorView::FacturaProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -111,7 +111,7 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
 **/
 FacturaProveedorView::~FacturaProveedorView()
 {
-    blDebug ( "FacturaProveedorView::~FacturaProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
 }
@@ -121,7 +121,7 @@ FacturaProveedorView::~FacturaProveedorView()
 **/
 void FacturaProveedorView::on_m_descuentos_editFinish ( int, int )
 {
-    blDebug ( "FacturaProveedorView::on_m_descuentos_editFinish", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     calculaypintatotales();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -132,7 +132,7 @@ void FacturaProveedorView::on_m_descuentos_editFinish ( int, int )
 **/
 void FacturaProveedorView::on_subform2_editFinish ( int, int )
 {
-    blDebug ( "FacturaProveedorView::on_subform2_editFinish", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     calculaypintatotales();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -145,7 +145,7 @@ void FacturaProveedorView::on_subform2_editFinish ( int, int )
 **/
 void FacturaProveedorView::inicializar()
 {
-    blDebug ( "FacturaProveedorView::inicializar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
     pintar();
@@ -166,7 +166,7 @@ void FacturaProveedorView::inicializar()
 **/
 void FacturaProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( "PresupuestoView::pintatotales", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_totalBases->setText ( QString ( base.toQString() ) );
     m_totalTaxes->setText ( QString ( iva.toQString() ) );
     m_totalfacturap->setText ( QString ( total.toQString() ) );
@@ -185,7 +185,7 @@ void FacturaProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tot
 **/
 void FacturaProveedorView::on_mui_veralbaranes_clicked()
 {
-    blDebug ( "FacturaProveedorView::on_mui_veralbaranes_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + dbValue ( "reffacturap" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
@@ -206,7 +206,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
 **/
 void FacturaProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 {
-    blDebug ( "FacturaProveedorView::on_m_proveedor_valueChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     subform2->setIdProveedor ( id );
     mui_idforma_pago->setIdProveedor ( id );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -225,7 +225,7 @@ void FacturaProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 **/
 int FacturaProveedorView::beforeDelete()
 {
-    blDebug ( "FacturaProveedorView::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_listalineas->remove();
     m_listadescuentos->remove();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -246,7 +246,7 @@ int FacturaProveedorView::beforeDelete()
 **/
 int FacturaProveedorView::cargarPost ( QString idfacturap )
 {
-    blDebug ( "FacturaProveedorView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_listalineas->load ( idfacturap );
     m_listadescuentos->load ( idfacturap );
 
@@ -269,7 +269,7 @@ int FacturaProveedorView::cargarPost ( QString idfacturap )
 **/
 int FacturaProveedorView::afterSave()
 {
-    blDebug ( "FacturaProveedorView::save()", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_listalineas->setColumnValue ( "idfacturap", dbValue ( "idfacturap" ) );
     m_listadescuentos->setColumnValue ( "idfacturap", dbValue ( "idfacturap" ) );
     m_listalineas->save();

@@ -49,7 +49,7 @@
 **/
 GenPagoQToolButton::GenPagoQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "GenPagoQToolButton::GenPagoQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_object = fac;
     setBoton();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -61,7 +61,7 @@ GenPagoQToolButton::GenPagoQToolButton ( QWidget *fac , QWidget *parent ) : QToo
 **/
 GenPagoQToolButton::~GenPagoQToolButton()
 {
-    blDebug ( "GenPagoQToolButton::~GenPagoQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -71,7 +71,7 @@ GenPagoQToolButton::~GenPagoQToolButton()
 **/
 void GenPagoQToolButton::setBoton()
 {
-    blDebug ( "GenPagoQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar pago") );
@@ -90,7 +90,7 @@ void GenPagoQToolButton::setBoton()
 **/
 void GenPagoQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_object->objectName() == "FacturaProveedorBase" ) {
 

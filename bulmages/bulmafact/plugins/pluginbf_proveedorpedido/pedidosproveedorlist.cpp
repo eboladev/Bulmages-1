@@ -39,7 +39,7 @@
 PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "PedidosProveedorList::PedidosProveedorList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     mdb_idpedidoproveedor = "";
     /// Establecemos los parametros de busqueda del Cliente
@@ -65,7 +65,7 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
 PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "PedidosProveedorList::PedidosProveedorList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     m_proveedor->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
@@ -102,7 +102,7 @@ PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Q
 **/
 PedidosProveedorList::~PedidosProveedorList()
 {
-    blDebug ( "PedidosProveedorList::~PedidosProveedorList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -113,7 +113,7 @@ PedidosProveedorList::~PedidosProveedorList()
 **/
 void PedidosProveedorList::iniciaForm()
 {
-    blDebug ( "PedidosProveedorList::iniciaForm" );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PedidosProveedorList_iniciaForm", this );
     if ( res != 0 )
@@ -131,7 +131,7 @@ void PedidosProveedorList::iniciaForm()
 **/
 void PedidosProveedorList::presentar()
 {
-    blDebug ( "PedidosProveedorList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->load ( "SELECT *, totalpedidoproveedor AS total, bimppedidoproveedor AS base, imppedidoproveedor AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro() );
     /// Hacemos el calculo del total.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro() );
@@ -149,7 +149,7 @@ void PedidosProveedorList::presentar()
 **/
 QString PedidosProveedorList::generarFiltro()
 {
-    blDebug ( "PedidosProveedorList::generarFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
@@ -193,7 +193,7 @@ QString PedidosProveedorList::generarFiltro()
 **/
 void PedidosProveedorList::imprimir()
 {
-    blDebug ( "PedidosProveedorList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Pedidos a proveedores" ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -205,7 +205,7 @@ void PedidosProveedorList::imprimir()
 **/
 void PedidosProveedorList::remove()
 {
-    blDebug ( "PedidosProveedorList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -235,7 +235,7 @@ void PedidosProveedorList::remove()
 **/
 void PedidosProveedorList::editar ( int row )
 {
-    blDebug ( "PedidosProveedorList::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mdb_idpedidoproveedor = mui_list->dbValue ( QString ( "idpedidoproveedor" ), row );
         if ( editMode() ) {
@@ -261,7 +261,7 @@ void PedidosProveedorList::editar ( int row )
 **/
 void PedidosProveedorList::crear()
 {
-    blDebug ( "PedidosProveedorList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PedidoProveedorView *ppv = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( ppv );
     ppv->pintar();
@@ -283,7 +283,7 @@ void PedidosProveedorList::crear()
 **/
 void PedidosProveedorList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "PedidosProveedorList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
@@ -297,7 +297,7 @@ void PedidosProveedorList::setMainCompany ( BfCompany *comp )
 **/
 QString PedidosProveedorList::idpedidoproveedor()
 {
-    blDebug ( "PedidosProveedorList::idpedidoproveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     return mdb_idpedidoproveedor;
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -309,7 +309,7 @@ QString PedidosProveedorList::idpedidoproveedor()
 **/
 void PedidosProveedorList::setidproveedor ( QString val )
 {
-    blDebug ( "PedidosProveedorList::setidproveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_proveedor->setId ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -324,7 +324,7 @@ void PedidosProveedorList::setidproveedor ( QString val )
 **/
 PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "PedidosProveedorListSubform::PedidosProveedorListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "pedidoproveedor" );
     setDbFieldId ( "idpedidoproveedor" );
     addSubFormHeader ( "numpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de pedido" ) );
@@ -355,7 +355,7 @@ PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : B
 **/
 void PedidosProveedorListSubform::load()
 {
-    blDebug ( "PedidosProveedorListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString SQLQuery = "SELECT * FROM pedidoproveedor";
     BlSubForm::load ( SQLQuery );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -368,7 +368,7 @@ void PedidosProveedorListSubform::load()
 **/
 void PedidosProveedorListSubform::load ( QString query )
 {
-    blDebug ( "PedidosProveedorListSubform::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( query );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -379,6 +379,6 @@ void PedidosProveedorListSubform::load ( QString query )
 **/
 PedidosProveedorListSubform::~PedidosProveedorListSubform()
 {
-    blDebug ( "PedidosProveedorListSubform::~PedidosProveedorListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

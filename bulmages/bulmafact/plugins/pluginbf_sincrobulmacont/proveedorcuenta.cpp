@@ -11,7 +11,7 @@
 ProveedorCuenta::ProveedorCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    blDebug ( "ProveedorCuenta::ProveedorCuenta", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_proveedorview = (ProveedorView *) parent;
 
@@ -53,7 +53,7 @@ ProveedorCuenta::ProveedorCuenta (QWidget *parent) : QWidget(parent)
 **/
 ProveedorCuenta::~ProveedorCuenta()
 {
-    blDebug ( "ProveedorCuenta::~ProveedorCuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

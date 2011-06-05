@@ -34,7 +34,7 @@
 TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
-    blDebug ( "TarifaListView::INIT_TarifaListView()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_list->setMainCompany ( mainCompany() );
@@ -55,7 +55,7 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 **/
 TarifaListView::~TarifaListView()
 {
-    blDebug ( "TarifaListView::INIT_destructor()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
     blDebug ( "TarifaListView::END_destructor()\n", 0 );
 }
@@ -67,7 +67,7 @@ TarifaListView::~TarifaListView()
 **/
 void TarifaListView::editar ( int row )
 {
-    blDebug ( "TarifaListView::editar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
@@ -82,7 +82,7 @@ void TarifaListView::editar ( int row )
 **/
 void TarifaListView::crear()
 {
-    blDebug ( "TarifaListView::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), parentWidget() );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
@@ -97,7 +97,7 @@ void TarifaListView::crear()
 **/
 void TarifaListView::remove()
 {
-    blDebug ( "TarifaListView::borrar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a >= 0 ) {
         TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
@@ -117,7 +117,7 @@ void TarifaListView::remove()
 **/
 void TarifaListView::actualizar()
 {
-    blDebug ( "TarifaListView::actualizar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->load();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

@@ -39,7 +39,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -74,25 +74,23 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorFactura" );
+
     if (accion->objectName() == "mui_actionProveedoresFacturas") {
-        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedoresFacturas", 0 );
         if ( g_facturasProveedorList ) {
             g_facturasProveedorList->hide();
             g_facturasProveedorList->show();
         } // end if
-        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedoresFacturas", 0 );
-
     }  // end if
 
     if (accion->objectName() == "mui_actionProveedorFacturaNueva") {
-        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedorFacturaNueva", 0 );
         FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
-        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedorFacturaNueva", 0 );        
-       }  // end if
+    }  // end if
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -153,7 +151,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    blDebug ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -177,7 +175,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    blDebug ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
 

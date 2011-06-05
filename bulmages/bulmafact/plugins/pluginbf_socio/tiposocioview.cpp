@@ -38,7 +38,7 @@
 TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    blDebug ( "TiposocioView::TiposocioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Tipos de socio" ) );
     /// Indicamos que vamos a operar con la tabla tiposocio para que los permisos se traten adecuadamente.
     setDbTableName ( "tiposocio" );
@@ -60,7 +60,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
 **/
 void TiposocioView::pintar()
 {
-    blDebug ( "TiposocioView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_lista->clear();
     if ( m_cursortiposocio != NULL ) {
         delete m_cursortiposocio;
@@ -82,7 +82,7 @@ void TiposocioView::pintar()
 **/
 TiposocioView::~TiposocioView()
 {
-    blDebug ( "TiposocioView::~TiposocioView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_cursortiposocio != NULL ) {
         delete m_cursortiposocio;
     } // end if
@@ -95,7 +95,7 @@ TiposocioView::~TiposocioView()
 **/
 void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    blDebug ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( cur )
         groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
@@ -117,7 +117,7 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
 **/
 int TiposocioView::save()
 {
-    blDebug ( "TiposocioView::on_mui_guardar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         QString query = "UPDATE tiposocio SET ";
         query += "nombretiposocio='" + mainCompany() ->sanearCadena ( mui_nombretiposocio->text() ) + "'";
@@ -157,7 +157,7 @@ int TiposocioView::save()
 **/
 bool TiposocioView::trataModificado()
 {
-    blDebug ( "TiposocioView::trataModificado", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -179,7 +179,7 @@ bool TiposocioView::trataModificado()
 **/
 void TiposocioView::on_mui_nuevo_clicked()
 {
-    blDebug ( "TiposocioView::on_mui_nuevo_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -205,7 +205,7 @@ void TiposocioView::on_mui_nuevo_clicked()
 **/
 void TiposocioView::on_mui_borrar_clicked()
 {
-    blDebug ( "TiposocioView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mdb_idtiposocio == "" ) return;
     try {
         trataModificado();
@@ -231,6 +231,6 @@ void TiposocioView::on_mui_borrar_clicked()
 **/
 void TiposocioView::imprimir()
 {
-    blDebug ( "TiposocioView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

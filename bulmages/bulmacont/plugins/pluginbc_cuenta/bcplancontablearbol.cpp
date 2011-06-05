@@ -521,7 +521,7 @@ QString BcPlanContableArbol::hojaActual ( QString valor )
     else if ( valor == "idcuenta" )
         resultado.setNum ( hoja->idcuenta );
     else
-	blDebug ( Q_FUNC_INFO, 0, QString(_("No se ha encontrado el campo '$1' en la hoja del arbol")).arg(valor) );
+	blDebug ( Q_FUNC_INFO, 0, QString(_("No se ha encontrado el campo '$1' en la hoja del arbol.")).arg(valor) );
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return resultado;

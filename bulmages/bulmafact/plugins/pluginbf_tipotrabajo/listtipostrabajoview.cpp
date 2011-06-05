@@ -44,7 +44,7 @@
 ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ListTiposTrabajoView::ListTiposTrabajoView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( _ ( "almacen" ) );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -84,7 +84,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
 **/
 ListTiposTrabajoView::~ListTiposTrabajoView()
 {
-    blDebug ( "ListTiposTrabajoView::~ListTiposTrabajoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

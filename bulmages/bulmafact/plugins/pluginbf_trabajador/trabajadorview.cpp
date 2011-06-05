@@ -39,7 +39,7 @@
 TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    blDebug ( "TrabajadorView::TrabajadorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setTitleName ( _ ( "Trabajador" ) );
     setDbTableName ( "trabajador" );
@@ -71,7 +71,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
 **/
 void TrabajadorView::imprimir()
 {
-    blDebug ( "TrabajadorView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -80,7 +80,7 @@ void TrabajadorView::imprimir()
 **/
 void TrabajadorView::pintar()
 {
-    blDebug ( "TrabajadorView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_lista->clear();
 
@@ -108,7 +108,7 @@ void TrabajadorView::pintar()
 **/
 TrabajadorView::~TrabajadorView()
 {
-    blDebug ( "TrabajadorView::~TrabajadorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
@@ -123,7 +123,7 @@ TrabajadorView::~TrabajadorView()
 **/
 void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    blDebug ( "TrabajadorView::on_mui_lista_currentItemChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( !cur ) return;
     mui_tab->setEnabled ( TRUE );
 
@@ -162,7 +162,7 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
 **/
 void TrabajadorView::on_mui_guardar_clicked()
 {
-    blDebug ( "TrabajadorView::on_mui_guardar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "TrabajadorView_on_mui_guardar_clicked", this );
@@ -220,7 +220,7 @@ void TrabajadorView::on_mui_guardar_clicked()
 **/
 bool TrabajadorView::trataModificado()
 {
-    blDebug ( "TrabajadorView::trataModificado", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -242,7 +242,7 @@ bool TrabajadorView::trataModificado()
 **/
 void TrabajadorView::on_mui_nuevo_clicked()
 {
-    blDebug ( "TrabajadorView::on_mui_nuevo_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -269,7 +269,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
 **/
 void TrabajadorView::on_mui_borrar_clicked()
 {
-    blDebug ( "TrabajadorView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mui_tab->setDisabled ( TRUE );
         trataModificado();
@@ -293,7 +293,7 @@ void TrabajadorView::on_mui_borrar_clicked()
 **/
 void TrabajadorView::on_mui_imagen_clicked()
 {
-    blDebug ( "TrabajadorView::on_mui_imagen_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_archivoimagen = QFileDialog::getOpenFileName ( this,
                       _ ( "Seleccione archivo" ),
                       "",
@@ -309,7 +309,7 @@ void TrabajadorView::on_mui_imagen_clicked()
 **/
 QString TrabajadorView::idtrabajador()
 {
-    blDebug ( "TrabajadorView::idtrabajador", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idtrabajador;
 }

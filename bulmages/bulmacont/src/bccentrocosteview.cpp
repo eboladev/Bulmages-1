@@ -139,7 +139,7 @@ void BcCentroCosteView::repintar()
             it->setText ( COL_NOM_COSTE, cursoraux2->value( "nombre" ) );
             mui_list->expandItem ( it );
         } else {
-	    blDebug ( Q_FUNC_INFO, 0, _("Error en la carga de centros de coste") );
+	    blDebug ( Q_FUNC_INFO, 0, _("Error en la carga de centros de coste.") );
         } // end if
         cursoraux2->nextRecord();
     } // end while

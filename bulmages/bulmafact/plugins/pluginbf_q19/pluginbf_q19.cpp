@@ -36,12 +36,13 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Punto de entrada de PluginBf_Q19", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     new Q19TextCodec(); // no us espanteu, els codecs els arxiva i destrueix QT (espero)
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_q19", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -53,7 +54,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int CobrosList_CobrosList ( CobrosList *l )
 {
-    blDebug ( "CobrosList_CobrosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -77,7 +78,7 @@ int CobrosList_CobrosList ( CobrosList *l )
 **/
 int FacturasList_FacturasList ( FacturasList *l )
 {
-    blDebug ( "FacturasList_FacturasList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     Q19QToolButton1 *sel = new Q19QToolButton1 ( l, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -101,7 +102,7 @@ int FacturasList_FacturasList ( FacturasList *l )
 **/
 int RecibosList_RecibosList ( RecibosList *l )
 {
-    blDebug ( "RecibosList_RecibosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
 

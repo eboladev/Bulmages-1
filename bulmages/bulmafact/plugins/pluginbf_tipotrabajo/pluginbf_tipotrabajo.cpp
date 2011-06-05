@@ -36,7 +36,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada de PluginBf_TipoTrabajo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TipoTrabajo", "0.10.1-0001");
@@ -57,13 +57,15 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_TipoTrabajo" );
+
     if (accion->objectName() == "mui_actionTipoTrabajo") {
-        blDebug ( "PluginBf_TipoTrabajo::BlAction_triggered::mui_actionTipoTrabajo", 0 );
         ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( l );
         l->show();
-        blDebug ( "PluginBf_TipoTrabajo::BlAction_triggered::mui_actionTipoTrabajo", 0 );
     } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
  
@@ -76,7 +78,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
-    blDebug ( "TrabajadorView_TrabajadorView_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -137,7 +139,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
-    blDebug("pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
+    blDebug ( Q_FUNC_INFO, 0 );
     if (trab) {
 	BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
 	if (l) {
@@ -160,7 +162,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 **/
 int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
-    blDebug ( "esxtoy en la clase almacen", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BfSubForm *form = new BfSubForm ( alm );
     delete form->m_delegate;
@@ -206,7 +208,7 @@ int BlForm_load ( BlForm *fich )
 **/
 int BlForm_guardar_Post ( BlForm *fich )
 {
-    blDebug ( "BlForm_guardar_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm * form = fich->findChild<BlSubForm *> ( "mui_tipostrabajo" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->dbValue ( "idalmacen" ) );
@@ -229,7 +231,7 @@ int BlForm_guardar_Post ( BlForm *fich )
 **/
 QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    blDebug ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -239,7 +241,7 @@ QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDele
 **/
 QSubForm3BfDelegate::~QSubForm3BfDelegate()
 {
-    blDebug ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -253,7 +255,7 @@ QSubForm3BfDelegate::~QSubForm3BfDelegate()
 **/
 QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    blDebug ( "QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
 
@@ -277,7 +279,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 **/
 void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    blDebug ( "QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -304,7 +306,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 **/
 void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( "QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName() == "nomtipotrabajo" ) {

@@ -499,14 +499,14 @@ linprevcobro *ListLinPrevCobroView::lineaat ( int row )
     linprevcobro *linea;
     if ( row >= 0 ) {
         while ( m_lista.value ( row ) == 0 ) {
-	    blDebug ( Q_FUNC_INFO, 0, _("Creamos la linea") );
+	    blDebug ( Q_FUNC_INFO, 0, _("Creamos la linea.") );
             linea = new linprevcobro ( m_companyact );
             linea->setidregistroiva ( mdb_idregistroiva );
             m_lista.append ( linea );
         } // end while
         return m_lista.at ( row );
     } else {
-	blDebug ( Q_FUNC_INFO, 0, _("Linea inexistente") );
+	blDebug ( Q_FUNC_INFO, 0, _("Linea inexistente.") );
         return NULL;
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

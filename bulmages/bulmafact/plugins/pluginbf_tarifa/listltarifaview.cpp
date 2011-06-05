@@ -28,7 +28,7 @@
 **/
 ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListLTarifaView::ListLTarifaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "ltarifa" );
     setDbFieldId ( "idltarifa" );
     addSubFormHeader ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre tarifa" ) );
@@ -51,7 +51,7 @@ ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 **/
 ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListLTarifaView1::ListLTarifaView1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "ltarifa" );
     setDbFieldId ( "idltarifa" );
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite , _ ( "Nombre almacen" ) );
@@ -64,6 +64,6 @@ ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idltarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Num de linea" ) );
     addSubFormHeader ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Nombre de la tarifa" ) );
     setInsert ( FALSE );
-    blDebug ( "ListLTarifaView1::ListLTarifaView1", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

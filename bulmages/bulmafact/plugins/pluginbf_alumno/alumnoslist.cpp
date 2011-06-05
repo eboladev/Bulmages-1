@@ -246,7 +246,7 @@ void AlumnosList::remove()
         } // end if
         presentar();
     } catch ( ... ) {
-        blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
+        blMsgInfo ( _ ( "Error al borrar el cobro a cliente." ) );
     } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

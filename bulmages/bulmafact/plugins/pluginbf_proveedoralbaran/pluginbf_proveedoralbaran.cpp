@@ -38,7 +38,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada de PluginBf_ProveedorAlbaran \n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -76,24 +76,23 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorAlbaran" );
+
     if (accion->objectName() == "mui_actionProveedoresAlbaran") {
-        blDebug ( "PluginBf_ProveedorAlbaran::BlAction_triggered::mui_actionProveedoresAlbaran", 0 );
         if ( g_albaranesProveedor ) {
             g_albaranesProveedor->hide();
             g_albaranesProveedor->show();
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionProveedAlbaranNuevo") {
-        blDebug ( "PluginBf_ProveedorAlbaran::BlAction_triggered::mui_actionProveedAlbaranNuevo", 0 );
         AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -155,7 +154,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    blDebug ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     GenAlbProQToolButton *mui_exporta_efactura2 = new GenAlbProQToolButton ( l, l->mui_plugbotones );
 

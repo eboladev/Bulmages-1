@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Modificadores\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Modificadores", "0.12.1-0002");
@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    blDebug ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -92,7 +92,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_load ( ArticuloView *art )
 {
-    blDebug ( "ArticuloView_cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "lmodificadores" );
     if ( l ) {
         l->load ( "SELECT * FROM modificador WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
@@ -109,7 +109,7 @@ int ArticuloView_load ( ArticuloView *art )
 **/
 int ArticuloView_guardar_post ( ArticuloView *art )
 {
-    blDebug ( "ArticuloView_guardar_post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "lmodificadores" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );

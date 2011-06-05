@@ -41,7 +41,7 @@
 PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "PagosList::PagosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     mdb_idpago = "";
     setSubForm ( mui_list );
@@ -66,7 +66,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "PagosList::PagosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
@@ -98,7 +98,7 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
 
 PagosList::~PagosList()
 {
-    blDebug ( "PagosList::~PagosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -107,7 +107,7 @@ PagosList::~PagosList()
 
 void PagosList::presentar()
 {
-    blDebug ( "PagosList::presentar()", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
@@ -120,7 +120,7 @@ void PagosList::presentar()
 
 QString PagosList::generaFiltro()
 {
-    blDebug ( "PagosList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -179,7 +179,7 @@ void PagosList::editar ( int )
 
 void PagosList::crear()
 {
-    blDebug ( "PagosList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PagoView *pv = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( pv );
     pv->pintar();
@@ -196,7 +196,7 @@ void PagosList::crear()
 
 void PagosList::imprimir()
 {
-    blDebug ( "PagosList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Pagos a proveedores" ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -204,7 +204,7 @@ void PagosList::imprimir()
 
 void PagosList::remove()
 {
-    blDebug ( "PagosList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -226,7 +226,7 @@ void PagosList::remove()
 
 void PagosList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "PagosList::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );

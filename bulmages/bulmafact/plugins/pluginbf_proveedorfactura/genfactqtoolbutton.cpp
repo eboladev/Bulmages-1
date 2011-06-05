@@ -48,7 +48,7 @@
 **/
 GenFacProQToolButton::GenFacProQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "GenFacProQToolButton::GenFacProQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_object = fac;
     setBoton();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -60,7 +60,7 @@ GenFacProQToolButton::GenFacProQToolButton ( QWidget *fac , QWidget *parent ) : 
 **/
 GenFacProQToolButton::~GenFacProQToolButton()
 {
-    blDebug ( "GenFacProQToolButton::~GenFacProQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -70,7 +70,7 @@ GenFacProQToolButton::~GenFacProQToolButton()
 **/
 void GenFacProQToolButton::setBoton()
 {
-    blDebug ( "GenFacProQToolButton::setBoton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Factura Proveedor" );
@@ -89,7 +89,7 @@ void GenFacProQToolButton::setBoton()
 **/
 void GenFacProQToolButton::click()
 {
-    blDebug ( "ImpQToolButton::click", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_object->objectName() == "AlbaranProveedorBase" ) {
         generarFacturaProveedor();
@@ -114,7 +114,7 @@ void GenFacProQToolButton::click()
 **/
 void GenFacProQToolButton::generarFacturaProveedor()
 {
-    blDebug ( "GenFacProQToolButton::generarFacturaProveedor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     AlbaranProveedorView *fpv = ( AlbaranProveedorView * ) m_object;
 
 
@@ -221,7 +221,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
 **/
 void GenFacProQToolButton::generarFacturaProveedor1()
 {
-    blDebug ( "GenFacProQToolButton::generarFacturaProveedor1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
 
 

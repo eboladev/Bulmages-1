@@ -310,7 +310,7 @@ void ContratoView::on_mui_facturar_clicked()
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( cur->value( "cuenta" ) != "0" ) {
             if ( cur->value( "cuenta" ) != "1" ) {
-		blDebug ( Q_FUNC_INFO, 0, _("Detectada doble factura en un periodo") );
+		blDebug ( Q_FUNC_INFO, 0, _("Detectada doble factura en un periodo.") );
             } // end if
         } else {
             // GENERAMOS LA FACTURA

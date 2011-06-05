@@ -34,7 +34,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin tickets", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact * )
 
 /*
 int PresupuestoView_PresupuestoView(PresupuestoView *l) {
-       blDebug("PresupuestoView_PresupuestoView", 0);
+       blDebug ( Q_FUNC_INFO, 0 );
        TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(l, NULL, NULL,  NULL, l->mui_plugbotones);
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
@@ -60,7 +60,7 @@ int PresupuestoView_PresupuestoView(PresupuestoView *l) {
 }
 
 int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
-       blDebug("PedidoClienteView_PedidoClienteView", 0);
+       blDebug ( Q_FUNC_INFO, 0 );
        TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
@@ -80,7 +80,7 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
 **/
 int TicketClienteView_TicketClienteView ( TicketClienteView *l )
 {
-    blDebug ( "AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 //================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, l, NULL, l->mui_plugbotones );
 
@@ -105,7 +105,7 @@ int TicketClienteView_TicketClienteView ( TicketClienteView *l )
 **/
 int FacturaView_FacturaView ( FacturaView *l )
 {
-    blDebug ( "FacturaView_FacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 //================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, NULL, l, l->mui_plugbotones );
 

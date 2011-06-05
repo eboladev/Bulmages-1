@@ -11,7 +11,7 @@
 BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    blDebug ( "BancoCuenta::BancoCuenta", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlDbRecordSet *rec;
 
     m_bancoview = (BancoView *) parent;
@@ -47,7 +47,7 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
 **/
 BancoCuenta::~BancoCuenta()
 {
-    blDebug ( "BancoCuenta::~BancoCuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -42,7 +42,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada de PluginBf_Recibo\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -86,31 +86,29 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Recibo" );
+
     if (accion->objectName() == "mui_actionRecibos") {
-        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
         if ( g_recibosList ) {
             g_recibosList->hide();
             g_recibosList->show();
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionReciboNuevo") {
-        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionReciboNuevo", 0 );
         ReciboView * bud = new ReciboView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionRecibosEmitir") {
-        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibosEmitir", 0 );
         EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -134,7 +132,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int ActividadView_ActividadView ( ActividadView *l )
 {
 
-    blDebug ( "PluginRecibo_ActividadView_ActividadView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QToolButton *mui_generar_recibos = new QToolButton ( l->mui_plugbotones );
     mui_generar_recibos->setObjectName ( QString::fromUtf8 ( "genrecibo" ) );
@@ -176,7 +174,7 @@ int ActividadView_ActividadView ( ActividadView *l )
 **/
 EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 {
-    blDebug ( "EmitirRecibos::EmitirRecibos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -185,7 +183,7 @@ EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 **/
 EmitirRecibos::~EmitirRecibos()
 {
-    blDebug ( "EmitirRecibos::~EmitirRecibos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -194,7 +192,7 @@ EmitirRecibos::~EmitirRecibos()
 **/
 void EmitirRecibos::elslot()
 {
-    blDebug ( "EmitirRecibos::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );

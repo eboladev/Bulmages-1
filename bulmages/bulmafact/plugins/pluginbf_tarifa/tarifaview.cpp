@@ -41,7 +41,7 @@
 TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "TarifaView::INIT_constructor()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setTitleName ( _ ( "Tarifa" ) );
@@ -77,7 +77,7 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
 **/
 TarifaView::~TarifaView()
 {
-    blDebug ( "TarifaView::INIT_destructor()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
     blDebug ( "TarifaView::END_destructor()\n", 0 );
 }
@@ -97,7 +97,7 @@ BfCompany *TarifaView::companyact()
 **/
 void TarifaView::pintar()
 {
-    blDebug ( "TarifaView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_nomtarifa->setText ( dbValue ( "nomtarifa" ) );
     setWindowTitle ( _ ( "Tarifa" ) + " " + mui_nomtarifa->text() );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -111,7 +111,7 @@ void TarifaView::pintar()
 **/
 QString TarifaView::formaQuery ( QString idtarifa )
 {
-    blDebug ( "TarifaView::formaQuery", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString wherearticulo = "";
     QString warticulo = " WHERE ";
 
@@ -144,7 +144,7 @@ QString TarifaView::formaQuery ( QString idtarifa )
 **/
 int TarifaView::load ( QString idtarifa )
 {
-    blDebug ( "TarifaView::load(" + idtarifa + ")\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int error = 0;
     m_idtarifa = idtarifa;
 
@@ -163,7 +163,7 @@ int TarifaView::load ( QString idtarifa )
 
     /// Tratamiento de excepciones.
     if ( error == 1 ) {
-        blDebug ( "TarifaView::cargar Error en la carga del articulo.\n", 0 );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga.") );
         return -1;
     } // end if
     pintar();
@@ -180,7 +180,7 @@ int TarifaView::load ( QString idtarifa )
 **/
 int TarifaView::save()
 {
-    blDebug ( "TarifaView::INIT_s_grabarClicked()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Al pulsar sobre 'guardar' se tiene que comprobar si existe un 'idtarifa'
     /// Si no existe se crea una nueva tarifa (INSERT) en la base de datos con el nombre proporcionado:
@@ -214,7 +214,7 @@ int TarifaView::save()
 **/
 void TarifaView::on_mui_crear_clicked()
 {
-    blDebug ( "TarifaView::INIT_boton_nuevo()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     vaciar();
     pintar();
     blDebug ( "TarifaView::END_boton_nuevo()\n", 0 );
@@ -226,7 +226,7 @@ void TarifaView::on_mui_crear_clicked()
 **/
 void TarifaView::on_mui_actualizar_clicked()
 {
-    blDebug ( "TarifaView::INIT_boton_nuevo()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     load ( m_idtarifa );
     blDebug ( "TarifaView::END_boton_nuevo()\n", 0 );
 }
@@ -237,7 +237,7 @@ void TarifaView::on_mui_actualizar_clicked()
 **/
 void TarifaView::on_mui_borrar_clicked()
 {
-    blDebug ( "TarifaView::on_mui_borrar_clicked()\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( dbValue ( "idtarifa" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _ ( "Borrar tarifa" ),

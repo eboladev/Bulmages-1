@@ -20,13 +20,13 @@
 
 #include "bcplancontablearbol.h"
 
+
 ///
 /**
 **/
 BcPlanContableArbol::BcPlanContableArbol()
 {
     blDebug ( Q_FUNC_INFO, 0 );
-
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -37,7 +37,6 @@ BcPlanContableArbol::BcPlanContableArbol()
 BcPlanContableArbol::~BcPlanContableArbol()
 {
     blDebug ( Q_FUNC_INFO, 0 );
-
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -220,7 +219,7 @@ void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* c
             rama->hoja->haberej = BlFixed ( cuenta->value( "haberej" ) );
             rama->hoja->saldoej = BlFixed ( cuenta->value( "saldoej" ) );
             rama->hoja->numapuntes = cuenta->value( "numapuntes" ).toInt();
-	    blDebug ( Q_FUNC_INFO, 0, QString("Codigo = '$1', Numero de apunte = '$2'").arg(cuenta->value( "codigo" )).arg(QString::number(rama->hoja->numapuntes)) );
+	    blDebug ( Q_FUNC_INFO, 0, QString(_("Codigo = '$1', Numero de apunte = '$2'")).arg(cuenta->value( "codigo" )).arg(QString::number(rama->hoja->numapuntes)) );
             *actualizado = true;
         } else {
             if ( rama->hoja->ramas ) {

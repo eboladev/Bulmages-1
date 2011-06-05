@@ -41,7 +41,7 @@
 ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ProfesorView::ProfesorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -104,7 +104,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
 */
 ProfesorView::~ProfesorView()
 {
-    blDebug ( "ProfesorView::~ProfesorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -115,7 +115,7 @@ QString ProfesorView::templateName ( void )
 
 void ProfesorView::imprimir()
 {
-    blDebug ( "ProfesorView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -139,7 +139,7 @@ void ProfesorView::imprimir()
 
 int ProfesorView::afterSave()
 {
-    blDebug ( "ProfesorView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
@@ -147,7 +147,7 @@ int ProfesorView::afterSave()
 
 int ProfesorView::cargarPost(QString id)
 {
-    blDebug ( "ProfesorView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_actividades->load("SELECT * FROM actividad NATURAL LEFT JOIN tipoactividad WHERE idprofesor = " + id);
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

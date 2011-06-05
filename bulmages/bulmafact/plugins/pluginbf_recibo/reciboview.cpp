@@ -38,7 +38,7 @@
 */
 ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "ReciboView::ReciboView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setAttribute ( Qt::WA_DeleteOnClose );
 
@@ -102,14 +102,14 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 */
 ReciboView::~ReciboView()
 {
-    blDebug ( "ReciboView::~ReciboView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
 QString ReciboView::templateName ( void )
 {
-    blDebug ( "ReciboView::templateName", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return QString ( "recibod" );
@@ -118,7 +118,7 @@ QString ReciboView::templateName ( void )
 
 void ReciboView::imprimir()
 {
-    blDebug ( "ReciboView::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -144,7 +144,7 @@ void ReciboView::imprimir()
 
 int ReciboView::afterSave()
 {
-    blDebug ( "ReciboView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
     mui_list->save();
@@ -156,7 +156,7 @@ int ReciboView::afterSave()
 
 int ReciboView::beforeDelete()
 {
-    blDebug ( "ReciboView::beforeDelete", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mainCompany()->runQuery("DELETE FROM lrecibo WHERE idrecibo = " + dbValue("idrecibo") );
 
@@ -168,7 +168,7 @@ int ReciboView::beforeDelete()
 
 int ReciboView::cargarPost ( QString id )
 {
-    blDebug ( "ReciboView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->load ("SELECT * FROM lrecibo WHERE idrecibo = " + id );
     
@@ -187,7 +187,7 @@ int ReciboView::cargarPost ( QString id )
 **/
 void ReciboView::on_mui_list_editFinish ( int, int )
 {
-    blDebug ( "ReciboView::on_mui_list_editFinish", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     m_cantrecibo->setText(mui_list->sumarCampo("cantlrecibo").toQString());
     
@@ -200,7 +200,7 @@ void ReciboView::on_mui_list_editFinish ( int, int )
 **/
 void ReciboView::on_mui_reemitir_clicked (  )
 {
-    blDebug ( "ReciboView::on_mui_reemitir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString id;
 
    try {
@@ -234,7 +234,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
 
 /// Hace la exportacion del campo a XML
 QString ReciboView::exportXML() {
-    blDebug ( "ReciboView::exportXML", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString val;
     int error;
     BlDbField *campo;

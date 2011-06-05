@@ -34,7 +34,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de impresiones multiples", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform *l )
 {
-    blDebug ( "PedidosClienteListSubform_PedidosClienteListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
@@ -65,7 +65,7 @@ int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubf
 **/
 int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform *l )
 {
-    blDebug ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( !l->existsHeader ( "selector" ) ) {
         l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     } // end if
@@ -81,7 +81,7 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
 **/
 int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 {
-    blDebug ( "FacturasListSubform_FacturasListSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
@@ -95,7 +95,7 @@ int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 **/
 int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 {
-    blDebug ( "PresupuestoListSubForm_PresupuestoListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
@@ -109,9 +109,9 @@ int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 **/
 int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
 {
-    blDebug ( "CobrosListSubForm_CobrosListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    blDebug ( "CobrosListSubForm_CobrosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -124,9 +124,9 @@ int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
 **/
 int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm *l )
 {
-    blDebug ( "RecibosListSubForm_RecibosListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    blDebug ( "RecibosListSubForm_RecibosListSubForm", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -137,7 +137,7 @@ int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm *l )
 **/
 int CobrosList_CobrosList ( CobrosList *l )
 {
-    blDebug ( "CobrosList_CobrosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
@@ -171,7 +171,7 @@ int CobrosList_CobrosList ( CobrosList *l )
 **/
 int PresupuestoList_PresupuestoList ( PresupuestoList *l )
 {
-    blDebug ( "PresupuestoList_PresupuestoList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SelQToolButton *sel = new SelQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
@@ -206,7 +206,7 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
 **/
 int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
 {
-    blDebug ( "PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
@@ -241,7 +241,7 @@ int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
 **/
 int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 {
-    blDebug ( "PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
@@ -277,7 +277,7 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 **/
 int FacturasList_FacturasList ( FacturasList *l )
 {
-    blDebug ( "FacturasList_FacturasList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
@@ -310,7 +310,7 @@ int FacturasList_FacturasList ( FacturasList *l )
 **/
 int RecibosList_RecibosList ( RecibosList *l )
 {
-    blDebug ( "RecibosList_RecibosList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones );

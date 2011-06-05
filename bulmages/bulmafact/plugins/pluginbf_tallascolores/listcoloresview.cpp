@@ -45,7 +45,7 @@
 ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ListColoresView::ListColoresView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Colores" ) );
     setDbTableName ( "tc_color" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -64,7 +64,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
 
 void ListColoresView::on_mui_aceptar_clicked()
 {
-    blDebug ( "ListColoresView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mui_listado->save();
         close();
@@ -81,7 +81,7 @@ void ListColoresView::on_mui_aceptar_clicked()
 
 ListColoresView::~ListColoresView()
 {
-    blDebug ( "ListColoresView::~ListColoresView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -94,7 +94,7 @@ ListColoresView::~ListColoresView()
 
 ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListColoresSubForm::ListColoresSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "tc_color" );
     setDbFieldId ( "idtc_color" );
     addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Color" ) );
@@ -111,7 +111,7 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent 
 
 void ListColoresSubForm::load()
 {
-    blDebug ( "ListColoresSubForm::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( "SELECT * FROM tc_color" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

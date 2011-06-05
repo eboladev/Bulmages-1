@@ -44,7 +44,7 @@
 ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "INIT_ListSerieFacturaView::ListSerieFacturaView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Serie de Factura" ) );
     setDbTableName ( "serie_factura" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -62,7 +62,7 @@ ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
 **/
 ListSerieFacturaView::~ListSerieFacturaView()
 {
-    blDebug ( "ListSerieFacturaView::~ListSerieFacturaView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -74,7 +74,7 @@ ListSerieFacturaView::~ListSerieFacturaView()
 **/
 ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "serie_factura" );
     setDbFieldId ( "codigoserie_factura" );
     addSubFormHeader ( "codigoserie_facturaorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _("Codigo serie factura origen") );

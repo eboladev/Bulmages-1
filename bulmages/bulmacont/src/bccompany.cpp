@@ -232,7 +232,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
     m_bulmacont->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Contabilidad GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
 
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al iniciar la clase") );
+	blDebug ( Q_FUNC_INFO, 0, _("Error al iniciar la clase.") );
     } // end try
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

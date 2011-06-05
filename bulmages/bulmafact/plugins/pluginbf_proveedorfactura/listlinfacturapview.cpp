@@ -36,7 +36,7 @@
 ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( "ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lfacturap" );
     setDbFieldId ( "idlfacturap" );
 
@@ -72,7 +72,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
 **/
 void ListLinFacturaProveedorView::load ( QString idfacturap )
 {
-    blDebug ( "ListLinFacturaProveedorView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idfacturap = idfacturap;
     BlSubForm::load ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

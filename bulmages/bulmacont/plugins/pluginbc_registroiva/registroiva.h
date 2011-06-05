@@ -146,55 +146,55 @@ public:
         setDbValue ( "serieregistroiva", val );
     };
     virtual void pintaidregistroiva ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintacontrapartida ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintabaseimp ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaiva ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaffactura ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintafactura ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaidborrador ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaincregistro ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaregularizacion ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaplan349 ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintanumorden ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintacif ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaidfpago ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintafactemitida ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintarectificaaregistroiva ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintafemisionregistroiva ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual void pintaserieregistroiva ( const QString & ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     virtual ~RegistroIva();
     virtual int load ( QString );
@@ -204,7 +204,7 @@ public:
     virtual void calculaypintatotales() {}
     ;
     virtual void recalculaIva() {
-	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada") );
+	blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );
     };
     void vaciaRegistroIva();
     int buscaborradorservicio ( int );

@@ -37,7 +37,7 @@
 Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
 {
 
-	blDebug ( "Q19Writer::Q19Writer", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 	m_empresa = emp;
 	regex=QRegExp ( "(.{1,40})\\s(.*)",Qt::CaseInsensitive,QRegExp::RegExp2 );
 	blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -49,7 +49,7 @@ Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
 **/
 Q19Writer::~Q19Writer()
 {
-	blDebug ( "Q19Writer::~Q19Writer", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 	blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -65,20 +65,21 @@ QWidget *Q19Writer::parentWidget( )
 **/
 void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringList *idsGenerats)
 {
-      blDebug ( "Q19Writer::genera", 0 );
+      blDebug ( Q_FUNC_INFO, 0 );
       QString refActual ( "cap rebut" );
       if (fileName.length()==0) {
           fileName = QFileDialog::getSaveFileName ( parentWidget(), _ ( "Fichero de remesa bancaria (Cuaderno 19)" ),
                        "",
                        _ ( "*.q19;;*" ) );
       }
-      blDebug("nom de fitxer ",0,fileName);
+
+      blDebug ( Q_FUNC_INFO, 0, QString(_("Nombre del fichero: '$1'")).arg(fileName) );
+
       if (fileName.length()>0) { // else ha apretat cancel?lar
        
 	try
 	{
 		int cobraments=curcobro->numregistros();
-		blDebug ( "nom de fitxer ",0,fileName );
 		BlDbRecordSet  *curbanc;
 		/*
 		http://www.cam.es/1/empresas/servicios/pdf/c19.pdf
@@ -331,7 +332,7 @@ cada Entidad.
 **/
 void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco )
 {
-	blDebug ( "Q19Writer::cabeceraPresentador", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 
 	/// CABECERA PRESENTADOR
 	/// Generamos la cabecera presentador
@@ -376,7 +377,7 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 **/
 void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco, QDate fechaCargo )
 {
-	blDebug ( "Q19Writer::cabeceraOrdenante", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 
 	/// GENERAMOS LA CABECERA ORDENANTE
 	/// REGISTRO DEL ORDENANTE
@@ -448,7 +449,7 @@ QString Q19Writer::import ( BlFixed f, int longitud )
 **/
 int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *curcobro )
 {
-	blDebug ( "Q19Writer::cobroQ19", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 	QString bancocliente = curcobro->value( "bancocliente" ).remove ( QRegExp ( "[^0-9]" ) );
 	if ( bancocliente.size() != 20 )
 	{
@@ -556,7 +557,7 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordSet *curbanco,
                                  BlFixed importes, int rebuts, int registros )
 {
-	blDebug ( "Q19Writer::totalOrdenante", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 	/// CABECERA TOTAL ORDENANTE
 	/// Registro en Euros. Longitud: 2
 	out << "58" // pag. 28 diu 08, pag. 23 diu 58
@@ -596,7 +597,7 @@ void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordS
 void Q19Writer::totalPresentador ( QTextStream &out,  QString sufijo , BlDbRecordSet *curbanco,
                                    BlFixed importes, int rebuts, int registros , int ordenants )
 {
-	blDebug ( "Q19Writer::totalPresentador", 0 );
+	blDebug ( Q_FUNC_INFO, 0 );
 	/// CABECERA TOTAL ORDENANTE
 	/// Registro en Euros. Longitud: 2
 	out << "59" //pag. 24 diu 59,pag. 29 diu 09

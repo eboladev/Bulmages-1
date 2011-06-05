@@ -11,7 +11,7 @@
 ClienteCuenta::ClienteCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    blDebug ( "ClienteCuenta::ClienteCuenta", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_clienteview = (ClienteView *) parent;
 
@@ -51,7 +51,7 @@ ClienteCuenta::ClienteCuenta (QWidget *parent) : QWidget(parent)
 **/
 ClienteCuenta::~ClienteCuenta()
 {
-    blDebug ( "ClienteCuenta::~ClienteCuenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

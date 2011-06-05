@@ -36,7 +36,7 @@ SociosList *g_sociosList = NULL;
 **/
 MyPlugProf::MyPlugProf()
 {
-    blDebug ( "MyPlugProf::MyPlugProf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -46,7 +46,7 @@ MyPlugProf::MyPlugProf()
 **/
 MyPlugProf::~MyPlugProf()
 {
-    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -56,7 +56,7 @@ MyPlugProf::~MyPlugProf()
 **/
 void MyPlugProf::elslot()
 {
-    blDebug ( "MyPlugProf::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( g_sociosList ) {
         g_sociosList->hide();
         g_sociosList->show();
@@ -69,7 +69,7 @@ void MyPlugProf::elslot()
 **/
 void MyPlugProf::elslot1()
 {
-    blDebug ( "MyPlugProf::elslot1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     SocioView * bud = new SocioView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
@@ -81,7 +81,7 @@ void MyPlugProf::elslot1()
 **/
 void MyPlugProf::elslot2()
 {
-    blDebug ( "MyPlugProf::elslot2", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     TiposocioView * bud = new TiposocioView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
@@ -95,7 +95,7 @@ void MyPlugProf::elslot2()
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugProf::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
@@ -143,7 +143,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de socios\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Socio", "0.11.1-0001");
@@ -160,7 +160,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    blDebug ( "pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
         g_sociosList = new SociosList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_sociosList );
@@ -173,7 +173,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_socio::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_fieldName == "nombrealumno" || g_fieldName == "nombrealumno1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -206,7 +206,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_socio::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -222,7 +222,7 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_socio::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -236,7 +236,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( "pluginbf_socio::BlSubForm_editFinished", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( sub->m_campoactual->fieldName() == "nombrealumno1" ) {
 	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
 //	blMsgInfo(query);
@@ -259,7 +259,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  blDebug("BlDbCompleterComboBox_textChanged", 0);
+  blDebug ( Q_FUNC_INFO, 0 );
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "alumno") {
                 QString cadwhere = "";
@@ -306,7 +306,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    blDebug ( "BfSubForm_pressedAsterisk" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( sub->m_campoactual->fieldName() != "nomcliente" ) {
         blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -366,7 +366,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 **/
 MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugTutor1::MyPlugTutor1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -375,7 +375,7 @@ MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPlugTutor1::~MyPlugTutor1()
 {
-    blDebug ( "MyPlugTutor1::~MyPlugTutor1", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -386,7 +386,7 @@ MyPlugTutor1::~MyPlugTutor1()
 **/
 void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugTutor1::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nomcliente" );
     if ( header ) {
@@ -408,7 +408,7 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPlugTutor1::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugTutor1::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar socio" ) ) {
         QString idtutor = sub->dbValue ( "idcliente" );
@@ -429,7 +429,7 @@ void MyPlugTutor1::s_trataMenu ( QAction *action )
 **/
 void MyPlugTutor1::editarTutor ( QString idtutor )
 {
-    blDebug ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -451,7 +451,7 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
 **/
 void MyPlugTutor1::nuevoTutor( )
 {
-    blDebug ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -466,7 +466,7 @@ void MyPlugTutor1::nuevoTutor( )
 **/
 void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 {
-    blDebug ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     SociosList *artlist = new SociosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -503,7 +503,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );

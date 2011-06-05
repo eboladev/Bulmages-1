@@ -36,7 +36,7 @@
 ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ProveedorView::ProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setTitleName ( _ ( "Proveedor" ) );
@@ -113,7 +113,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
 **/
 ProveedorView::~ProveedorView()
 {
-    blDebug ( "ProveedorView::~ProveedorView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -151,7 +151,7 @@ int ProveedorView::afterSave()
 **/
 void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
-    blDebug ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QChar digito;
     if ( !blValidateSpainCIFNIFCode ( mui_cifproveedor->text(), digito ) ) {
         blMsgInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
@@ -171,7 +171,7 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
 **/
 int ProveedorView::cargarPost ( QString idprov )
 {
-    blDebug ( "ProveedorView::cargar", 0, idprov );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Lanzamos los plugins de carga
     g_plugins->lanza ( "ProveedorView_cargarPost_Post", this );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

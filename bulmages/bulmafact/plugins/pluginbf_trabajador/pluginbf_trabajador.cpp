@@ -34,7 +34,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de PluginBf_Trabajador\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -64,14 +64,15 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Trabajador" );
+
     if (accion->objectName() == "mui_actionTrabajadores") {
-        blDebug ( "PluginBf_Trabajador::BlAction_triggered::mui_actionTrabajadores", 0 );
         TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

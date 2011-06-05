@@ -28,7 +28,7 @@
 **/
 ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListLResArticulo::ListLResArticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lfactura" );
     setDbFieldId ( "idlfactura" );
 
@@ -56,7 +56,7 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListLResArticulo::load ( QString idarticulo )
 {
-    blDebug ( "ListLResArticulo::cargar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfactura LEFT JOIN factura ON factura.idfactura= lfactura.idfactura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
@@ -72,7 +72,7 @@ void ListLResArticulo::load ( QString idarticulo )
 **/
 ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListEntregas::ListEntregas", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "idlalbaran" );
 
@@ -99,7 +99,7 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListEntregas::load ( QString idarticulo )
 {
-    blDebug ( "ListEntregas::cargar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
@@ -115,7 +115,7 @@ void ListEntregas::load ( QString idarticulo )
 **/
 ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListCompras::ListCompras", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lfacturap" );
     setDbFieldId ( "idlfacturap" );
 
@@ -142,7 +142,7 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListCompras::load ( QString idarticulo )
 {
-    blDebug ( "ListCompras::cargar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfacturap LEFT JOIN facturap ON facturap.idfacturap= lfacturap.idfacturap LEFT JOIN proveedor ON proveedor.idproveedor = facturap.idproveedor WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
@@ -159,7 +159,7 @@ void ListCompras::load ( QString idarticulo )
 **/
 ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListRecogidas::ListRecogidas", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lalbaranp" );
     setDbFieldId ( "idlalbaranp" );
 
@@ -186,7 +186,7 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListRecogidas::load ( QString idarticulo )
 {
-    blDebug ( "ListRecogidas::cargar\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaranp LEFT JOIN albaranp ON albaranp.idalbaranp= lalbaranp.idalbaranp LEFT JOIN proveedor ON proveedor.idproveedor = albaranp.idproveedor WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );

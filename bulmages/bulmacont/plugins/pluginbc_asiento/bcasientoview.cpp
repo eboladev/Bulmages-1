@@ -909,7 +909,7 @@ eventos_mui_ordenasiento::eventos_mui_ordenasiento ( BcAsientoView *ob )
 **/
 void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString("Fecha inicial = '$1', fecha final = '$2'").arg(finicial).arg(ffinal) );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Fecha inicial = '$1', fecha final = '$2'.")).arg(finicial).arg(ffinal) );
     try {
 
         /// Para poder generar un asiento de regularizacion debemos tener un asiento abierto.

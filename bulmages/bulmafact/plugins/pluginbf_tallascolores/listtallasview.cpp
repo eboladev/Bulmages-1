@@ -45,7 +45,7 @@
 ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "ListTallasView::ListTallasView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setTitleName ( _ ( "Tallas" ) );
     setDbTableName ( "tc_talla" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -64,7 +64,7 @@ ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
 
 void ListTallasView::on_mui_aceptar_clicked()
 {
-    blDebug ( "ListTallasView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mui_listado->save();
         close();
@@ -81,7 +81,7 @@ void ListTallasView::on_mui_aceptar_clicked()
 
 ListTallasView::~ListTallasView()
 {
-    blDebug ( "ListTallasView::~ListTallasView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -94,7 +94,7 @@ ListTallasView::~ListTallasView()
 
 ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "ListTallasSubForm::ListTallasSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "tc_talla" );
     setDbFieldId ( "idtc_talla" );
     addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id color" ) );
@@ -110,7 +110,7 @@ ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
 
 void ListTallasSubForm::load()
 {
-    blDebug ( "ListTallasSubForm::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm::load ( "SELECT * FROM tc_talla" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

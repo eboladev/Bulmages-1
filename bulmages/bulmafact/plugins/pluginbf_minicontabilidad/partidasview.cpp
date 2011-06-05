@@ -446,8 +446,9 @@ void PartidasView::on_mui_borrar_clicked()
     if ( val == QMessageBox::Yes ) {
         if ( !remove() ) {
             dialogChanges_readValues();
-            blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
+	    blDebug ( Q_FUNC_INFO, 0, QString("'$1' borrado.").arg(windowTitle()) );
         } else {
+	    blDebug ( Q_FUNC_INFO, 0, QString("'$1' no se ha podido borrar.").arg(windowTitle()) );
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
@@ -462,7 +463,7 @@ void PartidasView::on_mui_borrar_clicked()
 **/
 int PartidasView::remove()
 {
-    blDebug ( "PartidasView::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_idpartida == "" ) {
         blMsgInfo ( _ ( "Debe seleccionar una partida" ) );
         return -1;
@@ -490,7 +491,7 @@ int PartidasView::remove()
 **/
 void PartidasView::on_mui_imprimir_clicked()
 {
-    blDebug ( "PartidasView::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "partidas.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "partidas.rml";
@@ -560,7 +561,7 @@ void PartidasView::on_mui_imprimir_clicked()
 **/
 void PartidasView::on_mui_aceptar_clicked()
 {
-    blDebug ( "PartidasView::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QTreeWidgetItem *it = m_listPartidas->currentItem();
     if ( it ) {
         m_idpartida = it->text ( COL_IDPARTIDA );

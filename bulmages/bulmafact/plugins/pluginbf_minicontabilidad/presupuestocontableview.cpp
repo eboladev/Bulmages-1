@@ -45,7 +45,7 @@
 PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( "Inicializacion de PresupuestoContableView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -90,7 +90,8 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try
-    blDebug ( "Fin de la inicializacion de PresupuestoContableView", 0 );
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -99,7 +100,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 **/
 void PresupuestoContableView::inicializar()
 {
-    blDebug ( "PresupuestoContableView::inicializar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->inicializar();
     dialogChanges_readValues();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -111,7 +112,7 @@ void PresupuestoContableView::inicializar()
 **/
 PresupuestoContableView::~PresupuestoContableView()
 {
-    blDebug ( "PresupuestoContableView::~PresupuestoContableView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     g_plugins->lanza ( "PresupuestoContableView_DesPresupuestoContableView", this );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -126,7 +127,7 @@ PresupuestoContableView::~PresupuestoContableView()
 **/
 int PresupuestoContableView::beforeDelete()
 {
-    blDebug ( "PresupuestoContableView::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "PresupuestoContableView_beforeDelete", this );
     mui_list->remove();
@@ -142,7 +143,7 @@ int PresupuestoContableView::beforeDelete()
 **/
 int PresupuestoContableView::cargarPost ( QString idbudget )
 {
-    blDebug ( "PresupuestoContableView::cargarPost", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString query = "SELECT * FROM ( SELECT * FROM partida WHERE idpartida NOT IN (SELECT DISTINCT COALESCE(padre,0) FROM partida) ) AS t1 LEFT JOIN (SELECT idlpresupuestocontable, coalesce(saldolpresupuestocontable, 0) AS saldolpresupuestocontable, idpartida, idpresupuestocontable, conceptolpresupuestocontable FROM lpresupuestocontable) AS t2 ON t2.idpartida = t1.idpartida AND t2.idpresupuestocontable = "+idbudget;
     mui_list->load ( query );
@@ -158,7 +159,7 @@ int PresupuestoContableView::cargarPost ( QString idbudget )
 **/
 int PresupuestoContableView::afterSave()
 {
-    blDebug ( "PresupuestoContableView::afterSave", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->setColumnValue ( "idpresupuestocontable", dbValue ( "idpresupuestocontable" ) );
 

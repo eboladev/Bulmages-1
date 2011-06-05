@@ -45,7 +45,7 @@
 **/
 QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    blDebug ( "QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -55,7 +55,7 @@ QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 )
 **/
 QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 {
-    blDebug ( "QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -69,7 +69,7 @@ QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 **/
 QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    blDebug ( "QSubFormVarTarifaBfDelegate::createEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
 
@@ -109,7 +109,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 **/
 void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    blDebug ( "QSubFormVarTarifaBfDelegate::setModelData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -152,7 +152,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
 **/
 void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( "QSubFormVarTarifaBfDelegate::setEditorData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName() == "nomtarifa" ) {

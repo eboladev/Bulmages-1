@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada de PluginBf_ResumenArticulo \n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    blDebug ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     ListCompras *lc = new ListCompras ( art );
     lc->setObjectName ( QString::fromUtf8 ( "lcompras" ) );
     lc->setMainCompany ( art->mainCompany() );
@@ -87,7 +87,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_load ( ArticuloView *art )
 {
-    blDebug ( "ArticuloView_cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     ListLResArticulo *l = art->findChild<ListLResArticulo *> ( "lresfacturacion" );
     l->load ( art->dbValue ( "idarticulo" ) );
 
