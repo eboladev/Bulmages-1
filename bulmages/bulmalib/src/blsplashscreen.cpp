@@ -57,13 +57,15 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - ( m_image0->width() / 2 ), ( pantalla->screenGeometry().height() / 2 ) - ( ( m_image0->height() + 58 ) / 2 ), m_image0->width(), m_image0->height() );
     delete pantalla;
 
+	#ifndef Q_OS_WIN32
     l0 = new QLabel ( this );
     l0->setTextFormat ( Qt::RichText );
     l0->setGeometry ( 0, 0, m_image0->width(), m_image0->height() );
     l0->setAlignment ( Qt::AlignTop );
     l0->setFont ( QFont ( "Arial", 20, QFont::Bold ) );
     l0->setText ( "<center><font size=+1 color=\"#a3ffa3\">" + appName + "</font><br/><font color=\"#0000ff\">" + appVersion + "</font></center>" );
-
+	#endif
+	
     m_label = new QLabel ( this );
     m_label->setTextFormat ( Qt::RichText );
     m_label->setGeometry ( 0, m_image0->height() - 80, m_image0->width(), 15 );
