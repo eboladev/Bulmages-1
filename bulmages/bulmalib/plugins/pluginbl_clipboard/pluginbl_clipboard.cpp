@@ -43,7 +43,7 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,7 +61,7 @@ int entryPoint ( QApplication * )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBl_Clipboard *subformclip = new PluginBl_Clipboard ( sub );
     sub->connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformclip, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformclip, SLOT ( s_trataMenu ( QAction * ) ) );
@@ -76,7 +76,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 **/
 PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "PluginBl_Clipboard::PluginBl_Clipboard", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -86,7 +86,7 @@ PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent 
 **/
 PluginBl_Clipboard::~PluginBl_Clipboard()
 {
-    blDebug ( "PluginBl_Clipboard::~PluginBl_Clipboard", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -97,7 +97,7 @@ PluginBl_Clipboard::~PluginBl_Clipboard()
 **/
 void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "PluginBl_Clipboard::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlSubForm *subform = ( BlSubForm * ) parent();
 
@@ -119,7 +119,7 @@ void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_Clipboard::s_trataMenu ( QAction *action )
 {
-    blDebug ( "PluginBl_Clipboard::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( action->text() == _ ( "Pegar desde hoja de calculo" ) ) {
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
@@ -134,7 +134,7 @@ void PluginBl_Clipboard::s_trataMenu ( QAction *action )
         } // end if
     } // end if
     
-    blDebug ( "PluginBl_Clipboard::s_trataMenu", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -143,7 +143,7 @@ void PluginBl_Clipboard::s_trataMenu ( QAction *action )
 **/
 void PluginBl_Clipboard::pegaSXC()
 {
-    blDebug ( "PluginBl_Clipboard::pegaSXC", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -183,7 +183,7 @@ void PluginBl_Clipboard::pegaSXC()
 **/
 void PluginBl_Clipboard::pegaActualizaODS()
 {
-    blDebug ( "PluginBl_Clipboard::pegaActualizaODS", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
@@ -255,7 +255,7 @@ void PluginBl_Clipboard::pegaActualizaODS()
 **/
 void PluginBl_Clipboard::pegaODS()
 {
-    blDebug ( "PluginBl_Clipboard::pegaODS", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -293,7 +293,7 @@ void PluginBl_Clipboard::pegaODS()
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
 
     if (sub->isInsert() ) {

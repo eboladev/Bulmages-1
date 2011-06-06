@@ -37,7 +37,7 @@
 BlComboBox::BlComboBox ( QWidget *parent )
         : QComboBox ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "BlComboBox::BlComboBox", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect ( g_theApp, SIGNAL ( dbTableChanged ( const QString & ) ), this, SLOT ( onDbTableChanged ( const QString & ) ) );
@@ -52,7 +52,7 @@ BlComboBox::BlComboBox ( QWidget *parent )
 **/
 BlComboBox::~BlComboBox()
 {
-    blDebug ( "BlComboBox::~BlComboBox", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -64,7 +64,7 @@ BlComboBox::~BlComboBox()
 **/
 void BlComboBox::onDbTableChanged ( const QString &t )
 {
-    blDebug ( "BlComboBox::onDbTableChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_table == t ) {
         setId ( id() );
     } // end if
@@ -81,7 +81,7 @@ void BlComboBox::onDbTableChanged ( const QString &t )
 **/
 void BlComboBox::setId ( QString id )
 {
-    blDebug ( "BlComboBox::setId", 0, id );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
@@ -131,7 +131,7 @@ void BlComboBox::setId ( QString id )
 **/
 void BlComboBox::setFieldValue ( QString id )
 {
-    blDebug ( "BlComboBox::setFieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setId ( id );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -143,7 +143,7 @@ void BlComboBox::setFieldValue ( QString id )
 **/
 void BlComboBox::m_activated ( int index )
 {
-    blDebug ( "BlComboBox::m_activated", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( index > 0 ) {
         if ( m_null ) {
             emit ( valueChanged ( m_comboRecordSet->value( m_fieldId, index - 1 ) ) );
@@ -163,7 +163,7 @@ void BlComboBox::m_activated ( int index )
 **/
 QString BlComboBox::id()
 {
-    blDebug ( "BlComboBox::id", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( currentIndex() >= 0 ) {
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
@@ -192,7 +192,7 @@ QString BlComboBox::id()
 **/
 QString BlComboBox::fieldValue()
 {
-    blDebug ( "BlComboBox::fieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return id();
 }

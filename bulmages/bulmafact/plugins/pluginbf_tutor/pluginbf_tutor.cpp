@@ -38,7 +38,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada de PluginBf_Tutor\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -77,8 +77,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Tutor" );
     if (accion->objectName() == "mui_actionSocio") {
-        blDebug ( "PluginBf_Tutor::BlAction_triggered::mui_actionSocio", 0 );
         if ( g_tutoresList ) {
             g_tutoresList->hide();
             g_tutoresList->show();
@@ -86,7 +86,6 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionSocioNuevo") {
-        blDebug ( "PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
         TutorView * bud = new TutorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
@@ -98,12 +97,12 @@ int BlAction_triggered(BlAction *accion) {
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    blDebug ( "pluginbf_tutor::BfCompany_createMainWindows_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
         g_tutoresList = new TutoresList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_tutoresList );
         g_tutoresList->hide();
-    }// end if
+    } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
@@ -111,7 +110,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_tutor::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_fieldName == "nombrealumno" || g_fieldName == "nombrealumno1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -146,7 +145,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_tutor::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -162,7 +161,7 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    blDebug ( "pluginbf_tutor::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -176,7 +175,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( "pluginbf_tutor::BlSubForm_editFinished", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( sub->m_campoactual->fieldName() == "nombrealumno1" ) {
 	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
 //	blMsgInfo(query);
@@ -204,7 +203,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  blDebug("BlDbCompleterComboBox_textChanged", 0);
+  blDebug ( Q_FUNC_INFO, 0 );
 
         if ( bl->m_entrada.size() >= 3 && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
                 QString cadwhere = "";
@@ -251,7 +250,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    blDebug ( "BfSubForm_pressedAsterisk" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( sub->m_campoactual->fieldName() != "nomcliente" ) {
         blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -343,7 +342,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 **/
 SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "SubForm_Tutor::SubForm_Tutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -352,7 +351,7 @@ SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 **/
 SubForm_Tutor::~SubForm_Tutor()
 {
-    blDebug ( "SubForm_Tutor::~SubForm_Tutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -363,7 +362,7 @@ SubForm_Tutor::~SubForm_Tutor()
 **/
 void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "SubForm_Tutor::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "cifcliente" );
     if (!header)
@@ -387,7 +386,7 @@ void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
 **/
 void SubForm_Tutor::s_trataMenu ( QAction *action )
 {
-    blDebug ( "SubForm_Tutor::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar tutor" ) ) {
         QString idtutor = sub->dbValue ( "idcliente" );
@@ -408,7 +407,7 @@ void SubForm_Tutor::s_trataMenu ( QAction *action )
 **/
 void SubForm_Tutor::editarTutor ( QString idtutor )
 {
-    blDebug ( "SubForm_Tutor::editarTutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -430,7 +429,7 @@ void SubForm_Tutor::editarTutor ( QString idtutor )
 **/
 void SubForm_Tutor::nuevoTutor( )
 {
-    blDebug ( "SubForm_Tutor::nuevoTutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
@@ -460,7 +459,7 @@ void SubForm_Tutor::nuevoTutor( )
 **/
 void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 {
-    blDebug ( "SubForm_Tutor::editarTutor", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -499,7 +498,7 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     SubForm_Tutor *subformods = new SubForm_Tutor ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
@@ -515,7 +514,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlSubFormHeader *header = sub->header ( "cifcliente" );
     if (!header)

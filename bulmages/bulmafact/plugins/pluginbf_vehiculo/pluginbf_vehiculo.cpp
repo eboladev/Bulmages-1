@@ -37,7 +37,7 @@
 **/
 myplugin::myplugin()
 {
-    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -47,7 +47,7 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -57,7 +57,7 @@ myplugin::~myplugin()
 **/
 void myplugin::elslot()
 {
-    blDebug ( "myplugin::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
@@ -71,7 +71,7 @@ void myplugin::elslot()
 **/
 void myplugin::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugin::inicializa", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Creamos el men&uacute;.
     m_dbConnection = bges->company();
     m_bulmafact = bges;
@@ -94,7 +94,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginVehiculosBF" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Vehiculos", "0.5.9");

@@ -34,7 +34,7 @@
 BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
         : BlWidget ( parent )
 {
-    blDebug ( "BfBuscarReferencia::BfBuscarReferencia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     connect ( mui_referencia, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_rferencia_returnPressed() ) );
 
@@ -51,7 +51,7 @@ BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
 **/
 BfBuscarReferencia::~BfBuscarReferencia()
 {
-    blDebug ( "BfBuscarReferencia::~BfBuscarReferencia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -63,7 +63,7 @@ BfBuscarReferencia::~BfBuscarReferencia()
 **/
 void BfBuscarReferencia::on_mui_informe_clicked()
 {
-    blDebug ( "BfBuscarReferencia::on_mui_buscar_clicked\n", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlForm newfich ( mainCompany(), NULL );
     newfich.setTitleName ( _ ( "Informe" ) );
@@ -85,7 +85,7 @@ void BfBuscarReferencia::on_mui_informe_clicked()
 **/
 void BfBuscarReferencia::on_mui_referencia_editingFinished()
 {
-    blDebug ( "BfBuscarReferencia::on_mui_referencia_editingFinished", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     emit ( valueChanged ( mui_referencia->text() ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -98,7 +98,7 @@ void BfBuscarReferencia::on_mui_referencia_editingFinished()
 **/
 void BfBuscarReferencia::on_mui_rferencia_returnPressed()
 {
-    blDebug ( "BfBuscarReferencia::on_mui_referencia_returnPressed", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", this );
     if ( res == 0 ) {
@@ -117,7 +117,7 @@ void BfBuscarReferencia::on_mui_rferencia_returnPressed()
 **/
 void BfBuscarReferencia::on_mui_abrirtodo_clicked()
 {
-    blDebug ( "BusquedddaReferencia::on_mui_abrirtodo_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Empezamos con los presupuestos.
     /*
         QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
@@ -233,7 +233,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
 **/
 void BfBuscarReferencia::setText ( QString val )
 {
-    blDebug ( "BfBuscarReferencia::setText", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_referencia->setText ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -246,7 +246,7 @@ void BfBuscarReferencia::setText ( QString val )
 **/
 void BfBuscarReferencia::setFieldValue ( QString val )
 {
-    blDebug ( "BfBuscarReferencia::setText", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_referencia->setText ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -259,7 +259,7 @@ void BfBuscarReferencia::setFieldValue ( QString val )
 **/
 QString BfBuscarReferencia::text()
 {
-    blDebug ( "BfBuscarReferencia::text", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mui_referencia->text();
 }
@@ -272,7 +272,7 @@ QString BfBuscarReferencia::text()
 **/
 QString BfBuscarReferencia::fieldValue()
 {
-    blDebug ( "BfBuscarReferencia::text", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mui_referencia->text();
 }

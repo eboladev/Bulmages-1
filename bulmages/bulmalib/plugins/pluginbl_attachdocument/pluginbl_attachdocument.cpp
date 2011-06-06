@@ -45,7 +45,7 @@
 
 int entryPoint ( QMainWindow *bcont )
 {
-    blDebug ( "Entrada del plugin AttachDocument", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -57,7 +57,7 @@ int entryPoint ( QMainWindow *bcont )
 
 int BlForm_load ( BlForm *ficha )
 {
-    blDebug ( "PluginBl_AttachDocument::BlForm_cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     EQToolButton *eq = ficha->findChild<EQToolButton *>("BotonArchDoc");
     eq->hazMenu();
     return 0;
@@ -78,7 +78,7 @@ int BlForm_DesFicha ( BlForm *ficha )
 **/
 int BlForm_BlForm ( BlForm *l )
 {
-    blDebug ( "PluginBl_AttacgDocument::BlForm_BlForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
@@ -102,7 +102,7 @@ int BlForm_BlForm ( BlForm *l )
 **/
 int BlForm_loadSpecs ( BlForm *l )
 {
-    blDebug ( "BlForm_BlForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     new EQToolButton ( l );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;

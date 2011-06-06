@@ -33,7 +33,7 @@
 BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarRegimenFiscal::BfBuscarRegimenFiscal", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     addItem ( "Normal" );
     addItem ( "Intracomunitario" );
@@ -48,7 +48,7 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
 **/
 BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal()
 {
-    blDebug ( "BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -63,7 +63,7 @@ BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal()
 **/
 void BfBuscarRegimenFiscal::setRegimenFiscal ( QString regimen )
 {
-    blDebug ( "BfBuscarRegimenFiscal::setRegimenFiscal", 0, regimen );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( regimen == "Normal" ) {
         setCurrentIndex ( 0 );
     } else if ( regimen == "Intracomunitario" ) {
@@ -81,7 +81,7 @@ void BfBuscarRegimenFiscal::setRegimenFiscal ( QString regimen )
 **/
 void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
 {
-    blDebug ( "BfBuscarRegimenFiscal::setFieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setRegimenFiscal ( regimen );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -93,7 +93,7 @@ void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
 **/
 void BfBuscarRegimenFiscal::m_activated ( int index )
 {
-    blDebug ( "BfBuscarRegimenFiscal::m_activated", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( currentText() ) );
     } else {
@@ -110,7 +110,7 @@ void BfBuscarRegimenFiscal::m_activated ( int index )
 **/
 QString BfBuscarRegimenFiscal::regimenFiscal()
 {
-    blDebug ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( currentText() );
 }
@@ -123,7 +123,7 @@ QString BfBuscarRegimenFiscal::regimenFiscal()
 **/
 QString BfBuscarRegimenFiscal::fieldValue()
 {
-    blDebug ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return ( currentText() );
 }

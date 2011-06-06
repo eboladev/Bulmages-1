@@ -32,7 +32,7 @@
 BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
         : BlForm ( emp, parent )
 {
-    blDebug ( "BlCountryView::BlCountryView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -86,7 +86,7 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
 **/
 BlCountryView::~BlCountryView()
 {
-    blDebug ( "BlCountryView::~BlCountryView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -96,7 +96,7 @@ BlCountryView::~BlCountryView()
 **/
 void BlCountryView::pintar()
 {
-    blDebug ( "BlCountryView::pintar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->load ( "SELECT * FROM pais ORDER BY descpais" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -107,7 +107,7 @@ void BlCountryView::pintar()
 **/
 void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
 {
-    blDebug ( "BlCountryView::on_mui_list_itemSelectionChanged", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Busca el item correcto.
     QString previdpais = mui_list->dbValue ( "idpais" );
 
@@ -130,7 +130,7 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
 **/
 void BlCountryView::mostrarplantilla()
 {
-    blDebug ( "BlCountryView::mostrarplantilla", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_countryId != "0" ) {
         mui_datospais->setEnabled ( TRUE );
@@ -153,7 +153,7 @@ void BlCountryView::mostrarplantilla()
 **/
 int BlCountryView::save()
 {
-    blDebug ( "BlCountryView::on_mui_guardar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString id;
 
     if ( dbValue ( "idpais" ).isEmpty() ) {
@@ -180,7 +180,7 @@ int BlCountryView::save()
 **/
 void BlCountryView::on_mui_crear_clicked()
 {
-    blDebug ( "BlCountryView::on_mui_crear_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_isChanged() ) {
@@ -214,7 +214,7 @@ void BlCountryView::on_mui_crear_clicked()
 **/
 void BlCountryView::on_mui_borrar_clicked()
 {
-    blDebug ( "BlCountryView::on_mui_borrar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( (m_countryId == "") | (m_countryId == "0") ) {
         blMsgInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
         return;

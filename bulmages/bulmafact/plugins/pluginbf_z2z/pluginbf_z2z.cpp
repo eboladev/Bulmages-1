@@ -43,7 +43,7 @@ BfCompany *g_bges;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Entrada del PluginBf_Z2Z", 10 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -69,13 +69,14 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Z2Z" );
+
     if (accion->objectName() == "mui_actionZ2Z") {
-        blDebug ( "PluginBf_Z2Z::BlAction_triggered::mui_actionZ2Z", 0 );
         Z2ZView * bud = new Z2ZView ( g_bges, NULL );
         g_bges->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     } // end if
     
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

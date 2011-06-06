@@ -31,7 +31,7 @@
 BfBuscarArticulo::BfBuscarArticulo ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
-    blDebug ( "BfBuscarArticulo::BfBuscarArticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Establecemos los parametros de busqueda del Cliente
     setLabel ( _ ( "Articulo:" ) );
@@ -49,7 +49,7 @@ BfBuscarArticulo::BfBuscarArticulo ( QWidget *parent )
 **/
 BfBuscarArticulo::~BfBuscarArticulo()
 {
-    blDebug ( "BfBuscarArticulo::~BfBuscarArticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -62,7 +62,7 @@ BfBuscarArticulo::~BfBuscarArticulo()
 **/
 void BfBuscarArticulo::setidarticulo ( QString val )
 {
-    blDebug ( "BfBuscarArticulo::setidarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setId ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -79,7 +79,7 @@ void BfBuscarArticulo::setidarticulo ( QString val )
 **/
 void BfBuscarArticulo::setcodigocompletoarticulo ( QString val )
 {
-    blDebug ( "BfBuscarArticulo::setcodigocompletoarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo=$1";
     BlDbRecordSet *cur = mainCompany() ->load ( SQLQuery, val );
     if ( !cur->eof() ) {
@@ -99,7 +99,7 @@ void BfBuscarArticulo::setcodigocompletoarticulo ( QString val )
 **/
 QString BfBuscarArticulo::codigocompletoarticulo()
 {
-    blDebug ( "BfBuscarArticulo::codigocompletoarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["codigocompletoarticulo"];
 }
@@ -120,7 +120,7 @@ QString BfBuscarArticulo::idarticulo()
 **/
 QString BfBuscarArticulo::nomarticulo()
 {
-    blDebug ( "BfBuscarArticulo::nomarticulo", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["nomarticulo"];
 }
@@ -141,7 +141,7 @@ QString BfBuscarArticulo::nomarticulo()
 BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarArticuloDelegate::BfBuscarArticuloDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_cursorcombo = NULL;
     setEditable ( true );
 //    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
@@ -155,7 +155,7 @@ BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
 **/
 BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate()
 {
-    blDebug ( "BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -170,7 +170,7 @@ BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate()
 **/
 void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
 {
-    blDebug ( "BfBuscarArticuloDelegate::s_editTextChanged : " + cod, 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     static bool semaforo = FALSE;
 
     if ( semaforo ) {
@@ -219,19 +219,17 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
 /// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
 QString BfBuscarArticuloDelegate::unicaEleccion ( void )
 {
+    blDebug ( Q_FUNC_INFO, 0 );
     int num = 0;
     QString elec = NULL;
     for ( int i = 0; ( num < 2 ) && ( i < count() ); i++ ) {
-        blDebug ( "item " + QString::number ( i ) + ". num= " + QString::number ( num )
-                  + " itemText='" + itemText ( i ) + "' itemData=" + itemData ( i ).toString(), 0 );
+        blDebug ( Q_FUNC_INFO, 0, QString(_("Item: '$1', num: '$2', itemText: '$3', itemData: '$4'.")).arg(QString::number ( i )).arg(QString::number ( num )).arg(itemText ( i )).arg(itemData ( i ).toString()) );
         if ( itemData ( i ).isValid() ) {
-            blDebug ( "aquest item es un article trobat, no entrada de l'usuari", 0 );
+	    blDebug ( Q_FUNC_INFO, 0, _("Este item es un articulo encontrado, no entrado por el usuario.") );
             elec = itemData ( i ).toString();
             num++;
         };
-        blDebug ( "FI item " + QString::number ( i ) + ". num= " + QString::number ( num )
-                  + " itemText='" + itemText ( i ) + "' itemData=" + itemData ( i ).toString(), 0 );
-
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Ultimo item: '$1', num: '$2', itemText: '$3', itemData: '$4'.")).arg(QString::number ( i )).arg(QString::number ( num )).arg(itemText ( i )).arg(itemData ( i ).toString()) );
     }
     return ( num == 1 ? elec : NULL );
 }
@@ -240,14 +238,13 @@ QString BfBuscarArticuloDelegate::unicaEleccion ( void )
 /// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
 QString BfBuscarArticuloDelegate::eligeUnico ( void )
 {
-    blDebug ( "BfBuscarArticuloDelegate::eligeUnico. count="
-              + QString::number ( count() ), 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString elec = unicaEleccion();
     if ( !elec.isNull() ) {
-        blDebug ( "elec=" + elec, 0 );
         setEditText ( elec );
-    }
+    } // end if
+
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return elec;
 }
@@ -256,10 +253,8 @@ QString BfBuscarArticuloDelegate::eligeUnico ( void )
 /// per l'article que volia trobar si nomes hi ha un article candidat
 void BfBuscarArticuloDelegate::focusOutEvent ( QFocusEvent * event )
 {
-    blDebug ( "BfBuscarArticuloDelegate::focusOutEvent. count="
-              + QString::number ( count() ), 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     eligeUnico();
-    blDebug ( "crido pare", 0 );
     BlComboBox::focusOutEvent ( event );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

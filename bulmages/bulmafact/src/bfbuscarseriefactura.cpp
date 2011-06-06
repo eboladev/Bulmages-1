@@ -35,7 +35,7 @@
 BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarSerieFactura::BfBuscarSerieFactura", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_comboRecordSet = NULL;
     m_codigoserie_factura = "";
     m_table = "serie_factura";
@@ -49,7 +49,7 @@ BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
 **/
 BfBuscarSerieFactura::~BfBuscarSerieFactura()
 {
-    blDebug ( "BfBuscarSerieFactura::~BfBuscarSerieFactura", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -64,7 +64,7 @@ BfBuscarSerieFactura::~BfBuscarSerieFactura()
 **/
 void BfBuscarSerieFactura::setId ( QString codigo )
 {
-    blDebug ( "BfBuscarSerieFactura::setcodigoserie_factura", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
     /// Prevalece el valor de la configuracion en la base de datos sobre el valor en el archivo de configuracion.
 
@@ -114,7 +114,7 @@ void BfBuscarSerieFactura::setId ( QString codigo )
 **/
 void BfBuscarSerieFactura::m_activated ( int index )
 {
-    blDebug ( "BfBuscarSerieFactura::m_activated", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "codigoserie_factura", index - 1 ) ) );
     } else {
@@ -130,7 +130,7 @@ void BfBuscarSerieFactura::m_activated ( int index )
 **/
 QString BfBuscarSerieFactura::id()
 {
-    blDebug ( "BfBuscarSerieFactura::codigoserie_factura", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int index = currentIndex();
     if ( index > 0 ) {
         return ( m_comboRecordSet->value( "codigoserie_factura", index - 1 ) );
@@ -150,7 +150,7 @@ QString BfBuscarSerieFactura::id()
 **/
 void BfBuscarSerieFactura::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( "BfBuscarSerieFactura::setMainCompany", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
     if ( !cur ) return;

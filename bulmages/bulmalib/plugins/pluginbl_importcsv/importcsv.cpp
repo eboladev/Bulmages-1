@@ -39,7 +39,7 @@
 ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
         : BlWidget ( comp, parent )
 {
-    blDebug ( "ImportCSV::ImportCSV", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -56,7 +56,7 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
 */
 ImportCSV::~ImportCSV()
 {
-    blDebug ( "ImportCSV::~ImportCSV", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -73,7 +73,7 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
 */
 void ImportCSV::on_mui_aceptar_clicked()
 {
-    blDebug ( "ImportCSV::on_mui_aceptar_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QFile file ( mui_archivo->text() );
     if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )

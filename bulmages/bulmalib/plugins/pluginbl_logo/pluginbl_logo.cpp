@@ -39,13 +39,11 @@
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( "Entrada del plugin Docket", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_logo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-    blDebug ( "myplugincont::elslot", 0 );
 
     /// Vamos a probar con un docwindow.
     LogoDockWidget *doc1 = new LogoDockWidget ( _("Logotipo"), g_main );

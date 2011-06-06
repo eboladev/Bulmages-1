@@ -30,7 +30,7 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -48,7 +48,7 @@ int entryPoint ( QApplication * )
 **/
 int BlForm_loadSpecs ( BlForm *l )
 {
-    blDebug ( "BlForm_BlForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     new EQToolButton ( l );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;

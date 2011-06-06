@@ -35,7 +35,7 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -51,7 +51,7 @@ int entryPoint ( QApplication * )
 **/
 PluginBl_SubForm2SXC::PluginBl_SubForm2SXC ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "PluginBl_SubForm2SXC::PluginBl_SubForm2SXC", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -61,7 +61,7 @@ PluginBl_SubForm2SXC::PluginBl_SubForm2SXC ( BlSubForm *parent ) : QObject ( par
 **/
 PluginBl_SubForm2SXC::~PluginBl_SubForm2SXC()
 {
-    blDebug ( "PluginBl_SubForm2SXC::~PluginBl_SubForm2SXC", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -72,7 +72,7 @@ PluginBl_SubForm2SXC::~PluginBl_SubForm2SXC()
 **/
 void PluginBl_SubForm2SXC::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "PluginBl_SubForm2SXC::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     menu->addSeparator();
     menu->addAction ( _ ( "Exportar a hoja de calculo (SXC)" ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -85,7 +85,7 @@ void PluginBl_SubForm2SXC::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_SubForm2SXC::s_trataMenu ( QAction *action )
 {
-    blDebug ( "PluginBl_SubForm2SXC::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( action->text() == _ ( "Exportar a hoja de calculo (SXC)" ) ) {
         sacaSXC();
     } // end if
@@ -98,7 +98,7 @@ void PluginBl_SubForm2SXC::s_trataMenu ( QAction *action )
 **/
 void PluginBl_SubForm2SXC::sacaSXC()
 {
-    blDebug ( "PluginBl_SubForm2SXC::sacaSXC", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "listadosxc.perl";
     BlSubForm * subf = ( BlSubForm * ) parent();
@@ -217,7 +217,7 @@ void PluginBl_SubForm2SXC::sacaSXC()
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBl_SubForm2SXC *subformsxc = new PluginBl_SubForm2SXC ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformsxc, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformsxc, SLOT ( s_trataMenu ( QAction * ) ) );

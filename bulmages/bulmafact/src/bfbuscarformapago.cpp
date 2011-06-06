@@ -33,7 +33,7 @@
 BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarFormaPago::BfBuscarFormaPago", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     m_comboRecordSet = NULL;
     m_table = "forma_pago";
@@ -49,7 +49,7 @@ BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
 **/
 BfBuscarFormaPago::~BfBuscarFormaPago()
 {
-    blDebug ( "BfBuscarFormaPago::~BfBuscarFormaPago", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -66,7 +66,7 @@ BfBuscarFormaPago::~BfBuscarFormaPago()
 **/
 void BfBuscarFormaPago::setId ( QString idforma_pago )
 {
-    blDebug ( "BfBuscarFormaPago::setidforma_pago", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if ( idforma_pago.isEmpty() || idforma_pago == "0" ) {
@@ -110,7 +110,7 @@ void BfBuscarFormaPago::setId ( QString idforma_pago )
 **/
 void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 {
-    blDebug ( "BfBuscarFormaPago::setIdCliente", 0, idcliente );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Si el idcliente no existe salimos.
     if ( idcliente == "" ) {
@@ -137,7 +137,7 @@ void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 **/
 void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
 {
-    blDebug ( "BfBuscarFormaPago::setIdProveedor", 0, idproveedor );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Si no es un proveedor valido salimos.
     if ( idproveedor == "" )
@@ -159,7 +159,7 @@ void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
 **/
 void BfBuscarFormaPago::m_activated ( int index )
 {
-    blDebug ( "BfBuscarFormaPago::m_activated", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idforma_pago", index - 1 ) ) );
@@ -178,7 +178,7 @@ void BfBuscarFormaPago::m_activated ( int index )
 **/
 QString BfBuscarFormaPago::id()
 {
-    blDebug ( "BfBuscarFormaPago::idforma_pago", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     if ( !m_comboRecordSet ) return "0";

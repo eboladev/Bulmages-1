@@ -37,7 +37,7 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( "entryPoint" , 0, "Punto de Entrada del plugin de Subformods" );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -54,7 +54,7 @@ int entryPoint ( QApplication * )
 **/
 PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "PluginBl_SubForm2PDF::PluginBl_SubForm2PDF", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -63,7 +63,7 @@ PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( par
 **/
 PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 {
-    blDebug ( "PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -74,7 +74,8 @@ PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 **/
 void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "PluginBl_SubForm2PDF::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+
     QAction *accionA = new QAction  ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ), menu );
     accionA->setObjectName("mui_actionSubForm2PDF");
 
@@ -90,7 +91,7 @@ void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
 {
-    blDebug ( "PluginBl_SubForm2PDF::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( action->objectName() == "mui_actionSubForm2PDF") {
         imprimir();
     } // end if
@@ -103,7 +104,7 @@ void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
 **/
 void PluginBl_SubForm2PDF::imprimir()
 {
-    blDebug ( "PluginBl_SubForm2PDF::sacaods", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlSubForm * subf = ( BlSubForm * ) parent();
 
@@ -119,7 +120,7 @@ void PluginBl_SubForm2PDF::imprimir()
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
@@ -134,7 +135,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     

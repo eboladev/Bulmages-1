@@ -32,7 +32,7 @@
 VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    blDebug ( "VehiculoView::VehiculoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listadomantvehiculo->setMainCompany ( emp );
@@ -72,7 +72,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
 **/
 VehiculoView::~VehiculoView()
 {
-    blDebug ( "VehiculoView::~VehiculoView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -84,7 +84,7 @@ VehiculoView::~VehiculoView()
 **/
 int VehiculoView::save()
 {
-    blDebug ( "VehiculoView::guardar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         setDbValue ( "matriculavehiculo", mui_matriculavehiculo->text() );
         setDbValue ( "marcavehiculo", mui_marcavehiculo->text() );
@@ -113,7 +113,7 @@ int VehiculoView::save()
 **/
 int VehiculoView::load ( QString idvehiculo )
 {
-    blDebug ( "VehiculoView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         BlDbRecord::load ( idvehiculo );
 

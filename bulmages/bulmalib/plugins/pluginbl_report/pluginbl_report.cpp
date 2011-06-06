@@ -48,7 +48,7 @@ BlMainCompany *g_emp = NULL;
 **/
 PluginBl_Report::PluginBl_Report()
 {
-    blDebug ( "PluginBl_Report::PluginBl_Report", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -58,7 +58,7 @@ PluginBl_Report::PluginBl_Report()
 **/
 PluginBl_Report::~PluginBl_Report()
 {
-    blDebug ( "PluginBl_Report::~PluginBl_Report", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -68,7 +68,7 @@ PluginBl_Report::~PluginBl_Report()
 **/
 void PluginBl_Report::elslot1( )
 {
-    blDebug ( "PluginBl_Report::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
@@ -87,7 +87,7 @@ int entryPoint ( QMainWindow *bges )
 
 int init (  )
 {
-    blDebug ( "Entrada del plugin ", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -209,7 +209,7 @@ int init (  )
         menu->addAction ( accion );
     } // end for
 
-    blDebug ( "Iniciado correctamente el plugin", 10 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 

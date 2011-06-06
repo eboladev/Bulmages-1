@@ -27,7 +27,7 @@
 \param argv
 **/
 BlArgParser::BlArgParser( int argc, char **argv ) {
-   blDebug ( "BlArgParser::BlArgParser", 0 );
+   blDebug ( Q_FUNC_INFO, 0 );
   
    m_executable = argv[0];
    m_dbName = "";
