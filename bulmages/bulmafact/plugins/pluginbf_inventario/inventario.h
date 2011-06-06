@@ -56,7 +56,6 @@ public:
     void setFechaInventario ( QString val );
     void setNomInventario ( QString val );
     void vaciaInventario();
-    void presentar ();
 };
 
 #endif

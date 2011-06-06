@@ -80,8 +80,6 @@ int Inventario::remove()
         } // end if
         companyact->commit();
     } // end if
-
-    presentar();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
