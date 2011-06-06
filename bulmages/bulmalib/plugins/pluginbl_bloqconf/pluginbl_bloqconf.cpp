@@ -46,7 +46,7 @@ BlMainCompany *g_emp = NULL;
 **/
 PluginBl_BloqConf::PluginBl_BloqConf()
 {
-    blDebug ( "PluginBl_BloqConf::PluginBl_BloqConf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -55,7 +55,7 @@ PluginBl_BloqConf::PluginBl_BloqConf()
 **/
 PluginBl_BloqConf::~PluginBl_BloqConf()
 {
-    blDebug ( "PluginBl_BloqConf::~PluginBl_BloqConf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -66,7 +66,7 @@ PluginBl_BloqConf::~PluginBl_BloqConf()
 **/
 void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "PluginBl_BloqConf::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlSubForm *sub = (BlSubForm *) sender();
     int modo = !sub->editMode();
@@ -74,7 +74,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
     
     menu->addSeparator();
     QAction * ac = new QAction("Bloqueo Configuracion" , menu);
-    ac->setObjectName("actionBloqueoConfiguracuion");
+    ac->setObjectName("actionBloqueoConfiguracion");
     ac -> setCheckable(TRUE);
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
@@ -96,8 +96,8 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_BloqConf::s_trataMenu ( QAction *action )
 {
-    blDebug ( "PluginBl_BloqConf::s_trataMenu", 0 );
-    if ( action->objectName() ==  "actionBloqueoConfiguracuion" ) {
+    blDebug ( Q_FUNC_INFO, 0 );
+    if ( action->objectName() ==  "actionBloqueoConfiguracion" ) {
             BlSubForm *sub = (BlSubForm *) sender();
             int modo = !sub->editMode();
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
@@ -166,6 +166,7 @@ int entryPoint ( BlMainWindow *bges )
 
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
+
     if (accion->objectName() == "mui_actionBloqConf") {
         QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
         system ( cad.toAscii().constData() );
@@ -181,6 +182,7 @@ int BlAction_triggered(BlAction *accion) {
         system ( cad.toAscii().constData() );
         blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
     }
+
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 

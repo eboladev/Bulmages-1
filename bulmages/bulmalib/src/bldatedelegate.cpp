@@ -32,7 +32,7 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allo
    , m_company ( comp )
    , m_allowNull ( allowNull )
 {
-   blDebug ( "BlDateDelegate::BlDateDelegate", 0 ) ;
+   blDebug ( Q_FUNC_INFO, 0 );
 
    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -46,7 +46,7 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allo
 **/
 QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
 {
-   blDebug ( "BlDateDelegate::createEditor", 0 ) ;
+   blDebug ( Q_FUNC_INFO, 0 );
 
    BlDateSearch *ds = new BlDateSearch ( parent ) ;
    ds->setMainCompany ( m_company ) ;
@@ -64,7 +64,7 @@ QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewI
 **/
 void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
-   blDebug ( "BlDateDelegate::setEditorData", 0 ) ;
+   blDebug ( Q_FUNC_INFO, 0 );
 
    BlDateSearch *ds = ( BlDateSearch * ) editor;
    QString fecha = index.model()->data ( index ).toString();
@@ -89,7 +89,7 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
 **/
 void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-   blDebug ( "BlDateDelegate::setModelData", 0 ) ;
+   blDebug ( Q_FUNC_INFO, 0 );
 
    QString fecha = ( ( BlDateSearch * ) editor ) ->text();
    model->setData ( index, fecha ) ;
@@ -106,7 +106,7 @@ void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, 
 **/
 void BlDateDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
 {
-   blDebug ( "BlDateDelegate::updateEditorGeometry", 0 ) ;
+   blDebug ( Q_FUNC_INFO, 0 );
 
    editor->setGeometry ( vis.rect ) ;
 

@@ -35,7 +35,7 @@
 **/
 BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "lalbaranp" );
     setDbFieldId ( "numlalbaranp" );
 
@@ -72,7 +72,7 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
 **/
 void BfProveedorAlbaranSubForm::load ( QString idalbaranp )
 {
-    blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mdb_idalbaranp = idalbaranp;
     BlSubForm::load ( "SELECT *, (cantlalbaranp * pvplalbaranp)::NUMERIC(12,2) AS totallalbaranp FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

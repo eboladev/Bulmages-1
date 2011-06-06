@@ -39,7 +39,7 @@
 TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( "TutoresList::TutoresList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TutoresList_TutoresList", this );
@@ -61,7 +61,7 @@ TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( "TutoresList::TutoresList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TutoresList_TutoresList", this );
@@ -95,7 +95,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 TutoresList::~TutoresList()
 {
-    blDebug ( "TutoresList::~TutoresList", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -106,7 +106,7 @@ TutoresList::~TutoresList()
 */
 void TutoresList::presentar()
 {
-    blDebug ( "TutoresList::presentar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM cliente WHERE 1 = 1 " + generaFiltro() );
     } // end if
@@ -118,7 +118,7 @@ void TutoresList::presentar()
 */
 QString TutoresList::generaFiltro()
 {
-    blDebug ( "TutoresList::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -138,12 +138,12 @@ QString TutoresList::generaFiltro()
 */
 void TutoresList::crear()
 {
-    blDebug ( "TutoresList::crear", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     TutorView *bud = new TutorView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
-    blDebug ( "TutoresList::crear", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -151,7 +151,7 @@ void TutoresList::crear()
 */
 void TutoresList::imprimir()
 {
-    blDebug ( "TutoresList::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Padres" ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -165,7 +165,7 @@ void TutoresList::imprimir()
 */
 void TutoresList::remove()
 {
-    blDebug ( "TutoresList::borrar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -194,7 +194,7 @@ void TutoresList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void TutoresList::editar ( int )
 {
-    blDebug ( "TutoresList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     try {
         mdb_idcliente = mui_list->dbValue ( "idcliente" );
         if ( editMode() ) {
@@ -221,7 +221,7 @@ void TutoresList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void TutoresList::submenu ( const QPoint & )
 {
-    blDebug ( "TutoresList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -234,7 +234,7 @@ void TutoresList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    blDebug ( "TutoresList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -249,7 +249,7 @@ void TutoresList::setMainCompany ( BfCompany *comp )
 **/
 QString TutoresList::idcliente()
 {
-    blDebug ( "TutoresList::idcliente", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return mdb_idcliente;
 }
@@ -264,7 +264,7 @@ QString TutoresList::idcliente()
 */
 TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "TutoresListSubForm::TutoresListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TutoresListSubForm_TutoresListSubForm", this );
     if ( res != 0 )
@@ -303,7 +303,7 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
 
 TutoresListSubForm::~TutoresListSubForm()
 {
-    blDebug ( "TutoresListSubForm::~TutoresListSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

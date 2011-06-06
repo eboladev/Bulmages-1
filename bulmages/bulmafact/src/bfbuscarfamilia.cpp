@@ -31,7 +31,7 @@
 BfBuscarFamilia::BfBuscarFamilia ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
-    blDebug ( "BfBuscarFamilia::BfBuscarFamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Establecemos los parametros de busqueda del Cliente
     setLabel ( _ ( "Familia:" ) );
     setTableName ( "familia" );
@@ -47,7 +47,7 @@ BfBuscarFamilia::BfBuscarFamilia ( QWidget *parent )
 **/
 BfBuscarFamilia::~BfBuscarFamilia()
 {
-    blDebug ( "BfBuscarFamilia::~BfBuscarFamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -58,7 +58,7 @@ BfBuscarFamilia::~BfBuscarFamilia()
 **/
 void BfBuscarFamilia::setidfamilia ( QString val )
 {
-    blDebug ( "BfBuscarFamilia::setidfamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setId ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -69,7 +69,7 @@ void BfBuscarFamilia::setidfamilia ( QString val )
 **/
 void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
 {
-    blDebug ( "BfBuscarFamilia::setcodigocompletofamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + val + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -93,7 +93,7 @@ void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
 **/
 QString BfBuscarFamilia::codigocompletofamilia()
 {
-    blDebug ( "BfBuscarFamilia::codigocompletofamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["codigocompletofamilia"];
 }
@@ -105,7 +105,7 @@ QString BfBuscarFamilia::codigocompletofamilia()
 **/
 QString BfBuscarFamilia::idfamilia()
 {
-    blDebug ( "BfBuscarFamilia::idfamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return id();
 }
@@ -118,7 +118,7 @@ QString BfBuscarFamilia::idfamilia()
 **/
 QString BfBuscarFamilia::nombrefamilia()
 {
-    blDebug ( "BfBuscarFamilia::nombrefamilia", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return m_valores["nombrefamilia"];
 }

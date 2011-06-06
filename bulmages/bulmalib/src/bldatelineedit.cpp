@@ -27,7 +27,7 @@
 **/
 BlDateLineEdit::BlDateLineEdit ( QWidget *parent ) : QLineEdit ( parent )
 {
-    blDebug ( "BlDateLineEdit::BlDateLineEdit", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     installEventFilter ( this );
     QObject::connect ( this, SIGNAL ( editingFinished() ), this, SLOT ( on_mui_editingFinished() ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -39,7 +39,7 @@ BlDateLineEdit::BlDateLineEdit ( QWidget *parent ) : QLineEdit ( parent )
 **/
 BlDateLineEdit::~BlDateLineEdit()
 {
-    blDebug ( "BlDateLineEdit::~BlDateLineEdit", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -50,7 +50,7 @@ BlDateLineEdit::~BlDateLineEdit()
 **/
 void BlDateLineEdit::setText ( QString val )
 {
-    blDebug ( "BlDateLineEdit::setText", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QLineEdit::setText ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -62,7 +62,7 @@ void BlDateLineEdit::setText ( QString val )
 **/
 void BlDateLineEdit::setFieldValue ( QString val )
 {
-    blDebug ( "BlDateLineEdit::setFieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QLineEdit::setText ( val );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -73,7 +73,7 @@ void BlDateLineEdit::setFieldValue ( QString val )
 **/
 void BlDateLineEdit::selectAll()
 {
-    blDebug ( "BlDateLineEdit::selectAll", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -84,7 +84,7 @@ void BlDateLineEdit::selectAll()
 **/
 QString BlDateLineEdit::text()
 {
-    blDebug ( "BlDateLineEdit::text", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return QLineEdit::text();
 }
@@ -96,7 +96,7 @@ QString BlDateLineEdit::text()
 **/
 QString BlDateLineEdit::fieldValue()
 {
-    blDebug ( "BlDateLineEdit::fieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return QLineEdit::text();
 }
@@ -107,7 +107,7 @@ QString BlDateLineEdit::fieldValue()
 **/
 void BlDateLineEdit::on_mui_editingFinished()
 {
-    blDebug ( "BlDateLineEdit::on_mui_editingFinished", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setText ( blNormalizeDate ( text() ).toString ( "dd/MM/yyyy" ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -121,7 +121,7 @@ void BlDateLineEdit::on_mui_editingFinished()
 **/
 bool BlDateLineEdit::eventFilter ( QObject *obj, QEvent *event )
 {
-    blDebug ( "BlDateLineEdit::eventFilter", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /*
         if (event->type() == QEvent::KeyRelease) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);

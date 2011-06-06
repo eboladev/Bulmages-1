@@ -50,7 +50,7 @@
 MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode editmodo )
         : BfForm ( comp, parent, 0 )
 {
-    blDebug ( "MovimientosView::MovimientosView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     iniciaForm();
@@ -81,7 +81,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
 **/
 void MovimientosView::iniciaForm()
 {
-    blDebug ( "MovimientosView::iniciaForm" );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
     if ( res != 0 )
@@ -100,7 +100,7 @@ void MovimientosView::iniciaForm()
 **/
 MovimientosView::~MovimientosView()
 {
-    blDebug ( "MovimientosView::~MovimientosView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mainCompany() ->removeWindow ( this );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -112,7 +112,7 @@ MovimientosView::~MovimientosView()
 **/
 void MovimientosView::presenta()
 {
-    blDebug ( "MovimientosView::presenta", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     mui_list->load ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
 
@@ -127,7 +127,7 @@ void MovimientosView::presenta()
 **/
 QString MovimientosView::generaFiltro()
 {
-    blDebug ( "MovimientosView::generaFiltro", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
@@ -146,9 +146,9 @@ QString MovimientosView::generaFiltro()
 **/
 void MovimientosView::on_mui_imprimir_clicked()
 {
-    blDebug ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     mui_list->printPDF ( _ ( "Facturas a clientes" ) );
-    blDebug ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
@@ -166,7 +166,7 @@ void MovimientosView::on_mui_imprimir_clicked()
 **/
 MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( "MovimientosSubform::MovimientosSubform", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "MovimientosSubform_MovimientosSubform", this );
     if ( res != 0 )

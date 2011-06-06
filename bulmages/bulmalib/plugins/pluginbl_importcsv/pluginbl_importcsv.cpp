@@ -45,7 +45,7 @@ BlMainCompany *g_emp_importcsv = NULL;
 **/
 PluginBl_ImportCSV::PluginBl_ImportCSV()
 {
-    blDebug ( "PluginBl_ImportCSV::PluginBl_ImportCSV", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -54,7 +54,7 @@ PluginBl_ImportCSV::PluginBl_ImportCSV()
 **/
 PluginBl_ImportCSV::~PluginBl_ImportCSV()
 {
-    blDebug ( "PluginBl_ImportCSV::~PluginBl_ImportCSV", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -64,7 +64,7 @@ PluginBl_ImportCSV::~PluginBl_ImportCSV()
 **/
 void PluginBl_ImportCSV::elslot()
 {
-    blDebug ( "PluginBl_ImportCSV::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     ImportCSV *imp = new ImportCSV ( g_emp_importcsv, 0 );
     g_emp_importcsv->pWorkspace() ->addSubWindow ( imp );
@@ -78,7 +78,7 @@ void PluginBl_ImportCSV::elslot()
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( "Entrada del plugin ImportCSV", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -102,7 +102,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion );
 
 
-    blDebug ( "Iniciado correctamente el plugin imoprtcsv", 10 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
