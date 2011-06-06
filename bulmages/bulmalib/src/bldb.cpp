@@ -632,7 +632,7 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
 
     if ( !campo ) {
 	blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '$1' no encontrado.")).arg(nomb) );
-	blMsgError(QString(_("Campo: '$1' no encontrado.")).arg(nomb))
+	blMsgError(QString(_("Campo: '$1' no encontrado.")).arg(nomb));
         return -1;
     } // end if
 
@@ -664,7 +664,7 @@ QString BlDbRecord::dbValue ( QString nomb )
 
     if ( !campo ) {
 	blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '$1' no encontrado.")).arg(nomb) );
-	blMsgError(QString(_("Campo: '$1' no encontrado.")).arg(nomb))
+	blMsgError(QString(_("Campo: '$1' no encontrado.")).arg(nomb));
     } else if ( campo->fieldName() == nomb ) {
         valor = campo->valorcampo();
     } // end if
