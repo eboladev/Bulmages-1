@@ -34,77 +34,7 @@
 #include "bcextractoview.h"
 
 BcExtractoView *g_mayor;
-
-
-
-
-
-///
-/**
-**/
-PluginBc_Mayor::PluginBc_Mayor()
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Mayor::~PluginBc_Mayor()
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-
-
-///
-/**
-**/
-void PluginBc_Mayor::elslot()
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    if (g_mayor == NULL) {
-      g_mayor = new BcExtractoView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() ->addSubWindow ( g_mayor );
-    } // end if
-    g_mayor->hide();
-    g_mayor->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_Mayor::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-
-    /// Creamos el men&uacute;.
-    setMainCompany ( (BlMainCompany *)bges->company() );
-    m_bulmacont = bges;
-    QMenu *pPluginMenu = bges->newMenu( _("&Ver"), "menuVer", "menuMaestro");
-
-    QAction *accion = new QAction ( _ ( "&Libro Mayor" ), 0 );
-    accion->setStatusTip ( _ ( "Permite ver el mayor" ) );
-    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del mayor" ) );
-    accion->setIcon(QIcon(QString::fromUtf8(":/Images/bank-statement.png")));
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->toolBar->addAction ( accion );
-
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -120,10 +50,35 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_mayor = NULL;
 
-    PluginBc_Mayor *plug = new PluginBc_Mayor();
-    plug->inicializa ( bcont );
+    /// Creamos el men&uacute;.
+    g_bcont = bcont;
+    QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
+
+    BlAction *accionA = new BlAction ( _ ( "&Libro Mayor" ), 0 );
+    accionA->setStatusTip ( _ ( "Permite ver el mayor" ) );
+    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del mayor" ) );
+    accionA->setObjectName("mui_actionLibro");
+    accionA->setIcon(QIcon(QString::fromUtf8(":/Images/bank-statement.png")));
+    bcont->toolBar->addAction ( accionA );
+    //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    pPluginMenu->addAction ( accionA );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionLibro") {
+        if (g_mayor == NULL) {
+            g_mayor = new BcExtractoView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_bcont->company() ->pWorkspace() ->addSubWindow ( g_mayor );
+        } // end if
+        g_mayor->hide();
+        g_mayor->show();
+    } // end if
+    return 0;
+}

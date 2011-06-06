@@ -176,7 +176,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     /// Oficina Receptora del fichero Longitud: 4
     QString ofi_recept = blStringToUsAscii ( curbanco->value( "codagenciabanco" ) ).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Oficina bancaria supera longitud maxima".) );
+	blDebug ( Q_FUNC_INFO, 0, _("Oficina bancaria supera longitud maxima.") );
     } // end if
     cab_present.append ( ofi_recept.toLatin1() );
 
