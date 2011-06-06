@@ -33,7 +33,7 @@
 #include <QTextStream>
 
 #include "pluginbl_bloqconf.h"
-#include "plblbloqconf.h"
+//#include "plblbloqconf.h"
 #include "blworkspace.h"
 #include "blform.h"
 
@@ -59,49 +59,6 @@ PluginBl_BloqConf::~PluginBl_BloqConf()
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
-
-
-
-///
-/**
-**/
-void PluginBl_BloqConf::elslot( )
-{
-    blDebug ( "PluginBl_BloqConf::elslot", 0 );
-
-    QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
-    system ( cad.toAscii().constData() );
-    blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-///
-/**
-**/
-void PluginBl_BloqConf::elslot1( )
-{
-    blDebug ( "PluginBl_BloqConf::elslot", 0 );
-
-    QString cad = "chmod a+w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
-    system ( cad.toAscii().constData() );
-    blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
-
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-///
-/**
-**/
-void PluginBl_BloqConf::elslot2( )
-{
-    blDebug ( "PluginBl_BloqConf::elslot2", 0 );
-
-    QString cad = "rm" + g_confpr->value(CONF_DIR_USER) + "*.cfn";
-    system ( cad.toAscii().constData() );
-    blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
-
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
 
 ///
 /**
@@ -161,7 +118,7 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( "Entrada del plugin Bloqconf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     g_bges = bges;
 
@@ -173,39 +130,59 @@ int entryPoint ( BlMainWindow *bges )
 
     PluginBl_BloqConf *mcont = new PluginBl_BloqConf;
 
-
-
-    /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( _("&Bloquear Configuraciones"), 0 );
-    accion->setStatusTip ( _("Bloquear Configuraciones") );
-    accion->setWhatsThis ( _("Bloquear Configuraciones") );
-
-    /// Creamos el men&uacute;.
-    QAction *accion1 = new QAction ( _("&Desbloquear Configuraciones"), 0 );
-    accion1->setStatusTip ( _("Desbloquear Configuraciones") );
-    accion1->setWhatsThis ( _("Desbloquear Configuraciones") );
-
-
-    /// Creamos el men&uacute;.
-    QAction *accion2 = new QAction ( _("&Borrar Configuraciones"), 0 );
-    accion2->setStatusTip ( _("Borrar Configuraciones") );
-    accion2->setWhatsThis ( _("Borrar Configuraciones") );
-
-
-    mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
-    mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
-    mcont->connect ( accion2, SIGNAL ( activated() ), mcont, SLOT ( elslot2() ) );
-
     /// Miramos si existe un menu Herramientas
+
 	QMenu *pPluginMenu = bges->newMenu(_("&Herramientas"), "menuHerramientas", "menuAcerca_de");
 
     pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-    pPluginMenu->addAction ( accion1 );
-    pPluginMenu->addAction ( accion2 );
 
-    blDebug ( "Iniciado correctamente el plugin dock", 10 );
+    /// Creamos el men&uacute;.
+    BlAction *accionA = new BlAction ( _("&Bloquear Configuraciones"), 0 );
+    accionA->setStatusTip ( _("Bloquear Configuraciones") );
+    accionA->setWhatsThis ( _("Bloquear Configuraciones") );
+    accionA->setObjectName("mui_actionBloqConf");
+    pPluginMenu->addAction ( accionA );
+
+    /// Creamos el men&uacute;.
+    BlAction *accionB = new BlAction ( _("&Desbloquear Configuraciones"), 0 );
+    accionB->setStatusTip ( _("Desbloquear Configuraciones") );
+    accionB->setWhatsThis ( _("Desbloquear Configuraciones") );
+    accionB->setObjectName("mui_actionUnlockConf");
+    pPluginMenu->addAction ( accionB );
+
+    /// Creamos el men&uacute;.
+    BlAction *accionC = new BlAction ( _("&Borrar Configuraciones"), 0 );
+    accionC->setStatusTip ( _("Borrar Configuraciones") );
+    accionC->setWhatsThis ( _("Borrar Configuraciones") );
+    accionC->setObjectName("mui_actionDeleteConf");
+    pPluginMenu->addAction ( accionC );
+
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
+}
+
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ( Q_FUNC_INFO, 0 );
+    if (accion->objectName() == "mui_actionBloqConf") {
+        QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
+        system ( cad.toAscii().constData() );
+        blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
+    }
+    if (accion->objectName() == "mui_actionUnlockConf") {
+        QString cad = "chmod a+w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
+        system ( cad.toAscii().constData() );
+        blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
+    }
+    if (accion->objectName() == "mui_actionDeleteConf") {
+        QString cad = "rm" + g_confpr->value(CONF_DIR_USER) + "*.cfn";
+        system ( cad.toAscii().constData() );
+        blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
+    }
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    return 0;
+
 }
 
 
@@ -231,7 +208,7 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBl_BloqConf *subformods = new PluginBl_BloqConf (  );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );

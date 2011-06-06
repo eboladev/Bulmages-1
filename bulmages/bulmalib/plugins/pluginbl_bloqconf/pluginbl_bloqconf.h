@@ -18,16 +18,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+
+#include "QObject"
+#include "QMenu"
+#include "QAction"
+
+
 #include "blmainwindow.h"
 #include "blfunctions.h"
 #include "bccompany.h"
 #include "bfcompany.h"
 #include "blsubform.h"
 #include "pdefs_pluginbl_bloqconf.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBL_BLOQCONF_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+
+class PluginBl_BloqConf : public QObject
+{
+    Q_OBJECT
+
+public:
+    PluginBl_BloqConf();
+    virtual ~PluginBl_BloqConf();
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
 
