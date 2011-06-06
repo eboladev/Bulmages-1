@@ -74,6 +74,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
     
     menu->addSeparator();
     QAction * ac = new QAction("Bloqueo Configuracion" , menu);
+    ac->setObjectName("actionBloqueoConfiguracuion");
     ac -> setCheckable(TRUE);
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
@@ -96,7 +97,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
 void PluginBl_BloqConf::s_trataMenu ( QAction *action )
 {
     blDebug ( "PluginBl_BloqConf::s_trataMenu", 0 );
-    if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
+    if ( action->objectName() ==  "actionBloqueoConfiguracuion" ) {
             BlSubForm *sub = (BlSubForm *) sender();
             int modo = !sub->editMode();
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
