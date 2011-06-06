@@ -450,7 +450,7 @@ void blCreateAndLoadPDF ( const QString arch )
 #ifdef Q_OS_WIN32
     QString cadsys = "\"start \"\" \"" + g_confpr->value( CONF_PDF ) + "\" \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"\"";
 #else
-    QString cadsys = g_confpr->value( CONF_PDF ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf &";
+    QString cadsys = g_confpr->value( CONF_PDF ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf &";C:
 #endif
     
     int result = system ( cadsys.toAscii().data() );
@@ -1062,12 +1062,14 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 		if (diruser) {
 			dir = g_confpr->value(CONF_DIR_USER);
 		} // end if
-
+		
 		#ifndef Q_OS_WIN32
 			QString comando = "lp -d" + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );
 		#else
-			QString comando = g_confpr->value(CONF_SPOOL)  + " " + dir + archivo + " " + printer;
+			QString comando = "\"" + g_confpr->value(CONF_SPOOL)  + "\" \"" + dir + archivo + "\" " + printer;
+			comando.replace("/","\\");
+			comando = "\"" + comando + "\"";
 			system ( comando.toAscii().data() );		
 		#endif
 

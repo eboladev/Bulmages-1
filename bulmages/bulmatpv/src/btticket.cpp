@@ -347,7 +347,7 @@ void BtTicket::imprimir(bool doSave)
 		blRawPrint( "ticket_normal.txt");
     } // end if    
 
-    
+
     g_plugins->lanza("BtTicket_imprimir_Post", this);
     blDebug("END BtTicket::imprimir",0);
 }
