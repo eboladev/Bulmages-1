@@ -1067,7 +1067,7 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 			QString comando = "lp -d" + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );
 		#else
-			QString comando = g_confpr->value(CONF_SPOOL) + " " + printer + " " + dir + archivo;
+			QString comando = g_confpr->value(CONF_SPOOL)  + " " + dir + archivo + " " + printer;
 			system ( comando.toAscii().data() );		
 		#endif
 
