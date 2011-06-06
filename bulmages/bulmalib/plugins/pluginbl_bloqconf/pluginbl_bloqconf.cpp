@@ -33,7 +33,7 @@
 #include <QTextStream>
 
 #include "pluginbl_bloqconf.h"
-//#include "plblbloqconf.h"
+#include "plblbloqconf.h"
 #include "blworkspace.h"
 #include "blform.h"
 

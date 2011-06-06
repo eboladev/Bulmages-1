@@ -37,16 +37,3 @@ extern "C" PLUGINBL_BLOQCONF_EXPORT int BfCompany_createMainWindows_Post ( BfCom
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
-class PluginBl_BloqConf : public QObject
-{
-    Q_OBJECT
-
-public:
-    PluginBl_BloqConf();
-    virtual ~PluginBl_BloqConf();
-
-public slots:
-    virtual void s_pintaMenu ( QMenu * );
-    virtual void s_trataMenu ( QAction * );
-};
-
