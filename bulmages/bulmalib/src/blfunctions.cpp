@@ -1063,7 +1063,7 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 			dir = g_confpr->value(CONF_DIR_USER);
 		} // end if
 
-		#ifdef Q_OS_WIN32
+		#ifndef Q_OS_WIN32
 			QString comando = "lp -d" + printer + " " + dir + archivo;
 			system ( comando.toAscii().data() );
 		#else
