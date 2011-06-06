@@ -26,6 +26,8 @@
 #include <QChar>
 #include <math.h>
 
+#include "blfunctions.h"
+
 #define TWOPI 6.283185307179586476925287
 
 BlEscPrinter::BlEscPrinter()
@@ -78,8 +80,9 @@ void BlEscPrinter::printText ( QString text )
 
 void BlEscPrinter::printImage ( QString path )
 {
+	blDebug ( Q_FUNC_INFO, 0 );
     QImage img = QImage ( path );
-
+	
     if ( !img.isNull() ) {
         if ( img.depth() != 1 ) {
             img = img.convertToFormat ( QImage::Format_Mono, Qt::MonoOnly );
@@ -109,6 +112,9 @@ void BlEscPrinter::printImage ( QString path )
     } else {
         //ERROR LOADING LOGO
     }
+	
+	
+	 blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
 
