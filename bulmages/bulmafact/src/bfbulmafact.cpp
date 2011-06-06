@@ -289,7 +289,7 @@ QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location
 **/
 void BfBulmaFact::documentacionError ( const QString docError )
 {
-    blDebug ( Q_FUNC_INFO, 0 );ç
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
