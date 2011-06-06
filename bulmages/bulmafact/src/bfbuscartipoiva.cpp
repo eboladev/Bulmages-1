@@ -33,7 +33,7 @@
 BfBuscarTipoIVA::BfBuscarTipoIVA ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarTipoIVA::BfBuscarTipoIVA", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_comboRecordSet = NULL;
     m_table = "tipo_iva";
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -46,7 +46,7 @@ BfBuscarTipoIVA::BfBuscarTipoIVA ( QWidget *parent )
 **/
 BfBuscarTipoIVA::~BfBuscarTipoIVA()
 {
-    blDebug ( "BfBuscarTipoIVA::~BfBuscarTipoIVA", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -61,7 +61,7 @@ BfBuscarTipoIVA::~BfBuscarTipoIVA()
 **/
 void BfBuscarTipoIVA::setId ( QString idtipo_iva )
 {
-    blDebug ( "BfBuscarTipoIVA::setidtipo_iva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
@@ -102,7 +102,7 @@ void BfBuscarTipoIVA::setId ( QString idtipo_iva )
 **/
 QString BfBuscarTipoIVA::id()
 {
-    blDebug ( "BfBuscarTipoIVA::idtipo_iva", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
@@ -119,7 +119,7 @@ QString BfBuscarTipoIVA::id()
 **/
 void BfBuscarTipoIVA::m_activated ( int index )
 {
-    blDebug ( "BfBuscarTipoIVA::m_activated", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idtipo_iva", index - 1 ) ) );
@@ -144,7 +144,7 @@ void BfBuscarTipoIVA::m_activated ( int index )
 BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
@@ -158,7 +158,7 @@ BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
 **/
 BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate()
 {
-    blDebug ( "BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -172,7 +172,7 @@ BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate()
 **/
 void BfBuscarTipoIVADelegate::set ( const QString &cod )
 {
-    blDebug ( "BfBuscarTipoIVADelegate::set", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     int index = 0;
     QString codigo = cod;

@@ -46,7 +46,7 @@
 **/
 EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "EQToolButton::EQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
    /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
     EQToolButton *tool = parent->findChild<EQToolButton *>("BotonArchDoc");
     if (tool) {
@@ -122,7 +122,7 @@ void EQToolButton::hazMenu() {
 **/
 EQToolButton::~EQToolButton()
 {
-    blDebug ( "EQToolButton::~EQToolButton", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -133,7 +133,7 @@ EQToolButton::~EQToolButton()
 **/
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
-    blDebug ( "EQToolButton::pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QMenu *ajust = menu->addMenu (QIcon(":/Images/attach_document.png"), _ ( "Archivo Documental" ) );
 
     
@@ -168,7 +168,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 **/
 void EQToolButton::trataMenu ( QAction *action )
 {
-    blDebug ( "EQToolButton::trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
      if (action == NULL) action = (QAction *) sender();
     

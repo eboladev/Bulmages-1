@@ -86,8 +86,6 @@ void initConfiguration ( QString config )
 **/
 BlConfiguration::BlConfiguration ( QString nombreprograma )
 {
-//    blDebug("BlConfiguration::BlConfiguration", 0);
-
     /// Definimos los directorios donde buscar primero.
     m_dirGlobalConf = CONFIG_DIR_CONFIG;
 
@@ -179,7 +177,6 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     setValue ( CONF_LOGIN_USER, "" );
     setValue ( CONF_PASSWORD_USER, "" );
 
-//    blDebug("END BlConfiguration::BlConfiguration", 0);
 }
 
 
@@ -188,8 +185,6 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
 **/
 BlConfiguration::~BlConfiguration()
 {
-//    blDebug("BlConfiguration::~BlConfiguration", 0);
-//    blDebug("END BlConfiguration::~BlConfiguration", 0);
 }
 
 
@@ -455,7 +450,6 @@ QString BlConfiguration::name( int i )
 **/
 void BlConfiguration::saveConfig()
 {
-//    blDebug("BlConfiguration::saveConfig", 0);
     QString dir1 = getenv ( "HOME" );
     dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
 
@@ -473,7 +467,6 @@ void BlConfiguration::saveConfig()
         } // end if
     } // end for
     file.close();
-//    blDebug("END BlConfiguration::saveConfig", 0);
 }
 
 
@@ -486,7 +479,6 @@ void BlConfiguration::saveConfig()
 **/
 bool BlConfiguration::readConfig ( QString fich )
 {
-//    blDebug("BlConfiguration::readConfig", 0);
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
         QString cadaux1 = "Leyendo configuracion" + fich + "\n";
@@ -509,7 +501,6 @@ bool BlConfiguration::readConfig ( QString fich )
 
             for ( int i = 0; i < 1000; i++ ) {
                 if (  list[0] == name( i )  && name( i ) != "" ) {
-                    blDebug ( "[" + name( i ) + "]" + "--->" + cad, 0 );
                     cad = cad.right ( cad.length() - name( i ).length() );
                     cad = cad.trimmed();
                     m_valores[i] = cad;
@@ -520,7 +511,6 @@ bool BlConfiguration::readConfig ( QString fich )
         fprintf ( stderr, "%s", "FIN Leyendo configuracion\n" );
         return TRUE;
     } // end if
-//    blDebug("END BlConfiguration::readConfig", 0);
     return FALSE;
 }
 
@@ -532,12 +522,10 @@ bool BlConfiguration::readConfig ( QString fich )
 **/
 QString BlConfiguration::value( int i )
 {
-//    blDebug("BlConfiguration::valor", 0);
     if ( m_valores.contains ( i ) ) {
         return ( m_valores[i] );
     } // end if
     return "";
-//    blDebug("END BlConfiguration::valor", 0);
 }
 
 
@@ -548,8 +536,6 @@ QString BlConfiguration::value( int i )
 **/
 void BlConfiguration::setValue ( int i, QString valor )
 {
-//    blDebug("BlConfiguration::setValue", 0);
     m_valores[i] = valor;
-//    blDebug("END BlConfiguration::setValue", 0);
 }
 

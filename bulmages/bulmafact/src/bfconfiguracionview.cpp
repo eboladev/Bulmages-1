@@ -45,7 +45,7 @@
 **/
 BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( "BfConfiguracionView::BfConfiguracionView", 1 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setupUi ( this );
 
     
@@ -156,7 +156,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
 **/
 BfConfiguracionView::~BfConfiguracionView()
 {
-    blDebug ( "BfConfiguracionView::~BfConfiguracionView", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -209,7 +209,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 **/
 BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( "BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "nombre" );

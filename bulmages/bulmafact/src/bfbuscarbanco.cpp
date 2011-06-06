@@ -34,7 +34,7 @@
 BfBuscarBanco::BfBuscarBanco ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( "BfBuscarBanco::BfBuscarBanco", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -47,7 +47,7 @@ BfBuscarBanco::BfBuscarBanco ( QWidget *parent )
 **/
 BfBuscarBanco::~BfBuscarBanco()
 {
-    blDebug ( "BfBuscarBanco::~BfBuscarBanco", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -64,7 +64,7 @@ BfBuscarBanco::~BfBuscarBanco()
 **/
 void BfBuscarBanco::setidbanco ( QString idbanco )
 {
-    blDebug ( "BfBuscarBanco::setidbanco", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
     m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM banco" );
@@ -92,7 +92,7 @@ void BfBuscarBanco::setidbanco ( QString idbanco )
 **/
 void BfBuscarBanco::setFieldValue ( QString idbanco )
 {
-    blDebug ( "BfBuscarBanco::setFieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setidbanco ( idbanco );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -104,13 +104,16 @@ void BfBuscarBanco::setFieldValue ( QString idbanco )
 **/
 QString BfBuscarBanco::idbanco()
 {
-    blDebug ( "BfBuscarBanco::idbanco", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
+
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
     if ( !m_cursorcombo ) return "0";
     if ( currentIndex() > 0 ) {
+        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return m_cursorcombo->value( "idbanco", currentIndex() - 1 );
     } // end if
+
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return "";
 }
 

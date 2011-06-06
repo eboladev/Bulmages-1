@@ -47,7 +47,7 @@
 **/
 int entryPoint ( QMainWindow *bcont )
 {
-    blDebug ( "Entrada del plugin FormLock", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -68,7 +68,7 @@ int entryPoint ( QMainWindow *bcont )
 **/
 int BlForm_load ( BlForm *ficha )
 {
-    blDebug ( "Plugin formlock::BlForm_cargar", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
     QString query;
@@ -119,7 +119,7 @@ int BlForm_load ( BlForm *ficha )
 **/
 int BlForm_DesBlForm ( BlForm *ficha )
 {
-    blDebug ( "Plugin formlock::BlForm_DesBlForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     if (!ficha->fieldId().isEmpty()) {
     if ( ficha->dbValue(ficha->fieldId()) != "") {
@@ -161,7 +161,7 @@ int BlForm_DesBlForm ( BlForm *ficha )
 **/
 int BlForm_BlForm ( BlForm *l )
 {
-    blDebug ( "Plugin formlock::BlForm_BlForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     /// El plugin necesita un parche en la base de datos para funcionar.
     /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany

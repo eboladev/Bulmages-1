@@ -46,7 +46,7 @@ BlMainCompany *g_emp = NULL;
 **/
 PluginBl_BloqConf::PluginBl_BloqConf()
 {
-    blDebug ( "PluginBl_BloqConf::PluginBl_BloqConf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -55,7 +55,7 @@ PluginBl_BloqConf::PluginBl_BloqConf()
 **/
 PluginBl_BloqConf::~PluginBl_BloqConf()
 {
-    blDebug ( "PluginBl_BloqConf::~PluginBl_BloqConf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -67,7 +67,7 @@ PluginBl_BloqConf::~PluginBl_BloqConf()
 **/
 void PluginBl_BloqConf::elslot( )
 {
-    blDebug ( "PluginBl_BloqConf::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
@@ -80,7 +80,7 @@ void PluginBl_BloqConf::elslot( )
 **/
 void PluginBl_BloqConf::elslot1( )
 {
-    blDebug ( "PluginBl_BloqConf::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString cad = "chmod a+w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
@@ -94,7 +94,7 @@ void PluginBl_BloqConf::elslot1( )
 **/
 void PluginBl_BloqConf::elslot2( )
 {
-    blDebug ( "PluginBl_BloqConf::elslot2", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString cad = "rm" + g_confpr->value(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
@@ -109,7 +109,7 @@ void PluginBl_BloqConf::elslot2( )
 **/
 void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "PluginBl_BloqConf::s_pintaMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     BlSubForm *sub = (BlSubForm *) sender();
     int modo = !sub->editMode();
@@ -138,7 +138,7 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_BloqConf::s_trataMenu ( QAction *action )
 {
-    blDebug ( "PluginBl_BloqConf::s_trataMenu", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
             BlSubForm *sub = (BlSubForm *) sender();
             int modo = !sub->editMode();
@@ -161,7 +161,7 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( "Entrada del plugin Bloqconf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     g_bges = bges;
 
@@ -204,7 +204,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion1 );
     pPluginMenu->addAction ( accion2 );
 
-    blDebug ( "Iniciado correctamente el plugin dock", 10 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -231,7 +231,7 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     PluginBl_BloqConf *subformods = new PluginBl_BloqConf (  );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );

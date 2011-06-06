@@ -31,7 +31,7 @@
 BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
         : QComboBox ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "BlComboBoxDelegate::BlComboBoxDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_comboRecordSet = NULL;
     m_null = TRUE;
 
@@ -44,7 +44,7 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
 **/
 BlComboBoxDelegate::~BlComboBoxDelegate()
 {
-    blDebug ( "BlComboBoxDelegate::~BlComboBoxDelegate", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -61,7 +61,7 @@ BlComboBoxDelegate::~BlComboBoxDelegate()
 **/
 void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 {
-    blDebug ( "BlComboBoxDelegate::setId", 0, id );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
@@ -119,7 +119,7 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 **/
 void BlComboBoxDelegate::setFieldValue ( QString id )
 {
-    blDebug ( "BlComboBoxDelegate::setFieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     setId ( id );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -131,7 +131,7 @@ void BlComboBoxDelegate::setFieldValue ( QString id )
 **/
 QString BlComboBoxDelegate::id()
 {
-    blDebug ( "BlComboBoxDelegate::id", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     if ( currentIndex() >= 0 ) {
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
@@ -160,7 +160,7 @@ QString BlComboBoxDelegate::id()
 **/
 QString BlComboBoxDelegate::id(QString value)
 {
-    blDebug ( "BlComboBoxDelegate::id", 0, value );
+    blDebug ( Q_FUNC_INFO, 0 );
     m_comboRecordSet->firstRecord();
     while (!m_comboRecordSet->eof()) {
       
@@ -193,7 +193,7 @@ QString BlComboBoxDelegate::id(QString value)
 **/
 QString BlComboBoxDelegate::fieldValue()
 {
-    blDebug ( "BlComboBoxDelegate::fieldValue", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return id();
 }

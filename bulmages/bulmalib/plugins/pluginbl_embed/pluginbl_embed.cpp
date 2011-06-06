@@ -55,7 +55,7 @@ BlMainCompany *g_emp = NULL;
 /*
 MyPluginEmbedODS::MyPluginEmbedODS()
 {
-    blDebug ( "MyPluginEmbedODS::MyPluginEmbedODS", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 */
@@ -68,7 +68,7 @@ MyPluginEmbedODS::MyPluginEmbedODS()
 /*
 MyPluginEmbedODS::~MyPluginEmbedODS()
 {
-    blDebug ( "MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 */
@@ -81,7 +81,7 @@ MyPluginEmbedODS::~MyPluginEmbedODS()
 
 void PluginBl_Embed::embedPYS( )
 {
-    blDebug ( "MyPluginEmbedODS::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
@@ -155,7 +155,7 @@ void PluginBl_Embed::embedPYS( )
 **/
 PluginBl_Embed::PluginBl_Embed()
 {
-    blDebug ( "PluginBl_Embed::PluginBl_Embed", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -164,7 +164,7 @@ PluginBl_Embed::PluginBl_Embed()
 **/
 PluginBl_Embed::~PluginBl_Embed()
 {
-    blDebug ( "PluginBl_Embed::~PluginBl_Embed", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -174,7 +174,7 @@ PluginBl_Embed::~PluginBl_Embed()
 **/
 void PluginBl_Embed::elslot()
 {
-    blDebug ( "PluginBl_Embed::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( "Aplicacion Externa", g_main );
@@ -202,7 +202,7 @@ void PluginBl_Embed::elslot()
 **/
 void PluginBl_Embed::elslot1()
 {
-    blDebug ( "PluginBl_Embed::elslot", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     QString winId = "";
     while ( winId == "" ) winId = blWindowId ( "" );
     BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
@@ -224,7 +224,7 @@ void PluginBl_Embed::elslot1()
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( "Entrada del plugin Docket", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -254,7 +254,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion );
     pPluginMenu->addAction ( accion1 );
 
-    blDebug ( "Iniciado correctamente el plugin dock", 10 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
@@ -381,9 +381,7 @@ int init67 (  )
         menu->addAction ( accion );
     } // end for
 
-    blDebug ( "Iniciado correctamente el plugin", 10 );
-    
-
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
     
 }

@@ -37,7 +37,7 @@ class BlFixed;
 BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
         : BlForm ( comp, parent, f, modo )
 {
-    blDebug ( "BfForm::BfForm", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     m_listalineas = NULL;
     m_listadescuentos = NULL;
@@ -51,7 +51,7 @@ BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
 **/
 BfForm::~BfForm()
 {
-    blDebug ( "BfForm::~BfForm", 0, this->windowTitle() );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     mainCompany() ->removeWindow ( this );
     
@@ -64,7 +64,7 @@ BfForm::~BfForm()
 **/
 BfCompany * BfForm::mainCompany()
 {
-    blDebug ( "BfForm::company", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return ( BfCompany * ) BlForm::mainCompany();
@@ -79,7 +79,7 @@ BfCompany * BfForm::mainCompany()
 **/
 void BfForm::calculaypintatotales()
 {
-    blDebug ( "BfForm::calculaypintatotales", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     base basesimp;
     base basesimpreqeq;
@@ -211,7 +211,7 @@ fprintf(stderr, "IVA\n");
 **/
 int BfForm::parseTags ( QString &buff, int tipoEscape )
 {
-    blDebug ( "BfForm::parseTags", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     int pos =  0;
 
@@ -282,7 +282,7 @@ int BfForm::parseTags ( QString &buff, int tipoEscape )
 
 void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
 {
-    blDebug ( "BfForm::parseTagsBf", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     QString fitxersortidatxt = "";
     BlDbRecordSet *cur = NULL;
@@ -590,7 +590,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
 **/
 QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 {
-    blDebug ( "BfForm::trataLineasDetalle", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QString result = "";
 
@@ -661,7 +661,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 **/
 QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 {
-    blDebug ( "BfForm::trataLineasDescuento", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QString result = "";
 
@@ -730,7 +730,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 **/
 QString BfForm::trataTotales ( const QString &det, int bimporeq )
 {
-    blDebug ( "BfForm::trataTotales", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     QString result = "";
     QString salidatemp = "";
@@ -963,7 +963,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
 
 int BfForm::generateRML ( void )
 {
-    blDebug ( "BfForm::generateRML(void)", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     int err = BlForm::generateRML();
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return err;
@@ -973,7 +973,7 @@ int BfForm::generateRML ( void )
 
 QString BfForm::templateName ( void )
 {
-    blDebug ( "BfForm::templateName", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return m_tablename;
@@ -986,7 +986,7 @@ QString BfForm::templateName ( void )
 **/
 int BfForm::generateRML ( const QString &arch )
 {
-    blDebug ( "BfForm::generateRML, con argumento const QString &arch", 0, arch );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     try {
 
@@ -1021,7 +1021,7 @@ int BfForm::generateRML ( const QString &arch )
 **/
 void BfForm::imprimir()
 {
-    blDebug ( "BfForm::imprimir", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     try {
         /// Disparamos los plugins
@@ -1050,7 +1050,7 @@ void BfForm::imprimir()
 **/
 void BfForm::setListaLineas ( BfSubForm *form )
 {
-    blDebug ( "BfForm::setListaLineas", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     m_listalineas = form;
     
@@ -1063,7 +1063,7 @@ void BfForm::setListaLineas ( BfSubForm *form )
 **/
 void BfForm::setListaDescuentos ( BfSubForm *form )
 {
-    blDebug ( "BfForm::setListaDescuentos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     
     m_listadescuentos = form;
     
@@ -1076,7 +1076,7 @@ void BfForm::setListaDescuentos ( BfSubForm *form )
 **/
 BfSubForm* BfForm::getlistalineas()
 {
-    blDebug ( "BfForm::getlistalineas", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return m_listalineas;
@@ -1088,7 +1088,7 @@ BfSubForm* BfForm::getlistalineas()
 **/
 BfSubForm* BfForm::getlistadescuentos()
 {
-    blDebug ( "BfForm::getlistadescuentos", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     
     return m_listadescuentos;
