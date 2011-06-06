@@ -75,8 +75,11 @@ PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 {
     blDebug ( "PluginBl_SubForm2PDF::s_pintaMenu", 0 );
+    QAction *accionA = new QAction  ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ), menu );
+    accionA->setObjectName("mui_actionSubForm2PDF");
+
     menu->addSeparator();
-    menu->addAction ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ) );
+    menu->addAction ( accionA );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -88,7 +91,7 @@ void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
 {
     blDebug ( "PluginBl_SubForm2PDF::s_trataMenu", 0 );
-    if ( action->text() == _ ( "Imprimir" ) ) {
+    if ( action->objectName() == "mui_actionSubForm2PDF") {
         imprimir();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
