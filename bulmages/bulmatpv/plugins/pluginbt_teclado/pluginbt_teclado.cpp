@@ -168,4 +168,5 @@ int BlToolButton_released(BlToolButton *bot) {
         g_docteclado->show();
     }// end if
   } //end if
+  return 0;
 }

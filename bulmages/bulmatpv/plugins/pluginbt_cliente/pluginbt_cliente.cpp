@@ -123,6 +123,7 @@ int BlToolButton_released(BlToolButton *bot) {
     emp->ticketActual() ->pintar();
     emp->setValorBtInput ( "" );
     emp->pulsaTecla ( 0, "" );
-    
+    return 1;
   } //end if
+  return 0;
 }

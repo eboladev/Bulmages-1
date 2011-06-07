@@ -110,6 +110,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 int BlToolButton_released(BlToolButton *bot) {
   if (bot->objectName() == "mui_bascula") {
     g_listener->comm();
+    return 1;
   } //end if
+  return 0;
 }
 

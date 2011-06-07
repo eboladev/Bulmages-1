@@ -92,5 +92,7 @@ int BlToolButton_released(BlToolButton *bot) {
   if (bot->objectName() == "mui_camareros1") {
     Trabajadores * trab = new Trabajadores ( bot->mainCompany(), 0 );
     trab->exec();
+    return 1;
   } //end if
+  return 0;
 }

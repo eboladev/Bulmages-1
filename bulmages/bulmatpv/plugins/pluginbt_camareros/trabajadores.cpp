@@ -1,11 +1,12 @@
 #include <QWidget>
 #include <QPushButton>
 
+#include "blmainwindow.h"
 #include "trabajadores.h"
 #include "blfunctions.h"
 #include "btticket.h"
 #include "btcompany.h"
-
+#include "blapplication.h"
 
 Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent, bool deleteOnClose ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
@@ -96,7 +97,6 @@ void Trabajadores::trabajadorClicked()
 	      ticket->pintar();
 	      ticketv = ticket;
 	  }// end if
-
       }// end for
 
       /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
@@ -107,6 +107,34 @@ void Trabajadores::trabajadorClicked()
 	  emp1->listaTickets() ->append ( tick );
 	  tick->pintar();
       }// end if
+      
+      /// Segun los privilegios que tenga el camarero le desabilitamos determinados objetos.
+      if(cur->value("admintrabajador") == "t") {
+	QToolButton *toolz = g_main->findChild<QToolButton *> ( "mui_z" );
+	if (toolz) {
+	    toolz->setEnabled(TRUE);
+	} // end if	
+
+	QToolButton *toolx = g_main->findChild<QToolButton *> ( "mui_x" );
+	if (toolx) {
+	    toolx->setEnabled(TRUE);
+	} // end if	
+
+	
+      } else {
+	QToolButton *toolz = g_main->findChild<QToolButton *> ( "mui_z" );
+	if (toolz) {
+	    toolz->setEnabled(FALSE);
+	} // end if
+
+	QToolButton *toolx = g_main->findChild<QToolButton *> ( "mui_x" );
+	if (toolx) {
+	    toolx->setEnabled(FALSE);
+	} // end if	
+
+	
+      } // end if
+      
       delete cur;
 
       m_validUser = true;
