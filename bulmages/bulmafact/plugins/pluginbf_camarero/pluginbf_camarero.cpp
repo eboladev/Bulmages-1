@@ -25,6 +25,7 @@
 
 #include "pluginbf_camarero.h"
 
+#include "trabajadores.h"
 
 ///
 /**
@@ -41,6 +42,14 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_camarero", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
+    return 0;
+}
+
+int BfCompany_createMainWindows_Post ( BfCompany *etpv )
+{
+    Trabajadores *trab = new Trabajadores ( etpv, 0, true );
+    trab->exec();
+    delete trab;
     return 0;
 }
 

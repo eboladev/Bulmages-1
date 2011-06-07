@@ -33,6 +33,6 @@ extern "C" PLUGINBF_CAMARERO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CAMARERO_EXPORT int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab );
 extern "C" PLUGINBF_CAMARERO_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
 extern "C" PLUGINBF_CAMARERO_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
-
+extern "C" PLUGINBF_CAMARERO_EXPORT int BfCompany_createMainWindows_Post ( BfCompany *etpv );
 #endif
 
