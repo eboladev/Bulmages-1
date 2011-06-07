@@ -575,7 +575,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
         } // end if
         if ( nivel == 0 || nivel == 1 ) {
             /// Si la cadena contiene END bajamos el nivel
-            if ( !cad.contains ( " " ) ) {
+            if ( !cad.startsWith ( "END" ) ) {
                 auxxml ++;
                 if ( auxxml > 20 ) auxxml = 1;
             } // end if
@@ -595,6 +595,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
 
             outxml << cad1  << "\n" << flush;
             out << cad << " " << param << "\n" << flush;
+	    
             if ( cad.startsWith ( "END" ) ) {
                 auxxml --;
                 if ( auxxml < 0 ) auxxml = 20;

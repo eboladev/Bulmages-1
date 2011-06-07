@@ -142,34 +142,35 @@ void MTicketIVAInc::pintar()
 	/// SI HAY MODIFICADORES LOS PONEMOS. TENER EN CUENTA QUE ESTE CAMBIO SOLO SE TIENE EN CUENTA SI ESTA ACTIVADO
 	/// EL PLUGIN DE MODIFICADORES. PERO PUESTO AQUI ES BASTANTE MAS EFICIENTE.
 		
-	if (item->dbValue("imglalbaran") != "") {
-	        htmlContent += "<tr>";
-		htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
-		QString text1 = item->dbValue("imglalbaran");
-		QByteArray text = QByteArray::fromBase64(text1.toAscii());
+	if (item->exists("imgalbaran")) {
+	    if (item->dbValue("imglalbaran") != "") {
+		    htmlContent += "<tr>";
+		    htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
+		    QString text1 = item->dbValue("imglalbaran");
+		    QByteArray text = QByteArray::fromBase64(text1.toAscii());
 
-			      
-		QFile file("/tmp/imagen"+QString::number(i)+".png");
-		  if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-		      return;
+				  
+		    QFile file("/tmp/imagen"+QString::number(i)+".png");
+		      if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+			  return;
 
-		  file.write(text);
-		  file.close();
-		htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
-		htmlContent += "</tr>";
-	} // end if
-	
-	for (int i = 3; i <10; i++) {
-	    if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
-		htmlContent += "<tr>";
-		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
-		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
-		delete rsModificador;
-		htmlContent += "</tr>";
+		      file.write(text);
+		      file.close();
+		    htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
+		    htmlContent += "</tr>";
 	    } // end if
-	} // end for
-	
+	    
+	    for (int i = 3; i <10; i++) {
+		if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
+		    htmlContent += "<tr>";
+		    query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
+		    BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
+		    htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
+		    delete rsModificador;
+		    htmlContent += "</tr>";
+		} // end if
+	    } // end for
+	} // end if
 	/// SIENDO PURISTAS ESTA PARTE DEBERIA ESTAR EN EL pluginbt_modificadores pero aqui tampoco va a molestar mucho.
     } // end for
 
