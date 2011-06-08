@@ -20,7 +20,7 @@ ArchivoSQLpatch: pluginbf_comercial.sql
 
 ArchivoSQLdeins: pluginbf_comercial-rm.sql
 
-Dependencias: libpluginbf_cliente.so; libpluginbf_trabajador.so;
+Dependencias: libpluginbf_cliente.so; libpluginbf_trabajador.so
 
 Incompatibles:
 
