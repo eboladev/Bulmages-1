@@ -152,7 +152,7 @@ msgstr "&Articles"
 
 #: ui_bcbulmacontbase.h:355 ui_bcbulmacontbase.h:398
 msgid "&Asientos"
-msgstr "&Assentaments"
+msgstr "&Seients"
 
 #: pluginbc_balance.cpp:91 pluginbc_balancearbol.cpp:96
 msgid "&Balance jerarquico"
@@ -354,7 +354,7 @@ msgstr "&Entra"
 
 #: ui_bcbulmacontbase.h:346
 msgid "&Espaciar asientos"
-msgstr "&Espaia assentaments"
+msgstr "&Espaia seints"
 
 #: ui_contratobase.h:492
 msgid "&Facturas"
@@ -374,7 +374,7 @@ msgstr "&Famílies"
 
 #: ui_bcasientointeligentebase.h:212
 msgid "&Fecha del asiento:"
-msgstr "&Data de l'assentament:"
+msgstr "&Data del seient:"
 
 #: ui_bcbulmacontbase.h:369
 msgid "&Filtrar"
@@ -416,7 +416,7 @@ msgstr "&Imputació"
 
 #: ui_bcextractobase.h:637 ui_bcdiariobase.h:370
 msgid "&Incluir asientos abiertos"
-msgstr "&Incloure assentaments oberts"
+msgstr "&Incloure seints oberts"
 
 #: ui_articleeditbase.h:615
 msgid "&Incluir en el catalogo."
@@ -560,7 +560,7 @@ msgstr "&Ometre"
 
 #: ui_bcbulmacontbase.h:347
 msgid "&Ordenar asientos"
-msgstr "&Ordena assentaments"
+msgstr "&Ordena seients"
 
 #: ui_bccuentabase.h:862
 msgid "&Otros datos"
@@ -1384,7 +1384,7 @@ msgstr "<LI>Inserció d'apunt"
 
 #: blimportexport.cpp:593
 msgid "<LI>Insercion de asiento"
-msgstr "<LI>Inserció d'assentament"
+msgstr "<LI>Inserció de seients"
 
 #: blimportexport.cpp:481
 msgid "<LI>Se ha insertado la cuenta "
@@ -2035,60 +2035,51 @@ msgid "Articulo"
 msgstr "Article"
 
 #: ui_bfbuscararticulobase.h:94 bfbuscararticulo.cpp:37
-#, fuzzy
 msgid "Articulo:"
 msgstr "Article:"
 
 #: ui_articulosubformbase.h:219 pluginbf_articulo.cpp:127
 #: pluginbf_articulo.cpp:128 ui_articleslistbase.h:285
 #: ui_bccuentalistbase.h:210
-#, fuzzy
 msgid "Articulos"
 msgstr "Articles"
 
 #: ui_bcasientobase.h:490 bcextractosubform.cpp:49 bcdiariosubform.cpp:37
 #: bcasientointeligenteview.cpp:58
 msgid "Asiento"
-msgstr "Assentament"
+msgstr "Seient"
 
 #: bcasientoform.cpp:42
-#, fuzzy
 msgid "Asiento Contable"
 msgstr "Seient comptable"
 
 #: ui_bccambiacuentabase.h:236
-#, fuzzy
 msgid "Asiento Final"
 msgstr "Seient final"
 
 #: ui_bccambiacuentabase.h:237
-#, fuzzy
 msgid "Asiento Inicial"
 msgstr "Seient inicial"
 
 #: ui_bcbulmacontbase.h:350
-#, fuzzy
 msgid "Asiento de &cierre"
 msgstr "Seient de &tancament"
 
 #: ui_bcbulmacontbase.h:349
-#, fuzzy
 msgid "Asiento de &regularizacion"
 msgstr "Seient de &regularització"
 
 #: ui_bcbulmacontbase.h:348
-#, fuzzy
 msgid "Asiento de a&pertura"
 msgstr "Seient de a&pertura"
 
 #: ui_bcasientoduplicarbase.h:233
-#, fuzzy
 msgid "Asiento final:"
 msgstr "Seient final:"
 
 #: bcasientoview.cpp:331
 msgid "Asiento inexistente."
-msgstr "Assentament inexistent."
+msgstr "Seient inexistent."
 
 #: ui_bcasientoduplicarbase.h:232
 #, fuzzy
@@ -2096,26 +2087,24 @@ msgid "Asiento inicial:"
 msgstr "Seient inicial:"
 
 #: ui_registroivabase.h:613
-#, fuzzy
 msgid "Asiento:"
 msgstr "Seient:"
 
 #: bcasientolistview.cpp:300
 msgid "Asientos"
-msgstr "Assentaments"
+msgstr "Seients"
 
 #: ui_bcasientobase.h:575 ui_bcasientobase.h:578 ui_bcbulmacontbase.h:365
-#, fuzzy
 msgid "Asientos Inteligentes"
 msgstr "Seients intel·ligents"
 
 #: bcasientolistview.cpp:46
 msgid "Asientos abiertos"
-msgstr "Assentaments oberts"
+msgstr "Seients oberts"
 
 #: bcasientolistview.cpp:45
 msgid "Asientos cerrados"
-msgstr "Assentament tancats"
+msgstr "Seients tancats"
 
 #: abrevs.cpp:101
 msgid "Asigne un nombre al ticket antes de aparcarlo."
@@ -2385,7 +2374,7 @@ msgstr "Esborra article"
 #: bcamortizacionview.cpp:427 bcamortizacionview.cpp:436
 #: bcamortizacionview.cpp:443 bcasientoform.cpp:159
 msgid "Borrar asiento"
-msgstr "Esborra assentament"
+msgstr "Esborra seient"
 
 #: bccanalview.cpp:211
 msgid "Borrar canal"
@@ -2924,11 +2913,11 @@ msgstr "Tanca"
 
 #: ui_bcbulmacontbase.h:396
 msgid "Cerrar Asientos"
-msgstr "Tanca assentaments"
+msgstr "Tanca seients"
 
 #: ui_bcasientobase.h:500 ui_bcasientobase.h:503
 msgid "Cerrar asiento"
-msgstr "Tanca assentament"
+msgstr "Tanca seient"
 
 #: ui_bcasientobase.h:589
 msgid "Cierre"
@@ -3267,10 +3256,9 @@ msgstr "Comentaris de l'albarà"
 
 #: bcasientoform.cpp:48
 msgid "Comentarios del asiento"
-msgstr "Comentaris de l'assentament"
+msgstr "Comentaris del seient"
 
 #: profesorview.cpp:67
-#, fuzzy
 msgid "Comentarios del profesor"
 msgstr "Comentaris del professor"
 
@@ -3322,7 +3310,7 @@ msgstr "Compres"
 
 #: ui_confreglasbase.h:281
 msgid "Comprobacion por asientos"
-msgstr "Comprovació per assentaments"
+msgstr "Comprovació per seients"
 
 #: ui_q19base.h:282 facturapview.cpp:352 bcextractosubform.cpp:53
 msgid "Concepto"
@@ -4091,9 +4079,8 @@ msgid "Descripcion Apunte"
 msgstr "Descripció apunti"
 
 #: bcextractosubform.cpp:52
-#, fuzzy
 msgid "Descripcion Asiento"
-msgstr "Descripció assento"
+msgstr "Descripció seient"
 
 #: articulolisttpv.cpp:244 articulolist.cpp:372
 #, fuzzy
@@ -4135,7 +4122,7 @@ msgstr "Descripció de l'apunt"
 
 #: bcasientoform.cpp:46
 msgid "Descripcion del asiento"
-msgstr "Descripció de l'assentament"
+msgstr "Descripció del seient"
 
 #: cobroview.cpp:70
 #, fuzzy
@@ -4228,7 +4215,7 @@ msgstr "Desitja esborrar aquesta ruta?"
 
 #: bcasientoview.cpp:332
 msgid "Desea crear un nuevo asiento en esa posicion?"
-msgstr "Vol crear un nou assentament en aquella posició?"
+msgstr "Vol crear un nou seient en aquella posició?"
 
 #: familiasview.cpp:479 tiposarticuloview.cpp:385
 #, fuzzy
@@ -4274,7 +4261,7 @@ msgstr "Destinació:"
 #: listlinprevcobroview.cpp:271 bcamortizacionview.cpp:385
 #: bcamortizacionview.cpp:436
 msgid "Desvincular asiento"
-msgstr "Desvincula assentament"
+msgstr "Desvincula seient"
 
 #: ui_devolucionbase.h:270 ui_contratobase.h:491
 #, fuzzy
@@ -4694,7 +4681,7 @@ msgstr "El article de la línia de pressupost no existeix"
 
 #: bcasientoform.cpp:411
 msgid "El asiento se ha guardado correctamente."
-msgstr "L'assentament s'ha desat correctament."
+msgstr "El seient s'ha desat correctament."
 
 #: blimportexport.cpp:2331 blimportexport.cpp:2560 blimportexport.cpp:2784
 #: blimportexport.cpp:3023
@@ -5768,7 +5755,7 @@ msgstr "Data de venciment:"
 
 #: bcasientoform.cpp:47
 msgid "Fecha del asiento"
-msgstr "Data de l'assentament"
+msgstr "Data del seient"
 
 #: cobroview.cpp:66
 #, fuzzy
@@ -6206,11 +6193,11 @@ msgstr "Generar seient"
 
 #: bcamortizacionview.cpp:381 bcamortizacionview.cpp:447
 msgid "Generar asiento"
-msgstr "Genera assentament"
+msgstr "Genera seient"
 
 #: listlinprevcobroview.cpp:270
 msgid "Generar asiento de cobro/pago"
-msgstr "Genera assentament de cobrament/pagament"
+msgstr "Genera seient de cobrament/pagament"
 
 #: ui_bcmodelo300base.h:205
 #, fuzzy
@@ -7012,7 +6999,7 @@ msgstr "ANEU article"
 #: bcasientosubform.cpp:57 bcasientolistsubform.cpp:44
 #: bcamortizacionview.cpp:81 bcasientoform.cpp:45
 msgid "Id asiento"
-msgstr "Id assentament"
+msgstr "Id seient"
 
 #: bcasientosubform.cpp:56
 msgid "Id borrador"
@@ -7608,7 +7595,7 @@ msgstr "Ingressos i despeses imputades directament al patrimoni net"
 
 #: bccompany.cpp:228 bccompany.cpp:235
 msgid "Inicializando asientos"
-msgstr "Inicialitzant d'assentaments"
+msgstr "Inicialitzant de seients"
 
 #: main.cxx:180 main.cxx:171 main.cxx:173
 #, fuzzy
@@ -8036,7 +8023,7 @@ msgstr "Mostrar/ocultar el detall"
 #: bcextractosubform.cpp:94 bcextractosubform.cpp:111 bcdiariosubform.cpp:96
 #: bcdiariosubform.cpp:113
 msgid "Mostrar asiento"
-msgstr "Mostrar assentament"
+msgstr "Mostrar seient"
 
 #: bcextractosubform.cpp:98 bcextractosubform.cpp:117
 #, fuzzy
@@ -9176,7 +9163,7 @@ msgstr "Ordre"
 
 #: bcasientoform.cpp:49
 msgid "Orden de asiento"
-msgstr "Ordre de l'assentament"
+msgstr "Ordre del seient"
 
 #: ui_bcasientobase.h:583
 #, fuzzy
@@ -10362,7 +10349,7 @@ msgstr "Es procedirà a esborrar el compte."
 
 #: bcasientoform.cpp:160
 msgid "Se va a borrar el asiento. Esta seguro?"
-msgstr "S'esborrarà l'assentament. Està segur?"
+msgstr "S'esborrarà el seient. Està segur?"
 
 #: bccentrocosteview.cpp:266
 msgid ""
@@ -10974,7 +10961,7 @@ msgstr "Tipus d'article:"
 
 #: bcasientoform.cpp:50
 msgid "Tipo de asiento"
-msgstr "Tipus d'assentament"
+msgstr "Tipus de seient"
 
 #: bcasientosubform.cpp:59
 msgid "Tipo de cuenta"
@@ -11065,7 +11052,7 @@ msgstr "Tots els albaranes"
 
 #: bcasientolistview.cpp:44
 msgid "Todos los asientos"
-msgstr "Tots els assentaments"
+msgstr "Tots els seients"
 
 #: pedidosproveedorlist.cpp:112 pedidosclientelist.cpp:110
 msgid "Todos los pedidos"
@@ -11552,7 +11539,7 @@ msgstr "Veure albarans amb la mateixa referència"
 #: listlinprevcobroview.cpp:272 bcamortizacionview.cpp:383
 #: bcamortizacionview.cpp:427
 msgid "Ver asiento"
-msgstr "Veure assentament"
+msgstr "Veure seient"
 
 #: balancesubform.cpp:84
 msgid "Ver configurador de subformulario"
@@ -12154,99 +12141,3 @@ msgstr "y   ( >="
 msgid "y <="
 msgstr "y <="
 
-#~ msgid "Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %4), para cliente %5 (%6)"
-#~ msgstr "Compte bancari del Client '%1'  (per a mi '%2') invàlid al rebut amb id %3 (ref. %4), per al client %5 (%6)"
-
-#~ msgid "&Bancos"
-#~ msgstr "&Bancs"
-
-#~ msgid "&Formas de pago"
-#~ msgstr "&Formes de pagament"
-
-#~ msgid "&Series de factura"
-#~ msgstr "&Sèries de factura"
-
-#~ msgid "*.q19"
-#~ msgstr "*.q19"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;\"></p></body></html>"
-
-#~ msgid "Bancos"
-#~ msgstr "Bancs"
-
-#~ msgid "Bloqueo Configuracion"
-#~ msgstr "Arranjament"
-
-#~ msgid "Borrar banco"
-#~ msgstr "Esborrar"
-
-#~ msgid "Contacto:"
-#~ msgstr "Contacte:"
-
-#~ msgid "D.C.:"
-#~ msgstr "D.C.:"
-
-#~ msgid "Descuento:"
-#~ msgstr "Descompte:"
-
-#~ msgid "Entidad:"
-#~ msgstr "Entitat:"
-
-#~ msgid "Error al guardar"
-#~ msgstr "Error del programa"
-
-#~ msgid "Error al intentar borrar la forma de pago"
-#~ msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
-
-#~ msgid "Error inesperado al borrar el banco"
-#~ msgstr "Esborra forma de pagament"
-
-#~ msgid "Error inesperado el crear el Banco"
-#~ msgstr "Error en la càrrega de l'amortizació"
-
-#~ msgid "Fax:"
-#~ msgstr "Fax:"
-
-#~ msgid "Guardar banco"
-#~ msgstr "Desa balanç"
-
-#~ msgid "Informacion de la forma de pago:"
-#~ msgstr "Informació de la forma de pagament:"
-
-#~ msgid "Informacion del banco:"
-#~ msgstr "Informació del banc:"
-
-#~ msgid "Lista de bancos:"
-#~ msgstr "Llista de bancs:"
-
-#~ msgid "Nuevo banco"
-#~ msgstr "Nou assentament"
-
-#~ msgid "Numero de cuenta:"
-#~ msgstr "Número de compte:"
-
-#~ msgid "Plazo primer recibo (dias):"
-#~ msgstr "Termini primer rebut (dies):"
-
-#~ msgid "Razon Social:"
-#~ msgstr "Raó social:"
-
-#~ msgid "Sucursal:"
-#~ msgstr "Sucursal:"
-
-#~ msgid "Tipo Articulos"
-#~ msgstr "<P> Article <B>"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"

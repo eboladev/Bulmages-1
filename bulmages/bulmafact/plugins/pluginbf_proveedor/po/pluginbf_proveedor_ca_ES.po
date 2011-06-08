@@ -44,9 +44,8 @@ msgid "&Contratos"
 msgstr "Contrapartida"
 
 #: ui_proveditbase.h:869
-#, fuzzy
 msgid "&Datos generales"
-msgstr "&Dades comptables"
+msgstr "&Dades generals"
 
 #: ui_proveditbase.h:862
 msgid "&IRPF que aplica:"
@@ -221,9 +220,8 @@ msgstr "Nom del proveïdor"
 
 #: ui_providerslistbase.h:319 ui_providerslistbase.h:322
 #: ui_providerslistbase.h:331
-#, fuzzy
 msgid "Exportar"
-msgstr "Exportar assentament"
+msgstr "Exportar"
 
 #: ui_providerslistbase.h:298 ui_providerslistbase.h:301
 #, fuzzy
@@ -375,9 +373,8 @@ msgid "Recargo de Equivalencia"
 msgstr "Recàrrec d'Equivalència"
 
 #: ui_proveditbase.h:865
-#, fuzzy
 msgid "Regimen &fiscal:"
-msgstr "Assentament final:"
+msgstr "Regim &fiscal:"
 
 #: provedit.cpp:62
 msgid "Regimen Fiscal"

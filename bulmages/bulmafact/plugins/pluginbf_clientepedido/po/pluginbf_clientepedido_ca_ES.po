@@ -185,9 +185,8 @@ msgstr ""
 "Comentaris"
 
 #: listdescpedidoclienteview.cpp:41
-#, fuzzy
 msgid "Concepto descuento"
-msgstr "Concepte comptable"
+msgstr "Concepte desconte"
 
 #: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
 #: ui_presupuestoslistbase.h:404 ui_presupuestoslistbase.h:407
@@ -235,9 +234,8 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: ui_presupuestoclientebase.h:814
-#, fuzzy
 msgid "Datos &generales"
-msgstr "&Dades comptables"
+msgstr "&Dades generals"
 
 #: pedidosclientelist.cpp:271
 msgid "Debe seleccionar una linea"

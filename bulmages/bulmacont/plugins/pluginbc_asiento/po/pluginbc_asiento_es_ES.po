@@ -1,21 +1,20 @@
 # Spanish translations for PACKAGE package
 # Traducciones al español para el paquete PACKAGE.
-# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2011 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2009.
+# Automatically generated, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:43+0200\n"
-"PO-Revision-Date: 2009-12-26 21:49+0100\n"
+"POT-Creation-Date: 2011-06-08 09:15+0200\n"
+"PO-Revision-Date: 2011-06-08 09:15+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_bcasientointeligentebase.h:215
@@ -99,8 +98,8 @@ msgid "Apertura"
 msgstr "Apertura"
 
 #: ui_bcasientointeligentebase.h:210
-msgid "Aplicar asiento anteligente"
-msgstr "Aplicar asiento inteligente"
+msgid "Aplicar asiento inteligente"
+msgstr ""
 
 #: bcasientolistsubform.cpp:39
 msgid "Apuntes"
@@ -112,7 +111,7 @@ msgstr "Asiento"
 
 #: bcasientoform.cpp:42
 msgid "Asiento contable"
-msgstr "Asiento contable"
+msgstr ""
 
 #: pluginbc_asiento.cpp:106
 msgid "Asiento de &cierre"
@@ -126,11 +125,11 @@ msgstr "Asiento de &regularización"
 msgid "Asiento de a&pertura"
 msgstr "Asiento de a&pertura"
 
-#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
+#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102 bcasientoview.cpp:1145
 msgid "Asiento de apertura"
 msgstr ""
 
-#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
+#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108 bcasientoview.cpp:1076
 msgid "Asiento de cierre"
 msgstr ""
 
@@ -142,13 +141,13 @@ msgstr ""
 msgid "Asiento inexistente."
 msgstr "Asiento inexistente."
 
+#: bcasientoform.cpp:344
+msgid "Asiento no abierto"
+msgstr ""
+
 #: bcasientolistview.cpp:309
 msgid "Asientos"
 msgstr "Asientos"
-
-#: ui_bcasientobase.h:553 ui_bcasientobase.h:556
-msgid "Asientos inteligentes"
-msgstr "Asientos inteligentes"
 
 #: bcasientolistview.cpp:46
 msgid "Asientos abiertos"
@@ -158,11 +157,15 @@ msgstr "Asientos abiertos"
 msgid "Asientos cerrados"
 msgstr "Asientos cerrados"
 
+#: ui_bcasientobase.h:553 ui_bcasientobase.h:556
+msgid "Asientos inteligentes"
+msgstr ""
+
 #: bcasientolistsubform.cpp:40
 msgid "Borrador"
 msgstr "Borrador"
 
-#: bcasientoform.cpp:162 ui_bcasientobase.h:531 ui_bcasientobase.h:534
+#: bcasientoform.cpp:170 ui_bcasientobase.h:531 ui_bcasientobase.h:534
 msgid "Borrar asiento"
 msgstr "Borrar asiento"
 
@@ -247,7 +250,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: bcasientoview.cpp:952
+#: bcasientoview.cpp:953
 msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
 msgstr "Cuenta de Regularización incorrecta. Revise la configuración"
 
@@ -288,16 +291,20 @@ msgid "Descuadre:"
 msgstr "Descuadre:"
 
 #: bcasientoview.cpp:337
-msgid "¿Desea crear un nuevo asiento en esa posicion?"
+msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr "¿Desea crear un nuevo asiento en esa posición?"
 
-#: bcasientoform.cpp:415
+#: bcasientoform.cpp:427
 msgid "El asiento se ha guardado correctamente."
 msgstr "El asiento se ha guardado correctamente."
 
 #: bcasientointeligenteview.cpp:623
 msgid "Error al crear el asiento"
 msgstr "Error al crear el asiento"
+
+#: bcasientoform.cpp:432
+msgid "Error en el guardardo"
+msgstr ""
 
 #: ui_bcasientobase.h:539 ui_bcasientobase.h:542
 msgid "Exportar asiento"
@@ -343,6 +350,10 @@ msgstr "Fecha final regularización:"
 #: pluginbc_asiento.cpp:193 pluginbc_asiento.cpp:222
 msgid "Fecha inicial"
 msgstr "Fecha inicial"
+
+#: bcasientoview.cpp:912
+msgid "Fecha inicial = '$1', fecha final = '$2'."
+msgstr ""
 
 #: pluginbc_asiento.cpp:193
 msgid "Fecha inicial ejercicio:"
@@ -456,6 +467,14 @@ msgstr "Mostrar extracto (día)"
 msgid "Mostrar extracto (mes)"
 msgstr "Mostrar extracto (mes)"
 
+#: bcasientoview.cpp:529
+msgid "No existe ningun asiento para mostrar"
+msgstr ""
+
+#: bcasientoform.cpp:351
+msgid "No hay asiento"
+msgstr ""
+
 #: bcasientosubform.cpp:42
 msgid "Nombre de la cuenta"
 msgstr "Nombre de la cuenta"
@@ -525,9 +544,9 @@ msgstr "Se han espaciado los asientos"
 msgid "Se han ordenado los asientos"
 msgstr "Se han ordenado los asientos"
 
-#: bcasientoform.cpp:163
+#: bcasientoform.cpp:171
 msgid "Se va a borrar el asiento. ¿Esta seguro?"
-msgstr "Se va a borrar el asiento. ¿Está seguro?"
+msgstr ""
 
 #: bcasientoform.cpp:50
 msgid "Tipo de asiento"
@@ -556,9 +575,3 @@ msgstr "y   ( >="
 #: ui_bcasientolistbase.h:470
 msgid "y <="
 msgstr "y <="
-
-#~ msgid "&Ver"
-#~ msgstr "&Ver"
-
-#~ msgid "menuVentana"
-#~ msgstr "menuVentana"
