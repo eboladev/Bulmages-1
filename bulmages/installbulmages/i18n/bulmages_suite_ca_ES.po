@@ -499,7 +499,7 @@ msgstr "&Famílies"
 
 #: ui_bcasientointeligentebase.h:212
 msgid "&Fecha del asiento:"
-msgstr "&Data de l'assentament:"
+msgstr "&Data del seient:"
 
 #: ui_bcbulmacontbase.h:266
 msgid "&Filtrar"
@@ -552,7 +552,7 @@ msgstr "&Imputació"
 
 #: ui_bcextractobase.h:722 ui_bcdiariobase.h:370
 msgid "&Incluir asientos abiertos"
-msgstr "&Incloure assentaments oberts"
+msgstr "&Incloure seients oberts"
 
 #: ui_articleeditbase.h:620
 msgid "&Incluir en el catalogo."
@@ -1641,7 +1641,7 @@ msgstr "<LI>Inserció d'apunt"
 
 #: blimportexport.cpp:594
 msgid "<LI>Insercion de asiento"
-msgstr "<LI>Inserció d'assentament"
+msgstr "<LI>Inserció de seient"
 
 #: blimportexport.cpp:482
 msgid "<LI>Se ha insertado la cuenta "
@@ -2228,9 +2228,8 @@ msgid "Aplicar"
 msgstr "Aplicar"
 
 #: ui_bcasientointeligentebase.h:210
-#, fuzzy
 msgid "Aplicar Asiento Inteligente"
-msgstr "Assentament inexistent."
+msgstr "Aplicar seient inteligent"
 
 #: ui_clientebase.h:611
 msgid "Aplicar Recargo de Equivalencia"
@@ -2326,37 +2325,31 @@ msgstr "Assemblea"
 #: bcasientointeligenteview.cpp:59 ui_bcasientobase.h:476
 #: bcextractosubform.cpp:49 bcdiariosubform.cpp:37
 msgid "Asiento"
-msgstr "Assentament"
+msgstr "Seient"
 
 #: bcasientoform.cpp:42
-#, fuzzy
 msgid "Asiento Contable"
-msgstr "Assentament final"
+msgstr "Seient contable"
 
 #: ui_bccambiacuentabase.h:218
-#, fuzzy
 msgid "Asiento Final"
-msgstr "Assentament final"
+msgstr "Seient final"
 
 #: ui_bccambiacuentabase.h:217
-#, fuzzy
 msgid "Asiento Inicial"
-msgstr "Assentament final"
+msgstr "Seient inicial"
 
 #: pluginbc_asiento.cpp:106
-#, fuzzy
 msgid "Asiento de &cierre"
-msgstr "Assentament tancats"
+msgstr "Seient de &tancament"
 
 #: pluginbc_asiento.cpp:112
-#, fuzzy
 msgid "Asiento de &regularizacion"
-msgstr "Regularització"
+msgstr "Seient de regularització"
 
 #: pluginbc_asiento.cpp:100
-#, fuzzy
 msgid "Asiento de a&pertura"
-msgstr "Assentament tancats"
+msgstr "Seient d'o&pertura"
 
 #: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
 msgid "Asiento de apertura"
@@ -2371,40 +2364,36 @@ msgid "Asiento de regularizacion"
 msgstr ""
 
 #: ui_bcasientoduplicarbase.h:233
-#, fuzzy
 msgid "Asiento final:"
-msgstr "Assentament final"
+msgstr "Seient final"
 
 #: bcasientoview.cpp:336
 msgid "Asiento inexistente."
-msgstr "Assentament inexistent."
+msgstr "Seient inexistent."
 
 #: ui_bcasientoduplicarbase.h:232
-#, fuzzy
 msgid "Asiento inicial:"
-msgstr "Assentament final"
+msgstr "Seient inicial"
 
 #: ui_registroivabase.h:607
-#, fuzzy
 msgid "Asiento:"
-msgstr "Assentament"
+msgstr "Seient"
 
 #: bcasientolistview.cpp:309
 msgid "Asientos"
-msgstr "Assentaments"
+msgstr "Seients"
 
 #: ui_bcasientobase.h:553 ui_bcasientobase.h:556 ui_bcbulmacontbase.h:262
-#, fuzzy
 msgid "Asientos Inteligentes"
-msgstr "Assentament inexistent."
+msgstr "Sients inteligents"
 
 #: bcasientolistview.cpp:46
 msgid "Asientos abiertos"
-msgstr "Assentaments oberts"
+msgstr "Seients oberts"
 
 #: bcasientolistview.cpp:45
 msgid "Asientos cerrados"
-msgstr "Assentament tancats"
+msgstr "Seients tancats"
 
 #: abrevs.cpp:41
 msgid "Asigne un nombre al ticket antes de aparcarlo."
@@ -2413,12 +2402,12 @@ msgstr "Assigna un nombre al ticket abans d'aparcar-lo."
 #: ui_actividadbase.h:590 ui_convocatoriabase.h:447
 #, fuzzy
 msgid "Asistencias"
-msgstr "Assentaments"
+msgstr "Asistencies"
 
 #: pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
 #, fuzzy
 msgid "Audicion"
-msgstr "Agrupació"
+msgstr "Audició"
 
 #: ui_clasebase.h:221
 msgid "Aulas"
@@ -2715,7 +2704,7 @@ msgstr "Esborra article"
 #: bcamortizacionview.cpp:405 bcamortizacionview.cpp:446
 #: bcamortizacionview.cpp:455 bcamortizacionview.cpp:462
 msgid "Borrar asiento"
-msgstr "Esborra assentament"
+msgstr "Esborra seient"
 
 #: ui_bancobase.h:438 ui_bancobase.h:441
 #, fuzzy
@@ -2780,24 +2769,21 @@ msgid "Borrar forma de pago"
 msgstr "Esborra forma de pagament"
 
 #: ui_articleeditbase.h:606 ui_alumnobase.h:528
-#, fuzzy
 msgid "Borrar imagen"
-msgstr "Esborra assentament"
+msgstr "Esborra imatge"
 
 #: alumnoview.cpp:292
 msgid "Borrar imagen del alumno"
 msgstr "Esborra imatge de l'alumne"
 
 #: articuloview.cpp:353
-#, fuzzy
 msgid "Borrar imagen del articulo"
-msgstr "Esborra forma de pagament"
+msgstr "Esborra imatge del article"
 
 #: inventarioview.cpp:105 ui_inventariobase.h:302 ui_inventariobase.h:305
 #: ui_inventariosbase.h:180 ui_inventariosbase.h:183
-#, fuzzy
 msgid "Borrar inventario"
-msgstr "Esborra assentament"
+msgstr "Esborra inventari"
 
 #: listlinprevcobroview.cpp:269 listivaview.cpp:173
 msgid "Borrar linea"
@@ -2809,9 +2795,8 @@ msgstr ""
 
 #: ui_pagoslistbase.h:392 ui_pagoslistbase.h:395 ui_pagobase.h:319
 #: ui_pagobase.h:322
-#, fuzzy
 msgid "Borrar pago"
-msgstr "Esborrar"
+msgstr "Esborrar pagament"
 
 #: ui_blcountrybase.h:282 ui_blcountrybase.h:285 blcountryview.cpp:223
 msgid "Borrar pais"
@@ -3036,9 +3021,8 @@ msgid "CIF de la cuenta"
 msgstr "CIF del compte"
 
 #: rutacomerciallist.cpp:291
-#, fuzzy
 msgid "CIF del cliente"
-msgstr "Data de l'assentament"
+msgstr "CIF del client"
 
 #: ui_cobropagobase.h:402
 msgid "COBROS"
@@ -3269,9 +3253,8 @@ msgid "Cargando plugins"
 msgstr "Carregant plugins"
 
 #: ui_bccuentabase.h:805
-#, fuzzy
 msgid "Cargar Asiento"
-msgstr "Esborra assentament"
+msgstr "Esborra seient"
 
 #: bcextractoview.cpp:655 ui_bcextractobase.h:776 ui_bcextractobase.h:779
 msgid "Cargar punteo"
@@ -3339,11 +3322,11 @@ msgstr "Tanca"
 
 #: ui_bcbulmacontbase.h:292
 msgid "Cerrar Asientos"
-msgstr "Tanca assentaments"
+msgstr "Tanca seients"
 
 #: ui_bcasientobase.h:486 ui_bcasientobase.h:489
 msgid "Cerrar asiento"
-msgstr "Tanca assentament"
+msgstr "Tanca seient"
 
 #: ui_distromesasbase.h:240
 msgid "Cerrar vista mesas"
@@ -3742,7 +3725,7 @@ msgstr "Comentaris de l'albarà"
 
 #: bcasientoform.cpp:48
 msgid "Comentarios del asiento"
-msgstr "Comentaris de l'assentament"
+msgstr "Comentaris del seient"
 
 #: profesorview.cpp:67
 msgid "Comentarios del profesor"
@@ -3819,7 +3802,7 @@ msgstr "Compres"
 
 #: ui_confreglasbase.h:281
 msgid "Comprobacion por asientos"
-msgstr "Comprovació per assentaments"
+msgstr "Comprovació per seients"
 
 #: ui_convreunionbase.h:379
 msgid "Comunicado"
@@ -4417,38 +4400,32 @@ msgid "Datos &bancarios:"
 msgstr "Dades &bancaris:"
 
 #: ui_presupuestocontablebase.h:363 ui_presupuestoclientebase.h:814
-#, fuzzy
 msgid "Datos &generales"
-msgstr "&Dades comptables"
+msgstr "Dades &generals"
 
 #: ui_comercialclientebase.h:136
-#, fuzzy
 msgid "Datos comerciales:"
-msgstr "&Dades comptables"
+msgstr "&Dades comercials"
 
 #: ui_clientebase.h:615 ui_proveditbase.h:868
-#, fuzzy
 msgid "Datos de comercio &electronico:"
-msgstr "Correo electrònic:"
+msgstr "Dades de comerç electronic:"
 
 #: clienteview.cpp:73 provedit.cpp:60
-#, fuzzy
 msgid "Datos de comercio electronico"
-msgstr "Correo electrònic:"
+msgstr "Dades de comerç electronic"
 
 #: ui_bccuentabase.h:813
-#, fuzzy
 msgid "Datos de la cuenta:"
-msgstr "Banc del compte"
+msgstr "Dades de la compta"
 
 #: ui_registroivabase.h:602
 msgid "Datos de la empresa:"
 msgstr "Dades de l'empresa"
 
 #: ui_registroivabase.h:604
-#, fuzzy
 msgid "Datos de la factura:"
-msgstr "Data de compra:"
+msgstr "Data de factura:"
 
 #: ui_familiasbase.h:370
 msgid "Datos de la familia"
@@ -4461,7 +4438,7 @@ msgstr "Les dades dels rebuts són incorrectes."
 #: ui_bcasientointeligentebase.h:214
 #, fuzzy
 msgid "Datos del asiento:"
-msgstr "Data de l'assentament"
+msgstr "Data del seient"
 
 #: ui_bcregistroivaimprimirbase.h:215 ui_balanceprintbase.h:316
 msgid "Datos del listado:"
@@ -4652,39 +4629,33 @@ msgid "Descripcion"
 msgstr "Descripció"
 
 #: bcextractosubform.cpp:51
-#, fuzzy
 msgid "Descripcion Apunte"
-msgstr "Descripció del compte"
+msgstr "Descripció del apunt"
 
 #: bcextractosubform.cpp:52
-#, fuzzy
 msgid "Descripcion Asiento"
-msgstr "Descripció de l'assentament"
+msgstr "Descripció del seient"
 
 #: articulolisttpv.cpp:259 articulolist.cpp:444
-#, fuzzy
 msgid "Descripcion abreviada del articulo"
-msgstr "Descripció de l'amortització"
+msgstr "Descripció de abreviada del'article"
 
 #: compraventaview.cpp:74 albaranproveedorview.cpp:65
-#, fuzzy
 msgid "Descripcion albaran proveedor"
-msgstr "Direcció del proveïdor"
+msgstr "Descripció albarà proveïdor"
 
 #: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
 #: contrato.cpp:49 contrato.cpp:50
-#, fuzzy
 msgid "Descripcion contrato"
-msgstr "Descripció del compte"
+msgstr "Descripció del contracte"
 
 #: bcdiariosubform.cpp:41
 msgid "Descripcion de Cuenta"
 msgstr "Descripció del compte"
 
 #: ticketclientelist.cpp:429 albaranclientelist.cpp:429
-#, fuzzy
 msgid "Descripcion de forma de pago"
-msgstr "Descripció del compte"
+msgstr "Descripció de forma de pagament"
 
 #: bcamortizacionview.cpp:75
 msgid "Descripcion de la amortizacion"
@@ -4701,27 +4672,25 @@ msgstr "Descripció de l'apunt"
 
 #: bcasientoform.cpp:46
 msgid "Descripcion del asiento"
-msgstr "Descripció de l'assentament"
+msgstr "Descripció del seient"
 
 #: cobroview.cpp:70
 #, fuzzy
 msgid "Descripcion del cobro"
-msgstr "Descripció de l'assentament"
+msgstr ""
 
 #: ui_cobrobase.h:412
 #, fuzzy
 msgid "Descripcion del cobro:"
-msgstr "Descripció de l'assentament"
+msgstr ""
 
 #: ui_pagobase.h:328
-#, fuzzy
 msgid "Descripcion del pago:"
-msgstr "Descripció de l'assentament"
+msgstr "Descripció del pagament:"
 
 #: articulolisttpv.cpp:261 articulolist.cpp:446
-#, fuzzy
 msgid "Descripcion del tipo de articulo"
-msgstr "Descripció de l'assentament"
+msgstr "Descripció del tipus d'article"
 
 #: facturapview.cpp:64
 #, fuzzy
@@ -4805,7 +4774,7 @@ msgstr ""
 
 #: bcasientoview.cpp:337
 msgid "Desea crear un nuevo asiento en esa posicion?"
-msgstr "Vol crear un nou assentament en aquella posició?"
+msgstr "Vol crear un nou seient en aquella posició?"
 
 #: partidasview.cpp:438 tiposarticuloview.cpp:386 familiasview.cpp:494
 #, fuzzy
@@ -4850,7 +4819,7 @@ msgstr "Destinatari"
 #: listlinprevcobroview.cpp:271 bcamortizacionview.cpp:404
 #: bcamortizacionview.cpp:455
 msgid "Desvincular asiento"
-msgstr "Desvincula assentament"
+msgstr "Desvincula seient"
 
 #: ui_devolucionbase.h:270 ui_contratobase.h:488
 #, fuzzy
@@ -5013,14 +4982,13 @@ msgstr "Denominació"
 
 #: ui_bccuentabase.h:801 pluginbc_duplicarasiento.cpp:44
 #: pluginbc_duplicarasiento.cpp:45
-#, fuzzy
 msgid "Duplicar Asiento"
-msgstr "Desvincula assentament"
+msgstr "Desvincula seient"
 
 #: ui_bcasientoduplicarbase.h:229
 #, fuzzy
 msgid "Duplicar Asientos"
-msgstr "Desvincula assentament"
+msgstr "Desvincula seients"
 
 #: actividadview.cpp:74 actividadeslist.cpp:304
 msgid "Duracion"
@@ -5157,7 +5125,7 @@ msgstr "Edita alumne"
 #: pluginbf_articulo.cpp:346 articulolist.cpp:319 ui_articleslistbase.h:299
 #: ui_articleslistbase.h:302
 msgid "Editar articulo"
-msgstr "Edita Article"
+msgstr "Edita article"
 
 #: clientslist.cpp:331
 #, fuzzy
@@ -5279,7 +5247,7 @@ msgstr "El article de la línia de pressupost no existeix"
 
 #: bcasientoform.cpp:415
 msgid "El asiento se ha guardado correctamente."
-msgstr "L'assentament s'ha desat correctament."
+msgstr "El seient s'ha desat correctament."
 
 #: blimportexport.cpp:2406 blimportexport.cpp:2635 blimportexport.cpp:2859
 #: blimportexport.cpp:3098
@@ -6009,7 +5977,7 @@ msgstr ""
 #: ui_btbulmatpvbase.h:102
 #, fuzzy
 msgid "Estadisticas"
-msgstr "Assentaments"
+msgstr ""
 
 #: bcbloqueafechaview.cpp:118 incidenciacomercial.cpp:46
 msgid "Estado"
@@ -6021,9 +5989,8 @@ msgid "Estado de la incidencia comercial"
 msgstr "Estat"
 
 #: ui_incidenciacomercialbase.h:284
-#, fuzzy
 msgid "Estado de la incidencia:"
-msgstr "Llistat d'assentaments"
+msgstr "Estat de la incidencia:"
 
 #: vencimientocview.cpp:75
 msgid "Estado de vencimiento"
@@ -6175,19 +6142,16 @@ msgid "Exportar articulos"
 msgstr "Exporta dades"
 
 #: ui_bcasientobase.h:539 ui_bcasientobase.h:542
-#, fuzzy
 msgid "Exportar asiento"
-msgstr "Esborra assentament"
+msgstr "Esborra asiento"
 
 #: ui_bcplancontablelistbase.h:322 ui_bcplancontablelistbase.h:325
-#, fuzzy
 msgid "Exportar cuentas"
-msgstr "Exporta dades"
+msgstr "Exporta cpmptes"
 
 #: ui_bcasientobase.h:516 ui_bcasientobase.h:519
-#, fuzzy
 msgid "Extender asiento"
-msgstr "Genera assentament"
+msgstr "Extendre seient"
 
 #: pluginbf_asterisk.cpp:131
 #, fuzzy
@@ -6494,12 +6458,12 @@ msgstr "NIF del proveïdor"
 #: almacenview.cpp:66
 #, fuzzy
 msgid "Fecha almacen"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: pluginbf_comercial.cpp:147
 #, fuzzy
 msgid "Fecha base"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: ui_comercialclientebase.h:138
 #, fuzzy
@@ -6513,12 +6477,11 @@ msgstr "Data de compra"
 #: ui_bcasientoduplicarbase.h:235
 #, fuzzy
 msgid "Fecha con la que quedara el asiento:"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: ui_inventariobase.h:337
-#, fuzzy
 msgid "Fecha creacion:"
-msgstr "&Data de l'assentament:"
+msgstr "Data creació:"
 
 #: ui_q19base.h:271
 msgid "Fecha de Cargo"
@@ -6536,7 +6499,7 @@ msgstr "Data de la compra"
 #: tutoreslist.cpp:293 clientslist.cpp:367 clienteview.cpp:70
 #, fuzzy
 msgid "Fecha de alta del cliente"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: contratoslist.cpp:337
 #, fuzzy
@@ -6546,7 +6509,7 @@ msgstr "Data de la compra"
 #: tutoreslist.cpp:294 clientslist.cpp:368 clienteview.cpp:71
 #, fuzzy
 msgid "Fecha de baja del cliente"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: contratoslist.cpp:338 contratoslist.cpp:339
 #, fuzzy
@@ -6621,16 +6584,16 @@ msgstr "Data de compra:"
 #: presupuestoview.cpp:65
 #, fuzzy
 msgid "Fecha de vencimiento"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: ui_cobrobase.h:411 ui_presupuestoclientebase.h:807
 #, fuzzy
 msgid "Fecha de vencimiento:"
-msgstr "&Data de l'assentament:"
+msgstr ""
 
 #: bcasientoform.cpp:47
 msgid "Fecha del asiento"
-msgstr "Data de l'assentament"
+msgstr "Data del seient"
 
 #: cobroview.cpp:66
 #, fuzzy
@@ -6645,12 +6608,12 @@ msgstr "Data de compra:"
 #: inventariosview.cpp:285
 #, fuzzy
 msgid "Fecha del inventario"
-msgstr "Data de l'assentament"
+msgstr "Data del inventari"
 
 #: ui_pedidoproveedorbase.h:728
 #, fuzzy
 msgid "Fecha del pedido:"
-msgstr "&Data de l'assentament:"
+msgstr "&Data de la comanda"
 
 #: vencimientocview.cpp:74
 msgid "Fecha efectiva"
@@ -6744,14 +6707,12 @@ msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
 #: ui_convocatoriabase.h:445
-#, fuzzy
 msgid "Fecha inscripcion"
-msgstr "descripció"
+msgstr "Data inscripció"
 
 #: inventario.cpp:43
-#, fuzzy
 msgid "Fecha inventario"
-msgstr "Data de l'assentament"
+msgstr "Data del inventari"
 
 #: ui_alumnobase.h:509
 msgid "Fecha nacimiento:"
@@ -6771,19 +6732,16 @@ msgid "Fecha prevista"
 msgstr "Data prevista"
 
 #: ui_registroivabase.h:611
-#, fuzzy
 msgid "Fecha recepcion:"
-msgstr "&Data de l'assentament:"
+msgstr "Data de recepció"
 
 #: rutacomerciallist.cpp:294
-#, fuzzy
 msgid "Fecha ruta comercial"
-msgstr "Data de la compra"
+msgstr "Data ruta comercial"
 
 #: ui_rutacomercialbase.h:219
-#, fuzzy
 msgid "Fecha ruta:"
-msgstr "Data de la 1a quota:"
+msgstr "Data ruta:"
 
 #: pluginbc_asiento.cpp:176 ui_bcasientobase.h:560 ui_facturapbase.h:615
 #: impqtoolbutton.cpp:150 pluginbf_clientealbaran.cpp:284
@@ -6791,9 +6749,8 @@ msgid "Fecha:"
 msgstr "Data:"
 
 #: ui_untitled.h:296 ui_devolucion.h:383
-#, fuzzy
 msgid "Fecha: del ticket"
-msgstr "Data de l'assentament"
+msgstr "Data del ticket"
 
 #: cuadrante1view.cpp:65 ui_cuadrante1base.h:333
 msgid "Festivo"
@@ -7081,9 +7038,8 @@ msgid "Generar Albaran Proveedor"
 msgstr ""
 
 #: ui_cobropagobase.h:368 ui_cobropagobase.h:371
-#, fuzzy
 msgid "Generar Asiento"
-msgstr "Genera assentament"
+msgstr "Genera seient"
 
 #: q19qtoolbutton.cpp:82 q19qtoolbutton1.cpp:72
 msgid "Generar Q19"
@@ -7095,11 +7051,11 @@ msgstr ""
 
 #: bcamortizacionview.cpp:400 bcamortizacionview.cpp:474
 msgid "Generar asiento"
-msgstr "Genera assentament"
+msgstr "Genera seient"
 
 #: listlinprevcobroview.cpp:270
 msgid "Generar asiento de cobro/pago"
-msgstr "Genera assentament de cobrament/pagament"
+msgstr "Genera seient de cobrament/pagament"
 
 #: ui_bcmodelo300base.h:205
 #, fuzzy
@@ -7159,7 +7115,7 @@ msgstr "Desa"
 #: ui_contratobase.h:455 ui_contratobase.h:458
 #, fuzzy
 msgid "Guardar Contrato"
-msgstr "Desa assentament"
+msgstr "Desa contacte"
 
 #: ui_rutacomercialincbase.h:207 ui_rutacomercialincbase.h:210
 msgid "Guardar Factura"
@@ -7219,39 +7175,35 @@ msgid "Guardar almacen"
 msgstr "Desa magatzem"
 
 #: ui_bcamortizacionbase.h:632 ui_bcamortizacionbase.h:635
-#, fuzzy
 msgid "Guardar amortizacion"
-msgstr "Id amortizació"
+msgstr "Guardar amortizació"
 
 #: ui_bcasientobase.h:494 ui_bcasientobase.h:497
-#, fuzzy
 msgid "Guardar asiento"
-msgstr "Genera assentament"
+msgstr "Genera seient"
 
 #: ui_bancobase.h:445 ui_bancobase.h:448
-#, fuzzy
 msgid "Guardar banco"
-msgstr "Desa balanç"
+msgstr "Desa banc"
 
 #: bcconfiguracionview.cpp:116
 #, fuzzy
 msgid "Guardar cambios"
-msgstr "Desa"
+msgstr "Desa canvis"
 
 #: bccanalview.cpp:106 bccanalview.cpp:184 bccanalview.cpp:236
 #, fuzzy
 msgid "Guardar canal"
-msgstr "Desa"
+msgstr "Desa canal"
 
 #: bccentrocosteview.cpp:166 bccentrocosteview.cpp:226
 #, fuzzy
 msgid "Guardar centro de coste"
-msgstr "Desa"
+msgstr "Desa centre de cost"
 
 #: ui_clientebase.h:571 ui_clientebase.h:574
-#, fuzzy
 msgid "Guardar cliente"
-msgstr "Desa assentament"
+msgstr "Desa client"
 
 #: ui_convocatoriabase.h:409 ui_convocatoriabase.h:412 ui_cobrobase.h:385
 #: ui_cobrobase.h:388 ui_profesorbase.h:479 ui_profesorbase.h:482
@@ -7266,7 +7218,7 @@ msgstr "Desa arxiu"
 #: ui_bccuentabase.h:796
 #, fuzzy
 msgid "Guardar cuenta"
-msgstr "Desa assentament"
+msgstr "Desa compta"
 
 #: claseview.cpp:198
 msgid "Guardar datos del clase"
@@ -7283,9 +7235,8 @@ msgstr "Desa forma de pagament"
 
 #: ui_facturabase.h:669 ui_facturabase.h:672 ui_facturapbase.h:581
 #: ui_facturapbase.h:584 ui_z2zbase.h:364 ui_z2zbase.h:367
-#, fuzzy
 msgid "Guardar factura"
-msgstr "Desa assentament"
+msgstr "Desa factura"
 
 #: familiasview.cpp:349
 #, fuzzy
@@ -7298,9 +7249,8 @@ msgid "Guardar forma de pago"
 msgstr "Desa forma de pagament"
 
 #: ui_inventariobase.h:295 ui_inventariobase.h:298
-#, fuzzy
 msgid "Guardar inventario"
-msgstr "Desa assentament"
+msgstr "Desa inventari"
 
 #: incidenciacomercialview.cpp:105
 #, fuzzy
@@ -7908,7 +7858,7 @@ msgstr "<P> Article <B>"
 #: bcasientosubform.cpp:57 bcasientolistsubform.cpp:46 bcasientoform.cpp:45
 #: bcamortizacionview.cpp:97
 msgid "Id asiento"
-msgstr "Id assentament"
+msgstr "Id seient"
 
 #: bcasientosubform.cpp:56
 msgid "Id borrador"
@@ -7940,14 +7890,12 @@ msgid "Id componente"
 msgstr ""
 
 #: bcextractosubform.cpp:64
-#, fuzzy
 msgid "Id contrapartida"
-msgstr "contrapartida"
+msgstr "Id contrapartida"
 
 #: contrato.cpp:42 listlincontratoview.cpp:47
-#, fuzzy
 msgid "Id contrato"
-msgstr "Id compte"
+msgstr "Id contracte"
 
 #: bcasientosubform.cpp:58 datosview.cpp:39
 msgid "Id cuenta"
@@ -7961,9 +7909,8 @@ msgstr "Id compte d'amortizació"
 #: listdescfacturaprovview.cpp:40 listdescpresupuestoview.cpp:40
 #: listdescpedidoclienteview.cpp:40 listdescalbaranprovview.cpp:40
 #: bfclientealbarandescuentosubform.cpp:41
-#, fuzzy
 msgid "Id descuento"
-msgstr "Id compte"
+msgstr "Id descompte"
 
 #: contratoview.cpp:417 listdescfacturaview.cpp:43 facturaview.cpp:60
 #: listlinfacturaview.cpp:58 facturaslist.cpp:440 facturasplist.cpp:369
@@ -7983,22 +7930,19 @@ msgid "Id familia"
 msgstr "<P> Família <B>"
 
 #: btticket.cpp:61
-#, fuzzy
 msgid "Id fechaalbaran"
-msgstr "Id"
+msgstr "Id fechaalbaran"
 
 #: btticket.cpp:69 pedidoproveedorview.cpp:63 facturapview.cpp:66
 #: pluginbf_carteracobros.cpp:103 pluginbf_carteracobros.cpp:223 zview.cpp:78
 #: compraventaview.cpp:71 albaranproveedorview.cpp:62
 #: pluginbf_clienteproveedor.cpp:77
-#, fuzzy
 msgid "Id forma de pago"
-msgstr "<LI> Forma de pagament <B>"
+msgstr "Id forma de pagament"
 
 #: inventariosview.cpp:283
-#, fuzzy
 msgid "Id inventario"
-msgstr "Id assentament"
+msgstr "Id inventari"
 
 #: btticket.cpp:131
 msgid "Id linea albaran"
@@ -8007,7 +7951,7 @@ msgstr ""
 #: proyectoview.cpp:79 proyectoview.cpp:98
 #, fuzzy
 msgid "Id linea de Ingreso Presupuesto"
-msgstr "Id <HR><B>Tractant el pressupost"
+msgstr ""
 
 #: listlinfacturaview.cpp:50
 msgid "Id linea factura"
@@ -8230,9 +8174,8 @@ msgid "Importar articulos"
 msgstr "Importa dades"
 
 #: ui_bcasientobase.h:546 ui_bcasientobase.h:549
-#, fuzzy
 msgid "Importar asiento"
-msgstr "Esborra assentament"
+msgstr "Esborra seient"
 
 #: ui_bcplancontablelistbase.h:329 ui_bcplancontablelistbase.h:332
 #, fuzzy
@@ -8808,14 +8751,12 @@ msgid "Listado &347"
 msgstr "&Llistats"
 
 #: clientslist.cpp:161
-#, fuzzy
 msgid "Listado de Clientes"
-msgstr "Llistat d'assentaments"
+msgstr "Llistat de clients"
 
 #: contratoslist.cpp:113
-#, fuzzy
 msgid "Listado de Contratos"
-msgstr "Llistat d'assentaments"
+msgstr "Llistat de contractes"
 
 #: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
 msgid "Listado de Cuadres de Caja"
@@ -8841,9 +8782,8 @@ msgid "Listado de amortizaciones"
 msgstr "Id línies d'amortització"
 
 #: ui_bcasientolistbase.h:462
-#, fuzzy
 msgid "Listado de asientos"
-msgstr "Llistat d'assentaments"
+msgstr "Llistat de seients"
 
 #: pluginbf_contrato.cpp:63 pluginbf_contrato.cpp:64
 msgid "Listado de contratos"
@@ -8854,9 +8794,8 @@ msgid "Listado de cuentas"
 msgstr ""
 
 #: ui_inventariosbase.h:164
-#, fuzzy
 msgid "Listado de inventarios"
-msgstr "Llistat d'assentaments"
+msgstr "Llistat d'inventaris"
 
 #: ui_bcmodelo347listbase.h:246
 msgid "Listado para el modelo 347"
@@ -9084,7 +9023,7 @@ msgstr "Mostra / Amaga detall"
 #: bcextractosubform.cpp:94 bcextractosubform.cpp:111 bcdiariosubform.cpp:96
 #: bcdiariosubform.cpp:113
 msgid "Mostrar asiento"
-msgstr "Mostrar assentament"
+msgstr "Mostrar seient"
 
 #: bcextractosubform.cpp:98 bcextractosubform.cpp:117
 #, fuzzy
@@ -9154,14 +9093,12 @@ msgstr "Mostrar/ocultar capçalera"
 #: ui_facturasplistbase.h:374 ui_almaceneslistbase.h:387
 #: ui_movimientosbase.h:300 ui_presupuestoslistbase.h:421
 #: ui_albaranesproveedorlistbase.h:422 ui_ticketclientelistbase.h:449
-#, fuzzy
 msgid "Mostrar:"
-msgstr "Mostrar assentament"
+msgstr "Mostrar:"
 
 #: pluginbf_cuadrante.cpp:217
-#, fuzzy
 msgid "Motivo"
-msgstr "tipus"
+msgstr "Motiu"
 
 #: alumnoview.cpp:62
 msgid "Movil"
@@ -9829,19 +9766,17 @@ msgid "Nuevo Actividad"
 msgstr "Nou Activitat"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:467
-#, fuzzy
 msgid "Nuevo Alumno"
-msgstr "Nou assentament"
+msgstr "Nou al·lumne"
 
 #: articulolist.cpp:382
-#, fuzzy
 msgid "Nuevo Articulo"
-msgstr "<P> Article <B>"
+msgstr "Nou article"
 
 #: ui_contratobase.h:453
 #, fuzzy
 msgid "Nuevo Contrato"
-msgstr "Nou assentament"
+msgstr ""
 
 #: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:467
@@ -9855,7 +9790,7 @@ msgstr "Nou Pare/Soci"
 #: ui_rutacomerciallistbase.h:303 ui_rutacomerciallistbase.h:306
 #, fuzzy
 msgid "Nuevo Pedido"
-msgstr "Nou assentament"
+msgstr ""
 
 #: ui_recibobase.h:347
 msgid "Nuevo Recibo"
@@ -9878,7 +9813,7 @@ msgstr "Nou canal"
 #: ui_tutoreslistbase.h:249
 #, fuzzy
 msgid "Nuevo Tutor"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_actividad.cpp:229 pluginbf_actividad.cpp:254
 msgid "Nuevo actividad"
@@ -9895,7 +9830,7 @@ msgstr "Esborra albarà"
 #: pluginbf_clientealbaran.cpp:71
 #, fuzzy
 msgid "Nuevo albaran a cliente"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_proveedoralbaran.cpp:65 pluginbf_proveedoralbaran.cpp:66
 #: ui_albaranproveedorbase.h:587
@@ -9906,40 +9841,37 @@ msgstr "Nom del proveïdor"
 #: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 #, fuzzy
 msgid "Nuevo almacen"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:290
 #: pluginbf_alumno.cpp:315
 #, fuzzy
 msgid "Nuevo alumno"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_articulo.cpp:68 pluginbf_articulo.cpp:69 pluginbf_articulo.cpp:327
 #: pluginbf_articulo.cpp:352 ui_articleeditbase.h:584
 #: ui_articleslistbase.h:292 ui_articleslistbase.h:295
 #, fuzzy
 msgid "Nuevo articulo"
-msgstr "Nou assentament"
+msgstr ""
 
 #: ui_bcasientobase.h:502 ui_bcasientobase.h:505 ui_bcasientobase.h:508
 #: ui_bcasientobase.h:511
-#, fuzzy
 msgid "Nuevo asiento"
-msgstr "Nou assentament"
+msgstr "Nou seient"
 
 #: ui_bancobase.h:452 ui_bancobase.h:455
-#, fuzzy
 msgid "Nuevo banco"
-msgstr "Nou assentament"
+msgstr "Nou banc"
 
 #: bccanalview.cpp:190
 msgid "Nuevo canal"
 msgstr "Nou canal"
 
 #: pluginbf_cliente.cpp:70 pluginbf_cliente.cpp:71 clientslist.cpp:311
-#, fuzzy
 msgid "Nuevo cliente"
-msgstr "Nou assentament"
+msgstr "Nou client"
 
 #: ui_cobroslistbase.h:386 ui_cobroslistbase.h:389
 #, fuzzy
@@ -9949,7 +9881,7 @@ msgstr "Nou"
 #: ui_cobrobase.h:382
 #, fuzzy
 msgid "Nuevo cobro a cliente"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_clientecobro.cpp:69 pluginbf_clientecobro.cpp:70
 #, fuzzy
@@ -9958,14 +9890,12 @@ msgstr "Nou"
 
 #: ui_contratoslistbase.h:258 ui_contratoslistbase.h:261 ui_zlistbase.h:223
 #: ui_zlistbase.h:226
-#, fuzzy
 msgid "Nuevo contrato"
-msgstr "Nou assentament"
+msgstr "Nou contracte"
 
 #: ui_inventariosbase.h:166 ui_inventariosbase.h:169
-#, fuzzy
 msgid "Nuevo inventario"
-msgstr "Nou assentament"
+msgstr "Nou inventari"
 
 #: pluginbf_tutor.cpp:66 pluginbf_tutor.cpp:67
 msgid "Nuevo padre/socio"
@@ -9974,7 +9904,7 @@ msgstr "Nou pare/soci"
 #: ui_pagoslistbase.h:378 ui_pagoslistbase.h:381
 #, fuzzy
 msgid "Nuevo pago"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_proveedorpago.cpp:66 pluginbf_proveedorpago.cpp:67
 #: ui_pagobase.h:309
@@ -9990,7 +9920,7 @@ msgstr "Nou"
 #: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
 #, fuzzy
 msgid "Nuevo pedido"
-msgstr "Nou assentament"
+msgstr ""
 
 #: pluginbf_proveedorpedido.cpp:64 pluginbf_proveedorpedido.cpp:65
 #: ui_pedidosproveedorlistbase.h:364 ui_pedidosproveedorlistbase.h:367
@@ -10050,7 +9980,7 @@ msgstr "Nou treballador"
 #: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:400
 #, fuzzy
 msgid "Nuevo tutor"
-msgstr "Nou assentament"
+msgstr ""
 
 #: btticket.cpp:66
 msgid "Num"
@@ -10315,12 +10245,11 @@ msgstr ""
 
 #: bcasientoform.cpp:49
 msgid "Orden de asiento"
-msgstr "Ordre de l'assentament"
+msgstr "Ordre del seient"
 
 #: ui_bcasientobase.h:561
-#, fuzzy
-msgid "Orden del asiento:"
-msgstr "Ordre de l'assentament"
+msgid "Orden del sient:"
+msgstr ""
 
 #: pluginbf_bulmatpv.cpp:104
 msgid "Orden en TPV"
@@ -10587,7 +10516,7 @@ msgstr "Direcció del proveïdor"
 #: pluginbf_clientepedido.cpp:60 pedidosclientelist.cpp:257
 #, fuzzy
 msgid "Pedidos de clientes"
-msgstr "Llistat d'assentaments"
+msgstr ""
 
 #: pedidosproveedorlist.cpp:123 pedidosclientelist.cpp:120
 msgid "Pedidos no procesados"
@@ -10920,7 +10849,7 @@ msgstr "Referència"
 #: ui_inventariobase.h:330 ui_inventariobase.h:333
 #, fuzzy
 msgid "Pregenerar inventario"
-msgstr "Generar assentament"
+msgstr ""
 
 #: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
 #: bfinformereferencia.cpp:138 bfinformereferencia.cpp:208
@@ -11399,7 +11328,7 @@ msgstr "Regularització"
 #: ui_proveditbase.h:865
 #, fuzzy
 msgid "Regimen &fiscal:"
-msgstr "Assentament final:"
+msgstr ""
 
 #: provedit.cpp:62
 msgid "Regimen Fiscal"
@@ -11637,19 +11566,18 @@ msgid "Se ha producido un error"
 msgstr "S'ha produit un error"
 
 #: bccompany.cpp:435
-#, fuzzy
 msgid "Se han cerrado los asientos"
-msgstr "Tots els assentaments"
+msgstr "S'han tancats els seients"
 
 #: pluginbc_asiento.cpp:147
 #, fuzzy
 msgid "Se han espaciado los asientos"
-msgstr "Tots els assentaments"
+msgstr "S'han separat els seients"
 
 #: pluginbc_asiento.cpp:161
 #, fuzzy
 msgid "Se han ordenado los asientos"
-msgstr "Tots els assentaments"
+msgstr "S'han ordenat"
 
 #: bcbulmacont.cpp:627 bfbulmafact.cpp:202
 msgid "Se perderan los cambios no guardados"
@@ -11661,7 +11589,7 @@ msgstr "S'esborrarà el compte"
 
 #: bcasientoform.cpp:163
 msgid "Se va a borrar el asiento. Esta seguro?"
-msgstr "S'esborrarà l'assentament. Està segur?"
+msgstr "S'esborrarà el seient. Està segur?"
 
 #: bccentrocosteview.cpp:266
 msgid ""
@@ -11866,7 +11794,7 @@ msgstr "Factura"
 #: listseriefacturaview.cpp:48 bfseriefacturaview.cpp:48
 #, fuzzy
 msgid "Serie de Factura"
-msgstr "Assentament d'o&bertura"
+msgstr ""
 
 #: ui_facturabase.h:705 ui_facturaslistbase.h:540
 #, fuzzy
@@ -12373,18 +12301,16 @@ msgid "Tipo de IVA:"
 msgstr "Tipus d'IVA"
 
 #: articuloview.cpp:68
-#, fuzzy
 msgid "Tipo de articulo"
-msgstr "Tipus d'assentament"
+msgstr "Tipus d'article"
 
 #: ui_tiposarticulobase.h:261
-#, fuzzy
 msgid "Tipo de articulo:"
-msgstr "Tipus d'assentament"
+msgstr "Tipus d'article:"
 
 #: bcasientoform.cpp:50
 msgid "Tipo de asiento"
-msgstr "Tipus d'assentament"
+msgstr "Tipus de seient"
 
 #: ui_cobroslistbase.h:442
 msgid "Tipo de cobro:"
@@ -12441,15 +12367,13 @@ msgid "Tipos de IVA"
 msgstr "Tipus d'IVA"
 
 #: ui_listtipostrabajobase.h:113
-#, fuzzy
 msgid "Tipos de Trabajo"
-msgstr "Tipus d'assentament"
+msgstr "Tipus de treball"
 
 #: pluginbf_articulo.cpp:77 pluginbf_articulo.cpp:78
 #: ui_tiposarticulobase.h:226
-#, fuzzy
 msgid "Tipos de articulo"
-msgstr "Tipus d'assentament"
+msgstr "Tipus d'article"
 
 #: pluginbf_tipotrabajo.cpp:49 pluginbf_tipotrabajo.cpp:50
 msgid "Tipos de trabajo"
@@ -12494,7 +12418,7 @@ msgstr "<HR><B>Tractant l'albarà"
 
 #: bcasientolistview.cpp:44
 msgid "Todos los asientos"
-msgstr "Tots els assentaments"
+msgstr "Tots els seients"
 
 #: cobroslist.cpp:56
 msgid "Todos los cobros"
@@ -12956,7 +12880,7 @@ msgstr "Veure albarans amb la mateixa referència"
 #: listlinprevcobroview.cpp:272 bcamortizacionview.cpp:402
 #: bcamortizacionview.cpp:446
 msgid "Ver asiento"
-msgstr "Veure assentament"
+msgstr "Veure seient"
 
 #: balancesubform.cpp:84
 msgid "Ver configurador de subformulario"
@@ -13290,7 +13214,7 @@ msgstr ""
 #: vencimientopview.cpp:76
 #, fuzzy
 msgid "idproveedor de Vencimiento"
-msgstr "Data de l'assentament"
+msgstr ""
 
 #: cobropagoview.cpp:52 registroivaview.cpp:81 registroivaview.cpp:96
 #: bcdiariosubform.cpp:57
@@ -13450,656 +13374,3 @@ msgstr "y   ( >="
 msgid "y <="
 msgstr "y <="
 
-#~ msgid ""
-#~ "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
-#~ msgstr ""
-#~ "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
-
-#~ msgid "&Asientos"
-#~ msgstr "&Assentaments"
-
-#~ msgid "&Bloquear fechas/Crear ejercicio"
-#~ msgstr "&Bloqueja dates/Crear exercici"
-
-#~ msgid "&Cobros a clientes"
-#~ msgstr "&Cobraments a clients"
-
-#~ msgid "&Convocar Asamblea"
-#~ msgstr "&Convoca Assemblea"
-
-#~ msgid "&Convocar Junta Directiva"
-#~ msgstr "&Convoca Junta Directiva"
-
-#~ msgid "&Convocar Reunion"
-#~ msgstr "&Convoca Reunió"
-
-#~ msgid "&Cuentas Anuales PGC"
-#~ msgstr "&Comptes anuals PGC"
-
-#~ msgid "&Cuotas por Alumno"
-#~ msgstr "&Quotes per alumne"
-
-#~ msgid "&Espaciar asientos"
-#~ msgstr "&Espaia assentaments"
-
-#~ msgid "&Facturas proveedores"
-#~ msgstr "&Factures proveïdors"
-
-#~ msgid "&Informes"
-#~ msgstr "&Informes"
-
-#~ msgid "&Juntas Directivas"
-#~ msgstr "&Juntes Directives"
-
-#~ msgid "&Listados"
-#~ msgstr "&Llistats"
-
-#, fuzzy
-#~ msgid "&Modificadores"
-#~ msgstr "identificador"
-
-#~ msgid "&Monitores"
-#~ msgstr "&Monitors"
-
-#~ msgid "&Nuevo Articulo"
-#~ msgstr "&Nou article"
-
-#~ msgid "&Nuevo Pedido a Proveedor"
-#~ msgstr "&Nova comanda a proveïdor"
-
-#~ msgid "&Nuevo cobro a cliente"
-#~ msgstr "&Nou cobrament a client"
-
-#~ msgid "&Nuevo monitor"
-#~ msgstr "&Nou Monitor"
-
-#~ msgid "&Nuevo tutor/socio"
-#~ msgstr "&Nou tutor/soci"
-
-#~ msgid "&Ordenar asientos"
-#~ msgstr "&Ordena assentaments"
-
-#~ msgid "&PGC 2008"
-#~ msgstr "&PGC 2008"
-
-#~ msgid "&Tipos de Articulo"
-#~ msgstr "&Tipus d'article"
-
-#~ msgid "&Tutores/Socios"
-#~ msgstr "&Tutors/Socis"
-
-#~ msgid "(1+2+3+4+5+6+7+8+9+10+11)"
-#~ msgstr "(1+2+3+4+5+6+7+8+9+10+11)"
-
-#~ msgid "1. Activos financieros disponibles para la venta."
-#~ msgstr "1. Actius financers disponibles per la venda."
-
-#~ msgid "1. Capital escriturado."
-#~ msgstr "1. Capital escripturat."
-
-#~ msgid "1. Clientes por ventas y prestaciones de servicios."
-#~ msgstr "1. Clients per vendes i préstecs de serveis."
-
-#~ msgid "1. Comerciales."
-#~ msgstr "1. Comercials."
-
-#~ msgid "1. Desarrollo."
-#~ msgstr "1. Desenvolupament."
-
-#~ msgid "1. Importe neto de la cifra de negocios."
-#~ msgstr "1. Import net de la xifra de negocis."
-
-#~ msgid "1. Instrumentos de patrimonio."
-#~ msgstr "1. Instruments de patrimoni."
-
-#~ msgid "1. Legal y estatutarias."
-#~ msgstr "1. Legal i estatutaries."
-
-#~ msgid "1. Obligaciones por prestaciones a largo plazo al personal."
-#~ msgstr "1. Obligacions per prestacions a llarg plaç al personal."
-
-#~ msgid "1. Obligaciones y otros valores negociables."
-#~ msgstr "1. Obligacions i altres valors negociables."
-
-#~ msgid "1. Proveedores"
-#~ msgstr "1. Proveïdors"
-
-#~ msgid "1. Remanente."
-#~ msgstr "1. Remanent."
-
-#~ msgid "1. Terrenos y construcciones."
-#~ msgstr "1. Terrenys i construccions."
-
-#~ msgid "1. Terrenos."
-#~ msgstr "1. Terrenys."
-
-#~ msgid "1. Tesoreria."
-#~ msgstr "1. Tresoreria."
-
-#~ msgid "1.Activos financieros disponibles para la venta."
-#~ msgstr "1.Actius financers disponibles per la venda."
-
-#~ msgid "10. Excesos de provisiones."
-#~ msgstr "10. Excés de provisions."
-
-#~ msgid "11. Deterioro y resultado por enajenaciones del inmovilizado."
-#~ msgstr "11. Deteriorament i resultat per alienacions de l'inmovilizado."
-
-#~ msgid "12. Ingresos financieros."
-#~ msgstr "12. Ingressos financiers."
-
-#~ msgid "13. Gastos financieros."
-#~ msgstr "13. Despeses financeres."
-
-#~ msgid "14. Variacion de valor razonable en instrumentos financieros."
-#~ msgstr "14. Variació de valor raonable en instruments financiers."
-
-#~ msgid "15. Diferencias de cambio."
-#~ msgstr "15. Diferències de canvi."
-
-#~ msgid ""
-#~ "16. Deterioro y resultado por enajenaciones de instrumentos financieros."
-#~ msgstr ""
-#~ "16. Deteriorament i resultat per enajenaciones de instrumentos "
-#~ "financieros."
-
-#~ msgid "17. Impuestos sobre beneficios."
-#~ msgstr "17. Impostos sobre beneficis."
-
-#~ msgid "2. (Capital no exigido)."
-#~ msgstr "2. (Capital no exigit)."
-
-#, fuzzy
-#~ msgid "2. Clientes, empresas del grupo y asociadas."
-#~ msgstr "Clients."
-
-#, fuzzy
-#~ msgid "2. Creditos a empresas"
-#~ msgstr "Crea empresa"
-
-#, fuzzy
-#~ msgid "2. Creditos a empresas."
-#~ msgstr "Crea empresa"
-
-#, fuzzy
-#~ msgid "2. Proveedores, empresas del grupo y asociadas."
-#~ msgstr "Proveïdors."
-
-#, fuzzy
-#~ msgid "4. Personal."
-#~ msgstr "Personalitzada"
-
-#, fuzzy
-#~ msgid "6. Anticipos a proveedores"
-#~ msgstr "Direcció del proveïdor"
-
-#, fuzzy
-#~ msgid "7. Anticipos de clientes."
-#~ msgstr "Assentaments Intel·ligents"
-
-#, fuzzy
-#~ msgid "8. Amortizacion del inmovilizado."
-#~ msgstr "Amortització."
-
-#, fuzzy
-#~ msgid "9. Imputacion de subvenciones de inmovilizado no financiero y otras."
-#~ msgstr "Imputació."
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-
-#, fuzzy
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans'; font-size:10pt; font-"
-#~ "weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-family:'Sans Serif'; font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal; text-decoration:none;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#~ "\"></p></body></html>"
-
-#~ msgid ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:600; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">Contabilidad GPL - "
-#~ "Version 0.11.1 -</p></body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:600; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">Contabilidad GPL - "
-#~ "Version 0.11.1 -</p></body></html>"
-
-#, fuzzy
-#~ msgid "A) Resultado de la cuenta de perdidas y ganancias"
-#~ msgstr "Estat"
-
-#, fuzzy
-#~ msgid ""
-#~ "A.4) RESULTADO DEL EJERCICIO PROCEDENTE DE OPERACIONES CONTINUADAS (A.3"
-#~ "+17)"
-#~ msgstr "DEL"
-
-#, fuzzy
-#~ msgid "A.5) RESULTADO DEL EJERCICIO (A.4+18)"
-#~ msgstr "DEL"
-
-#~ msgid "ABRIR CAJON"
-#~ msgstr "OBRE CALAIX"
-
-#~ msgid "APARCAR"
-#~ msgstr "APARCAR"
-
-#~ msgid "Acerca de BulmaFact"
-#~ msgstr "Quant a BulmaFact"
-
-#~ msgid "Advertencia: ha escojido las "
-#~ msgstr "Advertència: ha triat les "
-
-#~ msgid "Agregar albaran a la factura"
-#~ msgstr "Afegir albarà a la factura"
-
-#, fuzzy
-#~ msgid "Alt. Precio"
-#~ msgstr "Adreça:"
-
-#, fuzzy
-#~ msgid "Apuntes &contables"
-#~ msgstr "Apunts &comptables"
-
-#~ msgid "Asociacion"
-#~ msgstr "Associació"
-
-#~ msgid "B) ACTIVO CORRIENTE"
-#~ msgstr "B) ACTIU CORRENT"
-
-#~ msgid "B) OPERACIONES INTERRUMPIDAS"
-#~ msgstr "B) OPERACIONS INTERROMPUDES"
-
-#~ msgid "B) PASIVO NO CORRIENTE"
-#~ msgstr "B) PASIU NO CORRENT"
-
-#~ msgid ""
-#~ "B) Total Ingresos y gastos imputados directamente al patrimonio neto (I+II"
-#~ "+III+IV+V)"
-#~ msgstr ""
-#~ "B) Total ingressos i despeses imputats directament al patrimoni net (I+II"
-#~ "+III+IV+V)"
-
-#~ msgid "BALANCE AL CIERRE DEL EJERCICIO"
-#~ msgstr "BALANÇ AL TANCAMENT DE L'EXERCICI"
-
-#~ msgid "BALANCE DE PYMES A "
-#~ msgstr "BALANÇ DE PYMES A "
-
-#, fuzzy
-#~ msgid "Balance Jerarquico"
-#~ msgstr "Balanç jeràrquic"
-
-#~ msgid "Borrar Profesor"
-#~ msgstr "Esborra professor"
-
-#, fuzzy
-#~ msgid "C) PASIVO CORRIENTE"
-#~ msgstr "C"
-
-#, fuzzy
-#~ msgid ""
-#~ "C) Total transferencias a la cuenta de perdidas y ganancias (VI+VII+VIII"
-#~ "+IX)"
-#~ msgstr "C Totals:"
-
-#~ msgid "CLIENTE"
-#~ msgstr "CLIENT"
-
-#~ msgid "Codigo de cliente:"
-#~ msgstr "Codi de client:"
-
-#~ msgid "Convocar Asamblea"
-#~ msgstr "Convoca Assemblea"
-
-#~ msgid "Convocar Junta Directiva"
-#~ msgstr "Convoca Junta directiva"
-
-#~ msgid "Convocar Reunion"
-#~ msgstr "Convoca Reunió"
-
-#, fuzzy
-#~ msgid "Ctrl+L"
-#~ msgstr "Ctrl+N"
-
-#, fuzzy
-#~ msgid "Cuenta Destino"
-#~ msgstr "Taula destí"
-
-#, fuzzy
-#~ msgid "Cuenta Origen"
-#~ msgstr "Compte"
-
-#, fuzzy
-#~ msgid "Cuenta cliente / Proveedor:"
-#~ msgstr "Nom del proveïdor"
-
-#, fuzzy
-#~ msgid "Cuenta padre:"
-#~ msgstr "Comptes anuals"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales &Abreviadas PGC"
-#~ msgstr "Comptes anuals"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales &PYMES"
-#~ msgstr "Comptes anuals"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
-#~ msgstr "General"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
-#~ msgstr "General "
-
-#, fuzzy
-#~ msgid "Cuentas Anuales PYMES 2008"
-#~ msgstr "Comptes anuals"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales Plan General Contable 2008"
-#~ msgstr "General"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales Plan General Contable hasta 2007"
-#~ msgstr "General"
-
-#, fuzzy
-#~ msgid "Cuentas Anuales del Plan General Contable 2008. "
-#~ msgstr "General "
-
-#, fuzzy
-#~ msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
-#~ msgstr "General "
-
-#, fuzzy
-#~ msgid "Cuentas Anuales para PYMES 2008. "
-#~ msgstr "Comptes anuals"
-
-#, fuzzy
-#~ msgid "Cuentas a&nuales"
-#~ msgstr "Comptes anuals"
-
-#, fuzzy
-#~ msgid "Datos bancarios:"
-#~ msgstr "Dades incompletes"
-
-#, fuzzy
-#~ msgid "Datos de comercio electronico:"
-#~ msgstr "Correo electrònic:"
-
-#, fuzzy
-#~ msgid "Duplicar asiento"
-#~ msgstr "Desvincula assentament"
-
-#, fuzzy
-#~ msgid "ERROR: Debe introducir una fecha en el balance actual."
-#~ msgstr "Deure Data."
-
-#, fuzzy
-#~ msgid "ERROR: Debe introducir una fecha en el balance anterior."
-#~ msgstr "Deure Data."
-
-#, fuzzy
-#~ msgid "ERROR: No se ha podido crear el archivo"
-#~ msgstr "No s'ha pogut esborrar"
-
-#, fuzzy
-#~ msgid "Editar Profesor"
-#~ msgstr "Edita"
-
-#, fuzzy
-#~ msgid "Ejercicio N"
-#~ msgstr "Exercici"
-
-#, fuzzy
-#~ msgid "Ejercicio N-1"
-#~ msgstr "Exercici"
-
-#, fuzzy
-#~ msgid "Ejercicio actual:"
-#~ msgstr "Exercici"
-
-#, fuzzy
-#~ msgid "Ejercicio anterior:"
-#~ msgstr "Exercicis ja contemplats"
-
-#~ msgid "EmitirRecibos"
-#~ msgstr "Emet rebuts"
-
-#~ msgid "Empresa:"
-#~ msgstr "Empresa:"
-
-#, fuzzy
-#~ msgid "Facturacion GPL"
-#~ msgstr "Factura"
-
-#, fuzzy
-#~ msgid "Facturacion GPL - Version 0.10.1 -"
-#~ msgstr "Facturació GPL - Versió 0.11.1 -"
-
-#~ msgid "Facturacion GPL - Version 0.11.1 -"
-#~ msgstr "Facturació GPL - Versió 0.11.1 -"
-
-#, fuzzy
-#~ msgid "Fecha balance:"
-#~ msgstr "Data de l'assentament"
-
-#, fuzzy
-#~ msgid "Fecha de factura:"
-#~ msgstr "Data de compra:"
-
-#, fuzzy
-#~ msgid "Fecha: "
-#~ msgstr "Data:"
-
-#, fuzzy
-#~ msgid "Filtrar Profesores"
-#~ msgstr "Filtrar"
-
-#~ msgid "Forma Pago"
-#~ msgstr "Forma de pagament"
-
-#~ msgid "Gestion"
-#~ msgstr "Gestió"
-
-#, fuzzy
-#~ msgid "Guardar libro diario"
-#~ msgstr "Desa"
-
-#, fuzzy
-#~ msgid "I. Capital."
-#~ msgstr "ID Canal"
-
-#, fuzzy
-#~ msgid "ID Trabajador"
-#~ msgstr "Treballador"
-
-#, fuzzy
-#~ msgid "ID Validacion"
-#~ msgstr "Id amortizació"
-
-#, fuzzy
-#~ msgid "ID componente"
-#~ msgstr "ID compte"
-
-#, fuzzy
-#~ msgid "II. Operaciones de cobertura."
-#~ msgstr "Opcions del compte:"
-
-#, fuzzy
-#~ msgid "Id Albaran"
-#~ msgstr "<HR><B>Tractant l'albarà"
-
-#, fuzzy
-#~ msgid "Id lalbaran"
-#~ msgstr "Imprimeix albarà"
-
-#, fuzzy
-#~ msgid "Idl factura"
-#~ msgstr "Factura"
-
-#, fuzzy
-#~ msgid "Ingresos y gastos imputados directamente al patrimonio neto"
-#~ msgstr "Inc registre"
-
-#~ msgid "Inicializando asientos"
-#~ msgstr "Inicialitzant d'assentaments"
-
-#~ msgid "Inicializando cuentas"
-#~ msgstr "Inicialitzant comptes"
-
-#~ msgid "JULIO"
-#~ msgstr "JULIOL"
-
-#~ msgid "JUNIO"
-#~ msgstr "JUNY"
-
-#, fuzzy
-#~ msgid "Libro &Diario"
-#~ msgstr "Desar el Llibre diari"
-
-#, fuzzy
-#~ msgid "Modificadores"
-#~ msgstr "identificador"
-
-#, fuzzy
-#~ msgid "Modificadores de Articulo"
-#~ msgstr "Tipus d'IVA"
-
-#, fuzzy
-#~ msgid "NOVIEMBRE"
-#~ msgstr "NOM"
-
-#, fuzzy
-#~ msgid "Nombre Modificador"
-#~ msgstr "identificador"
-
-#, fuzzy
-#~ msgid "Nombre comercial:"
-#~ msgstr "Nom del compte"
-
-#, fuzzy
-#~ msgid "Nuevo Profesor"
-#~ msgstr "Nou"
-
-#, fuzzy
-#~ msgid "Numero de factura:"
-#~ msgstr "Nombre de quotes"
-
-#, fuzzy
-#~ msgid "Numero de presupuesto:"
-#~ msgstr "Tractant el pressupost"
-
-#~ msgid "Nº Socio"
-#~ msgstr "Num. Soci"
-
-#, fuzzy
-#~ msgid "OCTUBRE"
-#~ msgstr "NOM"
-
-#, fuzzy
-#~ msgid "PGC &Anterior 2008"
-#~ msgstr "Anterior"
-
-#~ msgid "Pegar desde Hoja de Calculo"
-#~ msgstr "Pegar desde Hoja de Calculo"
-
-#, fuzzy
-#~ msgid "Peso Unidad"
-#~ msgstr "Personalitzada"
-
-#, fuzzy
-#~ msgid "Porcentaje de facturacion"
-#~ msgstr "Percentatge de càrrega..."
-
-#, fuzzy
-#~ msgid "Regimen fiscal:"
-#~ msgstr "Assentament final:"
-
-#, fuzzy
-#~ msgid "Relacion"
-#~ msgstr "Regularització"
-
-#, fuzzy
-#~ msgid "TOTAL DE INGRESOS Y GASTOS RECONOCIDOS (A+ B +C)"
-#~ msgstr "C"
-
-#, fuzzy
-#~ msgid "TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)"
-#~ msgstr "C"
-
-#, fuzzy
-#~ msgid "Telefono del trabajo:"
-#~ msgstr "Telèfon del proveïdor"
-
-#, fuzzy
-#~ msgid "VII. Resultado del ejercicio."
-#~ msgstr "Estat."
-
-#~ msgid "Volumen Unidad"
-#~ msgstr "Volum Unitat"
-
-#, fuzzy
-#~ msgid "a) Ingresos accesorios y otros de gestion corriente."
-#~ msgstr "Inc registre."
-
-#, fuzzy
-#~ msgid "a) Ventas."
-#~ msgstr "Vendes"
-
-#, fuzzy
-#~ msgid ""
-#~ "b) Imputacion al resultado del ejercicio por activos financieros "
-#~ "disponibles para la venta."
-#~ msgstr "Imputació."
-
-#~ msgid "menuVentana"
-#~ msgstr "menuVentana"

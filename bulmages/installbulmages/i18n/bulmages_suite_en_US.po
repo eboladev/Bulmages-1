@@ -323,13 +323,11 @@ msgid "&Codigo:"
 msgstr "Code:"
 
 #: plugin_tallascolores.cpp:78
-#, fuzzy
 msgid "&Colores"
-msgstr "A&uthors"
+msgstr "&Colors"
 
 #: ui_contratobase.h:490 ui_facturabase.h:713 ui_pedidoclientebase.h:730
 #: ui_albaranproveedorbase.h:628
-#, fuzzy
 msgid "&Comentarios"
 msgstr "&Commentaries:"
 
@@ -338,9 +336,8 @@ msgid "&Comentarios:"
 msgstr "&Commentaries:"
 
 #: pluginbf_comercial.cpp:154
-#, fuzzy
 msgid "&Comercial"
-msgstr "&Commentaries:"
+msgstr "&Commercial:"
 
 #: pluginbf_asociacion.cpp:91
 msgid "&Comisiones"
@@ -349,7 +346,7 @@ msgstr ""
 #: pluginbf_compraventa.cpp:78
 #, fuzzy
 msgid "&CompraVenta"
-msgstr "&Commentaries:"
+msgstr "&Buy and sell:"
 
 #: pluginbf_proveedorpedido.cpp:51 pluginbf_proveedorfactura.cpp:51
 #: pluginbf_carteracobros.cpp:54 pluginbf_proveedorpago.cpp:52
@@ -359,9 +356,8 @@ msgid "&Compras"
 msgstr ""
 
 #: ui_bcasientolistbase.h:465
-#, fuzzy
 msgid "&Concepto:"
-msgstr "Concept"
+msgstr "Concept:"
 
 #: blfunctions.cpp:619 blfunctions.cpp:648 blfunctions.cpp:658
 #: blfunctions.cpp:668

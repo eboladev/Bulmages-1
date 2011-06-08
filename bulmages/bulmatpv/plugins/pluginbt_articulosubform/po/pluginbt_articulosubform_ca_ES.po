@@ -1,23 +1,21 @@
-# translation of bulmages_suite_ca.po to
-# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2011 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:07+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2011-06-08 09:18+0200\n"
+"PO-Revision-Date: 2011-06-08 09:18+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: KBabel 1.11.4\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_articulosubformbase.h:262 ui_articulosubformbase.h:265
 msgid "Actualizar listado"
@@ -34,9 +32,8 @@ msgid "Articulos"
 msgstr "<P> Article <B>"
 
 #: articulolisttpv.cpp:161
-#, fuzzy
 msgid "Borrar articulo"
-msgstr "Esborra amortització"
+msgstr "Esborra article"
 
 #: ui_articulosubformbase.h:269
 msgid "Buscar:"
@@ -51,14 +48,12 @@ msgid "Configurar listado"
 msgstr "Configura llistat"
 
 #: articulolisttpv.cpp:259
-#, fuzzy
 msgid "Descripcion abreviada del articulo"
-msgstr "Descripció de l'amortització"
+msgstr "Descripció de abreviada del'article"
 
 #: articulolisttpv.cpp:261
-#, fuzzy
 msgid "Descripcion del tipo de articulo"
-msgstr "Descripció de l'assentament"
+msgstr "Descripció del tipus d'article"
 
 #: articulolisttpv.cpp:262
 #, fuzzy
@@ -70,9 +65,12 @@ msgid "Disponible en stock"
 msgstr "Disposable en estoc"
 
 #: articulolisttpv.cpp:160
-#, fuzzy
 msgid "Editar articulo"
-msgstr "<HR><B>Tractant Article"
+msgstr "Edita article"
+
+#: articulolisttpv.cpp:66
+msgid "Error en plugin"
+msgstr ""
 
 #: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 #, fuzzy

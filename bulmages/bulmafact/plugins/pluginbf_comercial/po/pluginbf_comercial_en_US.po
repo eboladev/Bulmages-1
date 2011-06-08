@@ -99,13 +99,8 @@ msgid "Comentario de la incidencia comercial"
 msgstr "Commentaries of the seat"
 
 #: incidenciacomercial.cpp:45 rutacomercial.cpp:45
-#, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: ui_comercialclientebase.h:140
 #, fuzzy
@@ -115,12 +110,12 @@ msgstr "Commercial name:"
 #: pluginbf_comercial.cpp:149
 #, fuzzy
 msgid "Comentarios para el comercial"
-msgstr "Commentaries of the seat"
+msgstr "Commentaries for the comercial"
 
 #: rutacomerciallist.cpp:301
 #, fuzzy
 msgid "Comentarios ruta comercial"
-msgstr "Commentaries of the seat"
+msgstr "Commentaries of commercial route"
 
 #: ui_incidenciacomercialbase.h:285 ui_rutacomercialbase.h:230
 msgid "Comentarios:"

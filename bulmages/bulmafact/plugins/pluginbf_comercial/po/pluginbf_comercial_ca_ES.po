@@ -18,20 +18,6 @@ msgstr ""
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta"
 
 #: incidenciacomercialview.cpp:106 ui_listzonacomercialbase.h:86
 #: ui_rutacomercialincbase.h:237 ui_rutacomerciallistbase.h:349
@@ -105,18 +91,12 @@ msgid "Cliente:"
 msgstr "Client:"
 
 #: rutacomerciallist.cpp:303
-#, fuzzy
 msgid "Comentario de la incidencia comercial"
-msgstr "Comentaris de l'assentament"
+msgstr "Comentaris de l'incidencia comercial"
 
 #: incidenciacomercial.cpp:45 rutacomercial.cpp:45
-#, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentari\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaris"
+msgstr "Comentaris"
 
 #: ui_comercialclientebase.h:140
 #, fuzzy
@@ -124,23 +104,20 @@ msgid "Comentarios comerciales:"
 msgstr "Comentaris:"
 
 #: pluginbf_comercial.cpp:149
-#, fuzzy
 msgid "Comentarios para el comercial"
-msgstr "Comentaris de l'assentament"
+msgstr "Comentaris per el comercial"
 
 #: rutacomerciallist.cpp:301
-#, fuzzy
 msgid "Comentarios ruta comercial"
-msgstr "Comentaris"
+msgstr "Comentaris ruta comercial"
 
 #: ui_incidenciacomercialbase.h:285 ui_rutacomercialbase.h:230
 msgid "Comentarios:"
 msgstr "Comentaris:"
 
 #: ui_comercialclientebase.h:136
-#, fuzzy
 msgid "Datos comerciales:"
-msgstr "&Dades comptables"
+msgstr "&Dades comercials"
 
 #: rutacomercialincview.cpp:80
 msgid "Desea borrar esta ruta?"
@@ -151,9 +128,8 @@ msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
 #: ui_rutacomerciallistbase.h:310 ui_rutacomerciallistbase.h:313
-#, fuzzy
 msgid "Editar Pedido"
-msgstr "Edita"
+msgstr "Edita comanda"
 
 #: incidenciacomercial.cpp:46
 msgid "Estado"

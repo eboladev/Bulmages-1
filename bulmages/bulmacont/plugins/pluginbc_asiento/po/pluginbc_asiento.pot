@@ -8,12 +8,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:43+0200\n"
+"POT-Creation-Date: 2011-06-08 09:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: bcasientolistview.cpp:44
@@ -45,7 +45,7 @@ msgid "&Asiento"
 msgstr ""
 
 #: pluginbc_asiento.cpp:66
-msgid "&Asiento Contable"
+msgid "&Asiento contable"
 msgstr ""
 
 #: pluginbc_asiento.cpp:67
@@ -57,7 +57,7 @@ msgid "Podra disponer de la informacion del asiento"
 msgstr ""
 
 #: pluginbc_asiento.cpp:75
-msgid "&Lista de Asientos Contables"
+msgid "&Lista de asientos contables"
 msgstr ""
 
 #: pluginbc_asiento.cpp:76 pluginbc_asiento.cpp:77
@@ -65,7 +65,7 @@ msgid "Permite ver el listado de asientos"
 msgstr ""
 
 #: pluginbc_asiento.cpp:85
-msgid "&Espaciar Asientos Contables"
+msgid "&Espaciar asientos contables"
 msgstr ""
 
 #: pluginbc_asiento.cpp:86 pluginbc_asiento.cpp:87
@@ -73,7 +73,7 @@ msgid "Ordena los asientos dejando espacios entre ellos"
 msgstr ""
 
 #: pluginbc_asiento.cpp:92
-msgid "&Reordenar Asientos Contables"
+msgid "&Reordenar asientos contables"
 msgstr ""
 
 #: pluginbc_asiento.cpp:93 pluginbc_asiento.cpp:94
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Asiento de a&pertura"
 msgstr ""
 
-#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
+#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102 bcasientoview.cpp:1145
 msgid "Asiento de apertura"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Asiento de &cierre"
 msgstr ""
 
-#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
+#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108 bcasientoview.cpp:1076
 msgid "Asiento de cierre"
 msgstr ""
 
@@ -305,7 +305,15 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: bcasientoview.cpp:952
+#: bcasientoview.cpp:529
+msgid "No existe ningun asiento para mostrar"
+msgstr ""
+
+#: bcasientoview.cpp:912
+msgid "Fecha inicial = '$1', fecha final = '$2'."
+msgstr ""
+
+#: bcasientoview.cpp:953
 msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
 msgstr ""
 
@@ -322,7 +330,7 @@ msgid "Error al crear el asiento"
 msgstr ""
 
 #: bcasientoform.cpp:42
-msgid "Asiento Contable"
+msgid "Asiento contable"
 msgstr ""
 
 #: bcasientoform.cpp:46
@@ -345,20 +353,32 @@ msgstr ""
 msgid "Tipo de asiento"
 msgstr ""
 
-#: bcasientoform.cpp:162 ui_bcasientobase.h:531 ui_bcasientobase.h:534
+#: bcasientoform.cpp:170 ui_bcasientobase.h:531 ui_bcasientobase.h:534
 msgid "Borrar asiento"
 msgstr ""
 
-#: bcasientoform.cpp:163
-msgid "Se va a borrar el asiento. Esta seguro?"
+#: bcasientoform.cpp:171
+msgid "Se va a borrar el asiento. ¿Esta seguro?"
 msgstr ""
 
-#: bcasientoform.cpp:415
+#: bcasientoform.cpp:344
+msgid "Asiento no abierto"
+msgstr ""
+
+#: bcasientoform.cpp:351
+msgid "No hay asiento"
+msgstr ""
+
+#: bcasientoform.cpp:427
 msgid "El asiento se ha guardado correctamente."
 msgstr ""
 
+#: bcasientoform.cpp:432
+msgid "Error en el guardardo"
+msgstr ""
+
 #: ui_bcasientointeligentebase.h:210
-msgid "Aplicar Asiento Inteligente"
+msgid "Aplicar asiento inteligente"
 msgstr ""
 
 #: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
@@ -512,7 +532,7 @@ msgid "Importar asiento"
 msgstr ""
 
 #: ui_bcasientobase.h:553 ui_bcasientobase.h:556
-msgid "Asientos Inteligentes"
+msgid "Asientos inteligentes"
 msgstr ""
 
 #: ui_bcasientobase.h:559
