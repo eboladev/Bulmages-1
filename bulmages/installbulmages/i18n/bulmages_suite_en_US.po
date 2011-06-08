@@ -6380,18 +6380,16 @@ msgid "Extender asiento"
 msgstr "Extend seat"
 
 #: pluginbf_asterisk.cpp:131
-#, fuzzy
 msgid "Extension."
-msgstr "Extend seat"
+msgstr "Extension."
 
 #: bcextractoview.cpp:52 ui_bcextractobase.h:714
 msgid "Extracto de Cuentas"
 msgstr "Extract of Accounts"
 
 #: alumnoslist.cpp:352
-#, fuzzy
 msgid "F. Nacimiento"
-msgstr "&Date of the seat:"
+msgstr "Birth Date"
 
 #: ui_bcbulmacontbase.h:276 ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -6402,7 +6400,6 @@ msgid "F11"
 msgstr "F11"
 
 #: ui_bcplancontablelistbase.h:347
-#, fuzzy
 msgid "F3"
 msgstr "F3"
 

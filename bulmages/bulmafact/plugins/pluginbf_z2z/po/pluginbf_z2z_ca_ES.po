@@ -1,32 +1,33 @@
-# translation of bulmages_suite_ca.po to
-# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+# Spanish translations for pluginbf_z package
+# Traducciones al español para el paquete pluginbf_z.
+# Copyright (C) 2011 THE pluginbf_z'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the pluginbf_z package.
+# Automatically generated, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: pluginbf_z 2z\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2011-06-08 09:17+0200\n"
+"PO-Revision-Date: 2011-06-08 09:17+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_z2zbase.h:384
-#, fuzzy
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepta"
 
 #: ui_z2zbase.h:385
-#, fuzzy
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancel·la"
 
 #: ui_z2zbase.h:391
-#, fuzzy
 msgid "&Detalle"
-msgstr "&Detalls"
+msgstr "&Detall"
 
 #: pluginbf_z2z.cpp:55
 msgid "&Herramientas"
@@ -37,9 +38,8 @@ msgid "&Traspaso de Z"
 msgstr ""
 
 #: ui_z2zbase.h:394
-#, fuzzy
 msgid "1"
-msgstr "F1"
+msgstr "1"
 
 #: ui_z2zbase.h:371 ui_z2zbase.h:374
 #, fuzzy
@@ -95,14 +95,12 @@ msgid "Referencias"
 msgstr ""
 
 #: ui_z2zbase.h:387
-#, fuzzy
 msgid "Total Tickets"
-msgstr "Totals:"
+msgstr "Total tickets"
 
 #: ui_z2zbase.h:388
-#, fuzzy
 msgid "Total Traspasable"
-msgstr "Total Haver:"
+msgstr "Total traspassable"
 
 #: ui_z2zbase.h:389
 msgid "Total aprox a Traspasar"

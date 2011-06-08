@@ -12,12 +12,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: KBabel 1.11.4\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_tecladonumericobase.h:380
 msgid "+"
@@ -109,6 +103,3 @@ msgstr "PREU"
 msgid "Teclado Numerico"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Teclado"
-#~ msgstr "Resultat"

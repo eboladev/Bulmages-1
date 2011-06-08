@@ -12,12 +12,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: KBabel 1.11.4\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_btaboutbase.h:286
 msgid "&Acerca de"
@@ -331,68 +325,3 @@ msgstr ""
 msgid "Ventana Completa"
 msgstr ""
 
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "00"
-#~ msgstr "00"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#, fuzzy
-#~ msgid "2"
-#~ msgstr "F2"
-
-#, fuzzy
-#~ msgid "5"
-#~ msgstr "F5"
-
-#~ msgid "<p align=\"right\">Codigo</p>"
-#~ msgstr "<p align=\"right\">Codigo</p>"
-
-#~ msgid "<p align=\"right\">Total:</p>"
-#~ msgstr "<p align=\"right\">Total:</p>"
-
-#, fuzzy
-#~ msgid "Acerca de BulmaFact"
-#~ msgstr "Quant a BulmaCont"
-
-#~ msgid "BORRAR"
-#~ msgstr "ESBORRA"
-
-#~ msgid "BulmaTPV"
-#~ msgstr "BulmaTPV"
-
-#, fuzzy
-#~ msgid "Cambio Operador"
-#~ msgstr "Importa dades"
-
-#~ msgid "Codigo"
-#~ msgstr "Codi"
-
-#, fuzzy
-#~ msgid "Id Albaran"
-#~ msgstr "<HR><B>Tractant l'albarà"
-
-#, fuzzy
-#~ msgid "Id lalbaran"
-#~ msgstr "Imprimeix albarà"
-
-#, fuzzy
-#~ msgid "Seleccion Cliente"
-#~ msgstr "<HR><B>Tractant comana del client"
-
-#, fuzzy
-#~ msgid "Sobre BulmaTPV"
-#~ msgstr "BulmaTPV"
-
-#, fuzzy
-#~ msgid "Terminal Punto de Venta GPL - Version 0.13.0 -"
-#~ msgstr "Terminal Punto de Venta GPL - Versió 0.13.0 -"
-
-#~ msgid "pushButton18"
-#~ msgstr "pushButton18"
