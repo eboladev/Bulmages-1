@@ -38,6 +38,7 @@ Pulsera::Pulsera(BtTicket *tick, const QString nombres, BlDbRecord *linea, const
   m_horafinal = QDateTime::currentDateTime ();
   g_pulseras.append(this);
   m_lineaticket = linea;
+  m_lineaticketfraccion = NULL;
   
 }
 

@@ -33,7 +33,10 @@
 
 #include <QHBoxLayout>
 
-#define ARTICULO_FRACCION_HORA "32"
+#define ARTICULO_HORA_COMPLETA "31"
+#define ARTICULO_HORA_FRACCION "32"
+#define MINUTOS_INICIALES 6
+#define MINUTOS_FRACCION 2
 
 
 BtCompany *g_emp;
@@ -117,7 +120,7 @@ int BlToolButton_released(BlToolButton *toolbutton) {
     if (nomticket != "") {
 	if (toolbutton->objectName() == "mui_pulseramas") {
 	    /// Agregar pulsera al ticket actual.
-	    BlDbRecord *lineaticket = g_emp->ticketActual()->insertarArticulo ( ARTICULO_FRACCION_HORA, BlFixed("1"), TRUE );
+	    BlDbRecord *lineaticket = g_emp->ticketActual()->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
 	    Pulsera *pul = new Pulsera(g_emp->ticketActual(), entrada, lineaticket);
 	    g_emp->ticketActual()->pintar();
 	    /// Borra el valor del Input.
@@ -171,16 +174,32 @@ int BtCompany_cobrar(BtCompany *emp) {
 
 
 int BtTicket_pintar(BtTicket *tick) {
-    /// Facturamos todas las pulseras del ticket
-    for ( int i = 0; i < g_pulseras.size(); ++i ) {
-	Pulsera * pul = g_pulseras.at(i);
-	if (pul->m_ticketpulsera == tick) {
-	    int fracciones15minutos = (pul->m_horainicial.secsTo(QDateTime::currentDateTime ()) + 1) / (60 * 15) + 1;
-	    pul->m_lineaticket->setDbValue("cantlalbaran", QString::number(fracciones15minutos));	    
-	    pul->m_lineaticket->setDbValue("desclalbaran", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m"));
-	    pul->m_lineaticket->setDbValue("nomarticulo", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
-	} // end if
-    } // end for  
+    static int semaforo = 0;
+  
+    if (semaforo == 0) {
+	/// Facturamos todas las pulseras del ticket.
+	for ( int i = 0; i < g_pulseras.size(); ++i ) {
+	    Pulsera * pul = g_pulseras.at(i);
+	    if (pul->m_ticketpulsera == tick) {
+		semaforo = 1;
+		int minutos = (pul->m_horainicial.secsTo(QDateTime::currentDateTime ()) + 1) / 60;
+		pul->m_lineaticket->setDbValue("desclalbaran", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m"));
+		pul->m_lineaticket->setDbValue("nomarticulo", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
+
+		/// Superada la primera hora empiezan las fracciones de 15 minutos.
+		if (minutos > MINUTOS_INICIALES) {
+		  if (!pul->m_lineaticketfraccion) {
+		    pul->m_lineaticketfraccion = tick->insertarArticulo ( ARTICULO_HORA_FRACCION, BlFixed("1"), TRUE );
+		  } // end if
+		  int fracciones15minutos = (pul->m_horainicial.secsTo(QDateTime::currentDateTime ()) + 1) / (60 * MINUTOS_FRACCION) - 3;
+		  pul->m_lineaticketfraccion->setDbValue("cantlalbaran", QString::number(fracciones15minutos));	
+		  pul->m_lineaticketfraccion->setDbValue("desclalbaran", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m"));
+		  pul->m_lineaticketfraccion->setDbValue("nomarticulo", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
+		} // end if
+	    } // end if
+	} // end for  
+	semaforo = 0;
+    } // end if
 }
 
 
