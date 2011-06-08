@@ -35,7 +35,7 @@
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -47,12 +47,15 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
 
 
 int BtCompany_cobrar ( BtCompany *etpv )
 {
+    blDebug ( Q_FUNC_INFO, 0 );
 
     /// Comprueba que el ticket no este vacio.
     if (etpv->ticketActual()->listaLineas()->count() == 0) {
@@ -63,11 +66,7 @@ int BtCompany_cobrar ( BtCompany *etpv )
     QDialog *diag = new QDialog;
     Cambio *camb = new Cambio ( etpv, diag );
 
-
     diag->setModal ( true );
-
-//    TipoArticuloList *tip = ( ( BfCompany * ) mainCompany() ) ->newTipoArticuloList ( diag, TRUE );
-//    connect ( tip, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
@@ -84,12 +83,16 @@ int BtCompany_cobrar ( BtCompany *etpv )
 
     delete diag;
 
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return valor;
 }
 
-int BtTicket_BtTicket_Post(BtTicket *tick) {
+
+int BtTicket_BtTicket_Post(BtTicket *tick) 
+{
+    blDebug ( Q_FUNC_INFO, 0 );
     tick->addDbField ( "pagado", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Pagado" ) );
     tick->addDbField ( "cambio", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Cambio" ) );
-
+    blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }

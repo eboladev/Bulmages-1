@@ -120,18 +120,28 @@ void Trabajadores::trabajadorClicked()
 	    toolx->setEnabled(TRUE);
 	} // end if	
 
-	
+	QToolButton *toolborraticket = g_main->findChild<QToolButton *> ( "mui_borrarticket" );
+	if (toolborraticket) {
+	    toolborraticket->setEnabled(TRUE);
+	} // end if
+
       } else {
+
 	QToolButton *toolz = g_main->findChild<QToolButton *> ( "mui_z" );
 	if (toolz) {
 	    toolz->setEnabled(FALSE);
-	} // end if
-
+	} // end if	
+	
 	QToolButton *toolx = g_main->findChild<QToolButton *> ( "mui_x" );
 	if (toolx) {
 	    toolx->setEnabled(FALSE);
 	} // end if	
 
+
+	QToolButton *toolborraticket = g_main->findChild<QToolButton *> ( "mui_borrarticket" );
+	if (toolborraticket) {
+	    toolborraticket->setEnabled(FALSE);
+	} // end if
 	
       } // end if
       

@@ -11,6 +11,8 @@ typedef QMap<QString, BlFixed> base;
 
 Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
+    blDebug ( Q_FUNC_INFO, 0 );
+    
     setupUi ( this );
 
     m_value = 0;
@@ -103,38 +105,57 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 
     mui_total->setText ( total.toQString() );
 
+    blDebug ( QString("END ") + Q_FUNC_INFO, 0 );
 }
 
 
 Cambio::~Cambio()
-{}
+{
+    blDebug ( Q_FUNC_INFO, 0 );
+    blDebug ( QString("END ") + Q_FUNC_INFO, 0 );
+}
 
 
 void Cambio::on_mui_pago_textChanged()
 {
+    blDebug ( Q_FUNC_INFO, 0 );
     BlFixed total ( mui_total->text().replace ( ",", "." ) );
     BlFixed pago ( mui_pago->text().replace ( ",", "." ) );
     BlFixed cambio = pago - total;
     mui_cambio->setText ( cambio.toQString() );
+    blDebug ( QString("END ") + Q_FUNC_INFO, 0 );
 }
 
 
 void Cambio::on_mui_cancelar_clicked()
 {
+    blDebug ( Q_FUNC_INFO, 0 );
+    
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->agregarLog(_("CANCELAR COBRO"));
+    
     m_value = -1;
     ( ( QDialog * ) parent() )->accept();
+    blDebug ( QString("END ") + Q_FUNC_INFO, 0 );
 }
 
 void Cambio::on_mui_cobrar_clicked()
 {
+    blDebug ( Q_FUNC_INFO, 0 );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->agregarLog(_("COBRO EFECTIVO"));
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->agregarLog(_("PAGADO") + mui_pago->text());
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->agregarLog(_("CAMBIO") + mui_cambio->text());
     ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "pagado", mui_pago->text() );
     ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "cambio", mui_cambio->text() );
     ( ( QDialog * ) parent() )->accept();
+    blDebug ( QString("END ") + Q_FUNC_INFO, 0 );
 }
 
 void Cambio::on_mui_visa_clicked()
 {
+    blDebug ( Q_FUNC_INFO, 0 );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->agregarLog(_("COBRO VISA"));
     ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", g_confpr->value( CONF_IDFORMA_PAGO_VISA ) );
     ( ( QDialog * ) parent() )->accept();
+    blDebug ( QString("END ") + Q_FUNC_INFO, 0 );
 }
 
