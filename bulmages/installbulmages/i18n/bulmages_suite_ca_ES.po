@@ -4539,9 +4539,8 @@ msgid "Debe parcial:"
 msgstr ""
 
 #: pluginbc_registroiva.cpp:209 regivaqtoolbutton.cpp:96
-#, fuzzy
 msgid "Debe seleccionar un apunte"
-msgstr "Cal triar un compte"
+msgstr "Cal triar un apunt"
 
 #: bancoview.cpp:154
 msgid "Debe seleccionar un banco"
@@ -4552,26 +4551,23 @@ msgid "Debe seleccionar un elemento de la lista"
 msgstr "Ha de seleccionar un element de la llista"
 
 #: tiposarticuloview.cpp:412
-#, fuzzy
 msgid "Debe seleccionar un tipo"
-msgstr "Cal triar un compte"
+msgstr "Cal triar un tipus"
 
 #: bcplancontablelistview.cpp:449 bcplancontablelistview.cpp:475
 msgid "Debe seleccionar una cuenta"
 msgstr "Cal triar un compte"
 
 #: familiasview.cpp:372 familiasview.cpp:519
-#, fuzzy
 msgid "Debe seleccionar una familia"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una familia"
 
 #: tutoreslist.cpp:213 convocatoriaslist.cpp:207 actividadeslist.cpp:222
 #: cobroslist.cpp:255 profesoreslist.cpp:266 jdirectivalist.cpp:216
 #: comisioneslist.cpp:206 convreunionlist.cpp:206 alumnoslist.cpp:276
 #: reciboslist.cpp:277
-#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una fila primer"
 
 #: facturaslist.cpp:298 pedidosproveedorlist.cpp:211 facturasplist.cpp:252
 #: tutoreslist.cpp:171 convocatoriaslist.cpp:166 actividadeslist.cpp:178
@@ -4581,7 +4577,6 @@ msgstr "Cal triar un compte"
 #: pedidosclientelist.cpp:271 albaranesproveedor.cpp:342
 #: ticketclientelist.cpp:322 alumnoslist.cpp:234 reciboslist.cpp:234
 #: albaranclientelist.cpp:322
-#, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 

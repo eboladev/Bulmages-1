@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,9 +197,8 @@ msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
 #: ticketclientelist.cpp:322
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linea"
 
 #: ticketclienteview.cpp:80 bfclientealbaransubform.cpp:49
 #: ticketclientelist.cpp:425
@@ -257,6 +256,8 @@ msgid ""
 "Existe una albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
+"Hi ha un albarà a aquest client amb la mateixa referència que aquesta "
+"comanda. Desitgeu obrir-lo per verificar?"
 
 #: ui_ticketclientelistbase.h:510
 msgid "F5"
@@ -528,7 +529,7 @@ msgstr "Totals:"
 
 #: bfclientealbaransubform.cpp:53
 msgid "Total Linea"
-msgstr ""
+msgstr "Total Línia"
 
 #: ui_ticketclientebase.h:787
 #, fuzzy

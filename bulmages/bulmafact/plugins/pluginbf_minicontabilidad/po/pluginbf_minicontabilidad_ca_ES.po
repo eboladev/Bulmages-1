@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:06+0200\n"
+"POT-Creation-Date: 2011-06-08 11:15+0200\n"
 "PO-Revision-Date: 2010-07-28 17:47+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
@@ -55,7 +55,7 @@ msgstr "Anotacions comptables"
 msgid "Apuntes Contables"
 msgstr "Apunts comptables"
 
-#: partidasview.cpp:437 ui_presupuestocontablelistbase.h:255
+#: partidasview.cpp:441 ui_presupuestocontablelistbase.h:255
 #: ui_presupuestocontablelistbase.h:258
 msgid "Borrar"
 msgstr "Esborra"
@@ -86,7 +86,7 @@ msgid "C.I.F."
 msgstr "C.I.F."
 
 #: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
-#: partidasview.cpp:50 partidasview.cpp:527
+#: partidasview.cpp:50 partidasview.cpp:532
 msgid "Codigo"
 msgstr "Codi"
 
@@ -143,7 +143,7 @@ msgstr "Ctrl+S"
 msgid "Datos &generales"
 msgstr "Dades &generals"
 
-#: partidasview.cpp:341 partidasview.cpp:463
+#: partidasview.cpp:345 partidasview.cpp:468
 msgid "Debe seleccionar una partida"
 msgstr "Heu de seleccionar una partida"
 
@@ -155,11 +155,11 @@ msgstr "Descripció"
 msgid "Descripcion:"
 msgstr "Descripció"
 
-#: partidasview.cpp:438
+#: partidasview.cpp:442
 msgid "Desea eliminar"
 msgstr "Desitgeu eliminar"
 
-#: partidasview.cpp:319
+#: partidasview.cpp:323
 msgid "Desea guardar los cambios?"
 msgstr "Desitgeu desar els canvis?"
 
@@ -179,7 +179,7 @@ msgstr "Edita"
 msgid "Editar presupuestocontable"
 msgstr "Edita pressupost comptable"
 
-#: partidasview.cpp:477
+#: partidasview.cpp:482
 msgid "Error al borrar la partida"
 msgstr "Error en esborrar la partida"
 
@@ -195,11 +195,11 @@ msgstr "Error en crear el pressupost"
 msgid "Error al crear el recibo"
 msgstr "Error en crear el rebut"
 
-#: partidasview.cpp:424
+#: partidasview.cpp:428
 msgid "Error al crear la partida"
 msgstr "Error en crear la partida"
 
-#: partidasview.cpp:365
+#: partidasview.cpp:369
 msgid "Error al guardar la partida"
 msgstr "Error en desar la partida"
 
@@ -219,7 +219,7 @@ msgstr "Filtra llistat"
 msgid "Gasto"
 msgstr "Despesa"
 
-#: pluginbf_minicontabilidad.cpp:390 pluginbf_minicontabilidad.cpp:405
+#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:406
 msgid "Gestionar partidas"
 msgstr "Gestiona partides"
 
@@ -231,7 +231,7 @@ msgstr "Desa Partida"
 msgid "Guardar cobro"
 msgstr "Desa cobrament"
 
-#: partidasview.cpp:318
+#: partidasview.cpp:322
 msgid "Guardar partida"
 msgstr "Desa partida"
 
@@ -295,7 +295,7 @@ msgstr "Mostrar / Amaga detall"
 msgid "Mostrar/Ocultar cabecera"
 msgstr "Mostrar/Amagar capçalera"
 
-#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:528
+#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:533
 msgid "Nombre"
 msgstr "Nom"
 
@@ -355,7 +355,7 @@ msgstr "&Llistats"
 msgid "Saldo"
 msgstr "Saldo"
 
-#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:407
+#: pluginbf_minicontabilidad.cpp:392 pluginbf_minicontabilidad.cpp:408
 msgid "Seleccionar partida"
 msgstr "Selecciona partida"
 
@@ -363,7 +363,7 @@ msgstr "Selecciona partida"
 msgid "Selector de presupuesto contable"
 msgstr "Selector de pressupost comptable"
 
-#: partidasview.cpp:447
+#: partidasview.cpp:452
 msgid "no se ha podido borrar"
 msgstr "No s'ha pogut esborrar"
 
@@ -468,14 +468,6 @@ msgstr "No s'ha pogut esborrar"
 #~ msgstr "Ctrl+N"
 
 #, fuzzy
-#~ msgid "Debe seleccionar un tipo"
-#~ msgstr "Cal triar un compte"
-
-#, fuzzy
-#~ msgid "Debe seleccionar una familia"
-#~ msgstr "Cal triar un compte"
-
-#, fuzzy
 #~ msgid "Descripcio&n"
 #~ msgstr "Descripció"
 
@@ -486,10 +478,6 @@ msgstr "No s'ha pogut esborrar"
 #, fuzzy
 #~ msgid "Descripcion del tipo de articulo"
 #~ msgstr "Descripció de l'assentament"
-
-#, fuzzy
-#~ msgid "Descripcion tipo de I.V.A."
-#~ msgstr "Descripció del compte"
 
 #~ msgid "Disponible en stock"
 #~ msgstr "Disposable en estoc"

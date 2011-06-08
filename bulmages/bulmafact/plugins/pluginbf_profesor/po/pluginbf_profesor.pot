@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: profesoreslist.cpp:205 ui_profesoreslistbase.h:309
-msgid "Monitores"
+#: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: ui_profesoreslistbase.h:309
+msgid "Profesores"
 msgstr ""
 
 #: profesoreslist.cpp:223
@@ -66,10 +67,6 @@ msgstr ""
 
 #: pluginbf_profesor.cpp:63
 msgid "&Profesores"
-msgstr ""
-
-#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
-msgid "Profesores"
 msgstr ""
 
 #: pluginbf_profesor.cpp:72
@@ -190,8 +187,7 @@ msgid "Cobros efectivos"
 msgstr ""
 
 #: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
-#: ui_profesorbase.h:467
-msgid "Nuevo Monitor"
+msgid "Nuevo Profesor"
 msgstr ""
 
 #: ui_profesoreslistbase.h:323
@@ -199,7 +195,7 @@ msgid "Ctrl+N"
 msgstr ""
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
-msgid "Editar Monitor"
+msgid "Editar Profesor"
 msgstr ""
 
 #: ui_profesoreslistbase.h:331
@@ -207,7 +203,7 @@ msgid "Ctrl+E"
 msgstr ""
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
-msgid "Borrar Monitor"
+msgid "Borrar Profesor"
 msgstr ""
 
 #: ui_profesoreslistbase.h:339 ui_profesorbase.h:493
@@ -223,7 +219,7 @@ msgid "Ctrl+P"
 msgstr ""
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
-msgid "Filtrar Monitores"
+msgid "Filtrar Profesores"
 msgstr ""
 
 #: ui_profesoreslistbase.h:355
@@ -282,6 +278,10 @@ msgstr ""
 
 #: ui_aboutfapacbase.h:155
 msgid "Cerrar"
+msgstr ""
+
+#: ui_profesorbase.h:467
+msgid "Nuevo Monitor"
 msgstr ""
 
 #: ui_profesorbase.h:479 ui_profesorbase.h:482

@@ -202,7 +202,7 @@ void ProfesoresList::imprimir()
 {
     blDebug ( Q_FUNC_INFO, 0 );
     
-    mui_list->printPDF ( _ ( "Monitores" ) );
+    mui_list->printPDF ( _ ( "Profesores" ) );
     
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

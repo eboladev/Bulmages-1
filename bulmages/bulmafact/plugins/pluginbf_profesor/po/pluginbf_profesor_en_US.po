@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -89,8 +89,9 @@ msgid "Barcelona"
 msgstr "Erase account"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
-msgid "Borrar Monitor"
-msgstr ""
+#, fuzzy
+msgid "Borrar Profesor"
+msgstr "Erase supplier"
 
 #: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
 #: ui_profesorbase.h:498
@@ -213,8 +214,9 @@ msgid "Direccion:"
 msgstr "Address:"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
-msgid "Editar Monitor"
-msgstr ""
+#, fuzzy
+msgid "Editar Profesor"
+msgstr "Publish article"
 
 #: profesoreslist.cpp:285
 #, fuzzy
@@ -283,8 +285,9 @@ msgid "Fecha inicial:"
 msgstr "Initial &date:"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
-msgid "Filtrar Monitores"
-msgstr ""
+#, fuzzy
+msgid "Filtrar Profesores"
+msgstr "Filter listing"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
@@ -326,10 +329,6 @@ msgstr ""
 msgid "Monitor"
 msgstr ""
 
-#: profesoreslist.cpp:205 ui_profesoreslistbase.h:309
-msgid "Monitores"
-msgstr ""
-
 #: profesorview.cpp:63
 #, fuzzy
 msgid "Movil del profesor"
@@ -348,10 +347,14 @@ msgstr "Complete name:"
 msgid "Nombre del profesor"
 msgstr "Name of the supplier"
 
-#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:467
 msgid "Nuevo Monitor"
 msgstr ""
+
+#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
+#, fuzzy
+msgid "Nuevo Profesor"
+msgstr "New &supplier..."
 
 #: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
 #, fuzzy
@@ -388,7 +391,8 @@ msgstr "Population:"
 msgid "Precio"
 msgstr "Price"
 
-#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: ui_profesoreslistbase.h:309
 #, fuzzy
 msgid "Profesores"
 msgstr "Suppliers"
@@ -420,8 +424,15 @@ msgid "Telefono movil:"
 msgstr "Telephone mobil:"
 
 #: profesorview.cpp:125
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo.\n"
+"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"You have to save the document before being able to print it.\n"
+"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo."
 
 #: profesorview.cpp:84
 msgid "Tipo"

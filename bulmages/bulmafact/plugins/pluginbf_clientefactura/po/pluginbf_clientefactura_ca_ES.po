@@ -278,9 +278,8 @@ msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
 #: facturaslist.cpp:298
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linea"
 
 #: ui_facturabase.h:712 ui_pedidoclientebase.h:729
 #, fuzzy

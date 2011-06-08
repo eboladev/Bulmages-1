@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -413,24 +413,3 @@ msgstr "Trabajador"
 #: ui_cobrobase.h:415
 msgid "Trabajador:"
 msgstr "Trabajador:"
-
-#~ msgid "&Cobros a clientes"
-#~ msgstr "&Cobros a clientes"
-
-#~ msgid "&Nuevo cobro a cliente"
-#~ msgstr "&Nuevo cobro a cliente"
-
-#~ msgid "Banco"
-#~ msgstr "Banco"
-
-#~ msgid "Banco:"
-#~ msgstr "Banco:"
-
-#~ msgid "Cobros efectivos"
-#~ msgstr "Cobros efectivos"
-
-#~ msgid "Cobros previstos"
-#~ msgstr "Cobros previstos"
-
-#~ msgid "Provision de fondos"
-#~ msgstr "Provision de fondos"

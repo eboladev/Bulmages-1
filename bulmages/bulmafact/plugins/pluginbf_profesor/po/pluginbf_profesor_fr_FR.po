@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: 2011-02-23 21:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -87,8 +87,8 @@ msgid "Barcelona"
 msgstr "Barcelone"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
-msgid "Borrar Monitor"
-msgstr "Effacer le moniteur"
+msgid "Borrar Profesor"
+msgstr "Effacer le Professeur "
 
 #: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
 #: ui_profesorbase.h:498
@@ -200,8 +200,8 @@ msgid "Direccion:"
 msgstr "Adresse :"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
-msgid "Editar Monitor"
-msgstr "Editer le moniteur"
+msgid "Editar Profesor"
+msgstr "Editer Professeur "
 
 #: profesoreslist.cpp:285
 msgid "Editar profesor"
@@ -252,8 +252,8 @@ msgid "Fecha inicial:"
 msgstr "Date initiale :"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
-msgid "Filtrar Monitores"
-msgstr "Filtrer les moniteurs"
+msgid "Filtrar Profesores"
+msgstr "Filtrer les Professeurs"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
@@ -287,10 +287,6 @@ msgstr "Lleide"
 msgid "Monitor"
 msgstr "Moniteur"
 
-#: profesoreslist.cpp:205 ui_profesoreslistbase.h:309
-msgid "Monitores"
-msgstr "Moniteurs"
-
 #: profesorview.cpp:63
 msgid "Movil del profesor"
 msgstr "Portable du professeur"
@@ -307,10 +303,13 @@ msgstr "Nom complet :"
 msgid "Nombre del profesor"
 msgstr "Nom du professeur"
 
-#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:467
 msgid "Nuevo Monitor"
 msgstr "Nouveau moniteur"
+
+#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
+msgid "Nuevo Profesor"
+msgstr "Nouveau Professeur "
 
 #: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
 msgid "Nuevo profesor"
@@ -344,7 +343,8 @@ msgstr "Ville :"
 msgid "Precio"
 msgstr "Prix"
 
-#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: ui_profesoreslistbase.h:309
 msgid "Profesores"
 msgstr "Professeur"
 
@@ -388,41 +388,3 @@ msgstr "Web du professeur "
 msgid "eMail del profesor"
 msgstr "Courriel du professeur"
 
-#~ msgid "&Monitores"
-#~ msgstr "&Moniteurs"
-
-#~ msgid "&Nuevo Profesor"
-#~ msgstr "&Nouveau Professeur "
-
-#~ msgid "&Nuevo monitor"
-#~ msgstr "&Nouveau moniteur"
-
-#~ msgid "Borrar Profesor"
-#~ msgstr "Effacer le Professeur "
-
-#~ msgid "C.I.F./N.I.F./N.I.E.:"
-#~ msgstr "C.I.F./N.I.F./N.I.E.:"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Données bancaires :"
-
-#~ msgid "Datos de comercio electronico:"
-#~ msgstr "Données de commerce électronique :"
-
-#~ msgid "Editar Profesor"
-#~ msgstr "Editer Professeur "
-
-#~ msgid "Empresa:"
-#~ msgstr "Entreprise :"
-
-#~ msgid "Filtrar Profesores"
-#~ msgstr "Filtrer les Professeurs"
-
-#~ msgid "Nuevo Profesor"
-#~ msgstr "Nouveau Professeur "
-
-#~ msgid "Profesor"
-#~ msgstr "Professeur "
-
-#~ msgid "Telefono del trabajo:"
-#~ msgstr "Téléphone du travail :"

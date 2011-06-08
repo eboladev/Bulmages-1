@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: 2009-10-19 01:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -88,8 +88,8 @@ msgid "Barcelona"
 msgstr "Barcelona"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
-msgid "Borrar Monitor"
-msgstr ""
+msgid "Borrar Profesor"
+msgstr "Borrar profesor"
 
 #: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
 #: ui_profesorbase.h:498
@@ -201,8 +201,8 @@ msgid "Direccion:"
 msgstr "Dirección:"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
-msgid "Editar Monitor"
-msgstr ""
+msgid "Editar Profesor"
+msgstr "Editar profesor"
 
 #: profesoreslist.cpp:285
 msgid "Editar profesor"
@@ -253,8 +253,8 @@ msgid "Fecha inicial:"
 msgstr "Fecha inicial:"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
-msgid "Filtrar Monitores"
-msgstr ""
+msgid "Filtrar Profesores"
+msgstr "Filtrar profesores"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
@@ -288,10 +288,6 @@ msgstr "Lleida"
 msgid "Monitor"
 msgstr ""
 
-#: profesoreslist.cpp:205 ui_profesoreslistbase.h:309
-msgid "Monitores"
-msgstr ""
-
 #: profesorview.cpp:63
 msgid "Movil del profesor"
 msgstr "Móvil del profesor"
@@ -308,10 +304,13 @@ msgstr "Nombre completo:"
 msgid "Nombre del profesor"
 msgstr "Nombre del profesor"
 
-#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:467
 msgid "Nuevo Monitor"
 msgstr ""
+
+#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
+msgid "Nuevo Profesor"
+msgstr "Nuevo profesor"
 
 #: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
 msgid "Nuevo profesor"
@@ -345,7 +344,8 @@ msgstr "Población:"
 msgid "Precio"
 msgstr "Precio"
 
-#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: ui_profesoreslistbase.h:309
 msgid "Profesores"
 msgstr "Profesores"
 

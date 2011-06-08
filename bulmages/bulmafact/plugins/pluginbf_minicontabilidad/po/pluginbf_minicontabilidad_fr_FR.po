@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:06+0200\n"
+"POT-Creation-Date: 2011-06-08 11:15+0200\n"
 "PO-Revision-Date: 2011-02-23 09:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -157,7 +157,7 @@ msgstr "Annotations comptables"
 msgid "Apuntes Contables"
 msgstr "Ecritures comptables"
 
-#: partidasview.cpp:437 ui_presupuestocontablelistbase.h:255
+#: partidasview.cpp:441 ui_presupuestocontablelistbase.h:255
 #: ui_presupuestocontablelistbase.h:258
 msgid "Borrar"
 msgstr "Effacer"
@@ -188,7 +188,7 @@ msgid "C.I.F."
 msgstr "C.I.F."
 
 #: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
-#: partidasview.cpp:50 partidasview.cpp:527
+#: partidasview.cpp:50 partidasview.cpp:532
 msgid "Codigo"
 msgstr "Code"
 
@@ -245,7 +245,7 @@ msgstr "Ctrl+S"
 msgid "Datos &generales"
 msgstr "Données générales"
 
-#: partidasview.cpp:341 partidasview.cpp:463
+#: partidasview.cpp:345 partidasview.cpp:468
 msgid "Debe seleccionar una partida"
 msgstr "Vous devez sélectionner un poste"
 
@@ -257,11 +257,11 @@ msgstr "Description "
 msgid "Descripcion:"
 msgstr "Description :"
 
-#: partidasview.cpp:438
+#: partidasview.cpp:442
 msgid "Desea eliminar"
 msgstr "Voulez vous effacer"
 
-#: partidasview.cpp:319
+#: partidasview.cpp:323
 msgid "Desea guardar los cambios?"
 msgstr "Sauvegarder les changements ?"
 
@@ -281,7 +281,7 @@ msgstr "Editer"
 msgid "Editar presupuestocontable"
 msgstr "Editer le budget comptable"
 
-#: partidasview.cpp:477
+#: partidasview.cpp:482
 msgid "Error al borrar la partida"
 msgstr "Effacer le poste erreur"
 
@@ -297,11 +297,11 @@ msgstr "Erreur en création du budget"
 msgid "Error al crear el recibo"
 msgstr "Erreur en création de reçu"
 
-#: partidasview.cpp:424
+#: partidasview.cpp:428
 msgid "Error al crear la partida"
 msgstr "Erreur en création de poste"
 
-#: partidasview.cpp:365
+#: partidasview.cpp:369
 msgid "Error al guardar la partida"
 msgstr "Erreur en sauvegarde du poste"
 
@@ -321,7 +321,7 @@ msgstr "Filtrer la liste"
 msgid "Gasto"
 msgstr "Dépense"
 
-#: pluginbf_minicontabilidad.cpp:390 pluginbf_minicontabilidad.cpp:405
+#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:406
 msgid "Gestionar partidas"
 msgstr "Gestionnaire de poste"
 
@@ -333,7 +333,7 @@ msgstr "Sauvegarder le poste"
 msgid "Guardar cobro"
 msgstr "Sauvegarder l'encaissement"
 
-#: partidasview.cpp:318
+#: partidasview.cpp:322
 msgid "Guardar partida"
 msgstr "Sauvegarder le poste"
 
@@ -397,7 +397,7 @@ msgstr "Montrer/Occulter les détails"
 msgid "Mostrar/Ocultar cabecera"
 msgstr "Montrer/cacher l'entête"
 
-#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:528
+#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:533
 msgid "Nombre"
 msgstr "Nom"
 
@@ -457,7 +457,7 @@ msgstr "A&ccusés"
 msgid "Saldo"
 msgstr "Solde"
 
-#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:407
+#: pluginbf_minicontabilidad.cpp:392 pluginbf_minicontabilidad.cpp:408
 msgid "Seleccionar partida"
 msgstr "Sélectionner un poste"
 
@@ -465,7 +465,7 @@ msgstr "Sélectionner un poste"
 msgid "Selector de presupuesto contable"
 msgstr "Sélecteur de Budget comptable"
 
-#: partidasview.cpp:447
+#: partidasview.cpp:452
 msgid "no se ha podido borrar"
 msgstr "Il n'a pas pu être effacé"
 

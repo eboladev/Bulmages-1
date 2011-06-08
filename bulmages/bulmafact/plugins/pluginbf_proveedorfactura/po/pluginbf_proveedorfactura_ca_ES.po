@@ -217,9 +217,8 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: facturasplist.cpp:252
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linea"
 
 #: facturapview.cpp:356
 msgid "Desc."

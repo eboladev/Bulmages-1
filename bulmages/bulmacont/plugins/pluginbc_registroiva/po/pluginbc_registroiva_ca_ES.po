@@ -274,7 +274,7 @@ msgstr "Deure"
 #: pluginbc_registroiva.cpp:209 regivaqtoolbutton.cpp:96
 #, fuzzy
 msgid "Debe seleccionar un apunte"
-msgstr "Cal triar un compte"
+msgstr "Cal triar un apunt"
 
 #: ui_registroivabase.h:623
 msgid "DesgloseIVA"

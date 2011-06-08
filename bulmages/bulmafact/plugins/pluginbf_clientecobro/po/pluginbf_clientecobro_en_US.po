@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -317,8 +317,15 @@ msgid "Solo previsiones"
 msgstr ""
 
 #: cobroview.cpp:127
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo.\n"
+"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"You have to save the document before being able to print it.\n"
+"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo."
 
 #: ui_cobroslistbase.h:442
 msgid "Tipo de cobro:"

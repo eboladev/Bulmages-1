@@ -240,9 +240,8 @@ msgid "Datos &generales"
 msgstr "&Dades comptables"
 
 #: pedidosclientelist.cpp:271
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linea"
 
 #: ui_pedidoclientebase.h:729 ui_presupuestoclientebase.h:813
 #, fuzzy

@@ -205,9 +205,8 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: pedidosproveedorlist.cpp:211
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linea"
 
 #: listlinpedidoproveedorview.cpp:44
 msgid "Descripcion"

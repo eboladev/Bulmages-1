@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:06+0200\n"
+"POT-Creation-Date: 2011-06-08 11:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Apuntes Contables"
 msgstr ""
 
-#: partidasview.cpp:437 ui_presupuestocontablelistbase.h:255
+#: partidasview.cpp:441 ui_presupuestocontablelistbase.h:255
 #: ui_presupuestocontablelistbase.h:258
 msgid "Borrar"
 msgstr "Borrar"
@@ -188,7 +188,7 @@ msgid "C.I.F."
 msgstr "C.I.F."
 
 #: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
-#: partidasview.cpp:50 partidasview.cpp:527
+#: partidasview.cpp:50 partidasview.cpp:532
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -245,7 +245,7 @@ msgstr "Ctrl+S"
 msgid "Datos &generales"
 msgstr "Datos &generales"
 
-#: partidasview.cpp:341 partidasview.cpp:463
+#: partidasview.cpp:345 partidasview.cpp:468
 msgid "Debe seleccionar una partida"
 msgstr ""
 
@@ -257,11 +257,11 @@ msgstr "Descripcion"
 msgid "Descripcion:"
 msgstr "Descripcion:"
 
-#: partidasview.cpp:438
+#: partidasview.cpp:442
 msgid "Desea eliminar"
 msgstr "Desea eliminar"
 
-#: partidasview.cpp:319
+#: partidasview.cpp:323
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
@@ -281,7 +281,7 @@ msgstr "Editar"
 msgid "Editar presupuestocontable"
 msgstr ""
 
-#: partidasview.cpp:477
+#: partidasview.cpp:482
 msgid "Error al borrar la partida"
 msgstr ""
 
@@ -297,11 +297,11 @@ msgstr "Error al crear el presupuesto"
 msgid "Error al crear el recibo"
 msgstr ""
 
-#: partidasview.cpp:424
+#: partidasview.cpp:428
 msgid "Error al crear la partida"
 msgstr ""
 
-#: partidasview.cpp:365
+#: partidasview.cpp:369
 msgid "Error al guardar la partida"
 msgstr ""
 
@@ -321,7 +321,7 @@ msgstr "Filtrar listado"
 msgid "Gasto"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:390 pluginbf_minicontabilidad.cpp:405
+#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:406
 msgid "Gestionar partidas"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Guardar cobro"
 msgstr "Guardar cobro"
 
-#: partidasview.cpp:318
+#: partidasview.cpp:322
 msgid "Guardar partida"
 msgstr ""
 
@@ -397,7 +397,7 @@ msgstr "Mostrar / Ocultar Detalle"
 msgid "Mostrar/Ocultar cabecera"
 msgstr "Mostrar/ocultar cabecera"
 
-#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:528
+#: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:533
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -457,7 +457,7 @@ msgstr "Pro&cesados"
 msgid "Saldo"
 msgstr "Saldo"
 
-#: pluginbf_minicontabilidad.cpp:391 pluginbf_minicontabilidad.cpp:407
+#: pluginbf_minicontabilidad.cpp:392 pluginbf_minicontabilidad.cpp:408
 msgid "Seleccionar partida"
 msgstr ""
 
@@ -465,7 +465,7 @@ msgstr ""
 msgid "Selector de presupuesto contable"
 msgstr ""
 
-#: partidasview.cpp:447
+#: partidasview.cpp:452
 msgid "no se ha podido borrar"
 msgstr "no se ha podido borrar"
 

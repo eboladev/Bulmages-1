@@ -211,9 +211,8 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: albaranesproveedor.cpp:342
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linea"
 
 #: ui_albaranproveedorbase.h:627
 #, fuzzy

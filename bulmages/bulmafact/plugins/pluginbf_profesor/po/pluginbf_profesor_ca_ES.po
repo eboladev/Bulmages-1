@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-06-08 11:14+0200\n"
 "PO-Revision-Date: 2011-02-19 16:10+0100\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
@@ -88,8 +88,8 @@ msgid "Barcelona"
 msgstr "Barcelona"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
-msgid "Borrar Monitor"
-msgstr "Esborra Monitor"
+msgid "Borrar Profesor"
+msgstr "Esborra professor"
 
 #: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
 #: ui_profesorbase.h:498
@@ -106,7 +106,7 @@ msgstr "Cerca"
 
 #: profesorview.cpp:59
 msgid "CP del profesor"
-msgstr "CP del monitor"
+msgstr "CP del profesor"
 
 #: ui_aboutfapacbase.h:155
 msgid "Cerrar"
@@ -126,7 +126,7 @@ msgstr "Codi postal"
 
 #: profesorview.cpp:67
 msgid "Comentarios del profesor"
-msgstr "Comentaris del monitor"
+msgstr "Comentaris del profesor"
 
 #: ui_profesorbase.h:525
 msgid "Comentarios:"
@@ -182,7 +182,7 @@ msgstr "DNI"
 
 #: profesorview.cpp:57
 msgid "DNI del profesor"
-msgstr "DNI del monitor"
+msgstr "DNI del profesor"
 
 #: profesoreslist.cpp:266
 msgid "Debe seleccionar una fila primero"
@@ -194,19 +194,20 @@ msgstr "Heu de seleccionar una línia"
 
 #: profesorview.cpp:58
 msgid "Direccion del profesor"
-msgstr "Direcció del monitor"
+msgstr "Direcció del profesor"
 
 #: ui_profesorbase.h:504
 msgid "Direccion:"
 msgstr "Adreça:"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
-msgid "Editar Monitor"
-msgstr "Edita Monitor"
+#, fuzzy
+msgid "Editar Profesor"
+msgstr "Edita"
 
 #: profesoreslist.cpp:285
 msgid "Editar profesor"
-msgstr "Edita monitor"
+msgstr "Edita profesor"
 
 #: profesoreslist.cpp:238
 msgid "Error al borrar el cobro a cliente"
@@ -214,7 +215,7 @@ msgstr "Error en esborrar el cobrament a client"
 
 #: profesorview.cpp:97
 msgid "Error al crear el profesor"
-msgstr "Error en crear el monitor"
+msgstr "Error en crear el profesor"
 
 #: ui_profesorbase.h:524
 msgid "Estudios"
@@ -222,7 +223,7 @@ msgstr "Estudis"
 
 #: profesorview.cpp:66
 msgid "Estudios del profesor"
-msgstr "Estudis del monitor"
+msgstr "Estudis del profesor"
 
 #: ui_profesorbase.h:523
 msgid "Estudios:"
@@ -234,7 +235,7 @@ msgstr "F5"
 
 #: profesorview.cpp:62
 msgid "Fax del profesor"
-msgstr "Fax del monitor"
+msgstr "Fax del profesor"
 
 #: profesorview.cpp:87
 msgid "Fecha Final"
@@ -253,8 +254,9 @@ msgid "Fecha inicial:"
 msgstr "Data inicial"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
-msgid "Filtrar Monitores"
-msgstr "Filtra Monitors"
+#, fuzzy
+msgid "Filtrar Profesores"
+msgstr "Filtrar"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
@@ -270,7 +272,7 @@ msgstr "ID Activitat"
 
 #: profesorview.cpp:55
 msgid "ID profesor"
-msgstr "ID monitor"
+msgstr "ID profesor"
 
 #: profesoreslist.cpp:339
 msgid "Id profesor"
@@ -288,13 +290,9 @@ msgstr "Lleida"
 msgid "Monitor"
 msgstr "Monitor"
 
-#: profesoreslist.cpp:205 ui_profesoreslistbase.h:309
-msgid "Monitores"
-msgstr "Monitors"
-
 #: profesorview.cpp:63
 msgid "Movil del profesor"
-msgstr "Mòbil del monitor"
+msgstr "Mòbil del profesor"
 
 #: profesoreslist.cpp:340 profesorview.cpp:83
 msgid "Nombre"
@@ -306,16 +304,20 @@ msgstr "Nom complet"
 
 #: profesorview.cpp:56
 msgid "Nombre del profesor"
-msgstr "Nom del monitor"
+msgstr "Nom del profesor"
 
-#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:467
 msgid "Nuevo Monitor"
 msgstr "Nou Monitor"
 
+#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
+#, fuzzy
+msgid "Nuevo Profesor"
+msgstr "Nou"
+
 #: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
 msgid "Nuevo profesor"
-msgstr "Nou monitor"
+msgstr "Nou profesor"
 
 #: ui_profesorbase.h:509
 msgid "Numero de fax:"
@@ -335,7 +337,7 @@ msgstr "Població"
 
 #: profesorview.cpp:60
 msgid "Poblacion del profesor"
-msgstr "Població del monitor"
+msgstr "Població del profesor"
 
 #: ui_profesorbase.h:506
 msgid "Poblacion:"
@@ -345,7 +347,8 @@ msgstr "Població"
 msgid "Precio"
 msgstr "Preu"
 
-#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: ui_profesoreslistbase.h:309
 msgid "Profesores"
 msgstr ""
 
@@ -363,7 +366,7 @@ msgstr "Telèfon"
 
 #: profesorview.cpp:61
 msgid "Telefono del profesor"
-msgstr "Telèfon del monitor"
+msgstr "Telèfon del profesor"
 
 #: ui_profesorbase.h:508
 msgid "Telefono fijo:"
@@ -383,14 +386,9 @@ msgstr "Tipus"
 
 #: profesorview.cpp:65
 msgid "Web del profesor"
-msgstr "Web del monitor"
+msgstr "Web del profesor"
 
 #: profesorview.cpp:64
 msgid "eMail del profesor"
-msgstr "e-mail del monitor"
+msgstr "e-mail del profesor"
 
-#~ msgid "&Monitores"
-#~ msgstr "&Monitors"
-
-#~ msgid "&Nuevo monitor"
-#~ msgstr "&Nou Monitor"
