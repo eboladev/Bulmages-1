@@ -33,10 +33,10 @@
 
 #include <QHBoxLayout>
 
-#define ARTICULO_HORA_COMPLETA "31"
-#define ARTICULO_HORA_FRACCION "32"
-#define MINUTOS_INICIALES 6
-#define MINUTOS_FRACCION 2
+#define ARTICULO_HORA_COMPLETA "36"
+#define ARTICULO_HORA_FRACCION "37"
+#define MINUTOS_INICIALES 60
+#define MINUTOS_FRACCION 15
 
 
 BtCompany *g_emp;
@@ -187,12 +187,12 @@ int BtTicket_pintar(BtTicket *tick) {
 		pul->m_lineaticket->setDbValue("nomarticulo", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
 
 		/// Superada la primera hora empiezan las fracciones de 15 minutos.
-		if (minutos > MINUTOS_INICIALES) {
-		  if (!pul->m_lineaticketfraccion) {
+		if (minutos > MINUTOS_INICIALES && !pul->m_sinfracciones) {
+		  if (!pul->m_lineaticketfraccion ) {
 		    pul->m_lineaticketfraccion = tick->insertarArticulo ( ARTICULO_HORA_FRACCION, BlFixed("1"), TRUE );
 		  } // end if
-		  int fracciones15minutos = (pul->m_horainicial.secsTo(QDateTime::currentDateTime ()) + 1) / (60 * MINUTOS_FRACCION) - 3;
-		  pul->m_lineaticketfraccion->setDbValue("cantlalbaran", QString::number(fracciones15minutos));	
+		  int fraccionesminutos = (minutos - MINUTOS_INICIALES) / MINUTOS_FRACCION +1;
+		  pul->m_lineaticketfraccion->setDbValue("cantlalbaran", QString::number(fraccionesminutos));	
 		  pul->m_lineaticketfraccion->setDbValue("desclalbaran", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m"));
 		  pul->m_lineaticketfraccion->setDbValue("nomarticulo", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
 		} // end if
@@ -209,6 +209,10 @@ int BtTicket_borrarArticulo(BtTicket *tick) {
 	Pulsera * pul = g_pulseras.at(i);
 	if (pul->m_lineaticket == tick->lineaActBtTicket()) {
 	   delete pul;
+	} // end if
+	if (pul->m_lineaticketfraccion == tick->lineaActBtTicket()) {
+	   pul->m_lineaticketfraccion = NULL;
+	   pul->m_sinfracciones = TRUE;
 	} // end if
     } // end for  
 }

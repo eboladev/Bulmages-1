@@ -40,6 +40,7 @@ public:
   QDateTime m_horafinal;
   BlDbRecord *m_lineaticket;
   BlDbRecord *m_lineaticketfraccion;
+  bool m_sinfracciones;
   
   Pulsera(BtTicket *tick, const QString nombres, BlDbRecord *linea, const QString propietario = "");
   ~Pulsera();
