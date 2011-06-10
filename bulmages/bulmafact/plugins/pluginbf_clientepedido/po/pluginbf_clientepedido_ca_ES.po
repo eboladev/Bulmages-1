@@ -35,47 +35,17 @@ msgstr "% Recàrrec E.Q."
 #: ui_pedidoclientebase.h:743 ui_presupuestoclientebase.h:827
 #, fuzzy
 msgid "&Aceptar"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta"
+msgstr "&Acceptar"
 
 #: ui_pedidoclientebase.h:744 ui_presupuestoclientebase.h:828
 #, fuzzy
 msgid "&Cancelar"
-msgstr ""
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·la\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·lar"
+msgstr "&Cancel·lar"
 
 #: ui_pedidoclientebase.h:730
 #, fuzzy
 msgid "&Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentari\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaris"
+msgstr "&Comentaris"
 
 #: ui_pedidoclientebase.h:728 ui_presupuestoclientebase.h:812
 #, fuzzy

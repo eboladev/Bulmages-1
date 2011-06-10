@@ -96,25 +96,19 @@ msgid "Base Imponible"
 msgstr "Tax basis"
 
 #: ui_pedidoclientebase.h:732 ui_presupuestoclientebase.h:816
-#, fuzzy
 msgid "Base imponible:"
 msgstr "Tax basis"
 
 #: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
 #: ui_pedidoclientebase.h:698 ui_pedidoclientebase.h:701
-#, fuzzy
 msgid "Borrar pedido"
-msgstr ""
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-" Erase punteo\n"
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erase punteo"
+msgstr "Erase request"
 
 #: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 #: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
 #, fuzzy
 msgid "Borrar presupuesto"
-msgstr "<HR><B>Treating Estimated "
+msgstr "Clear budget "
 
 #: ui_pedidosclientelistbase.h:438 ui_presupuestoslistbase.h:418
 msgid "Buscar:"
@@ -142,13 +136,8 @@ msgid "Comentario"
 msgstr "Commentary"
 
 #: pedidoclienteview.cpp:69
-#, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: listdescpedidoclienteview.cpp:41
 msgid "Concepto descuento"
@@ -160,9 +149,8 @@ msgid "Configurar listado"
 msgstr "Form listing"
 
 #: pedidoclienteview.cpp:67
-#, fuzzy
 msgid "Contacto"
-msgstr "Contact:"
+msgstr "Contact"
 
 #: ui_pedidosclientelistbase.h:429
 msgid "Ctrl+B"

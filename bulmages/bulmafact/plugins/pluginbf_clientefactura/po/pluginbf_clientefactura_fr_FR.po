@@ -617,23 +617,3 @@ msgstr "Afficher ceux de même référence"
 msgid "Ver pedidos con la misma referencia"
 msgstr "Afficher ceux de même référence"
 
-#~ msgid "ALBARAN: Num "
-#~ msgstr "ALBARAN: Num "
-
-#~ msgid "Agregar albaran a la factura"
-#~ msgstr "Ajouter le bulletin à la facture"
-
-#~ msgid "Fecha:"
-#~ msgstr "Date :"
-
-#~ msgid "Idl factura"
-#~ msgstr "Id de la Facture"
-
-#~ msgid "Numero de albaran:"
-#~ msgstr "Numéro du bulletin :"
-
-#~ msgid "Ref:"
-#~ msgstr "Réf. :"
-
-#~ msgid "Total Linea"
-#~ msgstr "Total de la ligne"

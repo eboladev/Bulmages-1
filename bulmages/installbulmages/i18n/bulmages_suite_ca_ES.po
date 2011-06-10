@@ -201,7 +201,6 @@ msgid "&Balance jerarquico"
 msgstr "&Balanç jeràrquic"
 
 #: pluginbf_banco.cpp:52
-#, fuzzy
 msgid "&Bancos"
 msgstr "Bancs"
 
@@ -1925,9 +1924,8 @@ msgid "Agrupacion"
 msgstr "Agrupació"
 
 #: ui_bcamortizacionbase.h:648
-#, fuzzy
 msgid "Agrupacion:"
-msgstr "Agrupació"
+msgstr "Agrupació:"
 
 #: balancesubform.cpp:80 blsubform.cpp:3167
 msgid "Ajustar altura"
@@ -1946,23 +1944,20 @@ msgid "Ajustar columnas"
 msgstr "Ajusta columnes"
 
 #: facturaview.cpp:74
-#, fuzzy
 msgid "Al&macen"
-msgstr "<LI> Magatzem <B>"
+msgstr "Ma&gatzem"
 
 #: albaranclienteview.cpp:69
 msgid "Albaran"
 msgstr "Albarà"
 
 #: albaranproveedorview.cpp:54
-#, fuzzy
 msgid "Albaran de proveedor"
-msgstr "Nom del proveïdor"
+msgstr "Albarà del proveïdor"
 
 #: genalbpqtoolbutton.cpp:148
-#, fuzzy
 msgid "Albaran de proveedor existente"
-msgstr "El magatzem del pressupost no existeix<BR>"
+msgstr "Albarà de proveïdor existent"
 
 #: genfacqtoolbutton.cpp:295 genalbqtoolbutton.cpp:156
 msgid "Albaran ya existe"
@@ -1974,28 +1969,24 @@ msgid "Albaranes a clientes"
 msgstr "Albarans a clients"
 
 #: albaranesproveedor.cpp:323 ui_albaranesproveedorlistbase.h:421
-#, fuzzy
 msgid "Albaranes de proveedor"
-msgstr "Nom del proveïdor"
+msgstr "Albarà del proveïdor"
 
 #: pluginbf_proveedoralbaran.cpp:57 pluginbf_proveedoralbaran.cpp:58
-#, fuzzy
 msgid "Albaranes de proveedores"
-msgstr "Nom del proveïdor"
+msgstr "Albarans de proveïdor"
 
 #: albaranesproveedor.cpp:195 albaranclientelist.cpp:209
-#, fuzzy
 msgid "Albaranes no procesados"
-msgstr "Apunts &no puntejats"
+msgstr "Albarans no procesats"
 
 #: albaranesproveedor.cpp:194 albaranclientelist.cpp:208
 msgid "Albaranes procesados"
 msgstr "Albarans processats"
 
 #: pluginbf_alias.cpp:115 plugin_tallascolores.cpp:132
-#, fuzzy
 msgid "Alias"
-msgstr "Aplicar"
+msgstr "Alies"
 
 #: archivo.cpp:66 importcsv.cpp:68
 msgid "All files (*)"
@@ -2014,76 +2005,64 @@ msgid "Almacen"
 msgstr "Magatzem"
 
 #: ui_pedidoproveedorbase.h:732
-#, fuzzy
 msgid "Almacen de destino:"
-msgstr "Base de dades:"
+msgstr "Magatzem de destí:"
 
 #: ui_facturabase.h:708 ui_facturaslistbase.h:541 ui_albaranclientebase.h:780
 #: ui_pedidoclientebase.h:727 ui_tarifabase.h:258 ui_compraventabase.h:888
 #: ui_presupuestoclientebase.h:811 ui_albaranproveedorbase.h:625
 #: ui_ticketclientebase.h:773
-#, fuzzy
 msgid "Almacen:"
-msgstr "<LI> Magatzem <B>"
+msgstr "Magatzem:"
 
 #: zlist.cpp:196 almaceneslistview.cpp:222 ui_almaceneslistbase.h:330
 #: pluginbf_almacen.cpp:54 pluginbf_almacen.cpp:55 ui_listalmacenbase.h:117
-#, fuzzy
 msgid "Almacenes"
-msgstr "<LI> Magatzem <B>"
+msgstr "Magatzem"
 
 #: ui_bccuentabase.h:819 ui_registroivabase.h:618
-#, fuzzy
 msgid "Alt+B"
-msgstr "Alt+I"
+msgstr "Alt+B"
 
 #: ui_bccuentabase.h:827 ui_bcamortizacionbase.h:670
-#, fuzzy
 msgid "Alt+C"
-msgstr "Alt+I"
+msgstr "Alt+C"
 
 #: ui_bccuentabase.h:832
-#, fuzzy
 msgid "Alt+G"
-msgstr "Alt+I"
+msgstr "Alt+G"
 
 #: ui_bccuentabase.h:824 ui_registroivabase.h:616 ui_bcamortizacionbase.h:667
-#, fuzzy
 msgid "Alt+I"
 msgstr "Alt+I"
 
 #: ui_registroivabase.h:630
-#, fuzzy
 msgid "Alt+N"
-msgstr "Alt+I"
+msgstr "Alt+N"
 
 #: ui_articulosubformbase.h:245 ui_articleslistbase.h:289
-#, fuzzy
 msgid "Alt+O"
-msgstr "Alt+I"
+msgstr "Alt+O"
 
 #: ui_bccuentabase.h:830
-#, fuzzy
 msgid "Alt+P"
-msgstr "Alt+I"
+msgstr "Alt+P"
 
 #: ui_registroivabase.h:606 ui_balancesprintdlg.h:203
-#, fuzzy
 msgid "Alt+T"
-msgstr "Alt+I"
+msgstr "Alt+T"
 
 #: pluginbf_modificadores.cpp:74
 msgid "Alt. precio"
-msgstr ""
+msgstr "Alt. preu"
 
 #: ui_tutorbase.h:588
 msgid "Alta Rápida de Hijos"
 msgstr "Alta ràpida de fills/filles"
 
 #: ui_convocatoriabase.h:443 alumnoview.cpp:53
-#, fuzzy
 msgid "Alumno"
-msgstr "<LI> Magatzem <B>"
+msgstr "Alumne"
 
 #: tutorview.cpp:104
 msgid "Alumno 1:"
@@ -2107,7 +2086,6 @@ msgid "Alumnos"
 msgstr "Alumnes"
 
 #: ui_bcamortizacionbase.h:674
-#, fuzzy
 msgid "Amor&tizacion"
 msgstr "Amortització"
 
@@ -2116,9 +2094,8 @@ msgid "Amortizacion"
 msgstr "Amortització"
 
 #: ui_bcamortizacionbase.h:672
-#, fuzzy
 msgid "Amortizado:"
-msgstr "Amortització"
+msgstr "Amortitzat:"
 
 #: ui_q19base.h:280
 msgid "Anos"
@@ -2129,9 +2106,8 @@ msgid "Anotaciones contables"
 msgstr "Anotacions contables"
 
 #: ui_bcbulmacontbase.h:280
-#, fuzzy
 msgid "Anterior"
-msgstr "Saldo anterior"
+msgstr "Anterior"
 
 #: bcamortizacionview.cpp:265 bcamortizacionview.cpp:292
 #: bcamortizacionview.cpp:320 bcamortizacionview.cpp:351
@@ -2140,9 +2116,8 @@ msgid "Anual"
 msgstr "Anual"
 
 #: zview.cpp:80
-#, fuzzy
 msgid "Anulado"
-msgstr "Anual"
+msgstr "Anulat"
 
 #: ui_btbulmatpvbase.h:98
 msgid "Anyadir"
@@ -2154,9 +2129,8 @@ msgstr "Any"
 
 #: informeqtoolbutton.cpp:96 informeqtoolbutton.cpp:350
 #: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
-#, fuzzy
 msgid "Anyo:"
-msgstr "Any"
+msgstr "Any:"
 
 #: jdirectivaview.cpp:68
 msgid "Ap 1 Socio"
@@ -2167,18 +2141,16 @@ msgid "Ap 2 Socio"
 msgstr "Segon Cognom"
 
 #: ui_bcextractobase.h:730
-#, fuzzy
 msgid "Ap&untes punteados"
-msgstr "Apunts &comptables"
+msgstr "Ap&unts puntejats"
 
 #: ui_abrevsbase.h:81
 msgid "Aparcar"
 msgstr ""
 
 #: cuadrante1view.cpp:63
-#, fuzzy
 msgid "Apartura tarde"
-msgstr "Obertura"
+msgstr "Opertura tarda"
 
 #: pluginbf_asterisk.cpp:168
 msgid "Apellidos"
@@ -2197,7 +2169,6 @@ msgid "Apellidos:"
 msgstr "Cognoms:"
 
 #: ui_bcasientobase.h:568
-#, fuzzy
 msgid "Apertura"
 msgstr "Obertura"
 
@@ -2206,9 +2177,8 @@ msgid "Apertura Manyana"
 msgstr "Obertura matí"
 
 #: ui_cuadrante1base.h:330
-#, fuzzy
 msgid "Apertura Tarde"
-msgstr "Obertura"
+msgstr "Obertura tarda"
 
 #: cuadrante1view.cpp:61
 msgid "Apertura manyana"
@@ -2219,9 +2189,8 @@ msgid "Apertura manyanas"
 msgstr "Obertura matins"
 
 #: pluginbf_asterisk.cpp:107
-#, fuzzy
 msgid "Apertura tardes"
-msgstr "Obertura"
+msgstr "Obertura tardes"
 
 #: ui_blsubformbase.h:680
 msgid "Aplicar"
@@ -2244,28 +2213,24 @@ msgid "Application name"
 msgstr "Nom de la aplicació"
 
 #: ui_confreglasbase.h:284
-#, fuzzy
 msgid "Apunte con Cuenta"
-msgstr "Apunts &comptables"
+msgstr "Apunts con compte"
 
 #: ui_confreglasbase.h:292
-#, fuzzy
 msgid "Apunte con Descripcion"
-msgstr "Descripció"
+msgstr "Apunt amb descripció"
 
 #: ui_confreglasbase.h:285
-#, fuzzy
 msgid "Apunte con Saldo"
-msgstr "Apunts &comptables"
+msgstr "Apunt amb sou"
 
 #: bcasientolistsubform.cpp:39
 msgid "Apuntes"
 msgstr "Apunts"
 
 #: ui_bcextractobase.h:729
-#, fuzzy
 msgid "Apuntes &no punteados"
-msgstr "Apunts &comptables"
+msgstr "Apunts &no puntejats"
 
 #: ui_acontablebase.h:166
 msgid "Apuntes Contables"
@@ -2308,15 +2273,13 @@ msgid "Articulo visible en TPV."
 msgstr ""
 
 #: bfbuscararticulo.cpp:37
-#, fuzzy
 msgid "Articulo:"
-msgstr "<P> Article <B>"
+msgstr "Article"
 
 #: ui_articulosubformbase.h:241 ui_bccuentalistbase.h:210
 #: pluginbf_articulo.cpp:60 pluginbf_articulo.cpp:61 ui_articleslistbase.h:285
-#, fuzzy
 msgid "Articulos"
-msgstr "<P> Article <B>"
+msgstr "Articles"
 
 #: ui_convreunionbase.h:375
 msgid "Asamblea"
@@ -6037,14 +6000,12 @@ msgstr ""
 "altres %1 per manca de banc"
 
 #: ui_z2zbase.h:395
-#, fuzzy
 msgid "Excluir Articulo"
-msgstr "<P> Article <B>"
+msgstr "Excloure Article"
 
 #: ui_z2zbase.h:392
-#, fuzzy
 msgid "Excluir Familias"
-msgstr "<P> Família <B>"
+msgstr "Excloure famílies"
 
 #: genfacqtoolbutton.cpp:296 genalbqtoolbutton.cpp:157
 msgid ""
@@ -7527,79 +7488,69 @@ msgid "ID Z"
 msgstr "ID Z"
 
 #: actividadview.cpp:55 convocatoriaview.cpp:51
-#, fuzzy
 msgid "ID actividad"
-msgstr "Quantitat"
+msgstr "ID activitat"
 
 #: albaranesproveedor.cpp:390 ticketclientelist.cpp:432
 #: albaranclientelist.cpp:432
-#, fuzzy
 msgid "ID albaran"
-msgstr "Imprimeix albarà"
+msgstr "ID albarà"
 
 #: proyectoview.cpp:56 pluginbf_tarifa.cpp:158 listltarifaview.cpp:38
 #: listltarifaview.cpp:62 almacenview.cpp:57 almaceneslistview.cpp:56
 #: almaceneslistview.cpp:92 presupuestolist.cpp:380 pedidosclientelist.cpp:359
 #: albaranesproveedor.cpp:399 ticketclientelist.cpp:434
 #: pluginbf_tipotrabajo.cpp:175 albaranclientelist.cpp:434
-#, fuzzy
 msgid "ID almacen"
-msgstr "<LI> Magatzem <B>"
+msgstr "ID magatzem"
 
 #: articulolisttpv.cpp:256 articulolist.cpp:441 pluginbf_tarifa.cpp:155
 #: listltarifaview.cpp:37 listltarifaview.cpp:61
-#, fuzzy
 msgid "ID articulo"
-msgstr "<P> Article <B>"
+msgstr "ID article"
 
 #: convreunionview.cpp:67
 msgid "ID asistentereunion"
 msgstr "ID asistent reunió"
 
 #: pluginbf_cuadrante.cpp:218
-#, fuzzy
 msgid "ID ausencia"
-msgstr "ID compte"
+msgstr "ID absència"
 
 #: rutacomerciallist.cpp:298 cobroslist.cpp:328 clientslist.cpp:353
 #: clienteview.cpp:55 presupuestolist.cpp:379 pedidosclientelist.cpp:358
 #: ticketclientelist.cpp:431 reciboview.cpp:54 albaranclientelist.cpp:431
-#, fuzzy
 msgid "ID cliente"
-msgstr "ID compte"
+msgstr "ID client"
 
 #: rutacomerciallist.cpp:306 cobroslist.cpp:327
 msgid "ID cobro"
-msgstr "ID cobrament"
+msgstr "Id cobrament"
 
 #: comisionview.cpp:51
 msgid "ID comision"
-msgstr "ID comissió"
+msgstr "Id comissió"
 
 #: contratoslist.cpp:331
-#, fuzzy
 msgid "ID contrato"
-msgstr "ID compte"
+msgstr "Id contracte"
 
 #: cuadrante1view.cpp:57
-#, fuzzy
 msgid "ID cuadrante"
-msgstr "ID compte"
+msgstr "Id quadrant"
 
 #: bccuentaview.cpp:43 bccuentalistview.cpp:388 bcplancontablelistview.cpp:55
 msgid "ID cuenta"
-msgstr "ID compte"
+msgstr "Id compte"
 
 #: albaranesproveedor.cpp:398 ticketclientelist.cpp:428
 #: albaranclientelist.cpp:428
-#, fuzzy
 msgid "ID forma de pago"
-msgstr "<LI> Forma de pagament <B>"
+msgstr "Forma de pagament"
 
 #: cuadrante1view.cpp:77
-#, fuzzy
 msgid "ID horario"
-msgstr "Diari"
+msgstr "Id horari"
 
 #: rutacomerciallist.cpp:302
 msgid "ID incidencia comercial"
@@ -7607,43 +7558,39 @@ msgstr ""
 
 #: jdirectivaview.cpp:55
 msgid "ID jdirectiva"
-msgstr "ID jdirectiva"
+msgstr "Id jdirectiva"
 
 #: presupuestocontableview.cpp:63 presupuestocontableview.cpp:64
 msgid "ID lpresupuestocontable"
-msgstr "ID pressupost"
+msgstr "Id pressupost"
 
 #: pluginbf_tipotrabajo.cpp:173
-#, fuzzy
 msgid "ID nombre del tipo de trabajo"
-msgstr "Nom de la forma de pagament:"
+msgstr "Id nom de la forma de pagament:"
 
 #: tutoreslist.cpp:275
 msgid "ID padre"
-msgstr "ID pare"
+msgstr "Id pare"
 
 #: presupuestocontableview.cpp:65
 msgid "ID partida"
 msgstr "Id. partida"
 
 #: pedidosclientelist.cpp:344
-#, fuzzy
 msgid "ID pedido"
-msgstr "Imprimeix la comanda"
+msgstr "Id comanda"
 
 #: rutacomerciallist.cpp:305
-#, fuzzy
 msgid "ID pedido cliente"
-msgstr "Tractant la comana del client"
+msgstr "Id comanda client"
 
 #: presupuestoview.cpp:60 presupuestolist.cpp:365
-#, fuzzy
 msgid "ID presupuesto"
-msgstr "Tractant el pressupost"
+msgstr "Id pressupost"
 
 #: presupuestocontableview.cpp:56
 msgid "ID presupuesto contable"
-msgstr "ID pressupost contable"
+msgstr "Id pressupost contable"
 
 #: presupuestocontablelist.cpp:225
 msgid "ID presupuestocontable"
@@ -7651,13 +7598,12 @@ msgstr "Id. pressupost comptable"
 
 #: profesorview.cpp:55
 msgid "ID profesor"
-msgstr "ID monitor"
+msgstr "Id monitor"
 
 #: albaranesproveedor.cpp:397 provedit.cpp:45 providerslist.cpp:338
 #: pluginbf_clienteproveedor.cpp:60
-#, fuzzy
 msgid "ID proveedor"
-msgstr "NIF del proveïdor"
+msgstr "Id proveïdor"
 
 #: reciboview.cpp:52 reciboview.cpp:81 emitirrecibosview.cpp:56
 msgid "ID recibo"
@@ -7681,14 +7627,12 @@ msgid "ID tipo actividad"
 msgstr "Id. tipus activitat"
 
 #: pluginbf_tipotrabajo.cpp:176
-#, fuzzy
 msgid "ID tipo de trabajo"
-msgstr "Id tipus d'IVA"
+msgstr "Id tipus de treball"
 
 #: bctipoivaview.cpp:41
-#, fuzzy
 msgid "ID tipo iva"
-msgstr "tipus"
+msgstr "Id tipus d'IVA"
 
 #: rutacomerciallist.cpp:299 cobroslist.cpp:340 presupuestolist.cpp:378
 #: pedidosclientelist.cpp:357 ticketclientelist.cpp:430 cuadrante1view.cpp:76
@@ -7702,11 +7646,11 @@ msgstr "ID tutor"
 
 #: pluginbf_inventario.cpp:96
 msgid "ID validacion"
-msgstr ""
+msgstr "Id validació"
 
 #: pluginbf_tarifa.cpp:154
 msgid "ID variacion tarifa"
-msgstr ""
+msgstr "Id variació tarifa"
 
 #: rutacomerciallist.cpp:293 listzonacomercialview.cpp:78
 msgid "ID zona comercial"
@@ -7733,18 +7677,16 @@ msgstr "IVA inc."
 #: ui_listregistroivabase.h:359
 #, fuzzy
 msgid "IVA repercutido:"
-msgstr "IVA:"
+msgstr "IVA repercutit:"
 
 #: ui_listregistroivabase.h:356
-#, fuzzy
 msgid "IVA soportado:"
-msgstr "Exportant :"
+msgstr "IVA suportat :"
 
 #: ui_registroivabase.h:620 ui_listregistroivabase.h:357
 #: ui_listregistroivabase.h:360
-#, fuzzy
 msgid "IVA:"
-msgstr "IVA"
+msgstr "IVA:"
 
 #: listregistroivaview.cpp:50 listregistroivaview.cpp:74
 #: bccentrocosteview.cpp:59 tiposarticuloview.cpp:46 zview.cpp:58
@@ -7754,28 +7696,24 @@ msgstr "Id"
 #: actividadview.cpp:220 actividadview.cpp:257 actividadview.cpp:295
 #: pluginbf_inventariosimple.cpp:85
 msgid "Id Actividad"
-msgstr "Id. activitat"
+msgstr "Id. Activitat"
 
 #: pluginbf_inventario.cpp:94
-#, fuzzy
 msgid "Id Almacen"
-msgstr "<LI> Magatzem <B>"
+msgstr "Id Magatzem"
 
 #: plugin_tallascolores.cpp:133 pluginbf_carterapagos.cpp:99
 #: pluginbf_carterapagos.cpp:218
-#, fuzzy
 msgid "Id Articulo"
-msgstr "<P> Article <B>"
+msgstr "Id article"
 
 #: proyectoview.cpp:57
-#, fuzzy
 msgid "Id CCoste"
-msgstr "Id"
+msgstr "Id CCost"
 
 #: listcoloresview.cpp:100
-#, fuzzy
 msgid "Id Color"
-msgstr "Id esborrany"
+msgstr "Id color"
 
 #: emitirrecibosview.cpp:59
 msgid "Id Forma PAgo"
@@ -7787,16 +7725,14 @@ msgid "Id Inventario"
 msgstr "Id Inventari"
 
 #: pluginbf_carterapagos.cpp:220
-#, fuzzy
 msgid "Id Proveedor"
-msgstr "NIF del proveïdor"
+msgstr "Id del proveïdor"
 
 #: listtasaivaview.cpp:94
 msgid "Id Tasa IVA"
-msgstr "ID Taxa IVA"
+msgstr "Id Taxa IVA"
 
 #: listtipoivaview.cpp:106 listtasaivaview.cpp:96
-#, fuzzy
 msgid "Id Tipo IVA"
 msgstr "Id tipus d'IVA"
 
@@ -7808,19 +7744,16 @@ msgstr "Id activitat"
 #: listdescalbaranprovview.cpp:43 ticketclienteview.cpp:68
 #: bfclientealbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
 #: albaranclienteview.cpp:72 bfproveedoralbaransubform.cpp:58
-#, fuzzy
 msgid "Id albaran"
-msgstr "Imprimeix albarà"
+msgstr "Id albarà"
 
 #: movimientosview.cpp:186
-#, fuzzy
 msgid "Id albaran cliente"
-msgstr "Id"
+msgstr "Id albarà"
 
 #: movimientosview.cpp:187 compraventaview.cpp:66 albaranproveedorview.cpp:57
-#, fuzzy
 msgid "Id albaran proveedor"
-msgstr "NIF del proveïdor"
+msgstr "Id albarà proveïdor"
 
 #: contratoview.cpp:426 facturaslist.cpp:449 pedidoproveedorview.cpp:56
 #: pedidosproveedorlist.cpp:345 pluginbf_asterisk.cpp:110
@@ -7831,9 +7764,8 @@ msgstr "Id Magatzem "
 
 #: tutorview.cpp:377 actividadview.cpp:218 actividadview.cpp:294
 #: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:348
-#, fuzzy
 msgid "Id alumno"
-msgstr "Id apunt"
+msgstr "Id al·lumne"
 
 #: bcamortizacionlistview.cpp:47 bcamortizacionview.cpp:87
 #: bcamortizacionview.cpp:99
@@ -7850,9 +7782,8 @@ msgstr "Id apunt"
 #: movimientosview.cpp:178 listlinpresupuestoview.cpp:46
 #: listlinpedidoclienteview.cpp:46 bfclientealbaransubform.cpp:45
 #: bfproveedoralbaransubform.cpp:47
-#, fuzzy
 msgid "Id articulo"
-msgstr "<P> Article <B>"
+msgstr "Id Article"
 
 #: bcasientosubform.cpp:57 bcasientolistsubform.cpp:46 bcasientoform.cpp:45
 #: bcamortizacionview.cpp:97
@@ -7870,23 +7801,20 @@ msgstr "Id centre de cost"
 #: contratoview.cpp:425 contrato.cpp:43 facturaslist.cpp:448
 #: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:224
 #: emitirrecibosview.cpp:58
-#, fuzzy
 msgid "Id cliente"
-msgstr "Id compte"
+msgstr "Id client"
 
 #: cobroview.cpp:63 vencimientocview.cpp:69
-#, fuzzy
 msgid "Id cobro"
-msgstr "Id esborrany"
+msgstr "Id cobrament"
 
 #: listtallasview.cpp:100
-#, fuzzy
 msgid "Id color"
-msgstr "Id esborrany"
+msgstr "Id color"
 
 #: comparticulolistview.cpp:45
 msgid "Id componente"
-msgstr ""
+msgstr "Id component"
 
 #: bcextractosubform.cpp:64
 msgid "Id contrapartida"
@@ -7914,19 +7842,16 @@ msgstr "Id descompte"
 #: contratoview.cpp:417 listdescfacturaview.cpp:43 facturaview.cpp:60
 #: listlinfacturaview.cpp:58 facturaslist.cpp:440 facturasplist.cpp:369
 #: listdescfacturaprovview.cpp:43 pluginbf_carteracobros.cpp:222
-#, fuzzy
 msgid "Id factura"
-msgstr "Factura"
+msgstr "Id factura"
 
 #: facturapview.cpp:57
-#, fuzzy
 msgid "Id facturap"
-msgstr "Factura"
+msgstr "Id facturap"
 
 #: familiasview.cpp:51
-#, fuzzy
 msgid "Id familia"
-msgstr "<P> Família <B>"
+msgstr "If família"
 
 #: btticket.cpp:61
 msgid "Id fechaalbaran"
@@ -7948,9 +7873,8 @@ msgid "Id linea albaran"
 msgstr ""
 
 #: proyectoview.cpp:79 proyectoview.cpp:98
-#, fuzzy
 msgid "Id linea de Ingreso Presupuesto"
-msgstr ""
+msgstr "Id linea d'ingres pressupost"
 
 #: listlinfacturaview.cpp:50
 msgid "Id linea factura"
@@ -7961,9 +7885,8 @@ msgid "Id lineas de amortizacion"
 msgstr "Id línies d'amortització"
 
 #: pagoslist.cpp:259 pagoview.cpp:61 vencimientopview.cpp:68
-#, fuzzy
 msgid "Id pago"
-msgstr "<LI> Forma de pagament <B>"
+msgstr "Id pagament"
 
 #: blcountryview.cpp:48 blcountryview.cpp:60 blcountryview.cpp:70
 msgid "Id pais"
@@ -7975,44 +7898,38 @@ msgstr "Id. partida"
 
 #: listlinpedidoproveedorview.cpp:50 listdescpedidoproveedorview.cpp:42
 #: pedidosproveedorlist.cpp:342 listdescpedidoclienteview.cpp:43
-#, fuzzy
 msgid "Id pedido"
-msgstr "Imprimeix la comanda"
+msgstr "Id comanda"
 
 #: listlinpedidoclienteview.cpp:57
-#, fuzzy
 msgid "Id pedido cliente"
-msgstr "Tractant la comana del client"
+msgstr "Id comanda client"
 
 #: pedidoproveedorview.cpp:54
-#, fuzzy
 msgid "Id pedido proveedor"
-msgstr "NIF del proveïdor"
+msgstr "Id comanda proveïdor"
 
 #: pluginbf_inventariosimple.cpp:84
 msgid "Id prestamo"
-msgstr ""
+msgstr "Id prestec"
 
 #: listdescpresupuestoview.cpp:43 listlinpresupuestoview.cpp:57
-#, fuzzy
 msgid "Id presupuesto"
-msgstr "Tractant el pressupost"
+msgstr "Id pressupost"
 
 #: pluginbf_inventariosimple.cpp:86
 msgid "Id producto"
 msgstr ""
 
 #: actividadview.cpp:59 convocatoriaview.cpp:53 profesoreslist.cpp:339
-#, fuzzy
 msgid "Id profesor"
-msgstr "NIF del proveïdor"
+msgstr "Id profesor"
 
 #: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:344
 #: facturasplist.cpp:377 facturapview.cpp:58 pagoslist.cpp:260 pagoview.cpp:62
 #: compraventaview.cpp:70 albaranproveedorview.cpp:61
-#, fuzzy
 msgid "Id proveedor"
-msgstr "NIF del proveïdor"
+msgstr "Id del proveïdor"
 
 #: blcountryview.cpp:59
 msgid "Id provincia"
@@ -8023,36 +7940,27 @@ msgid "Id tipo de IVA"
 msgstr "Id tipus d'IVA"
 
 #: pluginbf_tipotrabajo.cpp:177
-#, fuzzy
 msgid "Id tipo de trabajo"
-msgstr "Id tipus d'IVA"
+msgstr "Id tipus de treball"
 
 #: listtipostrabajoview.cpp:55
-#, fuzzy
 msgid "Id tipo trabajo"
-msgstr "Id tipus"
+msgstr "Id tipus treball"
 
 #: contratoview.cpp:424 facturaslist.cpp:447 pedidoproveedorview.cpp:64
 #: pedidosproveedorlist.cpp:343 facturasplist.cpp:376 facturapview.cpp:65
 #: pluginbf_asterisk.cpp:112 pluginbf_asterisk.cpp:172
 #: pluginbf_inventario.cpp:97 pagoslist.cpp:271
-#, fuzzy
 msgid "Id trabajador"
-msgstr "Id esborrany"
+msgstr "Id treballador"
 
 #: tutorview.cpp:380 actividadview.cpp:253 alumnoview.cpp:331
-#, fuzzy
 msgid "Id tutor"
-msgstr ""
-"#-#-#-#-#  pluginbf_tutor_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Id pare\n"
-"#-#-#-#-#  pluginbf_alumno_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Id tutor"
+msgstr "Id tutor"
 
 #: pluginbf_asterisk.cpp:111 pluginbf_asterisk.cpp:171 pluginbf_alias.cpp:117
-#, fuzzy
 msgid "Id validacion"
-msgstr "Id amortizació"
+msgstr "Id validació"
 
 #: pluginbf_carteracobros.cpp:98 pluginbf_carteracobros.cpp:217
 msgid "Id vencimiento"
@@ -8063,7 +7971,6 @@ msgid "Id. Centro Coste"
 msgstr "Id. Centre de Cost"
 
 #: proyectoview.cpp:71 proyectoview.cpp:90
-#, fuzzy
 msgid "Id. Cuenta"
 msgstr "Id compte"
 
@@ -8072,7 +7979,6 @@ msgid "Id. Partida"
 msgstr "Id. partida"
 
 #: proyectoview.cpp:80 proyectoview.cpp:99
-#, fuzzy
 msgid "Id. Proyecto"
 msgstr "Id Propietari"
 
@@ -8081,12 +7987,10 @@ msgid "Id. Registro IVA"
 msgstr "Id Registre d'IVA"
 
 #: zview.cpp:63 zlist.cpp:63
-#, fuzzy
 msgid "Id. almacen"
-msgstr "<LI> Magatzem <B>"
+msgstr "Id magatzem"
 
 #: ui_btbulmatpvbase.h:101
-#, fuzzy
 msgid "Identificacion"
 msgstr "Identificador"
 
@@ -8099,19 +8003,16 @@ msgid "Identificador"
 msgstr "Identificador"
 
 #: clienteview.cpp:69
-#, fuzzy
 msgid "Identificador de presupuesto"
-msgstr "Tractant el pressupost"
+msgstr "Identificador de pressupost"
 
 #: inventario.cpp:42
-#, fuzzy
 msgid "Identificador inventario"
-msgstr "Identificador"
+msgstr "Identificador d'inventari"
 
 #: pedidoclienteview.cpp:63
-#, fuzzy
 msgid "Identificador presupuesto"
-msgstr "Tractant el pressupost"
+msgstr "Identificador pressupost"
 
 #: bfaboutview.cpp:420
 msgid "Idioma:"
@@ -8122,9 +8023,8 @@ msgid "Idiomas y traducciones:"
 msgstr "Llengües i traduccions:"
 
 #: listlincontratoview.cpp:43
-#, fuzzy
 msgid "Idl contrato"
-msgstr "Id compte"
+msgstr "Idl contracte"
 
 #: ui_btbulmatpvbase.h:92
 msgid "Iglues/BtBulmaTPV"
@@ -8140,14 +8040,12 @@ msgstr "Iglues/BulmaFact - Facturació GPL"
 
 #: ui_cuadrantediariobase.h:320 ui_cuadrantediariobase.h:323
 #: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287
-#, fuzzy
 msgid "Igual que la Semana Anterior"
-msgstr "Saldo anterior"
+msgstr "Igual que la setmanta anterior"
 
 #: ui_articleeditbase.h:603
-#, fuzzy
 msgid "Imagen del articulo:"
-msgstr "<HR><B>Tractant Article"
+msgstr "Imatge de l'article"
 
 #: trabajadorview.cpp:300 articuloview.cpp:318 alumnoview.cpp:259
 msgid "Imagenes (*.jpg)"
@@ -8159,27 +8057,24 @@ msgstr "Importació CSV"
 
 #: ui_clientslistbase.h:334 ui_clientslistbase.h:337
 #: ui_providerslistbase.h:326 ui_providerslistbase.h:329
-#, fuzzy
 msgid "Importar"
-msgstr "&Importa"
+msgstr "Importar"
 
 #: ui_archivobase.h:101 ui_importcsvbase.h:198
 msgid "Importar CSV"
 msgstr "Importa CSV"
 
 #: ui_articleslistbase.h:348 ui_articleslistbase.h:351
-#, fuzzy
 msgid "Importar articulos"
-msgstr "Importa dades"
+msgstr "Importa articles"
 
 #: ui_bcasientobase.h:546 ui_bcasientobase.h:549
 msgid "Importar asiento"
 msgstr "Esborra seient"
 
 #: ui_bcplancontablelistbase.h:329 ui_bcplancontablelistbase.h:332
-#, fuzzy
 msgid "Importar cuentas"
-msgstr "Importa dades"
+msgstr "Importa comptes"
 
 #: q19writer.cpp:438
 #, qt-format
@@ -8187,21 +8082,20 @@ msgid ""
 "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 "
 "decimales "
 msgstr ""
+"Import excesiu (%1) !. El limit son %2 digits, incluint els 2 "
 
 #: q19writer.cpp:434
 #, qt-format
 msgid "Importe negativo (%1) ! "
-msgstr ""
+msgstr "Import negatiu (%1) ! "
 
 #: ui_bcmodelo347listbase.h:261
-#, fuzzy
 msgid "Importe:"
-msgstr "&Importa"
+msgstr "Import:"
 
 #: ui_bccuentasanualesimprimirbase.h:194 ui_balancesprintdlg.h:197
-#, fuzzy
 msgid "Impresion de Balances"
-msgstr "Gestió de &famílies"
+msgstr "Impresión de balanços"
 
 #: ui_balanceprintbase.h:312
 #, fuzzy
@@ -11111,8 +11005,8 @@ msgid "Punteos (*.pto)"
 msgstr "Puntejos (*.pto)"
 
 #: pluginbf_abrecodigobarras.cpp:76
-msgid "QInputDialog::getText()"
-msgstr "QInputDialog::getText()"
+msgid "Apertura rapida"
+msgstr "Opertura ràpida"
 
 #: ui_blformconfigbase.h:338
 msgid "Qt Scripting"

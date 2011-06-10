@@ -158,11 +158,7 @@ msgstr "Commentary"
 #: ui_albaranclientebase.h:785
 #, fuzzy
 msgid "Comentario&s"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: albaranclientelist.cpp:433
 #, fuzzy

@@ -21,9 +21,8 @@ msgstr ""
 
 #: presupuestoview.cpp:70 listdescpresupuestoview.cpp:42
 #: listlinpresupuestoview.cpp:56
-#, fuzzy
 msgid "% Descuento"
-msgstr "Document:"
+msgstr  "% Descompte"
 
 #: listlinpresupuestoview.cpp:54
 msgid "% I.V.A."
@@ -35,54 +34,20 @@ msgstr "% Recàrrec E.Q."
 
 #: ui_presupuestoclientebase.h:827 ui_albaranclientebase.h:798
 #: ui_pedidoclientebase.h:730 ui_facturabase.h:726
-#, fuzzy
 msgid "&Aceptar"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta"
+msgstr "&Acceptar"
 
 #: ui_presupuestoclientebase.h:828 ui_albaranclientebase.h:799
 #: ui_pedidoclientebase.h:731 ui_facturabase.h:727
-#, fuzzy
 msgid "&Cancelar"
-msgstr ""
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·la\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·lar"
+msgstr "&Cancel·lar"
 
 #: ui_pedidoclientebase.h:717 ui_facturabase.h:713
-#, fuzzy
 msgid "&Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentari\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaris"
+msgstr "&Comentaris"
 
 #: ui_presupuestoclientebase.h:812 ui_albaranclientebase.h:781
 #: ui_pedidoclientebase.h:715 ui_facturabase.h:711
-#, fuzzy
 msgid "&Detalle"
 msgstr "&Detalls"
 

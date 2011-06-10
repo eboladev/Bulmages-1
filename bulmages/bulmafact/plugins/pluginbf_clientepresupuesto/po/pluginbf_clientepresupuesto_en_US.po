@@ -163,32 +163,20 @@ msgid "Comentario"
 msgstr "Commentary"
 
 #: ui_albaranclientebase.h:785
-#, fuzzy
 msgid "Comentario&s"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: presupuestoview.cpp:68
-#, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: ui_albaranclientebase.h:784
-#, fuzzy
 msgid "Comentarios privados:"
-msgstr "Commentaries:"
+msgstr "Private commentaries:"
 
 #: ui_albaranclientebase.h:783
-#, fuzzy
 msgid "Comentarios publicos:"
-msgstr "Commentaries:"
+msgstr "Public commentaries:"
 
 #: listdescpresupuestoview.cpp:41
 msgid "Concepto descuento"

@@ -478,6 +478,3 @@ msgstr "Treballador:"
 msgid "Ver pedidos con la misma referencia"
 msgstr "Veure comandes amb la mateixa referència"
 
-#, fuzzy
-#~ msgid "Numero de albaran:"
-#~ msgstr "Nombre de quotes"

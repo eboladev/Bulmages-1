@@ -11485,7 +11485,7 @@ msgid "Punteos (*.pto)"
 msgstr "Punteos (*.pto)"
 
 #: pluginbf_abrecodigobarras.cpp:76
-msgid "QInputDialog::getText()"
+msgid "Apertura rapida"
 msgstr ""
 
 #: ui_blformconfigbase.h:338

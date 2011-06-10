@@ -308,7 +308,6 @@ msgid "Referencia del cobro"
 msgstr "Reference"
 
 #: ui_cobrobase.h:408
-#, fuzzy
 msgid "Referencia:"
 msgstr "Reference"
 
@@ -317,15 +316,8 @@ msgid "Solo previsiones"
 msgstr ""
 
 #: cobroview.cpp:127
-#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Tiene que guardar el documento antes de poder imprimirlo.\n"
-"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"You have to save the document before being able to print it.\n"
-"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Tiene que guardar el documento antes de poder imprimirlo."
+msgstr "You must save the document before printing."
 
 #: ui_cobroslistbase.h:442
 msgid "Tipo de cobro:"
@@ -361,6 +353,5 @@ msgid "Trabajador"
 msgstr "Worker"
 
 #: ui_cobrobase.h:415
-#, fuzzy
 msgid "Trabajador:"
-msgstr "Worker"
+msgstr "Worker:"

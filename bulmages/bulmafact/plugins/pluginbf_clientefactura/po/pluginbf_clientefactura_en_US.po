@@ -647,14 +647,12 @@ msgstr "Description of the account"
 
 #: genfacqtoolbutton.cpp:147 genfacqtoolbutton.cpp:280
 #: genfacqtoolbutton.cpp:412
-#, fuzzy
 msgid "Tiene que seleccionar un cliente"
-msgstr "Must select an element"
+msgstr "Must select a client"
 
 #: facturaslist.cpp:145
-#, fuzzy
 msgid "Todas las facturas"
-msgstr "<HR><B>Treating Invoice "
+msgstr "All invoices"
 
 #: facturaslist.cpp:437
 msgid "Total"
@@ -666,23 +664,20 @@ msgstr ""
 
 #: ui_facturabase.h:719 ui_facturaslistbase.h:478 ui_albaranclientebase.h:791
 #: ui_pedidosclientelistbase.h:439 ui_pedidoclientebase.h:736
-#, fuzzy
 msgid "Total:"
 msgstr "Total"
 
 #: ui_albaranclientelistbase.h:453
-#, fuzzy
 msgid "Total: "
-msgstr "Total"
+msgstr "Total: "
 
 #: facturaview.cpp:70 ui_albaranclientelistbase.h:452
 msgid "Trabajador"
 msgstr "Worker"
 
 #: ui_facturabase.h:704 ui_albaranclientebase.h:775 ui_pedidoclientebase.h:722
-#, fuzzy
 msgid "Trabajador:"
-msgstr "Worker"
+msgstr "Worker:"
 
 #: ui_facturabase.h:697 ui_facturabase.h:700
 #, fuzzy

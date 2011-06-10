@@ -129,13 +129,8 @@ msgid "Comentario privado"
 msgstr "Commentary"
 
 #: ui_ticketclientebase.h:778
-#, fuzzy
 msgid "Comentario&s"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: ticketclientelist.cpp:433
 #, fuzzy

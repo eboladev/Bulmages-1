@@ -12,12 +12,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: KBabel 1.11.4\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
 
 #: listdescfacturaview.cpp:42 listlinfacturaview.cpp:57
 #, fuzzy
@@ -29,49 +23,16 @@ msgid "% Recargo E.Q."
 msgstr "% Recàrrec E.Q."
 
 #: ui_facturabase.h:726 ui_albaranclientebase.h:798 ui_pedidoclientebase.h:743
-#, fuzzy
 msgid "&Aceptar"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta"
+msgstr "&Acceptar"
 
 #: ui_facturabase.h:727 ui_albaranclientebase.h:799 ui_pedidoclientebase.h:744
-#, fuzzy
 msgid "&Cancelar"
-msgstr ""
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·la\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·lar"
+msgstr "&Cancel·lar"
 
 #: ui_facturabase.h:713 ui_pedidoclientebase.h:730
-#, fuzzy
 msgid "&Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentari\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaris"
+msgstr "Comentaris"
 
 #: ui_facturabase.h:711 ui_albaranclientebase.h:781 ui_pedidoclientebase.h:728
 #, fuzzy
@@ -215,11 +176,7 @@ msgstr "Comentari"
 #: ui_albaranclientebase.h:785
 #, fuzzy
 msgid "Comentario&s"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentari\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaris"
+msgstr "Comentaris"
 
 #: ui_albaranclientebase.h:784
 #, fuzzy
@@ -245,7 +202,7 @@ msgstr "Configura llistat"
 #: facturaslist.cpp:445
 #, fuzzy
 msgid "Contact factura"
-msgstr "<HR><B>Tractant la factura"
+msgstr "Contact factura"
 
 #: ui_facturaslistbase.h:527 ui_albaranclientelistbase.h:502
 #: ui_pedidosclientelistbase.h:429
@@ -417,62 +374,48 @@ msgid "Filtrar albaranes"
 msgstr "Filtrar balanç"
 
 #: ui_facturaslistbase.h:513 ui_facturaslistbase.h:516
-#, fuzzy
 msgid "Filtrar facturas"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ajusta alçades\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ajustar altures"
+msgstr "Filtrar factures"
 
 #: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
-#, fuzzy
 msgid "Filtrar pedidos"
-msgstr "Filtrar"
+msgstr "Filtrar comandes"
 
 #: facturaview.cpp:71
-#, fuzzy
 msgid "Forma de pago"
-msgstr "<LI> Forma de pagament <B>"
+msgstr "Forma de pagament"
 
 #: ui_facturabase.h:707 ui_albaranclientebase.h:778 ui_pedidoclientebase.h:725
 msgid "Forma de pago:"
 msgstr "Forma de pagament:"
 
 #: ui_albaranclientebase.h:737 ui_albaranclientebase.h:740
-#, fuzzy
 msgid "Guardar albaran"
-msgstr "Desa balanç"
+msgstr "Desa albarà"
 
 #: ui_facturabase.h:669 ui_facturabase.h:672
-#, fuzzy
 msgid "Guardar factura"
-msgstr "Desa assentament"
+msgstr "Desa factura"
 
 #: ui_pedidoclientebase.h:691 ui_pedidoclientebase.h:694
-#, fuzzy
 msgid "Guardar pedido"
-msgstr "Desar"
+msgstr "Desar comanda"
 
 #: ui_facturabase.h:716 ui_albaranclientebase.h:788 ui_pedidoclientebase.h:733
-#, fuzzy
 msgid "I.R.P.F.:"
-msgstr "C.I.F.:"
+msgstr "I.R.P.F.:"
 
 #: listlinfacturaview.cpp:55
-#, fuzzy
 msgid "I.V.A."
-msgstr "..."
+msgstr "I.V.A."
 
 #: facturaslist.cpp:449
-#, fuzzy
 msgid "Id almacen"
-msgstr "<LI> Magatzem <B>"
+msgstr "Id magatzem"
 
 #: listlinfacturaview.cpp:47
-#, fuzzy
 msgid "Id articulo"
-msgstr "<P> Article <B>"
+msgstr "Id article"
 
 #: facturaslist.cpp:448
 #, fuzzy

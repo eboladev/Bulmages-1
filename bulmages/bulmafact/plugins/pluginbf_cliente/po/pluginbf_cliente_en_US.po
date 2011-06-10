@@ -84,13 +84,7 @@ msgstr "Apply Surcharge of Equivalence"
 #: ui_clientslistbase.h:292 ui_clientslistbase.h:295
 #, fuzzy
 msgid "Borrar"
-msgstr ""
-"#-#-#-#-#  bulmalib_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erase\n"
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Delete\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Erase"
+msgstr "Erase"
 
 #: clientslist.cpp:332 ui_clientebase.h:579 ui_clientebase.h:582
 msgid "Borrar cliente"
@@ -151,11 +145,7 @@ msgstr ""
 #: clientslist.cpp:369 clienteview.cpp:72
 #, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comments\n"
-"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
-"Commentaries"
+msgstr "Commentaries"
 
 #: ui_clientslistbase.h:313 ui_clientslistbase.h:316
 msgid "Configurar listado"

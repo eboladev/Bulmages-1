@@ -25,22 +25,20 @@ msgid "&Cancelar"
 msgstr "&Cancel"
 
 #: ui_contratobase.h:490
-#, fuzzy
 msgid "&Comentarios"
-msgstr "&Commentaries:"
+msgstr "&Commentaries"
 
 #: pluginbf_contrato.cpp:62
 msgid "&Contratos"
 msgstr "&Contracts"
 
 #: ui_contratobase.h:489
-#, fuzzy
 msgid "&Facturas"
-msgstr "Invoice"
+msgstr "&Invoice"
 
 #: pluginbf_contrato.cpp:60
 msgid "&Ventas"
-msgstr ""
+msgstr "&Sells"
 
 #: ui_contratoslistbase.h:300 ui_contratoslistbase.h:303
 msgid "Actualizar listado"
