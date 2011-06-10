@@ -40,7 +40,7 @@
 extern "C" PLUGINBF_COMERCIAL_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_Des_ClienteView ( ClienteView * );
-
+extern "C" PLUGINBF_COMERCIAL_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 
 /*
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_saveClient(ClienteView *);

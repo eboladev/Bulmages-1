@@ -49,8 +49,9 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
 {
     blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
+    setDbTableName ( "rutacomercial" );
     setupUi ( this );
-    mui_rutacomercial->setMainCompany ( comp );
+    
     mui_incidenciacomercial->setMainCompany ( comp );
     insertWindow ( windowTitle(), this );
     blScript(this);
@@ -112,8 +113,14 @@ void RutaComercialIncView::pintar()
 void RutaComercialIncView::on_mui_guardar_clicked()
 {
     blDebug ( Q_FUNC_INFO, 0 );
-    mui_rutacomercial->save();
-    mui_incidenciacomercial->save();
+    try {
+      mui_rutacomercial->save();
+      mui_incidenciacomercial->save();
+    } catch(...) {
+      blMsgInfo("Error inesperado al guardar");
+      blDebug ( ("END ", Q_FUNC_INFO), 0, " Error al guardar" );
+      throw -1;
+    } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -128,7 +135,9 @@ int RutaComercialIncView::load ( QString id, QString id1 )
 {
     blDebug ( Q_FUNC_INFO, 0 );
     int err = mui_rutacomercial->load ( id );
-    err = mui_incidenciacomercial->load ( id1 );
+    if (id1 != "") {
+      err = mui_incidenciacomercial->load ( id1 );
+    } // end if
     setWindowTitle ( _ ( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
     insertWindow ( windowTitle(), this );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -142,8 +151,12 @@ int RutaComercialIncView::load ( QString id, QString id1 )
 void RutaComercialIncView::on_mui_aceptar_clicked()
 {
     blDebug ( Q_FUNC_INFO, 0 );
-    on_mui_guardar_clicked();
-    close();
+    try {
+      on_mui_guardar_clicked();
+      close();
+    } catch (...) {
+      return;
+    } // end try
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

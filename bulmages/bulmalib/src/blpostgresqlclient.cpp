@@ -507,6 +507,7 @@ QString BlPostgreSqlClient::dbName()
 BlPostgreSqlClient::BlPostgreSqlClient()
 {
     blDebug ( "BlPostgreSqlClient::BlPostgreSqlClient", 0 );
+    conn = NULL;
     m_insideTransaction = FALSE;
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -855,18 +856,33 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
     blDebug ( "BlPostgreSqlClient::run", 0, Query );
     PGresult *result = NULL;
     try {
+      
+        if (!conn) {
+	  throw -1;
+	} // end if
+      
         /// Prova de control de permisos.
         if ( g_confpr->value( CONF_PRIVILEGIOS_USUARIO ) != "1" && ( Query.left ( 6 ) == "DELETE" || Query.left ( 6 ) == "UPDATE" || Query.left ( 6 ) == "INSERT" ) )
             throw 42501;
+	
+        blDebug ( "1 BlPostgreSqlClient::run", 0, QString::number(numParams) );
+	
         /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result=PQexecParams(  conn, ( const char * ) Query.toUtf8()  , 
                      numParams, NULL, params, NULL, NULL, 0);
         
-        if ( !result )
+        blDebug ( "2 BlPostgreSqlClient::run", 0, Query );
+
+	if ( !result )
             throw - 1;
         if ( PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus ( result ) != 2 )
             throw - 1;
+	
+        blDebug ( "3 BlPostgreSqlClient::run", 0, Query );
+
         PQclear ( result );
+	
+	
         blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return 0;
     } catch ( int e ) {

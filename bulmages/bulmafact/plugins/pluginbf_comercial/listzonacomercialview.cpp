@@ -46,6 +46,8 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
     blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
+    /// Aunque no hay campos establecemos la tabla para obtener permisos
+    setDbTableName ( "zonacomercial" );
     mui_listado->setMainCompany ( comp );
     mui_listado->load();
     insertWindow ( windowTitle(), this );

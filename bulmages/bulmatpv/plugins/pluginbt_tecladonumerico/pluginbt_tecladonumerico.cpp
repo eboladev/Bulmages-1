@@ -61,7 +61,6 @@ int entryPoint ( BtBulmaTPV *tpv )
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_tecl = new TecladoNumerico ( etpv, g_doc1 );
-// etpv->pWorkspace()->addSubWindow(g_tecl);
     g_doc1->setWidget ( g_tecl );
     return 0;
 }

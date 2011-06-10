@@ -35,6 +35,8 @@
 #include "blconfiguration.h"
 #include "bldatesearch.h"
 #include "blfunctions.h"
+#include "blapplication.h"
+#include "bfbulmafact.h"
 
 #define coma "'"
 
@@ -45,12 +47,23 @@
 \param parent
 **/
 RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
-        :  RutaComercial ( comp, parent )
+        :  BfForm ( comp, parent )
 {
     blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
+    setTitleName ( _ ( "Ruta comercial" ) );
+    setDbTableName ( "rutacomercial" );
+    setDbFieldId ( "idrutacomercial" );
+    addDbField ( "idrutacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador" ) );
+    addDbField ( "fecharutacomercial", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha" ) );
+    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Familia" ) );
+    addDbField ( "comentariosrutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+    addDbField ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
+    addDbField ( "refrutacomercial",  BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+
+    
     /// Establecemos los parametros de busqueda del Cliente
     mui_idcliente->setMainCompany ( comp );
     mui_idcliente->setLabel ( _ ( "Cliente:" ) );
@@ -58,8 +71,9 @@ RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
     mui_idcliente->m_valores["cifcliente"] = "";
     mui_idcliente->m_valores["nomcliente"] = "";
 
+    pintar();
     dialogChanges_readValues();
-
+    blScript(this);
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -68,20 +82,35 @@ RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
 /**
 \param parent
 **/
+
 RutaComercialView::RutaComercialView ( QWidget *parent )
-        : RutaComercial ( NULL, parent )
+        : BfForm ( ((BfBulmaFact *) g_main)->company(), parent )
 {
     blDebug ( Q_FUNC_INFO, 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
+    setTitleName ( _ ( "Ruta comercial" ) );
+    setDbTableName ( "rutacomercial" );
+    setDbFieldId ( "idrutacomercial" );
+    addDbField ( "idrutacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador" ) );
+    addDbField ( "fecharutacomercial", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha" ) );
+    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Familia" ) );
+    addDbField ( "comentariosrutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+    addDbField ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
+    addDbField ( "refrutacomercial",  BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+
+    
     /// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setMainCompany ( ((BfBulmaFact *) g_main)->company() );
     mui_idcliente->setLabel ( _ ( "Cliente:" ) );
     mui_idcliente->setTableName ( "cliente" );
     mui_idcliente->m_valores["cifcliente"] = "";
     mui_idcliente->m_valores["nomcliente"] = "";
 
+    pintar();
     dialogChanges_readValues();
+    blScript(this);
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -93,61 +122,5 @@ RutaComercialView::~RutaComercialView()
 {
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
-
-
-///
-/**
-\param comp
-**/
-void RutaComercialView::setMainCompany ( BfCompany *comp )
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    BlMainCompanyPointer::setMainCompany ( comp );
-    mui_idcliente->setMainCompany ( comp );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-
-
-///
-/**
-\return
-**/
-int RutaComercialView::save()
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    if ( mui_fecharutacomercial->text() == "" )
-        return 0;
-    setDbValue ( "fecharutacomercial", mui_fecharutacomercial->text() );
-    setDbValue ( "idcliente", mui_idcliente->id() );
-    setDbValue ( "comentariosrutacomercial", mui_comentrutacomercial->toPlainText() );
-    setDbValue ( "horarutacomercial", mui_horarutacomercial->text() );
-    setDbValue ( "refrutacomercial", mui_refrutacomercial->text() );
-    int err = RutaComercial::save();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-    return err;
-}
-
-
-///
-/**
-\param id
-\return
-**/
-int RutaComercialView::load ( QString id )
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    int err = RutaComercial::load ( id );
-    setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idrutacomercial" ) );
-    mui_fecharutacomercial->setText ( dbValue ( "fecharutacomercial" ) );
-    mui_idcliente->setId ( dbValue ( "idcliente" ) );
-    mui_comentrutacomercial->setPlainText ( dbValue ( "comentariosrutacomercial" ) );
-    mui_horarutacomercial->setText ( dbValue ( "horarutacomercial" ) );
-    mui_refrutacomercial->setText ( dbValue ( "refrutacomercial" ) );
-    dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-    return err;
-}
-
-
 
 

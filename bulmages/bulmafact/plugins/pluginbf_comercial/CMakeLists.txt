@@ -7,12 +7,11 @@ set (plugin pluginbf_comercial)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
 
 # Exclude files with no QObject macro.
 file(GLOB plugin_NO_MOCS pluginbf_comercial.h rutacomercial.h incidenciacomercial.h pdefs_pluginbf_comercial.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
-file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
@@ -51,6 +50,7 @@ ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
+
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
@@ -103,9 +103,11 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente)
+
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)
+
 
 install(DIRECTORY openreports/ 
       DESTINATION share/bulmages/openreports

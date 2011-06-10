@@ -35,6 +35,8 @@
 #include "rutacomerciallist.h"
 #include "listzonacomercialview.h"
 
+BfBulmaFact *g_bges;
+
 ///
 /**
 **/
@@ -120,6 +122,8 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
+    g_bges = bges;
+    
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Comercial", "0.5.9");
 
@@ -127,9 +131,17 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_comercial", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Comercial *plug = new PluginBf_Comercial();
-    plug->inicializa ( bges );
+
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    return 0;
+}
+
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
+    if ( comp->hasTablePrivilege ( "rutacomercial", "SELECT" ) ) {
+      PluginBf_Comercial *plug = new PluginBf_Comercial();
+      plug->inicializa ( g_bges );
+    }// end if
     return 0;
 }
 

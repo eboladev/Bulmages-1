@@ -315,7 +315,7 @@ int BlWindowListDock::insertWindow ( QString nombre, QObject *obj, bool compdup,
             if ( m->object() == obj ) {
                 m->setName ( nombre );
 		m->setTitle ( titulo );
-		blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La ventana '$1' ya existe")).arg(nombre) );
+		blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La ventana '%1' ya existe")).arg(nombre) );
                 return 0;
             } // end if
 
@@ -369,7 +369,7 @@ int BlWindowListDock::insertWindow ( QString nombre, QObject *obj, bool compdup,
 	    if ( m->object() == obj ) {
 #endif
                 m_listBox->setCurrentItem ( m );
-		blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Se ha encontrado la ventana '$1'")).arg(nombre) );
+		blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Se ha encontrado la ventana '%1'")).arg(nombre) );
                 return 0;
             } // end if
             i++;

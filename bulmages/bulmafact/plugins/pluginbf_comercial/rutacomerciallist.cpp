@@ -30,6 +30,8 @@
 #include "blfunctions.h"
 #include "blconfiguration.h"
 
+#include "bfbulmafact.h"
+#include "blmainwindow.h"
 
 ///
 /**
@@ -107,6 +109,7 @@ void RutaComercialList::setMainCompany ( BfCompany *comp )
 {
     blDebug ( Q_FUNC_INFO, 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
+//    setMainCompany(comp);
     m_idcliente->setMainCompany ( comp );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
@@ -155,12 +158,24 @@ void RutaComercialList::editar ( int row )
     blDebug ( Q_FUNC_INFO, 0 );
     QString idrutacomercial = mui_list->dbValue ( "idrutacomercial", row );
     QString idincidenciacomercial = mui_list->dbValue ( "idincidenciacomercial", row );
+
+    /**
+    BfCompany *comp = ((BfBulmaFact *) g_main)->company();
+    comp->loadQuery("SELECT 1 + 2");
+    
+    RutaComercialView *rut = new RutaComercialView (  this);
+    rut->setMainCompany((BfCompany *) mainCompany() );
+    rut->load(idrutacomercial);
+    rut->show();
+    **/
+
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->load ( idrutacomercial, idincidenciacomercial ) )
         return;
     mainCompany() ->m_pWorkspace->addSubWindow ( rut );
     mainCompany() ->insertWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
+
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

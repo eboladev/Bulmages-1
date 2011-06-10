@@ -589,13 +589,13 @@ int BlDbRecord::dbSave ( QString &id )
         if ( m_nuevoCampo ) {
             QString query = "INSERT INTO " + m_tablename + " (" + listcampos + ") VALUES (" + listvalores + ")";
             m_dbConnection->runQuery ( query );
-            blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'.")).arg(query) );
+            blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'.")).arg(query) );
             BlDbRecordSet *cur = m_dbConnection->loadQuery ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
             id = cur->value( m_campoid );
             delete cur;
         } else {
             QString query = "UPDATE " + m_tablename + " SET " + queryupdate + " WHERE " + querywhere;
-            blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'.")).arg(query) );
+            blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'.")).arg(query) );
             m_dbConnection->runQuery ( query );
         } // end if
         m_nuevoCampo = FALSE;
@@ -631,8 +631,8 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
     } // end while
 
     if ( !campo ) {
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '$1' no encontrado.")).arg(nomb) );
-	blMsgError(QString(_("Campo: '$1' no encontrado.")).arg(nomb));
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '%1' no encontrado.")).arg(nomb) );
+	blMsgError(QString(_("Campo: '%1' no encontrado.")).arg(nomb));
         return -1;
     } // end if
 
@@ -663,8 +663,8 @@ QString BlDbRecord::dbValue ( QString nomb )
         campo = m_lista.value ( ++i );
 
     if ( !campo ) {
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '$1' no encontrado.")).arg(nomb) );
-	blMsgError(QString(_("Campo: '$1' no encontrado.")).arg(nomb));
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '%1' no encontrado.")).arg(nomb) );
+	blMsgError(QString(_("Campo: '%1' no encontrado.")).arg(nomb));
     } else if ( campo->fieldName() == nomb ) {
         valor = campo->valorcampo();
     } // end if

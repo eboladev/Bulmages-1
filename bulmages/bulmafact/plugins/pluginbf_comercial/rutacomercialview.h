@@ -27,7 +27,7 @@
 
 #include "ui_rutacomercialbase.h"
 #include "blpostgresqlclient.h"
-#include "rutacomercial.h"
+#include "bfform.h"
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 
@@ -35,7 +35,7 @@
 class BfCompany;
 
 
-class RutaComercialView : public RutaComercial, public Ui_RutaComercialBase
+class RutaComercialView : public BfForm, public Ui_RutaComercialBase
 {
     Q_OBJECT
 
@@ -43,10 +43,12 @@ public:
     RutaComercialView ( BfCompany *, QWidget *parent = NULL );
     RutaComercialView ( QWidget *parent = NULL );
     ~RutaComercialView();
+/*
     virtual void pintar() {};
     void setMainCompany ( BfCompany *comp );
     virtual int save();
     virtual int load ( QString id );
+*/
 };
 
 #endif
