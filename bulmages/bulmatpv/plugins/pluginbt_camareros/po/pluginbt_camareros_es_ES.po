@@ -78,11 +78,3 @@ msgstr ""
 msgid "Registro de camarero"
 msgstr ""
 
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Form"
-#~ msgstr "Form"
-
-#~ msgid "Salir"
-#~ msgstr "Salir"

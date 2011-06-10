@@ -6154,9 +6154,8 @@ msgid "Extender asiento"
 msgstr "Extendre seient"
 
 #: pluginbf_asterisk.cpp:131
-#, fuzzy
 msgid "Extension."
-msgstr "Atenció "
+msgstr "Extensió "
 
 #: bcextractoview.cpp:52 ui_bcextractobase.h:714
 msgid "Extracto de Cuentas"
@@ -6176,7 +6175,7 @@ msgstr "F11"
 
 #: ui_bcplancontablelistbase.h:347
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
 #: ui_bcplancontablelistbase.h:342 ui_bcmodelo347listbase.h:255
 #: ui_listproyectosbase.h:160 ui_bcamortizacionlistbase.h:157

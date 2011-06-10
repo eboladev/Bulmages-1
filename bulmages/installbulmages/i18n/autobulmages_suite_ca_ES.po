@@ -5308,7 +5308,6 @@ msgid "Existe una factura de este proveedor con la misma referencia que este alb
 msgstr "Existeix una factura d'aquest proveïdor amb la mateixa referència que aquest albarà. Desitja obrir-la per verificar-la?"
 
 #: compraventaview.cpp:466
-#, fuzzy
 msgid "Existe una factura de este proveedor con la misma referencia que este albaran. Desea rehacerla ?"
 msgstr "Existeix una factura d'aquest proveïdor amb la mateixa referència que aquest albarán. Desitja refer-la?"
 
@@ -5321,48 +5320,40 @@ msgid "Exportando datos a SXC"
 msgstr "Exporta dades a SXC"
 
 #: blimportexport.cpp:698
-#, fuzzy
 msgid "Exportando nueva forma de pago"
 msgstr "Exportant nova forma de pagament"
 
 #: ui_articleslistbase.h:353 ui_clientslistbase.h:314 ui_clientslistbase.h:317
 #: ui_clientslistbase.h:326 ui_providerslistbase.h:319
 #: ui_providerslistbase.h:322 ui_providerslistbase.h:331
-#, fuzzy
 msgid "Exportar"
 msgstr "Exportar"
 
 #: ui_balancetreebase.h:410 ui_balancetreebase.h:413
-#, fuzzy
 msgid "Exportar a Hoja de Calculo"
-msgstr "Exportar a Full de càlcul"
+msgstr "Exportar a full de càlcul"
 
 #: pluginbl_subform2ods.cpp:79 pluginbl_subform2ods.cpp:91
 msgid "Exportar a hoja de calculo (ODS)"
 msgstr "Exportar a hoja de calculo (ODS)"
 
 #: pluginbl_subform2sxc.cpp:77 pluginbl_subform2sxc.cpp:89
-#, fuzzy
 msgid "Exportar a hoja de calculo (SXC)"
-msgstr "Exportar a Full de càlcul (SXC)"
+msgstr "Exportar a full de càlcul (SXC)"
 
 #: ui_articleslistbase.h:341 ui_articleslistbase.h:344
-#, fuzzy
 msgid "Exportar articulos"
 msgstr "Exportar articles"
 
 #: ui_bcasientobase.h:561 ui_bcasientobase.h:564
-#, fuzzy
 msgid "Exportar asiento"
 msgstr "Exportar seient"
 
 #: ui_bcplancontablelistbase.h:309 ui_bcplancontablelistbase.h:312
-#, fuzzy
 msgid "Exportar cuentas"
 msgstr "Exportar comptes"
 
 #: ui_bcasientobase.h:530 ui_bcasientobase.h:533
-#, fuzzy
 msgid "Extender asiento"
 msgstr "Estendre seient"
 
@@ -5376,7 +5367,6 @@ msgid "Extracto de Cuentas"
 msgstr "Extracte de comptes"
 
 #: alumnoslist.cpp:280
-#, fuzzy
 msgid "F. Nacimiento"
 msgstr "Data de naixement"
 

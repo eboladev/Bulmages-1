@@ -600,64 +600,67 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.trataOpenReports()
 
     def marcar(self, plug, rec, first = 0):
-        print "marcar " + plug
         i = 0
-        while (i < self.mui_plugins1.rowCount()):
-            if (self.mui_plugins1.item(i,10).text() == plug):
-                if (self.mui_plugins1.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+        if plug !="":
+            print "marcar " + plug
+            while (i < self.mui_plugins1.rowCount()):
+                if (self.mui_plugins1.item(i,10).text() == plug):
+                    if (self.mui_plugins1.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+                        if (rec == 1):
+                            self.mui_plugins1.item(i,0).setCheckState(Qt.Checked)
+                            # Desmarcamos las incompatibilidades
+                            self.arr = self.mui_plugins1.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                            if self.arr != ['']:
+                                for self.dep in self.arr:
+                                    self.desmarcar(self.dep,1)
+                            # Marcamos las dependencias
+                            self.arr = self.mui_plugins1.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                            if self.arr != ['']:
+                                for self.dep in self.arr:
+                                    self.marcar(self.dep,1)
+                i = i + 1
+            i = 0
+            while (i < self.mui_plugins.rowCount()):
+                if (self.mui_plugins.item(i,10).text() == plug):
+                    if (self.mui_plugins.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+                        self.mui_plugins.item(i,0).setCheckState(Qt.Checked)
+                        if (rec == 1):
+                            # Desmarcamos las incompatibilidades
+                            self.arr = self.mui_plugins.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                            if self.arr != ['']:
+                                for self.dep in self.arr:
+                                    self.desmarcar(self.dep,1)
+                            # Marcamos las dependencias
+                            self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                            if self.arr != ['']:
+                                for self.dep in self.arr:
+                                    self.marcar(self.dep,1)
+                i = i + 1
+            print "fin de marcar " + plug
+
+    def desmarcar(self, plug, rec, first = 0):
+        i = 0
+        if plug !="":
+            print "desmarcar " + plug 
+            # Iteramos para la lista de plugins de bulmafact
+            while (i < self.mui_plugins1.rowCount()):
+                print self.mui_plugins1.item(i,10).text() + " --> " + self.mui_plugins1.item(i,5).text()
+                if (self.mui_plugins1.item(i, 0).checkState() == Qt.Checked or first == 1):
+                    # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
+                    if (plug == self.mui_plugins1.item(i,10).text()) :
+                        self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
+                    # Si esta marcado el sistema recursivo entonces desmarcamos tambien las dependencias.
                     if (rec == 1):
-                        self.mui_plugins1.item(i,0).setCheckState(Qt.Checked)
-                        # Desmarcamos las incompatibilidades
-                        self.arr = self.mui_plugins1.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-                        if self.arr != ['']:
-                            for self.dep in self.arr:
-                                self.desmarcar(self.dep,1)
                         # Marcamos las dependencias
                         self.arr = self.mui_plugins1.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                         if self.arr != ['']:
                             for self.dep in self.arr:
-                                self.marcar(self.dep,1)
-            i = i + 1
-        i = 0
-        while (i < self.mui_plugins.rowCount()):
-            if (self.mui_plugins.item(i,10).text() == plug):
-                if (self.mui_plugins.item(i, 0).checkState() == Qt.Unchecked or first == 1):
-                    self.mui_plugins.item(i,0).setCheckState(Qt.Checked)
-                    if (rec == 1):
-                        # Desmarcamos las incompatibilidades
-                        self.arr = self.mui_plugins.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-                        if self.arr != ['']:
-                            for self.dep in self.arr:
-                                self.desmarcar(self.dep,1)
-                        # Marcamos las dependencias
-                        self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-                        if self.arr != ['']:
-                            for self.dep in self.arr:
-                                self.marcar(self.dep,1)
-            i = i + 1
-
-    def desmarcar(self, plug, rec, first = 0):
-        print "desmarcar " + plug
-        i = 0
-        # Iteramos para la lista de plugins de bulmafact
-        while (i < self.mui_plugins1.rowCount()):
-            print self.mui_plugins1.item(i,10).text() + " --> " + self.mui_plugins1.item(i,5).text()
-            if (self.mui_plugins1.item(i, 0).checkState() == Qt.Checked or first == 1):
-                # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
-                if (plug == self.mui_plugins1.item(i,10).text()) :
-                    self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
-                # Si esta marcado el sistema recursivo entonces desmarcamos tambien las dependencias.
-                if (rec == 1):
-                    # Marcamos las dependencias
-                    self.arr = self.mui_plugins1.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-                    if self.arr != ['']:
-                        for self.dep in self.arr:
-                            if (self.dep == plug):
-                                print "ENCONTRADO " + self.dep
-                                self.desmarcar(self.mui_plugins1.item(i,10).text(),1)
-                                self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
-            i = i + 1
-        i = 0
+                                if (self.dep == plug):
+                                    print "ENCONTRADO " + self.dep
+                                    self.desmarcar(self.mui_plugins1.item(i,10).text(),1)
+                                    self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
+                i = i + 1
+            i = 0
         # Iteramos para la lista de plugins de bulmaTPV
         while (i < self.mui_plugins.rowCount()):
             print self.mui_plugins.item(i,10).text() + " --> " + self.mui_plugins.item(i,5).text()
