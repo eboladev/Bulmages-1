@@ -35,5 +35,7 @@ extern "C" PLUGINBT_PULSERAS_EXPORT int BlToolButton_released(BlToolButton *);
 extern "C" PLUGINBT_PULSERAS_EXPORT int BtCompany_cobrar(BtCompany *);
 extern "C" PLUGINBT_PULSERAS_EXPORT int BtTicket_pintar(BtTicket *);
 extern "C" PLUGINBT_PULSERAS_EXPORT int BtTicket_borrarArticulo(BtTicket *);
+extern "C" PLUGINBT_PULSERAS_EXPORT int BtTicket_exportXML_Post(BtTicket *);
+extern "C" PLUGINBT_PULSERAS_EXPORT int BtTicket_syncXML_Post(BtTicket *);
 #endif
 

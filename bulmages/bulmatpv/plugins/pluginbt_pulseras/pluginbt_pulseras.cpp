@@ -32,6 +32,8 @@
 #include "pulsera.h"
 
 #include <QHBoxLayout>
+#include <QDomDocument>
+#include <QDomNode>
 
 #define ARTICULO_HORA_COMPLETA "36"
 #define ARTICULO_HORA_FRACCION "37"
@@ -216,3 +218,95 @@ int BtTicket_borrarArticulo(BtTicket *tick) {
 	} // end if
     } // end for  
 }
+
+
+int BtTicket_exportXML_Post(BtTicket *tick) {
+  blDebug ( "BtTicket_exportXML_Post", 0 );
+  tick->m_textoXML += "\t<LISTAPULSERAS>\n";
+  for (int i = 0; i < g_pulseras.size(); ++i) {
+      Pulsera * pul = g_pulseras.at(i);
+      if (pul->m_ticketpulsera == tick) {
+	tick->m_textoXML += "\t\t<PULSERA>\n";
+	tick->m_textoXML += "\t\t\t<NOMBREPULSERA>"+pul->m_nombrepulsera+"</NOMBREPULSERA>\n";
+	tick->m_textoXML += "\t\t\t<HORAINICIALPULSERA>"+pul->m_horainicial.toString("h:m")+"</HORAINICIALPULSERA>\n";
+	tick->m_textoXML += "\t\t\t<SINFRACCIONESPULSERA>"+(pul->m_sinfracciones? QString("TRUE"):QString("FALSE"))+"</SINFRACCIONESPULSERA>\n";
+	tick->m_textoXML += "\t\t</PULSERA>\n";
+      } // end if
+  } // end for
+  tick->m_textoXML += "\t</LISTAPULSERAS>\n";
+  blMsgInfo(tick->m_textoXML);
+  return 0;
+}
+
+int BtTicket_syncXML_Post(BtTicket *tick) {
+  
+    QList<Pulsera *> pulserasusadas;
+    QDomDocument doc ( "mydocument" );
+
+    if ( !doc.setContent ( tick->m_textoXML ) ) {
+	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
+        return 0;
+    } // end if
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement ( "LISTAPULSERAS" );
+    QDomNodeList nodos = principal.elementsByTagName ( "PULSERA" );
+    
+    int i = 0;
+    while (i < nodos.count()) {
+      
+        QDomNode ventana = nodos.item ( i++ );
+	QDomElement enombre = ventana.firstChildElement("NOMBREPULSERA");
+	QDomElement ehora = ventana.firstChildElement("HORAINICIALPULSERA");
+	QDomElement efracciones = ventana.firstChildElement("SINFRACCIONESPULSERA");
+	
+	bool encontrado = FALSE;
+	
+	/// Buscamos la pulsera correspondiente a esta.
+	/// Si la encontramos no hacemos nada porque ya esta en el sistema y no requiere de accion alguna.
+	for (int i = 0; i < g_pulseras.size(); ++i) {
+	    Pulsera * pul = g_pulseras.at(i);
+	    if (pul->m_ticketpulsera == tick) {
+	      if (pul->m_nombrepulsera == enombre.text()) {
+		 encontrado = TRUE;
+		 pulserasusadas.append(pul);
+	      } // end if
+	    } // end if
+	} // end for
+	
+	/// Si no la encontramos entonces si que hay que agregarla, pero seguramente ya tenga sus lineas correspondientes.
+	if (! encontrado) {
+	    BlDbRecord *lineaticket = NULL;
+	    BlDbRecord *lineafticket = NULL;
+	    for ( int i = 0; i < tick->listaLineas()->size(); ++i ) {
+		    BlDbRecord *item = tick->listaLineas()->at ( i );
+		    if (item->dbValue ( "desclalbaran" ).startsWith ( "p."+enombre.text() +" -- "+ ehora.text() + "-" )) {
+			lineaticket = item;
+		    } // end if
+		    if (item->dbValue ( "desclalbaran" ).startsWith ( "fp."+enombre.text() +" -- "+ ehora.text() + "-" )) {
+			lineafticket = item;
+		    } // end if
+	    } // end for
+	  
+	    Pulsera *pul = new Pulsera(tick, enombre.text(), lineaticket);
+	    pul->m_lineaticketfraccion = lineafticket;
+	    pul->m_horainicial = QDateTime::fromString(ehora.text(), "h:m");
+	    pul->m_sinfracciones = (efracciones.text() == "TRUE");
+	    pulserasusadas.append(pul);
+	}  // end if
+    } // end while
+    
+    /// Borramos todas las pulseras del sistema que no se han sincronizado porque significa que las han borrado en otro lado.
+    for (int i = 0; i < g_pulseras.size(); ++i) {
+	Pulsera * pul = g_pulseras.at(i);
+	if (pul->m_ticketpulsera == tick) {
+	  if (!pulserasusadas.contains(pul)) {
+	      delete pul;
+	  } // end if
+	} // end if
+    } // end for
+    return 0;
+} 
+
+
+

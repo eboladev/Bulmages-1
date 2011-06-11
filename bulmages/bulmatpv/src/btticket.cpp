@@ -610,12 +610,6 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
        
     int numlinea = listaLineas()->indexOf ( linea );
 
-    /*
-    if (dbValue("numalbaran") != "") {
-	blMsgInfo("Operacion no permitida. Debe Cobrar el Ticket");
-	return;
-    } // end if
-*/
     /// Registramos el cambio en el control de logs.
     agregarLog("BORRAR LINEA "+ linea->dbValue("nomarticulo"));
 
@@ -626,7 +620,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
             m_lineaActual = listaLineas()->count() > 0 ? listaLineas()->at ( listaLineas()->count() - 1 ) : NULL;
         } else {
             m_lineaActual = listaLineas()->count() > 0 ? listaLineas() ->at ( numlinea ) : NULL;
-        }
+        } // end if
     } else {
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
     } // end if
@@ -638,34 +632,40 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
 /// Hace la exportacion del campo a XML
 QString BtTicket::exportXML() {
     blDebug ( "BtTicket::exportXML", 0 );
-    QString val;
+
     int error;
     BlDbField *campo;
 
-    val = "<BTTICKET>\n";
-    val += "\t<NOMTICKET>" + dbValue("nomticket") + "</NOMTICKET>\n"; 
-    val += "\t" + BlDbRecord::exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
-    val += "\t<LISTALINEAS>\n";
+    m_textoXML = "<BTTICKET>\n";
+    m_textoXML += "\t<NOMTICKET>" + dbValue("nomticket") + "</NOMTICKET>\n"; 
+    m_textoXML += "\t" + BlDbRecord::exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
+    m_textoXML += "\t<LISTALINEAS>\n";
     BlDbRecord *linea1;
     for ( int i = 0; i < m_listaLineas->size(); ++i ) {
         linea1 = m_listaLineas->at ( i );
-        val += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
+        m_textoXML += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
     } // end for
-    val += "\t</LISTALINEAS>\n";
+    m_textoXML += "\t</LISTALINEAS>\n";
     
     g_plugins->lanza ( "BtTicket_exportXML_Post", this );    
     
-    val += "</BTTICKET>\n";
-
-    return val;
+    m_textoXML += "</BTTICKET>\n";
+    
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
+    return m_textoXML;
+
 }
 
 
 bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     blDebug ( "BtTicket::syncXML", 0 );
 
+    /* Para que los plugins tambien puedan tratar sus cosas ponemos el texto XML a disposicion de todos en la variable m_textoXML */
+    m_textoXML = text;
 
+    g_plugins->lanza ( "BtTicket_syncXML", this );
+    
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
@@ -714,8 +714,12 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
             m_lineaActual = linea1;
         } // end if
     } // end while
-    return 1;
+    
+    g_plugins->lanza ( "BtTicket_syncXML_Post", this ); 
+
     blDebug ( "BtTicket::syncXML", 0 );
+    
+    return 1;
 }
 
 

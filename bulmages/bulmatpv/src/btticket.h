@@ -45,11 +45,11 @@ private:
     QList<BlDbRecord *> *m_listaLineas;
     BlDbRecord *m_lineaActual;
     QString m_nomTicketDefecto;
+public:
+    QString m_textoXML; /* Usado al generar el XML del ticket para que los plugins puedan alterar el texto y agregar sus partes*/
 
 public:
     virtual void pintar();
-
-public:
     BtTicket ( BlMainCompany *emp = NULL, QWidget *parent = 0 );
     virtual ~BtTicket();
     QString nomTicketDefecto();
@@ -75,10 +75,6 @@ public:
     void borrarLinea ( BlDbRecord *linea );
     virtual QString exportXML();
     virtual bool syncXML(const QString &text, bool insertarSiempre = FALSE);
-/*
-    virtual int generateRML ( const QString & );
-    virtual int generateRML ( void );
-*/
     void agregarLog(const QString &log);
     
 public slots:
