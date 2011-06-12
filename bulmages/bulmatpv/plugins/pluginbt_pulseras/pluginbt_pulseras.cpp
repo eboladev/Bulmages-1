@@ -289,7 +289,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	if (! encontrado) {
 	    BlDbRecord *lineaticket = NULL;
 	    BlDbRecord *lineafticket = NULL;
-	    for ( int j = 0; i < tick->listaLineas()->size(); ++j ) {
+	    for ( int j = 0; j < tick->listaLineas()->size(); ++j ) {
 		    BlDbRecord *item = tick->listaLineas()->at ( j );
 		    if (item->dbValue ( "desclalbaran" ).startsWith ( "p."+enombre.text() +" -- "+ ehora.text() + "-" )) {
 			fprintf(stderr,"Encontrada la linea de ticket para la pulsera \n");
