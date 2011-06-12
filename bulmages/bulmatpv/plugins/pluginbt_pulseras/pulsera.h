@@ -36,8 +36,8 @@ public:
   QString m_nombrepulsera;
   QString m_nombrepropietario;
   BtTicket *m_ticketpulsera;
-  QDateTime m_horainicial;
-  QDateTime m_horafinal;
+  QTime m_horainicial;
+//  QDateTime m_horafinal;
   BlDbRecord *m_lineaticket;
   BlDbRecord *m_lineaticketfraccion;
   bool m_sinfracciones;

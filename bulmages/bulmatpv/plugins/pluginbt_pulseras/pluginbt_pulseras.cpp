@@ -176,18 +176,24 @@ int BtCompany_cobrar(BtCompany *emp) {
 
 
 int BtTicket_pintar(BtTicket *tick) {
+    blDebug ( "BtTicket_pintar", 0 );
     static int semaforo = 0;
   
     if (semaforo == 0) {
+      	semaforo = 1;
 	/// Facturamos todas las pulseras del ticket.
 	for ( int i = 0; i < g_pulseras.size(); ++i ) {
 	    Pulsera * pul = g_pulseras.at(i);
 	    if (pul->m_ticketpulsera == tick) {
-		semaforo = 1;
-		int minutos = (pul->m_horainicial.secsTo(QDateTime::currentDateTime ()) + 1) / 60;
-		pul->m_lineaticket->setDbValue("desclalbaran", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m"));
-		pul->m_lineaticket->setDbValue("nomarticulo", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
-
+		if (!pul->m_lineaticket ) {
+		    blMsgInfo("MENSAJE DE DEPURACION. Creo una linea de ticket que ya deberia existir.");
+		    pul->m_lineaticket = tick->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
+		} // end if
+		int minutos = (pul->m_horainicial.secsTo(QTime::currentTime ()) + 1) / 60;
+		if (minutos < 0 ) minutos = minutos * -1; /* En el imposible caso de tiempos negativos se pone un absurdo */
+		pul->m_lineaticket->setDbValue("desclalbaran", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QTime::currentTime().toString("h:m"));
+		pul->m_lineaticket->setDbValue("nomarticulo", "p."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QTime::currentTime().toString("h:m") );
+		
 		/// Superada la primera hora empiezan las fracciones de 15 minutos.
 		if (minutos > MINUTOS_INICIALES && !pul->m_sinfracciones) {
 		  if (!pul->m_lineaticketfraccion ) {
@@ -195,13 +201,16 @@ int BtTicket_pintar(BtTicket *tick) {
 		  } // end if
 		  int fraccionesminutos = (minutos - MINUTOS_INICIALES) / MINUTOS_FRACCION +1;
 		  pul->m_lineaticketfraccion->setDbValue("cantlalbaran", QString::number(fraccionesminutos));	
-		  pul->m_lineaticketfraccion->setDbValue("desclalbaran", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m"));
-		  pul->m_lineaticketfraccion->setDbValue("nomarticulo", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QDateTime::currentDateTime().toString("h:m") );
+		  pul->m_lineaticketfraccion->setDbValue("desclalbaran", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QTime::currentTime().toString("h:m"));
+		  pul->m_lineaticketfraccion->setDbValue("nomarticulo", "fp."+pul->m_nombrepulsera +" -- "+ pul->m_horainicial.toString("h:m") + "-" + QTime::currentTime().toString("h:m") );
 		} // end if
 	    } // end if
 	} // end for  
 	semaforo = 0;
     } // end if
+    blDebug ( "END BtTicket_pintar", 0 );
+    
+    return 0;
 }
 
 
@@ -217,6 +226,7 @@ int BtTicket_borrarArticulo(BtTicket *tick) {
 	   pul->m_sinfracciones = TRUE;
 	} // end if
     } // end for  
+    return 0;
 }
 
 
@@ -280,16 +290,18 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	    for ( int i = 0; i < tick->listaLineas()->size(); ++i ) {
 		    BlDbRecord *item = tick->listaLineas()->at ( i );
 		    if (item->dbValue ( "desclalbaran" ).startsWith ( "p."+enombre.text() +" -- "+ ehora.text() + "-" )) {
+			fprintf(stderr,"Encontrada la linea de ticket para la pulsera \n");
 			lineaticket = item;
 		    } // end if
 		    if (item->dbValue ( "desclalbaran" ).startsWith ( "fp."+enombre.text() +" -- "+ ehora.text() + "-" )) {
+			fprintf(stderr,"Encontrada la linea de parciales para la pulsera \n");
 			lineafticket = item;
 		    } // end if
 	    } // end for
 	  
 	    Pulsera *pul = new Pulsera(tick, enombre.text(), lineaticket);
 	    pul->m_lineaticketfraccion = lineafticket;
-	    pul->m_horainicial = QDateTime::fromString(ehora.text(), "h:m");
+	    pul->m_horainicial = QTime::fromString(ehora.text(), "h:m");
 	    pul->m_sinfracciones = (efracciones.text() == "TRUE");
 	    pulserasusadas.append(pul);
 	}  // end if
