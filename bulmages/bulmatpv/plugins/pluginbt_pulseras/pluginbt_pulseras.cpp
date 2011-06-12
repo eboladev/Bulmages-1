@@ -234,7 +234,6 @@ int BtTicket_exportXML_Post(BtTicket *tick) {
       } // end if
   } // end for
   tick->m_textoXML += "\t</LISTAPULSERAS>\n";
-  blMsgInfo(tick->m_textoXML);
   return 0;
 }
 
