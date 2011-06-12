@@ -181,6 +181,7 @@ int BtTicket_pintar(BtTicket *tick) {
   
     if (semaforo == 0) {
       	semaforo = 1;
+	fprintf(stderr, "Pongo Semaforo\n");
 	/// Facturamos todas las pulseras del ticket.
 	for ( int i = 0; i < g_pulseras.size(); ++i ) {
 	    Pulsera * pul = g_pulseras.at(i);
@@ -207,6 +208,7 @@ int BtTicket_pintar(BtTicket *tick) {
 	    } // end if
 	} // end for  
 	semaforo = 0;
+	fprintf(stderr, "Quito Semaforo");
     } // end if
     blDebug ( "END BtTicket_pintar", 0 );
     
@@ -273,8 +275,8 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	
 	/// Buscamos la pulsera correspondiente a esta.
 	/// Si la encontramos no hacemos nada porque ya esta en el sistema y no requiere de accion alguna.
-	for (int i = 0; i < g_pulseras.size(); ++i) {
-	    Pulsera * pul = g_pulseras.at(i);
+	for (int j = 0; j < g_pulseras.size(); ++j) {
+	    Pulsera * pul = g_pulseras.at(j);
 	    if (pul->m_ticketpulsera == tick) {
 	      if (pul->m_nombrepulsera == enombre.text()) {
 		 encontrado = TRUE;
@@ -287,8 +289,8 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	if (! encontrado) {
 	    BlDbRecord *lineaticket = NULL;
 	    BlDbRecord *lineafticket = NULL;
-	    for ( int i = 0; i < tick->listaLineas()->size(); ++i ) {
-		    BlDbRecord *item = tick->listaLineas()->at ( i );
+	    for ( int j = 0; i < tick->listaLineas()->size(); ++j ) {
+		    BlDbRecord *item = tick->listaLineas()->at ( j );
 		    if (item->dbValue ( "desclalbaran" ).startsWith ( "p."+enombre.text() +" -- "+ ehora.text() + "-" )) {
 			fprintf(stderr,"Encontrada la linea de ticket para la pulsera \n");
 			lineaticket = item;
@@ -306,7 +308,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	    pulserasusadas.append(pul);
 	}  // end if
     } // end while
-    
+
     /// Borramos todas las pulseras del sistema que no se han sincronizado porque significa que las han borrado en otro lado.
     for (int i = 0; i < g_pulseras.size(); ++i) {
 	Pulsera * pul = g_pulseras.at(i);
