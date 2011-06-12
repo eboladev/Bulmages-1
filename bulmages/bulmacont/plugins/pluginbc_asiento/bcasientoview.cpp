@@ -1044,20 +1044,20 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
     try {
         mainCompany() ->begin();
 
-        QString querycomp = "SELECT * FROM asiento where clase = 2 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
-        BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
-        while (!curcomp -> eof() ) {                                                       
+        QString querycomp = "SELECT * FROM asiento WHERE clase = 2 AND fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";
+        BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);
+        while (!curcomp -> eof() ) {
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
-                muestraasiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::remove ( FALSE );                                                
-                curcomp->nextRecord();                                              
-        } // end if                                                                        
-        delete curcomp; 
+                muestraasiento(curcomp->value("idasiento").toInt());
+                BcAsientoForm::remove ( FALSE );
+                curcomp->nextRecord();
+        } // end if
+        delete curcomp;
 
         /// Creamos un asiento nuevo con la fecha final indicada.
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 2)";
         mainCompany() ->runQuery ( supquery );
-        supquery = "SELECT max(idasiento) as id FROM asiento";
+        supquery = "SELECT MAX(idasiento) AS id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
         int idasiento = cur->value( "id" ).toInt();
         delete cur;
