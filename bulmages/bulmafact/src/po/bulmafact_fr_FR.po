@@ -284,8 +284,8 @@ msgid "Form1"
 msgstr "Form1"
 
 #: bfform.cpp:547
-msgid "I.R.P.F (-"
-msgstr "I.R.P.F.(-"
+msgid "I.R.P.F."
+msgstr "I.R.P.F."
 
 #: bfform.cpp:518
 msgid "I.V.A."
@@ -497,6 +497,3 @@ msgstr "Plein é&cran"
 #: ui_bfconfiguracionbase.h:435
 msgid "Web"
 msgstr "Web"
-
-#~ msgid "Facturacion GPL"
-#~ msgstr "Facturation GPL"

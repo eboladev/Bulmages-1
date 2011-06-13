@@ -409,7 +409,7 @@ msgid "R.E."
 msgstr ""
 
 #: bfform.cpp:547
-msgid "I.R.P.F (-"
+msgid "I.R.P.F."
 msgstr ""
 
 #: bfform.cpp:551

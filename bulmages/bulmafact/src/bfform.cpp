@@ -544,7 +544,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
         BlFixed totirpf = totbaseimp * irpf / 100;
         
         if ( totirpf > 0 ) {
-            tr1 += "    <td>" + blStringEscape ( _ ( "I.R.P.F (-" ) + " " +  irpf.toQString() + ") %", tipoEscape ) + "</td>\n";
+            tr1 += "    <td>" + blStringEscape ( _ ( "I.R.P.F." ) + "  (- " +  irpf.toQString() + ") %", tipoEscape ) + "</td>\n";
             tr2 += "    <td>" + blStringEscape ( l.sprintf ( " %s ", totirpf.toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
         } // end if
 
