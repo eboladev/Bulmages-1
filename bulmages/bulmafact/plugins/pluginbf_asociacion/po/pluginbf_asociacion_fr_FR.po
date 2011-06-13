@@ -66,11 +66,11 @@ msgid "&Reuniones"
 msgstr "&Réunion"
 
 #: ui_convreunionbase.h:368
-msgid "1ª Convocatoria"
+msgid "1a Convocatoria"
 msgstr "1ª Convocation"
 
 #: ui_convreunionbase.h:370
-msgid "2ª Convocatoria"
+msgid "2a Convocatoria"
 msgstr "2ª Convocattion"
 
 #: jdirectivalist.cpp:159 comisioneslist.cpp:149
@@ -280,11 +280,11 @@ msgid "F5"
 msgstr "F5"
 
 #: convreunionview.cpp:56
-msgid "Fecha 1ª Convocatoria"
+msgid "Fecha 1a Convocatoria"
 msgstr "Date 1ª Convocation"
 
 #: convreunionview.cpp:57
-msgid "Fecha 2ª Convocatoria"
+msgid "Fecha 2a Convocatoria"
 msgstr "Date 2ª Convocation"
 
 #: comisionview.cpp:53 comisionview.cpp:63 jdirectivaview.cpp:57

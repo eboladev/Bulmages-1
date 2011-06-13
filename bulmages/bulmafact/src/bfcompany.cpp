@@ -96,7 +96,7 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmafact->statusBar() ->showMessage ( dbName(), 2000 );
-    m_bulmafact->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Facturación GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() );
+    m_bulmafact->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Facturacion GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() );
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

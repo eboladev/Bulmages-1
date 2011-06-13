@@ -53,10 +53,10 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         setDbTableName ( "reunion" );
         setDbFieldId ( "idreunion" );
         addDbField ( "idreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID reunion" ) );
-        addDbField ( "fecha1convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 1ª Convocatoria" ) );
-        addDbField ( "fecha2convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 2ª Convocatoria" ) );
-        addDbField ( "hora1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora 1ª Convocatoria" ) );
-        addDbField ( "hora2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora 2ª Convocatoria" ) );
+        addDbField ( "fecha1convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 1a Convocatoria" ) );
+        addDbField ( "fecha2convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 2a Convocatoria" ) );
+        addDbField ( "hora1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora 1a Convocatoria" ) );
+        addDbField ( "hora2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora 2a Convocatoria" ) );
         addDbField ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Tipo" ) );
         addDbField ( "conceptoreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Concepto" ) );
         addDbField ( "resolucionreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Resolucion" ) );

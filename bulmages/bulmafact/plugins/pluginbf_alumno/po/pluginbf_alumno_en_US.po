@@ -433,9 +433,8 @@ msgid "Nuevo alumno"
 msgstr "New student"
 
 #: listcuotasporalumnoview.cpp:97
-#, fuzzy
-msgid "Número de alumnos"
-msgstr "Field name"
+msgid "Numero de alumnos"
+msgstr "Number of students"
 
 #: alumnoview.cpp:63
 msgid "Observaciones"

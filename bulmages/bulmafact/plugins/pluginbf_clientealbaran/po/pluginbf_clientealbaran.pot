@@ -29,7 +29,7 @@ msgid "Nombre articulo"
 msgstr ""
 
 #: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
+msgid "No linea"
 msgstr ""
 
 #: bfclientealbaransubform.cpp:49 albaranclienteview.cpp:84

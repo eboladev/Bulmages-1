@@ -259,7 +259,7 @@ msgstr "F11"
 
 #: bfcompany.cpp:99
 msgid "Facturación GPL"
-msgstr ""
+msgstr "Facturation GPL"
 
 #: bfinformereferencia.cpp:141 bfinformereferencia.cpp:173
 #: bfinformereferencia.cpp:211 bfinformereferencia.cpp:258

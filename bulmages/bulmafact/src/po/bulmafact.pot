@@ -275,7 +275,7 @@ msgid "Avanzados"
 msgstr ""
 
 #: bfcompany.cpp:99
-msgid "Facturación GPL"
+msgid "Facturacion GPL"
 msgstr ""
 
 #: bfbuscartipoarticulo.cpp:37

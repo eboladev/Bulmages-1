@@ -424,7 +424,7 @@ msgid "Nuevo alumno"
 msgstr "Nouvel élève"
 
 #: listcuotasporalumnoview.cpp:97
-msgid "Número de alumnos"
+msgid "Numero de alumnos"
 msgstr "N° d'élève"
 
 #: alumnoview.cpp:63

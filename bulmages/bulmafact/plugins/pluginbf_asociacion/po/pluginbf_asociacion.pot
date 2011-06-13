@@ -175,19 +175,19 @@ msgid "ID reunion"
 msgstr ""
 
 #: convreunionview.cpp:56
-msgid "Fecha 1ª Convocatoria"
+msgid "Fecha 1a Convocatoria"
 msgstr ""
 
 #: convreunionview.cpp:57
-msgid "Fecha 2ª Convocatoria"
+msgid "Fecha 2a Convocatoria"
 msgstr ""
 
 #: convreunionview.cpp:58
-msgid "Hora 1ª Convocatoria"
+msgid "Hora 1a Convocatoria"
 msgstr ""
 
 #: convreunionview.cpp:59
-msgid "Hora 2ª Convocatoria"
+msgid "Hora 2a Convocatoria"
 msgstr ""
 
 #: convreunionview.cpp:60 convreunionlist.cpp:270
@@ -420,7 +420,7 @@ msgid "Convocar por E-mail"
 msgstr ""
 
 #: ui_convreunionbase.h:368
-msgid "1ª Convocatoria"
+msgid "1a Convocatoria"
 msgstr ""
 
 #: ui_convreunionbase.h:369 ui_convreunionbase.h:371
@@ -428,7 +428,7 @@ msgid "Hora"
 msgstr ""
 
 #: ui_convreunionbase.h:370
-msgid "2ª Convocatoria"
+msgid "2a Convocatoria"
 msgstr ""
 
 #: ui_convreunionbase.h:372

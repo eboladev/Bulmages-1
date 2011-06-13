@@ -428,8 +428,8 @@ msgid "Numero de albaran"
 msgstr "Number of fax"
 
 #: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
-msgstr ""
+msgid "No linea"
+msgstr "Line number"
 
 #: ui_albaranclientebase.h:773
 msgid "Número:"

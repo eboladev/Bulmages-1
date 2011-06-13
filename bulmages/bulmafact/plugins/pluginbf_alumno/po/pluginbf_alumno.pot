@@ -262,7 +262,7 @@ msgid "Error al guardar las cuotas"
 msgstr ""
 
 #: listcuotasporalumnoview.cpp:97
-msgid "Número de alumnos"
+msgid "Numero de alumnos"
 msgstr ""
 
 #: listcuotasporalumnoview.cpp:98

@@ -391,7 +391,7 @@ msgid "Numero de albaran"
 msgstr "Numéro du bulletin"
 
 #: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
+msgid "No linea"
 msgstr "N° de ligne"
 
 #: ui_albaranclientebase.h:773
