@@ -272,6 +272,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	QDomElement efracciones = ventana.firstChildElement("SINFRACCIONESPULSERA");
 	
 	bool encontrado = FALSE;
+	Pulsera * puls = NULL;
 	
 	/// Buscamos la pulsera correspondiente a esta.
 	/// Si la encontramos no hacemos nada porque ya esta en el sistema y no requiere de accion alguna.
@@ -280,33 +281,33 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	    if (pul->m_ticketpulsera == tick) {
 	      if (pul->m_nombrepulsera == enombre.text()) {
 		 encontrado = TRUE;
-		 pulserasusadas.append(pul);
+		 puls = pul;
 	      } // end if
 	    } // end if
 	} // end for
-	
 	/// Si no la encontramos entonces si que hay que agregarla, pero seguramente ya tenga sus lineas correspondientes.
-	if (! encontrado) {
-	    BlDbRecord *lineaticket = NULL;
-	    BlDbRecord *lineafticket = NULL;
-	    for ( int j = 0; j < tick->listaLineas()->size(); ++j ) {
-		    BlDbRecord *item = tick->listaLineas()->at ( j );
-		    if (item->dbValue ( "desclalbaran" ).startsWith ( "p."+enombre.text() +" -- "+ ehora.text() + "-" )) {
+	BlDbRecord *lineaticket = NULL;
+	BlDbRecord *lineafticket = NULL;
+	for ( int j = 0; j < tick->listaLineas()->size(); ++j ) {
+		BlDbRecord *item = tick->listaLineas()->at ( j );
+		if (item->dbValue ( "desclalbaran" ).startsWith ( "p."+enombre.text() +" -- "+ ehora.text() + "-" )) {
 			fprintf(stderr,"Encontrada la linea de ticket para la pulsera \n");
 			lineaticket = item;
-		    } // end if
-		    if (item->dbValue ( "desclalbaran" ).startsWith ( "fp."+enombre.text() +" -- "+ ehora.text() + "-" )) {
+		} // end if
+		if (item->dbValue ( "desclalbaran" ).startsWith ( "fp."+enombre.text() +" -- "+ ehora.text() + "-" )) {
 			fprintf(stderr,"Encontrada la linea de parciales para la pulsera \n");
 			lineafticket = item;
-		    } // end if
-	    } // end for
-	  
-	    Pulsera *pul = new Pulsera(tick, enombre.text(), lineaticket);
-	    pul->m_lineaticketfraccion = lineafticket;
-	    pul->m_horainicial = QTime::fromString(ehora.text(), "h:m");
-	    pul->m_sinfracciones = (efracciones.text() == "TRUE");
-	    pulserasusadas.append(pul);
+		} // end if
+	} // end for
+	if (! encontrado) {
+	    puls = new Pulsera(tick, enombre.text(), lineaticket);
 	}  // end if
+	puls->m_lineaticket = lineaticket;
+	puls->m_lineaticketfraccion = lineafticket;
+	puls->m_horainicial = QTime::fromString(ehora.text(), "h:m");
+	puls->m_sinfracciones = (efracciones.text() == "TRUE");
+	pulserasusadas.append(puls);
+
     } // end while
 
     /// Borramos todas las pulseras del sistema que no se han sincronizado porque significa que las han borrado en otro lado.

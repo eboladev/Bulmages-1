@@ -25,7 +25,7 @@ void BtInput::keyPressEvent ( QKeyEvent *e )
     fprintf(stderr, text().toAscii() );
     switch ( e->key() ) {
         case Qt::Key_F3:
-            setText ( "MESA " );
+            setText ( g_confpr->value(CONF_TPV_TEXTOMESA) );
             break;
         case Qt::Key_F4:
             // Limpia el display.

@@ -398,6 +398,8 @@ QString BlConfiguration::name( int i )
         return "CONF_TPV_CELL_WIDTH";
     if ( i == CONF_TPV_CELLS_PER_ROW )
         return "CONF_TPV_CELLS_PER_ROW";
+    if ( i == CONF_TPV_TEXTOMESA )
+        return "CONF_TPV_TEXTOMESA";
     if ( i == CONF_FACT_ALT )
         return "CONF_FACT_ALT";
     if ( i == CONF_CONT_ALT )
