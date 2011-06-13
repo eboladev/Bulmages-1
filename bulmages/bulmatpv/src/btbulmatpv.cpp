@@ -130,13 +130,15 @@ BtBulmaTPV::~BtBulmaTPV()
 {
     blDebug ( "BtBulmaTPV::~BtBulmaTPV", 0 );
     delete m_company;
+	
+/*
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef Q_OS_WIN32
 
     exit ( 0 );
 #endif
-
+*/
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -192,10 +194,6 @@ void BtBulmaTPV::s_About()
 void BtBulmaTPV::closeEvent ( QCloseEvent * )
 {
     blDebug ( "BtBulmaTPV::closeEvent", 0 );
-#ifdef Q_OS_WIN32
-    exit ( 0 );
-#endif
-
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -191,7 +191,6 @@ void BtCompany::z()
     
     while ( !curfechas->eof() ) {
         
-        //blMsgInfo(curfechas->value("fechaalbaran"));
         
         query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
         BlDbRecordSet *cur = loadQuery ( query );
@@ -216,243 +215,27 @@ void BtCompany::z()
 
         commit();
 	
-	m_ticketActual -> generateRML("informe_Z.txt");
+		m_ticketActual -> generateRML("informe_Z.txt");
 
-	if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
-	    QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-	    system ( comando.toAscii().data() );
-	} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-	    blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
-	} else {
-		blRawPrint("informe_Z.txt");
-
-	} // end if 
+		if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+			system ( comando.toAscii().data() );
+		} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+			blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+		} else {
+			blRawPrint("informe_Z.txt");
+		} // end if 
 	
-	
-/*
-        QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_CONTADO );
-        BlDbRecordSet *cur1 = loadQuery ( querycont );
-        QString numticketscont = cur1->value( "numtickets" );
-        QString totalcont = cur1->value( "total" );
-        
-        if ( totalcont == "" )
-            totalcont = "0";
-            
-        delete cur1;
-
-        QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_VISA );
-        BlDbRecordSet *cur2 = loadQuery ( queryvisa );
-        QString numticketsvisa = cur2->value( "numtickets" );
-        QString totalvisa = cur2->value( "total" );
-        
-        if ( totalvisa == "" )
-            totalvisa = "0";
-            
-        delete cur2;
-
-    // ========================================
-
-        QFile file ( g_confpr->value( CONF_TICKET_PRINTER_FILE ) );
-        
-        if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-            blDebug ( "Error en la Impresion de ticket", 2 );
-            return;
-        } // end if
-        
-        file.write ( QString ( "Informe Z\n" ).toAscii() );
-        file.write ( QString ( "=========\n" ).toAscii() );
-        BlDbRecordSet *curemp = loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-        
-        if ( !curemp->eof() ) {
-            file.write ( curemp->value( "valor" ).toAscii() );
-            file.write ( "\n", 1 );
-        } // end if
-        
-        delete curemp;
-        
-        file.write ( QString ( "====================================\n" ).toAscii() );
-        cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
-        
-        if ( !cur->eof() ) {
-            file.write ( cur->value( "valor" ).toAscii() );
-            file.write ( "\n", 1 );
-        } // end if
-        
-        delete cur;
-        cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
-        
-        if ( !cur->eof() ) {
-            file.write ( cur->value( "valor" ).toAscii() );
-        } // end if
-        
-        delete cur;
-
-        file.write ( QString ( " " ).toAscii() );
-        cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
-        
-        if ( !cur->eof() ) {
-            file.write ( cur->value( "valor" ).toAscii() );
-            file.write ( QString ( " " ).toAscii() );
-        } // end if
-        
-        delete cur;
-
-        cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
-        
-        if ( !cur->eof() ) {
-            file.write ( QString ( "(" ).toAscii() );
-            file.write ( cur->value( "valor" ).toAscii() );
-            file.write ( QString ( ")" ).toAscii() );
-            file.write ( "\n", 1 );
-        } // end if
-        
-        delete cur;
-
-        /// Imprimimos espacios
-        file.write ( "\n \n", 3 );
-
-        /// Imprimimos la fecha
-        file.write ( QString ( "Fecha: " ).toAscii() );
-        //QDate fecha = QDate::currentDate();
-        //QString sfecha = fecha.toString ( "d-M-yyyy" );
-        //file.write ( sfecha.toAscii() );
-        file.write ( (curfechas->value("fechaalbaran")).toAscii() );
-        QTime hora = QTime::currentTime();
-        QString stime = " " + hora.toString ( "HH:mm" );
-        file.write ( stime.toAscii() );
-        file.write ( "\n", 1 );
-
-        /// Imprimimos el almacen
-        cur = loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->value( CONF_IDALMACEN_DEFECTO ) );
-        
-        if ( !cur->eof() ) {
-            file.write ( QString ( "Almacen: " ).toAscii() );
-            file.write ( cur->value( "nomalmacen" ).toAscii() );
-            file.write ( "\n", 1 );
-        } // end if
-        
-        delete cur;
-
-        file.write ( "\n", 1 );
-        file.write ( "\n", 1 );
-
-    // ============================================
-
-        file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
-
-        QString str = "Num tickets " + numtickets.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-        str = "Total " + total.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-        str = "Num tickets Contado" + numticketscont.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-        str = "Total Contado" + totalcont.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-        str = "Num tickets Visa" + numticketsvisa.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-        str = "Total Visa" + totalvisa.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-    // ============================================
-
-        file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
-        file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
-        file.write ( QString ( "==== RESUMEN FAMILIAS ======\n" ).rightJustified ( 43, ' ' ).toAscii() );
-
-        // Informes por familias
-
-        cur = loadQuery ( "SELECT * FROM familia" );
-        
-        while ( !cur->eof() ) {
-
-            QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz=" + idz + ")  AND idfamilia = " + cur->value( "idfamilia" );
-            BlDbRecordSet *cur1 = loadQuery ( querycont );
-            QString numticketscont = cur1->value( "unidades" );
-            QString totalcont = cur1->value( "total" );
-            
-            if ( totalcont == "" )
-                totalcont = "0";
-            
-            delete cur1;
-
-            if ( totalcont != "" ) {
-                file.write ( QString ( "Familia: " ).toAscii() );
-                file.write ( cur->value( "nomfamilia" ).toAscii() );
-                file.write ( "\n", 1 );
-
-                str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
-                file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-                file.write ( "\n", 1 );
-
-                str = "Total:" + totalcont.rightJustified ( 10, ' ' );
-                file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-                file.write ( "\n", 1 );
-
-                file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
-            } // end if
-
-            cur-> nextRecord();
-            
-        } // end if
-        
-        delete cur;
-        
-        // Fin informes por familias
-
-        /// Imprimimos espacios
-        file.write ( "\n \n \n \n", 7 );
-
-        /// Preparamos para un codigo de barras
-        /// Especificamos la altura del codigo de barras
-        file.write ( "\x1Dh\x40", 3 );
-
-        /// Especificamos que los caracteres vayan debajo del codigo de barras
-        file.write ( "\x1DH\x02", 3 );
-
-        /// Establecemos el tipo de codificacion para el codigo de barras
-        file.write ( "\x1D", 1 );
-        file.write ( "f\x01", 2 );
-
-        /// Ponemos el ancho de la fuente a uno
-        file.write ( "\x1D\x77\x01", 3 );
-        
-        /// Imprimimos la palabra top con el juego de caracteres 04
-        file.write ( "\x1Dk\x04", 3 );
-        file.write ( QString ( "ZZZ" ).toAscii() );
-        file.write ( " ", 1 );
-        file.write ( idz.toAscii() );
-        file.write ( "\x00", 1 );
-
-        /// Imprimimos espacios
-        file.write ( "\n \n \n \n \n", 9 );
-
-        /// El corte de papel.
-        file.write ( "\x1D\x56\x01", 3 );
-        file.close();
-*/        
         curfechas->nextRecord();
     
     } // end while
 
-// ========================================
 
     blDebug( "END BtCompany::z", 0 );
 }
 
 void BtCompany::x()
 {
-
     blDebug( "BtCompany::x", 0 );
 
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
@@ -469,162 +252,6 @@ void BtCompany::x()
 		blRawPrint("informe_X.txt");
     } // end if    
 
-
-/*
-    QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
-    BlDbRecordSet *cur = loadQuery ( query );
-    QString numtickets = cur->value( "numtickets" );
-    QString total = cur->value( "total" );
-    
-    if ( total == "" )
-        total = "0";
-    
-    delete cur;
-
-    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_CONTADO );
-    BlDbRecordSet *cur1 = loadQuery ( querycont );
-    QString numticketscont = cur1->value( "numtickets" );
-    QString totalcont = cur1->value( "total" );
-    
-    if ( totalcont == "" )
-        totalcont = "0";
-    
-    delete cur1;
-
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_VISA );
-    BlDbRecordSet *cur2 = loadQuery ( queryvisa );
-    QString numticketsvisa = cur2->value( "numtickets" );
-    QString totalvisa = cur2->value( "total" );
-    
-    if ( totalvisa == "" )
-        totalvisa = "0";
-    
-    delete cur2;
-
-// ========================================
-
-    QFile file ( g_confpr->value( CONF_TICKET_PRINTER_FILE ) );
-    
-    if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-        blDebug ( "Error en la Impresion de ticket", 2 );
-        return;
-    } // end if
-    
-    file.write ( QString ( "Informe X\n" ).toAscii() );
-    file.write ( QString ( "=========\n" ).toAscii() );
-    BlDbRecordSet *curemp = loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-    
-    if ( !curemp->eof() ) {
-        file.write ( curemp->value( "valor" ).toAscii() );
-        file.write ( "\n", 1 );
-    } // end if
-    
-    delete curemp;
-    
-    file.write ( QString ( "====================================\n" ).toAscii() );
-    cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
-    
-    if ( !cur->eof() ) {
-        file.write ( cur->value( "valor" ).toAscii() );
-        file.write ( "\n", 1 );
-    } // end if
-    
-    ///file.write ( QString ( "C/LAS POZAS 181, LOCAL 43\n" ).toAscii() );
-    delete cur;
-    
-    /// file.write ( QString ( "ALIMENTACION ECOLOGICA. HERBOLARIO\n" ).toAscii() );
-    cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
-    
-    if ( !cur->eof() ) {
-        file.write ( cur->value( "valor" ).toAscii() );
-    } // end if
-    
-    delete cur;
-
-    file.write ( QString ( " " ).toAscii() );
-    cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
-    
-    if ( !cur->eof() ) {
-        file.write ( cur->value( "valor" ).toAscii() );
-        file.write ( QString ( " " ).toAscii() );
-    } // end if
-    
-    delete cur;
-
-    cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
-    
-    if ( !cur->eof() ) {
-        file.write ( QString ( "(" ).toAscii() );
-        file.write ( cur->value( "valor" ).toAscii() );
-        file.write ( QString ( ")" ).toAscii() );
-        file.write ( "\n", 1 );
-    } // end if
-    
-    delete cur;
-
-    /// Imprimimos espacios
-    file.write ( "\n \n", 3 );
-
-    /// Imprimimos la fecha
-    file.write ( QString ( "Fecha: " ).toAscii() );
-    QDate fecha = QDate::currentDate();
-    QString sfecha = fecha.toString ( "d-M-yyyy" );
-    file.write ( sfecha.toAscii() );
-    QTime hora = QTime::currentTime();
-    QString stime = " " + hora.toString ( "HH:mm" );
-    file.write ( stime.toAscii() );
-    file.write ( "\n", 1 );
-
-    /// Imprimimos el almacen
-    cur = loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->value( CONF_IDALMACEN_DEFECTO ) );
-    
-    if ( !cur->eof() ) {
-        file.write ( QString ( "Almacen: " ).toAscii() );
-        file.write ( cur->value( "nomalmacen" ).toAscii() );
-        file.write ( "\n", 1 );
-    } // end if
-    
-    delete cur;
-
-    file.write ( "\n", 1 );
-    file.write ( "\n", 1 );
-
-    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
-
-    QString str = "Num tickets " + numtickets.rightJustified ( 10, ' ' );
-    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-    file.write ( "\n", 1 );
-
-    str = "Total " + total.rightJustified ( 10, ' ' );
-    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-    file.write ( "\n", 1 );
-
-    str = "Num tickets Contado" + numticketscont.rightJustified ( 10, ' ' );
-    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-    file.write ( "\n", 1 );
-
-    str = "Total Contado" + totalcont.rightJustified ( 10, ' ' );
-    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-    file.write ( "\n", 1 );
-
-    str = "Num tickets Visa" + numticketsvisa.rightJustified ( 10, ' ' );
-    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-    file.write ( "\n", 1 );
-
-    str = "Total Visa" + totalvisa.rightJustified ( 10, ' ' );
-    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-    file.write ( "\n", 1 );
-
-    /// Imprimimos espacios
-    file.write ( "\n \n \n \n", 7 );
-
-    /// Imprimimos espacios
-    file.write ( "\n \n \n \n \n", 9 );
-
-    /// El corte de papel.
-    file.write ( "\x1D\x56\x01", 3 );
-    file.close();
-*/
     blDebug( "END BtCompany::x", 0 );
 }
 
@@ -854,11 +481,6 @@ void BtCompany::compruebaUltimaZ()
                 
                 if (msgBox.clickedButton() == si) {
                     z();
-
-/// Es demasiado duro salir del programa sin dar la opcion de continuar. Ademas la comprobacion esta mal ya que deberia tener en cuenta si el proximo ticket
-/// Que se va a generar esta dentro del rango de fechas o no.
-//		} else {
-//                    exit(0);
                 } // end if
             } // end if
                     
@@ -945,8 +567,8 @@ void BtCompany::syncXML(const QString &textxml) {
                BtTicket *linea1;
                int x = 0;
                while ( x < m_listaTickets.size() - 1 && !sincronizado) {
-                   linea1 = m_listaTickets.at ( x++ );
-		   sincronizado = (linea1->syncXML(result, false));
+					linea1 = m_listaTickets.at ( x++ );
+					sincronizado = (linea1->syncXML(result, false));
                } // end while
 
             /// Si ho ha habido sincronizacion con ningun elemento
@@ -967,22 +589,21 @@ void BtCompany::syncXML(const QString &textxml) {
     int x = 0;
     while (x < m_listaTickets.size() -1 ) {
         bool encontrado = FALSE;
-	BtTicket *linea1 = m_listaTickets.at(x);
-	int i = 0;
-	while (i < nodos.count() && !encontrado) {
-	    QString nombre1 = nodos.item(i++).toElement().firstChildElement("NOMTICKET").text();
-	    if (nombre1 == linea1->dbValue("nomticket")) {
-		encontrado = TRUE;
-	    } // end if
+		BtTicket *linea1 = m_listaTickets.at(x);
+		int i = 0;
+		while (i < nodos.count() && !encontrado) {
+			QString nombre1 = nodos.item(i++).toElement().firstChildElement("NOMTICKET").text();
+			if (nombre1 == linea1->dbValue("nomticket")) {
+			encontrado = TRUE;
+			} // end if
+		} // end while
+		
+		if (!encontrado) {
+			m_listaTickets.removeAt(x);
+		} else {
+			x++;
+		} // end if
 	} // end while
-	
-	if (!encontrado) {
-	    m_listaTickets.removeAt(x);
-	} else {
-	    x++;
-	} // end if
-    } // end while
-
     blDebug ( "BtCompany::syncXML", 0 );
 }
 
