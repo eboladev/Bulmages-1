@@ -133,13 +133,6 @@ BfBulmaFact::~BfBulmaFact()
 {
     blDebug ( Q_FUNC_INFO, 0 );
     delete pWorkspace;
-    /// En MS-Windows no termina bien la ejecucion del programa y por eso
-    /// agregamos esta salida rapida.
-#ifdef Q_OS_WIN32
-
-    exit ( 0 );
-#endif
-
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -217,11 +210,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
     m_company = NULL;
     delete m_list;
     m_list = NULL;
-#ifdef Q_OS_WIN32
-
-    exit ( 0 );
-#endif
-
+	
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -269,16 +258,8 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
 
   
     blDebug ( Q_FUNC_INFO, 0 );
-    //system("konqueror http://www.iglues.org/wiki_users/doku.php &");
     QDesktopServices::openUrl(QUrl("http://www.iglues.org/wiki_users/doku.php", QUrl::TolerantMode));
-/*
-QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
-    connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
-    QStringList parametros;
-    parametros << "-profile" << QString ( g_confpr->value( CONF_PROGDATA ) + "ayuda/bulmafact/bulmafact.adp" );
-    asistenteAyuda->setArguments ( parametros );
-    asistenteAyuda->openAssistant();
-*/
+
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
