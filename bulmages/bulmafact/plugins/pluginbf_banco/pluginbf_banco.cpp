@@ -70,6 +70,7 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	return 0;
 }
  
 
