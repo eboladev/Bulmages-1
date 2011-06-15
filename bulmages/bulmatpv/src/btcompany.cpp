@@ -167,6 +167,34 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 void BtCompany::z()
 {
     blDebug( "BtCompany::z", 0 );
+
+    /// Antes de hacer la Z. Se comprueba que no exista ningun ticket abierto pendiente de ser procesado.
+    BtTicket *ticket = NULL;
+    bool procesaZ = true;
+
+    for ( int i = 0; i < m_listaTickets.size(); ++i ) {
+        ticket = m_listaTickets.at ( i );
+
+        /// Solo puede existir el 'ticket actual' pero sin contenido.
+        if ( ticket->dbValue("nomticket") == ticket->nomTicketDefecto() ) {
+        
+	    if (ticket->listaLineas()->size() > 0) {
+		procesaZ = false;
+	    } // end if
+        
+        } else {
+	    /// Como existen tickets diferentes al por defecto. Entonces existen tickets sin procesar.
+	    procesaZ = false;
+        } // end if
+
+    } // end for
+
+    if (!procesaZ) {
+	blMsgWarning(_("Existen tickets abiertos. Procese todos los tickets pendientes y vuelva a intentar generar la Z."));
+	return;
+    } // end if
+        
+
     
     QString queryfechas;
     
