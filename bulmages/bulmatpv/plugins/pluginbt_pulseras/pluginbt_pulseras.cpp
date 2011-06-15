@@ -41,7 +41,7 @@
 #define MINUTOS_FRACCION 15
 
 
-BtCompany *g_emp;
+BtCompany *g_pluginbt_pulseras_emp;
 
 ///
 /**
@@ -75,7 +75,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
 
     /// Asignamos la variable global para usarla donde haga falta.
-    g_emp = etpv;
+    g_pluginbt_pulseras_emp = etpv;
   
     BlToolButton *boton = new BlToolButton(etpv, etpv);
     boton->setObjectName(QString::fromUtf8("mui_pulseramas"));
@@ -117,28 +117,28 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 int BlToolButton_released(BlToolButton *toolbutton) {
   
-    QString nomticket = g_emp->ticketActual() -> dbValue("nomticket"); 
-    QString entrada = g_emp->valorBtInput();
+    QString nomticket = g_pluginbt_pulseras_emp->ticketActual() -> dbValue("nomticket"); 
+    QString entrada = g_pluginbt_pulseras_emp->valorBtInput();
     if (nomticket != "") {
 	if (toolbutton->objectName() == "mui_pulseramas") {
 	    /// Agregar pulsera al ticket actual.
-	    BlDbRecord *lineaticket = g_emp->ticketActual()->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
-	    Pulsera *pul = new Pulsera(g_emp->ticketActual(), entrada, lineaticket);
-	    g_emp->ticketActual()->pintar();
+	    BlDbRecord *lineaticket = g_pluginbt_pulseras_emp->ticketActual()->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
+	    Pulsera *pul = new Pulsera(g_pluginbt_pulseras_emp->ticketActual(), entrada, lineaticket);
+	    g_pluginbt_pulseras_emp->ticketActual()->pintar();
 	    /// Borra el valor del Input.
-	    g_emp->pulsaTecla ( Qt::Key_F4, "" );
+	    g_pluginbt_pulseras_emp->pulsaTecla ( Qt::Key_F4, "" );
 	    return 1;
 	} else if (toolbutton->objectName() == "mui_pulseraint") {
 	    for ( int i = 0; i < g_pulseras.size(); ++i ) {
 	       Pulsera * pul = g_pulseras.at(i);
 	       if (pul->m_nombrepulsera == entrada) {
 		    BtTicket * ticket = pul->m_ticketpulsera;
-		    g_emp ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
-		    g_emp ->setTicketActual ( ticket );
+		    g_pluginbt_pulseras_emp ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+		    g_pluginbt_pulseras_emp ->setTicketActual ( ticket );
 		    ticket->setDbValue("bloqueadoticket", "TRUE");
 		    ticket->pintar();
 		    /// Borra el valor del Input.
-		    g_emp->pulsaTecla ( Qt::Key_F4, "" );
+		    g_pluginbt_pulseras_emp->pulsaTecla ( Qt::Key_F4, "" );
 	       } // end if
 	    } // end for
 	    return 1;
@@ -151,7 +151,7 @@ int BlToolButton_released(BlToolButton *toolbutton) {
 
 
 int BtCompany_cobrar(BtCompany *emp) {
-   BtTicket *ticketActual = g_emp->ticketActual();
+   BtTicket *ticketActual = g_pluginbt_pulseras_emp->ticketActual();
    
    QList <Pulsera *>pulserasaborrar;
    

@@ -44,7 +44,7 @@
 #include "bx11embedcontainer.h"
 #include "blform.h"
 
-QMainWindow *g_bges = NULL;
+QMainWindow *g_pluginbl_embed = NULL;
 BlMainCompany *g_emp = NULL;
 
 
@@ -134,7 +134,7 @@ void PluginBl_Embed::embedPYS( )
     QString winId = "";
     winId = m_proc->readAllStandardOutput();
 
-    BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
+    BlWorkspace *work = g_pluginbl_embed ->findChild<BlWorkspace *> (  );
     if ( work ) {
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );
@@ -205,7 +205,7 @@ void PluginBl_Embed::elslot1()
     blDebug ( Q_FUNC_INFO, 0 );
     QString winId = "";
     while ( winId == "" ) winId = blWindowId ( "" );
-    BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
+    BlWorkspace *work = g_pluginbl_embed ->findChild<BlWorkspace *> (  );
     if ( work ) {
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );
@@ -230,7 +230,7 @@ int entryPoint ( BlMainWindow *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_embed", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bges = bges;
+    g_pluginbl_embed = bges;
 
     PluginBl_Embed *mcont = new PluginBl_Embed;
 
@@ -268,8 +268,8 @@ int init67 (  )
 
     QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Informes
-    pPluginMenu = g_bges->menuBar() ->findChild<QMenu *> ( "menuInformesODS" );
-    QMenu *pPluginVer = g_bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
+    pPluginMenu = g_pluginbl_embed->menuBar() ->findChild<QMenu *> ( "menuInformesODS" );
+    QMenu *pPluginVer = g_pluginbl_embed->menuBar()->findChild<QMenu *> ( "menuVentana" );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
@@ -321,7 +321,7 @@ int init67 (  )
         } // end if
 
 
-	QMenuBar *menubar =g_bges->menuBar();
+	QMenuBar *menubar =g_pluginbl_embed->menuBar();
 	QMenu *menu = NULL;
 	QStringList path = pathtitulo.split("\\");
 
@@ -344,9 +344,9 @@ int init67 (  )
 	} else {
 
 		    if (!pPluginMenu) {
-			    pPluginMenu = new QMenu ( _ ( "Informes &ODS" ), g_bges->menuBar() );
+			    pPluginMenu = new QMenu ( _ ( "Informes &ODS" ), g_pluginbl_embed->menuBar() );
 			    pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
-			    g_bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
+			    g_pluginbl_embed->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
 		    } // end if
 		    menu = pPluginMenu;
 	} // end if

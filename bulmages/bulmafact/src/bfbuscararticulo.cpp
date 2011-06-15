@@ -223,13 +223,13 @@ QString BfBuscarArticuloDelegate::unicaEleccion ( void )
     int num = 0;
     QString elec = NULL;
     for ( int i = 0; ( num < 2 ) && ( i < count() ); i++ ) {
-        blDebug ( Q_FUNC_INFO, 0, QString(_("Item: '$1', num: '$2', itemText: '$3', itemData: '$4'.")).arg(QString::number ( i )).arg(QString::number ( num )).arg(itemText ( i )).arg(itemData ( i ).toString()) );
+        blDebug ( Q_FUNC_INFO, 0, QString(_("Item: '%1', num: '%2', itemText: '%3', itemData: '%4'.")).arg(QString::number ( i )).arg(QString::number ( num )).arg(itemText ( i )).arg(itemData ( i ).toString()) );
         if ( itemData ( i ).isValid() ) {
 	    blDebug ( Q_FUNC_INFO, 0, _("Este item es un articulo encontrado, no entrado por el usuario.") );
             elec = itemData ( i ).toString();
             num++;
         };
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Ultimo item: '$1', num: '$2', itemText: '$3', itemData: '$4'.")).arg(QString::number ( i )).arg(QString::number ( num )).arg(itemText ( i )).arg(itemData ( i ).toString()) );
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Ultimo item: '%1', num: '%2', itemText: '%3', itemData: '%4'.")).arg(QString::number ( i )).arg(QString::number ( num )).arg(itemText ( i )).arg(itemData ( i ).toString()) );
     }
     return ( num == 1 ? elec : NULL );
 }

@@ -31,7 +31,7 @@
 
 
 TicketClienteList *g_albaranClienteList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_clienteticket = NULL;
 
 
 
@@ -55,7 +55,7 @@ int entryPoint ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        g_bges = bges;
+        g_pluginbf_clienteticket = bges;
         BlAction *accionA = new BlAction ( _ ( "&Ticketes a clientes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
         accionA->setStatusTip ( _ ( "Ticketes a clientes" ) );
@@ -90,8 +90,8 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionClienteNuevoAlbaran") {
-        TicketClienteView * bud = new TicketClienteView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        TicketClienteView * bud = new TicketClienteView ( g_pluginbf_clienteticket->company(), NULL );
+        g_pluginbf_clienteticket->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
     } // end if

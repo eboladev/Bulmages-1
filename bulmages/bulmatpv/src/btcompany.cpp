@@ -167,7 +167,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 void BtCompany::z()
 {
     blDebug( "BtCompany::z", 0 );
-
+    
     QString queryfechas;
     
     if ( g_plugins->lanza ( "BtCompany_z", this ) )
@@ -486,7 +486,7 @@ void BtCompany::compruebaUltimaZ()
                     
         }// end if
         
-        /// Diferencia negativa de fechas (algo esta mal en la fecha del distema
+        /// Diferencia negativa de fechas (algo esta mal en la fecha del sistema
         /// o ya se hizo alguna Z con la fecha mal establecida en este)
         if ( (curDiferencia->value("diferencia")).toInt() < 0 ) {
         

@@ -218,15 +218,12 @@ void MTicketIVAInc::on_mui_imprimir_clicked()
 
 void MTicketIVAInc::on_mui_borrarticket_clicked()
 {
-
-  
-  
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
     
-    /// No permitimos bajo ningún concepto borrar un ticket que ya ha sido impreso.
+    /// No permitimos bajo ningun concepto borrar un ticket que ya ha sido impreso.
     if (emp->ticketActual()->dbValue("numalbaran") != "") {
-	blMsgInfo(_("Operacion no permitida. Debe Cobrar el Ticket puesto que este ya ha sido impreso."));
+	blMsgInfo(_("Operacion no permitida. El ticket se ha imprimido. Debe cobrar el ticket."));
 	return;
     } // end if    
     
@@ -244,7 +241,7 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
       } // end for
     
     /// Eliminamos el ticket actual.
-    delete emp->ticketActual();    
+    delete emp->ticketActual();
     
     /// Solo agregamos a la lista si es el ticket actual.
     if (nomticketactual == nomticketdefecto) {

@@ -36,8 +36,8 @@
 #include "blmaincompany.h"
 
 
-QMainWindow *g_bges_importcsv = NULL;
-BlMainCompany *g_emp_importcsv = NULL;
+QMainWindow *g_pluginbl_importcsv = NULL;
+BlMainCompany *g_pluginbl_importcsv_emp = NULL;
 
 
 ///
@@ -66,8 +66,8 @@ void PluginBl_ImportCSV::elslot()
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    ImportCSV *imp = new ImportCSV ( g_emp_importcsv, 0 );
-    g_emp_importcsv->pWorkspace() ->addSubWindow ( imp );
+    ImportCSV *imp = new ImportCSV ( g_pluginbl_importcsv_emp, 0 );
+    g_pluginbl_importcsv_emp->pWorkspace() ->addSubWindow ( imp );
     imp->show();
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -84,7 +84,7 @@ int entryPoint ( BlMainWindow *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_importcsv", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bges_importcsv = bges;
+    g_pluginbl_importcsv = bges;
 
     PluginBl_ImportCSV *mcont = new PluginBl_ImportCSV;
 
@@ -111,13 +111,13 @@ int entryPoint ( BlMainWindow *bges )
 
 int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
-    g_emp_importcsv = cmp;
+    g_pluginbl_importcsv_emp = cmp;
     return 0;
 }
 
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
-    g_emp_importcsv = cmp;
+    g_pluginbl_importcsv_emp = cmp;
     return 0;
 }
 

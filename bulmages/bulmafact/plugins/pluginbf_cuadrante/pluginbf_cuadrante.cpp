@@ -35,7 +35,7 @@
 #include "cuadranteview.h"
 #include "cuadrantediarioview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_cuadrante = NULL;
 
 ///
 /**
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_cuadrante", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_cuadrante = bges;
 
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu;
@@ -89,13 +89,13 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "pluginbf_cuadrante" );
     if (accion->objectName() == "mui_actionCuadranteSemanal") {
-        CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) g_bges->company(), 0 );
-        g_bges->company()->pWorkspace() ->addSubWindow ( cuad );
+        CuadranteView *cuad = new CuadranteView ( g_pluginbf_cuadrante->company(), 0 );
+        g_pluginbf_cuadrante->company()->pWorkspace() ->addSubWindow ( cuad );
         cuad->show();
     } // end if
     if (accion->objectName() == "mui_actionCuadranteDiario") {
-        CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) g_bges->company(), 0 );
-        g_bges->company()->pWorkspace() ->addSubWindow ( cuad );
+        CuadranteDiarioView *cuad = new CuadranteDiarioView ( g_pluginbf_cuadrante->company(), 0 );
+        g_pluginbf_cuadrante->company()->pWorkspace() ->addSubWindow ( cuad );
         cuad->show();
     } // end if
 

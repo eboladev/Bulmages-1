@@ -28,7 +28,7 @@
 #include "blsearchwidget.h"
 
 TutoresList *g_tutoresList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_tutor = NULL;
 
 
 ///
@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tutor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_tutor = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
@@ -75,7 +75,6 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_Tutor" );
     if (accion->objectName() == "mui_actionSocio") {
@@ -86,14 +85,15 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionSocioNuevo") {
-        TutorView * bud = new TutorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        TutorView * bud = new TutorView ( g_pluginbf_tutor->company(), NULL );
+        g_pluginbf_tutor->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 
     blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
     return 0;
 }
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

@@ -431,8 +431,8 @@ void EFQToolButton::exporta_factura_ubl()
     QFile *file = new QFile ( nombrearchivo );
 
     if ( !file->open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Error. No se pudo abrir el archivo '$1' para su parseo.")).arg(nombrearchivo) );
-	blMsgError(QString(_("Error. No se pudo abrir el archivo '$1' para su parseo.")).arg(nombrearchivo));
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Error. No se pudo abrir el archivo '%1' para su parseo.")).arg(nombrearchivo) );
+	blMsgError(QString(_("Error. No se pudo abrir el archivo '%1' para su parseo.")).arg(nombrearchivo));
         exit ( -1 );
     } // end if
 

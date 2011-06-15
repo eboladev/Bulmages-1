@@ -73,7 +73,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
                        _ ( "*.q19;;*" ) );
       }
 
-      blDebug ( Q_FUNC_INFO, 0, QString(_("Nombre del fichero: '$1'")).arg(fileName) );
+      blDebug ( Q_FUNC_INFO, 0, QString(_("Nombre del fichero: '%1'")).arg(fileName) );
 
       if (fileName.length()>0) { // else ha apretat cancel?lar
        

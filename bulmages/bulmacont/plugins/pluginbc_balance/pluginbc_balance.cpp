@@ -34,7 +34,7 @@
 #include "balanceview.h"
 #include "bccompany.h"
 
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_balance = NULL;
 
 ///
 /**
@@ -47,7 +47,7 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_balance", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bcont = bcont;
+    g_pluginbc_balance = bcont;
 
     QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 
@@ -67,8 +67,8 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionBalance") {
-        BalanceView *cuad = new BalanceView ( ( BcCompany * ) g_bcont->company(), 0 );
-        g_bcont->company()->pWorkspace() ->addSubWindow ( cuad );
+        BalanceView *cuad = new BalanceView ( g_pluginbc_balance->company(), 0 );
+        g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( cuad );
         cuad->show();
     } // end if
     blDebug ("END PluginBc_Balance::BlAction_triggered");

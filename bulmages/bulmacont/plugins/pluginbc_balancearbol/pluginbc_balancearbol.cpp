@@ -29,7 +29,7 @@
 #include "bccompany.h"
 
 
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_balancearbol = NULL;
 
 
 ///
@@ -40,7 +40,7 @@ int entryPoint ( BcBulmaCont *bcont )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    g_bcont = bcont;
+    g_pluginbc_balancearbol = bcont;
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -64,8 +64,8 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionBalanceJerarquico") {
-    	BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) g_bcont->company(), 0 );
-    	g_bcont -> company() ->pWorkspace() ->addSubWindow ( cuad );
+    	BalanceTreeView *cuad = new BalanceTreeView ( g_pluginbc_balancearbol->company(), 0 );
+    	g_pluginbc_balancearbol -> company() ->pWorkspace() ->addSubWindow ( cuad );
     	cuad->show();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

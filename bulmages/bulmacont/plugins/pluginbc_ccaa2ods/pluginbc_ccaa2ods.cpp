@@ -35,7 +35,7 @@
 #include "blprogressbar.h"
 
 
-BcCompany *g_comp = NULL;
+BcCompany *g_pluginbc_ccaa2ods = NULL;
 
 ///
 /**
@@ -83,7 +83,7 @@ void PluginBc_ccaa2ods::formDatosBalance ( )
       diag->setGeometry ( QRect ( 0, 0, 450, 350 ) );
       blCenterOnScreen ( diag );
 
-      DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
+      DatosView *pidefechas = new DatosView ( g_pluginbc_ccaa2ods, diag, 0, BL_SELECT_MODE );
 
       pidefechas->m_informe = sender()->objectName();
 
@@ -119,7 +119,7 @@ int entryPoint ( BcBulmaCont *bcont )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    g_comp = bcont->company();
+    g_pluginbc_ccaa2ods = bcont->company();
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -26,7 +26,7 @@
 #include "blformlist.h"
 #include "listproyectosview.h"
 
-BcBulmaCont *g_bges = NULL;
+BcBulmaCont *g_pluginbc_proyectos = NULL;
 
 ///
 /**
@@ -44,7 +44,7 @@ int entryPoint ( BcBulmaCont *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_proyectos", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bges = bges;
+    g_pluginbc_proyectos = bges;
     BlAction *accionA = new BlAction ( _ ( "&Proyectos" ), 0 );
     accionA->setStatusTip ( _ ( "Proyectos" ) );
     accionA->setWhatsThis ( _ ( "Proyectos" ) );
@@ -58,10 +58,10 @@ int entryPoint ( BcBulmaCont *bges )
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionProyectos") {
         /// Agregamos el subformulario de proyectos.
-        ListProyectosView *l = new ListProyectosView ( g_bges->company(), 0, 0, BL_EDIT_MODE );
+        ListProyectosView *l = new ListProyectosView ( g_pluginbc_proyectos->company(), 0, 0, BL_EDIT_MODE );
         l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
         //m_bulmacont->company()->insertWindow(l);
-        g_bges->workspace() ->addSubWindow ( l );
+        g_pluginbc_proyectos->workspace() ->addSubWindow ( l );
         l->show();    
     } // end if
     return 0;

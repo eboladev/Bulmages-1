@@ -28,7 +28,7 @@
 #include "carteracobroslist.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_carteracobros = NULL;
 
 
 
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraCobros", "0.11.1-0001");
 
-    g_bges = bges;
+    g_pluginbf_carteracobros = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -71,8 +71,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionCarteraCobros") {
-        CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) g_bges->company() );
-        g_bges->company()->m_pWorkspace->addSubWindow ( carteracobrosview );
+        CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( g_pluginbf_carteracobros->company() );
+        g_pluginbf_carteracobros->company()->m_pWorkspace->addSubWindow ( carteracobrosview );
         carteracobrosview->show();
     } // end if 
     return 0;

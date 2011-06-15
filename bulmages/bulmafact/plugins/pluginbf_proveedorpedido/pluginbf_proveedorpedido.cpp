@@ -29,7 +29,7 @@
 
 
 PedidosProveedorList *g_pedidosProveedorList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_proveedorpedido = NULL;
 
 
 ///
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorpedido", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_proveedorpedido = bges;
     if ( bges->company()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 
         /// Miramos si existe un menu Compras
@@ -73,6 +73,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorPedido" );
 
@@ -84,14 +85,15 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionProveedorPedidoNuevo") {
-        PedidoProveedorView * bud = new PedidoProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        PedidoProveedorView * bud = new PedidoProveedorView ( g_pluginbf_proveedorpedido->company(), NULL );
+        g_pluginbf_proveedorpedido->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

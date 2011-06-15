@@ -32,7 +32,7 @@
 
 
 CobrosList *g_cobrosList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_clientecobro = NULL;
 
 ///
 /**
@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        g_bges = bges;
+        g_pluginbf_clientecobro = bges;
 
         BlAction *accionA = new BlAction ( _ ( "&Cobros de clientes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
@@ -86,9 +86,9 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionCobroClienteNuevo") {
-        CobroView * bud = new CobroView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
-        bud->show();                 
+        CobroView * bud = new CobroView ( g_pluginbf_clientecobro->company(), NULL );
+        g_pluginbf_clientecobro->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
     } // end if
 
 

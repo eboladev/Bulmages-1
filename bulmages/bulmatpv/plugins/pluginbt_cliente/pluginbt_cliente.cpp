@@ -59,11 +59,6 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-  
-
-  
-
-
     BlToolButton *boton_cliente = new BlToolButton(etpv, etpv);
 
         boton_cliente->setObjectName(QString::fromUtf8("mui_cliente"));
@@ -105,6 +100,7 @@ int exitPoint ( BtBulmaTPV *tpv )
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
+
 
 int BlToolButton_released(BlToolButton *bot) {
   if (bot->objectName() == "mui_cliente") {

@@ -25,7 +25,7 @@
 #include "blfunctions.h"
 #include "bancoview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_banco = NULL;
 
 ///
 /**
@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        g_bges = bges;
+        g_pluginbf_banco = bges;
         BlAction *accionA = new BlAction ( _ ( "&Bancos" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
         accionA->setStatusTip ( _ ( "Bancos" ) );
@@ -65,8 +65,8 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionBancos") {
-        BancoView * bud = new BancoView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        BancoView * bud = new BancoView ( g_pluginbf_banco->company(), NULL );
+        g_pluginbf_banco->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

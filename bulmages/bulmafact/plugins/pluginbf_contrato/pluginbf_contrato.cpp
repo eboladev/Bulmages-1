@@ -32,7 +32,7 @@
 #include "contratoslist.h"
 #include "blform.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_contrato = NULL;
 
 
 
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Contrato", "0.11.1-0001");
 
-    g_bges = bges;
+    g_pluginbf_contrato = bges;
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -72,22 +72,15 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-
-
-
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionListadoContratos") {
-	ContratosList *contratoslist = new ContratosList ( ( BfCompany * ) g_bges->company() );
-	g_bges->company()->m_pWorkspace->addSubWindow ( contratoslist );
+	ContratosList *contratoslist = new ContratosList ( g_pluginbf_contrato->company() );
+	g_pluginbf_contrato->company()->m_pWorkspace->addSubWindow ( contratoslist );
 	contratoslist->show();
     } // end if
     
     return 0;
 } // end if
-
-
-
-
 
 
 ///

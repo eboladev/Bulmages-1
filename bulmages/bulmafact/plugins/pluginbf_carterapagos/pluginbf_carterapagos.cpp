@@ -27,7 +27,7 @@
 #include "carterapagoslist.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_carterapagos = NULL;
 
 
 ///
@@ -42,7 +42,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraPagos", "0.11.1-0001");
 
-    g_bges = bges;
+    g_pluginbf_carterapagos = bges;
  
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,7 +61,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
-	g_bges->Listados->addAction (accion);
+	g_pluginbf_carterapagos->Listados->addAction (accion);
 
     return 0;
     blDebug ("END entryPoint, 0, Punto de Entrada del plugin de Cartera pagos\n");
@@ -69,8 +69,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionCarteraPagos") {
-        CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * )  g_bges->company() );
-        g_bges->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
+        CarteraPagosList *vehiculoview = new CarteraPagosList ( g_pluginbf_carterapagos->company() );
+        g_pluginbf_carterapagos->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
         //m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
         vehiculoview->show();
     } // endi if

@@ -27,7 +27,7 @@
 #include "busquedatipotrabajo.h"
 #include "bfbuscararticulo.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_tipotrabajo = NULL;
 
 ///
 /**
@@ -40,7 +40,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TipoTrabajo", "0.10.1-0001");
-    g_bges = bges;
+    g_pluginbf_tipotrabajo = bges;
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
@@ -56,19 +56,19 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
+
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_TipoTrabajo" );
 
     if (accion->objectName() == "mui_actionTipoTrabajo") {
-        ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) g_bges->company(), 0 );
-        g_bges->company()->m_pWorkspace->addSubWindow ( l );
+        ListTiposTrabajoView *l = new ListTiposTrabajoView ( g_pluginbf_tipotrabajo->company(), 0 );
+        g_pluginbf_tipotrabajo->company()->m_pWorkspace->addSubWindow ( l );
         l->show();
     } // end if
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
- 
 
 
 /// Al crear la ventana de trabajadores tambien creamos un combo box para el tipo de trabajador.

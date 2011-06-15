@@ -28,7 +28,7 @@
 #include "actividadview.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_inventariosimple = NULL;
 
 ///
 /**
@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_inventariosimple = bges;
 
 
     QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
@@ -63,8 +63,8 @@ int entryPoint ( BfBulmaFact *bges )
 }
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionInventarios") {
-        ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( tar );
+        ListInventarioSimpleView *tar = new ListInventarioSimpleView ( g_pluginbf_inventariosimple->company(), NULL );
+        g_pluginbf_inventariosimple->company()->m_pWorkspace->addSubWindow ( tar );
         tar->show();
     } // end if
     return 0;

@@ -37,7 +37,7 @@
 typedef QMap<QString, BlFixed> base;
 BfBuscarArticulo *g_busc;
 BlDockWidget *g_doc1;
-BtCompany * g_emp;
+BtCompany * g_pluginbt_buscaarticulo_emp;
 
 
 ///
@@ -52,7 +52,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_buscaarticulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_emp = tpv->company();
+    g_pluginbt_buscaarticulo_emp = tpv->company();
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _ ( "Articulo" ), tpv, "articulodock" );
@@ -78,7 +78,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 int BfBuscarArticulo_on_m_codigocompletoarticulo_editingFinished_Post ( BfBuscarArticulo *busc )
 {
     if ( busc->idarticulo() != "" )
-        g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), BlFixed ( "1" ) );
+        g_pluginbt_buscaarticulo_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), BlFixed ( "1" ) );
     return 0;
 }
 

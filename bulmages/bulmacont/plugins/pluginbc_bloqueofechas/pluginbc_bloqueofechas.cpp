@@ -32,7 +32,7 @@
 #include "bccompany.h"
 #include "bcbloqueafechaview.h"
 
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_bloqueofechas = NULL;
 
 ///
 /**
@@ -45,7 +45,7 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_bloqueofechas", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bcont = bcont;
+    g_pluginbc_bloqueofechas = bcont;
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bcont->newMenu( _("&Herramientas"), "menuHerramientas", "menuVentana" );
 
@@ -62,8 +62,8 @@ int entryPoint ( BcBulmaCont *bcont )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionBloqueoFechas") {
-        BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *) g_bcont->company(), 0 );
-        g_bcont->workspace()->addSubWindow ( tip );
+        BcBloqueaFechaView *tip = new BcBloqueaFechaView ( g_pluginbc_bloqueofechas->company(), 0 );
+        g_pluginbc_bloqueofechas->workspace()->addSubWindow ( tip );
         tip->show();
     } // end if
     return 0;

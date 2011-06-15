@@ -25,7 +25,7 @@
 #include "blfunctions.h"
 #include "inventariosview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_inventario = NULL;
 
 ///
 /**
@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 
-    g_bges = bges;
+    g_pluginbf_inventario = bges;
 
     /// Miramos si existe un menu Inventario
     QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
@@ -67,8 +67,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, _("PluginBf_Inventario") );
 
     if (accion->objectName() == "mui_actionInventario") {
-        InventariosView *tar = new InventariosView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( tar );
+        InventariosView *tar = new InventariosView ( g_pluginbf_inventario->company(), NULL );
+        g_pluginbf_inventario->company()->m_pWorkspace->addSubWindow ( tar );
         tar->show();
     } // end if
 

@@ -31,7 +31,7 @@
 
 
 PresupuestoList *g_presupuestosList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_clientepresupuesto = NULL;
 
 
 ///
@@ -54,7 +54,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        g_bges = bges;
+        g_pluginbf_clientepresupuesto = bges;
         BlAction *accionA = new BlAction ( _ ( "&Presupuestos a clientes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.png" ) ) );
         accionA->setStatusTip ( _ ( "Presupuestos a clientes" ) );
@@ -75,6 +75,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionClientePresupuesto") {
         if ( g_presupuestosList ) {
@@ -83,8 +84,8 @@ int BlAction_triggered(BlAction *accion) {
         } // end if
     } // end if
     if (accion->objectName() == "mui_actionClientePresupuestoNuevo") {
-        PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        PresupuestoView * bud = new PresupuestoView ( g_pluginbf_clientepresupuesto->company(), NULL );
+        g_pluginbf_clientepresupuesto->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
     } // end if

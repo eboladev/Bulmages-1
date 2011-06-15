@@ -31,7 +31,7 @@
 #include "blfunctions.h"
 #include "movimientosview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_trazabilidad = NULL;
 
 
 ///
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trazabilidad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_trazabilidad = bges;
 
     /// Creamos el men&uacute;.
     BlAction *accionA = new BlAction ( _("&Movimientos"), 0 );
@@ -71,8 +71,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_Trazabilidad" );
 
     if (accion->objectName() == "mui_actionMovimientos") {
-        MovimientosView *mov = new MovimientosView ( ( BfCompany * ) g_bges->company() );
-        g_bges->company() ->pWorkspace() ->addSubWindow ( mov );
+        MovimientosView *mov = new MovimientosView ( g_pluginbf_trazabilidad->company() );
+        g_pluginbf_trazabilidad->company() ->pWorkspace() ->addSubWindow ( mov );
         mov->show();
     } // end if
 

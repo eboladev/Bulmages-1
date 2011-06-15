@@ -30,7 +30,7 @@
 
 BcCompany *g_empresaactual;
 
-BfBulmaFact *g_bf;
+BfBulmaFact *g_pluginbf_bulmacont;
 
 ///
 /**
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bf )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_bulmacont", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bf = bf;
+    g_pluginbf_bulmacont = bf;
     return 0;
 }
 
@@ -54,7 +54,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
 /*
     g_empresaactual = new BcCompany ( NULL );
-    g_empresaactual->setProgressBar ( g_bf->m_pb );
+    g_empresaactual->setProgressBar ( g_pluginbf_bulmacont->m_pb );
     g_empresaactual->init ( "csoncatiu", "BulmaCont" );
     g_empresaactual->setWorkspace ( comp->pWorkspace() );
     g_empresaactual->setListVentanas ( comp->listVentanas() );
@@ -62,7 +62,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
     BcPlanContableListView *listcuentas = new BcPlanContableListView ( g_empresaactual, 0 );
     listcuentas->inicializa();
-    g_bf->workspace()->addSubWindow ( listcuentas );
+    g_pluginbf_bulmacont->workspace()->addSubWindow ( listcuentas );
 */
     return 0;
 }

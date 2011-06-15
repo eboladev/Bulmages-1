@@ -128,7 +128,7 @@ void BcAmortizacionListView::remove()
 **/
 void BcAmortizacionListView::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Fila '$1'")).arg(QString::number(row)) );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Fila '%1'")).arg(QString::number(row)) );
     mdb_idamortizacion = mui_listado->dbValue ( "idamortizacion" );
     mdb_nomamortizacion = mui_listado->dbValue ( "nomamortizacion" );
     if ( editMode() ) {

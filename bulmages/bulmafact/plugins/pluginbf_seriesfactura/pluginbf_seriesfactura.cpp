@@ -25,7 +25,10 @@
 #include "blfunctions.h"
 #include "bfseriefacturaview.h"
 
-BfBulmaFact *g_bges = NULL;
+
+BfBulmaFact *g_pluginbf_seriesfactura = NULL;
+
+
 ///
 /**
 \param bges
@@ -38,7 +41,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_seriesfactura", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_seriesfactura = bges;
 
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
@@ -65,8 +68,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_SeriesFactura" );
 
     if (accion->objectName() == "mui_actionSeriesFactura") {
-        BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        BfSerieFacturaView * bud = new BfSerieFacturaView ( g_pluginbf_seriesfactura->company(), NULL );
+        g_pluginbf_seriesfactura->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     

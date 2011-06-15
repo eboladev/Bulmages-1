@@ -64,7 +64,7 @@ int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
 
     if ( ficha ) {
         QString query = "SELECT * FROM " + ficha->tableName() + " WHERE ref" + ficha->tableName() + " = '" + l->text() + "'";
-        blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'.")).arg(query) );
+        blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'.")).arg(query) );
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
             ficha->load ( cur->value( "id" + ficha->tableName() ) );

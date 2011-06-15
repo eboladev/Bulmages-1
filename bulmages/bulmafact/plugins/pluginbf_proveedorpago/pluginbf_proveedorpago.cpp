@@ -29,7 +29,7 @@
 
 
 PagosList *g_pagosList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_proveedorpago = NULL;
 
 
 ///
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorpago", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_proveedorpago = bges;
 
 
     if ( bges->company()->hasTablePrivilege ( "pago", "SELECT" ) ) {
@@ -88,8 +88,8 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionProveedorPagoNuevo") {
-        PagoView * bud = new PagoView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        PagoView * bud = new PagoView ( g_pluginbf_proveedorpago->company(), NULL );
+        g_pluginbf_proveedorpago->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 

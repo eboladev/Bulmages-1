@@ -30,7 +30,7 @@
 
 
 ArticuloList *g_articulosList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_articulo = NULL;
 
 ///
 /**
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_articulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_articulo = bges;
 
     if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
@@ -105,20 +105,20 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionArticuloNuevo") {
-        ArticuloView * bud = new ArticuloView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ArticuloView * bud = new ArticuloView ( g_pluginbf_articulo->company(), NULL );
+        g_pluginbf_articulo->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 
     if (accion->objectName() == "mui_actionArticulosTipo") {
-        TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) g_bges->company(), 0, FALSE );
-        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        TipoArticuloList *pag = new TipoArticuloList ( g_pluginbf_articulo->company(), 0, FALSE );
+        g_pluginbf_articulo->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
 
     if (accion->objectName() == "mui_actionFamilias") {
-        FamiliasView *pag = new FamiliasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
-        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        FamiliasView *pag = new FamiliasView ( g_pluginbf_articulo->company(), 0, FALSE );
+        g_pluginbf_articulo->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
 

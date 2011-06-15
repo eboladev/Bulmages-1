@@ -27,7 +27,7 @@
 #include "blcombobox.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_formasdepago = NULL;
 
 ///
 /**
@@ -41,7 +41,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_formasdepago", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_formasdepago = bges;
 
     if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
 
@@ -65,9 +65,9 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionFormasPago") {
-        FPagoView * bud = new FPagoView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
-        bud->show();       
+        FPagoView * bud = new FPagoView ( g_pluginbf_formasdepago->company(), NULL );
+        g_pluginbf_formasdepago->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
     } // end if
     return 0;
 } 

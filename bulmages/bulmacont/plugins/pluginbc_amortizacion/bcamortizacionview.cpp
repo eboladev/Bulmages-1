@@ -180,7 +180,7 @@ int BcAmortizacionView::save()
 **/
 int BcAmortizacionView::load ( QString idamortizacion )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString("idamortizacion = '$1'").arg(idamortizacion) );
+    blDebug ( Q_FUNC_INFO, 0, QString("idamortizacion = '%1'").arg(idamortizacion) );
     try {
         m_idamortizacion = idamortizacion;
         BlDbRecord::load ( m_idamortizacion );

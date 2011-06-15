@@ -36,7 +36,7 @@
 
 
 BcDiarioView *g_diario;
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_diario = NULL;
 
 
 ///
@@ -52,7 +52,7 @@ int entryPoint ( BcBulmaCont *bcont )
     blBindTextDomain ( "pluginbc_diario", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_diario = NULL;
-    g_bcont = bcont;
+    g_pluginbc_diario = bcont;
 
     QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 
@@ -76,8 +76,8 @@ int BlAction_triggered(BlAction *accion) {
 
     if (accion->objectName() == "mui_actionDiario") {
         if (g_diario == NULL) {
-            g_diario = new BcDiarioView ( ( BcCompany * ) g_bcont->company(), 0 );
-            g_bcont->company()->pWorkspace() ->addSubWindow ( g_diario );
+            g_diario = new BcDiarioView ( g_pluginbc_diario->company(), 0 );
+            g_pluginbc_diario->company()->pWorkspace() ->addSubWindow ( g_diario );
         } // end if
         
 	g_diario->hide();

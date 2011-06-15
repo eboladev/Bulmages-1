@@ -446,9 +446,9 @@ void PartidasView::on_mui_borrar_clicked()
     if ( val == QMessageBox::Yes ) {
         if ( !remove() ) {
             dialogChanges_readValues();
-	    blDebug ( Q_FUNC_INFO, 0, QString("'$1' borrado.").arg(windowTitle()) );
+	    blDebug ( Q_FUNC_INFO, 0, QString("'%1' borrado.").arg(windowTitle()) );
         } else {
-	    blDebug ( Q_FUNC_INFO, 0, QString("'$1' no se ha podido borrar.").arg(windowTitle()) );
+	    blDebug ( Q_FUNC_INFO, 0, QString("'%1' no se ha podido borrar.").arg(windowTitle()) );
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if

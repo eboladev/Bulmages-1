@@ -37,8 +37,8 @@
 #include "blform.h"
 
 
-BlMainWindow *g_bges = NULL;
-BlMainCompany *g_emp = NULL;
+BlMainWindow *g_pluginbl_report2ods = NULL;
+BlMainCompany *g_pluginbl_report2ods_emp = NULL;
 
 
 ///
@@ -69,7 +69,7 @@ void PluginBl_Report2ODS::elslot1( )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    BlForm *ficha = new BlForm ( g_emp, 0 );
+    BlForm *ficha = new BlForm ( g_pluginbl_report2ods_emp, 0 );
 
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
 
@@ -84,7 +84,7 @@ void PluginBl_Report2ODS::elslot1( )
 
 int entryPoint ( BlMainWindow *bges )
 {
-    g_bges = bges;
+    g_pluginbl_report2ods = bges;
     return 0;
 }
 
@@ -149,7 +149,7 @@ int init (  )
             icon = rx4.cap ( 1 );
         } // end if
 
-	QMenuBar *menubar =g_bges->menuBar();
+	QMenuBar *menubar =g_pluginbl_report2ods->menuBar();
 	QMenu *menu = NULL;
 	QStringList path = pathtitulo.split("\\");
 
@@ -166,12 +166,12 @@ int init (  )
 			//QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
 			//menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
         		/// Miramos si existe un menu Herramientas
-			menu = g_bges->newMenu ( path[0], "", "menuHerramientas" );
+			menu = g_pluginbl_report2ods->newMenu ( path[0], "", "menuHerramientas" );
 		    } // end if
 	} else {
 
 		    if (!pPluginMenu) {
-			    pPluginMenu = g_bges->newMenu ( _("Informes &ODS"), "menuInfODS", "menuHerramientas" );
+			    pPluginMenu = g_pluginbl_report2ods->newMenu ( _("Informes &ODS"), "menuInfODS", "menuHerramientas" );
 		    } // end if
 		    menu = pPluginMenu;
 	} // end if
@@ -213,7 +213,7 @@ int init (  )
 
 int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
-    g_emp = cmp;
+    g_pluginbl_report2ods_emp = cmp;
     init();
     return 0;
 }
@@ -221,7 +221,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
-    g_emp = cmp;
+    g_pluginbl_report2ods_emp = cmp;
     init();
     return 0;
 }

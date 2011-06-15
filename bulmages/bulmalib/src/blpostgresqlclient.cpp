@@ -787,7 +787,6 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
         };
 
         rs = new BlDbRecordSet ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
-
         blDebug ( ("END ", Q_FUNC_INFO), 0 );
 
     } catch ( ... ) {

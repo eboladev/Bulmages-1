@@ -39,8 +39,8 @@
 #include "blform.h"
 
 
-QMainWindow *g_bges = NULL;
-BlMainCompany *g_emp = NULL;
+QMainWindow *g_pluginbl_report = NULL;
+BlMainCompany *g_pluginbl_report_emp = NULL;
 
 
 ///
@@ -70,7 +70,7 @@ void PluginBl_Report::elslot1( )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    BlForm *ficha = new BlForm ( g_emp, 0 );
+    BlForm *ficha = new BlForm ( g_pluginbl_report_emp, 0 );
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
@@ -80,7 +80,7 @@ void PluginBl_Report::elslot1( )
 
 int entryPoint ( QMainWindow *bges )
 {
-    g_bges = bges;
+    g_pluginbl_report = bges;
     return 0;
 }
 
@@ -97,8 +97,8 @@ int init (  )
 
     QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Informes
-    pPluginMenu = g_bges->menuBar()->findChild<QMenu *> ( "menuInformes" );
-    QMenu *pPluginVer = g_bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
+    pPluginMenu = g_pluginbl_report->menuBar()->findChild<QMenu *> ( "menuInformes" );
+    QMenu *pPluginVer = g_pluginbl_report->menuBar()->findChild<QMenu *> ( "menuVentana" );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
@@ -149,7 +149,7 @@ int init (  )
         } // end while
 
 
-	QMenuBar *menubar =g_bges->menuBar();
+	QMenuBar *menubar =g_pluginbl_report->menuBar();
 	QMenu *menu = NULL;
 	QStringList path = pathtitulo.split("\\");
 
@@ -172,9 +172,9 @@ int init (  )
 	} else {
 
 		    if (!pPluginMenu) {
-			    pPluginMenu = new QMenu ( _ ( "Informes" ), g_bges->menuBar() );
+			    pPluginMenu = new QMenu ( _ ( "Informes" ), g_pluginbl_report->menuBar() );
 			    pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformes" ) );
-			    g_bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
+			    g_pluginbl_report->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
 		    } // end if
 		    menu = pPluginMenu;
 	} // end if
@@ -216,7 +216,7 @@ int init (  )
 
 int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
-    g_emp = cmp;
+    g_pluginbl_report_emp = cmp;
     init();
     return 0;
 }
@@ -224,7 +224,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
-    g_emp = cmp;
+    g_pluginbl_report_emp = cmp;
     init();
     return 0;
 }

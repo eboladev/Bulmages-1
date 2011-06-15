@@ -31,7 +31,7 @@
 
 
 AlbaranClienteList *g_albaranClienteList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_clientealbaran = NULL;
 
 
 
@@ -55,7 +55,7 @@ int entryPoint ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        g_bges = bges;
+        g_pluginbf_clientealbaran = bges;
 
         BlAction *accionA = new BlAction ( _ ( "&Albaranes a clientes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
@@ -88,9 +88,9 @@ int BlAction_triggered(BlAction *accion) {
         }// end if
     } // end if
 
-    if (accion->objectName() == "mui_actionAlbaranClienteNuevo") {                
-        AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+    if (accion->objectName() == "mui_actionAlbaranClienteNuevo") {
+        AlbaranClienteView * bud = new AlbaranClienteView ( g_pluginbf_clientealbaran->company(), NULL );
+        g_pluginbf_clientealbaran->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
 

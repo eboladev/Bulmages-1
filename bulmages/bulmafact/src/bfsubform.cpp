@@ -620,7 +620,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 **/
 void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Columna: '$1', fila: '$2'.")).arg(QString::number ( index.column() )).arg(QString::number ( index.row() )) );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Columna: '%1', fila: '%2'.")).arg(QString::number ( index.column() )).arg(QString::number ( index.row() )) );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName() == "desc" + m_subform->tableName() ) {

@@ -176,7 +176,7 @@ QString BlComboBoxDelegate::id(QString value)
         } // end while      
       
        if (cad == value) {
-          blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Valor: '$1'")).arg(value) );
+          blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Valor: '%1'")).arg(value) );
 	  return m_comboRecordSet->value( m_fieldId );
        } // end if
        m_comboRecordSet->nextRecord();

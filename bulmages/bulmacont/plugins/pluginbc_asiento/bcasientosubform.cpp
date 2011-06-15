@@ -141,7 +141,7 @@ void BcAsientoSubForm::load ( QString idasiento )
 **/
 BlFixed BcAsientoSubForm::totaldebe ( QString idasiento )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '$1'").arg(idasiento) );
+    blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idasiento) );
     if ( idasiento == "" ) return BlFixed ( "0" );
     QString SQLQuery = "SELECT sum(debe) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -160,7 +160,7 @@ BlFixed BcAsientoSubForm::totaldebe ( QString idasiento )
 **/
 BlFixed BcAsientoSubForm::totalhaber ( QString idasiento )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '$1'").arg(idasiento) );
+    blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idasiento) );
     if ( idasiento == "" ) return BlFixed ( "0" );
     QString SQLQuery = "SELECT sum(haber) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );

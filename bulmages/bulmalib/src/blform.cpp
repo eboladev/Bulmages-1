@@ -584,12 +584,14 @@ void BlForm::setDbTableName ( QString nom )
 	  /// Buscamos los permisos que tiene el usuario y desactivamos botones.
 	  if ( !mainCompany() ->hasTablePrivilege ( nom, "INSERT" )
 	    && !mainCompany() ->hasTablePrivilege ( nom, "UPDATE" ) ) {
+
             QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
 		if ( b ) b->setDisabled ( TRUE );
 		QPushButton * p = findChild<QPushButton *> ( "mui_aceptar" );
 		if ( p ) p->hide();
 		p = findChild<QPushButton *> ( "mui_cancelar" );
 		if ( p ) p->setText("Cerrar");
+
 	  } // end if
 	  if ( !mainCompany() ->hasTablePrivilege ( nom, "DELETE" ) ) {
 		QToolButton * b = findChild<QToolButton *> ( "mui_borrar" );

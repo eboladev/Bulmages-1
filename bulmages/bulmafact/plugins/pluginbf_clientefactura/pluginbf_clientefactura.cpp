@@ -32,7 +32,7 @@
 
 
 FacturasList *g_facturasList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_clientefactura = NULL;
 
 
 ///
@@ -54,7 +54,7 @@ int entryPoint ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        g_bges = bges;
+        g_pluginbf_clientefactura = bges;
         
         BlAction *accionA = new BlAction ( _ ( "&Facturas a clientes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
@@ -83,20 +83,19 @@ int BlAction_triggered(BlAction *accion) {
         if ( g_facturasList ) {
             g_facturasList->hide();
             g_facturasList->show();
-        }// end if    
+        } // end if
     } // end if
 
-    if (accion->objectName() == "mui_actionFacturaClienteNueva") {         
-        FacturaView * bud = new FacturaView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+    if (accion->objectName() == "mui_actionFacturaClienteNueva") {
+        FacturaView * bud = new FacturaView ( g_pluginbf_clientefactura->company(), NULL );
+        g_pluginbf_clientefactura->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
-            
-            
     } // end if
 
     return 0;
 }
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

@@ -40,7 +40,7 @@
 #include "regivaqtoolbutton.h"
 #include "bcmodelo347listview.h"
 
-BcBulmaCont *g_bcont;
+BcBulmaCont *g_pluginbc_registroiva;
 
 ///
 /**
@@ -54,7 +54,7 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_registroiva", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bcont = bcont;
+    g_pluginbc_registroiva = bcont;
     
     QMenu *pPluginMenu = bcont->newMenu(_("&Iva"), "menuIva", "menuMaestro");
 
@@ -89,19 +89,19 @@ int entryPoint ( BcBulmaCont *bcont )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionRegistroIVA") {
-	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_bcont->company(), "0" );
+	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_pluginbc_registroiva->company(), "0" );
 	perd->inicializa();
-	g_bcont->company() ->pWorkspace() ->addSubWindow ( perd );
+	g_pluginbc_registroiva->company() ->pWorkspace() ->addSubWindow ( perd );
 	perd->show();
     } // end if
     
     if (accion->objectName() == "mui_actionCobrosYPagos") {
-	cobropagoview *adoc = new cobropagoview ( g_bcont->company(), 0 );
-	g_bcont->company() ->pWorkspace() ->addSubWindow ( adoc );
+	cobropagoview *adoc = new cobropagoview ( g_pluginbc_registroiva->company(), 0 );
+	g_pluginbc_registroiva->company() ->pWorkspace() ->addSubWindow ( adoc );
 	adoc->show();
     } // end if
     if (accion->objectName() == "mui_actionModelo347") {
-      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->company(), "0" );
+      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_pluginbc_registroiva->company(), "0" );
       dlg347->exec();
       delete dlg347;
     } // end if

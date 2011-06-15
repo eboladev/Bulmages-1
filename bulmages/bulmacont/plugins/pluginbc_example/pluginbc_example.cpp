@@ -31,7 +31,7 @@
 #include "bccompany.h"
 #include "blfunctions.h"
 
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_example = NULL;
 
 
 ///
@@ -45,7 +45,7 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bcont = bcont;
+    g_pluginbc_example = bcont;
 
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = bcont->newMenu ( _ ( "&Plugin" ), "menuPlugin", "menuHerramientas" );
