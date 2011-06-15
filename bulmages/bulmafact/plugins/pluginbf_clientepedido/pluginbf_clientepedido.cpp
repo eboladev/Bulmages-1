@@ -31,7 +31,7 @@
 
 
 PedidosClienteList *g_pedidosClienteList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_clientepedido = NULL;
 
 
 
@@ -47,7 +47,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientepedido", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_clientepedido = bges;
     
     if ( bges->company()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
         /// Miramos si existe un menu Ventas
@@ -72,7 +72,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addAction ( accionB );
 
 
-    } // end if   
+    } // end if
     
     return 0;
 }
@@ -83,16 +83,16 @@ int BlAction_triggered(BlAction *accion) {
         if ( g_pedidosClienteList ) {
             g_pedidosClienteList->hide();
             g_pedidosClienteList->show();
-        } // end if        
+        } // end if
     } // end if
     
     if (accion->objectName() == "mui_actionClientePedidoNuevo") {
-        PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        PedidoClienteView * bud = new PedidoClienteView ( g_pluginbf_clientepedido->company(), NULL );
+        g_pluginbf_clientepedido->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
     
-    } // end if           
+    } // end if
     return 0;
 } // end if
 

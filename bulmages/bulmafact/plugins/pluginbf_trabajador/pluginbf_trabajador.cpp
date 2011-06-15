@@ -25,27 +25,27 @@
 #include "blfunctions.h"
 #include "trabajadorview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_trabajador = NULL;
 
 ///
 /**
 \param bges
 \return
 **/
-int entryPoint ( BfBulmaFact *bges )
+int entryPoint ( BfBulmaFact *bf )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trabajador", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_trabajador = bf;
 
 
-    if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
+    if ( g_pluginbf_trabajador->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
+        QMenu *pPluginMenu = g_pluginbf_trabajador->menuMaestro;
         pPluginMenu->addSeparator();
 
         BlAction *accionA = new BlAction ( _ ( "&Trabajadores" ), 0 );
@@ -54,7 +54,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionA->setWhatsThis ( _ ( "Trabajadores" ) );
         accionA->setObjectName("mui_actionTrabajadores");
         pPluginMenu->addAction ( accionA );
-        bges->Listados->addAction ( accionA );
+        g_pluginbf_trabajador->Listados->addAction ( accionA );
 
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
@@ -67,8 +67,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_Trabajador" );
 
     if (accion->objectName() == "mui_actionTrabajadores") {
-        TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        TrabajadorView * bud = new TrabajadorView ( g_pluginbf_trabajador->company(), NULL );
+        g_pluginbf_trabajador->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 

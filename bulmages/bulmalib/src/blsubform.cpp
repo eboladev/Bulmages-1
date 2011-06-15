@@ -1896,7 +1896,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '$1' no existe")).arg(QString::number ( row )) );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
         return;
     } // end if
 
@@ -2600,7 +2600,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
     
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '$1' no existe")).arg(QString::number ( row )) );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
         return;
     } // end if
 
@@ -2630,7 +2630,7 @@ void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
     blDebug ( "BlSubForm::on_mui_list_pressedAsterisk", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '$1' no existe")).arg(QString::number ( row )) );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
         return;
     } // end if
 
@@ -2659,7 +2659,7 @@ void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
     blDebug ( "BlSubForm::on_mui_list_pressedPlus", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '$1' no existe")).arg(QString::number ( row )) );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
         return;
     } // end if
 
@@ -2688,7 +2688,7 @@ void BlSubForm::on_mui_list_pressedMinus ( int row, int col )
     blDebug ( "BlSubForm::on_mui_list_pressedMinus", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '$1' no existe")).arg(QString::number ( row )) );
+	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
         return;
     } // end if
 

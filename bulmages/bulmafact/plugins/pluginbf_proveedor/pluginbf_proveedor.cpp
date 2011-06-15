@@ -29,7 +29,7 @@
 
 
 ProveedorList *g_providersList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_proveedor = NULL;
 
 
 
@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_proveedor = bges;
 
     if ( bges->company()->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
 
@@ -87,8 +87,8 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionProveedorNuevo") {
-        ProveedorView * bud = new ProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ProveedorView * bud = new ProveedorView ( g_pluginbf_proveedor->company(), NULL );
+        g_pluginbf_proveedor->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 

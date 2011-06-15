@@ -31,7 +31,7 @@
 #include "aboutfapacview.h"
 
 ProfesoresList *g_profesoresList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_profesor = NULL;
 
 
 ///
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_profesor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_profesor = bges;
 
     if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
 
@@ -92,24 +92,26 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionProfesores") {
         if ( g_profesoresList ) {
             g_profesoresList->hide();
             g_profesoresList->show();
-        } // end if       
+        } // end if
     } // end if
 
     if (accion->objectName() == "mui_actionProfesorNuevo") {
-        ProfesorView * bud = new ProfesorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
-        bud->show();       
+        ProfesorView * bud = new ProfesorView ( g_pluginbf_profesor->company(), NULL );
+        g_pluginbf_profesor->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
     } // end if
     if (accion->objectName() == "mui_actionAboutFapac") {
         AboutFapacView *afv = new AboutFapacView();
-        afv->show();       
+        afv->show();
     } // end if
 }
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

@@ -32,7 +32,7 @@
 #include "claseview.h"
 
 AlumnosList *g_alumnosList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_alumno = NULL;
 
 
 ///
@@ -47,7 +47,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_alumno", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_alumno = bges;
 
 
     if ( bges->company()->hasTablePrivilege ( "alumno", "SELECT" ) ) {
@@ -121,20 +121,20 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionAlumnoNuevo") {
-        AlumnoView * bud = new AlumnoView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        AlumnoView * bud = new AlumnoView ( g_pluginbf_alumno->company(), NULL );
+        g_pluginbf_alumno->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 
     if (accion->objectName() == "mui_actionAlumnoCuotas") {
-        ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( g_pluginbf_alumno->company(), NULL );
+        g_pluginbf_alumno->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if 
     
     if (accion->objectName() == "mui_actionClases") {
-        ClaseView * bud = new ClaseView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ClaseView * bud = new ClaseView ( g_pluginbf_alumno->company(), NULL );
+        g_pluginbf_alumno->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

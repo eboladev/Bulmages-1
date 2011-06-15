@@ -128,7 +128,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de cuentas con insercion en el debe que lo tienen bloqueado.
     /// --------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe <> 0" );
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'")).arg(query) );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(query) );
     cur = dbConnection->loadQuery ( query, "hola1" );
     while ( !cur->eof() ) {
         QString cadena;

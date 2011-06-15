@@ -27,7 +27,7 @@
 #include "listtasaivaview.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_iva = NULL;
 
 
 
@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_iva", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_iva = bges;
 
 
     if ( bges->company()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
@@ -80,14 +80,14 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, _("PluginBf_IVA") );
 
     if (accion->objectName() == "mui_actionIVATipos") {
-         ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) g_bges->company(), NULL );
-         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+         ListTipoIVAView *pag = new ListTipoIVAView ( g_pluginbf_iva->company(), NULL );
+         g_pluginbf_iva->company()->m_pWorkspace->addSubWindow ( pag );
          pag->show();
     } // end if
 
     if (accion->objectName() == "mui_actionIVATasas") {
-         ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) g_bges->company(), NULL );
-         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+         ListTasaIVAView *pag = new ListTasaIVAView ( g_pluginbf_iva->company(), NULL );
+         g_pluginbf_iva->company()->m_pWorkspace->addSubWindow ( pag );
          pag->show();
     } // end if
 

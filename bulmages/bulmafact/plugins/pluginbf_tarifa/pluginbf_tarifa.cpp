@@ -28,7 +28,7 @@
 #include "listlvartarifaview.h"
 #include "tarifalistview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_tarifa = NULL;
 
 
 ///
@@ -42,7 +42,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_VariacionTarifa", "0.11.1-0001");
-    g_bges = bges;
+    g_pluginbf_tarifa = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -69,9 +69,9 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_Tarifa" );
     if (accion->objectName() == "mui_actionTarifas") {
-        TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) g_bges->company() ), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( tar );
-        tar->show();        
+        TarifaListView *tar = new TarifaListView ( g_pluginbf_tarifa->company(), NULL );
+        g_pluginbf_tarifa->company() ->m_pWorkspace->addSubWindow ( tar );
+        tar->show();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;

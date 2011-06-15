@@ -128,8 +128,8 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             /// Entramos en el directorio
 
             if ( !direfactura->cd ( fileInfo->fileName() ) ) {
-		blDebug ( Q_FUNC_INFO, 0, QString(_("Error intentando entrar en '$1'.")).arg(fileInfo->fileName()) );
-		blMsgError(QString(_("Error intentando entrar en '$1'")).arg(fileInfo->fileName()));
+		blDebug ( Q_FUNC_INFO, 0, QString(_("Error intentando entrar en '%1'.")).arg(fileInfo->fileName()) );
+		blMsgError(QString(_("Error intentando entrar en '%1'")).arg(fileInfo->fileName()));
                 continue;
             }
 
@@ -142,8 +142,8 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             archivos = new QFileInfoList ( direfactura->entryInfoList() );
 
             if ( archivos->size() > 1 ) {
-		blDebug ( Q_FUNC_INFO, 0, QString(_("El directorio '$1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()) );
-		blMsgError(QString(_("El directorio '$1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()));
+		blDebug ( Q_FUNC_INFO, 0, QString(_("El directorio '%1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()) );
+		blMsgError(QString(_("El directorio '%1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()));
                 direfactura->cdUp();
                 continue;
             }

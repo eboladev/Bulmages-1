@@ -36,7 +36,7 @@
 #include "listtallasview.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_tallascolores = NULL;
 
 ///
 /**
@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0002");
-    g_bges = bges;
+    g_pluginbf_tallascolores = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -89,17 +89,18 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionTallas") {
-        ListTallasView *tallas = new ListTallasView ( g_bges->company(), 0 );
-        g_bges->company()->m_pWorkspace->addSubWindow ( tallas );
+        ListTallasView *tallas = new ListTallasView ( g_pluginbf_tallascolores->company(), 0 );
+        g_pluginbf_tallascolores->company()->m_pWorkspace->addSubWindow ( tallas );
         tallas->show();
     } // end if
 
     if (accion->objectName() == "mui_actionColores") {
-        ListColoresView *colores = new ListColoresView ( g_bges->company(), 0 );
-        g_bges->company()->m_pWorkspace->addSubWindow ( colores );
+        ListColoresView *colores = new ListColoresView ( g_pluginbf_tallascolores->company(), 0 );
+        g_pluginbf_tallascolores->company()->m_pWorkspace->addSubWindow ( colores );
         colores->show();
     } // end if
 

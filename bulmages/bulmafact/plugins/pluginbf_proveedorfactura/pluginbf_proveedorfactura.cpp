@@ -29,7 +29,7 @@
 
 
 FacturasProveedorList *g_facturasProveedorList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_proveedorfactura = NULL;
 
 
 ///
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorfactura", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_proveedorfactura = bges;
 
     if ( bges->company()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -84,8 +84,8 @@ int BlAction_triggered(BlAction *accion) {
     }  // end if
 
     if (accion->objectName() == "mui_actionProveedorFacturaNueva") {
-        FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        FacturaProveedorView * bud = new FacturaProveedorView ( g_pluginbf_proveedorfactura->company(), NULL );
+        g_pluginbf_proveedorfactura->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
     }  // end if
@@ -93,6 +93,7 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

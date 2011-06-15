@@ -25,7 +25,7 @@
 #include "blfunctions.h"
 #include "listalmacenview.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_almacen = NULL;
 
 
 ///
@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        g_bges = bges;
+        g_pluginbf_almacen = bges;
         BlAction *accionA = new BlAction ( _ ( "&Almacenes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
         accionA->setStatusTip ( _ ( "Almacenes" ) );
@@ -63,8 +63,8 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionAlmacen") {
-        ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ListAlmacenView * bud = new ListAlmacenView ( g_pluginbf_almacen->company(), NULL );
+        g_pluginbf_almacen->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

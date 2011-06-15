@@ -406,7 +406,7 @@ void PresupuestoListSubForm::load()
 **/
 void PresupuestoListSubForm::load ( QString query )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString("Consulta: '$1'.").arg(query) );
+    blDebug ( Q_FUNC_INFO, 0, QString("Consulta: '%1'.").arg(query) );
     BlSubForm::load ( query );
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }

@@ -38,7 +38,7 @@
 
 BcAsientoView *g_asiento;
 BcAsientoListView *g_listasientos;
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_asiento = NULL;
 
 
 ///
@@ -54,12 +54,12 @@ int entryPoint ( BcBulmaCont *bcont )
     blBindTextDomain ( "pluginbc_asiento", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_asiento = NULL;
-    g_bcont = bcont;
+    g_pluginbc_asiento = bcont;
 
 
     /// Creamos la ventana de asientos que va a ser fija.
-    g_asiento = new BcAsientoView ( ( BcCompany * ) g_bcont->company(), 0 );
-    g_bcont->company()->pWorkspace() ->addSubWindow ( g_asiento );
+    g_asiento = new BcAsientoView ( ( BcCompany * ) g_pluginbc_asiento->company(), 0 );
+    g_pluginbc_asiento->company()->pWorkspace() ->addSubWindow ( g_asiento );
 
     QMenu *pPluginMenu = bcont->newMenu(_("&Asiento"), "menuAsiento", "menuMaestro");
 
@@ -124,17 +124,17 @@ int BlAction_triggered(BlAction *accion) {
 
     if (accion->objectName() == "mui_actionAsientoContable") {
         if (g_asiento == NULL) {
-            g_asiento = new BcAsientoView ( ( BcCompany * ) g_bcont->company(), 0 );
-            g_bcont->company()->pWorkspace() -> addSubWindow ( g_asiento );
+            g_asiento = new BcAsientoView ( g_pluginbc_asiento->company(), 0 );
+            g_pluginbc_asiento->company()->pWorkspace() -> addSubWindow ( g_asiento );
         } // end if
         g_asiento->hide();
         g_asiento->show();
     } // end if
     if (accion->objectName() == "mui_actionAsientoContableLista") {
         if (g_listasientos == NULL) {
-            g_listasientos = new BcAsientoListView ( ( BcCompany * ) g_bcont->company() );
+            g_listasientos = new BcAsientoListView ( g_pluginbc_asiento->company() );
             g_listasientos->presentar();
-            g_bcont->company()->pWorkspace() -> addSubWindow ( g_listasientos );
+            g_pluginbc_asiento->company()->pWorkspace() -> addSubWindow ( g_listasientos );
         } // end if
         g_listasientos->hide();
         g_listasientos->show();
@@ -143,7 +143,7 @@ int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionAsientoContableEspaciar") {
         BlDbRecordSet *cur = NULL;
         try {
-            cur = g_bcont->company()->loadQuery ( "SELECT abreasientos()" );
+            cur = g_pluginbc_asiento->company()->loadQuery ( "SELECT abreasientos()" );
             g_main->statusBar() ->showMessage ( _ ( "Se han espaciado los asientos" ), 2000 );
             delete cur;
         } catch ( ... ) {
@@ -157,7 +157,7 @@ int BlAction_triggered(BlAction *accion) {
         QString query = "SELECT reordenaasientosall()";
         BlDbRecordSet *cur = NULL;
         try {
-            cur = g_bcont->company()->loadQuery ( query );
+            cur = g_pluginbc_asiento->company()->loadQuery ( query );
             g_main->statusBar() ->showMessage ( _ ( "Se han ordenado los asientos" ), 2000 );
             delete cur;
         } catch ( ... ) {

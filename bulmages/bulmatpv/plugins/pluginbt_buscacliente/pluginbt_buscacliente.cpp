@@ -36,7 +36,7 @@
 typedef QMap<QString, BlFixed> base;
 BlSearchWidget *g_busc;
 BlDockWidget *g_doc1;
-BtCompany * g_emp;
+BtCompany * g_pluginbt_buscacliente_emp;
 
 
 ///
@@ -51,7 +51,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_buscacliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_emp = tpv->company();
+    g_pluginbt_buscacliente_emp = tpv->company();
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _ ( "Cliente" ), tpv, "buscaclientedock" );
@@ -82,10 +82,10 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
 {
     if ( busc->id() != "" && busc == g_busc ) {
-        g_emp->ticketActual() ->setDbValue ( "idcliente", busc->id() );
-        g_emp->ticketActual() ->pintar();
-        g_emp->setValorBtInput ( "" );
-        g_emp->pulsaTecla ( 0, "" );
+        g_pluginbt_buscacliente_emp->ticketActual() ->setDbValue ( "idcliente", busc->id() );
+        g_pluginbt_buscacliente_emp->ticketActual() ->pintar();
+        g_pluginbt_buscacliente_emp->setValorBtInput ( "" );
+        g_pluginbt_buscacliente_emp->pulsaTecla ( 0, "" );
     } // end if
     return 0;
 }

@@ -516,7 +516,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     blDebug ( Q_FUNC_INFO, 0 );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Columna: '$1', fila: '$2'.")).arg(QString::number(index.column())).arg(QString::number(index.row())) );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Columna: '%1', fila: '%2'.")).arg(QString::number(index.column())).arg(QString::number(index.row())) );
 
     if ( linea->fieldName().startsWith ( "desc" ) ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );

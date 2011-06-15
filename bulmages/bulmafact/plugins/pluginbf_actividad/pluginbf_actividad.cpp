@@ -29,7 +29,7 @@
 #include "blsearchwidget.h"
 
 ActividadesList *g_actividadesList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_actividad = NULL;
 
 
 ///
@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_actividad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_actividad = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -97,13 +97,13 @@ int BlAction_triggered(BlAction *accion) {
         } // end if
     }
     if (accion->objectName() == "mui_actionActividadNueva") {
-        ActividadView * bud = new ActividadView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        ActividadView * bud = new ActividadView ( g_pluginbf_actividad->company(), NULL );
+        g_pluginbf_actividad->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     }
     if (accion->objectName() == "mui_actionActividadTipos") {
-        TipoActividadView * bud = new TipoActividadView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        TipoActividadView * bud = new TipoActividadView ( g_pluginbf_actividad->company(), NULL );
+        g_pluginbf_actividad->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     }
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

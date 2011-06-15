@@ -281,8 +281,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
     BlDbRecordSet *proveedor = mainCompany() ->loadQuery ( query );
 
     if ( proveedor->numregistros() == 0 ) {
-	blDebug ( Q_FUNC_INFO, 0, QString(_("El proveedor con CIF '$1' no existe en la base de datos. Hay que crearlo antes de importar esta factura.")).arg(idProveedor) );
-	blMsgError(QString(_("El proveedor con CIF '$1' no existe en la base de datos. Hay que crearlo antes de importar esta factura.")).arg(idProveedor));
+	blDebug ( Q_FUNC_INFO, 0, QString(_("El proveedor con CIF '%1' no existe en la base de datos. Hay que crearlo antes de importar esta factura.")).arg(idProveedor) );
+	blMsgError(QString(_("El proveedor con CIF '%1' no existe en la base de datos. Hay que crearlo antes de importar esta factura.")).arg(idProveedor));
         return;
     }
 
@@ -394,8 +394,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
         /// valores que necesitamos (idarticulo y nomarticulo)
         if ( articulo->numregistros() == 0 ) {
 
-	    blDebug ( Q_FUNC_INFO, 0, QString(_("El articulo con codigo completo '$1' no existe en la base de datos. Se importara como articulo generico.")).arg(mapa_lfactura["idarticulo"]) );
-	    blMsgError(QString(_("El articulo con codigo completo '$1' no existe en la base de datos. Se importara como articulo generico.")).arg(mapa_lfactura["idarticulo"]));
+	    blDebug ( Q_FUNC_INFO, 0, QString(_("El articulo con codigo completo '%1' no existe en la base de datos. Se importara como articulo generico.")).arg(mapa_lfactura["idarticulo"]) );
+	    blMsgError(QString(_("El articulo con codigo completo '%1' no existe en la base de datos. Se importara como articulo generico.")).arg(mapa_lfactura["idarticulo"]));
 
             /// Obtenemos el codigo de articulo generico
             query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";

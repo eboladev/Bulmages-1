@@ -31,7 +31,7 @@
 #include "comisionview.h"
 
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_asociacion = NULL;
 
 ///
 /**
@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_asociacion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_asociacion = bges;
 
     if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
 
@@ -115,40 +115,40 @@ int BlAction_triggered(BlAction *accion) {
    
    blDebug ( Q_FUNC_INFO, 0 );
    if (accion->objectName() == "mui_actionJuntasDirectivas") {
-       JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) g_bges->company(), NULL );
-       g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+       JDirectivaList * bud = new JDirectivaList ( g_pluginbf_asociacion->company(), NULL );
+       g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
        bud->show();
     }
 
    if (accion->objectName() == "mui_actionJuntaConvocar") {
-       JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) g_bges->company(), 0 );
-       g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+       JDirectivaView *bud = new JDirectivaView ( g_pluginbf_asociacion->company(), 0 );
+       g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
        bud->show();
        bud->pintar();
     }
 
    if (accion->objectName() == "mui_actionReunion") {
-       ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) g_bges->company(), NULL );
-       g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+       ConvReunionList * bud = new ConvReunionList ( g_pluginbf_asociacion->company(), NULL );
+       g_pluginbf_asociacion->company() ->m_pWorkspace->addSubWindow ( bud );
        bud->show();
     }
 
    if (accion->objectName() == "mui_actionReunionConvocar") {
-       ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) g_bges->company(), 0 );
-       g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+       ConvReunionView *bud = new ConvReunionView ( g_pluginbf_asociacion->company(), 0 );
+       g_pluginbf_asociacion->company() ->m_pWorkspace->addSubWindow ( bud );
        bud->show();
        bud->pintar();
     }
 
     if (accion->objectName() == "mui_actionComisiones") {
-        ComisionesList * bud = new ComisionesList ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        ComisionesList * bud = new ComisionesList ( g_pluginbf_asociacion->company(), NULL );
+        g_pluginbf_asociacion->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     }
 
     if (accion->objectName() == "mui_actionComisionConvocar") {
-        ComisionView *bud = new ComisionView ( ( BfCompany * ) g_bges->company(), 0 );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ComisionView *bud = new ComisionView ( g_pluginbf_asociacion->company(), 0 );
+        g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
         bud->pintar();
     }

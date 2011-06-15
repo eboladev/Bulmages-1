@@ -133,7 +133,7 @@ void ListProyectosView::remove()
 **/
 void ListProyectosView::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Fila: '$1'.")).arg(QString::number(row)) );
+    blDebug ( Q_FUNC_INFO, 0, QString(_("Fila: '%1'.")).arg(QString::number(row)) );
     mdb_idpresupuestoc = mui_listado->dbValue ( "idpresupuestoc" );
     mdb_nompresupuestoc = mui_listado->dbValue ( "nompresupuestoc" );
     if ( editMode() ) {

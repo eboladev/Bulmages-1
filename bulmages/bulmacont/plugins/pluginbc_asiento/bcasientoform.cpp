@@ -248,7 +248,7 @@ void BcAsientoForm::pintar()
 **/
 int BcAsientoForm::load ( QString idasiento )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '$1'").arg(idasiento) );
+    blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idasiento) );
 
     if ( dialogChanges_isChanged() ) {
         switch ( QMessageBox::warning ( this, "BulmaCont",

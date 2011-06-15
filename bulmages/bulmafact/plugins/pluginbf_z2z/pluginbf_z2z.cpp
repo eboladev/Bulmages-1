@@ -35,7 +35,7 @@
 #include "z2zview.h"
 
 
-BfCompany *g_bges;
+BfCompany *g_pluginbf_z2z;
 
 ///
 /**
@@ -44,12 +44,11 @@ BfCompany *g_bges;
 int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( Q_FUNC_INFO, 0 );
-
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_z2z", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bges = bges->company();
+    g_pluginbf_z2z = bges->company();
 
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );
@@ -72,8 +71,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_Z2Z" );
 
     if (accion->objectName() == "mui_actionZ2Z") {
-        Z2ZView * bud = new Z2ZView ( g_bges, NULL );
-        g_bges->m_pWorkspace->addSubWindow ( bud );
+        Z2ZView * bud = new Z2ZView ( g_pluginbf_z2z, NULL );
+        g_pluginbf_z2z->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     

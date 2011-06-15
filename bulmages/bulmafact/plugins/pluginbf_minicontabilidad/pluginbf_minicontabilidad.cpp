@@ -29,7 +29,7 @@
 
 
 ApunteContableView *g_ap = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_minicontabilidad = NULL;
 
 
 ///
@@ -47,14 +47,14 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_minicontabilidad = bges;
 
 
 
-    if ( g_bges->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
+    if ( g_pluginbf_minicontabilidad->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
 
         /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = g_bges->newMenu ( _("Economia"), "menuEconomia", "menuMaestro" );
+        QMenu *pPluginMenu = g_pluginbf_minicontabilidad->newMenu ( _("Economia"), "menuEconomia", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         pPluginMenu->addSeparator();
@@ -64,7 +64,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionA->setWhatsThis ( _ ( "Partidas contables" ) );
         accionA->setObjectName("mui_actionContablesPartidas");
         pPluginMenu->addAction ( accionA );
-        g_bges->Fichas->addAction ( accionA );
+        g_pluginbf_minicontabilidad->Fichas->addAction ( accionA );
 
         QAction *accionB = new QAction ( _ ( "&Anotaciones contables" ), 0 );
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/balance-sheet.png" ) ) );
@@ -72,7 +72,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setWhatsThis ( _ ( "Anotaciones contables" ) );
         accionA->setObjectName("mui_actionContablesAnotaciones");
         pPluginMenu->addAction ( accionB );
-        g_bges->Fichas->addAction ( accionB );
+        g_pluginbf_minicontabilidad->Fichas->addAction ( accionB );
 
         QAction *accionC = new QAction ( _ ( "&Previsiones" ), 0 );
         accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/book-list.png" ) ) );
@@ -80,7 +80,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionC->setWhatsThis ( _ ( "Presupuestos Contables" ) );
         accionA->setObjectName("mui_actionContablesPresupuestos");
         pPluginMenu->addAction ( accionC );
-        g_bges->Fichas->addAction ( accionC );
+        g_pluginbf_minicontabilidad->Fichas->addAction ( accionC );
 
      } // end if
 
@@ -95,8 +95,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( ("END ", Q_FUNC_INFO), 0, "PluginBf_MiniContabilidad" );
 
     if (accion->objectName() == "mui_actionContablesPartidas") {
-        PartidasView *pag = new PartidasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
-        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        PartidasView *pag = new PartidasView ( g_pluginbf_minicontabilidad->company(), 0, FALSE );
+        g_pluginbf_minicontabilidad->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
 
@@ -107,8 +107,8 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionContablesPresupuestos") {
-        PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) g_bges->company(), 0 );
-        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        PresupuestoContableList *pag = new PresupuestoContableList ( g_pluginbf_minicontabilidad->company(), 0 );
+        g_pluginbf_minicontabilidad->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
 

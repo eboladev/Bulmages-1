@@ -36,7 +36,7 @@
 #include "bccuentaview.h"
 
 BcPlanContableListView *g_plancontable;
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_cuenta = NULL;
 
 ///
 /**
@@ -49,7 +49,7 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bcont = bcont;
+    g_pluginbc_cuenta = bcont;
     g_plancontable = NULL;
 
     QMenu *pPluginMenu;
@@ -80,9 +80,9 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionPlanContable") {
         if (g_plancontable == NULL) {
-            g_plancontable = new BcPlanContableListView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_plancontable = new BcPlanContableListView ( g_pluginbc_cuenta->company(), 0 );
             g_plancontable->inicializa();
-            g_bcont->company()->pWorkspace() ->addSubWindow ( g_plancontable );
+            g_pluginbc_cuenta->company()->pWorkspace() ->addSubWindow ( g_plancontable );
         } // end if
         g_plancontable->hide();
         g_plancontable->show();

@@ -34,7 +34,7 @@
 #include "articulotpv.h"
 #include "familiastpv.h"
 
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_bulmatpv = NULL;
 
 
 ///
@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    g_bges = bges;
+    g_pluginbf_bulmatpv = bges;
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -66,9 +66,9 @@ int entryPoint ( BfBulmaFact *bges )
     } // end if
 
     /// Creamos el men&uacute;.
-    BlAction *accionA = new BlAction ( _("&Cuadres de Caja"), 0 );
-    accionA->setStatusTip ( _("Listado de Cuadres de Caja") );
-    accionA->setWhatsThis ( _("Listado de Cuadres de Caja") );
+    BlAction *accionA = new BlAction ( _("&Cuadres de caja"), 0 );
+    accionA->setStatusTip ( _("Listado de cuadres de caja") );
+    accionA->setWhatsThis ( _("Listado de cuadres de caja") );
     accionA->setObjectName("mui_actionCuadresCaja");
     
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
@@ -82,8 +82,8 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionCuadresCaja") {
-        ZList *vehiculoview = new ZList ( ( BfCompany * ) g_bges->company() );
-        g_bges->company()->m_pWorkspace->addSubWindow ( vehiculoview );
+        ZList *vehiculoview = new ZList ( g_pluginbf_bulmatpv->company() );
+        g_pluginbf_bulmatpv->company()->m_pWorkspace->addSubWindow ( vehiculoview );
         vehiculoview->show();
     } //end if
     blDebug ( ("END ", Q_FUNC_INFO), 0 );

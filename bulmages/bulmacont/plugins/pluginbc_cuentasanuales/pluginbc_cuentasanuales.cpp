@@ -36,7 +36,7 @@
 #include "bccuentasanualesview.h"
 
 BcCuentasAnualesView *g_cuentasAnuales;
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_cuentasanuales = NULL;
 
 ///
 /**
@@ -52,7 +52,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_cuentasAnuales = NULL;
 
-    g_bcont = bcont;
+    g_pluginbc_cuentasanuales = bcont;
     /// Creamos la ventana de asientos que va a ser fija.
     g_cuentasAnuales = NULL;
 
@@ -74,8 +74,8 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionCuentasAnuales") {
         if (g_cuentasAnuales == NULL) {
-            g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) g_bcont->company(), 0 );
-            g_bcont->company() ->pWorkspace() -> addSubWindow ( g_cuentasAnuales );
+            g_cuentasAnuales = new BcCuentasAnualesView ( g_pluginbc_cuentasanuales->company(), 0 );
+            g_pluginbc_cuentasanuales->company() ->pWorkspace() -> addSubWindow ( g_cuentasAnuales );
         } // end if
         g_cuentasAnuales->hide();
         g_cuentasAnuales->show();

@@ -32,7 +32,7 @@
 #include "emitirrecibosview.h"
 
 RecibosList *g_recibosList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_recibo = NULL;
 
 
 ///
@@ -47,7 +47,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_recibo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_recibo = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -85,6 +85,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0, "PluginBf_Recibo" );
 
@@ -96,14 +97,14 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionReciboNuevo") {
-        ReciboView * bud = new ReciboView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ReciboView * bud = new ReciboView ( g_pluginbf_recibo->company(), NULL );
+        g_pluginbf_recibo->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 
     if (accion->objectName() == "mui_actionRecibosEmitir") {
-        EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        EmitirRecibosView * bud = new EmitirRecibosView ( g_pluginbf_recibo->company(), NULL );
+        g_pluginbf_recibo->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
 
@@ -111,6 +112,7 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
+
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {

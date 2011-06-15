@@ -29,7 +29,7 @@
 
 
 AlbaranesProveedor *g_albaranesProveedor = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_proveedoralbaran = NULL;
 
 ///
 /**
@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedoralbaran", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_bges = bges;
+    g_pluginbf_proveedoralbaran = bges;
 
 
     if ( bges->company()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
@@ -86,8 +86,8 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionProveedAlbaranNuevo") {
-        AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        AlbaranProveedorView * bud = new AlbaranProveedorView ( g_pluginbf_proveedoralbaran->company(), NULL );
+        g_pluginbf_proveedoralbaran->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
     } // end if

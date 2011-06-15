@@ -34,7 +34,7 @@
 #include "bcextractoview.h"
 
 BcExtractoView *g_mayor;
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_mayor = NULL;
 
 ///
 /**
@@ -51,7 +51,7 @@ int entryPoint ( BcBulmaCont *bcont )
     g_mayor = NULL;
 
     /// Creamos el men&uacute;.
-    g_bcont = bcont;
+    g_pluginbc_mayor = bcont;
     QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 
     BlAction *accionA = new BlAction ( _ ( "&Libro Mayor" ), 0 );
@@ -74,8 +74,8 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionLibro") {
         if (g_mayor == NULL) {
-            g_mayor = new BcExtractoView ( ( BcCompany * ) g_bcont->company(), 0 );
-            g_bcont->company() ->pWorkspace() ->addSubWindow ( g_mayor );
+            g_mayor = new BcExtractoView ( g_pluginbc_mayor->company(), 0 );
+            g_pluginbc_mayor->company() ->pWorkspace() ->addSubWindow ( g_mayor );
         } // end if
         g_mayor->hide();
         g_mayor->show();

@@ -34,7 +34,7 @@
 #include "bcamortizacionlistview.h"
 
 BcAmortizacionListView *g_amortizacionlist;
-BcBulmaCont *g_bcont = NULL;
+BcBulmaCont *g_pluginbc_amortizacion = NULL;
 
 ///
 /**
@@ -49,7 +49,7 @@ int entryPoint ( BcBulmaCont *bcont )
     blBindTextDomain ( "pluginbc_amortizacion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_amortizacionlist = NULL;
-    g_bcont = bcont;
+    g_pluginbc_amortizacion = bcont;
 
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
@@ -74,8 +74,8 @@ int BlAction_triggered(BlAction *accion) {
     blDebug ( Q_FUNC_INFO, 0 );
     if (accion->objectName() == "mui_actionAmortizaciones") {
         if (g_amortizacionlist == NULL) {
-            g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) g_bcont->company(), 0 );
-            g_bcont->company()->pWorkspace() ->addSubWindow ( g_amortizacionlist );
+            g_amortizacionlist = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
+            g_pluginbc_amortizacion->company()->pWorkspace() ->addSubWindow ( g_amortizacionlist );
         } // end if
         g_amortizacionlist->hide();
         g_amortizacionlist->show();

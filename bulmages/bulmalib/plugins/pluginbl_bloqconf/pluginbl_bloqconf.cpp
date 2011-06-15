@@ -37,7 +37,7 @@
 #include "blworkspace.h"
 #include "blform.h"
 
-QMainWindow *g_bges = NULL;
+QMainWindow *g_pluginbl_bloqconf = NULL;
 BlMainCompany *g_emp = NULL;
 
 
@@ -121,7 +121,7 @@ int entryPoint ( BlMainWindow *bges )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    g_bges = bges;
+    g_pluginbl_bloqconf = bges;
 
 
     /// Inicializa el sistema de traducciones 'gettext'.

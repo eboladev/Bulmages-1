@@ -29,7 +29,7 @@
 
 
 ClientsList *g_clientesList = NULL;
-BfBulmaFact *g_bges = NULL;
+BfBulmaFact *g_pluginbf_cliente = NULL;
 
 
 
@@ -54,7 +54,7 @@ int entryPoint ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        g_bges = bges;
+        g_pluginbf_cliente = bges;
         
         BlAction *accionA = new BlAction ( _ ( "&Clientes" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
@@ -89,8 +89,8 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
     
     if (accion->objectName() == "mui_actionNuevoCliente") {
-        ClienteView * bud = new ClienteView ( ( BfCompany * ) g_bges->company(), NULL );
-        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        ClienteView * bud = new ClienteView ( g_pluginbf_cliente->company(), NULL );
+        g_pluginbf_cliente->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     

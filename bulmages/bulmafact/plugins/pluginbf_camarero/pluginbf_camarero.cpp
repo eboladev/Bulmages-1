@@ -24,8 +24,8 @@
 #include <QCheckBox>
 
 #include "pluginbf_camarero.h"
-
 #include "trabajadores.h"
+
 
 ///
 /**
@@ -88,8 +88,6 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     check2->setObjectName ( QString::fromUtf8 ( "mui_gerentetrabajador"));
     hboxLayout160->addWidget ( check2 );
 
-    
-
     /// Comprobamos que exista el layout.
     QVBoxLayout *m_hboxLayout1 = trab->m_frameplugin->findChild<QVBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -104,8 +102,6 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
     return 0;
 }
-
-
 
 
 ///

@@ -275,7 +275,7 @@ void adocumental::asociaasiento ( QString idasiento )
     blDebug ( Q_FUNC_INFO, 0 );
     if ( ( idadocumental != "" ) && ( idasiento != "" ) ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = " + idasiento + " WHERE idadocumental = " + idadocumental;
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '$1'")).arg(SQLQuery) );
+	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(SQLQuery) );
         dbConnection->begin();
         dbConnection->runQuery ( SQLQuery );
         dbConnection->commit();

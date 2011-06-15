@@ -35,7 +35,7 @@
 #include "rutacomerciallist.h"
 #include "listzonacomercialview.h"
 
-BfBulmaFact *g_bges;
+BfBulmaFact *g_pluginbf_comercial;
 
 ///
 /**
@@ -122,7 +122,7 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( Q_FUNC_INFO, 0 );
 
-    g_bges = bges;
+    g_pluginbf_comercial = bges;
     
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Comercial", "0.5.9");
@@ -136,12 +136,13 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "rutacomercial", "SELECT" ) ) {
       PluginBf_Comercial *plug = new PluginBf_Comercial();
-      plug->inicializa ( g_bges );
-    }// end if
+      plug->inicializa ( g_pluginbf_comercial );
+    } // end if
     return 0;
 }
 
