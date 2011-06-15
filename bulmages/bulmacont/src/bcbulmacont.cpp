@@ -112,11 +112,6 @@ BcBulmaCont::~BcBulmaCont()
 {
     blDebug ( Q_FUNC_INFO, 0 );
     delete m_pWorkspace;
-    /// En MS-Windows no termina bien la ejecucion del programa y por eso
-    /// agregamos esta salida rapida.
-#ifdef Q_OS_WIN32
-    exit ( 0 );
-#endif
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 
@@ -346,17 +341,6 @@ void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 }
 
 
-///
-/**
-**/
-#ifdef TOMEU
-void BcBulmaCont::on_actionListado_347_triggered()
-{
-    blDebug ( Q_FUNC_INFO, 0 );
-    m_company->listado347();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
-}
-#endif
 
 ///
 /**
@@ -643,9 +627,6 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
     delete m_list;
     m_list = NULL;
 
-#ifdef Q_OS_WIN32
-    exit ( 0 );
-#endif
 
     blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
