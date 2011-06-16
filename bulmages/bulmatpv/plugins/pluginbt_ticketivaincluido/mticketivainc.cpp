@@ -89,7 +89,6 @@ void MTicketIVAInc::pintar()
 
     query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + ticket->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany()->loadQuery ( query );
-
 	if (rsTrabajador) {
 		plainTextContent += "Trabajador: " + rsTrabajador->value ( "nomtrabajador" ) + "\n";
 		htmlContent += "Trabajador: " + rsTrabajador->value ( "nomtrabajador" ) + "<br>";
@@ -98,6 +97,7 @@ void MTicketIVAInc::pintar()
 	
     query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + ticket->dbValue ( "idcliente" );
     BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
+
 	if (rsCliente) {
 		plainTextContent += "Cliente: " + rsCliente->value ( "nomcliente" ) + "\n";
 		htmlContent += "Cliente: " + rsCliente->value ( "nomcliente" ) + "<br>";
@@ -225,23 +225,23 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     if (emp->ticketActual()->dbValue("numalbaran") != "") {
 	blMsgInfo(_("Operacion no permitida. El ticket se ha imprimido. Debe cobrar el ticket."));
 	return;
-    } // end if    
+    } // end if
     
     QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
     QString idtrabajador = emp->ticketActual()->dbValue ( "idtrabajador" );
     QString nomticketdefecto = emp->ticketActual()->nomTicketDefecto();
     int i;
 
+
+    /// Eliminamos el ticket actual y lo borra de la lista de tickets.
     for ( i = 0; i < emp->listaTickets() ->size(); ++i ) {
 	ticket = emp->listaTickets() ->at ( i );
-	if ( nomticketactual == ticket->dbValue ( "nomticket" ) ) {
+	if ( (nomticketactual == ticket->dbValue ( "nomticket" )) && (idtrabajador == ticket->dbValue ( "idtrabajador" )) ) {
 	    emp->listaTickets()->removeAt(i);
-	    
+	    delete ticket;
 	} // end if
-      } // end for
-    
-    /// Eliminamos el ticket actual.
-    delete emp->ticketActual();
+    } // end for
+
     
     /// Solo agregamos a la lista si es el ticket actual.
     if (nomticketactual == nomticketdefecto) {
@@ -254,7 +254,7 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
 	/// Localizamos el ticket por defecto.
 	for ( i = 0; i < emp->listaTickets() ->size(); ++i ) {
 	    ticket = emp->listaTickets() ->at ( i );
-	    if ( nomticketdefecto == ticket->dbValue ( "nomticket" ) ) {
+	    if ( (nomticketdefecto == ticket->dbValue ( "nomticket" )) && (idtrabajador == ticket->dbValue ( "idtrabajador" )) ) {
 		emp->setTicketActual(ticket);
 	        break;
 	    } // end if
