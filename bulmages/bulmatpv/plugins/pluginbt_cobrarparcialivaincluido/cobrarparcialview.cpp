@@ -24,7 +24,8 @@ typedef QMap<QString, BlFixed> base;
 
 CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget (emp, parent)
 {
-  
+    blDebug( Q_FUNC_INFO);
+    
     ticketDestino = ( ( BtCompany * ) mainCompany() )->newBtTicket();
     ticketOrigen = ( ( BtCompany * ) mainCompany() )->newBtTicket();
 
@@ -36,19 +37,16 @@ CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget
 
     /// Coge el ticket actual y va transcribiendo la informacion de las lineas en el ticket origen.
     for (int i = 0; i < actTicket->listaLineas()->size(); ++i) {
-      
+
 	ticketOrigen->agregarLinea();
 	/// Recorre cada campo.
-	for (int j = 0; j < actTicket->lista()->size(); ++j) {
-	    
+	for (int j = 0; j < actTicket->listaLineas()->at(i)->lista()->size(); ++j) {
 	    QString campo = actTicket->listaLineas()->at(i)->lista()->at(j)->fieldName();
 	    QString valor = actTicket->listaLineas()->at(i)->lista()->at(j)->valorcampo();
-	    
 	    ticketOrigen->listaLineas()->at(i)->setDbValue(campo, valor);
 	} // end for
-      
     } // end for
-    
+
     setupUi(this);
     
     /// Establece la linea seleccionada inicial a la primera del ticket.
@@ -62,6 +60,7 @@ CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget
 
 void CobrarParcialView::pintarTotal(BtTicket *tick, QLineEdit *lineEdit)
 {
+    blDebug( Q_FUNC_INFO);
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
@@ -94,7 +93,7 @@ void CobrarParcialView::pintarTotal(BtTicket *tick, QLineEdit *lineEdit)
 
 void CobrarParcialView::pintarOrigen()
 {
-    blDebug ( "CobrarParcialView::pintarOrigen", 0 );
+    blDebug( Q_FUNC_INFO);
     QString query;
     BlDbRecord *item;
 
@@ -144,34 +143,36 @@ void CobrarParcialView::pintarOrigen()
 	
 	/// SI HAY MODIFICADORES LOS PONEMOS. TENER EN CUENTA QUE ESTE CAMBIO SOLO SE TIENE EN CUENTA SI ESTA ACTIVADO
 	/// EL PLUGIN DE MODIFICADORES. PERO PUESTO AQUI ES BASTANTE MAS EFICIENTE.
+	if (item->exists("imglalbaran")) {
 		
-	if (item->dbValue("imglalbaran") != "") {
-	        htmlContent += "<tr>";
-		htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
-		QString text1 = item->dbValue("imglalbaran");
-		QByteArray text = QByteArray::fromBase64(text1.toAscii());
+	    if (item->dbValue("imglalbaran") != "") {
+		    htmlContent += "<tr>";
+		    htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
+		    QString text1 = item->dbValue("imglalbaran");
+		    QByteArray text = QByteArray::fromBase64(text1.toAscii());
 
-			      
-		QFile file("/tmp/imagen"+QString::number(i)+".png");
-		  if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-		      return;
+				  
+		    QFile file("/tmp/imagen"+QString::number(i)+".png");
+		      if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+			  return;
 
-		  file.write(text);
-		  file.close();
-		htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
-		htmlContent += "</tr>";
-	} // end if
-	
-	for (int i = 3; i <10; i++) {
-	    if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
-		htmlContent += "<tr>";
-		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
-		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
-		delete rsModificador;
-		htmlContent += "</tr>";
+		      file.write(text);
+		      file.close();
+		    htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
+		    htmlContent += "</tr>";
 	    } // end if
-	} // end for
+	    
+	    for (int i = 3; i <10; i++) {
+		if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
+		    htmlContent += "<tr>";
+		    query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
+		    BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
+		    htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
+		    delete rsModificador;
+		    htmlContent += "</tr>";
+		} // end if
+	    } // end for
+	} // end if
 	
 	/// SIENDO PURISTAS ESTA PARTE DEBERIA ESTAR EN EL pluginbt_modificadores pero aqui tampoco va a molestar mucho.
     } // end for
@@ -200,7 +201,7 @@ void CobrarParcialView::pintarOrigen()
 
 void CobrarParcialView::pintarDestino()
 {
-    blDebug ( "CobrarParcialView::pintarDestino", 0 );
+    blDebug( Q_FUNC_INFO);
     QString query;
     BlDbRecord *item;
 
@@ -249,35 +250,36 @@ void CobrarParcialView::pintarDestino()
 	
 	/// SI HAY MODIFICADORES LOS PONEMOS. TENER EN CUENTA QUE ESTE CAMBIO SOLO SE TIENE EN CUENTA SI ESTA ACTIVADO
 	/// EL PLUGIN DE MODIFICADORES. PERO PUESTO AQUI ES BASTANTE MAS EFICIENTE.
-		
-	if (item->dbValue("imglalbaran") != "") {
-	        htmlContent += "<tr>";
-		htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
-		QString text1 = item->dbValue("imglalbaran");
-		QByteArray text = QByteArray::fromBase64(text1.toAscii());
+	if (item->exists("imglalbaran")) {
+	    if (item->dbValue("imglalbaran") != "") {
+		    htmlContent += "<tr>";
+		    htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
+		    QString text1 = item->dbValue("imglalbaran");
+		    QByteArray text = QByteArray::fromBase64(text1.toAscii());
 
-			      
-		QFile file("/tmp/imagen"+QString::number(i)+".png");
-		  if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-		      return;
+				  
+		    QFile file("/tmp/imagen"+QString::number(i)+".png");
+		      if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+			  return;
 
-		  file.write(text);
-		  file.close();
-		htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
-		htmlContent += "</tr>";
-	} // end if
-	
-	for (int i = 3; i <10; i++) {
-	    if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
-		htmlContent += "<tr>";
-		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
-		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
-		delete rsModificador;
-		htmlContent += "</tr>";
+		      file.write(text);
+		      file.close();
+		    htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
+		    htmlContent += "</tr>";
 	    } // end if
-	} // end for
-	
+	    
+	    for (int i = 3; i <10; i++) {
+		if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
+		    htmlContent += "<tr>";
+		    query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
+		    BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
+		    htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->value("nombremodificador") + "</TD>";
+		    delete rsModificador;
+		    htmlContent += "</tr>";
+		} // end if
+	    } // end for
+	} // end if
+
 	/// SIENDO PURISTAS ESTA PARTE DEBERIA ESTAR EN EL pluginbt_modificadores pero aqui tampoco va a molestar mucho.
     } // end for
 
@@ -305,7 +307,7 @@ void CobrarParcialView::pintarDestino()
 
 void CobrarParcialView::pintar()
 {
-    blDebug ( "CobrarParcialView::pintar", 0 );
+    blDebug( Q_FUNC_INFO);
 
     pintarOrigen();
     pintarDestino();
@@ -317,11 +319,13 @@ void CobrarParcialView::pintar()
 
 CobrarParcialView::~CobrarParcialView()
 {
+    blDebug( Q_FUNC_INFO);
 }
 
 
 void CobrarParcialView::on_mui_aceptar_clicked()
 {
+    blDebug( Q_FUNC_INFO);
   
     BtTicket *actTicket = ( ( BtCompany * ) mainCompany() )->ticketActual();
 
@@ -353,7 +357,7 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 	  
 	    actTicket->agregarLinea();
 	    /// Recorre cada campo.
-	    for (int j = 0; j < ticketOrigen->lista()->size(); ++j) {
+	    for (int j = 0; j < ticketOrigen->listaLineas()->at(i)->lista()->size(); ++j) {
 		
 		QString campo = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldName();
 		QString valor = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->valorcampo();
@@ -403,12 +407,14 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 void CobrarParcialView::on_mui_cancelar_clicked()
 {
+    blDebug( Q_FUNC_INFO);
     ( ( QDialog * ) parent() )->close();
 }
 
 
 void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *destino, bool lineaCompleta, float cantidad)
 {
+  blDebug( Q_FUNC_INFO);
   if (origen->listaLineas()->size() == 0) return;
   
   bool destinoExiste = false;
@@ -427,7 +433,7 @@ void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *des
     BlDbRecord *r = destino->agregarLinea();
     destino->setLineaActual(r);
     /// Copia linea de origen a destino. Recorre cada campo.
-    for (int j = 0; j < origen->lista()->size(); ++j) {
+    for (int j = 0; j < origen->lineaActBtTicket()->lista()->size(); ++j) {
       
 	QString campo = origen->lineaActBtTicket()->lista()->at(j)->fieldName();
 	QString valor = origen->lineaActBtTicket()->lista()->at(j)->valorcampo();
@@ -486,7 +492,7 @@ void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *des
 
 void CobrarParcialView::on_mui_unidad2destino_clicked()
 {
-
+  blDebug( Q_FUNC_INFO);
   intercambiarLineasTicket(ticketOrigen, ticketDestino);
   
 }
@@ -494,29 +500,30 @@ void CobrarParcialView::on_mui_unidad2destino_clicked()
 
 void CobrarParcialView::on_mui_unidad2origen_clicked()
 {
-  
-  intercambiarLineasTicket(ticketDestino, ticketOrigen);
+    blDebug( Q_FUNC_INFO);
+    intercambiarLineasTicket(ticketDestino, ticketOrigen);
   
 }
 
 
 void CobrarParcialView::on_mui_linea2destino_clicked()
 {
-  
-    intercambiarLineasTicket(ticketOrigen, ticketDestino, true);
+      blDebug( Q_FUNC_INFO);
+      intercambiarLineasTicket(ticketOrigen, ticketDestino, true);
   
 }
 
 
 void CobrarParcialView::on_mui_linea2origen_clicked()
 {
-    
+    blDebug( Q_FUNC_INFO);  
     intercambiarLineasTicket(ticketDestino, ticketOrigen, true);
 }
 
 
 void CobrarParcialView::on_mui_destino_arriba_clicked()
 {
+    blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla arriba
     ticketDestino->subir();
     pintarDestino();
@@ -525,6 +532,7 @@ void CobrarParcialView::on_mui_destino_arriba_clicked()
 
 void CobrarParcialView::on_mui_destino_abajo_clicked()
 {
+    blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla abajo
     ticketDestino->bajar();
     pintarDestino();
@@ -533,6 +541,7 @@ void CobrarParcialView::on_mui_destino_abajo_clicked()
 
 void CobrarParcialView::on_mui_origen_arriba_clicked()
 {
+    blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla arriba
     ticketOrigen->subir();
     pintarOrigen();
@@ -541,6 +550,7 @@ void CobrarParcialView::on_mui_origen_arriba_clicked()
 
 void CobrarParcialView::on_mui_origen_abajo_clicked()
 {
+    blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla abajo
     ticketOrigen->bajar();
     pintarOrigen();
