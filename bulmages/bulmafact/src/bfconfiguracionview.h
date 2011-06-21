@@ -44,7 +44,7 @@ public:
     ~BfConfiguracionSubForm() {}
 public slots:
     virtual void load() {
-        blDebug ( Q_FUNC_INFO, 0 );
+        BL_FUNC_DEBUG
         BlSubForm::load ( "SELECT *, nombre AS nombreorig FROM configuracion" );
     };
 };

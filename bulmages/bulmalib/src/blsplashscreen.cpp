@@ -32,7 +32,10 @@
 **/
 BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString appVersion ) : QSplashScreen ( 0, Qt::FramelessWindowHint )
 {
+  
     BL_FUNC_DEBUG
+
+    fprintf(stderr, "En el constructor de BlSplashScreen \n");
 
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {

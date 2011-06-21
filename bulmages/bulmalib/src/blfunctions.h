@@ -104,10 +104,14 @@ void BL_EXPORT blReplaceStringInFile ( QString, QString, QString, QString );
 QString BL_EXPORT blTextEditor ( QString texto );
 
 #if CONFIG_DEBUG == TRUE
+#ifdef OLD_DEBUG
 void BL_EXPORT blDebug ( const QString &cad, int nivel = 0, const QString & param = "" );
+#endif
 #define BL_FUNC_DEBUG  BlDebug __llamada_debug(Q_FUNC_INFO, 0);
 #else
+#ifdef OLD_DEBUG
 #define blDebug(...)       // sin debug
+#endif
 #define BL_FUNC_DEBUG      // sin debug
 #endif
 void BL_EXPORT blDebugOn();

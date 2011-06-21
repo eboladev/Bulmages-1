@@ -67,16 +67,16 @@ int main ( int argc, char **argv )
       setlocale(LC_ALL, "");
       blBindTextDomain ("bulmafact", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
       blTextDomain ("bulmafact");
-
+      
       /// Iniciamos la clase QApplication para el uso de las Qt.
       g_theApp = new BlApplication ( argc, argv );
-
+      
       /// Preparamos el sistema de plugins.
       initPlugins();
 
       /// Definimos la codificaci&oacute;n a Unicode.
-      QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
-      QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
+       QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+       QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
       g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
@@ -102,7 +102,7 @@ int main ( int argc, char **argv )
       splashScr = new BlSplashScreen ( g_confpr->value( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
       splashScr->mensaje ( _( "Iniciando clases" ) );
       splashScr->setBarraProgreso ( 1 );
-
+      
       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
       login1 = new BlDbLoginDialog ( 0, "" );
       if ( !login1->authOK() || argParser->askPassword() ) {

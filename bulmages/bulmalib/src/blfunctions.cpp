@@ -50,101 +50,112 @@ int BlDebug::m_indiceclases;
 
 
 BlDebug::BlDebug(const QString &func, int level, const QString &params) {
-  
+    try {
+      
+	/// Si el objeto confpr no esta creado puede dar segmentation fault.
+	if (!g_confpr ) return;
 
-    m_func = func;
-    m_level = level;
-    m_params = params;
-    m_time.start();
-    
-    /// Si el objeto confpr no esta creado puede dar segmentation fault.
-    if (!g_confpr ) return;
-    
-    /// Si no hay modo debug salimos directamente
-//      if (! g_confpr->value(CONF_DEBUG).contains("TRUE") )     return;
+	/// Si no hay modo debug salimos directamente
+	if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+
+	m_func = func;
+	m_level = level;
+	m_params = params;
+	m_time.start();
+
+	static int semaforo = 0;
+	if (!semaforo) {
+	  BlDebug::m_auxxml = 0;
+	  BlDebug::m_supnivel = 0;
+	  BlDebug::m_indice = 0;
+	  BlDebug::m_indiceclases = 0;
+	  BlDebug::m_file = new QFile ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
+	  BlDebug::m_out = new QTextStream ( BlDebug::m_file );
+
+	  BlDebug::m_fileXML = new QFile( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.xml" );
+	  BlDebug::m_outXML = new QTextStream ( BlDebug::m_fileXML );
+
+	  if ( !BlDebug::m_file->open ( QIODevice::WriteOnly | QIODevice::Text ) )
+	      throw -1;
+	  if ( !BlDebug::m_fileXML->open ( QIODevice::WriteOnly | QIODevice::Text ) )
+	      throw -1;
+	  semaforo = 1;
+	} // end if
 
 
-    static int semaforo = 0;
-    if (!semaforo) {
-      BlDebug::m_auxxml = 0;
-      BlDebug::m_supnivel = 0;
-      BlDebug::m_indice = 0;
-      BlDebug::m_indiceclases = 0;
-      BlDebug::m_file = new QFile ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
-      BlDebug::m_out = new QTextStream ( BlDebug::m_file );
+      
+	if ( m_level == 5 ) {
+	    BlDebug::m_supnivel = 0;
+	    m_level = 2;
+	} // end if
+	if ( m_level == 4 ) {
+	    BlDebug::m_supnivel = 2;
+	    m_level = 2;
+	} // end if
+	if ( m_level == 0 || m_level == 1 ) {
+	    /// Si la cadena contiene END bajamos el nivel
+	    BlDebug::m_auxxml ++;
+	    if ( BlDebug::m_auxxml > 20 ) BlDebug::m_auxxml = 1;
 
-      BlDebug::m_fileXML = new QFile( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.xml" );
-      BlDebug::m_outXML = new QTextStream ( BlDebug::m_fileXML );
+	    for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
+		*BlDebug::m_outXML << "    ";
+		*BlDebug::m_out << "    ";
+	    } // end for
 
-      if ( !BlDebug::m_file->open ( QIODevice::WriteOnly | QIODevice::Text ) )
-	  return;
-      if ( !BlDebug::m_fileXML->open ( QIODevice::WriteOnly | QIODevice::Text ) )
-	  return;
-      semaforo = 1;
-    } // end if
+	    QString cad1 = func;
+
+		cad1 = "<" + cad1 + " time=\"" + QString::number ( m_time.elapsed() ) + "\" param=\"" + m_params + "\" >";
 
 
-  
-    if ( m_level == 5 ) {
-	BlDebug::m_supnivel = 0;
-	m_level = 2;
-    } // end if
-    if ( m_level == 4 ) {
-	BlDebug::m_supnivel = 2;
-	m_level = 2;
-    } // end if
-    if ( m_level == 0 || m_level == 1 ) {
-	/// Si la cadena contiene END bajamos el nivel
-	BlDebug::m_auxxml ++;
-	if ( BlDebug::m_auxxml > 20 ) BlDebug::m_auxxml = 1;
-
-	for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
-	    *BlDebug::m_outXML << "    ";
-	    *BlDebug::m_out << "    ";
+	    *BlDebug::m_outXML << cad1  << "\n" << flush;
+	    *BlDebug::m_out << "\\" << func << " " << m_params << "\n" << flush;
+	    
+	} // end if
+	for ( int i = 0; i < BlDebug::m_indice; i++ ) {
+	    if ( func == BlDebug::m_mensajesanulados[i] ) {
+		return;
+	    } // end if
+	} // end for
+	for ( int i = 0; i < BlDebug::m_indiceclases; i++ ) {
+	    if ( func.left ( func.indexOf ( "::" ) ) == BlDebug::m_clasesanuladas[i] ) {
+		return;
+	    } // end if
 	} // end for
 
-	QString cad1 = func;
-
-	    cad1 = "<" + cad1 + " time=\"" + QString::number ( m_time.elapsed() ) + "\" param=\"" + m_params + "\" >";
-
-
-	*BlDebug::m_outXML << cad1  << "\n" << flush;
-	*BlDebug::m_out << "\\" << func << " " << m_params << "\n" << flush;
-	
-    } // end if
-    for ( int i = 0; i < BlDebug::m_indice; i++ ) {
-	if ( func == BlDebug::m_mensajesanulados[i] ) {
-	    return;
+	if ( m_level == 2 || ( BlDebug::m_supnivel == 2 && m_level == 0 ) || m_level == 3 ) {
+	    *BlDebug::m_out << func << " " << m_params << "\n" << flush;
+	    int err = QMessageBox::information ( NULL,
+						  _ ( "Informacion de depuracion" ),
+						  func + " " + m_params,
+						  _ ( "&Continuar" ),
+						  _ ( "&Omitir" ),
+						  _ ( "Omitir &clase" ),
+						  0, 1 );
+	    if ( err == 1 ) {
+		BlDebug::m_mensajesanulados[BlDebug::m_indice++] = func;
+	    } // end if
+	    if ( err == 2 ) {
+		BlDebug::m_clasesanuladas[BlDebug::m_indiceclases++] = func.left ( func.indexOf ( "::" ) );
+	    } // end if
 	} // end if
-    } // end for
-    for ( int i = 0; i < BlDebug::m_indiceclases; i++ ) {
-	if ( func.left ( func.indexOf ( "::" ) ) == BlDebug::m_clasesanuladas[i] ) {
-	    return;
-	} // end if
-    } // end for
-
-    if ( m_level == 2 || ( BlDebug::m_supnivel == 2 && m_level == 0 ) || m_level == 3 ) {
-	*BlDebug::m_out << func << " " << m_params << "\n" << flush;
-	int err = QMessageBox::information ( NULL,
-					      _ ( "Informacion de depuracion" ),
-					      func + " " + m_params,
-					      _ ( "&Continuar" ),
-					      _ ( "&Omitir" ),
-					      _ ( "Omitir &clase" ),
-					      0, 1 );
-	if ( err == 1 ) {
-	    BlDebug::m_mensajesanulados[BlDebug::m_indice++] = func;
-	} // end if
-	if ( err == 2 ) {
-	    BlDebug::m_clasesanuladas[BlDebug::m_indiceclases++] = func.left ( func.indexOf ( "::" ) );
-	} // end if
-    } // end if
+    } catch(...) {
+	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+    } // end try
     
 }
 
 void BlDebug::blDebug(const QString &text, int level, const QString &params) {
 
-            for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
+    try {
+      
+      /// Si el objeto confpr no esta creado puede dar segmentation fault.
+      if (!g_confpr ) throw -1;
+      
+      /// Si no hay modo debug salimos directamente
+      if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+
+  
+            for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
                 *BlDebug::m_outXML << "    ";
                 *BlDebug::m_out << "    ";
             } // end for
@@ -155,18 +166,29 @@ void BlDebug::blDebug(const QString &text, int level, const QString &params) {
 
             *BlDebug::m_outXML << cad1  << "\n" << flush;
             *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
-
+    } catch(...) {
+	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+    } // end try
 }
 
 BlDebug::~BlDebug() {
-        if ( m_level == 0 || m_level == 1 ) {
+
+    try {
+      
+      /// Si el objeto confpr no esta creado puede dar segmentation fault.
+      if (!g_confpr ) return;
+      
+      /// Si no hay modo debug salimos directamente
+      if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+
+       if ( m_level == 0 || m_level == 1 ) {
             for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
                 *BlDebug::m_outXML << "    ";
                 *BlDebug::m_out << "    ";
             } // end for
 
             QString cad1 = m_func;
-            cad1 = "</" + cad1.remove ( 0, 4 ) + " time=\"" + QString::number ( m_time.elapsed() ) + "\" result=\"" + m_params + "\" >";
+            cad1 = "</" + cad1 + " time=\"" + QString::number ( m_time.elapsed() ) + "\" result=\"" + m_params + "\" >";
 
 
             *BlDebug::m_outXML << cad1  << "\n" << flush;
@@ -176,12 +198,18 @@ BlDebug::~BlDebug() {
             BlDebug::m_auxxml --;
             if ( BlDebug::m_auxxml < 0 ) BlDebug::m_auxxml = 20;
         } // end if
+
+    } catch(...) {
+	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+    } // end try
+      
 }
 
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString blTextEditor ( QString texto )
 {
+    BL_FUNC_DEBUG
     QTextEdit *ed = new QTextEdit ();
     ed->setFixedSize ( 450, 250 );
     ed->setPlainText ( texto );
@@ -204,6 +232,7 @@ QString blTextEditor ( QString texto )
 /// cambia los tabuladores por slash + t
 QString blScriptEscape ( const QString &cad )
 {
+    BL_FUNC_DEBUG
     QString result = cad;
     result.replace ( "\\", "\\\\" );
     result.replace ( "\"", "\\\"" );
@@ -217,6 +246,7 @@ QString blScriptEscape ( const QString &cad )
 /// estar permitido en todos los lugares de un fichero xml segun esquemas o dtds especificos
 QString blXMLEscape ( const QString& param )
 {
+    BL_FUNC_DEBUG
     QString text = param;
     text.replace ( "&", "&amp;" );
     text.replace ( '"', "&quot;" );
@@ -232,6 +262,7 @@ QString blXMLEscape ( const QString& param )
 /// script en python
 QString blPythonEscape ( const QString& param )
 {
+    BL_FUNC_DEBUG
     QString text = param;
     text.replace ( "'", "\\'" );
     text.replace ( "\n", "\\n" );
@@ -241,6 +272,7 @@ QString blPythonEscape ( const QString& param )
 
 QString blStringEscape ( const QString &param, int tipoEscape )
 {
+    BL_FUNC_DEBUG
     QString param1;
     switch ( tipoEscape ) {
     case 1:
@@ -266,6 +298,7 @@ QString blStringEscape ( const QString &param, int tipoEscape )
 /// memoria en unicode hasta escribirlo a fichero en ficha::generateRML
 QString blXMLEncode ( const QString &string )
 {
+    BL_FUNC_DEBUG
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
 
@@ -313,6 +346,7 @@ QString blXMLEncode ( const QString &string )
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString blXMLDecode ( const QString &string )
 {
+    BL_FUNC_DEBUG
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
     QString cadenatmp = string;
@@ -361,6 +395,7 @@ QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
 /// Devuelve numero redondeado
 float blFloatRound ( float n, unsigned d )
 {
+    BL_FUNC_DEBUG
     return floor ( n * pow ( 10., d ) + .5 ) / pow ( 10., d );
 }
 
@@ -370,6 +405,7 @@ float blFloatRound ( float n, unsigned d )
 /// value = Numero a convertir.
 int blDoubleToInt ( double value )
 {
+    BL_FUNC_DEBUG
     int retorno;
     double mayor = floor ( value );
     if ( ( mayor - value ) >= 0.5 )
@@ -386,6 +422,7 @@ int blDoubleToInt ( double value )
 /// fechaintro string con la fecha a ser normalizada.
 QDate blNormalizeDate ( QString fechaintro )
 {
+    BL_FUNC_DEBUG
     QDate fecharesult;
     int d, M, y;
     switch ( fechaintro.length() ) {
@@ -444,6 +481,7 @@ QDate blNormalizeDate ( QString fechaintro )
 /// deberia estar en bulmalib.
 QString blExtendCodeLength ( QString cad, unsigned int num1 )
 {
+    BL_FUNC_DEBUG
     QString cod = cad;
     unsigned int longcad = cad.length();
     if ( longcad > 4 ) {
@@ -563,6 +601,7 @@ void blCreateODS ( const QString arch )
 /// Genera un ODS a partir de un pys usand python. y ademas lo muestra.
 void blCreateAndLoadODS ( const QString arch )
 {
+    BL_FUNC_DEBUG
     blCreateODS ( arch );
     if (QFile::exists(g_confpr->value( CONF_DIR_USER ) + arch + ".ods")) {
       QString cadena = "";
@@ -590,6 +629,7 @@ void blCreateAndLoadODS ( const QString arch )
 /// arch = Nombre del archivo 'RML'.
 void blCreateAndLoadPDF ( const QString arch )
 {
+    BL_FUNC_DEBUG
     blCreatePDF ( arch );
 
 #ifdef Q_OS_WIN32
@@ -609,6 +649,7 @@ void blCreateAndLoadPDF ( const QString arch )
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void blSendPDFMail ( const QString arch, const QString to, const QString subject, const QString message )
 {
+    BL_FUNC_DEBUG
     //FIXME: REVISAR PARAMETROS de mailsend o la posibilidad de anyadir otros programas
     //para enviar correo desde la ventana de configuracion del programa.
     QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
@@ -622,7 +663,7 @@ void blSendPDFMail ( const QString arch, const QString to, const QString subject
 
 QString blWindowId ( const QString &app )
 {
-
+    BL_FUNC_DEBUG
     QString cad = "";
 
     if ( app != "" ) {
@@ -677,6 +718,7 @@ void blDebugOff ()
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
 #if CONFIG_DEBUG == TRUE
+#ifdef OLD_DEBUG
 void blDebug ( const QString &cad, int nivel, const QString &param )
 {
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
@@ -779,11 +821,12 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
         file.flush();
     }
 }
-
+#endif
 #endif
 
 void blMsgInfo ( QString cad, QWidget *parent )
 {
+    BL_FUNC_DEBUG
     QMessageBox msgBox;
     msgBox.information ( parent,
                          _ ( "Informacion del programa" ),
@@ -794,6 +837,7 @@ void blMsgInfo ( QString cad, QWidget *parent )
 
 void blMsgWarning ( QString cad, QWidget *parent )
 {
+    BL_FUNC_DEBUG
     QMessageBox msgBox;
     msgBox.warning ( parent,
                      _ ( "Aviso del programa" ),
@@ -804,6 +848,7 @@ void blMsgWarning ( QString cad, QWidget *parent )
 
 void blMsgError ( QString cad, QWidget *parent )
 {
+    BL_FUNC_DEBUG
     QMessageBox msgBox;
     msgBox.critical ( parent,
                       _ ( "Error del programa" ),
@@ -814,6 +859,7 @@ void blMsgError ( QString cad, QWidget *parent )
 
 QString blNumberToText ( QString numero, QString moneda, QString singular )
 {
+    BL_FUNC_DEBUG
     /// Si es 0 el n&uacute;mero, no tiene caso procesar toda la informaci&oacute;n.
     if ( numero == "0" || numero == "00" ) {
         return "cero " + moneda;
@@ -891,8 +937,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
     QString entero = numero.split ( decimal_break ).at ( 0 );
     QString decimal = numero.split ( decimal_break ).at ( 1 );
 
-//    $entero=strtok($numero,$decimal_break);
-//    $decimal=strtok($decimal_break);
     if ( decimal == "" ) {
         decimal = "00";
     } // end if
@@ -916,20 +960,13 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
     QString ones = "";
     QString cpostfijos = "";
     while ( breakdown_key.toDouble() > 0.5 ) {
-//  BlDebug::blDebug(num_string, 2);
         breakdown["entero" + breakdown_key + "number"] = /*floor(*/ QString::number ( entero_breakdown.toLongLong() / breakdown_key.toLongLong() );
 
-//  BlDebug::blDebug(breakdown["entero"+breakdown_key+"number"], 2);
-
-        //echo " ".$breakdown["entero"][$breakdown_key]["number"]."<br>";
         if ( breakdown["entero" + breakdown_key+"number"].toLongLong() > 0 ) {
             //echo " further process <br>";
             breakdown["entero" + breakdown_key+"100"] = /*floor(*/ QString::number ( breakdown["entero" + breakdown_key + "number"].toLongLong() / 100 );
             breakdown["entero" + breakdown_key+"10"] = /*floor( */ QString::number ( ( breakdown["entero" + breakdown_key + "number"].toLongLong() % 100 ) / 10 );
             breakdown["entero" + breakdown_key+"1"] = /*floor(*/   QString::number ( breakdown["entero" + breakdown_key + "number"].toLongLong() % 10 );
-            //echo " 100 ->".$breakdown["entero"][$breakdown_key][100]."<br>";
-            //echo " 10   ->".$breakdown["entero"][$breakdown_key][10]."<br>";
-            //echo " 1     ->".$breakdown["entero"][$breakdown_key][1]."<br>";
 
             QString hundreds = breakdown["entero" + breakdown_key + "100"];
             // if not a closed value at hundredths
@@ -940,10 +977,8 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
             } // end if
 
             if ( numeros.contains ( "centenas" + hundreds + chundreds ) ) {
-                //echo " centenas ".numeros["centenas"][$hundreds][$chundreds]."<br>";
                 num_string += numeros["centenas" + hundreds + chundreds];
             } else {
-                //echo " centenas ".numeros["centenas"][$hundreds][0]."<br>";
                 if ( numeros.contains ( "centenas" + hundreds + "0" ) ) {
                     num_string += numeros["centenas" + hundreds + "0"];
                 }
@@ -952,14 +987,11 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
             if ( ( breakdown["entero" + breakdown_key + "1"].toLongLong() ) > 0 ) {
                 ctens = "1";
                 tens = breakdown["entero" + breakdown_key + "10"];
-                //echo "NOT CLOSE TENTHS<br>";
                 if ( breakdown["entero" + breakdown_key + "10"].toLongLong() == 1 ) {
                     if ( breakdown["entero" + breakdown_key + "1"].toLongLong() < 6 ) {
                         cctens = breakdown["entero" + breakdown_key + "1"];
-                        //echo " decenas ".numeros["decenas"][$tens][$ctens][$cctens]."<br>";
                         num_string += numeros["decenas" + tens + ctens + cctens];
                     } else {
-                        //echo " decenas ".numeros["decenas"][$tens][$ctens][0]."<br>";
                         num_string += numeros["decenas" + tens + ctens + "0"];
                     } // end if
                 } else {
@@ -969,10 +1001,8 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
                     }
                 } // end if
             } else {
-                //echo "CLOSED TENTHS<br>";
                 ctens = "0";
                 tens = breakdown["entero" + breakdown_key + "10"];
-                //echo " decenas ".numeros["decenas"][$tens][$ctens]."<br>";
                 if ( numeros.contains ( "decenas" + tens + ctens ) ) {
                     num_string += numeros["decenas" + tens + ctens];
                 } // end if
@@ -981,7 +1011,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
             if ( cctens == "" ) {
                 ones = breakdown["entero" + breakdown_key + "1"];
                 if ( numeros.contains ( "unidad" + ones + "0" ) ) {
-                    //echo " tens ".numeros["unidad"][$ones][0]."<br>";
                     num_string += numeros["unidad" + ones + "0"];
                 } // end if
             } // end if
@@ -1001,9 +1030,7 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
         entero_breakdown = QString::number ( entero_breakdown.toInt() % breakdown_key.toLongLong() );
         breakdown_key = QString::number ( breakdown_key.toLongLong() / 1000 );
 
-        //echo "CADENA ".$num_string."<br>";
     } // end while
-//    return  num_string+" "+moneda+" "+decimal+"/100 M.N.";
     if ( decimal != "0" && decimal != "00" ) {
         return num_string + " " + moneda + " con " + blNumberToText ( decimal + ".00", " centimos", " centimo" );
     } else {
@@ -1014,6 +1041,7 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
 
 void blCenterOnScreen ( QWidget *ventana )
 {
+    BL_FUNC_DEBUG
     QRect rect;
     QDesktopWidget *escritorio = new QDesktopWidget();
     rect = escritorio->availableGeometry();
@@ -1023,6 +1051,7 @@ void blCenterOnScreen ( QWidget *ventana )
 
 QString blStringToUsAscii ( const QString &orig )
 {
+    BL_FUNC_DEBUG
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
 
@@ -1075,7 +1104,7 @@ QString blStringToUsAscii ( const QString &orig )
 /// rompa la sintaxis relacionada con el indentado del lenguaje
 QString blStringToPython ( QString string )
 {
-
+    BL_FUNC_DEBUG
     string = string.replace ( "\n", " " );
     string = string.replace ( "\t", " " );
     string = string.replace ( "\'", " " );
@@ -1097,6 +1126,7 @@ char g_spainNIFCode[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 
 /// por ejemplo blSumAllDigits(56) devolveria 5 + 6 = 11
 int blSumAllDigits ( int val )
 {
+    BL_FUNC_DEBUG
     QString cad = QString::number ( val );
     int res = 0;
     for ( int i = 0; i < cad.size(); i++ ) {
@@ -1109,6 +1139,7 @@ int blSumAllDigits ( int val )
 /// Dependiendo de lo que se haya introducido distingue si es un CIF o un NIF y valida
 bool blValidateSpainCIFNIFCode ( QString nifcif, QChar &digit )
 {
+    BL_FUNC_DEBUG
     if ( nifcif[0].isDigit() )
         return blValidateSpainNIFCode ( nifcif, digit );
     return blValidateSpainCIFCode ( nifcif, digit );
@@ -1118,7 +1149,7 @@ bool blValidateSpainCIFNIFCode ( QString nifcif, QChar &digit )
 /// Valida un nif de 9 digitos. Si el nif pasado es menor de 5 digitos
 bool blValidateSpainNIFCode ( QString nif1, QChar &digit )
 {
-
+    BL_FUNC_DEBUG
     /// Quitamos los caracteres raros.
     QString nif = nif1.replace ( "-", "" );
     nif = nif.replace ( ".", "" );
@@ -1141,7 +1172,7 @@ bool blValidateSpainNIFCode ( QString nif1, QChar &digit )
 //
 bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
 {
-
+    BL_FUNC_DEBUG
     // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
     // Orden EHA/451/2008 de 20 de febrero.
     // BOE Numero: 49 de martes, 26 febrero de 2008. Pagina: 11374.
@@ -1201,25 +1232,26 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
 }
 
 void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter) {
-		QString printer = "";
-		if (printer.isEmpty()) {
-			printer = g_confpr->value(CONF_CUPS_DEFAULT_PRINTER);
-		} // end if
+      BL_FUNC_DEBUG
+      QString printer = "";
+      if (printer.isEmpty()) {
+	      printer = g_confpr->value(CONF_CUPS_DEFAULT_PRINTER);
+      } // end if
 
-		QString dir = "";
-		if (diruser) {
-			dir = g_confpr->value(CONF_DIR_USER);
-		} // end if
-		
-		#ifndef Q_OS_WIN32
-			QString comando = "lp -d" + printer + " " + dir + archivo;
-			system ( comando.toAscii().data() );
-		#else
-			QString comando = "\"" + g_confpr->value(CONF_SPOOL)  + "\" \"" + dir + archivo + "\" " + printer;
-			comando.replace("/","\\");
-			comando = "\"" + comando + "\"";
-			system ( comando.toAscii().data() );		
-		#endif
+      QString dir = "";
+      if (diruser) {
+	      dir = g_confpr->value(CONF_DIR_USER);
+      } // end if
+      
+      #ifndef Q_OS_WIN32
+	      QString comando = "lp -d" + printer + " " + dir + archivo;
+	      system ( comando.toAscii().data() );
+      #else
+	      QString comando = "\"" + g_confpr->value(CONF_SPOOL)  + "\" \"" + dir + archivo + "\" " + printer;
+	      comando.replace("/","\\");
+	      comando = "\"" + comando + "\"";
+	      system ( comando.toAscii().data() );		
+      #endif
 
 }
 

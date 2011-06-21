@@ -307,7 +307,7 @@ public:
 
 /// ATENCION.- Este es un objeto global, y va a existir durante toda la aplicacion asi que
 /// Se va a llamar muy a menudo a este objeto en los demas archivos.
-/// Existe una instancia del objeto global confpr.
+/// Existe una instancia del objeto global g_confpr.
 extern "C" BL_EXPORT BlConfiguration *g_confpr;
 void BL_EXPORT initConfiguration(QString );
 

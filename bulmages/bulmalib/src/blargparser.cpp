@@ -99,6 +99,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
 /// Mostar la ayuda si se debe hacer y devolver true si se hizo.
 bool BlArgParser::showHelp()
 {
+   BL_FUNC_DEBUG
    if( m_showHelp ) {
       QTextStream(stdout)
             <<"Usage: "<<m_executable<<" [OPTION]"<<endl
@@ -118,6 +119,7 @@ bool BlArgParser::showHelp()
 /// Mostar la versi&oacute;n si se debe hacer y devolver true si se hizo.
 bool BlArgParser::showVersion()
 {
+   BL_FUNC_DEBUG
    if( m_showVersion || m_showHelp ) {
       QTextStream(stdout)
             <<m_executable<<" "<<CONFIG_VERSION<<endl;

@@ -40,10 +40,9 @@ public:
 
 public slots:
     virtual void load ( QString idpedidoproveedor ) {
-	blDebug ( Q_FUNC_INFO, 0 );
+	BL_FUNC_DEBUG
 	mdb_idpedidoproveedor = idpedidoproveedor;
 	BlSubForm::load ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     };
 
 };

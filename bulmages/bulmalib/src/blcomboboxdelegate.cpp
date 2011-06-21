@@ -34,8 +34,6 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     m_null = TRUE;
-
-    
 }
 
 
@@ -45,6 +43,7 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
 BlComboBoxDelegate::~BlComboBoxDelegate()
 {
     BL_FUNC_DEBUG
+    /// Vaciamos el recordset en caso de que haya sido utilizado.
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
     
@@ -62,54 +61,61 @@ BlComboBoxDelegate::~BlComboBoxDelegate()
 void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 {
     BL_FUNC_DEBUG
-    if ( m_comboRecordSet != NULL ) {
-        delete m_comboRecordSet;
-    } // end if
-
-    m_comboRecordSet = mainCompany() ->loadQuery ( m_query );
-    /// Si ha habido un problema con la base de datos salimos.
-    if ( !m_comboRecordSet ) return;
-
-    int i = 0;
-    int i1 = 0;
-    clear();
-    if ( m_null ) {
-        addItem ( "--" );
-        i++;
-    } // end if
-
-    while ( !m_comboRecordSet->eof() ) {
-
-	if (fieldSearch.isEmpty()) {
-	    /// Busca en el campo ID establecido la coincidencia.
-            if ( m_comboRecordSet->value( m_fieldId ) == id ) {
-	        i1 = i;
-	    } // end if
-	} else {
-	    /// Busca en un campo diferente al campo ID establecido la coincidencia.
-            if ( m_comboRecordSet->value( fieldSearch ) == id ) {
-	        i1 = i;
-	    } // end if
+    try {
+      
+	/// Si el recordset ya ha sido utilizado lo borramos
+	if ( m_comboRecordSet != NULL ) {
+	    delete m_comboRecordSet;
 	} // end if
 
-        /// Inicializamos los valores de vuelta a ""
-        QMapIterator<QString, QString> it ( m_valores );
-        QString cad = "";
-        while ( it.hasNext() ) {
-            it.next();
-	    if (cad != "") {
-	        cad = cad + " ";
+	/// Cargamos el recordset
+	m_comboRecordSet = mainCompany() ->loadQuery ( m_query );
+	/// Si ha habido un problema con la base de datos salimos.
+	if ( !m_comboRecordSet ) throw -1;
+
+	int i = 0;
+	int i1 = 0;
+	clear();
+	if ( m_null ) {
+	    addItem ( "--" );
+	    i++;
+	} // end if
+
+	while ( !m_comboRecordSet->eof() ) {
+
+	    if (fieldSearch.isEmpty()) {
+		/// Busca en el campo ID establecido la coincidencia.
+		if ( m_comboRecordSet->value( m_fieldId ) == id ) {
+		    i1 = i;
+		} // end if
+	    } else {
+		/// Busca en un campo diferente al campo ID establecido la coincidencia.
+		if ( m_comboRecordSet->value( fieldSearch ) == id ) {
+		    i1 = i;
+		} // end if
 	    } // end if
-            cad = cad  + m_comboRecordSet->value( it.key() );
-        } // end while
 
-        addItem ( cad );
-        i ++;
-        m_comboRecordSet->nextRecord();
-    } // end while
+	    /// Inicializamos los valores de vuelta a ""
+	    QMapIterator<QString, QString> it ( m_valores );
+	    QString cad = "";
+	    while ( it.hasNext() ) {
+		it.next();
+		if (cad != "") {
+		    cad = cad + " ";
+		} // end if
+		cad = cad  + m_comboRecordSet->value( it.key() );
+	    } // end while
 
-    setCurrentIndex ( i1 );
-    
+	    addItem ( cad );
+	    i ++;
+	    m_comboRecordSet->nextRecord();
+	} // end while
+
+	setCurrentIndex ( i1 );
+    } catch(...) {
+	fprintf(stderr, "Error de Base de Datos en BlComboBoxDelegate::setId\n");
+	exit(0);
+    } // end try
 }
 
 
@@ -194,7 +200,6 @@ QString BlComboBoxDelegate::id(QString value)
 QString BlComboBoxDelegate::fieldValue()
 {
     BL_FUNC_DEBUG
-    
     return id();
 }
 
@@ -204,6 +209,7 @@ QString BlComboBoxDelegate::fieldValue()
 **/
 void BlComboBoxDelegate::setQuery ( QString q )
 {
+    BL_FUNC_DEBUG
     m_query = q;
 }
 
@@ -213,6 +219,7 @@ void BlComboBoxDelegate::setQuery ( QString q )
 **/
 void BlComboBoxDelegate::setTableName ( QString tableName )
 {
+    BL_FUNC_DEBUG
     m_table = tableName;
 }
 
@@ -222,6 +229,7 @@ void BlComboBoxDelegate::setTableName ( QString tableName )
 **/
 void BlComboBoxDelegate::setFieldId ( QString fieldId )
 {
+    BL_FUNC_DEBUG
     m_fieldId = fieldId;
 }
 
@@ -231,6 +239,7 @@ void BlComboBoxDelegate::setFieldId ( QString fieldId )
 **/
 void BlComboBoxDelegate::setAllowNull ( bool v )
 {
+    BL_FUNC_DEBUG
     m_null = v;
 }
 

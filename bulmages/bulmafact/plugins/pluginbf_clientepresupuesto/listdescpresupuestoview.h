@@ -40,7 +40,7 @@ public:
 
 public slots:
     virtual void load ( QString idpresupuesto ) {
-        blDebug ( Q_FUNC_INFO, 0 );
+        BL_FUNC_DEBUG
         mdb_idpresupuesto = idpresupuesto;
         BlSubForm::load ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto );
     };

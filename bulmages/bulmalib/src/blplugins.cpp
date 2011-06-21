@@ -57,7 +57,8 @@ BlPlugins::BlPlugins()
 BlPlugins::~BlPlugins()
 {
     BL_FUNC_DEBUG
-    
+    while (!m_plugins.isEmpty())
+       delete m_plugins.takeFirst();
 }
 
 
@@ -74,10 +75,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
     /// Hacemos la carga de los plugins.
     QString cad = libs;
 
-    if ( cad == "" ) {
-        
-        return;
-    } // end if
+    if ( cad == "" )   return;
 
     QStringList dirs = g_confpr->value( CONF_DIR_PLUGINS ).split ( ";" );
 

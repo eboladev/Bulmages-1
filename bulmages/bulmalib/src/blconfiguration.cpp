@@ -39,7 +39,7 @@
 #include "blcompanydialog.h"
 
 
-/// El objeto global confpr es la instancia de la clase configuracion. Este objeto
+/// El objeto global g_confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
 BlConfiguration BL_EXPORT *g_confpr = NULL;
 
@@ -47,12 +47,13 @@ BlConfiguration BL_EXPORT *g_confpr = NULL;
 
 void initConfiguration ( QString config )
 {
-    g_confpr = new BlConfiguration ( config );
-
-	/// Inicializa el sistema de traducciones 'gettext'.
-	setlocale(LC_ALL, "");
-	blBindTextDomain ("bulmalib", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
-	blTextDomain ("bulmalib");
+    /// Hay funciones reentrantes que comprueban el valor de g_confpr y pueden causar segfault mientras este se esta inicializando. Creando una variable temporal y asignandola despues evitamos las reentradas con la clase inicializada a medias.
+    BlConfiguration *confpr = new BlConfiguration ( config );
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    blBindTextDomain ("bulmalib", confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
+    blTextDomain ("bulmalib");
+    g_confpr = confpr;
 }
 
 /// Constructor de la clase que hace directamente la lectura de los posibles
@@ -176,7 +177,8 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     setValue ( CONF_PRIVILEGIOS_USUARIO, "1" );
     setValue ( CONF_LOGIN_USER, "" );
     setValue ( CONF_PASSWORD_USER, "" );
-
+    
+    fprintf ( stderr, "Configuraciones cargadas");
 }
 
 

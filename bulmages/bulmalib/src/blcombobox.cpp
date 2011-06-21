@@ -22,10 +22,6 @@
 #include "blcombobox.h"
 
 
-/// Existe una instancia del objeto global g_theApp.
-
-
-
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
     sobre si un elemento ha sido creado o no.
     Conecta el activar un tipo con m_activated.
@@ -82,45 +78,53 @@ void BlComboBox::onDbTableChanged ( const QString &t )
 void BlComboBox::setId ( QString id )
 {
     BL_FUNC_DEBUG
-    if ( m_comboRecordSet != NULL ) {
-        delete m_comboRecordSet;
-    } // end if
+    try {
+        /// En caso de que el recordset este vacio
+	if ( m_comboRecordSet != NULL ) {
+	    delete m_comboRecordSet;
+	} // end if
+	
+	/// Cargamos el recordset con la consulta
+	m_comboRecordSet = mainCompany() ->loadQuery ( m_query );
+	
+	/// Si ha habido un problema con la base de datos generamos una excepcion
+	if ( !m_comboRecordSet ) throw -1;
 
-    m_comboRecordSet = mainCompany() ->loadQuery ( m_query );
-    /// Si ha habido un problema con la base de datos salimos.
-    if ( !m_comboRecordSet ) return;
+	int i = 0;
+	int i1 = 0;
+	clear();
+	if ( m_null ) {
+	    addItem ( "--" );
+	    i++;
+	} // end if
 
-    int i = 0;
-    int i1 = 0;
-    clear();
-    if ( m_null ) {
-        addItem ( "--" );
-        i++;
-    } // end if
+	while ( !m_comboRecordSet->eof() ) {
 
-    while ( !m_comboRecordSet->eof() ) {
-
-        if ( m_comboRecordSet->value( m_fieldId ) == id ) {
-            i1 = i;
-        } // end if
-
-        /// Inicializamos los valores de vuelta a ""
-        QMapIterator<QString, QString> it ( m_valores );
-        QString cad = "";
-        while ( it.hasNext() ) {
-            it.next();
-	    if (cad != "") {
-	        cad = cad + " ";
+	    if ( m_comboRecordSet->value( m_fieldId ) == id ) {
+		i1 = i;
 	    } // end if
-            cad = cad  + m_comboRecordSet->value( it.key() );
-        } // end while
 
-        addItem ( cad );
-        i ++;
-        m_comboRecordSet->nextRecord();
-    } // end while
+	    /// Inicializamos los valores de vuelta a ""
+	    QMapIterator<QString, QString> it ( m_valores );
+	    QString cad = "";
+	    while ( it.hasNext() ) {
+		it.next();
+		if (cad != "") {
+		    cad = cad + " ";
+		} // end if
+		cad = cad  + m_comboRecordSet->value( it.key() );
+	    } // end while
 
-    setCurrentIndex ( i1 );
+	    addItem ( cad );
+	    i ++;
+	    m_comboRecordSet->nextRecord();
+	} // end while
+
+	setCurrentIndex ( i1 );
+    } catch(...) {
+	fprintf(stderr, "Error de Base de Datos en BlComboBox::setId\n");
+	exit(0);
+    } // end try
     
 }
 
@@ -203,6 +207,7 @@ QString BlComboBox::fieldValue()
 **/
 void BlComboBox::setQuery ( QString q )
 {
+    BL_FUNC_DEBUG
     m_query = q;
 }
 
@@ -212,6 +217,7 @@ void BlComboBox::setQuery ( QString q )
 **/
 void BlComboBox::setTableName ( QString tableName )
 {
+    BL_FUNC_DEBUG
     m_table = tableName;
 }
 
@@ -221,6 +227,7 @@ void BlComboBox::setTableName ( QString tableName )
 **/
 void BlComboBox::setFieldId ( QString fieldId )
 {
+    BL_FUNC_DEBUG
     m_fieldId = fieldId;
 }
 
@@ -230,6 +237,7 @@ void BlComboBox::setFieldId ( QString fieldId )
 **/
 void BlComboBox::setAllowNull ( bool v )
 {
+    BL_FUNC_DEBUG
     m_null = v;
 }
 

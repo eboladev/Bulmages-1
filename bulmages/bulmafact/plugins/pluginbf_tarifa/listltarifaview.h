@@ -38,12 +38,11 @@ public:
 
 public slots:
     virtual void load ( QString idarticulo ) {
-        blDebug ( Q_FUNC_INFO, 0 );
+        BL_FUNC_DEBUG
         mdb_idarticulo = idarticulo;
         QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa) AS t2 LEFT JOIN (SELECT * FROM articulo WHERE idarticulo = " + mdb_idarticulo + ") AS t3 ON 1 = 1 ";
         SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo = " + mdb_idarticulo + ") as t1 ON t1.idtarifa = t2.idtarifa AND t1.idalmacen = t2.idalmacen ";
         BfSubForm::load ( SQLQuery );
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
     };
 };
 
@@ -59,7 +58,7 @@ public:
 
 public slots:
     virtual void load ( QString SQLQuery ) {
-        blDebug ( Q_FUNC_INFO, 0 );
+        BL_FUNC_DEBUG
         BfSubForm::load ( SQLQuery );
     };
 };

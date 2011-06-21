@@ -40,7 +40,7 @@ public:
 
 public slots:
     virtual void load ( QString idalbaranp ) {
-        blDebug ( Q_FUNC_INFO, 0 );
+        BL_FUNC_DEBUG
         mdb_idalbaranp = idalbaranp;
         BlSubForm::load ( "SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp );
     };

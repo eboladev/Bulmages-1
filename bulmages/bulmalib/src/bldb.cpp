@@ -332,7 +332,8 @@ Esta operacion no contempla que haya habido cambios en el registro sin guardar.
 BlDbRecord::~BlDbRecord()
 {
     BL_FUNC_DEBUG
-    m_lista.clear();
+    while (!m_lista.isEmpty())
+	delete m_lista.takeFirst();
     
 }
 
@@ -751,11 +752,9 @@ int BlDbRecord::addDbField ( QString nom, BlDbField::DbType typ, int res, QStrin
     try {
 
         BlDbField *camp = new BlDbField ( m_dbConnection, nom, typ, res, nomp );
-        camp->set
-        ( "" );
+        camp->set( "" );
         m_lista.append ( camp );
-
-        
+	
         return 0;
 
     } catch(...) {
@@ -2945,49 +2944,6 @@ QByteArray BlDbRecord::parseQuery ( const QString &query, const QByteArray &dato
 
 }
 
-/*
-QByteArray BlDbRecord::trataLineasDetalle( const QByteArray &datos, int tipoEscape )
-{
-    BL_FUNC_DEBUG
-    QByteArray result = "";
-    
-
-    BlDbRecord *linea1;
-    for ( int i = 0; i < m_listaLineas->size(); ++i ) {
-        linea1 = m_listaLineas->at ( i );
-        QByteArray salidatemp = datos;
-
-        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        //BlDebug::blDebug("salidatemp =",0,salidatemp);
-        QRegExp rx ( "\\[(\\w*)\\]" );
-        int pos =  0;
-        while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
-            //BlDebug::blDebug("substituïm ",0,rx.cap(1));
-            if ( linea1->exists ( rx.cap ( 1 ) ) ) {
-                switch ( tipoEscape ) {
-                case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( linea1->dbValue ( rx.cap ( 1 ) )).toAscii()  );
-                    break;
-                case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( linea1->dbValue ( rx.cap ( 1 ) )).toAscii()  );
-                    break;
-                default:
-                    salidatemp.replace ( pos, rx.matchedLength(), linea1->dbValue ( rx.cap ( 1 )).toAscii() );
-                    break;
-                } // emd switch
-                pos = 0;
-            } else {
-                pos += rx.matchedLength();
-            }
-        } // end while
-
-        result += salidatemp;
-    } // end for
-
-    
-    return result;
-}
-*/
 
 QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
 {

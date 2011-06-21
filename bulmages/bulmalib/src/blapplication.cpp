@@ -27,7 +27,7 @@
 
 
 // La variable global g_theApp esta definida aqui.
-BlApplication *g_theApp;
+BlApplication *g_theApp = NULL;
 
 
 ///
