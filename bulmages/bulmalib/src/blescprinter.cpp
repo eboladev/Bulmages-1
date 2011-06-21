@@ -80,7 +80,7 @@ void BlEscPrinter::printText ( QString text )
 
 void BlEscPrinter::printImage ( QString path )
 {
-	blDebug ( Q_FUNC_INFO, 0 );
+	BL_FUNC_DEBUG
     QImage img = QImage ( path );
 	
     if ( !img.isNull() ) {
@@ -114,7 +114,7 @@ void BlEscPrinter::printImage ( QString path )
     }
 	
 	
-	 blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	 
 }
 
 

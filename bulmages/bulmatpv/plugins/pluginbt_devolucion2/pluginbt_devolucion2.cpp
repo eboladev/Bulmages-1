@@ -38,10 +38,10 @@ MyDevButton * g_plug;
 **/
 MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    blDebug ( "MyDevButton::MyDevButton", 0 );
+    BlDebug::blDebug ( "MyDevButton::MyDevButton", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -50,8 +50,8 @@ MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *em
 **/
 MyDevButton::~MyDevButton()
 {
-    blDebug ( "MyDevButton::~MyDevButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MyDevButton::~MyDevButton", 0 );
+    
 }
 
 
@@ -61,10 +61,10 @@ MyDevButton::~MyDevButton()
 **/
 void MyDevButton::on_click (  )
 {
-    blDebug ( "MyDevButton::cambia", 0 );
+    BlDebug::blDebug ( "MyDevButton::cambia", 0 );
     Devolucion *camb = new Devolucion ( m_emp, 0 );
     camb->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,7 +74,7 @@ void MyDevButton::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     tpv->company()->dbPatchVersionCheck("PluginBt_Devolucion2", "0.11.1-0001");
@@ -89,7 +89,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

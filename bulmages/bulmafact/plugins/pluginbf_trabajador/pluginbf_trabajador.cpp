@@ -34,7 +34,7 @@ BfBulmaFact *g_pluginbf_trabajador = NULL;
 **/
 int entryPoint ( BfBulmaFact *bf )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -57,14 +57,15 @@ int entryPoint ( BfBulmaFact *bf )
         g_pluginbf_trabajador->Listados->addAction ( accionA );
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Trabajador" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_Trabajador" );
 
     if (accion->objectName() == "mui_actionTrabajadores") {
         TrabajadorView * bud = new TrabajadorView ( g_pluginbf_trabajador->company(), NULL );
@@ -72,7 +73,7 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

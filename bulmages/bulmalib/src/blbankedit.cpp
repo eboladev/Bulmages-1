@@ -30,7 +30,7 @@ int pesosdc[] = {6, 3, 7, 9, 10, 5, 8, 4, 2, 1};
 **/
 BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     QObject::connect ( m_cuenta, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SLOT ( s_cuentalostFocus() ) );
@@ -38,7 +38,7 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
     
     /// Establecemos el FocusProxy para que el foco funcione bien
     setFocusProxy(m_entidad);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -47,15 +47,15 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
 **/
 BlBankEdit::~BlBankEdit()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
 /// Comprueba que los DC son correctos y si no lo son da un mensaje de aviso
 void BlBankEdit::checkControlDigit()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString cad1 = m_entidad->text() + m_oficina->text();
     QString cad2 = m_cuenta->text();
     int dc1 = 0;
@@ -89,7 +89,7 @@ void BlBankEdit::checkControlDigit()
       blMsgInfo (_ ( "Cuenta bancaria incorrecta" ));
         throw - 1;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -99,13 +99,13 @@ void BlBankEdit::checkControlDigit()
 **/
 void BlBankEdit::setText ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     s_cuentalostFocus();
     m_entidad->setText ( val.left ( 4 ) );
     m_oficina->setText ( val.left ( 8 ).right ( 4 ) );
     m_dc->setText ( val.left ( 10 ).right ( 2 ) );
     m_cuenta->setText ( val.left ( 20 ).right ( 10 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -115,9 +115,9 @@ void BlBankEdit::setText ( QString val )
 **/
 void BlBankEdit::setFieldValue ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setText ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -129,8 +129,8 @@ void BlBankEdit::setFieldValue ( QString val )
 **/
 QString BlBankEdit::text()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     s_cuentalostFocus();
     QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     checkControlDigit();
@@ -144,8 +144,8 @@ QString BlBankEdit::text()
 **/
 QString BlBankEdit::fieldValue()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return text();
 }
 
@@ -155,10 +155,10 @@ QString BlBankEdit::fieldValue()
 **/
 void BlBankEdit::s_returnPressed()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     s_cuentalostFocus();
     emit returnPressed();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -167,9 +167,9 @@ void BlBankEdit::s_returnPressed()
 **/
 void BlBankEdit::selectAll()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_cuenta->selectAll();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -178,9 +178,9 @@ void BlBankEdit::selectAll()
 **/
 void BlBankEdit::setFocus()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_cuenta->setFocus ( Qt::OtherFocusReason );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -191,7 +191,7 @@ void BlBankEdit::setFocus()
 **/
 void BlBankEdit::s_cuentatextChanged ( const QString &texto )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         if ( texto == "+" )
             s_searchFecha();
@@ -204,7 +204,7 @@ void BlBankEdit::s_cuentatextChanged ( const QString &texto )
         } // end if
     */
     emit ( valueChanged ( m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -214,10 +214,10 @@ void BlBankEdit::s_cuentatextChanged ( const QString &texto )
 **/
 void BlBankEdit::s_cuentalostFocus()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString fech = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     if ( fech != "" )
         s_cuentatextChanged ( fech );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

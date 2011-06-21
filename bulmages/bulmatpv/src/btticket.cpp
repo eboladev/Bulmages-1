@@ -51,7 +51,7 @@ typedef QMap<QString, BlFixed> base;
 
 BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
 {
-    blDebug ( "BtTicket::BtTicket", 0 );
+    BlDebug::blDebug ( "BtTicket::BtTicket", 0 );
     /// Inicializamos los parametros del ticket para la base de datos.
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
@@ -89,39 +89,39 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
     start();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 BtTicket::~BtTicket()
 {
-    blDebug ( "BtTicket::~BtTicket", 0 );
+    BlDebug::blDebug ( "BtTicket::~BtTicket", 0 );
     g_plugins->lanza ( "Des_BtTicket_BtTicket_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 QString BtTicket::nomTicketDefecto()
 {
-    blDebug ( "BtTicket::nomTicketDefecto", 0 );
+    BlDebug::blDebug ( "BtTicket::nomTicketDefecto", 0 );
     return m_nomTicketDefecto;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void BtTicket::agregarLog(const QString &log) {
-    blDebug ( "BtTicket::agregarLog", 0 );
+    BlDebug::blDebug ( "BtTicket::agregarLog", 0 );
     if (dbValue("idalbaran") != "") {
       setDbValue("cambiospostalbaran", dbValue("cambiospostalbaran") + log + "\n");
     } else {
       setDbValue("cambiosalbaran", dbValue("cambiosalbaran") + log + "\n");
     } // end if
-    blDebug ( "BtTicket::agregarLog", 0 );
+    BlDebug::blDebug ( "BtTicket::agregarLog", 0 );
 }
 
 
 BlDbRecord * BtTicket::agregarLinea()
 {
-    blDebug ( "BtTicket::agregarLinea", 0 );
+    BlDebug::blDebug ( "BtTicket::agregarLinea", 0 );
 
     /// Creamos un nuevo BlDbRecord y lo inicializamos.
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
@@ -143,7 +143,7 @@ BlDbRecord * BtTicket::agregarLinea()
 
     item->setDbValue ( "descuentolalbaran", "0" );
 
-    blDebug ( "Hacemos el append", 0 );
+    BlDebug::blDebug ( "Hacemos el append", 0 );
 
     /// Agregamos el BlDbRecord a la lista de lineas de ticket.
     m_listaLineas->append ( item );
@@ -151,19 +151,19 @@ BlDbRecord * BtTicket::agregarLinea()
     g_plugParams = (void *) item;
     g_plugins->lanza("BtTicket_agregarLinea_Post", this);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return item;
 }
 
 void BtTicket::pintar()
 {
-    blDebug ( "BtTicket::pintar", 0, "Metodo para reimplementar en clases derivadas" );
+    BlDebug::blDebug ( "BtTicket::pintar", 0, "Metodo para reimplementar en clases derivadas" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtTicket_pintar", this );
     if ( res != 0 ) {
         return;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 QList<BlDbRecord *> *BtTicket::listaLineas()
@@ -174,7 +174,7 @@ QList<BlDbRecord *> *BtTicket::listaLineas()
 
 BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
-    blDebug ( "BtTicket::insertarArticulo", 0 );
+    BlDebug::blDebug ( "BtTicket::insertarArticulo", 0 );
 
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;
@@ -223,7 +223,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
     /// Pintamos el ticket ya que se ha modificado.
     pintar();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return m_lineaActual;
 }
 
@@ -285,7 +285,7 @@ void BtTicket::abrircajon()
     QFile file ( filestr );
     
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-        blDebug ( "Error en la Impresion de ticket", 2 );
+        BlDebug::blDebug ( "Error en la Impresion de ticket", 2 );
     } // end if
 
     QStringList secuencia = g_confpr->value(CONF_CASHBOX_OPEN_CODE).split(",");
@@ -303,7 +303,7 @@ void BtTicket::abrircajon()
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+        BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
 		blRawPrint( "bulmatpv_abrircajon.txt");
     } // end if
@@ -316,12 +316,12 @@ void BtTicket::abrircajon()
 void BtTicket::imprimir(bool doSave)
 {
 
-    blDebug("BtTicket::imprimir",0);
+    BlDebug::blDebug("BtTicket::imprimir",0);
 
     if (doSave) {
         
         if ( save() == -1) {
-            blDebug ( "Error en la llamada a save()", 0 );
+            BlDebug::blDebug ( "Error en la llamada a save()", 0 );
             return;
         } // end if
         
@@ -331,7 +331,7 @@ void BtTicket::imprimir(bool doSave)
     int res = g_plugins->lanza ( "BtTicket_imprimir", this );
     if ( res != 0 ) {
         g_plugins->lanza("BtTicket_imprimir_Post", this);
-        blDebug("END BtTicket::imprimir",0);
+        BlDebug::blDebug("END BtTicket::imprimir",0);
         return;
     } // end if
     
@@ -342,14 +342,14 @@ void BtTicket::imprimir(bool doSave)
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+        BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
 		blRawPrint( "ticket_normal.txt");
     } // end if    
 
 
     g_plugins->lanza("BtTicket_imprimir_Post", this);
-    blDebug("END BtTicket::imprimir",0);
+    BlDebug::blDebug("END BtTicket::imprimir",0);
 }
 
 
@@ -357,7 +357,7 @@ void BtTicket::imprimir(bool doSave)
 
 void BtTicket::subir()
 {
-    blDebug("BtTicket::subir");
+    BlDebug::blDebug("BtTicket::subir");
     int i;
 
     if ( listaLineas()->count() > 0) {
@@ -372,19 +372,19 @@ void BtTicket::subir()
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
-    blDebug("END BtTicket::subir");
+    BlDebug::blDebug("END BtTicket::subir");
 }
 
 void BtTicket::bajar()
 {
-    blDebug("BtTicket::bajar");
+    BlDebug::blDebug("BtTicket::bajar");
     if ( listaLineas()->count() > 0 ) {
         int i = listaLineas() ->indexOf ( lineaActBtTicket() );
         if ( i < listaLineas() ->size() - 1 ) i++;
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
-    blDebug("END BtTicket::bajar");
+    BlDebug::blDebug("END BtTicket::bajar");
 }
 
 void BtTicket::agregarCantidad ( QString cantidad )
@@ -476,7 +476,7 @@ void BtTicket::ponerPrecio ( QString precio )
 
 void BtTicket::insertarArticuloCodigo ( QString codigo )
 {
-    blDebug ( "BtTicket::insertarArticuloCodigo", 0 );
+    BlDebug::blDebug ( "BtTicket::insertarArticuloCodigo", 0 );
 
     QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -489,14 +489,14 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
 
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigo_Post", this );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
 
 void BtTicket::insertarArticuloCodigoNL ( QString codigo )
 {
-    blDebug("BtTicket::insertarArticuloCodigoNL",0);
+    BlDebug::blDebug("BtTicket::insertarArticuloCodigoNL",0);
     
     QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -509,7 +509,7 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
     
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigoNL_Post", this );
     
-    blDebug("END BtTicket::insertarArticuloCodigoNL",0);
+    BlDebug::blDebug("END BtTicket::insertarArticuloCodigoNL",0);
 }
 
 
@@ -553,7 +553,7 @@ int BtTicket::load ( QString id )
 **/
 int BtTicket::save()
 {
-    blDebug ( "BtTicket::guardar", 0 );
+    BlDebug::blDebug ( "BtTicket::guardar", 0 );
 
     try {
 
@@ -586,7 +586,7 @@ int BtTicket::save()
         mainCompany() ->commit();
 
         delete cur;
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         
         return 0;
         
@@ -631,7 +631,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
 
 /// Hace la exportacion del campo a XML
 QString BtTicket::exportXML() {
-    blDebug ( "BtTicket::exportXML", 0 );
+    BlDebug::blDebug ( "BtTicket::exportXML", 0 );
 
     int error;
     BlDbField *campo;
@@ -651,7 +651,7 @@ QString BtTicket::exportXML() {
     
     m_textoXML += "</BTTICKET>\n";
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return m_textoXML;
 
@@ -659,7 +659,7 @@ QString BtTicket::exportXML() {
 
 
 bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
-    blDebug ( "BtTicket::syncXML", 0 );
+    BlDebug::blDebug ( "BtTicket::syncXML", 0 );
 
     /* Para que los plugins tambien puedan tratar sus cosas ponemos el texto XML a disposicion de todos en la variable m_textoXML */
     m_textoXML = text;
@@ -669,7 +669,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
+	
         return 0;
     } // end if
 
@@ -679,7 +679,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     if (!insertarSiempre) {
 	QDomElement nomticket = docElem.firstChildElement ( "NOMTICKET" );
 	if (nomticket.text() != dbValue("nomticket") ) {
-	    blDebug("END BtTicket::syncXML", 0);
+	    BlDebug::blDebug("END BtTicket::syncXML", 0);
 	    return 0;
 	} // end if
     } // end if
@@ -717,7 +717,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     
     g_plugins->lanza ( "BtTicket_syncXML_Post", this ); 
 
-    blDebug ( "BtTicket::syncXML", 0 );
+    BlDebug::blDebug ( "BtTicket::syncXML", 0 );
     
     return 1;
 }
@@ -737,9 +737,9 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
 
 int BtTicket::generateRML ( void )
 {
-    blDebug ( "BtTicket::generateRML", 0 );
+    BlDebug::blDebug ( "BtTicket::generateRML", 0 );
     int err = BlDbRecord::generateRML();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return err;
 }
 
@@ -748,7 +748,7 @@ int BtTicket::generateRML ( void )
 **/
 int BtTicket::generateRML ( const QString &arch )
 {
-    blDebug ( "BtTicket::generateRML", 0, arch );
+    BlDebug::blDebug ( "BtTicket::generateRML", 0, arch );
 
     /// Vaciamos las variables de RML
     m_variables.clear();
@@ -765,7 +765,7 @@ int BtTicket::generateRML ( const QString &arch )
 
     res = BlDbRecord::generateRML ( arch );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return res;
 }
 

@@ -50,7 +50,7 @@
 BalancePrintView::BalancePrintView ( BcCompany *emp )
         : QDialog ( 0 ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     m_codigoinicial->setMainCompany ( emp );
     m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
@@ -82,7 +82,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     } // end while
     mainCompany() ->commit();
     delete niveles;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -91,8 +91,8 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
 **/
 BalancePrintView::~BalancePrintView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -106,13 +106,13 @@ BalancePrintView::~BalancePrintView()
 **/
 void BalancePrintView::inicializa1 ( QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_fechainicial1->setText ( finicial1 );
     m_fechafinal1->setText ( ffinal1 );
     m_codigoinicial->setText ( codinicial1 );
     m_codigofinal->setText ( codfinal1 );
     checksuperiores->setChecked ( arbol );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -121,7 +121,7 @@ void BalancePrintView::inicializa1 ( QString codinicial1, QString codfinal1, QSt
 **/
 void BalancePrintView::on_mui_imprimir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( radiotexto->isChecked() )
         presentar ( "txt" );
     if ( radiohtml->isChecked() )
@@ -130,7 +130,7 @@ void BalancePrintView::on_mui_imprimir_clicked()
         presentar ( "rtk" );
     if ( radiokugar->isChecked() )
         presentar ( "kugar" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -140,7 +140,7 @@ void BalancePrintView::on_mui_imprimir_clicked()
 **/
 void BalancePrintView::presentar ( const char* tipus )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 #ifndef Q_OS_WIN32
     int kugar, txt, html, txtapren, htmlapren;
     double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
@@ -426,7 +426,7 @@ void BalancePrintView::presentar ( const char* tipus )
         }
     }
 #endif
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -436,11 +436,11 @@ void BalancePrintView::presentar ( const char* tipus )
 **/
 void BalancePrintView::on_mui_canales_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -451,10 +451,10 @@ void BalancePrintView::on_mui_canales_clicked()
 **/
 void BalancePrintView::on_mui_ccostes_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcCentroCosteSeleccionarView *selccostes = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

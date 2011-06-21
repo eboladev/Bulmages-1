@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     ListCompras *lc = new ListCompras ( art );
     lc->setObjectName ( QString::fromUtf8 ( "lcompras" ) );
     lc->setMainCompany ( art->mainCompany() );
@@ -75,7 +75,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     lr->load ( "0" );
     art->mui_tab->addTab ( lr, _("Recogidas") );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -87,7 +87,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_load ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     ListLResArticulo *l = art->findChild<ListLResArticulo *> ( "lresfacturacion" );
     l->load ( art->dbValue ( "idarticulo" ) );
 
@@ -100,7 +100,7 @@ int ArticuloView_load ( ArticuloView *art )
     ListRecogidas *llr = art->findChild<ListRecogidas *> ( "lrecogidas" );
     llr->load ( art->dbValue ( "idarticulo" ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

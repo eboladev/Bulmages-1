@@ -33,9 +33,8 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObj
    , m_fk_column ( -1 )
    , m_empty_if_no_filter ( false )
 {
-   blDebug ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 );
-
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   BL_FUNC_DEBUG
+   
 }
 
 
@@ -47,13 +46,13 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObj
 **/
 void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field )
 {
-   blDebug ( "BlGenericComboBoxDelegate::set_foreign_table", 0 );
+   BL_FUNC_DEBUG
 
    m_table = table;
    m_id_field = id_field;
    m_text_field = text_field;
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -65,12 +64,12 @@ void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const 
 **/
 void BlGenericComboBoxDelegate::set_foreign_field ( unsigned int fk_column, QString fk_field_name )
 {
-   blDebug ( "BlGenericComboBoxDelegate::set_foreign_field", 0 );
+   BL_FUNC_DEBUG
 
    m_fk_column = fk_column;
    m_fk_field_name = fk_field_name;
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -119,7 +118,8 @@ void BlGenericComboBoxDelegate::setAllowNull ( bool v )
 **/
 void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 {
-   blDebug ( "BlGenericComboBoxDelegate::initialize", 0, combo_field_name );
+   BL_FUNC_DEBUG
+   BlDebug::blDebug ( "BlGenericComboBoxDelegate::initialize", 0, combo_field_name );
 
    m_combo_field_name = combo_field_name;
 
@@ -154,7 +154,7 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
    // Reactivamos la ordenaci&oacute;n
    m_subform->setSortingEnabled(true);
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -167,7 +167,7 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 **/
 QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index )  const
 {
-   blDebug ( "BlGenericComboBoxDelegate::createEditor", 0 );
+   BL_FUNC_DEBUG
 
    BlComboBox *cbox = new BlComboBox ( parent );
    cbox->setMainCompany ( m_company );
@@ -176,7 +176,7 @@ QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyle
    cbox->m_valores[m_text_field] = "";
    cbox->setAllowNull ( true );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 
    return cbox;
 }
@@ -189,7 +189,7 @@ QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyle
 **/
 void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )  const
 {
-   blDebug ( "BlGenericComboBoxDelegate::setEditorData", 0 );
+   BL_FUNC_DEBUG
 
    BlComboBox *cbox = ( BlComboBox *) editor;
    QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
@@ -218,7 +218,7 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
    connect ( cbox, SIGNAL ( activated ( QString ) ),
 		 this, SLOT ( emit_currentValueChangedByUser ( QString ) ) );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -230,7 +230,7 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
 **/
 void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index )  const
 {
-   blDebug ( "BlGenericComboBoxDelegate::setModelData", 0 );
+   BL_FUNC_DEBUG
 
    QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
 
@@ -243,7 +243,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
    model->setData ( index_id_field, id );
    model->setData ( index, text );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -255,11 +255,11 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 **/
 void BlGenericComboBoxDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index )  const
 {
-   blDebug ( "BlGenericComboBoxDelegate::updateEditorGeometry", 0 );
+   BL_FUNC_DEBUG
 
    editor->setGeometry ( vis.rect );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -269,7 +269,7 @@ void BlGenericComboBoxDelegate::updateEditorGeometry ( QWidget *editor, const QS
 **/
 QString BlGenericComboBoxDelegate::query ( int row ) const
 {
-   blDebug ( "BlGenericComboBoxDelegate::query", 0 );
+   BL_FUNC_DEBUG
 
    QString q = QString ( "SELECT %1, %2 FROM %3" )
 			    .arg(m_id_field)
@@ -309,7 +309,7 @@ QString BlGenericComboBoxDelegate::query ( int row ) const
    q += QString ( " ORDER BY %1" )
 		   .arg ( m_text_field );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 
    return q;
 }
@@ -321,7 +321,7 @@ QString BlGenericComboBoxDelegate::query ( int row ) const
 **/
 QString BlGenericComboBoxDelegate::query_only_one ( const QString &fk_id ) const
 {
-   blDebug ( "BlGenericComboBoxDelegate::query_only_one", 0 );
+   BL_FUNC_DEBUG
 
    QString q = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
 		   .arg ( m_text_field )
@@ -329,7 +329,7 @@ QString BlGenericComboBoxDelegate::query_only_one ( const QString &fk_id ) const
 		   .arg ( m_id_field )
 		   .arg ( fk_id );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 
    return q;
 }
@@ -341,13 +341,12 @@ QString BlGenericComboBoxDelegate::query_only_one ( const QString &fk_id ) const
 **/
 void BlGenericComboBoxDelegate::emit_currentValueChangedByUser ( QString value )
 {
-   blDebug ( "BlGenericComboBoxDelegate::emit_currentValueChangedByUser", 0, value );
-
+   BL_FUNC_DEBUG
    /// Evitar emitir la se&ntilde;al si en realidad no hay cambio de valor
    if ( m_subform->dbValue ( m_combo_field_name, m_subform->currentRow() ) != value )
    {
 	emit currentValueChangedByUser ( value );
    }
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }

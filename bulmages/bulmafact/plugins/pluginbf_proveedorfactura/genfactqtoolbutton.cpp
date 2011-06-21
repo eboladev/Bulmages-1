@@ -48,10 +48,10 @@
 **/
 GenFacProQToolButton::GenFacProQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -60,8 +60,8 @@ GenFacProQToolButton::GenFacProQToolButton ( QWidget *fac , QWidget *parent ) : 
 **/
 GenFacProQToolButton::~GenFacProQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -70,7 +70,7 @@ GenFacProQToolButton::~GenFacProQToolButton()
 **/
 void GenFacProQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Factura Proveedor" );
@@ -80,7 +80,7 @@ void GenFacProQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -89,7 +89,7 @@ void GenFacProQToolButton::setBoton()
 **/
 void GenFacProQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "AlbaranProveedorBase" ) {
         generarFacturaProveedor();
@@ -100,7 +100,7 @@ void GenFacProQToolButton::click()
         generarFacturaProveedor1();
     }// end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -114,7 +114,7 @@ void GenFacProQToolButton::click()
 **/
 void GenFacProQToolButton::generarFacturaProveedor()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     AlbaranProveedorView *fpv = ( AlbaranProveedorView * ) m_object;
 
 
@@ -205,7 +205,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -221,7 +221,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
 **/
 void GenFacProQToolButton::generarFacturaProveedor1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
 
 
@@ -311,7 +311,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

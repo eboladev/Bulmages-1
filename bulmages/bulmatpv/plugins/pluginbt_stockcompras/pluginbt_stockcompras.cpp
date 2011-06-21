@@ -38,10 +38,10 @@ MyDevButton1 * g_plug;
 **/
 MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    blDebug ( "MyDevButton1::MyDevButton1", 0 );
+    BlDebug::blDebug ( "MyDevButton1::MyDevButton1", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -50,8 +50,8 @@ MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *
 **/
 MyDevButton1::~MyDevButton1()
 {
-    blDebug ( "MyDevButton1::~MyDevButton1", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MyDevButton1::~MyDevButton1", 0 );
+    
 }
 
 
@@ -61,10 +61,10 @@ MyDevButton1::~MyDevButton1()
 **/
 void MyDevButton1::on_click (  )
 {
-    blDebug ( "MyDevButton1::cambia", 0 );
+    BlDebug::blDebug ( "MyDevButton1::cambia", 0 );
     Compra *camb = new Compra ( m_emp, 0 );
     camb->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,7 +74,7 @@ void MyDevButton1::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -88,7 +88,7 @@ int entryPoint ( BtBulmaTPV *tpv )
         tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
         g_doc1->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

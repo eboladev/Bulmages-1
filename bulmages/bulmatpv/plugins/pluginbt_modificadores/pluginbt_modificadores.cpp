@@ -40,7 +40,7 @@ BlDockWidget *g_doc1 = NULL;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
-    blDebug ( "PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
 
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
@@ -56,7 +56,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
     item->addDbField ( "idmodificador8", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador9", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -68,7 +68,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -89,7 +89,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_tablet->setWindowIcon(QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadoresg.png"  ));
     */
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -167,9 +167,9 @@ int MTicket_MTicket_Post (MTicket *tick) {
 /*
 int BtTicket_imprimir_Post(BtTicket *tick)
 {
-    blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
     impresionCocina(tick);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 1;
 }
 */
@@ -178,16 +178,16 @@ int BtTicket_imprimir_Post(BtTicket *tick)
 /*
 int BtTicket_exportXML_Post( BtTicket *tick)
 {
-    blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
     QString filename ("/tmp/guardado_"+tick->dbValue("nomticket")+".jpg");
     filename.remove(' ');
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BtCompany_setTicketActual(BtCompany *comp) {
-    blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual", 0 );
+    BlDebug::blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual", 0 );
     if (comp->ticketActual()) {
     if (comp->ticketActual()->exists("nomticket")) {
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
@@ -197,12 +197,12 @@ int BtCompany_setTicketActual(BtCompany *comp) {
       } // end if
     } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 int BtCompany_setTicketActual_Post(BtCompany *comp) {
-    blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual_Post", 0 );
     if (comp->ticketActual()) {
       g_tablet->erasePixmap();
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
@@ -213,7 +213,7 @@ int BtCompany_setTicketActual_Post(BtCompany *comp) {
 	} // end if
       } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -231,7 +231,7 @@ int BtCompany_cobrar_1(BtCompany *comp) {
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
 
-    blDebug ( "PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
     int valor = 0;
     /*
     static int semaforo = 0;
@@ -251,7 +251,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         semaforo = 0;
     } // end if
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return valor;
 }

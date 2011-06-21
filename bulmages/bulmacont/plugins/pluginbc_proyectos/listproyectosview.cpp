@@ -35,7 +35,7 @@
 ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
         : BlFormList ( emp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -63,7 +63,7 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     /// Lanzamos los posibles scripts
     blScript(this);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,9 +74,9 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
 **/
 ListProyectosView::~ListProyectosView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     removeWindow();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -87,11 +87,11 @@ ListProyectosView::~ListProyectosView()
 **/
 void ListProyectosView::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     ProyectoView *proj = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( proj );
     proj->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -101,7 +101,7 @@ void ListProyectosView::crear()
 **/
 void ListProyectosView::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
@@ -114,9 +114,9 @@ void ListProyectosView::remove()
             presentar();
         } // end if
     } catch ( ... ) {
-        blDebug ( Q_FUNC_INFO, 0, _("Error al borrar la amortizacion.") );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al borrar la amortizacion.") );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -133,7 +133,8 @@ void ListProyectosView::remove()
 **/
 void ListProyectosView::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Fila: '%1'.")).arg(QString::number(row)) );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Fila: '%1'.")).arg(QString::number(row)) );
     mdb_idpresupuestoc = mui_listado->dbValue ( "idpresupuestoc" );
     mdb_nompresupuestoc = mui_listado->dbValue ( "nompresupuestoc" );
     if ( editMode() ) {
@@ -146,6 +147,6 @@ void ListProyectosView::editar ( int row )
         close();
         emit ( selected ( mdb_idpresupuestoc ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

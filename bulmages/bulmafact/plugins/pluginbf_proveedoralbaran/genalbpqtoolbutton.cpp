@@ -47,10 +47,10 @@
 **/
 GenAlbProQToolButton::GenAlbProQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -59,8 +59,8 @@ GenAlbProQToolButton::GenAlbProQToolButton ( QWidget *fac , QWidget *parent ) : 
 **/
 GenAlbProQToolButton::~GenAlbProQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -69,7 +69,7 @@ GenAlbProQToolButton::~GenAlbProQToolButton()
 **/
 void GenAlbProQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Albaran Proveedor") );
@@ -79,7 +79,7 @@ void GenAlbProQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -88,14 +88,14 @@ void GenAlbProQToolButton::setBoton()
 **/
 void GenAlbProQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
 //        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
         generarAlbaranProveedor();
     }// end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,7 +110,7 @@ void GenAlbProQToolButton::click()
 **/
 void GenAlbProQToolButton::generarAlbaranProveedor()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
 
 
@@ -200,7 +200,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

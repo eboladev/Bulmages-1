@@ -41,7 +41,7 @@ BfBulmaFact *g_pluginbf_profesor = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Profesor", "0.12.1-0003");
@@ -87,7 +87,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -115,7 +115,7 @@ int BlAction_triggered(BlAction *accion) {
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( comp->hasTablePrivilege ( "profesor", "SELECT" ) ) {
         g_profesoresList = new ProfesoresList ( comp, NULL );
@@ -123,14 +123,14 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_profesoresList->hide();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( busq->tableName() == "profesor" ) {
 
@@ -163,7 +163,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 

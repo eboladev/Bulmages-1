@@ -34,14 +34,14 @@
 BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
         : BlWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     connect ( mui_referencia, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_rferencia_returnPressed() ) );
 
     /// Establecemos el focusProxy
     setFocusProxy (mui_referencia);
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -51,8 +51,8 @@ BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
 **/
 BfBuscarReferencia::~BfBuscarReferencia()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -63,7 +63,7 @@ BfBuscarReferencia::~BfBuscarReferencia()
 **/
 void BfBuscarReferencia::on_mui_informe_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlForm newfich ( mainCompany(), NULL );
     newfich.setTitleName ( _ ( "Informe" ) );
@@ -73,7 +73,7 @@ void BfBuscarReferencia::on_mui_informe_clicked()
         blCreateAndLoadPDF ( "informereferencia" );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -85,9 +85,9 @@ void BfBuscarReferencia::on_mui_informe_clicked()
 **/
 void BfBuscarReferencia::on_mui_referencia_editingFinished()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     emit ( valueChanged ( mui_referencia->text() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -98,13 +98,13 @@ void BfBuscarReferencia::on_mui_referencia_editingFinished()
 **/
 void BfBuscarReferencia::on_mui_rferencia_returnPressed()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", this );
     if ( res == 0 ) {
         emit ( returnPressed ( ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -117,7 +117,7 @@ void BfBuscarReferencia::on_mui_rferencia_returnPressed()
 **/
 void BfBuscarReferencia::on_mui_abrirtodo_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Empezamos con los presupuestos.
     /*
         QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
@@ -222,7 +222,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
     */
     g_plugins->lanza ( "BfBuscarReferencia_on_mui_abrirtodo_clicked_Post", this );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -233,9 +233,9 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
 **/
 void BfBuscarReferencia::setText ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_referencia->setText ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -246,9 +246,9 @@ void BfBuscarReferencia::setText ( QString val )
 **/
 void BfBuscarReferencia::setFieldValue ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_referencia->setText ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -259,8 +259,8 @@ void BfBuscarReferencia::setFieldValue ( QString val )
 **/
 QString BfBuscarReferencia::text()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mui_referencia->text();
 }
 
@@ -272,8 +272,8 @@ QString BfBuscarReferencia::text()
 **/
 QString BfBuscarReferencia::fieldValue()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mui_referencia->text();
 }
 

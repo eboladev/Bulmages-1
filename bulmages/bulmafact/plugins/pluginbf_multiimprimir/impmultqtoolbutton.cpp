@@ -56,7 +56,7 @@
 **/
 ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -66,7 +66,7 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -75,8 +75,8 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 **/
 ImpQToolButton::~ImpQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -85,7 +85,7 @@ ImpQToolButton::~ImpQToolButton()
 **/
 void ImpQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Imprimir elementos seleccionados" ) );
@@ -93,7 +93,7 @@ void ImpQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_print1.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -103,12 +103,12 @@ void ImpQToolButton::setBoton()
 **/
 void ImpQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 	/// Hacer comprobacion de la variable PRINTER
 	if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 	    blMsgInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
 	    return;
 	} // end if
 
@@ -443,7 +443,7 @@ void ImpQToolButton::click()
 	    system ( comando.toAscii().data() );
 	    comando = "rm " + res;
 	    system ( comando.toAscii().data() );
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
 
     } catch ( ... ) {
         blMsgInfo ( "Error en los calculos" );
@@ -467,7 +467,7 @@ void ImpQToolButton::click()
 **/
 SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac , CobrosList *cob, QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -475,7 +475,7 @@ SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
     m_cobrosList = cob;
     m_listado = (BlFormList *) parent->parent()->parent();
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -484,8 +484,8 @@ SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 **/
 SelQToolButton::~SelQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -494,7 +494,7 @@ SelQToolButton::~SelQToolButton()
 **/
 void SelQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Invertir seleccion de elementos" ) );
     setToolTip ( _ ( "Invertir seleccion de elementos" ) );
@@ -503,7 +503,7 @@ void SelQToolButton::setBoton()
     setIconSize ( QSize ( 22, 22 ) );
 
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -511,7 +511,7 @@ void SelQToolButton::setBoton()
 **/
 void SelQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
@@ -535,7 +535,7 @@ void SelQToolButton::click()
         } // end for
     }
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 // ==================================================================================
@@ -552,7 +552,7 @@ void SelQToolButton::click()
 **/
 EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -562,7 +562,7 @@ EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -571,8 +571,8 @@ EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *
 **/
 EmailQToolButton::~EmailQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -581,7 +581,7 @@ EmailQToolButton::~EmailQToolButton()
 **/
 void EmailQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Enviar elementos seleccionados por e-mail" ) );
@@ -589,7 +589,7 @@ void EmailQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -598,7 +598,7 @@ void EmailQToolButton::setBoton()
 **/
 void EmailQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
@@ -834,7 +834,7 @@ void EmailQToolButton::click()
     } // end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -857,7 +857,7 @@ void EmailQToolButton::click()
 **/
 ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -867,7 +867,7 @@ ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosCliente
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -876,8 +876,8 @@ ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosCliente
 **/
 ProcesarQToolButton::~ProcesarQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -886,7 +886,7 @@ ProcesarQToolButton::~ProcesarQToolButton()
 **/
 void ProcesarQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "procesa" ) );
     setStatusTip ( _ ( "Procesar elementos seleccionados" ) );
@@ -894,7 +894,7 @@ void ProcesarQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_ok.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -903,14 +903,14 @@ void ProcesarQToolButton::setBoton()
 **/
 void ProcesarQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( QMessageBox::question ( this,
                                   _ ( "Procesar elementos" ),
                                   _ ( "Va a procesar todos los elementos seleccionados. Desea continuar ?" ),
                                   _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
 
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     }
 
@@ -1032,7 +1032,7 @@ void ProcesarQToolButton::click()
     } // end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1054,7 +1054,7 @@ void ProcesarQToolButton::click()
 **/
 SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
@@ -1064,7 +1064,7 @@ SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *
     m_listado = (BlFormList *) parent->parent()->parent();
 
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1073,8 +1073,8 @@ SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *
 **/
 SumarQToolButton::~SumarQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -1083,7 +1083,7 @@ SumarQToolButton::~SumarQToolButton()
 **/
 void SumarQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "procesa" ) );
     setStatusTip ( _ ( "Totalizar elementos seleccionados" ) );
@@ -1091,7 +1091,7 @@ void SumarQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon (  g_confpr->value( CONF_PROGDATA ) + "icons/suma.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1100,7 +1100,7 @@ void SumarQToolButton::setBoton()
 **/
 void SumarQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
@@ -1239,7 +1239,7 @@ void SumarQToolButton::click()
     } // end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

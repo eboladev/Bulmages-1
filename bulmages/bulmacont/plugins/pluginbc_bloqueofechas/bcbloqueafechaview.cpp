@@ -34,8 +34,8 @@
 BcTreeWidgetItem::BcTreeWidgetItem ( QTreeWidget *parent )
         : QTreeWidgetItem ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return;
 }
 
@@ -48,8 +48,8 @@ BcTreeWidgetItem::BcTreeWidgetItem ( QTreeWidget *parent )
 BcTreeWidgetItem::BcTreeWidgetItem ( QTreeWidgetItem *parent )
         : QTreeWidgetItem ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return;
 }
 
@@ -72,7 +72,7 @@ BcTreeWidgetItem::~BcTreeWidgetItem()
 BcBloqueaFechaView::BcBloqueaFechaView ( BcCompany *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     setTitleName ( _ ( "Bloquear Fechas" ) );
     /// Establecemos cual es la tabla en la que basarse para obtener permisos
@@ -88,7 +88,7 @@ BcBloqueaFechaView::BcBloqueaFechaView ( BcCompany *emp, QWidget *parent )
     /// Llamamos a los scripts
     blScript(this);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -97,9 +97,9 @@ BcBloqueaFechaView::BcBloqueaFechaView ( BcCompany *emp, QWidget *parent )
 **/
 BcBloqueaFechaView::~BcBloqueaFechaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -108,7 +108,7 @@ BcBloqueaFechaView::~BcBloqueaFechaView()
 **/
 void BcBloqueaFechaView::inicializa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcTreeWidgetItem *itemlevel0;
     BcTreeWidgetItem *itemlevel1 = 0;
 
@@ -202,7 +202,7 @@ void BcBloqueaFechaView::inicializa()
         curEjer->nextRecord();
     } // end while
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -213,7 +213,7 @@ void BcBloqueaFechaView::inicializa()
 **/
 void BcBloqueaFechaView::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, int columna )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int error;
     BcTreeWidgetItem *it = ( BcTreeWidgetItem * ) item;
     if ( columna == 1 ) {
@@ -227,7 +227,7 @@ void BcBloqueaFechaView::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *
             error = mainCompany() ->runQuery ( consultabd );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -236,7 +236,7 @@ void BcBloqueaFechaView::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *
 **/
 void BcBloqueaFechaView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Tomamos el anyo pasado como referencia.
     int ejer = QDate::currentDate().year() - 1;
 
@@ -290,6 +290,6 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
     /// Presentamos
     inicializa();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

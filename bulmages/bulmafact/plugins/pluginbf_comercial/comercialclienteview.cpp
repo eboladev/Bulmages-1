@@ -31,10 +31,10 @@
 ComercialClienteView::ComercialClienteView ( QWidget *parent )
         : BfForm ( NULL, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -43,8 +43,8 @@ ComercialClienteView::ComercialClienteView ( QWidget *parent )
 **/
 ComercialClienteView::~ComercialClienteView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -54,7 +54,7 @@ ComercialClienteView::~ComercialClienteView()
 **/
 void ComercialClienteView::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
 
     /// Datos por defecto.
@@ -72,5 +72,5 @@ void ComercialClienteView::setMainCompany ( BfCompany *comp )
 
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

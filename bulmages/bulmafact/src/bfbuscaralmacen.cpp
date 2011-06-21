@@ -33,11 +33,11 @@
 BfBuscarAlmacen::BfBuscarAlmacen ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     m_codigoalmacen = "";
     m_table = "almacen";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -47,8 +47,8 @@ BfBuscarAlmacen::BfBuscarAlmacen ( QWidget *parent, const char * )
 **/
 BfBuscarAlmacen::~BfBuscarAlmacen()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -62,7 +62,7 @@ BfBuscarAlmacen::~BfBuscarAlmacen()
 **/
 void BfBuscarAlmacen::setId ( QString idalmacen )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     try {
         /// Si no existe la mainCompany() pq aun no ha sido establecida salimos
@@ -100,10 +100,10 @@ void BfBuscarAlmacen::setId ( QString idalmacen )
             setCurrentIndex ( i2 );
         } // end if
     } catch ( ... ) {
-        blDebug ( Q_FUNC_INFO, 0, _("Error al establecer el almacen.") );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al establecer el almacen.") );
         blMsgError(_("Error al establecer el almacen."));
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -114,14 +114,14 @@ void BfBuscarAlmacen::setId ( QString idalmacen )
 **/
 QString BfBuscarAlmacen::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = currentIndex();
 
     if ( index > 0 ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("'index' > 0") );
+        
         return ( m_comboRecordSet->value( "idalmacen", index - 1 ) );
     } else {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return "";
     } // end if
 }
@@ -132,7 +132,7 @@ QString BfBuscarAlmacen::id()
 **/
 void BfBuscarAlmacen::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
     if ( cur ) {
@@ -141,7 +141,7 @@ void BfBuscarAlmacen::setMainCompany ( BfCompany *comp )
         } // end if
         delete cur;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -151,7 +151,7 @@ void BfBuscarAlmacen::setMainCompany ( BfCompany *comp )
 **/
 void BfBuscarAlmacen::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idalmacen", index - 1 ) ) );
@@ -159,7 +159,7 @@ void BfBuscarAlmacen::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -175,11 +175,11 @@ void BfBuscarAlmacen::m_activated ( int index )
 BfBuscarAlmacenDelegate::BfBuscarAlmacenDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -189,10 +189,10 @@ BfBuscarAlmacenDelegate::BfBuscarAlmacenDelegate ( QWidget *parent )
 **/
 BfBuscarAlmacenDelegate::~BfBuscarAlmacenDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -205,7 +205,7 @@ BfBuscarAlmacenDelegate::~BfBuscarAlmacenDelegate()
 **/
 void BfBuscarAlmacenDelegate::set ( const QString &cod )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = 0;
     QString codigo = cod;
 
@@ -229,6 +229,6 @@ void BfBuscarAlmacenDelegate::set ( const QString &cod )
     setEditText ( cod );
     setCurrentIndex ( index );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

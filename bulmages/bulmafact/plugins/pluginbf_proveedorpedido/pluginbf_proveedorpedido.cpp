@@ -39,7 +39,7 @@ BfBulmaFact *g_pluginbf_proveedorpedido = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -75,7 +75,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorPedido" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorPedido" );
 
     if (accion->objectName() == "mui_actionProveedoresPedidos") {
         if ( g_pedidosProveedorList ) {
@@ -90,7 +91,7 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

@@ -36,7 +36,7 @@
 
 ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    blDebug ( "ServerSync::ServerSync", 0 );
+    BlDebug::blDebug ( "ServerSync::ServerSync", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addSubWindow ( this );
@@ -55,19 +55,19 @@ ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
 
     g_plugins->lanza ( "ServerSync_ServerSync_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ServerSync::~ServerSync()
 {
-    blDebug ( "ServerSync::~ServerSync", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "ServerSync::~ServerSync", 0 );
+    
 }
 
 
 void ServerSync::conection()
 {
-    blDebug ( "ServerSync::conection", 0 );
+    BlDebug::blDebug ( "ServerSync::conection", 0 );
     QTcpSocket *socket = m_tcpServer->nextPendingConnection();
     QHostAddress conectadofrom = socket->peerAddress();
     m_listaSockets.append(socket);
@@ -79,11 +79,11 @@ void ServerSync::conection()
     
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     connect (socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ServerSync::readyRead() {
-    blDebug ( "ServerSync::readyRead", 0 );
+    BlDebug::blDebug ( "ServerSync::readyRead", 0 );
     static QByteArray array = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
     array += socket->readAll();
@@ -98,20 +98,20 @@ void ServerSync::readyRead() {
 	((BtCompany *)mainCompany())->syncXML(texto);
 	array = "";
     }// end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ServerSync::readChannelFinished() {
-    blDebug ( "ServerSync::readyRead", 0 );
+    BlDebug::blDebug ( "ServerSync::readyRead", 0 );
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
     m_listaSockets.removeAll( socket);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ServerSync::send(const QString & texto) {
-    blDebug ( "ServerSync::send", 0 );
+    BlDebug::blDebug ( "ServerSync::send", 0 );
     QTcpSocket *socket;
     /// Redirigimos el mensaje a todos los clientes conectados al servidor.
     for (int i = 0; i < m_listaSockets.size(); ++i) {
@@ -121,5 +121,5 @@ void ServerSync::send(const QString & texto) {
 	  socket->write(texto.toLatin1());
 	} // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

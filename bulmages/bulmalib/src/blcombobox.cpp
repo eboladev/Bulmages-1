@@ -37,13 +37,13 @@
 BlComboBox::BlComboBox ( QWidget *parent )
         : QComboBox ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect ( g_theApp, SIGNAL ( dbTableChanged ( const QString & ) ), this, SLOT ( onDbTableChanged ( const QString & ) ) );
     m_null = TRUE;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -52,10 +52,10 @@ BlComboBox::BlComboBox ( QWidget *parent )
 **/
 BlComboBox::~BlComboBox()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,11 +64,11 @@ BlComboBox::~BlComboBox()
 **/
 void BlComboBox::onDbTableChanged ( const QString &t )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_table == t ) {
         setId ( id() );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -81,7 +81,7 @@ void BlComboBox::onDbTableChanged ( const QString &t )
 **/
 void BlComboBox::setId ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
@@ -121,7 +121,7 @@ void BlComboBox::setId ( QString id )
     } // end while
 
     setCurrentIndex ( i1 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -131,9 +131,9 @@ void BlComboBox::setId ( QString id )
 **/
 void BlComboBox::setFieldValue ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setId ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -143,7 +143,7 @@ void BlComboBox::setFieldValue ( QString id )
 **/
 void BlComboBox::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( index > 0 ) {
         if ( m_null ) {
             emit ( valueChanged ( m_comboRecordSet->value( m_fieldId, index - 1 ) ) );
@@ -153,7 +153,7 @@ void BlComboBox::m_activated ( int index )
     } else {
         emit ( valueChanged ( "" ) );
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -163,7 +163,7 @@ void BlComboBox::m_activated ( int index )
 **/
 QString BlComboBox::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( currentIndex() >= 0 ) {
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
@@ -181,7 +181,7 @@ QString BlComboBox::id()
         } // end if
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return "";
 }
 
@@ -192,8 +192,8 @@ QString BlComboBox::id()
 **/
 QString BlComboBox::fieldValue()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return id();
 }
 

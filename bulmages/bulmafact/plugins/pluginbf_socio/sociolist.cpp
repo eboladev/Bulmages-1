@@ -40,7 +40,7 @@
 SociosList::SociosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SociosList_SociosList", this );
@@ -51,7 +51,7 @@ SociosList::SociosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -62,7 +62,7 @@ SociosList::SociosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SociosList_SociosList", this );
@@ -89,7 +89,7 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -97,8 +97,8 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
 */
 SociosList::~SociosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -108,18 +108,18 @@ SociosList::~SociosList()
 */
 void SociosList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Seleccionar si queremos ver clientes o socios
 */
 void SociosList::on_mui_sociocliente_activated( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if(index){
       mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = true " + generaFiltro() );
@@ -128,7 +128,7 @@ void SociosList::on_mui_sociocliente_activated( int index )
       mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     }
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -136,14 +136,14 @@ void SociosList::on_mui_sociocliente_activated( int index )
 */
 QString SociosList::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro += " ) ";
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( filtro );
 }
 
@@ -154,12 +154,12 @@ QString SociosList::generaFiltro()
 */
 void SociosList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     SocioView *bud = new SocioView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -167,9 +167,9 @@ void SociosList::crear()
 */
 void SociosList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Padres" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -181,7 +181,7 @@ void SociosList::imprimir()
 */
 void SociosList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -200,7 +200,7 @@ void SociosList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -210,7 +210,7 @@ void SociosList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void SociosList::editar ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mdb_idcliente = mui_list->dbValue ( "idcliente" );
         if ( editMode() ) {
@@ -228,7 +228,7 @@ void SociosList::editar ( int )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -237,7 +237,7 @@ void SociosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void SociosList::submenu ( const QPoint & )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -250,7 +250,7 @@ void SociosList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -265,8 +265,8 @@ void SociosList::setMainCompany ( BfCompany *comp )
 **/
 QString SociosList::idcliente()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idcliente;
 }
 
@@ -280,7 +280,7 @@ QString SociosList::idcliente()
 */
 SociosListSubForm::SociosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SociosListSubForm_SociosListSubForm", this );
     if ( res != 0 )
@@ -311,14 +311,14 @@ SociosListSubForm::SociosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 SociosListSubForm::~SociosListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 

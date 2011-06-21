@@ -41,7 +41,7 @@
 **/
 EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
     EQToolButton *tool = parent->findChild<EQToolButton *>("EQToolButtonN");
@@ -135,7 +135,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	hide();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -144,8 +144,8 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 **/
 EQToolButton::~EQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -155,7 +155,7 @@ EQToolButton::~EQToolButton()
 **/
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QMenu *ajust = menu->addMenu ( QIcon(":/Images/template2ods.png"), _ ( "Informes personales ODS" ) );
 	
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -200,7 +200,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         accion->setObjectName ( fileInfo.fileName() );
 	accion->setIcon(QIcon(icon));
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -210,7 +210,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 **/
 void EQToolButton::trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if (action == NULL) action = (QAction *) sender();
     
@@ -235,7 +235,7 @@ void EQToolButton::trataMenu ( QAction *action )
 	    } // end if
 	}
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

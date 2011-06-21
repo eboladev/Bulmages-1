@@ -31,7 +31,7 @@
 BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
         : BcForm ( emp, parent, fl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -98,7 +98,7 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     /// Llamamos a los scripts
     blScript(this);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -107,8 +107,8 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
 **/
 BcCuentaView::~BcCuentaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -119,7 +119,7 @@ BcCuentaView::~BcCuentaView()
 **/
 int BcCuentaView::nuevacuenta ( QString codpadre )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Suponiendo que las cuentas son num&eacute;ricas, al crear una nueva cuenta
     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
@@ -171,7 +171,7 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
     /// Establecemos el valor del padre y del grupo.
 //    mui_padre->setcodigocuenta ( codpadre );
     mui_padre->setText ( codpadre );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

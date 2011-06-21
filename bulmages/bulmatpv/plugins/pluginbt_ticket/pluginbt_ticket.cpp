@@ -44,7 +44,7 @@ MTicket *g_bud;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginticketbasico::entryPoint", 0 );
+    BlDebug::blDebug ( "pluginticketbasico::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -64,7 +64,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->loadConfig();
     g_doc1->show();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -76,11 +76,11 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginticketbasico::exitPoint", 0 );
+    BlDebug::blDebug ( "pluginticketbasico::exitPoint", 0 );
     
     delete g_doc1;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -88,12 +88,12 @@ int exitPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    blDebug ( "pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
+    BlDebug::blDebug ( "pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
     
     g_bud =  new MTicket ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -101,12 +101,12 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 int BtTicket_pintar ( BtTicket * )
 {
-    blDebug ( "pluginticketbasico::BtTicket_pintar", 0 );
+    BlDebug::blDebug ( "pluginticketbasico::BtTicket_pintar", 0 );
     
     if (g_bud)
         g_bud->pintar();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }

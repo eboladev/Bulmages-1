@@ -47,7 +47,7 @@
 AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -101,7 +101,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran proveedor" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -111,8 +111,8 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
 **/
 AlbaranProveedorView::~AlbaranProveedorView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -121,9 +121,9 @@ AlbaranProveedorView::~AlbaranProveedorView()
 **/
 void AlbaranProveedorView::on_m_descuentos_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -132,9 +132,9 @@ void AlbaranProveedorView::on_m_descuentos_editFinish ( int, int )
 **/
 void AlbaranProveedorView::on_subform2_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -146,12 +146,12 @@ void AlbaranProveedorView::on_subform2_editFinish ( int, int )
 **/
 void AlbaranProveedorView::inicializar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->inicializar();
     m_descuentos->inicializar();
     pintar();
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -165,14 +165,14 @@ void AlbaranProveedorView::inicializar()
 **/
 void AlbaranProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_totalBases->setText ( QString ( base.toQString() ) );
     m_totalTaxes->setText ( QString ( iva.toQString() ) );
     m_totalDiscounts->setText ( QString ( desc.toQString() ) );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
     m_totalalbaranp->setText ( QString ( total.toQString() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -186,7 +186,7 @@ void AlbaranProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tot
 **/
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + dbValue ( "refalbaranp" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
@@ -197,7 +197,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -207,10 +207,10 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
 **/
 void AlbaranProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->setIdProveedor ( id );
     mui_idforma_pago->setIdProveedor ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -224,10 +224,10 @@ void AlbaranProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 **/
 int AlbaranProveedorView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->remove();
     m_listadescuentos->remove();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -242,7 +242,7 @@ int AlbaranProveedorView::beforeDelete()
 **/
 int AlbaranProveedorView::cargarPost ( QString idbudget )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->load ( idbudget );
     m_listadescuentos->load ( idbudget );
@@ -251,7 +251,7 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
     g_plugins->lanza ( "AlbaranProveedorView_cargarPost_Post", this );
 
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -268,7 +268,7 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
 **/
 int AlbaranProveedorView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->setColumnValue ( "idalbaranp", dbValue ( "idalbaranp" ) );
     m_listadescuentos->setColumnValue ( "idalbaranp", dbValue ( "idalbaranp" ) );
@@ -276,7 +276,7 @@ int AlbaranProveedorView::afterSave()
     m_listalineas->save();
     m_listadescuentos->save();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

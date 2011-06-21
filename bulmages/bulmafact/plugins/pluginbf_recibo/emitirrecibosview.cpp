@@ -41,7 +41,7 @@
 EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -74,20 +74,20 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
         
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 EmitirRecibosView::~EmitirRecibosView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 void EmitirRecibosView::on_mui_crear_clicked() {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     // Iteramos para cada tutor / socio
     QString query = "SELECT nomcliente, cliente.idcliente, coalesce (suma, 0) AS numhijos, cuotacuotaporalumno, sociocliente FROM cliente LEFT JOIN (SELECT idcliente, count(idalumnocliente) AS suma FROM alumnocliente GROUP BY idcliente) AS t1 ON cliente.idcliente = t1.idcliente LEFT JOIN (SELECT * FROM cuotaporalumno) AS t2 ON t2.numalumnoscuotaporalumno = coalesce(t1.suma, 0)";
@@ -162,5 +162,5 @@ void EmitirRecibosView::on_mui_crear_clicked() {
     
     m_progreso->setValue(0);
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

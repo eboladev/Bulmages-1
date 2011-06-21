@@ -45,7 +45,7 @@
 AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     mdb_idalbaranp = "";
     setSubForm ( mui_list );
@@ -58,7 +58,7 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -68,7 +68,7 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
 **/
 void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
     m_proveedor->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
@@ -79,7 +79,7 @@ void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -88,7 +88,7 @@ void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
 **/
 void AlbaranesProveedor::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mainCompany() != NULL ) {
         AlbaranProveedorView *apv = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         mainCompany()->pWorkspace()->addSubWindow ( apv );
@@ -104,7 +104,7 @@ void AlbaranesProveedor::crear()
         apv->show();
         apv->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
     }// end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -114,9 +114,9 @@ void AlbaranesProveedor::crear()
 **/
 void AlbaranesProveedor::setidproveedor ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_proveedor->setId ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -126,9 +126,9 @@ void AlbaranesProveedor::setidproveedor ( QString val )
 **/
 void AlbaranesProveedor::setidarticulo ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_articulo->setidarticulo ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -138,8 +138,8 @@ void AlbaranesProveedor::setidarticulo ( QString val )
 **/
 QString AlbaranesProveedor::idalbaranp()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idalbaranp;
 }
 
@@ -158,7 +158,7 @@ QString AlbaranesProveedor::idalbaranp()
 AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setMainCompany ( comp );
     setSubForm ( mui_list );
@@ -173,7 +173,7 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     trataPermisos ( "albaranp" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -183,17 +183,17 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
 **/
 void AlbaranesProveedor::iniciaForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranesProveedor_iniciaForm", this );
     if ( res != 0 ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
+	
         return;
     } // end if
     mui_procesada->insertItem ( 0, _ ( "Todos los albaranes" ) );
     mui_procesada->insertItem ( 1, _ ( "Albaranes procesados" ) );
     mui_procesada->insertItem ( 2, _ ( "Albaranes no procesados" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -204,8 +204,8 @@ void AlbaranesProveedor::iniciaForm()
 **/
 AlbaranesProveedor::~AlbaranesProveedor()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -218,7 +218,7 @@ AlbaranesProveedor::~AlbaranesProveedor()
 **/
 void AlbaranesProveedor::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT *, totalalbaranp AS total, " \
                            "bimpalbaranp AS base, impalbaranp AS impuestos " \
@@ -240,7 +240,7 @@ void AlbaranesProveedor::presentar()
         m_total->setText ( cur->value( "total" ) );
         delete cur;
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -252,7 +252,7 @@ void AlbaranesProveedor::presentar()
 **/
 QString AlbaranesProveedor::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString filtro = "";
 
     if ( m_filtro->text() != "" ) {
@@ -280,7 +280,7 @@ QString AlbaranesProveedor::generaFiltro()
         filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
     if ( m_fechafin->text() != "" )
         filtro += " AND fechaalbaranp <= '" + m_fechafin->text() + "' ";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( filtro );
 }
 
@@ -295,7 +295,7 @@ QString AlbaranesProveedor::generaFiltro()
 **/
 void AlbaranesProveedor::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ), row );
     if ( editMode() ) {
         AlbaranProveedorView * prov = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
@@ -308,7 +308,7 @@ void AlbaranesProveedor::editar ( int row )
     } else {
         emit ( selected ( mdb_idalbaranp ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -319,9 +319,9 @@ void AlbaranesProveedor::editar ( int row )
 **/
 void AlbaranesProveedor::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Albaranes de proveedor" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -336,7 +336,7 @@ void AlbaranesProveedor::imprimir()
 **/
 void AlbaranesProveedor::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -356,7 +356,7 @@ void AlbaranesProveedor::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar albaran de proveedor" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -373,8 +373,8 @@ void AlbaranesProveedor::remove()
 **/
 AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -384,7 +384,7 @@ AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 **/
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "albaranp" );
     setDbFieldId ( "idalbaranp" );
     addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID albaran" ) );
@@ -406,7 +406,7 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -415,10 +415,10 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
 **/
 void AlbaranesProveedorListSubform::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString SQLQuery = "SELECT * FROM albaranp";
     BlSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -428,8 +428,8 @@ void AlbaranesProveedorListSubform::load()
 **/
 void AlbaranesProveedorListSubform::load ( QString query )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( query );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

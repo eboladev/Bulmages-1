@@ -34,7 +34,7 @@
 BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
@@ -46,7 +46,7 @@ BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent
     m_listCanales->setHeaderLabels ( etiquetas );
 
     cargacanales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -55,9 +55,9 @@ BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent
 **/
 BcCanalSeleccionarView::~BcCanalSeleccionarView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     delete m_iterador;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -66,7 +66,7 @@ BcCanalSeleccionarView::~BcCanalSeleccionarView()
 **/
 void BcCanalSeleccionarView::cargacanales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QMap <int, QTreeWidgetItem *> Lista;
     QTreeWidgetItem *it;
 
@@ -90,7 +90,7 @@ void BcCanalSeleccionarView::cargacanales()
     } // end while
 
     delete cursoraux1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -102,10 +102,10 @@ void BcCanalSeleccionarView::cargacanales()
 **/
 int BcCanalSeleccionarView::firstcanal()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return nextcanal();
 }
 
@@ -116,7 +116,7 @@ int BcCanalSeleccionarView::firstcanal()
 **/
 int BcCanalSeleccionarView::nextcanal()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int idcanal = 0;
     fprintf ( stderr, "nextcanal\n" );
     while ( ( **m_iterador ) && idcanal == 0 ) {
@@ -128,7 +128,7 @@ int BcCanalSeleccionarView::nextcanal()
         ++ ( *m_iterador );
     } // end while
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return idcanal;
 }
 
@@ -139,7 +139,7 @@ int BcCanalSeleccionarView::nextcanal()
 **/
 QString BcCanalSeleccionarView::cadcanal()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     int idcanal;
     QString ccanales = "";
@@ -153,7 +153,7 @@ QString BcCanalSeleccionarView::cadcanal()
         idcanal = nextcanal();
     } // end while
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ccanales;
 }
 
@@ -164,7 +164,7 @@ QString BcCanalSeleccionarView::cadcanal()
 **/
 QString BcCanalSeleccionarView::nomcanal()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
     QString value = "";
 
@@ -173,7 +173,7 @@ QString BcCanalSeleccionarView::nomcanal()
     } // end if
 
     delete *m_iterador;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return value;
 }
 
@@ -183,7 +183,7 @@ QString BcCanalSeleccionarView::nomcanal()
 **/
 void BcCanalSeleccionarView::on_mui_todo_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
     while ( *m_iterador ) {
@@ -192,7 +192,7 @@ void BcCanalSeleccionarView::on_mui_todo_clicked()
     }
 
     delete *m_iterador;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -201,7 +201,7 @@ void BcCanalSeleccionarView::on_mui_todo_clicked()
 **/
 void BcCanalSeleccionarView::on_mui_nada_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
@@ -211,7 +211,7 @@ void BcCanalSeleccionarView::on_mui_nada_clicked()
     }
 
     delete *m_iterador;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -220,7 +220,7 @@ void BcCanalSeleccionarView::on_mui_nada_clicked()
 **/
 void BcCanalSeleccionarView::on_mui_invertir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
     while ( *m_iterador ) {
@@ -233,6 +233,6 @@ void BcCanalSeleccionarView::on_mui_invertir_clicked()
     } // end while
 
     delete *m_iterador;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

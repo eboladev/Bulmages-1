@@ -42,9 +42,9 @@
 **/
 BfCompany::BfCompany ( BfBulmaFact *bges ) : BlMainCompany()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_bulmafact = bges;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -53,14 +53,14 @@ BfCompany::BfCompany ( BfBulmaFact *bges ) : BlMainCompany()
 **/
 BfCompany::~BfCompany()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Guardamos la configuracion.
     guardaConf();
 
     /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
     m_listventanas->vaciarCompleto();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,7 +74,7 @@ BfCompany::~BfCompany()
 **/
 void BfCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Comprobamos que tengamos permisos para trabajar con 'Paises'.
     m_bulmafact->actionPaises->setEnabled ( FALSE );
@@ -98,7 +98,7 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
     m_bulmafact->statusBar() ->showMessage ( dbName(), 2000 );
     m_bulmafact->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Facturacion GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,13 +110,13 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 **/
 void BfCompany::s_FPago()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
        FPagoView *f = new FPagoView ( this, NULL );
        m_pWorkspace->addSubWindow ( f );
        f->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -127,11 +127,11 @@ void BfCompany::s_FPago()
 **/
 void BfCompany::s_trabajadores()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 //    TrabajadorView *t = new TrabajadorView ( this, NULL );
 //    m_pWorkspace->addSubWindow ( t );
 //    t->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -142,13 +142,13 @@ void BfCompany::s_trabajadores()
 **/
 void BfCompany::s_bancos()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         BancoView *t = new BancoView ( this, NULL );
         m_pWorkspace->addSubWindow ( t );
         t->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -159,13 +159,13 @@ void BfCompany::s_bancos()
 **/
 void BfCompany::s_seriesFactura()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
        BfSerieFacturaView *lser = new BfSerieFacturaView ( this, 0 );
        m_pWorkspace->addSubWindow ( lser );
        lser->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -179,18 +179,18 @@ void BfCompany::s_seriesFactura()
 **/
 void BfCompany::s_almacenes()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         /// Lanzamos los plugins necesarios.
         if ( g_plugins->lanza ( "BfCompany_s_almacenes", this ) ) {
-            blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
+            
             return;
         } // end if
         ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
         m_pWorkspace->addSubWindow ( lser );
         lser->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -200,11 +200,11 @@ void BfCompany::s_almacenes()
 **/
 void BfCompany::s_newBfConfiguracionView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfConfiguracionView *lser = new BfConfiguracionView ( this, 0 );
     m_pWorkspace->addSubWindow ( lser );
     lser->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -214,13 +214,13 @@ void BfCompany::s_newBfConfiguracionView()
 **/
 void BfCompany::s_TipoIVAView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
         m_pWorkspace->addSubWindow ( pag );
         pag->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -230,13 +230,13 @@ void BfCompany::s_TipoIVAView()
 **/
 void BfCompany::s_TasaIVAView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
         m_pWorkspace->addSubWindow ( pag );
         pag->show();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -245,7 +245,7 @@ void BfCompany::s_TasaIVAView()
 **/
 void BfCompany::guardaConf()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -286,7 +286,7 @@ void BfCompany::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -296,7 +296,7 @@ void BfCompany::guardaConf()
 **/
 void BfCompany::cargaConf()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
@@ -381,5 +381,5 @@ void BfCompany::cargaConf()
     if ( activewindow )
 //        m_bulmafact->workspace() ->setActiveWindow ( activewindow );
 	activewindow->activateWindow();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

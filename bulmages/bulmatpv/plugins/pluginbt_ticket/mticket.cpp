@@ -37,7 +37,7 @@ typedef QMap<QString, BlFixed> base;
 
 MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    blDebug ( "MTicket::MTicket", 0 );
+    BlDebug::blDebug ( "MTicket::MTicket", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace() ->addSubWindow ( this );
@@ -49,23 +49,23 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 MTicket::~MTicket()
 {
-    blDebug ( "MTicket::~MTicket", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MTicket::~MTicket", 0 );
+    
 }
 
 
 void MTicket::pintar()
 {
-    blDebug ( "MTicket::pintar", 0 );
+    BlDebug::blDebug ( "MTicket::pintar", 0 );
 
     if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     } // end if
 
@@ -150,59 +150,59 @@ void MTicket::pintar()
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void MTicket::on_mui_subir_clicked()
 {
-    blDebug ( "MTicket::on_mui_subir_clicked", 0 );
+    BlDebug::blDebug ( "MTicket::on_mui_subir_clicked", 0 );
 
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void MTicket::on_mui_bajar_clicked()
 {
-     blDebug ( "MTicket::on_mui_bajar_clicked", 0 );
+     BlDebug::blDebug ( "MTicket::on_mui_bajar_clicked", 0 );
 
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void MTicket::on_mui_borrar_clicked()
 {
-     blDebug ( "MTicket::on_mui_borrar_clicked", 0 );
+     BlDebug::blDebug ( "MTicket::on_mui_borrar_clicked", 0 );
 
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void MTicket::on_mui_imprimir_clicked()
 {
-     blDebug ( "MTicket::on_mui_imprimir_clicked", 0 );
+     BlDebug::blDebug ( "MTicket::on_mui_imprimir_clicked", 0 );
 
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F6 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void MTicket::on_mui_reimprimir_clicked()
 {
-    blDebug ( "MTicket::on_mui_reimprimir_clicked", 0 );
+    BlDebug::blDebug ( "MTicket::on_mui_reimprimir_clicked", 0 );
 
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
@@ -233,12 +233,12 @@ void MTicket::on_mui_reimprimir_clicked()
 
     delete cur;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void MTicket::on_mui_borrarticket_clicked()
 {
-    blDebug ( "MTicket::on_mui_borrarticket_clicked", 0 );
+    BlDebug::blDebug ( "MTicket::on_mui_borrarticket_clicked", 0 );
     
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
@@ -269,13 +269,13 @@ void MTicket::on_mui_borrarticket_clicked()
     
     ticket->pintar();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void MTicket::on_mui_formatear_clicked()
 {
-    blDebug ( "MTicket::on_mui_formatear_clicked", 0 );
+    BlDebug::blDebug ( "MTicket::on_mui_formatear_clicked", 0 );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

@@ -58,14 +58,14 @@ QString BL_EXPORT g_fieldName;
 **/
 BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp )
 {
-    blDebug ( "BlSubFormHeader::BlSubFormHeader", 0 );
+    BL_FUNC_DEBUG
     m_fieldName = nom;
     m_tipo = typ;
     m_restricciones = res;
     m_options = opt;
     m_nompresentacion = nomp;
     m_numericPrecision = 2;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,8 +74,8 @@ BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, 
 **/
 BlSubFormHeader::~BlSubFormHeader()
 {
-    blDebug ( "BlSubFormHeader::~BlSubFormHeader", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -85,8 +85,8 @@ BlSubFormHeader::~BlSubFormHeader()
 **/
 unsigned int BlSubFormHeader::options()
 {
-    blDebug ( "BlSubFormHeader::options", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_options;
 }
 
@@ -97,8 +97,8 @@ unsigned int BlSubFormHeader::options()
 **/
 unsigned int BlSubFormHeader::restrictions()
 {
-    blDebug ( "BlSubFormHeader::restricciones", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_restricciones;
 }
 
@@ -109,8 +109,8 @@ unsigned int BlSubFormHeader::restrictions()
 **/
 BlDbField::DbType BlSubFormHeader::dbFieldType()
 {
-    blDebug ( "BlSubFormHeader::dbFieldType", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_tipo;
 
 }
@@ -122,8 +122,8 @@ BlDbField::DbType BlSubFormHeader::dbFieldType()
 **/
 QString BlSubFormHeader::nompresentacion()
 {
-    blDebug ( "BlSubFormHeader::nompresentacion", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_nompresentacion;
 }
 
@@ -134,8 +134,8 @@ QString BlSubFormHeader::nompresentacion()
 **/
 int BlSubFormHeader::restrictcampo()
 {
-    blDebug ( "BlSubFormHeader::restrictcampo", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_restricciones;
 }
 
@@ -146,15 +146,15 @@ int BlSubFormHeader::restrictcampo()
 **/
 QString BlSubFormHeader::fieldName()
 {
-    blDebug ( "BlSubFormHeader::fieldName", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_fieldName;
 }
 
 
 /// Hace la exportacion del campo a XML
 QString BlSubFormHeader::exportXML() {
-    blDebug ( "BlSubFormHeader::exportXML", 0 );
+    BL_FUNC_DEBUG
     QString val;
     int error;
 
@@ -166,7 +166,7 @@ QString BlSubFormHeader::exportXML() {
     val += "\t<OPCIONES>"+ blXMLEncode(QString::number(m_options))+"</OPCIONES>\n";
     val += "</BLSUBFORMHEADER>\n";
     return val;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -177,7 +177,7 @@ QString BlSubFormHeader::exportXML() {
 **/
 BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
 {
-    blDebug ( "BlSubForm::BlSubForm", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
 
     /// Por defecto es modo edicion
@@ -274,15 +274,15 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
      mui_selectorblsubform->removeTab(mui_selectorblsubform->indexOf(tab3));
    } // end if
    
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
 void BlSubForm::columnMovedByUser ( int, int oldIndex, int newIndex )
 {
-    blDebug ( "BlSubForm::columnMovedByUser", 0 );
+    BL_FUNC_DEBUG
     mui_listcolumnas->moveRow ( oldIndex, newIndex );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -291,11 +291,11 @@ void BlSubForm::columnMovedByUser ( int, int oldIndex, int newIndex )
 **/
 BlSubForm::~BlSubForm()
 {
-    blDebug ( "BlSubForm::~BlSubForm", 0 );
+    BlDebug::blDebug ( "BlSubForm::~BlSubForm", 0 );
     /// PAra destruir desactivamos el control de cambios.
     m_procesacambios = FALSE;
     saveConfig();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -305,7 +305,7 @@ BlSubForm::~BlSubForm()
 **/
 void BlSubForm::setMainCompany ( BlMainCompany *emp )
 {
-    blDebug ( "BlMainCompanyPointer::setMainCompany", 0 );
+    BlDebug::blDebug ( "BlMainCompanyPointer::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( emp );
 
 
@@ -333,7 +333,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
     } // end if
 
     loadSpecs();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -342,17 +342,17 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 **/
 void BlSubForm::loadSpecs()
 {
-    blDebug ( "BlSubForm::loadSpecs", 0 );
+    BlDebug::blDebug ( "BlSubForm::loadSpecs", 0 );
 //    QFile file(g_confpr->value(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error. No se puede abrir el archivo") );
+	
         return;
     }
     if ( !doc.setContent ( &file ) ) {
         file.close();
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
+	
         return;
     }
     file.close();
@@ -430,7 +430,7 @@ void BlSubForm::loadSpecs()
         } // end if
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -440,8 +440,8 @@ void BlSubForm::loadSpecs()
 **/
 QList<BlDbSubFormRecord *> *BlSubForm::lista()
 {
-    blDebug ( "BlSubForm::lista", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::lista", 0 );
+    
     return &m_lista;
 }
 
@@ -452,8 +452,8 @@ QList<BlDbSubFormRecord *> *BlSubForm::lista()
 **/
 QList<BlSubFormHeader *> *BlSubForm::headerList()
 {
-    blDebug ( "BlSubForm::cabecera", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::cabecera", 0 );
+    
     return &m_lcabecera;
 }
 
@@ -464,9 +464,9 @@ QList<BlSubFormHeader *> *BlSubForm::headerList()
 **/
 void BlSubForm::setHorizontalScrollMode ( QAbstractItemView::ScrollMode mode )
 {
-    blDebug ( "BlSubForm::setHorizontalScrollMode", 0 );
+    BlDebug::blDebug ( "BlSubForm::setHorizontalScrollMode", 0 );
     mui_list->setHorizontalScrollMode ( mode );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -476,9 +476,9 @@ void BlSubForm::setHorizontalScrollMode ( QAbstractItemView::ScrollMode mode )
 **/
 void BlSubForm::setDelete ( bool f )
 {
-    blDebug ( "BlSubForm::setDelete", 0 );
+    BlDebug::blDebug ( "BlSubForm::setDelete", 0 );
     m_delete = f;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -486,8 +486,8 @@ void BlSubForm::setDelete ( bool f )
 /**
 **/
 bool BlSubForm::isDelete() {
-    blDebug ( "BlSubForm::isDelete", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::isDelete", 0 );
+    
     return m_delete;
 }
 
@@ -500,8 +500,8 @@ bool BlSubForm::isDelete() {
 **/
 BlDbSubFormField *BlSubForm::item ( int row, int col )
 {
-    blDebug ( "BlSubForm::item", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::item", 0 );
+    
     return ( BlDbSubFormField * ) mui_list->item ( row, col );
 }
 
@@ -513,9 +513,9 @@ BlDbSubFormField *BlSubForm::item ( int row, int col )
 **/
 void BlSubForm::setCurrentItem ( int row, int col )
 {
-    blDebug ( "BlSubForm::setCurrentItem", 0 );
+    BlDebug::blDebug ( "BlSubForm::setCurrentItem", 0 );
     mui_list->setCurrentItem ( item ( row, col ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -525,8 +525,8 @@ void BlSubForm::setCurrentItem ( int row, int col )
 **/
 int BlSubForm::columnCount()
 {
-    blDebug ( "BlSubForm::columnCount", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::columnCount", 0 );
+    
     return mui_list->columnCount();
 }
 
@@ -537,9 +537,9 @@ int BlSubForm::columnCount()
 **/
 void BlSubForm::showColumn ( int i )
 {
-    blDebug ( "BlSubForm::showColumn", 0 );
+    BlDebug::blDebug ( "BlSubForm::showColumn", 0 );
     mui_list->showColumn ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -550,8 +550,8 @@ void BlSubForm::showColumn ( int i )
 **/
 int BlSubForm::columnWidth ( int i )
 {
-    blDebug ( "BlSubForm::columnWidth", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::columnWidth", 0 );
+    
     return mui_list->columnWidth ( i );
 }
 
@@ -563,9 +563,9 @@ int BlSubForm::columnWidth ( int i )
 **/
 void BlSubForm::setColumnWidth ( int i, int j )
 {
-    blDebug ( "BlSubForm::setColumnWidth", 0 );
+    BlDebug::blDebug ( "BlSubForm::setColumnWidth", 0 );
     mui_list->setColumnWidth ( i, j );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -575,9 +575,9 @@ void BlSubForm::setColumnWidth ( int i, int j )
 **/
 void BlSubForm::hideColumn ( int i )
 {
-    blDebug ( "BlSubForm::hideColumn", 0 );
+    BlDebug::blDebug ( "BlSubForm::hideColumn", 0 );
     mui_list->hideColumn ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -587,8 +587,8 @@ void BlSubForm::hideColumn ( int i )
 **/
 int BlSubForm::currentRow()
 {
-    blDebug ( "BlSubForm::currentRow", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::currentRow", 0 );
+    
     return mui_list->currentRow();
 }
 
@@ -599,8 +599,8 @@ int BlSubForm::currentRow()
 **/
 int BlSubForm::rowCount()
 {
-    blDebug ( "BlSubForm::rowCount", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::rowCount", 0 );
+    
     return mui_list->rowCount();
 }
 
@@ -611,8 +611,8 @@ int BlSubForm::rowCount()
 **/
 int BlSubForm::currentColumn()
 {
-    blDebug ( "BlSubForm::currentColumn", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::currentColumn", 0 );
+    
     return mui_list->currentColumn();
 }
 
@@ -623,9 +623,9 @@ int BlSubForm::currentColumn()
 **/
 void BlSubForm::setResizeMode ( QHeaderView::ResizeMode modo )
 {
-    blDebug ( "BlSubForm::setResizeMode", 0 );
+    BlDebug::blDebug ( "BlSubForm::setResizeMode", 0 );
     mui_list->horizontalHeader() ->setResizeMode ( modo );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -634,9 +634,9 @@ void BlSubForm::setResizeMode ( QHeaderView::ResizeMode modo )
 **/
 void BlSubForm::resizeColumnsToContents()
 {
-    blDebug ( "BlSubForm::resizeColumnsToContents", 0 );
+    BlDebug::blDebug ( "BlSubForm::resizeColumnsToContents", 0 );
     mui_list->resizeColumnsToContents();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -645,9 +645,9 @@ void BlSubForm::resizeColumnsToContents()
 **/
 void BlSubForm::resizeRowsToContents()
 {
-    blDebug ( "BlSubForm::resizeRowsToContents", 0 );
+    BlDebug::blDebug ( "BlSubForm::resizeRowsToContents", 0 );
     mui_list->resizeRowsToContents();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -657,9 +657,9 @@ void BlSubForm::resizeRowsToContents()
 **/
 void BlSubForm::resizeColumnToContents ( int i )
 {
-    blDebug ( "BlSubForm::resizeColumnToContents", 0 );
+    BlDebug::blDebug ( "BlSubForm::resizeColumnToContents", 0 );
     mui_list->resizeColumnToContents ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -669,9 +669,9 @@ void BlSubForm::resizeColumnToContents ( int i )
 **/
 void BlSubForm::resizeRowToContents ( int i )
 {
-    blDebug ( "BlSubForm::resizeRowToContents", 0 );
+    BlDebug::blDebug ( "BlSubForm::resizeRowToContents", 0 );
     mui_list->resizeRowToContents ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -680,9 +680,9 @@ void BlSubForm::resizeRowToContents ( int i )
 **/
 void BlSubForm::hideConfig()
 {
-    blDebug ( "BlSubForm::hideConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::hideConfig", 0 );
     mui_configurador->hide();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -691,9 +691,9 @@ void BlSubForm::hideConfig()
 **/
 void BlSubForm::showConfig()
 {
-    blDebug ( "BlSubForm::showConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::showConfig", 0 );
     mui_configurador->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -703,10 +703,10 @@ void BlSubForm::showConfig()
 **/
 void BlSubForm::setDbTableName ( QString nom )
 {
-    blDebug ( "BlSubForm::setDbTableName", 0 );
+    BlDebug::blDebug ( "BlSubForm::setDbTableName", 0 );
     m_tablename = nom;
     m_fileconfig = nom;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -716,8 +716,8 @@ void BlSubForm::setDbTableName ( QString nom )
 **/
 QString BlSubForm::tableName()
 {
-    blDebug ( "BlSubForm::tableName", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::tableName", 0 );
+    
     return m_tablename;
 }
 
@@ -728,9 +728,9 @@ QString BlSubForm::tableName()
 **/
 void BlSubForm::setFileConfig ( QString nom )
 {
-    blDebug ( "BlSubForm::setFileConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::setFileConfig", 0 );
     m_fileconfig = nom;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -740,9 +740,9 @@ void BlSubForm::setFileConfig ( QString nom )
 **/
 void BlSubForm::setDbFieldId ( QString nom )
 {
-    blDebug ( "BlSubForm::setDbFieldId", 0 );
+    BlDebug::blDebug ( "BlSubForm::setDbFieldId", 0 );
     m_campoid = nom;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -750,8 +750,8 @@ void BlSubForm::setDbFieldId ( QString nom )
 /**
 **/
 QString BlSubForm::dbFieldId() {
-    blDebug ( "BlSubForm::dbFieldId", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::dbFieldId", 0 );
+    
     return m_campoid;
 }
 
@@ -761,9 +761,9 @@ QString BlSubForm::dbFieldId() {
 **/
 void BlSubForm::clear()
 {
-    blDebug ( "BlSubForm::clear", 0 );
+    BlDebug::blDebug ( "BlSubForm::clear", 0 );
     mui_list->clear();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -773,9 +773,9 @@ void BlSubForm::clear()
 **/
 void BlSubForm::setRowCount ( int i )
 {
-    blDebug ( "BlSubForm::setRowCount", 0 );
+    BlDebug::blDebug ( "BlSubForm::setRowCount", 0 );
     mui_list->setRowCount ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -785,9 +785,9 @@ void BlSubForm::setRowCount ( int i )
 **/
 void BlSubForm::setColumnCount ( int i )
 {
-    blDebug ( "BlSubForm::setColumnCount", 0 );
+    BlDebug::blDebug ( "BlSubForm::setColumnCount", 0 );
     mui_list->setColumnCount ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -796,7 +796,7 @@ void BlSubForm::setColumnCount ( int i )
 **/
 void BlSubForm::creaMenu ( QMenu * )
 {
-    blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -805,7 +805,7 @@ void BlSubForm::creaMenu ( QMenu * )
 **/
 void BlSubForm::procesaMenu ( QAction * )
 {
-    blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -815,13 +815,13 @@ void BlSubForm::procesaMenu ( QAction * )
 **/
 void BlSubForm::setListadoPijama ( bool pijama )
 {
-    blDebug ( "BlSubForm::setListadoPijama", 0 );
+    BlDebug::blDebug ( "BlSubForm::setListadoPijama", 0 );
     if ( pijama ) {
         mui_list->setAlternatingRowColors ( TRUE );
     } else {
         mui_list->setAlternatingRowColors ( FALSE );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -831,9 +831,9 @@ void BlSubForm::setListadoPijama ( bool pijama )
 **/
 bool BlSubForm::listadoPijama()
 {
-    blDebug ( "BlSubForm::listadoPijama", 0 );
+    BlDebug::blDebug ( "BlSubForm::listadoPijama", 0 );
     return mui_list->alternatingRowColors();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -844,10 +844,10 @@ bool BlSubForm::listadoPijama()
 **/
 void BlSubForm::setSortingEnabled ( bool sorting )
 {
-    blDebug ( "BlSubForm::setSortingEnabled", 0 );
+    BlDebug::blDebug ( "BlSubForm::setSortingEnabled", 0 );
     mui_list->setSortingEnabled ( sorting );
     m_sorting = sorting;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -857,8 +857,8 @@ void BlSubForm::setSortingEnabled ( bool sorting )
 **/
 bool BlSubForm::sortingEnabled()
 {
-    blDebug ( "BlSubForm::sortingEnabled", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::sortingEnabled", 0 );
+    
     return m_sorting;
 }
 
@@ -869,9 +869,9 @@ bool BlSubForm::sortingEnabled()
 **/
 void BlSubForm::setOrdenEnabled ( bool sorting )
 {
-    blDebug ( "BlSubForm::setOrdenEnabled", 0 );
+    BlDebug::blDebug ( "BlSubForm::setOrdenEnabled", 0 );
     m_orden = sorting;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -881,9 +881,9 @@ void BlSubForm::setOrdenEnabled ( bool sorting )
 **/
 bool BlSubForm::ordenEnabled()
 {
-    blDebug ( "BlSubForm::ordenEnabled", 0 );
+    BlDebug::blDebug ( "BlSubForm::ordenEnabled", 0 );
     return m_orden;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -893,9 +893,9 @@ bool BlSubForm::ordenEnabled()
 **/
 void BlSubForm::on_mui_list_itemDoubleClicked ( QTableWidgetItem *item )
 {
-    blDebug ( "BlSubForm::on_mui_list_itemDoubleClicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_itemDoubleClicked", 0 );
     emit itemDoubleClicked ( item );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -904,9 +904,9 @@ void BlSubForm::on_mui_list_itemDoubleClicked ( QTableWidgetItem *item )
 **/
 void BlSubForm::on_mui_list_itemClicked ( QTableWidgetItem *item )
 {
-    blDebug ( "BlSubForm::on_mui_list_itemClicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_itemClicked", 0 );
     emit itemClicked ( item );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -917,9 +917,9 @@ void BlSubForm::on_mui_list_itemClicked ( QTableWidgetItem *item )
 **/
 void BlSubForm::on_mui_list_cellDoubleClicked ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_cellDoubleClicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_cellDoubleClicked", 0 );
     emit cellDoubleClicked ( row, col );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -930,16 +930,16 @@ void BlSubForm::on_mui_list_cellDoubleClicked ( int row, int col )
 **/
 bool BlSubForm::existsHeader ( const QString &head )
 {
-    blDebug ( "BlSubForm::existsHeader", 0 );
+    BlDebug::blDebug ( "BlSubForm::existsHeader", 0 );
     BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
         if ( linea->fieldName() == head ) {
-            blDebug ( ("END ", Q_FUNC_INFO), 0 );
+            
             return TRUE;
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return FALSE;
 }
 
@@ -950,16 +950,16 @@ bool BlSubForm::existsHeader ( const QString &head )
 **/
 BlSubFormHeader * BlSubForm::header ( const QString &head )
 {
-    blDebug ( "BlSubForm::existsHeader", 0 );
+    BlDebug::blDebug ( "BlSubForm::existsHeader", 0 );
     BlSubFormHeader *linea = NULL;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
         if ( linea->fieldName() == head ) {
-            blDebug ( ("END ", Q_FUNC_INFO), 0 );
+            
             return linea;
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return NULL;
 }
 
@@ -967,16 +967,16 @@ BlSubFormHeader * BlSubForm::header ( const QString &head )
 
 
 const int BlSubFormHeader::numericPrecision() {
-    blDebug ( "BlSubFormHeader::numericPrecision", 0 );
+    BlDebug::blDebug ( "BlSubFormHeader::numericPrecision", 0 );
     return m_numericPrecision;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void BlSubFormHeader::setNumericPrecision(int pres) {
-    blDebug ( "BlSubFormHeader::setNumericPrecision", 0 );
+    BlDebug::blDebug ( "BlSubFormHeader::setNumericPrecision", 0 );
     m_numericPrecision = pres;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -989,7 +989,7 @@ void BlSubFormHeader::setNumericPrecision(int pres) {
 **/
 BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
 {
-    blDebug ( "BlSubForm::newDbSubFormRecord", 0 );
+    BlDebug::blDebug ( "BlSubForm::newDbSubFormRecord", 0 );
     BlDbSubFormRecord *rec = new BlDbSubFormRecord ( mainCompany() );
     rec->setDbTableName ( m_tablename );
     rec->setDbFieldId ( m_campoid );
@@ -1022,7 +1022,7 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return rec;
 }
 
@@ -1034,9 +1034,9 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
 **/
 void BlSubForm::newRecord()
 {
-    blDebug ( "BlSubForm::newRecord", 0 );
+    BlDebug::blDebug ( "BlSubForm::newRecord", 0 );
     if ( !m_insercion ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     } // end if
 
@@ -1059,7 +1059,7 @@ void BlSubForm::newRecord()
 
     /// Activamos la ordenacion automatica.
     mui_list->setSortingEnabled ( m_sorting );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1068,7 +1068,7 @@ void BlSubForm::newRecord()
 **/
 void BlSubForm::pintaCabeceras()
 {
-    blDebug ( "BlSubForm::", 0 );
+    BlDebug::blDebug ( "BlSubForm::", 0 );
     QStringList headers;
     BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
@@ -1082,7 +1082,7 @@ void BlSubForm::pintaCabeceras()
     } // end for
     mui_list->setHorizontalHeaderLabels ( headers );
     mui_list->horizontalHeader() ->setResizeMode ( 0, QHeaderView::Interactive );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1094,13 +1094,13 @@ void BlSubForm::pintaCabeceras()
 **/
 void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
 {
-    blDebug ( "BlSubForm::situarse", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    BlDebug::blDebug ( "BlSubForm::situarse", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
     unsigned int nrow = row;
     unsigned int ncol = col;
     BlSubFormHeader *linea = m_lcabecera.at ( ncol );
     if ( !linea ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
         return;
     } // end if
     bool invalido = TRUE;
@@ -1144,9 +1144,9 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
     if (!invalido) {
        mui_list->setCurrentCell ( nrow, ncol );
     } else {
-       blDebug("No hay mas elementos editables en el subformulario", 2);
+       BlDebug::blDebug("No hay mas elementos editables en el subformulario", 2);
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1159,7 +1159,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
 **/
 void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
 {
-    blDebug ( "BlSubForm::situarse1", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    BlDebug::blDebug ( "BlSubForm::situarse1", 0, QString::number ( row ) + " " + QString::number ( col ) );
     unsigned int nrow = row;
     unsigned int ncol = col;
     BlSubFormHeader *linea = m_lcabecera.at ( ncol );
@@ -1182,7 +1182,7 @@ void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
             ncol++;
     } // end while
     mui_list->setCurrentCell ( nrow, ncol );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1193,7 +1193,7 @@ void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
 **/
 void BlSubForm::pintar()
 {
-    blDebug ( "BlSubForm::pintar", 0 );
+    BlDebug::blDebug ( "BlSubForm::pintar", 0 );
     m_procesacambios = FALSE;
     mui_list->setColumnCount ( m_lcabecera.count() );
     pintaCabeceras();
@@ -1204,7 +1204,7 @@ void BlSubForm::pintar()
     } // end if
     newRecord();
     m_procesacambios = TRUE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1214,7 +1214,7 @@ void BlSubForm::pintar()
 **/
 int BlSubForm::inicializar()
 {
-    blDebug ( "BlSubForm::inicializar", 0 );
+    BlDebug::blDebug ( "BlSubForm::inicializar", 0 );
     m_procesacambios = FALSE;
     mui_query->setPlainText ( "" );
     BlDbSubFormRecord *rec;
@@ -1257,7 +1257,7 @@ int BlSubForm::inicializar()
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     m_procesacambios = TRUE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -1268,9 +1268,9 @@ int BlSubForm::inicializar()
 **/
 void BlSubForm::setColumnToRowSpan ( QString campo )
 {
-    blDebug ( "BlSubForm::setColumnToRowSpan", 0 );
+    BlDebug::blDebug ( "BlSubForm::setColumnToRowSpan", 0 );
     m_columnaParaRowSpan = campo;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1280,9 +1280,9 @@ void BlSubForm::setColumnToRowSpan ( QString campo )
 **/
 void BlSubForm::setColorFondo1 ( QString color )
 {
-    blDebug ( "BlSubForm::setColorFondo1", 0 );
+    BlDebug::blDebug ( "BlSubForm::setColorFondo1", 0 );
     m_colorfondo1 = QColor ( color );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1292,9 +1292,9 @@ void BlSubForm::setColorFondo1 ( QString color )
 **/
 void BlSubForm::setColorFondo2 ( QString color )
 {
-    blDebug ( "BlSubForm::setColorFondo2", 0 );
+    BlDebug::blDebug ( "BlSubForm::setColorFondo2", 0 );
     m_colorfondo2 = QColor ( color );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1330,7 +1330,7 @@ void BlSubForm::ponItemColorFondo ( QTableWidget *twidget, int filainicial, int 
 **/
 void BlSubForm::load ( BlDbRecordSet *cur )
 {
-    blDebug ( "BlSubForm::cargar", 0, objectName() );
+    BlDebug::blDebug ( "BlSubForm::cargar", 0, objectName() );
     m_procesacambios = FALSE;
 
 
@@ -1569,7 +1569,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
       resizeRowsToContents();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1579,9 +1579,9 @@ void BlSubForm::load ( BlDbRecordSet *cur )
 **/
 void BlSubForm::setOrdenPorQuery ( bool ordenactivado )
 {
-    blDebug ( "BlSubForm::setOrdenPorQuery", 0 );
+    BlDebug::blDebug ( "BlSubForm::setOrdenPorQuery", 0 );
     m_ordenporquery = ordenactivado;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1592,10 +1592,10 @@ void BlSubForm::setOrdenPorQuery ( bool ordenactivado )
 /*
 void BlSubForm::load ( QString query )
 {
-    blDebug ( "BlSubForm::cargar", 0 );
+    BlDebug::blDebug ( "BlSubForm::cargar", 0 );
     /// Si el query no existe no hacemos nada.
     if ( query == "" ) {
-        blDebug ( "BlSubForm::cargar", 0, "Query inexistente" );
+        BlDebug::blDebug ( "BlSubForm::cargar", 0, "Query inexistente" );
         return;
     } // end if
 
@@ -1620,19 +1620,19 @@ void BlSubForm::load ( QString query )
         load ( cur );
         delete cur;
     } catch ( ... ) {
-        blDebug ( "BlSubForm::cargar", 2, "Error en la carga de datos" );
+        BlDebug::blDebug ( "BlSubForm::cargar", 2, "Error en la carga de datos" );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 
 
 void BlSubForm::load ( QString query )
 {
-    blDebug ( "BlSubForm::cargar", 0 );
+    BlDebug::blDebug ( "BlSubForm::cargar", 0 );
     /// Si el query no existe no hacemos nada.
     if ( query == "" ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Consulta inexistente") );
+	
         return;
     } // end if
 
@@ -1721,9 +1721,9 @@ void BlSubForm::load ( QString query )
         /// Fin de Restaurar la posición anterior a la carga si es posible
 
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga de datos") );
+	
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1734,8 +1734,8 @@ void BlSubForm::load ( QString query )
 **/
 BlDbSubFormRecord *BlSubForm::lineaact()
 {
-    blDebug ( "BlSubForm::lineaact", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::lineaact", 0 );
+    
     return lineaat ( mui_list->currentRow() );
 }
 
@@ -1747,7 +1747,7 @@ BlDbSubFormRecord *BlSubForm::lineaact()
 **/
 BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 {
-    blDebug ( "BlSubForm::lineaat()", 0, QString::number ( row ) );
+    BlDebug::blDebug ( "BlSubForm::lineaat()", 0, QString::number ( row ) );
     BlDbSubFormRecord *rec = NULL;
     try {
         /// Si la lista no tiene suficientes elementos devolvemos NULL
@@ -1763,10 +1763,10 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
         rec = ( BlDbSubFormRecord * ) camp->pare();
 
     } catch ( ... ) {
-        blDebug ( "BlSubForm::lineaat linea inexistente", 2, QString::number ( row ) );
+        BlDebug::blDebug ( "BlSubForm::lineaat linea inexistente", 2, QString::number ( row ) );
         rec = NULL;
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return rec;
 }
 
@@ -1778,11 +1778,11 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 **/
 bool BlSubForm::campoCompleto ( int row )
 {
-    blDebug ( "BlSubForm::campoCompleto", 0 );
+    BlDebug::blDebug ( "BlSubForm::campoCompleto", 0 );
     bool resultat = false;
     bool *pResultat = &resultat;
     if ( g_plugins->lanza ( "BlSubForm_campoCompleto", this, ( void** ) &pResultat ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en plugin") );
+	
         return resultat;
     } else {
         BlDbSubFormField *camp;
@@ -1799,17 +1799,17 @@ bool BlSubForm::campoCompleto ( int row )
                     && camp->text() == ""
                     && ! ( header->options() & BlSubFormHeader::DbHideView )
                     && camp->dbFieldType() != BlDbField::DbBoolean ) {
-		blDebug ( ("END ", Q_FUNC_INFO), 0, _("El campo no esta completo") );
+		
                 return FALSE;
             } // end if
             if ( camp->restrictcampo() & BlDbField::DbRequired
                     && camp->text() == "" ) {
-		blDebug ( ("END ", Q_FUNC_INFO), 0, _("El campo no esta completo") );
+		
                 return FALSE;
             } // end if
 
         } // end for
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     }
     return TRUE;
 }
@@ -1824,7 +1824,7 @@ bool BlSubForm::campoCompleto ( int row )
 **/
 void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_cellReposition", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_cellReposition", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
 
     /// Implementacion del semaforo
     static bool semaforo = FALSE;
@@ -1881,7 +1881,7 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 
     /// Desbloqueamos la emision de signals
     mui_list->blockSignals(FALSE);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1892,11 +1892,11 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 **/
 void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_cellChanged", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_cellChanged", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
 
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
+	
         return;
     } // end if
 
@@ -1905,7 +1905,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 
     /// Si el campo no ha sido cambiado se sale.
     if ( ! camp->cambiado() ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sin cambios"));
+	BlDebug::blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sin cambios"));
         return;
     } // end if
 
@@ -1923,7 +1923,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
         emit editFinish ( row, col );
         m_procesacambios = TRUE;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -1940,7 +1940,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 **/
 int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp )
 {
-    blDebug ( "BlSubForm::addSubFormHeader", 0,  nom );
+    BlDebug::blDebug ( "BlSubForm::addSubFormHeader", 0,  nom );
 
     BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
@@ -1989,7 +1989,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
     it = new BlTableWidgetItem ( QString::number ( mui_listcolumnas->rowCount() - 1 ) );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 3, it );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -2002,7 +2002,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
 **/
 void BlSubForm::setColumnValue ( QString campo, QString valor )
 {
-    blDebug ( "BlSubForm::setColumnValue", 0, campo + " -- " + valor );
+    BlDebug::blDebug ( "BlSubForm::setColumnValue", 0, campo + " -- " + valor );
     BlDbSubFormRecord *rec;
 
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
@@ -2011,7 +2011,7 @@ void BlSubForm::setColumnValue ( QString campo, QString valor )
             rec->setDbValue ( campo, valor );
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2022,7 +2022,7 @@ void BlSubForm::setColumnValue ( QString campo, QString valor )
 **/
 BlFixed BlSubForm::sumarCampo ( QString campo )
 {
-    blDebug ( "BlSubForm::sumarCampo", 0 );
+    BlDebug::blDebug ( "BlSubForm::sumarCampo", 0 );
     BlFixed total;
     BlDbSubFormRecord *rec;
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
@@ -2032,7 +2032,7 @@ BlFixed BlSubForm::sumarCampo ( QString campo )
             total = total + subtotal;
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return total;
 }
 
@@ -2044,7 +2044,7 @@ BlFixed BlSubForm::sumarCampo ( QString campo )
 **/
 QString BlSubForm::dbValue ( const QString &campo, int row )
 {
-    blDebug ( "BlSubForm::dbValue", 0 );
+    BlDebug::blDebug ( "BlSubForm::dbValue", 0 );
     try {
         BlDbSubFormRecord *rec;
         if ( row == -1 )
@@ -2053,7 +2053,7 @@ QString BlSubForm::dbValue ( const QString &campo, int row )
             rec = lineaat ( row );
         if ( rec == NULL )
             throw - 1;
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return rec->dbValue ( campo );
     } catch ( ... ) {
         blMsgInfo ( _ ("Fila inexistente" ));
@@ -2070,7 +2070,7 @@ QString BlSubForm::dbValue ( const QString &campo, int row )
 **/
 void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor )
 {
-    blDebug ( "BlSubForm::setDbValue", 0 );
+    BlDebug::blDebug ( "BlSubForm::setDbValue", 0 );
     try {
         BlDbSubFormRecord *rec;
         if ( row == -1 )
@@ -2080,7 +2080,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
         if ( rec == NULL )
             throw - 1;
         rec->setDbValue ( campo, valor );
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
         blMsgInfo ( _ ("Fila inexistente" ) );
         throw - 1;
@@ -2094,7 +2094,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
 **/
 int BlSubForm::save()
 {
-    blDebug ( "BlSubForm::guardar", 0 );
+    BlDebug::blDebug ( "BlSubForm::guardar", 0 );
     try {
         BlDbSubFormRecord *rec;
         /// Borramos los elementos marcados para ser borrados.
@@ -2146,15 +2146,15 @@ int BlSubForm::save()
             } // end if
         } // end while
 
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } catch ( int e ) {
         if ( e == 100 ) {
-	    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error") );
+	    
             throw - 1;
         } // end if
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error inesperado") );
+	
         blMsgError ( _ ("Error inesperado en el guardado. [BlSubForm::guardar]" ) );
         throw - 1;
     } // end try
@@ -2163,8 +2163,8 @@ int BlSubForm::save()
 
 
 int BlSubForm::deleteCurrentRow() {
-      blDebug ( "BlSubForm::deleteCurrentRow", 0 );
-      blDebug ( "BlSubForm::deleteCurrentRow", 0 );
+      BlDebug::blDebug ( "BlSubForm::deleteCurrentRow", 0 );
+      BlDebug::blDebug ( "BlSubForm::deleteCurrentRow", 0 );
       return remove(currentRow());
 }
 
@@ -2174,14 +2174,14 @@ int BlSubForm::deleteCurrentRow() {
 **/
 int BlSubForm::remove()
 {
-    blDebug ( "BlSubForm::borrar", 0 );
+    BlDebug::blDebug ( "BlSubForm::borrar", 0 );
     BlDbSubFormRecord *rec;
     int i = 0;
     int error = 0;
 
     /// Si la lista esta vacia no podemos borrar.
     if ( m_lista.count() <= 0 ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return error;
     } // end if
 
@@ -2195,10 +2195,10 @@ int BlSubForm::remove()
             rec = m_lista.at ( m_lista.count() - 1 );
             error = rec->remove();
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return error;
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al borrar") );
+	
         blMsgError ( _ ("Error al borrar. [BlSubForm::borrar]" ));
         return -1;
     } // end try
@@ -2212,7 +2212,7 @@ int BlSubForm::remove()
 **/
 int BlSubForm::remove ( int row )
 {
-    blDebug ( "BlSubForm::borrar", 0 );
+    BlDebug::blDebug ( "BlSubForm::borrar", 0 );
     try {
         BlDbSubFormRecord *rec, *rac;
         BlDbSubFormField *camp;
@@ -2253,11 +2253,11 @@ int BlSubForm::remove ( int row )
         } // end if
 
         /// Terminamos
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
 
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al borrar") );
+	
         blMsgInfo ( _ ("Error al intentar borrar" ) );
         throw - 1;
     } // end try
@@ -2270,7 +2270,7 @@ int BlSubForm::remove ( int row )
 **/
 int BlSubForm::cerrarEditor()
 {
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -2308,9 +2308,9 @@ const QString BlSubForm::nameFileDefaultConfig()
 **/
 void BlSubForm::saveConfig()
 {
-    blDebug ( "BlSubForm::saveConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::saveConfig", 0 );
     saveConfigXML();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2319,7 +2319,7 @@ void BlSubForm::saveConfig()
 **/
 void BlSubForm::saveConfigXML()
 {
-    blDebug ( "BlSubForm::saveConfigXML", 0 );
+    BlDebug::blDebug ( "BlSubForm::saveConfigXML", 0 );
 
     /// Si el subformulario no esta inicializado no hacemos el guardado.
     if ( ! mainCompany() )
@@ -2386,7 +2386,7 @@ void BlSubForm::saveConfigXML()
         file.close();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2395,13 +2395,13 @@ void BlSubForm::saveConfigXML()
 **/
 void BlSubForm::loadConfig()
 {
-    blDebug ( "BlSubForm::loadConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::loadConfig", 0 );
 
     loadConfigXML();
 
     m_primero = FALSE;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2411,7 +2411,7 @@ void BlSubForm::loadConfig()
 **/
 void BlSubForm::loadConfigXML()
 {
-    blDebug ( "BlSubForm::loadConfigXML", 0 );
+    BlDebug::blDebug ( "BlSubForm::loadConfigXML", 0 );
     QFile file ( nameFileConfig() );
     if(!file.exists())
       file.setFileName(nameFileDefaultConfig());
@@ -2419,12 +2419,12 @@ void BlSubForm::loadConfigXML()
     
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error. No se pudo abrir el archivo") );
+	
         return;
     }
     if ( !doc.setContent ( &file ) ) {
         file.close();
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
+	
         return;
     }
     file.close();
@@ -2540,7 +2540,7 @@ void BlSubForm::loadConfigXML()
         on_mui_confcol_clicked();
 
     m_primero = FALSE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2550,7 +2550,7 @@ void BlSubForm::loadConfigXML()
 **/
 void BlSubForm::on_mui_confcol_clicked()
 {
-    blDebug ( "BlSubForm::on_mui_confcol_clicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_confcol_clicked", 0 );
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
         if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked ) {
             mui_list->showColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
@@ -2559,7 +2559,7 @@ void BlSubForm::on_mui_confcol_clicked()
             mui_list->hideColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2567,27 +2567,27 @@ void BlSubForm::on_mui_confcol_clicked()
 /**
 **/
 void BlSubForm::bpressedSlash ( ) {
-  blDebug ( "BlSubForm::bpressedSlash", 0 );
+  BlDebug::blDebug ( "BlSubForm::bpressedSlash", 0 );
   on_mui_list_pressedSlash(currentRow(), currentColumn());
-  blDebug ( ("END ", Q_FUNC_INFO), 0 );
+  
 }
 
 ///
 /**
 **/
 void BlSubForm::bSubir ( ) {
-  blDebug ( "BlSubForm::bSubir", 0 );
+  BlDebug::blDebug ( "BlSubForm::bSubir", 0 );
   on_mui_list_ctrlUp(currentRow(), currentColumn());
-  blDebug ( ("END ", Q_FUNC_INFO), 0 );
+  
 }
 
 ///
 /**
 **/
 void BlSubForm::bBajar ( ) {
-  blDebug ( "BlSubForm::bBajar", 0 );
+  BlDebug::blDebug ( "BlSubForm::bBajar", 0 );
   on_mui_list_ctrlDown(currentRow(), currentColumn());
-  blDebug ( ("END ", Q_FUNC_INFO), 0 );
+  
 }
 
 
@@ -2596,11 +2596,11 @@ void BlSubForm::bBajar ( ) {
 **/
 void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_pressedSlash", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_pressedSlash", 0 );
     
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
+	
         return;
     } // end if
 
@@ -2618,7 +2618,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
         on_mui_list_cellChanged ( row, col );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2627,10 +2627,10 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 **/
 void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_pressedAsterisk", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_pressedAsterisk", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
+	
         return;
     } // end if
 
@@ -2647,7 +2647,7 @@ void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
         on_mui_list_cellChanged ( row, col );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2656,10 +2656,10 @@ void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
 **/
 void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_pressedPlus", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_pressedPlus", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
+	
         return;
     } // end if
 
@@ -2676,7 +2676,7 @@ void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
         on_mui_list_cellChanged ( row, col );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2685,10 +2685,10 @@ void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
 **/
 void BlSubForm::on_mui_list_pressedMinus ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_pressedMinus", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_pressedMinus", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("La linea '%1' no existe")).arg(QString::number ( row )) );
+	
         return;
     } // end if
 
@@ -2705,7 +2705,7 @@ void BlSubForm::on_mui_list_pressedMinus ( int row, int col )
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
         on_mui_list_cellChanged ( row, col );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2715,7 +2715,7 @@ void BlSubForm::on_mui_list_pressedMinus ( int row, int col )
 **/
 QString BlSubForm::imprimir()
 {
-    blDebug ( "BlSubForm::imprimir", 0 );
+    BlDebug::blDebug ( "BlSubForm::imprimir", 0 );
     BlProgressBar barra;
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->columnCount() - 2 );
@@ -2744,7 +2744,7 @@ QString BlSubForm::imprimir()
         fitxersortidarml += "</tr>\n";
         barra.setValue ( barra.value() + 1 );
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return fitxersortidarml;
 }
 
@@ -2758,7 +2758,7 @@ QString BlSubForm::imprimir()
 **/
 QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanish)
 {
-    blDebug ( "BlSubForm::formatFieldTableStory", 0 );
+    BlDebug::blDebug ( "BlSubForm::formatFieldTableStory", 0 );
 
     QString field = "    ";
 
@@ -2802,7 +2802,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     /// Cerrar p&aacute;rrafo y campo de la tabla para todos los casos
     field += "</para></td>\n";
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return field;
 }
 
@@ -2813,7 +2813,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
 **/
 void BlSubForm::on_mui_confquery_clicked()
 {
-    blDebug ( "BlSubForm::on_mui_confquery_clicked ", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_confquery_clicked ", 0 );
     if ( mainCompany() == NULL ) {
         blMsgInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
@@ -2821,7 +2821,7 @@ void BlSubForm::on_mui_confquery_clicked()
     mui_paginaact->setValue ( 1 );
     load ( mui_query->toPlainText() );
 //  load(m_query);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2831,7 +2831,7 @@ void BlSubForm::on_mui_confquery_clicked()
 **/
 void BlSubForm::confquery()
 {
-    blDebug ( "BlSubForm::confquery", 0 );
+    BlDebug::blDebug ( "BlSubForm::confquery", 0 );
     if ( mainCompany() == NULL ) {
         blMsgInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
@@ -2839,7 +2839,7 @@ void BlSubForm::confquery()
 
     load ( m_query );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2852,7 +2852,7 @@ void BlSubForm::confquery()
 **/
 void BlSubForm::on_mui_list_ctrlUp ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_ctrlUp", 0, " (" + QString::number ( row ) + "," + QString::number ( col ) + ")" );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_ctrlUp", 0, " (" + QString::number ( row ) + "," + QString::number ( col ) + ")" );
     if ( ! m_orden )
         return;
     if ( row >= mui_list->rowCount() - 1 || row == 0 )
@@ -2876,7 +2876,7 @@ void BlSubForm::on_mui_list_ctrlUp ( int row, int col )
     mui_list->setSortingEnabled ( m_sorting );
 
     m_procesacambios = TRUE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2889,7 +2889,7 @@ void BlSubForm::on_mui_list_ctrlUp ( int row, int col )
 **/
 void BlSubForm::on_mui_list_ctrlDown ( int row, int col )
 {
-    blDebug ( "BlSubForm::on_mui_list_ctrlDown", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_ctrlDown", 0 );
     if ( ! m_orden )
         return;
     if ( row >= mui_list->rowCount() - 2 )
@@ -2913,7 +2913,7 @@ void BlSubForm::on_mui_list_ctrlDown ( int row, int col )
     mui_list->setSortingEnabled ( m_sorting );
     m_procesacambios = TRUE;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2922,12 +2922,12 @@ void BlSubForm::on_mui_list_ctrlDown ( int row, int col )
 **/
 void BlSubForm::on_mui_pagsiguiente_clicked()
 {
-    blDebug ( "BlSubForm::on_mui_pagsiguiente_clicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_pagsiguiente_clicked", 0 );
     int pag = mui_paginaact->text().toInt();
     pag++;
     mui_paginaact->setValue ( pag );
     confquery();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -2935,13 +2935,13 @@ void BlSubForm::on_mui_pagsiguiente_clicked()
 **/
 void BlSubForm::on_mui_paganterior_clicked()
 {
-    blDebug ( "BlSubForm::on_mui_paganterior_clicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_paganterior_clicked", 0 );
     int pag = mui_paginaact->text().toInt();
     if ( pag > 1 )
         pag--;
     mui_paginaact->setValue ( pag );
     confquery();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -2951,7 +2951,7 @@ void BlSubForm::on_mui_paganterior_clicked()
 **/
 void BlSubForm::printPDF ( const QString &titular )
 {
-    blDebug ( "BlSubForm::imprimir", 0 );
+    BlDebug::blDebug ( "BlSubForm::imprimir", 0 );
 
     /// Los listados siempre usan la misma plantilla para imprimir listado.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
@@ -3016,11 +3016,11 @@ void BlSubForm::printPDF ( const QString &titular )
     } // end if
 
     blCreateAndLoadPDF ( "listado" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void BlSubForm::preparaMenu() {
-    blDebug ( "BlSubForm::preparaMenu", 0 );
+    BlDebug::blDebug ( "BlSubForm::preparaMenu", 0 );
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "BlSubForm_preparaMenu", this );
@@ -3115,7 +3115,7 @@ void BlSubForm::preparaMenu() {
     m_hboxLayout1->addWidget ( sel4 );    
     connect (sel4, SIGNAL(released()), this, SLOT(toogleMenuConfig())); 
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3126,16 +3126,16 @@ void BlSubForm::preparaMenu() {
 **/
 void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
-    blDebug ( "BlSubForm::contextMenuEvent", 0 );
+    BlDebug::blDebug ( "BlSubForm::contextMenuEvent", 0 );
     QAction *del = NULL;
     int row = currentRow();
     if ( row < 0 ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("fila < 0") );
+	
         return;
     } // end if
     int col = currentColumn();
     if ( col < 0 ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("columna < 0") );
+	
         return;
     } // end if
     QMenu *popup = new QMenu ( this );
@@ -3186,7 +3186,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
     if ( !opcion ) {
 	return;
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
     } // end if
     if ( opcion == del )
         remove ( row );
@@ -3215,7 +3215,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     procesaMenu ( opcion );
 
     delete popup;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -3223,10 +3223,10 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
 **/
 void BlSubForm::toogleConfig()
 {
-    blDebug ( "BlSubForm::toogleConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::toogleConfig", 0 );
     mui_configurador->setVisible ( mui_configurador->isHidden() );
     emit toogledConfig ( mui_configurador->isVisible() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -3234,10 +3234,10 @@ void BlSubForm::toogleConfig()
 **/
 void BlSubForm::toogleMenuConfig()
 {
-    blDebug ( "BlSubForm::toogleMenuConfig", 0 );
+    BlDebug::blDebug ( "BlSubForm::toogleMenuConfig", 0 );
     mui_menusubform->setVisible ( mui_menusubform->isHidden() );
     emit toogledMenuConfig ( mui_menusubform->isVisible() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -3245,9 +3245,9 @@ void BlSubForm::toogleMenuConfig()
 **/
 void BlSubForm::on_mui_botonCerrar_clicked()
 {
-    blDebug ( "BlSubForm::on_mui_botonCerrar_clicked", 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_botonCerrar_clicked", 0 );
     toogleConfig();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3256,8 +3256,8 @@ void BlSubForm::on_mui_botonCerrar_clicked()
 **/
 void BlSubForm::on_mui_list_itemChanged ( QTableWidgetItem * )
 {
-    blDebug ( "BlSubForm::on_mui_list_itemChanged", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::on_mui_list_itemChanged", 0 );
+    
 }
 
 
@@ -3267,9 +3267,9 @@ void BlSubForm::on_mui_list_itemChanged ( QTableWidgetItem * )
 **/
 void BlSubForm::setInsert ( bool b )
 {
-    blDebug ( "BlSubForm::setInsert", 0 );
+    BlDebug::blDebug ( "BlSubForm::setInsert", 0 );
     m_insercion = b;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3277,8 +3277,8 @@ void BlSubForm::setInsert ( bool b )
 /**
 **/
 bool BlSubForm::isInsert() {
-    blDebug ( "BlSubForm::isInsert", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::isInsert", 0 );
+    
     return m_insercion;
 }
 
@@ -3289,9 +3289,9 @@ bool BlSubForm::isInsert() {
 **/
 void BlSubForm::setProcesarCambios ( bool proc )
 {
-    blDebug ( "BlSubForm::setProcesarCambios", 0 );
+    BlDebug::blDebug ( "BlSubForm::setProcesarCambios", 0 );
     m_procesacambios = proc;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3301,8 +3301,8 @@ void BlSubForm::setProcesarCambios ( bool proc )
 **/
 bool BlSubForm::procesaCambios()
 {
-    blDebug ( "BlSubForm::procesaCambios", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::procesaCambios", 0 );
+    
     return m_procesacambios;
 }
 
@@ -3326,9 +3326,9 @@ QString BlSubForm::dbFieldNameByColumnId ( int columna )
 **/
 QString BlSubForm::dbFieldViewNameByColumnId(int columna)
 {
-   blDebug("BlSubForm::dbFieldViewNameByColumnId", 0);
+   BlDebug::blDebug("BlSubForm::dbFieldViewNameByColumnId", 0);
 
-   blDebug("END BlSubForm::dbFieldViewNameByColumnId", 0);
+   BlDebug::blDebug("END BlSubForm::dbFieldViewNameByColumnId", 0);
    return m_lcabecera.at(columna)->nompresentacion();
 }
 
@@ -3340,9 +3340,9 @@ QString BlSubForm::dbFieldViewNameByColumnId(int columna)
 **/
 BlDbField::DbType BlSubForm::dbFieldTypeByColumnId(int columna)
 {
-   blDebug("BlSubForm::dbFieldTypeByColumnId", 0);
+   BlDebug::blDebug("BlSubForm::dbFieldTypeByColumnId", 0);
 
-   blDebug("END BlSubForm::dbFieldTypeByColumnId", 0);
+   BlDebug::blDebug("END BlSubForm::dbFieldTypeByColumnId", 0);
    return m_lcabecera.at(columna)->dbFieldType();
 }
 
@@ -3350,7 +3350,7 @@ BlDbField::DbType BlSubForm::dbFieldTypeByColumnId(int columna)
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    blDebug ( "BlSubForm::editFinished", 0 );
+    BlDebug::blDebug ( "BlSubForm::editFinished", 0 );
     m_registrolinea = rec;
     m_campoactual = camp;
 
@@ -3358,44 +3358,44 @@ void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     g_plugins->lanza ( "BlSubForm_editFinished", this );
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
-    blDebug ( "BlSubForm::pressedAsterisk", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::pressedAsterisk", 0 );
+    
 }
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
-    blDebug ( "BlSubForm::pressedPlus", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::pressedPlus", 0 );
+    
 }
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 void BlSubForm::pressedMinus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
-    blDebug ( "BlSubForm::pressedMinus", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::pressedMinus", 0 );
+    
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 void BlSubForm::pressedSlash ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
-    blDebug ( "BlSubForm::pressedSlash", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::pressedSlash", 0 );
+    
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 QString BlSubForm::fileConfig (  )
 {
-    blDebug ( "BlSubForm::fileConfig", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::fileConfig", 0 );
+    
     return m_fileconfig;
 }
 
@@ -3404,9 +3404,9 @@ QString BlSubForm::fileConfig (  )
 **/
 void BlSubForm::setSelectMode()
 {
-    blDebug ( "BlSubForm::setSelectMode", 0 );
+    BlDebug::blDebug ( "BlSubForm::setSelectMode", 0 );
     m_modo = BL_SELECT_MODE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -3416,9 +3416,9 @@ void BlSubForm::setSelectMode()
 **/
 void BlSubForm::setEditMode()
 {
-    blDebug ( "BlSubForm::setEditMode", 0 );
+    BlDebug::blDebug ( "BlSubForm::setEditMode", 0 );
     m_modo = BL_EDIT_MODE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3428,8 +3428,8 @@ void BlSubForm::setEditMode()
 **/
 bool BlSubForm::editMode()
 {
-    blDebug ( "BlSubForm::editMode", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::editMode", 0 );
+    
     return m_modo == BL_EDIT_MODE;
 }
 
@@ -3440,8 +3440,8 @@ bool BlSubForm::editMode()
 **/
 bool BlSubForm::selectMode()
 {
-    blDebug ( "BlSubForm::selectMode", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::selectMode", 0 );
+    
     return m_modo == BL_SELECT_MODE;
 }
 
@@ -3452,15 +3452,15 @@ bool BlSubForm::selectMode()
 **/
 edmode BlSubForm::mode()
 {
-    blDebug ( "BlSubForm::mode", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubForm::mode", 0 );
+    
     return m_modo;
 }
 
 
 /// Hace la exportacion del campo a XML
 QString BlSubForm::exportXML() {
-    blDebug ( "BlSubForm::exportXML", 0 );
+    BlDebug::blDebug ( "BlSubForm::exportXML", 0 );
     QString val;
     int error;
 
@@ -3502,7 +3502,7 @@ QString BlSubForm::exportXML() {
     val += "\t</LISTABORRAR>\n";
     val += "</BLSUBFORM>\n";
     return val;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3515,11 +3515,11 @@ QString BlSubForm::exportXML() {
 **/
 BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelegate ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "BlSubFormDelegate::BlSubFormDelegate", 0 );
+    BlDebug::blDebug ( "BlSubFormDelegate::BlSubFormDelegate", 0 );
     m_subform = ( BlSubForm * ) parent;
     installEventFilter ( this );
     g_plugins->lanza ( "BlSubFormDelegate_BlSubFormDelegate_Post", ( void * ) this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3528,8 +3528,8 @@ BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelega
 **/
 BlSubFormDelegate::~BlSubFormDelegate()
 {
-    blDebug ( "BlSubFormDelegate::~BlSubFormDelegate", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlSubFormDelegate::~BlSubFormDelegate", 0 );
+    
 }
 
 
@@ -3541,38 +3541,38 @@ BlSubFormDelegate::~BlSubFormDelegate()
 **/
 QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    blDebug ( "BlSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
+    BlDebug::blDebug ( "BlSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     g_fieldName = linea->fieldName();
     g_editor = parent;
 
     if ( g_plugins->lanza ( "BlSubFormDelegate_createEditor", ( void * ) this ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en plugin") );
+	
         return ( QWidget * ) g_plugParams;
     } // end if
 
    if (linea->dbFieldType() == BlDbField::DbVarChar) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
-	blDebug ( ("END ", Q_FUNC_INFO), 0, "BlTextEditDelegate" );
+	
         return editor;
    } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
         editor->setDecimals(linea->numericPrecision());
-	blDebug ( ("END ", Q_FUNC_INFO), 0, "BlDoubleSpinBox" );
+	
         return editor;
     } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
         QSpinBox * editor = new QSpinBox ( parent );
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
-	blDebug ( ("END ", Q_FUNC_INFO), 0, "QSpinBox" );
+	
         return editor;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Editor por defecto") );
+    
     return QStyledItemDelegate::createEditor ( parent, option, index );
 }
 
@@ -3586,11 +3586,11 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 **/
 void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    blDebug ( "BlSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
+    BlDebug::blDebug ( "BlSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
 
     /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Fila o columna invalida") );
+	
         return;
     } // end if
     g_index = index;
@@ -3601,7 +3601,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     g_fieldName = linea->fieldName();
 
     if ( g_plugins->lanza ( "BlSubFormDelegate_setModelData", ( void * ) this ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en plugin") );
+	
         return;
     } // end if
 
@@ -3623,7 +3623,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3634,7 +3634,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 **/
 void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( "BlSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
+    BlDebug::blDebug ( "BlSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
 
 
     g_index = index;
@@ -3644,7 +3644,7 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     g_fieldName = linea->fieldName();
 
     if ( g_plugins->lanza ( "BlSubFormDelegate_setEditorData", ( void * ) this ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en plugin") );
+	
         return;
     } // end if
 
@@ -3666,7 +3666,7 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         QStyledItemDelegate::setEditorData ( editor, index );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -3680,10 +3680,10 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
-        blDebug ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        BlDebug::blDebug ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        blDebug ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        BlDebug::blDebug ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         /// Si hemos pulsado ademas el Shift se lo pasamos al editor de texto para que haga un salto de linea
@@ -3705,10 +3705,10 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end switch
     } else if ( event->type() == QEvent::KeyRelease ) {
-        blDebug ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        BlDebug::blDebug ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        blDebug ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        BlDebug::blDebug ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         /// Si hemos pulsado ademas el Shift se lo pasamos al editor de texto para que haga un salto de linea
@@ -3748,9 +3748,9 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 **/
 int BlSubFormDelegate::cerrarEditor ( QWidget *editor )
 {
-    blDebug ( "BlSubFormDelegate::cerrarEditor", 0 );
+    BlDebug::blDebug ( "BlSubFormDelegate::cerrarEditor", 0 );
     emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

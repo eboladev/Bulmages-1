@@ -27,9 +27,9 @@
 **/
 BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 {
-    blDebug ( "BlMainCompanyPointer::BlMainCompanyPointer", 0 );
+    BL_FUNC_DEBUG
     m_mainCompany = emp;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -38,9 +38,9 @@ BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 **/
 BlMainCompanyPointer::BlMainCompanyPointer()
 {
-    blDebug ( "BlMainCompanyPointer::BlMainCompanyPointers", 0 );
+    BL_FUNC_DEBUG
     m_mainCompany = NULL;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -49,8 +49,8 @@ BlMainCompanyPointer::BlMainCompanyPointer()
 **/
 BlMainCompanyPointer::~BlMainCompanyPointer()
 {
-    blDebug ( "BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -60,9 +60,9 @@ BlMainCompanyPointer::~BlMainCompanyPointer()
 **/
 void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 {
-    blDebug ( "BlMainCompanyPointer::setMainCompany", 0 );
+    BL_FUNC_DEBUG
     m_mainCompany = emp;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -72,8 +72,8 @@ void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 **/
 BlMainCompany *BlMainCompanyPointer::mainCompany()
 {
-    blDebug ( "BlMainCompanyPointer::mainCompany", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_mainCompany;
 }
 
@@ -84,7 +84,8 @@ BlMainCompany *BlMainCompanyPointer::mainCompany()
 **/
 QString BlMainCompanyPointer::fieldValue()
 {
-    blDebug ( "BlMainCompanyPointer::fieldValue", 2, "debe ser derivado" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlMainCompanyPointer::fieldValue", 2, "debe ser derivado" );
     return "";
 }
 
@@ -94,6 +95,7 @@ QString BlMainCompanyPointer::fieldValue()
 **/
 void BlMainCompanyPointer::setFieldValue ( QString )
 {
-    blDebug ( "BlMainCompanyPointer::setFieldValue", 2, "debe ser derivado" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlMainCompanyPointer::setFieldValue", 2, "debe ser derivado" );
 }
 

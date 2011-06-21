@@ -37,12 +37,12 @@
 **/
 EFacturaRecepcion::EFacturaRecepcion ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString query;
 
     setupUi ( this );  // Para que el form se inicialice bien
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -51,8 +51,8 @@ EFacturaRecepcion::EFacturaRecepcion ( BfCompany *emp, QWidget *parent ) : BfFor
 **/
 EFacturaRecepcion::~EFacturaRecepcion()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -62,7 +62,7 @@ EFacturaRecepcion::~EFacturaRecepcion()
 **/
 void EFacturaRecepcion::on_mui_recibir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
 
@@ -83,7 +83,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
     QDir *direfactura = new QDir ( dirEmail->value( "valor" ) );
 
     if ( !direfactura->exists() ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("El directorio especificado en la configuracion para la eFactura no existe. Por favor, creelo e intentelo de nuevo") );
+	
 	blMsgError(_("El directorio especificado en la configuracion para la eFactura no existe. Por favor, creelo e intentelo de nuevo"));
         return;
     }
@@ -128,7 +128,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             /// Entramos en el directorio
 
             if ( !direfactura->cd ( fileInfo->fileName() ) ) {
-		blDebug ( Q_FUNC_INFO, 0, QString(_("Error intentando entrar en '%1'.")).arg(fileInfo->fileName()) );
+		BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Error intentando entrar en '%1'.")).arg(fileInfo->fileName()) );
 		blMsgError(QString(_("Error intentando entrar en '%1'")).arg(fileInfo->fileName()));
                 continue;
             }
@@ -142,7 +142,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             archivos = new QFileInfoList ( direfactura->entryInfoList() );
 
             if ( archivos->size() > 1 ) {
-		blDebug ( Q_FUNC_INFO, 0, QString(_("El directorio '%1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()) );
+		BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("El directorio '%1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()) );
 		blMsgError(QString(_("El directorio '%1' contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.")).arg(direfactura->absolutePath()));
                 direfactura->cdUp();
                 continue;
@@ -188,7 +188,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
     delete Email;
     delete Password;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -197,8 +197,8 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
 **/
 void EFacturaRecepcion::on_mui_abrir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -207,7 +207,7 @@ void EFacturaRecepcion::on_mui_abrir_clicked()
 **/
 void EFacturaRecepcion::on_mui_salir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     close();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

@@ -32,12 +32,12 @@
 BusquedaTipoTrabajo::BusquedaTipoTrabajo ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     m_table = "tipotrabajo";
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_idtipotrabajo = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -46,8 +46,8 @@ BusquedaTipoTrabajo::BusquedaTipoTrabajo ( QWidget *parent, const char * )
 **/
 BusquedaTipoTrabajo::~BusquedaTipoTrabajo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -60,7 +60,7 @@ BusquedaTipoTrabajo::~BusquedaTipoTrabajo()
 **/
 void BusquedaTipoTrabajo::setId ( QString idtipotrabajo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
@@ -80,7 +80,7 @@ void BusquedaTipoTrabajo::setId ( QString idtipotrabajo )
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -90,13 +90,13 @@ void BusquedaTipoTrabajo::setId ( QString idtipotrabajo )
 **/
 QString BusquedaTipoTrabajo::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return ( m_cursorcombo->value( "idtipotrabajo", index - 1 ) );
     } else {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return "";
     } // end if
 }
@@ -108,13 +108,13 @@ QString BusquedaTipoTrabajo::id()
 **/
 void BusquedaTipoTrabajo::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->value( "idtipotrabajo", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -131,11 +131,11 @@ void BusquedaTipoTrabajo::m_activated ( int index )
 BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setSizeAdjustPolicy ( BlComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -145,10 +145,10 @@ BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate ( QWidget *parent )
 **/
 BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -161,7 +161,7 @@ BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate()
 **/
 void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = 0;
     QString codigo = cod;
 
@@ -179,7 +179,7 @@ void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
     setEditText ( cod );
     setCurrentIndex ( index );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -189,8 +189,8 @@ void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
 **/
 QString BusquedaTipoTrabajoDelegate::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_cursorcombo->value( "idtipotrabajo", currentIndex() );
 }
 

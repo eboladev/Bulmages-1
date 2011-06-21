@@ -41,7 +41,7 @@
 */
 AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -96,28 +96,28 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 AlumnoView::~AlumnoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 QString AlumnoView::templateName ( void )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 
     return QString ( "alumno" );
 }
 
 void AlumnoView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -136,7 +136,7 @@ void AlumnoView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Se encarga de presentar la ventana con los datos cargados en la clase BlDbRecord.
@@ -146,7 +146,7 @@ void AlumnoView::imprimir()
 **/
 void AlumnoView::pintarPost()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Comprueba que exista la imagen del alumno y sino carga la imagen por defecto para indicar
     /// que el alumno no tiene imagen asociada.
@@ -165,12 +165,12 @@ void AlumnoView::pintarPost()
         mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "images/logopeq.png" ) );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 int AlumnoView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     mui_tutoresList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
     mui_tutoresList->save();
@@ -191,13 +191,13 @@ int AlumnoView::afterSave()
         
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 int AlumnoView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Borramos la imagen
     QString archivoimagen;
@@ -223,19 +223,19 @@ int AlumnoView::beforeDelete()
     query = "DELETE FROM faltaasistenciaalumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
 
 int AlumnoView::cargarPost ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_tutoresList->load ( id );
     mui_actividadesList->load ( id );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -248,7 +248,7 @@ int AlumnoView::cargarPost ( QString id )
 **/
 void AlumnoView::on_mui_cambiarimagen_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     QPixmap imagen;
 
@@ -271,14 +271,14 @@ void AlumnoView::on_mui_cambiarimagen_clicked()
         mui_imagen->setPixmap ( imagen );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Elimina la imagen del alumno asociado, si existe.
 **/
 void AlumnoView::on_mui_borrarimagen_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
@@ -305,7 +305,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
 
     pintarPost();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// =============================================================================
@@ -318,7 +318,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
 **/
 ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "alumnocliente" );
     setDbFieldId ( "idalumnocliente" );
@@ -333,7 +333,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -342,9 +342,9 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 **/
 void ListAlumnosTutorView::load ( QString idalumno )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( "SELECT * FROM alumnocliente LEFT JOIN cliente ON alumnocliente.idcliente = cliente.idcliente  WHERE alumnocliente.idalumno =" + idalumno  );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -353,7 +353,7 @@ void ListAlumnosTutorView::load ( QString idalumno )
 **/
 ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
@@ -365,7 +365,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -374,9 +374,9 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 **/
 void ListAlumnosActividadView::load ( QString idalumno )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm::load ( "SELECT * FROM alumnoactividad LEFT JOIN actividad ON alumnoactividad.idactividad = actividad.idactividad  WHERE alumnoactividad.idalumno =" + idalumno  );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

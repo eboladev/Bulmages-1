@@ -43,11 +43,11 @@
 **/
 BloqMenu::BloqMenu ( QWidget *parent ) : QWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -56,8 +56,8 @@ BloqMenu::BloqMenu ( QWidget *parent ) : QWidget ( parent )
 **/
 BloqMenu::~BloqMenu()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -67,11 +67,11 @@ BloqMenu::~BloqMenu()
 **/
 void BloqMenu::pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QAction *ajust = menu->addAction ( _ ( "Desbloquear ficha" ) );
     ajust->setObjectName ( "desbloquearficha" );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -81,7 +81,7 @@ void BloqMenu::pintaMenu ( QMenu *menu )
 **/
 void BloqMenu::trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( action->objectName() == "desbloquearficha" ) {
         QString table_dot_id = QString("%1.%2").arg(m_BlForm->tableName()).arg(m_BlForm->fieldId());
         QString query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";
@@ -101,7 +101,7 @@ void BloqMenu::trataMenu ( QAction *action )
         if ( peliminar ) peliminar->setEnabled ( TRUE );
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

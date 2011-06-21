@@ -45,7 +45,7 @@
 **/
 BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
 
     
@@ -146,7 +146,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     delete cur;
     
     insertWindow ( windowTitle(), this, FALSE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -156,8 +156,8 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
 **/
 BfConfiguracionView::~BfConfiguracionView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 void BfConfiguracionView::on_mui_aceptar_clicked() {
@@ -209,7 +209,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 **/
 BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "nombre" );
@@ -217,6 +217,6 @@ BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

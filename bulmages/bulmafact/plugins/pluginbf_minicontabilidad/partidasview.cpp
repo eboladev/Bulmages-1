@@ -43,7 +43,7 @@
 PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool selectMode )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     m_listPartidas->setColumnCount ( 3 );
     QStringList headers;
@@ -84,7 +84,7 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool selectMode )
 
     pintar();
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -93,8 +93,8 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool selectMode )
 **/
 PartidasView::~PartidasView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -103,7 +103,7 @@ PartidasView::~PartidasView()
 **/
 void PartidasView::pintar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Activamos el semaforo de pintado para que no haya slots concurrentes.
     m_semaforoPintar = TRUE;
     QTreeWidgetItem *it;
@@ -158,7 +158,7 @@ void PartidasView::pintar()
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
     m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -168,12 +168,12 @@ void PartidasView::pintar()
 **/
 QString PartidasView::codigoCompletoPartida()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItem *it = m_listPartidas->currentItem();
     if ( it ) {
         return it->text ( COL_CODIGOCOMPLETOPARTIDA );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return "";
 }
 
@@ -184,12 +184,12 @@ QString PartidasView::codigoCompletoPartida()
 **/
 QString PartidasView::idPartida()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItem *it = m_listPartidas->currentItem();
     if ( it ) {
         return it->text ( COL_IDPARTIDA );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return "";
 }
 
@@ -200,12 +200,12 @@ QString PartidasView::idPartida()
 **/
 QString PartidasView::nombrePartida()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItem *it = m_listPartidas->currentItem();
     if ( it ) {
         return it->text ( COL_NOMBREPARTIDA );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return "";
 }
 
@@ -218,14 +218,14 @@ QString PartidasView::nombrePartida()
 **/
 void PartidasView::on_m_listPartidas_itemDoubleClicked ( QTreeWidgetItem *it )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_selectMode ) {
         m_idpartida = it->text ( COL_IDPARTIDA );
 	if ( !m_idpartida.isEmpty() ) {
 	  emit selected ( m_idpartida );
 	} // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -239,10 +239,10 @@ void PartidasView::on_m_listPartidas_itemDoubleClicked ( QTreeWidgetItem *it )
 **/
 void PartidasView::on_m_listPartidas_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_semaforoPintar ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
 	return;
     } // end if
 
@@ -267,7 +267,7 @@ void PartidasView::on_m_listPartidas_currentItemChanged ( QTreeWidgetItem *curre
 
     mostrarplantilla();
     m_semaforoPintar = FALSE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -276,7 +276,7 @@ void PartidasView::on_m_listPartidas_currentItemChanged ( QTreeWidgetItem *curre
 **/
 void PartidasView::mostrarplantilla()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString query;
     if ( !m_idpartida.isEmpty() ) {
         mui_nombrePartida->setEnabled ( TRUE );
@@ -305,7 +305,7 @@ void PartidasView::mostrarplantilla()
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -315,7 +315,7 @@ void PartidasView::mostrarplantilla()
 **/
 bool PartidasView::trataModificado()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -326,7 +326,7 @@ bool PartidasView::trataModificado()
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( FALSE );
 }
 
@@ -338,7 +338,7 @@ bool PartidasView::trataModificado()
 **/
 int PartidasView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString prodfam;
     try {
         if ( m_idpartida.isEmpty() ) {
@@ -363,7 +363,7 @@ int PartidasView::save()
             pintar ( posicionCursor );
         } // end if
         dialogChanges_readValues();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar la partida" ) );
@@ -399,7 +399,7 @@ void PartidasView::pintar ( QTreeWidgetItem *it )
 **/
 void PartidasView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
@@ -422,7 +422,7 @@ void PartidasView::on_mui_crear_clicked()
         m_idpartida = cur->value( "idpartida" );
         delete cur;
         pintar();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
         mainCompany()->rollback();
         blMsgInfo ( _ ( "Error al crear la partida" ) );
@@ -435,7 +435,7 @@ void PartidasView::on_mui_crear_clicked()
 **/
 void PartidasView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     int val = QMessageBox::question ( this,
                                       _ ( "Borrar" ) + " " + windowTitle(),
@@ -446,13 +446,13 @@ void PartidasView::on_mui_borrar_clicked()
     if ( val == QMessageBox::Yes ) {
         if ( !remove() ) {
             dialogChanges_readValues();
-	    blDebug ( Q_FUNC_INFO, 0, QString("'%1' borrado.").arg(windowTitle()) );
+	    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString("'%1' borrado.").arg(windowTitle()) );
         } else {
-	    blDebug ( Q_FUNC_INFO, 0, QString("'%1' no se ha podido borrar.").arg(windowTitle()) );
+	    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString("'%1' no se ha podido borrar.").arg(windowTitle()) );
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -463,7 +463,7 @@ void PartidasView::on_mui_borrar_clicked()
 **/
 int PartidasView::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_idpartida == "" ) {
         blMsgInfo ( _ ( "Debe seleccionar una partida" ) );
         return -1;
@@ -477,7 +477,7 @@ int PartidasView::remove()
         m_idpartida = "";
         dialogChanges_readValues();
         pintar();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar la partida" ) );
         return -1;
@@ -491,7 +491,7 @@ int PartidasView::remove()
 **/
 void PartidasView::on_mui_imprimir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "partidas.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "partidas.rml";
@@ -552,7 +552,7 @@ void PartidasView::on_mui_imprimir_clicked()
         file.close();
     } // end if
     blCreateAndLoadPDF ( "partidas" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -561,7 +561,7 @@ void PartidasView::on_mui_imprimir_clicked()
 **/
 void PartidasView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItem *it = m_listPartidas->currentItem();
     if ( it ) {
         m_idpartida = it->text ( COL_IDPARTIDA );
@@ -569,7 +569,7 @@ void PartidasView::on_mui_aceptar_clicked()
         m_idpartida = "";
     } // end if
     BfForm::on_mui_aceptar_clicked();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

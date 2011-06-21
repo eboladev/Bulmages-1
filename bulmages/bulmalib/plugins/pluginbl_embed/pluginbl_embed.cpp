@@ -55,8 +55,8 @@ BlMainCompany *g_emp = NULL;
 /*
 MyPluginEmbedODS::MyPluginEmbedODS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 */
 
@@ -68,8 +68,8 @@ MyPluginEmbedODS::MyPluginEmbedODS()
 /*
 MyPluginEmbedODS::~MyPluginEmbedODS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 */
 
@@ -81,7 +81,7 @@ MyPluginEmbedODS::~MyPluginEmbedODS()
 
 void PluginBl_Embed::embedPYS( )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
@@ -146,7 +146,7 @@ void PluginBl_Embed::embedPYS( )
         container->show();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -155,8 +155,8 @@ void PluginBl_Embed::embedPYS( )
 **/
 PluginBl_Embed::PluginBl_Embed()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -164,8 +164,8 @@ PluginBl_Embed::PluginBl_Embed()
 **/
 PluginBl_Embed::~PluginBl_Embed()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -174,7 +174,7 @@ PluginBl_Embed::~PluginBl_Embed()
 **/
 void PluginBl_Embed::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( "Aplicacion Externa", g_main );
@@ -194,7 +194,7 @@ void PluginBl_Embed::elslot()
     container->embedClient ( winId.toInt() );
     doc1->setWidget ( container );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -202,7 +202,7 @@ void PluginBl_Embed::elslot()
 **/
 void PluginBl_Embed::elslot1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString winId = "";
     while ( winId == "" ) winId = blWindowId ( "" );
     BlWorkspace *work = g_pluginbl_embed ->findChild<BlWorkspace *> (  );
@@ -217,14 +217,14 @@ void PluginBl_Embed::elslot1()
         container->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -254,7 +254,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion );
     pPluginMenu->addAction ( accion1 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -381,7 +381,7 @@ int init67 (  )
         menu->addAction ( accion );
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
     
 }

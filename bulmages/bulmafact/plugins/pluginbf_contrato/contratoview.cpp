@@ -46,7 +46,7 @@
 ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         : Contrato ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -72,7 +72,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la contrato" ) );
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -83,8 +83,8 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
 **/
 ContratoView::~ContratoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -94,10 +94,10 @@ ContratoView::~ContratoView()
 **/
 void ContratoView::inicializar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->inicializar();
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -111,7 +111,7 @@ void ContratoView::inicializar()
 **/
 int ContratoView::load ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         Contrato::load ( id );
         if ( dbValue ( "idcontrato" ) != "" ) {
@@ -124,7 +124,7 @@ int ContratoView::load ( QString id )
     } catch ( ... ) {
         return -1;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -140,7 +140,7 @@ int ContratoView::load ( QString id )
 **/
 int ContratoView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         setDbValue ( "refcontrato", mui_refcontrato->text() );
         setDbValue ( "nomcontrato", mui_nomcontrato->text() );
@@ -153,10 +153,10 @@ int ContratoView::save()
         Contrato::save();
         dialogChanges_readValues();
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar") );
+	
         throw - 1;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -167,9 +167,9 @@ int ContratoView::save()
 **/
 void ContratoView::on_m_cliente_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->setIdCliente ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -179,9 +179,9 @@ void ContratoView::on_m_cliente_valueChanged ( QString id )
 **/
 void ContratoView::pintaidcliente ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_idcliente->setId ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -191,9 +191,9 @@ void ContratoView::pintaidcliente ( QString id )
 **/
 void ContratoView::pintafincontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_fincontrato->setText ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -203,9 +203,9 @@ void ContratoView::pintafincontrato ( QString id )
 **/
 void ContratoView::pintaffincontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_ffincontrato->setText ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -215,9 +215,9 @@ void ContratoView::pintaffincontrato ( QString id )
 **/
 void ContratoView::pintadescontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_descontrato->setText ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -227,9 +227,9 @@ void ContratoView::pintadescontrato ( QString id )
 **/
 void ContratoView::pintarefcontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_refcontrato->setText ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -239,9 +239,9 @@ void ContratoView::pintarefcontrato ( QString id )
 **/
 void ContratoView::pintanomcontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_nomcontrato->setText ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -251,9 +251,9 @@ void ContratoView::pintanomcontrato ( QString id )
 **/
 void ContratoView::pintaperiodicidadcontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_periodicidadcontrato->setperiodo ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -263,9 +263,9 @@ void ContratoView::pintaperiodicidadcontrato ( QString id )
 **/
 void ContratoView::pintaloccontrato ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_loccontrato->setText ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -275,7 +275,7 @@ void ContratoView::pintaloccontrato ( QString id )
 **/
 void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString idfactura = subform2->dbValue ( QString ( "idfactura" ), subform2->currentRow() );
     FacturaView *prov = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
     if ( prov->load ( idfactura ) ) {
@@ -284,7 +284,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
     } // end if
     mainCompany() ->m_pWorkspace->addSubWindow ( prov );
     prov->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -293,7 +293,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 **/
 void ContratoView::on_mui_facturar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int periodo = 1;
     QString query;
     bool end = FALSE;
@@ -310,7 +310,7 @@ void ContratoView::on_mui_facturar_clicked()
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( cur->value( "cuenta" ) != "0" ) {
             if ( cur->value( "cuenta" ) != "1" ) {
-		blDebug ( Q_FUNC_INFO, 0, _("Detectada doble factura en un periodo.") );
+		BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Detectada doble factura en un periodo.") );
             } // end if
         } else {
             // GENERAMOS LA FACTURA
@@ -390,7 +390,7 @@ void ContratoView::on_mui_facturar_clicked()
         delete cur1;
         periodo++;
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// =============================================================================
@@ -403,7 +403,7 @@ void ContratoView::on_mui_facturar_clicked()
 **/
 FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "factura" );
     setDbFieldId ( "idfactura" );
     setFileConfig ( "contratofactura" );
@@ -428,7 +428,7 @@ FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, cons
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

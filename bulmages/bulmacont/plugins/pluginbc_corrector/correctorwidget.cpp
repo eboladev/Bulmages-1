@@ -32,10 +32,10 @@
 correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
         : QWidget ( parent, fl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -44,8 +44,8 @@ correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
 **/
 correctorwidget::~correctorwidget()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -55,11 +55,11 @@ correctorwidget::~correctorwidget()
 **/
 void correctorwidget::on_mui_configurar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     confreglasview *conf = new confreglasview();
     conf->exec();
     delete conf;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -70,7 +70,7 @@ void correctorwidget::on_mui_configurar_clicked()
 **/
 void correctorwidget::on_mui_corregir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     BlDbRecordSet *cur;
     BlDbRecordSet *cur2;
@@ -128,7 +128,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de cuentas con insercion en el debe que lo tienen bloqueado.
     /// --------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe <> 0" );
-    blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(query) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(query) );
     cur = dbConnection->loadQuery ( query, "hola1" );
     while ( !cur->eof() ) {
         QString cadena;
@@ -232,7 +232,7 @@ void correctorwidget::on_mui_corregir_clicked()
     
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -245,7 +245,7 @@ void correctorwidget::on_mui_corregir_clicked()
 **/
 void correctorwidget::alink ( const QUrl &url )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString linker = url.fragment();
     QStringList list = linker.split ( "=" );
@@ -328,7 +328,7 @@ void correctorwidget::alink ( const QUrl &url )
         */
         QMessageBox::warning ( 0, _ ( "Opcion no implementada" ), _ ( "No se puede acceder al error" ), 0, 1, 2 );
     } // endif
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -342,7 +342,7 @@ void correctorwidget::alink ( const QUrl &url )
 **/
 void correctorwidget::agregarError ( QString texto, QString texto1, QString texto2 )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><!-- a name='masinfo' href='#" + texto1 + "'>+ info</a --></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

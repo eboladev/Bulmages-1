@@ -32,8 +32,8 @@
 BlRadioButton::BlRadioButton ( QWidget *parent )
         : QRadioButton ( parent )
 {
-    blDebug ( "BlRadioButton::BlRadioButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -48,8 +48,8 @@ BlRadioButton::BlRadioButton ( QWidget *parent )
 BlRadioButton::BlRadioButton ( const QString & text, QWidget * parent )
         : QRadioButton ( text, parent )
 {
-    blDebug ( "BlRadioButton::BlRadioButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -58,8 +58,8 @@ BlRadioButton::BlRadioButton ( const QString & text, QWidget * parent )
 **/
 BlRadioButton::~BlRadioButton()
 {
-    blDebug ( "BlRadioButton::~BlRadioButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 

@@ -40,7 +40,7 @@
 Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -85,7 +85,7 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al crear el archivo" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -93,10 +93,10 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
 */
 Q34View::~Q34View()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del blformlist.
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -109,7 +109,7 @@ Q34View::~Q34View()
 **/
 QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimientop )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlDbRecordSet *curbanco = mainCompany() -> loadQuery ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
@@ -139,7 +139,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     QString codpresent = nif + sufijo;
     codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 10, '0' );
     if ( codpresent.size() > 10 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
     } // end if
     cab_present.append ( codpresent.toLatin1() );
 
@@ -169,21 +169,21 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     /// Entidad Receptora del fichero Longitud: 4
     QString ent_recept = blStringToUsAscii ( curbanco->value( "codentidadbanco" ) ).leftJustified ( 4, '0' );
     if ( ent_recept.size() > 4 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Entidad bancaria supera longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Entidad bancaria supera longitud maxima.") );
     } // end if
     cab_present.append ( ent_recept.toLatin1() );
 
     /// Oficina Receptora del fichero Longitud: 4
     QString ofi_recept = blStringToUsAscii ( curbanco->value( "codagenciabanco" ) ).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Oficina bancaria supera longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Oficina bancaria supera longitud maxima.") );
     } // end if
     cab_present.append ( ofi_recept.toLatin1() );
 
     /// Cuenta Receptora del fichero Longitud: 10
     QString cta_recept = blStringToUsAscii ( curbanco->value( "numcuentabanco" ) ).leftJustified ( 10, '0' );
     if ( cta_recept.size() > 10 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Cuenta bancaria supera longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Cuenta bancaria supera longitud maxima.") );
     } // end if
     cab_present.append ( cta_recept.toLatin1() );
 
@@ -199,7 +199,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     /// DC Receptora del fichero Longitud: 2
     QString dc_recept = blStringToUsAscii ( curbanco->value( "dcbanco" ) ).leftJustified ( 2, '0' );
     if ( dc_recept.size() > 2 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Cuenta bancaria supera longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Cuenta bancaria supera longitud maxima.") );
     } // end if
     cab_present.append ( dc_recept.toLatin1() );
 
@@ -220,7 +220,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
 
     codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 36, '0' );
     if ( codpresent.size() > 36 )  {
-	blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
     } // end if
     cab_present1.append ( codpresent.toLatin1() );
 
@@ -240,7 +240,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
 
     codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 36, '0' );
     if ( codpresent.size() > 36 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
     } // end if
     cab_present2.append ( codpresent.toLatin1() );
 
@@ -260,7 +260,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
 
     codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 36, '0' );
     if ( codpresent.size() > 36 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
     } // end if
     cab_present3.append ( codpresent.toLatin1() );
 
@@ -269,7 +269,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
 
     out << cab_present3.toLatin1()  << "\n";
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return cab_present.toLatin1();
 }
 
@@ -294,7 +294,7 @@ QByteArray Q34View::cabeceraOrdenante ( QTextStream &out, QString idvencimientop
 **/
 QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlDbRecordSet *curvencimiento = mainCompany() ->loadQuery ( "SELECT * FROM vencimientop LEFT JOIN facturap ON vencimientop.idfacturap = facturap.idfacturap WHERE idvencimientop = " + idvencimientop );
     QString query = "UPDATE vencimientop SET estadovencimientop = 'Emitido', fechaefvencimientop = now() WHERE idvencimientop = " + idvencimientop;
@@ -316,7 +316,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     QString codpresent = nif + sufijo;
     codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 10, '0' );
     if ( codpresent.size() > 10 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
     } // end if
     cab_indob.append ( codpresent.toLatin1() );
 
@@ -327,7 +327,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
 
     clientedomiciliacion = clientedomiciliacion.leftJustified ( 12, ' ' );
     if ( clientedomiciliacion.size() > 12 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("CIF del proveedor es demasiado largo.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("CIF del proveedor es demasiado largo.") );
     } // end if
     cab_indob.append ( clientedomiciliacion.toAscii() );
 
@@ -351,7 +351,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     /// Entidad domiciliacion del fichero Longitud: 4
     QString bancocliente = cur->value( "bancoproveedor" ).remove ( QChar ( ' ' ) );
     if ( bancocliente.size() != 20 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Banco del proveedor invalido en el pago.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Banco del proveedor invalido en el pago.") );
     } // end if
     bancocliente = bancocliente.leftJustified ( 20, ' ' );
     QString ent_recept = bancocliente.left ( 4 );
@@ -409,7 +409,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     delete curproveedor;
     delete curvencimiento;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return cab_indob.toAscii();
 }
 
@@ -438,7 +438,7 @@ QByteArray Q34View::totalOrdenante ( QTextStream &out, QString importes, QString
 **/
 QByteArray Q34View::totalGeneral ( QTextStream &out, QString importes, QString domiciliaciones, QString registros )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// CABECERA INDIVIDUAL OBLIGATORIO
     QString cab_indob = "";
     /// Registro en Euros. Longitud: 2
@@ -455,7 +455,7 @@ QByteArray Q34View::totalGeneral ( QTextStream &out, QString importes, QString d
     QString codpresent = nif + sufijo;
     codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 10, '0' );
     if ( codpresent.size() > 10 ) {
-	blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("El CIF del ordenante supera la longitud maxima.") );
     } // end if
     cab_indob.append ( codpresent.toLatin1() );
 
@@ -491,7 +491,7 @@ QByteArray Q34View::totalGeneral ( QTextStream &out, QString importes, QString d
 
     /// Imprimimos los resultados
     out << cab_indob.toAscii() << "\n";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return cab_indob.toAscii();
 }
 
@@ -501,7 +501,7 @@ QByteArray Q34View::totalGeneral ( QTextStream &out, QString importes, QString d
 **/
 void Q34View::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
 
 
@@ -538,9 +538,9 @@ void Q34View::on_mui_aceptar_clicked()
         dialogChanges_readValues();
         close();
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al guardar.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al guardar.") );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

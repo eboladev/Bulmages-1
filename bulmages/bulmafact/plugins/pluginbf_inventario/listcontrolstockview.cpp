@@ -28,7 +28,7 @@
 ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "controlstock" );
     setDbFieldId ( "idarticulo" );
     addSubFormHeader ( "punteocontrolstock", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Punteado" ) );
@@ -45,7 +45,7 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
     addSubFormHeader ( "idalmacenpk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idalmacen" );
     setInsert ( FALSE );
     mdb_idinventario = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -56,14 +56,14 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
 /*
 int ListControlStockView::remove()
 {
-//    blDebug ( Q_FUNC_INFO, 0 );
+//    BL_FUNC_DEBUG
     fprintf(stderr, "f");
     mdb_idinventario = dbValue("idinventario");
 ///zhixiong    mainCompany() ->runQuery ( "DELETE FROM inventario WHERE idinventario = " +  dbValue ( "idinventario" ) );
     QString temp = QString("--") + dbValue("idinventario") + " - " + dbValue("idarticulo") + QString("--");
     fprintf(stderr, temp.toAscii());
 //    mainCompany() ->runQuery ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 */
@@ -73,11 +73,11 @@ int ListControlStockView::remove()
 **/
 void ListControlStockView::pregenerar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString query;
     query = "SELECT * FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN (SELECT stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = 1) AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ORDER BY codigoalmacen, codigocompletoarticulo;";
 //    BlSubForm::load ( query );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,8 +86,8 @@ void ListControlStockView::pregenerar()
 **/
 ListControlStockView::~ListControlStockView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -98,9 +98,9 @@ ListControlStockView::~ListControlStockView()
 /*
 int ListControlStockView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm::save();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 */

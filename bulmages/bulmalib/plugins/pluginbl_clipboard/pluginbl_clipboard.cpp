@@ -43,13 +43,13 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_clipboard", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -61,11 +61,11 @@ int entryPoint ( QApplication * )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PluginBl_Clipboard *subformclip = new PluginBl_Clipboard ( sub );
     sub->connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformclip, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformclip, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -76,8 +76,8 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 **/
 PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -86,8 +86,8 @@ PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent 
 **/
 PluginBl_Clipboard::~PluginBl_Clipboard()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -97,7 +97,7 @@ PluginBl_Clipboard::~PluginBl_Clipboard()
 **/
 void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlSubForm *subform = ( BlSubForm * ) parent();
 
@@ -109,7 +109,7 @@ void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
         menu->addAction (QIcon( ":/Images/clipboard.png" ), _ ( "Actualizar desde hoja de calculo" ) );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -119,7 +119,7 @@ void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_Clipboard::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( action->text() == _ ( "Pegar desde hoja de calculo" ) ) {
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
@@ -134,7 +134,7 @@ void PluginBl_Clipboard::s_trataMenu ( QAction *action )
         } // end if
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -143,7 +143,7 @@ void PluginBl_Clipboard::s_trataMenu ( QAction *action )
 **/
 void PluginBl_Clipboard::pegaSXC()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -174,7 +174,7 @@ void PluginBl_Clipboard::pegaSXC()
             linea1->setDbValue ( campos.at ( j ), valorcampo );
         } // end for
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -183,7 +183,7 @@ void PluginBl_Clipboard::pegaSXC()
 **/
 void PluginBl_Clipboard::pegaActualizaODS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
@@ -245,7 +245,7 @@ void PluginBl_Clipboard::pegaActualizaODS()
     
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -255,7 +255,7 @@ void PluginBl_Clipboard::pegaActualizaODS()
 **/
 void PluginBl_Clipboard::pegaODS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -284,7 +284,7 @@ void PluginBl_Clipboard::pegaODS()
             linea1->setDbValue ( campos.at ( j ), campos_valores.at ( j ) );
         } // end for
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -293,7 +293,7 @@ void PluginBl_Clipboard::pegaODS()
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 
     if (sub->isInsert() ) {
@@ -316,7 +316,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
       m_hboxLayout1->addWidget ( sel );
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

@@ -45,7 +45,7 @@
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -86,7 +86,7 @@ int entryPoint ( BcBulmaCont *bcont )
     bcont->mui_MenuHerramientas() ->addSeparator();
     bcont->mui_MenuHerramientas() ->addAction ( ArchDoc );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

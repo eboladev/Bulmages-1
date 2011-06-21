@@ -39,7 +39,7 @@ BfBulmaFact *g_pluginbf_minicontabilidad = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_MiniContabilidad", "0.12.1-0002");
@@ -92,7 +92,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( ("END ", Q_FUNC_INFO), 0, "PluginBf_MiniContabilidad" );
+    
 
     if (accion->objectName() == "mui_actionContablesPartidas") {
         PartidasView *pag = new PartidasView ( g_pluginbf_minicontabilidad->company(), 0, FALSE );
@@ -103,7 +103,7 @@ int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionContablesAnotaciones") {
         g_ap->hide();
         g_ap->show();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } // end if
 
     if (accion->objectName() == "mui_actionContablesPresupuestos") {
@@ -112,27 +112,27 @@ int BlAction_triggered(BlAction *accion) {
         pag->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( comp->hasTablePrivilege ( "partida", "SELECT" ) ) {
 
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( busq->tableName() == "partida" ) {
 
@@ -163,7 +163,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         return 1;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -173,7 +173,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int ret = 0;
     if ( g_fieldName == "codigocompletopartida"  ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -186,7 +186,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ret;
 }
 
@@ -195,7 +195,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCompletoPartida" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -204,14 +204,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCompletoPartida"  ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -219,14 +219,14 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ret;
 }
 
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "codigocompletopartida" ) {
 	QString query = "SELECT idpartida, nombrepartida, codigocompletopartida FROM partida WHERE upper (codigocompletopartida) LIKE upper('" + sub->m_campoactual->text() + "%')";
 
@@ -238,14 +238,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 /*
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-	blDebug ( Q_FUNC_INFO, 0 );
+	BL_FUNC_DEBUG
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "alumno") {
                 QString cadwhere = "";
@@ -279,11 +279,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 } // end while
                 delete bl->m_cursorcombo;
 
-	  blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	  
 	  return 1;
         } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 */
@@ -301,10 +301,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( sub->m_campoactual->fieldName() != "codigocompletopartida" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } // end if
 
@@ -342,7 +342,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
         } // end if
         delete diag;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 1;
 }
@@ -363,8 +363,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 **/
 SubForm_MiniContabilidad::SubForm_MiniContabilidad ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -372,8 +372,8 @@ SubForm_MiniContabilidad::SubForm_MiniContabilidad ( BlSubForm *parent ) : QObje
 **/
 SubForm_MiniContabilidad::~SubForm_MiniContabilidad()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -383,7 +383,7 @@ SubForm_MiniContabilidad::~SubForm_MiniContabilidad()
 **/
 void SubForm_MiniContabilidad::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigocompletopartida" );
     if ( header ) {
@@ -391,7 +391,7 @@ void SubForm_MiniContabilidad::s_pintaMenu ( QMenu *menu )
         menu->addAction ( _ ( "Gestionar partidas" ) );
 	menu->addAction ( _ ( "Seleccionar partida" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -401,7 +401,7 @@ void SubForm_MiniContabilidad::s_pintaMenu ( QMenu *menu )
 **/
 void SubForm_MiniContabilidad::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Gestionar partidas" ) ) {
             gestionarPartidas ( sub);
@@ -409,7 +409,7 @@ void SubForm_MiniContabilidad::s_trataMenu ( QAction *action )
         seleccionarPartida ( sub );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -418,11 +418,11 @@ void SubForm_MiniContabilidad::s_trataMenu ( QAction *action )
 **/
 void SubForm_MiniContabilidad::gestionarPartidas (  BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, FALSE );
     sub->mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -432,7 +432,7 @@ void SubForm_MiniContabilidad::gestionarPartidas (  BfSubForm *sub )
 **/
 void SubForm_MiniContabilidad::seleccionarPartida ( BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -466,7 +466,7 @@ void SubForm_MiniContabilidad::seleccionarPartida ( BfSubForm *sub )
 	} // end if
     delete diag;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -477,11 +477,11 @@ void SubForm_MiniContabilidad::seleccionarPartida ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     SubForm_MiniContabilidad *subformods = new SubForm_MiniContabilidad ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

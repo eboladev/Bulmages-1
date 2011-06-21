@@ -36,13 +36,13 @@ typedef QMap<QString, BlFixed> base;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
-    blDebug ( "PluginBt_IvaIncluido::BtTicket_agregarLinea_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtTicket_agregarLinea_Post", 0 );
     
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
     item->addDbField ( "pvpivainclalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "IVA inc." ) );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -50,7 +50,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
 
-    blDebug ( "PluginBt_IvaIncluido::BtTicket_insertarArticulo_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtTicket_insertarArticulo_Post", 0 );
     
     int valor = -1;
     static int semaforo = 0;
@@ -71,24 +71,24 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         semaforo = 0;
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return valor;
 }
 
 int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
-    blDebug ( "PluginBt_IvaIncluido::BtTicket_ponerPrecio_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtTicket_ponerPrecio_Post", 0 );
 	
     tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", tick->lineaActBtTicket()->dbValue("pvplalbaran"));
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BtCompany_z(BtCompany * emp)
 {
-    blDebug ( "PluginBt_IvaIncluido::BtCompany_z", 0 );
+    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtCompany_z", 0 );
     
     QString queryfechas;
     
@@ -147,7 +147,7 @@ int BtCompany_z(BtCompany * emp)
 	    QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
 	    system ( comando.toAscii().data() );
 	} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-	    blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+	    BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
 	} else {
 		blRawPrint ( "informe_Z.txt" );
 	} // end if 
@@ -179,7 +179,7 @@ int BtCompany_z(BtCompany * emp)
 
         QFile file (  g_confpr->value(CONF_DIR_USER) + "bulmatpv_z.txt" );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-            blDebug ( "Error en la Impresion de ticket", 2 );
+            BlDebug::blDebug ( "Error en la Impresion de ticket", 2 );
             return -1;
         } // end if
         
@@ -360,7 +360,7 @@ int BtCompany_z(BtCompany * emp)
     } // end while
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return -1;
 }
@@ -368,11 +368,11 @@ int BtCompany_z(BtCompany * emp)
 
 
 int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
-    blDebug ( "PluginBt_IvaIncluido::ArticuloListSubForm_ArticuloListSubForm_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_IvaIncluido::ArticuloListSubForm_ArticuloListSubForm_Post", 0 );
     
 	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
 	
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }

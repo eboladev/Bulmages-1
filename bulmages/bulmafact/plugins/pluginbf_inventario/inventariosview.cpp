@@ -33,9 +33,9 @@
 **/
 void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     on_mui_editar_clicked();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -45,14 +45,14 @@ void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 **/
 void InventariosView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
     if ( bud->load ( "0" ) )
         return;
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->mui_nominventario->setFocus();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -61,9 +61,9 @@ void InventariosView::on_mui_crear_clicked()
 **/
 void InventariosView::on_mui_listado_itemDoubleClicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     on_mui_editar_clicked();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -72,9 +72,9 @@ void InventariosView::on_mui_listado_itemDoubleClicked()
 **/
 void InventariosView::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_listado->load();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -85,7 +85,7 @@ void InventariosView::presentar()
 InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -98,7 +98,7 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     } // end if
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -107,8 +107,8 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 **/
 InventariosView::~InventariosView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -118,7 +118,7 @@ InventariosView::~InventariosView()
 **/
 void InventariosView::on_mui_editar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Tiene que seleccionar un inventario" ) );
@@ -135,7 +135,7 @@ void InventariosView::on_mui_editar_clicked()
             presentar();
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -145,7 +145,7 @@ void InventariosView::on_mui_editar_clicked()
 **/
 void InventariosView::on_mui_borrar2_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Tiene que seleccionar un inventario" ) );
@@ -162,7 +162,7 @@ void InventariosView::on_mui_borrar2_clicked()
         } // end if
     } // end if
     presentar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -171,7 +171,7 @@ void InventariosView::on_mui_borrar2_clicked()
 **/
 void InventariosView::on_mui_imprimir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
@@ -250,7 +250,7 @@ void InventariosView::on_mui_imprimir_clicked()
     } // end if
 
     blCreateAndLoadPDF ( "listado" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -264,10 +264,10 @@ void InventariosView::on_mui_imprimir_clicked()
 **/
 void InventariosSubForm::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString SQLQuery = "SELECT * FROM inventario";
     BlSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -277,7 +277,7 @@ void InventariosSubForm::load()
 **/
 InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "inventario" );
     setDbFieldId ( "idinventario" );
     addSubFormHeader ( "idinventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Id inventario" ) );
@@ -286,6 +286,6 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

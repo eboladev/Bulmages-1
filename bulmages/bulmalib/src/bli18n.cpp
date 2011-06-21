@@ -31,10 +31,11 @@
 
 QString blI18n ( const char *cadena, int )
 {
+    BL_FUNC_DEBUG
 #ifdef USE_GETTEXT
     /// Depuracion:
     QString salida = QString("blI18n (") + QString(blTextDomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
-    blDebug(salida, 0);
+    BlDebug::blDebug(salida, 0);
 
     return QString ( gettext ( cadena ) );
 #else
@@ -48,7 +49,7 @@ QString blI18n ( const char *domain, const char *cadena )
 #ifdef USE_GETTEXT
     /// Depuracion:
     QString salida = QString("blI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
-    blDebug(salida, 0);
+    BlDebug::blDebug(salida, 0);
 
     return QString ( dgettext ( domain, cadena ) );
 #else

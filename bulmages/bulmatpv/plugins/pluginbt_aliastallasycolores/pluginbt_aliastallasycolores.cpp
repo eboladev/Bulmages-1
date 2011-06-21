@@ -41,19 +41,19 @@ typedef QMap<QString, BlFixed> base;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick)
 {
-    blDebug ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
+    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
     BlDbRecord *rec = (BlDbRecord * ) g_plugParams;
     rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Talla" ) );
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
     rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Talla" ) );
     rec->addDbField ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Color" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 {
-    blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     int valor = -1;
     static int semaforo = 0;
     if ( semaforo == 0 ) {
@@ -74,13 +74,13 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return valor;
 }
 
 int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 {
-    blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     int valor = -1;
     static int semaforo = 0;
     if ( semaforo == 0 ) {
@@ -101,7 +101,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return valor;
 }
 
@@ -109,7 +109,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 
 int MTicket_pintar ( MTicket *mtick )
 {
-    blDebug ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
+    BlDebug::blDebug ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
     
     QString buscar;
 
@@ -274,7 +274,7 @@ int MTicket_pintar ( MTicket *mtick )
     cursor.clearSelection();
     mtick->mui_browser->setTextCursor( cursor );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return -1;
 }
 
@@ -282,7 +282,7 @@ int MTicket_pintar ( MTicket *mtick )
 
 int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 {
-  blDebug ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
+  BlDebug::blDebug ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
   
   QString query;
   QString buscar;
@@ -395,7 +395,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   cursor.clearSelection();
   mtick->mui_browser->setTextCursor( cursor );
   
-  blDebug ( ("END ", Q_FUNC_INFO), 0 );
+  
   
   return -1;
   
@@ -542,7 +542,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 // 
 //     /// Pintamos el HTML en el textBrowser
 //     mtick->mui_browser->setText ( html );
-//     blDebug ( ("END ", Q_FUNC_INFO), 0 );
+//     
 //     return -1;
 }
 
@@ -551,16 +551,16 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 
 int BtTicket_imprimir(BtTicket *tick)
 {
-    blDebug("pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+    BlDebug::blDebug("pluginbt_aliastallasycolores::BtTicket_imprimir",0);
 
     if ( tick->listaLineas()->size() ) {
         if( tick->listaLineas()->at ( 0 )->exists ( "pvpivainclalbaran" ) ) {
 	    BtTicket_imprimirIVAInc(tick);
-	    blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+	    BlDebug::blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
 	    return -1;
 	} // end if
     } else {
-        blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+        BlDebug::blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
         return -1;
     } // end if
     
@@ -746,19 +746,19 @@ int BtTicket_imprimir(BtTicket *tick)
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
+        BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
 		blRawPrint ("bulmatpv_ticket_tc.esc");
     } // end if
     
-    blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+    BlDebug::blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
     return -1;
 }
 
 
 int BtTicket_imprimirIVAInc(BtTicket *tick)
 {
-    blDebug ( "pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
+    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
     
     struct empresastr {
         QString nombre;
@@ -955,12 +955,12 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
+        BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
         system ( comando.toAscii().data() );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 1;
 }
 

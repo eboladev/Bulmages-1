@@ -76,7 +76,7 @@ void initConfiguration ( QString config )
 /// 1) bulmages.conf -> archivo para todos los programas del paquete Bulmages.
 /// 2) bulmaxxx.conf -> archivo especifico a un solo programa del paquete.
 ///
-/// NOTA: No se puede utilizar blDebug dentro de esta clase porque necesita
+/// NOTA: No se puede utilizar BlDebug::blDebug dentro de esta clase porque necesita
 /// valores que no se disponen antes de leer el archivo de configuraci&oacute;n.
 
 

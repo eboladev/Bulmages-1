@@ -37,10 +37,10 @@ MyDevButtonTD * g_plug;
 **/
 MyDevButtonTD::MyDevButtonTD ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    blDebug ( "MyDevButtonTD::MyDevButtonTD", 0 );
+    BlDebug::blDebug ( "MyDevButtonTD::MyDevButtonTD", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -49,8 +49,8 @@ MyDevButtonTD::MyDevButtonTD ( const QString & text, QWidget * parent, BtCompany
 **/
 MyDevButtonTD::~MyDevButtonTD()
 {
-    blDebug ( "MyDevButtonTD::~MyDevButtonTD", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MyDevButtonTD::~MyDevButtonTD", 0 );
+    
 }
 
 
@@ -60,7 +60,7 @@ MyDevButtonTD::~MyDevButtonTD()
 **/
 void MyDevButtonTD::on_click (  )
 {
-    blDebug ( "MyDevButtonTD::on_click", 0 );
+    BlDebug::blDebug ( "MyDevButtonTD::on_click", 0 );
     QDialog *diag = new QDialog;
     TicketsDevueltos *camb = new TicketsDevueltos ( m_emp, diag );
     diag->setModal ( true );
@@ -78,7 +78,7 @@ void MyDevButtonTD::on_click (  )
 
     delete diag;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -88,7 +88,7 @@ void MyDevButtonTD::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     tpv->company()->dbPatchVersionCheck("PluginBt_TicketDevuelto", "0.11.1-0001");
@@ -97,7 +97,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_ticketdevuelto", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

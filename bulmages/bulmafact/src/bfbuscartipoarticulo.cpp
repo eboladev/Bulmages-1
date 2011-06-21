@@ -31,7 +31,7 @@
 BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Establecemos los parametros de busqueda del Cliente
     setLabel ( _ ( "Tipo Articulo:" ) );
@@ -39,7 +39,7 @@ BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
     m_valores["codtipo_articulo"] = "";
     m_valores["desctipo_articulo"] = "";
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -49,8 +49,8 @@ BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
 **/
 BfBuscarTipoArticulo::~BfBuscarTipoArticulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -63,9 +63,9 @@ BfBuscarTipoArticulo::~BfBuscarTipoArticulo()
 **/
 void BfBuscarTipoArticulo::setidtipo_articulo ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setId ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -79,7 +79,7 @@ void BfBuscarTipoArticulo::setidtipo_articulo ( QString val )
 **/
 void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + val + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -92,7 +92,7 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 
     delete cur;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -105,8 +105,8 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 **/
 QString BfBuscarTipoArticulo::codtipo_articulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_valores["codtipo_articulo"];
 }
 
@@ -119,8 +119,8 @@ QString BfBuscarTipoArticulo::codtipo_articulo()
 **/
 QString BfBuscarTipoArticulo::idtipo_articulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return id();
 }
 
@@ -134,8 +134,8 @@ QString BfBuscarTipoArticulo::idtipo_articulo()
 **/
 QString BfBuscarTipoArticulo::desctipo_articulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_valores["desctipo_articulo"];
 }
 

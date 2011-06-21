@@ -37,8 +37,8 @@ un eventHandler especifico
 **/
 CuadranteQTreeWidget::CuadranteQTreeWidget ( QWidget *parent ) : QTreeWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -47,7 +47,7 @@ CuadranteQTreeWidget::CuadranteQTreeWidget ( QWidget *parent ) : QTreeWidget ( p
 **/
 CuadranteQTreeWidget::~CuadranteQTreeWidget()
 {
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -56,7 +56,7 @@ CuadranteQTreeWidget::~CuadranteQTreeWidget()
 **/
 void CuadranteQTreeWidget::startDrag ( Qt::DropActions supportedActions )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QDrag *drag = new QDrag ( this );
     QMimeData *mimeData = new QMimeData;
@@ -68,7 +68,7 @@ void CuadranteQTreeWidget::startDrag ( Qt::DropActions supportedActions )
 
     Qt::DropAction dropAction = drag->start ( Qt::ActionMask );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

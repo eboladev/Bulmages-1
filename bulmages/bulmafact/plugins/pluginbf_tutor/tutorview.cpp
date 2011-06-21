@@ -41,7 +41,7 @@
 */
 TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -141,20 +141,20 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 TutorView::~TutorView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 void TutorView::on_mui_sociocliente_toggled ( bool state )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if ( mui_numsociocliente->text() == "" && state ) {
         QString query = "SELECT COALESCE(max(numsociocliente) + 1 , 0) AS numsoc FROM cliente";
@@ -162,20 +162,20 @@ void TutorView::on_mui_sociocliente_toggled ( bool state )
         mui_numsociocliente->setText ( cur->value( "numsoc" ) );
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 QString TutorView::templateName ( void )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     
     return QString ( "tutor" );
 }
 
 void TutorView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -194,12 +194,12 @@ void TutorView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 int TutorView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
     mui_alumnosList->save();
@@ -315,14 +315,14 @@ int TutorView::afterSave()
       } // end if
     */
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
 
 int TutorView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /*
         QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
@@ -332,14 +332,14 @@ int TutorView::beforeDelete()
     QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue ( "idcliente" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
 
 int TutorView::cargarPost ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /*
         QString query1 = "SELECT * FROM socio WHERE idcliente = " + id;
@@ -354,7 +354,7 @@ int TutorView::cargarPost ( QString id )
 
     mui_listrecibos->load("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -369,7 +369,7 @@ int TutorView::cargarPost ( QString id )
 **/
 ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "alumnocliente" );
     setDbFieldId ( "idalumnocliente" );
@@ -382,7 +382,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -391,9 +391,9 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 **/
 void ListAlumnosTutorView::load ( QString idcliente )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm::load ( "SELECT *, (COALESCE(apellido1alumno,'-') || ' ' || COALESCE(apellido2alumno,'-') || ', ' || COALESCE(nombrealumno,'-') ) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

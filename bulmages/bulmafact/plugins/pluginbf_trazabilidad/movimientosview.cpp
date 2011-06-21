@@ -50,7 +50,7 @@
 MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode editmodo )
         : BfForm ( comp, parent, 0 )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     iniciaForm();
@@ -71,7 +71,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
     } // end if
     hideBusqueda();
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -81,7 +81,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
 **/
 void MovimientosView::iniciaForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
     if ( res != 0 )
@@ -89,7 +89,7 @@ void MovimientosView::iniciaForm()
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
     mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
     mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -100,9 +100,9 @@ void MovimientosView::iniciaForm()
 **/
 MovimientosView::~MovimientosView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -112,11 +112,11 @@ MovimientosView::~MovimientosView()
 **/
 void MovimientosView::presenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_list->load ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -127,11 +127,11 @@ void MovimientosView::presenta()
 **/
 QString MovimientosView::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( filtro );
 }
 
@@ -146,9 +146,9 @@ QString MovimientosView::generaFiltro()
 **/
 void MovimientosView::on_mui_imprimir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Facturas a clientes" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -166,7 +166,7 @@ void MovimientosView::on_mui_imprimir_clicked()
 **/
 MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "MovimientosSubform_MovimientosSubform", this );
     if ( res != 0 )
@@ -189,6 +189,6 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( FALSE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

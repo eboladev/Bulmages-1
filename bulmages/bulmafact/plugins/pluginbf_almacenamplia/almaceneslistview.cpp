@@ -41,7 +41,7 @@
 AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
         : BlFormList ( NULL, parent, flag )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -63,7 +63,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -77,7 +77,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
 AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
         : BlFormList ( comp, parent, flag )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -104,7 +104,7 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
     trataPermisos ( "almacen" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -113,8 +113,8 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
 **/
 AlmacenesListView::~AlmacenesListView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -124,8 +124,8 @@ AlmacenesListView::~AlmacenesListView()
 **/
 QString AlmacenesListView::idalmacen()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_idalmacen;
 }
 
@@ -136,10 +136,10 @@ QString AlmacenesListView::idalmacen()
 **/
 void AlmacenesListView::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -148,14 +148,14 @@ void AlmacenesListView::setMainCompany ( BfCompany *comp )
 **/
 void AlmacenesListView::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         ((BfCompany *)mainCompany())->s_newAlmacen();
     */
     AlmacenView *alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( alm );
     alm->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -164,12 +164,12 @@ void AlmacenesListView::crear()
 **/
 void AlmacenesListView::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Hacemos el listado y lo presentamos.
     mui_list->load ( "SELECT * FROM almacen" );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -179,12 +179,12 @@ void AlmacenesListView::presentar()
 **/
 QString AlmacenesListView::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
     QString filtro = "";
 
     return ( filtro );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -194,7 +194,7 @@ QString AlmacenesListView::generaFiltro()
 **/
 void AlmacenesListView::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ), row );
 
@@ -206,7 +206,7 @@ void AlmacenesListView::editar ( int row )
         } else {
             emit ( selected ( m_idalmacen ) );
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al editar el almacen" ) );
     } // end try
@@ -218,9 +218,9 @@ void AlmacenesListView::editar ( int row )
 **/
 void AlmacenesListView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Almacenes" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -230,7 +230,7 @@ void AlmacenesListView::imprimir()
 **/
 void AlmacenesListView::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -257,7 +257,7 @@ void AlmacenesListView::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el almacen" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

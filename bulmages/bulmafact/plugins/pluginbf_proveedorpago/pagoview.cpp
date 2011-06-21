@@ -45,7 +45,7 @@
 PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         :  BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         setAttribute ( Qt::WA_DeleteOnClose );
         setupUi ( this );
@@ -81,7 +81,7 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _ ( "Error al crear el pago" ), this );
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -90,7 +90,7 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
 **/
 PagoView::~PagoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 

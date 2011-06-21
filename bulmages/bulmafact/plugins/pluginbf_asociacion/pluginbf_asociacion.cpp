@@ -40,7 +40,7 @@ BfBulmaFact *g_pluginbf_asociacion = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -113,7 +113,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
    
-   blDebug ( Q_FUNC_INFO, 0 );
+   BL_FUNC_DEBUG
    if (accion->objectName() == "mui_actionJuntasDirectivas") {
        JDirectivaList * bud = new JDirectivaList ( g_pluginbf_asociacion->company(), NULL );
        g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
@@ -152,7 +152,7 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
         bud->pintar();
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

@@ -12,7 +12,7 @@
 FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_fpagoview = (FPagoView *) parent;
 
@@ -37,7 +37,7 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
     frame->setLayout(layout_fpago);
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -47,8 +47,8 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
 **/
 FPagoCuenta::~FPagoCuenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 

@@ -35,27 +35,27 @@
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_cambio", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return 0;
 }
 
 
 int BtCompany_cobrar ( BtCompany *etpv )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Comprueba que el ticket no este vacio.
     if (etpv->ticketActual()->listaLineas()->count() == 0) {
@@ -83,16 +83,16 @@ int BtCompany_cobrar ( BtCompany *etpv )
 
     delete diag;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return valor;
 }
 
 
 int BtTicket_BtTicket_Post(BtTicket *tick) 
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     tick->addDbField ( "pagado", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Pagado" ) );
     tick->addDbField ( "cambio", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Cambio" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }

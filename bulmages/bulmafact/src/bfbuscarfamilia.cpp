@@ -31,13 +31,13 @@
 BfBuscarFamilia::BfBuscarFamilia ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Establecemos los parametros de busqueda del Cliente
     setLabel ( _ ( "Familia:" ) );
     setTableName ( "familia" );
     m_valores["codigocompletofamilia"] = "";
     m_valores["nombrefamilia"] = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -47,8 +47,8 @@ BfBuscarFamilia::BfBuscarFamilia ( QWidget *parent )
 **/
 BfBuscarFamilia::~BfBuscarFamilia()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -58,9 +58,9 @@ BfBuscarFamilia::~BfBuscarFamilia()
 **/
 void BfBuscarFamilia::setidfamilia ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setId ( val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -69,7 +69,7 @@ void BfBuscarFamilia::setidfamilia ( QString val )
 **/
 void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + val + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -81,7 +81,7 @@ void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
     } // end if
 
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -93,8 +93,8 @@ void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
 **/
 QString BfBuscarFamilia::codigocompletofamilia()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_valores["codigocompletofamilia"];
 }
 
@@ -105,8 +105,8 @@ QString BfBuscarFamilia::codigocompletofamilia()
 **/
 QString BfBuscarFamilia::idfamilia()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return id();
 }
 
@@ -118,8 +118,8 @@ QString BfBuscarFamilia::idfamilia()
 **/
 QString BfBuscarFamilia::nombrefamilia()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_valores["nombrefamilia"];
 }
 

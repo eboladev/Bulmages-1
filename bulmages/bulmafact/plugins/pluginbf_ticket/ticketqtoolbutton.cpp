@@ -49,13 +49,13 @@
 **/
 TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, TicketClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,8 +64,8 @@ TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView 
 **/
 TicketQToolButton::~TicketQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -74,7 +74,7 @@ TicketQToolButton::~TicketQToolButton()
 **/
 void TicketQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Imprimir Ticket" ) );
@@ -82,7 +82,7 @@ void TicketQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -91,7 +91,7 @@ void TicketQToolButton::setBoton()
 **/
 void TicketQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_albaranClienteView != NULL ) {
     
@@ -109,7 +109,7 @@ void TicketQToolButton::click()
 
     
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

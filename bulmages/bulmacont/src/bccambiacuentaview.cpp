@@ -34,7 +34,7 @@
 BcCambiaCuentaView::BcCambiaCuentaView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     /// Preparamos la cuentaorigen para que trabaje sobre cuentas
     mui_codigoorigen->setMainCompany ( emp );
@@ -54,7 +54,7 @@ BcCambiaCuentaView::BcCambiaCuentaView ( BcCompany *emp, QWidget *parent, Qt::WF
 
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -63,8 +63,8 @@ BcCambiaCuentaView::BcCambiaCuentaView ( BcCompany *emp, QWidget *parent, Qt::WF
 **/
 BcCambiaCuentaView::~BcCambiaCuentaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -73,7 +73,7 @@ BcCambiaCuentaView::~BcCambiaCuentaView()
 **/
 void BcCambiaCuentaView::accept()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString origen = mui_codigoorigen->id();
     QString destino = mui_codigodestino->id();
     QString ainicial = asientoinicial->text();
@@ -190,6 +190,6 @@ void BcCambiaCuentaView::accept()
 
     mainCompany() ->commit();
     done ( 1 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

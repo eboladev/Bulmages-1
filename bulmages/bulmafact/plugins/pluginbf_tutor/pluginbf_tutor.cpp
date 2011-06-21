@@ -38,7 +38,7 @@ BfBulmaFact *g_pluginbf_tutor = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -70,13 +70,14 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Fichas->addAction ( accionB );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Tutor" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_Tutor" );
     if (accion->objectName() == "mui_actionSocio") {
         if ( g_tutoresList ) {
             g_tutoresList->hide();
@@ -90,27 +91,27 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
 
-    blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
+    
     return 0;
 }
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
         g_tutoresList = new TutoresList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_tutoresList );
         g_tutoresList->hide();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int ret = 0;
     if ( g_fieldName == "nombrealumno" || g_fieldName == "nombrealumno1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -135,7 +136,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return ret;
 }
@@ -145,7 +146,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -154,14 +155,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -169,13 +170,13 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ret;
 }
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "nombrealumno1" ) {
 	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
 //	blMsgInfo(query);
@@ -197,13 +198,13 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  blDebug ( Q_FUNC_INFO, 0 );
+  BL_FUNC_DEBUG
 
         if ( bl->m_entrada.size() >= 3 && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
                 QString cadwhere = "";
@@ -237,11 +238,9 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 } // end while
                 delete bl->m_cursorcombo;
 
-  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
 	  return 1;
         } // end if
-  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
     return 0;
 }
@@ -250,10 +249,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( sub->m_campoactual->fieldName() != "nomcliente" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } // end if
 
@@ -273,7 +272,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCliente == "" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } // end if
 
@@ -285,7 +284,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -342,8 +341,8 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 **/
 SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -351,8 +350,8 @@ SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 **/
 SubForm_Tutor::~SubForm_Tutor()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -362,7 +361,7 @@ SubForm_Tutor::~SubForm_Tutor()
 **/
 void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "cifcliente" );
     if (!header)
@@ -376,7 +375,7 @@ void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ), _ ( "Seleccionar tutor" ) );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -386,7 +385,7 @@ void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
 **/
 void SubForm_Tutor::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar tutor" ) ) {
         QString idtutor = sub->dbValue ( "idcliente" );
@@ -398,7 +397,7 @@ void SubForm_Tutor::s_trataMenu ( QAction *action )
         nuevoTutor();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -407,19 +406,19 @@ void SubForm_Tutor::s_trataMenu ( QAction *action )
 **/
 void SubForm_Tutor::editarTutor ( QString idtutor )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idtutor ) ) {
         delete art;
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Carga erronea") );
+        
         return;
     } // end if
     art->hide();
     art->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -429,7 +428,7 @@ void SubForm_Tutor::editarTutor ( QString idtutor )
 **/
 void SubForm_Tutor::nuevoTutor( )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
@@ -450,7 +449,7 @@ void SubForm_Tutor::nuevoTutor( )
     } // end if
     delete art;  
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -459,7 +458,7 @@ void SubForm_Tutor::nuevoTutor( )
 **/
 void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -475,7 +474,7 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idTutor == "" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     } // end if
 
@@ -487,7 +486,7 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -498,11 +497,11 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     SubForm_Tutor *subformods = new SubForm_Tutor ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -514,7 +513,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlSubFormHeader *header = sub->header ( "cifcliente" );
     if (!header)
@@ -552,7 +551,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     } // end if
     
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

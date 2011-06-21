@@ -39,7 +39,7 @@
 ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -78,7 +78,7 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el comision" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,8 +86,8 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
 */
 ComisionView::~ComisionView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -98,7 +98,7 @@ QString ComisionView::templateName ( void )
 
 void ComisionView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Comprobamos que se disponen de los datos minimos para imprimir el comision.
     QString SQLQuery = "";
 
@@ -114,16 +114,16 @@ void ComisionView::imprimir()
     } // end if
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 int ComisionView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->setColumnValue("idcomision", dbValue("idcomision") );
     mui_list->save();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -138,9 +138,9 @@ int ComisionView::beforeDelete()
 
 int ComisionView::cargarPost ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->load("SELECT * FROM miembrocomision NATURAL LEFT JOIN cliente WHERE idcomision = " + id);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

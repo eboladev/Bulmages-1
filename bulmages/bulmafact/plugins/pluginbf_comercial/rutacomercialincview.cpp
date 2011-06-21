@@ -47,7 +47,7 @@
 RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setDbTableName ( "rutacomercial" );
     setupUi ( this );
@@ -55,7 +55,7 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
     mui_incidenciacomercial->setMainCompany ( comp );
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,9 +64,9 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
 **/
 RutaComercialIncView::~RutaComercialIncView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -75,7 +75,7 @@ RutaComercialIncView::~RutaComercialIncView()
 **/
 void RutaComercialIncView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( QMessageBox::warning ( this,
                                 _ ( "BulmaFact - Rutas comerciales" ),
                                 _ ( "Desea borrar esta ruta?" ),
@@ -83,7 +83,7 @@ void RutaComercialIncView::on_mui_borrar_clicked()
         mui_rutacomercial->remove();
         mui_incidenciacomercial->remove();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -92,8 +92,8 @@ void RutaComercialIncView::on_mui_borrar_clicked()
 **/
 void RutaComercialIncView::closeEvent ( QCloseEvent * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -102,8 +102,8 @@ void RutaComercialIncView::closeEvent ( QCloseEvent * )
 **/
 void RutaComercialIncView::pintar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 };
 
 
@@ -112,16 +112,16 @@ void RutaComercialIncView::pintar()
 **/
 void RutaComercialIncView::on_mui_guardar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
       mui_rutacomercial->save();
       mui_incidenciacomercial->save();
     } catch(...) {
       blMsgInfo("Error inesperado al guardar");
-      blDebug ( ("END ", Q_FUNC_INFO), 0, " Error al guardar" );
+      
       throw -1;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -133,14 +133,14 @@ void RutaComercialIncView::on_mui_guardar_clicked()
 **/
 int RutaComercialIncView::load ( QString id, QString id1 )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int err = mui_rutacomercial->load ( id );
     if (id1 != "") {
       err = mui_incidenciacomercial->load ( id1 );
     } // end if
     setWindowTitle ( _ ( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
     insertWindow ( windowTitle(), this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return err;
 }
 
@@ -150,13 +150,13 @@ int RutaComercialIncView::load ( QString id, QString id1 )
 **/
 void RutaComercialIncView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
       on_mui_guardar_clicked();
       close();
     } catch (...) {
       return;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

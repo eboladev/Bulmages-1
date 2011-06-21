@@ -29,7 +29,7 @@
 **/
 BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "borrador" );
     setFileConfig ( "balancesubform" );
     setDbFieldId ( "idborrador" );
@@ -45,7 +45,7 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( p
     addSubFormHeader ( "ejhaber", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Ejercico haber" ) );
     addSubFormHeader ( "ejsaldo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Ejercicio saldo" ) );
     setInsert ( FALSE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -55,7 +55,7 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( p
 **/
 void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QAction *del = NULL;
     int row = currentRow();
     if ( row < 0 ) {
@@ -115,6 +115,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
         boton_extracto1 ( 2 );
     } // end if
     delete popup;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

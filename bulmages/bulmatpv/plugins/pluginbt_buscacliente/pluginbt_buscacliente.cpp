@@ -45,7 +45,7 @@ BtCompany * g_pluginbt_buscacliente_emp;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,7 +61,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
     g_doc1->loadConfig();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

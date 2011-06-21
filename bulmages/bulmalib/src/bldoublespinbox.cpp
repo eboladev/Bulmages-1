@@ -27,11 +27,11 @@
 **/
 BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
 {
-    blDebug ( "BlDoubleSpinBox::BlDoubleSpinBox", 0 );
+    BL_FUNC_DEBUG
     installEventFilter ( this );
     setAlignment ( Qt::AlignRight );
     setButtonSymbols ( QAbstractSpinBox::PlusMinus );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -40,8 +40,8 @@ BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
 **/
 BlDoubleSpinBox::~BlDoubleSpinBox()
 {
-    blDebug ( "BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -51,14 +51,14 @@ BlDoubleSpinBox::~BlDoubleSpinBox()
 **/
 QString const BlDoubleSpinBox::text()
 {
-    blDebug ( "BlDoubleSpinBox::text", 0 );
+    BL_FUNC_DEBUG
     QString a = QDoubleSpinBox::text();
 
 /*    /// Conversi&oacute;n al formato del locale "C": un punto separa la parte decimal
     QLocale locale;
     a = locale.toString((locale.toDouble(a))); //ARON
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return a;
 }
 
@@ -69,9 +69,9 @@ QString const BlDoubleSpinBox::text()
 **/
 void BlDoubleSpinBox::setValue ( double valor )
 {
-    blDebug ( "BlDoubleSpinBox::setValue", 0 );
+    BL_FUNC_DEBUG
     QDoubleSpinBox::setValue ( valor );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -83,7 +83,7 @@ void BlDoubleSpinBox::setValue ( double valor )
 **/
 bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
 {
-    blDebug ( "BlDoubleSpinBox::eventFilter", 0 );
+    BL_FUNC_DEBUG
     /// Si es una pulsacion o release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
@@ -102,7 +102,7 @@ bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end switch
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return QDoubleSpinBox::eventFilter ( obj, event );
 }
 

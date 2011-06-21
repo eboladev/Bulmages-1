@@ -41,7 +41,7 @@
 PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     mdb_idpago = "";
     setSubForm ( mui_list );
@@ -53,7 +53,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -66,7 +66,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
@@ -92,14 +92,14 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     trataPermisos ( "pago" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 PagosList::~PagosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -107,20 +107,20 @@ PagosList::~PagosList()
 
 void PagosList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantpago" );
         m_total->setText ( total.toQString() );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 QString PagosList::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -152,7 +152,7 @@ QString PagosList::generaFiltro()
     if ( mui_idbanco->idbanco() != "" )
         filtro += " AND idbanco = " + mui_idbanco->idbanco();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( filtro );
 }
 
@@ -179,7 +179,7 @@ void PagosList::editar ( int )
 
 void PagosList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PagoView *pv = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( pv );
     pv->pintar();
@@ -196,15 +196,15 @@ void PagosList::crear()
 
 void PagosList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Pagos a proveedores" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void PagosList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -221,18 +221,18 @@ void PagosList::remove()
     } catch ( ... )  {
         blMsgInfo ( _ ( "Error al borrar el pago" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void PagosList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

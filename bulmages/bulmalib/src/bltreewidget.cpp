@@ -22,7 +22,7 @@ BlTreeWidget::~BlTreeWidget () {
 **/
 void BlTreeWidget::creaMenu ( QMenu * )
 {
-    blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -31,7 +31,7 @@ void BlTreeWidget::creaMenu ( QMenu * )
 **/
 void BlTreeWidget::procesaMenu ( QAction * )
 {
-    blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -41,7 +41,7 @@ void BlTreeWidget::procesaMenu ( QAction * )
 **/
 void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
 {
-    blDebug ( "BlTreeWidget::contextMenuEvent", 0 );
+    BlDebug::blDebug ( "BlTreeWidget::contextMenuEvent", 0 );
 //    QAction *del = NULL;
 /*
     int row = currentRow();
@@ -81,7 +81,7 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
 
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
     if ( !opcion ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
 	return;
     } // end if
 
@@ -108,6 +108,6 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
     procesaMenu ( opcion );
 
     delete popup;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

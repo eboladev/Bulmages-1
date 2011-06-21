@@ -38,7 +38,7 @@
 BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode )
         : BlFormList ( comp, parent, flag )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
 
     mui_mostrar->insertItem ( 0, _ ( "Todos los asientos" ) );
@@ -53,7 +53,7 @@ BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFl
     mainCompany() ->insertWindow ( windowTitle(), this );
     /// Lanzamos los posibles scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -62,7 +62,7 @@ BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFl
 **/
 void BcAsientoListView::rellenaListaEjercicio()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
     mui_ejercicio->insertItem ( 0, _ ( "(todos)" ) );
@@ -73,7 +73,7 @@ void BcAsientoListView::rellenaListaEjercicio()
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -82,9 +82,9 @@ void BcAsientoListView::rellenaListaEjercicio()
 **/
 BcAsientoListView::~BcAsientoListView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -93,14 +93,14 @@ BcAsientoListView::~BcAsientoListView()
 **/
 void BcAsientoListView::on_mui_list_cellDoubleClicked ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString idasiento = mui_list->dbValue ( "idasiento" );
     /// Se cargan de nuevo los datos de la base de datos para verificar que el asiento exista y se pueda acceder a el.
     g_asiento ->cargaasientos();
     g_asiento ->muestraasiento ( idasiento );
     g_asiento ->show();
     g_asiento ->setFocus();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,7 +110,7 @@ void BcAsientoListView::on_mui_list_cellDoubleClicked ( int, int )
 **/
 void BcAsientoListView::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString saldototal = mui_saldoasiento->text();
     /// Pasamos el texto a minusculas para hacer la busqueda 'case insensitive'.
     QString nombreasiento = mui_nombreasiento->text().toLower();
@@ -296,7 +296,7 @@ void BcAsientoListView::presentar()
     mui_totalHaberBorrador->setText ( thb.toQString() );
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -305,9 +305,9 @@ void BcAsientoListView::presentar()
 **/
 void BcAsientoListView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Asientos" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

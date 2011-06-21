@@ -29,7 +29,7 @@
 **/
 void Iva::definetabla()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "iva" );
     setDbFieldId ( "idiva" );
     addDbField ( "idiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, "Identificador" );
@@ -40,7 +40,7 @@ void Iva::definetabla()
     addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, "Id. cuenta" );
     addDbField ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, "Codigo" );
     addDbField ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, "Nombre tipo IVA" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -50,10 +50,10 @@ void Iva::definetabla()
 **/
 Iva::Iva ( BcCompany *comp ) : BlDbRecord ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_companyact = comp;
     definetabla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,7 +64,7 @@ Iva::Iva ( BcCompany *comp ) : BlDbRecord ( comp )
 **/
 Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
@@ -74,7 +74,7 @@ Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
     } else {
         vaciaIva();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -85,11 +85,11 @@ Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
 **/
 Iva::Iva ( BcCompany *comp, BlDbRecordSet *cur ) : BlDbRecord ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_companyact = comp;
     definetabla();
     DBload ( cur );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -98,8 +98,8 @@ Iva::Iva ( BcCompany *comp, BlDbRecordSet *cur ) : BlDbRecord ( comp )
 **/
 Iva::~Iva()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -108,9 +108,9 @@ Iva::~Iva()
 **/
 void Iva::vaciaIva()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     DBclear();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -120,7 +120,7 @@ void Iva::vaciaIva()
 **/
 int Iva::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( dbValue ( "idiva" ) != "" ) {
         m_companyact->begin();
         int error = m_companyact->runQuery ( "DELETE FROM iva WHERE idiva = " + dbValue ( "idiva" ) );
@@ -131,7 +131,7 @@ int Iva::remove()
         m_companyact->commit();
         vaciaIva();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -142,7 +142,7 @@ int Iva::remove()
 **/
 void Iva::guardaIva()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString id;
     m_companyact->begin();
     int error = dbSave ( id );
@@ -152,7 +152,7 @@ void Iva::guardaIva()
     } // end if
     setDbValue ( "idiva", id );
     m_companyact->commit();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -162,7 +162,7 @@ void Iva::guardaIva()
 **/
 void Iva::setidtipoiva ( const QString &val )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString SQLQuery = "SELECT * FROM tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta WHERE idtipoiva = " + val;
     BlDbRecordSet *cur = m_companyact->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
@@ -172,7 +172,7 @@ void Iva::setidtipoiva ( const QString &val )
     } // end if
     delete cur;
     setDbValue ( "idtipoiva", val );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 #endif

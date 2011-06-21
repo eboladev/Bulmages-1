@@ -37,12 +37,12 @@
 **/
 BtSubForm::BtSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
-    blDebug ( "BtSubForm::BtSubForm", 0 );
+    BlDebug::blDebug ( "BtSubForm::BtSubForm", 0 );
     setDelete ( TRUE );
     m_delegate = new BtSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -51,9 +51,9 @@ BtSubForm::BtSubForm ( QWidget *parent ) : BlSubForm ( parent )
 **/
 BtSubForm::~BtSubForm()
 {
-    blDebug ( "BtSubForm::~BtSubForm", 0 );
+    BlDebug::blDebug ( "BtSubForm::~BtSubForm", 0 );
     delete m_delegate;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -63,9 +63,9 @@ BtSubForm::~BtSubForm()
 **/
 void BtSubForm::load ( QString query )
 {
-    blDebug ( "BtSubForm::cargar", 0 );
+    BlDebug::blDebug ( "BtSubForm::cargar", 0 );
     BlSubForm::load ( query );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -77,8 +77,8 @@ void BtSubForm::load ( QString query )
 **/
 void BtSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    blDebug ( "BtSubForm::pressedAsterisk", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtSubForm::pressedAsterisk", 0 );
+    
 }
 
 
@@ -89,11 +89,11 @@ void BtSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 **/
 void BtSubForm::on_mui_list_pressedSlash ( int row, int col )
 {
-    blDebug ( "BtSubForm::pressedSlash", 0 );
+    BlDebug::blDebug ( "BtSubForm::pressedSlash", 0 );
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     QString text = blTextEditor ( camp->text() );
     camp->set ( text );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -104,8 +104,8 @@ void BtSubForm::on_mui_list_pressedSlash ( int row, int col )
 **/
 void BtSubForm::on_mui_list_pressedMinus ( int row, int col )
 {
-    blDebug ( "BtSubForm::pressedMinus", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtSubForm::pressedMinus", 0 );
+    
 }
 
 
@@ -117,8 +117,8 @@ void BtSubForm::on_mui_list_pressedMinus ( int row, int col )
 **/
 void BtSubForm::on_mui_list_cellChanged ( int row, int col )
 {
-    blDebug ( "BtSubForm::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtSubForm::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    
 }
 
 
@@ -129,7 +129,7 @@ void BtSubForm::on_mui_list_cellChanged ( int row, int col )
 **/
 void BtSubForm::setIdCliente ( QString id )
 {
-    blDebug ( "BtSubForm::setIdCliente", 0, id );
+    BlDebug::blDebug ( "BtSubForm::setIdCliente", 0, id );
 
     /// En la primera carga no hay reajustes, pero si actualizacion del cliente.
     if ( mdb_idcliente  == "" ) {
@@ -151,7 +151,7 @@ void BtSubForm::setIdCliente ( QString id )
 
     /// Si el idcliente no existe salimos.
     if ( id == "" ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("'idcliente' no valido") );
+	
         return;
     } // end if
 
@@ -179,7 +179,7 @@ void BtSubForm::setIdCliente ( QString id )
         } // end for
     } // end if
     delete curcliente;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -190,7 +190,7 @@ void BtSubForm::setIdCliente ( QString id )
 **/
 void BtSubForm::setIdProveedor ( QString id )
 {
-    blDebug ( "BtSubForm::setIdProveedor", 0, id );
+    BlDebug::blDebug ( "BtSubForm::setIdProveedor", 0, id );
 
     /// En la primera carga no hay reajustes, pero si actualizacion del proveedor.
     if ( mdb_idproveedor  == "" ) {
@@ -231,7 +231,7 @@ void BtSubForm::setIdProveedor ( QString id )
         } // end for
     } // end if
     delete curproveedor;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -241,10 +241,10 @@ void BtSubForm::setIdProveedor ( QString id )
 **/
 void BtSubForm::setMainCompany ( BlMainCompany *c )
 {
-    blDebug ( "BtSubForm::setcompany", 0 );
+    BlDebug::blDebug ( "BtSubForm::setcompany", 0 );
     BlSubForm::setMainCompany ( c );
     m_delegate->setMainCompany ( c );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -254,10 +254,10 @@ void BtSubForm::setMainCompany ( BlMainCompany *c )
 **/
 int BtSubForm::cerrarEditor()
 {
-    blDebug ( "BtSubForm::cerrarEditor", 0 );
+    BlDebug::blDebug ( "BtSubForm::cerrarEditor", 0 );
     QWidget *editor = mui_list->QAbstractItemView::indexWidget ( mui_list->currentIndex() );
     m_delegate->cerrarEditor ( editor );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -271,10 +271,10 @@ int BtSubForm::cerrarEditor()
 **/
 BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelegate ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "BtSubFormDelegate::BtSubFormDelegate", 0 );
+    BlDebug::blDebug ( "BtSubFormDelegate::BtSubFormDelegate", 0 );
     m_subform = ( BtSubForm * ) parent;
     installEventFilter ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -283,8 +283,8 @@ BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelega
 **/
 BtSubFormDelegate::~BtSubFormDelegate()
 {
-    blDebug ( "BtSubFormDelegate::~BtSubFormDelegate", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtSubFormDelegate::~BtSubFormDelegate", 0 );
+    
 }
 
 
@@ -296,11 +296,11 @@ BtSubFormDelegate::~BtSubFormDelegate()
 **/
 QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    blDebug ( "BtSubFormDelegate::createEditor", 0 );
+    BlDebug::blDebug ( "BtSubFormDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
-    blDebug ( "BtSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    blDebug ( "BtSubFormDelegate::createEditor", 0, "CurrentRow" + QString::number ( index.row() ) );
+    BlDebug::blDebug ( "BtSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
+    BlDebug::blDebug ( "BtSubFormDelegate::createEditor", 0, "CurrentRow" + QString::number ( index.row() ) );
 
     if ( linea->fieldName() == "desc" + m_subform->tableName() ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
@@ -320,7 +320,7 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } // end if
     return QStyledItemDelegate::createEditor ( parent, option, index );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
    return 0;
 }
 
@@ -334,9 +334,9 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 **/
 void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    blDebug ( "BtSubFormDelegate::setModelData", 0 );
-    blDebug ( "BtSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    blDebug ( "BtSubFormDelegate::setModelData", 0, "CurrentRow: " + QString::number ( index.row() ) );
+    BlDebug::blDebug ( "BtSubFormDelegate::setModelData", 0 );
+    BlDebug::blDebug ( "BtSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
+    BlDebug::blDebug ( "BtSubFormDelegate::setModelData", 0, "CurrentRow: " + QString::number ( index.row() ) );
 
     /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -381,7 +381,7 @@ void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } else {
         QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -392,9 +392,9 @@ void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 **/
 void BtSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( "BtSubFormDelegate::setEditorData", 0 );
-    blDebug ( "BtSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    blDebug ( "BtSubFormDelegate::setEditorData", 0, "CurrentRow: " + QString::number ( index.row() ) );
+    BlDebug::blDebug ( "BtSubFormDelegate::setEditorData", 0 );
+    BlDebug::blDebug ( "BtSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
+    BlDebug::blDebug ( "BtSubFormDelegate::setEditorData", 0, "CurrentRow: " + QString::number ( index.row() ) );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName() == "desc" + m_subform->tableName() ) {
@@ -434,7 +434,7 @@ void BtSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     } else {
         QStyledItemDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -448,10 +448,10 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
-        blDebug ( "BtSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        BlDebug::blDebug ( "BtSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        blDebug ( "BtSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        BlDebug::blDebug ( "BtSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// Anulamos el caso de una pulsacion de tabulador o de enter
         switch ( key ) {
@@ -468,10 +468,10 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
     } // end if
 
     if ( event->type() == QEvent::KeyRelease ) {
-        blDebug ( "BtSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        BlDebug::blDebug ( "BtSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        blDebug ( "BtSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        BlDebug::blDebug ( "BtSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         switch ( key ) {
@@ -499,9 +499,9 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 **/
 int BtSubFormDelegate::cerrarEditor ( QWidget *editor )
 {
-    blDebug ( "BtSubFormDelegate::cerrarEditor", 0 );
+    BlDebug::blDebug ( "BtSubFormDelegate::cerrarEditor", 0 );
     emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

@@ -32,8 +32,8 @@
 **/
 bool BlDbLoginDialog::authOK()
 {
-    blDebug ( "BlDbLogindialog::authOK", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_authOK;
 }
 
@@ -45,14 +45,14 @@ bool BlDbLoginDialog::authOK()
 **/
 BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog ( parent )
 {
-    blDebug ( "BlDbLoginDialog::BlDbLoginDialog", 0 );
+    BL_FUNC_DEBUG
     setWindowTitle ( name );
     setupUi ( this );
     grpAuthError->setVisible ( TRUE );
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
     validate();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -61,8 +61,8 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
 **/
 BlDbLoginDialog::~BlDbLoginDialog()
 {
-    blDebug ( "BlDbLoginDialog::~BlDbLoginDialog", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -71,7 +71,7 @@ BlDbLoginDialog::~BlDbLoginDialog()
 **/
 void BlDbLoginDialog::validate()
 {
-    blDebug ( "BlDbLoginDialog::validate" );
+    BL_FUNC_DEBUG
     // inicializa escapa correctamente, la cadena de conexión no debe escaparse como el sql
     //m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
@@ -112,6 +112,6 @@ void BlDbLoginDialog::validate()
         m_password->setText ( "" );
         m_login->setFocus();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

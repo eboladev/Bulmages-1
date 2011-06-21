@@ -37,7 +37,7 @@ BfBulmaFact *g_pluginbf_carterapagos = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraPagos", "0.11.1-0001");
@@ -64,7 +64,6 @@ int entryPoint ( BfBulmaFact *bges )
 	g_pluginbf_carterapagos->Listados->addAction (accion);
 
     return 0;
-    blDebug ("END entryPoint, 0, Punto de Entrada del plugin de Cartera pagos\n");
 }
 
 int BlAction_triggered(BlAction *accion) {
@@ -84,7 +83,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ProveedorView_ProveedorView_Post ( ProveedorView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -105,7 +104,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->load("SELECT * FROM vencimientoproveedor WHERE idproveedor IS NULL");
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -117,12 +116,12 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
 **/
 int ProveedorView_cargarPost_Post ( ProveedorView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoproveedor" );
     if ( l ) {
         l->load ( "SELECT * FROM vencimientoproveedor LEFT JOIN forma_pago ON vencimientoproveedor.idforma_pago = forma_pago.idforma_pago WHERE idproveedor =  " + art->dbValue("idproveedor"));
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -158,7 +157,7 @@ void generarVencimientos (FacturaProveedorView *art) {
 **/
 int BlForm_guardar_Post ( BlForm *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoproveedor" );
@@ -194,7 +193,7 @@ int BlForm_guardar_Post ( BlForm *art )
         } // end if
         return 0;
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar") );
+	
         return 0;
     } // end try
 }
@@ -203,7 +202,7 @@ int BlForm_guardar_Post ( BlForm *art )
 
 
 int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( factp );
     l->setObjectName ( QString::fromUtf8 ( "vencimientop" ) );
@@ -225,7 +224,7 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
 
     factp->discounts->addTab ( l, "Vencimientos" );
     l->load("SELECT * FROM vencimientop WHERE idfacturap IS NULL");
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -236,12 +235,12 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
 **/
 int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientop" );
     if ( l ) {
         l->load ( "SELECT * FROM vencimientop LEFT JOIN forma_pago ON vencimientop.idforma_pago = forma_pago.idforma_pago WHERE idfacturap =  " + art->dbValue("idfacturap"));
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

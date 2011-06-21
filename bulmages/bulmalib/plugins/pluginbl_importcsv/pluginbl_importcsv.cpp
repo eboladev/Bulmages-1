@@ -45,8 +45,8 @@ BlMainCompany *g_pluginbl_importcsv_emp = NULL;
 **/
 PluginBl_ImportCSV::PluginBl_ImportCSV()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -54,8 +54,8 @@ PluginBl_ImportCSV::PluginBl_ImportCSV()
 **/
 PluginBl_ImportCSV::~PluginBl_ImportCSV()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -64,13 +64,13 @@ PluginBl_ImportCSV::~PluginBl_ImportCSV()
 **/
 void PluginBl_ImportCSV::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     ImportCSV *imp = new ImportCSV ( g_pluginbl_importcsv_emp, 0 );
     g_pluginbl_importcsv_emp->pWorkspace() ->addSubWindow ( imp );
     imp->show();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -78,7 +78,7 @@ void PluginBl_ImportCSV::elslot()
 
 int entryPoint ( BlMainWindow *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -102,7 +102,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion );
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

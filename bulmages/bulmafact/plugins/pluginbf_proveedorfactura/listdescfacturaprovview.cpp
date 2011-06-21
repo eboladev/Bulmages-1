@@ -34,7 +34,7 @@
 ListDescuentoFacturaProvView::ListDescuentoFacturaProvView ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "dfacturap" );
     setDbFieldId ( "iddfacturap" );
     addSubFormHeader ( "iddfacturap", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
@@ -42,6 +42,6 @@ ListDescuentoFacturaProvView::ListDescuentoFacturaProvView ( QWidget *parent )
     addSubFormHeader ( "proporciondfacturap", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idfacturap", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id factura" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

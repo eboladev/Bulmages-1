@@ -44,7 +44,7 @@
 BfSerieFacturaView::BfSerieFacturaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setTitleName ( _ ( "Serie de Factura" ) );
     setDbTableName ( "serie_factura" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -52,7 +52,7 @@ BfSerieFacturaView::BfSerieFacturaView ( BfCompany *comp, QWidget *parent )
     mui_listado->setMainCompany ( comp );
     mui_listado->load();
     insertWindow ( windowTitle(), this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -61,8 +61,8 @@ BfSerieFacturaView::BfSerieFacturaView ( BfCompany *comp, QWidget *parent )
 **/
 BfSerieFacturaView::~BfSerieFacturaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -73,13 +73,13 @@ BfSerieFacturaView::~BfSerieFacturaView()
 **/
 BfSerieFacturaSubForm::BfSerieFacturaSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "serie_factura" );
     setDbFieldId ( "codigoserie_factura" );
     addSubFormHeader ( "codigoserie_facturaorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "codigoserie_factura" );
     addSubFormHeader ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo serie factura" ) );
     addSubFormHeader ( "descserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion serie factura" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

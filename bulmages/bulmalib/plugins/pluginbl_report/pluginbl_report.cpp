@@ -48,8 +48,8 @@ BlMainCompany *g_pluginbl_report_emp = NULL;
 **/
 PluginBl_Report::PluginBl_Report()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -58,8 +58,8 @@ PluginBl_Report::PluginBl_Report()
 **/
 PluginBl_Report::~PluginBl_Report()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -68,13 +68,13 @@ PluginBl_Report::~PluginBl_Report()
 **/
 void PluginBl_Report::elslot1( )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlForm *ficha = new BlForm ( g_pluginbl_report_emp, 0 );
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -87,7 +87,7 @@ int entryPoint ( QMainWindow *bges )
 
 int init (  )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -209,7 +209,7 @@ int init (  )
         menu->addAction ( accion );
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

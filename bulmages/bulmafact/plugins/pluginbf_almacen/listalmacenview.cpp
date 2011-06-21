@@ -45,7 +45,7 @@
 ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setTitleName ( _ ( "Almacen" ) );
     setDbTableName ( "almacen" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -54,7 +54,7 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -63,14 +63,14 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
 **/
 void ListAlmacenView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los almacenes" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -79,8 +79,8 @@ void ListAlmacenView::on_mui_aceptar_clicked()
 **/
 ListAlmacenView::~ListAlmacenView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -91,14 +91,14 @@ ListAlmacenView::~ListAlmacenView()
 **/
 ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "almacen" );
     setDbFieldId ( "idalmacen" );
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id almacen" ) );
     addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre almacen" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -107,8 +107,8 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent 
 **/
 void ListAlmacenSubForm::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( "SELECT * FROM almacen" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

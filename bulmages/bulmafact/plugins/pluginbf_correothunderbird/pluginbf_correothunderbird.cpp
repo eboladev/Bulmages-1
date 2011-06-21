@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( l, NULL, NULL,  NULL, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
@@ -63,7 +63,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
     m_hboxLayout1->addWidget ( mui_envia_email );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -76,7 +76,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 **/
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, l, NULL, NULL, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -90,7 +90,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     m_hboxLayout1->addWidget ( mui_envia_email );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -103,7 +103,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 **/
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, NULL, l, NULL, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -117,7 +117,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 
     m_hboxLayout1->addWidget ( mui_envia_email );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -130,7 +130,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 **/
 int FacturaView_FacturaView ( FacturaView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, NULL, NULL, l, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -144,7 +144,7 @@ int FacturaView_FacturaView ( FacturaView *l )
 
     m_hboxLayout1->addWidget ( mui_envia_email );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }

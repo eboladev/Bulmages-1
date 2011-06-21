@@ -33,11 +33,11 @@
 **/
 BcBalanceImportarXML::BcBalanceImportarXML ( BcCompany *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_tag = "";
     m_data = "";
     m_paso = 0;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -57,13 +57,13 @@ void BcBalanceImportarXML::cambiapaso()
 **/
 bool BcBalanceImportarXML::startElement ( const QString &a, const QString &b, const QString &c, const QXmlAttributes &d )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_paso == 0 ) {
         return startElement1 ( a, b, c, d );
     } else {
         return startElement2 ( a, b, c, d );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Dependiendo del paso en que nos encontremos hace la llamada a una funcion u a otra.
@@ -75,13 +75,13 @@ bool BcBalanceImportarXML::startElement ( const QString &a, const QString &b, co
 **/
 bool BcBalanceImportarXML::endElement ( const QString &a, const QString &b, const QString &c )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_paso == 0 ) {
         return endElement1 ( a, b, c );
     } else {
         return endElement2 ( a, b, c );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -95,7 +95,7 @@ bool BcBalanceImportarXML::endElement ( const QString &a, const QString &b, cons
     \return TRUE para no detener la ejecucion del parser en caso de error. */
 bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_tag = qName;
     QString SQLQuery;
     if ( m_tag == "balance" ) {
@@ -122,7 +122,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
         } // end if
         delete cur;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 
@@ -140,7 +140,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
     \return TRUE para no detener la ejecucion del parser SAX. */
 bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const QString& qName )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_tag = qName;
     QString SQLQuery;
     if ( qName == "balance" ) {
@@ -190,7 +190,7 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
     } // end if
     m_tag = "";
     m_data = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 
@@ -202,9 +202,9 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
     \return TRUE para no detener la ejecuci&oacute;n del algoritmo. */
 bool BcBalanceImportarXML::startElement2 ( const QString&, const QString&, const QString &qName, const QXmlAttributes& )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_tag = qName;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 
@@ -217,7 +217,7 @@ bool BcBalanceImportarXML::startElement2 ( const QString&, const QString&, const
     \return TRUE para no detener nunca la ejecucion del algoritmo.  */
 bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const QString &qName )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_tag = qName;
     QString SQLQuery;
     /// En el segundo paso se hacen las inserciones por el flanco de final en lugar de por
@@ -313,7 +313,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     } // end if
     m_tag = "";
     m_data = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 
@@ -325,12 +325,12 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     \return TRUE porque no nos interesa abortar la ejecucion del algoritmo. */
 bool BcBalanceImportarXML::characters ( const QString& ch )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_tag != "" ) {
         m_data = ch;
         m_tvalores[m_tag] = m_data;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 

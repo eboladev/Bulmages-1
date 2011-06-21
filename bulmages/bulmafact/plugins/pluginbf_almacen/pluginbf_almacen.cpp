@@ -35,7 +35,7 @@ BfBulmaFact *g_pluginbf_almacen = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,13 +61,13 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionAlmacen") {
         ListAlmacenView * bud = new ListAlmacenView ( g_pluginbf_almacen->company(), NULL );
         g_pluginbf_almacen->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

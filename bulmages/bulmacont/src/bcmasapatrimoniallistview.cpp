@@ -31,10 +31,10 @@
 BcMasaPatrimonialListView::BcMasaPatrimonialListView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     modo = 0;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -43,8 +43,8 @@ BcMasaPatrimonialListView::BcMasaPatrimonialListView ( BcCompany *emp, QWidget *
 **/
 BcMasaPatrimonialListView::~BcMasaPatrimonialListView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -53,9 +53,9 @@ BcMasaPatrimonialListView::~BcMasaPatrimonialListView()
 **/
 void BcMasaPatrimonialListView::setModoSelector()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     modo = 1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,9 +64,9 @@ void BcMasaPatrimonialListView::setModoSelector()
 **/
 void BcMasaPatrimonialListView::setModoEditor()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     modo = 0;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -76,8 +76,8 @@ void BcMasaPatrimonialListView::setModoEditor()
 **/
 QString BcMasaPatrimonialListView::getnommasa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return nommasa;
 }
 
@@ -88,8 +88,8 @@ QString BcMasaPatrimonialListView::getnommasa()
 **/
 QString BcMasaPatrimonialListView::getidmasa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return idmasa;
 }
 
@@ -102,7 +102,7 @@ QString BcMasaPatrimonialListView::getidmasa()
 **/
 int BcMasaPatrimonialListView::inicializa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlDbRecordSet *cursoraux1;
 
     /// Vamos a cargar el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer
@@ -115,7 +115,7 @@ int BcMasaPatrimonialListView::inicializa()
     delete cursoraux1;
     fprintf ( stderr, "las cuentas tienen %d digitos\n", numdigitos );
     inicializaTabla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( 0 );
 }
 
@@ -125,7 +125,7 @@ int BcMasaPatrimonialListView::inicializa()
 **/
 void BcMasaPatrimonialListView::inicializaTabla()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTableWidgetItem *item0, *item1;
     mui_tabla->setRowCount ( 0 );
     mui_tabla->setColumnCount ( 2 );
@@ -152,7 +152,7 @@ void BcMasaPatrimonialListView::inicializaTabla()
         i++;
     } // end while
     delete cursoraux1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -165,7 +165,7 @@ void BcMasaPatrimonialListView::inicializaTabla()
 **/
 void BcMasaPatrimonialListView::dbtabla ( int row, int colummn, int button, const QPoint &mouse )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     fprintf ( stderr, "Se ha hecho doble click sobre la tabla\n" );
     /// Dependiendo del modo hacemos una cosa u otra.
     if ( modo == 0 ) {
@@ -186,7 +186,7 @@ void BcMasaPatrimonialListView::dbtabla ( int row, int colummn, int button, cons
     /// Para quitar el warning.
     colummn = button = 0;
     mouse.isNull();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -195,13 +195,13 @@ void BcMasaPatrimonialListView::dbtabla ( int row, int colummn, int button, cons
 **/
 void BcMasaPatrimonialListView::on_mui_editar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int row = mui_tabla->currentRow();
     int col = mui_tabla->currentColumn();
     QPoint mouse;
     dbtabla ( row, col, 0, mouse );
     inicializaTabla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -210,7 +210,7 @@ void BcMasaPatrimonialListView::on_mui_editar_clicked()
 **/
 void BcMasaPatrimonialListView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int row;
     row = mui_tabla->currentRow();
     idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
@@ -222,7 +222,7 @@ void BcMasaPatrimonialListView::on_mui_borrar_clicked()
     mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     inicializaTabla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -231,13 +231,13 @@ void BcMasaPatrimonialListView::on_mui_borrar_clicked()
 **/
 void BcMasaPatrimonialListView::on_mui_nuevo_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcMasaPatrimonialView *masa = new BcMasaPatrimonialView ( ( BcCompany * ) mainCompany(), this );
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
     inicializaTabla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -246,8 +246,8 @@ void BcMasaPatrimonialListView::on_mui_nuevo_clicked()
 **/
 void BcMasaPatrimonialListView::on_mui_cancelar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     close();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

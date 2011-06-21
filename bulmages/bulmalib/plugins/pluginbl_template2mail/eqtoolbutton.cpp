@@ -40,11 +40,11 @@
 **/
 EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -53,8 +53,8 @@ EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
 **/
 EQToolButtonMail::~EQToolButtonMail()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -64,7 +64,7 @@ EQToolButtonMail::~EQToolButtonMail()
 **/
 void EQToolButtonMail::pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QMenu *ajust = menu->addMenu ( _ ( "Inf. personales por e-mail" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -101,7 +101,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
         QAction * action = ajust->addAction ( titulo );
         action->setObjectName ( "em_" + fileInfo.fileName() );
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -111,7 +111,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
 **/
 void EQToolButtonMail::trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
@@ -159,7 +159,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
             } // end if
         } // end if
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

@@ -37,9 +37,9 @@ class Fixed;
 BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
         : BlForm ( comp, parent, f )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas = NULL;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -48,9 +48,9 @@ BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
 **/
 BcForm::~BcForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -60,9 +60,9 @@ BcForm::~BcForm()
 **/
 void BcForm::setListaLineas ( BcSubForm * form )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas = form;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -72,8 +72,8 @@ void BcForm::setListaLineas ( BcSubForm * form )
 **/
 BcSubForm* BcForm::listalineas()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_listalineas;
 }
 
@@ -84,8 +84,8 @@ BcSubForm* BcForm::listalineas()
 **/
 BcCompany * BcForm::mainCompany()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return ( BcCompany * ) BlForm::mainCompany();
 }
 

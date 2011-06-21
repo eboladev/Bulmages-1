@@ -47,10 +47,10 @@
 **/
 GenPedQToolButton::GenPedQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -59,8 +59,8 @@ GenPedQToolButton::GenPedQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 GenPedQToolButton::~GenPedQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -69,7 +69,7 @@ GenPedQToolButton::~GenPedQToolButton()
 **/
 void GenPedQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Pedido" );
@@ -79,7 +79,7 @@ void GenPedQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-to-order.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -88,14 +88,14 @@ void GenPedQToolButton::setBoton()
 **/
 void GenPedQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "PresupuestoClienteBase" ) {
         generarFactura1();
     }// end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,7 +110,7 @@ void GenPedQToolButton::click()
 **/
 void GenPedQToolButton::generarFactura1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -223,7 +223,7 @@ void GenPedQToolButton::generarFactura1()
     } // end try
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

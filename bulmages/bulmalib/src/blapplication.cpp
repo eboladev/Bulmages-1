@@ -37,8 +37,7 @@ BlApplication *g_theApp;
 **/
 BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, argv )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+  BL_FUNC_DEBUG
 }
 
 
@@ -47,8 +46,7 @@ BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, a
 **/
 BlApplication::~BlApplication()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+  BL_FUNC_DEBUG
 }
 
 
@@ -60,12 +58,11 @@ BlApplication::~BlApplication()
 **/
 bool BlApplication::notify ( QObject *o, QEvent *e )
 {
-//    blDebug ( Q_FUNC_INFO, 0 );
+//   Esta funcion es llamada continuamente y por eso no la depuramos.
+//   BL_FUNC_DEBUG
     try {
-//        blDebug ( ("END ", Q_FUNC_INFO), 0 );
         return QApplication::notify ( o, e );
     } catch ( ... ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error inesperado en la aplicacion") );
         return FALSE;
     } // end try
 }
@@ -73,8 +70,7 @@ bool BlApplication::notify ( QObject *o, QEvent *e )
 
 void BlApplication::emitDbTableChanged ( const QString &t )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+  BL_FUNC_DEBUG
     emit dbTableChanged ( t );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
 }
 

@@ -28,8 +28,8 @@
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 {
-    blDebug ( "PluginBt_Alias::BtTicket_agregarLinea_Post", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "PluginBt_Alias::BtTicket_agregarLinea_Post", 0 );
+    
     return 0;
 }
 
@@ -37,7 +37,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 
 int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 {
-    blDebug ( "PluginBt_Alias::BtTicket_insertarArticuloCodigoNL_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_Alias::BtTicket_insertarArticuloCodigoNL_Post", 0 );
     BlDbRecordSet *cur = 0;
 
     QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
@@ -52,7 +52,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         delete cur;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -61,7 +61,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 {
     int valor = -1;
-    blDebug ( "PluginBt_Alias::BtTicket_insertarArticuloCodigo_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_Alias::BtTicket_insertarArticuloCodigo_Post", 0 );
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
@@ -74,6 +74,6 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         valor = 0;
         semaforo = 0;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return valor;
 }

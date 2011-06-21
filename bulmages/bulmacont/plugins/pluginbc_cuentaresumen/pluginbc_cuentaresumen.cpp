@@ -47,7 +47,7 @@ QAction *viewCorrector;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -95,7 +95,7 @@ int entryPoint ( BcBulmaCont *bcont )
         viewCorrector->setChecked ( FALSE );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -118,7 +118,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * )
 
 int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString cod = bcta->fieldValue("codigo");
     QString nom = bcta->fieldValue("descripcion");
     QString id  = bcta->id();
@@ -137,7 +137,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
         g_res->setMensaje ( mensaje );
     } // end if
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -149,7 +149,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
 **/
 int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( subform->currentRow() < 0 )
         return 0;
     if ( subform->existsHeader ( "codigo" ) ) {
@@ -181,8 +181,7 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 \param bcont
 **/
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
-    blDebug ( Q_FUNC_INFO, 0 );
-//    BcCompany * emp = bcont->company();
+    BL_FUNC_DEBUG
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
@@ -190,6 +189,5 @@ int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
         file.open ( QIODevice::WriteOnly );
         file.close();
     } // end if
-    blDebug("END BcBulmaCont_closeEvent");
     return 0;
 }

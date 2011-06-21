@@ -50,7 +50,7 @@
 **/
 BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 {
-    blDebug ( "BtBulmaTPV::BtBulmaTPV", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::BtBulmaTPV", 0 );
     
     setupUi ( this );
     setUpdatesEnabled ( TRUE );
@@ -107,7 +107,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
@@ -117,9 +117,9 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 **/
 void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 {
-    blDebug ( "BtBulmaTPV::createMainWindows", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::createMainWindows", 0 );
     m_company->createMainWindows ( splashScr );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Libera memoria destruyendo todos los objetos creados.
@@ -128,7 +128,7 @@ void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 **/
 BtBulmaTPV::~BtBulmaTPV()
 {
-    blDebug ( "BtBulmaTPV::~BtBulmaTPV", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::~BtBulmaTPV", 0 );
     delete m_company;
 	
 /*
@@ -139,7 +139,7 @@ BtBulmaTPV::~BtBulmaTPV()
     exit ( 0 );
 #endif
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Intercambia entre el modo ventana completa y el modo ventana normal
@@ -148,7 +148,7 @@ BtBulmaTPV::~BtBulmaTPV()
 **/
 void BtBulmaTPV::s_ventanaCompleta()
 {
-    blDebug ( "BtBulmaTPV::s_ventanaCompleta", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::s_ventanaCompleta", 0 );
 
     if ( isFullScreen() ) {
         showNormal();
@@ -156,7 +156,7 @@ void BtBulmaTPV::s_ventanaCompleta()
         showFullScreen();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -165,9 +165,9 @@ void BtBulmaTPV::s_ventanaCompleta()
 **/
 void BtBulmaTPV::on_actionVentana_Completa_triggered()
 {
-    blDebug ( "BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
     s_ventanaCompleta();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Metodo que responde a la pulsacion de About en el menu.
@@ -177,12 +177,12 @@ void BtBulmaTPV::on_actionVentana_Completa_triggered()
 **/
 void BtBulmaTPV::s_About()
 {
-    blDebug ( "BtBulmaTPV::s_About", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::s_About", 0 );
     
     BtAboutView about;
     about.exec();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -193,8 +193,8 @@ void BtBulmaTPV::s_About()
 **/
 void BtBulmaTPV::closeEvent ( QCloseEvent * )
 {
-    blDebug ( "BtBulmaTPV::closeEvent", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::closeEvent", 0 );
+    
 }
 
 
@@ -204,17 +204,17 @@ void BtBulmaTPV::closeEvent ( QCloseEvent * )
 **/
 BlWorkspace * BtBulmaTPV::workspace()
 {
-    blDebug ( "BtBulmaTPV::workspace", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::workspace", 0 );
+    
     return pWorkspace;
 }
 
 
 void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 {
-    blDebug ( "BtBulmaTPV::keyReleaseEvent", 0 );
+    BlDebug::blDebug ( "BtBulmaTPV::keyReleaseEvent", 0 );
     m_company->keyPressEvent ( e );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

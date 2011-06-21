@@ -51,10 +51,10 @@
 /*
 GenPreQToolButton::GenPreQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 
@@ -64,8 +64,8 @@ GenPreQToolButton::GenPreQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 /*
 GenPreQToolButton::~GenPreQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 */
 
@@ -75,7 +75,7 @@ GenPreQToolButton::~GenPreQToolButton()
 /*
 void GenPreQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar factura") );
@@ -85,7 +85,7 @@ void GenPreQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-to-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 
@@ -95,7 +95,7 @@ void GenPreQToolButton::setBoton()
 /*
 void GenPreQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "AlbaranClienteBase" ) {
         generarFactura();
@@ -111,7 +111,7 @@ void GenPreQToolButton::click()
     }// end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 
@@ -128,7 +128,7 @@ void GenPreQToolButton::click()
 /*
 void GenPreQToolButton::generarFactura()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     AlbaranClienteView *fpv = ( AlbaranClienteView * ) m_object;
 
     /// Disparamos los plugins.
@@ -243,7 +243,7 @@ void GenPreQToolButton::generarFactura()
     } // end try
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 
@@ -260,7 +260,7 @@ void GenPreQToolButton::generarFactura()
 /*
 void GenPreQToolButton::generarFactura1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
 
@@ -370,7 +370,7 @@ void GenPreQToolButton::generarFactura1()
     } // end try
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 
@@ -390,7 +390,7 @@ void GenPreQToolButton::generarFactura1()
 /*
 void GenPreQToolButton::generarFactura2()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -500,7 +500,7 @@ void GenPreQToolButton::generarFactura2()
     } // end try
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */
 // ====================
@@ -517,10 +517,10 @@ void GenPreQToolButton::generarFactura2()
 **/
 VerPreQToolButton::VerPreQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -529,8 +529,8 @@ VerPreQToolButton::VerPreQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 VerPreQToolButton::~VerPreQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -539,7 +539,7 @@ VerPreQToolButton::~VerPreQToolButton()
 **/
 void VerPreQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Ver presupuesto con la misma referencia") );
@@ -549,7 +549,7 @@ void VerPreQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -558,13 +558,13 @@ void VerPreQToolButton::setBoton()
 **/
 void VerPreQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "PedidoClienteBase" ) {
         verPresupuesto();
     }// end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -578,7 +578,7 @@ void VerPreQToolButton::click()
 **/
 void VerPreQToolButton::verPresupuesto()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
 
     PresupuestoView *bud = NULL;
@@ -620,7 +620,7 @@ void VerPreQToolButton::verPresupuesto()
             } // end while
         } else {
             blMsgInfo ( _ ( "No hay presupuestos con la misma referencia." ), this );
-            blDebug ( Q_FUNC_INFO, 0, _("No hay presupuestos con la misma referencia.") );
+            BlDebug::blDebug ( Q_FUNC_INFO, 0, _("No hay presupuestos con la misma referencia.") );
         } // end if
 
         delete cur;
@@ -631,7 +631,7 @@ void VerPreQToolButton::verPresupuesto()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

@@ -35,11 +35,11 @@
 BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     m_codigoserie_factura = "";
     m_table = "serie_factura";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -49,8 +49,8 @@ BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
 **/
 BfBuscarSerieFactura::~BfBuscarSerieFactura()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -64,7 +64,7 @@ BfBuscarSerieFactura::~BfBuscarSerieFactura()
 **/
 void BfBuscarSerieFactura::setId ( QString codigo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
     /// Prevalece el valor de la configuracion en la base de datos sobre el valor en el archivo de configuracion.
 
@@ -104,7 +104,7 @@ void BfBuscarSerieFactura::setId ( QString codigo )
     } else {
         setCurrentIndex ( i2 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -114,13 +114,13 @@ void BfBuscarSerieFactura::setId ( QString codigo )
 **/
 void BfBuscarSerieFactura::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "codigoserie_factura", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -130,14 +130,14 @@ void BfBuscarSerieFactura::m_activated ( int index )
 **/
 QString BfBuscarSerieFactura::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = currentIndex();
     if ( index > 0 ) {
         return ( m_comboRecordSet->value( "codigoserie_factura", index - 1 ) );
     } else {
         return "";
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -150,7 +150,7 @@ QString BfBuscarSerieFactura::id()
 **/
 void BfBuscarSerieFactura::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
     if ( !cur ) return;
@@ -158,6 +158,6 @@ void BfBuscarSerieFactura::setMainCompany ( BfCompany *comp )
         m_codigoserie_factura = cur->value( "valor" );
     } // end if
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

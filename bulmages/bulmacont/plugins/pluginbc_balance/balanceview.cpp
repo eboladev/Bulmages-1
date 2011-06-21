@@ -55,7 +55,7 @@
 BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
         : BcForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
 
     setTitleName ( _ ( "Balance" ) );
@@ -113,7 +113,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     /// Llamamos a los scripts
     blScript(this);
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -122,8 +122,8 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 **/
 BalanceView::~BalanceView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -132,9 +132,9 @@ BalanceView::~BalanceView()
 **/
 void BalanceView::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     accept();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -150,12 +150,12 @@ void BalanceView::on_mui_actualizar_clicked()
 **/
 void BalanceView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, QString idc_coste )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
     m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
     m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -167,7 +167,7 @@ void BalanceView::inicializa1 ( QString codinicial, QString codfinal, QString fe
 **/
 void BalanceView::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString cinicial = m_codigoinicial->fieldValue("codigo").left ( 2 );
@@ -185,7 +185,7 @@ void BalanceView::presentar()
     /// Balance de Sumas y Saldos.
     presentarSyS ( finicial, ffinal, cinicial, cfinal, nivel, 0, jerarquico );
     //} // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -200,7 +200,7 @@ void BalanceView::presentar()
 **/
 void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
     BlDbRecordSet *ramas = NULL;
     BlDbRecordSet *hojas = NULL;
@@ -417,7 +417,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         if ( ramas ) delete ramas;
         if ( hojas ) delete hojas;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -426,9 +426,9 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 **/
 void BalanceView::accept()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     presentar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -440,10 +440,10 @@ void BalanceView::accept()
 **/
 void BalanceView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BalancePrintView *balan = new BalancePrintView ( mainCompany() );
     balan->inicializa1 ( m_codigoinicial->fieldValue("codigo"), m_codigofinal->fieldValue("codigo"), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
     balan->exec();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

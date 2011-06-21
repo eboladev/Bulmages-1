@@ -40,7 +40,7 @@ BcBulmaCont *g_pluginbc_example = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -59,13 +59,14 @@ int entryPoint ( BcBulmaCont *bcont )
     /// del programa para indicar que el plugin se ha cargado.
     bcont->setWindowTitle ( _ ( "Prueba de plugin BulmaCont." ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Example") );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Example") );
 
     if (accion->objectName() == "mui_actionExample") {
         QMessageBox::warning ( 0,
@@ -75,7 +76,7 @@ int BlAction_triggered(BlAction *accion) {
                 QMessageBox::Cancel );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

@@ -44,7 +44,7 @@ BfBulmaFact *g_pluginbf_contrato = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Contrato", "0.11.1-0001");
@@ -67,7 +67,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     pPluginMenu->addAction(accion);
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -90,13 +90,13 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ClienteView_ClienteView ( ClienteView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un insertWindow y no es deseable.
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, _("Contratos") );
     l->setEditMode();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -108,7 +108,7 @@ int ClienteView_ClienteView ( ClienteView *art )
 **/
 int BlForm_load ( BlForm *fich )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );
     if ( l ) {
         l->mui_idcliente->setId ( fich->dbValue ( "idcliente" ) );

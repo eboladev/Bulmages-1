@@ -48,13 +48,13 @@ BlDockWidget *g_dock;
 **/
 int entryPoint ( BtBulmaTPV *btpv )
 {
-    blDebug ( Q_FUNC_INFO, 0, _("Punto de entrada de PluginBt_Example") );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Punto de entrada de PluginBt_Example") );
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ( "END ", Q_FUNC_INFO), 0, _("Punto de entrada de PluginBt_Example") );
+    
 }
 
 
@@ -65,7 +65,7 @@ int entryPoint ( BtBulmaTPV *btpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *btpv )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Creamos un widget
     g_example = new ExampleView ( btpv, g_dock );
     QDockWidget *dockExample = new QDockWidget( _("Ejemplo"), g_main);
@@ -77,6 +77,6 @@ int BtCompany_createMainWindows_Post ( BtCompany *btpv )
     dockExample->setWidget(g_example);
     
     
-    blDebug ( ("END ",Q_FUNC_INFO), 0 );
+    
     return 0;
 }

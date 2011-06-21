@@ -47,7 +47,7 @@
 ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
@@ -85,12 +85,12 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     trataPermisos ( "contrato" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ContratosList::remove() {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         QString idcontrato = mui_list->dbValue ( "idcontrato" );
         ContratoView *cont = new ContratoView ( ( BfCompany * ) mainCompany(), 0 ) ;
@@ -104,21 +104,21 @@ void ContratosList::remove() {
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar un contrato" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ContratosList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Listado de Contratos" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ContratosList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->load ( "SELECT * FROM contrato ORDER BY idcontrato " );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No requiere acciones especiales en el destructor de la clase.
@@ -127,9 +127,9 @@ void ContratosList::presentar()
 **/
 ContratosList::~ContratosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -140,7 +140,7 @@ ContratosList::~ContratosList()
 **/
 void ContratosList::presenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString where;
 
     if ( mui_idcliente->id() != "" ) {
@@ -148,7 +148,7 @@ void ContratosList::presenta()
     } // end if
 
     mui_list->load ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -164,7 +164,7 @@ void ContratosList::presenta()
 void ContratosList::editar ( int row )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idcontrato = mui_list->dbValue ( "idcontrato", row );
     mdb_refcontrato = mui_list->dbValue ( "refcontrato", row );
     mdb_nomcontrato = mui_list->dbValue ( "nomcontrato", row );
@@ -179,7 +179,7 @@ void ContratosList::editar ( int row )
     } else {
         emit ( selected ( mdb_idcontrato ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -192,8 +192,8 @@ void ContratosList::editar ( int row )
 **/
 QString ContratosList::idcontrato()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idcontrato;
 }
 
@@ -203,8 +203,8 @@ QString ContratosList::idcontrato()
 **/
 QString ContratosList::nomcontrato()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_nomcontrato;
 }
 
@@ -215,8 +215,8 @@ QString ContratosList::nomcontrato()
 **/
 QString ContratosList::refcontrato()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_refcontrato;
 }
 
@@ -229,11 +229,11 @@ QString ContratosList::refcontrato()
 **/
 void ContratosList::on_m_filtro_textChanged ( const QString &text )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( text.size() >= 3 ) {
         on_mui_actualizar_clicked();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -242,12 +242,12 @@ void ContratosList::on_m_filtro_textChanged ( const QString &text )
 **/
 void ContratosList::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     ContratoView *prov = new ContratoView ( ( BfCompany * ) mainCompany() );
     prov->load ( "0" );
     mainCompany() ->m_pWorkspace->addSubWindow ( prov );
     prov->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -256,9 +256,9 @@ void ContratosList::on_mui_crear_clicked()
 **/
 void ContratosList::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     presenta();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton configurar en la botonera
@@ -267,13 +267,13 @@ void ContratosList::on_mui_actualizar_clicked()
 **/
 void ContratosList::on_mui_configurar_toggled ( bool checked )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( checked ) {
         mui_list->showConfig();
     } else {
         mui_list->hideConfig();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -282,7 +282,7 @@ void ContratosList::on_mui_configurar_toggled ( bool checked )
 **/
 void ContratosList::on_mui_facturar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlDbRecordSet *cur = NULL;
     try {
         QString where;
@@ -310,7 +310,7 @@ void ContratosList::on_mui_facturar_clicked()
         if ( cur ) delete cur;
         return;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -325,7 +325,7 @@ void ContratosList::on_mui_facturar_clicked()
 **/
 ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "contrato" );
     setDbFieldId ( "idcontrato" );
     addSubFormHeader ( "idcontrato", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID contrato" ) );
@@ -340,7 +340,7 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : B
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -349,6 +349,6 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : B
 **/
 ContratosListSubform::~ContratosListSubform()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }

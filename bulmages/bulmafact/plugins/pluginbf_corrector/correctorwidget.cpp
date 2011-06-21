@@ -34,10 +34,10 @@
 correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
         : BlWidget ( parent, fl )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -46,8 +46,8 @@ correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
 **/
 correctorwidget::~correctorwidget()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -57,11 +57,11 @@ correctorwidget::~correctorwidget()
 **/
 void correctorwidget::on_mui_configurar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     confreglasview *conf = new confreglasview();
     conf->exec();
     delete conf;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -72,7 +72,7 @@ void correctorwidget::on_mui_configurar_clicked()
 **/
 void correctorwidget::on_mui_corregir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     QString cadena;
 
@@ -131,7 +131,7 @@ void correctorwidget::on_mui_corregir_clicked()
 
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -141,9 +141,9 @@ void correctorwidget::on_mui_corregir_clicked()
 **/
 void correctorwidget::setMensaje ( QString mensaje )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_browser->setHtml ( mensaje );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -158,7 +158,7 @@ void correctorwidget::setMensaje ( QString mensaje )
 **/
 void correctorwidget::alink ( const QUrl &url )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString linker = url.fragment();
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
@@ -204,7 +204,7 @@ void correctorwidget::alink ( const QUrl &url )
         ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     }// end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -218,9 +218,9 @@ void correctorwidget::alink ( const QUrl &url )
 **/
 void correctorwidget::agregarError ( QString texto, QString texto1, QString texto2 )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><a name='masinfo' href='#" + texto1 + "'>+ info</a></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -230,7 +230,7 @@ void correctorwidget::agregarError ( QString texto, QString texto1, QString text
 **/
 void correctorwidget::cambia ( bool a )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( a ) {
         dock->hide();
         dock->show();
@@ -238,6 +238,6 @@ void correctorwidget::cambia ( bool a )
     } else {
         dock->hide();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

@@ -42,7 +42,7 @@
 ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         : BcForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -112,7 +112,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -122,8 +122,8 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
 **/
 ProyectoView::~ProyectoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 

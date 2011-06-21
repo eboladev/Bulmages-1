@@ -39,7 +39,7 @@ BfBulmaFact *g_pluginbf_proveedorfactura = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -74,7 +74,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorFactura" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorFactura" );
 
     if (accion->objectName() == "mui_actionProveedoresFacturas") {
         if ( g_facturasProveedorList ) {
@@ -90,7 +91,7 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     }  // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -152,7 +153,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -165,7 +166,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -176,7 +177,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
 
@@ -190,7 +191,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

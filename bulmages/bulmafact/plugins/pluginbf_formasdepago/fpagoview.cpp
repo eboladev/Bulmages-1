@@ -34,7 +34,7 @@
 FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     groupBox1->setDisabled ( TRUE );
@@ -56,7 +56,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     insertWindow ( windowTitle(), this );
     pintar();
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -66,8 +66,8 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
 **/
 QString FPagoView::idFormaPago()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idforma_pago;
 }
 
@@ -78,7 +78,7 @@ QString FPagoView::idFormaPago()
 **/
 void FPagoView::pintar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_lista->clear();
     if ( m_cursorFPagoView != NULL )
         delete m_cursorFPagoView;
@@ -91,7 +91,7 @@ void FPagoView::pintar()
     } // end while
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -100,10 +100,10 @@ void FPagoView::pintar()
 **/
 FPagoView::~FPagoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_cursorFPagoView != NULL )
         delete m_cursorFPagoView;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -114,7 +114,7 @@ FPagoView::~FPagoView()
 **/
 void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( !cur ) return;
     groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
@@ -128,7 +128,7 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -137,7 +137,7 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 **/
 int FPagoView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mdb_idforma_pago == "" || mdb_idforma_pago == "0" ) return 0;
     try {
 	QString idbanco = mui_idbanco->idbanco();
@@ -183,10 +183,10 @@ int FPagoView::save()
         /// Emitimos la se&ntilde;al apropiada en el BlApplication.
         g_theApp->emitDbTableChanged ( "forma_pago" );
 
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al guardar.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al guardar.") );
 	blMsgError(_("Error al guardar."));
         return -1;
     } // end try
@@ -199,7 +199,7 @@ int FPagoView::save()
 **/
 bool FPagoView::trataModificado()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -208,7 +208,7 @@ bool FPagoView::trataModificado()
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return ( TRUE );
     } // end if
     return ( FALSE );
@@ -222,7 +222,7 @@ bool FPagoView::trataModificado()
 **/
 void FPagoView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString idbanco = mui_idbanco->idbanco();
@@ -239,7 +239,7 @@ void FPagoView::on_mui_crear_clicked()
     mdb_idforma_pago = cur->value( "idFPagoView" );
     delete cur;
     pintar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -250,7 +250,7 @@ void FPagoView::on_mui_crear_clicked()
 **/
 void FPagoView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     trataModificado();
     try {
         mainCompany() ->begin();
@@ -259,7 +259,7 @@ void FPagoView::on_mui_borrar_clicked()
         mainCompany() ->commit();
         pintar();
         groupBox1->setDisabled ( TRUE );
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al intentar borrar la forma de pago" ) );
         mainCompany() ->rollback();
@@ -272,9 +272,9 @@ void FPagoView::on_mui_borrar_clicked()
 **/
 void FPagoView::setSelectMode()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_selectMode = TRUE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -283,9 +283,9 @@ void FPagoView::setSelectMode()
 **/
 void FPagoView::setEditMode()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_selectMode = FALSE;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -296,10 +296,10 @@ void FPagoView::setEditMode()
 **/
 void FPagoView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     trataModificado();
     close();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

@@ -45,8 +45,8 @@
 **/
 QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -55,8 +55,8 @@ QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 )
 **/
 QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -69,19 +69,19 @@ QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 **/
 QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
 
     if ( linea->fieldName() == "nomtarifa" ) {
         BusquedaTarifa *editor = new BusquedaTarifa ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("BusquedaTarifa") );
+	
         return editor;
     } else if ( linea->fieldName() == "nomalmacen" ) {
         BfBuscarAlmacen *editor = new BfBuscarAlmacen ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("BfBuscarAlmacen") );
+	
         return editor;
 
     } else if ( linea->fieldName() == "cantidadmayoroigualque"
@@ -90,13 +90,13 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("BlDoubleSpinBox") );
+	
         return editor;
 
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -109,7 +109,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 **/
 void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -141,7 +141,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -152,7 +152,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
 **/
 void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName() == "nomtarifa" ) {
@@ -175,7 +175,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

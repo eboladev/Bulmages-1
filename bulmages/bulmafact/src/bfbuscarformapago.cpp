@@ -33,13 +33,13 @@
 BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_comboRecordSet = NULL;
     m_table = "forma_pago";
     m_null = TRUE;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -49,8 +49,8 @@ BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
 **/
 BfBuscarFormaPago::~BfBuscarFormaPago()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -66,7 +66,7 @@ BfBuscarFormaPago::~BfBuscarFormaPago()
 **/
 void BfBuscarFormaPago::setId ( QString idforma_pago )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if ( idforma_pago.isEmpty() || idforma_pago == "0" ) {
@@ -99,7 +99,7 @@ void BfBuscarFormaPago::setId ( QString idforma_pago )
 
     setCurrentIndex ( i1 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,11 +110,11 @@ void BfBuscarFormaPago::setId ( QString idforma_pago )
 **/
 void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si el idcliente no existe salimos.
     if ( idcliente == "" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("'idcliente' invalido") );
+        
         return;
     } // end if
 
@@ -126,7 +126,7 @@ void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 
     delete cur;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -137,7 +137,7 @@ void BfBuscarFormaPago::setIdCliente ( QString idcliente )
 **/
 void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si no es un proveedor valido salimos.
     if ( idproveedor == "" )
@@ -149,7 +149,7 @@ void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
         setId ( cur->value( "idforma_pago" ) );
     } // end if
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -159,7 +159,7 @@ void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
 **/
 void BfBuscarFormaPago::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idforma_pago", index - 1 ) ) );
@@ -167,7 +167,7 @@ void BfBuscarFormaPago::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -178,8 +178,8 @@ void BfBuscarFormaPago::m_activated ( int index )
 **/
 QString BfBuscarFormaPago::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 
     if ( !m_comboRecordSet ) return "0";
 

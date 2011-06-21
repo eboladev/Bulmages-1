@@ -28,8 +28,8 @@
 **/
 BcExtractoSubForm::~BcExtractoSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -39,7 +39,7 @@ BcExtractoSubForm::~BcExtractoSubForm()
 **/
 BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "apunte" );
     setFileConfig ( "BcExtractoSubForm" );
     setDbFieldId ( "idapunte" );
@@ -78,7 +78,7 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -89,14 +89,14 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
 **/
 void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar diario (dia)" ) );
     menu->addAction ( _ ( "Mostrar diario (mes)" ) );
     menu->addAction ( _ ( "Mostrar diario (ano)" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -106,7 +106,7 @@ void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
 **/
 void BcExtractoSubForm::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
@@ -116,6 +116,6 @@ void BcExtractoSubForm::s_trataMenu ( QAction *action )
         boton_diario1 ( 1 );
     if ( action->text() == _ ( "Mostrar diario (ano)" ) )
         boton_diario1 ( 2 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

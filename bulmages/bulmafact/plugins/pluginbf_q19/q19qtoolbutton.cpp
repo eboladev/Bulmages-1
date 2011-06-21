@@ -37,12 +37,12 @@
 **/
 Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_cobrosList = cob;
     m_recibosList=NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -52,12 +52,12 @@ Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButt
 **/
 Q19QToolButton::Q19QToolButton ( RecibosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_recibosList = cob;
     m_cobrosList = NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -65,9 +65,9 @@ Q19QToolButton::Q19QToolButton ( RecibosList *cob , QWidget *parent ) : QToolBut
 **/
 Q19QToolButton::~Q19QToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
      delete m_q19;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -76,7 +76,7 @@ Q19QToolButton::~Q19QToolButton()
 **/
 void Q19QToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Q19") );
@@ -84,7 +84,7 @@ void Q19QToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -94,7 +94,7 @@ void Q19QToolButton::setBoton()
 **/
 void Q19QToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm *sub = NULL;
     if (m_cobrosList) {
        sub = m_cobrosList->mui_list;
@@ -146,6 +146,6 @@ void Q19QToolButton::click()
        delete curcobro;
      }
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

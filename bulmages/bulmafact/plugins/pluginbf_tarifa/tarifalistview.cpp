@@ -34,7 +34,7 @@
 TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_list->setMainCompany ( mainCompany() );
@@ -46,7 +46,7 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     //trataPermisos ( "tarifas" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( "TarifaListView::END_TarifaListView()\n", 0 );
+    
 }
 
 
@@ -55,9 +55,9 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 **/
 TarifaListView::~TarifaListView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( "TarifaListView::END_destructor()\n", 0 );
+    
 }
 
 
@@ -67,13 +67,13 @@ TarifaListView::~TarifaListView()
 **/
 void TarifaListView::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->load ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -82,13 +82,13 @@ void TarifaListView::editar ( int row )
 **/
 void TarifaListView::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), parentWidget() );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->setWindowTitle ( _ ( "Nueva tarifa" ) );
     tar->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -97,7 +97,7 @@ void TarifaListView::crear()
 **/
 void TarifaListView::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a >= 0 ) {
         TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
@@ -108,7 +108,7 @@ void TarifaListView::remove()
     } else {
         blMsgInfo ( _ ( "No ha seleccionado ninguna tarifa" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -117,8 +117,8 @@ void TarifaListView::remove()
 **/
 void TarifaListView::actualizar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->load();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

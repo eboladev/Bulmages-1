@@ -43,7 +43,7 @@ QFile *g_file;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
         g_file->flush();
         g_file->close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -66,19 +66,19 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginvisor::entryPoint", 0 );
+    BlDebug::blDebug ( "pluginvisor::entryPoint", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         g_file->close();
     } // end if
     delete g_file;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
-    blDebug ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
+    BlDebug::blDebug ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         g_file->write ( tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).leftJustified ( 4, ' ', TRUE ).toAscii());
@@ -89,7 +89,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         g_file->flush();
         g_file->close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

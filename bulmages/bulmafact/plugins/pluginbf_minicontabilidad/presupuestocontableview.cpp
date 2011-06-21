@@ -45,7 +45,7 @@
 PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -91,7 +91,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
         blMsgInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -100,10 +100,10 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 **/
 void PresupuestoContableView::inicializar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->inicializar();
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -112,10 +112,10 @@ void PresupuestoContableView::inicializar()
 **/
 PresupuestoContableView::~PresupuestoContableView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     g_plugins->lanza ( "PresupuestoContableView_DesPresupuestoContableView", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -127,11 +127,11 @@ PresupuestoContableView::~PresupuestoContableView()
 **/
 int PresupuestoContableView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "PresupuestoContableView_beforeDelete", this );
     mui_list->remove();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -143,12 +143,12 @@ int PresupuestoContableView::beforeDelete()
 **/
 int PresupuestoContableView::cargarPost ( QString idbudget )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString query = "SELECT * FROM ( SELECT * FROM partida WHERE idpartida NOT IN (SELECT DISTINCT COALESCE(padre,0) FROM partida) ) AS t1 LEFT JOIN (SELECT idlpresupuestocontable, coalesce(saldolpresupuestocontable, 0) AS saldolpresupuestocontable, idpartida, idpresupuestocontable, conceptolpresupuestocontable FROM lpresupuestocontable) AS t2 ON t2.idpartida = t1.idpartida AND t2.idpresupuestocontable = "+idbudget;
     mui_list->load ( query );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -159,7 +159,7 @@ int PresupuestoContableView::cargarPost ( QString idbudget )
 **/
 int PresupuestoContableView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_list->setColumnValue ( "idpresupuestocontable", dbValue ( "idpresupuestocontable" ) );
 
@@ -167,7 +167,7 @@ int PresupuestoContableView::afterSave()
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "PresupuestoContableView_afterSave_Post", this );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

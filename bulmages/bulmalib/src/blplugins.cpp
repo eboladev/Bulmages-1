@@ -46,8 +46,8 @@ void initPlugins()
 **/
 BlPlugins::BlPlugins()
 {
-    blDebug ( "BlPlugins::BlPlugins", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -56,8 +56,8 @@ BlPlugins::BlPlugins()
 **/
 BlPlugins::~BlPlugins()
 {
-    blDebug ( "BlPlugins::~BlPlugins", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -67,14 +67,15 @@ BlPlugins::~BlPlugins()
 **/
 void BlPlugins::cargaLibs ( const QString &libs )
 {
-    blDebug ( "BlPlugins::cargaLibs", 0, libs );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlPlugins::cargaLibs", 0, libs );
 
     bool cargado = FALSE;
     /// Hacemos la carga de los plugins.
     QString cad = libs;
 
     if ( cad == "" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     } // end if
 
@@ -98,7 +99,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             blMsgInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
         } // end if
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -109,7 +110,8 @@ void BlPlugins::cargaLibs ( const QString &libs )
 **/
 int BlPlugins::lanza ( const char *func, void *clase )
 {
-    blDebug ( "BlPlugins::lanza", 0, func );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlPlugins::lanza", 0, func );
     int a = 0;
     QList<MyPrototype> funcAddressList;
     
@@ -148,7 +150,7 @@ int BlPlugins::lanza ( const char *func, void *clase )
     
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return a;
 }
 
@@ -159,7 +161,8 @@ int BlPlugins::lanza ( const char *func, void *clase )
 **/
 int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 {
-    blDebug ( "BlPlugins::lanza", 0, func );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlPlugins::lanza", 0, func );
     int a = 0;
     QList<MyPrototype1> funcAddressList;
     
@@ -198,7 +201,7 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
     
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return a;
 }
 
@@ -209,8 +212,7 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 **/
 QList<QLibrary *> BlPlugins::pluginsLoaded()
 {
-    blDebug ( "BlPlugins::pluginsLoaded", 0 );
+    BL_FUNC_DEBUG
     return m_plugins;
-    blDebug ( "BlPlugins::pluginsLoaded", 0 );
 }
 

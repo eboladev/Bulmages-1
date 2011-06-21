@@ -34,7 +34,7 @@
 BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, Qt::WFlags fl )
         : QDialog ( parent, fl ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     idmpatrimonial = "";
 
@@ -45,7 +45,7 @@ BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, 
     etiquetas << _ ( "identificador" ) << _ ( "codigo" ) << _ ( "descripcion" ) << _ ( "tipo" );
     componentessuma->setHorizontalHeaderLabels ( etiquetas );
     componentesresta->setHorizontalHeaderLabels ( etiquetas );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -54,8 +54,8 @@ BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, 
 **/
 BcMasaPatrimonialView::~BcMasaPatrimonialView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -65,8 +65,8 @@ BcMasaPatrimonialView::~BcMasaPatrimonialView()
 **/
 QString BcMasaPatrimonialView::getidmasa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return idmpatrimonial;
 }
 
@@ -77,7 +77,7 @@ QString BcMasaPatrimonialView::getidmasa()
 **/
 void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i = 0;
     idmpatrimonial = idmpatrimonial1;
@@ -174,7 +174,7 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
         cursoraux->nextRecord();
     } // end while
     delete cursoraux;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -184,7 +184,7 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
 **/
 void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i;
 
@@ -232,7 +232,7 @@ void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
         i++;
         cursoraux1->nextRecord();
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -241,9 +241,9 @@ void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_borrasuma_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     componentessuma->removeRow ( componentessuma->currentRow() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -253,7 +253,7 @@ void BcMasaPatrimonialView::on_mui_borrasuma_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i;
 
@@ -301,7 +301,7 @@ void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
         i++;
         cursoraux1->nextRecord();
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -310,9 +310,9 @@ void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_borraresta_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     componentesresta->removeRow ( componentesresta->currentRow() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -321,14 +321,14 @@ void BcMasaPatrimonialView::on_mui_borraresta_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( ( BcCompany * ) mainCompany(), 0 );
     nuevae->inicializa();
     nuevae->setModoSelector();
     nuevae->exec();
     mpatrimonial->setText ( nuevae->getidmasa() );
     delete nuevae;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -337,9 +337,9 @@ void BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_cancelar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     close();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -348,7 +348,7 @@ void BcMasaPatrimonialView::on_mui_cancelar_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int i;
     QString query;
 
@@ -403,7 +403,7 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
         mainCompany() ->runQuery ( query );
     } // end for
     close();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -413,8 +413,8 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 **/
 QString BcMasaPatrimonialView::getnommasa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return descmpatrimonial->text().toAscii();
 }
 

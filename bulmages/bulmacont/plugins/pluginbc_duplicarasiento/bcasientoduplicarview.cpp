@@ -34,10 +34,10 @@
 DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     fdinicial->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -46,8 +46,8 @@ DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::
 **/
 DuplicarAsientoView::~DuplicarAsientoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -58,7 +58,7 @@ DuplicarAsientoView::~DuplicarAsientoView()
 **/
 void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     aoinicial->setText ( ainicial );
     aofinal->setText ( afinal );
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
@@ -71,7 +71,7 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
     delete cur;
     aoinicial->selectAll();
     aoinicial->setFocus();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -79,7 +79,7 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
 **/
 void DuplicarAsientoView::lostFocus()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString ainicial = aoinicial->text();
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
     mainCompany() ->begin();
@@ -89,7 +89,7 @@ void DuplicarAsientoView::lostFocus()
         foinicial->setText ( cur->value( "fecha" ).left ( 10 ) );
     } // end if
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -98,7 +98,7 @@ void DuplicarAsientoView::lostFocus()
 **/
 void DuplicarAsientoView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString asientoi = aoinicial->text();
     QString asientof = aofinal->text();
     QString query1, query2;
@@ -188,6 +188,6 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     delete curasiento;
     mainCompany() ->commit();
     done ( 1 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

@@ -38,7 +38,7 @@
 **/
 int entryPoint ( BfBulmaFact *bf )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bf->company()->dbPatchVersionCheck("PluginBf_SincroBulmaCont", "0.9.1-003");

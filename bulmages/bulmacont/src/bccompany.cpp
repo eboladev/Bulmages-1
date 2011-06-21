@@ -51,12 +51,12 @@
 **/
 void BcCompany ::s_asiento1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 /*
     introapunts2->setWindowState ( ( introapunts2->windowState() &  ~Qt::WindowMinimized ) | Qt::WindowActive );
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -66,7 +66,7 @@ void BcCompany ::s_asiento1()
 **/
 BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_bulmacont = bcont;
     selccostes  = NULL;
     selcanales = NULL;
@@ -75,7 +75,7 @@ BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
     m_listasientos = NULL;
 */
     nombre = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -84,11 +84,11 @@ BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
 **/
 BcCompany::~BcCompany()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     guardaConf();
     /// Borramos todas las ventanas.
     m_listventanas->vaciarCompleto();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -186,7 +186,7 @@ QString BcCompany::nombreempresa()
 **/
 int BcCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
         /// de la Empresa.
@@ -232,10 +232,10 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
     m_bulmacont->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Contabilidad GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
 
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al iniciar la clase.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al iniciar la clase.") );
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( 0 );
 }
 
@@ -246,9 +246,9 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 **/
 void BcCompany::maximiza()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 //    m_listcuentas->showMaximized();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -258,9 +258,9 @@ void BcCompany::maximiza()
 **/
 int BcCompany::muestracuentas()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 //    m_listcuentas->setWindowState ( Qt::WindowActive );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -272,11 +272,11 @@ int BcCompany::muestracuentas()
 **/
 int BcCompany::ccostes()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcCentroCosteView *ccoste = new BcCentroCosteView ( this, 0 );
     m_pWorkspace->addSubWindow ( ccoste );
     ccoste->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -288,11 +288,11 @@ int BcCompany::ccostes()
 **/
 int BcCompany::canales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcCanalView *canal = new BcCanalView ( this, 0 );
     m_pWorkspace->addSubWindow ( canal );
     canal->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -307,11 +307,11 @@ int BcCompany::canales()
 **/
 int BcCompany::tiposIVA()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcTipoIVAView *tip = new BcTipoIVAView ( this, 0 );
     m_pWorkspace->addSubWindow ( tip );
     tip->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -323,11 +323,11 @@ int BcCompany::tiposIVA()
 **/
 int BcCompany::fPago()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcFormaPagoView *fp = new BcFormaPagoView ( this, 0 );
     m_pWorkspace->addSubWindow ( fp );
     fp->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -338,7 +338,7 @@ int BcCompany::fPago()
 **/
 int BcCompany::cambioejercicio()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
 /*
 
@@ -346,7 +346,7 @@ int BcCompany::cambioejercicio()
     introapunts2->boton_fin();
 
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -361,11 +361,11 @@ int BcCompany::cambioejercicio()
 **/
 int BcCompany::propiedadempresa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcConfiguracionView *nuevae = new BcConfiguracionView ( this, 0 );
     m_pWorkspace->addSubWindow ( nuevae );
     nuevae->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -376,13 +376,13 @@ int BcCompany::propiedadempresa()
 **/
 int BcCompany::amortizaciones()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 /*
     BcAmortizacionListView *amors = new BcAmortizacionListView ( this, 0 );
     m_pWorkspace->addSubWindow ( amors );
     amors->show();
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -394,12 +394,12 @@ int BcCompany::amortizaciones()
 **/
 int BcCompany::mpatrimoniales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( this, 0 );
     nuevae->inicializa();
     nuevae->exec();
     delete nuevae;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -411,13 +411,13 @@ int BcCompany::mpatrimoniales()
 **/
 int BcCompany::compbalance()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 /*
     BcCuentasAnualesView *nueva = new BcCuentasAnualesView ( this, 0 );
     m_pWorkspace->addSubWindow ( nueva );
     nueva->show();
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -428,13 +428,13 @@ int BcCompany::compbalance()
 **/
 void BcCompany::cerrarAsientos()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlDbRecordSet *cur = NULL;
     try {
         cur = loadQuery ( "SELECT cierraasiento(idasiento) FROM asiento" );
         g_main->statusBar() ->showMessage ( _ ( "Se han cerrado los asientos" ), 2000 );
         delete cur;
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
         blMsgError ( "Ha habido un error al cerrar los asientos" );
         if ( cur ) delete cur;
@@ -452,11 +452,11 @@ void BcCompany::cerrarAsientos()
 **/
 int BcCompany::listado347()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcModelo347ListView *dlg347 = new BcModelo347ListView ( this, "0" );
     dlg347->exec();
     delete dlg347;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 #endif
@@ -467,10 +467,10 @@ int BcCompany::listado347()
 **/
 void BcCompany::reemplazacuentaenasientos()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcCambiaCuentaView *ctac = new BcCambiaCuentaView ( this, 0, 0 );
     ctac->exec();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -479,11 +479,11 @@ void BcCompany::reemplazacuentaenasientos()
 **/
 void BcCompany::recalculasaldos()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     blMsgInfo ( "recalcular Saldos" );
     BlDbRecordSet *cur = loadQuery ( "SELECT recalculasaldos()" );
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -493,8 +493,8 @@ void BcCompany::recalculasaldos()
 **/
 BcCentroCosteSeleccionarView *BcCompany::getselccostes()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return selccostes;
 }
 
@@ -505,8 +505,8 @@ BcCentroCosteSeleccionarView *BcCompany::getselccostes()
 **/
 BcCanalSeleccionarView *BcCompany::getselcanales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return selcanales;
 }
 
@@ -516,9 +516,9 @@ BcCanalSeleccionarView *BcCompany::getselcanales()
 **/
 void BcCompany::centrocostedefecto()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     selccostes->exec();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -527,9 +527,9 @@ void BcCompany::centrocostedefecto()
 **/
 void BcCompany::canaldefecto()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     selcanales->exec();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -538,7 +538,7 @@ void BcCompany::canaldefecto()
 **/
 void BcCompany::guardaConf()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
     /// guardamos la configuracion.
@@ -577,7 +577,7 @@ void BcCompany::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
@@ -586,7 +586,7 @@ void BcCompany::guardaConf()
 **/
 void BcCompany::cargaConf()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 
     /// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
@@ -677,7 +677,7 @@ void BcCompany::cargaConf()
     if ( activewindow )
 //        m_bulmacont->workspace() ->setActiveWindow ( activewindow );
 	    activewindow->activateWindow();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

@@ -42,7 +42,7 @@ BfBulmaFact *g_pluginbf_alumno = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -105,14 +105,14 @@ int entryPoint ( BfBulmaFact *bges )
 
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionAlumnos") {
         if ( g_alumnosList ) {
             g_alumnosList->hide();
@@ -137,7 +137,7 @@ int BlAction_triggered(BlAction *accion) {
         g_pluginbf_alumno->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -146,7 +146,7 @@ int BlAction_triggered(BlAction *accion) {
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( comp->hasTablePrivilege ( "alumno", "SELECT" ) ) {
         g_alumnosList = new AlumnosList ( comp, NULL );
@@ -154,17 +154,17 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_alumnosList->hide();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( sub->m_campoactual->fieldName() != "nombrealumno1" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } // end if
 
@@ -184,7 +184,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } // end if
 
@@ -196,7 +196,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -205,7 +205,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( busq->tableName() == "alumno" ) {
 
@@ -238,7 +238,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 
@@ -260,8 +260,8 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 **/
 SubForm_Alumno::SubForm_Alumno ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -269,8 +269,8 @@ SubForm_Alumno::SubForm_Alumno ( BlSubForm *parent ) : QObject ( parent )
 **/
 SubForm_Alumno::~SubForm_Alumno()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -280,7 +280,7 @@ SubForm_Alumno::~SubForm_Alumno()
 **/
 void SubForm_Alumno::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nombrealumno1" );
     if (!header) 
@@ -294,7 +294,7 @@ void SubForm_Alumno::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ), _ ( "Seleccionar alumno" ) );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -304,7 +304,7 @@ void SubForm_Alumno::s_pintaMenu ( QMenu *menu )
 **/
 void SubForm_Alumno::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar alumno" ) ) {
         QString idalumno = sub->dbValue ( "idalumno" );
@@ -316,7 +316,7 @@ void SubForm_Alumno::s_trataMenu ( QAction *action )
         nuevoAlumno();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -325,19 +325,19 @@ void SubForm_Alumno::s_trataMenu ( QAction *action )
 **/
 void SubForm_Alumno::editarAlumno ( QString idalumno )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idalumno ) ) {
         delete art;
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Carga erronea") );
+	
         return;
     } // end if
     art->hide();
     art->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -347,7 +347,7 @@ void SubForm_Alumno::editarAlumno ( QString idalumno )
 **/
 void SubForm_Alumno::nuevoAlumno( )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
@@ -367,7 +367,7 @@ void SubForm_Alumno::nuevoAlumno( )
     } // end if
     delete art;    
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -376,7 +376,7 @@ void SubForm_Alumno::nuevoAlumno( )
 **/
 void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -392,7 +392,7 @@ void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
 
     /// Si no tenemos un idalumno salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     } // end if
 
@@ -403,7 +403,7 @@ void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -414,11 +414,11 @@ void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     SubForm_Alumno *subformods = new SubForm_Alumno ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -431,7 +431,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlSubFormHeader *header = sub->header ( "nombrealumno1" );
     if (!header) 
@@ -469,7 +469,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     } // end if
     
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

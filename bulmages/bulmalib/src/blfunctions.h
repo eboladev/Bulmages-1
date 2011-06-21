@@ -31,6 +31,9 @@
 #include <QMessageBox>
 #include <QDesktopWidget>
 #include <QString>
+#include <QTime>
+#include <QFile>
+#include <QTextStream>
 
 #include <stdio.h>
 #include <sstream>
@@ -45,7 +48,30 @@
 #include "blconfig.h"
 #include "bli18n.h"
 
+class BL_EXPORT BlDebug 
+{
+public:
+  static QFile *m_file;
+  static QFile *m_fileXML;
+  static QTextStream *m_out;
+  static QTextStream *m_outXML;
 
+  static int m_auxxml;
+  static int m_supnivel;
+  static int m_indice;
+  static QString m_mensajesanulados[7000];
+  static QString m_clasesanuladas[7000];
+  static int m_indiceclases;
+  
+  QTime   m_time;
+  QString m_func;
+  int m_level;
+  QString m_params;  
+  
+  BlDebug(const QString &func, int level = 0, const QString & params = "");
+  virtual ~BlDebug();
+  static void blDebug(const QString &text, int level = 0 , const QString &params = "");
+};
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
 QString BL_EXPORT blExtendStringWithZeros ( QString, unsigned int );
@@ -79,8 +105,10 @@ QString BL_EXPORT blTextEditor ( QString texto );
 
 #if CONFIG_DEBUG == TRUE
 void BL_EXPORT blDebug ( const QString &cad, int nivel = 0, const QString & param = "" );
+#define BL_FUNC_DEBUG  BlDebug __llamada_debug(Q_FUNC_INFO, 0);
 #else
 #define blDebug(...)       // sin debug
+#define BL_FUNC_DEBUG      // sin debug
 #endif
 void BL_EXPORT blDebugOn();
 void BL_EXPORT blDebugOff();

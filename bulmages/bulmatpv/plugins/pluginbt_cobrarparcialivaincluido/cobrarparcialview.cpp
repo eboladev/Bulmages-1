@@ -22,9 +22,11 @@
 
 typedef QMap<QString, BlFixed> base;
 
+
+
 CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget (emp, parent)
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     
     ticketDestino = ( ( BtCompany * ) mainCompany() )->newBtTicket();
     ticketOrigen = ( ( BtCompany * ) mainCompany() )->newBtTicket();
@@ -60,7 +62,7 @@ CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget
 
 void CobrarParcialView::pintarTotal(BtTicket *tick, QLineEdit *lineEdit)
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
@@ -93,7 +95,7 @@ void CobrarParcialView::pintarTotal(BtTicket *tick, QLineEdit *lineEdit)
 
 void CobrarParcialView::pintarOrigen()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     QString query;
     BlDbRecord *item;
 
@@ -195,13 +197,13 @@ void CobrarParcialView::pintarOrigen()
     /// Pinta total.
     pintarTotal(ticketOrigen, mui_total_ticket_origen);
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void CobrarParcialView::pintarDestino()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     QString query;
     BlDbRecord *item;
 
@@ -301,31 +303,31 @@ void CobrarParcialView::pintarDestino()
     /// Pinta total.
     pintarTotal(ticketDestino, mui_total_ticket_destino);
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void CobrarParcialView::pintar()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
 
     pintarOrigen();
     pintarDestino();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 
 CobrarParcialView::~CobrarParcialView()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
 }
 
 
 void CobrarParcialView::on_mui_aceptar_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
   
     BtTicket *actTicket = ( ( BtCompany * ) mainCompany() )->ticketActual();
 
@@ -407,14 +409,14 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 void CobrarParcialView::on_mui_cancelar_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     ( ( QDialog * ) parent() )->close();
 }
 
 
 void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *destino, bool lineaCompleta, float cantidad)
 {
-  blDebug( Q_FUNC_INFO);
+  BlDebug::blDebug( Q_FUNC_INFO);
   if (origen->listaLineas()->size() == 0) return;
   
   bool destinoExiste = false;
@@ -492,7 +494,7 @@ void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *des
 
 void CobrarParcialView::on_mui_unidad2destino_clicked()
 {
-  blDebug( Q_FUNC_INFO);
+  BlDebug::blDebug( Q_FUNC_INFO);
   intercambiarLineasTicket(ticketOrigen, ticketDestino);
   
 }
@@ -500,7 +502,7 @@ void CobrarParcialView::on_mui_unidad2destino_clicked()
 
 void CobrarParcialView::on_mui_unidad2origen_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     intercambiarLineasTicket(ticketDestino, ticketOrigen);
   
 }
@@ -508,7 +510,7 @@ void CobrarParcialView::on_mui_unidad2origen_clicked()
 
 void CobrarParcialView::on_mui_linea2destino_clicked()
 {
-      blDebug( Q_FUNC_INFO);
+      BlDebug::blDebug( Q_FUNC_INFO);
       intercambiarLineasTicket(ticketOrigen, ticketDestino, true);
   
 }
@@ -516,14 +518,14 @@ void CobrarParcialView::on_mui_linea2destino_clicked()
 
 void CobrarParcialView::on_mui_linea2origen_clicked()
 {
-    blDebug( Q_FUNC_INFO);  
+    BlDebug::blDebug( Q_FUNC_INFO);  
     intercambiarLineasTicket(ticketDestino, ticketOrigen, true);
 }
 
 
 void CobrarParcialView::on_mui_destino_arriba_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla arriba
     ticketDestino->subir();
     pintarDestino();
@@ -532,7 +534,7 @@ void CobrarParcialView::on_mui_destino_arriba_clicked()
 
 void CobrarParcialView::on_mui_destino_abajo_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla abajo
     ticketDestino->bajar();
     pintarDestino();
@@ -541,7 +543,7 @@ void CobrarParcialView::on_mui_destino_abajo_clicked()
 
 void CobrarParcialView::on_mui_origen_arriba_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla arriba
     ticketOrigen->subir();
     pintarOrigen();
@@ -550,7 +552,7 @@ void CobrarParcialView::on_mui_origen_arriba_clicked()
 
 void CobrarParcialView::on_mui_origen_abajo_clicked()
 {
-    blDebug( Q_FUNC_INFO);
+    BlDebug::blDebug( Q_FUNC_INFO);
     /// Simulamos la pulsacion de la tecla abajo
     ticketOrigen->bajar();
     pintarOrigen();

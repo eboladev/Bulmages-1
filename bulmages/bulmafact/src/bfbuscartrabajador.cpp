@@ -34,13 +34,13 @@
 BfBuscarTrabajador::BfBuscarTrabajador ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_comboRecordSet = NULL;
     m_table = "trabajador";
     m_null = TRUE;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -50,8 +50,8 @@ BfBuscarTrabajador::BfBuscarTrabajador ( QWidget *parent )
 **/
 BfBuscarTrabajador::~BfBuscarTrabajador()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -65,7 +65,7 @@ BfBuscarTrabajador::~BfBuscarTrabajador()
 **/
 void BfBuscarTrabajador::setId ( QString idtrabajador )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if ( idtrabajador == "0" ) {
@@ -96,7 +96,7 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
 
     setCurrentIndex ( i1 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -108,8 +108,8 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
 **/
 QString BfBuscarTrabajador::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 
     if ( !m_comboRecordSet ) {
         return "0";
@@ -128,7 +128,7 @@ QString BfBuscarTrabajador::id()
 **/
 void BfBuscarTrabajador::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idtrabajador", index - 1 ) ) );
@@ -136,7 +136,7 @@ void BfBuscarTrabajador::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// ========================= ITEM DELEGATE ===============================0
@@ -151,13 +151,13 @@ void BfBuscarTrabajador::m_activated ( int index )
 BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -167,13 +167,13 @@ BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate ( QWidget *parent )
 **/
 BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -186,7 +186,7 @@ BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate()
 **/
 void BfBuscarTrabajadorDelegate::set ( const QString &cod )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = 0;
     QString codigo = cod;
 
@@ -207,6 +207,6 @@ void BfBuscarTrabajadorDelegate::set ( const QString &cod )
     setEditText ( cod );
     setCurrentIndex ( index );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

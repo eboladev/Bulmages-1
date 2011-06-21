@@ -32,7 +32,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 //================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( l, l->mui_plugbotones );
 
@@ -62,6 +62,6 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }

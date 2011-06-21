@@ -44,7 +44,7 @@
 **/
 BcModelo300Imprimir2PS::BcModelo300Imprimir2PS ( QWidget *parent ) : QDialog ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     QString query = "SELECT descripcion, bancoent_cuenta, codigo FROM cuenta WHERE codigo LIKE '572%%' AND codigo > 572";
 
@@ -80,7 +80,7 @@ BcModelo300Imprimir2PS::BcModelo300Imprimir2PS ( QWidget *parent ) : QDialog ( p
         personalButtonPressed();
         cuentaButton->setDisabled ( true );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -89,8 +89,8 @@ BcModelo300Imprimir2PS::BcModelo300Imprimir2PS ( QWidget *parent ) : QDialog ( p
 **/
 BcModelo300Imprimir2PS::~BcModelo300Imprimir2PS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -99,7 +99,7 @@ BcModelo300Imprimir2PS::~BcModelo300Imprimir2PS()
 **/
 void BcModelo300Imprimir2PS::accept()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_es_borrador = borradorcheckbox->isChecked();
 
     if ( cuentaButton->isChecked() ) {
@@ -126,7 +126,7 @@ void BcModelo300Imprimir2PS::accept()
     } else {
         generaps();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Generate the postscript of the 300-model with the given parameters.
@@ -135,7 +135,7 @@ void BcModelo300Imprimir2PS::accept()
 **/
 void BcModelo300Imprimir2PS::generaps()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString pdfname, tempname, psname, command;
     QString cadaux;
     QTextStream inputstr;
@@ -193,7 +193,7 @@ void BcModelo300Imprimir2PS::generaps()
             m_output.setDevice ( &m_fich );
             m_fichlec.setFileName ( tempname );
             if ( !m_fichlec.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
-		blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el fichero.") );
+		BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el fichero.") );
                 exit ( 1 );
             } // end if
             inputstr.setDevice( &m_fichlec );
@@ -259,10 +259,10 @@ void BcModelo300Imprimir2PS::generaps()
             command = "rm " + tempname + "; kghostview " + psname;
             system ( command.toAscii().constData() );
         } else {
-	    blDebug ( Q_FUNC_INFO, 0, _("Error, no se ha abierto el archivo.") );
+	    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error, no se ha abierto el archivo.") );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -271,14 +271,14 @@ void BcModelo300Imprimir2PS::generaps()
 **/
 void BcModelo300Imprimir2PS::personalButtonPressed()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     bool dis = cuentaButton->isChecked();
     banco->setDisabled ( dis );
     entidad->setDisabled ( dis );
     dc->setDisabled ( dis );
     cuenta->setDisabled ( dis );
     combocuentas->setDisabled ( !dis );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Write definitions in the postscript output file, necessary to insert text later.
@@ -290,7 +290,7 @@ void BcModelo300Imprimir2PS::personalButtonPressed()
 **/
 void BcModelo300Imprimir2PS::escribe_postscriptdefs()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_output << "%bulmages\n"
     "%Texto introducido manualmente\n"
@@ -311,7 +311,7 @@ void BcModelo300Imprimir2PS::escribe_postscriptdefs()
     "  %newpath\n"
     "  exch 3 add 3 -2 roll add 5 add exch moveto\n"
     "  show} def\n";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -322,7 +322,7 @@ void BcModelo300Imprimir2PS::escribe_postscriptdefs()
 **/
 void BcModelo300Imprimir2PS::escribe_cuenta_bancaria ( int x, int y )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     const int steps[] = {
         0, 11, 11, 11, 12, 11, 11, 11, 12, 11, 12, 11, 11, 11, 12, 11,
@@ -336,7 +336,7 @@ void BcModelo300Imprimir2PS::escribe_cuenta_bancaria ( int x, int y )
         acum += steps[i];
         marca_casilla ( QString ( tem[i] ), acum, y );
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -346,7 +346,7 @@ void BcModelo300Imprimir2PS::escribe_cuenta_bancaria ( int x, int y )
 **/
 void BcModelo300Imprimir2PS::rellena_identificacion()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString cad1;
 
     BlPostgreSqlClient *m = new BlPostgreSqlClient();
@@ -376,7 +376,7 @@ void BcModelo300Imprimir2PS::rellena_identificacion()
     for ( int i = 0; i < 4; i++ ) {
         marca_casilla ( QString ( ano[i] ), 453 + i * 14, 706 );
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -385,7 +385,7 @@ void BcModelo300Imprimir2PS::rellena_identificacion()
 **/
 void BcModelo300Imprimir2PS::rellena_liquidacion()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     escrizqder ( baser16, 328, 516 ); /// Casilla 01.
     escrizqder ( baser7, 328, 502 ); /// Casilla 04.
     escrizqder ( baser4, 328, 487 ); /// Casilla 07.
@@ -400,7 +400,7 @@ void BcModelo300Imprimir2PS::rellena_liquidacion()
     escrizqder ( ivas4 + ivas7 + ivas16, 532, 295 ); /// Casilla 27.
     cas34 = ivas4 + ivas7 + ivas16 - ( ivar16 + ivar7 + ivar4 );
     escrizqder ( cas34, 532, 196 ); /// Casilla 34.
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -409,7 +409,7 @@ void BcModelo300Imprimir2PS::rellena_liquidacion()
 **/
 void BcModelo300Imprimir2PS::rellena_compensacion()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( cas34 < 0 ) {
         escrizqder ( -cas34, 248, 145 ); /// Casilla a compensar si la 34 sale negativa.
         if ( trimestre->currentIndex() == 3 ) { /// Si estamos en el cuarto trimestre...
@@ -421,7 +421,7 @@ void BcModelo300Imprimir2PS::rellena_compensacion()
             escribe_cuenta_bancaria ( 338, 73 );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -432,13 +432,13 @@ void BcModelo300Imprimir2PS::rellena_compensacion()
 **/
 void BcModelo300Imprimir2PS::escribe_codigo_postal ( QString cod )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int offset = 3;
     marca_casilla ( QString ( cod[0] ), 528 - offset, 550 );
     marca_casilla ( QString ( cod[1] ), 537 - offset, 550 );
     marca_casilla ( QString ( cod[2] ), 546 - offset, 550 );
     marca_casilla ( QString ( cod[3] ), 554 - offset, 550 );
     marca_casilla ( QString ( cod[4] ), 563 - offset, 550 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

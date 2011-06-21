@@ -39,9 +39,9 @@
 **/
 void BlDockWidget::setWorkspace ( BlWorkspace *w )
 {
-    blDebug ( "BlDockWidget::setWorkspace", 0 );
+    BL_FUNC_DEBUG
     m_pWorkspace = w;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -51,12 +51,12 @@ void BlDockWidget::setWorkspace ( BlWorkspace *w )
 **/
 BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QString &name , Qt::WindowFlags flags ) : QDockWidget ( title, parent, flags )
 {
-    blDebug ( "BlDockWidget::BlDockWidget", 0 );
+    BL_FUNC_DEBUG
     setFocusPolicy ( Qt::StrongFocus );
     m_name = name;
     setObjectName ( name );
     connect ( this, SIGNAL ( dockLocationChanged ( Qt::DockWidgetArea ) ), this, SLOT ( mi_dockLocationChanged ( Qt::DockWidgetArea ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -65,9 +65,9 @@ BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QStr
 **/
 BlDockWidget::~BlDockWidget()
 {
-    blDebug ( "BlDockWidget::~BlDockWidget", 0 );
+    BL_FUNC_DEBUG
     saveConfig();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -78,13 +78,13 @@ BlDockWidget::~BlDockWidget()
 **/
 void BlDockWidget::setVisibilityState ( bool visible )
 {
-    blDebug ( "BlDockWidget::setVisibilityState", 0 );
+    BL_FUNC_DEBUG
     if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -93,9 +93,9 @@ void BlDockWidget::setVisibilityState ( bool visible )
 **/
 void BlDockWidget::closeEvent ( QCloseEvent * )
 {
-    blDebug ( "BlDockWidget::closeEvent", 0 );
+    BL_FUNC_DEBUG
     emit ( visibilityStateChanged ( FALSE ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void BlDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
@@ -136,7 +136,7 @@ void BlDockWidget::loadConfig()
 
 void BlDockWidget::saveConfig()
 {
-    blDebug ( "BlDockWidget::saveConfig", 0 );
+    BL_FUNC_DEBUG
     /// Vamos a probar con un docwindow.
     int lwidth = width();
     int lheight = height();
@@ -151,7 +151,7 @@ void BlDockWidget::saveConfig()
         stream << lheight << "\n";
         file.close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

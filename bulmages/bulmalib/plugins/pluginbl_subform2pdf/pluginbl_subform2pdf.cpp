@@ -37,13 +37,13 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_subform2pdf", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -54,8 +54,8 @@ int entryPoint ( QApplication * )
 **/
 PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -63,8 +63,8 @@ PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( par
 **/
 PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -74,14 +74,14 @@ PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 **/
 void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QAction *accionA = new QAction  ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ), menu );
     accionA->setObjectName("mui_actionSubForm2PDF");
 
     menu->addSeparator();
     menu->addAction ( accionA );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -91,11 +91,11 @@ void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( action->objectName() == "mui_actionSubForm2PDF") {
         imprimir();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -104,12 +104,12 @@ void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
 **/
 void PluginBl_SubForm2PDF::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlSubForm * subf = ( BlSubForm * ) parent();
 
     subf->printPDF ( "" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -120,11 +120,11 @@ void PluginBl_SubForm2PDF::imprimir()
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -135,7 +135,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     
@@ -157,7 +157,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
       m_hboxLayout1->addWidget ( sel );
       sel->connect (sel, SIGNAL(released()), subformods, SLOT(imprimir ( )));
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

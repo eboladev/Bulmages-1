@@ -32,10 +32,10 @@
     ficheros de XML a la base de datos de BulmaCont. */
 BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML ( BcCompany *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     tag = "";
     data = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -51,7 +51,7 @@ BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML ( BcCompany *em
     parseo aun habiendo encontrado errores. */
 bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     tag = qName;
     QString SQLQuery;
     if ( tag == "ainteligente" ) {
@@ -78,7 +78,7 @@ bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QStri
         } // end if
         delete cur;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 
@@ -98,7 +98,7 @@ bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QStri
   */
 bool BcAsientoInteligenteImportarXML::endElement ( const QString&, const QString&, const QString& qName )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString SQLQuery;
     if ( qName == "ainteligente" ) {
         SQLQuery.sprintf ( "UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData() );
@@ -158,7 +158,7 @@ bool BcAsientoInteligenteImportarXML::endElement ( const QString&, const QString
     } // end if
     tag = "";
     data = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 
@@ -172,12 +172,12 @@ bool BcAsientoInteligenteImportarXML::endElement ( const QString&, const QString
 **/
 bool BcAsientoInteligenteImportarXML::characters ( const QString& ch )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( tag != "" ) {
         data = ch;
         tvalores[tag] = data;
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return TRUE;
 }
 

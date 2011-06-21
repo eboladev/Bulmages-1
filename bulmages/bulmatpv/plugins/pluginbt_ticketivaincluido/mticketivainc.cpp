@@ -39,7 +39,7 @@ typedef QMap<QString, BlFixed> base;
 
 MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    blDebug ( "MTicketIVAInc::MTicketIVAInc", 0 );
+    BlDebug::blDebug ( "MTicketIVAInc::MTicketIVAInc", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
 	
@@ -55,24 +55,24 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
 	
     pintar();
 	
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
 }
 
 MTicketIVAInc::~MTicketIVAInc()
 {
-    blDebug ( "MTicketIVAInc::~MTicketIVAInc", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MTicketIVAInc::~MTicketIVAInc", 0 );
+    
 }
 
 void MTicketIVAInc::pintar()
 {
-    blDebug ( "MTicketIVAInc::pintar", 0 );
+    BlDebug::blDebug ( "MTicketIVAInc::pintar", 0 );
 	
     QString query;
     BlDbRecord *item;
 
     if ( g_plugins->lanza ( "MTicketIVAInc_pintar", this ) ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return;
     } // end if
 	
@@ -187,7 +187,7 @@ void MTicketIVAInc::pintar()
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
 	
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void MTicketIVAInc::on_mui_subir_clicked()

@@ -49,13 +49,13 @@ BtCompany *g_pluginbt_pulseras_emp;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginbt_pulseras::entryPoint", 0 );
+    BlDebug::blDebug ( "pluginbt_pulseras::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_pulseras", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( "END pluginbt_pulseras::entryPoint", 0 );
+    
     return 0;
 }
 
@@ -65,8 +65,8 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginbt_pulseras::exitPoint", 0 );
-    blDebug ( "END pluginbt_pulseras::exitPoint", 0 );
+    BlDebug::blDebug ( "pluginbt_pulseras::exitPoint", 0 );
+    
     return 0;
 }
 
@@ -176,7 +176,7 @@ int BtCompany_cobrar(BtCompany *emp) {
 
 
 int BtTicket_pintar(BtTicket *tick) {
-    blDebug ( "BtTicket_pintar", 0 );
+    BlDebug::blDebug ( "BtTicket_pintar", 0 );
     static int semaforo = 0;
   
     if (semaforo == 0) {
@@ -210,7 +210,7 @@ int BtTicket_pintar(BtTicket *tick) {
 	semaforo = 0;
 	fprintf(stderr, "Quito Semaforo");
     } // end if
-    blDebug ( "END BtTicket_pintar", 0 );
+    
     
     return 0;
 }
@@ -233,7 +233,7 @@ int BtTicket_borrarArticulo(BtTicket *tick) {
 
 
 int BtTicket_exportXML_Post(BtTicket *tick) {
-  blDebug ( "BtTicket_exportXML_Post", 0 );
+  BlDebug::blDebug ( "BtTicket_exportXML_Post", 0 );
   tick->m_textoXML += "\t<LISTAPULSERAS>\n";
   for (int i = 0; i < g_pulseras.size(); ++i) {
       Pulsera * pul = g_pulseras.at(i);
@@ -255,7 +255,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( tick->m_textoXML ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
+	
         return 0;
     } // end if
 

@@ -48,7 +48,7 @@ BcBulmaCont *g_pluginbc_registroiva;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -120,7 +120,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QFrame *plug = l->findChild<QFrame *> ("mui_plugbotones");
 
@@ -136,7 +136,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 	} // end if
 	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -149,7 +149,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 **/
 int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     
     BcCompany *companyact = as->companyact();
@@ -180,7 +180,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
     } // end while
     delete cursborr;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -193,7 +193,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 **/
 int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     as->save();
     try {
@@ -207,6 +207,6 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
         return 0;
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }

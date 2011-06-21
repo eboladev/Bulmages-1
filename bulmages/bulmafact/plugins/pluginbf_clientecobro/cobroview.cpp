@@ -39,7 +39,7 @@
 CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -78,7 +78,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el cobro" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,8 +86,8 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
 */
 CobroView::~CobroView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 int CobroView::parseTags ( QString &buff )
@@ -118,7 +118,7 @@ QString CobroView::templateName ( void )
 
 void CobroView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
@@ -134,7 +134,7 @@ void CobroView::imprimir()
     } // end if
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -142,7 +142,7 @@ void CobroView::imprimir()
      con la misma referencia se procesan dichas facturas **/
 int CobroView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + dbValue ( "refcobro" ) + "'";
     BlDbRecordSet *cur1 = mainCompany()->loadQuery ( query1 );
@@ -157,7 +157,7 @@ int CobroView::afterSave()
     } // end if
     delete cur;
     delete cur1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

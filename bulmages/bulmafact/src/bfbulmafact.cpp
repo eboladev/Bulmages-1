@@ -54,7 +54,7 @@
 **/
 BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setAnimated ( FALSE );
     setUpdatesEnabled ( TRUE );
@@ -108,7 +108,7 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_pb->setVisible ( FALSE );
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -119,9 +119,9 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
 **/
 void BfBulmaFact::createMainWindows ( BlSplashScreen *splashScr )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->createMainWindows ( splashScr );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -131,9 +131,9 @@ void BfBulmaFact::createMainWindows ( BlSplashScreen *splashScr )
 **/
 BfBulmaFact::~BfBulmaFact()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     delete pWorkspace;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -142,9 +142,9 @@ BfBulmaFact::~BfBulmaFact()
 **/
 void BfBulmaFact::s_FPago()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_FPago();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -154,13 +154,13 @@ void BfBulmaFact::s_FPago()
 **/
 void BfBulmaFact::s_ventanaCompleta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( isFullScreen() ) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -171,10 +171,10 @@ void BfBulmaFact::s_ventanaCompleta()
 **/
 void BfBulmaFact::s_About()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfAboutView about;
     about.exec();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -185,7 +185,7 @@ void BfBulmaFact::s_About()
 **/
 void BfBulmaFact::closeEvent ( QCloseEvent *event )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
@@ -199,7 +199,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 
 	 if (ret == QMessageBox::Cancel) {
 	   event->ignore();
-	   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	   
 	   return;
 	 }
     } // END IF
@@ -211,7 +211,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
     delete m_list;
     m_list = NULL;
 	
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -229,23 +229,23 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 #endif
 
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si no esta inicializado company no se le puede informar.
     if ( m_company == NULL ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("'company' no iniciado") );
+        
         return;
     } // end if
 
     /// No existe una ventana que activar.
     if ( w == NULL ) {
         m_company->deselectWindow();
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("No existe la ventana a activar") );
+        
         return;
     } // end if
     m_company->selectWindow ( w->windowTitle(), w );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -257,10 +257,10 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
 {
 
   
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QDesktopServices::openUrl(QUrl("http://www.iglues.org/wiki_users/doku.php", QUrl::TolerantMode));
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -270,8 +270,8 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
 **/
 void BfBulmaFact::documentacionError ( const QString docError )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -281,13 +281,13 @@ void BfBulmaFact::documentacionError ( const QString docError )
 **/
 void BfBulmaFact::setActionIndexador ( bool visible )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( visible == TRUE ) {
         actionIndexador->setChecked ( TRUE );
     } else {
         actionIndexador->setChecked ( FALSE );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -296,13 +296,13 @@ void BfBulmaFact::setActionIndexador ( bool visible )
 **/
 void BfBulmaFact::on_actionIndexador_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( actionIndexador->isChecked() == TRUE ) {
         m_company->s_indexadorCambiaEstado ( TRUE );
     } else {
         m_company->s_indexadorCambiaEstado ( FALSE );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -311,9 +311,9 @@ void BfBulmaFact::on_actionIndexador_triggered()
 **/
 void BfBulmaFact::on_actionTipoIVA_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_TipoIVAView();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -322,9 +322,9 @@ void BfBulmaFact::on_actionTipoIVA_triggered()
 **/
 void BfBulmaFact::on_actionTasaIVA_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_TasaIVAView();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -334,8 +334,8 @@ void BfBulmaFact::on_actionTasaIVA_triggered()
 **/
 BlWorkspace * BfBulmaFact::workspace()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return pWorkspace;
 }
 
@@ -345,8 +345,8 @@ BlWorkspace * BfBulmaFact::workspace()
 **/
 BfCompany * BfBulmaFact::company()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_company;
 }
 
@@ -355,9 +355,9 @@ BfCompany * BfBulmaFact::company()
 **/
 void BfBulmaFact::on_actionPaises_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->muestraPaises();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -366,9 +366,9 @@ void BfBulmaFact::on_actionPaises_triggered()
 **/
 void BfBulmaFact::on_actionSeries_de_Factura_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_seriesFactura();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -377,9 +377,9 @@ void BfBulmaFact::on_actionSeries_de_Factura_triggered()
 **/
 void BfBulmaFact::on_actionTrabajadores_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_trabajadores();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -388,9 +388,9 @@ void BfBulmaFact::on_actionTrabajadores_triggered()
 **/
 void BfBulmaFact::on_actionBancos_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_bancos();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -399,9 +399,9 @@ void BfBulmaFact::on_actionBancos_triggered()
 **/
 void BfBulmaFact::on_actionVentana_Completa_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     s_ventanaCompleta();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -410,9 +410,9 @@ void BfBulmaFact::on_actionVentana_Completa_triggered()
 **/
 void BfBulmaFact::on_actionAcerta_de_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     s_About();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -421,9 +421,9 @@ void BfBulmaFact::on_actionAcerta_de_triggered()
 **/
 void BfBulmaFact::on_actionAlmacenes_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_almacenes();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -432,9 +432,9 @@ void BfBulmaFact::on_actionAlmacenes_triggered()
 **/
 void BfBulmaFact::on_actionParametros_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_newBfConfiguracionView();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -443,9 +443,9 @@ void BfBulmaFact::on_actionParametros_triggered()
 **/
 void BfBulmaFact::on_actionFormas_de_Pago_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     s_FPago();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -454,7 +454,7 @@ void BfBulmaFact::on_actionFormas_de_Pago_triggered()
 **/
 void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 #ifdef AREA_QMDI
     pWorkspace->tileSubWindows();
@@ -462,7 +462,7 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
     pWorkspace->tile();
 #endif
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -471,7 +471,7 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 **/
 void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
 #ifdef AREA_QMDI
     pWorkspace->cascadeSubWindows();
@@ -479,6 +479,6 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
     pWorkspace->cascade();
 #endif
   
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

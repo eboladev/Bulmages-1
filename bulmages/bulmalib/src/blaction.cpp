@@ -29,9 +29,9 @@
 **/
 BlAction::BlAction ( const QString &text, QWidget *parent ) : QAction ( text,parent ), BlMainCompanyPointer()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect (this, SIGNAL(triggered(bool)), this, SLOT(actionTriggered(bool)));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -43,9 +43,9 @@ BlAction::BlAction ( const QString &text, QWidget *parent ) : QAction ( text,par
 **/
 BlAction::BlAction ( BlMainCompany *emp,const QString &text, QWidget *parent ) : QAction ( text, 					parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect (this, SIGNAL(triggered(bool)), this, SLOT(actionTriggered(bool)));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -54,8 +54,8 @@ BlAction::BlAction ( BlMainCompany *emp,const QString &text, QWidget *parent ) :
 **/
 BlAction::~BlAction()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 void BlAction::actionTriggered(bool trigg) {

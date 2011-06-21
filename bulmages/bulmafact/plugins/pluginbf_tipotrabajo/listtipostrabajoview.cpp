@@ -44,7 +44,7 @@
 ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( _ ( "almacen" ) );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -60,7 +60,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->load ( "SELECT * FROM tipotrabajo" );
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -84,8 +84,8 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
 **/
 ListTiposTrabajoView::~ListTiposTrabajoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 

@@ -44,10 +44,10 @@
 **/
 CatalogoQToolButton::CatalogoQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_articuloList = art;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -56,8 +56,8 @@ CatalogoQToolButton::CatalogoQToolButton ( ArticuloList *art , QWidget *parent )
 **/
 CatalogoQToolButton::~CatalogoQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -66,7 +66,7 @@ CatalogoQToolButton::~CatalogoQToolButton()
 **/
 void CatalogoQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Imprimir catalogo") );
@@ -74,7 +74,7 @@ void CatalogoQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -83,7 +83,7 @@ void CatalogoQToolButton::setBoton()
 **/
 void CatalogoQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     setMainCompany ( m_articuloList->mainCompany() );
 
@@ -126,7 +126,7 @@ void CatalogoQToolButton::click()
     } // end if
     blCreateAndLoadPDF ( "articulos" );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -138,7 +138,7 @@ void CatalogoQToolButton::click()
 **/
 QString CatalogoQToolButton::detalleArticulos()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString texto = "";
 
     BlProgressBar barra;
@@ -171,7 +171,7 @@ QString CatalogoQToolButton::detalleArticulos()
         barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return texto;
 }
 

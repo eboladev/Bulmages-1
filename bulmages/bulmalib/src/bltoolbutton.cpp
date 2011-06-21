@@ -29,9 +29,9 @@
 **/
 BlToolButton::BlToolButton ( QWidget *parent )        : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( "BlToolButton::BlToolButton", 0 );
+    BlDebug::blDebug ( "BlToolButton::BlToolButton", 0 );
     connect (this, SIGNAL(released()), this, SLOT(buttonReleased()));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -43,9 +43,9 @@ BlToolButton::BlToolButton ( QWidget *parent )        : QToolButton ( parent ), 
 **/
 BlToolButton::BlToolButton ( BlMainCompany *emp, QWidget *parent )        : QToolButton ( parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug ( "BlToolButton::BlToolButton", 0 );
+    BlDebug::blDebug ( "BlToolButton::BlToolButton", 0 );
     connect (this, SIGNAL(released()), this, SLOT(buttonReleased()));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -54,14 +54,14 @@ BlToolButton::BlToolButton ( BlMainCompany *emp, QWidget *parent )        : QToo
 **/
 BlToolButton::~BlToolButton()
 {
-    blDebug ( "BlToolButton::~BlToolButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlToolButton::~BlToolButton", 0 );
+    
 }
 
 void BlToolButton::buttonReleased() {
-    blDebug ( "BlToolButton::buttonReleased", 0 );
+    BlDebug::blDebug ( "BlToolButton::buttonReleased", 0 );
     g_plugins->lanza("BlToolButton_released", this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

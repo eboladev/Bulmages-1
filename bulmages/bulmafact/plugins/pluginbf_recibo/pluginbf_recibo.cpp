@@ -42,7 +42,7 @@ BfBulmaFact *g_pluginbf_recibo = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -87,7 +87,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Recibo" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_Recibo" );
 
     if (accion->objectName() == "mui_actionRecibos") {
         if ( g_recibosList ) {
@@ -109,7 +110,7 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -134,7 +135,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int ActividadView_ActividadView ( ActividadView *l )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QToolButton *mui_generar_recibos = new QToolButton ( l->mui_plugbotones );
     mui_generar_recibos->setObjectName ( QString::fromUtf8 ( "genrecibo" ) );
@@ -161,7 +162,7 @@ int ActividadView_ActividadView ( ActividadView *l )
     p->m_actividad = l;
     m_hboxLayout1->addWidget ( mui_generar_recibos );
     p->connect(mui_generar_recibos, SIGNAL(released()), p, SLOT(elslot()));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -176,8 +177,8 @@ int ActividadView_ActividadView ( ActividadView *l )
 **/
 EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -185,8 +186,8 @@ EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 **/
 EmitirRecibos::~EmitirRecibos()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -194,7 +195,7 @@ EmitirRecibos::~EmitirRecibos()
 **/
 void EmitirRecibos::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
@@ -202,7 +203,7 @@ void EmitirRecibos::elslot()
     bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
     bud->show();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 // ==========================

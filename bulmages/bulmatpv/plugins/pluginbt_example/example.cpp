@@ -63,6 +63,6 @@ Destruimos la clase ExampleView
 **/
 ExampleView::~ExampleView()
 {
-    blDebug ( Q_FUNC_INFO, 0);
-    blDebug ( ( "END ", Q_FUNC_INFO ), 0);
+    BlDebug::blDebug ( Q_FUNC_INFO, 0);
+    BlDebug::blDebug ( ( "END ", Q_FUNC_INFO ), 0);
 }

@@ -32,7 +32,7 @@
 VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listadomantvehiculo->setMainCompany ( emp );
@@ -63,7 +63,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     mainCompany() ->insertWindow ( windowTitle(), this );
     load ( "1" );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -72,9 +72,9 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
 **/
 VehiculoView::~VehiculoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -84,7 +84,7 @@ VehiculoView::~VehiculoView()
 **/
 int VehiculoView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         setDbValue ( "matriculavehiculo", mui_matriculavehiculo->text() );
         setDbValue ( "marcavehiculo", mui_marcavehiculo->text() );
@@ -102,7 +102,7 @@ int VehiculoView::save()
         blMsgInfo ( _ ( "Error al guardar la ficha" ) );
         return -1;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -113,7 +113,7 @@ int VehiculoView::save()
 **/
 int VehiculoView::load ( QString idvehiculo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         BlDbRecord::load ( idvehiculo );
 
@@ -129,7 +129,7 @@ int VehiculoView::load ( QString idvehiculo )
 
         dialogChanges_readValues();
         mainCompany() ->insertWindow ( windowTitle(), this );
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return 0;
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al cargar los datos en la ficha." ) );

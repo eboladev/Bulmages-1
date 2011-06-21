@@ -42,7 +42,7 @@ BfBulmaFact *g_pluginbf_clientealbaran = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -160,7 +160,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     GenAlbQToolButton *mui_exporta_efactura2 = new GenAlbQToolButton ( l, l->mui_plugbotones );
 
@@ -174,7 +174,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -188,7 +188,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     GenAlbQToolButton *mui_exporta_efactura2 = new GenAlbQToolButton ( l, l->mui_plugbotones );
 
@@ -202,7 +202,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -218,7 +218,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 int FacturaView_FacturaView ( FacturaView *l )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlToolButton *agalbaran = new BlToolButton ( l );
     agalbaran->setObjectName("mui_agalbaran12");
@@ -243,7 +243,7 @@ int FacturaView_FacturaView ( FacturaView *l )
     
     m_hboxLayout1->addWidget ( agalbaran );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }

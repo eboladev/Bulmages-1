@@ -48,10 +48,10 @@
 **/
 GenCobroQToolButton::GenCobroQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -60,8 +60,8 @@ GenCobroQToolButton::GenCobroQToolButton ( QWidget *fac , QWidget *parent ) : QT
 **/
 GenCobroQToolButton::~GenCobroQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -70,7 +70,7 @@ GenCobroQToolButton::~GenCobroQToolButton()
 **/
 void GenCobroQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Cobro" );
@@ -80,7 +80,7 @@ void GenCobroQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -89,7 +89,7 @@ void GenCobroQToolButton::setBoton()
 **/
 void GenCobroQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "FacturaBase" ) {
         FacturaView *fpv = ( FacturaView * ) m_object;
@@ -244,7 +244,7 @@ void GenCobroQToolButton::click()
         } // end if
     }// end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

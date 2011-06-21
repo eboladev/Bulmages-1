@@ -44,7 +44,7 @@
 ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setTitleName ( _ ( "CuotasPorAlumno" ) );
     setDbTableName ( "cuotaporalumno" );
@@ -54,7 +54,7 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -62,7 +62,7 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
 **/
 void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     try {
         mui_listado->save();
@@ -71,7 +71,7 @@ void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
         blMsgInfo ( _ ( "Error al guardar las cuotas" ) );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -79,8 +79,8 @@ void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
 **/
 ListCuotasPorAlumnoView::~ListCuotasPorAlumnoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 /// ===================================== SUBFORMULARIO ===============================================
@@ -90,7 +90,7 @@ ListCuotasPorAlumnoView::~ListCuotasPorAlumnoView()
 **/
 ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "cuotaporalumno" );
     setDbFieldId ( "numalumnoscuotaporalumno" );
@@ -98,7 +98,7 @@ ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfS
     addSubFormHeader ( "cuotacuotaporalumno", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cuota" ) );
     setInsert ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -106,9 +106,9 @@ ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfS
 **/
 void ListCuotasPorAlumnoSubForm::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm::load ( "SELECT * FROM cuotaporalumno" );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

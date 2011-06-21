@@ -46,7 +46,7 @@ PortListener *g_listener = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     QString portName = g_confpr->value( CONF_TPV_BASCULA_FILE );              // update this to use your port of choice
     g_listener = new PortListener(portName, tpv->company());
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -66,9 +66,9 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginbascula::entryPoint", 0 );
+    BlDebug::blDebug ( "pluginbascula::entryPoint", 0 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

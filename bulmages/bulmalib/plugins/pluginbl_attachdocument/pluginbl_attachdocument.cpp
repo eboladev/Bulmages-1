@@ -45,7 +45,7 @@
 
 int entryPoint ( QMainWindow *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -57,11 +57,11 @@ int entryPoint ( QMainWindow *bcont )
 
 int BlForm_load ( BlForm *ficha )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     EQToolButton *eq = ficha->findChild<EQToolButton *>("BotonArchDoc");
     eq->hazMenu();
     return 0;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -78,7 +78,7 @@ int BlForm_DesFicha ( BlForm *ficha )
 **/
 int BlForm_BlForm ( BlForm *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
@@ -89,7 +89,7 @@ int BlForm_BlForm ( BlForm *l )
     new EQToolButton( l );
 */
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -102,9 +102,9 @@ int BlForm_BlForm ( BlForm *l )
 **/
 int BlForm_loadSpecs ( BlForm *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     new EQToolButton ( l );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

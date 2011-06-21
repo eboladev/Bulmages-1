@@ -37,12 +37,12 @@ un eventHandler especifico
 **/
 BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
 {
-    blDebug ( "BlTableWidget::BlTableWidget", 0 );
+    BlDebug::blDebug ( "BlTableWidget::BlTableWidget", 0 );
     setColumnOrder ( -1 );
     setOrderType ( -1 );
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -77,8 +77,8 @@ void BlTableWidget::moveRow ( int oldRow, int newRow )
 **/
 void BlTableWidget::editItem ( QTableWidgetItem * )
 {
-    blDebug ( "BlTableWidget::editItem", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTableWidget::editItem", 0 );
+    
 }
 
 
@@ -87,8 +87,8 @@ void BlTableWidget::editItem ( QTableWidgetItem * )
 **/
 void BlTableWidget::sitemChanged ( QTableWidgetItem * )
 {
-    blDebug ( "BlTableWidget::sitemChanged", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTableWidget::sitemChanged", 0 );
+    
 }
 
 
@@ -99,9 +99,9 @@ void BlTableWidget::sitemChanged ( QTableWidgetItem * )
 **/
 BlTableWidgetItem::BlTableWidgetItem ( int type, int mode ) : QTableWidgetItem ( type )
 {
-    blDebug ( "BlTableWidgetItem::BlTableWidgetItem", 0 );
+    BlDebug::blDebug ( "BlTableWidgetItem::BlTableWidgetItem", 0 );
     modo = mode;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -112,9 +112,9 @@ BlTableWidgetItem::BlTableWidgetItem ( int type, int mode ) : QTableWidgetItem (
 **/
 BlTableWidgetItem::BlTableWidgetItem ( const QString &text, int type, int mode ) : QTableWidgetItem ( text, type )
 {
-    blDebug ( "BlTableWidgetItem::BlTableWidgetItem", 0 );
+    BlDebug::blDebug ( "BlTableWidgetItem::BlTableWidgetItem", 0 );
     modo = mode;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -123,8 +123,8 @@ BlTableWidgetItem::BlTableWidgetItem ( const QString &text, int type, int mode )
 **/
 BlTableWidgetItem::~BlTableWidgetItem()
 {
-    blDebug ( "BlTableWidgetItem::~BlTableWidgetItem", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTableWidgetItem::~BlTableWidgetItem", 0 );
+    
 }
 
 
@@ -135,7 +135,7 @@ BlTableWidgetItem::~BlTableWidgetItem()
 **/
 bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
 {
-    blDebug ( "BlTableWidgetItem::operator<", 0, text() + " < " + other.text() );
+    BlDebug::blDebug ( "BlTableWidgetItem::operator<", 0, text() + " < " + other.text() );
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -146,7 +146,7 @@ bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
         double ncad = cad.toDouble ( &oknumero );
         double ncad1 = cad1.toDouble ( &oknumero1 );
         if ( oknumero && oknumero1 ) {
-            blDebug ( ("END ", Q_FUNC_INFO), 0 );
+            
             return ncad < ncad1;
         } // end if
         /// Comprobamos si es una fecha
@@ -156,12 +156,12 @@ bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
             QDate fcad1 = blNormalizeDate ( cad1 );
             QString acad1 = fcad1.toString ( Qt::ISODate );
             if ( acad[4] == '-' && acad1[4] == '-' && acad[7] == '-' && acad1[7] == '-' ) {
-                blDebug ( ("END ", Q_FUNC_INFO), 0 );
+                
                 return fcad < fcad1;
             } // end if
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return cad < cad1;
 }
 
@@ -172,8 +172,8 @@ bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
 **/
 int BlTableWidget::orderType()
 {
-    blDebug ( "BlTableWidget::orderType", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTableWidget::orderType", 0 );
+    
     return m_orderType;
 }
 
@@ -184,8 +184,8 @@ int BlTableWidget::orderType()
 **/
 int BlTableWidget::columnOrder()
 {
-    blDebug ( "BlTableWidget::columnOrder", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTableWidget::columnOrder", 0 );
+    
     return m_columnOrder;
 }
 
@@ -196,9 +196,9 @@ int BlTableWidget::columnOrder()
 **/
 void BlTableWidget::setOrderType ( int t )
 {
-    blDebug ( "BlTableWidget::setOrderType", 0 );
+    BlDebug::blDebug ( "BlTableWidget::setOrderType", 0 );
     m_orderType = t;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -208,9 +208,9 @@ void BlTableWidget::setOrderType ( int t )
 **/
 void BlTableWidget::setColumnOrder ( int t )
 {
-    blDebug ( "BlTableWidget::setColumnOrder", 0 );
+    BlDebug::blDebug ( "BlTableWidget::setColumnOrder", 0 );
     m_columnOrder = t;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -221,9 +221,9 @@ void BlTableWidget::setColumnOrder ( int t )
 **/
 void BlTableWidget::columnMoved ( int column, int oldIndex, int newIndex )
 {
-    blDebug ( "BlTableWidget::columnMoved", 0 );
+    BlDebug::blDebug ( "BlTableWidget::columnMoved", 0 );
     QTableWidget::columnMoved ( column, oldIndex, newIndex );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -232,8 +232,8 @@ void BlTableWidget::columnMoved ( int column, int oldIndex, int newIndex )
 **/
 BlTableWidget::~BlTableWidget()
 {
-    blDebug ( "BlTableWidget::~BlTableWidget", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTableWidget::~BlTableWidget", 0 );
+    
 }
 
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
@@ -242,9 +242,9 @@ BlTableWidget::~BlTableWidget()
 **/
 void BlTableWidget::setSortingEnabled ( bool sorting )
 {
-    blDebug ( "BlTableWidget::setSortingEnabled", 0 );
+    BlDebug::blDebug ( "BlTableWidget::setSortingEnabled", 0 );
     QTableWidget::setSortingEnabled ( sorting );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -259,7 +259,7 @@ tabla y emite signals si lo considera adecuado.
 bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
 {
     if ( event->type() == QEvent::KeyPress ) {
-//        blDebug ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
+//        BlDebug::blDebug ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
         int row = currentRow();
@@ -282,7 +282,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyRelease ) {
-//        blDebug ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
+//        BlDebug::blDebug ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
 
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
@@ -361,7 +361,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
             } // end if
         } // end switch
     } // end if
-//    blDebug("END BlTableWidget::eventFilter()", 0);
+//    BlDebug::blDebug("END BlTableWidget::eventFilter()", 0);
     return QTableWidget::eventFilter ( obj, event );
 //      return TRUE;
 }
@@ -374,12 +374,12 @@ metodo de ordenacion.
 **/
 void BlTableWidget::ordenar()
 {
-    blDebug ( "BlTableWidget::ordenar", 0, QString::number ( m_columnOrder ) );
+    BlDebug::blDebug ( "BlTableWidget::ordenar", 0, QString::number ( m_columnOrder ) );
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
     if ( m_columnOrder < columnCount() && m_columnOrder >= 0 ) {
         sortByColumn ( m_columnOrder );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -393,10 +393,10 @@ void BlTableWidget::ordenar()
 **/
 void BlTableWidget::setText ( int x, int y, const QString & val )
 {
-    blDebug ( "QTableWidget::setText", 0 );
+    BlDebug::blDebug ( "QTableWidget::setText", 0 );
     BlTableWidgetItem *newitem = new BlTableWidgetItem ( val );
     setItem ( x, y, newitem );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -407,9 +407,9 @@ void BlTableWidget::setText ( int x, int y, const QString & val )
 **/
 void BlTableWidget::sortByColumn ( int column, Qt::SortOrder order )
 {
-    blDebug ( "BlTableWidget::sortByColumn", 0 );
+    BlDebug::blDebug ( "BlTableWidget::sortByColumn", 0 );
     QTableWidget::sortByColumn ( column, order );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -420,23 +420,23 @@ void BlTableWidget::sortByColumn ( int column, Qt::SortOrder order )
 **/
 void BlTableWidget::sortItems ( int column, Qt::SortOrder order )
 {
-    blDebug ( "BlTableWidget::sortItems", 0 );
+    BlDebug::blDebug ( "BlTableWidget::sortItems", 0 );
     QTableWidget::sortItems ( column, order );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void BlTableWidget::showColumn ( int column )
 {
-    blDebug ( "BlTableWidget::showColumn", 0 );
+    BlDebug::blDebug ( "BlTableWidget::showColumn", 0 );
     QTableWidget::showColumn ( column );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void BlTableWidget::hideColumn ( int column )
 {
-    blDebug ( "BlTableWidget::hideColumn", 0 );
+    BlDebug::blDebug ( "BlTableWidget::hideColumn", 0 );
     QTableWidget::hideColumn ( column );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

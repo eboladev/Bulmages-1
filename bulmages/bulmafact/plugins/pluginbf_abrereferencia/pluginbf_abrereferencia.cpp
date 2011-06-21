@@ -33,13 +33,13 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_abrereferencia", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Buscamos la ficha que corresponde al widget.
     QList<BfForm *> lista = g_main->findChildren<BfForm *>();
@@ -64,7 +64,7 @@ int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
 
     if ( ficha ) {
         QString query = "SELECT * FROM " + ficha->tableName() + " WHERE ref" + ficha->tableName() + " = '" + l->text() + "'";
-        blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'.")).arg(query) );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'.")).arg(query) );
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
             ficha->load ( cur->value( "id" + ficha->tableName() ) );
@@ -72,7 +72,7 @@ int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
         delete cur;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

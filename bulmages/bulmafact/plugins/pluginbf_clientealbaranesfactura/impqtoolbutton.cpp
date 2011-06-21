@@ -54,14 +54,14 @@
 **/
 ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
     m_facturasList = fac;
 
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -70,8 +70,8 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 **/
 ImpQToolButton::~ImpQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -80,7 +80,7 @@ ImpQToolButton::~ImpQToolButton()
 **/
 void ImpQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta1" ) );
     setStatusTip ( "Facturar elementos seleccionados" );
@@ -88,7 +88,7 @@ void ImpQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -97,7 +97,7 @@ void ImpQToolButton::setBoton()
 **/
 void ImpQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString res = "";
 
@@ -189,6 +189,6 @@ void ImpQToolButton::click()
 
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

@@ -43,7 +43,7 @@
 ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Aunque no hay campos establecemos la tabla para obtener permisos
@@ -52,7 +52,7 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
     mui_listado->load();
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -61,9 +61,9 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
 **/
 ListZonaComercialView::~ListZonaComercialView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,12 +74,12 @@ ListZonaComercialView::~ListZonaComercialView()
 **/
 ListZonaComercialSubForm::ListZonaComercialSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "zonacomercial" );
     setDbFieldId ( "idzonacomercial" );
     addSubFormHeader ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "ID zona comercial" ) );
     addSubFormHeader ( "nomzonacomercial", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre de la zona comercial" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

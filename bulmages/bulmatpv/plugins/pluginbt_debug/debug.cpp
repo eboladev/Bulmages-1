@@ -48,10 +48,10 @@ CambiarDebug::CambiarDebug ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( 
     /// Comprovamos el estado de CONF_DEBUG en los archivos de configuracion y checkeamos mui_debug, segun estos.
     if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
         mui_debug->setChecked ( TRUE );
-        blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
+        BlDebug::blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
     } else {
         mui_debug->setChecked ( FALSE );
-        blDebug ( ( Q_FUNC_INFO,  _("Debug desactivado") ), 0 );
+        BlDebug::blDebug ( ( Q_FUNC_INFO,  _("Debug desactivado") ), 0 );
     }
 
 
@@ -64,8 +64,8 @@ Destruimos la clase CambiarDebug
 **/
 CambiarDebug::~CambiarDebug()
 {
-    blDebug ( Q_FUNC_INFO, 0);
-    blDebug ( ( "END ",Q_FUNC_INFO ), 0);
+    BlDebug::blDebug ( Q_FUNC_INFO, 0);
+    BlDebug::blDebug ( ( "END ",Q_FUNC_INFO ), 0);
 }
 
 
@@ -81,10 +81,10 @@ void CambiarDebug::on_mui_debug_stateChanged ( int state )
     /// Establecemos el estado de CONF_DEBUG, sobreescribiendo lo establecido por los archivos y sin guardar el estado
     if (state == Qt::Checked) {
         g_confpr->setValue( CONF_DEBUG, "TRUE");
-        blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
+        BlDebug::blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
     } else if (state == Qt::Unchecked) {
         g_confpr->setValue( CONF_DEBUG, "FALSE");
-        blDebug ( ( Q_FUNC_INFO,  _("Debug desactivado") ), 0 );
+        BlDebug::blDebug ( ( Q_FUNC_INFO,  _("Debug desactivado") ), 0 );
     } // end if
 
    

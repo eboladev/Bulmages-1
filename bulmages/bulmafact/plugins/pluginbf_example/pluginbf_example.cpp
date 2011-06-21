@@ -36,7 +36,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -85,31 +85,31 @@ int BlAction_triggered(BlAction *accion) {
 /***
  PluginBf_Example::PluginBf_Example()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 PluginBf_Example::~PluginBf_Example()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 void PluginBf_Example::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            _ ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void PluginBf_Example::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
@@ -128,13 +128,13 @@ void PluginBf_Example::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

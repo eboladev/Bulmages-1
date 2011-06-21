@@ -34,7 +34,7 @@
 ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "dalbaranp" );
     setDbFieldId ( "iddalbaranp" );
     addSubFormHeader ( "iddalbaranp", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
@@ -42,6 +42,6 @@ ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView ( QWidget *parent )
     addSubFormHeader ( "proporciondalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

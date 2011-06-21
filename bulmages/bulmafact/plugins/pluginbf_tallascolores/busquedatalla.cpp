@@ -31,13 +31,13 @@
 BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     setQuery ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
     setTableName ( "tc_talla" );
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -47,8 +47,8 @@ BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
 **/
 BusquedaTalla::~BusquedaTalla()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -65,14 +65,14 @@ BusquedaTalla::~BusquedaTalla()
 BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
         : BlComboBoxDelegate ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     setQuery ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
     setTableName ( "tc_talla" );
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
     setAllowNull(FALSE);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -82,7 +82,7 @@ BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
 **/
 BusquedaTallaDelegate::~BusquedaTallaDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 

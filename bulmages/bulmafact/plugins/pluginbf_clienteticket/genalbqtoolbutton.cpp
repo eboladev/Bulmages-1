@@ -50,10 +50,10 @@
 **/
 GenAlbQToolButton::GenAlbQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_object = fac;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -62,8 +62,8 @@ GenAlbQToolButton::GenAlbQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 GenAlbQToolButton::~GenAlbQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -72,7 +72,7 @@ GenAlbQToolButton::~GenAlbQToolButton()
 **/
 void GenAlbQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Ticket" );
@@ -82,7 +82,7 @@ void GenAlbQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-to-note.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -91,7 +91,7 @@ void GenAlbQToolButton::setBoton()
 **/
 void GenAlbQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "PedidoClienteBase" ) {
         generarFactura1();
@@ -102,7 +102,7 @@ void GenAlbQToolButton::click()
     }// end if
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -117,7 +117,7 @@ void GenAlbQToolButton::click()
 **/
 void GenAlbQToolButton::generarFactura1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
 
@@ -230,7 +230,7 @@ void GenAlbQToolButton::generarFactura1()
     } // end try
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -249,7 +249,7 @@ void GenAlbQToolButton::generarFactura1()
 **/
 void GenAlbQToolButton::generarFactura2()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -362,7 +362,7 @@ void GenAlbQToolButton::generarFactura2()
     } // end try
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

@@ -32,7 +32,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,11 +49,11 @@ int entryPoint ( BfBulmaFact * )
 **/
 int BfCompany_s_almacenes ( BfCompany *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     AlmacenesListView *lser = new AlmacenesListView ( bges, 0 );
     bges->pWorkspace() ->addSubWindow ( lser );
     lser->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     /// Este plugin reemplaza completamente la funcion llamante y por eso devuelve un valor distinto de 0
     return 1;
 }

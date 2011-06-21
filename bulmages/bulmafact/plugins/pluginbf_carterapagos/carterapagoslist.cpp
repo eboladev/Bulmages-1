@@ -47,7 +47,7 @@
 CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode modo )
         : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
@@ -89,7 +89,7 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
     trataPermisos ( "vencimientop" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -99,9 +99,9 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
 **/
 CarteraPagosList::~CarteraPagosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -112,7 +112,7 @@ CarteraPagosList::~CarteraPagosList()
 **/
 void CarteraPagosList::presenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString where;
 
     if ( mui_idproveedor->id() != "" ) {
@@ -133,14 +133,14 @@ void CarteraPagosList::presenta()
 
 
     mui_list->load ( "SELECT * FROM vencimientop LEFT JOIN facturap AS t1 ON vencimientop.idfacturap = t1.idfacturap LEFT JOIN proveedor AS t2 ON t2.idproveedor = vencimientop.idproveedor LEFT JOIN forma_pago  AS t3 ON t3.idforma_pago = vencimientop.idforma_pago  WHERE nomproveedor LIKE '%" + m_texto->text() + "%' " + where + " ORDER BY nomproveedor" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 
 void CarteraPagosList::editar ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idvencimientop = mui_list->dbValue ( "idvencimientop" );
     if ( editMode() && mdb_idvencimientop != "" ) {
         VencimientoPView *bud = new VencimientoPView( ( BfCompany * ) mainCompany(), 0 );
@@ -153,7 +153,7 @@ void CarteraPagosList::editar ( int )
     } else {
         close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -165,9 +165,9 @@ void CarteraPagosList::editar ( int )
 **/
 void CarteraPagosList::on_mui_imprimir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( tr ( "Listado de Vencimientos" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** SLOT que responde a la pulsacion del boton imprimir.
@@ -177,9 +177,9 @@ void CarteraPagosList::on_mui_imprimir_clicked()
 **/
 void CarteraPagosList::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     presenta();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -191,7 +191,7 @@ void CarteraPagosList::on_mui_actualizar_clicked()
 **/
 void CarteraPagosList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
 
                 QString idvencimientop = mui_list->dbValue("idvencimientop");
@@ -206,7 +206,7 @@ void CarteraPagosList::remove()
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al borrar un vencimientop" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -216,8 +216,8 @@ void CarteraPagosList::remove()
 **/
 QString CarteraPagosList::idvencimientop()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idvencimientop;
 }
 
@@ -228,9 +228,9 @@ QString CarteraPagosList::idvencimientop()
 **/
 void CarteraPagosList::hideBotonera()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_botonera->hide();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -239,9 +239,9 @@ void CarteraPagosList::hideBotonera()
 **/
 void CarteraPagosList::showBotonera()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_botonera->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -250,9 +250,9 @@ void CarteraPagosList::showBotonera()
 **/
 void CarteraPagosList::hideBusqueda()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_busqueda->hide();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -261,9 +261,9 @@ void CarteraPagosList::hideBusqueda()
 **/
 void CarteraPagosList::showBusqueda()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_busqueda->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -273,11 +273,11 @@ void CarteraPagosList::showBusqueda()
 **/
 void CarteraPagosList::on_m_filtro_textChanged ( const QString &text )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( text.size() >= 3 ) {
         on_mui_actualizar_clicked();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -287,13 +287,13 @@ void CarteraPagosList::on_m_filtro_textChanged ( const QString &text )
 **/
 void CarteraPagosList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( editMode()  ) {
         VencimientoPView *bud = new VencimientoPView( ( BfCompany * ) mainCompany(), 0 );
         mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -306,13 +306,13 @@ void CarteraPagosList::crear()
 **/
 void CarteraPagosList::on_mui_configurar_toggled ( bool checked )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( checked ) {
         mui_list->showConfig();
     } else {
         mui_list->hideConfig();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void CarteraPagosList::on_mui_q34_clicked() {
@@ -347,7 +347,7 @@ void CarteraPagosList::on_mui_suma_clicked() {
 **/
 CarteraPagosListSubForm::CarteraPagosListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "vencimientop" );
     setDbFieldId ( "idvencimientop" );
     addSubFormHeader ( "idvencimientop", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, tr ( "ID vencimientop" ) );
@@ -363,7 +363,7 @@ CarteraPagosListSubForm::CarteraPagosListSubForm ( QWidget *parent, const char *
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -372,6 +372,6 @@ CarteraPagosListSubForm::CarteraPagosListSubForm ( QWidget *parent, const char *
 **/
 CarteraPagosListSubForm::~CarteraPagosListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }

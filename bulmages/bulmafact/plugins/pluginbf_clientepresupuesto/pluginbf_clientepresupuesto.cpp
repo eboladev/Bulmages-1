@@ -41,7 +41,7 @@ BfBulmaFact *g_pluginbf_clientepresupuesto = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -154,7 +154,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     VerPreQToolButton *mui_exporta_epresupuesto2 = new VerPreQToolButton ( l, l->mui_plugbotones );
 
@@ -168,7 +168,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_epresupuesto2 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }

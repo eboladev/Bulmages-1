@@ -28,7 +28,7 @@
 **/
 ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "lfactura" );
     setDbFieldId ( "idlfactura" );
 
@@ -46,7 +46,7 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -56,11 +56,11 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListLResArticulo::load ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfactura LEFT JOIN factura ON factura.idfactura= lfactura.idfactura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -72,7 +72,7 @@ void ListLResArticulo::load ( QString idarticulo )
 **/
 ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "idlalbaran" );
 
@@ -89,7 +89,7 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -99,11 +99,11 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListEntregas::load ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -115,7 +115,7 @@ void ListEntregas::load ( QString idarticulo )
 **/
 ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "lfacturap" );
     setDbFieldId ( "idlfacturap" );
 
@@ -132,7 +132,7 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -142,11 +142,11 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListCompras::load ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfacturap LEFT JOIN facturap ON facturap.idfacturap= lfacturap.idfacturap LEFT JOIN proveedor ON proveedor.idproveedor = facturap.idproveedor WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -159,7 +159,7 @@ void ListCompras::load ( QString idarticulo )
 **/
 ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "lalbaranp" );
     setDbFieldId ( "idlalbaranp" );
 
@@ -176,7 +176,7 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -186,10 +186,10 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListRecogidas::load ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaranp LEFT JOIN albaranp ON albaranp.idalbaranp= lalbaranp.idalbaranp LEFT JOIN proveedor ON proveedor.idproveedor = albaranp.idproveedor WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

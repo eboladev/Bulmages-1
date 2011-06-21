@@ -37,7 +37,7 @@
 */
 ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 //    setAttribute ( Qt::WA_DeleteOnClose );
 
@@ -77,28 +77,28 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ApunteContableView::~ApunteContableView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 QString ApunteContableView::templateName ( void )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     
     return QString ( "acontable" );
 }
 
 void ApunteContableView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -113,27 +113,27 @@ void ApunteContableView::imprimir()
 
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 int ApunteContableView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_list->save();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int ApunteContableView::load ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_list->load ("SELECT * FROM acontable NATURAL LEFT JOIN partida" );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }

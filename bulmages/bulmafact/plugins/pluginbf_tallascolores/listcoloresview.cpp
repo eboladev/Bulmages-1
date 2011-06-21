@@ -45,7 +45,7 @@
 ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setTitleName ( _ ( "Colores" ) );
     setDbTableName ( "tc_color" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -54,7 +54,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,14 +64,14 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
 
 void ListColoresView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los colores" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -81,8 +81,8 @@ void ListColoresView::on_mui_aceptar_clicked()
 
 ListColoresView::~ListColoresView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -94,14 +94,14 @@ ListColoresView::~ListColoresView()
 
 ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "tc_color" );
     setDbFieldId ( "idtc_color" );
     addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Color" ) );
     addSubFormHeader ( "rgbtc_color", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "RGB Color" ) );
     addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Color" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -111,8 +111,8 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent 
 
 void ListColoresSubForm::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( "SELECT * FROM tc_color" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

@@ -50,7 +50,7 @@
 ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -124,7 +124,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el articulo" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -133,8 +133,8 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
 **/
 ArticuloView::~ArticuloView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -145,7 +145,7 @@ ArticuloView::~ArticuloView()
 **/
 void ArticuloView::pintarPost()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Comprueba que exista la imagen del articulo y sino carga la imagen por defecto para indicar
     /// que el articulo no tiene imagen asociada.
@@ -175,7 +175,7 @@ void ArticuloView::pintarPost()
 
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -188,7 +188,7 @@ void ArticuloView::pintarPost()
 **/
 int ArticuloView::cargarPost ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloView_cargar", this );
@@ -199,7 +199,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
     /// Cargamos los componentes.
     m_componentes->load ( idarticulo );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -213,7 +213,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
 **/
 void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( mui_codigocompletoarticulo->text() == dbValue ( "codigocompletoarticulo" ) ) {
         return;
@@ -225,7 +225,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
         load ( cur->value( "idarticulo" ) );
     } // end if
     delete cur;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -240,7 +240,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 **/
 int ArticuloView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
         BlDbRecordSet * cur1 = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + dbValue ( "idarticulo" ) );
@@ -273,7 +273,7 @@ int ArticuloView::afterSave()
     /// Disparamos los plugins
     g_plugins->lanza ( "ArticuloView_guardar_post", this );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 
 }
@@ -293,9 +293,9 @@ int ArticuloView::afterSave()
 **/
 int ArticuloView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_componentes->remove();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -308,7 +308,7 @@ int ArticuloView::beforeDelete()
 **/
 void ArticuloView::on_mui_cambiarimagen_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QPixmap imagen;
 
     m_archivoimagen = QFileDialog::getOpenFileName (
@@ -329,7 +329,7 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
         mui_imagen->setPixmap ( imagen );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -371,7 +371,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
     Solo tiene en consideracion valores numericos para estos articulos.
 */
 void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty()) {
         QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
 
@@ -385,7 +385,6 @@ void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
         delete cur;
         mui_codarticulo->selectAll();
     } // end if
-    blDebug("END ArticuloView::on_mui_idfamilia_lostFocus");
 }
 
 

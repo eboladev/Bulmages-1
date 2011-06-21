@@ -35,7 +35,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int ArticuloList_ArticuloList ( ArticuloList *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 //================================
 
     CatalogoQToolButton *mui_exporta_efactura2 = new CatalogoQToolButton ( l,  l->mui_plugbotones );
@@ -66,7 +66,7 @@ int ArticuloList_ArticuloList ( ArticuloList *l )
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
 //================================
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

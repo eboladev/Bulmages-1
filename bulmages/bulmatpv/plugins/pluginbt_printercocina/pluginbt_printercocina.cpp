@@ -50,14 +50,14 @@ int BtTicket_borrarLinea ( BtTicket *tick ) {
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
-    blDebug ( "PluginBt_PrinterCocina::BtTicket_agregarLinea_Post", 0 );
+    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtTicket_agregarLinea_Post", 0 );
     
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
     item->addDbField ( "unidadescocina", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Unidades en Cocina" ) );
     item->setDbValue("unidadescocina", "0");
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -68,7 +68,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 
 
 int impresionCocina(BtTicket *tick) {
-    blDebug ("PluginBt_PrinterCocina::impresionCocina", 0);
+    BlDebug::blDebug ("PluginBt_PrinterCocina::impresionCocina", 0);
     
 
     struct empresastr {
@@ -267,7 +267,7 @@ int impresionCocina(BtTicket *tick) {
     } // end while
     delete curimpresoras;
 
-    blDebug ("END PluginBt_PrinterCocina::impresionCocina", 0);
+    BlDebug::blDebug ("END PluginBt_PrinterCocina::impresionCocina", 0);
 }
 
 
@@ -275,17 +275,17 @@ int impresionCocina(BtTicket *tick) {
 
 int BtTicket_imprimir_Post(BtTicket *tick)
 {
-    blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
     impresionCocina(tick);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 1;
 }
 
 int Abrevs_on_mui_aparcar_clicked( Abrevs *av)
 {
-    blDebug ( "PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
+    BlDebug::blDebug ( "PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
     impresionCocina(((BtCompany *)av->mainCompany())->ticketActual());
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -297,8 +297,8 @@ int ticket_aparcado_remotamente(BtTicket *tick) {
 
 
 int BtCompany_cobrar_1(BtCompany *comp) {
-    blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
+    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
     impresionCocina(comp->ticketActual());
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }

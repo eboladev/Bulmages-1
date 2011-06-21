@@ -35,7 +35,7 @@
 EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString query;
 
@@ -57,7 +57,7 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 //  delete cur3;
 
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -66,8 +66,8 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 **/
 EFactura::~EFactura()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -77,7 +77,7 @@ EFactura::~EFactura()
 void EFactura::on_mui_guardar_clicked()
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString query;
 
@@ -103,7 +103,7 @@ void EFactura::on_mui_guardar_clicked()
     query += "')";
     mainCompany() ->runQuery ( query );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -112,7 +112,7 @@ void EFactura::on_mui_guardar_clicked()
 */
 void EFactura::on_mui_examinaECertificado_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString s = QFileDialog::getOpenFileName (
                     this,
@@ -126,7 +126,7 @@ void EFactura::on_mui_examinaECertificado_clicked()
     if ( s != "" )
         mui_ficheroECertificado->setText ( s );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -135,7 +135,7 @@ void EFactura::on_mui_examinaECertificado_clicked()
 **/
 void EFactura::on_mui_cancelar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 //  QString query = "SELECT * FROM configuracion";
 //  BlDbRecordSet *cur = mainCompany()->loadQuery(query);
@@ -150,5 +150,5 @@ void EFactura::on_mui_cancelar_clicked()
 //  mainCompany()->begin();
 //  mainCompany()->runQuery(query);
 //  mainCompany()->rollback();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

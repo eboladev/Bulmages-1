@@ -30,9 +30,9 @@
 **/
 BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent )
 {
-    blDebug ( "BlTextEditDelegate::BlTextEditDelegate", 0 );
+    BlDebug::blDebug ( "BlTextEditDelegate::BlTextEditDelegate", 0 );
     installEventFilter ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -41,8 +41,8 @@ BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent 
 **/
 BlTextEditDelegate::~BlTextEditDelegate()
 {
-    blDebug ( "BlTextEditDelegate::~BlTextEditDelegate", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlTextEditDelegate::~BlTextEditDelegate", 0 );
+    
 }
 
 
@@ -54,7 +54,7 @@ BlTextEditDelegate::~BlTextEditDelegate()
 **/
 bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
 {
-    blDebug ( "BlTextEditDelegate::eventFilter", 0, QString::number ( event->type() ) );
+    BlDebug::blDebug ( "BlTextEditDelegate::eventFilter", 0, QString::number ( event->type() ) );
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
@@ -65,12 +65,12 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
 	  case Qt::Key_Return:
 	  case Qt::Key_Enter:
 		event->ignore();
-		blDebug ( ("END ", Q_FUNC_INFO), 0 );
+		
 		return TRUE;
 	      break;
 	  } // end switch
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return QTextEdit::eventFilter ( obj, event );
 }
 

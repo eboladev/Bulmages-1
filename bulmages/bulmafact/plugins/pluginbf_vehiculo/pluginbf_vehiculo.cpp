@@ -37,8 +37,8 @@
 **/
 myplugin::myplugin()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -47,8 +47,8 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -57,11 +57,11 @@ myplugin::~myplugin()
 **/
 void myplugin::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -71,7 +71,7 @@ void myplugin::elslot()
 **/
 void myplugin::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Creamos el men&uacute;.
     m_dbConnection = bges->company();
     m_bulmafact = bges;
@@ -83,7 +83,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->addMenu ( pPluginMenu );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -94,7 +94,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Vehiculos", "0.5.9");
@@ -105,7 +105,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

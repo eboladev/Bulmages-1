@@ -31,8 +31,8 @@
 **/
 BlWorkspace::BlWorkspace ( QWidget * )
 {
-    blDebug ( "BlWorkspace::BlWorkspace", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlWorkspace::BlWorkspace", 0 );
+    
 }
 
 
@@ -41,8 +41,8 @@ BlWorkspace::BlWorkspace ( QWidget * )
 **/
 BlWorkspace::~BlWorkspace()
 {
-    blDebug ( "BlWorkspace::~BlWorkspace", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlWorkspace::~BlWorkspace", 0 );
+    
 }
 
 
@@ -54,7 +54,7 @@ BlWorkspace::~BlWorkspace()
 **/
 void BlWorkspace::addSubWindow ( QWidget * w )
 {
-    blDebug ( "BlWorkspace::addSubWindow", 0 );
+    BlDebug::blDebug ( "BlWorkspace::addSubWindow", 0 );
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -102,7 +102,7 @@ void BlWorkspace::addSubWindow ( QWidget * w )
     accionEsc->setShortcut ( _ ( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -121,7 +121,7 @@ QWidget *BlWorkspace::activeWindow () const
 **/
 void BlWorkspace::addWindow ( QWidget * w )
 {
-    blDebug ( "BlWorkspace::addWindow", 0 );
+    BlDebug::blDebug ( "BlWorkspace::addWindow", 0 );
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -140,7 +140,7 @@ void BlWorkspace::addWindow ( QWidget * w )
     accionEsc->setShortcut ( _ ( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -150,9 +150,9 @@ void BlWorkspace::addWindow ( QWidget * w )
 **/
 void BlWorkspace::addSubWindow ( QWidget * w )
 {
-    blDebug ( "BlWorkspace::addWindow", 0 );
+    BlDebug::blDebug ( "BlWorkspace::addWindow", 0 );
     BlWorkspace::addWindow ( w );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 #endif

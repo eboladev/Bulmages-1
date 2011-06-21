@@ -35,12 +35,12 @@
 **/
 int entryPoint ( QApplication * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_subform2sxc", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -51,8 +51,8 @@ int entryPoint ( QApplication * )
 **/
 PluginBl_SubForm2SXC::PluginBl_SubForm2SXC ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -61,8 +61,8 @@ PluginBl_SubForm2SXC::PluginBl_SubForm2SXC ( BlSubForm *parent ) : QObject ( par
 **/
 PluginBl_SubForm2SXC::~PluginBl_SubForm2SXC()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -72,10 +72,10 @@ PluginBl_SubForm2SXC::~PluginBl_SubForm2SXC()
 **/
 void PluginBl_SubForm2SXC::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     menu->addSeparator();
     menu->addAction ( _ ( "Exportar a hoja de calculo (SXC)" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -85,11 +85,11 @@ void PluginBl_SubForm2SXC::s_pintaMenu ( QMenu *menu )
 **/
 void PluginBl_SubForm2SXC::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( action->text() == _ ( "Exportar a hoja de calculo (SXC)" ) ) {
         sacaSXC();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -98,7 +98,7 @@ void PluginBl_SubForm2SXC::s_trataMenu ( QAction *action )
 **/
 void PluginBl_SubForm2SXC::sacaSXC()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "listadosxc.perl";
     BlSubForm * subf = ( BlSubForm * ) parent();
@@ -206,7 +206,7 @@ void PluginBl_SubForm2SXC::sacaSXC()
     cadena = g_confpr->value(CONF_SXC) + " " + g_confpr->value( CONF_DIR_USER ) + "listadosxc.sxc &";
     system ( cadena.toAscii() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -217,11 +217,11 @@ void PluginBl_SubForm2SXC::sacaSXC()
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     PluginBl_SubForm2SXC *subformsxc = new PluginBl_SubForm2SXC ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformsxc, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformsxc, SLOT ( s_trataMenu ( QAction * ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

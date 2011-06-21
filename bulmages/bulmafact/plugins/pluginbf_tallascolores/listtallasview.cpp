@@ -45,7 +45,7 @@
 ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setTitleName ( _ ( "Tallas" ) );
     setDbTableName ( "tc_talla" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -54,7 +54,7 @@ ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,14 +64,14 @@ ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
 
 void ListTallasView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los colores" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -81,8 +81,8 @@ void ListTallasView::on_mui_aceptar_clicked()
 
 ListTallasView::~ListTallasView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -94,13 +94,13 @@ ListTallasView::~ListTallasView()
 
 ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "tc_talla" );
     setDbFieldId ( "idtc_talla" );
     addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id color" ) );
     addSubFormHeader ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre talla" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,8 +110,8 @@ ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
 
 void ListTallasSubForm::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( "SELECT * FROM tc_talla" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

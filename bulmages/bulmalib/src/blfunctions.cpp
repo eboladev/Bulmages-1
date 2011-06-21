@@ -29,12 +29,154 @@
 #include <QTextStream>
 #include <QLocale>
 #include <QProcess>
-#include <QTime>
+
 
 #include "blfunctions.h"
 #include "blconfiguration.h"
 #include "blmainwindow.h"
 #include "local_blI18n.h"
+
+/** Las variables estaticas de clase deben ser delcaras para reservar memoria */
+QFile *BlDebug::m_file;
+QFile *BlDebug::m_fileXML;
+QTextStream *BlDebug::m_out;
+QTextStream *BlDebug::m_outXML;
+int BlDebug::m_auxxml;
+int BlDebug::m_supnivel;
+int BlDebug::m_indice;
+QString BlDebug::m_mensajesanulados[7000];
+QString BlDebug::m_clasesanuladas[7000];
+int BlDebug::m_indiceclases;
+
+
+BlDebug::BlDebug(const QString &func, int level, const QString &params) {
+  
+
+    m_func = func;
+    m_level = level;
+    m_params = params;
+    m_time.start();
+    
+    /// Si el objeto confpr no esta creado puede dar segmentation fault.
+    if (!g_confpr ) return;
+    
+    /// Si no hay modo debug salimos directamente
+//      if (! g_confpr->value(CONF_DEBUG).contains("TRUE") )     return;
+
+
+    static int semaforo = 0;
+    if (!semaforo) {
+      BlDebug::m_auxxml = 0;
+      BlDebug::m_supnivel = 0;
+      BlDebug::m_indice = 0;
+      BlDebug::m_indiceclases = 0;
+      BlDebug::m_file = new QFile ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
+      BlDebug::m_out = new QTextStream ( BlDebug::m_file );
+
+      BlDebug::m_fileXML = new QFile( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.xml" );
+      BlDebug::m_outXML = new QTextStream ( BlDebug::m_fileXML );
+
+      if ( !BlDebug::m_file->open ( QIODevice::WriteOnly | QIODevice::Text ) )
+	  return;
+      if ( !BlDebug::m_fileXML->open ( QIODevice::WriteOnly | QIODevice::Text ) )
+	  return;
+      semaforo = 1;
+    } // end if
+
+
+  
+    if ( m_level == 5 ) {
+	BlDebug::m_supnivel = 0;
+	m_level = 2;
+    } // end if
+    if ( m_level == 4 ) {
+	BlDebug::m_supnivel = 2;
+	m_level = 2;
+    } // end if
+    if ( m_level == 0 || m_level == 1 ) {
+	/// Si la cadena contiene END bajamos el nivel
+	BlDebug::m_auxxml ++;
+	if ( BlDebug::m_auxxml > 20 ) BlDebug::m_auxxml = 1;
+
+	for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
+	    *BlDebug::m_outXML << "    ";
+	    *BlDebug::m_out << "    ";
+	} // end for
+
+	QString cad1 = func;
+
+	    cad1 = "<" + cad1 + " time=\"" + QString::number ( m_time.elapsed() ) + "\" param=\"" + m_params + "\" >";
+
+
+	*BlDebug::m_outXML << cad1  << "\n" << flush;
+	*BlDebug::m_out << "\\" << func << " " << m_params << "\n" << flush;
+	
+    } // end if
+    for ( int i = 0; i < BlDebug::m_indice; i++ ) {
+	if ( func == BlDebug::m_mensajesanulados[i] ) {
+	    return;
+	} // end if
+    } // end for
+    for ( int i = 0; i < BlDebug::m_indiceclases; i++ ) {
+	if ( func.left ( func.indexOf ( "::" ) ) == BlDebug::m_clasesanuladas[i] ) {
+	    return;
+	} // end if
+    } // end for
+
+    if ( m_level == 2 || ( BlDebug::m_supnivel == 2 && m_level == 0 ) || m_level == 3 ) {
+	*BlDebug::m_out << func << " " << m_params << "\n" << flush;
+	int err = QMessageBox::information ( NULL,
+					      _ ( "Informacion de depuracion" ),
+					      func + " " + m_params,
+					      _ ( "&Continuar" ),
+					      _ ( "&Omitir" ),
+					      _ ( "Omitir &clase" ),
+					      0, 1 );
+	if ( err == 1 ) {
+	    BlDebug::m_mensajesanulados[BlDebug::m_indice++] = func;
+	} // end if
+	if ( err == 2 ) {
+	    BlDebug::m_clasesanuladas[BlDebug::m_indiceclases++] = func.left ( func.indexOf ( "::" ) );
+	} // end if
+    } // end if
+    
+}
+
+void BlDebug::blDebug(const QString &text, int level, const QString &params) {
+
+            for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
+                *BlDebug::m_outXML << "    ";
+                *BlDebug::m_out << "    ";
+            } // end for
+
+            QString cad1;
+            cad1 = "<comment  result=\"" + text + "\" >";
+
+
+            *BlDebug::m_outXML << cad1  << "\n" << flush;
+            *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
+
+}
+
+BlDebug::~BlDebug() {
+        if ( m_level == 0 || m_level == 1 ) {
+            for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
+                *BlDebug::m_outXML << "    ";
+                *BlDebug::m_out << "    ";
+            } // end for
+
+            QString cad1 = m_func;
+            cad1 = "</" + cad1.remove ( 0, 4 ) + " time=\"" + QString::number ( m_time.elapsed() ) + "\" result=\"" + m_params + "\" >";
+
+
+            *BlDebug::m_outXML << cad1  << "\n" << flush;
+            *BlDebug::m_out << "/" << m_func << " " << m_params << "\n" << flush;
+	    
+
+            BlDebug::m_auxxml --;
+            if ( BlDebug::m_auxxml < 0 ) BlDebug::m_auxxml = 20;
+        } // end if
+}
 
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
@@ -197,7 +339,8 @@ QString blXMLDecode ( const QString &string )
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
 QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
 {
-    blDebug ( "BlFunctions::blExtendStringWithZeros", 0, cad + "--" + QString::number ( num1 ) );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlFunctions::blExtendStringWithZeros", 0, cad + "--" + QString::number ( num1 ) );
     QString cod = cad;
     int num = num1;
     if ( cod.length() < num ) {
@@ -207,7 +350,7 @@ QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
             cod.replace ( pos, 1, str7 );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( cod );
 }
 
@@ -334,7 +477,8 @@ void blReplaceStringInFile ( QString archivo, QString texto1, QString texto2, QS
 /// el trabajo de la invocaci&oacute;n de bgtrml2pdf para evitar trabajo duplicado.
 void blCreatePDF ( const QString arch )
 {
-    blDebug ( "blCreatePDF " + arch, 0 );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "blCreatePDF " + arch, 0 );
 
     QDir::setCurrent ( g_confpr->value( CONF_DIR_USER ) );
     QString cadsys;
@@ -349,7 +493,7 @@ void blCreatePDF ( const QString arch )
 	blMsgError(_("Error en PYTHON [ blfunctions->blCreatePDF() ]"));
     } // end if
     
-    blDebug ( cadsys, 0 );
+    BlDebug::blDebug ( cadsys, 0 );
     cadsys = "\"" + g_confpr->value( CONF_FLIP ) + "\" -u \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
     
@@ -358,7 +502,7 @@ void blCreatePDF ( const QString arch )
 	blMsgError(_("Error en FLIP [ blfunctions->blCreatePDF() ]"));
     } // end if
 
-    blDebug ( cadsys, 0 );
+    BlDebug::blDebug ( cadsys, 0 );
 
 #else
 
@@ -370,14 +514,15 @@ void blCreatePDF ( const QString arch )
 
 #endif
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 /// Genera un ODS a partir de un pys sin abrirlo.
 void blCreateODS ( const QString arch )
 {
-    blDebug ( "blCreateODS " + arch, 0 );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "blCreateODS " + arch, 0 );
     /// Entramos en el directorio correspondiente
     QDir::setCurrent ( g_confpr->value( CONF_DIR_USER ) );
     QString cadsys;
@@ -512,12 +657,14 @@ QString blWindowId ( const QString &app )
 
 void blDebugOn ()
 {
+    BL_FUNC_DEBUG
     g_confpr->setValue ( CONF_DEBUG, "TRUE" );
 }
 
 
 void blDebugOff ()
 {
+    BL_FUNC_DEBUG
     g_confpr->setValue ( CONF_DEBUG, "FALSE" );
 }
 
@@ -769,10 +916,10 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
     QString ones = "";
     QString cpostfijos = "";
     while ( breakdown_key.toDouble() > 0.5 ) {
-//  blDebug(num_string, 2);
+//  BlDebug::blDebug(num_string, 2);
         breakdown["entero" + breakdown_key + "number"] = /*floor(*/ QString::number ( entero_breakdown.toLongLong() / breakdown_key.toLongLong() );
 
-//  blDebug(breakdown["entero"+breakdown_key+"number"], 2);
+//  BlDebug::blDebug(breakdown["entero"+breakdown_key+"number"], 2);
 
         //echo " ".$breakdown["entero"][$breakdown_key]["number"]."<br>";
         if ( breakdown["entero" + breakdown_key+"number"].toLongLong() > 0 ) {

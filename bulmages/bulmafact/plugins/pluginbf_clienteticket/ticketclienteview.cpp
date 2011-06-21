@@ -57,7 +57,7 @@
 TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -117,7 +117,7 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -130,8 +130,8 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
 **/
 TicketClienteView::~TicketClienteView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -140,11 +140,11 @@ TicketClienteView::~TicketClienteView()
 **/
 void TicketClienteView::inicializar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->inicializar();
     m_descuentos->inicializar();
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -160,14 +160,14 @@ void TicketClienteView::inicializar()
 **/
 void TicketClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_totalBases->setText ( base.toQString() );
     m_totalTaxes->setText ( iva.toQString() );
     m_totalalbaran->setText ( total.toQString() );
     m_totalDiscounts->setText ( desc.toQString() );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -179,10 +179,10 @@ void TicketClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total,
 **/
 void TicketClienteView::on_mui_idcliente_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -195,9 +195,9 @@ void TicketClienteView::on_mui_idcliente_valueChanged ( QString id )
 **/
 void TicketClienteView::s_pintaTotales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -250,9 +250,9 @@ void TicketClienteView::calculaypintatotales() {
 **/
 void TicketClienteView::on_m_descuentos_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -261,9 +261,9 @@ void TicketClienteView::on_m_descuentos_editFinish ( int, int )
 **/
 void TicketClienteView::on_subform2_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -281,10 +281,10 @@ void TicketClienteView::on_subform2_editFinish ( int, int )
 **/
 int TicketClienteView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->remove();
     m_listadescuentos->remove();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -301,7 +301,7 @@ int TicketClienteView::beforeDelete()
 **/
 int TicketClienteView::cargarPost ( QString idalbaran )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->load ( idalbaran );
     m_listadescuentos->load ( idalbaran );
@@ -310,7 +310,7 @@ int TicketClienteView::cargarPost ( QString idalbaran )
     g_plugins->lanza ( "TicketCliente_cargarPost_Post", this );
 
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -329,14 +329,14 @@ int TicketClienteView::cargarPost ( QString idalbaran )
 **/
 int TicketClienteView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
     m_listalineas->save();
     m_listadescuentos->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
     m_listadescuentos->save();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -347,8 +347,8 @@ int TicketClienteView::afterSave()
 **/
 void TicketClienteView::on_mui_idalmacen_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->setIdAlmacen ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

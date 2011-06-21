@@ -31,7 +31,7 @@
 BcTipoIVAView::BcTipoIVAView ( BcCompany *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setTitleName ( _ ( "Tipo IVA" ) );
@@ -58,7 +58,7 @@ BcTipoIVAView::BcTipoIVAView ( BcCompany *emp, QWidget *parent )
     pintar();
     dialogChanges_readValues();
     insertWindow ( windowTitle(), this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -68,11 +68,11 @@ BcTipoIVAView::BcTipoIVAView ( BcCompany *emp, QWidget *parent )
 **/
 BcTipoIVAView::~BcTipoIVAView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_curtipoiva != NULL )
         delete m_curtipoiva;
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -82,7 +82,7 @@ BcTipoIVAView::~BcTipoIVAView()
 **/
 void BcTipoIVAView::pintar ( QString idtipoiva )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int posicion = 0;
     /// Vamos a inicializar el combo de los tipos de IVA.
     if ( m_curtipoiva != NULL )
@@ -98,7 +98,7 @@ void BcTipoIVAView::pintar ( QString idtipoiva )
         m_curtipoiva->nextRecord();
         i++;
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -107,7 +107,7 @@ void BcTipoIVAView::pintar ( QString idtipoiva )
     sino se usa la posicion actual del combo. */
 void BcTipoIVAView::mostrarplantilla ( int pos )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -127,7 +127,7 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_readValues();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -136,9 +136,9 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
 **/
 void BcTipoIVAView::on_mui_comboTipoIVA_currentIndexChanged ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mostrarplantilla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -149,7 +149,7 @@ void BcTipoIVAView::on_mui_comboTipoIVA_currentIndexChanged ( int )
 **/
 void BcTipoIVAView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_isChanged() && m_curtipoiva->numregistros() != 0 ) {
@@ -182,6 +182,6 @@ void BcTipoIVAView::on_mui_crear_clicked()
         mainCompany() ->rollback();
         return;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

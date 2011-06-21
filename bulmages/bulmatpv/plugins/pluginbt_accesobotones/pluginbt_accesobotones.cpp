@@ -44,7 +44,7 @@ BlDockWidget *g_doc1;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -57,7 +57,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_doc1 );
     g_doc1->show();
     g_doc1->loadConfig();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -67,11 +67,11 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginabrevs::exitPoint", 0 );
+    BlDebug::blDebug ( "pluginabrevs::exitPoint", 0 );
 
     /// Vamos a probar con un docwindow.
     delete g_doc1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

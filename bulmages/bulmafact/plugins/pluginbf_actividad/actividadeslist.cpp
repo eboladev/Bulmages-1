@@ -41,7 +41,7 @@
 ActividadesList::ActividadesList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setupUi ( this );
     
@@ -56,7 +56,7 @@ ActividadesList::ActividadesList ( QWidget *parent, Qt::WFlags flag, edmode edit
 
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Inicializa todos los componentes.
@@ -66,7 +66,7 @@ ActividadesList::ActividadesList ( QWidget *parent, Qt::WFlags flag, edmode edit
 ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setupUi ( this );
     
@@ -94,15 +94,15 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     trataPermisos ( "actividad" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No requiere acciones especiales en el destructor.
 */
 ActividadesList::~ActividadesList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 /** Hace la carag del listado.
@@ -111,20 +111,20 @@ ActividadesList::~ActividadesList()
 */
 void ActividadesList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM actividad LEFT JOIN tipoactividad ON tipoactividad.idtipoactividad = actividad.idtipoactividad LEFT JOIN profesor ON profesor.idprofesor = actividad.idprofesor WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
 QString ActividadesList::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     QString filtro = "";
     
@@ -133,7 +133,7 @@ QString ActividadesList::generaFiltro()
         filtro += " ) ";
     } // end i
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return ( filtro );
 }
@@ -143,23 +143,23 @@ QString ActividadesList::generaFiltro()
 */
 void ActividadesList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     ActividadView *bud = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void ActividadesList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     mui_list->printPDF ( _ ( "Actividades" ) );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -170,7 +170,7 @@ void ActividadesList::imprimir()
 */
 void ActividadesList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     int a = mui_list->currentRow();
     
@@ -193,7 +193,7 @@ void ActividadesList::remove()
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** SLOT que responde al doble click en el subformulario.
@@ -202,7 +202,7 @@ void ActividadesList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void ActividadesList::editar ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
@@ -222,7 +222,7 @@ void ActividadesList::editar ( int )
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -231,7 +231,7 @@ void ActividadesList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void ActividadesList::submenu ( const QPoint & )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     int a = mui_list->currentRow();
     
@@ -251,27 +251,27 @@ void ActividadesList::submenu ( const QPoint & )
         
     delete popup;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
 void ActividadesList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Devuelve el identificador del cobro seleccionado
 **/
 QString ActividadesList::idactividad()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     
     return mdb_idactividad;
 }
@@ -284,7 +284,7 @@ QString ActividadesList::idactividad()
 */
 ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ActividadesListSubForm_ActividadesListSubForm", this );
@@ -307,12 +307,12 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm (
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ActividadesListSubForm::~ActividadesListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 

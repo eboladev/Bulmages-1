@@ -27,7 +27,7 @@
 **/
 BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
 {
-   blDebug ( "BlFormListFilter::BlFormListFilter", 0 );
+   BL_FUNC_DEBUG
 
    setupUi ( this );
    mui_subform_list = NULL;
@@ -42,7 +42,7 @@ BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
 
    g_plugins->lanza ( "BlFormListFilter_BlFormListFilter", this );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -52,7 +52,7 @@ BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
 **/
 QString BlFormListFilter::generarFiltro()
 {
-   blDebug ( "BlFormListFilter::generaFiltro", 0 );
+   BL_FUNC_DEBUG
 
    if ( m_columna_actual < 0 || isHidden() ) {
       return "";
@@ -98,7 +98,7 @@ QString BlFormListFilter::generarFiltro()
       filtro.prepend ( " AND " );
    } // end if
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
    return ( filtro );
 }
 
@@ -109,7 +109,7 @@ QString BlFormListFilter::generarFiltro()
 **/
 QString BlFormListFilter::generateDateFilter ( QString campo, QString texto )
 {
-   blDebug ( "BlFormListFilter::generateDateFilter", 0 );
+   BL_FUNC_DEBUG
 
    QString criterio = QString ( "\"%1\" " ).arg ( campo );
 
@@ -133,7 +133,7 @@ QString BlFormListFilter::generateDateFilter ( QString campo, QString texto )
       criterio = "";
    } // end if
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
    return criterio;
 }
 
@@ -144,7 +144,7 @@ QString BlFormListFilter::generateDateFilter ( QString campo, QString texto )
 **/
 QString BlFormListFilter::generateNumericFilter ( QString campo, QString texto )
 {
-   blDebug ( "BlFormListFilter::generateNumericFilter", 0 );
+   BL_FUNC_DEBUG
 
    QString criterio = QString ( "\"%1\" %2" ).arg ( campo ).arg ( mui_filtro_compara->currentText() );
 
@@ -162,7 +162,7 @@ QString BlFormListFilter::generateNumericFilter ( QString campo, QString texto )
 
    criterio += QString ( "%1" ).arg ( num );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
    return criterio;
 }
 
@@ -172,7 +172,7 @@ QString BlFormListFilter::generateNumericFilter ( QString campo, QString texto )
 */
 QString BlFormListFilter::generateBooleanFilter ( QString campo, Qt::CheckState estado )
 {
-   blDebug ( "BlFormListFilter::generateBooleanFilter", 0 );
+   BL_FUNC_DEBUG
 
    QString valor;
 
@@ -192,7 +192,7 @@ QString BlFormListFilter::generateBooleanFilter ( QString campo, Qt::CheckState 
       criterio = QString ( "\"%1\" = %2" ).arg ( campo ).arg ( valor );
    }
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
    return criterio;
 }
 
@@ -203,7 +203,7 @@ QString BlFormListFilter::generateBooleanFilter ( QString campo, Qt::CheckState 
 **/
 QString BlFormListFilter::generateTextFilter ( QString campo, QString texto )
 {
-   blDebug ( "BlFormListFilter::generateTextFilter", 0 );
+   BL_FUNC_DEBUG
 
    /// Con ILIKE conseguimos que no se diferencie entre mayúsculas y minúsculas al comparar
    QString criterio = QString ( "\"%1\" ILIKE " ).arg ( campo );
@@ -224,7 +224,7 @@ QString BlFormListFilter::generateTextFilter ( QString campo, QString texto )
 
    } // end switch
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
    return criterio;
 }
 
@@ -236,7 +236,7 @@ QString BlFormListFilter::generateTextFilter ( QString campo, QString texto )
 **/
 void BlFormListFilter::hideFilterWidgets()
 {
-   blDebug ( "BlFormListFilter::hideFilterWidgets", 0 );
+   BL_FUNC_DEBUG
 
    mui_filtro_texto->hide();
    mui_filtro_columna->hide();
@@ -246,7 +246,7 @@ void BlFormListFilter::hideFilterWidgets()
    mui_filtro_fecha_ini->hide();
    mui_filtro_fecha_fin->hide();
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -255,7 +255,7 @@ void BlFormListFilter::hideFilterWidgets()
 **/
 void BlFormListFilter::configureFilterToType()
 {
-   blDebug ( "BlFormListFilter::configureFilterToType", 0 );
+   BL_FUNC_DEBUG
 
    /// Antes de mostrar los widgets adecuados al tipo, los ocultamos todos
    hideFilterWidgets();
@@ -298,7 +298,7 @@ void BlFormListFilter::configureFilterToType()
 
    } // end switch
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -308,12 +308,12 @@ void BlFormListFilter::configureFilterToType()
 **/
 void BlFormListFilter::setSubFormList ( BlSubForm *list )
 {
-   blDebug ( "BlFormListFilter::setSubFormList", 0 );
+   BL_FUNC_DEBUG
    
    mui_subform_list = list;
    connect ( mui_subform_list->mui_list, SIGNAL ( currentCellChanged ( int, int, int, int ) ), this, SLOT ( updatePosition ( int, int, int, int ) ) );
    
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -322,7 +322,7 @@ void BlFormListFilter::setSubFormList ( BlSubForm *list )
 **/
 void BlFormListFilter::showHideFilter()
 {
-   blDebug ( "BlFormListFilter::showHideFilter", 0 );
+   BL_FUNC_DEBUG
 
    /// Si el fitrador estaba oculto, mostrarlo
    if ( isHidden() ) {
@@ -338,7 +338,7 @@ void BlFormListFilter::showHideFilter()
       emit aplicar_filtro(); /// Para que se restablezca el listado
    } // end if
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -347,7 +347,7 @@ void BlFormListFilter::showHideFilter()
 **/
 void BlFormListFilter::cleanFilter()
 {
-   blDebug ( "BlFormListFilter::cleanFilter", 0 );
+   BL_FUNC_DEBUG
 
    m_columna_actual = -1;
    mui_filtro_texto->clear();
@@ -359,7 +359,7 @@ void BlFormListFilter::cleanFilter()
    mui_filtro_fecha_ini->setText ( "" );
    mui_filtro_fecha_fin->setText ( "" );
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -368,7 +368,7 @@ void BlFormListFilter::cleanFilter()
 **/
 void BlFormListFilter::updatePosition ( int fila, int columna, int fila_anterior, int columna_anterior )
 {
-   blDebug ( "BlFormListFilter::updatePosition", 0 );
+   BL_FUNC_DEBUG
 
    /// No seguir si la columna no ha cambiado o el filtrado est&aacute; desactivado
    if ( ( columna == columna_anterior && !mui_filtro_columna->text().isEmpty() ) || isHidden() ) {
@@ -390,7 +390,7 @@ void BlFormListFilter::updatePosition ( int fila, int columna, int fila_anterior
 
    configureFilterToType();
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -401,7 +401,7 @@ void BlFormListFilter::updatePosition ( int fila, int columna, int fila_anterior
 **/
 void BlFormListFilter::on_mui_filtro_aplicar_clicked()
 {
-   blDebug ( "BlFormListFilter::mui_filtro_aplicar_clicked", 0 );
+   BL_FUNC_DEBUG
 
    emit aplicar_filtro();
 
@@ -412,7 +412,7 @@ void BlFormListFilter::on_mui_filtro_aplicar_clicked()
      mui_filtro_texto->setStyleSheet ( "" );
    }
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }
 
 
@@ -421,11 +421,11 @@ void BlFormListFilter::on_mui_filtro_aplicar_clicked()
 **/
 void BlFormListFilter::on_mui_filtro_limpiar_clicked()
 {
-   blDebug ( "BlFormListFilter::on_mui_filtro_limpiar_clicked", 0 );
+   BL_FUNC_DEBUG
 
    cleanFilter();
    emit cerrar_filtro(); /// Para que se oculte este filtrador
    emit aplicar_filtro(); /// Para que se restablezca el listado
 
-   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+   
 }

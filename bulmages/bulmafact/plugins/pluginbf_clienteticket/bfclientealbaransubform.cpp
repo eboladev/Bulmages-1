@@ -35,7 +35,7 @@
 BfClienteTicketSubForm::BfClienteTicketSubForm ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "numlalbaran" );
     /// Disparamos los plugins.
@@ -60,7 +60,7 @@ BfClienteTicketSubForm::BfClienteTicketSubForm ( QWidget *parent )
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "BfClienteTicketSubForm_BfClienteTicketSubForm_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -71,7 +71,7 @@ BfClienteTicketSubForm::BfClienteTicketSubForm ( QWidget *parent )
 **/
 void BfClienteTicketSubForm::load ( QString idalbaran )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idalbaran = idalbaran;
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfClienteTicketSubForm_cargar", this );
@@ -79,7 +79,7 @@ void BfClienteTicketSubForm::load ( QString idalbaran )
         return;
 
     BlSubForm::load ( "SELECT *, (cantlalbaran * pvpivainclalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

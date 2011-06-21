@@ -45,7 +45,7 @@ QMap <QTcpSocket *, QByteArray> g_buffers;
 
 ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 {
-    blDebug ( "ServerLight::ServerLight", 0 );
+    BlDebug::blDebug ( "ServerLight::ServerLight", 0 );
 
     m_tcpServer = new QTcpServer(this);
     if (!m_tcpServer->listen(QHostAddress::Any, 11637)) {
@@ -56,21 +56,21 @@ ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
     connect(m_tcpServer, SIGNAL(newConnection()), this, SLOT(conection()));
 
     g_plugins->lanza ( "ServerLight_ServerLight_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 ServerLight::~ServerLight()
 {
-    blDebug ( "ServerLight::~ServerLight", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "ServerLight::~ServerLight", 0 );
+    
 }
 
 
 void ServerLight::conection()
 {
     fprintf(stderr, "conexion\n");
-    blDebug ( "ServerLight::conection", 0 );
+    BlDebug::blDebug ( "ServerLight::conection", 0 );
     QTcpSocket *socket = m_tcpServer->nextPendingConnection();
     QHostAddress conectadofrom = socket->peerAddress();
     m_listaSockets.append(socket);
@@ -80,12 +80,12 @@ void ServerLight::conection()
     g_buffers[socket] = "";
 
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ServerLight::readyRead() {
-    blDebug ( "ServerLight::readyRead", 0 );
+    BlDebug::blDebug ( "ServerLight::readyRead", 0 );
     static QByteArray array = "";
     QByteArray lectura = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
@@ -128,12 +128,12 @@ void ServerLight::readyRead() {
 
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ServerLight::send(const QString & texto) {
-    blDebug ( "ServerLight::send", 0 );
+    BlDebug::blDebug ( "ServerLight::send", 0 );
     //fprintf(stderr, "ENVIANDO\n");
     QTcpSocket *socket;
     /// Redirigimos el mensaje a todos los clientes conectados al servidor.
@@ -147,7 +147,7 @@ void ServerLight::send(const QString & texto) {
 	} // end if
     } // end for
     //fprintf(stderr, "FIN ENVIO");
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

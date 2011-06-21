@@ -40,10 +40,10 @@
 **/
 myplugin1::myplugin1 ( BcCompany *emp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     company = emp;
     dbConnection = emp->bdempresa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -52,8 +52,8 @@ myplugin1::myplugin1 ( BcCompany *emp )
 **/
 myplugin1::~myplugin1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -63,14 +63,14 @@ myplugin1::~myplugin1()
 **/
 void myplugin1::boton_nuevoasientodocumental()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     adocumental *adoc = new adocumental ( company, 0 );
     adoc->presentaprimervacio();
     BcAsientoView *intapunts = company->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
     adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -79,7 +79,7 @@ void myplugin1::boton_nuevoasientodocumental()
 **/
 void myplugin1::boton_adjuntar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     adocumental *adoc = new adocumental ( company, 0 );
     adoc->setSelectMode();
     adoc->exec();
@@ -88,7 +88,7 @@ void myplugin1::boton_adjuntar()
     if ( intapunts->idasiento() != "-1" )
         adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -102,11 +102,11 @@ void myplugin1::boton_adjuntar()
 **/
 void myplugin1::archDoc()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     adocumental *adoc = new adocumental ( company, 0 );
     adoc->exec();
     delete adoc;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -118,7 +118,7 @@ void myplugin1::archDoc()
 adocumental::adocumental ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     setupUi ( this );
 
@@ -150,7 +150,7 @@ adocumental::adocumental ( BcCompany *emp, QWidget *parent )
 
     /// Iniciamos la presentacion.
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -159,8 +159,8 @@ adocumental::adocumental ( BcCompany *emp, QWidget *parent )
 **/
 adocumental::~adocumental()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -169,7 +169,7 @@ adocumental::~adocumental()
 **/
 void adocumental::inicializa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString query = "SELECT * FROM adocumental LEFT JOIN asiento ON adocumental.idasiento = asiento.idasiento ORDER BY ordenasiento";
     dbConnection->begin();
     BlDbRecordSet *cursoraux1 = dbConnection->loadQuery ( query, "elquery" );
@@ -195,7 +195,7 @@ void adocumental::inicializa()
         i++;
     } // end while
     delete cursoraux1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -205,7 +205,7 @@ void adocumental::inicializa()
 **/
 void adocumental::doubleclicked ( int row, int, int, const QPoint & )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     idadocumental = m_listado->item ( row, COL_IDADOCUMENTAL ) ->text();
 
     if ( modo == 0 ) { /// Es el modo edicion.
@@ -216,7 +216,7 @@ void adocumental::doubleclicked ( int row, int, int, const QPoint & )
     } else { /// Es el modo consulta.
         done ( 1 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -226,12 +226,12 @@ void adocumental::doubleclicked ( int row, int, int, const QPoint & )
 **/
 void adocumental::newADocumental ( QString archivo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + dbConnection->sanearCadena ( archivo ) + "')";
     dbConnection->begin();
     dbConnection->runQuery ( SQLQuery );
     dbConnection->commit();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -241,7 +241,7 @@ void adocumental::newADocumental ( QString archivo )
 **/
 void adocumental::boton_newadocumental()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString fn = QFileDialog::getOpenFileName ( this, _ ( "Elija el nombre del archivo" ),
                  g_confpr->value( CONF_DIR_USER ),
                  _ ( "Todos (*.*)" ) );
@@ -250,7 +250,7 @@ void adocumental::boton_newadocumental()
         newADocumental ( fn );
     } // end if
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -260,8 +260,8 @@ void adocumental::boton_newadocumental()
 **/
 inline QString adocumental::getidadocumental()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return ( idadocumental );
 }
 
@@ -272,16 +272,16 @@ inline QString adocumental::getidadocumental()
 **/
 void adocumental::asociaasiento ( QString idasiento )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( ( idadocumental != "" ) && ( idasiento != "" ) ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = " + idasiento + " WHERE idadocumental = " + idadocumental;
-	blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(SQLQuery) );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(SQLQuery) );
         dbConnection->begin();
         dbConnection->runQuery ( SQLQuery );
         dbConnection->commit();
     } // end if
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -292,7 +292,7 @@ void adocumental::asociaasiento ( QString idasiento )
 **/
 void adocumental::presentaprimervacio()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int i = 0;
     while ( i < m_listado->rowCount() ) {
         if ( m_listado->item ( i, COL_IDASIENTO ) ->text() == "" ) {
@@ -300,7 +300,7 @@ void adocumental::presentaprimervacio()
         } // end if
         i++;
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -308,7 +308,7 @@ void adocumental::presentaprimervacio()
 **/
 void adocumental::boton_desasociar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     idadocumental = m_listado->item ( m_listado->currentRow(), COL_IDADOCUMENTAL ) ->text();
     if ( idadocumental != "" ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = NULL WHERE idadocumental = " + idadocumental;
@@ -317,7 +317,7 @@ void adocumental::boton_desasociar()
         dbConnection->commit();
     } // end if
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -326,7 +326,7 @@ void adocumental::boton_desasociar()
 **/
 void adocumental::s_deleteADocumental()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     idadocumental = m_listado->item ( m_listado->currentRow(), COL_IDADOCUMENTAL ) ->text();
     if ( idadocumental != "" ) {
         QString SQLQuery = "DELETE FROM adocumental WHERE idadocumental = " + idadocumental;
@@ -335,7 +335,7 @@ void adocumental::s_deleteADocumental()
         dbConnection->commit();
     } // end if
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -343,7 +343,7 @@ void adocumental::s_deleteADocumental()
 **/
 void adocumental::s_saveADocumental()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int row = m_listado->currentRow();
     idadocumental = m_listado->item ( row, COL_IDADOCUMENTAL ) ->text();
     if ( idadocumental != "" ) {
@@ -356,7 +356,7 @@ void adocumental::s_saveADocumental()
         dbConnection->commit();
     } // end if
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -365,7 +365,7 @@ void adocumental::s_saveADocumental()
 **/
 void adocumental::s_agregarDirectorio()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString fn = QFileDialog::getExistingDirectory ( this, _ ( "Elija un directorio" ),
                  g_confpr->value( CONF_DIR_USER ),
                  QFileDialog::ShowDirsOnly
@@ -379,6 +379,6 @@ void adocumental::s_agregarDirectorio()
     } // end for
 
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

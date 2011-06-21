@@ -37,7 +37,7 @@
 BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -81,7 +81,7 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
     dialogChanges_readValues();
     insertWindow ( windowTitle(), this );
     repintar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -90,9 +90,9 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
 **/
 BcCentroCosteView::~BcCentroCosteView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -101,7 +101,7 @@ BcCentroCosteView::~BcCentroCosteView()
 **/
 void BcCentroCosteView::repintar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem *> Lista;
     int padre;
@@ -139,7 +139,7 @@ void BcCentroCosteView::repintar()
             it->setText ( COL_NOM_COSTE, cursoraux2->value( "nombre" ) );
             mui_list->expandItem ( it );
         } else {
-	    blDebug ( Q_FUNC_INFO, 0, _("Error en la carga de centros de coste.") );
+	    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error en la carga de centros de coste.") );
         } // end if
         cursoraux2->nextRecord();
     } // end while
@@ -149,7 +149,7 @@ void BcCentroCosteView::repintar()
     /// Se inicializa el selector de centros de coste.
     BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
     scoste->cargacostes();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -159,7 +159,7 @@ void BcCentroCosteView::repintar()
 **/
 void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int previdccoste = it->text ( COL_IDC_COSTE ).toInt();
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -171,7 +171,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
     } // end if
     idc_coste = previdccoste;
     mostrarplantilla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -180,7 +180,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 **/
 void BcCentroCosteView::mostrarplantilla()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString query;
     BcForm::load ( QString::number ( idc_coste ) );
@@ -190,7 +190,7 @@ void BcCentroCosteView::mostrarplantilla()
 
 
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -199,7 +199,7 @@ void BcCentroCosteView::mostrarplantilla()
 **/
 int BcCentroCosteView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcForm::save();
 
     mui_cdistribuidos->setColumnValue ( "iddestc_coste", QString::number ( idc_coste ) );
@@ -207,7 +207,7 @@ int BcCentroCosteView::save()
 
     dialogChanges_readValues();
     repintar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -217,7 +217,7 @@ int BcCentroCosteView::save()
 **/
 void BcCentroCosteView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -248,7 +248,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
     delete cur;
     mainCompany() ->commit();
     repintar();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -257,7 +257,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
 **/
 void BcCentroCosteView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         switch ( QMessageBox::warning ( this,
                                         _ ( "Borrar centro de coste" ),
@@ -277,7 +277,7 @@ void BcCentroCosteView::on_mui_borrar_clicked()
         mainCompany() ->rollback();
         return;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

@@ -44,10 +44,10 @@
 **/
 Q19QToolButton1::Q19QToolButton1 ( FacturasList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_facturasList = cob;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -56,8 +56,8 @@ Q19QToolButton1::Q19QToolButton1 ( FacturasList *cob , QWidget *parent ) : QTool
 **/
 Q19QToolButton1::~Q19QToolButton1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -66,7 +66,7 @@ Q19QToolButton1::~Q19QToolButton1()
 **/
 void Q19QToolButton1::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Q19") );
@@ -74,7 +74,7 @@ void Q19QToolButton1::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -84,7 +84,7 @@ void Q19QToolButton1::setBoton()
 **/
 void Q19QToolButton1::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     Q19View *q19 = new Q19View ( m_facturasList, ( BfCompany * ) m_facturasList->mainCompany(), 0 );
 // m_facturasList->mainCompany()->insertWindow("Domiciliaciones Bancarias", q19);
@@ -131,7 +131,7 @@ void Q19QToolButton1::click()
         file.close();
 
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 

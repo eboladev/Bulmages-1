@@ -42,10 +42,10 @@
 **/
 RegIVAQToolButton::RegIVAQToolButton ( BcAsientoView *as , QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_asiento1View = as;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -54,8 +54,8 @@ RegIVAQToolButton::RegIVAQToolButton ( BcAsientoView *as , QWidget *parent ) : Q
 **/
 RegIVAQToolButton::~RegIVAQToolButton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -64,7 +64,7 @@ RegIVAQToolButton::~RegIVAQToolButton()
 **/
 void RegIVAQToolButton::setBoton()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Registro de IVA" ) );
@@ -72,7 +72,7 @@ void RegIVAQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -81,7 +81,7 @@ void RegIVAQToolButton::setBoton()
 **/
 void RegIVAQToolButton::click()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlSubForm *las = m_asiento1View->findChild<BlSubForm *> ("mui_list");
 //    BcAsientoSubForm *las = m_asiento1View->mui_list;
@@ -96,6 +96,6 @@ void RegIVAQToolButton::click()
         blMsgInfo ( _("Debe seleccionar un apunte" ));
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

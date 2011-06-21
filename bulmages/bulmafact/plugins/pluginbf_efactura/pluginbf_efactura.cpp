@@ -45,8 +45,8 @@
 **/
 efacturabf::efacturabf()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -55,8 +55,8 @@ efacturabf::efacturabf()
 **/
 efacturabf::~efacturabf()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -65,7 +65,7 @@ efacturabf::~efacturabf()
 **/
 void efacturabf::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     EFactura *ef = new EFactura ( ( BfCompany * ) mainCompany() );
     ef->show();
 
@@ -81,7 +81,7 @@ void efacturabf::elslot()
 //                          "Mensaje.",
 //                          QMessageBox::Ok,
 //                          QMessageBox::Cancel);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -90,10 +90,10 @@ void efacturabf::elslot()
 **/
 void efacturabf::elslot1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     EFacturaRecepcion *efr = new EFacturaRecepcion ( ( BfCompany * ) mainCompany() );
     efr->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -103,7 +103,7 @@ void efacturabf::elslot1()
 **/
 void efacturabf::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Creamos la conexion de la base de datos
     setMainCompany ( bges->company() );
 
@@ -127,7 +127,7 @@ void efacturabf::inicializa ( BfBulmaFact *bges )
 //
 //  /// Anyadimos la nueva opcion al menu principal del programa.
 //  bges->menuBar()->addMenu(pPluginMenu);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -137,7 +137,7 @@ void efacturabf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -149,7 +149,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// del programa para indicar que el plugin se ha cargado.
     bges->setWindowTitle ( "Prueba de plugin e-factura." );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -161,7 +161,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int FacturaView_FacturaView ( FacturaView *fac )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     EFQToolButton *mui_exporta_efactura = new EFQToolButton ( fac, fac->mui_plugbotones );
     mui_exporta_efactura->setObjectName ( QString::fromUtf8 ( "exporta" ) );
@@ -181,7 +181,7 @@ int FacturaView_FacturaView ( FacturaView *fac )
 
     m_hboxLayout1->addWidget ( mui_exporta_efactura );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }
@@ -194,7 +194,7 @@ int FacturaView_FacturaView ( FacturaView *fac )
 **/
 int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList *listfac )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     EFQToolButtonImportar *mui_importa_efactura = new EFQToolButtonImportar ( listfac, listfac->mui_plugbotones );
     mui_importa_efactura->setObjectName ( QString::fromUtf8 ( "importa" ) );
@@ -213,7 +213,7 @@ int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList *li
     } // end if
     m_hboxLayout1->addWidget ( mui_importa_efactura );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 }

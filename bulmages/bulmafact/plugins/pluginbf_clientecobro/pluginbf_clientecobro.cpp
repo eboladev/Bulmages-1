@@ -41,7 +41,7 @@ BfBulmaFact *g_pluginbf_clientecobro = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -156,7 +156,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int FacturaView_FacturaView ( FacturaView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -168,7 +168,7 @@ int FacturaView_FacturaView ( FacturaView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -179,7 +179,7 @@ int FacturaView_FacturaView ( FacturaView *l )
 **/
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -191,7 +191,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -202,7 +202,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 **/
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -214,7 +214,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

@@ -45,7 +45,7 @@
 ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setTitleName ( _ ( "Tipo IVA" ) );
     setDbTableName ( "tipo_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -54,7 +54,7 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
     mui_listado->load();
     insertWindow ( windowTitle(), this );
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -63,14 +63,14 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
 **/
 void ListTipoIVAView::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mui_listado->save();
         close();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar los tipos de IVA" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -79,15 +79,14 @@ void ListTipoIVAView::on_mui_aceptar_clicked()
 **/
 ListTipoIVAView::~ListTipoIVAView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 /*
 int ListTipoIVAView::removeWindow() {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     companyact->removeWindow(this);
-    blDebug("END ListTipoIVAView::removeWindow", 0);
     return 0;
 }
 */
@@ -100,13 +99,13 @@ int ListTipoIVAView::removeWindow() {
 **/
 ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "tipo_iva" );
     setDbFieldId ( "idtipo_iva" );
     addSubFormHeader ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Tipo IVA" ) );
     addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Tipo IVA" ) );
     setInsert ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -115,8 +114,8 @@ ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
 **/
 void ListTipoIVASubForm::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( "SELECT * FROM tipo_iva" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

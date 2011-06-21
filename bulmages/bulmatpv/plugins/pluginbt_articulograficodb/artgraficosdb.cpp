@@ -62,7 +62,7 @@ void BtLabel::mousePressEvent ( QMouseEvent * e ) {
 
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    blDebug ( "ArtGraficosDb::ArtGraficosDb", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::ArtGraficosDb", 0 );
 
     setupUi ( this );
     setObjectName ( "ArtGraficosDb" );
@@ -83,12 +83,12 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     // Muestra la primera pantalla creada
     muestraPantalla ( 0 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ArtGraficosDb::~ArtGraficosDb()
 {
-    blDebug ( "ArtGraficosDb::~ArtGraficosDb", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::~ArtGraficosDb", 0 );
 
     /// Libera la memoria de las pantallas.
     for ( int i = 0; i < m_pantallas.count(); i++ ) {
@@ -96,19 +96,19 @@ ArtGraficosDb::~ArtGraficosDb()
         delete pantalla;
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ArtGraficosDb::cellClicked ( int row, int column )
 {
-    blDebug ( "ArtGraficosDb::cellClicked", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::cellClicked", 0 );
 
     // Obtenemos el item de la celda
     BtLabel *label = ( BtLabel * ) ( (QScrollArea *) mui_stack->currentWidget())->widget();
 
     // Celda vacia. No hacemos nada.
     if ( label == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Celda vacia") );
+	
         return;
     }
 
@@ -123,12 +123,12 @@ void ArtGraficosDb::cellClicked ( int row, int column )
         ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( codigo );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 {
-    blDebug ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 
 
 
@@ -140,12 +140,12 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
     setUpdatesEnabled ( false );
 */
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
-    blDebug ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
 
     muestraPantalla ( m_pantallaActual - 1 );
 
@@ -154,13 +154,13 @@ void ArtGraficosDb::on_mui_botonAnterior_pressed()
     repaint();
     setUpdatesEnabled ( false );
 */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ArtGraficosDb::muestraPantalla ( int numPantalla )
 {
-    blDebug ( "ArtGraficosDb::muestraPantalla", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::muestraPantalla", 0 );
 
     /// Si no hay pantallas que mostrar, sale.
     if (m_numPantallas == 0) return;
@@ -180,13 +180,13 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
     mui_stack->setCurrentIndex ( numPantalla );
     mui_titulo->setText ( pantalla->accessibleName() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ArtGraficosDb::renderPantallas ()
 {
-    blDebug ( "ArtGraficosDb::renderPantallas", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::renderPantallas", 0 );
 
     m_numPantallas = m_listfamilias.count();
 
@@ -354,13 +354,13 @@ void ArtGraficosDb::renderPantallas ()
 //        mui_stack->setSizePolicy( QSizePolicy() );
 
     } // end for
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ArtGraficosDb::ponPantallas()
 {
-    blDebug ( "ArtGraficosDb::ponPantallas", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::ponPantallas", 0 );
     int contadorBotones = 0;
     int columnasBotones;
     int j;
@@ -478,13 +478,13 @@ void ArtGraficosDb::ponPantallas()
 
     g_pantallas->setWidget ( widget );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void ArtGraficosDb::pulsadoBoton()
 {
-    blDebug ( "ArtGraficosDb::pulsadoBoton", 0 );
+    BlDebug::blDebug ( "ArtGraficosDb::pulsadoBoton", 0 );
 
 
     muestraPantalla ( sender()->objectName().toInt() );
@@ -495,5 +495,5 @@ void ArtGraficosDb::pulsadoBoton()
     setUpdatesEnabled ( false );
 */
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

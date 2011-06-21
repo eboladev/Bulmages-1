@@ -43,8 +43,8 @@ BcCompany *g_pluginbc_ccaa2ods = NULL;
 
 PluginBc_ccaa2ods::PluginBc_ccaa2ods()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -54,8 +54,8 @@ PluginBc_ccaa2ods::PluginBc_ccaa2ods()
 
 PluginBc_ccaa2ods::~PluginBc_ccaa2ods()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -76,7 +76,7 @@ PluginBc_ccaa2ods::~PluginBc_ccaa2ods()
 
 void PluginBc_ccaa2ods::formDatosBalance ( )
 {
-      blDebug ( Q_FUNC_INFO, 0 );
+      BL_FUNC_DEBUG
 
       QDialog *diag = new QDialog ( 0 );
       diag->setModal ( true );
@@ -106,7 +106,7 @@ void PluginBc_ccaa2ods::formDatosBalance ( )
       
       delete diag;
 
-      blDebug ( ("END ", Q_FUNC_INFO), 0 );
+      
 }
 
 
@@ -117,7 +117,7 @@ void PluginBc_ccaa2ods::formDatosBalance ( )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     g_pluginbc_ccaa2ods = bcont->company();
 

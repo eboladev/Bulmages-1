@@ -23,10 +23,10 @@
 **/
 BlFixed::BlFixed ( int x, int p )
 {
-    blDebug ( "BlFixed::BlFixed", 0 );
+    BL_FUNC_DEBUG
     value = x;
     m_precision = p;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -36,9 +36,9 @@ BlFixed::BlFixed ( int x, int p )
 **/
 BlFixed::BlFixed ( QString a )
 {
-    blDebug ( "BlFixed::BlFixed", 0 );
+    BL_FUNC_DEBUG
     fromBlFixed ( a.toAscii() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -48,9 +48,9 @@ BlFixed::BlFixed ( QString a )
 **/
 BlFixed::BlFixed ( const char *a )
 {
-    blDebug ( "BlFixed::BlFixed", 0 );
+    BL_FUNC_DEBUG
     fromBlFixed ( a );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -59,10 +59,10 @@ BlFixed::BlFixed ( const char *a )
 **/
 BlFixed::BlFixed()
 {
-    blDebug ( "BlFixed::BlFixed", 0 );
+    BL_FUNC_DEBUG
     value = 0;
     m_precision = 1;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -147,12 +147,13 @@ BlFixed operator / ( int x, BlFixed y )
 **/
 QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separadorMillares )
 {
-    blDebug ( "BlFixed::toQString", 0, QString::number(precision) );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlFixed::toQString", 0, QString::number(precision) );
 
     /// Si no hay una precision establecida cogemos por defecto la precision del numero a mostrar
     if (precision < 0)  {
         precision = m_precision;
-        blDebug("la precision ha cambiado a " + QString::number(m_precision));
+        BlDebug::blDebug("la precision ha cambiado a " + QString::number(m_precision));
     } // end if
 
     QLocale locale;
@@ -213,7 +214,7 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
         } // end while
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return buffer;
 }
 
@@ -244,7 +245,7 @@ bool operator == ( int x, BlFixed y )
 **/
 void BlFixed::equalize_precision ( BlFixed &x )
 {
-    blDebug ( "BlFixed::equalize_precision", 0 );
+    BL_FUNC_DEBUG
     while ( m_precision < x.m_precision )   {
         value *= 10;
         m_precision ++;
@@ -253,7 +254,7 @@ void BlFixed::equalize_precision ( BlFixed &x )
         x.value *= 10 ;
         x.m_precision ++;
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -263,7 +264,7 @@ void BlFixed::equalize_precision ( BlFixed &x )
 **/
 void BlFixed::setPrecision ( int prec )
 {
-    blDebug ( "BlFixed::setPrecision", 0 );
+    BL_FUNC_DEBUG
     while ( m_precision < prec ) {
         value *= 10;
         m_precision ++;
@@ -277,7 +278,7 @@ void BlFixed::setPrecision ( int prec )
         } // end if
         m_precision--;
     } // end while
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -287,7 +288,7 @@ void BlFixed::setPrecision ( int prec )
 **/
 void BlFixed::fromBlFixed ( const char *s )
 {
-    blDebug ( "BlFixed::fromBlFixed", 0 );
+    BL_FUNC_DEBUG
     QLocale locale;
     value = 0;
     m_precision = 0;
@@ -320,7 +321,7 @@ void BlFixed::fromBlFixed ( const char *s )
     if ( value == 0 )
         m_precision = 1;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -368,9 +369,9 @@ BlFixed operator * ( BlFixed x, BlFixed y )
 
 BlFixed BlFixed::operator [] ( int p ) const
 {
-    blDebug ( "BlFixed::operator[]" );
+    BL_FUNC_DEBUG
     BlFixed x ( 0, p );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return x;
 }
 

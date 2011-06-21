@@ -48,7 +48,7 @@ BfBulmaFact *g_pluginbf_abrecodigobarras = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -65,7 +65,7 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setObjectName("mui_actionAperturaRapida");
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

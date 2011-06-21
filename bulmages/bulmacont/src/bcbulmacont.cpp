@@ -42,7 +42,7 @@
 BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
         : BlMainWindow ( parent, f )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
 
     m_pWorkspace = new BlWorkspace ( this );
@@ -101,7 +101,7 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     initStatusBar();
     statusBar() ->showMessage ( DB, 2000 );
     setWindowTitle ( DB );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -110,9 +110,9 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
 **/
 BcBulmaCont::~BcBulmaCont()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     delete m_pWorkspace;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -122,8 +122,8 @@ BcBulmaCont::~BcBulmaCont()
 **/
 BcCompany *BcBulmaCont::company()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_company;
 }
 
@@ -134,8 +134,8 @@ BcCompany *BcBulmaCont::company()
 **/
 QMenu *BcBulmaCont::mui_MenuHerramientas()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return menuHerramientas;
 }
 
@@ -147,8 +147,8 @@ QMenu *BcBulmaCont::mui_MenuHerramientas()
 /*
 QMenu *BcBulmaCont::mui_MenuVer()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return menuVer;
 }
 */
@@ -158,9 +158,9 @@ QMenu *BcBulmaCont::mui_MenuVer()
 **/
 void BcBulmaCont::s_asiento1()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->s_asiento1();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -169,9 +169,9 @@ void BcBulmaCont::s_asiento1()
 **/
 void BcBulmaCont::on_actionTipos_de_IVA_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->tiposIVA();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -180,9 +180,9 @@ void BcBulmaCont::on_actionTipos_de_IVA_triggered()
 **/
 void BcBulmaCont::on_actionCerrar_Asientos_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->cerrarAsientos();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -190,9 +190,9 @@ void BcBulmaCont::on_actionCerrar_Asientos_triggered()
 **/
 void BcBulmaCont::on_actionFormas_de_Pago_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->fPago();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -201,9 +201,9 @@ void BcBulmaCont::on_actionFormas_de_Pago_triggered()
 **/
 void BcBulmaCont::on_actionConfiguracion_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->propiedadempresa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -213,9 +213,9 @@ void BcBulmaCont::on_actionConfiguracion_triggered()
 **/
 void BcBulmaCont::on_actionPlan_Contable_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->muestracuentas();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -225,8 +225,8 @@ void BcBulmaCont::on_actionPlan_Contable_triggered()
 **/
 void BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     m_company->recalculasaldos();
 }
 
@@ -236,9 +236,9 @@ void BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered()
 **/
 void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->reemplazacuentaenasientos();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -247,9 +247,9 @@ void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
 **/
 void BcBulmaCont::on_actionCanal_por_Defecto_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->canaldefecto();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -257,9 +257,9 @@ void BcBulmaCont::on_actionCanal_por_Defecto_triggered()
 **/
 void BcBulmaCont::on_actionCentros_de_Coste_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->ccostes();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -268,9 +268,9 @@ void BcBulmaCont::on_actionCentros_de_Coste_triggered()
 **/
 void BcBulmaCont::on_actionCanales_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->canales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -279,9 +279,9 @@ void BcBulmaCont::on_actionCanales_triggered()
 **/
 void BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->centrocostedefecto();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -290,7 +290,7 @@ void BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered()
 **/
 void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
 #ifdef AREA_QMDI
     m_pWorkspace->tileSubWindows();
@@ -298,7 +298,7 @@ void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
     m_pWorkspace->tile();
 #endif
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -307,7 +307,7 @@ void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
 **/
 void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
 #ifdef AREA_QMDI
     m_pWorkspace->cascadeSubWindows ();
@@ -315,7 +315,7 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
     m_pWorkspace->cascade();
 #endif
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -324,9 +324,9 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 **/
 void BcBulmaCont::on_actionCuentas_Anuales_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->compbalance();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -335,9 +335,9 @@ void BcBulmaCont::on_actionCuentas_Anuales_triggered()
 **/
 void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->mpatrimoniales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -347,9 +347,9 @@ void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 **/
 void BcBulmaCont::on_actionAmortizaciones_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->amortizaciones();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -358,13 +358,13 @@ void BcBulmaCont::on_actionAmortizaciones_triggered()
 **/
 void BcBulmaCont::on_actionPantalla_Completa_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( isFullScreen() ) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -373,13 +373,13 @@ void BcBulmaCont::on_actionPantalla_Completa_triggered()
 **/
 void BcBulmaCont::on_actionIndexador_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( actionIndexador->isChecked() == TRUE ) {
         m_company->s_indexadorCambiaEstado ( TRUE );
     } else {
         m_company->s_indexadorCambiaEstado ( FALSE );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -389,13 +389,13 @@ void BcBulmaCont::on_actionIndexador_triggered()
 **/
 void BcBulmaCont::setActionIndexador ( bool visible )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( visible == TRUE ) {
         actionIndexador->setChecked ( TRUE );
     } else {
         actionIndexador->setChecked ( FALSE );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -404,9 +404,9 @@ void BcBulmaCont::setActionIndexador ( bool visible )
 **/
 void BcBulmaCont::initStatusBar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -418,7 +418,7 @@ void BcBulmaCont::initStatusBar()
 **/
 bool BcBulmaCont::eventFilter ( QObject *object, QEvent *event )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Standard event processing.
     return QWidget::eventFilter ( object, event );
 }
@@ -429,10 +429,10 @@ bool BcBulmaCont::eventFilter ( QObject *object, QEvent *event )
 **/
 void BcBulmaCont::slotEditUndo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Deshaciendo la ultima accion..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -441,10 +441,10 @@ void BcBulmaCont::slotEditUndo()
 **/
 void BcBulmaCont::slotEditCut()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Cortando seleccion..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -453,10 +453,10 @@ void BcBulmaCont::slotEditCut()
 **/
 void BcBulmaCont::slotEditCopy()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Copiando la seleccion al portapapeles..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -465,10 +465,10 @@ void BcBulmaCont::slotEditCopy()
 **/
 void BcBulmaCont::slotEditPaste()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Insertando el contenido del portapapeles..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -478,7 +478,7 @@ void BcBulmaCont::slotEditPaste()
 **/
 void BcBulmaCont::slotViewStatusBar ( bool toggle )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Cambinado barra de estado..." ) );
     if ( toggle == false ) {
         statusBar() ->hide();
@@ -486,7 +486,7 @@ void BcBulmaCont::slotViewStatusBar ( bool toggle )
         statusBar() ->show();
     } // end if
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -496,7 +496,7 @@ void BcBulmaCont::slotViewStatusBar ( bool toggle )
 **/
 void BcBulmaCont::slotViewFullScreen ( bool toggle )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Cambiando a modo de pantalla completa..." ) );
     if ( toggle == false ) {
         showNormal();
@@ -504,7 +504,7 @@ void BcBulmaCont::slotViewFullScreen ( bool toggle )
         showFullScreen();
     } // end if
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -514,10 +514,10 @@ void BcBulmaCont::slotViewFullScreen ( bool toggle )
 **/
 void BcBulmaCont::slotStatusHelpMsg ( const QString &text )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Change status message of whole statusbar temporary (text, msec).
     statusBar() ->showMessage ( text, 2000 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -526,9 +526,9 @@ void BcBulmaCont::slotStatusHelpMsg ( const QString &text )
 **/
 void BcBulmaCont::slotListadoCuentas()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Listado de cuentas" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -538,9 +538,9 @@ void BcBulmaCont::slotListadoCuentas()
 **/
 void BcBulmaCont::slotCentrosCoste()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->ccostes();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -549,9 +549,9 @@ void BcBulmaCont::slotCentrosCoste()
 **/
 void BcBulmaCont::slotCanales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->canales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -560,9 +560,9 @@ void BcBulmaCont::slotCanales()
 **/
 void BcBulmaCont::slotCompBalance()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->compbalance();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -571,8 +571,8 @@ void BcBulmaCont::slotCompBalance()
 **/
 void BcBulmaCont::slotPerdidas()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -581,8 +581,8 @@ void BcBulmaCont::slotPerdidas()
 **/
 void BcBulmaCont::windowMenuAboutToShow()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -591,8 +591,8 @@ void BcBulmaCont::windowMenuAboutToShow()
 **/
 void BcBulmaCont::slotWindowNewWindow()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -601,7 +601,7 @@ void BcBulmaCont::slotWindowNewWindow()
 **/
 void BcBulmaCont::closeEvent ( QCloseEvent *event )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
@@ -615,7 +615,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 
 	 if (ret == QMessageBox::Cancel) {
 	   event->ignore();
-	   blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	   
 	   return;
 	 }
     } // END IF
@@ -628,7 +628,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
     m_list = NULL;
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -637,7 +637,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 **/
 void BcBulmaCont::on_actionAyuda_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QDesktopServices::openUrl(QUrl("http://www.iglues.org/wiki_users/doku.php", QUrl::TolerantMode));
     //system("konqueror http://www.iglues.org/wiki_users/doku.php &");
   /*
@@ -648,7 +648,7 @@ void BcBulmaCont::on_actionAyuda_triggered()
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -657,10 +657,10 @@ void BcBulmaCont::on_actionAyuda_triggered()
 **/
 void BcBulmaCont::on_actionAcerca_de_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcAboutView *sobre = new BcAboutView ( 0 );
     sobre->exec();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -669,9 +669,9 @@ void BcBulmaCont::on_actionAcerca_de_triggered()
 **/
 void BcBulmaCont::on_actionPaises_triggered()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_company->muestraPaises();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -690,16 +690,16 @@ void BcBulmaCont::on_actionPaises_triggered()
   void BcBulmaCont::informaindexador ( QWidget *w )
 #endif
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// No existe una ventana que activar.
     if ( m_company == NULL ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sin empresa") );
+	
         return;
     } // end if
 
     if ( w == NULL ) {
         m_company->deselectWindow();
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sin widget") );
+	
         return;
     } // end if
     m_company->deselectWindow();
@@ -708,7 +708,7 @@ void BcBulmaCont::on_actionPaises_triggered()
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -718,8 +718,8 @@ void BcBulmaCont::on_actionPaises_triggered()
 **/
 BlWorkspace *BcBulmaCont::workspace()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_pWorkspace;
 }
 

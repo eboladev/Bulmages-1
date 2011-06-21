@@ -43,7 +43,7 @@ BfCompany *g_pluginbf_z2z;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_z2z", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
@@ -62,13 +62,14 @@ int entryPoint ( BfBulmaFact *bges )
     //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accionA );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, "PluginBf_Z2Z" );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_Z2Z" );
 
     if (accion->objectName() == "mui_actionZ2Z") {
         Z2ZView * bud = new Z2ZView ( g_pluginbf_z2z, NULL );
@@ -76,6 +77,6 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }

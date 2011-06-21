@@ -47,7 +47,7 @@
 CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode modo )
         : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
@@ -92,7 +92,7 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
     trataPermisos ( "vencimientoc" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -102,9 +102,9 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
 **/
 CarteraCobrosList::~CarteraCobrosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -115,7 +115,7 @@ CarteraCobrosList::~CarteraCobrosList()
 **/
 void CarteraCobrosList::presenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString where;
 
     if ( mui_idcliente->id() != "" ) {
@@ -136,14 +136,14 @@ void CarteraCobrosList::presenta()
 
 
     mui_list->load ( "SELECT * FROM vencimientoc LEFT JOIN factura AS t1 ON vencimientoc.idfactura = t1.idfactura LEFT JOIN cliente AS t2 ON t2.idcliente = vencimientoc.idcliente LEFT JOIN forma_pago  AS t3 ON t3.idforma_pago = vencimientoc.idforma_pago  WHERE nomcliente LIKE '%" + m_texto->text() + "%' " + where + " ORDER BY nomcliente" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 
 void CarteraCobrosList::editar ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idvencimientoc = mui_list->dbValue ( "idvencimientoc" );
     if ( editMode() && mdb_idvencimientoc != "" ) {
         VencimientoCView *bud = new VencimientoCView( ( BfCompany * ) mainCompany(), 0 );
@@ -156,7 +156,7 @@ void CarteraCobrosList::editar ( int )
     } else {
         close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -168,9 +168,9 @@ void CarteraCobrosList::editar ( int )
 **/
 void CarteraCobrosList::on_mui_imprimir_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( tr ( "BlFormList de Vencimientos" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -181,9 +181,9 @@ void CarteraCobrosList::on_mui_imprimir_clicked()
 **/
 void CarteraCobrosList::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     presenta();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -194,7 +194,7 @@ void CarteraCobrosList::on_mui_actualizar_clicked()
 **/
 void CarteraCobrosList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
 
                 QString idvencimientoc = mui_list->dbValue("idvencimientoc");
@@ -209,7 +209,7 @@ void CarteraCobrosList::remove()
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al borrar un vencimientoc" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -219,8 +219,8 @@ void CarteraCobrosList::remove()
 **/
 QString CarteraCobrosList::idvencimientoc()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idvencimientoc;
 }
 
@@ -231,9 +231,9 @@ QString CarteraCobrosList::idvencimientoc()
 **/
 void CarteraCobrosList::hideBotonera()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_botonera->hide();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -242,9 +242,9 @@ void CarteraCobrosList::hideBotonera()
 **/
 void CarteraCobrosList::showBotonera()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_botonera->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -253,9 +253,9 @@ void CarteraCobrosList::showBotonera()
 **/
 void CarteraCobrosList::hideBusqueda()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_busqueda->hide();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -264,9 +264,9 @@ void CarteraCobrosList::hideBusqueda()
 **/
 void CarteraCobrosList::showBusqueda()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_busqueda->show();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -276,11 +276,11 @@ void CarteraCobrosList::showBusqueda()
 **/
 void CarteraCobrosList::on_m_filtro_textChanged ( const QString &text )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( text.size() >= 3 ) {
         on_mui_actualizar_clicked();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -290,13 +290,13 @@ void CarteraCobrosList::on_m_filtro_textChanged ( const QString &text )
 **/
 void CarteraCobrosList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( editMode()  ) {
         VencimientoCView *bud = new VencimientoCView( ( BfCompany * ) mainCompany(), 0 );
         mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -309,13 +309,13 @@ void CarteraCobrosList::crear()
 **/
 void CarteraCobrosList::on_mui_configurar_toggled ( bool checked )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( checked ) {
         mui_list->showConfig();
     } else {
         mui_list->hideConfig();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void CarteraCobrosList::on_mui_q34_clicked() {
@@ -350,7 +350,7 @@ void CarteraCobrosList::on_mui_suma_clicked() {
 **/
 CarteraCobrosListSubForm::CarteraCobrosListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "vencimientoc" );
     setDbFieldId ( "idvencimientoc" );
     addSubFormHeader ( "idvencimientoc", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, tr ( "Id vencimiento" ) );
@@ -366,7 +366,7 @@ CarteraCobrosListSubForm::CarteraCobrosListSubForm ( QWidget *parent, const char
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -375,6 +375,6 @@ CarteraCobrosListSubForm::CarteraCobrosListSubForm ( QWidget *parent, const char
 **/
 CarteraCobrosListSubForm::~CarteraCobrosListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }

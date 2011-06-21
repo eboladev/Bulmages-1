@@ -41,7 +41,7 @@
 JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -84,22 +84,22 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _ ( "Error al crear el jdirectiva" ), this );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 JDirectivaView::~JDirectivaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
 QString JDirectivaView::templateName ( void )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     
     return QString ( "jdirectiva" );
 }
@@ -107,7 +107,7 @@ QString JDirectivaView::templateName ( void )
 
 void JDirectivaView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el jdirectiva.
     QString SQLQuery = "";
@@ -126,17 +126,17 @@ void JDirectivaView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 int JDirectivaView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
     mui_list->save();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -147,11 +147,11 @@ int JDirectivaView::beforeDelete()
 
 int JDirectivaView::cargarPost ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     mui_list->load("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }

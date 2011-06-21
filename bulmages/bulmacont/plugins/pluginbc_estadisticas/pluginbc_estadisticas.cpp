@@ -14,13 +14,13 @@
 
 PluginBc_Estadisticas:: PluginBc_Estadisticas()
 {
-    blDebug ( "PluginBc_Estadisticas::PluginBc_Estadisticas", 0 );
-    blDebug ( "END PluginBc_Estadisticas::PluginBc_Estadisticas", 0 );
+    BL_FUNC_DEBUG
+    
 }
 PluginBc_Estadisticas::~PluginBc_Estadisticas()
 {
-    blDebug ( "PluginBc_Estadisticas::~PluginBc_Estadisticas", 0 );
-    blDebug ( "END PluginBc_Estadisticas::~PluginBc_Estadisticas", 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 

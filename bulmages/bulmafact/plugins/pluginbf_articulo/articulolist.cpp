@@ -55,12 +55,12 @@
 ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList_ArticuloList", this );
     if ( res != 0 ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Sale. Error en plugin") );
+	
         return;
     } // end if
     m_tipoarticulo->setMainCompany ( comp );
@@ -90,7 +90,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     trataPermisos ( "articulo" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -99,9 +99,9 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
 **/
 void ArticuloList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->load ( formaQuery() );
-    blDebug ( "ArticuloList::END_presenta", 0 );
+    
 }
 
 
@@ -119,7 +119,7 @@ void ArticuloList::presentar()
 **/
 void ArticuloList::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idarticulo = mui_list->dbValue ( "idarticulo", row );
     mdb_nomarticulo = mui_list->dbValue ( "nomarticulo", row );
     mdb_codigocompletoarticulo = mui_list->dbValue ( "codigocompletoarticulo", row );
@@ -129,7 +129,7 @@ void ArticuloList::editar ( int row )
         /// Si la carga no va bien entonces terminamos.
         if ( art->load ( mdb_idarticulo ) ) {
             delete art;
-	    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Carga erronea") );
+	    
             return;
         } // end if
         art->hide();
@@ -138,7 +138,7 @@ void ArticuloList::editar ( int row )
         close();
         emit ( selected ( mdb_idarticulo ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -147,8 +147,8 @@ void ArticuloList::editar ( int row )
 **/
 ArticuloList::~ArticuloList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -162,7 +162,7 @@ ArticuloList::~ArticuloList()
 **/
 void ArticuloList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Tiene que seleccionar un articulo" ) );
@@ -180,9 +180,9 @@ void ArticuloList::remove()
                 throw - 1;
             presentar();
         } // end if
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
     } catch ( ... ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al borrar el articulo") );
+	
         blMsgInfo ( _ ( "Error al borrar el articulo" ) );
     } // end try
 }
@@ -196,7 +196,7 @@ void ArticuloList::remove()
 **/
 QString ArticuloList::formaQuery()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString query = "";
     query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
     if ( m_presentablearticulo->isChecked() )
@@ -242,7 +242,7 @@ QString ArticuloList::formaQuery()
     query += " ORDER BY codigocompletoarticulo";
 
     return ( query );
-    blDebug ( "ArticuloList::END_formaQuery()\n", 0 );
+    
 }
 
 
@@ -251,9 +251,9 @@ QString ArticuloList::formaQuery()
 **/
 void ArticuloList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( "Listado de articulos" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -262,7 +262,7 @@ void ArticuloList::imprimir()
 **/
 void ArticuloList::on_mui_exportar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
@@ -272,10 +272,10 @@ void ArticuloList::on_mui_exportar_clicked()
         bulmafact2XML ( filexml, IMPORT_ARTICULOS );
         filexml.close();
     } else {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -287,7 +287,7 @@ void ArticuloList::on_mui_exportar_clicked()
 **/
 void ArticuloList::on_mui_importar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
@@ -298,10 +298,10 @@ void ArticuloList::on_mui_importar_clicked()
         filexml.close();
         presentar();
     } else {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -313,7 +313,7 @@ void ArticuloList::on_mui_importar_clicked()
 **/
 void ArticuloList::submenu ( const QPoint & )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -334,7 +334,7 @@ void ArticuloList::submenu ( const QPoint & )
 **/
 void ArticuloList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if (selectMode()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
@@ -383,7 +383,7 @@ void ArticuloList::crear()
       art->show();
       art->setWindowTitle ( _ ( "Nuevo Articulo" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -393,8 +393,8 @@ void ArticuloList::crear()
 **/
 QString ArticuloList::idarticulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idarticulo;
 }
 
@@ -405,8 +405,8 @@ QString ArticuloList::idarticulo()
 **/
 QString ArticuloList::nomarticulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_nomarticulo;
 }
 
@@ -417,8 +417,8 @@ QString ArticuloList::nomarticulo()
 **/
 QString ArticuloList::codigocompletoarticulo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_codigocompletoarticulo;
 }
 
@@ -435,7 +435,7 @@ QString ArticuloList::codigocompletoarticulo()
 ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "articulo" );
     setDbFieldId ( "idarticulo" );
 
@@ -455,7 +455,7 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "ArticuloListSubForm_ArticuloListSubForm_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -464,7 +464,7 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
 **/
 ArticuloListSubForm::~ArticuloListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 
 }

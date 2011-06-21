@@ -46,8 +46,8 @@ BlMainCompany *g_pluginbl_report2ods_emp = NULL;
 **/
 PluginBl_Report2ODS::PluginBl_Report2ODS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 ///
@@ -55,8 +55,8 @@ PluginBl_Report2ODS::PluginBl_Report2ODS()
 **/
 PluginBl_Report2ODS::~PluginBl_Report2ODS()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -67,7 +67,7 @@ PluginBl_Report2ODS::~PluginBl_Report2ODS()
 **/
 void PluginBl_Report2ODS::elslot1( )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlForm *ficha = new BlForm ( g_pluginbl_report2ods_emp, 0 );
 
@@ -78,7 +78,7 @@ void PluginBl_Report2ODS::elslot1( )
     blCreateAndLoadODS ( archivo );
 
     delete ficha;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -91,7 +91,7 @@ int entryPoint ( BlMainWindow *bges )
 
 int init (  )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -206,7 +206,7 @@ int init (  )
         menu->addAction ( accion );
     } // end for
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

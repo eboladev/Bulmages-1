@@ -36,7 +36,7 @@
 ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "comparticulo" );
     setDbFieldId ( "idcomponente" );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave | BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo completo del articulo" ) );
@@ -46,7 +46,7 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey | BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id articulo" ) );
     setInsert ( TRUE );
     setOrdenEnabled ( FALSE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -60,9 +60,9 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
 **/
 void ListCompArticuloView::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( camp->fieldName() != "codigocompletoarticulo" ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("El campo no es el 'codigocompletoarticulo'") );
+	
         return;
     } // end if
 
@@ -83,7 +83,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col, BlDbSubFormRecord
         rec->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
         rec->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -96,7 +96,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col, BlDbSubFormRecord
 **/
 void ListCompArticuloView::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     camp->refresh();
     if ( camp->fieldName() == "codigocompletoarticulo" ) {
         BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
@@ -107,7 +107,7 @@ void ListCompArticuloView::editFinished ( int row, int col, BlDbSubFormRecord *r
 	    rec->setDbValue ( "cantcomparticulo", "1.00" );
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -117,8 +117,8 @@ void ListCompArticuloView::editFinished ( int row, int col, BlDbSubFormRecord *r
 **/
 ListCompArticuloView::~ListCompArticuloView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -129,10 +129,10 @@ ListCompArticuloView::~ListCompArticuloView()
 **/
 void ListCompArticuloView::load ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idarticulo = idarticulo;
     BlSubForm::load ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

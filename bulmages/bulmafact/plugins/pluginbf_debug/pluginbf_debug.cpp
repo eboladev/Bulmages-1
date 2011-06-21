@@ -39,7 +39,7 @@
 **/
 int entryPoint ( BfBulmaFact *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,7 +61,7 @@ int entryPoint ( BfBulmaFact *bcont )
     accionA->setObjectName("mui_actionDebug");
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( accionA );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

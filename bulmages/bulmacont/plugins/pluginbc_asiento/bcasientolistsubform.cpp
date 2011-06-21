@@ -30,7 +30,7 @@
 BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "asiento" );
     setFileConfig ( "BcAsientoListSubForm" );
     setDbFieldId ( "idasiento" );
@@ -53,7 +53,7 @@ BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -62,8 +62,8 @@ BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
 **/
 BcAsientoListSubForm::~BcAsientoListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -74,14 +74,14 @@ BcAsientoListSubForm::~BcAsientoListSubForm()
 **/
 void BcAsientoListSubForm::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
     menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
     menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -91,7 +91,7 @@ void BcAsientoListSubForm::s_pintaMenu ( QMenu *menu )
 **/
 void BcAsientoListSubForm::s_trataMenu ( QAction *action )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
       
@@ -104,7 +104,7 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
     if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -115,7 +115,7 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
 /*
 void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QAction *del = NULL;
     int row = currentRow();
     if ( row < 0 ) {
@@ -173,6 +173,6 @@ void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
         showConfig();
     } // end if
     delete popup;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 */

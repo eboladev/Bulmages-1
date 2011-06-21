@@ -49,13 +49,13 @@ QProcess *g_proc = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "entryPoint", 0 );
+    BlDebug::blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_teclado", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -150,13 +150,13 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    blDebug ( "pluginbt_telcado::exitPoint", 0 );
+    BlDebug::blDebug ( "pluginbt_telcado::exitPoint", 0 );
 
     /// Vamos a probar con un docwindow.
     g_proc->kill();
     delete g_proc;
     delete g_docteclado;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

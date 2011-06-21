@@ -31,7 +31,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_PrecioCoste", "0.10.1-0002");
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     trab->addDbField ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio Coste" ) );
     trab->addDbField ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Margen" ) );
@@ -107,7 +107,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int err;
     BlDbRecordSet *cur = NULL;
     BlDbRecordSet *cur1 = NULL;

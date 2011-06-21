@@ -38,7 +38,7 @@ BfBulmaFact *g_pluginbf_iva = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -77,7 +77,8 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, _("PluginBf_IVA") );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBf_IVA") );
 
     if (accion->objectName() == "mui_actionIVATipos") {
          ListTipoIVAView *pag = new ListTipoIVAView ( g_pluginbf_iva->company(), NULL );
@@ -91,6 +92,6 @@ int BlAction_triggered(BlAction *accion) {
          pag->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }

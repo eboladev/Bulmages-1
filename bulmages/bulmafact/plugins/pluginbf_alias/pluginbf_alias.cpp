@@ -41,7 +41,7 @@ int g_minLenAlias = 0;
 int entryPoint ( BfBulmaFact *bges )
 {
 
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Alias", "0.11.2");
@@ -104,7 +104,7 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -122,7 +122,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, "Alias" );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -134,12 +134,12 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_load ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
     if ( l ) {
         l->load ( "SELECT * FROM alias WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -152,7 +152,7 @@ int ArticuloView_load ( ArticuloView *art )
 **/
 int ArticuloView_guardar_post ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
@@ -160,11 +160,11 @@ int ArticuloView_guardar_post ( ArticuloView *art )
         invalidaEstadAlias();
         return 0;
     } catch ( ... ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error al guardar") );
+        
         return 0;
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -203,7 +203,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 
 int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     bool encontrado = FALSE;
     if ( posibleAlias ( baDel->entrada(), baDel->mainCompany() ) ) {
@@ -224,11 +224,11 @@ int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel 
     }
 
     if ( encontrado ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
         return -1;
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 
 }
@@ -236,7 +236,7 @@ int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel 
 
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlDbSubFormField *camp = sf->m_campoactual;
     if  ( camp->fieldName() == "codigocompletoarticulo" ) {
       if ( posibleAlias ( camp->text(), sf->mainCompany() ) ) {
@@ -249,7 +249,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
         delete cur;
       }
     }
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
     return 0;
 
@@ -262,7 +262,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "codigocompletoarticulo" ) {
       QString val = sub->m_campoactual->text();
         QString valors[1] = {val};
@@ -293,17 +293,17 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
 
         delete cur;
-	blDebug ( ("END ", Q_FUNC_INFO), 0 );
+	
 	return 1;
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  blDebug ( Q_FUNC_INFO, 0 );
+  BL_FUNC_DEBUG
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
            // no se si es el autoComplete o què però em criden a
@@ -347,13 +347,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                   } // end while
                   delete bl->m_cursorcombo;
                 }
-           blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
 	   return 1;
            } //end if te .- 
 
         } // end if
-  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
     return 0;
 }

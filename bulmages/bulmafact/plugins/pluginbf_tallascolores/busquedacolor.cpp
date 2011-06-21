@@ -31,10 +31,10 @@
 BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -44,8 +44,8 @@ BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
 **/
 BusquedaColor::~BusquedaColor()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -59,7 +59,7 @@ BusquedaColor::~BusquedaColor()
 **/
 void BusquedaColor::setidtc_color ( QString idtc_color )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
@@ -82,7 +82,7 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
     } else {
         setCurrentIndex ( i2 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -92,9 +92,9 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
 **/
 void BusquedaColor::setFieldValue ( QString idtc_color )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setidtc_color ( idtc_color );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -104,13 +104,13 @@ void BusquedaColor::setFieldValue ( QString idtc_color )
 **/
 QString BusquedaColor::idtc_color()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return ( m_comboRecordSet->value( "idtc_color", index - 1 ) );
     } else {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return "";
     } // end if
 }
@@ -122,8 +122,8 @@ QString BusquedaColor::idtc_color()
 **/
 QString BusquedaColor::fieldValue()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return idtc_color();
 }
 
@@ -134,9 +134,9 @@ QString BusquedaColor::fieldValue()
 **/
 void BusquedaColor::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -146,13 +146,13 @@ void BusquedaColor::setMainCompany ( BfCompany *comp )
 **/
 void BusquedaColor::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idtc_color", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// ========================= ITEM DELEGATE ===============================0
@@ -167,14 +167,14 @@ void BusquedaColor::m_activated ( int index )
 BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
         : BlComboBoxDelegate ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     setQuery ( "SELECT idtc_color, nomtc_color FROM tc_color ORDER BY nomtc_color" );
     setTableName ( "tc_color" );
     setFieldId ( "idtc_color" );
     m_valores["nomtc_color"] = "";
     setAllowNull(FALSE);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -184,7 +184,7 @@ BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
 **/
 BusquedaColorDelegate::~BusquedaColorDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 

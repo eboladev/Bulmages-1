@@ -30,11 +30,11 @@
 BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setMouseTracking ( TRUE );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -43,8 +43,8 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
 **/
 BusquedaTarifa::~BusquedaTarifa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -54,7 +54,7 @@ BusquedaTarifa::~BusquedaTarifa()
 **/
 void BusquedaTarifa::setIdTarifa ( QString idtarifa )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 //    mdb_idtarifa = idtarifa;
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
@@ -73,34 +73,34 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
         m_cursorcombo->nextRecord();
     }
     setCurrentIndex ( i1 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 void BusquedaTarifa::m_activated ( int index )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->value( "idtarifa", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
 
 QString BusquedaTarifa::idtarifa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return ( m_cursorcombo->value( "idtarifa", index - 1 ) );
     } else {
-        blDebug ( ("END ", Q_FUNC_INFO), 0 );
+        
         return "";
     } // end if
 
@@ -109,16 +109,16 @@ QString BusquedaTarifa::idtarifa()
 
 QString BusquedaTarifa::fieldValue()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return idtarifa();
 }
 
 
 void BusquedaTarifa::setFieldValue ( QString idtarifa )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setIdTarifa ( idtarifa );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

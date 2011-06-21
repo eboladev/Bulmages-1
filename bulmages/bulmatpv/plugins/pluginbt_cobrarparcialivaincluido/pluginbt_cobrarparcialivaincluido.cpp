@@ -38,8 +38,8 @@ PluginBt_CobrarParcialIVAIncluido *g_PluginBt_CobrarParcialIVAIncluido;
 **/
 PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 {
-    blDebug ( "PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido", 0 );
+    
 }
 
 
@@ -48,8 +48,8 @@ PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 **/
 PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido()
 {
-    blDebug ( "PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido", 0 );
+    
 }
 
 
@@ -84,7 +84,7 @@ void PluginBt_CobrarParcialIVAIncluido::cobrarParcial ()
 **/
 int entryPoint ( BtBulmaTPV *bges )
 {
-    blDebug ( "Estoy dentro del pluginbt_cobrarparcial", 0 );
+    BlDebug::blDebug ( "Estoy dentro del pluginbt_cobrarparcial", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

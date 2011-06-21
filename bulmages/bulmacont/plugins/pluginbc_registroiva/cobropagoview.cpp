@@ -32,7 +32,7 @@
 cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
         : BlForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_companyact = emp;
@@ -64,7 +64,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
 
     on_mui_actualizar_clicked();
     m_companyact->insertWindow ( windowTitle(), this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -73,9 +73,9 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
 **/
 cobropagoview::~cobropagoview()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_companyact->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -84,7 +84,7 @@ cobropagoview::~cobropagoview()
 **/
 void cobropagoview::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Hacemos la presentacion con la nueva clase
     QString cadwhere = "";
@@ -93,7 +93,7 @@ void cobropagoview::on_mui_actualizar_clicked()
                           " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                           " WHERE 1=1 " + cadwhere );
     s_recalculaSaldo();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -102,9 +102,9 @@ void cobropagoview::on_mui_actualizar_clicked()
 **/
 void cobropagoview::s_guardar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_listado->save();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -113,7 +113,7 @@ void cobropagoview::s_guardar()
 **/
 void cobropagoview::s_recalculaSaldo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlFixed totalcobro ( "0" );
     BlFixed totalpago ( "0" );
     for ( int i = 0; i < mui_listado->rowCount(); i++ ) {
@@ -128,7 +128,7 @@ void cobropagoview::s_recalculaSaldo()
     } // end for
     m_totalCobros->setText ( totalcobro.toQString() );
     m_totalPagos->setText ( totalpago.toQString() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

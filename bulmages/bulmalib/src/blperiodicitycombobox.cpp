@@ -27,8 +27,8 @@
 **/
 QString BlPeriodicityComboBox::periodo()
 {
-    blDebug ( "BlPeriodicityComboBox::periodo", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlPeriodicityComboBox::periodo", 0 );
+    
     return m_valores[currentIndex() ];
 }
 
@@ -39,8 +39,8 @@ QString BlPeriodicityComboBox::periodo()
 **/
 QString BlPeriodicityComboBox::fieldValue()
 {
-    blDebug ( "BlPeriodicityComboBox::fieldValue", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlPeriodicityComboBox::fieldValue", 0 );
+    
     return m_valores[currentIndex() ];
 }
 
@@ -51,7 +51,7 @@ QString BlPeriodicityComboBox::fieldValue()
 **/
 void BlPeriodicityComboBox::s_activated ( int index )
 {
-    blDebug ( "Activado el combo box.", 0 );
+    BlDebug::blDebug ( "Activado el combo box.", 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_valores[currentIndex() ] ) );
     } else {
@@ -66,7 +66,7 @@ void BlPeriodicityComboBox::s_activated ( int index )
 **/
 BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( parent )
 {
-    blDebug ( "BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
+    BlDebug::blDebug ( "BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
     m_textos[0] = _ ( "Semanal" );
     m_textos[1] = _ ( "Quincenal" );
     m_textos[2] = _ ( "Mensual" );
@@ -93,7 +93,7 @@ BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( p
     } // end while
 
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( s_activated ( int ) ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -102,8 +102,8 @@ BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( p
 **/
 BlPeriodicityComboBox::~BlPeriodicityComboBox()
 {
-    blDebug ( "BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
+    
 }
 
 
@@ -114,7 +114,7 @@ Establece cual es el periodo en el combobox y lo pone.
 **/
 void BlPeriodicityComboBox::setperiodo ( QString periodo )
 {
-    blDebug ( "BlPeriodicityComboBox::setperiodo", 0, periodo );
+    BlDebug::blDebug ( "BlPeriodicityComboBox::setperiodo", 0, periodo );
     int i = 0;
     /// Buscamos un campo que se corresponda con el periodo.
     /// El problema es que postgres acepta como sintaxis de entrada la arroba
@@ -127,7 +127,7 @@ void BlPeriodicityComboBox::setperiodo ( QString periodo )
     } else {
         setCurrentIndex ( 0 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -137,9 +137,9 @@ void BlPeriodicityComboBox::setperiodo ( QString periodo )
 **/
 void BlPeriodicityComboBox::setFieldValue ( QString periodo )
 {
-    blDebug ( "BlPeriodicityComboBox::setFieldValue", 0 );
+    BlDebug::blDebug ( "BlPeriodicityComboBox::setFieldValue", 0 );
     setperiodo ( periodo );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

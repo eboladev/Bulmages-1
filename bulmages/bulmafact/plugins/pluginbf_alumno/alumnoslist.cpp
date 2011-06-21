@@ -39,7 +39,7 @@
 AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlumnosList_AlumnosList", this );
@@ -51,7 +51,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -62,7 +62,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlumnosList_AlumnosList", this );
@@ -104,7 +104,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     trataPermisos ( "alumno" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -112,8 +112,8 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 AlumnosList::~AlumnosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -123,11 +123,11 @@ AlumnosList::~AlumnosList()
 */
 void AlumnosList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM alumno WHERE 1 = 1 " + generaFiltro() );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -135,7 +135,7 @@ void AlumnosList::presentar()
 */
 QString AlumnosList::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(nombrealumno) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -146,7 +146,7 @@ QString AlumnosList::generaFiltro()
       filtro += " AND idclase = " + mui_idclase->id();
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return ( filtro );
 }
 
@@ -157,7 +157,7 @@ QString AlumnosList::generaFiltro()
 */
 void AlumnosList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if (selectMode()) {
 	/// El modo consulta funciona algo diferente
@@ -207,7 +207,7 @@ void AlumnosList::crear()
       bud->pintar();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -215,9 +215,9 @@ void AlumnosList::crear()
 */
 void AlumnosList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Alumnos" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -229,7 +229,7 @@ void AlumnosList::imprimir()
 */
 void AlumnosList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -248,7 +248,7 @@ void AlumnosList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente." ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -258,7 +258,7 @@ void AlumnosList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void AlumnosList::editar ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         mdb_idalumno = mui_list->dbValue ( "idalumno" );
         if ( editMode() ) {
@@ -276,7 +276,7 @@ void AlumnosList::editar ( int )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -285,7 +285,7 @@ void AlumnosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void AlumnosList::submenu ( const QPoint & )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -299,14 +299,14 @@ void AlumnosList::submenu ( const QPoint & )
         on_mui_editar_clicked();
     delete popup;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
 void AlumnosList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
@@ -317,7 +317,7 @@ void AlumnosList::setMainCompany ( BfCompany *comp )
     mui_idclase->m_valores["nomclase"] = "";
     mui_idclase->setAllowNull ( TRUE );
     mui_idclase->setId ( "" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -325,8 +325,8 @@ void AlumnosList::setMainCompany ( BfCompany *comp )
 **/
 QString AlumnosList::idalumno()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return mdb_idalumno;
 }
 
@@ -340,7 +340,7 @@ QString AlumnosList::idalumno()
 */
 AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlumnosListSubForm_AlumnosListSubForm", this );
     if ( res != 0 )
@@ -356,13 +356,13 @@ AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 AlumnosListSubForm::~AlumnosListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 

@@ -41,7 +41,7 @@
 TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setTitleName ( _ ( "Tarifa" ) );
@@ -68,7 +68,7 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
 
     dialogChanges_readValues();
     blScript(this);
-    blDebug ( "TarifaView::END_constructor()\n", 0 );
+    
 }
 
 
@@ -77,9 +77,9 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
 **/
 TarifaView::~TarifaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    blDebug ( "TarifaView::END_destructor()\n", 0 );
+    
 }
 
 
@@ -97,10 +97,10 @@ BfCompany *TarifaView::companyact()
 **/
 void TarifaView::pintar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_nomtarifa->setText ( dbValue ( "nomtarifa" ) );
     setWindowTitle ( _ ( "Tarifa" ) + " " + mui_nomtarifa->text() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -111,7 +111,7 @@ void TarifaView::pintar()
 **/
 QString TarifaView::formaQuery ( QString idtarifa )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString wherearticulo = "";
     QString warticulo = " WHERE ";
 
@@ -132,7 +132,7 @@ QString TarifaView::formaQuery ( QString idtarifa )
 
     QString SQLQuery = "SELECT * FROM (SELECT * FROM (SELECT * FROM almacen " + wherealmacen + ") AS t6, (SELECT * FROM articulo " + wherearticulo + ") AS t5, (SELECT * FROM tarifa WHERE idtarifa = " + idtarifa + ") AS t2 ) AS t3 ";
     SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idtarifa = " + idtarifa + ") as t1 ON t1.idtarifa = t3.idtarifa AND t1.idalmacen = t3.idalmacen AND t1.idarticulo = t3.idarticulo";
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return SQLQuery;
 }
 
@@ -144,7 +144,7 @@ QString TarifaView::formaQuery ( QString idtarifa )
 **/
 int TarifaView::load ( QString idtarifa )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int error = 0;
     m_idtarifa = idtarifa;
 
@@ -163,13 +163,13 @@ int TarifaView::load ( QString idtarifa )
 
     /// Tratamiento de excepciones.
     if ( error == 1 ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error en la carga.") );
+	
         return -1;
     } // end if
     pintar();
 
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -180,7 +180,7 @@ int TarifaView::load ( QString idtarifa )
 **/
 int TarifaView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Al pulsar sobre 'guardar' se tiene que comprobar si existe un 'idtarifa'
     /// Si no existe se crea una nueva tarifa (INSERT) en la base de datos con el nombre proporcionado:
@@ -204,7 +204,7 @@ int TarifaView::save()
 
     emit guardartarifa();
 
-    blDebug ( "TarifaView::END_s_grabarClicked()\n", 0 );
+    
     return 0;
 }
 
@@ -214,10 +214,10 @@ int TarifaView::save()
 **/
 void TarifaView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     vaciar();
     pintar();
-    blDebug ( "TarifaView::END_boton_nuevo()\n", 0 );
+    
 }
 
 
@@ -226,9 +226,9 @@ void TarifaView::on_mui_crear_clicked()
 **/
 void TarifaView::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     load ( m_idtarifa );
-    blDebug ( "TarifaView::END_boton_nuevo()\n", 0 );
+    
 }
 
 
@@ -237,7 +237,7 @@ void TarifaView::on_mui_actualizar_clicked()
 **/
 void TarifaView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( dbValue ( "idtarifa" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _ ( "Borrar tarifa" ),
@@ -256,6 +256,6 @@ void TarifaView::on_mui_borrar_clicked()
             close();
         } // end if
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

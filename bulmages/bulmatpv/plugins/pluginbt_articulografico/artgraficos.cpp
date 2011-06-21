@@ -18,7 +18,7 @@ extern BlDockWidget *g_pantallas;
 
 ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    blDebug ( "ArtGraficos::~ArtGraficos", 0 );
+    BlDebug::blDebug ( "ArtGraficos::~ArtGraficos", 0 );
     setupUi ( this );
     setObjectName ( "ArtGraficos" );
     m_numPantallas = 0;
@@ -28,20 +28,20 @@ ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( em
     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
     ponPantallas();
     muestraPantalla ( 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 ArtGraficos::~ArtGraficos()
 {
-    blDebug ( "ArtGraficos::~ArtGraficos", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "ArtGraficos::~ArtGraficos", 0 );
+    
 }
 
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
-    blDebug("ArtGraficos::on_mui_list_cellClicked");
+    BlDebug::blDebug("ArtGraficos::on_mui_list_cellClicked");
 
     QString artvarios = g_confpr->value( CONF_ARTICULOS_VARIOS );
     QString codigo = m_articulos[row][column];
@@ -84,7 +84,7 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
     /// Pintamos el ticket ya que se ha modificado.
     tick->pintar();
 
-    blDebug("END ArtGraficos::on_mui_list_cellClicked");
+    BlDebug::blDebug("END ArtGraficos::on_mui_list_cellClicked");
 }
 
 void ArtGraficos::on_mui_botonSiguiente_clicked()

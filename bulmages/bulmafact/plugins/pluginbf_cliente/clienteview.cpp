@@ -44,7 +44,7 @@
 ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
@@ -105,7 +105,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el cliente" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -115,11 +115,11 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
 **/
 ClienteView::~ClienteView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins.
     g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
     mainCompany() ->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -168,12 +168,12 @@ int ClienteView::afterSave()
 **/
 int ClienteView::cargarPost ( QString idcliente )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Lanzamos los plugins de carga
     g_plugins->lanza ( "ClienteView_cargarPost_Post", this );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -185,7 +185,7 @@ int ClienteView::cargarPost ( QString idcliente )
 **/
 void ClienteView::on_mui_informe_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
@@ -195,7 +195,7 @@ void ClienteView::on_mui_informe_clicked()
         inf.generarInforme();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -205,12 +205,12 @@ void ClienteView::on_mui_informe_clicked()
 **/
 void ClienteView::on_mui_cifcliente_lostFocus()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QChar digito;
     if ( !blValidateSpainCIFNIFCode ( mui_cifcliente->text(), digito ) ) {
         blMsgInfo ( "Error en el CIF del cliente. Control:" + QString ( digito ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -223,13 +223,13 @@ void ClienteView::on_mui_cifcliente_lostFocus()
 **/
 void ClienteView::activateDocuments()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_tab->setTabEnabled ( 2, TRUE );
     mui_tab->setTabEnabled ( 3, TRUE );
     mui_tab->setTabEnabled ( 4, TRUE );
     mui_tab->setTabEnabled ( 5, TRUE );
     mui_tab->setTabEnabled ( 6, TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -239,12 +239,12 @@ void ClienteView::activateDocuments()
 **/
 void ClienteView::deactivateDocuments()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_tab->setTabEnabled ( 2, FALSE );
     mui_tab->setTabEnabled ( 3, FALSE );
     mui_tab->setTabEnabled ( 4, FALSE );
     mui_tab->setTabEnabled ( 5, FALSE );
     mui_tab->setTabEnabled ( 6, FALSE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

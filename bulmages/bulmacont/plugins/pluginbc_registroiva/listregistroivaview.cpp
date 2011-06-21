@@ -35,7 +35,7 @@
 ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *parent )
         : QWidget ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_companyact = emp;
@@ -110,7 +110,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_totalSoportado->setInsert ( FALSE );
 
     /// Fin de las definiciones para la tabla de IVA.
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -118,9 +118,9 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
 **/
 ListRegistroIvaView::~ListRegistroIvaView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_companyact->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -130,7 +130,7 @@ ListRegistroIvaView::~ListRegistroIvaView()
 **/
 void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int idasiento;
     idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
 /*
@@ -143,7 +143,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked ( int, int )
     g_asiento ->show();
     g_asiento ->setFocus();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -153,7 +153,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked ( int, int )
 **/
 void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int idasiento;
     idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
 /*
@@ -165,7 +165,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked ( int, int )
     g_asiento ->show();
     g_asiento ->setFocus();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -174,12 +174,12 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked ( int, int )
 **/
 void ListRegistroIvaView::boton_print()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BcRegistroIVAImprimirView *print = new BcRegistroIVAImprimirView ( m_companyact, 0 );
     print->inicializa1 ( finicial->text(), ffinal->text() );
     print->exec();
     delete print;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -188,9 +188,9 @@ void ListRegistroIvaView::boton_print()
 **/
 void ListRegistroIvaView::on_mui_actualizar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     inicializa();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -199,7 +199,7 @@ void ListRegistroIvaView::on_mui_actualizar_clicked()
 **/
 void ListRegistroIvaView::inicializa()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     QString query;
     QString sbaseimp, siva;
@@ -233,7 +233,7 @@ void ListRegistroIvaView::inicializa()
     /// as&iacute; entran todos.
     query.sprintf ( "SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().toAscii().constData(), ffinal->text().toAscii().constData() );
     mui_tablarepercutido->load ( query );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -243,11 +243,11 @@ void ListRegistroIvaView::inicializa()
 **/
 void ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_verreg = menu->addAction ( "Editar registro" );
     m_verasiento = menu->addAction ( "Asiento contable" );
     menu->addSeparator();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -257,11 +257,11 @@ void ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu ( QMenu *menu )
 **/
 void ListRegistroIvaView::on_mui_tablasoportado_pintaMenu ( QMenu *menu )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_verreg = menu->addAction ( "Editar registro" );
     m_verasiento = menu->addAction ( "Asiento contable" );
     menu->addSeparator();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -271,7 +271,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_pintaMenu ( QMenu *menu )
 **/
 void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_verreg == ac ) {
         QString idborrador = mui_tablasoportado->dbValue ( "idborrador" );
         RegistroIvaView *nuevae = new RegistroIvaView ( m_companyact, 0 );
@@ -292,7 +292,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
         g_asiento ->setFocus();
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -302,7 +302,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
 **/
 void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_verreg == ac ) {
         QString idborrador = mui_tablarepercutido->dbValue ( "idborrador" );
         RegistroIvaView *nuevae = new RegistroIvaView ( m_companyact, 0 );
@@ -324,7 +324,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
 
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

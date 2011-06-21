@@ -34,7 +34,7 @@ BfBulmaFact *g_pluginbf_inventario = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Inventario", "0.10.1-0002");
@@ -64,7 +64,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, _("PluginBf_Inventario") );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBf_Inventario") );
 
     if (accion->objectName() == "mui_actionInventario") {
         InventariosView *tar = new InventariosView ( g_pluginbf_inventario->company(), NULL );
@@ -72,7 +72,7 @@ int BlAction_triggered(BlAction *accion) {
         tar->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -84,7 +84,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *l = new BfSubForm ( art );
     l->setMainCompany ( art->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
@@ -102,7 +102,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setSortingEnabled ( FALSE );
     art->dialogChanges_setExcludedObject ( l->mui_list );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -135,7 +135,7 @@ int BlForm_guardar_Post ( BlForm *fich )
 
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     if ( subform->currentColumn() < 1 ) {
         return 0;

@@ -47,7 +47,7 @@
 PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -97,7 +97,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido cliente" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -106,8 +106,8 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
 **/
 PedidoClienteView::~PedidoClienteView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -116,12 +116,12 @@ PedidoClienteView::~PedidoClienteView()
 **/
 void PedidoClienteView::inicializar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform3->inicializar();
     m_descuentos->inicializar();
     pintar();
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -136,14 +136,14 @@ void PedidoClienteView::inicializar()
 **/
 void PedidoClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_totalBases->setText ( QString ( base.toQString() ) );
     m_totalTaxes->setText ( QString ( iva.toQString() ) );
     m_totalDiscounts->setText ( QString ( desc.toQString() ) );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
     m_totalpedidocliente->setText ( total.toQString() );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -152,9 +152,9 @@ void PedidoClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total,
 **/
 void PedidoClienteView::on_mui_verpresupuesto_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -166,7 +166,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked()
 **/
 void PedidoClienteView::generarAlbaran()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
 
         AlbaranClienteView *bud = NULL;
@@ -273,7 +273,7 @@ void PedidoClienteView::generarAlbaran()
             if ( bud ) delete bud;
         } // end try
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -283,10 +283,10 @@ void PedidoClienteView::generarAlbaran()
 **/
 void PedidoClienteView::on_mui_idcliente_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform3->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -296,10 +296,10 @@ void PedidoClienteView::on_mui_idcliente_valueChanged ( QString id )
 **/
 int PedidoClienteView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->remove();
     m_listadescuentos->remove();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -311,7 +311,7 @@ int PedidoClienteView::beforeDelete()
 **/
 int PedidoClienteView::cargarPost ( QString idbudget )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->load ( idbudget );
     m_listadescuentos->load ( idbudget );
@@ -321,7 +321,7 @@ int PedidoClienteView::cargarPost ( QString idbudget )
 
     calculaypintatotales();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -332,7 +332,7 @@ int PedidoClienteView::cargarPost ( QString idbudget )
 **/
 int PedidoClienteView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->setColumnValue ( "idpedidocliente", dbValue ( "idpedidocliente" ) );
     m_listalineas->save();
     m_listadescuentos->setColumnValue ( "idpedidocliente", dbValue ( "idpedidocliente" ) );
@@ -346,9 +346,9 @@ int PedidoClienteView::afterSave()
 **/
 void PedidoClienteView::s_pintaTotales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -357,9 +357,9 @@ void PedidoClienteView::s_pintaTotales()
 **/
 void PedidoClienteView::on_mui_pasaraalbaran_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     generarAlbaran();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -368,9 +368,9 @@ void PedidoClienteView::on_mui_pasaraalbaran_clicked()
 **/
 void PedidoClienteView::on_m_descuentos_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -379,9 +379,9 @@ void PedidoClienteView::on_m_descuentos_editFinish ( int, int )
 **/
 void PedidoClienteView::on_subform3_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -391,8 +391,8 @@ void PedidoClienteView::on_subform3_editFinish ( int, int )
 **/
 void PedidoClienteView::on_mui_idalmacen_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->setIdAlmacen ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

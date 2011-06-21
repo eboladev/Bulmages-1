@@ -43,13 +43,13 @@ BlDockWidget *g_dock;
 **/
 int entryPoint ( BtBulmaTPV *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0, "Punto de entrada de PluginBt_Debug" );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "Punto de entrada de PluginBt_Debug" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbt_debug", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    blDebug ( ("END ",Q_FUNC_INFO), 0, "Punto de entrada de PluginBt_Debug" );
+    
     return 0;
 }
 
@@ -61,13 +61,13 @@ int BtCompany_createMainWindows_Post ( BtCompany *bges )
 {
 
     /// Creamos un widget sin area definida, para que no moleste al depurado
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     g_debug = new CambiarDebug ( bges, g_dock );
 
     QDockWidget *dockDebug = new QDockWidget("Debug", g_main);
     dockDebug->setFeatures(QDockWidget::AllDockWidgetFeatures);
     g_main->addDockWidget(Qt::NoDockWidgetArea, dockDebug);
     dockDebug->setWidget(g_debug);
-    blDebug ( ("END ",Q_FUNC_INFO), 0 );
+    
     return 0;
 }

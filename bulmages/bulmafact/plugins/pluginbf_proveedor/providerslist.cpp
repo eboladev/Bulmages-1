@@ -43,7 +43,7 @@
 ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     mui_list->setMainCompany ( comp );
 
@@ -77,7 +77,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     trataPermisos ( "proveedor" );
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,8 +86,8 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 **/
 ProveedorList::~ProveedorList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 
 }
 
@@ -98,8 +98,8 @@ ProveedorList::~ProveedorList()
 **/
 QString ProveedorList::idprovider()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_idprovider;
 }
 
@@ -109,8 +109,8 @@ QString ProveedorList::idprovider()
 **/
 QString ProveedorList::cifprovider()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_cifprovider;
 }
 
@@ -121,8 +121,8 @@ QString ProveedorList::cifprovider()
 **/
 QString ProveedorList::nomprovider()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return m_nomprovider;
 }
 
@@ -132,9 +132,9 @@ QString ProveedorList::nomprovider()
 **/
 void ProveedorList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->load ( "SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifproveedor) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomproveedor" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -143,7 +143,7 @@ void ProveedorList::presentar()
 **/
 void ProveedorList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if (selectMode()) {
 	/// El modo consulta funciona algo diferente
@@ -196,7 +196,7 @@ void ProveedorList::crear()
 	prov->deactivateDocuments();
 	prov->mui_cifproveedor->setFocus ( Qt::OtherFocusReason );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -207,7 +207,7 @@ void ProveedorList::crear()
 **/
 void ProveedorList::editar ( int row )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_idprovider = mui_list->dbValue ( QString ( "idproveedor" ), row );
     m_cifprovider = mui_list->dbValue ( QString ( "cifproveedor" ), row );
     m_nomprovider = mui_list->dbValue ( QString ( "nomproveedor" ), row );
@@ -222,7 +222,7 @@ void ProveedorList::editar ( int row )
     } else {
         emit ( selected ( m_idprovider ) );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -235,7 +235,7 @@ void ProveedorList::editar ( int row )
 **/
 void ProveedorList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         QString idprov = mui_list->dbValue ( QString ( "idproveedor" ) );
         ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
@@ -246,7 +246,7 @@ void ProveedorList::remove()
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al borrar el proveedor" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -255,9 +255,9 @@ void ProveedorList::remove()
 **/
 void ProveedorList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mui_list->printPDF ( _ ( "Listado de Proveedores" ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -275,7 +275,7 @@ void ProveedorList::on_mui_exportar_clicked()
         bulmafact2XML ( filexml, IMPORT_PROVEEDORES );
         filexml.close();
     } else {
-        blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
         blMsgError(_("Error al abrir el archivo."));
     } // end if
 }
@@ -295,7 +295,7 @@ void ProveedorList::on_mui_importar_clicked()
         filexml.close();
         presentar();
     } else {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al abrir el archivo.") );
 	blMsgError(_("Error al abrir el archivo."));
     } // end if
 }
@@ -309,10 +309,10 @@ void ProveedorList::on_mui_importar_clicked()
 **/
 void ProveedorListSubform::load()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString SQLQuery = "SELECT * FROM proveedor";
     BlSubForm::load ( SQLQuery );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -322,9 +322,9 @@ void ProveedorListSubform::load()
 **/
 void ProveedorListSubform::load ( QString a )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubForm::load ( a );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -334,7 +334,7 @@ void ProveedorListSubform::load ( QString a )
 **/
 ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "proveedor" );
     setDbFieldId ( "idproveedor" );
     addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID proveedor" ) );
@@ -356,6 +356,6 @@ ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( par
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

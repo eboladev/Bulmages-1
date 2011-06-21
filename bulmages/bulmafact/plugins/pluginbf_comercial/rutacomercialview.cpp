@@ -49,7 +49,7 @@
 RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
         :  BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -74,7 +74,7 @@ RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
     pintar();
     dialogChanges_readValues();
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,7 +86,7 @@ RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
 RutaComercialView::RutaComercialView ( QWidget *parent )
         : BfForm ( ((BfBulmaFact *) g_main)->company(), parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -111,7 +111,7 @@ RutaComercialView::RutaComercialView ( QWidget *parent )
     pintar();
     dialogChanges_readValues();
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -120,7 +120,7 @@ RutaComercialView::RutaComercialView ( QWidget *parent )
 **/
 RutaComercialView::~RutaComercialView()
 {
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

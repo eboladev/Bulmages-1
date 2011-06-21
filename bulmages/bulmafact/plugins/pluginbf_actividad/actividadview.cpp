@@ -41,7 +41,7 @@
 ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -112,28 +112,28 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         blMsgInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ActividadView::~ActividadView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 QString ActividadView::templateName ( void )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     
     return QString ( "actividad" );
 }
 
 void ActividadView::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -152,12 +152,12 @@ void ActividadView::imprimir()
     
     BfForm::imprimir();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 int ActividadView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     mui_alumnosList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
     mui_alumnosList->save();
@@ -168,13 +168,13 @@ int ActividadView::afterSave()
     mui_tutoresList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
     mui_tutoresList->save();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 int ActividadView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue ( "idactividad" );
     mainCompany()->runQuery ( query );
@@ -182,20 +182,20 @@ int ActividadView::beforeDelete()
     query = "DELETE FROM clienteactividad WHERE idactividad=" + dbValue ( "idactividad" );
     mainCompany()->runQuery ( query );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
 
 int ActividadView::cargarPost ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     mui_alumnosList->load ( id );
     mui_faltasAsistenciaList->load ( id );
     mui_tutoresList->load ( id );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return 0;
 }
@@ -210,7 +210,7 @@ int ActividadView::cargarPost ( QString id )
 **/
 ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
@@ -222,7 +222,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -231,11 +231,11 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 **/
 void ListAlumnosActividadView::load ( QString idactividad )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno WHERE alumnoactividad.idactividad=" + idactividad  );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -245,7 +245,7 @@ void ListAlumnosActividadView::load ( QString idactividad )
 **/
 ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "clienteactividad" );
     setDbFieldId ( "idclienteactividad" );
@@ -259,7 +259,7 @@ ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubFo
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -268,11 +268,11 @@ ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubFo
 **/
 void ListTutoresActividadView::load ( QString idactividad )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm::load ( "SELECT *, ( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ', ' || COALESCE(nomcliente,'')) AS nombretutor1 FROM clienteactividad LEFT JOIN cliente ON clienteactividad.idcliente = cliente.idcliente WHERE clienteactividad.idactividad=" + idactividad  );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -286,7 +286,7 @@ void ListTutoresActividadView::load ( QString idactividad )
 **/
 ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setDbTableName ( "faltaasistenciaalumnoactividad" );
     setDbFieldId ( "idfaltaasistenciaalumnoactividad" );
@@ -299,7 +299,7 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ///
@@ -308,9 +308,9 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
 **/
 void ListFaltasAsistenciaActividadView::load ( QString idactividad )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlSubForm::load ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM faltaasistenciaalumnoactividad LEFT JOIN alumno ON faltaasistenciaalumnoactividad.idalumno = alumno.idalumno WHERE faltaasistenciaalumnoactividad.idactividad=" + idactividad  );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

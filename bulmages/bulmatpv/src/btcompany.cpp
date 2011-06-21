@@ -41,13 +41,13 @@
 **/
 BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 {
-    blDebug ( "BtCompany::BtCompany", 0 );
+    BlDebug::blDebug ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;
 
     m_decimalesCantidad = 2;
     m_decimalesPrecio = 2;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// El destructor de la clase BtCompany borra toda la memoria almacenada.
@@ -55,7 +55,7 @@ BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 **/
 BtCompany::~BtCompany()
 {
-    blDebug ( "BtCompany::~BtCompany", 0 );
+    BlDebug::blDebug ( "BtCompany::~BtCompany", 0 );
 
 /// Pruebas de exportacion a XML
 /// ======================================
@@ -77,7 +77,7 @@ BtCompany::~BtCompany()
     /// Guardamos la configuracion.
     guardaConf();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 int BtCompany::decimalesCantidad() {
@@ -106,7 +106,7 @@ void BtCompany::setDecimalesPrecio(int numd) {
 **/
 void BtCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    blDebug ( "BtCompany::createMainWindows", 0 );
+    BlDebug::blDebug ( "BtCompany::createMainWindows", 0 );
 
     /// Vamos a cargar los datos de precision y decimales.
     QString query = "SELECT  pg_attribute.atttypmod / 65536 AS decimal, pg_attribute.atttypmod - pg_attribute.atttypmod / 65536 * 65536 - 4 AS precision  FROM pg_attribute WHERE attname='cantlalbaran'";
@@ -128,7 +128,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     m_ticketActual = newBtTicket();
     
     if ( !m_ticketActual )
-        blDebug ( "error en el sistema, reservando memoria.", 0 );
+        BlDebug::blDebug ( "error en el sistema, reservando memoria.", 0 );
 
     setTicketActual(m_ticketActual);
     listaTickets()->append(m_ticketActual);
@@ -138,7 +138,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     if (file.exists()) {
         if ( !file.open ( QIODevice::ReadOnly ) ) {
-	    blDebug ( ("END ", Q_FUNC_INFO), 0, _("Error. El fichero no se puede abrir") );
+	    
             return;
         } // end if
         QString result (file.readAll());
@@ -161,12 +161,12 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     compruebaUltimaZ();
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void BtCompany::z()
 {
-    blDebug( "BtCompany::z", 0 );
+    BlDebug::blDebug( "BtCompany::z", 0 );
 
     /// Antes de hacer la Z. Se comprueba que no exista ningun ticket abierto pendiente de ser procesado.
     BtTicket *ticket = NULL;
@@ -249,7 +249,7 @@ void BtCompany::z()
 			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
 			system ( comando.toAscii().data() );
 		} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-			blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+			BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
 		} else {
 			blRawPrint("informe_Z.txt");
 		} // end if 
@@ -259,12 +259,12 @@ void BtCompany::z()
     } // end while
 
 
-    blDebug( "END BtCompany::z", 0 );
+    BlDebug::blDebug( "END BtCompany::z", 0 );
 }
 
 void BtCompany::x()
 {
-    blDebug( "BtCompany::x", 0 );
+    BlDebug::blDebug( "BtCompany::x", 0 );
 
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
         return;
@@ -275,17 +275,17 @@ void BtCompany::x()
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+        BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
 		blRawPrint("informe_X.txt");
     } // end if    
 
-    blDebug( "END BtCompany::x", 0 );
+    BlDebug::blDebug( "END BtCompany::x", 0 );
 }
 
 BtTicket *BtCompany::newBtTicket()
 {
-    blDebug ( "BtCompany::newBtTicket", 0 );
+    BlDebug::blDebug ( "BtCompany::newBtTicket", 0 );
     
     /// Lanzamos los plugins necesarios.
     BtTicket *bud;
@@ -296,14 +296,14 @@ BtTicket *BtCompany::newBtTicket()
     bud = new BtTicket ( this, NULL );
     bud->setDbValue("nomticket", bud->nomTicketDefecto());
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return bud;
 }
 
 void BtCompany::cobrar(bool imprimir)
 {
-    blDebug ( "BtCompany::cobrar", 0 );
+    BlDebug::blDebug ( "BtCompany::cobrar", 0 );
 
     QString idtrabajador = m_ticketActual->dbValue ( "idtrabajador" );
 
@@ -315,7 +315,7 @@ void BtCompany::cobrar(bool imprimir)
     if ( m_ticketActual->dbValue ( "idalbaran" ) != "" ) {
 
         if ( m_ticketActual->save() == -1) {
-            blDebug ( "Error en la llamada a save()", 0 );
+            BlDebug::blDebug ( "Error en la llamada a save()", 0 );
             return;
         }// end if
 
@@ -328,7 +328,7 @@ void BtCompany::cobrar(bool imprimir)
     } else {
     
         if ( m_ticketActual->save() == -1) {
-            blDebug ( "Error en la llamada a save()", 0 );
+            BlDebug::blDebug ( "Error en la llamada a save()", 0 );
             return;
         }// end if
     
@@ -373,30 +373,30 @@ void BtCompany::cobrar(bool imprimir)
 
     g_plugins->lanza ( "BtCompany_cobrar_Post", this );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 BtTicket *BtCompany::ticketActual()
 {
-    blDebug ( "BtCompany::ticketActual", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtCompany::ticketActual", 0 );
+    
     return m_ticketActual;
 }
 
 QList<BtTicket *> *BtCompany::listaTickets()
 {
-    blDebug ( "BtCompany::listaTickets", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "BtCompany::listaTickets", 0 );
+    
     return & m_listaTickets;
 }
 
 void BtCompany::setTicketActual ( BtTicket *tick )
 {
-    blDebug ( "BtCompany::setTicketActual", 0 );
+    BlDebug::blDebug ( "BtCompany::setTicketActual", 0 );
     g_plugins->lanza ( "BtCompany_setTicketActual", this );
     m_ticketActual = tick;
     g_plugins->lanza ( "BtCompany_setTicketActual_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
@@ -404,7 +404,7 @@ void BtCompany::setTicketActual ( BtTicket *tick )
 **/
 void BtCompany::guardaConf()
 {
-    blDebug ( "Company::guardaConf", 0 );
+    BlDebug::blDebug ( "Company::guardaConf", 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -420,7 +420,7 @@ void BtCompany::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
@@ -429,7 +429,7 @@ void BtCompany::guardaConf()
 **/
 void BtCompany::cargaConf()
 {
-    blDebug ( "BtCompany::cargaConf", 0 );
+    BlDebug::blDebug ( "BtCompany::cargaConf", 0 );
     
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
@@ -465,12 +465,12 @@ void BtCompany::cargaConf()
     /// Cogemos el ancho del indexador
     m_bulmaTPV->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void BtCompany::compruebaUltimaZ()
 {
-    blDebug ( "BtCompany::compruebaUltimaZ", 0 );
+    BlDebug::blDebug ( "BtCompany::compruebaUltimaZ", 0 );
         
     // Obtenemos numero de Zs hasta el momento (para saber si es superior a 0. Si no, estamos en
     // el caso de que es la primera Z)
@@ -531,12 +531,12 @@ void BtCompany::compruebaUltimaZ()
     
     delete curNumzetas;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /// Hace la exportacion del campo a XML
 QString BtCompany::exportXML() {
-    blDebug ( "BtCompany::exportXML", 0 );
+    BlDebug::blDebug ( "BtCompany::exportXML", 0 );
     QString val;
     int error;
     BlDbField *campo;
@@ -552,19 +552,19 @@ QString BtCompany::exportXML() {
     val += "</BTCOMPANY>\n";
 
     return val;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 /// Sincroniza la lista de tickets con los guardados en el xml pasado.
 /// Creando los que no estan y modificando los que estan.
 void BtCompany::syncXML(const QString &textxml) {
-    blDebug ( "BtCompany::syncXML", 0 );
+    BlDebug::blDebug ( "BtCompany::syncXML", 0 );
 
 
     QDomDocument doc ( "mydocument" );
     if ( !doc.setContent ( textxml ) ) {
-	blDebug ( ("END ", Q_FUNC_INFO), 0, _("XML no valido") );
+	
         return;
     } // end if
 
@@ -632,7 +632,7 @@ void BtCompany::syncXML(const QString &textxml) {
 			x++;
 		} // end if
 	} // end while
-    blDebug ( "BtCompany::syncXML", 0 );
+    BlDebug::blDebug ( "BtCompany::syncXML", 0 );
 }
 
 

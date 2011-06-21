@@ -31,8 +31,8 @@
 **/
 PluginBf_CompraVenta::PluginBf_CompraVenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -41,8 +41,8 @@ PluginBf_CompraVenta::PluginBf_CompraVenta()
 **/
 PluginBf_CompraVenta::~PluginBf_CompraVenta()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -51,13 +51,13 @@ PluginBf_CompraVenta::~PluginBf_CompraVenta()
 **/
 void PluginBf_CompraVenta::elslot()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -67,7 +67,7 @@ void PluginBf_CompraVenta::elslot()
 **/
 void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -82,7 +82,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( planCuentas );
     bges->Listados->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -93,7 +93,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

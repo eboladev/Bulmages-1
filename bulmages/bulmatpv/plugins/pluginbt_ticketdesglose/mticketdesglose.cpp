@@ -17,23 +17,23 @@ typedef QMap<QString, BlFixed> base;
 
 MTicketDesglose::MTicketDesglose ( BtCompany *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
 {
-    blDebug ( "MTicketDesglose::MTicketDesglose", 0 );
+    BlDebug::blDebug ( "MTicketDesglose::MTicketDesglose", 0 );
 //    emp->pWorkspace() ->addSubWindow ( this );
 //    setWindowTitle ( "Ticket" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 MTicketDesglose::~MTicketDesglose()
 {
-    blDebug ( "MTicketDesglose::~MTicketDesglose", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MTicketDesglose::~MTicketDesglose", 0 );
+    
 }
 
 
 void MTicketDesglose::pintar()
 {
-    blDebug ( "MTicketDesglose::pintar", 0 );
+    BlDebug::blDebug ( "MTicketDesglose::pintar", 0 );
     BtTicket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -177,6 +177,6 @@ void MTicketDesglose::pintar()
 // ======================================
     /// Pintamos el HTML en el textBrowser
     setText ( html1 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

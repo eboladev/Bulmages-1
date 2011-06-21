@@ -38,7 +38,7 @@ BfBulmaFact *g_pluginbf_bulmacont;
 **/
 int entryPoint ( BfBulmaFact *bf )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

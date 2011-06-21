@@ -61,7 +61,7 @@
 AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -119,7 +119,7 @@ AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -132,8 +132,8 @@ AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
 **/
 AlbaranClienteView::~AlbaranClienteView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -142,11 +142,11 @@ AlbaranClienteView::~AlbaranClienteView()
 **/
 void AlbaranClienteView::inicializar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->inicializar();
     m_descuentos->inicializar();
     dialogChanges_readValues();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -162,14 +162,14 @@ void AlbaranClienteView::inicializar()
 **/
 void AlbaranClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_totalBases->setText ( base.toQString() );
     m_totalTaxes->setText ( iva.toQString() );
     m_totalalbaran->setText ( total.toQString() );
     m_totalDiscounts->setText ( desc.toQString() );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -184,7 +184,7 @@ void AlbaranClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total
 **/
 void AlbaranClienteView::on_mui_verpedidocliente_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     PedidoClienteView *bud = NULL;
     BlDbRecordSet *cur = NULL;
@@ -230,7 +230,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             } // end while
         } else {
             blMsgInfo ( _ ( "No hay pedidos con la misma referencia." ), this );
-	    blDebug ( Q_FUNC_INFO, 0, _("No hay pedidos con esta referencia.") );
+	    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("No hay pedidos con esta referencia.") );
         } // end if
 
         delete cur;
@@ -241,7 +241,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
         if ( bud ) delete bud;
     } // end try
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -256,7 +256,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
 **/
 void AlbaranClienteView::generarFactura()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranClienteView_generarFactura", this );
@@ -369,7 +369,7 @@ void AlbaranClienteView::generarFactura()
             if ( bud ) delete bud;
         } // end try
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -381,7 +381,7 @@ void AlbaranClienteView::generarFactura()
 void AlbaranClienteView::agregarFactura()
 {
     /// Pedimos la factura a la que agregar.
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /*
         QDialog *diag = new QDialog ( 0 );
         diag->setWindowTitle ( _( "Seleccione la factura a la que agregar el albaran." ) );
@@ -437,7 +437,7 @@ void AlbaranClienteView::agregarFactura()
         bud->show();
         mui_procesadoalbaran->setChecked ( TRUE );
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -448,10 +448,10 @@ void AlbaranClienteView::agregarFactura()
 **/
 void AlbaranClienteView::on_mui_idcliente_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform2->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -464,9 +464,9 @@ void AlbaranClienteView::on_mui_idcliente_valueChanged ( QString id )
 **/
 void AlbaranClienteView::s_pintaTotales()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -475,9 +475,9 @@ void AlbaranClienteView::s_pintaTotales()
 **/
 void AlbaranClienteView::on_mui_facturar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     generarFactura();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -486,9 +486,9 @@ void AlbaranClienteView::on_mui_facturar_clicked()
 **/
 void AlbaranClienteView::on_mui_agregarafactura_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     agregarFactura();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -497,9 +497,9 @@ void AlbaranClienteView::on_mui_agregarafactura_clicked()
 **/
 void AlbaranClienteView::on_m_descuentos_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -508,9 +508,9 @@ void AlbaranClienteView::on_m_descuentos_editFinish ( int, int )
 **/
 void AlbaranClienteView::on_subform2_editFinish ( int, int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -528,10 +528,10 @@ void AlbaranClienteView::on_subform2_editFinish ( int, int )
 **/
 int AlbaranClienteView::beforeDelete()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->remove();
     m_listadescuentos->remove();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -548,7 +548,7 @@ int AlbaranClienteView::beforeDelete()
 **/
 int AlbaranClienteView::cargarPost ( QString idalbaran )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->load ( idalbaran );
     m_listadescuentos->load ( idalbaran );
@@ -557,7 +557,7 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
     g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
 
     calculaypintatotales();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -576,14 +576,14 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
 **/
 int AlbaranClienteView::afterSave()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     m_listalineas->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
     m_listalineas->save();
     m_listadescuentos->setColumnValue ( "idalbaran", dbValue ( "idalbaran" ) );
     m_listadescuentos->save();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -594,8 +594,8 @@ int AlbaranClienteView::afterSave()
 **/
 void AlbaranClienteView::on_mui_idalmacen_valueChanged ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_listalineas->setIdAlmacen ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

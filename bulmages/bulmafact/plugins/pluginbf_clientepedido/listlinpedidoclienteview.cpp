@@ -34,7 +34,7 @@
 **/
 ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setDbTableName ( "lpedidocliente" );
     setDbFieldId ( "numlpedidocliente" );
     /// Disparamos los plugins.
@@ -64,7 +64,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
 
     /// Lanzamos los plugins
     g_plugins->lanza ( "ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -74,10 +74,10 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
 **/
 void ListLinPedidoClienteView::load ( QString idpedidocliente )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mdb_idpedidocliente = idpedidocliente;
     BlSubForm::load ( "SELECT *, (cantlpedidocliente * pvplpedidocliente)::NUMERIC(12,2) AS totallpedidocliente FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

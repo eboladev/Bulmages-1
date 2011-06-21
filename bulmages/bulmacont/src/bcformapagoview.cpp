@@ -31,7 +31,7 @@
 BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     setTitleName ( _ ( "Forma de Pago" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
@@ -47,7 +47,7 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
     dialogChanges_readValues();
     emp->insertWindow ( windowTitle(), this );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -57,13 +57,13 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
 **/
 BcFormaPagoView::~BcFormaPagoView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     on_mui_guardar_clicked();
     if ( m_curfpago != NULL ) {
         delete m_curfpago;
     } /// end if
     removeWindow();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -73,9 +73,9 @@ BcFormaPagoView::~BcFormaPagoView()
 **/
 void BcFormaPagoView::on_mui_comboFPago_currentIndexChanged ( int i )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     cambiacombo ( i );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,7 +86,7 @@ void BcFormaPagoView::on_mui_comboFPago_currentIndexChanged ( int i )
 **/
 void BcFormaPagoView::pintar ( QString idfpago )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     int posicion = 0;
     /// Vamos a inicializar el combo de los tipos de IVA.
     if ( m_curfpago != NULL )
@@ -127,7 +127,7 @@ void BcFormaPagoView::pintar ( QString idfpago )
 
         mostrarplantilla ( posicion );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -139,7 +139,7 @@ void BcFormaPagoView::pintar ( QString idfpago )
 **/
 void BcFormaPagoView::mostrarplantilla ( int pos )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -162,7 +162,7 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_readValues();
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -171,9 +171,9 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
 **/
 void BcFormaPagoView::cambiacombo ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     mostrarplantilla();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -184,13 +184,13 @@ void BcFormaPagoView::cambiacombo ( int )
 **/
 int BcFormaPagoView::save()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     QString idfpago = m_curfpago->value( "idfpago", m_posactual );
     QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->value( "idfpago", m_posactual );
     mainCompany() ->runQuery ( query );
     dialogChanges_readValues();
     pintar ( m_curfpago->value( "idfpago", m_posactual ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -201,7 +201,7 @@ int BcFormaPagoView::save()
 **/
 void BcFormaPagoView::on_mui_crear_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
@@ -222,7 +222,7 @@ void BcFormaPagoView::on_mui_crear_clicked()
         mainCompany() ->rollback();
         return;
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -233,7 +233,7 @@ void BcFormaPagoView::on_mui_crear_clicked()
 **/
 void BcFormaPagoView::on_mui_borrar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( mui_comboFPago->currentIndex() == -1 ) {
         blMsgInfo ( _ ( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
         return;
@@ -251,7 +251,7 @@ void BcFormaPagoView::on_mui_borrar_clicked()
         } // end switch
     } // end if
     return;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

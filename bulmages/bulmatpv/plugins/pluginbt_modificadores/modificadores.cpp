@@ -10,7 +10,7 @@
 
 Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    blDebug("Modificadores::Modificadores");
+    BlDebug::blDebug("Modificadores::Modificadores");
     
     bool hayModificadores = FALSE;
     
@@ -46,7 +46,7 @@ Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog (
     } else {
 	mui_tab->setCurrentWidget(tab_predefinidos);
     } // end if
-    blDebug("END Modificadores::Modificadores");
+    BlDebug::blDebug("END Modificadores::Modificadores");
 
     mui_texto->ensureCursorVisible();
     mui_texto->setFocus(Qt::MouseFocusReason);
@@ -61,7 +61,7 @@ Modificadores::~Modificadores()
 
 void Modificadores::modificadorClicked()
 {
-    blDebug("Modificadores::trabajadorClicked");
+    BlDebug::blDebug("Modificadores::trabajadorClicked");
 
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
     BtTicket *ticket = NULL;
@@ -92,7 +92,7 @@ void Modificadores::modificadorClicked()
 
     done ( 0 );
 
-    blDebug("END Modificadores::trabajadorClicked");
+    BlDebug::blDebug("END Modificadores::trabajadorClicked");
 
 }
 

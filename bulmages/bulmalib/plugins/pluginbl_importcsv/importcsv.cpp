@@ -39,7 +39,7 @@
 ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
         : BlWidget ( comp, parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -49,17 +49,17 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ImportCSV::~ImportCSV()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ImportCSV::on_mui_buscarArchivo_clicked()
@@ -73,7 +73,7 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
 */
 void ImportCSV::on_mui_aceptar_clicked()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     QFile file ( mui_archivo->text() );
     if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
@@ -117,7 +117,7 @@ void ImportCSV::on_mui_aceptar_clicked()
     } // end try
     file.close();
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 

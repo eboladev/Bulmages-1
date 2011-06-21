@@ -31,11 +31,11 @@
 BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
         : QComboBox ( parent ), BlMainCompanyPointer()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     m_null = TRUE;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -44,10 +44,10 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
 **/
 BlComboBoxDelegate::~BlComboBoxDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -61,7 +61,7 @@ BlComboBoxDelegate::~BlComboBoxDelegate()
 **/
 void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
@@ -109,7 +109,7 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
     } // end while
 
     setCurrentIndex ( i1 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -119,9 +119,9 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 **/
 void BlComboBoxDelegate::setFieldValue ( QString id )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setId ( id );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -131,7 +131,7 @@ void BlComboBoxDelegate::setFieldValue ( QString id )
 **/
 QString BlComboBoxDelegate::id()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if ( currentIndex() >= 0 ) {
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
@@ -149,7 +149,7 @@ QString BlComboBoxDelegate::id()
         } // end if
 
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return "";
 }
 
@@ -160,7 +160,7 @@ QString BlComboBoxDelegate::id()
 **/
 QString BlComboBoxDelegate::id(QString value)
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_comboRecordSet->firstRecord();
     while (!m_comboRecordSet->eof()) {
       
@@ -176,14 +176,14 @@ QString BlComboBoxDelegate::id(QString value)
         } // end while      
       
        if (cad == value) {
-          blDebug ( ("END ", Q_FUNC_INFO), 0, QString(_("Valor: '%1'")).arg(value) );
+          
 	  return m_comboRecordSet->value( m_fieldId );
        } // end if
        m_comboRecordSet->nextRecord();
     } // end while
     
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return "";
 }
 
@@ -193,8 +193,8 @@ QString BlComboBoxDelegate::id(QString value)
 **/
 QString BlComboBoxDelegate::fieldValue()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     return id();
 }
 

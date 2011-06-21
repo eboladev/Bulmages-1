@@ -37,7 +37,7 @@
 
 ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    blDebug ( "ClientSync::ClientSync", 0 );
+    BlDebug::blDebug ( "ClientSync::ClientSync", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addSubWindow ( this );
@@ -55,19 +55,19 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     connect (m_socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
 
     g_plugins->lanza ( "ClientSync_ClientSync_Post", this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 ClientSync::~ClientSync()
 {
-    blDebug ( "ClientSync::~ClientSync", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "ClientSync::~ClientSync", 0 );
+    
 }
 
 
 
 void ClientSync::readyRead() {
-    blDebug ( "ClientSync::readyRead", 0 );
+    BlDebug::blDebug ( "ClientSync::readyRead", 0 );
 
     QTcpSocket *socket = (QTcpSocket *) sender();
     static QByteArray array="";
@@ -83,21 +83,21 @@ void ClientSync::readyRead() {
 	array = "";
     }// end while
     mui_plainText->appendPlainText(mensaje);    
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ClientSync::readChannelFinished() {
-    blDebug ( "ClientSync::readyRead", 0 );
+    BlDebug::blDebug ( "ClientSync::readyRead", 0 );
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
     blMsgInfo("Error de comunicacion con el servidor");
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 void ClientSync::send(const QString & texto) {
-    blDebug ( "ClientSync::send", 0 );
+    BlDebug::blDebug ( "ClientSync::send", 0 );
     m_socket->write(texto.toLatin1());
     mui_plainText->appendPlainText("Enviando mensaje a:" + m_socket->peerAddress().toString() + "\n" );  
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }

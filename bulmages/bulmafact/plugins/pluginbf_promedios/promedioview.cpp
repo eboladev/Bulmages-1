@@ -34,11 +34,11 @@
 PromedioView::PromedioView ( BfCompany *comp, QWidget *parent )
         : QWidget ( parent ) , BlDialogChanges ( this ), BlDbRecord ( comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     m_companyact = comp;
     setupUi ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -47,9 +47,9 @@ PromedioView::PromedioView ( BfCompany *comp, QWidget *parent )
 **/
 PromedioView::~PromedioView()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     m_companyact->removeWindow ( this );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -64,7 +64,7 @@ PromedioView::~PromedioView()
 **/
 int PromedioView::load ( QString idarticulo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlDbRecordSet *cur = m_companyact->loadQuery ( "SELECT sum(pvplalbaranp*cantlalbaranp)::NUMERIC(12,2) AS tot, sum(cantlalbaranp) as und, max(pvplalbaranp) AS mayor, min(pvplalbaranp) AS menor, avg(pvplalbaranp)::NUMERIC(12,2) AS media, max(cantlalbaranp) as undmayorcompras, min(cantlalbaranp) AS undmenorcompras, avg(cantlalbaranp)::NUMERIC(12,2) AS undavgcompras  FROM lalbaranp WHERE idarticulo=" + idarticulo );
     if ( !cur->eof() ) {
@@ -93,7 +93,7 @@ int PromedioView::load ( QString idarticulo )
     } // end if
     delete cur1;
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

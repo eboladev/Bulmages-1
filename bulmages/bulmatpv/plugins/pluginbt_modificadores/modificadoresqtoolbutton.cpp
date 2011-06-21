@@ -46,10 +46,10 @@
 **/
 ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "ModificadoresQToolButton::ModificadoresQToolButton", 0 );
+    BlDebug::blDebug ( "ModificadoresQToolButton::ModificadoresQToolButton", 0 );
     m_companyact = emp;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -58,8 +58,8 @@ ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *p
 **/
 ModificadoresQToolButton::~ModificadoresQToolButton()
 {
-    blDebug ( "ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
+    
 }
 
 
@@ -68,7 +68,7 @@ ModificadoresQToolButton::~ModificadoresQToolButton()
 **/
 void ModificadoresQToolButton::setBoton()
 {
-    blDebug ( "ModificadoresQToolButton::setBoton", 0 );
+    BlDebug::blDebug ( "ModificadoresQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Q19") );
@@ -76,7 +76,7 @@ void ModificadoresQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -86,7 +86,7 @@ void ModificadoresQToolButton::setBoton()
 **/
 void ModificadoresQToolButton::click()
 {
-    blDebug ( "ModificadoresQToolButton::click", 0 );
+    BlDebug::blDebug ( "ModificadoresQToolButton::click", 0 );
 
     /// Solo muestra la ventana de modificadores si se ha seleccionado una linea del ticket que se
     /// pueda modificar.
@@ -99,7 +99,7 @@ void ModificadoresQToolButton::click()
 	ticket->pintar();      
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 
@@ -116,10 +116,10 @@ void ModificadoresQToolButton::click()
 **/
 MTabletQToolButton::MTabletQToolButton ( BtCompany * emp, QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "MTabletQToolButton::MTabletQToolButton", 0 );
+    BlDebug::blDebug ( "MTabletQToolButton::MTabletQToolButton", 0 );
     m_companyact = emp;
     setBoton();
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -128,8 +128,8 @@ MTabletQToolButton::MTabletQToolButton ( BtCompany * emp, QWidget *parent ) : QT
 **/
 MTabletQToolButton::~MTabletQToolButton()
 {
-    blDebug ( "MTabletQToolButton::~MTabletQToolButton", 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BlDebug::blDebug ( "MTabletQToolButton::~MTabletQToolButton", 0 );
+    
 }
 
 
@@ -138,7 +138,7 @@ MTabletQToolButton::~MTabletQToolButton()
 **/
 void MTabletQToolButton::setBoton()
 {
-    blDebug ( "ModificadoresQToolButton::setBoton", 0 );
+    BlDebug::blDebug ( "ModificadoresQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Q19") );
@@ -146,7 +146,7 @@ void MTabletQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -156,7 +156,7 @@ void MTabletQToolButton::setBoton()
 **/
 void MTabletQToolButton::click()
 {
-    blDebug ( "ModificadoresQToolButton::click", 0 );
+    BlDebug::blDebug ( "ModificadoresQToolButton::click", 0 );
     /*
 	  BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
 	  if (g_tablet->m_vacio == TRUE) {
@@ -171,7 +171,7 @@ void MTabletQToolButton::click()
 	  } // end if
 	 ticket->pintar();
     */
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 
 }
 

@@ -44,7 +44,7 @@ BfBulmaFact *g_pluginbf_tallascolores = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0002");
@@ -91,7 +91,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionTallas") {
         ListTallasView *tallas = new ListTallasView ( g_pluginbf_tallascolores->company(), 0 );
         g_pluginbf_tallascolores->company()->m_pWorkspace->addSubWindow ( tallas );
@@ -104,7 +104,7 @@ int BlAction_triggered(BlAction *accion) {
         colores->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -117,7 +117,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -151,7 +151,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, _("Tallas y colores") );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -163,13 +163,13 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_load ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
     if ( l ) {
         QString query = "SELECT *, tc_articulo_alias.idtc_talla AS idtc_tallaa, tc_articulo_alias.idtc_color AS idtc_colora FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->dbValue ( "idarticulo" );
         l->load ( query );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -182,14 +182,14 @@ int ArticuloView_load ( ArticuloView *art )
 **/
 int ArticuloView_guardar_post ( ArticuloView *art )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
         l->save();
         return 0;
     } catch ( ... ) {
-	blDebug ( Q_FUNC_INFO, 0, _("Error al guardar.") );
+	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al guardar.") );
 	blMsgError(_("Error al guardar."));
         return 0;
     } // end try
@@ -210,8 +210,8 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 **/
 QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -220,8 +220,8 @@ QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDele
 **/
 QSubForm3BfDelegate::~QSubForm3BfDelegate()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
@@ -234,7 +234,7 @@ QSubForm3BfDelegate::~QSubForm3BfDelegate()
 **/
 QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
 
@@ -249,7 +249,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -262,7 +262,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 **/
 void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -283,7 +283,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -294,7 +294,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 **/
 void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName() == "nomtc_color" ) {
@@ -308,7 +308,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -344,7 +344,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 **/
 int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
@@ -355,7 +355,7 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -367,7 +367,7 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
 **/
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -376,7 +376,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -390,7 +390,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 **/
 int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -399,7 +399,7 @@ int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *s
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -419,7 +419,7 @@ int BfClienteAlbaranSubForm_load ( BfClienteAlbaranSubForm *subform )
 **/
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -428,7 +428,7 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

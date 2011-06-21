@@ -32,7 +32,7 @@
 **/
 BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString appVersion ) : QSplashScreen ( 0, Qt::FramelessWindowHint )
 {
-    blDebug ( "BlSplashScreen::BlSplashScreen", 0 );
+    BlDebug::blDebug ( "BlSplashScreen::BlSplashScreen", 0 );
 
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {
@@ -88,7 +88,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     colorfondobarra.setAlpha ( 100 );
     pbarra.setBrush ( QPalette::Base, colorfondobarra );
     m_barra->setPalette ( pbarra );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -97,7 +97,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
 **/
 BlSplashScreen::~BlSplashScreen()
 {
-    blDebug ( "BlSplashScreen::~BlSplashScreen", 0 );
+    BlDebug::blDebug ( "BlSplashScreen::~BlSplashScreen", 0 );
 #ifndef Q_OS_WIN32
     delete l0;
 #endif
@@ -106,7 +106,7 @@ BlSplashScreen::~BlSplashScreen()
     delete m_image0;
     delete m_brush;
     delete m_barra;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -116,7 +116,7 @@ BlSplashScreen::~BlSplashScreen()
 **/
 void BlSplashScreen::mensaje ( QString mens )
 {
-    blDebug ( "BlSplashScreen::mensaje", 0, mens );
+    BlDebug::blDebug ( "BlSplashScreen::mensaje", 0, mens );
     static int a = 0;
     static QString cadant = "";
     QString cad = "";
@@ -131,7 +131,7 @@ void BlSplashScreen::mensaje ( QString mens )
     m_label->repaint();
     repaint();
     cadant = cad;
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -141,9 +141,9 @@ void BlSplashScreen::mensaje ( QString mens )
 **/
 void BlSplashScreen::setBarraProgreso ( int progreso )
 {
-    blDebug ( "BlSplashScreen::setBarraProgreso", 0 );
+    BlDebug::blDebug ( "BlSplashScreen::setBarraProgreso", 0 );
     m_barra->setValue ( progreso );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -152,12 +152,12 @@ void BlSplashScreen::setBarraProgreso ( int progreso )
 **/
 void BlSplashScreen::barraprogreso()
 {
-    blDebug ( "BlSplashScreen::barraprogreso", 0 );
+    BlDebug::blDebug ( "BlSplashScreen::barraprogreso", 0 );
     if ( m_barra->value() < 10 ) {
         m_barra->setValue ( m_barra->value() + 1 );
     } else {
         m_barra->setValue ( 0 );
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 

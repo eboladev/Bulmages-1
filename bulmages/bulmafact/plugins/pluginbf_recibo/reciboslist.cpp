@@ -41,7 +41,7 @@
 RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setupUi ( this );
     
@@ -56,7 +56,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Inicializa todos los componentes.
@@ -66,7 +66,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     setupUi ( this );
     
@@ -106,7 +106,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     /// Llamamos a los scripts
     blScript(this);
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -114,14 +114,14 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 RecibosList::~RecibosList()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 
 
 void RecibosList::iniciaForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "RecibosList_iniciaForm", this );
@@ -133,7 +133,7 @@ void RecibosList::iniciaForm()
     mui_procesada->insertItem ( 2, _ ( "Recibos no pagados" ) );
     mui_procesada->setCurrentIndex ( 0 );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -143,14 +143,14 @@ void RecibosList::iniciaForm()
 */
 void RecibosList::presentar()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     if ( mainCompany() != NULL ) {
 	QString query = "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() ;
         mui_list->load ( query );
     } // end if
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -158,7 +158,7 @@ void RecibosList::presentar()
 */
 QString RecibosList::generaFiltro()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     QString filtro = "";
     
@@ -188,7 +188,7 @@ QString RecibosList::generaFiltro()
 	QString nombreactividad = mui_idactividad->fieldValue("nombreactividad");
 	filtro += " AND idrecibo IN (SELECT idrecibo FROM lrecibo WHERE conceptolrecibo LIKE '%" + nombreactividad + "%')";
     } // end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     
     return ( filtro );
 }
@@ -198,25 +198,25 @@ QString RecibosList::generaFiltro()
 */
 void RecibosList::crear()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     ReciboView *bud = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void RecibosList::imprimir()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     mui_list->printPDF ( _ ( "Recibos" ) );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -227,7 +227,7 @@ void RecibosList::imprimir()
 */
 void RecibosList::remove()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     int a = mui_list->currentRow();
     if ( a < 0 ) {
@@ -249,7 +249,7 @@ void RecibosList::remove()
         blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** SLOT que responde al doble click en el subformulario.
@@ -258,7 +258,7 @@ void RecibosList::remove()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void RecibosList::editar ( int )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
@@ -277,7 +277,7 @@ void RecibosList::editar ( int )
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
@@ -286,7 +286,7 @@ void RecibosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void RecibosList::submenu ( const QPoint & )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     int a = mui_list->currentRow();
     if ( a < 0 )
@@ -305,27 +305,27 @@ void RecibosList::submenu ( const QPoint & )
         
     delete popup;
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
 void RecibosList::setMainCompany ( BfCompany *comp )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 /** Devuelve el identificador del cobro seleccionado
 **/
 QString RecibosList::idrecibo()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
     
     return mdb_idrecibo;
 }
@@ -339,7 +339,7 @@ QString RecibosList::idrecibo()
 */
 RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "RecibosListSubForm_RecibosListSubForm", this );
@@ -361,13 +361,13 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
 }
 
 
 RecibosListSubForm::~RecibosListSubForm()
 {
-    blDebug ( Q_FUNC_INFO, 0 );
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    BL_FUNC_DEBUG
+    
 }
 

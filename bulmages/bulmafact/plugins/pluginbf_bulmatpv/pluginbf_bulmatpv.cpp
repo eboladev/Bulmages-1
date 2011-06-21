@@ -44,7 +44,7 @@ BfBulmaFact *g_pluginbf_bulmatpv = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     g_pluginbf_bulmatpv = bges;
     
@@ -76,17 +76,17 @@ int entryPoint ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accionA );
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionCuadresCaja") {
         ZList *vehiculoview = new ZList ( g_pluginbf_bulmatpv->company() );
         g_pluginbf_bulmatpv->company()->m_pWorkspace->addSubWindow ( vehiculoview );
         vehiculoview->show();
     } //end if
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
@@ -97,7 +97,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     trab->addDbField ( "visibletpvarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Visible en TPV" ) );
     trab->addDbField ( "etiquetavisibletpvarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Etiqueta visible en TPV" ) );
@@ -161,7 +161,7 @@ int FamiliasView_Guardar_Post ( FamiliasView *famv )
 
 int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     BlDbRecordSet *rec;
     BlDbRecordSet *rec2;
@@ -205,7 +205,6 @@ int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
       famv->mainCompany()->commit();
       
     } // end if
-    blDebug("END pluginbf_bulmatpv::FamiliasView_currentItemChanged_Post");
     return 0;
 }
 

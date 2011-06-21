@@ -47,7 +47,7 @@ BcBulmaCont *g_pluginbc_asiento = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -116,7 +116,7 @@ int entryPoint ( BcBulmaCont *bcont )
     pPluginMenu->addAction ( accionG );
 
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 

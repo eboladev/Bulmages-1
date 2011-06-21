@@ -45,7 +45,7 @@ BcBulmaCont *g_pluginbc_diario = NULL;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( Q_FUNC_INFO, 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -66,13 +66,14 @@ int entryPoint ( BcBulmaCont *bcont )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->toolBar->addAction ( accionA );
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
 
 
 int BlAction_triggered(BlAction *accion) {
-    blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Diario") );
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Diario") );
 
     if (accion->objectName() == "mui_actionDiario") {
         if (g_diario == NULL) {
@@ -84,6 +85,6 @@ int BlAction_triggered(BlAction *accion) {
         g_diario->show();
     } // end if
 
-    blDebug ( ("END ", Q_FUNC_INFO), 0 );
+    
     return 0;
 }
