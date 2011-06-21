@@ -179,7 +179,7 @@ BlForm::~BlForm()
 **/
 void BlForm::loadSpecs()
 {
-    BlDebug::blDebug ( "BlForm::loadSpecs", 0 );
+    BL_FUNC_DEBUG
     
         /// Disparamos los plugins
     int res1 = g_plugins->lanza ( "BlForm_loadSpecs", this );

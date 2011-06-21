@@ -36,7 +36,7 @@ DockApp *g_admin;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -52,7 +52,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "PluginBt_DockApp::exitPoint", 0 );
+    BL_FUNC_DEBUG
 
     
     return 0;

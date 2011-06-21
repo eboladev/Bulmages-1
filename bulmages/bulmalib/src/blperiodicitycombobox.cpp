@@ -27,7 +27,7 @@
 **/
 QString BlPeriodicityComboBox::periodo()
 {
-    BlDebug::blDebug ( "BlPeriodicityComboBox::periodo", 0 );
+    BL_FUNC_DEBUG
     
     return m_valores[currentIndex() ];
 }
@@ -39,7 +39,7 @@ QString BlPeriodicityComboBox::periodo()
 **/
 QString BlPeriodicityComboBox::fieldValue()
 {
-    BlDebug::blDebug ( "BlPeriodicityComboBox::fieldValue", 0 );
+    BL_FUNC_DEBUG
     
     return m_valores[currentIndex() ];
 }
@@ -51,7 +51,7 @@ QString BlPeriodicityComboBox::fieldValue()
 **/
 void BlPeriodicityComboBox::s_activated ( int index )
 {
-    BlDebug::blDebug ( "Activado el combo box.", 0 );
+    BL_FUNC_DEBUG
     if ( index > 0 ) {
         emit ( valueChanged ( m_valores[currentIndex() ] ) );
     } else {
@@ -66,7 +66,7 @@ void BlPeriodicityComboBox::s_activated ( int index )
 **/
 BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( parent )
 {
-    BlDebug::blDebug ( "BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
+    BL_FUNC_DEBUG
     m_textos[0] = _ ( "Semanal" );
     m_textos[1] = _ ( "Quincenal" );
     m_textos[2] = _ ( "Mensual" );
@@ -102,7 +102,7 @@ BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( p
 **/
 BlPeriodicityComboBox::~BlPeriodicityComboBox()
 {
-    BlDebug::blDebug ( "BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -114,6 +114,7 @@ Establece cual es el periodo en el combobox y lo pone.
 **/
 void BlPeriodicityComboBox::setperiodo ( QString periodo )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlPeriodicityComboBox::setperiodo", 0, periodo );
     int i = 0;
     /// Buscamos un campo que se corresponda con el periodo.
@@ -137,7 +138,7 @@ void BlPeriodicityComboBox::setperiodo ( QString periodo )
 **/
 void BlPeriodicityComboBox::setFieldValue ( QString periodo )
 {
-    BlDebug::blDebug ( "BlPeriodicityComboBox::setFieldValue", 0 );
+    BL_FUNC_DEBUG
     setperiodo ( periodo );
     
 }

@@ -31,7 +31,7 @@
 **/
 BlWorkspace::BlWorkspace ( QWidget * )
 {
-    BlDebug::blDebug ( "BlWorkspace::BlWorkspace", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -41,7 +41,7 @@ BlWorkspace::BlWorkspace ( QWidget * )
 **/
 BlWorkspace::~BlWorkspace()
 {
-    BlDebug::blDebug ( "BlWorkspace::~BlWorkspace", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -54,7 +54,7 @@ BlWorkspace::~BlWorkspace()
 **/
 void BlWorkspace::addSubWindow ( QWidget * w )
 {
-    BlDebug::blDebug ( "BlWorkspace::addSubWindow", 0 );
+    BL_FUNC_DEBUG
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -121,7 +121,7 @@ QWidget *BlWorkspace::activeWindow () const
 **/
 void BlWorkspace::addWindow ( QWidget * w )
 {
-    BlDebug::blDebug ( "BlWorkspace::addWindow", 0 );
+    BL_FUNC_DEBUG
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -150,7 +150,7 @@ void BlWorkspace::addWindow ( QWidget * w )
 **/
 void BlWorkspace::addSubWindow ( QWidget * w )
 {
-    BlDebug::blDebug ( "BlWorkspace::addWindow", 0 );
+    BL_FUNC_DEBUG
     BlWorkspace::addWindow ( w );
     
 }

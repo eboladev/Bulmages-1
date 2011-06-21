@@ -37,7 +37,7 @@ typedef QMap<QString, BlFixed> base;
 
 MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    BlDebug::blDebug ( "MTicket::MTicket", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace() ->addSubWindow ( this );
@@ -55,14 +55,14 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 
 MTicket::~MTicket()
 {
-    BlDebug::blDebug ( "MTicket::~MTicket", 0 );
+    BL_FUNC_DEBUG
     
 }
 
 
 void MTicket::pintar()
 {
-    BlDebug::blDebug ( "MTicket::pintar", 0 );
+    BL_FUNC_DEBUG
 
     if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
         
@@ -156,7 +156,7 @@ void MTicket::pintar()
 
 void MTicket::on_mui_subir_clicked()
 {
-    BlDebug::blDebug ( "MTicket::on_mui_subir_clicked", 0 );
+    BL_FUNC_DEBUG
 
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
@@ -167,7 +167,7 @@ void MTicket::on_mui_subir_clicked()
 
 void MTicket::on_mui_bajar_clicked()
 {
-     BlDebug::blDebug ( "MTicket::on_mui_bajar_clicked", 0 );
+     BL_FUNC_DEBUG
 
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
@@ -178,7 +178,7 @@ void MTicket::on_mui_bajar_clicked()
 
 void MTicket::on_mui_borrar_clicked()
 {
-     BlDebug::blDebug ( "MTicket::on_mui_borrar_clicked", 0 );
+    BL_FUNC_DEBUG
 
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
@@ -191,7 +191,7 @@ void MTicket::on_mui_borrar_clicked()
 
 void MTicket::on_mui_imprimir_clicked()
 {
-     BlDebug::blDebug ( "MTicket::on_mui_imprimir_clicked", 0 );
+     BL_FUNC_DEBUG
 
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F6 );
@@ -202,7 +202,7 @@ void MTicket::on_mui_imprimir_clicked()
 
 void MTicket::on_mui_reimprimir_clicked()
 {
-    BlDebug::blDebug ( "MTicket::on_mui_reimprimir_clicked", 0 );
+    BL_FUNC_DEBUG
 
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
@@ -238,7 +238,7 @@ void MTicket::on_mui_reimprimir_clicked()
 
 void MTicket::on_mui_borrarticket_clicked()
 {
-    BlDebug::blDebug ( "MTicket::on_mui_borrarticket_clicked", 0 );
+    BL_FUNC_DEBUG
     
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
@@ -274,8 +274,6 @@ void MTicket::on_mui_borrarticket_clicked()
 
 void MTicket::on_mui_formatear_clicked()
 {
-    BlDebug::blDebug ( "MTicket::on_mui_formatear_clicked", 0 );
-    
-    
+    BL_FUNC_DEBUG
 }
 

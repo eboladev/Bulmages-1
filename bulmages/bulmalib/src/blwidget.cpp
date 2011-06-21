@@ -31,7 +31,7 @@
 BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
         : QWidget ( parent, f ), BlMainCompanyPointer()
 {
-    BlDebug::blDebug ( "BlWidget::BlWidget", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -45,7 +45,7 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
 BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
         : QWidget ( parent, f ), BlMainCompanyPointer ( emp )
 {
-    BlDebug::blDebug ( "BlWidget::BlWidget", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -55,7 +55,7 @@ BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
 **/
 BlWidget::~BlWidget()
 {
-    BlDebug::blDebug ( "BlWidget::~BlWidget", 0 );
+    BL_FUNC_DEBUG
     
 }
 

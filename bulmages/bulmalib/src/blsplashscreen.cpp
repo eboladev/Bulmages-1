@@ -32,7 +32,7 @@
 **/
 BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString appVersion ) : QSplashScreen ( 0, Qt::FramelessWindowHint )
 {
-    BlDebug::blDebug ( "BlSplashScreen::BlSplashScreen", 0 );
+    BL_FUNC_DEBUG
 
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {
@@ -97,7 +97,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
 **/
 BlSplashScreen::~BlSplashScreen()
 {
-    BlDebug::blDebug ( "BlSplashScreen::~BlSplashScreen", 0 );
+    BL_FUNC_DEBUG
 #ifndef Q_OS_WIN32
     delete l0;
 #endif
@@ -116,6 +116,7 @@ BlSplashScreen::~BlSplashScreen()
 **/
 void BlSplashScreen::mensaje ( QString mens )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSplashScreen::mensaje", 0, mens );
     static int a = 0;
     static QString cadant = "";
@@ -141,7 +142,7 @@ void BlSplashScreen::mensaje ( QString mens )
 **/
 void BlSplashScreen::setBarraProgreso ( int progreso )
 {
-    BlDebug::blDebug ( "BlSplashScreen::setBarraProgreso", 0 );
+    BL_FUNC_DEBUG
     m_barra->setValue ( progreso );
     
 }
@@ -152,7 +153,7 @@ void BlSplashScreen::setBarraProgreso ( int progreso )
 **/
 void BlSplashScreen::barraprogreso()
 {
-    BlDebug::blDebug ( "BlSplashScreen::barraprogreso", 0 );
+    BL_FUNC_DEBUG
     if ( m_barra->value() < 10 ) {
         m_barra->setValue ( m_barra->value() + 1 );
     } else {

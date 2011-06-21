@@ -28,7 +28,7 @@
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 {
-    BlDebug::blDebug ( "PluginBt_Alias::BtTicket_agregarLinea_Post", 0 );
+    BL_FUNC_DEBUG
     
     return 0;
 }
@@ -37,7 +37,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 
 int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "PluginBt_Alias::BtTicket_insertarArticuloCodigoNL_Post", 0 );
+    BL_FUNC_DEBUG
     BlDbRecordSet *cur = 0;
 
     QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
@@ -61,7 +61,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 {
     int valor = -1;
-    BlDebug::blDebug ( "PluginBt_Alias::BtTicket_insertarArticuloCodigo_Post", 0 );
+    BL_FUNC_DEBUG
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;

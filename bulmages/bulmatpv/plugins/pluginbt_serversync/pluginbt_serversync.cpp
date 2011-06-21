@@ -42,7 +42,7 @@ ServerSync *g_bud = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbt_serversync::entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
@@ -73,7 +73,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbt_serversync::exitPoint", 0 );
+    BL_FUNC_DEBUG
     
     delete g_doc1;
     
@@ -84,7 +84,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    BlDebug::blDebug ( "pluginbt_serversync::BtCompany_createMainWindows_Post", 0 );
+    BL_FUNC_DEBUG
     
     g_bud =  new ServerSync ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );

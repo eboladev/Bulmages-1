@@ -37,7 +37,7 @@ MyDevButton * g_plug;
 **/
 MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    BlDebug::blDebug ( "MyDevButton::MyDevButton", 0 );
+    BL_FUNC_DEBUG
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
     
@@ -49,7 +49,7 @@ MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *em
 **/
 MyDevButton::~MyDevButton()
 {
-    BlDebug::blDebug ( "MyDevButton::~MyDevButton", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -60,7 +60,7 @@ MyDevButton::~MyDevButton()
 **/
 void MyDevButton::on_click (  )
 {
-    BlDebug::blDebug ( "MyDevButton::cambia", 0 );
+    BL_FUNC_DEBUG
     QDialog *diag = new QDialog;
     Devolucion *camb = new Devolucion ( m_emp, diag );
     diag->setModal ( true );
@@ -88,7 +88,7 @@ void MyDevButton::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

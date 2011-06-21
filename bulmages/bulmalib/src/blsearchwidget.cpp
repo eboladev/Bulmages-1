@@ -123,6 +123,7 @@ void BlSearchWidget::pinta()
 **/
 void BlSearchWidget::setId ( QString val, bool cargarvalores )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSearchWidget::setId", 0, val );
     mdb_id = val;
 
@@ -165,7 +166,7 @@ void BlSearchWidget::setId ( QString val, bool cargarvalores )
 **/
 void BlSearchWidget::setFieldValue ( QString val )
 {
-    BlDebug::blDebug ( "BlSearchWidget::setFieldValue", 0 );
+    BL_FUNC_DEBUG
     setId ( val );
     
 }
@@ -176,7 +177,7 @@ void BlSearchWidget::setFieldValue ( QString val )
 **/
 void BlSearchWidget::setText ( const QString &val )
 {
-    BlDebug::blDebug ( "BlSearchWidget::setText", 0 );
+    BL_FUNC_DEBUG
     m_inputBusqueda->setText(val);
     
 }
@@ -192,6 +193,7 @@ void BlSearchWidget::setText ( const QString &val )
 **/
 void BlSearchWidget::setFieldValue ( QString campo, QString val )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSearchWidget::setcifprofesor", 0, val );
 
     QString SQLQuery("");
@@ -223,7 +225,7 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 */
 void BlSearchWidget::on_m_clearSearchWidget_clicked()
 {
-    BlDebug::blDebug ( "BlSearchWidget::on_mui_clearSearchWidget_clicked", 0 );
+    BL_FUNC_DEBUG
     setId ( "" );
     
 }
@@ -239,7 +241,7 @@ void BlSearchWidget::on_m_clearSearchWidget_clicked()
 **/
 void BlSearchWidget::on_m_buscarWidget_clicked()
 {
-    BlDebug::blDebug ( "BlSearchWidget::on_m_buscarWidget_clicked", 0 );
+    BL_FUNC_DEBUG
     /// Disparamos los plugins
     g_plugins->lanza ( "Busqueda_on_mui_buscar_clicked", this );
     
@@ -254,7 +256,7 @@ void BlSearchWidget::on_m_buscarWidget_clicked()
 **/
 void BlSearchWidget::on_m_inputBusqueda_editingFinished()
 {
-    BlDebug::blDebug ( "BlSearchWidget::on_m_inputBusqueda_editingFinished", 0 );
+    BL_FUNC_DEBUG
     pinta();
     g_plugins->lanza ( "Busqueda_on_m_inputBusqueda_editingFinished_Post", this );
     
@@ -271,7 +273,7 @@ void BlSearchWidget::on_m_inputBusqueda_editingFinished()
 **/
 void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 {
-    BlDebug::blDebug ( "BlSearchWidget::on_m_inputBusqueda_textChanged", 0 );
+    BL_FUNC_DEBUG
     
     /// Si la cadena esta vacia entonces salimos sin hacer nada
     if  (val == "") {
@@ -379,7 +381,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 **/
 QString BlSearchWidget::fieldValue ( QString campo )
 {
-    BlDebug::blDebug ( "BlSearchWidget::fieldValue", 0 );
+    BL_FUNC_DEBUG
     
     return m_valores[campo];
 }
@@ -389,7 +391,7 @@ QString BlSearchWidget::fieldValue ( QString campo )
 **/
 QString BlSearchWidget::id()
 {
-    BlDebug::blDebug ( "BlSearchWidget::id", 0 );
+    BL_FUNC_DEBUG
     
     return mdb_id;
 }
@@ -410,7 +412,7 @@ void BlSearchWidget::setFieldId ( const QString &fieldId )
 **/
 QString BlSearchWidget::fieldValue()
 {
-    BlDebug::blDebug ( "BlSearchWidget::fieldValue", 0 );
+    BL_FUNC_DEBUG
     
     return mdb_id;
 }
@@ -494,7 +496,7 @@ void BlSearchWidget::setMask(const QString & val){
 BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    BlDebug::blDebug ( "BlDbCompleterComboBox::BlDbCompleterComboBox", 0 );
+    BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setEditable ( true );
 //    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
@@ -511,7 +513,7 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
 **/
 BlDbCompleterComboBox::~BlDbCompleterComboBox()
 {
-    BlDebug::blDebug ( "BlDbCompleterComboBox::~BlDbCompleterComboBox", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -526,6 +528,7 @@ BlDbCompleterComboBox::~BlDbCompleterComboBox()
 **/
 void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbCompleterComboBox::s_editTextChanged", 0, cod );
     static bool semaforo = FALSE;
     if ( semaforo ) {
@@ -590,7 +593,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
 /// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
 QString BlDbCompleterComboBox::unicaEleccion ( void )
 {
-    BlDebug::blDebug ( "BlDbCompleterComboBox::unicaEleccion", 0 );
+    BL_FUNC_DEBUG
     int num = 0;
     QString elec = NULL;
     for ( int i = 0; ( num < 2 ) && ( i < count() ); i++ ) {
@@ -630,7 +633,7 @@ void BlDbCompleterComboBox::focusOutEvent ( QFocusEvent * event )
 
 QString BlDbCompleterComboBox::entrada()
 {
-    BlDebug::blDebug ( "BlDbCompleterComboBox::entrada", 0 );
+    BL_FUNC_DEBUG
     
     return m_entrada;
 }
@@ -641,7 +644,7 @@ QString BlDbCompleterComboBox::entrada()
 **/
 void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
 {
-    BlDebug::blDebug ( "BlDbCompleterComboBox::on_customContextMenuRequested", 0 );
+    BL_FUNC_DEBUG
     QMenu *popup = new QMenu ( this );
 
     /// Lanzamos el evento para que pueda ser capturado por terceros.

@@ -37,7 +37,7 @@ MyDevButtonTD * g_plug;
 **/
 MyDevButtonTD::MyDevButtonTD ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    BlDebug::blDebug ( "MyDevButtonTD::MyDevButtonTD", 0 );
+    BL_FUNC_DEBUG
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
     
@@ -49,8 +49,7 @@ MyDevButtonTD::MyDevButtonTD ( const QString & text, QWidget * parent, BtCompany
 **/
 MyDevButtonTD::~MyDevButtonTD()
 {
-    BlDebug::blDebug ( "MyDevButtonTD::~MyDevButtonTD", 0 );
-    
+    BL_FUNC_DEBUG
 }
 
 
@@ -60,7 +59,7 @@ MyDevButtonTD::~MyDevButtonTD()
 **/
 void MyDevButtonTD::on_click (  )
 {
-    BlDebug::blDebug ( "MyDevButtonTD::on_click", 0 );
+    BL_FUNC_DEBUG
     QDialog *diag = new QDialog;
     TicketsDevueltos *camb = new TicketsDevueltos ( m_emp, diag );
     diag->setModal ( true );
@@ -88,7 +87,7 @@ void MyDevButtonTD::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     tpv->company()->dbPatchVersionCheck("PluginBt_TicketDevuelto", "0.11.1-0001");

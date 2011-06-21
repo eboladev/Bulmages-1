@@ -62,7 +62,7 @@ void BtLabel::mousePressEvent ( QMouseEvent * e ) {
 
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    BlDebug::blDebug ( "ArtGraficosDb::ArtGraficosDb", 0 );
+    BL_FUNC_DEBUG
 
     setupUi ( this );
     setObjectName ( "ArtGraficosDb" );
@@ -88,7 +88,7 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
 
 ArtGraficosDb::~ArtGraficosDb()
 {
-    BlDebug::blDebug ( "ArtGraficosDb::~ArtGraficosDb", 0 );
+    BL_FUNC_DEBUG
 
     /// Libera la memoria de las pantallas.
     for ( int i = 0; i < m_pantallas.count(); i++ ) {
@@ -101,7 +101,7 @@ ArtGraficosDb::~ArtGraficosDb()
 
 void ArtGraficosDb::cellClicked ( int row, int column )
 {
-    BlDebug::blDebug ( "ArtGraficosDb::cellClicked", 0 );
+    BL_FUNC_DEBUG
 
     // Obtenemos el item de la celda
     BtLabel *label = ( BtLabel * ) ( (QScrollArea *) mui_stack->currentWidget())->widget();
@@ -128,7 +128,7 @@ void ArtGraficosDb::cellClicked ( int row, int column )
 
 void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 {
-    BlDebug::blDebug ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
+    BL_FUNC_DEBUG
 
 
 
@@ -145,7 +145,7 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 
 void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
-    BlDebug::blDebug ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
+    BL_FUNC_DEBUG
 
     muestraPantalla ( m_pantallaActual - 1 );
 
@@ -160,7 +160,7 @@ void ArtGraficosDb::on_mui_botonAnterior_pressed()
 
 void ArtGraficosDb::muestraPantalla ( int numPantalla )
 {
-    BlDebug::blDebug ( "ArtGraficosDb::muestraPantalla", 0 );
+    BL_FUNC_DEBUG
 
     /// Si no hay pantallas que mostrar, sale.
     if (m_numPantallas == 0) return;
@@ -186,7 +186,7 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
 
 void ArtGraficosDb::renderPantallas ()
 {
-    BlDebug::blDebug ( "ArtGraficosDb::renderPantallas", 0 );
+    BL_FUNC_DEBUG
 
     m_numPantallas = m_listfamilias.count();
 
@@ -360,7 +360,7 @@ void ArtGraficosDb::renderPantallas ()
 
 void ArtGraficosDb::ponPantallas()
 {
-    BlDebug::blDebug ( "ArtGraficosDb::ponPantallas", 0 );
+    BL_FUNC_DEBUG
     int contadorBotones = 0;
     int columnasBotones;
     int j;
@@ -484,16 +484,6 @@ void ArtGraficosDb::ponPantallas()
 
 void ArtGraficosDb::pulsadoBoton()
 {
-    BlDebug::blDebug ( "ArtGraficosDb::pulsadoBoton", 0 );
-
-
+    BL_FUNC_DEBUG
     muestraPantalla ( sender()->objectName().toInt() );
-
-/*
-    setUpdatesEnabled ( true );
-    repaint();
-    setUpdatesEnabled ( false );
-*/
-
-    
 }

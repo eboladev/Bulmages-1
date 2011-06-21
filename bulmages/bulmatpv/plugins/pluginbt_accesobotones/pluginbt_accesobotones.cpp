@@ -44,7 +44,7 @@ BlDockWidget *g_doc1;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -67,7 +67,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginabrevs::exitPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Vamos a probar con un docwindow.
     delete g_doc1;

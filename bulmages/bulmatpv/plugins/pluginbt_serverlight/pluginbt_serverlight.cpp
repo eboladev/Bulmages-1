@@ -31,7 +31,7 @@ ServerLight *g_sl = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbt_ServerLight::entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
@@ -45,7 +45,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    BlDebug::blDebug ( "pluginbt_ServerLight::BtCompany_createMainWindows_Post", 0 );
+    BL_FUNC_DEBUG
 
     g_sl = new ServerLight ( etpv );
 

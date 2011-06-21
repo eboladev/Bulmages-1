@@ -29,7 +29,7 @@
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 {
-    BlDebug::blDebug ( "PluginBt_AliasTallasYColores2::BtTicket_agregarLinea_Post", 0 );
+    BL_FUNC_DEBUG
     item->addDbField ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Talla" ) );
     item->addDbField ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Color" ) );
     
@@ -40,7 +40,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 
 int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "PluginBt_AliasTallasYColores2::BtTicket_insertarArticuloNL_Post", 0 );
+    BL_FUNC_DEBUG
     QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
     BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
@@ -55,8 +55,8 @@ int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
 
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
+    BL_FUNC_DEBUG
     int valor = -1;
-    BlDebug::blDebug ( "PluginBt_AliasTallasYColores2::BtTicket_insertarArticulo_Post", 0 );
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;

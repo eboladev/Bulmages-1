@@ -36,7 +36,7 @@ typedef QMap<QString, BlFixed> base;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtTicket_agregarLinea_Post", 0 );
+    BL_FUNC_DEBUG
     
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
@@ -50,7 +50,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
 
-    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtTicket_insertarArticulo_Post", 0 );
+    BL_FUNC_DEBUG
     
     int valor = -1;
     static int semaforo = 0;
@@ -77,7 +77,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 }
 
 int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
-    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtTicket_ponerPrecio_Post", 0 );
+    BL_FUNC_DEBUG
 	
     tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", tick->lineaActBtTicket()->dbValue("pvplalbaran"));
     
@@ -88,7 +88,7 @@ int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
 
 int BtCompany_z(BtCompany * emp)
 {
-    BlDebug::blDebug ( "PluginBt_IvaIncluido::BtCompany_z", 0 );
+    BL_FUNC_DEBUG
     
     QString queryfechas;
     
@@ -368,12 +368,8 @@ int BtCompany_z(BtCompany * emp)
 
 
 int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
-    BlDebug::blDebug ( "PluginBt_IvaIncluido::ArticuloListSubForm_ArticuloListSubForm_Post", 0 );
-    
-	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
-	
-    
-    
+    BL_FUNC_DEBUG
+    list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
     return 0;
 }
 

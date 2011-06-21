@@ -18,7 +18,7 @@ extern BlDockWidget *g_pantallas;
 
 ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    BlDebug::blDebug ( "ArtGraficos::~ArtGraficos", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setObjectName ( "ArtGraficos" );
     m_numPantallas = 0;
@@ -34,14 +34,14 @@ ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( em
 
 ArtGraficos::~ArtGraficos()
 {
-    BlDebug::blDebug ( "ArtGraficos::~ArtGraficos", 0 );
+    BL_FUNC_DEBUG
     
 }
 
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
-    BlDebug::blDebug("ArtGraficos::on_mui_list_cellClicked");
+    BL_FUNC_DEBUG
 
     QString artvarios = g_confpr->value( CONF_ARTICULOS_VARIOS );
     QString codigo = m_articulos[row][column];

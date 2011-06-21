@@ -49,7 +49,7 @@ BtCompany *g_pluginbt_pulseras_emp;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbt_pulseras::entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -65,7 +65,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbt_pulseras::exitPoint", 0 );
+    BL_FUNC_DEBUG
     
     return 0;
 }
@@ -176,7 +176,7 @@ int BtCompany_cobrar(BtCompany *emp) {
 
 
 int BtTicket_pintar(BtTicket *tick) {
-    BlDebug::blDebug ( "BtTicket_pintar", 0 );
+    BL_FUNC_DEBUG
     static int semaforo = 0;
   
     if (semaforo == 0) {
@@ -233,7 +233,7 @@ int BtTicket_borrarArticulo(BtTicket *tick) {
 
 
 int BtTicket_exportXML_Post(BtTicket *tick) {
-  BlDebug::blDebug ( "BtTicket_exportXML_Post", 0 );
+  BL_FUNC_DEBUG
   tick->m_textoXML += "\t<LISTAPULSERAS>\n";
   for (int i = 0; i < g_pulseras.size(); ++i) {
       Pulsera * pul = g_pulseras.at(i);

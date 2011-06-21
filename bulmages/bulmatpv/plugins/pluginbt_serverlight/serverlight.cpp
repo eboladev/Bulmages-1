@@ -45,7 +45,7 @@ QMap <QTcpSocket *, QByteArray> g_buffers;
 
 ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 {
-    BlDebug::blDebug ( "ServerLight::ServerLight", 0 );
+    BL_FUNC_DEBUG
 
     m_tcpServer = new QTcpServer(this);
     if (!m_tcpServer->listen(QHostAddress::Any, 11637)) {
@@ -62,21 +62,17 @@ ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 
 ServerLight::~ServerLight()
 {
-    BlDebug::blDebug ( "ServerLight::~ServerLight", 0 );
+    BL_FUNC_DEBUG
     
 }
 
 
 void ServerLight::conection()
 {
-    fprintf(stderr, "conexion\n");
-    BlDebug::blDebug ( "ServerLight::conection", 0 );
+    BL_FUNC_DEBUG
     QTcpSocket *socket = m_tcpServer->nextPendingConnection();
     QHostAddress conectadofrom = socket->peerAddress();
     m_listaSockets.append(socket);
-    
-    //QString texto = QString("Nueva Conexion: ") + conectadofrom.toString() + "\n";
-    //fprintf(stderr, texto.toAscii());
     g_buffers[socket] = "";
 
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
@@ -85,7 +81,7 @@ void ServerLight::conection()
 
 
 void ServerLight::readyRead() {
-    BlDebug::blDebug ( "ServerLight::readyRead", 0 );
+    BL_FUNC_DEBUG
     static QByteArray array = "";
     QByteArray lectura = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
@@ -133,8 +129,7 @@ void ServerLight::readyRead() {
 
 
 void ServerLight::send(const QString & texto) {
-    BlDebug::blDebug ( "ServerLight::send", 0 );
-    //fprintf(stderr, "ENVIANDO\n");
+    BL_FUNC_DEBUG
     QTcpSocket *socket;
     /// Redirigimos el mensaje a todos los clientes conectados al servidor.
     for (int i = 0; i < m_listaSockets.size(); ++i) {

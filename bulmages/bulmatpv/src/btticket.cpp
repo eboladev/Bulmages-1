@@ -51,7 +51,7 @@ typedef QMap<QString, BlFixed> base;
 
 BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
 {
-    BlDebug::blDebug ( "BtTicket::BtTicket", 0 );
+    BL_FUNC_DEBUG
     /// Inicializamos los parametros del ticket para la base de datos.
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
@@ -94,7 +94,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
 BtTicket::~BtTicket()
 {
-    BlDebug::blDebug ( "BtTicket::~BtTicket", 0 );
+    BL_FUNC_DEBUG
     g_plugins->lanza ( "Des_BtTicket_BtTicket_Post", this );
     
 }
@@ -102,26 +102,25 @@ BtTicket::~BtTicket()
 
 QString BtTicket::nomTicketDefecto()
 {
-    BlDebug::blDebug ( "BtTicket::nomTicketDefecto", 0 );
+    BL_FUNC_DEBUG
     return m_nomTicketDefecto;
     
 }
 
 
 void BtTicket::agregarLog(const QString &log) {
-    BlDebug::blDebug ( "BtTicket::agregarLog", 0 );
+    BL_FUNC_DEBUG
     if (dbValue("idalbaran") != "") {
       setDbValue("cambiospostalbaran", dbValue("cambiospostalbaran") + log + "\n");
     } else {
       setDbValue("cambiosalbaran", dbValue("cambiosalbaran") + log + "\n");
     } // end if
-    BlDebug::blDebug ( "BtTicket::agregarLog", 0 );
 }
 
 
 BlDbRecord * BtTicket::agregarLinea()
 {
-    BlDebug::blDebug ( "BtTicket::agregarLinea", 0 );
+    BL_FUNC_DEBUG
 
     /// Creamos un nuevo BlDbRecord y lo inicializamos.
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
@@ -174,7 +173,7 @@ QList<BlDbRecord *> *BtTicket::listaLineas()
 
 BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
-    BlDebug::blDebug ( "BtTicket::insertarArticulo", 0 );
+    BL_FUNC_DEBUG
 
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;
@@ -476,7 +475,7 @@ void BtTicket::ponerPrecio ( QString precio )
 
 void BtTicket::insertarArticuloCodigo ( QString codigo )
 {
-    BlDebug::blDebug ( "BtTicket::insertarArticuloCodigo", 0 );
+    BL_FUNC_DEBUG
 
     QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -553,7 +552,7 @@ int BtTicket::load ( QString id )
 **/
 int BtTicket::save()
 {
-    BlDebug::blDebug ( "BtTicket::guardar", 0 );
+    BL_FUNC_DEBUG
 
     try {
 
@@ -631,7 +630,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
 
 /// Hace la exportacion del campo a XML
 QString BtTicket::exportXML() {
-    BlDebug::blDebug ( "BtTicket::exportXML", 0 );
+    BL_FUNC_DEBUG
 
     int error;
     BlDbField *campo;
@@ -659,7 +658,7 @@ QString BtTicket::exportXML() {
 
 
 bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
-    BlDebug::blDebug ( "BtTicket::syncXML", 0 );
+    BL_FUNC_DEBUG
 
     /* Para que los plugins tambien puedan tratar sus cosas ponemos el texto XML a disposicion de todos en la variable m_textoXML */
     m_textoXML = text;
@@ -716,8 +715,6 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     } // end while
     
     g_plugins->lanza ( "BtTicket_syncXML_Post", this ); 
-
-    BlDebug::blDebug ( "BtTicket::syncXML", 0 );
     
     return 1;
 }
@@ -737,7 +734,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
 
 int BtTicket::generateRML ( void )
 {
-    BlDebug::blDebug ( "BtTicket::generateRML", 0 );
+    BL_FUNC_DEBUG
     int err = BlDbRecord::generateRML();
     
     return err;

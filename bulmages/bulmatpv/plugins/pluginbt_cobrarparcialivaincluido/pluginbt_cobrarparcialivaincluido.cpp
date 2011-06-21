@@ -38,7 +38,7 @@ PluginBt_CobrarParcialIVAIncluido *g_PluginBt_CobrarParcialIVAIncluido;
 **/
 PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 {
-    BlDebug::blDebug ( "PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -48,7 +48,7 @@ PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 **/
 PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido()
 {
-    BlDebug::blDebug ( "PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -84,7 +84,7 @@ void PluginBt_CobrarParcialIVAIncluido::cobrarParcial ()
 **/
 int entryPoint ( BtBulmaTPV *bges )
 {
-    BlDebug::blDebug ( "Estoy dentro del pluginbt_cobrarparcial", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

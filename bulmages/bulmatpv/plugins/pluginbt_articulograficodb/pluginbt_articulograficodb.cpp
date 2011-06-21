@@ -40,7 +40,7 @@ ArtGraficosDb *g_graf;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -61,12 +61,10 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    BlDebug::blDebug ( "BtCompany_createMainWindows_Post", 0 );
+    BL_FUNC_DEBUG
 
     g_graf = new ArtGraficosDb ( etpv, g_main );
     ((BtBulmaTPV *)g_main)->setCentralBtWidget ( g_graf );
-
-    BlDebug::blDebug ( "BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }

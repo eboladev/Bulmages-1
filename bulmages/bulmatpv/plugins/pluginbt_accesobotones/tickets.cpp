@@ -9,7 +9,7 @@
 
 Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    BlDebug::blDebug("Tickets::Tickets");
+    BL_FUNC_DEBUG
     setupUi ( this );
     BtCompany *emp1 = ( BtCompany * ) emp;
     BtTicket *ticket;
@@ -30,7 +30,6 @@ Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), B
             connect ( toolbutton, SIGNAL ( released() ), this, SLOT ( ticketClicked() ) );
         } // end if
     }// end for
-    BlDebug::blDebug("END Tickets::Tickets");
 }
 
 
@@ -39,7 +38,7 @@ Tickets::~Tickets()
 
 void Tickets::ticketClicked()
 {
-    BlDebug::blDebug("Tickets::ticketClicked");
+    BL_FUNC_DEBUG
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
     QPushButton *toolbutton = ( QPushButton * ) sender();
     BtTicket *ticket;
@@ -55,7 +54,6 @@ void Tickets::ticketClicked()
 	  
 	    /// Si el ticket seleccionado es el actual salimos sin hacer nada
 	    if (ticket == emp1 ->ticketActual()) {
-	      BlDebug::blDebug("END Tickets::ticketClicked");
 	      done ( 0 );
 	      return;
 	    } // end if	
@@ -67,7 +65,6 @@ void Tickets::ticketClicked()
                                  QMessageBox::Yes
                                 | QMessageBox::No,
                                 QMessageBox::No) == QMessageBox::No) {
-		    BlDebug::blDebug("END Tickets::ticketClicked");
 		    return;
 		  } // end if
 		    
@@ -83,6 +80,5 @@ void Tickets::ticketClicked()
     }// end while
 
 
-    BlDebug::blDebug("END Tickets::ticketClicked");
     done ( 0 );
 }

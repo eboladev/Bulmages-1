@@ -36,7 +36,7 @@
 
 ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    BlDebug::blDebug ( "ServerSync::ServerSync", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addSubWindow ( this );
@@ -60,14 +60,14 @@ ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
 ServerSync::~ServerSync()
 {
-    BlDebug::blDebug ( "ServerSync::~ServerSync", 0 );
+    BL_FUNC_DEBUG
     
 }
 
 
 void ServerSync::conection()
 {
-    BlDebug::blDebug ( "ServerSync::conection", 0 );
+    BL_FUNC_DEBUG
     QTcpSocket *socket = m_tcpServer->nextPendingConnection();
     QHostAddress conectadofrom = socket->peerAddress();
     m_listaSockets.append(socket);
@@ -83,7 +83,7 @@ void ServerSync::conection()
 }
 
 void ServerSync::readyRead() {
-    BlDebug::blDebug ( "ServerSync::readyRead", 0 );
+    BL_FUNC_DEBUG
     static QByteArray array = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
     array += socket->readAll();
@@ -102,7 +102,7 @@ void ServerSync::readyRead() {
 }
 
 void ServerSync::readChannelFinished() {
-    BlDebug::blDebug ( "ServerSync::readyRead", 0 );
+    BL_FUNC_DEBUG
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
@@ -111,7 +111,7 @@ void ServerSync::readChannelFinished() {
 }
 
 void ServerSync::send(const QString & texto) {
-    BlDebug::blDebug ( "ServerSync::send", 0 );
+    BL_FUNC_DEBUG
     QTcpSocket *socket;
     /// Redirigimos el mensaje a todos los clientes conectados al servidor.
     for (int i = 0; i < m_listaSockets.size(); ++i) {

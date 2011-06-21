@@ -41,7 +41,7 @@
 **/
 BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 {
-    BlDebug::blDebug ( "BtCompany::BtCompany", 0 );
+    BL_FUNC_DEBUG
     m_bulmaTPV = bges;
 
     m_decimalesCantidad = 2;
@@ -55,7 +55,7 @@ BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 **/
 BtCompany::~BtCompany()
 {
-    BlDebug::blDebug ( "BtCompany::~BtCompany", 0 );
+    BL_FUNC_DEBUG
 
 /// Pruebas de exportacion a XML
 /// ======================================
@@ -106,7 +106,7 @@ void BtCompany::setDecimalesPrecio(int numd) {
 **/
 void BtCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    BlDebug::blDebug ( "BtCompany::createMainWindows", 0 );
+    BL_FUNC_DEBUG
 
     /// Vamos a cargar los datos de precision y decimales.
     QString query = "SELECT  pg_attribute.atttypmod / 65536 AS decimal, pg_attribute.atttypmod - pg_attribute.atttypmod / 65536 * 65536 - 4 AS precision  FROM pg_attribute WHERE attname='cantlalbaran'";
@@ -166,7 +166,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
 void BtCompany::z()
 {
-    BlDebug::blDebug( "BtCompany::z", 0 );
+    BL_FUNC_DEBUG
 
     /// Antes de hacer la Z. Se comprueba que no exista ningun ticket abierto pendiente de ser procesado.
     BtTicket *ticket = NULL;
@@ -257,14 +257,11 @@ void BtCompany::z()
         curfechas->nextRecord();
     
     } // end while
-
-
-    BlDebug::blDebug( "END BtCompany::z", 0 );
 }
 
 void BtCompany::x()
 {
-    BlDebug::blDebug( "BtCompany::x", 0 );
+    BL_FUNC_DEBUG
 
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
         return;
@@ -279,13 +276,11 @@ void BtCompany::x()
     } else {
 		blRawPrint("informe_X.txt");
     } // end if    
-
-    BlDebug::blDebug( "END BtCompany::x", 0 );
 }
 
 BtTicket *BtCompany::newBtTicket()
 {
-    BlDebug::blDebug ( "BtCompany::newBtTicket", 0 );
+    BL_FUNC_DEBUG
     
     /// Lanzamos los plugins necesarios.
     BtTicket *bud;
@@ -303,7 +298,7 @@ BtTicket *BtCompany::newBtTicket()
 
 void BtCompany::cobrar(bool imprimir)
 {
-    BlDebug::blDebug ( "BtCompany::cobrar", 0 );
+    BL_FUNC_DEBUG
 
     QString idtrabajador = m_ticketActual->dbValue ( "idtrabajador" );
 
@@ -378,21 +373,21 @@ void BtCompany::cobrar(bool imprimir)
 
 BtTicket *BtCompany::ticketActual()
 {
-    BlDebug::blDebug ( "BtCompany::ticketActual", 0 );
+    BL_FUNC_DEBUG
     
     return m_ticketActual;
 }
 
 QList<BtTicket *> *BtCompany::listaTickets()
 {
-    BlDebug::blDebug ( "BtCompany::listaTickets", 0 );
+    BL_FUNC_DEBUG
     
     return & m_listaTickets;
 }
 
 void BtCompany::setTicketActual ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "BtCompany::setTicketActual", 0 );
+    BL_FUNC_DEBUG
     g_plugins->lanza ( "BtCompany_setTicketActual", this );
     m_ticketActual = tick;
     g_plugins->lanza ( "BtCompany_setTicketActual_Post", this );
@@ -404,7 +399,7 @@ void BtCompany::setTicketActual ( BtTicket *tick )
 **/
 void BtCompany::guardaConf()
 {
-    BlDebug::blDebug ( "Company::guardaConf", 0 );
+    BL_FUNC_DEBUG
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -429,7 +424,7 @@ void BtCompany::guardaConf()
 **/
 void BtCompany::cargaConf()
 {
-    BlDebug::blDebug ( "BtCompany::cargaConf", 0 );
+    BL_FUNC_DEBUG
     
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
@@ -470,7 +465,7 @@ void BtCompany::cargaConf()
 
 void BtCompany::compruebaUltimaZ()
 {
-    BlDebug::blDebug ( "BtCompany::compruebaUltimaZ", 0 );
+    BL_FUNC_DEBUG
         
     // Obtenemos numero de Zs hasta el momento (para saber si es superior a 0. Si no, estamos en
     // el caso de que es la primera Z)
@@ -536,7 +531,7 @@ void BtCompany::compruebaUltimaZ()
 
 /// Hace la exportacion del campo a XML
 QString BtCompany::exportXML() {
-    BlDebug::blDebug ( "BtCompany::exportXML", 0 );
+    BL_FUNC_DEBUG
     QString val;
     int error;
     BlDbField *campo;
@@ -559,7 +554,7 @@ QString BtCompany::exportXML() {
 /// Sincroniza la lista de tickets con los guardados en el xml pasado.
 /// Creando los que no estan y modificando los que estan.
 void BtCompany::syncXML(const QString &textxml) {
-    BlDebug::blDebug ( "BtCompany::syncXML", 0 );
+    BL_FUNC_DEBUG
 
 
     QDomDocument doc ( "mydocument" );
@@ -632,7 +627,6 @@ void BtCompany::syncXML(const QString &textxml) {
 			x++;
 		} // end if
 	} // end while
-    BlDebug::blDebug ( "BtCompany::syncXML", 0 );
 }
 
 

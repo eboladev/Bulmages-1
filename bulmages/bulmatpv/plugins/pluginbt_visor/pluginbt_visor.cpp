@@ -43,7 +43,7 @@ QFile *g_file;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -66,7 +66,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginvisor::entryPoint", 0 );
+    BL_FUNC_DEBUG
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         g_file->close();
@@ -78,7 +78,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
+    BL_FUNC_DEBUG
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         g_file->write ( tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).leftJustified ( 4, ' ', TRUE ).toAscii());

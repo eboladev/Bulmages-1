@@ -39,7 +39,7 @@ typedef QMap<QString, BlFixed> base;
 
 MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    BlDebug::blDebug ( "MTicketIVAInc::MTicketIVAInc", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
 	
@@ -60,13 +60,13 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
 
 MTicketIVAInc::~MTicketIVAInc()
 {
-    BlDebug::blDebug ( "MTicketIVAInc::~MTicketIVAInc", 0 );
+    BL_FUNC_DEBUG
     
 }
 
 void MTicketIVAInc::pintar()
 {
-    BlDebug::blDebug ( "MTicketIVAInc::pintar", 0 );
+    BL_FUNC_DEBUG
 	
     QString query;
     BlDbRecord *item;

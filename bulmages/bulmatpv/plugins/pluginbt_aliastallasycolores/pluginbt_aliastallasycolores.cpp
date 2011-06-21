@@ -41,7 +41,7 @@ typedef QMap<QString, BlFixed> base;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick)
 {
-    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
+    BL_FUNC_DEBUG
     BlDbRecord *rec = (BlDbRecord * ) g_plugParams;
     rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Talla" ) );
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
@@ -53,7 +53,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick)
 
 int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    BL_FUNC_DEBUG
     int valor = -1;
     static int semaforo = 0;
     if ( semaforo == 0 ) {
@@ -80,7 +80,7 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 
 int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    BL_FUNC_DEBUG
     int valor = -1;
     static int semaforo = 0;
     if ( semaforo == 0 ) {
@@ -109,7 +109,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 
 int MTicket_pintar ( MTicket *mtick )
 {
-    BlDebug::blDebug ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
+    BL_FUNC_DEBUG
     
     QString buscar;
 
@@ -282,7 +282,7 @@ int MTicket_pintar ( MTicket *mtick )
 
 int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 {
-  BlDebug::blDebug ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
+  BL_FUNC_DEBUG
   
   QString query;
   QString buscar;
@@ -758,7 +758,7 @@ int BtTicket_imprimir(BtTicket *tick)
 
 int BtTicket_imprimirIVAInc(BtTicket *tick)
 {
-    BlDebug::blDebug ( "pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
+    BL_FUNC_DEBUG
     
     struct empresastr {
         QString nombre;

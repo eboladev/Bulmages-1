@@ -50,7 +50,7 @@
 **/
 BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 {
-    BlDebug::blDebug ( "BtBulmaTPV::BtBulmaTPV", 0 );
+    BL_FUNC_DEBUG
     
     setupUi ( this );
     setUpdatesEnabled ( TRUE );
@@ -117,7 +117,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 **/
 void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 {
-    BlDebug::blDebug ( "BtBulmaTPV::createMainWindows", 0 );
+    BL_FUNC_DEBUG
     m_company->createMainWindows ( splashScr );
     
 }
@@ -128,7 +128,7 @@ void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 **/
 BtBulmaTPV::~BtBulmaTPV()
 {
-    BlDebug::blDebug ( "BtBulmaTPV::~BtBulmaTPV", 0 );
+    BL_FUNC_DEBUG
     delete m_company;
 	
 /*
@@ -148,7 +148,7 @@ BtBulmaTPV::~BtBulmaTPV()
 **/
 void BtBulmaTPV::s_ventanaCompleta()
 {
-    BlDebug::blDebug ( "BtBulmaTPV::s_ventanaCompleta", 0 );
+    BL_FUNC_DEBUG
 
     if ( isFullScreen() ) {
         showNormal();
@@ -165,7 +165,7 @@ void BtBulmaTPV::s_ventanaCompleta()
 **/
 void BtBulmaTPV::on_actionVentana_Completa_triggered()
 {
-    BlDebug::blDebug ( "BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
+    BL_FUNC_DEBUG
     s_ventanaCompleta();
     
 }
@@ -177,7 +177,7 @@ void BtBulmaTPV::on_actionVentana_Completa_triggered()
 **/
 void BtBulmaTPV::s_About()
 {
-    BlDebug::blDebug ( "BtBulmaTPV::s_About", 0 );
+    BL_FUNC_DEBUG
     
     BtAboutView about;
     about.exec();
@@ -193,7 +193,7 @@ void BtBulmaTPV::s_About()
 **/
 void BtBulmaTPV::closeEvent ( QCloseEvent * )
 {
-    BlDebug::blDebug ( "BtBulmaTPV::closeEvent", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -204,7 +204,7 @@ void BtBulmaTPV::closeEvent ( QCloseEvent * )
 **/
 BlWorkspace * BtBulmaTPV::workspace()
 {
-    BlDebug::blDebug ( "BtBulmaTPV::workspace", 0 );
+    BL_FUNC_DEBUG
     
     return pWorkspace;
 }
@@ -212,7 +212,7 @@ BlWorkspace * BtBulmaTPV::workspace()
 
 void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 {
-    BlDebug::blDebug ( "BtBulmaTPV::keyReleaseEvent", 0 );
+    BL_FUNC_DEBUG
     m_company->keyPressEvent ( e );
     
 }

@@ -50,7 +50,7 @@ int BtTicket_borrarLinea ( BtTicket *tick ) {
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtTicket_agregarLinea_Post", 0 );
+    BL_FUNC_DEBUG
     
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
@@ -275,7 +275,7 @@ int impresionCocina(BtTicket *tick) {
 
 int BtTicket_imprimir_Post(BtTicket *tick)
 {
-    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    BL_FUNC_DEBUG
     impresionCocina(tick);
     
     return 1;
@@ -283,7 +283,7 @@ int BtTicket_imprimir_Post(BtTicket *tick)
 
 int Abrevs_on_mui_aparcar_clicked( Abrevs *av)
 {
-    BlDebug::blDebug ( "PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
+    BL_FUNC_DEBUG
     impresionCocina(((BtCompany *)av->mainCompany())->ticketActual());
     
     return 0;
@@ -297,7 +297,7 @@ int ticket_aparcado_remotamente(BtTicket *tick) {
 
 
 int BtCompany_cobrar_1(BtCompany *comp) {
-    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
+    BL_FUNC_DEBUG
     impresionCocina(comp->ticketActual());
     
     return 0;

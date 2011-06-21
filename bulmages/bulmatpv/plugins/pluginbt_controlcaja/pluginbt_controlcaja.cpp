@@ -39,7 +39,7 @@ BlDockWidget *g_admin1;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -55,7 +55,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "PluginBt_ControlCaja::exitPoint", 0 );
+    BL_FUNC_DEBUG
     delete g_admin;
     
     return 0;

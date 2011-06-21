@@ -40,7 +40,7 @@ BlDockWidget *g_doc1 = NULL;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
-    BlDebug::blDebug ( "PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
+    BL_FUNC_DEBUG
 
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
@@ -68,7 +68,7 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -167,7 +167,7 @@ int MTicket_MTicket_Post (MTicket *tick) {
 /*
 int BtTicket_imprimir_Post(BtTicket *tick)
 {
-    BlDebug::blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    BL_FUNC_DEBUG
     impresionCocina(tick);
     
     return 1;
@@ -178,7 +178,7 @@ int BtTicket_imprimir_Post(BtTicket *tick)
 /*
 int BtTicket_exportXML_Post( BtTicket *tick)
 {
-    BlDebug::blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
+    BL_FUNC_DEBUG
     QString filename ("/tmp/guardado_"+tick->dbValue("nomticket")+".jpg");
     filename.remove(' ');
     
@@ -187,7 +187,7 @@ int BtTicket_exportXML_Post( BtTicket *tick)
 
 
 int BtCompany_setTicketActual(BtCompany *comp) {
-    BlDebug::blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual", 0 );
+    BL_FUNC_DEBUG
     if (comp->ticketActual()) {
     if (comp->ticketActual()->exists("nomticket")) {
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
@@ -202,7 +202,7 @@ int BtCompany_setTicketActual(BtCompany *comp) {
 }
 
 int BtCompany_setTicketActual_Post(BtCompany *comp) {
-    BlDebug::blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual_Post", 0 );
+    BL_FUNC_DEBUG
     if (comp->ticketActual()) {
       g_tablet->erasePixmap();
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
@@ -231,7 +231,7 @@ int BtCompany_cobrar_1(BtCompany *comp) {
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
 
-    BlDebug::blDebug ( "PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
+    BL_FUNC_DEBUG
     int valor = 0;
     /*
     static int semaforo = 0;

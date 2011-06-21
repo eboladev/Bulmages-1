@@ -46,7 +46,7 @@
 **/
 ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *parent ) : QToolButton ( parent )
 {
-    BlDebug::blDebug ( "ModificadoresQToolButton::ModificadoresQToolButton", 0 );
+    BL_FUNC_DEBUG
     m_companyact = emp;
     setBoton();
     
@@ -58,8 +58,7 @@ ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *p
 **/
 ModificadoresQToolButton::~ModificadoresQToolButton()
 {
-    BlDebug::blDebug ( "ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
-    
+    BL_FUNC_DEBUG
 }
 
 
@@ -68,7 +67,7 @@ ModificadoresQToolButton::~ModificadoresQToolButton()
 **/
 void ModificadoresQToolButton::setBoton()
 {
-    BlDebug::blDebug ( "ModificadoresQToolButton::setBoton", 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Q19") );
@@ -86,7 +85,7 @@ void ModificadoresQToolButton::setBoton()
 **/
 void ModificadoresQToolButton::click()
 {
-    BlDebug::blDebug ( "ModificadoresQToolButton::click", 0 );
+    BL_FUNC_DEBUG
 
     /// Solo muestra la ventana de modificadores si se ha seleccionado una linea del ticket que se
     /// pueda modificar.
@@ -116,7 +115,7 @@ void ModificadoresQToolButton::click()
 **/
 MTabletQToolButton::MTabletQToolButton ( BtCompany * emp, QWidget *parent ) : QToolButton ( parent )
 {
-    BlDebug::blDebug ( "MTabletQToolButton::MTabletQToolButton", 0 );
+    BL_FUNC_DEBUG
     m_companyact = emp;
     setBoton();
     
@@ -128,7 +127,7 @@ MTabletQToolButton::MTabletQToolButton ( BtCompany * emp, QWidget *parent ) : QT
 **/
 MTabletQToolButton::~MTabletQToolButton()
 {
-    BlDebug::blDebug ( "MTabletQToolButton::~MTabletQToolButton", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -138,7 +137,7 @@ MTabletQToolButton::~MTabletQToolButton()
 **/
 void MTabletQToolButton::setBoton()
 {
-    BlDebug::blDebug ( "ModificadoresQToolButton::setBoton", 0 );
+    BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Q19") );
@@ -156,7 +155,7 @@ void MTabletQToolButton::setBoton()
 **/
 void MTabletQToolButton::click()
 {
-    BlDebug::blDebug ( "ModificadoresQToolButton::click", 0 );
+    BL_FUNC_DEBUG
     /*
 	  BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
 	  if (g_tablet->m_vacio == TRUE) {

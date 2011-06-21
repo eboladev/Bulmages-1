@@ -418,7 +418,7 @@ int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
 **/
 int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
 {
-    BlDebug::blDebug ( "BlImportExport::contaplus2Bulmages", 0 );
+    BL_FUNC_DEBUG
     QString idasiento;
     QString lopd_str, cuenta_str;
     QString debe, haber;
@@ -649,7 +649,7 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
 **/
 QString BlImportExport::searchParent ( QString cod )
 {
-    BlDebug::blDebug ( "BlImportExport::searchParent", 0 );
+    BL_FUNC_DEBUG
     QString padre = "NULL"; /// Almacena el padre de la cuenta.
     QString query;
     int i = 2;
@@ -680,7 +680,7 @@ QString BlImportExport::searchParent ( QString cod )
 **/
 int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 {
-    BlDebug::blDebug ( "BlImportExport::bulmafact2XML", 0 );
+    BL_FUNC_DEBUG
     QTextStream stream ( &xmlfile );
     stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
     "<!DOCTYPE FUGIT>\n"
@@ -1258,7 +1258,7 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
 **/
 int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
 {
-    BlDebug::blDebug ( "BlImportExport::bulmages2XML", 0 );
+    BL_FUNC_DEBUG
     QString codigo, descripcion;
     QString strblancomax;
     QString query;
@@ -1447,7 +1447,7 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
 **/
 int BlImportExport::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
 {
-    BlDebug::blDebug ( "BlImportExport::XML2Bulmages", 0 );
+    BL_FUNC_DEBUG
     StructureParser handler ( dbConnection, tip );
     QXmlInputSource source ( &fichero );
     QXmlSimpleReader reader;
@@ -1469,7 +1469,7 @@ int BlImportExport::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
 **/
 int BlImportExport::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
 {
-    BlDebug::blDebug ( "BlImportExport::XML2BulmaFact", 0 );
+    BL_FUNC_DEBUG
     bool noerror = TRUE;
     ImportBulmaFact handler ( this, dbConnection, tip );
     QXmlInputSource source ( &fichero );
@@ -1492,7 +1492,7 @@ int BlImportExport::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
 **/
 StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
 {
-    BlDebug::blDebug ( "StructureParser::StructureParser", 0 );
+    BL_FUNC_DEBUG
     dbConnection = con;
     m_tipo = tip;
     dbConnection->begin();
@@ -1512,7 +1512,7 @@ StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
 **/
 StructureParser::~StructureParser()
 {
-    BlDebug::blDebug ( "StructureParser::~StructureParser", 0 );
+    BL_FUNC_DEBUG
     QString query = "DELETE FROM cuenta WHERE codigo = 'AUX'";
     dbConnection->runQuery ( query );
     
@@ -1524,7 +1524,7 @@ StructureParser::~StructureParser()
 **/
 bool StructureParser::startDocument()
 {
-    BlDebug::blDebug ( "StructureParser::startDocument", 0 );
+    BL_FUNC_DEBUG
     indent = "";
     
     return TRUE;
@@ -1539,6 +1539,7 @@ bool StructureParser::startDocument()
 **/
 bool StructureParser::startElement ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "StructureParser::startElement", 0, qName );
     indent += "..";
     if ( qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS ) {
@@ -1606,6 +1607,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
 **/
 bool StructureParser::endElement ( const QString&, const QString&, const QString& qName )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "StructureParser::endElement", 0, qName );
     indent.remove ( ( uint ) 0, 2 );
     /// Vamos a ir distinguiendo casos y actuando segun cada caso.
@@ -1753,7 +1755,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
 **/
 bool StructureParser::characters ( const QString& n1 )
 {
-    BlDebug::blDebug ( "StructureParser::characters", 0 );
+    BL_FUNC_DEBUG
     cadintermedia += n1;
     
     return TRUE;
@@ -1769,7 +1771,7 @@ bool StructureParser::characters ( const QString& n1 )
 **/
 ImportBulmaFact::ImportBulmaFact ( BlImportExport *imp, BlPostgreSqlClient *con, unsigned long long int tip )
 {
-    BlDebug::blDebug ( "ImportBulmaFact::ImportBulmaFact", 0 );
+    BL_FUNC_DEBUG
     dbConnection = con;
     pgimport = imp;
     m_tipo = tip;
@@ -1782,7 +1784,7 @@ ImportBulmaFact::ImportBulmaFact ( BlImportExport *imp, BlPostgreSqlClient *con,
 **/
 ImportBulmaFact::~ImportBulmaFact()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::~ImportBulmaFact", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -1793,7 +1795,7 @@ ImportBulmaFact::~ImportBulmaFact()
 **/
 bool ImportBulmaFact::startDocument()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::startDocument", 0 );
+    BL_FUNC_DEBUG
     indent = "";
     
     return TRUE;
@@ -1806,7 +1808,7 @@ bool ImportBulmaFact::startDocument()
 **/
 bool ImportBulmaFact::startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& )
 {
-    BlDebug::blDebug ( "ImportBulmaFact::startElement", 0 );
+    BL_FUNC_DEBUG
     cadintermedia = "";
     
     return TRUE;
@@ -1820,7 +1822,7 @@ bool ImportBulmaFact::startElement ( const QString&, const QString&, const QStri
 **/
 bool ImportBulmaFact::endElement ( const QString&, const QString&, const QString& qName )
 {
-    BlDebug::blDebug ( "ImportBulmaFact::endElement", 0 );
+    BL_FUNC_DEBUG
     valores[qName] = cadintermedia;
     cadintermedia = "";
     fprintf ( stderr, "Tag de Cierre: %s\n", qName.toAscii().data() );
@@ -1872,7 +1874,7 @@ bool ImportBulmaFact::endElement ( const QString&, const QString&, const QString
 **/
 bool ImportBulmaFact::characters ( const QString& n1 )
 {
-    BlDebug::blDebug ( "ImportBulmaFact::characters", 0 );
+    BL_FUNC_DEBUG
     QString val = n1;
     if ( val == "\n" )
         val = "";
@@ -1887,7 +1889,7 @@ bool ImportBulmaFact::characters ( const QString& n1 )
 **/
 void ImportBulmaFact::printcontents()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::characters", 0 );
+    BL_FUNC_DEBUG
     fprintf ( stderr, "Impresion de contenidos\n" );
     tvalores::Iterator it;
     for ( it = valores.begin(); it != valores.end(); ++it ) {
@@ -1906,7 +1908,7 @@ void ImportBulmaFact::printcontents()
 **/
 int ImportBulmaFact::trataCliente()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataCliente", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( _ ( "<HR><B>Tratando el cliente " ) + valores["CIFCLIENTE"] + " " + valores["NOMCLIENTE"] + "</B><BR>" );
     /// En la importacion de un cliente hay que hacer la comprobacion del DNI para saber si existe o no.
@@ -2006,7 +2008,7 @@ int ImportBulmaFact::trataCliente()
 **/
 int ImportBulmaFact::trataProveedor()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataProveedor", 0 );
+    BL_FUNC_DEBUG
 
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando el proveedor" ) + " " + valores["CIFPROVEEDOR"] + "</b><BR>" );
@@ -2041,7 +2043,7 @@ int ImportBulmaFact::trataProveedor()
 **/
 int ImportBulmaFact::trataFormaPago()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataFormaPago", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<BR><B>" + _ ( "Tratando la forma de pago" ) + " " + valores["DESCFORMA_PAGO"] + "</B><BR>" );
     QString idforma_pago = valores["IDFORMA_PAGO"];
@@ -2084,7 +2086,7 @@ int ImportBulmaFact::trataFormaPago()
 **/
 int ImportBulmaFact::trataAlmacen()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataAlmacen", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando almacen" ) + " " + valores["CODIGOALMACEN"] + " " + valores["NOMALMACEN"] + "</B><BR>" );
     /// Primero hacemos la recoleccion de valores.
@@ -2132,7 +2134,7 @@ int ImportBulmaFact::trataAlmacen()
 **/
 int ImportBulmaFact::trataFamilia()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataFamilia", 0 );
+    BL_FUNC_DEBUG
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
@@ -2193,7 +2195,7 @@ int ImportBulmaFact::trataFamilia()
 **/
 int ImportBulmaFact::trataArticulo()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataArticulo", 0 );
+    BL_FUNC_DEBUG
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura.
@@ -2293,7 +2295,7 @@ int ImportBulmaFact::trataArticulo()
 **/
 int ImportBulmaFact::trataLPedidoCliente()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataLPedidoCliente", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LPedidoCliente" ) + " " + valores["IDLPEDIDOCLIENTE"] + "</B><BR>" );
     tvalores lpedidoclientemap;
@@ -2321,7 +2323,7 @@ int ImportBulmaFact::trataLPedidoCliente()
 **/
 int ImportBulmaFact::trataDPedidoCliente()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataDPedidoCliente", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DPedidoCliente" ) + " " + valores["IDDPEDIDOCLIENTE"] + "</B><BR>" );
     tvalores dpedidoclientemap;
@@ -2340,7 +2342,7 @@ int ImportBulmaFact::trataDPedidoCliente()
 **/
 int ImportBulmaFact::trataPedidoCliente()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataPedidoCliente", 0 );
+    BL_FUNC_DEBUG
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
@@ -2520,7 +2522,7 @@ int ImportBulmaFact::trataPedidoCliente()
 **/
 int ImportBulmaFact::trataLAlbaran()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataLAlbaran", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LAlbaran" ) + " " + valores["IDLALBARAN"] + "</B><BR>" );
     tvalores lalbaranmap;
@@ -2548,7 +2550,7 @@ int ImportBulmaFact::trataLAlbaran()
 **/
 int ImportBulmaFact::trataDAlbaran()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataDAlbaran", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DAlbaran" ) + " " + valores["IDDALBARAN"] + "</B><BR>" );
     tvalores dalbaranmap;
@@ -2567,7 +2569,7 @@ int ImportBulmaFact::trataDAlbaran()
 **/
 int ImportBulmaFact::trataAlbaran()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataAlbaran", 0 );
+    BL_FUNC_DEBUG
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
@@ -2746,7 +2748,7 @@ int ImportBulmaFact::trataAlbaran()
 **/
 int ImportBulmaFact::trataLFactura()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataLFactura", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LFactura" ) + " " + valores["IDLFACTURA"] + "</B><BR>" );
     tvalores lfacturamap;
@@ -2774,7 +2776,7 @@ int ImportBulmaFact::trataLFactura()
 **/
 int ImportBulmaFact::trataDFactura()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataDFactura", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DFactura" ) + " " + valores["IDDFACTURA"] + "</B><BR>" );
     tvalores dfacturamap;
@@ -2793,7 +2795,7 @@ int ImportBulmaFact::trataDFactura()
 **/
 int ImportBulmaFact::trataFactura()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataFactura", 0 );
+    BL_FUNC_DEBUG
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
@@ -2984,7 +2986,7 @@ int ImportBulmaFact::trataFactura()
 **/
 int ImportBulmaFact::trataLPresupuesto()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataLPresupuesto", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LPresupuesto" ) + " " + valores["IDLPRESUPUESTO"] + "</B><BR>" );
     tvalores lpresupuestomap;
@@ -3012,7 +3014,7 @@ int ImportBulmaFact::trataLPresupuesto()
 **/
 int ImportBulmaFact::trataDPresupuesto()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataDPresupuesto", 0 );
+    BL_FUNC_DEBUG
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DPresupuesto" ) + " " + valores["IDDPRESUPUESTO"] + "</B><BR>" );
     tvalores dpresupuestomap;
@@ -3031,7 +3033,7 @@ int ImportBulmaFact::trataDPresupuesto()
 **/
 int ImportBulmaFact::trataPresupuesto()
 {
-    BlDebug::blDebug ( "ImportBulmaFact::trataPresupuesto", 0 );
+    BL_FUNC_DEBUG
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.

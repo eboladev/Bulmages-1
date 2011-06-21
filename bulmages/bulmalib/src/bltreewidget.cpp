@@ -22,6 +22,7 @@ BlTreeWidget::~BlTreeWidget () {
 **/
 void BlTreeWidget::creaMenu ( QMenu * )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
 }
 
@@ -31,6 +32,7 @@ void BlTreeWidget::creaMenu ( QMenu * )
 **/
 void BlTreeWidget::procesaMenu ( QAction * )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
 }
 
@@ -41,13 +43,8 @@ void BlTreeWidget::procesaMenu ( QAction * )
 **/
 void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
 {
-    BlDebug::blDebug ( "BlTreeWidget::contextMenuEvent", 0 );
-//    QAction *del = NULL;
-/*
-    int row = currentRow();
-    if ( row < 0 )
-        return;
-*/
+    BL_FUNC_DEBUG
+
     int col = currentColumn();
     if ( col < 0 )
         return;

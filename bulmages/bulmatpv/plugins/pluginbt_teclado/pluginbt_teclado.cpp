@@ -49,7 +49,7 @@ QProcess *g_proc = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -150,7 +150,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbt_telcado::exitPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Vamos a probar con un docwindow.
     g_proc->kill();

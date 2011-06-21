@@ -40,7 +40,7 @@ Construimos la clase CambiarDebug
 */
 CambiarDebug::CambiarDebug ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-
+    BL_FUNC_DEBUG
     /// Cargamos la UI, que contiene tiene un QCheckBox (mui_debug)
     setupUi ( this );
 
@@ -77,7 +77,7 @@ Establecemos el estado del debug en base al state del checkbox
 **/
 void CambiarDebug::on_mui_debug_stateChanged ( int state )
 {
-
+    BL_FUNC_DEBUG
     /// Establecemos el estado de CONF_DEBUG, sobreescribiendo lo establecido por los archivos y sin guardar el estado
     if (state == Qt::Checked) {
         g_confpr->setValue( CONF_DEBUG, "TRUE");

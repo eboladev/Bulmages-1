@@ -54,7 +54,7 @@
 ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    BlDebug::blDebug ( "ArticuloList1::ArticuloList1", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
 
     setObjectName ( "ArticuloList1" );
@@ -87,7 +87,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 **/
 void ArticuloList1::presentar()
 {
-    BlDebug::blDebug ( "ArticuloList1::INIT_presenta", 0 );
+    BL_FUNC_DEBUG
     mui_list->load ( formaQuery() );
     
 }
@@ -99,8 +99,7 @@ void ArticuloList1::presentar()
 **/
 ArticuloList1::~ArticuloList1()
 {
-    BlDebug::blDebug ( "ArticuloList1::~ArticuloList1", 0 );
-    
+    BL_FUNC_DEBUG
 }
 
 
@@ -114,7 +113,7 @@ ArticuloList1::~ArticuloList1()
 **/
 QString ArticuloList1::formaQuery()
 {
-    BlDebug::blDebug ( "ArticuloList1::formaQuery", 0 );
+    BL_FUNC_DEBUG
     QString query = "";
     query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
     if ( m_presentablearticulo->isChecked() )
@@ -152,7 +151,7 @@ QString ArticuloList1::formaQuery()
 **/
 void ArticuloList1::submenu ( const QPoint & )
 {
-    BlDebug::blDebug ( "ArticuloList1::on_mui_list_customContextMenuRequested", 0 );
+    BL_FUNC_DEBUG
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -175,7 +174,7 @@ void ArticuloList1::submenu ( const QPoint & )
 **/
 QString ArticuloList1::idarticulo()
 {
-    BlDebug::blDebug ( "ArticuloList1::idarticulo", 0 );
+    BL_FUNC_DEBUG
     
     return mdb_idarticulo;
 }
@@ -187,7 +186,7 @@ QString ArticuloList1::idarticulo()
 **/
 QString ArticuloList1::nomarticulo()
 {
-    BlDebug::blDebug ( "ArticuloList1::nomarticulo", 0 );
+    BL_FUNC_DEBUG
     
     return mdb_nomarticulo;
 }
@@ -199,7 +198,7 @@ QString ArticuloList1::nomarticulo()
 **/
 QString ArticuloList1::codigocompletoarticulo()
 {
-    BlDebug::blDebug ( "ArticuloList1::codigocompletoarticulo", 0 );
+    BL_FUNC_DEBUG
     
     return mdb_codigocompletoarticulo;
 }
@@ -210,7 +209,7 @@ QString ArticuloList1::codigocompletoarticulo()
 **/
 void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 {
-    BlDebug::blDebug ( "ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
+    BL_FUNC_DEBUG
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     
@@ -222,7 +221,7 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 **/
 void ArticuloList1::on_mui_seleccionar_clicked()
 {
-    BlDebug::blDebug ( "ArticuloList1::on_mui_seleccionar_clicked", 0 );
+    BL_FUNC_DEBUG
     /// Se ejecuta la misma accion que generando un doble click en la fila seleccionada en el listado.
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
@@ -243,7 +242,7 @@ void ArticuloList1::on_mui_seleccionar_clicked()
 ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    BlDebug::blDebug ( "ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
+    BL_FUNC_DEBUG
 
     setDbTableName ( "articulo" );
     setDbFieldId ( "idarticulo" );
@@ -276,7 +275,7 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
 **/
 ArticuloList1SubForm1::~ArticuloList1SubForm1()
 {
-    BlDebug::blDebug ( "ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
+    BL_FUNC_DEBUG
     
 
 }

@@ -30,7 +30,7 @@
 **/
 BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent )
 {
-    BlDebug::blDebug ( "BlTextEditDelegate::BlTextEditDelegate", 0 );
+    BL_FUNC_DEBUG
     installEventFilter ( this );
     
 }
@@ -41,7 +41,7 @@ BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent 
 **/
 BlTextEditDelegate::~BlTextEditDelegate()
 {
-    BlDebug::blDebug ( "BlTextEditDelegate::~BlTextEditDelegate", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -54,6 +54,7 @@ BlTextEditDelegate::~BlTextEditDelegate()
 **/
 bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlTextEditDelegate::eventFilter", 0, QString::number ( event->type() ) );
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease ) {

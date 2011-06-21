@@ -126,7 +126,6 @@ void Abrevs::on_mui_recuperar_clicked()
 				  QMessageBox::Yes
 				  | QMessageBox::No,
 				  QMessageBox::No) == QMessageBox::No) {
-		      BlDebug::blDebug("END Tickets::ticketClicked");
 		      /// Borra el valor del Input.
 		      emp->pulsaTecla ( Qt::Key_F4, "" );
 		      return;

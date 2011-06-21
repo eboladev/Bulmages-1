@@ -56,7 +56,7 @@ public slots:
 **/
 MyPlugArticuloSubForm::MyPlugArticuloSubForm()
 {
-    BlDebug::blDebug ( "MyPlugArticuloSubForm::MyPlugArticuloSubForm", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -66,7 +66,7 @@ MyPlugArticuloSubForm::MyPlugArticuloSubForm()
 **/
 MyPlugArticuloSubForm::~MyPlugArticuloSubForm()
 {
-    BlDebug::blDebug ( "MyPlugArticuloSubForm::~MyPlugArticuloSubForm", 0 );
+    BL_FUNC_DEBUG
     
 }
 
@@ -76,7 +76,7 @@ MyPlugArticuloSubForm::~MyPlugArticuloSubForm()
 **/
 void MyPlugArticuloSubForm::elslot ( QString item )
 {
-    BlDebug::blDebug ( "MyPlugArticuloSubForm::elslot", 0 );
+    BL_FUNC_DEBUG
     QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     
@@ -85,7 +85,7 @@ void MyPlugArticuloSubForm::elslot ( QString item )
 
 void MyPlugArticuloSubForm::elslot1 ( QTableWidgetItem *item )
 {
-    BlDebug::blDebug ( "MyPlugArticuloSubForm::elslot", 0 );
+    BL_FUNC_DEBUG
     QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     
@@ -97,7 +97,7 @@ void MyPlugArticuloSubForm::elslot1 ( QTableWidgetItem *item )
 **/
 void MyPlugArticuloSubForm::inicializa ( BtCompany *etpv )
 {
-    BlDebug::blDebug ( "MyPlugArticuloSubForm::inicializa", 0 );
+    BL_FUNC_DEBUG
     m_etpv = etpv;
     
 }
@@ -110,7 +110,7 @@ void MyPlugArticuloSubForm::inicializa ( BtCompany *etpv )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -37,7 +37,7 @@
 
 ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    BlDebug::blDebug ( "ClientSync::ClientSync", 0 );
+    BL_FUNC_DEBUG
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addSubWindow ( this );
@@ -60,14 +60,14 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
 ClientSync::~ClientSync()
 {
-    BlDebug::blDebug ( "ClientSync::~ClientSync", 0 );
+    BL_FUNC_DEBUG
     
 }
 
 
 
 void ClientSync::readyRead() {
-    BlDebug::blDebug ( "ClientSync::readyRead", 0 );
+    BL_FUNC_DEBUG
 
     QTcpSocket *socket = (QTcpSocket *) sender();
     static QByteArray array="";
@@ -87,7 +87,7 @@ void ClientSync::readyRead() {
 }
 
 void ClientSync::readChannelFinished() {
-    BlDebug::blDebug ( "ClientSync::readyRead", 0 );
+    BL_FUNC_DEBUG
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
@@ -96,7 +96,7 @@ void ClientSync::readChannelFinished() {
 }
 
 void ClientSync::send(const QString & texto) {
-    BlDebug::blDebug ( "ClientSync::send", 0 );
+    BL_FUNC_DEBUG
     m_socket->write(texto.toLatin1());
     mui_plainText->appendPlainText("Enviando mensaje a:" + m_socket->peerAddress().toString() + "\n" );  
     

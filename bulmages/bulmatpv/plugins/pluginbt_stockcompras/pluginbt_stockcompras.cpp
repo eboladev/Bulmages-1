@@ -38,7 +38,7 @@ MyDevButton1 * g_plug;
 **/
 MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    BlDebug::blDebug ( "MyDevButton1::MyDevButton1", 0 );
+    BL_FUNC_DEBUG
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
     
@@ -50,8 +50,7 @@ MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *
 **/
 MyDevButton1::~MyDevButton1()
 {
-    BlDebug::blDebug ( "MyDevButton1::~MyDevButton1", 0 );
-    
+    BL_FUNC_DEBUG
 }
 
 
@@ -61,7 +60,7 @@ MyDevButton1::~MyDevButton1()
 **/
 void MyDevButton1::on_click (  )
 {
-    BlDebug::blDebug ( "MyDevButton1::cambia", 0 );
+    BL_FUNC_DEBUG
     Compra *camb = new Compra ( m_emp, 0 );
     camb->show();
     
@@ -74,7 +73,7 @@ void MyDevButton1::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -94,6 +93,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
+    BL_FUNC_DEBUG
     // ============ Pruebas con abrevs
     g_plug = new MyDevButton1 ( "STOCK", etpv, etpv );
 

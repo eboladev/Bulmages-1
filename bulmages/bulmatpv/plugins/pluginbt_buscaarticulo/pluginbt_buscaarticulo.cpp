@@ -46,7 +46,7 @@ BtCompany * g_pluginbt_buscaarticulo_emp;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    BlDebug::blDebug ( "pluginbuscaarticulo::entryPoint", 0 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
