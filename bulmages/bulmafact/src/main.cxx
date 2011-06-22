@@ -195,7 +195,9 @@ int main ( int argc, char **argv )
    /// Liberamos memoria.
    delete bges;
    delete g_theApp;
-   delete g_confpr;
+   delete g_plugins;
+   delete g_confpr;  /* El ultimo a eliminar ya que los destructores lo utilizan */
+
 
    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
    return valorSalida;

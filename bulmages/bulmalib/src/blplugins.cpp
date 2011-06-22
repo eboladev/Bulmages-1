@@ -57,6 +57,7 @@ BlPlugins::BlPlugins()
 BlPlugins::~BlPlugins()
 {
     BL_FUNC_DEBUG
+    /// Liberamos la memoria.
     while (!m_plugins.isEmpty())
        delete m_plugins.takeFirst();
 }
@@ -69,7 +70,6 @@ BlPlugins::~BlPlugins()
 void BlPlugins::cargaLibs ( const QString &libs )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlPlugins::cargaLibs", 0, libs );
 
     bool cargado = FALSE;
     /// Hacemos la carga de los plugins.
@@ -91,6 +91,8 @@ void BlPlugins::cargaLibs ( const QString &libs )
             if ( lib->isLoaded() ) {
                 cargado = TRUE;
                 m_plugins.append ( lib );
+	    } else {
+	        delete lib;
             } // end if
         } // end for
         if ( ! cargado ) {

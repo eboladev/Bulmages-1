@@ -71,7 +71,7 @@ void BlAction::actionTriggered(bool trigg) {
 /// Sino que se llama desde multiples partes del sistema.
 BlAction * newBlAction ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
 {
-    BlAction *h = new BlTooloButton ( emp, parent, f );
+    BlAction *h = new BlAction ( emp, parent, f );
     return h;
 }
 

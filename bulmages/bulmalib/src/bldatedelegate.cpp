@@ -50,9 +50,6 @@ QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewI
 
    BlDateSearch *ds = new BlDateSearch ( parent ) ;
    ds->setMainCompany ( m_company ) ;
-
-   
-
    return ds;
 }
 
@@ -93,7 +90,8 @@ void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, 
 
    QString fecha = ( ( BlDateSearch * ) editor ) ->text();
    model->setData ( index, fecha ) ;
-
+   /// Liberamos la memoria
+   delete editor;
    
 }
 

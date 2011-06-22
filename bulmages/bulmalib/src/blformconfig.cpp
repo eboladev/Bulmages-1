@@ -124,9 +124,6 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
         cur->nextRecord();
     } // end while
     delete cur;
-    //QTextDocument *doc = new QTextDocument(texto, databaseScript);
-    //doc->sedtPlainText(texto);
-    //databaseScript->setDocument(doc);
     databaseScript->setPlainText(texto);
     
     

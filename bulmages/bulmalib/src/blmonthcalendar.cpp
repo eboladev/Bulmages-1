@@ -77,9 +77,6 @@ BLMonthCalendar::BLMonthCalendar ( QWidget * parent, Qt::WindowFlags f ) : QWidg
     centralLayout->addWidget ( editor, 1 );
     setLayout ( centralLayout );
 
-
-
-//        setCentralWidget(centralWidget);
 }
 
 BLMonthCalendar::~BLMonthCalendar()

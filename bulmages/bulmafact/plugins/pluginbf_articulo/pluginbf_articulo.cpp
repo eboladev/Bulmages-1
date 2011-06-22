@@ -32,6 +32,12 @@
 ArticuloList *g_articulosList = NULL;
 BfBulmaFact *g_pluginbf_articulo = NULL;
 
+
+BlAction * g_pbf_articulo_actionA = NULL;
+BlAction * g_pbf_articulo_actionB = NULL;
+BlAction * g_pbf_articulo_actionC = NULL;
+BlAction * g_pbf_articulo_actionD = NULL;
+
 ///
 /**
 \param bges
@@ -55,7 +61,7 @@ int entryPoint ( BfBulmaFact *bges )
         /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
         
 
-        BlAction *accionA = new BlAction ( _ ( "&Articulos" ), 0 );
+        BlAction *accionA = g_pbf_articulo_actionA = new BlAction ( _ ( "&Articulos" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
         accionA->setStatusTip ( _ ( "Articulos" ) );
         accionA->setWhatsThis ( _ ( "Articulos" ) );
@@ -63,7 +69,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addAction ( accionA );
         bges->Listados->addAction ( accionA );
 
-        BlAction *accionB = new BlAction ( _ ( "&Nuevo articulo" ), 0 );
+        BlAction *accionB = g_pbf_articulo_actionB = new BlAction ( _ ( "&Nuevo articulo" ), 0 );
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
         accionB->setStatusTip ( _ ( "Nuevo articulo" ) );
         accionB->setWhatsThis ( _ ( "Nuevo articulo" ) );
@@ -72,7 +78,7 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Fichas->addAction ( accionB );
 
         pPluginMenu->addSeparator();
-        BlAction *accionC = new BlAction ( _ ( "&Tipos de articulo" ), 0 );
+        BlAction *accionC = g_pbf_articulo_actionC = new BlAction ( _ ( "&Tipos de articulo" ), 0 );
         accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-type.png" ) ) );
         accionC->setStatusTip ( _ ( "Tipos de articulo" ) );
         accionC->setWhatsThis ( _ ( "Tipos de articulo" ) );
@@ -81,18 +87,29 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Fichas->addAction ( accionC );
 
         pPluginMenu->addSeparator();
-        BlAction *accionD = new BlAction ( _ ( "&Familias" ), 0 );
+        BlAction *accionD = g_pbf_articulo_actionD = new BlAction ( _ ( "&Familias" ), 0 );
         accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
         accionD->setStatusTip ( _ ( "Familias" ) );
         accionD->setWhatsThis ( _ ( "Familias" ) );
         accionD->setObjectName("mui_actionFamilias");
         pPluginMenu->addAction ( accionD );
         bges->Fichas->addAction ( accionD );
-
     } // end if
 
     return 0;
 }
+
+int exitPoint ( BfBulmaFact *bges ) {
+    BL_FUNC_DEBUG
+    
+    /* delete g_articulosList; */ // Es borrado al vaciar el windowList
+    
+    delete g_pbf_articulo_actionA;
+    delete g_pbf_articulo_actionB;
+    delete g_pbf_articulo_actionC;
+    delete g_pbf_articulo_actionD;
+}
+
 
 int BlAction_triggered(BlAction *accion) {
     BL_FUNC_DEBUG
@@ -464,7 +481,6 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     SubForm_Articulo *subformods = new SubForm_Articulo ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    
     return 0;
 }
 
@@ -511,11 +527,11 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 	  sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarArticulo()));
 	} // end if
     } // end if
-    
-
-    
     return 0;
 }
+
+
+
 /// Terminamos el tema de iconos en el menu de subformulario
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
@@ -533,9 +549,6 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-
-    
-
     return ret;
 }
 

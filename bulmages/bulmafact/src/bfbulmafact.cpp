@@ -132,6 +132,7 @@ void BfBulmaFact::createMainWindows ( BlSplashScreen *splashScr )
 BfBulmaFact::~BfBulmaFact()
 {
     BL_FUNC_DEBUG
+    /// Borramos el WorkSpace
     delete pWorkspace;
     
 }
@@ -206,8 +207,10 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 
     g_plugins->lanza ( "BfBulmaFact_closeEvent", this );
 
+    /// Borramos el BfCompany
     delete m_company;
     m_company = NULL;
+    /// Borramos el list_ventanas
     delete m_list;
     m_list = NULL;
 	

@@ -31,6 +31,7 @@
 #include "blaction.h"
 
 extern "C" PLUGINBF_ARTICULO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ARTICULO_EXPORT int exitPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ARTICULO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int SNewArticuloView (BfCompany *);

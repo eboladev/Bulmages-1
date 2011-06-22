@@ -127,11 +127,7 @@ void BfCompany::s_FPago()
 **/
 void BfCompany::s_trabajadores()
 {
-    BL_FUNC_DEBUG
-//    TrabajadorView *t = new TrabajadorView ( this, NULL );
-//    m_pWorkspace->addSubWindow ( t );
-//    t->show();
-    
+    BL_FUNC_DEBUG  
 }
 
 
@@ -143,12 +139,6 @@ void BfCompany::s_trabajadores()
 void BfCompany::s_bancos()
 {
     BL_FUNC_DEBUG
-    /*
-        BancoView *t = new BancoView ( this, NULL );
-        m_pWorkspace->addSubWindow ( t );
-        t->show();
-    */
-    
 }
 
 
@@ -160,12 +150,7 @@ void BfCompany::s_bancos()
 void BfCompany::s_seriesFactura()
 {
     BL_FUNC_DEBUG
-    /*
-       BfSerieFacturaView *lser = new BfSerieFacturaView ( this, 0 );
-       m_pWorkspace->addSubWindow ( lser );
-       lser->show();
-    */
-    
+   
 }
 
 
@@ -180,17 +165,6 @@ void BfCompany::s_seriesFactura()
 void BfCompany::s_almacenes()
 {
     BL_FUNC_DEBUG
-    /*
-        /// Lanzamos los plugins necesarios.
-        if ( g_plugins->lanza ( "BfCompany_s_almacenes", this ) ) {
-            
-            return;
-        } // end if
-        ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
-        m_pWorkspace->addSubWindow ( lser );
-        lser->show();
-    */
-    
 }
 
 
@@ -215,11 +189,6 @@ void BfCompany::s_newBfConfiguracionView()
 void BfCompany::s_TipoIVAView()
 {
     BL_FUNC_DEBUG
-    /*
-        ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
-        m_pWorkspace->addSubWindow ( pag );
-        pag->show();
-    */
     
 }
 
@@ -231,12 +200,7 @@ void BfCompany::s_TipoIVAView()
 void BfCompany::s_TasaIVAView()
 {
     BL_FUNC_DEBUG
-    /*
-        ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
-        m_pWorkspace->addSubWindow ( pag );
-        pag->show();
-    */
-    
+   
 }
 
 
@@ -379,7 +343,6 @@ void BfCompany::cargaConf()
     } // end for
     /// Si hay una ventana activa se pone como activa.
     if ( activewindow )
-//        m_bulmafact->workspace() ->setActiveWindow ( activewindow );
 	activewindow->activateWindow();
     
 }

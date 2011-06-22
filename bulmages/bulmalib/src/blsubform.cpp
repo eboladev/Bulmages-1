@@ -202,10 +202,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     } // end if
 
     mui_list->setSelectionMode ( QAbstractItemView::SingleSelection );
-    //mui_list->setSelectionMode ( QAbstractItemView::NoSelection );
     mui_list->setSelectionBehavior ( QAbstractItemView::SelectRows );
-//    mui_list->setHorizontalScrollMode ( QAbstractItemView::ScrollPerPixel );
-//    mui_list->setVerticalScrollMode ( QAbstractItemView::ScrollPerPixel );
     mui_list->setSortingEnabled ( FALSE );
     /// \TODO Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader() ->setMovable ( TRUE );
@@ -295,7 +292,16 @@ BlSubForm::~BlSubForm()
     /// PAra destruir desactivamos el control de cambios.
     m_procesacambios = FALSE;
     saveConfig();
-    
+    /// Liberamos memoria.
+    while (!m_lista.isEmpty()) {
+	delete m_lista.takeFirst();
+    } // end while
+    while (!m_lcabecera.isEmpty()) {
+	delete m_lcabecera.takeFirst();
+    } // end while
+    while (!m_listaborrar.isEmpty()) {
+	delete m_listaborrar.takeFirst();
+    } // end while
 }
 
 
@@ -1346,7 +1352,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
 
     /// Preparamos la barra de progreso
     BlProgressBar *barra = new BlProgressBar;
-//    barra.setText ( _( "Cargando SubFormulario" ) );
     if ( cur->numregistros() > 100 ) {
         barra->setValue ( 0 );
         barra->show();
@@ -1561,7 +1566,8 @@ void BlSubForm::load ( BlDbRecordSet *cur )
 
     /// Reactivamos el sorting
     mui_list->setSortingEnabled ( m_sorting );
-    /// Borramos la barra de progreso
+
+    /// Borramos la barra de progreso liberando memoria.
     delete barra;
 
     m_procesacambios = TRUE;
@@ -1586,48 +1592,6 @@ void BlSubForm::setOrdenPorQuery ( bool ordenactivado )
     m_ordenporquery = ordenactivado;
     
 }
-
-
-///
-/**
-\param query La consulta SQL a cargar en el subformulario.
-**/
-/*
-void BlSubForm::load ( QString query )
-{
-    BL_FUNC_DEBUG
-    /// Si el query no existe no hacemos nada.
-    if ( query == "" ) {
-        BlDebug::blDebug ( "BlSubForm::cargar", 0, "Query inexistente" );
-        return;
-    } // end if
-
-    try {
-        m_query = query;
-        /// Tratramos con la paginacion.
-        int limit = mui_filaspagina->text().toInt();
-        if ( limit <= 0 ) {
-            limit = 500;
-        } // end if
-
-        int pagact = mui_paginaact->text().toInt();
-        if ( pagact <= 0 ) {
-            pagact = 1;
-        } // end if
-        int offset = limit * ( pagact - 1 );
-
-        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "", limit, offset );
-
-        if (!cur) throw -1;
-
-        load ( cur );
-        delete cur;
-    } catch ( ... ) {
-        BlDebug::blDebug ( "BlSubForm::cargar", 2, "Error en la carga de datos" );
-    } // end try
-    
-}
-*/
 
 
 void BlSubForm::load ( QString query )
@@ -2226,7 +2190,7 @@ int BlSubForm::remove ( int row )
 
         rac = new BlDbSubFormRecord ( mainCompany() );
 
-        /// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
+        /// Cogemos el elemento correspondiente usar lineaat
         rec = lineaat ( row );
         if ( !rec )
             return -1;
@@ -2520,19 +2484,6 @@ void BlSubForm::loadConfigXML()
 	} // end if
     } // end for
 
-/*
-        /// Restaura el orden de mui_listcolumnas.
-        for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-            linea = stream.readLine();
-            /// Busca en la 4a columna la fila que tenga el valor igual a 'linea.toInt()'. Que fila es?
-            /// ese sera el valor de rowOld. i = rowNew.
-            for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
-                if ( mui_listcolumnas->item ( j, 3 )->text().toInt() == linea.toInt() ) {
-                    mui_listcolumnas->moveRow ( j, i );
-                } // end if
-            } // end for
-        } // end for
-*/
 
 	/// Guardamos el estado del menu de subformulario.
         /// Restaura el estado de mui_listcolumnas.

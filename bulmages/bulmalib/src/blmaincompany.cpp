@@ -236,7 +236,6 @@ void BlMainCompany::muestraPaises()
     BlCountryView *pais = new BlCountryView ( this, 0 );
     m_pWorkspace->addSubWindow ( pais );
     pais->show();
-    
 }
 
 

@@ -95,9 +95,7 @@ void BlListWidgetItem::setObject ( QObject *m )
 void BlListWidgetItem::setName ( QString m )
 {
     BL_FUNC_DEBUG
-    m_nombre = m;
-//    setText ( m );
-    
+    m_nombre = m;    
 }
 
 
@@ -120,7 +118,6 @@ void BlListWidgetItem::setTitle ( QString titulo )
 QObject *BlListWidgetItem::object()
 {
     BL_FUNC_DEBUG
-    
     return m_obj;
 }
 
@@ -325,8 +322,6 @@ int BlWindowListDock::insertWindow ( QString nombre, QObject *obj, bool compdup,
                 ( ( QWidget * ) m->object() ) ->hide();
                 ( ( QWidget * ) m->object() ) ->show();
                 nombre = nombre + "(i)";
-//                removeWindow ( obj );
-//                throw - 1;
             } // end if
             i++;
         } // end while
@@ -423,7 +418,6 @@ void BlWindowListDock::removeWindow ( QObject *obj )
     /// Deseleccionamos cualquier elemento del listado para que no se quede marcado si
     /// ninguna otra ventana recoge el foco.
     deselectWindow();
-    
 }
 
 

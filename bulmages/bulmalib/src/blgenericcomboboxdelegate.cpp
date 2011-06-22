@@ -176,8 +176,6 @@ QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyle
    cbox->m_valores[m_text_field] = "";
    cbox->setAllowNull ( true );
 
-   
-
    return cbox;
 }
 

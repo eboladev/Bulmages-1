@@ -1046,6 +1046,7 @@ void blCenterOnScreen ( QWidget *ventana )
     QDesktopWidget *escritorio = new QDesktopWidget();
     rect = escritorio->availableGeometry();
     ventana->move ( rect.center() - ventana->rect().center() );
+    delete escritorio;
 }
 
 

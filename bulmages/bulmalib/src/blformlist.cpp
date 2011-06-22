@@ -164,10 +164,9 @@ BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
 BlFormList::~BlFormList()
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlFormList::~BlFormList", 0, this->windowTitle() );
+     
     guardaFiltrosXML();
     removeWindow();
-    
 }
 
 

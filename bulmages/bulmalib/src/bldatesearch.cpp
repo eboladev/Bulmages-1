@@ -199,6 +199,8 @@ void BlDateSearch::s_searchFecha()
         m_textoFecha->setText ( calend->selectedDate().toString ( "dd/MM/yyyy" ) );
     }
 
+    /// Liberamos la memoria
+    delete layout;
     delete calend;
     delete diag;
 

@@ -1337,6 +1337,8 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 
             } // end if
             
+	    delete layout;
+ 	    delete iface;
             delete diag;
             
             // Si se ha pulsado cancelar entonce se sale del informe.
@@ -1367,26 +1369,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     buff = cadant + buff;
     
     /// Tratamos las variables establecidas.
-    substrVars ( buff, tipoEscape );
-
-
-    
-/*    
-    /// Buscamos algo de lineas de detalle
-    /// Inclusion de ficheros de codigo
-    pos = buff.indexOf("<!-- LINEAS DETALLE");
-    cadant = buff.left(pos);
-    buff = buff.right(buff.length()-pos);
-    QRegExp rx ( "<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->" );
-    rx.setMinimal ( TRUE );
-    
-    while ( ( pos = rx.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataLineasDetalle ( rx.cap ( 1 ).toAscii(), tipoEscape );
-        buff.replace ( pos, rx.matchedLength(), ldetalle );
-        pos = buff.indexOf("<!--");
-    } // end while    
-    buff = cadant + buff;
-*/    
+    substrVars ( buff, tipoEscape );  
     
     /// Inclusion de ficheros de codigo
     pos = buff.indexOf("<!-- INCLUDE");

@@ -70,12 +70,17 @@ void BlEscPrinter::initializePrinter()
 
 void BlEscPrinter::printText ( QString text )
 {
+  /*
     QTextCodec *codec = new BlCP850EuroTextCodec ( 0 );
     if ( codec == NULL ) {
         //ERROR
         return;
     }
     m_buffer.append ( codec->fromUnicode ( text ) );
+    delete codec;
+*/
+  BlCP850EuroTextCodec codec (0);
+  m_buffer.append (codec.fromUnicode (text) );
 }
 
 void BlEscPrinter::printImage ( QString path )
