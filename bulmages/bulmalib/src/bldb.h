@@ -141,7 +141,6 @@ public:
     virtual void imprimir();
     virtual int load ( QString );
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );
-//    virtual int parseTags ( QByteArray &buff, int tipoEscape = 0 );
     virtual QString story ( void );
     virtual int generateRML ( const QString & );
     virtual void substrConf( QString &buff) ;
@@ -189,7 +188,6 @@ public:
     virtual QByteArray parseCutPaperAndFeed( const QString &param,  const QString &param1, int tipoEscape = 0 );
     virtual QByteArray parseRightJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
     virtual QByteArray parseLeftJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
-//    virtual QByteArray trataLineasDetalle( const QByteArray &datos, int tipoEscape=0 );
     QByteArray parseRecordset ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
     virtual QByteArray parseIfQuery ( const QString &query, const QByteArray &datos );
     virtual QByteArray parseIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 );

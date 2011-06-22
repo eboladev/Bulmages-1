@@ -161,7 +161,7 @@ void BlDebug::blDebug(const QString &text, int level, const QString &params) {
             } // end for
 
             QString cad1;
-            cad1 = "<comment  result=\"" + text + "\" >";
+            cad1 = "<comment  result=\"" + text + "\"  params=\"" + params + "\"></comment>";
 
 
             *BlDebug::m_outXML << cad1  << "\n" << flush;

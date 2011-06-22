@@ -162,13 +162,24 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     setupUi ( this );
     setMainCompany ( comp );
     setSubForm ( mui_list );
+    
+
+    
+
+    iniciaForm();
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
+    
     mdb_idalbaranp = "";
     if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
+    
     hideBusqueda();
-    iniciaForm();
+
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaranp" );
     /// Llamamos a los scripts

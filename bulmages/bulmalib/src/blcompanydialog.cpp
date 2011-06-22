@@ -64,7 +64,6 @@ void BlCompanyDialog::setDbName ( QString pNomDB )
 {
     BL_FUNC_DEBUG
     m_empresabd = pNomDB;
-    
 }
 
 
@@ -76,7 +75,6 @@ void BlCompanyDialog::setCompanyName ( QString pNomEmpresa )
 {
     BL_FUNC_DEBUG
     m_nombreempresa = pNomEmpresa;
-    
 }
 
 
@@ -88,8 +86,6 @@ void BlCompanyDialog::setCompanyType ( QString pTipoEmpresa )
 {
     BL_FUNC_DEBUG
     m_tipoempresa = pTipoEmpresa;
-    
-
 }
 
 
@@ -100,7 +96,6 @@ void BlCompanyDialog::setCompanyType ( QString pTipoEmpresa )
 bool BlCompanyDialog::isDestroyMode()
 {
     BL_FUNC_DEBUG
-    
     return m_modo;
 }
 
@@ -113,7 +108,6 @@ void BlCompanyDialog::setDestroyMode ( bool pModo )
 {
     BL_FUNC_DEBUG
     m_modo = pModo;
-    
 }
 
 
@@ -124,7 +118,6 @@ void BlCompanyDialog::setDestroyMode ( bool pModo )
 QString BlCompanyDialog::dbName()
 {
     BL_FUNC_DEBUG
-    
     return m_empresabd;
 }
 
@@ -136,7 +129,6 @@ QString BlCompanyDialog::dbName()
 QString BlCompanyDialog::companyName()
 {
     BL_FUNC_DEBUG
-    
     return m_nombreempresa;
 }
 
@@ -148,7 +140,6 @@ QString BlCompanyDialog::companyName()
 QString BlCompanyDialog::companyType()
 {
     BL_FUNC_DEBUG
-    
     return m_tipoempresa;
 }
 
@@ -160,7 +151,6 @@ void BlCompanyDialog::on_mui_aceptar_clicked()
 {
     BL_FUNC_DEBUG
     accept();
-    
 }
 
 
@@ -174,8 +164,6 @@ void BlCompanyDialog::on_mui_cancelar_clicked()
         exit ( 1 );
     else
         done ( 1 );
-    // end if
-    
 }
 
 
@@ -234,8 +222,6 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
 BlCompanyDialog::~BlCompanyDialog()
 {
     BL_FUNC_DEBUG
-    
-
 }
 
 
@@ -374,7 +360,6 @@ void BlCompanyDialog::saveFile()
     QFile file ( dir1 );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
         return;
-    // end if
 
     /// Deshabilitamos las alertas para que no aparezcan avisos con bases de datos
     /// que no son del sistema.
@@ -402,7 +387,6 @@ void BlCompanyDialog::saveFile()
     delete db;
     g_confpr->setValue ( CONF_ALERTAS_DB, alertas );
     file.close();
-    
 }
 
 
@@ -511,9 +495,7 @@ void BlCompanyDialog::preparamui_empresas()
     mui_empresas->setShowGrid ( FALSE );
     /// Si es el modo de facturaci&oacute;n ocultamos la fecha.
     if ( m_tipo == "BulmaFact" )
-        mui_empresas->hideColumn ( ABRE_ANO );
-    // end if
-    
+        mui_empresas->hideColumn ( ABRE_ANO );    
 }
 
 
@@ -538,14 +520,9 @@ bool BlCompanyDialog::eventFilter ( QObject *obj, QEvent *ev )
                 // end if
                 break;
             } // end switch
-	    
-            return false;
-        } else {
-            
-            return false;
         } // end if
+        return false;
     } // end if
     
     return QDialog::eventFilter ( obj, ev );
-    // end if
 }

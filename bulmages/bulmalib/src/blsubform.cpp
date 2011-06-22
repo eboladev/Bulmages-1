@@ -1378,7 +1378,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
 
     /// Vaciamos el recordset para que no contenga registros.
     BlDbSubFormRecord *rec;
-    while ( m_lista.count() ) {
+    while ( !m_lista.isEmpty() ) {
         rec = m_lista.takeFirst();
         if ( rec )
             delete rec;

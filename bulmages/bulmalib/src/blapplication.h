@@ -26,10 +26,7 @@
 #include <QWidget>
 #include <QMainWindow>
 #include "bldefs.h"
-
-
-class BlForm;
-
+#include "blconfig.h"
 
 class BL_EXPORT BlApplication : public QApplication
 {
@@ -41,7 +38,13 @@ private:
 public:
     BlApplication ( int &argc, char **argv );
     ~BlApplication();
+    
+#if CONFIG_DEBUG == TRUE
+    
     virtual bool notify ( QObject *o, QEvent *e );
+    
+#endif
+    
     void emitDbTableChanged(const QString &);
 
 signals:

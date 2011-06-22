@@ -53,7 +53,6 @@ BlDbSubFormRecord::~BlDbSubFormRecord()
     BL_FUNC_DEBUG
     static int destrucciones = 0;
     destrucciones++;
-    
 }
 
 
@@ -131,6 +130,10 @@ BlDbSubFormField::~BlDbSubFormField()
 {
     BL_FUNC_DEBUG
     
+    /// Eliminamos el item en la lista del padre ya que al estar eliminado no puede seguir alli.
+    if (pare())
+      if (pare()->lista())
+	pare()->lista()->removeAll(this);
 }
 
 
@@ -204,8 +207,6 @@ int BlDbSubFormField::set ( QString val )
 		setTextAlignment(Qt::AlignCenter);
 	  }
     } // end if
-
-    
     return 0;
 }
 
@@ -260,7 +261,6 @@ pertencecen
 BlDbSubFormRecord *BlDbSubFormField::pare()
 {
     BL_FUNC_DEBUG
-    
     return m_pare;
 }
 

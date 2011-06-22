@@ -26,7 +26,7 @@
 
 
 
-// La variable global g_theApp esta definida aqui.
+/// Definimos la variable global g_theApp
 BlApplication *g_theApp = NULL;
 
 
@@ -50,6 +50,7 @@ BlApplication::~BlApplication()
 }
 
 
+#if CONFIG_DEBUG == TRUE
 ///
 /**
 \param o
@@ -60,12 +61,17 @@ bool BlApplication::notify ( QObject *o, QEvent *e )
 {
 //   Esta funcion es llamada continuamente y por eso no la depuramos.
 //   BL_FUNC_DEBUG
+
+
     try {
         return QApplication::notify ( o, e );
     } catch ( ... ) {
+        fprintf(stderr, "Error inesperado en el sistema de notificaciones\n");
         return FALSE;
     } // end try
+
 }
+#endif
 
 
 void BlApplication::emitDbTableChanged ( const QString &t )

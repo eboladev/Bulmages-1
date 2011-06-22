@@ -101,7 +101,6 @@ void BlDbField::setDbConnection ( BlPostgreSqlClient *comp )
 BlDbField::DbType BlDbField::dbFieldType()
 {
     BL_FUNC_DEBUG
-    
     return m_tipo;
 }
 
@@ -213,7 +212,6 @@ QString BlDbField::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             blMsgWarning ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -20200;
-            
             return valor;
         } // end if
     } // end if
@@ -334,7 +332,6 @@ BlDbRecord::~BlDbRecord()
     BL_FUNC_DEBUG
     while (!m_lista.isEmpty())
 	delete m_lista.takeFirst();
-    
 }
 
 /// Establece la base de datos que debe utilizar la clase.
@@ -347,7 +344,6 @@ void BlDbRecord::setDbConnection ( BlMainCompany *comp )
 {
     BL_FUNC_DEBUG
     m_dbConnection = comp;
-    
 }
 
 
@@ -462,7 +458,6 @@ void BlDbRecord::vaciar()
 {
     BL_FUNC_DEBUG
     DBclear();
-    
 }
 
 
