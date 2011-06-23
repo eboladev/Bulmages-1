@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-06-08 09:15+0200\n"
-"PO-Revision-Date: 2011-06-23 10:24+0200\n"
+"PO-Revision-Date: 2011-06-23 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: French <kde l10n>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "&Ecriture"
 
 #: pluginbc_asiento.cpp:66
 msgid "&Asiento contable"
-msgstr "&Saisie comptable"
+msgstr "&Ecriture"
 
 #: ui_bcasientointeligentebase.h:217
 msgid "&Cancelar"
@@ -50,7 +50,7 @@ msgstr "&Exercice :"
 
 #: pluginbc_asiento.cpp:85
 msgid "&Espaciar asientos contables"
-msgstr "&Espacer les saisies"
+msgstr "&Espacer les écritures"
 
 #: ui_bcasientointeligentebase.h:212
 msgid "&Fecha del asiento:"
@@ -58,7 +58,7 @@ msgstr "&Date de l'écriture :"
 
 #: pluginbc_asiento.cpp:75
 msgid "&Lista de asientos contables"
-msgstr "&Liste des saisies"
+msgstr "&Liste des écritures"
 
 #: ui_bcasientolistbase.h:463
 msgid "&Mostrar:"
@@ -78,7 +78,7 @@ msgstr "&Personnel :"
 
 #: pluginbc_asiento.cpp:92
 msgid "&Reordenar asientos contables"
-msgstr "&Réordonner les saisies"
+msgstr "&Réordonner les écritures"
 
 #: bcasientoview.cpp:338
 msgid "&Si"
@@ -118,7 +118,7 @@ msgstr "Ecriture"
 
 #: bcasientoform.cpp:42
 msgid "Asiento contable"
-msgstr "Saisie comptable "
+msgstr "Ecriture"
 
 #: pluginbc_asiento.cpp:106
 msgid "Asiento de &cierre"
