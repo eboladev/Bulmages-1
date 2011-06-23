@@ -403,6 +403,7 @@ QString BlSearchWidget::id()
 **/
 void BlSearchWidget::setFieldId ( const QString &fieldId )
 {
+    BL_FUNC_DEBUG
     m_campoid= fieldId;
 }
 
@@ -540,7 +541,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
     m_entrada = cod;
     if ( !g_plugins->lanza ( "BlDbCompleterComboBox_textChanged", this ) ) {
         QString codigo = m_entrada;
-        if ( codigo.size() >= 3 ) {
+        if ( codigo.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() ) {
             int pos = codigo.indexOf ( ".-" );
             // no se si es el autoComplete o què però em criden a
             // aquesta senyal quan omplo el combo, amb el primer valor
@@ -610,6 +611,7 @@ QString BlDbCompleterComboBox::unicaEleccion ( void )
 /// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
 QString BlDbCompleterComboBox::eligeUnico ( void )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbCompleterComboBox::eligeUnico", 0, "count = " + QString::number ( count() ) );
 
     QString elec = unicaEleccion();
@@ -625,6 +627,7 @@ QString BlDbCompleterComboBox::eligeUnico ( void )
 /// per l'article que volia trobar si nomes hi ha un article candidat
 void BlDbCompleterComboBox::focusOutEvent ( QFocusEvent * event )
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbCompleterComboBox::focusOutEvent", 0, "count = " + QString::number ( count() ) );
     eligeUnico();
     BlComboBox::focusOutEvent ( event );
@@ -634,7 +637,6 @@ void BlDbCompleterComboBox::focusOutEvent ( QFocusEvent * event )
 QString BlDbCompleterComboBox::entrada()
 {
     BL_FUNC_DEBUG
-    
     return m_entrada;
 }
 
@@ -650,23 +652,14 @@ void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
     /// Lanzamos el evento para que pueda ser capturado por terceros.
     emit pintaMenu ( popup );
 
-    /// Lanzamos la propagacion del menu a traves de las clases derivadas.
-//    creaMenu ( popup );
-
-
     QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
     QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
 
     if ( opcion ) {
-
         emit trataMenu ( opcion );
-
-        /// Activamos las herederas.
-//        procesaMenu ( opcion );
     } // end if
 
     delete popup;
-    
 }
 

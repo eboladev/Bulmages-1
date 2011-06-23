@@ -302,10 +302,9 @@ BlSubForm *BlFormList::subForm ( )
 void BlFormList::on_m_filtro_textChanged ( const QString &text )
 {
     BL_FUNC_DEBUG
-    if ( text.size() >= 3 ) {
+    if ( text.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() )  {
         on_mui_actualizar_clicked();
     } // end if
-    
 }
 
 

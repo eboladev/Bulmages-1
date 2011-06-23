@@ -169,6 +169,9 @@
 /// Indica cuales son los directorios de plugins
 #define CONF_DIR_PLUGINS             316
 
+/// Indica el numero de caracteres para activar el filtrado
+#define CONF_NUMCHAR_RELOAD_FILTRO   327
+
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages.
 #define CONF_PROGDATA                321
 /// Determina el directorio donde se hayan ubicados los archivos de datos para OPENREPORTS.

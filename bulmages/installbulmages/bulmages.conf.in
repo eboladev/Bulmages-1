@@ -24,6 +24,8 @@ CONF_SXC			xdg-open
 # Definimos si estamos en modo experto (mostrando opciones de experto o no)
 CONF_MODO_EXPERTO		FALSE
 
+# Define el numero de caracteres que es necesario introducir para activar el filtrado automatico. (Numeros bajos afectan al rendimiento y numeros altos invalidan la opcion)
+CONF_NUMCHAR_RELOAD_FILTRO      3
 
 # Hoja de estilo a utilizar
 CONF_STYLESHEET			@CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmages.css

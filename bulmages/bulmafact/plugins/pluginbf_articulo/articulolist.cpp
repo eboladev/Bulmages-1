@@ -60,7 +60,6 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList_ArticuloList", this );
     if ( res != 0 ) {
-	
         return;
     } // end if
     m_tipoarticulo->setMainCompany ( comp );
@@ -212,19 +211,18 @@ QString ArticuloList::formaQuery()
                  ") ";
 
     /// busca en todos los campos de tipo varchar.
-    if ( m_filtro->text() != "" ) {
-	    
+    if ( !m_filtro->text().isEmpty() ) {
 	query += " AND (";
-	bool andor = true;
+	bool andor = TRUE;
     
 	/// Recorre todas las columnas.
-	for (int i=0; i < mui_list->columnCount(); i++) {
-	  if (mui_list->dbFieldTypeByColumnId(i) == BlDbField::DbVarChar) {  
+	for (int i=0; i < mui_list->headerList()->count(); i++) {
+	  if (mui_list->headerList()->at(i)->dbFieldType() == BlDbField::DbVarChar) {  
 	    if (andor) {
-	      query += " lower(" + mui_list->dbFieldNameByColumnId(i) + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
+	      query += " lower(" + mui_list->headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
 	      andor = false;
 	    } else {
-	      query += " OR lower(" + mui_list->dbFieldNameByColumnId(i) + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
+	      query += " OR lower(" + mui_list->headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
 	    } // end if
 	  } // end if
 	} // end for

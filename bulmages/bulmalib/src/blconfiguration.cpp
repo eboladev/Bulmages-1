@@ -442,6 +442,8 @@ QString BlConfiguration::name( int i )
         return "CONF_TPV_CATEGORIES_COLUMNS";
     if ( i == CONF_MAIN_WINDOW_TITLE )
         return "CONF_MAIN_WINDOW_TITLE";
+    if ( i == CONF_NUMCHAR_RELOAD_FILTRO )
+        return "CONF_NUMCHAR_RELOAD_FILTRO";
     return "";
 }
 
