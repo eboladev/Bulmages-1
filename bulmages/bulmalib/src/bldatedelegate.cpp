@@ -33,8 +33,6 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allo
    , m_allowNull ( allowNull )
 {
    BL_FUNC_DEBUG
-
-   
 }
 
 
@@ -47,7 +45,6 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allo
 QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-
    BlDateSearch *ds = new BlDateSearch ( parent ) ;
    ds->setMainCompany ( m_company ) ;
    return ds;
@@ -62,7 +59,6 @@ QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewI
 void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-
    BlDateSearch *ds = ( BlDateSearch * ) editor;
    QString fecha = index.model()->data ( index ).toString();
 
@@ -73,8 +69,6 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
    }
 
    ds->setDate ( fecha );
-
-   
 }
 
 
@@ -87,12 +81,8 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
 void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-
    QString fecha = ( ( BlDateSearch * ) editor ) ->text();
    model->setData ( index, fecha ) ;
-   /// Liberamos la memoria
-   delete editor;
-   
 }
 
 
@@ -105,10 +95,7 @@ void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, 
 void BlDateDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-
    editor->setGeometry ( vis.rect ) ;
-
-   
 }
 
 
@@ -118,5 +105,6 @@ void BlDateDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionV
 **/
 void BlDateDelegate::setAllowNull ( bool v )
 {
+   BL_FUNC_DEBUG
    m_allowNull = v;
 }
