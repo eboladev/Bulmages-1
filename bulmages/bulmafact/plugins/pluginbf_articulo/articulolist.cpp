@@ -210,26 +210,9 @@ QString ArticuloList::formaQuery()
                  " UNION SELECT DISTINCT idarticulo FROM lfacturap"
                  ") ";
 
-    /// busca en todos los campos de tipo varchar.
-    if ( !m_filtro->text().isEmpty() ) {
-	query += " AND (";
-	bool andor = TRUE;
-    
-	/// Recorre todas las columnas.
-	for (int i=0; i < mui_list->headerList()->count(); i++) {
-	  if (mui_list->headerList()->at(i)->dbFieldType() == BlDbField::DbVarChar) {  
-	    if (andor) {
-	      query += " lower(" + mui_list->headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
-	      andor = false;
-	    } else {
-	      query += " OR lower(" + mui_list->headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
-	    } // end if
-	  } // end if
-	} // end for
-	
-	query += " ) ";
-    } // end if
-    
+    /// Hacemos el filtrado like del campo m_filtro
+    query += mui_list->likeFilterSQL(m_filtro->text());
+
     if ( m_familia->idfamilia() != "" ) {
         query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '" + m_familia->codigocompletofamilia() + "%')";
     } // end if

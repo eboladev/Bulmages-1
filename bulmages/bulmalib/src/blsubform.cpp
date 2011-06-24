@@ -3459,6 +3459,34 @@ QString BlSubForm::exportXML() {
 }
 
 
+QString BlSubForm::likeFilterSQL(const QString &text)
+{
+    BL_FUNC_DEBUG
+    QString result = "";
+    /// busca en todos los campos de tipo varchar.
+    if ( !text.isEmpty() ) {
+	result += " AND (";
+	bool andor = TRUE;
+    
+	/// Recorre todas las columnas.
+	for (int i=0; i < headerList()->count(); i++) {
+	  if (headerList()->at(i)->dbFieldType() == BlDbField::DbVarChar) {  
+	    if (andor) {
+	      result += " lower(" + headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
+	      andor = false;
+	    } else {
+	      result += " OR lower(" + headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
+	    } // end if
+	  } // end if
+	} // end for
+	
+	result += " ) ";
+    } // end if
+    
+    return result;
+}
+
+
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================

@@ -108,10 +108,10 @@ const QString ClientsList::generaFiltro()
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR lower(cifcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } // end if
+    
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
     if ( m_facturas->isChecked()) {
         filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM factura WHERE procesadafactura = FALSE)";
     } // end if

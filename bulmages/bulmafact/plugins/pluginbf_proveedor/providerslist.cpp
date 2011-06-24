@@ -133,10 +133,27 @@ QString ProveedorList::nomprovider()
 void ProveedorList::presentar()
 {
     BL_FUNC_DEBUG
-    mui_list->load ( "SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifproveedor) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomproveedor" );
-    
+    mui_list->load ( "SELECT * FROM proveedor WHERE 1=1 " + generaFiltro() );    
 }
 
+
+/** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta()
+    La clausula WHERE utiliza todas las opciones de filtrado para crearse. */
+/**
+\return
+**/
+const QString ProveedorList::generaFiltro()
+{
+    BL_FUNC_DEBUG
+    /// Tratamiento de los filtros.
+    QString filtro = "";
+    
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
+    
+    return ( filtro );
+}
 
 /// \TODO: Esta creacion debe pasar por la clase company.
 /**

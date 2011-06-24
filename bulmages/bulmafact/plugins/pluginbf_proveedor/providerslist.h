@@ -69,7 +69,8 @@ public:
     QString idprovider();
     QString cifprovider();
     QString nomprovider();
-
+    const QString generaFiltro();
+    
 public slots:
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();

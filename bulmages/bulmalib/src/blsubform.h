@@ -340,6 +340,8 @@ public:
     void preparaMenu();
     
     virtual QString exportXML();
+    
+    QString likeFilterSQL(const QString &text);
 
 public slots:
     virtual void printPDF ( const QString & );
