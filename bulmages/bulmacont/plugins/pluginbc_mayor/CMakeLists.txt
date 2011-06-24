@@ -39,8 +39,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmacont/src/
 	${CMAKE_SOURCE_DIR}/bulmacont/src/
-   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
-   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/)
+	${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
+	${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})

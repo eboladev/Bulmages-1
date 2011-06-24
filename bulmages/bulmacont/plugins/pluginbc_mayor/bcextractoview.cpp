@@ -54,6 +54,8 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
     mui_list->setMainCompany ( emp );
 
+    connect (mui_list, SIGNAL(openAsiento()), this, SLOT(openAsiento()) );
+
     /// Iniciamos los componentes
     m_codigoinicial->setMainCompany ( emp );
     m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
@@ -121,6 +123,27 @@ BcExtractoView::~BcExtractoView()
 
 
 
+void BcExtractoView::openAsiento()
+{
+    BL_FUNC_DEBUG
+    
+    QString idasiento = mui_list->dbValue ( "idasiento" );
+
+    int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+    
+    if ( ! resur) {
+        blMsgInfo("No se pudo crear instancia de asientos");
+        return;
+    } // end if
+    
+    BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
+
+    asiento ->muestraasiento ( idasiento );
+    asiento ->show();
+    asiento ->setFocus();
+}
+
+
 ///
 /**
 \param columna
@@ -129,24 +152,9 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
 {
     BL_FUNC_DEBUG
 
-    QString textoHeader;
-    textoHeader =  mui_list->headerList() ->at ( columna ) ->fieldName().toAscii();
-    //if ( textoHeader == "ordenasiento" ) {
-        QString idasiento = mui_list->dbValue ( "idasiento" );
-
-        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
-        if ( ! resur) {
-            blMsgInfo("No se pudo crear instancia de asientos");
-            return;
-        } // end if
-        BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
-
-        asiento ->muestraasiento ( idasiento );
-        asiento ->show();
-        asiento ->setFocus();
-    //} // end if
-    
+    openAsiento();
 }
+
 
 ///
 void BcExtractoView::on_mui_configurar_clicked()

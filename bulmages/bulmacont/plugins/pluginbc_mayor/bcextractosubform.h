@@ -40,6 +40,9 @@ public:
 public slots:
     virtual void s_pintaMenu ( QMenu *menu );
     virtual void s_trataMenu ( QAction *action );
+    
+signals:
+    void openAsiento();
 };
 
 

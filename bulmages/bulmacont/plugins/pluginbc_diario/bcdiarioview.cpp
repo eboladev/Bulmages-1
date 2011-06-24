@@ -32,6 +32,7 @@
 #include "blfunctions.h"
 #include "bcdiarioprintview.h"
 #include "bcdiarioimprimir2txt.h"
+#include "bcasientoview.h"
 #include "blconfiguration.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
@@ -54,6 +55,9 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     setDbTableName ( "apunte" );
 
     mui_list->setMainCompany ( emp );
+    
+    connect (mui_list, SIGNAL(openAsiento()), this, SLOT(openAsiento()) );
+    
     /// Arreglamos la cuenta
     mui_contrapartida->setMainCompany ( emp );
     mui_contrapartida->setLabel ( _ ( "Contrapartida:" ) );
@@ -305,5 +309,38 @@ void BcDiarioView::on_mui_imprimir_clicked()
     BL_FUNC_DEBUG
     mui_list->printPDF ( "diario" );
     
+}
+
+
+///
+/**
+\param columna
+**/
+void BcDiarioView::on_mui_list_cellDoubleClicked ( int, int columna )
+{
+    BL_FUNC_DEBUG
+
+    openAsiento();
+}
+
+
+void BcDiarioView::openAsiento()
+{
+    BL_FUNC_DEBUG
+    
+    QString idasiento = mui_list->dbValue ( "idasiento" );
+
+    int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+    
+    if ( ! resur) {
+        blMsgInfo("No se pudo crear instancia de asientos");
+        return;
+    } // end if
+    
+    BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
+
+    asiento ->muestraasiento ( idasiento );
+    asiento ->show();
+    asiento ->setFocus();
 }
 

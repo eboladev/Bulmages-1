@@ -71,6 +71,7 @@ public slots:
     virtual void boton_guardar();
     virtual void on_mui_configurar_clicked();
     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
+    virtual void openAsiento();
 
 };
 

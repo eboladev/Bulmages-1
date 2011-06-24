@@ -109,7 +109,7 @@ void BcExtractoSubForm::s_trataMenu ( QAction *action )
     BL_FUNC_DEBUG
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
-        boton_asiento();
+	emit openAsiento();
     if ( action->text() == _ ( "Mostrar diario (dia)" ) )
         boton_diario1 ( 0 );
     if ( action->text() == _ ( "Mostrar diario (mes)" ) )
