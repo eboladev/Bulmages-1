@@ -77,6 +77,8 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
     mui_arbolcuentas->hideColumn ( cgrupo );
     mui_arbolcuentas->hideColumn ( ctipocuenta );
 
+
+
     mui_tablacuentas->setColumnCount ( 3 );
     headers << _ ( "CODIGO" ) << _ ( "NOMBRE" );
     mui_tablacuentas->setHorizontalHeaderLabels ( headers );
@@ -168,6 +170,9 @@ int BcPlanContableListView::inicializa()
             it->setText ( cimputacion, ctas->value( "imputacion" ) );
             it->setText ( cdebe, ctas->value( "debe" ) );
             it->setText ( chaber, ctas->value( "haber" ) );
+
+	    it->setTextAlignment(2, Qt::AlignRight);
+	    it->setTextAlignment(3, Qt::AlignRight);
 
             /// Ponemos los iconos.
             if ( ctas->value( "tipocuenta" ) == "1" )
