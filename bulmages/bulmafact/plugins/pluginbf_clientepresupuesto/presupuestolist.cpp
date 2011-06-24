@@ -242,11 +242,9 @@ QString PresupuestoList::generaFiltro()
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(descpresupuesto) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR refpresupuesto LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } // end if
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
 
     if ( m_cliente->id() != "" ) {
         filtro += " AND presupuesto.idcliente = " + m_cliente->id();

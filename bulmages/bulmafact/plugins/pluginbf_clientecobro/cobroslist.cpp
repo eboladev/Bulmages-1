@@ -136,11 +136,10 @@ QString CobrosList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(comentcobro) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR refcobro LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } // end if
+    
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
 
     if ( m_cliente->id() != "" ) {
         filtro += " AND cobro.idcliente = " + m_cliente->id();

@@ -129,12 +129,9 @@ QString ProfesoresList::generaFiltro()
     BL_FUNC_DEBUG
     
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(nombreprofesor) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " ) ";
-    } // end if
 
-    
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
     
     return ( filtro );
 }

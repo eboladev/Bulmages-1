@@ -196,13 +196,10 @@ QString FacturasList::generaFiltro()
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(descfactura) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR reffactura LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } else {
-        filtro = "";
-    } // end if
+    
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
     if ( m_cliente->id() != "" ) {
         filtro += " AND factura.idcliente = " + m_cliente->id();
     } // end if

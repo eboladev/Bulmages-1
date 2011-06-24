@@ -128,12 +128,8 @@ QString ActividadesList::generaFiltro()
     
     QString filtro = "";
     
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(nombreactividad) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " ) ";
-    } // end i
-    
-    
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
     
     return ( filtro );
 }
