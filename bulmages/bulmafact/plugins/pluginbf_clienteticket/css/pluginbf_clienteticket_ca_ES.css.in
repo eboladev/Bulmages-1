@@ -1,8 +1,8 @@
 #AlbaranClienteBase #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_clientealbaran-new.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_clienteticket-new.png);
 }
 
 #AlbaranClienteListBase #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_clientealbaran-list.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_clienteticket-list.png);
 }
 
