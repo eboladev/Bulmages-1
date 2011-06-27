@@ -104,7 +104,7 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente pluginbf_articulo)
 
 set(files informeclientes.png)
 install(FILES ${files} DESTINATION share/bulmages/icons)
