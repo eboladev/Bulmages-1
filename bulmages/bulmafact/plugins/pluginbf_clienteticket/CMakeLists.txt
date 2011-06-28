@@ -136,5 +136,4 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_fr_FR.css "${VAR_CSS_fr_FR}" )
 FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css VAR_CSS_en_US)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_US.css "${VAR_CSS_en_US}" )
 
-install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
 
