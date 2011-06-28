@@ -131,7 +131,7 @@ void ListCompArticuloView::load ( QString idarticulo )
 {
     BL_FUNC_DEBUG
     mdb_idarticulo = idarticulo;
-    BlSubForm::load ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
+    BlSubForm::load ( "SELECT * FROM comparticulo LEFT JOIN articulo ON comparticulo.idcomponente = articulo.idarticulo WHERE comparticulo.idarticulo=" + mdb_idarticulo );
     
 }
 

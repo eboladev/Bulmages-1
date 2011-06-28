@@ -54,6 +54,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual bool compruebaCiclos(QString);
 
 public slots:
     virtual void on_mui_codigocompletoarticulo_editingFinished();

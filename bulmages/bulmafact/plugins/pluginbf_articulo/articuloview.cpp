@@ -268,7 +268,12 @@ int ArticuloView::afterSave()
     /// Guardamos la lista de componentes.
     m_componentes->setColumnValue ( "idarticulo", dbValue ( "idarticulo" ) );
     if ( m_componentes->save() != 0 ) {
-        throw - 1;
+        throw -1;
+    } // end if
+    /// Hacemos comprobacion de ciclos de componente y avisamos en caso de producirse.
+    if (compruebaCiclos(dbValue("idarticulo"))) {
+        blMsgError("Existen ciclos en los componentes que pueden producir errores en el programa");
+	throw -1;
     } // end if
     /// Disparamos los plugins
     g_plugins->lanza ( "ArticuloView_guardar_post", this );
@@ -276,6 +281,33 @@ int ArticuloView::afterSave()
     
     return 0;
 
+}
+
+bool ArticuloView::compruebaCiclos(QString idart) {
+  BL_FUNC_DEBUG
+  static QList<QString> lista;
+  bool result = FALSE;
+  
+  /// Comprueba que no este duplicado un path
+  if (lista.contains(idart)) return TRUE;
+  
+  lista.append(idart);
+  
+  
+
+  // Comprueba los hijos de idart
+  QString sqlquery = "SELECT * FROM comparticulo WHERE idarticulo = " +idart;
+  BlDbRecordSet *cur = mainCompany()->loadQuery(sqlquery);
+  while  (! cur->eof() && !result) {
+      result |=  compruebaCiclos(cur->value("idcomponente"));
+      cur->nextRecord();
+  } // end while
+  delete cur;
+  
+  
+  
+  lista.removeLast ();
+  return result;
 }
 
 
