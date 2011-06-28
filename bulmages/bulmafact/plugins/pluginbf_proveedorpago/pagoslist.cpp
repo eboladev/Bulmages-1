@@ -123,13 +123,9 @@ QString PagosList::generaFiltro()
     BL_FUNC_DEBUG
 
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(descpago) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR refpago LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } else {
-        filtro = "";
-    } // end if
+
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
 
     if ( m_proveedor->id() != "" ) {
         filtro += " AND pago.idproveedor = " + m_proveedor->id();
@@ -152,7 +148,6 @@ QString PagosList::generaFiltro()
     if ( mui_idbanco->idbanco() != "" )
         filtro += " AND idbanco = " + mui_idbanco->idbanco();
 
-    
     return ( filtro );
 }
 

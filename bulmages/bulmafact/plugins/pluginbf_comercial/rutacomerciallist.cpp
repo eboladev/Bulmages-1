@@ -136,6 +136,10 @@ QString RutaComercialList::generaFiltro()
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
     QString filtro = "";
+
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
     if ( m_idcliente->id() != "" ) {
         filtro += " AND t1.idcliente = " + m_idcliente->id();
     } // end if
@@ -158,16 +162,6 @@ void RutaComercialList::editar ( int row )
     BL_FUNC_DEBUG
     QString idrutacomercial = mui_list->dbValue ( "idrutacomercial", row );
     QString idincidenciacomercial = mui_list->dbValue ( "idincidenciacomercial", row );
-
-    /**
-    BfCompany *comp = ((BfBulmaFact *) g_main)->company();
-    comp->loadQuery("SELECT 1 + 2");
-    
-    RutaComercialView *rut = new RutaComercialView (  this);
-    rut->setMainCompany((BfCompany *) mainCompany() );
-    rut->load(idrutacomercial);
-    rut->show();
-    **/
 
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->load ( idrutacomercial, idincidenciacomercial ) )

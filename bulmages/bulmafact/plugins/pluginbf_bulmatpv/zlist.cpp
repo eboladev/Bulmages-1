@@ -122,11 +122,6 @@ void ZList::setMainCompany ( BfCompany *comp )
 void ZList::crear()
 {
     BL_FUNC_DEBUG
-    /*
-        ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
-        mainCompany()->pWorkspace()->addSubWindow(alm);
-        alm->show();
-    */
     
 }
 
@@ -155,8 +150,10 @@ QString ZList::generaFiltro()
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    return ( filtro );
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
     
+    return ( filtro );
 }
 
 

@@ -162,9 +162,8 @@ QString RecibosList::generaFiltro()
     
     QString filtro = "";
     
-    if ( m_filtro->text() != "" ) {
-        filtro += " AND ( lower(cliente.nomcliente) LIKE lower('%" + m_filtro->text() + "%') OR lower(recibo.descrecibo) LIKE lower('%" + m_filtro->text() + "%') )";
-    } // end if
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
     
     /// Tratamos los elementos procesados y no procesados.
     if ( mui_procesada->currentIndex() == 1 ) {

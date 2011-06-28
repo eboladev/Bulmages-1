@@ -361,13 +361,9 @@ QString AlbaranClienteList::generarFiltro()
     BL_FUNC_DEBUG
     QString filtro = "";
 
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(descalbaran) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR refalbaran LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } else {
-        filtro = "";
-    } // end if
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
 
     if ( m_cliente->id() != "" )
         filtro += " AND albaran.idcliente='" + m_cliente->id() + "'";

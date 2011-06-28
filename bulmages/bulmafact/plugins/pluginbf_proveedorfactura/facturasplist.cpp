@@ -174,11 +174,10 @@ QString FacturasProveedorList::generaFiltro()
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(descfacturap) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " OR reffacturap LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
-    } // end if
+
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
     if ( m_proveedor->id() != "" ) {
         filtro += " AND facturap.idproveedor = " + m_proveedor->id();
     } // end if

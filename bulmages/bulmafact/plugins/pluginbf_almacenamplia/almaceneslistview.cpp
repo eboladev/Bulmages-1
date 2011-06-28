@@ -183,6 +183,9 @@ QString AlmacenesListView::generaFiltro()
     /// Tratamiento de los filtros.
     QString filtro = "";
 
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
     return ( filtro );
     
 }
