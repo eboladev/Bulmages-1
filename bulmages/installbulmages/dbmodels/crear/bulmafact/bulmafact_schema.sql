@@ -474,6 +474,24 @@ CREATE TABLE comparticulo (
 );
 
 
+\echo -n ':: Funcion con restricciones en los componentes de articulo ... '
+CREATE FUNCTION restriccionescomparticulo() RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador de las restricciones antes de insertar o actualizar un albaran ... '
+CREATE TRIGGER restriccionesalbarantrigger
+    BEFORE INSERT OR UPDATE ON comparticulo
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionescomparticulo();
+
+
+
 -- ** tarifa **
 -- nomtarifa: Nombre de la tarifa.
 -- finiciotarifa: Fecha de inicio vigencia del precio.
@@ -3107,9 +3125,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.13.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.13.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0002'');
 	END IF;
 	RETURN 0;
 END;
