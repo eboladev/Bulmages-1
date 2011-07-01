@@ -94,6 +94,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+  
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionProfesores") {
         if ( g_profesoresList ) {
             g_profesoresList->hide();
@@ -110,6 +112,7 @@ int BlAction_triggered(BlAction *accion) {
         AboutFapacView *afv = new AboutFapacView();
         afv->show();
     } // end if
+    return 0;
 }
 
 
@@ -122,8 +125,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         comp->m_pWorkspace->addSubWindow ( g_profesoresList );
         g_profesoresList->hide();
     } // end if
-    
-    
     
     return 0;
 }
