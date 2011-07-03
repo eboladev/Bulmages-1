@@ -91,7 +91,6 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
 
-    
     return 0;
 }
 

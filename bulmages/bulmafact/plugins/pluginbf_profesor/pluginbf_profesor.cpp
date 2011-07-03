@@ -94,7 +94,6 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-  
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionProfesores") {
         if ( g_profesoresList ) {
@@ -102,7 +101,6 @@ int BlAction_triggered(BlAction *accion) {
             g_profesoresList->show();
         } // end if
     } // end if
-
     if (accion->objectName() == "mui_actionProfesorNuevo") {
         ProfesorView * bud = new ProfesorView ( g_pluginbf_profesor->company(), NULL );
         g_pluginbf_profesor->company()->m_pWorkspace->addSubWindow ( bud );

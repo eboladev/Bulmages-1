@@ -76,22 +76,18 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorFactura" );
-
     if (accion->objectName() == "mui_actionProveedoresFacturas") {
         if ( g_facturasProveedorList ) {
             g_facturasProveedorList->hide();
             g_facturasProveedorList->show();
         } // end if
     }  // end if
-
     if (accion->objectName() == "mui_actionProveedorFacturaNueva") {
         FacturaProveedorView * bud = new FacturaProveedorView ( g_pluginbf_proveedorfactura->company(), NULL );
         g_pluginbf_proveedorfactura->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
     }  // end if
-
-    
     return 0;
 }
 
