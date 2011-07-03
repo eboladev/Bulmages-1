@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-05-30 17:29+0200\n"
-"PO-Revision-Date: 2011-02-26 07:10+0100\n"
+"PO-Revision-Date: 2011-07-03 08:03+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu\n"
 "Language-Team: Catalan <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ui_blsubformbase.h:677
 msgid "!Opcion reservada a expertos!"
-msgstr "¡Opció reservada per a experts!"
+msgstr "Opció reservada per a experts!"
 
 #: blcountryview.cpp:225
 msgid "&Borrar"
@@ -55,7 +55,7 @@ msgstr "&Entra"
 
 #: blcountryview.cpp:118
 msgid "&Guardar"
-msgstr "Desa"
+msgstr "&Desa"
 
 #: blform.cpp:460
 msgid "&No"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: ui_blformlistfilterbase.h:156
 msgid "<="
-msgstr ""
+msgstr "<="
 
 #: blimportexport.cpp:1910
 msgid "<HR><B>Tratando el cliente "
@@ -120,15 +120,15 @@ msgstr "<LI>Ja hi ha un compte amb el codi"
 
 #: ui_blformlistfilterbase.h:152
 msgid "="
-msgstr ""
+msgstr "="
 
 #: ui_blformlistfilterbase.h:153
 msgid ">"
-msgstr ""
+msgstr ">"
 
 #: ui_blformlistfilterbase.h:155
 msgid ">="
-msgstr ""
+msgstr ">="
 
 #: ui_blcompanydialogbase.h:194
 msgid "Actualizar Listado"
@@ -180,7 +180,7 @@ msgstr "Nom de la aplicació"
 
 #: blcompanydialog.cpp:507
 msgid "Archivo"
-msgstr "Arxiu"
+msgstr "Fitxer"
 
 #: blimportexport.cpp:2282
 msgid "Articulo"
@@ -192,7 +192,7 @@ msgstr "Avís del programa"
 
 #: blsubform.cpp:3158
 msgid "Bajar fila"
-msgstr ""
+msgstr "Baixa la fila"
 
 #: blperiodicitycombobox.cpp:76
 msgid "Bienal"
@@ -312,15 +312,15 @@ msgstr "<LI>Dades insuficients per tractar el magatzem."
 
 #: blimportexport.cpp:2251
 msgid "Datos insuficientes para tratar el articulo."
-msgstr "<P>Dades insuficients per a tractar l'article.</P>"
+msgstr "<P>Dades insuficients per tractar l'article.</P>"
 
 #: blimportexport.cpp:2163
 msgid "Datos insuficientes para tratar la familia."
-msgstr "<P>Dades insuficients per a tractar la família.</P>"
+msgstr "<P>Dades insuficients per tractar la família.</P>"
 
 #: blimportexport.cpp:2053
 msgid "Datos insuficientes para tratar la forma de pago."
-msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
+msgstr "<LI>Dades insuficients per tractar la forma de pagament."
 
 #: blcountryview.cpp:219
 msgid "Debe seleccionar un elemento de la lista"
@@ -483,6 +483,7 @@ msgstr "Error en copiar listado.rml [ BlSubForm->printPDF() ]"
 msgid "Esc"
 msgstr "Esc"
 
+# Escrigueu aquí una consulta SQL
 #: ui_blsubformbase.h:674
 msgid "Escriba aqui la consulta SQL"
 msgstr "Escrigui aquí una consulta SQL"
@@ -497,8 +498,7 @@ msgstr "Exportant nova forma de pagament"
 
 #: blgenericcomboboxdelegate.cpp:132
 msgid "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate."
-msgstr ""
-"Falta definir algún paràmetre necessari per a BlGenericComboBoxDelegate."
+msgstr "Falta definir algún paràmetre necessari per a BlGenericComboBoxDelegate."
 
 #: blimportexport.cpp:2180
 msgid "Familia"
@@ -518,11 +518,11 @@ msgstr "Filtrar per"
 
 #: ui_blformconfigbase.h:326 ui_blbankeditbase.h:92
 msgid "Form"
-msgstr "Form"
+msgstr "Formulari"
 
 #: ui_blformconfigbase.h:331
 msgid "Form Elements"
-msgstr "Form Elements"
+msgstr "Elements del formulari"
 
 #: ui_bldatesearchbase.h:82 ui_blsearchwidgetbase.h:105
 msgid "Form1"
@@ -680,7 +680,6 @@ msgid "Nombre pais"
 msgstr "Nom país"
 
 #: ui_blcountrybase.h:274 ui_blcountrybase.h:277
-#, fuzzy
 msgid "Nuevo pais"
 msgstr "Nou país"
 
@@ -740,7 +739,6 @@ msgstr "Província"
 msgid "Qt Scripting"
 msgstr "Qt Scripting"
 
-# Consulta SQL
 #: ui_blsubformbase.h:676
 msgid "Query"
 msgstr "Consulta SQL"
@@ -787,7 +785,7 @@ msgstr "Semestral"
 
 #: blsubform.cpp:3155
 msgid "Subir fila"
-msgstr ""
+msgstr "Puja la fila"
 
 #: ui_blprogressbarbase.h:69
 msgid "TextLabel"
@@ -843,43 +841,43 @@ msgstr "<HR><B>Tractant la comanda del client"
 
 #: blimportexport.cpp:2988
 msgid "Tratando LPresupuesto"
-msgstr "<HR><B>Tractant el pressupost"
+msgstr "Tractant el pressupost"
 
 #: blimportexport.cpp:2573
 msgid "Tratando albaran"
-msgstr "<HR><B>Tractant l'albarà"
+msgstr "Tractant l'albarà"
 
 #: blimportexport.cpp:2088
 msgid "Tratando almacen"
-msgstr "<HR><B>Tractant magatzem"
+msgstr "Tractant magatzem"
 
 #: blimportexport.cpp:2199
 msgid "Tratando articulo"
-msgstr "<HR><B>Tractant Article"
+msgstr "Tractant Article"
 
 #: blimportexport.cpp:2011
 msgid "Tratando el proveedor"
-msgstr "<HR><B>Tractant el proveïdor"
+msgstr "Tractant el proveïdor"
 
 #: blimportexport.cpp:2799
 msgid "Tratando factura"
-msgstr "<HR><B>Tractant la factura"
+msgstr "Tractant la factura"
 
 #: blimportexport.cpp:2138
 msgid "Tratando familia"
-msgstr "<HR><B>Tractant família"
+msgstr "Tractant família"
 
 #: blimportexport.cpp:2045
 msgid "Tratando la forma de pago"
-msgstr "<HR><B>Tractant la forma de pagament"
+msgstr "Tractant la forma de pagament"
 
 #: blimportexport.cpp:2346
 msgid "Tratando pedido cliente"
-msgstr "<HR><B>Tractant  Comanda Client"
+msgstr "Tractant  Comanda Client"
 
 #: blimportexport.cpp:3037
 msgid "Tratando presupuesto"
-msgstr "<HR><B>Tractant el pressupost"
+msgstr "Tractant el pressupost"
 
 #: blperiodicitycombobox.cpp:73
 msgid "Trimestral"
@@ -887,7 +885,7 @@ msgstr "Trimestral"
 
 #: blsubform.cpp:3162
 msgid "Usar editor"
-msgstr ""
+msgstr "Usa l'editor"
 
 #: ui_blformconfigbase.h:334
 msgid "User Preferences"
@@ -899,11 +897,11 @@ msgstr "Usuari actual "
 
 #: blsubform.cpp:3178
 msgid "Ver/Ocultar configurador de subformulario"
-msgstr "Veure/Ocultar configurador de subformulari"
+msgstr "Veu/Oculta configurador de subformulari"
 
 #: blsubform.cpp:3176
 msgid "Ver/Ocultar menu de subformulario"
-msgstr "Veure/Ocultar menú de subformulari"
+msgstr "Veu/Oculta menú de subformulari"
 
 #: blsubform.cpp:239
 msgid "Visible"
