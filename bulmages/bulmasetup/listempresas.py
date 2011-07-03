@@ -47,7 +47,7 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
                     databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
                     if (nombre != None and tipo != None and databaserevision != None):
                         self.mui_listado.setRowCount(self.mui_listado.rowCount() + 1)
-                        self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
+                        self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0]).decode('string-escape').decode("utf-8")))
                         self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
                         self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
                         self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
