@@ -3,15 +3,14 @@
 # Header entry was created by KBabel!
 #
 # Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-06-08 11:14+0200\n"
-"PO-Revision-Date: 2009-01-26 09:32+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team:  <en@li.org>\n"
+"PO-Revision-Date: 2011-07-03 06:49+0200\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team:  English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +21,7 @@ msgstr "&Accept"
 
 #: pluginbf_profesor.cpp:57
 msgid "&Activitats"
-msgstr ""
+msgstr "Activities"
 
 #: ui_profesorbase.h:529
 msgid "&Cancelar"
@@ -30,20 +29,17 @@ msgstr "&Cancel"
 
 #: ui_profesorbase.h:513
 msgid "&Datos generales"
-msgstr "&General performances"
+msgstr "&General data"
 
 #: pluginbf_profesor.cpp:72
-#, fuzzy
 msgid "&Nuevo profesor"
-msgstr "New &supplier..."
+msgstr "&New instructor"
 
 #: pluginbf_profesor.cpp:63
-#, fuzzy
 msgid "&Profesores"
-msgstr "&Suppliers"
+msgstr "&Instructors"
 
 #: ui_aboutfapacbase.h:146
-#, fuzzy
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -68,62 +64,54 @@ msgstr ""
 #: pluginbf_profesor.cpp:81 pluginbf_profesor.cpp:82 pluginbf_profesor.cpp:83
 #: ui_aboutfapacbase.h:144
 msgid "About FAPAC"
-msgstr ""
+msgstr "About FaPaC"
 
 #: ui_profesorbase.h:527
 msgid "Actividades Impartidas"
-msgstr ""
+msgstr "Activities instructed"
 
 #: ui_profesoreslistbase.h:365 ui_profesoreslistbase.h:368
 msgid "Actualizar listado"
 msgstr "Update listing"
 
 #: ui_profesoreslistbase.h:310
-#, fuzzy
 msgid "Banco:"
-msgstr "Bank"
+msgstr "Bank:"
 
 #: ui_aboutfapacbase.h:151
-#, fuzzy
 msgid "Barcelona"
-msgstr "Erase account"
+msgstr "Barcelona"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
-#, fuzzy
 msgid "Borrar Profesor"
-msgstr "Erase supplier"
+msgstr "Erase Instructor"
 
 #: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
 #: ui_profesorbase.h:498
-#, fuzzy
 msgid "Borrar cobro"
 msgstr "Erase quota"
 
 #: profesoreslist.cpp:286
-#, fuzzy
 msgid "Borrar profesor"
-msgstr "Erase supplier"
+msgstr "Erase instructor"
 
 #: ui_profesoreslistbase.h:372
 msgid "Buscar:"
-msgstr "Look for:"
+msgstr "Search:"
 
 #: profesorview.cpp:59
-#, fuzzy
 msgid "CP del profesor"
-msgstr "ID supplier"
+msgstr "Instructr Postal Code"
 
 #: ui_aboutfapacbase.h:155
 msgid "Cerrar"
 msgstr "Close"
 
 #: ui_profesoreslistbase.h:314
-#, fuzzy
 msgid "Cobros efectivos"
 msgstr "Electronic mail:"
 
 #: ui_profesoreslistbase.h:313
-#, fuzzy
 msgid "Cobros previstos"
 msgstr "&Collections and payments"
 
@@ -132,17 +120,16 @@ msgid "Codigo postal:"
 msgstr "Postal code:"
 
 #: profesorview.cpp:67
-#, fuzzy
 msgid "Comentarios del profesor"
-msgstr "Commentaries of the seat"
+msgstr "Comments on the instructor"
 
 #: ui_profesorbase.h:525
 msgid "Comentarios:"
-msgstr "Commentaries:"
+msgstr "Comments:"
 
 #: ui_profesoreslistbase.h:357 ui_profesoreslistbase.h:360
 msgid "Configurar listado"
-msgstr "Form listing"
+msgstr "Configure the listing"
 
 #: ui_profesorbase.h:512
 msgid "Correo electronico:"
@@ -181,141 +168,108 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: ui_profesorbase.h:502
-#, fuzzy
 msgid "D.N.I."
-msgstr "I.V.A."
+msgstr "ID:."
 
 #: profesoreslist.cpp:341
 msgid "DNI"
-msgstr ""
+msgstr "ID"
 
 #: profesorview.cpp:57
-#, fuzzy
 msgid "DNI del profesor"
-msgstr "ID supplier"
+msgstr "ID of the instructor"
 
 #: profesoreslist.cpp:266
-#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr "It must select a family"
+msgstr "You have to first select a row"
 
 #: profesoreslist.cpp:223
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "It must select a family"
+msgstr "You have to select a line"
 
 #: profesorview.cpp:58
-#, fuzzy
 msgid "Direccion del profesor"
-msgstr "Direction of the supplier"
+msgstr "Instructor address"
 
 #: ui_profesorbase.h:504
 msgid "Direccion:"
 msgstr "Address:"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
-#, fuzzy
 msgid "Editar Profesor"
-msgstr "Publish article"
+msgstr "Edit instructor"
 
 #: profesoreslist.cpp:285
-#, fuzzy
 msgid "Editar profesor"
-msgstr "Keep supplier"
+msgstr "Edit instructor"
 
 #: profesoreslist.cpp:238
-#, fuzzy
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error when erasing a client"
+msgstr "Error when deleting collection from a client"
 
 #: profesorview.cpp:97
-#, fuzzy
 msgid "Error al crear el profesor"
-msgstr "Error when creating the supplier"
+msgstr "Error when creating the instructor"
 
 #: ui_profesorbase.h:524
-#, fuzzy
 msgid "Estudios"
-msgstr "State"
+msgstr "Background"
 
 #: profesorview.cpp:66
-#, fuzzy
 msgid "Estudios del profesor"
-msgstr "Name of the supplier"
+msgstr "Background of the instructor"
 
 #: ui_profesorbase.h:523
-#, fuzzy
 msgid "Estudios:"
-msgstr "State"
+msgstr "Background:"
 
 #: ui_profesoreslistbase.h:371
 msgid "F5"
 msgstr "F5"
 
 #: profesorview.cpp:62
-#, fuzzy
 msgid "Fax del profesor"
-msgstr "Name of the supplier"
+msgstr "Instructr fax"
 
 #: profesorview.cpp:87
-#, fuzzy
 msgid "Fecha Final"
-msgstr ""
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Final Date\n"
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Fina Date\n"
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Final Date\n"
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Final Date"
+msgstr "Final Date"
 
 #: profesorview.cpp:86
 msgid "Fecha Inicial"
 msgstr "Initial Date"
 
 #: ui_profesoreslistbase.h:311
-#, fuzzy
 msgid "Fecha final:"
-msgstr "Final &date:"
+msgstr "Final date:"
 
 #: ui_profesoreslistbase.h:312
-#, fuzzy
 msgid "Fecha inicial:"
-msgstr "Initial &date:"
+msgstr "Initial date:"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
-#, fuzzy
 msgid "Filtrar Profesores"
-msgstr "Filter listing"
+msgstr "Filter instructors"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
-msgstr ""
+msgstr "Girona"
 
 #: ui_profesorbase.h:479 ui_profesorbase.h:482
-#, fuzzy
 msgid "Guardar cobro"
 msgstr "Keep changes"
 
 #: profesorview.cpp:82
-#, fuzzy
 msgid "ID Actividad"
-msgstr ""
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Id type iva\n"
-"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Id type IVA "
+msgstr "Activity ID"
 
 #: profesorview.cpp:55
-#, fuzzy
 msgid "ID profesor"
-msgstr "ID supplier"
+msgstr "Instructr ID"
 
 #: profesoreslist.cpp:339
-#, fuzzy
 msgid "Id profesor"
-msgstr "ID supplier"
+msgstr "Instructor ID"
 
 #: ui_profesoreslistbase.h:341 ui_profesoreslistbase.h:344
 msgid "Imprimir listado"
@@ -323,16 +277,15 @@ msgstr "Print listing"
 
 #: ui_aboutfapacbase.h:153
 msgid "Lleida"
-msgstr ""
+msgstr "Lleida"
 
 #: profesorview.cpp:52
 msgid "Monitor"
-msgstr ""
+msgstr "Instructor"
 
 #: profesorview.cpp:63
-#, fuzzy
 msgid "Movil del profesor"
-msgstr "Name of the supplier"
+msgstr "Instructor cell phone"
 
 #: profesoreslist.cpp:340 profesorview.cpp:83
 msgid "Nombre"
@@ -343,30 +296,26 @@ msgid "Nombre completo:"
 msgstr "Complete name:"
 
 #: profesorview.cpp:56
-#, fuzzy
 msgid "Nombre del profesor"
-msgstr "Name of the supplier"
+msgstr "Instructor name"
 
 #: ui_profesorbase.h:467
 msgid "Nuevo Monitor"
-msgstr ""
+msgstr "New instructor"
 
 #: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
-#, fuzzy
 msgid "Nuevo Profesor"
-msgstr "New &supplier..."
+msgstr "New instructor"
 
 #: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
-#, fuzzy
 msgid "Nuevo profesor"
-msgstr "New &supplier..."
+msgstr "New instructor"
 
 #: ui_profesorbase.h:509
 msgid "Numero de fax:"
-msgstr "Number of fax:"
+msgstr "Fax number:"
 
 #: ui_profesorbase.h:526
-#, fuzzy
 msgid "Otros datos"
 msgstr "Other data:"
 
@@ -376,16 +325,15 @@ msgstr "Web page:"
 
 #: profesoreslist.cpp:343
 msgid "Poblacion"
-msgstr "Population"
+msgstr "City"
 
 #: profesorview.cpp:60
-#, fuzzy
 msgid "Poblacion del profesor"
-msgstr "Name of the supplier"
+msgstr "Instructor city"
 
 #: ui_profesorbase.h:506
 msgid "Poblacion:"
-msgstr "Population:"
+msgstr "City:"
 
 #: profesorview.cpp:85
 msgid "Precio"
@@ -393,9 +341,8 @@ msgstr "Price"
 
 #: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
 #: ui_profesoreslistbase.h:309
-#, fuzzy
 msgid "Profesores"
-msgstr "Suppliers"
+msgstr "Instructors"
 
 #: ui_profesorbase.h:507
 msgid "Provincia:"
@@ -403,47 +350,36 @@ msgstr "Province:"
 
 #: ui_aboutfapacbase.h:154
 msgid "Tarragona"
-msgstr ""
+msgstr "Tarragona"
 
 #: profesoreslist.cpp:342
-#, fuzzy
 msgid "Telefono"
 msgstr "Telephone:"
 
 #: profesorview.cpp:61
-#, fuzzy
 msgid "Telefono del profesor"
-msgstr "Telephone of the supplier"
+msgstr "Instructor telephone"
 
 #: ui_profesorbase.h:508
 msgid "Telefono fijo:"
-msgstr "Telephone fixed:"
+msgstr "Fixed telephone:"
 
 #: ui_profesorbase.h:511
 msgid "Telefono movil:"
-msgstr "Telephone mobil:"
+msgstr "Cell telephone:"
 
 #: profesorview.cpp:125
-#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Tiene que guardar el documento antes de poder imprimirlo.\n"
-"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"You have to save the document before being able to print it.\n"
-"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Tiene que guardar el documento antes de poder imprimirlo."
+msgstr "You have to save the document before being able to print it."
 
 #: profesorview.cpp:84
 msgid "Tipo"
 msgstr "Type"
 
 #: profesorview.cpp:65
-#, fuzzy
 msgid "Web del profesor"
-msgstr "Name of the supplier"
+msgstr "Instructor web page:"
 
 #: profesorview.cpp:64
-#, fuzzy
 msgid "eMail del profesor"
-msgstr "Name of the supplier"
+msgstr "Instructor email"
