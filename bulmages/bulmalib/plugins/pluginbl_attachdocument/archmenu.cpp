@@ -30,8 +30,6 @@
 #include <QToolButton>
 #include <QPushButton>
 
-#include <QDesktopServices>
-#include <QUrl>
 
 #include "blfixed.h"
 #include "blmaincompany.h"
@@ -210,9 +208,7 @@ void EQToolButton::trataMenu ( QAction *action )
         QString query = "SELECT * FROM archivo WHERE idarchivo = " + idarchivo;
         BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-             QDesktopServices::openUrl(QUrl( cur->value( "rutaarchivo" ), QUrl::TolerantMode));
-            //QString comando = "konqueror " + cur->value( "rutaarchivo" ) + " &";
-           // system ( comando.toAscii() );
+            blWebBrowser(cur->value( "rutaarchivo" ));
         } // end if
         delete cur;
     } // end if

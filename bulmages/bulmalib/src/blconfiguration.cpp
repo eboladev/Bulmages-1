@@ -415,7 +415,7 @@ QString BlConfiguration::name( int i )
     if ( i == CONF_CUPS_DEFAULT_PRINTER )
         return "CONF_CUPS_DEFAULT_PRINTER";
     if ( i == CONF_BLOCK_WINDOWS )
-	return "CONF_BLOCK_WINDOWS";
+        return "CONF_BLOCK_WINDOWS";
     if ( i == CONF_DIR_CONFIG )
         return "CONF_DIR_CONFIG";
     if ( i == CONF_GLOBAL_CONFIG_USER )
