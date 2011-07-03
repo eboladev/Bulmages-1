@@ -31,8 +31,6 @@
 #include <QTextStream>
 #include <QMenu>
 #include <QMenuBar>
-
-
 #include <QSqlDatabase>
 #include <QSqlRecord>
 
@@ -112,13 +110,9 @@ int init (  )
     BL_FUNC_DEBUG
 
 
-#ifdef NO_COMPILAR_EXARO
-
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_exaro", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-    PluginBl_Exaro *mcont = new PluginBl_Exaro;
 
     QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Informes
@@ -131,7 +125,7 @@ int init (  )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "inf_*.dbrt";
+    filters << "inf_*.bdrt";
     dir.setNameFilters ( filters );
 
 
@@ -225,31 +219,34 @@ int init (  )
 	} // end for
 
         /// Creamos el men&uacute;.
-        QAction *accion = new QAction ( path[path.size()-1], 0 );
+        BlAction *accion = new BlAction ( path[path.size()-1], 0 );
         accion->setIcon(QIcon(icon));
-        accion->setObjectName ( fileInfo.fileName() );
+        accion->setObjectName ( "exaro_" + fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
         menu->addAction ( accion );
     } // end for
 
-
-#endif
     
     return 0;
 }
 
-
-int BfCompany_createMainWindows_Post ( BfCompany *cmp )
+int BlAction_triggered(BlAction *accion) 
 {
-    g_pluginbl_report_emp = cmp;
-//    init();
-    
-/* Cosas de EXARO */
-        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName("/home/tborras/music.db"); // setup a database
-
+    BL_FUNC_DEBUG
+    if (accion->objectName().startsWith("exaro_") ) {
+	QString filename = accion->objectName().right(accion->objectName().size()-6);
+	
+        QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
+	db.setDatabaseName(g_pluginbl_report_emp->dbName()); // setup a database
+	db.setHostName(g_confpr->value( CONF_SERVIDOR ));
+	if ( g_confpr->value( CONF_SERVIDOR ) == "--" ) {
+	  db.setHostName("localhost");
+	} // end if
+	db.setPort(g_confpr->value( CONF_PUERTO ).toInt());
+	db.setUserName(g_pluginbl_report_emp->currentUser()); // setup a database
+	db.setPassword(g_confpr->value( CONF_PASSWORD_USER ));
+	
         if (!db.open())
 	{
 		qCritical()<<"Error: Can't open database";
@@ -258,7 +255,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 
         Report::ReportInterface* m_report=0;
         Report::ReportEngine m_reportEngine;
-	m_report = m_reportEngine.loadReport("/home/tborras/newReport.bdrt"); // open report
+	m_report = m_reportEngine.loadReport(g_confpr->value(CONF_DIR_OPENREPORTS) + filename); // open report
 
         if (!m_report)
 	{
@@ -275,7 +272,20 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
                 return -1;
         }
         delete m_report;
-/* FIN de cosas de Exaro */
+
+	
+	
+    } // end if
+    
+    return 0;
+}
+
+
+int BfCompany_createMainWindows_Post ( BfCompany *cmp )
+{
+    BL_FUNC_DEBUG
+    g_pluginbl_report_emp = cmp;
+    init();
     
     return 0;
 }
@@ -283,6 +293,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
+    BL_FUNC_DEBUG
     g_pluginbl_report_emp = cmp;
     init();
     return 0;

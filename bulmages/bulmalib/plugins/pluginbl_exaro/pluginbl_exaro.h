@@ -23,11 +23,12 @@
 #include "bccompany.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbl_exaro.h"
+#include "blaction.h"
 
 
 extern "C" PLUGINBL_EXARO_EXPORT int entryPoint ( QMainWindow * );
 extern "C" PLUGINBL_EXARO_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_EXARO_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
-
+extern "C" PLUGINBL_EXARO_EXPORT int BlAction_triggered(BlAction *);
 extern "C" PLUGINBL_EXARO_EXPORT int init();
 
