@@ -35,7 +35,7 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
                     tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
                     nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
                     self.lista_empresas.setRowCount(self.lista_empresas.rowCount() + 1)
-                    self.lista_empresas.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
+                    self.lista_empresas.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0]).decode('string-escape').decode("utf-8")))
                     self.lista_empresas.setItem(self.i, 1 , QTableWidgetItem(row[0]))
                     self.lista_empresas.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
                     self.lista_empresas.showRow(self.i)
