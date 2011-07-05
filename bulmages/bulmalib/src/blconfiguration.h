@@ -50,7 +50,8 @@
 /// Indica si hay una facturacion alternativa a la que traspasar datos
 #define CONF_FACT_ALT                 50
 #define CONF_CONT_ALT                 51
-
+/// La URL que el visor HTML debe visitar
+#define CONF_URL_CONTENTS             52
 
 ///Indica el color de fondo del libro diario. (obsoleto)
 #define CONF_BG_DIARIO               106

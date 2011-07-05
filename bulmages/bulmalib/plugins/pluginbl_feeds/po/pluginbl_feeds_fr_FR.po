@@ -1,0 +1,67 @@
+#: ui_confreglasbase.h:283
+msgid "Apunte con Cuenta"
+msgstr ""
+
+#: ui_confreglasbase.h:291
+msgid "Apunte con Descripcion"
+msgstr ""
+
+#: ui_confreglasbase.h:284
+msgid "Apunte con Saldo"
+msgstr ""
+
+#: ui_confreglasbase.h:294
+msgid "Cerrar"
+msgstr ""
+
+#: ui_confreglasbase.h:280
+msgid "Comprobacion por asientos"
+msgstr ""
+
+#: ui_confreglasbase.h:281
+msgid "Condicion:"
+msgstr ""
+
+#: ui_visorhtmlbase.h:106 ui_visorhtmlbase.h:111
+msgid "Configurar"
+msgstr ""
+
+#: ui_visorhtmlbase.h:92
+msgid "Corrector"
+msgstr ""
+
+#: ui_visorhtmlbase.h:95 ui_visorhtmlbase.h:100
+msgid "Corregir"
+msgstr ""
+
+#: ui_confreglasbase.h:282
+msgid "Deben existir registros que cumplan esta condicion en el periodo"
+msgstr ""
+
+#: ui_confreglasbase.h:293
+msgid "Periodicidad"
+msgstr ""
+
+#: ui_confreglasbase.h:279
+msgid "Regla:"
+msgstr ""
+
+#: ui_confreglasbase.h:275
+msgid "Reglas de Corrector"
+msgstr ""
+
+#: ui_confreglasbase.h:292
+msgid "Reglas sobre Apuntes"
+msgstr ""
+
+#: ui_confreglasbase.h:287
+msgid "igual"
+msgstr ""
+
+#: ui_confreglasbase.h:289
+msgid "mayor"
+msgstr ""
+
+#: ui_confreglasbase.h:288
+msgid "menor"
+msgstr ""

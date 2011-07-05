@@ -444,6 +444,9 @@ QString BlConfiguration::name( int i )
         return "CONF_MAIN_WINDOW_TITLE";
     if ( i == CONF_NUMCHAR_RELOAD_FILTRO )
         return "CONF_NUMCHAR_RELOAD_FILTRO";
+    if ( i == CONF_URL_CONTENTS )
+        return "CONF_URL_CONTENTS";
+    
     return "";
 }
 
