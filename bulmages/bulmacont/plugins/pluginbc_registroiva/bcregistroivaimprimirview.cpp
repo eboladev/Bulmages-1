@@ -322,8 +322,7 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";
                 filehtml.close();
                 /// Presentaci&oacute;n html normal.
-                QString comando = g_confpr->value( CONF_NAVEGADOR ) + " " + archivohtml + " &";
-                system ( comando.toAscii() );
+                blWebBrowser(archivohtml);
             } // end if
         }
     }

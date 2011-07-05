@@ -15,7 +15,7 @@ CONF_PUERTO			5432
 # Parametros de configuracion de programas.
 # Por defecto se proponen estos programas. Configurar a gusto.
 CONF_EDITOR			xdg-open
-CONF_NAVEGADOR			xdg-open
+#CONF_NAVEGADOR			xdg-open
 CONF_PDF			xdg-open
 CONF_DIR_TMP			/tmp/
 CONF_ODS			xdg-open
