@@ -1,7 +1,8 @@
 
 project(propertyEditorExample)
 
-include_directories(BEFORE "${CMAKE_SOURCE_DIR}/lib" )
+include_directories(BEFORE  
+${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/propertyeditor/lib/)
 
 set(Example_SRCS example.cpp)
 

@@ -45,13 +45,13 @@ include_directories(
 	${QT_QTSQL_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_BINARY_DIR}/bulmacont/src/
+	${CMAKE_SOURCE_DIR}/bulmacont/src/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmacont/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/
-	exaro/libs/export)
+	${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/exaro/libs/report)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})

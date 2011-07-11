@@ -4,7 +4,7 @@ project(zint_frontend)
 
 set(zint_frontend_SRCS main.c )
 
-include_directories(BEFORE "${CMAKE_SOURCE_DIR}/backend")
+include_directories(BEFORE "${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/zint/backend/")
 
 add_executable(zint_frontend ${zint_frontend_SRCS})
 
@@ -12,7 +12,7 @@ set_target_properties(zint_frontend PROPERTIES   OUTPUT_NAME "zint")
 
 add_dependencies(zint_frontend zint)
 
-link_directories( "${CMAKE_BINARY_DIR}/backend" )
+link_directories( "${CMAKE_BINARY_DIR}/bulmalib/plugins/pluginbl_exaro/zint/backend" )
 
 target_link_libraries(zint_frontend zint)
 

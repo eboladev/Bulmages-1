@@ -2,7 +2,7 @@
 
 project(QZint)
 
-include_directories(BEFORE "${CMAKE_SOURCE_DIR}/backend" )
+include_directories(BEFORE "${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/zint/backend" )
 
 set(QZint_SRCS qzint.cpp)
 
@@ -13,7 +13,7 @@ set_target_properties(QZint PROPERTIES	SOVERSION "${ZINT_VERSION_MAJOR}.${ZINT_V
 
 add_dependencies(QZint zint)
 
-link_directories( "${CMAKE_BINARY_DIR}/backend" )
+link_directories( "${CMAKE_BINARY_DIR}/bulmalib/plugins/pluginbl_exaro/zint/backend" )
 
 target_link_libraries(QZint zint ${QT_QTGUI_LIBRARY} 
         ${QT_QTCORE_LIBRARY} )
