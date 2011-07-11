@@ -61,7 +61,7 @@ int entryPoint ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         BlAction *accionA = new BlAction ( _ ( "&Profesores" ), 0 );
-        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.png" ) ) );
         accionA->setStatusTip ( _ ( "Profesores" ) );
         accionA->setWhatsThis ( _ ( "Profesores" ) );
         accionA->setObjectName("mui_actionProfesores");
