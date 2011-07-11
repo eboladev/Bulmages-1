@@ -315,7 +315,7 @@ void BtCompany::cobrar(bool imprimir)
         }// end if
 
         if (imprimir || g_confpr->value(CONF_TPV_REIMPRIMIR) == "TRUE") {
-            m_ticketActual->imprimir();
+            m_ticketActual->imprimir(false);
         }// end if
 
 
@@ -328,7 +328,7 @@ void BtCompany::cobrar(bool imprimir)
         }// end if
     
         if (imprimir) {
-            m_ticketActual->imprimir();
+            m_ticketActual->imprimir(false);
         }// end if
     
     } // end if
