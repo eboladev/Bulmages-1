@@ -639,7 +639,8 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
 
 /// Autonumeraci&oacute;n: establece el n&uacute;mero que sigue al ú&uacute;timo valor del campo numérico en la tabla
 /**
-Si el campo no es num&eacute;rico o no hay valores todav&iacute;a, usamos 1 como primer valor.
+Si el campo no es num&eacute;rico lo dejamos en blanco.
+Usamos 1 como primer valor.
 Esta funci&oacute;n puede usarse con alg&uacute;n c&oacute;digo autonum&eacute;rico adicional
 a parte del identificador en la base de datos que ya autonumera la base de datos.
 \param tabla
