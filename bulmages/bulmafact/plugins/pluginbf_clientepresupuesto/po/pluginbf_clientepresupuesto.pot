@@ -8,94 +8,127 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: presupuestoview.cpp:57 presupuestolist.cpp:366
-msgid "Presupuesto"
-msgstr ""
-
-#: presupuestoview.cpp:60 presupuestolist.cpp:365
-msgid "ID presupuesto"
-msgstr ""
-
-#: presupuestoview.cpp:61 presupuestolist.cpp:368
-msgid "Cliente"
-msgstr ""
-
-#: presupuestoview.cpp:62 presupuestolist.cpp:377
-msgid "Almacen"
-msgstr ""
-
-#: presupuestoview.cpp:63
-msgid "Numero de presupuesto"
-msgstr ""
-
-#: presupuestoview.cpp:64
-msgid "Fecha de creacion"
-msgstr ""
-
-#: presupuestoview.cpp:65
-msgid "Fecha de vencimiento"
-msgstr ""
-
-#: presupuestoview.cpp:66 presupuestolist.cpp:374
-msgid "Persona de contacto"
-msgstr ""
-
-#: presupuestoview.cpp:67
-msgid "Numero de telefono"
-msgstr ""
-
-#: presupuestoview.cpp:68
-msgid "Comentarios"
-msgstr ""
-
-#: presupuestoview.cpp:69 ui_albaranclientebase.h:774
-#: ui_pedidoclientebase.h:712
-msgid "Procesado"
-msgstr ""
-
-#: presupuestoview.cpp:70 listdescpresupuestoview.cpp:42
-#: listlinpresupuestoview.cpp:56
-msgid "% Descuento"
-msgstr ""
-
-#: presupuestoview.cpp:71 presupuestolist.cpp:369
-msgid "Referencia"
-msgstr ""
-
-#: presupuestoview.cpp:72
-msgid "Forma de pago"
-msgstr ""
-
-#: presupuestoview.cpp:73 ui_albaranclientelistbase.h:452
-msgid "Trabajador"
-msgstr ""
-
-#: presupuestoview.cpp:98 presupuestolist.cpp:53 presupuestolist.cpp:87
+#: presupuestolist.cpp:53 presupuestolist.cpp:87 presupuestoview.cpp:98
 msgid "Cliente:"
 msgstr ""
 
-#: presupuestoview.cpp:108
-msgid "Error al crear el presupuesto"
+#: presupuestolist.cpp:121
+msgid "Todos los presupuestos"
 msgstr ""
 
-#: listdescpresupuestoview.cpp:40
-msgid "Id descuento"
+#: presupuestolist.cpp:122
+msgid "Presupuestos procesados"
 msgstr ""
 
-#: listdescpresupuestoview.cpp:41
-msgid "Concepto descuento"
+#: presupuestolist.cpp:123
+msgid "Presupuestos no procesados"
 msgstr ""
 
-#: listdescpresupuestoview.cpp:43 listlinpresupuestoview.cpp:57
-msgid "Id presupuesto"
+#: presupuestolist.cpp:298
+msgid "Error al editar el presupuesto"
+msgstr ""
+
+#: presupuestolist.cpp:310 pluginbf_clientepresupuesto.cpp:60
+#: pluginbf_clientepresupuesto.cpp:61 ui_presupuestoslistbase.h:362
+msgid "Presupuestos a clientes"
+msgstr ""
+
+#: presupuestolist.cpp:324
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: presupuestolist.cpp:338
+msgid "Error al borrar el presupuesto"
+msgstr ""
+
+#: presupuestolist.cpp:363 presupuestoview.cpp:60
+msgid "ID presupuesto"
+msgstr ""
+
+#: presupuestolist.cpp:364 presupuestoview.cpp:57
+msgid "Presupuesto"
+msgstr ""
+
+#: presupuestolist.cpp:365
+msgid "Fecha"
+msgstr ""
+
+#: presupuestolist.cpp:366 presupuestoview.cpp:61
+msgid "Cliente"
+msgstr ""
+
+#: presupuestolist.cpp:367 presupuestoview.cpp:71
+msgid "Referencia"
+msgstr ""
+
+#: presupuestolist.cpp:368
+msgid "Base Imponible"
+msgstr ""
+
+#: presupuestolist.cpp:369
+msgid "Impuestos"
+msgstr ""
+
+#: presupuestolist.cpp:370
+msgid "Total"
+msgstr ""
+
+#: presupuestolist.cpp:371 listlinpresupuestoview.cpp:50
+msgid "Descripcion"
+msgstr ""
+
+#: presupuestolist.cpp:372 presupuestoview.cpp:66
+msgid "Persona de contacto"
+msgstr ""
+
+#: presupuestolist.cpp:373
+msgid "Telefono"
+msgstr ""
+
+#: presupuestolist.cpp:374
+msgid "Comentario"
+msgstr ""
+
+#: presupuestolist.cpp:375 presupuestoview.cpp:62
+msgid "Almacen"
+msgstr ""
+
+#: presupuestolist.cpp:376
+msgid "ID trabajador"
+msgstr ""
+
+#: presupuestolist.cpp:377
+msgid "ID cliente"
+msgstr ""
+
+#: presupuestolist.cpp:378
+msgid "ID almacen"
+msgstr ""
+
+#: pluginbf_clientepresupuesto.cpp:53
+msgid "&Ventas"
+msgstr ""
+
+#: pluginbf_clientepresupuesto.cpp:58
+msgid "&Presupuestos a clientes"
+msgstr ""
+
+#: pluginbf_clientepresupuesto.cpp:66
+msgid "&Nuevo presupuesto a cliente"
+msgstr ""
+
+#: pluginbf_clientepresupuesto.cpp:68 pluginbf_clientepresupuesto.cpp:69
+#: ui_presupuestoclientebase.h:768
+msgid "Nuevo presupuesto a cliente"
 msgstr ""
 
 #: genpreqtoolbutton.cpp:545 genpreqtoolbutton.cpp:546
@@ -130,10 +163,6 @@ msgstr ""
 msgid "No de linea"
 msgstr ""
 
-#: listlinpresupuestoview.cpp:50 presupuestolist.cpp:373
-msgid "Descripcion"
-msgstr ""
-
 #: listlinpresupuestoview.cpp:51
 msgid "Cantidad"
 msgstr ""
@@ -154,90 +183,155 @@ msgstr ""
 msgid "% Recargo E.Q."
 msgstr ""
 
+#: listlinpresupuestoview.cpp:56 presupuestoview.cpp:70
+#: listdescpresupuestoview.cpp:42
+msgid "% Descuento"
+msgstr ""
+
+#: listlinpresupuestoview.cpp:57 listdescpresupuestoview.cpp:43
+msgid "Id presupuesto"
+msgstr ""
+
 #: listlinpresupuestoview.cpp:58
 msgid "Orden"
 msgstr ""
 
-#: presupuestolist.cpp:121
-msgid "Todos los presupuestos"
+#: presupuestoview.cpp:63
+msgid "Numero de presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:122
-msgid "Presupuestos procesados"
+#: presupuestoview.cpp:64
+msgid "Fecha de creacion"
 msgstr ""
 
-#: presupuestolist.cpp:123
-msgid "Presupuestos no procesados"
+#: presupuestoview.cpp:65
+msgid "Fecha de vencimiento"
 msgstr ""
 
-#: presupuestolist.cpp:300
-msgid "Error al editar el presupuesto"
+#: presupuestoview.cpp:67
+msgid "Numero de telefono"
 msgstr ""
 
-#: presupuestolist.cpp:312 pluginbf_clientepresupuesto.cpp:60
-#: pluginbf_clientepresupuesto.cpp:61 ui_presupuestoslistbase.h:362
-msgid "Presupuestos a clientes"
+#: presupuestoview.cpp:68
+msgid "Comentarios"
 msgstr ""
 
-#: presupuestolist.cpp:326
-msgid "Debe seleccionar una linea"
+#: presupuestoview.cpp:69 ui_albaranclientebase.h:774
+#: ui_pedidoclientebase.h:712
+msgid "Procesado"
 msgstr ""
 
-#: presupuestolist.cpp:340
-msgid "Error al borrar el presupuesto"
+#: presupuestoview.cpp:72
+msgid "Forma de pago"
 msgstr ""
 
-#: presupuestolist.cpp:367
-msgid "Fecha"
+#: presupuestoview.cpp:73 ui_albaranclientelistbase.h:452
+msgid "Trabajador"
 msgstr ""
 
-#: presupuestolist.cpp:370
-msgid "Base Imponible"
+#: presupuestoview.cpp:108
+msgid "Error al crear el presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:371
-msgid "Impuestos"
+#: listdescpresupuestoview.cpp:40
+msgid "Id descuento"
 msgstr ""
 
-#: presupuestolist.cpp:372
-msgid "Total"
+#: listdescpresupuestoview.cpp:41
+msgid "Concepto descuento"
 msgstr ""
 
-#: presupuestolist.cpp:375
-msgid "Telefono"
+#: ui_presupuestoslistbase.h:365 ui_presupuestoslistbase.h:368
+msgid "Nuevo presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:376
-msgid "Comentario"
+#: ui_presupuestoslistbase.h:371 ui_albaranclientelistbase.h:462
+#: ui_pedidosclientelistbase.h:389 ui_facturaslistbase.h:487
+msgid "Ctrl+N"
 msgstr ""
 
-#: presupuestolist.cpp:378
-msgid "ID trabajador"
+#: ui_presupuestoslistbase.h:373 ui_presupuestoslistbase.h:376
+msgid "Editar presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:379
-msgid "ID cliente"
+#: ui_presupuestoslistbase.h:379 ui_albaranclientelistbase.h:470
+#: ui_pedidosclientelistbase.h:397 ui_facturaslistbase.h:495
+msgid "Ctrl+E"
 msgstr ""
 
-#: presupuestolist.cpp:380
-msgid "ID almacen"
+#: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
+#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
+msgid "Borrar presupuesto"
 msgstr ""
 
-#: pluginbf_clientepresupuesto.cpp:53
-msgid "&Ventas"
+#: ui_presupuestoslistbase.h:387 ui_presupuestoclientebase.h:784
+#: ui_albaranclientelistbase.h:478 ui_pedidosclientelistbase.h:405
+#: ui_facturaslistbase.h:503
+msgid "Ctrl+D"
 msgstr ""
 
-#: pluginbf_clientepresupuesto.cpp:58
-msgid "&Presupuestos a clientes"
+#: ui_presupuestoslistbase.h:389 ui_presupuestoslistbase.h:392
+#: ui_albaranclientelistbase.h:480 ui_albaranclientelistbase.h:483
+#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
+#: ui_facturaslistbase.h:505 ui_facturaslistbase.h:508
+msgid "Imprimir listado"
 msgstr ""
 
-#: pluginbf_clientepresupuesto.cpp:66
-msgid "&Nuevo presupuesto a cliente"
+#: ui_presupuestoslistbase.h:395 ui_presupuestoclientebase.h:792
+#: ui_albaranclientelistbase.h:486 ui_pedidosclientelistbase.h:413
+#: ui_facturaslistbase.h:511
+msgid "Ctrl+P"
 msgstr ""
 
-#: pluginbf_clientepresupuesto.cpp:68 pluginbf_clientepresupuesto.cpp:69
-#: ui_presupuestoclientebase.h:768
-msgid "Nuevo presupuesto a cliente"
+#: ui_presupuestoslistbase.h:397 ui_presupuestoslistbase.h:400
+#: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
+msgid "Filtrar pedidos"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:404 ui_presupuestoslistbase.h:407
+#: ui_albaranclientelistbase.h:496 ui_albaranclientelistbase.h:499
+#: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
+#: ui_facturaslistbase.h:521 ui_facturaslistbase.h:524
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:411 ui_presupuestoslistbase.h:414
+#: ui_albaranclientelistbase.h:504 ui_albaranclientelistbase.h:507
+#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:434
+#: ui_facturaslistbase.h:529 ui_facturaslistbase.h:532
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:417 ui_albaranclientelistbase.h:510
+#: ui_pedidosclientelistbase.h:437 ui_facturaslistbase.h:535
+msgid "F5"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:418 ui_albaranclientelistbase.h:511
+#: ui_pedidosclientelistbase.h:438 ui_facturaslistbase.h:536
+msgid "Buscar:"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:419 ui_albaranclientelistbase.h:450
+#: ui_pedidosclientelistbase.h:378 ui_facturaslistbase.h:537
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:420 ui_albaranclientelistbase.h:451
+#: ui_pedidosclientelistbase.h:379 ui_facturaslistbase.h:538
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:421 ui_albaranclientelistbase.h:449
+#: ui_pedidosclientelistbase.h:380 ui_facturaslistbase.h:539
+msgid "Mostrar:"
+msgstr ""
+
+#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:820
+#: ui_albaranclientebase.h:791 ui_pedidoclientebase.h:723
+#: ui_pedidosclientelistbase.h:439 ui_facturabase.h:719
+#: ui_facturaslistbase.h:478
+msgid "Total:"
 msgstr ""
 
 #: ui_presupuestoclientebase.h:770 ui_presupuestoclientebase.h:773
@@ -248,25 +342,8 @@ msgstr ""
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
-#: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
-msgid "Borrar presupuesto"
-msgstr ""
-
-#: ui_presupuestoclientebase.h:784 ui_presupuestoslistbase.h:387
-#: ui_albaranclientelistbase.h:478 ui_pedidosclientelistbase.h:405
-#: ui_facturaslistbase.h:503
-msgid "Ctrl+D"
-msgstr ""
-
 #: ui_presupuestoclientebase.h:786 ui_presupuestoclientebase.h:789
 msgid "Imprimir presupuesto"
-msgstr ""
-
-#: ui_presupuestoclientebase.h:792 ui_presupuestoslistbase.h:395
-#: ui_albaranclientelistbase.h:486 ui_pedidosclientelistbase.h:413
-#: ui_facturaslistbase.h:511
-msgid "Ctrl+P"
 msgstr ""
 
 #: ui_presupuestoclientebase.h:794 ui_presupuestoclientebase.h:797
@@ -368,12 +445,6 @@ msgstr ""
 msgid "R.E.:"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:820 ui_presupuestoslistbase.h:422
-#: ui_albaranclientebase.h:791 ui_pedidosclientelistbase.h:439
-#: ui_pedidoclientebase.h:723 ui_facturabase.h:719 ui_facturaslistbase.h:478
-msgid "Total:"
-msgstr ""
-
 #: ui_presupuestoclientebase.h:821 ui_presupuestoclientebase.h:822
 #: ui_presupuestoclientebase.h:823 ui_presupuestoclientebase.h:824
 #: ui_presupuestoclientebase.h:825 ui_presupuestoclientebase.h:826
@@ -398,116 +469,17 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_presupuestoslistbase.h:365 ui_presupuestoslistbase.h:368
-msgid "Nuevo presupuesto"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:371 ui_albaranclientelistbase.h:462
-#: ui_pedidosclientelistbase.h:389 ui_facturaslistbase.h:487
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:373 ui_presupuestoslistbase.h:376
-msgid "Editar presupuesto"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:379 ui_albaranclientelistbase.h:470
-#: ui_pedidosclientelistbase.h:397 ui_facturaslistbase.h:495
-msgid "Ctrl+E"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:389 ui_presupuestoslistbase.h:392
-#: ui_albaranclientelistbase.h:480 ui_albaranclientelistbase.h:483
-#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
-#: ui_facturaslistbase.h:505 ui_facturaslistbase.h:508
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:397 ui_presupuestoslistbase.h:400
-#: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
-msgid "Filtrar pedidos"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:404 ui_presupuestoslistbase.h:407
-#: ui_albaranclientelistbase.h:496 ui_albaranclientelistbase.h:499
-#: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
-#: ui_facturaslistbase.h:521 ui_facturaslistbase.h:524
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:411 ui_presupuestoslistbase.h:414
-#: ui_albaranclientelistbase.h:504 ui_albaranclientelistbase.h:507
-#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:434
-#: ui_facturaslistbase.h:529 ui_facturaslistbase.h:532
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:417 ui_albaranclientelistbase.h:510
-#: ui_pedidosclientelistbase.h:437 ui_facturaslistbase.h:535
-msgid "F5"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:418 ui_albaranclientelistbase.h:511
-#: ui_pedidosclientelistbase.h:438 ui_facturaslistbase.h:536
-msgid "Buscar:"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:419 ui_albaranclientelistbase.h:450
-#: ui_pedidosclientelistbase.h:378 ui_facturaslistbase.h:537
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:420 ui_albaranclientelistbase.h:451
-#: ui_pedidosclientelistbase.h:379 ui_facturaslistbase.h:538
-msgid "Fecha final:"
-msgstr ""
-
-#: ui_presupuestoslistbase.h:421 ui_albaranclientelistbase.h:449
-#: ui_pedidosclientelistbase.h:380 ui_facturaslistbase.h:539
-msgid "Mostrar:"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:448
-msgid "Albaranes a clientes"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:453
-msgid "Total: "
-msgstr ""
-
-#: ui_albaranclientelistbase.h:456 ui_albaranclientelistbase.h:459
-msgid "Nuevo albaran"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:464 ui_albaranclientelistbase.h:467
-msgid "Editar albaran"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
-#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
-msgid "Borrar albaran"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:488 ui_albaranclientelistbase.h:491
-msgid "Filtrar albaranes"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:494 ui_pedidosclientelistbase.h:421
-#: ui_facturaslistbase.h:519
-msgid "Ctrl+F"
-msgstr ""
-
-#: ui_albaranclientelistbase.h:502 ui_pedidosclientelistbase.h:429
-#: ui_facturaslistbase.h:527
-msgid "Ctrl+B"
-msgstr ""
-
 #: ui_albaranclientebase.h:735
 msgid "Nuevo albaran a cliente"
 msgstr ""
 
 #: ui_albaranclientebase.h:737 ui_albaranclientebase.h:740
 msgid "Guardar albaran"
+msgstr ""
+
+#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
+#: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
+msgid "Borrar albaran"
 msgstr ""
 
 #: ui_albaranclientebase.h:751 ui_albaranclientebase.h:754
@@ -544,21 +516,34 @@ msgstr ""
 msgid "Comentario&s"
 msgstr ""
 
-#: ui_pedidosclientelistbase.h:377
-msgid "Pedidos de clientes"
+#: ui_albaranclientelistbase.h:448
+msgid "Albaranes a clientes"
 msgstr ""
 
-#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
-msgid "Nuevo pedido"
+#: ui_albaranclientelistbase.h:453
+msgid "Total: "
 msgstr ""
 
-#: ui_pedidosclientelistbase.h:391 ui_pedidosclientelistbase.h:394
-msgid "Editar pedido"
+#: ui_albaranclientelistbase.h:456 ui_albaranclientelistbase.h:459
+msgid "Nuevo albaran"
 msgstr ""
 
-#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
-#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
-msgid "Borrar pedido"
+#: ui_albaranclientelistbase.h:464 ui_albaranclientelistbase.h:467
+msgid "Editar albaran"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:488 ui_albaranclientelistbase.h:491
+msgid "Filtrar albaranes"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:494 ui_pedidosclientelistbase.h:421
+#: ui_facturaslistbase.h:519
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:502 ui_pedidosclientelistbase.h:429
+#: ui_facturaslistbase.h:527
+msgid "Ctrl+B"
 msgstr ""
 
 #: ui_pedidoclientebase.h:676
@@ -567,6 +552,11 @@ msgstr ""
 
 #: ui_pedidoclientebase.h:678 ui_pedidoclientebase.h:681
 msgid "Guardar pedido"
+msgstr ""
+
+#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
+#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+msgid "Borrar pedido"
 msgstr ""
 
 #: ui_pedidoclientebase.h:692 ui_pedidoclientebase.h:695
@@ -579,6 +569,18 @@ msgstr ""
 
 #: ui_pedidoclientebase.h:717 ui_facturabase.h:713
 msgid "&Comentarios"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:377
+msgid "Pedidos de clientes"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
+msgid "Nuevo pedido"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:391 ui_pedidosclientelistbase.h:394
+msgid "Editar pedido"
 msgstr ""
 
 #: ui_facturabase.h:667

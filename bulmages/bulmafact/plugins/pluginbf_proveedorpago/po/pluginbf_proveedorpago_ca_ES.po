@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2011-02-19 16:19+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: Catalan\n"
 
 #: ui_pagobase.h:332
 msgid "&Aceptar"
@@ -37,11 +37,11 @@ msgstr "&Pagament a proveïdors"
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: pagoslist.cpp:273
+#: pagoslist.cpp:268
 msgid "Apellidos trabajador"
 msgstr "Cognoms del treballador"
 
-#: pagoslist.cpp:267 pagoview.cpp:68
+#: pagoslist.cpp:262 pagoview.cpp:68
 msgid "Banco"
 msgstr "Banc"
 
@@ -58,11 +58,11 @@ msgstr "Esborra pagament"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: pagoslist.cpp:262
+#: pagoslist.cpp:257
 msgid "C.I.F. proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoslist.cpp:266 pagoview.cpp:66
+#: pagoslist.cpp:261 pagoview.cpp:66
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -70,7 +70,7 @@ msgstr "Quantitat"
 msgid "Comentario del pago"
 msgstr "Comentaris de l'assentament"
 
-#: pagoslist.cpp:270
+#: pagoslist.cpp:265
 msgid "Comentario pago"
 msgstr "Comentari"
 
@@ -80,9 +80,9 @@ msgstr "Configura llistat"
 
 #: impqtoolbutton.cpp:106 impqtoolbutton.cpp:157 impqtoolbutton.cpp:206
 msgid "Crear"
-msgstr ""
+msgstr "Crea"
 
-#: pagoslist.cpp:210
+#: pagoslist.cpp:205
 msgid "Debe seleccionar una linea"
 msgstr "Heu de seleccionar una línia"
 
@@ -98,11 +98,11 @@ msgstr ""
 msgid "Editar pago"
 msgstr "Edita pagament"
 
-#: pagoslist.cpp:264
+#: pagoslist.cpp:259
 msgid "Email proveedor"
 msgstr "Email proveïdor"
 
-#: pagoslist.cpp:222
+#: pagoslist.cpp:217
 msgid "Error al borrar el pago"
 msgstr "Error en esborrar el pagament"
 
@@ -110,7 +110,7 @@ msgstr "Error en esborrar el pagament"
 msgid "Error al crear el pago"
 msgstr "Error en crear el pagament"
 
-#: pagoslist.cpp:265 pagoview.cpp:64
+#: pagoslist.cpp:260 pagoview.cpp:64
 msgid "Fecha de pago"
 msgstr "Data de pagament"
 
@@ -138,15 +138,15 @@ msgstr ""
 msgid "Guardar pago"
 msgstr "Desa pagament"
 
-#: pagoslist.cpp:259 pagoview.cpp:61
+#: pagoslist.cpp:254 pagoview.cpp:61
 msgid "Id pago"
 msgstr "<LI> Id pagament <B>"
 
-#: pagoslist.cpp:260 pagoview.cpp:62
+#: pagoslist.cpp:255 pagoview.cpp:62
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoslist.cpp:271
+#: pagoslist.cpp:266
 msgid "Id trabajador"
 msgstr "Id treballador"
 
@@ -154,11 +154,11 @@ msgstr "Id treballador"
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: pagoslist.cpp:272
+#: pagoslist.cpp:267
 msgid "Nombre de trabajador"
 msgstr "Nom del treballador"
 
-#: pagoslist.cpp:261
+#: pagoslist.cpp:256
 msgid "Nombre proveedor"
 msgstr "Nom del proveïdor"
 
@@ -175,7 +175,7 @@ msgstr "Nou pagament a proveïdor"
 msgid "Pago"
 msgstr "Pagament"
 
-#: pagoslist.cpp:200 pluginbf_proveedorpago.cpp:58
+#: pagoslist.cpp:195 pluginbf_proveedorpago.cpp:58
 #: pluginbf_proveedorpago.cpp:59 ui_pagoslistbase.h:370
 msgid "Pagos a proveedores"
 msgstr "Pagaments a proveïdors"
@@ -188,7 +188,7 @@ msgstr "Pagaments efectius"
 msgid "Previcion de pago"
 msgstr "Previssió de pagament"
 
-#: pagoslist.cpp:269
+#: pagoslist.cpp:264
 msgid "Prevision pago"
 msgstr "Previsió de pagament"
 
@@ -204,7 +204,7 @@ msgstr "Proveïdor:"
 msgid "Provision de fondos"
 msgstr "Provisió de fons"
 
-#: pagoslist.cpp:268 pagoview.cpp:65
+#: pagoslist.cpp:263 pagoview.cpp:65
 msgid "Referencia de pago"
 msgstr "Referència de pagament"
 
@@ -212,7 +212,7 @@ msgstr "Referència de pagament"
 msgid "Referencia:"
 msgstr "Referència:"
 
-#: pagoslist.cpp:263
+#: pagoslist.cpp:258
 msgid "Telefono proveedor"
 msgstr "Telèfon del proveïdor"
 

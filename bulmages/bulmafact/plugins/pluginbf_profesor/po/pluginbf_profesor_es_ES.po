@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-10-19 01:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_profesorbase.h:528
@@ -96,7 +96,7 @@ msgstr "Borrar profesor"
 msgid "Borrar cobro"
 msgstr "Borrar cobro"
 
-#: profesoreslist.cpp:286
+#: profesoreslist.cpp:282
 msgid "Borrar profesor"
 msgstr "Borrar profesor"
 
@@ -176,7 +176,7 @@ msgstr "Ctrl+S"
 msgid "D.N.I."
 msgstr "D.N.I."
 
-#: profesoreslist.cpp:341
+#: profesoreslist.cpp:337
 msgid "DNI"
 msgstr "DNI"
 
@@ -184,11 +184,11 @@ msgstr "DNI"
 msgid "DNI del profesor"
 msgstr "DNI del profesor"
 
-#: profesoreslist.cpp:266
+#: profesoreslist.cpp:262
 msgid "Debe seleccionar una fila primero"
 msgstr "Debe seleccionar una fila primero"
 
-#: profesoreslist.cpp:223
+#: profesoreslist.cpp:219
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una línea"
 
@@ -204,11 +204,11 @@ msgstr "Dirección:"
 msgid "Editar Profesor"
 msgstr "Editar profesor"
 
-#: profesoreslist.cpp:285
+#: profesoreslist.cpp:281
 msgid "Editar profesor"
 msgstr "Editar profesor"
 
-#: profesoreslist.cpp:238
+#: profesoreslist.cpp:234
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro al cliente"
 
@@ -272,7 +272,7 @@ msgstr "ID actividad"
 msgid "ID profesor"
 msgstr "ID profesor"
 
-#: profesoreslist.cpp:339
+#: profesoreslist.cpp:335
 msgid "Id profesor"
 msgstr "ID profesor"
 
@@ -292,7 +292,7 @@ msgstr ""
 msgid "Movil del profesor"
 msgstr "Móvil del profesor"
 
-#: profesoreslist.cpp:340 profesorview.cpp:83
+#: profesorview.cpp:83 profesoreslist.cpp:336
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -328,7 +328,7 @@ msgstr "Otros datos"
 msgid "Pagina web:"
 msgstr "Página web:"
 
-#: profesoreslist.cpp:343
+#: profesoreslist.cpp:339
 msgid "Poblacion"
 msgstr "Población"
 
@@ -344,7 +344,7 @@ msgstr "Población:"
 msgid "Precio"
 msgstr "Precio"
 
-#: profesoreslist.cpp:205 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66 profesoreslist.cpp:201
 #: ui_profesoreslistbase.h:309
 msgid "Profesores"
 msgstr "Profesores"
@@ -357,7 +357,7 @@ msgstr "Provincia:"
 msgid "Tarragona"
 msgstr "Tarragona"
 
-#: profesoreslist.cpp:342
+#: profesoreslist.cpp:338
 msgid "Telefono"
 msgstr "Teléfono"
 

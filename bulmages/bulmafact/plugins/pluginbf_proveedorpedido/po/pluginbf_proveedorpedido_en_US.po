@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listlinpedidoproveedorview.cpp:49 listdescpedidoproveedorview.cpp:41
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 msgid "% Descuento"
 msgstr "% Discount"
 
@@ -26,7 +27,7 @@ msgstr "% I.V.A."
 
 #: listlinpedidoproveedorview.cpp:48
 msgid "% R.E."
-msgstr ""
+msgstr "% A.V."
 
 #: ui_pedidoproveedorbase.h:748
 msgid "&Aceptar"
@@ -136,7 +137,7 @@ msgstr ""
 
 #: listdescpedidoproveedorview.cpp:40
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Discount concept"
 
 #: ui_pedidosproveedorlistbase.h:404 ui_pedidosproveedorlistbase.h:407
 msgid "Configurar listado"
@@ -237,6 +238,10 @@ msgstr "Error when creating the supplier"
 msgid "Error al crear el pedido a proveedor"
 msgstr "Error when creating the supplier"
 
+#: pedidoproveedorview.cpp:400
+msgid "Error."
+msgstr ""
+
 #: ui_pedidosproveedorlistbase.h:418
 msgid "F5"
 msgstr "F5"
@@ -298,8 +303,8 @@ msgstr ""
 msgid "Id forma de pago"
 msgstr "Mode of payment"
 
-#: listlinpedidoproveedorview.cpp:50 listdescpedidoproveedorview.cpp:42
-#: pedidosproveedorlist.cpp:342
+#: listdescpedidoproveedorview.cpp:42 pedidosproveedorlist.cpp:342
+#: listlinpedidoproveedorview.cpp:50
 #, fuzzy
 msgid "Id pedido"
 msgstr "Order"
@@ -369,7 +374,7 @@ msgstr "New &supplier..."
 
 #: listlinpedidoproveedorview.cpp:43
 msgid "Numero de linea"
-msgstr ""
+msgstr "Line number"
 
 #: pedidosproveedorlist.cpp:330
 #, fuzzy
@@ -404,8 +409,8 @@ msgstr "Supplier"
 msgid "Pedido procesado"
 msgstr "Pro&cessings"
 
-#: pluginbf_proveedorpedido.cpp:56 pluginbf_proveedorpedido.cpp:57
-#: pedidosproveedorlist.cpp:197 ui_pedidosproveedorlistbase.h:356
+#: pedidosproveedorlist.cpp:197 pluginbf_proveedorpedido.cpp:56
+#: pluginbf_proveedorpedido.cpp:57 ui_pedidosproveedorlistbase.h:356
 #, fuzzy
 msgid "Pedidos a proveedores"
 msgstr "Listing of Suppliers"
@@ -473,8 +478,15 @@ msgid "Telefono proveedor"
 msgstr "Telephone of the supplier"
 
 #: pedidoproveedorview.cpp:240
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo.\n"
+"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"You have to save the document before being able to print it.\n"
+"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo."
 
 #: pedidosproveedorlist.cpp:121
 #, fuzzy

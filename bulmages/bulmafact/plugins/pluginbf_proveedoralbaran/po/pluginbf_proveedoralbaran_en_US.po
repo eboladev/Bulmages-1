@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -80,7 +81,7 @@ msgstr "Name of the supplier"
 msgid "Albaran de proveedor existente"
 msgstr "Selector of suppliers"
 
-#: albaranesproveedor.cpp:323 ui_albaranesproveedorlistbase.h:421
+#: albaranesproveedor.cpp:331 ui_albaranesproveedorlistbase.h:421
 #, fuzzy
 msgid "Albaranes de proveedor"
 msgstr "Name of the supplier"
@@ -90,12 +91,12 @@ msgstr "Name of the supplier"
 msgid "Albaranes de proveedores"
 msgstr "Name of the supplier"
 
-#: albaranesproveedor.cpp:195
+#: albaranesproveedor.cpp:206
 #, fuzzy
 msgid "Albaranes no procesados"
 msgstr "Notes &nonpunteados"
 
-#: albaranesproveedor.cpp:194
+#: albaranesproveedor.cpp:205
 msgid "Albaranes procesados"
 msgstr ""
 
@@ -104,7 +105,7 @@ msgstr ""
 msgid "Almacen:"
 msgstr "Warehouse"
 
-#: albaranesproveedor.cpp:403
+#: albaranesproveedor.cpp:411
 #, fuzzy
 msgid "Base imponible"
 msgstr "Tax basis"
@@ -114,8 +115,8 @@ msgstr "Tax basis"
 msgid "Base imponible:"
 msgstr "Tax basis"
 
-#: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:601
 #: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
+#: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:601
 msgid "Borrar albaran"
 msgstr "Erase letters patent"
 
@@ -123,7 +124,7 @@ msgstr "Erase letters patent"
 msgid "Buscar:"
 msgstr "Look for:"
 
-#: albaranesproveedor.cpp:395
+#: albaranesproveedor.cpp:403
 msgid "Comentario"
 msgstr "Commentary"
 
@@ -134,7 +135,7 @@ msgstr "Error when erasing the supplier"
 
 #: listdescalbaranprovview.cpp:41
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Discount concept"
 
 #: ui_albaranesproveedorlistbase.h:468 ui_albaranesproveedorlistbase.h:471
 msgid "Configurar listado"
@@ -144,7 +145,7 @@ msgstr "Form listing"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranproveedorbase.h:604 ui_albaranesproveedorlistbase.h:450
+#: ui_albaranesproveedorlistbase.h:450 ui_albaranproveedorbase.h:604
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -173,7 +174,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: albaranesproveedor.cpp:342
+#: albaranesproveedor.cpp:350
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "It must select a family"
@@ -183,7 +184,7 @@ msgstr "It must select a family"
 msgid "Desc&uentos"
 msgstr "Discount"
 
-#: albaranesproveedor.cpp:392
+#: albaranesproveedor.cpp:400
 msgid "Descripcion"
 msgstr "Description"
 
@@ -192,7 +193,7 @@ msgstr "Description"
 msgid "Descripcion albaran proveedor"
 msgstr "Direction of the supplier"
 
-#: albaranesproveedor.cpp:402
+#: albaranesproveedor.cpp:410
 #, fuzzy
 msgid "Descripcion de la forma de pago"
 msgstr "Information of the mode of payment:"
@@ -211,7 +212,7 @@ msgstr "Discount:"
 msgid "Editar albaran"
 msgstr "Id letters patent"
 
-#: albaranesproveedor.cpp:357
+#: albaranesproveedor.cpp:365
 #, fuzzy
 msgid "Error al borrar albaran de proveedor"
 msgstr "Error when erasing the supplier"
@@ -236,7 +237,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: albaranesproveedor.cpp:394
+#: albaranesproveedor.cpp:402
 msgid "Fecha"
 msgstr "Date"
 
@@ -284,22 +285,22 @@ msgstr "Keep balance"
 msgid "I.R.P.F."
 msgstr "I.R.P.F (-"
 
-#: albaranesproveedor.cpp:390
+#: albaranesproveedor.cpp:398
 #, fuzzy
 msgid "ID albaran"
 msgstr "Id letters patent"
 
-#: albaranesproveedor.cpp:399
+#: albaranesproveedor.cpp:407
 #, fuzzy
 msgid "ID almacen"
 msgstr "id warehouse"
 
-#: albaranesproveedor.cpp:398
+#: albaranesproveedor.cpp:406
 #, fuzzy
 msgid "ID forma de pago"
 msgstr "Mode of payment"
 
-#: albaranesproveedor.cpp:397
+#: albaranesproveedor.cpp:405
 msgid "ID proveedor"
 msgstr "ID supplier"
 
@@ -334,7 +335,7 @@ msgstr "ID supplier"
 msgid "Imprimir listado"
 msgstr "Print listing"
 
-#: albaranesproveedor.cpp:404
+#: albaranesproveedor.cpp:412
 #, fuzzy
 msgid "Impuestos"
 msgstr "Imputation"
@@ -354,12 +355,12 @@ msgstr "Show/hide filter"
 msgid "Mostrar:"
 msgstr "Show seat"
 
-#: albaranesproveedor.cpp:401
+#: albaranesproveedor.cpp:409
 #, fuzzy
 msgid "Nombre del almacen"
 msgstr "Name warehouse"
 
-#: albaranesproveedor.cpp:400
+#: albaranesproveedor.cpp:408
 msgid "Nombre del proveedor"
 msgstr "Name of the supplier"
 
@@ -379,7 +380,7 @@ msgstr "Name of the supplier"
 msgid "Numero albaran proveedor"
 msgstr "Error when erasing the supplier"
 
-#: albaranesproveedor.cpp:391
+#: albaranesproveedor.cpp:399
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Number of fax"
@@ -389,13 +390,13 @@ msgstr "Number of fax"
 msgid "Numero de albaran:"
 msgstr "Number of fax:"
 
-#: albaranesproveedor.cpp:396
+#: albaranesproveedor.cpp:404
 #, fuzzy
 msgid "Procesado"
 msgstr "Pro&cessings"
 
-#: albaranesproveedor.cpp:53 albaranesproveedor.cpp:77
-#: albaranproveedorview.cpp:84
+#: albaranproveedorview.cpp:84 albaranesproveedor.cpp:53
+#: albaranesproveedor.cpp:77
 msgid "Proveedor:"
 msgstr "Supplier:"
 
@@ -404,7 +405,7 @@ msgstr "Supplier:"
 msgid "R.E.:"
 msgstr "R.E."
 
-#: albaranesproveedor.cpp:393
+#: albaranesproveedor.cpp:401
 msgid "Referencia"
 msgstr "Reference"
 
@@ -423,12 +424,12 @@ msgstr "Reference"
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Must select an element"
 
-#: albaranesproveedor.cpp:193
+#: albaranesproveedor.cpp:204
 #, fuzzy
 msgid "Todos los albaranes"
 msgstr "The seats have been ordered"
 
-#: albaranesproveedor.cpp:405
+#: albaranesproveedor.cpp:413
 #, fuzzy
 msgid "Total albaran"
 msgstr "<HR><B>Treating Letters patent "

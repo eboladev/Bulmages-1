@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: presupuestoview.cpp:70 listdescpresupuestoview.cpp:42
-#: listlinpresupuestoview.cpp:56
+#: listlinpresupuestoview.cpp:56 presupuestoview.cpp:70
+#: listdescpresupuestoview.cpp:42
 msgid "% Descuento"
 msgstr "% Discount"
 
@@ -90,7 +91,7 @@ msgstr "Update listing"
 msgid "Albaranes a clientes"
 msgstr "Name of client"
 
-#: presupuestoview.cpp:62 presupuestolist.cpp:377
+#: presupuestolist.cpp:375 presupuestoview.cpp:62
 msgid "Almacen"
 msgstr "Warehouse"
 
@@ -100,7 +101,7 @@ msgstr "Warehouse"
 msgid "Almacen:"
 msgstr "Warehouse"
 
-#: presupuestolist.cpp:370
+#: presupuestolist.cpp:368
 msgid "Base Imponible"
 msgstr "Tax basis"
 
@@ -110,8 +111,8 @@ msgstr "Tax basis"
 msgid "Base imponible:"
 msgstr "Tax basis"
 
-#: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
 #: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
+#: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
 msgid "Borrar albaran"
 msgstr "Erase letters patent"
 
@@ -121,8 +122,8 @@ msgstr "Erase letters patent"
 msgid "Borrar factura"
 msgstr "Erase quota"
 
-#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
 #: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
+#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
 #, fuzzy
 msgid "Borrar pedido"
 msgstr ""
@@ -131,8 +132,8 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Erase punteo"
 
-#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 #: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
+#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 #, fuzzy
 msgid "Borrar presupuesto"
 msgstr "<HR><B>Treating Estimated "
@@ -146,11 +147,11 @@ msgstr "Look for:"
 msgid "Cantidad"
 msgstr "Amount"
 
-#: presupuestoview.cpp:61 presupuestolist.cpp:368
+#: presupuestolist.cpp:366 presupuestoview.cpp:61
 msgid "Cliente"
 msgstr "Client"
 
-#: presupuestoview.cpp:98 presupuestolist.cpp:53 presupuestolist.cpp:87
+#: presupuestolist.cpp:53 presupuestolist.cpp:87 presupuestoview.cpp:98
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -158,7 +159,7 @@ msgstr "Client:"
 msgid "Codigo completo"
 msgstr "Complete code"
 
-#: presupuestolist.cpp:376
+#: presupuestolist.cpp:374
 msgid "Comentario"
 msgstr "Commentary"
 
@@ -194,7 +195,7 @@ msgstr "Form listing"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_presupuestoclientebase.h:784 ui_presupuestoslistbase.h:387
+#: ui_presupuestoslistbase.h:387 ui_presupuestoclientebase.h:784
 #: ui_albaranclientelistbase.h:478 ui_pedidosclientelistbase.h:405
 #: ui_facturaslistbase.h:503
 msgid "Ctrl+D"
@@ -220,7 +221,7 @@ msgstr "Ctrl+D"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_presupuestoclientebase.h:792 ui_presupuestoslistbase.h:395
+#: ui_presupuestoslistbase.h:395 ui_presupuestoclientebase.h:792
 #: ui_albaranclientelistbase.h:486 ui_pedidosclientelistbase.h:413
 #: ui_facturaslistbase.h:511
 msgid "Ctrl+P"
@@ -235,7 +236,7 @@ msgstr "Ctrl+S"
 msgid "Datos &generales"
 msgstr "&General performances"
 
-#: presupuestolist.cpp:326
+#: presupuestolist.cpp:324
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "It must select a family"
@@ -246,7 +247,7 @@ msgstr "It must select a family"
 msgid "Desc&uentos"
 msgstr "Discount"
 
-#: listlinpresupuestoview.cpp:50 presupuestolist.cpp:373
+#: presupuestolist.cpp:371 listlinpresupuestoview.cpp:50
 msgid "Descripcion"
 msgstr "Description"
 
@@ -286,7 +287,7 @@ msgstr "Publish article"
 msgid "Editar presupuesto"
 msgstr "<HR><B>Treating Estimated "
 
-#: presupuestolist.cpp:340
+#: presupuestolist.cpp:338
 #, fuzzy
 msgid "Error al borrar el presupuesto"
 msgstr "Error when erasing the supplier"
@@ -296,7 +297,7 @@ msgstr "Error when erasing the supplier"
 msgid "Error al crear el presupuesto"
 msgstr "Error when creating the supplier"
 
-#: presupuestolist.cpp:300
+#: presupuestolist.cpp:298
 #, fuzzy
 msgid "Error al editar el presupuesto"
 msgstr "Error when creating the supplier"
@@ -316,7 +317,7 @@ msgstr "F5"
 msgid "Facturas a clientes"
 msgstr "Selector of clients"
 
-#: presupuestolist.cpp:367
+#: presupuestolist.cpp:365
 msgid "Fecha"
 msgstr "Date"
 
@@ -404,21 +405,21 @@ msgstr "Keep punteo"
 msgid "I.R.P.F.:"
 msgstr "I.R.P.F (-"
 
-#: presupuestolist.cpp:380
+#: presupuestolist.cpp:378
 #, fuzzy
 msgid "ID almacen"
 msgstr "id warehouse"
 
-#: presupuestolist.cpp:379
+#: presupuestolist.cpp:377
 msgid "ID cliente"
 msgstr "ID client"
 
-#: presupuestoview.cpp:60 presupuestolist.cpp:365
+#: presupuestolist.cpp:363 presupuestoview.cpp:60
 #, fuzzy
 msgid "ID presupuesto"
 msgstr "<HR><B>Treating Estimated "
 
-#: presupuestolist.cpp:378
+#: presupuestolist.cpp:376
 #, fuzzy
 msgid "ID trabajador"
 msgstr "Worker"
@@ -431,7 +432,7 @@ msgstr "Id article"
 msgid "Id descuento"
 msgstr ""
 
-#: listdescpresupuestoview.cpp:43 listlinpresupuestoview.cpp:57
+#: listlinpresupuestoview.cpp:57 listdescpresupuestoview.cpp:43
 #, fuzzy
 msgid "Id presupuesto"
 msgstr "<HR><B>Treating Estimated "
@@ -461,7 +462,7 @@ msgstr "Print order"
 msgid "Imprimir presupuesto"
 msgstr "Print order"
 
-#: presupuestolist.cpp:371
+#: presupuestolist.cpp:369
 #, fuzzy
 msgid "Impuestos"
 msgstr "Imputation"
@@ -581,7 +582,7 @@ msgstr "Order"
 msgid "Pedidos de clientes"
 msgstr "Code of client:"
 
-#: presupuestoview.cpp:66 presupuestolist.cpp:374
+#: presupuestolist.cpp:372 presupuestoview.cpp:66
 #, fuzzy
 msgid "Persona de contacto"
 msgstr "Number of quotas"
@@ -597,12 +598,12 @@ msgstr "Account of assets:"
 msgid "Precio de venta s/IVA"
 msgstr "Percentage IVA"
 
-#: presupuestoview.cpp:57 presupuestolist.cpp:366
+#: presupuestolist.cpp:364 presupuestoview.cpp:57
 #, fuzzy
 msgid "Presupuesto"
 msgstr "<HR><B>Treating DEstimated "
 
-#: presupuestolist.cpp:312 pluginbf_clientepresupuesto.cpp:60
+#: presupuestolist.cpp:310 pluginbf_clientepresupuesto.cpp:60
 #: pluginbf_clientepresupuesto.cpp:61 ui_presupuestoslistbase.h:362
 #, fuzzy
 msgid "Presupuestos a clientes"
@@ -639,7 +640,7 @@ msgstr "Pro&cessings"
 msgid "R.E.:"
 msgstr "R.E."
 
-#: presupuestoview.cpp:71 presupuestolist.cpp:369
+#: presupuestolist.cpp:367 presupuestoview.cpp:71
 msgid "Referencia"
 msgstr "Reference"
 
@@ -653,7 +654,7 @@ msgstr "Reference"
 msgid "Serie:"
 msgstr ""
 
-#: presupuestolist.cpp:375
+#: presupuestolist.cpp:373
 #, fuzzy
 msgid "Telefono"
 msgstr "Telephone:"
@@ -674,7 +675,7 @@ msgstr "Must select an element"
 msgid "Todos los presupuestos"
 msgstr "The seats have been ordered"
 
-#: presupuestolist.cpp:372
+#: presupuestolist.cpp:370
 msgid "Total"
 msgstr "Total"
 
@@ -682,9 +683,10 @@ msgstr "Total"
 msgid "Total Linea"
 msgstr "Total of the line"
 
-#: ui_presupuestoclientebase.h:820 ui_presupuestoslistbase.h:422
-#: ui_albaranclientebase.h:791 ui_pedidosclientelistbase.h:439
-#: ui_pedidoclientebase.h:723 ui_facturabase.h:719 ui_facturaslistbase.h:478
+#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:820
+#: ui_albaranclientebase.h:791 ui_pedidoclientebase.h:723
+#: ui_pedidosclientelistbase.h:439 ui_facturabase.h:719
+#: ui_facturaslistbase.h:478
 #, fuzzy
 msgid "Total:"
 msgstr "Total"

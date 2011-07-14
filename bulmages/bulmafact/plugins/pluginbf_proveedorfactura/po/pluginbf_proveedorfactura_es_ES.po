@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -176,7 +176,7 @@ msgstr "Articulo"
 msgid "Base "
 msgstr "Base "
 
-#: facturasplist.cpp:379
+#: facturasplist.cpp:378
 msgid "Base imponible"
 msgstr "Base imponible"
 
@@ -184,8 +184,8 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_facturasplistbase.h:396 ui_facturasplistbase.h:399 ui_facturapbase.h:589
-#: ui_facturapbase.h:592
+#: ui_facturapbase.h:589 ui_facturapbase.h:592 ui_facturasplistbase.h:396
+#: ui_facturasplistbase.h:399
 msgid "Borrar factura"
 msgstr "Borrar factura"
 
@@ -209,7 +209,7 @@ msgstr "Codigo"
 msgid "Codigo completo"
 msgstr "Codigo completo"
 
-#: facturasplist.cpp:375
+#: facturasplist.cpp:374
 msgid "Comentario factura"
 msgstr "Comentario factura"
 
@@ -237,7 +237,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_facturasplistbase.h:402 ui_facturapbase.h:595
+#: ui_facturapbase.h:595 ui_facturasplistbase.h:402
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -265,7 +265,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: facturasplist.cpp:252
+#: facturasplist.cpp:251
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
@@ -289,7 +289,7 @@ msgstr "Descripcion:"
 msgid "Descuen&tos"
 msgstr "Descuen&tos"
 
-#: facturapview.cpp:400 listlinfacturapview.cpp:57
+#: listlinfacturapview.cpp:57 facturapview.cpp:400
 msgid "Descuento"
 msgstr "Descuento"
 
@@ -301,11 +301,11 @@ msgstr "Descuentos:"
 msgid "Editar factura"
 msgstr "Editar factura"
 
-#: facturasplist.cpp:263
+#: facturasplist.cpp:262
 msgid "Error al borrar la factura de proveedor"
 msgstr "Error al borrar la factura de proveedor"
 
-#: facturasplist.cpp:233
+#: facturasplist.cpp:232
 msgid "Error al cargar la factura proveedor"
 msgstr "Error al cargar la factura proveedor"
 
@@ -341,8 +341,8 @@ msgstr "Factura Proveedor"
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveedor existente"
 
-#: facturasplist.cpp:276 pluginbf_proveedorfactura.cpp:56
-#: pluginbf_proveedorfactura.cpp:57 ui_facturasplistbase.h:373
+#: pluginbf_proveedorfactura.cpp:56 pluginbf_proveedorfactura.cpp:57
+#: facturasplist.cpp:275 ui_facturasplistbase.h:373
 msgid "Facturas de proveedores"
 msgstr "Facturas de proveedores"
 
@@ -358,7 +358,7 @@ msgstr "Facturas procesadas"
 msgid "Fecha"
 msgstr "Fecha"
 
-#: facturasplist.cpp:372
+#: facturasplist.cpp:371
 msgid "Fecha factura"
 msgstr "Fecha factura"
 
@@ -398,7 +398,7 @@ msgstr "IVA "
 msgid "Id descuento"
 msgstr "Id descuento"
 
-#: facturasplist.cpp:369 listdescfacturaprovview.cpp:43
+#: listdescfacturaprovview.cpp:43 facturasplist.cpp:368
 msgid "Id factura"
 msgstr "Id factura"
 
@@ -410,11 +410,11 @@ msgstr "Id facturap"
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: facturasplist.cpp:377 facturapview.cpp:58
+#: facturasplist.cpp:376 facturapview.cpp:58
 msgid "Id proveedor"
 msgstr "Id proveedor"
 
-#: facturasplist.cpp:376 facturapview.cpp:65
+#: facturasplist.cpp:375 facturapview.cpp:65
 msgid "Id trabajador"
 msgstr "Id trabajador"
 
@@ -422,7 +422,7 @@ msgstr "Id trabajador"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: facturasplist.cpp:380
+#: facturasplist.cpp:379
 msgid "Impuestos"
 msgstr "Impuestos"
 
@@ -446,7 +446,7 @@ msgstr "Mostrar:"
 msgid "Nombre"
 msgstr "Nombre"
 
-#: facturasplist.cpp:371
+#: facturasplist.cpp:370
 msgid "Nombre proveedor"
 msgstr "Nombre proveedor"
 
@@ -463,7 +463,7 @@ msgstr "Nueva factura de proveedor"
 msgid "Numero"
 msgstr "Numero"
 
-#: facturasplist.cpp:370
+#: facturasplist.cpp:369
 msgid "Numero factura"
 msgstr "Numero factura"
 
@@ -479,7 +479,7 @@ msgstr "Orden"
 msgid "P.V.P."
 msgstr "P.V.P."
 
-#: facturasplist.cpp:373
+#: facturasplist.cpp:372
 msgid "Persona de contacto"
 msgstr "Persona de contacto"
 
@@ -507,7 +507,7 @@ msgstr "Proveedor:"
 msgid "R.E.:"
 msgstr "R.E.:"
 
-#: facturasplist.cpp:368
+#: facturasplist.cpp:367
 msgid "Referencia factura"
 msgstr "Referencia factura"
 
@@ -519,7 +519,7 @@ msgstr "Referencia facturap"
 msgid "Referencia:"
 msgstr "Referencia:"
 
-#: facturasplist.cpp:374
+#: facturasplist.cpp:373
 msgid "Telefono factura"
 msgstr "Telefono factura"
 
@@ -531,7 +531,7 @@ msgstr "Tiene que seleccionar un proveedor"
 msgid "Todas las facturas"
 msgstr "Todas las facturas"
 
-#: facturasplist.cpp:378 facturapview.cpp:357 facturapview.cpp:402
+#: facturasplist.cpp:377 facturapview.cpp:357 facturapview.cpp:402
 msgid "Total"
 msgstr "Total"
 
@@ -539,7 +539,7 @@ msgstr "Total"
 msgid "Total "
 msgstr "Total "
 
-#: ui_facturasplistbase.h:377 ui_facturapbase.h:625
+#: ui_facturapbase.h:625 ui_facturasplistbase.h:377
 msgid "Total:"
 msgstr "Total:"
 

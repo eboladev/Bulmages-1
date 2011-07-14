@@ -5,13 +5,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-10 07:59+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
@@ -103,7 +103,7 @@ msgstr "Quantité"
 msgid "Cliente"
 msgstr "Client"
 
-#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
+#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -175,8 +175,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Vous devez sélectionner une ligne"
 
-#: ticketclienteview.cpp:80 bfclientealbaransubform.cpp:49
-#: ticketclientelist.cpp:425
+#: bfclientealbaransubform.cpp:49 ticketclientelist.cpp:425
+#: ticketclienteview.cpp:80
 msgid "Descripcion"
 msgstr "Description "
 
@@ -304,7 +304,7 @@ msgstr "Id Forme de paiement"
 msgid "ID trabajador"
 msgstr "Id Ouvrier"
 
-#: ticketclienteview.cpp:68 bfclientealbaransubform.cpp:57
+#: bfclientealbaransubform.cpp:57 ticketclienteview.cpp:68
 #: bfclientealbarandescuentosubform.cpp:44
 msgid "Id albaran"
 msgstr "Id bulletin"
@@ -341,6 +341,10 @@ msgstr "Montrer/cacher l'entête"
 msgid "Mostrar:"
 msgstr "Afficher :"
 
+#: bfclientealbaransubform.cpp:48
+msgid "No linea"
+msgstr ""
+
 #: bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
 msgstr "Nom article"
@@ -358,17 +362,13 @@ msgstr "Nouveau bulletin"
 msgid "Nuevo ticket a cliente"
 msgstr "Nouveau ticket client"
 
-#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
+#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
 msgid "Numero de albaran"
 msgstr "Numéro du bulletin"
 
 #: ui_ticketclientebase.h:766
 msgid "Numero de ticket:"
 msgstr "N° de ticket :"
-
-#: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
-msgstr "N° de ligne"
 
 #: bfclientealbaransubform.cpp:58
 msgid "Orden"
@@ -483,3 +483,5 @@ msgstr "Salarié"
 msgid "Trabajador:"
 msgstr "Salarié :"
 
+#~ msgid "Nº linea"
+#~ msgstr "N° de ligne"

@@ -3,21 +3,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:34+0200\n"
+"POT-Creation-Date: 2011-07-12 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_bcbulmacontbase.h:289
 msgid "\""
 msgstr "\""
 
-#: ui_bcaboutbase.h:304 ui_bctipoivabase.h:270 ui_bcasientoduplicarbase.h:239
+#: ui_bcaboutbase.h:304 ui_bcasientoduplicarbase.h:239 ui_bctipoivabase.h:270
 msgid "&Aceptar"
 msgstr "&Accept"
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "&Actualizar"
 msgstr "&Update"
 
-#: bccentrocosteview.cpp:267 bccanalview.cpp:213
+#: bccentrocosteview.cpp:265 bccanalview.cpp:213
 msgid "&Borrar"
 msgstr "&Erase"
 
@@ -45,15 +45,15 @@ msgstr "&Channel by defect"
 msgid "&Canales"
 msgstr "&Cancel"
 
-#: ui_bctipoivabase.h:271 ui_bccuentasanualesimprimirbase.h:203
-#: ui_bcmasapatrimoniallistbase.h:123 bccentrocosteview.cpp:168
-#: bccentrocosteview.cpp:267 bccanalview.cpp:108 bccanalview.cpp:186
+#: ui_bcmasapatrimoniallistbase.h:123 ui_bctipoivabase.h:271
+#: ui_bccuentasanualesimprimirbase.h:203 bccentrocosteview.cpp:168
+#: bccentrocosteview.cpp:265 bccanalview.cpp:108 bccanalview.cpp:186
 #: bccanalview.cpp:213 bccanalview.cpp:238
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: ui_bcformapagobase.h:304 ui_bcasientoduplicarbase.h:240
-#: ui_bccanalbase.h:246
+#: ui_bcasientoduplicarbase.h:240 ui_bccanalbase.h:246
+#: ui_bcformapagobase.h:304
 msgid "&Cerrar"
 msgstr "&Close"
 
@@ -128,7 +128,7 @@ msgstr "''"
 
 #: ui_bccentrocostebase.h:275
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ui_bcaboutbase.h:296
 msgid ""
@@ -216,7 +216,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Inteligent accounting entry"
 
-#: ui_bccuentasanualesimprimirbase.h:195 ui_bcmasapatrimoniallistbase.h:127
+#: ui_bcmasapatrimoniallistbase.h:127 ui_bccuentasanualesimprimirbase.h:195
 msgid "Balance"
 msgstr "Balance"
 
@@ -228,7 +228,7 @@ msgstr "Delete"
 msgid "Borrar canal"
 msgstr "Erase channel"
 
-#: bccentrocosteview.cpp:265
+#: bccentrocosteview.cpp:263
 msgid "Borrar centro de coste"
 msgstr "To erase cost center"
 
@@ -240,7 +240,7 @@ msgstr "Erase mode of payment"
 msgid "CODIGO"
 msgstr "CODE"
 
-#: bcbulmacont.cpp:516
+#: bcbulmacont.cpp:499
 msgid "Cambiando a modo de pantalla completa..."
 msgstr "Changing as a complete screen..."
 
@@ -248,7 +248,7 @@ msgstr "Changing as a complete screen..."
 msgid "Cambiar Cuenta"
 msgstr "Change Account"
 
-#: bcbulmacont.cpp:498
+#: bcbulmacont.cpp:481
 msgid "Cambinado barra de estado..."
 msgstr "Changing  sweeps of state..."
 
@@ -270,7 +270,7 @@ msgstr "Cancel"
 
 #: main.cxx:164
 msgid "Cargando plugins"
-msgstr ""
+msgstr "Loading plugins"
 
 #: bccentrocosteview.cpp:44
 #, fuzzy
@@ -295,8 +295,8 @@ msgstr "Centers of Cost"
 msgid "Centros de cos&te"
 msgstr "Centers of cos&t"
 
-#: ui_bccentrocostebase.h:287 ui_bccanalseleccionarbase.h:98
-#: ui_bccentrocosteseleccionarbase.h:99 ui_bccambiacuentabase.h:220
+#: ui_bccanalseleccionarbase.h:98 ui_bccentrocosteseleccionarbase.h:99
+#: ui_bccambiacuentabase.h:220 ui_bccentrocostebase.h:287
 msgid "Cerrar"
 msgstr "Close"
 
@@ -304,6 +304,11 @@ msgstr "Close"
 #, fuzzy
 msgid "Cerrar Asientos"
 msgstr "Close seat "
+
+#: bcsubform.cpp:519
+#, qt-format
+msgid "Columna: '%1', fila: '%2'."
+msgstr ""
 
 #: ui_bcmasapatrimonialbase.h:363
 msgid "Comentarios"
@@ -322,11 +327,11 @@ msgstr "Configuration"
 msgid "Contabilidad GPL"
 msgstr ""
 
-#: bcbulmacont.cpp:473
+#: bcbulmacont.cpp:456
 msgid "Copiando la seleccion al portapapeles..."
 msgstr "Copying the selection to the paper holder..."
 
-#: bcbulmacont.cpp:461
+#: bcbulmacont.cpp:444
 msgid "Cortando seleccion..."
 msgstr "Cutting selection..."
 
@@ -362,7 +367,7 @@ msgstr "Ctrl+PgUp"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: ui_bccentrocostebase.h:273 ui_bcconfiguracionbase.h:247
+#: ui_bcconfiguracionbase.h:247 ui_bccentrocostebase.h:273
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -390,7 +395,7 @@ msgstr "Data:"
 msgid "Descripcion"
 msgstr "Description"
 
-#: ui_bccentrocostebase.h:284 ui_bccanalbase.h:245
+#: ui_bccanalbase.h:245 ui_bccentrocostebase.h:284
 msgid "Descripcion:"
 msgstr "Description:"
 
@@ -398,13 +403,13 @@ msgstr "Description:"
 msgid "Desea guardar los cambios."
 msgstr "It wishes to keep the changes."
 
-#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:227 bccanalview.cpp:237
-#: bcformapagoview.cpp:147 bcformapagoview.cpp:209 bcconfiguracionview.cpp:117
-#: bctipoivaview.cpp:115 bctipoivaview.cpp:158
+#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225 bccanalview.cpp:237
+#: bcconfiguracionview.cpp:117 bctipoivaview.cpp:115 bctipoivaview.cpp:158
+#: bcformapagoview.cpp:147 bcformapagoview.cpp:209
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
 
-#: bcbulmacont.cpp:449
+#: bcbulmacont.cpp:432
 msgid "Deshaciendo la ultima accion..."
 msgstr "Download completes action..."
 
@@ -436,10 +441,13 @@ msgstr "Duplicate Seats"
 msgid "Editar"
 msgstr "Publish"
 
+#: bccompany.cpp:235
+msgid "Error al iniciar la clase."
+msgstr ""
+
 #: bccentrocosteview.cpp:142
-#, fuzzy
-msgid "Error en la carga de centros de coste"
-msgstr "To erase cost center"
+msgid "Error en la carga de centros de coste."
+msgstr ""
 
 #: main.cxx:193
 msgid "Error inesperado en BulmaCont, el programa se cerrara."
@@ -458,8 +466,8 @@ msgstr "F1"
 msgid "F11"
 msgstr "F11"
 
-#: ui_bccuentasanualesimprimirbase.h:198 ui_bccuentasanualesimprimirbase.h:201
-#: ui_bccambiacuentabase.h:216
+#: ui_bccambiacuentabase.h:216 ui_bccuentasanualesimprimirbase.h:198
+#: ui_bccuentasanualesimprimirbase.h:201
 #, fuzzy
 msgid "Fecha Final"
 msgstr ""
@@ -472,8 +480,8 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Final Date"
 
-#: ui_bccuentasanualesimprimirbase.h:197 ui_bccuentasanualesimprimirbase.h:200
-#: ui_bccambiacuentabase.h:215
+#: ui_bccambiacuentabase.h:215 ui_bccuentasanualesimprimirbase.h:197
+#: ui_bccuentasanualesimprimirbase.h:200
 msgid "Fecha Inicial"
 msgstr "Initial Date"
 
@@ -508,7 +516,7 @@ msgstr "Modes of &payment"
 msgid "Formas de pago"
 msgstr "Modes of payment"
 
-#: ui_bccentrocostebase.h:285 ui_bcmasapatrimonialbase.h:362
+#: ui_bcmasapatrimonialbase.h:362 ui_bccentrocostebase.h:285
 msgid "General"
 msgstr "General"
 
@@ -529,7 +537,7 @@ msgstr "Keep changes"
 msgid "Guardar canal"
 msgstr "Keep channel"
 
-#: bccentrocosteview.cpp:166 bccentrocosteview.cpp:226
+#: bccentrocosteview.cpp:166 bccentrocosteview.cpp:224
 msgid "Guardar centro de coste"
 msgstr " Keep center from cost"
 
@@ -593,7 +601,7 @@ msgstr "Information of the type of IVA:"
 
 #: main.cxx:176
 msgid "Inicializando componentes"
-msgstr ""
+msgstr "Initializing component"
 
 #: main.cxx:105
 msgid "Iniciando clases"
@@ -603,7 +611,7 @@ msgstr "Initiating classes"
 msgid "Inicio"
 msgstr "Beginning"
 
-#: bcbulmacont.cpp:485
+#: bcbulmacont.cpp:468
 msgid "Insertando el contenido del portapapeles..."
 msgstr "Inserting the content of the paper holder..."
 
@@ -613,7 +621,7 @@ msgstr "Invest"
 
 #: main.cxx:170
 msgid "Lanzando plugins"
-msgstr ""
+msgstr "Launching plugins"
 
 #: main.cxx:134
 #, fuzzy
@@ -624,13 +632,13 @@ msgstr "Configuration"
 msgid "Listado &347"
 msgstr "Listing &347"
 
-#: bcbulmacont.cpp:546
+#: bcbulmacont.cpp:529
 msgid "Listado de cuentas"
 msgstr "Listing of accounts"
 
-#: bcbulmacont.cpp:424 bcbulmacont.cpp:450 bcbulmacont.cpp:462
-#: bcbulmacont.cpp:474 bcbulmacont.cpp:486 bcbulmacont.cpp:504
-#: bcbulmacont.cpp:522
+#: bcbulmacont.cpp:407 bcbulmacont.cpp:433 bcbulmacont.cpp:445
+#: bcbulmacont.cpp:457 bcbulmacont.cpp:469 bcbulmacont.cpp:487
+#: bcbulmacont.cpp:505
 msgid "Listo."
 msgstr "Ready."
 
@@ -667,7 +675,11 @@ msgstr "Modi&fy countable plan"
 msgid "Mostrar / Ocultar Detalle"
 msgstr "Show/hide Detail"
 
-#: bccentrocosteview.cpp:278
+#: bcsubform.cpp:275
+msgid "No existe la cuenta."
+msgstr ""
+
+#: bccentrocosteview.cpp:276
 #, fuzzy
 msgid "No se pudo borrar el Centro de Coste"
 msgstr "Selector of Centers of Cost"
@@ -691,7 +703,7 @@ msgstr "Name"
 msgid "Nombre de la forma de pago:"
 msgstr "Name of the mode of payment:"
 
-#: ui_bccentrocostebase.h:283 ui_bctipoivabase.h:267 ui_bccanalbase.h:244
+#: ui_bccanalbase.h:244 ui_bctipoivabase.h:267 ui_bccentrocostebase.h:283
 msgid "Nombre:"
 msgstr "Name:"
 
@@ -733,7 +745,7 @@ msgstr "Origin:"
 
 #: ui_bcbulmacontbase.h:291
 msgid "Paises"
-msgstr ""
+msgstr "Countries"
 
 #: bcconfiguracionview.cpp:159
 msgid ""
@@ -803,11 +815,11 @@ msgstr "To leave the program"
 msgid "Se han cerrado los asientos"
 msgstr "The seats have been amused"
 
-#: bcbulmacont.cpp:627
+#: bcbulmacont.cpp:610
 msgid "Se perderan los cambios no guardados"
-msgstr ""
+msgstr "The unsaved changes will be lost"
 
-#: bccentrocosteview.cpp:266
+#: bccentrocosteview.cpp:264
 msgid ""
 "Se va a borrar el centro de coste.\n"
 "Esta operacion puede ocasionar perdida de datos."
@@ -837,9 +849,9 @@ msgstr ""
 msgid "Segundo Periodo"
 msgstr "Second Period"
 
-#: bcbulmacont.cpp:626
+#: bcbulmacont.cpp:609
 msgid "Seguro que desea abandonar el programa "
-msgstr ""
+msgstr "Are you sure you want to quit the program"
 
 #: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
 msgid "Seleccion"
@@ -1815,6 +1827,10 @@ msgstr ""
 
 #~ msgid "Error al crear el asiento"
 #~ msgstr "Error when creating the seat"
+
+#, fuzzy
+#~ msgid "Error en la carga de centros de coste"
+#~ msgstr "To erase cost center"
 
 #~ msgid "Error en la carga de la amortizacion"
 #~ msgstr "Error in the load of the amortization"

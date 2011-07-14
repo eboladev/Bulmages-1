@@ -8,56 +8,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:46+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_listzonacomercialbase.h:85 ui_rutacomercialincbase.h:236
-#: ui_rutacomerciallistbase.h:348
+#: ui_rutacomerciallistbase.h:364 ui_listzonacomercialbase.h:85
+#: ui_rutacomercialincbase.h:236
 msgid "&Aceptar"
 msgstr "&Accept"
 
-#: incidenciacomercialview.cpp:106 ui_listzonacomercialbase.h:86
-#: ui_rutacomercialincbase.h:237 ui_rutacomerciallistbase.h:349
+#: incidenciacomercialview.cpp:106 ui_rutacomerciallistbase.h:365
+#: ui_listzonacomercialbase.h:86 ui_rutacomercialincbase.h:237
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: pluginbf_comercial.cpp:154
+#: pluginbf_comercial.cpp:167
 #, fuzzy
 msgid "&Comercial"
 msgstr "&Commentaries:"
 
-#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:81
+#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:82
 msgid "&No"
 msgstr "&No"
 
-#: pluginbf_comercial.cpp:104
+#: pluginbf_comercial.cpp:106
 msgid "&Rutas comerciales"
 msgstr ""
 
-#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:81
+#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:82
 msgid "&Si"
 msgstr "&Yes"
 
-#: pluginbf_comercial.cpp:98
+#: pluginbf_comercial.cpp:100
 #, fuzzy
 msgid "&Zonas comerciales"
 msgstr "Commercial name:"
 
-#: rutacomercialincview.cpp:131
+#: rutacomercialincview.cpp:141
 #, fuzzy
 msgid "Accion comercial"
 msgstr "Commercial name:"
 
-#: ui_rutacomerciallistbase.h:338 ui_rutacomerciallistbase.h:341
+#: ui_rutacomerciallistbase.h:353 ui_rutacomerciallistbase.h:356
 msgid "Actualizar Listado"
 msgstr "Update Listing"
 
-#: rutacomerciallist.cpp:297
+#: rutacomerciallist.cpp:306
 #, fuzzy
 msgid "Apellidos del trabajador"
 msgstr "List of workers:"
@@ -67,17 +68,21 @@ msgstr "List of workers:"
 msgid "Borrar Factura"
 msgstr "Erase quota"
 
-#: ui_rutacomerciallistbase.h:317 ui_rutacomerciallistbase.h:320
+#: ui_rutacomerciallistbase.h:332 ui_rutacomerciallistbase.h:335
 #, fuzzy
 msgid "Borrar Pedido"
 msgstr "Erase registry"
 
-#: rutacomercialincview.cpp:79
+#: rutacomercialincview.cpp:80
 #, fuzzy
 msgid "BulmaFact - Rutas comerciales"
 msgstr "BulmaFact - Invoicing GPL"
 
-#: rutacomerciallist.cpp:291
+#: ui_rutacomerciallistbase.h:359
+msgid "Buscar:"
+msgstr "Look for:"
+
+#: rutacomerciallist.cpp:300
 #, fuzzy
 msgid "CIF del cliente"
 msgstr "C.I.F. of the client"
@@ -87,18 +92,19 @@ msgid "Cambio datos"
 msgstr ""
 
 #: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
-#: rutacomerciallist.cpp:47 rutacomerciallist.cpp:83 rutacomercialview.cpp:56
-#: rutacomercialview.cpp:79 ui_incidenciacomercialbase.h:282
-#: ui_rutacomercialbase.h:229 ui_rutacomerciallistbase.h:345
+#: rutacomerciallist.cpp:49 rutacomerciallist.cpp:85 rutacomercialview.cpp:69
+#: rutacomercialview.cpp:106 ui_rutacomerciallistbase.h:361
+#: ui_rutacomercialbase.h:229 ui_incidenciacomercialbase.h:282
 msgid "Cliente:"
 msgstr "Client:"
 
-#: rutacomerciallist.cpp:303
+#: rutacomerciallist.cpp:312
 #, fuzzy
 msgid "Comentario de la incidencia comercial"
 msgstr "Commentaries of the seat"
 
-#: incidenciacomercial.cpp:45 rutacomercial.cpp:45
+#: incidenciacomercial.cpp:45 rutacomercialview.cpp:62
+#: rutacomercialview.cpp:99
 msgid "Comentarios"
 msgstr "Commentaries"
 
@@ -107,17 +113,17 @@ msgstr "Commentaries"
 msgid "Comentarios comerciales:"
 msgstr "Commercial name:"
 
-#: pluginbf_comercial.cpp:149
+#: pluginbf_comercial.cpp:162
 #, fuzzy
 msgid "Comentarios para el comercial"
 msgstr "Commentaries for the comercial"
 
-#: rutacomerciallist.cpp:301
+#: rutacomerciallist.cpp:310
 #, fuzzy
 msgid "Comentarios ruta comercial"
 msgstr "Commentaries of commercial route"
 
-#: ui_incidenciacomercialbase.h:285 ui_rutacomercialbase.h:230
+#: ui_rutacomercialbase.h:230 ui_incidenciacomercialbase.h:285
 msgid "Comentarios:"
 msgstr "Commentaries:"
 
@@ -126,7 +132,7 @@ msgstr "Commentaries:"
 msgid "Datos comerciales:"
 msgstr "&General performances"
 
-#: rutacomercialincview.cpp:80
+#: rutacomercialincview.cpp:81
 msgid "Desea borrar esta ruta?"
 msgstr ""
 
@@ -134,7 +140,7 @@ msgstr ""
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
 
-#: ui_rutacomerciallistbase.h:310 ui_rutacomerciallistbase.h:313
+#: ui_rutacomerciallistbase.h:325 ui_rutacomerciallistbase.h:328
 #, fuzzy
 msgid "Editar Pedido"
 msgstr "Publish article"
@@ -143,7 +149,7 @@ msgstr "Publish article"
 msgid "Estado"
 msgstr "State"
 
-#: rutacomerciallist.cpp:304
+#: rutacomerciallist.cpp:313
 msgid "Estado de la incidencia comercial"
 msgstr ""
 
@@ -152,15 +158,17 @@ msgstr ""
 msgid "Estado de la incidencia:"
 msgstr "Data of the account:"
 
-#: incidenciacomercial.cpp:43 rutacomercial.cpp:44
+#: incidenciacomercial.cpp:43 rutacomercialview.cpp:61
+#: rutacomercialview.cpp:98
 msgid "Familia"
 msgstr "Family"
 
-#: incidenciacomercial.cpp:42 rutacomercial.cpp:43
+#: incidenciacomercial.cpp:42 rutacomercialview.cpp:60
+#: rutacomercialview.cpp:97
 msgid "Fecha"
 msgstr "Date"
 
-#: pluginbf_comercial.cpp:147
+#: pluginbf_comercial.cpp:160
 #, fuzzy
 msgid "Fecha base"
 msgstr "Date"
@@ -175,22 +183,22 @@ msgstr "Date:"
 msgid "Fecha de la incidencia:"
 msgstr "Initial &date:"
 
-#: ui_rutacomerciallistbase.h:347
+#: ui_rutacomerciallistbase.h:363
 #, fuzzy
 msgid "Fecha final:"
 msgstr "Final &date:"
 
-#: rutacomerciallist.cpp:295
+#: rutacomerciallist.cpp:304
 #, fuzzy
 msgid "Fecha incidencia comercial"
 msgstr "Date of the purchase"
 
-#: ui_rutacomerciallistbase.h:346
+#: ui_rutacomerciallistbase.h:362
 #, fuzzy
 msgid "Fecha inicial:"
 msgstr "Initial &date:"
 
-#: rutacomerciallist.cpp:294
+#: rutacomerciallist.cpp:303
 #, fuzzy
 msgid "Fecha ruta comercial"
 msgstr "Date of purchase:"
@@ -200,12 +208,12 @@ msgstr "Date of purchase:"
 msgid "Fecha ruta:"
 msgstr "Date of quota"
 
-#: ui_rutacomerciallistbase.h:331
+#: ui_rutacomerciallistbase.h:346
 #, fuzzy
 msgid "Filtrar Pedidos"
 msgstr "Filter listing"
 
-#: ui_rutacomerciallistbase.h:334
+#: ui_rutacomerciallistbase.h:349
 #, fuzzy
 msgid "FiltrarPedidos"
 msgstr "Filter listing"
@@ -225,7 +233,8 @@ msgstr "Keep account"
 msgid "Guardar la incidencia"
 msgstr "Keep balance"
 
-#: incidenciacomercial.cpp:47 rutacomercial.cpp:46
+#: incidenciacomercial.cpp:47 rutacomercialview.cpp:63
+#: rutacomercialview.cpp:100
 #, fuzzy
 msgid "Hora"
 msgstr ""
@@ -236,58 +245,59 @@ msgstr ""
 "#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
 "Erase"
 
-#: rutacomerciallist.cpp:311
+#: rutacomerciallist.cpp:320
 #, fuzzy
 msgid "Hora de la incidencia"
 msgstr "Name of the account"
 
-#: rutacomerciallist.cpp:309
+#: rutacomerciallist.cpp:318
 #, fuzzy
 msgid "Hora ruta"
 msgstr "Erase quota"
 
-#: ui_incidenciacomercialbase.h:281 ui_rutacomercialbase.h:228
+#: ui_rutacomercialbase.h:228 ui_incidenciacomercialbase.h:281
 #, fuzzy
 msgid "Hora:"
 msgstr "Format:"
 
-#: rutacomerciallist.cpp:298
+#: rutacomerciallist.cpp:307
 msgid "ID cliente"
 msgstr "ID client"
 
-#: rutacomerciallist.cpp:306
+#: rutacomerciallist.cpp:315
 msgid "ID cobro"
 msgstr ""
 
-#: rutacomerciallist.cpp:302
+#: rutacomerciallist.cpp:311
 msgid "ID incidencia comercial"
 msgstr ""
 
-#: rutacomerciallist.cpp:305
+#: rutacomerciallist.cpp:314
 #, fuzzy
 msgid "ID pedido cliente"
 msgstr "<HR><B>Treating Requested Client "
 
-#: rutacomerciallist.cpp:300
+#: rutacomerciallist.cpp:309
 #, fuzzy
 msgid "ID ruta comercial"
 msgstr "Commercial name:"
 
-#: rutacomerciallist.cpp:299
+#: rutacomerciallist.cpp:308
 #, fuzzy
 msgid "ID trabajador"
 msgstr "Worker"
 
-#: rutacomerciallist.cpp:293 listzonacomercialview.cpp:78
+#: listzonacomercialview.cpp:80 rutacomerciallist.cpp:302
 #, fuzzy
 msgid "ID zona comercial"
 msgstr "Commercial name:"
 
-#: incidenciacomercial.cpp:41 rutacomercial.cpp:42
+#: incidenciacomercial.cpp:41 rutacomercialview.cpp:59
+#: rutacomercialview.cpp:96
 msgid "Identificador"
 msgstr "Identifier"
 
-#: ui_rutacomerciallistbase.h:324 ui_rutacomerciallistbase.h:327
+#: ui_rutacomerciallistbase.h:339 ui_rutacomerciallistbase.h:342
 #, fuzzy
 msgid "Imprimir Listado"
 msgstr "Print listing"
@@ -301,8 +311,8 @@ msgstr ""
 msgid "Incidencia comercial:"
 msgstr "Commercial name:"
 
-#: ui_incidenciacomercialbase.h:275 ui_incidenciacomercialbase.h:278
 #: ui_rutacomercialbase.h:222 ui_rutacomercialbase.h:225
+#: ui_incidenciacomercialbase.h:275 ui_incidenciacomercialbase.h:278
 #, fuzzy
 msgid "Informe por Referencia"
 msgstr "Reference"
@@ -316,30 +326,30 @@ msgstr ""
 msgid "No quiere nada"
 msgstr "Blocked"
 
-#: listzonacomercialview.cpp:79
+#: listzonacomercialview.cpp:81
 #, fuzzy
 msgid "Nombre de la zona comercial"
 msgstr "Commercial name:"
 
-#: rutacomerciallist.cpp:292
+#: rutacomerciallist.cpp:301
 msgid "Nombre del cliente"
 msgstr "Name of the client"
 
-#: rutacomerciallist.cpp:296
+#: rutacomerciallist.cpp:305
 #, fuzzy
 msgid "Nombre del trabajador"
 msgstr "Name of the supplier"
 
-#: rutacomerciallist.cpp:307
+#: rutacomerciallist.cpp:316
 #, fuzzy
 msgid "Nombre zona comercial"
 msgstr "Commercial name:"
 
-#: rutacomerciallist.cpp:162 rutacomerciallist.cpp:176
+#: rutacomerciallist.cpp:170 rutacomerciallist.cpp:185
 msgid "Nueva incidencia comercial"
 msgstr ""
 
-#: ui_rutacomerciallistbase.h:303 ui_rutacomerciallistbase.h:306
+#: ui_rutacomerciallistbase.h:318 ui_rutacomerciallistbase.h:321
 #, fuzzy
 msgid "Nuevo Pedido"
 msgstr "Order"
@@ -349,7 +359,7 @@ msgstr "Order"
 msgid "Pendiente"
 msgstr "Slope:"
 
-#: pluginbf_comercial.cpp:148
+#: pluginbf_comercial.cpp:161
 #, fuzzy
 msgid "Periodo"
 msgstr "Order"
@@ -359,7 +369,7 @@ msgstr "Order"
 msgid "Periodo de visitas:"
 msgstr "Regularity:"
 
-#: ui_rutacomerciallistbase.h:344
+#: ui_rutacomerciallistbase.h:360
 #, fuzzy
 msgid "Procesados."
 msgstr "Pro&cessings"
@@ -368,17 +378,17 @@ msgstr "Pro&cessings"
 msgid "Realizar Cobro"
 msgstr ""
 
-#: incidenciacomercial.cpp:48 rutacomercial.cpp:47
-#: ui_incidenciacomercialbase.h:273
+#: incidenciacomercial.cpp:48 rutacomercialview.cpp:64
+#: rutacomercialview.cpp:101 ui_incidenciacomercialbase.h:273
 msgid "Referencia"
 msgstr "Reference"
 
-#: rutacomerciallist.cpp:310
+#: rutacomerciallist.cpp:319
 #, fuzzy
 msgid "Referencia de la incidencia"
 msgstr "Description of the account"
 
-#: rutacomerciallist.cpp:308
+#: rutacomerciallist.cpp:317
 #, fuzzy
 msgid "Referencia ruta"
 msgstr "Reference"
@@ -393,9 +403,9 @@ msgstr "Reference"
 msgid "Revisar"
 msgstr "Subtraction"
 
-#: incidenciacomercial.cpp:93 rutacomercialview.cpp:140 rutacomercial.cpp:39
-#: ui_incidenciacomercialbase.h:271 ui_rutacomercialbase.h:218
-#: ui_rutacomercialincbase.h:205
+#: incidenciacomercial.cpp:93 rutacomercialview.cpp:56
+#: rutacomercialview.cpp:93 ui_rutacomercialbase.h:218
+#: ui_incidenciacomercialbase.h:271 ui_rutacomercialincbase.h:205
 #, fuzzy
 msgid "Ruta comercial"
 msgstr "Commercial name:"
@@ -405,8 +415,8 @@ msgstr "Commercial name:"
 msgid "Ruta comercial:"
 msgstr "Commercial name:"
 
-#: pluginbf_comercial.cpp:105 pluginbf_comercial.cpp:106
-#: ui_rutacomerciallistbase.h:300
+#: pluginbf_comercial.cpp:107 pluginbf_comercial.cpp:108
+#: ui_rutacomerciallistbase.h:315
 msgid "Rutas comerciales"
 msgstr ""
 
@@ -429,7 +439,7 @@ msgstr "Worker"
 msgid "Ver Albaran"
 msgstr "Id letters patent"
 
-#: pluginbf_comercial.cpp:146
+#: pluginbf_comercial.cpp:159
 #, fuzzy
 msgid "Zona comercial"
 msgstr "Commercial name:"
@@ -439,7 +449,7 @@ msgstr "Commercial name:"
 msgid "Zona comercial:"
 msgstr "Commercial name:"
 
-#: pluginbf_comercial.cpp:99 pluginbf_comercial.cpp:100
+#: pluginbf_comercial.cpp:101 pluginbf_comercial.cpp:102
 #: ui_listzonacomercialbase.h:84
 #, fuzzy
 msgid "Zonas comerciales"

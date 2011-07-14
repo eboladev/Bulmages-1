@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:01+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -70,11 +70,11 @@ msgstr "&Detalls"
 msgid "&Detalle Ventas"
 msgstr "&Detalls"
 
-#: compraventaview.cpp:468 compraventaview.cpp:589
+#: compraventaview.cpp:467 compraventaview.cpp:588
 msgid "&No"
 msgstr "&No"
 
-#: compraventaview.cpp:468 compraventaview.cpp:589
+#: compraventaview.cpp:467 compraventaview.cpp:588
 msgid "&Si"
 msgstr "&Sí"
 
@@ -188,16 +188,16 @@ msgstr "Document:"
 msgid "Error al crear el albaran a cliente"
 msgstr "Error al crear l'albarà a client"
 
-#: compraventaview.cpp:534 compraventaview.cpp:685
+#: compraventaview.cpp:533 compraventaview.cpp:684
 #, fuzzy
 msgid "Error inesperado"
 msgstr "inserit"
 
-#: compraventaview.cpp:716
+#: compraventaview.cpp:714
 msgid "Error inesperado en la impresion"
 msgstr "Error inesperat en la impressió"
 
-#: compraventaview.cpp:588
+#: compraventaview.cpp:587
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
@@ -205,17 +205,17 @@ msgstr ""
 "Existeix una factura a aquest client amb la mateixa referència que aquest "
 "albarà. Desitja obrir-la per a verificar?"
 
-#: compraventaview.cpp:467
+#: compraventaview.cpp:466
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
 msgstr ""
 
-#: compraventaview.cpp:466
+#: compraventaview.cpp:465
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveïdor existent"
 
-#: compraventaview.cpp:587
+#: compraventaview.cpp:586
 msgid "Factura existente"
 msgstr "Factura existent"
 
@@ -361,16 +361,16 @@ msgstr "Telèfon del proveïdor"
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: compraventaview.cpp:712
+#: compraventaview.cpp:710
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr "Ha de desar el document abans de poder procesar-lo"
 
-#: compraventaview.cpp:572
+#: compraventaview.cpp:571
 #, fuzzy
 msgid "Tiene que seleccionar un cliente"
 msgstr "Ha de seleccionar un element"
 
-#: compraventaview.cpp:451
+#: compraventaview.cpp:450
 #, fuzzy
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Ha de seleccionar un element"

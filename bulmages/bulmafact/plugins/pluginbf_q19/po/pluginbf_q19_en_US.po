@@ -8,27 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:58+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: q19writer.cpp:149 q19writer.cpp:228
+#: q19writer.cpp:150 q19writer.cpp:229
 #, qt-format
 msgid ""
 "\n"
 "%3 : %1 recibos, %2 EUR. "
 msgstr ""
 
-#: q19writer.cpp:312
+#: q19writer.cpp:313
 #, qt-format
 msgid "%1 (%2) supera la longitud maxima (%3 caracteres)"
 msgstr ""
 
-#: q19writer.cpp:243
+#: q19writer.cpp:244
 #, qt-format
 msgid ""
 "%2\n"
@@ -36,7 +37,7 @@ msgid ""
 "generacion en el recibo con referencia %1"
 msgstr ""
 
-#: q19writer.cpp:73 q19view.cpp:90
+#: q19view.cpp:90 q19writer.cpp:73
 msgid "*.q19;;*"
 msgstr ""
 
@@ -127,11 +128,11 @@ msgstr "File"
 msgid "Banco"
 msgstr "Bank"
 
-#: q19writer.cpp:456
+#: q19writer.cpp:457
 #, qt-format
 msgid ""
-"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %"
-"4), para cliente %5 (%6)"
+"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. "
+"%4), para cliente %5 (%6)"
 msgstr ""
 
 #: ui_q19base.h:310
@@ -142,12 +143,12 @@ msgstr "Cancel"
 msgid "Concepto"
 msgstr "Concept"
 
-#: q19writer.cpp:311
+#: q19writer.cpp:312
 #, fuzzy
 msgid "Datos de recibos incorrectos"
 msgstr "Data of electronic commerce:"
 
-#: q19writer.cpp:434 q19writer.cpp:438 q19writer.cpp:455
+#: q19writer.cpp:435 q19writer.cpp:439 q19writer.cpp:456
 #, fuzzy
 msgid "Datos incorrectos"
 msgstr "&Countable data"
@@ -157,12 +158,12 @@ msgstr "&Countable data"
 msgid "Dias"
 msgstr "Apply"
 
-#: q19writer.cpp:389 q19writer.cpp:477
+#: q19writer.cpp:390 q19writer.cpp:478
 #, fuzzy
 msgid "El CIF del ordenante"
 msgstr "C.I.F. of the client"
 
-#: q19writer.cpp:345 q19writer.cpp:606
+#: q19writer.cpp:346 q19writer.cpp:607
 msgid "El CIF del presentador (propiedades de Empresa)"
 msgstr ""
 
@@ -171,11 +172,11 @@ msgstr ""
 msgid "Error al crear el archivo"
 msgstr "Error when creating article"
 
-#: q19view.cpp:192
-msgid "Error al generar remesa bancaria"
+#: q19view.cpp:192 q19view.cpp:193
+msgid "Error al generar remesa bancaria."
 msgstr ""
 
-#: q19writer.cpp:236
+#: q19writer.cpp:237
 #, qt-format
 msgid ""
 "Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por "
@@ -187,7 +188,7 @@ msgstr ""
 msgid "FRA %serie%num %desc "
 msgstr ""
 
-#: q19writer.cpp:262
+#: q19writer.cpp:263
 #, fuzzy
 msgid "Falta NIF de su empresa"
 msgstr ""
@@ -201,7 +202,7 @@ msgstr ""
 msgid "Falta el  banco"
 msgstr "In the bank"
 
-#: q19writer.cpp:285
+#: q19writer.cpp:286
 #, fuzzy
 msgid "Falta el nombre de su empresa"
 msgstr "&Name company:"
@@ -224,7 +225,7 @@ msgstr ""
 msgid "Fichero q19 a generar para el banco "
 msgstr ""
 
-#: q19writer.cpp:238
+#: q19writer.cpp:239
 #, fuzzy
 msgid "Fichero(s) generado(s)"
 msgstr "General properties"
@@ -233,27 +234,27 @@ msgstr "General properties"
 msgid "Generacion Q19"
 msgstr ""
 
-#: q19qtoolbutton.cpp:82 q19qtoolbutton1.cpp:72
+#: q19qtoolbutton1.cpp:72 q19qtoolbutton.cpp:82
 msgid "Generar Q19"
 msgstr ""
 
-#: q19qtoolbutton.cpp:83 q19qtoolbutton1.cpp:73
+#: q19qtoolbutton1.cpp:73 q19qtoolbutton.cpp:83
 msgid "Generar archivo Q19 de los elementos seleccionados."
 msgstr ""
 
-#: q19writer.cpp:438
+#: q19writer.cpp:439
 #, qt-format
 msgid ""
 "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 "
 "decimales "
 msgstr ""
 
-#: q19writer.cpp:434
+#: q19writer.cpp:435
 #, qt-format
 msgid "Importe negativo (%1) ! "
 msgstr ""
 
-#: q19writer.cpp:404
+#: q19writer.cpp:405
 msgid "Los digitos de control de su cuenta bancaria"
 msgstr ""
 
@@ -274,22 +275,27 @@ msgid ""
 "seleccionar los recibos a incluir en la remesa bancaria."
 msgstr ""
 
-#: q19writer.cpp:263
+#: q19writer.cpp:264
 msgid ""
 "No podemos generar remesas bancarias hasta que entre el NIF de su empresa en "
 "Propiedades de Empresa"
+msgstr ""
+
+#: q19writer.cpp:76
+#, qt-format
+msgid "Nombre del fichero: '%1'"
 msgstr ""
 
 #: q19view.cpp:133
 msgid "Por favor, escoja un banco donde cobrar los recibos a generar."
 msgstr ""
 
-#: q19writer.cpp:243
+#: q19writer.cpp:244
 #, fuzzy
 msgid "Remesa mal generada"
 msgstr "General properties"
 
-#: q19writer.cpp:235
+#: q19writer.cpp:236
 msgid "Remesa parcialmente generada"
 msgstr ""
 
@@ -302,19 +308,19 @@ msgstr ""
 msgid "Semanas"
 msgstr "Weekly"
 
-#: q19writer.cpp:356 q19writer.cpp:399
+#: q19writer.cpp:357 q19writer.cpp:400
 msgid "Su entidad bancaria"
 msgstr ""
 
-#: q19writer.cpp:407
+#: q19writer.cpp:408
 msgid "Su numero de cuenta bancaria"
 msgstr ""
 
-#: q19writer.cpp:358 q19writer.cpp:401
+#: q19writer.cpp:359 q19writer.cpp:402
 msgid "Su oficina bancaria"
 msgstr ""
 
-#: q19writer.cpp:238
+#: q19writer.cpp:239
 #, qt-format
 msgid ""
 "Tiene los siguientes ficheros de recibos para los bancos:\n"

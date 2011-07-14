@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -115,7 +115,7 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: listlinpedidoproveedorview.cpp:49 listdescpedidoproveedorview.cpp:41
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 msgid "% Descuento"
 msgstr "% Descuento"
 
@@ -306,6 +306,10 @@ msgstr "Error al cargar el pedido proveedor"
 msgid "Error al crear el pedido a proveedor"
 msgstr "Error al crear el pedido a proveedor"
 
+#: pedidoproveedorview.cpp:400
+msgid "Error."
+msgstr ""
+
 #: ui_pedidosproveedorlistbase.h:418
 msgid "F5"
 msgstr "F5"
@@ -358,8 +362,8 @@ msgstr "Id descuento"
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: listlinpedidoproveedorview.cpp:50 listdescpedidoproveedorview.cpp:42
-#: pedidosproveedorlist.cpp:342
+#: listdescpedidoproveedorview.cpp:42 pedidosproveedorlist.cpp:342
+#: listlinpedidoproveedorview.cpp:50
 msgid "Id pedido"
 msgstr "Id pedido"
 
@@ -449,8 +453,8 @@ msgstr "Pedido Proveedor"
 msgid "Pedido procesado"
 msgstr "Pedido procesado"
 
-#: pluginbf_proveedorpedido.cpp:56 pluginbf_proveedorpedido.cpp:57
-#: pedidosproveedorlist.cpp:197 ui_pedidosproveedorlistbase.h:356
+#: pedidosproveedorlist.cpp:197 pluginbf_proveedorpedido.cpp:56
+#: pluginbf_proveedorpedido.cpp:57 ui_pedidosproveedorlistbase.h:356
 msgid "Pedidos a proveedores"
 msgstr "Pedidos a proveedores"
 

@@ -8,12 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:44+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: main.cxx:103
@@ -100,84 +101,16 @@ msgstr ""
 msgid "&Cerrar"
 msgstr ""
 
-#: ui_bfconfiguracionbase.h:421 ui_bfbulmafactbase.h:170
-msgid "Propiedades de la empresa"
+#: ui_bfseriefacturabase.h:83
+msgid "Series de factura"
 msgstr ""
 
-#: ui_bfconfiguracionbase.h:422 ui_bfseriefacturabase.h:85
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:423 ui_bfseriefacturabase.h:84
+#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:304
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:216
-msgid "Nombre"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:426
-msgid "CIF"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:427
-msgid "Direccion"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:428
-msgid "C.P."
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:429
-msgid "Municipio"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:430
-msgid "Provincia"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:431
-msgid "Pais"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:432
-msgid "Telefono"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:433
-msgid "Fax"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:434
-msgid "E-Mail"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:435
-msgid "Web"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:436
-msgid "Configuracion Basica"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:437
-msgid "Configuracion Avanzada"
-msgstr ""
-
-#: ui_bfbuscarreferenciabase.h:90
-msgid "Form1"
-msgstr ""
-
-#: ui_bfbuscarreferenciabase.h:92
-msgid "Informe por referencia"
-msgstr ""
-
-#: ui_bfbuscarreferenciabase.h:95
-msgid "Abre todos los documentos con esta referencia"
-msgstr ""
-
-#: ui_bfseriefacturabase.h:83
-msgid "Series de factura"
+#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:303
+msgid "&Aceptar"
 msgstr ""
 
 #: ui_bfbulmafactbase.h:165
@@ -194,6 +127,10 @@ msgstr ""
 
 #: ui_bfbulmafactbase.h:168
 msgid "&Propiedades de la empresa..."
+msgstr ""
+
+#: ui_bfbulmafactbase.h:170 ui_bfconfiguracionbase.h:302
+msgid "Propiedades de la empresa"
 msgstr ""
 
 #: ui_bfbulmafactbase.h:172
@@ -274,58 +211,112 @@ msgstr ""
 msgid "Avanzados"
 msgstr ""
 
-#: bfcompany.cpp:99
-msgid "Facturacion GPL"
+#: ui_bfconfiguracionbase.h:306 bfconfiguracionview.cpp:216
+msgid "Nombre"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:307
+msgid "CIF"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:308
+msgid "Direccion"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:309
+msgid "C.P."
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:310
+msgid "Municipio"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:311
+msgid "Provincia"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:312
+msgid "Pais"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:313
+msgid "Telefono"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:314
+msgid "Fax"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:315
+msgid "E-Mail"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:316
+msgid "Web"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:317
+msgid "Configuracion basica"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:318
+msgid "Configuracion avanzada"
+msgstr ""
+
+#: ui_bfbuscarreferenciabase.h:90
+msgid "Form1"
+msgstr ""
+
+#: ui_bfbuscarreferenciabase.h:92
+msgid "Informe por referencia"
+msgstr ""
+
+#: ui_bfbuscarreferenciabase.h:95
+msgid "Abre todos los documentos con esta referencia"
+msgstr ""
+
+#: bfform.cpp:458
+msgid "Descuento"
+msgstr ""
+
+#: bfform.cpp:459
+msgid "Porcentaje"
+msgstr ""
+
+#: bfform.cpp:460
+msgid "Total Desc."
+msgstr ""
+
+#: bfform.cpp:500
+msgid "Base Imponible"
+msgstr ""
+
+#: bfform.cpp:518
+msgid "I.V.A."
+msgstr ""
+
+#: bfform.cpp:538
+msgid "R.E."
+msgstr ""
+
+#: bfform.cpp:547
+msgid "I.R.P.F."
+msgstr ""
+
+#: bfform.cpp:551
+msgid "Total"
+msgstr ""
+
+#: bfform.cpp:1040
+msgid "Tiene que guardar el documento antes de poder procesarlo."
+msgstr ""
+
+#: bfform.cpp:1043
+msgid "Error inesperado en la impresion"
 msgstr ""
 
 #: bfbuscartipoarticulo.cpp:37
 msgid "Tipo Articulo:"
-msgstr ""
-
-#: bfbuscararticulo.cpp:37
-msgid "Articulo:"
-msgstr ""
-
-#: bfaboutview.cpp:44
-msgid "Compilado usando la version de QT:"
-msgstr ""
-
-#: bfaboutview.cpp:418
-msgid "Idiomas y traducciones:"
-msgstr ""
-
-#: bfaboutview.cpp:420
-msgid "Idioma:"
-msgstr ""
-
-#: bfaboutview.cpp:422
-msgid "Plugins:"
-msgstr ""
-
-#: bfseriefacturaview.cpp:48
-msgid "Serie de Factura"
-msgstr ""
-
-#: bfseriefacturaview.cpp:80
-msgid "Codigo serie factura"
-msgstr ""
-
-#: bfseriefacturaview.cpp:81
-msgid "Descripcion serie factura"
-msgstr ""
-
-#: bfbulmafact.cpp:201
-msgid "Seguro que desea abandonar el programa "
-msgstr ""
-
-#: bfbulmafact.cpp:202
-msgid "Se perderan los cambios no guardados"
-msgstr ""
-
-#: bfsubform.cpp:215
-msgid ""
-"El codigo del articulo no existe.\n"
-"ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
 
 #: bfproveedoralbaransubform.cpp:47
@@ -384,52 +375,22 @@ msgstr ""
 msgid "Familia:"
 msgstr ""
 
-#: bfform.cpp:458
-msgid "Descuento"
+#: bfbuscararticulo.cpp:37
+msgid "Articulo:"
 msgstr ""
 
-#: bfform.cpp:459
-msgid "Porcentaje"
+#: bfbuscararticulo.cpp:226
+#, qt-format
+msgid "Item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
 msgstr ""
 
-#: bfform.cpp:460
-msgid "Total Desc."
+#: bfbuscararticulo.cpp:228
+msgid "Este item es un articulo encontrado, no entrado por el usuario."
 msgstr ""
 
-#: bfform.cpp:500
-msgid "Base Imponible"
-msgstr ""
-
-#: bfform.cpp:518
-msgid "I.V.A."
-msgstr ""
-
-#: bfform.cpp:538
-msgid "R.E."
-msgstr ""
-
-#: bfform.cpp:547
-msgid "I.R.P.F."
-msgstr ""
-
-#: bfform.cpp:551
-msgid "Total"
-msgstr ""
-
-#: bfform.cpp:1041
-msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
-
-#: bfform.cpp:1044
-msgid "Error inesperado en la impresion"
-msgstr ""
-
-#: bfbuscarreferencia.cpp:69
-msgid "Informe"
-msgstr ""
-
-#: bfbuscarreferencia.cpp:70
-msgid "Referencia"
+#: bfbuscararticulo.cpp:232
+#, qt-format
+msgid "Ultimo item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
 msgstr ""
 
 #: bfinformereferencia.cpp:137 bfinformereferencia.cpp:170
@@ -463,10 +424,73 @@ msgstr ""
 msgid "Pagado"
 msgstr ""
 
+#: bfcompany.cpp:99
+msgid "Facturacion GPL"
+msgstr ""
+
 #: bfconfiguracionview.cpp:52
 msgid "Configuracion"
 msgstr ""
 
 #: bfconfiguracionview.cpp:217
 msgid "Valor"
+msgstr ""
+
+#: bfsubform.cpp:215
+msgid ""
+"El codigo del articulo no existe.\n"
+"ATENCION: No se guadara bien el documento hasta que sea valido."
+msgstr ""
+
+#: bfsubform.cpp:624
+#, qt-format
+msgid "Columna: '%1', fila: '%2'."
+msgstr ""
+
+#: bfaboutview.cpp:44
+msgid "Compilado usando la version de QT:"
+msgstr ""
+
+#: bfaboutview.cpp:418
+msgid "Idiomas y traducciones:"
+msgstr ""
+
+#: bfaboutview.cpp:420
+msgid "Idioma:"
+msgstr ""
+
+#: bfaboutview.cpp:422
+msgid "Plugins:"
+msgstr ""
+
+#: bfseriefacturaview.cpp:48
+msgid "Serie de Factura"
+msgstr ""
+
+#: bfseriefacturaview.cpp:80
+msgid "Codigo serie factura"
+msgstr ""
+
+#: bfseriefacturaview.cpp:81
+msgid "Descripcion serie factura"
+msgstr ""
+
+#: bfbuscaralmacen.cpp:103 bfbuscaralmacen.cpp:104
+msgid "Error al establecer el almacen."
+msgstr ""
+
+#: bfbulmafact.cpp:193
+msgid "Seguro que desea abandonar el programa "
+msgstr ""
+
+#: bfbulmafact.cpp:194
+msgid "Se perderan los cambios no guardados"
+msgstr ""
+
+#: bfbuscarreferencia.cpp:69
+msgid "Informe"
+msgstr ""
+
+#: bfbuscarreferencia.cpp:70
+msgid "Referencia"
 msgstr ""

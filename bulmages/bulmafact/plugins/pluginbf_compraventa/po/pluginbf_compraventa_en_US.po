@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:01+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,11 +40,11 @@ msgstr "&Details"
 msgid "&Detalle Ventas"
 msgstr "&Details"
 
-#: compraventaview.cpp:468 compraventaview.cpp:589
+#: compraventaview.cpp:467 compraventaview.cpp:588
 msgid "&No"
 msgstr "&No"
 
-#: compraventaview.cpp:468 compraventaview.cpp:589
+#: compraventaview.cpp:467 compraventaview.cpp:588
 msgid "&Si"
 msgstr "&Yes"
 
@@ -154,33 +155,33 @@ msgstr "Discount:"
 msgid "Error al crear el albaran a cliente"
 msgstr "Error when creating the client"
 
-#: compraventaview.cpp:534 compraventaview.cpp:685
+#: compraventaview.cpp:533 compraventaview.cpp:684
 #, fuzzy
 msgid "Error inesperado"
 msgstr "</B> Inserted"
 
-#: compraventaview.cpp:716
+#: compraventaview.cpp:714
 msgid "Error inesperado en la impresion"
-msgstr ""
+msgstr "Unexpected printing error"
 
-#: compraventaview.cpp:588
+#: compraventaview.cpp:587
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: compraventaview.cpp:467
+#: compraventaview.cpp:466
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
 msgstr ""
 
-#: compraventaview.cpp:466
+#: compraventaview.cpp:465
 #, fuzzy
 msgid "Factura de proveedor existente"
 msgstr "Selector of suppliers"
 
-#: compraventaview.cpp:587
+#: compraventaview.cpp:586
 msgid "Factura existente"
 msgstr ""
 
@@ -326,16 +327,16 @@ msgstr "Description of the account"
 msgid "Telefono de contacto:"
 msgstr "Description of the account"
 
-#: compraventaview.cpp:712
+#: compraventaview.cpp:710
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
+msgstr "You have to save the document before being able to process it."
 
-#: compraventaview.cpp:572
+#: compraventaview.cpp:571
 #, fuzzy
 msgid "Tiene que seleccionar un cliente"
 msgstr "Must select an element"
 
-#: compraventaview.cpp:451
+#: compraventaview.cpp:450
 #, fuzzy
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Must select an element"

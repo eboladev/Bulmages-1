@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:06+0200\n"
+"POT-Creation-Date: 2011-07-12 11:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -160,6 +161,36 @@ msgstr ""
 msgid "&Cerrar"
 msgstr ""
 
+#: btcompany.cpp:123
+msgid "Inicializando listado de articulos"
+msgstr ""
+
+#: btcompany.cpp:159
+msgid "Terminal Punto de Venta GPL"
+msgstr ""
+
+#: btcompany.cpp:193
+msgid ""
+"Existen tickets abiertos. Procese todos los tickets pendientes y vuelva a "
+"intentar generar la Z."
+msgstr ""
+
+#: btcompany.cpp:641
+msgid "Unir tickets"
+msgstr ""
+
+#: btcompany.cpp:642
+msgid "Unir ticket '"
+msgstr ""
+
+#: btcompany.cpp:642
+msgid "' en '"
+msgstr ""
+
+#: btcompany.cpp:642
+msgid "'?"
+msgstr ""
+
 #: btaboutview.cpp:38
 msgid "Compilado usando la version de QT:"
 msgstr ""
@@ -172,7 +203,7 @@ msgstr ""
 msgid "Nombre"
 msgstr ""
 
-#: btticket.cpp:60 btticket.cpp:130
+#: btticket.cpp:60 btticket.cpp:129
 msgid "Id albaran"
 msgstr ""
 
@@ -228,70 +259,46 @@ msgstr ""
 msgid "Ticket actual"
 msgstr ""
 
-#: btticket.cpp:131
+#: btticket.cpp:130
 msgid "Id linea albaran"
 msgstr ""
 
-#: btticket.cpp:132
+#: btticket.cpp:131
 msgid "Cantidad"
 msgstr ""
 
-#: btticket.cpp:133
+#: btticket.cpp:132
 msgid "Precio"
 msgstr ""
 
-#: btticket.cpp:134
+#: btticket.cpp:133
 msgid "IVA"
 msgstr ""
 
-#: btticket.cpp:135
+#: btticket.cpp:134
 msgid "Descuento"
 msgstr ""
 
-#: btticket.cpp:136
+#: btticket.cpp:135
 msgid "Orden"
 msgstr ""
 
-#: btticket.cpp:137
+#: btticket.cpp:136
 msgid "Req. eq."
 msgstr ""
 
-#: btticket.cpp:139
+#: btticket.cpp:138
 msgid "Id articulo"
 msgstr ""
 
-#: btticket.cpp:140
+#: btticket.cpp:139
 msgid "Codigo articulo"
 msgstr ""
 
-#: btticket.cpp:141 btticket.cpp:142
+#: btticket.cpp:140 btticket.cpp:141
 msgid "Nombre articulo"
 msgstr ""
 
-#: btticket.cpp:558
+#: btticket.cpp:560
 msgid "El ticket esta vacio."
-msgstr ""
-
-#: btcompany.cpp:123
-msgid "Inicializando listado de articulos"
-msgstr ""
-
-#: btcompany.cpp:160
-msgid "Terminal Punto de Venta GPL"
-msgstr ""
-
-#: btcompany.cpp:1000
-msgid "Unir tickets"
-msgstr ""
-
-#: btcompany.cpp:1001
-msgid "Unir ticket '"
-msgstr ""
-
-#: btcompany.cpp:1001
-msgid "' en '"
-msgstr ""
-
-#: btcompany.cpp:1001
-msgid "'?"
 msgstr ""

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:55+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,7 +45,7 @@ msgstr "&Sells"
 msgid "Actualizar listado"
 msgstr "Update listing"
 
-#: contratoview.cpp:413
+#: contratoview.cpp:414
 #, fuzzy
 msgid "Base imponible"
 msgstr "Tax basis"
@@ -67,7 +68,7 @@ msgstr "Look for:"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: contratoview.cpp:420
+#: contratoview.cpp:421
 #, fuzzy
 msgid "CIF cliente"
 msgstr "ID client"
@@ -85,7 +86,7 @@ msgstr "Data of the account:"
 msgid "Cliente"
 msgstr "Client"
 
-#: contratoslist.cpp:63 contratoview.cpp:65
+#: contratoview.cpp:65 contratoslist.cpp:63
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -93,7 +94,7 @@ msgstr "Client:"
 msgid "Codigo"
 msgstr "Code"
 
-#: contratoview.cpp:421
+#: contratoview.cpp:422
 msgid "Codigo almacen"
 msgstr "Code warehouse"
 
@@ -101,7 +102,7 @@ msgstr "Code warehouse"
 msgid "Codigo completo articulo"
 msgstr "Complete code article"
 
-#: contratoview.cpp:423
+#: contratoview.cpp:424
 #, fuzzy
 msgid "Comentario factura"
 msgstr "Commentary"
@@ -110,17 +111,17 @@ msgstr "Commentary"
 msgid "Configurar listado"
 msgstr "Form listing"
 
-#: contratoview.cpp:422
+#: contratoview.cpp:423
 #, fuzzy
 msgid "Contact factura"
 msgstr "<HR><B>Treating Invoice "
 
-#: contratoview.cpp:118 contrato.cpp:39
+#: contrato.cpp:39 contratoview.cpp:118
 #, fuzzy
 msgid "Contrato"
 msgstr "&Contracts"
 
-#: pluginbf_contrato.cpp:104 ui_contratoslistbase.h:255
+#: pluginbf_contrato.cpp:97 ui_contratoslistbase.h:255
 #, fuzzy
 msgid "Contratos"
 msgstr "&Contracts"
@@ -145,6 +146,10 @@ msgstr "Description of the seat"
 msgid "Detalle"
 msgstr "&Details"
 
+#: contratoview.cpp:313
+msgid "Detectada doble factura en un periodo."
+msgstr ""
+
 #: ui_contratoslistbase.h:265 ui_contratoslistbase.h:268
 #, fuzzy
 msgid "Editar contrato"
@@ -160,12 +165,12 @@ msgstr "Error when erasing a client"
 msgid "Error al crear la contrato"
 msgstr "Error when creating the seat"
 
-#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
-#: ui_contratobase.h:472
+#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
+#: ui_contratoslistbase.h:310
 msgid "Facturar Periodos Pendientes"
 msgstr ""
 
-#: contratoview.cpp:410
+#: contratoview.cpp:411
 msgid "Fecha"
 msgstr "Date"
 
@@ -208,7 +213,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "ID account"
 
-#: contratoview.cpp:426
+#: contratoview.cpp:427
 msgid "Id almacen"
 msgstr "id warehouse"
 
@@ -216,7 +221,7 @@ msgstr "id warehouse"
 msgid "Id articulo"
 msgstr "Id article"
 
-#: contratoview.cpp:425 contrato.cpp:43
+#: contrato.cpp:43 contratoview.cpp:426
 #, fuzzy
 msgid "Id cliente"
 msgstr "ID client"
@@ -226,12 +231,12 @@ msgstr "ID client"
 msgid "Id contrato"
 msgstr "counterpart"
 
-#: contratoview.cpp:417
+#: contratoview.cpp:418
 #, fuzzy
 msgid "Id factura"
 msgstr "Invoice"
 
-#: contratoview.cpp:424
+#: contratoview.cpp:425
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Worker"
@@ -245,7 +250,7 @@ msgstr "counterpart"
 msgid "Imprimir listado"
 msgstr "Print listing"
 
-#: contratoview.cpp:414
+#: contratoview.cpp:415
 #, fuzzy
 msgid "Impuestos"
 msgstr "Imputation"
@@ -273,7 +278,7 @@ msgstr "Alternative name of the client"
 msgid "Nombre articulo"
 msgstr "Name article"
 
-#: contratoview.cpp:411
+#: contratoview.cpp:412
 #, fuzzy
 msgid "Nombre cliente"
 msgstr "Name of client"
@@ -293,7 +298,7 @@ msgstr "New worker"
 msgid "Nuevo contrato"
 msgstr "New account"
 
-#: contratoview.cpp:409
+#: contratoview.cpp:410
 #, fuzzy
 msgid "Numero"
 msgstr "New"
@@ -312,12 +317,12 @@ msgstr "&Contracts"
 msgid "Periodicidad Facturas:"
 msgstr "Regularity:"
 
-#: contratoview.cpp:416
+#: contratoview.cpp:417
 #, fuzzy
 msgid "Procesada"
 msgstr "Pro&cessings"
 
-#: contratoview.cpp:418
+#: contratoview.cpp:419
 #, fuzzy
 msgid "Ref factura"
 msgstr "Invoice"
@@ -341,16 +346,16 @@ msgstr "Reference"
 msgid "Selector de contratos"
 msgstr "Selector of clients"
 
-#: contratoview.cpp:419
+#: contratoview.cpp:420
 msgid "Serie"
 msgstr ""
 
-#: contratoview.cpp:412
+#: contratoview.cpp:413
 #, fuzzy
 msgid "Telefono factura"
 msgstr "Description of the account"
 
-#: contratoview.cpp:415
+#: contratoview.cpp:416
 msgid "Total"
 msgstr "Total"
 
@@ -359,7 +364,7 @@ msgstr "Total"
 msgid "Ubicacion:"
 msgstr "Address:"
 
-#: contratoview.cpp:319
+#: contratoview.cpp:320
 #, fuzzy
 msgid "no se pudo crear instancia de factura"
 msgstr "The window due to an error could not be closed"

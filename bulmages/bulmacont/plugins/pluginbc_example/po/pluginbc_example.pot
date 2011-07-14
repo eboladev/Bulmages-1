@@ -8,34 +8,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:36+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbc_example.cpp:63
-msgid "Titulo de la ventana"
-msgstr ""
-
-#: pluginbc_example.cpp:84
+#: pluginbc_example.cpp:51
 msgid "&Plugin"
 msgstr ""
 
-#: pluginbc_example.cpp:85
-msgid "&Prueba de plugin BcBulmaCont"
+#: pluginbc_example.cpp:52
+msgid "&Prueba de plugin BulmaCont"
 msgstr ""
 
-#: pluginbc_example.cpp:86
+#: pluginbc_example.cpp:53
 msgid "Muestra statustip"
 msgstr ""
 
-#: pluginbc_example.cpp:87
+#: pluginbc_example.cpp:54
 msgid "Muestra que es esto"
 msgstr ""
 
-#: pluginbc_example.cpp:106
-msgid "Prueba de plugin BcBulmaCont."
+#: pluginbc_example.cpp:60
+msgid "Prueba de plugin BulmaCont."
+msgstr ""
+
+#: pluginbc_example.cpp:69
+msgid "PluginBc_Example"
+msgstr ""
+
+#: pluginbc_example.cpp:73
+msgid "Titulo de la ventana"
+msgstr ""
+
+#: pluginbc_example.cpp:74
+msgid "Mensaje."
 msgstr ""

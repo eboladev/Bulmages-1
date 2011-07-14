@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:06+0200\n"
+"POT-Creation-Date: 2011-07-12 11:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: ui_btaboutbase.h:286
 msgid "&Acerca de"
@@ -21,11 +21,11 @@ msgstr "&Sobre "
 msgid "&Cerrar"
 msgstr "Tan&ca"
 
-#: btcompany.cpp:1001
+#: btcompany.cpp:642
 msgid "' en '"
 msgstr ""
 
-#: btcompany.cpp:1001
+#: btcompany.cpp:642
 msgid "'?"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Cambios tras guardar"
 msgstr ""
 
-#: btticket.cpp:132
+#: btticket.cpp:131
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -125,7 +125,7 @@ msgstr "Tanca"
 msgid "Cliente"
 msgstr "Següent"
 
-#: btticket.cpp:140
+#: btticket.cpp:139
 #, fuzzy
 msgid "Codigo articulo"
 msgstr "<HR><B>Tractant Article"
@@ -138,12 +138,12 @@ msgstr "Compilat fent servir la versió de QT:"
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: btticket.cpp:135
+#: btticket.cpp:134
 #, fuzzy
 msgid "Descuento"
 msgstr "ID compte"
 
-#: btticket.cpp:558
+#: btticket.cpp:560
 msgid "El ticket esta vacio."
 msgstr ""
 
@@ -157,6 +157,12 @@ msgstr "BulmaTPV."
 msgid "Estadisticas"
 msgstr "Assentaments"
 
+#: btcompany.cpp:193
+msgid ""
+"Existen tickets abiertos. Procese todos los tickets pendientes y vuelva a "
+"intentar generar la Z."
+msgstr ""
+
 #: ui_btbulmatpvbase.h:109
 msgid "F11"
 msgstr "F11"
@@ -166,16 +172,16 @@ msgstr "F11"
 msgid "Hora"
 msgstr "Normal"
 
-#: btticket.cpp:134
+#: btticket.cpp:133
 msgid "IVA"
 msgstr "IVA"
 
-#: btticket.cpp:60 btticket.cpp:130
+#: btticket.cpp:60 btticket.cpp:129
 #, fuzzy
 msgid "Id albaran"
 msgstr "Imprimeix albarà"
 
-#: btticket.cpp:139
+#: btticket.cpp:138
 #, fuzzy
 msgid "Id articulo"
 msgstr "<P> Article <B>"
@@ -190,7 +196,7 @@ msgstr "Id"
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: btticket.cpp:131
+#: btticket.cpp:130
 msgid "Id linea albaran"
 msgstr ""
 
@@ -234,7 +240,7 @@ msgstr "identificador"
 msgid "Nombre"
 msgstr "Nom"
 
-#: btticket.cpp:141 btticket.cpp:142
+#: btticket.cpp:140 btticket.cpp:141
 #, fuzzy
 msgid "Nombre articulo"
 msgstr "Nom d'usuari:"
@@ -243,7 +249,7 @@ msgstr "Nom d'usuari:"
 msgid "Num"
 msgstr ""
 
-#: btticket.cpp:136
+#: btticket.cpp:135
 msgid "Orden"
 msgstr "Ordre"
 
@@ -252,7 +258,7 @@ msgstr "Ordre"
 msgid "Pendiente"
 msgstr "Pendent:"
 
-#: btticket.cpp:133
+#: btticket.cpp:132
 #, fuzzy
 msgid "Precio"
 msgstr "Adreça:"
@@ -266,7 +272,7 @@ msgstr "Referència"
 msgid "Referencia"
 msgstr "Referència"
 
-#: btticket.cpp:137
+#: btticket.cpp:136
 msgid "Req. eq."
 msgstr ""
 
@@ -293,7 +299,7 @@ msgstr "Supor&t"
 msgid "Terminado"
 msgstr "<LI>Terminat</LI>\n"
 
-#: btcompany.cpp:160
+#: btcompany.cpp:159
 msgid "Terminal Punto de Venta GPL"
 msgstr ""
 
@@ -309,11 +315,11 @@ msgstr ""
 msgid "Trabajador"
 msgstr "Treballador"
 
-#: btcompany.cpp:1001
+#: btcompany.cpp:642
 msgid "Unir ticket '"
 msgstr ""
 
-#: btcompany.cpp:1000
+#: btcompany.cpp:641
 msgid "Unir tickets"
 msgstr ""
 
@@ -324,4 +330,3 @@ msgstr ""
 #: ui_btbulmatpvbase.h:107
 msgid "Ventana Completa"
 msgstr ""
-

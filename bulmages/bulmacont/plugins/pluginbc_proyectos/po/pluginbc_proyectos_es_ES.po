@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:44+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -123,7 +123,7 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginbc_proyectos.cpp:75
+#: pluginbc_proyectos.cpp:48
 msgid "&Proyectos"
 msgstr "&Proyectos"
 
@@ -153,8 +153,8 @@ msgstr "Cantidad"
 msgid "Codigo"
 msgstr "Codigo"
 
-#: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
-#: proyectoview.cpp:96
+#: proyectoview.cpp:60 proyectoview.cpp:77 proyectoview.cpp:96
+#: listproyectosview.cpp:50
 msgid "Comentarios"
 msgstr "Comentarios"
 
@@ -183,8 +183,8 @@ msgid "Ejercicio"
 msgstr "Ejercicio"
 
 #: listproyectosview.cpp:117
-msgid "Error al borrar la amortizacion"
-msgstr "Error al borrar la amortizacion"
+msgid "Error al borrar la amortizacion."
+msgstr ""
 
 #: proyectoview.cpp:113
 msgid "Error al crear el almacen"
@@ -197,6 +197,11 @@ msgstr "F5"
 #: listproyectosview.cpp:48
 msgid "Fecha"
 msgstr "Fecha"
+
+#: listproyectosview.cpp:137
+#, qt-format
+msgid "Fila: '%1'."
+msgstr ""
 
 #: ui_proyectobase.h:268
 msgid "Gastos"
@@ -270,11 +275,11 @@ msgstr "Precio Und"
 msgid "Proyecto"
 msgstr "Proyecto"
 
-#: pluginbc_proyectos.cpp:76 pluginbc_proyectos.cpp:77
+#: pluginbc_proyectos.cpp:49 pluginbc_proyectos.cpp:50
 msgid "Proyectos"
 msgstr "Proyectos"
 
-#: pluginbc_proyectos.cpp:119
+#: pluginbc_proyectos.cpp:84
 msgid "Proyectos asociados"
 msgstr "Proyectos asociados"
 
@@ -285,3 +290,6 @@ msgstr "Selector de Proyectos"
 #: proyectoview.cpp:59
 msgid "fecha"
 msgstr "fecha"
+
+#~ msgid "Error al borrar la amortizacion"
+#~ msgstr "Error al borrar la amortizacion"

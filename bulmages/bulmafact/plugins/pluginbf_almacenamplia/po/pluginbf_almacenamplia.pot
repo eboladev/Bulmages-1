@@ -8,28 +8,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:47+0200\n"
+"POT-Creation-Date: 2011-07-12 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: almacenview.cpp:54 ui_almacenbase.h:337
-msgid "Almacen"
-msgstr ""
-
-#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:92
+#: almaceneslistview.cpp:56 almaceneslistview.cpp:92 almacenview.cpp:57
 msgid "ID almacen"
 msgstr ""
 
-#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:93
+#: almaceneslistview.cpp:57 almaceneslistview.cpp:93 almacenview.cpp:58
 msgid "Codigo almacen"
 msgstr ""
 
-#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:94
+#: almaceneslistview.cpp:58 almaceneslistview.cpp:94 almacenview.cpp:59
 msgid "Nombre almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:214
+msgid "Error al editar el almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:225 ui_almaceneslistbase.h:330
+msgid "Almacenes"
+msgstr ""
+
+#: almaceneslistview.cpp:239
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: almaceneslistview.cpp:261
+msgid "Error al borrar el almacen"
+msgstr ""
+
+#: almacenview.cpp:54 ui_almacenbase.h:337
+msgid "Almacen"
 msgstr ""
 
 #: almacenview.cpp:60
@@ -65,23 +82,7 @@ msgid "Tipo almacen"
 msgstr ""
 
 #: almacenview.cpp:77
-msgid "Error al crear el almacen"
-msgstr ""
-
-#: almaceneslistview.cpp:211
-msgid "Error al editar el almacen"
-msgstr ""
-
-#: almaceneslistview.cpp:222 ui_almaceneslistbase.h:330
-msgid "Almacenes"
-msgstr ""
-
-#: almaceneslistview.cpp:236
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: almaceneslistview.cpp:258
-msgid "Error al borrar el almacen"
+msgid "Error al crear el almacen."
 msgstr ""
 
 #: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336

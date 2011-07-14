@@ -8,208 +8,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:46+0200\n"
+"POT-Creation-Date: 2011-07-12 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbf_articulo.cpp:52 pluginbf_articulo.cpp:58
-msgid "&Articulos"
-msgstr ""
-
-#: pluginbf_articulo.cpp:60 pluginbf_articulo.cpp:61 ui_articleslistbase.h:285
-msgid "Articulos"
-msgstr ""
-
-#: pluginbf_articulo.cpp:66
-msgid "&Nuevo articulo"
-msgstr ""
-
-#: pluginbf_articulo.cpp:68 pluginbf_articulo.cpp:69 pluginbf_articulo.cpp:327
-#: pluginbf_articulo.cpp:352 ui_articleeditbase.h:584
-#: ui_articleslistbase.h:292 ui_articleslistbase.h:295
-msgid "Nuevo articulo"
-msgstr ""
-
-#: pluginbf_articulo.cpp:75
-msgid "&Tipos de articulo"
-msgstr ""
-
-#: pluginbf_articulo.cpp:77 pluginbf_articulo.cpp:78
-#: ui_tiposarticulobase.h:226
-msgid "Tipos de articulo"
-msgstr ""
-
-#: pluginbf_articulo.cpp:84
-msgid "&Familias"
-msgstr ""
-
-#: pluginbf_articulo.cpp:86 pluginbf_articulo.cpp:87 familiasview.cpp:130
-#: ui_familiasbase.h:321
-msgid "Familias"
-msgstr ""
-
-#: pluginbf_articulo.cpp:329 pluginbf_articulo.cpp:346 articulolist.cpp:319
-#: ui_articleslistbase.h:299 ui_articleslistbase.h:302
-msgid "Editar articulo"
-msgstr ""
-
-#: pluginbf_articulo.cpp:331 pluginbf_articulo.cpp:350
-msgid "Seleccionar articulo"
-msgstr ""
-
-#: pluginbf_articulo.cpp:530
-msgid "<F2> Abre selector de articulos."
-msgstr ""
-
-#: tiposarticuloview.cpp:46
-msgid "Id"
-msgstr ""
-
-#: tiposarticuloview.cpp:46 familiasview.cpp:51 familiasview.cpp:579
-#: articuloview.cpp:62
-msgid "Codigo"
-msgstr ""
-
-#: tiposarticuloview.cpp:46 familiasview.cpp:51
-msgid "Descripcion"
-msgstr ""
-
-#: tiposarticuloview.cpp:140
-msgid "Error en la carga"
-msgstr ""
-
-#: tiposarticuloview.cpp:291
-msgid "Guardar Tipo de Articulo"
-msgstr ""
-
-#: tiposarticuloview.cpp:292 familiasview.cpp:350
-msgid "Desea guardar los cambios?"
-msgstr ""
-
-#: tiposarticuloview.cpp:367
-msgid "Error en la creacion"
-msgstr ""
-
-#: tiposarticuloview.cpp:385 familiasview.cpp:493 ui_articleeditbase.h:594
-#: ui_articleeditbase.h:597
-msgid "Borrar"
-msgstr ""
-
-#: tiposarticuloview.cpp:386 familiasview.cpp:494
-msgid "Desea eliminar"
-msgstr ""
-
-#: tiposarticuloview.cpp:395 familiasview.cpp:503
-msgid "no se ha podido borrar"
-msgstr ""
-
-#: tiposarticuloview.cpp:412
-msgid "Debe seleccionar un tipo"
-msgstr ""
-
-#: tiposarticuloview.cpp:426 familiasview.cpp:533
-msgid "Error al borrar la familia"
-msgstr ""
-
-#: articulolist.cpp:75
-msgid "Selector de articulos"
-msgstr ""
-
-#: articulolist.cpp:168
-msgid "Tiene que seleccionar un articulo"
-msgstr ""
-
-#: articulolist.cpp:174 articulolist.cpp:320 ui_articleslistbase.h:306
-#: ui_articleslistbase.h:309
-msgid "Borrar articulo"
-msgstr ""
-
-#: articulolist.cpp:175
-msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-msgstr ""
-
-#: articulolist.cpp:185
-msgid "Error al borrar el articulo"
-msgstr ""
-
-#: articulolist.cpp:266 articulolist.cpp:291
-msgid "Elija el archivo"
-msgstr ""
-
-#: articulolist.cpp:268 articulolist.cpp:293
-msgid "Clientes (*.xml)"
-msgstr ""
-
-#: articulolist.cpp:382
-msgid "Nuevo Articulo"
-msgstr ""
-
-#: articulolist.cpp:441
-msgid "ID articulo"
-msgstr ""
-
-#: articulolist.cpp:442 comparticulolistview.cpp:42
+#: comparticulolistview.cpp:42 articulolist.cpp:425
 msgid "Codigo completo del articulo"
 msgstr ""
 
-#: articulolist.cpp:443 comparticulolistview.cpp:43 articuloview.cpp:63
+#: comparticulolistview.cpp:43 articulolist.cpp:426 articuloview.cpp:63
 msgid "Nombre del articulo"
-msgstr ""
-
-#: articulolist.cpp:444
-msgid "Descripcion abreviada del articulo"
-msgstr ""
-
-#: articulolist.cpp:445
-msgid "Observaciones sobre el articulo"
-msgstr ""
-
-#: articulolist.cpp:446
-msgid "Descripcion del tipo de articulo"
-msgstr ""
-
-#: articulolist.cpp:447
-msgid "Descripcion tipo de I.V.A."
-msgstr ""
-
-#: articulolist.cpp:448
-msgid "P.V.P. articulo"
-msgstr ""
-
-#: articulolist.cpp:449
-msgid "Disponible en stock"
-msgstr ""
-
-#: familiasview.cpp:51 familiasview.cpp:580
-msgid "Nombre"
-msgstr ""
-
-#: familiasview.cpp:51
-msgid "Id familia"
-msgstr ""
-
-#: familiasview.cpp:51 articuloview.cpp:70
-msgid "Codigo completo"
-msgstr ""
-
-#: familiasview.cpp:349
-msgid "Guardar familia"
-msgstr ""
-
-#: familiasview.cpp:372 familiasview.cpp:519
-msgid "Debe seleccionar una familia"
-msgstr ""
-
-#: familiasview.cpp:419
-msgid "Error al guardar la familia"
-msgstr ""
-
-#: familiasview.cpp:480
-msgid "Error al crear la familia"
 msgstr ""
 
 #: comparticulolistview.cpp:44
@@ -222,6 +35,212 @@ msgstr ""
 
 #: comparticulolistview.cpp:46
 msgid "Id articulo"
+msgstr ""
+
+#: tiposarticuloview.cpp:46
+msgid "Id"
+msgstr ""
+
+#: tiposarticuloview.cpp:46 familiasview.cpp:51 familiasview.cpp:582
+#: articuloview.cpp:62
+msgid "Codigo"
+msgstr ""
+
+#: tiposarticuloview.cpp:46 familiasview.cpp:51
+msgid "Descripcion"
+msgstr ""
+
+#: tiposarticuloview.cpp:140
+msgid "Error en la carga"
+msgstr ""
+
+#: tiposarticuloview.cpp:294
+msgid "Guardar Tipo de Articulo"
+msgstr ""
+
+#: tiposarticuloview.cpp:295 familiasview.cpp:351
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: tiposarticuloview.cpp:370
+msgid "Error en la creacion"
+msgstr ""
+
+#: tiposarticuloview.cpp:387 familiasview.cpp:494 ui_articleeditbase.h:594
+#: ui_articleeditbase.h:597
+msgid "Borrar"
+msgstr ""
+
+#: tiposarticuloview.cpp:388 familiasview.cpp:495
+msgid "Desea eliminar"
+msgstr ""
+
+#: tiposarticuloview.cpp:395 familiasview.cpp:502
+#, qt-format
+msgid "'%1' borrado."
+msgstr ""
+
+#: tiposarticuloview.cpp:397 familiasview.cpp:504
+#, qt-format
+msgid "Error al borrar '%1'."
+msgstr ""
+
+#: tiposarticuloview.cpp:398 familiasview.cpp:505
+msgid "no se ha podido borrar"
+msgstr ""
+
+#: tiposarticuloview.cpp:415
+msgid "Debe seleccionar un tipo"
+msgstr ""
+
+#: tiposarticuloview.cpp:429 familiasview.cpp:536
+msgid "Error al borrar la familia"
+msgstr ""
+
+#: articulolist.cpp:74
+msgid "Selector de articulos"
+msgstr ""
+
+#: articulolist.cpp:167
+msgid "Tiene que seleccionar un articulo"
+msgstr ""
+
+#: articulolist.cpp:173 articulolist.cpp:303 ui_articleslistbase.h:306
+#: ui_articleslistbase.h:309
+msgid "Borrar articulo"
+msgstr ""
+
+#: articulolist.cpp:174
+msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+msgstr ""
+
+#: articulolist.cpp:185
+msgid "Error al borrar el articulo"
+msgstr ""
+
+#: articulolist.cpp:248 articulolist.cpp:273
+msgid "Elija el archivo"
+msgstr ""
+
+#: articulolist.cpp:250 articulolist.cpp:275
+msgid "Clientes (*.xml)"
+msgstr ""
+
+#: articulolist.cpp:256 articulolist.cpp:282
+msgid "Error al abrir el archivo."
+msgstr ""
+
+#: articulolist.cpp:302 pluginbf_articulo.cpp:342 pluginbf_articulo.cpp:359
+#: ui_articleslistbase.h:299 ui_articleslistbase.h:302
+msgid "Editar articulo"
+msgstr ""
+
+#: articulolist.cpp:365
+msgid "Nuevo Articulo"
+msgstr ""
+
+#: articulolist.cpp:424
+msgid "ID articulo"
+msgstr ""
+
+#: articulolist.cpp:427
+msgid "Descripcion abreviada del articulo"
+msgstr ""
+
+#: articulolist.cpp:428
+msgid "Observaciones sobre el articulo"
+msgstr ""
+
+#: articulolist.cpp:429
+msgid "Descripcion del tipo de articulo"
+msgstr ""
+
+#: articulolist.cpp:430
+msgid "Descripcion tipo de I.V.A."
+msgstr ""
+
+#: articulolist.cpp:431
+msgid "P.V.P. articulo"
+msgstr ""
+
+#: articulolist.cpp:432
+msgid "Disponible en stock"
+msgstr ""
+
+#: familiasview.cpp:51 familiasview.cpp:583
+msgid "Nombre"
+msgstr ""
+
+#: familiasview.cpp:51
+msgid "Id familia"
+msgstr ""
+
+#: familiasview.cpp:51 articuloview.cpp:70
+msgid "Codigo completo"
+msgstr ""
+
+#: familiasview.cpp:130 pluginbf_articulo.cpp:92 pluginbf_articulo.cpp:93
+#: ui_familiasbase.h:321
+msgid "Familias"
+msgstr ""
+
+#: familiasview.cpp:350
+msgid "Guardar familia"
+msgstr ""
+
+#: familiasview.cpp:373 familiasview.cpp:521
+msgid "Debe seleccionar una familia"
+msgstr ""
+
+#: familiasview.cpp:420
+msgid "Error al guardar la familia"
+msgstr ""
+
+#: familiasview.cpp:481
+msgid "Error al crear la familia"
+msgstr ""
+
+#: pluginbf_articulo.cpp:58 pluginbf_articulo.cpp:64
+msgid "&Articulos"
+msgstr ""
+
+#: pluginbf_articulo.cpp:66 pluginbf_articulo.cpp:67 ui_articleslistbase.h:285
+msgid "Articulos"
+msgstr ""
+
+#: pluginbf_articulo.cpp:72
+msgid "&Nuevo articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:74 pluginbf_articulo.cpp:75 pluginbf_articulo.cpp:340
+#: pluginbf_articulo.cpp:365 ui_articleslistbase.h:292
+#: ui_articleslistbase.h:295 ui_articleeditbase.h:584
+msgid "Nuevo articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:81
+msgid "&Tipos de articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:83 pluginbf_articulo.cpp:84
+#: ui_tiposarticulobase.h:226
+msgid "Tipos de articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:90
+msgid "&Familias"
+msgstr ""
+
+#: pluginbf_articulo.cpp:116
+msgid "PluginBf_Articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:344 pluginbf_articulo.cpp:363
+msgid "Seleccionar articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:542
+msgid "<F2> Abre selector de articulos."
 msgstr ""
 
 #: articuloview.cpp:58
@@ -291,42 +310,186 @@ msgid ""
 "de espacio libre suficiente en el disco duro."
 msgstr ""
 
-#: articuloview.cpp:316
+#: articuloview.cpp:348
 msgid "Seleccione un archivo de imagen"
 msgstr ""
 
-#: articuloview.cpp:318
+#: articuloview.cpp:350
 msgid "Imagenes (*.jpg)"
 msgstr ""
 
-#: articuloview.cpp:324
+#: articuloview.cpp:356
 msgid ""
 "No se ha podido cargar la imagen.\n"
 "Compruebe que la imagen sea valida."
 msgstr ""
 
-#: articuloview.cpp:353
+#: articuloview.cpp:385
 msgid "Borrar imagen del articulo"
 msgstr ""
 
-#: articuloview.cpp:354
+#: articuloview.cpp:386
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
 msgstr ""
 
-#: articuloview.cpp:362
+#: articuloview.cpp:394
 msgid ""
 "No se ha podido borrar el archivo.\n"
 "Compruebe que el archivo tenga los permisos correctos."
 msgstr ""
 
-#: ui_articleeditbase.h:587 ui_articleeditbase.h:590
-msgid "Guardar"
+#: ui_familiasbase.h:324 ui_familiasbase.h:327
+msgid "Nueva Familia"
 msgstr ""
 
-#: ui_articleeditbase.h:600 ui_familiasbase.h:363
+#: ui_familiasbase.h:331 ui_familiasbase.h:334
+msgid "Mostrar / Ocultar Detalle"
+msgstr ""
+
+#: ui_familiasbase.h:338 ui_familiasbase.h:341
+msgid "Borrar Familia"
+msgstr ""
+
+#: ui_familiasbase.h:345 ui_familiasbase.h:348
+msgid "Guardar Familia"
+msgstr ""
+
+#: ui_familiasbase.h:352 ui_familiasbase.h:355
+msgid "Imprimir Familias"
+msgstr ""
+
+#: ui_familiasbase.h:359 ui_tiposarticulobase.h:260
+msgid "1"
+msgstr ""
+
+#: ui_familiasbase.h:361
+msgid "Contenido de la familia:"
+msgstr ""
+
+#: ui_familiasbase.h:363 ui_articleeditbase.h:600
 msgid "Codigo completo:"
+msgstr ""
+
+#: ui_familiasbase.h:364
+msgid "Nombre:"
+msgstr ""
+
+#: ui_familiasbase.h:365
+msgid "Imputacion Contable"
+msgstr ""
+
+#: ui_familiasbase.h:366
+msgid "Servicio."
+msgstr ""
+
+#: ui_familiasbase.h:367
+msgid "Producto."
+msgstr ""
+
+#: ui_familiasbase.h:368
+msgid "Codigo reducido:"
+msgstr ""
+
+#: ui_familiasbase.h:369 ui_tiposarticulobase.h:263
+msgid "Descripcion:"
+msgstr ""
+
+#: ui_familiasbase.h:370
+msgid "Datos de la familia"
+msgstr ""
+
+#: ui_familiasbase.h:371 ui_tiposarticulobase.h:264 ui_articleeditbase.h:628
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_familiasbase.h:372 ui_tiposarticulobase.h:265 ui_articleeditbase.h:629
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_articleslistbase.h:286
+msgid "Solo usados"
+msgstr ""
+
+#: ui_articleslistbase.h:288
+msgid "S&olo presentables"
+msgstr ""
+
+#: ui_articleslistbase.h:289
+msgid "Alt+O"
+msgstr ""
+
+#: ui_articleslistbase.h:313 ui_articleslistbase.h:316
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_articleslistbase.h:320 ui_articleslistbase.h:323
+msgid "Filtrar listado"
+msgstr ""
+
+#: ui_articleslistbase.h:327 ui_articleslistbase.h:330
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_articleslistbase.h:334 ui_articleslistbase.h:337
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_articleslistbase.h:341 ui_articleslistbase.h:344
+msgid "Exportar articulos"
+msgstr ""
+
+#: ui_articleslistbase.h:348 ui_articleslistbase.h:351
+msgid "Importar articulos"
+msgstr ""
+
+#: ui_articleslistbase.h:353
+msgid "Exportar"
+msgstr ""
+
+#: ui_articleslistbase.h:354
+msgid "Buscar:"
+msgstr ""
+
+#: ui_tiposarticulobase.h:229 ui_tiposarticulobase.h:232
+msgid "Guardar Tipo de articulo"
+msgstr ""
+
+#: ui_tiposarticulobase.h:235
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_tiposarticulobase.h:237 ui_tiposarticulobase.h:240
+msgid "Borrar Tipo de articulo"
+msgstr ""
+
+#: ui_tiposarticulobase.h:243
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_tiposarticulobase.h:245 ui_tiposarticulobase.h:248
+msgid "Nuevo Tipo de articulo"
+msgstr ""
+
+#: ui_tiposarticulobase.h:251
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_tiposarticulobase.h:253 ui_tiposarticulobase.h:256
+msgid "Mostrar / Ocultar detalle"
+msgstr ""
+
+#: ui_tiposarticulobase.h:261
+msgid "Tipo de articulo:"
+msgstr ""
+
+#: ui_tiposarticulobase.h:262
+msgid "Codigo:"
+msgstr ""
+
+#: ui_articleeditbase.h:587 ui_articleeditbase.h:590
+msgid "Guardar"
 msgstr ""
 
 #: ui_articleeditbase.h:601
@@ -407,148 +570,4 @@ msgstr ""
 
 #: ui_articleeditbase.h:627
 msgid "Descripcio&n"
-msgstr ""
-
-#: ui_articleeditbase.h:628 ui_tiposarticulobase.h:264 ui_familiasbase.h:371
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_articleeditbase.h:629 ui_tiposarticulobase.h:265 ui_familiasbase.h:372
-msgid "&Cancelar"
-msgstr ""
-
-#: ui_articleslistbase.h:286
-msgid "Solo usados"
-msgstr ""
-
-#: ui_articleslistbase.h:288
-msgid "S&olo presentables"
-msgstr ""
-
-#: ui_articleslistbase.h:289
-msgid "Alt+O"
-msgstr ""
-
-#: ui_articleslistbase.h:313 ui_articleslistbase.h:316
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_articleslistbase.h:320 ui_articleslistbase.h:323
-msgid "Filtrar listado"
-msgstr ""
-
-#: ui_articleslistbase.h:327 ui_articleslistbase.h:330
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_articleslistbase.h:334 ui_articleslistbase.h:337
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_articleslistbase.h:341 ui_articleslistbase.h:344
-msgid "Exportar articulos"
-msgstr ""
-
-#: ui_articleslistbase.h:348 ui_articleslistbase.h:351
-msgid "Importar articulos"
-msgstr ""
-
-#: ui_articleslistbase.h:353
-msgid "Exportar"
-msgstr ""
-
-#: ui_articleslistbase.h:354
-msgid "Buscar:"
-msgstr ""
-
-#: ui_tiposarticulobase.h:229 ui_tiposarticulobase.h:232
-msgid "Guardar Tipo de articulo"
-msgstr ""
-
-#: ui_tiposarticulobase.h:235
-msgid "Ctrl+S"
-msgstr ""
-
-#: ui_tiposarticulobase.h:237 ui_tiposarticulobase.h:240
-msgid "Borrar Tipo de articulo"
-msgstr ""
-
-#: ui_tiposarticulobase.h:243
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_tiposarticulobase.h:245 ui_tiposarticulobase.h:248
-msgid "Nuevo Tipo de articulo"
-msgstr ""
-
-#: ui_tiposarticulobase.h:251
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_tiposarticulobase.h:253 ui_tiposarticulobase.h:256
-msgid "Mostrar / Ocultar detalle"
-msgstr ""
-
-#: ui_tiposarticulobase.h:260 ui_familiasbase.h:359
-msgid "1"
-msgstr ""
-
-#: ui_tiposarticulobase.h:261
-msgid "Tipo de articulo:"
-msgstr ""
-
-#: ui_tiposarticulobase.h:262
-msgid "Codigo:"
-msgstr ""
-
-#: ui_tiposarticulobase.h:263 ui_familiasbase.h:369
-msgid "Descripcion:"
-msgstr ""
-
-#: ui_familiasbase.h:324 ui_familiasbase.h:327
-msgid "Nueva Familia"
-msgstr ""
-
-#: ui_familiasbase.h:331 ui_familiasbase.h:334
-msgid "Mostrar / Ocultar Detalle"
-msgstr ""
-
-#: ui_familiasbase.h:338 ui_familiasbase.h:341
-msgid "Borrar Familia"
-msgstr ""
-
-#: ui_familiasbase.h:345 ui_familiasbase.h:348
-msgid "Guardar Familia"
-msgstr ""
-
-#: ui_familiasbase.h:352 ui_familiasbase.h:355
-msgid "Imprimir Familias"
-msgstr ""
-
-#: ui_familiasbase.h:361
-msgid "Contenido de la familia:"
-msgstr ""
-
-#: ui_familiasbase.h:364
-msgid "Nombre:"
-msgstr ""
-
-#: ui_familiasbase.h:365
-msgid "Imputacion Contable"
-msgstr ""
-
-#: ui_familiasbase.h:366
-msgid "Servicio."
-msgstr ""
-
-#: ui_familiasbase.h:367
-msgid "Producto."
-msgstr ""
-
-#: ui_familiasbase.h:368
-msgid "Codigo reducido:"
-msgstr ""
-
-#: ui_familiasbase.h:370
-msgid "Datos de la familia"
 msgstr ""

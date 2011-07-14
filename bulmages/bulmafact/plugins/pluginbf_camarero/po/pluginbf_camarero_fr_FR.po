@@ -8,29 +8,102 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:00+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-24 15:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 
-#: pluginbf_camarero.cpp:73
+#: ui_trabajadoresbase.h:272
+msgid "&Cerrar"
+msgstr "&Fermer"
+
+#: ui_trabajadoresbase.h:270
+msgid "."
+msgstr "."
+
+#: ui_trabajadoresbase.h:269
+msgid "0"
+msgstr "0"
+
+#: ui_trabajadoresbase.h:266
+msgid "1"
+msgstr "1"
+
+#: ui_trabajadoresbase.h:267
+#, fuzzy
+msgid "2"
+msgstr "F2"
+
+#: ui_trabajadoresbase.h:268
+#, fuzzy
+msgid "3"
+msgstr "F3"
+
+#: ui_trabajadoresbase.h:263
+#, fuzzy
+msgid "4"
+msgstr ""
+"#-#-#-#-#  pluginbt_camareros_fr_FR.po  #-#-#-#-#\n"
+"4 \n"
+"#-#-#-#-#  pluginbt_tecladonumerico_fr_FR.po  #-#-#-#-#\n"
+"4\n"
+"#-#-#-#-#  pluginbt_cambioivaincluido_fr_FR.po  #-#-#-#-#\n"
+"4\n"
+"#-#-#-#-#  pluginbt_cambio_fr_FR.po  #-#-#-#-#\n"
+"4\n"
+"#-#-#-#-#  pluginbt_cobrar_fr_FR.po  #-#-#-#-#\n"
+"4\n"
+"#-#-#-#-#  bulmatpv_fr_FR.po  #-#-#-#-#\n"
+"4\n"
+"#-#-#-#-#  pluginbc_cuenta_fr_FR.po  #-#-#-#-#\n"
+"4"
+
+#: ui_trabajadoresbase.h:264
+#, fuzzy
+msgid "5"
+msgstr "F5"
+
+#: ui_trabajadoresbase.h:265
+msgid "6"
+msgstr "6"
+
+#: ui_trabajadoresbase.h:260
+msgid "7"
+msgstr "7"
+
+#: ui_trabajadoresbase.h:261
+msgid "8"
+msgstr "8"
+
+#: ui_trabajadoresbase.h:262
+msgid "9"
+msgstr "9"
+
+#: pluginbf_camarero.cpp:82
 msgid "Administrador"
 msgstr "Administrateur"
 
-#: pluginbf_camarero.cpp:65
+#: ui_trabajadoresbase.h:271
+msgid "C"
+msgstr "C"
+
+#: pluginbf_camarero.cpp:74
 msgid "Clave numerica"
 msgstr "Clavier numérique"
 
-#: pluginbf_camarero.cpp:95
-msgid "END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"
-msgstr "END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"
-
-#: pluginbf_camarero.cpp:78
+#: pluginbf_camarero.cpp:87
 msgid "Gerente"
 msgstr "Gérant"
+
+#: ui_trabajadoresbase.h:259
+msgid "Registro de camarero"
+msgstr "Registre de serveur"
+
+#~ msgid "END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"
+#~ msgstr "END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"
