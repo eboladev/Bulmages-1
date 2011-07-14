@@ -84,13 +84,14 @@ add_definitions (-DLIB_INSTALL_DIR=\"${LIB_INSTALL_DIR}\")
 
 add_subdirectory(libs)
 add_subdirectory(plugins)
+add_subdirectory(apps)
 
-find_package(PropertyEditor)
-if (PROPERTYEDITOR_FOUND)
-    add_subdirectory(apps)
-else(PROPERTYEDITOR_FOUND)
-    message("** propertyEditor was not found in your system, if you want to use eXaro designer, consider to download and install propertyEditor from \"http://code.google.com/p/propertyeditor\"")
-endif(PROPERTYEDITOR_FOUND)
+#find_package(PropertyEditor)
+#if (PROPERTYEDITOR_FOUND)
+#    add_subdirectory(apps)
+#else(PROPERTYEDITOR_FOUND)
+#    message("** propertyEditor was not found in your system, if you want to use eXaro designer, consider to download and install propertyEditor from \"http://code.google.com/p/propertyeditor\"")
+#endif(PROPERTYEDITOR_FOUND)
 
 CONFIGURE_FILE(
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"

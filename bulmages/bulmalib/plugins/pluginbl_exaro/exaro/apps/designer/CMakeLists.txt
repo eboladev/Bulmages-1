@@ -1,7 +1,7 @@
 project(exaro)
 
 add_subdirectory(plugins)
-include_directories(BEFORE "${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/exaro/libs/report" ${PROPERTYEDITOR_INCLUDE_DIR})
+include_directories(BEFORE "${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/exaro/libs/report" ${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_exaro/propertyeditor/lib)
 
 set(exaro_SRCS  aboutdialog.cpp          exaroapplication.cpp  scripteditdialog.cpp
 		designerpage.cpp         main.cpp              scriptsyntaxhighlighter.cpp
@@ -59,10 +59,10 @@ endif(APPLE)
 link_directories( "${CMAKE_BINARY_DIR}/libs/report" )
 
 if (APPLE)
-	target_link_libraries(eXaro Report ${QT_LIBRARIES} ${PROPERTYEDITOR_LIBRARY})
+	target_link_libraries(eXaro Report ${QT_LIBRARIES} ${CMAKE_BINARY_DIR}/bulmalib/plugins/pluginbl_exaro/propertyeditor/lib/libPropertyEditor.so)
 	install(TARGETS eXaro BUNDLE DESTINATION bin)
 else(APPLE)
-	target_link_libraries(exaro Report ${QT_LIBRARIES} ${PROPERTYEDITOR_LIBRARY})
+	target_link_libraries(exaro Report ${QT_LIBRARIES} ${CMAKE_BINARY_DIR}/bulmalib/plugins/pluginbl_exaro/propertyeditor/lib/libPropertyEditor.so)
 	install(TARGETS exaro RUNTIME DESTINATION bin)
 endif(APPLE)
 
