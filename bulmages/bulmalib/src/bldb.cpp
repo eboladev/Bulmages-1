@@ -637,6 +637,40 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
 }
 
 
+/// Autonumeraci&oacute;n: establece el n&uacute;mero que sigue al ú&uacute;timo valor del campo numérico en la tabla
+/**
+Si el campo no es num&eacute;rico o no hay valores todav&iacute;a, usamos 1 como primer valor.
+Esta funci&oacute;n puede usarse con alg&uacute;n c&oacute;digo autonum&eacute;rico adicional
+a parte del identificador en la base de datos que ya autonumera la base de datos.
+\param tabla
+\param campo Nombre del campo numérico
+\param cond Condición del WHERE, por defecto no hay filto
+\return número que sigue al máximo valor del campo en la tabla (1 si es el primero)
+**/
+int BlDbRecord::setDbValueNextToLast ( QString nomb, QString cond )
+{
+    BL_FUNC_DEBUG
+    QString query = QString ( "SELECT MAX(%1) AS maxv FROM %2" )
+            .arg ( nomb )
+            .arg ( tableName() );
+    if ( !cond.isEmpty() ) {
+        query += " WHERE ";
+        query += cond;
+    } // end if
+    BlDbRecordSet *reg = m_dbConnection->loadQuery ( query );
+
+    QString max;
+    if ( !reg->value ( "maxv" ).toInt() )
+        max = ""; // No podemos autonumerar textos (aunque puede ser una "future request")
+    else if ( reg->eof() || reg->value ( "maxv" ).isEmpty() || reg->value ( "maxv" ).toInt() ==  0)
+        max = "1"; // Primer valor para el campo
+    else
+        max = QString ( "%1" ).arg ( reg->value ( "maxv" ).toInt() + 1 );
+
+    return setDbValue ( nomb, max );
+}
+
+
 /// Consulta el valor que tiene un campo del registro actual
 /**
 \param nomb Nombre del campo que queremos consultar.
