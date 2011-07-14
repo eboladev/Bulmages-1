@@ -637,38 +637,71 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
 }
 
 
-/// Autonumeraci&oacute;n: establece el n&uacute;mero que sigue al ú&uacute;timo valor del campo numérico en la tabla
+/// Autonumeraci&oacute;n: establece el valor que sigue al ú&uacute;timo del campo en la tabla
 /**
-Si el campo no es num&eacute;rico lo dejamos en blanco.
-Usamos 1 como primer valor.
-Esta funci&oacute;n puede usarse con alg&uacute;n c&oacute;digo autonum&eacute;rico adicional
-a parte del identificador en la base de datos que ya autonumera la base de datos.
-\param tabla
-\param campo Nombre del campo numérico
+Si el campo no es num&eacute;rico ni fecha lo dejamos en blanco.
+Usamos 1 como primer valor en los campos num&eacute;ricos. En el resto de tipos, el primer valor es en blanco.
+Esta funci&oacute;n puede usarse con alg&uacute;n c&oacute;digo autonum&eacute;rico o fecha adicional
+a parte del identificador que ya autonumera la base de datos.
+\param nomb Nombre del campo
+\param vinc Valor del incremento (0 copia el &uacute;ltimo valor)
 \param cond Condición del WHERE, por defecto no hay filto
-\return número que sigue al máximo valor del campo en la tabla (1 si es el primero)
+\return código de error de setDbValue
 **/
-int BlDbRecord::setDbValueNextToLast ( QString nomb, QString cond )
+int BlDbRecord::setDbValueNextToLast ( QString nomb, int vinc, QString cond )
 {
     BL_FUNC_DEBUG
-    QString query = QString ( "SELECT MAX(%1) AS maxv FROM %2" )
-            .arg ( nomb )
-            .arg ( tableName() );
+
+    /// Buscar el máximo valor del campo
+    QString query = QString ( "SELECT MAX(%1) AS maxv FROM %2" ).arg ( nomb ).arg ( tableName() );
     if ( !cond.isEmpty() ) {
         query += " WHERE ";
         query += cond;
     } // end if
     BlDbRecordSet *reg = m_dbConnection->loadQuery ( query );
+    QString maxv;
+    if ( !reg->eof() )
+        maxv = reg->value ( "maxv" );
 
-    QString max;
-    if ( !reg->value ( "maxv" ).toInt() )
-        max = ""; // No podemos autonumerar textos (aunque puede ser una "future request")
-    else if ( reg->eof() || reg->value ( "maxv" ).isEmpty() || reg->value ( "maxv" ).toInt() ==  0)
-        max = "1"; // Primer valor para el campo
-    else
-        max = QString ( "%1" ).arg ( reg->value ( "maxv" ).toInt() + 1 );
+    /// Conseguir el tipo del campo
+    int tipo = -1;
+    for ( int i = 0; i < m_lista.size() && tipo == -1; ++i)
+        if ( m_lista.at(i)->fieldName() == nomb )
+            tipo = m_lista.at(i)->dbFieldType();
 
-    return setDbValue ( nomb, max );
+    /// Calcular el siguiente valor si el tipo de campo lo permite
+    int vini = 1;
+    QString next;
+    switch ( tipo ) {
+    case BlDbField::DbInt:
+        if ( maxv.isEmpty() )
+            next = QString("%1").arg ( vini );
+        else
+            next = QString ( "%1" ).arg ( maxv.toInt() + vinc );
+        break;
+    case BlDbField::DbVarChar:
+        blMsgError ( "No se puede obtener el siguiente al último en un campo de texto." );
+        break;
+    case BlDbField::DbDate:
+        if ( !maxv.isEmpty() ) {
+            QDate fecha( maxv.section("/", 2, 2 ).toInt(), maxv.section(  "/", 1, 1 ).toInt(), maxv.section( "/", 0, 0 ).toInt() );
+            next = fecha.addDays(vinc).toString ( "dd/MM/yyyy" );
+        } // end if
+        break;
+    case BlDbField::DbNumeric:
+        if ( maxv.isEmpty() )
+            next = QString("%1").arg ( 0.0 + vini );
+        else
+            next = QString ( "%1" ).arg ( maxv.toDouble() + vinc );
+        break;
+    case BlDbField::DbBoolean:
+        blMsgError ( "No se puede obtener el siguiente al último en un campo booleano." );
+        break;
+    default:
+        blMsgError ( "No se pudo determinar el tipo de campo para calcular el siguiente al último." );
+    } // end switch
+
+    return setDbValue ( nomb, next );
 }
 
 

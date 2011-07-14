@@ -124,7 +124,7 @@ public:
     int DBload ( BlDbRecordSet * );
     virtual int dbSave ( QString &id );
     virtual int setDbValue ( QString, QString );
-    virtual int setDbValueNextToLast ( QString nomb, QString cond = "" );
+    virtual int setDbValueNextToLast ( QString nomb, int incr, QString cond = "" );
     QString dbValue ( QString );
     bool exists ( QString );
     QString dbValueprep ( QString );
