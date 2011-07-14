@@ -194,9 +194,6 @@ int ActividadView::cargarPost ( QString id )
     mui_alumnosList->load ( id );
     mui_faltasAsistenciaList->load ( id );
     mui_tutoresList->load ( id );
-
-    
-    
     return 0;
 }
 
@@ -217,12 +214,11 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "bancoalumnoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Banco alumno" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
-    
-    
 }
 
 ///
@@ -253,7 +249,6 @@ ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
     addSubFormHeader ( "nombretutor1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre tutor" ) );
     addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "CIF" ) );
-//    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
     setInsert ( TRUE );
