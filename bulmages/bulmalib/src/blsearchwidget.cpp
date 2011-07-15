@@ -500,7 +500,6 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
     BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setEditable ( true );
-//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
@@ -515,7 +514,6 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
 BlDbCompleterComboBox::~BlDbCompleterComboBox()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -533,7 +531,6 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
     BlDebug::blDebug ( "BlDbCompleterComboBox::s_editTextChanged", 0, cod );
     static bool semaforo = FALSE;
     if ( semaforo ) {
-	
         return;
     } else {
         semaforo = TRUE;
@@ -662,4 +659,147 @@ void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
 
     delete popup;
 }
+
+
+
+
+
+
+
+///================================ BLDBEDITCOMBOBOX ================================
+
+
+
+/// ===================================================================
+/// Busqueda Delegate para usar con los subforms
+/// ===================================================================
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no.
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
+/**
+\param parent
+**/
+BlDbEditComboBox::BlDbEditComboBox ( QWidget *parent )
+        : BlComboBox ( parent )
+{
+    BL_FUNC_DEBUG
+    m_cursorcombo = NULL;
+    setEditable ( true );
+    /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
+    disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
+    setContextMenuPolicy ( Qt::CustomContextMenu );
+}
+
+
+/** Libera la memoria reservada. */
+/**
+**/
+BlDbEditComboBox::~BlDbEditComboBox()
+{
+    BL_FUNC_DEBUG
+}
+
+
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+/**
+\param cod
+\return
+**/
+void BlDbEditComboBox::setQuery ( const QString &query )
+{
+    BL_FUNC_DEBUG
+
+    m_cursorcombo = mainCompany() ->loadQuery ( query );
+    clear();
+    while ( !m_cursorcombo->eof() ) {
+	addItem ( m_cursorcombo->value(0) );
+	m_cursorcombo->nextRecord();
+    } // end while
+    delete m_cursorcombo;
+}
+
+
+/// Retorna el codi associat a la unica entrada del combo que
+/// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Aixo
+/// permet que abans de donar un error per codi d'article incorrecte
+/// se li assigni l'unic article trobat per l'entrada (incompleta?) de l'usuari.
+/// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
+QString BlDbEditComboBox::unicaEleccion ( void )
+{
+    BL_FUNC_DEBUG
+    int num = 0;
+    QString elec = NULL;
+    for ( int i = 0; ( num < 2 ) && ( i < count() ); i++ ) {
+        if ( itemData ( i ).isValid() ) {
+            elec = itemData ( i ).toString();
+            num++;
+        } // end if
+    } // end for
+    
+    return ( num == 1 ? elec : NULL );
+}
+
+/// Sii el combo nomes ha trobat un article a la BD per l'entrada de
+/// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
+QString BlDbEditComboBox::eligeUnico ( void )
+{
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlDbEditComboBox::eligeUnico", 0, "count = " + QString::number ( count() ) );
+
+    QString elec = unicaEleccion();
+    if ( !elec.isNull() ) {
+        BlDebug::blDebug ( "elec=" + elec, 0 );
+        setEditText ( elec );
+    } // end if
+    
+    return elec;
+}
+
+/// quan deixa d'editar el camp substituim el que ha posat
+/// per l'article que volia trobar si nomes hi ha un article candidat
+void BlDbEditComboBox::focusOutEvent ( QFocusEvent * event )
+{
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlDbEditComboBox::focusOutEvent", 0, "count = " + QString::number ( count() ) );
+    eligeUnico();
+    BlComboBox::focusOutEvent ( event );
+    
+}
+
+QString BlDbEditComboBox::entrada()
+{
+    BL_FUNC_DEBUG
+    return m_entrada;
+}
+
+
+///
+/**
+**/
+void BlDbEditComboBox::on_customContextMenuRequested ( const QPoint & )
+{
+    BL_FUNC_DEBUG
+    QMenu *popup = new QMenu ( this );
+
+    /// Lanzamos el evento para que pueda ser capturado por terceros.
+    emit pintaMenu ( popup );
+
+    QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
+    QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
+
+    if ( opcion ) {
+        emit trataMenu ( opcion );
+    } // end if
+
+    delete popup;
+}
+
+
+
+
 

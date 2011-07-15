@@ -136,7 +136,20 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    
+
+    if ( g_fieldName == "bancoalumnoactividad" ) {
+      if (bl->m_subform->dbValue("idalumno") != "") {
+        g_main->statusBar()->showMessage(_("<F2> Abre selector de bancos."), 2000);
+        BlDbEditComboBox * editor = new BlDbEditComboBox ( g_editor);
+        editor->setObjectName ( "EditCodigoCompletoBanco" );
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+	QString query = "SELECT DISTINCT bancocliente FROM cliente WHERE idcliente IN (SELECT idcliente FROM alumnocliente WHERE idalumno = "+bl->m_subform->dbValue("idalumno")+")";
+	editor->setQuery(query);
+        g_plugParams =  editor;
+        ret = -1;
+      } // end if
+    } // end if
+
     return ret;
 }
 
@@ -147,11 +160,17 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
     if ( g_editor->objectName() == "EditNombreActividad" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
         QString value = comboBox->currentText();
-        value = value.left ( value.indexOf ( ".-" ) );
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    
+
+    if ( g_editor->objectName() == "EditCodigoCompletoBanco" ) {
+        BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
+        QString value = comboBox->currentText();
+        g_model->setData ( g_index, value );
+        ret = -1;
+    } // end if
+
     return ret;
 }
 
@@ -166,7 +185,14 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    
+
+    if ( g_editor->objectName() == "EditCodigoCompletoBanco" ) {
+        QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
+        BlDbCompleterComboBox *comboBox = ( BlDbCompleterComboBox * ) g_editor ;
+        comboBox->addItem ( value );
+        ret = -1;
+    } // end if
+
     return ret;
 }
 
@@ -181,6 +207,17 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         delete cur;
     } // end if
 
+    if ( sub->m_campoactual->fieldName() == "bancoalumnoactividad" ) {
+/*      
+        QString params[1]= {  sub->m_campoactual->text() };
+	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
+        BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
+        } // end if
+        delete cur;
+*/	
+    } // end if
     
     return 0;
 }
@@ -388,7 +425,6 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
     return 0;
 
 }
-
 
 
 
