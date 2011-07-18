@@ -156,24 +156,24 @@ void ClaseView::on_mui_guardar_clicked()
         if ( res != 0 ) {
             return;
         } // end if
+	if (mdb_idclase != "") {
 
-        QString query = "UPDATE clase SET ";
-        query += "  nomclase='" + mainCompany() ->sanearCadena ( m_nomclase->text() ) + "'";
-        query += " WHERE idclase=" + mainCompany() ->sanearCadena ( mdb_idclase );
+	    QString query = "UPDATE clase SET ";
+	    query += "  nomclase='" + mainCompany() ->sanearCadena ( m_nomclase->text() ) + "'";
+	    query += " WHERE idclase=" + mainCompany() ->sanearCadena ( mdb_idclase );
 
-        mainCompany() ->begin();
-        mainCompany() ->runQuery ( query );
-        mainCompany() ->commit();
+	    mainCompany() ->begin();
+	    mainCompany() ->runQuery ( query );
+	    mainCompany() ->commit();
 
-        /// Si hay un cursor en activo lo borramos para recargarlo
-        pintar();
+	    /// Si hay un cursor en activo lo borramos para recargarlo
+	    pintar();
+	    /// Emitimos la se&ntilde;al apropiada en el BlApplication.
+	    g_theApp->emitDbTableChanged ( "clase" );
 
-
-        /// Emitimos la se&ntilde;al apropiada en el BlApplication.
-        g_theApp->emitDbTableChanged ( "clase" );
-
-        /// Comprobamos cual es la cadena inicial.
-        dialogChanges_readValues();
+	    /// Comprobamos cual es la cadena inicial.
+	    dialogChanges_readValues();
+	} // end if
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar el clase" ) );
         mainCompany() ->rollback();
@@ -247,6 +247,7 @@ void ClaseView::on_mui_borrar_clicked()
         mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         mdb_idclase = "";
+	m_nomclase->setText ( "" );
         pintar();
         
     } catch ( ... ) {
