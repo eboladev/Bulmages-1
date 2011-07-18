@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:46+0200\n"
+"POT-Creation-Date: 2011-07-12 11:17+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -126,7 +127,7 @@ msgstr "Clientes (*.xml"
 msgid "Codi&go postal:"
 msgstr ""
 
-#: clientslist.cpp:354 clienteview.cpp:76
+#: clienteview.cpp:76 clientslist.cpp:354
 msgid "Codigo"
 msgstr "Code"
 
@@ -134,7 +135,7 @@ msgstr "Code"
 msgid "Codigo de c&liente:"
 msgstr ""
 
-#: clientslist.cpp:361 clienteview.cpp:63
+#: clienteview.cpp:63 clientslist.cpp:361
 msgid "Codigo postal"
 msgstr "Postal Code"
 
@@ -142,7 +143,7 @@ msgstr "Postal Code"
 msgid "Comen&tarios:"
 msgstr ""
 
-#: clientslist.cpp:369 clienteview.cpp:72
+#: clienteview.cpp:72 clientslist.cpp:369
 #, fuzzy
 msgid "Comentarios"
 msgstr "Commentaries"
@@ -177,7 +178,7 @@ msgstr "Data of electronic commerce:"
 msgid "Datos de comercio electronico"
 msgstr "Data of electronic commerce:"
 
-#: clientslist.cpp:359 clienteview.cpp:60
+#: clienteview.cpp:60 clientslist.cpp:359
 msgid "Direccion"
 msgstr "Address"
 
@@ -205,9 +206,13 @@ msgstr "Publish client"
 msgid "Elija el archivo"
 msgstr "Choose the file"
 
-#: clientslist.cpp:366 clienteview.cpp:77
+#: clienteview.cpp:77 clientslist.cpp:366
 msgid "Empresa"
 msgstr "Company"
+
+#: clientslist.cpp:207 clientslist.cpp:232
+msgid "Error al abrir el archivo."
+msgstr ""
 
 #: clientslist.cpp:185
 msgid "Error al borrar un cliente"
@@ -221,11 +226,11 @@ msgstr "Error when creating the client"
 msgid "Exportar"
 msgstr "Export"
 
-#: clientslist.cpp:367 clienteview.cpp:70
+#: clienteview.cpp:70 clientslist.cpp:367
 msgid "Fecha de alta del cliente"
 msgstr "Date of discharge of the client"
 
-#: clientslist.cpp:368 clienteview.cpp:71
+#: clienteview.cpp:71 clientslist.cpp:368
 msgid "Fecha de baja del cliente"
 msgstr "Date of loss of the client"
 
@@ -241,7 +246,7 @@ msgstr "Mode of payment"
 msgid "Guardar cliente"
 msgstr "Keep client"
 
-#: clientslist.cpp:353 clienteview.cpp:55
+#: clienteview.cpp:55 clientslist.cpp:353
 msgid "ID cliente"
 msgstr "ID client"
 
@@ -269,7 +274,7 @@ msgstr "Listing of Clients"
 msgid "No&mbre comercial:"
 msgstr ""
 
-#: clientslist.cpp:357 clienteview.cpp:57
+#: clienteview.cpp:57 clientslist.cpp:357
 msgid "Nombre alternativo del cliente"
 msgstr "Alternative name of the client"
 
@@ -289,7 +294,7 @@ msgstr "New"
 msgid "Nuevo cliente"
 msgstr "New client"
 
-#: clientslist.cpp:358 clienteview.cpp:59
+#: clienteview.cpp:59 clientslist.cpp:358
 msgid "Numero cuenta corriente"
 msgstr "Number current account"
 
@@ -297,11 +302,11 @@ msgstr "Number current account"
 msgid "Numero de fa&x:"
 msgstr ""
 
-#: clientslist.cpp:363 clienteview.cpp:67
+#: clienteview.cpp:67 clientslist.cpp:363
 msgid "Numero de fax"
 msgstr "Number of fax"
 
-#: clientslist.cpp:362 clienteview.cpp:64
+#: clienteview.cpp:64 clientslist.cpp:362
 msgid "Numero de telefono"
 msgstr "Number of telephone"
 
@@ -318,7 +323,7 @@ msgstr "Number of telephone mobil"
 msgid "Pagina &web:"
 msgstr "Web page:"
 
-#: clientslist.cpp:360 clienteview.cpp:61
+#: clienteview.cpp:61 clientslist.cpp:360
 msgid "Poblacion"
 msgstr "Population"
 
@@ -359,5 +364,12 @@ msgid "Telefono &movil:"
 msgstr ""
 
 #: clienteview.cpp:191
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo.\n"
+"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"You have to save the document before being able to print it.\n"
+"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo."

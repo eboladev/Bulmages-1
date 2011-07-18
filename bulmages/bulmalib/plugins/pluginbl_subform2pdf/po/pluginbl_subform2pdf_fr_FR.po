@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:34+0200\n"
+"POT-Creation-Date: 2011-07-12 11:15+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9,7 +9,7 @@ msgstr ""
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
 
-#: pluginbl_subform2pdf.cpp:79 pluginbl_subform2pdf.cpp:91
-#: pluginbl_subform2pdf.cpp:148 pluginbl_subform2pdf.cpp:149
+#: pluginbl_subform2pdf.cpp:79 pluginbl_subform2pdf.cpp:152
+#: pluginbl_subform2pdf.cpp:153
 msgid "Imprimir"
 msgstr "Imprimer"

@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:36+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -39,6 +39,11 @@ msgstr "Balanç jeràrquic"
 
 #: ui_balancetreebase.h:382
 msgid "Balance jerarquico de cuentas"
+msgstr ""
+
+#: bcplancontablearbol.cpp:222
+#, qt-format
+msgid "Codigo = '%1', Numero de apunte = '%2'"
 msgstr ""
 
 #: balance1view.cpp:98
@@ -116,6 +121,15 @@ msgstr "Balanç jeràrquic"
 
 #: ui_balancetreebase.h:415
 msgid "Nivel:"
+msgstr ""
+
+#: bcplancontablearbol.cpp:525
+msgid "No se ha encontrado el campo '$1' en la hoja del arbol."
+msgstr ""
+
+#: bcplancontablearbol.cpp:526
+#, qt-format
+msgid "No se ha encontrado el campo '%1' en la hoja del arbol."
 msgstr ""
 
 #: balance1view.cpp:99

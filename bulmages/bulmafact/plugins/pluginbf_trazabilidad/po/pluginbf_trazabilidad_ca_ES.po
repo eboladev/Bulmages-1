@@ -3,25 +3,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:53+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: pluginbf_trazabilidad.cpp:55
 msgid "&Movimientos"
 msgstr ""
 
-#: ui_movimientosbase.h:293 ui_movimientosbase.h:296
+#: ui_movimientosbase.h:308 ui_movimientosbase.h:311
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: movimientosview.cpp:181
+#: ui_movimientosbase.h:315
+msgid "Buscar:"
+msgstr "Cerca:"
+
+#: movimientosview.cpp:183
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -29,35 +33,35 @@ msgstr "Quantitat"
 msgid "Cliente:"
 msgstr "Client:"
 
-#: movimientosview.cpp:184
+#: movimientosview.cpp:186
 msgid "Codigo almacen"
 msgstr "Codi magatzem"
 
-#: movimientosview.cpp:179
+#: movimientosview.cpp:181
 msgid "Codigo articulo"
 msgstr "Codi article"
 
-#: ui_movimientosbase.h:285 ui_movimientosbase.h:288
+#: ui_movimientosbase.h:300 ui_movimientosbase.h:303
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_movimientosbase.h:291
+#: ui_movimientosbase.h:306
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_movimientosbase.h:283
+#: ui_movimientosbase.h:298
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_movimientosbase.h:275
+#: ui_movimientosbase.h:290
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_movimientosbase.h:299
+#: ui_movimientosbase.h:314
 msgid "F5"
 msgstr "F5"
 
-#: movimientosview.cpp:150
+#: movimientosview.cpp:152
 msgid "Facturas a clientes"
 msgstr "Factures a clients"
 
@@ -69,65 +73,65 @@ msgstr "Factures no processades"
 msgid "Facturas procesadas"
 msgstr "factures processades"
 
-#: movimientosview.cpp:177
+#: movimientosview.cpp:179
 msgid "Fecha"
 msgstr "Data"
 
-#: ui_movimientosbase.h:301
+#: ui_movimientosbase.h:317
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_movimientosbase.h:302
+#: ui_movimientosbase.h:318
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_movimientosbase.h:277 ui_movimientosbase.h:280
+#: ui_movimientosbase.h:292 ui_movimientosbase.h:295
 msgid "Filtrar"
 msgstr "Filtrar"
 
-#: movimientosview.cpp:186
+#: movimientosview.cpp:188
 #, fuzzy
 msgid "Id albaran cliente"
 msgstr "Id"
 
-#: movimientosview.cpp:187
+#: movimientosview.cpp:189
 #, fuzzy
 msgid "Id albaran proveedor"
 msgstr "NIF del proveïdor"
 
-#: movimientosview.cpp:183
+#: movimientosview.cpp:185
 msgid "Id almacen"
 msgstr "Id magatzem"
 
-#: movimientosview.cpp:178
+#: movimientosview.cpp:180
 msgid "Id articulo"
 msgstr "Id article"
 
-#: ui_movimientosbase.h:269 ui_movimientosbase.h:272
+#: ui_movimientosbase.h:284 ui_movimientosbase.h:287
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: pluginbf_trazabilidad.cpp:91 pluginbf_trazabilidad.cpp:104
-#: pluginbf_trazabilidad.cpp:118 pluginbf_trazabilidad.cpp:132
-#: movimientosview.cpp:182
+#: pluginbf_trazabilidad.cpp:93 pluginbf_trazabilidad.cpp:106
+#: pluginbf_trazabilidad.cpp:120 pluginbf_trazabilidad.cpp:134
+#: movimientosview.cpp:184
 msgid "Lote"
 msgstr "Lot"
 
-#: ui_movimientosbase.h:300
+#: ui_movimientosbase.h:316
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
-#: pluginbf_trazabilidad.cpp:57 ui_movimientosbase.h:266
+#: pluginbf_trazabilidad.cpp:57 ui_movimientosbase.h:281
 #, fuzzy
 msgid "Movimientos"
 msgstr "Assentaments"
 
-#: movimientosview.cpp:185
+#: movimientosview.cpp:187
 msgid "Nombre almacen"
 msgstr "Nom del magatzem"
 
-#: movimientosview.cpp:180
+#: movimientosview.cpp:182
 msgid "Nombre articulo"
 msgstr "Nom article"
 
@@ -139,6 +143,6 @@ msgstr "Totes les factures"
 msgid "Ventana de Movimientos"
 msgstr ""
 
-#: movimientosview.cpp:176
+#: movimientosview.cpp:178
 msgid "idarticulo"
 msgstr "idarticulo"

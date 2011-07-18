@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -106,7 +107,7 @@ msgstr "Amount"
 msgid "Cliente"
 msgstr "Client"
 
-#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
+#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -184,8 +185,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "It must select a family"
 
-#: ticketclienteview.cpp:80 bfclientealbaransubform.cpp:49
-#: ticketclientelist.cpp:425
+#: bfclientealbaransubform.cpp:49 ticketclientelist.cpp:425
+#: ticketclienteview.cpp:80
 msgid "Descripcion"
 msgstr "Description"
 
@@ -328,7 +329,7 @@ msgstr "Mode of payment"
 msgid "ID trabajador"
 msgstr "Worker"
 
-#: ticketclienteview.cpp:68 bfclientealbaransubform.cpp:57
+#: bfclientealbaransubform.cpp:57 ticketclienteview.cpp:68
 #: bfclientealbarandescuentosubform.cpp:44
 msgid "Id albaran"
 msgstr "Id letters patent"
@@ -370,6 +371,10 @@ msgstr "Show/hide filter"
 msgid "Mostrar:"
 msgstr "Show seat"
 
+#: bfclientealbaransubform.cpp:48
+msgid "No linea"
+msgstr ""
+
 #: bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
 msgstr "Name article"
@@ -388,17 +393,13 @@ msgstr "Id letters patent"
 msgid "Nuevo ticket a cliente"
 msgstr ""
 
-#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
+#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Number of fax"
 
 #: ui_ticketclientebase.h:766
 msgid "Numero de ticket:"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
 msgstr ""
 
 #: bfclientealbaransubform.cpp:58

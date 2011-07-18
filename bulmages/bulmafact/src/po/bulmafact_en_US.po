@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:44+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: 2011-02-22 15:33+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: English <es@li.org>\n"
+"Language: Language\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: Language\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: bfproveedoralbaransubform.cpp:57
@@ -27,7 +27,7 @@ msgstr "% V.A.T."
 msgid "% R.E."
 msgstr "% A.V."
 
-#: ui_bfconfiguracionbase.h:422 ui_bfseriefacturabase.h:85
+#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:303
 msgid "&Aceptar"
 msgstr "&Accept"
 
@@ -39,7 +39,7 @@ msgstr "&About"
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&About Iglues/BulmaFact"
 
-#: ui_bfconfiguracionbase.h:423 ui_bfseriefacturabase.h:84
+#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:304
 msgid "&Cancelar"
 msgstr "&Cancel"
 
@@ -127,11 +127,11 @@ msgstr "Advanced"
 msgid "Base Imponible"
 msgstr "Tax basis"
 
-#: ui_bfconfiguracionbase.h:428
+#: ui_bfconfiguracionbase.h:309
 msgid "C.P."
 msgstr "P.C."
 
-#: ui_bfconfiguracionbase.h:426
+#: ui_bfconfiguracionbase.h:307
 msgid "CIF"
 msgstr "Tax ID"
 
@@ -155,6 +155,11 @@ msgstr "Complete article code"
 msgid "Codigo serie factura"
 msgstr "Code series invoices"
 
+#: bfsubform.cpp:624
+#, qt-format
+msgid "Columna: '%1', fila: '%2'."
+msgstr ""
+
 #: bfaboutview.cpp:44
 msgid "Compilado usando la version de QT:"
 msgstr "Compiled using the QT version:"
@@ -163,13 +168,13 @@ msgstr "Compiled using the QT version:"
 msgid "Configuracion"
 msgstr "Configuration"
 
-#: ui_bfconfiguracionbase.h:437
-msgid "Configuracion Avanzada"
-msgstr "Advanced configuration"
+#: ui_bfconfiguracionbase.h:318
+msgid "Configuracion avanzada"
+msgstr ""
 
-#: ui_bfconfiguracionbase.h:436
-msgid "Configuracion Basica"
-msgstr "Basic Configuration"
+#: ui_bfconfiguracionbase.h:317
+msgid "Configuracion basica"
+msgstr ""
 
 #: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
@@ -191,7 +196,7 @@ msgstr "Description invoices series"
 msgid "Descuento"
 msgstr "Discount"
 
-#: ui_bfconfiguracionbase.h:427
+#: ui_bfconfiguracionbase.h:308
 msgid "Direccion"
 msgstr "Address"
 
@@ -199,7 +204,7 @@ msgstr "Address"
 msgid "E&mpresa"
 msgstr "C&ompany"
 
-#: ui_bfconfiguracionbase.h:434
+#: ui_bfconfiguracionbase.h:315
 msgid "E-Mail"
 msgstr "E-mail:"
 
@@ -216,13 +221,21 @@ msgstr ""
 msgid "Entregado"
 msgstr "Delivered"
 
+#: bfbuscaralmacen.cpp:103 bfbuscaralmacen.cpp:104
+msgid "Error al establecer el almacen."
+msgstr ""
+
 #: main.cxx:192
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Unexpected error in BulmaFact. The program will exit."
 
-#: bfform.cpp:1044
+#: bfform.cpp:1043
 msgid "Error inesperado en la impresion"
 msgstr "Unexpected printing error"
+
+#: bfbuscararticulo.cpp:228
+msgid "Este item es un articulo encontrado, no entrado por el usuario."
+msgstr ""
 
 #: ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -245,7 +258,7 @@ msgstr "Invoiced"
 msgid "Familia:"
 msgstr "Family:"
 
-#: ui_bfconfiguracionbase.h:433
+#: ui_bfconfiguracionbase.h:314
 msgid "Fax"
 msgstr "Fax"
 
@@ -310,6 +323,11 @@ msgstr "Initializing component"
 msgid "Iniciando clases"
 msgstr "Initiating classes"
 
+#: bfbuscararticulo.cpp:226
+#, qt-format
+msgid "Item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
+msgstr ""
+
 #: main.cxx:169
 msgid "Lanzando plugins"
 msgstr "Launching plugins"
@@ -327,11 +345,11 @@ msgstr "Listings"
 msgid "Maest&ro"
 msgstr "Mast&er"
 
-#: ui_bfconfiguracionbase.h:429
+#: ui_bfconfiguracionbase.h:310
 msgid "Municipio"
 msgstr "City"
 
-#: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:216
+#: ui_bfconfiguracionbase.h:306 bfconfiguracionview.cpp:216
 msgid "Nombre"
 msgstr "Name"
 
@@ -359,7 +377,7 @@ msgstr "Cascade orga&nization"
 msgid "Pagado"
 msgstr "Paid"
 
-#: ui_bfconfiguracionbase.h:431
+#: ui_bfconfiguracionbase.h:312
 msgid "Pais"
 msgstr "Country"
 
@@ -392,11 +410,11 @@ msgstr "Price"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfconfiguracionbase.h:421 ui_bfbulmafactbase.h:170
+#: ui_bfbulmafactbase.h:170 ui_bfconfiguracionbase.h:302
 msgid "Propiedades de la empresa"
 msgstr "Basic data for the establishment"
 
-#: ui_bfconfiguracionbase.h:430
+#: ui_bfconfiguracionbase.h:311
 msgid "Provincia"
 msgstr "Province"
 
@@ -408,11 +426,11 @@ msgstr "A.T."
 msgid "Referencia"
 msgstr "Reference"
 
-#: bfbulmafact.cpp:202
+#: bfbulmafact.cpp:194
 msgid "Se perderan los cambios no guardados"
 msgstr "The unsaved changes will be lost"
 
-#: bfbulmafact.cpp:201
+#: bfbulmafact.cpp:193
 msgid "Seguro que desea abandonar el programa "
 msgstr "Are you sure you want to quit the program"
 
@@ -428,7 +446,7 @@ msgstr "Invoice series"
 msgid "Sopor&te"
 msgstr "Suppor&t"
 
-#: ui_bfconfiguracionbase.h:432
+#: ui_bfconfiguracionbase.h:313
 msgid "Telefono"
 msgstr "Telephone:"
 
@@ -436,7 +454,7 @@ msgstr "Telephone:"
 msgid "Terminado"
 msgstr "Finished"
 
-#: bfform.cpp:1041
+#: bfform.cpp:1040
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr "You have to save the document before being able to process it."
 
@@ -456,6 +474,11 @@ msgstr "Total discount"
 msgid "Total Linea"
 msgstr "Total of the line"
 
+#: bfbuscararticulo.cpp:232
+#, qt-format
+msgid "Ultimo item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
+msgstr ""
+
 #: bfconfiguracionview.cpp:217
 msgid "Valor"
 msgstr "Value"
@@ -468,6 +491,12 @@ msgstr "Wind&ow"
 msgid "Ventana &completa"
 msgstr "Full &window"
 
-#: ui_bfconfiguracionbase.h:435
+#: ui_bfconfiguracionbase.h:316
 msgid "Web"
 msgstr "Web"
+
+#~ msgid "Configuracion Avanzada"
+#~ msgstr "Advanced configuration"
+
+#~ msgid "Configuracion Basica"
+#~ msgstr "Basic Configuration"

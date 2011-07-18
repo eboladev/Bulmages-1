@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pluginbf_z 2z\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:17+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-06-08 09:17+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,11 +30,11 @@ msgstr "&Cancelar"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: pluginbf_z2z.cpp:55
+#: pluginbf_z2z.cpp:54
 msgid "&Herramientas"
 msgstr "&Herramientas"
 
-#: pluginbf_z2z.cpp:59
+#: pluginbf_z2z.cpp:58
 msgid "&Traspaso de Z"
 msgstr ""
 
@@ -105,6 +106,6 @@ msgstr "Total aproximado a traspasar"
 msgid "Traspasar"
 msgstr "Traspasar"
 
-#: pluginbf_z2z.cpp:60 pluginbf_z2z.cpp:61 ui_z2zbase.h:362
+#: pluginbf_z2z.cpp:59 pluginbf_z2z.cpp:60 ui_z2zbase.h:362
 msgid "Traspaso de Z"
 msgstr "Traspaso de Z"

@@ -8,86 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:03+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: reciboslist.cpp:82 emitirrecibosview.cpp:63
-msgid "Actividad:"
-msgstr ""
-
-#: reciboslist.cpp:131
-msgid "Todos los recibos"
-msgstr ""
-
-#: reciboslist.cpp:132
-msgid "Recibos pagados"
-msgstr ""
-
-#: reciboslist.cpp:133
-msgid "Recibos no pagados"
-msgstr ""
-
-#: reciboslist.cpp:217 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
-#: ui_reciboslistbase.h:305
-msgid "Recibos"
-msgstr ""
-
-#: reciboslist.cpp:234
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: reciboslist.cpp:249
-msgid "Error al borrar el cobro a cliente"
-msgstr ""
-
-#: reciboslist.cpp:277
-msgid "Debe seleccionar una fila primero"
-msgstr ""
-
-#: reciboslist.cpp:296
-msgid "Editar recibo"
-msgstr ""
-
-#: reciboslist.cpp:297
-msgid "Borrar recibo"
-msgstr ""
-
-#: reciboslist.cpp:351
-msgid "ID Recibo"
-msgstr ""
-
-#: reciboslist.cpp:352 reciboview.cpp:53 emitirrecibosview.cpp:57
-msgid "Cantidad"
-msgstr ""
-
-#: reciboslist.cpp:353 reciboview.cpp:58 ui_recibobase.h:381
-msgid "Pagado"
-msgstr ""
-
-#: reciboslist.cpp:354 reciboview.cpp:59 ui_recibobase.h:382
-msgid "Devuelto"
-msgstr ""
-
-#: reciboslist.cpp:355 ui_recibobase.h:384
-msgid "Fecha"
-msgstr ""
-
-#: reciboslist.cpp:356
-msgid "ID Tutor"
-msgstr ""
-
-#: reciboslist.cpp:357 ui_recibobase.h:383
-msgid "Forma de Pago"
-msgstr ""
-
-#: reciboslist.cpp:358
-msgid "Tutor"
-msgstr ""
 
 #: pluginbf_recibo.cpp:55
 msgid "&Economia"
@@ -95,6 +23,11 @@ msgstr ""
 
 #: pluginbf_recibo.cpp:58
 msgid "&Recibos"
+msgstr ""
+
+#: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
+#: ui_reciboslistbase.h:305
+msgid "Recibos"
 msgstr ""
 
 #: pluginbf_recibo.cpp:66
@@ -113,7 +46,7 @@ msgstr ""
 msgid "Emitir recibos"
 msgstr ""
 
-#: pluginbf_recibo.cpp:141 pluginbf_recibo.cpp:142
+#: pluginbf_recibo.cpp:140 pluginbf_recibo.cpp:141
 msgid "Generar pedido"
 msgstr ""
 
@@ -123,6 +56,10 @@ msgstr ""
 
 #: reciboview.cpp:52 reciboview.cpp:81 emitirrecibosview.cpp:56
 msgid "ID recibo"
+msgstr ""
+
+#: reciboview.cpp:53 reciboslist.cpp:351 emitirrecibosview.cpp:57
+msgid "Cantidad"
 msgstr ""
 
 #: reciboview.cpp:54
@@ -139,6 +76,14 @@ msgstr ""
 
 #: reciboview.cpp:57
 msgid "Fecha de creacion"
+msgstr ""
+
+#: reciboview.cpp:58 reciboslist.cpp:352 ui_recibobase.h:381
+msgid "Pagado"
+msgstr ""
+
+#: reciboview.cpp:59 reciboslist.cpp:353 ui_recibobase.h:382
+msgid "Devuelto"
 msgstr ""
 
 #: reciboview.cpp:67
@@ -171,6 +116,62 @@ msgstr ""
 
 #: reciboview.cpp:228
 msgid "Error en la creacion del recibo"
+msgstr ""
+
+#: reciboslist.cpp:82 emitirrecibosview.cpp:63
+msgid "Actividad:"
+msgstr ""
+
+#: reciboslist.cpp:131
+msgid "Todos los recibos"
+msgstr ""
+
+#: reciboslist.cpp:132
+msgid "Recibos pagados"
+msgstr ""
+
+#: reciboslist.cpp:133
+msgid "Recibos no pagados"
+msgstr ""
+
+#: reciboslist.cpp:233
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: reciboslist.cpp:248
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: reciboslist.cpp:276
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: reciboslist.cpp:295
+msgid "Editar recibo"
+msgstr ""
+
+#: reciboslist.cpp:296
+msgid "Borrar recibo"
+msgstr ""
+
+#: reciboslist.cpp:350
+msgid "ID Recibo"
+msgstr ""
+
+#: reciboslist.cpp:354 ui_recibobase.h:384
+msgid "Fecha"
+msgstr ""
+
+#: reciboslist.cpp:355
+msgid "ID Tutor"
+msgstr ""
+
+#: reciboslist.cpp:356 ui_recibobase.h:383
+msgid "Forma de Pago"
+msgstr ""
+
+#: reciboslist.cpp:357
+msgid "Tutor"
 msgstr ""
 
 #: emitirrecibosview.cpp:53 ui_emitirrecibosbase.h:240
@@ -225,6 +226,59 @@ msgstr ""
 msgid "Fecha final:"
 msgstr ""
 
+#: ui_recibobase.h:347
+msgid "Nuevo Recibo"
+msgstr ""
+
+#: ui_recibobase.h:350 ui_recibobase.h:353
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_recibobase.h:356
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
+#: ui_recibobase.h:369
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_recibobase.h:372 ui_recibobase.h:380
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_recibobase.h:374 ui_recibobase.h:377
+msgid "Reemitir Recibo"
+msgstr ""
+
+#: ui_recibobase.h:385
+msgid "Total"
+msgstr ""
+
+#: ui_recibobase.h:386
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_recibobase.h:387
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_recibobase.h:388
+msgid "Otros datos"
+msgstr ""
+
+#: ui_recibobase.h:389
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_recibobase.h:390
+msgid "&Cancelar"
+msgstr ""
+
 #: ui_reciboslistbase.h:308
 msgid "Banco:"
 msgstr ""
@@ -247,10 +301,6 @@ msgstr ""
 
 #: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
 msgid "Borrar Actividad"
-msgstr ""
-
-#: ui_reciboslistbase.h:334 ui_recibobase.h:364
-msgid "Ctrl+D"
 msgstr ""
 
 #: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
@@ -287,53 +337,4 @@ msgstr ""
 
 #: ui_reciboslistbase.h:367
 msgid "Buscar:"
-msgstr ""
-
-#: ui_recibobase.h:347
-msgid "Nuevo Recibo"
-msgstr ""
-
-#: ui_recibobase.h:350 ui_recibobase.h:353
-msgid "Guardar cobro"
-msgstr ""
-
-#: ui_recibobase.h:356
-msgid "Ctrl+S"
-msgstr ""
-
-#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
-#: ui_recibobase.h:369
-msgid "Borrar cobro"
-msgstr ""
-
-#: ui_recibobase.h:372 ui_recibobase.h:380
-msgid "Ctrl+I"
-msgstr ""
-
-#: ui_recibobase.h:374 ui_recibobase.h:377
-msgid "Reemitir Recibo"
-msgstr ""
-
-#: ui_recibobase.h:385
-msgid "Total"
-msgstr ""
-
-#: ui_recibobase.h:386
-msgid "&Datos generales"
-msgstr ""
-
-#: ui_recibobase.h:387
-msgid "Comentarios:"
-msgstr ""
-
-#: ui_recibobase.h:388
-msgid "Otros datos"
-msgstr ""
-
-#: ui_recibobase.h:389
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_recibobase.h:390
-msgid "&Cancelar"
 msgstr ""

@@ -5,17 +5,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-13 18:01+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: listlinpedidoproveedorview.cpp:49 listdescpedidoproveedorview.cpp:41
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 msgid "% Descuento"
 msgstr "% Remise"
 
@@ -206,6 +206,10 @@ msgstr "Erreur chargement d'une commande fournisseur"
 msgid "Error al crear el pedido a proveedor"
 msgstr "Erreur à la création d'une commande fournisseur"
 
+#: pedidoproveedorview.cpp:400
+msgid "Error."
+msgstr ""
+
 #: ui_pedidosproveedorlistbase.h:418
 msgid "F5"
 msgstr "F5"
@@ -258,8 +262,8 @@ msgstr "Id remise"
 msgid "Id forma de pago"
 msgstr "Id Forme de paiement"
 
-#: listlinpedidoproveedorview.cpp:50 listdescpedidoproveedorview.cpp:42
-#: pedidosproveedorlist.cpp:342
+#: listdescpedidoproveedorview.cpp:42 pedidosproveedorlist.cpp:342
+#: listlinpedidoproveedorview.cpp:50
 msgid "Id pedido"
 msgstr "Id Commande"
 
@@ -349,8 +353,8 @@ msgstr "Commande Fournisseur"
 msgid "Pedido procesado"
 msgstr "Commande traitée"
 
-#: pluginbf_proveedorpedido.cpp:56 pluginbf_proveedorpedido.cpp:57
-#: pedidosproveedorlist.cpp:197 ui_pedidosproveedorlistbase.h:356
+#: pedidosproveedorlist.cpp:197 pluginbf_proveedorpedido.cpp:56
+#: pluginbf_proveedorpedido.cpp:57 ui_pedidosproveedorlistbase.h:356
 msgid "Pedidos a proveedores"
 msgstr "Commandes Fournisseurs"
 

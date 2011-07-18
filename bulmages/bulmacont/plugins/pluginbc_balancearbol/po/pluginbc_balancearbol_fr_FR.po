@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:36+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-15 09:39+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -135,6 +135,11 @@ msgstr "Balance hiérarchique"
 msgid "Balance jerarquico de cuentas"
 msgstr "Balance hiérarchique des comptes"
 
+#: bcplancontablearbol.cpp:222
+#, qt-format
+msgid "Codigo = '%1', Numero de apunte = '%2'"
+msgstr ""
+
 #: balance1view.cpp:98
 msgid "Cuenta"
 msgstr "Compte"
@@ -202,6 +207,15 @@ msgstr "hiérarchique"
 #: ui_balancetreebase.h:415
 msgid "Nivel:"
 msgstr "Niveau :"
+
+#: bcplancontablearbol.cpp:525
+msgid "No se ha encontrado el campo '$1' en la hoja del arbol."
+msgstr ""
+
+#: bcplancontablearbol.cpp:526
+#, qt-format
+msgid "No se ha encontrado el campo '%1' en la hoja del arbol."
+msgstr ""
 
 #: balance1view.cpp:99
 msgid "Nombre de la cuenta"

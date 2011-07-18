@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:58+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -19,7 +19,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: q19writer.cpp:149 q19writer.cpp:228
+#: q19writer.cpp:150 q19writer.cpp:229
 #, qt-format
 msgid ""
 "\n"
@@ -28,12 +28,12 @@ msgstr ""
 "\n"
 "%3 : %1 rebuts, %2 EUR. "
 
-#: q19writer.cpp:312
+#: q19writer.cpp:313
 #, qt-format
 msgid "%1 (%2) supera la longitud maxima (%3 caracteres)"
 msgstr "%1 (%2) supera la longitud màxima (%3 caràcters)"
 
-#: q19writer.cpp:243
+#: q19writer.cpp:244
 #, qt-format
 msgid ""
 "%2\n"
@@ -44,7 +44,7 @@ msgstr ""
 ".El fitxer de remesa bancària generat no es pot aprofitar. Ha fallat la "
 "generació al rebut amb referència %1"
 
-#: q19writer.cpp:73 q19view.cpp:90
+#: q19view.cpp:90 q19writer.cpp:73
 msgid "*.q19;;*"
 msgstr "*.q19;;*"
 
@@ -195,11 +195,11 @@ msgstr ""
 msgid "Banco"
 msgstr "Balanç"
 
-#: q19writer.cpp:456
+#: q19writer.cpp:457
 #, qt-format
 msgid ""
-"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %"
-"4), para cliente %5 (%6)"
+"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. "
+"%4), para cliente %5 (%6)"
 msgstr ""
 
 #: ui_q19base.h:310
@@ -210,11 +210,11 @@ msgstr "Cancel·la"
 msgid "Concepto"
 msgstr "Concepte"
 
-#: q19writer.cpp:311
+#: q19writer.cpp:312
 msgid "Datos de recibos incorrectos"
 msgstr "Les dades dels rebuts són incorrectes."
 
-#: q19writer.cpp:434 q19writer.cpp:438 q19writer.cpp:455
+#: q19writer.cpp:435 q19writer.cpp:439 q19writer.cpp:456
 msgid "Datos incorrectos"
 msgstr "Dades incorrectes"
 
@@ -222,11 +222,11 @@ msgstr "Dades incorrectes"
 msgid "Dias"
 msgstr "Dies"
 
-#: q19writer.cpp:389 q19writer.cpp:477
+#: q19writer.cpp:390 q19writer.cpp:478
 msgid "El CIF del ordenante"
 msgstr "El CIF de l'ordenant"
 
-#: q19writer.cpp:345 q19writer.cpp:606
+#: q19writer.cpp:346 q19writer.cpp:607
 msgid "El CIF del presentador (propiedades de Empresa)"
 msgstr "El CIF del presentador (propietats de l'Empresa)"
 
@@ -235,11 +235,11 @@ msgstr "El CIF del presentador (propietats de l'Empresa)"
 msgid "Error al crear el archivo"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: q19view.cpp:192
-msgid "Error al generar remesa bancaria"
+#: q19view.cpp:192 q19view.cpp:193
+msgid "Error al generar remesa bancaria."
 msgstr ""
 
-#: q19writer.cpp:236
+#: q19writer.cpp:237
 #, qt-format
 msgid ""
 "Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por "
@@ -253,7 +253,7 @@ msgstr ""
 msgid "FRA %serie%num %desc "
 msgstr "FRA%serie%num %desc "
 
-#: q19writer.cpp:262
+#: q19writer.cpp:263
 msgid "Falta NIF de su empresa"
 msgstr "Manca el NIF de la vostra empresa"
 
@@ -261,7 +261,7 @@ msgstr "Manca el NIF de la vostra empresa"
 msgid "Falta el  banco"
 msgstr "Manca el banc"
 
-#: q19writer.cpp:285
+#: q19writer.cpp:286
 msgid "Falta el nombre de su empresa"
 msgstr "Manca el nom de la vostra empresa"
 
@@ -281,7 +281,7 @@ msgstr "Fitxer de remesa bancària (Quadern 19)"
 msgid "Fichero q19 a generar para el banco "
 msgstr "Fitxer q19 a generar pel banc"
 
-#: q19writer.cpp:238
+#: q19writer.cpp:239
 msgid "Fichero(s) generado(s)"
 msgstr "Fitxer(s) generat(s)"
 
@@ -289,27 +289,27 @@ msgstr "Fitxer(s) generat(s)"
 msgid "Generacion Q19"
 msgstr "Generació de Q19"
 
-#: q19qtoolbutton.cpp:82 q19qtoolbutton1.cpp:72
+#: q19qtoolbutton1.cpp:72 q19qtoolbutton.cpp:82
 msgid "Generar Q19"
 msgstr ""
 
-#: q19qtoolbutton.cpp:83 q19qtoolbutton1.cpp:73
+#: q19qtoolbutton1.cpp:73 q19qtoolbutton.cpp:83
 msgid "Generar archivo Q19 de los elementos seleccionados."
 msgstr ""
 
-#: q19writer.cpp:438
+#: q19writer.cpp:439
 #, qt-format
 msgid ""
 "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 "
 "decimales "
-msgstr ""
+msgstr "Import excesiu (%1) !. El limit son %2 digits, incluint els 2 "
 
-#: q19writer.cpp:434
+#: q19writer.cpp:435
 #, qt-format
 msgid "Importe negativo (%1) ! "
-msgstr ""
+msgstr "Import negatiu (%1) ! "
 
-#: q19writer.cpp:404
+#: q19writer.cpp:405
 msgid "Los digitos de control de su cuenta bancaria"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgstr ""
 "No hi ha rebuts seleccionats. Pot utilitzar la columna selector per a "
 "seleccionar els rebuts a incloure en la remesa bancària"
 
-#: q19writer.cpp:263
+#: q19writer.cpp:264
 msgid ""
 "No podemos generar remesas bancarias hasta que entre el NIF de su empresa en "
 "Propiedades de Empresa"
@@ -341,15 +341,20 @@ msgstr ""
 "No podem generar remeses bancàries fins que poseu el NIF de la vostra "
 "empresa a Propietats de l'Empresa"
 
+#: q19writer.cpp:76
+#, qt-format
+msgid "Nombre del fichero: '%1'"
+msgstr ""
+
 #: q19view.cpp:133
 msgid "Por favor, escoja un banco donde cobrar los recibos a generar."
 msgstr "Si us plau, trieu un banc on voleu cobrar els rebuts a generar."
 
-#: q19writer.cpp:243
+#: q19writer.cpp:244
 msgid "Remesa mal generada"
 msgstr "Remesa mal generada"
 
-#: q19writer.cpp:235
+#: q19writer.cpp:236
 msgid "Remesa parcialmente generada"
 msgstr "Remesa generada parcialment"
 
@@ -361,19 +366,19 @@ msgstr "Remesa buida"
 msgid "Semanas"
 msgstr "Setmanes"
 
-#: q19writer.cpp:356 q19writer.cpp:399
+#: q19writer.cpp:357 q19writer.cpp:400
 msgid "Su entidad bancaria"
 msgstr "La vostra entitat bancària"
 
-#: q19writer.cpp:407
+#: q19writer.cpp:408
 msgid "Su numero de cuenta bancaria"
 msgstr ""
 
-#: q19writer.cpp:358 q19writer.cpp:401
+#: q19writer.cpp:359 q19writer.cpp:402
 msgid "Su oficina bancaria"
 msgstr "La vostra oficina bancària"
 
-#: q19writer.cpp:238
+#: q19writer.cpp:239
 #, qt-format
 msgid ""
 "Tiene los siguientes ficheros de recibos para los bancos:\n"

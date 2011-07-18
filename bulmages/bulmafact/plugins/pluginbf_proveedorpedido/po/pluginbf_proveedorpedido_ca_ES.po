@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -19,7 +19,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: listlinpedidoproveedorview.cpp:49 listdescpedidoproveedorview.cpp:41
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 #, fuzzy
 msgid "% Descuento"
 msgstr "Document:"
@@ -264,6 +264,10 @@ msgstr "Error al carregar la comanda proveïdor"
 msgid "Error al crear el pedido a proveedor"
 msgstr "Error al crear la comanda a proveïdor"
 
+#: pedidoproveedorview.cpp:400
+msgid "Error."
+msgstr ""
+
 #: ui_pedidosproveedorlistbase.h:418
 msgid "F5"
 msgstr "F5"
@@ -326,8 +330,8 @@ msgstr "Id compte"
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: listlinpedidoproveedorview.cpp:50 listdescpedidoproveedorview.cpp:42
-#: pedidosproveedorlist.cpp:342
+#: listdescpedidoproveedorview.cpp:42 pedidosproveedorlist.cpp:342
+#: listlinpedidoproveedorview.cpp:50
 #, fuzzy
 msgid "Id pedido"
 msgstr "Imprimeix la comanda"
@@ -433,8 +437,8 @@ msgstr "Direcció del proveïdor"
 msgid "Pedido procesado"
 msgstr "Comanda processada"
 
-#: pluginbf_proveedorpedido.cpp:56 pluginbf_proveedorpedido.cpp:57
-#: pedidosproveedorlist.cpp:197 ui_pedidosproveedorlistbase.h:356
+#: pedidosproveedorlist.cpp:197 pluginbf_proveedorpedido.cpp:56
+#: pluginbf_proveedorpedido.cpp:57 ui_pedidosproveedorlistbase.h:356
 #, fuzzy
 msgid "Pedidos a proveedores"
 msgstr "Direcció del proveïdor"

@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:03+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-14 20:31+0100\n"
 "Last-Translator: Walter Garcia-Fontes <Walter Garcia-Fontes>\n"
 "Language-Team: Spanish <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
-#: ui_listcuotasporalumnobase.h:119 ui_alumnobase.h:535
+#: ui_alumnobase.h:535 ui_listcuotasporalumnobase.h:119
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -29,7 +29,7 @@ msgstr "&Alumnos"
 msgid "&Associats"
 msgstr ""
 
-#: ui_listcuotasporalumnobase.h:120 ui_alumnobase.h:536
+#: ui_alumnobase.h:536 ui_listcuotasporalumnobase.h:120
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -45,7 +45,7 @@ msgstr "&Cuotas Socio"
 msgid "&Datos generales"
 msgstr "&Datos generales"
 
-#: claseview.cpp:200
+#: claseview.cpp:198
 msgid "&No"
 msgstr "&No"
 
@@ -53,7 +53,7 @@ msgstr "&No"
 msgid "&Nuevo alumno"
 msgstr "&Nuevo alumno"
 
-#: claseview.cpp:200
+#: claseview.cpp:198
 msgid "&Si"
 msgstr "&Sí"
 
@@ -61,7 +61,7 @@ msgstr "&Sí"
 msgid "1er Apellido"
 msgstr "1er Apellido"
 
-#: alumnoview.cpp:59 alumnoslist.cpp:350
+#: alumnoview.cpp:59 alumnoslist.cpp:351
 msgid "1er apellido"
 msgstr "1er apellido"
 
@@ -73,7 +73,7 @@ msgstr "1.<sup>er</sup> apellido:"
 msgid "2do Apellido"
 msgstr "2do Apellido"
 
-#: alumnoview.cpp:60 alumnoslist.cpp:351
+#: alumnoview.cpp:60 alumnoslist.cpp:352
 msgid "2o apellido"
 msgstr "2o apellido"
 
@@ -139,7 +139,7 @@ msgstr "Buscar:"
 msgid "Cam&biar imagen"
 msgstr "Cam&biar imagen"
 
-#: claseview.cpp:44 alumnoview.cpp:67
+#: alumnoview.cpp:67 claseview.cpp:44
 msgid "Clase"
 msgstr "Clase"
 
@@ -171,7 +171,7 @@ msgstr "Correo electronico:"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_alumnoslistbase.h:339 ui_alumnobase.h:484
+#: ui_alumnobase.h:484 ui_alumnoslistbase.h:339
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -215,7 +215,7 @@ msgstr "Cuotas por alumno"
 msgid "CuotasPorAlumno"
 msgstr "Cuotas por alumno"
 
-#: ui_alumnoslistbase.h:310 ui_alumnobase.h:523
+#: ui_alumnobase.h:523 ui_alumnoslistbase.h:310
 msgid "Curso:"
 msgstr "Curso:"
 
@@ -231,7 +231,7 @@ msgstr "Debe seleccionar una fila primero"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: claseview.cpp:199
+#: claseview.cpp:197
 msgid "Desea guardar los cambios?"
 msgstr "¿Desea guardar los cambios?"
 
@@ -247,23 +247,23 @@ msgstr "Editar Alumno"
 msgid "Editar alumno"
 msgstr "Editar alumno"
 
-#: claseview.cpp:255
+#: claseview.cpp:253
 msgid "Error al borrar el Clase"
 msgstr "Error al borrar la Clase"
 
 #: alumnoslist.cpp:248
-msgid "Error al borrar el cobro a cliente"
-msgstr "Error al borrar el cobro a cliente"
+msgid "Error al borrar el cobro a cliente."
+msgstr ""
 
 #: alumnoview.cpp:95
 msgid "Error al crear el alumno"
 msgstr "Error al crear el alumno"
 
-#: claseview.cpp:230
+#: claseview.cpp:228
 msgid "Error al crear un nuevo Clase"
 msgstr "Error al crear una nueva Clase"
 
-#: claseview.cpp:179
+#: claseview.cpp:178
 msgid "Error al guardar el clase"
 msgstr "Error al guardar la clase"
 
@@ -279,7 +279,7 @@ msgstr ""
 "Está seguro que quiere borrar\n"
 "la imagen asociada a este alumno?"
 
-#: alumnoslist.cpp:352
+#: alumnoslist.cpp:353
 msgid "F. Nacimiento"
 msgstr "Fecha de nacimiento"
 
@@ -323,7 +323,7 @@ msgstr "Guardar"
 msgid "Guardar cobro"
 msgstr "Guardar cobro"
 
-#: claseview.cpp:198
+#: claseview.cpp:196
 msgid "Guardar datos del clase"
 msgstr "Guardar datos de la clase"
 
@@ -331,7 +331,7 @@ msgstr "Guardar datos de la clase"
 msgid "Id actividad"
 msgstr "ID actividad"
 
-#: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:348
+#: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:349
 msgid "Id alumno"
 msgstr "Id alumno"
 
@@ -389,7 +389,7 @@ msgstr ""
 "Revise los permisos de escritura y si tiene\n"
 "de espacio libre suficiente en el disco duro."
 
-#: alumnoslist.cpp:349
+#: alumnoslist.cpp:350
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -405,7 +405,7 @@ msgstr "Nombre del alumno"
 msgid "Nombre tutor"
 msgstr "Nombre tutor"
 
-#: ui_clasebase.h:244 ui_alumnobase.h:516
+#: ui_alumnobase.h:516 ui_clasebase.h:244
 msgid "Nombre:"
 msgstr "Nombre:"
 
@@ -413,7 +413,7 @@ msgstr "Nombre:"
 msgid "Nueva Aula"
 msgstr "Nueva Aula"
 
-#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:467
+#: ui_alumnobase.h:467 ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320
 msgid "Nuevo Alumno"
 msgstr "Nuevo Alumno"
 
@@ -496,6 +496,9 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
 #~ msgid "Direccion:"
 #~ msgstr "Direccion:"
+
+#~ msgid "Error al borrar el cobro a cliente"
+#~ msgstr "Error al borrar el cobro a cliente"
 
 #~ msgid "Guardar Tipo de Actividad"
 #~ msgstr "Guardar tipo de actividad"

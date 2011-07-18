@@ -8,29 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:38+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: pluginbc_mayor.cpp:91
-msgid "&Ver"
-msgstr ""
-
-#: pluginbc_mayor.cpp:93
-msgid "&Libro Mayor"
-msgstr ""
-
-#: pluginbc_mayor.cpp:94
-msgid "Permite ver el mayor"
-msgstr ""
-
-#: pluginbc_mayor.cpp:95
-msgid "Podra disponer de la informacion del mayor"
-msgstr ""
 
 #: bcextractosubform.cpp:46
 msgid "Punteo"
@@ -160,35 +145,35 @@ msgstr ""
 msgid "Extracto de Cuentas"
 msgstr ""
 
-#: bcextractoview.cpp:59
+#: bcextractoview.cpp:61
 msgid "Cuenta Inicial:"
 msgstr ""
 
-#: bcextractoview.cpp:66
+#: bcextractoview.cpp:68
 msgid "Cuenta Final:"
 msgstr ""
 
-#: bcextractoview.cpp:73
+#: bcextractoview.cpp:75
 msgid "Cuenta Contrapartida:"
 msgstr ""
 
-#: bcextractoview.cpp:547
+#: bcextractoview.cpp:555
 msgid "Cargando Extracto de Cuentas"
 msgstr ""
 
-#: bcextractoview.cpp:585 ui_bcextractobase.h:769 ui_bcextractobase.h:772
+#: bcextractoview.cpp:593 ui_bcextractobase.h:769 ui_bcextractobase.h:772
 msgid "Guardar punteo"
 msgstr ""
 
-#: bcextractoview.cpp:587
+#: bcextractoview.cpp:595
 msgid "Punteos (*.pto)"
 msgstr ""
 
-#: bcextractoview.cpp:623 ui_bcextractobase.h:783 ui_bcextractobase.h:786
+#: bcextractoview.cpp:631 ui_bcextractobase.h:783 ui_bcextractobase.h:786
 msgid "Borrar punteo"
 msgstr ""
 
-#: bcextractoview.cpp:624
+#: bcextractoview.cpp:632
 msgid ""
 "Se dispone a borrar el punteo. Este "
 "cambio                                                 es irrecuperable si "
@@ -196,20 +181,36 @@ msgid ""
 "Desea continuar?"
 msgstr ""
 
-#: bcextractoview.cpp:639
+#: bcextractoview.cpp:647
 msgid "Se ha producido un error"
 msgstr ""
 
-#: bcextractoview.cpp:655 ui_bcextractobase.h:776 ui_bcextractobase.h:779
+#: bcextractoview.cpp:663 ui_bcextractobase.h:776 ui_bcextractobase.h:779
 msgid "Cargar punteo"
 msgstr ""
 
-#: bcextractoview.cpp:657
+#: bcextractoview.cpp:665
 msgid "Punteo (*.pto);;Todos los archivos (*)"
 msgstr ""
 
-#: bcextractoview.cpp:924
+#: bcextractoview.cpp:932
 msgid "Generando Extracto "
+msgstr ""
+
+#: pluginbc_mayor.cpp:55
+msgid "&Ver"
+msgstr ""
+
+#: pluginbc_mayor.cpp:57
+msgid "&Libro Mayor"
+msgstr ""
+
+#: pluginbc_mayor.cpp:58
+msgid "Permite ver el mayor"
+msgstr ""
+
+#: pluginbc_mayor.cpp:59
+msgid "Podra disponer de la informacion del mayor"
 msgstr ""
 
 #: ui_bcextractobase.h:715

@@ -354,9 +354,16 @@ BEGIN
         CREATE TABLE alumnoactividad (
             idalumnoactividad SERIAL PRIMARY KEY,
             idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
-            idactividad INTEGER NOT NULL REFERENCES actividad(idactividad)
+            idactividad INTEGER NOT NULL REFERENCES actividad(idactividad),
+	    bancoalumnoactividad VARCHAR
         );
     END IF;
+
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''bancoalumnoactividad'' AND relname=''alumnoactividad'';
+    IF NOT FOUND THEN
+        ALTER TABLE alumnoactividad ADD COLUMN bancoalumnoactividad VARCHAR;
+    END IF;
+
 
     SELECT INTO rsa * FROM pg_tables  WHERE tablename=''clienteactividad'';
     IF NOT FOUND THEN

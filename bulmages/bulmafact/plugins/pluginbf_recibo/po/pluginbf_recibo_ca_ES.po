@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:03+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-26 07:54+0100\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_recibobase.h:389
@@ -63,7 +63,7 @@ msgstr "Esborra Activitat"
 msgid "Borrar cobro"
 msgstr "Esborra cobrament"
 
-#: reciboslist.cpp:297
+#: reciboslist.cpp:296
 msgid "Borrar recibo"
 msgstr "Esborra rebut"
 
@@ -71,7 +71,7 @@ msgstr "Esborra rebut"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: reciboslist.cpp:352 reciboview.cpp:53 emitirrecibosview.cpp:57
+#: reciboview.cpp:53 reciboslist.cpp:351 emitirrecibosview.cpp:57
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -95,7 +95,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_reciboslistbase.h:334 ui_recibobase.h:364
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -123,11 +123,11 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: reciboslist.cpp:277
+#: reciboslist.cpp:276
 msgid "Debe seleccionar una fila primero"
 msgstr "Heu de seleccionar una fila primer"
 
-#: reciboslist.cpp:234
+#: reciboslist.cpp:233
 msgid "Debe seleccionar una linea"
 msgstr "Heu de seleccionar una línia"
 
@@ -135,7 +135,7 @@ msgstr "Heu de seleccionar una línia"
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: reciboslist.cpp:354 reciboview.cpp:59 ui_recibobase.h:382
+#: reciboview.cpp:59 reciboslist.cpp:353 ui_recibobase.h:382
 msgid "Devuelto"
 msgstr "Retornat"
 
@@ -143,7 +143,7 @@ msgstr "Retornat"
 msgid "Editar Actividad"
 msgstr "Edita Activitat"
 
-#: reciboslist.cpp:296
+#: reciboslist.cpp:295
 msgid "Editar recibo"
 msgstr "Edita rebut"
 
@@ -171,7 +171,7 @@ msgstr "Emetre només la activitat seleccionada"
 msgid "Emitir todas las Actividades"
 msgstr "Emet totes les activitats"
 
-#: reciboslist.cpp:249
+#: reciboslist.cpp:248
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error en esborrar el cobrament a client"
 
@@ -187,7 +187,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: reciboslist.cpp:355 ui_recibobase.h:384
+#: reciboslist.cpp:354 ui_recibobase.h:384
 msgid "Fecha"
 msgstr "Data"
 
@@ -207,11 +207,11 @@ msgstr "Data inicial"
 msgid "Filtrar Actividades"
 msgstr "Filtra activitats"
 
-#: reciboslist.cpp:357 ui_recibobase.h:383
+#: reciboslist.cpp:356 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr "Forma de pagament"
 
-#: pluginbf_recibo.cpp:141 pluginbf_recibo.cpp:142
+#: pluginbf_recibo.cpp:140 pluginbf_recibo.cpp:141
 msgid "Generar pedido"
 msgstr "Generar rebuts"
 
@@ -223,11 +223,11 @@ msgstr "Desa arxiu"
 msgid "ID Forma Pago"
 msgstr "Id. forma pagament"
 
-#: reciboslist.cpp:351
+#: reciboslist.cpp:350
 msgid "ID Recibo"
 msgstr "Id. rebut"
 
-#: reciboslist.cpp:356
+#: reciboslist.cpp:355
 msgid "ID Tutor"
 msgstr "Id. tutor"
 
@@ -279,7 +279,7 @@ msgstr "Nou rebut"
 msgid "Otros datos"
 msgstr "Altres dades"
 
-#: reciboslist.cpp:353 reciboview.cpp:58 ui_recibobase.h:381
+#: reciboview.cpp:58 reciboslist.cpp:352 ui_recibobase.h:381
 msgid "Pagado"
 msgstr "Pagat"
 
@@ -291,7 +291,7 @@ msgstr "Rebut"
 msgid "Recibo reemitido"
 msgstr "Rebut reemès"
 
-#: reciboslist.cpp:217 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
+#: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
 #: ui_reciboslistbase.h:305
 msgid "Recibos"
 msgstr "Rebuts"
@@ -332,7 +332,7 @@ msgstr "Tots els rebuts"
 msgid "Total"
 msgstr "Total"
 
-#: reciboslist.cpp:358
+#: reciboslist.cpp:357
 msgid "Tutor"
 msgstr "Tutor"
 

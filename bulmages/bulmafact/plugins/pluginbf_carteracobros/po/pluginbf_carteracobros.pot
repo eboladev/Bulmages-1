@@ -8,13 +8,66 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:52+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: q19view.cpp:131
+msgid "El CIF del ordenante supera la longitud maxima."
+msgstr ""
+
+#: q19view.cpp:156
+msgid "Entidad bancaria supera longitud maxima."
+msgstr ""
+
+#: q19view.cpp:163
+msgid "Oficina bancaria supera longitud maxima."
+msgstr ""
+
+#: q19view.cpp:213 q19view.cpp:419
+msgid "CIF demasiado largo."
+msgstr ""
+
+#: q19view.cpp:231
+msgid "Nombre de empresa demasiado largo."
+msgstr ""
+
+#: q19view.cpp:238
+msgid "Entidad bancaria demasiado larga."
+msgstr ""
+
+#: q19view.cpp:245
+msgid "Oficina bancaria demasiado larga."
+msgstr ""
+
+#: q19view.cpp:252
+msgid "Digito de control demasiado largo."
+msgstr ""
+
+#: q19view.cpp:259
+msgid "Cuenta bancaria demasiado larga."
+msgstr ""
+
+#: q19view.cpp:314
+msgid "CIF cliente demasiado largo."
+msgstr ""
+
+#: q19view.cpp:330
+msgid "Nombre cliente demasiado largo."
+msgstr ""
+
+#: q19view.cpp:338
+msgid "Banco del cliente invalido en el cobro."
+msgstr ""
+
+#: q19view.cpp:593
+msgid "Error al guardar."
+msgstr ""
 
 #: vencimientocview.cpp:61 carteracobroslist.cpp:64
 msgid "Cliente:"
@@ -68,31 +121,31 @@ msgstr ""
 msgid "Cartera de cobros"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:98 pluginbf_carteracobros.cpp:217
+#: pluginbf_carteracobros.cpp:97 pluginbf_carteracobros.cpp:217
 msgid "Id vencimiento"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:99
+#: pluginbf_carteracobros.cpp:98
 msgid "Dias tras factura"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:100
+#: pluginbf_carteracobros.cpp:99
 msgid "Porcentaje"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:101 pluginbf_carteracobros.cpp:220
+#: pluginbf_carteracobros.cpp:100 pluginbf_carteracobros.cpp:220
 msgid "Forma de pago"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:224
+#: pluginbf_carteracobros.cpp:101 pluginbf_carteracobros.cpp:224
 msgid "Id cliente"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:103 pluginbf_carteracobros.cpp:223
+#: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:223
 msgid "Id forma de pago"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:135
+#: pluginbf_carteracobros.cpp:134
 msgid "El total de la factura es :"
 msgstr ""
 

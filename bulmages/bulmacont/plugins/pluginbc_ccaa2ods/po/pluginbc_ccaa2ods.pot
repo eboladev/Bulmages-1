@@ -8,13 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:37+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbc_ccaa2ods.cpp:204
+msgid "Cuentas Anuales &ODS"
+msgstr ""
 
 #: datosview.cpp:36
 msgid "Cuenta"
@@ -62,10 +67,6 @@ msgstr ""
 
 #: datosview.cpp:117
 msgid "ERROR: Ha habido un error generando el informe"
-msgstr ""
-
-#: pluginbc_ccaa2ods.cpp:204
-msgid "Cuentas Anuales &ODS"
 msgstr ""
 
 #: ui_datosbase.h:147

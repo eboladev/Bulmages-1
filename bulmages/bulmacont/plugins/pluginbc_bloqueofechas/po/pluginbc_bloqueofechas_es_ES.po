@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:54+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-11-27 17:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: pluginbc_bloqueofechas.cpp:52
@@ -82,7 +82,7 @@ msgstr "Diciembre"
 msgid "Ejercicio"
 msgstr "Ejercicio"
 
-#: bcbloqueafechaview.cpp:270
+#: bcbloqueafechaview.cpp:271
 msgid "Ejercicios ya contemplado"
 msgstr "Ejercicio ya contemplado"
 
@@ -102,7 +102,7 @@ msgstr "Febrero"
 msgid "Hacer doble click para bloquear/desbloquear fechas"
 msgstr "Hacer doble click para bloquear/desbloquear fechas"
 
-#: bcbloqueafechaview.cpp:256
+#: bcbloqueafechaview.cpp:257
 msgid "Introduzca Ejercicio a Crear"
 msgstr "Introduzca ejercicio a crear"
 
@@ -130,7 +130,7 @@ msgstr "Noviembre"
 msgid "Octubre"
 msgstr "Octubre"
 
-#: bcbloqueafechaview.cpp:257
+#: bcbloqueafechaview.cpp:258
 msgid "Ponga el anyo:"
 msgstr "Ponga el año:"
 

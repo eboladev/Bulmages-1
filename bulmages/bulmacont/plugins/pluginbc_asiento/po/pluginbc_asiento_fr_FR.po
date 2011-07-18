@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:15+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-06-23 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: French <kde l10n>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 "X-Language: fr_FR\n"
@@ -132,11 +132,11 @@ msgstr "Ecriture de &régularisation"
 msgid "Asiento de a&pertura"
 msgstr "Ecriture d'&ouverture"
 
-#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102 bcasientoview.cpp:1145
+#: bcasientoview.cpp:1147 pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
 msgid "Asiento de apertura"
 msgstr "Ecriture d'ouverture"
 
-#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108 bcasientoview.cpp:1076
+#: bcasientoview.cpp:1078 pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
 msgid "Asiento de cierre"
 msgstr "Ecriture de fermeture"
 
@@ -147,10 +147,6 @@ msgstr "Ecriture de régulation"
 #: bcasientoview.cpp:336
 msgid "Asiento inexistente."
 msgstr "Ecriture inexistante."
-
-#: bcasientoform.cpp:344
-msgid "Asiento no abierto"
-msgstr "Ecriture non ouverte"
 
 #: bcasientolistview.cpp:309
 msgid "Asientos"
@@ -220,8 +216,8 @@ msgstr "Raison"
 msgid "Conciliacion"
 msgstr "Conciliation"
 
-#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
-#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527 ui_bcasientolistbase.h:491
+#: ui_bcasientolistbase.h:494
 msgid "Configurar"
 msgstr "Configurer"
 
@@ -257,7 +253,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: bcasientoview.cpp:953
+#: bcasientoview.cpp:955
 msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
 msgstr "Ecriture de régulation incorrecte. Revoir la configuration"
 
@@ -269,7 +265,7 @@ msgstr "Compte :"
 msgid "Datos del asiento:"
 msgstr "Date de l'écriture :"
 
-#: bcasientosubform.cpp:45 bcasientolistsubform.cpp:42
+#: bcasientolistsubform.cpp:42 bcasientosubform.cpp:45
 msgid "Debe"
 msgstr "Débit"
 
@@ -301,7 +297,7 @@ msgstr "Précision :"
 msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr "Voulez vous créer une nouvelle écriture ici ?"
 
-#: bcasientoform.cpp:427
+#: bcasientoform.cpp:428
 msgid "El asiento se ha guardado correctamente."
 msgstr "Ecriture sauvegardée correctement."
 
@@ -309,7 +305,7 @@ msgstr "Ecriture sauvegardée correctement."
 msgid "Error al crear el asiento"
 msgstr "Erreur de création d'écriture"
 
-#: bcasientoform.cpp:432
+#: bcasientoform.cpp:433
 msgid "Error en el guardardo"
 msgstr "Erreur de sauvegarde"
 
@@ -321,8 +317,8 @@ msgstr "Exporter l'écriture"
 msgid "Extender asiento"
 msgstr "Arborer l'écriture"
 
-#: pluginbc_asiento.cpp:176 bcasientosubform.cpp:40
-#: bcasientolistsubform.cpp:38
+#: bcasientolistsubform.cpp:38 bcasientosubform.cpp:40
+#: pluginbc_asiento.cpp:176
 msgid "Fecha"
 msgstr "Date"
 
@@ -358,9 +354,10 @@ msgstr "Date finale de régulation :"
 msgid "Fecha inicial"
 msgstr "Date initiale "
 
-#: bcasientoview.cpp:912
-msgid "Fecha inicial = '$1', fecha final = '$2'."
-msgstr "Date initiale = '$1', Date finale = '$2'."
+#: bcasientoview.cpp:914
+#, qt-format
+msgid "Fecha inicial = '%1', fecha final = '%2'."
+msgstr ""
 
 #: pluginbc_asiento.cpp:193
 msgid "Fecha inicial ejercicio:"
@@ -392,7 +389,7 @@ msgstr "Il y avait une erreur lors de séparer les écritures"
 msgid "Ha habido un error al ordenar los asientos"
 msgstr "Il y avait une erreur lors de trier les écritures"
 
-#: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
+#: bcasientolistsubform.cpp:43 bcasientosubform.cpp:46
 msgid "Haber"
 msgstr "Crédit"
 
@@ -416,7 +413,7 @@ msgstr "ID canal"
 msgid "Id apunte"
 msgstr "ID NOTE"
 
-#: bcasientosubform.cpp:57 bcasientolistsubform.cpp:46 bcasientoform.cpp:45
+#: bcasientoform.cpp:45 bcasientolistsubform.cpp:46 bcasientosubform.cpp:57
 msgid "Id asiento"
 msgstr "ID de l'écriture"
 
@@ -456,33 +453,29 @@ msgstr "Date initiale postérieure à la date finale."
 msgid "Listado de asientos"
 msgstr "Liste des écritures"
 
-#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
 #: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
+#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
 msgid "Mostrar asiento"
 msgstr "Afficher l'écriture"
 
-#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
 #: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
 msgid "Mostrar extracto (ano)"
 msgstr "Afficher l'extrait (an)"
 
-#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
 #: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
 msgid "Mostrar extracto (dia)"
 msgstr "Afficher l'extrait (jour)"
 
-#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
 #: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
 msgid "Mostrar extracto (mes)"
 msgstr "Afficher l'extrait (mois)"
 
 #: bcasientoview.cpp:529
 msgid "No existe ningun asiento para mostrar"
 msgstr "Il n'y a aucune écriture à afficher"
-
-#: bcasientoform.cpp:351
-msgid "No hay asiento"
-msgstr "Pas d'écriture"
 
 #: bcasientosubform.cpp:42
 msgid "Nombre de la cuenta"
@@ -501,7 +494,7 @@ msgstr "Nouvelle écriture "
 msgid "Num. Factura"
 msgstr "Numéro de facture "
 
-#: bcasientosubform.cpp:55 bcasientolistsubform.cpp:37
+#: bcasientolistsubform.cpp:37 bcasientosubform.cpp:55
 msgid "Orden"
 msgstr "Ordre"
 
@@ -603,8 +596,17 @@ msgstr "et <="
 #~ msgid "Asiento Contable"
 #~ msgstr "Ecriture comptable"
 
+#~ msgid "Asiento no abierto"
+#~ msgstr "Ecriture non ouverte"
+
 #~ msgid "Asientos Inteligentes"
 #~ msgstr "Saisie assistée"
+
+#~ msgid "Fecha inicial = '$1', fecha final = '$2'."
+#~ msgstr "Date initiale = '$1', Date finale = '$2'."
+
+#~ msgid "No hay asiento"
+#~ msgstr "Pas d'écriture"
 
 #~ msgid "Se va a borrar el asiento. Esta seguro?"
 #~ msgstr "L'écriture va être fermée. Confirmer ?"

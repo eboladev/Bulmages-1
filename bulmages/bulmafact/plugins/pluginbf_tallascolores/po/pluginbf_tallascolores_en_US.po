@@ -8,49 +8,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:56+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_listtallasbase.h:118 ui_listcoloresbase.h:118
+#: ui_listcoloresbase.h:118 ui_listtallasbase.h:118
 msgid "&Aceptar"
 msgstr "&Accept"
 
-#: ui_listtallasbase.h:119 ui_listcoloresbase.h:119
+#: ui_listcoloresbase.h:119 ui_listtallasbase.h:119
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: plugin_tallascolores.cpp:78
+#: pluginbf_tallascolores.cpp:79
 #, fuzzy
 msgid "&Colores"
 msgstr "A&uthors"
 
-#: plugin_tallascolores.cpp:71
+#: pluginbf_tallascolores.cpp:72
 #, fuzzy
 msgid "&Tallas"
 msgstr "Total rows:"
 
-#: plugin_tallascolores.cpp:66
+#: pluginbf_tallascolores.cpp:67
 msgid "&Tallas y colores"
 msgstr ""
 
-#: plugin_tallascolores.cpp:132
+#: pluginbf_tallascolores.cpp:133
 #, fuzzy
 msgid "Alias"
 msgstr "Apply"
 
-#: plugin_tallascolores.cpp:346 plugin_tallascolores.cpp:368
-#: plugin_tallascolores.cpp:391 plugin_tallascolores.cpp:420
+#: pluginbf_tallascolores.cpp:348 pluginbf_tallascolores.cpp:370
+#: pluginbf_tallascolores.cpp:393 pluginbf_tallascolores.cpp:422
 #, fuzzy
 msgid "Color"
 msgstr "Value"
 
-#: listcoloresview.cpp:49 plugin_tallascolores.cpp:79
-#: plugin_tallascolores.cpp:80 ui_listcoloresbase.h:117
+#: listcoloresview.cpp:49 pluginbf_tallascolores.cpp:80
+#: pluginbf_tallascolores.cpp:81 ui_listcoloresbase.h:117
 msgid "Colores"
 msgstr ""
 
@@ -59,11 +60,11 @@ msgstr ""
 msgid "Error al guardar los colores"
 msgstr "Error when creating the client"
 
-#: plugin_tallascolores.cpp:190
-msgid "Hubo un error al guardar los alias"
+#: pluginbf_tallascolores.cpp:191 pluginbf_tallascolores.cpp:192
+msgid "Error al guardar."
 msgstr ""
 
-#: plugin_tallascolores.cpp:133
+#: pluginbf_tallascolores.cpp:134
 #, fuzzy
 msgid "Id Articulo"
 msgstr "Id article"
@@ -83,16 +84,16 @@ msgstr "Id rough draft"
 msgid "Nombre Color"
 msgstr "Complete name:"
 
-#: plugin_tallascolores.cpp:138 plugin_tallascolores.cpp:348
-#: plugin_tallascolores.cpp:370 plugin_tallascolores.cpp:393
-#: plugin_tallascolores.cpp:422
+#: pluginbf_tallascolores.cpp:139 pluginbf_tallascolores.cpp:350
+#: pluginbf_tallascolores.cpp:372 pluginbf_tallascolores.cpp:395
+#: pluginbf_tallascolores.cpp:424
 #, fuzzy
 msgid "Nombre color"
 msgstr "Complete name:"
 
-#: plugin_tallascolores.cpp:139 plugin_tallascolores.cpp:349
-#: plugin_tallascolores.cpp:371 plugin_tallascolores.cpp:394
-#: plugin_tallascolores.cpp:423 listtallasview.cpp:101
+#: pluginbf_tallascolores.cpp:140 pluginbf_tallascolores.cpp:351
+#: pluginbf_tallascolores.cpp:373 pluginbf_tallascolores.cpp:396
+#: pluginbf_tallascolores.cpp:425 listtallasview.cpp:101
 #, fuzzy
 msgid "Nombre talla"
 msgstr "Name warehouse"
@@ -101,24 +102,24 @@ msgstr "Name warehouse"
 msgid "RGB Color"
 msgstr ""
 
-#: plugin_tallascolores.cpp:135 plugin_tallascolores.cpp:347
-#: plugin_tallascolores.cpp:369 plugin_tallascolores.cpp:392
-#: plugin_tallascolores.cpp:421
+#: pluginbf_tallascolores.cpp:136 pluginbf_tallascolores.cpp:349
+#: pluginbf_tallascolores.cpp:371 pluginbf_tallascolores.cpp:394
+#: pluginbf_tallascolores.cpp:423
 #, fuzzy
 msgid "Talla"
 msgstr "Total"
 
-#: plugin_tallascolores.cpp:72 plugin_tallascolores.cpp:73
+#: pluginbf_tallascolores.cpp:73 pluginbf_tallascolores.cpp:74
 #: listtallasview.cpp:49 ui_listtallasbase.h:117
 #, fuzzy
 msgid "Tallas"
 msgstr "Total rows:"
 
-#: plugin_tallascolores.cpp:150
+#: pluginbf_tallascolores.cpp:151
 msgid "Tallas y colores"
 msgstr ""
 
-#: plugin_tallascolores.cpp:134
+#: pluginbf_tallascolores.cpp:135
 #, fuzzy
 msgid "color"
 msgstr "Value"

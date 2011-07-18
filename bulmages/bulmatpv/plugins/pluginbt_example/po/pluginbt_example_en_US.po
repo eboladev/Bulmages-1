@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-04 22:50+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <es@li.org>\n"
@@ -44,6 +44,6 @@ msgstr "Form"
 msgid "Hazme Click!"
 msgstr "Click me!"
 
-#: pluginbt_example.cpp:51 pluginbt_example.cpp:57
+#: pluginbt_example.cpp:51
 msgid "Punto de entrada de PluginBt_Example"
 msgstr "Entry point for PluginBt_example"

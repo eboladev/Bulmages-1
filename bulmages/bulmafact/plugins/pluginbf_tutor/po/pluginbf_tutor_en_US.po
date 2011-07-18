@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:03+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,7 +41,7 @@ msgstr ""
 msgid "&Padres/Socios"
 msgstr ""
 
-#: tutoreslist.cpp:279
+#: tutoreslist.cpp:275
 msgid "1er Apellido"
 msgstr ""
 
@@ -52,7 +53,7 @@ msgstr ""
 msgid "1er apellido:"
 msgstr ""
 
-#: tutoreslist.cpp:280
+#: tutoreslist.cpp:276
 msgid "2o Apellido"
 msgstr ""
 
@@ -104,7 +105,7 @@ msgstr ""
 "#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
 "Erase"
 
-#: tutoreslist.cpp:230 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
+#: tutoreslist.cpp:226 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
 #, fuzzy
 msgid "Borrar Tutor"
 msgstr ""
@@ -117,7 +118,7 @@ msgstr ""
 msgid "Buscar:"
 msgstr "Look for:"
 
-#: tutoreslist.cpp:282
+#: tutoreslist.cpp:278
 msgid "C.I.F."
 msgstr "C.I.F."
 
@@ -125,11 +126,11 @@ msgstr "C.I.F."
 msgid "Cantidad"
 msgstr "Amount"
 
-#: tutoreslist.cpp:281
+#: tutoreslist.cpp:277
 msgid "Codigo"
 msgstr "Code"
 
-#: tutoreslist.cpp:287
+#: tutoreslist.cpp:283
 msgid "Codigo postal"
 msgstr "Postal Code"
 
@@ -137,7 +138,7 @@ msgstr "Postal Code"
 msgid "Codigo postal:"
 msgstr "Postal code:"
 
-#: tutoreslist.cpp:295
+#: tutoreslist.cpp:291
 #, fuzzy
 msgid "Comentarios"
 msgstr ""
@@ -158,7 +159,7 @@ msgstr "Form listing"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_tutoreslistbase.h:268 ui_tutorbase.h:562
+#: ui_tutorbase.h:562 ui_tutoreslistbase.h:268
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -186,25 +187,25 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: tutoreslist.cpp:213
+#: tutoreslist.cpp:209
 #, fuzzy
 msgid "Debe seleccionar una fila primero"
 msgstr "It must select a family"
 
-#: tutoreslist.cpp:171
+#: tutoreslist.cpp:167
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "It must select a family"
 
-#: tutoreslist.cpp:285
+#: tutoreslist.cpp:281
 msgid "Direccion"
 msgstr "Address"
 
-#: tutoreslist.cpp:291
+#: tutoreslist.cpp:287
 msgid "Direccion URL"
 msgstr "Direction URL"
 
-#: tutoreslist.cpp:290
+#: tutoreslist.cpp:286
 msgid "Direccion de correo electronica"
 msgstr "Direction of electronic mail"
 
@@ -217,20 +218,20 @@ msgstr "Address:"
 msgid "E-Mail:"
 msgstr "E-mail:"
 
-#: tutoreslist.cpp:229 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
+#: tutoreslist.cpp:225 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
 #, fuzzy
 msgid "Editar Tutor"
 msgstr "Publish"
 
-#: pluginbf_tutor.cpp:377 pluginbf_tutor.cpp:394
+#: pluginbf_tutor.cpp:372 pluginbf_tutor.cpp:389
 msgid "Editar tutor"
 msgstr ""
 
-#: tutoreslist.cpp:292
+#: tutoreslist.cpp:288
 msgid "Empresa"
 msgstr "Company"
 
-#: tutoreslist.cpp:185
+#: tutoreslist.cpp:181
 #, fuzzy
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error when erasing a client"
@@ -252,11 +253,11 @@ msgstr "F5"
 msgid "Fecha"
 msgstr "Date"
 
-#: tutoreslist.cpp:293
+#: tutoreslist.cpp:289
 msgid "Fecha de alta del cliente"
 msgstr "Date of discharge of the client"
 
-#: tutoreslist.cpp:294
+#: tutoreslist.cpp:290
 msgid "Fecha de baja del cliente"
 msgstr "Date of loss of the client"
 
@@ -293,7 +294,7 @@ msgstr ""
 msgid "ID Tutor"
 msgstr ""
 
-#: tutoreslist.cpp:275
+#: tutoreslist.cpp:271
 msgid "ID padre"
 msgstr ""
 
@@ -324,11 +325,11 @@ msgstr "Print listing"
 msgid "NIF:"
 msgstr ""
 
-#: tutoreslist.cpp:278
+#: tutoreslist.cpp:274
 msgid "Nombre"
 msgstr "Name"
 
-#: tutoreslist.cpp:283
+#: tutoreslist.cpp:279
 msgid "Nombre alternativo del cliente"
 msgstr "Alternative name of the client"
 
@@ -350,7 +351,7 @@ msgstr "Name:"
 msgid "Nuevo Padre/Socio"
 msgstr ""
 
-#: pluginbf_tutor.cpp:538 pluginbf_tutor.cpp:539 ui_tutoreslistbase.h:246
+#: pluginbf_tutor.cpp:533 pluginbf_tutor.cpp:534 ui_tutoreslistbase.h:246
 #: ui_tutoreslistbase.h:249
 #, fuzzy
 msgid "Nuevo Tutor"
@@ -360,16 +361,16 @@ msgstr "New worker"
 msgid "Nuevo padre/socio"
 msgstr ""
 
-#: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:400
+#: pluginbf_tutor.cpp:370 pluginbf_tutor.cpp:395
 msgid "Nuevo tutor"
 msgstr ""
 
-#: tutoreslist.cpp:277
+#: tutoreslist.cpp:273
 #, fuzzy
 msgid "Numero Socio"
 msgstr "New"
 
-#: tutoreslist.cpp:284
+#: tutoreslist.cpp:280
 msgid "Numero cuenta corriente"
 msgstr "Number current account"
 
@@ -380,11 +381,11 @@ msgstr "Number current account"
 msgid "Numero de Socio"
 msgstr "Number of quotas"
 
-#: tutoreslist.cpp:289
+#: tutoreslist.cpp:285
 msgid "Numero de fax"
 msgstr "Number of fax"
 
-#: tutoreslist.cpp:288
+#: tutoreslist.cpp:284
 msgid "Numero de telefono"
 msgstr "Number of telephone"
 
@@ -401,7 +402,7 @@ msgstr "Other data:"
 msgid "Padre"
 msgstr "Father"
 
-#: tutoreslist.cpp:155 ui_tutoreslistbase.h:243
+#: tutoreslist.cpp:151 ui_tutoreslistbase.h:243
 msgid "Padres"
 msgstr ""
 
@@ -413,7 +414,7 @@ msgstr ""
 msgid "Pagado"
 msgstr "Paid"
 
-#: tutoreslist.cpp:286
+#: tutoreslist.cpp:282
 msgid "Poblacion"
 msgstr "Population"
 
@@ -437,11 +438,11 @@ msgstr "Province:"
 msgid "Recibos"
 msgstr ""
 
-#: pluginbf_tutor.cpp:547 pluginbf_tutor.cpp:548
+#: pluginbf_tutor.cpp:542 pluginbf_tutor.cpp:543
 msgid "Seleccionar Tutor"
 msgstr ""
 
-#: pluginbf_tutor.cpp:379 pluginbf_tutor.cpp:398
+#: pluginbf_tutor.cpp:374 pluginbf_tutor.cpp:393
 msgid "Seleccionar tutor"
 msgstr ""
 
@@ -459,5 +460,12 @@ msgid "Telefono movil:"
 msgstr "Telephone mobil:"
 
 #: tutorview.cpp:185
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo.\n"
+"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"You have to save the document before being able to print it.\n"
+"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo."

@@ -4,15 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-
 
 #: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
 msgid "% Descuento"
@@ -100,7 +99,7 @@ msgstr "Quantitat"
 msgid "Cliente"
 msgstr "Client"
 
-#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
+#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -172,8 +171,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar una linea"
 
-#: ticketclienteview.cpp:80 bfclientealbaransubform.cpp:49
-#: ticketclientelist.cpp:425
+#: bfclientealbaransubform.cpp:49 ticketclientelist.cpp:425
+#: ticketclienteview.cpp:80
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -303,7 +302,7 @@ msgstr "ID Forma de pagament"
 msgid "ID trabajador"
 msgstr "ID treballador"
 
-#: ticketclienteview.cpp:68 bfclientealbaransubform.cpp:57
+#: bfclientealbaransubform.cpp:57 ticketclienteview.cpp:68
 #: bfclientealbarandescuentosubform.cpp:44
 msgid "Id albaran"
 msgstr "ID albarà"
@@ -342,6 +341,10 @@ msgstr "Mostrar/ocultar capçalera"
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
+#: bfclientealbaransubform.cpp:48
+msgid "No linea"
+msgstr ""
+
 #: bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
 msgstr "Nom d'article:"
@@ -359,18 +362,14 @@ msgstr "Esborra albarà"
 msgid "Nuevo ticket a cliente"
 msgstr "Nou ticket a client"
 
-#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
+#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
 #, fuzzy
 msgid "Numero de albaran"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: ui_ticketclientebase.h:766
 msgid "Numero de ticket:"
 msgstr ""
-
-#: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
-msgstr "Nº línia"
 
 #: bfclientealbaransubform.cpp:58
 msgid "Orden"
@@ -379,27 +378,27 @@ msgstr "Ordre"
 #: bfclientealbaransubform.cpp:52
 #, fuzzy
 msgid "P.V.P."
-msgstr ""
+msgstr "..."
 
 #: ticketclienteview.cpp:73
 #, fuzzy
 msgid "Persona de contacto"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: ui_ticketclientebase.h:770
 #, fuzzy
 msgid "Persona de contacto:"
-msgstr ""
+msgstr "Compte d'actiu:"
 
 #: ticketclienteview.cpp:79 ui_ticketclientebase.h:767
 #, fuzzy
 msgid "Procesado"
-msgstr ""
+msgstr "Propietari"
 
 #: ui_ticketclientebase.h:786
 #, fuzzy
 msgid "R.E.:"
-msgstr ""
+msgstr "C.P.:"
 
 #: ticketclienteview.cpp:81
 msgid "Referencia"
@@ -463,7 +462,7 @@ msgstr ""
 #: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
 #, fuzzy
 msgid "Tiene que seleccionar un cliente"
-msgstr ""
+msgstr "Ha de seleccionar un element"
 
 #: ticketclientelist.cpp:207
 msgid "Todos los tickets"
@@ -493,3 +492,5 @@ msgstr "Treballador"
 msgid "Trabajador:"
 msgstr "Treballador:"
 
+#~ msgid "Nº linea"
+#~ msgstr "Nº línia"

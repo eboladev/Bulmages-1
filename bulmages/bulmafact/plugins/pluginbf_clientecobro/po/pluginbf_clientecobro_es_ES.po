@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 11:14+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: ui_cobrobase.h:416
 msgid "&Aceptar"
@@ -41,11 +41,11 @@ msgstr ""
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: cobroslist.cpp:342
+#: cobroslist.cpp:340
 msgid "Apellidos del trabajador"
 msgstr "Apellidos del trabajador"
 
-#: cobroslist.cpp:272 ui_cobroslistbase.h:402 ui_cobroslistbase.h:405
+#: cobroslist.cpp:270 ui_cobroslistbase.h:402 ui_cobroslistbase.h:405
 #: ui_cobrobase.h:393 ui_cobrobase.h:396 ui_cobrobase.h:401 ui_cobrobase.h:404
 msgid "Borrar cobro"
 msgstr "Borrar cobro"
@@ -54,11 +54,11 @@ msgstr "Borrar cobro"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: cobroslist.cpp:330
+#: cobroslist.cpp:328
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: cobroslist.cpp:335
+#: cobroslist.cpp:333
 msgid "Cantidad"
 msgstr "Cantidad"
 
@@ -78,7 +78,7 @@ msgstr "Cobro"
 msgid "Cobro real"
 msgstr ""
 
-#: cobroslist.cpp:198 ui_cobroslistbase.h:382
+#: cobroslist.cpp:196 ui_cobroslistbase.h:382
 msgid "Cobros a clientes"
 msgstr "Cobros a clientes"
 
@@ -86,7 +86,7 @@ msgstr "Cobros a clientes"
 msgid "Cobros de clientes"
 msgstr "Cobros de clientes"
 
-#: cobroslist.cpp:339
+#: cobroslist.cpp:337
 msgid "Comentarios"
 msgstr "Comentarios"
 
@@ -126,11 +126,11 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: cobroslist.cpp:255
+#: cobroslist.cpp:253
 msgid "Debe seleccionar una fila primero"
 msgstr "Debe seleccionar una fila primero"
 
-#: cobroslist.cpp:214
+#: cobroslist.cpp:212
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
@@ -142,15 +142,15 @@ msgstr "Descripcion del cobro"
 msgid "Descripcion del cobro:"
 msgstr "Descripcion del cobro:"
 
-#: cobroslist.cpp:332
+#: cobroslist.cpp:330
 msgid "Direccion de correo electronico"
 msgstr "Direccion de correo electronico"
 
-#: cobroslist.cpp:271 ui_cobroslistbase.h:394 ui_cobroslistbase.h:397
+#: cobroslist.cpp:269 ui_cobroslistbase.h:394 ui_cobroslistbase.h:397
 msgid "Editar cobro"
 msgstr "Editar cobro"
 
-#: cobroslist.cpp:228
+#: cobroslist.cpp:226
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
@@ -162,11 +162,11 @@ msgstr "Error al crear el cobro"
 msgid "F5"
 msgstr "F5"
 
-#: cobroslist.cpp:333
+#: cobroslist.cpp:331
 msgid "Fecha de cobro"
 msgstr "Fecha de cobro"
 
-#: cobroslist.cpp:334 cobroview.cpp:67
+#: cobroslist.cpp:332 cobroview.cpp:67
 msgid "Fecha de vencimiento"
 msgstr "Fecha de vencimiento"
 
@@ -194,7 +194,7 @@ msgstr "Fecha inicial:"
 msgid "Filtrar cobros"
 msgstr "Filtrar cobros"
 
-#: cobroslist.cpp:336 cobroview.cpp:71
+#: cobroslist.cpp:334 cobroview.cpp:71
 msgid "Forma de Pago"
 msgstr "Forma de pago"
 
@@ -206,15 +206,15 @@ msgstr "Forma de pago:"
 msgid "Guardar cobro"
 msgstr "Guardar cobro"
 
-#: cobroslist.cpp:328
+#: cobroslist.cpp:326
 msgid "ID cliente"
 msgstr "ID cliente"
 
-#: cobroslist.cpp:327
+#: cobroslist.cpp:325
 msgid "ID cobro"
 msgstr "ID cobro"
 
-#: cobroslist.cpp:340
+#: cobroslist.cpp:338
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
@@ -226,11 +226,11 @@ msgstr "Id cobro"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: cobroslist.cpp:329
+#: cobroslist.cpp:327
 msgid "Nombre"
 msgstr "Nombre"
 
-#: cobroslist.cpp:341
+#: cobroslist.cpp:339
 msgid "Nombre del trabajador"
 msgstr "Nombre del trabajador"
 
@@ -246,7 +246,7 @@ msgstr "Nuevo cobro a cliente"
 msgid "Nuevo cobro de cliente"
 msgstr "Nuevo cobro de cliente"
 
-#: cobroslist.cpp:331
+#: cobroslist.cpp:329
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
@@ -254,7 +254,7 @@ msgstr "Numero de telefono"
 msgid "Prevision"
 msgstr "Prevision"
 
-#: cobroslist.cpp:338
+#: cobroslist.cpp:336
 msgid "Prevision de cobro"
 msgstr "Prevision de cobro"
 
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Referencia"
 msgstr "Referencia"
 
-#: cobroslist.cpp:337
+#: cobroslist.cpp:335
 msgid "Referencia del cobro"
 msgstr "Referencia del cobro"
 

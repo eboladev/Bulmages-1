@@ -58,7 +58,7 @@ int entryPoint ( QMainWindow *bcont )
 int BlForm_load ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
-    EQToolButton *eq = ficha->findChild<EQToolButton *>("BotonArchDoc");
+    ADQToolButton *eq = ficha->findChild<ADQToolButton *>("BotonArchDoc");
     eq->hazMenu();
     return 0;
     
@@ -103,7 +103,7 @@ int BlForm_BlForm ( BlForm *l )
 int BlForm_loadSpecs ( BlForm *l )
 {
     BL_FUNC_DEBUG
-    new EQToolButton ( l );
+    new ADQToolButton ( l );
     
     return 0;
 }

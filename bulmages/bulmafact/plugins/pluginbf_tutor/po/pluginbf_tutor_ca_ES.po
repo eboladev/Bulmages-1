@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-03 07:17+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-07-03 09:03+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
@@ -137,7 +137,7 @@ msgstr "Configurar llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_tutoreslistbase.h:268 ui_tutorbase.h:562
+#: ui_tutorbase.h:562 ui_tutoreslistbase.h:268
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -197,7 +197,7 @@ msgstr "E-mail:"
 msgid "Editar Tutor"
 msgstr "Edita pare/mare/tutor"
 
-#: pluginbf_tutor.cpp:373 pluginbf_tutor.cpp:390
+#: pluginbf_tutor.cpp:372 pluginbf_tutor.cpp:389
 msgid "Editar tutor"
 msgstr "Edita pare/mare/tutor"
 
@@ -313,7 +313,7 @@ msgstr "Nom:"
 msgid "Nuevo Padre/Socio"
 msgstr "Nou pare/mare/tutor"
 
-#: pluginbf_tutor.cpp:534 pluginbf_tutor.cpp:535 ui_tutoreslistbase.h:246
+#: pluginbf_tutor.cpp:533 pluginbf_tutor.cpp:534 ui_tutoreslistbase.h:246
 #: ui_tutoreslistbase.h:249
 msgid "Nuevo Tutor"
 msgstr "Nou pare/mare/tutor"
@@ -322,7 +322,7 @@ msgstr "Nou pare/mare/tutor"
 msgid "Nuevo padre/socio"
 msgstr "Nou pare/mare/tutor"
 
-#: pluginbf_tutor.cpp:371 pluginbf_tutor.cpp:396
+#: pluginbf_tutor.cpp:370 pluginbf_tutor.cpp:395
 msgid "Nuevo tutor"
 msgstr "Nou pare/mare/tutor"
 
@@ -396,11 +396,11 @@ msgstr "Província"
 msgid "Recibos"
 msgstr "Rebuts"
 
-#: pluginbf_tutor.cpp:543 pluginbf_tutor.cpp:544
+#: pluginbf_tutor.cpp:542 pluginbf_tutor.cpp:543
 msgid "Seleccionar Tutor"
 msgstr "Selecona Pare/Mare/Tutor"
 
-#: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:394
+#: pluginbf_tutor.cpp:374 pluginbf_tutor.cpp:393
 msgid "Seleccionar tutor"
 msgstr "Selecciona pare/mare/tutor"
 

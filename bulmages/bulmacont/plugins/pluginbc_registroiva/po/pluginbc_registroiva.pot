@@ -8,129 +8,161 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:35+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbc_registroiva.cpp:55
-msgid "&Iva"
+#: bcmodelo300imprimir2ps.cpp:115 bcmodelo300imprimir2ps.cpp:154
+msgid "Formulario 300"
 msgstr ""
 
-#: pluginbc_registroiva.cpp:59
-msgid "&Registro de IVA"
+#: bcmodelo300imprimir2ps.cpp:116
+msgid ""
+"Aviso: El numero de cuenta bancario introducido\n"
+"no se corresponde con un CCC correcto."
 msgstr ""
 
-#: pluginbc_registroiva.cpp:60 pluginbc_registroiva.cpp:61
-#: regivaqtoolbutton.cpp:70 regivaqtoolbutton.cpp:71
-msgid "Registro de IVA"
+#: bcmodelo300imprimir2ps.cpp:118
+msgid "Generar de todas formas"
 msgstr ""
 
-#: pluginbc_registroiva.cpp:65
-msgid "&Cobros y pagos"
+#: bcmodelo300imprimir2ps.cpp:118
+msgid "Volver"
 msgstr ""
 
-#: pluginbc_registroiva.cpp:66 pluginbc_registroiva.cpp:67
-msgid "Cobros y pagos"
+#: bcmodelo300imprimir2ps.cpp:155
+msgid ""
+"Lo siento, no encuentro el formulario original en pdf.\n"
+"Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
+"/usr/share/bulmages/formularios/ o en\n"
+"~/.bulmages/formularios/."
 msgstr ""
 
-#: pluginbc_registroiva.cpp:71
-msgid "&Modelo 347"
+#: bcmodelo300imprimir2ps.cpp:159 ui_registroivabase.h:627
+msgid "&Aceptar"
 msgstr ""
 
-#: pluginbc_registroiva.cpp:72 pluginbc_registroiva.cpp:73
-msgid "Modelo 347"
+#: bcmodelo300imprimir2ps.cpp:169
+msgid "Creando formulario"
 msgstr ""
 
-#: pluginbc_registroiva.cpp:209 regivaqtoolbutton.cpp:96
-msgid "Debe seleccionar un apunte"
+#: bcmodelo300imprimir2ps.cpp:169 ui_registroivabase.h:629
+msgid "&Cancelar"
 msgstr ""
 
-#: cobropagoview.cpp:43 registroivaview.cpp:88
-msgid "idprevcobro"
+#: bcmodelo300imprimir2ps.cpp:196
+msgid "Error al abrir el fichero."
 msgstr ""
 
-#: cobropagoview.cpp:44 registroivaview.cpp:89
-msgid "fprevistaprevcobro"
+#: bcmodelo300imprimir2ps.cpp:262
+msgid "Error, no se ha abierto el archivo."
 msgstr ""
 
-#: cobropagoview.cpp:45 registroivaview.cpp:90
-msgid "fcobroprevcobro"
+#: listregistroivaview.cpp:50 listregistroivaview.cpp:74
+msgid "Id"
 msgstr ""
 
-#: cobropagoview.cpp:46 registroivaview.cpp:102
-msgid "idctacliente"
+#: listregistroivaview.cpp:51
+msgid "Concepto contable"
 msgstr ""
 
-#: cobropagoview.cpp:47 registroivaview.cpp:91
-msgid "idfpago"
-msgstr ""
-
-#: cobropagoview.cpp:48 registroivaview.cpp:77 registroivaview.cpp:92
-#: listregistroivaview.cpp:52 listregistroivaview.cpp:76
+#: listregistroivaview.cpp:52 listregistroivaview.cpp:76 cobropagoview.cpp:48
+#: registroivaview.cpp:77 registroivaview.cpp:92
 msgid "idcuenta"
 msgstr ""
 
-#: cobropagoview.cpp:49 registroivaview.cpp:93 listregistroivaview.cpp:67
-#: listregistroivaview.cpp:91
+#: listregistroivaview.cpp:53 registroiva.cpp:49
+msgid "IVA"
+msgstr ""
+
+#: listregistroivaview.cpp:54
+msgid "Fecha de factura"
+msgstr ""
+
+#: listregistroivaview.cpp:55 listregistroivaview.cpp:79
+msgid "descripcioncuenta"
+msgstr ""
+
+#: listregistroivaview.cpp:56 listregistroivaview.cpp:80
+#: registroivaview.cpp:101
+msgid "descripcion"
+msgstr ""
+
+#: listregistroivaview.cpp:57 listregistroivaview.cpp:81
+msgid "Debe"
+msgstr ""
+
+#: listregistroivaview.cpp:58 listregistroivaview.cpp:82
+msgid "Haber"
+msgstr ""
+
+#: listregistroivaview.cpp:59 listregistroivaview.cpp:83 registroiva.cpp:47
+msgid "Contrapartida"
+msgstr ""
+
+#: listregistroivaview.cpp:60 listregistroivaview.cpp:84
+msgid "Comentario"
+msgstr ""
+
+#: listregistroivaview.cpp:61 listregistroivaview.cpp:85
+msgid "ID Canal"
+msgstr ""
+
+#: listregistroivaview.cpp:62 listregistroivaview.cpp:86
+msgid "Conciliacion"
+msgstr ""
+
+#: listregistroivaview.cpp:63 listregistroivaview.cpp:87
+msgid "idc_coste"
+msgstr ""
+
+#: listregistroivaview.cpp:64 listregistroivaview.cpp:88
+msgid "idapunte"
+msgstr ""
+
+#: listregistroivaview.cpp:65 listregistroivaview.cpp:89
+#: registroivaview.cpp:76
+msgid "idtipoiva"
+msgstr ""
+
+#: listregistroivaview.cpp:66 listregistroivaview.cpp:90
+msgid "orden"
+msgstr ""
+
+#: listregistroivaview.cpp:67 listregistroivaview.cpp:91 cobropagoview.cpp:49
+#: registroivaview.cpp:93
 msgid "idasiento"
 msgstr ""
 
-#: cobropagoview.cpp:50 registroivaview.cpp:94
-msgid "cantidadprevistaprevcobro"
+#: listregistroivaview.cpp:75
+msgid "Concepto Contable"
 msgstr ""
 
-#: cobropagoview.cpp:51 registroivaview.cpp:95
-msgid "cantidadprevcobro"
+#: listregistroivaview.cpp:77 registroivaview.cpp:78 registroivaview.cpp:99
+msgid "codigo"
 msgstr ""
 
-#: cobropagoview.cpp:52 registroivaview.cpp:81 registroivaview.cpp:96
-msgid "idregistroiva"
+#: listregistroivaview.cpp:78 registroivaview.cpp:79 registroivaview.cpp:100
+#: registroivaview.cpp:106
+msgid "tipocuenta"
 msgstr ""
 
-#: cobropagoview.cpp:53 registroivaview.cpp:97
-msgid "tipoprevcobro"
+#: listregistroivaview.cpp:98 listregistroivaview.cpp:107
+#: registroivaview.cpp:80
+msgid "nombretipoiva"
 msgstr ""
 
-#: cobropagoview.cpp:54 registroivaview.cpp:98
-msgid "docprevcobro"
+#: listregistroivaview.cpp:99 listregistroivaview.cpp:108
+msgid "tivaiva"
 msgstr ""
 
-#: cobropagoview.cpp:58
-msgid "Cuenta:"
-msgstr ""
-
-#: listlinprevcobroview.cpp:189 listlinprevcobroview.cpp:274
-#: listlinprevcobroview.cpp:468
-msgid "Cobro"
-msgstr ""
-
-#: listlinprevcobroview.cpp:191 listlinprevcobroview.cpp:275
-#: listlinprevcobroview.cpp:471
-msgid "Pago"
-msgstr ""
-
-#: listlinprevcobroview.cpp:269 listivaview.cpp:173
-msgid "Borrar linea"
-msgstr ""
-
-#: listlinprevcobroview.cpp:270
-msgid "Generar asiento de cobro/pago"
-msgstr ""
-
-#: listlinprevcobroview.cpp:271
-msgid "Desvincular asiento"
-msgstr ""
-
-#: listlinprevcobroview.cpp:272
-msgid "Ver asiento"
-msgstr ""
-
-#: listlinprevcobroview.cpp:273
-msgid "Ver factura"
+#: listregistroivaview.cpp:100 listregistroivaview.cpp:109
+msgid "tbaseiva"
 msgstr ""
 
 #: registroiva.cpp:43
@@ -141,16 +173,8 @@ msgstr ""
 msgid "Identificador"
 msgstr ""
 
-#: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
-msgid "Contrapartida"
-msgstr ""
-
 #: registroiva.cpp:48
 msgid "Base Imponible"
-msgstr ""
-
-#: registroiva.cpp:49 listregistroivaview.cpp:53
-msgid "IVA"
 msgstr ""
 
 #: registroiva.cpp:50
@@ -205,158 +229,29 @@ msgstr ""
 msgid "Serie"
 msgstr ""
 
-#: registroivaview.cpp:60
-msgid "Cuenta Cliente/Proveedor:"
+#: registroiva.cpp:99
+msgid "Registro borrado correctamente."
 msgstr ""
 
-#: registroivaview.cpp:75
-msgid "idiva"
+#: registroiva.cpp:103
+msgid "Error. No se pudo borrar el registro de IVA."
 msgstr ""
 
-#: registroivaview.cpp:76 listregistroivaview.cpp:65
-#: listregistroivaview.cpp:89
-msgid "idtipoiva"
+#: registroiva.cpp:301
+msgid "Error en la transaccion."
 msgstr ""
 
-#: registroivaview.cpp:78 registroivaview.cpp:99 listregistroivaview.cpp:77
-msgid "codigo"
+#: registroiva.cpp:372 registroiva.cpp:473
+msgid "Error en la busqueda."
 msgstr ""
 
-#: registroivaview.cpp:79 registroivaview.cpp:100 registroivaview.cpp:106
-#: listregistroivaview.cpp:78
-msgid "tipocuenta"
+#: registroiva.cpp:451 registroiva.cpp:457
+#, qt-format
+msgid "Error en la consulta: '%1'."
 msgstr ""
 
-#: registroivaview.cpp:80 listregistroivaview.cpp:98
-#: listregistroivaview.cpp:107
-msgid "nombretipoiva"
-msgstr ""
-
-#: registroivaview.cpp:82
-msgid "baseiva"
-msgstr ""
-
-#: registroivaview.cpp:83
-msgid "ivaiva"
-msgstr ""
-
-#: registroivaview.cpp:101 listregistroivaview.cpp:56
-#: listregistroivaview.cpp:80
-msgid "descripcion"
-msgstr ""
-
-#: registroivaview.cpp:103
-msgid "codigoctacliente"
-msgstr ""
-
-#: registroivaview.cpp:104
-msgid "nomctacliente"
-msgstr ""
-
-#: registroivaview.cpp:105
-msgid "tipoctacliente"
-msgstr ""
-
-#: registroivaview.cpp:192
-msgid "Registro factura"
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:115 bcmodelo300imprimir2ps.cpp:154
-msgid "Formulario 300"
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:116
-msgid ""
-"Aviso: El numero de cuenta bancario introducido\n"
-"no se corresponde con un CCC correcto."
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:118
-msgid "Generar de todas formas"
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:118
-msgid "Volver"
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:155
-msgid ""
-"Lo siento, no encuentro el formulario original en pdf.\n"
-"Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
-"/usr/share/bulmages/formularios/ o en\n"
-"~/.bulmages/formularios/."
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:159 ui_registroivabase.h:627
-msgid "&Aceptar"
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:169
-msgid "Creando formulario"
-msgstr ""
-
-#: bcmodelo300imprimir2ps.cpp:169 ui_registroivabase.h:629
-msgid "&Cancelar"
-msgstr ""
-
-#: listregistroivaview.cpp:50 listregistroivaview.cpp:74
-msgid "Id"
-msgstr ""
-
-#: listregistroivaview.cpp:51
-msgid "Concepto contable"
-msgstr ""
-
-#: listregistroivaview.cpp:54
-msgid "Fecha de factura"
-msgstr ""
-
-#: listregistroivaview.cpp:55 listregistroivaview.cpp:79
-msgid "descripcioncuenta"
-msgstr ""
-
-#: listregistroivaview.cpp:57 listregistroivaview.cpp:81
-msgid "Debe"
-msgstr ""
-
-#: listregistroivaview.cpp:58 listregistroivaview.cpp:82
-msgid "Haber"
-msgstr ""
-
-#: listregistroivaview.cpp:60 listregistroivaview.cpp:84
-msgid "Comentario"
-msgstr ""
-
-#: listregistroivaview.cpp:61 listregistroivaview.cpp:85
-msgid "ID Canal"
-msgstr ""
-
-#: listregistroivaview.cpp:62 listregistroivaview.cpp:86
-msgid "Conciliacion"
-msgstr ""
-
-#: listregistroivaview.cpp:63 listregistroivaview.cpp:87
-msgid "idc_coste"
-msgstr ""
-
-#: listregistroivaview.cpp:64 listregistroivaview.cpp:88
-msgid "idapunte"
-msgstr ""
-
-#: listregistroivaview.cpp:66 listregistroivaview.cpp:90
-msgid "orden"
-msgstr ""
-
-#: listregistroivaview.cpp:75
-msgid "Concepto Contable"
-msgstr ""
-
-#: listregistroivaview.cpp:99 listregistroivaview.cpp:108
-msgid "tivaiva"
-msgstr ""
-
-#: listregistroivaview.cpp:100 listregistroivaview.cpp:109
-msgid "tbaseiva"
+#: registroiva.cpp:468
+msgid "Limpiamos la base de datos."
 msgstr ""
 
 #: listivaview.cpp:93
@@ -389,6 +284,259 @@ msgstr ""
 
 #: listivaview.cpp:93
 msgid "COL_IVAIVA"
+msgstr ""
+
+#: listivaview.cpp:173 listlinprevcobroview.cpp:269
+msgid "Borrar linea"
+msgstr ""
+
+#: cobropagoview.cpp:43 registroivaview.cpp:88
+msgid "idprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:44 registroivaview.cpp:89
+msgid "fprevistaprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:45 registroivaview.cpp:90
+msgid "fcobroprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:46 registroivaview.cpp:102
+msgid "idctacliente"
+msgstr ""
+
+#: cobropagoview.cpp:47 registroivaview.cpp:91
+msgid "idfpago"
+msgstr ""
+
+#: cobropagoview.cpp:50 registroivaview.cpp:94
+msgid "cantidadprevistaprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:51 registroivaview.cpp:95
+msgid "cantidadprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:52 registroivaview.cpp:81 registroivaview.cpp:96
+msgid "idregistroiva"
+msgstr ""
+
+#: cobropagoview.cpp:53 registroivaview.cpp:97
+msgid "tipoprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:54 registroivaview.cpp:98
+msgid "docprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:58
+msgid "Cuenta:"
+msgstr ""
+
+#: registroivaview.cpp:60
+msgid "Cuenta Cliente/Proveedor:"
+msgstr ""
+
+#: registroivaview.cpp:75
+msgid "idiva"
+msgstr ""
+
+#: registroivaview.cpp:82
+msgid "baseiva"
+msgstr ""
+
+#: registroivaview.cpp:83
+msgid "ivaiva"
+msgstr ""
+
+#: registroivaview.cpp:103
+msgid "codigoctacliente"
+msgstr ""
+
+#: registroivaview.cpp:104
+msgid "nomctacliente"
+msgstr ""
+
+#: registroivaview.cpp:105
+msgid "tipoctacliente"
+msgstr ""
+
+#: registroivaview.cpp:191
+msgid "Registro factura"
+msgstr ""
+
+#: registroivaview.cpp:263
+msgid "Cogemos el registro."
+msgstr ""
+
+#: regivaqtoolbutton.cpp:70 regivaqtoolbutton.cpp:71
+#: pluginbc_registroiva.cpp:64 pluginbc_registroiva.cpp:65
+msgid "Registro de IVA"
+msgstr ""
+
+#: regivaqtoolbutton.cpp:96 pluginbc_registroiva.cpp:206
+msgid "Debe seleccionar un apunte"
+msgstr ""
+
+#: pluginbc_registroiva.cpp:59
+msgid "&Iva"
+msgstr ""
+
+#: pluginbc_registroiva.cpp:63
+msgid "&Registro de IVA"
+msgstr ""
+
+#: pluginbc_registroiva.cpp:71
+msgid "&Cobros y pagos"
+msgstr ""
+
+#: pluginbc_registroiva.cpp:72 pluginbc_registroiva.cpp:73
+msgid "Cobros y pagos"
+msgstr ""
+
+#: pluginbc_registroiva.cpp:80
+msgid "&Modelo 347"
+msgstr ""
+
+#: pluginbc_registroiva.cpp:81 pluginbc_registroiva.cpp:82
+msgid "Modelo 347"
+msgstr ""
+
+#: listlinprevcobroview.cpp:189 listlinprevcobroview.cpp:274
+#: listlinprevcobroview.cpp:468
+msgid "Cobro"
+msgstr ""
+
+#: listlinprevcobroview.cpp:191 listlinprevcobroview.cpp:275
+#: listlinprevcobroview.cpp:471
+msgid "Pago"
+msgstr ""
+
+#: listlinprevcobroview.cpp:270
+msgid "Generar asiento de cobro/pago"
+msgstr ""
+
+#: listlinprevcobroview.cpp:271
+msgid "Desvincular asiento"
+msgstr ""
+
+#: listlinprevcobroview.cpp:272
+msgid "Ver asiento"
+msgstr ""
+
+#: listlinprevcobroview.cpp:273
+msgid "Ver factura"
+msgstr ""
+
+#: listlinprevcobroview.cpp:502
+msgid "Creamos la linea."
+msgstr ""
+
+#: listlinprevcobroview.cpp:509
+msgid "Linea inexistente."
+msgstr ""
+
+#: ui_listregistroivabase.h:347
+msgid "Listados de IVA"
+msgstr ""
+
+#: ui_listregistroivabase.h:352 ui_bcmodelo347listbase.h:263
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_listregistroivabase.h:353 ui_bcmodelo347listbase.h:262
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_listregistroivabase.h:354
+msgid "&Sopotado"
+msgstr ""
+
+#: ui_listregistroivabase.h:355
+msgid "&Repercutido"
+msgstr ""
+
+#: ui_listregistroivabase.h:356
+msgid "IVA soportado:"
+msgstr ""
+
+#: ui_listregistroivabase.h:357 ui_listregistroivabase.h:360
+#: ui_registroivabase.h:620
+msgid "IVA:"
+msgstr ""
+
+#: ui_listregistroivabase.h:358 ui_listregistroivabase.h:361
+msgid "Total:"
+msgstr ""
+
+#: ui_listregistroivabase.h:359
+msgid "IVA repercutido:"
+msgstr ""
+
+#: ui_listregistroivabase.h:362
+msgid "Res&umen"
+msgstr ""
+
+#: ui_cobropagobase.h:365
+msgid "Gestion de Cobros y Pagos"
+msgstr ""
+
+#: ui_cobropagobase.h:368 ui_cobropagobase.h:371
+msgid "Generar Asiento"
+msgstr ""
+
+#: ui_cobropagobase.h:375 ui_cobropagobase.h:379 ui_cobropagobase.h:383
+#: ui_cobropagobase.h:387
+msgid "Actualizar"
+msgstr ""
+
+#: ui_cobropagobase.h:390
+msgid "Cuenta"
+msgstr ""
+
+#: ui_cobropagobase.h:391
+msgid "Procesado"
+msgstr ""
+
+#: ui_cobropagobase.h:394 ui_cobropagobase.h:401
+msgid "TODO"
+msgstr ""
+
+#: ui_cobropagobase.h:395
+msgid "PROCESADO"
+msgstr ""
+
+#: ui_cobropagobase.h:396
+msgid "NO PROCESADO"
+msgstr ""
+
+#: ui_cobropagobase.h:398
+msgid "Tipo (Cobro / Pago)"
+msgstr ""
+
+#: ui_cobropagobase.h:402
+msgid "COBROS"
+msgstr ""
+
+#: ui_cobropagobase.h:403
+msgid "PAGOS"
+msgstr ""
+
+#: ui_cobropagobase.h:405 ui_bcregistroivaimprimirbase.h:216
+msgid "Fecha Inicial"
+msgstr ""
+
+#: ui_cobropagobase.h:406 ui_bcregistroivaimprimirbase.h:218
+msgid "Fecha Final"
+msgstr ""
+
+#: ui_cobropagobase.h:407
+msgid "Total Cobros"
+msgstr ""
+
+#: ui_cobropagobase.h:408
+msgid "Total Pagos"
 msgstr ""
 
 #: ui_registroivabase.h:598
@@ -455,11 +603,6 @@ msgstr ""
 msgid "&Datos Factura"
 msgstr ""
 
-#: ui_registroivabase.h:620 ui_listregistroivabase.h:357
-#: ui_listregistroivabase.h:360
-msgid "IVA:"
-msgstr ""
-
 #: ui_registroivabase.h:621
 msgid "Total Base Imponible:"
 msgstr ""
@@ -482,122 +625,6 @@ msgstr ""
 
 #: ui_registroivabase.h:630
 msgid "Alt+N"
-msgstr ""
-
-#: ui_listregistroivabase.h:347
-msgid "Listados de IVA"
-msgstr ""
-
-#: ui_listregistroivabase.h:352 ui_bcmodelo347listbase.h:263
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_listregistroivabase.h:353 ui_bcmodelo347listbase.h:262
-msgid "Fecha final:"
-msgstr ""
-
-#: ui_listregistroivabase.h:354
-msgid "&Sopotado"
-msgstr ""
-
-#: ui_listregistroivabase.h:355
-msgid "&Repercutido"
-msgstr ""
-
-#: ui_listregistroivabase.h:356
-msgid "IVA soportado:"
-msgstr ""
-
-#: ui_listregistroivabase.h:358 ui_listregistroivabase.h:361
-msgid "Total:"
-msgstr ""
-
-#: ui_listregistroivabase.h:359
-msgid "IVA repercutido:"
-msgstr ""
-
-#: ui_listregistroivabase.h:362
-msgid "Res&umen"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:214
-msgid "Impresion del Registro de IVA"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:215
-msgid "Datos del listado:"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:216 ui_cobropagobase.h:405
-msgid "Fecha Inicial"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:218 ui_cobropagobase.h:406
-msgid "Fecha Final"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:220
-msgid "Incluir resultados parciales"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:221
-msgid "Formato:"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:222
-msgid "Texto Plano"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:223
-msgid "HTML"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:224
-msgid "Postscript"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:225 ui_bcmodelo347listbase.h:248
-msgid "Imprimir"
-msgstr ""
-
-#: ui_bcregistroivaimprimirbase.h:226 ui_bcmodelo300base.h:207
-msgid "Cancelar"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:246
-msgid "Listado para el modelo 347"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:251
-msgid "Ctrl+P"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:253
-msgid "Recalcular"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:255
-msgid "F5"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:257
-msgid "Ver filtro"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:260
-msgid "Ctrl+F"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:261
-msgid "Importe:"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:264
-msgid "Ventas"
-msgstr ""
-
-#: ui_bcmodelo347listbase.h:265
-msgid "Compras"
 msgstr ""
 
 #: ui_bcmodelo300base.h:185
@@ -660,55 +687,74 @@ msgstr ""
 msgid "Vista Previa"
 msgstr ""
 
-#: ui_cobropagobase.h:365
-msgid "Gestion de Cobros y Pagos"
+#: ui_bcmodelo300base.h:207 ui_bcregistroivaimprimirbase.h:226
+msgid "Cancelar"
 msgstr ""
 
-#: ui_cobropagobase.h:368 ui_cobropagobase.h:371
-msgid "Generar Asiento"
+#: ui_bcmodelo347listbase.h:246
+msgid "Listado para el modelo 347"
 msgstr ""
 
-#: ui_cobropagobase.h:375 ui_cobropagobase.h:379 ui_cobropagobase.h:383
-#: ui_cobropagobase.h:387
-msgid "Actualizar"
+#: ui_bcmodelo347listbase.h:248 ui_bcregistroivaimprimirbase.h:225
+msgid "Imprimir"
 msgstr ""
 
-#: ui_cobropagobase.h:390
-msgid "Cuenta"
+#: ui_bcmodelo347listbase.h:251
+msgid "Ctrl+P"
 msgstr ""
 
-#: ui_cobropagobase.h:391
-msgid "Procesado"
+#: ui_bcmodelo347listbase.h:253
+msgid "Recalcular"
 msgstr ""
 
-#: ui_cobropagobase.h:394 ui_cobropagobase.h:401
-msgid "TODO"
+#: ui_bcmodelo347listbase.h:255
+msgid "F5"
 msgstr ""
 
-#: ui_cobropagobase.h:395
-msgid "PROCESADO"
+#: ui_bcmodelo347listbase.h:257
+msgid "Ver filtro"
 msgstr ""
 
-#: ui_cobropagobase.h:396
-msgid "NO PROCESADO"
+#: ui_bcmodelo347listbase.h:260
+msgid "Ctrl+F"
 msgstr ""
 
-#: ui_cobropagobase.h:398
-msgid "Tipo (Cobro / Pago)"
+#: ui_bcmodelo347listbase.h:261
+msgid "Importe:"
 msgstr ""
 
-#: ui_cobropagobase.h:402
-msgid "COBROS"
+#: ui_bcmodelo347listbase.h:264
+msgid "Ventas"
 msgstr ""
 
-#: ui_cobropagobase.h:403
-msgid "PAGOS"
+#: ui_bcmodelo347listbase.h:265
+msgid "Compras"
 msgstr ""
 
-#: ui_cobropagobase.h:407
-msgid "Total Cobros"
+#: ui_bcregistroivaimprimirbase.h:214
+msgid "Impresion del Registro de IVA"
 msgstr ""
 
-#: ui_cobropagobase.h:408
-msgid "Total Pagos"
+#: ui_bcregistroivaimprimirbase.h:215
+msgid "Datos del listado:"
+msgstr ""
+
+#: ui_bcregistroivaimprimirbase.h:220
+msgid "Incluir resultados parciales"
+msgstr ""
+
+#: ui_bcregistroivaimprimirbase.h:221
+msgid "Formato:"
+msgstr ""
+
+#: ui_bcregistroivaimprimirbase.h:222
+msgid "Texto Plano"
+msgstr ""
+
+#: ui_bcregistroivaimprimirbase.h:223
+msgid "HTML"
+msgstr ""
+
+#: ui_bcregistroivaimprimirbase.h:224
+msgid "Postscript"
 msgstr ""

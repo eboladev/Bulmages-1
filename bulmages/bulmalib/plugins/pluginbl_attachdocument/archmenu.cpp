@@ -42,11 +42,11 @@
 /**
 \param parent
 **/
-EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
+ADQToolButton::ADQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
     BL_FUNC_DEBUG
    /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
-    EQToolButton *tool = parent->findChild<EQToolButton *>("BotonArchDoc");
+    ADQToolButton *tool = parent->findChild<ADQToolButton *>("BotonArchDoc");
     if (tool) {
       hide();
       return;
@@ -84,7 +84,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 }
 
 
-void EQToolButton::hazMenu() {
+void ADQToolButton::hazMenu() {
   	/// Creamos el menu
 	QMenu *menu = new QMenu(this);
 	
@@ -118,7 +118,7 @@ void EQToolButton::hazMenu() {
 ///
 /**
 **/
-EQToolButton::~EQToolButton()
+ADQToolButton::~ADQToolButton()
 {
     BL_FUNC_DEBUG
     
@@ -129,7 +129,7 @@ EQToolButton::~EQToolButton()
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void EQToolButton::pintaMenu ( QMenu *menu )
+void ADQToolButton::pintaMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
     QMenu *ajust = menu->addMenu (QIcon(":/Images/attach_document.png"), _ ( "Archivo Documental" ) );
@@ -164,7 +164,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void EQToolButton::trataMenu ( QAction *action )
+void ADQToolButton::trataMenu ( QAction *action )
 {
     BL_FUNC_DEBUG
     
@@ -190,7 +190,7 @@ void EQToolButton::trataMenu ( QAction *action )
         layout->setMargin ( 0 );
         layout->setSpacing ( 0 );
         diag->setLayout ( layout );
-        diag->setWindowTitle ( "Agregar Archivo Documental" );
+        diag->setWindowTitle ( _("Agregar Archivo Documental") );
 
 	
 

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:06+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,46 +29,54 @@ msgstr ""
 msgid "Inventarios"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:84
+#: pluginbf_inventariosimple.cpp:87
 msgid "Id prestamo"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:85
+#: pluginbf_inventariosimple.cpp:88
 msgid "Id Actividad"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:86
+#: pluginbf_inventariosimple.cpp:89
 msgid "Id producto"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:87
+#: pluginbf_inventariosimple.cpp:90
 msgid "Articulo"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:88
+#: pluginbf_inventariosimple.cpp:91
 msgid "Fecha Prestamo"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:89
+#: pluginbf_inventariosimple.cpp:92
 msgid "Cantidad"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:172 pluginbf_inventariosimple.cpp:300
+#: pluginbf_inventariosimple.cpp:126
+msgid "Error al guardar."
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:152
+msgid "Error en la carga."
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:176 pluginbf_inventariosimple.cpp:302
 #: listinventariosimpleview.cpp:98
 msgid "Id Inventario"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:173 pluginbf_inventariosimple.cpp:301
+#: pluginbf_inventariosimple.cpp:177 pluginbf_inventariosimple.cpp:303
 #: listinventariosimpleview.cpp:99
 msgid "Nombre"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:174 pluginbf_inventariosimple.cpp:302
+#: pluginbf_inventariosimple.cpp:178 pluginbf_inventariosimple.cpp:304
 #: listinventariosimpleview.cpp:100
 msgid "Stock"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:261 pluginbf_inventariosimple.cpp:276
+#: pluginbf_inventariosimple.cpp:265 pluginbf_inventariosimple.cpp:280
 msgid "Seleccionar Material"
 msgstr ""
 

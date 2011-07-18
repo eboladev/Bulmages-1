@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:03+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-14 08:33+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
@@ -65,7 +65,7 @@ msgstr "Effacer l'activité"
 msgid "Borrar cobro"
 msgstr "Effacer l'encaissement"
 
-#: reciboslist.cpp:297
+#: reciboslist.cpp:296
 msgid "Borrar recibo"
 msgstr "Effacer le reçu"
 
@@ -73,7 +73,7 @@ msgstr "Effacer le reçu"
 msgid "Buscar:"
 msgstr "Chercher :"
 
-#: reciboslist.cpp:352 reciboview.cpp:53 emitirrecibosview.cpp:57
+#: reciboview.cpp:53 reciboslist.cpp:351 emitirrecibosview.cpp:57
 msgid "Cantidad"
 msgstr "Quantité"
 
@@ -97,7 +97,7 @@ msgstr "Configurer la liste"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_reciboslistbase.h:334 ui_recibobase.h:364
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -125,11 +125,11 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: reciboslist.cpp:277
+#: reciboslist.cpp:276
 msgid "Debe seleccionar una fila primero"
 msgstr "Vous devez sélectionner d'abord une fiche"
 
-#: reciboslist.cpp:234
+#: reciboslist.cpp:233
 msgid "Debe seleccionar una linea"
 msgstr "Vous devez sélectionner une ligne"
 
@@ -137,7 +137,7 @@ msgstr "Vous devez sélectionner une ligne"
 msgid "Descripcion"
 msgstr "Description "
 
-#: reciboslist.cpp:354 reciboview.cpp:59 ui_recibobase.h:382
+#: reciboview.cpp:59 reciboslist.cpp:353 ui_recibobase.h:382
 msgid "Devuelto"
 msgstr "Restitué"
 
@@ -145,7 +145,7 @@ msgstr "Restitué"
 msgid "Editar Actividad"
 msgstr "Editer l'activité"
 
-#: reciboslist.cpp:296
+#: reciboslist.cpp:295
 msgid "Editar recibo"
 msgstr "Editer le reçu"
 
@@ -173,7 +173,7 @@ msgstr "Créer seulement l'activité sélectionnée"
 msgid "Emitir todas las Actividades"
 msgstr "Créer toutes les activités"
 
-#: reciboslist.cpp:249
+#: reciboslist.cpp:248
 msgid "Error al borrar el cobro a cliente"
 msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
@@ -189,7 +189,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: reciboslist.cpp:355 ui_recibobase.h:384
+#: reciboslist.cpp:354 ui_recibobase.h:384
 msgid "Fecha"
 msgstr "Date"
 
@@ -209,11 +209,11 @@ msgstr "Date initiale :"
 msgid "Filtrar Actividades"
 msgstr "Filtrer les activités"
 
-#: reciboslist.cpp:357 ui_recibobase.h:383
+#: reciboslist.cpp:356 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr "Forme de paiement"
 
-#: pluginbf_recibo.cpp:141 pluginbf_recibo.cpp:142
+#: pluginbf_recibo.cpp:140 pluginbf_recibo.cpp:141
 msgid "Generar pedido"
 msgstr ""
 
@@ -225,11 +225,11 @@ msgstr "Sauvegarder l'encaissement"
 msgid "ID Forma Pago"
 msgstr "Id Forme de paiement"
 
-#: reciboslist.cpp:351
+#: reciboslist.cpp:350
 msgid "ID Recibo"
 msgstr "Id reçu"
 
-#: reciboslist.cpp:356
+#: reciboslist.cpp:355
 msgid "ID Tutor"
 msgstr "Id tuteur"
 
@@ -281,7 +281,7 @@ msgstr "Nouveau reçu"
 msgid "Otros datos"
 msgstr "Autres données"
 
-#: reciboslist.cpp:353 reciboview.cpp:58 ui_recibobase.h:381
+#: reciboview.cpp:58 reciboslist.cpp:352 ui_recibobase.h:381
 msgid "Pagado"
 msgstr "Payé"
 
@@ -293,7 +293,7 @@ msgstr "Reçu"
 msgid "Recibo reemitido"
 msgstr "Reçu recrée"
 
-#: reciboslist.cpp:217 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
+#: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
 #: ui_reciboslistbase.h:305
 msgid "Recibos"
 msgstr "Reçus"
@@ -334,7 +334,7 @@ msgstr "Tous les reçus"
 msgid "Total"
 msgstr "Total"
 
-#: reciboslist.cpp:358
+#: reciboslist.cpp:357
 msgid "Tutor"
 msgstr "Tuteur"
 

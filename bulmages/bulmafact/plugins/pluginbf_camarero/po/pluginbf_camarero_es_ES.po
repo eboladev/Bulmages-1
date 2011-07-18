@@ -8,28 +8,80 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:00+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2010-09-23 19:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: pluginbf_camarero.cpp:73
+#: ui_trabajadoresbase.h:272
+msgid "&Cerrar"
+msgstr "&Cerrar"
+
+#: ui_trabajadoresbase.h:270
+msgid "."
+msgstr "."
+
+#: ui_trabajadoresbase.h:269
+msgid "0"
+msgstr "0"
+
+#: ui_trabajadoresbase.h:266
+msgid "1"
+msgstr "1"
+
+#: ui_trabajadoresbase.h:267
+msgid "2"
+msgstr "2"
+
+#: ui_trabajadoresbase.h:268
+msgid "3"
+msgstr "3"
+
+#: ui_trabajadoresbase.h:263
+msgid "4"
+msgstr "4"
+
+#: ui_trabajadoresbase.h:264
+msgid "5"
+msgstr "5"
+
+#: ui_trabajadoresbase.h:265
+msgid "6"
+msgstr "6"
+
+#: ui_trabajadoresbase.h:260
+msgid "7"
+msgstr "7"
+
+#: ui_trabajadoresbase.h:261
+msgid "8"
+msgstr "8"
+
+#: ui_trabajadoresbase.h:262
+msgid "9"
+msgstr "9"
+
+#: pluginbf_camarero.cpp:82
 msgid "Administrador"
 msgstr "Administrador"
 
-#: pluginbf_camarero.cpp:65
+#: ui_trabajadoresbase.h:271
+msgid "C"
+msgstr "C"
+
+#: pluginbf_camarero.cpp:74
 msgid "Clave numerica"
 msgstr ""
 
-#: pluginbf_camarero.cpp:95
-msgid "END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"
+#: pluginbf_camarero.cpp:87
+msgid "Gerente"
 msgstr ""
 
-#: pluginbf_camarero.cpp:78
-msgid "Gerente"
+#: ui_trabajadoresbase.h:259
+msgid "Registro de camarero"
 msgstr ""

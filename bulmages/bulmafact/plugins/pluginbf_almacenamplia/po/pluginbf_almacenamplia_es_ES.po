@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:47+0200\n"
+"POT-Creation-Date: 2011-07-12 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -131,7 +131,7 @@ msgstr "Actualizar listado"
 msgid "Almacen"
 msgstr "Almacen"
 
-#: almaceneslistview.cpp:222 ui_almaceneslistbase.h:330
+#: almaceneslistview.cpp:225 ui_almaceneslistbase.h:330
 msgid "Almacenes"
 msgstr "Almacenes"
 
@@ -148,7 +148,7 @@ msgstr "Buscar:"
 msgid "Codigo Almacen"
 msgstr "Codigo Almacen"
 
-#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:93
+#: almaceneslistview.cpp:57 almaceneslistview.cpp:93 almacenview.cpp:58
 msgid "Codigo almacen"
 msgstr "Codigo almacen"
 
@@ -180,7 +180,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: almaceneslistview.cpp:236
+#: almaceneslistview.cpp:239
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
@@ -200,15 +200,15 @@ msgstr "Editar almacen"
 msgid "Email Almacen"
 msgstr "Email Almacen"
 
-#: almaceneslistview.cpp:258
+#: almaceneslistview.cpp:261
 msgid "Error al borrar el almacen"
 msgstr "Error al borrar el almacen"
 
 #: almacenview.cpp:77
-msgid "Error al crear el almacen"
-msgstr "Error al crear el almacen"
+msgid "Error al crear el almacen."
+msgstr ""
 
-#: almaceneslistview.cpp:211
+#: almaceneslistview.cpp:214
 msgid "Error al editar el almacen"
 msgstr "Error al editar el almacen"
 
@@ -248,7 +248,7 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Guardar almacen"
 
-#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:92
+#: almaceneslistview.cpp:56 almaceneslistview.cpp:92 almacenview.cpp:57
 msgid "ID almacen"
 msgstr "ID almacen"
 
@@ -264,7 +264,7 @@ msgstr "Mostrar:"
 msgid "Nombre Almacen"
 msgstr "Nombre Almacen"
 
-#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:94
+#: almaceneslistview.cpp:58 almaceneslistview.cpp:94 almacenview.cpp:59
 msgid "Nombre almacen"
 msgstr "Nombre almacen"
 
@@ -299,3 +299,6 @@ msgstr "Tipo de Almacen"
 #: almacenview.cpp:65
 msgid "email almacen"
 msgstr "email almacen"
+
+#~ msgid "Error al crear el almacen"
+#~ msgstr "Error al crear el almacen"

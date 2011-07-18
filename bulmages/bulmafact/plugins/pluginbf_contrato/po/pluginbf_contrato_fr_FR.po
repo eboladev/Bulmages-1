@@ -5,13 +5,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:55+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2011-02-10 17:33+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Actualizar listado"
 msgstr "Actualiser la liste"
 
-#: contratoview.cpp:413
+#: contratoview.cpp:414
 msgid "Base imponible"
 msgstr "Base Imposable"
 
@@ -63,7 +63,7 @@ msgstr "Chercher :"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: contratoview.cpp:420
+#: contratoview.cpp:421
 msgid "CIF cliente"
 msgstr "CIF Client "
 
@@ -79,7 +79,7 @@ msgstr "Quantité du contrat"
 msgid "Cliente"
 msgstr "Client"
 
-#: contratoslist.cpp:63 contratoview.cpp:65
+#: contratoview.cpp:65 contratoslist.cpp:63
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -87,7 +87,7 @@ msgstr "Client :"
 msgid "Codigo"
 msgstr "Code"
 
-#: contratoview.cpp:421
+#: contratoview.cpp:422
 msgid "Codigo almacen"
 msgstr "Code magasin"
 
@@ -95,7 +95,7 @@ msgstr "Code magasin"
 msgid "Codigo completo articulo"
 msgstr "Code complet de l'article"
 
-#: contratoview.cpp:423
+#: contratoview.cpp:424
 msgid "Comentario factura"
 msgstr "Commentaire de la facture"
 
@@ -103,15 +103,15 @@ msgstr "Commentaire de la facture"
 msgid "Configurar listado"
 msgstr "Configurer la liste"
 
-#: contratoview.cpp:422
+#: contratoview.cpp:423
 msgid "Contact factura"
 msgstr "Contact de la Facture"
 
-#: contratoview.cpp:118 contrato.cpp:39
+#: contrato.cpp:39 contratoview.cpp:118
 msgid "Contrato"
 msgstr "Contrat"
 
-#: pluginbf_contrato.cpp:104 ui_contratoslistbase.h:255
+#: pluginbf_contrato.cpp:97 ui_contratoslistbase.h:255
 msgid "Contratos"
 msgstr "Contrats"
 
@@ -132,6 +132,10 @@ msgstr "Description du contrat"
 msgid "Detalle"
 msgstr "Détail"
 
+#: contratoview.cpp:313
+msgid "Detectada doble factura en un periodo."
+msgstr ""
+
 #: ui_contratoslistbase.h:265 ui_contratoslistbase.h:268
 msgid "Editar contrato"
 msgstr "Editer le contrat "
@@ -144,12 +148,12 @@ msgstr "Erreur d'effacement d'un contrat"
 msgid "Error al crear la contrato"
 msgstr "Erreur en création du contrat"
 
-#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
-#: ui_contratobase.h:472
+#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
+#: ui_contratoslistbase.h:310
 msgid "Facturar Periodos Pendientes"
 msgstr "Facturer des Périodes en suspens"
 
-#: contratoview.cpp:410
+#: contratoview.cpp:411
 msgid "Fecha"
 msgstr "Date"
 
@@ -181,7 +185,7 @@ msgstr "Sauvegarder le Contrat"
 msgid "ID contrato"
 msgstr "ID Contrat"
 
-#: contratoview.cpp:426
+#: contratoview.cpp:427
 msgid "Id almacen"
 msgstr "Id magasin"
 
@@ -189,7 +193,7 @@ msgstr "Id magasin"
 msgid "Id articulo"
 msgstr "Id article"
 
-#: contratoview.cpp:425 contrato.cpp:43
+#: contrato.cpp:43 contratoview.cpp:426
 msgid "Id cliente"
 msgstr "Id client"
 
@@ -197,11 +201,11 @@ msgstr "Id client"
 msgid "Id contrato"
 msgstr "Id Contrat"
 
-#: contratoview.cpp:417
+#: contratoview.cpp:418
 msgid "Id factura"
 msgstr "Id de la Facture"
 
-#: contratoview.cpp:424
+#: contratoview.cpp:425
 msgid "Id trabajador"
 msgstr "Id Ouvrier"
 
@@ -213,7 +217,7 @@ msgstr "ID Contrat"
 msgid "Imprimir listado"
 msgstr "Imprimer la liste"
 
-#: contratoview.cpp:414
+#: contratoview.cpp:415
 msgid "Impuestos"
 msgstr "Impôts"
 
@@ -237,7 +241,7 @@ msgstr "Nom alternatif du contrat"
 msgid "Nombre articulo"
 msgstr "Nom de l'article"
 
-#: contratoview.cpp:411
+#: contratoview.cpp:412
 msgid "Nombre cliente"
 msgstr "Nom du client"
 
@@ -253,7 +257,7 @@ msgstr "Nouveau contrat"
 msgid "Nuevo contrato"
 msgstr "Nouveau contrat"
 
-#: contratoview.cpp:409
+#: contratoview.cpp:410
 msgid "Numero"
 msgstr "Numéro"
 
@@ -269,11 +273,11 @@ msgstr "PVPI Contrat"
 msgid "Periodicidad Facturas:"
 msgstr "Périodicité des factures :"
 
-#: contratoview.cpp:416
+#: contratoview.cpp:417
 msgid "Procesada"
 msgstr "Accusée"
 
-#: contratoview.cpp:418
+#: contratoview.cpp:419
 msgid "Ref factura"
 msgstr "Réf. : Facture"
 
@@ -293,15 +297,15 @@ msgstr "Référence :"
 msgid "Selector de contratos"
 msgstr "Sélecteur des contrats"
 
-#: contratoview.cpp:419
+#: contratoview.cpp:420
 msgid "Serie"
 msgstr "Série"
 
-#: contratoview.cpp:412
+#: contratoview.cpp:413
 msgid "Telefono factura"
 msgstr "Téléphone de la facturation"
 
-#: contratoview.cpp:415
+#: contratoview.cpp:416
 msgid "Total"
 msgstr "Total"
 
@@ -309,7 +313,7 @@ msgstr "Total"
 msgid "Ubicacion:"
 msgstr "Situation"
 
-#: contratoview.cpp:319
+#: contratoview.cpp:320
 #, fuzzy
 msgid "no se pudo crear instancia de factura"
 msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"

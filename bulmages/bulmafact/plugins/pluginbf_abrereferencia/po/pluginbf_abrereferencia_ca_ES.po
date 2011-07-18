@@ -4,15 +4,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:01+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-03-11 14:23+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: Catalan\n"
 
-#: pluginbf_abrereferencia.cpp:36
-msgid "Estoy dentro del plugin de Abertura de Referencia"
-msgstr "Estic dins del plucin d'Oberture de Referència"
+#: pluginbf_abrereferencia.cpp:67
+#, qt-format
+msgid "Consulta: '%1'."
+msgstr ""
+
+#~ msgid "Estoy dentro del plugin de Abertura de Referencia"
+#~ msgstr "Estic dins del plucin d'Oberture de Referència"

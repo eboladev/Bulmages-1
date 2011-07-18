@@ -8,59 +8,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:18+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: articulolisttpv.cpp:66
-msgid "Error en plugin"
-msgstr ""
-
-#: articulolisttpv.cpp:160
+#: articulolisttpv.cpp:159
 msgid "Editar articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:161
+#: articulolisttpv.cpp:160
 msgid "Borrar articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:256
+#: articulolisttpv.cpp:255
 msgid "ID articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:257
+#: articulolisttpv.cpp:256
 msgid "Codigo completo del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:258
+#: articulolisttpv.cpp:257
 msgid "Nombre del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:259
+#: articulolisttpv.cpp:258
 msgid "Descripcion abreviada del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:260
+#: articulolisttpv.cpp:259
 msgid "Observaciones sobre el articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:261
+#: articulolisttpv.cpp:260
 msgid "Descripcion del tipo de articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:262
+#: articulolisttpv.cpp:261
 msgid "Descripcion tipo de I.V.A."
 msgstr ""
 
-#: articulolisttpv.cpp:263
+#: articulolisttpv.cpp:262
 msgid "P.V.P. articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:264
+#: articulolisttpv.cpp:263
 msgid "Disponible en stock"
 msgstr ""
 

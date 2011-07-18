@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:02+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -173,7 +173,7 @@ msgstr "Albaran de proveedor"
 msgid "Albaran de proveedor existente"
 msgstr "Albaran de proveedor existente"
 
-#: albaranesproveedor.cpp:323 ui_albaranesproveedorlistbase.h:421
+#: albaranesproveedor.cpp:331 ui_albaranesproveedorlistbase.h:421
 msgid "Albaranes de proveedor"
 msgstr "Albaranes de proveedor"
 
@@ -181,11 +181,11 @@ msgstr "Albaranes de proveedor"
 msgid "Albaranes de proveedores"
 msgstr "Albaranes de proveedores"
 
-#: albaranesproveedor.cpp:195
+#: albaranesproveedor.cpp:206
 msgid "Albaranes no procesados"
 msgstr "Albaranes no procesados"
 
-#: albaranesproveedor.cpp:194
+#: albaranesproveedor.cpp:205
 msgid "Albaranes procesados"
 msgstr "Albaranes procesados"
 
@@ -193,7 +193,7 @@ msgstr "Albaranes procesados"
 msgid "Almacen:"
 msgstr "Almacen:"
 
-#: albaranesproveedor.cpp:403
+#: albaranesproveedor.cpp:411
 msgid "Base imponible"
 msgstr "Base imponible"
 
@@ -201,8 +201,8 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:601
 #: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
+#: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:601
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
@@ -210,7 +210,7 @@ msgstr "Borrar albaran"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: albaranesproveedor.cpp:395
+#: albaranesproveedor.cpp:403
 msgid "Comentario"
 msgstr "Comentario"
 
@@ -230,7 +230,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranproveedorbase.h:604 ui_albaranesproveedorlistbase.h:450
+#: ui_albaranesproveedorlistbase.h:450 ui_albaranproveedorbase.h:604
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -258,7 +258,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: albaranesproveedor.cpp:342
+#: albaranesproveedor.cpp:350
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
@@ -266,7 +266,7 @@ msgstr "Debe seleccionar una linea"
 msgid "Desc&uentos"
 msgstr "Desc&uentos"
 
-#: albaranesproveedor.cpp:392
+#: albaranesproveedor.cpp:400
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -274,7 +274,7 @@ msgstr "Descripcion"
 msgid "Descripcion albaran proveedor"
 msgstr "Descripcion albaran proveedor"
 
-#: albaranesproveedor.cpp:402
+#: albaranesproveedor.cpp:410
 msgid "Descripcion de la forma de pago"
 msgstr "Descripcion de la forma de pago"
 
@@ -290,7 +290,7 @@ msgstr "Descuentos:"
 msgid "Editar albaran"
 msgstr "Editar albaran"
 
-#: albaranesproveedor.cpp:357
+#: albaranesproveedor.cpp:365
 msgid "Error al borrar albaran de proveedor"
 msgstr "Error al borrar albaran de proveedor"
 
@@ -314,7 +314,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: albaranesproveedor.cpp:394
+#: albaranesproveedor.cpp:402
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -354,19 +354,19 @@ msgstr "Guardar albaran"
 msgid "I.R.P.F."
 msgstr "I.R.P.F."
 
-#: albaranesproveedor.cpp:390
+#: albaranesproveedor.cpp:398
 msgid "ID albaran"
 msgstr "ID albaran"
 
-#: albaranesproveedor.cpp:399
+#: albaranesproveedor.cpp:407
 msgid "ID almacen"
 msgstr "ID almacen"
 
-#: albaranesproveedor.cpp:398
+#: albaranesproveedor.cpp:406
 msgid "ID forma de pago"
 msgstr "ID forma de pago"
 
-#: albaranesproveedor.cpp:397
+#: albaranesproveedor.cpp:405
 msgid "ID proveedor"
 msgstr "ID proveedor"
 
@@ -398,7 +398,7 @@ msgstr "Id proveedor"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: albaranesproveedor.cpp:404
+#: albaranesproveedor.cpp:412
 msgid "Impuestos"
 msgstr "Impuestos"
 
@@ -414,11 +414,11 @@ msgstr "Mostrar/ocultar cabecera"
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
-#: albaranesproveedor.cpp:401
+#: albaranesproveedor.cpp:409
 msgid "Nombre del almacen"
 msgstr "Nombre del almacen"
 
-#: albaranesproveedor.cpp:400
+#: albaranesproveedor.cpp:408
 msgid "Nombre del proveedor"
 msgstr "Nombre del proveedor"
 
@@ -435,7 +435,7 @@ msgstr "Nuevo albaran de proveedor"
 msgid "Numero albaran proveedor"
 msgstr "Numero albaran proveedor"
 
-#: albaranesproveedor.cpp:391
+#: albaranesproveedor.cpp:399
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 
@@ -443,12 +443,12 @@ msgstr "Numero de albaran"
 msgid "Numero de albaran:"
 msgstr "Numero de albaran:"
 
-#: albaranesproveedor.cpp:396
+#: albaranesproveedor.cpp:404
 msgid "Procesado"
 msgstr "Procesado"
 
-#: albaranesproveedor.cpp:53 albaranesproveedor.cpp:77
-#: albaranproveedorview.cpp:84
+#: albaranproveedorview.cpp:84 albaranesproveedor.cpp:53
+#: albaranesproveedor.cpp:77
 msgid "Proveedor:"
 msgstr "Proveedor:"
 
@@ -456,7 +456,7 @@ msgstr "Proveedor:"
 msgid "R.E.:"
 msgstr "R.E.:"
 
-#: albaranesproveedor.cpp:393
+#: albaranesproveedor.cpp:401
 msgid "Referencia"
 msgstr "Referencia"
 
@@ -472,11 +472,11 @@ msgstr "Referencia:"
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Tiene que seleccionar un proveedor"
 
-#: albaranesproveedor.cpp:193
+#: albaranesproveedor.cpp:204
 msgid "Todos los albaranes"
 msgstr "Todos los albaranes"
 
-#: albaranesproveedor.cpp:405
+#: albaranesproveedor.cpp:413
 msgid "Total albaran"
 msgstr "Total albaran"
 

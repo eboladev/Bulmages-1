@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:37+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-10-12 13:48+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_bcdiarioprintbase.h:159
@@ -38,7 +38,7 @@ msgstr "&Incloure assentaments oberts"
 msgid "&Kugar"
 msgstr "&Kugar"
 
-#: pluginbc_diario.cpp:89
+#: pluginbc_diario.cpp:59
 msgid "&Libro Diario"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "&Texto Plano"
 msgstr "&Text pla"
 
-#: pluginbc_diario.cpp:87
+#: pluginbc_diario.cpp:57
 msgid "&Ver"
 msgstr "&Veure"
 
@@ -97,7 +97,7 @@ msgstr "Configura llistat"
 msgid "Contrapartida"
 msgstr "Contrapartida"
 
-#: bcdiarioview.cpp:59
+#: bcdiarioview.cpp:63
 msgid "Contrapartida:"
 msgstr ""
 
@@ -117,11 +117,11 @@ msgstr "Descripció"
 msgid "Descripcion de Cuenta"
 msgstr "Descripció del compte"
 
-#: bcdiarioview.cpp:52 ui_bcdiariobase.h:337
+#: bcdiarioview.cpp:53 ui_bcdiariobase.h:337
 msgid "Diario"
 msgstr "Diari"
 
-#: bcdiarioview.cpp:170
+#: bcdiarioview.cpp:174
 msgid "Diarios (*.txt)"
 msgstr "Diaris (*.txt)"
 
@@ -159,7 +159,7 @@ msgstr "Format &normal"
 msgid "Formato del listado:"
 msgstr "Forma de pagament:"
 
-#: bcdiarioview.cpp:168
+#: bcdiarioview.cpp:172
 msgid "Guardar Libro Diario"
 msgstr "Desar el Llibre diari"
 
@@ -206,12 +206,16 @@ msgstr "Mostra l'extracte (mes)"
 msgid "Mostrar/ocultar filtro"
 msgstr "Mostrar/ocultar capçalera"
 
-#: pluginbc_diario.cpp:90
-msgid "Permite ver el diario"
+#: pluginbc_diario.cpp:60
+msgid "Permite ver el Diario"
 msgstr ""
 
-#: pluginbc_diario.cpp:91
-msgid "Podra disponer de la informacion del diario"
+#: pluginbc_diario.cpp:76
+msgid "PluginBc_Diario"
+msgstr ""
+
+#: pluginbc_diario.cpp:61
+msgid "Podra disponer de la informacion del Diario"
 msgstr ""
 
 #: ui_bcdiarioprintbase.h:154

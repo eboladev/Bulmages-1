@@ -177,8 +177,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 {
     BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "nombrealumno1" ) {
-	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
-//	blMsgInfo(query);
+	QString query = "SELECT idalumno FROM alumno WHERE upper (COALESCE(apellido1alumno,'') || ' ' || COALESCE(apellido2alumno,'') || ' ' || COALESCE(nombrealumno,'') ) LIKE upper('" + sub->m_campoactual->text() + "%')";
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idalumno", cur->value( "idalumno" ) );
@@ -186,7 +185,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         delete cur;
     } // end if
     if ( sub->m_campoactual->fieldName() == "nomcliente" ) {
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper(apellido1cliente || ' ' || apellido2cliente || ' ' || nomcliente) LIKE upper('" + sub->m_campoactual->text() + "%')");
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ' ' || COALESCE(nomcliente,'') ) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
 	    if (sub->existsHeader("apellido1cliente"))
@@ -205,14 +204,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
   BL_FUNC_DEBUG
 
-        if ( bl->m_entrada.size() >= 3 && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
+        if ( bl->m_entrada.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
                 QMapIterator<QString, QString> i ( bl->m_valores );
                 QString cador = "";
                 while ( i.hasNext() ) {
                     i.next();
-                    cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
+                    cadwhere = cadwhere + cador + " upper( COALESCE(" + i.key() + ", '') )";
                     cador = " || ' ' ||";
                 } // end while
 
@@ -412,7 +411,6 @@ void SubForm_Tutor::editarTutor ( QString idtutor )
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idtutor ) ) {
         delete art;
-        
         return;
     } // end if
     art->hide();

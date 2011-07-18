@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:15+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-06-08 09:15+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -126,11 +127,11 @@ msgstr "Seient de regularització"
 msgid "Asiento de a&pertura"
 msgstr "Seient d'o&pertura"
 
-#: pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102 bcasientoview.cpp:1145
+#: bcasientoview.cpp:1147 pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
 msgid "Asiento de apertura"
 msgstr ""
 
-#: pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108 bcasientoview.cpp:1076
+#: bcasientoview.cpp:1078 pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
 msgid "Asiento de cierre"
 msgstr ""
 
@@ -141,10 +142,6 @@ msgstr ""
 #: bcasientoview.cpp:336
 msgid "Asiento inexistente."
 msgstr "Seient inexistent."
-
-#: bcasientoform.cpp:344
-msgid "Asiento no abierto"
-msgstr ""
 
 #: bcasientolistview.cpp:309
 msgid "Asientos"
@@ -214,8 +211,8 @@ msgstr "Concepte comptable"
 msgid "Conciliacion"
 msgstr "Conciliació"
 
-#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
-#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527 ui_bcasientolistbase.h:491
+#: ui_bcasientolistbase.h:494
 msgid "Configurar"
 msgstr "Arranjament"
 
@@ -254,7 +251,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: bcasientoview.cpp:953
+#: bcasientoview.cpp:955
 msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
 msgstr ""
 
@@ -268,7 +265,7 @@ msgstr "Compte"
 msgid "Datos del asiento:"
 msgstr "Data del seient"
 
-#: bcasientosubform.cpp:45 bcasientolistsubform.cpp:42
+#: bcasientolistsubform.cpp:42 bcasientosubform.cpp:45
 msgid "Debe"
 msgstr "Deure"
 
@@ -302,7 +299,7 @@ msgstr "Document:"
 msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr "Vol crear un nou seient en aquella posició?"
 
-#: bcasientoform.cpp:427
+#: bcasientoform.cpp:428
 msgid "El asiento se ha guardado correctamente."
 msgstr "El seient s'ha desat correctament."
 
@@ -310,7 +307,7 @@ msgstr "El seient s'ha desat correctament."
 msgid "Error al crear el asiento"
 msgstr ""
 
-#: bcasientoform.cpp:432
+#: bcasientoform.cpp:433
 msgid "Error en el guardardo"
 msgstr ""
 
@@ -322,8 +319,8 @@ msgstr "Esborra asiento"
 msgid "Extender asiento"
 msgstr "Extendre seient"
 
-#: pluginbc_asiento.cpp:176 bcasientosubform.cpp:40
-#: bcasientolistsubform.cpp:38
+#: bcasientolistsubform.cpp:38 bcasientosubform.cpp:40
+#: pluginbc_asiento.cpp:176
 msgid "Fecha"
 msgstr "Data"
 
@@ -361,8 +358,9 @@ msgstr "Data final regularització:"
 msgid "Fecha inicial"
 msgstr "Data inicial"
 
-#: bcasientoview.cpp:912
-msgid "Fecha inicial = '$1', fecha final = '$2'."
+#: bcasientoview.cpp:914
+#, qt-format
+msgid "Fecha inicial = '%1', fecha final = '%2'."
 msgstr ""
 
 #: pluginbc_asiento.cpp:193
@@ -393,7 +391,7 @@ msgstr ""
 msgid "Ha habido un error al ordenar los asientos"
 msgstr ""
 
-#: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
+#: bcasientolistsubform.cpp:43 bcasientosubform.cpp:46
 msgid "Haber"
 msgstr "Haver"
 
@@ -418,7 +416,7 @@ msgstr "ID Canal"
 msgid "Id apunte"
 msgstr "Id apunt"
 
-#: bcasientosubform.cpp:57 bcasientolistsubform.cpp:46 bcasientoform.cpp:45
+#: bcasientoform.cpp:45 bcasientolistsubform.cpp:46 bcasientosubform.cpp:57
 msgid "Id asiento"
 msgstr "Id seient"
 
@@ -458,32 +456,28 @@ msgstr "La data inicial és posterior a la data final."
 msgid "Listado de asientos"
 msgstr "Llistat de seients"
 
-#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
 #: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
+#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
 msgid "Mostrar asiento"
 msgstr "Mostrar seient"
 
-#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
 #: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
 msgid "Mostrar extracto (ano)"
 msgstr "Mostra l'extracte (any)"
 
-#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
 #: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
 msgid "Mostrar extracto (dia)"
 msgstr "Mostra l'extracte (dia)"
 
-#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
 #: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
 msgid "Mostrar extracto (mes)"
 msgstr "Mostra l'extracte (mes)"
 
 #: bcasientoview.cpp:529
 msgid "No existe ningun asiento para mostrar"
-msgstr ""
-
-#: bcasientoform.cpp:351
-msgid "No hay asiento"
 msgstr ""
 
 #: bcasientosubform.cpp:42
@@ -503,7 +497,7 @@ msgstr "Nou seient"
 msgid "Num. Factura"
 msgstr "Nº Factura"
 
-#: bcasientosubform.cpp:55 bcasientolistsubform.cpp:37
+#: bcasientolistsubform.cpp:37 bcasientosubform.cpp:55
 msgid "Orden"
 msgstr "Ordre"
 
