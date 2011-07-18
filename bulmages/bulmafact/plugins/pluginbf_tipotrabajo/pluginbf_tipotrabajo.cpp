@@ -67,7 +67,6 @@ int BlAction_triggered(BlAction *accion) {
         l->show();
     } // end if
 
-    
     return 0;
 }
 

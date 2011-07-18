@@ -111,47 +111,47 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
-   
+int BlAction_triggered(BlAction *accion)
+{
    BL_FUNC_DEBUG
    if (accion->objectName() == "mui_actionJuntasDirectivas") {
        JDirectivaList * bud = new JDirectivaList ( g_pluginbf_asociacion->company(), NULL );
        g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
        bud->show();
-    }
+    }// end if
 
-   if (accion->objectName() == "mui_actionJuntaConvocar") {
+   if (accion->objectName() == "mui_actionJuntaDirectivaConvocar") {
        JDirectivaView *bud = new JDirectivaView ( g_pluginbf_asociacion->company(), 0 );
        g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
        bud->show();
        bud->pintar();
-    }
+    }// end if
 
    if (accion->objectName() == "mui_actionReunion") {
        ConvReunionList * bud = new ConvReunionList ( g_pluginbf_asociacion->company(), NULL );
        g_pluginbf_asociacion->company() ->m_pWorkspace->addSubWindow ( bud );
        bud->show();
-    }
+    }// end if
 
    if (accion->objectName() == "mui_actionReunionConvocar") {
        ConvReunionView *bud = new ConvReunionView ( g_pluginbf_asociacion->company(), 0 );
        g_pluginbf_asociacion->company() ->m_pWorkspace->addSubWindow ( bud );
        bud->show();
        bud->pintar();
-    }
+    }// end if
 
     if (accion->objectName() == "mui_actionComisiones") {
         ComisionesList * bud = new ComisionesList ( g_pluginbf_asociacion->company(), NULL );
         g_pluginbf_asociacion->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-    }
+    }// end if
 
     if (accion->objectName() == "mui_actionComisionConvocar") {
         ComisionView *bud = new ComisionView ( g_pluginbf_asociacion->company(), 0 );
         g_pluginbf_asociacion->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
         bud->pintar();
-    }
+    }// end if
     
     return 0;
 }

@@ -87,7 +87,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             QString file = *ot + *it;
             QLibrary *lib = new QLibrary ( file );
             lib->load();
-            libErrorString = lib->errorString();
+            libErrorString += lib->errorString();
             if ( lib->isLoaded() ) {
                 cargado = TRUE;
                 m_plugins.append ( lib );
@@ -97,6 +97,8 @@ void BlPlugins::cargaLibs ( const QString &libs )
         } // end for
         if ( ! cargado ) {
             blMsgInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
+	} else {
+	    libErrorString = "";
         } // end if
     } // end for
     

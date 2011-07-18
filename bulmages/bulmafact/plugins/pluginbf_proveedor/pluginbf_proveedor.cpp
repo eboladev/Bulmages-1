@@ -79,7 +79,6 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_Proveedor" );
-
     if (accion->objectName() == "mui_actionProveedores") {
         if ( g_providersList ) {
             g_providersList->hide();
@@ -92,8 +91,6 @@ int BlAction_triggered(BlAction *accion) {
         g_pluginbf_proveedor->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-
-    
     return 0;
 }
 

@@ -104,7 +104,6 @@ int BlAction_triggered(BlAction *accion) {
         colores->show();
     } // end if
 
-    
     return 0;
 }
 

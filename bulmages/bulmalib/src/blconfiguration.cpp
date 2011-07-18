@@ -415,7 +415,7 @@ QString BlConfiguration::name( int i )
     if ( i == CONF_CUPS_DEFAULT_PRINTER )
         return "CONF_CUPS_DEFAULT_PRINTER";
     if ( i == CONF_BLOCK_WINDOWS )
-	return "CONF_BLOCK_WINDOWS";
+        return "CONF_BLOCK_WINDOWS";
     if ( i == CONF_DIR_CONFIG )
         return "CONF_DIR_CONFIG";
     if ( i == CONF_GLOBAL_CONFIG_USER )
@@ -444,6 +444,9 @@ QString BlConfiguration::name( int i )
         return "CONF_MAIN_WINDOW_TITLE";
     if ( i == CONF_NUMCHAR_RELOAD_FILTRO )
         return "CONF_NUMCHAR_RELOAD_FILTRO";
+    if ( i == CONF_URL_CONTENTS )
+        return "CONF_URL_CONTENTS";
+    
     return "";
 }
 

@@ -15,7 +15,7 @@ CONF_PUERTO			5432
 # Parametros de configuracion de programas.
 # Por defecto se proponen estos programas. Configurar a gusto.
 CONF_EDITOR			xdg-open
-CONF_NAVEGADOR			xdg-open
+#CONF_NAVEGADOR			xdg-open
 CONF_PDF			xdg-open
 CONF_DIR_TMP			/tmp/
 CONF_ODS			xdg-open
@@ -103,6 +103,8 @@ CONF_CENTER_TEXT_FIELDS			FALSE
 # Preguntar al usuario antes de salir
 CONF_ASK_BEFORE_EXIT			TRUE
 
+# Si se tiene el VisorHTML Instalado esta es la URL que hay que visitar
+CONF_URL_CONTENTS		http://www.iglues.org
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------

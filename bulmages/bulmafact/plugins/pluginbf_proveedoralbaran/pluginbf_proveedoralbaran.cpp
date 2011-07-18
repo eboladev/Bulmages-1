@@ -78,7 +78,6 @@ int entryPoint ( BfBulmaFact *bges )
 int BlAction_triggered(BlAction *accion) {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_ProveedorAlbaran" );
-
     if (accion->objectName() == "mui_actionProveedoresAlbaran") {
         if ( g_albaranesProveedor ) {
             g_albaranesProveedor->hide();
@@ -92,8 +91,6 @@ int BlAction_triggered(BlAction *accion) {
         bud->inicializar();
         bud->show();
     } // end if
-
-    
     return 0;
 }
 

@@ -106,10 +106,10 @@ int BlAction_triggered(BlAction *accion) {
         g_pluginbf_actividad->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     }
-    
-
     return 0;
 }
+
+
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "actividad", "SELECT" ) ) {

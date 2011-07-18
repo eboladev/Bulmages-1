@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDesktopServices>
-#include <QUrl>
 
 #include "bcasientoview.h"
 #include "adocumental.h"
@@ -210,9 +208,7 @@ void adocumental::doubleclicked ( int row, int, int, const QPoint & )
 
     if ( modo == 0 ) { /// Es el modo edicion.
         QString archivo = m_listado->item ( row, COL_ARCHIVOADOCUMENTAL ) ->text();
-        QDesktopServices::openUrl(QUrl(archivo, QUrl::TolerantMode));
-        //QString comando = "konqueror " + archivo + " &";
-        //system ( comando.toAscii().constData() );
+        blWebBrowser(archivo);
     } else { /// Es el modo consulta.
         done ( 1 );
     } // end if

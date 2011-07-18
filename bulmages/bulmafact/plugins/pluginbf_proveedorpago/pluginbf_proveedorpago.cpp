@@ -93,8 +93,6 @@ int BlAction_triggered(BlAction *accion) {
         g_pluginbf_proveedorpago->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
-
-    
     return 0;
 }
 

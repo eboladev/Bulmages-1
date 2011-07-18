@@ -414,8 +414,7 @@ void BalancePrintView::presentar ( const char* tipus )
 
             /// Presentaci&oacute;n html normal.
             if ( html ) {
-                QString cadena = g_confpr->value( CONF_NAVEGADOR ) + " " + g_confpr->value( CONF_DIR_USER ) + "balance.html";
-                system ( cadena.toAscii().constData() );
+                blWebBrowser(g_confpr->value( CONF_DIR_USER ) + "balance.html");
             }
 
             /// Presentaci&oacute;n Kugar normal.

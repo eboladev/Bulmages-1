@@ -33,8 +33,6 @@
 #include <QMainWindow>
 #include <QProgressBar>
 
-#include <QDesktopServices>
-#include <QUrl>
 
 #include "blworkspace.h"
 #include "bfbulmafact.h"
@@ -261,7 +259,7 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
 
   
     BL_FUNC_DEBUG
-    QDesktopServices::openUrl(QUrl("http://www.iglues.org/wiki_users/doku.php", QUrl::TolerantMode));
+    blWebBrowser("http://www.iglues.org/wiki_users/doku.php");
 
     
 }

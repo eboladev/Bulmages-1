@@ -29,6 +29,8 @@
 #include <QTextStream>
 #include <QLocale>
 #include <QProcess>
+#include <QDesktopServices>
+#include <QUrl>
 
 
 #include "blfunctions.h"
@@ -1253,6 +1255,31 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 	      comando = "\"" + comando + "\"";
 	      system ( comando.toAscii().data() );		
       #endif
+
+}
+void blWebBrowser(const QString &uri, const QString &defbrowser) {
+    BL_FUNC_DEBUG
+    QString browser = "";
+    if (browser.isEmpty()) {
+        browser = g_confpr->value(CONF_NAVEGADOR);
+    } // end if
+    
+    #ifndef Q_OS_WIN32
+        QString commas = " ";
+        QString inbackground = " &";
+    #else
+        QString commas= "\" ";
+        QString inbackground = "";
+    #endif
+    
+    if (browser.isEmpty()) {
+        QDesktopServices::openUrl(QUrl(uri, QUrl::TolerantMode));
+    }
+    
+    else {
+        QString webcommand = commas + browser + commas + QUrl(uri, QUrl::TolerantMode).toString() + inbackground;
+        system ( webcommand.toAscii().data() );
+    }
 
 }
 

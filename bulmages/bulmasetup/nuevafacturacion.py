@@ -67,7 +67,8 @@ class NuevaFacturacion(Facturacion):
             self.process.waitForFinished(-1)
 
         # Cambiamos el nombre de la empresa
-        self.nomempresa = self.mui_nomempresa.text()
+        self.nomempresa = unicode(self.mui_nomempresa.text()).encode('utf8')
+        print self.nomempresa
         self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
         self.command = 'su postgres -c \'psql ' + self.database + ' -c \"' +self.subcomand+ '\"\''
         self.writecommand(self.command)

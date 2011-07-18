@@ -2,13 +2,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-05-30 17:34+0200\n"
-"PO-Revision-Date: 2011-03-09 17:18+0100\n"
+"PO-Revision-Date: 2011-07-03 07:47+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +21,7 @@ msgstr "..."
 
 #: archmenu.cpp:103 archmenu.cpp:149
 msgid "Abrir"
-msgstr ""
+msgstr "Obrir"
 
 #: ui_archivobase.h:104
 msgid "Aceptar"
@@ -30,7 +29,7 @@ msgstr "Accepta"
 
 #: archmenu.cpp:93 archmenu.cpp:140
 msgid "Agregar Archivo "
-msgstr ""
+msgstr "Afegir fitxer"
 
 #: archivo.cpp:66
 msgid "All files (*)"
@@ -38,11 +37,11 @@ msgstr "Tots els fitxers (*)"
 
 #: ui_archivobase.h:102
 msgid "Archivo"
-msgstr "Arxiu"
+msgstr "Fitxer"
 
 #: archmenu.cpp:137
 msgid "Archivo Documental"
-msgstr ""
+msgstr "Fitxer Documental"
 
 #: archmenu.cpp:108 archmenu.cpp:153
 msgid "Borrar"

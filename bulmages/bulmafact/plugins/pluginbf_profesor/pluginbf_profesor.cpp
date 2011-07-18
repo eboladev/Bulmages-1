@@ -61,7 +61,7 @@ int entryPoint ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         BlAction *accionA = new BlAction ( _ ( "&Profesores" ), 0 );
-        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.png" ) ) );
         accionA->setStatusTip ( _ ( "Profesores" ) );
         accionA->setWhatsThis ( _ ( "Profesores" ) );
         accionA->setObjectName("mui_actionProfesores");
@@ -94,13 +94,13 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionProfesores") {
         if ( g_profesoresList ) {
             g_profesoresList->hide();
             g_profesoresList->show();
         } // end if
     } // end if
-
     if (accion->objectName() == "mui_actionProfesorNuevo") {
         ProfesorView * bud = new ProfesorView ( g_pluginbf_profesor->company(), NULL );
         g_pluginbf_profesor->company()->m_pWorkspace->addSubWindow ( bud );
@@ -110,6 +110,7 @@ int BlAction_triggered(BlAction *accion) {
         AboutFapacView *afv = new AboutFapacView();
         afv->show();
     } // end if
+    return 0;
 }
 
 
@@ -122,8 +123,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         comp->m_pWorkspace->addSubWindow ( g_profesoresList );
         g_profesoresList->hide();
     } // end if
-    
-    
     
     return 0;
 }

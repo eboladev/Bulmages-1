@@ -14,6 +14,9 @@ add_subdirectory(pluginbl_attachdocument)
 add_subdirectory(pluginbl_bloqconf)
 add_subdirectory(pluginbl_logo)
 #add_subdirectory(pluginbl_backup)
+add_subdirectory(pluginbl_feeds)
+
+add_subdirectory(pluginbl_exaro)
 
 if(NOT WIN32)
 if(NOT APPLE)

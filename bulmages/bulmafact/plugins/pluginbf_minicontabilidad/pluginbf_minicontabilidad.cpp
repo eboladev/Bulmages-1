@@ -26,6 +26,7 @@
 #include "partidasview.h"
 #include "acontableview.h"
 #include "presupuestocontablelist.h"
+#include "blaction.h"
 
 
 ApunteContableView *g_ap = NULL;
@@ -58,7 +59,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
 
         pPluginMenu->addSeparator();
-        QAction *accionA = new QAction ( _ ( "&Partidas contables" ), 0 );
+        BlAction *accionA = new BlAction ( _ ( "&Partidas contables" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/account_plan.png" ) ) );
         accionA->setStatusTip ( _ ( "Partidas contables" ) );
         accionA->setWhatsThis ( _ ( "Partidas contables" ) );
@@ -66,25 +67,22 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addAction ( accionA );
         g_pluginbf_minicontabilidad->Fichas->addAction ( accionA );
 
-        QAction *accionB = new QAction ( _ ( "&Anotaciones contables" ), 0 );
+        BlAction *accionB = new BlAction ( _ ( "&Anotaciones contables" ), 0 );
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/balance-sheet.png" ) ) );
         accionB->setStatusTip ( _ ( "Anotaciones contables" ) );
         accionB->setWhatsThis ( _ ( "Anotaciones contables" ) );
-        accionA->setObjectName("mui_actionContablesAnotaciones");
+        accionB->setObjectName("mui_actionContablesAnotaciones");
         pPluginMenu->addAction ( accionB );
         g_pluginbf_minicontabilidad->Fichas->addAction ( accionB );
 
-        QAction *accionC = new QAction ( _ ( "&Previsiones" ), 0 );
+        BlAction *accionC = new BlAction ( _ ( "&Previsiones" ), 0 );
         accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/book-list.png" ) ) );
         accionC->setStatusTip ( _ ( "Presupuesto Contables" ) );
         accionC->setWhatsThis ( _ ( "Presupuestos Contables" ) );
-        accionA->setObjectName("mui_actionContablesPresupuestos");
+        accionC->setObjectName("mui_actionContablesPresupuestos");
         pPluginMenu->addAction ( accionC );
         g_pluginbf_minicontabilidad->Fichas->addAction ( accionC );
-
      } // end if
-
-
     g_ap = new ApunteContableView ( ( BfCompany * ) bges->company(), 0 );
     bges->company() ->m_pWorkspace->addSubWindow ( g_ap );
     
@@ -92,7 +90,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    
+    BL_FUNC_DEBUG
 
     if (accion->objectName() == "mui_actionContablesPartidas") {
         PartidasView *pag = new PartidasView ( g_pluginbf_minicontabilidad->company(), 0, FALSE );
@@ -103,7 +101,6 @@ int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionContablesAnotaciones") {
         g_ap->hide();
         g_ap->show();
-        
     } // end if
 
     if (accion->objectName() == "mui_actionContablesPresupuestos") {
@@ -112,7 +109,6 @@ int BlAction_triggered(BlAction *accion) {
         pag->show();
     } // end if
 
-    
     return 0;
 }
 

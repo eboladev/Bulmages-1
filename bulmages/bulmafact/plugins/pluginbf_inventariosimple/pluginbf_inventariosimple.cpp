@@ -61,7 +61,10 @@ int entryPoint ( BfBulmaFact *bges )
 
     return 0;
 }
+
+
 int BlAction_triggered(BlAction *accion) {
+    BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionInventarios") {
         ListInventarioSimpleView *tar = new ListInventarioSimpleView ( g_pluginbf_inventariosimple->company(), NULL );
         g_pluginbf_inventariosimple->company()->m_pWorkspace->addSubWindow ( tar );

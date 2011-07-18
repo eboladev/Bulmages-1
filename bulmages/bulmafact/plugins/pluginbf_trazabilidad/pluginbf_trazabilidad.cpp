@@ -77,7 +77,6 @@ int BlAction_triggered(BlAction *accion) {
         mov->show();
     } // end if
 
-    
     return 0;
 }
 

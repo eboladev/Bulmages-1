@@ -245,8 +245,7 @@ void BcDiarioPrintView::presentar ( const char *tipus )
         }
         if ( html ) {
             /// Presentaci&oacute; html normal.
-            QString cadaux = g_confpr->value( CONF_NAVEGADOR ) + " diario.html";
-            system ( cadaux.toAscii() );
+            blWebBrowser("diario.html");
         } // end if
     } // end if
 
