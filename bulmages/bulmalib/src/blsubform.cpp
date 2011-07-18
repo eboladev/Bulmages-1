@@ -1866,24 +1866,38 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-	
         return;
     } // end if
 
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
 
+    /// Si existe la restriccion unique la comprobamos y no permitimos establecer el valor saliendo con un aviso.
+    if ( camp->restrictcampo() & BlDbField::DbUnique && camp->valorcampo() != "") {
+	BlDbSubFormRecord *rec1;
+	for ( int i = 0; i < mui_list->rowCount(); ++i ) {
+	    rec1 =  lineaat ( i );
+	    if ( rec1 && rec1 != rec) {
+	      if (rec1->dbValue(camp->fieldName()) == camp->valorcampo()) {
+		blMsgInfo( _ ("Ya existe un elemento con este valor en el subformulario. Se viola una clave unica."));
+		camp->set("");
+		return;
+	      } // end if
+	    } // end if
+	} // end for
+    } // end if
+    
+    
     /// Si el campo no ha sido cambiado se sale.
     if ( ! camp->cambiado() ) {
 	BlDebug::blDebug ( ( Q_FUNC_INFO), 0, _("Sin cambios"));
         return;
     } // end if
 
-    /// En el caso de tener una fecha directamente la tratamos ya que esta claro cual es su tratamiento.
+    /// En el caso de tener una fecha directamente la tratamos ya que este claro cual es su tratamiento.
     if (camp->dbFieldType() == BlDbField::DbDate) {
         camp->set ( blNormalizeDate ( camp->valorcampo() ).toString ( "dd/MM/yyyy" ) );
     } // end if
-
 
     if ( m_procesacambios ) {
         m_procesacambios = FALSE;
@@ -2044,6 +2058,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
 {
     BL_FUNC_DEBUG
     try {
+      
         BlDbSubFormRecord *rec;
         if ( row == -1 )
             rec = lineaact();
@@ -2051,6 +2066,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
             rec = lineaat ( row );
         if ( rec == NULL )
             throw - 1;
+
         rec->setDbValue ( campo, valor );
         
     } catch ( ... ) {

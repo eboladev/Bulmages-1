@@ -124,7 +124,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    if ( g_fieldName == "nomcliente" ) {
+    if ( g_fieldName == "nomcliente" || g_fieldName == "nombretutor1") {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreCliente" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -184,15 +184,16 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    if ( sub->m_campoactual->fieldName() == "nomcliente" ) {
+    if ( sub->m_campoactual->fieldName() == "nombretutor1" || sub->m_campoactual->fieldName() == "nomcliente") {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ' ' || COALESCE(nomcliente,'') ) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
 	    if (sub->existsHeader("apellido1cliente"))
 	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->value( "apellido1cliente" ) );
 	    if (sub->existsHeader("apellido2cliente"))
-            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->value( "apellido2cliente" ) );
-            sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
+	      sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->value( "apellido2cliente" ) );
+	    if (sub->existsHeader("nomcliente"))
+	      sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
         } // end if
         delete cur;
     } // end if
@@ -442,7 +443,7 @@ void SubForm_Tutor::nuevoTutor( )
     if (idCliente != "") {
         subf->lineaact()->setDbValue ( "idcliente", idCliente );
 	subf->lineaact()->setDbValue ( "cifcliente", art->dbValue ( "cifcliente" ) );
-        subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
+//        subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
     } // end if
     delete art;  
     
@@ -479,7 +480,7 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcliente", idTutor );
         sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
-        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
+//        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
     } // end if
     delete cur;
 

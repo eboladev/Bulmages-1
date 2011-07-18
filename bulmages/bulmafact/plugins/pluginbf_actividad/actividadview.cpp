@@ -212,7 +212,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
     addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
-    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired | BlDbField::DbUnique , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "bancoalumnoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Banco alumno" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
@@ -246,8 +246,9 @@ ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubFo
     setDbTableName ( "clienteactividad" );
     setDbFieldId ( "idclienteactividad" );
     addSubFormHeader ( "idclienteactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
-    addSubFormHeader ( "nombretutor1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre tutor" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired  | BlDbField::DbUnique, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
+//    addSubFormHeader ( "nombretutor1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre tutor" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
     addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "CIF" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
@@ -265,7 +266,7 @@ void ListTutoresActividadView::load ( QString idactividad )
 {
     BL_FUNC_DEBUG
     
-    BlSubForm::load ( "SELECT *, ( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ', ' || COALESCE(nomcliente,'')) AS nombretutor1 FROM clienteactividad LEFT JOIN cliente ON clienteactividad.idcliente = cliente.idcliente WHERE clienteactividad.idactividad=" + idactividad  );
+    BlSubForm::load ( "SELECT ( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ', ' || COALESCE(nomcliente,'')) AS nomcliente, * FROM clienteactividad LEFT JOIN cliente ON clienteactividad.idcliente = cliente.idcliente WHERE clienteactividad.idactividad=" + idactividad  );
     
     
 }
