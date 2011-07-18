@@ -94,10 +94,10 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip">
-           <string>Guardar cobro</string>
+           <string>Guardar</string>
           </property>
           <property name="whatsThis">
-           <string>Guardar cobro</string>
+           <string>Guardar</string>
           </property>
           <property name="text">
            <string/>
@@ -135,10 +135,10 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip">
-           <string>Borrar cobro</string>
+           <string>Borrar</string>
           </property>
           <property name="whatsThis">
-           <string>Borrar cobro</string>
+           <string>Borrar</string>
           </property>
           <property name="text">
            <string/>
@@ -176,10 +176,10 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip">
-           <string>Borrar cobro</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis">
-           <string>Borrar cobro</string>
+           <string>Borrar</string>
           </property>
           <property name="text">
            <string/>
