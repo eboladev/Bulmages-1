@@ -331,7 +331,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
     setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setOrdenEnabled ( FALSE );
     
     
 }
@@ -363,7 +363,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id actividad" ) );
 
     setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setOrdenEnabled ( FALSE );
     
     
 }
