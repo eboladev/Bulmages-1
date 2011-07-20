@@ -442,8 +442,10 @@ void SubForm_Tutor::nuevoTutor( )
     QString idCliente = art->dbValue("idcliente");
     if (idCliente != "") {
         subf->lineaact()->setDbValue ( "idcliente", idCliente );
-	subf->lineaact()->setDbValue ( "cifcliente", art->dbValue ( "cifcliente" ) );
-//        subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
+	if (subf->existsHeader("cifcliente"))
+	  subf->lineaact()->setDbValue ( "cifcliente", art->dbValue ( "cifcliente" ) );
+	if (subf->existsHeader("nomcliente"))
+	  subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
     } // end if
     delete art;  
     
@@ -479,8 +481,10 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idTutor );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcliente", idTutor );
-        sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
-//        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
+	if (sub->existsHeader("cifcliente"))
+	    sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
+	if (sub->existsHeader("nomcliente"))
+	    sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
     } // end if
     delete cur;
 
