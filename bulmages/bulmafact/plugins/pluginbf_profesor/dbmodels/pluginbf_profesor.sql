@@ -427,9 +427,9 @@ BEGIN
             idreunion SERIAL PRIMARY KEY,
             tiporeunion VARCHAR NOT NULL,
             fecha1convocatoriareunion date DEFAULT now() NOT NULL,
-            fecha2convocatoriareunion date DEFAULT now() NOT NULL,
+            fecha2convocatoriareunion date DEFAULT now(),
             hora1convocatoriareunion varchar NOT NULL,
-            hora2convocatoriareunion varchar NOT NULL,
+            hora2convocatoriareunion varchar,
             conceptoreunion TEXT,
             resolucionreunion TEXT
         );
