@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2009-06-29 00:13+0200\n"
 "Last-Translator: Leopold Palomo Avellaneda <leo@alaxarxa.net>\n"
 "Language-Team:  <ca@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -132,7 +133,7 @@ msgstr "&Activitats"
 
 #: pluginbf_actividad.cpp:52 pluginbf_profesor.cpp:57
 msgid "&Activitats"
-msgstr ""
+msgstr "&Activitats"
 
 #: ui_bcbulmacontbase.h:265
 msgid "&Actualizar"
@@ -194,7 +195,7 @@ msgstr "&Associació"
 
 #: pluginbf_tutor.cpp:51 pluginbf_alumno.cpp:56 pluginbf_alumno.cpp:80
 msgid "&Associats"
-msgstr ""
+msgstr "&Associats"
 
 #: pluginbc_balancearbol.cpp:51 pluginbc_balance.cpp:54
 msgid "&Balance jerarquico"
@@ -360,15 +361,15 @@ msgstr "&Contractes"
 
 #: pluginbf_asociacion.cpp:99
 msgid "&Convocar comision"
-msgstr ""
+msgstr "&Convoca comissió"
 
 #: pluginbf_asociacion.cpp:66
 msgid "&Convocar junta directiva"
-msgstr ""
+msgstr "Convoca junta directiva"
 
 #: pluginbf_asociacion.cpp:83
 msgid "&Convocar reunion"
-msgstr ""
+msgstr "C&onvoca reunió"
 
 #: pluginbc_corrector.cpp:73 pluginbf_corrector.cpp:72
 msgid "&Corrector"
@@ -579,7 +580,7 @@ msgstr ""
 
 #: pluginbf_asociacion.cpp:58
 msgid "&Juntas directivas"
-msgstr ""
+msgstr "&Juntes directives"
 
 #: ui_balanceprintbase.h:329 ui_bcdiarioprintbase.h:153
 msgid "&Kugar"
@@ -969,7 +970,7 @@ msgstr "&Valida"
 #: pluginbf_clientepedido.cpp:54 pluginbf_clienteticket.cpp:55
 #: pluginbf_clientealbaran.cpp:55
 msgid "&Ventas"
-msgstr ""
+msgstr "&Vendes"
 
 #: pluginbc_balancearbol.cpp:49 pluginbc_depuracion.cpp:46
 #: pluginbc_amortizacion.cpp:55 pluginbc_balance.cpp:52 pluginbc_mayor.cpp:91
@@ -1740,7 +1741,7 @@ msgstr "Abril"
 
 #: archmenu.cpp:103 archmenu.cpp:149
 msgid "Abrir"
-msgstr ""
+msgstr "Obrir"
 
 #: ui_bcasientobase.h:478 ui_bcasientobase.h:481
 msgid "Abrir asiento"
@@ -1905,7 +1906,7 @@ msgstr "Afegir"
 
 #: archmenu.cpp:93 archmenu.cpp:140
 msgid "Agregar Archivo "
-msgstr ""
+msgstr "Afegir fitxer"
 
 #: ui_bcbloqueafechabase.h:136
 msgid "Agregar Ejercicio"
@@ -2258,7 +2259,7 @@ msgstr "Fitxer"
 
 #: archmenu.cpp:137
 msgid "Archivo Documental"
-msgstr ""
+msgstr "Fitxer Documental"
 
 #: pluginbt_devolucion2.cpp:86 pluginbt_buscaarticulo.cpp:58
 #: blimportexport.cpp:2282 listlinfacturapview.cpp:48 articuloview.cpp:58
@@ -2444,8 +2445,8 @@ msgstr "Balanç"
 #: q19writer.cpp:456
 #, qt-format
 msgid ""
-"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %"
-"4), para cliente %5 (%6)"
+"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. "
+"%4), para cliente %5 (%6)"
 msgstr ""
 
 #: bccuentaview.cpp:61
@@ -2823,7 +2824,7 @@ msgstr "Esborrar"
 
 #: ui_ticketclientebase.h:744 ui_ticketclientebase.h:747
 msgid "Borrar ticket"
-msgstr ""
+msgstr "Esborrar ticket"
 
 #: ui_trabajadorbase.h:353 ui_trabajadorbase.h:356
 #, fuzzy
@@ -3931,11 +3932,11 @@ msgstr "Convocats"
 
 #: pluginbf_asociacion.cpp:101 pluginbf_asociacion.cpp:102
 msgid "Convocar comision"
-msgstr ""
+msgstr "Convoca comissió"
 
 #: pluginbf_asociacion.cpp:68 pluginbf_asociacion.cpp:69
 msgid "Convocar junta directiva"
-msgstr ""
+msgstr "Convoca junta directiva"
 
 #: ui_convreunionbase.h:361 ui_convreunionbase.h:364
 msgid "Convocar por E-mail"
@@ -3943,7 +3944,7 @@ msgstr "Convoca per E-mail"
 
 #: pluginbf_asociacion.cpp:85 pluginbf_asociacion.cpp:86
 msgid "Convocar reunion"
-msgstr ""
+msgstr "Convoca reunió"
 
 #: convocatoriaview.cpp:48
 msgid "Convocatoria"
@@ -4638,14 +4639,12 @@ msgid "Descripcion del asiento"
 msgstr "Descripció del seient"
 
 #: cobroview.cpp:70
-#, fuzzy
 msgid "Descripcion del cobro"
-msgstr ""
+msgstr "Descripció de cobrament"
 
 #: ui_cobrobase.h:412
-#, fuzzy
 msgid "Descripcion del cobro:"
-msgstr ""
+msgstr "Decripció del cobrament"
 
 #: ui_pagobase.h:328
 msgid "Descripcion del pago:"
@@ -5940,7 +5939,7 @@ msgstr ""
 #: ui_btbulmatpvbase.h:102
 #, fuzzy
 msgid "Estadisticas"
-msgstr ""
+msgstr "Assentaments"
 
 #: bcbloqueafechaview.cpp:118 incidenciacomercial.cpp:46
 msgid "Estado"
@@ -6418,12 +6417,12 @@ msgstr "NIF del proveïdor"
 #: almacenview.cpp:66
 #, fuzzy
 msgid "Fecha almacen"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: pluginbf_comercial.cpp:147
 #, fuzzy
 msgid "Fecha base"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: ui_comercialclientebase.h:138
 #, fuzzy
@@ -6437,7 +6436,7 @@ msgstr "Data de compra"
 #: ui_bcasientoduplicarbase.h:235
 #, fuzzy
 msgid "Fecha con la que quedara el asiento:"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: ui_inventariobase.h:337
 msgid "Fecha creacion:"
@@ -6460,6 +6459,10 @@ msgstr "Data de la compra"
 #, fuzzy
 msgid "Fecha de alta del cliente"
 msgstr ""
+"#-#-#-#-#  pluginbf_cliente_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Data d'alta del client\n"
+"#-#-#-#-#  pluginbf_tutor_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Data d'alta del pare/mare/tutor"
 
 #: contratoslist.cpp:337
 #, fuzzy
@@ -6470,6 +6473,10 @@ msgstr "Data de la compra"
 #, fuzzy
 msgid "Fecha de baja del cliente"
 msgstr ""
+"#-#-#-#-#  pluginbf_cliente_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Data de baixa del client\n"
+"#-#-#-#-#  pluginbf_tutor_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Data de baixa del pare/mare/tutor"
 
 #: contratoslist.cpp:338 contratoslist.cpp:339
 #, fuzzy
@@ -6545,11 +6552,14 @@ msgstr "Data de compra:"
 #, fuzzy
 msgid "Fecha de vencimiento"
 msgstr ""
+"#-#-#-#-#  pluginbf_carteracobros_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Data de venciment\n"
+"#-#-#-#-#  pluginbf_clientecobro_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Data de l'assentament"
 
 #: ui_cobrobase.h:411 ui_presupuestoclientebase.h:807
-#, fuzzy
 msgid "Fecha de vencimiento:"
-msgstr ""
+msgstr "&Data del venciment"
 
 #: bcasientoform.cpp:47
 msgid "Fecha del asiento"
@@ -8081,8 +8091,7 @@ msgstr "Importa comptes"
 msgid ""
 "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 "
 "decimales "
-msgstr ""
-"Import excesiu (%1) !. El limit son %2 digits, incluint els 2 "
+msgstr "Import excesiu (%1) !. El limit son %2 digits, incluint els 2 "
 
 #: q19writer.cpp:434
 #, qt-format
@@ -8522,7 +8531,7 @@ msgstr "Juntes Directives"
 
 #: pluginbf_asociacion.cpp:60 pluginbf_asociacion.cpp:61
 msgid "Juntas directivas"
-msgstr ""
+msgstr "Juntes Directives"
 
 #: blmaincompany.cpp:255
 msgid "La base de datos no esta preparada para el plugin:"
@@ -9669,7 +9678,7 @@ msgstr "Nou article"
 #: ui_contratobase.h:453
 #, fuzzy
 msgid "Nuevo Contrato"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:467
@@ -9683,7 +9692,7 @@ msgstr "Nou Pare/Soci"
 #: ui_rutacomerciallistbase.h:303 ui_rutacomerciallistbase.h:306
 #, fuzzy
 msgid "Nuevo Pedido"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_recibobase.h:347
 msgid "Nuevo Recibo"
@@ -9704,9 +9713,8 @@ msgstr "Nou canal"
 
 #: pluginbf_tutor.cpp:538 pluginbf_tutor.cpp:539 ui_tutoreslistbase.h:246
 #: ui_tutoreslistbase.h:249
-#, fuzzy
 msgid "Nuevo Tutor"
-msgstr ""
+msgstr "Nou pare/mare/tutor"
 
 #: pluginbf_actividad.cpp:229 pluginbf_actividad.cpp:254
 msgid "Nuevo actividad"
@@ -9721,9 +9729,8 @@ msgstr "Esborra albarà"
 
 #: ui_albaranclientebase.h:735 pluginbf_clientealbaran.cpp:70
 #: pluginbf_clientealbaran.cpp:71
-#, fuzzy
 msgid "Nuevo albaran a cliente"
-msgstr ""
+msgstr "Nou albarà a client"
 
 #: pluginbf_proveedoralbaran.cpp:65 pluginbf_proveedoralbaran.cpp:66
 #: ui_albaranproveedorbase.h:587
@@ -9734,20 +9741,18 @@ msgstr "Nom del proveïdor"
 #: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 #, fuzzy
 msgid "Nuevo almacen"
-msgstr ""
+msgstr "Nou assentament"
 
 #: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:290
 #: pluginbf_alumno.cpp:315
-#, fuzzy
 msgid "Nuevo alumno"
-msgstr ""
+msgstr "Nou alumne/nova alumna"
 
 #: pluginbf_articulo.cpp:68 pluginbf_articulo.cpp:69 pluginbf_articulo.cpp:327
 #: pluginbf_articulo.cpp:352 ui_articleeditbase.h:584
 #: ui_articleslistbase.h:292 ui_articleslistbase.h:295
-#, fuzzy
 msgid "Nuevo articulo"
-msgstr ""
+msgstr "Nou article"
 
 #: ui_bcasientobase.h:502 ui_bcasientobase.h:505 ui_bcasientobase.h:508
 #: ui_bcasientobase.h:511
@@ -9772,9 +9777,8 @@ msgid "Nuevo cobro"
 msgstr "Nou"
 
 #: ui_cobrobase.h:382
-#, fuzzy
 msgid "Nuevo cobro a cliente"
-msgstr ""
+msgstr "Nou cobrament a client"
 
 #: pluginbf_clientecobro.cpp:69 pluginbf_clientecobro.cpp:70
 #, fuzzy
@@ -9795,9 +9799,8 @@ msgid "Nuevo padre/socio"
 msgstr "Nou pare/soci"
 
 #: ui_pagoslistbase.h:378 ui_pagoslistbase.h:381
-#, fuzzy
 msgid "Nuevo pago"
-msgstr ""
+msgstr "Nou pagament"
 
 #: pluginbf_proveedorpago.cpp:66 pluginbf_proveedorpago.cpp:67
 #: ui_pagobase.h:309
@@ -9813,7 +9816,7 @@ msgstr "Nou"
 #: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
 #, fuzzy
 msgid "Nuevo pedido"
-msgstr ""
+msgstr "Nou assentament"
 
 #: pluginbf_proveedorpedido.cpp:64 pluginbf_proveedorpedido.cpp:65
 #: ui_pedidosproveedorlistbase.h:364 ui_pedidosproveedorlistbase.h:367
@@ -9864,16 +9867,15 @@ msgstr "Nou rebut"
 #: pluginbf_clienteticket.cpp:70 pluginbf_clienteticket.cpp:71
 #: ui_ticketclientebase.h:735
 msgid "Nuevo ticket a cliente"
-msgstr ""
+msgstr "Nou ticket a client"
 
 #: ui_trabajadorbase.h:367 ui_trabajadorbase.h:370
 msgid "Nuevo trabajador"
 msgstr "Nou treballador"
 
 #: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:400
-#, fuzzy
 msgid "Nuevo tutor"
-msgstr ""
+msgstr "Nou pare/mare/tutor"
 
 #: btticket.cpp:66
 msgid "Num"
@@ -10141,7 +10143,7 @@ msgid "Orden de asiento"
 msgstr "Ordre del seient"
 
 #: ui_bcasientobase.h:561
-msgid "Orden del sient:"
+msgid "Orden del asiento:"
 msgstr ""
 
 #: pluginbf_bulmatpv.cpp:104
@@ -10409,7 +10411,7 @@ msgstr "Direcció del proveïdor"
 #: pluginbf_clientepedido.cpp:60 pedidosclientelist.cpp:257
 #, fuzzy
 msgid "Pedidos de clientes"
-msgstr ""
+msgstr "Llistat d'assentaments"
 
 #: pedidosproveedorlist.cpp:123 pedidosclientelist.cpp:120
 msgid "Pedidos no procesados"
@@ -10740,9 +10742,8 @@ msgid "Preferencias"
 msgstr "Referència"
 
 #: ui_inventariobase.h:330 ui_inventariobase.h:333
-#, fuzzy
 msgid "Pregenerar inventario"
-msgstr ""
+msgstr "Pregenera inventari"
 
 #: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
 #: bfinformereferencia.cpp:138 bfinformereferencia.cpp:208
@@ -10896,7 +10897,7 @@ msgstr "Professor"
 
 #: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
 msgid "Profesores"
-msgstr ""
+msgstr "Monitors"
 
 #: ui_bcconfiguracionbase.h:238 ui_bfconfiguracionbase.h:421
 #: ui_bfbulmafactbase.h:170
@@ -11005,8 +11006,8 @@ msgid "Punteos (*.pto)"
 msgstr "Puntejos (*.pto)"
 
 #: pluginbf_abrecodigobarras.cpp:76
-msgid "Apertura rapida"
-msgstr "Opertura ràpida"
+msgid "QInputDialog::getText()"
+msgstr ""
 
 #: ui_blformconfigbase.h:338
 msgid "Qt Scripting"
@@ -11219,9 +11220,8 @@ msgid "Reg&ularizacion"
 msgstr "Regularització"
 
 #: ui_proveditbase.h:865
-#, fuzzy
 msgid "Regimen &fiscal:"
-msgstr ""
+msgstr "Regim &fiscal:"
 
 #: provedit.cpp:62
 msgid "Regimen Fiscal"
@@ -11535,7 +11535,7 @@ msgstr ""
 
 #: pluginbf_tutor.cpp:547 pluginbf_tutor.cpp:548
 msgid "Seleccionar Tutor"
-msgstr ""
+msgstr "Selecona Pare/Mare/Tutor"
 
 #: pluginbf_actividad.cpp:233 pluginbf_actividad.cpp:252
 msgid "Seleccionar actividad"
@@ -11685,9 +11685,8 @@ msgid "Serie Factura"
 msgstr "Factura"
 
 #: listseriefacturaview.cpp:48 bfseriefacturaview.cpp:48
-#, fuzzy
 msgid "Serie de Factura"
-msgstr ""
+msgstr "Sèrie de factura"
 
 #: ui_facturabase.h:705 ui_facturaslistbase.h:540
 #, fuzzy
@@ -11813,7 +11812,7 @@ msgstr "Puja"
 
 #: blsubform.cpp:3155
 msgid "Subir fila"
-msgstr ""
+msgstr "Pujar la fila"
 
 #: bcsubform.cpp:467
 msgid "Submenu de contabilidad"
@@ -12646,7 +12645,7 @@ msgstr ""
 
 #: blsubform.cpp:3162
 msgid "Usar editor"
-msgstr ""
+msgstr "Usa l'editor"
 
 #: ui_blformconfigbase.h:334
 msgid "User Preferences"
@@ -13107,7 +13106,7 @@ msgstr ""
 #: vencimientopview.cpp:76
 #, fuzzy
 msgid "idproveedor de Vencimiento"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: cobropagoview.cpp:52 registroivaview.cpp:81 registroivaview.cpp:96
 #: bcdiariosubform.cpp:57
@@ -13267,3 +13266,5 @@ msgstr "y   ( >="
 msgid "y <="
 msgstr "y <="
 
+#~ msgid "Apertura rapida"
+#~ msgstr "Opertura ràpida"

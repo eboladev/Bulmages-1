@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-04 22:50+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: 2011-06-04 22:53+0100\n"
 "Last-Translator: Daniel Ripoll Osma <dripoll.public@gmail.com>\n"
 "Language-Team: Bulmages\n"
@@ -19,21 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Country: SPAIN\n"
 
-#: pluginbt_example.cpp:51
-#: pluginbt_example.cpp:57
-msgid "Punto de entrada de PluginBt_Example"
-msgstr ""
-
-#: pluginbt_example.cpp:71
-msgid "Ejemplo"
+#: example.cpp:55
+msgid "Activado"
 msgstr ""
 
 #: example.cpp:49
 msgid "Desactivado"
 msgstr ""
 
-#: example.cpp:55
-msgid "Activado"
+#: pluginbt_example.cpp:71
+msgid "Ejemplo"
 msgstr ""
 
 #: ui_examplebase.h:70
@@ -44,3 +39,6 @@ msgstr "Form"
 msgid "Hazme Click!"
 msgstr "¡Hazme click!"
 
+#: pluginbt_example.cpp:51
+msgid "Punto de entrada de PluginBt_Example"
+msgstr ""

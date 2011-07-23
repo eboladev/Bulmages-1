@@ -33,7 +33,7 @@
 
 
 
-class EQToolButton : public QToolButton
+class ADQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -43,8 +43,8 @@ private:
 
 
 public:
-    EQToolButton ( QWidget *parent = NULL );
-    ~EQToolButton();
+    ADQToolButton ( QWidget *parent = NULL );
+    ~ADQToolButton();
 
 public slots:
     //virtual void click();

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:29+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -131,7 +131,7 @@ msgstr "Asigne un nombre al ticket antes de aparcarlo."
 msgid "El ticket esta vacio. No se puede aparcar."
 msgstr "El ticket esta vacio. No se puede aparcar."
 
-#: tickets.cpp:66
+#: abrevs.cpp:125 tickets.cpp:64
 msgid ""
 "Este ticket esta bloqueado por otro terminal.\n"
 "Desea abrirlo de todos modos?"
@@ -145,7 +145,7 @@ msgstr "Form"
 msgid "Recuperar"
 msgstr ""
 
-#: tickets.cpp:65
+#: abrevs.cpp:124 tickets.cpp:63
 msgid "Ticket bloqueado"
 msgstr ""
 

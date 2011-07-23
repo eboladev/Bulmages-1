@@ -132,10 +132,9 @@ void JDirectivaView::imprimir()
 int JDirectivaView::afterSave()
 {
     BL_FUNC_DEBUG
-    
+
     mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
     mui_list->save();
-    
     
     return 0;
 }

@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:37+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -135,7 +135,7 @@ msgstr ""
 msgid "Centro de coste:"
 msgstr "Centre de cost:"
 
-#: balanceview.cpp:277
+#: balancesubform.cpp:38 balanceview.cpp:277
 msgid "Codigo"
 msgstr "Codi"
 
@@ -163,11 +163,13 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancetreebase.h:404 ui_balancebase.h:441
+#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancebase.h:441
+#: ui_balancetreebase.h:404
 msgid "Cuenta final:"
 msgstr "Compte final"
 
-#: ibalanceprintview.cpp:56 balanceview.cpp:68 ui_balancetreebase.h:407 ui_balancebase.h:439
+#: balanceprintview.cpp:56 balanceview.cpp:68 ui_balancebase.h:439
+#: ui_balancetreebase.h:407
 msgid "Cuenta inicial:"
 msgstr "Compte inicial:"
 
@@ -193,6 +195,22 @@ msgstr "Deure"
 msgid "Denominacion"
 msgstr "Denominació"
 
+#: balancesubform.cpp:39
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: balancesubform.cpp:44
+msgid "Ejercicio debe"
+msgstr ""
+
+#: balancesubform.cpp:46
+msgid "Ejercicio saldo"
+msgstr ""
+
+#: balancesubform.cpp:45
+msgid "Ejercico haber"
+msgstr ""
+
 #: ui_balancebase.h:421
 msgid "F5"
 msgstr "F5"
@@ -202,16 +220,16 @@ msgstr "F5"
 msgid "Fecha final"
 msgstr "Data final"
 
+#: ui_balancebase.h:440 ui_balancetreebase.h:405
+msgid "Fecha final:"
+msgstr "Data final:"
+
 #: ui_balanceprintbase.h:319 ui_balancesprintdlg.h:199
 #, fuzzy
 msgid "Fecha inicial"
 msgstr "Data inicial"
 
-#: ui_balancetreebase.h:405 ui_balancebase.h:440
-msgid "Fecha final:"
-msgstr "Data final:"
-
-#: ui_balancetreebase.h:406 ui_balancebase.h:438
+#: ui_balancebase.h:438 ui_balancetreebase.h:406
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
@@ -258,10 +276,13 @@ msgstr "Haver"
 msgid "Haber:"
 msgstr "Haver"
 
+#: balancesubform.cpp:36
+msgid "Id cuenta"
+msgstr "Id compte"
+
 #: ui_balancesprintdlg.h:197
-#, fuzzy
-msgid "Impresion de Balances"
-msgstr "Gestió de &famílies"
+msgid "Impresion de balances"
+msgstr ""
 
 #: ui_balanceprintbase.h:312
 #, fuzzy
@@ -293,7 +314,7 @@ msgstr "Incloure resultats parcials"
 msgid "Nivel de Cuentas"
 msgstr "Tipus de compte"
 
-#: ui_balancetreebase.h:408 ui_balancebase.h:442
+#: ui_balancebase.h:442 ui_balancetreebase.h:408
 msgid "Nivel:"
 msgstr ""
 
@@ -324,15 +345,24 @@ msgstr "Saldo"
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 
-#: ui_balancetreebase.h:410 ui_balancebase.h:449
+#: ui_balancebase.h:449 ui_balancetreebase.h:410
 #, fuzzy
 msgid "Saldo anterior:"
 msgstr "Saldo anterior"
 
-#: ui_balancetreebase.h:413 ui_balancebase.h:447
+#: balancesubform.cpp:40
+msgid "Saldo apunte"
+msgstr ""
+
+#: ui_balancebase.h:447 ui_balancetreebase.h:413
 #, fuzzy
 msgid "Saldo:"
 msgstr "Saldo"
+
+#: balancesubform.cpp:37
+#, fuzzy
+msgid "Tipo cuenta"
+msgstr "Tipus"
 
 #: ui_balancetreebase.h:411
 #, fuzzy
@@ -344,50 +374,40 @@ msgstr "Totals:"
 msgid "Total Haber:"
 msgstr "Total Haver:"
 
+#: balancesubform.cpp:41
+msgid "Total debe"
+msgstr ""
+
+#: balancesubform.cpp:42
+msgid "Total haber"
+msgstr ""
+
+#: balancesubform.cpp:43
+msgid "Total saldo"
+msgstr ""
+
 #: balancesubform.cpp:84
 msgid "Ver configurador de subformulario"
 msgstr "Veure el configurador de subformulari"
 
-#: balancesubform.cpp:40
-msgid "asaldo"
-msgstr ""
+#, fuzzy
+#~ msgid "Impresion de Balances"
+#~ msgstr "Gestió de &famílies"
 
-#: balancesubform.cpp:38
-msgid "codigo"
-msgstr "codi"
+#~ msgid "codigo"
+#~ msgstr "codi"
 
-#: balancesubform.cpp:39
-msgid "descripcion"
-msgstr "descripció"
+#~ msgid "descripcion"
+#~ msgstr "descripció"
 
-#: balancesubform.cpp:44
-msgid "ejdebe"
-msgstr ""
+#~ msgid "tdebe"
+#~ msgstr "tdebe"
 
-#: balancesubform.cpp:45
-msgid "ejhaber"
-msgstr ""
+#~ msgid "thaber"
+#~ msgstr "thaber"
 
-#: balancesubform.cpp:46
-msgid "ejsaldo"
-msgstr ""
+#~ msgid "tipocuenta"
+#~ msgstr "tipocuenta"
 
-#: balancesubform.cpp:36
-msgid "idcuenta"
-msgstr ""
-
-#: balancesubform.cpp:41
-msgid "tdebe"
-msgstr "tdebe"
-
-#: balancesubform.cpp:42
-msgid "thaber"
-msgstr "thaber"
-
-#: balancesubform.cpp:37
-msgid "tipocuenta"
-msgstr "tipocuenta"
-
-#: balancesubform.cpp:43
-msgid "tsaldo"
-msgstr "tsaldo"
+#~ msgid "tsaldo"
+#~ msgstr "tsaldo"

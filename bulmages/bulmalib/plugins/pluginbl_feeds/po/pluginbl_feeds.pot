@@ -8,78 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:57+0200\n"
+"POT-Creation-Date: 2011-07-12 11:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_confreglasbase.h:276
-msgid "Reglas de Corrector"
-msgstr ""
-
-#: ui_confreglasbase.h:280
-msgid "Regla:"
-msgstr ""
-
-#: ui_confreglasbase.h:281
-msgid "Comprobacion por asientos"
-msgstr ""
-
-#: ui_confreglasbase.h:282
-msgid "Condicion:"
-msgstr ""
-
-#: ui_confreglasbase.h:283
-msgid "Deben existir registros que cumplan esta condicion en el periodo"
-msgstr ""
-
-#: ui_confreglasbase.h:284
-msgid "Apunte con Cuenta"
-msgstr ""
-
-#: ui_confreglasbase.h:285
-msgid "Apunte con Saldo"
-msgstr ""
-
-#: ui_confreglasbase.h:288
-msgid "igual"
-msgstr ""
-
-#: ui_confreglasbase.h:289
-msgid "menor"
-msgstr ""
-
-#: ui_confreglasbase.h:290
-msgid "mayor"
-msgstr ""
-
-#: ui_confreglasbase.h:292
-msgid "Apunte con Descripcion"
-msgstr ""
-
-#: ui_confreglasbase.h:293
-msgid "Reglas sobre Apuntes"
-msgstr ""
-
-#: ui_confreglasbase.h:294
-msgid "Periodicidad"
-msgstr ""
-
-#: ui_confreglasbase.h:295
-msgid "Cerrar"
-msgstr ""
-
-#: ui_visorhtmlbase.h:93
-msgid "Corrector"
-msgstr ""
-
-#: ui_visorhtmlbase.h:95 ui_visorhtmlbase.h:98
-msgid "Corregir"
-msgstr ""
-
-#: ui_visorhtmlbase.h:102 ui_visorhtmlbase.h:105
-msgid "Configurar"
+#: ui_visorhtmlbase.h:60
+msgid "Navegador"
 msgstr ""

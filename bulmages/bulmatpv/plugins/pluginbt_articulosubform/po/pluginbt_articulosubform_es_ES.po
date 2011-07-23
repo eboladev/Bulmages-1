@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:18+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-06-08 09:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +30,7 @@ msgstr "Alt+O"
 msgid "Articulos"
 msgstr "Artículos"
 
-#: articulolisttpv.cpp:161
+#: articulolisttpv.cpp:160
 msgid "Borrar articulo"
 msgstr "Borrar artículo"
 
@@ -37,7 +38,7 @@ msgstr "Borrar artículo"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: articulolisttpv.cpp:257
+#: articulolisttpv.cpp:256
 msgid "Codigo completo del articulo"
 msgstr "Código completo del artículo"
 
@@ -45,47 +46,43 @@ msgstr "Código completo del artículo"
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: articulolisttpv.cpp:259
+#: articulolisttpv.cpp:258
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripción abreviada del artículo"
 
-#: articulolisttpv.cpp:261
+#: articulolisttpv.cpp:260
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripción del tipo de artículo"
 
-#: articulolisttpv.cpp:262
+#: articulolisttpv.cpp:261
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripción tipo de I.V.A."
 
-#: articulolisttpv.cpp:264
+#: articulolisttpv.cpp:263
 msgid "Disponible en stock"
 msgstr "Disponible en stock"
 
-#: articulolisttpv.cpp:160
+#: articulolisttpv.cpp:159
 msgid "Editar articulo"
 msgstr "Editar artículo"
-
-#: articulolisttpv.cpp:66
-msgid "Error en plugin"
-msgstr ""
 
 #: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 msgid "Filtrar listado"
 msgstr "Filtrar listado"
 
-#: articulolisttpv.cpp:256
+#: articulolisttpv.cpp:255
 msgid "ID articulo"
 msgstr "ID artículo"
 
-#: articulolisttpv.cpp:258
+#: articulolisttpv.cpp:257
 msgid "Nombre del articulo"
 msgstr "Nombre del artículo"
 
-#: articulolisttpv.cpp:260
+#: articulolisttpv.cpp:259
 msgid "Observaciones sobre el articulo"
 msgstr "Observaciones sobre el artículo"
 
-#: articulolisttpv.cpp:263
+#: articulolisttpv.cpp:262
 msgid "P.V.P. articulo"
 msgstr "P.V.P. artículo"
 

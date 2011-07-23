@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:18+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-02-18 16:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -127,7 +127,7 @@ msgstr "Alt+O"
 msgid "Articulos"
 msgstr "Articles"
 
-#: articulolisttpv.cpp:161
+#: articulolisttpv.cpp:160
 msgid "Borrar articulo"
 msgstr "Effacer l'article"
 
@@ -135,7 +135,7 @@ msgstr "Effacer l'article"
 msgid "Buscar:"
 msgstr "Chercher :"
 
-#: articulolisttpv.cpp:257
+#: articulolisttpv.cpp:256
 msgid "Codigo completo del articulo"
 msgstr "Code complet de l'article"
 
@@ -143,47 +143,43 @@ msgstr "Code complet de l'article"
 msgid "Configurar listado"
 msgstr "Configurer la liste"
 
-#: articulolisttpv.cpp:259
+#: articulolisttpv.cpp:258
 msgid "Descripcion abreviada del articulo"
 msgstr "Description abrégée de l'article"
 
-#: articulolisttpv.cpp:261
+#: articulolisttpv.cpp:260
 msgid "Descripcion del tipo de articulo"
 msgstr "Description abrégée du type l'article"
 
-#: articulolisttpv.cpp:262
+#: articulolisttpv.cpp:261
 msgid "Descripcion tipo de I.V.A."
 msgstr "Description du type de T.V.A."
 
-#: articulolisttpv.cpp:264
+#: articulolisttpv.cpp:263
 msgid "Disponible en stock"
 msgstr "Disponible en stock"
 
-#: articulolisttpv.cpp:160
+#: articulolisttpv.cpp:159
 msgid "Editar articulo"
 msgstr "Editer l'article"
-
-#: articulolisttpv.cpp:66
-msgid "Error en plugin"
-msgstr ""
 
 #: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 msgid "Filtrar listado"
 msgstr "Filtrer la liste"
 
-#: articulolisttpv.cpp:256
+#: articulolisttpv.cpp:255
 msgid "ID articulo"
 msgstr "ID article"
 
-#: articulolisttpv.cpp:258
+#: articulolisttpv.cpp:257
 msgid "Nombre del articulo"
 msgstr "Nom de article"
 
-#: articulolisttpv.cpp:260
+#: articulolisttpv.cpp:259
 msgid "Observaciones sobre el articulo"
 msgstr "Observations de l'article"
 
-#: articulolisttpv.cpp:263
+#: articulolisttpv.cpp:262
 msgid "P.V.P. articulo"
 msgstr "P.V.P. article"
 

@@ -108,7 +108,7 @@ public:
 public:
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    /// Este cursor almacena el listado de elementos.
     BlDbRecordSet *m_cursorcombo;
     /// Texto entrado por el usuario (para uso de los plugins)
     QString m_entrada; 
@@ -127,6 +127,44 @@ signals:
     void pintaMenu ( QMenu * );
     void trataMenu ( QAction * );
 };
+
+
+
+
+/// Delegate Generico
+class BL_EXPORT BlDbEditComboBox : public BlComboBox
+{
+    Q_OBJECT
+
+public:
+    /// QHash de los valores a comprobar
+    QMap <QString, QString> m_valores;
+    /// Almacena la tabla sobre la que vamos a buscar.
+    QString m_tabla;
+    
+public:
+    /// Almacena el id de la tabla seleccionada.
+    QString mdb_id;
+    /// Este cursor almacena el listado de elementos.
+    BlDbRecordSet *m_cursorcombo;
+    /// Texto entrado por el usuario (para uso de los plugins)
+    QString m_entrada; 
+public:
+    BlDbEditComboBox ( QWidget *parent = 0 );
+    ~BlDbEditComboBox();
+    QString entrada();
+    QString unicaEleccion(void) ;
+    QString eligeUnico(void) ;
+    virtual void setQuery ( const QString & );
+public slots:
+    virtual void focusOutEvent ( QFocusEvent * event );
+    virtual void on_customContextMenuRequested ( const QPoint &pos );
+    
+signals:
+    void pintaMenu ( QMenu * );
+    void trataMenu ( QAction * );
+};
+
 
 
 #endif

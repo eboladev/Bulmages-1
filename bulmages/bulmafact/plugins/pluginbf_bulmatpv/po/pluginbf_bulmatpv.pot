@@ -8,13 +8,82 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:00+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: zlist.cpp:57
+msgid "ID Z"
+msgstr ""
+
+#: zlist.cpp:58 zview.cpp:59 zview.cpp:76 ui_zbase.h:309
+msgid "Fecha"
+msgstr ""
+
+#: zlist.cpp:59 zview.cpp:60 zview.cpp:81 ui_zbase.h:310
+msgid "Hora"
+msgstr ""
+
+#: zlist.cpp:60 zview.cpp:64 ui_zbase.h:308
+msgid "Almacen"
+msgstr ""
+
+#: zlist.cpp:61 zview.cpp:61 zview.cpp:82 ui_zbase.h:312
+msgid "Total"
+msgstr ""
+
+#: zlist.cpp:62
+msgid "Tickets"
+msgstr ""
+
+#: zlist.cpp:63 zview.cpp:63
+msgid "Id. almacen"
+msgstr ""
+
+#: zlist.cpp:181
+msgid "Error al editar el almacen"
+msgstr ""
+
+#: zlist.cpp:193 ui_zlistbase.h:220
+msgid "Cuadres de Caja"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:63
+msgid "&Ventas"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:69
+msgid "&Cuadres de caja"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
+msgid "Listado de cuadres de caja"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:102
+msgid "Visible en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:103
+msgid "Etiqueta visible en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:104
+msgid "Orden en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:105
+msgid "Color en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:110 pluginbf_bulmatpv.cpp:123
+msgid "T.P.V."
+msgstr ""
 
 #: zview.cpp:55
 msgid "Cuadre de caja"
@@ -24,28 +93,8 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: zview.cpp:59 zview.cpp:76 zlist.cpp:58 ui_zbase.h:309
-msgid "Fecha"
-msgstr ""
-
-#: zview.cpp:60 zview.cpp:81 zlist.cpp:59 ui_zbase.h:310
-msgid "Hora"
-msgstr ""
-
-#: zview.cpp:61 zview.cpp:82 zlist.cpp:61 ui_zbase.h:312
-msgid "Total"
-msgstr ""
-
 #: zview.cpp:62
 msgid "Num. tickets"
-msgstr ""
-
-#: zview.cpp:63 zlist.cpp:63
-msgid "Id. almacen"
-msgstr ""
-
-#: zview.cpp:64 zlist.cpp:60 ui_zbase.h:308
-msgid "Almacen"
 msgstr ""
 
 #: zview.cpp:72
@@ -92,52 +141,76 @@ msgstr ""
 msgid "Error al crear el almacen"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:63
-msgid "&Ventas"
+#: ui_zlistbase.h:223 ui_zlistbase.h:226
+msgid "Nuevo contrato"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:69
-msgid "&Cuadres de Caja"
+#: ui_zlistbase.h:230 ui_zlistbase.h:233
+msgid "Editar contrato"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
-msgid "Listado de Cuadres de Caja"
+#: ui_zlistbase.h:237 ui_zlistbase.h:240
+msgid "Borrar contrato"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:102
-msgid "Visible en TPV"
+#: ui_zlistbase.h:244 ui_zlistbase.h:247
+msgid "Imprimir listado"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:103
-msgid "Etiqueta visible en TPV"
+#: ui_zlistbase.h:251 ui_zlistbase.h:254
+msgid "Filtrar contratos"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:104
-msgid "Orden en TPV"
+#: ui_zlistbase.h:258 ui_zlistbase.h:261
+msgid "Configurar listado"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:105
-msgid "Color en TPV"
+#: ui_zlistbase.h:265 ui_zlistbase.h:268 ui_zbase.h:302 ui_zbase.h:305
+msgid "Actualizar listado"
 msgstr ""
 
-#: pluginbf_bulmatpv.cpp:110 pluginbf_bulmatpv.cpp:123
-msgid "T.P.V."
+#: ui_zlistbase.h:271
+msgid "Buscar:"
 msgstr ""
 
-#: zlist.cpp:57
-msgid "ID Z"
+#: ui_zlistbase.h:272
+msgid "Caducados"
 msgstr ""
 
-#: zlist.cpp:62
-msgid "Tickets"
+#: ui_zbase.h:283
+msgid "Cuadre de Caja"
 msgstr ""
 
-#: zlist.cpp:184
-msgid "Error al editar el almacen"
+#: ui_zbase.h:286 ui_zbase.h:289
+msgid "Guardar almacen"
 msgstr ""
 
-#: zlist.cpp:196
-msgid "Almacenes"
+#: ui_zbase.h:292
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_zbase.h:294 ui_zbase.h:297
+msgid "Borrar almacen"
+msgstr ""
+
+#: ui_zbase.h:300
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_zbase.h:311
+msgid "Num. Tickets"
+msgstr ""
+
+#: ui_zbase.h:313
+msgid "General"
+msgstr ""
+
+#: ui_zbase.h:314
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_zbase.h:315
+msgid "&Cancelar"
 msgstr ""
 
 #: ui_familiastpvbase.h:137
@@ -178,80 +251,4 @@ msgstr ""
 
 #: ui_articulotpvbase.h:155
 msgid "0"
-msgstr ""
-
-#: ui_zbase.h:283
-msgid "Cuadre de Caja"
-msgstr ""
-
-#: ui_zbase.h:286 ui_zbase.h:289
-msgid "Guardar almacen"
-msgstr ""
-
-#: ui_zbase.h:292
-msgid "Ctrl+S"
-msgstr ""
-
-#: ui_zbase.h:294 ui_zbase.h:297
-msgid "Borrar almacen"
-msgstr ""
-
-#: ui_zbase.h:300
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_zbase.h:311
-msgid "Num. Tickets"
-msgstr ""
-
-#: ui_zbase.h:313
-msgid "General"
-msgstr ""
-
-#: ui_zbase.h:314
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_zbase.h:315
-msgid "&Cancelar"
-msgstr ""
-
-#: ui_zlistbase.h:220
-msgid "Cuadres de Caja"
-msgstr ""
-
-#: ui_zlistbase.h:223 ui_zlistbase.h:226
-msgid "Nuevo contrato"
-msgstr ""
-
-#: ui_zlistbase.h:230 ui_zlistbase.h:233
-msgid "Editar contrato"
-msgstr ""
-
-#: ui_zlistbase.h:237 ui_zlistbase.h:240
-msgid "Borrar contrato"
-msgstr ""
-
-#: ui_zlistbase.h:244 ui_zlistbase.h:247
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_zlistbase.h:251 ui_zlistbase.h:254
-msgid "Filtrar contratos"
-msgstr ""
-
-#: ui_zlistbase.h:258 ui_zlistbase.h:261
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_zlistbase.h:271
-msgid "Buscar:"
-msgstr ""
-
-#: ui_zlistbase.h:272
-msgid "Caducados"
 msgstr ""

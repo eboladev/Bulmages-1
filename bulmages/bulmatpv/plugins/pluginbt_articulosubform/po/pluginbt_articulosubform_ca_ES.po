@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-08 09:18+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-06-08 09:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +32,7 @@ msgstr "Alt+I"
 msgid "Articulos"
 msgstr "<P> Article <B>"
 
-#: articulolisttpv.cpp:161
+#: articulolisttpv.cpp:160
 msgid "Borrar articulo"
 msgstr "Esborra article"
 
@@ -39,7 +40,7 @@ msgstr "Esborra article"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: articulolisttpv.cpp:257
+#: articulolisttpv.cpp:256
 msgid "Codigo completo del articulo"
 msgstr "Codi complet de l'article"
 
@@ -47,51 +48,47 @@ msgstr "Codi complet de l'article"
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: articulolisttpv.cpp:259
+#: articulolisttpv.cpp:258
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripció de abreviada del'article"
 
-#: articulolisttpv.cpp:261
+#: articulolisttpv.cpp:260
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripció del tipus d'article"
 
-#: articulolisttpv.cpp:262
+#: articulolisttpv.cpp:261
 #, fuzzy
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripció del compte"
 
-#: articulolisttpv.cpp:264
+#: articulolisttpv.cpp:263
 msgid "Disponible en stock"
 msgstr "Disposable en estoc"
 
-#: articulolisttpv.cpp:160
+#: articulolisttpv.cpp:159
 msgid "Editar articulo"
 msgstr "Edita article"
-
-#: articulolisttpv.cpp:66
-msgid "Error en plugin"
-msgstr ""
 
 #: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 #, fuzzy
 msgid "Filtrar listado"
 msgstr "Configura llistat"
 
-#: articulolisttpv.cpp:256
+#: articulolisttpv.cpp:255
 #, fuzzy
 msgid "ID articulo"
 msgstr "<P> Article <B>"
 
-#: articulolisttpv.cpp:258
+#: articulolisttpv.cpp:257
 #, fuzzy
 msgid "Nombre del articulo"
 msgstr "Nom de l'amortització"
 
-#: articulolisttpv.cpp:260
+#: articulolisttpv.cpp:259
 msgid "Observaciones sobre el articulo"
 msgstr "Observacions sobre l'article"
 
-#: articulolisttpv.cpp:263
+#: articulolisttpv.cpp:262
 #, fuzzy
 msgid "P.V.P. articulo"
 msgstr "<P> Article <B>"

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:52+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2011-03-11 15:11+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: Catalan\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: pluginbf_carteracobros.cpp:56
@@ -24,6 +24,18 @@ msgstr ""
 
 #: pluginbf_carteracobros.cpp:54
 msgid "&Compras"
+msgstr ""
+
+#: q19view.cpp:338
+msgid "Banco del cliente invalido en el cobro."
+msgstr ""
+
+#: q19view.cpp:314
+msgid "CIF cliente demasiado largo."
+msgstr ""
+
+#: q19view.cpp:213 q19view.cpp:419
+msgid "CIF demasiado largo."
 msgstr ""
 
 #: pluginbf_carteracobros.cpp:219
@@ -46,16 +58,40 @@ msgstr "Client:"
 msgid "Comentarios"
 msgstr "Comentaris"
 
+#: q19view.cpp:259
+msgid "Cuenta bancaria demasiado larga."
+msgstr ""
+
 #: vencimientocview.cpp:71
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: pluginbf_carteracobros.cpp:99
+#: pluginbf_carteracobros.cpp:98
 msgid "Dias tras factura"
 msgstr "Dies després factura"
 
-#: pluginbf_carteracobros.cpp:135
+#: q19view.cpp:252
+msgid "Digito de control demasiado largo."
+msgstr ""
+
+#: q19view.cpp:131
+msgid "El CIF del ordenante supera la longitud maxima."
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:134
 msgid "El total de la factura es :"
+msgstr ""
+
+#: q19view.cpp:238
+msgid "Entidad bancaria demasiado larga."
+msgstr ""
+
+#: q19view.cpp:156
+msgid "Entidad bancaria supera longitud maxima."
+msgstr ""
+
+#: q19view.cpp:593
+msgid "Error al guardar."
 msgstr ""
 
 #: vencimientocview.cpp:75
@@ -74,11 +110,11 @@ msgstr "Data de venciment"
 msgid "Fecha efectiva"
 msgstr "Data efectiva"
 
-#: pluginbf_carteracobros.cpp:101 pluginbf_carteracobros.cpp:220
+#: pluginbf_carteracobros.cpp:100 pluginbf_carteracobros.cpp:220
 msgid "Forma de pago"
 msgstr "Forma de pagament"
 
-#: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:224
+#: pluginbf_carteracobros.cpp:101 pluginbf_carteracobros.cpp:224
 msgid "Id cliente"
 msgstr "Id compte"
 
@@ -90,15 +126,31 @@ msgstr "Id cobrament"
 msgid "Id factura"
 msgstr "Id factura"
 
-#: pluginbf_carteracobros.cpp:103 pluginbf_carteracobros.cpp:223
+#: pluginbf_carteracobros.cpp:102 pluginbf_carteracobros.cpp:223
 msgid "Id forma de pago"
 msgstr "Id forma de pagament"
 
-#: pluginbf_carteracobros.cpp:98 pluginbf_carteracobros.cpp:217
+#: pluginbf_carteracobros.cpp:97 pluginbf_carteracobros.cpp:217
 msgid "Id vencimiento"
 msgstr "Id venciment"
 
-#: pluginbf_carteracobros.cpp:100
+#: q19view.cpp:330
+msgid "Nombre cliente demasiado largo."
+msgstr ""
+
+#: q19view.cpp:231
+msgid "Nombre de empresa demasiado largo."
+msgstr ""
+
+#: q19view.cpp:245
+msgid "Oficina bancaria demasiado larga."
+msgstr ""
+
+#: q19view.cpp:163
+msgid "Oficina bancaria supera longitud maxima."
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:99
 msgid "Porcentaje"
 msgstr "Percentatge"
 

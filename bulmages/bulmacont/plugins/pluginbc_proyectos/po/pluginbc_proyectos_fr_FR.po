@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:44+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2011-03-04 12:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -123,7 +123,7 @@ msgstr "&Accepter"
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: pluginbc_proyectos.cpp:75
+#: pluginbc_proyectos.cpp:48
 msgid "&Proyectos"
 msgstr "&Projets"
 
@@ -153,8 +153,8 @@ msgstr "Quantité"
 msgid "Codigo"
 msgstr "Code"
 
-#: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
-#: proyectoview.cpp:96
+#: proyectoview.cpp:60 proyectoview.cpp:77 proyectoview.cpp:96
+#: listproyectosview.cpp:50
 msgid "Comentarios"
 msgstr "Libellés"
 
@@ -183,8 +183,8 @@ msgid "Ejercicio"
 msgstr "Exercice"
 
 #: listproyectosview.cpp:117
-msgid "Error al borrar la amortizacion"
-msgstr "Erreur en effacement de l'amortissement"
+msgid "Error al borrar la amortizacion."
+msgstr ""
 
 #: proyectoview.cpp:113
 msgid "Error al crear el almacen"
@@ -197,6 +197,11 @@ msgstr "F5"
 #: listproyectosview.cpp:48
 msgid "Fecha"
 msgstr "Date"
+
+#: listproyectosview.cpp:137
+#, qt-format
+msgid "Fila: '%1'."
+msgstr ""
 
 #: ui_proyectobase.h:268
 msgid "Gastos"
@@ -270,11 +275,11 @@ msgstr "Prix Unitaire"
 msgid "Proyecto"
 msgstr "Projet"
 
-#: pluginbc_proyectos.cpp:76 pluginbc_proyectos.cpp:77
+#: pluginbc_proyectos.cpp:49 pluginbc_proyectos.cpp:50
 msgid "Proyectos"
 msgstr "Projets"
 
-#: pluginbc_proyectos.cpp:119
+#: pluginbc_proyectos.cpp:84
 msgid "Proyectos asociados"
 msgstr "Projets associés"
 
@@ -285,3 +290,6 @@ msgstr "Sélecteur de projets"
 #: proyectoview.cpp:59
 msgid "fecha"
 msgstr "Date"
+
+#~ msgid "Error al borrar la amortizacion"
+#~ msgstr "Erreur en effacement de l'amortissement"

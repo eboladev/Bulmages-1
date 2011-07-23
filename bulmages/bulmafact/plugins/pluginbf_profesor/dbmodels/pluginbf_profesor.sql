@@ -354,9 +354,16 @@ BEGIN
         CREATE TABLE alumnoactividad (
             idalumnoactividad SERIAL PRIMARY KEY,
             idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
-            idactividad INTEGER NOT NULL REFERENCES actividad(idactividad)
+            idactividad INTEGER NOT NULL REFERENCES actividad(idactividad),
+	    bancoalumnoactividad VARCHAR
         );
     END IF;
+
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''bancoalumnoactividad'' AND relname=''alumnoactividad'';
+    IF NOT FOUND THEN
+        ALTER TABLE alumnoactividad ADD COLUMN bancoalumnoactividad VARCHAR;
+    END IF;
+
 
     SELECT INTO rsa * FROM pg_tables  WHERE tablename=''clienteactividad'';
     IF NOT FOUND THEN
@@ -420,9 +427,9 @@ BEGIN
             idreunion SERIAL PRIMARY KEY,
             tiporeunion VARCHAR NOT NULL,
             fecha1convocatoriareunion date DEFAULT now() NOT NULL,
-            fecha2convocatoriareunion date DEFAULT now() NOT NULL,
+            fecha2convocatoriareunion date DEFAULT now(),
             hora1convocatoriareunion varchar NOT NULL,
-            hora2convocatoriareunion varchar NOT NULL,
+            hora2convocatoriareunion varchar,
             conceptoreunion TEXT,
             resolucionreunion TEXT
         );

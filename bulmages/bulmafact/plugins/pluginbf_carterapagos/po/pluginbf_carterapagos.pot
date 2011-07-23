@@ -8,15 +8,76 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 17:53+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: carterapagoslist.cpp:61 vencimientopview.cpp:59
+#: pluginbf_carterapagos.cpp:53
+msgid "&Compras"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:55
+msgid "&Cartera de Pagos"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:56 pluginbf_carterapagos.cpp:57
+msgid "Cartera de Pagos"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:94 pluginbf_carterapagos.cpp:212
+msgid "ID Vencimiento"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:95
+msgid "Dias tras Factura"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:96
+msgid "Porcentaje"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:97 pluginbf_carterapagos.cpp:215
+msgid "Forma de Pago"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:98 pluginbf_carterapagos.cpp:217
+msgid "Id Articulo"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:99 pluginbf_carterapagos.cpp:218
+msgid "ID Forma de Pago"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:131
+msgid "El total de la factura es :"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:176
+msgid "Hay Vencimientos generados para esta factura. Que desea hacer?"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:213
+msgid "Fecha"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:214
+msgid "Cantidad"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:216
+msgid "Procesado"
+msgstr ""
+
+#: pluginbf_carterapagos.cpp:219
+msgid "Id Proveedor"
+msgstr ""
+
+#: vencimientopview.cpp:59 carterapagoslist.cpp:61
 msgid "Proveedor:"
 msgstr ""
 
@@ -56,62 +117,31 @@ msgstr ""
 msgid "idproveedor de Vencimiento"
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:53
-msgid "&Compras"
+#: q34view.cpp:142 q34view.cpp:223 q34view.cpp:243 q34view.cpp:263
+#: q34view.cpp:319 q34view.cpp:458
+msgid "El CIF del ordenante supera la longitud maxima."
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:55
-msgid "&Cartera de Pagos"
+#: q34view.cpp:172
+msgid "Entidad bancaria supera longitud maxima."
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:56 pluginbf_carterapagos.cpp:57
-msgid "Cartera de Pagos"
+#: q34view.cpp:179
+msgid "Oficina bancaria supera longitud maxima."
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:95 pluginbf_carterapagos.cpp:213
-msgid "ID Vencimiento"
+#: q34view.cpp:186 q34view.cpp:202
+msgid "Cuenta bancaria supera longitud maxima."
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:96
-msgid "Dias tras Factura"
+#: q34view.cpp:330
+msgid "CIF del proveedor es demasiado largo."
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:97
-msgid "Porcentaje"
+#: q34view.cpp:354
+msgid "Banco del proveedor invalido en el pago."
 msgstr ""
 
-#: pluginbf_carterapagos.cpp:98 pluginbf_carterapagos.cpp:216
-msgid "Forma de Pago"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:99 pluginbf_carterapagos.cpp:218
-msgid "Id Articulo"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:100 pluginbf_carterapagos.cpp:219
-msgid "ID Forma de Pago"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:132
-msgid "El total de la factura es :"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:177
-msgid "Hay Vencimientos generados para esta factura. Que desea hacer?"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:214
-msgid "Fecha"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:215
-msgid "Cantidad"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:217
-msgid "Procesado"
-msgstr ""
-
-#: pluginbf_carterapagos.cpp:220
-msgid "Id Proveedor"
+#: q34view.cpp:541
+msgid "Error al guardar."
 msgstr ""

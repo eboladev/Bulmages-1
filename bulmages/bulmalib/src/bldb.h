@@ -62,9 +62,10 @@ public:
       puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
     - DbRequired . Requerido,
     - DbNoLoad . No debe cargarse desde la base de datos.
+    - DbUnique . La clave deve ser unica en su grupo. Se usa en los Suformularios para indicar que no puede haber campos repetidos.
     **/
     enum DbRestrict {DbNothing = 0, DbNotNull = 1, DbPrimaryKey = 2,
-                     DbNoSave = 4, DbAuto = 8, DbDupPrimaryKey = 16, DbRequired = 32, DbNoLoad = 64
+                     DbNoSave = 4, DbAuto = 8, DbDupPrimaryKey = 16, DbRequired = 32, DbNoLoad = 64, DbUnique = 128
                     };
 
 private:
@@ -124,6 +125,7 @@ public:
     int DBload ( BlDbRecordSet * );
     virtual int dbSave ( QString &id );
     virtual int setDbValue ( QString, QString );
+    virtual int setDbValueNextToLast ( QString nomb, int incr, QString cond = "" );
     QString dbValue ( QString );
     bool exists ( QString );
     QString dbValueprep ( QString );

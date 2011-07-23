@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulmalib_es_ES\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-03 07:05+0200\n"
+"POT-Creation-Date: 2011-07-12 11:15+0200\n"
 "PO-Revision-Date: 2009-05-08 23:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -39,8 +39,8 @@ msgstr "&Cerrar el programa"
 msgid "&Cierra el programa"
 msgstr "&Cierra el programa"
 
-#: blfunctions.cpp:130 blfunctions.cpp:809 blfunctions.cpp:833
-#: blfunctions.cpp:844 blfunctions.cpp:855
+#: blfunctions.cpp:132 blfunctions.cpp:811 blfunctions.cpp:835
+#: blfunctions.cpp:846 blfunctions.cpp:857
 msgid "&Continuar"
 msgstr "&Continuar"
 
@@ -60,7 +60,7 @@ msgstr "&Guardar"
 msgid "&No"
 msgstr "&No"
 
-#: blfunctions.cpp:131 blfunctions.cpp:810
+#: blfunctions.cpp:133 blfunctions.cpp:812
 msgid "&Omitir"
 msgstr "&Omitir"
 
@@ -186,7 +186,7 @@ msgstr "Archivo"
 msgid "Articulo"
 msgstr "<P> Artículo <B>"
 
-#: blfunctions.cpp:843
+#: blfunctions.cpp:845
 msgid "Aviso del programa"
 msgstr "Aviso del programa"
 
@@ -392,7 +392,7 @@ msgstr "Empresas disponibles:"
 msgid "Error al borrar"
 msgstr ""
 
-#: blfunctions.cpp:578
+#: blfunctions.cpp:580
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
@@ -412,29 +412,29 @@ msgstr ""
 msgid "Error al crear el banco"
 msgstr "Error al crear el banco"
 
-#: blfunctions.cpp:595
+#: blfunctions.cpp:597
 msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:509
+#: blfunctions.cpp:511
 msgid ""
 "Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
 "() ]."
 msgstr ""
 
-#: blfunctions.cpp:643
+#: blfunctions.cpp:645
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:658
+#: blfunctions.cpp:660
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
 msgstr ""
 
-#: blfunctions.cpp:621
+#: blfunctions.cpp:623
 msgid "Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:677
+#: blfunctions.cpp:679
 msgid "Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"
 msgstr ""
 
@@ -450,19 +450,19 @@ msgstr "Error al intentar borrar"
 msgid "Error al intentar borrar el pais"
 msgstr "Error al intentar borrar el país"
 
-#: blfunctions.cpp:854
+#: blfunctions.cpp:856
 msgid "Error del programa"
 msgstr "Error del programa"
 
-#: blfunctions.cpp:540
+#: blfunctions.cpp:542
 msgid "Error en FLIP [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:531
+#: blfunctions.cpp:533
 msgid "Error en PYTHON [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:550
+#: blfunctions.cpp:552
 msgid "Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
@@ -579,11 +579,11 @@ msgstr "Imprimir ficha"
 msgid "Indexador"
 msgstr "Indexador"
 
-#: blfunctions.cpp:128 blfunctions.cpp:807
+#: blfunctions.cpp:130 blfunctions.cpp:809
 msgid "Informacion de depuracion"
 msgstr "Información de depuración"
 
-#: blfunctions.cpp:832
+#: blfunctions.cpp:834
 msgid "Informacion del programa"
 msgstr "Información del programa"
 
@@ -693,7 +693,7 @@ msgstr "Nombre país"
 msgid "Nuevo pais"
 msgstr "Nuevo país"
 
-#: blfunctions.cpp:132 blfunctions.cpp:811
+#: blfunctions.cpp:134 blfunctions.cpp:813
 msgid "Omitir &clase"
 msgstr "Omitir &clase"
 

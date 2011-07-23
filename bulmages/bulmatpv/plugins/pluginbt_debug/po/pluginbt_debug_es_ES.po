@@ -8,20 +8,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-06-03 17:18+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: 2011-06-03 17:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: debug.cpp:30 debug.cpp:63
+#: debug.cpp:51 debug.cpp:84
 msgid "Debug activado"
 msgstr "Depuración activada"
 
-#: debug.cpp:33 debug.cpp:66
+#: debug.cpp:54 debug.cpp:87
 msgid "Debug desactivado"
 msgstr "Depuración desactivada"
 

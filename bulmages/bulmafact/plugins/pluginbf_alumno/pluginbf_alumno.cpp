@@ -182,7 +182,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete alumnoslist;
 
-    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
+    /// Si no tenemos un idalumno salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
         
         return 0;

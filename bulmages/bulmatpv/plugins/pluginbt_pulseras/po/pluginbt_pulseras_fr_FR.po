@@ -8,74 +8,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:21+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: 2011-02-20 16:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
 
-#: ui_distromesasbase.h:209 ui_distromesasbase.h:213 ui_distromesasbase.h:217
-#: ui_distromesasbase.h:221 ui_distromesasbase.h:225 ui_distromesasbase.h:229
-#: ui_distromesasbase.h:233 ui_distromesasbase.h:238 ui_distromesasbase.h:242
-msgid "..."
-msgstr "..."
-
-#: ui_distromesasbase.h:227
-msgid "Añadir Pantalla"
+#: pluginbt_pulseras.cpp:88
+msgid "Agregar Pulsera"
 msgstr ""
 
-#: ui_distromesasbase.h:211
-msgid "Borrar mesa"
-msgstr "Effacer la table"
-
-#: ui_distromesasbase.h:223
-msgid "Cambiar imagen de la mesa"
-msgstr "Changer les images de la table"
-
-#: ui_distromesasbase.h:240
-msgid "Cerrar vista mesas"
-msgstr "Fermer la vue de la table"
-
-#: ui_distromesasbase.h:236
-msgid "Configurar mesas"
-msgstr "Configurer la table"
-
-#: ui_distromesasbase.h:219
-msgid "Editar nombre"
-msgstr "Editer le nom"
-
-#: ui_distromesasbase.h:231
-msgid "Eliminar Pantalla"
+#: pluginbt_pulseras.cpp:98
+msgid "Buscar Pulsera"
 msgstr ""
 
-#: ui_distromesasbase.h:205 ui_mesasbase.h:60
-msgid "Form"
-msgstr "Formumaire"
+#~ msgid "..."
+#~ msgstr "..."
 
-#: ui_mesasbase.h:61
-msgid "Mesas"
-msgstr "Tables"
+#~ msgid "Borrar mesa"
+#~ msgstr "Effacer la table"
 
-#: ui_distromesasbase.h:207
-msgid "Nueva mesa"
-msgstr "Nouvelle table"
+#~ msgid "Cambiar imagen de la mesa"
+#~ msgstr "Changer les images de la table"
 
-#: mesas.cpp:382
-msgid "Sin definir"
-msgstr "Non défini"
+#~ msgid "Cerrar vista mesas"
+#~ msgstr "Fermer la vue de la table"
 
-#: ui_distromesasbase.h:234
-msgid "Unir"
-msgstr ""
+#~ msgid "Configurar mesas"
+#~ msgstr "Configurer la table"
 
-#: ui_distromesasbase.h:215
-msgid "Ver ticket de la mesa"
-msgstr "Afficher le ticket de la table"
+#~ msgid "Editar nombre"
+#~ msgstr "Editer le nom"
+
+#~ msgid "Form"
+#~ msgstr "Formumaire"
+
+#~ msgid "Mesas"
+#~ msgstr "Tables"
+
+#~ msgid "Nueva mesa"
+#~ msgstr "Nouvelle table"
 
 #~ msgid "Salir"
 #~ msgstr "Salir"
+
+#~ msgid "Sin definir"
+#~ msgstr "Non défini"
+
+#~ msgid "Ver ticket de la mesa"
+#~ msgstr "Afficher le ticket de la table"

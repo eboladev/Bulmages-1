@@ -54,12 +54,12 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         setDbFieldId ( "idreunion" );
         addDbField ( "idreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID reunion" ) );
         addDbField ( "fecha1convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 1a Convocatoria" ) );
-        addDbField ( "fecha2convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 2a Convocatoria" ) );
+        addDbField ( "fecha2convocatoriareunion", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha 2a Convocatoria" ) );
         addDbField ( "hora1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora 1a Convocatoria" ) );
-        addDbField ( "hora2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora 2a Convocatoria" ) );
+        addDbField ( "hora2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora 2a Convocatoria" ) );
         addDbField ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Tipo" ) );
         addDbField ( "conceptoreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Concepto" ) );
-        addDbField ( "resolucionreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Resolucion" ) );
+        addDbField ( "resolucionreunion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Resolucion" ) );
 
         mui_list->setMainCompany( comp );
         mui_list->setDbTableName ( "asistentereunion" );

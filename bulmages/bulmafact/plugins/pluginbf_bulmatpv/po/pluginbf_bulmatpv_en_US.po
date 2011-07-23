@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:00+0200\n"
+"POT-Creation-Date: 2011-07-12 11:19+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +30,7 @@ msgid "&Cancelar"
 msgstr "&Cancel"
 
 #: pluginbf_bulmatpv.cpp:69
-msgid "&Cuadres de Caja"
+msgid "&Cuadres de caja"
 msgstr ""
 
 #: pluginbf_bulmatpv.cpp:63
@@ -40,17 +41,13 @@ msgstr ""
 msgid "0"
 msgstr ""
 
-#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
+#: ui_zlistbase.h:265 ui_zlistbase.h:268 ui_zbase.h:302 ui_zbase.h:305
 msgid "Actualizar listado"
 msgstr "Update listing"
 
-#: zview.cpp:64 zlist.cpp:60 ui_zbase.h:308
+#: zlist.cpp:60 zview.cpp:64 ui_zbase.h:308
 msgid "Almacen"
 msgstr "Warehouse"
-
-#: zlist.cpp:196
-msgid "Almacenes"
-msgstr "Warehouses"
 
 #: zview.cpp:80
 #, fuzzy
@@ -115,7 +112,7 @@ msgstr ""
 msgid "Cuadre de caja"
 msgstr ""
 
-#: ui_zlistbase.h:220
+#: zlist.cpp:193 ui_zlistbase.h:220
 msgid "Cuadres de Caja"
 msgstr ""
 
@@ -133,7 +130,7 @@ msgstr "Publish client"
 msgid "Error al crear el almacen"
 msgstr "Error when creating the seat"
 
-#: zlist.cpp:184
+#: zlist.cpp:181
 #, fuzzy
 msgid "Error al editar el almacen"
 msgstr "Error when creating the seat"
@@ -150,7 +147,7 @@ msgstr ""
 msgid "Familia visible en TPV."
 msgstr ""
 
-#: zview.cpp:59 zview.cpp:76 zlist.cpp:58 ui_zbase.h:309
+#: zlist.cpp:58 zview.cpp:59 zview.cpp:76 ui_zbase.h:309
 msgid "Fecha"
 msgstr "Date"
 
@@ -172,7 +169,7 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Keep balance"
 
-#: zview.cpp:60 zview.cpp:81 zlist.cpp:59 ui_zbase.h:310
+#: zlist.cpp:59 zview.cpp:60 zview.cpp:81 ui_zbase.h:310
 #, fuzzy
 msgid "Hora"
 msgstr ""
@@ -200,7 +197,7 @@ msgstr "Id letters patent"
 msgid "Id forma de pago"
 msgstr "Mode of payment"
 
-#: zview.cpp:63 zlist.cpp:63
+#: zlist.cpp:63 zview.cpp:63
 #, fuzzy
 msgid "Id. almacen"
 msgstr "id warehouse"
@@ -215,7 +212,7 @@ msgid "Impuestos"
 msgstr "Imputation"
 
 #: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
-msgid "Listado de Cuadres de Caja"
+msgid "Listado de cuadres de caja"
 msgstr ""
 
 #: ui_zlistbase.h:223 ui_zlistbase.h:226
@@ -271,10 +268,13 @@ msgstr ""
 msgid "Tickets"
 msgstr ""
 
-#: zview.cpp:61 zview.cpp:82 zlist.cpp:61 ui_zbase.h:312
+#: zlist.cpp:61 zview.cpp:61 zview.cpp:82 ui_zbase.h:312
 msgid "Total"
 msgstr "Total"
 
 #: pluginbf_bulmatpv.cpp:102
 msgid "Visible en TPV"
 msgstr ""
+
+#~ msgid "Almacenes"
+#~ msgstr "Warehouses"

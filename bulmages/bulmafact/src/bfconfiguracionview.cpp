@@ -164,37 +164,37 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
         mui_listado->save();
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='NombreEmpresa'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','"+m_nombre->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','"+ mainCompany()->sanearCadena(m_nombre->text())+"')");
 
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CodPostal'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CodPostal','"+m_cp->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CodPostal','"+ mainCompany()->sanearCadena(m_cp->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CIF'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CIF','"+m_cif->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CIF','"+ mainCompany()->sanearCadena(m_cif->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='DireccionCompleta'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('DireccionCompleta','"+m_direccion->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('DireccionCompleta','"+ mainCompany()->sanearCadena(m_direccion->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Municipio'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Municipio','"+m_municipio->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Municipio','"+ mainCompany()->sanearCadena(m_municipio->text())+"')");
 
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Provincia'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Provincia','"+m_provincia->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Provincia','"+ mainCompany()->sanearCadena(m_provincia->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Pais'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Pais','"+m_pais->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Pais','"+ mainCompany()->sanearCadena(m_pais->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Telefono'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Telefono','"+m_telefono->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Telefono','"+ mainCompany()->sanearCadena(m_telefono->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Fax'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Fax','"+m_fax->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Fax','"+ mainCompany()->sanearCadena(m_fax->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Email'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Email','"+m_mail->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Email','"+ mainCompany()->sanearCadena(m_mail->text())+"')");
 
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Web'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Web','"+m_web->text()+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Web','"+ mainCompany()->sanearCadena(m_web->text())+"')");
 	
         close();
 	

@@ -124,7 +124,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    if ( g_fieldName == "nomcliente" ) {
+    if ( g_fieldName == "nomcliente" || g_fieldName == "nombretutor1") {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreCliente" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -177,23 +177,23 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 {
     BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "nombrealumno1" ) {
-	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
-//	blMsgInfo(query);
+	QString query = "SELECT idalumno FROM alumno WHERE upper (COALESCE(apellido1alumno,'') || ' ' || COALESCE(apellido2alumno,'') || ' ' || COALESCE(nombrealumno,'') ) LIKE upper('" + sub->m_campoactual->text() + "%')";
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idalumno", cur->value( "idalumno" ) );
         } // end if
         delete cur;
     } // end if
-    if ( sub->m_campoactual->fieldName() == "nomcliente" ) {
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper(apellido1cliente || ' ' || apellido2cliente || ' ' || nomcliente) LIKE upper('" + sub->m_campoactual->text() + "%')");
+    if ( sub->m_campoactual->fieldName() == "nombretutor1" || sub->m_campoactual->fieldName() == "nomcliente") {
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ' ' || COALESCE(nomcliente,'') ) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
 	    if (sub->existsHeader("apellido1cliente"))
 	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->value( "apellido1cliente" ) );
 	    if (sub->existsHeader("apellido2cliente"))
-            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->value( "apellido2cliente" ) );
-            sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
+	      sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->value( "apellido2cliente" ) );
+	    if (sub->existsHeader("nomcliente"))
+	      sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
         } // end if
         delete cur;
     } // end if
@@ -205,14 +205,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
   BL_FUNC_DEBUG
 
-        if ( bl->m_entrada.size() >= 3 && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
+        if ( bl->m_entrada.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
                 QMapIterator<QString, QString> i ( bl->m_valores );
                 QString cador = "";
                 while ( i.hasNext() ) {
                     i.next();
-                    cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
+                    cadwhere = cadwhere + cador + " upper( COALESCE(" + i.key() + ", '') )";
                     cador = " || ' ' ||";
                 } // end while
 
@@ -412,7 +412,6 @@ void SubForm_Tutor::editarTutor ( QString idtutor )
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idtutor ) ) {
         delete art;
-        
         return;
     } // end if
     art->hide();
@@ -443,8 +442,10 @@ void SubForm_Tutor::nuevoTutor( )
     QString idCliente = art->dbValue("idcliente");
     if (idCliente != "") {
         subf->lineaact()->setDbValue ( "idcliente", idCliente );
-	subf->lineaact()->setDbValue ( "cifcliente", art->dbValue ( "cifcliente" ) );
-        subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
+	if (subf->existsHeader("cifcliente"))
+	  subf->lineaact()->setDbValue ( "cifcliente", art->dbValue ( "cifcliente" ) );
+	if (subf->existsHeader("nomcliente"))
+	  subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
     } // end if
     delete art;  
     
@@ -480,8 +481,10 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idTutor );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcliente", idTutor );
-        sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
-        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
+	if (sub->existsHeader("cifcliente"))
+	    sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
+	if (sub->existsHeader("nomcliente"))
+	    sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
     } // end if
     delete cur;
 

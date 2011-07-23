@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:03+0200\n"
+"POT-Creation-Date: 2011-07-12 11:18+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_actividadbase.h:591 ui_convocatoriabase.h:450
+#: ui_convocatoriabase.h:450 ui_actividadbase.h:591
 msgid "&Aceptar"
 msgstr "&Accept"
 
@@ -28,11 +29,11 @@ msgstr ""
 msgid "&Activitats"
 msgstr ""
 
-#: ui_actividadbase.h:592 ui_convocatoriabase.h:451
+#: ui_convocatoriabase.h:451 ui_actividadbase.h:592
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: ui_actividadbase.h:585 ui_convocatoriabase.h:439
+#: ui_convocatoriabase.h:439 ui_actividadbase.h:585
 msgid "&Datos generales"
 msgstr "&General performances"
 
@@ -59,13 +60,13 @@ msgstr "&Types of article"
 msgid "Actividad"
 msgstr "Assets"
 
-#: pluginbf_actividad.cpp:58 pluginbf_actividad.cpp:59 actividadeslist.cpp:160
-#: ui_actividadeslistbase.h:260 ui_convocatoriaslistbase.h:309
+#: actividadeslist.cpp:156 pluginbf_actividad.cpp:58 pluginbf_actividad.cpp:59
+#: ui_convocatoriaslistbase.h:309 ui_actividadeslistbase.h:260
 msgid "Actividades"
-msgstr ""
+msgstr "Actividades"
 
-#: ui_actividadeslistbase.h:313 ui_actividadeslistbase.h:316
 #: ui_convocatoriaslistbase.h:365 ui_convocatoriaslistbase.h:368
+#: ui_actividadeslistbase.h:313 ui_actividadeslistbase.h:316
 msgid "Actualizar listado"
 msgstr "Update listing"
 
@@ -74,12 +75,12 @@ msgstr "Update listing"
 msgid "Alumno"
 msgstr "Warehouse"
 
-#: ui_actividadbase.h:588 ui_convocatoriabase.h:446
+#: ui_convocatoriabase.h:446 ui_actividadbase.h:588
 #, fuzzy
 msgid "Alumnos"
 msgstr "Warehouses"
 
-#: ui_actividadbase.h:590 ui_convocatoriabase.h:447
+#: ui_convocatoriabase.h:447 ui_actividadbase.h:590
 #, fuzzy
 msgid "Asistencias"
 msgstr "Seats"
@@ -93,14 +94,14 @@ msgstr ""
 msgid "Banco:"
 msgstr "Bank"
 
-#: actividadeslist.cpp:243 ui_actividadeslistbase.h:281
-#: ui_actividadeslistbase.h:284 ui_convocatoriaslistbase.h:333
-#: ui_convocatoriaslistbase.h:336
+#: actividadeslist.cpp:239 ui_convocatoriaslistbase.h:333
+#: ui_convocatoriaslistbase.h:336 ui_actividadeslistbase.h:281
+#: ui_actividadeslistbase.h:284
 #, fuzzy
 msgid "Borrar Actividad"
 msgstr "Erase quota"
 
-#: convocatoriaslist.cpp:224
+#: convocatoriaslist.cpp:223
 #, fuzzy
 msgid "Borrar Convocatoria"
 msgstr "Erase quota"
@@ -125,7 +126,7 @@ msgstr "Erase quota"
 msgid "Borrar cobro"
 msgstr "Erase quota"
 
-#: ui_actividadeslistbase.h:320 ui_convocatoriaslistbase.h:372
+#: ui_convocatoriaslistbase.h:372 ui_actividadeslistbase.h:320
 msgid "Buscar:"
 msgstr "Look for:"
 
@@ -175,12 +176,12 @@ msgstr ""
 "#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
 "Commentaries"
 
-#: ui_actividadbase.h:586 ui_convocatoriabase.h:440
+#: ui_convocatoriabase.h:440 ui_actividadbase.h:586
 msgid "Comentarios:"
 msgstr "Commentaries:"
 
-#: ui_actividadeslistbase.h:305 ui_actividadeslistbase.h:308
 #: ui_convocatoriaslistbase.h:357 ui_convocatoriaslistbase.h:360
+#: ui_actividadeslistbase.h:305 ui_actividadeslistbase.h:308
 msgid "Configurar listado"
 msgstr "Form listing"
 
@@ -189,50 +190,50 @@ msgstr "Form listing"
 msgid "Convocatoria"
 msgstr "Concept"
 
-#: convocatoriaslist.cpp:150
+#: convocatoriaslist.cpp:149
 #, fuzzy
 msgid "Convocatorias"
 msgstr "&Contracts"
 
-#: ui_actividadeslistbase.h:311 ui_convocatoriaslistbase.h:363
+#: ui_convocatoriaslistbase.h:363 ui_actividadeslistbase.h:311
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_actividadeslistbase.h:287 ui_actividadbase.h:556
-#: ui_convocatoriaslistbase.h:339 ui_convocatoriabase.h:423
+#: ui_convocatoriabase.h:423 ui_actividadbase.h:556
+#: ui_convocatoriaslistbase.h:339 ui_actividadeslistbase.h:287
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_actividadeslistbase.h:279 ui_convocatoriaslistbase.h:331
+#: ui_convocatoriaslistbase.h:331 ui_actividadeslistbase.h:279
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_actividadeslistbase.h:303 ui_convocatoriaslistbase.h:355
+#: ui_convocatoriaslistbase.h:355 ui_actividadeslistbase.h:303
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_actividadbase.h:564 ui_convocatoriabase.h:431
+#: ui_convocatoriabase.h:431 ui_actividadbase.h:564
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_actividadeslistbase.h:271 ui_convocatoriaslistbase.h:323
+#: ui_convocatoriaslistbase.h:323 ui_actividadeslistbase.h:271
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_actividadeslistbase.h:295 ui_convocatoriaslistbase.h:347
+#: ui_convocatoriaslistbase.h:347 ui_actividadeslistbase.h:295
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_actividadbase.h:548 ui_convocatoriabase.h:415
+#: ui_convocatoriabase.h:415 ui_actividadbase.h:548
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: convocatoriaslist.cpp:207 actividadeslist.cpp:222
+#: convocatoriaslist.cpp:206 actividadeslist.cpp:218
 #, fuzzy
 msgid "Debe seleccionar una fila primero"
 msgstr "It must select a family"
 
-#: convocatoriaslist.cpp:166 actividadeslist.cpp:178
+#: convocatoriaslist.cpp:165 actividadeslist.cpp:174
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "It must select a family"
@@ -245,7 +246,7 @@ msgstr "It wishes to keep the changes?"
 msgid "Direccion"
 msgstr "Address"
 
-#: ui_actividadbase.h:568 ui_convocatoriabase.h:436
+#: ui_convocatoriabase.h:436 ui_actividadbase.h:568
 msgid "Direccion:"
 msgstr "Address:"
 
@@ -254,7 +255,7 @@ msgstr "Address:"
 msgid "Domingo"
 msgstr "Denomination"
 
-#: actividadview.cpp:74 actividadeslist.cpp:304
+#: actividadeslist.cpp:300 actividadview.cpp:74
 msgid "Duracion"
 msgstr ""
 
@@ -262,14 +263,14 @@ msgstr ""
 msgid "Duración:"
 msgstr ""
 
-#: actividadeslist.cpp:242 ui_actividadeslistbase.h:273
-#: ui_actividadeslistbase.h:276 ui_convocatoriaslistbase.h:325
-#: ui_convocatoriaslistbase.h:328
+#: actividadeslist.cpp:238 ui_convocatoriaslistbase.h:325
+#: ui_convocatoriaslistbase.h:328 ui_actividadeslistbase.h:273
+#: ui_actividadeslistbase.h:276
 #, fuzzy
 msgid "Editar Actividad"
 msgstr "Publish client"
 
-#: convocatoriaslist.cpp:223
+#: convocatoriaslist.cpp:222
 #, fuzzy
 msgid "Editar Convocatoria"
 msgstr "Publish client"
@@ -283,7 +284,7 @@ msgstr ""
 msgid "Error al borrar el TipoActividad"
 msgstr "Error when creating article"
 
-#: convocatoriaslist.cpp:180 actividadeslist.cpp:193
+#: convocatoriaslist.cpp:179 actividadeslist.cpp:189
 #, fuzzy
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error when erasing a client"
@@ -303,11 +304,11 @@ msgstr "Error when creating article"
 msgid "Error al guardar el tipoactividad"
 msgstr "Error when creating article"
 
-#: ui_actividadeslistbase.h:319 ui_convocatoriaslistbase.h:371
+#: ui_convocatoriaslistbase.h:371 ui_actividadeslistbase.h:319
 msgid "F5"
 msgstr "F5"
 
-#: actividadview.cpp:62 actividadeslist.cpp:302
+#: actividadeslist.cpp:298 actividadview.cpp:62
 #, fuzzy
 msgid "Fecha Final"
 msgstr ""
@@ -324,7 +325,7 @@ msgstr ""
 msgid "Fecha Final:"
 msgstr ""
 
-#: actividadview.cpp:61 actividadeslist.cpp:301
+#: actividadeslist.cpp:297 actividadview.cpp:61
 msgid "Fecha Inicial"
 msgstr "Initial Date"
 
@@ -336,12 +337,12 @@ msgstr ""
 msgid "Fecha de la falta"
 msgstr ""
 
-#: ui_actividadeslistbase.h:261 ui_convocatoriaslistbase.h:311
+#: ui_convocatoriaslistbase.h:311 ui_actividadeslistbase.h:261
 #, fuzzy
 msgid "Fecha final:"
 msgstr "Final &date:"
 
-#: ui_actividadeslistbase.h:262 ui_convocatoriaslistbase.h:312
+#: ui_convocatoriaslistbase.h:312 ui_actividadeslistbase.h:262
 #, fuzzy
 msgid "Fecha inicial:"
 msgstr "Initial &date:"
@@ -351,8 +352,8 @@ msgstr "Initial &date:"
 msgid "Fecha inscripcion"
 msgstr "Initial date:"
 
-#: ui_actividadeslistbase.h:297 ui_actividadeslistbase.h:300
 #: ui_convocatoriaslistbase.h:349 ui_convocatoriaslistbase.h:352
+#: ui_actividadeslistbase.h:297 ui_actividadeslistbase.h:300
 #, fuzzy
 msgid "Filtrar Actividades"
 msgstr "Filter listing"
@@ -389,7 +390,7 @@ msgstr "Keep changes"
 msgid "Guardar datos del tipoactividad"
 msgstr "Keep data from the worker"
 
-#: actividadeslist.cpp:303
+#: actividadeslist.cpp:299
 msgid "Hora Inicial"
 msgstr ""
 
@@ -402,7 +403,7 @@ msgstr "Beginning"
 msgid "Hora Inicio:"
 msgstr ""
 
-#: actividadeslist.cpp:296
+#: actividadeslist.cpp:292
 #, fuzzy
 msgid "ID Actividad"
 msgstr ""
@@ -411,7 +412,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Id type IVA "
 
-#: convocatoriaslist.cpp:268
+#: convocatoriaslist.cpp:267
 #, fuzzy
 msgid "ID Convocatoria"
 msgstr "Commercial name:"
@@ -467,8 +468,8 @@ msgstr "Identifier"
 msgid "Imprimir actividad"
 msgstr "Print letters patent"
 
-#: ui_actividadeslistbase.h:289 ui_actividadeslistbase.h:292
 #: ui_convocatoriaslistbase.h:341 ui_convocatoriaslistbase.h:344
+#: ui_actividadeslistbase.h:289 ui_actividadeslistbase.h:292
 msgid "Imprimir listado"
 msgstr "Print listing"
 
@@ -503,7 +504,7 @@ msgstr ""
 msgid "Miercoles"
 msgstr ""
 
-#: convocatoriaslist.cpp:269 actividadeslist.cpp:297
+#: convocatoriaslist.cpp:268 actividadeslist.cpp:293
 msgid "Nombre"
 msgstr "Name"
 
@@ -512,7 +513,7 @@ msgstr "Name"
 msgid "Nombre alumno"
 msgstr "Field name"
 
-#: ui_actividadbase.h:566 ui_convocatoriabase.h:433
+#: ui_convocatoriabase.h:433 ui_actividadbase.h:566
 msgid "Nombre completo:"
 msgstr "Complete name:"
 
@@ -529,7 +530,7 @@ msgstr ""
 msgid "Nombre:"
 msgstr "Name:"
 
-#: ui_actividadbase.h:539 ui_convocatoriabase.h:406
+#: ui_convocatoriabase.h:406 ui_actividadbase.h:539
 #, fuzzy
 msgid "Nueva Actividad"
 msgstr "New femily"
@@ -539,8 +540,8 @@ msgstr "New femily"
 msgid "Nueva actividad"
 msgstr "New femily"
 
-#: ui_actividadeslistbase.h:265 ui_actividadeslistbase.h:268
 #: ui_convocatoriaslistbase.h:317 ui_convocatoriaslistbase.h:320
+#: ui_actividadeslistbase.h:265 ui_actividadeslistbase.h:268
 #, fuzzy
 msgid "Nuevo Actividad"
 msgstr "New account"
@@ -558,7 +559,7 @@ msgstr ""
 msgid "Nuevo actividad"
 msgstr ""
 
-#: ui_actividadbase.h:587 ui_convocatoriabase.h:441
+#: ui_convocatoriabase.h:441 ui_actividadbase.h:587
 #, fuzzy
 msgid "Otros datos"
 msgstr "Other data:"
@@ -572,7 +573,7 @@ msgstr ""
 msgid "Periodo"
 msgstr "Order"
 
-#: actividadview.cpp:60 actividadeslist.cpp:300
+#: actividadeslist.cpp:296 actividadview.cpp:60
 msgid "Precio"
 msgstr "Price"
 
@@ -580,7 +581,7 @@ msgstr "Price"
 msgid "Precio Cuota:"
 msgstr ""
 
-#: actividadeslist.cpp:298
+#: actividadeslist.cpp:294
 #, fuzzy
 msgid "Profesor"
 msgstr "Supplier"
@@ -608,10 +609,17 @@ msgid "Sesiones Semanales"
 msgstr ""
 
 #: actividadview.cpp:143 convocatoriaview.cpp:96
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo.\n"
+"#-#-#-#-#  pluginbf_alumno_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"You have to save the document before being able to print it.\n"
+"#-#-#-#-#  pluginbf_recibo_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tiene que guardar el documento antes de poder imprimirlo."
 
-#: actividadeslist.cpp:299
+#: actividadeslist.cpp:295
 msgid "Tipo"
 msgstr "Type"
 
@@ -653,7 +661,7 @@ msgstr "A&uthors"
 msgid "Viernes"
 msgstr "Effective"
 
-#: actividadview.cpp:63 ui_actividadbase.h:569 ui_convocatoriabase.h:437
+#: actividadview.cpp:63 ui_convocatoriabase.h:437 ui_actividadbase.h:569
 #, fuzzy
 msgid "Vigente"
 msgstr "Effective"

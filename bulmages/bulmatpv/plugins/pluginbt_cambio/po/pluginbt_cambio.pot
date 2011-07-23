@@ -8,27 +8,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-05-30 18:19+0200\n"
+"POT-Creation-Date: 2011-07-12 11:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbt_cambio.cpp:59
+#: cambio.cpp:134
+msgid "CANCELAR COBRO"
+msgstr ""
+
+#: cambio.cpp:144
+msgid "COBRO EFECTIVO"
+msgstr ""
+
+#: cambio.cpp:145
+msgid "PAGADO"
+msgstr ""
+
+#: cambio.cpp:146
+msgid "CAMBIO"
+msgstr ""
+
+#: cambio.cpp:156
+msgid "COBRO VISA"
+msgstr ""
+
+#: pluginbt_cambio.cpp:62
 msgid "El ticket esta vacio."
 msgstr ""
 
-#: pluginbt_cambio.cpp:79
+#: pluginbt_cambio.cpp:78
 msgid "Cobro"
 msgstr ""
 
-#: pluginbt_cambio.cpp:91
+#: pluginbt_cambio.cpp:94
 msgid "Pagado"
 msgstr ""
 
-#: pluginbt_cambio.cpp:92
+#: pluginbt_cambio.cpp:95
 msgid "Cambio"
 msgstr ""
 
