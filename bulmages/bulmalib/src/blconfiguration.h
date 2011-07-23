@@ -271,7 +271,8 @@
 #define CONF_CENTER_TEXT_FIELDS      563
 #define CONF_ASK_BEFORE_EXIT         564
 #define CONF_TPV_CATEGORIES_COLUMNS  565
-#define CONF_MAIN_WINDOW_TITLE 566
+#define CONF_MAIN_WINDOW_TITLE       566
+#define CONF_REPLACE_STRING          567
 
 
 typedef QMap<int, QString> mapa;
