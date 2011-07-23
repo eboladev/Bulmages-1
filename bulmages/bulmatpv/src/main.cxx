@@ -82,11 +82,13 @@ int main ( int argc, char **argv )
         /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
         BlArgParser* argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
 
-        if( ! argParser->host().isEmpty() ) {
+	g_confpr->setValue( CONF_REPLACE_STRING, argParser->confReplaceString() );
+
+        if ( ! argParser->host().isEmpty() ) {
             g_confpr->setValue( CONF_SERVIDOR, argParser->host() );
         } // end if
         
-        if( ! argParser->port().isEmpty() ) {
+        if ( ! argParser->port().isEmpty() ) {
             g_confpr->setValue( CONF_PUERTO, argParser->port() );
         } // end if
 

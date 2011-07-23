@@ -110,6 +110,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     m_genericLocalConfFile = m_genericGlobalConfFile;
     m_programLocalConfFile = m_programGlobalConfFile;
 
+
     /// Comprobamos la existencia de los directorios y archivos de configuracion.
     /// Directorios y archivos obligatorios (sale si no existe):
     if ( !dirGlobalConf.exists() ) {
@@ -446,6 +447,8 @@ QString BlConfiguration::name( int i )
         return "CONF_NUMCHAR_RELOAD_FILTRO";
     if ( i == CONF_URL_CONTENTS )
         return "CONF_URL_CONTENTS";
+    if ( i == CONF_REPLACE_STRING )
+        return "CONF_REPLACE_STRING";
     
     return "";
 }
@@ -532,7 +535,15 @@ bool BlConfiguration::readConfig ( QString fich )
 QString BlConfiguration::value( int i )
 {
     if ( m_valores.contains ( i ) ) {
-        return ( m_valores[i] );
+    
+	/// Si el valor incluye una variable de substitucion y esta existe se realiza.
+	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
+	QString valor = m_valores[i];
+	
+	if (i != CONF_REPLACE_STRING)
+	    valor.replace("${CONF_REPLACE_STRING}", value(CONF_REPLACE_STRING));
+    
+        return ( valor );
     } // end if
     return "";
 }

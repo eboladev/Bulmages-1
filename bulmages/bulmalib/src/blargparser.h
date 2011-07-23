@@ -27,6 +27,7 @@
 #include "blconfiguration.h"
 #include "blfunctions.h"
 
+
 class BL_EXPORT BlArgParser
 {
 public:
@@ -35,6 +36,7 @@ public:
    QString host();
    QString port();
    QString userName();
+   QString confReplaceString();
    bool askPassword();
    bool showVersion();
    bool showHelp();
@@ -45,34 +47,48 @@ private:
     QString m_host;
     QString m_port;
     QString m_userName;
+    QString m_confReplaceString;
     bool m_askPassword;
     bool m_showVersion;
     bool m_showHelp;
 };
+
+
+inline QString BlArgParser::confReplaceString()
+{
+   return m_confReplaceString;
+}
+
 
 inline QString BlArgParser::dbName()
 {
    return m_dbName;
 }
 
+
 inline QString BlArgParser::host()
 {
       return m_host;
 }
+
 
 inline QString BlArgParser::port()
 {
       return m_port;
 }
 
+
 inline QString BlArgParser::userName()
 {
       return m_userName;
 }
+
 
 inline bool BlArgParser::askPassword()
 {
    return m_askPassword;
 }
 
-#endif // BLARGPARSER_H
+
+#endif
+

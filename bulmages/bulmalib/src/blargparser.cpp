@@ -21,6 +21,7 @@
 
 #include "blargparser.h"
 
+
 ///
 /**
 \param argc
@@ -37,6 +38,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
    m_showVersion = FALSE;
    m_askPassword = FALSE;
    m_showHelp = FALSE;
+   m_confReplaceString = "";
    
    QString argument = "";
    char type_arg = ' ';
@@ -53,7 +55,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
          m_host = argument;
          break;
       case 'p':
-         // Tomar el número de puerto sólo si es un número
+         /// Tomar el numero de puerto solo si es un numero
          bool ok;
          argument.toInt(&ok, 10);
          if ( ok ) {
@@ -63,7 +65,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
       case 'U':
          m_userName = argument;
          break;
-      }
+      } // end switch
 
       /// Cuando se asigna una letra a la variable type_arg,
       /// se espera tomar un valor en la pr&oacute;xima iteraci&oacute;n.
@@ -81,6 +83,10 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
       else if (argument == "--username" || argument == "-U") {
          type_arg = 'U';
       }
+      else if (argument == "--replace" || argument == "-R") {
+         /// Usa la variable de entorno CONF_REPLACE_STRING, si existe, para este fin.
+         m_confReplaceString = QString( qgetenv("CONF_REPLACE_STRING").constData() );
+      }
       else if (argument == "--version" || argument == "-V") {
          m_showVersion = true;
       }
@@ -92,7 +98,6 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
       } // end if
    } // end for
 
-   
 }
 
 
@@ -100,7 +105,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
 bool BlArgParser::showHelp()
 {
    BL_FUNC_DEBUG
-   if( m_showHelp ) {
+   if ( m_showHelp ) {
       QTextStream(stdout)
             <<"Usage: "<<m_executable<<" [OPTION]"<<endl
             <<"-d, --dbname NAME     Database name"<<endl
@@ -109,8 +114,10 @@ bool BlArgParser::showHelp()
             <<"-U, --username NAME   User name"<<endl
             <<"-W, --password        Force password asking"<<endl
             <<"-V, --version         Show current version number, then exit"<<endl
+            <<"-R, --replace         Use CONF_REPLACE_STRING environment variable"<<endl
+            <<"                      to replace ${CONF_REPLACE_STRING} in .conf files"<<endl
             <<"-?, --help            Show this help, then exit"<<endl;
-   }
+   } // end if
 
    return( m_showHelp );
 }
@@ -120,10 +127,11 @@ bool BlArgParser::showHelp()
 bool BlArgParser::showVersion()
 {
    BL_FUNC_DEBUG
-   if( m_showVersion || m_showHelp ) {
-      QTextStream(stdout)
-            <<m_executable<<" "<<CONFIG_VERSION<<endl;
-   }
+   if ( m_showVersion || m_showHelp ) {
+	QTextStream(stdout) << m_executable << " " << CONFIG_VERSION << endl;
+   } // end if
 
    return( m_showVersion );
 }
+
+
