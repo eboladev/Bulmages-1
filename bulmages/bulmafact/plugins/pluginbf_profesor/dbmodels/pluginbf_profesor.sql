@@ -438,7 +438,7 @@ BEGIN
     SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hora1convocatoriareunion'' AND relname=''reunion'';
     IF NOT FOUND THEN
         ALTER TABLE reunion ADD COLUMN hora1convocatoriareunion varchar NOT NULL;
-        ALTER TABLE reunion ADD COLUMN hora2convocatoriareunion varchar NOT NULL;
+        ALTER TABLE reunion ADD COLUMN hora2convocatoriareunion varchar;
     END IF;
 
     SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''resolucionreunion'' AND relname=''reunion'';
