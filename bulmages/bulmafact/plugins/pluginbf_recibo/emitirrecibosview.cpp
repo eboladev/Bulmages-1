@@ -119,28 +119,34 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 	  } // end if
 	} // end if
 
-	if (mui_actividades -> isChecked() ) {
+	if (mui_actividades -> isChecked() || (mui_actividad -> isChecked() && mui_idactividad->id() != "") ) {
 	  /// Si hay actividades se facturan.
 	  query = "SELECT * FROM alumnoactividad LEFT JOIN alumno as t1 ON alumnoactividad.idalumno = t1.idalumno LEFT JOIN actividad AS t2 ON alumnoactividad.idactividad = t2.idactividad LEFT JOIN alumnocliente AS t3 ON t3.idalumno = t1.idalumno LEFT JOIN cliente AS t4 ON t4.idcliente = t3.idcliente WHERE t3.idcliente = " + cur->value("idcliente") + " AND t3.porcentalumnocliente <> 0";
+	  if (mui_actividad -> isChecked() && mui_idactividad->id() != "") {
+	      /// Si hay facturacion de una actividad concreta se factura.
+	      query = "SELECT * FROM alumnoactividad LEFT JOIN alumno as t1 ON alumnoactividad.idalumno = t1.idalumno LEFT JOIN actividad AS t2 ON alumnoactividad.idactividad = t2.idactividad LEFT JOIN alumnocliente AS t3 ON t3.idalumno = t1.idalumno LEFT JOIN cliente AS t4 ON t4.idcliente = t3.idcliente WHERE t3.idcliente = " + cur->value("idcliente") + " AND t3.porcentalumnocliente <> 0 AND t2.idactividad = " +mui_idactividad->id();
+	  } // end if
+	  
 	  cur1 = mainCompany() -> loadQuery(query);
-	  while (! cur1 -> eof () ) {
-	      query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur1->value("porcentalumnocliente") +"*"+cur1->value("precioactividad")+"/100" + ", '"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+" ')";
-	      mainCompany() -> runQuery(query);
-	      cur1 -> nextRecord();
-	      haylineas = TRUE;
-	  } // end while
-	} // end if
-        
-	if (mui_actividad -> isChecked() && mui_idactividad->id() != "") {
-	  /// Si hay actividades se facturan.
-	  query = "SELECT * FROM alumnoactividad LEFT JOIN alumno as t1 ON alumnoactividad.idalumno = t1.idalumno LEFT JOIN actividad AS t2 ON alumnoactividad.idactividad = t2.idactividad LEFT JOIN alumnocliente AS t3 ON t3.idalumno = t1.idalumno LEFT JOIN cliente AS t4 ON t4.idcliente = t3.idcliente WHERE t3.idcliente = " + cur->value("idcliente") + " AND t3.porcentalumnocliente <> 0 AND t2.idactividad = " +mui_idactividad->id();
-	  cur1 = mainCompany() -> loadQuery(query);
-	  while (! cur1 -> eof () ) {
-	      query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur1->value("porcentalumnocliente") +"*"+cur1->value("precioactividad")+"/100" + ", '"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+" ')";
-	      mainCompany() -> runQuery(query);
-	      cur1 -> nextRecord();
-	      haylineas = TRUE;
-	  } // end while
+	  if (! cur1->eof() ) {
+	      /// Calculamos la cuota correspondiente aplicando los descuentos que toca.
+	      BlFixed cuota(cur1->value("precioactividad"));
+	      int numerodehijos = cur1->numregistros();
+	      query = "SELECT * FROM cuotaporalumno WHERE numalumnoscuotaporalumno = " + QString::number(numerodehijos);
+	      BlDbRecordSet * curcuota = mainCompany()->loadQuery(query);
+	      if ( ! curcuota -> eof() ) {
+		  BlFixed reduccionporhijos = curcuota->value("descuentocuotaporalumno");
+		  cuota = cuota - cuota * reduccionporhijos / 100;
+	      } // end if
+	      delete curcuota;
+	      
+	      while (! cur1 -> eof () ) {
+		  query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cuota.toQString('.') + ", '"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+" ')";
+		  mainCompany() -> runQuery(query);
+		  cur1 -> nextRecord();
+		  haylineas = TRUE;
+	      } // end while
+	  } // end if
 	} // end if
 
 
