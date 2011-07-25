@@ -391,9 +391,16 @@ BEGIN
     IF NOT FOUND THEN
         CREATE TABLE cuotaporalumno (
             numalumnoscuotaporalumno INTEGER NOT NULL PRIMARY KEY,
-            cuotacuotaporalumno NUMERIC (12,2)
+            cuotacuotaporalumno NUMERIC (12,2),
+            descuentocuotaporalumno NUMERIC (12,2) DEFAULT 0
         );
     END IF;
+
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''descuentocuotaporalumno'' AND relname=''cuotaporalumno'';
+    IF NOT FOUND THEN
+        ALTER TABLE cuotaporalumno ADD COLUMN descuentocuotaporalumno NUMERIC (12,2) DEFAULT 0;
+    END IF;
+
 
     SELECT INTO rsa * FROM pg_tables  WHERE tablename=''jdirectiva'';
     IF NOT FOUND THEN

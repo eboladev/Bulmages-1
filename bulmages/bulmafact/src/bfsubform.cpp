@@ -583,12 +583,17 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
-        QString valueanterior = m_subform->lista()->at ( index.row() )->dbValue ( "cant" + m_subform->tableName() );
+    
+        QString valueanterior = m_subform->lista()->at ( index.row() )->dbValue ( linea->fieldName() );
 
         model->setData ( index, value );
 
         /// Dispara senyales:
-        if ( linea->fieldName() == "cant" + m_subform->tableName() ) {
+        if ( linea->fieldName() == "cant" + m_subform->tableName() 
+                || linea->fieldName() == "pvp" + m_subform->tableName()
+                || linea->fieldName() == "descuento" + m_subform->tableName()
+                || linea->fieldName() == "reqeq" + m_subform->tableName()
+                || linea->fieldName() == "iva" + m_subform->tableName() ) {
             /// Mira si se ha cambiado la cantidad o es la misma que habia.
             if ( valueanterior.toDouble() != value.toDouble() ) {
                 emit cant_changed ( m_subform->lista()->at ( index.row() ) );
