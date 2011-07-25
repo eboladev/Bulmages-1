@@ -191,7 +191,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ArticuloView_cargar", this );
+    int res = g_plugins->lanza ( "ArticuloView_load", this );
     if ( res != 0 ) {
         return 0;
     } // end if

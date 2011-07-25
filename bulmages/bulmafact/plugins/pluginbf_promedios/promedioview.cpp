@@ -66,7 +66,8 @@ int PromedioView::load ( QString idarticulo )
 {
     BL_FUNC_DEBUG
 
-    BlDbRecordSet *cur = m_companyact->loadQuery ( "SELECT sum(pvplalbaranp*cantlalbaranp)::NUMERIC(12,2) AS tot, sum(cantlalbaranp) as und, max(pvplalbaranp) AS mayor, min(pvplalbaranp) AS menor, avg(pvplalbaranp)::NUMERIC(12,2) AS media, max(cantlalbaranp) as undmayorcompras, min(cantlalbaranp) AS undmenorcompras, avg(cantlalbaranp)::NUMERIC(12,2) AS undavgcompras  FROM lalbaranp WHERE idarticulo=" + idarticulo );
+    QString query = "SELECT sum(pvplalbaranp*cantlalbaranp)::NUMERIC(12,2) AS tot, sum(cantlalbaranp) as und, max(pvplalbaranp) AS mayor, min(pvplalbaranp) AS menor, avg(pvplalbaranp)::NUMERIC(12,2) AS media, max(cantlalbaranp) as undmayorcompras, min(cantlalbaranp) AS undmenorcompras, avg(cantlalbaranp)::NUMERIC(12,2) AS undavgcompras  FROM lalbaranp WHERE idarticulo=" + idarticulo;
+    BlDbRecordSet *cur = m_companyact->loadQuery ( query );
     if ( !cur->eof() ) {
         mui_totalcompras->setText ( cur->value( "tot" ) );
         mui_mayorcompras->setText ( cur->value( "mayor" ) );
@@ -79,8 +80,9 @@ int PromedioView::load ( QString idarticulo )
     } // end if
     delete cur;
 
-
-    BlDbRecordSet *cur1 = m_companyact->loadQuery ( "SELECT sum(pvplalbaran*cantlalbaran)::NUMERIC(12,2) AS tot, sum(cantlalbaran) as und, max(pvplalbaran) AS mayor, min(pvplalbaran) AS menor, avg(pvplalbaran)::NUMERIC(12,2) AS media, max(cantlalbaran) as undmayorventas, min(cantlalbaran) AS undmenorventas, avg(cantlalbaran)::NUMERIC(12,2) AS undavgventas  FROM lalbaran WHERE idarticulo=" + idarticulo );
+    
+    query = "SELECT sum(pvplalbaran*cantlalbaran)::NUMERIC(12,2) AS tot, sum(cantlalbaran) as und, max(pvplalbaran) AS mayor, min(pvplalbaran) AS menor, avg(pvplalbaran)::NUMERIC(12,2) AS media, max(cantlalbaran) as undmayorventas, min(cantlalbaran) AS undmenorventas, avg(cantlalbaran)::NUMERIC(12,2) AS undavgventas  FROM lalbaran WHERE idarticulo=" + idarticulo;
+    BlDbRecordSet *cur1 = m_companyact->loadQuery ( query );
     if ( !cur1->eof() ) {
         mui_totalventas->setText ( cur1->value( "tot" ) );
         mui_mayorventas->setText ( cur1->value( "mayor" ) );
