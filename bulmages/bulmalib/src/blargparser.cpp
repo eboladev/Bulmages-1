@@ -85,7 +85,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
       }
       else if (argument == "--replace" || argument == "-R") {
          /// Usa la variable de entorno CONF_REPLACE_STRING, si existe, para este fin.
-         m_confReplaceString = QString( qgetenv("CONF_REPLACE_STRING").constData() );
+         m_confReplaceString = blGetEnv("CONF_REPLACE_STRING");
       }
       else if (argument == "--version" || argument == "-V") {
          m_showVersion = true;

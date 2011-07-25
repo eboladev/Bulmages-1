@@ -1172,6 +1172,7 @@ bool blValidateSpainNIFCode ( QString nif1, QChar &digit )
 
 }
 
+
 //
 bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
 {
@@ -1234,6 +1235,7 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
     return FALSE;
 }
 
+
 void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter) {
       BL_FUNC_DEBUG
       QString printer = "";
@@ -1257,6 +1259,8 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
       #endif
 
 }
+
+
 void blWebBrowser(const QString &uri, const QString &defbrowser) {
     BL_FUNC_DEBUG
     QString browser = "";
@@ -1284,4 +1288,37 @@ void blWebBrowser(const QString &uri, const QString &defbrowser) {
 }
 
 
+QString blGetEnv( const char *varName ) {
+/// En MS-Windows hay problemas al pasar a la codificacion UTF-8.
+#ifdef Q_OS_WIN32
+	DWORD length;
+	length = GetEnvironmentVariableW(QStringToWCHAR(varName), NULL, 0);
+
+	wchar_t *variable = new wchar_t[length];
+	GetEnvironmentVariableW(QStringToWCHAR(varName), variable, length );
+
+	return QString::fromWCharArray(variable);
+#else
+        return QString( qgetenv(varName).constData() );
+#endif  
+}
+
+
+#ifdef Q_OS_WIN32
+/// Converts QString to WCHAR (MS-Windows only function).
+wchar_t* QStringToWCHAR (QString inString) {
+
+	if (inString.isEmpty())
+		return NULL;
+
+	std::wstring str = inString.toStdWString ();
+
+	wchar_t *outString = new wchar_t[inString.size () + 1];
+    	unsigned int length = inString.toWCharArray (outString);
+
+	outString[length] = '\0';
+
+	return outString;
+}
+#endif
 

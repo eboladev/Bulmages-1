@@ -42,6 +42,9 @@
 
 #include <QMainWindow>
 #include <QStatusBar>
+#ifdef Q_OS_WIN32
+	#include <qt_windows.h>
+#endif
 
 #include "bldefs.h"
 #include "blapplication.h"
@@ -146,5 +149,11 @@ bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &digit);
 void BL_EXPORT blRawPrint(const QString &archivo, bool diruser=TRUE, const QString &defprinter="");
 void BL_EXPORT blWebBrowser(const QString &uri, const QString &defbrowser="");
 
+QString BL_EXPORT blGetEnv( const char *varName );
+
+#ifdef Q_OS_WIN32
+wchar_t* BL_EXPORT QStringToWCHAR (QString inString);
+#endif
+  
 #endif
 
