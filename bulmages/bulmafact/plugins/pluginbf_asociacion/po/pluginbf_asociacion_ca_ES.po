@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-07-12 11:18+0200\n"
-"PO-Revision-Date: 2011-07-03 19:20+0200\n"
+"PO-Revision-Date: 2011-07-26 18:54+0200\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
 "Language: Catalan\n"
@@ -290,7 +290,7 @@ msgstr "Data de Baixa"
 
 #: ui_jdirectivabase.h:267 ui_comisionbase.h:300
 msgid "Fecha Cesion"
-msgstr "Data Cessió"
+msgstr "Data d'Acabament"
 
 #: comisionview.cpp:52 jdirectivaview.cpp:56 ui_jdirectivabase.h:266
 #: ui_comisionbase.h:299
