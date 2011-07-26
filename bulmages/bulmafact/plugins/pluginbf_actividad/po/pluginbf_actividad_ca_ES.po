@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-07-12 11:18+0200\n"
-"PO-Revision-Date: 2011-02-19 14:17+0100\n"
+"PO-Revision-Date: 2011-07-26 18:24+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "Language: \n"
@@ -364,7 +364,7 @@ msgstr "Id. alumne"
 
 #: actividadview.cpp:59 convocatoriaview.cpp:53
 msgid "Id profesor"
-msgstr "Id. professor"
+msgstr "Id. monitor"
 
 #: actividadview.cpp:253
 #, fuzzy
@@ -483,15 +483,15 @@ msgstr "Preu quota:"
 
 #: actividadeslist.cpp:294
 msgid "Profesor"
-msgstr "Professor"
+msgstr "Monitor"
 
 #: ui_convocatoriabase.h:435
 msgid "Profesor Encargado"
-msgstr "Professor encarregat"
+msgstr "Monitor encarregat"
 
 #: actividadview.cpp:93 convocatoriaview.cpp:59
 msgid "Profesor:"
-msgstr "Professor:"
+msgstr "Monitor:"
 
 #: actividadview.cpp:70 ui_actividadbase.h:578
 msgid "Sabado"
