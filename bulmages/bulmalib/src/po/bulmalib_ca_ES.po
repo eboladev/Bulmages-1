@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-07-12 11:15+0200\n"
-"PO-Revision-Date: 2011-07-03 08:21+0200\n"
+"PO-Revision-Date: 2011-07-26 17:45+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu\n"
 "Language-Team: Catalan <LL@li.org>\n"
 "Language: ca\n"
@@ -192,7 +192,7 @@ msgstr "Avís del programa"
 
 #: blsubform.cpp:3119
 msgid "Bajar fila"
-msgstr ""
+msgstr "Baixa la fila"
 
 #: blperiodicitycombobox.cpp:76
 msgid "Bienal"
