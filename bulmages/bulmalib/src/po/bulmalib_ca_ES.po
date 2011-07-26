@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-07-12 11:15+0200\n"
-"PO-Revision-Date: 2011-07-26 18:16+0200\n"
+"PO-Revision-Date: 2011-07-26 18:19+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu\n"
 "Language-Team: Catalan <LL@li.org>\n"
 "Language: ca\n"
@@ -140,19 +140,19 @@ msgstr "Actualitza Llistat d'Empreses"
 
 #: blsubform.cpp:3128
 msgid "Ajustar altura"
-msgstr "Ajusta altura"
+msgstr "Ajusta l'altura"
 
 #: blsubform.cpp:3133
 msgid "Ajustar alturas"
-msgstr "Ajusta altures"
+msgstr "Ajusta les altures"
 
 #: blsubform.cpp:3126 bltreewidget.cpp:68
 msgid "Ajustar columa"
-msgstr "Ajustar columna"
+msgstr "Ajusta la columna"
 
 #: blsubform.cpp:3131 bltreewidget.cpp:71
 msgid "Ajustar columnas"
-msgstr "Ajusta columnes"
+msgstr "Ajusta les columnes"
 
 #: blimportexport.cpp:2122
 msgid "Almacen"
