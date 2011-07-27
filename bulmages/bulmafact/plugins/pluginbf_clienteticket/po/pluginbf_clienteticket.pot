@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,80 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bfclientealbaransubform.cpp:45
-msgid "Id articulo"
+#: bfclientealbarandescuentosubform.cpp:41
+msgid "Id descuento"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:46
-msgid "Codigo completo articulo"
+#: bfclientealbarandescuentosubform.cpp:42
+msgid "Concepto descuento"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:47
-msgid "Nombre articulo"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:48
-msgid "No linea"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:49 ticketclientelist.cpp:425
-#: ticketclienteview.cpp:80
-msgid "Descripcion"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:50
-msgid "Cantidad"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:52
-msgid "P.V.P."
-msgstr ""
-
-#: bfclientealbaransubform.cpp:53
-msgid "Total Linea"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:54
-msgid "I.V.A."
-msgstr ""
-
-#: bfclientealbaransubform.cpp:55
-msgid "% Recargo E.Q."
-msgstr ""
-
-#: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
 msgid "% Descuento"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:57 ticketclienteview.cpp:68
-#: bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
+#: ticketclienteview.cpp:68
 msgid "Id albaran"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:58
-msgid "Orden"
-msgstr ""
-
-#: pluginbf_clienteticket.cpp:55
-msgid "&Ventas"
-msgstr ""
-
-#: pluginbf_clienteticket.cpp:59
-msgid "&Ticketes a clientes"
-msgstr ""
-
-#: pluginbf_clienteticket.cpp:61 pluginbf_clienteticket.cpp:62
-#: ticketclientelist.cpp:347
-msgid "Ticketes a clientes"
-msgstr ""
-
-#: pluginbf_clienteticket.cpp:68
-msgid "&Nuevo ticket a cliente"
-msgstr ""
-
-#: pluginbf_clienteticket.cpp:70 pluginbf_clienteticket.cpp:71
-#: ui_ticketclientebase.h:735
-msgid "Nuevo ticket a cliente"
 msgstr ""
 
 #: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
@@ -129,8 +70,139 @@ msgid ""
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
+#: bfclientealbaransubform.cpp:45
+msgid "Id articulo"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:46
+msgid "Codigo completo articulo"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:47
+msgid "Nombre articulo"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:48
+msgid "No linea"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:49 ticketclienteview.cpp:80
+#: ticketclientelist.cpp:425
+msgid "Descripcion"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:50
+msgid "Cantidad"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:52
+msgid "P.V.P."
+msgstr ""
+
+#: bfclientealbaransubform.cpp:53
+msgid "Total Linea"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:54
+msgid "I.V.A."
+msgstr ""
+
+#: bfclientealbaransubform.cpp:55
+msgid "% Recargo E.Q."
+msgstr ""
+
+#: bfclientealbaransubform.cpp:58
+msgid "Orden"
+msgstr ""
+
+#: ticketclienteview.cpp:65
+msgid "Ticket"
+msgstr ""
+
+#: ticketclienteview.cpp:69
+msgid "Cliente"
+msgstr ""
+
+#: ticketclienteview.cpp:70
+msgid "Almacen"
+msgstr ""
+
+#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
+msgid "Numero de albaran"
+msgstr ""
+
+#: ticketclienteview.cpp:72
+msgid "Fecha de creacion"
+msgstr ""
+
+#: ticketclienteview.cpp:73
+msgid "Persona de contacto"
+msgstr ""
+
+#: ticketclienteview.cpp:74
+msgid "Telefono de contacto"
+msgstr ""
+
+#: ticketclienteview.cpp:75
+msgid "Comentario"
+msgstr ""
+
+#: ticketclienteview.cpp:76
+msgid "Comentario privado"
+msgstr ""
+
+#: ticketclienteview.cpp:77
+msgid "Forma de pago"
+msgstr ""
+
+#: ticketclienteview.cpp:78 ui_ticketclientelistbase.h:452
+msgid "Trabajador"
+msgstr ""
+
+#: ticketclienteview.cpp:79 ui_ticketclientebase.h:767
+msgid "Procesado"
+msgstr ""
+
+#: ticketclienteview.cpp:81
+msgid "Referencia"
+msgstr ""
+
+#: ticketclienteview.cpp:82 ui_ticketclientebase.h:779
+msgid "Sucesos antes de imprimir"
+msgstr ""
+
+#: ticketclienteview.cpp:83 ui_ticketclientebase.h:780
+msgid "Sucesos tras imprimir"
+msgstr ""
+
+#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
 msgid "Cliente:"
+msgstr ""
+
+#: ticketclienteview.cpp:118
+msgid "Error al crear el albaran a cliente"
+msgstr ""
+
+#: pluginbf_clienteticket.cpp:55
+msgid "&Ventas"
+msgstr ""
+
+#: pluginbf_clienteticket.cpp:59
+msgid "&Ticketes a clientes"
+msgstr ""
+
+#: pluginbf_clienteticket.cpp:61 pluginbf_clienteticket.cpp:62
+#: ticketclientelist.cpp:347
+msgid "Ticketes a clientes"
+msgstr ""
+
+#: pluginbf_clienteticket.cpp:68
+msgid "&Nuevo ticket a cliente"
+msgstr ""
+
+#: pluginbf_clienteticket.cpp:70 pluginbf_clienteticket.cpp:71
+#: ui_ticketclientebase.h:735
+msgid "Nuevo ticket a cliente"
 msgstr ""
 
 #: ticketclientelist.cpp:207
@@ -159,10 +231,6 @@ msgstr ""
 
 #: ticketclientelist.cpp:423
 msgid "Codigo de almacen"
-msgstr ""
-
-#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
-msgid "Numero de albaran"
 msgstr ""
 
 #: ticketclientelist.cpp:426
@@ -211,74 +279,6 @@ msgstr ""
 
 #: ticketclientelist.cpp:437
 msgid "Total"
-msgstr ""
-
-#: ticketclienteview.cpp:65
-msgid "Ticket"
-msgstr ""
-
-#: ticketclienteview.cpp:69
-msgid "Cliente"
-msgstr ""
-
-#: ticketclienteview.cpp:70
-msgid "Almacen"
-msgstr ""
-
-#: ticketclienteview.cpp:72
-msgid "Fecha de creacion"
-msgstr ""
-
-#: ticketclienteview.cpp:73
-msgid "Persona de contacto"
-msgstr ""
-
-#: ticketclienteview.cpp:74
-msgid "Telefono de contacto"
-msgstr ""
-
-#: ticketclienteview.cpp:75
-msgid "Comentario"
-msgstr ""
-
-#: ticketclienteview.cpp:76
-msgid "Comentario privado"
-msgstr ""
-
-#: ticketclienteview.cpp:77
-msgid "Forma de pago"
-msgstr ""
-
-#: ticketclienteview.cpp:78 ui_ticketclientelistbase.h:452
-msgid "Trabajador"
-msgstr ""
-
-#: ticketclienteview.cpp:79 ui_ticketclientebase.h:767
-msgid "Procesado"
-msgstr ""
-
-#: ticketclienteview.cpp:81
-msgid "Referencia"
-msgstr ""
-
-#: ticketclienteview.cpp:82 ui_ticketclientebase.h:779
-msgid "Sucesos antes de imprimir"
-msgstr ""
-
-#: ticketclienteview.cpp:83 ui_ticketclientebase.h:780
-msgid "Sucesos tras imprimir"
-msgstr ""
-
-#: ticketclienteview.cpp:118
-msgid "Error al crear el albaran a cliente"
-msgstr ""
-
-#: bfclientealbarandescuentosubform.cpp:41
-msgid "Id descuento"
-msgstr ""
-
-#: bfclientealbarandescuentosubform.cpp:42
-msgid "Concepto descuento"
 msgstr ""
 
 #: ui_ticketclientelistbase.h:448

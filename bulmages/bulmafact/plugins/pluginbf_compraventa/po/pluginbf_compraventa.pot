@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_compraventa.cpp:78
+msgid "&CompraVenta"
+msgstr ""
+
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
+msgid "CompraVenta"
+msgstr ""
 
 #: compraventaview.cpp:66
 msgid "Id albaran proveedor"
@@ -167,14 +175,6 @@ msgstr ""
 
 #: compraventaview.cpp:714
 msgid "Error inesperado en la impresion"
-msgstr ""
-
-#: pluginbf_compraventa.cpp:78
-msgid "&CompraVenta"
-msgstr ""
-
-#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
-msgid "CompraVenta"
 msgstr ""
 
 #: ui_compraventabase.h:820

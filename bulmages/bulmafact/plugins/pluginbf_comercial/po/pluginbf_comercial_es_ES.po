@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_rutacomerciallistbase.h:364 ui_listzonacomercialbase.h:85
-#: ui_rutacomercialincbase.h:236
+#: ui_rutacomerciallistbase.h:364 ui_rutacomercialincbase.h:236
+#: ui_listzonacomercialbase.h:85
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
 #: incidenciacomercialview.cpp:106 ui_rutacomerciallistbase.h:365
-#: ui_listzonacomercialbase.h:86 ui_rutacomercialincbase.h:237
+#: ui_rutacomercialincbase.h:237 ui_listzonacomercialbase.h:86
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -84,9 +84,9 @@ msgid "Cambio datos"
 msgstr "Cambio datos"
 
 #: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
-#: rutacomerciallist.cpp:49 rutacomerciallist.cpp:85 rutacomercialview.cpp:69
-#: rutacomercialview.cpp:106 ui_rutacomerciallistbase.h:361
-#: ui_rutacomercialbase.h:229 ui_incidenciacomercialbase.h:282
+#: rutacomercialview.cpp:69 rutacomercialview.cpp:106 rutacomerciallist.cpp:49
+#: rutacomerciallist.cpp:85 ui_rutacomercialbase.h:229
+#: ui_rutacomerciallistbase.h:361 ui_incidenciacomercialbase.h:282
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -259,7 +259,7 @@ msgstr "Identificador"
 msgid "Imprimir Listado"
 msgstr "Imprimir Listado"
 
-#: incidenciacomercialview.cpp:162 incidenciacomercial.cpp:38
+#: incidenciacomercial.cpp:38 incidenciacomercialview.cpp:162
 msgid "Incidencia comercial"
 msgstr "Incidencia comercial"
 

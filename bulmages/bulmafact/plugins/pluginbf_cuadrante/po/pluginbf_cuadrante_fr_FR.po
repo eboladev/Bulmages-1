@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-11 08:12+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -45,9 +45,9 @@ msgstr "1"
 msgid "Actualizar"
 msgstr "Actualiser"
 
-#: cuadranteview.cpp:58 cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
-#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
-#: ui_cuadrante1base.h:308
+#: cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadranteview.cpp:58
+#: cuadrante1view.cpp:58 ui_cuadrante1base.h:308
 msgid "Almacen"
 msgstr "Magasin"
 
@@ -91,17 +91,17 @@ msgstr "Fermeture de soirée"
 msgid "Comentarios"
 msgstr "Libellés"
 
-#: cuadranteview.cpp:314 cuadrantediarioview.cpp:353
+#: cuadrantediarioview.cpp:353 cuadranteview.cpp:314
 #, qt-format
 msgid "Consulta: '%1'."
 msgstr ""
 
-#: ui_cuadrante1base.h:327 ui_cuadrantediariobase.h:294
-#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
-#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
-#: ui_cuadrantediariobase.h:334 ui_cuadrantebase.h:258 ui_cuadrantebase.h:266
-#: ui_cuadrantebase.h:274 ui_cuadrantebase.h:282 ui_cuadrantebase.h:290
-#: ui_cuadrantebase.h:298
+#: ui_cuadrantediariobase.h:294 ui_cuadrantediariobase.h:302
+#: ui_cuadrantediariobase.h:310 ui_cuadrantediariobase.h:318
+#: ui_cuadrantediariobase.h:326 ui_cuadrantediariobase.h:334
+#: ui_cuadrantebase.h:258 ui_cuadrantebase.h:266 ui_cuadrantebase.h:274
+#: ui_cuadrantebase.h:282 ui_cuadrantebase.h:290 ui_cuadrantebase.h:298
+#: ui_cuadrante1base.h:327
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -118,7 +118,7 @@ msgstr "Horaire"
 msgid "Cuadrante y Uso Horario"
 msgstr "Planing et utilisation horaire"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:172
+#: cuadrantediarioview.cpp:172 cuadranteview.cpp:152
 msgid "Domingo"
 msgstr "Dimanche"
 
@@ -151,7 +151,7 @@ msgstr "Date initiale d'absence"
 msgid "Festivo"
 msgstr "Fériés"
 
-#: cuadranteview.cpp:253 cuadrantediarioview.cpp:292
+#: cuadrantediarioview.cpp:292 cuadranteview.cpp:253
 msgid "Fiesta general"
 msgstr "Fête générale"
 
@@ -195,7 +195,7 @@ msgstr "ID horaire"
 msgid "ID horario"
 msgstr "ID Horaire"
 
-#: pluginbf_cuadrante.cpp:216 cuadrante1view.cpp:76
+#: cuadrante1view.cpp:76 pluginbf_cuadrante.cpp:216
 msgid "ID trabajador"
 msgstr "ID Salarié"
 
@@ -209,7 +209,7 @@ msgstr "Egale à la semaine précédente"
 msgid "Imprimir"
 msgstr "Imprimer"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:169
+#: cuadrantediarioview.cpp:169 cuadranteview.cpp:152
 msgid "Jueves"
 msgstr "Jeudi"
 
@@ -218,15 +218,15 @@ msgstr "Jeudi"
 msgid "Limpiar Cuadrante"
 msgstr "Nettoyer l'horaire"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:166
+#: cuadrantediarioview.cpp:166 cuadranteview.cpp:152
 msgid "Lunes"
 msgstr "Lundi"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:167
+#: cuadrantediarioview.cpp:167 cuadranteview.cpp:152
 msgid "Martes"
 msgstr "Mardi"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:168
+#: cuadrantediarioview.cpp:168 cuadranteview.cpp:152
 msgid "Miercoles"
 msgstr "Mercredi"
 
@@ -238,7 +238,7 @@ msgstr "Motiver"
 msgid "Nombre Trabajador"
 msgstr "Nom du Salarié"
 
-#: cuadranteview.cpp:252 cuadrantediarioview.cpp:291
+#: cuadrantediarioview.cpp:291 cuadranteview.cpp:252
 msgid "Normal"
 msgstr "Normal"
 
@@ -255,7 +255,7 @@ msgstr ""
 msgid "Podra destinar los trabajadores a distintos almacenes"
 msgstr ""
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:171
+#: cuadrantediarioview.cpp:171 cuadranteview.cpp:152
 msgid "Sabado"
 msgstr "Samedi"
 
@@ -263,6 +263,6 @@ msgstr "Samedi"
 msgid "Validaciones"
 msgstr "Validation"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:170
+#: cuadrantediarioview.cpp:170 cuadranteview.cpp:152
 msgid "Viernes"
 msgstr "Vendredi"

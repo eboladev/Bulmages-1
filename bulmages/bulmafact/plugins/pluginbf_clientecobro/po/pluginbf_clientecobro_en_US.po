@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -46,8 +46,8 @@ msgstr "Update listing"
 msgid "Apellidos del trabajador"
 msgstr "List of workers:"
 
-#: cobroslist.cpp:270 ui_cobroslistbase.h:402 ui_cobroslistbase.h:405
-#: ui_cobrobase.h:393 ui_cobrobase.h:396 ui_cobrobase.h:401 ui_cobrobase.h:404
+#: cobroslist.cpp:270 ui_cobrobase.h:393 ui_cobrobase.h:396 ui_cobrobase.h:401
+#: ui_cobrobase.h:404 ui_cobroslistbase.h:402 ui_cobroslistbase.h:405
 #, fuzzy
 msgid "Borrar cobro"
 msgstr "Erase quota"
@@ -68,7 +68,7 @@ msgstr "Amount"
 msgid "Cliente"
 msgstr "Client"
 
-#: cobroslist.cpp:51 cobroslist.cpp:85 cobroview.cpp:54
+#: cobroview.cpp:54 cobroslist.cpp:51 cobroslist.cpp:85
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -108,7 +108,7 @@ msgstr "Form listing"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_cobroslistbase.h:408 ui_cobrobase.h:399
+#: ui_cobrobase.h:399 ui_cobroslistbase.h:408
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -184,7 +184,7 @@ msgstr "F5"
 msgid "Fecha de cobro"
 msgstr "Date of the purchase"
 
-#: cobroslist.cpp:332 cobroview.cpp:67
+#: cobroview.cpp:67 cobroslist.cpp:332
 #, fuzzy
 msgid "Fecha de vencimiento"
 msgstr "Date of the seat"
@@ -219,7 +219,7 @@ msgstr "Initial &date:"
 msgid "Filtrar cobros"
 msgstr "leak "
 
-#: cobroslist.cpp:334 cobroview.cpp:71
+#: cobroview.cpp:71 cobroslist.cpp:334
 #, fuzzy
 msgid "Forma de Pago"
 msgstr ""
@@ -227,7 +227,7 @@ msgstr ""
 "Modes of payment\n"
 "#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
 
-#: ui_cobroslistbase.h:445 ui_cobrobase.h:414
+#: ui_cobrobase.h:414 ui_cobroslistbase.h:445
 msgid "Forma de pago:"
 msgstr "Mode of payment:"
 

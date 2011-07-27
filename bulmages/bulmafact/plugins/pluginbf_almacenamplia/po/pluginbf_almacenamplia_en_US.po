@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:17+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -37,8 +37,8 @@ msgstr "Warehouse"
 msgid "Almacenes"
 msgstr "Warehouses"
 
-#: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
-#: ui_almaceneslistbase.h:352
+#: ui_almaceneslistbase.h:349 ui_almaceneslistbase.h:352 ui_almacenbase.h:328
+#: ui_almacenbase.h:331
 #, fuzzy
 msgid "Borrar almacen"
 msgstr "Erase letters patent"
@@ -64,7 +64,7 @@ msgstr "Postal Code"
 msgid "Configurar listado"
 msgstr "Form listing"
 
-#: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
+#: ui_almaceneslistbase.h:355 ui_almacenbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -189,7 +189,7 @@ msgstr "Name warehouse"
 msgid "Nombre almacen"
 msgstr "Name warehouse"
 
-#: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
+#: ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336 ui_almacenbase.h:317
 #, fuzzy
 msgid "Nuevo almacen"
 msgstr "Name warehouse"

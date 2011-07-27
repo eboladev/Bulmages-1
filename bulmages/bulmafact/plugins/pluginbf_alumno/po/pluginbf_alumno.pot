@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,134 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listcuotasporalumnoview.cpp:49
-msgid "CuotasPorAlumno"
+#: alumnoslist.cpp:86
+msgid "Selector de alumnos"
 msgstr ""
 
-#: listcuotasporalumnoview.cpp:71
-msgid "Error al guardar las cuotas"
+#: alumnoslist.cpp:218 pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64
+#: ui_alumnoslistbase.h:309
+msgid "Alumnos"
 msgstr ""
 
-#: listcuotasporalumnoview.cpp:97
-msgid "Numero de alumnos"
+#: alumnoslist.cpp:234
+msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: listcuotasporalumnoview.cpp:98
-msgid "Cuota"
+#: alumnoslist.cpp:248
+msgid "Error al borrar el cobro a cliente."
+msgstr ""
+
+#: alumnoslist.cpp:276
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: alumnoslist.cpp:292 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
+msgid "Editar Alumno"
+msgstr ""
+
+#: alumnoslist.cpp:293 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
+msgid "Borrar Alumno"
+msgstr ""
+
+#: alumnoslist.cpp:349 alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361
+msgid "Id alumno"
+msgstr ""
+
+#: alumnoslist.cpp:350
+msgid "Nombre"
+msgstr ""
+
+#: alumnoslist.cpp:351 alumnoview.cpp:59
+msgid "1er apellido"
+msgstr ""
+
+#: alumnoslist.cpp:352 alumnoview.cpp:60
+msgid "2o apellido"
+msgstr ""
+
+#: alumnoslist.cpp:353
+msgid "F. Nacimiento"
+msgstr ""
+
+#: pluginbf_alumno.cpp:56 pluginbf_alumno.cpp:80
+msgid "&Associats"
+msgstr ""
+
+#: pluginbf_alumno.cpp:61
+msgid "&Alumnos"
+msgstr ""
+
+#: pluginbf_alumno.cpp:70
+msgid "&Nuevo alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:290
+#: pluginbf_alumno.cpp:315
+msgid "Nuevo alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:85
+msgid "&Cuotas Socio"
+msgstr ""
+
+#: pluginbf_alumno.cpp:87 pluginbf_alumno.cpp:88
+msgid "Cuotas por alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:97
+msgid "&Clases"
+msgstr ""
+
+#: pluginbf_alumno.cpp:98 pluginbf_alumno.cpp:99
+msgid "Clases"
+msgstr ""
+
+#: pluginbf_alumno.cpp:292 pluginbf_alumno.cpp:309
+msgid "Editar alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:294 pluginbf_alumno.cpp:313
+msgid "Seleccionar alumno"
+msgstr ""
+
+#: claseview.cpp:44 alumnoview.cpp:67
+msgid "Clase"
+msgstr ""
+
+#: claseview.cpp:178
+msgid "Error al guardar el clase"
+msgstr ""
+
+#: claseview.cpp:196
+msgid "Guardar datos del clase"
+msgstr ""
+
+#: claseview.cpp:197
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: claseview.cpp:198
+msgid "&Si"
+msgstr ""
+
+#: claseview.cpp:198
+msgid "&No"
+msgstr ""
+
+#: claseview.cpp:228
+msgid "Error al crear un nuevo Clase"
+msgstr ""
+
+#: claseview.cpp:254
+msgid "Error al borrar el Clase"
 msgstr ""
 
 #: alumnoview.cpp:53
 msgid "Alumno"
 msgstr ""
 
-#: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:349
-msgid "Id alumno"
-msgstr ""
-
 #: alumnoview.cpp:57 alumnoview.cpp:58
 msgid "Nombre del alumno"
-msgstr ""
-
-#: alumnoview.cpp:59 alumnoslist.cpp:351
-msgid "1er apellido"
-msgstr ""
-
-#: alumnoview.cpp:60 alumnoslist.cpp:352
-msgid "2o apellido"
 msgstr ""
 
 #: alumnoview.cpp:61
@@ -75,10 +169,6 @@ msgstr ""
 
 #: alumnoview.cpp:66 ui_alumnobase.h:522
 msgid "Activo"
-msgstr ""
-
-#: alumnoview.cpp:67 claseview.cpp:44
-msgid "Clase"
 msgstr ""
 
 #: alumnoview.cpp:95
@@ -148,10 +238,6 @@ msgstr ""
 msgid "2do Apellido"
 msgstr ""
 
-#: alumnoview.cpp:330
-msgid "Porcentaje"
-msgstr ""
-
 #: alumnoview.cpp:331
 msgid "Id tutor"
 msgstr ""
@@ -164,131 +250,73 @@ msgstr ""
 msgid "Id actividad"
 msgstr ""
 
-#: pluginbf_alumno.cpp:56 pluginbf_alumno.cpp:80
-msgid "&Associats"
+#: listcuotasporalumnoview.cpp:49
+msgid "CuotasPorAlumno"
 msgstr ""
 
-#: pluginbf_alumno.cpp:61
-msgid "&Alumnos"
+#: listcuotasporalumnoview.cpp:71
+msgid "Error al guardar las cuotas"
 msgstr ""
 
-#: pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64 alumnoslist.cpp:218
-#: ui_alumnoslistbase.h:309
-msgid "Alumnos"
+#: listcuotasporalumnoview.cpp:97
+msgid "Numero de alumnos"
 msgstr ""
 
-#: pluginbf_alumno.cpp:70
-msgid "&Nuevo alumno"
+#: listcuotasporalumnoview.cpp:98
+msgid "Cuota"
 msgstr ""
 
-#: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:290
-#: pluginbf_alumno.cpp:315
-msgid "Nuevo alumno"
+#: listcuotasporalumnoview.cpp:99
+msgid "% Descuento en actividades"
 msgstr ""
 
-#: pluginbf_alumno.cpp:85
-msgid "&Cuotas Socio"
+#: ui_clasebase.h:221
+msgid "Aulas"
 msgstr ""
 
-#: pluginbf_alumno.cpp:87 pluginbf_alumno.cpp:88
-msgid "Cuotas por alumno"
+#: ui_clasebase.h:222
+msgid "Aulas:"
 msgstr ""
 
-#: pluginbf_alumno.cpp:97
-msgid "&Clases"
+#: ui_clasebase.h:224 ui_clasebase.h:227
+msgid "Borrar Aula"
 msgstr ""
 
-#: pluginbf_alumno.cpp:98 pluginbf_alumno.cpp:99
-msgid "Clases"
+#: ui_clasebase.h:231 ui_clasebase.h:234 ui_alumnobase.h:470
+#: ui_alumnobase.h:473
+msgid "Guardar"
 msgstr ""
 
-#: pluginbf_alumno.cpp:292 pluginbf_alumno.cpp:309
-msgid "Editar alumno"
+#: ui_clasebase.h:238 ui_clasebase.h:241
+msgid "Nueva Aula"
 msgstr ""
 
-#: pluginbf_alumno.cpp:294 pluginbf_alumno.cpp:313
-msgid "Seleccionar alumno"
+#: ui_clasebase.h:244 ui_alumnobase.h:516
+msgid "Nombre:"
 msgstr ""
 
-#: alumnoslist.cpp:86
-msgid "Selector de alumnos"
-msgstr ""
-
-#: alumnoslist.cpp:234
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: alumnoslist.cpp:248
-msgid "Error al borrar el cobro a cliente."
-msgstr ""
-
-#: alumnoslist.cpp:276
-msgid "Debe seleccionar una fila primero"
-msgstr ""
-
-#: alumnoslist.cpp:292 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
-msgid "Editar Alumno"
-msgstr ""
-
-#: alumnoslist.cpp:293 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
-msgid "Borrar Alumno"
-msgstr ""
-
-#: alumnoslist.cpp:350
-msgid "Nombre"
-msgstr ""
-
-#: alumnoslist.cpp:353
-msgid "F. Nacimiento"
-msgstr ""
-
-#: claseview.cpp:178
-msgid "Error al guardar el clase"
-msgstr ""
-
-#: claseview.cpp:196
-msgid "Guardar datos del clase"
-msgstr ""
-
-#: claseview.cpp:197
-msgid "Desea guardar los cambios?"
-msgstr ""
-
-#: claseview.cpp:198
-msgid "&Si"
-msgstr ""
-
-#: claseview.cpp:198
-msgid "&No"
-msgstr ""
-
-#: claseview.cpp:228
-msgid "Error al crear un nuevo Clase"
-msgstr ""
-
-#: claseview.cpp:253
-msgid "Error al borrar el Clase"
+#: ui_clasebase.h:245
+msgid "General"
 msgstr ""
 
 #: ui_alumnobase.h:467 ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320
 msgid "Nuevo Alumno"
 msgstr ""
 
-#: ui_alumnobase.h:470 ui_alumnobase.h:473
-msgid "Guardar cobro"
-msgstr ""
-
 #: ui_alumnobase.h:476
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:486
-#: ui_alumnobase.h:489
-msgid "Borrar cobro"
+#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:489
+msgid "Borrar"
 msgstr ""
 
 #: ui_alumnobase.h:484 ui_alumnoslistbase.h:339
 msgid "Ctrl+D"
+msgstr ""
+
+#: ui_alumnobase.h:486
+msgid "Imprimir"
 msgstr ""
 
 #: ui_alumnobase.h:492
@@ -301,10 +329,6 @@ msgstr ""
 
 #: ui_alumnobase.h:509
 msgid "Fecha nacimiento:"
-msgstr ""
-
-#: ui_alumnobase.h:516 ui_clasebase.h:244
-msgid "Nombre:"
 msgstr ""
 
 #: ui_alumnobase.h:517
@@ -371,6 +395,10 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
+#: ui_listcuotasporalumnobase.h:118
+msgid "Cuotas Socio"
+msgstr ""
+
 #: ui_alumnoslistbase.h:311
 msgid "Fecha final:"
 msgstr ""
@@ -429,32 +457,4 @@ msgstr ""
 
 #: ui_alumnoslistbase.h:372
 msgid "Buscar:"
-msgstr ""
-
-#: ui_listcuotasporalumnobase.h:118
-msgid "Cuotas Socio"
-msgstr ""
-
-#: ui_clasebase.h:221
-msgid "Aulas"
-msgstr ""
-
-#: ui_clasebase.h:222
-msgid "Aulas:"
-msgstr ""
-
-#: ui_clasebase.h:224 ui_clasebase.h:227
-msgid "Borrar Aula"
-msgstr ""
-
-#: ui_clasebase.h:231 ui_clasebase.h:234
-msgid "Guardar"
-msgstr ""
-
-#: ui_clasebase.h:238 ui_clasebase.h:241
-msgid "Nueva Aula"
-msgstr ""
-
-#: ui_clasebase.h:245
-msgid "General"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-07-26 19:05+0200\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_convreunionbase.h:396 ui_jdirectivabase.h:274 ui_comisionbase.h:305
+#: ui_jdirectivabase.h:274 ui_comisionbase.h:305 ui_convreunionbase.h:396
 msgid "&Aceptar"
 msgstr "&Accepta"
 
@@ -26,7 +26,7 @@ msgstr "&Accepta"
 msgid "&Asociacion"
 msgstr "&Associació"
 
-#: ui_convreunionbase.h:397 ui_jdirectivabase.h:275 ui_comisionbase.h:306
+#: ui_jdirectivabase.h:275 ui_comisionbase.h:306 ui_convreunionbase.h:397
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -74,9 +74,9 @@ msgstr "2ª Convocatòria"
 msgid "Actividades"
 msgstr "Activitats"
 
-#: ui_comisioneslistbase.h:294 ui_comisioneslistbase.h:297
-#: ui_jdirectivalistbase.h:322 ui_jdirectivalistbase.h:325
 #: ui_convreunionlistbase.h:294 ui_convreunionlistbase.h:297
+#: ui_jdirectivalistbase.h:322 ui_jdirectivalistbase.h:325
+#: ui_comisioneslistbase.h:294 ui_comisioneslistbase.h:297
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -96,29 +96,29 @@ msgstr "Segon Cognom"
 msgid "Asamblea"
 msgstr "Assemblea"
 
-#: ui_comisioneslistbase.h:262 ui_comisioneslistbase.h:265
-#: ui_jdirectivalistbase.h:290 ui_jdirectivalistbase.h:293
 #: ui_convreunionlistbase.h:262 ui_convreunionlistbase.h:265
+#: ui_jdirectivalistbase.h:290 ui_jdirectivalistbase.h:293
+#: ui_comisioneslistbase.h:262 ui_comisioneslistbase.h:265
 msgid "Borrar Actividad"
 msgstr "Esborra Activitat"
 
-#: comisioneslist.cpp:225 jdirectivalist.cpp:239 convreunionlist.cpp:226
+#: convreunionlist.cpp:226 comisioneslist.cpp:225 jdirectivalist.cpp:239
 msgid "Borrar Junta"
 msgstr "Esborra Junta"
 
-#: ui_convreunionbase.h:345 ui_convreunionbase.h:348 ui_jdirectivabase.h:251
-#: ui_jdirectivabase.h:254 ui_jdirectivabase.h:259 ui_jdirectivabase.h:262
-#: ui_comisionbase.h:283 ui_comisionbase.h:286 ui_comisionbase.h:291
-#: ui_comisionbase.h:294
+#: ui_jdirectivabase.h:251 ui_jdirectivabase.h:254 ui_jdirectivabase.h:259
+#: ui_jdirectivabase.h:262 ui_comisionbase.h:283 ui_comisionbase.h:286
+#: ui_comisionbase.h:291 ui_comisionbase.h:294 ui_convreunionbase.h:345
+#: ui_convreunionbase.h:348
 msgid "Borrar cobro"
 msgstr "Esborra cobrament"
 
-#: ui_comisioneslistbase.h:301 ui_jdirectivalistbase.h:329
-#: ui_convreunionlistbase.h:301
+#: ui_convreunionlistbase.h:301 ui_jdirectivalistbase.h:329
+#: ui_comisioneslistbase.h:301
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: comisionview.cpp:66 jdirectivaview.cpp:70
+#: jdirectivaview.cpp:70 comisionview.cpp:66
 msgid "Cargo"
 msgstr "Càrrec"
 
@@ -163,9 +163,9 @@ msgstr "Concepte"
 msgid "Concepto de la reunion"
 msgstr "Concepte de la reunió"
 
-#: ui_comisioneslistbase.h:286 ui_comisioneslistbase.h:289
-#: ui_jdirectivalistbase.h:314 ui_jdirectivalistbase.h:317
 #: ui_convreunionlistbase.h:286 ui_convreunionlistbase.h:289
+#: ui_jdirectivalistbase.h:314 ui_jdirectivalistbase.h:317
+#: ui_comisioneslistbase.h:286 ui_comisioneslistbase.h:289
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
@@ -197,24 +197,24 @@ msgstr "Convoca reunió"
 msgid "Convocatoria de reunion"
 msgstr "Convocatòria de reunió"
 
-#: ui_comisioneslistbase.h:292 ui_jdirectivalistbase.h:320
-#: ui_convreunionlistbase.h:292
+#: ui_convreunionlistbase.h:292 ui_jdirectivalistbase.h:320
+#: ui_comisioneslistbase.h:292
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
+#: ui_convreunionlistbase.h:268 ui_jdirectivabase.h:257 ui_comisionbase.h:289
+#: ui_jdirectivalistbase.h:296 ui_comisioneslistbase.h:268
 #: ui_convreunionbase.h:351 ui_convreunionbase.h:359 ui_convreunionbase.h:367
-#: ui_jdirectivabase.h:257 ui_comisionbase.h:289 ui_comisioneslistbase.h:268
-#: ui_jdirectivalistbase.h:296 ui_convreunionlistbase.h:268
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_comisioneslistbase.h:260 ui_jdirectivalistbase.h:288
-#: ui_convreunionlistbase.h:260
+#: ui_convreunionlistbase.h:260 ui_jdirectivalistbase.h:288
+#: ui_comisioneslistbase.h:260
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_comisioneslistbase.h:284 ui_jdirectivalistbase.h:312
-#: ui_convreunionlistbase.h:284
+#: ui_convreunionlistbase.h:284 ui_jdirectivalistbase.h:312
+#: ui_comisioneslistbase.h:284
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
@@ -222,39 +222,39 @@ msgstr "Ctrl+F"
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_comisioneslistbase.h:252 ui_jdirectivalistbase.h:280
-#: ui_convreunionlistbase.h:252
+#: ui_convreunionlistbase.h:252 ui_jdirectivalistbase.h:280
+#: ui_comisioneslistbase.h:252
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_comisioneslistbase.h:276 ui_jdirectivalistbase.h:304
-#: ui_convreunionlistbase.h:276
+#: ui_convreunionlistbase.h:276 ui_jdirectivalistbase.h:304
+#: ui_comisioneslistbase.h:276
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_convreunionbase.h:343 ui_jdirectivabase.h:249 ui_comisionbase.h:281
+#: ui_jdirectivabase.h:249 ui_comisionbase.h:281 ui_convreunionbase.h:343
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: comisioneslist.cpp:208 jdirectivalist.cpp:219 convreunionlist.cpp:209
+#: convreunionlist.cpp:209 comisioneslist.cpp:208 jdirectivalist.cpp:219
 msgid "Debe seleccionar una fila primero"
 msgstr "Heu de seleccionar una fila primer"
 
-#: comisioneslist.cpp:167 jdirectivalist.cpp:180 convreunionlist.cpp:168
+#: convreunionlist.cpp:168 comisioneslist.cpp:167 jdirectivalist.cpp:180
 msgid "Debe seleccionar una linea"
 msgstr "Heu de seleccionar una línia"
 
-#: ui_comisioneslistbase.h:254 ui_comisioneslistbase.h:257
-#: ui_jdirectivalistbase.h:282 ui_jdirectivalistbase.h:285
 #: ui_convreunionlistbase.h:254 ui_convreunionlistbase.h:257
+#: ui_jdirectivalistbase.h:282 ui_jdirectivalistbase.h:285
+#: ui_comisioneslistbase.h:254 ui_comisioneslistbase.h:257
 msgid "Editar Actividad"
 msgstr "Edita Activitat"
 
-#: comisioneslist.cpp:224 jdirectivalist.cpp:238 convreunionlist.cpp:225
+#: convreunionlist.cpp:225 comisioneslist.cpp:224 jdirectivalist.cpp:238
 msgid "Editar Junta"
 msgstr "Edita Junta"
 
-#: comisioneslist.cpp:181 jdirectivalist.cpp:195 convreunionlist.cpp:182
+#: convreunionlist.cpp:182 comisioneslist.cpp:181 jdirectivalist.cpp:195
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error en esborrar el cobrament a client"
 
@@ -270,8 +270,8 @@ msgstr "Error en crear la junta directiva"
 msgid "Error al crear la reunion"
 msgstr "Error en crear la reunió"
 
-#: ui_comisioneslistbase.h:300 ui_jdirectivalistbase.h:328
-#: ui_convreunionlistbase.h:300
+#: ui_convreunionlistbase.h:300 ui_jdirectivalistbase.h:328
+#: ui_comisioneslistbase.h:300
 msgid "F5"
 msgstr "F5"
 
@@ -283,8 +283,8 @@ msgstr "Data 1ª Convocatòria"
 msgid "Fecha 2a Convocatoria"
 msgstr "Data 2ª Convocatòria"
 
-#: comisionview.cpp:53 comisionview.cpp:63 jdirectivaview.cpp:57
-#: jdirectivaview.cpp:65
+#: jdirectivaview.cpp:57 jdirectivaview.cpp:65 comisionview.cpp:53
+#: comisionview.cpp:63
 msgid "Fecha Cese"
 msgstr "Data de Baixa"
 
@@ -292,7 +292,7 @@ msgstr "Data de Baixa"
 msgid "Fecha Cesion"
 msgstr "Data d'Acabament"
 
-#: comisionview.cpp:52 jdirectivaview.cpp:56 ui_jdirectivabase.h:266
+#: jdirectivaview.cpp:56 comisionview.cpp:52 ui_jdirectivabase.h:266
 #: ui_comisionbase.h:299
 msgid "Fecha Constitucion"
 msgstr "Data de Constitució"
@@ -313,22 +313,22 @@ msgstr "Data final:"
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: comisionview.cpp:62 jdirectivaview.cpp:64
+#: jdirectivaview.cpp:64 comisionview.cpp:62
 msgid "Fecha posesion"
 msgstr "Data Possessió"
 
-#: ui_comisioneslistbase.h:278 ui_comisioneslistbase.h:281
-#: ui_jdirectivalistbase.h:306 ui_jdirectivalistbase.h:309
 #: ui_convreunionlistbase.h:278 ui_convreunionlistbase.h:281
+#: ui_jdirectivalistbase.h:306 ui_jdirectivalistbase.h:309
+#: ui_comisioneslistbase.h:278 ui_comisioneslistbase.h:281
 msgid "Filtrar Actividades"
 msgstr "Filtra Activitats"
 
-#: ui_convreunionbase.h:383 ui_jdirectivabase.h:268 ui_comisionbase.h:301
+#: ui_jdirectivabase.h:268 ui_comisionbase.h:301 ui_convreunionbase.h:383
 msgid "General"
 msgstr "General"
 
-#: ui_convreunionbase.h:337 ui_convreunionbase.h:340 ui_jdirectivabase.h:243
-#: ui_jdirectivabase.h:246 ui_comisionbase.h:275 ui_comisionbase.h:278
+#: ui_jdirectivabase.h:243 ui_jdirectivabase.h:246 ui_comisionbase.h:275
+#: ui_comisionbase.h:278 ui_convreunionbase.h:337 ui_convreunionbase.h:340
 msgid "Guardar cobro"
 msgstr "Desa cobrament"
 
@@ -344,12 +344,12 @@ msgstr "Hora 1era Convocatòria"
 msgid "Hora 2a Convocatoria"
 msgstr "Hora 2na Convocatòria"
 
-#: comisioneslist.cpp:269 jdirectivalist.cpp:288 comisionview.cpp:61
-#: jdirectivaview.cpp:63
+#: jdirectivaview.cpp:63 comisioneslist.cpp:269 jdirectivalist.cpp:288
+#: comisionview.cpp:61
 msgid "ID Junta Directiva"
 msgstr "ID Junta Directiva"
 
-#: comisionview.cpp:60 jdirectivaview.cpp:62
+#: jdirectivaview.cpp:62 comisionview.cpp:60
 msgid "ID Miembro"
 msgstr "ID Membre"
 
@@ -361,7 +361,7 @@ msgstr "ID Ordre del dia"
 msgid "ID Reunion"
 msgstr "ID Reunió"
 
-#: convreunionview.cpp:69 comisionview.cpp:64 jdirectivaview.cpp:66
+#: jdirectivaview.cpp:66 convreunionview.cpp:69 comisionview.cpp:64
 msgid "ID Socio"
 msgstr "ID Soci"
 
@@ -377,7 +377,7 @@ msgstr "ID comissió"
 msgid "ID jdirectiva"
 msgstr "ID jdirectiva"
 
-#: convreunionview.cpp:55 convreunionlist.cpp:270
+#: convreunionlist.cpp:270 convreunionview.cpp:55
 msgid "ID reunion"
 msgstr "ID reunió"
 
@@ -385,13 +385,13 @@ msgstr "ID reunió"
 msgid "Imprimir"
 msgstr "Imprimeix"
 
-#: ui_comisioneslistbase.h:270 ui_comisioneslistbase.h:273
-#: ui_jdirectivalistbase.h:298 ui_jdirectivalistbase.h:301
 #: ui_convreunionlistbase.h:270 ui_convreunionlistbase.h:273
+#: ui_jdirectivalistbase.h:298 ui_jdirectivalistbase.h:301
+#: ui_comisioneslistbase.h:270 ui_comisioneslistbase.h:273
 msgid "Imprimir listado"
 msgstr "Imprimeix llistat"
 
-#: jdirectivaview.cpp:52 ui_convreunionbase.h:376 ui_jdirectivabase.h:240
+#: jdirectivaview.cpp:52 ui_jdirectivabase.h:240 ui_convreunionbase.h:376
 msgid "Junta Directiva"
 msgstr "Junta Directiva"
 
@@ -419,9 +419,9 @@ msgstr "Nom Comissió"
 msgid "Nombre Socio"
 msgstr "Nom Soci"
 
-#: ui_comisioneslistbase.h:246 ui_comisioneslistbase.h:249
-#: ui_jdirectivalistbase.h:274 ui_jdirectivalistbase.h:277
 #: ui_convreunionlistbase.h:246 ui_convreunionlistbase.h:249
+#: ui_jdirectivalistbase.h:274 ui_jdirectivalistbase.h:277
+#: ui_comisioneslistbase.h:246 ui_comisioneslistbase.h:249
 msgid "Nuevo Actividad"
 msgstr "Nova Activitat"
 
@@ -446,13 +446,13 @@ msgstr "Ressolució"
 msgid "Reunion"
 msgstr "Reunió"
 
-#: pluginbf_asociacion.cpp:77 pluginbf_asociacion.cpp:78
-#: convreunionlist.cpp:152 ui_jdirectivabase.h:272
-#: ui_convreunionlistbase.h:243
+#: convreunionlist.cpp:152 pluginbf_asociacion.cpp:77
+#: pluginbf_asociacion.cpp:78 ui_convreunionlistbase.h:243
+#: ui_jdirectivabase.h:272
 msgid "Reuniones"
 msgstr "Reunions"
 
-#: comisionview.cpp:65 jdirectivaview.cpp:67
+#: jdirectivaview.cpp:67 comisionview.cpp:65
 msgid "Socio"
 msgstr "Soci/sòcia"
 
@@ -464,11 +464,11 @@ msgstr "Socis/sòcies"
 msgid "Texto"
 msgstr "Text"
 
-#: convreunionview.cpp:133 comisionview.cpp:107 jdirectivaview.cpp:117
+#: jdirectivaview.cpp:117 convreunionview.cpp:133 comisionview.cpp:107
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Heu de seleccionar el document abans de poder imprimir-lo"
 
-#: convreunionview.cpp:60 convreunionlist.cpp:273
+#: convreunionlist.cpp:273 convreunionview.cpp:60
 msgid "Tipo"
 msgstr "Tipus"
 

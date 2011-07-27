@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
 msgid "% Descuento"
 msgstr "% Descuento"
 
@@ -197,7 +197,7 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: bfclientealbaransubform.cpp:49 albaranclientelist.cpp:421
+#: albaranclientelist.cpp:421 bfclientealbaransubform.cpp:49
 #: albaranclienteview.cpp:84
 msgid "Descripcion"
 msgstr "Descripcion"
@@ -327,7 +327,7 @@ msgstr "ID forma de pago"
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
-#: bfclientealbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
 #: albaranclienteview.cpp:72
 msgid "Id albaran"
 msgstr "Id albaran"

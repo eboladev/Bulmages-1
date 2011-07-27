@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,8 +37,8 @@ msgstr "&Sí"
 msgid "&Tarifas"
 msgstr "&Tarifes"
 
-#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
-#: ui_tarifalistbase.h:170
+#: ui_tarifalistbase.h:167 ui_tarifalistbase.h:170 ui_tarifabase.h:250
+#: ui_tarifabase.h:253
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -99,18 +99,18 @@ msgstr "Llista d'amortitzacions"
 msgid "Guardar"
 msgstr "Desa"
 
-#: listltarifaview.cpp:38 listltarifaview.cpp:62 pluginbf_tarifa.cpp:159
+#: pluginbf_tarifa.cpp:159 listltarifaview.cpp:38 listltarifaview.cpp:62
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: listltarifaview.cpp:37 listltarifaview.cpp:61 pluginbf_tarifa.cpp:156
+#: pluginbf_tarifa.cpp:156 listltarifaview.cpp:37 listltarifaview.cpp:61
 #, fuzzy
 msgid "ID articulo"
 msgstr "<P> Article <B>"
 
-#: tarifalistsubform.cpp:37 listltarifaview.cpp:39 listltarifaview.cpp:63
-#: tarifaview.cpp:50 pluginbf_tarifa.cpp:157
+#: pluginbf_tarifa.cpp:157 listltarifaview.cpp:39 listltarifaview.cpp:63
+#: tarifaview.cpp:50 tarifalistsubform.cpp:37
 msgid "ID tarifa"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgstr "Nom del magatzem"
 msgid "Nombre articulo"
 msgstr "Nom de l'amortització"
 
-#: tarifalistsubform.cpp:36 listltarifaview.cpp:65 tarifaview.cpp:51
+#: listltarifaview.cpp:65 tarifaview.cpp:51 tarifalistsubform.cpp:36
 #, fuzzy
 msgid "Nombre de la tarifa"
 msgstr "Nom de l'entitat:"
@@ -168,8 +168,8 @@ msgstr "Id compte d'amortizació"
 msgid "Precio de venta"
 msgstr "Preu de venta"
 
-#: tarifaview.cpp:47 tarifaview.cpp:102 tarifaview.cpp:161
-#: pluginbf_tarifa.cpp:158 ui_tarifabase.h:234
+#: pluginbf_tarifa.cpp:158 tarifaview.cpp:47 tarifaview.cpp:102
+#: tarifaview.cpp:161 ui_tarifabase.h:234
 msgid "Tarifa"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -55,10 +55,10 @@ msgstr ""
 msgid "&Pedidos a proveedores"
 msgstr "&Suppliers"
 
-#: ui_pedidosproveedorlistbase.h:361 ui_pedidoproveedorbase.h:742
-#: ui_pedidoproveedorbase.h:743 ui_pedidoproveedorbase.h:744
-#: ui_pedidoproveedorbase.h:745 ui_pedidoproveedorbase.h:746
-#: ui_pedidoproveedorbase.h:747
+#: ui_pedidoproveedorbase.h:742 ui_pedidoproveedorbase.h:743
+#: ui_pedidoproveedorbase.h:744 ui_pedidoproveedorbase.h:745
+#: ui_pedidoproveedorbase.h:746 ui_pedidoproveedorbase.h:747
+#: ui_pedidosproveedorlistbase.h:361
 msgid "0.00"
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr "Form listing"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_pedidosproveedorlistbase.h:386 ui_pedidoproveedorbase.h:706
+#: ui_pedidoproveedorbase.h:706 ui_pedidosproveedorlistbase.h:386
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -168,7 +168,7 @@ msgstr "Ctrl+D"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_pedidosproveedorlistbase.h:394 ui_pedidoproveedorbase.h:714
+#: ui_pedidoproveedorbase.h:714 ui_pedidosproveedorlistbase.h:394
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
@@ -261,7 +261,7 @@ msgstr "Final &date:"
 msgid "Fecha inicial:"
 msgstr "Initial &date:"
 
-#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:332
+#: pedidosproveedorlist.cpp:332 pedidoproveedorview.cpp:58
 #, fuzzy
 msgid "Fecha pedido proveedor"
 msgstr "NIF of the supplier"
@@ -286,7 +286,7 @@ msgstr "Keep punteo"
 msgid "I.R.P.F.:"
 msgstr "I.R.P.F (-"
 
-#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:345
+#: pedidosproveedorlist.cpp:345 pedidoproveedorview.cpp:56
 msgid "Id almacen"
 msgstr "id warehouse"
 
@@ -314,12 +314,12 @@ msgstr "Order"
 msgid "Id pedido proveedor"
 msgstr "NIF of the supplier"
 
-#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:344
+#: pedidosproveedorlist.cpp:344 pedidoproveedorview.cpp:55
 #, fuzzy
 msgid "Id proveedor"
 msgstr "ID supplier"
 
-#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:343
+#: pedidosproveedorlist.cpp:343 pedidoproveedorview.cpp:64
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Worker"
@@ -366,8 +366,8 @@ msgid "Nombre de proveedor"
 msgstr "Name of the supplier"
 
 #: pluginbf_proveedorpedido.cpp:64 pluginbf_proveedorpedido.cpp:65
-#: ui_pedidosproveedorlistbase.h:364 ui_pedidosproveedorlistbase.h:367
-#: ui_pedidoproveedorbase.h:689
+#: ui_pedidoproveedorbase.h:689 ui_pedidosproveedorlistbase.h:364
+#: ui_pedidosproveedorlistbase.h:367
 #, fuzzy
 msgid "Nuevo pedido a proveedor"
 msgstr "New &supplier..."
@@ -425,7 +425,7 @@ msgstr "Pro&cessings"
 msgid "Pedidos procesados"
 msgstr "Pro&cessings"
 
-#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:339
+#: pedidosproveedorlist.cpp:339 pedidoproveedorview.cpp:65
 #, fuzzy
 msgid "Persona de contacto proveedor"
 msgstr "Bank supplier"
@@ -443,8 +443,8 @@ msgstr "Percentage"
 msgid "Precio"
 msgstr "Price"
 
-#: pedidoproveedorview.cpp:89 pedidosproveedorlist.cpp:46
-#: pedidosproveedorlist.cpp:74
+#: pedidosproveedorlist.cpp:46 pedidosproveedorlist.cpp:74
+#: pedidoproveedorview.cpp:89
 msgid "Proveedor:"
 msgstr "Supplier:"
 
@@ -457,7 +457,7 @@ msgstr "Punteo"
 msgid "R.E.:"
 msgstr "R.E."
 
-#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:333
+#: pedidosproveedorlist.cpp:333 pedidoproveedorview.cpp:62
 #, fuzzy
 msgid "Referencia pedido"
 msgstr "Reference"
@@ -472,7 +472,7 @@ msgstr "Reference"
 msgid "Telefono de contacto:"
 msgstr "Description of the account"
 
-#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:340
+#: pedidosproveedorlist.cpp:340 pedidoproveedorview.cpp:66
 #, fuzzy
 msgid "Telefono proveedor"
 msgstr "Telephone of the supplier"
@@ -507,7 +507,7 @@ msgstr "Total"
 msgid "Total pedido"
 msgstr "Balance period"
 
-#: ui_pedidosproveedorlistbase.h:360 ui_pedidoproveedorbase.h:741
+#: ui_pedidoproveedorbase.h:741 ui_pedidosproveedorlistbase.h:360
 #, fuzzy
 msgid "Total:"
 msgstr "Total"

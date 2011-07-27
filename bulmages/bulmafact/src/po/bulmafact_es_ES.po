@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:16+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-22 15:32+0100\n"
 "Language-Team:  <es@li.org>\n"
 "Language: \n"
@@ -26,7 +26,7 @@ msgstr "% I.V.A."
 msgid "% R.E."
 msgstr "% R.E."
 
-#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:303
+#: ui_bfconfiguracionbase.h:303 ui_bfseriefacturabase.h:85
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -38,7 +38,7 @@ msgstr "&Acerca de"
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&Acerca de Iglues/BulmaFact"
 
-#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:304
+#: ui_bfconfiguracionbase.h:304 ui_bfseriefacturabase.h:84
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -148,7 +148,7 @@ msgstr "CIF"
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: main.cxx:163
+#: main.cxx:165
 msgid "Cargando plugins"
 msgstr "Cargando plugins"
 
@@ -164,7 +164,7 @@ msgstr "Código completo artículo"
 msgid "Codigo serie factura"
 msgstr "Código serie factura"
 
-#: bfsubform.cpp:624
+#: bfsubform.cpp:629
 #, qt-format
 msgid "Columna: '%1', fila: '%2'."
 msgstr ""
@@ -234,7 +234,7 @@ msgstr "Entregado"
 msgid "Error al establecer el almacen."
 msgstr ""
 
-#: main.cxx:192
+#: main.cxx:194
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Error inesperado en BulmaFact. El programa se cerrará."
 
@@ -324,11 +324,11 @@ msgstr "Informe"
 msgid "Informe por referencia"
 msgstr "Informe por referencia"
 
-#: main.cxx:175
+#: main.cxx:177
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
-#: main.cxx:103
+#: main.cxx:105
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
@@ -337,11 +337,11 @@ msgstr "Iniciando clases"
 msgid "Item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
 msgstr ""
 
-#: main.cxx:169
+#: main.cxx:171
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:132
+#: main.cxx:134
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuración"
 
@@ -419,7 +419,7 @@ msgstr "Precio"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfbulmafactbase.h:170 ui_bfconfiguracionbase.h:302
+#: ui_bfconfiguracionbase.h:302 ui_bfbulmafactbase.h:170
 msgid "Propiedades de la empresa"
 msgstr "Datos básicos de la entidad"
 
@@ -459,7 +459,7 @@ msgstr "Sopor&te"
 msgid "Telefono"
 msgstr "Teléfono"
 
-#: main.cxx:181
+#: main.cxx:183
 msgid "Terminado"
 msgstr "Terminado"
 

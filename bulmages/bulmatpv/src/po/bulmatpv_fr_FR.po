@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:15+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-15 09:12+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -125,7 +125,7 @@ msgstr ""
 msgid "Cantidad"
 msgstr "Quantité"
 
-#: main.cxx:165
+#: main.cxx:167
 msgid "Cargando plugins"
 msgstr "Charger le greffon"
 
@@ -157,7 +157,7 @@ msgstr "Remise"
 msgid "El ticket esta vacio."
 msgstr "Le ticket est vide"
 
-#: main.cxx:233
+#: main.cxx:269
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr "Erreur inattendu dans BulmaTPV. Le programme se fermera."
 
@@ -211,7 +211,7 @@ msgstr "Identification"
 msgid "Iglues/BtBulmaTPV"
 msgstr "Iglues/BulmaTPV"
 
-#: main.cxx:177
+#: main.cxx:179
 msgid "Inicializando componentes"
 msgstr "Initier les composants"
 
@@ -219,15 +219,15 @@ msgstr "Initier les composants"
 msgid "Inicializando listado de articulos"
 msgstr "Initier la liste d'articles"
 
-#: main.cxx:103
+#: main.cxx:105
 msgid "Iniciando clases"
 msgstr "Initier les classes"
 
-#: main.cxx:171
+#: main.cxx:173
 msgid "Lanzando plugins"
 msgstr "Lancer les greffons"
 
-#: main.cxx:134
+#: main.cxx:136
 msgid "Leyendo configuracion"
 msgstr "Lire la configuration"
 
@@ -287,7 +287,7 @@ msgstr "Sur Qt"
 msgid "Sopor&te"
 msgstr "Suppor&t"
 
-#: main.cxx:183
+#: main.cxx:185
 msgid "Terminado"
 msgstr "Fini"
 

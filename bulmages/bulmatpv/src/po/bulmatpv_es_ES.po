@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:15+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: main.cxx:165
+#: main.cxx:167
 msgid "Cargando plugins"
 msgstr "Cargando plugins"
 
@@ -147,7 +147,7 @@ msgstr "Descuento"
 msgid "El ticket esta vacio."
 msgstr "El ticket esta vacio."
 
-#: main.cxx:233
+#: main.cxx:269
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr "Error inesperado en BulmaTPV. El programa se cerrara."
 
@@ -201,7 +201,7 @@ msgstr "Identificacion"
 msgid "Iglues/BtBulmaTPV"
 msgstr "Iglues/BulmaTPV"
 
-#: main.cxx:177
+#: main.cxx:179
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
@@ -209,15 +209,15 @@ msgstr "Inicializando componentes"
 msgid "Inicializando listado de articulos"
 msgstr "Inicializando listado de articulos"
 
-#: main.cxx:103
+#: main.cxx:105
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
-#: main.cxx:171
+#: main.cxx:173
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:134
+#: main.cxx:136
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuracion"
 
@@ -277,7 +277,7 @@ msgstr "Sobre Qt"
 msgid "Sopor&te"
 msgstr "Sopor&te"
 
-#: main.cxx:183
+#: main.cxx:185
 msgid "Terminado"
 msgstr "Terminado"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-24 15:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -281,11 +281,11 @@ msgstr "Fiche générée"
 msgid "Generacion Q19"
 msgstr "Générer Q19"
 
-#: q19qtoolbutton1.cpp:72 q19qtoolbutton.cpp:82
+#: q19qtoolbutton.cpp:82 q19qtoolbutton1.cpp:72
 msgid "Generar Q19"
 msgstr ""
 
-#: q19qtoolbutton1.cpp:73 q19qtoolbutton.cpp:83
+#: q19qtoolbutton.cpp:83 q19qtoolbutton1.cpp:73
 msgid "Generar archivo Q19 de los elementos seleccionados."
 msgstr ""
 

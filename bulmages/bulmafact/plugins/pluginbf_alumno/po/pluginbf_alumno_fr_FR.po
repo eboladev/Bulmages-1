@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-23 08:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
+
+#: listcuotasporalumnoview.cpp:99
+msgid "% Descuento en actividades"
+msgstr ""
 
 #: ui_alumnobase.h:535 ui_listcuotasporalumnobase.h:119
 msgid "&Aceptar"
@@ -62,7 +66,7 @@ msgstr "&Oui"
 msgid "1er Apellido"
 msgstr "Prénom 1"
 
-#: alumnoview.cpp:59 alumnoslist.cpp:351
+#: alumnoslist.cpp:351 alumnoview.cpp:59
 msgid "1er apellido"
 msgstr "Prénom 1"
 
@@ -74,7 +78,7 @@ msgstr "Prénom 1 :"
 msgid "2do Apellido"
 msgstr "Prénom 2"
 
-#: alumnoview.cpp:60 alumnoslist.cpp:352
+#: alumnoslist.cpp:352 alumnoview.cpp:60
 msgid "2o apellido"
 msgstr "Prénom 2"
 
@@ -98,7 +102,7 @@ msgstr "Actualiser la liste"
 msgid "Alumno"
 msgstr "Nouvel élève"
 
-#: pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64 alumnoslist.cpp:218
+#: alumnoslist.cpp:218 pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64
 #: ui_alumnoslistbase.h:309
 msgid "Alumnos"
 msgstr "Elèves"
@@ -111,6 +115,10 @@ msgstr "Salle de classe"
 msgid "Aulas:"
 msgstr "Salle de classe :"
 
+#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:489
+msgid "Borrar"
+msgstr "Éraser"
+
 #: alumnoslist.cpp:293 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
 msgid "Borrar Alumno"
 msgstr "Effacer l'élève"
@@ -118,11 +126,6 @@ msgstr "Effacer l'élève"
 #: ui_clasebase.h:224 ui_clasebase.h:227
 msgid "Borrar Aula"
 msgstr "Effacer la Salle de classe"
-
-#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:486
-#: ui_alumnobase.h:489
-msgid "Borrar cobro"
-msgstr "Effacer l'encaissement"
 
 #: ui_alumnobase.h:528
 msgid "Borrar imagen"
@@ -140,7 +143,7 @@ msgstr "Chercher :"
 msgid "Cam&biar imagen"
 msgstr "Chan&ger l'image"
 
-#: alumnoview.cpp:67 claseview.cpp:44
+#: claseview.cpp:44 alumnoview.cpp:67
 msgid "Clase"
 msgstr "Classe"
 
@@ -248,7 +251,7 @@ msgstr "Editer l'élève"
 msgid "Editar alumno"
 msgstr "Editer l'élève"
 
-#: claseview.cpp:253
+#: claseview.cpp:254
 msgid "Error al borrar el Clase"
 msgstr "Erreur à l'effacement de la classe"
 
@@ -316,13 +319,10 @@ msgstr "Photographie"
 msgid "General"
 msgstr "Général"
 
-#: ui_clasebase.h:231 ui_clasebase.h:234
+#: ui_clasebase.h:231 ui_clasebase.h:234 ui_alumnobase.h:470
+#: ui_alumnobase.h:473
 msgid "Guardar"
 msgstr "Garder"
-
-#: ui_alumnobase.h:470 ui_alumnobase.h:473
-msgid "Guardar cobro"
-msgstr "Sauvegarder l'encaissement"
 
 #: claseview.cpp:196
 msgid "Guardar datos del clase"
@@ -332,7 +332,7 @@ msgstr "Désirez vous garder les données de la classe"
 msgid "Id actividad"
 msgstr "Id activité"
 
-#: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:349
+#: alumnoslist.cpp:349 alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361
 msgid "Id alumno"
 msgstr "Id élève"
 
@@ -347,6 +347,10 @@ msgstr "Identifieur"
 #: alumnoview.cpp:259
 msgid "Imagenes (*.jpg)"
 msgstr "Images (*.jpg)"
+
+#: ui_alumnobase.h:486
+msgid "Imprimir"
+msgstr "Imprimer"
 
 #: ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:344
 msgid "Imprimir listado"
@@ -406,7 +410,7 @@ msgstr "Nom de l'élève"
 msgid "Nombre tutor"
 msgstr "Nom du tuteur"
 
-#: ui_alumnobase.h:516 ui_clasebase.h:244
+#: ui_clasebase.h:244 ui_alumnobase.h:516
 msgid "Nombre:"
 msgstr "Nom :"
 
@@ -439,10 +443,6 @@ msgstr "Autres données"
 msgid "Padres/Tutores"
 msgstr "Parents/Tuteurs"
 
-#: alumnoview.cpp:330
-msgid "Porcentaje"
-msgstr "Pourcentage"
-
 #: pluginbf_alumno.cpp:294 pluginbf_alumno.cpp:313
 msgid "Seleccionar alumno"
 msgstr "Sélectionner l'élève"
@@ -471,5 +471,14 @@ msgstr "Téléphone portable :"
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
+#~ msgid "Borrar cobro"
+#~ msgstr "Effacer l'encaissement"
+
 #~ msgid "Error al borrar el cobro a cliente"
 #~ msgstr "Erreur à l'effacement de l'encaissement d'un client"
+
+#~ msgid "Guardar cobro"
+#~ msgstr "Sauvegarder l'encaissement"
+
+#~ msgid "Porcentaje"
+#~ msgstr "Pourcentage"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulmalib_es_ES\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:15+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: 2009-05-08 23:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -72,6 +72,10 @@ msgstr "&Sí"
 msgid "&Validar"
 msgstr "&Validar"
 
+#: blperiodicitycombobox.cpp:71
+msgid "2 Semanas"
+msgstr ""
+
 #: ui_blformlistfilterbase.h:154
 msgid "<"
 msgstr ""
@@ -136,19 +140,19 @@ msgstr "Actualizar listado"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualizar <B>Listado de empresas</B>"
 
-#: blsubform.cpp:3128
+#: blsubform.cpp:3144
 msgid "Ajustar altura"
 msgstr "Ajustar altura"
 
-#: blsubform.cpp:3133
+#: blsubform.cpp:3149
 msgid "Ajustar alturas"
 msgstr "Ajustar alturas"
 
-#: blsubform.cpp:3126 bltreewidget.cpp:68
+#: blsubform.cpp:3142 bltreewidget.cpp:68
 msgid "Ajustar columa"
 msgstr "Ajustar columa"
 
-#: blsubform.cpp:3131 bltreewidget.cpp:71
+#: blsubform.cpp:3147 bltreewidget.cpp:71
 msgid "Ajustar columnas"
 msgstr "Ajustar columnas"
 
@@ -157,7 +161,7 @@ msgstr "Ajustar columnas"
 msgid "Almacen"
 msgstr "<LI> Almacén <B>"
 
-#: blperiodicitycombobox.cpp:75
+#: blperiodicitycombobox.cpp:76
 msgid "Anual"
 msgstr "Anual"
 
@@ -190,11 +194,11 @@ msgstr "<P> Artículo <B>"
 msgid "Aviso del programa"
 msgstr "Aviso del programa"
 
-#: blsubform.cpp:3119
+#: blsubform.cpp:3135
 msgid "Bajar fila"
 msgstr ""
 
-#: blperiodicitycombobox.cpp:76
+#: blperiodicitycombobox.cpp:77
 msgid "Bienal"
 msgstr "Bienal"
 
@@ -210,7 +214,7 @@ msgstr "Borrar"
 msgid "Borrar pais"
 msgstr "Borrar país"
 
-#: blsubform.cpp:3111
+#: blsubform.cpp:3127
 msgid "Borrar registro"
 msgstr "Borrar registro"
 
@@ -218,7 +222,7 @@ msgstr "Borrar registro"
 msgid "Campo Indice"
 msgstr "Campo índice"
 
-#: bldb.cpp:626 bldb.cpp:627 bldb.cpp:658 bldb.cpp:659
+#: bldb.cpp:626 bldb.cpp:627 bldb.cpp:726 bldb.cpp:727
 #, qt-format
 msgid "Campo: '%1' no encontrado."
 msgstr ""
@@ -272,7 +276,7 @@ msgstr ""
 msgid "Contrasenya:"
 msgstr "Contraseña:"
 
-#: blsearchwidget.cpp:655
+#: blsearchwidget.cpp:653 blsearchwidget.cpp:792
 msgid "Copiar "
 msgstr ""
 
@@ -388,7 +392,7 @@ msgstr "El proveedor ya existe, se pueden hacer modificaciones"
 msgid "Empresas disponibles:"
 msgstr "Empresas disponibles:"
 
-#: bldb.cpp:806 bldb.cpp:807
+#: bldb.cpp:874 bldb.cpp:875
 msgid "Error al borrar"
 msgstr ""
 
@@ -396,15 +400,15 @@ msgstr ""
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blsubform.cpp:2173
+#: blsubform.cpp:2189
 msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr "Error al borrar. [BlSubForm::borrar]"
 
-#: bldb.cpp:964
+#: bldb.cpp:1032
 msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
 msgstr ""
 
-#: bldb.cpp:976
+#: bldb.cpp:1044
 msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
 msgstr ""
 
@@ -442,7 +446,7 @@ msgstr ""
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Error al hacer la consulta con la base de datos."
 
-#: blsubform.cpp:2232
+#: blsubform.cpp:2248
 msgid "Error al intentar borrar"
 msgstr "Error al intentar borrar"
 
@@ -474,7 +478,7 @@ msgstr ""
 "Error en el XML.\n"
 "Documento mal formateado."
 
-#: bldb.cpp:756 bldb.cpp:757
+#: bldb.cpp:824 bldb.cpp:825
 msgid "Error en la insercion del campo al registro."
 msgstr ""
 
@@ -482,7 +486,7 @@ msgstr ""
 msgid "Error inesperado al guardar"
 msgstr ""
 
-#: blsubform.cpp:2130
+#: blsubform.cpp:2146
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
 msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 
@@ -490,7 +494,7 @@ msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuario y/o contraseña incorrectos"
 
-#: blsubform.cpp:2930 blsubform.cpp:2942
+#: blsubform.cpp:2946 blsubform.cpp:2958
 msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
 msgstr ""
 
@@ -518,7 +522,7 @@ msgstr ""
 msgid "Familia"
 msgstr "Familia"
 
-#: blsubform.cpp:2031 blsubform.cpp:2057
+#: blsubform.cpp:2045 blsubform.cpp:2073
 msgid "Fila inexistente"
 msgstr "Fila inexistente"
 
@@ -567,7 +571,7 @@ msgstr "ID país"
 msgid "Id provincia"
 msgstr "ID provincia"
 
-#: blsubform.cpp:2680
+#: blsubform.cpp:2696
 msgid "Imprimiendo "
 msgstr "Imprimiendo "
 
@@ -635,7 +639,7 @@ msgstr "Mensaje"
 msgid "Mensaje de error:"
 msgstr "Mensaje de error:"
 
-#: blperiodicitycombobox.cpp:72
+#: blperiodicitycombobox.cpp:73
 msgid "Mensual"
 msgstr "Mensual"
 
@@ -733,7 +737,7 @@ msgstr "Países"
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Para entrar, antes tiene que seleccionar una empresa."
 
-#: blsearchwidget.cpp:656
+#: blsearchwidget.cpp:654 blsearchwidget.cpp:793
 msgid "Pegar"
 msgstr ""
 
@@ -754,7 +758,7 @@ msgstr "Qt Scripting"
 msgid "Query"
 msgstr "Consulta SQL"
 
-#: blperiodicitycombobox.cpp:71
+#: blperiodicitycombobox.cpp:72
 msgid "Quincenal"
 msgstr "Quincenal"
 
@@ -790,15 +794,19 @@ msgstr "Seleccione una empresa"
 msgid "Semanal"
 msgstr "Semanal"
 
-#: blperiodicitycombobox.cpp:74
+#: blperiodicitycombobox.cpp:75
 msgid "Semestral"
 msgstr "Semestral"
 
-#: blsubform.cpp:1878
+#: blperiodicitycombobox.cpp:78
+msgid "Sin Periodicidad"
+msgstr ""
+
+#: blsubform.cpp:1893
 msgid "Sin cambios"
 msgstr ""
 
-#: blsubform.cpp:3116
+#: blsubform.cpp:3132
 msgid "Subir fila"
 msgstr ""
 
@@ -895,11 +903,11 @@ msgstr "Tratando el pedido del cliente"
 msgid "Tratando presupuesto"
 msgstr "Tratando presupuesto"
 
-#: blperiodicitycombobox.cpp:73
+#: blperiodicitycombobox.cpp:74
 msgid "Trimestral"
 msgstr "Trimestral"
 
-#: blsubform.cpp:3123
+#: blsubform.cpp:3139
 msgid "Usar editor"
 msgstr ""
 
@@ -911,11 +919,11 @@ msgstr "Preferencias de usuario"
 msgid "Usuario Actual"
 msgstr "Usuario actual"
 
-#: blsubform.cpp:3139
+#: blsubform.cpp:3155
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Ver/Ocultar configurador de subformulario"
 
-#: blsubform.cpp:3137
+#: blsubform.cpp:3153
 msgid "Ver/Ocultar menu de subformulario"
 msgstr ""
 
@@ -939,6 +947,12 @@ msgstr "Ya existe este almacén."
 msgid "Ya existe este articulo."
 msgstr "Ya existe este artículo."
 
+#: blsubform.cpp:1882
+msgid ""
+"Ya existe un elemento con este valor en el subformulario. Se viola una clave "
+"unica."
+msgstr ""
+
 #: blimportexport.cpp:2183
 msgid "insertada"
 msgstr "insertada"
@@ -947,7 +961,7 @@ msgstr "insertada"
 msgid "insertado"
 msgstr "insertado"
 
-#: blsubform.cpp:2776 blsubform.cpp:2794
+#: blsubform.cpp:2792 blsubform.cpp:2810
 msgid "no se ha inicializado bien la clase"
 msgstr "no se ha inicializado bien la clase"
 

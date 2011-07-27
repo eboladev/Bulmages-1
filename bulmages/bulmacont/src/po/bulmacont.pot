@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:17+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,266 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cxx:105
+#: main.cxx:107
 msgid "Iniciando clases"
 msgstr ""
 
-#: main.cxx:134
+#: main.cxx:136
 msgid "Leyendo configuracion"
 msgstr ""
 
-#: main.cxx:164
+#: main.cxx:166
 msgid "Cargando plugins"
 msgstr ""
 
-#: main.cxx:170
+#: main.cxx:172
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:176
+#: main.cxx:178
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:182 bccompany.cpp:218
+#: main.cxx:184 bccompany.cpp:218
 msgid "Terminado"
 msgstr ""
 
-#: main.cxx:193
+#: main.cxx:195
 msgid "Error inesperado en BulmaCont, el programa se cerrara."
-msgstr ""
-
-#: ui_bccanalseleccionarbase.h:94
-msgid "Selector de Canales"
-msgstr ""
-
-#: ui_bccanalseleccionarbase.h:95 ui_bccentrocosteseleccionarbase.h:97
-msgid "S. Nada"
-msgstr ""
-
-#: ui_bccanalseleccionarbase.h:96 ui_bccentrocosteseleccionarbase.h:96
-msgid "Invertir"
-msgstr ""
-
-#: ui_bccanalseleccionarbase.h:97 ui_bccentrocosteseleccionarbase.h:98
-msgid "S. Todo"
-msgstr ""
-
-#: ui_bccanalseleccionarbase.h:98 ui_bccentrocosteseleccionarbase.h:99
-#: ui_bccambiacuentabase.h:220 ui_bccentrocostebase.h:287
-msgid "Cerrar"
-msgstr ""
-
-#: ui_bcaboutbase.h:288
-msgid "Acerca de BulmaCont"
-msgstr ""
-
-#: ui_bcaboutbase.h:290
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Contabilidad GPL - Version "
-"0.13.0 -</p></body></html>"
-msgstr ""
-
-#: ui_bcaboutbase.h:295
-msgid "&Acerca de"
-msgstr ""
-
-#: ui_bcaboutbase.h:296
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
-msgstr ""
-
-#: ui_bcaboutbase.h:301
-msgid "A&utores"
-msgstr ""
-
-#: ui_bcaboutbase.h:302
-msgid "Sopor&te"
-msgstr ""
-
-#: ui_bcaboutbase.h:303
-msgid "Acuerdo de &licencia"
-msgstr ""
-
-#: ui_bcaboutbase.h:304 ui_bcasientoduplicarbase.h:239 ui_bctipoivabase.h:270
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:229
-msgid "Duplicar Asientos"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:230
-msgid "Origen:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:231
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:232
-msgid "Asiento inicial:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:233
-msgid "Asiento final:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:234
-msgid "Destino:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:235
-msgid "Fecha con la que quedara el asiento:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:236
-msgid "Tratamiento de la fecha:"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:237
-msgid "Todos con la misma fecha"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:238
-msgid "Mantener distacia entre fechas"
-msgstr ""
-
-#: ui_bcasientoduplicarbase.h:240 ui_bccanalbase.h:246
-#: ui_bcformapagobase.h:304
-msgid "&Cerrar"
-msgstr ""
-
-#: ui_bcmasapatrimoniallistbase.h:122
-msgid "Masas Patrimoniales"
-msgstr ""
-
-#: ui_bcmasapatrimoniallistbase.h:123 ui_bctipoivabase.h:271
-#: ui_bccuentasanualesimprimirbase.h:203 bccentrocosteview.cpp:168
-#: bccentrocosteview.cpp:265 bccanalview.cpp:108 bccanalview.cpp:186
-#: bccanalview.cpp:213 bccanalview.cpp:238
-msgid "&Cancelar"
-msgstr ""
-
-#: ui_bcmasapatrimoniallistbase.h:124
-msgid "Nuevo"
-msgstr ""
-
-#: ui_bcmasapatrimoniallistbase.h:125
-msgid "Borrar"
-msgstr ""
-
-#: ui_bcmasapatrimoniallistbase.h:126
-msgid "Editar"
-msgstr ""
-
-#: ui_bcmasapatrimoniallistbase.h:127 ui_bccuentasanualesimprimirbase.h:195
-msgid "Balance"
-msgstr ""
-
-#: ui_bccanalbase.h:237
-msgid "Canales"
-msgstr ""
-
-#: ui_bccanalbase.h:242
-msgid "Canal:"
-msgstr ""
-
-#: ui_bccanalbase.h:243
-msgid "Informacion del canal:"
-msgstr ""
-
-#: ui_bccanalbase.h:244 ui_bctipoivabase.h:267 ui_bccentrocostebase.h:283
-msgid "Nombre:"
-msgstr ""
-
-#: ui_bccanalbase.h:245 ui_bccentrocostebase.h:284
-msgid "Descripcion:"
-msgstr ""
-
-#: ui_bctipoivabase.h:260
-msgid "Tipos de IVA"
-msgstr ""
-
-#: ui_bctipoivabase.h:265
-msgid "Tipo de IVA:"
-msgstr ""
-
-#: ui_bctipoivabase.h:266
-msgid "Informacion del tipo de IVA:"
-msgstr ""
-
-#: ui_bctipoivabase.h:268
-msgid "Porcentaje:"
-msgstr ""
-
-#: ui_bctipoivabase.h:269 bctipoivaview.cpp:48
-msgid "Cuenta:"
-msgstr ""
-
-#: ui_bccentrocosteseleccionarbase.h:95
-msgid "Selector de Centros de Coste"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:348 ui_bcmasapatrimonialbase.h:354
-msgid "Masa Patrimonial"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:349 ui_bccambiacuentabase.h:219
-msgid "Aceptar"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:350
-msgid "Cancelar"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:351 bccentrocosteview.cpp:49
-#: bccentrocosteview.cpp:76 bcconfiguracionview.cpp:191
-msgid "Nombre"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:352 bctipoivaview.cpp:44
-msgid "Cuenta"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:356 ui_bcmasapatrimonialbase.h:359
-msgid "Agregar"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:357 ui_bcmasapatrimonialbase.h:360
-msgid "Quitar"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:358
-msgid "Suman"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:361
-msgid "Restan"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:362 ui_bccentrocostebase.h:285
-msgid "General"
-msgstr ""
-
-#: ui_bcmasapatrimonialbase.h:363
-msgid "Comentarios"
 msgstr ""
 
 #: ui_bcformapagobase.h:282
@@ -327,104 +93,69 @@ msgstr ""
 msgid "Tipo plazo entre recibos:"
 msgstr ""
 
-#: ui_bccambiacuentabase.h:214
-msgid "Cambiar Cuenta"
+#: ui_bcformapagobase.h:304 ui_bcasientoduplicarbase.h:240
+#: ui_bccanalbase.h:246
+msgid "&Cerrar"
 msgstr ""
 
-#: ui_bccambiacuentabase.h:215 ui_bccuentasanualesimprimirbase.h:197
-#: ui_bccuentasanualesimprimirbase.h:200
-msgid "Fecha Inicial"
+#: ui_bccanalseleccionarbase.h:94
+msgid "Selector de Canales"
 msgstr ""
 
-#: ui_bccambiacuentabase.h:216 ui_bccuentasanualesimprimirbase.h:198
-#: ui_bccuentasanualesimprimirbase.h:201
-msgid "Fecha Final"
+#: ui_bccanalseleccionarbase.h:95 ui_bccentrocosteseleccionarbase.h:97
+msgid "S. Nada"
 msgstr ""
 
-#: ui_bccambiacuentabase.h:217
-msgid "Asiento Inicial"
+#: ui_bccanalseleccionarbase.h:96 ui_bccentrocosteseleccionarbase.h:96
+msgid "Invertir"
 msgstr ""
 
-#: ui_bccambiacuentabase.h:218
-msgid "Asiento Final"
+#: ui_bccanalseleccionarbase.h:97 ui_bccentrocosteseleccionarbase.h:98
+msgid "S. Todo"
 msgstr ""
 
-#: ui_bccuentasanualesimprimirbase.h:194
-msgid "Impresion de Balances"
+#: ui_bccanalseleccionarbase.h:98 ui_bccentrocosteseleccionarbase.h:99
+#: ui_bccentrocostebase.h:287 ui_bccambiacuentabase.h:220
+msgid "Cerrar"
 msgstr ""
 
-#: ui_bccuentasanualesimprimirbase.h:196
-msgid "Primer Periodo"
+#: ui_bctipoivabase.h:260
+msgid "Tipos de IVA"
 msgstr ""
 
-#: ui_bccuentasanualesimprimirbase.h:199
-msgid "Segundo Periodo"
+#: ui_bctipoivabase.h:265
+msgid "Tipo de IVA:"
 msgstr ""
 
-#: ui_bccuentasanualesimprimirbase.h:202
-msgid "Acep&tar"
+#: ui_bctipoivabase.h:266
+msgid "Informacion del tipo de IVA:"
 msgstr ""
 
-#: ui_bcconfiguracionbase.h:238
-msgid "Propiedades de la empresa"
+#: ui_bctipoivabase.h:267 ui_bccentrocostebase.h:283 ui_bccanalbase.h:244
+msgid "Nombre:"
 msgstr ""
 
-#: ui_bcconfiguracionbase.h:241 ui_bcconfiguracionbase.h:244
-msgid "Guardar"
+#: ui_bctipoivabase.h:268
+msgid "Porcentaje:"
 msgstr ""
 
-#: ui_bcconfiguracionbase.h:247 ui_bccentrocostebase.h:273
-msgid "Ctrl+S"
+#: ui_bctipoivabase.h:269 bctipoivaview.cpp:48
+msgid "Cuenta:"
 msgstr ""
 
-#: ui_bcconfiguracionbase.h:248
-msgid "Modelo del codigo de cuenta:"
+#: ui_bctipoivabase.h:270 ui_bcasientoduplicarbase.h:239 ui_bcaboutbase.h:304
+msgid "&Aceptar"
 msgstr ""
 
-#: ui_bcconfiguracionbase.h:249
-msgid "Digitos estanda&r"
+#: ui_bctipoivabase.h:271 ui_bcmasapatrimoniallistbase.h:123
+#: ui_bccuentasanualesimprimirbase.h:203 bccentrocosteview.cpp:168
+#: bccentrocosteview.cpp:265 bccanalview.cpp:108 bccanalview.cpp:186
+#: bccanalview.cpp:213 bccanalview.cpp:238
+msgid "&Cancelar"
 msgstr ""
 
-#: ui_bcconfiguracionbase.h:250
-msgid ""
-"xxxx --> Digitos de plan contable.\n"
-"yyyy --> Digitos de cuenta."
-msgstr ""
-
-#: ui_bcconfiguracionbase.h:252
-msgid "Modi&ficar plan contable"
-msgstr ""
-
-#: ui_bcconfiguracionbase.h:253
-msgid "Di&gitos de cuentas"
-msgstr ""
-
-#: ui_bcconfiguracionbase.h:254
-msgid "Propiedades generales"
-msgstr ""
-
-#: ui_bccentrocostebase.h:267
-msgid "Centros de Coste"
-msgstr ""
-
-#: ui_bccentrocostebase.h:269
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_bccentrocostebase.h:271
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_bccentrocostebase.h:275
-msgid "1"
-msgstr ""
-
-#: ui_bccentrocostebase.h:277 ui_bccentrocostebase.h:280
-msgid "Mostrar / Ocultar Detalle"
-msgstr ""
-
-#: ui_bccentrocostebase.h:286
-msgid "Centros Distribuidos"
+#: ui_bccentrocosteseleccionarbase.h:95
+msgid "Selector de Centros de Coste"
 msgstr ""
 
 #: ui_bcbulmacontbase.h:249
@@ -476,8 +207,8 @@ msgstr ""
 msgid "&Imprimir"
 msgstr ""
 
-#: ui_bcbulmacontbase.h:264 bccentrocosteview.cpp:168 bccanalview.cpp:108
-#: bccanalview.cpp:186 bcconfiguracionview.cpp:118
+#: ui_bcbulmacontbase.h:264 bcconfiguracionview.cpp:118
+#: bccentrocosteview.cpp:168 bccanalview.cpp:108 bccanalview.cpp:186
 msgid "&Guardar"
 msgstr ""
 
@@ -609,6 +340,384 @@ msgstr ""
 msgid "&Herramientas"
 msgstr ""
 
+#: ui_bccentrocostebase.h:267
+msgid "Centros de Coste"
+msgstr ""
+
+#: ui_bccentrocostebase.h:269
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_bccentrocostebase.h:271
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_bccentrocostebase.h:273 ui_bcconfiguracionbase.h:247
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_bccentrocostebase.h:275
+msgid "1"
+msgstr ""
+
+#: ui_bccentrocostebase.h:277 ui_bccentrocostebase.h:280
+msgid "Mostrar / Ocultar Detalle"
+msgstr ""
+
+#: ui_bccentrocostebase.h:284 ui_bccanalbase.h:245
+msgid "Descripcion:"
+msgstr ""
+
+#: ui_bccentrocostebase.h:285 ui_bcmasapatrimonialbase.h:362
+msgid "General"
+msgstr ""
+
+#: ui_bccentrocostebase.h:286
+msgid "Centros Distribuidos"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:229
+msgid "Duplicar Asientos"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:230
+msgid "Origen:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:231
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:232
+msgid "Asiento inicial:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:233
+msgid "Asiento final:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:234
+msgid "Destino:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:235
+msgid "Fecha con la que quedara el asiento:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:236
+msgid "Tratamiento de la fecha:"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:237
+msgid "Todos con la misma fecha"
+msgstr ""
+
+#: ui_bcasientoduplicarbase.h:238
+msgid "Mantener distacia entre fechas"
+msgstr ""
+
+#: ui_bccambiacuentabase.h:214
+msgid "Cambiar Cuenta"
+msgstr ""
+
+#: ui_bccambiacuentabase.h:215 ui_bccuentasanualesimprimirbase.h:197
+#: ui_bccuentasanualesimprimirbase.h:200
+msgid "Fecha Inicial"
+msgstr ""
+
+#: ui_bccambiacuentabase.h:216 ui_bccuentasanualesimprimirbase.h:198
+#: ui_bccuentasanualesimprimirbase.h:201
+msgid "Fecha Final"
+msgstr ""
+
+#: ui_bccambiacuentabase.h:217
+msgid "Asiento Inicial"
+msgstr ""
+
+#: ui_bccambiacuentabase.h:218
+msgid "Asiento Final"
+msgstr ""
+
+#: ui_bccambiacuentabase.h:219 ui_bcmasapatrimonialbase.h:349
+msgid "Aceptar"
+msgstr ""
+
+#: ui_bcmasapatrimoniallistbase.h:122
+msgid "Masas Patrimoniales"
+msgstr ""
+
+#: ui_bcmasapatrimoniallistbase.h:124
+msgid "Nuevo"
+msgstr ""
+
+#: ui_bcmasapatrimoniallistbase.h:125
+msgid "Borrar"
+msgstr ""
+
+#: ui_bcmasapatrimoniallistbase.h:126
+msgid "Editar"
+msgstr ""
+
+#: ui_bcmasapatrimoniallistbase.h:127 ui_bccuentasanualesimprimirbase.h:195
+msgid "Balance"
+msgstr ""
+
+#: ui_bcaboutbase.h:288
+msgid "Acerca de BulmaCont"
+msgstr ""
+
+#: ui_bcaboutbase.h:290
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Contabilidad GPL - Version "
+"0.13.0 -</p></body></html>"
+msgstr ""
+
+#: ui_bcaboutbase.h:295
+msgid "&Acerca de"
+msgstr ""
+
+#: ui_bcaboutbase.h:296
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: ui_bcaboutbase.h:301
+msgid "A&utores"
+msgstr ""
+
+#: ui_bcaboutbase.h:302
+msgid "Sopor&te"
+msgstr ""
+
+#: ui_bcaboutbase.h:303
+msgid "Acuerdo de &licencia"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:348 ui_bcmasapatrimonialbase.h:354
+msgid "Masa Patrimonial"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:350
+msgid "Cancelar"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:351 bcconfiguracionview.cpp:191
+#: bccentrocosteview.cpp:49 bccentrocosteview.cpp:76
+msgid "Nombre"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:352 bctipoivaview.cpp:44
+msgid "Cuenta"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:356 ui_bcmasapatrimonialbase.h:359
+msgid "Agregar"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:357 ui_bcmasapatrimonialbase.h:360
+msgid "Quitar"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:358
+msgid "Suman"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:361
+msgid "Restan"
+msgstr ""
+
+#: ui_bcmasapatrimonialbase.h:363
+msgid "Comentarios"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:238
+msgid "Propiedades de la empresa"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:241 ui_bcconfiguracionbase.h:244
+msgid "Guardar"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:248
+msgid "Modelo del codigo de cuenta:"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:249
+msgid "Digitos estanda&r"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:250
+msgid ""
+"xxxx --> Digitos de plan contable.\n"
+"yyyy --> Digitos de cuenta."
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:252
+msgid "Modi&ficar plan contable"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:253
+msgid "Di&gitos de cuentas"
+msgstr ""
+
+#: ui_bcconfiguracionbase.h:254
+msgid "Propiedades generales"
+msgstr ""
+
+#: ui_bccanalbase.h:237
+msgid "Canales"
+msgstr ""
+
+#: ui_bccanalbase.h:242
+msgid "Canal:"
+msgstr ""
+
+#: ui_bccanalbase.h:243
+msgid "Informacion del canal:"
+msgstr ""
+
+#: ui_bccuentasanualesimprimirbase.h:194
+msgid "Impresion de Balances"
+msgstr ""
+
+#: ui_bccuentasanualesimprimirbase.h:196
+msgid "Primer Periodo"
+msgstr ""
+
+#: ui_bccuentasanualesimprimirbase.h:199
+msgid "Segundo Periodo"
+msgstr ""
+
+#: ui_bccuentasanualesimprimirbase.h:202
+msgid "Acep&tar"
+msgstr ""
+
+#: bcconfiguracionview.cpp:116
+msgid "Guardar cambios"
+msgstr ""
+
+#: bcconfiguracionview.cpp:117 bcformapagoview.cpp:147 bcformapagoview.cpp:209
+#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225 bctipoivaview.cpp:115
+#: bctipoivaview.cpp:158 bccanalview.cpp:237
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: bcconfiguracionview.cpp:118
+msgid "&No guardar"
+msgstr ""
+
+#: bcconfiguracionview.cpp:158
+msgid "Salir del programa"
+msgstr ""
+
+#: bcconfiguracionview.cpp:159
+msgid ""
+"Para que los cambios tengan efecto\n"
+"debe salir del programa y volver a entrar.\n"
+"\n"
+"Salir ahora?"
+msgstr ""
+
+#: bcconfiguracionview.cpp:160
+msgid "&Salir"
+msgstr ""
+
+#: bcconfiguracionview.cpp:160
+msgid "&No salir"
+msgstr ""
+
+#: bcconfiguracionview.cpp:192
+msgid "Valor"
+msgstr ""
+
+#: bccambiacuentaview.cpp:41
+msgid "Cuenta Origen:"
+msgstr ""
+
+#: bccambiacuentaview.cpp:49
+msgid "Cuenta Destino:"
+msgstr ""
+
+#: bccompany.cpp:232
+msgid "Contabilidad GPL"
+msgstr ""
+
+#: bccompany.cpp:235
+msgid "Error al iniciar la clase."
+msgstr ""
+
+#: bccompany.cpp:435
+msgid "Se han cerrado los asientos"
+msgstr ""
+
+#: bcsubform.cpp:275
+msgid "No existe la cuenta."
+msgstr ""
+
+#: bcsubform.cpp:467
+msgid "Submenu de contabilidad"
+msgstr ""
+
+#: bcsubform.cpp:519
+#, qt-format
+msgid "Columna: '%1', fila: '%2'."
+msgstr ""
+
+#: bcformapagoview.cpp:36
+msgid "Forma de Pago"
+msgstr ""
+
+#: bcformapagoview.cpp:238
+msgid "Tiene que seleccionar una forma de pago antes de borrarla"
+msgstr ""
+
+#: bcformapagoview.cpp:243
+msgid ""
+"Se va a borrar la forma de pago.\n"
+"Esto puede ocasionar perdida de datos.\n"
+msgstr ""
+
+#: bcmasapatrimoniallistview.cpp:133
+msgid "CODIGO"
+msgstr ""
+
+#: bcmasapatrimoniallistview.cpp:133
+msgid "Masa patrimonial"
+msgstr ""
+
+#: bcmasapatrimonial.cpp:45
+msgid "identificador"
+msgstr ""
+
+#: bcmasapatrimonial.cpp:45
+msgid "codigo"
+msgstr ""
+
+#: bcmasapatrimonial.cpp:45
+msgid "descripcion"
+msgstr ""
+
+#: bcmasapatrimonial.cpp:45
+msgid "tipo"
+msgstr ""
+
 #: bccentrocosteview.cpp:44
 msgid "Centro de Coste"
 msgstr ""
@@ -653,12 +762,6 @@ msgstr ""
 msgid "Guardar centro de coste"
 msgstr ""
 
-#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225 bccanalview.cpp:237
-#: bcconfiguracionview.cpp:117 bctipoivaview.cpp:115 bctipoivaview.cpp:158
-#: bcformapagoview.cpp:147 bcformapagoview.cpp:209
-msgid "Desea guardar los cambios?"
-msgstr ""
-
 #: bccentrocosteview.cpp:263
 msgid "Borrar centro de coste"
 msgstr ""
@@ -675,6 +778,42 @@ msgstr ""
 
 #: bccentrocosteview.cpp:276
 msgid "No se pudo borrar el Centro de Coste"
+msgstr ""
+
+#: bctipoivaview.cpp:37
+msgid "Tipo IVA"
+msgstr ""
+
+#: bctipoivaview.cpp:41
+msgid "ID tipo iva"
+msgstr ""
+
+#: bctipoivaview.cpp:42
+msgid "Nombre Tipo"
+msgstr ""
+
+#: bctipoivaview.cpp:114 bctipoivaview.cpp:157
+msgid "Guardar tipo de IVA"
+msgstr ""
+
+#: bccanalseleccionarview.cpp:45
+msgid "nom_canal"
+msgstr ""
+
+#: bccanalseleccionarview.cpp:45
+msgid "desc_canal"
+msgstr ""
+
+#: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
+msgid "Status"
+msgstr ""
+
+#: bccanalseleccionarview.cpp:45
+msgid "idcanal"
+msgstr ""
+
+#: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
+msgid "Seleccion"
 msgstr ""
 
 #: bccanalview.cpp:36
@@ -713,54 +852,6 @@ msgstr ""
 
 #: bccanalview.cpp:238
 msgid "&No"
-msgstr ""
-
-#: bcconfiguracionview.cpp:116
-msgid "Guardar cambios"
-msgstr ""
-
-#: bcconfiguracionview.cpp:118
-msgid "&No guardar"
-msgstr ""
-
-#: bcconfiguracionview.cpp:158
-msgid "Salir del programa"
-msgstr ""
-
-#: bcconfiguracionview.cpp:159
-msgid ""
-"Para que los cambios tengan efecto\n"
-"debe salir del programa y volver a entrar.\n"
-"\n"
-"Salir ahora?"
-msgstr ""
-
-#: bcconfiguracionview.cpp:160
-msgid "&Salir"
-msgstr ""
-
-#: bcconfiguracionview.cpp:160
-msgid "&No salir"
-msgstr ""
-
-#: bcconfiguracionview.cpp:192
-msgid "Valor"
-msgstr ""
-
-#: bctipoivaview.cpp:37
-msgid "Tipo IVA"
-msgstr ""
-
-#: bctipoivaview.cpp:41
-msgid "ID tipo iva"
-msgstr ""
-
-#: bctipoivaview.cpp:42
-msgid "Nombre Tipo"
-msgstr ""
-
-#: bctipoivaview.cpp:114 bctipoivaview.cpp:157
-msgid "Guardar tipo de IVA"
 msgstr ""
 
 #: bcbulmacont.cpp:407 bcbulmacont.cpp:433 bcbulmacont.cpp:445
@@ -809,81 +900,6 @@ msgstr ""
 msgid "Compilado usando la version de QT:"
 msgstr ""
 
-#: bccambiacuentaview.cpp:41
-msgid "Cuenta Origen:"
-msgstr ""
-
-#: bccambiacuentaview.cpp:49
-msgid "Cuenta Destino:"
-msgstr ""
-
-#: bcmasapatrimoniallistview.cpp:133
-msgid "CODIGO"
-msgstr ""
-
-#: bcmasapatrimoniallistview.cpp:133
-msgid "Masa patrimonial"
-msgstr ""
-
-#: bcsubform.cpp:275
-msgid "No existe la cuenta."
-msgstr ""
-
-#: bcsubform.cpp:467
-msgid "Submenu de contabilidad"
-msgstr ""
-
-#: bcsubform.cpp:519
-#, qt-format
-msgid "Columna: '%1', fila: '%2'."
-msgstr ""
-
-#: bcformapagoview.cpp:36
-msgid "Forma de Pago"
-msgstr ""
-
-#: bcformapagoview.cpp:238
-msgid "Tiene que seleccionar una forma de pago antes de borrarla"
-msgstr ""
-
-#: bcformapagoview.cpp:243
-msgid ""
-"Se va a borrar la forma de pago.\n"
-"Esto puede ocasionar perdida de datos.\n"
-msgstr ""
-
-#: bccompany.cpp:232
-msgid "Contabilidad GPL"
-msgstr ""
-
-#: bccompany.cpp:235
-msgid "Error al iniciar la clase."
-msgstr ""
-
-#: bccompany.cpp:435
-msgid "Se han cerrado los asientos"
-msgstr ""
-
-#: bccanalseleccionarview.cpp:45
-msgid "nom_canal"
-msgstr ""
-
-#: bccanalseleccionarview.cpp:45
-msgid "desc_canal"
-msgstr ""
-
-#: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
-msgid "Status"
-msgstr ""
-
-#: bccanalseleccionarview.cpp:45
-msgid "idcanal"
-msgstr ""
-
-#: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
-msgid "Seleccion"
-msgstr ""
-
 #: bccentrocosteseleccionarview.cpp:43
 msgid "nom_coste"
 msgstr ""
@@ -894,20 +910,4 @@ msgstr ""
 
 #: bccentrocosteseleccionarview.cpp:43
 msgid "idc_coste"
-msgstr ""
-
-#: bcmasapatrimonial.cpp:45
-msgid "identificador"
-msgstr ""
-
-#: bcmasapatrimonial.cpp:45
-msgid "codigo"
-msgstr ""
-
-#: bcmasapatrimonial.cpp:45
-msgid "descripcion"
-msgstr ""
-
-#: bcmasapatrimonial.cpp:45
-msgid "tipo"
 msgstr ""

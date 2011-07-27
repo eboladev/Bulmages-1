@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,8 +123,8 @@ msgstr "Empreses disponibles:"
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_facturapbase.h:589 ui_facturapbase.h:592 ui_facturasplistbase.h:396
-#: ui_facturasplistbase.h:399
+#: ui_facturasplistbase.h:396 ui_facturasplistbase.h:399 ui_facturapbase.h:589
+#: ui_facturapbase.h:592
 #, fuzzy
 msgid "Borrar factura"
 msgstr "Esborra quota"
@@ -187,7 +187,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_facturapbase.h:595 ui_facturasplistbase.h:402
+#: ui_facturasplistbase.h:402 ui_facturapbase.h:595
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -301,8 +301,8 @@ msgstr "<HR><B>Trotant el proveïdor"
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveïdor existent"
 
-#: pluginbf_proveedorfactura.cpp:56 pluginbf_proveedorfactura.cpp:57
-#: facturasplist.cpp:275 ui_facturasplistbase.h:373
+#: facturasplist.cpp:275 pluginbf_proveedorfactura.cpp:56
+#: pluginbf_proveedorfactura.cpp:57 ui_facturasplistbase.h:373
 #, fuzzy
 msgid "Facturas de proveedores"
 msgstr "NIF del proveïdor"
@@ -368,7 +368,7 @@ msgstr "IVA "
 msgid "Id descuento"
 msgstr "Id compte"
 
-#: listdescfacturaprovview.cpp:43 facturasplist.cpp:368
+#: facturasplist.cpp:368 listdescfacturaprovview.cpp:43
 #, fuzzy
 msgid "Id factura"
 msgstr "Factura"
@@ -535,7 +535,7 @@ msgstr "Totals:"
 msgid "Total "
 msgstr "Totals:"
 
-#: ui_facturapbase.h:625 ui_facturasplistbase.h:377
+#: ui_facturasplistbase.h:377 ui_facturapbase.h:625
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"

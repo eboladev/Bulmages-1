@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-03-11 15:28+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
 msgid "% Descuento"
 msgstr "% Descompte"
 
@@ -51,7 +51,7 @@ msgstr "&Sí"
 
 #: pluginbf_clientealbaran.cpp:55
 msgid "&Ventas"
-msgstr ""
+msgstr "&Vendes"
 
 #: ui_albaranclientebase.h:792 ui_albaranclientebase.h:793
 #: ui_albaranclientebase.h:794 ui_albaranclientebase.h:795
@@ -193,7 +193,7 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Heu de seleccionar una línea"
 
-#: bfclientealbaransubform.cpp:49 albaranclientelist.cpp:421
+#: albaranclientelist.cpp:421 bfclientealbaransubform.cpp:49
 #: albaranclienteview.cpp:84
 msgid "Descripcion"
 msgstr "Descripció"
@@ -323,7 +323,7 @@ msgstr "ID Forma de pagament"
 msgid "ID trabajador"
 msgstr "ID treballador"
 
-#: bfclientealbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
 #: albaranclienteview.cpp:72
 msgid "Id albaran"
 msgstr "Id albarà"

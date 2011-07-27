@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,9 +84,9 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Actualitza"
 
-#: cuadranteview.cpp:58 cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
-#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
-#: ui_cuadrante1base.h:308
+#: cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadranteview.cpp:58
+#: cuadrante1view.cpp:58 ui_cuadrante1base.h:308
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -145,17 +145,17 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: cuadranteview.cpp:314 cuadrantediarioview.cpp:353
+#: cuadrantediarioview.cpp:353 cuadranteview.cpp:314
 #, qt-format
 msgid "Consulta: '%1'."
 msgstr ""
 
-#: ui_cuadrante1base.h:327 ui_cuadrantediariobase.h:294
-#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
-#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
-#: ui_cuadrantediariobase.h:334 ui_cuadrantebase.h:258 ui_cuadrantebase.h:266
-#: ui_cuadrantebase.h:274 ui_cuadrantebase.h:282 ui_cuadrantebase.h:290
-#: ui_cuadrantebase.h:298
+#: ui_cuadrantediariobase.h:294 ui_cuadrantediariobase.h:302
+#: ui_cuadrantediariobase.h:310 ui_cuadrantediariobase.h:318
+#: ui_cuadrantediariobase.h:326 ui_cuadrantediariobase.h:334
+#: ui_cuadrantebase.h:258 ui_cuadrantebase.h:266 ui_cuadrantebase.h:274
+#: ui_cuadrantebase.h:282 ui_cuadrantebase.h:290 ui_cuadrantebase.h:298
+#: ui_cuadrante1base.h:327
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Cuadrante y Uso Horario"
 msgstr "Diari"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:172
+#: cuadrantediarioview.cpp:172 cuadranteview.cpp:152
 #, fuzzy
 msgid "Domingo"
 msgstr "Denominació"
@@ -216,7 +216,7 @@ msgstr "Data &inicial:"
 msgid "Festivo"
 msgstr "Destinació:"
 
-#: cuadranteview.cpp:253 cuadrantediarioview.cpp:292
+#: cuadrantediarioview.cpp:292 cuadranteview.cpp:253
 #, fuzzy
 msgid "Fiesta general"
 msgstr "Propietats generals"
@@ -271,7 +271,7 @@ msgstr "ID compte"
 msgid "ID horario"
 msgstr "Diari"
 
-#: pluginbf_cuadrante.cpp:216 cuadrante1view.cpp:76
+#: cuadrante1view.cpp:76 pluginbf_cuadrante.cpp:216
 msgid "ID trabajador"
 msgstr "ID treballador"
 
@@ -297,7 +297,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Imprimeix"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:169
+#: cuadrantediarioview.cpp:169 cuadranteview.cpp:152
 msgid "Jueves"
 msgstr "Dijous"
 
@@ -306,16 +306,16 @@ msgstr "Dijous"
 msgid "Limpiar Cuadrante"
 msgstr "Neteja quadrant"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:166
+#: cuadrantediarioview.cpp:166 cuadranteview.cpp:152
 #, fuzzy
 msgid "Lunes"
 msgstr "Apunts"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:167
+#: cuadrantediarioview.cpp:167 cuadranteview.cpp:152
 msgid "Martes"
 msgstr "Dimarts"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:168
+#: cuadrantediarioview.cpp:168 cuadranteview.cpp:152
 msgid "Miercoles"
 msgstr "Dimecres"
 
@@ -329,7 +329,7 @@ msgstr "tipus"
 msgid "Nombre Trabajador"
 msgstr "Nom de camp"
 
-#: cuadranteview.cpp:252 cuadrantediarioview.cpp:291
+#: cuadrantediarioview.cpp:291 cuadranteview.cpp:252
 msgid "Normal"
 msgstr "Normal"
 
@@ -346,7 +346,7 @@ msgstr ""
 msgid "Podra destinar los trabajadores a distintos almacenes"
 msgstr ""
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:171
+#: cuadrantediarioview.cpp:171 cuadranteview.cpp:152
 #, fuzzy
 msgid "Sabado"
 msgstr "Saldo"
@@ -356,7 +356,7 @@ msgstr "Saldo"
 msgid "Validaciones"
 msgstr "Paginació"
 
-#: cuadranteview.cpp:152 cuadrantediarioview.cpp:170
+#: cuadrantediarioview.cpp:170 cuadranteview.cpp:152
 #, fuzzy
 msgid "Viernes"
 msgstr "Tancament"

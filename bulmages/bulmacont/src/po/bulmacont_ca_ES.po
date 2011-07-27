@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:17+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 msgid "\""
 msgstr "\""
 
-#: ui_bcaboutbase.h:304 ui_bcasientoduplicarbase.h:239 ui_bctipoivabase.h:270
+#: ui_bctipoivabase.h:270 ui_bcasientoduplicarbase.h:239 ui_bcaboutbase.h:304
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -64,7 +64,7 @@ msgstr "&Canal por defecte"
 msgid "&Canales"
 msgstr "&Canals"
 
-#: ui_bcmasapatrimoniallistbase.h:123 ui_bctipoivabase.h:271
+#: ui_bctipoivabase.h:271 ui_bcmasapatrimoniallistbase.h:123
 #: ui_bccuentasanualesimprimirbase.h:203 bccentrocosteview.cpp:168
 #: bccentrocosteview.cpp:265 bccanalview.cpp:108 bccanalview.cpp:186
 #: bccanalview.cpp:213 bccanalview.cpp:238
@@ -96,8 +96,8 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·la"
 
-#: ui_bcasientoduplicarbase.h:240 ui_bccanalbase.h:246
-#: ui_bcformapagobase.h:304
+#: ui_bcformapagobase.h:304 ui_bcasientoduplicarbase.h:240
+#: ui_bccanalbase.h:246
 msgid "&Cerrar"
 msgstr "Tan&ca"
 
@@ -109,8 +109,8 @@ msgstr "&Empresa"
 msgid "&Filtrar"
 msgstr "&Filtra"
 
-#: ui_bcbulmacontbase.h:264 bccentrocosteview.cpp:168 bccanalview.cpp:108
-#: bccanalview.cpp:186 bcconfiguracionview.cpp:118
+#: ui_bcbulmacontbase.h:264 bcconfiguracionview.cpp:118
+#: bccentrocosteview.cpp:168 bccanalview.cpp:108 bccanalview.cpp:186
 msgid "&Guardar"
 msgstr "&Desa"
 
@@ -225,7 +225,7 @@ msgstr "A&juda"
 msgid "Acep&tar"
 msgstr "Accepta"
 
-#: ui_bcmasapatrimonialbase.h:349 ui_bccambiacuentabase.h:219
+#: ui_bccambiacuentabase.h:219 ui_bcmasapatrimonialbase.h:349
 msgid "Aceptar"
 msgstr "Accepta"
 
@@ -320,7 +320,7 @@ msgstr "Canals"
 msgid "Cancelar"
 msgstr "Cancel·la"
 
-#: main.cxx:164
+#: main.cxx:166
 msgid "Cargando plugins"
 msgstr "Carregant plugins"
 
@@ -346,7 +346,7 @@ msgid "Centros de cos&te"
 msgstr "Centres de cos&t"
 
 #: ui_bccanalseleccionarbase.h:98 ui_bccentrocosteseleccionarbase.h:99
-#: ui_bccambiacuentabase.h:220 ui_bccentrocostebase.h:287
+#: ui_bccentrocostebase.h:287 ui_bccambiacuentabase.h:220
 #, fuzzy
 msgid "Cerrar"
 msgstr ""
@@ -430,7 +430,7 @@ msgstr "Ctrl+PgUp"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: ui_bcconfiguracionbase.h:247 ui_bccentrocostebase.h:273
+#: ui_bccentrocostebase.h:273 ui_bcconfiguracionbase.h:247
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -471,7 +471,7 @@ msgstr ""
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: ui_bccanalbase.h:245 ui_bccentrocostebase.h:284
+#: ui_bccentrocostebase.h:284 ui_bccanalbase.h:245
 #, fuzzy
 msgid "Descripcion:"
 msgstr "Descripció"
@@ -480,9 +480,9 @@ msgstr "Descripció"
 msgid "Desea guardar los cambios."
 msgstr "Desitja desar els canvis."
 
-#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225 bccanalview.cpp:237
-#: bcconfiguracionview.cpp:117 bctipoivaview.cpp:115 bctipoivaview.cpp:158
-#: bcformapagoview.cpp:147 bcformapagoview.cpp:209
+#: bcconfiguracionview.cpp:117 bcformapagoview.cpp:147 bcformapagoview.cpp:209
+#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225 bctipoivaview.cpp:115
+#: bctipoivaview.cpp:158 bccanalview.cpp:237
 msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
@@ -525,7 +525,7 @@ msgstr ""
 msgid "Error en la carga de centros de coste."
 msgstr ""
 
-#: main.cxx:193
+#: main.cxx:195
 msgid "Error inesperado en BulmaCont, el programa se cerrara."
 msgstr ""
 
@@ -582,7 +582,7 @@ msgstr "Formes de &pagament"
 msgid "Formas de pago"
 msgstr "Formes de pagament"
 
-#: ui_bcmasapatrimonialbase.h:362 ui_bccentrocostebase.h:285
+#: ui_bccentrocostebase.h:285 ui_bcmasapatrimonialbase.h:362
 msgid "General"
 msgstr "General"
 
@@ -655,11 +655,11 @@ msgstr "Informació de depuració"
 msgid "Informacion del tipo de IVA:"
 msgstr "Informació del programa"
 
-#: main.cxx:176
+#: main.cxx:178
 msgid "Inicializando componentes"
 msgstr "Inicialitzant components"
 
-#: main.cxx:105
+#: main.cxx:107
 msgid "Iniciando clases"
 msgstr "Inicialitzant classes"
 
@@ -677,12 +677,12 @@ msgstr "Inserint el contingut en el portapapers..."
 msgid "Invertir"
 msgstr "Comentari"
 
-#: main.cxx:170
+#: main.cxx:172
 #, fuzzy
 msgid "Lanzando plugins"
 msgstr "Llançador BulmaGés"
 
-#: main.cxx:134
+#: main.cxx:136
 #, fuzzy
 msgid "Leyendo configuracion"
 msgstr "Arranjament"
@@ -745,8 +745,8 @@ msgstr ""
 msgid "No se pudo borrar el Centro de Coste"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
-#: ui_bcmasapatrimonialbase.h:351 bccentrocosteview.cpp:49
-#: bccentrocosteview.cpp:76 bcconfiguracionview.cpp:191
+#: ui_bcmasapatrimonialbase.h:351 bcconfiguracionview.cpp:191
+#: bccentrocosteview.cpp:49 bccentrocosteview.cpp:76
 msgid "Nombre"
 msgstr "Nom"
 
@@ -764,7 +764,7 @@ msgstr "Nom"
 msgid "Nombre de la forma de pago:"
 msgstr "Nom de la forma de pagament:"
 
-#: ui_bccanalbase.h:244 ui_bctipoivabase.h:267 ui_bccentrocostebase.h:283
+#: ui_bctipoivabase.h:267 ui_bccentrocostebase.h:283 ui_bccanalbase.h:244
 msgid "Nombre:"
 msgstr "Nom:"
 
@@ -949,7 +949,7 @@ msgstr ""
 msgid "Suman"
 msgstr "Sumen"
 
-#: main.cxx:182 bccompany.cpp:218
+#: main.cxx:184 bccompany.cpp:218
 #, fuzzy
 msgid "Terminado"
 msgstr "<LI>Terminat</LI>\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2009-10-19 01:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -71,7 +71,7 @@ msgstr ""
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: reciboview.cpp:53 reciboslist.cpp:351 emitirrecibosview.cpp:57
+#: reciboslist.cpp:351 reciboview.cpp:53 emitirrecibosview.cpp:57
 msgid "Cantidad"
 msgstr "Cantidad"
 
@@ -95,7 +95,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_recibobase.h:364 ui_reciboslistbase.h:334
+#: ui_reciboslistbase.h:334 ui_recibobase.h:364
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -135,7 +135,7 @@ msgstr "Debe seleccionar una línea"
 msgid "Descripcion"
 msgstr "Descripción"
 
-#: reciboview.cpp:59 reciboslist.cpp:353 ui_recibobase.h:382
+#: reciboslist.cpp:353 reciboview.cpp:59 ui_recibobase.h:382
 msgid "Devuelto"
 msgstr ""
 
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Otros datos"
 msgstr "Otros datos"
 
-#: reciboview.cpp:58 reciboslist.cpp:352 ui_recibobase.h:381
+#: reciboslist.cpp:352 reciboview.cpp:58 ui_recibobase.h:381
 msgid "Pagado"
 msgstr "Pagado"
 
@@ -291,7 +291,7 @@ msgstr ""
 msgid "Recibo reemitido"
 msgstr ""
 
-#: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
+#: reciboslist.cpp:216 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
 #: ui_reciboslistbase.h:305
 msgid "Recibos"
 msgstr ""
@@ -316,7 +316,7 @@ msgstr ""
 msgid "Reemitir Recibo"
 msgstr ""
 
-#: emitirrecibosview.cpp:161
+#: emitirrecibosview.cpp:167
 msgid "Terminado"
 msgstr "Terminado"
 
