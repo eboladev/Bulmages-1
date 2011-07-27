@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-07-27 16:26+0200\n"
-"PO-Revision-Date: 2011-07-27 17:15+0200\n"
+"PO-Revision-Date: 2011-07-27 17:22+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "Language: Catalan\n"
@@ -424,7 +424,7 @@ msgstr "Nou alumne/nova alumna"
 
 #: listcuotasporalumnoview.cpp:97
 msgid "Numero de alumnos"
-msgstr "Nombre d'alumnes"
+msgstr "Nombre de fills/filles"
 
 #: alumnoview.cpp:63
 msgid "Observaciones"
