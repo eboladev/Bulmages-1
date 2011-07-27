@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-07-12 11:18+0200\n"
-"PO-Revision-Date: 2011-07-03 13:18+0200\n"
+"PO-Revision-Date: 2011-07-27 17:06+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "Language: Catalan\n"
@@ -35,7 +35,7 @@ msgstr "Grups-&Classe"
 
 #: pluginbf_alumno.cpp:85
 msgid "&Cuotas Socio"
-msgstr "&Quotes socis"
+msgstr "&Quotes/Descomptes"
 
 #: ui_alumnobase.h:524
 msgid "&Datos generales"
@@ -201,7 +201,7 @@ msgstr "Quota"
 
 #: ui_listcuotasporalumnobase.h:118
 msgid "Cuotas Socio"
-msgstr "Quotes socis/sòcies"
+msgstr "Quotes/descomptes"
 
 #: pluginbf_alumno.cpp:87 pluginbf_alumno.cpp:88
 msgid "Cuotas por alumno"
