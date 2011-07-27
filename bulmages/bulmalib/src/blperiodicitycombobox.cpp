@@ -68,22 +68,26 @@ BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( p
 {
     BL_FUNC_DEBUG
     m_textos[0] = _ ( "Semanal" );
-    m_textos[1] = _ ( "Quincenal" );
-    m_textos[2] = _ ( "Mensual" );
-    m_textos[3] = _ ( "Trimestral" );
-    m_textos[4] = _ ( "Semestral" );
-    m_textos[5] = _ ( "Anual" );
-    m_textos[6] = _ ( "Bienal" );
-    m_textos[7] = "";
+    m_textos[1] = _ ( "2 Semanas" );
+    m_textos[2] = _ ( "Quincenal" );
+    m_textos[3] = _ ( "Mensual" );
+    m_textos[4] = _ ( "Trimestral" );
+    m_textos[5] = _ ( "Semestral" );
+    m_textos[6] = _ ( "Anual" );
+    m_textos[7] = _ ( "Bienal" );
+    m_textos[8] = _ ( "Sin Periodicidad" );
+    m_textos[9] = "";
 
     m_valores[0] = "@ 7 days";
-    m_valores[1] = "@ 15 days";
-    m_valores[2] = "@ 1 mon";
-    m_valores[3] = "@ 3 mons";
-    m_valores[4] = "@ 6 mons";
-    m_valores[5] = "@ 1 year";
-    m_valores[6] = "@ 2 year";
-    m_valores[7] = "";
+    m_valores[1] = "@ 2 weeks";
+    m_valores[2] = "@ 15 days";
+    m_valores[3] = "@ 1 mon";
+    m_valores[4] = "@ 3 mons";
+    m_valores[5] = "@ 6 mons";
+    m_valores[6] = "@ 1 year";
+    m_valores[7] = "@ 2 year";
+    m_valores[8] = "00:00:00";
+    m_valores[9] = "";
 
     int i = 0;
     while ( m_textos[i] != "" ) {
