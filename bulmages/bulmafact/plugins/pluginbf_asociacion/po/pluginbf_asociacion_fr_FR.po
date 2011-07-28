@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-27 16:26+0200\n"
+"POT-Creation-Date: 2011-07-28 11:46+0200\n"
 "PO-Revision-Date: 2011-02-24 15:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -158,7 +158,7 @@ msgstr "Communiqué"
 msgid "Comunicados"
 msgstr "Communiqués"
 
-#: convreunionview.cpp:61 convreunionview.cpp:84
+#: convreunionlist.cpp:276 convreunionview.cpp:61 convreunionview.cpp:84
 msgid "Concepto"
 msgstr "Raison"
 
@@ -440,8 +440,8 @@ msgstr "Autres"
 msgid "Otros datos"
 msgstr "Autres données"
 
-#: convreunionview.cpp:62 convreunionview.cpp:86 ui_convreunionbase.h:384
-#: ui_convreunionbase.h:385
+#: convreunionlist.cpp:277 convreunionview.cpp:62 convreunionview.cpp:86
+#: ui_convreunionbase.h:384 ui_convreunionbase.h:385
 msgid "Resolucion"
 msgstr "Résolution"
 
@@ -471,7 +471,7 @@ msgstr "Texte"
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
-#: convreunionlist.cpp:273 convreunionview.cpp:60
+#: convreunionlist.cpp:275 convreunionview.cpp:60
 msgid "Tipo"
 msgstr "Type"
 
@@ -488,12 +488,20 @@ msgid "Tutores"
 msgstr "Tuteurs"
 
 #: convreunionlist.cpp:271
-msgid "fecha1convocatoriareunion"
-msgstr "Date 1 convoquer réunion"
+msgid "fecha 1 convocatoriareunion"
+msgstr ""
+
+#: convreunionlist.cpp:273
+msgid "fecha 2 convocatoriareunion"
+msgstr ""
 
 #: convreunionlist.cpp:272
-msgid "fecha2convocatoriareunion"
-msgstr "Date 2 convoquer réunion"
+msgid "hora 1 convocatoria"
+msgstr ""
+
+#: convreunionlist.cpp:274
+msgid "hora 2 convocatoriareunion"
+msgstr ""
 
 #~ msgid "&Convocar Asamblea"
 #~ msgstr "&Convoquer l'assemblée "
@@ -527,3 +535,9 @@ msgstr "Date 2 convoquer réunion"
 
 #~ msgid "Hora 2ª Convocatoria"
 #~ msgstr "Heure 2ª Convocation"
+
+#~ msgid "fecha1convocatoriareunion"
+#~ msgstr "Date 1 convoquer réunion"
+
+#~ msgid "fecha2convocatoriareunion"
+#~ msgstr "Date 2 convoquer réunion"

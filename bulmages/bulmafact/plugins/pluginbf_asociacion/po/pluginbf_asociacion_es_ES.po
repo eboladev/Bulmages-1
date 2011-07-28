@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-27 16:26+0200\n"
+"POT-Creation-Date: 2011-07-28 11:46+0200\n"
 "PO-Revision-Date: 2009-10-18 22:35+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Comunicados"
 msgstr ""
 
-#: convreunionview.cpp:61 convreunionview.cpp:84
+#: convreunionlist.cpp:276 convreunionview.cpp:61 convreunionview.cpp:84
 msgid "Concepto"
 msgstr "Concepto"
 
@@ -437,8 +437,8 @@ msgstr "Otros"
 msgid "Otros datos"
 msgstr "Otros datos"
 
-#: convreunionview.cpp:62 convreunionview.cpp:86 ui_convreunionbase.h:384
-#: ui_convreunionbase.h:385
+#: convreunionlist.cpp:277 convreunionview.cpp:62 convreunionview.cpp:86
+#: ui_convreunionbase.h:384 ui_convreunionbase.h:385
 msgid "Resolucion"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr ""
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
-#: convreunionlist.cpp:273 convreunionview.cpp:60
+#: convreunionlist.cpp:275 convreunionview.cpp:60
 msgid "Tipo"
 msgstr "Tipo"
 
@@ -485,11 +485,19 @@ msgid "Tutores"
 msgstr "Tutores"
 
 #: convreunionlist.cpp:271
-msgid "fecha1convocatoriareunion"
+msgid "fecha 1 convocatoriareunion"
+msgstr ""
+
+#: convreunionlist.cpp:273
+msgid "fecha 2 convocatoriareunion"
 msgstr ""
 
 #: convreunionlist.cpp:272
-msgid "fecha2convocatoriareunion"
+msgid "hora 1 convocatoria"
+msgstr ""
+
+#: convreunionlist.cpp:274
+msgid "hora 2 convocatoriareunion"
 msgstr ""
 
 #~ msgid "1a Convocatoria"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-27 16:26+0200\n"
-"PO-Revision-Date: 2011-07-26 19:05+0200\n"
+"POT-Creation-Date: 2011-07-28 11:46+0200\n"
+"PO-Revision-Date: 2011-07-28 15:15+0200\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
 "Language: Catalan\n"
@@ -155,7 +155,7 @@ msgstr "Comunicat"
 msgid "Comunicados"
 msgstr "Comunicats"
 
-#: convreunionview.cpp:61 convreunionview.cpp:84
+#: convreunionlist.cpp:276 convreunionview.cpp:61 convreunionview.cpp:84
 msgid "Concepto"
 msgstr "Concepte"
 
@@ -437,8 +437,8 @@ msgstr "Altres"
 msgid "Otros datos"
 msgstr "Altres Dades"
 
-#: convreunionview.cpp:62 convreunionview.cpp:86 ui_convreunionbase.h:384
-#: ui_convreunionbase.h:385
+#: convreunionlist.cpp:277 convreunionview.cpp:62 convreunionview.cpp:86
+#: ui_convreunionbase.h:384 ui_convreunionbase.h:385
 msgid "Resolucion"
 msgstr "Ressolució"
 
@@ -468,7 +468,7 @@ msgstr "Text"
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Heu de seleccionar el document abans de poder imprimir-lo"
 
-#: convreunionlist.cpp:273 convreunionview.cpp:60
+#: convreunionlist.cpp:275 convreunionview.cpp:60
 msgid "Tipo"
 msgstr "Tipus"
 
@@ -485,12 +485,20 @@ msgid "Tutores"
 msgstr "Pares/Mares/Tutors"
 
 #: convreunionlist.cpp:271
-msgid "fecha1convocatoriareunion"
-msgstr "Data 1a Convocatòria"
+msgid "fecha 1 convocatoriareunion"
+msgstr "1era Data"
+
+#: convreunionlist.cpp:273
+msgid "fecha 2 convocatoriareunion"
+msgstr "2ona Data"
 
 #: convreunionlist.cpp:272
-msgid "fecha2convocatoriareunion"
-msgstr "Data 2ona Convocatòria"
+msgid "hora 1 convocatoria"
+msgstr "Hora 1era convocatòria"
+
+#: convreunionlist.cpp:274
+msgid "hora 2 convocatoriareunion"
+msgstr "Hora 2ona convocatòria"
 
 #~ msgid "&Convocar Asamblea"
 #~ msgstr "&Convoca Assemblea"
@@ -527,3 +535,9 @@ msgstr "Data 2ona Convocatòria"
 
 #~ msgid "Hora 2ª Convocatoria"
 #~ msgstr "Hora 2ª Convocatòria"
+
+#~ msgid "fecha1convocatoriareunion"
+#~ msgstr "Data 1a Convocatòria"
+
+#~ msgid "fecha2convocatoriareunion"
+#~ msgstr "Data 2ona Convocatòria"
