@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,44 @@ msgstr ""
 msgid "Proyectos asociados"
 msgstr ""
 
+#: listproyectosview.cpp:46
+msgid "Identificador"
+msgstr ""
+
+#: listproyectosview.cpp:47
+msgid "C. Coste"
+msgstr ""
+
+#: listproyectosview.cpp:48
+msgid "Fecha"
+msgstr ""
+
+#: listproyectosview.cpp:49
+msgid "Nombre"
+msgstr ""
+
+#: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
+#: proyectoview.cpp:96
+msgid "Comentarios"
+msgstr ""
+
+#: listproyectosview.cpp:51
+msgid "Archivo"
+msgstr ""
+
+#: listproyectosview.cpp:58
+msgid "Selector de Proyectos"
+msgstr ""
+
+#: listproyectosview.cpp:117
+msgid "Error al borrar la amortizacion."
+msgstr ""
+
+#: listproyectosview.cpp:137
+#, qt-format
+msgid "Fila: '%1'."
+msgstr ""
+
 #: proyectoview.cpp:53
 msgid "Proyecto"
 msgstr ""
@@ -47,11 +85,6 @@ msgstr ""
 
 #: proyectoview.cpp:59
 msgid "fecha"
-msgstr ""
-
-#: proyectoview.cpp:60 proyectoview.cpp:77 proyectoview.cpp:96
-#: listproyectosview.cpp:50
-msgid "Comentarios"
 msgstr ""
 
 #: proyectoview.cpp:71 proyectoview.cpp:90
@@ -96,39 +129,6 @@ msgstr ""
 
 #: proyectoview.cpp:113
 msgid "Error al crear el almacen"
-msgstr ""
-
-#: listproyectosview.cpp:46
-msgid "Identificador"
-msgstr ""
-
-#: listproyectosview.cpp:47
-msgid "C. Coste"
-msgstr ""
-
-#: listproyectosview.cpp:48
-msgid "Fecha"
-msgstr ""
-
-#: listproyectosview.cpp:49
-msgid "Nombre"
-msgstr ""
-
-#: listproyectosview.cpp:51
-msgid "Archivo"
-msgstr ""
-
-#: listproyectosview.cpp:58
-msgid "Selector de Proyectos"
-msgstr ""
-
-#: listproyectosview.cpp:117
-msgid "Error al borrar la amortizacion."
-msgstr ""
-
-#: listproyectosview.cpp:137
-#, qt-format
-msgid "Fila: '%1'."
 msgstr ""
 
 #: ui_proyectobase.h:241

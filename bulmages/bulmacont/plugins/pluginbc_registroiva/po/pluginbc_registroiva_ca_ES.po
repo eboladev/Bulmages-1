@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,11 +47,11 @@ msgstr ""
 msgid "&Registro de IVA"
 msgstr "Registre d'IVA"
 
-#: ui_listregistroivabase.h:355
+#: ui_listregistroivabase.h:358
 msgid "&Repercutido"
 msgstr "&Repercutit"
 
-#: ui_listregistroivabase.h:354
+#: ui_listregistroivabase.h:357
 msgid "&Sopotado"
 msgstr "&Soportat"
 
@@ -133,7 +133,7 @@ msgstr "Base Imposable"
 msgid "Borrador"
 msgstr "Esborrany"
 
-#: listivaview.cpp:173 listlinprevcobroview.cpp:269
+#: listlinprevcobroview.cpp:269 listivaview.cpp:173
 #, fuzzy
 msgid "Borrar linea"
 msgstr "Esborrar"
@@ -279,7 +279,7 @@ msgstr "Dades del llistat:"
 msgid "Debe"
 msgstr "Deure"
 
-#: regivaqtoolbutton.cpp:96 pluginbc_registroiva.cpp:206
+#: pluginbc_registroiva.cpp:206 regivaqtoolbutton.cpp:96
 #, fuzzy
 msgid "Debe seleccionar un apunte"
 msgstr "Cal triar un apunt"
@@ -369,11 +369,11 @@ msgstr "Data prevista"
 msgid "Fecha factura"
 msgstr "Data de la 1a quota"
 
-#: ui_listregistroivabase.h:353 ui_bcmodelo347listbase.h:262
+#: ui_listregistroivabase.h:356 ui_bcmodelo347listbase.h:262
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_listregistroivabase.h:352 ui_bcmodelo347listbase.h:263
+#: ui_listregistroivabase.h:355 ui_bcmodelo347listbase.h:263
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
@@ -437,17 +437,17 @@ msgstr "ID Canal"
 msgid "IVA"
 msgstr "IVA"
 
-#: ui_listregistroivabase.h:359
+#: ui_listregistroivabase.h:362
 #, fuzzy
 msgid "IVA repercutido:"
 msgstr "IVA:"
 
-#: ui_listregistroivabase.h:356
+#: ui_listregistroivabase.h:359
 #, fuzzy
 msgid "IVA soportado:"
 msgstr "Exportant :"
 
-#: ui_listregistroivabase.h:357 ui_listregistroivabase.h:360
+#: ui_listregistroivabase.h:360 ui_listregistroivabase.h:363
 #: ui_registroivabase.h:620
 #, fuzzy
 msgid "IVA:"
@@ -501,7 +501,7 @@ msgstr ""
 msgid "Listado para el modelo 347"
 msgstr "Llistat pel model 347"
 
-#: ui_listregistroivabase.h:347
+#: ui_listregistroivabase.h:350
 #, fuzzy
 msgid "Listados de IVA"
 msgstr "Tipus d'IVA"
@@ -596,8 +596,8 @@ msgstr ""
 msgid "Registro de Facturas"
 msgstr "Registre factura"
 
-#: regivaqtoolbutton.cpp:70 regivaqtoolbutton.cpp:71
 #: pluginbc_registroiva.cpp:64 pluginbc_registroiva.cpp:65
+#: regivaqtoolbutton.cpp:70 regivaqtoolbutton.cpp:71
 msgid "Registro de IVA"
 msgstr "Registre d'IVA"
 
@@ -610,7 +610,7 @@ msgstr "Registre d'entrada:"
 msgid "Regularizacion"
 msgstr "Regularització"
 
-#: ui_listregistroivabase.h:362
+#: ui_listregistroivabase.h:365
 #, fuzzy
 msgid "Res&umen"
 msgstr "Nom del compte"
@@ -666,7 +666,7 @@ msgstr "Total pagaments"
 msgid "Total factura:"
 msgstr "Total factura:"
 
-#: ui_listregistroivabase.h:358 ui_listregistroivabase.h:361
+#: ui_listregistroivabase.h:361 ui_listregistroivabase.h:364
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"
@@ -700,11 +700,11 @@ msgstr "Torna"
 msgid "baseiva"
 msgstr "baseiva"
 
-#: cobropagoview.cpp:51 registroivaview.cpp:95
+#: registroivaview.cpp:95 cobropagoview.cpp:51
 msgid "cantidadprevcobro"
 msgstr ""
 
-#: cobropagoview.cpp:50 registroivaview.cpp:94
+#: registroivaview.cpp:94 cobropagoview.cpp:50
 msgid "cantidadprevistaprevcobro"
 msgstr "cantidadprevistaprevcobro"
 
@@ -727,15 +727,15 @@ msgstr "descripció"
 msgid "descripcioncuenta"
 msgstr "Descripció del compte"
 
-#: cobropagoview.cpp:54 registroivaview.cpp:98
+#: registroivaview.cpp:98 cobropagoview.cpp:54
 msgid "docprevcobro"
 msgstr ""
 
-#: cobropagoview.cpp:45 registroivaview.cpp:90
+#: registroivaview.cpp:90 cobropagoview.cpp:45
 msgid "fcobroprevcobro"
 msgstr ""
 
-#: cobropagoview.cpp:44 registroivaview.cpp:89
+#: registroivaview.cpp:89 cobropagoview.cpp:44
 msgid "fprevistaprevcobro"
 msgstr "fprevistaprevcobro"
 
@@ -743,8 +743,8 @@ msgstr "fprevistaprevcobro"
 msgid "idapunte"
 msgstr ""
 
-#: listregistroivaview.cpp:67 listregistroivaview.cpp:91 cobropagoview.cpp:49
-#: registroivaview.cpp:93
+#: listregistroivaview.cpp:67 listregistroivaview.cpp:91
+#: registroivaview.cpp:93 cobropagoview.cpp:49
 msgid "idasiento"
 msgstr ""
 
@@ -752,16 +752,16 @@ msgstr ""
 msgid "idc_coste"
 msgstr ""
 
-#: cobropagoview.cpp:46 registroivaview.cpp:102
+#: registroivaview.cpp:102 cobropagoview.cpp:46
 msgid "idctacliente"
 msgstr ""
 
-#: listregistroivaview.cpp:52 listregistroivaview.cpp:76 cobropagoview.cpp:48
-#: registroivaview.cpp:77 registroivaview.cpp:92
+#: listregistroivaview.cpp:52 listregistroivaview.cpp:76
+#: registroivaview.cpp:77 registroivaview.cpp:92 cobropagoview.cpp:48
 msgid "idcuenta"
 msgstr ""
 
-#: cobropagoview.cpp:47 registroivaview.cpp:91
+#: registroivaview.cpp:91 cobropagoview.cpp:47
 #, fuzzy
 msgid "idfpago"
 msgstr "idpais"
@@ -771,11 +771,11 @@ msgstr "idpais"
 msgid "idiva"
 msgstr "iddiario"
 
-#: cobropagoview.cpp:43 registroivaview.cpp:88
+#: registroivaview.cpp:88 cobropagoview.cpp:43
 msgid "idprevcobro"
 msgstr ""
 
-#: cobropagoview.cpp:52 registroivaview.cpp:81 registroivaview.cpp:96
+#: registroivaview.cpp:81 registroivaview.cpp:96 cobropagoview.cpp:52
 msgid "idregistroiva"
 msgstr ""
 
@@ -818,7 +818,7 @@ msgstr "tipoctacliente"
 msgid "tipocuenta"
 msgstr "tipocuenta"
 
-#: cobropagoview.cpp:53 registroivaview.cpp:97
+#: registroivaview.cpp:97 cobropagoview.cpp:53
 msgid "tipoprevcobro"
 msgstr "tipoprevcobro"
 

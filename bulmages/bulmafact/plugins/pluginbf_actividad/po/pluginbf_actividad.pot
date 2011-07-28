@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,8 +45,68 @@ msgstr ""
 msgid "ID Convocatoria"
 msgstr ""
 
-#: convocatoriaslist.cpp:268 actividadeslist.cpp:293
+#: convocatoriaslist.cpp:268 actividadeslist.cpp:293 actividadview.cpp:251
 msgid "Nombre"
+msgstr ""
+
+#: convocatoriaview.cpp:48
+msgid "Convocatoria"
+msgstr ""
+
+#: convocatoriaview.cpp:51 actividadview.cpp:55
+msgid "ID actividad"
+msgstr ""
+
+#: convocatoriaview.cpp:52 actividadview.cpp:57
+msgid "Nombre del actividad"
+msgstr ""
+
+#: convocatoriaview.cpp:53 actividadview.cpp:59
+msgid "Id profesor"
+msgstr ""
+
+#: convocatoriaview.cpp:59 actividadview.cpp:93
+msgid "Profesor:"
+msgstr ""
+
+#: convocatoriaview.cpp:68 actividadview.cpp:112
+msgid "Error al crear el actividad"
+msgstr ""
+
+#: convocatoriaview.cpp:96 actividadview.cpp:143
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: tipoactividadview.cpp:44
+msgid "TipoActividad"
+msgstr ""
+
+#: tipoactividadview.cpp:179
+msgid "Error al guardar el tipoactividad"
+msgstr ""
+
+#: tipoactividadview.cpp:198
+msgid "Guardar datos del tipoactividad"
+msgstr ""
+
+#: tipoactividadview.cpp:199
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: tipoactividadview.cpp:200
+msgid "&Si"
+msgstr ""
+
+#: tipoactividadview.cpp:200
+msgid "&No"
+msgstr ""
+
+#: tipoactividadview.cpp:230
+msgid "Error al crear un nuevo TipoActividad"
+msgstr ""
+
+#: tipoactividadview.cpp:255
+msgid "Error al borrar el TipoActividad"
 msgstr ""
 
 #: actividadeslist.cpp:156 pluginbf_actividad.cpp:58 pluginbf_actividad.cpp:59
@@ -98,60 +158,57 @@ msgstr ""
 msgid "Duracion"
 msgstr ""
 
-#: tipoactividadview.cpp:44
-msgid "TipoActividad"
+#: pluginbf_actividad.cpp:52
+msgid "&Activitats"
 msgstr ""
 
-#: tipoactividadview.cpp:179
-msgid "Error al guardar el tipoactividad"
+#: pluginbf_actividad.cpp:56
+msgid "&Actividades"
 msgstr ""
 
-#: tipoactividadview.cpp:198
-msgid "Guardar datos del tipoactividad"
+#: pluginbf_actividad.cpp:65
+msgid "&Nueva actividad"
 msgstr ""
 
-#: tipoactividadview.cpp:199
-msgid "Desea guardar los cambios?"
+#: pluginbf_actividad.cpp:67 pluginbf_actividad.cpp:68
+msgid "Nueva actividad"
 msgstr ""
 
-#: tipoactividadview.cpp:200
-msgid "&Si"
+#: pluginbf_actividad.cpp:76
+msgid "&Tipos de Actividad"
 msgstr ""
 
-#: tipoactividadview.cpp:200
-msgid "&No"
+#: pluginbf_actividad.cpp:78 pluginbf_actividad.cpp:79
+#: ui_tipoactividadbase.h:221
+msgid "Tipos de Actividad"
 msgstr ""
 
-#: tipoactividadview.cpp:230
-msgid "Error al crear un nuevo TipoActividad"
+#: pluginbf_actividad.cpp:142
+msgid "<F2> Abre selector de bancos."
 msgstr ""
 
-#: tipoactividadview.cpp:255
-msgid "Error al borrar el TipoActividad"
+#: pluginbf_actividad.cpp:266 pluginbf_actividad.cpp:291
+msgid "Nuevo actividad"
+msgstr ""
+
+#: pluginbf_actividad.cpp:268 pluginbf_actividad.cpp:285
+msgid "Editar actividad"
+msgstr ""
+
+#: pluginbf_actividad.cpp:270 pluginbf_actividad.cpp:289
+msgid "Seleccionar actividad"
 msgstr ""
 
 #: actividadview.cpp:52
 msgid "Actividad"
 msgstr ""
 
-#: actividadview.cpp:55 convocatoriaview.cpp:51
-msgid "ID actividad"
-msgstr ""
-
 #: actividadview.cpp:56
 msgid "ID tipo actividad"
 msgstr ""
 
-#: actividadview.cpp:57 convocatoriaview.cpp:52
-msgid "Nombre del actividad"
-msgstr ""
-
 #: actividadview.cpp:58
 msgid "Codigo"
-msgstr ""
-
-#: actividadview.cpp:59 convocatoriaview.cpp:53
-msgid "Id profesor"
 msgstr ""
 
 #: actividadview.cpp:63 ui_convocatoriabase.h:437 ui_actividadbase.h:569
@@ -206,89 +263,36 @@ msgstr ""
 msgid "Direccion"
 msgstr ""
 
-#: actividadview.cpp:93 convocatoriaview.cpp:59
-msgid "Profesor:"
-msgstr ""
-
-#: actividadview.cpp:112 convocatoriaview.cpp:68
-msgid "Error al crear el actividad"
-msgstr ""
-
-#: actividadview.cpp:143 convocatoriaview.cpp:96
-msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-
-#: actividadview.cpp:217 actividadview.cpp:252 actividadview.cpp:293
+#: actividadview.cpp:214 actividadview.cpp:248 actividadview.cpp:289
 msgid "Identificador"
 msgstr ""
 
-#: actividadview.cpp:218 actividadview.cpp:294
+#: actividadview.cpp:215 actividadview.cpp:290
 msgid "Id alumno"
 msgstr ""
 
-#: actividadview.cpp:219 actividadview.cpp:296
+#: actividadview.cpp:216 actividadview.cpp:292
 msgid "Nombre alumno"
 msgstr ""
 
-#: actividadview.cpp:220 actividadview.cpp:257 actividadview.cpp:295
+#: actividadview.cpp:217
+msgid "Banco alumno"
+msgstr ""
+
+#: actividadview.cpp:218 actividadview.cpp:253 actividadview.cpp:291
 msgid "Id Actividad"
 msgstr ""
 
-#: actividadview.cpp:253
+#: actividadview.cpp:249
 msgid "Id tutor"
 msgstr ""
 
-#: actividadview.cpp:254
-msgid "Nombre tutor"
-msgstr ""
-
-#: actividadview.cpp:255
+#: actividadview.cpp:252
 msgid "CIF"
 msgstr ""
 
-#: actividadview.cpp:297
+#: actividadview.cpp:293
 msgid "Fecha de la falta"
-msgstr ""
-
-#: pluginbf_actividad.cpp:52
-msgid "&Activitats"
-msgstr ""
-
-#: pluginbf_actividad.cpp:56
-msgid "&Actividades"
-msgstr ""
-
-#: pluginbf_actividad.cpp:65
-msgid "&Nueva actividad"
-msgstr ""
-
-#: pluginbf_actividad.cpp:67 pluginbf_actividad.cpp:68
-msgid "Nueva actividad"
-msgstr ""
-
-#: pluginbf_actividad.cpp:76
-msgid "&Tipos de Actividad"
-msgstr ""
-
-#: pluginbf_actividad.cpp:78 pluginbf_actividad.cpp:79
-#: ui_tipoactividadbase.h:221
-msgid "Tipos de Actividad"
-msgstr ""
-
-#: pluginbf_actividad.cpp:229 pluginbf_actividad.cpp:254
-msgid "Nuevo actividad"
-msgstr ""
-
-#: pluginbf_actividad.cpp:231 pluginbf_actividad.cpp:248
-msgid "Editar actividad"
-msgstr ""
-
-#: pluginbf_actividad.cpp:233 pluginbf_actividad.cpp:252
-msgid "Seleccionar actividad"
-msgstr ""
-
-#: convocatoriaview.cpp:48
-msgid "Convocatoria"
 msgstr ""
 
 #: ui_convocatoriabase.h:406 ui_actividadbase.h:539
@@ -308,8 +312,8 @@ msgstr ""
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_convocatoriabase.h:423 ui_actividadbase.h:556
-#: ui_convocatoriaslistbase.h:339 ui_actividadeslistbase.h:287
+#: ui_convocatoriabase.h:423 ui_convocatoriaslistbase.h:339
+#: ui_actividadbase.h:556 ui_actividadeslistbase.h:287
 msgid "Ctrl+D"
 msgstr ""
 
@@ -381,60 +385,28 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_actividadbase.h:542 ui_actividadbase.h:545
-msgid "Guardar actividad"
+#: ui_tipoactividadbase.h:222
+msgid "Lista de Tipos:"
 msgstr ""
 
-#: ui_actividadbase.h:550 ui_actividadbase.h:553
-msgid "Borrar actividad"
+#: ui_tipoactividadbase.h:224 ui_tipoactividadbase.h:227
+msgid "Borrar Tipo de Actividad"
 msgstr ""
 
-#: ui_actividadbase.h:558 ui_actividadbase.h:561
-msgid "Imprimir actividad"
+#: ui_tipoactividadbase.h:231 ui_tipoactividadbase.h:234
+msgid "Guardar Tipo de Actividad"
 msgstr ""
 
-#: ui_actividadbase.h:565
-msgid "Codigo Actividad:"
+#: ui_tipoactividadbase.h:238 ui_tipoactividadbase.h:241
+msgid "Nuevo Tipo de Actividad"
 msgstr ""
 
-#: ui_actividadbase.h:567
-msgid "Lugar:"
+#: ui_tipoactividadbase.h:244
+msgid "Nombre:"
 msgstr ""
 
-#: ui_actividadbase.h:570
-msgid "Tipo de Actividad:"
-msgstr ""
-
-#: ui_actividadbase.h:571
-msgid "Precio Cuota:"
-msgstr ""
-
-#: ui_actividadbase.h:572
-msgid "Fecha Inicial:"
-msgstr ""
-
-#: ui_actividadbase.h:573
-msgid "Fecha Final:"
-msgstr ""
-
-#: ui_actividadbase.h:574
-msgid "Sesiones Semanales"
-msgstr ""
-
-#: ui_actividadbase.h:582
-msgid "Periodicidad Cuota:"
-msgstr ""
-
-#: ui_actividadbase.h:583
-msgid "Hora Inicio:"
-msgstr ""
-
-#: ui_actividadbase.h:584
-msgid "Duración:"
-msgstr ""
-
-#: ui_actividadbase.h:589
-msgid "Tutores"
+#: ui_tipoactividadbase.h:245
+msgid "General"
 msgstr ""
 
 #: ui_convocatoriaslistbase.h:310
@@ -510,26 +482,58 @@ msgstr ""
 msgid "Buscar:"
 msgstr ""
 
-#: ui_tipoactividadbase.h:222
-msgid "Lista de Tipos:"
+#: ui_actividadbase.h:542 ui_actividadbase.h:545
+msgid "Guardar actividad"
 msgstr ""
 
-#: ui_tipoactividadbase.h:224 ui_tipoactividadbase.h:227
-msgid "Borrar Tipo de Actividad"
+#: ui_actividadbase.h:550 ui_actividadbase.h:553
+msgid "Borrar actividad"
 msgstr ""
 
-#: ui_tipoactividadbase.h:231 ui_tipoactividadbase.h:234
-msgid "Guardar Tipo de Actividad"
+#: ui_actividadbase.h:558 ui_actividadbase.h:561
+msgid "Imprimir actividad"
 msgstr ""
 
-#: ui_tipoactividadbase.h:238 ui_tipoactividadbase.h:241
-msgid "Nuevo Tipo de Actividad"
+#: ui_actividadbase.h:565
+msgid "Codigo Actividad:"
 msgstr ""
 
-#: ui_tipoactividadbase.h:244
-msgid "Nombre:"
+#: ui_actividadbase.h:567
+msgid "Lugar:"
 msgstr ""
 
-#: ui_tipoactividadbase.h:245
-msgid "General"
+#: ui_actividadbase.h:570
+msgid "Tipo de Actividad:"
+msgstr ""
+
+#: ui_actividadbase.h:571
+msgid "Precio Cuota:"
+msgstr ""
+
+#: ui_actividadbase.h:572
+msgid "Fecha Inicial:"
+msgstr ""
+
+#: ui_actividadbase.h:573
+msgid "Fecha Final:"
+msgstr ""
+
+#: ui_actividadbase.h:574
+msgid "Sesiones Semanales"
+msgstr ""
+
+#: ui_actividadbase.h:582
+msgid "Periodicidad Cuota:"
+msgstr ""
+
+#: ui_actividadbase.h:583
+msgid "Hora Inicio:"
+msgstr ""
+
+#: ui_actividadbase.h:584
+msgid "Duración:"
+msgstr ""
+
+#: ui_actividadbase.h:589
+msgid "Tutores"
 msgstr ""

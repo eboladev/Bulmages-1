@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:15+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -654,27 +654,35 @@ msgid "Semanal"
 msgstr ""
 
 #: blperiodicitycombobox.cpp:71
-msgid "Quincenal"
+msgid "2 Semanas"
 msgstr ""
 
 #: blperiodicitycombobox.cpp:72
-msgid "Mensual"
+msgid "Quincenal"
 msgstr ""
 
 #: blperiodicitycombobox.cpp:73
-msgid "Trimestral"
+msgid "Mensual"
 msgstr ""
 
 #: blperiodicitycombobox.cpp:74
-msgid "Semestral"
+msgid "Trimestral"
 msgstr ""
 
 #: blperiodicitycombobox.cpp:75
-msgid "Anual"
+msgid "Semestral"
 msgstr ""
 
 #: blperiodicitycombobox.cpp:76
+msgid "Anual"
+msgstr ""
+
+#: blperiodicitycombobox.cpp:77
 msgid "Bienal"
+msgstr ""
+
+#: blperiodicitycombobox.cpp:78
+msgid "Sin Periodicidad"
 msgstr ""
 
 #: bldb.cpp:584 bldb.cpp:590
@@ -682,24 +690,24 @@ msgstr ""
 msgid "Consulta: '%1'."
 msgstr ""
 
-#: bldb.cpp:626 bldb.cpp:627 bldb.cpp:658 bldb.cpp:659
+#: bldb.cpp:626 bldb.cpp:627 bldb.cpp:726 bldb.cpp:727
 #, qt-format
 msgid "Campo: '%1' no encontrado."
 msgstr ""
 
-#: bldb.cpp:756 bldb.cpp:757
+#: bldb.cpp:824 bldb.cpp:825
 msgid "Error en la insercion del campo al registro."
 msgstr ""
 
-#: bldb.cpp:806 bldb.cpp:807
+#: bldb.cpp:874 bldb.cpp:875
 msgid "Error al borrar"
 msgstr ""
 
-#: bldb.cpp:964
+#: bldb.cpp:1032
 msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
 msgstr ""
 
-#: bldb.cpp:976
+#: bldb.cpp:1044
 msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
 msgstr ""
 
@@ -719,75 +727,81 @@ msgstr ""
 msgid "Cargando SubFormulario "
 msgstr ""
 
-#: blsubform.cpp:1878
+#: blsubform.cpp:1882
+msgid ""
+"Ya existe un elemento con este valor en el subformulario. Se viola una clave "
+"unica."
+msgstr ""
+
+#: blsubform.cpp:1893
 msgid "Sin cambios"
 msgstr ""
 
-#: blsubform.cpp:2031 blsubform.cpp:2057
+#: blsubform.cpp:2045 blsubform.cpp:2073
 msgid "Fila inexistente"
 msgstr ""
 
-#: blsubform.cpp:2130
+#: blsubform.cpp:2146
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
 msgstr ""
 
-#: blsubform.cpp:2173
+#: blsubform.cpp:2189
 msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr ""
 
-#: blsubform.cpp:2232
+#: blsubform.cpp:2248
 msgid "Error al intentar borrar"
 msgstr ""
 
-#: blsubform.cpp:2680
+#: blsubform.cpp:2696
 msgid "Imprimiendo "
 msgstr ""
 
-#: blsubform.cpp:2776 blsubform.cpp:2794
+#: blsubform.cpp:2792 blsubform.cpp:2810
 msgid "no se ha inicializado bien la clase"
 msgstr ""
 
-#: blsubform.cpp:2930 blsubform.cpp:2942
+#: blsubform.cpp:2946 blsubform.cpp:2958
 msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
 msgstr ""
 
-#: blsubform.cpp:3111
+#: blsubform.cpp:3127
 msgid "Borrar registro"
 msgstr ""
 
-#: blsubform.cpp:3116
+#: blsubform.cpp:3132
 msgid "Subir fila"
 msgstr ""
 
-#: blsubform.cpp:3119
+#: blsubform.cpp:3135
 msgid "Bajar fila"
 msgstr ""
 
-#: blsubform.cpp:3123
+#: blsubform.cpp:3139
 msgid "Usar editor"
 msgstr ""
 
-#: blsubform.cpp:3126 bltreewidget.cpp:68
+#: blsubform.cpp:3142 bltreewidget.cpp:68
 msgid "Ajustar columa"
 msgstr ""
 
-#: blsubform.cpp:3128
+#: blsubform.cpp:3144
 msgid "Ajustar altura"
 msgstr ""
 
-#: blsubform.cpp:3131 bltreewidget.cpp:71
+#: blsubform.cpp:3147 bltreewidget.cpp:71
 msgid "Ajustar columnas"
 msgstr ""
 
-#: blsubform.cpp:3133
+#: blsubform.cpp:3149
 msgid "Ajustar alturas"
 msgstr ""
 
-#: blsubform.cpp:3137
+#: blsubform.cpp:3153
 msgid "Ver/Ocultar menu de subformulario"
 msgstr ""
 
-#: blsubform.cpp:3139
+#: blsubform.cpp:3155
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr ""
 
@@ -938,10 +952,10 @@ msgstr ""
 msgid "Cuenta bancaria incorrecta"
 msgstr ""
 
-#: blsearchwidget.cpp:655
+#: blsearchwidget.cpp:653 blsearchwidget.cpp:792
 msgid "Copiar "
 msgstr ""
 
-#: blsearchwidget.cpp:656
+#: blsearchwidget.cpp:654 blsearchwidget.cpp:793
 msgid "Pegar"
 msgstr ""

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listdescfacturaview.cpp:42 listlinfacturaview.cpp:57
+#: listlinfacturaview.cpp:57 listdescfacturaview.cpp:42
 #, fuzzy
 msgid "% Descuento"
 msgstr "Document:"
@@ -60,7 +60,7 @@ msgstr "&Sí"
 
 #: pluginbf_clientefactura.cpp:54
 msgid "&Ventas"
-msgstr ""
+msgstr "&Vendes"
 
 #: ui_facturabase.h:720 ui_facturabase.h:721 ui_facturabase.h:722
 #: ui_facturabase.h:723 ui_facturabase.h:724 ui_facturabase.h:725
@@ -97,7 +97,7 @@ msgstr "Albarans a clients"
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_facturabase.h:708 ui_facturaslistbase.h:541 ui_albaranclientebase.h:780
+#: ui_facturaslistbase.h:541 ui_facturabase.h:708 ui_albaranclientebase.h:780
 #: ui_pedidoclientebase.h:711
 #, fuzzy
 msgid "Almacen:"
@@ -108,7 +108,7 @@ msgstr "<LI> Magatzem <B>"
 msgid "Base imponible"
 msgstr "Empreses disponibles:"
 
-#: ui_facturabase.h:715 ui_facturaslistbase.h:476 ui_albaranclientebase.h:787
+#: ui_facturaslistbase.h:476 ui_facturabase.h:715 ui_albaranclientebase.h:787
 #: ui_pedidoclientebase.h:719
 #, fuzzy
 msgid "Base imponible:"
@@ -119,8 +119,8 @@ msgstr "Empreses disponibles:"
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
-#: ui_facturabase.h:676 ui_facturabase.h:679 ui_facturaslistbase.h:497
-#: ui_facturaslistbase.h:500
+#: ui_facturaslistbase.h:497 ui_facturaslistbase.h:500 ui_facturabase.h:676
+#: ui_facturabase.h:679
 #, fuzzy
 msgid "Borrar factura"
 msgstr "Esborra quota"
@@ -243,7 +243,7 @@ msgstr "Cal triar una linea"
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: listlinfacturaview.cpp:51 facturaview.cpp:69 facturaslist.cpp:436
+#: facturaview.cpp:69 listlinfacturaview.cpp:51 facturaslist.cpp:436
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -285,8 +285,8 @@ msgstr "Error al esborrar la factura a client"
 msgid "Error al crear la factura"
 msgstr "Error al crear la factura"
 
-#: genfacqtoolbutton.cpp:237 genfacqtoolbutton.cpp:366
-#: genfacqtoolbutton.cpp:499 facturaview.cpp:203
+#: facturaview.cpp:203 genfacqtoolbutton.cpp:237 genfacqtoolbutton.cpp:366
+#: genfacqtoolbutton.cpp:499
 #, fuzzy
 msgid "Error inesperado"
 msgstr "inserit"
@@ -331,8 +331,8 @@ msgstr "Factura existent"
 msgid "Factura ya existe"
 msgstr "Factura"
 
-#: pluginbf_clientefactura.cpp:61 pluginbf_clientefactura.cpp:62
-#: facturaslist.cpp:276 ui_facturaslistbase.h:475
+#: facturaslist.cpp:276 pluginbf_clientefactura.cpp:61
+#: pluginbf_clientefactura.cpp:62 ui_facturaslistbase.h:475
 msgid "Facturas a clientes"
 msgstr "Factures a clients"
 
@@ -427,8 +427,8 @@ msgstr "Id compte"
 msgid "Id descuento"
 msgstr "Id compte"
 
-#: listdescfacturaview.cpp:43 listlinfacturaview.cpp:58 facturaview.cpp:60
-#: facturaslist.cpp:437
+#: facturaview.cpp:60 listlinfacturaview.cpp:58 facturaslist.cpp:437
+#: listdescfacturaview.cpp:43
 #, fuzzy
 msgid "Id factura"
 msgstr "Factura"
@@ -467,7 +467,7 @@ msgstr "Imprimeix la comanda"
 msgid "Impuestos"
 msgstr "Imputació"
 
-#: ui_facturabase.h:717 ui_facturaslistbase.h:477 ui_albaranclientebase.h:789
+#: ui_facturaslistbase.h:477 ui_facturabase.h:717 ui_albaranclientebase.h:789
 #: ui_pedidoclientebase.h:721
 #, fuzzy
 msgid "Impuestos:"
@@ -619,7 +619,7 @@ msgstr ""
 msgid "Serie"
 msgstr "Sèrie"
 
-#: ui_facturabase.h:705 ui_facturaslistbase.h:540
+#: ui_facturaslistbase.h:540 ui_facturabase.h:705
 #, fuzzy
 msgid "Serie:"
 msgstr "Origen:"
@@ -654,7 +654,7 @@ msgstr "Totals:"
 msgid "Total linea"
 msgstr ""
 
-#: ui_facturabase.h:719 ui_facturaslistbase.h:478 ui_albaranclientebase.h:791
+#: ui_facturaslistbase.h:478 ui_facturabase.h:719 ui_albaranclientebase.h:791
 #: ui_pedidoclientebase.h:723 ui_pedidosclientelistbase.h:439
 #, fuzzy
 msgid "Total:"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:16+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-22 15:31+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team:  Catalan\n"
@@ -26,7 +26,7 @@ msgstr "% I.V.A."
 msgid "% R.E."
 msgstr "% R.E."
 
-#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:303
+#: ui_bfconfiguracionbase.h:303 ui_bfseriefacturabase.h:85
 msgid "&Aceptar"
 msgstr "&Accepta"
 
@@ -38,7 +38,7 @@ msgstr "&Quant a "
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&Quant a Iglues/BulmaFact"
 
-#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:304
+#: ui_bfconfiguracionbase.h:304 ui_bfseriefacturabase.h:84
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -148,7 +148,7 @@ msgstr "C.I.F."
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: main.cxx:163
+#: main.cxx:165
 msgid "Cargando plugins"
 msgstr "Carregant plugins"
 
@@ -164,7 +164,7 @@ msgstr "Codi complet article"
 msgid "Codigo serie factura"
 msgstr "Codi sèrie factura"
 
-#: bfsubform.cpp:624
+#: bfsubform.cpp:629
 #, qt-format
 msgid "Columna: '%1', fila: '%2'."
 msgstr ""
@@ -234,7 +234,7 @@ msgstr "Entregat"
 msgid "Error al establecer el almacen."
 msgstr ""
 
-#: main.cxx:192
+#: main.cxx:194
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Error inesperat en BulmaFact. El programa se tancarà."
 
@@ -324,11 +324,11 @@ msgstr "Informe"
 msgid "Informe por referencia"
 msgstr "Informe per referència"
 
-#: main.cxx:175
+#: main.cxx:177
 msgid "Inicializando componentes"
 msgstr "Inicialitzant components"
 
-#: main.cxx:103
+#: main.cxx:105
 msgid "Iniciando clases"
 msgstr "Inicialitzant classes"
 
@@ -337,11 +337,11 @@ msgstr "Inicialitzant classes"
 msgid "Item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
 msgstr ""
 
-#: main.cxx:169
+#: main.cxx:171
 msgid "Lanzando plugins"
 msgstr "Llençant plugins"
 
-#: main.cxx:132
+#: main.cxx:134
 msgid "Leyendo configuracion"
 msgstr "Llegint configuració"
 
@@ -419,7 +419,7 @@ msgstr "Preu"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfbulmafactbase.h:170 ui_bfconfiguracionbase.h:302
+#: ui_bfconfiguracionbase.h:302 ui_bfbulmafactbase.h:170
 msgid "Propiedades de la empresa"
 msgstr "Dades bàsiques de l'entitat"
 
@@ -459,7 +459,7 @@ msgstr "Supor&t"
 msgid "Telefono"
 msgstr "Telèfon"
 
-#: main.cxx:181
+#: main.cxx:183
 msgid "Terminado"
 msgstr "Terminat"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,43 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: presupuestocontablelist.cpp:61
-msgid "Selector de presupuesto contable"
-msgstr ""
-
-#: presupuestocontablelist.cpp:133
-msgid "Listado de Presupuestos Contables"
-msgstr ""
-
-#: presupuestocontablelist.cpp:157
-msgid "Error al borrar un presupuestocontable"
-msgstr ""
-
-#: presupuestocontablelist.cpp:188
-msgid "Nuevo presupuestocontable"
-msgstr ""
-
-#: presupuestocontablelist.cpp:204
-msgid "Editar presupuestocontable"
-msgstr ""
-
-#: presupuestocontablelist.cpp:205
-msgid "Borrar presupuestocontable"
-msgstr ""
-
-#: presupuestocontablelist.cpp:225
-msgid "ID presupuestocontable"
-msgstr ""
-
-#: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
-#: partidasview.cpp:50 partidasview.cpp:532
-msgid "Codigo"
-msgstr ""
-
-#: presupuestocontablelist.cpp:227
-msgid "C.I.F."
-msgstr ""
 
 #: pluginbf_minicontabilidad.cpp:58
 msgid "Economia"
@@ -94,47 +57,6 @@ msgstr ""
 msgid "Seleccionar partida"
 msgstr ""
 
-#: acontableview.cpp:48
-msgid "Diario Contable"
-msgstr ""
-
-#: acontableview.cpp:58
-msgid "Identificador"
-msgstr ""
-
-#: acontableview.cpp:59
-msgid "Id. Partida"
-msgstr ""
-
-#: acontableview.cpp:60 presupuestocontableview.cpp:57
-msgid "Fecha"
-msgstr ""
-
-#: acontableview.cpp:61
-msgid "Codigo Partida"
-msgstr ""
-
-#: acontableview.cpp:62
-msgid "Nombre Partida"
-msgstr ""
-
-#: acontableview.cpp:63 presupuestocontableview.cpp:58
-#: presupuestocontableview.cpp:67
-msgid "Concepto"
-msgstr ""
-
-#: acontableview.cpp:64
-msgid "Ingreso"
-msgstr ""
-
-#: acontableview.cpp:65
-msgid "Gasto"
-msgstr ""
-
-#: acontableview.cpp:77
-msgid "Error al crear el recibo"
-msgstr ""
-
 #: presupuestocontableview.cpp:53
 msgid "Presupuesto Contable"
 msgstr ""
@@ -143,12 +65,26 @@ msgstr ""
 msgid "ID presupuesto contable"
 msgstr ""
 
+#: presupuestocontableview.cpp:57 acontableview.cpp:60
+msgid "Fecha"
+msgstr ""
+
+#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
+#: acontableview.cpp:63
+msgid "Concepto"
+msgstr ""
+
 #: presupuestocontableview.cpp:63 presupuestocontableview.cpp:64
 msgid "ID lpresupuestocontable"
 msgstr ""
 
 #: presupuestocontableview.cpp:65
 msgid "ID partida"
+msgstr ""
+
+#: presupuestocontableview.cpp:66 partidasview.cpp:50 partidasview.cpp:532
+#: presupuestocontablelist.cpp:226
+msgid "Codigo"
 msgstr ""
 
 #: presupuestocontableview.cpp:68 partidasview.cpp:50 partidasview.cpp:533
@@ -161,6 +97,38 @@ msgstr ""
 
 #: presupuestocontableview.cpp:91
 msgid "Error al crear el presupuesto"
+msgstr ""
+
+#: acontableview.cpp:48
+msgid "Diario Contable"
+msgstr ""
+
+#: acontableview.cpp:58
+msgid "Identificador"
+msgstr ""
+
+#: acontableview.cpp:59
+msgid "Id. Partida"
+msgstr ""
+
+#: acontableview.cpp:61
+msgid "Codigo Partida"
+msgstr ""
+
+#: acontableview.cpp:62
+msgid "Nombre Partida"
+msgstr ""
+
+#: acontableview.cpp:64
+msgid "Ingreso"
+msgstr ""
+
+#: acontableview.cpp:65
+msgid "Gasto"
+msgstr ""
+
+#: acontableview.cpp:77
+msgid "Error al crear el recibo"
 msgstr ""
 
 #: partidasview.cpp:50
@@ -216,39 +184,68 @@ msgstr ""
 msgid "Error al borrar la partida"
 msgstr ""
 
-#: ui_acontablebase.h:166
-msgid "Apuntes Contables"
+#: presupuestocontablelist.cpp:61
+msgid "Selector de presupuesto contable"
 msgstr ""
 
-#: ui_acontablebase.h:169 ui_acontablebase.h:172
-msgid "Guardar cobro"
+#: presupuestocontablelist.cpp:133
+msgid "Listado de Presupuestos Contables"
 msgstr ""
 
-#: ui_acontablebase.h:175 ui_presupuestocontablebase.h:335
-msgid "Ctrl+S"
+#: presupuestocontablelist.cpp:157
+msgid "Error al borrar un presupuestocontable"
 msgstr ""
 
-#: ui_acontablebase.h:177 ui_acontablebase.h:180 ui_acontablebase.h:185
-#: ui_acontablebase.h:188
-msgid "Borrar cobro"
+#: presupuestocontablelist.cpp:188
+msgid "Nuevo presupuestocontable"
 msgstr ""
 
-#: ui_acontablebase.h:183 ui_presupuestocontablebase.h:343
-msgid "Ctrl+D"
+#: presupuestocontablelist.cpp:204
+msgid "Editar presupuestocontable"
 msgstr ""
 
-#: ui_acontablebase.h:191
-msgid "Ctrl+I"
+#: presupuestocontablelist.cpp:205
+msgid "Borrar presupuestocontable"
 msgstr ""
 
-#: ui_acontablebase.h:192 ui_presupuestocontablebase.h:364
-#: ui_partidasbase.h:337
-msgid "&Aceptar"
+#: presupuestocontablelist.cpp:225
+msgid "ID presupuestocontable"
 msgstr ""
 
-#: ui_acontablebase.h:193 ui_presupuestocontablebase.h:365
-#: ui_partidasbase.h:338
-msgid "&Cancelar"
+#: presupuestocontablelist.cpp:227
+msgid "C.I.F."
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:241 ui_presupuestocontablelistbase.h:244
+msgid "Nuevo"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:248 ui_presupuestocontablelistbase.h:251
+msgid "Editar"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:262 ui_presupuestocontablelistbase.h:265
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:269 ui_presupuestocontablelistbase.h:272
+msgid "Filtrar listado"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:276 ui_presupuestocontablelistbase.h:279
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:283 ui_presupuestocontablelistbase.h:286
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:289
+msgid "Buscar:"
+msgstr ""
+
+#: ui_presupuestocontablelistbase.h:290
+msgid "Pro&cesados"
 msgstr ""
 
 #: ui_presupuestocontablebase.h:327
@@ -259,8 +256,16 @@ msgstr ""
 msgid "Guardar presupuesto"
 msgstr ""
 
+#: ui_presupuestocontablebase.h:335 ui_acontablebase.h:175
+msgid "Ctrl+S"
+msgstr ""
+
 #: ui_presupuestocontablebase.h:337 ui_presupuestocontablebase.h:340
 msgid "Borrar presupuesto"
+msgstr ""
+
+#: ui_presupuestocontablebase.h:343 ui_acontablebase.h:183
+msgid "Ctrl+D"
 msgstr ""
 
 #: ui_presupuestocontablebase.h:345 ui_presupuestocontablebase.h:348
@@ -295,36 +300,31 @@ msgstr ""
 msgid "Datos &generales"
 msgstr ""
 
-#: ui_presupuestocontablelistbase.h:241 ui_presupuestocontablelistbase.h:244
-msgid "Nuevo"
+#: ui_presupuestocontablebase.h:364 ui_acontablebase.h:192
+#: ui_partidasbase.h:337
+msgid "&Aceptar"
 msgstr ""
 
-#: ui_presupuestocontablelistbase.h:248 ui_presupuestocontablelistbase.h:251
-msgid "Editar"
+#: ui_presupuestocontablebase.h:365 ui_acontablebase.h:193
+#: ui_partidasbase.h:338
+msgid "&Cancelar"
 msgstr ""
 
-#: ui_presupuestocontablelistbase.h:262 ui_presupuestocontablelistbase.h:265
-msgid "Imprimir listado"
+#: ui_acontablebase.h:166
+msgid "Apuntes Contables"
 msgstr ""
 
-#: ui_presupuestocontablelistbase.h:269 ui_presupuestocontablelistbase.h:272
-msgid "Filtrar listado"
+#: ui_acontablebase.h:169 ui_acontablebase.h:172
+msgid "Guardar cobro"
 msgstr ""
 
-#: ui_presupuestocontablelistbase.h:276 ui_presupuestocontablelistbase.h:279
-msgid "Configurar listado"
+#: ui_acontablebase.h:177 ui_acontablebase.h:180 ui_acontablebase.h:185
+#: ui_acontablebase.h:188
+msgid "Borrar cobro"
 msgstr ""
 
-#: ui_presupuestocontablelistbase.h:283 ui_presupuestocontablelistbase.h:286
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_presupuestocontablelistbase.h:289
-msgid "Buscar:"
-msgstr ""
-
-#: ui_presupuestocontablelistbase.h:290
-msgid "Pro&cesados"
+#: ui_acontablebase.h:191
+msgid "Ctrl+I"
 msgstr ""
 
 #: ui_partidasbase.h:293

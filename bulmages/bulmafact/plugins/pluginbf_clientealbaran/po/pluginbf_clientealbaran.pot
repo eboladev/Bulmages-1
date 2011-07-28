@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,96 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bfclientealbaransubform.cpp:45
-msgid "Id articulo"
+#: bfclientealbarandescuentosubform.cpp:41
+msgid "Id descuento"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:46
-msgid "Codigo completo articulo"
+#: bfclientealbarandescuentosubform.cpp:42
+msgid "Concepto descuento"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:47
-msgid "Nombre articulo"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:48
-msgid "No linea"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:49 albaranclientelist.cpp:421
-#: albaranclienteview.cpp:84
-msgid "Descripcion"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:50
-msgid "Cantidad"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:51
-msgid "P.V.P."
-msgstr ""
-
-#: bfclientealbaransubform.cpp:53
-msgid "Total Linea"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:54
-msgid "I.V.A."
-msgstr ""
-
-#: bfclientealbaransubform.cpp:55
-msgid "% Recargo E.Q."
-msgstr ""
-
-#: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
 msgid "% Descuento"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
 #: albaranclienteview.cpp:72
 msgid "Id albaran"
-msgstr ""
-
-#: bfclientealbaransubform.cpp:58
-msgid "Orden"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
-#: albaranclienteview.cpp:205
-msgid "Tiene que seleccionar un cliente"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:156
-msgid "Albaran ya existe"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:157
-msgid ""
-"Existe un albaran a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
-msgid "&Si"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
-msgid "&No"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:227 genalbqtoolbutton.cpp:359
-#: albaranclienteview.cpp:239
-msgid "Error inesperado"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:288
-msgid "Factura ya existe"
-msgstr ""
-
-#: genalbqtoolbutton.cpp:289
-msgid ""
-"Existe una albaran a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
 msgstr ""
 
 #: albaranclientelist.cpp:165 albaranclienteview.cpp:105
@@ -148,6 +73,11 @@ msgstr ""
 
 #: albaranclientelist.cpp:420 albaranclienteview.cpp:75
 msgid "Numero de albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:421 bfclientealbaransubform.cpp:49
+#: albaranclienteview.cpp:84
+msgid "Descripcion"
 msgstr ""
 
 #: albaranclientelist.cpp:422
@@ -198,12 +128,82 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: bfclientealbarandescuentosubform.cpp:41
-msgid "Id descuento"
+#: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
+#: albaranclienteview.cpp:205
+msgid "Tiene que seleccionar un cliente"
 msgstr ""
 
-#: bfclientealbarandescuentosubform.cpp:42
-msgid "Concepto descuento"
+#: genalbqtoolbutton.cpp:156
+msgid "Albaran ya existe"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:157
+msgid ""
+"Existe un albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
+msgid "&Si"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
+msgid "&No"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:227 genalbqtoolbutton.cpp:359
+#: albaranclienteview.cpp:239
+msgid "Error inesperado"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:288
+msgid "Factura ya existe"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:289
+msgid ""
+"Existe una albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:45
+msgid "Id articulo"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:46
+msgid "Codigo completo articulo"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:47
+msgid "Nombre articulo"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:48
+msgid "No linea"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:50
+msgid "Cantidad"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:51
+msgid "P.V.P."
+msgstr ""
+
+#: bfclientealbaransubform.cpp:53
+msgid "Total Linea"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:54
+msgid "I.V.A."
+msgstr ""
+
+#: bfclientealbaransubform.cpp:55
+msgid "% Recargo E.Q."
+msgstr ""
+
+#: bfclientealbaransubform.cpp:58
+msgid "Orden"
 msgstr ""
 
 #: albaranclienteview.cpp:69

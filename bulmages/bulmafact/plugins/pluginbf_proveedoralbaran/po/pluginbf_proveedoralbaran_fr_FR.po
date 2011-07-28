@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-24 21:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -102,8 +102,8 @@ msgstr "Base Imposable"
 msgid "Base imponible:"
 msgstr "Base Imposable :"
 
-#: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
 #: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:601
+#: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
 msgid "Borrar albaran"
 msgstr "Effacer le bulletin"
 
@@ -131,7 +131,7 @@ msgstr "Configurer la liste"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranesproveedorlistbase.h:450 ui_albaranproveedorbase.h:604
+#: ui_albaranproveedorbase.h:604 ui_albaranesproveedorlistbase.h:450
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -348,8 +348,8 @@ msgstr "Numéro du bulletin :"
 msgid "Procesado"
 msgstr "Accusé"
 
-#: albaranproveedorview.cpp:84 albaranesproveedor.cpp:53
-#: albaranesproveedor.cpp:77
+#: albaranesproveedor.cpp:53 albaranesproveedor.cpp:77
+#: albaranproveedorview.cpp:84
 msgid "Proveedor:"
 msgstr "Fournisseur :"
 

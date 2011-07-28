@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-23 21:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -291,7 +291,7 @@ msgstr "Moniteur"
 msgid "Movil del profesor"
 msgstr "Portable du professeur"
 
-#: profesorview.cpp:83 profesoreslist.cpp:336
+#: profesoreslist.cpp:336 profesorview.cpp:83
 msgid "Nombre"
 msgstr "Nom"
 
@@ -343,7 +343,7 @@ msgstr "Ville :"
 msgid "Precio"
 msgstr "Prix"
 
-#: pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66 profesoreslist.cpp:201
+#: profesoreslist.cpp:201 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
 #: ui_profesoreslistbase.h:309
 msgid "Profesores"
 msgstr "Professeur"

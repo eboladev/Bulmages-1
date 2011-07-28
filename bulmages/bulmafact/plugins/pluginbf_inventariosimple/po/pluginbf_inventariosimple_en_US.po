@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2009-10-20 14:02+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,8 +62,8 @@ msgstr ""
 msgid "Id Actividad"
 msgstr "ID actividad"
 
-#: pluginbf_inventariosimple.cpp:176 pluginbf_inventariosimple.cpp:302
-#: listinventariosimpleview.cpp:98
+#: listinventariosimpleview.cpp:98 pluginbf_inventariosimple.cpp:176
+#: pluginbf_inventariosimple.cpp:302
 msgid "Id Inventario"
 msgstr ""
 
@@ -87,8 +87,8 @@ msgstr ""
 msgid "Inventarios"
 msgstr "Inventarios"
 
-#: pluginbf_inventariosimple.cpp:177 pluginbf_inventariosimple.cpp:303
-#: listinventariosimpleview.cpp:99
+#: listinventariosimpleview.cpp:99 pluginbf_inventariosimple.cpp:177
+#: pluginbf_inventariosimple.cpp:303
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -96,8 +96,8 @@ msgstr "Nombre"
 msgid "Seleccionar Material"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:178 pluginbf_inventariosimple.cpp:304
-#: listinventariosimpleview.cpp:100
+#: listinventariosimpleview.cpp:100 pluginbf_inventariosimple.cpp:178
+#: pluginbf_inventariosimple.cpp:304
 msgid "Stock"
 msgstr "Stock"
 

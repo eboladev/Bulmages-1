@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,22 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: bcdiarioview.cpp:53 ui_bcdiariobase.h:337
+msgid "Diario"
+msgstr ""
+
+#: bcdiarioview.cpp:63
+msgid "Contrapartida:"
+msgstr ""
+
+#: bcdiarioview.cpp:172
+msgid "Guardar Libro Diario"
+msgstr ""
+
+#: bcdiarioview.cpp:174
+msgid "Diarios (*.txt)"
+msgstr ""
 
 #: bcdiariosubform.cpp:35
 msgid "idasiento"
@@ -153,66 +169,6 @@ msgstr ""
 msgid "PluginBc_Diario"
 msgstr ""
 
-#: bcdiarioview.cpp:53 ui_bcdiariobase.h:337
-msgid "Diario"
-msgstr ""
-
-#: bcdiarioview.cpp:63
-msgid "Contrapartida:"
-msgstr ""
-
-#: bcdiarioview.cpp:172
-msgid "Guardar Libro Diario"
-msgstr ""
-
-#: bcdiarioview.cpp:174
-msgid "Diarios (*.txt)"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:149
-msgid "Impresion del Diario"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:150
-msgid "Documento:"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:151
-msgid "&Texto Plano"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:152
-msgid "HT&ML"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:153
-msgid "&Kugar"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:154
-msgid "Propietario"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:155
-msgid "Formato del listado:"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:156
-msgid "Formato &normal"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:157
-msgid "&Formato de aprendizaje"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:158
-msgid "&Imprimir"
-msgstr ""
-
-#: ui_bcdiarioprintbase.h:159
-msgid "&Cancelar"
-msgstr ""
-
 #: ui_bcdiariobase.h:339 ui_bcdiariobase.h:342
 msgid "Imprimir"
 msgstr ""
@@ -263,4 +219,48 @@ msgstr ""
 
 #: ui_bcdiariobase.h:374
 msgid "Total Haber:"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:149
+msgid "Impresion del Diario"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:150
+msgid "Documento:"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:151
+msgid "&Texto Plano"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:152
+msgid "HT&ML"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:153
+msgid "&Kugar"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:154
+msgid "Propietario"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:155
+msgid "Formato del listado:"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:156
+msgid "Formato &normal"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:157
+msgid "&Formato de aprendizaje"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:158
+msgid "&Imprimir"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:159
+msgid "&Cancelar"
 msgstr ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-06-23 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: French <kde l10n>\n"
@@ -249,7 +249,7 @@ msgstr "Ctrl+M"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
+#: ui_bcasientobase.h:500 ui_bcasientointeligentebase.h:211
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -413,7 +413,7 @@ msgstr "ID canal"
 msgid "Id apunte"
 msgstr "ID NOTE"
 
-#: bcasientoform.cpp:45 bcasientolistsubform.cpp:46 bcasientosubform.cpp:57
+#: bcasientolistsubform.cpp:46 bcasientosubform.cpp:57 bcasientoform.cpp:45
 msgid "Id asiento"
 msgstr "ID de l'écriture"
 

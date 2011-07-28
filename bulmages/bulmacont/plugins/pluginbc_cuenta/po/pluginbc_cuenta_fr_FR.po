@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-15 10:30+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
@@ -348,7 +348,7 @@ msgstr "Crédit"
 msgid "Haber:"
 msgstr "Crédit :"
 
-#: bccuentaview.cpp:43 bccuentalistview.cpp:390 bcplancontablelistview.cpp:55
+#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:390
 msgid "ID cuenta"
 msgstr "ID Compte "
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,14 @@ msgstr ""
 msgid "No se puede acceder al error"
 msgstr ""
 
+#: ui_correctorbase.h:97 ui_correctorbase.h:100
+msgid "Corregir"
+msgstr ""
+
+#: ui_correctorbase.h:104 ui_correctorbase.h:107
+msgid "Configurar"
+msgstr ""
+
 #: ui_confreglasbase.h:276
 msgid "Reglas de Corrector"
 msgstr ""
@@ -127,12 +135,4 @@ msgstr ""
 
 #: ui_confreglasbase.h:295
 msgid "Cerrar"
-msgstr ""
-
-#: ui_correctorbase.h:97 ui_correctorbase.h:100
-msgid "Corregir"
-msgstr ""
-
-#: ui_correctorbase.h:104 ui_correctorbase.h:107
-msgid "Configurar"
 msgstr ""

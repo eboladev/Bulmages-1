@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,62 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: balanceview.cpp:61 ui_balancesprintdlg.h:198
+msgid "Balance"
+msgstr ""
+
+#: balanceview.cpp:68 balanceprintview.cpp:56 ui_balancebase.h:439
+#: ui_balancetreebase.h:407
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: balanceview.cpp:77 balanceprintview.cpp:64 ui_balancebase.h:441
+#: ui_balancetreebase.h:404
+msgid "Cuenta final:"
+msgstr ""
+
+#: balanceview.cpp:277 balancesubform.cpp:38
+msgid "Codigo"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Denominacion"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Saldo anterior"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Debe"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Haber"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Saldo"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Debe "
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Haber "
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Saldo "
+msgstr ""
+
 #: balancesubform.cpp:36
 msgid "Id cuenta"
 msgstr ""
 
 #: balancesubform.cpp:37
 msgid "Tipo cuenta"
-msgstr ""
-
-#: balancesubform.cpp:38 balanceview.cpp:277
-msgid "Codigo"
 msgstr ""
 
 #: balancesubform.cpp:39
@@ -83,52 +129,6 @@ msgstr ""
 
 #: balancesubform.cpp:84
 msgid "Ver configurador de subformulario"
-msgstr ""
-
-#: balanceprintview.cpp:56 balanceview.cpp:68 ui_balancebase.h:439
-#: ui_balancetreebase.h:407
-msgid "Cuenta inicial:"
-msgstr ""
-
-#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancebase.h:441
-#: ui_balancetreebase.h:404
-msgid "Cuenta final:"
-msgstr ""
-
-#: balanceview.cpp:61 ui_balancesprintdlg.h:198
-msgid "Balance"
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Denominacion"
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Saldo anterior"
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Debe"
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Haber"
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Saldo"
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Debe "
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Haber "
-msgstr ""
-
-#: balanceview.cpp:277
-msgid "Saldo "
 msgstr ""
 
 #: pluginbc_balance.cpp:52
@@ -201,6 +201,34 @@ msgstr ""
 
 #: ui_balanceprintbase.h:329
 msgid "&Kugar"
+msgstr ""
+
+#: ui_balancesprintdlg.h:197
+msgid "Impresion de balances"
+msgstr ""
+
+#: ui_balancesprintdlg.h:201
+msgid "Formato"
+msgstr ""
+
+#: ui_balancesprintdlg.h:202
+msgid "&texto plano"
+msgstr ""
+
+#: ui_balancesprintdlg.h:203
+msgid "Alt+T"
+msgstr ""
+
+#: ui_balancesprintdlg.h:204
+msgid "HTML"
+msgstr ""
+
+#: ui_balancesprintdlg.h:205
+msgid "Acep&tar"
+msgstr ""
+
+#: ui_balancesprintdlg.h:206
+msgid "&Cancelar"
 msgstr ""
 
 #: ui_balancebase.h:405
@@ -302,32 +330,4 @@ msgstr ""
 
 #: ui_balancetreebase.h:412
 msgid "Total Haber:"
-msgstr ""
-
-#: ui_balancesprintdlg.h:197
-msgid "Impresion de balances"
-msgstr ""
-
-#: ui_balancesprintdlg.h:201
-msgid "Formato"
-msgstr ""
-
-#: ui_balancesprintdlg.h:202
-msgid "&texto plano"
-msgstr ""
-
-#: ui_balancesprintdlg.h:203
-msgid "Alt+T"
-msgstr ""
-
-#: ui_balancesprintdlg.h:204
-msgid "HTML"
-msgstr ""
-
-#: ui_balancesprintdlg.h:205
-msgid "Acep&tar"
-msgstr ""
-
-#: ui_balancesprintdlg.h:206
-msgid "&Cancelar"
 msgstr ""

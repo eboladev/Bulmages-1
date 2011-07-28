@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,17 +38,27 @@ msgstr ""
 msgid "Nombre Color"
 msgstr ""
 
+#: listtallasview.cpp:49 pluginbf_tallascolores.cpp:73
+#: pluginbf_tallascolores.cpp:74 ui_listtallasbase.h:117
+msgid "Tallas"
+msgstr ""
+
+#: listtallasview.cpp:100
+msgid "Id color"
+msgstr ""
+
+#: listtallasview.cpp:101 pluginbf_tallascolores.cpp:140
+#: pluginbf_tallascolores.cpp:351 pluginbf_tallascolores.cpp:373
+#: pluginbf_tallascolores.cpp:396 pluginbf_tallascolores.cpp:425
+msgid "Nombre talla"
+msgstr ""
+
 #: pluginbf_tallascolores.cpp:67
 msgid "&Tallas y colores"
 msgstr ""
 
 #: pluginbf_tallascolores.cpp:72
 msgid "&Tallas"
-msgstr ""
-
-#: pluginbf_tallascolores.cpp:73 pluginbf_tallascolores.cpp:74
-#: listtallasview.cpp:49 ui_listtallasbase.h:117
-msgid "Tallas"
 msgstr ""
 
 #: pluginbf_tallascolores.cpp:79
@@ -79,12 +89,6 @@ msgstr ""
 msgid "Nombre color"
 msgstr ""
 
-#: pluginbf_tallascolores.cpp:140 pluginbf_tallascolores.cpp:351
-#: pluginbf_tallascolores.cpp:373 pluginbf_tallascolores.cpp:396
-#: pluginbf_tallascolores.cpp:425 listtallasview.cpp:101
-msgid "Nombre talla"
-msgstr ""
-
 #: pluginbf_tallascolores.cpp:151
 msgid "Tallas y colores"
 msgstr ""
@@ -98,14 +102,10 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: listtallasview.cpp:100
-msgid "Id color"
-msgstr ""
-
-#: ui_listcoloresbase.h:118 ui_listtallasbase.h:118
+#: ui_listtallasbase.h:118 ui_listcoloresbase.h:118
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_listcoloresbase.h:119 ui_listtallasbase.h:119
+#: ui_listtallasbase.h:119 ui_listcoloresbase.h:119
 msgid "&Cancelar"
 msgstr ""

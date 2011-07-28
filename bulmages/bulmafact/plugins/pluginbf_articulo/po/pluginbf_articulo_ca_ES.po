@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:17+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-03-11 14:53+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
@@ -46,7 +46,7 @@ msgstr "&Nou article"
 msgid "&Tipos de articulo"
 msgstr "&Tipus d'article"
 
-#: tiposarticuloview.cpp:395 familiasview.cpp:502
+#: familiasview.cpp:502 tiposarticuloview.cpp:395
 #, qt-format
 msgid "'%1' borrado."
 msgstr ""
@@ -87,7 +87,7 @@ msgstr "Article"
 msgid "Articulos"
 msgstr "Articles"
 
-#: tiposarticuloview.cpp:387 familiasview.cpp:494 ui_articleeditbase.h:594
+#: familiasview.cpp:494 tiposarticuloview.cpp:387 ui_articleeditbase.h:594
 #: ui_articleeditbase.h:597
 msgid "Borrar"
 msgstr "Esborra"
@@ -133,8 +133,8 @@ msgstr "Quantitat de components d'article"
 msgid "Clientes (*.xml)"
 msgstr "Clients (*.xml)"
 
-#: tiposarticuloview.cpp:46 familiasview.cpp:51 familiasview.cpp:582
-#: articuloview.cpp:62
+#: familiasview.cpp:51 familiasview.cpp:582 articuloview.cpp:62
+#: tiposarticuloview.cpp:46
 msgid "Codigo"
 msgstr "Codi"
 
@@ -198,7 +198,7 @@ msgstr "Heu de seleccionar una família"
 msgid "Descripcio&n"
 msgstr "Descripció&"
 
-#: tiposarticuloview.cpp:46 familiasview.cpp:51
+#: familiasview.cpp:51 tiposarticuloview.cpp:46
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -218,11 +218,11 @@ msgstr "Descripció tipus d'I.V.A."
 msgid "Descripcion:"
 msgstr "Descripció:"
 
-#: tiposarticuloview.cpp:388 familiasview.cpp:495
+#: familiasview.cpp:495 tiposarticuloview.cpp:388
 msgid "Desea eliminar"
 msgstr "Desitgeu eliminar '"
 
-#: tiposarticuloview.cpp:295 familiasview.cpp:351
+#: familiasview.cpp:351 tiposarticuloview.cpp:295
 msgid "Desea guardar los cambios?"
 msgstr "Desitgeu desar els canvis?"
 
@@ -230,7 +230,7 @@ msgstr "Desitgeu desar els canvis?"
 msgid "Disponible en stock"
 msgstr "Disponible en estoc"
 
-#: articulolist.cpp:302 pluginbf_articulo.cpp:342 pluginbf_articulo.cpp:359
+#: pluginbf_articulo.cpp:342 pluginbf_articulo.cpp:359 articulolist.cpp:302
 #: ui_articleslistbase.h:299 ui_articleslistbase.h:302
 msgid "Editar articulo"
 msgstr "Edita article"
@@ -243,7 +243,7 @@ msgstr "Trieu el fitxer"
 msgid "Error al abrir el archivo."
 msgstr ""
 
-#: tiposarticuloview.cpp:397 familiasview.cpp:504
+#: familiasview.cpp:504 tiposarticuloview.cpp:397
 #, qt-format
 msgid "Error al borrar '%1'."
 msgstr ""
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Error al borrar el articulo"
 msgstr "Error en esborrar l'article"
 
-#: tiposarticuloview.cpp:429 familiasview.cpp:536
+#: familiasview.cpp:536 tiposarticuloview.cpp:429
 msgid "Error al borrar la familia"
 msgstr "Error en esborrar la família"
 
@@ -301,7 +301,7 @@ msgstr "Exporta articles"
 msgid "Familia"
 msgstr "Família"
 
-#: familiasview.cpp:130 pluginbf_articulo.cpp:92 pluginbf_articulo.cpp:93
+#: pluginbf_articulo.cpp:92 pluginbf_articulo.cpp:93 familiasview.cpp:130
 #: ui_familiasbase.h:321
 msgid "Familias"
 msgstr "Famílies"
@@ -437,7 +437,7 @@ msgstr ""
 msgid "Nombre"
 msgstr "Nom"
 
-#: comparticulolistview.cpp:43 articulolist.cpp:426 articuloview.cpp:63
+#: articuloview.cpp:63 comparticulolistview.cpp:43 articulolist.cpp:426
 msgid "Nombre del articulo"
 msgstr "Nom de l'article"
 
@@ -576,7 +576,7 @@ msgstr "Volum (cm3):"
 msgid "Volumen unidad"
 msgstr ""
 
-#: tiposarticuloview.cpp:398 familiasview.cpp:505
+#: familiasview.cpp:505 tiposarticuloview.cpp:398
 msgid "no se ha podido borrar"
 msgstr "No s'ha pogut esborrar"
 

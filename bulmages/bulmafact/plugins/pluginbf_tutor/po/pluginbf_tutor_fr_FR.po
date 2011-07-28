@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-24 16:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -318,7 +318,7 @@ msgstr "Nom :"
 msgid "Nuevo Padre/Socio"
 msgstr "Nouveau parent"
 
-#: pluginbf_tutor.cpp:533 pluginbf_tutor.cpp:534 ui_tutoreslistbase.h:246
+#: pluginbf_tutor.cpp:536 pluginbf_tutor.cpp:537 ui_tutoreslistbase.h:246
 #: ui_tutoreslistbase.h:249
 msgid "Nuevo Tutor"
 msgstr "Nouveau Tuteur"
@@ -385,10 +385,6 @@ msgstr "Ville"
 msgid "Poblacion:"
 msgstr "Ville :"
 
-#: tutorview.cpp:379
-msgid "Porcentaje Fact."
-msgstr "Pourcentage fact."
-
 #: tutorview.cpp:74
 msgid "Provincia"
 msgstr "Province"
@@ -401,7 +397,7 @@ msgstr "Province :"
 msgid "Recibos"
 msgstr "Reçus"
 
-#: pluginbf_tutor.cpp:542 pluginbf_tutor.cpp:543
+#: pluginbf_tutor.cpp:545 pluginbf_tutor.cpp:546
 msgid "Seleccionar Tutor"
 msgstr ""
 
@@ -424,3 +420,6 @@ msgstr "Téléphone portable :"
 #: tutorview.cpp:185
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
+
+#~ msgid "Porcentaje Fact."
+#~ msgstr "Pourcentage fact."

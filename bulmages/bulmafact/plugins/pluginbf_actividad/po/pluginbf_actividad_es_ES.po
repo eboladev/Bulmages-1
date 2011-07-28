@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Spanish  <LL@li.org>\n"
@@ -53,6 +53,10 @@ msgstr "&Sí"
 msgid "&Tipos de Actividad"
 msgstr "&Tipos de actividad"
 
+#: pluginbf_actividad.cpp:142
+msgid "<F2> Abre selector de bancos."
+msgstr ""
+
 #: actividadview.cpp:52
 msgid "Actividad"
 msgstr "Actividad"
@@ -82,6 +86,10 @@ msgstr "Asistencias"
 #: ui_convocatoriabase.h:449
 msgid "BLMonthCalendar"
 msgstr "BLMonthCalendar"
+
+#: actividadview.cpp:217
+msgid "Banco alumno"
+msgstr ""
 
 #: ui_convocatoriaslistbase.h:310
 msgid "Banco:"
@@ -114,7 +122,7 @@ msgstr "Borrar cobro"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: actividadview.cpp:255
+#: actividadview.cpp:252
 msgid "CIF"
 msgstr "CIF"
 
@@ -167,8 +175,8 @@ msgstr "Convocatorias"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_convocatoriabase.h:423 ui_actividadbase.h:556
-#: ui_convocatoriaslistbase.h:339 ui_actividadeslistbase.h:287
+#: ui_convocatoriabase.h:423 ui_convocatoriaslistbase.h:339
+#: ui_actividadbase.h:556 ui_actividadeslistbase.h:287
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -238,7 +246,7 @@ msgstr "Editar Actividad"
 msgid "Editar Convocatoria"
 msgstr "Editar convocatoria"
 
-#: pluginbf_actividad.cpp:231 pluginbf_actividad.cpp:248
+#: pluginbf_actividad.cpp:268 pluginbf_actividad.cpp:285
 msgid "Editar actividad"
 msgstr "Editar actividad"
 
@@ -250,7 +258,7 @@ msgstr "Error al borrar el tipo actividad"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
-#: actividadview.cpp:112 convocatoriaview.cpp:68
+#: convocatoriaview.cpp:68 actividadview.cpp:112
 msgid "Error al crear el actividad"
 msgstr "Error al crear el actividad"
 
@@ -282,7 +290,7 @@ msgstr "Fecha inicial"
 msgid "Fecha Inicial:"
 msgstr "Fecha Inicial:"
 
-#: actividadview.cpp:297
+#: actividadview.cpp:293
 msgid "Fecha de la falta"
 msgstr "Fecha de la falta:"
 
@@ -343,7 +351,7 @@ msgstr "ID Actividad"
 msgid "ID Convocatoria"
 msgstr "ID convocatoria"
 
-#: actividadview.cpp:55 convocatoriaview.cpp:51
+#: convocatoriaview.cpp:51 actividadview.cpp:55
 msgid "ID actividad"
 msgstr "ID actividad"
 
@@ -351,23 +359,23 @@ msgstr "ID actividad"
 msgid "ID tipo actividad"
 msgstr "ID tipo actividad"
 
-#: actividadview.cpp:220 actividadview.cpp:257 actividadview.cpp:295
+#: actividadview.cpp:218 actividadview.cpp:253 actividadview.cpp:291
 msgid "Id Actividad"
 msgstr "ID actividad"
 
-#: actividadview.cpp:218 actividadview.cpp:294
+#: actividadview.cpp:215 actividadview.cpp:290
 msgid "Id alumno"
 msgstr "ID alumno"
 
-#: actividadview.cpp:59 convocatoriaview.cpp:53
+#: convocatoriaview.cpp:53 actividadview.cpp:59
 msgid "Id profesor"
 msgstr "Id profesor"
 
-#: actividadview.cpp:253
+#: actividadview.cpp:249
 msgid "Id tutor"
 msgstr "ID tutor"
 
-#: actividadview.cpp:217 actividadview.cpp:252 actividadview.cpp:293
+#: actividadview.cpp:214 actividadview.cpp:248 actividadview.cpp:289
 msgid "Identificador"
 msgstr "Identificador"
 
@@ -408,11 +416,11 @@ msgstr "Martes"
 msgid "Miercoles"
 msgstr "Miércoles"
 
-#: convocatoriaslist.cpp:268 actividadeslist.cpp:293
+#: convocatoriaslist.cpp:268 actividadeslist.cpp:293 actividadview.cpp:251
 msgid "Nombre"
 msgstr "Nombre"
 
-#: actividadview.cpp:219 actividadview.cpp:296
+#: actividadview.cpp:216 actividadview.cpp:292
 msgid "Nombre alumno"
 msgstr "Nombre alumno"
 
@@ -420,13 +428,9 @@ msgstr "Nombre alumno"
 msgid "Nombre completo:"
 msgstr "Nombre completo:"
 
-#: actividadview.cpp:57 convocatoriaview.cpp:52
+#: convocatoriaview.cpp:52 actividadview.cpp:57
 msgid "Nombre del actividad"
 msgstr "Nombre del actividad"
-
-#: actividadview.cpp:254
-msgid "Nombre tutor"
-msgstr "Nombre tutor"
 
 #: ui_tipoactividadbase.h:244
 msgid "Nombre:"
@@ -449,7 +453,7 @@ msgstr "Nuevo Actividad"
 msgid "Nuevo Tipo de Actividad"
 msgstr "Nuevo tipo de actividad"
 
-#: pluginbf_actividad.cpp:229 pluginbf_actividad.cpp:254
+#: pluginbf_actividad.cpp:266 pluginbf_actividad.cpp:291
 msgid "Nuevo actividad"
 msgstr "Nueva actividad"
 
@@ -481,7 +485,7 @@ msgstr "Profesor"
 msgid "Profesor Encargado"
 msgstr "Profesor Encargado"
 
-#: actividadview.cpp:93 convocatoriaview.cpp:59
+#: convocatoriaview.cpp:59 actividadview.cpp:93
 msgid "Profesor:"
 msgstr "Profesor:"
 
@@ -489,7 +493,7 @@ msgstr "Profesor:"
 msgid "Sabado"
 msgstr "Sábado"
 
-#: pluginbf_actividad.cpp:233 pluginbf_actividad.cpp:252
+#: pluginbf_actividad.cpp:270 pluginbf_actividad.cpp:289
 msgid "Seleccionar actividad"
 msgstr "Seleccionar actividad"
 
@@ -497,7 +501,7 @@ msgstr "Seleccionar actividad"
 msgid "Sesiones Semanales"
 msgstr "Sesiones Semanales"
 
-#: actividadview.cpp:143 convocatoriaview.cpp:96
+#: convocatoriaview.cpp:96 actividadview.cpp:143
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
@@ -563,6 +567,9 @@ msgstr "Vigente"
 
 #~ msgid "Lista de trabajadores:"
 #~ msgstr "Lista de trabajadores:"
+
+#~ msgid "Nombre tutor"
+#~ msgstr "Nombre tutor"
 
 #~ msgid "Nuevo trabajador"
 #~ msgstr "Nuevo trabajador"

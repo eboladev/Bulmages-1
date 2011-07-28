@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-23 09:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -115,7 +115,7 @@ msgstr ""
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ui_acontablebase.h:192 ui_presupuestocontablebase.h:364
+#: ui_presupuestocontablebase.h:364 ui_acontablebase.h:192
 #: ui_partidasbase.h:337
 msgid "&Aceptar"
 msgstr "&Accepter"
@@ -124,7 +124,7 @@ msgstr "&Accepter"
 msgid "&Anotaciones contables"
 msgstr "Annotations comptables"
 
-#: ui_acontablebase.h:193 ui_presupuestocontablebase.h:365
+#: ui_presupuestocontablebase.h:365 ui_acontablebase.h:193
 #: ui_partidasbase.h:338
 msgid "&Cancelar"
 msgstr "&Annuler"
@@ -187,8 +187,8 @@ msgstr "Chercher :"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
-#: partidasview.cpp:50 partidasview.cpp:532
+#: presupuestocontableview.cpp:66 partidasview.cpp:50 partidasview.cpp:532
+#: presupuestocontablelist.cpp:226
 msgid "Codigo"
 msgstr "Code"
 
@@ -208,8 +208,8 @@ msgstr "Code complet :"
 msgid "Codigo reducido:"
 msgstr "Code réduit :"
 
-#: acontableview.cpp:63 presupuestocontableview.cpp:58
-#: presupuestocontableview.cpp:67
+#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
+#: acontableview.cpp:63
 msgid "Concepto"
 msgstr "Concept"
 
@@ -221,7 +221,7 @@ msgstr "Configurer la liste"
 msgid "Contenido de la partida"
 msgstr "Contenu de la famille"
 
-#: ui_acontablebase.h:183 ui_presupuestocontablebase.h:343
+#: ui_presupuestocontablebase.h:343 ui_acontablebase.h:183
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -237,7 +237,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_acontablebase.h:175 ui_presupuestocontablebase.h:335
+#: ui_presupuestocontablebase.h:335 ui_acontablebase.h:175
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -305,7 +305,7 @@ msgstr "Erreur en création de poste"
 msgid "Error al guardar la partida"
 msgstr "Erreur en sauvegarde du poste"
 
-#: acontableview.cpp:60 presupuestocontableview.cpp:57
+#: presupuestocontableview.cpp:57 acontableview.cpp:60
 msgid "Fecha"
 msgstr "Date"
 

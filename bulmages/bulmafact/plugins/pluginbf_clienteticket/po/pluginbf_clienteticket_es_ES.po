@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bfclientealbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
 msgid "% Descuento"
 msgstr "% Descuento"
 
@@ -103,7 +103,7 @@ msgstr "Cantidad"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
+#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -175,8 +175,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: bfclientealbaransubform.cpp:49 ticketclientelist.cpp:425
-#: ticketclienteview.cpp:80
+#: bfclientealbaransubform.cpp:49 ticketclienteview.cpp:80
+#: ticketclientelist.cpp:425
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -304,8 +304,8 @@ msgstr "ID forma de pago"
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
-#: bfclientealbaransubform.cpp:57 ticketclienteview.cpp:68
-#: bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
+#: ticketclienteview.cpp:68
 msgid "Id albaran"
 msgstr "Id albaran"
 
@@ -362,7 +362,7 @@ msgstr "Nuevo albaran"
 msgid "Nuevo ticket a cliente"
 msgstr ""
 
-#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
+#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 

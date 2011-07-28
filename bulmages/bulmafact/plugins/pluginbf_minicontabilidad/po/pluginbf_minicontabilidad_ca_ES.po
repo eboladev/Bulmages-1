@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2010-07-28 17:47+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_acontablebase.h:192 ui_presupuestocontablebase.h:364
+#: ui_presupuestocontablebase.h:364 ui_acontablebase.h:192
 #: ui_partidasbase.h:337
 msgid "&Aceptar"
 msgstr "&Accepta"
@@ -22,7 +22,7 @@ msgstr "&Accepta"
 msgid "&Anotaciones contables"
 msgstr "&Apunts comptables"
 
-#: ui_acontablebase.h:193 ui_presupuestocontablebase.h:365
+#: ui_presupuestocontablebase.h:365 ui_acontablebase.h:193
 #: ui_partidasbase.h:338
 msgid "&Cancelar"
 msgstr "Cancel·la"
@@ -85,8 +85,8 @@ msgstr "Cerca:"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: presupuestocontablelist.cpp:226 presupuestocontableview.cpp:66
-#: partidasview.cpp:50 partidasview.cpp:532
+#: presupuestocontableview.cpp:66 partidasview.cpp:50 partidasview.cpp:532
+#: presupuestocontablelist.cpp:226
 msgid "Codigo"
 msgstr "Codi"
 
@@ -106,8 +106,8 @@ msgstr "Codi complet"
 msgid "Codigo reducido:"
 msgstr "Codi reduït:"
 
-#: acontableview.cpp:63 presupuestocontableview.cpp:58
-#: presupuestocontableview.cpp:67
+#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
+#: acontableview.cpp:63
 msgid "Concepto"
 msgstr "Concepte"
 
@@ -119,7 +119,7 @@ msgstr "Configura llistat"
 msgid "Contenido de la partida"
 msgstr "Contingut de la partida"
 
-#: ui_acontablebase.h:183 ui_presupuestocontablebase.h:343
+#: ui_presupuestocontablebase.h:343 ui_acontablebase.h:183
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -135,7 +135,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_acontablebase.h:175 ui_presupuestocontablebase.h:335
+#: ui_presupuestocontablebase.h:335 ui_acontablebase.h:175
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -203,7 +203,7 @@ msgstr "Error en crear la partida"
 msgid "Error al guardar la partida"
 msgstr "Error en desar la partida"
 
-#: acontableview.cpp:60 presupuestocontableview.cpp:57
+#: presupuestocontableview.cpp:57 acontableview.cpp:60
 msgid "Fecha"
 msgstr "Data"
 

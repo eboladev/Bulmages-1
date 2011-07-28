@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,38 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_bulmatpv.cpp:63
+msgid "&Ventas"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:69
+msgid "&Cuadres de caja"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
+msgid "Listado de cuadres de caja"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:102
+msgid "Visible en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:103
+msgid "Etiqueta visible en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:104
+msgid "Orden en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:105
+msgid "Color en TPV"
+msgstr ""
+
+#: pluginbf_bulmatpv.cpp:110 pluginbf_bulmatpv.cpp:123
+msgid "T.P.V."
+msgstr ""
 
 #: zlist.cpp:57
 msgid "ID Z"
@@ -51,38 +83,6 @@ msgstr ""
 
 #: zlist.cpp:193 ui_zlistbase.h:220
 msgid "Cuadres de Caja"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:63
-msgid "&Ventas"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:69
-msgid "&Cuadres de caja"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:70 pluginbf_bulmatpv.cpp:71
-msgid "Listado de cuadres de caja"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:102
-msgid "Visible en TPV"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:103
-msgid "Etiqueta visible en TPV"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:104
-msgid "Orden en TPV"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:105
-msgid "Color en TPV"
-msgstr ""
-
-#: pluginbf_bulmatpv.cpp:110 pluginbf_bulmatpv.cpp:123
-msgid "T.P.V."
 msgstr ""
 
 #: zview.cpp:55
@@ -141,42 +141,6 @@ msgstr ""
 msgid "Error al crear el almacen"
 msgstr ""
 
-#: ui_zlistbase.h:223 ui_zlistbase.h:226
-msgid "Nuevo contrato"
-msgstr ""
-
-#: ui_zlistbase.h:230 ui_zlistbase.h:233
-msgid "Editar contrato"
-msgstr ""
-
-#: ui_zlistbase.h:237 ui_zlistbase.h:240
-msgid "Borrar contrato"
-msgstr ""
-
-#: ui_zlistbase.h:244 ui_zlistbase.h:247
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_zlistbase.h:251 ui_zlistbase.h:254
-msgid "Filtrar contratos"
-msgstr ""
-
-#: ui_zlistbase.h:258 ui_zlistbase.h:261
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_zlistbase.h:265 ui_zlistbase.h:268 ui_zbase.h:302 ui_zbase.h:305
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_zlistbase.h:271
-msgid "Buscar:"
-msgstr ""
-
-#: ui_zlistbase.h:272
-msgid "Caducados"
-msgstr ""
-
 #: ui_zbase.h:283
 msgid "Cuadre de Caja"
 msgstr ""
@@ -195,6 +159,10 @@ msgstr ""
 
 #: ui_zbase.h:300
 msgid "Ctrl+D"
+msgstr ""
+
+#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
+msgid "Actualizar listado"
 msgstr ""
 
 #: ui_zbase.h:311
@@ -251,4 +219,36 @@ msgstr ""
 
 #: ui_articulotpvbase.h:155
 msgid "0"
+msgstr ""
+
+#: ui_zlistbase.h:223 ui_zlistbase.h:226
+msgid "Nuevo contrato"
+msgstr ""
+
+#: ui_zlistbase.h:230 ui_zlistbase.h:233
+msgid "Editar contrato"
+msgstr ""
+
+#: ui_zlistbase.h:237 ui_zlistbase.h:240
+msgid "Borrar contrato"
+msgstr ""
+
+#: ui_zlistbase.h:244 ui_zlistbase.h:247
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_zlistbase.h:251 ui_zlistbase.h:254
+msgid "Filtrar contratos"
+msgstr ""
+
+#: ui_zlistbase.h:258 ui_zlistbase.h:261
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_zlistbase.h:271
+msgid "Buscar:"
+msgstr ""
+
+#: ui_zlistbase.h:272
+msgid "Caducados"
 msgstr ""

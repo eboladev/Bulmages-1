@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:15+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: 2011-07-26 18:19+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu\n"
 "Language-Team: Catalan <LL@li.org>\n"
@@ -73,6 +73,10 @@ msgstr "&Sí"
 msgid "&Validar"
 msgstr "&Valida"
 
+#: blperiodicitycombobox.cpp:71
+msgid "2 Semanas"
+msgstr ""
+
 #: ui_blformlistfilterbase.h:154
 msgid "<"
 msgstr ""
@@ -138,19 +142,19 @@ msgstr "Actualitza Llistat"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualitza Llistat d'Empreses"
 
-#: blsubform.cpp:3128
+#: blsubform.cpp:3144
 msgid "Ajustar altura"
 msgstr "Ajusta l'altura"
 
-#: blsubform.cpp:3133
+#: blsubform.cpp:3149
 msgid "Ajustar alturas"
 msgstr "Ajusta les altures"
 
-#: blsubform.cpp:3126 bltreewidget.cpp:68
+#: blsubform.cpp:3142 bltreewidget.cpp:68
 msgid "Ajustar columa"
 msgstr "Ajusta la columna"
 
-#: blsubform.cpp:3131 bltreewidget.cpp:71
+#: blsubform.cpp:3147 bltreewidget.cpp:71
 msgid "Ajustar columnas"
 msgstr "Ajusta les columnes"
 
@@ -158,7 +162,7 @@ msgstr "Ajusta les columnes"
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: blperiodicitycombobox.cpp:75
+#: blperiodicitycombobox.cpp:76
 msgid "Anual"
 msgstr "Anual"
 
@@ -190,11 +194,11 @@ msgstr "<P> Article <B>"
 msgid "Aviso del programa"
 msgstr "Avís del programa"
 
-#: blsubform.cpp:3119
+#: blsubform.cpp:3135
 msgid "Bajar fila"
 msgstr "Baixa la fila"
 
-#: blperiodicitycombobox.cpp:76
+#: blperiodicitycombobox.cpp:77
 msgid "Bienal"
 msgstr "Biennal"
 
@@ -210,7 +214,7 @@ msgstr "Esborra"
 msgid "Borrar pais"
 msgstr "Esborra país"
 
-#: blsubform.cpp:3111
+#: blsubform.cpp:3127
 msgid "Borrar registro"
 msgstr "Esborra registre"
 
@@ -218,7 +222,7 @@ msgstr "Esborra registre"
 msgid "Campo Indice"
 msgstr "Camp índex"
 
-#: bldb.cpp:626 bldb.cpp:627 bldb.cpp:658 bldb.cpp:659
+#: bldb.cpp:626 bldb.cpp:627 bldb.cpp:726 bldb.cpp:727
 #, qt-format
 msgid "Campo: '%1' no encontrado."
 msgstr "Camp: '%1' no trobat."
@@ -272,7 +276,7 @@ msgstr "Consulta: '%1'."
 msgid "Contrasenya:"
 msgstr "Contrasenya:"
 
-#: blsearchwidget.cpp:655
+#: blsearchwidget.cpp:653 blsearchwidget.cpp:792
 msgid "Copiar "
 msgstr "Copia"
 
@@ -388,7 +392,7 @@ msgstr "<LI> El proveïdor ja existeix, es poden fer modificacions</LI>"
 msgid "Empresas disponibles:"
 msgstr "Empreses disponibles:"
 
-#: bldb.cpp:806 bldb.cpp:807
+#: bldb.cpp:874 bldb.cpp:875
 msgid "Error al borrar"
 msgstr "Error en esborrar"
 
@@ -396,15 +400,15 @@ msgstr "Error en esborrar"
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr "Error en esborrar fitxer .ods [ blfuncionts->blCreateODS() ]"
 
-#: blsubform.cpp:2173
+#: blsubform.cpp:2189
 msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr "Error en esborrar. [BlSubForm::borrar]"
 
-#: bldb.cpp:964
+#: bldb.cpp:1032
 msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
 msgstr "Error en copiar el fitxer RML [ bldb->generateRML() ]"
 
-#: bldb.cpp:976
+#: bldb.cpp:1044
 msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
 msgstr "Error en copiar el fitxer de logo [ bldb->generateRML() ]"
 
@@ -445,7 +449,7 @@ msgstr "Error en executar xwininfo [ blfunctions->blWindowId() ]"
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Error en fer una consulta a la base de dades."
 
-#: blsubform.cpp:2232
+#: blsubform.cpp:2248
 msgid "Error al intentar borrar"
 msgstr "Error en intentar esborrar"
 
@@ -477,7 +481,7 @@ msgstr ""
 "Error en el XML.\n"
 "Document malament formatejat."
 
-#: bldb.cpp:756 bldb.cpp:757
+#: bldb.cpp:824 bldb.cpp:825
 msgid "Error en la insercion del campo al registro."
 msgstr "Error a la inserció de camp al registre."
 
@@ -485,7 +489,7 @@ msgstr "Error a la inserció de camp al registre."
 msgid "Error inesperado al guardar"
 msgstr "Error inesperat en desar"
 
-#: blsubform.cpp:2130
+#: blsubform.cpp:2146
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
 msgstr "Error inesperat en desar. [BlSubForm::guardar]"
 
@@ -493,7 +497,7 @@ msgstr "Error inesperat en desar. [BlSubForm::guardar]"
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuari i/o contrasenya incorrecta"
 
-#: blsubform.cpp:2930 blsubform.cpp:2942
+#: blsubform.cpp:2946 blsubform.cpp:2958
 msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
 msgstr "Error en copiar listado.rml [ BlSubForm->printPDF() ]"
 
@@ -522,7 +526,7 @@ msgstr ""
 msgid "Familia"
 msgstr "<P> Família <B>"
 
-#: blsubform.cpp:2031 blsubform.cpp:2057
+#: blsubform.cpp:2045 blsubform.cpp:2073
 msgid "Fila inexistente"
 msgstr "Fila inexistent"
 
@@ -571,7 +575,7 @@ msgstr "Id país"
 msgid "Id provincia"
 msgstr "Id província"
 
-#: blsubform.cpp:2680
+#: blsubform.cpp:2696
 msgid "Imprimiendo "
 msgstr "Imprimint"
 
@@ -642,7 +646,7 @@ msgstr "Missatge"
 msgid "Mensaje de error:"
 msgstr "Missatge d'error:"
 
-#: blperiodicitycombobox.cpp:72
+#: blperiodicitycombobox.cpp:73
 msgid "Mensual"
 msgstr "Mensual"
 
@@ -741,7 +745,7 @@ msgstr "Països"
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Per entrar, abans heu de seleccionar una empresa."
 
-#: blsearchwidget.cpp:656
+#: blsearchwidget.cpp:654 blsearchwidget.cpp:793
 msgid "Pegar"
 msgstr "Enganxar"
 
@@ -761,7 +765,7 @@ msgstr "Qt Scripting"
 msgid "Query"
 msgstr "Consulta SQL"
 
-#: blperiodicitycombobox.cpp:71
+#: blperiodicitycombobox.cpp:72
 msgid "Quincenal"
 msgstr "Quinzenal"
 
@@ -797,15 +801,19 @@ msgstr "Seleccioneu una empresa"
 msgid "Semanal"
 msgstr "Setmanal"
 
-#: blperiodicitycombobox.cpp:74
+#: blperiodicitycombobox.cpp:75
 msgid "Semestral"
 msgstr "Semestral"
 
-#: blsubform.cpp:1878
+#: blperiodicitycombobox.cpp:78
+msgid "Sin Periodicidad"
+msgstr ""
+
+#: blsubform.cpp:1893
 msgid "Sin cambios"
 msgstr "Sense canvis"
 
-#: blsubform.cpp:3116
+#: blsubform.cpp:3132
 msgid "Subir fila"
 msgstr "Puja la fila"
 
@@ -901,11 +909,11 @@ msgstr "Tractant  Comanda Client"
 msgid "Tratando presupuesto"
 msgstr "Tractant el pressupost"
 
-#: blperiodicitycombobox.cpp:73
+#: blperiodicitycombobox.cpp:74
 msgid "Trimestral"
 msgstr "Trimestral"
 
-#: blsubform.cpp:3123
+#: blsubform.cpp:3139
 msgid "Usar editor"
 msgstr "Usa l'editor"
 
@@ -917,11 +925,11 @@ msgstr "Arranjament d'usuari"
 msgid "Usuario Actual"
 msgstr "Usuari actual "
 
-#: blsubform.cpp:3139
+#: blsubform.cpp:3155
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Veu/Oculta configurador de subformulari"
 
-#: blsubform.cpp:3137
+#: blsubform.cpp:3153
 msgid "Ver/Ocultar menu de subformulario"
 msgstr "Veu/Oculta menú de subformulari"
 
@@ -945,6 +953,12 @@ msgstr "<LI> Ja existeix el magatzem."
 msgid "Ya existe este articulo."
 msgstr "<P> Aquest article ja existeix.</P>"
 
+#: blsubform.cpp:1882
+msgid ""
+"Ya existe un elemento con este valor en el subformulario. Se viola una clave "
+"unica."
+msgstr ""
+
 #: blimportexport.cpp:2183
 msgid "insertada"
 msgstr "Inserida"
@@ -953,7 +967,7 @@ msgstr "Inserida"
 msgid "insertado"
 msgstr "Inserit"
 
-#: blsubform.cpp:2776 blsubform.cpp:2794
+#: blsubform.cpp:2792 blsubform.cpp:2810
 msgid "no se ha inicializado bien la clase"
 msgstr "no s'ha inicialitzat bé la classe"
 

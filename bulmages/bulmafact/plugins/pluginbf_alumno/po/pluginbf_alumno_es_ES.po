@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-14 20:31+0100\n"
 "Last-Translator: Walter Garcia-Fontes <Walter Garcia-Fontes>\n"
 "Language-Team: Spanish <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: listcuotasporalumnoview.cpp:99
+msgid "% Descuento en actividades"
+msgstr ""
 
 #: ui_alumnobase.h:535 ui_listcuotasporalumnobase.h:119
 msgid "&Aceptar"
@@ -61,7 +65,7 @@ msgstr "&Sí"
 msgid "1er Apellido"
 msgstr "1er Apellido"
 
-#: alumnoview.cpp:59 alumnoslist.cpp:351
+#: alumnoslist.cpp:351 alumnoview.cpp:59
 msgid "1er apellido"
 msgstr "1er apellido"
 
@@ -73,7 +77,7 @@ msgstr "1.<sup>er</sup> apellido:"
 msgid "2do Apellido"
 msgstr "2do Apellido"
 
-#: alumnoview.cpp:60 alumnoslist.cpp:352
+#: alumnoslist.cpp:352 alumnoview.cpp:60
 msgid "2o apellido"
 msgstr "2o apellido"
 
@@ -97,7 +101,7 @@ msgstr "Actualizar listado"
 msgid "Alumno"
 msgstr "Alumno"
 
-#: pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64 alumnoslist.cpp:218
+#: alumnoslist.cpp:218 pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64
 #: ui_alumnoslistbase.h:309
 msgid "Alumnos"
 msgstr "Alumnos"
@@ -110,6 +114,10 @@ msgstr "Aulas"
 msgid "Aulas:"
 msgstr "Aulas:"
 
+#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:489
+msgid "Borrar"
+msgstr "Borrar"
+
 #: alumnoslist.cpp:293 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
 msgid "Borrar Alumno"
 msgstr "Borrar Alumno"
@@ -117,11 +125,6 @@ msgstr "Borrar Alumno"
 #: ui_clasebase.h:224 ui_clasebase.h:227
 msgid "Borrar Aula"
 msgstr "Borrar Aula"
-
-#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:486
-#: ui_alumnobase.h:489
-msgid "Borrar cobro"
-msgstr "Borrar cobro"
 
 #: ui_alumnobase.h:528
 msgid "Borrar imagen"
@@ -139,7 +142,7 @@ msgstr "Buscar:"
 msgid "Cam&biar imagen"
 msgstr "Cam&biar imagen"
 
-#: alumnoview.cpp:67 claseview.cpp:44
+#: claseview.cpp:44 alumnoview.cpp:67
 msgid "Clase"
 msgstr "Clase"
 
@@ -247,7 +250,7 @@ msgstr "Editar Alumno"
 msgid "Editar alumno"
 msgstr "Editar alumno"
 
-#: claseview.cpp:253
+#: claseview.cpp:254
 msgid "Error al borrar el Clase"
 msgstr "Error al borrar la Clase"
 
@@ -315,13 +318,10 @@ msgstr "Fotografia"
 msgid "General"
 msgstr "General"
 
-#: ui_clasebase.h:231 ui_clasebase.h:234
+#: ui_clasebase.h:231 ui_clasebase.h:234 ui_alumnobase.h:470
+#: ui_alumnobase.h:473
 msgid "Guardar"
 msgstr "Guardar"
-
-#: ui_alumnobase.h:470 ui_alumnobase.h:473
-msgid "Guardar cobro"
-msgstr "Guardar cobro"
 
 #: claseview.cpp:196
 msgid "Guardar datos del clase"
@@ -331,7 +331,7 @@ msgstr "Guardar datos de la clase"
 msgid "Id actividad"
 msgstr "ID actividad"
 
-#: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:349
+#: alumnoslist.cpp:349 alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361
 msgid "Id alumno"
 msgstr "Id alumno"
 
@@ -346,6 +346,10 @@ msgstr "Identificador"
 #: alumnoview.cpp:259
 msgid "Imagenes (*.jpg)"
 msgstr "Imágenes (*.jpg)"
+
+#: ui_alumnobase.h:486
+msgid "Imprimir"
+msgstr "Imprimir"
 
 #: ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:344
 msgid "Imprimir listado"
@@ -405,7 +409,7 @@ msgstr "Nombre del alumno"
 msgid "Nombre tutor"
 msgstr "Nombre tutor"
 
-#: ui_alumnobase.h:516 ui_clasebase.h:244
+#: ui_clasebase.h:244 ui_alumnobase.h:516
 msgid "Nombre:"
 msgstr "Nombre:"
 
@@ -437,10 +441,6 @@ msgstr "Otros datos"
 #: ui_alumnobase.h:533
 msgid "Padres/Tutores"
 msgstr "Padres/Tutores"
-
-#: alumnoview.cpp:330
-msgid "Porcentaje"
-msgstr "Porcentaje"
 
 #: pluginbf_alumno.cpp:294 pluginbf_alumno.cpp:313
 msgid "Seleccionar alumno"
@@ -479,6 +479,9 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 #~ msgid "Borrar Tipo de Actividad"
 #~ msgstr "Borrar tipo de actividad"
 
+#~ msgid "Borrar cobro"
+#~ msgstr "Borrar cobro"
+
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "C.I.F./N.I.F./N.I.E.:"
 
@@ -503,6 +506,9 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 #~ msgid "Guardar Tipo de Actividad"
 #~ msgstr "Guardar tipo de actividad"
 
+#~ msgid "Guardar cobro"
+#~ msgstr "Guardar cobro"
+
 #~ msgid "Hermanos"
 #~ msgstr "Hermanos"
 
@@ -523,6 +529,9 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
 #~ msgid "Poblacion:"
 #~ msgstr "Poblacion:"
+
+#~ msgid "Porcentaje"
+#~ msgstr "Porcentaje"
 
 #~ msgid "Porcentaje de facturacion"
 #~ msgstr "Porcentaje de facturacion"

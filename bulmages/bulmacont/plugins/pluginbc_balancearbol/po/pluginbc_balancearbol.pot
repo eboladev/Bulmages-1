@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,22 +29,6 @@ msgstr ""
 #: bcplancontablearbol.cpp:526
 #, qt-format
 msgid "No se ha encontrado el campo '%1' en la hoja del arbol."
-msgstr ""
-
-#: pluginbc_balancearbol.cpp:49
-msgid "&Ver"
-msgstr ""
-
-#: pluginbc_balancearbol.cpp:51
-msgid "&Balance jerarquico"
-msgstr ""
-
-#: pluginbc_balancearbol.cpp:52
-msgid "Permite realizar balances"
-msgstr ""
-
-#: pluginbc_balancearbol.cpp:53
-msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
 #: balance1view.cpp:64
@@ -129,6 +113,22 @@ msgstr ""
 
 #: balance1view.cpp:591
 msgid "Ver extracto (este anyo)"
+msgstr ""
+
+#: pluginbc_balancearbol.cpp:49
+msgid "&Ver"
+msgstr ""
+
+#: pluginbc_balancearbol.cpp:51
+msgid "&Balance jerarquico"
+msgstr ""
+
+#: pluginbc_balancearbol.cpp:52
+msgid "Permite realizar balances"
+msgstr ""
+
+#: pluginbc_balancearbol.cpp:53
+msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
 #: ui_balancetreebase.h:382

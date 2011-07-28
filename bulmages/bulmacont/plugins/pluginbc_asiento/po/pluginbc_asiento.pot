@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,60 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bcasientoform.cpp:42
-msgid "Asiento contable"
+#: bcasientoview.cpp:336
+msgid "Asiento inexistente."
 msgstr ""
 
-#: bcasientoform.cpp:45 bcasientolistsubform.cpp:46 bcasientosubform.cpp:57
-msgid "Id asiento"
+#: bcasientoview.cpp:337
+msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr ""
 
-#: bcasientoform.cpp:46
-msgid "Descripcion del asiento"
+#: bcasientoview.cpp:338
+msgid "&Si"
 msgstr ""
 
-#: bcasientoform.cpp:47
-msgid "Fecha del asiento"
+#: bcasientoview.cpp:338
+msgid "&No"
 msgstr ""
 
-#: bcasientoform.cpp:48
-msgid "Comentarios del asiento"
+#: bcasientoview.cpp:529
+msgid "No existe ningun asiento para mostrar"
 msgstr ""
 
-#: bcasientoform.cpp:49
-msgid "Orden de asiento"
+#: bcasientoview.cpp:914
+#, qt-format
+msgid "Fecha inicial = '%1', fecha final = '%2'."
 msgstr ""
 
-#: bcasientoform.cpp:50
-msgid "Tipo de asiento"
+#: bcasientoview.cpp:955
+msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
 msgstr ""
 
-#: bcasientoform.cpp:170 ui_bcasientobase.h:531 ui_bcasientobase.h:534
-msgid "Borrar asiento"
+#: bcasientoview.cpp:1078 pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
+msgid "Asiento de cierre"
 msgstr ""
 
-#: bcasientoform.cpp:171
-msgid "Se va a borrar el asiento. ¿Esta seguro?"
-msgstr ""
-
-#: bcasientoform.cpp:428
-msgid "El asiento se ha guardado correctamente."
-msgstr ""
-
-#: bcasientoform.cpp:433
-msgid "Error en el guardardo"
-msgstr ""
-
-#: bcasientointeligenteview.cpp:59 ui_bcasientobase.h:476
-msgid "Asiento"
-msgstr ""
-
-#: bcasientointeligenteview.cpp:442
-msgid "Cuenta:"
-msgstr ""
-
-#: bcasientointeligenteview.cpp:623
-msgid "Error al crear el asiento"
+#: bcasientoview.cpp:1147 pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
+msgid "Asiento de apertura"
 msgstr ""
 
 #: bcasientolistsubform.cpp:37 bcasientosubform.cpp:55
@@ -108,6 +89,10 @@ msgstr ""
 
 #: bcasientolistsubform.cpp:45
 msgid "Haber borrador"
+msgstr ""
+
+#: bcasientolistsubform.cpp:46 bcasientosubform.cpp:57 bcasientoform.cpp:45
+msgid "Id asiento"
 msgstr ""
 
 #: bcasientolistsubform.cpp:47
@@ -210,67 +195,6 @@ msgstr ""
 msgid "Num. Factura"
 msgstr ""
 
-#: bcasientolistview.cpp:44
-msgid "Todos los asientos"
-msgstr ""
-
-#: bcasientolistview.cpp:45
-msgid "Asientos cerrados"
-msgstr ""
-
-#: bcasientolistview.cpp:46
-msgid "Asientos abiertos"
-msgstr ""
-
-#: bcasientolistview.cpp:68
-msgid "(todos)"
-msgstr ""
-
-#: bcasientolistview.cpp:236
-msgid "La fecha inicial es posterior a la fecha final."
-msgstr ""
-
-#: bcasientolistview.cpp:309
-msgid "Asientos"
-msgstr ""
-
-#: bcasientoview.cpp:336
-msgid "Asiento inexistente."
-msgstr ""
-
-#: bcasientoview.cpp:337
-msgid "Desea crear un nuevo asiento en esa posicion?"
-msgstr ""
-
-#: bcasientoview.cpp:338
-msgid "&Si"
-msgstr ""
-
-#: bcasientoview.cpp:338
-msgid "&No"
-msgstr ""
-
-#: bcasientoview.cpp:529
-msgid "No existe ningun asiento para mostrar"
-msgstr ""
-
-#: bcasientoview.cpp:914
-#, qt-format
-msgid "Fecha inicial = '%1', fecha final = '%2'."
-msgstr ""
-
-#: bcasientoview.cpp:955
-msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
-msgstr ""
-
-#: bcasientoview.cpp:1078 pluginbc_asiento.cpp:107 pluginbc_asiento.cpp:108
-msgid "Asiento de cierre"
-msgstr ""
-
-#: bcasientoview.cpp:1147 pluginbc_asiento.cpp:101 pluginbc_asiento.cpp:102
-msgid "Asiento de apertura"
-msgstr ""
-
 #: pluginbc_asiento.cpp:64
 msgid "&Asiento"
 msgstr ""
@@ -371,36 +295,80 @@ msgstr ""
 msgid "Fecha final regularizacion:"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:210
-msgid "Aplicar asiento inteligente"
+#: bcasientolistview.cpp:44
+msgid "Todos los asientos"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
-msgid "Ctrl+S"
+#: bcasientolistview.cpp:45
+msgid "Asientos cerrados"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:212
-msgid "&Fecha del asiento:"
+#: bcasientolistview.cpp:46
+msgid "Asientos abiertos"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:213
-msgid "&Plantilla:"
+#: bcasientolistview.cpp:68
+msgid "(todos)"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:214
-msgid "Datos del asiento:"
+#: bcasientolistview.cpp:236
+msgid "La fecha inicial es posterior a la fecha final."
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:215
-msgid "&Aceptar"
+#: bcasientolistview.cpp:309
+msgid "Asientos"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:216
-msgid "Return"
+#: bcasientoform.cpp:42
+msgid "Asiento contable"
 msgstr ""
 
-#: ui_bcasientointeligentebase.h:217
-msgid "&Cancelar"
+#: bcasientoform.cpp:46
+msgid "Descripcion del asiento"
+msgstr ""
+
+#: bcasientoform.cpp:47
+msgid "Fecha del asiento"
+msgstr ""
+
+#: bcasientoform.cpp:48
+msgid "Comentarios del asiento"
+msgstr ""
+
+#: bcasientoform.cpp:49
+msgid "Orden de asiento"
+msgstr ""
+
+#: bcasientoform.cpp:50
+msgid "Tipo de asiento"
+msgstr ""
+
+#: bcasientoform.cpp:170 ui_bcasientobase.h:531 ui_bcasientobase.h:534
+msgid "Borrar asiento"
+msgstr ""
+
+#: bcasientoform.cpp:171
+msgid "Se va a borrar el asiento. ¿Esta seguro?"
+msgstr ""
+
+#: bcasientoform.cpp:428
+msgid "El asiento se ha guardado correctamente."
+msgstr ""
+
+#: bcasientoform.cpp:433
+msgid "Error en el guardardo"
+msgstr ""
+
+#: bcasientointeligenteview.cpp:59 ui_bcasientobase.h:476
+msgid "Asiento"
+msgstr ""
+
+#: bcasientointeligenteview.cpp:442
+msgid "Cuenta:"
+msgstr ""
+
+#: bcasientointeligenteview.cpp:623
+msgid "Error al crear el asiento"
 msgstr ""
 
 #: ui_bcasientobase.h:478 ui_bcasientobase.h:481
@@ -421,6 +389,10 @@ msgstr ""
 
 #: ui_bcasientobase.h:494 ui_bcasientobase.h:497
 msgid "Guardar asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:500 ui_bcasientointeligentebase.h:211
+msgid "Ctrl+S"
 msgstr ""
 
 #: ui_bcasientobase.h:502 ui_bcasientobase.h:505 ui_bcasientobase.h:508
@@ -567,4 +539,32 @@ msgstr ""
 
 #: ui_bcasientolistbase.h:498 ui_bcasientolistbase.h:501
 msgid "Actualizar"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:210
+msgid "Aplicar asiento inteligente"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:212
+msgid "&Fecha del asiento:"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:213
+msgid "&Plantilla:"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:214
+msgid "Datos del asiento:"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:215
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:216
+msgid "Return"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:217
+msgid "&Cancelar"
 msgstr ""

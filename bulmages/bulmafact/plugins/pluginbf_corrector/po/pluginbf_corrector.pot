@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,18 @@ msgid ""
 "Corrector.\n"
 "\n"
 "Muestra/oculta el corrector"
+msgstr ""
+
+#: ui_correctorbase.h:93
+msgid "Corrector"
+msgstr ""
+
+#: ui_correctorbase.h:95 ui_correctorbase.h:98
+msgid "Corregir"
+msgstr ""
+
+#: ui_correctorbase.h:102 ui_correctorbase.h:105
+msgid "Configurar"
 msgstr ""
 
 #: ui_confreglasbase.h:276
@@ -86,16 +98,4 @@ msgstr ""
 
 #: ui_confreglasbase.h:295
 msgid "Cerrar"
-msgstr ""
-
-#: ui_correctorbase.h:93
-msgid "Corrector"
-msgstr ""
-
-#: ui_correctorbase.h:95 ui_correctorbase.h:98
-msgid "Corregir"
-msgstr ""
-
-#: ui_correctorbase.h:102 ui_correctorbase.h:105
-msgid "Configurar"
 msgstr ""

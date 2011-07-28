@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:15+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: main.cxx:165
+#: main.cxx:167
 msgid "Cargando plugins"
 msgstr "Carregant plugins"
 
@@ -147,7 +147,7 @@ msgstr "ID compte"
 msgid "El ticket esta vacio."
 msgstr ""
 
-#: main.cxx:233
+#: main.cxx:269
 #, fuzzy
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr "BulmaTPV."
@@ -209,7 +209,7 @@ msgstr "Identificador"
 msgid "Iglues/BtBulmaTPV"
 msgstr ""
 
-#: main.cxx:177
+#: main.cxx:179
 msgid "Inicializando componentes"
 msgstr "Inicialitzant components"
 
@@ -217,16 +217,16 @@ msgstr "Inicialitzant components"
 msgid "Inicializando listado de articulos"
 msgstr "Inicialitzant el llistat d'articles"
 
-#: main.cxx:103
+#: main.cxx:105
 msgid "Iniciando clases"
 msgstr "Inicialitzant classes"
 
-#: main.cxx:171
+#: main.cxx:173
 #, fuzzy
 msgid "Lanzando plugins"
 msgstr "Llançador BulmaGés"
 
-#: main.cxx:134
+#: main.cxx:136
 #, fuzzy
 msgid "Leyendo configuracion"
 msgstr "Arranjament"
@@ -294,7 +294,7 @@ msgstr "Nom del compte"
 msgid "Sopor&te"
 msgstr "Supor&t"
 
-#: main.cxx:183
+#: main.cxx:185
 #, fuzzy
 msgid "Terminado"
 msgstr "<LI>Terminat</LI>\n"

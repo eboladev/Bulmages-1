@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:17+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-25 08:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -135,8 +135,8 @@ msgstr "Magasin"
 msgid "Almacenes"
 msgstr "Magasins"
 
-#: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
-#: ui_almaceneslistbase.h:352
+#: ui_almaceneslistbase.h:349 ui_almaceneslistbase.h:352 ui_almacenbase.h:328
+#: ui_almacenbase.h:331
 msgid "Borrar almacen"
 msgstr "Effacer le magasin"
 
@@ -160,7 +160,7 @@ msgstr "Code postal"
 msgid "Configurar listado"
 msgstr "Configurer la liste"
 
-#: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
+#: ui_almaceneslistbase.h:355 ui_almacenbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -268,7 +268,7 @@ msgstr "Nom du Magasin"
 msgid "Nombre almacen"
 msgstr "Nom du Magasin"
 
-#: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
+#: ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336 ui_almacenbase.h:317
 msgid "Nuevo almacen"
 msgstr "Nouveau Magasin"
 

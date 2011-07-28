@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "&Factures"
 
 #: pluginbf_contrato.cpp:60
 msgid "&Ventas"
-msgstr ""
+msgstr "&Vendes"
 
 #: ui_contratoslistbase.h:300 ui_contratoslistbase.h:303
 msgid "Actualizar listado"
@@ -84,7 +84,7 @@ msgstr "Quantitat"
 msgid "Cliente"
 msgstr "Següent"
 
-#: contratoview.cpp:65 contratoslist.cpp:63
+#: contratoslist.cpp:63 contratoview.cpp:65
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"
@@ -169,8 +169,8 @@ msgstr ""
 msgid "Error al crear la contrato"
 msgstr "Error al fer una consulta a la base de dades."
 
-#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
-#: ui_contratoslistbase.h:310
+#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
+#: ui_contratobase.h:472
 msgid "Facturar Periodos Pendientes"
 msgstr ""
 

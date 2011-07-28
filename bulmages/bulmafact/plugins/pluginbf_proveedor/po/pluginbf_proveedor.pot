@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:17+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbf_proveedor.cpp:53
-msgid "&Compras"
-msgstr ""
-
-#: pluginbf_proveedor.cpp:57
-msgid "&Proveedores"
-msgstr ""
-
-#: pluginbf_proveedor.cpp:59 pluginbf_proveedor.cpp:60
-#: ui_providerslistbase.h:267
-msgid "Proveedores"
-msgstr ""
-
-#: pluginbf_proveedor.cpp:65
-msgid "&Nuevo proveedor"
-msgstr ""
-
-#: pluginbf_proveedor.cpp:67 pluginbf_proveedor.cpp:68 providerslist.cpp:211
-msgid "Nuevo proveedor"
-msgstr ""
-
 #: providerslist.cpp:63
 msgid "Selector de proveedores"
+msgstr ""
+
+#: providerslist.cpp:211 pluginbf_proveedor.cpp:67 pluginbf_proveedor.cpp:68
+msgid "Nuevo proveedor"
 msgstr ""
 
 #: providerslist.cpp:264
@@ -125,6 +108,23 @@ msgstr ""
 
 #: providerslist.cpp:372
 msgid "Clave de acceso a la web del proveedor"
+msgstr ""
+
+#: pluginbf_proveedor.cpp:53
+msgid "&Compras"
+msgstr ""
+
+#: pluginbf_proveedor.cpp:57
+msgid "&Proveedores"
+msgstr ""
+
+#: pluginbf_proveedor.cpp:59 pluginbf_proveedor.cpp:60
+#: ui_providerslistbase.h:267
+msgid "Proveedores"
+msgstr ""
+
+#: pluginbf_proveedor.cpp:65
+msgid "&Nuevo proveedor"
 msgstr ""
 
 #: provedit.cpp:42 ui_proveditbase.h:845

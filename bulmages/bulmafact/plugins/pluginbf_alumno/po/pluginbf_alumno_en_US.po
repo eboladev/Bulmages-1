@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:18+0200\n"
+"POT-Creation-Date: 2011-07-27 16:26+0200\n"
 "PO-Revision-Date: 2011-02-14 20:40+0100\n"
 "Last-Translator: Walter Garcia-Fonte <walter.garcia@upf.edu>\n"
 "Language-Team: English <LL@li.org>\n"
@@ -15,6 +15,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: listcuotasporalumnoview.cpp:99
+msgid "% Descuento en actividades"
+msgstr ""
 
 #: ui_alumnobase.h:535 ui_listcuotasporalumnobase.h:119
 msgid "&Aceptar"
@@ -60,7 +64,7 @@ msgstr "&Yes"
 msgid "1er Apellido"
 msgstr ""
 
-#: alumnoview.cpp:59 alumnoslist.cpp:351
+#: alumnoslist.cpp:351 alumnoview.cpp:59
 #, fuzzy
 msgid "1er apellido"
 msgstr "Last names:"
@@ -74,7 +78,7 @@ msgstr "Last names:"
 msgid "2do Apellido"
 msgstr ""
 
-#: alumnoview.cpp:60 alumnoslist.cpp:352
+#: alumnoslist.cpp:352 alumnoview.cpp:60
 #, fuzzy
 msgid "2o apellido"
 msgstr "Last names:"
@@ -100,7 +104,7 @@ msgstr "Update listing"
 msgid "Alumno"
 msgstr "Student"
 
-#: pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64 alumnoslist.cpp:218
+#: alumnoslist.cpp:218 pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64
 #: ui_alumnoslistbase.h:309
 msgid "Alumnos"
 msgstr "Students"
@@ -113,6 +117,17 @@ msgstr ""
 msgid "Aulas:"
 msgstr ""
 
+#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:489
+#, fuzzy
+msgid "Borrar"
+msgstr ""
+"#-#-#-#-#  bulmalib_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Erase\n"
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Delete\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"Erase"
+
 #: alumnoslist.cpp:293 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
 msgid "Borrar Alumno"
 msgstr "Delete Student"
@@ -120,11 +135,6 @@ msgstr "Delete Student"
 #: ui_clasebase.h:224 ui_clasebase.h:227
 msgid "Borrar Aula"
 msgstr ""
-
-#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:486
-#: ui_alumnobase.h:489
-msgid "Borrar cobro"
-msgstr "Delete payment"
 
 #: ui_alumnobase.h:528
 msgid "Borrar imagen"
@@ -142,7 +152,7 @@ msgstr "Search:"
 msgid "Cam&biar imagen"
 msgstr "Chan&ge image"
 
-#: alumnoview.cpp:67 claseview.cpp:44
+#: claseview.cpp:44 alumnoview.cpp:67
 msgid "Clase"
 msgstr "Class"
 
@@ -258,7 +268,7 @@ msgstr "Edit Student"
 msgid "Editar alumno"
 msgstr ""
 
-#: claseview.cpp:253
+#: claseview.cpp:254
 msgid "Error al borrar el Clase"
 msgstr ""
 
@@ -328,13 +338,10 @@ msgstr "Photograph"
 msgid "General"
 msgstr "General"
 
-#: ui_clasebase.h:231 ui_clasebase.h:234
+#: ui_clasebase.h:231 ui_clasebase.h:234 ui_alumnobase.h:470
+#: ui_alumnobase.h:473
 msgid "Guardar"
 msgstr "Keep"
-
-#: ui_alumnobase.h:470 ui_alumnobase.h:473
-msgid "Guardar cobro"
-msgstr "Save payment"
 
 #: claseview.cpp:196
 msgid "Guardar datos del clase"
@@ -349,7 +356,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Id type IVA "
 
-#: alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361 alumnoslist.cpp:349
+#: alumnoslist.cpp:349 alumnoview.cpp:56 alumnoview.cpp:326 alumnoview.cpp:361
 msgid "Id alumno"
 msgstr "ID Student"
 
@@ -365,6 +372,10 @@ msgstr "Identifier"
 #: alumnoview.cpp:259
 msgid "Imagenes (*.jpg)"
 msgstr "Images (*.jpg)"
+
+#: ui_alumnobase.h:486
+msgid "Imprimir"
+msgstr "Print"
 
 #: ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:344
 msgid "Imprimir listado"
@@ -428,7 +439,7 @@ msgstr "Name of the student"
 msgid "Nombre tutor"
 msgstr ""
 
-#: ui_alumnobase.h:516 ui_clasebase.h:244
+#: ui_clasebase.h:244 ui_alumnobase.h:516
 msgid "Nombre:"
 msgstr "Name:"
 
@@ -460,10 +471,6 @@ msgstr "Other data"
 #: ui_alumnobase.h:533
 msgid "Padres/Tutores"
 msgstr "Father/Mother/Tutor"
-
-#: alumnoview.cpp:330
-msgid "Porcentaje"
-msgstr "Percentage"
 
 #: pluginbf_alumno.cpp:294 pluginbf_alumno.cpp:313
 msgid "Seleccionar alumno"
@@ -498,6 +505,9 @@ msgstr "You have to save the document before being able to print it."
 #~ msgid "Banco:"
 #~ msgstr "Bank:"
 
+#~ msgid "Borrar cobro"
+#~ msgstr "Delete payment"
+
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "ID number:"
 
@@ -516,6 +526,9 @@ msgstr "You have to save the document before being able to print it."
 #~ msgid "Error al borrar el cobro a cliente"
 #~ msgstr "Error deleting the payment of a costumer"
 
+#~ msgid "Guardar cobro"
+#~ msgstr "Save payment"
+
 #~ msgid "Hermanos"
 #~ msgstr "Sibblings"
 
@@ -524,6 +537,9 @@ msgstr "You have to save the document before being able to print it."
 
 #~ msgid "Poblacion:"
 #~ msgstr "City:"
+
+#~ msgid "Porcentaje"
+#~ msgstr "Percentage"
 
 #~ msgid "Porcentaje de facturacion"
 #~ msgstr "Invoicing percentage"

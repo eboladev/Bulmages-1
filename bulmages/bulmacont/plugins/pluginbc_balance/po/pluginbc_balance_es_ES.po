@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-12 11:19+0200\n"
+"POT-Creation-Date: 2011-07-27 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,7 +199,7 @@ msgstr "Borrar registro"
 msgid "Centro de coste:"
 msgstr "Centro de coste:"
 
-#: balancesubform.cpp:38 balanceview.cpp:277
+#: balanceview.cpp:277 balancesubform.cpp:38
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -227,12 +227,12 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: balanceprintview.cpp:64 balanceview.cpp:77 ui_balancebase.h:441
+#: balanceview.cpp:77 balanceprintview.cpp:64 ui_balancebase.h:441
 #: ui_balancetreebase.h:404
 msgid "Cuenta final:"
 msgstr "Cuenta final:"
 
-#: balanceprintview.cpp:56 balanceview.cpp:68 ui_balancebase.h:439
+#: balanceview.cpp:68 balanceprintview.cpp:56 ui_balancebase.h:439
 #: ui_balancetreebase.h:407
 msgid "Cuenta inicial:"
 msgstr "Cuenta inicial:"
