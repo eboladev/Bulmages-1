@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-27 16:26+0200\n"
+"POT-Creation-Date: 2011-07-28 11:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,15 +48,32 @@ msgid "ID reunion"
 msgstr ""
 
 #: convreunionlist.cpp:271
-msgid "fecha1convocatoriareunion"
+msgid "fecha 1 convocatoriareunion"
 msgstr ""
 
 #: convreunionlist.cpp:272
-msgid "fecha2convocatoriareunion"
+msgid "hora 1 convocatoria"
 msgstr ""
 
-#: convreunionlist.cpp:273 convreunionview.cpp:60
+#: convreunionlist.cpp:273
+msgid "fecha 2 convocatoriareunion"
+msgstr ""
+
+#: convreunionlist.cpp:274
+msgid "hora 2 convocatoriareunion"
+msgstr ""
+
+#: convreunionlist.cpp:275 convreunionview.cpp:60
 msgid "Tipo"
+msgstr ""
+
+#: convreunionlist.cpp:276 convreunionview.cpp:61 convreunionview.cpp:84
+msgid "Concepto"
+msgstr ""
+
+#: convreunionlist.cpp:277 convreunionview.cpp:62 convreunionview.cpp:86
+#: ui_convreunionbase.h:384 ui_convreunionbase.h:385
+msgid "Resolucion"
 msgstr ""
 
 #: pluginbf_asociacion.cpp:53
@@ -185,15 +202,6 @@ msgstr ""
 
 #: convreunionview.cpp:59
 msgid "Hora 2a Convocatoria"
-msgstr ""
-
-#: convreunionview.cpp:61 convreunionview.cpp:84
-msgid "Concepto"
-msgstr ""
-
-#: convreunionview.cpp:62 convreunionview.cpp:86 ui_convreunionbase.h:384
-#: ui_convreunionbase.h:385
-msgid "Resolucion"
 msgstr ""
 
 #: convreunionview.cpp:67
