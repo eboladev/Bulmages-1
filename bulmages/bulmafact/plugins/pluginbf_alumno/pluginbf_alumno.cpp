@@ -30,6 +30,7 @@
 #include "alumnoslist.h"
 #include "listcuotasporalumnoview.h"
 #include "claseview.h"
+#include "promocionarclaseview.h"
 
 AlumnosList *g_alumnosList = NULL;
 BfBulmaFact *g_pluginbf_alumno = NULL;
@@ -65,7 +66,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionA->setObjectName("mui_actionAlumnos");
         pPluginMenu->addAction ( accionA );
         bges->Listados->addAction ( accionA );
-        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         BlAction *accionB = new BlAction ( _ ( "&Nuevo alumno" ), 0 );
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-new.png" ) ) );
@@ -74,7 +74,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setObjectName("mui_actionAlumnoNuevo");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
-        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
         /// Miramos si existe un menu Docencia
         QMenu *pGesMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
@@ -89,7 +88,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionC->setObjectName("mui_actionAlumnoCuotas");
         pGesMenu->addAction ( accionC );
         bges->Fichas->addAction ( accionC );
-        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
         /// Agrego un separador
         pGesMenu->addSeparator();
@@ -101,7 +99,14 @@ int entryPoint ( BfBulmaFact *bges )
         accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/warehouse.png" ) ) );
         pGesMenu->addAction ( accionD );
         bges->Fichas->addAction ( accionD );
-        //connect ( accionD, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
+
+	BlAction *accionE = new BlAction ( _ ( "&Promocion de Clases" ), 0 );
+        accionE->setStatusTip ( _ ( "Promocion de Clases" ) );
+        accionE->setWhatsThis ( _ ( "Promocion de Clases" ) );
+        accionE->setObjectName("mui_actionPromocionClases");
+        accionE->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/warehouse.png" ) ) );
+        pGesMenu->addAction ( accionE );
+        bges->Fichas->addAction ( accionE );
 
     } // end if
 
@@ -138,6 +143,12 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
     
+    if (accion->objectName() == "mui_actionPromocionClases") {
+        PromocionarClaseView * bud = new PromocionarClaseView ( g_pluginbf_alumno->company(), NULL );
+        g_pluginbf_alumno->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+
 
     return 0;
 }
