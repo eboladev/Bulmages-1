@@ -268,9 +268,13 @@ ConvReunionListSubForm::ConvReunionListSubForm ( QWidget *parent ) : BfSubForm (
     setDbTableName ( "reunion" );
     setDbFieldId ( "idreunion" );
     addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID reunion" ) );
-    addSubFormHeader ( "fecha1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "fecha1convocatoriareunion" ) );
-    addSubFormHeader ( "fecha2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "fecha2convocatoriareunion" ) );
+    addSubFormHeader ( "fecha1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "fecha 1 convocatoriareunion" ) );
+    addSubFormHeader ( "hora1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "hora 1 convocatoria" ) );
+    addSubFormHeader ( "fecha2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "fecha 2 convocatoriareunion" ) );
+    addSubFormHeader ( "hora2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "hora 2 convocatoriareunion" ) );
     addSubFormHeader ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tipo" ) );
+    addSubFormHeader ( "conceptoreunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Concepto" ) );
+    addSubFormHeader ( "resolucionreunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Resolucion" ) );
     
     setInsert ( FALSE );
     setDelete ( FALSE );
