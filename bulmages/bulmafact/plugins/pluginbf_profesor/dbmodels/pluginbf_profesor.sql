@@ -50,6 +50,11 @@ DECLARE
 	rsa RECORD;
 BEGIN
 
+    SELECT INTO rsa * FROM configuracion  WHERE nombre''PeriodoCuotas'';
+    IF NOT FOUND THEN
+	INSERT INTO configuracion (nombre, valor) VALUES (''PeriodoCuotas'', ''Mensual'');
+    END IF;
+
     SELECT INTO rsa * FROM pg_tables  WHERE tablename=''profesor'';
     IF NOT FOUND THEN
 

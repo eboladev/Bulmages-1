@@ -80,6 +80,7 @@ public slots:
     virtual void on_actionFormas_de_Pago_triggered();
     virtual void on_actionIndexador_triggered();
     virtual void on_actionTipoIVA_triggered();
+    virtual void on_actionModo_Experto_triggered();
     virtual void on_actionTasaIVA_triggered();
     virtual void on_actionOrdenar_Ventanas_triggered();
     virtual void on_actionOrganizaci_n_en_Cascada_triggered();

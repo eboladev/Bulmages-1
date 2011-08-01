@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>798</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de">
@@ -49,6 +49,7 @@
      <string>E&amp;mpresa</string>
     </property>
     <addaction name="actionParametros"/>
+    <addaction name="actionModo_Experto"/>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuMaestro">
@@ -280,6 +281,14 @@
    </property>
    <property name="toolTip">
     <string>Paises y provincias</string>
+   </property>
+  </action>
+  <action name="actionModo_Experto">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Modo Experto</string>
    </property>
   </action>
  </widget>

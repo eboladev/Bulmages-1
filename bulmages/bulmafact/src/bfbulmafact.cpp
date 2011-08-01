@@ -294,6 +294,22 @@ void BfBulmaFact::setActionIndexador ( bool visible )
 
 ///
 /**
+ * Activa o desactiva el modo Experto.
+**/
+void BfBulmaFact::on_actionModo_Experto_triggered()
+{
+    BL_FUNC_DEBUG
+    if ( actionModo_Experto->isChecked() == TRUE ) {
+       g_confpr->setValue(CONF_MODO_EXPERTO, "TRUE");
+    } else {
+       g_confpr->setValue(CONF_MODO_EXPERTO, "FALSE");
+    } // end if
+    
+}
+
+
+///
+/**
 **/
 void BfBulmaFact::on_actionIndexador_triggered()
 {
