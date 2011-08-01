@@ -68,6 +68,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     setSubForm ( mui_list );
     m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
+
     if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {

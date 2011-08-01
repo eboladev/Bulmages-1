@@ -100,7 +100,12 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         mui_pesoundarticulo->setValue ( 0.0 );
         mui_pesoundarticulo->setMinimum( 0 );
         mui_pesoundarticulo->setMaximum( 10000000 );
-        
+
+	
+        mui_stockarticulo->setValue ( 0.0 );
+        mui_stockarticulo->setMinimum( -10000000 );
+        mui_stockarticulo->setMaximum( 10000000 );
+    
         mui_abrevarticulo->setMaxLength ( 30 );
 
         dialogChanges_setExcludedObject ( m_componentes );
