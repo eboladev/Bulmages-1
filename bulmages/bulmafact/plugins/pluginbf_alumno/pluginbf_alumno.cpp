@@ -104,7 +104,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionE->setStatusTip ( _ ( "Promocion de Clases" ) );
         accionE->setWhatsThis ( _ ( "Promocion de Clases" ) );
         accionE->setObjectName("mui_actionPromocionClases");
-        accionE->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/warehouse.png" ) ) );
+        accionE->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/i_promocion.png" ) ) );
         pGesMenu->addAction ( accionE );
         bges->Fichas->addAction ( accionE );
 
