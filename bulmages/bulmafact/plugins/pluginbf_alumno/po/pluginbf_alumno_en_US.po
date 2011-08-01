@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-27 16:26+0200\n"
+"POT-Creation-Date: 2011-07-28 18:24+0200\n"
 "PO-Revision-Date: 2011-02-14 20:40+0100\n"
 "Last-Translator: Walter Garcia-Fonte <walter.garcia@upf.edu>\n"
 "Language-Team: English <LL@li.org>\n"
@@ -20,27 +20,29 @@ msgstr ""
 msgid "% Descuento en actividades"
 msgstr ""
 
-#: ui_alumnobase.h:535 ui_listcuotasporalumnobase.h:119
+#: ui_promocionarclasebase.h:127 ui_alumnobase.h:535
+#: ui_listcuotasporalumnobase.h:119
 msgid "&Aceptar"
 msgstr "Accept"
 
-#: pluginbf_alumno.cpp:61
+#: pluginbf_alumno.cpp:62
 msgid "&Alumnos"
 msgstr "&Students"
 
-#: pluginbf_alumno.cpp:56 pluginbf_alumno.cpp:80
+#: pluginbf_alumno.cpp:57 pluginbf_alumno.cpp:79
 msgid "&Associats"
 msgstr ""
 
-#: ui_alumnobase.h:536 ui_listcuotasporalumnobase.h:120
+#: ui_promocionarclasebase.h:128 ui_alumnobase.h:536
+#: ui_listcuotasporalumnobase.h:120
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: pluginbf_alumno.cpp:97
+#: pluginbf_alumno.cpp:95
 msgid "&Clases"
 msgstr ""
 
-#: pluginbf_alumno.cpp:85
+#: pluginbf_alumno.cpp:84
 msgid "&Cuotas Socio"
 msgstr ""
 
@@ -55,6 +57,10 @@ msgstr "&No"
 #: pluginbf_alumno.cpp:70
 msgid "&Nuevo alumno"
 msgstr "&New student"
+
+#: pluginbf_alumno.cpp:103
+msgid "&Promocion de Clases"
+msgstr ""
 
 #: claseview.cpp:198
 msgid "&Si"
@@ -104,7 +110,7 @@ msgstr "Update listing"
 msgid "Alumno"
 msgstr "Student"
 
-#: alumnoslist.cpp:218 pluginbf_alumno.cpp:63 pluginbf_alumno.cpp:64
+#: alumnoslist.cpp:218 pluginbf_alumno.cpp:64 pluginbf_alumno.cpp:65
 #: ui_alumnoslistbase.h:309
 msgid "Alumnos"
 msgstr "Students"
@@ -156,7 +162,7 @@ msgstr "Chan&ge image"
 msgid "Clase"
 msgstr "Class"
 
-#: pluginbf_alumno.cpp:98 pluginbf_alumno.cpp:99
+#: pluginbf_alumno.cpp:96 pluginbf_alumno.cpp:97
 msgid "Clases"
 msgstr ""
 
@@ -221,7 +227,7 @@ msgstr "Quotas:"
 msgid "Cuotas Socio"
 msgstr ""
 
-#: pluginbf_alumno.cpp:87 pluginbf_alumno.cpp:88
+#: pluginbf_alumno.cpp:86 pluginbf_alumno.cpp:87
 #, fuzzy
 msgid "Cuotas por alumno"
 msgstr "New seat"
@@ -234,6 +240,14 @@ msgstr ""
 " Erase punteo\n"
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Erase punteo"
+
+#: ui_promocionarclasebase.h:126
+msgid "Curso Destino"
+msgstr ""
+
+#: ui_promocionarclasebase.h:125
+msgid "Curso Origen"
+msgstr ""
 
 #: ui_alumnobase.h:523 ui_alumnoslistbase.h:310
 msgid "Curso:"
@@ -264,7 +278,7 @@ msgstr "E-mail:"
 msgid "Editar Alumno"
 msgstr "Edit Student"
 
-#: pluginbf_alumno.cpp:292 pluginbf_alumno.cpp:309
+#: pluginbf_alumno.cpp:303 pluginbf_alumno.cpp:320
 msgid "Editar alumno"
 msgstr ""
 
@@ -276,7 +290,7 @@ msgstr ""
 msgid "Error al borrar el cobro a cliente."
 msgstr ""
 
-#: alumnoview.cpp:95
+#: promocionarclaseview.cpp:78 alumnoview.cpp:95
 msgid "Error al crear el alumno"
 msgstr "Error creating a student"
 
@@ -451,8 +465,8 @@ msgstr ""
 msgid "Nuevo Alumno"
 msgstr "New student"
 
-#: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:290
-#: pluginbf_alumno.cpp:315
+#: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:301
+#: pluginbf_alumno.cpp:326
 msgid "Nuevo alumno"
 msgstr "New student"
 
@@ -472,7 +486,15 @@ msgstr "Other data"
 msgid "Padres/Tutores"
 msgstr "Father/Mother/Tutor"
 
-#: pluginbf_alumno.cpp:294 pluginbf_alumno.cpp:313
+#: pluginbf_alumno.cpp:104 pluginbf_alumno.cpp:105
+msgid "Promocion de Clases"
+msgstr ""
+
+#: ui_promocionarclasebase.h:124
+msgid "Promocionar Clase"
+msgstr ""
+
+#: pluginbf_alumno.cpp:305 pluginbf_alumno.cpp:324
 msgid "Seleccionar alumno"
 msgstr ""
 
