@@ -184,6 +184,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="textLabel1_4">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Fecha inicial:</string>
           </property>
@@ -191,6 +194,9 @@
         </item>
         <item>
          <widget class="BlDateSearch" name="m_fechain" native="true">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -218,6 +224,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="textLabel1_4_2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Fecha final:</string>
           </property>
@@ -225,6 +234,9 @@
         </item>
         <item>
          <widget class="BlDateSearch" name="m_fechafin" native="true">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -254,9 +266,6 @@
         </property>
        </widget>
       </item>
-      <item row="9" column="0" colspan="3">
-       <widget class="QTextBrowser" name="textBrowser"/>
-      </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="mui_recibounico">
         <property name="text">
@@ -281,6 +290,13 @@
        <widget class="QCheckBox" name="mui_actividades">
         <property name="text">
          <string>Emitir todas las Actividades</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="3">
+       <widget class="QTextEdit" name="mui_log">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

@@ -85,9 +85,12 @@ EmitirRecibosView::~EmitirRecibosView()
     
 }
 
+
 void EmitirRecibosView::on_mui_crear_clicked() {
 
     BL_FUNC_DEBUG
+    
+    mui_log->clear();
     
     // Iteramos para cada tutor / socio
     QString query = "SELECT nomcliente, cliente.idcliente, coalesce (suma, 0) AS numhijos, cuotacuotaporalumno, sociocliente FROM cliente LEFT JOIN (SELECT idcliente, count(idalumnocliente) AS suma FROM alumnocliente GROUP BY idcliente) AS t1 ON cliente.idcliente = t1.idcliente LEFT JOIN (SELECT * FROM cuotaporalumno) AS t2 ON t2.numalumnoscuotaporalumno = coalesce(t1.suma, 0)";
@@ -101,13 +104,15 @@ void EmitirRecibosView::on_mui_crear_clicked() {
         QDate fechafin = m_fechafin->date();
 	bool haylineas = FALSE;
 
+	mui_log->append("<H2>"+cur->value("nomcliente")+"</H2>");
+	
+	
 	mainCompany()->begin();
 
         QString query = "INSERT INTO recibo(descrecibo, idcliente) VALUES ('Recibo automático', " + cur->value("idcliente") + ")";
         mainCompany()-> runQuery(query);
         BlDbRecordSet *cur1 = mainCompany()->loadQuery("SELECT MAX(idrecibo) AS id FROM recibo");
         QString idrecibo = cur1->value("id");
-        
         delete cur1;
 
 	if (mui_cuotas->isChecked()) {
@@ -116,6 +121,19 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 	    query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur->value("cuotacuotaporalumno") + ", 'Cuota por "  +cur->value("numhijos")+" alumno/s')";
 	    mainCompany() -> runQuery(query);
 	    haylineas = TRUE;
+
+	    mui_log->append("<H3>Cuota Socio "+cur->value("nomcliente")+"</H3>");
+	    
+	    // Si queremos recibos separados por todo ... entonces creamos un nuevo recibo y damos el anterior por cerrado.
+	    if (!mui_recibounico->isChecked()) {
+		QString query = "INSERT INTO recibo(descrecibo, idcliente) VALUES ('Recibo automático', " + cur->value("idcliente") + ")";
+		mainCompany()-> runQuery(query);
+		BlDbRecordSet *cur1 = mainCompany()->loadQuery("SELECT MAX(idrecibo) AS id FROM recibo");
+		idrecibo = cur1->value("id");
+		delete cur1;
+	    } // end if
+	    
+	    
 	  } // end if
 	} // end if
 
@@ -143,15 +161,29 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 	      while (! cur1 -> eof () ) {
 		  query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cuota.toQString('.') + ", '"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+" ')";
 		  mainCompany() -> runQuery(query);
+		  mui_log->append("<H3>"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+"</H3>");
 		  cur1 -> nextRecord();
 		  haylineas = TRUE;
+
+
+		  
+		  // Si queremos recibos separados por todo ... entonces creamos un nuevo recibo y damos el anterior por cerrado.
+		  if (!mui_recibounico->isChecked()) {
+		      QString query = "INSERT INTO recibo(descrecibo, idcliente) VALUES ('Recibo automático', " + cur->value("idcliente") + ")";
+		      mainCompany()-> runQuery(query);
+		      BlDbRecordSet *cur1 = mainCompany()->loadQuery("SELECT MAX(idrecibo) AS id FROM recibo");
+		      idrecibo = cur1->value("id");
+		      delete cur1;
+		  } // end if
+
+		  
 	      } // end while
 	  } // end if
 	} // end if
 
 
-	/// Si al final resulta que no habia lineas se hace un delete.
-        if (haylineas == FALSE) {
+	/// Si al final resulta que no habia lineas o que estamos en el modo recibos separados se hace un delete del recibo.
+        if (haylineas == FALSE || !mui_recibounico->isChecked()) {
 	  mainCompany()->runQuery("DELETE FROM recibo WHERE idrecibo = "+ idrecibo);
 	} // end if
 
