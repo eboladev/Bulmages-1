@@ -24,7 +24,7 @@ Dependencias: libpluginbf_multiimprimir.so; libpluginbf_banco.so
 
 Incompatibles:
 
-Categorias: Facturation avancees; Experimental;
+Categorias: Facturation avancees; Experimental; Association des parents d'eleves;
 
 Orden: 900
 

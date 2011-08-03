@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilidades genericas; Asociaciones de padres de alumnos;
 
 Orden: 900
 

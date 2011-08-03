@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilites generiques;
+Categorias: Utilites generiques; Association des parents d'eleves;
 
 Orden: 900
 
