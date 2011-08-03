@@ -51,7 +51,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
         addDbField ( "poblproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Poblacion" ) );
         addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
-        addDbField ( "cpproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo postal" ) );
+        addDbField ( "cpproveedor", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo postal" ) );
         addDbField ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono" ) );
         addDbField ( "faxproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de fax" ) );
         addDbField ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion electronica" ) );

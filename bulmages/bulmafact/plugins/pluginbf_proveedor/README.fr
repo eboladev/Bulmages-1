@@ -36,6 +36,6 @@ Orden: 301
 Reports: blform_ProveedorView.qs
 
 
-Categorias: Facturation generique;
+Categorias: Association des parents d'eleves; Facturation generique;
 
 Comentarios:

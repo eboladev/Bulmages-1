@@ -32,11 +32,11 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_proveedor.so
+Dependencias: libpluginbf_articulo.so;libpluginbf_proveedor.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Asociaciones de padres de alumnos; Facturacion generica;
 
 Reports: blform_FacturaProveedorView.qs
 

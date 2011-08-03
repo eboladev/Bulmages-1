@@ -50,7 +50,7 @@ DECLARE
 	rsa RECORD;
 BEGIN
 
-    SELECT INTO rsa * FROM configuracion  WHERE nombre''PeriodoCuotas'';
+    SELECT INTO rsa * FROM configuracion  WHERE nombre = ''PeriodoCuotas'';
     IF NOT FOUND THEN
 	INSERT INTO configuracion (nombre, valor) VALUES (''PeriodoCuotas'', ''Mensual'');
     END IF;

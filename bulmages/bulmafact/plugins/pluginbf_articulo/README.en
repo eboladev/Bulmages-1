@@ -24,7 +24,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_iva.so;
 
 Incompatibles:
 
