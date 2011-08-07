@@ -1486,6 +1486,23 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
+
+    
+    /// Buscamos Query's por tratar con numeracion
+    for (int aux = 0;aux < 10; aux++) {
+	pos = buff.indexOf("<!-- QUERY");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+	QRegExp rx1 ( "<!--\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY"+QString::number(aux)+"\\s*-->" );
+	rx1.setMinimal ( TRUE );
+	while ( ( pos = rx1.indexIn ( buff, 0 ) ) != -1 ) {
+	    QByteArray ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toAscii(), tipoEscape );
+	    buff.replace ( pos, rx1.matchedLength(), ldetalle );
+	    pos = buff.indexOf("<!--");
+	} // end while
+	buff = cadant + buff;
+    }// end for
+    
     
     /// Buscamos SubQuery's en condicional
     pos = buff.indexOf("<!-- IF SUBQUERY");
