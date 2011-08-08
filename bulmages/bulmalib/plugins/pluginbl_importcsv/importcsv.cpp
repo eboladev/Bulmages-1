@@ -57,9 +57,8 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
 ImportCSV::~ImportCSV()
 {
     BL_FUNC_DEBUG
-    /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
-    // ((BfCompany *)mainCompany())->refreshCobrosCliente();
-    
+    /// Como no deriva de BlForm ni de ninguna de las ventanas estandar hacemos un removeWindow
+    mainCompany()->removeWindow ( this ); 
 }
 
 void ImportCSV::on_mui_buscarArchivo_clicked()

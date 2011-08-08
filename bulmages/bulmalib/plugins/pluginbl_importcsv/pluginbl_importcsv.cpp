@@ -92,7 +92,8 @@ int entryPoint ( BlMainWindow *bges )
     QAction *accion = new QAction ( _ ( "&Importacion CSV" ), 0 );
     accion->setStatusTip ( _ ( "Importacion CSV" ) );
     accion->setWhatsThis ( _ ( "Importacion CSV" ) );
-
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/document-import.png" ) ) );
+	
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
     
     /// Miramos si existe un menu Herramientas
