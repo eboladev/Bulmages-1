@@ -16,11 +16,10 @@ add_subdirectory(pluginbl_logo)
 #add_subdirectory(pluginbl_backup)
 add_subdirectory(pluginbl_feeds)
 
-add_subdirectory(pluginbl_exaro)
-
 if(NOT WIN32)
 if(NOT APPLE)
 add_subdirectory(pluginbl_embed)
+add_subdirectory(pluginbl_exaro)
 endif(NOT APPLE)
 endif(NOT WIN32)
 

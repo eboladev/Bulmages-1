@@ -19,6 +19,6 @@ set_target_properties(quazip PROPERTIES	VERSION ${QUAZIP_VERSION}
 
 target_link_libraries(quazip ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY} )
 
-install(TARGETS quazip LIBRARY DESTINATION lib)
+install(TARGETS quazip LIBRARY DESTINATION ${CMAKE_ROOT}/lib)
 install(FILES crypt.h  ioapi.h  quazipfile.h  quazipfileinfo.h  quazip.h  quazipnewinfo.h  unzip.h  zip.h
  DESTINATION include/quazip COMPONENT Devel)
