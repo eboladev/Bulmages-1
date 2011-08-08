@@ -1283,6 +1283,17 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
 
     /// Buscamos Query's por tratar con numeracion
     for (int aux = 0;aux < 10; aux++) {
+      
+	/// Buscamos Query's en condicional
+	pos = 0;
+	QRegExp rx4 ( "<!--\\s*IF\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY"+QString::number(aux)+"\\s*-->" );
+	rx4.setMinimal ( TRUE );
+	while ( ( pos = rx4.indexIn ( buff, pos ) ) != -1 ) {
+	    QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
+	    buff.replace ( pos, rx4.matchedLength(), ldetalle );
+	    pos = 0;
+	} // end while
+      
 	pos = 0;
 	QRegExp rx1 ( "<!--\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY"+QString::number(aux)+"\\s*-->" );
 	rx1.setMinimal ( TRUE );
