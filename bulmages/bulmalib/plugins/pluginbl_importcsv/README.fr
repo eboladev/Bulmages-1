@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilites generiques;Experimental;
+Categorias: Association des parents d'eleves;Utilites generiques;Experimental;
 
 Orden: 40
 
