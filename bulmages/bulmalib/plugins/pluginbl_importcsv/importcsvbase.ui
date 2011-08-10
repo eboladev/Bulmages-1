@@ -216,11 +216,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>139</x>
-     <y>109</y>
+     <y>153</y>
     </hint>
     <hint type="destinationlabel">
-     <x>212</x>
-     <y>109</y>
+     <x>356</x>
+     <y>154</y>
     </hint>
    </hints>
   </connection>
@@ -231,12 +231,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>179</x>
-     <y>163</y>
+     <x>172</x>
+     <y>185</y>
     </hint>
     <hint type="destinationlabel">
-     <x>274</x>
-     <y>156</y>
+     <x>451</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_cancelar</sender>
+   <signal>released()</signal>
+   <receiver>ImportCSVBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>622</x>
+     <y>495</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>651</x>
+     <y>-13</y>
     </hint>
    </hints>
   </connection>

@@ -105,11 +105,13 @@ void ImportCSV::on_mui_aceptar_clicked()
 	    } else {
 		list2   = linea.split ( mui_separador->text() );
 	    } // end if
+	    list2.replaceInStrings(QRegExp("^$"), "''");
 	    /// Montamos el query
 	    QString query = "INSERT INTO " + mui_combotablas->currentText() +" ("+list1.join(",").replace("\"","")+") VALUES("+list2.join(",").replace("\"","'")+")";
 	    mainCompany()->runQuery(query);
 	} // end while
 	mainCompany()->commit();
+	blMsgInfo(_("Importacion realizada satisfactoriamente"));
     } catch (...) {
 	mainCompany()->rollback();
 	blMsgInfo("Hubo un error en la importacion");
