@@ -68,7 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
         accionB->setStatusTip ( _ ( "Nueva factura a cliente" ) );
         accionB->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
-        accionA->setObjectName("mui_actionFacturaClienteNueva");
+        accionB->setObjectName("mui_actionFacturaClienteNueva");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
 
