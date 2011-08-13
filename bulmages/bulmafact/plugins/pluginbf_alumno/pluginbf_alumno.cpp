@@ -31,6 +31,8 @@
 #include "listcuotasporalumnoview.h"
 #include "claseview.h"
 #include "promocionarclaseview.h"
+#include "listcuotasporactividadview.h"
+
 
 AlumnosList *g_alumnosList = NULL;
 BfBulmaFact *g_pluginbf_alumno = NULL;
@@ -89,6 +91,14 @@ int entryPoint ( BfBulmaFact *bges )
         pGesMenu->addAction ( accionC );
         bges->Fichas->addAction ( accionC );
 
+        BlAction *accionH = new BlAction ( _ ( "&Descuentos por actividades contratadas" ), 0 );
+        accionH->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
+        accionH->setStatusTip ( _ ( "Descuentos por actividades contratadas" ) );
+        accionH->setWhatsThis ( _ ( "Descuentos por actividades contratadas" ) );
+        accionH->setObjectName("mui_actionDescuentosCuotas");
+        pGesMenu->addAction ( accionH );
+        bges->Fichas->addAction ( accionH );
+	
         /// Agrego un separador
         pGesMenu->addSeparator();
 
@@ -149,6 +159,11 @@ int BlAction_triggered(BlAction *accion) {
         bud->show();
     } // end if
 
+    if (accion->objectName() == "mui_actionDescuentosCuotas") {
+        ListCuotasPorActividadView * bud = new ListCuotasPorActividadView ( g_pluginbf_alumno->company(), NULL );
+        g_pluginbf_alumno->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
 
     return 0;
 }

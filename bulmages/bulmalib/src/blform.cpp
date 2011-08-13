@@ -77,6 +77,7 @@ Importa el script y lo lanza.
 
 */
 void BlForm::blScript(QObject * obj) {
+    BL_FUNC_DEBUG
     
     QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+metaObject()->className()+".qs";
     QFile scriptFile1(fileName);

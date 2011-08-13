@@ -407,6 +407,15 @@ BEGIN
     END IF;
 
 
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''cuotaporactividad'';
+    IF NOT FOUND THEN
+        CREATE TABLE cuotaporactividad (
+            numactividadescuotaporactividad INTEGER NOT NULL PRIMARY KEY,
+            descuentocuotaporactividad NUMERIC (12,2) DEFAULT 0
+        );
+    END IF;
+
+
     SELECT INTO rsa * FROM pg_tables  WHERE tablename=''jdirectiva'';
     IF NOT FOUND THEN
         CREATE TABLE jdirectiva (

@@ -146,39 +146,51 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 	  } // end if
 	  
 	  cur1 = mainCompany() -> loadQuery(query);
-	  if (! cur1->eof() ) {
+	  while (! cur1 -> eof () ) {
+		
 	      /// Calculamos la cuota correspondiente aplicando los descuentos que toca.
 	      BlFixed cuota(cur1->value("precioactividad"));
+	      BlFixed cuotaorig(cur1->value("precioactividad"));
 	      int numerodehijos = cur1->numregistros();
 	      query = "SELECT * FROM cuotaporalumno WHERE numalumnoscuotaporalumno = " + QString::number(numerodehijos);
 	      BlDbRecordSet * curcuota = mainCompany()->loadQuery(query);
 	      if ( ! curcuota -> eof() ) {
 		  BlFixed reduccionporhijos = curcuota->value("descuentocuotaporalumno");
-		  cuota = cuota - cuota * reduccionporhijos / 100;
+		  cuota = cuota - cuotaorig * reduccionporhijos / 100;
 	      } // end if
 	      delete curcuota;
+	    
+	      /// Calculamos el descuento pertinente segun el numero de actividades que realiza.
+	      query = "SELECT COALESCE(count(idalumnoactividad), 0) AS numactividades FROM alumnoactividad WHERE idalumno = " + cur1->value("idalumno");
+	      BlDbRecordSet * curnumactividades = mainCompany() -> loadQuery(query);
+	      query = "SELECT * FROM cuotaporactividad WHERE numactividadescuotaporactividad = " + curnumactividades->value("numactividades");
+	      delete curnumactividades;
+	      BlDbRecordSet * curdesporactividades = mainCompany() -> loadQuery(query);
+	      if ( ! curdesporactividades -> eof() ) {
+		  BlFixed reduccionporactividades = curdesporactividades->value("descuentocuotaporactividad");
+		  cuota = cuota - cuotaorig * reduccionporactividades / 100;
+	      } // end if
+	      delete curdesporactividades;
+	    
+	      query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cuota.toQString('.') + ", '"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+" ')";
+	      mainCompany() -> runQuery(query);
+	      mui_log->append("<H3>"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+"</H3>");
+	      cur1 -> nextRecord();
+	      haylineas = TRUE;
+
+
 	      
-	      while (! cur1 -> eof () ) {
-		  query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cuota.toQString('.') + ", '"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+" ')";
-		  mainCompany() -> runQuery(query);
-		  mui_log->append("<H3>"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+"</H3>");
-		  cur1 -> nextRecord();
-		  haylineas = TRUE;
+	      // Si queremos recibos separados por todo ... entonces creamos un nuevo recibo y damos el anterior por cerrado.
+	      if (!mui_recibounico->isChecked()) {
+		  QString query = "INSERT INTO recibo(descrecibo, idcliente) VALUES ('Recibo automático', " + cur->value("idcliente") + ")";
+		  mainCompany()-> runQuery(query);
+		  BlDbRecordSet *cur1 = mainCompany()->loadQuery("SELECT MAX(idrecibo) AS id FROM recibo");
+		  idrecibo = cur1->value("id");
+		  delete cur1;
+	      } // end if
 
-
-		  
-		  // Si queremos recibos separados por todo ... entonces creamos un nuevo recibo y damos el anterior por cerrado.
-		  if (!mui_recibounico->isChecked()) {
-		      QString query = "INSERT INTO recibo(descrecibo, idcliente) VALUES ('Recibo automático', " + cur->value("idcliente") + ")";
-		      mainCompany()-> runQuery(query);
-		      BlDbRecordSet *cur1 = mainCompany()->loadQuery("SELECT MAX(idrecibo) AS id FROM recibo");
-		      idrecibo = cur1->value("id");
-		      delete cur1;
-		  } // end if
-
-		  
-	      } // end while
-	  } // end if
+	      
+	  } // end while
 	} // end if
 
 
