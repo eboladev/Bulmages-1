@@ -235,7 +235,7 @@ void BlForm::loadSpecs()
             while ( !restrict.isNull() ) {
                 QString trestrict = restrict.text();
                 if ( trestrict == "DBNOTHING" ) {
-                    restricciones |= BlDbField::DbVarChar;
+                    restricciones |= BlDbField::DbNothing;
                 } else if ( trestrict == "DBNOTNULL" ) {
                     restricciones |= BlDbField::DbNotNull;
                 } else if ( trestrict == "DBPRIMARYKEY" ) {
@@ -299,11 +299,11 @@ void BlForm::generaCampo ( const QString &objname, const QString &textname, cons
 
     if ( type == "DBDATE" ) {
         BlDateSearch * bus = new BlDateSearch ( frame );
-        bus->setObjectName ( objname );
+        bus->setObjectName ( "mui_" + objname );
         hboxLayout160->addWidget ( bus );
     } else {
         QLineEdit *bus = new QLineEdit ( frame );
-        bus->setObjectName ( objname );
+        bus->setObjectName ( "mui_" + objname );
         hboxLayout160->addWidget ( bus );
     } // end if
     vboxl->addLayout ( hboxLayout160 );
