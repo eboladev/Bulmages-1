@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-08-16 13:08+0200\n"
-"PO-Revision-Date: 2011-03-11 14:53+0100\n"
+"PO-Revision-Date: 2011-08-16 18:23+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
 "Language: Catalan\n"
@@ -14,13 +14,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ui_articleeditbase.h:650 ui_tiposarticulobase.h:264 ui_familiasbase.h:371
-#, fuzzy
 msgid "&Aceptar"
 msgstr "&Accepta"
 
 #: pluginbf_articulo.cpp:58 pluginbf_articulo.cpp:64
 msgid "&Articulos"
-msgstr "&Article"
+msgstr "&Articles"
 
 #: ui_articleeditbase.h:651 ui_tiposarticulobase.h:265 ui_familiasbase.h:372
 msgid "&Cancelar"
@@ -49,7 +48,7 @@ msgstr "&Tipus d'article"
 #: tiposarticuloview.cpp:395 familiasview.cpp:502
 #, qt-format
 msgid "'%1' borrado."
-msgstr ""
+msgstr "'%1' esborrat."
 
 #: ui_tiposarticulobase.h:260 ui_familiasbase.h:359
 msgid "1"
@@ -69,11 +68,11 @@ msgstr "Activa el &control d'estoc."
 
 #: ui_articleeditbase.h:644
 msgid "Activar el control de stock para este articulo."
-msgstr "Activa el control de estoc per aquest artícle."
+msgstr "Activa el control de estoc per aquest article."
 
 #: ui_articleslistbase.h:334 ui_articleslistbase.h:337
 msgid "Actualizar listado"
-msgstr "Actual·litza llistat"
+msgstr "Actual·litza el llistat"
 
 #: ui_articleslistbase.h:289
 msgid "Alt+O"
@@ -123,7 +122,7 @@ msgstr "C&omponents"
 
 #: ui_articleeditbase.h:625
 msgid "Cam&biar imagen"
-msgstr "Can&viar imatge"
+msgstr "Can&via la imatge"
 
 #: comparticulolistview.cpp:44
 msgid "Cantidad de componente de articulo"
@@ -184,7 +183,7 @@ msgstr "Ctrl+S"
 
 #: ui_familiasbase.h:370
 msgid "Datos de la familia"
-msgstr ""
+msgstr "Dades de la família"
 
 #: tiposarticuloview.cpp:415
 msgid "Debe seleccionar un tipo"
@@ -220,7 +219,7 @@ msgstr "Descripció:"
 
 #: tiposarticuloview.cpp:388 familiasview.cpp:495
 msgid "Desea eliminar"
-msgstr "Desitgeu eliminar '"
+msgstr "Desitgeu eliminar"
 
 #: tiposarticuloview.cpp:295 familiasview.cpp:351
 msgid "Desea guardar los cambios?"
@@ -241,12 +240,12 @@ msgstr "Trieu el fitxer"
 
 #: articulolist.cpp:257 articulolist.cpp:283
 msgid "Error al abrir el archivo."
-msgstr ""
+msgstr "Error en obrir el fitxer."
 
 #: tiposarticuloview.cpp:397 familiasview.cpp:504
 #, qt-format
 msgid "Error al borrar '%1'."
-msgstr ""
+msgstr "Error en esborrar '%1'."
 
 #: articulolist.cpp:186
 msgid "Error al borrar el articulo"
@@ -278,15 +277,14 @@ msgstr "Error en la creació"
 
 #: articulolist.cpp:175
 msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-msgstr ""
-"Esteu a punt d'esborrar un article. Aquestes dades poden donar problemes."
+msgstr "Esteu a punt d'esborrar un article. Aquestes dades poden donar problemes."
 
 #: articuloview.cpp:391
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
 msgstr ""
-"Teniu seguretat d'esborrar\n"
+"Teniu la seguretat d'esborrar\n"
 "la imatge associada a aquest article?"
 
 #: ui_articleslistbase.h:353
@@ -339,7 +337,6 @@ msgid "Id"
 msgstr "Id"
 
 #: comparticulolistview.cpp:46
-#, fuzzy
 msgid "Id articulo"
 msgstr "<P> Article <B>"
 
@@ -493,11 +490,11 @@ msgstr "Pes (kg):"
 
 #: articuloview.cpp:75
 msgid "Peso unidad"
-msgstr ""
+msgstr "Pes unitat"
 
 #: pluginbf_articulo.cpp:116
 msgid "PluginBf_Articulo"
-msgstr ""
+msgstr "PluginBf_Articulo"
 
 #: ui_articleeditbase.h:634
 msgid "Precio venta. s/IVA:"
@@ -521,7 +518,7 @@ msgstr "Seleccioneu una empresa"
 
 #: articulolist.cpp:75
 msgid "Selector de articulos"
-msgstr "Selector de BulmaGés"
+msgstr "Selector d'articles"
 
 #: ui_familiasbase.h:366
 msgid "Servicio."
@@ -553,7 +550,7 @@ msgstr "Tipus d'IVA"
 
 #: ui_articleeditbase.h:635
 msgid "Tipo de I.V.A.:"
-msgstr "Tipus d'IVA"
+msgstr "Tipus d'IVA:"
 
 #: articuloview.cpp:68
 msgid "Tipo de articulo"
@@ -574,7 +571,7 @@ msgstr "Volum (cm3):"
 
 #: articuloview.cpp:76
 msgid "Volumen unidad"
-msgstr ""
+msgstr "Volum unitat"
 
 #: tiposarticuloview.cpp:398 familiasview.cpp:505
 msgid "no se ha podido borrar"
