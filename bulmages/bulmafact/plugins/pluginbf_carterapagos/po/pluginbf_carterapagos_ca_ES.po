@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-08-16 13:11+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2011-08-16 18:32+0200\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: CATALAN\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,19 +19,19 @@ msgstr ""
 
 #: pluginbf_carterapagos.cpp:55
 msgid "&Cartera de Pagos"
-msgstr ""
+msgstr "&Cartera de pagaments"
 
 #: pluginbf_carterapagos.cpp:53
 msgid "&Compras"
-msgstr ""
+msgstr "&Compres"
 
 #: q34view.cpp:354
 msgid "Banco del proveedor invalido en el pago."
-msgstr ""
+msgstr "Banc del proveïdor invalid en el pagament."
 
 #: q34view.cpp:330
 msgid "CIF del proveedor es demasiado largo."
-msgstr ""
+msgstr "CIF del proveïdor massa llarg."
 
 #: pluginbf_carterapagos.cpp:214
 msgid "Cantidad"
@@ -39,7 +39,7 @@ msgstr "Quantitat"
 
 #: pluginbf_carterapagos.cpp:56 pluginbf_carterapagos.cpp:57
 msgid "Cartera de Pagos"
-msgstr ""
+msgstr "Cartera de pagaments"
 
 #: vencimientopview.cpp:71
 msgid "Comentarios"
@@ -47,7 +47,7 @@ msgstr "Comentaris"
 
 #: q34view.cpp:186 q34view.cpp:202
 msgid "Cuenta bancaria supera longitud maxima."
-msgstr ""
+msgstr "Compte bancari supera longitud màxima."
 
 #: vencimientopview.cpp:70
 msgid "Descripcion"
@@ -55,24 +55,24 @@ msgstr "Descripció"
 
 #: pluginbf_carterapagos.cpp:95
 msgid "Dias tras Factura"
-msgstr ""
+msgstr "Dies després de la factura"
 
 #: q34view.cpp:142 q34view.cpp:223 q34view.cpp:243 q34view.cpp:263
 #: q34view.cpp:319 q34view.cpp:458
 msgid "El CIF del ordenante supera la longitud maxima."
-msgstr ""
+msgstr "El CIF de l'ordenant supera la longitud màxima."
 
 #: pluginbf_carterapagos.cpp:131
 msgid "El total de la factura es :"
-msgstr ""
+msgstr "El total de la factura és:"
 
 #: q34view.cpp:172
 msgid "Entidad bancaria supera longitud maxima."
-msgstr ""
+msgstr "Entitat bancària supera longitud màxima."
 
 #: q34view.cpp:541
 msgid "Error al guardar."
-msgstr ""
+msgstr "Error en desar."
 
 #: pluginbf_carterapagos.cpp:213
 msgid "Fecha"
@@ -80,11 +80,11 @@ msgstr "Data"
 
 #: vencimientopview.cpp:73
 msgid "Fecha Efectiva"
-msgstr ""
+msgstr "Data efectiva"
 
 #: vencimientopview.cpp:72
 msgid "Fecha de Vencimiento"
-msgstr ""
+msgstr "Data de venciment"
 
 #: pluginbf_carterapagos.cpp:97 pluginbf_carterapagos.cpp:215
 msgid "Forma de Pago"
@@ -92,43 +92,39 @@ msgstr "Forma de pagament"
 
 #: pluginbf_carterapagos.cpp:176
 msgid "Hay Vencimientos generados para esta factura. Que desea hacer?"
-msgstr ""
+msgstr "Hi ha venciments generats per a aquesta factura. Què desitgeu fer?"
 
 #: pluginbf_carterapagos.cpp:99 pluginbf_carterapagos.cpp:218
 msgid "ID Forma de Pago"
-msgstr ""
+msgstr "ID forma de pagament"
 
 #: pluginbf_carterapagos.cpp:94 pluginbf_carterapagos.cpp:212
 msgid "ID Vencimiento"
-msgstr ""
+msgstr "ID venciment"
 
 #: pluginbf_carterapagos.cpp:98 pluginbf_carterapagos.cpp:217
-#, fuzzy
 msgid "Id Articulo"
-msgstr "<P> Article <B>"
+msgstr "Id Article"
 
 #: pluginbf_carterapagos.cpp:219
-#, fuzzy
 msgid "Id Proveedor"
-msgstr "NIF del proveïdor"
+msgstr "ID del proveïdor"
 
 #: vencimientopview.cpp:68
-#, fuzzy
 msgid "Id pago"
-msgstr "<LI> Forma de pagament <B>"
+msgstr "Id pagament"
 
 #: q34view.cpp:179
 msgid "Oficina bancaria supera longitud maxima."
-msgstr ""
+msgstr "Oficina bancària supera longitud màxima."
 
 #: pluginbf_carterapagos.cpp:96
 msgid "Porcentaje"
-msgstr "Percentual"
+msgstr "Percentatge"
 
 #: pluginbf_carterapagos.cpp:216
-#, fuzzy
 msgid "Procesado"
-msgstr "Propietari"
+msgstr "Processat"
 
 #: vencimientopview.cpp:59 carterapagoslist.cpp:61
 msgid "Proveedor:"
@@ -136,17 +132,16 @@ msgstr "Proveïdor:"
 
 #: vencimientopview.cpp:69
 msgid "Referencia de Vencimiento"
-msgstr ""
+msgstr "Referència de venciment"
 
 #: vencimientopview.cpp:75
 msgid "cantidad de Vencimiento"
-msgstr ""
+msgstr "Quantitat de venciment"
 
 #: vencimientopview.cpp:74
 msgid "estado de Vencimiento"
-msgstr ""
+msgstr "Estat de venciment"
 
 #: vencimientopview.cpp:76
-#, fuzzy
 msgid "idproveedor de Vencimiento"
-msgstr "Data de l'assentament"
+msgstr "Id proveïdor de venciment"
