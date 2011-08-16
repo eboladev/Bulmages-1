@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:14+0200\n"
+"POT-Creation-Date: 2011-08-16 13:05+0200\n"
 "PO-Revision-Date: 2011-01-25 09:47+0100\n"
 "Last-Translator: Girard Henri <aisen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
@@ -49,10 +49,10 @@ msgstr "&Canal par défaut"
 msgid "&Canales"
 msgstr "&Canaux"
 
-#: ui_bctipoivabase.h:271 ui_bcmasapatrimoniallistbase.h:123
-#: ui_bccuentasanualesimprimirbase.h:203 bccentrocosteview.cpp:168
-#: bccentrocosteview.cpp:265 bccanalview.cpp:108 bccanalview.cpp:186
-#: bccanalview.cpp:213 bccanalview.cpp:238
+#: ui_bcmasapatrimoniallistbase.h:123 ui_bccuentasanualesimprimirbase.h:203
+#: ui_bctipoivabase.h:271 bccentrocosteview.cpp:168 bccentrocosteview.cpp:265
+#: bccanalview.cpp:108 bccanalview.cpp:186 bccanalview.cpp:213
+#: bccanalview.cpp:238
 msgid "&Cancelar"
 msgstr "&Annuler"
 
@@ -69,8 +69,8 @@ msgstr "&Entreprise"
 msgid "&Filtrar"
 msgstr "&Filtrer"
 
-#: ui_bcbulmacontbase.h:264 bcconfiguracionview.cpp:118
-#: bccentrocosteview.cpp:168 bccanalview.cpp:108 bccanalview.cpp:186
+#: ui_bcbulmacontbase.h:264 bccentrocosteview.cpp:168
+#: bcconfiguracionview.cpp:118 bccanalview.cpp:108 bccanalview.cpp:186
 msgid "&Guardar"
 msgstr "&Garder"
 
@@ -194,7 +194,7 @@ msgstr "A&ide"
 msgid "Acep&tar"
 msgstr "Accep&ter"
 
-#: ui_bccambiacuentabase.h:219 ui_bcmasapatrimonialbase.h:349
+#: ui_bcmasapatrimonialbase.h:349 ui_bccambiacuentabase.h:219
 msgid "Aceptar"
 msgstr "Accepter"
 
@@ -310,8 +310,8 @@ msgstr "Centre de finance"
 msgid "Centros de cos&te"
 msgstr "Cen&tre de finance"
 
-#: ui_bccanalseleccionarbase.h:98 ui_bccentrocosteseleccionarbase.h:99
-#: ui_bccentrocostebase.h:287 ui_bccambiacuentabase.h:220
+#: ui_bccentrocosteseleccionarbase.h:99 ui_bccambiacuentabase.h:220
+#: ui_bccanalseleccionarbase.h:98 ui_bccentrocostebase.h:287
 msgid "Cerrar"
 msgstr "Fermer"
 
@@ -381,7 +381,7 @@ msgstr "Ctrl+haut"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: ui_bccentrocostebase.h:273 ui_bcconfiguracionbase.h:247
+#: ui_bcconfiguracionbase.h:247 ui_bccentrocostebase.h:273
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -409,7 +409,7 @@ msgstr "Données :"
 msgid "Descripcion"
 msgstr "description"
 
-#: ui_bccentrocostebase.h:284 ui_bccanalbase.h:245
+#: ui_bccanalbase.h:245 ui_bccentrocostebase.h:284
 msgid "Descripcion:"
 msgstr "Description :"
 
@@ -417,9 +417,9 @@ msgstr "Description :"
 msgid "Desea guardar los cambios."
 msgstr "Sauvegarder les changements."
 
-#: bcconfiguracionview.cpp:117 bcformapagoview.cpp:147 bcformapagoview.cpp:209
-#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225 bctipoivaview.cpp:115
-#: bctipoivaview.cpp:158 bccanalview.cpp:237
+#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:225
+#: bcconfiguracionview.cpp:117 bctipoivaview.cpp:115 bctipoivaview.cpp:158
+#: bccanalview.cpp:237 bcformapagoview.cpp:147 bcformapagoview.cpp:209
 msgid "Desea guardar los cambios?"
 msgstr "Sauvegarder les changements ?"
 
@@ -475,13 +475,13 @@ msgstr "F1"
 msgid "F11"
 msgstr "F11"
 
-#: ui_bccambiacuentabase.h:216 ui_bccuentasanualesimprimirbase.h:198
-#: ui_bccuentasanualesimprimirbase.h:201
+#: ui_bccuentasanualesimprimirbase.h:198 ui_bccuentasanualesimprimirbase.h:201
+#: ui_bccambiacuentabase.h:216
 msgid "Fecha Final"
 msgstr "Date finale"
 
-#: ui_bccambiacuentabase.h:215 ui_bccuentasanualesimprimirbase.h:197
-#: ui_bccuentasanualesimprimirbase.h:200
+#: ui_bccuentasanualesimprimirbase.h:197 ui_bccuentasanualesimprimirbase.h:200
+#: ui_bccambiacuentabase.h:215
 msgid "Fecha Inicial"
 msgstr "Date initiale"
 
@@ -513,7 +513,7 @@ msgstr "Forme de &paiement"
 msgid "Formas de pago"
 msgstr "Forme de paiement"
 
-#: ui_bccentrocostebase.h:285 ui_bcmasapatrimonialbase.h:362
+#: ui_bcmasapatrimonialbase.h:362 ui_bccentrocostebase.h:285
 msgid "General"
 msgstr "Général"
 
@@ -593,7 +593,7 @@ msgstr "Début"
 msgid "Insertando el contenido del portapapeles..."
 msgstr "Insérer le contenu du bloc-notes..."
 
-#: ui_bccanalseleccionarbase.h:96 ui_bccentrocosteseleccionarbase.h:96
+#: ui_bccentrocosteseleccionarbase.h:96 ui_bccanalseleccionarbase.h:96
 msgid "Invertir"
 msgstr "Inverser"
 
@@ -659,8 +659,8 @@ msgstr ""
 msgid "No se pudo borrar el Centro de Coste"
 msgstr "Sélecteur du centre de finance"
 
-#: ui_bcmasapatrimonialbase.h:351 bcconfiguracionview.cpp:191
-#: bccentrocosteview.cpp:49 bccentrocosteview.cpp:76
+#: ui_bcmasapatrimonialbase.h:351 bccentrocosteview.cpp:49
+#: bccentrocosteview.cpp:76 bcconfiguracionview.cpp:191
 msgid "Nombre"
 msgstr "Nom"
 
@@ -676,7 +676,7 @@ msgstr "Type"
 msgid "Nombre de la forma de pago:"
 msgstr "Nom de la forme de paiement :"
 
-#: ui_bctipoivabase.h:267 ui_bccentrocostebase.h:283 ui_bccanalbase.h:244
+#: ui_bctipoivabase.h:267 ui_bccanalbase.h:244 ui_bccentrocostebase.h:283
 msgid "Nombre:"
 msgstr "Nom :"
 
@@ -763,11 +763,11 @@ msgstr "Enlever"
 msgid "Restan"
 msgstr "Soldes"
 
-#: ui_bccanalseleccionarbase.h:95 ui_bccentrocosteseleccionarbase.h:97
+#: ui_bccentrocosteseleccionarbase.h:97 ui_bccanalseleccionarbase.h:95
 msgid "S. Nada"
 msgstr "S. Rien"
 
-#: ui_bccanalseleccionarbase.h:97 ui_bccentrocosteseleccionarbase.h:98
+#: ui_bccentrocosteseleccionarbase.h:98 ui_bccanalseleccionarbase.h:97
 msgid "S. Todo"
 msgstr "S. Tout"
 
@@ -815,7 +815,7 @@ msgstr "Deuxième Période"
 msgid "Seguro que desea abandonar el programa "
 msgstr "Etes vous sûr de quitter le programme "
 
-#: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
+#: bccentrocosteseleccionarview.cpp:43 bccanalseleccionarview.cpp:45
 msgid "Seleccion"
 msgstr "Sélection"
 
@@ -835,7 +835,7 @@ msgstr "Suivant"
 msgid "Sopor&te"
 msgstr "Suppor&t"
 
-#: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
+#: bccentrocosteseleccionarview.cpp:43 bccanalseleccionarview.cpp:45
 msgid "Status"
 msgstr "Etat"
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:17+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: 2011-02-14 10:31+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
@@ -39,8 +39,8 @@ msgstr "&Oui"
 msgid "&Tarifas"
 msgstr "&Tarifs"
 
-#: ui_tarifalistbase.h:167 ui_tarifalistbase.h:170 ui_tarifabase.h:250
-#: ui_tarifabase.h:253
+#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
+#: ui_tarifalistbase.h:170
 msgid "Actualizar listado"
 msgstr "Actualiser la liste"
 
@@ -96,16 +96,16 @@ msgstr "Filtre d'articles"
 msgid "Guardar"
 msgstr "Sauvegarder"
 
-#: pluginbf_tarifa.cpp:159 listltarifaview.cpp:38 listltarifaview.cpp:62
+#: listltarifaview.cpp:38 listltarifaview.cpp:62 pluginbf_tarifa.cpp:159
 msgid "ID almacen"
 msgstr "ID du magasin"
 
-#: pluginbf_tarifa.cpp:156 listltarifaview.cpp:37 listltarifaview.cpp:61
+#: listltarifaview.cpp:37 listltarifaview.cpp:61 pluginbf_tarifa.cpp:156
 msgid "ID articulo"
 msgstr "ID article"
 
-#: pluginbf_tarifa.cpp:157 listltarifaview.cpp:39 listltarifaview.cpp:63
-#: tarifaview.cpp:50 tarifalistsubform.cpp:37
+#: tarifaview.cpp:50 tarifalistsubform.cpp:37 listltarifaview.cpp:39
+#: listltarifaview.cpp:63 pluginbf_tarifa.cpp:157
 msgid "ID tarifa"
 msgstr "Id tarif"
 
@@ -125,7 +125,7 @@ msgstr "Nom du magasin"
 msgid "Nombre articulo"
 msgstr "Nom de l'article"
 
-#: listltarifaview.cpp:65 tarifaview.cpp:51 tarifalistsubform.cpp:36
+#: tarifaview.cpp:51 tarifalistsubform.cpp:36 listltarifaview.cpp:65
 msgid "Nombre de la tarifa"
 msgstr "Nom du tarif"
 
@@ -157,8 +157,8 @@ msgstr "Pourcentage de variation"
 msgid "Precio de venta"
 msgstr "Prix de ventes"
 
-#: pluginbf_tarifa.cpp:158 tarifaview.cpp:47 tarifaview.cpp:102
-#: tarifaview.cpp:161 ui_tarifabase.h:234
+#: tarifaview.cpp:47 tarifaview.cpp:102 tarifaview.cpp:161
+#: pluginbf_tarifa.cpp:158 ui_tarifabase.h:234
 msgid "Tarifa"
 msgstr "Tarif"
 

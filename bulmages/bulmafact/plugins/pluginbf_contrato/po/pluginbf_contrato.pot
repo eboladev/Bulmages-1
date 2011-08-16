@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:21+0200\n"
+"POT-Creation-Date: 2011-08-16 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: contrato.cpp:39 contratoview.cpp:118
-msgid "Contrato"
+#: pluginbf_contrato.cpp:60
+msgid "&Ventas"
 msgstr ""
 
-#: contrato.cpp:42 listlincontratoview.cpp:47
-msgid "Id contrato"
+#: pluginbf_contrato.cpp:62
+msgid "&Contratos"
 msgstr ""
 
-#: contrato.cpp:43 contratoview.cpp:426
-msgid "Id cliente"
+#: pluginbf_contrato.cpp:63 pluginbf_contrato.cpp:64
+msgid "Listado de contratos"
 msgstr ""
 
-#: contrato.cpp:44
-msgid "Referencia contrato"
-msgstr ""
-
-#: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
-#: contrato.cpp:49 contrato.cpp:50
-msgid "Descripcion contrato"
+#: pluginbf_contrato.cpp:97 ui_contratoslistbase.h:255
+msgid "Contratos"
 msgstr ""
 
 #: listlincontratoview.cpp:40
@@ -66,72 +61,33 @@ msgstr ""
 msgid "PVPl contrato"
 msgstr ""
 
+#: listlincontratoview.cpp:47 contrato.cpp:42
+msgid "Id contrato"
+msgstr ""
+
 #: listlincontratoview.cpp:48
 msgid "Orden"
 msgstr ""
 
-#: contratoslist.cpp:63 contratoview.cpp:65
+#: contrato.cpp:39 contratoview.cpp:118
+msgid "Contrato"
+msgstr ""
+
+#: contrato.cpp:43 contratoview.cpp:426
+msgid "Id cliente"
+msgstr ""
+
+#: contrato.cpp:44
+msgid "Referencia contrato"
+msgstr ""
+
+#: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
+#: contrato.cpp:49 contrato.cpp:50
+msgid "Descripcion contrato"
+msgstr ""
+
+#: contratoview.cpp:65 contratoslist.cpp:63
 msgid "Cliente:"
-msgstr ""
-
-#: contratoslist.cpp:72
-msgid "Selector de contratos"
-msgstr ""
-
-#: contratoslist.cpp:105
-msgid "Error al borrar un contrato"
-msgstr ""
-
-#: contratoslist.cpp:113
-msgid "Listado de Contratos"
-msgstr ""
-
-#: contratoslist.cpp:331
-msgid "ID contrato"
-msgstr ""
-
-#: contratoslist.cpp:332
-msgid "Codigo"
-msgstr ""
-
-#: contratoslist.cpp:333
-msgid "C.I.F."
-msgstr ""
-
-#: contratoslist.cpp:334
-msgid "Referencia"
-msgstr ""
-
-#: contratoslist.cpp:335
-msgid "Nombre de contrato"
-msgstr ""
-
-#: contratoslist.cpp:336
-msgid "Nombre alternativo del contrato"
-msgstr ""
-
-#: contratoslist.cpp:337
-msgid "Fecha de alta del contrato"
-msgstr ""
-
-#: contratoslist.cpp:338 contratoslist.cpp:339
-msgid "Fecha de baja del contrato"
-msgstr ""
-
-#: pluginbf_contrato.cpp:60
-msgid "&Ventas"
-msgstr ""
-
-#: pluginbf_contrato.cpp:62
-msgid "&Contratos"
-msgstr ""
-
-#: pluginbf_contrato.cpp:63 pluginbf_contrato.cpp:64
-msgid "Listado de contratos"
-msgstr ""
-
-#: pluginbf_contrato.cpp:97 ui_contratoslistbase.h:255
-msgid "Contratos"
 msgstr ""
 
 #: contratoview.cpp:73
@@ -214,49 +170,48 @@ msgstr ""
 msgid "Id almacen"
 msgstr ""
 
-#: ui_contratoslistbase.h:258 ui_contratoslistbase.h:261
-msgid "Nuevo contrato"
+#: contratoslist.cpp:72
+msgid "Selector de contratos"
 msgstr ""
 
-#: ui_contratoslistbase.h:265 ui_contratoslistbase.h:268
-msgid "Editar contrato"
+#: contratoslist.cpp:105
+msgid "Error al borrar un contrato"
 msgstr ""
 
-#: ui_contratoslistbase.h:272 ui_contratoslistbase.h:275
-msgid "Borrar contrato"
+#: contratoslist.cpp:113
+msgid "Listado de Contratos"
 msgstr ""
 
-#: ui_contratoslistbase.h:279 ui_contratoslistbase.h:282
-msgid "Imprimir listado"
+#: contratoslist.cpp:331
+msgid "ID contrato"
 msgstr ""
 
-#: ui_contratoslistbase.h:286 ui_contratoslistbase.h:289
-msgid "Filtrar contratos"
+#: contratoslist.cpp:332
+msgid "Codigo"
 msgstr ""
 
-#: ui_contratoslistbase.h:293 ui_contratoslistbase.h:296
-msgid "Configurar listado"
+#: contratoslist.cpp:333
+msgid "C.I.F."
 msgstr ""
 
-#: ui_contratoslistbase.h:300 ui_contratoslistbase.h:303
-msgid "Actualizar listado"
+#: contratoslist.cpp:334
+msgid "Referencia"
 msgstr ""
 
-#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
-#: ui_contratobase.h:472
-msgid "Facturar Periodos Pendientes"
+#: contratoslist.cpp:335
+msgid "Nombre de contrato"
 msgstr ""
 
-#: ui_contratoslistbase.h:313
-msgid "Buscar:"
+#: contratoslist.cpp:336
+msgid "Nombre alternativo del contrato"
 msgstr ""
 
-#: ui_contratoslistbase.h:314
-msgid "Caducados"
+#: contratoslist.cpp:337
+msgid "Fecha de alta del contrato"
 msgstr ""
 
-#: ui_contratoslistbase.h:315
-msgid "Cliente"
+#: contratoslist.cpp:338 contratoslist.cpp:339
+msgid "Fecha de baja del contrato"
 msgstr ""
 
 #: ui_contratobase.h:453
@@ -269,6 +224,11 @@ msgstr ""
 
 #: ui_contratobase.h:462 ui_contratobase.h:465
 msgid "Borrar Contrato"
+msgstr ""
+
+#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
+#: ui_contratoslistbase.h:310
+msgid "Facturar Periodos Pendientes"
 msgstr ""
 
 #: ui_contratobase.h:475
@@ -317,4 +277,44 @@ msgstr ""
 
 #: ui_contratobase.h:492
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_contratoslistbase.h:258 ui_contratoslistbase.h:261
+msgid "Nuevo contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:265 ui_contratoslistbase.h:268
+msgid "Editar contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:272 ui_contratoslistbase.h:275
+msgid "Borrar contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:279 ui_contratoslistbase.h:282
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_contratoslistbase.h:286 ui_contratoslistbase.h:289
+msgid "Filtrar contratos"
+msgstr ""
+
+#: ui_contratoslistbase.h:293 ui_contratoslistbase.h:296
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_contratoslistbase.h:300 ui_contratoslistbase.h:303
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_contratoslistbase.h:313
+msgid "Buscar:"
+msgstr ""
+
+#: ui_contratoslistbase.h:314
+msgid "Caducados"
+msgstr ""
+
+#: ui_contratoslistbase.h:315
+msgid "Cliente"
 msgstr ""

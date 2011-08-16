@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:25+0200\n"
+"POT-Creation-Date: 2011-08-16 13:16+0200\n"
 "PO-Revision-Date: 2010-07-28 17:47+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
@@ -13,8 +13,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_presupuestocontablebase.h:364 ui_acontablebase.h:192
-#: ui_partidasbase.h:337
+#: ui_partidasbase.h:337 ui_presupuestocontablebase.h:364
+#: ui_acontablebase.h:192
 msgid "&Aceptar"
 msgstr "&Accepta"
 
@@ -22,8 +22,8 @@ msgstr "&Accepta"
 msgid "&Anotaciones contables"
 msgstr "&Apunts comptables"
 
-#: ui_presupuestocontablebase.h:365 ui_acontablebase.h:193
-#: ui_partidasbase.h:338
+#: ui_partidasbase.h:338 ui_presupuestocontablebase.h:365
+#: ui_acontablebase.h:193
 msgid "&Cancelar"
 msgstr "Cancel·la"
 
@@ -85,8 +85,8 @@ msgstr "Cerca:"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: presupuestocontableview.cpp:66 partidasview.cpp:50 partidasview.cpp:532
-#: presupuestocontablelist.cpp:226
+#: presupuestocontableview.cpp:66 presupuestocontablelist.cpp:226
+#: partidasview.cpp:50 partidasview.cpp:532
 msgid "Codigo"
 msgstr "Codi"
 
@@ -106,8 +106,8 @@ msgstr "Codi complet"
 msgid "Codigo reducido:"
 msgstr "Codi reduït:"
 
-#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
-#: acontableview.cpp:63
+#: acontableview.cpp:63 presupuestocontableview.cpp:58
+#: presupuestocontableview.cpp:67
 msgid "Concepto"
 msgstr "Concepte"
 
@@ -151,7 +151,7 @@ msgstr "Heu de seleccionar una partida"
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: ui_presupuestocontablebase.h:360 ui_partidasbase.h:333
+#: ui_partidasbase.h:333 ui_presupuestocontablebase.h:360
 msgid "Descripcion:"
 msgstr "Descripció"
 
@@ -203,7 +203,7 @@ msgstr "Error en crear la partida"
 msgid "Error al guardar la partida"
 msgstr "Error en desar la partida"
 
-#: presupuestocontableview.cpp:57 acontableview.cpp:60
+#: acontableview.cpp:60 presupuestocontableview.cpp:57
 msgid "Fecha"
 msgstr "Data"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:16+0200\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
 "PO-Revision-Date: 2011-06-08 09:15+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -210,8 +210,8 @@ msgstr "Concepto contable"
 msgid "Conciliacion"
 msgstr "Conciliación"
 
-#: ui_bcasientobase.h:524 ui_bcasientobase.h:527 ui_bcasientolistbase.h:491
-#: ui_bcasientolistbase.h:494
+#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
 msgid "Configurar"
 msgstr "Configurar"
 
@@ -243,7 +243,7 @@ msgstr "Ctrl+M"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bcasientobase.h:500 ui_bcasientointeligentebase.h:211
+#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -259,7 +259,7 @@ msgstr "Cuenta:"
 msgid "Datos del asiento:"
 msgstr "Datos del asiento:"
 
-#: bcasientolistsubform.cpp:42 bcasientosubform.cpp:45
+#: bcasientosubform.cpp:45 bcasientolistsubform.cpp:42
 msgid "Debe"
 msgstr "Debe"
 
@@ -311,8 +311,8 @@ msgstr "Exportar asiento"
 msgid "Extender asiento"
 msgstr "Extender asiento"
 
-#: bcasientolistsubform.cpp:38 bcasientosubform.cpp:40
-#: pluginbc_asiento.cpp:176
+#: bcasientosubform.cpp:40 pluginbc_asiento.cpp:176
+#: bcasientolistsubform.cpp:38
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -381,7 +381,7 @@ msgstr ""
 msgid "Ha habido un error al ordenar los asientos"
 msgstr ""
 
-#: bcasientolistsubform.cpp:43 bcasientosubform.cpp:46
+#: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
 msgid "Haber"
 msgstr "Haber"
 
@@ -405,7 +405,7 @@ msgstr "ID canal"
 msgid "Id apunte"
 msgstr "ID apunte"
 
-#: bcasientolistsubform.cpp:46 bcasientosubform.cpp:57 bcasientoform.cpp:45
+#: bcasientosubform.cpp:57 bcasientoform.cpp:45 bcasientolistsubform.cpp:46
 msgid "Id asiento"
 msgstr "ID asiento"
 
@@ -445,23 +445,23 @@ msgstr "La fecha inicial es posterior a la fecha final."
 msgid "Listado de asientos"
 msgstr "Listado de asientos"
 
-#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 #: bcasientosubform.cpp:89 bcasientosubform.cpp:106
+#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 msgid "Mostrar asiento"
 msgstr "Mostrar asiento"
 
-#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 #: bcasientosubform.cpp:93 bcasientosubform.cpp:112
+#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 msgid "Mostrar extracto (ano)"
 msgstr "Mostrar extracto (año)"
 
-#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
 #: bcasientosubform.cpp:91 bcasientosubform.cpp:108
+#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (dia)"
 msgstr "Mostrar extracto (día)"
 
-#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
 #: bcasientosubform.cpp:92 bcasientosubform.cpp:110
+#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
 msgid "Mostrar extracto (mes)"
 msgstr "Mostrar extracto (mes)"
 
@@ -486,7 +486,7 @@ msgstr "Nuevo asiento"
 msgid "Num. Factura"
 msgstr "Número de factura"
 
-#: bcasientolistsubform.cpp:37 bcasientosubform.cpp:55
+#: bcasientosubform.cpp:55 bcasientolistsubform.cpp:37
 msgid "Orden"
 msgstr "Orden"
 

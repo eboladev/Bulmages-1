@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listtipoivaview.cpp:49 listtipoivaview.cpp:106 listtasaivaview.cpp:95
+#: listtasaivaview.cpp:49
+msgid "Tasa IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:71
+msgid "Error al guardar las tasas de IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:94
+msgid "Id Tasa IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:95 listtipoivaview.cpp:49 listtipoivaview.cpp:106
 msgid "Tipo IVA"
 msgstr ""
 
-#: listtipoivaview.cpp:71
-msgid "Error al guardar los tipos de IVA"
+#: listtasaivaview.cpp:96 listtipoivaview.cpp:105
+msgid "Id Tipo IVA"
 msgstr ""
 
-#: listtipoivaview.cpp:105 listtasaivaview.cpp:96
-msgid "Id Tipo IVA"
+#: listtasaivaview.cpp:97
+msgid "Porcentaje IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:98
+msgid "Porcentaje Recargo Equivalencia"
+msgstr ""
+
+#: listtasaivaview.cpp:99
+msgid "Fecha Entrada en Vigor"
 msgstr ""
 
 #: pluginbf_iva.cpp:57
@@ -49,28 +69,8 @@ msgstr ""
 msgid "PluginBf_IVA"
 msgstr ""
 
-#: listtasaivaview.cpp:49
-msgid "Tasa IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:71
-msgid "Error al guardar las tasas de IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:94
-msgid "Id Tasa IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:97
-msgid "Porcentaje IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:98
-msgid "Porcentaje Recargo Equivalencia"
-msgstr ""
-
-#: listtasaivaview.cpp:99
-msgid "Fecha Entrada en Vigor"
+#: listtipoivaview.cpp:71
+msgid "Error al guardar los tipos de IVA"
 msgstr ""
 
 #: ui_listtasaivabase.h:119 ui_listtipoivabase.h:118

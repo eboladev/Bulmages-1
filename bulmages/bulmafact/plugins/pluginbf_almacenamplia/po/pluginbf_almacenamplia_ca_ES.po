@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,8 +69,8 @@ msgstr "<LI> Magatzem <B>"
 msgid "Almacenes"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_almaceneslistbase.h:349 ui_almaceneslistbase.h:352 ui_almacenbase.h:328
-#: ui_almacenbase.h:331
+#: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
+#: ui_almaceneslistbase.h:352
 #, fuzzy
 msgid "Borrar almacen"
 msgstr "Esborra albarà"
@@ -98,7 +98,7 @@ msgstr "Codi compte"
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_almaceneslistbase.h:355 ui_almacenbase.h:334
+#: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -222,7 +222,7 @@ msgstr "Nom del compte"
 msgid "Nombre almacen"
 msgstr "Nom del compte"
 
-#: ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336 ui_almacenbase.h:317
+#: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 #, fuzzy
 msgid "Nuevo almacen"
 msgstr "Nou assentament"

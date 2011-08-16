@@ -2,8 +2,8 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="&Asociaciados\Informes\Alumnos por actividad" -->
-  <template pageSize="(29.7cm, 21cm)" title="Alumnos por actividad" author="Tomeu Borras" allowSplitting="20">
+<!-- # pathtitle="&Associats\Informes\Alumnes per activitat" -->
+  <template pageSize="(29.7cm, 21cm)" title="Alumnes per activitat" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
     </pageTemplate>
@@ -44,14 +44,14 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Alumnos por actividad</para>
+    <para style="Standard">Alumnes per activitat</para>
              
 <!-- QUERY2="SELECT * FROM actividad ORDER BY nombreactividad"-->
 <para><H1>[nombreactividad]</H1></para>
 <!-- QUERY3="SELECT * FROM alumno WHERE idalumno IN (SELECT idalumno FROM alumnoactividad WHERE idactividad=[idactividad]) ORDER BY apellido1alumno" -->
 <blockTable style="Tabla1" colWidths="29cm">
   <tr>
-    <td> Alumno :     <para>[apellido1alumno] [apellido2alumno], [nombrealumno]  [fechanacimientoalumno] [movilalumno] [telalumno] [emailalumno]</para>
+    <td> Alumne/a :     <para>[apellido1alumno] [apellido2alumno], [nombrealumno]  [fechanacimientoalumno] [movilalumno] [telalumno] [emailalumno]</para>
 </td>
   </tr>
   
@@ -63,7 +63,7 @@
 
             <blockTable style="Tabla1" colWidths="19cm">
 	<tr>
-	  <td> Padre </td>
+	  <td> Pare/mare/tutor </td>
 	</tr>
       <!-- QUERY4="SELECT * FROM cliente WHERE  idcliente IN (SELECT idcliente from alumnocliente WHERE idalumno=[idalumno])" -->
 

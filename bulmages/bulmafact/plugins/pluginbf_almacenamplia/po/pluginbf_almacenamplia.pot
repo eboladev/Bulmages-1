@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,69 +85,8 @@ msgstr ""
 msgid "Error al crear el almacen."
 msgstr ""
 
-#: ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336 ui_almacenbase.h:317
+#: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 msgid "Nuevo almacen"
-msgstr ""
-
-#: ui_almaceneslistbase.h:339
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_almaceneslistbase.h:341 ui_almaceneslistbase.h:344
-msgid "Editar almacen"
-msgstr ""
-
-#: ui_almaceneslistbase.h:347
-msgid "Ctrl+E"
-msgstr ""
-
-#: ui_almaceneslistbase.h:349 ui_almaceneslistbase.h:352 ui_almacenbase.h:328
-#: ui_almacenbase.h:331
-msgid "Borrar almacen"
-msgstr ""
-
-#: ui_almaceneslistbase.h:355 ui_almacenbase.h:334
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_almaceneslistbase.h:357 ui_almaceneslistbase.h:360
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_almaceneslistbase.h:363
-msgid "Ctrl+P"
-msgstr ""
-
-#: ui_almaceneslistbase.h:365 ui_almaceneslistbase.h:368
-msgid "Filtrar pedidos"
-msgstr ""
-
-#: ui_almaceneslistbase.h:372 ui_almaceneslistbase.h:375
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_almaceneslistbase.h:379 ui_almaceneslistbase.h:382
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_almaceneslistbase.h:385
-msgid "F5"
-msgstr ""
-
-#: ui_almaceneslistbase.h:386
-msgid "Buscar:"
-msgstr ""
-
-#: ui_almaceneslistbase.h:387
-msgid "Mostrar:"
-msgstr ""
-
-#: ui_almaceneslistbase.h:388
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_almaceneslistbase.h:389
-msgid "Fecha final:"
 msgstr ""
 
 #: ui_almacenbase.h:320 ui_almacenbase.h:323
@@ -156,6 +95,15 @@ msgstr ""
 
 #: ui_almacenbase.h:326
 msgid "Ctrl+S"
+msgstr ""
+
+#: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
+#: ui_almaceneslistbase.h:352
+msgid "Borrar almacen"
+msgstr ""
+
+#: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
+msgid "Ctrl+D"
 msgstr ""
 
 #: ui_almacenbase.h:335
@@ -200,4 +148,56 @@ msgstr ""
 
 #: ui_almacenbase.h:346
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_almaceneslistbase.h:339
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_almaceneslistbase.h:341 ui_almaceneslistbase.h:344
+msgid "Editar almacen"
+msgstr ""
+
+#: ui_almaceneslistbase.h:347
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_almaceneslistbase.h:357 ui_almaceneslistbase.h:360
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_almaceneslistbase.h:363
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_almaceneslistbase.h:365 ui_almaceneslistbase.h:368
+msgid "Filtrar pedidos"
+msgstr ""
+
+#: ui_almaceneslistbase.h:372 ui_almaceneslistbase.h:375
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_almaceneslistbase.h:379 ui_almaceneslistbase.h:382
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_almaceneslistbase.h:385
+msgid "F5"
+msgstr ""
+
+#: ui_almaceneslistbase.h:386
+msgid "Buscar:"
+msgstr ""
+
+#: ui_almaceneslistbase.h:387
+msgid "Mostrar:"
+msgstr ""
+
+#: ui_almaceneslistbase.h:388
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_almaceneslistbase.h:389
+msgid "Fecha final:"
 msgstr ""

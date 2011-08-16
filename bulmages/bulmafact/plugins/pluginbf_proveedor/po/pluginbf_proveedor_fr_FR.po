@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: 2011-02-24 21:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -203,7 +203,7 @@ msgstr "C.I.F. du fournisseur"
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clé d'accès au web du fournisseur"
 
-#: providerslist.cpp:358 providerslist.cpp:362 provedit.cpp:61
+#: provedit.cpp:61 providerslist.cpp:358 providerslist.cpp:362
 msgid "Codigo"
 msgstr "Code"
 
@@ -215,11 +215,11 @@ msgstr "Code postal :"
 msgid "Codigo cliente"
 msgstr "Code client"
 
-#: providerslist.cpp:367 provedit.cpp:54
+#: provedit.cpp:54 providerslist.cpp:367
 msgid "Codigo postal"
 msgstr "Code postal "
 
-#: providerslist.cpp:364 provedit.cpp:59
+#: provedit.cpp:59 providerslist.cpp:364
 msgid "Comentarios"
 msgstr "Libellés"
 
@@ -255,7 +255,7 @@ msgstr "Di&visions"
 msgid "Direccio&n:"
 msgstr "&Adresse :"
 
-#: providerslist.cpp:365 provedit.cpp:51
+#: provedit.cpp:51 providerslist.cpp:365
 msgid "Direccion"
 msgstr "Adresse"
 
@@ -321,7 +321,7 @@ msgstr "Forme_paiement"
 msgid "Guardar proveedor"
 msgstr "Sauvegarder le fournisseur"
 
-#: providerslist.cpp:357 provedit.cpp:45
+#: provedit.cpp:45 providerslist.cpp:357
 msgid "ID proveedor"
 msgstr "ID fournisseur"
 
@@ -381,11 +381,11 @@ msgstr "Numero de &fax:"
 msgid "Numero de cuenta corriente"
 msgstr "Numéro de compte courant"
 
-#: providerslist.cpp:369 provedit.cpp:56
+#: provedit.cpp:56 providerslist.cpp:369
 msgid "Numero de fax"
 msgstr "Numéro de fax"
 
-#: providerslist.cpp:368 provedit.cpp:55
+#: provedit.cpp:55 providerslist.cpp:368
 msgid "Numero de telefono"
 msgstr "Numéro de téléphone"
 
@@ -397,7 +397,7 @@ msgstr "Page web :"
 msgid "Poblacio&n:"
 msgstr "Lieu :"
 
-#: providerslist.cpp:366 provedit.cpp:52
+#: provedit.cpp:52 providerslist.cpp:366
 msgid "Poblacion"
 msgstr "Ville"
 

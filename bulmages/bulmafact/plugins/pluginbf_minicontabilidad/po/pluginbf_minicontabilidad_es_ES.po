@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:25+0200\n"
+"POT-Creation-Date: 2011-08-16 13:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,8 +115,8 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_presupuestocontablebase.h:364 ui_acontablebase.h:192
-#: ui_partidasbase.h:337
+#: ui_partidasbase.h:337 ui_presupuestocontablebase.h:364
+#: ui_acontablebase.h:192
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -124,8 +124,8 @@ msgstr "&Aceptar"
 msgid "&Anotaciones contables"
 msgstr ""
 
-#: ui_presupuestocontablebase.h:365 ui_acontablebase.h:193
-#: ui_partidasbase.h:338
+#: ui_partidasbase.h:338 ui_presupuestocontablebase.h:365
+#: ui_acontablebase.h:193
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -187,8 +187,8 @@ msgstr "Buscar:"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: presupuestocontableview.cpp:66 partidasview.cpp:50 partidasview.cpp:532
-#: presupuestocontablelist.cpp:226
+#: presupuestocontableview.cpp:66 presupuestocontablelist.cpp:226
+#: partidasview.cpp:50 partidasview.cpp:532
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -208,8 +208,8 @@ msgstr "Codigo completo:"
 msgid "Codigo reducido:"
 msgstr "Codigo reducido:"
 
-#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
-#: acontableview.cpp:63
+#: acontableview.cpp:63 presupuestocontableview.cpp:58
+#: presupuestocontableview.cpp:67
 msgid "Concepto"
 msgstr "Concepto"
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: ui_presupuestocontablebase.h:360 ui_partidasbase.h:333
+#: ui_partidasbase.h:333 ui_presupuestocontablebase.h:360
 msgid "Descripcion:"
 msgstr "Descripcion:"
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Error al guardar la partida"
 msgstr ""
 
-#: presupuestocontableview.cpp:57 acontableview.cpp:60
+#: acontableview.cpp:60 presupuestocontableview.cpp:57
 msgid "Fecha"
 msgstr "Fecha"
 

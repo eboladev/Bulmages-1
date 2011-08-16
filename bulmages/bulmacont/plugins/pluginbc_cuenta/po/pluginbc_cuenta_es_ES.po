@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:16+0200\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
 "PO-Revision-Date: 2009-12-30 14:15+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -70,7 +70,7 @@ msgstr "&Plan Contable"
 msgid "&Siguiente"
 msgstr ""
 
-#: ui_bccuentalistbase.h:246 ui_bcplancontablelistbase.h:349
+#: ui_bcplancontablelistbase.h:349 ui_bccuentalistbase.h:246
 msgid "1"
 msgstr "1"
 
@@ -106,8 +106,8 @@ msgstr "8"
 msgid "A&ctivo"
 msgstr "A&ctivo"
 
-#: ui_bccuentalistbase.h:234 ui_bccuentalistbase.h:237
 #: ui_bcplancontablelistbase.h:336 ui_bcplancontablelistbase.h:339
+#: ui_bccuentalistbase.h:234 ui_bccuentalistbase.h:237
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
@@ -139,7 +139,7 @@ msgstr "Artículos"
 msgid "Banco de la cuenta"
 msgstr "Banco de la cuenta"
 
-#: bccuentaview.cpp:48 bcplancontablelistview.cpp:55 ui_bccuentabase.h:820
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:48 ui_bccuentabase.h:820
 msgid "Bloqueada"
 msgstr "Bloqueada"
 
@@ -147,8 +147,8 @@ msgstr "Bloqueada"
 msgid "Borrar articulo"
 msgstr "Borrar artículo"
 
-#: bcplancontablelistview.cpp:484 ui_bccuentabase.h:809
-#: ui_bcplancontablelistbase.h:306 ui_bcplancontablelistbase.h:309
+#: bcplancontablelistview.cpp:484 ui_bcplancontablelistbase.h:306
+#: ui_bcplancontablelistbase.h:309 ui_bccuentabase.h:809
 msgid "Borrar cuenta"
 msgstr "Borrar cuenta"
 
@@ -201,7 +201,7 @@ msgstr ""
 msgid "Codigo Cuenta"
 msgstr "Código cuenta"
 
-#: bccuentaview.cpp:44 bcplancontablelistview.cpp:55
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:44
 msgid "Codigo cuenta"
 msgstr "Código cuenta"
 
@@ -229,7 +229,7 @@ msgstr "Configurar listado"
 msgid "Correo electronico:"
 msgstr "Correo electrónico:"
 
-#: ui_bccuentabase.h:812 ui_bcplancontablelistbase.h:312
+#: ui_bcplancontablelistbase.h:312 ui_bccuentabase.h:812
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -249,7 +249,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: bccuentaview.cpp:38 bcplancontablelistview.cpp:48 ui_bccuentabase.h:794
+#: bcplancontablelistview.cpp:48 bccuentaview.cpp:38 ui_bccuentabase.h:794
 msgid "Cuenta"
 msgstr "Cuenta"
 
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Datos de la cuenta:"
 msgstr "Datos de la cuenta:"
 
-#: bccuentaview.cpp:53 bcplancontablelistview.cpp:55
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:53
 msgid "Debe"
 msgstr "Debe"
 
@@ -334,7 +334,7 @@ msgstr "Grupo"
 msgid "Guardar cuenta"
 msgstr "Guardar cuenta"
 
-#: bccuentaview.cpp:54 bcplancontablelistview.cpp:55
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:54
 msgid "Haber"
 msgstr "Haber"
 
@@ -342,7 +342,7 @@ msgstr "Haber"
 msgid "Haber:"
 msgstr "Haber:"
 
-#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:390
+#: bcplancontablelistview.cpp:55 bccuentalistview.cpp:390 bccuentaview.cpp:43
 msgid "ID cuenta"
 msgstr "ID cuenta"
 
@@ -358,7 +358,7 @@ msgstr "Imprimir cuentas"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: bccuentaview.cpp:47 bcplancontablelistview.cpp:55
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:47
 msgid "Imputacion"
 msgstr "Imputación"
 
@@ -464,7 +464,7 @@ msgstr "Provincia:"
 msgid "Reg&ularizacion"
 msgstr "Reg&ularización"
 
-#: bccuentaview.cpp:51 bcplancontablelistview.cpp:55
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:51
 msgid "Regularizacion"
 msgstr "Regularización"
 

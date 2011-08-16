@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:17+0200\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,6 +43,120 @@ msgstr ""
 
 #: main.cxx:194
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
+msgstr ""
+
+#: ui_bfbulmafactbase.h:170
+msgid "Iglues/BulmaFact - Facturacion GPL"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:171
+msgid "&Salir del programa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:172
+msgid "Ctrl+Q"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:173
+msgid "&Propiedades de la empresa..."
+msgstr ""
+
+#: ui_bfbulmafactbase.h:175 ui_bfconfiguracionbase.h:302
+msgid "Propiedades de la empresa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:177
+msgid "Ventana &completa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:178
+msgid "F11"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:179
+msgid "&Acerca de Iglues/BulmaFact"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:180
+msgid "&Documentacion"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:181
+msgid "F1"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:182
+msgid "&Indexador"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:183 ui_bfbulmafactbase.h:185
+msgid "Indexador"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:187
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:188
+msgid "Organizacio&n en cascada"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:189
+msgid "Ordenar &ventanas"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:190 ui_bfbulmafactbase.h:191
+msgid "Paises / Provincias"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:193
+msgid "Paises y provincias"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:195
+msgid "Modo Experto"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:196
+msgid "A&yuda"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:197
+msgid "E&mpresa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:198
+msgid "Maest&ro"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:199
+msgid "Venta&na"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:200 ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:205
+#: ui_bfbulmafactbase.h:208 ui_bfbulmafactbase.h:211 ui_bfbulmafactbase.h:214
+msgid "Listados"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:216 ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221
+#: ui_bfbulmafactbase.h:224 ui_bfbulmafactbase.h:227 ui_bfbulmafactbase.h:230
+msgid "Fichas"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:232
+msgid "Avanzados"
+msgstr ""
+
+#: ui_bfseriefacturabase.h:83
+msgid "Series de factura"
+msgstr ""
+
+#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:304
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:303
+msgid "&Aceptar"
 msgstr ""
 
 #: ui_bfaboutbase.h:301
@@ -101,16 +215,16 @@ msgstr ""
 msgid "&Cerrar"
 msgstr ""
 
-#: ui_bfconfiguracionbase.h:302 ui_bfbulmafactbase.h:170
-msgid "Propiedades de la empresa"
+#: ui_bfbuscarreferenciabase.h:90
+msgid "Form1"
 msgstr ""
 
-#: ui_bfconfiguracionbase.h:303 ui_bfseriefacturabase.h:85
-msgid "&Aceptar"
+#: ui_bfbuscarreferenciabase.h:92
+msgid "Informe por referencia"
 msgstr ""
 
-#: ui_bfconfiguracionbase.h:304 ui_bfseriefacturabase.h:84
-msgid "&Cancelar"
+#: ui_bfbuscarreferenciabase.h:95
+msgid "Abre todos los documentos con esta referencia"
 msgstr ""
 
 #: ui_bfconfiguracionbase.h:306 bfconfiguracionview.cpp:216
@@ -165,146 +279,24 @@ msgstr ""
 msgid "Configuracion avanzada"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:165
-msgid "Iglues/BulmaFact - Facturacion GPL"
+#: bfaboutview.cpp:44
+msgid "Compilado usando la version de QT:"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:166
-msgid "&Salir del programa"
+#: bfaboutview.cpp:418
+msgid "Idiomas y traducciones:"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:167
-msgid "Ctrl+Q"
+#: bfaboutview.cpp:420
+msgid "Idioma:"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:168
-msgid "&Propiedades de la empresa..."
-msgstr ""
-
-#: ui_bfbulmafactbase.h:172
-msgid "Ventana &completa"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:173
-msgid "F11"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:174
-msgid "&Acerca de Iglues/BulmaFact"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:175
-msgid "&Documentacion"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:176
-msgid "F1"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:177
-msgid "&Indexador"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:178 ui_bfbulmafactbase.h:180
-msgid "Indexador"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:182
-msgid "Ctrl+I"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:183
-msgid "Organizacio&n en cascada"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:184
-msgid "Ordenar &ventanas"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
-msgid "Paises / Provincias"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:188
-msgid "Paises y provincias"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:190
-msgid "A&yuda"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:191
-msgid "E&mpresa"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:192
-msgid "Maest&ro"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:193
-msgid "Venta&na"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:194 ui_bfbulmafactbase.h:196 ui_bfbulmafactbase.h:199
-#: ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:205 ui_bfbulmafactbase.h:208
-msgid "Listados"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
-#: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
-msgid "Fichas"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:226
-msgid "Avanzados"
-msgstr ""
-
-#: ui_bfbuscarreferenciabase.h:90
-msgid "Form1"
-msgstr ""
-
-#: ui_bfbuscarreferenciabase.h:92
-msgid "Informe por referencia"
-msgstr ""
-
-#: ui_bfbuscarreferenciabase.h:95
-msgid "Abre todos los documentos con esta referencia"
-msgstr ""
-
-#: ui_bfseriefacturabase.h:83
-msgid "Series de factura"
-msgstr ""
-
-#: bfbuscarreferencia.cpp:69
-msgid "Informe"
-msgstr ""
-
-#: bfbuscarreferencia.cpp:70
-msgid "Referencia"
+#: bfaboutview.cpp:422
+msgid "Plugins:"
 msgstr ""
 
 #: bfbuscarfamilia.cpp:36
 msgid "Familia:"
-msgstr ""
-
-#: bfbulmafact.cpp:193
-msgid "Seguro que desea abandonar el programa "
-msgstr ""
-
-#: bfbulmafact.cpp:194
-msgid "Se perderan los cambios no guardados"
-msgstr ""
-
-#: bfbuscartipoarticulo.cpp:37
-msgid "Tipo Articulo:"
-msgstr ""
-
-#: bfconfiguracionview.cpp:52
-msgid "Configuracion"
-msgstr ""
-
-#: bfconfiguracionview.cpp:217
-msgid "Valor"
 msgstr ""
 
 #: bfinformereferencia.cpp:137 bfinformereferencia.cpp:170
@@ -338,8 +330,51 @@ msgstr ""
 msgid "Pagado"
 msgstr ""
 
+#: bfbuscartipoarticulo.cpp:37
+msgid "Tipo Articulo:"
+msgstr ""
+
+#: bfconfiguracionview.cpp:52
+msgid "Configuracion"
+msgstr ""
+
+#: bfconfiguracionview.cpp:217
+msgid "Valor"
+msgstr ""
+
+#: bfbulmafact.cpp:193
+msgid "Seguro que desea abandonar el programa "
+msgstr ""
+
+#: bfbulmafact.cpp:194
+msgid "Se perderan los cambios no guardados"
+msgstr ""
+
+#: bfsubform.cpp:215
+msgid ""
+"El codigo del articulo no existe.\n"
+"ATENCION: No se guadara bien el documento hasta que sea valido."
+msgstr ""
+
+#: bfsubform.cpp:629
+#, qt-format
+msgid "Columna: '%1', fila: '%2'."
+msgstr ""
+
 #: bfbuscaralmacen.cpp:103 bfbuscaralmacen.cpp:104
 msgid "Error al establecer el almacen."
+msgstr ""
+
+#: bfseriefacturaview.cpp:48
+msgid "Serie de Factura"
+msgstr ""
+
+#: bfseriefacturaview.cpp:80
+msgid "Codigo serie factura"
+msgstr ""
+
+#: bfseriefacturaview.cpp:81
+msgid "Descripcion serie factura"
 msgstr ""
 
 #: bfproveedoralbaransubform.cpp:47
@@ -394,6 +429,10 @@ msgstr ""
 msgid "Orden"
 msgstr ""
 
+#: bfcompany.cpp:99
+msgid "Facturacion GPL"
+msgstr ""
+
 #: bfform.cpp:458
 msgid "Descuento"
 msgstr ""
@@ -434,47 +473,12 @@ msgstr ""
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: bfaboutview.cpp:44
-msgid "Compilado usando la version de QT:"
+#: bfbuscarreferencia.cpp:69
+msgid "Informe"
 msgstr ""
 
-#: bfaboutview.cpp:418
-msgid "Idiomas y traducciones:"
-msgstr ""
-
-#: bfaboutview.cpp:420
-msgid "Idioma:"
-msgstr ""
-
-#: bfaboutview.cpp:422
-msgid "Plugins:"
-msgstr ""
-
-#: bfseriefacturaview.cpp:48
-msgid "Serie de Factura"
-msgstr ""
-
-#: bfseriefacturaview.cpp:80
-msgid "Codigo serie factura"
-msgstr ""
-
-#: bfseriefacturaview.cpp:81
-msgid "Descripcion serie factura"
-msgstr ""
-
-#: bfsubform.cpp:215
-msgid ""
-"El codigo del articulo no existe.\n"
-"ATENCION: No se guadara bien el documento hasta que sea valido."
-msgstr ""
-
-#: bfsubform.cpp:629
-#, qt-format
-msgid "Columna: '%1', fila: '%2'."
-msgstr ""
-
-#: bfcompany.cpp:99
-msgid "Facturacion GPL"
+#: bfbuscarreferencia.cpp:70
+msgid "Referencia"
 msgstr ""
 
 #: bfbuscararticulo.cpp:37

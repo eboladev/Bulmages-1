@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,8 +79,8 @@ msgstr "Albaran"
 msgid "Albaran ya existe"
 msgstr "Albaran ya existe"
 
-#: albaranclientelist.cpp:347 pluginbf_clientealbaran.cpp:62
-#: pluginbf_clientealbaran.cpp:63 ui_albaranclientelistbase.h:448
+#: pluginbf_clientealbaran.cpp:62 pluginbf_clientealbaran.cpp:63
+#: albaranclientelist.cpp:347 ui_albaranclientelistbase.h:448
 msgid "Albaranes a clientes"
 msgstr "Albaranes a clientes"
 
@@ -108,8 +108,8 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 #: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
+#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
@@ -125,7 +125,7 @@ msgstr "Cantidad"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: albaranclientelist.cpp:165 albaranclienteview.cpp:105
+#: albaranclienteview.cpp:105 albaranclientelist.cpp:165
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -197,8 +197,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: albaranclientelist.cpp:421 bfclientealbaransubform.cpp:49
-#: albaranclienteview.cpp:84
+#: albaranclienteview.cpp:84 albaranclientelist.cpp:421
+#: bfclientealbaransubform.cpp:49
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -327,8 +327,8 @@ msgstr "ID forma de pago"
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
-#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
-#: albaranclienteview.cpp:72
+#: albaranclienteview.cpp:72 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbaransubform.cpp:57
 msgid "Id albaran"
 msgstr "Id albaran"
 
@@ -393,7 +393,7 @@ msgstr "Nuevo albaran"
 msgid "Nuevo albaran a cliente"
 msgstr "Nuevo albaran a cliente"
 
-#: albaranclientelist.cpp:420 albaranclienteview.cpp:75
+#: albaranclienteview.cpp:75 albaranclientelist.cpp:420
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 

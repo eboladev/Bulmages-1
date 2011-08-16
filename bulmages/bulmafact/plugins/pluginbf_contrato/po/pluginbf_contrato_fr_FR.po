@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:21+0200\n"
+"POT-Creation-Date: 2011-08-16 13:11+0200\n"
 "PO-Revision-Date: 2011-02-10 17:33+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
@@ -79,7 +79,7 @@ msgstr "Quantité du contrat"
 msgid "Cliente"
 msgstr "Client"
 
-#: contratoslist.cpp:63 contratoview.cpp:65
+#: contratoview.cpp:65 contratoslist.cpp:63
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -148,8 +148,8 @@ msgstr "Erreur d'effacement d'un contrat"
 msgid "Error al crear la contrato"
 msgstr "Erreur en création du contrat"
 
-#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
-#: ui_contratobase.h:472
+#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
+#: ui_contratoslistbase.h:310
 msgid "Facturar Periodos Pendientes"
 msgstr "Facturer des Périodes en suspens"
 
@@ -197,7 +197,7 @@ msgstr "Id article"
 msgid "Id cliente"
 msgstr "Id client"
 
-#: contrato.cpp:42 listlincontratoview.cpp:47
+#: listlincontratoview.cpp:47 contrato.cpp:42
 msgid "Id contrato"
 msgstr "Id Contrat"
 

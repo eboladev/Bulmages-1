@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:17+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,106 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tarifalistview.cpp:43 pluginbf_tarifa.cpp:59 pluginbf_tarifa.cpp:60
-#: pluginbf_tarifa.cpp:139 ui_tarifalistbase.h:147
-msgid "Tarifas"
-msgstr ""
-
-#: tarifalistview.cpp:89 ui_tarifalistbase.h:149 ui_tarifalistbase.h:152
-msgid "Nueva tarifa"
-msgstr ""
-
-#: tarifalistview.cpp:109
-msgid "No ha seleccionado ninguna tarifa"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:54
-msgid "&Articulos"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:58
-msgid "&Tarifas"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:92
-msgid "plugintarifas"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:155
-msgid "ID variacion tarifa"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:156 listltarifaview.cpp:37 listltarifaview.cpp:61
-msgid "ID articulo"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:157 listltarifaview.cpp:39 listltarifaview.cpp:63
-#: tarifaview.cpp:50 tarifalistsubform.cpp:37
-msgid "ID tarifa"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:158 tarifaview.cpp:47 tarifaview.cpp:102
-#: tarifaview.cpp:161 ui_tarifabase.h:234
+#: tarifaview.cpp:47 tarifaview.cpp:102 tarifaview.cpp:161
+#: pluginbf_tarifa.cpp:158 ui_tarifabase.h:234
 msgid "Tarifa"
 msgstr ""
 
-#: pluginbf_tarifa.cpp:159 listltarifaview.cpp:38 listltarifaview.cpp:62
-msgid "ID almacen"
+#: tarifaview.cpp:50 tarifalistsubform.cpp:37 listltarifaview.cpp:39
+#: listltarifaview.cpp:63 pluginbf_tarifa.cpp:157
+msgid "ID tarifa"
 msgstr ""
 
-#: pluginbf_tarifa.cpp:160
-msgid "Almacen"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:161
-msgid "Cantidad mayor o igual que"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:162
-msgid "Porcentaje variacion"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:169
-msgid "Variacion de tarifas"
-msgstr ""
-
-#: pluginbf_tarifa.cpp:226 pluginbf_tarifa.cpp:227
-msgid "Error al guardar."
-msgstr ""
-
-#: pluginbf_tarifa.cpp:252 pluginbf_tarifa.cpp:253
-msgid "Error al borrar."
-msgstr ""
-
-#: listltarifaview.cpp:34
-msgid "Nombre tarifa"
-msgstr ""
-
-#: listltarifaview.cpp:35 listltarifaview.cpp:57
-msgid "Nombre almacen"
-msgstr ""
-
-#: listltarifaview.cpp:36 listltarifaview.cpp:60
-msgid "Precio de venta"
-msgstr ""
-
-#: listltarifaview.cpp:40 listltarifaview.cpp:64
-msgid "Num de linea"
-msgstr ""
-
-#: listltarifaview.cpp:41 listltarifaview.cpp:58
-msgid "Codigo completo del articulo"
-msgstr ""
-
-#: listltarifaview.cpp:42
-msgid "Nombre del articulo"
-msgstr ""
-
-#: listltarifaview.cpp:59
-msgid "Nombre articulo"
-msgstr ""
-
-#: listltarifaview.cpp:65 tarifaview.cpp:51 tarifalistsubform.cpp:36
+#: tarifaview.cpp:51 tarifalistsubform.cpp:36 listltarifaview.cpp:65
 msgid "Nombre de la tarifa"
 msgstr ""
 
@@ -144,13 +55,93 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: ui_tarifalistbase.h:155 ui_tarifalistbase.h:158
-msgid "Editar tarifa"
+#: tarifalistview.cpp:43 pluginbf_tarifa.cpp:59 pluginbf_tarifa.cpp:60
+#: pluginbf_tarifa.cpp:139 ui_tarifalistbase.h:147
+msgid "Tarifas"
 msgstr ""
 
-#: ui_tarifalistbase.h:167 ui_tarifalistbase.h:170 ui_tarifabase.h:250
-#: ui_tarifabase.h:253
-msgid "Actualizar listado"
+#: tarifalistview.cpp:89 ui_tarifalistbase.h:149 ui_tarifalistbase.h:152
+msgid "Nueva tarifa"
+msgstr ""
+
+#: tarifalistview.cpp:109
+msgid "No ha seleccionado ninguna tarifa"
+msgstr ""
+
+#: listltarifaview.cpp:34
+msgid "Nombre tarifa"
+msgstr ""
+
+#: listltarifaview.cpp:35 listltarifaview.cpp:57
+msgid "Nombre almacen"
+msgstr ""
+
+#: listltarifaview.cpp:36 listltarifaview.cpp:60
+msgid "Precio de venta"
+msgstr ""
+
+#: listltarifaview.cpp:37 listltarifaview.cpp:61 pluginbf_tarifa.cpp:156
+msgid "ID articulo"
+msgstr ""
+
+#: listltarifaview.cpp:38 listltarifaview.cpp:62 pluginbf_tarifa.cpp:159
+msgid "ID almacen"
+msgstr ""
+
+#: listltarifaview.cpp:40 listltarifaview.cpp:64
+msgid "Num de linea"
+msgstr ""
+
+#: listltarifaview.cpp:41 listltarifaview.cpp:58
+msgid "Codigo completo del articulo"
+msgstr ""
+
+#: listltarifaview.cpp:42
+msgid "Nombre del articulo"
+msgstr ""
+
+#: listltarifaview.cpp:59
+msgid "Nombre articulo"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:54
+msgid "&Articulos"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:58
+msgid "&Tarifas"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:92
+msgid "plugintarifas"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:155
+msgid "ID variacion tarifa"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:160
+msgid "Almacen"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:161
+msgid "Cantidad mayor o igual que"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:162
+msgid "Porcentaje variacion"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:169
+msgid "Variacion de tarifas"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:226 pluginbf_tarifa.cpp:227
+msgid "Error al guardar."
+msgstr ""
+
+#: pluginbf_tarifa.cpp:252 pluginbf_tarifa.cpp:253
+msgid "Error al borrar."
 msgstr ""
 
 #: ui_tarifabase.h:237 ui_tarifabase.h:240
@@ -159,6 +150,11 @@ msgstr ""
 
 #: ui_tarifabase.h:243 ui_tarifabase.h:246
 msgid "Borrar"
+msgstr ""
+
+#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
+#: ui_tarifalistbase.h:170
+msgid "Actualizar listado"
 msgstr ""
 
 #: ui_tarifabase.h:256
@@ -179,4 +175,8 @@ msgstr ""
 
 #: ui_tarifabase.h:260
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_tarifalistbase.h:155 ui_tarifalistbase.h:158
+msgid "Editar tarifa"
 msgstr ""

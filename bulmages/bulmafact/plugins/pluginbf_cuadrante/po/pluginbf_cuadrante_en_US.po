@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:23+0200\n"
+"POT-Creation-Date: 2011-08-16 13:13+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -37,18 +37,18 @@ msgstr ""
 msgid "&Herramientas"
 msgstr "&Tools"
 
-#: ui_cuadrantediariobase.h:285 ui_cuadrantebase.h:300
+#: ui_cuadrantebase.h:300 ui_cuadrantediariobase.h:285
 msgid "1"
 msgstr "1"
 
-#: ui_cuadrantediariobase.h:304 ui_cuadrantediariobase.h:307
-#: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271
+#: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271 ui_cuadrantediariobase.h:304
+#: ui_cuadrantediariobase.h:307
 msgid "Actualizar"
 msgstr "Update"
 
 #: cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
-#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadranteview.cpp:58
-#: cuadrante1view.cpp:58 ui_cuadrante1base.h:308
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
+#: cuadranteview.cpp:58 ui_cuadrante1base.h:308
 msgid "Almacen"
 msgstr "Warehouse"
 
@@ -111,12 +111,12 @@ msgstr ""
 msgid "Consulta: '%1'."
 msgstr ""
 
-#: ui_cuadrantediariobase.h:294 ui_cuadrantediariobase.h:302
-#: ui_cuadrantediariobase.h:310 ui_cuadrantediariobase.h:318
-#: ui_cuadrantediariobase.h:326 ui_cuadrantediariobase.h:334
-#: ui_cuadrantebase.h:258 ui_cuadrantebase.h:266 ui_cuadrantebase.h:274
-#: ui_cuadrantebase.h:282 ui_cuadrantebase.h:290 ui_cuadrantebase.h:298
-#: ui_cuadrante1base.h:327
+#: ui_cuadrante1base.h:327 ui_cuadrantebase.h:258 ui_cuadrantebase.h:266
+#: ui_cuadrantebase.h:274 ui_cuadrantebase.h:282 ui_cuadrantebase.h:290
+#: ui_cuadrantebase.h:298 ui_cuadrantediariobase.h:294
+#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
+#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
+#: ui_cuadrantediariobase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -124,8 +124,8 @@ msgstr "Ctrl+D"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: cuadrante1view.cpp:54 ui_cuadrantediariobase.h:281
-#: ui_cuadrantediariobase.h:282 ui_cuadrantebase.h:249
+#: cuadrante1view.cpp:54 ui_cuadrantebase.h:249 ui_cuadrantediariobase.h:281
+#: ui_cuadrantediariobase.h:282
 #, fuzzy
 msgid "Cuadrante"
 msgstr ""
@@ -143,12 +143,12 @@ msgstr ""
 msgid "Domingo"
 msgstr "Denomination"
 
-#: ui_cuadrantediariobase.h:288 ui_cuadrantediariobase.h:291
-#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:255
+#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:255 ui_cuadrantediariobase.h:288
+#: ui_cuadrantediariobase.h:291
 msgid "Editar"
 msgstr "Publish"
 
-#: cuadranteview.cpp:71 cuadrante1view.cpp:86
+#: cuadrante1view.cpp:86 cuadranteview.cpp:71
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error when creating the seat"
@@ -256,13 +256,13 @@ msgstr "ID article"
 msgid "ID trabajador"
 msgstr "Worker"
 
-#: ui_cuadrantediariobase.h:320 ui_cuadrantediariobase.h:323
-#: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287
+#: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287 ui_cuadrantediariobase.h:320
+#: ui_cuadrantediariobase.h:323
 msgid "Igual que la Semana Anterior"
 msgstr ""
 
-#: ui_cuadrantediariobase.h:296 ui_cuadrantediariobase.h:299
-#: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263
+#: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263 ui_cuadrantediariobase.h:296
+#: ui_cuadrantediariobase.h:299
 msgid "Imprimir"
 msgstr "Print"
 
@@ -270,8 +270,8 @@ msgstr "Print"
 msgid "Jueves"
 msgstr ""
 
-#: ui_cuadrantediariobase.h:312 ui_cuadrantediariobase.h:315
-#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279
+#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279 ui_cuadrantediariobase.h:312
+#: ui_cuadrantediariobase.h:315
 msgid "Limpiar Cuadrante"
 msgstr ""
 
@@ -302,8 +302,8 @@ msgstr "Worker"
 msgid "Normal"
 msgstr "Normal"
 
-#: ui_cuadrantediariobase.h:328 ui_cuadrantediariobase.h:331
-#: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295
+#: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295 ui_cuadrantediariobase.h:328
+#: ui_cuadrantediariobase.h:331
 msgid "Ocultar Panel"
 msgstr ""
 

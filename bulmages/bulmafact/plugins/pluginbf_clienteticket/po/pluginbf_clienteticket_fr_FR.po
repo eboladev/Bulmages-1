@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2011-02-10 07:59+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
@@ -103,7 +103,7 @@ msgstr "Quantité"
 msgid "Cliente"
 msgstr "Client"
 
-#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
+#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -175,8 +175,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Vous devez sélectionner une ligne"
 
-#: bfclientealbaransubform.cpp:49 ticketclienteview.cpp:80
-#: ticketclientelist.cpp:425
+#: ticketclientelist.cpp:425 ticketclienteview.cpp:80
+#: bfclientealbaransubform.cpp:49
 msgid "Descripcion"
 msgstr "Description "
 
@@ -304,8 +304,8 @@ msgstr "Id Forme de paiement"
 msgid "ID trabajador"
 msgstr "Id Ouvrier"
 
-#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
-#: ticketclienteview.cpp:68
+#: ticketclienteview.cpp:68 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbaransubform.cpp:57
 msgid "Id albaran"
 msgstr "Id bulletin"
 
@@ -362,7 +362,7 @@ msgstr "Nouveau bulletin"
 msgid "Nuevo ticket a cliente"
 msgstr "Nouveau ticket client"
 
-#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
+#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
 msgid "Numero de albaran"
 msgstr "Numéro du bulletin"
 
@@ -434,8 +434,8 @@ msgstr "Ticket"
 msgid "Ticket ya existe"
 msgstr "Le ticket existe déjà"
 
-#: pluginbf_clienteticket.cpp:61 pluginbf_clienteticket.cpp:62
-#: ticketclientelist.cpp:347
+#: ticketclientelist.cpp:347 pluginbf_clienteticket.cpp:61
+#: pluginbf_clienteticket.cpp:62
 msgid "Ticketes a clientes"
 msgstr "Tickets clients"
 

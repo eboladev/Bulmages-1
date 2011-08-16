@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,6 +121,22 @@ msgstr ""
 msgid "Comentarios"
 msgstr ""
 
+#: pluginbf_cliente.cpp:54
+msgid "&Ventas"
+msgstr ""
+
+#: pluginbf_cliente.cpp:59
+msgid "&Clientes"
+msgstr ""
+
+#: pluginbf_cliente.cpp:61 pluginbf_cliente.cpp:62 ui_clientslistbase.h:275
+msgid "Clientes"
+msgstr ""
+
+#: pluginbf_cliente.cpp:68
+msgid "&Nuevo cliente"
+msgstr ""
+
 #: clienteview.cpp:52 ui_clientebase.h:568
 msgid "Cliente"
 msgstr ""
@@ -179,22 +195,6 @@ msgstr ""
 
 #: clienteview.cpp:191
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-
-#: pluginbf_cliente.cpp:54
-msgid "&Ventas"
-msgstr ""
-
-#: pluginbf_cliente.cpp:59
-msgid "&Clientes"
-msgstr ""
-
-#: pluginbf_cliente.cpp:61 pluginbf_cliente.cpp:62 ui_clientslistbase.h:275
-msgid "Clientes"
-msgstr ""
-
-#: pluginbf_cliente.cpp:68
-msgid "&Nuevo cliente"
 msgstr ""
 
 #: ui_clientebase.h:571 ui_clientebase.h:574

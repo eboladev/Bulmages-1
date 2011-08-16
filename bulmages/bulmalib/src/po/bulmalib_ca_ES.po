@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:12+0200\n"
+"POT-Creation-Date: 2011-08-16 13:02+0200\n"
 "PO-Revision-Date: 2011-07-26 18:19+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu\n"
 "Language-Team: Catalan <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr "¡Opció reservada per a experts!"
 msgid "&Borrar"
 msgstr "Es&borra"
 
-#: ui_blcompanydialogbase.h:203 blform.cpp:462 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:463 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancel·la"
@@ -57,7 +57,7 @@ msgstr "&Entra"
 msgid "&Guardar"
 msgstr "Desa"
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&No"
 msgstr "&No"
 
@@ -65,7 +65,7 @@ msgstr "&No"
 msgid "&Omitir"
 msgstr "&Omet"
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&Si"
 msgstr "&Sí"
 
@@ -206,7 +206,7 @@ msgstr "Biennal"
 msgid "BlSearchWidget"
 msgstr "BlSearchWidget"
 
-#: blform.cpp:425 blformlist.cpp:449
+#: blform.cpp:426 blformlist.cpp:449
 msgid "Borrar"
 msgstr "Esborra"
 
@@ -340,11 +340,11 @@ msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Heu de seleccionar un element"
 
-#: blform.cpp:426
+#: blform.cpp:427
 msgid "Desea eliminar '"
 msgstr "Desitgeu eliminar '"
 
-#: blform.cpp:461 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:462 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "Desitgeu desar els canvis?"
 
@@ -485,7 +485,7 @@ msgstr ""
 msgid "Error en la insercion del campo al registro."
 msgstr "Error a la inserció de camp al registre."
 
-#: blform.cpp:926 blform.cpp:932
+#: blform.cpp:927 blform.cpp:933
 msgid "Error inesperado al guardar"
 msgstr "Error inesperat en desar"
 
@@ -554,7 +554,7 @@ msgstr "Form1"
 msgid "Forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: blform.cpp:460
+#: blform.cpp:461
 msgid "Guardar"
 msgstr "Desa"
 
@@ -579,7 +579,7 @@ msgstr "Id província"
 msgid "Imprimiendo "
 msgstr "Imprimint"
 
-#: blform.cpp:537
+#: blform.cpp:538
 msgid "Imprimir ficha"
 msgstr "Imprimeix fitxa"
 
@@ -665,7 +665,7 @@ msgstr ""
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "<P> No s'ha trobat el pare d'aquesta família.</P>"
 
-#: blform.cpp:436
+#: blform.cpp:437
 msgid "No se ha podido borrar"
 msgstr "No s'ha pogut esborrar"
 
@@ -673,7 +673,7 @@ msgstr "No s'ha pogut esborrar"
 msgid "No se ha podido cargar la libreria: "
 msgstr "No s'ha pogut carregar la llibreria"
 
-#: blform.cpp:475
+#: blform.cpp:476
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No s'ha pogut tancar la finestra a causa d'un error"
 
@@ -709,7 +709,7 @@ msgstr "Nou país"
 msgid "Omitir &clase"
 msgstr "Omet &classe"
 
-#: blform.cpp:534
+#: blform.cpp:535
 msgid "Opciones avanzadas de ficha"
 msgstr "Opcions avançades de fitxa"
 

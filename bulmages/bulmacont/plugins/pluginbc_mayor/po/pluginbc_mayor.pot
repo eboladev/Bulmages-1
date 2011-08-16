@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:16+0200\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,34 +213,6 @@ msgstr ""
 msgid "Mostrar diario (ano)"
 msgstr ""
 
-#: ui_bcextractoimprimirbase.h:135
-msgid "Impresion del Extracto"
-msgstr ""
-
-#: ui_bcextractoimprimirbase.h:136
-msgid "Formato:"
-msgstr ""
-
-#: ui_bcextractoimprimirbase.h:137
-msgid "&Texto Plano"
-msgstr ""
-
-#: ui_bcextractoimprimirbase.h:138
-msgid "HT&ML"
-msgstr ""
-
-#: ui_bcextractoimprimirbase.h:139
-msgid "Propietario"
-msgstr ""
-
-#: ui_bcextractoimprimirbase.h:140
-msgid "&Imprimir"
-msgstr ""
-
-#: ui_bcextractoimprimirbase.h:141
-msgid "&Cancelar"
-msgstr ""
-
 #: ui_bcextractobase.h:715
 msgid "Saldo inicial:"
 msgstr ""
@@ -359,4 +331,32 @@ msgstr ""
 
 #: ui_bcextractobase.h:795
 msgid "Saldo final:"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:135
+msgid "Impresion del Extracto"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:136
+msgid "Formato:"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:137
+msgid "&Texto Plano"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:138
+msgid "HT&ML"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:139
+msgid "Propietario"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:140
+msgid "&Imprimir"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:141
+msgid "&Cancelar"
 msgstr ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:16+0200\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
 "PO-Revision-Date: 2011-06-23 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: French <kde l10n>\n"
@@ -216,8 +216,8 @@ msgstr "Raison"
 msgid "Conciliacion"
 msgstr "Conciliation"
 
-#: ui_bcasientobase.h:524 ui_bcasientobase.h:527 ui_bcasientolistbase.h:491
-#: ui_bcasientolistbase.h:494
+#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
 msgid "Configurar"
 msgstr "Configurer"
 
@@ -249,7 +249,7 @@ msgstr "Ctrl+M"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bcasientobase.h:500 ui_bcasientointeligentebase.h:211
+#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -265,7 +265,7 @@ msgstr "Compte :"
 msgid "Datos del asiento:"
 msgstr "Date de l'écriture :"
 
-#: bcasientolistsubform.cpp:42 bcasientosubform.cpp:45
+#: bcasientosubform.cpp:45 bcasientolistsubform.cpp:42
 msgid "Debe"
 msgstr "Débit"
 
@@ -317,8 +317,8 @@ msgstr "Exporter l'écriture"
 msgid "Extender asiento"
 msgstr "Arborer l'écriture"
 
-#: bcasientolistsubform.cpp:38 bcasientosubform.cpp:40
-#: pluginbc_asiento.cpp:176
+#: bcasientosubform.cpp:40 pluginbc_asiento.cpp:176
+#: bcasientolistsubform.cpp:38
 msgid "Fecha"
 msgstr "Date"
 
@@ -389,7 +389,7 @@ msgstr "Il y avait une erreur lors de séparer les écritures"
 msgid "Ha habido un error al ordenar los asientos"
 msgstr "Il y avait une erreur lors de trier les écritures"
 
-#: bcasientolistsubform.cpp:43 bcasientosubform.cpp:46
+#: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
 msgid "Haber"
 msgstr "Crédit"
 
@@ -413,7 +413,7 @@ msgstr "ID canal"
 msgid "Id apunte"
 msgstr "ID NOTE"
 
-#: bcasientolistsubform.cpp:46 bcasientosubform.cpp:57 bcasientoform.cpp:45
+#: bcasientosubform.cpp:57 bcasientoform.cpp:45 bcasientolistsubform.cpp:46
 msgid "Id asiento"
 msgstr "ID de l'écriture"
 
@@ -453,23 +453,23 @@ msgstr "Date initiale postérieure à la date finale."
 msgid "Listado de asientos"
 msgstr "Liste des écritures"
 
-#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 #: bcasientosubform.cpp:89 bcasientosubform.cpp:106
+#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 msgid "Mostrar asiento"
 msgstr "Afficher l'écriture"
 
-#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 #: bcasientosubform.cpp:93 bcasientosubform.cpp:112
+#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 msgid "Mostrar extracto (ano)"
 msgstr "Afficher l'extrait (an)"
 
-#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
 #: bcasientosubform.cpp:91 bcasientosubform.cpp:108
+#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (dia)"
 msgstr "Afficher l'extrait (jour)"
 
-#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
 #: bcasientosubform.cpp:92 bcasientosubform.cpp:110
+#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
 msgid "Mostrar extracto (mes)"
 msgstr "Afficher l'extrait (mois)"
 
@@ -494,7 +494,7 @@ msgstr "Nouvelle écriture "
 msgid "Num. Factura"
 msgstr "Numéro de facture "
 
-#: bcasientolistsubform.cpp:37 bcasientosubform.cpp:55
+#: bcasientosubform.cpp:55 bcasientolistsubform.cpp:37
 msgid "Orden"
 msgstr "Ordre"
 

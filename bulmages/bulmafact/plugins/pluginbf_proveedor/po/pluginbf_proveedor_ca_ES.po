@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +108,7 @@ msgstr "NIF del proveïdor"
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clau d'accés a la web del proveïdor"
 
-#: providerslist.cpp:358 providerslist.cpp:362 provedit.cpp:61
+#: provedit.cpp:61 providerslist.cpp:358 providerslist.cpp:362
 msgid "Codigo"
 msgstr "Codi"
 
@@ -122,12 +122,12 @@ msgstr "Codi compte"
 msgid "Codigo cliente"
 msgstr "Codi compte"
 
-#: providerslist.cpp:367 provedit.cpp:54
+#: provedit.cpp:54 providerslist.cpp:367
 #, fuzzy
 msgid "Codigo postal"
 msgstr "Codi compte"
 
-#: providerslist.cpp:364 provedit.cpp:59
+#: provedit.cpp:59 providerslist.cpp:364
 #, fuzzy
 msgid "Comentarios"
 msgstr ""
@@ -172,7 +172,7 @@ msgstr "Di&visions"
 msgid "Direccio&n:"
 msgstr "Adreça:"
 
-#: providerslist.cpp:365 provedit.cpp:51
+#: provedit.cpp:51 providerslist.cpp:365
 #, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
@@ -247,7 +247,7 @@ msgstr "&Format:"
 msgid "Guardar proveedor"
 msgstr "Nom del proveïdor"
 
-#: providerslist.cpp:357 provedit.cpp:45
+#: provedit.cpp:45 providerslist.cpp:357
 #, fuzzy
 msgid "ID proveedor"
 msgstr "NIF del proveïdor"
@@ -317,12 +317,12 @@ msgstr "Nombre de quotes"
 msgid "Numero de cuenta corriente"
 msgstr "Codi de compte corrent.:"
 
-#: providerslist.cpp:369 provedit.cpp:56
+#: provedit.cpp:56 providerslist.cpp:369
 #, fuzzy
 msgid "Numero de fax"
 msgstr "Nombre de quotes"
 
-#: providerslist.cpp:368 provedit.cpp:55
+#: provedit.cpp:55 providerslist.cpp:368
 #, fuzzy
 msgid "Numero de telefono"
 msgstr "Nombre de quotes"
@@ -337,7 +337,7 @@ msgstr "URL de la pàgina web:"
 msgid "Poblacio&n:"
 msgstr "Pagi&nació:"
 
-#: providerslist.cpp:366 provedit.cpp:52
+#: provedit.cpp:52 providerslist.cpp:366
 #, fuzzy
 msgid "Poblacion"
 msgstr "Paginació"

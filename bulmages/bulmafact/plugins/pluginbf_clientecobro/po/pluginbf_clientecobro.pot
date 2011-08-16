@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,26 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_clientecobro.cpp:53
+msgid "&Ventas"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:58
+msgid "&Cobros de clientes"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:60 pluginbf_clientecobro.cpp:61
+msgid "Cobros de clientes"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:67
+msgid "&Nuevo cobro de cliente"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:69 pluginbf_clientecobro.cpp:70
+msgid "Nuevo cobro de cliente"
+msgstr ""
 
 #: cobroview.cpp:54 cobroslist.cpp:51 cobroslist.cpp:85
 msgid "Cliente:"
@@ -77,26 +97,6 @@ msgstr ""
 msgid ""
 "Toda la referencia esta cobrada. Se procesaran todos los documentos con esta "
 "referencia"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:53
-msgid "&Ventas"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:58
-msgid "&Cobros de clientes"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:60 pluginbf_clientecobro.cpp:61
-msgid "Cobros de clientes"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:67
-msgid "&Nuevo cobro de cliente"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:69 pluginbf_clientecobro.cpp:70
-msgid "Nuevo cobro de cliente"
 msgstr ""
 
 #: cobroslist.cpp:56

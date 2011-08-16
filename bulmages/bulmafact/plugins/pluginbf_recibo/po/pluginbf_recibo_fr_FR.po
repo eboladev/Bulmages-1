@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2011-02-14 08:33+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -73,7 +73,7 @@ msgstr "Effacer le reçu"
 msgid "Buscar:"
 msgstr "Chercher :"
 
-#: reciboslist.cpp:351 reciboview.cpp:53 emitirrecibosview.cpp:57
+#: reciboslist.cpp:351 emitirrecibosview.cpp:57 reciboview.cpp:53
 msgid "Cantidad"
 msgstr "Quantité"
 
@@ -97,7 +97,7 @@ msgstr "Configurer la liste"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_reciboslistbase.h:334 ui_recibobase.h:364
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -113,7 +113,7 @@ msgstr "Ctrl+F"
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_emitirrecibosbase.h:246 ui_reciboslistbase.h:318
+#: ui_emitirrecibosbase.h:250 ui_reciboslistbase.h:318
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
@@ -149,15 +149,15 @@ msgstr "Editer l'activité"
 msgid "Editar recibo"
 msgstr "Editer le reçu"
 
-#: ui_emitirrecibosbase.h:243
+#: ui_emitirrecibosbase.h:247
 msgid "Emiitr Recibos"
 msgstr "Créer le reçu"
 
-#: emitirrecibosview.cpp:53 ui_emitirrecibosbase.h:240
+#: emitirrecibosview.cpp:53 ui_emitirrecibosbase.h:244
 msgid "Emitir Recibos"
 msgstr "Créer le reçu"
 
-#: ui_emitirrecibosbase.h:247
+#: ui_emitirrecibosbase.h:251
 msgid "Emitir las Cuotas de Socios"
 msgstr "Créer les quotas sociaux"
 
@@ -165,11 +165,11 @@ msgstr "Créer les quotas sociaux"
 msgid "Emitir recibos"
 msgstr "Créer le reçu"
 
-#: ui_emitirrecibosbase.h:249
+#: ui_emitirrecibosbase.h:253
 msgid "Emitir sólo la actividad Seleccionada"
 msgstr "Créer seulement l'activité sélectionnée"
 
-#: ui_emitirrecibosbase.h:248
+#: ui_emitirrecibosbase.h:257
 msgid "Emitir todas las Actividades"
 msgstr "Créer toutes les activités"
 
@@ -177,7 +177,7 @@ msgstr "Créer toutes les activités"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
-#: reciboview.cpp:94 emitirrecibosview.cpp:73
+#: emitirrecibosview.cpp:73 reciboview.cpp:94
 msgid "Error al crear el recibo"
 msgstr "Erreur en création du reçu"
 
@@ -197,11 +197,11 @@ msgstr "Date"
 msgid "Fecha de creacion"
 msgstr "Date de création"
 
-#: ui_emitirrecibosbase.h:252 ui_reciboslistbase.h:307
+#: ui_emitirrecibosbase.h:254 ui_reciboslistbase.h:307
 msgid "Fecha final:"
 msgstr "Date finale :"
 
-#: ui_emitirrecibosbase.h:251 ui_reciboslistbase.h:306
+#: ui_emitirrecibosbase.h:252 ui_reciboslistbase.h:306
 msgid "Fecha inicial:"
 msgstr "Date initiale :"
 
@@ -237,7 +237,7 @@ msgstr "Id tuteur"
 msgid "ID cliente"
 msgstr "Id client"
 
-#: reciboview.cpp:52 reciboview.cpp:81 emitirrecibosview.cpp:56
+#: emitirrecibosview.cpp:56 reciboview.cpp:52 reciboview.cpp:81
 msgid "ID recibo"
 msgstr "Id reçu"
 
@@ -261,7 +261,7 @@ msgstr "Imprimer la liste"
 msgid "Mostrar"
 msgstr "Afficher "
 
-#: ui_emitirrecibosbase.h:250
+#: ui_emitirrecibosbase.h:256
 msgid "Notificar por e-mail"
 msgstr "Convoquer par courriel"
 
@@ -293,7 +293,11 @@ msgstr "Reçu"
 msgid "Recibo reemitido"
 msgstr "Reçu recrée"
 
-#: reciboslist.cpp:216 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
+#: ui_emitirrecibosbase.h:255
+msgid "Recibo único por padre/tutor"
+msgstr ""
+
+#: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
 #: ui_reciboslistbase.h:305
 msgid "Recibos"
 msgstr "Reçus"
@@ -302,7 +306,7 @@ msgstr "Reçus"
 msgid "Recibos &Automaticos"
 msgstr "Reçus &automatiques"
 
-#: ui_emitirrecibosbase.h:237
+#: ui_emitirrecibosbase.h:241
 msgid "Recibos Automaticos"
 msgstr "Reçus automatiques"
 
@@ -318,7 +322,7 @@ msgstr "Reçus payés"
 msgid "Reemitir Recibo"
 msgstr "Reçu recrée"
 
-#: emitirrecibosview.cpp:167
+#: emitirrecibosview.cpp:211
 msgid "Terminado"
 msgstr "Fini"
 

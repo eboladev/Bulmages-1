@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:21+0200\n"
+"POT-Creation-Date: 2011-08-16 13:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,42 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: listcoloresview.cpp:49 pluginbf_tallascolores.cpp:80
-#: pluginbf_tallascolores.cpp:81 ui_listcoloresbase.h:117
-msgid "Colores"
-msgstr ""
-
-#: listcoloresview.cpp:72 listtallasview.cpp:72
-msgid "Error al guardar los colores"
-msgstr ""
-
-#: listcoloresview.cpp:100
-msgid "Id Color"
-msgstr ""
-
-#: listcoloresview.cpp:101
-msgid "RGB Color"
-msgstr ""
-
-#: listcoloresview.cpp:102
-msgid "Nombre Color"
-msgstr ""
-
-#: listtallasview.cpp:49 pluginbf_tallascolores.cpp:73
-#: pluginbf_tallascolores.cpp:74 ui_listtallasbase.h:117
-msgid "Tallas"
-msgstr ""
-
-#: listtallasview.cpp:100
-msgid "Id color"
-msgstr ""
-
-#: listtallasview.cpp:101 pluginbf_tallascolores.cpp:140
-#: pluginbf_tallascolores.cpp:351 pluginbf_tallascolores.cpp:373
-#: pluginbf_tallascolores.cpp:396 pluginbf_tallascolores.cpp:425
-msgid "Nombre talla"
-msgstr ""
 
 #: pluginbf_tallascolores.cpp:67
 msgid "&Tallas y colores"
@@ -61,8 +25,18 @@ msgstr ""
 msgid "&Tallas"
 msgstr ""
 
+#: pluginbf_tallascolores.cpp:73 pluginbf_tallascolores.cpp:74
+#: listtallasview.cpp:49 ui_listtallasbase.h:117
+msgid "Tallas"
+msgstr ""
+
 #: pluginbf_tallascolores.cpp:79
 msgid "&Colores"
+msgstr ""
+
+#: pluginbf_tallascolores.cpp:80 pluginbf_tallascolores.cpp:81
+#: listcoloresview.cpp:49 ui_listcoloresbase.h:117
+msgid "Colores"
 msgstr ""
 
 #: pluginbf_tallascolores.cpp:133
@@ -89,6 +63,12 @@ msgstr ""
 msgid "Nombre color"
 msgstr ""
 
+#: pluginbf_tallascolores.cpp:140 pluginbf_tallascolores.cpp:351
+#: pluginbf_tallascolores.cpp:373 pluginbf_tallascolores.cpp:396
+#: pluginbf_tallascolores.cpp:425 listtallasview.cpp:101
+msgid "Nombre talla"
+msgstr ""
+
 #: pluginbf_tallascolores.cpp:151
 msgid "Tallas y colores"
 msgstr ""
@@ -100,6 +80,26 @@ msgstr ""
 #: pluginbf_tallascolores.cpp:348 pluginbf_tallascolores.cpp:370
 #: pluginbf_tallascolores.cpp:393 pluginbf_tallascolores.cpp:422
 msgid "Color"
+msgstr ""
+
+#: listcoloresview.cpp:72 listtallasview.cpp:72
+msgid "Error al guardar los colores"
+msgstr ""
+
+#: listcoloresview.cpp:100
+msgid "Id Color"
+msgstr ""
+
+#: listcoloresview.cpp:101
+msgid "RGB Color"
+msgstr ""
+
+#: listcoloresview.cpp:102
+msgid "Nombre Color"
+msgstr ""
+
+#: listtallasview.cpp:100
+msgid "Id color"
 msgstr ""
 
 #: ui_listtallasbase.h:118 ui_listcoloresbase.h:118

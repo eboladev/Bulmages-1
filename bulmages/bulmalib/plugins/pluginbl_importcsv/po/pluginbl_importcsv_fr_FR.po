@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:14+0200\n"
+"POT-Creation-Date: 2011-08-16 13:04+0200\n"
 "PO-Revision-Date: 2011-02-25 17:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pluginbl_importcsv.cpp:99
+#: pluginbl_importcsv.cpp:100
 msgid "&Herramientas"
 msgstr "&Outils"
 
@@ -24,31 +24,31 @@ msgstr "&Outils"
 msgid "&Importacion CSV"
 msgstr "&Importer le CSV"
 
-#: ui_importcsvbase.h:200
+#: ui_importcsvbase.h:235
 msgid "..."
 msgstr "..."
 
-#: ui_importcsvbase.h:207
+#: ui_importcsvbase.h:242
 msgid "Aceptar"
 msgstr "Accepter"
 
-#: importcsv.cpp:68
+#: importcsv.cpp:67
 msgid "All files (*)"
 msgstr "Tous les fichiers (*)"
 
-#: ui_importcsvbase.h:199
+#: ui_importcsvbase.h:234
 msgid "Archivo"
 msgstr "Fichier"
 
-#: ui_importcsvbase.h:208
+#: ui_importcsvbase.h:243
 msgid "Cancelar"
 msgstr "Annuler"
 
-#: ui_importcsvbase.h:203
+#: ui_importcsvbase.h:238
 msgid "Caracter separador"
 msgstr "Caractère de séparation"
 
-#: ui_importcsvbase.h:206
+#: ui_importcsvbase.h:241
 msgid "Composicion de Campos"
 msgstr "Composition des champs"
 
@@ -60,26 +60,30 @@ msgstr "Erreur en création de la fenêtre d'importation"
 msgid "Importacion CSV"
 msgstr "Importer le CSV"
 
-#: ui_importcsvbase.h:198
+#: importcsv.cpp:114
+msgid "Importacion realizada satisfactoriamente"
+msgstr ""
+
+#: ui_importcsvbase.h:232
 msgid "Importar CSV"
 msgstr "Importer le CSV"
 
-#: importcsv.cpp:68
+#: importcsv.cpp:67
 msgid "Open file"
 msgstr "Ouvrir le fichier"
 
-#: ui_importcsvbase.h:204
+#: ui_importcsvbase.h:239
 msgid "Primera fila son cabeceras"
 msgstr "La première ligne contient les entêtes"
 
-#: ui_importcsvbase.h:202
+#: ui_importcsvbase.h:237
 msgid "Separado por tabulador"
 msgstr "Séparer par tabulation"
 
-#: ui_importcsvbase.h:201
+#: ui_importcsvbase.h:236
 msgid "Separador de campos"
 msgstr "Séparateur de champs"
 
-#: ui_importcsvbase.h:205
+#: ui_importcsvbase.h:240
 msgid "Tabla Destino"
 msgstr "Table de destination"

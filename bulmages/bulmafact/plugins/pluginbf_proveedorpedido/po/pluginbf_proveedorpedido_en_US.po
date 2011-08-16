@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -303,8 +303,8 @@ msgstr ""
 msgid "Id forma de pago"
 msgstr "Mode of payment"
 
-#: listdescpedidoproveedorview.cpp:42 pedidosproveedorlist.cpp:342
-#: listlinpedidoproveedorview.cpp:50
+#: listdescpedidoproveedorview.cpp:42 listlinpedidoproveedorview.cpp:50
+#: pedidosproveedorlist.cpp:342
 #, fuzzy
 msgid "Id pedido"
 msgstr "Order"
@@ -409,8 +409,8 @@ msgstr "Supplier"
 msgid "Pedido procesado"
 msgstr "Pro&cessings"
 
-#: pedidosproveedorlist.cpp:197 pluginbf_proveedorpedido.cpp:56
-#: pluginbf_proveedorpedido.cpp:57 ui_pedidosproveedorlistbase.h:356
+#: pluginbf_proveedorpedido.cpp:56 pluginbf_proveedorpedido.cpp:57
+#: pedidosproveedorlist.cpp:197 ui_pedidosproveedorlistbase.h:356
 #, fuzzy
 msgid "Pedidos a proveedores"
 msgstr "Listing of Suppliers"

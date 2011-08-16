@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr "Quantitat"
 msgid "Cliente"
 msgstr "Client"
 
-#: ticketclienteview.cpp:103 ticketclientelist.cpp:165
+#: ticketclientelist.cpp:165 ticketclienteview.cpp:103
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -171,8 +171,8 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar una linea"
 
-#: bfclientealbaransubform.cpp:49 ticketclienteview.cpp:80
-#: ticketclientelist.cpp:425
+#: ticketclientelist.cpp:425 ticketclienteview.cpp:80
+#: bfclientealbaransubform.cpp:49
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -302,8 +302,8 @@ msgstr "ID Forma de pagament"
 msgid "ID trabajador"
 msgstr "ID treballador"
 
-#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:57
-#: ticketclienteview.cpp:68
+#: ticketclienteview.cpp:68 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbaransubform.cpp:57
 msgid "Id albaran"
 msgstr "ID albarà"
 
@@ -362,7 +362,7 @@ msgstr "Esborra albarà"
 msgid "Nuevo ticket a cliente"
 msgstr "Nou ticket a client"
 
-#: ticketclienteview.cpp:71 ticketclientelist.cpp:424
+#: ticketclientelist.cpp:424 ticketclienteview.cpp:71
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Nombre de quotes"
@@ -442,8 +442,8 @@ msgstr ""
 msgid "Ticket ya existe"
 msgstr ""
 
-#: pluginbf_clienteticket.cpp:61 pluginbf_clienteticket.cpp:62
-#: ticketclientelist.cpp:347
+#: ticketclientelist.cpp:347 pluginbf_clienteticket.cpp:61
+#: pluginbf_clienteticket.cpp:62
 msgid "Ticketes a clientes"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:20+0200\n"
+"POT-Creation-Date: 2011-08-16 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: carterapagoslist.cpp:61 vencimientopview.cpp:59
-msgid "Proveedor:"
-msgstr ""
 
 #: q34view.cpp:142 q34view.cpp:223 q34view.cpp:243 q34view.cpp:263
 #: q34view.cpp:319 q34view.cpp:458
@@ -48,42 +44,6 @@ msgstr ""
 
 #: q34view.cpp:541
 msgid "Error al guardar."
-msgstr ""
-
-#: vencimientopview.cpp:68
-msgid "Id pago"
-msgstr ""
-
-#: vencimientopview.cpp:69
-msgid "Referencia de Vencimiento"
-msgstr ""
-
-#: vencimientopview.cpp:70
-msgid "Descripcion"
-msgstr ""
-
-#: vencimientopview.cpp:71
-msgid "Comentarios"
-msgstr ""
-
-#: vencimientopview.cpp:72
-msgid "Fecha de Vencimiento"
-msgstr ""
-
-#: vencimientopview.cpp:73
-msgid "Fecha Efectiva"
-msgstr ""
-
-#: vencimientopview.cpp:74
-msgid "estado de Vencimiento"
-msgstr ""
-
-#: vencimientopview.cpp:75
-msgid "cantidad de Vencimiento"
-msgstr ""
-
-#: vencimientopview.cpp:76
-msgid "idproveedor de Vencimiento"
 msgstr ""
 
 #: pluginbf_carterapagos.cpp:53
@@ -144,4 +104,44 @@ msgstr ""
 
 #: pluginbf_carterapagos.cpp:219
 msgid "Id Proveedor"
+msgstr ""
+
+#: vencimientopview.cpp:59 carterapagoslist.cpp:61
+msgid "Proveedor:"
+msgstr ""
+
+#: vencimientopview.cpp:68
+msgid "Id pago"
+msgstr ""
+
+#: vencimientopview.cpp:69
+msgid "Referencia de Vencimiento"
+msgstr ""
+
+#: vencimientopview.cpp:70
+msgid "Descripcion"
+msgstr ""
+
+#: vencimientopview.cpp:71
+msgid "Comentarios"
+msgstr ""
+
+#: vencimientopview.cpp:72
+msgid "Fecha de Vencimiento"
+msgstr ""
+
+#: vencimientopview.cpp:73
+msgid "Fecha Efectiva"
+msgstr ""
+
+#: vencimientopview.cpp:74
+msgid "estado de Vencimiento"
+msgstr ""
+
+#: vencimientopview.cpp:75
+msgid "cantidad de Vencimiento"
+msgstr ""
+
+#: vencimientopview.cpp:76
+msgid "idproveedor de Vencimiento"
 msgstr ""

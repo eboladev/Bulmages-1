@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:23+0200\n"
+"POT-Creation-Date: 2011-08-16 13:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,13 +67,13 @@ msgstr ""
 msgid "&Herramientas"
 msgstr "&Eines"
 
-#: ui_cuadrantediariobase.h:285 ui_cuadrantebase.h:300
+#: ui_cuadrantebase.h:300 ui_cuadrantediariobase.h:285
 #, fuzzy
 msgid "1"
 msgstr "F1"
 
-#: ui_cuadrantediariobase.h:304 ui_cuadrantediariobase.h:307
-#: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271
+#: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271 ui_cuadrantediariobase.h:304
+#: ui_cuadrantediariobase.h:307
 #, fuzzy
 msgid "Actualizar"
 msgstr ""
@@ -85,8 +85,8 @@ msgstr ""
 "Actualitza"
 
 #: cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
-#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadranteview.cpp:58
-#: cuadrante1view.cpp:58 ui_cuadrante1base.h:308
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
+#: cuadranteview.cpp:58 ui_cuadrante1base.h:308
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -150,12 +150,12 @@ msgstr ""
 msgid "Consulta: '%1'."
 msgstr ""
 
-#: ui_cuadrantediariobase.h:294 ui_cuadrantediariobase.h:302
-#: ui_cuadrantediariobase.h:310 ui_cuadrantediariobase.h:318
-#: ui_cuadrantediariobase.h:326 ui_cuadrantediariobase.h:334
-#: ui_cuadrantebase.h:258 ui_cuadrantebase.h:266 ui_cuadrantebase.h:274
-#: ui_cuadrantebase.h:282 ui_cuadrantebase.h:290 ui_cuadrantebase.h:298
-#: ui_cuadrante1base.h:327
+#: ui_cuadrante1base.h:327 ui_cuadrantebase.h:258 ui_cuadrantebase.h:266
+#: ui_cuadrantebase.h:274 ui_cuadrantebase.h:282 ui_cuadrantebase.h:290
+#: ui_cuadrantebase.h:298 ui_cuadrantediariobase.h:294
+#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
+#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
+#: ui_cuadrantediariobase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -163,8 +163,8 @@ msgstr "Ctrl+D"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: cuadrante1view.cpp:54 ui_cuadrantediariobase.h:281
-#: ui_cuadrantediariobase.h:282 ui_cuadrantebase.h:249
+#: cuadrante1view.cpp:54 ui_cuadrantebase.h:249 ui_cuadrantediariobase.h:281
+#: ui_cuadrantediariobase.h:282
 msgid "Cuadrante"
 msgstr ""
 
@@ -178,8 +178,8 @@ msgstr "Diari"
 msgid "Domingo"
 msgstr "Denominació"
 
-#: ui_cuadrantediariobase.h:288 ui_cuadrantediariobase.h:291
-#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:255
+#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:255 ui_cuadrantediariobase.h:288
+#: ui_cuadrantediariobase.h:291
 #, fuzzy
 msgid "Editar"
 msgstr ""
@@ -188,7 +188,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Editar"
 
-#: cuadranteview.cpp:71 cuadrante1view.cpp:86
+#: cuadrante1view.cpp:86 cuadranteview.cpp:71
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
@@ -275,14 +275,14 @@ msgstr "Diari"
 msgid "ID trabajador"
 msgstr "ID treballador"
 
-#: ui_cuadrantediariobase.h:320 ui_cuadrantediariobase.h:323
-#: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287
+#: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287 ui_cuadrantediariobase.h:320
+#: ui_cuadrantediariobase.h:323
 #, fuzzy
 msgid "Igual que la Semana Anterior"
 msgstr "Saldo anterior"
 
-#: ui_cuadrantediariobase.h:296 ui_cuadrantediariobase.h:299
-#: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263
+#: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263 ui_cuadrantediariobase.h:296
+#: ui_cuadrantediariobase.h:299
 #, fuzzy
 msgid "Imprimir"
 msgstr ""
@@ -301,8 +301,8 @@ msgstr ""
 msgid "Jueves"
 msgstr "Dijous"
 
-#: ui_cuadrantediariobase.h:312 ui_cuadrantediariobase.h:315
-#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279
+#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279 ui_cuadrantediariobase.h:312
+#: ui_cuadrantediariobase.h:315
 msgid "Limpiar Cuadrante"
 msgstr "Neteja quadrant"
 
@@ -333,8 +333,8 @@ msgstr "Nom de camp"
 msgid "Normal"
 msgstr "Normal"
 
-#: ui_cuadrantediariobase.h:328 ui_cuadrantediariobase.h:331
-#: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295
+#: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295 ui_cuadrantediariobase.h:328
+#: ui_cuadrantediariobase.h:331
 msgid "Ocultar Panel"
 msgstr ""
 

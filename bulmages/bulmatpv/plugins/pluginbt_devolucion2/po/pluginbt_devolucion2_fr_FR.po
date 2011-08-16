@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:26+0200\n"
+"POT-Creation-Date: 2011-08-16 13:17+0200\n"
 "PO-Revision-Date: 2011-02-20 15:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -115,15 +115,15 @@ msgstr ""
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_untitled.h:295 ui_untitled.h:297 ui_devolucion.h:382 ui_devolucion.h:384
+#: ui_devolucion.h:382 ui_devolucion.h:384 ui_untitled.h:295 ui_untitled.h:297
 msgid "-"
 msgstr "-"
 
-#: ui_untitled.h:305 ui_devolucion.h:386
+#: ui_devolucion.h:386 ui_untitled.h:305
 msgid "->"
 msgstr "->"
 
-#: ui_untitled.h:306 ui_devolucion.h:387
+#: ui_devolucion.h:387 ui_untitled.h:306
 msgid "<-"
 msgstr "<-"
 
@@ -135,11 +135,11 @@ msgstr "A rembourser"
 msgid "Articulo"
 msgstr "Article"
 
-#: ui_untitled.h:317 ui_devolucion.h:394
+#: ui_devolucion.h:394 ui_untitled.h:317
 msgid "CANCELAR"
 msgstr "Annuler"
 
-#: ui_untitled.h:294 ui_devolucion.h:381
+#: ui_devolucion.h:381 ui_untitled.h:294
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -155,11 +155,11 @@ msgstr "Remboursements"
 msgid "Dialog"
 msgstr "Dialogue"
 
-#: ui_untitled.h:315 ui_devolucion.h:392
+#: ui_devolucion.h:392 ui_untitled.h:315
 msgid "EFECTIVO"
 msgstr "EFFECTIF"
 
-#: ui_untitled.h:296 ui_devolucion.h:383
+#: ui_devolucion.h:383 ui_untitled.h:296
 msgid "Fecha: del ticket"
 msgstr "Date : du ticket"
 
@@ -167,11 +167,11 @@ msgstr "Date : du ticket"
 msgid "Linea"
 msgstr "Ligne"
 
-#: ui_untitled.h:298 ui_devolucion.h:385
+#: ui_devolucion.h:385 ui_untitled.h:298
 msgid "Lineas Ticket"
 msgstr "Lignes  Ticket"
 
-#: ui_untitled.h:308 ui_devolucion.h:389
+#: ui_devolucion.h:389 ui_untitled.h:308
 msgid "Lineas a devolver"
 msgstr "Lignes  remboursement"
 
@@ -191,7 +191,7 @@ msgstr "Prix"
 msgid "Producto"
 msgstr "Produit"
 
-#: ui_untitled.h:307 ui_devolucion.h:388
+#: ui_devolucion.h:388 ui_untitled.h:307
 msgid "Todo"
 msgstr "Tout"
 
@@ -207,6 +207,6 @@ msgstr "Und."
 msgid "Unds."
 msgstr "Unds."
 
-#: ui_untitled.h:316 ui_devolucion.h:393
+#: ui_devolucion.h:393 ui_untitled.h:316
 msgid "VALE"
 msgstr "BON"

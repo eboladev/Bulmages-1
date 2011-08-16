@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:23+0200\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_familiastpvbase.h:140 ui_articulotpvbase.h:154
+#: ui_articulotpvbase.h:154 ui_familiastpvbase.h:140
 msgid "#0000; "
 msgstr ""
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "0"
 msgstr ""
 
-#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
+#: ui_zlistbase.h:265 ui_zlistbase.h:268 ui_zbase.h:302 ui_zbase.h:305
 msgid "Actualizar listado"
 msgstr "Update listing"
 
@@ -80,7 +80,7 @@ msgstr "Look for:"
 msgid "Caducados"
 msgstr ""
 
-#: ui_familiastpvbase.h:142 ui_articulotpvbase.h:157
+#: ui_articulotpvbase.h:157 ui_familiastpvbase.h:142
 msgid "Codigo color:"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Color en TPV"
 msgstr ""
 
-#: ui_familiastpvbase.h:141 ui_articulotpvbase.h:156
+#: ui_articulotpvbase.h:156 ui_familiastpvbase.h:141
 msgid "Color recuadro:"
 msgstr ""
 
@@ -235,7 +235,7 @@ msgstr "Number of quotas"
 msgid "Numero"
 msgstr "New"
 
-#: ui_familiastpvbase.h:138 ui_articulotpvbase.h:152
+#: ui_articulotpvbase.h:152 ui_familiastpvbase.h:138
 msgid "Orden de aparicion:"
 msgstr ""
 
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Orden en TPV"
 msgstr ""
 
-#: ui_familiastpvbase.h:139 ui_articulotpvbase.h:153
+#: ui_articulotpvbase.h:153 ui_familiastpvbase.h:139
 msgid "Orden:"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr "Pro&cessings"
 msgid "Referencia"
 msgstr "Reference"
 
-#: ui_familiastpvbase.h:143 ui_articulotpvbase.h:158
+#: ui_articulotpvbase.h:158 ui_familiastpvbase.h:143
 msgid "Seleccionar color"
 msgstr ""
 

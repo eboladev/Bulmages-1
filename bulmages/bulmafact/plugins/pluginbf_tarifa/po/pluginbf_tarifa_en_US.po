@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:17+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -41,8 +41,8 @@ msgstr "&Yes"
 msgid "&Tarifas"
 msgstr ""
 
-#: ui_tarifalistbase.h:167 ui_tarifalistbase.h:170 ui_tarifabase.h:250
-#: ui_tarifabase.h:253
+#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
+#: ui_tarifalistbase.h:170
 msgid "Actualizar listado"
 msgstr "Update listing"
 
@@ -110,17 +110,17 @@ msgstr "Type of article:"
 msgid "Guardar"
 msgstr "Keep"
 
-#: pluginbf_tarifa.cpp:159 listltarifaview.cpp:38 listltarifaview.cpp:62
+#: listltarifaview.cpp:38 listltarifaview.cpp:62 pluginbf_tarifa.cpp:159
 #, fuzzy
 msgid "ID almacen"
 msgstr "id warehouse"
 
-#: pluginbf_tarifa.cpp:156 listltarifaview.cpp:37 listltarifaview.cpp:61
+#: listltarifaview.cpp:37 listltarifaview.cpp:61 pluginbf_tarifa.cpp:156
 msgid "ID articulo"
 msgstr "ID article"
 
-#: pluginbf_tarifa.cpp:157 listltarifaview.cpp:39 listltarifaview.cpp:63
-#: tarifaview.cpp:50 tarifalistsubform.cpp:37
+#: tarifaview.cpp:50 tarifalistsubform.cpp:37 listltarifaview.cpp:39
+#: listltarifaview.cpp:63 pluginbf_tarifa.cpp:157
 #, fuzzy
 msgid "ID tarifa"
 msgstr ""
@@ -145,7 +145,7 @@ msgstr "Name warehouse"
 msgid "Nombre articulo"
 msgstr "Name article"
 
-#: listltarifaview.cpp:65 tarifaview.cpp:51 tarifalistsubform.cpp:36
+#: tarifaview.cpp:51 tarifalistsubform.cpp:36 listltarifaview.cpp:65
 #, fuzzy
 msgid "Nombre de la tarifa"
 msgstr "Field name"
@@ -184,8 +184,8 @@ msgstr "Percentage of load..."
 msgid "Precio de venta"
 msgstr "Description of the account"
 
-#: pluginbf_tarifa.cpp:158 tarifaview.cpp:47 tarifaview.cpp:102
-#: tarifaview.cpp:161 ui_tarifabase.h:234
+#: tarifaview.cpp:47 tarifaview.cpp:102 tarifaview.cpp:161
+#: pluginbf_tarifa.cpp:158 ui_tarifabase.h:234
 msgid "Tarifa"
 msgstr ""
 

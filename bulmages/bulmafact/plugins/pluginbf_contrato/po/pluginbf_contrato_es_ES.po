@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:21+0200\n"
+"POT-Creation-Date: 2011-08-16 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr "Cantidadl contrato"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: contratoslist.cpp:63 contratoview.cpp:65
+#: contratoview.cpp:65 contratoslist.cpp:63
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -150,8 +150,8 @@ msgstr "Error al borrar un contrato"
 msgid "Error al crear la contrato"
 msgstr "Error al crear la contrato"
 
-#: ui_contratoslistbase.h:307 ui_contratoslistbase.h:310 ui_contratobase.h:469
-#: ui_contratobase.h:472
+#: ui_contratobase.h:469 ui_contratobase.h:472 ui_contratoslistbase.h:307
+#: ui_contratoslistbase.h:310
 msgid "Facturar Periodos Pendientes"
 msgstr "Facturar Periodos Pendientes"
 
@@ -199,7 +199,7 @@ msgstr "Id articulo"
 msgid "Id cliente"
 msgstr "Id cliente"
 
-#: contrato.cpp:42 listlincontratoview.cpp:47
+#: listlincontratoview.cpp:47 contrato.cpp:42
 msgid "Id contrato"
 msgstr "Id contrato"
 

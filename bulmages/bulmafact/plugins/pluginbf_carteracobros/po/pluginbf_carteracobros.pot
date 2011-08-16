@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:19+0200\n"
+"POT-Creation-Date: 2011-08-16 13:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: carteracobroslist.cpp:64 vencimientocview.cpp:61
+msgid "Cliente:"
+msgstr ""
 
 #: q19view.cpp:131
 msgid "El CIF del ordenante supera la longitud maxima."
@@ -67,46 +71,6 @@ msgstr ""
 
 #: q19view.cpp:593
 msgid "Error al guardar."
-msgstr ""
-
-#: vencimientocview.cpp:61 carteracobroslist.cpp:64
-msgid "Cliente:"
-msgstr ""
-
-#: vencimientocview.cpp:69
-msgid "Id cobro"
-msgstr ""
-
-#: vencimientocview.cpp:70
-msgid "Referencia de vencimiento"
-msgstr ""
-
-#: vencimientocview.cpp:71
-msgid "Descripcion"
-msgstr ""
-
-#: vencimientocview.cpp:72
-msgid "Comentarios"
-msgstr ""
-
-#: vencimientocview.cpp:73
-msgid "Fecha de vencimiento"
-msgstr ""
-
-#: vencimientocview.cpp:74
-msgid "Fecha efectiva"
-msgstr ""
-
-#: vencimientocview.cpp:75
-msgid "Estado de vencimiento"
-msgstr ""
-
-#: vencimientocview.cpp:76
-msgid "Cantidad de vencimiento"
-msgstr ""
-
-#: vencimientocview.cpp:77
-msgid "idcliente de Vencimiento"
 msgstr ""
 
 #: pluginbf_carteracobros.cpp:54
@@ -163,4 +127,40 @@ msgstr ""
 
 #: pluginbf_carteracobros.cpp:222
 msgid "Id factura"
+msgstr ""
+
+#: vencimientocview.cpp:69
+msgid "Id cobro"
+msgstr ""
+
+#: vencimientocview.cpp:70
+msgid "Referencia de vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:71
+msgid "Descripcion"
+msgstr ""
+
+#: vencimientocview.cpp:72
+msgid "Comentarios"
+msgstr ""
+
+#: vencimientocview.cpp:73
+msgid "Fecha de vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:74
+msgid "Fecha efectiva"
+msgstr ""
+
+#: vencimientocview.cpp:75
+msgid "Estado de vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:76
+msgid "Cantidad de vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:77
+msgid "idcliente de Vencimiento"
 msgstr ""

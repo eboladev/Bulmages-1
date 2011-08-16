@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,22 +37,6 @@ msgstr ""
 #: pluginbf_proveedorpago.cpp:66 pluginbf_proveedorpago.cpp:67
 #: ui_pagobase.h:309
 msgid "Nuevo pago a proveedor"
-msgstr ""
-
-#: impqtoolbutton.cpp:77 impqtoolbutton.cpp:78
-msgid "Generar pago"
-msgstr ""
-
-#: impqtoolbutton.cpp:104 impqtoolbutton.cpp:155 impqtoolbutton.cpp:204
-msgid "Ya existe un pago con esta referencia\n"
-msgstr ""
-
-#: impqtoolbutton.cpp:105 impqtoolbutton.cpp:156 impqtoolbutton.cpp:205
-msgid "Desea abrir el pago existente, registrar un nuevo pago o salir?"
-msgstr ""
-
-#: impqtoolbutton.cpp:106 impqtoolbutton.cpp:157 impqtoolbutton.cpp:206
-msgid "Crear"
 msgstr ""
 
 #: pagoslist.cpp:49 pagoslist.cpp:76 pagoview.cpp:71
@@ -141,6 +125,22 @@ msgstr ""
 
 #: pagoview.cpp:81
 msgid "Error al crear el pago"
+msgstr ""
+
+#: impqtoolbutton.cpp:77 impqtoolbutton.cpp:78
+msgid "Generar pago"
+msgstr ""
+
+#: impqtoolbutton.cpp:104 impqtoolbutton.cpp:155 impqtoolbutton.cpp:204
+msgid "Ya existe un pago con esta referencia\n"
+msgstr ""
+
+#: impqtoolbutton.cpp:105 impqtoolbutton.cpp:156 impqtoolbutton.cpp:205
+msgid "Desea abrir el pago existente, registrar un nuevo pago o salir?"
+msgstr ""
+
+#: impqtoolbutton.cpp:106 impqtoolbutton.cpp:157 impqtoolbutton.cpp:206
+msgid "Crear"
 msgstr ""
 
 #: ui_pagoslistbase.h:371 ui_pagobase.h:331

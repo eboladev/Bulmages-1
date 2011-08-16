@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -211,7 +211,7 @@ msgstr "Description:"
 msgid "Descuen&tos"
 msgstr "Discount"
 
-#: listlinfacturapview.cpp:57 facturapview.cpp:400
+#: facturapview.cpp:400 listlinfacturapview.cpp:57
 msgid "Descuento"
 msgstr "Discount"
 
@@ -269,8 +269,8 @@ msgstr "Keep supplier"
 msgid "Factura de proveedor existente"
 msgstr "Selector of suppliers"
 
-#: facturasplist.cpp:275 pluginbf_proveedorfactura.cpp:56
-#: pluginbf_proveedorfactura.cpp:57 ui_facturasplistbase.h:373
+#: pluginbf_proveedorfactura.cpp:56 pluginbf_proveedorfactura.cpp:57
+#: facturasplist.cpp:275 ui_facturasplistbase.h:373
 #, fuzzy
 msgid "Facturas de proveedores"
 msgstr "Selector of suppliers"
@@ -349,12 +349,12 @@ msgstr "<HR><B>Treating Invoice "
 msgid "Id forma de pago"
 msgstr "Mode of payment"
 
-#: facturasplist.cpp:376 facturapview.cpp:58
+#: facturapview.cpp:58 facturasplist.cpp:376
 #, fuzzy
 msgid "Id proveedor"
 msgstr "ID supplier"
 
-#: facturasplist.cpp:375 facturapview.cpp:65
+#: facturapview.cpp:65 facturasplist.cpp:375
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Worker"
@@ -453,7 +453,7 @@ msgstr "Pro&cessings"
 msgid "Procesada facturap"
 msgstr "Series of invoice"
 
-#: facturasplist.cpp:56 facturasplist.cpp:94 facturapview.cpp:83
+#: facturapview.cpp:83 facturasplist.cpp:56 facturasplist.cpp:94
 msgid "Proveedor:"
 msgstr "Supplier:"
 
@@ -492,7 +492,7 @@ msgstr "Must select an element"
 msgid "Todas las facturas"
 msgstr "<HR><B>Treating Invoice "
 
-#: facturasplist.cpp:377 facturapview.cpp:357 facturapview.cpp:402
+#: facturapview.cpp:357 facturapview.cpp:402 facturasplist.cpp:377
 msgid "Total"
 msgstr "Total"
 

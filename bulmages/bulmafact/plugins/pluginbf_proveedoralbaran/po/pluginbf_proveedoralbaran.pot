@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,60 +17,69 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbf_proveedoralbaran.cpp:52
-msgid "&Compras"
+#: albaranproveedorview.cpp:54
+msgid "Albaran de proveedor"
 msgstr ""
 
-#: pluginbf_proveedoralbaran.cpp:55
-msgid "&Albaranes de proveedores"
+#: albaranproveedorview.cpp:57
+msgid "Id albaran proveedor"
 msgstr ""
 
-#: pluginbf_proveedoralbaran.cpp:57 pluginbf_proveedoralbaran.cpp:58
-msgid "Albaranes de proveedores"
+#: albaranproveedorview.cpp:58
+msgid "Numero albaran proveedor"
 msgstr ""
 
-#: pluginbf_proveedoralbaran.cpp:63
-msgid "&Nuevo albaran de proveedor"
+#: albaranproveedorview.cpp:59
+msgid "Fecha albaran proveedor"
 msgstr ""
 
-#: pluginbf_proveedoralbaran.cpp:65 pluginbf_proveedoralbaran.cpp:66
-#: ui_albaranproveedorbase.h:587
-msgid "Nuevo albaran de proveedor"
+#: albaranproveedorview.cpp:60
+msgid "Comentario albaran proveedor"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:75 genalbpqtoolbutton.cpp:76
-msgid "Generar Albaran Proveedor"
+#: albaranproveedorview.cpp:61
+msgid "Id proveedor"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:133
-msgid "Tiene que seleccionar un proveedor"
+#: albaranproveedorview.cpp:62
+msgid "Id forma de pago"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:148
-msgid "Albaran de proveedor existente"
+#: albaranproveedorview.cpp:63
+msgid "Id almacen"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:149
-msgid ""
-"Existe un albaran de este proveedor con la misma referencia que este pedido. "
-"Desea abrirla para verificar?"
+#: albaranproveedorview.cpp:64
+msgid "Referencia albaran proveedor"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:150
-msgid "&Si"
+#: albaranproveedorview.cpp:65
+msgid "Descripcion albaran proveedor"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:150
-msgid "&No"
-msgstr ""
-
-#: genalbpqtoolbutton.cpp:198
-msgid "Error inesperado"
-msgstr ""
-
-#: albaranesproveedor.cpp:53 albaranesproveedor.cpp:77
-#: albaranproveedorview.cpp:84
+#: albaranproveedorview.cpp:84 albaranesproveedor.cpp:53
+#: albaranesproveedor.cpp:77
 msgid "Proveedor:"
+msgstr ""
+
+#: albaranproveedorview.cpp:102
+msgid "Error al crear el albaran proveedor"
+msgstr ""
+
+#: listdescalbaranprovview.cpp:40
+msgid "Id descuento"
+msgstr ""
+
+#: listdescalbaranprovview.cpp:41
+msgid "Concepto descuento"
+msgstr ""
+
+#: listdescalbaranprovview.cpp:42
+msgid "% Descuento"
+msgstr ""
+
+#: listdescalbaranprovview.cpp:43
+msgid "Id albaran"
 msgstr ""
 
 #: albaranesproveedor.cpp:204
@@ -161,64 +170,55 @@ msgstr ""
 msgid "Total albaran"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:40
-msgid "Id descuento"
+#: genalbpqtoolbutton.cpp:75 genalbpqtoolbutton.cpp:76
+msgid "Generar Albaran Proveedor"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:41
-msgid "Concepto descuento"
+#: genalbpqtoolbutton.cpp:133
+msgid "Tiene que seleccionar un proveedor"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:42
-msgid "% Descuento"
+#: genalbpqtoolbutton.cpp:148
+msgid "Albaran de proveedor existente"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:43
-msgid "Id albaran"
+#: genalbpqtoolbutton.cpp:149
+msgid ""
+"Existe un albaran de este proveedor con la misma referencia que este pedido. "
+"Desea abrirla para verificar?"
 msgstr ""
 
-#: albaranproveedorview.cpp:54
-msgid "Albaran de proveedor"
+#: genalbpqtoolbutton.cpp:150
+msgid "&Si"
 msgstr ""
 
-#: albaranproveedorview.cpp:57
-msgid "Id albaran proveedor"
+#: genalbpqtoolbutton.cpp:150
+msgid "&No"
 msgstr ""
 
-#: albaranproveedorview.cpp:58
-msgid "Numero albaran proveedor"
+#: genalbpqtoolbutton.cpp:198
+msgid "Error inesperado"
 msgstr ""
 
-#: albaranproveedorview.cpp:59
-msgid "Fecha albaran proveedor"
+#: pluginbf_proveedoralbaran.cpp:52
+msgid "&Compras"
 msgstr ""
 
-#: albaranproveedorview.cpp:60
-msgid "Comentario albaran proveedor"
+#: pluginbf_proveedoralbaran.cpp:55
+msgid "&Albaranes de proveedores"
 msgstr ""
 
-#: albaranproveedorview.cpp:61
-msgid "Id proveedor"
+#: pluginbf_proveedoralbaran.cpp:57 pluginbf_proveedoralbaran.cpp:58
+msgid "Albaranes de proveedores"
 msgstr ""
 
-#: albaranproveedorview.cpp:62
-msgid "Id forma de pago"
+#: pluginbf_proveedoralbaran.cpp:63
+msgid "&Nuevo albaran de proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:63
-msgid "Id almacen"
-msgstr ""
-
-#: albaranproveedorview.cpp:64
-msgid "Referencia albaran proveedor"
-msgstr ""
-
-#: albaranproveedorview.cpp:65
-msgid "Descripcion albaran proveedor"
-msgstr ""
-
-#: albaranproveedorview.cpp:102
-msgid "Error al crear el albaran proveedor"
+#: pluginbf_proveedoralbaran.cpp:65 pluginbf_proveedoralbaran.cpp:66
+#: ui_albaranproveedorbase.h:587
+msgid "Nuevo albaran de proveedor"
 msgstr ""
 
 #: ui_albaranproveedorbase.h:590 ui_albaranproveedorbase.h:593

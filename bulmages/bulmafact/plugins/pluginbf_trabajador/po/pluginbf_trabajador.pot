@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_trabajador.cpp:51
+msgid "&Trabajadores"
+msgstr ""
+
+#: pluginbf_trabajador.cpp:53 pluginbf_trabajador.cpp:54
+#: ui_trabajadorbase.h:340
+msgid "Trabajadores"
+msgstr ""
 
 #: trabajadorview.cpp:44
 msgid "Trabajador"
@@ -55,15 +64,6 @@ msgstr ""
 
 #: trabajadorview.cpp:300
 msgid "Imagenes (*.jpg)"
-msgstr ""
-
-#: pluginbf_trabajador.cpp:51
-msgid "&Trabajadores"
-msgstr ""
-
-#: pluginbf_trabajador.cpp:53 pluginbf_trabajador.cpp:54
-#: ui_trabajadorbase.h:340
-msgid "Trabajadores"
 msgstr ""
 
 #: ui_trabajadorbase.h:341

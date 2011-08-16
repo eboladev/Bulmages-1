@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:21+0200\n"
+"POT-Creation-Date: 2011-08-16 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: inventario.cpp:39 ui_inventariobase.h:293
-msgid "Inventario"
+#: listcontrolstockview.cpp:34
+msgid "Punteado"
 msgstr ""
 
-#: inventario.cpp:42
-msgid "Identificador inventario"
+#: listcontrolstockview.cpp:35
+msgid "Codigo almacen"
 msgstr ""
 
-#: inventario.cpp:43
-msgid "Fecha inventario"
+#: listcontrolstockview.cpp:36
+msgid "Nombre almacen"
 msgstr ""
 
-#: inventario.cpp:44
-msgid "Nombre inventario"
+#: listcontrolstockview.cpp:37
+msgid "Codigo completo articulo"
 msgstr ""
 
-#: inventario.cpp:134
-msgid "Error guardando el inventario."
+#: listcontrolstockview.cpp:38
+msgid "Nombre articulo"
+msgstr ""
+
+#: listcontrolstockview.cpp:39
+msgid "Stock anterior"
+msgstr ""
+
+#: listcontrolstockview.cpp:40
+msgid "Stock revisado"
+msgstr ""
+
+#: listcontrolstockview.cpp:41
+msgid "Id articulo"
 msgstr ""
 
 #: pluginbf_inventario.cpp:51
@@ -81,36 +93,44 @@ msgstr ""
 msgid "Stock minimo superado"
 msgstr ""
 
-#: listcontrolstockview.cpp:34
-msgid "Punteado"
+#: inventariosview.cpp:97
+msgid "Selector de Inventarios"
 msgstr ""
 
-#: listcontrolstockview.cpp:35
-msgid "Codigo almacen"
+#: inventariosview.cpp:124 inventariosview.cpp:151
+msgid "Tiene que seleccionar un inventario"
 msgstr ""
 
-#: listcontrolstockview.cpp:36
-msgid "Nombre almacen"
+#: inventariosview.cpp:283
+msgid "Id inventario"
 msgstr ""
 
-#: listcontrolstockview.cpp:37
-msgid "Codigo completo articulo"
+#: inventariosview.cpp:284
+msgid "Nombre del inventario"
 msgstr ""
 
-#: listcontrolstockview.cpp:38
-msgid "Nombre articulo"
+#: inventariosview.cpp:285
+msgid "Fecha del inventario"
 msgstr ""
 
-#: listcontrolstockview.cpp:39
-msgid "Stock anterior"
+#: inventario.cpp:39 ui_inventariobase.h:293
+msgid "Inventario"
 msgstr ""
 
-#: listcontrolstockview.cpp:40
-msgid "Stock revisado"
+#: inventario.cpp:42
+msgid "Identificador inventario"
 msgstr ""
 
-#: listcontrolstockview.cpp:41
-msgid "Id articulo"
+#: inventario.cpp:43
+msgid "Fecha inventario"
+msgstr ""
+
+#: inventario.cpp:44
+msgid "Nombre inventario"
+msgstr ""
+
+#: inventario.cpp:134
+msgid "Error guardando el inventario."
 msgstr ""
 
 #: inventarioview.cpp:74
@@ -132,26 +152,6 @@ msgstr ""
 
 #: inventarioview.cpp:107
 msgid "No"
-msgstr ""
-
-#: inventariosview.cpp:97
-msgid "Selector de Inventarios"
-msgstr ""
-
-#: inventariosview.cpp:124 inventariosview.cpp:151
-msgid "Tiene que seleccionar un inventario"
-msgstr ""
-
-#: inventariosview.cpp:283
-msgid "Id inventario"
-msgstr ""
-
-#: inventariosview.cpp:284
-msgid "Nombre del inventario"
-msgstr ""
-
-#: inventariosview.cpp:285
-msgid "Fecha del inventario"
 msgstr ""
 
 #: ui_inventariobase.h:295 ui_inventariobase.h:298

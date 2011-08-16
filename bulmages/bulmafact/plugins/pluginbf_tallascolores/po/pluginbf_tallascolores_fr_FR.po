@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:21+0200\n"
+"POT-Creation-Date: 2011-08-16 13:12+0200\n"
 "PO-Revision-Date: 2011-02-14 09:41+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -47,8 +47,8 @@ msgstr "Alias"
 msgid "Color"
 msgstr "Valeur"
 
-#: listcoloresview.cpp:49 pluginbf_tallascolores.cpp:80
-#: pluginbf_tallascolores.cpp:81 ui_listcoloresbase.h:117
+#: pluginbf_tallascolores.cpp:80 pluginbf_tallascolores.cpp:81
+#: listcoloresview.cpp:49 ui_listcoloresbase.h:117
 msgid "Colores"
 msgstr "Couleurs"
 
@@ -82,9 +82,9 @@ msgstr "Nom de couleur"
 msgid "Nombre color"
 msgstr "Nom de couleur"
 
-#: listtallasview.cpp:101 pluginbf_tallascolores.cpp:140
-#: pluginbf_tallascolores.cpp:351 pluginbf_tallascolores.cpp:373
-#: pluginbf_tallascolores.cpp:396 pluginbf_tallascolores.cpp:425
+#: pluginbf_tallascolores.cpp:140 pluginbf_tallascolores.cpp:351
+#: pluginbf_tallascolores.cpp:373 pluginbf_tallascolores.cpp:396
+#: pluginbf_tallascolores.cpp:425 listtallasview.cpp:101
 msgid "Nombre talla"
 msgstr "Nom de la taille"
 
@@ -98,8 +98,8 @@ msgstr "RGB couleur"
 msgid "Talla"
 msgstr "Taille"
 
-#: listtallasview.cpp:49 pluginbf_tallascolores.cpp:73
-#: pluginbf_tallascolores.cpp:74 ui_listtallasbase.h:117
+#: pluginbf_tallascolores.cpp:73 pluginbf_tallascolores.cpp:74
+#: listtallasview.cpp:49 ui_listtallasbase.h:117
 msgid "Tallas"
 msgstr "Tailles"
 

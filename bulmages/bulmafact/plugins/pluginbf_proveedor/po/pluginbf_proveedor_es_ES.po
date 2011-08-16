@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -203,7 +203,7 @@ msgstr "C.I.F. del proveedor"
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clave de acceso a la web del proveedor"
 
-#: providerslist.cpp:358 providerslist.cpp:362 provedit.cpp:61
+#: provedit.cpp:61 providerslist.cpp:358 providerslist.cpp:362
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -215,11 +215,11 @@ msgstr "Codigo &postal:"
 msgid "Codigo cliente"
 msgstr "Codigo cliente"
 
-#: providerslist.cpp:367 provedit.cpp:54
+#: provedit.cpp:54 providerslist.cpp:367
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
-#: providerslist.cpp:364 provedit.cpp:59
+#: provedit.cpp:59 providerslist.cpp:364
 msgid "Comentarios"
 msgstr "Comentarios"
 
@@ -255,7 +255,7 @@ msgstr "Di&visiones"
 msgid "Direccio&n:"
 msgstr "Direccio&n:"
 
-#: providerslist.cpp:365 provedit.cpp:51
+#: provedit.cpp:51 providerslist.cpp:365
 msgid "Direccion"
 msgstr "Direccion"
 
@@ -321,7 +321,7 @@ msgstr "Forma_Pago"
 msgid "Guardar proveedor"
 msgstr "Guardar proveedor"
 
-#: providerslist.cpp:357 provedit.cpp:45
+#: provedit.cpp:45 providerslist.cpp:357
 msgid "ID proveedor"
 msgstr "ID proveedor"
 
@@ -381,11 +381,11 @@ msgstr "Numero de &fax:"
 msgid "Numero de cuenta corriente"
 msgstr "Numero de cuenta corriente"
 
-#: providerslist.cpp:369 provedit.cpp:56
+#: provedit.cpp:56 providerslist.cpp:369
 msgid "Numero de fax"
 msgstr "Numero de fax"
 
-#: providerslist.cpp:368 provedit.cpp:55
+#: provedit.cpp:55 providerslist.cpp:368
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
@@ -397,7 +397,7 @@ msgstr "Pagina &web:"
 msgid "Poblacio&n:"
 msgstr "Poblacio&n:"
 
-#: providerslist.cpp:366 provedit.cpp:52
+#: provedit.cpp:52 providerslist.cpp:366
 msgid "Poblacion"
 msgstr "Poblacion"
 

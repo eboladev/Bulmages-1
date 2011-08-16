@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,8 +110,8 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 #: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
+#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
@@ -120,8 +120,8 @@ msgstr "Borrar albaran"
 msgid "Borrar factura"
 msgstr "Borrar factura"
 
-#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
 #: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
 msgid "Borrar pedido"
 msgstr "Borrar pedido"
 
@@ -142,7 +142,7 @@ msgstr "Cantidad"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: facturaview.cpp:96 facturaslist.cpp:56 facturaslist.cpp:91
+#: facturaslist.cpp:56 facturaslist.cpp:91 facturaview.cpp:96
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -226,7 +226,7 @@ msgstr "Debe seleccionar una linea"
 msgid "Desc&uentos"
 msgstr "Desc&uentos"
 
-#: facturaview.cpp:69 listlinfacturaview.cpp:51 facturaslist.cpp:436
+#: listlinfacturaview.cpp:51 facturaslist.cpp:436 facturaview.cpp:69
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -399,8 +399,8 @@ msgstr "Id cliente"
 msgid "Id descuento"
 msgstr "Id descuento"
 
-#: facturaview.cpp:60 listlinfacturaview.cpp:58 facturaslist.cpp:437
-#: listdescfacturaview.cpp:43
+#: listlinfacturaview.cpp:58 listdescfacturaview.cpp:43 facturaslist.cpp:437
+#: facturaview.cpp:60
 msgid "Id factura"
 msgstr "Id factura"
 
@@ -559,7 +559,7 @@ msgstr "Referencia:"
 msgid "Seleccione la factura a la que agregar el albaran."
 msgstr "Seleccione la factura a la que agregar el albaran."
 
-#: facturaview.cpp:66 facturaslist.cpp:439
+#: facturaslist.cpp:439 facturaview.cpp:66
 msgid "Serie"
 msgstr "Serie"
 
@@ -593,7 +593,7 @@ msgid "Total linea"
 msgstr ""
 
 #: ui_facturaslistbase.h:478 ui_facturabase.h:719 ui_albaranclientebase.h:791
-#: ui_pedidoclientebase.h:723 ui_pedidosclientelistbase.h:439
+#: ui_pedidosclientelistbase.h:439 ui_pedidoclientebase.h:723
 msgid "Total:"
 msgstr "Total:"
 

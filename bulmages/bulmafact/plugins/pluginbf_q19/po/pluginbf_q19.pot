@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:22+0200\n"
+"POT-Creation-Date: 2011-08-16 13:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,11 +51,11 @@ msgstr ""
 msgid "Error al generar remesa bancaria."
 msgstr ""
 
-#: q19qtoolbutton.cpp:82 q19qtoolbutton1.cpp:72
+#: q19qtoolbutton1.cpp:72 q19qtoolbutton.cpp:82
 msgid "Generar Q19"
 msgstr ""
 
-#: q19qtoolbutton.cpp:83 q19qtoolbutton1.cpp:73
+#: q19qtoolbutton1.cpp:73 q19qtoolbutton.cpp:83
 msgid "Generar archivo Q19 de los elementos seleccionados."
 msgstr ""
 

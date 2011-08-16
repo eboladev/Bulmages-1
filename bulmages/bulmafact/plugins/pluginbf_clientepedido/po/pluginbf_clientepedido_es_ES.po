@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr "0.00"
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: pedidoclienteview.cpp:61 pedidosclientelist.cpp:353
+#: pedidosclientelist.cpp:353 pedidoclienteview.cpp:61
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -95,13 +95,13 @@ msgstr "Base Imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
 #: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
 msgid "Borrar pedido"
 msgstr "Borrar pedido"
 
-#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 #: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
+#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 msgid "Borrar presupuesto"
 msgstr "Borrar presupuesto"
 
@@ -113,12 +113,12 @@ msgstr "Buscar:"
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: pedidoclienteview.cpp:60 pedidosclientelist.cpp:344
+#: pedidosclientelist.cpp:344 pedidoclienteview.cpp:60
 msgid "Cliente"
 msgstr "Cliente"
 
-#: pedidoclienteview.cpp:91 pedidosclientelist.cpp:52
-#: pedidosclientelist.cpp:90
+#: pedidosclientelist.cpp:52 pedidosclientelist.cpp:90
+#: pedidoclienteview.cpp:91
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -151,8 +151,8 @@ msgstr "Contacto"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_pedidosclientelistbase.h:405 ui_presupuestoclientebase.h:784
-#: ui_presupuestoslistbase.h:387
+#: ui_pedidosclientelistbase.h:405 ui_presupuestoslistbase.h:387
+#: ui_presupuestoclientebase.h:784
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -172,8 +172,8 @@ msgstr "Ctrl+G"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_pedidosclientelistbase.h:413 ui_presupuestoclientebase.h:792
-#: ui_presupuestoslistbase.h:395
+#: ui_pedidosclientelistbase.h:413 ui_presupuestoslistbase.h:395
+#: ui_presupuestoclientebase.h:792
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
@@ -193,7 +193,7 @@ msgstr "Debe seleccionar una linea"
 msgid "Desc&uentos"
 msgstr "Desc&uentos"
 
-#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:349
+#: pedidosclientelist.cpp:349 listlinpedidoclienteview.cpp:50
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -241,7 +241,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: pedidoclienteview.cpp:64 pedidosclientelist.cpp:343
+#: pedidosclientelist.cpp:343 pedidoclienteview.cpp:64
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -412,8 +412,8 @@ msgstr "Pedido Cliente"
 msgid "Pedido ya existe"
 msgstr "Pedido ya existe"
 
-#: pluginbf_clientepedido.cpp:59 pluginbf_clientepedido.cpp:60
-#: pedidosclientelist.cpp:254 ui_pedidosclientelistbase.h:377
+#: pedidosclientelist.cpp:254 pluginbf_clientepedido.cpp:59
+#: pluginbf_clientepedido.cpp:60 ui_pedidosclientelistbase.h:377
 msgid "Pedidos de clientes"
 msgstr "Pedidos de clientes"
 
@@ -457,7 +457,7 @@ msgstr "Punteo"
 msgid "R.E.:"
 msgstr "R.E.:"
 
-#: pedidoclienteview.cpp:71 pedidosclientelist.cpp:345
+#: pedidosclientelist.cpp:345 pedidoclienteview.cpp:71
 msgid "Referencia"
 msgstr "Referencia"
 
@@ -465,7 +465,7 @@ msgstr "Referencia"
 msgid "Referencia:"
 msgstr "Referencia:"
 
-#: pedidoclienteview.cpp:68 pedidosclientelist.cpp:351
+#: pedidosclientelist.cpp:351 pedidoclienteview.cpp:68
 msgid "Telefono"
 msgstr "Telefono"
 
@@ -489,8 +489,8 @@ msgstr "Total"
 msgid "Total Linea"
 msgstr ""
 
-#: ui_pedidoclientebase.h:723 ui_pedidosclientelistbase.h:439
-#: ui_presupuestoclientebase.h:820 ui_presupuestoslistbase.h:422
+#: ui_pedidosclientelistbase.h:439 ui_pedidoclientebase.h:723
+#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:820
 msgid "Total:"
 msgstr "Total:"
 

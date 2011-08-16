@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: promocionarclaseview.cpp:78 alumnoview.cpp:95
-msgid "Error al crear el alumno"
+#: claseview.cpp:44 alumnoview.cpp:67
+msgid "Clase"
+msgstr ""
+
+#: claseview.cpp:178
+msgid "Error al guardar el clase"
+msgstr ""
+
+#: claseview.cpp:196
+msgid "Guardar datos del clase"
+msgstr ""
+
+#: claseview.cpp:197
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: claseview.cpp:198
+msgid "&Si"
+msgstr ""
+
+#: claseview.cpp:198
+msgid "&No"
+msgstr ""
+
+#: claseview.cpp:228
+msgid "Error al crear un nuevo Clase"
+msgstr ""
+
+#: claseview.cpp:254
+msgid "Error al borrar el Clase"
 msgstr ""
 
 #: alumnoslist.cpp:86
 msgid "Selector de alumnos"
 msgstr ""
 
-#: alumnoslist.cpp:218 pluginbf_alumno.cpp:64 pluginbf_alumno.cpp:65
+#: alumnoslist.cpp:218 pluginbf_alumno.cpp:66 pluginbf_alumno.cpp:67
 #: ui_alumnoslistbase.h:309
 msgid "Alumnos"
 msgstr ""
@@ -70,87 +98,6 @@ msgstr ""
 msgid "F. Nacimiento"
 msgstr ""
 
-#: pluginbf_alumno.cpp:57 pluginbf_alumno.cpp:79
-msgid "&Associats"
-msgstr ""
-
-#: pluginbf_alumno.cpp:62
-msgid "&Alumnos"
-msgstr ""
-
-#: pluginbf_alumno.cpp:70
-msgid "&Nuevo alumno"
-msgstr ""
-
-#: pluginbf_alumno.cpp:72 pluginbf_alumno.cpp:73 pluginbf_alumno.cpp:301
-#: pluginbf_alumno.cpp:326
-msgid "Nuevo alumno"
-msgstr ""
-
-#: pluginbf_alumno.cpp:84
-msgid "&Cuotas Socio"
-msgstr ""
-
-#: pluginbf_alumno.cpp:86 pluginbf_alumno.cpp:87
-msgid "Cuotas por alumno"
-msgstr ""
-
-#: pluginbf_alumno.cpp:95
-msgid "&Clases"
-msgstr ""
-
-#: pluginbf_alumno.cpp:96 pluginbf_alumno.cpp:97
-msgid "Clases"
-msgstr ""
-
-#: pluginbf_alumno.cpp:103
-msgid "&Promocion de Clases"
-msgstr ""
-
-#: pluginbf_alumno.cpp:104 pluginbf_alumno.cpp:105
-msgid "Promocion de Clases"
-msgstr ""
-
-#: pluginbf_alumno.cpp:303 pluginbf_alumno.cpp:320
-msgid "Editar alumno"
-msgstr ""
-
-#: pluginbf_alumno.cpp:305 pluginbf_alumno.cpp:324
-msgid "Seleccionar alumno"
-msgstr ""
-
-#: claseview.cpp:44 alumnoview.cpp:67
-msgid "Clase"
-msgstr ""
-
-#: claseview.cpp:178
-msgid "Error al guardar el clase"
-msgstr ""
-
-#: claseview.cpp:196
-msgid "Guardar datos del clase"
-msgstr ""
-
-#: claseview.cpp:197
-msgid "Desea guardar los cambios?"
-msgstr ""
-
-#: claseview.cpp:198
-msgid "&Si"
-msgstr ""
-
-#: claseview.cpp:198
-msgid "&No"
-msgstr ""
-
-#: claseview.cpp:228
-msgid "Error al crear un nuevo Clase"
-msgstr ""
-
-#: claseview.cpp:254
-msgid "Error al borrar el Clase"
-msgstr ""
-
 #: alumnoview.cpp:53
 msgid "Alumno"
 msgstr ""
@@ -179,8 +126,12 @@ msgstr ""
 msgid "Fecha Nacimiento"
 msgstr ""
 
-#: alumnoview.cpp:66 ui_alumnobase.h:522
+#: alumnoview.cpp:66 ui_alumnobase.h:531
 msgid "Activo"
+msgstr ""
+
+#: alumnoview.cpp:95 promocionarclaseview.cpp:78
+msgid "Error al crear el alumno"
 msgstr ""
 
 #: alumnoview.cpp:127
@@ -258,12 +209,81 @@ msgstr ""
 msgid "Id actividad"
 msgstr ""
 
-#: listcuotasporalumnoview.cpp:49
-msgid "CuotasPorAlumno"
+#: listcuotasporactividadview.cpp:49
+msgid "CuotasPorActividad"
 msgstr ""
 
-#: listcuotasporalumnoview.cpp:71
+#: listcuotasporactividadview.cpp:71 listcuotasporalumnoview.cpp:71
 msgid "Error al guardar las cuotas"
+msgstr ""
+
+#: listcuotasporactividadview.cpp:97
+msgid "Numero de actividads"
+msgstr ""
+
+#: listcuotasporactividadview.cpp:98 listcuotasporalumnoview.cpp:99
+msgid "% Descuento en actividades"
+msgstr ""
+
+#: pluginbf_alumno.cpp:59 pluginbf_alumno.cpp:81
+msgid "&Associats"
+msgstr ""
+
+#: pluginbf_alumno.cpp:64
+msgid "&Alumnos"
+msgstr ""
+
+#: pluginbf_alumno.cpp:72
+msgid "&Nuevo alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:74 pluginbf_alumno.cpp:75 pluginbf_alumno.cpp:316
+#: pluginbf_alumno.cpp:341
+msgid "Nuevo alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:86
+msgid "&Cuotas Socio"
+msgstr ""
+
+#: pluginbf_alumno.cpp:88 pluginbf_alumno.cpp:89
+msgid "Cuotas por alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:94
+msgid "&Descuentos por actividades contratadas"
+msgstr ""
+
+#: pluginbf_alumno.cpp:96 pluginbf_alumno.cpp:97
+msgid "Descuentos por actividades contratadas"
+msgstr ""
+
+#: pluginbf_alumno.cpp:105
+msgid "&Clases"
+msgstr ""
+
+#: pluginbf_alumno.cpp:106 pluginbf_alumno.cpp:107
+msgid "Clases"
+msgstr ""
+
+#: pluginbf_alumno.cpp:113
+msgid "&Promocion de Clases"
+msgstr ""
+
+#: pluginbf_alumno.cpp:114 pluginbf_alumno.cpp:115
+msgid "Promocion de Clases"
+msgstr ""
+
+#: pluginbf_alumno.cpp:318 pluginbf_alumno.cpp:335
+msgid "Editar alumno"
+msgstr ""
+
+#: pluginbf_alumno.cpp:320 pluginbf_alumno.cpp:339
+msgid "Seleccionar alumno"
+msgstr ""
+
+#: listcuotasporalumnoview.cpp:49
+msgid "CuotasPorAlumno"
 msgstr ""
 
 #: listcuotasporalumnoview.cpp:97
@@ -272,32 +292,6 @@ msgstr ""
 
 #: listcuotasporalumnoview.cpp:98
 msgid "Cuota"
-msgstr ""
-
-#: listcuotasporalumnoview.cpp:99
-msgid "% Descuento en actividades"
-msgstr ""
-
-#: ui_promocionarclasebase.h:124
-msgid "Promocionar Clase"
-msgstr ""
-
-#: ui_promocionarclasebase.h:125
-msgid "Curso Origen"
-msgstr ""
-
-#: ui_promocionarclasebase.h:126
-msgid "Curso Destino"
-msgstr ""
-
-#: ui_promocionarclasebase.h:127 ui_alumnobase.h:535
-#: ui_listcuotasporalumnobase.h:119
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_promocionarclasebase.h:128 ui_alumnobase.h:536
-#: ui_listcuotasporalumnobase.h:120
-msgid "&Cancelar"
 msgstr ""
 
 #: ui_clasebase.h:221
@@ -312,8 +306,8 @@ msgstr ""
 msgid "Borrar Aula"
 msgstr ""
 
-#: ui_clasebase.h:231 ui_clasebase.h:234 ui_alumnobase.h:470
-#: ui_alumnobase.h:473
+#: ui_clasebase.h:231 ui_clasebase.h:234 ui_alumnobase.h:478
+#: ui_alumnobase.h:481
 msgid "Guardar"
 msgstr ""
 
@@ -321,7 +315,7 @@ msgstr ""
 msgid "Nueva Aula"
 msgstr ""
 
-#: ui_clasebase.h:244 ui_alumnobase.h:516
+#: ui_clasebase.h:244 ui_alumnobase.h:524
 msgid "Nombre:"
 msgstr ""
 
@@ -329,95 +323,117 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: ui_alumnobase.h:467 ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320
+#: ui_promocionarclasebase.h:173
+msgid "Promocionar Clase"
+msgstr ""
+
+#: ui_promocionarclasebase.h:175
+msgid "Curso Origen"
+msgstr ""
+
+#: ui_promocionarclasebase.h:176
+msgid "Curso Destino"
+msgstr ""
+
+#: ui_promocionarclasebase.h:177 ui_alumnobase.h:543
+#: ui_listcuotasporactividadbase.h:119 ui_listcuotasporalumnobase.h:119
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_promocionarclasebase.h:178 ui_alumnobase.h:544
+#: ui_listcuotasporactividadbase.h:120 ui_listcuotasporalumnobase.h:120
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_alumnobase.h:475 ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320
 msgid "Nuevo Alumno"
 msgstr ""
 
-#: ui_alumnobase.h:476
+#: ui_alumnobase.h:484
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:489
+#: ui_alumnobase.h:486 ui_alumnobase.h:489 ui_alumnobase.h:497
 msgid "Borrar"
 msgstr ""
 
-#: ui_alumnobase.h:484 ui_alumnoslistbase.h:339
+#: ui_alumnobase.h:492 ui_alumnoslistbase.h:339
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_alumnobase.h:486
+#: ui_alumnobase.h:494
 msgid "Imprimir"
 msgstr ""
 
-#: ui_alumnobase.h:492
+#: ui_alumnobase.h:500
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_alumnobase.h:508
+#: ui_alumnobase.h:516
 msgid "DNI"
 msgstr ""
 
-#: ui_alumnobase.h:509
+#: ui_alumnobase.h:517
 msgid "Fecha nacimiento:"
 msgstr ""
 
-#: ui_alumnobase.h:517
+#: ui_alumnobase.h:525
 msgid "1er. apellido:"
 msgstr ""
 
-#: ui_alumnobase.h:518
+#: ui_alumnobase.h:526
 msgid "2º apellido"
 msgstr ""
 
-#: ui_alumnobase.h:519
+#: ui_alumnobase.h:527
 msgid "Telefono movil:"
 msgstr ""
 
-#: ui_alumnobase.h:520
+#: ui_alumnobase.h:528
 msgid "Telefono fijo:"
 msgstr ""
 
-#: ui_alumnobase.h:521
+#: ui_alumnobase.h:529
 msgid "Correo electronico:"
 msgstr ""
 
-#: ui_alumnobase.h:523 ui_alumnoslistbase.h:310
+#: ui_alumnobase.h:530 ui_alumnoslistbase.h:310
 msgid "Curso:"
 msgstr ""
 
-#: ui_alumnobase.h:524
+#: ui_alumnobase.h:532
 msgid "&Datos generales"
 msgstr ""
 
-#: ui_alumnobase.h:525
+#: ui_alumnobase.h:533
 msgid "Fotografia"
 msgstr ""
 
-#: ui_alumnobase.h:526
+#: ui_alumnobase.h:534
 msgid "Cam&biar imagen"
 msgstr ""
 
-#: ui_alumnobase.h:528
+#: ui_alumnobase.h:536
 msgid "Borrar imagen"
 msgstr ""
 
-#: ui_alumnobase.h:531
+#: ui_alumnobase.h:539
 msgid "Comentarios:"
 msgstr ""
 
-#: ui_alumnobase.h:532
+#: ui_alumnobase.h:540
 msgid "Otros datos"
 msgstr ""
 
-#: ui_alumnobase.h:533
+#: ui_alumnobase.h:541
 msgid "Padres/Tutores"
 msgstr ""
 
-#: ui_alumnobase.h:534
+#: ui_alumnobase.h:542
 msgid "Actividades"
 msgstr ""
 
-#: ui_listcuotasporalumnobase.h:118
+#: ui_listcuotasporactividadbase.h:118 ui_listcuotasporalumnobase.h:118
 msgid "Cuotas Socio"
 msgstr ""
 

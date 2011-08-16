@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:26+0200\n"
+"POT-Creation-Date: 2011-08-16 13:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_untitled.h:295 ui_untitled.h:297 ui_devolucion.h:382 ui_devolucion.h:384
+#: ui_devolucion.h:382 ui_devolucion.h:384 ui_untitled.h:295 ui_untitled.h:297
 msgid "-"
 msgstr "-"
 
-#: ui_untitled.h:305 ui_devolucion.h:386
+#: ui_devolucion.h:386 ui_untitled.h:305
 msgid "->"
 msgstr "->"
 
-#: ui_untitled.h:306 ui_devolucion.h:387
+#: ui_devolucion.h:387 ui_untitled.h:306
 msgid "<-"
 msgstr "<-"
 
@@ -40,11 +40,11 @@ msgstr "A retornar"
 msgid "Articulo"
 msgstr "<P> Article <B>"
 
-#: ui_untitled.h:317 ui_devolucion.h:394
+#: ui_devolucion.h:394 ui_untitled.h:317
 msgid "CANCELAR"
 msgstr "CANCELA"
 
-#: ui_untitled.h:294 ui_devolucion.h:381
+#: ui_devolucion.h:381 ui_untitled.h:294
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"
@@ -63,11 +63,11 @@ msgstr "Denominació"
 msgid "Dialog"
 msgstr "Diari"
 
-#: ui_untitled.h:315 ui_devolucion.h:392
+#: ui_devolucion.h:392 ui_untitled.h:315
 msgid "EFECTIVO"
 msgstr ""
 
-#: ui_untitled.h:296 ui_devolucion.h:383
+#: ui_devolucion.h:383 ui_untitled.h:296
 #, fuzzy
 msgid "Fecha: del ticket"
 msgstr "Data de l'assentament"
@@ -76,12 +76,12 @@ msgstr "Data de l'assentament"
 msgid "Linea"
 msgstr "Línia"
 
-#: ui_untitled.h:298 ui_devolucion.h:385
+#: ui_devolucion.h:385 ui_untitled.h:298
 #, fuzzy
 msgid "Lineas Ticket"
 msgstr "Totals:"
 
-#: ui_untitled.h:308 ui_devolucion.h:389
+#: ui_devolucion.h:389 ui_untitled.h:308
 msgid "Lineas a devolver"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr "Adreça:"
 msgid "Producto"
 msgstr "Propietari"
 
-#: ui_untitled.h:307 ui_devolucion.h:388
+#: ui_devolucion.h:388 ui_untitled.h:307
 #, fuzzy
 msgid "Todo"
 msgstr "Tots"
@@ -122,6 +122,6 @@ msgstr ""
 msgid "Unds."
 msgstr ""
 
-#: ui_untitled.h:316 ui_devolucion.h:393
+#: ui_devolucion.h:393 ui_untitled.h:316
 msgid "VALE"
 msgstr ""

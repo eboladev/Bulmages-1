@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2011-02-24 15:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
 
-#: ui_convocatoriabase.h:450 ui_actividadbase.h:591
+#: ui_actividadbase.h:591 ui_convocatoriabase.h:450
 msgid "&Aceptar"
 msgstr "&Accepter"
 
@@ -30,11 +30,11 @@ msgstr "&Activités"
 msgid "&Activitats"
 msgstr ""
 
-#: ui_convocatoriabase.h:451 ui_actividadbase.h:592
+#: ui_actividadbase.h:592 ui_convocatoriabase.h:451
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: ui_convocatoriabase.h:439 ui_actividadbase.h:585
+#: ui_actividadbase.h:585 ui_convocatoriabase.h:439
 msgid "&Datos generales"
 msgstr "&Données générales"
 
@@ -76,11 +76,11 @@ msgstr "Actualiser la liste"
 msgid "Alumno"
 msgstr "Elève"
 
-#: ui_convocatoriabase.h:446 ui_actividadbase.h:588
+#: ui_actividadbase.h:588 ui_convocatoriabase.h:446
 msgid "Alumnos"
 msgstr "Elèves"
 
-#: ui_convocatoriabase.h:447 ui_actividadbase.h:590
+#: ui_actividadbase.h:590 ui_convocatoriabase.h:447
 msgid "Asistencias"
 msgstr "Assistances"
 
@@ -155,7 +155,7 @@ msgstr "Code activité :"
 msgid "Comentarios"
 msgstr "Commentaires"
 
-#: ui_convocatoriabase.h:440 ui_actividadbase.h:586
+#: ui_actividadbase.h:586 ui_convocatoriabase.h:440
 msgid "Comentarios:"
 msgstr "Libellés :"
 
@@ -176,8 +176,8 @@ msgstr "Convocations"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_convocatoriabase.h:423 ui_convocatoriaslistbase.h:339
-#: ui_actividadbase.h:556 ui_actividadeslistbase.h:287
+#: ui_convocatoriaslistbase.h:339 ui_actividadbase.h:556
+#: ui_convocatoriabase.h:423 ui_actividadeslistbase.h:287
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -189,7 +189,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_convocatoriabase.h:431 ui_actividadbase.h:564
+#: ui_actividadbase.h:564 ui_convocatoriabase.h:431
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -201,15 +201,15 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_convocatoriabase.h:415 ui_actividadbase.h:548
+#: ui_actividadbase.h:548 ui_convocatoriabase.h:415
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: convocatoriaslist.cpp:206 actividadeslist.cpp:218
+#: actividadeslist.cpp:218 convocatoriaslist.cpp:206
 msgid "Debe seleccionar una fila primero"
 msgstr "Vous devez sélectionner d'abord une fiche"
 
-#: convocatoriaslist.cpp:165 actividadeslist.cpp:174
+#: actividadeslist.cpp:174 convocatoriaslist.cpp:165
 msgid "Debe seleccionar una linea"
 msgstr "Vous devez sélectionner une ligne"
 
@@ -221,7 +221,7 @@ msgstr "Désirez vous garder les changements ?"
 msgid "Direccion"
 msgstr "Adresse"
 
-#: ui_convocatoriabase.h:436 ui_actividadbase.h:568
+#: ui_actividadbase.h:568 ui_convocatoriabase.h:436
 msgid "Direccion:"
 msgstr "Adresse :"
 
@@ -255,11 +255,11 @@ msgstr "Editer l'activité"
 msgid "Error al borrar el TipoActividad"
 msgstr "Erreur à l'effacement du type d'activité"
 
-#: convocatoriaslist.cpp:179 actividadeslist.cpp:189
+#: actividadeslist.cpp:189 convocatoriaslist.cpp:179
 msgid "Error al borrar el cobro a cliente"
 msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
-#: convocatoriaview.cpp:68 actividadview.cpp:112
+#: actividadview.cpp:112 convocatoriaview.cpp:68
 msgid "Error al crear el actividad"
 msgstr "Erreur de création d'activité"
 
@@ -352,7 +352,7 @@ msgstr "ID Activité"
 msgid "ID Convocatoria"
 msgstr "ID Convocation"
 
-#: convocatoriaview.cpp:51 actividadview.cpp:55
+#: actividadview.cpp:55 convocatoriaview.cpp:51
 msgid "ID actividad"
 msgstr "ID Activité"
 
@@ -368,7 +368,7 @@ msgstr "ID Activité"
 msgid "Id alumno"
 msgstr "ID Elèves"
 
-#: convocatoriaview.cpp:53 actividadview.cpp:59
+#: actividadview.cpp:59 convocatoriaview.cpp:53
 msgid "Id profesor"
 msgstr "Id professeur"
 
@@ -417,7 +417,7 @@ msgstr "Mardi"
 msgid "Miercoles"
 msgstr "Mercredi"
 
-#: convocatoriaslist.cpp:268 actividadeslist.cpp:293 actividadview.cpp:251
+#: actividadeslist.cpp:293 convocatoriaslist.cpp:268 actividadview.cpp:251
 msgid "Nombre"
 msgstr "Nom"
 
@@ -425,11 +425,11 @@ msgstr "Nom"
 msgid "Nombre alumno"
 msgstr "Nom de l'élève"
 
-#: ui_convocatoriabase.h:433 ui_actividadbase.h:566
+#: ui_actividadbase.h:566 ui_convocatoriabase.h:433
 msgid "Nombre completo:"
 msgstr "Nom complet :"
 
-#: convocatoriaview.cpp:52 actividadview.cpp:57
+#: actividadview.cpp:57 convocatoriaview.cpp:52
 msgid "Nombre del actividad"
 msgstr "Nom de l'activité"
 
@@ -437,7 +437,7 @@ msgstr "Nom de l'activité"
 msgid "Nombre:"
 msgstr "Nom :"
 
-#: ui_convocatoriabase.h:406 ui_actividadbase.h:539
+#: ui_actividadbase.h:539 ui_convocatoriabase.h:406
 msgid "Nueva Actividad"
 msgstr "Nouvelle activité"
 
@@ -458,7 +458,7 @@ msgstr "Nouveau type d'activité"
 msgid "Nuevo actividad"
 msgstr "Nouvelle activité"
 
-#: ui_convocatoriabase.h:441 ui_actividadbase.h:587
+#: ui_actividadbase.h:587 ui_convocatoriabase.h:441
 msgid "Otros datos"
 msgstr "Autres données"
 
@@ -486,7 +486,7 @@ msgstr "Professeur "
 msgid "Profesor Encargado"
 msgstr "Professeur représenté"
 
-#: convocatoriaview.cpp:59 actividadview.cpp:93
+#: actividadview.cpp:93 convocatoriaview.cpp:59
 msgid "Profesor:"
 msgstr "Professeur :"
 
@@ -502,7 +502,7 @@ msgstr "Sélectionner l'activité"
 msgid "Sesiones Semanales"
 msgstr "Sessions hebdomadaires"
 
-#: convocatoriaview.cpp:96 actividadview.cpp:143
+#: actividadview.cpp:143 convocatoriaview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
@@ -535,7 +535,7 @@ msgstr "Tuteur"
 msgid "Viernes"
 msgstr "Vendredi"
 
-#: actividadview.cpp:63 ui_convocatoriabase.h:437 ui_actividadbase.h:569
+#: actividadview.cpp:63 ui_actividadbase.h:569 ui_convocatoriabase.h:437
 msgid "Vigente"
 msgstr "En vigueur"
 

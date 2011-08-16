@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:12+0200\n"
+"POT-Creation-Date: 2011-08-16 13:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: tickets.cpp:63 abrevs.cpp:124
+msgid "Ticket bloqueado"
+msgstr ""
+
+#: tickets.cpp:64 abrevs.cpp:125
+msgid ""
+"Este ticket esta bloqueado por otro terminal.\n"
+"Desea abrirlo de todos modos?"
+msgstr ""
 
 #: pluginbt_accesobotones.cpp:54
 msgid "Abreviaturas"
@@ -31,16 +41,6 @@ msgstr ""
 
 #: abrevs.cpp:60
 msgid "Ya existe un ticket aparcado con el mismo nombre."
-msgstr ""
-
-#: abrevs.cpp:124 tickets.cpp:63
-msgid "Ticket bloqueado"
-msgstr ""
-
-#: abrevs.cpp:125 tickets.cpp:64
-msgid ""
-"Este ticket esta bloqueado por otro terminal.\n"
-"Desea abrirlo de todos modos?"
 msgstr ""
 
 #: ui_ticketsbase.h:58 ui_abrevsbase.h:80

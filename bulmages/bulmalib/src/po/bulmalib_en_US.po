@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:12+0200\n"
+"POT-Creation-Date: 2011-08-16 13:02+0200\n"
 "PO-Revision-Date: 2011-02-26 07:11+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: English\n"
@@ -25,7 +25,7 @@ msgstr "Option reserved to experts!"
 msgid "&Borrar"
 msgstr "&Delete"
 
-#: ui_blcompanydialogbase.h:203 blform.cpp:462 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:463 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancel"
@@ -59,7 +59,7 @@ msgstr "&Enters"
 msgid "&Guardar"
 msgstr "Keep"
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&No"
 msgstr "&No"
 
@@ -67,7 +67,7 @@ msgstr "&No"
 msgid "&Omitir"
 msgstr "&Omit"
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&Si"
 msgstr "&Yes"
 
@@ -208,7 +208,7 @@ msgstr "Biennial"
 msgid "BlSearchWidget"
 msgstr ""
 
-#: blform.cpp:425 blformlist.cpp:449
+#: blform.cpp:426 blformlist.cpp:449
 msgid "Borrar"
 msgstr "Delete"
 
@@ -342,11 +342,11 @@ msgstr "<LI>Insufficient data to treat the mode of payment."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "You must select an element"
 
-#: blform.cpp:426
+#: blform.cpp:427
 msgid "Desea eliminar '"
 msgstr "Do you want to eliminate '"
 
-#: blform.cpp:461 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:462 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "Do you want to keep the changes?"
 
@@ -485,7 +485,7 @@ msgstr ""
 msgid "Error en la insercion del campo al registro."
 msgstr ""
 
-#: blform.cpp:926 blform.cpp:932
+#: blform.cpp:927 blform.cpp:933
 msgid "Error inesperado al guardar"
 msgstr "Unexpected save error"
 
@@ -553,7 +553,7 @@ msgstr "Form1"
 msgid "Forma de pago"
 msgstr "<LI> Mode of payment <B>"
 
-#: blform.cpp:460
+#: blform.cpp:461
 msgid "Guardar"
 msgstr "Save"
 
@@ -578,7 +578,7 @@ msgstr "Province Id"
 msgid "Imprimiendo "
 msgstr "Printing"
 
-#: blform.cpp:537
+#: blform.cpp:538
 msgid "Imprimir ficha"
 msgstr "File printing"
 
@@ -664,7 +664,7 @@ msgstr ""
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "<P>The parent of this family has not been found.</P>"
 
-#: blform.cpp:436
+#: blform.cpp:437
 msgid "No se ha podido borrar"
 msgstr "Deletion failed"
 
@@ -672,7 +672,7 @@ msgstr "Deletion failed"
 msgid "No se ha podido cargar la libreria: "
 msgstr "The library could not be loaded: "
 
-#: blform.cpp:475
+#: blform.cpp:476
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "The window could not be closed because of an error"
 
@@ -708,7 +708,7 @@ msgstr "New country"
 msgid "Omitir &clase"
 msgstr "Omit &class"
 
-#: blform.cpp:534
+#: blform.cpp:535
 msgid "Opciones avanzadas de ficha"
 msgstr "Advanced file options"
 

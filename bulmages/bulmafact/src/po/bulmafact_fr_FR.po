@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:17+0200\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
 "PO-Revision-Date: 2011-02-24 15:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -32,7 +32,7 @@ msgstr "% T.V.A."
 msgid "% R.E."
 msgstr "% R.E."
 
-#: ui_bfconfiguracionbase.h:303 ui_bfseriefacturabase.h:85
+#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:303
 msgid "&Aceptar"
 msgstr "&Accepter"
 
@@ -40,11 +40,11 @@ msgstr "&Accepter"
 msgid "&Acerca de"
 msgstr "&A propos de"
 
-#: ui_bfbulmafactbase.h:174
+#: ui_bfbulmafactbase.h:179
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&A propos de Iglues/BulmaFact"
 
-#: ui_bfconfiguracionbase.h:304 ui_bfseriefacturabase.h:84
+#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:304
 msgid "&Cancelar"
 msgstr "&Annuler"
 
@@ -52,19 +52,19 @@ msgstr "&Annuler"
 msgid "&Cerrar"
 msgstr "&Fermer"
 
-#: ui_bfbulmafactbase.h:175
+#: ui_bfbulmafactbase.h:180
 msgid "&Documentacion"
 msgstr "&Documentation"
 
-#: ui_bfbulmafactbase.h:177
+#: ui_bfbulmafactbase.h:182
 msgid "&Indexador"
 msgstr "&Index"
 
-#: ui_bfbulmafactbase.h:168
+#: ui_bfbulmafactbase.h:173
 msgid "&Propiedades de la empresa..."
 msgstr "&Propriétés de l'entreprise..."
 
-#: ui_bfbulmafactbase.h:166
+#: ui_bfbulmafactbase.h:171
 msgid "&Salir del programa"
 msgstr "&Quitter le programme"
 
@@ -120,7 +120,7 @@ msgstr ""
 msgid "A&utores"
 msgstr "A&uteurs"
 
-#: ui_bfbulmafactbase.h:190
+#: ui_bfbulmafactbase.h:196
 msgid "A&yuda"
 msgstr "A&ide"
 
@@ -144,7 +144,7 @@ msgstr "Article"
 msgid "Articulo:"
 msgstr "Article :"
 
-#: ui_bfbulmafactbase.h:226
+#: ui_bfbulmafactbase.h:232
 msgid "Avanzados"
 msgstr "Avancer"
 
@@ -201,11 +201,11 @@ msgstr ""
 msgid "Configuracion basica"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:182
+#: ui_bfbulmafactbase.h:187
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_bfbulmafactbase.h:167
+#: ui_bfbulmafactbase.h:172
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
@@ -225,7 +225,7 @@ msgstr "Remise"
 msgid "Direccion"
 msgstr "Adresse"
 
-#: ui_bfbulmafactbase.h:191
+#: ui_bfbulmafactbase.h:197
 msgid "E&mpresa"
 msgstr "E&ntreprise"
 
@@ -262,11 +262,11 @@ msgstr "Erreur d'impression inattendue"
 msgid "Este item es un articulo encontrado, no entrado por el usuario."
 msgstr ""
 
-#: ui_bfbulmafactbase.h:176
+#: ui_bfbulmafactbase.h:181
 msgid "F1"
 msgstr "F1"
 
-#: ui_bfbulmafactbase.h:173
+#: ui_bfbulmafactbase.h:178
 msgid "F11"
 msgstr "F11"
 
@@ -287,8 +287,8 @@ msgstr "Famille :"
 msgid "Fax"
 msgstr "Fax"
 
-#: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
-#: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
+#: ui_bfbulmafactbase.h:216 ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221
+#: ui_bfbulmafactbase.h:224 ui_bfbulmafactbase.h:227 ui_bfbulmafactbase.h:230
 msgid "Fichas"
 msgstr "Fiches"
 
@@ -320,11 +320,11 @@ msgstr "Idiome :"
 msgid "Idiomas y traducciones:"
 msgstr "Idiomes et traductions :"
 
-#: ui_bfbulmafactbase.h:165
+#: ui_bfbulmafactbase.h:170
 msgid "Iglues/BulmaFact - Facturacion GPL"
 msgstr "Iglues/BulmaFact - Facturation GPL"
 
-#: ui_bfbulmafactbase.h:178 ui_bfbulmafactbase.h:180
+#: ui_bfbulmafactbase.h:183 ui_bfbulmafactbase.h:185
 msgid "Indexador"
 msgstr "Index"
 
@@ -361,14 +361,18 @@ msgstr "Lancer les greffons"
 msgid "Leyendo configuracion"
 msgstr "Lire la configuration"
 
-#: ui_bfbulmafactbase.h:194 ui_bfbulmafactbase.h:196 ui_bfbulmafactbase.h:199
-#: ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:205 ui_bfbulmafactbase.h:208
+#: ui_bfbulmafactbase.h:200 ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:205
+#: ui_bfbulmafactbase.h:208 ui_bfbulmafactbase.h:211 ui_bfbulmafactbase.h:214
 msgid "Listados"
 msgstr "Listes"
 
-#: ui_bfbulmafactbase.h:192
+#: ui_bfbulmafactbase.h:198
 msgid "Maest&ro"
 msgstr "P&rincipal"
+
+#: ui_bfbulmafactbase.h:195
+msgid "Modo Experto"
+msgstr ""
 
 # Commune
 #: ui_bfconfiguracionbase.h:310
@@ -391,11 +395,11 @@ msgstr "Numéro de ligne"
 msgid "Orden"
 msgstr "Ordre"
 
-#: ui_bfbulmafactbase.h:184
+#: ui_bfbulmafactbase.h:189
 msgid "Ordenar &ventanas"
 msgstr "Ranger les &Fenêtres"
 
-#: ui_bfbulmafactbase.h:183
+#: ui_bfbulmafactbase.h:188
 msgid "Organizacio&n en cascada"
 msgstr "Fe&nêtre en cascade"
 
@@ -407,11 +411,11 @@ msgstr "Payer"
 msgid "Pais"
 msgstr "Pays"
 
-#: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
+#: ui_bfbulmafactbase.h:190 ui_bfbulmafactbase.h:191
 msgid "Paises / Provincias"
 msgstr "Pays/Provinces"
 
-#: ui_bfbulmafactbase.h:188
+#: ui_bfbulmafactbase.h:193
 msgid "Paises y provincias"
 msgstr "Pays et Provinces"
 
@@ -436,7 +440,7 @@ msgstr "Prix"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfconfiguracionbase.h:302 ui_bfbulmafactbase.h:170
+#: ui_bfbulmafactbase.h:175 ui_bfconfiguracionbase.h:302
 msgid "Propiedades de la empresa"
 msgstr "Propriétés de l'entreprise"
 
@@ -509,11 +513,11 @@ msgstr ""
 msgid "Valor"
 msgstr "Valeur"
 
-#: ui_bfbulmafactbase.h:193
+#: ui_bfbulmafactbase.h:199
 msgid "Venta&na"
 msgstr "Fenêt&re"
 
-#: ui_bfbulmafactbase.h:172
+#: ui_bfbulmafactbase.h:177
 msgid "Ventana &completa"
 msgstr "Plein é&cran"
 

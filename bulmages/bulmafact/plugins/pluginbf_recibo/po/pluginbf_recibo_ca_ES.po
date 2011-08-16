@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2011-02-26 07:54+0100\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
@@ -71,7 +71,7 @@ msgstr "Esborra rebut"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: reciboslist.cpp:351 reciboview.cpp:53 emitirrecibosview.cpp:57
+#: reciboslist.cpp:351 emitirrecibosview.cpp:57 reciboview.cpp:53
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -95,7 +95,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_reciboslistbase.h:334 ui_recibobase.h:364
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -111,7 +111,7 @@ msgstr "Ctrl+F"
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_emitirrecibosbase.h:246 ui_reciboslistbase.h:318
+#: ui_emitirrecibosbase.h:250 ui_reciboslistbase.h:318
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
@@ -147,15 +147,15 @@ msgstr "Edita Activitat"
 msgid "Editar recibo"
 msgstr "Edita rebut"
 
-#: ui_emitirrecibosbase.h:243
+#: ui_emitirrecibosbase.h:247
 msgid "Emiitr Recibos"
 msgstr "Emet rebuts"
 
-#: emitirrecibosview.cpp:53 ui_emitirrecibosbase.h:240
+#: emitirrecibosview.cpp:53 ui_emitirrecibosbase.h:244
 msgid "Emitir Recibos"
 msgstr "Emet rebuts"
 
-#: ui_emitirrecibosbase.h:247
+#: ui_emitirrecibosbase.h:251
 msgid "Emitir las Cuotas de Socios"
 msgstr "Emet les quotes dels socis"
 
@@ -163,11 +163,11 @@ msgstr "Emet les quotes dels socis"
 msgid "Emitir recibos"
 msgstr "Emet rebuts"
 
-#: ui_emitirrecibosbase.h:249
+#: ui_emitirrecibosbase.h:253
 msgid "Emitir sólo la actividad Seleccionada"
 msgstr "Emetre només la activitat seleccionada"
 
-#: ui_emitirrecibosbase.h:248
+#: ui_emitirrecibosbase.h:257
 msgid "Emitir todas las Actividades"
 msgstr "Emet totes les activitats"
 
@@ -175,7 +175,7 @@ msgstr "Emet totes les activitats"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error en esborrar el cobrament a client"
 
-#: reciboview.cpp:94 emitirrecibosview.cpp:73
+#: emitirrecibosview.cpp:73 reciboview.cpp:94
 msgid "Error al crear el recibo"
 msgstr "Error en crear el rebut"
 
@@ -195,11 +195,11 @@ msgstr "Data"
 msgid "Fecha de creacion"
 msgstr "Data de compra"
 
-#: ui_emitirrecibosbase.h:252 ui_reciboslistbase.h:307
+#: ui_emitirrecibosbase.h:254 ui_reciboslistbase.h:307
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_emitirrecibosbase.h:251 ui_reciboslistbase.h:306
+#: ui_emitirrecibosbase.h:252 ui_reciboslistbase.h:306
 msgid "Fecha inicial:"
 msgstr "Data inicial"
 
@@ -235,7 +235,7 @@ msgstr "Id. tutor"
 msgid "ID cliente"
 msgstr "Id. client"
 
-#: reciboview.cpp:52 reciboview.cpp:81 emitirrecibosview.cpp:56
+#: emitirrecibosview.cpp:56 reciboview.cpp:52 reciboview.cpp:81
 msgid "ID recibo"
 msgstr "Id. rebut"
 
@@ -259,7 +259,7 @@ msgstr "Imprimeix la comanda"
 msgid "Mostrar"
 msgstr "Mostra"
 
-#: ui_emitirrecibosbase.h:250
+#: ui_emitirrecibosbase.h:256
 msgid "Notificar por e-mail"
 msgstr "Notifica per e-mail"
 
@@ -291,7 +291,11 @@ msgstr "Rebut"
 msgid "Recibo reemitido"
 msgstr "Rebut reemès"
 
-#: reciboslist.cpp:216 pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61
+#: ui_emitirrecibosbase.h:255
+msgid "Recibo único por padre/tutor"
+msgstr ""
+
+#: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
 #: ui_reciboslistbase.h:305
 msgid "Recibos"
 msgstr "Rebuts"
@@ -300,7 +304,7 @@ msgstr "Rebuts"
 msgid "Recibos &Automaticos"
 msgstr "Rebuts &automàtics"
 
-#: ui_emitirrecibosbase.h:237
+#: ui_emitirrecibosbase.h:241
 msgid "Recibos Automaticos"
 msgstr "Rebuts automàtics"
 
@@ -316,7 +320,7 @@ msgstr "Rebuts pagats"
 msgid "Reemitir Recibo"
 msgstr "Reemet rebut"
 
-#: emitirrecibosview.cpp:167
+#: emitirrecibosview.cpp:211
 msgid "Terminado"
 msgstr "Finalitzat"
 

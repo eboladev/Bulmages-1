@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: 2011-02-10 11:37+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr "&Annuler"
 msgid "&Comercial"
 msgstr "Commercial "
 
-#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:82
+#: rutacomercialincview.cpp:82 incidenciacomercialview.cpp:106
 msgid "&No"
 msgstr "&Non"
 
@@ -37,7 +37,7 @@ msgstr "&Non"
 msgid "&Rutas comerciales"
 msgstr "&Routes commerciales "
 
-#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:82
+#: rutacomercialincview.cpp:82 incidenciacomercialview.cpp:106
 msgid "&Si"
 msgstr "&Oui"
 
@@ -81,10 +81,10 @@ msgstr "CIF Client "
 msgid "Cambio datos"
 msgstr "Changement des Données"
 
-#: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
 #: rutacomercialview.cpp:69 rutacomercialview.cpp:106 rutacomerciallist.cpp:49
-#: rutacomerciallist.cpp:85 ui_rutacomercialbase.h:229
-#: ui_rutacomerciallistbase.h:361 ui_incidenciacomercialbase.h:282
+#: rutacomerciallist.cpp:85 incidenciacomercialview.cpp:57
+#: incidenciacomercialview.cpp:79 ui_rutacomerciallistbase.h:361
+#: ui_incidenciacomercialbase.h:282 ui_rutacomercialbase.h:229
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -92,8 +92,8 @@ msgstr "Client :"
 msgid "Comentario de la incidencia comercial"
 msgstr "Libellé d'incident commercial"
 
-#: incidenciacomercial.cpp:45 rutacomercialview.cpp:62
-#: rutacomercialview.cpp:99
+#: rutacomercialview.cpp:62 rutacomercialview.cpp:99
+#: incidenciacomercial.cpp:45
 msgid "Comentarios"
 msgstr "Libellés"
 
@@ -109,7 +109,7 @@ msgstr "Commentaires pour le commercial"
 msgid "Comentarios ruta comercial"
 msgstr "Commentaires pour la route commercial"
 
-#: ui_rutacomercialbase.h:230 ui_incidenciacomercialbase.h:285
+#: ui_incidenciacomercialbase.h:285 ui_rutacomercialbase.h:230
 msgid "Comentarios:"
 msgstr "Libellés :"
 
@@ -141,13 +141,13 @@ msgstr "Etat d'incident commercial"
 msgid "Estado de la incidencia:"
 msgstr "Etat d'incident :"
 
-#: incidenciacomercial.cpp:43 rutacomercialview.cpp:61
-#: rutacomercialview.cpp:98
+#: rutacomercialview.cpp:61 rutacomercialview.cpp:98
+#: incidenciacomercial.cpp:43
 msgid "Familia"
 msgstr "Famille"
 
-#: incidenciacomercial.cpp:42 rutacomercialview.cpp:60
-#: rutacomercialview.cpp:97
+#: rutacomercialview.cpp:60 rutacomercialview.cpp:97
+#: incidenciacomercial.cpp:42
 msgid "Fecha"
 msgstr "Date"
 
@@ -203,8 +203,8 @@ msgstr "Sauvegarder la Facture"
 msgid "Guardar la incidencia"
 msgstr "Sauvegarder l'incident "
 
-#: incidenciacomercial.cpp:47 rutacomercialview.cpp:63
-#: rutacomercialview.cpp:100
+#: rutacomercialview.cpp:63 rutacomercialview.cpp:100
+#: incidenciacomercial.cpp:47
 msgid "Hora"
 msgstr "Feuille"
 
@@ -216,7 +216,7 @@ msgstr "Feuille d'incident "
 msgid "Hora ruta"
 msgstr "Feuille de route"
 
-#: ui_rutacomercialbase.h:228 ui_incidenciacomercialbase.h:281
+#: ui_incidenciacomercialbase.h:281 ui_rutacomercialbase.h:228
 msgid "Hora:"
 msgstr "Feuille :"
 
@@ -248,8 +248,8 @@ msgstr "ID Salarié"
 msgid "ID zona comercial"
 msgstr "ID de zone commercial"
 
-#: incidenciacomercial.cpp:41 rutacomercialview.cpp:59
-#: rutacomercialview.cpp:96
+#: rutacomercialview.cpp:59 rutacomercialview.cpp:96
+#: incidenciacomercial.cpp:41
 msgid "Identificador"
 msgstr "Identificateur"
 
@@ -257,7 +257,7 @@ msgstr "Identificateur"
 msgid "Imprimir Listado"
 msgstr "Imprimer la liste"
 
-#: incidenciacomercial.cpp:38 incidenciacomercialview.cpp:162
+#: incidenciacomercialview.cpp:162 incidenciacomercial.cpp:38
 msgid "Incidencia comercial"
 msgstr "Incident commercial"
 
@@ -265,8 +265,8 @@ msgstr "Incident commercial"
 msgid "Incidencia comercial:"
 msgstr "Incident commercial :"
 
-#: ui_rutacomercialbase.h:222 ui_rutacomercialbase.h:225
 #: ui_incidenciacomercialbase.h:275 ui_incidenciacomercialbase.h:278
+#: ui_rutacomercialbase.h:222 ui_rutacomercialbase.h:225
 msgid "Informe por Referencia"
 msgstr "Rapport par référence"
 
@@ -322,8 +322,8 @@ msgstr "Accusés."
 msgid "Realizar Cobro"
 msgstr "Réaliser l'Encaissement"
 
-#: incidenciacomercial.cpp:48 rutacomercialview.cpp:64
-#: rutacomercialview.cpp:101 ui_incidenciacomercialbase.h:273
+#: rutacomercialview.cpp:64 rutacomercialview.cpp:101
+#: incidenciacomercial.cpp:48 ui_incidenciacomercialbase.h:273
 msgid "Referencia"
 msgstr "Référence"
 
@@ -343,9 +343,9 @@ msgstr "Référence :"
 msgid "Revisar"
 msgstr "Réviser"
 
-#: incidenciacomercial.cpp:93 rutacomercialview.cpp:56
-#: rutacomercialview.cpp:93 ui_rutacomercialbase.h:218
-#: ui_incidenciacomercialbase.h:271 ui_rutacomercialincbase.h:205
+#: rutacomercialview.cpp:56 rutacomercialview.cpp:93
+#: incidenciacomercial.cpp:93 ui_incidenciacomercialbase.h:271
+#: ui_rutacomercialincbase.h:205 ui_rutacomercialbase.h:218
 msgid "Ruta comercial"
 msgstr "Route commercial"
 

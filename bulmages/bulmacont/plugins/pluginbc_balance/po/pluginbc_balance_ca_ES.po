@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:16+0200\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,7 +135,7 @@ msgstr ""
 msgid "Centro de coste:"
 msgstr "Centre de cost:"
 
-#: balanceview.cpp:277 balancesubform.cpp:38
+#: balancesubform.cpp:38 balanceview.cpp:277
 msgid "Codigo"
 msgstr "Codi"
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: ui_balanceprintbase.h:321 ui_balancesprintdlg.h:200
+#: ui_balancesprintdlg.h:200 ui_balanceprintbase.h:321
 #, fuzzy
 msgid "Fecha final"
 msgstr "Data final"
@@ -224,7 +224,7 @@ msgstr "Data final"
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_balanceprintbase.h:319 ui_balancesprintdlg.h:199
+#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:319
 #, fuzzy
 msgid "Fecha inicial"
 msgstr "Data inicial"

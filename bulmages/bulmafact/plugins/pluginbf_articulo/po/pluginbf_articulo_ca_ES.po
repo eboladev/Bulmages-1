@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:18+0200\n"
+"POT-Creation-Date: 2011-08-16 13:08+0200\n"
 "PO-Revision-Date: 2011-03-11 14:53+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_familiasbase.h:371 ui_tiposarticulobase.h:264 ui_articleeditbase.h:628
+#: ui_articleeditbase.h:650 ui_tiposarticulobase.h:264 ui_familiasbase.h:371
 #, fuzzy
 msgid "&Aceptar"
 msgstr "&Accepta"
@@ -22,11 +22,11 @@ msgstr "&Accepta"
 msgid "&Articulos"
 msgstr "&Article"
 
-#: ui_familiasbase.h:372 ui_tiposarticulobase.h:265 ui_articleeditbase.h:629
+#: ui_articleeditbase.h:651 ui_tiposarticulobase.h:265 ui_familiasbase.h:372
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: ui_articleeditbase.h:625
+#: ui_articleeditbase.h:647
 msgid "&Datos generales"
 msgstr "&Dades generals"
 
@@ -34,7 +34,7 @@ msgstr "&Dades generals"
 msgid "&Familias"
 msgstr "&Famílies"
 
-#: ui_articleeditbase.h:620
+#: ui_articleeditbase.h:642
 msgid "&Incluir en el catalogo."
 msgstr "&Inclou al catàleg."
 
@@ -46,12 +46,12 @@ msgstr "&Nou article"
 msgid "&Tipos de articulo"
 msgstr "&Tipus d'article"
 
-#: familiasview.cpp:502 tiposarticuloview.cpp:395
+#: tiposarticuloview.cpp:395 familiasview.cpp:502
 #, qt-format
 msgid "'%1' borrado."
 msgstr ""
 
-#: ui_familiasbase.h:359 ui_tiposarticulobase.h:260
+#: ui_tiposarticulobase.h:260 ui_familiasbase.h:359
 msgid "1"
 msgstr "F1"
 
@@ -63,11 +63,11 @@ msgstr "<F2> Obre selector d'articles."
 msgid "Abreviacion"
 msgstr "Abreviació"
 
-#: ui_articleeditbase.h:624
+#: ui_articleeditbase.h:646
 msgid "Activar el &control de stock."
 msgstr "Activa el &control d'estoc."
 
-#: ui_articleeditbase.h:622
+#: ui_articleeditbase.h:644
 msgid "Activar el control de stock para este articulo."
 msgstr "Activa el control de estoc per aquest artícle."
 
@@ -87,8 +87,8 @@ msgstr "Article"
 msgid "Articulos"
 msgstr "Articles"
 
-#: familiasview.cpp:494 tiposarticuloview.cpp:387 ui_articleeditbase.h:594
-#: ui_articleeditbase.h:597
+#: tiposarticuloview.cpp:387 familiasview.cpp:494 ui_articleeditbase.h:615
+#: ui_articleeditbase.h:618
 msgid "Borrar"
 msgstr "Esborra"
 
@@ -100,16 +100,16 @@ msgstr "Esborra família"
 msgid "Borrar Tipo de articulo"
 msgstr "Esborra tipus d'article"
 
-#: articulolist.cpp:173 articulolist.cpp:303 ui_articleslistbase.h:306
+#: articulolist.cpp:174 articulolist.cpp:304 ui_articleslistbase.h:306
 #: ui_articleslistbase.h:309
 msgid "Borrar articulo"
 msgstr "Esborra article"
 
-#: ui_articleeditbase.h:606
+#: ui_articleeditbase.h:627
 msgid "Borrar imagen"
 msgstr "Esborra imatge"
 
-#: articuloview.cpp:385
+#: articuloview.cpp:390
 msgid "Borrar imagen del articulo"
 msgstr "Esborra imatge de l'article"
 
@@ -117,11 +117,11 @@ msgstr "Esborra imatge de l'article"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: ui_articleeditbase.h:626
+#: ui_articleeditbase.h:648
 msgid "C&omponentes"
 msgstr "C&omponents"
 
-#: ui_articleeditbase.h:604
+#: ui_articleeditbase.h:625
 msgid "Cam&biar imagen"
 msgstr "Can&viar imatge"
 
@@ -129,28 +129,28 @@ msgstr "Can&viar imatge"
 msgid "Cantidad de componente de articulo"
 msgstr "Quantitat de components d'article"
 
-#: articulolist.cpp:250 articulolist.cpp:275
+#: articulolist.cpp:251 articulolist.cpp:276
 msgid "Clientes (*.xml)"
 msgstr "Clients (*.xml)"
 
-#: familiasview.cpp:51 familiasview.cpp:582 articuloview.cpp:62
-#: tiposarticuloview.cpp:46
+#: articuloview.cpp:62 tiposarticuloview.cpp:46 familiasview.cpp:51
+#: familiasview.cpp:582
 msgid "Codigo"
 msgstr "Codi"
 
-#: familiasview.cpp:51 articuloview.cpp:70
+#: articuloview.cpp:70 familiasview.cpp:51
 msgid "Codigo completo"
 msgstr "Codi complet"
 
-#: comparticulolistview.cpp:42 articulolist.cpp:425
+#: comparticulolistview.cpp:42 articulolist.cpp:426
 msgid "Codigo completo del articulo"
 msgstr "Codi complet de l'article"
 
-#: ui_familiasbase.h:363 ui_articleeditbase.h:600
+#: ui_articleeditbase.h:621 ui_familiasbase.h:363
 msgid "Codigo completo:"
 msgstr "Codi complet"
 
-#: ui_articleeditbase.h:601
+#: ui_articleeditbase.h:622
 msgid "Codigo del articulo:"
 msgstr "Codi d'article:"
 
@@ -194,69 +194,69 @@ msgstr "Heu de seleccionar un tipus"
 msgid "Debe seleccionar una familia"
 msgstr "Heu de seleccionar una família"
 
-#: ui_articleeditbase.h:627
+#: ui_articleeditbase.h:649
 msgid "Descripcio&n"
 msgstr "Descripció&"
 
-#: familiasview.cpp:51 tiposarticuloview.cpp:46
+#: tiposarticuloview.cpp:46 familiasview.cpp:51
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: articulolist.cpp:427
+#: articulolist.cpp:428
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripció de l'article"
 
-#: articulolist.cpp:429
+#: articulolist.cpp:430
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripció del tipus d'article"
 
-#: articulolist.cpp:430
+#: articulolist.cpp:431
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripció tipus d'I.V.A."
 
-#: ui_familiasbase.h:369 ui_tiposarticulobase.h:263
+#: ui_tiposarticulobase.h:263 ui_familiasbase.h:369
 msgid "Descripcion:"
 msgstr "Descripció:"
 
-#: familiasview.cpp:495 tiposarticuloview.cpp:388
+#: tiposarticuloview.cpp:388 familiasview.cpp:495
 msgid "Desea eliminar"
 msgstr "Desitgeu eliminar '"
 
-#: familiasview.cpp:351 tiposarticuloview.cpp:295
+#: tiposarticuloview.cpp:295 familiasview.cpp:351
 msgid "Desea guardar los cambios?"
 msgstr "Desitgeu desar els canvis?"
 
-#: articulolist.cpp:432
+#: articulolist.cpp:433
 msgid "Disponible en stock"
 msgstr "Disponible en estoc"
 
-#: pluginbf_articulo.cpp:342 pluginbf_articulo.cpp:359 articulolist.cpp:302
+#: pluginbf_articulo.cpp:342 pluginbf_articulo.cpp:359 articulolist.cpp:303
 #: ui_articleslistbase.h:299 ui_articleslistbase.h:302
 msgid "Editar articulo"
 msgstr "Edita article"
 
-#: articulolist.cpp:248 articulolist.cpp:273
+#: articulolist.cpp:249 articulolist.cpp:274
 msgid "Elija el archivo"
 msgstr "Trieu el fitxer"
 
-#: articulolist.cpp:256 articulolist.cpp:282
+#: articulolist.cpp:257 articulolist.cpp:283
 msgid "Error al abrir el archivo."
 msgstr ""
 
-#: familiasview.cpp:504 tiposarticuloview.cpp:397
+#: tiposarticuloview.cpp:397 familiasview.cpp:504
 #, qt-format
 msgid "Error al borrar '%1'."
 msgstr ""
 
-#: articulolist.cpp:185
+#: articulolist.cpp:186
 msgid "Error al borrar el articulo"
 msgstr "Error en esborrar l'article"
 
-#: familiasview.cpp:536 tiposarticuloview.cpp:429
+#: tiposarticuloview.cpp:429 familiasview.cpp:536
 msgid "Error al borrar la familia"
 msgstr "Error en esborrar la família"
 
-#: articuloview.cpp:125
+#: articuloview.cpp:130
 msgid "Error al crear el articulo"
 msgstr "Error en crear la família"
 
@@ -276,12 +276,12 @@ msgstr "Error en la càrrega"
 msgid "Error en la creacion"
 msgstr "Error en la creació"
 
-#: articulolist.cpp:174
+#: articulolist.cpp:175
 msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
 msgstr ""
 "Esteu a punt d'esborrar un article. Aquestes dades poden donar problemes."
 
-#: articuloview.cpp:386
+#: articuloview.cpp:391
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
@@ -310,7 +310,7 @@ msgstr "Famílies"
 msgid "Filtrar listado"
 msgstr "Filtra llistat"
 
-#: ui_articleeditbase.h:587 ui_articleeditbase.h:590
+#: ui_articleeditbase.h:608 ui_articleeditbase.h:611
 msgid "Guardar"
 msgstr "Desa"
 
@@ -330,7 +330,7 @@ msgstr "Desa tipus d'article"
 msgid "Guardar familia"
 msgstr "Desa família"
 
-#: articulolist.cpp:424
+#: articulolist.cpp:425
 msgid "ID articulo"
 msgstr "ID article"
 
@@ -355,11 +355,11 @@ msgstr "ID família"
 msgid "Identificador"
 msgstr "Identificador"
 
-#: ui_articleeditbase.h:603
+#: ui_articleeditbase.h:624
 msgid "Imagen del articulo:"
 msgstr "Imatge de l'article:"
 
-#: articuloview.cpp:350
+#: articuloview.cpp:355
 msgid "Imagenes (*.jpg)"
 msgstr "Imatges (*.jpg)"
 
@@ -391,11 +391,11 @@ msgstr "Inclou en control d'estoc"
 msgid "Incluir en presentaciones"
 msgstr "Inclou en presentacions"
 
-#: ui_articleeditbase.h:618
+#: ui_articleeditbase.h:640
 msgid "Incluir este articulo en el catalogo."
 msgstr "Inclou aquest article al catàleg."
 
-#: ui_articleeditbase.h:609
+#: ui_articleeditbase.h:630
 msgid "Informacion del articulo:"
 msgstr "Informació de l'article:"
 
@@ -407,7 +407,7 @@ msgstr "Mostra / Amaga Detall"
 msgid "Mostrar / Ocultar detalle"
 msgstr "Mostra / Amaga detall"
 
-#: articuloview.cpp:394
+#: articuloview.cpp:399
 msgid ""
 "No se ha podido borrar el archivo.\n"
 "Compruebe que el archivo tenga los permisos correctos."
@@ -415,7 +415,7 @@ msgstr ""
 "No s'ha pogut esborrar el fitxer.\n"
 "Comproveu que el fitxer tingui els permissos correctes."
 
-#: articuloview.cpp:356
+#: articuloview.cpp:361
 msgid ""
 "No se ha podido cargar la imagen.\n"
 "Compruebe que la imagen sea valida."
@@ -423,7 +423,7 @@ msgstr ""
 "No s'ha pogut carregar la imatge.\n"
 "Comproveu que la imatge sigui vàlida."
 
-#: articuloview.cpp:262
+#: articuloview.cpp:267
 msgid ""
 "No se ha podido guardar la imagen.\n"
 "Revise los permisos de escritura y que disponga\n"
@@ -437,11 +437,11 @@ msgstr ""
 msgid "Nombre"
 msgstr "Nom"
 
-#: articuloview.cpp:63 comparticulolistview.cpp:43 articulolist.cpp:426
+#: articuloview.cpp:63 comparticulolistview.cpp:43 articulolist.cpp:427
 msgid "Nombre del articulo"
 msgstr "Nom de l'article"
 
-#: ui_articleeditbase.h:610
+#: ui_articleeditbase.h:631
 msgid "Nombre del articulo:"
 msgstr "Nom de l'article"
 
@@ -453,7 +453,7 @@ msgstr "Nom:"
 msgid "Nueva Familia"
 msgstr "Nova família"
 
-#: articulolist.cpp:365
+#: articulolist.cpp:366
 msgid "Nuevo Articulo"
 msgstr "Nou Article"
 
@@ -463,7 +463,7 @@ msgstr "Nou Tipus d'article"
 
 #: pluginbf_articulo.cpp:74 pluginbf_articulo.cpp:75 pluginbf_articulo.cpp:340
 #: pluginbf_articulo.cpp:365 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:295 ui_articleeditbase.h:584
+#: ui_articleslistbase.h:295 ui_articleeditbase.h:605
 msgid "Nuevo articulo"
 msgstr "Nou article"
 
@@ -471,15 +471,15 @@ msgstr "Nou article"
 msgid "Observaciones"
 msgstr "Observacions"
 
-#: articulolist.cpp:428
+#: articulolist.cpp:429
 msgid "Observaciones sobre el articulo"
 msgstr "Observacions sobre l'article"
 
-#: ui_articleeditbase.h:616
+#: ui_articleeditbase.h:638
 msgid "Otros datos:"
 msgstr "Altres dades:"
 
-#: articulolist.cpp:431
+#: articulolist.cpp:432
 msgid "P.V.P. articulo"
 msgstr "P.V.P. article"
 
@@ -487,7 +487,7 @@ msgstr "P.V.P. article"
 msgid "P.V.P. base"
 msgstr "P.V.P. base"
 
-#: ui_articleeditbase.h:614
+#: ui_articleeditbase.h:636
 msgid "Peso (kg):"
 msgstr "Pes (kg):"
 
@@ -499,7 +499,7 @@ msgstr ""
 msgid "PluginBf_Articulo"
 msgstr ""
 
-#: ui_articleeditbase.h:612
+#: ui_articleeditbase.h:634
 msgid "Precio venta. s/IVA:"
 msgstr "Preu venda. s/IVA:"
 
@@ -515,11 +515,11 @@ msgstr "S&olament presentables"
 msgid "Seleccionar articulo"
 msgstr "Selecciona article"
 
-#: articuloview.cpp:348
+#: articuloview.cpp:353
 msgid "Seleccione un archivo de imagen"
 msgstr "Seleccioneu una empresa"
 
-#: articulolist.cpp:74
+#: articulolist.cpp:75
 msgid "Selector de articulos"
 msgstr "Selector de BulmaGés"
 
@@ -531,19 +531,19 @@ msgstr "Servei."
 msgid "Solo usados"
 msgstr "Sols usats"
 
-#: articuloview.cpp:72
+#: articuloview.cpp:72 ui_articleeditbase.h:632
 msgid "Stock"
 msgstr "Estoc"
 
-#: ui_articleeditbase.h:602
+#: ui_articleeditbase.h:623
 msgid "Subcodigo:"
 msgstr "Subcodi:"
 
-#: ui_articleeditbase.h:611
+#: ui_articleeditbase.h:633
 msgid "Texto para etiqueta:"
 msgstr "Text per a l'etiqueta:"
 
-#: articulolist.cpp:167
+#: articulolist.cpp:168
 msgid "Tiene que seleccionar un articulo"
 msgstr "Heu de seleccionar un article"
 
@@ -551,7 +551,7 @@ msgstr "Heu de seleccionar un article"
 msgid "Tipo de I.V.A."
 msgstr "Tipus d'IVA"
 
-#: ui_articleeditbase.h:613
+#: ui_articleeditbase.h:635
 msgid "Tipo de I.V.A.:"
 msgstr "Tipus d'IVA"
 
@@ -568,7 +568,7 @@ msgstr "Tipus d'article"
 msgid "Tipos de articulo"
 msgstr "Tipus d'article"
 
-#: ui_articleeditbase.h:615
+#: ui_articleeditbase.h:637
 msgid "Volumen (cm3):"
 msgstr "Volum (cm3):"
 
@@ -576,7 +576,7 @@ msgstr "Volum (cm3):"
 msgid "Volumen unidad"
 msgstr ""
 
-#: familiasview.cpp:505 tiposarticuloview.cpp:398
+#: tiposarticuloview.cpp:398 familiasview.cpp:505
 msgid "no se ha podido borrar"
 msgstr "No s'ha pogut esborrar"
 

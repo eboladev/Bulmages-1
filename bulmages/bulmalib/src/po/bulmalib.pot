@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:12+0200\n"
+"POT-Creation-Date: 2011-08-16 13:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "&Entra"
 msgstr ""
 
-#: ui_blcompanydialogbase.h:203 blform.cpp:462 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:463 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr ""
@@ -813,47 +813,47 @@ msgstr ""
 msgid "Esc"
 msgstr ""
 
-#: blform.cpp:425 blformlist.cpp:449
+#: blform.cpp:426 blformlist.cpp:449
 msgid "Borrar"
 msgstr ""
 
-#: blform.cpp:426
+#: blform.cpp:427
 msgid "Desea eliminar '"
 msgstr ""
 
-#: blform.cpp:436
+#: blform.cpp:437
 msgid "No se ha podido borrar"
 msgstr ""
 
-#: blform.cpp:460
+#: blform.cpp:461
 msgid "Guardar"
 msgstr ""
 
-#: blform.cpp:461 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:462 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&Si"
 msgstr ""
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&No"
 msgstr ""
 
-#: blform.cpp:475
+#: blform.cpp:476
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr ""
 
-#: blform.cpp:534
+#: blform.cpp:535
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 
-#: blform.cpp:537
+#: blform.cpp:538
 msgid "Imprimir ficha"
 msgstr ""
 
-#: blform.cpp:926 blform.cpp:932
+#: blform.cpp:927 blform.cpp:933
 msgid "Error inesperado al guardar"
 msgstr ""
 

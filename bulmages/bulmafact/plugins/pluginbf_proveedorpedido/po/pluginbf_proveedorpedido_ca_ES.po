@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,8 +330,8 @@ msgstr "Id compte"
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: listdescpedidoproveedorview.cpp:42 pedidosproveedorlist.cpp:342
-#: listlinpedidoproveedorview.cpp:50
+#: listdescpedidoproveedorview.cpp:42 listlinpedidoproveedorview.cpp:50
+#: pedidosproveedorlist.cpp:342
 #, fuzzy
 msgid "Id pedido"
 msgstr "Imprimeix la comanda"
@@ -437,8 +437,8 @@ msgstr "Direcció del proveïdor"
 msgid "Pedido procesado"
 msgstr "Comanda processada"
 
-#: pedidosproveedorlist.cpp:197 pluginbf_proveedorpedido.cpp:56
-#: pluginbf_proveedorpedido.cpp:57 ui_pedidosproveedorlistbase.h:356
+#: pluginbf_proveedorpedido.cpp:56 pluginbf_proveedorpedido.cpp:57
+#: pedidosproveedorlist.cpp:197 ui_pedidosproveedorlistbase.h:356
 #, fuzzy
 msgid "Pedidos a proveedores"
 msgstr "Direcció del proveïdor"

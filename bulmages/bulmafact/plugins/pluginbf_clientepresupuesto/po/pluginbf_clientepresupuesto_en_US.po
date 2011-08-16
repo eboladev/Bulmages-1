@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:24+0200\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <en@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listlinpresupuestoview.cpp:56 presupuestoview.cpp:70
+#: presupuestoview.cpp:70 listlinpresupuestoview.cpp:56
 #: listdescpresupuestoview.cpp:42
 msgid "% Descuento"
 msgstr "% Discount"
@@ -111,8 +111,8 @@ msgstr "Tax basis"
 msgid "Base imponible:"
 msgstr "Tax basis"
 
-#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 #: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
+#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 msgid "Borrar albaran"
 msgstr "Erase letters patent"
 
@@ -122,8 +122,8 @@ msgstr "Erase letters patent"
 msgid "Borrar factura"
 msgstr "Erase quota"
 
-#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
 #: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:688
 #, fuzzy
 msgid "Borrar pedido"
 msgstr ""
@@ -132,8 +132,8 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Erase punteo"
 
-#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 #: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
+#: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 #, fuzzy
 msgid "Borrar presupuesto"
 msgstr "<HR><B>Treating Estimated "
@@ -195,7 +195,7 @@ msgstr "Form listing"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_presupuestoclientebase.h:784 ui_presupuestoslistbase.h:387
+#: ui_presupuestoslistbase.h:387 ui_presupuestoclientebase.h:784
 #: ui_albaranclientelistbase.h:478 ui_pedidosclientelistbase.h:405
 #: ui_facturaslistbase.h:503
 msgid "Ctrl+D"
@@ -221,7 +221,7 @@ msgstr "Ctrl+D"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_presupuestoclientebase.h:792 ui_presupuestoslistbase.h:395
+#: ui_presupuestoslistbase.h:395 ui_presupuestoclientebase.h:792
 #: ui_albaranclientelistbase.h:486 ui_pedidosclientelistbase.h:413
 #: ui_facturaslistbase.h:511
 msgid "Ctrl+P"
@@ -247,7 +247,7 @@ msgstr "It must select a family"
 msgid "Desc&uentos"
 msgstr "Discount"
 
-#: listlinpresupuestoview.cpp:50 presupuestolist.cpp:371
+#: presupuestolist.cpp:371 listlinpresupuestoview.cpp:50
 msgid "Descripcion"
 msgstr "Description"
 
@@ -683,10 +683,9 @@ msgstr "Total"
 msgid "Total Linea"
 msgstr "Total of the line"
 
-#: ui_presupuestoclientebase.h:820 ui_presupuestoslistbase.h:422
-#: ui_albaranclientebase.h:791 ui_pedidoclientebase.h:723
-#: ui_pedidosclientelistbase.h:439 ui_facturaslistbase.h:478
-#: ui_facturabase.h:719
+#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:820
+#: ui_albaranclientebase.h:791 ui_pedidosclientelistbase.h:439
+#: ui_pedidoclientebase.h:723 ui_facturaslistbase.h:478 ui_facturabase.h:719
 #, fuzzy
 msgid "Total:"
 msgstr "Total"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:25+0200\n"
+"POT-Creation-Date: 2011-08-16 13:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,21 +57,53 @@ msgstr ""
 msgid "Seleccionar partida"
 msgstr ""
 
+#: acontableview.cpp:48
+msgid "Diario Contable"
+msgstr ""
+
+#: acontableview.cpp:58
+msgid "Identificador"
+msgstr ""
+
+#: acontableview.cpp:59
+msgid "Id. Partida"
+msgstr ""
+
+#: acontableview.cpp:60 presupuestocontableview.cpp:57
+msgid "Fecha"
+msgstr ""
+
+#: acontableview.cpp:61
+msgid "Codigo Partida"
+msgstr ""
+
+#: acontableview.cpp:62
+msgid "Nombre Partida"
+msgstr ""
+
+#: acontableview.cpp:63 presupuestocontableview.cpp:58
+#: presupuestocontableview.cpp:67
+msgid "Concepto"
+msgstr ""
+
+#: acontableview.cpp:64
+msgid "Ingreso"
+msgstr ""
+
+#: acontableview.cpp:65
+msgid "Gasto"
+msgstr ""
+
+#: acontableview.cpp:77
+msgid "Error al crear el recibo"
+msgstr ""
+
 #: presupuestocontableview.cpp:53
 msgid "Presupuesto Contable"
 msgstr ""
 
 #: presupuestocontableview.cpp:56
 msgid "ID presupuesto contable"
-msgstr ""
-
-#: presupuestocontableview.cpp:57 acontableview.cpp:60
-msgid "Fecha"
-msgstr ""
-
-#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
-#: acontableview.cpp:63
-msgid "Concepto"
 msgstr ""
 
 #: presupuestocontableview.cpp:63 presupuestocontableview.cpp:64
@@ -82,8 +114,8 @@ msgstr ""
 msgid "ID partida"
 msgstr ""
 
-#: presupuestocontableview.cpp:66 partidasview.cpp:50 partidasview.cpp:532
-#: presupuestocontablelist.cpp:226
+#: presupuestocontableview.cpp:66 presupuestocontablelist.cpp:226
+#: partidasview.cpp:50 partidasview.cpp:532
 msgid "Codigo"
 msgstr ""
 
@@ -99,36 +131,36 @@ msgstr ""
 msgid "Error al crear el presupuesto"
 msgstr ""
 
-#: acontableview.cpp:48
-msgid "Diario Contable"
+#: presupuestocontablelist.cpp:61
+msgid "Selector de presupuesto contable"
 msgstr ""
 
-#: acontableview.cpp:58
-msgid "Identificador"
+#: presupuestocontablelist.cpp:133
+msgid "Listado de Presupuestos Contables"
 msgstr ""
 
-#: acontableview.cpp:59
-msgid "Id. Partida"
+#: presupuestocontablelist.cpp:157
+msgid "Error al borrar un presupuestocontable"
 msgstr ""
 
-#: acontableview.cpp:61
-msgid "Codigo Partida"
+#: presupuestocontablelist.cpp:188
+msgid "Nuevo presupuestocontable"
 msgstr ""
 
-#: acontableview.cpp:62
-msgid "Nombre Partida"
+#: presupuestocontablelist.cpp:204
+msgid "Editar presupuestocontable"
 msgstr ""
 
-#: acontableview.cpp:64
-msgid "Ingreso"
+#: presupuestocontablelist.cpp:205
+msgid "Borrar presupuestocontable"
 msgstr ""
 
-#: acontableview.cpp:65
-msgid "Gasto"
+#: presupuestocontablelist.cpp:225
+msgid "ID presupuestocontable"
 msgstr ""
 
-#: acontableview.cpp:77
-msgid "Error al crear el recibo"
+#: presupuestocontablelist.cpp:227
+msgid "C.I.F."
 msgstr ""
 
 #: partidasview.cpp:50
@@ -184,36 +216,62 @@ msgstr ""
 msgid "Error al borrar la partida"
 msgstr ""
 
-#: presupuestocontablelist.cpp:61
-msgid "Selector de presupuesto contable"
+#: ui_partidasbase.h:293
+msgid "Partidas"
 msgstr ""
 
-#: presupuestocontablelist.cpp:133
-msgid "Listado de Presupuestos Contables"
+#: ui_partidasbase.h:296 ui_partidasbase.h:299
+msgid "Nueva Partida"
 msgstr ""
 
-#: presupuestocontablelist.cpp:157
-msgid "Error al borrar un presupuestocontable"
+#: ui_partidasbase.h:303 ui_partidasbase.h:306
+msgid "Borrar Partida"
 msgstr ""
 
-#: presupuestocontablelist.cpp:188
-msgid "Nuevo presupuestocontable"
+#: ui_partidasbase.h:310 ui_partidasbase.h:313
+msgid "Guardar Partida"
 msgstr ""
 
-#: presupuestocontablelist.cpp:204
-msgid "Editar presupuestocontable"
+#: ui_partidasbase.h:317 ui_partidasbase.h:320
+msgid "Imprimir Partidas"
 msgstr ""
 
-#: presupuestocontablelist.cpp:205
-msgid "Borrar presupuestocontable"
+#: ui_partidasbase.h:324
+msgid "1"
 msgstr ""
 
-#: presupuestocontablelist.cpp:225
-msgid "ID presupuestocontable"
+#: ui_partidasbase.h:326 ui_partidasbase.h:329
+msgid "Mostrar / Ocultar Detalle"
 msgstr ""
 
-#: presupuestocontablelist.cpp:227
-msgid "C.I.F."
+#: ui_partidasbase.h:332
+msgid "Contenido de la partida"
+msgstr ""
+
+#: ui_partidasbase.h:333 ui_presupuestocontablebase.h:360
+msgid "Descripcion:"
+msgstr ""
+
+#: ui_partidasbase.h:334
+msgid "Nombre:"
+msgstr ""
+
+#: ui_partidasbase.h:335
+msgid "Codigo reducido:"
+msgstr ""
+
+#: ui_partidasbase.h:336
+msgid "Codigo completo:"
+msgstr ""
+
+#: ui_partidasbase.h:337 ui_presupuestocontablebase.h:364
+#: ui_acontablebase.h:192
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_partidasbase.h:338 ui_presupuestocontablebase.h:365
+#: ui_acontablebase.h:193
+msgid "&Cancelar"
 msgstr ""
 
 #: ui_presupuestocontablelistbase.h:241 ui_presupuestocontablelistbase.h:244
@@ -284,10 +342,6 @@ msgstr ""
 msgid "Ctrl+G"
 msgstr ""
 
-#: ui_presupuestocontablebase.h:360 ui_partidasbase.h:333
-msgid "Descripcion:"
-msgstr ""
-
 #: ui_presupuestocontablebase.h:361
 msgid "Fecha de creacion:"
 msgstr ""
@@ -298,16 +352,6 @@ msgstr ""
 
 #: ui_presupuestocontablebase.h:363
 msgid "Datos &generales"
-msgstr ""
-
-#: ui_presupuestocontablebase.h:364 ui_acontablebase.h:192
-#: ui_partidasbase.h:337
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_presupuestocontablebase.h:365 ui_acontablebase.h:193
-#: ui_partidasbase.h:338
-msgid "&Cancelar"
 msgstr ""
 
 #: ui_acontablebase.h:166
@@ -325,48 +369,4 @@ msgstr ""
 
 #: ui_acontablebase.h:191
 msgid "Ctrl+I"
-msgstr ""
-
-#: ui_partidasbase.h:293
-msgid "Partidas"
-msgstr ""
-
-#: ui_partidasbase.h:296 ui_partidasbase.h:299
-msgid "Nueva Partida"
-msgstr ""
-
-#: ui_partidasbase.h:303 ui_partidasbase.h:306
-msgid "Borrar Partida"
-msgstr ""
-
-#: ui_partidasbase.h:310 ui_partidasbase.h:313
-msgid "Guardar Partida"
-msgstr ""
-
-#: ui_partidasbase.h:317 ui_partidasbase.h:320
-msgid "Imprimir Partidas"
-msgstr ""
-
-#: ui_partidasbase.h:324
-msgid "1"
-msgstr ""
-
-#: ui_partidasbase.h:326 ui_partidasbase.h:329
-msgid "Mostrar / Ocultar Detalle"
-msgstr ""
-
-#: ui_partidasbase.h:332
-msgid "Contenido de la partida"
-msgstr ""
-
-#: ui_partidasbase.h:334
-msgid "Nombre:"
-msgstr ""
-
-#: ui_partidasbase.h:335
-msgid "Codigo reducido:"
-msgstr ""
-
-#: ui_partidasbase.h:336
-msgid "Codigo completo:"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:16+0200\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
 "PO-Revision-Date: 2009-12-30 00:06+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -80,9 +80,9 @@ msgstr "Amortizado:"
 msgid "Anual"
 msgstr "Anual"
 
+#: ui_bcamortizacionbase.h:640 ui_bcamortizacionbase.h:643
 #: ui_bcamortizacionlistbase.h:143 ui_bcamortizacionlistbase.h:146
 #: ui_bcamortizacionlistbase.h:151 ui_bcamortizacionlistbase.h:154
-#: ui_bcamortizacionbase.h:640 ui_bcamortizacionbase.h:643
 msgid "Borrar amortizacion"
 msgstr "Borrar amortización"
 
@@ -99,7 +99,7 @@ msgstr "Borrar cuota"
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: ui_bcamortizacionlistbase.h:149 ui_bcamortizacionbase.h:646
+#: ui_bcamortizacionbase.h:646 ui_bcamortizacionlistbase.h:149
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 

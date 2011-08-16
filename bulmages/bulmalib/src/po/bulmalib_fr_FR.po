@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-07-28 18:12+0200\n"
+"POT-Creation-Date: 2011-08-16 13:02+0200\n"
 "PO-Revision-Date: 2011-01-26 08:06+0100\n"
 "Last-Translator: Girard Henri <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
@@ -25,7 +25,7 @@ msgstr "Option réservée aux experts !"
 msgid "&Borrar"
 msgstr "&Effacer "
 
-#: ui_blcompanydialogbase.h:203 blform.cpp:462 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:463 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr "&Annuler"
@@ -59,7 +59,7 @@ msgstr "&Entrer"
 msgid "&Guardar"
 msgstr "Sauve&garder"
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&No"
 msgstr "&Non"
 
@@ -67,7 +67,7 @@ msgstr "&Non"
 msgid "&Omitir"
 msgstr "&Omettre"
 
-#: blform.cpp:462
+#: blform.cpp:463
 msgid "&Si"
 msgstr "&Oui"
 
@@ -207,7 +207,7 @@ msgstr "Biannuel"
 msgid "BlSearchWidget"
 msgstr "BlRechercheWidget"
 
-#: blform.cpp:425 blformlist.cpp:449
+#: blform.cpp:426 blformlist.cpp:449
 msgid "Borrar"
 msgstr "Effacer"
 
@@ -341,11 +341,11 @@ msgstr "Données insuffisantes pour gérer la forme de paiement."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Vous devez sélectionner un élément"
 
-#: blform.cpp:426
+#: blform.cpp:427
 msgid "Desea eliminar '"
 msgstr "Voulez vous effacer '"
 
-#: blform.cpp:461 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:462 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "Désirez vous garder les changements ?"
 
@@ -487,7 +487,7 @@ msgstr ""
 msgid "Error en la insercion del campo al registro."
 msgstr ""
 
-#: blform.cpp:926 blform.cpp:932
+#: blform.cpp:927 blform.cpp:933
 msgid "Error inesperado al guardar"
 msgstr "Error inattendue en sauvegarde"
 
@@ -555,7 +555,7 @@ msgstr "Formulaire 1"
 msgid "Forma de pago"
 msgstr "Forme de paiement"
 
-#: blform.cpp:460
+#: blform.cpp:461
 msgid "Guardar"
 msgstr "Sauvegarder"
 
@@ -580,7 +580,7 @@ msgstr "ID Province"
 msgid "Imprimiendo "
 msgstr "Impression "
 
-#: blform.cpp:537
+#: blform.cpp:538
 msgid "Imprimir ficha"
 msgstr "Imprimer la fiche"
 
@@ -667,7 +667,7 @@ msgstr ""
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "On n'a pas trouvé de parent à cette famille."
 
-#: blform.cpp:436
+#: blform.cpp:437
 msgid "No se ha podido borrar"
 msgstr "Il n'a pas pu être effacé"
 
@@ -675,7 +675,7 @@ msgstr "Il n'a pas pu être effacé"
 msgid "No se ha podido cargar la libreria: "
 msgstr "Impossible de charger la librairie :"
 
-#: blform.cpp:475
+#: blform.cpp:476
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "On n'a pas pu fermer la fenêtre du à une erreur"
 
@@ -711,7 +711,7 @@ msgstr "Nouveau pays"
 msgid "Omitir &clase"
 msgstr "Omettre la &classe"
 
-#: blform.cpp:534
+#: blform.cpp:535
 msgid "Opciones avanzadas de ficha"
 msgstr "Options de fiche avancées"
 
