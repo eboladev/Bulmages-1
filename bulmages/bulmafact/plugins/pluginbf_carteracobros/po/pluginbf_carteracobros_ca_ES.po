@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-08-16 13:10+0200\n"
-"PO-Revision-Date: 2011-03-11 15:11+0100\n"
+"PO-Revision-Date: 2011-08-16 18:37+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
 "Language: Catalan\n"
@@ -20,23 +20,23 @@ msgstr ""
 
 #: pluginbf_carteracobros.cpp:56
 msgid "&Cartera de cobros"
-msgstr ""
+msgstr "&Cartera de cobraments"
 
 #: pluginbf_carteracobros.cpp:54
 msgid "&Compras"
-msgstr ""
+msgstr "&Compres"
 
 #: q19view.cpp:338
 msgid "Banco del cliente invalido en el cobro."
-msgstr ""
+msgstr "Banc del client invalid en el cobrament."
 
 #: q19view.cpp:314
 msgid "CIF cliente demasiado largo."
-msgstr ""
+msgstr "CIF del client massa llarg."
 
 #: q19view.cpp:213 q19view.cpp:419
 msgid "CIF demasiado largo."
-msgstr ""
+msgstr "CIF massa llarg."
 
 #: pluginbf_carteracobros.cpp:219
 msgid "Cantidad"
@@ -48,7 +48,7 @@ msgstr "Quantitat de venciment"
 
 #: pluginbf_carteracobros.cpp:57 pluginbf_carteracobros.cpp:58
 msgid "Cartera de cobros"
-msgstr ""
+msgstr "Cartera de cobraments"
 
 #: carteracobroslist.cpp:64 vencimientocview.cpp:61
 msgid "Cliente:"
@@ -60,7 +60,7 @@ msgstr "Comentaris"
 
 #: q19view.cpp:259
 msgid "Cuenta bancaria demasiado larga."
-msgstr ""
+msgstr "Compte bancari massa llarg."
 
 #: vencimientocview.cpp:71
 msgid "Descripcion"
@@ -72,27 +72,27 @@ msgstr "Dies després factura"
 
 #: q19view.cpp:252
 msgid "Digito de control demasiado largo."
-msgstr ""
+msgstr "Dígit de control massa llarg."
 
 #: q19view.cpp:131
 msgid "El CIF del ordenante supera la longitud maxima."
-msgstr ""
+msgstr "El CIF de l'ordenant supera la longitud màxima."
 
 #: pluginbf_carteracobros.cpp:134
 msgid "El total de la factura es :"
-msgstr ""
+msgstr "El total de la factura és:"
 
 #: q19view.cpp:238
 msgid "Entidad bancaria demasiado larga."
-msgstr ""
+msgstr "Entitat bancària massa llarga."
 
 #: q19view.cpp:156
 msgid "Entidad bancaria supera longitud maxima."
-msgstr ""
+msgstr "Entitat bancària supera longitud màxima."
 
 #: q19view.cpp:593
 msgid "Error al guardar."
-msgstr ""
+msgstr "Error en desar."
 
 #: vencimientocview.cpp:75
 msgid "Estado de vencimiento"
@@ -136,19 +136,19 @@ msgstr "Id venciment"
 
 #: q19view.cpp:330
 msgid "Nombre cliente demasiado largo."
-msgstr ""
+msgstr "Nom client massa llarg."
 
 #: q19view.cpp:231
 msgid "Nombre de empresa demasiado largo."
-msgstr ""
+msgstr "Nom de l'empreas massa llarg."
 
 #: q19view.cpp:245
 msgid "Oficina bancaria demasiado larga."
-msgstr ""
+msgstr "Oficina bancàr<a massa llarga."
 
 #: q19view.cpp:163
 msgid "Oficina bancaria supera longitud maxima."
-msgstr ""
+msgstr "Oficina bancària supera longitud màxima."
 
 #: pluginbf_carteracobros.cpp:99
 msgid "Porcentaje"
