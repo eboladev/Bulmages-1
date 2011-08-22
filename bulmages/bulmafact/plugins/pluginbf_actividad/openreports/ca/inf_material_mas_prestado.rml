@@ -2,7 +2,7 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="&Activitats\Informes\Material mes sol·licitat" -->
+<!-- # pathtitle="&Activitats\Informes\Material més sol·licitat" -->
   <template pageSize="(29.7cm, 21cm)" title="Material mes sol·licitat" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
