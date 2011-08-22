@@ -14,6 +14,12 @@
     <height>550</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>550</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Facturas a clientes</string>
   </property>
@@ -23,10 +29,10 @@
   </property>
   <layout class="QGridLayout" name="_3">
    <property name="margin">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="spacing">
-    <number>5</number>
+    <number>4</number>
    </property>
    <item row="3" column="0">
     <widget class="FacturasListSubform" name="mui_list">
@@ -381,8 +387,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -419,8 +425,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -457,8 +463,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -495,8 +501,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -533,8 +539,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -574,8 +580,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -615,8 +621,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
