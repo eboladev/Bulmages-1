@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-08-16 13:15+0200\n"
-"PO-Revision-Date: 2011-02-26 07:54+0100\n"
+"PO-Revision-Date: 2011-08-22 19:47+0200\n"
 "Last-Translator: Walter Garcia-Fontes\n"
-"Language-Team: CATALAN\n"
-"Language: \n"
+"Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +32,7 @@ msgstr "&Dades generals"
 
 #: pluginbf_recibo.cpp:55
 msgid "&Economia"
-msgstr ""
+msgstr "&Economia"
 
 #: pluginbf_recibo.cpp:66
 msgid "&Nuevo recibo"
@@ -165,7 +165,7 @@ msgstr "Emet rebuts"
 
 #: ui_emitirrecibosbase.h:253
 msgid "Emitir sólo la actividad Seleccionada"
-msgstr "Emetre només la activitat seleccionada"
+msgstr "Emet només l'activitat seleccionada"
 
 #: ui_emitirrecibosbase.h:257
 msgid "Emitir todas las Actividades"
@@ -181,7 +181,7 @@ msgstr "Error en crear el rebut"
 
 #: reciboview.cpp:228
 msgid "Error en la creacion del recibo"
-msgstr ""
+msgstr "Error a la creació del rebut"
 
 #: ui_reciboslistbase.h:366
 msgid "F5"
@@ -213,7 +213,7 @@ msgstr "Forma de pagament"
 
 #: pluginbf_recibo.cpp:140 pluginbf_recibo.cpp:141
 msgid "Generar pedido"
-msgstr "Generar rebuts"
+msgstr "Genera rebuts"
 
 #: ui_recibobase.h:350 ui_recibobase.h:353
 msgid "Guardar cobro"
@@ -253,7 +253,7 @@ msgstr "Identificador"
 
 #: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
 msgid "Imprimir listado"
-msgstr "Imprimeix la comanda"
+msgstr "Imprimeix el llistat"
 
 #: ui_reciboslistbase.h:309
 msgid "Mostrar"
@@ -293,7 +293,7 @@ msgstr "Rebut reemès"
 
 #: ui_emitirrecibosbase.h:255
 msgid "Recibo único por padre/tutor"
-msgstr ""
+msgstr "Rebut únic per pare/mare/tutor"
 
 #: pluginbf_recibo.cpp:60 pluginbf_recibo.cpp:61 reciboslist.cpp:216
 #: ui_reciboslistbase.h:305
@@ -318,7 +318,7 @@ msgstr "Rebuts pagats"
 
 #: ui_recibobase.h:374 ui_recibobase.h:377
 msgid "Reemitir Recibo"
-msgstr "Reemet rebut"
+msgstr "Torna a emetre rebut"
 
 #: emitirrecibosview.cpp:211
 msgid "Terminado"
@@ -338,11 +338,11 @@ msgstr "Total"
 
 #: reciboslist.cpp:357
 msgid "Tutor"
-msgstr "Tutor"
+msgstr "Pare/mare/tutor"
 
 #: reciboview.cpp:67
 msgid "Tutor/Socio:"
-msgstr "Tutor/Soci:"
+msgstr "Pare/mare/tutor/soci:"
 
 #~ msgid "EmitirRecibos"
 #~ msgstr "Emet rebuts"
