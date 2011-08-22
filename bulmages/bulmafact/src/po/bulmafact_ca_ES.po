@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-08-16 13:07+0200\n"
-"PO-Revision-Date: 2011-02-22 15:31+0100\n"
+"PO-Revision-Date: 2011-08-22 19:39+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team:  Catalan\n"
 "Language: \n"
@@ -179,11 +179,11 @@ msgstr "Arranjament"
 
 #: ui_bfconfiguracionbase.h:318
 msgid "Configuracion avanzada"
-msgstr ""
+msgstr "Configuració avançada"
 
 #: ui_bfconfiguracionbase.h:317
 msgid "Configuracion basica"
-msgstr ""
+msgstr "Configuració bàsica"
 
 #: ui_bfbulmafactbase.h:187
 msgid "Ctrl+I"
@@ -232,7 +232,7 @@ msgstr "Entregat"
 
 #: bfbuscaralmacen.cpp:103 bfbuscaralmacen.cpp:104
 msgid "Error al establecer el almacen."
-msgstr ""
+msgstr "Error en establir el magatzem."
 
 #: main.cxx:194
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
@@ -244,7 +244,7 @@ msgstr "Error inesperat en la impressió"
 
 #: bfbuscararticulo.cpp:228
 msgid "Este item es un articulo encontrado, no entrado por el usuario."
-msgstr ""
+msgstr "Aquest ítem és un article trobat, no entrat per l'usuari."
 
 #: ui_bfbulmafactbase.h:181
 msgid "F1"
@@ -335,7 +335,7 @@ msgstr "Inicialitzant classes"
 #: bfbuscararticulo.cpp:226
 #, qt-format
 msgid "Item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
-msgstr ""
+msgstr "Ítem: '%1', núm: '%2', itemText: '%3', itemData: '%4'."
 
 #: main.cxx:171
 msgid "Lanzando plugins"
@@ -356,7 +356,7 @@ msgstr "Mest&re"
 
 #: ui_bfbulmafactbase.h:195
 msgid "Modo Experto"
-msgstr ""
+msgstr "Mode Expert"
 
 #: ui_bfconfiguracionbase.h:310
 msgid "Municipio"
@@ -490,7 +490,7 @@ msgstr "Total Línia"
 #: bfbuscararticulo.cpp:232
 #, qt-format
 msgid "Ultimo item: '%1', num: '%2', itemText: '%3', itemData: '%4'."
-msgstr ""
+msgstr "Últim ítem: '%1', núm: '%2', itemText: '%3', itemData: '%4'."
 
 #: bfconfiguracionview.cpp:217
 msgid "Valor"
