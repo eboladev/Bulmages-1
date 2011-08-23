@@ -1,10 +1,9 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BfSerieFacturaBase</class>
- <widget class="QWidget" name="BfSerieFacturaBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BfSerieFacturaBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,36 +11,37 @@
     <height>411</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Series de factura</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../bulmages.qrc">
+    <normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>5</number>
+  <layout class="QVBoxLayout">
+   <property name="spacing">
+    <number>4</number>
    </property>
-   <property name="spacing" >
-    <number>2</number>
+   <property name="margin">
+    <number>4</number>
    </property>
    <item>
-    <widget class="BfSerieFacturaSubForm" name="mui_listado" />
+    <widget class="BfSerieFacturaSubForm" name="mui_listado"/>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>4</number>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="margin">
+      <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>581</width>
          <height>20</height>
@@ -50,16 +50,16 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>&amp;Cancelar</string>
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
-        <string>&amp;Aceptar</string>
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
@@ -67,19 +67,16 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="2" margin="6" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="2" margin="6"/>
  <customwidgets>
   <customwidget>
    <class>BfSerieFacturaSubForm</class>
    <extends>QTableWidget</extends>
    <header>bfseriefacturaview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -88,11 +85,11 @@
    <receiver>BfSerieFacturaBase</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>311</x>
      <y>563</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>6</x>
      <y>564</y>
     </hint>

@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>798</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de">
@@ -169,6 +169,12 @@
    <property name="windowTitle">
     <string>Avanzados</string>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
    <property name="floatable">
     <bool>true</bool>
    </property>
@@ -200,7 +206,7 @@
      <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Propiedades de la empresa...</string>
+    <string>&amp;Datos de la empresa...</string>
    </property>
    <property name="toolTip">
     <string>Propiedades de la empresa</string>
@@ -288,7 +294,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Modo Experto</string>
+    <string>Modo experto</string>
    </property>
   </action>
  </widget>
