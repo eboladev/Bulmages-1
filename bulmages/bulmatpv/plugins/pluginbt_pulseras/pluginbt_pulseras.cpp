@@ -73,7 +73,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-
+    BL_FUNC_DEBUG
     /// Asignamos la variable global para usarla donde haga falta.
     g_pluginbt_pulseras_emp = etpv;
   
@@ -116,7 +116,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 
 int BlToolButton_released(BlToolButton *toolbutton) {
-  
+    BL_FUNC_DEBUG
     QString nomticket = g_pluginbt_pulseras_emp->ticketActual() -> dbValue("nomticket"); 
     QString entrada = g_pluginbt_pulseras_emp->valorBtInput();
     if (nomticket != "") {
@@ -124,6 +124,7 @@ int BlToolButton_released(BlToolButton *toolbutton) {
 	    /// Agregar pulsera al ticket actual.
 	    BlDbRecord *lineaticket = g_pluginbt_pulseras_emp->ticketActual()->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
 	    Pulsera *pul = new Pulsera(g_pluginbt_pulseras_emp->ticketActual(), entrada, lineaticket);
+	    fprintf(stderr,"Pulsera Agregada, voy a pintar \n");
 	    g_pluginbt_pulseras_emp->ticketActual()->pintar();
 	    /// Borra el valor del Input.
 	    g_pluginbt_pulseras_emp->pulsaTecla ( Qt::Key_F4, "" );
@@ -151,6 +152,7 @@ int BlToolButton_released(BlToolButton *toolbutton) {
 
 
 int BtCompany_cobrar(BtCompany *emp) {
+    BL_FUNC_DEBUG
    BtTicket *ticketActual = g_pluginbt_pulseras_emp->ticketActual();
    
    QList <Pulsera *>pulserasaborrar;
@@ -208,15 +210,18 @@ int BtTicket_pintar(BtTicket *tick) {
 	    } // end if
 	} // end for  
 	semaforo = 0;
-	fprintf(stderr, "Quito Semaforo");
+	fprintf(stderr, "Quito Semaforo\n");
+    } else {
+	fprintf(stderr, "No se puede ejecutar por semaforo\n");
     } // end if
-    
+
     
     return 0;
 }
 
 
 int BtTicket_borrarArticulo(BtTicket *tick) {
+    BL_FUNC_DEBUG
     /// Facturamos todas las pulseras del ticket
     for ( int i = 0; i < g_pulseras.size(); ++i ) {
 	Pulsera * pul = g_pulseras.at(i);
@@ -250,7 +255,7 @@ int BtTicket_exportXML_Post(BtTicket *tick) {
 }
 
 int BtTicket_syncXML_Post(BtTicket *tick) {
-  
+    BL_FUNC_DEBUG
     QList<Pulsera *> pulserasusadas;
     QDomDocument doc ( "mydocument" );
 

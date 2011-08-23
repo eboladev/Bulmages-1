@@ -1173,25 +1173,34 @@ QString BlDbRecord::templateName ( void )
     return QString ( "ficha" );
 }
 
+
 int BlDbRecord::generateRML ( void )
 {
-    return generateRML ( templateName() + ".rml" );
+  
+    QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + templateName() + ".rml");
+    if (f.exists()) {
+	return generateRML ( templateName() + ".rml" );
+    } else {
+	return generateRML ( "ficha.rml" );
+    } // end if
 }
 
 /// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
 /**
 **/
-void BlDbRecord::imprimir()
-{
+void BlDbRecord::imprimir() {
     BL_FUNC_DEBUG
-    /// Usa la plantilla ficha.rml para realizar la impresion.
+    /// Usa la plantilla template y si esta no existe usa la plantilla ficha  para realizar la impresion.
+    /// De esta forma evitamos que al darle a la opcion imprimir Ficha, aparezca un error al no encontrarse el archivo correspondiente a la ficha.
     BlDebug::blDebug ( "BlDbRecord::imprimir", 0, templateName() );
-
     if ( generateRML() ) {
-        blCreateAndLoadPDF ( templateName() );
+      QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + templateName() + ".rml");
+      if (f.exists()) {
+	  blCreateAndLoadPDF ( templateName() );
+      } else {
+	  blCreateAndLoadPDF ( "ficha" );
+      } // end if
     } // end if
-
-    
 }
 
 
