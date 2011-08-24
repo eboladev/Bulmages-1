@@ -14,6 +14,12 @@
     <height>550</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>550</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Tickets a clientes</string>
   </property>
@@ -23,10 +29,10 @@
   </property>
   <layout class="QGridLayout">
    <property name="margin">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="spacing">
-    <number>5</number>
+    <number>4</number>
    </property>
    <item row="1" column="0">
     <widget class="QFrame" name="m_busqueda">
@@ -44,10 +50,10 @@
      </property>
      <layout class="QGridLayout">
       <property name="margin">
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="spacing">
-       <number>5</number>
+       <number>4</number>
       </property>
       <item row="8" column="0">
        <spacer>
@@ -78,7 +84,7 @@
       <item row="0" column="1" rowspan="9">
        <layout class="QVBoxLayout">
         <property name="spacing">
-         <number>5</number>
+         <number>4</number>
         </property>
         <property name="margin">
          <number>0</number>
@@ -198,7 +204,7 @@
    <item row="3" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
-      <number>5</number>
+      <number>4</number>
      </property>
      <property name="margin">
       <number>0</number>
@@ -736,7 +742,7 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
-      <number>5</number>
+      <number>4</number>
      </property>
      <property name="margin">
       <number>0</number>
@@ -776,10 +782,10 @@
        </property>
        <layout class="QHBoxLayout">
         <property name="spacing">
-         <number>5</number>
+         <number>4</number>
         </property>
         <property name="margin">
-         <number>5</number>
+         <number>4</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear">
@@ -796,10 +802,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Nuevo albaran</string>
+           <string>Nuevo ticket</string>
           </property>
           <property name="whatsThis">
-           <string>Nuevo albaran</string>
+           <string>Nuevo ticket</string>
           </property>
           <property name="text">
            <string/>
@@ -810,8 +816,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -834,10 +840,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Editar albaran</string>
+           <string>Editar ticket</string>
           </property>
           <property name="whatsThis">
-           <string>Editar albaran</string>
+           <string>Editar ticket</string>
           </property>
           <property name="text">
            <string/>
@@ -848,8 +854,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -872,10 +878,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Borrar albaran</string>
+           <string>Borrar ticket</string>
           </property>
           <property name="whatsThis">
-           <string>Borrar albaran</string>
+           <string>Borrar ticket</string>
           </property>
           <property name="text">
            <string/>
@@ -886,8 +892,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -924,8 +930,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -948,10 +954,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Filtrar albaranes</string>
+           <string>Filtrar tickets</string>
           </property>
           <property name="whatsThis">
-           <string>Filtrar albaranes</string>
+           <string>Filtrar tickets</string>
           </property>
           <property name="text">
            <string/>
@@ -962,14 +968,17 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
            <string>Ctrl+F</string>
           </property>
           <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
@@ -1003,8 +1012,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -1044,8 +1053,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
