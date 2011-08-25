@@ -1,11 +1,12 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
  <class>AlbaranesProveedorListBase</class>
- <widget class="QWidget" name="AlbaranesProveedorListBase" >
-  <property name="enabled" >
+ <widget class="QWidget" name="AlbaranesProveedorListBase">
+  <property name="enabled">
    <bool>true</bool>
   </property>
-  <property name="geometry" >
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -13,50 +14,56 @@
     <height>550</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
    <string>Albaranes de proveedor</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/supplier-delivery-note-list.png</normaloff>:/Images/supplier-delivery-note-list.png</iconset>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>5</number>
    </property>
-   <item row="1" column="0" >
-    <widget class="QFrame" name="m_busqueda" >
-     <property name="minimumSize" >
+   <item row="1" column="0">
+    <widget class="QFrame" name="m_busqueda">
+     <property name="minimumSize">
       <size>
        <width>16</width>
        <height>185</height>
       </size>
      </property>
-     <property name="frameShape" >
+     <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>5</number>
+     <layout class="QGridLayout">
+      <property name="margin">
+       <number>4</number>
       </property>
-      <property name="spacing" >
-       <number>5</number>
+      <property name="spacing">
+       <number>4</number>
       </property>
-      <item row="6" column="0" >
+      <item row="6" column="0">
        <spacer>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
-        <property name="sizeType" >
+        <property name="sizeType">
          <enum>QSizePolicy::Preferred</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>191</width>
           <height>21</height>
@@ -64,18 +71,18 @@
         </property>
        </spacer>
       </item>
-      <item rowspan="7" row="0" column="1" >
-       <layout class="QVBoxLayout" >
-        <property name="spacing" >
-         <number>5</number>
+      <item row="0" column="1" rowspan="7">
+       <layout class="QVBoxLayout">
+        <property name="spacing">
+         <number>4</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>0</number>
         </property>
         <item>
-         <widget class="BfBuscarArticulo" native="1" name="m_articulo" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+         <widget class="BfBuscarArticulo" name="m_articulo" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -83,9 +90,9 @@
          </widget>
         </item>
         <item>
-         <widget class="BlSearchWidget" native="1" name="m_proveedor" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+         <widget class="BlSearchWidget" name="m_proveedor" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -94,54 +101,54 @@
         </item>
        </layout>
       </item>
-      <item row="4" column="0" >
-       <widget class="QLabel" name="label_3" >
-        <property name="text" >
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
          <string>Mostrar:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="5" column="0" >
-       <widget class="QComboBox" name="mui_procesada" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+      <item row="5" column="0">
+       <widget class="QComboBox" name="mui_procesada">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
+        <property name="minimumSize">
          <size>
           <width>200</width>
           <height>21</height>
          </size>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::StrongFocus</enum>
         </property>
-        <property name="frame" >
+        <property name="frame">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label1" >
-        <property name="text" >
+      <item row="0" column="0">
+       <widget class="QLabel" name="label1">
+        <property name="text">
          <string>Fecha inicial:</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="BlDateSearch" native="1" name="m_fechain" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+      <item row="1" column="0">
+       <widget class="BlDateSearch" name="m_fechain" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
+        <property name="minimumSize">
          <size>
           <width>200</width>
           <height>21</height>
@@ -149,22 +156,22 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label2" >
-        <property name="text" >
+      <item row="2" column="0">
+       <widget class="QLabel" name="label2">
+        <property name="text">
          <string>Fecha final:</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <widget class="BlDateSearch" native="1" name="m_fechafin" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+      <item row="3" column="0">
+       <widget class="BlDateSearch" name="m_fechafin" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
+        <property name="minimumSize">
          <size>
           <width>200</width>
           <height>21</height>
@@ -175,23 +182,23 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>5</number>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>4</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>340</width>
          <height>21</height>
@@ -200,179 +207,179 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label4" >
-       <property name="text" >
+      <widget class="QLabel" name="label4">
+       <property name="text">
         <string>Total: </string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_total" >
-       <property name="enabled" >
+      <widget class="QLineEdit" name="m_total">
+       <property name="enabled">
         <bool>true</bool>
        </property>
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="minimumSize" >
+       <property name="minimumSize">
         <size>
          <width>150</width>
          <height>0</height>
         </size>
        </property>
-       <property name="palette" >
+       <property name="palette">
         <palette>
          <active>
-          <colorrole role="WindowText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Button" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>221</red>
              <green>223</green>
              <blue>228</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Light" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Light">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Midlight" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Midlight">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Dark" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Dark">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>85</red>
              <green>85</green>
              <blue>85</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Mid" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Mid">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>199</red>
              <green>199</green>
              <blue>199</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Text" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Text">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="BrightText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="BrightText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="ButtonText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="ButtonText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>239</red>
              <green>239</green>
              <blue>239</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Window" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Window">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>239</red>
              <green>239</green>
              <blue>239</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Shadow" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Shadow">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Highlight" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Highlight">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>103</red>
              <green>141</green>
              <blue>178</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="HighlightedText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="HighlightedText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Link" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Link">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>238</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="LinkVisited" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="LinkVisited">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>82</red>
              <green>24</green>
              <blue>139</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="AlternateBase" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="AlternateBase">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>232</red>
              <green>232</green>
              <blue>232</blue>
@@ -381,153 +388,153 @@
           </colorrole>
          </active>
          <inactive>
-          <colorrole role="WindowText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Button" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>221</red>
              <green>223</green>
              <blue>228</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Light" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Light">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Midlight" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Midlight">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Dark" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Dark">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>85</red>
              <green>85</green>
              <blue>85</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Mid" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Mid">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>199</red>
              <green>199</green>
              <blue>199</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Text" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Text">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="BrightText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="BrightText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="ButtonText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="ButtonText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>239</red>
              <green>239</green>
              <blue>239</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Window" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Window">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>239</red>
              <green>239</green>
              <blue>239</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Shadow" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Shadow">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Highlight" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Highlight">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>103</red>
              <green>141</green>
              <blue>178</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="HighlightedText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="HighlightedText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Link" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Link">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>238</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="LinkVisited" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="LinkVisited">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>82</red>
              <green>24</green>
              <blue>139</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="AlternateBase" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="AlternateBase">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>232</red>
              <green>232</green>
              <blue>232</blue>
@@ -536,153 +543,153 @@
           </colorrole>
          </inactive>
          <disabled>
-          <colorrole role="WindowText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>128</red>
              <green>128</green>
              <blue>128</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Button" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>221</red>
              <green>223</green>
              <blue>228</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Light" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Light">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Midlight" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Midlight">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Dark" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Dark">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>85</red>
              <green>85</green>
              <blue>85</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Mid" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Mid">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>199</red>
              <green>199</green>
              <blue>199</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Text" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Text">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>199</red>
              <green>199</green>
              <blue>199</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="BrightText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="BrightText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="ButtonText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="ButtonText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>128</red>
              <green>128</green>
              <blue>128</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>239</red>
              <green>239</green>
              <blue>239</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Window" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Window">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>239</red>
              <green>239</green>
              <blue>239</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Shadow" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Shadow">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>0</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Highlight" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Highlight">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>86</red>
              <green>117</green>
              <blue>148</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="HighlightedText" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="HighlightedText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="Link" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Link">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>0</red>
              <green>0</green>
              <blue>238</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="LinkVisited" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="LinkVisited">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>82</red>
              <green>24</green>
              <blue>139</blue>
             </color>
            </brush>
           </colorrole>
-          <colorrole role="AlternateBase" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="AlternateBase">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>232</red>
              <green>232</green>
              <blue>232</blue>
@@ -692,7 +699,7 @@
          </disabled>
         </palette>
        </property>
-       <property name="font" >
+       <property name="font">
         <font>
          <family>Sans Serif</family>
          <pointsize>12</pointsize>
@@ -703,345 +710,345 @@
          <strikeout>false</strikeout>
         </font>
        </property>
-       <property name="alignment" >
+       <property name="alignment">
         <set>Qt::AlignRight</set>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
-    <widget class="AlbaranesProveedorListSubform" name="mui_list" />
+   <item row="2" column="0">
+    <widget class="AlbaranesProveedorListSubform" name="mui_list"/>
    </item>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>5</number>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>4</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/supplier-delivery-note-list.png</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../../bulmages.qrc">:/Images/supplier-delivery-note-list.png</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="m_botonera" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="m_botonera">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>5</number>
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>4</number>
         </property>
-        <property name="margin" >
-         <number>5</number>
+        <property name="margin">
+         <number>4</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_crear">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Nuevo albaran</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Nuevo albaran</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+N</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_editar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_editar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Editar albaran</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Editar albaran</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+E</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Borrar albaran</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Borrar albaran</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_imprimir">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Imprimir listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Imprimir listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_filtrar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_filtrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Filtrar albaranes</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Filtrar albaranes</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+F</string>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_configurar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_configurar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Configurar listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Configurar listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+B</string>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_actualizar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_actualizar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Actualizar listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Actualizar listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>F5</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>100</width>
             <height>20</height>
@@ -1050,21 +1057,21 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label5" >
-          <property name="text" >
+         <widget class="QLabel" name="label5">
+          <property name="text">
            <string>Buscar:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_filtro" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+         <widget class="QLineEdit" name="m_filtro">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="minimumSize" >
+          <property name="minimumSize">
            <size>
             <width>150</width>
             <height>0</height>
@@ -1079,7 +1086,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="3" margin="5" />
+ <layoutdefault spacing="3" margin="5"/>
  <customwidgets>
   <customwidget>
    <class>BfBuscarArticulo</class>
@@ -1097,14 +1104,13 @@
    <header>albaranesproveedor.h</header>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
+   <class>BlSearchWidget</class>
    <extends>QWidget</extends>
    <header>blsearchwidget.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -1113,11 +1119,11 @@
    <receiver>m_busqueda</receiver>
    <slot>setShown(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>232</x>
      <y>42</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>117</x>
      <y>75</y>
     </hint>
