@@ -192,7 +192,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setSpacing ( 4 );
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
@@ -220,7 +220,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setSpacing ( 4 );
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if

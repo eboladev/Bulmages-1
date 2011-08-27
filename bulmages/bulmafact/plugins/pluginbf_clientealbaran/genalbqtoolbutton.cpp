@@ -75,12 +75,12 @@ void GenAlbQToolButton::setBoton()
     BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Albaran" );
-    setToolTip ( "Generar Albaran" );
+    setStatusTip ( "Generar albaran" );
+    setToolTip ( "Generar albaran" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-to-note.png" ) ) );
-    setIconSize ( QSize ( 32, 32 ) );
+    setIconSize ( QSize ( 22, 22 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     
 }

@@ -30,6 +30,5 @@ extern "C" PLUGINBF_CLIENTEPROVEEDOR_EXPORT int BlForm_guardar_Post ( BlForm * )
 extern "C" PLUGINBF_CLIENTEPROVEEDOR_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-
 #endif
 

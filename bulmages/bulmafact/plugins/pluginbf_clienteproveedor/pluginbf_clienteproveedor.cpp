@@ -104,7 +104,7 @@ int BlForm_guardar_Post ( BlForm *l )
             fich->save();
         delete fich;
     } // end if
-    
+
     return 0;
 }
 

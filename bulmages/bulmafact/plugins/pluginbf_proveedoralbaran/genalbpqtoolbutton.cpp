@@ -72,12 +72,12 @@ void GenAlbProQToolButton::setBoton()
     BL_FUNC_DEBUG
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( _("Generar Albaran Proveedor") );
-    setToolTip ( _("Generar Albaran Proveedor") );
+    setStatusTip ( _("Generar albaran proveedor") );
+    setToolTip ( _("Generar albaran proveedor") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.png" ) ) );
-    setIconSize ( QSize ( 32, 32 ) );
+    setIconSize ( QSize ( 22, 22 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     
 }
@@ -95,7 +95,6 @@ void GenAlbProQToolButton::click()
         generarAlbaranProveedor();
     }// end if
 
-    
 }
 
 
@@ -200,7 +199,5 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         if ( bud ) delete bud;
     } // end try
 
-    
 }
-
 

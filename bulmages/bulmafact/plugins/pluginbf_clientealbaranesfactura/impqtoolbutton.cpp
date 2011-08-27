@@ -87,7 +87,7 @@ void ImpQToolButton::setBoton()
     setToolTip ( "Facturar elementos seleccionados" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png" ) ) );
-    setIconSize ( QSize ( 32, 32 ) );
+    setIconSize ( QSize ( 22, 22 ) );
     
 }
 

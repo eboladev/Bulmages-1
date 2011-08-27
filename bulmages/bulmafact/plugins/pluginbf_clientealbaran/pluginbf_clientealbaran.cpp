@@ -223,12 +223,12 @@ int FacturaView_FacturaView ( FacturaView *l )
     BlToolButton *agalbaran = new BlToolButton ( l );
     agalbaran->setObjectName("mui_agalbaran12");
     
-    agalbaran->setStatusTip ( "Agregar Albaran" );
-    agalbaran->setToolTip ( "Agregar Albaran" );
+    agalbaran->setStatusTip ( "Agregar albaran" );
+    agalbaran->setToolTip ( "Agregar albaran" );
     agalbaran->setMinimumSize ( QSize ( 32, 32 ) );
     agalbaran->setMaximumSize ( QSize ( 32, 32 ) );
     agalbaran->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-add-to-invoice.png" ) ) );
-    agalbaran->setIconSize ( QSize ( 32, 32 ) );
+    agalbaran->setIconSize ( QSize ( 22, 22 ) );
     agalbaran->setContentsMargins ( 0, 0, 0, 0 );
     
     

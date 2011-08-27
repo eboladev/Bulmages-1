@@ -79,7 +79,7 @@ void GenPagoQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.png" ) ) );
-    setIconSize ( QSize ( 32, 32 ) );
+    setIconSize ( QSize ( 22, 22 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     
 }
@@ -241,7 +241,6 @@ void GenPagoQToolButton::click()
 
     } // end if
 
-    
 }
 
 

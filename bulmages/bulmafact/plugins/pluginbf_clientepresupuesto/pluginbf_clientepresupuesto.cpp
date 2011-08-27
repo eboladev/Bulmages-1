@@ -71,7 +71,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
     } // end if
- 
+
     return 0;
 }
 
@@ -113,9 +113,10 @@ int ClienteView_ClienteView_Post ( ClienteView *prov )
         presupuestosList->setObjectName ( "listpresupuestos" );
         presupuestosList->hideBusqueda();
         prov->mui_tab->addTab ( presupuestosList, "Presupuestos" );
-    }// end if
+    } // end if
     return 0;
 }
+
 
 int ClienteView_cargarPost_Post ( ClienteView *prov )
 {
@@ -123,9 +124,9 @@ int ClienteView_cargarPost_Post ( ClienteView *prov )
         PresupuestoList *presupuestosList = prov->findChild<PresupuestoList *> ( "listpresupuestos" );
         presupuestosList->setidcliente ( prov->dbValue ( "idcliente" ) );
         presupuestosList->presentar();
-    }// end if
+    } // end if
     return 0;
-}// end if
+}
 
 
 int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
@@ -141,9 +142,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     } // end while
     delete cur;
     return 0;
-}// end if
-
-
+}
 
 
 ///
@@ -162,18 +161,14 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setSpacing ( 4 );
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    }// end if
+    } // end if
     m_hboxLayout1->addWidget ( mui_exporta_epresupuesto2 );
-
-    
 
     return 0;
 }
-
-
 
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
