@@ -533,6 +533,8 @@ void blCreatePDF ( const QString arch )
 	blMsgError(_("Error en PYTHON [ blfunctions->blCreatePDF() ]"));
     } // end if
     
+    /// Para MS Windows es necesario el uso de FLIP para convertir los saltos de carro al formato UNIX. En caso contrario los documentos no son legibles por programas como Adobe Acrobat
+    /// Visita https://ccrma.stanford.edu/~craig/utility/flip/ para mas informacion sobre este comando y obtener su versión para Windows.
     BlDebug::blDebug ( cadsys, 0 );
     cadsys = "\"" + g_confpr->value( CONF_FLIP ) + "\" -u \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
