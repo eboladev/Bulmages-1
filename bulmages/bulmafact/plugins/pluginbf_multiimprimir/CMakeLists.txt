@@ -99,7 +99,8 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 if(WIN32)
-target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_clientecobro ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+#target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_clientecobro ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 else(WIN32)
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)

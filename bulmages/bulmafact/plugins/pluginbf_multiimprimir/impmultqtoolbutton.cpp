@@ -812,7 +812,13 @@ void EmailQToolButton::click()
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->value( "mailcliente" );
 
-                CobroView *pres = new CobroView ( m_companyact, 0 );
+
+				int resur = g_plugins->lanza ( "SNewCobroView", m_companyact );
+				if ( !resur ) {
+					blMsgInfo ( "no se pudo crear instancia de cobro" );
+					return;
+				} // end if
+				CobroView *pres = ( CobroView * ) g_plugParams;
                 pres->load ( id );
 
                 blCreatePDF ( "recibo" );
