@@ -444,8 +444,8 @@ msgid "Nueva Aula"
 msgstr "Nueva Aula"
 
 #: ui_alumnobase.h:475 ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320
-msgid "Nuevo Alumno"
-msgstr "Nuevo Alumno"
+msgid "Nuevo alumno"
+msgstr "Nuevo alumno"
 
 #: pluginbf_alumno.cpp:74 pluginbf_alumno.cpp:75 pluginbf_alumno.cpp:316
 #: pluginbf_alumno.cpp:341

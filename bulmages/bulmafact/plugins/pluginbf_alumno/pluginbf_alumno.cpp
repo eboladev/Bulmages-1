@@ -428,8 +428,6 @@ void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
         sub->lineaact()->setDbValue ( "nombrealumno1", cur->value( "nombrealumno" ) );
     } // end if
     delete cur;
-
-    
 }
 
 
@@ -475,8 +473,8 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
         
         if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
           QToolButton *sel = new QToolButton ( sub->mui_menusubform );
-          sel->setStatusTip ( "Nuevo Alumno" );
-          sel->setToolTip ( "Nuevo Alumno" );
+          sel->setStatusTip ( _("Nuevo alumno") );
+          sel->setToolTip ( _("Nuevo alumno") );
           sel->setMinimumSize ( QSize ( 18, 18 ) );
           sel->setIcon ( QIcon ( ":/ImgGestionAula/icons/alumno.png" ) );
           sel->setIconSize ( QSize ( 18, 18 ) );    
@@ -484,18 +482,16 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
           sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoAlumno()));
         
           QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
-          sel1->setStatusTip ( "Seleccionar Alumno" );
-          sel1->setToolTip ( "Seleccionar Alumno" );
+          sel1->setStatusTip ( _("Seleccionar alumno") );
+          sel1->setToolTip ( _("Seleccionar alumno") );
           sel1->setMinimumSize ( QSize ( 18, 18 ) );
           sel1->setIcon ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ) );
-          sel1->setIconSize ( QSize ( 18, 18 ) );    
+          sel1->setIconSize ( QSize ( 18, 18 ) );
           m_hboxLayout1->addWidget ( sel1 );
           sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarAlumno()));
         } // end if
     } // end if
-    
 
-    
     return 0;
 }
 
