@@ -110,7 +110,13 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     m_genericLocalConfFile = m_genericGlobalConfFile;
     m_programLocalConfFile = m_programGlobalConfFile;
 
-
+	/// Establecemos los valores por defecto, que luego la propia configuracion puede sobreescribir.
+    setValue ( CONF_DIR_USER, m_dirLocalConf );
+    setValue ( CONF_PRIVILEGIOS_USUARIO, "1" );
+    setValue ( CONF_LOGIN_USER, "" );
+    setValue ( CONF_PASSWORD_USER, "" );
+	
+	
     /// Comprobamos la existencia de los directorios y archivos de configuracion.
     /// Directorios y archivos obligatorios (sale si no existe):
     if ( !dirGlobalConf.exists() ) {
@@ -174,11 +180,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
         readConfig ( m_dirLocalConf + m_programLocalConfFile );
     }// end if
 
-    setValue ( CONF_DIR_USER, m_dirLocalConf );
-    setValue ( CONF_PRIVILEGIOS_USUARIO, "1" );
-    setValue ( CONF_LOGIN_USER, "" );
-    setValue ( CONF_PASSWORD_USER, "" );
-    
+   
     fprintf ( stderr, "Configuraciones cargadas");
 }
 
@@ -449,7 +451,8 @@ QString BlConfiguration::name( int i )
         return "CONF_URL_CONTENTS";
     if ( i == CONF_REPLACE_STRING )
         return "CONF_REPLACE_STRING";
-    
+    if ( i == CONF_DIR_USER )
+        return "CONF_DIR_USER";
     return "";
 }
 

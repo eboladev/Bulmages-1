@@ -1031,7 +1031,8 @@ int BlDbRecord::generateRML ( const QString &arch )
     if (result1 == -1) {
 	blMsgError(_("Error al copiar el archivo RML [ bldb->generateRML() ]"));
     } // end if
-    
+
+
     /// Copiamos el logo
 #ifdef Q_OS_WIN32
     archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg \"";
@@ -1043,7 +1044,7 @@ int BlDbRecord::generateRML ( const QString &arch )
     if (result2 == -1) {
 	blMsgError(_("Error al copiar el archivo de logo [ bldb->generateRML() ]"));
     } // end if
-    
+
     QFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
