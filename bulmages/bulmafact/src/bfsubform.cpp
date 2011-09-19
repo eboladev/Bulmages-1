@@ -663,6 +663,11 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
 
 
 
+void BfSubFormDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index ) const
+{
+    editor->setGeometry(option.rect);
+}
+
 
 ///
 /**

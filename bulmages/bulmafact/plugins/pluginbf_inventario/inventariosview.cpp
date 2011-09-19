@@ -47,8 +47,9 @@ void InventariosView::on_mui_crear_clicked()
 {
     BL_FUNC_DEBUG
     InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
-    if ( bud->load ( "0" ) )
-        return;
+    /// No se hace la carga inicial. Se espera a que el usuario establezca los datos de filtrado.
+    //if ( bud->load ( "" ) )
+    //    return;
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->mui_nominventario->setFocus();

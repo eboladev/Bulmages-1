@@ -59,7 +59,6 @@ InventarioView::InventarioView ( BfCompany *comp, QWidget *parent )
 InventarioView::~InventarioView()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -77,7 +76,8 @@ void InventarioView::on_mui_guardar2_clicked()
     setFechaInventario ( mui_fechainventario->text() );
     setNomInventario ( mui_nominventario->text() );
     Inventario::save();
-    
+    on_mui_actualizar_clicked();
+    blMsgInfo(_("Los campos de stock quedan bloqueados despues de guardarse."));
 }
 
 
@@ -90,7 +90,6 @@ int InventarioView::removeWindow()
     BL_FUNC_DEBUG
     companyact->removeWindow ( this );
     return 0;
-    
 }
 
 
@@ -118,7 +117,6 @@ void InventarioView::on_mui_borrar2_clicked()
 void InventarioView::pintaIdInventario ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -130,7 +128,6 @@ void InventarioView::pintaFechaInventario ( QString id )
 {
     BL_FUNC_DEBUG
     mui_fechainventario->setText ( id );
-    
 }
 
 
@@ -142,7 +139,6 @@ void InventarioView::pintaNomInventario ( QString id )
 {
     BL_FUNC_DEBUG
     mui_nominventario->setText ( id );
-    
 }
 
 
@@ -157,18 +153,6 @@ void InventarioView::on_mui_aceptar_clicked()
     if ( !Inventario::save() ) {
         close();
     } // end if
-    
-}
-
-
-///
-/**
-**/
-void InventarioView::on_mui_pregenerar_clicked()
-{
-    BL_FUNC_DEBUG
-    pregenerar();
-    
 }
 
 
@@ -190,20 +174,40 @@ void InventarioView::on_mui_actualizar_clicked()
 **/
 int InventarioView::load ( QString idbudget )
 {
-    if ( idbudget == "" ) idbudget = "0";
-    QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
-    BlDbRecordSet * cur = companyact->loadQuery ( query );
-    if ( !cur->eof() ) {
-        DBload ( cur );
-    } // end if
-    delete cur;
+    QString SQLQuery;
 
-    QString SQLQuery = "SELECT * FROM ";
-    SQLQuery += " (SELECT idarticulo, idalmacen, nomarticulo, nomalmacen, codigocompletoarticulo, codigoalmacen, idfamilia FROM articulo, almacen) AS t1 ";
-    SQLQuery += " LEFT JOIN (SELECT punteocontrolstock, COALESCE(stockantcontrolstock, 0) AS stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + idbudget + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
+    if ( idbudget == "" ) {
+	/// Se esta creando un nuevo inventario.
+	
+	SQLQuery = "SELECT t1.idarticulo, t1.idalmacen, t1.nomarticulo, t1.nomalmacen, t1.codigocompletoarticulo, t1.codigoalmacen, t1.idfamilia, t2.stock AS stockantcontrolstock, t2.stock AS stocknewcontrolstock, false AS punteocontrolstock FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN stock_almacen AS t2 ON t1.idarticulo = t2.idarticulo AND t1.idalmacen = t2.idalmacen ";
 
-    if ( mui_idfamilia->idfamilia() != "" ) {
-        SQLQuery += " WHERE t1.idfamilia = " + mui_idfamilia->idfamilia();
+	if ( mui_idfamilia->idfamilia() != "" ) {
+	    SQLQuery += " WHERE t1.idfamilia = " + mui_idfamilia->idfamilia();
+	} // end if
+	
+	/// Habilita la escritura en la columna.
+	subform2->header("stocknewcontrolstock")->setOptions( BlSubFormHeader::DbNone );
+      
+    } else {
+        /// Se esta cargando un inventario existente.
+	QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
+	BlDbRecordSet * cur = companyact->loadQuery ( query );
+	if ( !cur->eof() ) {
+	    DBload ( cur );
+	} // end if
+	delete cur;
+	
+	SQLQuery = "SELECT t1.idarticulo, t1.idalmacen, t1.nomarticulo, t1.nomalmacen, t1.codigocompletoarticulo, t1.codigoalmacen, t1.idfamilia, t2.stockantcontrolstock, t2.stocknewcontrolstock, t2.punteocontrolstock FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN controlstock AS t2 ON t1.idarticulo = t2.idarticulo AND t1.idalmacen = t2.idalmacen WHERE idinventario = " + idbudget + " ";
+
+	if ( mui_idfamilia->idfamilia() != "" ) {
+	    SQLQuery += " AND t1.idfamilia = " + mui_idfamilia->idfamilia();
+	} // end if
+
+
+	/// Deshabilita la escritura en la columna.
+	subform2->header("stocknewcontrolstock")->setOptions( BlSubFormHeader::DbNoWrite );
+
+
     } // end if
 
     listalineas->load ( SQLQuery );

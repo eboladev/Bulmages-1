@@ -74,13 +74,13 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <property name="leftMargin">
-         <number>2</number>
+         <number>4</number>
         </property>
         <property name="topMargin">
-         <number>2</number>
+         <number>4</number>
         </property>
         <property name="rightMargin">
-         <number>2</number>
+         <number>4</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar">

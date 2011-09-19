@@ -833,7 +833,7 @@ int BlForm::load ( QString id, bool paint )
             throw - 1;
         } // end if
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "BlForm_cargar", this ) ) return 0;
+        if ( g_plugins->lanza ( "BlForm_load", this ) ) return 0;
         cargarPost ( id );
 
 

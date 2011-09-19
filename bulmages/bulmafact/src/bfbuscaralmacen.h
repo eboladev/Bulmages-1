@@ -28,16 +28,13 @@
 #include "blpostgresqlclient.h"
 
 
-/** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
-    de esta forma la introduccion de tipos de IVA es sencilla.
-    Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
+/** Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un ComboBox */
 class BF_EXPORT BfBuscarAlmacenDelegate : public BlComboBox
 {
     Q_OBJECT
 
 private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     BlDbRecordSet *m_cursorcombo;
 
 public:

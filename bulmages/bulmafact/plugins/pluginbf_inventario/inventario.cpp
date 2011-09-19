@@ -105,12 +105,8 @@ void Inventario::pintaInventario()
     BL_FUNC_DEBUG
     pintaIdInventario ( dbValue ( "idinventario" ) );
     pintaNomInventario ( dbValue ( "nominventario" ) );
-    pintaFechaInventario ( dbValue ( "fechainventario" ) );
-    
+    pintaFechaInventario ( dbValue ( "fechainventario" ) );   
 }
-
-
-
 
 
 ///
@@ -136,17 +132,6 @@ int Inventario::save()
 	
         return -1;
     } // end try
-}
-
-
-///
-/**
-**/
-void Inventario::pregenerar()
-{
-    BL_FUNC_DEBUG
-    listalineas->pregenerar();
-    
 }
 
 
@@ -274,7 +259,5 @@ void Inventario::imprimirInventario()
         txt += "</tr>\n";
     } // end while
     delete cstock;
-
-    
 }
 

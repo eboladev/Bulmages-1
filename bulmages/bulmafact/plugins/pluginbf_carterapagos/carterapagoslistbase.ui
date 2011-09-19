@@ -18,7 +18,7 @@
    <string>Cartera de Pagos</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/pay-list.png</normaloff>:/Images/pay-list.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -42,7 +42,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Images/pay-list.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/pay-list.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -59,22 +59,13 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="spacing">
-         <number>0</number>
+         <number>4</number>
         </property>
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-        <property name="leftMargin">
-         <number>2</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>2</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
+        <property name="margin">
+         <number>4</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear">

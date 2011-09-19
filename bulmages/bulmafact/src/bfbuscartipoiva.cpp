@@ -146,7 +146,7 @@ BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
 {
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
-    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+//    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     
 }

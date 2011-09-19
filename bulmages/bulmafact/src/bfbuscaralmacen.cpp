@@ -176,10 +176,6 @@ BfBuscarAlmacenDelegate::BfBuscarAlmacenDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
     BL_FUNC_DEBUG
-    m_comboRecordSet = NULL;
-    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    
 }
 
 
@@ -190,9 +186,6 @@ BfBuscarAlmacenDelegate::BfBuscarAlmacenDelegate ( QWidget *parent )
 BfBuscarAlmacenDelegate::~BfBuscarAlmacenDelegate()
 {
     BL_FUNC_DEBUG
-    if ( m_comboRecordSet != NULL )
-        delete m_comboRecordSet;
-    
 }
 
 

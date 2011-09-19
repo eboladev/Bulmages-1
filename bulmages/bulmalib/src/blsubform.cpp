@@ -56,13 +56,13 @@ QString BL_EXPORT g_fieldName;
 \param opt Opciones de presentacion
 \param nomp Nombre a presentar en caso necesario para referirse a la columna
 **/
-BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp )
+BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int options, QString nomp )
 {
     BL_FUNC_DEBUG
     m_fieldName = nom;
     m_tipo = typ;
     m_restricciones = res;
-    m_options = opt;
+    m_options = options;
     m_nompresentacion = nomp;
     m_numericPrecision = 2;
     
@@ -76,6 +76,13 @@ BlSubFormHeader::~BlSubFormHeader()
 {
     BL_FUNC_DEBUG
     
+}
+
+
+void BlSubFormHeader::setOptions(int options)
+{
+    BL_FUNC_DEBUG
+    m_options = options;
 }
 
 

@@ -187,7 +187,7 @@
    <item row="6" column="0" colspan="5">
     <layout class="QHBoxLayout">
      <property name="spacing">
-      <number>6</number>
+      <number>4</number>
      </property>
      <property name="margin">
       <number>0</number>

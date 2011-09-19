@@ -152,12 +152,6 @@ BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
     BL_FUNC_DEBUG
-
-    m_comboRecordSet = NULL;
-    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-
-    
 }
 
 
@@ -168,12 +162,6 @@ BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate ( QWidget *parent )
 BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate()
 {
     BL_FUNC_DEBUG
-
-    if ( m_comboRecordSet != NULL ) {
-        delete m_comboRecordSet;
-    } // end if
-
-    
 }
 
 

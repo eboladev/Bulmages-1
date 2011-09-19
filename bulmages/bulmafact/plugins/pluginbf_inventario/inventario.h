@@ -51,7 +51,6 @@ public:
     virtual void pintaIdInventario ( QString );
     virtual void pintaFechaInventario ( QString );
     virtual void pintaNomInventario ( QString );
-    virtual void pregenerar();
     void setIdInventario ( QString val );
     void setFechaInventario ( QString val );
     void setNomInventario ( QString val );

@@ -68,10 +68,11 @@ protected:
 
 
 public:
-    BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp = "" );
+    BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int options, QString nomp = "" );
     ~BlSubFormHeader();
     unsigned int options();
     unsigned int restrictions();
+    void setOptions(int options);
     BlDbField::DbType dbFieldType();
     QString nompresentacion();
     int restrictcampo();
