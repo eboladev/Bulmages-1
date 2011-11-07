@@ -128,7 +128,16 @@ BEGIN
 
 	SELECT INTO ds * FROM pais;
 	IF NOT FOUND THEN
-	    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('España','es','esp');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Spain','es','esp');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Germany','de','deu');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('France','fr','fra');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Belgium','ne','nel');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Italy','it','ita');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Portugal','pt','prt');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('United Kingdom','gb','gbr');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Turkey','tr','tur');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Poland','pl','pol');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('United States','us','usa');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
