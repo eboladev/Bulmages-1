@@ -156,7 +156,7 @@ void RecibosList::presentar()
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString RecibosList::generaFiltro()
+const QString RecibosList::generaFiltro()
 {
     BL_FUNC_DEBUG
     

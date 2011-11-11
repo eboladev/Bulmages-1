@@ -66,7 +66,7 @@ public:
     QString idcobro();
     void imprimir();
     void setidcliente ( QString val );
-    QString generaFiltro();
+    const QString generaFiltro();
     void remove();
     void crear();
     void editar ( int );

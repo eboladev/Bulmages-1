@@ -169,7 +169,7 @@ void FacturasList::presentar()
 {
     BL_FUNC_DEBUG
 
-    mui_list->load ( "SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
+    mui_list->load ( "SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON factura.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generaFiltro() );
 
     /// Hacemos el calculo del total.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalfactura)::NUMERIC(12,2) AS total, SUM(bimpfactura)::NUMERIC(12,2) AS base, SUM(impfactura)::NUMERIC(12,2) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
@@ -191,7 +191,7 @@ void FacturasList::presentar()
 /**
 \return
 **/
-QString FacturasList::generaFiltro()
+const QString FacturasList::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.
@@ -444,6 +444,8 @@ FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfS
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id cliente" ) );
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
+    addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id Forma de Pago" ) );
+    addSubFormHeader ( "descforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
@@ -467,7 +469,7 @@ FacturasListSubform::~FacturasListSubform()
 void FacturasListSubform::load()
 {
     BL_FUNC_DEBUG
-    QString SQLQuery = "SELECT * FROM factura";
+    QString SQLQuery = "SELECT * FROM factura LEFT JOIN forma_pago ON factura.idforma_pago = forma_pago.idforma_pago";
     BlSubForm::load ( SQLQuery );
 }
 

@@ -144,7 +144,7 @@ void ZList::presentar()
 /**
 \return
 **/
-QString ZList::generaFiltro()
+const QString ZList::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.

@@ -116,7 +116,7 @@ void ConvReunionList::presentar()
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString ConvReunionList::generaFiltro()
+const QString ConvReunionList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";

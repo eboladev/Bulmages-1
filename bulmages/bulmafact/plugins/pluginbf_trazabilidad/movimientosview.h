@@ -99,7 +99,7 @@ public:
     void setidarticulo ( QString val ) {
         m_articulo->setidarticulo ( val );
     };
-    QString generaFiltro();
+    const QString generaFiltro();
 
     void presenta();
 

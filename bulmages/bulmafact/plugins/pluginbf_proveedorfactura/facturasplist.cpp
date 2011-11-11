@@ -169,7 +169,7 @@ void FacturasProveedorList::presentar()
 /**
 \return
 **/
-QString FacturasProveedorList::generaFiltro()
+const QString FacturasProveedorList::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.

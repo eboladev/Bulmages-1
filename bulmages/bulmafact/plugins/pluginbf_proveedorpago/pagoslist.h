@@ -63,7 +63,7 @@ public:
     QString idpago();
     void imprimir();
     void setidproveedor ( QString val );
-    QString generaFiltro();
+    const QString generaFiltro();
     void crear();
     void remove();
     void editar ( int );

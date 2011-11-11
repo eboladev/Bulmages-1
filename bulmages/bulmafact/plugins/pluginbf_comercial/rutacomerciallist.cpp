@@ -131,7 +131,7 @@ void RutaComercialList::presenta()
 /**
 \return
 **/
-QString RutaComercialList::generaFiltro()
+const QString RutaComercialList::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.

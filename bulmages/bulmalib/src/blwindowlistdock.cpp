@@ -200,10 +200,10 @@ void BlWindowListDock::clicked()
     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
         widget->show();
-        widget->parentWidget() ->raise();
+	if (widget->parentWidget()) widget->parentWidget() ->raise();
 
 #ifdef AREA_QMDI
-        widget->parentWidget()->activateWindow();
+	if (widget->parentWidget()) widget->parentWidget()->activateWindow();
 #else
         m_pWorkspace->setActiveWindow ( widget );
 #endif

@@ -28,7 +28,7 @@
 #include <QDomDocument>
 #include <QDomNode>
 #include <QInputDialog>
-#include <QUiLoader>
+#include "bluiloader.h"
 
 
 #include "blform.h"
@@ -40,7 +40,8 @@
 #include "bldatesearch.h"
 #include "blperiodicitycombobox.h"
 #include "blmainwindow.h"
-
+#include "blsearchwidget.h"
+#include "blcombobox.h"
 
 ///
 /**
@@ -257,7 +258,7 @@ void BlForm::loadSpecs()
             } // end while
 
             addDbField ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, nompheader );
-            generaCampo ( nomheader, nompheader, typeheader );
+	    generaCampo ( nomheader, nompheader, typeheader, e1 );
         } // end if
     } // end for
 
@@ -268,7 +269,7 @@ void BlForm::loadSpecs()
 }
 
 
-void BlForm::generaCampo ( const QString &objname, const QString &textname, const QString &type )
+void BlForm::generaCampo ( const QString &objname, const QString &textname, const QString &type, const QDomElement & e1 )
 {
 
     /// Miramos si existe un menu Herramientas
@@ -292,20 +293,74 @@ void BlForm::generaCampo ( const QString &objname, const QString &textname, cons
     hboxLayout160->setMargin ( 0 );
     hboxLayout160->setObjectName ( QString::fromUtf8 ( "hboxLayout16" ) );
 
-    QLabel *textLabel2_9_26 = new QLabel ( frame );
-    textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
-    hboxLayout160->addWidget ( textLabel2_9_26 );
-    textLabel2_9_26->setText ( textname );
+    
+    	    
+	    /// Si es un BlSearchWidget o un BlComboBox hacemos un tratamiento especial. Sino hacemos un tratamiento generico
+	    QString tipocampo = e1.firstChildElement ( "TIPOCAMPO" ).toElement().text();
+	    if (tipocampo == "BLSEARCHWIDGET" ) {
+		  BlSearchWidget * search = new BlSearchWidget(frame);
+		  search->setMainCompany(mainCompany());
+		  search->setObjectName("mui_" + objname);
+		  search->setMinimumHeight(100);
+// 		  QString label = e1.firstChildElement ( "LABEL" ).toElement().text();
+		  QString label = textname;
+		  QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+		  QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+		  search->setLabel ( label );
+		  search->setTableName ( tablename );
+		  search->setFieldId ( fieldid );
+		  QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+		  for ( int j = 0; j < nodos.count(); j++ ) {
+		      QDomNode ventana = nodos.item ( j );
+		      QString va = ventana.toElement().text(); /// try to convert the node to an element.
+		      search->m_valores[va] = "";
+		  } // end for
+		  search->setId ( "" );
+		  hboxLayout160->addWidget ( search );
+	    } else if (tipocampo == "BLCOMBOBOX") {
+		  QLabel *textLabel2_9_26 = new QLabel ( frame );
+		  textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
+		  hboxLayout160->addWidget ( textLabel2_9_26 );
+		  textLabel2_9_26->setText ( textname );
+		      
+		  BlComboBox * combo = new BlComboBox(frame);
+		  combo->setMainCompany(mainCompany());
+		  combo->setObjectName("mui_" + objname);
+		  QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+		  QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+		  QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+		  
+		  
+		  // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+		  combo->setQuery ( query );
+		  combo->setTableName ( tablename );
+		  combo->setFieldId ( fieldid );
+		  QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+		  for ( int j = 0; j < nodos.count(); j++ ) {
+		      QDomNode ventana = nodos.item ( j );
+		      QString va = ventana.toElement().text(); /// try to convert the node to an element.
+		      combo->m_valores[va] = "";
+		  } // end for
+		  combo->setAllowNull ( TRUE );
+		  combo->setId ( "" );
+		  hboxLayout160->addWidget ( combo );	      
+	    } else {
+    
+		      QLabel *textLabel2_9_26 = new QLabel ( frame );
+		      textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
+		      hboxLayout160->addWidget ( textLabel2_9_26 );
+		      textLabel2_9_26->setText ( textname );
 
-    if ( type == "DBDATE" ) {
-        BlDateSearch * bus = new BlDateSearch ( frame );
-        bus->setObjectName ( "mui_" + objname );
-        hboxLayout160->addWidget ( bus );
-    } else {
-        QLineEdit *bus = new QLineEdit ( frame );
-        bus->setObjectName ( "mui_" + objname );
-        hboxLayout160->addWidget ( bus );
-    } // end if
+		      if ( type == "DBDATE" ) {
+			  BlDateSearch * bus = new BlDateSearch ( frame );
+			  bus->setObjectName ( "mui_" + objname );
+			  hboxLayout160->addWidget ( bus );
+		      } else {
+			  QLineEdit *bus = new QLineEdit ( frame );
+			  bus->setObjectName ( "mui_" + objname );
+			  hboxLayout160->addWidget ( bus );
+		      } // end if
+	    } // end if
     vboxl->addLayout ( hboxLayout160 );
 }
 
@@ -523,9 +578,19 @@ void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString tit
 void BlForm::on_customContextMenuRequested ( const QPoint & )
 {
     BL_FUNC_DEBUG
-    QMenu *popup = new QMenu ( this );
+    
 
-    /// Lanzamos el evento para que pueda ser capturado por terceros.
+    
+    /// Creamos la instancia del menu.
+    QMenu *popup = new QMenu ( this );
+    
+    /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+      QAction *nombreobjeto = popup->addAction( objectName() );
+      nombreobjeto->setDisabled(TRUE);
+    } // end if
+    
+    /// Lanzamos el evento para que pueda ser capturado por terceros. Y pongan sus opciones.
     emit pintaMenu ( popup );
 
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
@@ -1118,7 +1183,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
 
         QFile fichero ( cadarchivo );
         if ( fichero.exists() ) {
-            QUiLoader loader;
+            BlUiLoader loader(mainCompany());
             fichero.open ( QFile::ReadOnly );
             QWidget *iface = loader.load ( &fichero, this );
             fichero.close();
@@ -1138,6 +1203,56 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
             connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
             QPushButton *button1 = iface->findChild<QPushButton *> ( "mui_cancelar" );
             connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
+	    
+	    /// Vamos a buscar parametros tipo PARAM BLSEARCHWIDGET para configurar el dialogo.
+	    QRegExp rx700 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*LABEL\\s*=\\s*\"([^\"]*)\"\\s*TABLE\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+	    rx700.setMinimal ( TRUE );
+	    int pos1 = 0;
+	    while ( ( pos1 = rx700.indexIn ( buff, pos1 ) ) != -1 ) {
+		QString name = rx700.cap ( 1 );
+		QString type = rx700.cap ( 2 );
+		QString label = rx700.cap( 3 );
+		QString tablename = rx700.cap ( 4 );
+		QString fieldid = rx700.cap ( 5 );
+		QString values = rx700.cap ( 6 );
+			BlSearchWidget * search = iface->findChild<BlSearchWidget *>("mui_" + name);
+			if (search) {
+			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+			    search->setLabel ( label );
+			    search->setTableName ( tablename );
+			    search->setFieldId ( fieldid );
+			    QStringList listvalues = values.split(",");
+			    for ( int j = 0; j < listvalues.size(); ++j ) {
+				search->m_valores[listvalues.at(j)] = "";
+			    } // end for
+			    search->setId ( "" );
+			} // end if
+			pos1 += rx700.matchedLength();
+	      } // end while
+	    
+	    /// Vamos a buscar parametros tipo PARAM BLCOMBOBOX para configurar el dialogo.
+	    QRegExp rx701 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+	    rx701.setMinimal ( TRUE );
+	    int pos2 = 0;
+	    while ( ( pos2 = rx701.indexIn ( buff, pos2 ) ) != -1 ) {
+		QString name = rx701.cap ( 1 );
+		QString type = rx701.cap ( 2 );
+		QString query = rx701.cap ( 3 );
+		QString fieldid = rx701.cap ( 4 );
+		QString values = rx701.cap ( 5 );
+			BlComboBox * search = iface->findChild<BlComboBox *>("mui_" + name);
+			if (search) {
+			    search->setQuery ( query );
+			    search->setFieldId ( fieldid );
+			    QStringList listvalues = values.split(",");
+			    for ( int j = 0; j < listvalues.size(); ++j ) {
+				search->m_valores[listvalues.at(j)] = "";
+			    } // end for
+			    search->setId ( "" );
+			} // end if
+			pos2 += rx701.matchedLength();
+	      } // end while
+	    
             int ret = diag->exec();
             if ( ret ) {
 
@@ -1168,7 +1283,33 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
                     addDbField ( nombre, BlDbField::DbBoolean, BlDbField::DbNoSave, nombre  );
                     setDbValue ( nombre, valor );
                 } // end while
-                
+
+		/// Recorre los BlSearchWidget.
+                QList<BlSearchWidget *> jqcb = iface->findChildren<BlSearchWidget *>();
+                QListIterator<BlSearchWidget *> itjqcb ( jqcb );
+
+                while ( itjqcb.hasNext() ) {
+                    BlSearchWidget *item = itjqcb.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->id();
+                    addDbField ( nombre, BlDbField::DbInt, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+		 } // end while
+		 
+		/// Recorre los BlComboBox.
+                QList<BlComboBox *> jqcb1 = iface->findChildren<BlComboBox *>();
+                QListIterator<BlComboBox *> itjqcb1 ( jqcb1 );
+
+                while ( itjqcb1.hasNext() ) {
+                    BlComboBox *item = itjqcb1.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->id();
+                    addDbField ( nombre, BlDbField::DbInt, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+		 } // end while
+		 
+		 
+
 		QVariant exportaRML = iface->property("exportaRML");
 		if (exportaRML.isValid() ) {
 			QStringList props = exportaRML.toStringList();

@@ -261,7 +261,7 @@ void AlbaranesProveedor::presentar()
 /**
 \return
 **/
-QString AlbaranesProveedor::generaFiltro()
+const QString AlbaranesProveedor::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";

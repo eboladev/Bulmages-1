@@ -67,7 +67,7 @@ public:
     QString idfactura();
     void setidcliente ( QString val );
     void setidarticulo ( QString val );
-    QString generaFiltro();
+    const QString generaFiltro();
     void presentar();
     void editar ( int );
     void remove();

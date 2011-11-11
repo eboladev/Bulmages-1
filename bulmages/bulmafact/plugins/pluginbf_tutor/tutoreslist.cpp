@@ -116,7 +116,7 @@ void TutoresList::presentar()
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString TutoresList::generaFiltro()
+const QString TutoresList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";

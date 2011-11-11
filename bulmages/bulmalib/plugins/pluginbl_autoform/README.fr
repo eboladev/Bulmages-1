@@ -1,0 +1,33 @@
+#######
+#Plugins
+#######
+#README.fr
+20110205
+
+Nombre: Listados y Formularios Automaticos
+
+Biblioteca: libpluginbl_autoform.so
+
+Descripción: <H1>Bloquer les configurations</H1>
+<P>Permet de bloquer les configurations de présentations des sous formulaires en cas de  chargement du programme qui pourrait altérer les configurations.</P>
+<P>Deux nouvelles options apparaissent dans le menu outils qui permettent de bloquer ou débloquer les fichiers de configuration.</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilites generales ; Experimental ;
+
+Orden: 70
+
+Comentarios: -
+

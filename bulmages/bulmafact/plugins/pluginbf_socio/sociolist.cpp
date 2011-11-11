@@ -71,10 +71,8 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
 
     mui_list->setMainCompany ( comp );
 
-
     setSubForm ( mui_list );
     
-
     mdb_idcliente = "";
     if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
@@ -89,7 +87,6 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     
     /// Llamamos a los scripts
     blScript(this);
-    
 }
 
 
@@ -98,7 +95,6 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
 SociosList::~SociosList()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -112,7 +108,6 @@ void SociosList::presentar()
     if ( mainCompany() != NULL ) {
         mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     } // end if
-    
 }
 
 /** Seleccionar si queremos ver clientes o socios
@@ -127,14 +122,12 @@ void SociosList::on_mui_sociocliente_activated( int index )
     else{
       mui_list->load ( "SELECT * FROM cliente WHERE sociocliente = false " + generaFiltro() );
     }
-
-    
 }
 
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString SociosList::generaFiltro()
+const QString SociosList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";
@@ -226,8 +219,6 @@ void SociosList::editar ( int )
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    
-
 }
 
 /** SLOT que responde a la peticion de menu contextual en el subformulario.

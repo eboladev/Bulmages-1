@@ -132,7 +132,7 @@ void CobrosList::presentar()
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString CobrosList::generaFiltro()
+const QString CobrosList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";

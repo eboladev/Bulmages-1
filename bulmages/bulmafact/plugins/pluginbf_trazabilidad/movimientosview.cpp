@@ -125,7 +125,7 @@ void MovimientosView::presenta()
 /**
 \return
 **/
-QString MovimientosView::generaFiltro()
+const QString MovimientosView::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.

@@ -359,7 +359,6 @@ void BlSubForm::loadSpecs()
     QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-	
         return;
     }
     if ( !doc.setContent ( &file ) ) {
@@ -3121,6 +3120,12 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     } // end if
     QMenu *popup = new QMenu ( this );
 
+    /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+      QAction *nombreobjeto = popup->addAction( objectName() );
+      nombreobjeto->setDisabled(TRUE);
+    } // end if
+    
     /// Lanzamos el evento para que pueda ser capturado por terceros.
     emit pintaMenu ( popup );
 
