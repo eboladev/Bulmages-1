@@ -38,7 +38,7 @@
 #include "local_blI18n.h"
 #include "blescprinter.h"
 #include "blsearchwidget.h"
-
+#include "bldatesearch.h"
 
 ///
 /**
@@ -1396,6 +1396,17 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
             int ret = diag->exec();
             if ( ret ) {
 
+        	/// Recorre los BlDateSearch.
+                QList<BlDateSearch *> dl2 = iface->findChildren<BlDateSearch *>();
+                QListIterator<BlDateSearch *> dit2 ( dl2 );
+                while ( dit2.hasNext() ) {
+                    BlDateSearch * item = dit2.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->text();
+                    addDbField ( nombre, BlDbField::DbDate, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+	      
 		/// Recorre los QLineEdit.
                 QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
                 QListIterator<QLineEdit *> it2 ( l2 );
