@@ -42,6 +42,8 @@ class PLUGINBL_AUTOFORM_EXPORT BlAutoForm : public BlForm, public Ui_AutoFormBas
 public:
     BlAutoForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE, const QString &interfacefile = "");
     ~BlAutoForm();
+    virtual int load ( QString id, bool paint = TRUE );
+    virtual int afterSave();
     void launch();
 };
 

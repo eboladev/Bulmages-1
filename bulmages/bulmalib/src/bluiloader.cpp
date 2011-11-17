@@ -64,14 +64,7 @@ QWidget * 	BlUiLoader::createWidget ( const QString & className, QWidget * paren
     if (className == "BfSubForm" || className== "BlSubForm" || className == "BcSubForm") {
       BlSubForm *subform = new BlSubForm(parent);
       subform->setMainCompany(m_emp);
-      subform->setObjectName(name);
-      
-      subform->setDbTableName ( "articulo" );
-      subform->setDbFieldId ( "idarticulo" );
-      subform->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Recibo" ) );
-      subform->setInsert ( FALSE );
-      subform->setSortingEnabled ( TRUE );
-      
+      subform->setObjectName(name);      
       widget = (QWidget *) subform;
     } // end if
     
