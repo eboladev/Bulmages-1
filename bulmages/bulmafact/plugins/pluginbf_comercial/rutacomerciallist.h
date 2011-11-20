@@ -69,7 +69,7 @@ public:
     void setMainCompany ( BfCompany *comp );
     void imprimir();
     void setidcliente ( QString val );
-    QString generaFiltro();
+    const QString generaFiltro();
     void editar ( int );
     virtual void crear();
     virtual void remove();

@@ -26,7 +26,7 @@
 #include <QCloseEvent>
 #include <QtScript>
 #include <QScriptEngine>
-
+#include <QDomElement>
 
 #include "bldialogchanges.h"
 #include "bldoublespinbox.h"
@@ -86,7 +86,7 @@ public:
     void setVar(const QString &varname, const QString &varvalue);
     void clearVars();
     virtual void loadSpecs();
-    virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
+    virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type, const QDomElement &e1=NULL );
     virtual void activateDocuments();
     virtual void deactivateDocuments();
     void blScript(QObject * obj);

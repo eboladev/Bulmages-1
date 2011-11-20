@@ -72,7 +72,7 @@ public:
     void imprimir();
     void setidcliente ( QString val );
     void setidarticulo ( QString val );
-    QString generaFiltro();
+    const QString generaFiltro();
     void iniciaForm();
 
 

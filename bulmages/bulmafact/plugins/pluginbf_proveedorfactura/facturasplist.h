@@ -63,7 +63,7 @@ public:
     FacturasProveedorList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE  );
     ~FacturasProveedorList();
     QString idfacturap();
-    QString generaFiltro();
+    const QString generaFiltro();
     void presentar();
     void setMainCompany ( BfCompany *comp );
     void setidproveedor ( QString val );

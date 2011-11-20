@@ -30,13 +30,15 @@
 #include <QObject>
 #include <QCheckBox>
 #include <QInputDialog>
-#include <QUiLoader>
+#include "bluiloader.h"
 #include <QPushButton>
 
 #include "bldb.h"
 #include "blplugins.h"
 #include "local_blI18n.h"
 #include "blescprinter.h"
+#include "blsearchwidget.h"
+#include "bldatesearch.h"
 
 ///
 /**
@@ -1316,7 +1318,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 
         QFile fichero ( cadarchivo );
         if ( fichero.exists() ) {
-            QUiLoader loader;
+            BlUiLoader loader(m_dbConnection);
             fichero.open ( QFile::ReadOnly );
             QWidget *iface = loader.load ( &fichero );
             fichero.close();
@@ -1336,10 +1338,76 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
             button->connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
             QPushButton *button1 = iface->findChild<QPushButton *> ( "mui_cancelar" );
             button->connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
+
+	    
+	    /// Vamos a buscar parametros tipo PARAM para configurar el dialogo.
+	    QRegExp rx700 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*LABEL\\s*=\\s*\"([^\"]*)\"\\s*TABLE\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+	    rx700.setMinimal ( TRUE );
+	    int pos1 = 0;
+	    while ( ( pos1 = rx700.indexIn ( buff, pos1 ) ) != -1 ) {
+		QString name = rx700.cap ( 1 );
+		QString type = rx700.cap ( 2 );
+		QString label = rx700.cap( 3 );
+		QString tablename = rx700.cap ( 4 );
+		QString fieldid = rx700.cap ( 5 );
+		QString values = rx700.cap ( 6 );
+
+			BlSearchWidget * search = iface->findChild<BlSearchWidget *>("mui_" + name);
+
+			
+			if (search) {
+			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+			    search->setLabel ( label );
+			    search->setTableName ( tablename );
+			    search->setFieldId ( fieldid );
+			    QStringList listvalues = values.split(",");
+			    for ( int j = 0; j < listvalues.size(); ++j ) {
+				search->m_valores[listvalues.at(j)] = "";
+			    } // end for
+			    search->setId ( "" );
+			} // end if
+			pos1 += rx700.matchedLength();
+	      } // end while
+	    
+	      /// Vamos a buscar parametros tipo PARAM BLCOMBOBOX para configurar el dialogo.
+	      QRegExp rx701 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+	      rx701.setMinimal ( TRUE );
+	      int pos2 = 0;
+	      while ( ( pos2 = rx701.indexIn ( buff, pos2 ) ) != -1 ) {
+		  QString name = rx701.cap ( 1 );
+		  QString type = rx701.cap ( 2 );
+		  QString query = rx701.cap ( 3 );
+		  QString fieldid = rx701.cap ( 4 );
+		  QString values = rx701.cap ( 5 );
+			  BlComboBox * search = iface->findChild<BlComboBox *>("mui_" + name);
+			  if (search) {
+			      search->setQuery ( query );
+			      search->setFieldId ( fieldid );
+			      QStringList listvalues = values.split(",");
+			      for ( int j = 0; j < listvalues.size(); ++j ) {
+				  search->m_valores[listvalues.at(j)] = "";
+			      } // end for
+			      search->setId ( "" );
+			  } // end if
+			  pos2 += rx701.matchedLength();
+		} // end while
+	      
+	      
             int ret = diag->exec();
             if ( ret ) {
 
-         /// Recorre los QLineEdit.
+        	/// Recorre los BlDateSearch.
+                QList<BlDateSearch *> dl2 = iface->findChildren<BlDateSearch *>();
+                QListIterator<BlDateSearch *> dit2 ( dl2 );
+                while ( dit2.hasNext() ) {
+                    BlDateSearch * item = dit2.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->text();
+                    addDbField ( nombre, BlDbField::DbDate, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+	      
+		/// Recorre los QLineEdit.
                 QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
                 QListIterator<QLineEdit *> it2 ( l2 );
                 while ( it2.hasNext() ) {
@@ -1361,52 +1429,77 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
                     if ( item->isChecked() ) {
                         valor = "true";
                     } else {
-                  valor = "false";
-          } // end if
+			valor = "false";
+		    } // end if
                     addDbField ( nombre, BlDbField::DbBoolean, BlDbField::DbNoSave, nombre  );
                     setDbValue ( nombre, valor );
-                } // end while
-                
-      QVariant exportaRML = iface->property("exportaRML");
-      if (exportaRML.isValid() ) {
-         QStringList props = exportaRML.toStringList();
-      
-         QListIterator<QString> iProps(props);
-         while (iProps.hasNext()) {
-            QString camp = iProps.next();
-            QStringList cami = camp.split(".");
-            QObject *actual=iface;
-            QListIterator<QString> iCami(cami);
-            
-            while(iCami.hasNext() && actual) {
+		 } // end while
+		 
+		/// Recorre los BlSearchWidget.
+                QList<BlSearchWidget *> jqcb = iface->findChildren<BlSearchWidget *>();
+                QListIterator<BlSearchWidget *> itjqcb ( jqcb );
 
-                QString nom = iCami.next();
-                QObject *fill = actual->findChild<QObject *>("mui_"+nom);
+                while ( itjqcb.hasNext() ) {
+                    BlSearchWidget *item = itjqcb.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->id();
+                    addDbField ( nombre, BlDbField::DbInt, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+		 } // end while
+		 
+		/// Recorre los BlComboBox.
+                QList<BlComboBox *> jqcb1 = iface->findChildren<BlComboBox *>();
+                QListIterator<BlComboBox *> itjqcb1 ( jqcb1 );
 
-                if (!fill) {
-               fill = actual->findChild<QObject *>(nom);
-                } // end if
+                while ( itjqcb1.hasNext() ) {
+                    BlComboBox *item = itjqcb1.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->id();
+                    addDbField ( nombre, BlDbField::DbInt, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+		 } // end while
+		 
+		 
+		  QVariant exportaRML = iface->property("exportaRML");
+		  if (exportaRML.isValid() ) {
+		    QStringList props = exportaRML.toStringList();
+		  
+		    QListIterator<QString> iProps(props);
+		    while (iProps.hasNext()) {
+			QString camp = iProps.next();
+			QStringList cami = camp.split(".");
+			QObject *actual=iface;
+			QListIterator<QString> iCami(cami);
+			
+			while(iCami.hasNext() && actual) {
 
-                if (fill) {
-               actual = fill;
-                } else {
-                
-               QVariant valor = actual->property(nom.toUtf8().data());
-               m_variables[camp] =valor.toString();
-               
-               if (valor.canConvert<QObject*>()) {
-                   actual = valor.value<QObject*>();
-               } else {
-                   actual = NULL;
-               } // end if
-            
-                } // end if
-                
-            } // end while
-            
-         } // end while
-         
-      } // end if
+			    QString nom = iCami.next();
+			    QObject *fill = actual->findChild<QObject *>("mui_"+nom);
+
+			    if (!fill) {
+			  fill = actual->findChild<QObject *>(nom);
+			    } // end if
+
+			    if (fill) {
+			  actual = fill;
+			    } else {
+			    
+			  QVariant valor = actual->property(nom.toUtf8().data());
+			  m_variables[camp] =valor.toString();
+			  
+			  if (valor.canConvert<QObject*>()) {
+			      actual = valor.value<QObject*>();
+			  } else {
+			      actual = NULL;
+			  } // end if
+			
+			    } // end if
+			    
+			} // end while
+			
+		    } // end while
+		    
+		  } // end if
 
             } // end if
             

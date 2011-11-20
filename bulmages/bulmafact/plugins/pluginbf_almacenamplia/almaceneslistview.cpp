@@ -177,7 +177,7 @@ void AlmacenesListView::presentar()
 /**
 \return
 **/
-QString AlmacenesListView::generaFiltro()
+const QString AlmacenesListView::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.

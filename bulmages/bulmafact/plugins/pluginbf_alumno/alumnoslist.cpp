@@ -133,7 +133,7 @@ void AlumnosList::presentar()
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString AlumnosList::generaFiltro()
+const QString AlumnosList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";

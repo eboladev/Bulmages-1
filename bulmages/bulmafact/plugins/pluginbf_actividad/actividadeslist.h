@@ -65,7 +65,7 @@ public:
     void setMainCompany ( BfCompany *comp );
     QString idactividad();
     void imprimir();
-    QString generaFiltro();
+    const QString generaFiltro();
     void remove();
     void crear();
     void editar ( int );

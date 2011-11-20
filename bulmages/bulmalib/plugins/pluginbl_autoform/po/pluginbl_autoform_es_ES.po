@@ -1,0 +1,49 @@
+# Catalan translations for PACKAGE package
+# Traduccions al català del paquet «PACKAGE».
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:05+0200\n"
+"PO-Revision-Date: 2009-05-06 21:07+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbl_bloqconf.cpp:141
+msgid "&Bloquear Configuraciones"
+msgstr ""
+
+#: pluginbl_bloqconf.cpp:155
+msgid "&Borrar Configuraciones"
+msgstr ""
+
+#: pluginbl_bloqconf.cpp:148
+msgid "&Desbloquear Configuraciones"
+msgstr ""
+
+#: pluginbl_bloqconf.cpp:136
+msgid "&Herramientas"
+msgstr "&Herramientas"
+
+#: pluginbl_bloqconf.cpp:142 pluginbl_bloqconf.cpp:143
+msgid "Bloquear Configuraciones"
+msgstr ""
+
+#: pluginbl_bloqconf.cpp:156 pluginbl_bloqconf.cpp:157
+msgid "Borrar Configuraciones"
+msgstr ""
+
+#: pluginbl_bloqconf.cpp:149 pluginbl_bloqconf.cpp:150
+msgid "Desbloquear Configuraciones"
+msgstr ""
+
+#~ msgid "Bloqueo Configuracion"
+#~ msgstr "Bloqueo de la configuración"

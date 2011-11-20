@@ -118,7 +118,7 @@ void PagosList::presentar()
 }
 
 
-QString PagosList::generaFiltro()
+const QString PagosList::generaFiltro()
 {
     BL_FUNC_DEBUG
 

@@ -102,8 +102,6 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         mui_idtiposocio->setAllowNull ( TRUE );
         mui_idtiposocio->setId ( "" );
 
-
-
 	mui_listrecibos->setMainCompany( mainCompany() );
 	mui_listrecibos->setDbTableName ( "recibo" );
 	mui_listrecibos->setDbFieldId ( "idrecibo" );

@@ -35,7 +35,7 @@
 
 #include <QCheckBox>
 #include <QInputDialog>
-#include <QUiLoader>
+#include "bluiloader.h"
 
 
 

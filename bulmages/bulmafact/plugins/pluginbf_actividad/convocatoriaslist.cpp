@@ -113,7 +113,7 @@ void ConvocatoriasList::presentar()
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
-QString ConvocatoriasList::generaFiltro()
+const QString ConvocatoriasList::generaFiltro()
 {
     BL_FUNC_DEBUG
     QString filtro = "";

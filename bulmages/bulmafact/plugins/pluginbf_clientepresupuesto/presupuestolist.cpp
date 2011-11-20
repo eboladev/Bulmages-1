@@ -236,7 +236,7 @@ void PresupuestoList::presentar()
 /**
 \return
 **/
-QString PresupuestoList::generaFiltro()
+const QString PresupuestoList::generaFiltro()
 {
     BL_FUNC_DEBUG
     /// Tratamiento de los filtros.

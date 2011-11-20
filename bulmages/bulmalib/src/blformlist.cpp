@@ -24,12 +24,15 @@
 #include "blmaincompany.h"
 
 #include "bldatesearch.h"
+#include "blcombobox.h"
+#include "blsearchwidget.h"
+#include "bldatesearch.h"
 
 #include <QFile>
 #include <QTextStream>
 #include <QDomDocument>
 #include <QDomNode>
-
+#include <QCheckBox>
 
 
 /**  procedimiento de QtScript
@@ -258,9 +261,70 @@ void BlFormList::imprimir()
 void BlFormList::presentar()
 {
     BL_FUNC_DEBUG
-    QString query = "SELECT * FROM " + m_listado->tableName();
+    QString query = "SELECT * FROM " + m_listado->tableName() + " WHERE 1=1 " + generaFiltro();
     m_listado->load ( query );
     
+}
+
+/** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado segun unas normas especificas
+ * Todas las busquedas tienen la clausula AND
+ * Los campos de tipo texto (excepto m_filtro) hace una busqueda LIKE sobre el campo seleccionado
+ * Los campos de tipo fecha (si contienen in) hacen una busqueda >= si contienen fin hacen una busqueda <=
+ * El resto de campos hacen una busqueda por igualdad.
+* .
+*/
+const QString BlFormList::generaFiltro()
+{
+    BL_FUNC_DEBUG
+    QString filtro = "";
+
+    QLineEdit * lfiltro = findChild<QLineEdit *>("m_filtro");
+    if (lfiltro->text() != "") {
+      /// Hacemos el filtrado like del campo m_filtro
+      filtro += m_listado->likeFilterSQL(lfiltro->text());
+    } // end if
+    
+    QList<BlComboBox *> l4 = findChildren<BlComboBox *>();
+    QListIterator<BlComboBox *> it4 ( l4 );
+    while ( it4.hasNext() ) {
+	BlComboBox * item = it4.next();
+	if ( item->objectName().startsWith ( "mui_" ) && item->id() != "") {
+	    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " = " + item->id();
+	} // end if
+    } // end while
+
+    QList<QCheckBox *> l6 = findChildren<QCheckBox *>();
+    QListIterator<QCheckBox *> it6 ( l6 );
+    while ( it6.hasNext() ) {
+	QCheckBox * item = it6.next();
+	if ( item->objectName().startsWith ( "mui_" ) && item->isChecked()) {
+	    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " = TRUE";
+	} // end if
+    } // end while
+
+      QList<BlDateSearch *> l7 = findChildren<BlDateSearch *>();
+      QListIterator<BlDateSearch *> it7 ( l7 );
+      while ( it7.hasNext() ) {
+	    BlDateSearch * item = it7.next();
+	    if ( item->objectName().startsWith ( "mui_" ) && item->text() != "" ) {
+		if (item->objectName().contains("fin")) {
+		    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " <= '" + item->text() + "'";
+		} else {
+		    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " >= '" + item->text() + "'";
+		} // end if
+	    } // end if
+      } // end while
+
+    QList<BlSearchWidget *> l9 = findChildren<BlSearchWidget *>();
+    QListIterator<BlSearchWidget *> it9 ( l9 );
+    while ( it9.hasNext() ) {
+	BlSearchWidget * item = it9.next();
+	if ( item->objectName().startsWith ( "mui_" ) && item->id() != "") {
+	    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " = " + item->id();
+	} // end if
+    } // end while
+
+    return ( filtro );
 }
 
 
@@ -431,6 +495,21 @@ void BlFormList::on_mui_list_customContextMenuRequested ( const QPoint &p )
     
 }
 
+void BlFormList::contextMenuEvent ( QContextMenuEvent * ) {
+  BL_FUNC_DEBUG
+  QMenu *popup = new QMenu ( this );
+
+/// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+  QAction *nombreobjeto = popup->addAction( objectName() );
+  nombreobjeto->setDisabled(TRUE);
+} // end if
+
+    QAction *opcion = popup->exec ( QCursor::pos() );
+    
+    
+}
+
 
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
     EN LA LLAMADA DE SUBMENUS
@@ -445,6 +524,14 @@ void BlFormList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
+    
+    /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+      QAction *nombreobjeto = popup->addAction( objectName() );
+      nombreobjeto->setDisabled(TRUE);
+    } // end if
+    
+    
     QAction *edit = popup->addAction ( _ ( "Editar" ) );
     QAction *del = popup->addAction ( _ ( "Borrar" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );

@@ -50,7 +50,7 @@ public:
     QString idalmacen();
     void setMainCompany ( BfCompany *comp );
     void imprimir();
-    QString generaFiltro();
+    const QString generaFiltro();
     void iniciaForm();
 
 signals:
