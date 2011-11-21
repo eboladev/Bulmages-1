@@ -60,11 +60,6 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
     
     /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
     QDomElement docElem = doc.documentElement();
-//     QDomElement principal = docElem.firstChildElement ( "FICHA" );
-//     /// Cogemos 
-//     QString tablename = principal.firstChildElement ( "TABLENAME" ).toElement().text();
-//     QString campoid = principal.firstChildElement ( "CAMPOID" ).toElement().text();
-
     
     QDomNodeList nodos = docElem.elementsByTagName ( "AUTOFORM" );
     for ( int i = 0; i < nodos.count(); i++ ) {
@@ -206,6 +201,10 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 			QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 			QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
 			QString fileconfig = e1.firstChildElement ( "FILECONFIG" ).toElement().text();
+			
+			QString allowinsert = e1.firstChildElement ( "ALLOWINSERT" ).toElement().text();
+			QString allowdelete = e1.firstChildElement ( "ALLOWDELETE" ).toElement().text();
+			QString setsorting = e1.firstChildElement ( "SETSORTING" ).toElement().text();
 			///
 			
 			subform->setDbTableName ( tablename );
@@ -257,14 +256,30 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 				    } // end if
 				    restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
 				} // end while
-
-				subform->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones,BlSubFormHeader::DbNone , nompheader );
+				int opciones = ( int ) BlSubFormHeader::DbNone;
+				QDomElement opci = header.firstChildElement ( "OPTIONSHEADER" );
+				while ( !opci.isNull() ) {
+				    QString topci = opci.text();
+				    if ( topci == "DBNONE" ) {
+					opciones |= BlSubFormHeader::DbNone;
+				    } else if ( topci == "DBREADONLY" ) {
+					opciones |= BlSubFormHeader::DbReadOnly;
+				    } else if ( topci == "DBHIDEVIEW" ) {
+					opciones |= BlSubFormHeader::DbHideView;
+				    } else if ( topci == "DBNOWRITE" ) {
+					opciones |= BlSubFormHeader::DbNoWrite;
+				    } else if ( topci == "DBDISABLEVIEW" ) {
+					opciones |= BlSubFormHeader::DbDisableView;
+				    } // end if
+				    opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
+				} // end while
+				subform->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
 				
 
 			    } // end for			
-			subform->setInsert ( FALSE );
-			subform->setDelete ( FALSE );
-			subform->setSortingEnabled ( TRUE );
+			subform->setInsert ( allowinsert == "TRUE" );
+			subform->setDelete ( allowdelete == "TRUE" );
+			subform->setSortingEnabled ( setsorting == "TRUE" );
 			subform->inicializar();
 			
 		    } // end if
@@ -360,8 +375,6 @@ int BlAutoForm::load ( QString id, bool paint) {
 	    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 	    
 	    if ( tablename == tableName()) {
-
-		
 		/// ======================== CARGAMOS LOS SUBFORMULARIOS
 		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
 		for ( int j = 0; j < nodoss.count(); j++ ) {
@@ -437,17 +450,13 @@ int BlAutoForm::afterSave () {
 				  
 				  int posicion = listavinculos.at(j1).indexOf("=");
 				  QString campo = listavinculos.at(j1).left(posicion);
-				  QString valor = listavinculos.at(j1).right(posicion);
+				  QString valor = listavinculos.at(j1).right(listavinculos.at(j1).size() - posicion -1);
 			    
 				  subform->setColumnValue ( campo, dbValue ( valor ) );
 			    } // end for
-			   
-			   subform->save();
+
+			    subform->save();
 			} // end if
-			///
-			///
-			
-			
 		    } // end if
 		} // end for
 		/// ======================== TERMINAMOS DE CARGAR LOS SUBFORMULARIOS

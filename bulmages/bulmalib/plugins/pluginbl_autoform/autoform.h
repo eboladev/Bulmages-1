@@ -64,5 +64,23 @@ public:
   void crear();
 };
 
+
+// Esta clase solo se utiliza en este archivo por lo que no la declaramos.
+class SubForm_AutoForm : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_AutoForm ( BlSubForm * );
+    ~SubForm_AutoForm();
+public slots:
+    void editarAlumno( QString);
+    void nuevoAlumno();
+    void seleccionarAlumno(BlSubForm *sub = NULL);
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
+
+
 #endif
 

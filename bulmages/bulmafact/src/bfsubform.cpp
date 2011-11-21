@@ -99,7 +99,6 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfSubForm_pressedAsterisk", this );
     if ( res != 0 ) {
-        
         return;
     } // end if
 

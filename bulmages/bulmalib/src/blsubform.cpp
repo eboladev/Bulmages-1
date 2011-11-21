@@ -3343,10 +3343,16 @@ void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
+void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     BL_FUNC_DEBUG
     
+    /// Establezco las variables de clase para que los plugins puedan operar.
+    m_registrolinea = rec;
+    m_campoactual = camp;
+
+    /// Disparamos los plugins.
+    g_plugins->lanza ( "BlSubForm_pressedAsterisk", this );
 }
 
 

@@ -17,7 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+#ifndef PLUGINBL_AUTOFORM
+#define PLUGINBL_AUTOFORM
 
 #include "QObject"
 #include "QMenu"
@@ -33,7 +34,12 @@
 #include "blaction.h"
 #include "blsearchwidget.h"
 
+
 extern "C" PLUGINBL_AUTOFORM_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_pressedAsterisk(BlSubForm *);
+extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+
+#endif

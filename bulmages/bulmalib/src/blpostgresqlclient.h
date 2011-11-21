@@ -151,7 +151,7 @@ public:
     void cerrar();
     /// Devuelve el nombre del campo de una columna determinada de la consulta.
     QString fieldName ( int );
-    /// Devuelve el n&uacute;mero de columna que tiene una columna referenciada por el nombre.
+    /// Devuelve el n&uacute;mero de columna que tiene una columna referenciada por el nombre. Si no existe devuelve -1
     int numcampo ( const QString & );
     /// Devuelve el n&uacute;mero total de columnas que tiene la consulta.
     int numcampos();
