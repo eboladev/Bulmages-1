@@ -74,9 +74,11 @@ public:
     SubForm_AutoForm ( BlSubForm * );
     ~SubForm_AutoForm();
 public slots:
-    void editarAlumno( QString);
-    void nuevoAlumno();
-    void seleccionarAlumno(BlSubForm *sub = NULL);
+    void editarElemento( QString);
+    void nuevoElemento();
+    void nuevoElemento(const QString &tablename);
+//     void seleccionarElemento(BlSubForm *sub = NULL);
+    void seleccionarElemento(BlSubForm *sub = NULL, const QString &tablename="");
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };

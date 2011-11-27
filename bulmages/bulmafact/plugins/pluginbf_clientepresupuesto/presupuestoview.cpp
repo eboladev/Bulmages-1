@@ -359,7 +359,7 @@ void PresupuestoView::on_mui_idalmacen_valueChanged ( QString id )
 int PresupuestoView::beforeDelete()
 {
     BL_FUNC_DEBUG
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    /// Disparamos los plugins.
     g_plugins->lanza ( "Presupuesto_beforeDelete", this );
     m_listalineas->remove();
     m_listadescuentos->remove();
@@ -401,7 +401,7 @@ int PresupuestoView::afterSave()
 
     m_listalineas->save();
     m_listadescuentos->save();
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    /// Disparamos los plugins.
     g_plugins->lanza ( "Presupuesto_afterSave_Post", this );
 
     

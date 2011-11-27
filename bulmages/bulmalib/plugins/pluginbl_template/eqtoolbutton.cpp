@@ -55,10 +55,6 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
     
-
-    
-    
-    
     QFrame *plugbotones = m_BlForm->findChild<QFrame *>("mui_plugbotones");
     if (plugbotones) {
 	QHBoxLayout *m_hboxLayout1 = plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -169,7 +165,6 @@ void EQToolButton::pintaMenu ( QMenu *menu )
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
 
-
         QFile file;
         file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
@@ -185,7 +180,6 @@ void EQToolButton::pintaMenu ( QMenu *menu )
             titulo = rx1.cap ( 1 );
         } // end while
 
-
         /// Buscamos Query's por tratar
         QString icon = ":/Images/template2rml.png";
         QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
@@ -194,11 +188,9 @@ void EQToolButton::pintaMenu ( QMenu *menu )
             icon = rx2.cap ( 1 );
         } // end while
 
-
         QAction *accion = ajust->addAction (QIcon(icon), titulo );
         accion->setObjectName ( fileInfo.fileName() );
     }
-    
 }
 
 
@@ -234,8 +226,6 @@ void EQToolButton::trataMenu ( QAction *action )
 	    } // end if
 	} // end for
     } // end if
-    
-    
 }
 
 

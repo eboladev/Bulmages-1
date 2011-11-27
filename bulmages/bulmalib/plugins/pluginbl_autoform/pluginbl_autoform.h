@@ -41,5 +41,6 @@ extern "C" PLUGINBL_AUTOFORM_EXPORT int BcCompany_createMainWindows_Post ( BcCom
 extern "C" PLUGINBL_AUTOFORM_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_pressedAsterisk(BlSubForm *);
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 #endif

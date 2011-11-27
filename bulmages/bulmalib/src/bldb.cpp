@@ -929,6 +929,7 @@ int BlDbRecord::load ( QString id )
 
 void BlDbRecord::substrConf ( QString &buff )
 {
+    BL_FUNC_DEBUG
     ///\TODO: Este tratamiento esta repetido en BlForm::parseTags y en PedidoProveedorView::imprimir.
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
@@ -1003,7 +1004,6 @@ QString BlDbRecord::story ( void )
 int BlDbRecord::generateRML ( const QString &arch )
 {
     BL_FUNC_DEBUG
-
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BlDbRecord_generateRML", this );
     if ( res != 0 ) {
@@ -1171,21 +1171,19 @@ if (tipoescape != 0) {
     return 1;
 }
 
-QString BlDbRecord::templateName ( void )
-{
+QString BlDbRecord::templateName ( void ) {
+    BL_FUNC_DEBUG
+	  QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + tableName() + ".rml");
+	  if (f.exists()) {
+	      return ( tableName() );
+	  } // end if
     return QString ( "ficha" );
 }
 
 
-int BlDbRecord::generateRML ( void )
-{
-  
-    QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + templateName() + ".rml");
-    if (f.exists()) {
-	return generateRML ( templateName() + ".rml" );
-    } else {
-	return generateRML ( "ficha.rml" );
-    } // end if
+int BlDbRecord::generateRML ( void ) {
+    BL_FUNC_DEBUG
+    return generateRML ( templateName() + ".rml" );
 }
 
 /// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
@@ -1200,8 +1198,6 @@ void BlDbRecord::imprimir() {
       QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + templateName() + ".rml");
       if (f.exists()) {
 	  blCreateAndLoadPDF ( templateName() );
-      } else {
-	  blCreateAndLoadPDF ( "ficha" );
       } // end if
     } // end if
 }

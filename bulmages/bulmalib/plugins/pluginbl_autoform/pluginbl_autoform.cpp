@@ -595,9 +595,6 @@ BlAutoFormList * genBlAutoFormList (const QString &tname )
 }
 
 
-
-/// --------------------------------------------------------------
-/// --------- Implemento la edicion de alumnos -----------------
 /// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
 /// Aparezca el identificador de alumno como elemento y permite de forma sencilla
 /// La creacion, la edicion, y la seleccion.
@@ -630,18 +627,86 @@ SubForm_AutoForm::~SubForm_AutoForm()
 void SubForm_AutoForm::s_pintaMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
+
     BlSubForm *sub = ( BlSubForm * ) parent();
-    BlSubFormHeader *header = sub->header ( "nombrealumno" );
-    if ( header ) {
-        menu->addSeparator();
-        menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno.png" ), _ ( "Nuevo alumno" ) );
-        QString idalumno = sub->dbValue ( "idalumno" );
-        if ( idalumno != "" ) menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno.png" ), _ ( "Editar alumno" ) );
-        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
-            menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ), _ ( "Seleccionar alumno" ) );
-        } // end if
+
+    /// Buscamos BLSUBFORMSEARCHEDIT que se correspondan con el campo sobre el que hemos pulsado
+    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
+    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        blMsgInfo("Error al abrir el archivo de autoformularios");
+        return;
     } // end if
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+	blMsgInfo("Error al parsear el archivo de autoformularios");
+        return;
+    } // end if
+    file.close();
     
+    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
+    QDomElement docElem = doc.documentElement();
+ 
+    QDomNodeList autoformlists = docElem.elementsByTagName ( "SUBFORMSEARCHEDIT" );
+    for ( int i = 0; i < autoformlists.count(); i++ ) {
+        QDomNode autoform = autoformlists.item ( i );
+        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+	    QString nomcampo = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+	    QString blautoformlist = e1.firstChildElement ( "BLAUTOFORMLIST" ).toElement().text();
+	    QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+	    QString vinculos = e1.firstChildElement ( "VINCULOS" ).toElement().text();
+
+	    BlSubFormHeader *header = sub->header ( nomcampo );
+	    if ( header ) {
+	      
+	      
+		  SubForm_AutoForm *subformods = new SubForm_AutoForm ( sub );  
+		  /// Buscamos el AutoForm que contenga la tabla
+		  QDomNodeList autoforms = docElem.elementsByTagName ( "AUTOFORM" );
+		  for ( int i = 0; i < autoforms.count(); i++ ) {
+		      QDomNode autoform = autoforms.item ( i );
+		      QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+		      if ( !e1.isNull() ) { /// the node was really an element.
+			  QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
+			  QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+			  QString title = e1.firstChildElement ( "TITLE" ).toElement().text();
+			  QString tableid = e1.firstChildElement ( "TABLEID" ).toElement().text();
+			  if (tablename == blautoformlist) {
+			      menu->addSeparator();
+			      QAction *act = menu->addAction ( QIcon ( fileicon ),  _("Nuevo ") + title);
+			      act->setObjectName(tablename + "N");
+			      QString idalumno = sub->dbValue ( tableid );
+			      if ( idalumno != "" ) {
+				  QAction *act = menu->addAction ( QIcon ( fileicon ), _ ( "Editar " ) +title );
+				  act->setObjectName(tablename + "E");
+			      } // end if
+			  } // end if
+		      } // end if
+		  } // end for
+
+
+		  /// Buscamos el AutoForm que contenga la tabla
+		  QDomNodeList autoformls = docElem.elementsByTagName ( "AUTOFORMLIST" );
+		  for ( int i = 0; i < autoformls.count(); i++ ) {
+		      QDomNode autoform = autoformls.item ( i );
+		      QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+		      if ( !e1.isNull() ) { /// the node was really an element.
+			  QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
+			  QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+			  QString title = e1.firstChildElement ( "TITLE" ).toElement().text();
+			  if (tablename == blautoformlist) {
+			      if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+				  QAction *act = menu->addAction ( QIcon ( fileicon ), _ ( "Seleccionar " ) + title );
+				  act->setObjectName(tablename + "S");
+			      } // end if
+			  } // end if
+		      } // end if
+		  } // end for
+	    } // end if
+	} // end if
+    } // end for    
 }
 
 
@@ -653,24 +718,35 @@ void SubForm_AutoForm::s_trataMenu ( QAction *action )
 {
     BL_FUNC_DEBUG
     BlSubForm *sub = ( BlSubForm * ) parent();
-    if ( action->text() == _ ( "Editar alumno" ) ) {
-        QString idalumno = sub->dbValue ( "idalumno" );
-        if ( idalumno != "" )
-            editarAlumno ( idalumno );
-    } else if ( action->text() == _ ( "Seleccionar alumno" ) ) {
-        seleccionarAlumno ( sub );
-    } else if ( action->text() == _ ( "Nuevo alumno" )  ) {
-        nuevoAlumno();
+    QString opc = action->text();
+    QString tablename = action->objectName().left(action->objectName().size() - 1 );
+    if ( opc.startsWith (_( "Editar " )) ) {
+        QString id = sub->dbValue ( sub->dbFieldId() );
+        if ( id != "" ) {
+// 	   QString title = opc.right(opc.size()- QString(_("Editar ")).size());
+            BlAutoForm * bud = genBlAutoForm (tablename);
+            if ( bud->load ( id ) ) {
+                delete bud;
+                return;
+            } // end if
+            g_emp ->m_pWorkspace->addSubWindow ( bud );
+            bud->show();
+	} // end if
+    } else if ( opc.startsWith (_( "Seleccionar " )) ) {
+//         QString title = opc.right(opc.size()- QString(_("Seleccionar ")).size());
+        seleccionarElemento(sub, tablename);
+    } else if ( opc.startsWith (_ ( "Nuevo " ))  ) {
+//         QString title = opc.right(opc.size()- QString(_("Nuevo ")).size());
+	nuevoElemento(tablename);
+      
     } // end if
-
-    
 }
 
 
 ///
 /**
 **/
-void SubForm_AutoForm::editarAlumno ( QString idalumno )
+void SubForm_AutoForm::editarElemento ( QString idalumno )
 {
     BL_FUNC_DEBUG
 
@@ -682,11 +758,22 @@ void SubForm_AutoForm::editarAlumno ( QString idalumno )
 ///
 /**
 **/
-void SubForm_AutoForm::nuevoAlumno( )
+void SubForm_AutoForm::nuevoElemento( )
 {
     BL_FUNC_DEBUG
     QString tablename = sender()->objectName().right(sender()->objectName().size() -4 );
 
+    nuevoElemento(tablename);
+    
+}
+
+
+///
+/**
+**/
+void SubForm_AutoForm::nuevoElemento( const QString &tablename )
+{
+    BL_FUNC_DEBUG
 
     BlSubForm * sub= (BlSubForm *) parent();
     
@@ -790,32 +877,24 @@ void SubForm_AutoForm::nuevoAlumno( )
 					delete cur;
 				    } // end if
 				    delete formulario;
-
-				    
 			} // end if
 	      
 	    } // end if
 	} // end if
-    } // end for
-
-
-    
-
-
-
-    
-    
+    } // end for 
 }
+
+
 
 
 ///
 /**
 **/
-void SubForm_AutoForm::seleccionarAlumno ( BlSubForm *sub )
+void SubForm_AutoForm::seleccionarElemento ( BlSubForm *sub, const QString &tablename )
 {
     BL_FUNC_DEBUG
 
-    QString tablename = sender()->objectName().right(sender()->objectName().size() -5 );
+    if (tablename == "") QString tablename = sender()->objectName().right(sender()->objectName().size() -5 );
 
     if (!sub) sub= (BlSubForm *) parent();
     
@@ -942,7 +1021,6 @@ void SubForm_AutoForm::seleccionarAlumno ( BlSubForm *sub )
 
 }
 
-
 ///
 /**
 \param sub
@@ -1029,7 +1107,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 			      sel->setIcon ( QIcon ( fileicon ) );
 			      sel->setIconSize ( QSize ( 18, 18 ) );    
 			      m_hboxLayout1->addWidget ( sel );
-			      sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoAlumno()));
+			      sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoElemento()));
 			  } // end if
 		      } // end if
 		  } // end for
@@ -1053,7 +1131,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 			      sel1->setIcon ( QIcon ( fileicon ) );
 			      sel1->setIconSize ( QSize ( 18, 18 ) );
 			      m_hboxLayout1->addWidget ( sel1 );
-			      sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarAlumno()));
+			      sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarElemento()));
 			  } // end if
 		      } // end if
 		  } // end for

@@ -187,7 +187,7 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 		} // end for
 		
 		
-		/// ======================== CARGAMOS LOS SUBFORMULARIOS
+		/// Cargamos los subformularios
 		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
 		for ( int j = 0; j < nodoss.count(); j++ ) {
 		    QDomNode ventana = nodoss.item ( j );
@@ -284,7 +284,6 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 			
 		    } // end if
 		} // end for
-		/// ======================== TERMINAMOS DE CARGAR LOS SUBFORMULARIOS
 		
 		formulario->launch();
 	    } // end if
@@ -375,7 +374,7 @@ int BlAutoForm::load ( QString id, bool paint) {
 	    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 	    
 	    if ( tablename == tableName()) {
-		/// ======================== CARGAMOS LOS SUBFORMULARIOS
+		/// Cargamos los subformularios
 		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
 		for ( int j = 0; j < nodoss.count(); j++ ) {
 		    QDomNode ventana = nodoss.item ( j );
@@ -393,7 +392,7 @@ int BlAutoForm::load ( QString id, bool paint) {
 			} // end if
 		    } // end if
 		} // end for
-		/// ======================== TERMINAMOS DE CARGAR LOS SUBFORMULARIOS
+
 	    } // end if
 	} // end if
     } // end for
@@ -432,7 +431,7 @@ int BlAutoForm::afterSave () {
 	    if ( tablename == tableName()) {
 
 		
-		/// ======================== CARGAMOS LOS SUBFORMULARIOS
+		/// Cargamos los subformularios
 		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
 		for ( int j = 0; j < nodoss.count(); j++ ) {
 		    QDomNode ventana = nodoss.item ( j );
@@ -459,7 +458,7 @@ int BlAutoForm::afterSave () {
 			} // end if
 		    } // end if
 		} // end for
-		/// ======================== TERMINAMOS DE CARGAR LOS SUBFORMULARIOS
+
 	    } // end if
 	} // end if
     } // end for
@@ -504,14 +503,13 @@ BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlag
 
 void BlAutoFormList::launch() {
     BL_FUNC_DEBUG
-//     mdb_idcliente = "";
     if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
     hideBusqueda();
     
     
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos ( "cliente" );
+    trataPermisos ( mui_list->tableName() );
     
     /// Cargamos los filtros guardados.
 //     cargaFiltrosXML();
