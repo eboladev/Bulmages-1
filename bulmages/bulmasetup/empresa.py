@@ -50,8 +50,11 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         try:
             conn = psycopg2.connect("dbname='template1' user='root' password='password'")
         except:
-            print "Error"
-            sys.exit()
+	    # Get the most recent exception
+	    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
+	    # Exit the script and print an error telling what happened.
+	    sys.exit("Database connection failed!\n ->%s" % (exceptionValue))
+
 
         conn.close()
 
