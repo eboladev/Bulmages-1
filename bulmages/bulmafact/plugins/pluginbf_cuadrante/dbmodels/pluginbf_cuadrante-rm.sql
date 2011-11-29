@@ -55,12 +55,12 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idcuadrante'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idcuadrante'';
 	IF FOUND THEN
-      DROP TABLE horario;
-      DROP TABLE cuadrante;
+		DROP TABLE horario;
+		DROP TABLE cuadrante;
 
 		ALTER TABLE almacen DROP COLUMN aperturaalmacen;
 		ALTER TABLE almacen DROP COLUMN cierrealmacen;
@@ -83,11 +83,11 @@ SELECT drop_if_exists_proc ('ncuadrante','');
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idausencia'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idausencia'';
 	IF FOUND THEN
-      DROP TABLE ausencia;
+	  DROP TABLE ausencia;
 	END IF;
 
 	RETURN 0;
@@ -104,9 +104,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
 	IF FOUND THEN
 		DELETE FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
 	END IF;

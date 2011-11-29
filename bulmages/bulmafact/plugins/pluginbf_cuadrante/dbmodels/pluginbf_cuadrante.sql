@@ -55,9 +55,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idcuadrante'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idcuadrante'';
 	IF NOT FOUND THEN
 		CREATE TABLE cuadrante (
 			idcuadrante serial PRIMARY KEY,
@@ -99,14 +99,14 @@ SELECT drop_if_exists_proc ('ncuadrante','');
 CREATE OR REPLACE FUNCTION ncuadrante() returns TRIGGER
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
 BEGIN
     IF NEW.aperturacuadrante IS NULL THEN
-	SELECT INTO as * FROM almacen WHERE idalmacen = NEW.idalmacen;
-	NEW.aperturacuadrante = as.aperturaalmacen;
-	NEW.cierrecuadrante = as.cierrealmacen;
-	NEW.apertura1cuadrante = as.apertura1almacen;
-	NEW.cierre1cuadrante = as.cierre1almacen;
+	SELECT INTO bs * FROM almacen WHERE idalmacen = NEW.idalmacen;
+	NEW.aperturacuadrante = bs.aperturaalmacen;
+	NEW.cierrecuadrante = bs.cierrealmacen;
+	NEW.apertura1cuadrante = bs.apertura1almacen;
+	NEW.cierre1cuadrante = bs.cierre1almacen;
     END IF;
     RETURN NEW;
 END;
@@ -123,9 +123,9 @@ CREATE TRIGGER cuadrante_trigger
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idausencia'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idausencia'';
 	IF NOT FOUND THEN
 		CREATE TABLE ausencia (
 			idausencia serial PRIMARY KEY,
@@ -151,9 +151,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.9.3-0002'' WHERE nombre=''PluginBf_Cuadrante'';
 	ELSE
