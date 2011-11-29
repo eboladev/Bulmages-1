@@ -62,22 +62,7 @@ BEGIN;
 \echo -n '::Funciones auxiliares ...'
 -- Esta Funcion devuelve una fecha si la fecha es correcta o NULL si esta no es correcta.
 -- Pensada para usar en conjuncion con COALESCE y no generar un error de SQL
-CREATE OR REPLACE FUNCTION BgValidDate(CHAR) RETURNS date AS $$
- DECLARE
-     result DATE;
-      res BOOL;
-     validFormat TEXT := 'DD/MM/YYYY';
- BEGIN
-    result := NULL;
-     SELECT TO_CHAR(TO_DATE($1,validFormat),validFormat) = $1
-     INTO res;
-     if (res = TRUE) THEN
-	RETURN $1::DATE;
-     END IF;
-     RETURN result;
- END;
- $$ LANGUAGE plpgsql;
- 
+
  
 -- ** configuracion **
 -- En esta tabla se guardan parametros que el programa va a utilizar.
@@ -303,14 +288,14 @@ CREATE TABLE familia (
 CREATE FUNCTION calculacodigocompletofamilia() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
     codigocompleto character varying(50);
 
 BEGIN
     codigocompleto := NEW.codigofamilia;
-    SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
+    SELECT INTO bs codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
     IF FOUND THEN
-	codigocompleto := as.codigocompletofamilia || codigocompleto;
+   codigocompleto := bs.codigocompletofamilia || codigocompleto;
     END IF;
     NEW.codigocompletofamilia := codigocompleto;
     RETURN NEW;
@@ -419,17 +404,17 @@ END
 CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
 AS '
 DECLARE
-    as_ RECORD;
+    bs RECORD;
     codigocompleto character varying(100);
     codnumeric integer;
 
 BEGIN
     -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
     IF NEW.codarticulo = '''' THEN
-	SELECT INTO as_ max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+   SELECT INTO bs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 	IF FOUND THEN
-	    IF is_number(as_.m) THEN
-		codnumeric := to_number(as_.m);
+       IF is_number(bs.m) THEN
+       codnumeric := to_number(bs.m);
 		codnumeric := codnumeric +1;
 		NEW.codarticulo := CAST (codnumeric AS varchar);
 		WHILE length(NEW.codarticulo) < 4 LOOP
@@ -444,9 +429,9 @@ BEGIN
     END IF; 
 
     codigocompleto := NEW.codarticulo;
-    SELECT INTO as_ codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+    SELECT INTO bs codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
     IF FOUND THEN
-	codigocompleto := as_.codigocompletofamilia || codigocompleto;
+   codigocompleto := bs.codigocompletofamilia || codigocompleto;
     END IF;
     NEW.codigocompletoarticulo := codigocompleto;
     RETURN NEW;
@@ -531,16 +516,16 @@ DECLARE
     idarticulo ALIAS FOR $1;
     idclient ALIAS FOR $2;
     idalmacen ALIAS FOR $3;
-    as RECORD;
+    bs RECORD;
 
 BEGIN
-    SELECT INTO AS pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente = idclient);
+    SELECT INTO bs pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente = idclient);
     IF FOUND THEN
-	RETURN as.pvpltarifa;
+   RETURN bs.pvpltarifa;
     END IF;
-    SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+    SELECT INTO bs pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
     IF FOUND THEN
-	RETURN as.pvparticulo;
+   RETURN bs.pvparticulo;
     END IF;
     RETURN 0.0;
 END;
@@ -711,16 +696,16 @@ CREATE TABLE cobro (
 CREATE FUNCTION restriccionescobro() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fechacobro IS NULL THEN
 	NEW.fechacobro := now();
     END IF;
     IF NEW.refcobro IS NULL OR NEW.refcobro = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refcobro := asd.m;
+       NEW.refcobro := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -760,16 +745,16 @@ CREATE TABLE pago (
 CREATE FUNCTION restriccionespago() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fechapago IS NULL THEN
 	NEW.fechapago := now();
     END IF;
     IF NEW.refpago IS NULL OR NEW.refpago = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refpago := asd.m;
+       NEW.refpago := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -929,24 +914,24 @@ CREATE TABLE presupuesto (
 CREATE FUNCTION restriccionespresupuesto() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fpresupuesto IS NULL THEN
 	NEW.fpresupuesto := now();
     END IF;
     IF NEW.numpresupuesto IS NULL THEN
-	SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
-	IF asd.m IS NOT NULL THEN	
-	    NEW.numpresupuesto := asd.m + 1;
+   SELECT INTO bs max(numpresupuesto) AS m FROM presupuesto;
+   IF bs.m IS NOT NULL THEN
+       NEW.numpresupuesto := bs.m + 1;
 	ELSE
 	    NEW.numpresupuesto := 1;
 	END IF;			
     END IF;
     IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refpresupuesto := asd.m;
+       NEW.refpresupuesto := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -1112,24 +1097,24 @@ CREATE TABLE pedidocliente (
 CREATE FUNCTION restriccionespedidocliente() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fechapedidocliente IS NULL THEN
 	NEW.fechapedidocliente := now();
     END IF;
     IF NEW.numpedidocliente IS NULL THEN
-	SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
-	IF asd.m IS NOT NULL THEN
-	    NEW.numpedidocliente := asd.m + 1;
+   SELECT INTO bs max(numpedidocliente) AS m FROM pedidocliente;
+   IF bs.m IS NOT NULL THEN
+       NEW.numpedidocliente := bs.m + 1;
 	ELSE
 	    NEW.numpedidocliente := 1;
 	END IF;
     END IF;
     IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refpedidocliente := asd.m;
+       NEW.refpedidocliente := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -1301,24 +1286,24 @@ CREATE TABLE factura (
 CREATE FUNCTION restriccionesfactura() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.ffactura IS NULL THEN
 	NEW.ffactura := now();
     END IF;
     IF NEW.numfactura IS NULL THEN
-	SELECT INTO asd max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
-	IF asd.m IS NOT NULL THEN
-	    NEW.numfactura := asd.m + 1;
+   SELECT INTO bs max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
+   IF bs.m IS NOT NULL THEN
+       NEW.numfactura := bs.m + 1;
 	ELSE
 	    NEW.numfactura := 1;
 	END IF;
     END IF;
     IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() as m;
 	IF FOUND THEN
-	    NEW.reffactura := asd.m;
+       NEW.reffactura := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -1376,7 +1361,7 @@ CREATE TABLE lfactura (
 CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
     reg RECORD;
 
 BEGIN
@@ -1384,9 +1369,9 @@ BEGIN
 	RAISE EXCEPTION ''ARTICULO INVALIDO'';
 	return OLD;
     END IF;
-    FOR asd IN SELECT * FROM articulo WHERE idarticulo = NEW.idarticulo LOOP
+    FOR bs IN SELECT * FROM articulo WHERE idarticulo = NEW.idarticulo LOOP
 	IF NEW.desclfactura IS NULL THEN
-	    NEW.desclfactura := asd.nomarticulo;
+       NEW.desclfactura := bs.nomarticulo;
 	END IF;
 	IF NEW.cantlfactura IS NULL THEN
 	    NEW.cantlfactura := 1;
@@ -1614,16 +1599,16 @@ CREATE TABLE facturap (
 CREATE FUNCTION restriccionesfacturap() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.ffacturap IS NULL THEN
 	NEW.ffacturap := now();
     END IF;
     IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.reffacturap := asd.m;
+       NEW.reffacturap := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -1881,7 +1866,7 @@ CREATE TABLE albaranp (
 CREATE FUNCTION restriccionesalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fechaalbaranp IS NULL THEN
@@ -1891,9 +1876,9 @@ BEGIN
 	NEW.numalbaranp := NEW.idalbaranp;
     END IF;
     IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refalbaranp := asd.m;
+       NEW.refalbaranp := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -2135,7 +2120,7 @@ END;
 CREATE FUNCTION crearef() RETURNS character varying(15)
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
     result character varying(15);
     efound boolean;
 
@@ -2144,39 +2129,39 @@ BEGIN
     WHILE efound = FALSE LOOP
 	result := random_string(6);
 	efound := TRUE;
-	SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+   SELECT INTO bs idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;
-	SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+   SELECT INTO bs idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;
-	SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result;
+   SELECT INTO bs idalbaran FROM albaran WHERE refalbaran = result;
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;	
-	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
+   SELECT INTO bs idfactura FROM factura WHERE reffactura = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idcobro FROM cobro WHERE refcobro = result;
+   SELECT INTO bs idcobro FROM cobro WHERE refcobro = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+   SELECT INTO bs idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result;
+   SELECT INTO bs idalbaranp FROM albaranp WHERE refalbaranp = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result;
+   SELECT INTO bs idfacturap FROM facturap WHERE reffacturap = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idpago FROM pago WHERE refpago = result;
+   SELECT INTO bs idpago FROM pago WHERE refpago = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
@@ -2240,24 +2225,24 @@ CREATE TABLE albaran (
 CREATE FUNCTION restriccionesalbaran() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fechaalbaran IS NULL THEN
 	NEW.fechaalbaran := now();
     END IF;
     IF NEW.numalbaran IS NULL THEN
-	SELECT INTO asd max(numalbaran) AS m FROM albaran;
-	IF asd.m IS NOT NULL THEN
-	    NEW.numalbaran := asd.m + 1;
+   SELECT INTO bs max(numalbaran) AS m FROM albaran;
+   IF bs.m IS NOT NULL THEN
+       NEW.numalbaran := bs.m + 1;
 	ELSE
 	    NEW.numalbaran := 1;
 	END IF;
     END IF;
     IF NEW.refalbaran IS NULL OR NEW.refalbaran = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refalbaran := asd.m;
+       NEW.refalbaran := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -2442,12 +2427,12 @@ CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
     idarticulo ALIAS FOR $1;
-    as RECORD;
+    bs RECORD;
 
 BEGIN
-    SELECT INTO AS * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+    SELECT INTO bs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
     IF FOUND THEN
-	RETURN as.porcentasa_iva;
+   RETURN bs.porcentasa_iva;
     END IF;
     RETURN 0.0;
 END;
@@ -2459,12 +2444,12 @@ CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
     idarticulo ALIAS FOR $1;
-    as RECORD;
+    bs RECORD;
 
 BEGIN
-    SELECT INTO AS pvparticulo FROM articulo WHERE articulo.idarticulo = idarticulo;
+    SELECT INTO bs pvparticulo FROM articulo WHERE articulo.idarticulo = idarticulo;
     IF FOUND THEN
-	RETURN as.pvparticulo;
+   RETURN bs.pvparticulo;
     END IF;
     RETURN 0.0;
 END;
@@ -2512,7 +2497,7 @@ CREATE TABLE pedidoproveedor (
 CREATE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.fechapedidoproveedor IS NULL THEN
@@ -2522,9 +2507,9 @@ BEGIN
 	NEW.numpedidoproveedor := NEW.idpedidoproveedor;
     END IF;
     IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
-	SELECT INTO asd crearef() AS m;
+   SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refpedidoproveedor := asd.m;
+       NEW.refpedidoproveedor := bs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -3078,13 +3063,13 @@ CREATE OR REPLACE FUNCTION modificadostock() RETURNS "trigger"
 AS '
 DECLARE 
     cant numeric;
-    as RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.stockarticulo <> OLD.stockarticulo THEN
 	cant := NEW.stockarticulo - OLD.stockarticulo;
-	FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-	    UPDATE articulo SET stockarticulo = stockarticulo + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente;
+   FOR bs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+      UPDATE articulo SET stockarticulo = stockarticulo + cant * bs.cantcomparticulo WHERE idarticulo = bs.idcomponente;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -3107,6 +3092,24 @@ CREATE OR REPLACE FUNCTION sinacentos (text) RETURNS text AS $$
 $$ LANGUAGE sql;
 
 
+\echo -n ':: '
+
+CREATE OR REPLACE FUNCTION BgValidDate(CHAR) RETURNS date AS $$
+ DECLARE
+     result DATE;
+      res BOOL;
+     validFormat TEXT := 'DD/MM/YYYY';
+ BEGIN
+    result := NULL;
+     SELECT TO_CHAR(TO_DATE($1,validFormat),validFormat) = $1
+     INTO res;
+     if (res = TRUE) THEN
+   RETURN $1::DATE;
+     END IF;
+     RETURN result;
+ END;
+ $$ LANGUAGE plpgsql;
+
 
 
 \echo -n ':: '
@@ -3121,13 +3124,13 @@ COMMIT;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+   bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+   SELECT INTO bs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.13.1-0002'' WHERE nombre = ''DatabaseRevision'';
+       UPDATE CONFIGURACION SET valor = ''0.13.1-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0002'');
+       INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0003'');
 	END IF;
 	RETURN 0;
 END;
@@ -3135,4 +3138,3 @@ END;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
 \echo "Actualizada la revision de la base de datos a la version 0.13.1"
-
