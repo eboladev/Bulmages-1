@@ -1,13 +1,10 @@
 *.cmake
 *.conf
-*.css
 *.depends
 *.pot_list
 actualizabulmacont
 actualizabulmafact
-applications
 bgtrml2pdf.py
-blconfig.h
 bulmasetup.py
 CMakeCache.txt
 CMakeFiles
@@ -20,6 +17,5 @@ installbulmages-db
 install_manifest.txt
 local_blI18n.h
 Makefile
-menu
 update_message_catalog_lang
 version
