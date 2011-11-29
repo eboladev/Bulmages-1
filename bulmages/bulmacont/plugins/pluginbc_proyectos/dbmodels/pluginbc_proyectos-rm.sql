@@ -55,13 +55,13 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idpresupuestoc'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idpresupuestoc'';
 	IF FOUND THEN
-      DROP TABLE lgaspresupuestoc;
-      DROP TABLE lingpresuupestoc;
-      DROP TABLE presupuestoc;
+	    DROP TABLE lgaspresupuestoc;
+	    DROP TABLE lingpresupuestoc;
+	    DROP TABLE presupuestoc;
 	END IF;
 
 	RETURN 0;
