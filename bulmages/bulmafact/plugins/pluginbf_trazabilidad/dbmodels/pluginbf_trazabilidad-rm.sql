@@ -55,9 +55,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''lotelalbaranp'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''lotelalbaranp'';
 	IF FOUND THEN
 		ALTER TABLE lalbaranp DROP COLUMN lotelalbaranp;
 		ALTER TABLE lfacturap DROP COLUMN lotelfacturap;
@@ -121,9 +121,9 @@ SELECT drop_if_exists_proc ('trazabilidadalbarand','');
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Trazabilidad'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Trazabilidad'';
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Trazabilidad'';
 	END IF;

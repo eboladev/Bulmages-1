@@ -103,9 +103,9 @@ SELECT drop_if_exists_proc('restriccionescontrato', '');
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Contrato'';
 	END IF;

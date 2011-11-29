@@ -60,10 +60,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
 
-	SELECT INTO as * FROM partida;
+	SELECT INTO bs * FROM partida;
 	IF NOT FOUND THEN
 
 		

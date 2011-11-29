@@ -95,12 +95,12 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
 $BODY$
 DECLARE
-	asf RECORD;
+	bs RECORD;
 	txt TEXT;
 BEGIN
-	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
-	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
-	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO asd idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
+	SELECT INTO bs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || bs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO bs idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
 	RAISE NOTICE '%', txt;
 	EXECUTE txt;
 	RETURN 0;
@@ -121,13 +121,13 @@ CREATE OR REPLACE FUNCTION restriccionescontrato()
 RETURNS "trigger" AS
 $BODY$
 DECLARE
-asd RECORD;
+bs RECORD;
 
 BEGIN
 IF NEW.refcontrato IS NULL OR NEW.refcontrato = '' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO bs crearef() AS m;
 	IF FOUND THEN
-	NEW.refcontrato := asd.m;
+	NEW.refcontrato := bs.m;
 	END IF;
 END IF;
 RETURN NEW;
@@ -147,9 +147,9 @@ EXECUTE PROCEDURE restriccionescontrato();
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Contrato'';
 	ELSE
