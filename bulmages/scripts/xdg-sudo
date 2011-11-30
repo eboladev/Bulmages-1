@@ -57,9 +57,9 @@ def main():
             useGnome = True
         # really run it
         if useGnome:
-            os.execv(gtksudo,["gksudo", "bulmasetup"])
+            execv(gtksudo,["gksudo", "bulmasetup"])
         else:
-            os.execv(kdesudo,["kdesudo", "bulmasetup"])
+            execv(kdesudo,["kdesudo", "bulmasetup"])
         # Run the actual program now
     else:
         # we dont have gksudo or kdesudo, OMFG!
