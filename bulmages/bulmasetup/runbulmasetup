@@ -1,21 +1,43 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-__version__ = "$Revision: 0.1 $"[11:-2]
+__version__ = "$Revision: 0.2 $"[11:-2]
 __date__ = "$Date: 2008/03/21 08:09:13 $"[7:-2]
-__author__ = "Tomeu Borras <tborras@conetxia.com>"
+__author__ = "Tomeu Borras <tborras@conetxia.com>, Daniel Ripoll <info@danielripoll.es>"
 __all__ = ["bulmasetup"]
 __doc__ = "Sistema de instalacion y mantenimiento de Bases de Datos para BulmaGes.\r\n"
+__license__ = "GPL"
 
-import commands
-import sys
-import os
+from sys import exit, argv
+from os.path import exists, join, abspath
+from os import pathsep, geteuid, execv
+from string import split
+#import antigravity
+from re import escape
 
-def main(args):
-    if os.environ.get('KDE_FULL_SESSION') == 'true':
-        os.execv("/usr/bin/kdesudo",["kdesudo", "bulmasetup"])
-    else:
-        os.execv("/usr/bin/gksudo",["gksudo", "bulmasetup"])
 
-if __name__=="__main__":
-    main(sys.argv)
+def search_file(filename, search_path):
+   """Given a search path, find file
+   """
+   file_found = 0
+   paths = split(search_path, pathsep)
+   for path in paths:
+      if exists(join(path, filename)):
+          file_found = 1
+          break
+   if file_found:
+      return abspath(join(path, filename))
+   else:
+      return None
+
+
+def main():
+    search_path = '/bin' + pathsep + '/usr/bin' + pathsep + '/usr/local/bin'
+    # ; on windows, : on unix
+    xdgsudo=search_file("xdg-sudo", search_path)
+    bulmasetup=search_file("bulmasetup", search_path)
+    execv("/usr/local/bin/xdg-sudo",["xdg-sudo", bulmasetup])
+
+
+if __name__ == "__main__":
+    main()

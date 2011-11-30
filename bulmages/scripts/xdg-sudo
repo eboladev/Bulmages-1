@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Licence: GPLv3
+# xdg-sudo: Automatically choose "gksudo" or "kdesudo" 
+from sys import exit, argv
+from os.path import exists, join, abspath
+from os import system, pathsep, geteuid, execv
+from string import split
+#import antigravity
+from subprocess import Popen
+from re import escape
+
+def search_file(filename, search_path):
+   """Given a search path, find file
+   """
+   file_found = 0
+   paths = split(search_path, pathsep)
+   for path in paths:
+      if exists(join(path, filename)):
+          file_found = 1
+          break
+   if file_found:
+      return abspath(join(path, filename))
+   else:
+      return None
+      
+      
+def main():
+    search_path = '/bin' + pathsep + '/usr/bin' + pathsep + '/usr/local/bin'
+    # ; on windows, : on unix
+   
+    if geteuid()==0:
+        exit(" ERROR: Do not run as root...\n")
+        # non-root check, because if you are root, all this is pointless
+    else:
+        print (" You are normal user... \n")
+    
+    # Prepare actual command to execute    
+    parameters = " ".join([escape(a) for a in argv[1:]])
+    
+    # Find which tools exist
+    kdesudo = search_file('kdesudo',search_path)
+    gtksudo = search_file('gtksudo',search_path)
+    
+    if kdesudo or gtksudo:
+        if kdesudo and gtksudo:
+            # Test if gnome runs
+            process = Popen("ps -ae | grep gnome-session", shell=True, stdout=subprocess.PIPE)
+            process.wait()
+            if len(process.communicate()[0])>0:
+                useGnome = True
+            else:
+                useGnome = False
+        elif kdesudo and (not gtksudo):
+            useGnome = False
+        elif (not kdesudo) and gtksudo:
+            useGnome = True
+        # really run it
+        if useGnome:
+            os.execv(gtksudo,["gksudo", "bulmasetup"])
+        else:
+            os.execv(kdesudo,["kdesudo", "bulmasetup"])
+        # Run the actual program now
+    else:
+        # we dont have gksudo or kdesudo, OMFG!
+        cmd = "xterm -e \"echo 'Neither \\\"gksudo\\\" nor \\\"kdesudo\\\" have been found on your machine. Thus, \\\"sudo\\\" is being used. Please leave this window open until the program has finished. Your are asked for your password below.'; sudo "+parameters+"; sleep 1\""
+        system(cmd)  
+        
+if __name__ == '__main__':
+    main()

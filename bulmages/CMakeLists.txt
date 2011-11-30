@@ -192,6 +192,12 @@ install(FILES ${r_files} DESTINATION share/bulmages/)
 
 install(DIRECTORY images DESTINATION share/bulmages/imagesrc PATTERN ".svn" EXCLUDE)
 
+# We include some kind of xdg-sudo that will search for gtksudo,kdesudo, and if not found will prompt an xterm
+IF(UNIX AND NOT WIN32)
+    install(FILES scripts/xdg-sudo
+            PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+            DESTINATION bin/)
+ENDIF(UNIX AND NOT WIN32)
 
 ## We include cpack for others platforms differents than unix
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGes Suite")
