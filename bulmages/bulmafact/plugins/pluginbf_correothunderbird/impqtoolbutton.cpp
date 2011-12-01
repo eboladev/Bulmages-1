@@ -31,13 +31,9 @@
 
 
 #ifdef Q_OS_WIN32
-#define CAD_MOVE QString("move ")
 #define CAD_THUNDERBIRD QString("\"C:\\Archivos de programa\\Mozilla Thunderbird\\thunderbird.exe\" ")
-#define CAD_COMILLAS QString("\"")
 #else
-#define CAD_MOVE QString("mv ")
 #define CAD_THUNDERBIRD QString("thunderbird ")
-#define CAD_COMILLAS QString("")
 #endif
 
 ///
@@ -97,6 +93,8 @@ void EmailThunderbirdQToolButton::setBoton()
 void EmailThunderbirdQToolButton::click()
 {
     BL_FUNC_DEBUG
+    
+    QString cad = "";
 
     if ( m_presupuestoView != NULL ) {
     
@@ -124,11 +122,9 @@ void EmailThunderbirdQToolButton::click()
         if ( m_presupuestoView->generateRML() ) {
             blCreatePDF ( "presupuesto" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf" + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf"+ CAD_COMILLAS;
-#ifdef Q_OS_WIN32
-			cad.replace("/","\\");
-#endif
-            system ( cad.toAscii().data() );
+            QString oldName = g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
+            blMoveFile(oldName, newName);
 
 #ifdef Q_OS_WIN32
             cad = CAD_THUNDERBIRD + " -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + " Atentamente\',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
@@ -166,11 +162,10 @@ void EmailThunderbirdQToolButton::click()
         if ( m_pedidoClienteView->generateRML() ) {
             blCreatePDF ( "pedidocliente" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf" + CAD_COMILLAS;
-#ifdef Q_OS_WIN32
-			cad.replace("/","\\");
-#endif
-            system ( cad.toAscii().data() );
+          
+            QString oldName =g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+            blMoveFile(oldName, newName);
 
 #ifdef Q_OS_WIN32
             cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + " Atentamente',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
@@ -207,12 +202,10 @@ void EmailThunderbirdQToolButton::click()
 
         if ( m_albaranClienteView->generateRML() ) {
             blCreatePDF ( "albaran" );
-
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf"+ CAD_COMILLAS;
-#ifdef Q_OS_WIN32
-			cad.replace("/","\\");
-#endif
-            system ( cad.toAscii().data() );
+          
+            QString oldName =g_confpr->value( CONF_DIR_USER ) + "albaran.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+            blMoveFile(oldName, newName);
 
 #ifdef Q_OS_WIN32
             cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + " Atentamente',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
@@ -252,10 +245,10 @@ void EmailThunderbirdQToolButton::click()
         if ( m_facturaView->generateRML() ) {
             blCreatePDF ( "factura" );
 
-            QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "factura.pdf "  + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf" + CAD_COMILLAS;
-			cad.replace("/","\\");
 
-            system ( cad.toAscii().data() );
+            QString oldName = g_confpr->value( CONF_DIR_USER ) + "factura.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+            blMoveFile(oldName, newName);
 			
 #ifdef Q_OS_WIN32
             cad = CAD_THUNDERBIRD + "  -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente: Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + " Sin otro particular reciba un cordial saludo.',attachment='file://" + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
