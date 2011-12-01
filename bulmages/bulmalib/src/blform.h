@@ -65,7 +65,7 @@ public:
     virtual int remove();
     virtual int removeWindow();
     virtual void insertWindow ( QString , QObject *, bool compdup = TRUE, QString titulo = "" );
-    void setDbTableName ( QString nom );
+    void setDbTableName ( QString );
     void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();
