@@ -70,6 +70,12 @@ int BlForm_load ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
 
+    /// Si el usuario s&oacute;lo tiene permisos de lectura sobre la ficha no es necesario bloquearla
+    if ( !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "UPDATE" )
+      && !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "DELETE" ) ) {
+        return 0;
+    }
+
     QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
     QString query;
 
