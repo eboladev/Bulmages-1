@@ -87,19 +87,16 @@ void BloqMenu::trataMenu ( QAction *action )
         QString query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";
         m_BlForm->mainCompany()->run ( query , table_dot_id, m_BlForm->dbValue ( m_BlForm->fieldId() ));
 
-        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
-        QToolButton *pguardar = m_BlForm->findChild<QToolButton *> ( "mui_guardar" );
-        if ( pguardar ) pguardar->setEnabled ( TRUE );
-
-        QPushButton *paceptar = m_BlForm->findChild<QPushButton *> ( "mui_aceptar" );
-        if ( paceptar ) paceptar->setEnabled ( TRUE );
-
-        QToolButton *pborrar = m_BlForm->findChild<QToolButton *> ( "mui_borrar" );
-        if ( pborrar ) pborrar->setEnabled ( TRUE );
-
+        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los reactivamos,
+        /// y si hay uno de cancelar ajusto el texto: as&iacute; tenemos una ficha modificable de nuevo
+        QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
+        pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_guardar" );
+        if ( pbut ) pbut->setEnabled ( TRUE );
+        pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_aceptar" );
+        if ( pbut ) pbut->setEnabled ( TRUE );
+        pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_cancelar" );
+        if ( pbut ) pbut->setText("Cancelar");
+        pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_borrar" );
+        if ( pbut ) pbut->setEnabled ( TRUE );
     } // end if
-    
 }
-
-
-
