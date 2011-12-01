@@ -97,9 +97,6 @@ void BloqMenu::trataMenu ( QAction *action )
         QToolButton *pborrar = m_BlForm->findChild<QToolButton *> ( "mui_borrar" );
         if ( pborrar ) pborrar->setEnabled ( TRUE );
 
-        QToolButton *peliminar = m_BlForm->findChild<QToolButton *> ( "mui_eliminar" );
-        if ( peliminar ) peliminar->setEnabled ( TRUE );
-
     } // end if
     
 }

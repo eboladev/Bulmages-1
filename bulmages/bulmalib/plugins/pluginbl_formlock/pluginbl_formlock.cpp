@@ -93,9 +93,6 @@ int BlForm_load ( BlForm *ficha )
         QToolButton *pborrar = ficha->findChild<QToolButton *> ( "mui_borrar" );
         if ( pborrar ) pborrar->setEnabled ( FALSE );
 
-        QToolButton *peliminar = ficha->findChild<QToolButton *> ( "mui_eliminar" );
-        if ( peliminar ) peliminar->setEnabled ( FALSE );
-
     } else {
 
         query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ($1,$2,$3)";

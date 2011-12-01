@@ -464,15 +464,6 @@ void BlForm::on_mui_imprimir_clicked()
 ///
 /**
 **/
-void BlForm::on_mui_eliminar_clicked()
-{
-    on_mui_borrar_clicked();
-}
-
-
-///
-/**
-**/
 void BlForm::on_mui_borrar_clicked()
 {
     BL_FUNC_DEBUG

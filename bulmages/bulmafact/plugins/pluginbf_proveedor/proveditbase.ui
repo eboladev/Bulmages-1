@@ -1425,7 +1425,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_eliminar">
+         <widget class="QToolButton" name="mui_borrar">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -1508,7 +1508,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
-  <tabstop>mui_eliminar</tabstop>
+  <tabstop>mui_borrar</tabstop>
   <tabstop>mui_tab</tabstop>
   <tabstop>mui_codproveedor</tabstop>
   <tabstop>mui_codicliproveedor</tabstop>
