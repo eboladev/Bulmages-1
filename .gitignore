@@ -1,3 +1,4 @@
+blconfig.h
 *.cmake
 *.conf
 *.css
@@ -5,7 +6,7 @@
 *.pot_list
 actualizabulmacont
 actualizabulmafact
-applications
+applications/
 bgtrml2pdf.py
 blconfig.h
 bulmasetup.py
@@ -20,6 +21,6 @@ installbulmages-db
 install_manifest.txt
 local_blI18n.h
 Makefile
-menu
+menu/
 update_message_catalog_lang
 version
