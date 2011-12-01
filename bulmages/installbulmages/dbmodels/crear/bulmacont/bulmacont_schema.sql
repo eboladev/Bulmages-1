@@ -44,8 +44,33 @@ CREATE OR REPLACE FUNCTION plpgsql_call_handler() RETURNS language_handler
     LANGUAGE c;
 
 \echo -n ':: Establecemos el lenguaje de procedimientos ... '
-DROP PROCEDURAL LANGUAGE IF EXISTS plpgsql CASCADE;
-CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+
+-- DROP PROCEDURAL LANGUAGE IF EXISTS plpgsql CASCADE;
+-- CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+
+CREATE OR REPLACE FUNCTION create_language_plpgsql()
+ RETURNS BOOLEAN AS $$
+     CREATE LANGUAGE plpgsql;
+     SELECT TRUE;
+ $$ LANGUAGE SQL;
+
+SELECT CASE WHEN NOT
+     (
+         SELECT  TRUE AS exists
+         FROM    pg_language
+         WHERE   lanname = 'plpgsql'
+         UNION
+         SELECT  FALSE AS exists
+         ORDER BY exists DESC
+         LIMIT 1
+     )
+ THEN
+     create_language_plpgsql()
+ ELSE
+     FALSE
+ END AS plpgsql_created;
+
+DROP FUNCTION create_language_plpgsql();
 
 
 \echo -n ':: '
@@ -1986,13 +2011,13 @@ CREATE TRIGGER cambiadoivat
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	SELECT INTO bs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.13.1-0000'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.13.1-0001'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0000'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0001'');
 	END IF;
 	RETURN 0;
 END;

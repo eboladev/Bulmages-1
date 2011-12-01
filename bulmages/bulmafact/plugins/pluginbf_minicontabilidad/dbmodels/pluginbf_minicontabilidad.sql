@@ -60,10 +60,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
 
-	SELECT INTO as * FROM pg_tables  WHERE tablename=''partida'';
+	SELECT INTO bs * FROM pg_tables  WHERE tablename=''partida'';
 	IF NOT FOUND THEN
 		CREATE TABLE partida (
 		idpartida SERIAL PRIMARY KEY,
@@ -77,7 +77,7 @@ BEGIN
 
 	END IF;
 
-	SELECT INTO as * FROM pg_tables  WHERE tablename=''acontable'';
+	SELECT INTO bs * FROM pg_tables  WHERE tablename=''acontable'';
 	IF NOT FOUND THEN
 		CREATE TABLE acontable (
 		idacontable SERIAL PRIMARY KEY,
@@ -90,7 +90,7 @@ BEGIN
 	END IF;
 
 
-	SELECT INTO as * FROM pg_tables  WHERE tablename=''presupuestocontable'';
+	SELECT INTO bs * FROM pg_tables  WHERE tablename=''presupuestocontable'';
 	IF NOT FOUND THEN
 		CREATE TABLE presupuestocontable (
 		idpresupuestocontable SERIAL PRIMARY KEY,
@@ -101,7 +101,7 @@ BEGIN
 
 
 
-	SELECT INTO as * FROM pg_tables  WHERE tablename=''lpresupuestocontable'';
+	SELECT INTO bs * FROM pg_tables  WHERE tablename=''lpresupuestocontable'';
 	IF NOT FOUND THEN
 		CREATE TABLE lpresupuestocontable (
 		idlpresupuestocontable SERIAL PRIMARY KEY,
@@ -127,14 +127,14 @@ SELECT drop_if_exists_proc ('calculacodigocompletopartida','');
 CREATE FUNCTION calculacodigocompletopartida() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
     codigocompleto character varying(50);
 
 BEGIN
     codigocompleto := NEW.codigopartida;
-    SELECT INTO as codigocompletopartida FROM partida WHERE idpartida = NEW.padre;
+    SELECT INTO bs codigocompletopartida FROM partida WHERE idpartida = NEW.padre;
     IF FOUND THEN
-	codigocompleto := as.codigocompletopartida || codigocompleto;
+	codigocompleto := bs || codigocompleto;
     END IF;
     NEW.codigocompletopartida := codigocompleto;
     RETURN NEW;
@@ -178,9 +178,9 @@ CREATE TRIGGER propagacodigocompletopartidatrigger
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_MiniContabilidad'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_MiniContabilidad'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_MiniContabilidad'';
 	ELSE

@@ -55,9 +55,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idpresupuestoc'';
+	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idpresupuestoc'';
 	IF NOT FOUND THEN
 		CREATE TABLE presupuestoc (
 			idpresupuestoc serial PRIMARY KEY,
@@ -110,9 +110,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBc_Proyectos'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBc_Proyectos'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.10.1-0001'' WHERE nombre=''PluginBc_Proyectos'';
 	ELSE

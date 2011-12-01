@@ -1064,7 +1064,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     def actualizarDatabase(self):
         # Aplicamos el parche de bulmatpv
         if (self.mui_soporteTPV.isChecked()):
-            self.command = 'su postgres -c "psql ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
+            self.command = 'su postgres -c "psql -1 ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)

@@ -464,15 +464,6 @@ void BlForm::on_mui_imprimir_clicked()
 ///
 /**
 **/
-void BlForm::on_mui_eliminar_clicked()
-{
-    on_mui_borrar_clicked();
-}
-
-
-///
-/**
-**/
 void BlForm::on_mui_borrar_clicked()
 {
     BL_FUNC_DEBUG
@@ -641,35 +632,33 @@ void BlForm::procesaMenu ( QAction * )
 }
 
 
-///
+/// Set the table to use in the form and configure the standard buttons depending on the privileges on it.
 /**
-\param nom
+\param nomtabla
 **/
-void BlForm::setDbTableName ( QString nom )
+void BlForm::setDbTableName ( QString nomtabla )
 {
     BL_FUNC_DEBUG
-    BlDbRecord::setDbTableName ( nom );
+    BlDbRecord::setDbTableName ( nomtabla );
 
     if ( mainCompany() != NULL ) {
-	  /// Buscamos los permisos que tiene el usuario y desactivamos botones.
-	  if ( !mainCompany() ->hasTablePrivilege ( nom, "INSERT" )
-	    && !mainCompany() ->hasTablePrivilege ( nom, "UPDATE" ) ) {
+       QAbstractButton * pbut = NULL; /// Puntero para buscar y manipular botones
+       /// Buscamos los permisos que tiene el usuario y desactivamos botones.
+       if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "INSERT" )
+         && !mainCompany() ->hasTablePrivilege ( nomtabla, "UPDATE" ) ) {
+          pbut = findChild<QAbstractButton *> ( "mui_guardar" );
+          if ( pbut ) pbut->setDisabled ( TRUE );
+          pbut = findChild<QAbstractButton *> ( "mui_aceptar" );
+          if ( pbut ) pbut->hide();
+          pbut = findChild<QAbstractButton *> ( "mui_cancelar" );
+          if ( pbut ) pbut->setText("Cerrar");
+       } // end if
 
-            QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
-		if ( b ) b->setDisabled ( TRUE );
-		QPushButton * p = findChild<QPushButton *> ( "mui_aceptar" );
-		if ( p ) p->hide();
-		p = findChild<QPushButton *> ( "mui_cancelar" );
-		if ( p ) p->setText("Cerrar");
-
-	  } // end if
-	  if ( !mainCompany() ->hasTablePrivilege ( nom, "DELETE" ) ) {
-		QToolButton * b = findChild<QToolButton *> ( "mui_borrar" );
-            if ( b ) b->setDisabled ( TRUE );
-        } // end if
+       if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "DELETE" ) ) {
+          pbut = findChild<QAbstractButton *> ( "mui_borrar" );
+          if ( pbut ) pbut->setDisabled ( TRUE );
+       } // end if
     } // end if
-
-    
 }
 
 

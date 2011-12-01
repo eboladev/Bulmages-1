@@ -78,7 +78,7 @@ install(DIRECTORY ainteligentes canuales planescontables ${CMAKE_BINARY_DIR}/css
 
 install(DIRECTORY man pixmaps ${CMAKE_BINARY_DIR}/applications ${CMAKE_BINARY_DIR}/menu doc DESTINATION share/
 				PATTERN ".svn" EXCLUDE)
-			
+
 FILE(GLOB files ${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt ${CMAKE_BINARY_DIR}/version)
 install(FILES ${files} DESTINATION share/bulmages)
 
