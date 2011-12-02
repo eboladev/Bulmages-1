@@ -70,6 +70,12 @@ int BlForm_load ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
 
+    /// Si el usuario s&oacute;lo tiene permisos de lectura sobre la ficha no es necesario bloquearla
+    if ( !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "UPDATE" )
+      && !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "DELETE" ) ) {
+        return 0;
+    }
+
     QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
     QString query;
 
@@ -83,18 +89,17 @@ int BlForm_load ( BlForm *ficha )
        blMsgInfo ( _ ( "Esta ficha está siendo utilizada por el usuario \"%1\". Usted no podrá hacer cambios en este momento." )
                .arg( cur1->value("usuariobloqueo") ) );
 
-        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
-        QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );
-        if ( pguardar ) pguardar->setEnabled ( FALSE );
-
-        QPushButton *paceptar = ficha->findChild<QPushButton *> ( "mui_aceptar" );
-        if ( paceptar ) paceptar->setEnabled ( FALSE );
-
-        QToolButton *pborrar = ficha->findChild<QToolButton *> ( "mui_borrar" );
-        if ( pborrar ) pborrar->setEnabled ( FALSE );
-
-        QToolButton *peliminar = ficha->findChild<QToolButton *> ( "mui_eliminar" );
-        if ( peliminar ) peliminar->setEnabled ( FALSE );
+        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos,
+        /// y si hay uno de cancelar mostramos "Cerrar": as&iacute; tenemos una ficha de s&oacute;lo lectura
+        QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
+        pbut = ficha->findChild<QAbstractButton *> ( "mui_guardar" );
+        if ( pbut ) pbut->setEnabled ( FALSE );
+        pbut = ficha->findChild<QAbstractButton *> ( "mui_aceptar" );
+        if ( pbut ) pbut->setEnabled ( FALSE );
+        pbut = ficha->findChild<QAbstractButton *> ( "mui_cancelar" );
+        if ( pbut ) pbut->setText("Cerrar");
+        pbut = ficha->findChild<QAbstractButton *> ( "mui_borrar" );
+        if ( pbut ) pbut->setEnabled ( FALSE );
 
     } else {
 

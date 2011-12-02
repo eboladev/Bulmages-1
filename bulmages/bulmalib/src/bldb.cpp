@@ -1017,34 +1017,19 @@ int BlDbRecord::generateRML ( const QString &arch )
     else if ( arch.right ( 3 ) == "pys" )
         tipoescape = 2;
 
-
+    /// Copiamos el archivo.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + arch;
     QString archivod = g_confpr->value( CONF_DIR_USER ) + arch;
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-    /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
-    archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
-#else
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    int result1 = system ( archivo.toAscii().constData() );
-    if (result1 == -1) {
-	blMsgError(_("Error al copiar el archivo RML [ bldb->generateRML() ]"));
+    if(!blCopyFile(archivo, archivod)){
+        blMsgError(_("Error al copiar el archivo RML [ bldb->generateRML() ]"));
     } // end if
 
 
     /// Copiamos el logo
-#ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg \"";
-#else
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-    int result2 = system ( archivologo.toAscii().constData() );
-    if (result2 == -1) {
-	blMsgError(_("Error al copiar el archivo de logo [ bldb->generateRML() ]"));
+    QString ownlogo = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    if(!blCopyFile(archivologo, ownlogo)){
+        blMsgError(_("Error al copiar el archivo de logo [ bldb->generateRML() ]"));
     } // end if
 
     QFile file;

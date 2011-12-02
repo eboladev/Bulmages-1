@@ -65,7 +65,7 @@ public:
     virtual int remove();
     virtual int removeWindow();
     virtual void insertWindow ( QString , QObject *, bool compdup = TRUE, QString titulo = "" );
-    void setDbTableName ( QString nom );
+    void setDbTableName ( QString );
     void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();
@@ -96,7 +96,6 @@ protected:
 public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_mui_eliminar_clicked();
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_guardar_clicked();
     virtual void on_customContextMenuRequested ( const QPoint &pos );

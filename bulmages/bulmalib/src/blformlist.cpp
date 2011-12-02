@@ -609,7 +609,7 @@ void BlFormList::showBusqueda()
     
 }
 
-///
+/// Configure the standard buttons depending on the privileges on the table.
 /**
 \param nomtabla
 **/
@@ -617,26 +617,25 @@ void BlFormList::trataPermisos ( QString nomtabla )
 {
     BL_FUNC_DEBUG
 
-    QToolButton * b;
 
-    if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "INSERT" ) ) {
-        /// Buscamos los permisos que tiene el usuario y desactivamos botones.
-	  b = findChild<QToolButton *> ( "mui_crear" );
-	  if ( b ) b->setDisabled ( TRUE );
-	  b = findChild<QToolButton *> ( "mui_importar" );
-	  if ( b ) b->setDisabled ( TRUE );
-	  b = findChild<QToolButton *> ( "mui_exportar" );
-	  if ( b ) b->setDisabled ( TRUE );
+    if ( mainCompany() != NULL ) {
+       QAbstractButton * pbut = NULL; /// Puntero para buscar y manipular botones
+       /// Buscamos los permisos que tiene el usuario y desactivamos botones.
+       if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "INSERT" ) ) {
+
+          pbut = findChild<QAbstractButton *> ( "mui_crear" );
+          if ( pbut ) pbut->setDisabled ( TRUE );
+          pbut = findChild<QAbstractButton *> ( "mui_importar" );
+          if ( pbut ) pbut->setDisabled ( TRUE );
+          pbut = findChild<QAbstractButton *> ( "mui_exportar" );
+          if ( pbut ) pbut->setDisabled ( TRUE );
+       } // end if
+
+       if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "DELETE" ) ) {
+          pbut = findChild<QAbstractButton *> ( "mui_borrar" );
+          if ( pbut ) pbut->setDisabled ( TRUE );
+       } // end if
     } // end if
-
-
-    if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "DELETE" ) ) {
-	  /// Buscamos los permisos que tiene el usuario y desactivamos botones.
-	  b = findChild<QToolButton *> ( "mui_borrar" );
-	  if ( b ) b->setDisabled ( TRUE );
-    } // end if
-
-    
 }
 
 

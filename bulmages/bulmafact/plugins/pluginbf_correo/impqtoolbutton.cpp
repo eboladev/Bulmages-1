@@ -111,10 +111,11 @@ void EmailQToolButton::click()
         if ( m_presupuestoView->generateRML() ) {
             blCreatePDF ( "presupuesto" );
 
-            QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
-            system ( cad.toAscii().data() );
+            QString oldName =  g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+            blMoveFile(oldName, newName);
 
-            cad = "kmail -s \"Presupuesto " + num + "\" --body \" Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf " + email;
+            QString cad = "kmail -s \"Presupuesto " + num + "\" --body \" Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf " + email;
             system ( cad.toAscii().data() );
         } // end if
     } // end if
@@ -136,11 +137,12 @@ void EmailQToolButton::click()
 
         if ( m_pedidoClienteView->generateRML() ) {
             blCreatePDF ( "pedidocliente" );
-
-            QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
-            system ( cad.toAscii().data() );
-
-            cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
+          
+            QString oldName =  g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+            blMoveFile(oldName, newName);
+            
+            QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
             system ( cad.toAscii().data() );
         } // end if
     } // end if
@@ -163,11 +165,12 @@ void EmailQToolButton::click()
 
         if ( m_albaranClienteView->generateRML() ) {
             blCreatePDF ( "albaran" );
+            
+            QString oldName =  g_confpr->value( CONF_DIR_USER ) + "albaran.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+            blMoveFile(oldName, newName);
 
-            QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
-            system ( cad.toAscii().data() );
-
-            cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
+            QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
             system ( cad.toAscii().data() );
         } // end if
     } // end if
@@ -192,11 +195,12 @@ void EmailQToolButton::click()
         if ( m_facturaView->generateRML() ) {
             blCreatePDF ( "factura" );
 
-            QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + "factura.pdf " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
-            system ( cad.toAscii().data() );
+            QString oldName =  g_confpr->value( CONF_DIR_USER ) + "factura.pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + id + ".pdf";
+            blMoveFile(oldName, newName);
 
 
-            cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
+            QString cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
             cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
             cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
             cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;

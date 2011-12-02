@@ -121,7 +121,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_eliminar">
+         <widget class="QToolButton" name="mui_borrar">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -778,19 +778,19 @@
    <header>bfbuscarformapago.h</header>
   </customwidget>
   <customwidget>
-   <class>BlBankEdit</class>
-   <extends>QLineEdit</extends>
-   <header>blbankedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>BlComboBox</class>
    <extends>QComboBox</extends>
    <header>blcombobox.h</header>
   </customwidget>
+  <customwidget>
+   <class>BlBankEdit</class>
+   <extends>QLineEdit</extends>
+   <header>blbankedit.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
-  <tabstop>mui_eliminar</tabstop>
+  <tabstop>mui_borrar</tabstop>
   <tabstop>mui_informe</tabstop>
   <tabstop>mui_tab</tabstop>
   <tabstop>mui_cifcliente</tabstop>
