@@ -33,6 +33,7 @@
 #include "pdefs_pluginbl_autoform.h"
 #include "blaction.h"
 #include "blsearchwidget.h"
+#include "blaction.h"
 
 
 extern "C" PLUGINBL_AUTOFORM_EXPORT int entryPoint ( BlMainWindow * );
@@ -42,5 +43,6 @@ extern "C" PLUGINBL_AUTOFORM_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchW
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_pressedAsterisk(BlSubForm *);
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBL_AUTOFORM_EXPORT int BlAction_triggered(BlAction *);
 
 #endif

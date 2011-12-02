@@ -33,6 +33,7 @@
 #include <QTextStream>
 #include <QDomDocument>
 #include <QDomNode>
+#include <QMenuBar>
 
 
 #include "pluginbl_autoform.h"
@@ -46,7 +47,7 @@ BlAutoFormList * genBlAutoFormList (const QString & );
 BlAutoForm * genBlAutoForm( const QString &);
 
 
-QMainWindow *g_pluginbl_autoform = NULL;
+BlMainWindow *g_pluginbl_autoform = NULL;
 BlMainCompany *g_emp = NULL;
 
 
@@ -96,137 +97,269 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 	    QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
 	    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 	    QString tableid = e1.firstChildElement ( "TABLEID" ).toElement().text();
-	    
-	    
-	    /// Creamos el AutoForm, lo configuramos y lo presentamos.
-	    BlAutoFormList *formulario = new BlAutoFormList(cmp, 0, 0, BL_EDIT_MODE, interfacefile);
-	    formulario->setWindowTitle(title);
-	    
-	    formulario->setObjectName(objname);
-	    formulario->setWindowIcon(QIcon(fileicon));
-	    formulario->label->setPixmap(QPixmap(fileicon));
-	    
-	    formulario->mui_list->setDbTableName(tablename);
-	    formulario->mui_list->setDbFieldId(tableid);
-
-	    QDomNodeList nodos = e1.elementsByTagName ( "CAMPO" );
-	    for ( int j = 0; j < nodos.count(); j++ ) {
-		QDomNode ventana = nodos.item ( j );
-		QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
-		if ( !e1.isNull() ) { /// the node was really an element.
-		    BlDbField::DbType type = BlDbField::DbVarChar;
-		    QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
-		    QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
-		    QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
-		    if ( typeheader == "DBVARCHAR" ) {
-			type = BlDbField::DbVarChar;
-		    } else if ( typeheader == "DBINT" ) {
-			type = BlDbField::DbInt;
-		    } else if ( typeheader == "DBNUMERIC" ) {
-			type = BlDbField::DbNumeric;
-		    } else if ( typeheader == "DBBOOLEAN" ) {
-			type = BlDbField::DbBoolean;
-		    } else if ( typeheader == "DBDATE" ) {
-			type = BlDbField::DbDate;
-		    } // end if
-
-		    int restricciones = ( int ) BlDbField::DbNothing;
-		    QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
-		    while ( !restrict.isNull() ) {
-			QString trestrict = restrict.text();
-			if ( trestrict == "DBNOTHING" ) {
-			    restricciones |= BlDbField::DbNothing;
-			} else if ( trestrict == "DBNOTNULL" ) {
-			    restricciones |= BlDbField::DbNotNull;
-			} else if ( trestrict == "DBPRIMARYKEY" ) {
-			    restricciones |= BlDbField::DbPrimaryKey;
-			} else if ( trestrict == "DBNOSAVE" ) {
-			    restricciones |= BlDbField::DbNoSave;
-			} else if ( trestrict == "DBAUTO" ) {
-			    restricciones |= BlDbField::DbAuto;
-			} else if ( trestrict == "DBAUTO" ) {
-			    restricciones |= BlDbField::DbAuto;
-			} else if ( trestrict == "DBDUPPRIMARYKEY" ) {
-			    restricciones |= BlDbField::DbDupPrimaryKey;
-			} else if ( trestrict == "DBREQUIRED" ) {
-			    restricciones |= BlDbField::DbRequired;
-			} else if ( trestrict == "DBNOLOAD" ) {
-			    restricciones |= BlDbField::DbNoLoad;
-			} // end if
-			restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
-		    } // end while
+	    QString menuentry = e1.firstChildElement ( "MENUENTRY").toElement().text();
 
 
-		    int opciones = ( int ) BlSubFormHeader::DbNone;
-		    QDomElement opci = e1.firstChildElement ( "OPTIONSHEADER" );
-		    while ( !opci.isNull() ) {
-			QString topci = opci.text();
-			if ( topci == "DBNONE" ) {
-			    opciones |= BlSubFormHeader::DbNone;
-			} else if ( topci == "DBREADONLY" ) {
-			    opciones |= BlSubFormHeader::DbReadOnly;
-			} else if ( topci == "DBHIDEVIEW" ) {
-			    opciones |= BlSubFormHeader::DbHideView;
-			} else if ( topci == "DBNOWRITE" ) {
-			    opciones |= BlSubFormHeader::DbNoWrite;
-			} else if ( topci == "DBDISABLEVIEW" ) {
-			    opciones |= BlSubFormHeader::DbDisableView;
-			} // end if
-			opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
-		    } // end while
+	    if (menuentry == "") {
+			    
+			    /// Creamos el AutoForm, lo configuramos y lo presentamos.
+			    BlAutoFormList *formulario = new BlAutoFormList(cmp, 0, 0, BL_EDIT_MODE, interfacefile);
+			    formulario->setWindowTitle(title);
+			    
+			    formulario->setObjectName(objname);
+			    formulario->setWindowIcon(QIcon(fileicon));
+			    formulario->label->setPixmap(QPixmap(fileicon));
+			    
+			    formulario->mui_list->setDbTableName(tablename);
+			    formulario->mui_list->setDbFieldId(tableid);
 
-		    formulario->mui_list->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones,opciones, nompheader );
-		    
-		    QString tipocampo = e1.firstChildElement ( "TIPOCAMPO" ).toElement().text();
-		    if (tipocampo == "BLCOMBOBOX") {
-			QString nombre= "mui_"+nomheader;
-			BlComboBox * combo = formulario->findChild<BlComboBox *>(nombre);
-			QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
-			QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
-			QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+			    QDomNodeList nodos = e1.elementsByTagName ( "CAMPO" );
+			    for ( int j = 0; j < nodos.count(); j++ ) {
+				QDomNode ventana = nodos.item ( j );
+				QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+				if ( !e1.isNull() ) { /// the node was really an element.
+				    BlDbField::DbType type = BlDbField::DbVarChar;
+				    QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+				    QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+				    QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
+				    if ( typeheader == "DBVARCHAR" ) {
+					type = BlDbField::DbVarChar;
+				    } else if ( typeheader == "DBINT" ) {
+					type = BlDbField::DbInt;
+				    } else if ( typeheader == "DBNUMERIC" ) {
+					type = BlDbField::DbNumeric;
+				    } else if ( typeheader == "DBBOOLEAN" ) {
+					type = BlDbField::DbBoolean;
+				    } else if ( typeheader == "DBDATE" ) {
+					type = BlDbField::DbDate;
+				    } // end if
+
+				    int restricciones = ( int ) BlDbField::DbNothing;
+				    QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
+				    while ( !restrict.isNull() ) {
+					QString trestrict = restrict.text();
+					if ( trestrict == "DBNOTHING" ) {
+					    restricciones |= BlDbField::DbNothing;
+					} else if ( trestrict == "DBNOTNULL" ) {
+					    restricciones |= BlDbField::DbNotNull;
+					} else if ( trestrict == "DBPRIMARYKEY" ) {
+					    restricciones |= BlDbField::DbPrimaryKey;
+					} else if ( trestrict == "DBNOSAVE" ) {
+					    restricciones |= BlDbField::DbNoSave;
+					} else if ( trestrict == "DBAUTO" ) {
+					    restricciones |= BlDbField::DbAuto;
+					} else if ( trestrict == "DBAUTO" ) {
+					    restricciones |= BlDbField::DbAuto;
+					} else if ( trestrict == "DBDUPPRIMARYKEY" ) {
+					    restricciones |= BlDbField::DbDupPrimaryKey;
+					} else if ( trestrict == "DBREQUIRED" ) {
+					    restricciones |= BlDbField::DbRequired;
+					} else if ( trestrict == "DBNOLOAD" ) {
+					    restricciones |= BlDbField::DbNoLoad;
+					} // end if
+					restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
+				    } // end while
+
+
+				    int opciones = ( int ) BlSubFormHeader::DbNone;
+				    QDomElement opci = e1.firstChildElement ( "OPTIONSHEADER" );
+				    while ( !opci.isNull() ) {
+					QString topci = opci.text();
+					if ( topci == "DBNONE" ) {
+					    opciones |= BlSubFormHeader::DbNone;
+					} else if ( topci == "DBREADONLY" ) {
+					    opciones |= BlSubFormHeader::DbReadOnly;
+					} else if ( topci == "DBHIDEVIEW" ) {
+					    opciones |= BlSubFormHeader::DbHideView;
+					} else if ( topci == "DBNOWRITE" ) {
+					    opciones |= BlSubFormHeader::DbNoWrite;
+					} else if ( topci == "DBDISABLEVIEW" ) {
+					    opciones |= BlSubFormHeader::DbDisableView;
+					} // end if
+					opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
+				    } // end while
+
+				    formulario->mui_list->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones,opciones, nompheader );
+				    
+				    QString tipocampo = e1.firstChildElement ( "TIPOCAMPO" ).toElement().text();
+				    if (tipocampo == "BLCOMBOBOX") {
+					QString nombre= "mui_"+nomheader;
+					BlComboBox * combo = formulario->findChild<BlComboBox *>(nombre);
+					QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+					QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+					QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
 			
 			
-		    	// Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
-			combo->setQuery ( query );
-			combo->setTableName ( tablename );
-			combo->setFieldId ( fieldid );
-			QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
-			for ( int j = 0; j < nodos.count(); j++ ) {
-			    QDomNode ventana = nodos.item ( j );
-			    QString va = ventana.toElement().text(); /// try to convert the node to an element.
-			    combo->m_valores[va] = "";
-			} // end for
-			combo->setAllowNull ( TRUE );
-			combo->setId ( "" );
-		    } // end if
+				    	// Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+					combo->setQuery ( query );
+					combo->setTableName ( tablename );
+					combo->setFieldId ( fieldid );
+					QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+					for ( int j = 0; j < nodos.count(); j++ ) {
+					    QDomNode ventana = nodos.item ( j );
+					    QString va = ventana.toElement().text(); /// try to convert the node to an element.
+					    combo->m_valores[va] = "";
+					} // end for
+					combo->setAllowNull ( TRUE );
+					combo->setId ( "" );
+				    } // end if
 
-		    if (tipocampo == "BLSEARCHWIDGET") {
-			QString nombre= "mui_"+nomheader;
-			BlSearchWidget * search = formulario->findChild<BlSearchWidget *>(nombre);
-			QString label = e1.firstChildElement ( "LABEL" ).toElement().text();
-			QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
-			QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+				    if (tipocampo == "BLSEARCHWIDGET") {
+					QString nombre= "mui_"+nomheader;
+					BlSearchWidget * search = formulario->findChild<BlSearchWidget *>(nombre);
+					QString label = e1.firstChildElement ( "LABEL" ).toElement().text();
+					QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+					QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
 			
 			
-		    	// Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
-			search->setLabel ( label );
-			search->setTableName ( tablename );
-			search->setFieldId ( fieldid );
-			QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
-			for ( int j = 0; j < nodos.count(); j++ ) {
-			    QDomNode ventana = nodos.item ( j );
-			    QString va = ventana.toElement().text(); /// try to convert the node to an element.
-			    search->m_valores[va] = "";
-			} // end for
-			search->setId ( "" );
-		    } // end if
+				    	// Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+					search->setLabel ( label );
+					search->setTableName ( tablename );
+					search->setFieldId ( fieldid );
+					QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+					for ( int j = 0; j < nodos.count(); j++ ) {
+					    QDomNode ventana = nodos.item ( j );
+					    QString va = ventana.toElement().text(); /// try to convert the node to an element.
+					    search->m_valores[va] = "";
+					} // end for
+					search->setId ( "" );
+				    } // end if
 
+				} // end if
+			    } // end for
+
+			    formulario->launch();
+			    cmp ->m_pWorkspace->addSubWindow ( formulario );
+			    formulario->show();
+	        } else {
+		  /// Se trata de un BlFormList no permanente por lo que hay que realizar la entrada de menu del mismo.
+		  QMenuBar *menubar = g_pluginbl_autoform->menuBar();
+		  QMenu *menu = NULL;
+		  QStringList path = menuentry.split("\\");
+		  QMenu *pPluginMenu = NULL;
+		  
+		  
+		  if (path.size() > 1) {
+			      QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
+			      bool encontrado = FALSE;
+			      for (int j = 0; j < allPButtons.size(); ++j) {
+				  if (allPButtons.at(j)->title() == path[0]) {
+				      encontrado = TRUE;
+				      menu = allPButtons.at(j);
+				  } // end if
+			      } // end for
+			      if (!encontrado) {
+				  //QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
+				  //menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+				  /// Miramos si existe un menu Herramientas
+				  menu = g_pluginbl_autoform->newMenu ( path[0], "", "menuVentana" );
+			      } // end if
+		  } else {
+			      if (!pPluginMenu) {
+				      pPluginMenu = g_pluginbl_autoform->newMenu ( title, tablename, "menuVentana" );
+			      } // end if
+			      menu = pPluginMenu;
+		  } // end if
+		  
+
+		  for (int x = 1; x < path.size()-1; ++x) {
+		      QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
+		      bool encontrado = FALSE;
+		      for (int j = 0; j < allPButtons.size(); ++j) {
+			  if (allPButtons.at(j)->title() == path[x]) {
+			      encontrado = TRUE;
+			      menu = allPButtons.at(j);
+			  } // end if
+		      } // end for
+
+		      if (!encontrado) {
+			  QMenu *pPluginMenu1 = new QMenu ( path[x] , menu );
+			  menu->addMenu (  pPluginMenu1 );
+			  menu = pPluginMenu1;
+		      } // end if
+
+		  } // end for
+
+		  /// Creamos el men&uacute;.
+		  BlAction *accion = new BlAction ( path[path.size()-1], 0 );
+		  accion->setIcon(QIcon(fileicon));
+		  accion->setObjectName ( "autoformlist_" + tablename );
+		  accion->setStatusTip ( title);
+		  accion->setWhatsThis ( title );
+		  menu->addAction ( accion );
 		} // end if
-	    } // end for
+	} // end if
+    } // end for
 
-	    formulario->launch();
-	    cmp ->m_pWorkspace->addSubWindow ( formulario );
-	    formulario->show();
+
+    QDomNodeList autoforms = docElem.elementsByTagName ( "AUTOFORM" );
+    for ( int i = 0; i < autoforms.count(); i++ ) {
+        QDomNode autoform = autoforms.item ( i );
+        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+	    QString title = e1.firstChildElement ( "TITLE" ).toElement().text();
+	    QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
+	    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+	    QString menuentry = e1.firstChildElement ( "MENUENTRY").toElement().text();
+
+
+	    if (menuentry != "") {
+		  /// Se trata de un BlFormList no permanente por lo que hay que realizar la entrada de menu del mismo.
+		  QMenuBar *menubar = g_pluginbl_autoform->menuBar();
+		  QMenu *menu = NULL;
+		  QStringList path = menuentry.split("\\");
+		  QMenu *pPluginMenu = NULL;
+		  
+		  
+		  if (path.size() > 1) {
+			      QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
+			      bool encontrado = FALSE;
+			      for (int j = 0; j < allPButtons.size(); ++j) {
+				  if (allPButtons.at(j)->title() == path[0]) {
+				      encontrado = TRUE;
+				      menu = allPButtons.at(j);
+				  } // end if
+			      } // end for
+			      if (!encontrado) {
+				  //QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
+				  //menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+				  /// Miramos si existe un menu Herramientas
+				  menu = g_pluginbl_autoform->newMenu ( path[0], "", "menuVentana" );
+			      } // end if
+		  } else {
+			      if (!pPluginMenu) {
+				      pPluginMenu = g_pluginbl_autoform->newMenu ( title, tablename, "menuVentana" );
+			      } // end if
+			      menu = pPluginMenu;
+		  } // end if
+		  
+
+		  for (int x = 1; x < path.size()-1; ++x) {
+		      QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
+		      bool encontrado = FALSE;
+		      for (int j = 0; j < allPButtons.size(); ++j) {
+			  if (allPButtons.at(j)->title() == path[x]) {
+			      encontrado = TRUE;
+			      menu = allPButtons.at(j);
+			  } // end if
+		      } // end for
+
+		      if (!encontrado) {
+			  QMenu *pPluginMenu1 = new QMenu ( path[x] , menu );
+			  menu->addMenu (  pPluginMenu1 );
+			  menu = pPluginMenu1;
+		      } // end if
+
+		  } // end for
+
+		  /// Creamos el men&uacute;.
+		  BlAction *accion = new BlAction ( path[path.size()-1], 0 );
+		  accion->setIcon(QIcon(fileicon));
+		  accion->setObjectName ( "autoform_" + tablename );
+		  accion->setStatusTip ( title);
+		  accion->setWhatsThis ( title );
+		  menu->addAction ( accion );
+		} // end if
 	} // end if
     } // end for
 
@@ -1397,6 +1530,196 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 }
 
 
+
+int BlAction_triggered(BlAction *accion) {
+    BL_FUNC_DEBUG
+    if (accion->objectName().startsWith("autoform_")) {
+	BlAutoForm *form = genBlAutoForm(accion->objectName().right( accion->objectName().size() - 9));
+	if (form) {
+		form->mainCompany() ->m_pWorkspace->addSubWindow ( form );
+		form->show();
+		form->pintar();
+	} // end if
+    } else if (accion->objectName().startsWith("autoformlist_")) {
+      
+
+	  
+		  /// Cargamos el XML de descripcion de autoforms y lo procesamos.
+		  QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+		  QDomDocument doc ( "mydocument" );
+		  if ( !file.open ( QIODevice::ReadOnly ) ) {
+		      blMsgInfo("Error al abrir el archivo de autoformularios");
+		      return 0;
+		  } // end if
+		  if ( !doc.setContent ( &file ) ) {
+		      file.close();
+		      blMsgInfo("Error al parsear el archivo de autoformularios");
+		      return 0;
+		  } // end if
+		  file.close();
+		  
+		  /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
+		  QDomElement docElem = doc.documentElement();
+		  QDomNodeList autoformlists = docElem.elementsByTagName ( "AUTOFORMLIST" );
+		  for ( int i = 0; i < autoformlists.count(); i++ ) {
+		      QDomNode autoform = autoformlists.item ( i );
+		      QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+		      if ( !e1.isNull() ) { /// the node was really an element.
+			  QString interfacefile = e1.firstChildElement ( "UI_INTERFACE" ).toElement().text();
+			  QString title = e1.firstChildElement ( "TITLE" ).toElement().text();
+			  QString objname = e1.firstChildElement ( "OBJECTNAME" ).toElement().text();
+			  QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
+			  QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+			  QString tableid = e1.firstChildElement ( "TABLEID" ).toElement().text();
+			  QString menuentry = e1.firstChildElement ( "MENUENTRY").toElement().text();
+
+
+			  if (menuentry != "" && (accion->objectName() == "autoformlist_" + tablename) ) {
+					  
+					  /// Creamos el AutoForm, lo configuramos y lo presentamos.
+					  BlAutoFormList *formulario = new BlAutoFormList(g_emp, 0, 0, BL_EDIT_MODE, interfacefile);
+					  
+					  /// Al no ser permanente le ponemos el atributo de DeleteOnClose
+					  formulario->setAttribute ( Qt::WA_DeleteOnClose );
+					  formulario->setWindowTitle(title);
+					  
+					  formulario->setObjectName(objname);
+					  formulario->setWindowIcon(QIcon(fileicon));
+					  formulario->label->setPixmap(QPixmap(fileicon));
+					  
+					  formulario->mui_list->setDbTableName(tablename);
+					  formulario->mui_list->setDbFieldId(tableid);
+
+					  QDomNodeList nodos = e1.elementsByTagName ( "CAMPO" );
+					  for ( int j = 0; j < nodos.count(); j++ ) {
+					      QDomNode ventana = nodos.item ( j );
+					      QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+					      if ( !e1.isNull() ) { /// the node was really an element.
+						  BlDbField::DbType type = BlDbField::DbVarChar;
+						  QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+						  QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+						  QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
+						  if ( typeheader == "DBVARCHAR" ) {
+						      type = BlDbField::DbVarChar;
+						  } else if ( typeheader == "DBINT" ) {
+						      type = BlDbField::DbInt;
+						  } else if ( typeheader == "DBNUMERIC" ) {
+						      type = BlDbField::DbNumeric;
+						  } else if ( typeheader == "DBBOOLEAN" ) {
+						      type = BlDbField::DbBoolean;
+						  } else if ( typeheader == "DBDATE" ) {
+						      type = BlDbField::DbDate;
+						  } // end if
+
+						  int restricciones = ( int ) BlDbField::DbNothing;
+						  QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
+						  while ( !restrict.isNull() ) {
+						      QString trestrict = restrict.text();
+						      if ( trestrict == "DBNOTHING" ) {
+							  restricciones |= BlDbField::DbNothing;
+						      } else if ( trestrict == "DBNOTNULL" ) {
+							  restricciones |= BlDbField::DbNotNull;
+						      } else if ( trestrict == "DBPRIMARYKEY" ) {
+							  restricciones |= BlDbField::DbPrimaryKey;
+						      } else if ( trestrict == "DBNOSAVE" ) {
+							  restricciones |= BlDbField::DbNoSave;
+						      } else if ( trestrict == "DBAUTO" ) {
+							  restricciones |= BlDbField::DbAuto;
+						      } else if ( trestrict == "DBAUTO" ) {
+							  restricciones |= BlDbField::DbAuto;
+						      } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
+							  restricciones |= BlDbField::DbDupPrimaryKey;
+						      } else if ( trestrict == "DBREQUIRED" ) {
+							  restricciones |= BlDbField::DbRequired;
+						      } else if ( trestrict == "DBNOLOAD" ) {
+							  restricciones |= BlDbField::DbNoLoad;
+						      } // end if
+						      restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
+						  } // end while
+
+
+						  int opciones = ( int ) BlSubFormHeader::DbNone;
+						  QDomElement opci = e1.firstChildElement ( "OPTIONSHEADER" );
+						  while ( !opci.isNull() ) {
+						      QString topci = opci.text();
+						      if ( topci == "DBNONE" ) {
+							  opciones |= BlSubFormHeader::DbNone;
+						      } else if ( topci == "DBREADONLY" ) {
+							  opciones |= BlSubFormHeader::DbReadOnly;
+						      } else if ( topci == "DBHIDEVIEW" ) {
+							  opciones |= BlSubFormHeader::DbHideView;
+						      } else if ( topci == "DBNOWRITE" ) {
+							  opciones |= BlSubFormHeader::DbNoWrite;
+						      } else if ( topci == "DBDISABLEVIEW" ) {
+							  opciones |= BlSubFormHeader::DbDisableView;
+						      } // end if
+						      opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
+						  } // end while
+
+						  formulario->mui_list->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones,opciones, nompheader );
+						  
+						  QString tipocampo = e1.firstChildElement ( "TIPOCAMPO" ).toElement().text();
+						  if (tipocampo == "BLCOMBOBOX") {
+						      QString nombre= "mui_"+nomheader;
+						      BlComboBox * combo = formulario->findChild<BlComboBox *>(nombre);
+						      QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+						      QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+						      QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+				      
+				      
+						      // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+						      combo->setQuery ( query );
+						      combo->setTableName ( tablename );
+						      combo->setFieldId ( fieldid );
+						      QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+						      for ( int j = 0; j < nodos.count(); j++ ) {
+							  QDomNode ventana = nodos.item ( j );
+							  QString va = ventana.toElement().text(); /// try to convert the node to an element.
+							  combo->m_valores[va] = "";
+						      } // end for
+						      combo->setAllowNull ( TRUE );
+						      combo->setId ( "" );
+						  } // end if
+
+						  if (tipocampo == "BLSEARCHWIDGET") {
+						      QString nombre= "mui_"+nomheader;
+						      BlSearchWidget * search = formulario->findChild<BlSearchWidget *>(nombre);
+						      QString label = e1.firstChildElement ( "LABEL" ).toElement().text();
+						      QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+						      QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+				      
+				      
+						      // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+						      search->setLabel ( label );
+						      search->setTableName ( tablename );
+						      search->setFieldId ( fieldid );
+						      QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+						      for ( int j = 0; j < nodos.count(); j++ ) {
+							  QDomNode ventana = nodos.item ( j );
+							  QString va = ventana.toElement().text(); /// try to convert the node to an element.
+							  search->m_valores[va] = "";
+						      } // end for
+						      search->setId ( "" );
+						  } // end if
+
+					      } // end if
+					  } // end for
+
+					  formulario->launch();
+					  g_emp ->m_pWorkspace->addSubWindow ( formulario );
+					  formulario->show();
+			      } else {
+			      } // end if
+		      } // end if
+		  } // end for
+
+
+      
+      
+    } // end if
+
+    return 0;
+}
 
 
 
