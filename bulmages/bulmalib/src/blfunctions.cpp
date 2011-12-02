@@ -1351,11 +1351,46 @@ bool blCopyFile( const QString &oldName, const QString &newName )
     if(!QFile::copy(oldFile, newFile))
     {
         QString cad = CAD_COPY + oldFile + " " + newFile;
-        system ( cad.toAscii().data() );
+        int result = system ( cad.toAscii().data() );
+        if (result == -1) {
+            return false;
+            }
     } // end if
 
     // Se ha copiado correctamente el archivo
     return true;
+}
+
+bool blRemove(const QString &filetoremove )
+{
+    /// Function to remove files independent.
+    #ifdef Q_OS_WIN32
+        #define CAD_REMOVE QString("copy ")
+    #else
+        #define CAD_REMOVE QString("rm ")
+    #endif
+    
+    QString removeFile = QUrl(filetoremove, QUrl::TolerantMode).toString();
+    QDir rootDir;
+    
+    // Intenta cerrar el archivo y eliminarlo
+    if(!QFile::remove(removeFile) )
+    {
+        //Si falla, recurre a QDir::remove()
+        if(!rootDir.remove (removeFile))
+        {
+        QString cad = CAD_REMOVE + removeFile;
+        int result = system ( cad.toAscii().data() );
+        if (result == -1) {
+            return false;
+            } // end if
+
+        } // end if
+    } // end if
+
+    // Se ha eliminado correctamente el archivo
+    return true;
+    
 }
 
 bool blMoveFile( const QString &oldName, const QString &newName )
@@ -1379,7 +1414,7 @@ bool blMoveFile( const QString &oldName, const QString &newName )
         return false;
 
         // Copiado exitoso, elimina el original
-        rootDir.remove(oldName);
+        blRemove(oldName);
     } // end if
 
     // Se ha movido correctamente el archivo, o se ha copiado y eliminado el original
