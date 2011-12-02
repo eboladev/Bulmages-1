@@ -148,10 +148,11 @@ void EQToolButtonMail::trataMenu ( QAction *action )
                 QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
                 blCreatePDF ( doc );
 
-                QString cad = "mv " + g_confpr->value( CONF_DIR_USER ) + doc + ".pdf " + g_confpr->value( CONF_DIR_USER ) +   doc  + num + ".pdf";
-                system ( cad.toAscii().data() );
+                QString oldName = g_confpr->value( CONF_DIR_USER ) + doc + ".pdf";
+                QString newName = g_confpr->value( CONF_DIR_USER ) +   doc  + num + ".pdf";
+                blMoveFile(oldName,newName);
 
-                cad = "kmail -s \" " + doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + doc + num + ".pdf " + email;
+                QString cad = "kmail -s \" " + doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + newName + " " + email;
 
                 system ( cad.toAscii().data() );
 

@@ -398,29 +398,15 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
 {
     BL_FUNC_DEBUG
 
+    /// Copiamos el archivo.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "cuadrante.rml";
+    blCopyFile(archivo, archivod);
+    
+    /// Copiamos el logo
     QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-    /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system ( archivo.toAscii().constData() );
-
-    /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-
-    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
+    QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
+    blCopyFile(archivologo, logousuario);
 
     QFile file;
     file.setFileName ( archivod );

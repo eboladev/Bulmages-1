@@ -245,27 +245,15 @@ void PedidoProveedorView::imprimir()
 
         base basesimp;
 
+        /// Copiamos el archivo.
         QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "pedidoproveedor.rml";
         QString archivod = g_confpr->value( CONF_DIR_USER ) + "pedidoproveedor.rml";
-        QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-        /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
-	archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
-#else
-        archivo = "cp " + archivo + " " + archivod;
-#endif
-
-        system ( archivo.toAscii().constData() );
+        blCopyFile(archivo, archivod);
 
         /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-	archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
-#else
-        archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-        system ( archivologo.toAscii().constData() );
+        QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+        QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
+        blCopyFile(archivologo, logousuario);
 
         QFile file;
         file.setFileName ( archivod );

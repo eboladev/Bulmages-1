@@ -152,7 +152,7 @@ int TarifaView::load ( QString idtarifa )
     mui_list->setEnabled ( TRUE );
     mui_filtro->setEnabled ( TRUE );
     mui_actualizar->setEnabled ( TRUE );
-    mui_borrar->setEnabled ( TRUE );
+    mui_borrar->setEnabled ( TRUE && mainCompany()->hasTablePrivilege ( tableName(), "DELETE" ) );
 
     setDbValue ( "idtarifa", m_idtarifa );
     BlDbRecord::load ( m_idtarifa );

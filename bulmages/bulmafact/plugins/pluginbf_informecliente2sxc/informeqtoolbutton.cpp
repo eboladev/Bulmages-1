@@ -95,19 +95,6 @@ void InformeQToolButton::click()
     int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
-
-    QString archivod = g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.perl";
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-
-    /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#else
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-
     QString fitxersortidatxt = "";
 
     fitxersortidatxt += "#!/usr/bin/perl\n";
@@ -223,21 +210,22 @@ void InformeQToolButton::click()
     fitxersortidatxt += "exit;\n";
 
 
-    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc";
-    system ( cadena.toAscii() );
-    cadena = "rm " + archivod;
-    system ( cadena.toAscii() );
-
-    QFile file ( archivod );
+    QString informeclientessxc = g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc";
+    blRemove(informeclientessxc);
+    
+    QString informeclientessxcperl = g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.perl";
+    blRemove(informeclientessxcperl);
+    
+    QFile file ( informeclientessxcperl );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << fitxersortidatxt;
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + archivod;
+    QString cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + informeclientessxcperl;
     system ( cadena.toAscii() );
-    cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc &";
+    cadena = "kspread " + informeclientessxc + " &";
     system ( cadena.toAscii() );
 
     
@@ -349,19 +337,6 @@ void InformeProveedorQToolButton::click()
     int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
-
-    QString archivod = g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.perl";
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-
-    /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#else
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-
     QString fitxersortidatxt = "";
 
     fitxersortidatxt += "#!/usr/bin/perl\n";
@@ -472,22 +447,23 @@ void InformeProveedorQToolButton::click()
 
     fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"informeproveedoressxc.sxc\");\n";
     fitxersortidatxt += "\n";
-    fitxersortidatxt += "exit;\n";
-
-
-    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc";
-    system ( cadena.toAscii() );
-    cadena = "rm " + archivod;
-    system ( cadena.toAscii() );
-
-    QFile file ( archivod );
+    fitxersortidatxt += "exit;\n";   
+    
+    QString informeproveedoressxc = g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc";
+    blRemove(informeproveedoressxc);
+    
+    QString informeproveedoressxcperl = g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.perl";
+    blRemove(informeproveedoressxcperl);
+    
+    
+    QFile file ( informeproveedoressxcperl );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << fitxersortidatxt;
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + archivod;
+    QString cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + informeproveedoressxcperl;
     system ( cadena.toAscii() );
     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
     system ( cadena.toAscii() );

@@ -157,3 +157,11 @@ wchar_t* BL_EXPORT QStringToWCHAR (QString inString);
   
 #endif
 
+///Copies a file from one location to another
+bool BL_EXPORT blCopyFile(const QString &oldName, const QString &newName);
+
+///Moves a file from one location to another
+bool BL_EXPORT blMoveFile(const QString &oldName, const QString &newName);
+
+///Delets a file
+bool BL_EXPORT blRemove(const QString &filetoremove);

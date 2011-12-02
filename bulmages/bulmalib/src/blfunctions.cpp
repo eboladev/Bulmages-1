@@ -31,7 +31,7 @@
 #include <QProcess>
 #include <QDesktopServices>
 #include <QUrl>
-
+#include <QIODevice>
 
 #include "blfunctions.h"
 #include "blconfiguration.h"
@@ -1285,7 +1285,7 @@ void blWebBrowser(const QString &uri, const QString &defbrowser) {
     else {
         QString webcommand = commas + browser + commas + QUrl(uri, QUrl::TolerantMode).toString() + inbackground;
         system ( webcommand.toAscii().data() );
-    }
+    } // end if
 
 }
 
@@ -1324,3 +1324,99 @@ wchar_t* QStringToWCHAR (QString inString) {
 }
 #endif
 
+
+
+bool blCopyFile( const QString &oldName, const QString &newName )
+{
+    ///Funcion para copiar archivos, pudiendo mover entre particiones y con direcciones tolerantes multiplataforma.
+    BL_FUNC_DEBUG
+    
+    #ifdef Q_OS_WIN32
+        #define CAD_COPY QString("copy ")
+    #else
+        #define CAD_COPY QString("cp ")
+    #endif
+
+    // Si es el mismo archivo, no lo copia.
+    if(oldName.compare(newName) == 0)
+    {
+        return true;
+    } // end if
+    
+    // Transforma las direcciones en tolerantes, para  que funcione en totas las plataformas.
+    QString oldFile = QUrl(oldName, QUrl::TolerantMode).toString();
+    QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
+
+    // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
+    if(!QFile::copy(oldFile, newFile))
+    {
+        QString cad = CAD_COPY + oldFile + " " + newFile;
+        int result = system ( cad.toAscii().data() );
+        if (result == -1) {
+            return false;
+            }
+    } // end if
+
+    // Se ha copiado correctamente el archivo
+    return true;
+}
+
+bool blRemove(const QString &filetoremove )
+{
+    /// Function to remove files independent.
+    #ifdef Q_OS_WIN32
+        #define CAD_REMOVE QString("copy ")
+    #else
+        #define CAD_REMOVE QString("rm ")
+    #endif
+    
+    QString removeFile = QUrl(filetoremove, QUrl::TolerantMode).toString();
+    QDir rootDir;
+    
+    // Intenta cerrar el archivo y eliminarlo
+    if(!QFile::remove(removeFile) )
+    {
+        //Si falla, recurre a QDir::remove()
+        if(!rootDir.remove (removeFile))
+        {
+        QString cad = CAD_REMOVE + removeFile;
+        int result = system ( cad.toAscii().data() );
+        if (result == -1) {
+            return false;
+            } // end if
+
+        } // end if
+    } // end if
+
+    // Se ha eliminado correctamente el archivo
+    return true;
+    
+}
+
+bool blMoveFile( const QString &oldName, const QString &newName )
+{
+    ///Funcion para mover archivos, pudiendo mover entre particiones y con direcciones tolerantes multiplataforma.
+    BL_FUNC_DEBUG
+    QDir rootDir;
+    
+    
+    // Transforma las direcciones en tolerantes, para  que funcione en totas las plataformas.
+    QString oldFile = QUrl(oldName, QUrl::TolerantMode).toString();
+    QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
+
+    // Intenta usar Qdir::rename()
+    if(!rootDir.rename(oldName, newName) )
+    {
+        //Si falla, recurre a blCopy y luego lo elimina
+
+        // Copiado fallado, no elimina el original
+        if(!blCopyFile(oldName, newName))
+        return false;
+
+        // Copiado exitoso, elimina el original
+        blRemove(oldName);
+    } // end if
+
+    // Se ha movido correctamente el archivo, o se ha copiado y eliminado el original
+    return true;
+}

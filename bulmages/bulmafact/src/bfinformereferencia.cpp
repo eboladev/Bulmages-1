@@ -70,25 +70,18 @@ void BfInformeCliente::setCliente ( QString val )
 void BfInformeCliente::generarInforme()
 {
     BL_FUNC_DEBUG
+    
+    /// Copiamos el archivo.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "informecliente.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "informecliente.rml";
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-    /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
-    archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
-#else
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system ( archivo.toAscii().constData() );
+    blCopyFile(archivo, archivod);
 
     /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
-#else
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
+    blCopyFile(archivologo, logousuario);
+    
+    
     QFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
