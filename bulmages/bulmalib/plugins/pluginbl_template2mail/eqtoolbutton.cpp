@@ -148,7 +148,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
                 QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
                 blCreatePDF ( doc );
 
-                QString oldName = g_confpr->value( CONF_DIR_USER ) + doc + ".pdf "
+                QString oldName = g_confpr->value( CONF_DIR_USER ) + doc + ".pdf";
                 QString newName = g_confpr->value( CONF_DIR_USER ) +   doc  + num + ".pdf";
                 blMoveFile(oldName,newName);
 

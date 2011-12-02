@@ -142,7 +142,7 @@ void EmailQToolButton::click()
             QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
             blMoveFile(oldName, newName);
             
-            cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
+            QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
             system ( cad.toAscii().data() );
         } // end if
     } // end if
@@ -170,7 +170,7 @@ void EmailQToolButton::click()
             QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
             blMoveFile(oldName, newName);
 
-            cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
+            QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
             system ( cad.toAscii().data() );
         } // end if
     } // end if
@@ -200,7 +200,7 @@ void EmailQToolButton::click()
             blMoveFile(oldName, newName);
 
 
-            cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
+            QString cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
             cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
             cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
             cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
