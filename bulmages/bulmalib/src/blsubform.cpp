@@ -2939,29 +2939,17 @@ void BlSubForm::printPDF ( const QString &titular )
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
 //    QString archivod = g_confpr->value( CONF_DIR_USER ) + titular + ".rml";
     QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString ownlogo = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 
     /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
-    archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
-#else
-    archivo = "cp " + archivo + " " + archivod;
-#endif
 
-    int result1 = system ( archivo.toAscii() );
-    if (result1 == -1) {
-	blMsgError(_("Errr al copiar listado.rml [ BlSubForm->printPDF() ]"));
+    if(!blCopyFile(archivo, archivod)){
+        blMsgError(_("Errr al copiar listado.rml [ BlSubForm->printPDF() ]"));
     } // end if
     
     /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
-#else
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-    int result2 = system ( archivologo.toAscii() );
-    if (result2 == -1) {
-	blMsgError(_("Errr al copiar listado.rml [ BlSubForm->printPDF() ]"));
+    if(!blCopyFile(archivologo, ownlogo)){
+        blMsgError(_("Errr al copiar logo.jpg [ BlSubForm->printPDF() ]"));
     } // end if
 
     QFile file;
