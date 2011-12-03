@@ -34,6 +34,8 @@
 #include <QDomDocument>
 #include <QDomNode>
 #include <QMenuBar>
+#include <QDir>
+#include <QFileInfo>
 
 
 #include "pluginbl_autoform.h"
@@ -45,7 +47,7 @@
 // Esta funcion solo se va a utilizar aqui asi que aqui se queda.
 BlAutoFormList * genBlAutoFormList (const QString & );
 BlAutoForm * genBlAutoForm( const QString &);
-
+int mergeAllXML();
 
 BlMainWindow *g_pluginbl_autoform = NULL;
 BlMainCompany *g_emp = NULL;
@@ -60,18 +62,59 @@ int entryPoint ( BlMainWindow *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_autoform", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
     return 0;
 }
 
+
+/// Junta todos los XML en uno solo dentro del .bulmages
+int mergeAllXML() {
+   BL_FUNC_DEBUG
+   QDir d(CONFIG_DIR_CONFIG);
+   QString buff;
+   d.setFilter( QDir::Files );
+   QStringList filters;
+   filters << "autoform_" + g_emp->dbName() + "*.spc";
+//   d.setNameFilters(filters);
+//   const QFileInfoList *list = d.entryInfoList("autoform_" + g_emp->dbName() + "*.spc");
+   QList<QFileInfo> list = d.entryInfoList(filters);
+   //if(!list) return;
+   QList<QFileInfo>::iterator it;
+   for (it = list.begin(); it != list.end(); ++it) {
+        QFile fich(it->absoluteFilePath ());
+        if (!fich.open ( QIODevice::ReadOnly )) {
+              blMsgInfo("Error al abrir el archivo de autoformularios");
+             return 0;
+        } // end if
+        
+        buff += fich.readAll();
+	fich.close();
+   } // end for
+   buff.replace("<DOCUMENT>", "");
+   buff.replace("</DOCUMENT>", "");
+   buff = "<DOCUMENT>" + buff + "</DOCUMENT>";
+
+   QFile file1(g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc");
+   if ( file1.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file1 );
+	stream <<  buff;
+   } // end if
+   file1.close();
+   
+   return 0;
+}
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
     BL_FUNC_DEBUG
     g_emp = cmp;
+
+    /// Juntamos todos los XML en uno solo dentro del .bulmages
+    mergeAllXML();
     
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + cmp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -370,6 +413,10 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
     g_emp = cmp;
+    
+    /// Juntamos todos los XML en uno solo dentro del .bulmages
+    mergeAllXML();
+    
     blMsgInfo("En la creación de ventanas");
     return 0;
 }
@@ -437,7 +484,7 @@ int BlSubForm_pressedAsterisk ( BlSubForm *sub )
 
     /// Buscamos BLSUBFORMSEARCHEDIT que se correspondan con el campo sobre el que hemos pulsado
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -578,7 +625,7 @@ BlAutoFormList * genBlAutoFormList (const QString &tname )
     BlAutoFormList *formulario = NULL;
     
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -765,7 +812,7 @@ void SubForm_AutoForm::s_pintaMenu ( QMenu *menu )
 
     /// Buscamos BLSUBFORMSEARCHEDIT que se correspondan con el campo sobre el que hemos pulsado
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -913,7 +960,7 @@ void SubForm_AutoForm::nuevoElemento( const QString &tablename )
 
     /// Buscamos BLSUBFORMSEARCHEDIT que se correspondan con el campo sobre el que hemos pulsado
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -1034,7 +1081,7 @@ void SubForm_AutoForm::seleccionarElemento ( BlSubForm *sub, const QString &tabl
 
     /// Buscamos BLSUBFORMSEARCHEDIT que se correspondan con el campo sobre el que hemos pulsado
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -1182,7 +1229,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 
     /// Buscamos BLSUBFORMSEARCHEDIT que se correspondan con el campo sobre el que hemos pulsado
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -1283,7 +1330,7 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
     BlAutoForm *formulario = NULL;
     
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -1545,7 +1592,7 @@ int BlAction_triggered(BlAction *accion) {
 
 	  
 		  /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-		  QFile file ( CONFIG_DIR_CONFIG + QString("autoform_") + g_emp ->dbName() + "_spec.spc" );
+		  QFile file ( g_confpr->value(CONF_DIR_USER) + "mautoform_spec.spc" );
 		  QDomDocument doc ( "mydocument" );
 		  if ( !file.open ( QIODevice::ReadOnly ) ) {
 		      blMsgInfo("Error al abrir el archivo de autoformularios");

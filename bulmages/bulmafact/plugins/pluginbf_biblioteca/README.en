@@ -1,0 +1,37 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Item
+
+Biblioteca: libpluginbf_articulo.so
+
+Descripción: <H1>Item management</H1>
+<PARA>This plugin is used to introduce items in the system.</PARA>
+<HR>
+<PARA>It presents a listing of items and it allows to add, edit and modify items</PARA>
+<BR>
+<PARA>After installing the plugin the menu Items will appear in the program with the options <B>Item listing</B> and the 
+option <B>New Item</B></PARA>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD:
+
+ArchivoSQLpatch:
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_iva.so;
+
+Incompatibles:
+
+Orden: 29
+
+Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs; impers_articulo_estadisticas_comparativa.rml
+
+Categorias: Generic invoicing;
+
+Comentarios:

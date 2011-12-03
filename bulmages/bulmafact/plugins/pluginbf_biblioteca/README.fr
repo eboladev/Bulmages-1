@@ -1,0 +1,37 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110207
+
+Nombre: Articles
+
+Biblioteca: libpluginbf_articulo.so
+
+Descripción: <H1>Gestion des articles</H1>
+<PARA>Ce greffon permet l'introduction d'articles dans le système. </PARA>
+<HR>
+<PARA>Présente une liste d'articles et permet d'en ajouter, de les publier et de les modifier.</PARA>
+<BR>
+<PARA>En installant le greffon apparaît le menu Articles dans l'application avec les options <B>Liste d'Articles</B> y la
+opcion <B>Nouvel Article</B></PARA>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD:
+
+ArchivoSQLpatch:
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_iva.so;
+
+Incompatibles:
+
+Orden: 29
+
+Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs; impers_articulo_estadisticas_comparativa.rml
+
+Categorias: Facturation generique;
+
+Comentarios:

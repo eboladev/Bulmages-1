@@ -46,6 +46,7 @@ class PluginsBulmaSetup:
                     orden = ""
                     categorias = ""
                     reports = ""
+                    autoformfile = ""
                     m = re.search('Nombre: (.*)', cont)
                     if m <> None:
                         nombre = m.group(1)
@@ -76,12 +77,15 @@ class PluginsBulmaSetup:
                     m = re.search('Reports: (.*)', cont)
                     if m <> None:
                         reports = m.group(1)
+                    m = re.search('AutoFormFile: (.*)', cont)
+                    if m <> None:
+                        autoformfile = m.group(1)
                     m = re.search('Orden: (.*)', cont)
                     orden = 999
                     if m <> None:
                         if (m.group(1).isdigit()):
                             orden = int(m.group(1))
-                    plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden, categorias, archivosqldeins, reports])
+                    plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden, categorias, archivosqldeins, reports, autoformfile])
 
 
 if __name__=="__main__":

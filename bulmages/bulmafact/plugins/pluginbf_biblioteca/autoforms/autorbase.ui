@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Nombre</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="mui_nomautor"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Fecha de Nacimiento</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="BlDateSearch" name="mui_fechanacimientoautor"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Pais</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="BlComboBox" name="mui_idpais"/>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="BlSubForm" name="mui_list" native="true"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QLineEdit</extends>
+   <header>bldatesearch.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlSubForm</class>
+   <extends>QWidget</extends>
+   <header>blsubform.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -101,6 +101,10 @@ add_subdirectory(pluginbf_minicontabilidad)
 add_subdirectory(pluginbf_inventariosimple)
 
 
+# ========= PLUGINS DE AUTOFORMS
+add_subdirectory(pluginbf_biblioteca)
+
+
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")
    message(STATUS "Private code inserted in bulmafact plugins")
    include("${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")

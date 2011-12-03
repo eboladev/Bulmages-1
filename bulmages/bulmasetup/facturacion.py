@@ -17,8 +17,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.setupUi(self)
 
         # Ocultamos la columna de las descripciones.
-        self.mui_plugins.setColumnCount(12)
-        self.mui_plugins1.setColumnCount(12)
+        self.mui_plugins.setColumnCount(13)
+        self.mui_plugins1.setColumnCount(13)
 
         self.mui_plugins.hideColumn(1)
         self.mui_plugins1.hideColumn(1)
@@ -49,6 +49,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         self.mui_plugins.hideColumn(11)
         self.mui_plugins1.hideColumn(11)
+
+        self.mui_plugins.hideColumn(12)
+        self.mui_plugins1.hideColumn(12)
 
         self.mui_plugins1.setEnabled(False)
 
@@ -307,6 +310,16 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
+
+                # Si el plugin tiene archivo de autoforms lo copiamos
+                if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
+                   # Aqui copiamos el archivo
+                   self.string = "cp " +  plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text() + " /etc/bulmages/" + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_")
+                   self.string = self.string.left(self.string.size() -3)
+                   self.writecommand(self.string)
+                   self.process.start(self.string)
+                   self.process.waitForFinished(-1)
+
                 # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Tratamos toda la cadena de categorias.
@@ -972,6 +985,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
             self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
             self.mui_plugins.setItem(self.i , 11 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][10], None, QtGui.QApplication.UnicodeUTF8)))
+
+            self.mui_plugins.setItem(self.i , 12 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][11], None, QtGui.QApplication.UnicodeUTF8)))
+#
 #        self.mui_plugins.setRowHeight(self.i, 50)
             self.i = self.i + 1
             self.progress.setValue(self.progress.value() + 1)
