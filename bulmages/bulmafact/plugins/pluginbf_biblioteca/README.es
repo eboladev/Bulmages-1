@@ -22,13 +22,13 @@ ArchivoSQLpatch: pluginbf_biblioteca.sql
 
 ArchivoSQLdeins: pluginbf_biblioteca-rm.sql
 
-Dependencias: libpluginbl_autoform.so
+Dependencias: libpluginbl_autoform.so; libpluginbl_template.so; libpluginbl_template2ods.so; libpluginbl_report.so; libpluginbl_report2ods.so;
 
 Incompatibles:
 
 Orden: 29
 
-Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs; impers_articulo_estadisticas_comparativa.rml
+Reports: impers_autor_detalle.rml; impers_autor_detalle2.rml; impers_autor_algo.pys; autor.rml
 
 Categorias: AutoForms;Biblioteca;Experimentales;
 
