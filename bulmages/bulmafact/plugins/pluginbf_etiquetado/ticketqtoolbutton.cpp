@@ -78,29 +78,10 @@ void TicketQToolButton::click()
     BL_FUNC_DEBUG
     QString txt = "";
 
+    /// Copiamos el archivo.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "etiquetas.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "etiquetas.rml";
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-    /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system ( archivo.toAscii().constData() );
-
-    /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-
-    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
+    blCopyFile(archivo,archivod);
 
     QFile file;
     file.setFileName ( archivod );
