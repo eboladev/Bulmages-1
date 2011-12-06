@@ -9,11 +9,14 @@ from plugins import PluginsBulmaSetup
 from modificarcontabilidadbase import *
 from empresa import Empresa
 import plugins
+import functions
 
 class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
     def __init__(self, database, parent = None):
         Empresa.__init__(self, database)
         self.setupUi(self)
+        
+        self.languages = ["es","ca","fr","en"]
 
         # Ocultamos la columna de las descripciones.
         self.mui_plugins.setColumnCount(13)
@@ -73,7 +76,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql"]
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
-            self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
+            self.command = functions.as_postgres + '"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -107,11 +110,13 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.process1 = QtCore.QProcess()
         self.mfile = QFile(plugins.configfiles + 'bulmacont_' + self.database + '.conf')
         if (self.mfile.exists()):
-            self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmacont_' + self.database + '.conf'
-            self.writecommand(self.command)
-            self.process1.start(self.command)
-            self.process1.waitForFinished(-1)
-            self.version = self.process1.readAllStandardOutput()
+            if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmatpv_' + self.database + '.conf')) == None:
+                self.version = ''
+            #~ self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmacont_' + self.database + '.conf'
+            #~ self.writecommand(self.command)
+            #~ self.process1.start(self.command)
+            #~ self.process1.waitForFinished(-1)
+            #~ self.version = self.process1.readAllStandardOutput()
 
         if (self.version != ''):
             self.version = '0.12'
@@ -182,19 +187,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                     self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
                     if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
                         self.writecommand('Ha que actualizar ' + self.mui_plugins.item(self.i,0).text())
-                        
-			# Si el plugin tiene archivo de autoforms lo copiamos
-			if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
-			  # Aqui copiamos el archivo
-			  self.string = "cp " +  plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text() + " /etc/bulmages/" + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_")
-			  self.string = self.string.left(self.string.size() -3)
-			  self.writecommand(self.string)
-			  self.process.start(self.string)
-			  self.process.waitForFinished(-1)
-                        
                         # Comprueba que el archivo existe.
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() > 3):
-                            self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + '\"'
+                            self.command = functions.as_postgres + '"psql -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + functions.end_sql
                             self.writecommand(self.command)
                             self.process.start(self.command)
                             self.process.waitForFinished(-1)
@@ -203,7 +198,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                             locale = QtCore.QLocale()
                             self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size() - 4) + "_" + locale.name().left(5) + ".sql"
                             if (QFile.exists(self.filename)):
-                                self.command = 'su postgres -c \"psql -t -f ' + self.filename + ' ' + self.database + '\"'
+                                self.command = functions.as_postgres + '"psql -t -f ' + self.filename + ' ' + self.database + functions.end_sql
                                 self.writecommand(self.command)
                                 self.process.start(self.command)
                                 self.process.waitForFinished(-1)
@@ -226,7 +221,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                         # Si no esta chequeado hacemos un borrado del plugin
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size > 3 ):
                             # Aplicamos el parche  de borrado.
-                            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
+                            self.command = functions.as_postgres + '"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database + functions.end_sql
                             self.writecommand(self.command)
                             self.process.start(self.command)
                             self.process.waitForFinished(-1)
@@ -329,208 +324,37 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
     def trataOpenReports(self):
         self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generando plantillas RML y PYS', None, QtGui.QApplication.UnicodeUTF8))
         # Creamos el directorio especifico para guardar las plantillas
-        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        # Creamos el directorio especifico para guardar las plantillas
-        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/es"
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        # Creamos el directorio especifico para guardar las plantillas
-        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/ca"
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        # Creamos el directorio especifico para guardar las plantillas
-        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/fr"
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        # Creamos el directorio especifico para guardar las plantillas
-        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/en"
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
+        for language in self.languages:
+            functions.multios().mkdir_p(str("/opt/bulmages/openreports_%s/%s" %(self.database,language)),0755)
         i = 1
         while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
             i = i + 1
 
         # Hacemos un backup de openreports
-        self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old" + str(i)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
+        functions.multios().copy(str("/opt/bulmages/openreports_" + self.database),str("/opt/bulmages/openreports_" + self.database + "_old" + str(i)) )
 
         self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
 
         # Copiamos los archivos genericos
-        # Copiamos las plantillas es
-        self.string = "cp " + plugins.confopenreports + "es/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
-            self.string = "cp " + plugins.confopenreports + "es/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/es"
-            self.writecommand(self.string)
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "es/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-
-
-        # Copiamos las plantillas ca
-        self.string = "cp " + plugins.confopenreports + "ca/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        if (os.path.exists(plugins.confopenreports + "ca/logo.jpg")):
-            self.string = "cp " + plugins.confopenreports + "ca/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/ca"
-            self.writecommand(self.string)
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "ca/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-
-        # Copiamos las plantillas fr
-        self.string = "cp " + plugins.confopenreports + "fr/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        if (os.path.exists(plugins.confopenreports + "fr/logo.jpg")):
-            self.string = "cp " + plugins.confopenreports + "fr/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/fr"
-            self.writecommand(self.string)
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "fr/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-
-        # Copiamos las plantillas en
-        self.string = "cp " + plugins.confopenreports + "en/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        if (os.path.exists(plugins.confopenreports + "en/logo.jpg")):
-            self.string = "cp " + plugins.confopenreports + "en/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/en"
-            self.writecommand(self.string)
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-        self.string = "cp " + plugins.confopenreports + "en/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-        self.writecommand(self.string)
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
+        # Copiamos las plantillas
+        for language in self.languages:
+            functions.multios().copy(str(plugins.confopenreports + language + "/canuales.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/diario.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/extracto.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla1.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/estilos.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/listado.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
+                functions.multios().copy(str(plugins.confopenreports + language + "/logo.jpg"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/ficha.rml"),str("/opt/bulmages/openreports_%s/%s" % (self.database,language)) )
+        
+        #END copiamos las plantillas
 
         # Pasamos el logotipo
         if (self.mui_textfile.text() != ""):
-            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/es/logo.jpg"
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/ca/logo.jpg"
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/en/logo.jpg"
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
-            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/fr/logo.jpg"
-            self.process.start(self.string)
-            self.process.waitForFinished(-1)
+            if (self.mui_textfile.text() != ""):
+                functions.multios().copy(str(self.mui_textfile.text()),str("/opt/bulmages/openreports_" + self.database +"%s/logo.jpg" % language) )
 
 
         # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
@@ -540,6 +364,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
+                # Si el plugin tiene archivo de autoforms lo copiamos
+                if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
+                   # Aqui copiamos el archivo
+                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str("/etc/bulmages/" + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
             # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Tratamos toda la cadena de categorias.
@@ -550,30 +378,13 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                     self.j = 0
                     while (self.j < len ( self.arra)):
                 # Copiamos las plantillas
-                        self.string = "cp " + plugins.confopenreports + "es/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/es"
-                        self.writecommand(self.string)
-                        self.process.start(self.string)
-                        self.process.waitForFinished(-1)
-                        self.string = "cp " + plugins.confopenreports + "ca/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/ca"
-                        self.writecommand(self.string)
-                        self.process.start(self.string)
-                        self.process.waitForFinished(-1)
-                        self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/fr"
-                        self.writecommand(self.string)
-                        self.process.start(self.string)
-                        self.process.waitForFinished(-1)
-                        self.string = "cp " + plugins.confopenreports + "en/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/en"
-                        self.writecommand(self.string)
-                        self.process.start(self.string)
-                        self.process.waitForFinished(-1)
+                        for language in self.languages:
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("/opt/bulmages/openreports_" + self.database +"/%s" % language))
                         self.j = self.j + 1
             self.i = self.i + 1
 
         # Hacemos un backup del archivo
-        self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.writecommand(self.process.readAllStandardOutput())
+        functions.multios().copy(str(plugins.configfiles + "bulmacont_" + self.database + ".conf"),str(plugins.configfiles + "bulmacont_" + self.database + ".conf~"))
 
 
         # Abrimos el backup para lectura
@@ -619,16 +430,11 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         # ================================
 
         # Tocamos el archivo por si no existe
-        self.string = "touch " + plugins.configfiles + "bulmacont_" + self.database + ".conf "
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.writecommand(self.process.readAllStandardOutput())
+        BulmacontConf = plugins.configfiles + "bulmacont_" + self.database + ".conf"
+        functions.multios().touch(BulmacontConf)
 
         # Hacemos un backup del archivo
-        self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
-        self.process.start(self.string)
-        self.process.waitForFinished(-1)
-        self.writecommand(self.process.readAllStandardOutput())
+        functions.multios().copy(str(plugins.configfiles + "bulmacont_" + self.database + ".conf"),str(plugins.configfiles + "bulmacont_" + self.database + ".conf~"))
 
         # Abrimos el backup para lectura
         self.file1 = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf~");

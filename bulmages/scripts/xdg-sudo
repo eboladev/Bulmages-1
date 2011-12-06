@@ -4,7 +4,7 @@
 # xdg-sudo: Automatically choose "gksudo" or "kdesudo" 
 from sys import exit, argv
 from os.path import exists, join, abspath
-from os import system, pathsep, geteuid, execv
+from os import system, pathsep, geteuid, execv, environ
 from string import split
 #import antigravity
 from subprocess import Popen
@@ -26,7 +26,7 @@ def search_file(filename, search_path):
       
       
 def main():
-    search_path = '/bin' + pathsep + '/usr/bin' + pathsep + '/usr/local/bin'
+    search_path = environ['PATH']
     # ; on windows, : on unix
    
     if geteuid()==0:
