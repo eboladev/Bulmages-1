@@ -44,5 +44,5 @@ class multios():
         
     def grep(self,word,desiredpath):
         for line in open(desiredpath):
-         if word in line:
-           return line
+            if word in line:
+                return line
