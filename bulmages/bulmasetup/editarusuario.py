@@ -7,6 +7,8 @@ from PyQt4.QtCore import *
 from editarusuariobase import *
 from empresa import Empresa
 from config import *
+import functions
+
 import psycopg2
 
 class EditarUsuario(Ui_EditarUsuario, Empresa):
@@ -20,6 +22,7 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
 
         self.connect(self.CheckBox_password, SIGNAL("stateChanged(int)"), self.activaTexto)
         self.connect(self.listWidget, SIGNAL("itemSelectionChanged()"), self.activaGuardar)
+        self.psql = functions.multios().search_executable('psql')
 
     def initListaUsuarios(self):
         self.listWidget.clear()
@@ -60,12 +63,12 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
 
         if (self.CheckBox_password.isChecked()):
             self.password = self.lineEdit.text()
-            self.execCommand("psql template1 -c \"ALTER ROLE " + str(self.username) + " WITH PASSWORD '" + str(self.password) + "'\"")
+            self.execCommand(self.psql + "template1 -c \"ALTER ROLE " + str(self.username) + " WITH PASSWORD '" + str(self.password) + "'\"")
 
         if (self.Radial_su.isChecked()):
-            self.execCommand("psql template1 -c \"ALTER ROLE " + str(self.username) + " WITH superuser\"")
+            self.execCommand(self.psql + "template1 -c \"ALTER ROLE " + str(self.username) + " WITH superuser\"")
         else:
-            self.execCommand("psql template1 -c \"ALTER ROLE " + str(self.username) + " WITH nosuperuser\"")
+            self.execCommand(self.psql + "template1 -c \"ALTER ROLE " + str(self.username) + " WITH nosuperuser\"")
 
         self.initListaUsuarios()
 

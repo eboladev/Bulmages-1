@@ -5,6 +5,7 @@ import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from restbackupbase import *
+import functions
 
 class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
     def __init__(self, parent = None):
@@ -21,17 +22,17 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.nomdb = self.mui_dbname.text()
 
         # Creamos la base de datos
-        self.command = 'su postgres -c "createdb -E UNICODE ' + self.nomdb +'"'
+        self.command = functions.as_postgres + 'createdb -E UNICODE ' + self.nomdb + functions.end_sql
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = 'su postgres -c \"psql  -f /etc/bulmages/' + self.database + '.sql ' + self.nomdb + ' \"'
+        self.command = functions.psql + ' -f @BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.nomdb + functions.end_sql
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 
-        # Borramos el sql recien extraido en /etc/bulmages, ya que se conserva una copia dentro del backup
-        self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+        # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
+        self.command = os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 

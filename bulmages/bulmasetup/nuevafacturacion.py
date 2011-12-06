@@ -8,6 +8,8 @@ from PyQt4.QtCore import *
 from plugins import PluginsBulmaSetup
 from facturacion import Facturacion
 import plugins
+from tempfile import gettempdir
+import functions
 
 class NuevaFacturacion(Facturacion):
     def __init__(self, parent = None):
@@ -41,27 +43,28 @@ class NuevaFacturacion(Facturacion):
             message.exec_()
             return
 
+        os.chdir(gettempdir())
         # Creamos la base de datos
-        self.command = 'su postgres -c "createdb -E UNICODE ' + self.database +'"'
+        self.command = functions.as_postgres + 'createdb -E UNICODE ' + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = 'su postgres -c "psql -1 ' + self.database + ' < '+ plugins.pathdbbulmafact+'bulmafact_schema.sql"'
+        self.command = functions.psql + ' -1 ' + self.database + ' < '+ plugins.pathdbbulmafact +'bulmafact_schema.sql' + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos los datos minimos
-        self.command = 'su postgres -c "psql ' + self.database + ' < '+ plugins.pathdbbulmafact+'bulmafact_data.sql"'
+        self.command = functions.psql + ' ' + self.database + ' < ' + plugins.pathdbbulmafact + 'bulmafact_data.sql' + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Aplicamos el parche de bulmatpv si es necesario
         if (self.mui_soporteTPV.isChecked()):
-            self.command = 'su postgres -c "psql -1  ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
+            self.command = functions.psql + ' -1 ' + self.database + ' < ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql' + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -70,7 +73,7 @@ class NuevaFacturacion(Facturacion):
         self.nomempresa = unicode(self.mui_nomempresa.text()).encode('utf8')
         print self.nomempresa
         self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
-        self.command = 'su postgres -c \'psql ' + self.database + ' -c \"' +self.subcomand+ '\"\''
+        self.command = functions.psql2 + ' ' + self.database + ' -c \"' +self.subcomand+ '\"' + functions.end_sql2
         self.writecommand(self.command)
         os.system(self.command.toAscii().data())
 

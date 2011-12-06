@@ -7,6 +7,7 @@ from PyQt4.QtCore import *
 from eliminarusuariobase import *
 from empresa import Empresa
 from config import *
+import functions
 # Libreria de acceso a bases de datos PostgreSQL
 import psycopg2
 
@@ -60,7 +61,7 @@ class EliminarUsuario(Ui_EliminarUsuario, Empresa):
             if self.username.contains("  (su)"):
                 self.username.remove("  (su)")
 
-            self.comando = 'su postgres -c "dropuser \'' + str(self.username) + '\'"'
+            self.comando = functions.as_postgres+ 'dropuser \'' + str(self.username) + functions.end_sql
             self.process.start(self.comando)
             self.process.waitForFinished(-1)
 

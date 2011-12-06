@@ -7,6 +7,7 @@ from PyQt4.QtCore import *
 from guardarbackupbase import *
 from empresa import Empresa
 from config import *
+import functions
 # Libreria de acceso a bases de datos PostgreSQL
 import psycopg2
 
@@ -54,7 +55,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
             i = i + 1
 
         self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"/home")
-        self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
+        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 
@@ -71,35 +72,35 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 
         if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
             self.quehehecho = 1
-            if os.path.exists('/etc/bulmages/' + self.conffact):
+            if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conffact):
                 self.quehehecho = 1
             else:
-                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
+                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>@BULMAGES_CONFIG_DIR@/', None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
                 error.exec_()
-            if os.path.exists('/etc/bulmages/' + self.conftpv):
+            if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conftpv):
                 self.quehehecho = 2
         elif (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
             self.quehehecho = 3
-            if os.path.exists('/etc/bulmages/' + self.confcont):
+            if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.confcont):
                 self.quehehecho = 3
             else:
-                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
+                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>@BULMAGES_CONFIG_DIR@/', None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
                 error.exec_()
 
         if self.quehehecho == 1:
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.database + '.sql'
+            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
             self.proceso.start(self.command)
             self.proceso.waitForFinished(-1)
         if self.quehehecho == 2:
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.conftpv + ' ' + '/etc/bulmages/' + self.database + '.sql'
+            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.conftpv + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
             self.proceso.start(self.command)
             self.proceso.waitForFinished(-1)
         if self.quehehecho == 3:
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.confcont + ' ' + '/etc/bulmages/' + self.database + '.sql'
+            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.confcont + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
             self.proceso.start(self.command)
             self.proceso.waitForFinished(-1)
 
-        self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+        os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 

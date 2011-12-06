@@ -7,6 +7,8 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from plugins import PluginsBulmaSetup
 import plugins
+from tempfile import gettempdir
+import functions
 # Libreria de acceso a bases de datos PostgreSQL
 import psycopg2
 
@@ -38,7 +40,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             message.exec_()
             respuesta = message.clickedButton().text()
             if respuesta == Yes:
-                comandoroot = "su postgres -c \"createuser -s root\""
+                comandoroot = functions.as_postgres + "createuser -s root" + functions.end_sql 
                 self.process.start(comandoroot)
                 self.process.waitForFinished(-1)
                 self.execQuerySinConsola ("ALTER USER ROOT WITH password 'password'")
@@ -116,7 +118,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
 
     def guardaQuery(self, query):
         self.query = query
-        self.fileHandle = open ( '/tmp/query.sql', 'w' )
+        self.fileHandle = open ( '%s/query.sql' % gettempdir(), 'w' )
         self.fileHandle.write ( query )
         self.fileHandle.close()
 
@@ -125,7 +127,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             self.writecommand(QString("----") + self.database + QString("----"))
             self.subcomand = query
             self.guardaQuery(self.subcomand)
-            self.command = 'su postgres -c \"psql -t -f /tmp/query.sql ' + self.database + '\"'
+            os.chdir('/tmp')
+            self.command = functions.psql+' -t -f ' + gettempdir() + '/query.sql' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -136,7 +139,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         if (self.database != ''):
             self.subcomand = query
             self.guardaQuery(self.subcomand)
-            self.command = 'su postgres -c \"psql -t -f /tmp/query.sql template1\"'
+            os.chdir('/tmp')
+            self.command = functions.psql + ' -t -f ' + gettempdir() + '/query.sql template1' + functions.end_sql
             self.process.start(self.command)
             self.process.waitForFinished(-1)
         return QString('')
