@@ -1,38 +1,39 @@
 #######
 #Plugins
 #######
-#README.ca
+#README.es
 #20080501
 
-Nombre: Articles
+Nombre: Biblioteca (AutoForms)
 
-Biblioteca: libpluginbf_articulo.so
+Biblioteca: 
 
-Descripción: <H1>Gestió d'articles</H1>
-<PARA>Aquest plugin permet la introducció d'articles al sistema.</PARA>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/product.svg" WIDTH="100"/><BR>Gestion de biblioteca</H1>
+<PARA>Este plugin realiza la gestion de una sencilla biblioteca. </PARA>
 <HR>
-<PARA>Presenta el llistat d'articles i permet afegir, editar i modificar articles.</PARA>
+<PARA>Permite catalogar los libros, gestion de autores, prestamos y devoluciones.</PARA>
 <BR>
-<PARA>En instal·lar el plugin, apareixerà el menú Articles a l'aplicació amb les opcions 
-<B>Llistat d'Articles</B> i l'opció
-<B>Nou Article</B></PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
 
-ArchivoSQLpatch:
+ArchivoSQLpatch: pluginbf_biblioteca.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: pluginbf_biblioteca-rm.sql
 
-Dependencias: libpluginbf_iva.so;
+Dependencias: libpluginbl_autoform.so; libpluginbl_template.so; libpluginbl_template2ods.so; libpluginbl_report.so; libpluginbl_report2ods.so;
 
 Incompatibles:
 
 Orden: 29
 
-Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs; impers_articulo_estadisticas_comparativa.rml
+Reports: impers_autor_detalle.rml; impers_autor_detalle2.rml; impers_autor_algo.pys; autor.rml
 
-Categorias: Facturació genèrica;
+Categorias: AutoForms;Biblioteca;Experimentales;
 
-Comentarios:
+Comentarios: Este plugin sirve como ejemplo del uso de AutoForms.
+
+AutoFormFile: autoform_pluginbf_biblioteca_spec.spc.es
+
+

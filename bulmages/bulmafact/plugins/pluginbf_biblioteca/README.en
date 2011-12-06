@@ -1,37 +1,39 @@
 #######
 #Plugins
 #######
-#README.en
+#README.es
 #20080501
 
-Nombre: Item
+Nombre: Biblioteca (AutoForms)
 
-Biblioteca: libpluginbf_articulo.so
+Biblioteca: 
 
-Descripción: <H1>Item management</H1>
-<PARA>This plugin is used to introduce items in the system.</PARA>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/product.svg" WIDTH="100"/><BR>Gestion de biblioteca</H1>
+<PARA>Este plugin realiza la gestion de una sencilla biblioteca. </PARA>
 <HR>
-<PARA>It presents a listing of items and it allows to add, edit and modify items</PARA>
+<PARA>Permite catalogar los libros, gestion de autores, prestamos y devoluciones.</PARA>
 <BR>
-<PARA>After installing the plugin the menu Items will appear in the program with the options <B>Item listing</B> and the 
-option <B>New Item</B></PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
 
-ArchivoSQLpatch:
+ArchivoSQLpatch: pluginbf_biblioteca.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: pluginbf_biblioteca-rm.sql
 
-Dependencias: libpluginbf_iva.so;
+Dependencias: libpluginbl_autoform.so; libpluginbl_template.so; libpluginbl_template2ods.so; libpluginbl_report.so; libpluginbl_report2ods.so;
 
 Incompatibles:
 
 Orden: 29
 
-Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs; impers_articulo_estadisticas_comparativa.rml
+Reports: impers_autor_detalle.rml; impers_autor_detalle2.rml; impers_autor_algo.pys; autor.rml
 
-Categorias: Generic invoicing;
+Categorias: AutoForms;Biblioteca;Experimentales;
 
-Comentarios:
+Comentarios: Este plugin sirve como ejemplo del uso de AutoForms.
+
+AutoFormFile: autoform_pluginbf_biblioteca_spec.spc.es
+
+
