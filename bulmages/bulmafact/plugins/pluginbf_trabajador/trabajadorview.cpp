@@ -197,8 +197,8 @@ void TrabajadorView::on_mui_guardar_clicked()
             m_item->setText ( m_apellidostrabajador->text() + m_nomtrabajador->text() );
         } // end if
         if ( m_archivoimagen != "" ) {
-            QString cadena = "cp " + m_archivoimagen + " " + g_confpr->value( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
-            system ( cadena.toAscii().constData() );
+            QString imagenpersonal = g_confpr->value( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
+            blCopyFile(m_archivoimagen, imagenpersonal);
         } // end if
 
         /// Emitimos la se&ntilde;al apropiada en el BlApplication.
