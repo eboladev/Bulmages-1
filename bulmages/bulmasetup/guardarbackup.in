@@ -54,7 +54,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
                 break
             i = i + 1
 
-        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"/home")
+        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"@HOME_DIR@")
         self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)

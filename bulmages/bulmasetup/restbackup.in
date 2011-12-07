@@ -47,7 +47,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.accept()
 
     def on_mui_filesearch_released(self):
-        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","/home","TAR.GZ (*.tar.gz)")
+        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","@HOME_DIR@","TAR.GZ (*.tar.gz)")
         self.mui_filename.setText(self.openfile)
 
         self.arra = self.openfile.split('/')

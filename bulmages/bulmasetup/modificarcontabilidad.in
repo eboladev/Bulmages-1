@@ -37,7 +37,7 @@ class ModificarContabilidad(Contabilidad):
         self.process.waitForFinished(-1)
         self.writecommand(self.process.readAllStandardOutput())
 
-        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
+        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
         self.confcont = 'bulmacont_' + self.database + '.conf'
 
         if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.confcont):

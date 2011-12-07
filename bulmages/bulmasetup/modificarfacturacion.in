@@ -47,7 +47,7 @@ class ModificarFacturacion( Facturacion):
         self.process.waitForFinished(-1)
         self.writecommand(self.process.readAllStandardOutput())
 
-        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
+        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
 
         self.conffact = 'bulmafact_' + self.database + '.conf'
         self.conftpv = 'bulmatpv_' + self.database + '.conf'
