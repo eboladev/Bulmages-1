@@ -153,6 +153,7 @@ QString BL_EXPORT blGetEnv( const char *varName );
 
 #ifdef Q_OS_WIN32
 wchar_t* BL_EXPORT QStringToWCHAR (QString inString);
+bool BL_EXPORT RawDataToPrinter(QString printerName, QByteArray dataToPrint);
 #endif
   
 #endif
