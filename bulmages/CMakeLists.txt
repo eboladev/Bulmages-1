@@ -112,8 +112,14 @@ if(NOT WIN32)
 set( BULMAGES_OPTWARE_DIR /opt/bulmages CACHE PATH "The location of bulmages optware dir")
 endif(NOT WIN32)
 
+if(WIN32)
+set(HOME_DIR $ENV{USERPROFILE})
+endif
 
+if(NOT WIN32)
 set(HOME_DIR $ENV{HOME})
+endif
+
 
 # Remove directory to prevent that css files can grow with plugins css merge.
 FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
