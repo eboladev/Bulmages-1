@@ -1266,7 +1266,7 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 	      QFile file(dir + archivo);
 	      if (file.open(QIODevice::ReadOnly)) {
 	      	QByteArray blob = file.readAll();
-        	RawDataToPrinter(printer, blob);
+        	BlRawDataToPrinter(printer, blob);
     
 	      } else {
 		// No se ha podido leer el archivo.
@@ -1310,10 +1310,10 @@ QString blGetEnv( const char *varName ) {
 /// En MS-Windows hay problemas al pasar a la codificacion UTF-8.
 #ifdef Q_OS_WIN32
 	DWORD length;
-	length = GetEnvironmentVariableW(QStringToWCHAR(varName), NULL, 0);
+	length = GetEnvironmentVariableW(BlQStringToWCHAR(varName), NULL, 0);
 
 	wchar_t *variable = new wchar_t[length];
-	GetEnvironmentVariableW(QStringToWCHAR(varName), variable, length );
+	GetEnvironmentVariableW(BlQStringToWCHAR(varName), variable, length );
 
 	return QString::fromWCharArray(variable);
 #else
@@ -1324,7 +1324,7 @@ QString blGetEnv( const char *varName ) {
 
 #ifdef Q_OS_WIN32
 /// Converts QString to WCHAR (MS-Windows only function).
-wchar_t* QStringToWCHAR (QString inString) {
+wchar_t* BlQStringToWCHAR (QString inString) {
     BL_FUNC_DEBUG
 
 	if (inString.isEmpty())
@@ -1341,7 +1341,7 @@ wchar_t* QStringToWCHAR (QString inString) {
 }
 
 
-bool RawDataToPrinter(QString printerName, QByteArray dataToPrint)
+bool BlRawDataToPrinter(QString printerName, QByteArray dataToPrint)
 {
     BL_FUNC_DEBUG
 
@@ -1354,14 +1354,14 @@ bool RawDataToPrinter(QString printerName, QByteArray dataToPrint)
 
 	/// Converts data to DWORD format.
 	rawBlob = reinterpret_cast<BYTE*>(dataToPrint.data());
-	wchar_t *selectedPrinter = QStringToWCHAR(printerName);
+	wchar_t *selectedPrinter = BlQStringToWCHAR(printerName);
 
 	/// Printer handle.
 	if ( OpenPrinterW( selectedPrinter, &printerHandle, NULL ) ) {
 
 	    /// Info about document to print.
-	    documentInfo.pDocName = QStringToWCHAR("Document in raw format");
-	    documentInfo.pDatatype = QStringToWCHAR("RAW");
+	    documentInfo.pDocName = BlQStringToWCHAR("Document in raw format");
+	    documentInfo.pDatatype = BlQStringToWCHAR("RAW");
 	    documentInfo.pOutputFile = NULL;
 
 	    /// Start document.
@@ -1377,7 +1377,7 @@ bool RawDataToPrinter(QString printerName, QByteArray dataToPrint)
 		    if ( EndPagePrinter( printerHandle ) ) {
 
 		      /// End document.
-		      if( EndDocPrinter( printerHandle ) ) {
+		      if ( EndDocPrinter( printerHandle ) ) {
 
 			  /// Close printer.
 			  ClosePrinter( printerHandle );
