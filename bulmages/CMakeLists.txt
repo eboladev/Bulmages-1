@@ -114,11 +114,11 @@ endif(NOT WIN32)
 
 if(WIN32)
 set(HOME_DIR $ENV{USERPROFILE})
-endif
+endif(WIN32)
 
 if(NOT WIN32)
 set(HOME_DIR $ENV{HOME})
-endif
+endif(NOT WIN32)
 
 
 # Remove directory to prevent that css files can grow with plugins css merge.
