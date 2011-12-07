@@ -1258,12 +1258,12 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 	    if ( header ) {
 		SubForm_AutoForm *subformods = new SubForm_AutoForm ( sub );
 		
-		QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+		QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "mui_hboxLayout" );
 		if ( !m_hboxLayout1 ) {
 		    m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
 		    m_hboxLayout1->setSpacing (0 );
 		    m_hboxLayout1->setMargin ( 0 );
-		    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+		    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "mui_hboxLayout" ) );
 		} // end if
 		
 		if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
