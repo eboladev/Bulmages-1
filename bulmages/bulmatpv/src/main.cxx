@@ -67,6 +67,8 @@ int main ( int argc, char **argv )
         blBindTextDomain ("bulmatpv", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
         blTextDomain ("bulmatpv");
 
+	if (g_confpr->value(CONF_TPV_TEXTOMESA).isEmpty()) g_confpr->setValue(CONF_TPV_TEXTOMESA, _("MESA "));
+
         /// Iniciamos la clase QApplication para el uso de las Qt.
         g_theApp = new BlApplication ( argc, argv );
 
