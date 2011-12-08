@@ -15,9 +15,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
 
     def on_mui_aceptar_released(self):
 
-        self.command = 'tar xzf ' + self.mui_filename.text() + ' --directory /'
-        self.proceso.start(self.command)
-        self.proceso.waitForFinished(-1)
+        functions.multios().decompress( str(self.mui_filename.text()), '@BULMAGES_CONFIG_DIR@/')
 
         self.nomdb = self.mui_dbname.text()
 
@@ -32,9 +30,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.proceso.waitForFinished(-1)
 
         # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
-        self.command = os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
-        self.proceso.start(self.command)
-        self.proceso.waitForFinished(-1)
+        os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
 
         Yes = 'Ok'
         yasta = QtGui.QMessageBox(self)
@@ -47,7 +43,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.accept()
 
     def on_mui_filesearch_released(self):
-        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","/home","TAR.GZ (*.tar.gz)")
+        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","@HOME_DIR@","TAR.GZ (*.tar.gz)")
         self.mui_filename.setText(self.openfile)
 
         self.arra = self.openfile.split('/')

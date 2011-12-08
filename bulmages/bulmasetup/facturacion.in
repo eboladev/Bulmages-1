@@ -73,8 +73,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         #Comprobamos que exista la imagen y si es asi la presentamos.
         if (self.database != None):
-            if (os.path.exists('/opt/bulmages/openreports_' + self.database + 'es/logo.jpg' )):
-                self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + 'es/logo.jpg')
+            if (os.path.exists('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + 'es/logo.jpg' )):
+                self.pixmap = QtGui.QPixmap('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + 'es/logo.jpg')
                 self.mui_img.setPixmap(self.pixmap)
 
     def inicializar(self):
@@ -122,33 +122,33 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         # Creamos el directorio especifico para guardar las plantillas y los idiomas
         
         for language in self.languages:
-            functions.multios().mkdir_p(str("/opt/bulmages/openreports_%s/%s" %(self.database,language)),0755)
+            functions.multios().mkdir_p(str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" %(self.database,language)),0755)
 
 
         i = 1
-        while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
+        while (os.path.exists('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))):
             i = i + 1
 
         # Hacemos un backup de openreports
-        functions.multios().copy(str("/opt/bulmages/openreports_%s" % self.database),str("/opt/bulmages/openreports_%s_old%s" % (self.database,str(i))))
+        functions.multios().copy(str("@BULMAGES_OPTWARE_DIR@/openreports_%s" % self.database),str("@BULMAGES_OPTWARE_DIR@/openreports_%s_old%s" % (self.database,str(i))))
 
-        self.writecommand(QtGui.QApplication.translate("Facturacion",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
+        self.writecommand(QtGui.QApplication.translate("Facturacion",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))
 
 
         # Copiamos los archivos genericos
         # Copiamos las plantillas en cada idioma
         for language in self.languages:
-            functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
             if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
-                functions.multios().copy(str(plugins.confopenreports+ "%s/logo.jpg" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str("/opt/bulmages/openreports_" + self.database +"/%s" % language) )
+                functions.multios().copy(str(plugins.confopenreports+ "%s/logo.jpg" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
             # Pasamos el logotipo
             if (self.mui_textfile.text() != ""):
-                functions.multios().copy(str(self.mui_textfile.text()),str("/opt/bulmages/openreports_" + self.database +"%s/logo.jpg" % language) )
+                functions.multios().copy(str(self.mui_textfile.text()),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"%s/logo.jpg" % language) )
         # END Copiamos las plantillas en cada idioma
 
 
@@ -176,7 +176,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     while (self.j < len ( self.arra)):
                         # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("/opt/bulmages/openreports_" + self.database +"/%s" % language))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language))
                         self.j = self.j + 1
             self.i = self.i + 1
 
@@ -198,7 +198,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     while (self.j < len ( self.arra)):
                         # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("/opt/bulmages/openreports_" + self.database +"/%s" % language))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language))
                         self.j = self.j + 1
             self.i = self.i + 1
 
@@ -227,17 +227,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             # and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
             if (self.text.contains("CONF_DIR_OPENREPORTS")):
                 # Escribimos el parametro como lo deseamos
-                #self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/\n\n"
+                #self.out << "\n\nCONF_DIR_OPENREPORTS @BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/\n\n"
                 self.encontradoopenreports = 1;
 
             if (self.text.contains("CONF_DIR_IMG_ARTICLES")):
                 # Escribimos el parametro como lo deseamos
-                #self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+                #self.out << "\n\nCONF_DIR_IMG_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
                 self.encontradoarticles = 1;
 
             if (self.text.contains("CONF_STYLESHEET")):
                 # Escribimos el parametro como lo deseamos
-                #self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+                #self.out << "\n\nCONF_DIR_IMG_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
                 self.encontradostylesheet = 1;
 
             self.out << self.text << "\n"
@@ -245,7 +245,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         if (self.encontradoopenreports == 0):
                 # Escribimos el parametro como lo deseamos
-            self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
+            self.out << "\n\nCONF_DIR_OPENREPORTS @BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
 
         if (self.encontradostylesheet == 0):
             # Escribimos el parametro como lo deseamos
@@ -268,7 +268,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         functions.multios().touch(BulmafactConf)
 
         # Creamos el directorio especifico para guardar las imagenes
-        functions.multios().mkdir_p(str("/opt/bulmages/imgarticles_" + self.database), 0777)
+        functions.multios().mkdir_p(str("@BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database), 0777)
 
 
         # Hacemos un backup del archivo
@@ -404,8 +404,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
             if (self.encontradoarticles == 0):
                     # Escribimos el parametro como lo deseamos
-                self.out << "\n\nCONF_DIR_THUMB_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
-                self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+                self.out << "\n\nCONF_DIR_THUMB_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
+                self.out << "\n\nCONF_DIR_IMG_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
 
 
 

@@ -11,10 +11,11 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_B
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
 
-MESSAGE( STATUS "CMAKE_BINARY_DIR:         " ${CMAKE_BINARY_DIR} )
-MESSAGE( STATUS "CMAKE_CURRENT_SOURCE_DIR:         " ${CMAKE_CURRENT_SOURCE_DIR} )
-MESSAGE( STATUS "CMAKE_SOURCE_DIR:         " ${CMAKE_SOURCE_DIR} )
-MESSAGE( STATUS "FILE:         " ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.es.in )
+# Mensajes de depuracion
+#MESSAGE( STATUS "CMAKE_BINARY_DIR:         " ${CMAKE_BINARY_DIR} )
+#MESSAGE( STATUS "CMAKE_CURRENT_SOURCE_DIR: " ${CMAKE_CURRENT_SOURCE_DIR} )
+#MESSAGE( STATUS "CMAKE_SOURCE_DIR:         " ${CMAKE_SOURCE_DIR} )
+#MESSAGE( STATUS "FILE:                     " ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.es.in )
 
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.es.in ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.es @ONLY)

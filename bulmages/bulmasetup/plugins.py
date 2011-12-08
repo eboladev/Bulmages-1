@@ -93,5 +93,5 @@ if __name__=="__main__":
     pathdbbulmacont = ""
     pathdbparches = ""
     configfiles = ""
-    confsharebulmages = "/opt/bulmages/share/bulmages/"
+    confsharebulmages = "@BULMAGES_OPTWARE_DIR@/share/bulmages/"
     win=PluginsBulmaSetup()

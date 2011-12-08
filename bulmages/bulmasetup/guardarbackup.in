@@ -54,7 +54,8 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
                 break
             i = i + 1
 
-        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"/home")
+        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"@HOME_DIR@")
+        destination=str(self.directorio + '/' + self.database + '.tar.gz')
         self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
@@ -88,21 +89,16 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
                 error.exec_()
 
         if self.quehehecho == 1:
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
-            self.proceso.start(self.command)
-            self.proceso.waitForFinished(-1)
+            files=[str('@BULMAGES_CONFIG_DIR@/' + self.conffact), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
+            functions.multios().compress(files,destination)
         if self.quehehecho == 2:
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.conftpv + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
-            self.proceso.start(self.command)
-            self.proceso.waitForFinished(-1)
+            files=[str('@BULMAGES_CONFIG_DIR@/' + self.conffact), str('@BULMAGES_CONFIG_DIR@/' + self.conftpv), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
+            functions.multios().compress(files,destination)
         if self.quehehecho == 3:
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.confcont + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
-            self.proceso.start(self.command)
-            self.proceso.waitForFinished(-1)
+            files=[str('@BULMAGES_CONFIG_DIR@/' + self.confcont), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
+            functions.multios().compress(files,destination)
 
         os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
-        self.proceso.start(self.command)
-        self.proceso.waitForFinished(-1)
 
         Yes = 'Ok'
         yasta = QtGui.QMessageBox(self)

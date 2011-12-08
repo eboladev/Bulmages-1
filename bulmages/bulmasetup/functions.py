@@ -4,6 +4,9 @@ import sys
 import os
 import shutil
 from string import split
+import tarfile
+from types import ListType
+
 
 # This expand_path is used to expand the path with your desired folders
 expand_pathlist = []
@@ -65,6 +68,34 @@ class multios():
           return os.path.abspath(os.path.join(path, filename))
        else:
           return None
+          
+          
+    def compress(self, src, tar_file_name):
+        """ Given the source will compress it into a *.tar.gz
+        """
+        try:
+            tarFile = tarfile.open(tar_file_name, mode = 'w:gz')
+            if (type(src) == type([])):
+                for item in src:
+                    stripeditem = os.path.basename(item)
+                    tarFile.add(item,stripeditem)
+            else:
+                tarFile.add(src)
+            tarFile.close()
+            return True
+        except:
+            return None
+            
+    def decompress(self, tar_file_name, dst):
+        """ Given the source will decompress a *.tar.gz
+        """
+        try:
+            tarFile = tarfile.open(tar_file_name, mode = 'r:gz')
+            tarFile.extractall(dst)
+            tarFile.close()
+            return True
+        except:
+            return None
           
 # Su only exists on posix systems
 if os.name == 'posix':

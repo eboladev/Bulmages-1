@@ -69,9 +69,10 @@ include_directories(
 QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
-IF(WIN32)
 set(bulmafact_RCCS ../../bulmages.qrc)
 QT4_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
+
+IF(WIN32)
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBF_BULMAFACT)
 ENDIF(WIN32)
 
