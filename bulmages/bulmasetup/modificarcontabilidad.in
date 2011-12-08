@@ -31,11 +31,13 @@ class ModificarContabilidad(Contabilidad):
         self.mui_textBrowser.clear()
 
         self.writecommand("===== Backup =====<br>")
-        self.command = functions.pg_dump +  ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        #functions.pg_dump +  ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@' + self.database + '.sql ' + self.database
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
         self.writecommand(self.process.readAllStandardOutput())
+
 
         self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
         self.confcont = 'bulmacont_' + self.database + '.conf'
@@ -46,10 +48,7 @@ class ModificarContabilidad(Contabilidad):
             self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.confcont + '</font>')
 
         self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-        self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.confcont + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
-        self.writecommand(self.command)
-        self.process.start(self.command)
-        self.process.waitForFinished(-1)
+        functions.multios().compress(list(['@BULMAGES_CONFIG_DIR@/' + self.confcont, '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']), str(self.directorio + '/' + self.database + '.tar.gz'))
 
         self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + ' =====<br><br>')
 

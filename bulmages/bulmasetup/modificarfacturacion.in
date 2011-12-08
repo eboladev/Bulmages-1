@@ -41,11 +41,10 @@ class ModificarFacturacion( Facturacion):
         self.mui_textBrowser.clear()
 
         self.writecommand("===== Backup =====<br>")
-        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@' + self.database + '.sql ' + self.database
-        self.writecommand(self.command)
-        self.process.start(self.command)
-        self.process.waitForFinished(-1)
-        self.writecommand(self.process.readAllStandardOutput())
+        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+        #functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
 
         self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
 
@@ -64,23 +63,19 @@ class ModificarFacturacion( Facturacion):
 
         if self.quehehecho == 1:
             self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
-            self.writecommand(self.command)
-            self.process.start(self.command)
-            self.process.waitForFinished(-1)
+            files=['@BULMAGES_CONFIG_DIR@/' + self.conffact, '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']
+            destination=self.directorio + '/' + self.database + '.tar.gz'
+            functions.multios().compress(files,destination)
         if self.quehehecho == 2:
             self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.conftpv + ' ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
-            self.writecommand(self.command)
-            self.process.start(self.command)
-            self.process.waitForFinished(-1)
+            files=['@BULMAGES_CONFIG_DIR@/' + self.conffact, '@BULMAGES_CONFIG_DIR@/' + self.conftpv,'@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']
+            destination=self.directorio + '/' + self.database + '.tar.gz'
+            functions.multios().compress(files,destination)
 
         self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + " =====<br><br>")
 
-        self.command = 'rm @BULMAGES_CONFIG_DIR@/' + self.database + '.sql'
+        os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
         self.writecommand('Eliminando archivos temporales')
-        self.process.start(self.command)
-        self.process.waitForFinished(-1)
 
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible
