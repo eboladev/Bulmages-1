@@ -1,0 +1,4 @@
+add_subdirectory(widgetbl_searchwidget)
+add_subdirectory(widgetbl_bankedit)
+add_subdirectory(widgetbl_datesearch)
+add_subdirectory(widgetbl_progressbar)
