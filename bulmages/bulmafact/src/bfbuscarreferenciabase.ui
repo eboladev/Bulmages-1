@@ -37,7 +37,7 @@
      <property name="minimumSize">
       <size>
        <width>100</width>
-       <height>26</height>
+       <height>25</height>
       </size>
      </property>
      <property name="maxLength">
@@ -49,14 +49,14 @@
     <widget class="QToolButton" name="mui_informe">
      <property name="minimumSize">
       <size>
-       <width>26</width>
-       <height>26</height>
+       <width>25</width>
+       <height>25</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>26</width>
-       <height>26</height>
+       <width>25</width>
+       <height>25</height>
       </size>
      </property>
      <property name="toolTip">
@@ -78,14 +78,14 @@
     <widget class="QToolButton" name="mui_abrirtodo">
      <property name="minimumSize">
       <size>
-       <width>26</width>
-       <height>26</height>
+       <width>25</width>
+       <height>25</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>26</width>
-       <height>26</height>
+       <width>25</width>
+       <height>25</height>
       </size>
      </property>
      <property name="toolTip">
