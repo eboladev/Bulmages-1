@@ -258,6 +258,13 @@ QString BlDbField::valorcampoprep ( int &error )
             valor = m_dbConnection->sanearCadena ( m_valorcampo );
         } // end if
         break;
+    case DbTime:
+        if ( m_valorcampo == "" ) {
+            valor = "NULL";
+        } else {
+            valor = "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
+        } // end if
+        break;
     default:
         error = -1;
     } // end switch
@@ -682,7 +689,7 @@ int BlDbRecord::setDbValueNextToLast ( QString nomb, int vinc, QString cond )
             next = QString ( "%1" ).arg ( maxv.toInt() + vinc );
         break;
     case BlDbField::DbVarChar:
-        blMsgError ( "No se puede obtener el siguiente al último en un campo de texto." );
+        blMsgError ( _("No se puede obtener el siguiente al ultimo en un campo de texto.") );
         break;
     case BlDbField::DbDate:
         if ( !maxv.isEmpty() ) {
@@ -697,10 +704,14 @@ int BlDbRecord::setDbValueNextToLast ( QString nomb, int vinc, QString cond )
             next = QString ( "%1" ).arg ( maxv.toDouble() + vinc );
         break;
     case BlDbField::DbBoolean:
-        blMsgError ( "No se puede obtener el siguiente al último en un campo booleano." );
+        blMsgError ( _("No se puede obtener el siguiente al ultimo en un campo booleano.") );
+        break;
+    case BlDbField::DbTime:
+	// TODO
+        blMsgError ( _("No se puede obtener el siguiente al ultimo en un campo hora.") );
         break;
     default:
-        blMsgError ( "No se pudo determinar el tipo de campo para calcular el siguiente al último." );
+        blMsgError ( _("No se pudo determinar el tipo de campo para calcular el siguiente al ultimo.") );
     } // end switch
 
     return setDbValue ( nomb, next );

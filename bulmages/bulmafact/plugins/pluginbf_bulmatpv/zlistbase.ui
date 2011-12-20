@@ -21,7 +21,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Cuadres de Caja</string>
+   <string>Cuadres de caja</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
