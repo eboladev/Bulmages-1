@@ -8,6 +8,7 @@ from nuevousuariobase import *
 from empresa import Empresa
 from config import *
 import psycopg2
+import functions
 
 class NuevoUsuario(Ui_NuevoUsuario, Empresa):
 
