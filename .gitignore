@@ -1,6 +1,5 @@
 blconfig.h
 build
-*.o
 *.cmake
 *.conf
 *.css
@@ -26,3 +25,10 @@ menu/
 update_message_catalog_lang
 version
 applications
+*.o
+moc_*.cxx
+ui_*.h
+*.po
+*.gmo
+*.so*
+*.pot
