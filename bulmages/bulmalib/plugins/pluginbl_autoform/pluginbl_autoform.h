@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLUGINBL_AUTOFORM
-#define PLUGINBL_AUTOFORM
+#ifndef PLUGINBL_AUTOFORMH
+#define PLUGINBL_AUTOFORMH
 
 #include "QObject"
 #include "QMenu"

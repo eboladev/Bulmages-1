@@ -8,6 +8,7 @@ from nuevousuariobase import *
 from empresa import Empresa
 from config import *
 import psycopg2
+import functions
 
 class NuevoUsuario(Ui_NuevoUsuario, Empresa):
 
@@ -15,17 +16,18 @@ class NuevoUsuario(Ui_NuevoUsuario, Empresa):
         Empresa.__init__(self,parent)
         self.setupUi(self)
         self.proceso = QtCore.QProcess()
+        self.psql = functions.multios().search_executable('psql')
 
     def on_mui_botonera_accepted(self):
         # Creamos el usuario
 
         if (self.mui_superusuario.isChecked()):
-            self.execComando("su postgres -c \"createuser -s -d -r  \'" + self.mui_nombre.text() + "\'\"")
+            self.execComando(functions.as_postgres + "createuser -s -d -r  \'" + self.mui_nombre.text() + "\'" + functions.end_sql)
         else:
-            self.execComando("su postgres -c \"createuser -S -d -r  \'" + self.mui_nombre.text() + "\'\"")
+            self.execComando(functions.as_postgres + "createuser -S -d -r  \'" + self.mui_nombre.text() + "\'" + functions.end_sql)
 
         # Cambiamos el password del usuario
-        self.execComando("psql template1 -c \"ALTER ROLE " + self.mui_nombre.text() + " WITH PASSWORD '" + self.mui_password.text() + "'\"")
+        self.execComando(self.psql + " template1 -c \"ALTER ROLE " + self.mui_nombre.text() + " WITH PASSWORD '" + self.mui_password.text() + "'\"")
 
         # Y como ya hemos acabado, cerramos la aplicacion.
         self.accept()

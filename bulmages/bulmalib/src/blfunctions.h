@@ -152,7 +152,8 @@ void BL_EXPORT blWebBrowser(const QString &uri, const QString &defbrowser="");
 QString BL_EXPORT blGetEnv( const char *varName );
 
 #ifdef Q_OS_WIN32
-wchar_t* BL_EXPORT QStringToWCHAR (QString inString);
+wchar_t* BL_EXPORT BlQStringToWCHAR (QString inString);
+bool BL_EXPORT BlRawDataToPrinter(QString printerName, QByteArray dataToPrint);
 #endif
   
 #endif

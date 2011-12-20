@@ -553,29 +553,15 @@ void BcPlanContableListView::on_mui_busqueda_editFinished()
 void BcPlanContableListView::imprimir()
 {
     BL_FUNC_DEBUG
+    /// Copiamos el archivo.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-    /// Copiamos el archivo.
-#ifdef Q_OS_WIN32
+    blCopyFile(archivo, archivod);
 
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system ( archivo.toAscii() );
     /// Copiamos el logo.
-#ifdef Q_OS_WIN32
-
-    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-    system ( archivologo.toAscii().constData() );
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
+    blCopyFile(archivologo, logousuario);
 
     QFile file;
     file.setFileName ( archivod );

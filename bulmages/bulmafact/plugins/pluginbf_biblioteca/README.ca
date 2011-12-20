@@ -1,0 +1,39 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501
+
+Nombre: Biblioteca (AutoForms)
+
+Biblioteca: 
+
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/product.svg" WIDTH="100"/><BR>Gestion de biblioteca</H1>
+<PARA>Este plugin realiza la gestion de una sencilla biblioteca. </PARA>
+<HR>
+<PARA>Permite catalogar los libros, gestion de autores, prestamos y devoluciones.</PARA>
+<BR>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD:
+
+ArchivoSQLpatch: pluginbf_biblioteca.sql
+
+ArchivoSQLdeins: pluginbf_biblioteca-rm.sql
+
+Dependencias: libpluginbl_autoform.so; libpluginbl_template.so; libpluginbl_template2ods.so; libpluginbl_report.so; libpluginbl_report2ods.so;
+
+Incompatibles:
+
+Orden: 29
+
+Reports: impers_autor_detalle.rml; impers_autor_detalle2.rml; impers_autor_algo.pys; autor.rml
+
+Categorias: AutoForms;Biblioteca;Experimentales;
+
+Comentarios: Este plugin sirve como ejemplo del uso de AutoForms.
+
+AutoFormFile: autoform_pluginbf_biblioteca_spec.spc.es
+
+

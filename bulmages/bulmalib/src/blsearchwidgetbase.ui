@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>243</width>
-    <height>77</height>
+    <width>283</width>
+    <height>74</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -21,14 +21,14 @@
     <number>0</number>
    </property>
    <property name="spacing">
-    <number>5</number>
+    <number>4</number>
    </property>
-   <item row="0" column="0" colspan="3">
+   <item row="0" column="0" colspan="4">
     <widget class="QLabel" name="mui_labelBusqueda">
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>17</height>
+       <height>22</height>
       </size>
      </property>
      <property name="text">
@@ -46,8 +46,8 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>0</width>
-       <height>25</height>
+       <width>100</width>
+       <height>22</height>
       </size>
      </property>
     </widget>
@@ -78,8 +78,8 @@
      </property>
      <property name="iconSize">
       <size>
-       <width>22</width>
-       <height>22</height>
+       <width>16</width>
+       <height>16</height>
       </size>
      </property>
      <property name="shortcut">
@@ -87,8 +87,30 @@
      </property>
     </widget>
    </item>
+   <item row="2" column="0" colspan="4">
+    <widget class="QLabel" name="m_textBusqueda">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="2">
-    <widget class="QPushButton" name="m_clearSearchWidget">
+    <widget class="QToolButton" name="m_clearSearchWidget">
      <property name="minimumSize">
       <size>
        <width>22</width>
@@ -101,43 +123,18 @@
        <height>22</height>
       </size>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
+     </property>
      <property name="toolTip">
       <string>Limpiar campo</string>
      </property>
      <property name="text">
-      <string/>
+      <string>...</string>
      </property>
      <property name="icon">
       <iconset resource="../../bulmages.qrc">
        <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>16</width>
-       <height>16</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QLabel" name="m_textBusqueda">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>25</height>
-      </size>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="text">
-      <string/>
      </property>
     </widget>
    </item>

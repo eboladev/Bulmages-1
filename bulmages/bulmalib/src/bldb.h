@@ -50,8 +50,9 @@ public:
     - DbDate . Fecha en formato Europeo (dd/mm/yyyy)
     - DbNumeric . Numero en punto fijo
     - DbBoolean . Valor Booleano (TRUE / FALSE) (t / f)
+    - DbTime . Hora.
     */
-    enum DbType {DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean = 5};
+    enum DbType {DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean = 5, DbTime = 6};
     /** Indica las restricciones que soporta el dato.
     - DbNothing . Ninguna,
     - DbNotNull . No puede ser nulo,

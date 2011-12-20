@@ -1254,10 +1254,24 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 	      QString comando = "lp -d" + printer + " " + dir + archivo;
 	      system ( comando.toAscii().data() );
       #else
+	      /* TODO: Eliminar CONF_SPOOL porque ya se imprime en 'raw' directamente desde BulmaLib.
+	       *
 	      QString comando = "\"" + g_confpr->value(CONF_SPOOL)  + "\" \"" + dir + archivo + "\" " + printer;
 	      comando.replace("/","\\");
 	      comando = "\"" + comando + "\"";
-	      system ( comando.toAscii().data() );		
+	      system ( comando.toAscii().data() );
+	      */
+
+	      /// Lee el contenido del archivo y lo manda a la impresora.
+	      QFile file(dir + archivo);
+	      if (file.open(QIODevice::ReadOnly)) {
+	      	QByteArray blob = file.readAll();
+        	BlRawDataToPrinter(printer, blob);
+    
+	      } else {
+		// No se ha podido leer el archivo.
+	      } // end if	      
+
       #endif
 
 }
@@ -1291,13 +1305,15 @@ void blWebBrowser(const QString &uri, const QString &defbrowser) {
 
 
 QString blGetEnv( const char *varName ) {
+    BL_FUNC_DEBUG
+
 /// En MS-Windows hay problemas al pasar a la codificacion UTF-8.
 #ifdef Q_OS_WIN32
 	DWORD length;
-	length = GetEnvironmentVariableW(QStringToWCHAR(varName), NULL, 0);
+	length = GetEnvironmentVariableW(BlQStringToWCHAR(varName), NULL, 0);
 
 	wchar_t *variable = new wchar_t[length];
-	GetEnvironmentVariableW(QStringToWCHAR(varName), variable, length );
+	GetEnvironmentVariableW(BlQStringToWCHAR(varName), variable, length );
 
 	return QString::fromWCharArray(variable);
 #else
@@ -1308,7 +1324,8 @@ QString blGetEnv( const char *varName ) {
 
 #ifdef Q_OS_WIN32
 /// Converts QString to WCHAR (MS-Windows only function).
-wchar_t* QStringToWCHAR (QString inString) {
+wchar_t* BlQStringToWCHAR (QString inString) {
+    BL_FUNC_DEBUG
 
 	if (inString.isEmpty())
 		return NULL;
@@ -1322,6 +1339,83 @@ wchar_t* QStringToWCHAR (QString inString) {
 
 	return outString;
 }
+
+
+bool BlRawDataToPrinter(QString printerName, QByteArray dataToPrint)
+{
+    BL_FUNC_DEBUG
+
+	HANDLE printerHandle;
+	DOC_INFO_1W documentInfo;
+	LPBYTE rawBlob;
+	DWORD printerJob;
+        DWORD bytesWritten;
+	DWORD bytesToWrite = dataToPrint.size();
+
+	/// Converts data to DWORD format.
+	rawBlob = reinterpret_cast<BYTE*>(dataToPrint.data());
+	wchar_t *selectedPrinter = BlQStringToWCHAR(printerName);
+
+	/// Printer handle.
+	if ( OpenPrinterW( selectedPrinter, &printerHandle, NULL ) ) {
+
+	    /// Info about document to print.
+	    documentInfo.pDocName = BlQStringToWCHAR("Document in raw format");
+	    documentInfo.pDatatype = BlQStringToWCHAR("RAW");
+	    documentInfo.pOutputFile = NULL;
+
+	    /// Start document.
+	    if ( (printerJob = StartDocPrinterW( printerHandle, 1, (BYTE*)&documentInfo )) != 0 ) {
+
+	      /// New page.
+	      if ( StartPagePrinter( printerHandle ) ) {
+
+		/// Send data to printer.
+		if ( WritePrinter( printerHandle, rawBlob, bytesToWrite, &bytesWritten ) ) {
+
+		    /// End page.
+		    if ( EndPagePrinter( printerHandle ) ) {
+
+		      /// End document.
+		      if ( EndDocPrinter( printerHandle ) ) {
+
+			  /// Close printer.
+			  ClosePrinter( printerHandle );
+
+			  /// Last check.
+			  if ( bytesWritten == bytesToWrite ) {
+				  return true;
+			  } // end if
+
+		      } else {
+			  ClosePrinter( printerHandle );
+		      } // end if
+
+		    } else {
+			EndDocPrinter( printerHandle );
+			ClosePrinter( printerHandle );
+		    } // end if
+
+		} else {
+		    EndPagePrinter( printerHandle );
+		    EndDocPrinter( printerHandle );
+		    ClosePrinter( printerHandle );
+		} // end if
+
+	      } else {
+		  EndDocPrinter( printerHandle );
+		  ClosePrinter( printerHandle );
+	      } // end if
+
+	    } else {
+		ClosePrinter( printerHandle );
+	    } // end if
+	    
+	} // end if
+
+	return false;
+}
+
 #endif
 
 
@@ -1330,12 +1424,6 @@ bool blCopyFile( const QString &oldName, const QString &newName )
 {
     ///Funcion para copiar archivos, pudiendo mover entre particiones y con direcciones tolerantes multiplataforma.
     BL_FUNC_DEBUG
-    
-    #ifdef Q_OS_WIN32
-        #define CAD_COPY QString("copy ")
-    #else
-        #define CAD_COPY QString("cp ")
-    #endif
 
     // Si es el mismo archivo, no lo copia.
     if(oldName.compare(newName) == 0)
@@ -1350,8 +1438,16 @@ bool blCopyFile( const QString &oldName, const QString &newName )
     // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
     if(!QFile::copy(oldFile, newFile))
     {
-        QString cad = CAD_COPY + oldFile + " " + newFile;
-        int result = system ( cad.toAscii().data() );
+	QString command = "";
+
+	#ifdef Q_OS_WIN32
+	    command = "copy \"" + oldFile + "\" \"" + newFile + "\"";
+	#else
+	    command = "cp " + oldFile + " " + newFile;
+	#endif
+
+	int result = system ( command.toAscii().data() );
+
         if (result == -1) {
             return false;
             }
@@ -1364,12 +1460,8 @@ bool blCopyFile( const QString &oldName, const QString &newName )
 bool blRemove(const QString &filetoremove )
 {
     /// Function to remove files independent.
-    #ifdef Q_OS_WIN32
-        #define CAD_REMOVE QString("copy ")
-    #else
-        #define CAD_REMOVE QString("rm ")
-    #endif
-    
+    BL_FUNC_DEBUG
+
     QString removeFile = QUrl(filetoremove, QUrl::TolerantMode).toString();
     QDir rootDir;
     
@@ -1379,8 +1471,15 @@ bool blRemove(const QString &filetoremove )
         //Si falla, recurre a QDir::remove()
         if(!rootDir.remove (removeFile))
         {
-        QString cad = CAD_REMOVE + removeFile;
-        int result = system ( cad.toAscii().data() );
+	QString command = "";
+
+	#ifdef Q_OS_WIN32
+	    command = "del \"" + removeFile + "\"";
+	#else
+	    command = "rm " + removeFile;
+	#endif
+
+        int result = system ( command.toAscii().data() );
         if (result == -1) {
             return false;
             } // end if

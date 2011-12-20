@@ -393,6 +393,8 @@ void BlSubForm::loadSpecs()
                 type = BlDbField::DbBoolean;
             } else if ( typeheader == "DBDATE" ) {
                 type = BlDbField::DbDate;
+            } else if ( typeheader == "DBTIME" ) {
+                type = BlDbField::DbTime;
             } // end if
 
             int restricciones = ( int ) BlDbField::DbNothing;
@@ -1029,7 +1031,7 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
         camp->setFlags ( flags );
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
-        if ( head->dbFieldType() == BlDbField::DbInt || head->dbFieldType() == BlDbField::DbNumeric || head->dbFieldType() == BlDbField::DbDate ) {
+        if ( head->dbFieldType() == BlDbField::DbInt || head->dbFieldType() == BlDbField::DbNumeric || head->dbFieldType() == BlDbField::DbDate || head->dbFieldType() == BlDbField::DbTime ) {
             camp->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         } else {
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
@@ -3096,16 +3098,21 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
     BL_FUNC_DEBUG
     QAction *del = NULL;
+    QAction *editup = NULL;
+    QAction *editdown = NULL;
+    QAction *editinslash = NULL;
+    QAction *ajustc = NULL;
+    QAction *ajustac = NULL;
+    QAction *ajust = NULL;
+    QAction *ajusta = NULL;
+    QAction *menuconfig = NULL;
+    QAction *verconfig = NULL;
+    QAction *opcion = NULL;
+    
+    
     int row = currentRow();
-    if ( row < 0 ) {
-	
-        return;
-    } // end if
     int col = currentColumn();
-    if ( col < 0 ) {
-	
-        return;
-    } // end if
+
     QMenu *popup = new QMenu ( this );
 
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
@@ -3120,42 +3127,47 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     creaMenu ( popup );
 
+    if ( (row >= 0) && (col >= 0) ) {
+    
+	if ( m_delete ) {
+	    popup->addSeparator();
+	    del = popup->addAction ( _ ( "Borrar registro" ) );
+	    del->setIcon ( QIcon ( ":/Images/delete-one-line.png" ) );
+	} // end if
+	popup->addSeparator();
 
+	editup = popup->addAction ( _ ( "Subir fila") );
+	editup->setIcon ( QIcon ( ":Images/edit_up.png"));
 
-    if ( m_delete ) {
-        popup->addSeparator();
-        del = popup->addAction ( _ ( "Borrar registro" ) );
-	del->setIcon ( QIcon ( ":/Images/delete-one-line.png" ) );
+	editdown = popup->addAction ( _ ( "Bajar fila") );
+	editdown->setIcon ( QIcon ( ":Images/edit_down.png"));
+	
+	editinslash = popup->addAction ( _ ( "Usar editor") );
+	editinslash->setIcon ( QIcon ( ":Images/edit_edit.png"));
+	
+	ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
+	ajustc->setIcon ( QIcon ( ":/Images/adjust-one-row.png" ) );
+	
+	ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
+	ajustac->setIcon ( QIcon ( ":/Images/adjust-one-line.png" ) );
+	
+	ajust = popup->addAction ( _ ( "Ajustar columnas" ) );
+	ajust->setIcon ( QIcon ( ":/Images/adjust-all-rows.png" ) );
+	
+	ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
+	ajusta->setIcon ( QIcon ( ":/Images/adjust-all-lines.png" ) );
+
+	popup->addSeparator();
+
     } // end if
-    popup->addSeparator();
 
-    QAction *editup = popup->addAction ( _ ( "Subir fila") );
-    editup->setIcon ( QIcon ( ":Images/edit_up.png"));
-
-    QAction *editdown = popup->addAction ( _ ( "Bajar fila") );
-    editdown->setIcon ( QIcon ( ":Images/edit_down.png"));
-    
-    
-    QAction *editinslash = popup->addAction ( _ ( "Usar editor") );
-    editinslash->setIcon ( QIcon ( ":Images/edit_edit.png"));
-    
-    QAction *ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
-    ajustc->setIcon ( QIcon ( ":/Images/adjust-one-row.png" ) );
-    QAction *ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
-    ajustac->setIcon ( QIcon ( ":/Images/adjust-one-line.png" ) );
-    
-    QAction *ajust = popup->addAction ( _ ( "Ajustar columnas" ) );
-    ajust->setIcon ( QIcon ( ":/Images/adjust-all-rows.png" ) );
-    QAction *ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
-    ajusta->setIcon ( QIcon ( ":/Images/adjust-all-lines.png" ) );
-
-    popup->addSeparator();
-    QAction *menuconfig = popup->addAction ( _ ( "Ver/Ocultar menu de subformulario" ) );
+    menuconfig = popup->addAction ( _ ( "Ver/Ocultar menu de subformulario" ) );
     menuconfig->setIcon ( QIcon ( ":/Images/togglemenu.png" ) );
-    QAction *verconfig = popup->addAction ( _ ( "Ver/Ocultar configurador de subformulario" ) );
+    
+    verconfig = popup->addAction ( _ ( "Ver/Ocultar configurador de subformulario" ) );
     verconfig->setIcon ( QIcon ( ":/Images/toggleconfig.png" ) );
     
-    QAction *opcion = popup->exec ( QCursor::pos() );
+    opcion = popup->exec ( QCursor::pos() );
 
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
     if ( !opcion ) {
@@ -3574,6 +3586,10 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setMaximum ( 100000000 );
 	
         return editor;
+    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+        BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
+        editor->setObjectName ( "BlTextEditDelegate" );
+        return editor;
     } // end if
 
     
@@ -3624,6 +3640,9 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         spinBox->interpretText();
         QString value = QString::number(spinBox->value());
         model->setData ( index, value );
+    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+        BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
+        model->setData ( index, textedit->toPlainText() );
     } else {
         QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
@@ -3668,6 +3687,10 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         QSpinBox *spinBox = static_cast<QSpinBox*> ( editor );
         spinBox->setValue ( value.toInt() );
         spinBox->selectAll();
+    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+        QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
+        textedit->setText ( data );
     } else {
         QStyledItemDelegate::setEditorData ( editor, index );
     } // end if

@@ -1,4 +1,6 @@
 blconfig.h
+build
+*.o
 *.cmake
 *.conf
 *.css

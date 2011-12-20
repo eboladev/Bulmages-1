@@ -7,22 +7,25 @@ set (plugin pluginbl_autoform)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
 
 # Exclude files with no QObject macro.
 file(GLOB plugin_NO_MOCS pluginbl_autoform.h pdefs_pluginbl_autoform.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-file(GLOB plugin_UIS *.ui)
+
 
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-        ${QT_QTSCRIPT_INCLUDE_DIR}
+    ${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
+	${CMAKE_BINARY_DIR}/bulmalib/plugins/pluginbl_autoform/
+	${CMAKE_SOURCE_DIR}/bulmalib/plugins/pluginbl_autoform/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
 	${CMAKE_BINARY_DIR}/bulmacont/src/

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Socios que han consultado al Autor" author="Tomeu Borras">
+	<pageTemplate id="main">
+		<pageGraphics>
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		
+<!--IF QUERY="SELECT * FROM autor WHERE idautor = [idautor] LIMIT 1"-->
+<!--QUERY="SELECT * FROM autor WHERE idautor = [idautor] LIMIT 1"-->
+
+		<setFont name="Helvetica-Bold" size="11"/>
+		<fill color="(1,1,1)"/>
+		<drawString x="10cm" y="26.53cm">Datos del autor:</drawString>
+
+		<!-- LOS DATOS DEL AUTOR -->
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>
+		<drawString x="13.5cm" y="26.05cm">[idautor]</drawString>
+		<drawString x="13.5cm" y="25.6cm">[nomautor]</drawString>
+
+
+
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>	
+		<drawString x="10cm" y="26.05cm">Nº Autor:</drawString>
+		<drawString x="10cm" y="25.6cm">Nombre:</drawString>
+
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- AUTOR -</drawCentredString>
+
+<!--END QUERY-->
+<!--END IF QUERY-->
+
+	</pageGraphics>
+
+
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="14.6cm" />
+
+		
+	</pageTemplate>
+
+</template>
+
+<include src="[CONF_DIR_OPENREPORTS]estilos.rml"/>
+
+<story>	
+	<blockTable style="tablacontenido" colWidths="8.00cm, 8.00cm" rowheights="2" repeatRows="1">
+		<tr>
+			<td>Titulo</td>
+			<td>ISBN</td>
+		</tr>
+
+<!--QUERY="SELECT sinacentos(titulolibro) AS titulolibro, isbnlibro FROM libro WHERE idautor = [idautor]"-->
+		<tr>
+			<td>[titulolibro]</td>
+			<td>[isbnlibro]</td>
+		</tr>
+
+<!--END QUERY-->
+
+
+	</blockTable>
+
+
+</story>
+</document>

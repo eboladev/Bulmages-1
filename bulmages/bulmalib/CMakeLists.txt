@@ -47,6 +47,7 @@ ENDIF(USE_PCH)
 
 add_subdirectory(src)
 add_subdirectory(plugins)
+add_subdirectory(designer)
 
 set (r_files README.Bulmalib.es)
 install(FILES ${r_files} DESTINATION share/bulmages/)

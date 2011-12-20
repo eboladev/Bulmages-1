@@ -10,7 +10,7 @@ __license__ = "GPL"
 
 from sys import exit, argv
 from os.path import exists, join, abspath
-from os import pathsep, geteuid, execv
+from os import pathsep, geteuid, execv, environ, name
 from string import split
 #import antigravity
 from re import escape
@@ -32,11 +32,13 @@ def search_file(filename, search_path):
 
 
 def main():
-    search_path = '/bin' + pathsep + '/usr/bin' + pathsep + '/usr/local/bin'
-    # ; on windows, : on unix
+    search_path = environ['PATH']
     xdgsudo=search_file("xdg-sudo", search_path)
     bulmasetup=search_file("bulmasetup", search_path)
-    execv("/usr/local/bin/xdg-sudo",["xdg-sudo", bulmasetup])
+    if name == 'posix':
+        execv(xdgsudo,["xdg-sudo", bulmasetup])
+    else:
+        execv(bulmasetup,["bulmasetup"])
 
 
 if __name__ == "__main__":

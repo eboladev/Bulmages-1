@@ -10,6 +10,7 @@ from plugins import PluginsBulmaSetup
 import plugins
 from facturacion import Facturacion
 from modificarusuario import ModificarUsuario
+import functions
 
 class ModificarFacturacion( Facturacion):
     def __init__(self, database, parent = None):
@@ -40,46 +41,41 @@ class ModificarFacturacion( Facturacion):
         self.mui_textBrowser.clear()
 
         self.writecommand("===== Backup =====<br>")
-        self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
-        self.writecommand(self.command)
-        self.process.start(self.command)
-        self.process.waitForFinished(-1)
-        self.writecommand(self.process.readAllStandardOutput())
+        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+        #functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
 
-        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
+        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
 
         self.conffact = 'bulmafact_' + self.database + '.conf'
         self.conftpv = 'bulmatpv_' + self.database + '.conf'
         self.quehehecho = 0
 
-        if os.path.exists('/etc/bulmages/' + self.conffact):
-            self.writecommand('Buscando archivo de configuracion: /etc/bulmages/' + self.conffact + '<br>')
+        if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conffact):
+            self.writecommand('Buscando archivo de configuracion: ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + '<br>')
             self.quehehecho = 1
         else:
-            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: /etc/bulmages/' + self.conffact + '</font>')
-        if os.path.exists('/etc/bulmages/' + self.conftpv):
-            self.writecommand('Buscando archivo de configuracion: /etc/bulmages/' + self.conftpv + '<br>')
+            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.conffact + '</font>')
+        if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conftpv):
+            self.writecommand('Buscando archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.conftpv + '<br>')
             self.quehehecho = 2
 
         if self.quehehecho == 1:
             self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.database + '.sql'
-            self.writecommand(self.command)
-            self.process.start(self.command)
-            self.process.waitForFinished(-1)
+            files=['@BULMAGES_CONFIG_DIR@/' + self.conffact, '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']
+            destination=self.directorio + '/' + self.database + '.tar.gz'
+            functions.multios().compress(files,destination)
         if self.quehehecho == 2:
             self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.conftpv + ' ' + '/etc/bulmages/' + self.database + '.sql'
-            self.writecommand(self.command)
-            self.process.start(self.command)
-            self.process.waitForFinished(-1)
+            files=['@BULMAGES_CONFIG_DIR@/' + self.conffact, '@BULMAGES_CONFIG_DIR@/' + self.conftpv,'@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']
+            destination=self.directorio + '/' + self.database + '.tar.gz'
+            functions.multios().compress(files,destination)
 
         self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + " =====<br><br>")
 
-        self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+        os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
         self.writecommand('Eliminando archivos temporales')
-        self.process.start(self.command)
-        self.process.waitForFinished(-1)
 
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible
@@ -90,7 +86,7 @@ class ModificarFacturacion( Facturacion):
 
         # Aplicamos el parche de bulmatpv si es necesario
         if (self.mui_soporteTPV.isChecked()):
-            self.command = 'su postgres -c "psql ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
+            self.command = functions.psql +' -1 ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql' + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)

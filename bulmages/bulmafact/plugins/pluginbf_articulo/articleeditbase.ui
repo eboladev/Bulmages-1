@@ -848,7 +848,7 @@
          <property name="title">
           <string>Informacion del articulo:</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout">
+         <layout class="QGridLayout" name="mui_gridLayout">
           <property name="margin">
            <number>4</number>
           </property>
