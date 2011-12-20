@@ -393,6 +393,8 @@ void BlSubForm::loadSpecs()
                 type = BlDbField::DbBoolean;
             } else if ( typeheader == "DBDATE" ) {
                 type = BlDbField::DbDate;
+            } else if ( typeheader == "DBTIME" ) {
+                type = BlDbField::DbTime;
             } // end if
 
             int restricciones = ( int ) BlDbField::DbNothing;
@@ -1029,7 +1031,7 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
         camp->setFlags ( flags );
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
-        if ( head->dbFieldType() == BlDbField::DbInt || head->dbFieldType() == BlDbField::DbNumeric || head->dbFieldType() == BlDbField::DbDate ) {
+        if ( head->dbFieldType() == BlDbField::DbInt || head->dbFieldType() == BlDbField::DbNumeric || head->dbFieldType() == BlDbField::DbDate || head->dbFieldType() == BlDbField::DbTime ) {
             camp->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         } else {
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
@@ -3584,6 +3586,10 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setMaximum ( 100000000 );
 	
         return editor;
+    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+        BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
+        editor->setObjectName ( "BlTextEditDelegate" );
+        return editor;
     } // end if
 
     
@@ -3634,6 +3640,9 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         spinBox->interpretText();
         QString value = QString::number(spinBox->value());
         model->setData ( index, value );
+    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+        BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
+        model->setData ( index, textedit->toPlainText() );
     } else {
         QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
@@ -3678,6 +3687,10 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         QSpinBox *spinBox = static_cast<QSpinBox*> ( editor );
         spinBox->setValue ( value.toInt() );
         spinBox->selectAll();
+    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+        QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
+        textedit->setText ( data );
     } else {
         QStyledItemDelegate::setEditorData ( editor, index );
     } // end if

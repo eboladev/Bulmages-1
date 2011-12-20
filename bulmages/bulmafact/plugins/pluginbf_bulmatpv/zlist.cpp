@@ -56,7 +56,7 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     mui_list->setDbFieldId ( "idz" );
     mui_list->addSubFormHeader ( "idz", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Z" ) );
     mui_list->addSubFormHeader ( "fechaz", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
-    mui_list->addSubFormHeader ( "horaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora" ) );
+    mui_list->addSubFormHeader ( "horaz", BlDbField::DbTime, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora" ) );
     mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Almacen" ) );
     mui_list->addSubFormHeader ( "totalz", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
     mui_list->addSubFormHeader ( "numtickets", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tickets" ) );
@@ -134,7 +134,7 @@ void ZList::presentar()
     BL_FUNC_DEBUG
 
     /// Hacemos el listado y lo presentamos.
-    mui_list->load ( "SELECT * FROM z NATURAL LEFT JOIN almacen" );
+    mui_list->load ( "SELECT idz, fechaz, TO_CHAR(horaz, 'HH24:MI:SS') AS horaz, totalz, idalmacen, numtickets, codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen, emailalmacen, tipoalmacen, inactivoalmacen FROM z NATURAL JOIN almacen" );
 
     
 }
@@ -190,7 +190,7 @@ void ZList::editar ( int row )
 void ZList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Cuadres de Caja" ) );
+    mui_list->printPDF ( _ ( "Cuadres de caja" ) );
     
 }
 

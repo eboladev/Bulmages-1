@@ -245,6 +245,13 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
             BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
             return ( this->valorcampo() < val );
         } // end if
+
+        if ( this->dbFieldType() == BlDbField::DbTime ) {
+    	    // TODO
+    	    /// Falta revisar que funcione este comparacion de valores.
+            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo time:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
+            return ( this->valorcampo() < val );
+        } // end if
         BlDebug::blDebug ( "tipo desconocido", 0 );
     }
     
