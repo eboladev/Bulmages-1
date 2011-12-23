@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BcConfiguracionBase</class>
- <widget class="QWidget" name="BcConfiguracionBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BcConfiguracionBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,112 +10,130 @@
     <height>490</height>
    </rect>
   </property>
-  <property name="acceptDrops" >
+  <property name="acceptDrops">
    <bool>false</bool>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Propiedades de la empresa</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../bulmages.qrc">
     <normaloff>:/BulmaCont32x32/images/png/i_configuracion.xpm</normaloff>:/BulmaCont32x32/images/png/i_configuracion.xpm</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label_2" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <widget class="QLabel" name="label_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize" >
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="text" >
+       <property name="maximumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="text">
         <string/>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/document-properties.png</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../bulmages.qrc">:/Images/document-properties.png</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+      <widget class="QFrame" name="frame">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="frameShape" >
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_guardar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
            <string>Guardar</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Guardar</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../bulmages.qrc">
             <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>22</width>
             <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+S</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>101</width>
             <height>25</height>
@@ -128,30 +147,30 @@
     </layout>
    </item>
    <item>
-    <widget class="QTabWidget" name="TabWidget2" >
-     <property name="enabled" >
+    <widget class="QTabWidget" name="TabWidget2">
+     <property name="enabled">
       <bool>true</bool>
      </property>
-     <property name="currentIndex" >
+     <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab1" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab1">
+      <attribute name="title">
        <string>Di&amp;gitos de cuentas</string>
       </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>5</number>
+      <layout class="QGridLayout">
+       <property name="margin">
+        <number>4</number>
        </property>
-       <property name="spacing" >
-        <number>5</number>
+       <property name="spacing">
+        <number>4</number>
        </property>
-       <item row="1" column="0" >
+       <item row="1" column="0">
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>21</width>
            <height>20</height>
@@ -159,73 +178,73 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="1" colspan="2" >
-        <widget class="QGroupBox" name="groupBox" >
-         <property name="title" >
+       <item row="1" column="1" colspan="2">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
           <string>Modelo del codigo de cuenta:</string>
          </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>5</number>
+         <layout class="QGridLayout">
+          <property name="margin">
+           <number>4</number>
           </property>
-          <property name="spacing" >
-           <number>5</number>
+          <property name="spacing">
+           <number>4</number>
           </property>
-          <item row="0" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="spacing" >
+          <item row="0" column="0">
+           <layout class="QHBoxLayout">
+            <property name="spacing">
              <number>5</number>
             </property>
-            <property name="margin" >
+            <property name="margin">
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="TextLabel1_2" >
-              <property name="text" >
+             <widget class="QLabel" name="TextLabel1_2">
+              <property name="text">
                <string>Digitos estanda&amp;r</string>
               </property>
-              <property name="buddy" >
+              <property name="buddy">
                <cstring>modcodigo</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="modcodigo" >
-              <property name="minimumSize" >
+             <widget class="QLineEdit" name="modcodigo">
+              <property name="minimumSize">
                <size>
                 <width>250</width>
                 <height>0</height>
                </size>
               </property>
-              <property name="maxLength" >
+              <property name="maxLength">
                <number>50</number>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="TextLabel2" >
-              <property name="text" >
-               <string>xxxx --> Digitos de plan contable.
-yyyy --> Digitos de cuenta.</string>
+             <widget class="QLabel" name="TextLabel2">
+              <property name="text">
+               <string>xxxx --&gt; Digitos de plan contable.
+yyyy --&gt; Digitos de cuenta.</string>
               </property>
              </widget>
             </item>
            </layout>
           </item>
-          <item row="1" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="spacing" >
+          <item row="1" column="0">
+           <layout class="QHBoxLayout">
+            <property name="spacing">
              <number>5</number>
             </property>
-            <property name="margin" >
+            <property name="margin">
              <number>0</number>
             </property>
             <item>
              <spacer>
-              <property name="orientation" >
+              <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0" >
+              <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -234,18 +253,18 @@ yyyy --> Digitos de cuenta.</string>
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="mui_modificarplan" >
-              <property name="text" >
+             <widget class="QPushButton" name="mui_modificarplan">
+              <property name="text">
                <string>Modi&amp;ficar plan contable</string>
               </property>
              </widget>
             </item>
             <item>
              <spacer>
-              <property name="orientation" >
+              <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0" >
+              <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -258,12 +277,12 @@ yyyy --> Digitos de cuenta.</string>
          </layout>
         </widget>
        </item>
-       <item row="2" column="1" >
+       <item row="2" column="1">
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
            <height>40</height>
@@ -271,15 +290,15 @@ yyyy --> Digitos de cuenta.</string>
          </property>
         </spacer>
        </item>
-       <item row="0" column="2" >
+       <item row="0" column="2">
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeType" >
+         <property name="sizeType">
           <enum>QSizePolicy::Preferred</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
            <height>40</height>
@@ -287,12 +306,12 @@ yyyy --> Digitos de cuenta.</string>
          </property>
         </spacer>
        </item>
-       <item row="1" column="3" >
+       <item row="1" column="3">
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>40</width>
            <height>20</height>
@@ -302,19 +321,19 @@ yyyy --> Digitos de cuenta.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab2" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab2">
+      <attribute name="title">
        <string>Propiedades generales</string>
       </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="spacing" >
-        <number>5</number>
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>4</number>
        </property>
-       <property name="margin" >
-        <number>5</number>
+       <property name="margin">
+        <number>4</number>
        </property>
        <item>
-        <widget class="BcConfiguracionSubForm" name="mui_subform" />
+        <widget class="BcConfiguracionSubForm" name="mui_subform"/>
        </item>
       </layout>
      </widget>
@@ -322,7 +341,7 @@ yyyy --> Digitos de cuenta.</string>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="4" margin="4" />
+ <layoutdefault spacing="4" margin="4"/>
  <customwidgets>
   <customwidget>
    <class>BcConfiguracionSubForm</class>
@@ -337,7 +356,7 @@ yyyy --> Digitos de cuenta.</string>
   <tabstop>mui_modificarplan</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout">
    <property name="spacing">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="margin">
-    <number>5</number>
+    <number>4</number>
    </property>
    <item>
     <layout class="QHBoxLayout">
@@ -126,8 +126,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -170,8 +170,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -214,8 +214,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -264,8 +264,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -308,8 +308,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -352,8 +352,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="checkable">
@@ -399,8 +399,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -446,8 +446,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -490,8 +490,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -531,8 +531,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -1054,8 +1054,8 @@
  <customwidgets>
   <customwidget>
    <class>BlDateSearch</class>
-   <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
+   <extends>QWidget</extends>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BcAsientoSubForm</class>

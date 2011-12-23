@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ListProyectosBase</class>
- <widget class="QWidget" name="ListProyectosBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ListProyectosBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,211 +10,188 @@
     <height>442</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Listado de Proyectos</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/icons/proyecto_listado.png</iconset>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/Genericos32x32/images/icons/proyecto_listado.png</normaloff>:/Genericos32x32/images/icons/proyecto_listado.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
-   <property name="leftMargin" >
-    <number>9</number>
-   </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
+   <property name="margin">
     <number>9</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Genericos32x32/images/icons/proyecto_listado.png</pixmap>
+       <property name="pixmap">
+        <pixmap>:/Genericos32x32/images/icons/proyecto_listado.png</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="frame">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_crear">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Nueva amortizacion</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Nueva amortizacion</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-new.png</iconset>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+N</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Borrar amortizacion</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Borrar amortizacion</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:Images/edit-delete.png</iconset>
+          <property name="icon">
+           <iconset>
+            <normaloff>:Images/edit-delete.png</normaloff>:Images/edit-delete.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_actualizar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_actualizar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Borrar amortizacion</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Borrar amortizacion</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/view-refresh.png</iconset>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>F5</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>261</width>
             <height>32</height>
@@ -227,14 +205,14 @@
     </layout>
    </item>
    <item>
-    <widget class="BcSubForm" name="mui_listado" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+    <widget class="BcSubForm" name="mui_listado">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="minimumSize" >
+     <property name="minimumSize">
       <size>
        <width>150</width>
        <height>150</height>
@@ -244,7 +222,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
    <class>BcSubForm</class>
@@ -253,7 +231,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

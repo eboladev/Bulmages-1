@@ -1,201 +1,176 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BcCentroCosteBase</class>
- <widget class="QWidget" name="BcCentroCosteBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BcCentroCosteBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>760</width>
-    <height>903</height>
+    <width>650</width>
+    <height>550</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Centros de Coste</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../bulmages.qrc">
+    <normaloff>:/BulmaCont32x32/images/png/i_centroCoste.xpm</normaloff>:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>5</number>
+  <layout class="QVBoxLayout">
+   <property name="margin">
+    <number>4</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../bulmages.qrc">:/BulmaCont32x32/images/png/i_centroCoste.xpm</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="frame">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QGridLayout" >
-        <property name="leftMargin" >
+       <layout class="QGridLayout">
+        <property name="margin">
          <number>5</number>
         </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>5</number>
-        </property>
-        <property name="horizontalSpacing" >
+        <property name="spacing">
          <number>6</number>
         </property>
-        <property name="verticalSpacing" >
-         <number>6</number>
-        </property>
-        <item row="0" column="0" >
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
+        <item row="0" column="0">
+         <widget class="QToolButton" name="mui_crear">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-new.png</iconset>
+          <property name="icon">
+           <iconset resource="../../bulmages.qrc">
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+N</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1" >
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
+        <item row="0" column="2">
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.png</iconset>
+          <property name="icon">
+           <iconset resource="../../bulmages.qrc">
+            <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="2" >
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="minimumSize" >
+        <item row="0" column="3">
+         <widget class="QToolButton" name="mui_guardar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.png</iconset>
+          <property name="icon">
+           <iconset resource="../../bulmages.qrc">
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+S</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="5" >
+        <item row="0" column="6">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>171</width>
             <height>34</height>
@@ -203,239 +178,160 @@
           </property>
          </spacer>
         </item>
+        <item row="0" column="1">
+         <widget class="QToolButton" name="mui_detalles">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Mostrar / Ocultar Detalle</string>
+          </property>
+          <property name="whatsThis">
+           <string>Mostrar / Ocultar Detalle</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../bulmages.qrc">
+            <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QTreeWidget" name="mui_list" >
+    <widget class="QTreeWidget" name="mui_list">
      <column>
-      <property name="text" >
+      <property name="text">
        <string>1</string>
       </property>
      </column>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <property name="leftMargin" >
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
       <number>0</number>
      </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QToolButton" name="mui_detalles" >
-       <property name="minimumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="maximumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolTip" >
-        <string>Mostrar / Ocultar Detalle</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Mostrar / Ocultar Detalle</string>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/Images/document-open.png</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="checkable" >
-        <bool>true</bool>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QTabWidget" name="tabWidget" >
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
        <string>General</string>
       </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="spacing" >
-        <number>6</number>
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>4</number>
        </property>
-       <property name="leftMargin" >
-        <number>9</number>
-       </property>
-       <property name="topMargin" >
-        <number>9</number>
-       </property>
-       <property name="rightMargin" >
-        <number>9</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>9</number>
+       <property name="margin">
+        <number>4</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" >
-         <property name="spacing" >
+        <layout class="QHBoxLayout">
+         <property name="spacing">
           <number>0</number>
          </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
+         <property name="margin">
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="textLabel1" >
-           <property name="text" >
+          <widget class="QLabel" name="textLabel1">
+           <property name="text">
             <string>Nombre:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="mui_nombre" />
+          <widget class="QLineEdit" name="mui_nombre"/>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" >
-         <property name="spacing" >
+        <layout class="QVBoxLayout">
+         <property name="spacing">
           <number>0</number>
          </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
+         <property name="margin">
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="textLabel1_2" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+          <widget class="QLabel" name="textLabel1_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Descripcion:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QTextEdit" name="mui_descripcion" />
+          <widget class="QTextEdit" name="mui_descripcion"/>
          </item>
         </layout>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
        <string>Centros Distribuidos</string>
       </attribute>
-      <layout class="QGridLayout" >
-       <property name="leftMargin" >
-        <number>9</number>
+      <layout class="QGridLayout">
+       <property name="margin">
+        <number>4</number>
        </property>
-       <property name="topMargin" >
-        <number>9</number>
+       <property name="spacing">
+        <number>4</number>
        </property>
-       <property name="rightMargin" >
-        <number>9</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>9</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>6</number>
-       </property>
-       <property name="verticalSpacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="BcSubForm" name="mui_cdistribuidos" />
+       <item row="0" column="0">
+        <widget class="BcSubForm" name="mui_cdistribuidos"/>
        </item>
       </layout>
      </widget>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>191</width>
          <height>21</height>
@@ -444,8 +340,8 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton2" >
-       <property name="text" >
+      <widget class="QPushButton" name="pushButton2">
+       <property name="text">
         <string>Cerrar</string>
        </property>
       </widget>
@@ -454,7 +350,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
    <class>BcSubForm</class>
@@ -463,7 +359,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -472,11 +368,11 @@
    <receiver>BcCentroCosteBase</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>749</x>
      <y>892</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>549</x>
      <y>539</y>
     </hint>
@@ -488,11 +384,11 @@
    <receiver>tabWidget</receiver>
    <slot>setShown(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>459</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>281</x>
      <y>488</y>
     </hint>

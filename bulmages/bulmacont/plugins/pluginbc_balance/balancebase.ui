@@ -123,7 +123,7 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
+            <width>22</width>
             <height>32</height>
            </size>
           </property>
@@ -183,8 +183,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -227,8 +227,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -265,8 +265,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="shortcut">
@@ -334,7 +334,7 @@
        </spacer>
       </item>
       <item row="1" column="0">
-       <widget class="BlDateSearch" name="m_fechainicial1" native="true">
+       <widget class="BlDateSearch" name="m_fechainicial1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -350,7 +350,7 @@
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="BlSearchWidget" name="m_codigoinicial" native="true">
+       <widget class="BlSearchWidget" name="m_codigoinicial">
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -387,7 +387,7 @@
        </spacer>
       </item>
       <item row="3" column="0">
-       <widget class="BlDateSearch" name="m_fechafinal1" native="true">
+       <widget class="BlDateSearch" name="m_fechafinal1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -403,7 +403,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="BlSearchWidget" name="m_codigofinal" native="true">
+       <widget class="BlSearchWidget" name="m_codigofinal">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -808,7 +808,7 @@
   <customwidget>
    <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>
