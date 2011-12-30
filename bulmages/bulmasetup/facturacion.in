@@ -255,8 +255,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.file.close()
         self.file1.close()
 
-	#
-	raw_input("Press ENTER FUNC to exit")
 
     def writeConfig(self):
         self.writecommand(QtGui.QApplication.translate("Facturacion",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))
