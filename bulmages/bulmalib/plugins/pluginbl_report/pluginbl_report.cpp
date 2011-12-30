@@ -109,10 +109,11 @@ int init (  )
     filters << "inf_*.rml";
     dir.setNameFilters ( filters );
 
-
     QFileInfoList list = dir.entryInfoList();
 
+    
     for ( int i = 0; i < list.size(); ++i ) {
+      
         QFileInfo fileInfo = list.at ( i );
 
         QFile file;
