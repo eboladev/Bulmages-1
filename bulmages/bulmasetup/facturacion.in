@@ -134,23 +134,22 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         self.writecommand(QtGui.QApplication.translate("Facturacion",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))
 
-
         # Copiamos los archivos genericos
         # Copiamos las plantillas en cada idioma
         for language in self.languages:
-            functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/informereferencia.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/plantilla.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/plantilla1.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/estilos.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/listado.rml" % language) )
             if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
-                functions.multios().copy(str(plugins.confopenreports+ "%s/logo.jpg" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language) )
+                functions.multios().copy(str(plugins.confopenreports+ "%s/logo.jpg" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/logo.jpg" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/ficha.rml" % language) )
             # Pasamos el logotipo
             if (self.mui_textfile.text() != ""):
                 functions.multios().copy(str(self.mui_textfile.text()),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"%s/logo.jpg" % language) )
         # END Copiamos las plantillas en cada idioma
-
+	
 
         # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
         self.i = 0
@@ -176,9 +175,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     while (self.j < len ( self.arra)):
                         # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/" % language + self.arra[self.j]))
                         self.j = self.j + 1
             self.i = self.i + 1
+
 
         # Iteramos sobre la lista de plugins disponibles en bulmatpv para copiar sus plantillas
         self.i = 0
@@ -198,7 +198,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     while (self.j < len ( self.arra)):
                         # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/" % language + self.arra[self.j]))
                         self.j = self.j + 1
             self.i = self.i + 1
 
@@ -254,6 +254,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         # Cerramos los ficheros.
         self.file.close()
         self.file1.close()
+
 
     def writeConfig(self):
         self.writecommand(QtGui.QApplication.translate("Facturacion",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))

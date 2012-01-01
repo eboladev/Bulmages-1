@@ -112,7 +112,7 @@ void EmailQToolButton::click()
             blCreatePDF ( "presupuesto" );
 
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf";
-            QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
             blMoveFile(oldName, newName);
 
             QString cad = "kmail -s \"Presupuesto " + num + "\" --body \" Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf " + email;
@@ -139,7 +139,7 @@ void EmailQToolButton::click()
             blCreatePDF ( "pedidocliente" );
           
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf";
-            QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
             blMoveFile(oldName, newName);
             
             QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
@@ -167,7 +167,7 @@ void EmailQToolButton::click()
             blCreatePDF ( "albaran" );
             
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "albaran.pdf";
-            QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
             blMoveFile(oldName, newName);
 
             QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
@@ -196,7 +196,7 @@ void EmailQToolButton::click()
             blCreatePDF ( "factura" );
 
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "factura.pdf";
-            QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + id + ".pdf";
+            QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
             blMoveFile(oldName, newName);
 
 

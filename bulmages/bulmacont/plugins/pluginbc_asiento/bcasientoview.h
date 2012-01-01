@@ -47,7 +47,7 @@ class PLUGINBC_ASIENTO_EXPORT BcAsientoList : public BcAsientoForm
 
 private:
     /// Este es el cursor que se usar&aacute; para recorrer la lista de asientos.
-    BlDbRecordSet *cursorasientos;
+    BlDbRecordSet *m_cursorasientos;
 
 public:
     BcAsientoList ( BcCompany *, QWidget *parent );

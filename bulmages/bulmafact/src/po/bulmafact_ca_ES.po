@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-08-16 13:07+0200\n"
-"PO-Revision-Date: 2011-08-22 19:39+0200\n"
+"PO-Revision-Date: 2011-12-27 11:40+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team:  Catalan\n"
 "Language: \n"
@@ -32,7 +32,7 @@ msgstr "&Accepta"
 
 #: ui_bfaboutbase.h:308
 msgid "&Acerca de"
-msgstr "&Quant a "
+msgstr "&Quant a"
 
 #: ui_bfbulmafactbase.h:179
 msgid "&Acerca de Iglues/BulmaFact"

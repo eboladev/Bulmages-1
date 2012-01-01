@@ -34,6 +34,18 @@
      </property>
      <item>
       <widget class="QLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -59,6 +71,18 @@
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Generar Asiento</string>
           </property>
@@ -74,14 +98,26 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_guardar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Actualizar</string>
           </property>
@@ -94,14 +130,26 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Actualizar</string>
           </property>
@@ -114,14 +162,26 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_filtrar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>29</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Actualizar</string>
           </property>
@@ -134,8 +194,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="checkable">
@@ -148,6 +208,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_actualizar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Actualizar</string>
           </property>
@@ -160,8 +232,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -226,7 +298,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="m_cuenta" native="true"/>
+           <widget class="BlSearchWidget" name="m_cuenta"/>
           </item>
          </layout>
         </item>
@@ -380,7 +452,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="m_firstDate" native="true"/>
+           <widget class="BlDateSearch" name="m_firstDate"/>
           </item>
          </layout>
         </item>
@@ -416,7 +488,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="m_lastDate" native="true"/>
+           <widget class="BlDateSearch" name="m_lastDate"/>
           </item>
          </layout>
         </item>
@@ -536,18 +608,18 @@
   <customwidget>
    <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/bldatesearch.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BcSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>bcsubform.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>
    <extends>QWidget</extends>
    <header>blsearchwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>BcSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>bcsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -1,9 +1,10 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
  <comment>Impresion de Balances</comment>
  <class>BcCuentasAnualesImprimirBase</class>
- <widget class="QDialog" name="BcCuentasAnualesImprimirBase" >
-  <property name="geometry" >
+ <widget class="QDialog" name="BcCuentasAnualesImprimirBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -11,37 +12,38 @@
     <height>273</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Impresion de Balances</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/BulmaCont32x32/images/png/i_estadisticas.xpm</normaloff>:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="spacing" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="textLabel1" >
-       <property name="text" >
+      <widget class="QLabel" name="textLabel1">
+       <property name="text">
         <string>Balance</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_nomBalance" >
-       <property name="enabled" >
+      <widget class="QLineEdit" name="m_nomBalance">
+       <property name="enabled">
         <bool>false</bool>
        </property>
       </widget>
@@ -49,106 +51,106 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="label" >
-     <property name="text" >
+    <widget class="QLabel" name="label">
+     <property name="text">
       <string>Primer Periodo</string>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="spacing" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="textLabel1_2" >
-       <property name="text" >
+      <widget class="QLabel" name="textLabel1_2">
+       <property name="text">
         <string>Fecha Inicial</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="BlDateSearch" native="1" name="mui_fechainicial" />
+      <widget class="BlDateSearch" name="mui_fechainicial"/>
      </item>
      <item>
-      <widget class="QLabel" name="textLabel1_2_2" >
-       <property name="text" >
+      <widget class="QLabel" name="textLabel1_2_2">
+       <property name="text">
         <string>Fecha Final</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="BlDateSearch" native="1" name="mui_fechafinal" />
+      <widget class="BlDateSearch" name="mui_fechafinal"/>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="label_2" >
-     <property name="text" >
+    <widget class="QLabel" name="label_2">
+     <property name="text">
       <string>Segundo Periodo</string>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="spacing" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="textLabel1_3" >
-       <property name="text" >
+      <widget class="QLabel" name="textLabel1_3">
+       <property name="text">
         <string>Fecha Inicial</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="BlDateSearch" native="1" name="mui_fechainicial1" />
+      <widget class="BlDateSearch" name="mui_fechainicial1"/>
      </item>
      <item>
-      <widget class="QLabel" name="textLabel1_2_3" >
-       <property name="text" >
+      <widget class="QLabel" name="textLabel1_2_3">
+       <property name="text">
         <string>Fecha Final</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="BlDateSearch" native="1" name="mui_fechafinal1" />
+      <widget class="BlDateSearch" name="mui_fechafinal1"/>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QProgressBar" name="progressBar" >
-     <property name="value" >
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
       <number>0</number>
      </property>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>0</number>
      </property>
-     <property name="spacing" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>168</width>
          <height>21</height>
@@ -157,21 +159,21 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
         <string>Acep&amp;tar</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
         <string>&amp;Cancelar</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
@@ -180,12 +182,12 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="12" />
+ <layoutdefault spacing="6" margin="12"/>
  <customwidgets>
   <customwidget>
    <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -194,7 +196,8 @@
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -203,11 +206,11 @@
    <receiver>BcCuentasAnualesImprimirBase</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>469</x>
      <y>181</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>312</x>
      <y>189</y>
     </hint>
@@ -219,11 +222,11 @@
    <receiver>BcCuentasAnualesImprimirBase</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>410</x>
      <y>176</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>191</x>
      <y>184</y>
     </hint>

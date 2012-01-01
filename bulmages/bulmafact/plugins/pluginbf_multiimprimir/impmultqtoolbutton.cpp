@@ -167,7 +167,8 @@ void ImpQToolButton::click()
                 QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idfactura" );
-
+		    QString num = rec->dbValue ( "numfactura" );
+		    QString serie = rec->dbValue ( "codigoserie_factura" );
 
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -181,15 +182,12 @@ void ImpQToolButton::click()
                     pres->load ( id );
 
                     if ( pres->generateRML() ) {
-
-
                         blCreatePDF ( "factura" );
-
                         QString oldName =  g_confpr->value( CONF_DIR_USER ) + "factura.pdf";
-                        QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + id + ".pdf";
+                        QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num  + ".pdf";
                         blMoveFile(oldName, newName);
                         
-                        res += g_confpr->value( CONF_DIR_USER ) + "factura" + id + ".pdf ";
+                        res += g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
                     } // end if
                     pres->close();
                 } // end if
@@ -773,8 +771,8 @@ void EmailQToolButton::click()
 
                     blCreatePDF ( "factura" );
                     
-                    QString oldName =  g_confpr->value( CONF_DIR_USER ) + "albaran.pdf";
-                    QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                    QString oldName =  g_confpr->value( CONF_DIR_USER ) + "factura.pdf";
+                    QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
                     blMoveFile(oldName, newName);
 
 

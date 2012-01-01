@@ -28,7 +28,9 @@ class multios():
             shutil.copytree(src,dst)
         else:
             shutil.copy(src,dst)
-        shutil.copystat(src,dst)
+        # Solo propagamos permisos en caso de que el destino no sea un directorio.
+        if os.path.isdir(dst) == False:
+	    shutil.copystat(src,dst)
         
     def touch(self,filename):
         """ Given a file do a "touch" in a multiplataform way
