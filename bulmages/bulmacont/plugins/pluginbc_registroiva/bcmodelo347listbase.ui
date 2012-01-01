@@ -1,8 +1,9 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Josep Burcion</author>
  <class>BcModelo347ListBase</class>
- <widget class="QDialog" name="BcModelo347ListBase" >
-  <property name="geometry" >
+ <widget class="QDialog" name="BcModelo347ListBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,150 +11,153 @@
     <height>490</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Listado para el modelo 347</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_kcmkwm.png</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/BulmaCont32x32/images/png/i_kcmkwm.png</normaloff>:/BulmaCont32x32/images/png/i_kcmkwm.png</iconset>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>false</bool>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_kcmkwm.png</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../../bulmages.qrc">:/BulmaCont32x32/images/png/i_kcmkwm.png</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="frame">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QPushButton" name="m_boton_imprimir" >
-          <property name="minimumSize" >
+         <widget class="QPushButton" name="m_boton_imprimir">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Imprimir</string>
           </property>
-          <property name="text" >
-           <string comment="Imprimir/Salvar" />
+          <property name="text">
+           <string comment="Imprimir/Salvar"/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-print.png</iconset>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>22</width>
             <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+P</string>
           </property>
-          <property name="default" >
+          <property name="default">
            <bool>false</bool>
           </property>
-          <property name="flat" >
+          <property name="flat">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="m_boton_recalcular" >
-          <property name="minimumSize" >
+         <widget class="QPushButton" name="m_boton_recalcular">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Recalcular</string>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.png</iconset>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>22</width>
             <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>F5</string>
           </property>
-          <property name="flat" >
+          <property name="flat">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Fixed</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -162,57 +166,58 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="mui_filtro" >
-          <property name="minimumSize" >
+         <widget class="QPushButton" name="mui_filtro">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Ver filtro</string>
           </property>
-          <property name="text" >
-           <string comment="Imprimir/Salvar" />
+          <property name="text">
+           <string comment="Imprimir/Salvar"/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-find.png</iconset>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>22</width>
             <height>22</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+F</string>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
-          <property name="checked" >
+          <property name="checked">
            <bool>true</bool>
           </property>
-          <property name="default" >
+          <property name="default">
            <bool>false</bool>
           </property>
-          <property name="flat" >
+          <property name="flat">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -226,65 +231,65 @@
     </layout>
    </item>
    <item>
-    <widget class="QFrame" name="frame_2" >
-     <property name="frameShape" >
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="spacing">
        <number>5</number>
       </property>
-      <item row="1" column="3" >
-       <widget class="QLabel" name="textLabel3" >
-        <property name="text" >
+      <item row="1" column="3">
+       <widget class="QLabel" name="textLabel3">
+        <property name="text">
          <string>Importe:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>importe</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="QLineEdit" name="ffinal" />
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="ffinal"/>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="textLabel1" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="textLabel1">
+        <property name="text">
          <string>Fecha final:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>ffinal</cstring>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="textLabel1_2" >
-        <property name="text" >
+      <item row="0" column="0">
+       <widget class="QLabel" name="textLabel1_2">
+        <property name="text">
          <string>Fecha inicial:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>finicial</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="4" >
-       <widget class="QLineEdit" name="importe" />
+      <item row="1" column="4">
+       <widget class="QLineEdit" name="importe"/>
       </item>
-      <item row="0" column="1" >
-       <widget class="QLineEdit" name="finicial" />
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="finicial"/>
       </item>
-      <item row="1" column="2" >
+      <item row="1" column="2">
        <spacer>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
           <height>20</height>
@@ -296,39 +301,39 @@
     </widget>
    </item>
    <item>
-    <widget class="QTabWidget" name="TabWidget1" >
-     <property name="currentIndex" >
+    <widget class="QTabWidget" name="TabWidget1">
+     <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab1" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab1">
+      <attribute name="title">
        <string>Ventas</string>
       </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="margin">
         <number>5</number>
        </property>
        <item>
-        <widget class="QTableWidget" name="tablaventas" />
+        <widget class="QTableWidget" name="tablaventas"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab2" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab2">
+      <attribute name="title">
        <string>Compras</string>
       </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="margin">
         <number>5</number>
        </property>
        <item>
-        <widget class="QTableWidget" name="tablacompras" />
+        <widget class="QTableWidget" name="tablacompras"/>
        </item>
       </layout>
      </widget>
@@ -336,7 +341,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>finicial</tabstop>
   <tabstop>ffinal</tabstop>
@@ -349,7 +354,8 @@
   <tabstop>tablacompras</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -358,11 +364,11 @@
    <receiver>frame_2</receiver>
    <slot>setShown(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>196</x>
      <y>35</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>197</x>
      <y>64</y>
     </hint>

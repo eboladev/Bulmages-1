@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BcCuentasAnualesBase</class>
- <widget class="QWidget" name="BcCuentasAnualesBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BcCuentasAnualesBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,37 +10,39 @@
     <height>492</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Cuentas Anuales</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/BulmaCont32x32/images/png/i_estadisticas.xpm</normaloff>:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <widget class="QTableWidget" name="mui_listado" >
-     <property name="editTriggers" >
+    <widget class="QTableWidget" name="mui_listado">
+     <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
-     <property name="selectionMode" >
+     <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
      </property>
-     <property name="selectionBehavior" >
+     <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

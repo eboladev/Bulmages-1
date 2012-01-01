@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>599</width>
-    <height>393</height>
+    <height>433</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,8 +57,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>22</width>
+         <height>22</height>
         </size>
        </property>
       </widget>
@@ -92,8 +92,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>22</width>
+         <height>22</height>
         </size>
        </property>
       </widget>
@@ -188,7 +188,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="m_codigoinicial" native="true"/>
+           <widget class="BlSearchWidget" name="m_codigoinicial"/>
           </item>
          </layout>
         </item>
@@ -208,7 +208,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="m_fechainicial1" native="true"/>
+           <widget class="BlDateSearch" name="m_fechainicial1"/>
           </item>
          </layout>
         </item>
@@ -238,7 +238,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="m_codigofinal" native="true"/>
+           <widget class="BlSearchWidget" name="m_codigofinal"/>
           </item>
          </layout>
         </item>
@@ -258,7 +258,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="m_fechafinal1" native="true"/>
+           <widget class="BlDateSearch" name="m_fechafinal1"/>
           </item>
          </layout>
         </item>
@@ -384,7 +384,7 @@
   <customwidget>
    <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>

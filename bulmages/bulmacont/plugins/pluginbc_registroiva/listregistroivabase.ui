@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>576</height>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -208,7 +208,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BlDateSearch" name="finicial" native="true"/>
+      <widget class="BlDateSearch" name="finicial"/>
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_4">
@@ -218,7 +218,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BlDateSearch" name="ffinal" native="true"/>
+      <widget class="BlDateSearch" name="ffinal"/>
      </item>
      <item>
       <spacer>
@@ -478,7 +478,7 @@
   <customwidget>
    <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/bldatesearch.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BcSubForm</class>
