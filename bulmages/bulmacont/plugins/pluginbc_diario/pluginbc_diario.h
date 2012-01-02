@@ -31,7 +31,7 @@
 
 extern "C" PLUGINBC_DIARIO_EXPORT BcDiarioView *g_diario;
 extern "C" PLUGINBC_DIARIO_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" PLUGINBC_DIARIO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBC_DIARIO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

@@ -1,6 +1,10 @@
 /***************************************************************************
  *   Copyright (C) 2008 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -21,7 +25,7 @@
 #include "blbankedit.h"
 
 
-int pesosdc[] = {6, 3, 7, 9, 10, 5, 8, 4, 2, 1};
+int weightControlDigit[] = {6, 3, 7, 9, 10, 5, 8, 4, 2, 1};
 
 
 ///  Inicializa el objeto y hace todas las conexiones necesarias.
@@ -32,12 +36,12 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    QObject::connect ( m_cuenta, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
-    QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SLOT ( s_cuentalostFocus() ) );
-    QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
+    QObject::connect ( mui_bankAccount, SIGNAL ( returnPressed() ), this, SLOT ( returnKeyPressed() ) );
+    QObject::connect ( mui_bankAccount, SIGNAL ( editingFinished() ), this, SLOT ( bankAccountLostFocus() ) );
+    QObject::connect ( mui_bankAccount, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
     
-    /// Establecemos el FocusProxy para que el foco funcione bien
-    setFocusProxy(m_entidad);
+    /// Establecemos el 'FocusProxy' para que el foco funcione bien.
+    setFocusProxy(mui_bank);
     
 }
 
@@ -48,45 +52,49 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
 BlBankEdit::~BlBankEdit()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
-/// Comprueba que los DC son correctos y si no lo son da un mensaje de aviso
+/// Comprueba que los d&iacute;gitos de control son correctos y si no lo son muestra un mensaje de aviso.
+/**
+**/
 void BlBankEdit::checkControlDigit()
 {
     BL_FUNC_DEBUG
-    QString cad1 = m_entidad->text() + m_oficina->text();
-    QString cad2 = m_cuenta->text();
-    int dc1 = 0;
-    int dc2 = 0;
+    QString string1 = mui_bank->text() + mui_bankOffice->text();
+    QString string2 = mui_bankAccount->text();
+    int controlDigit1 = 0;
+    int controlDigit2 = 0;
 
     /// Si no hay cuenta bancaria puesta entonces no hacemos comprobaciones.
-    if ( cad1.size() + cad2.size() == 0 )
+    if ( string1.size() + string2.size() == 0 )
         return;
 
+    int partialValue1 = 0;
 
-    int resparcial = 0;
     for ( int i = 0; i < 8; i++ ) {
-        resparcial += cad1[8-i-1].digitValue() * pesosdc[i];
+        partialValue1 += string1[8 - i - 1].digitValue() * weightControlDigit[i];
     } // end for
-    dc1 = 11 - ( resparcial % 11 );
-    if ( dc1 == 11 ) dc1 = 0;
-    if ( dc1 == 10 ) dc1 = 1;
 
-    int resparcial1 = 0;
+    controlDigit1 = 11 - ( partialValue1 % 11 );
+    if ( controlDigit1 == 11 ) controlDigit1 = 0;
+    if ( controlDigit1 == 10 ) controlDigit1 = 1;
+
+    int partialValue2 = 0;
+    
     for ( int i = 0; i < 10; i++ ) {
-        resparcial1 += cad2[10-i-1].digitValue() * pesosdc[i];
+        partialValue2 += string2[10 - i - 1].digitValue() * weightControlDigit[i];
     } // end for
-    dc2 = 11 - ( resparcial1 % 11 );
-    if ( dc2 == 11 ) dc2 = 0;
-    if ( dc2 == 10 ) dc2 = 1;
+    
+    controlDigit2 = 11 - ( partialValue2 % 11 );
+    if ( controlDigit2 == 11 ) controlDigit2 = 0;
+    if ( controlDigit2 == 10 ) controlDigit2 = 1;
 
-    QString dc = QString::number ( dc1 ) + QString::number ( dc2 );
+    QString controlText = QString::number ( controlDigit1 ) + QString::number ( controlDigit2 );
 
-    /// Si los digitos de control no se corresponden damos un error.
-    if ( dc != m_dc->text() ) {
-      blMsgInfo (_ ( "Cuenta bancaria incorrecta" ));
+    /// Si los d&iacute;gitos de control no se corresponden muestra un mensaje de aviso.
+    if ( controlText != mui_controlDigit->text() ) {
+	blMsgWarning ( _( "Cuenta bancaria incorrecta" ) );
         throw - 1;
     } // end if
     
@@ -95,29 +103,28 @@ void BlBankEdit::checkControlDigit()
 
 ///
 /**
-\param val
+\param text
 **/
-void BlBankEdit::setText ( QString val )
+void BlBankEdit::setText ( QString text )
 {
     BL_FUNC_DEBUG
-    s_cuentalostFocus();
-    m_entidad->setText ( val.left ( 4 ) );
-    m_oficina->setText ( val.left ( 8 ).right ( 4 ) );
-    m_dc->setText ( val.left ( 10 ).right ( 2 ) );
-    m_cuenta->setText ( val.left ( 20 ).right ( 10 ) );
+    bankAccountLostFocus();
+    mui_bank->setText ( text.left ( 4 ) );
+    mui_bankOffice->setText ( text.left ( 8 ).right ( 4 ) );
+    mui_controlDigit->setText ( text.left ( 10 ).right ( 2 ) );
+    mui_bankAccount->setText ( text.left ( 20 ).right ( 10 ) );
     
 }
 
 
 ///
 /**
-\param val
+\param value
 **/
-void BlBankEdit::setFieldValue ( QString val )
+void BlBankEdit::setFieldValue ( QString value )
 {
     BL_FUNC_DEBUG
-    setText ( val );
-    
+    setText ( value );
 }
 
 
@@ -131,10 +138,10 @@ QString BlBankEdit::text()
 {
     BL_FUNC_DEBUG
     
-    s_cuentalostFocus();
-    QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
+    bankAccountLostFocus();
+    QString text = mui_bank->text() + mui_bankOffice->text() + mui_controlDigit->text() + mui_bankAccount->text();
     checkControlDigit();
-    return val;
+    return text;
 }
 
 
@@ -145,7 +152,6 @@ QString BlBankEdit::text()
 QString BlBankEdit::fieldValue()
 {
     BL_FUNC_DEBUG
-    
     return text();
 }
 
@@ -153,10 +159,10 @@ QString BlBankEdit::fieldValue()
 ///
 /**
 **/
-void BlBankEdit::s_returnPressed()
+void BlBankEdit::returnKeyPressed()
 {
     BL_FUNC_DEBUG
-    s_cuentalostFocus();
+    bankAccountLostFocus();
     emit returnPressed();
     
 }
@@ -168,7 +174,7 @@ void BlBankEdit::s_returnPressed()
 void BlBankEdit::selectAll()
 {
     BL_FUNC_DEBUG
-    m_cuenta->selectAll();
+    mui_bankAccount->selectAll();
     
 }
 
@@ -179,32 +185,18 @@ void BlBankEdit::selectAll()
 void BlBankEdit::setFocus()
 {
     BL_FUNC_DEBUG
-    m_cuenta->setFocus ( Qt::OtherFocusReason );
-    
+    mui_bankAccount->setFocus ( Qt::OtherFocusReason );
 }
 
 
 ///
 /**
-\param texto
-\return
+\param text
 **/
-void BlBankEdit::s_cuentatextChanged ( const QString &texto )
+void BlBankEdit::bankAccountChanged ( const QString &text )
 {
     BL_FUNC_DEBUG
-    /*
-        if ( texto == "+" )
-            s_searchFecha();
-        if ( texto == "*" )
-            m_cuenta->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-        m_cuenta->setText ( blNormalizeDate ( texto ).toString ( "dd/MM/yyyy" ) );
-        if ( texto == "" ) {
-            m_cuenta->setText ( "" );
-            return;
-        } // end if
-    */
-    emit ( valueChanged ( m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text() ) );
-    
+    emit ( valueChanged ( mui_bank->text() + mui_bankOffice->text() + mui_controlDigit->text() + mui_bankAccount->text() ) );
 }
 
 
@@ -212,12 +204,12 @@ void BlBankEdit::s_cuentatextChanged ( const QString &texto )
 ///
 /**
 **/
-void BlBankEdit::s_cuentalostFocus()
+void BlBankEdit::bankAccountLostFocus()
 {
     BL_FUNC_DEBUG
-    QString fech = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
-    if ( fech != "" )
-        s_cuentatextChanged ( fech );
+    QString text = mui_bank->text() + mui_bankOffice->text() + mui_controlDigit->text() + mui_bankAccount->text();
+    if ( text != "" )
+        bankAccountChanged ( text );
     
 }
 

@@ -70,7 +70,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionAperturaRapida") {
     bool ok;
     QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),

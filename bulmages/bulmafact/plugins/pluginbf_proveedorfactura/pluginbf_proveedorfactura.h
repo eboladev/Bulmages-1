@@ -40,7 +40,7 @@ extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int ProveedorView_cargarPost_Post (P
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
-extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 #endif

@@ -44,7 +44,7 @@ CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget
 	/// Recorre cada campo.
 	for (int j = 0; j < actTicket->listaLineas()->at(i)->lista()->size(); ++j) {
 	    QString campo = actTicket->listaLineas()->at(i)->lista()->at(j)->fieldName();
-	    QString valor = actTicket->listaLineas()->at(i)->lista()->at(j)->valorcampo();
+	    QString valor = actTicket->listaLineas()->at(i)->lista()->at(j)->fieldValue();
 	    ticketOrigen->listaLineas()->at(i)->setDbValue(campo, valor);
 	} // end for
     } // end for
@@ -362,7 +362,7 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 	    for (int j = 0; j < ticketOrigen->listaLineas()->at(i)->lista()->size(); ++j) {
 		
 		QString campo = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldName();
-		QString valor = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->valorcampo();
+		QString valor = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldValue();
 
 		if ((campo == "idalbaran") && (!valor.isEmpty())) {
 		    necesitaGuardar = TRUE;
@@ -438,7 +438,7 @@ void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *des
     for (int j = 0; j < origen->lineaActBtTicket()->lista()->size(); ++j) {
       
 	QString campo = origen->lineaActBtTicket()->lista()->at(j)->fieldName();
-	QString valor = origen->lineaActBtTicket()->lista()->at(j)->valorcampo();
+	QString valor = origen->lineaActBtTicket()->lista()->at(j)->fieldValue();
 	
 	destino->lineaActBtTicket()->setDbValue(campo, valor);
 	

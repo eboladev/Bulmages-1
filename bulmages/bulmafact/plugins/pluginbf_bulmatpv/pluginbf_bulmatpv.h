@@ -36,7 +36,7 @@
 
 extern "C" PLUGINBF_BULMATPV_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_BULMATPV_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_BULMATPV_EXPORT int BlAction_actionTriggered(BlAction *);
 
 /// Familias
 extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );

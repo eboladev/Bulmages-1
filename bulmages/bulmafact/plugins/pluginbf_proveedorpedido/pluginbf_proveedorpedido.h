@@ -34,7 +34,7 @@ extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfCompany_createMainWindows_Post(
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 

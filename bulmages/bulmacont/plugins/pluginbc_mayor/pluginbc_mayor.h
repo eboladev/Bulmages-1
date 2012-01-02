@@ -28,7 +28,7 @@
 #include "blaction.h"
 
 extern "C" PLUGINBC_MAYOR_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" PLUGINBC_MAYOR_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBC_MAYOR_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 #endif

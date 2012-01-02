@@ -39,7 +39,7 @@ extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int TrabajadorView_on_mui_guardar_clicked
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_load ( BlForm * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_guardar_Post ( BlForm * );
-extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/

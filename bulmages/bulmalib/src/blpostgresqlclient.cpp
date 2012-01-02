@@ -256,7 +256,7 @@ int BlDbRecordSet::numcampo ( const QString &campo )
 
 /// Esta funcion devuelve el tipo del campo posicion
 /// \return un OID con el indice a la tabla pg_type (que puede considerarse una constante).
-int BlDbRecordSet::dbFieldType ( int posicion )
+int BlDbRecordSet::fieldType ( int posicion )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbRecordSet::tipo", 0, QString::number ( posicion ) );
@@ -284,7 +284,7 @@ QString BlDbRecordSet::value( int posicion, int registro, bool localeformat )
     QString val = QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ) );
     /// Si el campo es del tipo numeric y esmos con locales lo parseamos.
     if ( localeformat ) {
-        if ( dbFieldType ( posicion ) == 1700 ) {
+        if ( fieldType ( posicion ) == 1700 ) {
             /// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
 	    // Perdona que te haga estos cambios Aron. Pero estan probando el programa y da muchos fallos.
 	    // Lo dejo medio apanyado y disculpa la intromision

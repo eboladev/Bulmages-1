@@ -33,7 +33,7 @@
 #include "blaction.h"
 
 extern "C" PLUGINBF_EXAMPLE_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_EXAMPLE_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_EXAMPLE_EXPORT int BlAction_actionTriggered(BlAction *);
 
 //Metodo antiguo
 /************

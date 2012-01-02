@@ -80,7 +80,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionClientes") {
         if ( g_clientesList ) {
             g_clientesList->hide();

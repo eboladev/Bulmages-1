@@ -68,7 +68,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionExample") {
         fprintf ( stderr, "S'ha activado el slot\n" );
         QMessageBox::warning ( 0,

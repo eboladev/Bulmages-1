@@ -15,8 +15,8 @@ public:
     BlTreeWidget ( QWidget * parent = 0 );
     ~BlTreeWidget ();
 
-    virtual void creaMenu ( QMenu * );
-    virtual void procesaMenu ( QAction * );
+    virtual void createMenu ( QMenu * );
+    virtual void execMenuAction ( QAction * );
 
 public slots:
     virtual void contextMenuEvent ( QContextMenuEvent * );

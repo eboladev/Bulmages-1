@@ -36,7 +36,7 @@
 extern "C" PLUGINBF_CONTRATO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CONTRATO_EXPORT int ClienteView_ClienteView ( ClienteView * );
 extern "C" PLUGINBF_CONTRATO_EXPORT int BlForm_load ( BlForm * );
-extern "C" PLUGINBF_CONTRATO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CONTRATO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

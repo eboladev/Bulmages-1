@@ -41,7 +41,7 @@ extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int ProveedorView_cargarPost_Post(Provee
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlForm_guardar_Post (BlForm *);
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *);
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView * );
-extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlAction_actionTriggered(BlAction *);
 
 void generarVencimientos (FacturaProveedorView *);
 

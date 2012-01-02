@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2009 by Aron Galdon                                     *
  *   auryn@wanadoo.es                                                      *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,17 +31,6 @@
 
 class BL_EXPORT BlArgParser
 {
-public:
-   BlArgParser( int argc, char **argv );
-   QString dbName();
-   QString host();
-   QString port();
-   QString userName();
-   QString confReplaceString();
-   bool askPassword();
-   bool showVersion();
-   bool showHelp();
-
 private:
     QString m_dbName;
     QString m_executable;
@@ -51,6 +41,18 @@ private:
     bool m_askPassword;
     bool m_showVersion;
     bool m_showHelp;
+
+public:
+    BlArgParser( int argc, char **argv );
+    QString dbName();
+    QString host();
+    QString port();
+    QString userName();
+    QString confReplaceString();
+    bool askPassword();
+    bool showVersion();
+    bool showHelp();
+
 };
 
 

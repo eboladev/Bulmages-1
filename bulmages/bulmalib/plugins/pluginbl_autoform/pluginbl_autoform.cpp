@@ -1577,7 +1577,7 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName().startsWith("autoform_")) {
 	BlAutoForm *form = genBlAutoForm(accion->objectName().right( accion->objectName().size() - 9));

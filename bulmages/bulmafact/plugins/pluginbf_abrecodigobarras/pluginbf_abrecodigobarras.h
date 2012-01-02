@@ -34,7 +34,7 @@
 #include "blaction.h"
 
 extern "C" PLUGINBF_ABRECODIGOBARRAS_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_ABRECODIGOBARRAS_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_ABRECODIGOBARRAS_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 #endif

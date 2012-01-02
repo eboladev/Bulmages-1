@@ -38,7 +38,7 @@ BfBuscarSerieFactura::BfBuscarSerieFactura ( QWidget *parent )
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     m_codigoserie_factura = "";
-    m_table = "serie_factura";
+    setTableName("serie_factura");
     
 }
 

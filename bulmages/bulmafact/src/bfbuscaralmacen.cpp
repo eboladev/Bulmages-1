@@ -36,7 +36,7 @@ BfBuscarAlmacen::BfBuscarAlmacen ( QWidget *parent, const char * )
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
     m_codigoalmacen = "";
-    m_table = "almacen";
+    setTableName("almacen");
     
 }
 

@@ -303,28 +303,28 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
             delete cur;
         } // end if
 
-        if ( exists ( "id" + m_tablename ) )
-            buff.replace ( "[id" + m_tablename + "]", blStringEscape ( dbValue ( "id" + m_tablename ), tipoEscape ) );
-        if ( exists ( "num" + m_tablename ) )
-            buff.replace ( "[num" + m_tablename + "]", blStringEscape ( dbValue ( "num" + m_tablename ), tipoEscape ) );
-        if ( exists ( "f" + m_tablename ) )
-            buff.replace ( "[f" + m_tablename + "]", blStringEscape ( dbValue ( "f" + m_tablename ), tipoEscape ) );
-        if ( exists ( "venc" + m_tablename ) )
-            buff.replace ( "[venc" + m_tablename + "]", blStringEscape ( dbValue ( "venc" + m_tablename ), tipoEscape ) );
-        if ( exists ( "contact" + m_tablename ) )
-            buff.replace ( "[contact" + m_tablename + "]", blStringEscape ( dbValue ( "contact" + m_tablename ), tipoEscape ) );
-        if ( exists ( "tel" + m_tablename ) )
-            buff.replace ( "[tel" + m_tablename + "]", blStringEscape ( dbValue ( "tel" + m_tablename ), tipoEscape ) );
-        if ( exists ( "coment" + m_tablename ) )
-            buff.replace ( "[coment" + m_tablename + "]", blStringEscape ( dbValue ( "coment" + m_tablename ), tipoEscape ) );
-        if ( exists ( "desc" + m_tablename ) )
-            buff.replace ( "[desc" + m_tablename + "]", blStringEscape ( dbValue ( "desc" + m_tablename ), tipoEscape ) );
-        if ( exists ( "ref" + m_tablename ) )
-            buff.replace ( "[ref" + m_tablename + "]", blStringEscape ( dbValue ( "ref" + m_tablename ), tipoEscape ) );
-        if ( exists ( "codigoserie_" + m_tablename ) )
-            buff.replace ( "[codigoserie_" + m_tablename + "]", blStringEscape ( dbValue ( "codigoserie_" + m_tablename ), tipoEscape ) );
-        if ( exists ( "fecha" + m_tablename ) )
-            buff.replace ( "[fecha" + m_tablename + "]", blStringEscape ( dbValue ( "fecha" + m_tablename ), tipoEscape ) );
+        if ( exists ( "id" + tableName() ) )
+            buff.replace ( "[id" + tableName() + "]", blStringEscape ( dbValue ( "id" + tableName() ), tipoEscape ) );
+        if ( exists ( "num" + tableName() ) )
+            buff.replace ( "[num" + tableName() + "]", blStringEscape ( dbValue ( "num" + tableName() ), tipoEscape ) );
+        if ( exists ( "f" + tableName() ) )
+            buff.replace ( "[f" + tableName() + "]", blStringEscape ( dbValue ( "f" + tableName() ), tipoEscape ) );
+        if ( exists ( "venc" + tableName() ) )
+            buff.replace ( "[venc" + tableName() + "]", blStringEscape ( dbValue ( "venc" + tableName() ), tipoEscape ) );
+        if ( exists ( "contact" + tableName() ) )
+            buff.replace ( "[contact" + tableName() + "]", blStringEscape ( dbValue ( "contact" + tableName() ), tipoEscape ) );
+        if ( exists ( "tel" + tableName() ) )
+            buff.replace ( "[tel" + tableName() + "]", blStringEscape ( dbValue ( "tel" + tableName() ), tipoEscape ) );
+        if ( exists ( "coment" + tableName() ) )
+            buff.replace ( "[coment" + tableName() + "]", blStringEscape ( dbValue ( "coment" + tableName() ), tipoEscape ) );
+        if ( exists ( "desc" + tableName() ) )
+            buff.replace ( "[desc" + tableName() + "]", blStringEscape ( dbValue ( "desc" + tableName() ), tipoEscape ) );
+        if ( exists ( "ref" + tableName() ) )
+            buff.replace ( "[ref" + tableName() + "]", blStringEscape ( dbValue ( "ref" + tableName() ), tipoEscape ) );
+        if ( exists ( "codigoserie_" + tableName() ) )
+            buff.replace ( "[codigoserie_" + tableName() + "]", blStringEscape ( dbValue ( "codigoserie_" + tableName() ), tipoEscape ) );
+        if ( exists ( "fecha" + tableName() ) )
+            buff.replace ( "[fecha" + tableName() + "]", blStringEscape ( dbValue ( "fecha" + tableName() ), tipoEscape ) );
 
         /// Impresion de la tabla de contenidos.
         QString l;
@@ -372,27 +372,27 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
                             fitxersortidatxt += "    <td>" + blStringEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
                         } // end if
             
-                        if ( parametros_story[j].trimmed() == "desc" + m_tablename ){
+                        if ( parametros_story[j].trimmed() == "desc" + tableName() ){
                             ///Impresion del descripcion de los articulos
                             fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
                         } // end if
             
-                        if ( parametros_story[j].trimmed() == "cant" + m_tablename ){
+                        if ( parametros_story[j].trimmed() == "cant" + tableName() ){
                             ///Impresion de las candidad de los articulos
                             fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
                         } // end if
             
-                        if ( parametros_story[j].trimmed() == "pvp" + m_tablename ){
+                        if ( parametros_story[j].trimmed() == "pvp" + tableName() ){
                             ///Impresion del precio de los articulos
                             fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
                         } // end if
             
-                        if ( parametros_story[j].trimmed() == "descuento" + m_tablename ){
+                        if ( parametros_story[j].trimmed() == "descuento" + tableName() ){
                             ///Impresion del subtotal de los articulos
                             fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
                         } // end if
 
-                        if ( parametros_story[j].trimmed() == "subtotal" + m_tablename ){
+                        if ( parametros_story[j].trimmed() == "subtotal" + tableName() ){
                             ///Impresion del subtotal de los articulos
                             fitxersortidatxt += "    <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
                         } // end if
@@ -976,7 +976,7 @@ QString BfForm::templateName ( void )
     BL_FUNC_DEBUG
     
     
-    return m_tablename;
+    return tableName();
 }
 
 ///

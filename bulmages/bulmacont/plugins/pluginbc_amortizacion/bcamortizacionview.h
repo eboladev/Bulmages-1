@@ -40,8 +40,8 @@ class PLUGINBC_AMORTIZACION_EXPORT BcAmortizacionSubForm : public BcSubForm
 public:
     BcAmortizacionSubForm ( QWidget *parent );
     virtual ~BcAmortizacionSubForm();
-    virtual void creaMenu ( QMenu * );
-    virtual void procesaMenu ( QAction * );
+    virtual void createMenu ( QMenu * );
+    virtual void execMenuAction ( QAction * );
 };
 
 

@@ -45,7 +45,7 @@ extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfClienteAlbaranSubForm_BfClienteAlb
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
-extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 #endif

@@ -41,7 +41,7 @@ extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

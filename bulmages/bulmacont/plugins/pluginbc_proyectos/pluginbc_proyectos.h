@@ -31,7 +31,7 @@
 
 extern "C" PLUGINBC_PROYECTOS_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_PROYECTOS_EXPORT int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView * );
-extern "C" PLUGINBC_PROYECTOS_EXPORT int BlAction_triggered ( BlAction *);
+extern "C" PLUGINBC_PROYECTOS_EXPORT int BlAction_actionTriggered ( BlAction *);
 extern "C" PLUGINBC_PROYECTOS_EXPORT int BlForm_load ( BlForm * );
 
 

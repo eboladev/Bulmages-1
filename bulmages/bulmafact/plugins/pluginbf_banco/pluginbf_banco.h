@@ -31,6 +31,6 @@
 
 extern "C" PLUGINBF_BANCO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_BANCO_EXPORT int SNewBancoView (BfCompany *);
-extern "C" PLUGINBF_BANCO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_BANCO_EXPORT int BlAction_actionTriggered(BlAction *);
 #endif
 

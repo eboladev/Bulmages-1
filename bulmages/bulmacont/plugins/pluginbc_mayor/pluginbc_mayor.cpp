@@ -71,7 +71,7 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionLibro") {
         if (g_mayor == NULL) {
             g_mayor = new BcExtractoView ( g_pluginbc_mayor->company(), 0 );

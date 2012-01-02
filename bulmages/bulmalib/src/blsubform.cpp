@@ -61,9 +61,9 @@ BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, 
     BL_FUNC_DEBUG
     m_fieldName = nom;
     m_tipo = typ;
-    m_restricciones = res;
+    m_fieldRestrictions = res;
     m_options = options;
-    m_nompresentacion = nomp;
+    m_fieldTitle = nomp;
     m_numericPrecision = 2;
     
 }
@@ -106,7 +106,7 @@ unsigned int BlSubFormHeader::restrictions()
 {
     BL_FUNC_DEBUG
     
-    return m_restricciones;
+    return m_fieldRestrictions;
 }
 
 
@@ -114,7 +114,7 @@ unsigned int BlSubFormHeader::restrictions()
 /**
 \return
 **/
-BlDbField::DbType BlSubFormHeader::dbFieldType()
+BlDbField::DbType BlSubFormHeader::fieldType()
 {
     BL_FUNC_DEBUG
     
@@ -127,11 +127,11 @@ BlDbField::DbType BlSubFormHeader::dbFieldType()
 /**
 \return
 **/
-QString BlSubFormHeader::nompresentacion()
+QString BlSubFormHeader::fieldTitle()
 {
     BL_FUNC_DEBUG
     
-    return m_nompresentacion;
+    return m_fieldTitle;
 }
 
 
@@ -139,11 +139,11 @@ QString BlSubFormHeader::nompresentacion()
 /**
 \return
 **/
-int BlSubFormHeader::restrictcampo()
+int BlSubFormHeader::fieldRestrictions()
 {
     BL_FUNC_DEBUG
     
-    return m_restricciones;
+    return m_fieldRestrictions;
 }
 
 
@@ -167,8 +167,8 @@ QString BlSubFormHeader::exportXML() {
 
     val = "<BLSUBFORMHEADER>\n";
     val += "\t<NOMCAMPO>" + blXMLEncode(m_fieldName) + "</NOMCAMPO>\n";
-    val += "\t<NOMPRESENTACION>"+ blXMLEncode(m_nompresentacion)+"</NOMPRESENTACION>\n";
-    val += "\t<RESTRICCIONES>"+ blXMLEncode(QString::number(m_restricciones))+"</RESTRICCIONES>\n";
+    val += "\t<NOMPRESENTACION>"+ blXMLEncode(m_fieldTitle)+"</NOMPRESENTACION>\n";
+    val += "\t<RESTRICCIONES>"+ blXMLEncode(QString::number(m_fieldRestrictions))+"</RESTRICCIONES>\n";
     val += "\t<TIPO>"+ blXMLEncode(QString::number(m_tipo))+"</TIPO>\n";
     val += "\t<OPCIONES>"+ blXMLEncode(QString::number(m_options))+"</OPCIONES>\n";
     val += "</BLSUBFORMHEADER>\n";
@@ -333,7 +333,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
           /// poder hacer la consulta sobre la precisión del campo y ese dato solo esta en BlDbRecord.
           /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
           /// NOTA: En caso de que no haya sido posible calcular la precisión esta se establece por defecto como 2.
-          if (linea->dbFieldType() == BlDbField::DbNumeric ) {
+          if (linea->fieldType() == BlDbField::DbNumeric ) {
 
                 QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '" + tableName() + "' and column_name = '" + linea->fieldName() + "';";
                 BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
@@ -807,7 +807,7 @@ void BlSubForm::setColumnCount ( int i )
 ///
 /**
 **/
-void BlSubForm::creaMenu ( QMenu * )
+void BlSubForm::createMenu ( QMenu * )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
@@ -817,10 +817,10 @@ void BlSubForm::creaMenu ( QMenu * )
 ///
 /**
 **/
-void BlSubForm::procesaMenu ( QAction * )
+void BlSubForm::execMenuAction ( QAction * )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlSubForm:: execMenuAction", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -1012,7 +1012,7 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
     BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
-        rec->addDbField ( linea->fieldName(), linea->dbFieldType(), linea->restrictions(), linea->nompresentacion() );
+        rec->addDbField ( linea->fieldName(), linea->fieldType(), linea->restrictions(), linea->fieldTitle() );
     } // end for
 
     BlDbSubFormField *camp;
@@ -1024,14 +1024,14 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
 
         if ( ! ( head->options() & BlSubFormHeader::DbNoWrite ) )
             flags |= Qt::ItemIsEditable;
-        if ( head->dbFieldType() == BlDbField::DbBoolean ) {
+        if ( head->fieldType() == BlDbField::DbBoolean ) {
             flags |= Qt::ItemIsUserCheckable;
         } // end if
 
         camp->setFlags ( flags );
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
-        if ( head->dbFieldType() == BlDbField::DbInt || head->dbFieldType() == BlDbField::DbNumeric || head->dbFieldType() == BlDbField::DbDate || head->dbFieldType() == BlDbField::DbTime ) {
+        if ( head->fieldType() == BlDbField::DbInt || head->fieldType() == BlDbField::DbNumeric || head->fieldType() == BlDbField::DbDate || head->fieldType() == BlDbField::DbTime ) {
             camp->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         } else {
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
@@ -1088,7 +1088,7 @@ void BlSubForm::pintaCabeceras()
     BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
-        headers << linea->nompresentacion();
+        headers << linea->fieldTitle();
         if ( linea->options() & BlSubFormHeader::DbHideView ) {
             mui_list->hideColumn ( i );
         } else {
@@ -1464,9 +1464,9 @@ void BlSubForm::load ( BlDbRecordSet *cur )
            } // end if
             camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
             /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
-            if ( patronFecha.exactMatch ( camp->valorcampo() ) ) {
+            if ( patronFecha.exactMatch ( camp->fieldValue() ) ) {
                 camp->set
-                ( camp->valorcampo().left ( 10 ) );
+                ( camp->fieldValue().left ( 10 ) );
             } // end if
             /// Rellena la tabla con los datos.
             mui_list->setItem ( i, j, camp );
@@ -1488,12 +1488,12 @@ void BlSubForm::load ( BlDbRecordSet *cur )
             BlSubFormHeader *head = m_lcabecera.at ( j );
             if ( head->fieldName() == m_columnaParaRowSpan ) {
                 camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
-                textoCeldaActual = camp->valorcampo();
+                textoCeldaActual = camp->fieldValue();
                 /// Mira lo que hay en la fila anterior si existe.
                 if ( i > 0 ) {
                     reg2 = m_lista.at ( i - 1 );
                     camp2 = ( BlDbSubFormField * ) reg2->lista() ->at ( j );
-                    textoCeldaAnterior = camp2->valorcampo();
+                    textoCeldaAnterior = camp2->fieldValue();
                     if ( textoCeldaActual == textoCeldaAnterior ) {
                         /// activamos el indice de celdas iguales
                         if ( m_filaInicialRowSpan == -1 ) {
@@ -1771,14 +1771,14 @@ bool BlSubForm::campoCompleto ( int row )
             if ( !camp ) return FALSE;
 
             header = m_lcabecera.at ( i );
-            if ( camp->restrictcampo() & BlDbField::DbNotNull
+            if ( camp->fieldRestrictions() & BlDbField::DbNotNull
                     && camp->text() == ""
                     && ! ( header->options() & BlSubFormHeader::DbHideView )
-                    && camp->dbFieldType() != BlDbField::DbBoolean ) {
+                    && camp->fieldType() != BlDbField::DbBoolean ) {
 		
                 return FALSE;
             } // end if
-            if ( camp->restrictcampo() & BlDbField::DbRequired
+            if ( camp->fieldRestrictions() & BlDbField::DbRequired
                     && camp->text() == "" ) {
 		
                 return FALSE;
@@ -1881,12 +1881,12 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
     camp->refresh();
 
     /// Si existe la restriccion unique la comprobamos y no permitimos establecer el valor saliendo con un aviso.
-    if ( camp->restrictcampo() & BlDbField::DbUnique && camp->valorcampo() != "") {
+    if ( camp->fieldRestrictions() & BlDbField::DbUnique && camp->fieldValue() != "") {
 	BlDbSubFormRecord *rec1;
 	for ( int i = 0; i < mui_list->rowCount(); ++i ) {
 	    rec1 =  lineaat ( i );
 	    if ( rec1 && rec1 != rec) {
-	      if (rec1->dbValue(camp->fieldName()) == camp->valorcampo()) {
+	      if (rec1->dbValue(camp->fieldName()) == camp->fieldValue()) {
 		blMsgInfo( _ ("Ya existe un elemento con este valor en el subformulario. Se viola una clave unica."));
 		camp->set("");
 		return;
@@ -1897,14 +1897,14 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
     
     
     /// Si el campo no ha sido cambiado se sale.
-    if ( ! camp->cambiado() ) {
+    if ( ! camp->isFieldChanged() ) {
 	BlDebug::blDebug ( ( Q_FUNC_INFO), 0, _("Sin cambios"));
         return;
     } // end if
 
     /// En el caso de tener una fecha directamente la tratamos ya que este claro cual es su tratamiento.
-    if (camp->dbFieldType() == BlDbField::DbDate) {
-        camp->set ( blNormalizeDate ( camp->valorcampo() ).toString ( "dd/MM/yyyy" ) );
+    if (camp->fieldType() == BlDbField::DbDate) {
+        camp->set ( blNormalizeDate ( camp->fieldValue() ).toString ( "dd/MM/yyyy" ) );
     } // end if
 
     if ( m_procesacambios ) {
@@ -2230,9 +2230,9 @@ int BlSubForm::remove ( int row )
         /// Sacamos celda a celda toda la fila
         for ( int i = 0; i < mui_list->columnCount(); i++ ) {
             camp = ( BlDbSubFormField * ) mui_list->item ( row, i );
-            BlDbSubFormField *it = new BlDbSubFormField ( rac, mainCompany(), camp->fieldName(), camp->dbFieldType(), camp->restrictcampo(), camp->nompresentacion() );
+            BlDbSubFormField *it = new BlDbSubFormField ( rac, mainCompany(), camp->fieldName(), camp->fieldType(), camp->fieldRestrictions(), camp->fieldTitle() );
             rac->lista() ->append ( it );
-            it->set ( camp->valorcampo() );
+            it->set ( camp->fieldValue() );
         } // end for
 
         /// Nos aseguramos que ningun campo de la fila a borrar este en modo edicion.
@@ -2745,14 +2745,14 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     QString field = "    ";
 
     /// Valor num&eacute;rico o fecha
-    if ( ( value->dbFieldType() == BlDbField::DbInt )
-      || ( value->dbFieldType() == BlDbField::DbNumeric )
-      || ( value->dbFieldType() == BlDbField::DbDate ) )
+    if ( ( value->fieldType() == BlDbField::DbInt )
+      || ( value->fieldType() == BlDbField::DbNumeric )
+      || ( value->fieldType() == BlDbField::DbDate ) )
     {
         field += "<td><para style=\"number\">";
 
         /// Si es un n&uacute;mero con decimales, tenerlo en cuenta
-        if ( value->dbFieldType() & BlDbField::DbNumeric )
+        if ( value->fieldType() & BlDbField::DbNumeric )
         {
             int prec = value->text().section(",", 1).count();
             field += spanish.toString ( value->text().toDouble(), 'f', prec );
@@ -2762,7 +2762,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     }
 
     /// Valor booleano
-    else if ( value->dbFieldType() == BlDbField::DbBoolean )
+    else if ( value->fieldType() == BlDbField::DbBoolean )
     {
         /// Mostrar un "puntazo" centrado si el valor es verdadero
         if ( value->checkState() == Qt::Checked )
@@ -3125,7 +3125,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     emit pintaMenu ( popup );
 
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
-    creaMenu ( popup );
+    createMenu ( popup );
 
     if ( (row >= 0) && (col >= 0) ) {
     
@@ -3198,7 +3198,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     emit trataMenu ( opcion );
 
     /// Activamos las herederas.
-    procesaMenu ( opcion );
+    execMenuAction ( opcion );
 
     delete popup;
     
@@ -3312,7 +3312,7 @@ QString BlSubForm::dbFieldNameByColumnId ( int columna )
 QString BlSubForm::dbFieldViewNameByColumnId(int columna)
 {
    BL_FUNC_DEBUG
-   return m_lcabecera.at(columna)->nompresentacion();
+   return m_lcabecera.at(columna)->fieldTitle();
 }
 
 
@@ -3321,10 +3321,10 @@ QString BlSubForm::dbFieldViewNameByColumnId(int columna)
     No usamos directamente la columna actual, ya que en ocasiones puede no ser correcta.
    \return Tipo de datos del campo
 **/
-BlDbField::DbType BlSubForm::dbFieldTypeByColumnId(int columna)
+BlDbField::DbType BlSubForm::fieldTypeByColumnId(int columna)
 {
    BL_FUNC_DEBUG
-   return m_lcabecera.at(columna)->dbFieldType();
+   return m_lcabecera.at(columna)->fieldType();
 }
 
 
@@ -3504,7 +3504,7 @@ QString BlSubForm::likeFilterSQL(const QString &text)
     
 	/// Recorre todas las columnas.
 	for (int i=0; i < headerList()->count(); i++) {
-	  if (headerList()->at(i)->dbFieldType() == BlDbField::DbVarChar) {  
+	  if (headerList()->at(i)->fieldType() == BlDbField::DbVarChar) {  
 	    if (andor) {
 	      result += " lower(" + headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
 	      andor = false;
@@ -3568,25 +3568,25 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return ( QWidget * ) g_plugParams;
     } // end if
 
-   if (linea->dbFieldType() == BlDbField::DbVarChar) {
+   if (linea->fieldType() == BlDbField::DbVarChar) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
 	
         return editor;
-   } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
+   } else if ( linea->fieldType() == BlDbField::DbNumeric ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
         editor->setDecimals(linea->numericPrecision());
 	
         return editor;
-    } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
+    } else if ( linea->fieldType() == BlDbField::DbInt ) {
         QSpinBox * editor = new QSpinBox ( parent );
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
 	
         return editor;
-    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+    } else if ( linea->fieldType() == BlDbField::DbTime ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
         return editor;
@@ -3627,20 +3627,20 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } // end if
 
 
-   if (linea->dbFieldType() == BlDbField::DbVarChar) {
+   if (linea->fieldType() == BlDbField::DbVarChar) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-   } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
+   } else if ( linea->fieldType() == BlDbField::DbNumeric ) {
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
         model->setData ( index, value );
-    } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
+    } else if ( linea->fieldType() == BlDbField::DbInt ) {
         QSpinBox * spinBox = static_cast<QSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = QString::number(spinBox->value());
         model->setData ( index, value );
-    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+    } else if ( linea->fieldType() == BlDbField::DbTime ) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
     } else {
@@ -3673,21 +3673,21 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         return;
     } // end if
 
-   if (linea->dbFieldType() == BlDbField::DbVarChar) {
+   if (linea->fieldType() == BlDbField::DbVarChar) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
-   } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
+   } else if ( linea->fieldType() == BlDbField::DbNumeric ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
-    } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
+    } else if ( linea->fieldType() == BlDbField::DbInt ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         QSpinBox *spinBox = static_cast<QSpinBox*> ( editor );
         spinBox->setValue ( value.toInt() );
         spinBox->selectAll();
-    } else if ( linea->dbFieldType() == BlDbField::DbTime ) {
+    } else if ( linea->fieldType() == BlDbField::DbTime ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );

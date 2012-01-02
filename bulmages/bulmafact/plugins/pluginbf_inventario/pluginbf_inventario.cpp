@@ -63,7 +63,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBf_Inventario") );
 
     if (accion->objectName() == "mui_actionInventario") {
@@ -178,7 +178,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
             BlFixed val = BlFixed ( cur->value( "valminimsalmacen" ) );
-            BlFixed valb = BlFixed ( camp->valorcampo() );
+            BlFixed valb = BlFixed ( camp->fieldValue() );
             if ( stock - valb <= val )
                 blMsgWarning ( _ ( "Stock minimo superado" ) );
         } // end if

@@ -1,6 +1,9 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,9 +27,8 @@
 
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
     sobre si un elemento ha sido creado o no.
-    Conecta el activar un tipo con m_activated.
+    Conecta el activar un tipo con 'activatedItem'.
 */
-/// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
 /**
 \param parent
 **/
@@ -35,9 +37,9 @@ BlComboBox::BlComboBox ( QWidget *parent )
 {
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
     connect ( g_theApp, SIGNAL ( dbTableChanged ( const QString & ) ), this, SLOT ( onDbTableChanged ( const QString & ) ) );
-    m_null = TRUE;
+    m_allowNull = TRUE;
 
     
 }
@@ -51,20 +53,18 @@ BlComboBox::~BlComboBox()
     BL_FUNC_DEBUG
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    
 }
 
 
 ///
 /**
 **/
-void BlComboBox::onDbTableChanged ( const QString &t )
+void BlComboBox::onDbTableChanged ( const QString &tableName )
 {
     BL_FUNC_DEBUG
-    if ( m_table == t ) {
+    if ( m_tableName == tableName ) {
         setId ( id() );
     } // end if
-    
 }
 
 
@@ -93,7 +93,7 @@ void BlComboBox::setId ( QString id )
 	int i = 0;
 	int i1 = 0;
 	clear();
-	if ( m_null ) {
+	if ( m_allowNull ) {
 	    addItem ( "--" );
 	    i++;
 	} // end if
@@ -122,7 +122,7 @@ void BlComboBox::setId ( QString id )
 
 	setCurrentIndex ( i1 );
     } catch(...) {
-	fprintf(stderr, "Error de Base de Datos en BlComboBox::setId\n");
+	fprintf(stderr, _("Error de Base de Datos en BlComboBox::setId.\n").toAscii());
 	exit(0);
     } // end try
     
@@ -145,18 +145,18 @@ void BlComboBox::setFieldValue ( QString id )
 /**
 \param index
 **/
-void BlComboBox::m_activated ( int index )
+void BlComboBox::activatedItem ( int index )
 {
     BL_FUNC_DEBUG
     if ( index > 0 ) {
-        if ( m_null ) {
+        if ( m_allowNull ) {
             emit ( valueChanged ( m_comboRecordSet->value( m_fieldId, index - 1 ) ) );
         } else {
             emit ( valueChanged ( m_comboRecordSet->value( m_fieldId, index ) ) );
         } // end if
     } else {
         emit ( valueChanged ( "" ) );
-    }
+    } // end if
     
 }
 
@@ -172,7 +172,7 @@ QString BlComboBox::id()
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
         /// y si se selecciona otro se retorna el valor del n&uacute;mero de elemento menos uno (sobra el valor nulo)
-        if ( m_null ) {
+        if ( m_allowNull ) {
             if ( currentIndex() == 0 ) {
                 return "";
             } else {
@@ -197,7 +197,6 @@ QString BlComboBox::id()
 QString BlComboBox::fieldValue()
 {
     BL_FUNC_DEBUG
-    
     return id();
 }
 
@@ -205,10 +204,10 @@ QString BlComboBox::fieldValue()
 ///
 /**
 **/
-void BlComboBox::setQuery ( QString q )
+void BlComboBox::setQuery ( QString query )
 {
     BL_FUNC_DEBUG
-    m_query = q;
+    m_query = query;
 }
 
 
@@ -218,7 +217,17 @@ void BlComboBox::setQuery ( QString q )
 void BlComboBox::setTableName ( QString tableName )
 {
     BL_FUNC_DEBUG
-    m_table = tableName;
+    m_tableName = tableName;
+}
+
+
+///
+/**
+**/
+QString BlComboBox::tableName()
+{
+    BL_FUNC_DEBUG
+    return m_tableName;
 }
 
 
@@ -235,10 +244,20 @@ void BlComboBox::setFieldId ( QString fieldId )
 ///
 /**
 **/
-void BlComboBox::setAllowNull ( bool v )
+void BlComboBox::setAllowNull ( bool allowNull )
 {
     BL_FUNC_DEBUG
-    m_null = v;
+    m_allowNull = allowNull;
 }
 
+
+///
+/**
+\return
+**/
+bool BlComboBox::isAllowNull()
+{
+    BL_FUNC_DEBUG
+    return m_allowNull;
+}
 
