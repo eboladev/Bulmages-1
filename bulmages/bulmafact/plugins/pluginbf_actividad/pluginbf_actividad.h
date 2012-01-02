@@ -38,7 +38,7 @@ extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFo
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
-extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 class SubForm_Actividad : public QObject

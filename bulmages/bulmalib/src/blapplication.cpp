@@ -2,6 +2,8 @@
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
+ *   http://www.iglues.org                                                 *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -19,14 +21,12 @@
  ***************************************************************************/
 
 #include <QWidget>
-
 #include "blapplication.h"
 #include "blform.h"
 #include "blfunctions.h"
 
 
-
-/// Definimos la variable global g_theApp
+/// Definimos la variable global g_theApp.
 BlApplication *g_theApp = NULL;
 
 
@@ -53,20 +53,18 @@ BlApplication::~BlApplication()
 #if CONFIG_DEBUG == TRUE
 ///
 /**
-\param o
-\param e
+\param object
+\param event
 \return
 **/
-bool BlApplication::notify ( QObject *o, QEvent *e )
+bool BlApplication::notify ( QObject *object, QEvent *event )
 {
-//   Esta funcion es llamada continuamente y por eso no la depuramos.
-//   BL_FUNC_DEBUG
-
+    ///   Esta funcion es llamada continuamente y por eso no la depuramos (BL_FUNC_DEBUG).
 
     try {
-        return QApplication::notify ( o, e );
+        return QApplication::notify ( object, event );
     } catch ( ... ) {
-        fprintf(stderr, "Error inesperado en el sistema de notificaciones\n");
+        fprintf(stderr, _("Error inesperado en el sistema de notificaciones.\n").toAscii());
         return FALSE;
     } // end try
 
@@ -74,9 +72,13 @@ bool BlApplication::notify ( QObject *o, QEvent *e )
 #endif
 
 
-void BlApplication::emitDbTableChanged ( const QString &t )
+///
+/**
+\param table
+**/
+void BlApplication::emitDbTableChanged ( const QString &table )
 {
   BL_FUNC_DEBUG
-    emit dbTableChanged ( t );
+  emit dbTableChanged ( table );
 }
 

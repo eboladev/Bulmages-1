@@ -461,9 +461,9 @@ void Devolucion::on_mui_efectivoButton_clicked() {
             for ( int j = 0; j < lista->size(); ++j ) {
                 BlDbField * camp = lista->at ( j );
                 if ( camp->fieldName() != "numlalbaran" ) {
-                    nitem->setDbValue ( camp->fieldName(), camp->valorcampo() );
+                    nitem->setDbValue ( camp->fieldName(), camp->fieldValue() );
                 }
-                if ( camp->fieldName() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
+                if ( camp->fieldName() == "cantlalbaran" && camp->fieldValue().toFloat() > 0 ) {
                     nitem->setDbValue ( camp->fieldName(), "-" + mui_devolverTable->item ( i, 0 )->text() );
                 }
             } // end for

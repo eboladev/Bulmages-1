@@ -87,7 +87,7 @@ int entryPoint ( BcBulmaCont *bcont )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionRegistroIVA") {
 	ListRegistroIvaView *perd = new ListRegistroIvaView ( g_pluginbc_registroiva->company(), "0" );
 	perd->inicializa();

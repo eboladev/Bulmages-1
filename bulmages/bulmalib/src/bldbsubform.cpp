@@ -144,7 +144,7 @@ Tiene especial intereses con los campos checkables ya que su tratamiento no es d
 void BlDbSubFormField::refresh()
 {
     BL_FUNC_DEBUG
-    if ( this->dbFieldType() == BlDbField::DbBoolean ) {
+    if ( this->fieldType() == BlDbField::DbBoolean ) {
         switch ( checkState() ) {
             case Qt::Checked:
                 BlDbField::set ( "TRUE" );
@@ -181,8 +181,8 @@ int BlDbSubFormField::set ( QString val )
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
 
 
-    if ( dbFieldType() == BlDbField::DbBoolean ) {
-        if ( restrictcampo() == BlSubFormHeader::DbNoWrite ) {
+    if ( fieldType() == BlDbField::DbBoolean ) {
+        if ( fieldRestrictions() == BlSubFormHeader::DbNoWrite ) {
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
 
@@ -194,15 +194,15 @@ int BlDbSubFormField::set ( QString val )
             /// El triestado si usa si el campo booleano admite el valor nulo.
             setCheckState ( Qt::PartiallyChecked );
         } // end if
-    } else if ( dbFieldType() == BlDbField::DbNumeric && importe.exactMatch ( val ) ) {
-        setText ( valorcampo() );
-    } else if ( dbFieldType() == BlDbField::DbDate ) {
+    } else if ( fieldType() == BlDbField::DbNumeric && importe.exactMatch ( val ) ) {
+        setText ( fieldValue() );
+    } else if ( fieldType() == BlDbField::DbDate ) {
         setText ( val.left ( 10 ) );
     } else {
-	  setText ( valorcampo() );
+	  setText ( fieldValue() );
 
 	  if ( g_confpr->value( CONF_CENTER_TEXT_FIELDS ) == "TRUE"
-	  && dbFieldType() == BlDbField::DbVarChar )
+	  && fieldType() == BlDbField::DbVarChar )
 	  {
 		setTextAlignment(Qt::AlignCenter);
 	  }
@@ -221,36 +221,36 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbSubFormField::operator <", 0, text() );
     BlDbSubFormField *ot = ( BlDbSubFormField * ) & other;
-    DbType tip = ot->dbFieldType();
-    if ( tip == this->dbFieldType() ) {
-        QString val = ot->valorcampo();
+    DbType tip = ot->fieldType();
+    if ( tip == this->fieldType() ) {
+        QString val = ot->fieldValue();
 
-        if ( this->dbFieldType() == BlDbField::DbNumeric || this->dbFieldType() == BlDbField::DbInt ) {
-            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
-            double db1 = this->valorcampo().toDouble();
+        if ( this->fieldType() == BlDbField::DbNumeric || this->fieldType() == BlDbField::DbInt ) {
+            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->fieldName() + QString::number ( this->fieldType() ) );
+            double db1 = this->fieldValue().toDouble();
             double db2 = val.toDouble();
             return ( db1 < db2 );
         } // end if
 
-        if ( this->dbFieldType() == BlDbField::DbDate ) {
-            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
-		QDate fech = blNormalizeDate ( this->valorcampo() );
+        if ( this->fieldType() == BlDbField::DbDate ) {
+            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->fieldName() + QString::number ( this->fieldType() ) );
+		QDate fech = blNormalizeDate ( this->fieldValue() );
             QString db1 = fech.toString ( Qt::ISODate );
 		QDate fech1 = blNormalizeDate ( val );
             QString db2 = fech1.toString ( Qt::ISODate );
             return ( db1 < db2 );
         } // end if
 
-        if ( this->dbFieldType() == BlDbField::DbVarChar ) {
-            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
-            return ( this->valorcampo() < val );
+        if ( this->fieldType() == BlDbField::DbVarChar ) {
+            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->fieldName() + QString::number ( this->fieldType() ) );
+            return ( this->fieldValue() < val );
         } // end if
 
-        if ( this->dbFieldType() == BlDbField::DbTime ) {
+        if ( this->fieldType() == BlDbField::DbTime ) {
     	    // TODO
     	    /// Falta revisar que funcione este comparacion de valores.
-            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo time:", 0, this->fieldName() + QString::number ( this->dbFieldType() ) );
-            return ( this->valorcampo() < val );
+            BlDebug::blDebug ( "BlDbSubFormField::operator < es del tipo time:", 0, this->fieldName() + QString::number ( this->fieldType() ) );
+            return ( this->fieldValue() < val );
         } // end if
         BlDebug::blDebug ( "tipo desconocido", 0 );
     }

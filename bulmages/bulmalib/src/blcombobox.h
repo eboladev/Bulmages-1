@@ -1,6 +1,9 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +26,6 @@
 #define BLCOMBOBOX_H
 
 #include <QComboBox>
-
 #include "blwidget.h"
 #include "blform.h"
 
@@ -33,36 +35,38 @@ class BL_EXPORT BlComboBox : public QComboBox, public BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    /// QHash de los valores a comprobar
+    /// 'QMap' con los valores a comprobar.
     QMap <QString, QString> m_valores;
 
 private:
     /// Indica cual es el identificador para la tabla.
     QString m_fieldId;
     QString m_query;
+    QString m_tableName;
+    /// Indica si admite nulos o no.
+    bool m_allowNull;
 
 protected:
-    QString m_table;
     /// RecordSet que almacena en memoria la lista de elementos.
     BlDbRecordSet *m_comboRecordSet;
-    /// Indica si adminte nulos o no
-    bool m_null;
 
 public:
     BlComboBox ( QWidget *parent );
     ~BlComboBox();
-    QString fieldValue();
     void setFieldValue(QString);
-    virtual QString id();
+    QString fieldValue();
     virtual void setId(QString);
-    void setQuery(QString);
+    virtual QString id();
+    void setQuery(QString query);
     virtual void setTableName(QString tableName);
+    QString tableName();
     virtual void setFieldId(QString fieldId);
-    void setAllowNull(bool v);
+    void setAllowNull(bool allowNull);
+    bool isAllowNull();
 
 public slots:
-    virtual void m_activated(int);
-    virtual void onDbTableChanged(const QString &);
+    virtual void activatedItem(int index);
+    virtual void onDbTableChanged(const QString &tableName);
 
 signals:
     void valueChanged(QString);

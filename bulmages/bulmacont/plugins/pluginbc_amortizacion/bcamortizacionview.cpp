@@ -394,7 +394,7 @@ BcAmortizacionSubForm::~BcAmortizacionSubForm()
 /**
 \param menu
 **/
-void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
+void BcAmortizacionSubForm::createMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
     QAction *opt1 = menu->addAction ( _ ( "Generar asiento" ) );
@@ -424,7 +424,7 @@ void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
 \param opcion
 \return
 **/
-void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
+void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
 {
     BL_FUNC_DEBUG
 

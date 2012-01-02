@@ -31,7 +31,7 @@
 
 extern "C" PLUGINBF_SERIESFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_SERIESFACTURA_EXPORT int SNewBfSerieFacturaView (BfCompany *);
-extern "C" PLUGINBF_SERIESFACTURA_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_SERIESFACTURA_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

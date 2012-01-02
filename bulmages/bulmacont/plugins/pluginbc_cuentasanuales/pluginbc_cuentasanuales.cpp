@@ -71,7 +71,7 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionCuentasAnuales") {
         if (g_cuentasAnuales == NULL) {
             g_cuentasAnuales = new BcCuentasAnualesView ( g_pluginbc_cuentasanuales->company(), 0 );

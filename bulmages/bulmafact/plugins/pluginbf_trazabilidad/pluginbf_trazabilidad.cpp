@@ -67,7 +67,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, "PluginBf_Trazabilidad" );
 
@@ -159,7 +159,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
 
 
         if (camp->fieldName() == "lote"+subform->tableName()) {
-     QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
+     QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->fieldValue()+"'";
      BlDbRecordSet *cur = subform->mainCompany()->loadQuery(query);
      if (!cur->eof()) {
       if (campact->fieldName() == "codigocompletoarticulo") {

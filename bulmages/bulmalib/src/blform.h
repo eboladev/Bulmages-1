@@ -72,8 +72,8 @@ public:
     virtual int load ( QString id, bool paint = TRUE );
     virtual int cargarPost ( QString id );
     virtual void recogeValores();
-    virtual void creaMenu ( QMenu * );
-    virtual void procesaMenu ( QAction * );
+    virtual void createMenu ( QMenu * );
+    virtual void execMenuAction ( QAction * );
     virtual int generateRML ( const QString & );
     virtual int generateRML ( void );
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );

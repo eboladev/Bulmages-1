@@ -120,7 +120,7 @@ int entryPoint ( BcBulmaCont *bcont )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
 
     if (accion->objectName() == "mui_actionAsientoContable") {
         if (g_asiento == NULL) {

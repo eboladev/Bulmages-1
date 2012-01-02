@@ -43,6 +43,6 @@ extern "C" PLUGINBL_AUTOFORM_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchW
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_pressedAsterisk(BlSubForm *);
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" PLUGINBL_AUTOFORM_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBL_AUTOFORM_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif

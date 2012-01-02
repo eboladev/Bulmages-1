@@ -36,7 +36,7 @@ extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_guardar_post ( ArticuloView *
 extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_borrar ( ArticuloView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_calculaPVP ( BfSubForm * );
-extern "C" PLUGINBF_TARIFA_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_TARIFA_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

@@ -33,7 +33,7 @@ extern "C" PLUGINBF_RECIBO_EXPORT int SNewReciboView (BfCompany *);
 extern "C" PLUGINBF_RECIBO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_RECIBO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_RECIBO_EXPORT int ActividadView_ActividadView(ActividadView *);
-extern "C" PLUGINBF_RECIBO_EXPORT  int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_RECIBO_EXPORT  int BlAction_actionTriggered(BlAction *);
 
 
 class EmitirRecibos : public QObject, BlMainCompanyPointer

@@ -72,7 +72,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionListadoContratos") {
 	ContratosList *contratoslist = new ContratosList ( g_pluginbf_contrato->company() );
 	g_pluginbf_contrato->company()->m_pWorkspace->addSubWindow ( contratoslist );

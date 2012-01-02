@@ -28,7 +28,7 @@
 #include "blaction.h"
 
 extern "C" PLUGINBF_Z2Z_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_Z2Z_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_Z2Z_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

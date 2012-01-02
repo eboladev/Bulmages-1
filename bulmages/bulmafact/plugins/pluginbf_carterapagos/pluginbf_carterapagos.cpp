@@ -66,7 +66,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionCarteraPagos") {
         CarteraPagosList *vehiculoview = new CarteraPagosList ( g_pluginbf_carterapagos->company() );
         g_pluginbf_carterapagos->company()->m_pWorkspace ->addSubWindow ( vehiculoview );

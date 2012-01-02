@@ -61,7 +61,7 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionBalanceJerarquico") {
     	BalanceTreeView *cuad = new BalanceTreeView ( g_pluginbc_balancearbol->company(), 0 );

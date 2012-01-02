@@ -36,8 +36,8 @@ BfBuscarFormaPago::BfBuscarFormaPago ( QWidget *parent )
     BL_FUNC_DEBUG
 
     m_comboRecordSet = NULL;
-    m_table = "forma_pago";
-    m_null = TRUE;
+    setTableName("forma_pago");
+    setAllowNull(TRUE);
 
     
 }

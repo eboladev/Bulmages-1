@@ -45,7 +45,7 @@ extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int PedidoClienteView_PedidoClienteVie
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int BlToolButton_released(BlToolButton *);
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int FacturaView_FacturaView ( FacturaView * );
-extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

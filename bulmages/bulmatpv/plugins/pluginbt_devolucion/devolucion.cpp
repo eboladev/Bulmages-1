@@ -237,7 +237,7 @@ void Devolucion::pintar()
             for ( int j = 0; j < item->lista()->size(); ++j ) {
                 BlDbField *camp = item->lista()->at ( j );
                 if ( camp->fieldName().left ( 2 ) != "id" && camp->fieldName().left ( 3 ) != "num" )
-                    html += "<TD>" + camp->valorcampo() + "</TD>";
+                    html += "<TD>" + camp->fieldValue() + "</TD>";
             } // end for
 
             html += "</TR>";
@@ -371,9 +371,9 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
                 for ( int j = 0; j < lista->size(); ++j ) {
                     BlDbField * camp = lista->at ( j );
                     if ( camp->fieldName() != "numlalbaran" ) {
-                        nitem->setDbValue ( camp->fieldName(), camp->valorcampo() );
+                        nitem->setDbValue ( camp->fieldName(), camp->fieldValue() );
                     } // end if
-                    if ( camp->fieldName() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
+                    if ( camp->fieldName() == "cantlalbaran" && camp->fieldValue().toFloat() > 0 ) {
                         nitem->setDbValue ( camp->fieldName(), "-1" );
                     }// end if
                 } // end if

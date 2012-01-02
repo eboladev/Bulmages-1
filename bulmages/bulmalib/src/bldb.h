@@ -45,52 +45,56 @@ class BL_EXPORT BlDbField
 public:
     /**
     Indica el tipo de dato al que pertenece el campo.
-    - DbInt  . Entero
-    - DbVarChar . String de longitud indeterminada.
-    - DbDate . Fecha en formato Europeo (dd/mm/yyyy)
-    - DbNumeric . Numero en punto fijo
-    - DbBoolean . Valor Booleano (TRUE / FALSE) (t / f)
-    - DbTime . Hora.
+    - DbInt     = Entero.
+    - DbVarChar = Cadena de texto de longitud indeterminada.
+    - DbDate    = Fecha en formato Europeo (dd/mm/yyyy).
+    - DbNumeric = Numero en punto fijo.
+    - DbBoolean = Valor Booleano (TRUE / FALSE) (t / f).
+    - DbTime    = Hora.
     */
     enum DbType {DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean = 5, DbTime = 6};
     /** Indica las restricciones que soporta el dato.
-    - DbNothing . Ninguna,
-    - DbNotNull . No puede ser nulo,
-    - DbPrimaryKey . Es clave primaria,
-    - DbNoSave . No se debe almacenenar en la base de datos.
-    - DbAuto . Es autonumerico,
-    - DbDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal
-      puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
-    - DbRequired . Requerido,
-    - DbNoLoad . No debe cargarse desde la base de datos.
-    - DbUnique . La clave deve ser unica en su grupo. Se usa en los Suformularios para indicar que no puede haber campos repetidos.
+    - DbNothing       = Ninguna.
+    - DbNotNull       = No puede ser nulo.
+    - DbPrimaryKey    = Es clave primaria.
+    - DbNoSave        = No se debe almacenenar en la base de datos.
+    - DbAuto          = Es autonumerico.
+    - DbDupPrimaryKey = Duplicado de la clave primaria (util para aquellos casos en que la clave principal
+                        puede ser modificada). En este caso el valor del campo comentario es el de la llave
+                        a la que duplica.
+    - DbRequired      = Requerido.
+    - DbNoLoad        = No debe cargarse desde la base de datos.
+    - DbUnique        = La clave deve ser unica en su grupo. Se usa en los subformularios para indicar que no
+                        puede haber campos repetidos.
     **/
-    enum DbRestrict {DbNothing = 0, DbNotNull = 1, DbPrimaryKey = 2,
-                     DbNoSave = 4, DbAuto = 8, DbDupPrimaryKey = 16, DbRequired = 32, DbNoLoad = 64, DbUnique = 128
-                    };
+    enum DbRestrict {DbNothing  =  0, DbNotNull =  1, DbPrimaryKey    =   2,
+                     DbNoSave   =  4, DbAuto    =  8, DbDupPrimaryKey =  16,
+		     DbRequired = 32, DbNoLoad  = 64, DbUnique        = 128};
 
 private:
-    QString m_fieldName;          ///< El nombre del campo
-    QString m_valorcampo;         ///< El valor actual del campo, en el registro, no en la base de datos
-    QString m_nompresentacion;         ///< El nombre que se mostrara en los mensajes de error y presentacion
-    int m_restrict;          ///< Las restricciones del campo
-    DbType m_tipo;          ///< El tipo de dato almacenado
-    BlPostgreSqlClient *m_dbConnection; ///< Puntero a la base de datos a utilizar
-    QString m_valorcampoorig;         ///< indica el valor del campo en un estado anterior para determinar si ha habido cambios.
+    QString m_fieldName;                /// El nombre del campo.
+    QString m_fieldValue;               /// El valor actual del campo, en el registro, no en la base de datos.
+    QString m_fieldTitle;               /// El nombre que se mostrara en los mensajes de error y presentacion.
+    int     m_fieldRestrictions;        /// Las restricciones del campo.
+    DbType  m_fieldType;                /// El tipo de dato almacenado.
+    QString m_fieldPreviousValue;       /// indica el valor del campo en un estado anterior para determinar si
+                                        ///   ha habido cambios.
+    BlPostgreSqlClient *m_dbConnection; /// Puntero a la base de datos a utilizar.
 
 public:
-    BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp = "" );
+    BlDbField ( BlPostgreSqlClient *dbConnection, QString fieldName, DbType fieldType, int fieldRestrictions, QString fieldTitle );
     virtual ~BlDbField();
-    bool cambiado();
-    void resetCambio();
+
+    void setDbConnection ( BlPostgreSqlClient *dbConnection );
     BlPostgreSqlClient *dbConnection();
-    void setDbConnection ( BlPostgreSqlClient *comp );
-    DbType dbFieldType();
-    virtual int set ( QString val );
-    int restrictcampo();
     QString fieldName();
-    QString nompresentacion();
-    QString valorcampo();
+    DbType fieldType();
+    int fieldRestrictions();
+    QString fieldTitle();
+    virtual int set ( QString val );
+    QString fieldValue();
+    bool isFieldChanged();
+    void resetCambio();
     QString valorcampoprep ( int &error );
     virtual QString exportXML();
     virtual void syncXML(const QString &);
@@ -110,13 +114,15 @@ y almacenado del mismo.
 class BL_EXPORT BlDbRecord
 {
 protected:
-    QList<BlDbField *> m_lista; ///< Lista de campos que conforman la tabla de la BD
-    BlMainCompany *m_dbConnection; ///< Puntero a la base de datos con la que se opera
-    QString m_tablename; ///< Nombre de la tabla por defecto que se utiliza
-    QString m_campoid; ///< Nombre del campo identificador en la tabla
-    bool m_nuevoCampo; ///< Indicador sobre si es un nuevo registro o un registro modificado
-    QMap<QString,QString> m_variables;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
-    QMap<QString,QString> m_globalvars;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
+    QList<BlDbField *> m_lista;         /// Lista de campos que conforman la tabla de la BD.
+    QString m_tableName;                /// Nombre de la tabla por defecto que se utiliza.
+    QString m_campoid;                  /// Nombre del campo identificador en la tabla.
+    bool    m_nuevoCampo;               /// Indicador sobre si es un nuevo registro o un registro modificado.
+    QMap<QString,QString> m_variables;  /// Son elementos que han sido incrustados e inicializados por programas
+                                        ///   externos, generalmente el RML
+    QMap<QString,QString> m_globalvars; /// Son elementos que han sido incrustados e inicializados por programas
+                                        ///   externos, generalmente el RML
+    BlMainCompany *m_dbConnection;      /// Puntero a la base de datos con la que se opera.
     
 public:
     BlDbRecord ( BlMainCompany * );
@@ -130,7 +136,7 @@ public:
     QString dbValue ( QString );
     bool exists ( QString );
     QString dbValueprep ( QString );
-    void setDbTableName ( QString nom );
+    void setDbTableName ( QString tableName );
     void setNuevo ( bool n );
     QString tableName();
     QString fieldId();
@@ -145,11 +151,11 @@ public:
     virtual int load ( QString );
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );
     virtual QString story ( void );
-    virtual int generateRML ( const QString & );
     virtual void substrConf( QString &buff) ;
     virtual void substrConf( QByteArray &buff) ;
     virtual QString templateName(void);
     virtual int generateRML ( void );
+    virtual int generateRML ( const QString & );
     virtual QString exportXML();
     virtual void syncXML(const QString &);
 

@@ -585,7 +585,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     emit pintaMenu ( popup );
 
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
-    creaMenu ( popup );
+    createMenu ( popup );
     QAction *avconfig = NULL;
     if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
       avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
@@ -604,7 +604,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
         emit trataMenu ( opcion );
 
         /// Activamos las herederas.
-        procesaMenu ( opcion );
+        execMenuAction ( opcion );
     } // end if
 
     delete popup;
@@ -615,20 +615,20 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
 ///
 /**
 **/
-void BlForm::creaMenu ( QMenu * )
+void BlForm::createMenu ( QMenu * )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlForm:: creaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlForm:: createMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
 ///
 /**
 **/
-void BlForm::procesaMenu ( QAction * )
+void BlForm::execMenuAction ( QAction * )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlForm:: execMenuAction", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -690,26 +690,26 @@ void BlForm::pintar()
         /// Buscamos los QLineEdit con nombre coincidente.
         QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->fieldName() );
         if ( l1 ) {
-            l1->setText ( campo->valorcampo() );
+            l1->setText ( campo->fieldValue() );
 		if ( readOnly ) l1->setReadOnly ( true );
         } // end if
         /// Buscamos los QPlainTextEdit con nombre coincidente.
         QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->fieldName() );
         if ( l2 ) {
-            l2->setPlainText( campo->valorcampo() );
+            l2->setPlainText( campo->fieldValue() );
 		if ( readOnly ) l2->setReadOnly ( true );
 	   } // end if
         /// Buscamos los QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->fieldName() );
         if ( l3 ) {
-            l3->setText ( campo->valorcampo() );
+            l3->setText ( campo->fieldValue() );
 		if ( readOnly ) l3->setReadOnly ( true );
         } // end if
         /// Buscamos BlWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
         BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->fieldName() );
         if ( l4 ) {
-            l4->setFieldValue ( campo->valorcampo() );
+            l4->setFieldValue ( campo->fieldValue() );
 		if ( readOnly ) l4->setDisabled( true );
         } // end if
 
@@ -717,18 +717,18 @@ void BlForm::pintar()
         /// sirve para los campos personales.
         BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->fieldName() );
         if ( l5 ) {
-            l5->setperiodo ( campo->valorcampo() );
+            l5->setperiodo ( campo->fieldValue() );
         } else {
             BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->fieldName() );
             if ( l6 ) {
-                l6->setFieldValue ( campo->valorcampo() );
+                l6->setFieldValue ( campo->fieldValue() );
 		    if ( readOnly ) l6->setDisabled( true );
             } else {
                 /// Buscamos BlComboBox que coincidan con el campo supuestamente
                 /// sirve para los campos personales.
                 QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->fieldName() );
                 if ( l7 ) {
-                    l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
+                    l7->setCurrentIndex ( l7->findText ( campo->fieldValue() ) );
                 } // end if
             } // end if
         } // end if
@@ -736,7 +736,7 @@ void BlForm::pintar()
         /// Buscamos un BlDoubleSpinBox con nombre coincidente.
         BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->fieldName() );
         if ( l8 ) {
-            l8->setValue ( campo->valorcampo().toDouble() );
+            l8->setValue ( campo->fieldValue().toDouble() );
 		if ( readOnly ) l8->setDisabled( true );
             /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
             QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->fieldName()+"';";
@@ -753,9 +753,9 @@ void BlForm::pintar()
         /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->fieldName() );
         if ( l9 ) {
-            if ( campo->valorcampo() == "t" ) {
+            if ( campo->fieldValue() == "t" ) {
                 l9->setCheckState( Qt::Checked );
-            } else if ( campo->valorcampo() == "f" ) {
+            } else if ( campo->fieldValue() == "f" ) {
                 l9->setCheckState( Qt::Unchecked );
             } else if ( l9->isTristate() ) {
                 /// El estado indeterminado se aplica cuando el campo es triestado.
@@ -767,7 +767,7 @@ void BlForm::pintar()
         /// Buscamos los 'Radio Buttons' y los preparamos.
         QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->fieldName() + "_*" ) );
         for ( int i = 0; i < l10.size(); ++i ) {
-            if ( l10.at ( i ) ->fieldValue() == campo->valorcampo() ) {
+            if ( l10.at ( i ) ->fieldValue() == campo->fieldValue() ) {
                 l10.at ( i ) ->setChecked ( TRUE );
             } else {
                 l10.at ( i ) ->setChecked ( FALSE );
@@ -893,16 +893,16 @@ int BlForm::load ( QString id, bool paint )
 
 	/// Buscamos un titulo adecuado segun los valores que contenga la tabla.
 	QString wtitle = m_title + " ";
-	if (exists("num" + m_tablename)) {
-	  wtitle = wtitle + "[" + dbValue ( "num" + m_tablename) + "]";
-	} else	if ( exists ("ref" + m_tablename)) {
-	  wtitle = wtitle + "["+ dbValue ("ref" + m_tablename) + "]";
-	} else if ( exists ( "cif" + m_tablename)) {
-	  wtitle = wtitle + "[" + dbValue( "cif" + m_tablename) + "]";
-	} else if ( exists ( "nom" + m_tablename)) {
-	  wtitle = wtitle + "[" +  dbValue( "nom" + m_tablename) + "]";
-	} else if ( exists ( "cod" + m_tablename)) {
-	  wtitle = wtitle + "[" + dbValue ( "cod" + m_tablename) + "]";
+	if (exists("num" + tableName())) {
+	  wtitle = wtitle + "[" + dbValue ( "num" + tableName()) + "]";
+	} else	if ( exists ("ref" + tableName())) {
+	  wtitle = wtitle + "["+ dbValue ("ref" + tableName()) + "]";
+	} else if ( exists ( "cif" + tableName())) {
+	  wtitle = wtitle + "[" + dbValue( "cif" + tableName()) + "]";
+	} else if ( exists ( "nom" + tableName())) {
+	  wtitle = wtitle + "[" +  dbValue( "nom" + tableName()) + "]";
+	} else if ( exists ( "cod" + tableName())) {
+	  wtitle = wtitle + "[" + dbValue ( "cod" + tableName()) + "]";
 	} else {
 	   wtitle = wtitle + dbValue ( m_campoid );
 	} // end if

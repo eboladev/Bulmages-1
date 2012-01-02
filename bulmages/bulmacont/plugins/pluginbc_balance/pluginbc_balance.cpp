@@ -64,7 +64,7 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionBalance") {
         BalanceView *cuad = new BalanceView ( g_pluginbc_balance->company(), 0 );

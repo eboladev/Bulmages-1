@@ -125,7 +125,8 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
         return;
     mdb_idalbaran = "";
     setSubForm ( mui_list );
-    hideBusqueda();
+    mui_filtrar->setChecked(false);
+    //hideBusqueda();
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
@@ -184,7 +185,9 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     mdb_idalbaran = "";
     if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
-    hideBusqueda();
+
+    mui_filtrar->setChecked(false);
+    //hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
     /// Llamamos a los scripts

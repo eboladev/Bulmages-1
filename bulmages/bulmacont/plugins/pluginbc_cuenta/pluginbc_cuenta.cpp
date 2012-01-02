@@ -77,7 +77,7 @@ int entryPoint ( BcBulmaCont *bcont )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionPlanContable") {
         if (g_plancontable == NULL) {
             g_plancontable = new BcPlanContableListView ( g_pluginbc_cuenta->company(), 0 );

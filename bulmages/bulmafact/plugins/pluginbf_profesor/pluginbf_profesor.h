@@ -35,7 +35,7 @@
 extern "C" PLUGINBF_PROFESOR_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_PROFESOR_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_PROFESOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
-extern "C" PLUGINBF_PROFESOR_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_PROFESOR_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 #endif

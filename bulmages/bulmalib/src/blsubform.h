@@ -3,6 +3,9 @@
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2010 by Aron Galdon                                     *
  *   auryn@wanadoo.es                                                      *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,21 +53,21 @@ class BL_EXPORT BlSubFormHeader
 {
 public:
     /** Opciones para la columna del SubFormulario
-    - DbNone . Opciones por defecto.
-    - DbReadOnly . La columna es de solo lectura.
-    - DbHideView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
-    - DbNoWrite . El usuario no puede escribir en esta columna.
-    - DbDisableView . El usuario no podrá ver esta columna ni aun configurandola
+    - DbNone        = Opciones por defecto.
+    - DbReadOnly    = La columna es de solo lectura.
+    - DbHideView    = Por defecto la columna es invisible aunque puede verse si el usuario lo desea.
+    - DbNoWrite     = El usuario no puede escribir en esta columna.
+    - DbDisableView = El usuario no podrá ver esta columna ni aun configurandola.
     */
     enum DbOptions {DbNone = 0, DbReadOnly = 1, DbHideView = 2, DbNoWrite = 4, DbDisableView = 8};
 
 protected:
-    QString m_fieldName;   ///< El nombre de la cabecera en el recordset
-    QString m_nompresentacion;  ///< El nombre para mostrar en los errores
-    unsigned int m_restricciones; ///< Las restricciones de la columna en el recordset
-    BlDbField::DbType m_tipo;  ///< El tipo de los datos
-    unsigned int m_options;  ///< Las opciones para la columna en el SubFormulario
-    int m_numericPrecision;           ///< indica la precision en decimales si el campo es de tipo numerico
+    QString m_fieldName;          /// El nombre de la cabecera en el recordset.
+    QString m_fieldTitle;         /// El nombre para mostrar en los errores.
+    unsigned int m_fieldRestrictions; /// Las restricciones de la columna en el recordset.
+    BlDbField::DbType m_tipo;     /// El tipo de los datos.
+    unsigned int m_options;       /// Las opciones para la columna en el SubFormulario.
+    int m_numericPrecision;       /// indica la precision en decimales si el campo es de tipo numerico.
 
 
 public:
@@ -73,9 +76,9 @@ public:
     unsigned int options();
     unsigned int restrictions();
     void setOptions(int options);
-    BlDbField::DbType dbFieldType();
-    QString nompresentacion();
-    int restrictcampo();
+    BlDbField::DbType fieldType();
+    QString fieldTitle();
+    int fieldRestrictions();
     QString fieldName();
     virtual QString exportXML();
     const int numericPrecision();
@@ -85,11 +88,11 @@ public:
 
 
 
-// Necesito exportar algunos datos.
-extern  BL_EXPORT QModelIndex g_index;
-extern  BL_EXPORT QWidget *g_editor;
-extern  BL_EXPORT QAbstractItemModel *g_model;
-extern  BL_EXPORT QString g_fieldName;
+/// Necesito exportar algunos datos.
+extern BL_EXPORT QModelIndex g_index;
+extern BL_EXPORT QWidget *g_editor;
+extern BL_EXPORT QAbstractItemModel *g_model;
+extern BL_EXPORT QString g_fieldName;
 
 
 /// Clase BfSubFormDelegate
@@ -319,8 +322,8 @@ public:
     virtual void load ( QString query );
     virtual int inicializar();
     virtual void pintar();
-    virtual void creaMenu ( QMenu * );
-    virtual void procesaMenu ( QAction * );
+    virtual void createMenu ( QMenu * );
+    virtual void execMenuAction ( QAction * );
     virtual BlFixed sumarCampo ( QString );
     bool existsHeader ( const QString & );
     BlSubFormHeader *header ( const QString & );
@@ -328,7 +331,7 @@ public:
     virtual void confquery();
     QString dbFieldNameByColumnId ( int columna );
     QString dbFieldViewNameByColumnId ( int columna );
-    BlDbField::DbType dbFieldTypeByColumnId ( int columna );
+    BlDbField::DbType fieldTypeByColumnId ( int columna );
 
     /// Funciones para manipular los modos.
     void setSelectMode();

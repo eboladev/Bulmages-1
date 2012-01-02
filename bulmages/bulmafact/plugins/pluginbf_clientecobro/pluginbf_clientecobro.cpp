@@ -77,7 +77,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionCobroCliente") {
         if ( g_cobrosList ) {
             g_cobrosList->hide();

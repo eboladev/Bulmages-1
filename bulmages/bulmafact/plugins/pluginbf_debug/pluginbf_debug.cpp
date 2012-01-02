@@ -66,7 +66,7 @@ int entryPoint ( BfBulmaFact *bcont )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionDebug") {
 
         if (accion->isChecked ()) {

@@ -40,7 +40,7 @@ extern "C" PLUGINBF_CUADRANTE_EXPORT int AlmacenView_AlmacenView ( AlmacenView *
 extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
 extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
 extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
-extern "C" PLUGINBF_CUADRANTE_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CUADRANTE_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

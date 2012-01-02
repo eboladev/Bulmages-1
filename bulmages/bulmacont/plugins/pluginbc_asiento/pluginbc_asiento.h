@@ -31,7 +31,7 @@
 extern "C" PLUGINBC_ASIENTO_EXPORT BcAsientoView *g_asiento;
 extern "C" PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
-extern "C" PLUGINBC_ASIENTO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBC_ASIENTO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

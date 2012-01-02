@@ -73,10 +73,10 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
         QTableWidgetItem *newItem = new QTableWidgetItem ( campo->fieldName() );
         mui_formelements->setItem ( j, 0, newItem );
 
-        QTableWidgetItem *newItem1 = new QTableWidgetItem ( campo->nompresentacion() );
+        QTableWidgetItem *newItem1 = new QTableWidgetItem ( campo->fieldTitle() );
         mui_formelements->setItem ( j, 1, newItem1 );
 
-        QTableWidgetItem *newItem2 = new QTableWidgetItem ( campo->valorcampo() );
+        QTableWidgetItem *newItem2 = new QTableWidgetItem ( campo->fieldValue() );
         mui_formelements->setItem ( j, 2, newItem2 );
     } // end for
 

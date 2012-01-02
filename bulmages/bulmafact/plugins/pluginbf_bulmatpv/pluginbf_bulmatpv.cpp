@@ -79,7 +79,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     return 0;
 }
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionCuadresCaja") {
         ZList *vehiculoview = new ZList ( g_pluginbf_bulmatpv->company() );

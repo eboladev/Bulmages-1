@@ -40,7 +40,7 @@ extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_createEditor(B
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
-extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 class SubForm_MiniContabilidad : public QObject

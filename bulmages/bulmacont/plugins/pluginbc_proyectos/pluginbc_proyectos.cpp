@@ -55,7 +55,7 @@ int entryPoint ( BcBulmaCont *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionProyectos") {
         /// Agregamos el subformulario de proyectos.
         ListProyectosView *l = new ListProyectosView ( g_pluginbc_proyectos->company(), 0, 0, BL_EDIT_MODE );

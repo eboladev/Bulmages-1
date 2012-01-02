@@ -81,7 +81,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionClienteTicket") {
         if ( g_albaranClienteList ) {
             g_albaranClienteList->hide();

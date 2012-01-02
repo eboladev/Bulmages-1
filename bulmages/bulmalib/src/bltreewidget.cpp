@@ -20,7 +20,7 @@ BlTreeWidget::~BlTreeWidget () {
 ///
 /**
 **/
-void BlTreeWidget::creaMenu ( QMenu * )
+void BlTreeWidget::createMenu ( QMenu * )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
@@ -30,10 +30,10 @@ void BlTreeWidget::creaMenu ( QMenu * )
 ///
 /**
 **/
-void BlTreeWidget::procesaMenu ( QAction * )
+void BlTreeWidget::execMenuAction ( QAction * )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( "BlSubForm:: execMenuAction", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -55,7 +55,7 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
     emit pintaMenu ( popup );
 
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
-    creaMenu ( popup );
+    createMenu ( popup );
 
 
 /*
@@ -102,7 +102,7 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
     emit trataMenu ( opcion );
 
     /// Activamos las herederas.
-    procesaMenu ( opcion );
+    execMenuAction ( opcion );
 
     delete popup;
     

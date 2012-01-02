@@ -63,7 +63,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionInventarios") {
         ListInventarioSimpleView *tar = new ListInventarioSimpleView ( g_pluginbf_inventariosimple->company(), NULL );

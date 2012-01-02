@@ -212,10 +212,10 @@ void PluginBl_SubForm2ODS::sacaods()
 
 
                 //TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
-                if ( subf->headerList() -> at ( j )-> dbFieldType() == BlDbField::DbNumeric) {
+                if ( subf->headerList() -> at ( j )-> fieldType() == BlDbField::DbNumeric) {
                         /// Es 'double'.
                         fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido.replace(".","").replace(",",".") + "')\n\n";
-                } else if ( subf->headerList() -> at ( j )-> dbFieldType() == BlDbField::DbInt) {
+                } else if ( subf->headerList() -> at ( j )-> fieldType() == BlDbField::DbInt) {
                         /// Es 'double'.
                         fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido.replace(".","").replace(",",".") + "')\n\n";
                 } else {

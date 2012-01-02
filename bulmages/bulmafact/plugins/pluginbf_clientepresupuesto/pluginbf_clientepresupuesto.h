@@ -39,7 +39,7 @@ extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int ClienteView_ClienteView_Post (
 extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
 extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 
