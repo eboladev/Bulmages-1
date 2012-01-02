@@ -113,3 +113,13 @@ QString WidgetBl_SubForm::includeFile() const
 
 Q_EXPORT_PLUGIN2(widgetbl_subform, WidgetBl_SubForm)
 
+
+BlDebug::BlDebug(const QString &, int, const QString &) {
+}
+
+void BlDebug::blDebug(const QString &text, int level, const QString &params) {
+}
+
+BlDebug::~BlDebug() {
+}
+

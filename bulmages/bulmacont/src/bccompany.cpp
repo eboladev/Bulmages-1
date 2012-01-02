@@ -550,8 +550,8 @@ void BcCompany::guardaConf()
         QTextStream stream ( &file );
         stream << "<CONFIG>\n";
         stream << "\t<PRINCIPAL>\n";
-        stream << "\t\t\t<X>" + QString::number ( m_bulmacont->x() ) + "</X>\n";
-        stream << "\t\t\t<Y>" + QString::number ( m_bulmacont->y() ) + "</Y>\n";
+        stream << "\t\t\t<X>" + QString::number ( m_bulmacont->geometry().x() ) + "</X>\n";
+        stream << "\t\t\t<Y>" + QString::number ( m_bulmacont->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmacont->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmacont->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmacont->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";

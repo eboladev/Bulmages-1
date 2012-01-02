@@ -52,3 +52,15 @@ private:
     bool initialized;
 };
 
+
+/*
+class BlDebug 
+{
+public:  
+  BlDebug(const QString &, int level = 0, const QString & params = "");
+  static void blDebug(const QString &, int level = 0 , const QString &params = "");
+  virtual ~BlDebug();
+};
+*/
+
+
