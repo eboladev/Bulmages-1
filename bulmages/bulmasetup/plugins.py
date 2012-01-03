@@ -30,7 +30,11 @@ class PluginsBulmaSetup:
     def readfiles(self, folder, plugins):
         if os.path.exists(confsharebulmages+folder):
             for fileName in os.listdir ( confsharebulmages+folder ):
-                if fnmatch.fnmatch ( fileName, 'README.'+locale.getdefaultlocale()[0][:2]+'*' ):
+	        #Intentamos coger el idioma. Si resulta imposible hacerlo ponemos por defecto el castellano.
+	        idioma = "es"
+	        if locale.getdefaultlocale()[0] != None:
+		    idioma = locale.getdefaultlocale()[0][:2]
+                if fnmatch.fnmatch ( fileName, 'README.'+idioma+'*' ):
                     f = open(confsharebulmages+folder+"/"+fileName)
                     cont = ""
                     for char in f.read():
