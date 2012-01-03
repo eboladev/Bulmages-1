@@ -115,7 +115,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
 BcAmortizacionView::~BcAmortizacionView()
 {
     BL_FUNC_DEBUG
-    
+    mainCompany() ->removeWindow ( this );
 }
 
 

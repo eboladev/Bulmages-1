@@ -36,7 +36,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
 {
     BL_FUNC_DEBUG
 
-    this->setAttribute ( Qt::WA_DeleteOnClose );
+    //this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setSubForm ( mui_listado );
     /// Hacemos la inicializacion de un listado embebido.
@@ -69,7 +69,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
 BcAmortizacionListView::~BcAmortizacionListView()
 {
     BL_FUNC_DEBUG
-    removeWindow();
+    mainCompany() ->removeWindow ( this );
     
 }
 
