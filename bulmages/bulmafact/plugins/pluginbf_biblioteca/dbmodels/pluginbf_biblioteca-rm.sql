@@ -29,14 +29,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -49,10 +51,11 @@ DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rsa  RECORD;
-BEGIN
+	rs  RECORD;
 
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''zcomercial'';
+BEGIN
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''zcomercial'';
+
     IF FOUND THEN
 	ALTER TABLE cliente DROP COLUMN idzcomercial;
 
@@ -85,12 +88,15 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	rsa  RECORD;
+	rs  RECORD;
+
 BEGIN
-	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_Biblioteca'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Biblioteca'';
+
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Biblioteca'';
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

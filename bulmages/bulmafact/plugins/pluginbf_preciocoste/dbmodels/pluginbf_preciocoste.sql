@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -55,14 +59,15 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''preciocostearticulo'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''preciocostearticulo'';
 	IF NOT FOUND THEN
 		ALTER TABLE articulo ADD COLUMN preciocostearticulo NUMERIC(12,2) DEFAULT 0;
 	END IF;
 
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''margenarticulo'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''margenarticulo'';
 	IF NOT FOUND THEN
 		ALTER TABLE articulo ADD COLUMN margenarticulo NUMERIC(12,2) DEFAULT 0;
 		ALTER TABLE articulo ADD COLUMN actualizarmargenarticulo BOOLEAN DEFAULT FALSE;
@@ -80,10 +85,12 @@ SELECT drop_if_exists_proc('actpvparticulo', '');
 \echo -n ':: Funcion para actualizar precios de venta segun precios de coste ... '
 CREATE OR REPLACE FUNCTION actpvparticulo() RETURNS "trigger" AS '
 DECLARE
+
 BEGIN
     IF NEW.actualizarmargenarticulo  = TRUE THEN
 	NEW.pvparticulo := NEW.preciocostearticulo + NEW.preciocostearticulo * NEW.margenarticulo / 100;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -109,6 +116,7 @@ BEGIN
 
     FOR ms IN SELECT * FROM articulo  LOOP
 	SELECT INTO bs sum(cantlalbaran) AS salidas FROM lalbaran WHERE idarticulo = ms.idarticulo;
+
 	IF bs.salidas IS NOT NULL THEN
 		salidas1 := bs.salidas;
 	ELSE
@@ -116,16 +124,19 @@ BEGIN
 	END IF;
 
 	SELECT INTO cs sum(cantlalbaranp) AS entradas FROM lalbaranp WHERE idarticulo = ms.idarticulo;
+
 	IF cs.entradas IS NOT NULL THEN
 		entradas1 := cs.entradas;
 	ELSE
 		entradas1 := 0;
 	END IF;
+
 	UPDATE articulo set stockarticulo = entradas1 - salidas1 WHERE idarticulo =ms.idarticulo;
+
 	RAISE NOTICE '' Articulo % con entradas % y salidas %'', ms.idarticulo, entradas1, salidas1;
     END LOOP;
 
-	RETURN 0;
+    RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 
@@ -136,14 +147,17 @@ END;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_PrecioCoste'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_PrecioCoste'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''PluginBf_PrecioCoste'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_PrecioCoste'', ''0.10.1-0002'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

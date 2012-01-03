@@ -32,6 +32,7 @@ BEGIN
 	EXECUTE ''DROP TABLE '' || $1;
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -47,6 +48,7 @@ BEGIN
 	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -54,10 +56,11 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''refcontrato'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''refcontrato'';
+
 	IF NOT FOUND THEN
 		CREATE TABLE contrato (
 			idcontrato SERIAL PRIMARY KEY,
@@ -72,7 +75,8 @@ BEGIN
 		);
 	END IF;
 
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idlcontrato'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''idlcontrato'';
+
 	IF NOT FOUND THEN
 		CREATE TABLE lcontrato (
 			idlcontrato SERIAL PRIMARY KEY,
@@ -84,6 +88,7 @@ BEGIN
 			ordenlcontrato INTEGER
 		);
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -95,12 +100,12 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
 $BODY$
 DECLARE
-	bs RECORD;
+	rs RECORD;
 	txt TEXT;
 BEGIN
-	SELECT INTO bs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
-	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || bs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
-	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO bs idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
+	SELECT INTO rs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || rs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO rs idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
 	RAISE NOTICE '%', txt;
 	EXECUTE txt;
 	RETURN 0;
@@ -121,13 +126,13 @@ CREATE OR REPLACE FUNCTION restriccionescontrato()
 RETURNS "trigger" AS
 $BODY$
 DECLARE
-bs RECORD;
+rs RECORD;
 
 BEGIN
 IF NEW.refcontrato IS NULL OR NEW.refcontrato = '' THEN
-	SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	NEW.refcontrato := bs.m;
+	NEW.refcontrato := rs.m;
 	END IF;
 END IF;
 RETURN NEW;
@@ -147,14 +152,16 @@ EXECUTE PROCEDURE restriccionescontrato();
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Contrato'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Contrato'', ''0.11.1-0001'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

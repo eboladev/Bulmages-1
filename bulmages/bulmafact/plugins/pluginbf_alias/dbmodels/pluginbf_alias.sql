@@ -54,10 +54,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        rec RECORD;
+        rs RECORD;
 
 BEGIN
-        SELECT INTO rec * FROM pg_attribute WHERE attname = ''idalias'';
+        SELECT INTO rs * FROM pg_attribute WHERE attname = ''idalias'';
         IF NOT FOUND THEN
                 CREATE TABLE alias (
                         idalias SERIAL PRIMARY KEY,
@@ -75,10 +75,10 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION drop_index(text) RETURNS INTEGER AS '
 DECLARE
         nom_index ALIAS FOR $1;
-        rec RECORD;
+        rs RECORD;
 
 BEGIN
-        SELECT INTO rec * FROM pg_class WHERE relname = $1; 
+        SELECT INTO rs * FROM pg_class WHERE relname = $1; 
         IF FOUND THEN
              EXECUTE ''DROP INDEX '' || $1 ;
         END IF;
@@ -101,9 +101,9 @@ create index ix_alias_len_cadalias on alias (length(cadalias));
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Alias'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Alias'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.2'' WHERE nombre=''PluginBf_Alias'';
 	ELSE

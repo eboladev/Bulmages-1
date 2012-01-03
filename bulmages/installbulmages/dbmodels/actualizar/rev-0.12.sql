@@ -58,9 +58,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.12.1%'' OR valor = ''0.11.1-0003'');
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.12.1%'' OR valor = ''0.11.1-0003'');
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
@@ -238,9 +238,9 @@ CREATE TRIGGER cambiadoivat
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        bs RECORD;
+        rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM pg_attribute WHERE attname=''pais'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname=''pais'';
 	IF FOUND THEN
 		ALTER TABLE cuenta RENAME COLUMN pais TO idpais;
 		ALTER TABLE cuenta RENAME COLUMN provincia TO idprovincia;
@@ -261,9 +261,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE

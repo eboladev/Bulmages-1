@@ -15,13 +15,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -29,14 +31,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -47,12 +51,12 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+    rs RECORD;
+
 BEGIN
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''tiposocio'';
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''tiposocio'';
     IF NOT FOUND THEN
-
         CREATE TABLE tiposocio
 	(
 	  idtiposocio serial NOT NULL,
@@ -64,21 +68,21 @@ BEGIN
 
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
     	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
     	WHERE attname=''fnacimientocliente'' AND relname=''cliente'';
     IF NOT FOUND THEN
 	ALTER TABLE cliente ADD COLUMN fnacimientocliente date;
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
 	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
 	WHERE attname=''profesioncliente'' AND relname=''cliente'';
     IF NOT FOUND THEN
 	ALTER TABLE cliente ADD COLUMN profesioncliente character varying(100);
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
 	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
 	WHERE attname=''idtiposocio'' AND relname=''cliente'';
     IF NOT FOUND THEN
@@ -89,28 +93,28 @@ BEGIN
 	      ON UPDATE NO ACTION ON DELETE NO ACTION;
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
 	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
 	WHERE attname=''cuotafamiliarcliente'' AND relname=''cliente'';
     IF NOT FOUND THEN
 	ALTER TABLE cliente ADD COLUMN cuotafamiliarcliente boolean;
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
 	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
 	WHERE attname=''nombretitularbancocliente'' AND relname=''cliente'';
     IF NOT FOUND THEN
 	ALTER TABLE cliente ADD COLUMN nombretitularbancocliente character varying(100);
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
 	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
 	WHERE attname=''apellidotitularbancocliente'' AND relname=''cliente'';
     IF NOT FOUND THEN
 	ALTER TABLE cliente ADD COLUMN apellidotitularbancocliente character varying(100);
     END IF;
 
-    SELECT INTO as attname, relname 
+    SELECT INTO rs attname, relname 
 	FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid 
 	WHERE attname=''entidadbancocliente'' AND relname=''cliente'';
     IF NOT FOUND THEN
@@ -135,14 +139,17 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Socio'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Socio'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Socio'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Socio'', ''0.11.1-0001'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

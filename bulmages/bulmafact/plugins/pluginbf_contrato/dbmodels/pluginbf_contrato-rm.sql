@@ -32,6 +32,7 @@ BEGIN
 	EXECUTE ''DROP TABLE '' || $1;
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -47,6 +48,7 @@ BEGIN
 	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -54,15 +56,16 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''refcontrato'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''refcontrato'';
+
 	IF FOUND THEN
-   
-      DROP TABLE lcontrato;
-      DROP TABLE contrato;
+	    DROP TABLE lcontrato;
+	    DROP TABLE contrato;
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -74,12 +77,12 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
 $BODY$
 DECLARE
-	asf RECORD;
+	rs RECORD;
 	txt TEXT;
 BEGIN
     IF (select count(*) from pg_proc where proname = 'crearef') THEN
-	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
-	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	SELECT INTO rs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || rs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
 	RAISE NOTICE '%', txt;
 	EXECUTE txt;
     END IF;
@@ -103,12 +106,14 @@ SELECT drop_if_exists_proc('restriccionescontrato', '');
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
+
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Contrato'';
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -122,4 +127,3 @@ DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
 
 
 COMMIT;
-

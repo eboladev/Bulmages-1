@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -60,10 +64,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
 BEGIN
 
-	SELECT INTO bs * FROM pg_tables  WHERE tablename=''inventario'';
+	SELECT INTO rs * FROM pg_tables  WHERE tablename=''inventario'';
 	IF NOT FOUND THEN
 
 		CREATE TABLE inventario (
@@ -92,7 +96,7 @@ BEGIN
 		);
 	END IF;
 
-	SELECT INTO bs * FROM pg_tables WHERE tablename=''minimsalmacen'';
+	SELECT INTO rs * FROM pg_tables WHERE tablename=''minimsalmacen'';
 	IF NOT FOUND THEN
 		CREATE TABLE minimsalmacen (
 		idminimsalmacen SERIAL PRIMARY KEY,
@@ -114,11 +118,13 @@ SELECT drop_if_exists_proc('s_narticulo', '');
 CREATE FUNCTION s_narticulo() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
-    FOR bs IN SELECT * FROM almacen LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, bs.idalmacen, 0);
+    FOR rs IN SELECT * FROM almacen LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, rs.idalmacen, 0);
     END LOOP;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -156,11 +162,13 @@ SELECT drop_if_exists_proc('s_nalmacen', '');
 CREATE FUNCTION s_nalmacen() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
-    FOR bs IN SELECT * FROM articulo LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (bs.idarticulo, NEW.idalmacen, 0);
+    FOR rs IN SELECT * FROM articulo LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (rs.idarticulo, NEW.idalmacen, 0);
     END LOOP;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -200,6 +208,7 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = stock + OLD.cantlalbaran WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran = OLD.idalbaran);
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -218,6 +227,7 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = stock - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran=NEW.idalbaran);
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -238,6 +248,7 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = stock - OLD.cantlalbaranp WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=OLD.idalbaranp);
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -258,6 +269,7 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = stock + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=NEW.idalbaranp);
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -276,14 +288,16 @@ CREATE OR REPLACE FUNCTION s_modificadostockalmacen() RETURNS "trigger"
 AS '
 DECLARE 
     cant numeric;
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
     IF NEW.stock <> OLD.stock THEN
 	cant := NEW.stock - OLD.stock;
-	FOR bs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-	    UPDATE stock_almacen SET stock = stock + cant * bs.cantcomparticulo WHERE idarticulo = bs.idcomponente AND idalmacen = NEW.idalmacen;
+	FOR rs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+	    UPDATE stock_almacen SET stock = stock + cant * rs.cantcomparticulo WHERE idarticulo = rs.idcomponente AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -304,8 +318,10 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock del articulo
     UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
+
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
+
     RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
@@ -323,13 +339,14 @@ SELECT drop_if_exists_proc('s_disminuyecontrolstock1', '');
 CREATE FUNCTION s_disminuyecontrolstock1() RETURNS "trigger"
 AS '
 DECLARE
-    rant RECORD;
+    rs RECORD;
 
 BEGIN
     -- Cogemos el stock anterior.
-    FOR rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
-	NEW.stockantcontrolstock := rant.stock;
+    FOR rs IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
+	NEW.stockantcontrolstock := rs.stock;
     END LOOP;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -347,17 +364,20 @@ SELECT drop_if_exists_proc('s_disminuyecontrolstock2', '');
 CREATE FUNCTION s_disminuyecontrolstock2() RETURNS "trigger"
 AS '
 DECLARE
-    rant RECORD;
+    rs RECORD;
 
 BEGIN
     -- Hacemos el update del stock del articulo
     UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
+
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
+
     -- Cogemos el stock anterior.
-    FOR rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
-	NEW.stockantcontrolstock := rant.stock;
+    FOR rs IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
+	NEW.stockantcontrolstock := rs.stock;
     END LOOP;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -378,8 +398,10 @@ DECLARE
 
 BEGIN
     UPDATE articulo SET stockarticulo = stockarticulo + NEW.stocknewcontrolstock - NEW.stockantcontrolstock WHERE idarticulo = NEW.idarticulo;
+
     -- Hacemos el update del stock por almacenes
     UPDATE stock_almacen SET stock = NEW.stocknewcontrolstock WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -400,15 +422,16 @@ SELECT drop_if_exists_proc('s_cambiaalbaran', '');
 CREATE FUNCTION s_cambiaalbaran() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR bs IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
-    	    UPDATE stock_almacen SET stock = stock + bs.cantlalbaran WHERE idarticulo = bs.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock - bs.cantlalbaran WHERE idarticulo = bs.idarticulo AND idalmacen = NEW.idalmacen;
+	FOR rs IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
+    	    UPDATE stock_almacen SET stock = stock + rs.cantlalbaran WHERE idarticulo = rs.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock - rs.cantlalbaran WHERE idarticulo = rs.idarticulo AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -426,15 +449,16 @@ SELECT drop_if_exists_proc('s_cambiaalbaranp', '');
 CREATE FUNCTION s_cambiaalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR bs IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
-	    UPDATE stock_almacen SET stock = stock - bs.cantlalbaranp WHERE idarticulo = bs.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock + bs.cantlalbaranp WHERE idarticulo = bs.idarticulo AND idalmacen = NEW.idalmacen;
+	FOR rs IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
+	    UPDATE stock_almacen SET stock = stock - rs.cantlalbaranp WHERE idarticulo = rs.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock + rs.cantlalbaranp WHERE idarticulo = rs.idarticulo AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -456,9 +480,9 @@ CREATE TRIGGER s_cambiadoalbaranpt
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Inventario'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Inventario'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''PluginBf_Inventario'';
 	ELSE

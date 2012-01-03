@@ -16,13 +16,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -30,14 +32,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -49,12 +53,11 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
+    SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
 
-
-
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
     IF FOUND THEN
         ALTER TABLE lalbaran DROP COLUMN textolibremodificador;
         ALTER TABLE lalbaran DROP COLUMN imgmodificador; 
@@ -69,14 +72,13 @@ BEGIN
 	ALTER TABLE lalbaran DROP COLUMN idmodificador9 CASCADE;
     END IF;
 
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''modificador'';
 
+    IF FOUND THEN
+        DROP TABLE modificador CASCADE;
+    END IF;
 
-        SELECT INTO as * FROM pg_tables  WHERE tablename=''modificador'';
-        IF FOUND THEN
-            DROP TABLE modificador CASCADE;
-        END IF;
-
-	RETURN 0;
+    RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT aux();
@@ -90,12 +92,15 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Modificadores'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Modificadores'';
+
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Modificadores'';
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

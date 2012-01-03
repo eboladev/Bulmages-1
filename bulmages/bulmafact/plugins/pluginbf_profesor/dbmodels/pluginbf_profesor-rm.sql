@@ -29,14 +29,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -49,72 +51,72 @@ DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rsa  RECORD;
+	rs  RECORD;
 BEGIN
 
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumnotutor'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''alumnotutor'';
     IF FOUND THEN
         DROP TABLE alumnotutor CASCADE;
     END IF;
 
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumno'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''alumno'';
     IF FOUND THEN
         DROP TABLE alumno CASCADE;
     END IF;
 
-    SELECT INTO rsa * FROM pg_tables WHERE tablename=''cuota'';
+    SELECT INTO rs * FROM pg_tables WHERE tablename=''cuota'';
     IF FOUND THEN
         DROP TABLE cuota CASCADE;
     END IF;
     
-    SELECT INTO rsa * FROM pg_tables WHERE tablename = ''socio'';
+    SELECT INTO rs * FROM pg_tables WHERE tablename = ''socio'';
     IF FOUND THEN
         DROP TABLE socio CASCADE;
     END IF;
 
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''tutor'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''tutor'';
     IF FOUND THEN
         DROP TABLE tutor CASCADE;
     END IF;
     
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
     IF FOUND THEN
         DROP TABLE faltaasistenciaalumnoactividad CASCADE;
     END IF;
         
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''sesionactividad'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''sesionactividad'';
     IF FOUND THEN
         DROP TABLE sesionactividad CASCADE;
     END IF;
         
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''actividad'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''actividad'';
     IF FOUND THEN
         DROP TABLE actividad CASCADE;
     END IF;
 
-    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''profesor'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''profesor'';
     IF FOUND THEN
         DROP TABLE profesor CASCADE;
     END IF;
 
 -- Quitamos restricciones para la tabla de clientes
--- y agregamos unrsa  menos restrictivas
-   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
+-- y agregamos unrs  menos restrictivas
+   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD CONSTRAINT cliente_codcliente_key UNIQUE (codcliente);
     END IF;
 
-   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_nomcliente_key'';
+   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_nomcliente_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD constraint cliente_nomcliente_key UNIQUE (nomcliente);
     END IF;
 
-   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_cifcliente_key'';
+   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_cifcliente_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD CONSTRAINT cliente_cifcliente_key UNIQUE (cifcliente);
     END IF;
 
-   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
+   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
    IF FOUND THEN
       ALTER TABLE cliente DROP CONSTRAINT cliente_fapac_key;
    END IF;
@@ -135,12 +137,15 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	rsa  RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
+
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Profesor'';
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

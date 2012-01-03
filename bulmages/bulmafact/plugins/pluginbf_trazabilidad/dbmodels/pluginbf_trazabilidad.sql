@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -55,9 +59,11 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO bs * FROM pg_attribute  WHERE attname=''lotelalbaranp'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''lotelalbaranp'';
+
 	IF NOT FOUND THEN
 		ALTER TABLE lalbaranp ADD COLUMN lotelalbaranp VARCHAR;
 		ALTER TABLE lfacturap ADD COLUMN lotelfacturap VARCHAR;
@@ -74,11 +80,11 @@ DROP FUNCTION aux() CASCADE;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        rec RECORD;
+        rs RECORD;
 
 BEGIN
 --	DROP TABLE movimiento;
-        SELECT INTO rec * FROM pg_attribute WHERE attname = ''idmovimiento'';
+        SELECT INTO rs * FROM pg_attribute WHERE attname = ''idmovimiento'';
         IF NOT FOUND THEN
                 CREATE TABLE movimiento (
                         idmovimiento SERIAL PRIMARY KEY,
@@ -107,10 +113,12 @@ SELECT drop_if_exists_proc ('trazabilidadalbaranpi','');
 CREATE OR REPLACE FUNCTION trazabilidadalbaranpi() returns TRIGGER
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
-    SELECT INTO bs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
-    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaranp, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, NEW.cantlalbaranp, NEW.numlalbaranp, NOW(), NEW.lotelalbaranp, bs.idalmacen);
+    SELECT INTO rs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
+    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaranp, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, NEW.cantlalbaranp, NEW.numlalbaranp, NOW(), NEW.lotelalbaranp, rs.idalmacen);
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -127,10 +135,11 @@ SELECT drop_if_exists_proc ('trazabilidadalbaranpu','');
 CREATE OR REPLACE FUNCTION trazabilidadalbaranpu() returns TRIGGER
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
-    SELECT INTO bs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
-    UPDATE movimiento SET cantidadmovimiento = NEW.cantlalbaranp, idalmacen = bs.idalmacen WHERE idlalbaranp = NEW.numlalbaranp;
+    SELECT INTO rs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
+    UPDATE movimiento SET cantidadmovimiento = NEW.cantlalbaranp, idalmacen = rs.idalmacen WHERE idlalbaranp = NEW.numlalbaranp;
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -170,10 +179,11 @@ SELECT drop_if_exists_proc ('trazabilidadalbarani','');
 CREATE OR REPLACE FUNCTION trazabilidadalbarani() returns TRIGGER
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
-    SELECT INTO bs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
-    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaran, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, -NEW.cantlalbaran, NEW.numlalbaran, NOW(), NEW.lotelalbaran, bs.idalmacen);
+    SELECT INTO rs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
+    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaran, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, -NEW.cantlalbaran, NEW.numlalbaran, NOW(), NEW.lotelalbaran, rs.idalmacen);
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -190,10 +200,11 @@ SELECT drop_if_exists_proc ('trazabilidadalbaranu','');
 CREATE OR REPLACE FUNCTION trazabilidadalbaranu() returns TRIGGER
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
-    SELECT INTO bs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
-    UPDATE movimiento SET cantidadmovimiento = -NEW.cantlalbaran, idalmacen = bs.idalmacen WHERE idlalbaran = NEW.numlalbaran;
+    SELECT INTO rs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
+    UPDATE movimiento SET cantidadmovimiento = -NEW.cantlalbaran, idalmacen = rs.idalmacen WHERE idlalbaran = NEW.numlalbaran;
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -232,14 +243,17 @@ CREATE TRIGGER trazabilidadalbarand_trigger
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Trazabilidad'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Trazabilidad'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.9.1'' WHERE nombre=''PluginBf_Trazabilidad'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Trazabilidad'', ''0.9.1'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

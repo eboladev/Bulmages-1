@@ -54,9 +54,9 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''horaalbaran'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''horaalbaran'';
 	IF NOT FOUND THEN
 	    ALTER TABLE albaran ADD COLUMN horaalbaran TIME DEFAULT now();
 	    ALTER TABLE albaran ADD COLUMN anuladoalbaran boolean;
@@ -73,13 +73,13 @@ BEGIN
 	END IF;
 
 
-	SELECT INTO rec attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idz'' AND relname=''albaran'';
+	SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idz'' AND relname=''albaran'';
 	IF NOT FOUND THEN
 	    ALTER TABLE albaran ADD COLUMN idz INTEGER;
 	    ALTER TABLE albaran ADD CONSTRAINT idzfk FOREIGN KEY (idz) REFERENCES z(idz);
 	END IF;
 
-	SELECT INTO rec attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cambiosalbaran'' AND relname=''albaran'';
+	SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cambiosalbaran'' AND relname=''albaran'';
 	IF NOT FOUND THEN
 	    ALTER TABLE albaran ADD COLUMN cambiosalbaran VARCHAR;
 	    ALTER TABLE albaran ADD COLUMN cambiospostalbaran VARCHAR;
@@ -101,9 +101,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-BulmaTPV'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DBRev-BulmaTPV'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.13.1-0000'' WHERE nombre=''DBRev-BulmaTPV'';
 	ELSE

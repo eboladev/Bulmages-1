@@ -29,6 +29,7 @@ BEGIN
 	EXECUTE ''DROP TABLE '' || $1;
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -44,6 +45,7 @@ BEGIN
 	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -51,10 +53,10 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idzonacomercial'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''idzonacomercial'';
 	IF NOT FOUND THEN
 		CREATE TABLE zonacomercial (
 			idzonacomercial SERIAL PRIMARY KEY,
@@ -144,15 +146,17 @@ END;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM configuracion WHERE nombre = ''PluginBf_Comercial'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''PluginBf_Comercial'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.5.9'' WHERE nombre = ''PluginBf_Comercial'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Comercial'', ''0.5.9'');
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -169,4 +173,3 @@ DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;
 
 \echo -n ':: Finalizamos la transaccion ... '
 COMMIT;
-

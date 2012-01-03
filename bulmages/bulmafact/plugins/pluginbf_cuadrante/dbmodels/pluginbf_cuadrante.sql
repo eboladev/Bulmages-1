@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -55,9 +59,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idcuadrante'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''idcuadrante'';
+
 	IF NOT FOUND THEN
 		CREATE TABLE cuadrante (
 			idcuadrante serial PRIMARY KEY,
@@ -99,15 +104,17 @@ SELECT drop_if_exists_proc ('ncuadrante','');
 CREATE OR REPLACE FUNCTION ncuadrante() returns TRIGGER
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
+
 BEGIN
     IF NEW.aperturacuadrante IS NULL THEN
-	SELECT INTO bs * FROM almacen WHERE idalmacen = NEW.idalmacen;
-	NEW.aperturacuadrante = bs.aperturaalmacen;
-	NEW.cierrecuadrante = bs.cierrealmacen;
-	NEW.apertura1cuadrante = bs.apertura1almacen;
-	NEW.cierre1cuadrante = bs.cierre1almacen;
+	SELECT INTO rs * FROM almacen WHERE idalmacen = NEW.idalmacen;
+	NEW.aperturacuadrante = rs.aperturaalmacen;
+	NEW.cierrecuadrante = rs.cierrealmacen;
+	NEW.apertura1cuadrante = rs.apertura1almacen;
+	NEW.cierre1cuadrante = rs.cierre1almacen;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -123,9 +130,11 @@ CREATE TRIGGER cuadrante_trigger
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO bs * FROM pg_attribute  WHERE attname=''idausencia'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''idausencia'';
+
 	IF NOT FOUND THEN
 		CREATE TABLE ausencia (
 			idausencia serial PRIMARY KEY,
@@ -151,14 +160,17 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Cuadrante'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.9.3-0002'' WHERE nombre=''PluginBf_Cuadrante'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Cuadrante'', ''0.9.3-0002'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
