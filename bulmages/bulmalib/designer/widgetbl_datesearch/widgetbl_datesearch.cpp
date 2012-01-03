@@ -113,3 +113,13 @@ QString WidgetBl_DateSearch::includeFile() const
 
 Q_EXPORT_PLUGIN2(widgetbl_datesearch, WidgetBl_DateSearch)
 
+
+BlDebug::BlDebug(const QString &, int, const QString &) {
+}
+
+void BlDebug::blDebug(const QString &text, int level, const QString &params) {
+}
+
+BlDebug::~BlDebug() {
+}
+
