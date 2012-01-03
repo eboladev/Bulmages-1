@@ -59,28 +59,25 @@ int entryPoint ( BcBulmaCont *bcont )
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion de las amortizaciones" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/png/i_bulmacont_amortizaciones.png")));
     accionA->setObjectName("mui_actionAmortizaciones");
-    //connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accionA );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->toolBar->addAction ( accionA );
-
-
-    
     return 0;
 }
+
 
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionAmortizaciones") {
-        if (g_amortizacionlist == NULL) {
-            g_amortizacionlist = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
-            g_pluginbc_amortizacion->company()->pWorkspace() ->addSubWindow ( g_amortizacionlist );
-        } // end if
-        g_amortizacionlist->hide();
-        g_amortizacionlist->show();
+	if (g_amortizacionlist == NULL) {
+	  g_amortizacionlist = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
+	  g_pluginbc_amortizacion->company()->pWorkspace()->addSubWindow ( g_amortizacionlist );
+	} // end if
+	
+	g_amortizacionlist->hide();
+	g_amortizacionlist->show();
     } // end if
-    
 
     return 0;
 }

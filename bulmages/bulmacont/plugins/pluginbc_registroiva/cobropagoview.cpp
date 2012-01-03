@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include <stdio.h>
 #include <QComboBox>
 
 #include "cobropagoview.h"
@@ -30,7 +31,7 @@
 \param parent
 **/
 cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
-        : BlForm ( parent )
+        : BcForm ( emp, parent )
 {
     BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );

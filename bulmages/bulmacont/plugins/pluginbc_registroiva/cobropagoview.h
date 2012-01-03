@@ -17,17 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef COBROPAGOVIEW_H
 #define COBROPAGOVIEW_H
 
-#include "blform.h"
+#include "bcform.h"
 #include "ui_cobropagobase.h"
 #include "bccompany.h"
 
 
 /// Listado de gestion de cobros y pagos.
 /// TODO: Esta clase debe derivar de BcForm
-class cobropagoview : public BlForm, public Ui_CobroPagoBase
+class cobropagoview : public BcForm, public Ui_CobroPagoBase
 {
     Q_OBJECT
 
