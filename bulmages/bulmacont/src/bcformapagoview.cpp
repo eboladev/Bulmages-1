@@ -127,7 +127,7 @@ void BcFormaPagoView::pintar ( QString idfpago )
         mui_tipoPlazoEntreRecibos->setEnabled ( TRUE );
 
         dialogChanges_readValues();
-        mostrarplantilla ( posicion );
+        mostrarPlantilla ( posicion );
     } // end if
     
 }
@@ -139,7 +139,7 @@ void BcFormaPagoView::pintar ( QString idfpago )
 /**
 \param pos
 **/
-void BcFormaPagoView::mostrarplantilla ( int pos )
+void BcFormaPagoView::mostrarPlantilla ( int pos )
 {
     BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -183,7 +183,7 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
 void BcFormaPagoView::cambiacombo ( int )
 {
     BL_FUNC_DEBUG
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 

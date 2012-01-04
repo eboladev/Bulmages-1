@@ -71,10 +71,10 @@ void PluginBc_DuplicarAsiento::elslot()
     BL_FUNC_DEBUG
     DuplicarAsientoView *dupli = new DuplicarAsientoView ( (BcCompany *)mainCompany(), 0 );
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
-    dupli->inicializa ( m_asiento->mui_ordenasiento->text(), m_asiento->mui_ordenasiento->text() );
+    dupli->inicializa ( m_asiento->mui_ordenAsiento->text(), m_asiento->mui_ordenAsiento->text() );
     dupli->exec();
-    m_asiento->cargaasientos();
-    m_asiento->boton_fin();
+    m_asiento->cargaAsientos();
+    m_asiento->botonFin();
     delete dupli;
     
 }

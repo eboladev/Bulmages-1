@@ -42,13 +42,13 @@ class BC_EXPORT BcMasaPatrimonialListView : public QDialog, public Ui_BcMasaPatr
 public:
     /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tienen las cuentas
     /// de nivel m&aacute;s bajo.
-    int numdigitos;
+    int numDigitos;
     /// Esta variable indica si se abre para b&uacute;squeda o para edici&oacute;n.
     int modo;
     /// Esta variable indica el nombre de la masa, luego se usar&aacute;.
-    QString nommasa;
+    QString nomMasa;
     /// Esta variable indica el identificador de masa.
-    QString idmasa;
+    QString idMasa;
 
 public:
     BcMasaPatrimonialListView ( BcCompany *emp, QWidget *parent = 0 );
@@ -57,8 +57,8 @@ public:
     void inicializaTabla();
     void setModoSelector();
     void setModoEditor();
-    QString getnommasa();
-    QString getidmasa();
+    QString getNomMasa();
+    QString getIdMasa();
 
 public slots:
     virtual void dbtabla ( int, int, int, const QPoint & );

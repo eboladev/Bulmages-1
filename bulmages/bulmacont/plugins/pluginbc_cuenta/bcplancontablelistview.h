@@ -52,7 +52,7 @@ private:
     /// Indica si se abre para busqueda o para edicion.
     edmode m_modo;
     /// Indica el n&uacute;mero de d&iacute;gitos que tienen por defecto todas las cuentas que se crean.
-    unsigned int numdigitos;
+    unsigned int numDigitos;
     /// El c&oacute;digo de la cuenta que se devuelve.
     QString mdb_codcuenta;
     /// El identificador de la cuenta que se devuelve

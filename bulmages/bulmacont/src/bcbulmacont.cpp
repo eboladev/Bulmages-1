@@ -76,9 +76,9 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     m_company->setWorkspace ( m_pWorkspace );
 
 #ifdef AREA_QMDI
-    connect ( m_pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
+    connect ( m_pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaIndexador ( QMdiSubWindow * ) ) );
 #else
-    connect ( m_pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
+    connect ( m_pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaIndexador ( QWidget * ) ) );
 #endif
     
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
@@ -217,7 +217,7 @@ void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
 void BcBulmaCont::on_actionCanal_por_Defecto_triggered()
 {
     BL_FUNC_DEBUG
-    m_company->canaldefecto();
+    m_company->canalDefecto();
 }
 
 ///
@@ -246,7 +246,7 @@ void BcBulmaCont::on_actionCanales_triggered()
 void BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered()
 {
     BL_FUNC_DEBUG
-    m_company->centrocostedefecto();
+    m_company->centroCosteDefecto();
 }
 
 
@@ -289,7 +289,7 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 {
     BL_FUNC_DEBUG
-    m_company->mpatrimoniales();
+    m_company->masasPatrimoniales();
 }
 
 
@@ -589,9 +589,9 @@ void BcBulmaCont::on_actionPaises_triggered()
 \return
 **/
 #ifdef AREA_QMDI
-  void BcBulmaCont::informaindexador ( QMdiSubWindow *w )
+  void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
 #else
-  void BcBulmaCont::informaindexador ( QWidget *w )
+  void BcBulmaCont::informaIndexador ( QWidget *w )
 #endif
 {
     BL_FUNC_DEBUG

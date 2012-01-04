@@ -448,7 +448,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         /*
                 ((BcCompany *)mainCompany())->intapuntsempresa()->show();
                 QString idasiento = dbValue("idasiento");
-                ((BcCompany *)mainCompany())->intapuntsempresa()->muestraasiento(idasiento.toInt());
+                ((BcCompany *)mainCompany())->intapuntsempresa()->muestraAsiento(idasiento.toInt());
         */
         boton_asiento();
     } // end if

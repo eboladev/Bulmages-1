@@ -57,7 +57,7 @@ private:
     /// Indica la columna que tiene el checkbox para el centro de coste.
     int m_colCheck;
     /// Número de dígitos que tienen, por defecto, las cuentas.
-    int numdigitos;
+    int numDigitos;
     /// Iterador de la lista que se presenta en este formulario.
     QTreeWidgetItemIterator *m_iterador;
 

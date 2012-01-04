@@ -96,8 +96,8 @@ void BcAsientoListView::on_mui_list_cellDoubleClicked ( int, int )
     BL_FUNC_DEBUG
     QString idasiento = mui_list->dbValue ( "idasiento" );
     /// Se cargan de nuevo los datos de la base de datos para verificar que el asiento exista y se pueda acceder a el.
-    g_asiento ->cargaasientos();
-    g_asiento ->muestraasiento ( idasiento );
+    g_asiento ->cargaAsientos();
+    g_asiento ->muestraAsiento ( idasiento );
     g_asiento ->show();
     g_asiento ->setFocus();
     

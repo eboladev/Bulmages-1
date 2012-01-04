@@ -39,18 +39,18 @@ BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_idcanal->setMainCompany ( emp );
-    mui_idcanal->setId ( "0" );
+    mui_idCanal->setMainCompany ( emp );
+    mui_idCanal->setId ( "0" );
 
-    m_nomcanal = new QLineEdit();
-    m_nomcanal->setText ( "" );
-    m_desccanal = new QTextEdit();
-    m_desccanal->setPlainText ( "" );
+    m_nomCanal = new QLineEdit();
+    m_nomCanal->setText ( "" );
+    m_descCanal = new QTextEdit();
+    m_descCanal->setPlainText ( "" );
 
     idcanal = 0;
-    dialogChanges_setExcludedObject ( mui_idcanal );
+    dialogChanges_setExcludedObject ( mui_idCanal );
     dialogChanges_readValues();
-    on_mui_idcanal_valueChanged ( 0 );
+    on_mui_idCanal_valueChanged ( 0 );
     mainCompany() ->insertWindow ( windowTitle(), this );
     
 }
@@ -76,17 +76,17 @@ void BcCanalView::pintar()
     /// Si el combocoste no esta vacio se muestra el registro que contiene.
     if ( idcanal != 0 ) {
         /// Habilita los campos para ser editados.
-        mui_nomcanal->setEnabled ( TRUE );
-        mui_desccanal->setEnabled ( TRUE );
-        mostrarplantilla();
+        mui_nomCanal->setEnabled ( TRUE );
+        mui_descCanal->setEnabled ( TRUE );
+        mostrarPlantilla();
     } else {
-        idcanal = mui_idcanal->id().toInt();
-        mostrarplantilla();
+        idcanal = mui_idCanal->id().toInt();
+        mostrarPlantilla();
     } // end if
 
     /// Si se han cambiado los canales, se rehace el selector de canales.
     BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
-    scanal->cargacanales();
+    scanal->cargaCanales();
     
 }
 
@@ -95,7 +95,7 @@ void BcCanalView::pintar()
 /**
 \param numcombo
 **/
-void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
+void BcCanalView::on_mui_idCanal_valueChanged ( QString numcombo )
 {
     BL_FUNC_DEBUG
     int idcanal1 = numcombo.toInt();
@@ -112,21 +112,21 @@ void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
     /// Comprueba que el ID del 'combobox' este en la primera posicion '--' y deshabilita los
     /// campos de texto.
     if ( idcanal1 == 0 ) {
-        mui_nomcanal->setText ( "" );
-        mui_nomcanal->setEnabled ( FALSE );
-        mui_desccanal->setPlainText ( "" );
-        mui_desccanal->setEnabled ( FALSE );
+        mui_nomCanal->setText ( "" );
+        mui_nomCanal->setEnabled ( FALSE );
+        mui_descCanal->setPlainText ( "" );
+        mui_descCanal->setEnabled ( FALSE );
         flipflop = FALSE;
         return;
     } else {
         /// Habilita los campos para ser editados.
-        mui_nomcanal->setEnabled ( TRUE );
-        mui_desccanal->setEnabled ( TRUE );
+        mui_nomCanal->setEnabled ( TRUE );
+        mui_descCanal->setEnabled ( TRUE );
     } // end if
 
     flipflop = TRUE;
     idcanal = idcanal1;
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 
@@ -134,17 +134,17 @@ void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
 /// Esta funci&oacute;n muestra el canal en la ventana.
 /**
 **/
-void BcCanalView::mostrarplantilla()
+void BcCanalView::mostrarPlantilla()
 {
     BL_FUNC_DEBUG
     QString query;
     QTextStream ( &query ) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
     BlDbRecordSet *cursorcanal = mainCompany() ->loadQuery ( query );
     if ( !cursorcanal->eof() ) {
-        mui_nomcanal->setText ( cursorcanal->value( "nombre" ) );
-        mui_desccanal->setPlainText ( cursorcanal->value( "descripcion" ) );
+        mui_nomCanal->setText ( cursorcanal->value( "nombre" ) );
+        mui_descCanal->setPlainText ( cursorcanal->value( "descripcion" ) );
     } // end if
-    mui_idcanal->setId ( QString::number ( idcanal ) );
+    mui_idCanal->setId ( QString::number ( idcanal ) );
     dialogChanges_readValues();
     
 
@@ -157,8 +157,8 @@ void BcCanalView::mostrarplantilla()
 void BcCanalView::on_mui_guardar_clicked()
 {
     BL_FUNC_DEBUG
-    QString nom = mui_nomcanal->text();
-    QString desc = mui_desccanal->toPlainText();
+    QString nom = mui_nomCanal->text();
+    QString desc = mui_descCanal->toPlainText();
     QString query;
     QTextStream ( &query ) << "UPDATE canal SET nombre = '"
     << mainCompany() ->sanearCadena ( nom ).toAscii().constData()

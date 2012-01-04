@@ -69,7 +69,7 @@ private:
     int ano;
     QString contrasenya;
 //    BcPlanContableListView *m_listcuentas;
-    unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
+    unsigned int numDigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
     /// luego estos selectores generales se podr&aacute;n invocar desde distintas partes.
     BcCentroCosteSeleccionarView *selccostes;
@@ -84,7 +84,7 @@ public:
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
 
-    int numdigitosempresa();
+    int numDigitosEmpresa();
     QString nomuserempresa();
     QString nombreempresa();
 //    int muestracuentas();
@@ -98,13 +98,13 @@ public:
     void cerrarAsientos();
     int fPago();
     void maximiza();
-    int mpatrimoniales();
+    int masasPatrimoniales();
     //int compbalance();
     //int amortizaciones();
     void reemplazacuentaenasientos();
     int cambioejercicio();
-    void centrocostedefecto();
-    void canaldefecto();
+    void centroCosteDefecto();
+    void canalDefecto();
     BcCentroCosteSeleccionarView *getselccostes();
     BcCanalSeleccionarView *getselcanales();
     void recalculasaldos();

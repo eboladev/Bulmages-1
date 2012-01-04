@@ -34,7 +34,7 @@ BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BcCompany *emp, QWi
     BL_FUNC_DEBUG
     setupUi ( this );
 
-    numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
+    numDigitos = ( ( BcCompany * ) mainCompany() ) ->numDigitosEmpresa();
 
     m_iterador = new QTreeWidgetItemIterator ( mui_listCostes );
     mui_listCostes->setColumnCount ( 5 );

@@ -105,7 +105,7 @@ void BcTipoIVAView::pintar ( QString idtipoiva )
 /// Esta funci&oacute;n muestra el tipo de IVA en la ventana.
 /** \param pos, si es distinto de cero se busca en el combo la posici&oacute;n indicada
     sino se usa la posicion actual del combo. */
-void BcTipoIVAView::mostrarplantilla ( int pos )
+void BcTipoIVAView::mostrarPlantilla ( int pos )
 {
     BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -137,7 +137,7 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
 void BcTipoIVAView::on_mui_comboTipoIVA_currentIndexChanged ( int )
 {
     BL_FUNC_DEBUG
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 

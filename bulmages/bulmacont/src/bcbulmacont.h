@@ -131,9 +131,9 @@ public slots:
     virtual void on_actionPaises_triggered();
     
 #ifdef AREA_QMDI
-    virtual void informaindexador ( QMdiSubWindow *w );
+    virtual void informaIndexador ( QMdiSubWindow *w );
 #else
-    virtual void informaindexador ( QWidget *w );
+    virtual void informaIndexador ( QWidget *w );
 #endif
     
     virtual void on_actionIndexador_triggered();

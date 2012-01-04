@@ -181,7 +181,7 @@ int BlAction_actionTriggered(BlAction *accion) {
             return 0;
         } // end if
         g_asiento->show();
-        g_asiento->asiento_apertura ( hoy );
+        g_asiento->asientoApertura ( hoy );
     } // end if
 
     if (accion->objectName() == "mui_actionAsientoCierre") {
@@ -210,7 +210,7 @@ int BlAction_actionTriggered(BlAction *accion) {
         } // end if
 
         g_asiento->show();
-        g_asiento->asiento_cierre ( finicial, hoy );
+        g_asiento->asientoCierre ( finicial, hoy );
 
         } // end if
         if (accion->objectName() == "mui_actionAsientoRegularizacion") {
@@ -236,7 +236,7 @@ int BlAction_actionTriggered(BlAction *accion) {
                 return 0;
             } // end if
             g_asiento->show();
-            g_asiento->asiento_regularizacion ( finicial, hoy );
+            g_asiento->asientoRegularizacion ( finicial, hoy );
         } // end if
 
         return 0;

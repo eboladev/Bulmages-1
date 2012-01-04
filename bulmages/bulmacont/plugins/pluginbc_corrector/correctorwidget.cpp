@@ -265,7 +265,7 @@ void correctorwidget::alink ( const QUrl &url )
 //        BcAsientoView * view = company->intapuntsempresa();
         BcAsientoView * view = g_asiento;
         bool ok;
-        view->muestraasiento ( list[1].toInt ( &ok ) );
+        view->muestraAsiento ( list[1].toInt ( &ok ) );
         view->hide();
         view->show();
     } else if ( list[0] == "idcuenta" ) {
@@ -324,7 +324,7 @@ void correctorwidget::alink ( const QUrl &url )
     } else {
         /*        BcAsientoView *view = company->intapuntsempresa();
                 bool ok;
-                view->muestraasiento(linker.toInt(&ok));
+                view->muestraAsiento(linker.toInt(&ok));
         */
         QMessageBox::warning ( 0, _ ( "Opcion no implementada" ), _ ( "No se puede acceder al error" ), 0, 1, 2 );
     } // endif

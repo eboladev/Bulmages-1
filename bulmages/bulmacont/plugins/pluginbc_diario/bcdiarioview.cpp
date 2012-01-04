@@ -165,7 +165,7 @@ void BcDiarioView::boton_imprimir()
 /// Se ha pulsado sobre el bot&oacute;n guardar del formulario.
 /**
 **/
-void BcDiarioView::boton_guardar()
+void BcDiarioView::botonGuardar()
 {
     BL_FUNC_DEBUG
     QString fn = QFileDialog::getSaveFileName ( this,
@@ -259,7 +259,7 @@ void BcDiarioView::presentar()
             cadand = " AND ";
         } // end if
 
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales = " " + tabla + ".idcanal IN (" + ccanales + ") ";
             cad += cadwhere + cadand + ccanales;
@@ -339,7 +339,7 @@ void BcDiarioView::openAsiento()
     
     BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
 
-    asiento ->muestraasiento ( idasiento );
+    asiento ->muestraAsiento ( idasiento );
     asiento ->show();
     asiento ->setFocus();
 }

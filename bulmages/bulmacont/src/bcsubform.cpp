@@ -256,7 +256,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( camp->fieldName() == "codigo" && camp->text() != "*" ) {
-        QString codigoext = blExtendStringWithZeros ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
+        QString codigoext = blExtendStringWithZeros ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numDigitosEmpresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
@@ -329,7 +329,7 @@ void BcSubForm::boton_asiento()
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString numasiento = dbValue ( "idasiento" );
     if ( numasiento != "" ) {
-        companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
+        companyact->intapuntsempresa() ->muestraAsiento ( numasiento.toInt() );
         companyact->muestraapuntes1();
     } // end if
 */

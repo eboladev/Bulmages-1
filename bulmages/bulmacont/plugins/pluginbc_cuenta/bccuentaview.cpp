@@ -160,7 +160,7 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
         } // end switch
     } else {
         QString codint = codpadre;
-        while ( codint.length() < ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() - 1 ) {
+        while ( codint.length() < ( ( BcCompany * ) mainCompany() ) ->numDigitosEmpresa() - 1 ) {
             codint = codint + "0";
         } // end while
         codint = codint + "0";

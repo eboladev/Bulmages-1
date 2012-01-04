@@ -165,7 +165,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
         } // end if
         asientoReg = (BcAsientoView *) g_plugParams;
 //    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial, ffinal );
-    asientoReg ->asiento_regularizacion ( finicial, ffinal );
+    asientoReg ->asientoRegularizacion ( finicial, ffinal );
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 1.
@@ -183,7 +183,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
 
     /// Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
 //    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial1, ffinal1 );
-    asientoReg ->asiento_regularizacion ( finicial1, ffinal1 );
+    asientoReg ->asientoRegularizacion ( finicial1, ffinal1 );
 //    asientoReg = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa2();
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder

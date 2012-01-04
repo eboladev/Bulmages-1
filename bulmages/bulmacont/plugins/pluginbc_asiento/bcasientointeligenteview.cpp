@@ -86,7 +86,7 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
 BcAsientoInteligenteView::~BcAsientoInteligenteView()
 {
     BL_FUNC_DEBUG
-    borrawidgets();
+    borraWidgets();
     mainCompany() ->removeWindow ( this );
     g_asiento->mui_inteligente->setEnabled ( TRUE );
     
@@ -101,7 +101,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
 {
     BL_FUNC_DEBUG
     numasiento = idasiento;
-    inicializavariables();
+    inicializaVariables();
 
     QDir dir ( g_confpr->value( CONF_DIR_AINTELIGENTES ) );
     dir.setFilter ( QDir::Files );
@@ -127,7 +127,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
         mainCompany() ->begin();
         QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
         BlDbRecordSet *cursoraux1 = mainCompany() ->loadQuery ( query1, "codcuenta" );
-        numdigitos = cursoraux1->value( 2 ).length();
+        numDigitos = cursoraux1->value( 2 ).length();
         mainCompany() ->commit();
         delete cursoraux1;
 
@@ -141,7 +141,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
 /// De momento tenemos dos fariables fechaactual y fechaasiento.
 /**
 **/
-void BcAsientoInteligenteView::inicializavariables()
+void BcAsientoInteligenteView::inicializaVariables()
 {
     BL_FUNC_DEBUG
     QString subcadena;
@@ -176,7 +176,7 @@ void BcAsientoInteligenteView::inicializavariables()
 /**
 \param idcuenta
 **/
-void BcAsientoInteligenteView::cifcuenta ( int idcuenta )
+void BcAsientoInteligenteView::cifCuenta ( int idcuenta )
 {
     BL_FUNC_DEBUG
     QString query;
@@ -202,7 +202,7 @@ void BcAsientoInteligenteView::eturn_cta()
     BL_FUNC_DEBUG
     BlSearchWidget *numero;
     numero = ( BlSearchWidget * ) sender();
-    selectsiguiente ( numero );
+    selectSiguiente ( numero );
     
 }
 
@@ -214,7 +214,7 @@ void BcAsientoInteligenteView::eturn_fecha()
     BL_FUNC_DEBUG
     BlDateSearch *numero;
     numero = ( BlDateSearch * ) sender();
-    selectsiguiente ( numero );
+    selectSiguiente ( numero );
     
 }
 
@@ -226,7 +226,7 @@ void BcAsientoInteligenteView::eturn_numero()
     BL_FUNC_DEBUG
     QLineEdit *numero;
     numero = ( QLineEdit * ) sender();
-    selectsiguiente ( numero );
+    selectSiguiente ( numero );
     
 }
 
@@ -239,7 +239,7 @@ void BcAsientoInteligenteView::eturn_texto()
     BL_FUNC_DEBUG
     QLineEdit *texto;
     texto = ( QLineEdit * ) sender();
-    selectsiguiente ( texto );
+    selectSiguiente ( texto );
     
 }
 
@@ -251,7 +251,7 @@ void BcAsientoInteligenteView::eturn_texto()
 void BcAsientoInteligenteView::on_mui_comboainteligentes_activated ( int )
 {
     BL_FUNC_DEBUG
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 
@@ -268,7 +268,7 @@ void BcAsientoInteligenteView::muestraPlantilla ( QString plantilla )
     int i = mui_comboainteligentes->findText ( plantilla );
     if ( i >= 0 )
         mui_comboainteligentes->setCurrentIndex ( i );
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 
@@ -285,21 +285,21 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
         /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
         /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
         if ( numasiento != 0 ) {
-            recogevalores();
-            creaasiento();
-            g_asiento ->muestraasiento ( numasiento );
-            selectfirst();
+            recogeValores();
+            creaAsiento();
+            g_asiento ->muestraAsiento ( numasiento );
+            selectFirst();
         } else {
             /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
             /// Asi que debemos facilitar las cosas al m&aacute;ximo.
             variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
-            recogevalores();
+            recogeValores();
             g_asiento ->setFecha ( fechaasiento->text() );
             g_asiento ->vaciar();
             g_asiento ->dialogChanges_readValues();
             g_asiento ->iniciar_asiento_nuevo();
             numasiento = g_asiento ->idasiento().toInt();
-            creaasiento();
+            creaAsiento();
             g_asiento ->cerrar();
             g_asiento ->dialogChanges_readValues();
             numasiento = 0;
@@ -334,7 +334,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
 /// desarrollo de Bulmag&eacute;s y me hace mucha ilusi&oacute;n tenerlo listo pronto.
 /**
 **/
-void BcAsientoInteligenteView::mostrarplantilla()
+void BcAsientoInteligenteView::mostrarPlantilla()
 {
     BL_FUNC_DEBUG
     QString query;
@@ -343,7 +343,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
     QString subcadena;
     numainteligente = idainteligente;
     /// Vamos a intentar borrar todos los datos antes de empezar.
-    borrawidgets();
+    borraWidgets();
     if ( mui_comboainteligentes->currentIndex() != -1 ) {
         QFile f ( listasientos.at ( mui_comboainteligentes->currentIndex() ) );
         if ( !f.open ( QIODevice::ReadOnly ) )
@@ -361,7 +361,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// The node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_CTA );
+                recogeVariables ( e1.text(), TIPO_CTA );
             } // end if
         } // end for
         /// Recogemos los valores de contrapartida.
@@ -372,7 +372,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// The node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_CTA );
+                recogeVariables ( e1.text(), TIPO_CTA );
             } // end if
         } // end for
         /// Recogemos los valores de fecha.
@@ -383,7 +383,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// the node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_FECHA );
+                recogeVariables ( e1.text(), TIPO_FECHA );
             } // end if
         } // end for
         /// Recogemos los valores de debe.
@@ -394,7 +394,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// The node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_NUMERO );
+                recogeVariables ( e1.text(), TIPO_NUMERO );
             } // end if
         } // end for
         /// Recogemos los valores de haber.
@@ -405,7 +405,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// The node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_NUMERO );
+                recogeVariables ( e1.text(), TIPO_NUMERO );
             } // end if
         } // end for
         /// Recogemos los valores de conceptocontable
@@ -416,7 +416,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// the node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_TEXTO );
+                recogeVariables ( e1.text(), TIPO_TEXTO );
             } // end if
         } // end for
         /// Recogemos los valores de descripci&oacute;n.
@@ -427,7 +427,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             QDomElement e1 = item.toElement();
             /// The node was really an element.
             if ( !e1.isNull() ) {
-                recogevariables ( e1.text(), TIPO_TEXTO );
+                recogeVariables ( e1.text(), TIPO_TEXTO );
             } // end if
         } // end for
 
@@ -532,7 +532,7 @@ void BcAsientoInteligenteView::setValores ( QString var, QString val )
 /// y rellena las tablas de variables con los valores recogidos.
 /**
 **/
-void BcAsientoInteligenteView::recogevalores()
+void BcAsientoInteligenteView::recogeValores()
 {
     BL_FUNC_DEBUG
     int i;
@@ -563,7 +563,7 @@ void BcAsientoInteligenteView::recogevalores()
 /**
 \return
 **/
-void BcAsientoInteligenteView::creaasiento()
+void BcAsientoInteligenteView::creaAsiento()
 {
     BL_FUNC_DEBUG
     QString codcuenta;
@@ -591,7 +591,7 @@ void BcAsientoInteligenteView::creaasiento()
         QDomNodeList litems = m_doc.elementsByTagName ( "binteligente" );
         for ( int i = 0; i < litems.count(); i++ ) {
             QDomNode item = litems.item ( i );
-            codcuenta = aplicavariable ( item.firstChildElement ( "codcuenta" ).text() );
+            codcuenta = aplicaVariable ( item.firstChildElement ( "codcuenta" ).text() );
             query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii().constData() );
             cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
@@ -600,7 +600,7 @@ void BcAsientoInteligenteView::creaasiento()
             } // end if
             delete cur1;
 
-            contrapartida = aplicavariable ( item.firstChildElement ( "contrapartida" ).text() );
+            contrapartida = aplicaVariable ( item.firstChildElement ( "contrapartida" ).text() );
             query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii().constData() );
             cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
@@ -610,11 +610,11 @@ void BcAsientoInteligenteView::creaasiento()
                 idcontrapartida = "NULL";
             } // end if
             delete cur1;
-            debe = aplicavariable ( item.firstChildElement ( "debe" ).text() );
-            haber = aplicavariable ( item.firstChildElement ( "haber" ).text() );
-            fecha = aplicavariable ( item.firstChildElement ( "fecha" ).text() );
-            conceptocontable = aplicavariable ( item.firstChildElement ( "conceptocontable" ).text() );
-            descripcion = aplicavariable ( item.firstChildElement ( "descripcion" ).text() );
+            debe = aplicaVariable ( item.firstChildElement ( "debe" ).text() );
+            haber = aplicaVariable ( item.firstChildElement ( "haber" ).text() );
+            fecha = aplicaVariable ( item.firstChildElement ( "fecha" ).text() );
+            conceptocontable = aplicaVariable ( item.firstChildElement ( "conceptocontable" ).text() );
+            descripcion = aplicaVariable ( item.firstChildElement ( "descripcion" ).text() );
             query.sprintf ( "INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii().constData(), debe.toAscii().constData(), haber.toAscii().constData(), fecha.toAscii().constData(), conceptocontable.toAscii().constData(), descripcion.toAscii().constData(), orden++ );
             mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
@@ -635,7 +635,7 @@ void BcAsientoInteligenteView::creaasiento()
 \param tipo
 \return
 **/
-void BcAsientoInteligenteView::recogevariables ( QString texto, int tipo )
+void BcAsientoInteligenteView::recogeVariables ( QString texto, int tipo )
 {
     BL_FUNC_DEBUG
     int posinicial, posfinal, posaux, posaux1;
@@ -736,7 +736,7 @@ void BcAsientoInteligenteView::recogevariables ( QString texto, int tipo )
 /**
 \param texto
 **/
-QString BcAsientoInteligenteView::aplicavariable ( QString texto )
+QString BcAsientoInteligenteView::aplicaVariable ( QString texto )
 {
     BL_FUNC_DEBUG
     QString cadena = texto;
@@ -806,7 +806,7 @@ QString BcAsientoInteligenteView::aplicavariable ( QString texto )
 ///
 /**
 **/
-void BcAsientoInteligenteView::borrawidgets()
+void BcAsientoInteligenteView::borraWidgets()
 {
     BL_FUNC_DEBUG
     int i;
@@ -838,7 +838,7 @@ void BcAsientoInteligenteView::borrawidgets()
 ///
 /**
 **/
-void BcAsientoInteligenteView::selectfirst()
+void BcAsientoInteligenteView::selectFirst()
 {
     BL_FUNC_DEBUG
     if ( indvariablescta > 0 ) {
@@ -864,7 +864,7 @@ void BcAsientoInteligenteView::selectfirst()
 /**
 \param edit
 **/
-void BcAsientoInteligenteView::selectsiguiente ( QObject *edit )
+void BcAsientoInteligenteView::selectSiguiente ( QObject *edit )
 {
     BL_FUNC_DEBUG
     int encontrado = 0;

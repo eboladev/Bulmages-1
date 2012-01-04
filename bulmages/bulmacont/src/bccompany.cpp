@@ -153,9 +153,9 @@ BcAsientoView *BcCompany::intapuntsempresa2()
 /**
 \return
 **/
-int BcCompany::numdigitosempresa()
+int BcCompany::numDigitosEmpresa()
 {
-    return numdigitos;
+    return numDigitos;
 }
 
 
@@ -192,7 +192,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         /// de la Empresa.
         QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
         BlDbRecordSet *cursoraux1 = loadQuery ( query );
-        numdigitos = cursoraux1->value( "numdigitos" ).toInt();
+        numDigitos = cursoraux1->value( "numdigitos" ).toInt();
         delete cursoraux1;
         if ( selccostes != NULL ) {
             delete selccostes;
@@ -344,8 +344,8 @@ int BcCompany::cambioejercicio()
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
 /*
 
-    introapunts2->cargaasientos();
-    introapunts2->boton_fin();
+    introapunts2->cargaAsientos();
+    introapunts2->botonFin();
 
 */
     
@@ -396,7 +396,7 @@ int BcCompany::amortizaciones()
 /**
 \return
 **/
-int BcCompany::mpatrimoniales()
+int BcCompany::masasPatrimoniales()
 {
     BL_FUNC_DEBUG
     BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( this, 0 );
@@ -520,7 +520,7 @@ BcCanalSeleccionarView *BcCompany::getselcanales()
 ///
 /**
 **/
-void BcCompany::centrocostedefecto()
+void BcCompany::centroCosteDefecto()
 {
     BL_FUNC_DEBUG
     selccostes->exec();
@@ -531,7 +531,7 @@ void BcCompany::centrocostedefecto()
 ///
 /**
 **/
-void BcCompany::canaldefecto()
+void BcCompany::canalDefecto()
 {
     BL_FUNC_DEBUG
     selcanales->exec();

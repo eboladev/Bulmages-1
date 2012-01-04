@@ -63,12 +63,12 @@ public:
     virtual void pintaIdAsiento ( QString );
     virtual void pintaDescripcion ( QString );
     virtual void pintaFecha ( QString );
-    virtual void pintacomentariosasiento ( QString );
-    virtual void pintaordenasiento ( QString );
-    virtual void pintaclase ( QString );
-    virtual void calculaypintatotales();
+    virtual void pintaComentariosAsiento ( QString );
+    virtual void pintaOrdenAsiento ( QString );
+    virtual void pintaClase ( QString );
+    virtual void calculaPintaTotales();
     virtual void pintar();
-    virtual void trataestadoBcAsientoForm();
+    virtual void trataEstadoBcAsientoForm();
 };
 
 #endif

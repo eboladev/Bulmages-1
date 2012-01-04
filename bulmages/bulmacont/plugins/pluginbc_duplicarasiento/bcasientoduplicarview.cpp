@@ -22,7 +22,7 @@
 #include "bccompany.h"
 #include "blfunctions.h"
 
-#define NUMDIGITOS   mainCompany()->numdigitosempresa()
+#define NUMDIGITOS   mainCompany()->numDigitosEmpresa()
 
 
 ///

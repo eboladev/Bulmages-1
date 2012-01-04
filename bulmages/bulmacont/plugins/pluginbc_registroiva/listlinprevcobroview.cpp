@@ -330,8 +330,8 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     } // end if
     if ( opcion == menuverasiento ) {
         if ( linea->idasiento() != "" ) {
-//            m_companyact->intapuntsempresa() ->muestraasiento ( linea->idasiento().toInt() );
-            g_asiento ->muestraasiento ( linea->idasiento().toInt() );
+//            m_companyact->intapuntsempresa() ->muestraAsiento ( linea->idasiento().toInt() );
+            g_asiento ->muestraAsiento ( linea->idasiento().toInt() );
 
 
         } // end if

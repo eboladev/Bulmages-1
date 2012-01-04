@@ -50,7 +50,7 @@ public:
     BcCentroCosteView ( BcCompany *, QWidget *parent = 0 );
     ~BcCentroCosteView();
     void repintar();
-    void mostrarplantilla();
+    void mostrarPlantilla();
     virtual void on_mui_borrar_clicked();
     virtual int save();
 

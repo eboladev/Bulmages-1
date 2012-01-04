@@ -202,7 +202,7 @@ public:
     virtual void pintaRegistroIva();
     virtual int save();
     virtual int remove();
-    virtual void calculaypintatotales() {}
+    virtual void calculaPintaTotales() {}
     ;
     virtual void recalculaIva() {
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Funcion no implentada.") );

@@ -61,7 +61,7 @@ public slots:
     virtual void boton_imprimir();
     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n guardar listado.
     /// Es invocado desde la clase \ref empresa
-    virtual void boton_guardar();
+    virtual void botonGuardar();
     /// SLOT que responde a la activaci&oacute;n del bot&oacute;n de configurar listado.
     /// Muestra el configurador de subform3 \ref subform3
     virtual void on_mui_configurar_clicked();

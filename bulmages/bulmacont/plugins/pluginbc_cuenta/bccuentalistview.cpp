@@ -70,7 +70,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     } // end if
 
     mui_nivel->clear();
-    for ( int i = comp->numdigitosempresa(); i >= 2; i-- ) {
+    for ( int i = comp->numDigitosEmpresa(); i >= 2; i-- ) {
         /// Inicializamos la tabla de nivel.
         mui_nivel->insertItem ( i, QString::number ( i ) );
     } // end for

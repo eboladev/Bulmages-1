@@ -22,7 +22,7 @@
 //#include  "bcplancontablelistview.h"
 #include  "bccompany.h"
 
-#define NUMDIGITOS   (BcCompany *)mainCompany())->numdigitosempresa()
+#define NUMDIGITOS   (BcCompany *)mainCompany())->numDigitosEmpresa()
 
 
 ///

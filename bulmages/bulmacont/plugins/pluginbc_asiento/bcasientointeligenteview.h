@@ -104,22 +104,22 @@ private:
     /// de las plantillas de asientos inteligentes.
     QStringList listasientos;
     int idainteligente;
-    unsigned int numdigitos;
+    unsigned int numDigitos;
 
 public:
     BcAsientoInteligenteView ( BcCompany *, QWidget *parent = 0 );
     ~BcAsientoInteligenteView();
     void inicializa ( int );
-    void mostrarplantilla();
-    void recogevalores();
-    void creaasiento();
-    void recogevariables ( QString, int );
-    QString aplicavariable ( QString );
-    void borrawidgets();
-    void selectsiguiente ( QObject * );
-    void inicializavariables();
-    void cifcuenta ( int );
-    void selectfirst();
+    void mostrarPlantilla();
+    void recogeValores();
+    void creaAsiento();
+    void recogeVariables ( QString, int );
+    QString aplicaVariable ( QString );
+    void borraWidgets();
+    void selectSiguiente ( QObject * );
+    void inicializaVariables();
+    void cifCuenta ( int );
+    void selectFirst();
     void muestraPlantilla ( QString );
     void setValores ( QString, QString );
     void setFechaAsiento ( QString fecha );

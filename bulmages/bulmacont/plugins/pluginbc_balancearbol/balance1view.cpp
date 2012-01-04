@@ -65,7 +65,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
 
-    unsigned int numdigitos = mainCompany() ->numdigitosempresa();
+    unsigned int numDigitos = mainCompany() ->numDigitosEmpresa();
 
     m_codigoinicial->setMainCompany ( emp );
     /// Arreglamos la cuenta
@@ -123,7 +123,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 //     IDCUENTA = 11;
 //     PADRE = 12;
 
-    for ( int i = 2; i <= numdigitos; i++ ) {
+    for ( int i = 2; i <= numDigitos; i++ ) {
         /// Inicializamos la tabla de nivel.
         combonivel->insertItem ( i, QString::number ( i ) );
     } // end for
@@ -323,7 +323,7 @@ bool BalanceTreeView::generaBalance()
         ccostes = "AND idc_coste IN (" + ccostes + ") ";
 
     } // end if
-    QString ccanales = scanal->cadcanal();
+    QString ccanales = scanal->cadCanal();
     if ( ccanales != "" ) {
         ccanales =  " AND idcanal IN (" + ccanales + ") ";
     } // end if
@@ -375,7 +375,7 @@ void BalanceTreeView::presentar()
 
         QTreeWidgetItem* it;
         QList <QTreeWidgetItem *> ptrList, ptrIt;
-        for ( int i = 0; i <= mainCompany()->numdigitosempresa(); i++ )
+        for ( int i = 0; i <= mainCompany()->numDigitosEmpresa(); i++ )
             ptrIt << NULL; // Reservamos las posiciones de la lista que coincidiran con los niveles de cuentas
         BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
         

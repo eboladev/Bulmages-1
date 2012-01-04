@@ -182,8 +182,8 @@ void resmensualview::buscampatrimonial1()
     nuevae->inicializa ( dbConnection );
     nuevae->setModoSelector();
     nuevae->exec();
-    mpatrimonial1->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
-    idmpatrimonial1 = nuevae->getidmasa();
+    mpatrimonial1->setText ( ( char * ) ( nuevae->getNomMasa() ).ascii() );
+    idmpatrimonial1 = nuevae->getIdMasa();
     delete nuevae;
 
 }// end buscampatrimonial1
@@ -194,8 +194,8 @@ void resmensualview::buscampatrimonial2()
     nuevae->inicializa ( dbConnection );
     nuevae->setModoSelector();
     nuevae->exec();
-    mpatrimonial2->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
-    idmpatrimonial2 = nuevae->getidmasa();
+    mpatrimonial2->setText ( ( char * ) ( nuevae->getNomMasa() ).ascii() );
+    idmpatrimonial2 = nuevae->getIdMasa();
     delete nuevae;
 
 }// end buscampatrimonial1
@@ -206,8 +206,8 @@ void resmensualview::buscampatrimonial3()
     nuevae->inicializa ( dbConnection );
     nuevae->setModoSelector();
     nuevae->exec();
-    mpatrimonial3->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
-    idmpatrimonial3 = nuevae->getidmasa();
+    mpatrimonial3->setText ( ( char * ) ( nuevae->getNomMasa() ).ascii() );
+    idmpatrimonial3 = nuevae->getIdMasa();
     delete nuevae;
 
 }// end buscampatrimonial1

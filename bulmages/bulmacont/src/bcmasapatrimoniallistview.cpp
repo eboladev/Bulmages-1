@@ -74,11 +74,11 @@ void BcMasaPatrimonialListView::setModoEditor()
 /**
 \return
 **/
-QString BcMasaPatrimonialListView::getnommasa()
+QString BcMasaPatrimonialListView::getNomMasa()
 {
     BL_FUNC_DEBUG
     
-    return nommasa;
+    return nomMasa;
 }
 
 
@@ -86,11 +86,11 @@ QString BcMasaPatrimonialListView::getnommasa()
 /**
 \return
 **/
-QString BcMasaPatrimonialListView::getidmasa()
+QString BcMasaPatrimonialListView::getIdMasa()
 {
     BL_FUNC_DEBUG
     
-    return idmasa;
+    return idMasa;
 }
 
 
@@ -111,9 +111,9 @@ int BcMasaPatrimonialListView::inicializa()
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
     cursoraux1 = mainCompany() ->loadQuery ( query, "codcuenta" );
     mainCompany() ->commit();
-    numdigitos = cursoraux1->value( "valor" ).length();
+    numDigitos = cursoraux1->value( "valor" ).length();
     delete cursoraux1;
-    fprintf ( stderr, "las cuentas tienen %d digitos\n", numdigitos );
+    fprintf ( stderr, "las cuentas tienen %d digitos\n", numDigitos );
     inicializaTabla();
     
     return ( 0 );
@@ -178,8 +178,8 @@ void BcMasaPatrimonialListView::dbtabla ( int row, int colummn, int button, cons
         /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
         inicializaTabla();
     } else {
-        idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
-        nommasa = mui_tabla->item ( mui_tabla->currentRow(), 1 ) ->text();
+        idMasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
+        nomMasa = mui_tabla->item ( mui_tabla->currentRow(), 1 ) ->text();
         close();
     } // end if
 
@@ -213,12 +213,12 @@ void BcMasaPatrimonialListView::on_mui_borrar_clicked()
     BL_FUNC_DEBUG
     int row;
     row = mui_tabla->currentRow();
-    idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
+    idMasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
     QString query;
-    query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
+    query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idMasa.toAscii().constData() );
     mainCompany() ->begin();
     mainCompany() ->runQuery ( query );
-    query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
+    query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idMasa.toAscii().constData() );
     mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     inicializaTabla();

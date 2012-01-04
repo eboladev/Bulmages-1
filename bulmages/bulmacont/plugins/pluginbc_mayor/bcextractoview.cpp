@@ -98,10 +98,10 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
 
     /// Conectamos los botones del menu con las acciones de esta ventana.
-    connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(boton_siguiente()));
-    connect (((BcBulmaCont *)g_main)->actionAnterior, SIGNAL(triggered()), this, SLOT(boton_anterior()));
-    connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(boton_inicio()));
-    connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
+    connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(botonSiguiente()));
+    connect (((BcBulmaCont *)g_main)->actionAnterior, SIGNAL(triggered()), this, SLOT(botonAnterior()));
+    connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(botonInicio()));
+    connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(botonFin()));
 
     /// Llamamos a los scripts
     blScript(this);
@@ -139,7 +139,7 @@ void BcExtractoView::openAsiento()
     
     BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
 
-    asiento ->muestraasiento ( idasiento );
+    asiento ->muestraAsiento ( idasiento );
     asiento ->show();
     asiento ->setFocus();
 }
@@ -220,7 +220,7 @@ void BcExtractoView::accept()
 /// Esta es la funci&oacute;n que avanza un registro entre las cuentas.
 /**
 **/
-void BcExtractoView::boton_siguiente()
+void BcExtractoView::botonSiguiente()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -239,7 +239,7 @@ void BcExtractoView::boton_siguiente()
 /// Esta es la funci&oacute;n que retrocede un registro entre las cuentas.
 /**
 **/
-void BcExtractoView::boton_anterior()
+void BcExtractoView::botonAnterior()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -257,7 +257,7 @@ void BcExtractoView::boton_anterior()
 /// Retrocede al principio de las cuentas.
 /**
 **/
-void BcExtractoView::boton_inicio()
+void BcExtractoView::botonInicio()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -273,7 +273,7 @@ void BcExtractoView::boton_inicio()
 /// Avanza al final de las cuentas.
 /**
 **/
-void BcExtractoView::boton_fin()
+void BcExtractoView::botonFin()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -290,7 +290,7 @@ void BcExtractoView::boton_fin()
 ///
 /**
 **/
-void BcExtractoView::boton_guardar()
+void BcExtractoView::botonGuardar()
 {
     BL_FUNC_DEBUG
 /*
@@ -416,7 +416,7 @@ void BcExtractoView::presentar()
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
         } // end if
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
         } // end if
@@ -598,7 +598,7 @@ void BcExtractoView::on_mui_casacion_clicked()
 /// Guarda el punteo en disco para poder recuperarlo despues
 /**
 **/
-void BcExtractoView::on_mui_guardarpunteo_clicked()
+void BcExtractoView::on_mui_guardarPunteo_clicked()
 {
     BL_FUNC_DEBUG
 
@@ -639,7 +639,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
     Por supuesto cuando se pulsa dicho bot&oacute;n se borra el punteo. */
 /**
 **/
-void BcExtractoView::on_mui_borrapunteo_clicked()
+void BcExtractoView::on_mui_borrarPunteo_clicked()
 {
     BL_FUNC_DEBUG
     try {
@@ -671,7 +671,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
     borrador.
     Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes
     ya que en dicho caso la carga del punteo no funciona correctamente. */
-void BcExtractoView::on_mui_cargarpunteos_clicked()
+void BcExtractoView::on_mui_cargarPunteos_clicked()
 {
     BL_FUNC_DEBUG
     try {
@@ -761,7 +761,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND t5.idc_coste IN (%s) ", ccostes.toAscii().constData() );
         } // end if
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
         } // end if

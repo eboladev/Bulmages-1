@@ -134,12 +134,12 @@ void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked ( int, int )
     int idasiento;
     idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
 /*
-    m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
+    m_companyact->intapuntsempresa() ->muestraAsiento ( idasiento );
     m_companyact->intapuntsempresa() ->show();
     m_companyact->intapuntsempresa() ->setFocus();
 */
 
-    g_asiento ->muestraasiento ( idasiento );
+    g_asiento ->muestraAsiento ( idasiento );
     g_asiento ->show();
     g_asiento ->setFocus();
 
@@ -157,11 +157,11 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked ( int, int )
     int idasiento;
     idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
 /*
-    m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
+    m_companyact->intapuntsempresa() ->muestraAsiento ( idasiento );
     m_companyact->intapuntsempresa() ->show();
     m_companyact->intapuntsempresa() ->setFocus();
 */
-    g_asiento ->muestraasiento ( idasiento );
+    g_asiento ->muestraAsiento ( idasiento );
     g_asiento ->show();
     g_asiento ->setFocus();
 
@@ -283,11 +283,11 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
         int idasiento;
         idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
 /*
-        m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
+        m_companyact->intapuntsempresa() ->muestraAsiento ( idasiento );
         m_companyact->intapuntsempresa() ->show();
         m_companyact->intapuntsempresa() ->setFocus();
 */
-        g_asiento ->muestraasiento ( idasiento );
+        g_asiento ->muestraAsiento ( idasiento );
         g_asiento ->show();
         g_asiento ->setFocus();
 
@@ -314,11 +314,11 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
         int idasiento;
         idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
 /*
-        m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
+        m_companyact->intapuntsempresa() ->muestraAsiento ( idasiento );
         m_companyact->intapuntsempresa() ->show();
         m_companyact->intapuntsempresa() ->setFocus();
 */
-        g_asiento ->muestraasiento ( idasiento );
+        g_asiento ->muestraAsiento ( idasiento );
         g_asiento ->show();
         g_asiento ->setFocus();
 

@@ -62,7 +62,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     /// EStablezco cual es la tabla en la que basarse para el sistema de permisos.
     setDbTableName ( "asiento" );
 
-    numdigitos = mainCompany() ->numdigitosempresa();
+    numDigitos = mainCompany() ->numDigitosEmpresa();
     m_codigoinicial->setMainCompany ( emp );
     /// Arreglamos la cuenta
     m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
@@ -238,7 +238,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
             cadand = " AND ";
         } // end if
 
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales = cadand + " apunte.idcanal IN (" + ccanales + ") ";
         } // end if

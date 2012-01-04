@@ -438,7 +438,7 @@ void BalancePrintView::on_mui_canales_clicked()
     BL_FUNC_DEBUG
     BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
     selcanales->exec();
-    selcanales->firstcanal();
+    selcanales->firstCanal();
     
 }
 

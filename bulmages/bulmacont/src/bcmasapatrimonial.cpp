@@ -63,7 +63,7 @@ BcMasaPatrimonialView::~BcMasaPatrimonialView()
 /**
 \return
 **/
-QString BcMasaPatrimonialView::getidmasa()
+QString BcMasaPatrimonialView::getIdMasa()
 {
     BL_FUNC_DEBUG
     
@@ -326,7 +326,7 @@ void BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked()
     nuevae->inicializa();
     nuevae->setModoSelector();
     nuevae->exec();
-    mpatrimonial->setText ( nuevae->getidmasa() );
+    mpatrimonial->setText ( nuevae->getIdMasa() );
     delete nuevae;
     
 }
@@ -411,7 +411,7 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 /**
 \return
 **/
-QString BcMasaPatrimonialView::getnommasa()
+QString BcMasaPatrimonialView::getNomMasa()
 {
     BL_FUNC_DEBUG
     

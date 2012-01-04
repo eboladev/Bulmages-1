@@ -170,7 +170,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
         } // end if
     } // end if
     idc_coste = previdccoste;
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 
@@ -178,7 +178,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 ///
 /**
 **/
-void BcCentroCosteView::mostrarplantilla()
+void BcCentroCosteView::mostrarPlantilla()
 {
     BL_FUNC_DEBUG
 

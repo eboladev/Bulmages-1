@@ -72,7 +72,7 @@ void ResumCtaWidget::alink ( const QUrl &url )
     } else {
         BcAsientoView *view = g_asiento;
         bool ok;
-        view->muestraasiento ( linker.toInt ( &ok ) );
+        view->muestraAsiento ( linker.toInt ( &ok ) );
     } // endif
     
 }

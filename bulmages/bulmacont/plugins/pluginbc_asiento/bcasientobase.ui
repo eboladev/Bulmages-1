@@ -92,7 +92,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_abrirasiento">
+         <widget class="QToolButton" name="mui_abrirAsiento">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -136,7 +136,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_cerrarasiento">
+         <widget class="QToolButton" name="mui_cerrarAsiento">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -180,7 +180,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_guardarasiento">
+         <widget class="QToolButton" name="mui_guardarAsiento">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -224,7 +224,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_nuevoasiento">
+         <widget class="QToolButton" name="mui_nuevoAsiento">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -619,7 +619,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="mui_ordenasiento">
+      <widget class="QSpinBox" name="mui_ordenAsiento">
        <property name="minimumSize">
         <size>
          <width>100</width>

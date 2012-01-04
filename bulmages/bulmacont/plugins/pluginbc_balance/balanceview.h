@@ -48,7 +48,7 @@ private:
     /// Cursor para recorrer las cuentas.
     BlDbRecordSet *m_cursorcta;
     /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.
-    int numdigitos;
+    int numDigitos;
     /// Array que almacena los identificadores de los centros de coste.
 
 public:

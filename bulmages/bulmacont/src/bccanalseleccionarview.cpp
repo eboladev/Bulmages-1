@@ -25,7 +25,7 @@
 
 /// Inicializa las variables de empresa y de base de datos.
 /** Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa
-    el programa. Luego llama al m&eacute;todo cargacanales que hace la carga de los canales
+    el programa. Luego llama al m&eacute;todo cargaCanales que hace la carga de los canales
     a partir de la base de datos. */
 /**
 \param emp
@@ -36,7 +36,7 @@ BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
+    numDigitos = ( ( BcCompany * ) mainCompany() ) ->numDigitosEmpresa();
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
 
     m_listCanales->setColumnCount ( 5 );
@@ -45,7 +45,7 @@ BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent
     etiquetas << _ ( "nom_canal" ) << _ ( "desc_canal" ) << _ ( "Status" ) << _ ( "idcanal" ) << _ ( "Seleccion" );
     m_listCanales->setHeaderLabels ( etiquetas );
 
-    cargacanales();
+    cargaCanales();
     
 }
 
@@ -64,7 +64,7 @@ BcCanalSeleccionarView::~BcCanalSeleccionarView()
 ///
 /**
 **/
-void BcCanalSeleccionarView::cargacanales()
+void BcCanalSeleccionarView::cargaCanales()
 {
     BL_FUNC_DEBUG
     QMap <int, QTreeWidgetItem *> Lista;
@@ -100,13 +100,13 @@ void BcCanalSeleccionarView::cargacanales()
 /**
 \return
 **/
-int BcCanalSeleccionarView::firstcanal()
+int BcCanalSeleccionarView::firstCanal()
 {
     BL_FUNC_DEBUG
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
     
-    return nextcanal();
+    return nextCanal();
 }
 
 
@@ -114,11 +114,11 @@ int BcCanalSeleccionarView::firstcanal()
 /**
 \return
 **/
-int BcCanalSeleccionarView::nextcanal()
+int BcCanalSeleccionarView::nextCanal()
 {
     BL_FUNC_DEBUG
     int idcanal = 0;
-    fprintf ( stderr, "nextcanal\n" );
+    fprintf ( stderr, "nextCanal\n" );
     while ( ( **m_iterador ) && idcanal == 0 ) {
         if ( ( **m_iterador ) ->checkState ( 0 ) == Qt::Checked ) {
             idcanal = ( **m_iterador ) ->text ( 3 ).toInt();
@@ -137,20 +137,20 @@ int BcCanalSeleccionarView::nextcanal()
 /**
 \return
 **/
-QString BcCanalSeleccionarView::cadcanal()
+QString BcCanalSeleccionarView::cadCanal()
 {
     BL_FUNC_DEBUG
 
     int idcanal;
     QString ccanales = "";
 
-    idcanal = firstcanal();
+    idcanal = firstCanal();
     while ( idcanal ) {
         if ( ccanales != "" )
             ccanales.sprintf ( "%s, %d", ccanales.toAscii().constData(), idcanal );
         else
             ccanales.sprintf ( "%d", idcanal );
-        idcanal = nextcanal();
+        idcanal = nextCanal();
     } // end while
 
     
@@ -162,7 +162,7 @@ QString BcCanalSeleccionarView::cadcanal()
 /**
 \return
 **/
-QString BcCanalSeleccionarView::nomcanal()
+QString BcCanalSeleccionarView::nomCanal()
 {
     BL_FUNC_DEBUG
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
