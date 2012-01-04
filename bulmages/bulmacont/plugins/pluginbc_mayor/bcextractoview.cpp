@@ -548,15 +548,28 @@ void BcExtractoView::on_mui_casacion_clicked()
 {
     BL_FUNC_DEBUG
     try {
+	if (m_cursorcta == 0) {
+	    blMsgInfo(_("Cargue primero una cuenta."));
+	    return;
+	} // end if
+	
+	if (m_cursorcta->value( "idcuenta" ).isEmpty()) {
+	    blMsgWarning(_("La cuenta no tiene apuntes."));
+	    return;
+	} // end if
+	
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
         BlDbRecordSet *curshaber = mainCompany() ->loadQuery ( query );
+
         BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
         barra.setText ( _ ( "Cargando Extracto de Cuentas" ) );
+
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->value( "haber" ) + " AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
             BlDbRecordSet *cursdebe = mainCompany() ->loadQuery ( query.toAscii(), "cursdebe" );
+
             if ( !cursdebe->eof() ) {
                 query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->value( "idapunte" );
                 mainCompany() ->begin();
@@ -565,10 +578,12 @@ void BcExtractoView::on_mui_casacion_clicked()
                 mainCompany() ->runQuery ( query );
                 mainCompany() ->commit();
             } // end if
+
             delete cursdebe;
             curshaber->nextRecord();
             barra.setValue ( barra.value() + 1 );
         } // end while
+
         delete curshaber;
 	m_tratarpunteos = FALSE;
         presentar();
