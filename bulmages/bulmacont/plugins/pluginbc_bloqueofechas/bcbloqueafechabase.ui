@@ -87,7 +87,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Agregar Ejercicio</string>
+           <string>Agregar ejercicio</string>
           </property>
           <property name="whatsThis">
            <string>Agregar ejercicio</string>
@@ -165,9 +165,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton2">
+      <widget class="QPushButton" name="mui_cerrar">
        <property name="text">
-        <string>Cerrar</string>
+        <string>&amp;Cerrar</string>
        </property>
       </widget>
      </item>
@@ -180,22 +180,5 @@
   <include location="../../../bulmages.qrc"/>
   <include location="../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>pushButton2</sender>
-   <signal>released()</signal>
-   <receiver>BcBloqueaFechaBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>349</x>
-     <y>430</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -294,7 +294,7 @@ CREATE TABLE serie_factura (
 -- descfamilia: Descripcion extendida de la familia.
 -- padrefamilia: 
 -- codigocompletofamilia: Codigo completo de la familia. Es la concatenacion del codigo de
---                        familia con sus codigos padres. Este campo es de solo lectura.
+--                        familia con sus codigos padrs. Este campo es de solo lectura.
 -- productofisicofamilia: TRUE indica que es producto fisico, FALSE que es servicio.
 \echo -n ':: Familia ... '
 CREATE TABLE familia (
@@ -2186,7 +2186,7 @@ CREATE TRIGGER totalesautomaticosalbaranptriggerd1
 
 
 -- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERRORES.
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERROrs.
 -- **********************************************************************
 -- **********************************************************************
 \echo -n ':: Funcion random_string que genera una cadena aleatoria ... '
@@ -2717,31 +2717,31 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res2 idproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
+    SELECT INTO rs2 idproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
 
-    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
 
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
     END IF;
 
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (reqeqlpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (reqeqlpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpedidoproveedor / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondpedidoproveedor / 100);
-	totalIVA := totalIVA * (1 - res.proporciondpedidoproveedor / 100);
-	totalRE := totalRE * (1 - res.proporciondpedidoproveedor / 100);
+    FOR rs IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondpedidoproveedor / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondpedidoproveedor / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondpedidoproveedor / 100);
+	totalRE := totalRE * (1 - rs.proporciondpedidoproveedor / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2761,11 +2761,11 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total * (1 - res.proporciondpedidoproveedor  / 100);
+    FOR rs IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - rs.proporciondpedidoproveedor  / 100);
     END LOOP;
     RETURN total;
 END;
@@ -2783,12 +2783,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total * (1 - res.proporciondpedidoproveedor / 100);
+    FOR rs IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - rs.proporciondpedidoproveedor / 100);
     END LOOP;
 
     RETURN total;
@@ -2884,29 +2884,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
 
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (reqeqlpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (reqeqlpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpresupuesto / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondpresupuesto / 100);
-	totalIVA := totalIVA * (1 - res.proporciondpresupuesto / 100);
-	totalRE := totalRE * (1 - res.proporciondpresupuesto / 100);
+    FOR rs IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondpresupuesto / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondpresupuesto / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondpresupuesto / 100);
+	totalRE := totalRE * (1 - rs.proporciondpresupuesto / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2927,12 +2927,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total * (1 - res.proporciondpresupuesto / 100);
+    FOR rs IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - rs.proporciondpresupuesto / 100);
     END LOOP;
 
     RETURN total;
@@ -2951,12 +2951,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total * (1 - res.proporciondpresupuesto / 100);
+    FOR rs IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - rs.proporciondpresupuesto / 100);
     END LOOP;
 
     RETURN total;
@@ -2984,29 +2984,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
 
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpedidocliente / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondpedidocliente / 100);
-	totalIVA := totalIVA * (1 - res.proporciondpedidocliente / 100);
-	totalRE := totalRE * (1 - res.proporciondpedidocliente / 100);
+    FOR rs IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondpedidocliente / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondpedidocliente / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondpedidocliente / 100);
+	totalRE := totalRE * (1 - rs.proporciondpedidocliente / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -3027,12 +3027,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-    	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+    	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-	total := total * (1 - res.proporciondpedidocliente / 100);
+    FOR rs IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - rs.proporciondpedidocliente / 100);
     END LOOP;
 
     RETURN total;
@@ -3051,12 +3051,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-	total := total * (1 - res.proporciondpedidocliente / 100);
+    FOR rs IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - rs.proporciondpedidocliente / 100);
     END LOOP;
 
     RETURN total;
@@ -3084,29 +3084,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
 
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (reqeqlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (reqeqlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondalbaran / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondalbaran / 100);
-	totalIVA := totalIVA * (1 - res.proporciondalbaran / 100);
-	totalRE := totalRE * (1 - res.proporciondalbaran / 100);
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondalbaran / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondalbaran / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondalbaran / 100);
+	totalRE := totalRE * (1 - rs.proporciondalbaran / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -3127,12 +3127,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-	total := total * (1 - res.proporciondalbaran / 100);
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	total := total * (1 - rs.proporciondalbaran / 100);
     END LOOP;
 
     RETURN total;
@@ -3151,12 +3151,12 @@ DECLARE
 BEGIN
     total := 0;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-    	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    	total := total + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-    	total := total * (1 - res.proporciondalbaran / 100);
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - rs.proporciondalbaran / 100);
     END LOOP;
 
     RETURN total;
