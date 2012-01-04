@@ -59,7 +59,12 @@ int BlForm_load ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
     ADQToolButton *eq = ficha->findChild<ADQToolButton *>("BotonArchDoc");
-    eq->hazMenu();
+    
+    /// Comprueba la existencia del objeto.
+    if (eq != 0) {
+        eq->hazMenu();
+    } // end if
+    
     return 0;
     
 }

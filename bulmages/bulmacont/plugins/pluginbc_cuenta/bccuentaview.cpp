@@ -43,15 +43,15 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID cuenta" ) );
     addDbField ( "codigo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo cuenta" ) );
     addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
-    addDbField ( "padre", BlDbField::DbInt  , BlDbField::DbNothing, _ ( "Padre" ) );
-    addDbField ( "imputacion", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "Imputacion" ) );
-    addDbField ( "bloqueada", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "Bloqueada" ) );
-    addDbField ( "nodebe", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "NoDebe" ) );
-    addDbField ( "nohaber", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "NoHaber" ) );
+    addDbField ( "padre", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Padre" ) );
+    addDbField ( "imputacion", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Imputacion" ) );
+    addDbField ( "bloqueada", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Bloqueada" ) );
+    addDbField ( "nodebe", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "NoDebe" ) );
+    addDbField ( "nohaber", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "NoHaber" ) );
     addDbField ( "regularizacion", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "Regularizacion" ) );
-    addDbField ( "tipocuenta", BlDbField::DbInt , BlDbField::DbNothing, _ ( "Tipo de Cuenta" ) );
-    addDbField ( "debe", BlDbField::DbNumeric , BlDbField::DbNoSave, _ ( "Debe" ) );
-    addDbField ( "haber", BlDbField::DbNumeric , BlDbField::DbNoSave, _ ( "Haber" ) );
+    addDbField ( "tipocuenta", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Tipo de Cuenta" ) );
+    addDbField ( "debe", BlDbField::DbNumeric, BlDbField::DbNoSave, _ ( "Debe" ) );
+    addDbField ( "haber", BlDbField::DbNumeric, BlDbField::DbNoSave, _ ( "Haber" ) );
     addDbField ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Centro de coste por defecto" ) );
     addDbField ( "nombreent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Entidad de la cuenta" ) );
     addDbField ( "cifent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "CIF de la cuenta" ) );
@@ -108,7 +108,6 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
 BcCuentaView::~BcCuentaView()
 {
     BL_FUNC_DEBUG
-    
 }
 
 

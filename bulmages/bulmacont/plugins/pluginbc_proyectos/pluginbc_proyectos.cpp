@@ -94,7 +94,7 @@ int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
 int BlForm_load ( BlForm *ficha )
 {
     ListProyectosView * l = ficha->findChild<ListProyectosView *> ( "mui_proyectos" );
-    if ( l )
+    if ( l != 0)
         l->mui_listado->load ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->dbValue ( "idc_coste" ) );
     return 0;
 }
