@@ -268,7 +268,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         
         return;
     } catch ( ... ) {
-        blMsgInfo ( "Asiento no pudo crearse" );
+        blMsgInfo ( _("El asiento no pudo crearse") );
         mainCompany() ->rollback();
     } // end try
 }

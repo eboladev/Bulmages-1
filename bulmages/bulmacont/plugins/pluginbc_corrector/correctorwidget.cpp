@@ -260,7 +260,7 @@ void correctorwidget::alink ( const QUrl &url )
     
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( list[0] == "ver" ) {
-        company->muestracuentas();
+	// TODO.
     } else if ( list[0] == "idasiento" ) {
 //        BcAsientoView * view = company->intapuntsempresa();
         BcAsientoView * view = g_asiento;

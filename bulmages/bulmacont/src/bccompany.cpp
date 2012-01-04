@@ -256,14 +256,16 @@ void BcCompany::maximiza()
 /**
 \return
 **/
+/*
 int BcCompany::muestracuentas()
 {
     BL_FUNC_DEBUG
+*/
 //    m_listcuentas->setWindowState ( Qt::WindowActive );
-    
+/*    
     return 0;
 }
-
+*/
 
 /// Esta funci&oacute;n presenta los centros de coste.
 /** Luego recarga los comboboxes de todo el resto de pantallas para que se actualizen. */
@@ -374,18 +376,20 @@ int BcCompany::propiedadempresa()
 /**
 \return
 **/
+/*
 int BcCompany::amortizaciones()
 {
     BL_FUNC_DEBUG
+*/
 /*
     BcAmortizacionListView *amors = new BcAmortizacionListView ( this, 0 );
     m_pWorkspace->addSubWindow ( amors );
     amors->show();
 */
-    
+/*    
     return 0;
 }
-
+*/
 
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
 /// de masas patrimoniales.
@@ -409,18 +413,20 @@ int BcCompany::mpatrimoniales()
 /**
 \return
 **/
+/*
 int BcCompany::compbalance()
 {
     BL_FUNC_DEBUG
+*/
 /*
     BcCuentasAnualesView *nueva = new BcCuentasAnualesView ( this, 0 );
     m_pWorkspace->addSubWindow ( nueva );
     nueva->show();
 */
-    
+/*    
     return 0;
 }
-
+*/
 
 ///
 ///

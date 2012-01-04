@@ -53,6 +53,7 @@ int entryPoint ( BcBulmaCont *bcont )
     BcCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
     doc1 = new BlDockWidget ( _ ( "Corrector" ), bcont );
+    doc1->setObjectName("mui_corrector");
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );

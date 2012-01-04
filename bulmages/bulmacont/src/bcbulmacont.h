@@ -93,7 +93,6 @@ private slots:
     void slotCentrosCoste();
     void slotCanales();
     void slotViewFullScreen ( bool toggle );
-    void slotCompBalance();
     virtual void s_asiento1();
     void closeEvent ( QCloseEvent * );
     /// Toggle the statusbar.
@@ -117,7 +116,6 @@ public slots:
     virtual void on_actionTipos_de_IVA_triggered();
     virtual void on_actionFormas_de_Pago_triggered();
     virtual void on_actionConfiguracion_triggered();
-    virtual void on_actionPlan_Contable_triggered();
     virtual void on_actionRecalcular_Saldos_Iniciales_triggered();
     virtual void on_actionSustituir_Cuentas_triggered();
     virtual void on_actionCanal_por_Defecto_triggered();
@@ -128,9 +126,7 @@ public slots:
     virtual void on_actionOrganizaci_n_en_Cascada_triggered();
     virtual void on_actionAyuda_triggered();
     virtual void on_actionAcerca_de_triggered();
-    virtual void on_actionCuentas_Anuales_triggered();
     virtual void on_actionMasas_Patrimoniales_triggered();
-    virtual void on_actionAmortizaciones_triggered();
     virtual void on_actionPantalla_Completa_triggered();
     virtual void on_actionPaises_triggered();
     

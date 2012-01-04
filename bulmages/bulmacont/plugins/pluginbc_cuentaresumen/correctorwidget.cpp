@@ -65,7 +65,7 @@ void ResumCtaWidget::alink ( const QUrl &url )
 
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( linker == "ver" ) {
-        ( ( BcCompany * ) mainCompany() ) ->muestracuentas();
+	// TODO
     } else if ( linker == "asiento" ) {
         //QString ordenasiento = l.right(l.length() - 2);
         //( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();

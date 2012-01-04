@@ -26,11 +26,11 @@
 #include <QEvent>
 #include <QProgressBar>
 
-
 #include "bcbulmacont.h"
 #include "blconfiguration.h"
 #include "bcaboutview.h"
 #include "blplugins.h"
+
 
 ///
 /**
@@ -141,19 +141,6 @@ QMenu *BcBulmaCont::mui_MenuHerramientas()
 
 ///
 /**
-\return
-**/
-/*
-QMenu *BcBulmaCont::mui_MenuVer()
-{
-    BL_FUNC_DEBUG
-    
-    return menuVer;
-}
-*/
-
-///
-/**
 **/
 void BcBulmaCont::s_asiento1()
 {
@@ -191,7 +178,6 @@ void BcBulmaCont::on_actionFormas_de_Pago_triggered()
 {
     BL_FUNC_DEBUG
     m_company->fPago();
-    
 }
 
 
@@ -202,21 +188,7 @@ void BcBulmaCont::on_actionConfiguracion_triggered()
 {
     BL_FUNC_DEBUG
     m_company->propiedadempresa();
-    
 }
-
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionPlan_Contable_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->muestracuentas();
-    
-}
-
 
 
 ///
@@ -225,7 +197,6 @@ void BcBulmaCont::on_actionPlan_Contable_triggered()
 void BcBulmaCont::on_actionRecalcular_Saldos_Iniciales_triggered()
 {
     BL_FUNC_DEBUG
-    
     m_company->recalculasaldos();
 }
 
@@ -237,7 +208,6 @@ void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
 {
     BL_FUNC_DEBUG
     m_company->reemplazacuentaenasientos();
-    
 }
 
 
@@ -248,7 +218,6 @@ void BcBulmaCont::on_actionCanal_por_Defecto_triggered()
 {
     BL_FUNC_DEBUG
     m_company->canaldefecto();
-    
 }
 
 ///
@@ -258,7 +227,6 @@ void BcBulmaCont::on_actionCentros_de_Coste_triggered()
 {
     BL_FUNC_DEBUG
     m_company->ccostes();
-    
 }
 
 
@@ -269,7 +237,6 @@ void BcBulmaCont::on_actionCanales_triggered()
 {
     BL_FUNC_DEBUG
     m_company->canales();
-    
 }
 
 
@@ -280,7 +247,6 @@ void BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered()
 {
     BL_FUNC_DEBUG
     m_company->centrocostedefecto();
-    
 }
 
 
@@ -307,25 +273,13 @@ void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
 void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     BL_FUNC_DEBUG
-    
+
 #ifdef AREA_QMDI
     m_pWorkspace->cascadeSubWindows ();
 #else
     m_pWorkspace->cascade();
 #endif
-    
-    
-}
 
-
-///
-/**
-**/
-void BcBulmaCont::on_actionCuentas_Anuales_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->compbalance();
-    
 }
 
 
@@ -336,19 +290,6 @@ void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 {
     BL_FUNC_DEBUG
     m_company->mpatrimoniales();
-    
-}
-
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionAmortizaciones_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->amortizaciones();
-    
 }
 
 
@@ -363,7 +304,6 @@ void BcBulmaCont::on_actionPantalla_Completa_triggered()
     } else {
         showFullScreen();
     } // end if
-    
 }
 
 
@@ -378,7 +318,6 @@ void BcBulmaCont::on_actionIndexador_triggered()
     } else {
         m_company->s_indexadorCambiaEstado ( FALSE );
     } // end if
-    
 }
 
 
@@ -394,7 +333,6 @@ void BcBulmaCont::setActionIndexador ( bool visible )
     } else {
         actionIndexador->setChecked ( FALSE );
     } // end if
-    
 }
 
 
@@ -405,7 +343,6 @@ void BcBulmaCont::initStatusBar()
 {
     BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -431,7 +368,6 @@ void BcBulmaCont::slotEditUndo()
     BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Deshaciendo la ultima accion..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -443,7 +379,6 @@ void BcBulmaCont::slotEditCut()
     BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Cortando seleccion..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -455,7 +390,6 @@ void BcBulmaCont::slotEditCopy()
     BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Copiando la seleccion al portapapeles..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -467,7 +401,6 @@ void BcBulmaCont::slotEditPaste()
     BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Insertando el contenido del portapapeles..." ) );
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -485,7 +418,6 @@ void BcBulmaCont::slotViewStatusBar ( bool toggle )
         statusBar() ->show();
     } // end if
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -503,7 +435,6 @@ void BcBulmaCont::slotViewFullScreen ( bool toggle )
         showFullScreen();
     } // end if
     statusBar() ->showMessage ( _ ( "Listo." ) );
-    
 }
 
 
@@ -516,7 +447,6 @@ void BcBulmaCont::slotStatusHelpMsg ( const QString &text )
     BL_FUNC_DEBUG
     /// Change status message of whole statusbar temporary (text, msec).
     statusBar() ->showMessage ( text, 2000 );
-    
 }
 
 
@@ -527,7 +457,6 @@ void BcBulmaCont::slotListadoCuentas()
 {
     BL_FUNC_DEBUG
     statusBar() ->showMessage ( _ ( "Listado de cuentas" ) );
-    
 }
 
 
@@ -539,7 +468,6 @@ void BcBulmaCont::slotCentrosCoste()
 {
     BL_FUNC_DEBUG
     m_company->ccostes();
-    
 }
 
 
@@ -550,18 +478,6 @@ void BcBulmaCont::slotCanales()
 {
     BL_FUNC_DEBUG
     m_company->canales();
-    
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::slotCompBalance()
-{
-    BL_FUNC_DEBUG
-    m_company->compbalance();
-    
 }
 
 
@@ -571,7 +487,6 @@ void BcBulmaCont::slotCompBalance()
 void BcBulmaCont::slotPerdidas()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -581,7 +496,6 @@ void BcBulmaCont::slotPerdidas()
 void BcBulmaCont::windowMenuAboutToShow()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -591,7 +505,6 @@ void BcBulmaCont::windowMenuAboutToShow()
 void BcBulmaCont::slotWindowNewWindow()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -601,8 +514,6 @@ void BcBulmaCont::slotWindowNewWindow()
 void BcBulmaCont::closeEvent ( QCloseEvent *event )
 {
     BL_FUNC_DEBUG
-
-
     /// Antes de salir hacemos un mensaje de advertencia.
     if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
 	 QMessageBox msgBox;
@@ -625,9 +536,6 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
     m_company = NULL;
     delete m_list;
     m_list = NULL;
-
-
-    
 }
 
 
@@ -646,7 +554,6 @@ void BcBulmaCont::on_actionAyuda_triggered()
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     */
-    
 }
 
 
@@ -658,7 +565,6 @@ void BcBulmaCont::on_actionAcerca_de_triggered()
     BL_FUNC_DEBUG
     BcAboutView *sobre = new BcAboutView ( 0 );
     sobre->exec();
-    
 }
 
 
@@ -705,8 +611,6 @@ void BcBulmaCont::on_actionPaises_triggered()
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toAscii().constData() );
-
-    
 }
 
 
@@ -717,9 +621,6 @@ void BcBulmaCont::on_actionPaises_triggered()
 BlWorkspace *BcBulmaCont::workspace()
 {
     BL_FUNC_DEBUG
-    
     return m_pWorkspace;
 }
-
-
 

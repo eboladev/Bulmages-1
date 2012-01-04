@@ -1264,7 +1264,7 @@ ALTER FUNCTION public.conectabulmacont() OWNER TO root;
 CREATE FUNCTION crearef() RETURNS character varying
     AS $$
 DECLARE
-    asd RECORD;
+    rs RECORD;
     result character varying(15);
     efound boolean;
 
@@ -1273,39 +1273,39 @@ BEGIN
     WHILE efound = FALSE LOOP
 	result := random_string(6);
 	efound := TRUE;
-	SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+	SELECT INTO rs idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;
-	SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+	SELECT INTO rs idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;
-	SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result;
+	SELECT INTO rs idalbaran FROM albaran WHERE refalbaran = result;
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;	
-	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
+	SELECT INTO rs idfactura FROM factura WHERE reffactura = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idcobro FROM cobro WHERE refcobro = result;
+	SELECT INTO rs idcobro FROM cobro WHERE refcobro = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+	SELECT INTO rs idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result;
+	SELECT INTO rs idalbaranp FROM albaranp WHERE refalbaranp = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result;
+	SELECT INTO rs idfacturap FROM facturap WHERE reffacturap = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-	SELECT INTO asd idpago FROM pago WHERE refpago = result;
+	SELECT INTO rs idpago FROM pago WHERE refpago = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
@@ -2006,23 +2006,23 @@ ALTER FUNCTION public.random_string(integer) OWNER TO postgres;
 CREATE FUNCTION restriccionesalbaran() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 BEGIN
 	IF NEW.fechaalbaran IS NULL THEN
 		NEW.fechaalbaran := now();
 	END IF;
         IF NEW.numalbaran IS NULL THEN
-                SELECT INTO asd max(numalbaran) AS m FROM albaran;
-		IF asd.m IS NOT NULL THEN
-			NEW.numalbaran := asd.m + 1;
+                SELECT INTO rs max(numalbaran) AS m FROM albaran;
+		IF rs.m IS NOT NULL THEN
+			NEW.numalbaran := rs.m + 1;
 		ELSE
 			NEW.numalbaran := 1;
 		END IF;
         END IF;
 	IF NEW.refalbaran IS NULL OR NEW.refalbaran = '' THEN
-		SELECT INTO asd crearef() AS m;
+		SELECT INTO rs crearef() AS m;
 		IF FOUND THEN
-			NEW.refalbaran := asd.m;
+			NEW.refalbaran := rs.m;
 		END IF;
 	END IF;
         RETURN NEW;
@@ -2040,23 +2040,23 @@ ALTER FUNCTION public.restriccionesalbaran() OWNER TO postgres;
 CREATE FUNCTION restriccionesalbaranp() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 BEGIN
 	IF NEW.fechaalbaranp IS NULL THEN
 		NEW.fechaalbaranp := now();
 	END IF;
         IF NEW.numalbaranp IS NULL THEN
-                SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
-		IF asd.m IS NOT NULL THEN
-			NEW.numalbaranp := asd.m + 1;
+                SELECT INTO rs max(numalbaranp) AS m FROM albaranp;
+		IF rs.m IS NOT NULL THEN
+			NEW.numalbaranp := rs.m + 1;
 		ELSE
 			NEW.numalbaranp := 1;
 		END IF;
         END IF;
 	IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '' THEN
-		SELECT INTO asd crearef() AS m;
+		SELECT INTO rs crearef() AS m;
 		IF FOUND THEN
-			NEW.refalbaranp := asd.m;
+			NEW.refalbaranp := rs.m;
 		END IF;
 	END IF;
         RETURN NEW;
@@ -2074,16 +2074,16 @@ ALTER FUNCTION public.restriccionesalbaranp() OWNER TO postgres;
 CREATE FUNCTION restriccionescobro() RETURNS "trigger"
     AS $$
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechacobro IS NULL THEN
 	NEW.fechacobro := now();
     END IF;
     IF NEW.refcobro IS NULL OR NEW.refcobro = '' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refcobro := asd.m;
+	    NEW.refcobro := rs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -2101,24 +2101,24 @@ ALTER FUNCTION public.restriccionescobro() OWNER TO postgres;
 CREATE FUNCTION restriccionesfactura() RETURNS "trigger"
     AS $$
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.ffactura IS NULL THEN
 	NEW.ffactura := now();
     END IF;
     IF NEW.numfactura IS NULL THEN
-	SELECT INTO asd max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
-	IF asd.m IS NOT NULL THEN
-	    NEW.numfactura := asd.m + 1;
+	SELECT INTO rs max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
+	IF rs.m IS NOT NULL THEN
+	    NEW.numfactura := rs.m + 1;
 	ELSE
 	    NEW.numfactura := 1;
 	END IF;
     END IF;
     IF NEW.reffactura IS NULL OR NEW.reffactura = '' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	    NEW.reffactura := asd.m;
+	    NEW.reffactura := rs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -2136,15 +2136,15 @@ ALTER FUNCTION public.restriccionesfactura() OWNER TO postgres;
 CREATE FUNCTION restriccionesfacturap() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 BEGIN
 	IF NEW.ffacturap IS NULL THEN
 		NEW.ffacturap := now();
 	END IF;
 	IF NEW.reffacturap IS NULL OR NEW.reffacturap = '' THEN
-		SELECT INTO asd crearef() AS m;
+		SELECT INTO rs crearef() AS m;
 		IF FOUND THEN
-			NEW.reffacturap := asd.m;
+			NEW.reffacturap := rs.m;
 		END IF;
 	END IF;
         RETURN NEW;
@@ -2162,7 +2162,7 @@ ALTER FUNCTION public.restriccionesfacturap() OWNER TO postgres;
 CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 reg RECORD;
 BEGIN
 	IF NEW.idarticulo IS NULL THEN
@@ -2170,9 +2170,9 @@ BEGIN
 	return OLD;
 	END IF;
 
-	FOR asd IN SELECT * FROM articulo WHERE idarticulo=NEW.idarticulo LOOP
+	FOR rs IN SELECT * FROM articulo WHERE idarticulo=NEW.idarticulo LOOP
         	IF NEW.desclfactura IS NULL THEN
-			NEW.desclfactura := asd.nomarticulo;
+			NEW.desclfactura := rs.nomarticulo;
 		END IF;
 		IF NEW.cantlfactura IS NULL THEN
 			NEW.cantlfactura := 1;
@@ -2204,16 +2204,16 @@ ALTER FUNCTION public.restriccioneslfactura() OWNER TO postgres;
 CREATE FUNCTION restriccionespago() RETURNS "trigger"
     AS $$
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechapago IS NULL THEN
 	NEW.fechapago := now();
     END IF;
     IF NEW.refpago IS NULL OR NEW.refpago = '' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refpago := asd.m;
+	    NEW.refpago := rs.m;
 	END IF;
     END IF;
     RETURN NEW;
@@ -2231,23 +2231,23 @@ ALTER FUNCTION public.restriccionespago() OWNER TO postgres;
 CREATE FUNCTION restriccionespedidocliente() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 BEGIN
 	IF NEW.fechapedidocliente IS NULL THEN
 		NEW.fechapedidocliente := now();
 	END IF;
         IF NEW.numpedidocliente IS NULL THEN
-                SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
-		IF asd.m IS NOT NULL THEN
-			NEW.numpedidocliente := asd.m + 1;
+                SELECT INTO rs max(numpedidocliente) AS m FROM pedidocliente;
+		IF rs.m IS NOT NULL THEN
+			NEW.numpedidocliente := rs.m + 1;
 		ELSE
 			NEW.numpedidocliente := 1;
 		END IF;
         END IF;
 	IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '' THEN
-		SELECT INTO asd crearef() AS m;
+		SELECT INTO rs crearef() AS m;
 		IF FOUND THEN
-			NEW.refpedidocliente := asd.m;
+			NEW.refpedidocliente := rs.m;
 		END IF;
 	END IF;
         RETURN NEW;
@@ -2265,23 +2265,23 @@ ALTER FUNCTION public.restriccionespedidocliente() OWNER TO postgres;
 CREATE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 BEGIN
 	IF NEW.fechapedidoproveedor IS NULL THEN
 		NEW.fechapedidoproveedor := now();
 	END IF;
         IF NEW.numpedidoproveedor IS NULL THEN
-                SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
-		IF asd.m IS NOT NULL THEN
-			NEW.numpedidoproveedor := asd.m + 1;
+                SELECT INTO rs max(numpedidoproveedor) AS m FROM pedidoproveedor;
+		IF rs.m IS NOT NULL THEN
+			NEW.numpedidoproveedor := rs.m + 1;
 		ELSE
 			NEW.numpedidoproveedor := 1;
 		END IF;
         END IF;
 	IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '' THEN
-		SELECT INTO asd crearef() AS m;
+		SELECT INTO rs crearef() AS m;
 		IF FOUND THEN
-			NEW.refpedidoproveedor := asd.m;
+			NEW.refpedidoproveedor := rs.m;
 		END IF;
 	END IF;
         RETURN NEW;
@@ -2299,24 +2299,24 @@ ALTER FUNCTION public.restriccionespedidoproveedor() OWNER TO postgres;
 CREATE FUNCTION restriccionespresupuesto() RETURNS "trigger"
     AS $$
 DECLARE
-asd RECORD;
+rs RECORD;
 BEGIN
 	IF NEW.fpresupuesto IS NULL THEN
 		NEW.fpresupuesto := now();
 	END IF;
         IF NEW.numpresupuesto IS NULL THEN
-                SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
-		IF asd.m IS NOT NULL THEN	
-			NEW.numpresupuesto := asd.m + 1;
+                SELECT INTO rs max(numpresupuesto) AS m FROM presupuesto;
+		IF rs.m IS NOT NULL THEN	
+			NEW.numpresupuesto := rs.m + 1;
 		ELSE
 
 			NEW.numpresupuesto := 1;
 		END IF;			
         END IF;
 	IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '' THEN
-		SELECT INTO asd crearef() AS m;
+		SELECT INTO rs crearef() AS m;
 		IF FOUND THEN
-			NEW.refpresupuesto := asd.m;
+			NEW.refpresupuesto := rs.m;
 		END IF;
 	END IF;
         RETURN NEW;
@@ -10493,7 +10493,7 @@ COPY cliente (idcliente, nomcliente, nomaltcliente, cifcliente, dircliente, pobl
 19	Centro Balear Inmobiliario	\N	19	Joaquin Turina, 1 Local 4	Palma de Mallorca	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	2005-06-29	\N		\N	\N	\N	\N	971 29 06 29	667 776 767	f	\N	Normal	                                                                                                                        	\N	\N	\N	7 days	2007-09-15	08:00:00	10880
 81	AIGUA CORRENT SL	AIGUA CORRENT SL	81	Joaquin Turina, 1 Local 4	Alaro	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	2006-01-09	\N		\N	\N	\N	\N	971 29 06 29	667 776 767	f	\N	Normal	                                                                                                                        	\N	\N	\N	7 days	2007-09-15	08:00:00	10884
 97	Ecologing	Ecologing	97	Joaquin Turina, 1 Local 4	Manacor	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	2006-07-19	\N		\N	\N	\N	\N	971 29 06 29	667 776 767	f	1	Normal	                                                                                                                        	1	\N	\N	7 days	2007-09-15	08:00:00	10885
-143	\N	\N	143	Joaquin Turina, 1 Local 4	\N	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	2007-09-15	\N		\N	\N	asdf	asdf	971 29 06 29	667 776 767	f	1	Normal	                                                                                                                        	1	\N	\N	7 days	2007-09-15	08:00:00	10885
+143	\N	\N	143	Joaquin Turina, 1 Local 4	\N	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	2007-09-15	\N		\N	\N	rsf	rsf	971 29 06 29	667 776 767	f	1	Normal	                                                                                                                        	1	\N	\N	7 days	2007-09-15	08:00:00	10885
 135	Zaibatsu S.L.	Zaibatsu S.L.	135	Joaquin Turina, 1 Local 4	Bilbao	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	\N	\N		\N	\N	\N	Zaibatsu S.L.	971 29 06 29	667 776 767	f	1	Normal	                                                                                                                        	1	\N	\N	7 days	2007-09-15	08:00:00	10887
 132	Patronat Municipal de Turisme Pollença	Patronat Municipal Turisme Pollença	132	Joaquin Turina, 1 Local 4	Pollença	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	\N	\N		\N	\N	\N	Patronat Municipal Turisme Pollença	971 29 06 29	667 776 767	f	1	Normal	                                                                                                                        	5	\N	\N	7 days	2007-09-15	08:00:00	10889
 129	Olah Cooking Group. S.L.	Laurus Restaurant	129	Joaquin Turina, 1 Local 4	Palma de Mallorca	07004	902 88 11 66		info@iglues.org	http://www.iglues.org	\N	\N		\N	\N	\N	Olah Cooking Group. S.L.	971 29 06 29	667 776 767	f	1	Normal	                                                                                                                        	1	\N	\N	7 days	2007-09-15	08:00:00	10891
@@ -11153,7 +11153,7 @@ COPY cuadrante (idcuadrante, fechacuadrante, idalmacen, comentcuadrante, apertur
 1084	2007-11-05	6		\N	\N	\N	\N	f
 1091	2007-11-05	5		\N	\N	\N	\N	f
 1098	2007-11-05	2		\N	\N	\N	\N	f
-1077	2007-11-05	4	asdf asdf asdf asdf asdfa sdf	\N	\N	\N	\N	f
+1077	2007-11-05	4	asdf asdf asdf sadf asdfa sdf	\N	\N	\N	\N	f
 1071	2007-11-06	1		\N	\N	\N	\N	f
 1078	2007-11-06	4		\N	\N	\N	\N	f
 1085	2007-11-06	6		\N	\N	\N	\N	f
@@ -11804,9 +11804,9 @@ COPY familia (idfamilia, codigofamilia, nombrefamilia, descfamilia, padrefamilia
 203	07	TELEFONIA	\N	180	1307	t
 205	06	RECEPTORES DE TDT	\N	180	1306	t
 213	08	SERIE FEEL	Descripcion de la familia	180	1308	t
-60	03	Gestiones	asdf asdf asdf asdf	19	0103	t
+60	03	Gestiones	rsf rsf rsf rsf	19	0103	t
 216	08	ORDENADORES OTRAS MARCAS		19	0108	t
-59	02	A Domicilio	asdf asdf asdf	19	0102	t
+59	02	A Domicilio	rsf rsf rsf	19	0102	t
 \.
 
 
@@ -12452,7 +12452,7 @@ COPY lalbaran (numlalbaran, desclalbaran, cantlalbaran, pvplalbaran, descuentola
 1233	HOSTING G-RIBASAZCONA - \nFEBRERO - MARZO	2.00	17.00	0.00	16.00	690	4244	0	0.00	\N
 1419	HOSTING G-RIBASAZCONA \nABRIL - MAYO	2.00	17.00	0.00	16.00	690	4244	1	0.00	\N
 1367	LATIGUILLO UTP CAT.5E DE 20 MTS MARFIL PL1020	1.00	6.02	0.00	16.00	760	3451	0	0.00	\N
-1426	SIN DEFINIR (COMODIN)\nasdf\nasdf\nasdf\n	1.00	0.00	0.00	16.00	796	4189	0	0.00	\N
+1426	SIN DEFINIR (COMODIN)\nrsf\nrsf\nrsf\n	1.00	0.00	0.00	16.00	796	4189	0	0.00	\N
 1427	SIN DEFINIR (COMODIN)	2.00	100.00	0.00	16.00	796	4189	1	0.00	\N
 1428	SIN DEFINIR (COMODIN)	1.00	0.00	0.00	16.00	796	4189	2	0.00	\N
 1009	HORAS CONTRATO	0.50	0.00	0.00	16.00	573	4184	0	0.00	\N
@@ -12647,7 +12647,7 @@ COPY lalbaranp (numlalbaranp, desclalbaranp, cantlalbaranp, ivalalbaranp, pvplal
 --
 
 COPY lcontrato (idlcontrato, idcontrato, idarticulo, cantlcontrato, pvplcontrato, desclcontrato, ordenlcontrato) FROM stdin;
-1	1	4553	8.00	115.00	sdfasd sdf asdf 	0
+1	1	4553	8.00	115.00	sdfrs sdf rsf 	0
 \.
 
 
@@ -13393,7 +13393,7 @@ COPY log (idlog, iplog, urllog, fechalog, useragentlog, getlog, postlog, session
 787	-1062731728	omicron/~arturo/factuweb/web/index.php?m=presupuesto_editar&idpresupuesto=222&tabla=lpresupuesto&insertarlineadocumento=si&idarticulo=2814&desclpresupuesto=MEMORIA%20DIMM%20SDRAM%20256%20MB%20133MHZ%20MARCA&cantlpresupuesto=0&pvplpresupuesto=0&ivalpresupuesto=0&descuentolpresupuesto=0	2007-11-30-13:06:45	Mozilla/5.0 (Windows; U; Windows NT 5.1; es-ES; rv:1.8.1.10) Gecko/20071115 Firefox/2.0.0.10	<idpresupuesto>222</idpresupuesto>\n<insertarlineadocumento>si</insertarlineadocumento>\n<idarticulo>2814</idarticulo>\n<desclpresupuesto>MEMORIA DIMM SDRAM 256 MB 133MHZ MARCA</desclpresupuesto>\n<cantlpresupuesto>0</cantlpresupuesto>\n<pvplpresupuesto>0</pvplpresupuesto>\n<ivalpresupuesto>0</ivalpresupuesto>\n<descuentolpresupuesto>0</descuentolpresupuesto>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 814	-1062731728	omicron/~arturo/factuweb/web/index.php?m=tipo_articulo_listado	2007-11-30-13:08:51	Mozilla/5.0 (Windows; U; Windows NT 5.1; es-ES; rv:1.8.1.10) Gecko/20071115 Firefox/2.0.0.10	<m>tipo_articulo_listado.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 841	-1062731740	omicron/~ivan/factuweb/web/index.php?m=trabajador_editar&idtrabajador=1	2007-11-30-13:49:18	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>trabajador_editar.php</m>\n<idtrabajador>1</idtrabajador>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
-868	-1062731740	omicron/~ivan/factuweb/web/index.php?m=usuario_editar&loginusuario=	2007-11-30-16:50:46	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>usuario_editar.php</m>\n<loginusuario></loginusuario>\n	<operacion>crear</operacion>\n<loginusuario>dasd</loginusuario>\n<nombreusuario>dasd</nombreusuario>\n<apellido1usuario>das</apellido1usuario>\n<apellido2usuario>das</apellido2usuario>\n<claveusuario>dasd</claveusuario>\n	<usuario>arturo</usuario>\n<password>arturo</password>\n
+868	-1062731740	omicron/~ivan/factuweb/web/index.php?m=usuario_editar&loginusuario=	2007-11-30-16:50:46	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>usuario_editar.php</m>\n<loginusuario></loginusuario>\n	<operacion>crear</operacion>\n<loginusuario>drs</loginusuario>\n<nombreusuario>drs</nombreusuario>\n<apellido1usuario>das</apellido1usuario>\n<apellido2usuario>das</apellido2usuario>\n<claveusuario>drs</claveusuario>\n	<usuario>arturo</usuario>\n<password>arturo</password>\n
 895	-1062731740	omicron/~ivan/factuweb/web/index.php?m=pedidoproveedor_editar&idpedidoproveedor=34	2007-11-30-17:54:30	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>pedidoproveedor_editar.php</m>\n<idpedidoproveedor>34</idpedidoproveedor>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 922	-1062731740	omicron/~ivan/factuweb/web/index.php?m=pedidocliente_editar&idpedidocliente=303	2007-11-30-18:16:46	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>pedidocliente_editar.php</m>\n<idpedidocliente>303</idpedidocliente>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 949	-1062731740	omicron/~ivan/factuweb/web/index.php?m=serie_factura_listado	2007-11-30-18:22:25	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>serie_factura_listado.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
@@ -13425,7 +13425,7 @@ COPY log (idlog, iplog, urllog, fechalog, useragentlog, getlog, postlog, session
 789	-1062731728	omicron/~arturo/factuweb/web/index.php?m=presupuesto_editar	2007-11-30-13:06:58	Mozilla/5.0 (Windows; U; Windows NT 5.1; es-ES; rv:1.8.1.10) Gecko/20071115 Firefox/2.0.0.10	<m>presupuesto_editar.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 816	-1062731740	omicron/~ivan/factuweb/web/index.php?m=proveedor_listado	2007-11-30-13:21:38	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>proveedor_listado.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 843	-1062731740	omicron/~ivan/factuweb/web/index.php?m=trabajador_editar&idtrabajador=1	2007-11-30-13:50:00	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>trabajador_editar.php</m>\n<idtrabajador>1</idtrabajador>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
-870	-1062731740	omicron/~ivan/factuweb/web/index.php?m=usuario_editar&loginusuario=dasd	2007-11-30-16:50:52	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>usuario_editar.php</m>\n<loginusuario>dasd</loginusuario>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
+870	-1062731740	omicron/~ivan/factuweb/web/index.php?m=usuario_editar&loginusuario=drs	2007-11-30-16:50:52	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>usuario_editar.php</m>\n<loginusuario>drs</loginusuario>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 897	-1062731740	omicron/~ivan/factuweb/web/index.php?m=pedidoproveedor_editar&idpedidoproveedor=34	2007-11-30-18:00:14	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>pedidoproveedor_editar.php</m>\n<idpedidoproveedor>34</idpedidoproveedor>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 924	-1062731740	omicron/~ivan/factuweb/web/index.php?m=albaran_editar&idalbaran=565	2007-11-30-18:17:06	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>albaran_editar.php</m>\n<idalbaran>565</idalbaran>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 951	-1062731740	omicron/~ivan/factuweb/web/index.php?m=almacen_listado	2007-11-30-18:22:48	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>almacen_listado.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
@@ -13441,7 +13441,7 @@ COPY log (idlog, iplog, urllog, fechalog, useragentlog, getlog, postlog, session
 790	-1062731728	omicron/~arturo/factuweb/web/index.php?m=pedidocliente_listado	2007-11-30-13:07:00	Mozilla/5.0 (Windows; U; Windows NT 5.1; es-ES; rv:1.8.1.10) Gecko/20071115 Firefox/2.0.0.10	<m>pedidocliente_listado.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 817	-1062731740	omicron/~ivan/factuweb/web/index.php?m=proveedor_editar&idproveedor=3	2007-11-30-13:22:26	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>proveedor_editar.php</m>\n<idproveedor>3</idproveedor>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 844	-1062731740	omicron/~ivan/factuweb/web/index.php?m=trabajador_editar&idtrabajador=1	2007-11-30-13:50:00	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>trabajador_editar.php</m>\n<idtrabajador>1</idtrabajador>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
-871	-1062731740	omicron/~ivan/factuweb/web/index.php?m=usuario_editar&loginusuario=dasd	2007-11-30-16:51:08	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>usuario_editar.php</m>\n<loginusuario>dasd</loginusuario>\n	<operacion>borrar</operacion>\n<loginusuario>dasd</loginusuario>\n<nombreusuario>dasd</nombreusuario>\n<apellido1usuario>das</apellido1usuario>\n<apellido2usuario>das</apellido2usuario>\n<claveusuario>dasd</claveusuario>\n	<usuario>arturo</usuario>\n<password>arturo</password>\n
+871	-1062731740	omicron/~ivan/factuweb/web/index.php?m=usuario_editar&loginusuario=drs	2007-11-30-16:51:08	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>usuario_editar.php</m>\n<loginusuario>drs</loginusuario>\n	<operacion>borrar</operacion>\n<loginusuario>drs</loginusuario>\n<nombreusuario>drs</nombreusuario>\n<apellido1usuario>das</apellido1usuario>\n<apellido2usuario>das</apellido2usuario>\n<claveusuario>drs</claveusuario>\n	<usuario>arturo</usuario>\n<password>arturo</password>\n
 898	-1062731740	omicron/~ivan/factuweb/web/index.php?m=pedidoproveedor_editar&idpedidoproveedor=34	2007-11-30-18:01:23	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>pedidoproveedor_editar.php</m>\n<idpedidoproveedor>34</idpedidoproveedor>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 925	-1062731740	omicron/~ivan/factuweb/web/index.php?m=factura_listado	2007-11-30-18:17:26	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>factura_listado.php</m>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
 952	-1062731740	omicron/~ivan/factuweb/web/index.php?m=almacen_editar&idalmacen=2	2007-11-30-18:23:05	Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.5) Gecko/20061201 Firefox/2.0.0.5 (Ubuntu-feisty)	<m>almacen_editar.php</m>\n<idalmacen>2</idalmacen>\n		<usuario>arturo</usuario>\n<password>arturo</password>\n
@@ -14185,9 +14185,9 @@ COPY pago (idpago, idproveedor, fechapago, cantpago, refpago, previsionpago, com
 131	7	2007-05-21	66.91	YXQVED	f	DIALMA	\N	1	1149
 132	7	2007-05-21	66.91	OYAIKY	f	DIALMA	\N	1	1150
 133	21	2007-06-06	92.94	JEOHZW	t	CONETXIA	\N	1	1151
-135	4	2007-08-13	1500.00	111	f	aasdfasdf	\N	\N	1152
+135	4	2007-08-13	1500.00	111	f	arsfrsf	\N	\N	1152
 137	5	2007-08-14	122.00	UMQIBH	f	hjkjhjkjhjkjhjkjhjkjhhjkj	\N	\N	1153
-136	33	2007-08-31	456.00	SBDNFG	f	qwert asasdfas	\N	3	1154
+136	33	2007-08-31	456.00	SBDNFG	f	qwert asrsfas	\N	3	1154
 \.
 
 
@@ -14224,7 +14224,7 @@ COPY pedidocliente (idpedidocliente, numpedidocliente, fechapedidocliente, refpe
 321	20	2007-01-10	MUNTVG	REPARAR EQUIPO IBM	\N	Asociacion Iglues		\N	t	63	6	1	6	6.48	5.59	0.89
 331	30	2007-01-25	BHZGVX	TONER HL-2070N/REVISION EQUIPOS	\N	Asociacion Iglues		\N	t	26	6	1	6	70.17	60.49	9.68
 336	35	2007-01-19	ECTQAX	ORIGINALDELI	\N	Asociacion Iglues		\N	f	114	1	1	1	58.00	50.00	8.00
-342	41	2007-02-01	ELDBXH	lasgalletasdetusviajes	\N	Asociacion Iglues		\N	t	16	1	1	1	34.80	30.00	4.80
+342	41	2007-02-01	ELDBXH	lasgalletrsetusviajes	\N	Asociacion Iglues		\N	t	16	1	1	1	34.80	30.00	4.80
 340	39	2007-01-31	WKQREA	FUENTE ALIMENTACION	\N	Asociacion Iglues		\N	t	91	1	1	6	37.53	32.35	5.18
 470	314173	2007-05-23	QXGFHF	REVISAR EQUIPO-A.CAMBA	\N	Asociacion Iglues		\N	t	40	\N	1	6	92.10	79.40	12.70
 469	162	2007-05-22	JZEJVN	MANTEMINIENTO - ENTREGA TONER	\N	Asociacion Iglues		\N	t	26	6	1	6	165.36	142.55	22.81
@@ -14397,8 +14397,8 @@ COPY presupuesto (idpresupuesto, numpresupuesto, refpresupuesto, fpresupuesto, d
 288	53	OBHTNZ	2007-07-12	\N	Asociacion Iglues		\N	Presupuesto de demostracion	\N	f	137	1	1	\N	56.38	48.60	7.78
 278	44	FBMTJK	2007-05-09	HOSTING solitario	Asociacion Iglues		2007-05-09	Presupuesto de demostracion	\N	f	103	1	2	6	1014.77	874.80	139.97
 223	2	VBDXNN	2007-01-10	IMPRESORA	Asociacion Iglues		2007-01-17	Presupuesto de demostracion	\N	t	23	1	1	2	2184.57	1883.25	301.32
-289	54	QEEHKU	2007-08-29	asdf asdf asdf	Asociacion Iglues		2007-08-29	Presupuesto de demostracion	\N	f	103	1	2	8	563.76	486.00	77.76
-290	55	IPEJPL	2007-09-15	asdfas	Asociacion Iglues		2007-09-20	Presupuesto de demostracion	\N	t	137	1	2	6	304.63	262.61	42.02
+289	54	QEEHKU	2007-08-29	rsf rsf rsf	Asociacion Iglues		2007-08-29	Presupuesto de demostracion	\N	f	103	1	2	8	563.76	486.00	77.76
+290	55	IPEJPL	2007-09-15	rsfas	Asociacion Iglues		2007-09-20	Presupuesto de demostracion	\N	t	137	1	2	6	304.63	262.61	42.02
 222	1	TVUVLN	2007-01-09	CONTAPLUS	Asociacion Iglues		2007-01-16	Presupuesto de demostracion	\N	t	8	1	1	2	380.52	328.03	52.49
 \.
 
@@ -14449,7 +14449,7 @@ COPY provincia (idprovincia, idpais, provincia) FROM stdin;
 1	1	Baleares
 8	1	Murcia
 4	3	Lisboa
-9	3	Gabón asd
+9	3	Gabón rs
 10	3	Bagul
 7	4	Miprov
 \.

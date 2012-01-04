@@ -87,7 +87,7 @@ public:
     int numdigitosempresa();
     QString nomuserempresa();
     QString nombreempresa();
-    int muestracuentas();
+//    int muestracuentas();
 //    int nuevacuenta();
     int propiedadempresa();
 //    int listado347();
@@ -99,8 +99,8 @@ public:
     int fPago();
     void maximiza();
     int mpatrimoniales();
-    int compbalance();
-    int amortizaciones();
+    //int compbalance();
+    //int amortizaciones();
     void reemplazacuentaenasientos();
     int cambioejercicio();
     void centrocostedefecto();
