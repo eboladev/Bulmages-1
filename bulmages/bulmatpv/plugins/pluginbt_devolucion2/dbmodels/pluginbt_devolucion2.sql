@@ -101,12 +101,12 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
 $BODY$
 DECLARE
-	asf RECORD;
+	rs RECORD;
 	txt TEXT;
 BEGIN
-	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
-	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
-	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINDEVOLUCION2\n 	SELECT INTO asd idvale FROM vale WHERE refvale = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINDEVOLUCION2\n-- PLUGINS\n');
+	SELECT INTO rs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || rs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINDEVOLUCION2\n 	SELECT INTO rs idvale FROM vale WHERE refvale = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINDEVOLUCION2\n-- PLUGINS\n');
 	RAISE NOTICE '%', txt;
 	EXECUTE txt;
 	RETURN 0;
@@ -127,19 +127,22 @@ CREATE OR REPLACE FUNCTION restriccionesvale()
 RETURNS "trigger" AS
 $BODY$
 DECLARE
-asd RECORD;
+	rs2 RECORD;
 
 BEGIN
-IF NEW.fechavale IS NULL THEN
-	NEW.fechavale := now();
-END IF;
-IF NEW.refavale IS NULL OR NEW.refvale = '' THEN
-	SELECT INTO asd crearef() AS m;
-	IF FOUND THEN
-	NEW.refvale := asd.m;
+	IF NEW.fechavale IS NULL THEN
+		NEW.fechavale := now();
 	END IF;
-END IF;
-RETURN NEW;
+
+	IF NEW.refavale IS NULL OR NEW.refvale = '' THEN
+		SELECT INTO rs crearef() AS m;
+
+		IF FOUND THEN
+			NEW.refvale := rs.m;
+		END IF;
+	END IF;
+
+	RETURN NEW;
 END;$BODY$
 LANGUAGE 'plpgsql' VOLATILE;
 

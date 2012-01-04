@@ -1544,7 +1544,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
     indent += "..";
     if ( qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS ) {
         tagpadre = "ASIENTO";
-        QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
+        QString query = "INSERT INTO asiento (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
         dbConnection->begin();
         dbConnection->runQuery ( query );
         BlDbRecordSet *cur = dbConnection->loadQuery ( "SELECT MAX(idasiento) AS max FROM asiento", "otroquery" );

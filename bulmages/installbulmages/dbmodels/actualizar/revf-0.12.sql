@@ -252,21 +252,24 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechapedidoproveedor IS NULL THEN
 	NEW.fechapedidoproveedor := now();
     END IF;
+
     IF NEW.numpedidoproveedor IS NULL THEN
 	NEW.numpedidoproveedor := NEW.idpedidoproveedor;
     END IF;
+
     IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
 	    NEW.refpedidoproveedor := asd.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -276,21 +279,24 @@ END;
 CREATE OR REPLACE FUNCTION restriccionesalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechaalbaranp IS NULL THEN
 	NEW.fechaalbaranp := now();
     END IF;
+
     IF NEW.numalbaranp IS NULL THEN
 	NEW.numalbaranp := NEW.idalbaranp;
     END IF;
+
     IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refalbaranp := asd.m;
+	    NEW.refalbaranp := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;

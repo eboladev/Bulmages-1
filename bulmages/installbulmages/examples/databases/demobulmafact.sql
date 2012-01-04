@@ -1172,16 +1172,16 @@ ALTER FUNCTION public.calctotalpres(integer) OWNER TO postgres;
 CREATE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
     AS $$
 DECLARE
-	as RECORD;
+	rs RECORD;
 	codigocompleto character varying(100);
 	codnumeric integer;
 BEGIN
 	-- Lo primero comprobamos el el código del articulo no esté vacio y de ser así lo llenamos.
 	IF NEW.codarticulo = '' THEN
-		SELECT INTO as max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+		SELECT INTO rs MAX(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 		IF FOUND THEN
-			IF is_number(as.m) THEN
-				codnumeric := to_number(as.m);
+			IF is_number(rs.m) THEN
+				codnumeric := to_number(rs.m);
 				codnumeric := codnumeric +1;
 				NEW.codarticulo := CAST (codnumeric AS varchar);
 				WHILE length(NEW.codarticulo) < 4 LOOP
@@ -1196,11 +1196,12 @@ BEGIN
 	END IF;
 
 	codigocompleto := NEW.codarticulo;
-	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+	SELECT INTO rs codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
 	IF FOUND THEN
-		codigocompleto := as.codigocompletofamilia || codigocompleto;
+		codigocompleto := rs.codigocompletofamilia || codigocompleto;
 	END IF;
         NEW.codigocompletoarticulo := codigocompleto;
+
 	RETURN NEW;
 END;
 $$
@@ -1216,15 +1217,16 @@ ALTER FUNCTION public.calculacodigocompletoarticulo() OWNER TO postgres;
 CREATE FUNCTION calculacodigocompletofamilia() RETURNS "trigger"
     AS $$
 DECLARE
-	as RECORD;
+	rs RECORD;
 	codigocompleto character varying(50);
 BEGIN
 	codigocompleto := NEW.codigofamilia;
-	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
+	SELECT INTO rs codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
 	IF FOUND THEN
-		codigocompleto := as.codigocompletofamilia || codigocompleto;
+		codigocompleto := rs.codigocompletofamilia || codigocompleto;
 	END IF;
         NEW.codigocompletofamilia := codigocompleto;
+
 	RETURN NEW;
 END;
 $$
@@ -1826,9 +1828,9 @@ CREATE FUNCTION ivaarticulo(integer) RETURNS numeric
     AS $_$
 DECLARE
 	idarticulo ALIAS FOR $1;
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO AS * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+	SELECT INTO rs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
 	IF FOUND THEN
 		RETURN as.porcentasa_iva;
 	END IF;
@@ -1848,12 +1850,12 @@ CREATE FUNCTION modificadostock() RETURNS "trigger"
     AS $$
 DECLARE 
 	cant numeric;
-	as RECORD;
+	rs RECORD;
 BEGIN
 	IF NEW.stockarticulo <> OLD.stockarticulo THEN
 		cant := NEW.stockarticulo - OLD.stockarticulo;
-		FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-			UPDATE articulo SET stockarticulo = stockarticulo + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente;
+		FOR rs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+			UPDATE articulo SET stockarticulo = stockarticulo + cant * rs.cantcomparticulo WHERE idarticulo = rs.idcomponente;
 		END LOOP;
 	END IF;
 	RETURN NEW;
@@ -1871,14 +1873,15 @@ ALTER FUNCTION public.modificadostock() OWNER TO postgres;
 CREATE FUNCTION ncuadrante() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
+
 BEGIN
     IF NEW.aperturacuadrante IS NULL THEN
-	SELECT INTO as * FROM almacen WHERE idalmacen = NEW.idalmacen;
-	NEW.aperturacuadrante = as.aperturaalmacen;
-	NEW.cierrecuadrante = as.cierrealmacen;
-	NEW.apertura1cuadrante = as.apertura1almacen;
-	NEW.cierre1cuadrante = as.cierre1almacen;
+	SELECT INTO rs * FROM almacen WHERE idalmacen = NEW.idalmacen;
+	NEW.aperturacuadrante = rs.aperturaalmacen;
+	NEW.cierrecuadrante = rs.cierrealmacen;
+	NEW.apertura1cuadrante = rs.apertura1almacen;
+	NEW.cierre1cuadrante = rs.cierre1almacen;
     END IF;
     RETURN NEW;
 END;
@@ -1925,11 +1928,11 @@ CREATE FUNCTION pvparticulo(integer) RETURNS numeric
     AS $_$
 DECLARE
 	idarticulo ALIAS FOR $1;
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+	SELECT INTO rs pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
 	IF FOUND THEN
-		RETURN as.pvparticulo;
+		RETURN rs.pvparticulo;
 	END IF;
 	RETURN 0.0;
 END;
@@ -1949,17 +1952,17 @@ DECLARE
 	idarticulo ALIAS FOR $1;
 	idclient ALIAS FOR $2;
 	idalmacen ALIAS FOR $3;
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO AS pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente=idclient);
+	SELECT INTO rs pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente=idclient);
 	IF FOUND THEN
-		RETURN as.pvpltarifa;
+		RETURN rs.pvpltarifa;
 	END IF;
 
 
-	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+	SELECT INTO rs pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
 	IF FOUND THEN
-		RETURN as.pvparticulo;
+		RETURN rs.pvparticulo;
 	END IF;
 	RETURN 0.0;
 END;
@@ -2387,13 +2390,13 @@ ALTER FUNCTION public.s_aumentastockp() OWNER TO postgres;
 CREATE FUNCTION s_cambiaalbaran() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR as IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
-    	    UPDATE stock_almacen SET stock = stock + as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock - as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
+	FOR rs IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
+    	    UPDATE stock_almacen SET stock = stock + rs.cantlalbaran WHERE idarticulo = rs.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock - rs.cantlalbaran WHERE idarticulo = rs.idarticulo AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -2411,13 +2414,13 @@ ALTER FUNCTION public.s_cambiaalbaran() OWNER TO postgres;
 CREATE FUNCTION s_cambiaalbaranp() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR as IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
-	    UPDATE stock_almacen SET stock = stock - as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock + as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
+	FOR rs IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
+	    UPDATE stock_almacen SET stock = stock - rs.cantlalbaranp WHERE idarticulo = rs.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock + rs.cantlalbaranp WHERE idarticulo = rs.idarticulo AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -2574,12 +2577,13 @@ CREATE FUNCTION s_modificadostockalmacen() RETURNS "trigger"
     AS $$
 DECLARE 
     cant numeric;
-    as RECORD;
+    rs RECORD;
+
 BEGIN
     IF NEW.stock <> OLD.stock THEN
 	cant := NEW.stock - OLD.stock;
-	FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-	    UPDATE stock_almacen SET stock = stock + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente AND idalmacen = NEW.idalmacen;
+	FOR rs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+	    UPDATE stock_almacen SET stock = stock + cant * rs.cantcomparticulo WHERE idarticulo = rs.idcomponente AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -2597,10 +2601,11 @@ ALTER FUNCTION public.s_modificadostockalmacen() OWNER TO postgres;
 CREATE FUNCTION s_nalmacen() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
+
 BEGIN
-    FOR as IN SELECT * FROM articulo LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (as.idarticulo, NEW.idalmacen, 0);
+    FOR rs IN SELECT * FROM articulo LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (rs.idarticulo, NEW.idalmacen, 0);
     END LOOP;
     RETURN NEW;
 END;
@@ -2617,10 +2622,11 @@ ALTER FUNCTION public.s_nalmacen() OWNER TO postgres;
 CREATE FUNCTION s_narticulo() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
+
 BEGIN
-    FOR as IN SELECT * FROM almacen LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, as.idalmacen, 0);
+    FOR rs IN SELECT * FROM almacen LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, rs.idalmacen, 0);
     END LOOP;
     RETURN NEW;
 END;
@@ -3668,10 +3674,10 @@ ALTER FUNCTION public.trazabilidadalbarand() OWNER TO postgres;
 CREATE FUNCTION trazabilidadalbarani() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
 BEGIN
-    SELECT INTO as idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
-    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaran, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, -NEW.cantlalbaran, NEW.numlalbaran, NOW(), NEW.lotelalbaran, as.idalmacen);
+    SELECT INTO rs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
+    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaran, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, -NEW.cantlalbaran, NEW.numlalbaran, NOW(), NEW.lotelalbaran, rs.idalmacen);
     RETURN NEW;
 END;
 $$
@@ -3704,10 +3710,10 @@ ALTER FUNCTION public.trazabilidadalbaranpd() OWNER TO postgres;
 CREATE FUNCTION trazabilidadalbaranpi() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
 BEGIN
-    SELECT INTO as idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
-    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaranp, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, NEW.cantlalbaranp, NEW.numlalbaranp, NOW(), NEW.lotelalbaranp, as.idalmacen);
+    SELECT INTO rs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
+    INSERT INTO movimiento (idarticulo, cantidadmovimiento, idlalbaranp, fechamovimiento, lotemovimiento, idalmacen) VALUES (NEW.idarticulo, NEW.cantlalbaranp, NEW.numlalbaranp, NOW(), NEW.lotelalbaranp, rs.idalmacen);
     RETURN NEW;
 END;
 $$
@@ -3723,10 +3729,10 @@ ALTER FUNCTION public.trazabilidadalbaranpi() OWNER TO postgres;
 CREATE FUNCTION trazabilidadalbaranpu() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
 BEGIN
-    SELECT INTO as idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
-    UPDATE movimiento SET cantidadmovimiento = NEW.cantlalbaranp, idalmacen = as.idalmacen WHERE idlalbaranp = NEW.numlalbaranp;
+    SELECT INTO rs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
+    UPDATE movimiento SET cantidadmovimiento = NEW.cantlalbaranp, idalmacen = rs.idalmacen WHERE idlalbaranp = NEW.numlalbaranp;
     RETURN NEW;
 END;
 $$
@@ -3742,10 +3748,10 @@ ALTER FUNCTION public.trazabilidadalbaranpu() OWNER TO postgres;
 CREATE FUNCTION trazabilidadalbaranu() RETURNS "trigger"
     AS $$
 DECLARE
-    as RECORD;
+    rs RECORD;
 BEGIN
-    SELECT INTO as idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
-    UPDATE movimiento SET cantidadmovimiento = -NEW.cantlalbaran, idalmacen = as.idalmacen WHERE idlalbaran = NEW.numlalbaran;
+    SELECT INTO rs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
+    UPDATE movimiento SET cantidadmovimiento = -NEW.cantlalbaran, idalmacen = rs.idalmacen WHERE idlalbaran = NEW.numlalbaran;
     RETURN NEW;
 END;
 $$
