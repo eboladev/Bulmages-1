@@ -33,13 +33,14 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
 {
     BL_FUNC_DEBUG
 
-    setTitleName ( _ ( "Forma de Pago" ) );
+    setTitleName ( _ ( "Forma de pago" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "fpago" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_curfpago = NULL;
+    m_posactual = mui_comboFPago->currentIndex();
 
     dialogChanges_setExcludedObject ( mui_comboFPago );
 
@@ -58,12 +59,11 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
 BcFormaPagoView::~BcFormaPagoView()
 {
     BL_FUNC_DEBUG
-    on_mui_guardar_clicked();
+
     if ( m_curfpago != NULL ) {
         delete m_curfpago;
     } /// end if
     removeWindow();
-    
 }
 
 
@@ -75,7 +75,6 @@ void BcFormaPagoView::on_mui_comboFPago_currentIndexChanged ( int i )
 {
     BL_FUNC_DEBUG
     cambiacombo ( i );
-    
 }
 
 
@@ -88,7 +87,7 @@ void BcFormaPagoView::pintar ( QString idfpago )
 {
     BL_FUNC_DEBUG
     int posicion = 0;
-    /// Vamos a inicializar el combo de los tipos de IVA.
+    /// Vamos a inicializar el combo de las formas de pago.
     if ( m_curfpago != NULL )
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
@@ -117,6 +116,8 @@ void BcFormaPagoView::pintar ( QString idfpago )
         mui_tipoPlazoPrimerPago->setText ( "" );
         mui_plazoEntreRecibos->setText ( "" );
         mui_tipoPlazoEntreRecibos->setText ( "" );
+        dialogChanges_readValues();
+        
     } else {
         mui_nombreFPago->setEnabled ( TRUE );
         mui_plazoPrimerPago->setEnabled ( TRUE );
@@ -125,6 +126,7 @@ void BcFormaPagoView::pintar ( QString idfpago )
         mui_plazoEntreRecibos->setEnabled ( TRUE );
         mui_tipoPlazoEntreRecibos->setEnabled ( TRUE );
 
+        dialogChanges_readValues();
         mostrarplantilla ( posicion );
     } // end if
     
@@ -142,12 +144,21 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
     BL_FUNC_DEBUG
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_isChanged() ) {
-        if ( QMessageBox::warning ( this,
+        switch ( QMessageBox::warning ( this,
                                     _ ( "Guardar forma de pago" ),
                                     _ ( "Desea guardar los cambios?" ),
-                                    QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
-            on_mui_guardar_clicked();
+                                    QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel, QMessageBox::Save ) ) {
+            case QMessageBox::Save:
+                on_mui_guardar_clicked();
+        	break;
+            case QMessageBox::Discard:
+        	break;
+            case QMessageBox::Cancel:
+            default:
+        	return;
+        } // end switch
     } // end if
+    
     if ( mui_comboFPago->count() > 0 ) {
         if ( pos != 0 ) {
             mui_comboFPago->setCurrentIndex ( pos );
@@ -185,12 +196,18 @@ void BcFormaPagoView::cambiacombo ( int )
 int BcFormaPagoView::save()
 {
     BL_FUNC_DEBUG
-    QString idfpago = m_curfpago->value( "idfpago", m_posactual );
-    QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->value( "idfpago", m_posactual );
-    mainCompany() ->runQuery ( query );
-    dialogChanges_readValues();
-    pintar ( m_curfpago->value( "idfpago", m_posactual ) );
     
+    /// Si no se ha seleccionado ningun elemento del combobox no se hace nada.
+    if (m_posactual != -1) {
+
+        QString idfpago = m_curfpago->value( "idfpago", m_posactual );
+        QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->value( "idfpago", m_posactual );
+        mainCompany() ->runQuery ( query );
+        dialogChanges_readValues();
+        pintar ( m_curfpago->value( "idfpago", m_posactual ) );
+
+    } // end if
+
     return 0;
 }
 
@@ -235,7 +252,7 @@ void BcFormaPagoView::on_mui_borrar_clicked()
 {
     BL_FUNC_DEBUG
     if ( mui_comboFPago->currentIndex() == -1 ) {
-        blMsgInfo ( _ ( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
+        blMsgInfo ( _ ( "Tiene que seleccionar una forma de pago antes de borrarla." ) );
         return;
     } else {
         switch ( QMessageBox::warning ( this,

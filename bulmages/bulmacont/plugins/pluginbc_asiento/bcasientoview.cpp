@@ -194,8 +194,8 @@ void BcAsientoView::on_mui_nuevoasiento_clicked()
     
     if ( dialogChanges_isChanged() ) {
         switch ( QMessageBox::warning ( this, "BulmaCont",
-                                        "Asiento cambiado.\n"
-                                        "Desea guardar los cambios \n\n ",
+                                        _("Asiento cambiado.\n")
+                                        _("Desea guardar los cambios \n\n "),
                                         QMessageBox::Save | QMessageBox::Discard
                                         | QMessageBox::Cancel,
                                         QMessageBox::Save ) ) {
