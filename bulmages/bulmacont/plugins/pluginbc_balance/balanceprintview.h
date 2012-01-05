@@ -24,7 +24,7 @@
 #ifndef BALANCEPRINTVIEW_H
 #define BALANCEPRINTVIEW_H
 
-#include <errno.h>
+#include <QDialog>
 
 #include "ui_balanceprintbase.h"
 #include "blpostgresqlclient.h"
@@ -53,7 +53,8 @@ private:
 private slots:
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_canales_clicked();
-    virtual void on_mui_ccostes_clicked();
+    virtual void on_mui_centroCostes_clicked();
+    void on_mui_cerrar_clicked();
 };
 
 #endif

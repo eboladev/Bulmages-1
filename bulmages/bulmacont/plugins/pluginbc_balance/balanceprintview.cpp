@@ -3,6 +3,9 @@
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2003 by Antoni Mirabete i Teres                         *
  *   amirabet@biada.org                                                    *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -52,21 +55,21 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    m_codigoinicial->setMainCompany ( emp );
-    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
-    m_codigoinicial->setTableName ( "cuenta" );
-    m_codigoinicial->setFieldId("idcuenta");
-    m_codigoinicial->m_valores["descripcion"] = "";
-    m_codigoinicial->m_valores["codigo"] = "";
-    m_codigoinicial->hideLabel();
+    mui_cuentaInicial->setMainCompany ( emp );
+    mui_cuentaInicial->setLabel ( _ ( "Cuenta inicial:" ) );
+    mui_cuentaInicial->setTableName ( "cuenta" );
+    mui_cuentaInicial->setFieldId("idcuenta");
+    mui_cuentaInicial->m_valores["descripcion"] = "";
+    mui_cuentaInicial->m_valores["codigo"] = "";
+    mui_cuentaInicial->hideLabel();
 
-    m_codigofinal->setMainCompany ( emp );
-    m_codigofinal->setLabel ( _ ( "Cuenta final:" ) );
-    m_codigofinal->setTableName ( "cuenta" );
-    m_codigofinal->setFieldId("idcuenta");
-    m_codigofinal->m_valores["descripcion"] = "";
-    m_codigofinal->m_valores["codigo"] = "";
-    m_codigofinal->hideLabel();
+    mui_cuentaFinal->setMainCompany ( emp );
+    mui_cuentaFinal->setLabel ( _ ( "Cuenta final:" ) );
+    mui_cuentaFinal->setTableName ( "cuenta" );
+    mui_cuentaFinal->setFieldId("idcuenta");
+    mui_cuentaFinal->m_valores["descripcion"] = "";
+    mui_cuentaFinal->m_valores["codigo"] = "";
+    mui_cuentaFinal->hideLabel();
 
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
@@ -76,7 +79,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     int i = 0;
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
-        combonivel->insertItem ( i, niveles->value( "nivel" ) );
+        mui_nivel->insertItem ( i, niveles->value( "nivel" ) );
         niveles->nextRecord();
         i++;
     } // end while
@@ -92,27 +95,25 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
 BalancePrintView::~BalancePrintView()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
 /// Inicializa la clase para que tenga par&aacute;metros por defecto (no es obligatorio).
-/** codinicial = Indica el c&oacute;digo inicial para mostrar el balance.
-    cofinal = Indica el c&oacute;digo de cuenta para no mostrar m&aacute;s balances.
-    finicial = Indica la fecha a partir de la cual comenzar los saldos.
-    ffinal = Indica la fecha para terminar de contar los saldos.
+/** cuentaInicial = Indica el c&oacute;digo inicial para mostrar el balance.
+    cuentaFinal = Indica el c&oacute;digo de cuenta para no mostrar m&aacute;s balances.
+    fechaInicial = Indica la fecha a partir de la cual comenzar los saldos.
+    fechaFinal = Indica la fecha para terminar de contar los saldos.
     arbol = Indica si hay que representar el balance en forma de arbol o no. */
 /**
 **/
-void BalancePrintView::inicializa ( QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol )
+void BalancePrintView::inicializa ( QString cuentaInicial, QString cuentaFinal, QString fechaInicial, QString fechaFinal, bool arbol )
 {
     BL_FUNC_DEBUG
-    m_fechainicial1->setText ( finicial1 );
-    m_fechafinal1->setText ( ffinal1 );
-    m_codigoinicial->setText ( codinicial1 );
-    m_codigofinal->setText ( codfinal1 );
-    checksuperiores->setChecked ( arbol );
-    
+    mui_fechaInicial->setText ( fechaInicial );
+    mui_fechaFinal->setText ( fechaFinal );
+    mui_cuentaInicial->setText ( cuentaInicial );
+    mui_cuentaFinal->setText ( cuentaFinal );
+    mui_nivelSuperior->setChecked ( arbol );
 }
 
 
@@ -122,11 +123,10 @@ void BalancePrintView::inicializa ( QString codinicial1, QString codfinal1, QStr
 void BalancePrintView::on_mui_imprimir_clicked()
 {
     BL_FUNC_DEBUG
-    if ( radiotexto->isChecked() )
+    if ( mui_textoPlano->isChecked() )
         presentar ( "txt" );
-    if ( radiohtml->isChecked() )
+    if ( mui_html->isChecked() )
         presentar ( "html" );
-   
 }
 
 
@@ -149,12 +149,12 @@ void BalancePrintView::presentar ( const char* tipus )
     htmlapren = !strcmp ( tipus, "htmlapren" );
 
     /// Cogemos los valores del formulario.
-    QString finicial = m_fechainicial1->text();
-    QString ffinal = m_fechafinal1->text();
-    QString cinicial = m_codigoinicial->fieldValue("codigo");
-    QString cfinal = m_codigofinal->fieldValue("codigo");
-    int nivel = combonivel->currentText().toInt();
-    bool superiores = checksuperiores->isChecked();
+    QString finicial = mui_fechaInicial->text();
+    QString ffinal = mui_fechaFinal->text();
+    QString cinicial = mui_cuentaInicial->fieldValue("codigo");
+    QString cfinal = mui_cuentaFinal->fieldValue("codigo");
+    int nivel = mui_nivel->currentText().toInt();
+    bool superiores = mui_nivelSuperior->isChecked();
 
     if ( txt | html ) {
         QString archivo = g_confpr->value( CONF_DIR_USER ) + "balance.txt";
@@ -198,10 +198,10 @@ void BalancePrintView::presentar ( const char* tipus )
 
             if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt << "                                        Balance \n" ;
-                fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() << "   Fecha Final: " << ffinal.toAscii().constData() << endl;
-                fitxersortidatxt << "Cuenta            Denominacion                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
-                fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
+                fitxersortidatxt << "Balance de sumas y saldos. \n\n" ;
+                fitxersortidatxt << "Fecha inicial: " << finicial.toAscii().constData() << "   Fecha final: " << ffinal.toAscii().constData() << endl << endl;
+                fitxersortidatxt << "Cuenta            Denominacion                        Saldo ant.        Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+                fitxersortidatxt << "_____________________________________________________________________________________________________________________________________________\n";
             } // end if
 
             if ( html ) {
@@ -266,7 +266,7 @@ void BalancePrintView::presentar ( const char* tipus )
                 /// Imprimimos l&iacute;nea seg&uacute;n formato.
                 /// Presentaci&oacute;n en txt normal.
                 if ( txt ) {
-                    fitxersortidatxt << lcuenta.toAscii().constData() <<  ldenominacion.left ( 40 ).toAscii().constData() << " " << lsaldoant.toAscii().constData() << " " <<  ldebe.toAscii().constData() << " " <<  lhaber.toAscii().constData() << " " << lsaldo.toAscii().constData() << " " << ldebeej.toAscii().constData() << " " << lhaberej.toAscii().constData() << " " << lsaldoej.toAscii().constData() << " ";
+                    fitxersortidatxt << lcuenta.leftJustified(17, ' ').toAscii().constData() <<  ldenominacion.leftJustified(26, ' ', true).toAscii().constData() << " " << lsaldoant.rightJustified(19, ' ').toAscii().constData() << " " <<  ldebe.rightJustified(12, ' ').toAscii().constData() << " " <<  lhaber.rightJustified(12, ' ').toAscii().constData() << " " << lsaldo.rightJustified(12, ' ').toAscii().constData() << " " << ldebeej.rightJustified(12, ' ').toAscii().constData() << " " << lhaberej.rightJustified(12, ' ').toAscii().constData() << " " << lsaldoej.rightJustified(12, ' ').toAscii().constData() << endl;
                 } // end if
 
                 /// Presentaci&oacute;n en html normal.
@@ -289,14 +289,14 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Imprimimos la l&iacute;nea con los resultados totalizados.
             /// Presentaci&oacute;n txt normal.
             if ( txt ) {
-                fitxersortidatxt << "                                            __________________________________________________________________________________________________\n";
-                fitxersortidatxt << "                                            Totales " <<  totalsaldoant.toAscii().constData() << " " << totaldebe.toAscii().constData() << " " <<  totalhaber.toAscii().constData() << " " <<  totalsaldo.toAscii().constData()  << " " << totaldebeej.toAscii().constData() << " " <<  totalhaberej.toAscii().constData() << " " <<  totalsaldoej.toAscii().constData() << endl;
-            }
+                fitxersortidatxt << "_____________________________________________________________________________________________________________________________________________\n";
+                fitxersortidatxt << QString("Totales:").leftJustified(51, ' ').toAscii().constData() << totalsaldoant.rightJustified(12, ' ').toAscii().constData() << " " << totaldebe.rightJustified(12, ' ').toAscii().constData() << " " <<  totalhaber.rightJustified(12, ' ').toAscii().constData() << " " <<  totalsaldo.rightJustified(12, ' ').toAscii().constData()  << " " << totaldebeej.rightJustified(12, ' ').toAscii().constData() << " " <<  totalhaberej.rightJustified(12, ' ').toAscii().constData() << " " <<  totalsaldoej.rightJustified(12, ' ').toAscii().constData() << endl;
+            } // end if
 
             /// Presentaci&oacute;n html normal.
             if ( html ) {
                 fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.toAscii().constData() << "</td><td class=dosdecimals>" << totaldebe.toAscii().constData() << "</td><td class=dosdecimals>" << totalhaber.toAscii().constData() << "</td><td class=dosdecimals>" << totalsaldo.toAscii().constData() << "</td></tr>\n</table>\n</body>\n</html>\n";
-            }
+            } // end if
 
             /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
             delete arbol;
@@ -314,12 +314,12 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Presentaci&oacute;n html normal.
             if ( html ) {
                 blWebBrowser(g_confpr->value( CONF_DIR_USER ) + "balance.html");
-            }
+            } // end if
 
-        }
-    }
+        } // end if
+    } // end if
 #endif
-    
+
 }
 
 
@@ -333,7 +333,6 @@ void BalancePrintView::on_mui_canales_clicked()
     BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
     selcanales->exec();
     selcanales->firstCanal();
-    
 }
 
 
@@ -342,12 +341,17 @@ void BalancePrintView::on_mui_canales_clicked()
 /** Presenta la ventana de selecci&oacute;n de centros de coste \ref BcCentroCosteSeleccionarView. */
 /**
 **/
-void BalancePrintView::on_mui_ccostes_clicked()
+void BalancePrintView::on_mui_centroCostes_clicked()
 {
     BL_FUNC_DEBUG
     BcCentroCosteSeleccionarView *selccostes = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
-    
+}
+
+
+void BalancePrintView::on_mui_cerrar_clicked()
+{
+    close();
 }
 
