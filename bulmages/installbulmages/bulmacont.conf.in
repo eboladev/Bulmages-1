@@ -50,14 +50,12 @@ CONF_DIR_AINTELIGENTES         @CMAKE_INSTALL_PREFIX@/share/bulmages/ainteligent
 
 
 # Este parametro indica los plugins que se deben instalar con el programa.
-CONF_PLUGINS_BULMACONT        libpluginbc_cuentasanuales2ods@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbc_balancearbol@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbc_corrector@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbl_template@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbl_subform2sxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbl_embed@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbl_subform2ods@CMAKE_SHARED_LIBRARY_SUFFIX@
-                              
+CONF_PLUGINS_BULMACONT        libpluginbc_asiento@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbc_cuenta@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbc_diario@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbc_mayor@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbc_balance@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbc_corrector@CMAKE_SHARED_LIBRARY_SUFFIX@
 
 
 CONF_DIR_CANUALES             @CMAKE_INSTALL_PREFIX@/share/bulmages/canuales/
