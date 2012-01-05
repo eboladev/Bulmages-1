@@ -277,7 +277,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="BlDateSearch" name="m_fechainicial1" native="true">
+       <widget class="BlDateSearch" name="mui_fechaInicial" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -293,7 +293,7 @@
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="BlSearchWidget" name="m_codigoinicial" native="true">
+       <widget class="BlSearchWidget" name="mui_cuentaInicial" native="true">
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -317,7 +317,7 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="BlDateSearch" name="m_fechafinal1" native="true">
+       <widget class="BlDateSearch" name="mui_fechaFinal" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -333,7 +333,7 @@
        </widget>
       </item>
       <item row="3" column="1" colspan="2">
-       <widget class="BlSearchWidget" name="m_codigofinal" native="true">
+       <widget class="BlSearchWidget" name="mui_cuentaFinal" native="true">
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -353,7 +353,7 @@
        </widget>
       </item>
       <item row="6" column="0">
-       <widget class="QComboBox" name="combonivel">
+       <widget class="QComboBox" name="mui_nivel">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -363,7 +363,7 @@
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QCheckBox" name="checksuperiores">
+       <widget class="QCheckBox" name="mui_balanceJerarquico">
         <property name="text">
          <string>Balance jerarquico</string>
         </property>
@@ -404,7 +404,7 @@
        <number>3</number>
       </property>
       <item row="0" column="8">
-       <widget class="QLineEdit" name="totalsaldo">
+       <widget class="QLineEdit" name="mui_totalSaldo">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -480,7 +480,7 @@
        </spacer>
       </item>
       <item row="0" column="4">
-       <widget class="QLineEdit" name="totaldebe">
+       <widget class="QLineEdit" name="mui_totalDebe">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -550,7 +550,7 @@
        </widget>
       </item>
       <item row="0" column="6">
-       <widget class="QLineEdit" name="totalhaber">
+       <widget class="QLineEdit" name="mui_totalHaber">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -620,7 +620,7 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QLineEdit" name="totalsaldoant">
+       <widget class="QLineEdit" name="mui_totalSaldoAnterior">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -725,7 +725,7 @@
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_filtrar</tabstop>
   <tabstop>mui_actualizar</tabstop>
-  <tabstop>combonivel</tabstop>
+  <tabstop>mui_nivel</tabstop>
   <tabstop>mui_list</tabstop>
  </tabstops>
  <resources>

@@ -45,7 +45,7 @@ class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public BlMa
 public:
     BalancePrintView ( BcCompany *emp );
     ~BalancePrintView();
-    void inicializa1 ( QString, QString, QString, QString, bool );
+    void inicializa ( QString, QString, QString, QString, bool );
 
 private:
     void presentar ( const char * tipus );

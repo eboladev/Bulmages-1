@@ -34,7 +34,9 @@
 #include "balanceview.h"
 #include "bccompany.h"
 
+
 BcBulmaCont *g_pluginbc_balance = NULL;
+
 
 ///
 /**
@@ -51,15 +53,12 @@ int entryPoint ( BcBulmaCont *bcont )
 
     QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 
-    BlAction *accionA = new BlAction ( _ ( "&Balance jerarquico" ), 0 );
+    BlAction *accionA = new BlAction ( _ ( "&Balance" ), 0 );
     accionA->setStatusTip ( _ ( "Permite realizar balances" ) );
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
-    //connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     accionA->setObjectName("mui_actionBalance");
     pPluginMenu->addAction ( accionA );
 
-
-    
     return 0;
 }
 
@@ -67,10 +66,11 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionBalance") {
-        BalanceView *cuad = new BalanceView ( g_pluginbc_balance->company(), 0 );
-        g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( cuad );
-        cuad->show();
+        BalanceView *balance = new BalanceView ( g_pluginbc_balance->company(), 0 );
+        g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( balance );
+        balance->show();
     } // end if
+
     return 0;
 }
 

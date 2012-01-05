@@ -188,7 +188,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="m_codigoinicial"/>
+           <widget class="BlSearchWidget" name="m_codigoinicial" native="true"/>
           </item>
          </layout>
         </item>
@@ -208,7 +208,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="m_fechainicial1"/>
+           <widget class="BlDateSearch" name="m_fechainicial1" native="true"/>
           </item>
          </layout>
         </item>
@@ -238,7 +238,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="m_codigofinal"/>
+           <widget class="BlSearchWidget" name="m_codigofinal" native="true"/>
           </item>
          </layout>
         </item>
@@ -258,7 +258,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="m_fechafinal1"/>
+           <widget class="BlDateSearch" name="m_fechafinal1" native="true"/>
           </item>
          </layout>
         </item>
@@ -352,23 +352,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radiopropietario">
-          <property name="text">
-           <string>Propietario</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QRadioButton" name="radiohtml">
           <property name="text">
            <string>HT&amp;ML</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radiokugar">
-          <property name="text">
-           <string>&amp;Kugar</string>
           </property>
          </widget>
         </item>

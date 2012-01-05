@@ -22,7 +22,7 @@
 #ifndef BALANCEVIEW_H
 #define BALANCEVIEW_H
 
-#include "qlayout.h"
+#include <QLayout>
 
 #include "ui_balancebase.h"
 #include "blpostgresqlclient.h"
@@ -34,26 +34,16 @@
 class BcCompany;
 
 
-/// Balance de Sumas y Saldos plano.
+/// Balance. Muestra un balance de sumas y saldos.
 /**
-    Esta clase muestra un balance de sumas y saldos de la empresa abierta.
-    Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
-    ventana dise&ntilde;ada espec&iacute;ficamente para ello.
 */
 class BalanceView : public BcForm, public Ui_BalanceBase
 {
     Q_OBJECT
 
-private:
-    /// Cursor para recorrer las cuentas.
-    BlDbRecordSet *m_cursorcta;
-    /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.
-    int numDigitos;
-    /// Array que almacena los identificadores de los centros de coste.
-
 public:
     BalanceView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
-    void inicializa1 ( QString, QString, QString, QString, QString );
+    void inicializa ( QString, QString, QString, QString, QString );
     ~BalanceView();
     void imprimir();
     virtual void accept();
