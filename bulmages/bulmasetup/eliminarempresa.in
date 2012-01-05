@@ -33,14 +33,15 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
                 self.conectar(row[0])
                 existconf = self.executeone('SELECT * FROM pg_tables where tablename =\'configuracion\'')
                 if (existconf != None):
-                    tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
-                    nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
-                    self.lista_empresas.setRowCount(self.lista_empresas.rowCount() + 1)
-                    self.lista_empresas.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0]).decode('string-escape').decode("utf-8")))
-                    self.lista_empresas.setItem(self.i, 1 , QTableWidgetItem(row[0]))
-                    self.lista_empresas.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
-                    self.lista_empresas.showRow(self.i)
-                    self.i = self.i + 1
+                    self.tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
+                    self.nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
+		    if self.nombre != None:
+			self.lista_empresas.setRowCount(self.lista_empresas.rowCount() + 1)
+			self.lista_empresas.setItem(self.i, 0 , QTableWidgetItem(str(self.nombre[0]).decode('string-escape').decode("utf-8")))
+			self.lista_empresas.setItem(self.i, 1 , QTableWidgetItem(row[0]))
+			self.lista_empresas.setItem(self.i, 2 , QTableWidgetItem(str(self.tipo[0])))
+			self.lista_empresas.showRow(self.i)
+			self.i = self.i + 1
                 self.desconectar()
 
     def on_eliminar_released(self):
