@@ -87,8 +87,7 @@ BcCompany::~BcCompany()
     BL_FUNC_DEBUG
     guardaConf();
     /// Borramos todas las ventanas.
-    m_listventanas->vaciarCompleto();
-    
+    m_windowListDock->vaciarCompleto();
 }
 
 
@@ -565,8 +564,8 @@ void BcCompany::guardaConf()
         stream << "\t</PRINCIPAL>\n";
 
 
-        for ( int i = 0; i < m_listventanas->numVentanas(); i++ ) {
-            QObject *obj = m_listventanas->ventana ( i );
+        for ( int i = 0; i < m_windowListDock->numVentanas(); i++ ) {
+            QObject *obj = m_windowListDock->ventana ( i );
             QWidget *wid = ( QWidget * ) obj;
             stream << "\t<VENTANA>\n";
             stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
@@ -650,8 +649,8 @@ void BcCompany::cargaConf()
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
             QString vname = e1.firstChildElement ( "VNAME" ).toElement().text();
-            for ( int j = 0; j < m_listventanas->numVentanas(); j++ ) {
-                QObject *obj = m_listventanas->ventana ( j );
+            for ( int j = 0; j < m_windowListDock->numVentanas(); j++ ) {
+                QObject *obj = m_windowListDock->ventana ( j );
                 QWidget *wid = ( QWidget * ) obj;
                 if ( obj->objectName() == vname ) {
                     QString vx = e1.firstChildElement ( "VX" ).toElement().text();

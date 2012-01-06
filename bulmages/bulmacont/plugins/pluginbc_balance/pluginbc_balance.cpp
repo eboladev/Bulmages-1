@@ -66,9 +66,14 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionBalance") {
-        BalanceView *balance = new BalanceView ( g_pluginbc_balance->company(), 0 );
-        g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( balance );
-        balance->show();
+
+	if (!g_pluginbc_balance->company()->showWindow("BalanceView")) {
+	    BalanceView *balance = new BalanceView ( g_pluginbc_balance->company(), 0 );
+	    balance->setObjectName("BalanceView");
+	    g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( balance );
+	    balance->show();
+	} // end if
+
     } // end if
 
     return 0;

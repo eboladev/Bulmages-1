@@ -45,6 +45,7 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
     BL_FUNC_DEBUG
     setupUi ( this );
 
+    setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Cuenta" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos
     setDbTableName ( "cuenta" );
@@ -107,10 +108,10 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
 BcPlanContableListView::~BcPlanContableListView()
 {
     BL_FUNC_DEBUG
+    
     if ( m_modo == BL_EDIT_MODE ) {
         mainCompany() ->removeWindow ( this );
-    }// end if
-    
+    } // end if
 }
 
 

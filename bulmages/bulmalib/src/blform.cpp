@@ -518,6 +518,7 @@ void BlForm::closeEvent ( QCloseEvent *e )
         /// \TODO Este removeWindow encubre un bug. Debe tratarse de otra forma el
         /// sacar las ventanas de listventanas.
 //        removeWindow();
+        e->accept();
     } catch ( ... ) {
         blMsgInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();

@@ -35,7 +35,6 @@
 #include "bcplancontablelistview.h"
 #include "bccuentaview.h"
 
-BcPlanContableListView *g_plancontable;
 BcBulmaCont *g_pluginbc_cuenta = NULL;
 
 ///
@@ -50,7 +49,6 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_pluginbc_cuenta = bcont;
-    g_plancontable = NULL;
 
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
@@ -58,11 +56,11 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Cuentas Contables" ), bcont->menuBar() );
+        pPluginMenu = new QMenu ( _ ( "&Cuentas" ), bcont->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCuentas" ) );
     } // end if
 
-    BlAction *accionA = new BlAction ( _ ( "&Plan Contable" ), 0 );
+    BlAction *accionA = new BlAction ( _ ( "&Plan contable" ), 0 );
     accionA->setStatusTip ( _ ( "Permite ver y modificar el plan contable" ) );
     accionA->setWhatsThis ( _ ( "Permite ver y modificar el plan contable" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
@@ -78,15 +76,20 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 int BlAction_actionTriggered(BlAction *accion) {
+    BL_FUNC_DEBUG
+
     if (accion->objectName() == "mui_actionPlanContable") {
-        if (g_plancontable == NULL) {
-            g_plancontable = new BcPlanContableListView ( g_pluginbc_cuenta->company(), 0 );
-            g_plancontable->inicializa();
-            g_pluginbc_cuenta->company()->pWorkspace() ->addSubWindow ( g_plancontable );
-        } // end if
-        g_plancontable->hide();
-        g_plancontable->show();
+
+	if (!g_pluginbc_cuenta->company()->showWindow("BcPlanContableListView")) {
+	    BcPlanContableListView *plan = new BcPlanContableListView( g_pluginbc_cuenta->company(), 0 );
+	    plan->setObjectName("BcPlanContableListView");
+	    plan->inicializa();
+	    g_pluginbc_cuenta->company()->pWorkspace() ->addSubWindow ( plan );
+	    plan->show();
+	} // end if
+
     } // end if
+
     return 0;
 }
 

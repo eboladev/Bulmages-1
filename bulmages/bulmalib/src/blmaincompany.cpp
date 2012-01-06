@@ -32,7 +32,7 @@
 void BlMainCompany::setListVentanas ( BlWindowListDock *doc )
 {
     BL_FUNC_DEBUG
-    m_listventanas = doc;
+    m_windowListDock = doc;
     
 }
 
@@ -57,7 +57,7 @@ BlWindowListDock *BlMainCompany::listVentanas()
 {
     BL_FUNC_DEBUG
     
-    return m_listventanas;
+    return m_windowListDock;
 }
 
 
@@ -84,7 +84,6 @@ void BlMainCompany::setProgressBar ( QProgressBar *pb )
 {
     BL_FUNC_DEBUG
     m_progressbar = pb;
-    
 }
 
 
@@ -98,8 +97,7 @@ void BlMainCompany::setProgressBar ( QProgressBar *pb )
 int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
 {
     BL_FUNC_DEBUG
-    
-    return m_listventanas->insertWindow ( nom, obj, compdup, titulo );
+    return m_windowListDock->insertWindow ( nom, obj, compdup, titulo );
 }
 
 
@@ -117,7 +115,7 @@ int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QStri
 {
     BL_FUNC_DEBUG
     
-    return m_listventanas->selectWindow ( nom, obj );
+    return m_windowListDock->selectWindow ( nom, obj );
 }
 
 
@@ -129,7 +127,7 @@ int BlMainCompany::deselectWindow()
 {
     BL_FUNC_DEBUG
     
-    return m_listventanas->deselectWindow();
+    return m_windowListDock->deselectWindow();
 }
 
 
@@ -140,7 +138,7 @@ int BlMainCompany::deselectWindow()
 void BlMainCompany::removeWindow ( QObject *nom )
 {
     BL_FUNC_DEBUG
-    m_listventanas->removeWindow ( nom );
+    m_windowListDock->removeWindow ( nom );
     
 }
 
@@ -162,7 +160,7 @@ BlMainCompany::~BlMainCompany()
 {
     BL_FUNC_DEBUG
     /// cerramos todas las ventanas y las DestructiveClose se borran.
-    m_listventanas->vaciar();
+    m_windowListDock->vaciar();
     /// \NOTE: El vaciado de las ventanas debe hacerse en la clase hija ya que el destructor de la clase derivada se ejecuta primero y se generaria un segfault.
     
 }
@@ -222,7 +220,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
 void BlMainCompany::s_indexadorCambiaEstado ( bool visible )
 {
     BL_FUNC_DEBUG
-    m_listventanas->setVisibilityState ( visible );
+    m_windowListDock->setVisibilityState ( visible );
     
 }
 
@@ -244,6 +242,7 @@ void BlMainCompany::muestraPaises()
 **/
 void BlMainCompany::dbPatchVersionCheck(QString plugin, QString version)
 {
+    BL_FUNC_DEBUG
     QString query = "SELECT * FROM configuracion WHERE nombre = '" + sanearCadena(plugin) + "'";
     BlDbRecordSet *rs;
     rs = loadQuery ( query );
@@ -264,6 +263,7 @@ void BlMainCompany::dbPatchVersionCheck(QString plugin, QString version)
 **/
 void BlMainCompany::dbVersionCheck(QString program, QString version)
 {
+    BL_FUNC_DEBUG
     QString query = "SELECT * FROM configuracion WHERE nombre = '" + sanearCadena(program) + "'";
     BlDbRecordSet *rs;
     rs = loadQuery ( query );
@@ -278,4 +278,39 @@ void BlMainCompany::dbVersionCheck(QString program, QString version)
     delete rs;
 }
 
+
+/// Ejecuta la acci&oacute;n 'show()' sobre una ventana. Si no se encuentra la ventana devuelve 'false'.
+/// Sirve tambi&eacute;n para comprobar la existencia de la ventana y as&iacute; evitar ventanas duplicadas.
+/**
+**/
+bool BlMainCompany::showWindow(QString objectName)
+{
+    BL_FUNC_DEBUG
+    bool found = false;
+    
+    /// Busca ventanas con el objectName.
+    for (int i = 0; i < m_windowListDock->numVentanas(); i++) {
+
+	if (m_windowListDock->ventana(i)->objectName() == objectName) {
+	    found = true;
+	    /// Si esta maximizada solo se muestra, en caso de estar minimizada se restaura.
+	    /// Tambi&eacute;n hace que se muestre en primer plano.
+	    if ( ( ( QWidget * ) m_windowListDock->ventana(i) )->isMaximized() ) {
+		( ( QWidget * ) m_windowListDock->ventana(i) )->showMaximized();
+	    } else {
+		( ( QWidget * ) m_windowListDock->ventana(i) )->showNormal();
+	    } // end if
+	    
+	    #ifdef AREA_QMDI
+		m_pWorkspace->setActiveSubWindow(m_windowListDock->ventana(i));
+	    #else
+		m_pWorkspace->setActiveWindow(( QWidget * )m_windowListDock->ventana(i));
+	    #endif
+	    
+	} // end if
+
+    } // end for
+
+    return found;
+}
 

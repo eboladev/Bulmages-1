@@ -68,8 +68,8 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-//    BcPlanContableListView *m_listcuentas;
-    unsigned int numDigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
+    /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
+    unsigned int numDigitos;
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
     /// luego estos selectores generales se podr&aacute;n invocar desde distintas partes.
     BcCentroCosteSeleccionarView *selccostes;
