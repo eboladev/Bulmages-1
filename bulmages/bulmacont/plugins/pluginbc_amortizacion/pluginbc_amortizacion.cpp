@@ -33,7 +33,6 @@
 #include "pluginbc_amortizacion.h"
 #include "bcamortizacionlistview.h"
 
-BcAmortizacionListView *g_amortizacionlist;
 BcBulmaCont *g_pluginbc_amortizacion = NULL;
 
 ///
@@ -48,7 +47,6 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_amortizacion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_amortizacionlist = NULL;
     g_pluginbc_amortizacion = bcont;
 
     /// Creamos el men&uacute;.
@@ -70,13 +68,9 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionAmortizaciones") {
-	if (g_amortizacionlist == NULL) {
-	  g_amortizacionlist = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
-	  g_pluginbc_amortizacion->company()->pWorkspace()->addSubWindow ( g_amortizacionlist );
-	} // end if
-	
-	g_amortizacionlist->hide();
-	g_amortizacionlist->show();
+	BcAmortizacionListView *amortizacionList = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
+	g_pluginbc_amortizacion->company()->pWorkspace()->addSubWindow ( amortizacionList );
+	amortizacionList->show();
     } // end if
 
     return 0;

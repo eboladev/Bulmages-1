@@ -39,9 +39,9 @@ class BL_EXPORT BlMainCompany : public QObject, public BlPostgreSqlClient
     Q_OBJECT
 
 protected:
-    /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
+    /// Puntero al dock que lista las ventanas. Puesto que esta clase hace el paso de
     /// mensajes tiene el control de la lista de ventanas.
-    BlWindowListDock *m_listventanas;
+    BlWindowListDock *m_windowListDock;
 
 public:
     /// Puntero al BlWorkspace de la aplicacion. Ya que esta clase crea todas las ventanas,
@@ -62,6 +62,7 @@ public:
     void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );
     int insertWindow ( QString nom, QObject *obj, bool compdup = TRUE, QString titulo = "" );
+    bool showWindow (QString objectName);
 
 #ifdef AREA_QMDI
     int selectWindow ( QString nom, QMdiSubWindow *obj );

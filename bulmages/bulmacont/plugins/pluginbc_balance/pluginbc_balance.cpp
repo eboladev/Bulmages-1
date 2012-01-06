@@ -54,7 +54,6 @@ int entryPoint ( BcBulmaCont *bcont )
     BlAction *accionA = new BlAction ( _ ( "&Balance jerarquico" ), 0 );
     accionA->setStatusTip ( _ ( "Permite realizar balances" ) );
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
-    //connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     accionA->setObjectName("mui_actionBalance");
     pPluginMenu->addAction ( accionA );
 
@@ -67,9 +66,14 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionBalance") {
-        BalanceView *cuad = new BalanceView ( g_pluginbc_balance->company(), 0 );
-        g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( cuad );
-        cuad->show();
+      
+      	if (!g_pluginbc_balance->company()->showWindow("BalanceView")) {
+	    BalanceView *balance = new BalanceView ( g_pluginbc_balance->company(), 0 );
+	    balance->setObjectName("BalanceView");
+	    g_pluginbc_balance->company()->pWorkspace() ->addSubWindow ( balance );
+	    balance->show();
+	} // end if
+	
     } // end if
     return 0;
 }

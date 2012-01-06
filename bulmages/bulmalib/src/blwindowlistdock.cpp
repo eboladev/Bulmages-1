@@ -20,6 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <typeinfo>
+
 #include <QObject>
 #include <QPixmap>
 #include <QImage>
@@ -287,56 +289,55 @@ void BlWindowListDock::vaciarCompleto()
 
 
 /// This function provides the ability of push a window in the dock window
-/// nombre This QString is the name of the window that was shown in the listbox
-/// obj This QObject * contains the pointer of the window for furtner reference.
+/// name This QString is the name of the window that was shown in the listbox
+/// object This QObject * contains the pointer of the window for furtner reference.
 /**
-\param nombre
-\param obj
-\param compdup
+\param name
+\param object
+\param checkDuplication
 \return
 **/
-int BlWindowListDock::insertWindow ( QString nombre, QObject *obj, bool compdup, QString titulo )
+int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDuplication, QString title )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlWindowListDock::insertWindow", 0, nombre );
+    BlDebug::blDebug ( "BlWindowListDock::insertWindow", 0, name );
     try {
-
-
-	/// Comprobamos que haya un titulo y de no ser el caso se pone como titulo el nombre
-	if (titulo == "") 
-	  titulo = nombre;
+	/// Comprobamos que haya un titulo y de no ser el caso se pone el nombre.
+	if (title == "") 
+	  title = name;
 
         int i = 0;
+
         while ( i < m_listBox->count() ) {
-            BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
+            BlListWidgetItem * listWidgetItem = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Si la ventana ya esta en la lista.
-            if ( m->object() == obj ) {
-                m->setName ( nombre );
-		m->setTitle ( titulo );
-		
+            if ( listWidgetItem->object() == object ) {
+                listWidgetItem->setName ( name );
+		listWidgetItem->setTitle ( title );
                 return 0;
             } // end if
 
             /// Comprobamos ventanas duplicadas.
-            if ( m->name() == nombre && compdup ) {
-                ( ( QWidget * ) m->object() ) ->hide();
-                ( ( QWidget * ) m->object() ) ->show();
-                nombre = nombre + "(i)";
+            if ( listWidgetItem->name() == name && checkDuplication ) {
+                ( ( QWidget * ) listWidgetItem->object() ) ->hide();
+                ( ( QWidget * ) listWidgetItem->object() ) ->show();
+                name = name + "(i)";
             } // end if
             i++;
         } // end while
+
         if ( i >= m_listBox->count() ) {
-            QPixmap icon = ( ( QWidget * ) obj ) ->windowIcon().pixmap ( 32, 32 );
-            BlListWidgetItem *m = new BlListWidgetItem ( m_listBox, icon );
-            m->setObject ( obj );
-            m->setName ( nombre );
-	    m->setTitle ( titulo );
+            QPixmap icon = ( ( QWidget * ) object ) ->windowIcon().pixmap ( 32, 32 );
+            BlListWidgetItem *listWidgetItem = new BlListWidgetItem ( m_listBox, icon );
+            listWidgetItem->setObject ( object );
+            listWidgetItem->setName ( name );
+	    listWidgetItem->setTitle ( title );
         } // end if
+
     } catch ( ... ) {
-	
         return - 1;
     } // end try
-    
+
     return 0;
 }
 

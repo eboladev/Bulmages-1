@@ -80,7 +80,7 @@ public:
     ~BlWindowListDock();
 
 public:
-    int insertWindow ( QString, QObject *, bool compdup = TRUE, QString titulo="" );
+    int insertWindow ( QString name, QObject *object, bool checkDuplication = TRUE, QString title="" );
     
 #ifdef AREA_QMDI
     int selectWindow ( QString nombre, QMdiSubWindow *obj );

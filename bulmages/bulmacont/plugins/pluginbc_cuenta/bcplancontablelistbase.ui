@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <author>aaloy</author>
- <comment>Pla de comptes		</comment>
+ <comment>Plan contable</comment>
  <class>BcPlanContableListBase</class>
  <widget class="QWidget" name="BcPlanContableListBase">
   <property name="geometry">
@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Plan de cuentas</string>
+   <string>Plan contable</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">

@@ -59,7 +59,7 @@ BfCompany::~BfCompany()
     guardaConf();
 
     /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
-    m_listventanas->vaciarCompleto();
+    m_windowListDock->vaciarCompleto();
     
 }
 
@@ -232,8 +232,8 @@ void BfCompany::guardaConf()
 	  stream << "\t\t\t<MAXIMIZED>" + QString ( isMaximized ? "TRUE" : "FALSE" ) + "</MAXIMIZED>\n";
         stream << "\t</PRINCIPAL>\n";
 
-        for ( int i = 0; i < m_listventanas->numVentanas(); i++ ) {
-            QObject *obj = m_listventanas->ventana ( i );
+        for ( int i = 0; i < m_windowListDock->numVentanas(); i++ ) {
+            QObject *obj = m_windowListDock->ventana ( i );
             QWidget *wid = ( QWidget * ) obj;
             stream << "\t<VENTANA>\n";
             stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
@@ -314,8 +314,8 @@ void BfCompany::cargaConf()
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
             QString vname = e1.firstChildElement ( "VNAME" ).toElement().text();
-            for ( int j = 0; j < m_listventanas->numVentanas(); j++ ) {
-                QObject *obj = m_listventanas->ventana ( j );
+            for ( int j = 0; j < m_windowListDock->numVentanas(); j++ ) {
+                QObject *obj = m_windowListDock->ventana ( j );
                 QWidget *wid = ( QWidget * ) obj;
                 if ( obj->objectName() == vname ) {
                     QString vx = e1.firstChildElement ( "VX" ).toElement().text();
