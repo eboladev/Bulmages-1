@@ -24,12 +24,13 @@
 #ifndef BALANCEPRINTVIEW_H
 #define BALANCEPRINTVIEW_H
 
-#include <QDialog>
+//#include <QDialog>
 
 #include "ui_balanceprintbase.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "blwidget.h"
+#include "bcform.h"
 
 
 /// Formulario introducción de datos para la impresión del balance de sumas y saldos.
@@ -38,12 +39,13 @@
     (Fechas y rangos) y que se encarga de generar el balance en los formatos de
     impresi&oacute;n indicados.
 */
-class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public BlMainCompanyPointer
+class BalancePrintView : public BcForm, public Ui_BalancePrintBase
+//, public BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
-    BalancePrintView ( BcCompany *emp );
+    BalancePrintView ( BcCompany *emp, QWidget *parent = 0, int flags = 0 );
     ~BalancePrintView();
     void inicializa ( QString, QString, QString, QString, bool );
 
@@ -51,10 +53,10 @@ private:
     void presentar ( const char * tipus );
 
 private slots:
-    virtual void on_mui_imprimir_clicked();
+    /// No usar mui_imprimir para no confundirlo con BcForm.
+    virtual void on_mui_generaImpresion_clicked();
     virtual void on_mui_canales_clicked();
     virtual void on_mui_centroCostes_clicked();
-    void on_mui_cerrar_clicked();
 };
 
 #endif

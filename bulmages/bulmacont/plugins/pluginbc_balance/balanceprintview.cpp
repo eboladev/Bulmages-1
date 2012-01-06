@@ -37,6 +37,7 @@
 #include "balanceprintview.h"
 #include "bcplancontablelistview.h"
 #include "bccompany.h"
+#include "bldb.h"
 #include "bcplancontablearbol.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
@@ -50,8 +51,8 @@
 /**
 \param emp
 **/
-BalancePrintView::BalancePrintView ( BcCompany *emp )
-        : QDialog ( 0 ), BlMainCompanyPointer ( emp )
+BalancePrintView::BalancePrintView ( BcCompany *emp, QWidget *parent, int ) : BcForm(emp, parent)
+//        : QDialog ( 0 ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
@@ -120,13 +121,20 @@ void BalancePrintView::inicializa ( QString cuentaInicial, QString cuentaFinal, 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.8
 /**
 **/
-void BalancePrintView::on_mui_imprimir_clicked()
+void BalancePrintView::on_mui_generaImpresion_clicked()
 {
     BL_FUNC_DEBUG
-    if ( mui_textoPlano->isChecked() )
+
+    if ( mui_textoPlano->isChecked() ) {
         presentar ( "txt" );
-    if ( mui_html->isChecked() )
+    } else if ( mui_html->isChecked() ) {
         presentar ( "html" );
+    } else if ( mui_pdf->isChecked() ) {
+        generateRML ( "balance.rml" );
+	blCreateAndLoadPDF ( "balance" );
+    } // end if
+    
+    close();
 }
 
 
@@ -350,8 +358,4 @@ void BalancePrintView::on_mui_centroCostes_clicked()
 }
 
 
-void BalancePrintView::on_mui_cerrar_clicked()
-{
-    close();
-}
 

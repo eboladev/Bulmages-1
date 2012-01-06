@@ -56,6 +56,7 @@ int entryPoint ( BcBulmaCont *bcont )
     BlAction *accionA = new BlAction ( _ ( "&Balance" ), 0 );
     accionA->setStatusTip ( _ ( "Permite realizar balances" ) );
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_balance.xpm" ) ) );
     accionA->setObjectName("mui_actionBalance");
     pPluginMenu->addAction ( accionA );
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>BalancePrintBase</class>
- <widget class="QDialog" name="BalancePrintBase">
+ <widget class="QWidget" name="BalancePrintBase">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>598</width>
-    <height>356</height>
+    <height>460</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -93,41 +93,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="mui_imprimir">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../../bulmages.qrc">
-         <normaloff>:/BulmaCont32x32/images/png/i_filePrint.xpm</normaloff>:/BulmaCont32x32/images/png/i_filePrint.xpm</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -181,7 +146,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="mui_cuentaInicial" native="true"/>
+           <widget class="BlSearchWidget" name="mui_cuentaInicial"/>
           </item>
          </layout>
         </item>
@@ -201,7 +166,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="mui_fechaInicial" native="true"/>
+           <widget class="BlDateSearch" name="mui_fechaInicial"/>
           </item>
          </layout>
         </item>
@@ -231,7 +196,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlSearchWidget" name="mui_cuentaFinal" native="true"/>
+           <widget class="BlSearchWidget" name="mui_cuentaFinal"/>
           </item>
          </layout>
         </item>
@@ -251,7 +216,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BlDateSearch" name="mui_fechaFinal" native="true"/>
+           <widget class="BlDateSearch" name="mui_fechaFinal"/>
           </item>
          </layout>
         </item>
@@ -335,12 +300,22 @@
          <number>5</number>
         </property>
         <item>
+         <widget class="QRadioButton" name="mui_pdf">
+          <property name="text">
+           <string>&amp;PDF</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QRadioButton" name="mui_textoPlano">
           <property name="text">
            <string>&amp;Texto Plano</string>
           </property>
           <property name="checked">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -372,7 +347,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cerrar">
+      <widget class="QPushButton" name="mui_generaImpresion">
        <property name="minimumSize">
         <size>
          <width>150</width>
@@ -380,7 +355,20 @@
         </size>
        </property>
        <property name="text">
-        <string>&amp;Cerrar</string>
+        <string>&amp;Imprimir</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="minimumSize">
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>

@@ -435,8 +435,11 @@ void BalanceView::accept()
 void BalanceView::imprimir()
 {
     BL_FUNC_DEBUG
-    BalancePrintView *balance = new BalancePrintView ( mainCompany() );
+
+    BalancePrintView *balance = new BalancePrintView ( mainCompany(), 0 );
     balance->inicializa ( mui_cuentaInicial->fieldValue("codigo"), mui_cuentaFinal->fieldValue("codigo"), mui_fechaInicial->text(), mui_fechaFinal->text(), FALSE );
-    balance->exec();
+    blCenterOnScreen(balance);
+    balance->setWindowModality(Qt::ApplicationModal);
+    balance->show();
 }
 
