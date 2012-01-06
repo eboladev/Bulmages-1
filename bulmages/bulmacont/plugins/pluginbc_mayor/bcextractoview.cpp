@@ -50,7 +50,8 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     BL_FUNC_DEBUG
     setupUi ( this );
 
-    setTitleName ( _ ( "Extracto de Cuentas" ) );
+    setAttribute(Qt::WA_DeleteOnClose);
+    setTitleName ( _ ( "Extracto de cuentas" ) );
     setDbTableName ( "apunte" );
 
     mui_list->setMainCompany ( emp );
@@ -59,7 +60,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
     /// Iniciamos los componentes
     m_codigoinicial->setMainCompany ( emp );
-    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
     m_codigoinicial->setTableName ( "cuenta" );
     m_codigoinicial->setFieldId("idcuenta");
     m_codigoinicial->m_valores["descripcion"] = "";
@@ -73,7 +74,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     m_codigofinal->m_valores["codigo"] = "";
 
     mui_codigocontrapartida->setMainCompany ( emp );
-    mui_codigocontrapartida->setLabel ( _ ( "Cuenta Contrapartida:" ) );
+    mui_codigocontrapartida->setLabel ( _ ( "Cuenta contrapartida:" ) );
     mui_codigocontrapartida->setTableName ( "cuenta" );
     mui_codigocontrapartida->setFieldId("idcuenta");
     mui_codigocontrapartida->m_valores["descripcion"] = "";
@@ -133,7 +134,7 @@ void BcExtractoView::openAsiento()
     int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
     
     if ( ! resur) {
-        blMsgInfo("No se pudo crear instancia de asientos");
+        blMsgInfo(_("No se pudo crear instancia de asientos."));
         return;
     } // end if
     
@@ -564,7 +565,7 @@ void BcExtractoView::on_mui_casacion_clicked()
         BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
-        barra.setText ( _ ( "Cargando Extracto de Cuentas" ) );
+        barra.setText ( _ ( "Cargando extracto de cuentas" ) );
 
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->value( "haber" ) + " AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
@@ -589,7 +590,7 @@ void BcExtractoView::on_mui_casacion_clicked()
         presentar();
 	m_tratarpunteos = TRUE;
     } catch ( ... ) {
-        blMsgError ( "Se produjo un error en la casacion" );
+        blMsgError ( _("Se produjo un error en la casacion") );
     } // end try
     
 }
@@ -660,7 +661,7 @@ void BcExtractoView::on_mui_borrarPunteo_clicked()
 	    m_tratarpunteos = TRUE;
         } // end if
     } catch ( ... ) {
-        blMsgInfo ( _ ( "Se ha producido un error" ) );
+        blMsgInfo ( _ ( "Se ha producido un error." ) );
     } // end try
     
 }
@@ -703,7 +704,7 @@ void BcExtractoView::on_mui_cargarPunteos_clicked()
         presentar();
 	m_tratarpunteos = TRUE;
     } catch ( ... ) {
-        blMsgInfo ( "Error en la carga del punteo" );
+        blMsgInfo ( _("Error en la carga del punteo.") );
         mainCompany()->rollback();
     } // end try
     
@@ -814,9 +815,9 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         salida += "<blockTable style=\"tabla\">\n";
         salida += "<tr>";
         salida += "<td> " + cursorcta->value( "codigo" ) + " -" + cursorcta->value( "descripcion" ) + " </td>";
-        salida += "<td> Debe Inicial: " + debeinicial.toQString() + " </td>";
-        salida += "<td> Haber Inicial: " + haberinicial.toQString() + " </td>";
-        salida += "<td> Saldo Inicial: " + saldoinicial.toQString() + "</td>";
+        salida += "<td> Debe inicial: " + debeinicial.toQString() + " </td>";
+        salida += "<td> Haber inicial: " + haberinicial.toQString() + " </td>";
+        salida += "<td> Saldo inicial: " + saldoinicial.toQString() + "</td>";
         salida += "</tr>";
         salida += "</blockTable>\n";
 
@@ -887,7 +888,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         
         return salida;
     } catch ( ... ) {
-        blMsgError ( "Ocurrio un error inesperado" );
+        blMsgError ( _("Ocurrio un error inesperado.") );
         return "";
     }
 }
@@ -933,7 +934,7 @@ void BcExtractoView::imprimir()
     BlProgressBar *barra = new BlProgressBar;
     barra->setValue ( 0 );
     barra->show();
-    barra->setText ( _ ( "Generando Extracto " )  );
+    barra->setText ( _ ( "Generando extracto " )  );
 
 
     /// Tabla temporal de contrapartidas.

@@ -415,8 +415,8 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
     
     /// Juntamos todos los XML en uno solo dentro del .bulmages
     mergeAllXML();
-    
-    blMsgInfo("En la creación de ventanas");
+    /// TODO
+    //blMsgInfo(_("En la creacion de ventanas"));
     return 0;
 }
 

@@ -50,6 +50,7 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     BL_FUNC_DEBUG
     setupUi ( this );
 
+    setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Diario" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "apunte" );

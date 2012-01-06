@@ -65,7 +65,6 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->toolBar->addAction ( accionA );
-
     
     return 0;
 }
@@ -73,18 +72,19 @@ int entryPoint ( BcBulmaCont *bcont )
 
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBc_Diario") );
 
     if (accion->objectName() == "mui_actionDiario") {
-        if (g_diario == NULL) {
-            g_diario = new BcDiarioView ( g_pluginbc_diario->company(), 0 );
-            g_pluginbc_diario->company()->pWorkspace() ->addSubWindow ( g_diario );
-        } // end if
-        
-	g_diario->hide();
-        g_diario->show();
-    } // end if
 
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionDiario" );
+
+      	if (!g_pluginbc_diario->company()->showWindow("BcDiarioView")) {
+	    g_diario = new BcDiarioView ( g_pluginbc_diario->company(), 0 );
+	    g_diario->setObjectName("BcDiarioView");
+	    g_pluginbc_diario->company()->pWorkspace()->addSubWindow ( g_diario );
+	    g_diario->show();
+	} // end if
+
+    } // end if
     
     return 0;
 }

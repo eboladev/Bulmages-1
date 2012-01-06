@@ -65,7 +65,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _ ( "Selector de articulos" ) );
+        setWindowTitle ( _ ( "Selector de cuenta." ) );
         mui_imprimir->setHidden ( TRUE );
     } // end if
 

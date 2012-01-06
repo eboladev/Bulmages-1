@@ -31,9 +31,9 @@ Orden: 70
 
 Comentarios: El formato de salida es ods. Esta basado en el plugincanualesods,
 creado por Fco. Javier a partir de un código de Tomeu Borràs. A partir de esto,
-Adeladia Clavaguera y Leopold Palomo crearon el caaslods, que era las cuentas
+Adeladia Clavaguera y Leopold Palomo crearon el ccaa2ods, que era las cuentas
 anuales para las asociaciones sin lucro. Luego crearon reportods donde se
-integró, canuales y caaslods y se añadió el resto de cuentas anuales que existen
+integró, canuales y ccaa2ods y se añadió el resto de cuentas anuales que existen
 publicadas en el BOE. 
 
 Entonces, viendo que reportods hacia lo mismo que los otros dos, se decide

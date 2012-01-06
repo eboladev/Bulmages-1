@@ -67,10 +67,18 @@ int entryPoint ( BcBulmaCont *bcont )
 
 int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
+    
     if (accion->objectName() == "mui_actionAmortizaciones") {
-	BcAmortizacionListView *amortizacionList = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
-	g_pluginbc_amortizacion->company()->pWorkspace()->addSubWindow ( amortizacionList );
-	amortizacionList->show();
+      
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionAmortizaciones" );
+
+	if (!g_pluginbc_amortizacion->company()->showWindow("BcAmortizacionListView")) {
+	    BcAmortizacionListView *amortizacionList = new BcAmortizacionListView ( g_pluginbc_amortizacion->company(), 0 );
+    	    amortizacionList->setObjectName("BcAmortizacionListView");
+	    g_pluginbc_amortizacion->company()->pWorkspace()->addSubWindow ( amortizacionList );
+	    amortizacionList->show();
+	} // end if
+
     } // end if
 
     return 0;

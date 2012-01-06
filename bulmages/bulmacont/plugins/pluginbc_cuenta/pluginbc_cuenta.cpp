@@ -79,6 +79,8 @@ int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
 
     if (accion->objectName() == "mui_actionPlanContable") {
+      
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionPlanContable" );
 
 	if (!g_pluginbc_cuenta->company()->showWindow("BcPlanContableListView")) {
 	    BcPlanContableListView *plan = new BcPlanContableListView( g_pluginbc_cuenta->company(), 0 );

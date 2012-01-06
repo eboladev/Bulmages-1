@@ -58,6 +58,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     BL_FUNC_DEBUG
     setupUi ( this );
 
+    setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Balance" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos.
     setDbTableName ( "asiento" );
