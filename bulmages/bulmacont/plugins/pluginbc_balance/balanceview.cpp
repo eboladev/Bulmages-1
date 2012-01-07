@@ -367,15 +367,16 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
                 it->setFont ( DENOMINACION, QFont ( "Serif", tamanyo, -1, false ) );
                 for ( int col = 0; col < it->columnCount(); col++ ) {
 
-                    if ( col == DEBE or col == HABER or col == SALDO ) {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::DemiBold, false ) );
+		    if ( col == DEBE || col == HABER || col == SALDO ||  col == DEBEEJ || col == HABEREJ || col == SALDOEJ ) {
+                        it->setFont ( col, QFont ( "SansSerif", 9, QFont::DemiBold, false ) );
                     } else {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+                        it->setFont ( col, QFont ( "SansSerif", 9, QFont::Normal, false ) );
                     } // end if
                     it->setTextAlignment ( col, Qt::AlignRight );
 
                     if ( lcuenta.size() == 2 ) {
                         it->setTextColor ( col, Qt::darkGray );
+			it->setFont ( col, QFont ( "SansSerif", 10, QFont::Bold, false ) );
                     } else if ( lcuenta.size() < 5 ) {
                         it->setTextColor ( col, Qt::blue );
                     } else {
@@ -406,7 +407,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         delete arbol;
         mainCompany() ->commit();
     } catch ( ... ) {
-        blMsgInfo ( "error en los calculos" );
+        blMsgInfo ( _("Error en los calculos.") );
         mainCompany() ->rollback();
         /// Libermos posible memoria utilizada
         if ( ramas ) delete ramas;
