@@ -39,6 +39,8 @@ BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFl
         : BlFormList ( comp, parent, flag )
 {
     BL_FUNC_DEBUG
+
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi ( this );
 
     mui_mostrar->insertItem ( 0, _ ( "Todos los asientos" ) );

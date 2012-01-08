@@ -37,7 +37,7 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "fpago" );
 
-    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_curfpago = NULL;
     m_posactual = mui_comboFPago->currentIndex();

@@ -37,7 +37,6 @@
 #include "bcasientolistview.h"
 
 BcAsientoView *g_asiento;
-BcAsientoListView *g_listasientos;
 BcBulmaCont *g_pluginbc_asiento = NULL;
 
 
@@ -131,13 +130,15 @@ int BlAction_actionTriggered(BlAction *accion) {
         g_asiento->show();
     } // end if
     if (accion->objectName() == "mui_actionAsientoContableLista") {
-        if (g_listasientos == NULL) {
-            g_listasientos = new BcAsientoListView ( g_pluginbc_asiento->company() );
-            g_listasientos->presentar();
-            g_pluginbc_asiento->company()->pWorkspace() -> addSubWindow ( g_listasientos );
-        } // end if
-        g_listasientos->hide();
-        g_listasientos->show();
+
+    	if (!g_pluginbc_asiento->company()->showWindow("BcAsientoListView")) {
+	    BcAsientoListView *asientoListView = new BcAsientoListView ( g_pluginbc_asiento->company(), 0 );
+	    asientoListView->setObjectName("BcAsientoListView");
+	    asientoListView->presentar();
+            g_pluginbc_asiento->company()->pWorkspace() -> addSubWindow ( asientoListView );
+	    asientoListView->show();
+	} // end if
+
     } // end if
 
     if (accion->objectName() == "mui_actionAsientoContableEspaciar") {

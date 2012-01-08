@@ -309,10 +309,16 @@ int BcCompany::canales()
 int BcCompany::tiposIVA()
 {
     BL_FUNC_DEBUG
-    BcTipoIVAView *tip = new BcTipoIVAView ( this, 0 );
-    m_pWorkspace->addSubWindow ( tip );
-    tip->show();
-    
+
+	if (!showWindow("BcTipoIVAView")) {
+
+	    BcTipoIVAView *tipoIVA = new BcTipoIVAView ( this, 0 );
+	    tipoIVA->setObjectName("BcTipoIVAView");
+	    m_pWorkspace->addSubWindow ( tipoIVA );
+	    tipoIVA->show();
+
+	} // end if
+
     return 0;
 }
 
@@ -325,9 +331,15 @@ int BcCompany::tiposIVA()
 int BcCompany::fPago()
 {
     BL_FUNC_DEBUG
-    BcFormaPagoView *fp = new BcFormaPagoView ( this, 0 );
-    m_pWorkspace->addSubWindow ( fp );
-    fp->show();
+
+	if (!showWindow("BcFormaPagoView")) {
+
+	    BcFormaPagoView *formaPago = new BcFormaPagoView ( this, 0 );
+	    formaPago->setObjectName("BcFormaPagoView");
+	    m_pWorkspace->addSubWindow ( formaPago );
+	    formaPago->show();
+
+	} // end if
     
     return 0;
 }
@@ -363,10 +375,16 @@ int BcCompany::cambioejercicio()
 int BcCompany::propiedadempresa()
 {
     BL_FUNC_DEBUG
-    BcConfiguracionView *nuevae = new BcConfiguracionView ( this, 0 );
-    m_pWorkspace->addSubWindow ( nuevae );
-    nuevae->show();
-    
+
+	if (!showWindow("BcConfiguracionView")) {
+
+	    BcConfiguracionView *configuracion = new BcConfiguracionView ( this, 0 );
+    	    configuracion->setObjectName("BcConfiguracionView");
+	    m_pWorkspace->addSubWindow ( configuracion );
+	    configuracion->show();
+
+	} // end if
+
     return 0;
 }
 
