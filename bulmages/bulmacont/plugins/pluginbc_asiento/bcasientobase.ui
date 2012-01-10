@@ -89,7 +89,7 @@
        </property>
        <layout class="QHBoxLayout">
         <property name="margin">
-         <number>0</number>
+         <number>4</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_abrirAsiento">
@@ -541,29 +541,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="mui_plugbotones">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <layout class="QHBoxLayout" name="mui_plugbotones">
+          <property name="spacing">
+           <number>4</number>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
-          <property name="lineWidth">
+          <property name="margin">
            <number>0</number>
           </property>
-         </widget>
+         </layout>
         </item>
         <item>
          <spacer>
