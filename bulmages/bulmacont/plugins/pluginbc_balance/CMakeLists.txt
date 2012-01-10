@@ -11,7 +11,7 @@ file(GLOB plugin_UIS *.ui)
 
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbc_balance.h pluginbc_balance.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbc_balance.h pluginbc_balance.h bcplancontablearbol.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 
