@@ -302,7 +302,7 @@ bool BlMainCompany::showWindow(QString objectName)
 	    } // end if
 	    
 	    #ifdef AREA_QMDI
-		m_pWorkspace->setActiveSubWindow(m_windowListDock->ventana(i));
+		m_pWorkspace->setActiveSubWindow(( QMdiSubWindow *)m_windowListDock->ventana(i));
 	    #else
 		m_pWorkspace->setActiveWindow(( QWidget * )m_windowListDock->ventana(i));
 	    #endif

@@ -50,8 +50,9 @@ void BlProgressBar::setText ( const QString &tex )
     if ( g_confpr->value( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         mui_progressBar_label->setText ( tex );
         /// Si no hacemos una espera no se pinta bien el setText.
-        for ( int i = 0; i < 20; i++ )
-            repaint();
+        update();
+//        for ( int i = 0; i < 20; i++ )
+//            repaint();
     } // end if
     
 }

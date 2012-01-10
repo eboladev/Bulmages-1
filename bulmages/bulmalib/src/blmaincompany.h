@@ -25,7 +25,6 @@
 #define BLMAINCOMPANY_H
 
 #include <QObject>
-#include <QWorkspace>
 #include <QProgressBar>
 
 #include "blfunctions.h"

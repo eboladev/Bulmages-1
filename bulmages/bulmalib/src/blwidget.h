@@ -28,10 +28,8 @@
 #include <QCloseEvent>
 #include <QPainter>
 
-#ifdef AREA_QMDI
-  #include <QHideEvent>
-  #include <QShowEvent>
-#endif
+#include <QHideEvent>
+#include <QShowEvent>
 
 #include "blmaincompanypointer.h"
 #include "bldialogchanges.h"
@@ -49,19 +47,19 @@ protected:
 #ifdef AREA_QMDI
     bool event ( QEvent * event );
 #endif
-    
+
 public:
     BlWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
     BlWidget ( BlMainCompany *, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~BlWidget();
 
-#ifdef AREA_QMDI
- signals:
+signals:
     void showed(QObject * obj = 0);
     void hided(QObject * obj = 0);
-#endif
 };
 
+
+extern void qt_x11_set_global_double_buffer(bool);
 
 #endif
 

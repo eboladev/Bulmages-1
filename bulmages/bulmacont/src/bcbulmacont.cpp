@@ -62,13 +62,13 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     m_pb->setVisible ( FALSE );
 
     setCentralWidget ( m_frame1 );
+
     /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
     QVBoxLayout *vboxlayout = new QVBoxLayout ( this->centralWidget() );
     vboxlayout->setSpacing ( 0 );
     vboxlayout->setMargin ( 0 );
     vboxlayout->addWidget ( m_pWorkspace );
     vboxlayout->addWidget ( m_pb );
-
 
     m_company = new BcCompany ( this );
     m_company->setProgressBar ( m_pb );
@@ -588,13 +588,10 @@ void BcBulmaCont::on_actionPaises_triggered()
 \param w
 \return
 **/
-#ifdef AREA_QMDI
-  void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
-#else
-  void BcBulmaCont::informaIndexador ( QWidget *w )
-#endif
+void BcBulmaCont::informaIndexador ( QWidget *w )
 {
     BL_FUNC_DEBUG
+#ifndef AREA_QMDI
     /// No existe una ventana que activar.
     if ( m_company == NULL ) {
 	
@@ -611,6 +608,31 @@ void BcBulmaCont::on_actionPaises_triggered()
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toAscii().constData() );
+#endif
+}
+
+
+void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
+{
+    BL_FUNC_DEBUG
+#ifdef AREA_QMDI
+    /// No existe una ventana que activar.
+    if ( m_company == NULL ) {
+	
+        return;
+    } // end if
+
+    if ( w == NULL ) {
+        m_company->deselectWindow();
+	
+        return;
+    } // end if
+    m_company->deselectWindow();
+    m_company->selectWindow ( w->windowTitle(), w );
+
+    QString texto = "Window activated. " + w->windowTitle() + "\n";
+    printf ( "%s", texto.toAscii().constData() );
+#endif
 }
 
 

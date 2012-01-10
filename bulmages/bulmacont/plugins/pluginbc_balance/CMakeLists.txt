@@ -94,7 +94,7 @@ else(WIN32)
 target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)
 
-add_dependencies(${plugin} bulmacont bulmalib pluginbc_balancearbol)
+add_dependencies(${plugin} bulmacont bulmalib pluginbc_cuenta)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
 

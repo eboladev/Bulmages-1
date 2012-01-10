@@ -89,7 +89,6 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blperiodicitycombobox.h
 			bldockwidget.h
 			blwindowlistdock.h
-			blworkspace.h
 			blapplication.h
 			bltexteditdelegate.h
 			bldoublespinbox.h
@@ -116,6 +115,10 @@ set(bulmalib_MOCS	bldblogindialog.h
 			bluiloader.h
 			blaction.h)
 
+
+#			blworkspace.h
+
+
 set (bulmalib_HDRS	blmaincompanypointer.h
 			blmaincompany.h
 			bldialogchanges.h
@@ -134,6 +137,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blplugins.h
 			blpostgresqlclient.h
 			blargparser.h)
+
 			
 			
 #headers that are not moc'ed
@@ -190,7 +194,9 @@ else (USE_GETTEXT)
       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
 endif(USE_GETTEXT)
 
-
+if(USE_QMDIAREA)
+      ADD_DEFINITIONS("-D'AREA_QMDI'" )
+endif(USE_QMDIAREA)
 
 # generate rules for building source files from the resources
 QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)

@@ -32,7 +32,9 @@
 BlWorkspace::BlWorkspace ( QWidget * )
 {
     BL_FUNC_DEBUG
-    
+#ifdef AREA_QMDI
+    fprintf(stderr, "AREA_QMDI active\n");
+#endif
 }
 
 
@@ -67,7 +69,7 @@ void BlWorkspace::addSubWindow ( QWidget * w )
     sw->setWidget(w);
     connect ( w, SIGNAL(destroyed(QObject *)), sw, SLOT(close()));
     connect ( w, SIGNAL(hided(QObject *)), sw, SLOT(hide()));
-    connect ( w, SIGNAL(hided(QObject *)), this, SIGNAL(deselectDockAll()));
+//    connect ( w, SIGNAL(hided(QObject *)), this, SIGNAL(deselectDockAll()));
     connect ( w, SIGNAL(showed(QObject *)), sw, SLOT(show()));
     
     QMdiArea::addSubWindow (sw);
