@@ -109,10 +109,6 @@ int BlAction_actionTriggered(BlAction *accion) {
 } // end if
 
 
-
-
-
-
 ///
 /**
 \param l
@@ -122,21 +118,14 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
     BL_FUNC_DEBUG
 
-    QFrame *plug = l->findChild<QFrame *> ("mui_plugbotones");
+    QHBoxLayout *layout = l->findChild<QHBoxLayout *> ("mui_plugbotones");
 
-    RegIVAQToolButton *mui_exporta_efactura2 = new RegIVAQToolButton ( l,  plug );
-    mui_exporta_efactura2->setObjectName("m_registroiva");
-    if (plug) {
-	QHBoxLayout *m_hboxLayout1 = plug->findChild<QHBoxLayout *> ( "hboxLayout1" );
-	if ( !m_hboxLayout1 ) {
-	    m_hboxLayout1 = new QHBoxLayout ( plug );
-	    m_hboxLayout1->setSpacing ( 5 );
-	    m_hboxLayout1->setMargin ( 5 );
-	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	} // end if
-	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
+    if (layout) {
+	RegIVAQToolButton *mui_exporta_efactura2 = new RegIVAQToolButton ( l );
+	mui_exporta_efactura2->setObjectName("m_registroiva");
+	layout->addWidget ( mui_exporta_efactura2 );
     } // end if
-    
+
     return 0;
 }
 
@@ -183,7 +172,6 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
     
     return 0;
 }
-
 
 
 ///
