@@ -29,10 +29,14 @@
 \param f
 **/
 BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f ), BlMainCompanyPointer()
+        : QWidget ( parent, f), BlMainCompanyPointer()
 {
     BL_FUNC_DEBUG
-    
+#ifdef AREA_QMDI
+    /// Deshabilita el doble buffer de las X11. Va todo mucho mas rapido, pero no dibuja bien.
+    qt_x11_set_global_double_buffer(false);
+#endif
+    setAttribute(Qt::WA_StaticContents);
 }
 
 
@@ -62,7 +66,7 @@ BlWidget::~BlWidget()
 
 /* Necesario para poner estilos a traves de hojas CSS.
 */
-void BlWidget::paintEvent ( QPaintEvent * )
+void BlWidget::paintEvent ( QPaintEvent *evt )
 {
     QStyleOption opt;
     opt.initFrom ( this );
@@ -79,7 +83,7 @@ bool BlWidget::event ( QEvent * event )
     } else if (event->type() == QEvent::ShowToParent) {
         emit showed(this);
     } // end if
-    
+
     return QWidget::event(event);
 }
 #endif

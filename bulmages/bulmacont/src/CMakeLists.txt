@@ -72,6 +72,10 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmacont/src/
 	${CMAKE_SOURCE_DIR}/bulmacont/src/)
 
+if(USE_QMDIAREA)
+      ADD_DEFINITIONS("-D'AREA_QMDI'" )
+endif(USE_QMDIAREA)
+
 # generate rules for building source files from the resources
 #
 

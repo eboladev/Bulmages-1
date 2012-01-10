@@ -32,10 +32,7 @@
 #include <QAction>
 #include <QToolButton>
 #include <QMessageBox>
-
-#ifdef AREA_QMDI
-  #include <QMdiSubWindow>
-#endif
+#include <QMdiSubWindow>
 
 #include "blfunctions.h"
 #include "ui_bcbulmacontbase.h"
@@ -129,13 +126,8 @@ public slots:
     virtual void on_actionMasas_Patrimoniales_triggered();
     virtual void on_actionPantalla_Completa_triggered();
     virtual void on_actionPaises_triggered();
-    
-#ifdef AREA_QMDI
-    virtual void informaIndexador ( QMdiSubWindow *w );
-#else
     virtual void informaIndexador ( QWidget *w );
-#endif
-    
+    virtual void informaIndexador ( QMdiSubWindow *w );
     virtual void on_actionIndexador_triggered();
     virtual void on_actionCerrar_Asientos_triggered();
 };

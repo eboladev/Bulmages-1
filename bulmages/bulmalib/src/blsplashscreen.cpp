@@ -130,10 +130,13 @@ void BlSplashScreen::mensaje ( QString mens )
     cad = cad + "<FONT SIZE=\"-3\" COLOR='#000066'>" + mens + "</FONT>";
     a++;
     m_label1->setText ( cadant + cad1 + cad );
-    m_label1->repaint();
+    //m_label1->repaint();
+    m_label1->update();
     m_label->setText ( mens );
-    m_label->repaint();
-    repaint();
+    //m_label->repaint();
+    m_label->update();
+    update();
+    //repaint();
     cadant = cad;
     
 }

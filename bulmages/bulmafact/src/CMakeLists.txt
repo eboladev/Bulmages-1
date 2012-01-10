@@ -61,6 +61,9 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 
+if(USE_QMDIAREA)
+      ADD_DEFINITIONS("-D'AREA_QMDI'" )
+endif(USE_QMDIAREA)
 
 # generate rules for building source files from the resources
 #
