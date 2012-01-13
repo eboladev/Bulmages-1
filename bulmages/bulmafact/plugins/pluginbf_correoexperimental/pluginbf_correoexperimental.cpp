@@ -264,6 +264,40 @@ int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &bod
 
 }
 
+///
+/**
+\ param recipient
+\ param subject
+\ param body
+\ param attached
+\ return
+**/
+#ifdef Q_OS_WIN32
+int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+    QString barra2;
+    
+    QString urlmail = " /c ipm.note";
+    if (attached != "") {
+        urlmail += " /a " + attached;
+    }
+    urlmail += " /m " + recipient;
+    QByteArray barray = QUrl(subject, QUrl::TolerantMode).toEncoded();
+    QByteArray barray2 = QUrl(body, QUrl::TolerantMode).toEncoded();
+    QString stringed(barray);
+    QString stringed2(barray);
+    urlmail += "?subject=" + stringed;
+    urlmail += "&body=" + stringed2;
+    
+    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS + CAD_COMILLAS + urlmail + CAD_COMILLAS);
+    
+    system(QString( runcommand + background).toAscii());
+    return 0;
+
+}
+#endif
 
 ///
 /**
@@ -291,7 +325,12 @@ int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
         Kmail (  recipient, bcc, subject, body, attached );
     } else if (program_name == "evolution") {
         Evolution (  recipient, bcc, subject, body, attached );
+    }
+    #ifdef Q_OS_WIN32
+     else if (program_name == "Outlook") {
+        Outlook (  recipient, bcc, subject, body, attached );
     } // end if
+    #endif
     
     return 0;
     

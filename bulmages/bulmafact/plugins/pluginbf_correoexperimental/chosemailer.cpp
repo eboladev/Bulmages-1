@@ -54,6 +54,9 @@ ChoseMailer::ChoseMailer(QWidget *parent) :
     mui_mailclients->addItem(QString("Mozilla Thunderbird"), QString("thunderbird") );
     mui_mailclients->addItem(QString("Kmail"), QString("kmail") );
     mui_mailclients->addItem(QString("Evolution"), QString("evolution") );
+    #ifdef Q_OS_WIN32
+        mui_mailclients->addItem(QString("Microsoft Outlook"), QString("Outlook") );
+    #endif
 }
 
 

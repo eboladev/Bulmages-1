@@ -42,6 +42,9 @@ extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int LaunchChoseMailer ();
 extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+#ifdef Q_OS_WIN32
+extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+ #endif
 extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 
 extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int entryPoint ( BfBulmaFact * );
