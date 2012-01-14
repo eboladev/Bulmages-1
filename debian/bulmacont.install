@@ -6,8 +6,8 @@ usr/lib/libbulmacont.so
 usr/lib/libbulmacont.so*
 usr/share/bulmages/ainteligentes/*
 usr/share/bulmages/canuales/*
-usr/share/man/bulmacont.1
-usr/share/man/bulmacont.conf.1
+usr/share/man/man1/bulmacont.1
+usr/share/man/man1/bulmacont.conf.1
 usr/share/menu/bulmacont.menu
 usr/share/applications/bulmacont.desktop
 usr/share/pixmaps/bulmacont.xpm

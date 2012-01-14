@@ -116,16 +116,16 @@ binary-arch: build install
 
 	dh_installmenu
 
-	dh_installman   -pbulmacont debian/tmp/usr/share/man/bulmacont.1
-	dh_installman   -pbulmacont debian/tmp/usr/share/man/bulmacont.conf.1  
-	dh_installman   -pbulmafact debian/tmp/usr/share/man/bulmafact.1
-	dh_installman   -pbulmafact debian/tmp/usr/share/man/bulmafact.conf.1  
-	dh_installman   -pbulmatpv debian/tmp/usr/share/man/bulmatpv.1
-	dh_installman   -pbulmatpv debian/tmp/usr/share/man/bulmatpv.conf.1
-	dh_installman   -pbulmages debian/tmp/usr/share/man/bulmages.1
-	dh_installman   -pbulmages debian/tmp/usr/share/man/bulmages.conf.1
-	dh_installman   -pbulmages debian/tmp/usr/share/man/bgtrml2pdf.1
-	dh_installman   -pbulmages-admin debian/tmp/usr/share/man/bulmasetup.1
+	dh_installman   -pbulmacont debian/tmp/usr/share/man/man1/bulmacont.1
+	dh_installman   -pbulmacont debian/tmp/usr/share/man/man1/bulmacont.conf.1  
+	dh_installman   -pbulmafact debian/tmp/usr/share/man/man1/bulmafact.1
+	dh_installman   -pbulmafact debian/tmp/usr/share/man/man1/bulmafact.conf.1  
+	dh_installman   -pbulmatpv debian/tmp/usr/share/man/man1/bulmatpv.1
+	dh_installman   -pbulmatpv debian/tmp/usr/share/man/man1/bulmatpv.conf.1
+	dh_installman   -pbulmages debian/tmp/usr/share/man/man1/bulmages.1
+	dh_installman   -pbulmages debian/tmp/usr/share/man/man1/bulmages.conf.1
+	dh_installman   -pbulmages debian/tmp/usr/share/man/man1/bgtrml2pdf.1
+	dh_installman   -pbulmages-admin debian/tmp/usr/share/man/man1/bulmasetup.1
 
 	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont_files
 	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont.html
