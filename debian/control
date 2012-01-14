@@ -3,7 +3,7 @@ Section: kde
 Priority: optional
 Maintainer: Bulmages-pkg-debian <bulmages-pkg-debian@lists.berlios.de>
 Uploaders: Tomeu Borràs Riera <tborras@conetxia.com>, Leopold Palomo Avellaneda <leo@alaxarxa.net>, Iker Salmón San Millán <shaola@esdebian.org>, Otilio Santos Martinez <otilio@apdo.com>
-Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools (>= 4.3.1), libqt4-qt3support (>= 4.3.1), libqt4-dev, python, python-support (>= 0.3), python-qt4 (>= 4.7.4), libpq-dev, cmake (>=2.6.0)
+Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools (>= 4.3.1), libqt4-qt3support (>= 4.3.1), libqt4-dev, python, python-support (>= 0.3), python-qt4 (>= 4.7.4), libpq-dev, cmake (>=2.6.0), libqtwebkit4
 Standards-Version: 3.7.3
 Homepage: http://www.iglues.org
 XS-Vcs-Svn: svn://svn.berlios.de/bulmages/trunk/debian
