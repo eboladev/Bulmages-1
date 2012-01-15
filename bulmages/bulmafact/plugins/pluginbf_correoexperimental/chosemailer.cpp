@@ -22,6 +22,8 @@
 
 
 #ifndef Q_OS_WIN32
+    /// Detectamos las variables de entorno de usuario, para guardar la configuracion
+    QString dirusuario = getenv ( "HOME" );
     /// Para unix es sencillo, simplemente indicamos el separador de PATH y que no haya extension de ejecutable
     QString PATHSEP = ":";
     QString PATH_EXTENSION = "";
@@ -29,15 +31,22 @@
     /// En Windows "exploraremos" los directorios que haya dentro del clasico ProgramFiles, facilitando el uso al usuario.
     QString PATHSEP = ";";
     QString PATH_EXTENSION = ".exe";
-#endif
+    QString dirusuario = getenv ( "UserProfile" );
+    dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
+#endif // Q_OS_WIN32
 
-/** inicializa todos los componentes de la clase.
-    Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
-    Mete la ventana en el workSpace.
-*/
+
+
+///
+/**
+\ QWidget *parent
+\ QDialog parent
+**/
 ChoseMailer::ChoseMailer(QWidget *parent) :
     QDialog(parent)
 {
+    /// Inicializa todos los componentes de la clase.
+    
     BL_FUNC_DEBUG
     
     /// Iniciamos la UI
@@ -60,10 +69,9 @@ ChoseMailer::ChoseMailer(QWidget *parent) :
 }
 
 
-/** Aunque podrian indicarse, no requiere de acciones adicionales en el destructor.
-*/
 ChoseMailer::~ChoseMailer()
 {
+    /// Aunque podrian indicarse, no requiere de acciones adicionales en el destructor.
     /// Destructor de la clase
 }
 
@@ -105,15 +113,6 @@ int ChoseMailer::GuardarConfig()
      BL_FUNC_DEBUG
      
      /// Guardamos la configuracion, quiza sea interesante extraer este metodo hacia bulmalib posteriormente.
-     
-     
-    /// Detectamos las variables de entorno de usuario, para guardar la configuracion
-    #ifndef Q_OS_WIN32
-        QString dirusuario = getenv ( "HOME" );
-    #else
-        QString dirusuario = getenv ( "UserProfile" );
-        dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
-    #endif // Q_OS_WIN32
     
     QString m_dirLocalConf = dirusuario + "/.bulmages/bulmafact.conf";
     

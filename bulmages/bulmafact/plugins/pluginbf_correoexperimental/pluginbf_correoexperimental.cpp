@@ -316,7 +316,7 @@ int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
     QFileInfo fileinfo(dir_email);
     QString program_name = fileinfo.fileName();
     #ifdef Q_OS_WIN32
-        QString program_name.replace('.exe', '');
+        program_name.replace(".exe", "");
     #endif
     
     if (program_name == "thunderbird") {
