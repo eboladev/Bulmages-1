@@ -117,10 +117,10 @@ BlSplashScreen::~BlSplashScreen()
 /**
 \param mens
 **/
-void BlSplashScreen::mensaje ( QString mens )
+void BlSplashScreen::setMessage ( QString mens )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSplashScreen::mensaje", 0, mens );
+    BlDebug::blDebug ( "BlSplashScreen::setMessage", 0, mens );
     static int a = 0;
     static QString cadant = "";
     QString cad = "";
@@ -146,25 +146,11 @@ void BlSplashScreen::mensaje ( QString mens )
 /**
 \param progreso
 **/
-void BlSplashScreen::setBarraProgreso ( int progreso )
+void BlSplashScreen::setProgressBar ( int progreso )
 {
     BL_FUNC_DEBUG
     m_barra->setValue ( progreso );
     
 }
 
-
-///
-/**
-**/
-void BlSplashScreen::barraprogreso()
-{
-    BL_FUNC_DEBUG
-    if ( m_barra->value() < 10 ) {
-        m_barra->setValue ( m_barra->value() + 1 );
-    } else {
-        m_barra->setValue ( 0 );
-    } // end if
-    
-}
 

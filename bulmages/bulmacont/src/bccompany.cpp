@@ -206,16 +206,16 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 
         /// pb = 90%
 /*
-        splash->mensaje ( _ ( "Inicializando cuentas" ) );
-        splash->setBarraProgreso ( 90 );
+        splash->setMessage ( _ ( "Inicializando cuentas" ) );
+        splash->setProgressBar ( 90 );
         m_progressbar->setValue ( 90 );
         m_listcuentas = new BcPlanContableListView ( this, 0 );
         m_listcuentas->inicializa();
         m_pWorkspace->addSubWindow ( m_listcuentas );
 */
         /// pb = 100%
-        splash->mensaje ( _ ( "Terminado" ) );
-        splash->setBarraProgreso ( 100 );
+        splash->setMessage ( _ ( "Terminado" ) );
+        splash->setProgressBar ( 100 );
         m_progressbar->setValue ( 100 );
 
         /// Disparamos los plugins.

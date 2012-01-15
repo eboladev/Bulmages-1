@@ -56,11 +56,8 @@ private:
 public:
     BlSplashScreen ( QString appSplash, QString appName, QString appVersion );
     ~BlSplashScreen();
-    void mensaje ( QString );
-    void setBarraProgreso ( int );
-
-private slots:
-    void barraprogreso();
+    void setMessage ( QString );
+    void setProgressBar ( int );
 };
 
 #endif

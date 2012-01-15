@@ -120,8 +120,8 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
-    splash->mensaje ( _ ( "Inicializando listado de articulos" ) );
-    splash->setBarraProgreso ( 30 );
+    splash->setMessage ( _ ( "Inicializando listado de articulos" ) );
+    splash->setProgressBar ( 30 );
     m_progressbar->setValue ( 30 );
 
     /// Creamos un nuevo ticket vacio.

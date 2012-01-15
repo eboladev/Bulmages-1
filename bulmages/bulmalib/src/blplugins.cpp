@@ -67,7 +67,7 @@ BlPlugins::~BlPlugins()
 /**
 \param libs
 **/
-void BlPlugins::cargaLibs ( const QString &libs )
+void BlPlugins::loadLibs ( const QString &libs )
 {
     BL_FUNC_DEBUG
 

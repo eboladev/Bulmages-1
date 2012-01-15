@@ -38,7 +38,7 @@ private:
 public:
     BlPlugins();
     ~BlPlugins();
-    void cargaLibs ( const QString &libs );
+    void loadLibs ( const QString &libs );
     int run ( const char *func, void *clase );
     int run ( const char *func, void *clase, void **ret );
     QList<QLibrary *> pluginsLoaded();
