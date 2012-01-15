@@ -84,7 +84,7 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfCompany_createMainWindows_Post", this );
+    int res = g_plugins->run ( "BfCompany_createMainWindows_Post", this );
     if ( res != 0 ) {
         return;
     } // end if

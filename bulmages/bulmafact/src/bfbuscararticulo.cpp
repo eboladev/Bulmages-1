@@ -180,7 +180,7 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
         semaforo = TRUE;
     } // end if
     m_entrada = cod;
-    if ( !g_plugins->lanza ( "BfBuscarArticuloDelegate_textChanged", this ) ) {
+    if ( !g_plugins->run ( "BfBuscarArticuloDelegate_textChanged", this ) ) {
         QString codigo = m_entrada;
         if ( codigo.size() >= 3 ) {
             int pos = codigo.indexOf ( ".-" );
@@ -205,7 +205,7 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
         }
     }
     //    showPopup();
-    g_plugins->lanza ( "BfBuscarArticuloDelegate_textChanged_Post", this );
+    g_plugins->run ( "BfBuscarArticuloDelegate_textChanged_Post", this );
     setEditText ( cod );
 
     semaforo = FALSE;

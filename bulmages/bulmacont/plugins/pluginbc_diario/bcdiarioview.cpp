@@ -331,7 +331,7 @@ void BcDiarioView::openAsiento()
     
     QString idasiento = mui_list->dbValue ( "idasiento" );
 
-    int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+    int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
     
     if ( ! resur) {
         blMsgInfo("No se pudo crear instancia de asientos");

@@ -43,7 +43,7 @@ SociosList::SociosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SociosList_SociosList", this );
+    int res = g_plugins->run ( "SociosList_SociosList", this );
     if ( res != 0 )
         return;
     mdb_idcliente = "";
@@ -65,7 +65,7 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SociosList_SociosList", this );
+    int res = g_plugins->run ( "SociosList_SociosList", this );
     if ( res != 0 )
         return;
 
@@ -271,7 +271,7 @@ SociosListSubForm::SociosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SociosListSubForm_SociosListSubForm", this );
+    int res = g_plugins->run ( "SociosListSubForm_SociosListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "cliente" );

@@ -49,7 +49,7 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "AlmacenView_AlmacenView", this ) ) return;
+        if ( g_plugins->run ( "AlmacenView_AlmacenView", this ) ) return;
 
         setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );

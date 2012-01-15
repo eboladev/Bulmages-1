@@ -75,7 +75,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         mui_labelAlmacen->setBuddy ( mui_idalmacen );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "FacturaView_FacturaView", this );
+        int res = g_plugins->run ( "FacturaView_FacturaView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -272,7 +272,7 @@ int FacturaView::cargarPost ( QString idbudget )
     m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "FacturaView_cargarPost_Post", this );
+    g_plugins->run ( "FacturaView_cargarPost_Post", this );
 
     calculaypintatotales();
 

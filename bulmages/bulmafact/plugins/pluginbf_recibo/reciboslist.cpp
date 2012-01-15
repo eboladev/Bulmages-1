@@ -46,7 +46,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "RecibosList_RecibosList", this );
+    int res = g_plugins->run ( "RecibosList_RecibosList", this );
     if ( res != 0 )
         return;
         
@@ -71,7 +71,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "RecibosList_RecibosList", this );
+    int res = g_plugins->run ( "RecibosList_RecibosList", this );
     if ( res != 0 )
         return;
 
@@ -124,7 +124,7 @@ void RecibosList::iniciaForm()
     BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "RecibosList_iniciaForm", this );
+    int res = g_plugins->run ( "RecibosList_iniciaForm", this );
     if ( res != 0 )
         return;
         
@@ -341,7 +341,7 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "RecibosListSubForm_RecibosListSubForm", this );
+    int res = g_plugins->run ( "RecibosListSubForm_RecibosListSubForm", this );
     if ( res != 0 )
         return;
         

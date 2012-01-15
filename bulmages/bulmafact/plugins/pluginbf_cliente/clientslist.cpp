@@ -45,7 +45,7 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     setupUi ( this );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ClientsList_ClientsList", this );
+    int res = g_plugins->run ( "ClientsList_ClientsList", this );
     if ( res != 0 )
         return;
 

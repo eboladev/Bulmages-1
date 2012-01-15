@@ -23,7 +23,7 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "Cambio_ivainc_pre", this );
+    int res = g_plugins->run ( "Cambio_ivainc_pre", this );
     if ( res != 0 ) {
         return;
     } // end if

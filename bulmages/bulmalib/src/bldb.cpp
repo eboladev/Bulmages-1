@@ -1016,7 +1016,7 @@ int BlDbRecord::generateRML ( const QString &arch )
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlDbRecord_generateRML", this );
+    int res = g_plugins->run ( "BlDbRecord_generateRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if

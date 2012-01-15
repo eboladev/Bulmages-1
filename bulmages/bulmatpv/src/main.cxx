@@ -176,7 +176,7 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 20 );
 
         /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza ( "entryPoint", bges );
+        g_plugins->run ( "entryPoint", bges );
 
         splashScr->mensaje ( _( "Inicializando componentes" ) );
         splashScr->setBarraProgreso ( 30 );
@@ -229,7 +229,7 @@ int main ( int argc, char **argv )
         valorSalida = g_theApp->exec();
 
         /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza ( "exitPoint", bges );
+        g_plugins->run ( "exitPoint", bges );
 
         // Bloqueamos el esquema de ventanas si asi se nos pide
         if (g_confpr->value(CONF_BLOCK_WINDOWS) == "TRUE") {

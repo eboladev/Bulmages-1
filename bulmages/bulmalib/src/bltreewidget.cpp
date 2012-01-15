@@ -8,7 +8,7 @@
 BlTreeWidget::BlTreeWidget ( QWidget * parent ) : QTreeWidget(parent) {
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BlTreeWidget_BlTreeWidget_Post", this );
+    g_plugins->run ( "BlTreeWidget_BlTreeWidget_Post", this );
 }
 
 

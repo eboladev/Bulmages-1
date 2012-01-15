@@ -66,7 +66,7 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id forma de pago" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "FacturaProveedorView_FacturaProveedorView", this );
+        int res = g_plugins->run ( "FacturaProveedorView_FacturaProveedorView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -251,7 +251,7 @@ int FacturaProveedorView::cargarPost ( QString idfacturap )
     m_listadescuentos->load ( idfacturap );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "FacturaProveedorView_cargarPost_Post", this );
+    g_plugins->run ( "FacturaProveedorView_cargarPost_Post", this );
 
     calculaypintatotales();
     
@@ -288,7 +288,7 @@ int FacturaProveedorView::afterSave()
 void FacturaProveedorView::imprimirFacturaProveedor()
 {
     /// Hacemos el lanzamiento de plugins para este caso.
-    int res = g_plugins->lanza ( "imprimirFacturaProveedor", this );
+    int res = g_plugins->run ( "imprimirFacturaProveedor", this );
     if ( res )
         return;
 

@@ -530,7 +530,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 	 }
     } // END IF
 
-    g_plugins->lanza ( "BcBulmaCont_closeEvent", this );
+    g_plugins->run ( "BcBulmaCont_closeEvent", this );
 
     delete m_company;
     m_company = NULL;

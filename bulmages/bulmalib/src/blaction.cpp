@@ -67,6 +67,6 @@ BlAction::~BlAction()
 **/
 void BlAction::actionTriggered(bool triggered) {
     BL_FUNC_DEBUG
-    g_plugins->lanza("BlAction_actionTriggered", this);
+    g_plugins->run("BlAction_actionTriggered", this);
 }
 

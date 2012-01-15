@@ -203,7 +203,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 	 }
     } // END IF
 
-    g_plugins->lanza ( "BfBulmaFact_closeEvent", this );
+    g_plugins->run ( "BfBulmaFact_closeEvent", this );
 
     /// Borramos el BfCompany
     delete m_company;

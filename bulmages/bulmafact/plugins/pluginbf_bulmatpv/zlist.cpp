@@ -45,7 +45,7 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ZList_ZList", this );
+    int res = g_plugins->run ( "ZList_ZList", this );
     if ( res != 0 )
         return;
 

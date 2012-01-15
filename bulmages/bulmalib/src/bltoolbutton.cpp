@@ -60,7 +60,7 @@ BlToolButton::~BlToolButton()
 
 void BlToolButton::buttonReleased() {
     BL_FUNC_DEBUG
-    g_plugins->lanza("BlToolButton_released", this);
+    g_plugins->run("BlToolButton_released", this);
     
 }
 

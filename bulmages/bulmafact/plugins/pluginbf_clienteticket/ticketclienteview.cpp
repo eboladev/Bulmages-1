@@ -83,7 +83,7 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "cambiospostalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos tras imprimir" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "TicketClienteView_TicketClienteView", this );
+        int res = g_plugins->run ( "TicketClienteView_TicketClienteView", this );
         if ( res != 0 )
             return;
 
@@ -112,7 +112,7 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
 
         insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
-        g_plugins->lanza ( "TicketClienteView_TicketClienteView_Post", this );
+        g_plugins->run ( "TicketClienteView_TicketClienteView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
@@ -307,7 +307,7 @@ int TicketClienteView::cargarPost ( QString idalbaran )
     m_listadescuentos->load ( idalbaran );
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "TicketCliente_cargarPost_Post", this );
+    g_plugins->run ( "TicketCliente_cargarPost_Post", this );
 
     calculaypintatotales();
     

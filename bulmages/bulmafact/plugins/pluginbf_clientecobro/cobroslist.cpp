@@ -42,7 +42,7 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "CobrosList_CobrosList", this );
+    int res = g_plugins->run ( "CobrosList_CobrosList", this );
     if ( res != 0 )
         return;
     mdb_idcobro = "";
@@ -73,7 +73,7 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "CobrosList_CobrosList", this );
+    int res = g_plugins->run ( "CobrosList_CobrosList", this );
     if ( res != 0 )
         return;
     m_cliente->setMainCompany ( comp );
@@ -317,7 +317,7 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "CobrosListSubForm_CobrosListSubForm", this );
+    int res = g_plugins->run ( "CobrosListSubForm_CobrosListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "cobro" );

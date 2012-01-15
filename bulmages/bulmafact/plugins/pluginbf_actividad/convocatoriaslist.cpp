@@ -42,7 +42,7 @@ ConvocatoriasList::ConvocatoriasList ( QWidget *parent, Qt::WFlags flag, edmode 
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ConvocatoriasList_ConvocatoriasList", this );
+    int res = g_plugins->run ( "ConvocatoriasList_ConvocatoriasList", this );
     if ( res != 0 )
         return;
     mdb_idactividad = "";
@@ -64,7 +64,7 @@ ConvocatoriasList::ConvocatoriasList ( BfCompany *comp, QWidget *parent, Qt::WFl
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ConvocatoriasList_ConvocatoriasList", this );
+    int res = g_plugins->run ( "ConvocatoriasList_ConvocatoriasList", this );
     if ( res != 0 )
         return;
 
@@ -259,7 +259,7 @@ ConvocatoriasListSubForm::ConvocatoriasListSubForm ( QWidget *parent ) : BfSubFo
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ConvocatoriasListSubForm_ConvocatoriasListSubForm", this );
+    int res = g_plugins->run ( "ConvocatoriasListSubForm_ConvocatoriasListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "actividad" );

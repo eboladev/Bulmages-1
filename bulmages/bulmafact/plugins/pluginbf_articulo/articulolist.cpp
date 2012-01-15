@@ -58,7 +58,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ArticuloList_ArticuloList", this );
+    int res = g_plugins->run ( "ArticuloList_ArticuloList", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -436,7 +436,7 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
     setSortingEnabled ( TRUE );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "ArticuloListSubForm_ArticuloListSubForm_Post", this );
+    g_plugins->run ( "ArticuloListSubForm_ArticuloListSubForm_Post", this );
     
 }
 

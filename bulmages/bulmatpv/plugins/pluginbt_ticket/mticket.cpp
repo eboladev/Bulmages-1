@@ -42,7 +42,7 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace() ->addSubWindow ( this );
     setWindowTitle ( "Ticket" );
-    g_plugins->lanza ( "MTicket_MTicket_Post", this );
+    g_plugins->run ( "MTicket_MTicket_Post", this );
     
     m_parent = parent;
     
@@ -64,7 +64,7 @@ void MTicket::pintar()
 {
     BL_FUNC_DEBUG
 
-    if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
+    if ( g_plugins->run ( "MTicket_pintar", this ) ) {
         
         return;
     } // end if

@@ -47,7 +47,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
     setupUi ( this );
     mui_tab->setDisabled ( TRUE );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TipoActividadView_TipoActividadView", this );
+    int res = g_plugins->run ( "TipoActividadView_TipoActividadView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -55,7 +55,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
     setEditMode();
     m_cursortipoactividades = NULL;
     m_item = NULL;
-    res = g_plugins->lanza ( "TipoActividadView_TipoActividadView_Post", this );
+    res = g_plugins->run ( "TipoActividadView_TipoActividadView_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -131,7 +131,7 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TipoActividadView_on_mui_lista_currentItemChanged_Post", this );
+    int res = g_plugins->run ( "TipoActividadView_on_mui_lista_currentItemChanged_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -153,7 +153,7 @@ void TipoActividadView::on_mui_guardar_clicked()
 
     try {
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "TipoActividadView_on_mui_guardar_clicked", this );
+        int res = g_plugins->run ( "TipoActividadView_on_mui_guardar_clicked", this );
         if ( res != 0 ) {
             return;
         } // end if

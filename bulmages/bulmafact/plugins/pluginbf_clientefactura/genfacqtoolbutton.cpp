@@ -124,7 +124,7 @@ void GenFacQToolButton::generarFactura()
     AlbaranClienteView *fpv = ( AlbaranClienteView * ) m_object;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlbaranClienteView_generarFactura", this );
+    int res = g_plugins->run ( "AlbaranClienteView_generarFactura", this );
     if ( res != 0 )
         return;
 

@@ -55,7 +55,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "CuadranteDiarioView_CuadranteDiarioView", this ) ) return;
+        if ( g_plugins->run ( "CuadranteDiarioView_CuadranteDiarioView", this ) ) return;
 
         setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );

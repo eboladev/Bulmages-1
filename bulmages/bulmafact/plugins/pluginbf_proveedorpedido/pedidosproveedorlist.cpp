@@ -115,7 +115,7 @@ void PedidosProveedorList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PedidosProveedorList_iniciaForm", this );
+    int res = g_plugins->run ( "PedidosProveedorList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todos los pedidos" ) );

@@ -54,7 +54,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcCuentaListView_BcCuentaListView", this );
+    int res = g_plugins->run ( "BcCuentaListView_BcCuentaListView", this );
     if ( res != 0 ) {
         
         return;
@@ -402,7 +402,7 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
+    g_plugins->run ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
     
 }
 

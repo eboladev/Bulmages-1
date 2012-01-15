@@ -163,7 +163,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 
     /// Disparamos los plugins.
     
-    int res = g_plugins->lanza ( "BcSubForm_pressedAsterisk", this, ( void** ) &pCodigo );
+    int res = g_plugins->run ( "BcSubForm_pressedAsterisk", this, ( void** ) &pCodigo );
 
     if ( res != 0 ) {
         return;
@@ -250,7 +250,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged", this );
+    int res = g_plugins->run ( "BcSubForm_on_mui_list_cellChanged", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -312,7 +312,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
     } // end if
 
-    g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged_post", this );
+    g_plugins->run ( "BcSubForm_on_mui_list_cellChanged_post", this );
 
     BlSubForm::on_mui_list_cellChanged ( row, col );
     

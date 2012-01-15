@@ -53,7 +53,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "CuadranteView_CuadranteView", this ) ) return;
+        if ( g_plugins->run ( "CuadranteView_CuadranteView", this ) ) return;
 
         setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );

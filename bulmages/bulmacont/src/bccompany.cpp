@@ -219,7 +219,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         m_progressbar->setValue ( 100 );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "BcCompany_createMainWindows_Post", this );
+        int res = g_plugins->run ( "BcCompany_createMainWindows_Post", this );
         if ( res != 0 ) {
             return 0;
         } // end if

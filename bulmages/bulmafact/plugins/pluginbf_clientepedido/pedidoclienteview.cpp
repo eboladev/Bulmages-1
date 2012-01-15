@@ -72,7 +72,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
 
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "PedidoClienteView_PedidoClienteView", this );
+        int res = g_plugins->run ( "PedidoClienteView_PedidoClienteView", this );
         if ( res != 0 )
             return;
         subform3->setMainCompany ( comp );
@@ -317,7 +317,7 @@ int PedidoClienteView::cargarPost ( QString idbudget )
     m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "PedidoClienteView_cargarPost_Post", this );
+    g_plugins->run ( "PedidoClienteView_cargarPost_Post", this );
 
     calculaypintatotales();
 

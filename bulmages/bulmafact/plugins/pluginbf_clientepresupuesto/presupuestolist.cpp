@@ -44,7 +44,7 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PresupuestoList_PresupuestoList", this );
+    int res = g_plugins->run ( "PresupuestoList_PresupuestoList", this );
     if ( res != 0 )
         return;
     m_idpresupuesto = "";
@@ -76,7 +76,7 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PresupuestoList_PresupuestoList", this );
+    int res = g_plugins->run ( "PresupuestoList_PresupuestoList", this );
     if ( res != 0 )
         return;
     m_cliente->setMainCompany ( comp );
@@ -115,7 +115,7 @@ void PresupuestoList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PresupuestoList_iniciaForm", this );
+    int res = g_plugins->run ( "PresupuestoList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todos los presupuestos" ) );
@@ -353,7 +353,7 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm", this );
+    int res = g_plugins->run ( "PresupuestoListSubForm_PresupuestoListSubForm", this );
     if ( res != 0 ) {
         
         return;
@@ -380,7 +380,7 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm_Post", this );
+    g_plugins->run ( "PresupuestoListSubForm_PresupuestoListSubForm_Post", this );
     
     return;
 }

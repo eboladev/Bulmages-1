@@ -243,7 +243,7 @@ void BlSearchWidget::on_m_buscarWidget_clicked()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins
-    g_plugins->lanza ( "Busqueda_on_mui_buscar_clicked", this );
+    g_plugins->run ( "Busqueda_on_mui_buscar_clicked", this );
     
 }
 
@@ -258,7 +258,7 @@ void BlSearchWidget::on_m_inputBusqueda_editingFinished()
 {
     BL_FUNC_DEBUG
     pinta();
-    g_plugins->lanza ( "Busqueda_on_m_inputBusqueda_editingFinished_Post", this );
+    g_plugins->run ( "Busqueda_on_m_inputBusqueda_editingFinished_Post", this );
     
 }
 
@@ -288,7 +288,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     } // end if
 
 
-    if ( g_plugins->lanza ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
+    if ( g_plugins->run ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
         return;
     } // end if
 
@@ -536,7 +536,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
         semaforo = TRUE;
     } // end if
     m_entrada = cod;
-    if ( !g_plugins->lanza ( "BlDbCompleterComboBox_textChanged", this ) ) {
+    if ( !g_plugins->run ( "BlDbCompleterComboBox_textChanged", this ) ) {
         QString codigo = m_entrada;
         if ( codigo.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() ) {
             int pos = codigo.indexOf ( ".-" );
@@ -579,7 +579,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
             } // end if
         } // end if
     } // end if
-    g_plugins->lanza ( "BlDbCompleterComboBox_textChanged_Post", this );
+    g_plugins->run ( "BlDbCompleterComboBox_textChanged_Post", this );
     setEditText ( cod );
     semaforo = FALSE;
     

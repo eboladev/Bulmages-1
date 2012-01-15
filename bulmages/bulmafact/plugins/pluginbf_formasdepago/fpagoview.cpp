@@ -48,7 +48,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     mui_idbanco->setMainCompany ( emp );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FPagoView_FPagoView", this );
+    int res = g_plugins->run ( "FPagoView_FPagoView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -144,7 +144,7 @@ int FPagoView::save()
 	if (idbanco == "") idbanco = "NULL";
 	
 	/// Disparamos los plugins.
-        int res1 = g_plugins->lanza ( "FPagoView_Guardar_Pre", this );
+        int res1 = g_plugins->run ( "FPagoView_Guardar_Pre", this );
         if ( res1 != 0 ) {
             return -1;
         } // end if
@@ -168,7 +168,7 @@ int FPagoView::save()
         } // end if
 
 	/// Disparamos los plugins.
-        int res2 = g_plugins->lanza ( "FPagoView_Guardar_Post", this );
+        int res2 = g_plugins->run ( "FPagoView_Guardar_Post", this );
         if ( res2 != 0 ) {
             return -1;
         } // end if

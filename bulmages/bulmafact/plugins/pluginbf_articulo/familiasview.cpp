@@ -68,7 +68,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
     mui_codFamilia->setEnabled ( FALSE );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FamiliasView_FamiliasView", this );
+    int res = g_plugins->run ( "FamiliasView_FamiliasView", this );
     if ( res != 0 ) {
 	return;
     } // end if
@@ -275,7 +275,7 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
     } // end if
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FamiliasView_currentItemChanged_Post", this );
+    int res = g_plugins->run ( "FamiliasView_currentItemChanged_Post", this );
     if ( res != 0 ) {
 	return;
     } // end if
@@ -377,7 +377,7 @@ int FamiliasView::save()
 	mainCompany()->begin();
 
         /// Disparamos los plugins.
-        int res1 = g_plugins->lanza ( "FamiliasView_Guardar_Pre", this );
+        int res1 = g_plugins->run ( "FamiliasView_Guardar_Pre", this );
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
@@ -397,7 +397,7 @@ int FamiliasView::save()
         } // end if
 
         /// Disparamos los plugins.
-        int res2 = g_plugins->lanza ( "FamiliasView_Guardar_Post", this );
+        int res2 = g_plugins->run ( "FamiliasView_Guardar_Post", this );
 	if ( res2 != 0 ) {
 	    throw -1;
 	} // end if

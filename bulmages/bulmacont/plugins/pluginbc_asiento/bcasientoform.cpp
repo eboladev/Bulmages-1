@@ -413,7 +413,7 @@ int BcAsientoForm::save()
         listalineas->save();
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "BcAsientoForm_guardaAsiento1_post", this );
+        int res = g_plugins->run ( "BcAsientoForm_guardaAsiento1_post", this );
         if ( res != 0 )
             return 0;
 

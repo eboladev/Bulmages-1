@@ -43,7 +43,7 @@ ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode edit
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ConvReunionList_ConvReunionList", this );
+    int res = g_plugins->run ( "ConvReunionList_ConvReunionList", this );
     if ( res != 0 )
         return;
     mdb_idreunion = "";
@@ -66,7 +66,7 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ConvReunionList_ConvReunionList", this );
+    int res = g_plugins->run ( "ConvReunionList_ConvReunionList", this );
     if ( res != 0 )
         return;
 
@@ -262,7 +262,7 @@ ConvReunionListSubForm::ConvReunionListSubForm ( QWidget *parent ) : BfSubForm (
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ConvReunionListSubForm_ConvReunionListSubForm", this );
+    int res = g_plugins->run ( "ConvReunionListSubForm_ConvReunionListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "reunion" );

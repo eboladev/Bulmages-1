@@ -99,7 +99,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         dialogChanges_readValues();
 
         /// Disparamos los plugins.
-        g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
+        g_plugins->run ( "ProveedorView_ProveedorView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _( "Error al crear el proveedor" ) );
@@ -123,7 +123,7 @@ int ProveedorView::beforeSave()
 	int res1;
 
         /// Disparamos los plugins.
-        res1 = g_plugins->lanza ( "ProveedorView_Guardar_Pre", this );
+        res1 = g_plugins->run ( "ProveedorView_Guardar_Pre", this );
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
@@ -137,7 +137,7 @@ int ProveedorView::afterSave()
 	int res1;
 
         /// Disparamos los plugins.
-        res1 = g_plugins->lanza ( "ProveedorView_Guardar_Post", this );
+        res1 = g_plugins->run ( "ProveedorView_Guardar_Post", this );
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
@@ -173,7 +173,7 @@ int ProveedorView::cargarPost ( QString idprov )
 {
     BL_FUNC_DEBUG
     /// Lanzamos los plugins de carga
-    g_plugins->lanza ( "ProveedorView_cargarPost_Post", this );
+    g_plugins->run ( "ProveedorView_cargarPost_Post", this );
     
     return 0;
 }

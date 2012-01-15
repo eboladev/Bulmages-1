@@ -100,7 +100,7 @@ void BfBuscarReferencia::on_mui_rferencia_returnPressed()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", this );
+    int res = g_plugins->run ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", this );
     if ( res == 0 ) {
         emit ( returnPressed ( ) );
     } // end if
@@ -220,7 +220,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         } // end while
         delete cur;
     */
-    g_plugins->lanza ( "BfBuscarReferencia_on_mui_abrirtodo_clicked_Post", this );
+    g_plugins->run ( "BfBuscarReferencia_on_mui_abrirtodo_clicked_Post", this );
 
     
 }

@@ -55,7 +55,7 @@ ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 
     connect(m_tcpServer, SIGNAL(newConnection()), this, SLOT(conection()));
 
-    g_plugins->lanza ( "ServerLight_ServerLight_Post", this );
+    g_plugins->run ( "ServerLight_ServerLight_Post", this );
     
 }
 
@@ -256,7 +256,7 @@ void ServerLight::processTicketDataXML(QString data)
     
     /// Hacemos una llamada a plugins para indicar que hay un ticket nuevo y que deben recoger los otros plugins.
     /// En este caso es una llamada extraña pq no se pasa la clase llamante sino que se pasa el ticket generado.
-    g_plugins->lanza("ticket_aparcado_remotamente", ticket);
+    g_plugins->run("ticket_aparcado_remotamente", ticket);
     
 }
 

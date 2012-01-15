@@ -39,7 +39,7 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "numlalbaran" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", this );
+    int res = g_plugins->run ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", this );
     if ( res != 0 )
         return;
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
@@ -59,7 +59,7 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post", this );
+    g_plugins->run ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post", this );
     
 
 }
@@ -74,7 +74,7 @@ void BfClienteAlbaranSubForm::load ( QString idalbaran )
     BL_FUNC_DEBUG
     mdb_idalbaran = idalbaran;
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfClienteAlbaranSubForm_cargar", this );
+    int res = g_plugins->run ( "BfClienteAlbaranSubForm_cargar", this );
     if ( res != 0 )
         return;
 

@@ -79,7 +79,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "recargoeqcliente", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Recargo de Equivalencia" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "ClienteView_ClienteView", this );
+        int res = g_plugins->run ( "ClienteView_ClienteView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -100,7 +100,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         insertWindow ( windowTitle(), this, FALSE );
         dialogChanges_readValues();
         /// Disparamos los plugins.
-        res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
+        res = g_plugins->run ( "ClienteView_ClienteView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el cliente" ) );
@@ -117,7 +117,7 @@ ClienteView::~ClienteView()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
+    g_plugins->run ( "ClienteView_Des_ClienteView", this );
     mainCompany() ->removeWindow ( this );
     
 }
@@ -128,7 +128,7 @@ int ClienteView::beforeSave()
 	int res1;
 
         /// Disparamos los plugins.
-        res1 = g_plugins->lanza ( "ClienteView_Guardar_Pre", this );
+        res1 = g_plugins->run ( "ClienteView_Guardar_Pre", this );
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
@@ -142,7 +142,7 @@ int ClienteView::afterSave()
 	int res1;
 
         /// Disparamos los plugins.
-        res1 = g_plugins->lanza ( "ClienteView_Guardar_Post", this );
+        res1 = g_plugins->run ( "ClienteView_Guardar_Post", this );
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
@@ -171,7 +171,7 @@ int ClienteView::cargarPost ( QString idcliente )
     BL_FUNC_DEBUG
 
     /// Lanzamos los plugins de carga
-    g_plugins->lanza ( "ClienteView_cargarPost_Post", this );
+    g_plugins->run ( "ClienteView_cargarPost_Post", this );
 
     
     return 0;

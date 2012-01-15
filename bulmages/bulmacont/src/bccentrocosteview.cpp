@@ -65,7 +65,7 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcCentroCosteView_BcCentroCosteView", this );
+    int res = g_plugins->run ( "BcCentroCosteView_BcCentroCosteView", this );
     if ( res != 0 ) {
         return;
     } // end if

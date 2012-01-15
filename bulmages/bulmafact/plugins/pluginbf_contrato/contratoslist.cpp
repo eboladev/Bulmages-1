@@ -51,7 +51,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ContratosList_ContratosList", this );
+    int res = g_plugins->run ( "ContratosList_ContratosList", this );
     if ( res != 0 )
         return;
 

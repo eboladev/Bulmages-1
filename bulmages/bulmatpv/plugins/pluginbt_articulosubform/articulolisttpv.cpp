@@ -61,7 +61,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 
     showFullScreen();
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ArticuloList1_ArticuloList1", this );
+    int res = g_plugins->run ( "ArticuloList1_ArticuloList1", this );
     if ( res != 0 ) {
 	
         return;
@@ -248,7 +248,7 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
     setDbFieldId ( "idarticulo" );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ArticuloList1SubForm1_ArticuloList1SubForm1", this );
+    int res = g_plugins->run ( "ArticuloList1SubForm1_ArticuloList1SubForm1", this );
     if ( res != 0 )
         return;
 
@@ -265,7 +265,7 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "ArticuloList1SubForm1_ArticuloList1SubForm1_Post", this );
+    g_plugins->run ( "ArticuloList1SubForm1_ArticuloList1SubForm1_Post", this );
     
 }
 

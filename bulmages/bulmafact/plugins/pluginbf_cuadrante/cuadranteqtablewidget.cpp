@@ -154,7 +154,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     delete cur1;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "CuadranteQTextDocument_on_customContextMenuRequested", this );
+    int res = g_plugins->run ( "CuadranteQTextDocument_on_customContextMenuRequested", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -189,7 +189,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
         mainCompany() ->runQuery ( query );
     } // end if
 
-    g_plugins->lanza ( "CuadranteQTextDocument_on_customContextMenuRequested_Post", this );
+    g_plugins->run ( "CuadranteQTextDocument_on_customContextMenuRequested_Post", this );
 
 
     pintaCuadrante ( mdb_idalmacen, mdb_fechacuadrante );
@@ -493,7 +493,7 @@ void ImpCuadrante::generar()
     BlDbRecordSet *cur1 = NULL;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ImpCuadrante_generar", this );
+    int res = g_plugins->run ( "ImpCuadrante_generar", this );
     if ( res != 0 ) {
         return;
     } // end if

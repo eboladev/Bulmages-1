@@ -120,7 +120,7 @@ TicketClienteList::TicketClienteList ( QWidget *parent, Qt::WFlags flag, edmode 
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TicketClienteList_TicketClienteList", this );
+    int res = g_plugins->run ( "TicketClienteList_TicketClienteList", this );
     if ( res != 0 )
         return;
     mdb_idalbaran = "";
@@ -152,7 +152,7 @@ TicketClienteList::TicketClienteList ( BfCompany *comp, QWidget *parent, Qt::WFl
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TicketClienteList_TicketClienteList", this );
+    int res = g_plugins->run ( "TicketClienteList_TicketClienteList", this );
     if ( res != 0 )
         return;
     m_cliente->setMainCompany ( comp );
@@ -201,7 +201,7 @@ void TicketClienteList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TicketClienteList_iniciaForm", this );
+    int res = g_plugins->run ( "TicketClienteList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todos los tickets" ) );
@@ -414,7 +414,7 @@ TicketClienteListSubform::TicketClienteListSubform ( QWidget *parent ) : BfSubFo
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TicketClienteListSubform_TicketClienteListSubform", this );
+    int res = g_plugins->run ( "TicketClienteListSubform_TicketClienteListSubform", this );
     if ( res != 0 )
         return;
     setDbTableName ( "albaran" );

@@ -511,7 +511,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
     if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
 
-        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;
@@ -566,7 +566,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;

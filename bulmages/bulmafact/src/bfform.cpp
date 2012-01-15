@@ -995,7 +995,7 @@ int BfForm::generateRML ( const QString &arch )
         } // end if
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "BfForm_generateRML", this );
+        int res = g_plugins->run ( "BfForm_generateRML", this );
         if ( res != 0 ) {
             return 1;
         } // end if
@@ -1025,7 +1025,7 @@ void BfForm::imprimir()
     
     try {
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "BfForm_imprimir", this );
+        int res = g_plugins->run ( "BfForm_imprimir", this );
         if ( res != 0 ) {
             return;
         } // end if

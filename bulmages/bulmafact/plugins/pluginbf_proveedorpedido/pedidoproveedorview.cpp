@@ -66,7 +66,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono proveedor" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "PedidoProveedorView_PedidoProveedorView", this );
+        int res = g_plugins->run ( "PedidoProveedorView_PedidoProveedorView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -196,7 +196,7 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
     m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "PedidoProveedorView_cargarPost_Post", this );
+    g_plugins->run ( "PedidoProveedorView_cargarPost_Post", this );
 
     calculaypintatotales();
 

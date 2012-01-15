@@ -158,7 +158,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
     /// OJO!! Antes de nada, hay que calcular el asiento de REGULARIZACION que nos guarda el resultado en la 129
     BcAsientoView *asientoReg;
 
-        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo("No se pudo crear instancia de asientos");
             return;

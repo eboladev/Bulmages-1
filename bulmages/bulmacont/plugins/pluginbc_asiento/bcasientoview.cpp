@@ -52,7 +52,7 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
     setupUi ( this );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcAsientoView_BcAsientoView", this );
+    int res = g_plugins->run ( "BcAsientoView_BcAsientoView", this );
     if ( res != 0 )
         return;
 

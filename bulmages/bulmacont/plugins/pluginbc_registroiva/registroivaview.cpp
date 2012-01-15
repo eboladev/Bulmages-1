@@ -51,7 +51,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza ( "RegistroIvaView_RegistroIvaView", this );
+    int res = g_plugins->run ( "RegistroIvaView_RegistroIvaView", this );
     if ( res != 0 )
         return;
 
@@ -107,7 +107,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
 
     mui_listPrevCobro->setInsert ( TRUE );
     mainCompany() ->insertWindow ( windowTitle(), this );
-    g_plugins->lanza ( "RegistroIvaView_RegistroIvaView_Post", this );
+    g_plugins->run ( "RegistroIvaView_RegistroIvaView_Post", this );
     
 }
 

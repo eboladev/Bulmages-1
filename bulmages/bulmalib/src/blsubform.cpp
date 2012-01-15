@@ -202,7 +202,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     m_filaInicialRowSpan = -1;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BlSubForm_BlSubForm", this );
+    int res = g_plugins->run ( "BlSubForm_BlSubForm", this );
     if ( res != 0 ) {
         m_procesacambios = TRUE;
         return;
@@ -271,7 +271,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     setDelete ( TRUE );
     
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BlSubForm_BlSubForm_Post", this );
+    g_plugins->run ( "BlSubForm_BlSubForm_Post", this );
     m_procesacambios = TRUE;
     
    if (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE") {
@@ -1757,7 +1757,7 @@ bool BlSubForm::campoCompleto ( int row )
     BL_FUNC_DEBUG
     bool resultat = false;
     bool *pResultat = &resultat;
-    if ( g_plugins->lanza ( "BlSubForm_campoCompleto", this, ( void** ) &pResultat ) ) {
+    if ( g_plugins->run ( "BlSubForm_campoCompleto", this, ( void** ) &pResultat ) ) {
 	
         return resultat;
     } else {
@@ -2993,7 +2993,7 @@ void BlSubForm::preparaMenu() {
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BlSubForm_preparaMenu", this );
+    g_plugins->run ( "BlSubForm_preparaMenu", this );
 
     QHBoxLayout *m_hboxLayout1 = mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -3336,7 +3336,7 @@ void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     m_campoactual = camp;
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BlSubForm_editFinished", this );
+    g_plugins->run ( "BlSubForm_editFinished", this );
 
 
     
@@ -3352,7 +3352,7 @@ void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *rec, BlDbSubFormF
     m_campoactual = camp;
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BlSubForm_pressedAsterisk", this );
+    g_plugins->run ( "BlSubForm_pressedAsterisk", this );
 }
 
 
@@ -3533,7 +3533,7 @@ BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelega
     BL_FUNC_DEBUG
     m_subform = ( BlSubForm * ) parent;
     installEventFilter ( this );
-    g_plugins->lanza ( "BlSubFormDelegate_BlSubFormDelegate_Post", ( void * ) this );
+    g_plugins->run ( "BlSubFormDelegate_BlSubFormDelegate_Post", ( void * ) this );
     
 }
 
@@ -3563,7 +3563,7 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     g_fieldName = linea->fieldName();
     g_editor = parent;
 
-    if ( g_plugins->lanza ( "BlSubFormDelegate_createEditor", ( void * ) this ) ) {
+    if ( g_plugins->run ( "BlSubFormDelegate_createEditor", ( void * ) this ) ) {
 	
         return ( QWidget * ) g_plugParams;
     } // end if
@@ -3621,7 +3621,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     linea = m_subform->headerList() ->at ( index.column() );
     g_fieldName = linea->fieldName();
 
-    if ( g_plugins->lanza ( "BlSubFormDelegate_setModelData", ( void * ) this ) ) {
+    if ( g_plugins->run ( "BlSubFormDelegate_setModelData", ( void * ) this ) ) {
 	
         return;
     } // end if
@@ -3668,7 +3668,7 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     linea = m_subform->headerList() ->at ( index.column() );
     g_fieldName = linea->fieldName();
 
-    if ( g_plugins->lanza ( "BlSubFormDelegate_setEditorData", ( void * ) this ) ) {
+    if ( g_plugins->run ( "BlSubFormDelegate_setEditorData", ( void * ) this ) ) {
 	
         return;
     } // end if

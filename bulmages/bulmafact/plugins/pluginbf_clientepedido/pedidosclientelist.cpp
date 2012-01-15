@@ -42,7 +42,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PedidosClienteList_PedidosClienteList", this );
+    int res = g_plugins->run ( "PedidosClienteList_PedidosClienteList", this );
     if ( res != 0 )
         return;
     m_idpedidocliente = "";
@@ -72,7 +72,7 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PedidosClienteList_PedidosClienteList", this );
+    int res = g_plugins->run ( "PedidosClienteList_PedidosClienteList", this );
     if ( res != 0 )
         return;
     m_cliente->setMainCompany ( comp );
@@ -112,7 +112,7 @@ void PedidosClienteList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PedidosClienteList_iniciaForm", this );
+    int res = g_plugins->run ( "PedidosClienteList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todos los pedidos" ) );
@@ -333,7 +333,7 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PedidosClienteListSubform_PedidosClienteListSubform", this );
+    int res = g_plugins->run ( "PedidosClienteListSubform_PedidosClienteListSubform", this );
     if ( res != 0 )
         return;
     setDbTableName ( "pedidocliente" );

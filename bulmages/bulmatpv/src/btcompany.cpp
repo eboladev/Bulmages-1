@@ -147,7 +147,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     } // end if
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BtCompany_createMainWindows_Post", this );
+    int res = g_plugins->run ( "BtCompany_createMainWindows_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -198,7 +198,7 @@ void BtCompany::z()
     
     QString queryfechas;
     
-    if ( g_plugins->lanza ( "BtCompany_z", this ) )
+    if ( g_plugins->run ( "BtCompany_z", this ) )
         return;
     
     begin();
@@ -263,7 +263,7 @@ void BtCompany::x()
 {
     BL_FUNC_DEBUG
 
-    if ( g_plugins->lanza ( "BtCompany_x", this ) )
+    if ( g_plugins->run ( "BtCompany_x", this ) )
         return;
 
     m_ticketActual -> generateRML("informe_X.txt");
@@ -285,7 +285,7 @@ BtTicket *BtCompany::newBtTicket()
     /// Lanzamos los plugins necesarios.
     BtTicket *bud;
     
-    if ( g_plugins->lanza ( "BtCompany_newBtTicket", this, ( void ** ) & bud ) )
+    if ( g_plugins->run ( "BtCompany_newBtTicket", this, ( void ** ) & bud ) )
         return bud;
         
     bud = new BtTicket ( this, NULL );
@@ -302,7 +302,7 @@ void BtCompany::cobrar(bool imprimir)
 
     QString idtrabajador = m_ticketActual->dbValue ( "idtrabajador" );
 
-    if ( g_plugins->lanza ( "BtCompany_cobrar", this ) ) {
+    if ( g_plugins->run ( "BtCompany_cobrar", this ) ) {
         return;
     } // end if
 
@@ -334,7 +334,7 @@ void BtCompany::cobrar(bool imprimir)
     } // end if
     m_ticketActual->abrircajon();
 
-    if ( g_plugins->lanza ( "BtCompany_cobrar_1", this ) ) {
+    if ( g_plugins->run ( "BtCompany_cobrar_1", this ) ) {
         return;
     } // end if
 
@@ -366,7 +366,7 @@ void BtCompany::cobrar(bool imprimir)
         tick->pintar();
     }// end if
 
-    g_plugins->lanza ( "BtCompany_cobrar_Post", this );
+    g_plugins->run ( "BtCompany_cobrar_Post", this );
     
     
 }
@@ -388,9 +388,9 @@ QList<BtTicket *> *BtCompany::listaTickets()
 void BtCompany::setTicketActual ( BtTicket *tick )
 {
     BL_FUNC_DEBUG
-    g_plugins->lanza ( "BtCompany_setTicketActual", this );
+    g_plugins->run ( "BtCompany_setTicketActual", this );
     m_ticketActual = tick;
-    g_plugins->lanza ( "BtCompany_setTicketActual_Post", this );
+    g_plugins->run ( "BtCompany_setTicketActual_Post", this );
     
 }
 

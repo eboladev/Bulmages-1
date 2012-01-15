@@ -35,12 +35,12 @@ BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
    hide();
 
    /// Disparamos los plugins.
-   int res = g_plugins->lanza ( "BlFormListFilter_BlFormListFilter", this );
+   int res = g_plugins->run ( "BlFormListFilter_BlFormListFilter", this );
    if ( res != 0 ) {
        return;
    } // end if
 
-   g_plugins->lanza ( "BlFormListFilter_BlFormListFilter", this );
+   g_plugins->run ( "BlFormListFilter_BlFormListFilter", this );
 
    
 }

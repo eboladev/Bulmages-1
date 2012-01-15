@@ -45,7 +45,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     setupUi ( this );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "PresupuestoContableList_PresupuestoContableList", this );
+    int res = g_plugins->run ( "PresupuestoContableList_PresupuestoContableList", this );
     if ( res != 0 )
         return;
 

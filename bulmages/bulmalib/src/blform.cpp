@@ -54,7 +54,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlForm_BlForm", this );
+    int res = g_plugins->run ( "BlForm_BlForm", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -130,7 +130,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlForm_BlForm", this );
+    int res = g_plugins->run ( "BlForm_BlForm", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -169,7 +169,7 @@ BlForm::~BlForm()
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlForm::~BlForm", 0, this->windowTitle() );
-    g_plugins->lanza ( "BlForm_DesBlForm", this );
+    g_plugins->run ( "BlForm_DesBlForm", this );
     removeWindow();
     
 }
@@ -184,7 +184,7 @@ void BlForm::loadSpecs()
     BL_FUNC_DEBUG
     
         /// Disparamos los plugins
-    int res1 = g_plugins->lanza ( "BlForm_loadSpecs", this );
+    int res1 = g_plugins->run ( "BlForm_loadSpecs", this );
     if ( res1 != 0 ) {
         
         return;
@@ -263,7 +263,7 @@ void BlForm::loadSpecs()
     } // end for
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlForm_loadSpecs_Post", this );
+    int res = g_plugins->run ( "BlForm_loadSpecs_Post", this );
 
     
 }
@@ -888,7 +888,7 @@ int BlForm::load ( QString id, bool paint )
             throw - 1;
         } // end if
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "BlForm_load", this ) ) return 0;
+        if ( g_plugins->run ( "BlForm_load", this ) ) return 0;
         cargarPost ( id );
 
 
@@ -949,7 +949,7 @@ int BlForm::save()
         setDbValue ( m_campoid, id );
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "BlForm_guardar_Post", this ) ) return 0;
+        if ( g_plugins->run ( "BlForm_guardar_Post", this ) ) return 0;
 
         afterSave();
 
@@ -1011,7 +1011,7 @@ int BlForm::remove()
     BL_FUNC_DEBUG
     try {
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "BlForm_borrar", this ) ) return 0;
+        if ( g_plugins->run ( "BlForm_borrar", this ) ) return 0;
         beforeDelete();
         int err;
         err =  BlDbRecord::remove();
@@ -1681,7 +1681,7 @@ int BlForm::generateRML ( const QString &arch )
     m_variables["hora_actual"] = QTime::currentTime().toString ( "HH:mm" );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlForm_generateRML", this );
+    int res = g_plugins->run ( "BlForm_generateRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if

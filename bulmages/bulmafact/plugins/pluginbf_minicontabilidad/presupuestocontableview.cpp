@@ -73,7 +73,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "PresupuestoContableView_PresupuestoContableView", this );
+        int res = g_plugins->run ( "PresupuestoContableView_PresupuestoContableView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -85,7 +85,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 
         insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
-        g_plugins->lanza ( "PresupuestoContableView_PresupuestoContableView_Post", this );
+        g_plugins->run ( "PresupuestoContableView_PresupuestoContableView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el presupuesto" ), this );
@@ -114,7 +114,7 @@ PresupuestoContableView::~PresupuestoContableView()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    g_plugins->lanza ( "PresupuestoContableView_DesPresupuestoContableView", this );
+    g_plugins->run ( "PresupuestoContableView_DesPresupuestoContableView", this );
     
 }
 
@@ -129,7 +129,7 @@ int PresupuestoContableView::beforeDelete()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "PresupuestoContableView_beforeDelete", this );
+    g_plugins->run ( "PresupuestoContableView_beforeDelete", this );
     mui_list->remove();
     
     return 0;
@@ -165,7 +165,7 @@ int PresupuestoContableView::afterSave()
 
     mui_list->save();
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "PresupuestoContableView_afterSave_Post", this );
+    g_plugins->run ( "PresupuestoContableView_afterSave_Post", this );
 
     
     return 0;

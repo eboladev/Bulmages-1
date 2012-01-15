@@ -39,8 +39,8 @@ public:
     BlPlugins();
     ~BlPlugins();
     void cargaLibs ( const QString &libs );
-    int lanza ( const char *func, void *clase );
-    int lanza ( const char *func, void *clase, void **ret );
+    int run ( const char *func, void *clase );
+    int run ( const char *func, void *clase, void **ret );
     QList<QLibrary *> pluginsLoaded();
 };
 

@@ -47,7 +47,7 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasList_FacturasList", this );
+    int res = g_plugins->run ( "FacturasList_FacturasList", this );
     if ( res != 0 )
         return;
     iniciaForm();
@@ -79,7 +79,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasList_FacturasList", this );
+    int res = g_plugins->run ( "FacturasList_FacturasList", this );
     if ( res != 0 )
         return;
     iniciaForm();
@@ -139,7 +139,7 @@ void FacturasList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasList_iniciaForm", this );
+    int res = g_plugins->run ( "FacturasList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
@@ -420,7 +420,7 @@ FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfS
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasListSubform_FacturasListSubform", this );
+    int res = g_plugins->run ( "FacturasListSubform_FacturasListSubform", this );
     if ( res != 0 )
         return;
     setDbTableName ( "factura" );

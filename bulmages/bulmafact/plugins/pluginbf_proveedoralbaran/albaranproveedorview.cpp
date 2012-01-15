@@ -65,7 +65,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion albaran proveedor" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "AlbaranProveedorView_AlbaranProveedorView", this );
+        int res = g_plugins->run ( "AlbaranProveedorView_AlbaranProveedorView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -248,7 +248,7 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
     m_listadescuentos->load ( idbudget );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "AlbaranProveedorView_cargarPost_Post", this );
+    g_plugins->run ( "AlbaranProveedorView_cargarPost_Post", this );
 
     calculaypintatotales();
     
