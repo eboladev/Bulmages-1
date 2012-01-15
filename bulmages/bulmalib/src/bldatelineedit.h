@@ -36,12 +36,12 @@ public:
     BlDateLineEdit ( QWidget *parent = 0 );
     ~BlDateLineEdit();
 
-    void setText ( QString val );
-    virtual void setFieldValue ( QString val );
+    void setText ( QString text );
+    virtual void setFieldValue ( QString value );
     QString text();
     virtual QString fieldValue();
     void selectAll();
-    virtual bool eventFilter ( QObject *obj, QEvent *event );
+    virtual bool eventFilter ( QObject *object, QEvent *event );
 
 public slots:
     void on_mui_editingFinished();

@@ -321,10 +321,10 @@ void BlDbField::syncXML(const QString &text) {
 /**
 \param con Puntero a la base de datos con la que vamos a trabajar.
 **/
-BlDbRecord::BlDbRecord ( BlMainCompany *con )
+BlDbRecord::BlDbRecord ( BlMainCompany *company )
 {
     BL_FUNC_DEBUG
-    m_dbConnection = con;
+    m_dbConnection = company;
     m_nuevoCampo = TRUE;
     m_tableName = "";
     
@@ -349,10 +349,10 @@ Esta clase funciona siempre ligada a una base de datos. Esta se especifica
 en el constructor de la clase.
 \param comp Puntero a la base de datos que debe utilizar la clase.
 **/
-void BlDbRecord::setDbConnection ( BlMainCompany *dbConnection )
+void BlDbRecord::setDbConnection ( BlMainCompany *company )
 {
     BL_FUNC_DEBUG
-    m_dbConnection = dbConnection;
+    m_dbConnection = company;
 }
 
 

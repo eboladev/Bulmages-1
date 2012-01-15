@@ -40,7 +40,6 @@ BlDateLineEdit::BlDateLineEdit ( QWidget *parent ) : QLineEdit ( parent )
 BlDateLineEdit::~BlDateLineEdit()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -48,11 +47,10 @@ BlDateLineEdit::~BlDateLineEdit()
 /**
 \param val
 **/
-void BlDateLineEdit::setText ( QString val )
+void BlDateLineEdit::setText ( QString text )
 {
     BL_FUNC_DEBUG
-    QLineEdit::setText ( val );
-    
+    QLineEdit::setText ( text );
 }
 
 
@@ -60,11 +58,10 @@ void BlDateLineEdit::setText ( QString val )
 /**
 \param val
 **/
-void BlDateLineEdit::setFieldValue ( QString val )
+void BlDateLineEdit::setFieldValue ( QString value )
 {
     BL_FUNC_DEBUG
-    QLineEdit::setText ( val );
-    
+    QLineEdit::setText ( value );
 }
 
 
@@ -74,7 +71,6 @@ void BlDateLineEdit::setFieldValue ( QString val )
 void BlDateLineEdit::selectAll()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -85,7 +81,6 @@ void BlDateLineEdit::selectAll()
 QString BlDateLineEdit::text()
 {
     BL_FUNC_DEBUG
-    
     return QLineEdit::text();
 }
 
@@ -97,7 +92,6 @@ QString BlDateLineEdit::text()
 QString BlDateLineEdit::fieldValue()
 {
     BL_FUNC_DEBUG
-    
     return QLineEdit::text();
 }
 
@@ -109,38 +103,18 @@ void BlDateLineEdit::on_mui_editingFinished()
 {
     BL_FUNC_DEBUG
     setText ( blNormalizeDate ( text() ).toString ( "dd/MM/yyyy" ) );
-    
 }
 
 
 ///
 /**
-\param obj
+\param object
 \param event
 \return
 **/
-bool BlDateLineEdit::eventFilter ( QObject *obj, QEvent *event )
+bool BlDateLineEdit::eventFilter ( QObject *object, QEvent *event )
 {
     BL_FUNC_DEBUG
-    /*
-        if (event->type() == QEvent::KeyRelease) {
-            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-            int key = keyEvent->key();
-            switch (key) {
-            case Qt::Key_Return:
-            case Qt::Key_Enter:
-                setText(blNormalizeDate(text()).toString());
-                break;
-          } // end switch
-        } // end if
-    */
-    /*
-        if (event->type() == QEvent::FocusOut) {
-            setText("1111");
-            return TRUE;
-        } // end if
-    */
-    
-    return QLineEdit::eventFilter ( obj, event );
+    return QLineEdit::eventFilter ( object, event );
 }
 

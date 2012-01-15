@@ -21,15 +21,16 @@
 
 #include "bldatedelegate.h"
 
+
 /// Constructor
 /**
-   \param comp
+   \param company
    \param parent
    \param allowNull
 **/
-BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allowNull )
+BlDateDelegate::BlDateDelegate ( BlMainCompany *company, QObject *parent, bool allowNull )
    : QStyledItemDelegate ( parent )
-   , m_company ( comp )
+   , m_company ( company )
    , m_allowNull ( allowNull )
 {
    BL_FUNC_DEBUG
@@ -45,9 +46,9 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allo
 QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-   BlDateSearch *ds = new BlDateSearch ( parent ) ;
-   ds->setMainCompany ( m_company ) ;
-   return ds;
+   BlDateSearch *dateSearch = new BlDateSearch ( parent ) ;
+   dateSearch->setMainCompany ( m_company ) ;
+   return dateSearch;
 }
 
 
@@ -59,16 +60,16 @@ QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewI
 void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-   BlDateSearch *ds = ( BlDateSearch * ) editor;
-   QString fecha = index.model()->data ( index ).toString();
+   BlDateSearch *dateSearch = ( BlDateSearch * ) editor;
+   QString date = index.model()->data ( index ).toString();
 
-   /// Si no hay fecha previa, usar la de hoy si no se permite el valor nulo
-   if ( fecha.isEmpty() && !m_allowNull )
+   /// Si no hay fecha previa, usar la de hoy si no se permite el valor nulo.
+   if ( date.isEmpty() && !m_allowNull )
    {
-	fecha = QDate::currentDate().toString("dd/MM/yyyy");
+	date = QDate::currentDate().toString("dd/MM/yyyy");
    }
 
-   ds->setDate ( fecha );
+   dateSearch->setDate ( date );
 }
 
 
@@ -81,8 +82,8 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
 void BlDateDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
    BL_FUNC_DEBUG
-   QString fecha = ( ( BlDateSearch * ) editor ) ->text();
-   model->setData ( index, fecha ) ;
+   QString date = ( ( BlDateSearch * ) editor ) ->text();
+   model->setData ( index, date );
 }
 
 
@@ -103,8 +104,8 @@ void BlDateDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionV
 /**
   \param v
 **/
-void BlDateDelegate::setAllowNull ( bool v )
+void BlDateDelegate::setAllowNull ( bool allowNull )
 {
    BL_FUNC_DEBUG
-   m_allowNull = v;
+   m_allowNull = allowNull;
 }

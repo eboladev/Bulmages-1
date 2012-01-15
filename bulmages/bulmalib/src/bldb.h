@@ -125,9 +125,9 @@ protected:
     BlMainCompany *m_dbConnection;      /// Puntero a la base de datos con la que se opera.
     
 public:
-    BlDbRecord ( BlMainCompany * );
+    BlDbRecord ( BlMainCompany *company );
     virtual ~BlDbRecord();
-    void setDbConnection ( BlMainCompany *comp );
+    void setDbConnection ( BlMainCompany *company );
     BlMainCompany *dbConnection();
     int DBload ( BlDbRecordSet * );
     virtual int dbSave ( QString &id );

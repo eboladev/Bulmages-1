@@ -32,14 +32,12 @@ BlDateSearch::BlDateSearch ( QWidget *parent ) : BlWidget ( parent )
     BL_FUNC_DEBUG
     setupUi ( this );
     QObject::connect ( m_busquedaFecha, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_searchFecha() ) );
-   
     QObject::connect ( m_textoFecha, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( m_textoFecha, SIGNAL ( editingFinished() ), this, SLOT ( s_fechalostFocus() ) );
     QObject::connect ( m_textoFecha, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
 
     /// Establecemos la delegacion del foco en el texto
     setFocusProxy(m_textoFecha);
-    
 }
 
 
