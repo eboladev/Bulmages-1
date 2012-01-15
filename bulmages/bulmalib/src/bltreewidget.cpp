@@ -1,9 +1,32 @@
-#include <QMenu>
+/***************************************************************************
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
+#include <QMenu>
 #include "blfunctions.h"
 #include "bltreewidget.h"
 #include "blplugins.h"
 #include "local_blI18n.h"
+
 
 BlTreeWidget::BlTreeWidget ( QWidget * parent ) : QTreeWidget(parent) {
 
@@ -14,7 +37,6 @@ BlTreeWidget::BlTreeWidget ( QWidget * parent ) : QTreeWidget(parent) {
 
 BlTreeWidget::~BlTreeWidget () {
 }
-
 
 
 ///
@@ -45,66 +67,40 @@ void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
 {
     BL_FUNC_DEBUG
 
-    int col = currentColumn();
-    if ( col < 0 )
-        return;
+    int column = currentColumn();
+    
+    if ( column < 0 ) return;
 
-    QMenu *popup = new QMenu ( this );
+    QMenu *menu = new QMenu ( this );
 
     /// Lanzamos el evento para que pueda ser capturado por terceros.
-    emit pintaMenu ( popup );
+    emit pintaMenu ( menu );
 
-    /// Lanzamos la propagacion del menu a traves de las clases derivadas.
-    createMenu ( popup );
+    /// Lanzamos la propagaci&oacute;n del men&uacute; a trav&eacute;s de las clases derivadas.
+    createMenu ( menu );
 
+    QAction *adjustColumnSize = menu->addAction ( _ ( "Ajustar columa" ) );
+    QAction *adjustAllColumnsSize = menu->addAction ( _ ( "Ajustar columnas" ) );
+    QAction *menuOption = menu->exec ( QCursor::pos() );
 
-/*
-    if ( m_delete ) {
-        popup->addSeparator();
-        del = popup->addAction ( _ ( "Borrar registro" ) );
-    } // end if
-    popup->addSeparator();
-*/
-    QAction *ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
-//    QAction *ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
+    /// Si no hay ninguna opci&oacute;n pulsada se sale sin hacer nada.
+    if ( !menuOption ) return;
 
-    QAction *ajust = popup->addAction ( _ ( "Ajustar columnas" ) );
-//    QAction *ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
+    if ( menuOption == adjustAllColumnsSize ) {
 
-//    popup->addSeparator();
-//    QAction *verconfig = popup->addAction ( _ ( "Ver/Ocultar configurador de subformulario" ) );
-
-    QAction *opcion = popup->exec ( QCursor::pos() );
-
-    /// Si no hay ninguna opcion pulsada se sale sin hacer nada
-    if ( !opcion ) {
-	
-	return;
-    } // end if
-
-//    if ( opcion == del )
-//        remove ( row );
-    if ( opcion == ajust ) {
-	for (int i=0; i<columnCount(); i++) {
+	for (int i = 0; i < columnCount(); i++) {
 	    resizeColumnToContents (i);
 	} // end for
+	
+    } else if ( menuOption == adjustColumnSize )  {
+        resizeColumnToContents ( column );
     } // end if
-//    if ( opcion == ajusta )
-//        resizeRowsToContents();
-    if ( opcion == ajustc )  {
-        resizeColumnToContents ( col );
-    } // end if
-  //  if ( opcion == ajustac )
- //       resizeRowToContents ( row );
-//    if ( opcion == verconfig )
-//        toogleConfig();
 
-    emit trataMenu ( opcion );
+    emit trataMenu ( menuOption );
 
     /// Activamos las herederas.
-    execMenuAction ( opcion );
+    execMenuAction ( menuOption );
 
-    delete popup;
-    
+    delete menu;
 }
 

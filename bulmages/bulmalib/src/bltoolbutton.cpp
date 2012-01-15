@@ -25,13 +25,11 @@
 ///
 /**
 \param parent
-\param f
 **/
-BlToolButton::BlToolButton ( QWidget *parent )        : QToolButton ( parent ), BlMainCompanyPointer()
+BlToolButton::BlToolButton ( QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     BL_FUNC_DEBUG
     connect (this, SIGNAL(released()), this, SLOT(buttonReleased()));
-    
 }
 
 
@@ -39,13 +37,11 @@ BlToolButton::BlToolButton ( QWidget *parent )        : QToolButton ( parent ), 
 /**
 \param emp
 \param parent
-\param f
 **/
-BlToolButton::BlToolButton ( BlMainCompany *emp, QWidget *parent )        : QToolButton ( parent ), BlMainCompanyPointer ( emp )
+BlToolButton::BlToolButton ( BlMainCompany *company, QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer ( company )
 {
     BL_FUNC_DEBUG
     connect (this, SIGNAL(released()), this, SLOT(buttonReleased()));
-    
 }
 
 
@@ -55,26 +51,11 @@ BlToolButton::BlToolButton ( BlMainCompany *emp, QWidget *parent )        : QToo
 BlToolButton::~BlToolButton()
 {
     BL_FUNC_DEBUG
-    
 }
+
 
 void BlToolButton::buttonReleased() {
     BL_FUNC_DEBUG
     g_plugins->run("BlToolButton_released", this);
-    
 }
 
-
-
-/*
-/// Desde los plugins (aun no se bien pq) no se pueden crear objetos definidos en la libreria. De hecho compila y linka pero acaba dando un error
-/// De procedimiento no encontrado. El problema parecer ser debido a la reserva de memoria asi que si se hace el new dentro de la libreria llamante no
-/// da problemas. Por eso este procedimiento.
-/// Sino que se llama desde multiples partes del sistema.
-BlToolButton * newBlToolButton ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
-{
-    BlToolButton *h = new BlTooloButton ( emp, parent, f );
-    return h;
-}
-
-*/

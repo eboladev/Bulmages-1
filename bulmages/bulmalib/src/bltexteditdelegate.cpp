@@ -20,9 +20,9 @@
 
 #include <QKeyEvent>
 #include <QEvent>
-
 #include "bltexteditdelegate.h"
 #include "local_blI18n.h"
+
 
 ///
 /**
@@ -32,7 +32,6 @@ BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent 
 {
     BL_FUNC_DEBUG
     installEventFilter ( this );
-    
 }
 
 
@@ -42,20 +41,20 @@ BlTextEditDelegate::BlTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent 
 BlTextEditDelegate::~BlTextEditDelegate()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
 ///
 /**
-\param obj
+\param object
 \param event
 \return
 **/
-bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
+bool BlTextEditDelegate::eventFilter ( QObject *object, QEvent *event )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlTextEditDelegate::eventFilter", 0, QString::number ( event->type() ) );
+
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
@@ -66,12 +65,11 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
 	  case Qt::Key_Return:
 	  case Qt::Key_Enter:
 		event->ignore();
-		
 		return TRUE;
 	      break;
 	  } // end switch
     } // end if
-    
-    return QTextEdit::eventFilter ( obj, event );
+
+    return QTextEdit::eventFilter ( object, event );
 }
 

@@ -18,21 +18,18 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include "bluiloader.h"
-
 #include <QWidget>
-
+#include "bluiloader.h"
 #include "blcombobox.h"
 #include "blsubform.h"
 #include "blsearchwidget.h"
 #include "bldatesearch.h"
 
 
-// BlUiLoader
-BlUiLoader::BlUiLoader ( BlMainCompany * emp,  QObject * parent ) : QUiLoader(parent) 
+BlUiLoader::BlUiLoader ( BlMainCompany *company,  QObject *parent ) : QUiLoader(parent) 
 {
     BL_FUNC_DEBUG
-    m_emp = emp;
+    m_company = company;
 }
 
 
@@ -41,17 +38,18 @@ BlUiLoader::~BlUiLoader ()
     BL_FUNC_DEBUG
 }
 
-QWidget * 	BlUiLoader::createWidget ( const QString & className, QWidget * parent, const QString & name )
+
+QWidget *BlUiLoader::createWidget ( const QString &className, QWidget *parent, const QString &name )
 {
     BL_FUNC_DEBUG
-    QWidget * widget = NULL;
+    QWidget *widget = NULL;
     
     if (className == "BlComboBox") {
 	widget = ((QWidget *) new BlComboBox(parent));
-	((BlComboBox *) widget)->setMainCompany(m_emp);
+	((BlComboBox *) widget)->setMainCompany(m_company);
 	widget->setObjectName(name);
-	
-	// Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+
+	// Para no liarla parda, ponemos provincias y asi no habr&aacute; pedatas de momento.
         ((BlComboBox *) widget)->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
         ((BlComboBox *) widget)->setTableName ( "provincia" );
         ((BlComboBox *) widget)->setFieldId ( "idprovincia" );
@@ -62,32 +60,30 @@ QWidget * 	BlUiLoader::createWidget ( const QString & className, QWidget * paren
     } // end if
     
     if (className == "BfSubForm" || className== "BlSubForm" || className == "BcSubForm") {
-      BlSubForm *subform = new BlSubForm(parent);
-      subform->setMainCompany(m_emp);
-      subform->setObjectName(name);      
-      widget = (QWidget *) subform;
+      BlSubForm *subForm = new BlSubForm(parent);
+      subForm->setMainCompany(m_company);
+      subForm->setObjectName(name);
+      widget = (QWidget *) subForm;
     } // end if
-    
+
     if (className == "BlSearchWidget") {
       BlSearchWidget *search = new BlSearchWidget(parent);
-      search->setMainCompany(m_emp);
+      search->setMainCompany(m_company);
       search->setObjectName(name);
-      
-	widget = (QWidget *) search;
+      widget = (QWidget *) search;
     } // end if
 
     if (className == "BlDateSearch") {
-      BlDateSearch *dsearch = new BlDateSearch(parent);
-      dsearch->setObjectName(name);
-     
-      widget = (QWidget *) dsearch;
+      BlDateSearch *dateSearch = new BlDateSearch(parent);
+      dateSearch->setObjectName(name);
+      widget = (QWidget *) dateSearch;
     } // end if
 
     if (!widget) {
-      widget =  QUiLoader::createWidget( className, parent, name);
+      widget =  QUiLoader::createWidget( className, parent, name );
     } // end if
     
     return widget;
 }
-// Fin de BlUiLoader
+
 

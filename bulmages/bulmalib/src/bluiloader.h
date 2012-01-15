@@ -22,27 +22,24 @@
 #ifndef BLUILOADER_H
 #define BLUILOADER_H
 
-
 #include <QWidget>
-
 #include <QUiLoader>
-
-
 #include "blform.h"
 #include "blformlist.h"
-
 
 
 class BL_EXPORT BlUiLoader : public QUiLoader
 {
     Q_OBJECT
+
 private:
-    BlMainCompany *m_emp;
+    BlMainCompany *m_company;
+
 public:
-    BlUiLoader ( BlMainCompany *emp, QObject * parent = 0 );
-    virtual 	~BlUiLoader ();
-    virtual QWidget * 	createWidget ( const QString & className, QWidget * parent = 0, const QString & name = QString() );
+    BlUiLoader ( BlMainCompany *company, QObject *parent = 0 );
+    virtual ~BlUiLoader ();
+    virtual QWidget *createWidget ( const QString &className, QWidget *parent = 0, const QString &name = QString() );
 };
 
-
 #endif
+

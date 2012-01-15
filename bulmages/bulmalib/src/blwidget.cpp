@@ -28,8 +28,8 @@
 \param parent
 \param f
 **/
-BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f), BlMainCompanyPointer()
+BlWidget::BlWidget ( QWidget *parent, Qt::WFlags flags )
+        : QWidget ( parent, flags), BlMainCompanyPointer()
 {
     BL_FUNC_DEBUG
 #ifdef AREA_QMDI
@@ -46,8 +46,8 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
 \param parent
 \param f
 **/
-BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f ), BlMainCompanyPointer ( emp )
+BlWidget::BlWidget ( BlMainCompany *company, QWidget *parent, Qt::WFlags flags )
+        : QWidget ( parent, flags ), BlMainCompanyPointer ( company )
 {
     BL_FUNC_DEBUG
     
@@ -66,12 +66,12 @@ BlWidget::~BlWidget()
 
 /* Necesario para poner estilos a traves de hojas CSS.
 */
-void BlWidget::paintEvent ( QPaintEvent *evt )
+void BlWidget::paintEvent ( QPaintEvent * )
 {
-    QStyleOption opt;
-    opt.initFrom ( this );
-    QPainter p ( this );
-    style()->drawPrimitive ( QStyle::PE_Widget, &opt, &p, this );
+    QStyleOption option;
+    option.initFrom ( this );
+    QPainter painter ( this );
+    style()->drawPrimitive ( QStyle::PE_Widget, &option, &painter, this );
 }
 
 
