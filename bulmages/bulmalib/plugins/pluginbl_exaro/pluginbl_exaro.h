@@ -29,6 +29,6 @@
 extern "C" PLUGINBL_EXARO_EXPORT int entryPoint ( QMainWindow * );
 extern "C" PLUGINBL_EXARO_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_EXARO_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
-extern "C" PLUGINBL_EXARO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBL_EXARO_EXPORT int BlAction_actionTriggered(BlAction *);
 extern "C" PLUGINBL_EXARO_EXPORT int init();
 

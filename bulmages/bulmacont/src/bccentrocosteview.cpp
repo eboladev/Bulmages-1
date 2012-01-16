@@ -65,7 +65,7 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcCentroCosteView_BcCentroCosteView", this );
+    int res = g_plugins->run ( "BcCentroCosteView_BcCentroCosteView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -170,7 +170,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
         } // end if
     } // end if
     idc_coste = previdccoste;
-    mostrarplantilla();
+    mostrarPlantilla();
     
 }
 
@@ -178,7 +178,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 ///
 /**
 **/
-void BcCentroCosteView::mostrarplantilla()
+void BcCentroCosteView::mostrarPlantilla()
 {
     BL_FUNC_DEBUG
 

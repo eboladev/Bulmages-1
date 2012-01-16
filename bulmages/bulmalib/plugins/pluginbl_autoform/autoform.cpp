@@ -472,7 +472,7 @@ BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlag
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-//     int res = g_plugins->lanza ( "SociosList_SociosList", this );
+//     int res = g_plugins->run ( "SociosList_SociosList", this );
 //     if ( res != 0 )
 //         return;
 

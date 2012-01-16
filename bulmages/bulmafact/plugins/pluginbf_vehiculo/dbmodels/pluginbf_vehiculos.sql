@@ -30,6 +30,7 @@ BEGIN
 	EXECUTE ''DROP TABLE '' || $1;
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -45,6 +46,7 @@ BEGIN
 	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -52,10 +54,11 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idvehiculo'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''idvehiculo'';
+
 	IF NOT FOUND THEN
 		CREATE TABLE vehiculo (
 			idvehiculo SERIAL PRIMARY KEY,
@@ -75,6 +78,7 @@ BEGIN
 			idvehiculo INT REFERENCES vehiculo(idvehiculo)
 		);
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -89,15 +93,17 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM configuracion WHERE nombre = ''PluginBf_Vehiculos'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''PluginBf_Vehiculos'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.5.9'' WHERE nombre = ''PluginBf_Vehiculos'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Vehiculos'', ''0.5.9'');
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;

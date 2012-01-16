@@ -25,7 +25,9 @@
 #define BLTOOLBUTTON_H
 
 #include <QToolButton>
+#include <QWidget>
 #include "blmaincompanypointer.h"
+#include "blmaincompany.h"
 
 
 class BL_EXPORT BlToolButton : public QToolButton, public BlMainCompanyPointer
@@ -34,12 +36,11 @@ class BL_EXPORT BlToolButton : public QToolButton, public BlMainCompanyPointer
 
 public:
     BlToolButton ( QWidget *parent = 0 );
-    BlToolButton ( BlMainCompany *, QWidget *parent = 0);
+    BlToolButton ( BlMainCompany *company, QWidget *parent = 0);
     virtual ~BlToolButton();
 
 public slots:
     virtual void buttonReleased();
-    
 };
 
 #endif

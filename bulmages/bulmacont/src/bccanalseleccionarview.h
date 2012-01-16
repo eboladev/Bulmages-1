@@ -46,15 +46,15 @@ private:
     int m_colIdCoste;
     int m_colStatusCoste;
     int m_colCheck;
-    int numdigitos;
+    int numDigitos;
     QTreeWidgetItemIterator *m_iterador;
 
 public:
-    void cargacanales();
-    int firstcanal();
-    int nextcanal();
-    QString cadcanal();
-    QString nomcanal();
+    void cargaCanales();
+    int firstCanal();
+    int nextCanal();
+    QString cadCanal();
+    QString nomCanal();
 
 public slots:
     void on_mui_todo_clicked();

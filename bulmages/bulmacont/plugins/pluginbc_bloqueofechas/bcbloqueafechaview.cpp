@@ -293,3 +293,13 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
     
 }
 
+
+///
+/**
+**/
+void BcBloqueaFechaView::on_mui_cerrar_clicked()
+{
+    BL_FUNC_DEBUG
+    close();
+}
+

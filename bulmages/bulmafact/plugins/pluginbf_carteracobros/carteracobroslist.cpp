@@ -51,7 +51,7 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "CarteraCobrosList_CarteraCobrosList", this );
+    int res = g_plugins->run ( "CarteraCobrosList_CarteraCobrosList", this );
     if ( res != 0 )
         return;
 

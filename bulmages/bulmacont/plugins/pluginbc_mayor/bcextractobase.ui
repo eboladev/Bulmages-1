@@ -912,7 +912,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_guardarpunteo">
+         <widget class="QToolButton" name="mui_guardarPunteo">
           <property name="minimumSize">
            <size>
             <width>32</width>
@@ -947,7 +947,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_cargarpunteos">
+         <widget class="QToolButton" name="mui_cargarPunteos">
           <property name="minimumSize">
            <size>
             <width>32</width>
@@ -982,7 +982,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrapunteo">
+         <widget class="QToolButton" name="mui_borrarPunteo">
           <property name="minimumSize">
            <size>
             <width>32</width>

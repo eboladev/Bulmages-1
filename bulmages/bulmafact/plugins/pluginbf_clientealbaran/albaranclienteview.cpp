@@ -85,7 +85,7 @@ AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView", this );
+        int res = g_plugins->run ( "AlbaranClienteView_AlbaranClienteView", this );
         if ( res != 0 )
             return;
 
@@ -114,7 +114,7 @@ AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
 
         insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
-        g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView_Post", this );
+        g_plugins->run ( "AlbaranClienteView_AlbaranClienteView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
@@ -217,7 +217,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             while ( !cur->eof() ) {
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                int resur = g_plugins->lanza ( "SNewPedidoClienteView", ( BfCompany * ) mainCompany() );
+                int resur = g_plugins->run ( "SNewPedidoClienteView", ( BfCompany * ) mainCompany() );
                 if ( !resur ) {
                     blMsgInfo ( "no se pudo crear instancia de factura" );
                     return;
@@ -259,7 +259,7 @@ void AlbaranClienteView::generarFactura()
     BL_FUNC_DEBUG
     /*
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "AlbaranClienteView_generarFactura", this );
+        int res = g_plugins->run ( "AlbaranClienteView_generarFactura", this );
         if ( res != 0 )
             return;
 
@@ -554,7 +554,7 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
     m_listadescuentos->load ( idalbaran );
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
+    g_plugins->run ( "AlbaranCliente_cargarPost_Post", this );
 
     calculaypintatotales();
     

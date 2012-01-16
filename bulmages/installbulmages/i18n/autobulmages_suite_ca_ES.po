@@ -278,12 +278,12 @@ msgstr "&Contractes"
 msgid "&Corrector"
 msgstr "&Corrector"
 
-#: pluginbc_cuentasanuales2ods.cpp:414 pluginbc_caaslods.cpp:186
+#: pluginbc_cuentasanuales2ods.cpp:414 pluginbc_ccaa2ods.cpp:186
 msgid "&Cuentas Anuales"
 msgstr "&Comptes anuals"
 
 #: pluginbc_cuentasanuales2ods.cpp:419 pluginbc_cuentasanuales2ods.cpp:436
-#: pluginbc_caaslods.cpp:191 pluginbc_caaslods.cpp:208
+#: pluginbc_ccaa2ods.cpp:191 pluginbc_ccaa2ods.cpp:208
 msgid "&Cuentas Anuales PGC"
 msgstr "&Comptes anuals PGC"
 
@@ -566,7 +566,7 @@ msgstr "&Ordena seients"
 msgid "&Otros datos"
 msgstr "&Altres dades"
 
-#: pluginbc_cuentasanuales2ods.cpp:416 pluginbc_caaslods.cpp:188
+#: pluginbc_cuentasanuales2ods.cpp:416 pluginbc_ccaa2ods.cpp:188
 msgid "&PGC 2008"
 msgstr "&PGC 2008"
 
@@ -1667,7 +1667,7 @@ msgstr "Acord de &llicència"
 msgid "Administrador"
 msgstr "Administrador"
 
-#: pluginbc_cuentasanuales2ods.cpp:601 pluginbc_caaslods.cpp:336
+#: pluginbc_cuentasanuales2ods.cpp:601 pluginbc_ccaa2ods.cpp:336
 msgid "Advertencia: ha escojido las "
 msgstr "Advertència: ha triat les "
 
@@ -3709,7 +3709,7 @@ msgstr "Compte:"
 msgid "Cuentas A. Abreviadas &Sin lucro"
 msgstr "Comptes Anuals Abreujats, &sense lucre"
 
-#: pluginbc_caaslods.cpp:213
+#: pluginbc_ccaa2ods.cpp:213
 #, fuzzy
 msgid "Cuentas A. Abreviadas &Sin lucro (Nuevo)"
 msgstr "Comptes A. Abreujades &Sense lucre (Nou)"
@@ -3718,67 +3718,67 @@ msgstr "Comptes A. Abreujades &Sense lucre (Nou)"
 msgid "Cuentas Anuales"
 msgstr "Comptes anuals"
 
-#: pluginbc_cuentasanuales2ods.cpp:424 pluginbc_caaslods.cpp:196
+#: pluginbc_cuentasanuales2ods.cpp:424 pluginbc_ccaa2ods.cpp:196
 #, fuzzy
 msgid "Cuentas Anuales &Abreviadas PGC"
 msgstr "Comptes Anuals &Abreujats, PGC"
 
-#: pluginbc_cuentasanuales2ods.cpp:429 pluginbc_caaslods.cpp:201
+#: pluginbc_cuentasanuales2ods.cpp:429 pluginbc_ccaa2ods.cpp:201
 #, fuzzy
 msgid "Cuentas Anuales &PYMES"
 msgstr "Comptes Anuals, &PIMES"
 
 #: pluginbc_cuentasanuales2ods.cpp:442 pluginbc_cuentasanuales2ods.cpp:443
-#: pluginbc_caaslods.cpp:214 pluginbc_caaslods.cpp:215
+#: pluginbc_ccaa2ods.cpp:214 pluginbc_ccaa2ods.cpp:215
 #, fuzzy
 msgid "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
 msgstr "Comptes Anuals Abreujats, Associació sense ànim de lucre"
 
 #: pluginbc_cuentasanuales2ods.cpp:425 pluginbc_cuentasanuales2ods.cpp:426
-#: pluginbc_caaslods.cpp:197 pluginbc_caaslods.cpp:198
+#: pluginbc_ccaa2ods.cpp:197 pluginbc_ccaa2ods.cpp:198
 #, fuzzy
 msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
 msgstr "Comptes Anuals Abreujats, Pla General Comptable 2007"
 
-#: pluginbc_cuentasanuales2ods.cpp:589 pluginbc_caaslods.cpp:324
+#: pluginbc_cuentasanuales2ods.cpp:589 pluginbc_ccaa2ods.cpp:324
 #, fuzzy
 msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
 msgstr "Comptes Anuals Abreujats del Pla General Comptable 2007. "
 
-#: pluginbc_cuentasanuales2ods.cpp:577 pluginbc_caaslods.cpp:312
+#: pluginbc_cuentasanuales2ods.cpp:577 pluginbc_ccaa2ods.cpp:312
 #, fuzzy
 msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
 msgstr "Comptes Anuals Abreujats per a Associació sense ànim de lucre. "
 
 #: pluginbc_cuentasanuales2ods.cpp:430 pluginbc_cuentasanuales2ods.cpp:431
-#: pluginbc_caaslods.cpp:202 pluginbc_caaslods.cpp:203
+#: pluginbc_ccaa2ods.cpp:202 pluginbc_ccaa2ods.cpp:203
 #, fuzzy
 msgid "Cuentas Anuales PYMES 2008"
 msgstr "Comptes Anuals PIMES 2007"
 
 #: pluginbc_cuentasanuales2ods.cpp:420 pluginbc_cuentasanuales2ods.cpp:421
-#: pluginbc_caaslods.cpp:192 pluginbc_caaslods.cpp:193
+#: pluginbc_ccaa2ods.cpp:192 pluginbc_ccaa2ods.cpp:193
 #, fuzzy
 msgid "Cuentas Anuales Plan General Contable 2008"
 msgstr "Comptes Anuals Pla General Comptable 2007"
 
 #: pluginbc_cuentasanuales2ods.cpp:437 pluginbc_cuentasanuales2ods.cpp:438
-#: pluginbc_caaslods.cpp:209 pluginbc_caaslods.cpp:210
+#: pluginbc_ccaa2ods.cpp:209 pluginbc_ccaa2ods.cpp:210
 #, fuzzy
 msgid "Cuentas Anuales Plan General Contable hasta 2007"
 msgstr "Comptes Anuals Pla General Comptable fins a 2007 (PGC 1990)"
 
-#: pluginbc_cuentasanuales2ods.cpp:593 pluginbc_caaslods.cpp:328
+#: pluginbc_cuentasanuales2ods.cpp:593 pluginbc_ccaa2ods.cpp:328
 #, fuzzy
 msgid "Cuentas Anuales del Plan General Contable 2008. "
 msgstr "Comptes Anuals del Pla General Comptable 2007. "
 
-#: pluginbc_cuentasanuales2ods.cpp:581 pluginbc_caaslods.cpp:316
+#: pluginbc_cuentasanuales2ods.cpp:581 pluginbc_ccaa2ods.cpp:316
 #, fuzzy
 msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
 msgstr "Comptes Anuals del Pla General Comptable fins a 2007 (PGC 1990) "
 
-#: pluginbc_cuentasanuales2ods.cpp:585 pluginbc_caaslods.cpp:320
+#: pluginbc_cuentasanuales2ods.cpp:585 pluginbc_ccaa2ods.cpp:320
 #, fuzzy
 msgid "Cuentas Anuales para PYMES 2008. "
 msgstr "Comptes Anuals per a PIMES 2007. "
@@ -4487,7 +4487,7 @@ msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
 msgstr "ERROR: Ha d'introduir una data inicial del balanç anterior."
 
 #: pluginbc_cuentasanuales2ods.cpp:372 pluginbc_cuentasanuales2ods.cpp:597
-#: pluginbc_caaslods.cpp:332
+#: pluginbc_ccaa2ods.cpp:332
 #, fuzzy
 msgid "ERROR: Funcion no implementada todavia."
 msgstr "ERROR: Funció no implementada encara."
@@ -4710,7 +4710,7 @@ msgstr "El proveïdor no existeix, s'ha de fer una inserció d'aquest"
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "El proveïdor ja existeix, es poden fer modificacions"
 
-#: pluginbc_cuentasanuales2ods.cpp:601 pluginbc_caaslods.cpp:336
+#: pluginbc_cuentasanuales2ods.cpp:601 pluginbc_ccaa2ods.cpp:336
 #, fuzzy
 msgid "El resultado solo sera correcto si coincide con el plan contable de su empresa."
 msgstr "El resultat sol sera correcte si coincideix amb el pla comptable de la seva empresa."
@@ -9230,7 +9230,7 @@ msgstr "PATRIMONI NET I PASSIU"
 msgid "PERDIDAS_Y_GANANCIAS"
 msgstr "PERDUDES_I_GUANYS"
 
-#: pluginbc_cuentasanuales2ods.cpp:417 pluginbc_caaslods.cpp:189
+#: pluginbc_cuentasanuales2ods.cpp:417 pluginbc_ccaa2ods.cpp:189
 #, fuzzy
 msgid "PGC &Anterior 2008"
 msgstr "PGC &anterior 2007 (PGC 1990)"

@@ -47,7 +47,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "JDirectivaList_JDirectivaList", this );
+    int res = g_plugins->run ( "JDirectivaList_JDirectivaList", this );
     if ( res != 0 )
         return;
         
@@ -72,7 +72,7 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "JDirectivaList_JDirectivaList", this );
+    int res = g_plugins->run ( "JDirectivaList_JDirectivaList", this );
     if ( res != 0 )
         return;
 
@@ -279,7 +279,7 @@ JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( p
     BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "JDirectivaListSubForm_JDirectivaListSubForm", this );
+    int res = g_plugins->run ( "JDirectivaListSubForm_JDirectivaListSubForm", this );
     if ( res != 0 )
         return;
         

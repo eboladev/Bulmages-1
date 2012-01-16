@@ -27,13 +27,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -41,14 +43,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -60,10 +64,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
 
-	SELECT INTO as * FROM pg_tables  WHERE tablename=''devolucion'';
+	SELECT INTO rs * FROM pg_tables  WHERE tablename=''devolucion'';
 	IF FOUND THEN
       DROP TABLE vale;
       DROP TABLE devolucion;
@@ -80,12 +84,12 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
 $BODY$
 DECLARE
-	asf RECORD;
+	rs RECORD;
 	txt TEXT;
 BEGIN
 	IF (select count(*) from pg_proc where proname='crearef') THEN
-	  SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
-	  txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	  SELECT INTO rs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	  txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || rs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
 	  RAISE NOTICE '%', txt;
 	  EXECUTE txt;
 	END IF;
@@ -107,12 +111,15 @@ SELECT drop_if_exists_proc('restriccionesvale', '');
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBt_Devolucion2'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBt_Devolucion2'';
+
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBt_Devolucion2'';
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

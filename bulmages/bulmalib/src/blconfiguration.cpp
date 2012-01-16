@@ -273,6 +273,8 @@ QString BlConfiguration::name( int i )
         return "CONF_SXC";
     if ( i == CONF_NAVEGADOR )
         return "CONF_NAVEGADOR";
+    if ( i == CONF_EMAIL_CLIENT )
+        return "CONF_EMAIL_CLIENT";
     if ( i == CONF_EDITOR )
         return "CONF_EDITOR";
     if ( i == CONF_SPLASH )

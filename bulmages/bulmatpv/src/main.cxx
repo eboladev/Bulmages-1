@@ -104,8 +104,8 @@ int main ( int argc, char **argv )
 
         /// Cargamos el BlSplashScreen.
         BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->value( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
-        splashScr->mensaje ( _( "Iniciando clases" ) );
-        splashScr->setBarraProgreso ( 1 );
+        splashScr->setMessage ( _( "Iniciando clases" ) );
+        splashScr->setProgressBar ( 1 );
 
         /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
         BlDbLoginDialog* login1 = new BlDbLoginDialog ( 0, "" );
@@ -135,8 +135,8 @@ int main ( int argc, char **argv )
         bges->company()->dbVersionCheck("DBRev-BulmaTPV", "0.13.1-0000");
 
         splashScr->show();
-        splashScr->mensaje ( _( "Leyendo configuracion" ) );
-        splashScr->setBarraProgreso ( 2 );
+        splashScr->setMessage ( _( "Leyendo configuracion" ) );
+        splashScr->setProgressBar ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
         QString confEsp = CONFGLOBAL + bges->company()->dbName() + ".conf";
@@ -166,26 +166,26 @@ int main ( int argc, char **argv )
             g_theApp->setStyleSheet(style);
         } // end if
 
-        splashScr->mensaje ( _( "Cargando plugins" ) );
-        splashScr->setBarraProgreso ( 10 );
+        splashScr->setMessage ( _( "Cargando plugins" ) );
+        splashScr->setProgressBar ( 10 );
 
         /// Hacemos la carga de las librerias que contienen los plugins.
-        g_plugins->cargaLibs ( g_confpr->value( CONF_PLUGINS_BULMATPV ) );
+        g_plugins->loadLibs ( g_confpr->value( CONF_PLUGINS_BULMATPV ) );
 
-        splashScr->mensaje ( _( "Lanzando plugins" ) );
-        splashScr->setBarraProgreso ( 20 );
+        splashScr->setMessage ( _( "Lanzando plugins" ) );
+        splashScr->setProgressBar ( 20 );
 
         /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza ( "entryPoint", bges );
+        g_plugins->run ( "entryPoint", bges );
 
-        splashScr->mensaje ( _( "Inicializando componentes" ) );
-        splashScr->setBarraProgreso ( 30 );
+        splashScr->setMessage ( _( "Inicializando componentes" ) );
+        splashScr->setProgressBar ( 30 );
 
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows ( splashScr );
 
-        splashScr->mensaje ( _( "Terminado" ) );
-        splashScr->setBarraProgreso ( 100 );
+        splashScr->setMessage ( _( "Terminado" ) );
+        splashScr->setProgressBar ( 100 );
         
         delete splashScr;
         
@@ -229,7 +229,7 @@ int main ( int argc, char **argv )
         valorSalida = g_theApp->exec();
 
         /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza ( "exitPoint", bges );
+        g_plugins->run ( "exitPoint", bges );
 
         // Bloqueamos el esquema de ventanas si asi se nos pide
         if (g_confpr->value(CONF_BLOCK_WINDOWS) == "TRUE") {

@@ -130,7 +130,7 @@ void ReciboView::imprimir()
     }
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ReciboView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->run ( "ReciboView_on_mui_imprimir_clicked", this );
 
     if ( res != 0 ) {
         return;

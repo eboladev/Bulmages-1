@@ -87,8 +87,7 @@ BcCompany::~BcCompany()
     BL_FUNC_DEBUG
     guardaConf();
     /// Borramos todas las ventanas.
-    m_listventanas->vaciarCompleto();
-    
+    m_windowListDock->vaciarCompleto();
 }
 
 
@@ -153,9 +152,9 @@ BcAsientoView *BcCompany::intapuntsempresa2()
 /**
 \return
 **/
-int BcCompany::numdigitosempresa()
+int BcCompany::numDigitosEmpresa()
 {
-    return numdigitos;
+    return numDigitos;
 }
 
 
@@ -192,7 +191,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         /// de la Empresa.
         QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
         BlDbRecordSet *cursoraux1 = loadQuery ( query );
-        numdigitos = cursoraux1->value( "numdigitos" ).toInt();
+        numDigitos = cursoraux1->value( "numdigitos" ).toInt();
         delete cursoraux1;
         if ( selccostes != NULL ) {
             delete selccostes;
@@ -207,20 +206,20 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 
         /// pb = 90%
 /*
-        splash->mensaje ( _ ( "Inicializando cuentas" ) );
-        splash->setBarraProgreso ( 90 );
+        splash->setMessage ( _ ( "Inicializando cuentas" ) );
+        splash->setProgressBar ( 90 );
         m_progressbar->setValue ( 90 );
         m_listcuentas = new BcPlanContableListView ( this, 0 );
         m_listcuentas->inicializa();
         m_pWorkspace->addSubWindow ( m_listcuentas );
 */
         /// pb = 100%
-        splash->mensaje ( _ ( "Terminado" ) );
-        splash->setBarraProgreso ( 100 );
+        splash->setMessage ( _ ( "Terminado" ) );
+        splash->setProgressBar ( 100 );
         m_progressbar->setValue ( 100 );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "BcCompany_createMainWindows_Post", this );
+        int res = g_plugins->run ( "BcCompany_createMainWindows_Post", this );
         if ( res != 0 ) {
             return 0;
         } // end if
@@ -256,14 +255,16 @@ void BcCompany::maximiza()
 /**
 \return
 **/
+/*
 int BcCompany::muestracuentas()
 {
     BL_FUNC_DEBUG
+*/
 //    m_listcuentas->setWindowState ( Qt::WindowActive );
-    
+/*    
     return 0;
 }
-
+*/
 
 /// Esta funci&oacute;n presenta los centros de coste.
 /** Luego recarga los comboboxes de todo el resto de pantallas para que se actualizen. */
@@ -308,10 +309,16 @@ int BcCompany::canales()
 int BcCompany::tiposIVA()
 {
     BL_FUNC_DEBUG
-    BcTipoIVAView *tip = new BcTipoIVAView ( this, 0 );
-    m_pWorkspace->addSubWindow ( tip );
-    tip->show();
-    
+
+	if (!showWindow("BcTipoIVAView")) {
+
+	    BcTipoIVAView *tipoIVA = new BcTipoIVAView ( this, 0 );
+	    tipoIVA->setObjectName("BcTipoIVAView");
+	    m_pWorkspace->addSubWindow ( tipoIVA );
+	    tipoIVA->show();
+
+	} // end if
+
     return 0;
 }
 
@@ -324,9 +331,15 @@ int BcCompany::tiposIVA()
 int BcCompany::fPago()
 {
     BL_FUNC_DEBUG
-    BcFormaPagoView *fp = new BcFormaPagoView ( this, 0 );
-    m_pWorkspace->addSubWindow ( fp );
-    fp->show();
+
+	if (!showWindow("BcFormaPagoView")) {
+
+	    BcFormaPagoView *formaPago = new BcFormaPagoView ( this, 0 );
+	    formaPago->setObjectName("BcFormaPagoView");
+	    m_pWorkspace->addSubWindow ( formaPago );
+	    formaPago->show();
+
+	} // end if
     
     return 0;
 }
@@ -342,8 +355,8 @@ int BcCompany::cambioejercicio()
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
 /*
 
-    introapunts2->cargaasientos();
-    introapunts2->boton_fin();
+    introapunts2->cargaAsientos();
+    introapunts2->botonFin();
 
 */
     
@@ -362,10 +375,16 @@ int BcCompany::cambioejercicio()
 int BcCompany::propiedadempresa()
 {
     BL_FUNC_DEBUG
-    BcConfiguracionView *nuevae = new BcConfiguracionView ( this, 0 );
-    m_pWorkspace->addSubWindow ( nuevae );
-    nuevae->show();
-    
+
+	if (!showWindow("BcConfiguracionView")) {
+
+	    BcConfiguracionView *configuracion = new BcConfiguracionView ( this, 0 );
+    	    configuracion->setObjectName("BcConfiguracionView");
+	    m_pWorkspace->addSubWindow ( configuracion );
+	    configuracion->show();
+
+	} // end if
+
     return 0;
 }
 
@@ -374,25 +393,27 @@ int BcCompany::propiedadempresa()
 /**
 \return
 **/
+/*
 int BcCompany::amortizaciones()
 {
     BL_FUNC_DEBUG
+*/
 /*
     BcAmortizacionListView *amors = new BcAmortizacionListView ( this, 0 );
     m_pWorkspace->addSubWindow ( amors );
     amors->show();
 */
-    
+/*    
     return 0;
 }
-
+*/
 
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
 /// de masas patrimoniales.
 /**
 \return
 **/
-int BcCompany::mpatrimoniales()
+int BcCompany::masasPatrimoniales()
 {
     BL_FUNC_DEBUG
     BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( this, 0 );
@@ -409,18 +430,20 @@ int BcCompany::mpatrimoniales()
 /**
 \return
 **/
+/*
 int BcCompany::compbalance()
 {
     BL_FUNC_DEBUG
+*/
 /*
     BcCuentasAnualesView *nueva = new BcCuentasAnualesView ( this, 0 );
     m_pWorkspace->addSubWindow ( nueva );
     nueva->show();
 */
-    
+/*    
     return 0;
 }
-
+*/
 
 ///
 ///
@@ -514,7 +537,7 @@ BcCanalSeleccionarView *BcCompany::getselcanales()
 ///
 /**
 **/
-void BcCompany::centrocostedefecto()
+void BcCompany::centroCosteDefecto()
 {
     BL_FUNC_DEBUG
     selccostes->exec();
@@ -525,7 +548,7 @@ void BcCompany::centrocostedefecto()
 ///
 /**
 **/
-void BcCompany::canaldefecto()
+void BcCompany::canalDefecto()
 {
     BL_FUNC_DEBUG
     selcanales->exec();
@@ -550,8 +573,8 @@ void BcCompany::guardaConf()
         QTextStream stream ( &file );
         stream << "<CONFIG>\n";
         stream << "\t<PRINCIPAL>\n";
-        stream << "\t\t\t<X>" + QString::number ( m_bulmacont->x() ) + "</X>\n";
-        stream << "\t\t\t<Y>" + QString::number ( m_bulmacont->y() ) + "</Y>\n";
+        stream << "\t\t\t<X>" + QString::number ( m_bulmacont->geometry().x() ) + "</X>\n";
+        stream << "\t\t\t<Y>" + QString::number ( m_bulmacont->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmacont->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmacont->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmacont->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
@@ -559,8 +582,8 @@ void BcCompany::guardaConf()
         stream << "\t</PRINCIPAL>\n";
 
 
-        for ( int i = 0; i < m_listventanas->numVentanas(); i++ ) {
-            QObject *obj = m_listventanas->ventana ( i );
+        for ( int i = 0; i < m_windowListDock->numVentanas(); i++ ) {
+            QObject *obj = m_windowListDock->ventana ( i );
             QWidget *wid = ( QWidget * ) obj;
             stream << "\t<VENTANA>\n";
             stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
@@ -644,8 +667,8 @@ void BcCompany::cargaConf()
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
             QString vname = e1.firstChildElement ( "VNAME" ).toElement().text();
-            for ( int j = 0; j < m_listventanas->numVentanas(); j++ ) {
-                QObject *obj = m_listventanas->ventana ( j );
+            for ( int j = 0; j < m_windowListDock->numVentanas(); j++ ) {
+                QObject *obj = m_windowListDock->ventana ( j );
                 QWidget *wid = ( QWidget * ) obj;
                 if ( obj->objectName() == vname ) {
                     QString vx = e1.firstChildElement ( "VX" ).toElement().text();

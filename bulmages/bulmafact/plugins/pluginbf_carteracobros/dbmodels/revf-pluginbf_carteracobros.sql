@@ -32,6 +32,7 @@ BEGIN
 	EXECUTE ''DROP TABLE '' || $1;
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -47,6 +48,7 @@ BEGIN
 	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -54,13 +56,13 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
 --	DROP TABLE vencimientoc;
 --	DROP TABLE vencimientocliente;
 	
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idvencimientoc'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''idvencimientoc'';
 	IF NOT FOUND THEN
 		CREATE TABLE vencimientoc (
 			idvencimientoc SERIAL PRIMARY KEY,
@@ -79,7 +81,7 @@ BEGIN
 	END IF;
 
 
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idvencimientocliente'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''idvencimientocliente'';
 	IF NOT FOUND THEN
 		CREATE TABLE vencimientocliente (
 			idvencimientocliente SERIAL PRIMARY KEY,
@@ -106,14 +108,17 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-CarteraCobros'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DBRev-CarteraCobros'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''DBRev-CarteraCobros'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-CarteraCobros'', ''0.11.1-0001'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -127,4 +132,3 @@ DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
 
 
 COMMIT;
-

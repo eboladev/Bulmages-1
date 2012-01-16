@@ -54,7 +54,7 @@ ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     mui_plainText->setMaximumBlockCount(100);
 
 
-    g_plugins->lanza ( "ServerSync_ServerSync_Post", this );
+    g_plugins->run ( "ServerSync_ServerSync_Post", this );
     
 }
 

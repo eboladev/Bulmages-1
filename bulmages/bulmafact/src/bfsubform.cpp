@@ -49,7 +49,7 @@ BfSubForm::BfSubForm ( QWidget *parent ) : BlSubForm ( parent )
     mdb_idcliente = "";
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfSubForm_BfSubForm", this );
+    int res = g_plugins->run ( "BfSubForm_BfSubForm", this );
     if ( res != 0 ) {
         
         return;
@@ -97,7 +97,7 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     m_campoactual = camp;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfSubForm_pressedAsterisk", this );
+    int res = g_plugins->run ( "BfSubForm_pressedAsterisk", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -259,7 +259,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
+    int res = g_plugins->run ( "BfSubForm_on_mui_list_editFinished", this );
     if ( res != 0 ) {
         
         return;
@@ -718,7 +718,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
                 rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
 
                 /// Disparamos los plugins.
-                int res = g_plugins->lanza ( "BfSubForm_calculaPVP", this );
+                int res = g_plugins->run ( "BfSubForm_calculaPVP", this );
                 if ( res != 0 ) {
 		    
                     return;

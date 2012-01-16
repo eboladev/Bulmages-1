@@ -36,7 +36,7 @@ extern "C" PLUGINBF_ALUMNO_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
-extern "C" PLUGINBF_ALUMNO_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_ALUMNO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 class SubForm_Alumno : public QObject
 {

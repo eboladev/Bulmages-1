@@ -43,7 +43,7 @@ BcDiarioPrintView::BcDiarioPrintView ( BcCompany  *emp, QWidget *parent )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
+    numDigitos = ( ( BcCompany * ) mainCompany() ) ->numDigitosEmpresa();
     
 }
 
@@ -87,7 +87,7 @@ QString BcDiarioPrintView::montaQuery()
     if ( ccostes != "" ) {
         ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
     } // end if
-    QString ccanales = scanal->cadcanal();
+    QString ccanales = scanal->cadCanal();
     if ( ccanales != "" ) {
         ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
     } // end if

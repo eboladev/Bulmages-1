@@ -45,7 +45,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlmacenesListView_AlmacenesListView", this );
+    int res = g_plugins->run ( "AlmacenesListView_AlmacenesListView", this );
     if ( res != 0 )
         return;
     m_idalmacen = "";
@@ -81,7 +81,7 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlmacenesListView_AlmacenesListView", this );
+    int res = g_plugins->run ( "AlmacenesListView_AlmacenesListView", this );
     if ( res != 0 )
         return;
     mui_list->setMainCompany ( comp );

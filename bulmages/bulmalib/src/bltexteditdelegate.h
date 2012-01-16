@@ -23,7 +23,7 @@
 #define BLTEXTEDITDELEGATE_H
 
 #include <QTextEdit>
-
+#include <QWidget>
 #include "blfunctions.h"
 
 
@@ -34,7 +34,7 @@ class BL_EXPORT BlTextEditDelegate : public QTextEdit
 public:
     BlTextEditDelegate ( QWidget *parent = 0 );
     virtual ~BlTextEditDelegate();
-    virtual bool eventFilter ( QObject *obj, QEvent *event );
+    virtual bool eventFilter ( QObject *object, QEvent *event );
 };
 
 #endif

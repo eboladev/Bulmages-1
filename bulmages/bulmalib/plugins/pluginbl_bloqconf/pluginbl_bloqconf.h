@@ -36,4 +36,4 @@ extern "C" PLUGINBL_BLOQCONF_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 extern "C" PLUGINBL_BLOQCONF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" PLUGINBL_BLOQCONF_EXPORT int BlAction_triggered (BlAction *);
+extern "C" PLUGINBL_BLOQCONF_EXPORT int BlAction_actionTriggered (BlAction *);

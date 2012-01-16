@@ -163,7 +163,7 @@ void correctorwidget::alink ( const QUrl &url )
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->lanza ( "SNewClienteView", ( BfCompany * ) mainCompany() );
+        int resur = g_plugins->run ( "SNewClienteView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
             blMsgInfo ( "No se pudo crear instancia de cliente" );
             return;
@@ -177,7 +177,7 @@ void correctorwidget::alink ( const QUrl &url )
         prov->show();
     } else if ( list[0] == "idfactura" ) {
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+        int resur = g_plugins->run ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
             blMsgInfo ( "No se pudo crear instancia de factura" );
             return;
@@ -191,7 +191,7 @@ void correctorwidget::alink ( const QUrl &url )
         prov->show();
     } else if ( list[0] == "idproveedor" ) {
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->lanza ( "SNewProveedorView", ( BfCompany * ) mainCompany() );
+        int resur = g_plugins->run ( "SNewProveedorView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
             blMsgInfo ( "No se pudo crear instancia de cliente" );
             return;

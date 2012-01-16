@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,18 +18,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_BALANCEARBOL_H
-#define PLUGINBC_BALANCEARBOL_H
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
+#include "bfcompany.h"
+#include "blfunctions.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 
-#include "bcbulmacont.h"
-#include "pdefs_pluginbc_balancearbol.h"
-#include "blaction.h"
-
-extern "C" PLUGINBC_BALANCEARBOL_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" PLUGINBC_BALANCEARBOL_EXPORT int BlAction_triggered(BlAction *);
+#include "facturaview.h"
+#include "presupuestoview.h"
+#include "pedidoclienteview.h"
+#include "albaranclienteview.h"
 
 
+class EmailQToolButton : public QToolButton
+{
+    Q_OBJECT
 
+private:
+    BfCompany *m_companyact;
+    PresupuestoView *m_presupuestoView;
+    PedidoClienteView *m_pedidoClienteView;
+    AlbaranClienteView *m_albaranClienteView;
+    FacturaView *m_facturaView;
 
-#endif
+public:
+    EmailQToolButton ( PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL );
+    ~EmailQToolButton();
+    void setBoton();
+public slots:
+    virtual void click();
+
+};
 

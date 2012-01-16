@@ -34,7 +34,7 @@ BusquedaTipoTrabajo::BusquedaTipoTrabajo ( QWidget *parent, const char * )
 {
     BL_FUNC_DEBUG
     m_cursorcombo = NULL;
-    m_table = "tipotrabajo";
+    setTableName("tipotrabajo");
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_idtipotrabajo = "";
     

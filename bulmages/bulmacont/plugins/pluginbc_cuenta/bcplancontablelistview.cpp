@@ -45,6 +45,7 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
     BL_FUNC_DEBUG
     setupUi ( this );
 
+    setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Cuenta" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos
     setDbTableName ( "cuenta" );
@@ -107,10 +108,10 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
 BcPlanContableListView::~BcPlanContableListView()
 {
     BL_FUNC_DEBUG
+    
     if ( m_modo == BL_EDIT_MODE ) {
         mainCompany() ->removeWindow ( this );
-    }// end if
-    
+    } // end if
 }
 
 
@@ -193,7 +194,7 @@ int BcPlanContableListView::inicializa()
 
         /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una
         /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
-        numdigitos = mainCompany() ->numdigitosempresa();
+        numDigitos = mainCompany() ->numDigitosEmpresa();
 
         inicializaTabla();
     } catch ( ... ) {
@@ -243,7 +244,7 @@ void BcPlanContableListView::inicializaTabla()
         mui_tablacuentas->setItem ( i, 2, dato );
 
         QString codigo = cursoraux1->value( "codigo" );
-        if ( ( unsigned int ) codigo.length() != numdigitos ) {
+        if ( ( unsigned int ) codigo.length() != numDigitos ) {
             mui_tablacuentas->hideRow ( i );
         } // end if
         cursoraux1->nextRecord();

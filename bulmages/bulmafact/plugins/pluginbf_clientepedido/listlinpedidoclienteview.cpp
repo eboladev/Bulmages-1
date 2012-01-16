@@ -38,7 +38,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
     setDbTableName ( "lpedidocliente" );
     setDbFieldId ( "numlpedidocliente" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ListLinPedidoClienteView_ListLinPedidoClienteView", this );
+    int res = g_plugins->run ( "ListLinPedidoClienteView_ListLinPedidoClienteView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -63,7 +63,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
     setOrdenPorQuery ( FALSE );
 
     /// Lanzamos los plugins
-    g_plugins->lanza ( "ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this );
+    g_plugins->run ( "ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this );
     
 }
 

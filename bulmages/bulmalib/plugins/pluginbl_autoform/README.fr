@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilites generales ; Experimental ;
+Categorias: AutoForms ; Experimental ;
 
 Orden: 70
 

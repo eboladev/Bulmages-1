@@ -54,7 +54,7 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     connect (m_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     connect (m_socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
 
-    g_plugins->lanza ( "ClientSync_ClientSync_Post", this );
+    g_plugins->run ( "ClientSync_ClientSync_Post", this );
     
 }
 

@@ -120,12 +120,13 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
+    int res = g_plugins->run ( "AlbaranClienteList_AlbaranClienteList", this );
     if ( res != 0 )
         return;
     mdb_idalbaran = "";
     setSubForm ( mui_list );
-    hideBusqueda();
+    mui_filtrar->setChecked(false);
+    //hideBusqueda();
     iniciaForm();
     /// Llamamos a los scripts
     blScript(this);
@@ -152,7 +153,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
+    int res = g_plugins->run ( "AlbaranClienteList_AlbaranClienteList", this );
     if ( res != 0 )
         return;
     m_cliente->setMainCompany ( comp );
@@ -184,7 +185,9 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     mdb_idalbaran = "";
     if ( editMode() )
         mainCompany() ->insertWindow ( windowTitle(), this );
-    hideBusqueda();
+
+    mui_filtrar->setChecked(false);
+    //hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
     /// Llamamos a los scripts
@@ -201,7 +204,7 @@ void AlbaranClienteList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlbaranClienteList_iniciaForm", this );
+    int res = g_plugins->run ( "AlbaranClienteList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todos los albaranes" ) );
@@ -410,7 +413,7 @@ AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSub
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlbaranClienteListSubform_AlbaranClienteListSubform", this );
+    int res = g_plugins->run ( "AlbaranClienteListSubform_AlbaranClienteListSubform", this );
     if ( res != 0 )
         return;
     setDbTableName ( "albaran" );

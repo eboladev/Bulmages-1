@@ -60,7 +60,7 @@ int entryPoint ( BcBulmaCont *bcont )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionBloqueoFechas") {
         BcBloqueaFechaView *tip = new BcBloqueaFechaView ( g_pluginbc_bloqueofechas->company(), 0 );
         g_pluginbc_bloqueofechas->workspace()->addSubWindow ( tip );

@@ -294,7 +294,7 @@ CREATE TABLE serie_factura (
 -- descfamilia: Descripcion extendida de la familia.
 -- padrefamilia: 
 -- codigocompletofamilia: Codigo completo de la familia. Es la concatenacion del codigo de
---                        familia con sus codigos padres. Este campo es de solo lectura.
+--                        familia con sus codigos padrs. Este campo es de solo lectura.
 -- productofisicofamilia: TRUE indica que es producto fisico, FALSE que es servicio.
 \echo -n ':: Familia ... '
 CREATE TABLE familia (
@@ -312,14 +312,14 @@ CREATE TABLE familia (
 CREATE FUNCTION calculacodigocompletofamilia() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
     codigocompleto character varying(50);
 
 BEGIN
     codigocompleto := NEW.codigofamilia;
-    SELECT INTO bs codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
+    SELECT INTO rs codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
     IF FOUND THEN
-   codigocompleto := bs.codigocompletofamilia || codigocompleto;
+   codigocompleto := rs.codigocompletofamilia || codigocompleto;
     END IF;
     NEW.codigocompletofamilia := codigocompleto;
     RETURN NEW;
@@ -428,17 +428,18 @@ END
 CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
     codigocompleto character varying(100);
     codnumeric integer;
 
 BEGIN
     -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
     IF NEW.codarticulo = '''' THEN
-   SELECT INTO bs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+	SELECT INTO rs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+
 	IF FOUND THEN
-       IF is_number(bs.m) THEN
-       codnumeric := to_number(bs.m);
+	    IF is_number(rs.m) THEN
+		codnumeric := to_number(rs.m);
 		codnumeric := codnumeric +1;
 		NEW.codarticulo := CAST (codnumeric AS varchar);
 		WHILE length(NEW.codarticulo) < 4 LOOP
@@ -450,13 +451,16 @@ BEGIN
 	ELSE
 	    NEW.codarticulo = ''0000'';
 	END IF;
-    END IF; 
+    END IF;
 
     codigocompleto := NEW.codarticulo;
-    SELECT INTO bs codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+
+    SELECT INTO rs codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+
     IF FOUND THEN
-   codigocompleto := bs.codigocompletofamilia || codigocompleto;
+	codigocompleto := rs.codigocompletofamilia || codigocompleto;
     END IF;
+
     NEW.codigocompletoarticulo := codigocompleto;
     RETURN NEW;
 END;
@@ -540,17 +544,21 @@ DECLARE
     idarticulo ALIAS FOR $1;
     idclient ALIAS FOR $2;
     idalmacen ALIAS FOR $3;
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
-    SELECT INTO bs pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente = idclient);
+    SELECT INTO rs pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente = idclient);
+
     IF FOUND THEN
-   RETURN bs.pvpltarifa;
+	RETURN rs.pvpltarifa;
     END IF;
-    SELECT INTO bs pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+
+    SELECT INTO rs pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+
     IF FOUND THEN
-   RETURN bs.pvparticulo;
+	RETURN rs.pvparticulo;
     END IF;
+
     RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
@@ -720,18 +728,21 @@ CREATE TABLE cobro (
 CREATE FUNCTION restriccionescobro() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechacobro IS NULL THEN
 	NEW.fechacobro := now();
     END IF;
+
     IF NEW.refcobro IS NULL OR NEW.refcobro = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.refcobro := bs.m;
+	    NEW.refcobro := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -769,18 +780,21 @@ CREATE TABLE pago (
 CREATE FUNCTION restriccionespago() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechapago IS NULL THEN
 	NEW.fechapago := now();
     END IF;
+
     IF NEW.refpago IS NULL OR NEW.refpago = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.refpago := bs.m;
+	    NEW.refpago := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -938,26 +952,31 @@ CREATE TABLE presupuesto (
 CREATE FUNCTION restriccionespresupuesto() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fpresupuesto IS NULL THEN
 	NEW.fpresupuesto := now();
     END IF;
+
     IF NEW.numpresupuesto IS NULL THEN
-   SELECT INTO bs max(numpresupuesto) AS m FROM presupuesto;
-   IF bs.m IS NOT NULL THEN
-       NEW.numpresupuesto := bs.m + 1;
+	SELECT INTO rs max(numpresupuesto) AS m FROM presupuesto;
+
+	IF rs.m IS NOT NULL THEN
+	    NEW.numpresupuesto := rs.m + 1;
 	ELSE
 	    NEW.numpresupuesto := 1;
-	END IF;			
-    END IF;
-    IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
-   SELECT INTO bs crearef() AS m;
-	IF FOUND THEN
-       NEW.refpresupuesto := bs.m;
 	END IF;
     END IF;
+
+    IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
+	SELECT INTO rs crearef() AS m;
+
+	IF FOUND THEN
+	    NEW.refpresupuesto := rs.m;
+	END IF;
+    END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1121,26 +1140,31 @@ CREATE TABLE pedidocliente (
 CREATE FUNCTION restriccionespedidocliente() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechapedidocliente IS NULL THEN
 	NEW.fechapedidocliente := now();
     END IF;
+
     IF NEW.numpedidocliente IS NULL THEN
-   SELECT INTO bs max(numpedidocliente) AS m FROM pedidocliente;
-   IF bs.m IS NOT NULL THEN
-       NEW.numpedidocliente := bs.m + 1;
+	SELECT INTO rs max(numpedidocliente) AS m FROM pedidocliente;
+
+	IF rs.m IS NOT NULL THEN
+	    NEW.numpedidocliente := rs.m + 1;
 	ELSE
 	    NEW.numpedidocliente := 1;
 	END IF;
     END IF;
+
     IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.refpedidocliente := bs.m;
+	    NEW.refpedidocliente := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1310,26 +1334,30 @@ CREATE TABLE factura (
 CREATE FUNCTION restriccionesfactura() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.ffactura IS NULL THEN
 	NEW.ffactura := now();
     END IF;
+
     IF NEW.numfactura IS NULL THEN
-   SELECT INTO bs max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
-   IF bs.m IS NOT NULL THEN
-       NEW.numfactura := bs.m + 1;
+	SELECT INTO rs max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
+	IF rs.m IS NOT NULL THEN
+	    NEW.numfactura := rs.m + 1;
 	ELSE
 	    NEW.numfactura := 1;
 	END IF;
     END IF;
+
     IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
-   SELECT INTO bs crearef() as m;
+	SELECT INTO rs crearef() as m;
+
 	IF FOUND THEN
-       NEW.reffactura := bs.m;
+	    NEW.reffactura := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1385,7 +1413,7 @@ CREATE TABLE lfactura (
 CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
     reg RECORD;
 
 BEGIN
@@ -1393,25 +1421,31 @@ BEGIN
 	RAISE EXCEPTION ''ARTICULO INVALIDO'';
 	return OLD;
     END IF;
-    FOR bs IN SELECT * FROM articulo WHERE idarticulo = NEW.idarticulo LOOP
+
+    FOR rs IN SELECT * FROM articulo WHERE idarticulo = NEW.idarticulo LOOP
 	IF NEW.desclfactura IS NULL THEN
-       NEW.desclfactura := bs.nomarticulo;
+	    NEW.desclfactura := rs.nomarticulo;
 	END IF;
+
 	IF NEW.cantlfactura IS NULL THEN
 	    NEW.cantlfactura := 1;
 	END IF;
+
 	IF NEW.descuentolfactura IS NULL THEN
 	    NEW.descuentolfactura := 0;
 	END IF;
+
 	IF NEW.pvplfactura IS NULL THEN
 	    SELECT INTO reg pvparticulo(NEW.idarticulo) AS precio;
 	    NEW.pvplfactura := reg.precio;
 	END IF;
+
 	IF NEW.ivalfactura IS NULL then
 	    SELECT INTO reg ivaarticulo(NEW.idarticulo) AS iva;
 	    NEW.ivalfactura := reg.iva;
 	END IF;
-    END LOOP;	
+    END LOOP;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1434,7 +1468,7 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -1443,28 +1477,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (reqeqlfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (reqeqlfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondfactura / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondfactura / 100);
-	totalIVA := totalIVA * (1 - res.proporciondfactura / 100);
-	totalRE := totalRE * (1 - res.proporciondfactura / 100);
+    FOR rs IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondfactura / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondfactura / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondfactura / 100);
+	totalRE := totalRE * (1 - rs.proporciondfactura / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -1480,16 +1515,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
-	total := total * (1 - res.proporciondfactura / 100);
+
+    FOR rs IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	total := total * (1 - rs.proporciondfactura / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -1501,16 +1539,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-   FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * ((ivalfactura+reqeqlfactura) / 100)  AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * ((ivalfactura+reqeqlfactura) / 100)  AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
-	total := total * (1 - res.proporciondfactura / 100);
+
+    FOR rs IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	total := total * (1 - rs.proporciondfactura / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -1530,6 +1571,7 @@ BEGIN
     imp := calcimpuestosfactura(NEW.idfactura);
 
     UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = NEW.idfactura;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1562,6 +1604,7 @@ BEGIN
     bimp := calcbimpfactura(OLD.idfactura);
     imp := calcimpuestosfactura(OLD.idfactura);
     UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = OLD.idfactura;
+
     RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
@@ -1623,18 +1666,21 @@ CREATE TABLE facturap (
 CREATE FUNCTION restriccionesfacturap() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.ffacturap IS NULL THEN
 	NEW.ffacturap := now();
     END IF;
+
     IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.reffacturap := bs.m;
+	    NEW.reffacturap := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1697,8 +1743,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -1707,30 +1753,31 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res2 idproveedor FROM facturap WHERE idfacturap = idp;
+    SELECT INTO rs2 idproveedor FROM facturap WHERE idfacturap = idp;
 
-    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
     END IF;
 
-    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (reqeqlfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (reqeqlfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondfacturap / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondfacturap / 100);
-	totalIVA := totalIVA * (1 - res.proporciondfacturap / 100);
-	totalRE := totalRE * (1 - res.proporciondfacturap / 100);
+    FOR rs IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondfacturap / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondfacturap / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondfacturap / 100);
+	totalRE := totalRE * (1 - rs.proporciondfacturap / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -1746,16 +1793,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-	total := total * (1 - res.proporciondfacturap / 100);
+
+    FOR rs IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	total := total * (1 - rs.proporciondfacturap / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -1767,16 +1817,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-	total := total * (1 - res.proporciondfacturap / 100);
+
+    FOR rs IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	total := total * (1 - rs.proporciondfacturap / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -1794,7 +1847,9 @@ BEGIN
     tot := calctotalfacpro(NEW.idfacturap);
     bimp := calcbimpfacpro(NEW.idfacturap);
     imp := calcimpuestosfacpro(NEW.idfacturap);
+
     UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = NEW.idfacturap;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1826,7 +1881,9 @@ BEGIN
     tot := calctotalfacpro(OLD.idfacturap);
     bimp := calcbimpfacpro(OLD.idfacturap);
     imp := calcimpuestosfacpro(OLD.idfacturap);
+
     UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = OLD.idfacturap;
+
     RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
@@ -1890,21 +1947,25 @@ CREATE TABLE albaranp (
 CREATE FUNCTION restriccionesalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechaalbaranp IS NULL THEN
 	NEW.fechaalbaranp := now();
     END IF;
+
     IF NEW.numalbaranp IS NULL THEN
 	NEW.numalbaranp := NEW.idalbaranp;
     END IF;
+
     IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.refalbaranp := bs.m;
+	    NEW.refalbaranp := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1967,8 +2028,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -1977,30 +2038,31 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res2 idproveedor FROM albaranp WHERE idalbaranp = idp;
+    SELECT INTO rs2 idproveedor FROM albaranp WHERE idalbaranp = idp;
 
-    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
     END IF;
 
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (reqeqlalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (reqeqlalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondalbaranp / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondalbaranp / 100);
-	totalIVA := totalIVA * (1 - res.proporciondalbaranp / 100);
-	totalRE := totalRE * (1 - res.proporciondalbaranp / 100);
+    FOR rs IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondalbaranp / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondalbaranp / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondalbaranp / 100);
+	totalRE := totalRE * (1 - rs.proporciondalbaranp / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2016,15 +2078,15 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
-	total := total * (1 - res.proporciondalbaranp / 100);
+    FOR rs IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - rs.proporciondalbaranp / 100);
     END LOOP;
     RETURN total;
 END;
@@ -2037,16 +2099,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
-	total := total * (1 - res.proporciondalbaranp / 100);
+
+    FOR rs IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - rs.proporciondalbaranp / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -2064,7 +2129,9 @@ BEGIN
     tot := calctotalalbpro(NEW.idalbaranp);
     bimp := calcbimpalbpro(NEW.idalbaranp);
     imp := calcimpuestosalbpro(NEW.idalbaranp);
+
     UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = NEW.idalbaranp;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2096,7 +2163,9 @@ BEGIN
     tot := calctotalalbpro(OLD.idalbaranp);
     bimp := calcbimpalbpro(OLD.idalbaranp);
     imp := calcimpuestosalbpro(OLD.idalbaranp);
+
     UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = OLD.idalbaranp;
+
     RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
@@ -2117,7 +2186,7 @@ CREATE TRIGGER totalesautomaticosalbaranptriggerd1
 
 
 -- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERRORES.
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERROrs.
 -- **********************************************************************
 -- **********************************************************************
 \echo -n ':: Funcion random_string que genera una cadena aleatoria ... '
@@ -2128,10 +2197,12 @@ DECLARE
 
 BEGIN
     result = '''';
+
     IF ($1 > 0) AND ($1 < 255) THEN
 	FOR iLoop in 1 .. $1 LOOP
 	    result = result || chr(int4(random()*25)+65);
 	END LOOP;
+
 	RETURN result;
     ELSE
 	RETURN ''f'';
@@ -2144,48 +2215,66 @@ END;
 CREATE FUNCTION crearef() RETURNS character varying(15)
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
     result character varying(15);
     efound boolean;
 
 BEGIN
     efound := FALSE;
+
     WHILE efound = FALSE LOOP
 	result := random_string(6);
 	efound := TRUE;
-   SELECT INTO bs idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+
+	SELECT INTO rs idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;
-   SELECT INTO bs idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+
+	SELECT INTO rs idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+
 	IF FOUND THEN
 	    efound := FALSE;
 	END IF;
-   SELECT INTO bs idalbaran FROM albaran WHERE refalbaran = result;
+
+	SELECT INTO rs idalbaran FROM albaran WHERE refalbaran = result;
+
 	IF FOUND THEN
 	    efound := FALSE;
-	END IF;	
-   SELECT INTO bs idfactura FROM factura WHERE reffactura = result;
+	END IF;
+
+	SELECT INTO rs idfactura FROM factura WHERE reffactura = result;
+
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-   SELECT INTO bs idcobro FROM cobro WHERE refcobro = result;
+
+	SELECT INTO rs idcobro FROM cobro WHERE refcobro = result;
+
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-   SELECT INTO bs idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+
+	SELECT INTO rs idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-   SELECT INTO bs idalbaranp FROM albaranp WHERE refalbaranp = result;
+
+	SELECT INTO rs idalbaranp FROM albaranp WHERE refalbaranp = result;
+
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-   SELECT INTO bs idfacturap FROM facturap WHERE reffacturap = result;
+
+	SELECT INTO rs idfacturap FROM facturap WHERE reffacturap = result;
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
-   SELECT INTO bs idpago FROM pago WHERE refpago = result;
+
+	SELECT INTO rs idpago FROM pago WHERE refpago = result;
+
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
@@ -2249,26 +2338,31 @@ CREATE TABLE albaran (
 CREATE FUNCTION restriccionesalbaran() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechaalbaran IS NULL THEN
 	NEW.fechaalbaran := now();
     END IF;
+
     IF NEW.numalbaran IS NULL THEN
-   SELECT INTO bs max(numalbaran) AS m FROM albaran;
-   IF bs.m IS NOT NULL THEN
-       NEW.numalbaran := bs.m + 1;
+	SELECT INTO rs max(numalbaran) AS m FROM albaran;
+
+	IF rs.m IS NOT NULL THEN
+	    NEW.numalbaran := rs.m + 1;
 	ELSE
 	    NEW.numalbaran := 1;
 	END IF;
     END IF;
+
     IF NEW.refalbaran IS NULL OR NEW.refalbaran = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.refalbaran := bs.m;
+	    NEW.refalbaran := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2332,7 +2426,9 @@ BEGIN
     tot := calctotalalbaran(NEW.idalbaran);
     bimp := calcbimpalbaran(NEW.idalbaran);
     imp := calcimpuestosalbaran(NEW.idalbaran);
+
     UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = NEW.idalbaran;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2364,7 +2460,9 @@ BEGIN
     tot := calctotalalbaran(OLD.idalbaran);
     bimp := calcbimpalbaran(OLD.idalbaran);
     imp := calcimpuestosalbaran(OLD.idalbaran);
+
     UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = OLD.idalbaran;
+
     RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
@@ -2451,13 +2549,15 @@ CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
     idarticulo ALIAS FOR $1;
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
-    SELECT INTO bs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+    SELECT INTO rs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+
     IF FOUND THEN
-   RETURN bs.porcentasa_iva;
+	RETURN rs.porcentasa_iva;
     END IF;
+
     RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
@@ -2468,13 +2568,15 @@ CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
     idarticulo ALIAS FOR $1;
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
-    SELECT INTO bs pvparticulo FROM articulo WHERE articulo.idarticulo = idarticulo;
+    SELECT INTO rs pvparticulo FROM articulo WHERE articulo.idarticulo = idarticulo;
+
     IF FOUND THEN
-   RETURN bs.pvparticulo;
+	RETURN rs.pvparticulo;
     END IF;
+
     RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
@@ -2521,21 +2623,25 @@ CREATE TABLE pedidoproveedor (
 CREATE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
 AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechapedidoproveedor IS NULL THEN
 	NEW.fechapedidoproveedor := now();
     END IF;
+
     IF NEW.numpedidoproveedor IS NULL THEN
 	NEW.numpedidoproveedor := NEW.idpedidoproveedor;
     END IF;
+
     IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
-   SELECT INTO bs crearef() AS m;
+	SELECT INTO rs crearef() AS m;
+
 	IF FOUND THEN
-       NEW.refpedidoproveedor := bs.m;
+	    NEW.refpedidoproveedor := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2601,8 +2707,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -2611,30 +2717,31 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res2 idproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
+    SELECT INTO rs2 idproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
 
-    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
     END IF;
 
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (reqeqlpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (reqeqlpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpedidoproveedor / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondpedidoproveedor / 100);
-	totalIVA := totalIVA * (1 - res.proporciondpedidoproveedor / 100);
-	totalRE := totalRE * (1 - res.proporciondpedidoproveedor / 100);
+    FOR rs IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondpedidoproveedor / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondpedidoproveedor / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondpedidoproveedor / 100);
+	totalRE := totalRE * (1 - rs.proporciondpedidoproveedor / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2650,15 +2757,15 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total + res.subtotal1;
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total * (1 - res.proporciondpedidoproveedor  / 100);
+    FOR rs IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - rs.proporciondpedidoproveedor  / 100);
     END LOOP;
     RETURN total;
 END;
@@ -2671,16 +2778,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-	total := total * (1 - res.proporciondpedidoproveedor / 100);
+
+    FOR rs IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - rs.proporciondpedidoproveedor / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -2698,7 +2808,9 @@ BEGIN
     tot := calctotalpedpro(NEW.idpedidoproveedor);
     bimp := calcbimppedpro(NEW.idpedidoproveedor);
     imp := calcimpuestospedpro(NEW.idpedidoproveedor);
+
     UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = NEW.idpedidoproveedor;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2730,7 +2842,9 @@ BEGIN
     tot := calctotalpedpro(OLD.idpedidoproveedor);
     bimp := calcbimppedpro(OLD.idpedidoproveedor);
     imp := calcimpuestospedpro(OLD.idpedidoproveedor);
+
     UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = OLD.idpedidoproveedor;
+
     RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
@@ -2760,8 +2874,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -2770,28 +2884,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (reqeqlpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (reqeqlpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpresupuesto / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondpresupuesto / 100);
-	totalIVA := totalIVA * (1 - res.proporciondpresupuesto / 100);
-	totalRE := totalRE * (1 - res.proporciondpresupuesto / 100);
+    FOR rs IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondpresupuesto / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondpresupuesto / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondpresupuesto / 100);
+	totalRE := totalRE * (1 - rs.proporciondpresupuesto / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2807,16 +2922,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total * (1 - res.proporciondpresupuesto / 100);
+
+    FOR rs IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - rs.proporciondpresupuesto / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -2828,16 +2946,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-	total := total * (1 - res.proporciondpresupuesto / 100);
+
+    FOR rs IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - rs.proporciondpresupuesto / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -2853,8 +2974,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -2863,28 +2984,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpedidocliente / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondpedidocliente / 100);
-	totalIVA := totalIVA * (1 - res.proporciondpedidocliente / 100);
-	totalRE := totalRE * (1 - res.proporciondpedidocliente / 100);
+    FOR rs IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondpedidocliente / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondpedidocliente / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondpedidocliente / 100);
+	totalRE := totalRE * (1 - rs.proporciondpedidocliente / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2900,16 +3022,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-    	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+    	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-	total := total * (1 - res.proporciondpedidocliente / 100);
+
+    FOR rs IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - rs.proporciondpedidocliente / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -2921,16 +3046,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-	total := total * (1 - res.proporciondpedidocliente / 100);
+
+    FOR rs IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - rs.proporciondpedidocliente / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -2946,8 +3074,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -2956,28 +3084,29 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalIVA := totalIVA + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalIVA := totalIVA + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (reqeqlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalRE := totalRE + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (reqeqlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalRE := totalRE + rs.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondalbaran / 100);
-	totalIRPF := totalIRPF * (1 - res.proporciondalbaran / 100);
-	totalIVA := totalIVA * (1 - res.proporciondalbaran / 100);
-	totalRE := totalRE * (1 - res.proporciondalbaran / 100);
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - rs.proporciondalbaran / 100);
+	totalIRPF := totalIRPF * (1 - rs.proporciondalbaran / 100);
+	totalIVA := totalIVA * (1 - rs.proporciondalbaran / 100);
+	totalRE := totalRE * (1 - rs.proporciondalbaran / 100);
     END LOOP;
 
     totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
@@ -2993,16 +3122,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-	total := total * (1 - res.proporciondalbaran / 100);
+
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	total := total * (1 - rs.proporciondalbaran / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -3014,16 +3146,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-    	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-    	total := total * (1 - res.proporciondalbaran / 100);
+
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - rs.proporciondalbaran / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -3040,11 +3175,13 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock del articulo
     IF TG_OP = ''DELETE'' OR TG_OP = ''UPDATE'' THEN
-      UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
+	UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
     END IF;
+
     IF TG_OP = ''INSERT'' OR TG_OP = ''UPDATE'' THEN
-      UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo= NEW.idarticulo;
+	UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo= NEW.idarticulo;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -3065,11 +3202,13 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock del articulo
     IF TG_OP = ''DELETE'' OR TG_OP = ''UPDATE'' THEN
-      UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+	UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
     END IF;
+
     IF TG_OP = ''INSERT'' OR TG_OP = ''UPDATE'' THEN
-      UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo= NEW.idarticulo;
+	UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo= NEW.idarticulo;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -3087,15 +3226,17 @@ CREATE OR REPLACE FUNCTION modificadostock() RETURNS "trigger"
 AS '
 DECLARE 
     cant numeric;
-    bs RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.stockarticulo <> OLD.stockarticulo THEN
 	cant := NEW.stockarticulo - OLD.stockarticulo;
-   FOR bs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-      UPDATE articulo SET stockarticulo = stockarticulo + cant * bs.cantcomparticulo WHERE idarticulo = bs.idcomponente;
+
+	FOR rs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+	    UPDATE articulo SET stockarticulo = stockarticulo + cant * rs.cantcomparticulo WHERE idarticulo = rs.idcomponente;
 	END LOOP;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -3148,15 +3289,18 @@ COMMIT;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-   bs RECORD;
+    rs RECORD;
+
 BEGIN
-   SELECT INTO bs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
-	IF FOUND THEN
-       UPDATE CONFIGURACION SET valor = ''0.13.1-0003'' WHERE nombre = ''DatabaseRevision'';
-	ELSE
-       INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0003'');
-	END IF;
-	RETURN 0;
+    SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+
+    IF FOUND THEN
+	UPDATE CONFIGURACION SET valor = ''0.13.1-0003'' WHERE nombre = ''DatabaseRevision'';
+    ELSE
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0003'');
+    END IF;
+
+    RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();

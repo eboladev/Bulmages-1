@@ -49,7 +49,7 @@ public:
 
 private:
     void pintar ( QString idtipoiva = "" );
-    void mostrarplantilla ( int pos = 0 );
+    void mostrarPlantilla ( int pos = 0 );
 
 private slots:
     virtual void on_mui_comboTipoIVA_currentIndexChanged ( int );

@@ -4,10 +4,8 @@ usr/lib/bulmafact
 usr/lib/bulmafact/plugins/*
 usr/lib/libbulmafact.so*
 usr/share/bulmages/ayuda/bulmafact/*
-usr/share/man/bulmafact.1
-usr/share/man/bulmafact.1
-usr/share/man/bulmafact.conf.1
-usr/share/man/bulmafact.conf.1
+usr/share/man/man1/bulmafact.1
+usr/share/man/man1/bulmafact.conf.1
 usr/share/menu/bulmafact.menu
 usr/share/applications/bulmafact.desktop
 usr/share/pixmaps/bulmafact.xpm

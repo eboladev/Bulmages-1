@@ -21,7 +21,7 @@
     <number>2</number>
    </property>
    <item>
-    <widget class="QLineEdit" name="m_entidad">
+    <widget class="QLineEdit" name="mui_bank">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -40,7 +40,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="m_oficina">
+    <widget class="QLineEdit" name="mui_bankOffice">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -59,7 +59,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="m_dc">
+    <widget class="QLineEdit" name="mui_controlDigit">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -78,7 +78,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="m_cuenta">
+    <widget class="QLineEdit" name="mui_bankAccount">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>

@@ -69,7 +69,7 @@ void IncidenciaComercial::pintar()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins con IncidenciaComercial_pintar
-    int res = g_plugins->lanza ( "IncidenciaComercial_pintar", this );
+    int res = g_plugins->run ( "IncidenciaComercial_pintar", this );
     if ( res != 0 )
         return;
     

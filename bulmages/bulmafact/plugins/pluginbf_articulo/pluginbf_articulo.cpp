@@ -111,7 +111,7 @@ int exitPoint ( BfBulmaFact *bges ) {
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, _("PluginBf_Articulo") );
 

@@ -1,6 +1,10 @@
 /***************************************************************************
  *   Copyright (C) 2010 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,30 +26,29 @@
 #include "blfunctions.h"
 #include "blplugins.h"
 
+
 ///
 /**
+\param text
 \param parent
-\param f
 **/
-BlAction::BlAction ( const QString &text, QWidget *parent ) : QAction ( text,parent ), BlMainCompanyPointer()
+BlAction::BlAction ( const QString &text, QWidget *parent ) : QAction ( text, parent ), BlMainCompanyPointer()
 {
     BL_FUNC_DEBUG
     connect (this, SIGNAL(triggered(bool)), this, SLOT(actionTriggered(bool)));
-    
 }
 
 
 ///
 /**
-\param emp
+\param company
+\param text
 \param parent
-\param f
 **/
-BlAction::BlAction ( BlMainCompany *emp,const QString &text, QWidget *parent ) : QAction ( text, 					parent ), BlMainCompanyPointer ( emp )
+BlAction::BlAction ( BlMainCompany *company, const QString &text, QWidget *parent ) : QAction ( text, parent ), BlMainCompanyPointer ( company )
 {
     BL_FUNC_DEBUG
     connect (this, SIGNAL(triggered(bool)), this, SLOT(actionTriggered(bool)));
-    
 }
 
 
@@ -55,24 +58,15 @@ BlAction::BlAction ( BlMainCompany *emp,const QString &text, QWidget *parent ) :
 BlAction::~BlAction()
 {
     BL_FUNC_DEBUG
-    
-}
-
-void BlAction::actionTriggered(bool trigg) {
-    g_plugins->lanza("BlAction_triggered", this);
 }
 
 
-
-/*
-/// Desde los plugins (aun no se bien pq) no se pueden crear objetos definidos en la libreria. De hecho compila y linka pero acaba dando un error
-/// De procedimiento no encontrado. El problema parecer ser debido a la reserva de memoria asi que si se hace el new dentro de la libreria llamante no
-/// da problemas. Por eso este procedimiento.
-/// Sino que se llama desde multiples partes del sistema.
-BlAction * newBlAction ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
-{
-    BlAction *h = new BlAction ( emp, parent, f );
-    return h;
+///
+/**
+\param triggered
+**/
+void BlAction::actionTriggered(bool triggered) {
+    BL_FUNC_DEBUG
+    g_plugins->run("BlAction_actionTriggered", this);
 }
 
-*/

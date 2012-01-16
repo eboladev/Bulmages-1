@@ -760,7 +760,7 @@ void Mesa::abrirMesa() {
             emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
             
             /// Llamamos a plugins para poder hacer lo pertinente
-            g_plugins->lanza("Abrevs_on_mui_aparcar_clicked", this);
+            g_plugins->run("Abrevs_on_mui_aparcar_clicked", this);
 
 
 
@@ -770,7 +770,7 @@ void Mesa::abrirMesa() {
             emp->pulsaTecla ( Qt::Key_F4, "" );
 
             /// Llamamos a plugins para poder hacer lo pertinente
-            g_plugins->lanza("Abrevs_on_mui_aparcar_clicked_Post", this);
+            g_plugins->run("Abrevs_on_mui_aparcar_clicked_Post", this);
             
             /// Ponemos el nuevo bloqueo
             ticket->setDbValue("bloqueadoticket", "TRUE");
@@ -802,7 +802,7 @@ void Mesa::abrirMesa() {
     emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
     
     /// Llamamos a plugins para poder hacer lo pertinente
-     g_plugins->lanza("Abrevs_on_mui_aparcar_clicked", this);
+     g_plugins->run("Abrevs_on_mui_aparcar_clicked", this);
 
 
 
@@ -812,7 +812,7 @@ void Mesa::abrirMesa() {
     emp->pulsaTecla ( Qt::Key_F4, "" );
 
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_aparcar_clicked_Post", this);
+    g_plugins->run("Abrevs_on_mui_aparcar_clicked_Post", this);
     
     /// Ponemos el nuevo bloqueo
     tick->setDbValue("bloqueadoticket", "TRUE");

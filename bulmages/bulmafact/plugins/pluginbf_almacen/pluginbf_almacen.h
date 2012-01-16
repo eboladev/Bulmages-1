@@ -31,7 +31,7 @@
 
 extern "C" PLUGINBF_ALMACEN_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ALMACEN_EXPORT int SNewAlmacenView (BfCompany *);
-extern "C" PLUGINBF_ALMACEN_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_ALMACEN_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

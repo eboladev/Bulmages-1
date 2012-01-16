@@ -143,7 +143,7 @@ void RegistroIva::pintaRegistroIva()
     pintarectificaaregistroiva ( dbValue ( "rectificaaregistroiva" ) );
     pintafemisionregistroiva ( dbValue ( "femisionregistroiva" ) );
     pintaserieregistroiva ( dbValue ( "serieregistroiva" ) );
-    calculaypintatotales();
+    calculaPintaTotales();
     
 }
 

@@ -41,7 +41,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
     setDbFieldId ( "idlfacturap" );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", this );
+    int res = g_plugins->run ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", this );
     if ( res != 0 )
         return;
 
@@ -61,7 +61,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
     setOrdenEnabled ( TRUE );
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView_Post", this );
+    g_plugins->run ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView_Post", this );
 
     
 }

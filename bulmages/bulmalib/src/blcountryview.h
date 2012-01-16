@@ -42,7 +42,7 @@ public:
     QString m_countryId; /// Indica cual es el pais que se esta visualizando.
 
 public:
-    BlCountryView ( BlMainCompany *, QWidget *parent = 0 );
+    BlCountryView ( BlMainCompany *company, QWidget *parent = 0 );
     ~BlCountryView();
     void pintar();
     void mostrarplantilla();

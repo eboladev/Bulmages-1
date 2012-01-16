@@ -21,6 +21,7 @@
 #include "QString"
 
 #include "bcaboutview.h"
+#include "blplugins.h"
 
 
 /// Constructor de la clase.
@@ -37,6 +38,8 @@ BcAboutView::BcAboutView ( QWidget *parent ) : QDialog ( parent )
     QString str_autores;
     QString str_soporte;
     QString str_licencia;
+    QString str_sistema;
+
     setupUi ( this );
 
     mui_lbversion->setText ( mui_lbversion->text() + " " + _ ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
@@ -422,11 +425,22 @@ BcAboutView::BcAboutView ( QWidget *parent ) : QDialog ( parent )
                    "<P> " \
                    "<H2>END OF TERMS AND CONDITIONS</H2>";
 
+    str_sistema = "<h2>" + _("Idiomas y traducciones:") + "</h2>";
+
+    str_sistema += _("Idioma:") + " " + QString(getenv("LANG")) + "<br><br>";
+    
+    str_sistema += "<h2>" + _("Plugins:") + "</h2>";
+    
+    for (int i = 0; i < g_plugins->pluginsLoaded().size(); ++i) {
+	str_sistema += g_plugins->pluginsLoaded().at(i)->fileName() + "<br>";
+    }
+
     textEdit_sobre->setHtml ( str_sobre );
     textEdit_autores->setHtml ( str_autores );
     textEdit_soporte->setHtml ( str_soporte );
     textEdit_licencia->setHtml ( str_licencia );
-    
+    textEdit_sistema->setHtml ( str_sistema );
+
 }
 
 

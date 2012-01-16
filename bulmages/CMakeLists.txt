@@ -89,6 +89,7 @@ INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
+option(USE_QMDIAREA "Enable new QMdiArea" OFF)
 option(ENABLE_PCH  "Enable precompiled headers" OFF)
 
 if(NOT PGSQL_FOUND)
@@ -252,4 +253,3 @@ MARK_AS_ADVANCED(
 	BULMAGES_VERSION
 )
 
- 

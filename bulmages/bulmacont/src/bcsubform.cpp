@@ -163,7 +163,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 
     /// Disparamos los plugins.
     
-    int res = g_plugins->lanza ( "BcSubForm_pressedAsterisk", this, ( void** ) &pCodigo );
+    int res = g_plugins->run ( "BcSubForm_pressedAsterisk", this, ( void** ) &pCodigo );
 
     if ( res != 0 ) {
         return;
@@ -250,13 +250,13 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged", this );
+    int res = g_plugins->run ( "BcSubForm_on_mui_list_cellChanged", this );
     if ( res != 0 ) {
         return;
     } // end if
 
     if ( camp->fieldName() == "codigo" && camp->text() != "*" ) {
-        QString codigoext = blExtendStringWithZeros ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
+        QString codigoext = blExtendStringWithZeros ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numDigitosEmpresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
@@ -312,7 +312,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
     } // end if
 
-    g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged_post", this );
+    g_plugins->run ( "BcSubForm_on_mui_list_cellChanged_post", this );
 
     BlSubForm::on_mui_list_cellChanged ( row, col );
     
@@ -329,7 +329,7 @@ void BcSubForm::boton_asiento()
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString numasiento = dbValue ( "idasiento" );
     if ( numasiento != "" ) {
-        companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
+        companyact->intapuntsempresa() ->muestraAsiento ( numasiento.toInt() );
         companyact->muestraapuntes1();
     } // end if
 */
@@ -461,7 +461,7 @@ void BcSubForm::boton_balance1 ( int tipo )
 /**
 \param menu
 **/
-void BcSubForm::creaMenu ( QMenu *menu )
+void BcSubForm::createMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
     menu->addAction ( _ ( "Submenu de contabilidad" ) );
@@ -473,7 +473,7 @@ void BcSubForm::creaMenu ( QMenu *menu )
 ///
 /**
 **/
-void BcSubForm::procesaMenu ( QAction * )
+void BcSubForm::execMenuAction ( QAction * )
 {
     BL_FUNC_DEBUG
     
@@ -546,7 +546,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->dbFieldType() == BlDbField::DbInt) {
+        //if (linea->fieldType() == BlDbField::DbInt) {
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
         /*        QLineEdit *editor = new QLineEdit ( parent );
@@ -613,7 +613,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         model->setData ( index, value );
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->dbFieldType() == BlDbField::DbInt) {
+        //if (linea->fieldType() == BlDbField::DbInt) {
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->interpretText();
         //    int value = spinBox->value();
@@ -669,7 +669,7 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         ( ( QLineEdit * ) bf ) ->selectAll();
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->dbFieldType() == BlDbField::DbInt) {
+        //if (linea->fieldType() == BlDbField::DbInt) {
         //    int value = index.model()->data(index, Qt::DisplayRole).toInt();
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->setValue(value);

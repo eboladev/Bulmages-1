@@ -31,7 +31,7 @@
 
 extern "C" PLUGINBF_TRABAJADOR_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_TRABAJADOR_EXPORT int SNewTrabajadorView (BfCompany *);
-extern "C" PLUGINBF_TRABAJADOR_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_TRABAJADOR_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 #endif

@@ -41,8 +41,8 @@ class BC_EXPORT BcCanalView : public BcForm, public Ui_BcCanalBase
     Q_OBJECT
 
 private:
-    QLineEdit *m_nomcanal;
-    QTextEdit *m_desccanal;
+    QLineEdit *m_nomCanal;
+    QTextEdit *m_descCanal;
 
 public:
     int canales[100];
@@ -54,12 +54,12 @@ public:
 public:
     BcCanalView ( BcCompany *, QWidget *parent = 0 );
     ~BcCanalView();
-    void mostrarplantilla();
+    void mostrarPlantilla();
     void pintar();
     void on_mui_borrar_clicked();
 
 public slots:
-    virtual void on_mui_idcanal_valueChanged ( QString );
+    virtual void on_mui_idCanal_valueChanged ( QString );
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void closeEvent ( QCloseEvent * );

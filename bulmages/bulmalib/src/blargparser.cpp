@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2009 by Aron Galdon                                     *
  *   auryn@wanadoo.es                                                      *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -46,29 +47,29 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
    for(int i = 1; i < argc; i++) {
       argument = argv[i];
 
-      /// Usar como un valor si la iteraci&oacute;n anterior ha activado un type_arg
+      /// Usa como un valor si la iteraci&oacute;n anterior ha activado un 'type_arg'.
       switch(type_arg) {
-      case 'd':
-         m_dbName = argument;
-         break;
-      case 'h':
-         m_host = argument;
-         break;
-      case 'p':
-         /// Tomar el numero de puerto solo si es un numero
-         bool ok;
-         argument.toInt(&ok, 10);
-         if ( ok ) {
-            m_port = argument;
-         } // end if
-         break;
-      case 'U':
-         m_userName = argument;
-         break;
+	case 'd':
+	  m_dbName = argument;
+	  break;
+	case 'h':
+	  m_host = argument;
+	  break;
+	case 'p':
+	  /// Captura el n&uacute;mero de puerto s&oacute;lo si es un n&uacute;mero.
+	  bool ok;
+	  argument.toInt(&ok, 10);
+	  if ( ok ) {
+	      m_port = argument;
+	  } // end if
+	  break;
+	case 'U':
+	  m_userName = argument;
+	  break;
       } // end switch
 
-      /// Cuando se asigna una letra a la variable type_arg,
-      /// se espera tomar un valor en la pr&oacute;xima iteraci&oacute;n.
+      /// Cuando se asigna una letra a la variable 'type_arg',
+      /// se espera capturar un valor en la pr&oacute;xima iteraci&oacute;n.
       type_arg = ' ';
 
       if (argument == "--dbname" || argument == "-d") {
@@ -84,7 +85,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
          type_arg = 'U';
       }
       else if (argument == "--replace" || argument == "-R") {
-         /// Usa la variable de entorno CONF_REPLACE_STRING, si existe, para este fin.
+         /// Usa la variable de entorno CONF_REPLACE_STRING, si existe, para reemplazar el valor.
          m_confReplaceString = blGetEnv("CONF_REPLACE_STRING");
       }
       else if (argument == "--version" || argument == "-V") {
@@ -101,29 +102,33 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
 }
 
 
-/// Mostar la ayuda si se debe hacer y devolver true si se hizo.
+/// Muestra texto de ayuda y devuelve 'true' si se ha invocado.
+/**
+**/
 bool BlArgParser::showHelp()
 {
    BL_FUNC_DEBUG
    if ( m_showHelp ) {
       QTextStream(stdout)
-            <<"Usage: "<<m_executable<<" [OPTION]"<<endl
-            <<"-d, --dbname NAME     Database name"<<endl
-            <<"-h, --host ADDRESS    Server name or IP"<<endl
-            <<"-p, --port PORT       Port number"<<endl
-            <<"-U, --username NAME   User name"<<endl
-            <<"-W, --password        Force password asking"<<endl
-            <<"-V, --version         Show current version number, then exit"<<endl
-            <<"-R, --replace         Use CONF_REPLACE_STRING environment variable"<<endl
-            <<"                      to replace ${CONF_REPLACE_STRING} in .conf files"<<endl
-            <<"-?, --help            Show this help, then exit"<<endl;
+            << "Usage: " << m_executable << " [OPTION]" << endl
+            << "-d, --dbname NAME     Database name" << endl
+            << "-h, --host ADDRESS    Server name or IP" << endl
+            << "-p, --port PORT       Port number" << endl
+            << "-U, --username NAME   User name" << endl
+            << "-W, --password        Force password asking" << endl
+            << "-V, --version         Show current version number, then exit" << endl
+            << "-R, --replace         Use CONF_REPLACE_STRING environment variable" << endl
+            << "                      to replace ${CONF_REPLACE_STRING} in .conf files" << endl
+            << "-?, --help            Show this help, then exit" << endl;
    } // end if
 
    return( m_showHelp );
 }
 
 
-/// Mostar la versi&oacute;n si se debe hacer y devolver true si se hizo.
+/// Muestra la versi&oacute;n y devuelve 'true' si se ha invocado.
+/**
+**/
 bool BlArgParser::showVersion()
 {
    BL_FUNC_DEBUG

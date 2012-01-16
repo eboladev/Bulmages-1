@@ -138,7 +138,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="5">
+        <item row="0" column="4">
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -154,7 +154,7 @@
           </property>
          </spacer>
         </item>
-        <item row="0" column="4">
+        <item row="0" column="3">
          <widget class="QToolButton" name="mui_actualizar">
           <property name="minimumSize">
            <size>
@@ -236,50 +236,6 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="3">
-         <widget class="QToolButton" name="mui_configurar">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Configurar</string>
-          </property>
-          <property name="whatsThis">
-           <string>Configurar</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="shortcut">
-           <string>Ctrl+B</string>
-          </property>
-          <property name="checkable">
-           <bool>false</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
      </item>
@@ -313,28 +269,15 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="0" column="1" colspan="2">
        <widget class="QLabel" name="TextLabel1_3">
         <property name="text">
          <string>Cuenta inicial:</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>241</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="1" column="0">
-       <widget class="BlDateSearch" name="m_fechainicial1">
+       <widget class="BlDateSearch" name="mui_fechaInicial" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -343,18 +286,18 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>20</height>
+          <width>150</width>
+          <height>25</height>
          </size>
         </property>
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="BlSearchWidget" name="m_codigoinicial">
+       <widget class="BlSearchWidget" name="mui_cuentaInicial" native="true">
         <property name="minimumSize">
          <size>
           <width>100</width>
-          <height>20</height>
+          <height>25</height>
          </size>
         </property>
        </widget>
@@ -366,28 +309,15 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="2" column="1" colspan="2">
        <widget class="QLabel" name="TextLabel1_3_2">
         <property name="text">
          <string>Cuenta final:</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>241</width>
-          <height>23</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="3" column="0">
-       <widget class="BlDateSearch" name="m_fechafinal1">
+       <widget class="BlDateSearch" name="mui_fechaFinal" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -396,29 +326,23 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>20</height>
+          <width>150</width>
+          <height>25</height>
          </size>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="BlSearchWidget" name="m_codigofinal">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+      <item row="3" column="1" colspan="2">
+       <widget class="BlSearchWidget" name="mui_cuentaFinal" native="true">
         <property name="minimumSize">
          <size>
           <width>100</width>
-          <height>20</height>
+          <height>25</height>
          </size>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="textLabel1_2">
         <property name="text">
          <string>Nivel:</string>
@@ -428,21 +352,8 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>241</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="5" column="0">
-       <widget class="QComboBox" name="combonivel">
+      <item row="6" column="0">
+       <widget class="QComboBox" name="mui_nivel">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -451,25 +362,25 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <spacer>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="mui_balanceJerarquico">
+        <property name="text">
+         <string>Balance jerarquico</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" rowspan="3">
+       <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>261</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
-      </item>
-      <item row="6" column="0">
-       <widget class="QCheckBox" name="checksuperiores">
-        <property name="text">
-         <string>Balance jerarquico</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>
@@ -485,9 +396,6 @@
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string>GroupBox</string>
-     </property>
      <layout class="QGridLayout">
       <property name="margin">
        <number>3</number>
@@ -495,8 +403,8 @@
       <property name="spacing">
        <number>3</number>
       </property>
-      <item row="0" column="9">
-       <widget class="QLineEdit" name="totalsaldo">
+      <item row="0" column="8">
+       <widget class="QLineEdit" name="mui_totalSaldo">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -552,6 +460,9 @@
           <weight>75</weight>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -568,8 +479,8 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="5">
-       <widget class="QLineEdit" name="totaldebe">
+      <item row="0" column="4">
+       <widget class="QLineEdit" name="mui_totalDebe">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -626,17 +537,20 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
-      <item row="0" column="8">
+      <item row="0" column="7">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Saldo:</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="7">
-       <widget class="QLineEdit" name="totalhaber">
+      <item row="0" column="6">
+       <widget class="QLineEdit" name="mui_totalHaber">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -693,17 +607,20 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
-      <item row="0" column="6">
+      <item row="0" column="5">
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Haber:</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="QLineEdit" name="totalsaldoant">
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="mui_totalSaldoAnterior">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -760,9 +677,12 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
-      <item row="0" column="2">
+      <item row="0" column="1">
        <widget class="QLabel" name="TextLabel2">
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
@@ -775,28 +695,12 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="4">
+      <item row="0" column="3">
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>Debe:</string>
         </property>
        </widget>
-      </item>
-      <item row="0" column="1">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Preferred</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>200</width>
-          <height>16</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>
@@ -820,10 +724,8 @@
  <tabstops>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_filtrar</tabstop>
-  <tabstop>mui_configurar</tabstop>
   <tabstop>mui_actualizar</tabstop>
-  <tabstop>combonivel</tabstop>
-  <tabstop>checksuperiores</tabstop>
+  <tabstop>mui_nivel</tabstop>
   <tabstop>mui_list</tabstop>
  </tabstops>
  <resources>

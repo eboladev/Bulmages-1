@@ -243,7 +243,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BcBuscarCanal" name="mui_idcanal" >
+      <widget class="BcBuscarCanal" name="mui_idCanal" >
        <property name="sizePolicy" >
         <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
          <horstretch>0</horstretch>
@@ -316,7 +316,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="mui_nomcanal" />
+         <widget class="QLineEdit" name="mui_nomCanal" />
         </item>
        </layout>
       </item>
@@ -345,7 +345,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="mui_desccanal" />
+         <widget class="QTextEdit" name="mui_descCanal" />
         </item>
        </layout>
       </item>

@@ -29,6 +29,7 @@ BEGIN
 	EXECUTE ''DROP TABLE '' || $1;
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -44,6 +45,7 @@ BEGIN
 	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
 	RETURN 1;
     END IF;
+
     RETURN 0;
 END;
 ' language 'plpgsql';
@@ -51,24 +53,27 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idzonacomercial'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''idzonacomercial'';
+
 	IF FOUND THEN
-      ALTER TABLE trabajador  DROP CONSTRAINT idzonacomercialfk;
-      ALTER TABLE cliente DROP CONSTRAINT idzonacomercialfk;
-		ALTER TABLE trabajador  DROP COLUMN tipotrabajador;
-		ALTER TABLE trabajador  DROP COLUMN idzonacomercial;
-		ALTER TABLE cliente DROP COLUMN comentcomercialcliente;
-		ALTER TABLE cliente DROP COLUMN idzonacomercial;
-		ALTER TABLE cliente DROP COLUMN periodocomercialcliente;
-		ALTER TABLE cliente DROP COLUMN fechabasecomercialcliente;
-		ALTER TABLE cliente DROP COLUMN horarutacomercialcliente;
-      DROP TABLE incidenciacomercial;
-      DROP TABLE rutacomercial;
-      DROP TABLE zonacomercial;
+	    ALTER TABLE trabajador  DROP CONSTRAINT idzonacomercialfk;
+	    ALTER TABLE cliente DROP CONSTRAINT idzonacomercialfk;
+	    ALTER TABLE trabajador  DROP COLUMN tipotrabajador;
+	    ALTER TABLE trabajador  DROP COLUMN idzonacomercial;
+	    ALTER TABLE cliente DROP COLUMN comentcomercialcliente;
+	    ALTER TABLE cliente DROP COLUMN idzonacomercial;
+	    ALTER TABLE cliente DROP COLUMN periodocomercialcliente;
+	    ALTER TABLE cliente DROP COLUMN fechabasecomercialcliente;
+	    ALTER TABLE cliente DROP COLUMN horarutacomercialcliente;
+
+	    DROP TABLE incidenciacomercial;
+	    DROP TABLE rutacomercial;
+	    DROP TABLE zonacomercial;
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -85,13 +90,15 @@ DROP FUNCTION IF EXISTS crearutacomercial(date);
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	rec RECORD;
+	rs RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM configuracion WHERE nombre = ''PluginBf_Comercial'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''PluginBf_Comercial'';
+
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre = ''PluginBf_Comercial'';
 	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;

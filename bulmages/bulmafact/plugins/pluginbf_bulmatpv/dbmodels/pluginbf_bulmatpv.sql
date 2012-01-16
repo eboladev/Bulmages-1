@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -55,9 +59,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM pg_attribute WHERE attname=''visibletpvarticulo'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname=''visibletpvarticulo'';
 	IF NOT FOUND THEN
 		ALTER TABLE articulo ADD COLUMN visibletpvarticulo BOOLEAN NOT NULL DEFAULT TRUE;
 		ALTER TABLE articulo ADD COLUMN etiquetavisibletpvarticulo BOOLEAN NOT NULL DEFAULT FALSE;
@@ -85,14 +90,17 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	asd RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO asd * FROM configuracion WHERE nombre=''PluginBf_BulmaTPV'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_BulmaTPV'';
+
 	IF FOUND THEN
 		UPDATE configuracion SET valor=''0.12.1-0000'' WHERE nombre=''PluginBf_BulmaTPV'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_BulmaTPV'', ''0.12.1-0000'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

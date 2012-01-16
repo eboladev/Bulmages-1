@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -55,9 +59,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''idvalasterisk'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''idvalasterisk'';
 	IF NOT FOUND THEN
 		CREATE TABLE valasterisk (
 			idvalasterisk serial PRIMARY KEY,
@@ -76,7 +81,7 @@ BEGIN
 
 	END IF;
 
-        SELECT INTO as * FROM pg_attribute WHERE attname=''validasiempreasterisktrabajador'';
+        SELECT INTO rs * FROM pg_attribute WHERE attname=''validasiempreasterisktrabajador'';
 	IF NOT FOUND THEN
 	    ALTER TABLE trabajador ADD COLUMN validasiempreasterisktrabajador BOOLEAN DEFAULT FALSE;
 	END IF;
@@ -97,6 +102,7 @@ DECLARE
     extealm   ALIAS FOR $2;
     trab      RECORD;
     alm       RECORD;
+
 BEGIN
    SELECT INTO trab * FROM trabajador WHERE passasterisktrabajador = passtraba;
    IF FOUND THEN 
@@ -115,9 +121,9 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''arreglovalasterisk'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''arreglovalasterisk'';
 	IF NOT FOUND THEN
 		ALTER TABLE valasterisk ADD COLUMN arreglovalasterisk BOOLEAN DEFAULT FALSE;
 	END IF;
@@ -136,14 +142,16 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Asterisk'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Asterisk'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11-002'' WHERE nombre=''PluginBf_Asterisk'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Asterisk'', ''0.11-002'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

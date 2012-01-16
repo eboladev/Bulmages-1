@@ -50,6 +50,7 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     BL_FUNC_DEBUG
     setupUi ( this );
 
+    setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Diario" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "apunte" );
@@ -165,7 +166,7 @@ void BcDiarioView::boton_imprimir()
 /// Se ha pulsado sobre el bot&oacute;n guardar del formulario.
 /**
 **/
-void BcDiarioView::boton_guardar()
+void BcDiarioView::botonGuardar()
 {
     BL_FUNC_DEBUG
     QString fn = QFileDialog::getSaveFileName ( this,
@@ -259,7 +260,7 @@ void BcDiarioView::presentar()
             cadand = " AND ";
         } // end if
 
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales = " " + tabla + ".idcanal IN (" + ccanales + ") ";
             cad += cadwhere + cadand + ccanales;
@@ -330,7 +331,7 @@ void BcDiarioView::openAsiento()
     
     QString idasiento = mui_list->dbValue ( "idasiento" );
 
-    int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+    int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
     
     if ( ! resur) {
         blMsgInfo("No se pudo crear instancia de asientos");
@@ -339,7 +340,7 @@ void BcDiarioView::openAsiento()
     
     BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
 
-    asiento ->muestraasiento ( idasiento );
+    asiento ->muestraAsiento ( idasiento );
     asiento ->show();
     asiento ->setFocus();
 }

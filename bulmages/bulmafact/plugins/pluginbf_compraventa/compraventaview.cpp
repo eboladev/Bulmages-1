@@ -95,7 +95,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "CompraVentaView_CompraVentaView", this );
+        int res = g_plugins->run ( "CompraVentaView_CompraVentaView", this );
         if ( res != 0 )
             return;
 
@@ -132,7 +132,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         insertWindow ( windowTitle(), this, FALSE );
 
         /// Disparamos los plugins por flanco descendente.
-        g_plugins->lanza ( "CompraVentaView_CompraVentaView_Post", this );
+        g_plugins->run ( "CompraVentaView_CompraVentaView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
@@ -353,7 +353,7 @@ int CompraVentaView::cargarPost ( QString idalbaran )
         delete cur;
 
         /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-        g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
+        g_plugins->run ( "AlbaranCliente_cargarPost_Post", this );
 
         calculaypintatotales();
         
@@ -590,7 +590,7 @@ void CompraVentaView::generarFactura()
             }
 
 
-            int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+            int resur = g_plugins->run ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
                 blMsgInfo ( "No se pudo crear instancia de factura" );
                 return;
@@ -608,7 +608,7 @@ void CompraVentaView::generarFactura()
             return;
 
         /// Creamos la factura.
-        int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+        int resur = g_plugins->run ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
             blMsgInfo ( "No se pudo crear instancia de factura" );
             return;

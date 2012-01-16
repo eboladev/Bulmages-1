@@ -58,62 +58,58 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     BL_FUNC_DEBUG
     setupUi ( this );
 
+    setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Balance" ) );
-    /// EStablezco cual es la tabla en la que basarse para el sistema de permisos.
+    /// Establezco cual es la tabla en la que basarse para el sistema de permisos.
     setDbTableName ( "asiento" );
 
-    numdigitos = mainCompany() ->numdigitosempresa();
-    m_codigoinicial->setMainCompany ( emp );
-    /// Arreglamos la cuenta
-    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
-    m_codigoinicial->setTableName ( "cuenta" );
-    m_codigoinicial->setFieldId("idcuenta");
-    m_codigoinicial->m_valores["descripcion"] = "";
-    m_codigoinicial->m_valores["codigo"] = "";
-    m_codigoinicial->hideLabel();
+    mui_cuentaInicial->setMainCompany ( emp );
+    /// Arreglamos la cuenta.
+    mui_cuentaInicial->setLabel ( _ ( "Cuenta inicial:" ) );
+    mui_cuentaInicial->setTableName ( "cuenta" );
+    mui_cuentaInicial->setFieldId("idcuenta");
+    mui_cuentaInicial->m_valores["descripcion"] = "";
+    mui_cuentaInicial->m_valores["codigo"] = "";
+    mui_cuentaInicial->hideLabel();
 
-    m_codigofinal->setMainCompany ( emp );
-    /// Arreglamos la cuenta
-    m_codigofinal->setLabel ( _ ( "Cuenta final:" ) );
-    m_codigofinal->setTableName ( "cuenta" );
-    m_codigofinal->setFieldId("idcuenta");
-    m_codigofinal->m_valores["descripcion"] = "";
-    m_codigofinal->m_valores["codigo"] = "";
-    m_codigofinal->hideLabel();
+    mui_cuentaFinal->setMainCompany ( emp );
+    /// Arreglamos la cuenta.
+    mui_cuentaFinal->setLabel ( _ ( "Cuenta final:" ) );
+    mui_cuentaFinal->setTableName ( "cuenta" );
+    mui_cuentaFinal->setFieldId("idcuenta");
+    mui_cuentaFinal->m_valores["descripcion"] = "";
+    mui_cuentaFinal->m_valores["codigo"] = "";
+    mui_cuentaFinal->hideLabel();
 
     /// Inicializamos la tabla de nivel.
-    combonivel->insertItem ( 0, "2" );
-    combonivel->insertItem ( 1, "3" );
-    combonivel->insertItem ( 2, "4" );
-    combonivel->insertItem ( 3, "5" );
-    combonivel->insertItem ( 4, "6" );
-    combonivel->insertItem ( 5, "7" );
-    combonivel->insertItem ( 6, "8" );
-    combonivel->insertItem ( 7, "9" );
-    combonivel->insertItem ( 8, "10" );
-    combonivel->insertItem ( 9, "11" );
-    combonivel->insertItem ( 10, "12" );
-    combonivel->insertItem ( 11, "13" );
-    combonivel->insertItem ( 12, "14" );
-    combonivel->insertItem ( 13, "15" );
-    combonivel->insertItem ( 14, "16" );
-    combonivel->insertItem ( 15, "17" );
-
+    mui_nivel->insertItem ( 0, "2" );
+    mui_nivel->insertItem ( 1, "3" );
+    mui_nivel->insertItem ( 2, "4" );
+    mui_nivel->insertItem ( 3, "5" );
+    mui_nivel->insertItem ( 4, "6" );
+    mui_nivel->insertItem ( 5, "7" );
+    mui_nivel->insertItem ( 6, "8" );
+    mui_nivel->insertItem ( 7, "9" );
+    mui_nivel->insertItem ( 8, "10" );
+    mui_nivel->insertItem ( 9, "11" );
+    mui_nivel->insertItem ( 10, "12" );
+    mui_nivel->insertItem ( 11, "13" );
+    mui_nivel->insertItem ( 12, "14" );
+    mui_nivel->insertItem ( 13, "15" );
+    mui_nivel->insertItem ( 14, "16" );
+    mui_nivel->insertItem ( 15, "17" );
 
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 1, 1, QDate::currentDate().year() );
-    m_fechainicial1->setText ( cadena );
+    mui_fechaInicial->setText ( cadena );
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
-    m_fechafinal1->setText ( cadena );
-
+    mui_fechaFinal->setText ( cadena );
 
     mainCompany() ->insertWindow ( windowTitle(), this );
     /// Llamamos a los scripts
     blScript(this);
-
-    
 }
 
 
@@ -123,7 +119,6 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 BalanceView::~BalanceView()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -134,7 +129,6 @@ void BalanceView::on_mui_actualizar_clicked()
 {
     BL_FUNC_DEBUG
     accept();
-    
 }
 
 
@@ -142,40 +136,42 @@ void BalanceView::on_mui_actualizar_clicked()
 /** Esta funci&ocute;n sirve para que desde fuera se pueda preparar a la clase para
     presentar un balance predeterminado. */
 /**
-\param codinicial
-\param codfinal
-\param fecha1
-\param fecha2
-\param idc_coste
+\param cuentaInicial
+\param cuentaFinal
+\param fechaInicial
+\param fechaFinal
+\param idCentroCoste
 **/
-void BalanceView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, QString idc_coste )
+void BalanceView::inicializa ( QString cuentaInicial, QString cuentaFinal, QString fechaInicial, QString fechaFinal, QString idCentroCoste )
 {
     BL_FUNC_DEBUG
-    m_codigoinicial->setText ( codinicial );
-    m_codigofinal->setText ( codfinal );
-    m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
-    m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
-    
+    mui_cuentaInicial->setText ( cuentaInicial );
+    mui_cuentaFinal->setText ( cuentaFinal );
+    mui_fechaInicial->setText ( blNormalizeDate ( fechaInicial ).toString ( "dd/MM/yyyy" ) );
+    mui_fechaFinal->setText ( blNormalizeDate ( fechaFinal ).toString ( "dd/MM/yyyy" ) );
 }
 
 
 /// Se encarga de hacer la consulta en la base de datos y mostrar el resultado.
 /** \bug Hay que eliminar el uso de double y usar un sistema de punto fijo.
     Crea una tabla auxiliar de balance y hace en ella todos los c&aacute;lculos necesarios
-    para concretar los resultados. */
-/**
+    para concretar los resultados.
 **/
 void BalanceView::presentar()
 {
     BL_FUNC_DEBUG
-    QString finicial = m_fechainicial1->text();
-    QString ffinal = m_fechafinal1->text();
-    QString cinicial = m_codigoinicial->fieldValue("codigo").left ( 2 );
-    if ( cinicial == "" ) cinicial = "1";
-    QString cfinal = m_codigofinal->fieldValue("codigo");
-    if ( cfinal == "" ) cfinal = "9";
-    int nivel = combonivel->currentText().toInt();
-    bool jerarquico = checksuperiores->isChecked();
+    QString fechaInicial = mui_fechaInicial->text();
+    QString fechaFinal = mui_fechaFinal->text();
+    QString cuentaInicial = mui_cuentaInicial->fieldValue("codigo").left ( 2 );
+
+    if ( cuentaInicial == "" ) cuentaInicial = "1";
+
+    QString cuentaFinal = mui_cuentaFinal->fieldValue("codigo");
+
+    if ( cuentaFinal == "" ) cuentaFinal = "9";
+
+    int nivel = mui_nivel->currentText().toInt();
+    bool jerarquico = mui_balanceJerarquico->isChecked();
 
     /// A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la
     /// ejecuci&oacute;n del programa.
@@ -183,22 +179,21 @@ void BalanceView::presentar()
     /// y cada una de las cuentas del PGC con sus saldos.
     //if (sumasysaldosButton->isChecked()) {
     /// Balance de Sumas y Saldos.
-    presentarSyS ( finicial, ffinal, cinicial, cfinal, nivel, 0, jerarquico );
+    presentarSyS ( fechaInicial, fechaFinal, cuentaInicial, cuentaFinal, nivel, 0, jerarquico );
     //} // end if
-    
 }
 
 
 ///
 /**
-\param finicial
-\param ffinal
-\param cinicial
-\param cfinal
+\param fechaInicial
+\param fechaFinal
+\param cuentaInicial
+\param cuentaFinal
 \param nivel
 \param jerarquico
 **/
-void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico )
+void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QString cuentaInicial, QString cuentaFinal, int nivel, int, bool jerarquico )
 {
     BL_FUNC_DEBUG
     BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
@@ -238,7 +233,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
             cadand = " AND ";
         } // end if
 
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales = cadand + " apunte.idcanal IN (" + ccanales + ") ";
         } // end if
@@ -253,11 +248,11 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
         query += "(SELECT idcuenta, codigo FROM cuenta) AS cuenta ";
 
-        query += " LEFT JOIN (SELECT idcuenta, COALESCE(sum(debe),0) AS debeej, COALESCE(sum(haber),0) AS haberej, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right ( 4 ) + "' " + wherecostesycanales + " GROUP BY idcuenta) AS ejercicio ON ejercicio.idcuenta = cuenta.idcuenta";
+        query += " LEFT JOIN (SELECT idcuenta, COALESCE(sum(debe),0) AS debeej, COALESCE(sum(haber),0) AS haberej, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + fechaFinal.right ( 4 ) + "' " + wherecostesycanales + " GROUP BY idcuenta) AS ejercicio ON ejercicio.idcuenta = cuenta.idcuenta";
 
-        query += " LEFT OUTER JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, COALESCE(sum(debe),0) AS debe, COALESCE(sum(haber),0) AS haber, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldop FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = cuenta.idcuenta ";
+        query += " LEFT OUTER JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, COALESCE(sum(debe),0) AS debe, COALESCE(sum(haber),0) AS haber, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldop FROM apunte WHERE fecha >= '" + fechaInicial + "' AND fecha <= '" + fechaFinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = cuenta.idcuenta ";
 
-        query += " LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE  fecha < '" + finicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
+        query += " LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE  fecha < '" + fechaInicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
 
 
         /// Poblamos el &aacute;rbol de hojas (cuentas).
@@ -274,7 +269,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// Por fin, presentamos los valores.
         /// Aunque antes, prepararemos el Widget con la cabecera a mostrar.
         QStringList headers, datos;
-        headers << _ ( "Codigo" ) << _ ( "Denominacion" ) << _ ( "Saldo anterior" ) << _ ( "Debe" ) << _ ( "Haber" ) << _ ( "Saldo" ) << _ ( "Debe " ) + ffinal.right ( 4 ) << _ ( "Haber " ) + ffinal.right ( 4 ) << _ ( "Saldo " ) + ffinal.right ( 4 );
+        headers << _ ( "Codigo" ) << _ ( "Denominacion" ) << _ ( "Saldo anterior" ) << _ ( "Debe" ) << _ ( "Haber" ) << _ ( "Saldo" ) << _ ( "Debe " ) + fechaFinal.right ( 4 ) << _ ( "Haber " ) + fechaFinal.right ( 4 ) << _ ( "Saldo " ) + fechaFinal.right ( 4 );
         mui_list->setHeaderLabels ( headers );
         mui_list->clear();
 
@@ -311,7 +306,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
             QString lhaberej = arbol->hojaActual ( "haberej" );
             QString lsaldoej = arbol->hojaActual ( "saldoej" );
 
-            if ( lcuenta >= cinicial and lcuenta <= cfinal ) {
+            if ( lcuenta >= cuentaInicial and lcuenta <= cuentaFinal ) {
                 /// Acumulamos los totales para al final poder escribirlos.
                 tsaldoant = tsaldoant + BlFixed ( lsaldoant );
                 tsaldo = tsaldo + BlFixed ( lsaldo );
@@ -372,15 +367,16 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
                 it->setFont ( DENOMINACION, QFont ( "Serif", tamanyo, -1, false ) );
                 for ( int col = 0; col < it->columnCount(); col++ ) {
 
-                    if ( col == DEBE or col == HABER or col == SALDO ) {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::DemiBold, false ) );
+		    if ( col == DEBE || col == HABER || col == SALDO ||  col == DEBEEJ || col == HABEREJ || col == SALDOEJ ) {
+                        it->setFont ( col, QFont ( "SansSerif", 9, QFont::DemiBold, false ) );
                     } else {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+                        it->setFont ( col, QFont ( "SansSerif", 9, QFont::Normal, false ) );
                     } // end if
                     it->setTextAlignment ( col, Qt::AlignRight );
 
                     if ( lcuenta.size() == 2 ) {
                         it->setTextColor ( col, Qt::darkGray );
+			it->setFont ( col, QFont ( "SansSerif", 10, QFont::Bold, false ) );
                     } else if ( lcuenta.size() < 5 ) {
                         it->setTextColor ( col, Qt::blue );
                     } else {
@@ -401,17 +397,17 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         QString totdebe = tdebe.toQString();
         QString tothaber = thaber.toQString();
         QString totsaldo = tsaldo.toQString();
-        totalsaldoant->setText ( totsaldoant );
-        totaldebe->setText ( totdebe );
-        totalhaber->setText ( tothaber );
-        totalsaldo->setText ( totsaldo );
+        mui_totalSaldoAnterior->setText ( totsaldoant );
+        mui_totalDebe->setText ( totdebe );
+        mui_totalHaber->setText ( tothaber );
+        mui_totalSaldo->setText ( totsaldo );
 
         /// Eliminamos el &aacute;rbol de la mem&oacute;ria y cerramos la conexi&oacute;n
         /// con la BD.
         delete arbol;
         mainCompany() ->commit();
     } catch ( ... ) {
-        blMsgInfo ( "error en los calculos" );
+        blMsgInfo ( _("Error en los calculos.") );
         mainCompany() ->rollback();
         /// Libermos posible memoria utilizada
         if ( ramas ) delete ramas;
@@ -428,7 +424,6 @@ void BalanceView::accept()
 {
     BL_FUNC_DEBUG
     presentar();
-    
 }
 
 
@@ -441,9 +436,11 @@ void BalanceView::accept()
 void BalanceView::imprimir()
 {
     BL_FUNC_DEBUG
-    BalancePrintView *balan = new BalancePrintView ( mainCompany() );
-    balan->inicializa1 ( m_codigoinicial->fieldValue("codigo"), m_codigofinal->fieldValue("codigo"), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
-    balan->exec();
-    
+
+    BalancePrintView *balance = new BalancePrintView ( mainCompany(), 0 );
+    balance->inicializa ( mui_cuentaInicial->fieldValue("codigo"), mui_cuentaFinal->fieldValue("codigo"), mui_fechaInicial->text(), mui_fechaFinal->text(), FALSE );
+    blCenterOnScreen(balance);
+    balance->setWindowModality(Qt::ApplicationModal);
+    balance->show();
 }
 

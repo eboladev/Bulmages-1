@@ -50,7 +50,8 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     BL_FUNC_DEBUG
     setupUi ( this );
 
-    setTitleName ( _ ( "Extracto de Cuentas" ) );
+    setAttribute(Qt::WA_DeleteOnClose);
+    setTitleName ( _ ( "Extracto de cuentas" ) );
     setDbTableName ( "apunte" );
 
     mui_list->setMainCompany ( emp );
@@ -59,7 +60,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
     /// Iniciamos los componentes
     m_codigoinicial->setMainCompany ( emp );
-    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
     m_codigoinicial->setTableName ( "cuenta" );
     m_codigoinicial->setFieldId("idcuenta");
     m_codigoinicial->m_valores["descripcion"] = "";
@@ -73,7 +74,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     m_codigofinal->m_valores["codigo"] = "";
 
     mui_codigocontrapartida->setMainCompany ( emp );
-    mui_codigocontrapartida->setLabel ( _ ( "Cuenta Contrapartida:" ) );
+    mui_codigocontrapartida->setLabel ( _ ( "Cuenta contrapartida:" ) );
     mui_codigocontrapartida->setTableName ( "cuenta" );
     mui_codigocontrapartida->setFieldId("idcuenta");
     mui_codigocontrapartida->m_valores["descripcion"] = "";
@@ -98,10 +99,10 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
 
     /// Conectamos los botones del menu con las acciones de esta ventana.
-    connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(boton_siguiente()));
-    connect (((BcBulmaCont *)g_main)->actionAnterior, SIGNAL(triggered()), this, SLOT(boton_anterior()));
-    connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(boton_inicio()));
-    connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
+    connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(botonSiguiente()));
+    connect (((BcBulmaCont *)g_main)->actionAnterior, SIGNAL(triggered()), this, SLOT(botonAnterior()));
+    connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(botonInicio()));
+    connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(botonFin()));
 
     /// Llamamos a los scripts
     blScript(this);
@@ -130,16 +131,16 @@ void BcExtractoView::openAsiento()
     
     QString idasiento = mui_list->dbValue ( "idasiento" );
 
-    int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+    int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
     
     if ( ! resur) {
-        blMsgInfo("No se pudo crear instancia de asientos");
+        blMsgInfo(_("No se pudo crear instancia de asientos."));
         return;
     } // end if
     
     BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
 
-    asiento ->muestraasiento ( idasiento );
+    asiento ->muestraAsiento ( idasiento );
     asiento ->show();
     asiento ->setFocus();
 }
@@ -220,7 +221,7 @@ void BcExtractoView::accept()
 /// Esta es la funci&oacute;n que avanza un registro entre las cuentas.
 /**
 **/
-void BcExtractoView::boton_siguiente()
+void BcExtractoView::botonSiguiente()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -239,7 +240,7 @@ void BcExtractoView::boton_siguiente()
 /// Esta es la funci&oacute;n que retrocede un registro entre las cuentas.
 /**
 **/
-void BcExtractoView::boton_anterior()
+void BcExtractoView::botonAnterior()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -257,7 +258,7 @@ void BcExtractoView::boton_anterior()
 /// Retrocede al principio de las cuentas.
 /**
 **/
-void BcExtractoView::boton_inicio()
+void BcExtractoView::botonInicio()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -273,7 +274,7 @@ void BcExtractoView::boton_inicio()
 /// Avanza al final de las cuentas.
 /**
 **/
-void BcExtractoView::boton_fin()
+void BcExtractoView::botonFin()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
@@ -290,7 +291,7 @@ void BcExtractoView::boton_fin()
 ///
 /**
 **/
-void BcExtractoView::boton_guardar()
+void BcExtractoView::botonGuardar()
 {
     BL_FUNC_DEBUG
 /*
@@ -416,7 +417,7 @@ void BcExtractoView::presentar()
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
         } // end if
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
         } // end if
@@ -548,15 +549,28 @@ void BcExtractoView::on_mui_casacion_clicked()
 {
     BL_FUNC_DEBUG
     try {
+	if (m_cursorcta == 0) {
+	    blMsgInfo(_("Cargue primero una cuenta."));
+	    return;
+	} // end if
+	
+	if (m_cursorcta->value( "idcuenta" ).isEmpty()) {
+	    blMsgWarning(_("La cuenta no tiene apuntes."));
+	    return;
+	} // end if
+	
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
         BlDbRecordSet *curshaber = mainCompany() ->loadQuery ( query );
+
         BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
-        barra.setText ( _ ( "Cargando Extracto de Cuentas" ) );
+        barra.setText ( _ ( "Cargando extracto de cuentas" ) );
+
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->value( "haber" ) + " AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
             BlDbRecordSet *cursdebe = mainCompany() ->loadQuery ( query.toAscii(), "cursdebe" );
+
             if ( !cursdebe->eof() ) {
                 query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->value( "idapunte" );
                 mainCompany() ->begin();
@@ -565,16 +579,18 @@ void BcExtractoView::on_mui_casacion_clicked()
                 mainCompany() ->runQuery ( query );
                 mainCompany() ->commit();
             } // end if
+
             delete cursdebe;
             curshaber->nextRecord();
             barra.setValue ( barra.value() + 1 );
         } // end while
+
         delete curshaber;
 	m_tratarpunteos = FALSE;
         presentar();
 	m_tratarpunteos = TRUE;
     } catch ( ... ) {
-        blMsgError ( "Se produjo un error en la casacion" );
+        blMsgError ( _("Se produjo un error en la casacion") );
     } // end try
     
 }
@@ -583,7 +599,7 @@ void BcExtractoView::on_mui_casacion_clicked()
 /// Guarda el punteo en disco para poder recuperarlo despues
 /**
 **/
-void BcExtractoView::on_mui_guardarpunteo_clicked()
+void BcExtractoView::on_mui_guardarPunteo_clicked()
 {
     BL_FUNC_DEBUG
 
@@ -624,7 +640,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
     Por supuesto cuando se pulsa dicho bot&oacute;n se borra el punteo. */
 /**
 **/
-void BcExtractoView::on_mui_borrapunteo_clicked()
+void BcExtractoView::on_mui_borrarPunteo_clicked()
 {
     BL_FUNC_DEBUG
     try {
@@ -645,7 +661,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
 	    m_tratarpunteos = TRUE;
         } // end if
     } catch ( ... ) {
-        blMsgInfo ( _ ( "Se ha producido un error" ) );
+        blMsgInfo ( _ ( "Se ha producido un error." ) );
     } // end try
     
 }
@@ -656,7 +672,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
     borrador.
     Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes
     ya que en dicho caso la carga del punteo no funciona correctamente. */
-void BcExtractoView::on_mui_cargarpunteos_clicked()
+void BcExtractoView::on_mui_cargarPunteos_clicked()
 {
     BL_FUNC_DEBUG
     try {
@@ -688,7 +704,7 @@ void BcExtractoView::on_mui_cargarpunteos_clicked()
         presentar();
 	m_tratarpunteos = TRUE;
     } catch ( ... ) {
-        blMsgInfo ( "Error en la carga del punteo" );
+        blMsgInfo ( _("Error en la carga del punteo.") );
         mainCompany()->rollback();
     } // end try
     
@@ -746,7 +762,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND t5.idc_coste IN (%s) ", ccostes.toAscii().constData() );
         } // end if
-        QString ccanales = scanal->cadcanal();
+        QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
             ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
         } // end if
@@ -799,9 +815,9 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         salida += "<blockTable style=\"tabla\">\n";
         salida += "<tr>";
         salida += "<td> " + cursorcta->value( "codigo" ) + " -" + cursorcta->value( "descripcion" ) + " </td>";
-        salida += "<td> Debe Inicial: " + debeinicial.toQString() + " </td>";
-        salida += "<td> Haber Inicial: " + haberinicial.toQString() + " </td>";
-        salida += "<td> Saldo Inicial: " + saldoinicial.toQString() + "</td>";
+        salida += "<td> Debe inicial: " + debeinicial.toQString() + " </td>";
+        salida += "<td> Haber inicial: " + haberinicial.toQString() + " </td>";
+        salida += "<td> Saldo inicial: " + saldoinicial.toQString() + "</td>";
         salida += "</tr>";
         salida += "</blockTable>\n";
 
@@ -872,7 +888,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         
         return salida;
     } catch ( ... ) {
-        blMsgError ( "Ocurrio un error inesperado" );
+        blMsgError ( _("Ocurrio un error inesperado.") );
         return "";
     }
 }
@@ -918,7 +934,7 @@ void BcExtractoView::imprimir()
     BlProgressBar *barra = new BlProgressBar;
     barra->setValue ( 0 );
     barra->show();
-    barra->setText ( _ ( "Generando Extracto " )  );
+    barra->setText ( _ ( "Generando extracto " )  );
 
 
     /// Tabla temporal de contrapartidas.

@@ -35,7 +35,7 @@ BfBuscarTipoIVA::BfBuscarTipoIVA ( QWidget *parent )
 {
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
-    m_table = "tipo_iva";
+    setTableName("tipo_iva");
     
 }
 

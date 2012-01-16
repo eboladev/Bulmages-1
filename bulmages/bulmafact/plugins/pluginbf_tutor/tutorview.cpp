@@ -187,7 +187,7 @@ void TutorView::imprimir()
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "TutorView_imprimir", this );
+    int res = g_plugins->run ( "TutorView_imprimir", this );
     if ( res != 0 ) {
         return;
     } // end if

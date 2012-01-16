@@ -196,7 +196,7 @@ void AlbaranesProveedor::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlbaranesProveedor_iniciaForm", this );
+    int res = g_plugins->run ( "AlbaranesProveedor_iniciaForm", this );
     if ( res != 0 ) {
 	
         return;

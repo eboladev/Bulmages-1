@@ -41,12 +41,12 @@ PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento(BcAsientoView * as, BcCompany
 {
     BL_FUNC_DEBUG
     setObjectName ( QString::fromUtf8 ( "PluginBc_DuplicarAsiento" ) );
-    setStatusTip ( _ ( "Duplicar Asiento" ) );
-    setToolTip ( _ ( "Duplicar Asiento" ) );
+    setStatusTip ( _ ( "Duplicar asiento" ) );
+    setToolTip ( _ ( "Duplicar asiento" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/igualant.xpm" ) ) );
-    setIconSize ( QSize ( 32, 32 ) );
+    setIconSize ( QSize ( 22, 22 ) );
     m_asiento = as;
     connect (this, SIGNAL(released()), this, SLOT(elslot()));
     
@@ -71,10 +71,10 @@ void PluginBc_DuplicarAsiento::elslot()
     BL_FUNC_DEBUG
     DuplicarAsientoView *dupli = new DuplicarAsientoView ( (BcCompany *)mainCompany(), 0 );
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
-    dupli->inicializa ( m_asiento->mui_ordenasiento->text(), m_asiento->mui_ordenasiento->text() );
+    dupli->inicializa ( m_asiento->mui_ordenAsiento->text(), m_asiento->mui_ordenAsiento->text() );
     dupli->exec();
-    m_asiento->cargaasientos();
-    m_asiento->boton_fin();
+    m_asiento->cargaAsientos();
+    m_asiento->botonFin();
     delete dupli;
     
 }
@@ -106,20 +106,13 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
     BL_FUNC_DEBUG
     PluginBc_DuplicarAsiento *mui_exporta_efactura2 = new PluginBc_DuplicarAsiento ( l, l->mainCompany(),  l );
     mui_exporta_efactura2->setObjectName("m_duplicarasiento");
-    
-    QFrame *frame = l->findChild<QFrame *> ("mui_plugbotones");
-    if (frame) {
-	QHBoxLayout *m_hboxLayout1 = frame->findChild<QHBoxLayout *> ( "hboxLayout1" );
-	if ( !m_hboxLayout1 ) {
-	    m_hboxLayout1 = new QHBoxLayout ( frame );
-	    m_hboxLayout1->setSpacing ( 5 );
-	    m_hboxLayout1->setMargin ( 5 );
-	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	} // end if
-	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
+
+    QHBoxLayout *layout = l->findChild<QHBoxLayout *> ("mui_plugbotones");
+
+    if (layout) {
+        l->mui_plugbotones->addWidget ( mui_exporta_efactura2 );
     } // end if
 
-    
     return 0;
 }
 

@@ -24,8 +24,6 @@ endif(NOT WIN32)
 add_subdirectory(pluginbc_corrector)
 add_subdirectory(pluginbc_example)
 add_subdirectory(pluginbc_depuracion)
-add_subdirectory(pluginbc_balancearbol)
-#add_subdirectory(pluginbc_cuentasanuales2ods) deprecated
 add_subdirectory(pluginbc_ccaa2ods)
 add_subdirectory(pluginbc_balance)
 add_subdirectory(pluginbc_diario)
@@ -38,14 +36,8 @@ add_subdirectory(pluginbc_cuentasanuales)
 add_subdirectory(pluginbc_amortizacion)
 add_subdirectory(pluginbc_cuenta)
 
-# pluginadocumental deprecated.
 #add_subdirectory(pluginbc_documentoadjunto)
-# pluginproyectos bajo desarrollo.
 add_subdirectory(pluginbc_proyectos)
-# pluginimportcontaplus bajo desarrollo.
-#add_subdirectory(pluginimportcontaplus)
-# pluginbalance-old pendiente de fusionar con pluginbalance
-# add_subdirectory(pluginbalance-old)
 
 # if you want to add some private code
 # simple put your add_directory in a

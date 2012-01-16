@@ -40,7 +40,7 @@
 /usr/share/bulmages/bulmasetup/facturacion.py
 /usr/share/bulmages/dbmodels/*
 /usr/share/bulmages/rev-conf/*
-/usr/share/man/bulmasetup.1
+/usr/share/man/man1/bulmasetup.1
 usr/share/menu/bulmasetup.menu
 usr/share/applications/bulmasetup.desktop
 usr/share/pixmaps/bulmasetup.xpm

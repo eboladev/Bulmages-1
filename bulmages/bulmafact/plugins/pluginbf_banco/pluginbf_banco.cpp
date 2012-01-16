@@ -62,7 +62,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionBancos") {
         BancoView * bud = new BancoView ( g_pluginbf_banco->company(), NULL );

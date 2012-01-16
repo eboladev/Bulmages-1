@@ -99,7 +99,7 @@ void BcAsientoForm::pintaFecha ( QString )
 ///
 /**
 **/
-void BcAsientoForm::pintacomentariosasiento ( QString )
+void BcAsientoForm::pintaComentariosAsiento ( QString )
 {
     BL_FUNC_DEBUG
     
@@ -109,7 +109,7 @@ void BcAsientoForm::pintacomentariosasiento ( QString )
 ///
 /**
 **/
-void BcAsientoForm::pintaordenasiento ( QString )
+void BcAsientoForm::pintaOrdenAsiento ( QString )
 {
     BL_FUNC_DEBUG
     
@@ -119,7 +119,7 @@ void BcAsientoForm::pintaordenasiento ( QString )
 ///
 /**
 **/
-void BcAsientoForm::pintaclase ( QString )
+void BcAsientoForm::pintaClase ( QString )
 {
     BL_FUNC_DEBUG
     
@@ -129,7 +129,7 @@ void BcAsientoForm::pintaclase ( QString )
 ///
 /**
 **/
-void BcAsientoForm::calculaypintatotales()
+void BcAsientoForm::calculaPintaTotales()
 {
     BL_FUNC_DEBUG
     
@@ -139,7 +139,7 @@ void BcAsientoForm::calculaypintatotales()
 ///
 /**
 **/
-void BcAsientoForm::trataestadoBcAsientoForm()
+void BcAsientoForm::trataEstadoBcAsientoForm()
 {
     BL_FUNC_DEBUG
     
@@ -231,12 +231,12 @@ void BcAsientoForm::pintar()
     pintaIdAsiento ( idasiento() );
     pintaDescripcion ( dbValue ( "descripcion" ) );
     pintaFecha ( dbValue ( "fecha" ) );
-    pintacomentariosasiento ( dbValue ( "comentariosasiento" ) );
-    pintaordenasiento ( dbValue ( "ordenasiento" ) );
-    pintaclase ( dbValue ( "clase" ) );
+    pintaComentariosAsiento ( dbValue ( "comentariosasiento" ) );
+    pintaOrdenAsiento ( dbValue ( "ordenasiento" ) );
+    pintaClase ( dbValue ( "clase" ) );
     /// Pintamos los totales.
-    calculaypintatotales();
-    trataestadoBcAsientoForm();
+    calculaPintaTotales();
+    trataEstadoBcAsientoForm();
     
 }
 
@@ -277,7 +277,7 @@ int BcAsientoForm::load ( QString idasiento )
         DBload ( cur );
     } // end if
     delete cur;
-    trataestadoBcAsientoForm();
+    trataEstadoBcAsientoForm();
     listalineas->load ( idasiento );
     pintar();
 
@@ -329,7 +329,7 @@ void BcAsientoForm::abrir()
     }
     BlDbRecordSet *cursoraux = mainCompany() ->loadQuery ( "SELECT abreasiento(" + id + ")" );
     delete cursoraux;
-    trataestadoBcAsientoForm();
+    trataEstadoBcAsientoForm();
     
 }
 
@@ -413,7 +413,7 @@ int BcAsientoForm::save()
         listalineas->save();
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "BcAsientoForm_guardaAsiento1_post", this );
+        int res = g_plugins->run ( "BcAsientoForm_guardaAsiento1_post", this );
         if ( res != 0 )
             return 0;
 

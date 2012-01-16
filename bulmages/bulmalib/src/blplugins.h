@@ -38,9 +38,9 @@ private:
 public:
     BlPlugins();
     ~BlPlugins();
-    void cargaLibs ( const QString &libs );
-    int lanza ( const char *func, void *clase );
-    int lanza ( const char *func, void *clase, void **ret );
+    void loadLibs ( const QString &libs );
+    int run ( const char *func, void *clase );
+    int run ( const char *func, void *clase, void **ret );
     QList<QLibrary *> pluginsLoaded();
 };
 

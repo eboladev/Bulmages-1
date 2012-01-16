@@ -36,9 +36,9 @@ usr/share/bulmages/README.plugins.es
 
 usr/share/bulmages/version
 usr/share/locale/*
-usr/share/man/bgtrml2pdf.1
-usr/share/man/bulmages.1
-usr/share/man/bulmages.conf.1
+usr/share/man/man1/bgtrml2pdf.1
+usr/share/man/man1/bulmages.1
+usr/share/man/man1/bulmages.conf.1
 /usr/share/bulmages/imagesrc/*
 /usr/share/bulmages/images/*
 /usr/share/bulmages/confs/*

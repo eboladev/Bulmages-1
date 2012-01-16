@@ -38,7 +38,7 @@ extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfCompany_createMainWindows_Post(Bf
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BlAction_actionTriggered(BlAction *);
 
 #endif
 

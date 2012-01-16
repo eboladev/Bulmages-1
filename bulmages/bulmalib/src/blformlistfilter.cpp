@@ -35,12 +35,12 @@ BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
    hide();
 
    /// Disparamos los plugins.
-   int res = g_plugins->lanza ( "BlFormListFilter_BlFormListFilter", this );
+   int res = g_plugins->run ( "BlFormListFilter_BlFormListFilter", this );
    if ( res != 0 ) {
        return;
    } // end if
 
-   g_plugins->lanza ( "BlFormListFilter_BlFormListFilter", this );
+   g_plugins->run ( "BlFormListFilter_BlFormListFilter", this );
 
    
 }
@@ -60,7 +60,7 @@ QString BlFormListFilter::generarFiltro()
 
    QString filtro = "";
 
-   switch ( mui_subform_list->dbFieldTypeByColumnId ( m_columna_actual ) )
+   switch ( mui_subform_list->fieldTypeByColumnId ( m_columna_actual ) )
    {
 
       /// Filtro para valores numéricos
@@ -269,7 +269,7 @@ void BlFormListFilter::configureFilterToType()
    mui_filtro_columna->show();
    mui_filtro_columna->setText ( "\"" + mui_subform_list->dbFieldViewNameByColumnId ( m_columna_actual ) + "\":" );
 
-   switch ( mui_subform_list->dbFieldTypeByColumnId ( m_columna_actual ) ) {
+   switch ( mui_subform_list->fieldTypeByColumnId ( m_columna_actual ) ) {
 
       /// Mostrar widgets para filtrar fechas
       case BlDbField::DbDate:

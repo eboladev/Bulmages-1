@@ -54,10 +54,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        rec RECORD;
+        rs RECORD;
 
 BEGIN
-        SELECT INTO rec * FROM pg_attribute WHERE attname = ''idalias'';
+        SELECT INTO rs * FROM pg_attribute WHERE attname = ''idalias'';
         IF FOUND THEN
               DROP TABLE alias;
         END IF;
@@ -78,9 +78,9 @@ DROP INDEX IF EXISTS ix_alias_len_cadalias;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Alias'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Alias'';
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Alias'';
 	END IF;

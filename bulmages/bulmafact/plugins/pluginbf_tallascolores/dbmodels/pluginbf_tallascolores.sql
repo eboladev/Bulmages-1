@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -58,9 +62,9 @@ language 'plpgsql';
 
 --CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 --DECLARE
---	as RECORD;
+--	rs RECORD;
 --BEGIN
---	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Tallas-y-Colores'' AND ( valor LIKE ''0.9.1%'' OR valor = ''0.9.1-0001'');
+--	SELECT INTO rs * FROM configuracion WHERE nombre=''DBRev-Tallas-y-Colores'' AND ( valor LIKE ''0.9.1%'' OR valor = ''0.9.1-0001'');
 --	IF FOUND THEN
 --		RETURN 0;
 --	ELSE
@@ -77,10 +81,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        rec RECORD;
+        rs RECORD;
 
 BEGIN
-        SELECT INTO rec * FROM pg_attribute WHERE attname = ''idtc_talla'';
+        SELECT INTO rs * FROM pg_attribute WHERE attname = ''idtc_talla'';
         IF NOT FOUND THEN
                 CREATE TABLE tc_talla (
                         idtc_talla SERIAL PRIMARY KEY,
@@ -124,7 +128,7 @@ BEGIN
 		);
         END IF;
 
-	SELECT INTO rec attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid = pg_class.oid WHERE attname = ''idtc_talla'' AND relname = ''lalbaran'';
+	SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid = pg_class.oid WHERE attname = ''idtc_talla'' AND relname = ''lalbaran'';
 	IF NOT FOUND THEN
 		-- Alteramos la tabla de presupuestos.
 		ALTER TABLE lpresupuesto ADD COLUMN idtc_talla INTEGER;
@@ -161,12 +165,12 @@ DROP FUNCTION aux() CASCADE;
 --CREATE FUNCTION tc_insertlalbaran() RETURNS "trigger"
 --AS '
 --DECLARE
---   rsa RECORD;
+--   rs RECORD;
 --   stockalmacen RECORD;
 --   m_idalmacen INTEGER;
 --BEGIN
---    SELECT INTO rsa * FROM albaran WHERE idalbaran = NEW.idalbaran;
---    m_idalmacen := rsa.idalmacen;
+--    SELECT INTO rs * FROM albaran WHERE idalbaran = NEW.idalbaran;
+--    m_idalmacen := rs.idalmacen;
 
     -- Tratamos el control de stock general.
 --    SELECT INTO stockalmacen * FROM tc_stock_almacen WHERE idalmacen = m_idalmacen AND idarticulo = NEW.idarticulo;
@@ -179,7 +183,7 @@ DROP FUNCTION aux() CASCADE;
 
     -- Tratamos el control de stock para tallas y colores.
 --    IF NEW.idtalla IS NOT NULL OR NEW.idcolor IS NOT NULL THEN
---	SELECT INTO rsa * FROM tc_stock_tallacolor WHERE idstock_almacen = stockalmacen.idstock_almacen AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor;
+--	SELECT INTO rs * FROM tc_stock_tallacolor WHERE idstock_almacen = stockalmacen.idstock_almacen AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor;
 --	IF NOT FOUND THEN
 --		INSERT INTO tc_stock_tallacolor (idstock_almacen, idtalla, idcolor, cantstock_tallacolor) VALUES (stockalmacen.idstock_almacen, NEW.idtalla, NEW.idcolor, -NEW.cantlalbaran);
 --	ELSE
@@ -213,9 +217,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	rsa RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_TallasColores'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_TallasColores'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBf_TallasColores'';
 	ELSE

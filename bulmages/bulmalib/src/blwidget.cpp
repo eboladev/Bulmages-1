@@ -28,11 +28,15 @@
 \param parent
 \param f
 **/
-BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f ), BlMainCompanyPointer()
+BlWidget::BlWidget ( QWidget *parent, Qt::WFlags flags )
+        : QWidget ( parent, flags), BlMainCompanyPointer()
 {
     BL_FUNC_DEBUG
-    
+#ifdef AREA_QMDI
+    /// Deshabilita el doble buffer de las X11. Va todo mucho mas rapido, pero no dibuja bien.
+    qt_x11_set_global_double_buffer(false);
+#endif
+    setAttribute(Qt::WA_StaticContents);
 }
 
 
@@ -42,8 +46,8 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
 \param parent
 \param f
 **/
-BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f ), BlMainCompanyPointer ( emp )
+BlWidget::BlWidget ( BlMainCompany *company, QWidget *parent, Qt::WFlags flags )
+        : QWidget ( parent, flags ), BlMainCompanyPointer ( company )
 {
     BL_FUNC_DEBUG
     
@@ -64,10 +68,10 @@ BlWidget::~BlWidget()
 */
 void BlWidget::paintEvent ( QPaintEvent * )
 {
-    QStyleOption opt;
-    opt.initFrom ( this );
-    QPainter p ( this );
-    style()->drawPrimitive ( QStyle::PE_Widget, &opt, &p, this );
+    QStyleOption option;
+    option.initFrom ( this );
+    QPainter painter ( this );
+    style()->drawPrimitive ( QStyle::PE_Widget, &option, &painter, this );
 }
 
 
@@ -79,7 +83,7 @@ bool BlWidget::event ( QEvent * event )
     } else if (event->type() == QEvent::ShowToParent) {
         emit showed(this);
     } // end if
-    
+
     return QWidget::event(event);
 }
 #endif

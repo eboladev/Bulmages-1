@@ -16,13 +16,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -30,14 +32,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -46,6 +50,7 @@ language 'plpgsql';
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS $$
 DECLARE
 	bs RECORD;
+
 BEGIN
 	SELECT INTO bs valor FROM configuracion WHERE nombre='DataBaseContabilidad';
 	IF NOT FOUND THEN
@@ -743,7 +748,7 @@ BEGIN
 	END LOOP;
 
 	-- Recargo de equivalencia
-	FOR bs IN SELECT SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base, round(reqeqlfactura) as req, reqeqlfactura FROM lfactura WHERE idfactura = NEW.idfactura GROUP BY reqeqlfactura LOOP
+	FOR bs IN SELECT SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base, round(reqeqlfactura) AS req, reqeqlfactura FROM lfactura WHERE idfactura = NEW.idfactura GROUP BY reqeqlfactura LOOP
 
 	      IF bs.reqeqlfactura <> 0 THEN
 		      varaux := '47710%' || bs.req;
@@ -1874,7 +1879,7 @@ BEGIN
 		    -- Producto COMPRA
 			IF (TG_OP = 'INSERT') OR (altacuentacompra IS TRUE) THEN
 			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
-			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6000%';
+			    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '6000%';
 			    IF cs.cod IS NOT NULL THEN
 				    codcta := cs.cod + 1;
 			    ELSE
@@ -1921,7 +1926,7 @@ BEGIN
 		    -- Servicio COMPRA. No se crea porque cada caso es diferente.
 			IF (TG_OP = 'INSERT') OR (altacuentacompra IS TRUE) THEN
 			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
-			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6070%';
+			    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '6070%';
 			    IF cs.cod IS NOT NULL THEN
 				    codcta := cs.cod + 1;
 			    ELSE
@@ -1994,7 +1999,7 @@ BEGIN
 
 			-- Producto COMPRA
 			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
-			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6000%';
+			    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '6000%';
 			    IF cs.cod IS NOT NULL THEN
 				    codcta := cs.cod + 1;
 			    ELSE
@@ -2037,7 +2042,7 @@ BEGIN
 
 			-- Servicio COMPRA. No se crea porque cada caso es diferente.
 			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
-			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6070%';
+			    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '6070%';
 			    IF cs.cod IS NOT NULL THEN
 				    codcta := cs.cod + 1;
 			    ELSE
@@ -2080,8 +2085,8 @@ CREATE OR REPLACE FUNCTION syncbulmacontfamiliaup () RETURNS "trigger"
 AS $$
 DECLARE
   check_dblink_connection BOOLEAN;
-BEGIN
 
+BEGIN
 	check_dblink_connection = dblink_exists('bulmafact2cont');
 	
 	IF check_dblink_connection IS TRUE THEN
@@ -2093,7 +2098,6 @@ BEGIN
 	END IF;
 
       RETURN NULL;
-
 END;
 $$ LANGUAGE plpgsql;
 
@@ -2111,14 +2115,17 @@ CREATE TRIGGER syncbulmacontfamiliatriggerup
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_SincroBulmaCont'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_SincroBulmaCont'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.9.1-003'' WHERE nombre=''PluginBf_SincroBulmaCont'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_SincroBulmaCont'', ''0.9.1-003'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

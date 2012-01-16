@@ -121,7 +121,7 @@ public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
     QString value( int posicion, int registro = -1, bool localeformat = FALSE );
     /// Devuelve el tipo de dato de una determinada posicion de un query
-    int dbFieldType(int posicion);
+    int fieldType(int posicion);
     bool error();
     QString query();
     QString pristineQuery();

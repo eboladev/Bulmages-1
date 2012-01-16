@@ -74,7 +74,7 @@ void BtInput::keyPressEvent ( QKeyEvent *e )
     } // end switch
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BtInput_keyPressEvent_Post", this );
+    g_plugins->run ( "BtInput_keyPressEvent_Post", this );
 
 }
 

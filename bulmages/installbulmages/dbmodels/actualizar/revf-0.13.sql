@@ -57,9 +57,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.13.1%'' OR valor = ''0.12.1-0008'');
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.13.1%'' OR valor = ''0.12.1-0008'');
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
@@ -109,9 +109,9 @@ CREATE TRIGGER restriccionescomparticulotrigger
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.13.1-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE

@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -55,14 +59,14 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''ivaincarticulo'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''ivaincarticulo'';
 	IF NOT FOUND THEN
 		ALTER TABLE articulo ADD COLUMN ivaincarticulo BOOLEAN DEFAULT FALSE;
 	END IF;
 
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''pvpivainclalbaran'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''pvpivainclalbaran'';
 	IF NOT FOUND THEN
 		ALTER TABLE lalbaran ADD COLUMN pvpivainclalbaran NUMERIC(12,2) DEFAULT 0;
 		ALTER TABLE lfactura ADD COLUMN pvpivainclfactura NUMERIC(12,2) DEFAULT 0;
@@ -88,8 +92,8 @@ DECLARE
     totalIVA numeric(12, 2);
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
-    res RECORD;
-    res2 RECORD;
+    rs RECORD;
+    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -98,11 +102,11 @@ BEGIN
     totalRE := 0;
     totalTotal := 0;
 
-    FOR res IN SELECT cantlalbaran * pvpivainclalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	totalTotal := totalTotal + res.subtotal1;
+    FOR rs IN SELECT cantlalbaran * pvpivainclalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalTotal := totalTotal + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-	totalTotal := totalTotal * (1 - res.proporciondalbaran / 100);
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	totalTotal := totalTotal * (1 - rs.proporciondalbaran / 100);
     END LOOP;
     RETURN totalTotal;
 END;
@@ -115,16 +119,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaran * pvpivainclalbaran * (1 - descuentolalbaran / 100) / (1+ ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	total := total + res.subtotal1;
+
+    FOR rs IN SELECT cantlalbaran * pvpivainclalbaran * (1 - descuentolalbaran / 100) / (1+ ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-	total := total * (1 - res.proporciondalbaran / 100);
+
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	total := total * (1 - rs.proporciondalbaran / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -136,16 +143,19 @@ AS '
 DECLARE
     idp ALIAS FOR $1;
     total numeric(12, 2);
-    res RECORD;
+    rs RECORD;
 
 BEGIN
     total := 0;
-    FOR res IN SELECT (cantlalbaran * pvpivainclalbaran - cantlalbaran * pvpivainclalbaran / (1+ ivalalbaran / 100)) * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-    	total := total + res.subtotal1;
+
+    FOR rs IN SELECT (cantlalbaran * pvpivainclalbaran - cantlalbaran * pvpivainclalbaran / (1+ ivalalbaran / 100)) * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    	total := total + rs.subtotal1;
     END LOOP;
-    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-    	total := total * (1 - res.proporciondalbaran / 100);
+
+    FOR rs IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - rs.proporciondalbaran / 100);
     END LOOP;
+
     RETURN total;
 END;
 ' LANGUAGE plpgsql;
@@ -161,14 +171,16 @@ END;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	asd RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO asd * FROM configuracion WHERE nombre=''PluginBf_IVAIncluido'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_IVAIncluido'';
+
 	IF FOUND THEN
 		UPDATE configuracion SET valor=''0.12.1-0000'' WHERE nombre=''PluginBf_IVAIncluido'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_IVAIncluido'', ''0.12.1-0000'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

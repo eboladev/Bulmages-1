@@ -51,7 +51,7 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "CarteraPagosList_CarteraPagosList", this );
+    int res = g_plugins->run ( "CarteraPagosList_CarteraPagosList", this );
     if ( res != 0 )
         return;
 

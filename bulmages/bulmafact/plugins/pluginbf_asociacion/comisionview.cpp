@@ -108,7 +108,7 @@ void ComisionView::imprimir()
         return;
     }
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ComisionView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->run ( "ComisionView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if

@@ -40,7 +40,7 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
     setDbFieldId ( "numlalbaranp" );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", this );
+    int res = g_plugins->run ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", this );
     if ( res != 0 )
         return;
 
@@ -61,7 +61,7 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
     setDelete ( TRUE );
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm_Post", this );
+    g_plugins->run ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm_Post", this );
     
 }
 

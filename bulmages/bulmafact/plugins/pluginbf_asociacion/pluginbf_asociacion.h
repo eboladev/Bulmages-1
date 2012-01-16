@@ -30,6 +30,6 @@
 
 extern "C" PLUGINBF_ASOCIACION_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ASOCIACION_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" PLUGINBF_ASOCIACION_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_ASOCIACION_EXPORT int BlAction_actionTriggered(BlAction *);
 #endif
 

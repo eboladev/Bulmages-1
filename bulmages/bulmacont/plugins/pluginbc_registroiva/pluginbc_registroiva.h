@@ -30,7 +30,7 @@
 
 
 extern "C" PLUGINBC_REGISTROIVA_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" PLUGINBC_REGISTROIVA_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 

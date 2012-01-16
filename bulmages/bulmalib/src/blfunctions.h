@@ -156,8 +156,7 @@ wchar_t* BL_EXPORT BlQStringToWCHAR (QString inString);
 bool BL_EXPORT BlRawDataToPrinter(QString printerName, QByteArray dataToPrint);
 #endif
   
-#endif
-
+  
 ///Copies a file from one location to another
 bool BL_EXPORT blCopyFile(const QString &oldName, const QString &newName);
 
@@ -166,3 +165,5 @@ bool BL_EXPORT blMoveFile(const QString &oldName, const QString &newName);
 
 ///Delets a file
 bool BL_EXPORT blRemove(const QString &filetoremove);
+
+#endif

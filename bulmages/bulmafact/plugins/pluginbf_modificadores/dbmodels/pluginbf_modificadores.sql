@@ -14,13 +14,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -28,14 +30,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -47,10 +51,11 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
-BEGIN
+	rs RECORD;
 
-        SELECT INTO as * FROM pg_tables  WHERE tablename=''modificador'';
+BEGIN
+        SELECT INTO rs * FROM pg_tables  WHERE tablename=''modificador'';
+
         IF NOT FOUND THEN
                 CREATE TABLE modificador (
                 idmodificador SERIAL PRIMARY KEY,
@@ -60,27 +65,27 @@ BEGIN
                 );
         END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
-    IF NOT FOUND THEN
-        ALTER TABLE lalbaran ADD COLUMN textolibremodificador VARCHAR;
-        ALTER TABLE lalbaran ADD COLUMN imgmodificador VARCHAR;
-	ALTER TABLE lalbaran ADD COLUMN idmodificador1 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador2 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador3 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador4 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador5 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador6 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador7 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador8 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-	ALTER TABLE lalbaran ADD COLUMN idmodificador9 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
-    END IF;
+	SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
 
+	IF NOT FOUND THEN
+	    ALTER TABLE lalbaran ADD COLUMN textolibremodificador VARCHAR;
+	    ALTER TABLE lalbaran ADD COLUMN imgmodificador VARCHAR;
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador1 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador2 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador3 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador4 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador5 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador6 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador7 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador8 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	    ALTER TABLE lalbaran ADD COLUMN idmodificador9 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''imglalbaran'' AND relname=''lalbaran'';
-    IF NOT FOUND THEN
-        ALTER TABLE lalbaran ADD COLUMN imglalbaran VARCHAR;
-    END IF;
+	SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''imglalbaran'' AND relname=''lalbaran'';
 
+        IF NOT FOUND THEN
+	    ALTER TABLE lalbaran ADD COLUMN imglalbaran VARCHAR;
+        END IF;
 
 	RETURN 0;
 END;
@@ -96,14 +101,17 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
+
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Modificadores'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Modificadores'';
+
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_Modificadores'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Modificadores'', ''0.12.1-0002'');
 	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

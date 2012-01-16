@@ -26,13 +26,15 @@ BEGIN;
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename=$1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -40,14 +42,16 @@ language 'plpgsql';
 
 create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname=$1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+
+    RETURN 0;
 END;
 '
 language 'plpgsql';
@@ -61,7 +65,7 @@ language 'plpgsql';
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	cs RECORD;
-	bs RECORD;
+	rs RECORD;
         nstock NUMERIC(12,2);
 BEGIN
 	UPDATE controlstock SET stockantcontrolstock= 0 , stocknewcontrolstock=0;
@@ -70,13 +74,13 @@ BEGIN
 --	nstock := 0;
 	FOR cs IN SELECT * FROM articulo LOOP
 		nstock := 0;	
-		SELECT INTO bs COALESCE (sum(cantlalbaranp), 0) AS totalin FROM lalbaranp WHERE idarticulo = cs.idarticulo;
+		SELECT INTO rs COALESCE (sum(cantlalbaranp), 0) AS totalin FROM lalbaranp WHERE idarticulo = cs.idarticulo;
 		IF FOUND THEN
-			nstock := nstock + bs.totalin;
+			nstock := nstock + rs.totalin;
 		END IF;
-		SELECT INTO bs COALESCE (sum(cantlalbaran), 0) AS totalin FROM lalbaran WHERE idarticulo = cs.idarticulo;
+		SELECT INTO rs COALESCE (sum(cantlalbaran), 0) AS totalin FROM lalbaran WHERE idarticulo = cs.idarticulo;
 		IF FOUND THEN
-			nstock := nstock - bs.totalin;
+			nstock := nstock - rs.totalin;
 		END IF;
 		UPDATE articulo set stockarticulo = nstock WHERE idarticulo = cs.idarticulo;		
 	END LOOP;

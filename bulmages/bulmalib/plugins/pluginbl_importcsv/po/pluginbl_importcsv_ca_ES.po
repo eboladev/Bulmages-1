@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-08-16 13:04+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2012-01-14 08:18+0100\n"
+"PO-Revision-Date: 2012-01-14 09:47+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,9 +24,8 @@ msgid "&Herramientas"
 msgstr "&Eines"
 
 #: pluginbl_importcsv.cpp:92
-#, fuzzy
 msgid "&Importacion CSV"
-msgstr "Imputació"
+msgstr "&Importació CSV"
 
 #: ui_importcsvbase.h:235
 msgid "..."
@@ -34,72 +33,60 @@ msgstr "..."
 
 #: ui_importcsvbase.h:242
 msgid "Aceptar"
-msgstr "Aceptar"
+msgstr "Accepta"
 
 #: importcsv.cpp:67
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
 #: ui_importcsvbase.h:234
-#, fuzzy
 msgid "Archivo"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Fitxer\n"
-"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Arxiu"
+msgstr "Fitxer"
 
 #: ui_importcsvbase.h:243
 msgid "Cancelar"
 msgstr "Cancel·la"
 
-# Potser carregar és mllor
 #: ui_importcsvbase.h:238
-#, fuzzy
 msgid "Caracter separador"
-msgstr "Llegir empresa"
+msgstr "Caràcter separador"
 
 #: ui_importcsvbase.h:241
 msgid "Composicion de Campos"
 msgstr "Composició de camps"
 
 #: importcsv.cpp:50
-#, fuzzy
 msgid "Error al crear la ventana de importacion"
-msgstr "Error en la càrrega de l'amortizació"
+msgstr "Error en crear la finestra d'importació"
 
 #: pluginbl_importcsv.cpp:93 pluginbl_importcsv.cpp:94
-#, fuzzy
 msgid "Importacion CSV"
-msgstr "Imputació"
+msgstr "Importació CSV"
 
 #: importcsv.cpp:114
 msgid "Importacion realizada satisfactoriamente"
-msgstr ""
+msgstr "Importació realitzada satisfactòriament"
 
 #: ui_importcsvbase.h:232
-#, fuzzy
 msgid "Importar CSV"
-msgstr "&Importa"
+msgstr "&Importa CSV"
 
 #: importcsv.cpp:67
 msgid "Open file"
-msgstr "Obre fitxer"
+msgstr "Obre el fitxer"
 
 #: ui_importcsvbase.h:239
 msgid "Primera fila son cabeceras"
-msgstr ""
+msgstr "La primera fila són capçaleres"
 
 #: ui_importcsvbase.h:237
 msgid "Separado por tabulador"
 msgstr "Separat per tabulador"
 
 #: ui_importcsvbase.h:236
-#, fuzzy
 msgid "Separador de campos"
-msgstr "Nom d'usuari:"
+msgstr "Separador de camps"
 
 #: ui_importcsvbase.h:240
-#, fuzzy
 msgid "Tabla Destino"
-msgstr "Compte destí"
+msgstr "Taula de destí"

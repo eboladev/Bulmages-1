@@ -48,7 +48,7 @@ class PLUGINBC_DIARIO_EXPORT BcDiarioPrintView : public QDialog, public Ui_BcDia
     Q_OBJECT
 
 public:
-    int numdigitos;
+    int numDigitos;
     /// Puntero al filtrado de datos.
 
 public:

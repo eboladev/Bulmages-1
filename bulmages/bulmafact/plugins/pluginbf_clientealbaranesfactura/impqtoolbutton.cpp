@@ -107,7 +107,7 @@ void ImpQToolButton::click()
 
         /// Creamos la factura
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
+        int resur = g_plugins->run ( "SNewFacturaView", m_companyact );
         if ( !resur ) {
             blMsgInfo ( "no se pudo crear instancia de factura" );
             return;
@@ -127,7 +127,7 @@ void ImpQToolButton::click()
                 QString id = rec->dbValue ( "idalbaran" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                int resur = g_plugins->lanza ( "SNewAlbaranClienteView", m_companyact );
+                int resur = g_plugins->run ( "SNewAlbaranClienteView", m_companyact );
                 if ( !resur ) {
                     blMsgInfo ( "no se pudo crear instancia de albaran" );
                     return;

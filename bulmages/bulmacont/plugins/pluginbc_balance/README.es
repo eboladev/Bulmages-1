@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias: pluginbc_balancearbol;
+Dependencias:
 
 Incompatibles:
 

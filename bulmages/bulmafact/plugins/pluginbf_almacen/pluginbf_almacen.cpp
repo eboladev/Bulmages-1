@@ -60,7 +60,7 @@ int entryPoint ( BfBulmaFact *bges )
     }
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionAlmacen") {
         ListAlmacenView * bud = new ListAlmacenView ( g_pluginbf_almacen->company(), NULL );

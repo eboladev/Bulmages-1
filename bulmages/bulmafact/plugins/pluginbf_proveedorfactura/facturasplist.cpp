@@ -46,7 +46,7 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList", this );
+    int res = g_plugins->run ( "FacturasProveedorList_FacturasProveedorList", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -59,7 +59,7 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
     m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     iniciaForm();
-    g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
+    g_plugins->run ( "FacturasProveedorList_FacturasProveedorList_Post", this );
     /// Llamamos a los scripts
     blScript(this);
     
@@ -79,7 +79,7 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList", this );
+    int res = g_plugins->run ( "FacturasProveedorList_FacturasProveedorList", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -109,7 +109,7 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     presentar();
     
     /// Disparamos los plugins.
-    g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
+    g_plugins->run ( "FacturasProveedorList_FacturasProveedorList_Post", this );
     /// Llamamos a los scripts
     blScript(this);
     
@@ -124,7 +124,7 @@ void FacturasProveedorList::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "FacturasProveedorList_iniciaForm", this );
+    int res = g_plugins->run ( "FacturasProveedorList_iniciaForm", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );

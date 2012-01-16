@@ -127,7 +127,7 @@ void ProfesorView::imprimir()
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ProfesorView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->run ( "ProfesorView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if

@@ -47,7 +47,7 @@ extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_ListLinFacturaVi
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_load ( BfClienteAlbaranSubForm * );
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_load ( ListLinFacturaView * );
-extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BlAction_triggered(BlAction *);
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BlAction_actionTriggered(BlAction *);
 
 
 /// Clase BfSubFormDelegate

@@ -51,7 +51,7 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-    g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
+    g_plugins->run ( "MTicketIVAInc_MTicketIVAInc_Post", this );
 	
     pintar();
 	
@@ -71,7 +71,7 @@ void MTicketIVAInc::pintar()
     QString query;
     BlDbRecord *item;
 
-    if ( g_plugins->lanza ( "MTicketIVAInc_pintar", this ) ) {
+    if ( g_plugins->run ( "MTicketIVAInc_pintar", this ) ) {
         
         return;
     } // end if

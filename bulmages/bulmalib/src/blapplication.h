@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,6 +29,7 @@
 #include "bldefs.h"
 #include "blconfig.h"
 
+
 class BL_EXPORT BlApplication : public QApplication
 {
     Q_OBJECT
@@ -40,15 +42,14 @@ public:
     ~BlApplication();
     
 #if CONFIG_DEBUG == TRUE
-    
-    virtual bool notify ( QObject *o, QEvent *e );
-    
+    virtual bool notify ( QObject *object, QEvent *event );
 #endif
     
-    void emitDbTableChanged(const QString &);
+    void emitDbTableChanged(const QString &table);
 
 signals:
     void dbTableChanged(const QString &);
+
 };
 
 

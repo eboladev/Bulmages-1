@@ -26,11 +26,11 @@
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
 /**
-\param emp
+\param company
 \param parent
 **/
-BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
-        : BlForm ( emp, parent )
+BlCountryView::BlCountryView ( BlMainCompany *company, QWidget *parent )
+        : BlForm ( company, parent )
 {
     BL_FUNC_DEBUG
 
@@ -39,8 +39,8 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
 
     mui_datospais->setDisabled ( TRUE );
 
-    mui_list->setMainCompany ( emp );
-    mui_listprovincias->setMainCompany ( emp );
+    mui_list->setMainCompany ( company );
+    mui_listprovincias->setMainCompany ( company );
 
     /// Preparamos la lista de paises.
     mui_list->setDbTableName ( "pais" );
@@ -87,7 +87,6 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
 BlCountryView::~BlCountryView()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -98,7 +97,6 @@ void BlCountryView::pintar()
 {
     BL_FUNC_DEBUG
     mui_list->load ( "SELECT * FROM pais ORDER BY descpais" );
-    
 }
 
 
@@ -121,7 +119,6 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
     } // end if
     m_countryId = previdpais;
     mostrarplantilla();
-    
 }
 
 
@@ -144,7 +141,6 @@ void BlCountryView::mostrarplantilla()
         dialogChanges_readValues();
     } // end if
 
-    
 }
 
 

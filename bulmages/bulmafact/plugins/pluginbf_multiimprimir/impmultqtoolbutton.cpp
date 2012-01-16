@@ -132,7 +132,7 @@ void ImpQToolButton::click()
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idpresupuesto" );
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
+                    int resur = g_plugins->run ( "SNewPresupuestoView", m_companyact );
                     if ( !resur ) {
                         blMsgInfo ( "no se pudo crear instancia de presupuesto" );
                         return;
@@ -172,7 +172,7 @@ void ImpQToolButton::click()
 
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
+                    int resur = g_plugins->run ( "SNewFacturaView", m_companyact );
                     if ( !resur ) {
                         blMsgInfo ( _ ( "no se pudo crear instancia de factura" ) );
                         return;
@@ -207,7 +207,7 @@ void ImpQToolButton::click()
                     QString id = rec->dbValue ( "idpedidocliente" );
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
+                    int resur = g_plugins->run ( "SNewPedidoClienteView", m_companyact );
                     if ( !resur ) {
                         blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                         return;
@@ -246,7 +246,7 @@ void ImpQToolButton::click()
                     QString id = rec->dbValue ( "idalbaran" );
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ( "SNewAlbaranClienteView", m_companyact );
+                    int resur = g_plugins->run ( "SNewAlbaranClienteView", m_companyact );
                     if ( !resur ) {
                         blMsgInfo ( _ ( "no se pudo crear instancia de albaran" ) );
                         return;
@@ -307,7 +307,7 @@ void ImpQToolButton::click()
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idcobro" );
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ( "SNewCobroView", m_companyact );
+                    int resur = g_plugins->run ( "SNewCobroView", m_companyact );
                     if ( !resur ) {
                         blMsgInfo ( "no se pudo crear instancia de cobro" );
                         return;
@@ -407,7 +407,7 @@ void ImpQToolButton::click()
                     QString id = rec->dbValue ( "idrecibo" );
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ( "SNewReciboView", m_companyact );
+                    int resur = g_plugins->run ( "SNewReciboView", m_companyact );
                     if ( !resur ) {
                         blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                         return;
@@ -616,7 +616,7 @@ void EmailQToolButton::click()
                 QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
+                int resur = g_plugins->run ( "SNewPresupuestoView", m_companyact );
                 if ( !resur ) {
                     blMsgInfo ( _ ( "no se pudo crear instancia de presupuesto" ) );
                     return;
@@ -661,7 +661,7 @@ void EmailQToolButton::click()
                 QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
+                int resur = g_plugins->run ( "SNewPedidoClienteView", m_companyact );
                 if ( !resur ) {
                     blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                     return;
@@ -708,7 +708,7 @@ void EmailQToolButton::click()
                 QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
+                int resur = g_plugins->run ( "SNewPedidoClienteView", m_companyact );
                 if ( !resur ) {
                     blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                     return;
@@ -758,7 +758,7 @@ void EmailQToolButton::click()
                 QString email = curs->value( "mailcliente" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
+                int resur = g_plugins->run ( "SNewFacturaView", m_companyact );
                 if ( !resur ) {
                     blMsgInfo ( _ ( "no se pudo crear instancia de factura" ) );
                     return;
@@ -810,7 +810,7 @@ void EmailQToolButton::click()
                 QString email = curs->value( "mailcliente" );
 
 
-				int resur = g_plugins->lanza ( "SNewCobroView", m_companyact );
+				int resur = g_plugins->run ( "SNewCobroView", m_companyact );
 				if ( !resur ) {
 					blMsgInfo ( "no se pudo crear instancia de cobro" );
 					return;

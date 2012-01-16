@@ -78,7 +78,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     addDbField ( "valorcompra", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Valor de la compra" ) );
     addDbField ( "periodicidad", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Periodicidad" ) );
     addDbField ( "numcuotas", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero de cuotas" ) );
-    addDbField ( "metodo", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Metodo" ) );
+    addDbField ( "metodo", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Metodo" ) );
     addDbField ( "nifproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "NIF del proveedor" ) );
     addDbField ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del proveedor" ) );
     addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion del proveedor" ) );
@@ -115,7 +115,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
 BcAmortizacionView::~BcAmortizacionView()
 {
     BL_FUNC_DEBUG
-    
+    mainCompany() ->removeWindow ( this );
 }
 
 
@@ -155,6 +155,31 @@ int BcAmortizacionView::save()
         setDbValue ( "fecha1cuota", fecha1cuota->text() );
         setDbValue ( "idcuentaamortizacion", ctaamortizacion->id() );
         setDbValue ( "agrupacion", agrupacion->text() );
+
+	QString metodo;
+	if (metodolineal->isChecked()) {
+		metodo = "1";
+	} else if (metodoincremental->isChecked()) {
+		metodo = "2";
+	} else if (metododecremental->isChecked()) {
+		metodo = "3";
+	} else if (metodoporcentual->isChecked()) {
+		metodo = "4";
+	} // end if
+
+	setDbValue ( "metodo", metodo);
+
+	int periodo;
+        if ( periodicidad->currentText() == _ ( "Anual" ) ) {
+		periodo = 12;
+        } else if ( periodicidad->currentText() == _ ( "Mensual" ) ) {
+		periodo = 1;
+        } else if ( periodicidad->currentText() == _ ( "Semestral" ) ) {
+		periodo = 6;
+        } else if ( periodicidad->currentText() == _ ( "Trimestral" ) ) {
+		periodo = 3;
+        } // end if
+        setDbValue ( "periodicidad", QString::number(periodo) );
 
         QString id = "";
         BlDbRecord::dbSave ( id );
@@ -200,6 +225,30 @@ int BcAmortizacionView::load ( QString idamortizacion )
         m_idctaamortizacion = dbValue ( "idcuentaamortizacion" );
         agrupacion->setText ( dbValue ( "agrupacion" ) );
 
+	QString metodo = dbValue ( "metodo" );
+	if (metodo == "1") { /// Lineal
+		metodolineal->setChecked(true);
+	} else if (metodo == "2") { /// Incremental
+		metodoincremental->setChecked(true);
+	} else if (metodo == "3") { /// Decremental
+		metododecremental->setChecked(true);
+	} else if (metodo == "4") { /// Porcentual
+		metodoporcentual->setChecked(true);
+	} // end if
+
+	int periodo;
+	if (dbValue ( "periodicidad" ) == "12") {
+		periodo = periodicidad->findText(_("Anual"));
+	} else if (dbValue ( "periodicidad" ) == "6") {
+		periodo = periodicidad->findText(_("Semestral"));
+	} else if (dbValue ( "periodicidad" ) == "3") {
+		periodo = periodicidad->findText(_("Trimestral"));
+	} else if (dbValue ( "periodicidad" ) == "1") {
+		periodo = periodicidad->findText(_("Mensual"));
+	} // end if
+
+	periodicidad->setCurrentIndex(periodo);
+
         QString query = "SELECT *, fechaprevista <= now() AS ant FROM linamortizacion LEFT JOIN asiento ON linamortizacion.idasiento = asiento.idasiento WHERE idamortizacion = " + m_idamortizacion + " ORDER BY fechaprevista";
         mui_listcuotas->load ( query );
 
@@ -228,7 +277,7 @@ int BcAmortizacionView::load ( QString idamortizacion )
         
         return 0;
     } catch ( ... ) {
-        blMsgInfo ( _ ( "Error en la carga de la amortizacion" ) );
+        blMsgInfo ( _ ( "Error en la carga de la amortizacion." ) );
         return -1;
     } // end try
 }
@@ -394,7 +443,7 @@ BcAmortizacionSubForm::~BcAmortizacionSubForm()
 /**
 \param menu
 **/
-void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
+void BcAmortizacionSubForm::createMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
     QAction *opt1 = menu->addAction ( _ ( "Generar asiento" ) );
@@ -424,7 +473,7 @@ void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
 \param opcion
 \return
 **/
-void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
+void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
 {
     BL_FUNC_DEBUG
 
@@ -448,7 +497,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         /*
                 ((BcCompany *)mainCompany())->intapuntsempresa()->show();
                 QString idasiento = dbValue("idasiento");
-                ((BcCompany *)mainCompany())->intapuntsempresa()->muestraasiento(idasiento.toInt());
+                ((BcCompany *)mainCompany())->intapuntsempresa()->muestraAsiento(idasiento.toInt());
         */
         boton_asiento();
     } // end if
@@ -462,9 +511,9 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
     if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
 
-        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
-            blMsgInfo("No se pudo crear instancia de asientos");
+            blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;
         } // end if
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
@@ -517,9 +566,9 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
-            blMsgInfo("No se pudo crear instancia de asientos");
+            blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;
         } // end if
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;

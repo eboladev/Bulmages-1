@@ -55,7 +55,7 @@ int entryPoint ( BcBulmaCont *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionProyectos") {
         /// Agregamos el subformulario de proyectos.
         ListProyectosView *l = new ListProyectosView ( g_pluginbc_proyectos->company(), 0, 0, BL_EDIT_MODE );
@@ -94,7 +94,7 @@ int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
 int BlForm_load ( BlForm *ficha )
 {
     ListProyectosView * l = ficha->findChild<ListProyectosView *> ( "mui_proyectos" );
-    if ( l )
+    if ( l != 0)
         l->mui_listado->load ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->dbValue ( "idc_coste" ) );
     return 0;
 }

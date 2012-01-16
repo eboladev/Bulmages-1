@@ -57,9 +57,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.12.1%'' OR valor = ''0.11.1-0004'');
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.12.1%'' OR valor = ''0.11.1-0004'');
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
@@ -163,14 +163,14 @@ CREATE TRIGGER cambiastockt
 \echo -n ':: Agrega el campo idforma_pago a la tabla de cobros '
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        bs RECORD;
+        rs RECORD;
         cs RECORD;
         ds RECORD;
         es RECORD;
 BEGIN
 
-   --SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cobro'' AND relname=''idforma_pago'';
-   SELECT INTO bs attname FROM pg_attribute WHERE attrelid = ''cobro''::regclass AND attname = ''idforma_pago'' AND attisdropped IS FALSE AND attnum >= 1 ORDER BY attnum;
+   --SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cobro'' AND relname=''idforma_pago'';
+   SELECT INTO rs attname FROM pg_attribute WHERE attrelid = ''cobro''::regclass AND attname = ''idforma_pago'' AND attisdropped IS FALSE AND attnum >= 1 ORDER BY attnum;
    IF NOT FOUND THEN
            ALTER TABLE cobro ADD COLUMN idforma_pago integer REFERENCES forma_pago(idforma_pago) ;
 -- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
@@ -178,17 +178,17 @@ BEGIN
 --           UPDATE banco set sufijobanco = idbanco ;
    END IF;
 
-   FOR bs IN SELECT * FROM banco LOOP
+   FOR rs IN SELECT * FROM banco LOOP
    
-      SELECT INTO es idbanco FROM forma_pago WHERE idbanco = bs.idbanco;
+      SELECT INTO es idbanco FROM forma_pago WHERE idbanco = rs.idbanco;
       IF NOT FOUND THEN
    
-          INSERT INTO forma_pago (descforma_pago, idbanco) VALUES (bs.nombanco, bs.idbanco);
+          INSERT INTO forma_pago (descforma_pago, idbanco) VALUES (rs.nombanco, rs.idbanco);
 	  SELECT INTO cs MAX(idforma_pago) AS idf FROM forma_pago LIMIT 1;
       
-          SELECT INTO ds idbanco FROM cobro WHERE idcobro = bs.idbanco;
+          SELECT INTO ds idbanco FROM cobro WHERE idcobro = rs.idbanco;
           IF FOUND THEN
-		  UPDATE cobro set idforma_pago = cs.idf WHERE idbanco = bs.idbanco;
+		  UPDATE cobro set idforma_pago = cs.idf WHERE idbanco = rs.idbanco;
 	  END IF;
 
       END IF;
@@ -232,9 +232,9 @@ CREATE TRIGGER propagacodigocompletofamiliatrigger
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        bs RECORD;
+        rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM pg_attribute WHERE attname=''numpedidoproveedor'';
+	SELECT INTO rs * FROM pg_attribute WHERE attname=''numpedidoproveedor'';
 	IF FOUND THEN
 		ALTER TABLE pedidoproveedor ALTER COLUMN numpedidoproveedor TYPE CHARACTER VARYING(20);
 	END IF;
@@ -252,21 +252,24 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechapedidoproveedor IS NULL THEN
 	NEW.fechapedidoproveedor := now();
     END IF;
+
     IF NEW.numpedidoproveedor IS NULL THEN
 	NEW.numpedidoproveedor := NEW.idpedidoproveedor;
     END IF;
+
     IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
 	    NEW.refpedidoproveedor := asd.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -276,21 +279,24 @@ END;
 CREATE OR REPLACE FUNCTION restriccionesalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-    asd RECORD;
+    rs RECORD;
 
 BEGIN
     IF NEW.fechaalbaranp IS NULL THEN
 	NEW.fechaalbaranp := now();
     END IF;
+
     IF NEW.numalbaranp IS NULL THEN
 	NEW.numalbaranp := NEW.idalbaranp;
     END IF;
+
     IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
-	SELECT INTO asd crearef() AS m;
+	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refalbaranp := asd.m;
+	    NEW.refalbaranp := rs.m;
 	END IF;
     END IF;
+
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -667,9 +673,9 @@ END;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        bs RECORD;
+        rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM pg_tables WHERE tablename=''comparticulo'';
+	SELECT INTO rs * FROM pg_tables WHERE tablename=''comparticulo'';
 	IF FOUND THEN
 		ALTER TABLE comparticulo ALTER COLUMN cantcomparticulo TYPE numeric(12, 2);
 		ALTER TABLE comparticulo ALTER COLUMN cantcomparticulo SET NOT NULL;
@@ -691,9 +697,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.12.1-0008'' WHERE nombre = ''DatabaseRevision'';
 	ELSE

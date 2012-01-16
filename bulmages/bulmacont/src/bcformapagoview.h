@@ -47,7 +47,7 @@ private:
 
 private:
     void pintar ( QString idtipoiva = "" );
-    void mostrarplantilla ( int pos = 0 );
+    void mostrarPlantilla ( int pos = 0 );
     void cambiacombo ( int );
 
 public:

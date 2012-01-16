@@ -76,7 +76,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "diractividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
 	
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "ActividadView_ActividadView", this );
+        int res = g_plugins->run ( "ActividadView_ActividadView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -145,7 +145,7 @@ void ActividadView::imprimir()
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->run ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if

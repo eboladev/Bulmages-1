@@ -136,7 +136,7 @@ void ConvReunionView::imprimir()
     } // end if
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->run ( "ConvReunionView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         
         return;

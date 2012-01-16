@@ -70,7 +70,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionAperturaRapida") {
     bool ok;
     QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),
@@ -79,7 +79,7 @@ int BlAction_triggered(BlAction *accion) {
         QStringList listaelem = text.split ( " " );
         if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewFacturaView", g_pluginbf_abrecodigobarras->company() );
+            int resur = g_plugins->run ( "SNewFacturaView", g_pluginbf_abrecodigobarras->company() );
             if ( !resur ) {
                 blMsgInfo ( _("No se pudo crear instancia de factura") );
                 return 0;
@@ -93,7 +93,7 @@ int BlAction_triggered(BlAction *accion) {
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewPresupuestoView", g_pluginbf_abrecodigobarras->company() );
+            int resur = g_plugins->run ( "SNewPresupuestoView", g_pluginbf_abrecodigobarras->company() );
             if ( !resur ) {
                 blMsgInfo ( _("No se pudo crear instancia de pedido cliente") );
                 return 0;
@@ -107,7 +107,7 @@ int BlAction_triggered(BlAction *accion) {
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewPedidoClienteView", g_pluginbf_abrecodigobarras->company() );
+            int resur = g_plugins->run ( "SNewPedidoClienteView", g_pluginbf_abrecodigobarras->company() );
             if ( !resur ) {
                 blMsgInfo ( _("No se pudo crear instancia de pedido cliente") );
                 return 0;
@@ -122,7 +122,7 @@ int BlAction_triggered(BlAction *accion) {
         } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
 
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewAlbaranClienteView", g_pluginbf_abrecodigobarras->company() );
+            int resur = g_plugins->run ( "SNewAlbaranClienteView", g_pluginbf_abrecodigobarras->company() );
             if ( !resur ) {
                 blMsgInfo ( _("No se pudo crear instancia de factura") );
                 return 0;

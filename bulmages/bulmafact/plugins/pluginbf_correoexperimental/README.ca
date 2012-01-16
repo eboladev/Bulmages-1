@@ -1,0 +1,33 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: BETA Enviar documents per e-mail
+
+Biblioteca: libpluginbf_correoexperimental.so
+
+Descripción: <H1>Enviaments per e-mail</H1>
+<P>Permet enviar, mitjançant un botó nou a les fitxes, els documents impresos per e-mail directament. En pulsar sobre el botó d'enviar per e-mail s'obre el gestor de correu amb un text i un document adjunt.</P>
+<B>Autor:</B>Daniel Ripoll Osma (info@danielripoll.es)<BR>
+
+Substitució del PluginBf_Correo y PluginBf_CorreoThunderbird originales.
+<HR>
+
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles: libpluginbf_correo.so; libpluginbf_correothunderbird.so
+
+Categorias: Utilitats genèriques; Experimentals;
+
+Orden: 900
+
+Comentarios: Aquest plugin actualment és compatible amb thunderbird, evolution i kmail. (Funciona tant en Unix com Windows.) 

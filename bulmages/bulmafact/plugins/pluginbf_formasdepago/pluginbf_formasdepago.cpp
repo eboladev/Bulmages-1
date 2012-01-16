@@ -63,7 +63,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionFormasPago") {
         FPagoView * bud = new FPagoView ( g_pluginbf_formasdepago->company(), NULL );
         g_pluginbf_formasdepago->company() ->m_pWorkspace->addSubWindow ( bud );

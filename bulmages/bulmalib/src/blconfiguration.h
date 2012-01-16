@@ -137,6 +137,10 @@
 #define CONF_ODS                     200
 #define CONF_SXC                     201
 
+
+/// Indica que cliente de email vamos a usar.
+#define CONF_EMAIL_CLIENT            202
+
 /// Determina si hay refresco
 #define CONF_REFRESH_LIST            210
 #define CONF_SHOW_PROGRESS_BAR       211

@@ -27,7 +27,7 @@
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "pdefs_pluginbc_balancearbol.h"
+#include "pdefs_pluginbc_balance.h"
 
 
 /// Clase que crea una estructura en forma de arbol para almacenar el plan contable.
@@ -38,7 +38,7 @@
     todos los estados de cada cuenta (las hojas) cada vez que se modifican los valores
     de alguna de ellas.
 */
-class PLUGINBC_BALANCEARBOL_EXPORT BcPlanContableArbol
+class PLUGINBC_BALANCE_EXPORT BcPlanContableArbol
 {
 private:
     struct tipohoja;

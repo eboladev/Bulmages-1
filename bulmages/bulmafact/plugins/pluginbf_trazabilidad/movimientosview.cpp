@@ -83,7 +83,7 @@ void MovimientosView::iniciaForm()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
+    int res = g_plugins->run ( "MovimientosView_MovimientosView", this );
     if ( res != 0 )
         return;
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
@@ -170,7 +170,7 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "MovimientosSubform_MovimientosSubform", this );
+    int res = g_plugins->run ( "MovimientosSubform_MovimientosSubform", this );
     if ( res != 0 )
         return;
     setDbTableName ( "movimiento" );

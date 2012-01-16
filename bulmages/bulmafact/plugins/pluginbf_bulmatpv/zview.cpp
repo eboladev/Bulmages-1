@@ -50,7 +50,7 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "ZView_ZView", this ) ) return;
+        if ( g_plugins->run ( "ZView_ZView", this ) ) return;
 
         setTitleName ( _ ( "Cuadre de caja" ) );
         setDbTableName ( "z" );
@@ -141,7 +141,7 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
     BL_FUNC_DEBUG
 
     QString idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
-    if ( g_plugins->lanza ( "SNewAlbaranClienteView", mainCompany() ) ) {
+    if ( g_plugins->run ( "SNewAlbaranClienteView", mainCompany() ) ) {
 
         AlbaranClienteView * prov = ( AlbaranClienteView * ) g_plugParams;
         if ( prov->load ( idalbaran ) ) {

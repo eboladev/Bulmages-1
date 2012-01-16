@@ -8,7 +8,7 @@ Nombre: Biblioteca (AutoForms)
 
 Biblioteca: 
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/product.svg" WIDTH="100"/><BR>Gestion de biblioteca</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/categoria.png" WIDTH="48"/><BR>Gestion de biblioteca</H1>
 <PARA>Este plugin realiza la gestion de una sencilla biblioteca. </PARA>
 <HR>
 <PARA>Permite catalogar los libros, gestion de autores, prestamos y devoluciones.</PARA>

@@ -90,7 +90,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName() == "mui_actionTallas") {
         ListTallasView *tallas = new ListTallasView ( g_pluginbf_tallascolores->company(), 0 );

@@ -55,9 +55,9 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''visibletpvarticulo'';
+	SELECT INTO rs * FROM pg_attribute  WHERE attname=''visibletpvarticulo'';
 	IF FOUND THEN
 		ALTER TABLE articulo DROP COLUMN visibletpvarticulo;
 		ALTER TABLE articulo DROP COLUMN etiquetavisibletpvarticulo;
@@ -84,9 +84,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_BulmaTPV'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_BulmaTPV'';
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_BulmaTPV'';
 	END IF;

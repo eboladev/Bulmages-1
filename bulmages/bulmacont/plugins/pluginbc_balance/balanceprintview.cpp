@@ -3,6 +3,9 @@
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2003 by Antoni Mirabete i Teres                         *
  *   amirabet@biada.org                                                    *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -34,6 +37,7 @@
 #include "balanceprintview.h"
 #include "bcplancontablelistview.h"
 #include "bccompany.h"
+#include "bldb.h"
 #include "bcplancontablearbol.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
@@ -47,26 +51,26 @@
 /**
 \param emp
 **/
-BalancePrintView::BalancePrintView ( BcCompany *emp )
-        : QDialog ( 0 ), BlMainCompanyPointer ( emp )
+BalancePrintView::BalancePrintView ( BcCompany *emp, QWidget *parent, int ) : BcForm(emp, parent)
+//        : QDialog ( 0 ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    m_codigoinicial->setMainCompany ( emp );
-    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
-    m_codigoinicial->setTableName ( "cuenta" );
-    m_codigoinicial->setFieldId("idcuenta");
-    m_codigoinicial->m_valores["descripcion"] = "";
-    m_codigoinicial->m_valores["codigo"] = "";
-    m_codigoinicial->hideLabel();
+    mui_cuentaInicial->setMainCompany ( emp );
+    mui_cuentaInicial->setLabel ( _ ( "Cuenta inicial:" ) );
+    mui_cuentaInicial->setTableName ( "cuenta" );
+    mui_cuentaInicial->setFieldId("idcuenta");
+    mui_cuentaInicial->m_valores["descripcion"] = "";
+    mui_cuentaInicial->m_valores["codigo"] = "";
+    mui_cuentaInicial->hideLabel();
 
-    m_codigofinal->setMainCompany ( emp );
-    m_codigofinal->setLabel ( _ ( "Cuenta final:" ) );
-    m_codigofinal->setTableName ( "cuenta" );
-    m_codigofinal->setFieldId("idcuenta");
-    m_codigofinal->m_valores["descripcion"] = "";
-    m_codigofinal->m_valores["codigo"] = "";
-    m_codigofinal->hideLabel();
+    mui_cuentaFinal->setMainCompany ( emp );
+    mui_cuentaFinal->setLabel ( _ ( "Cuenta final:" ) );
+    mui_cuentaFinal->setTableName ( "cuenta" );
+    mui_cuentaFinal->setFieldId("idcuenta");
+    mui_cuentaFinal->m_valores["descripcion"] = "";
+    mui_cuentaFinal->m_valores["codigo"] = "";
+    mui_cuentaFinal->hideLabel();
 
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
@@ -76,7 +80,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     int i = 0;
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
-        combonivel->insertItem ( i, niveles->value( "nivel" ) );
+        mui_nivel->insertItem ( i, niveles->value( "nivel" ) );
         niveles->nextRecord();
         i++;
     } // end while
@@ -92,45 +96,45 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
 BalancePrintView::~BalancePrintView()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
 /// Inicializa la clase para que tenga par&aacute;metros por defecto (no es obligatorio).
-/** codinicial = Indica el c&oacute;digo inicial para mostrar el balance.
-    cofinal = Indica el c&oacute;digo de cuenta para no mostrar m&aacute;s balances.
-    finicial = Indica la fecha a partir de la cual comenzar los saldos.
-    ffinal = Indica la fecha para terminar de contar los saldos.
+/** cuentaInicial = Indica el c&oacute;digo inicial para mostrar el balance.
+    cuentaFinal = Indica el c&oacute;digo de cuenta para no mostrar m&aacute;s balances.
+    fechaInicial = Indica la fecha a partir de la cual comenzar los saldos.
+    fechaFinal = Indica la fecha para terminar de contar los saldos.
     arbol = Indica si hay que representar el balance en forma de arbol o no. */
 /**
 **/
-void BalancePrintView::inicializa1 ( QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol )
+void BalancePrintView::inicializa ( QString cuentaInicial, QString cuentaFinal, QString fechaInicial, QString fechaFinal, bool arbol )
 {
     BL_FUNC_DEBUG
-    m_fechainicial1->setText ( finicial1 );
-    m_fechafinal1->setText ( ffinal1 );
-    m_codigoinicial->setText ( codinicial1 );
-    m_codigofinal->setText ( codfinal1 );
-    checksuperiores->setChecked ( arbol );
-    
+    mui_fechaInicial->setText ( fechaInicial );
+    mui_fechaFinal->setText ( fechaFinal );
+    mui_cuentaInicial->setText ( cuentaInicial );
+    mui_cuentaFinal->setText ( cuentaFinal );
+    mui_nivelSuperior->setChecked ( arbol );
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.8
 /**
 **/
-void BalancePrintView::on_mui_imprimir_clicked()
+void BalancePrintView::on_mui_generaImpresion_clicked()
 {
     BL_FUNC_DEBUG
-    if ( radiotexto->isChecked() )
+
+    if ( mui_textoPlano->isChecked() ) {
         presentar ( "txt" );
-    if ( radiohtml->isChecked() )
+    } else if ( mui_html->isChecked() ) {
         presentar ( "html" );
-    if ( radiopropietario->isChecked() )
-        presentar ( "rtk" );
-    if ( radiokugar->isChecked() )
-        presentar ( "kugar" );
+    } else if ( mui_pdf->isChecked() ) {
+        generateRML ( "balance.rml" );
+	blCreateAndLoadPDF ( "balance" );
+    } // end if
     
+    close();
 }
 
 
@@ -142,7 +146,7 @@ void BalancePrintView::presentar ( const char* tipus )
 {
     BL_FUNC_DEBUG
 #ifndef Q_OS_WIN32
-    int kugar, txt, html, txtapren, htmlapren;
+    int txt, html, txtapren, htmlapren;
     double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
     QString query;
 
@@ -151,28 +155,18 @@ void BalancePrintView::presentar ( const char* tipus )
     html = !strcmp ( tipus, "html" );
     txtapren = !strcmp ( tipus, "txtapren" );
     htmlapren = !strcmp ( tipus, "htmlapren" );
-    kugar = !strcmp ( tipus, "kugar" );
 
     /// Cogemos los valores del formulario.
-    QString finicial = m_fechainicial1->text();
-    QString ffinal = m_fechafinal1->text();
-    QString cinicial = m_codigoinicial->fieldValue("codigo");
-    QString cfinal = m_codigofinal->fieldValue("codigo");
-    int nivel = combonivel->currentText().toInt();
-    bool superiores = checksuperiores->isChecked();
+    QString finicial = mui_fechaInicial->text();
+    QString ffinal = mui_fechaFinal->text();
+    QString cinicial = mui_cuentaInicial->fieldValue("codigo");
+    QString cfinal = mui_cuentaFinal->fieldValue("codigo");
+    int nivel = mui_nivel->currentText().toInt();
+    bool superiores = mui_nivelSuperior->isChecked();
 
-    if ( txt | html | kugar ) {
+    if ( txt | html ) {
         QString archivo = g_confpr->value( CONF_DIR_USER ) + "balance.txt";
-        QString archivokugar = g_confpr->value( CONF_DIR_USER ) + "balance.kud";
         QString archivohtml = g_confpr->value( CONF_DIR_USER ) + "balance.html";
-
-        /// Creamos los ficheros de salida.
-        QFile filekugar;
-        filekugar.setFileName ( archivokugar );
-        filekugar.open ( QIODevice::WriteOnly );
-        QTextStream fitxersortidakugar ( &filekugar );
-
-
 
         QFile filehtml;
         filehtml.setFileName ( archivohtml );
@@ -185,17 +179,8 @@ void BalancePrintView::presentar ( const char* tipus )
         filetxt.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidatxt ( &filetxt );
 
-        /*
-                if (!fitxersortidatxt)
-                    txt = 0; /// Verificamos que se hayan creado correctamente los archivos.
-                if (!fitxersortidahtml)
-                    html = 0; /// Se puede mejorar el tratamiento de errores.
-                if (!fitxersortidakugar)
-                    kugar = 0;
-        */
-
         /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
-        if ( txt | html | kugar ) {
+        if ( txt | html ) {
             /// Vamos a crear un &aacute;rbol en la mem&oacute;ria din&aacute;mica con
             /// los distintos niveles de cuentas.
             /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
@@ -218,40 +203,13 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Ahora despu&eacute;s, usaremos el &aacute;rbol para poner los datos a
             /// cada hoja (cuenta) seg&uacute;n los per&iacute;odos que necesitemos acotar.
             /// Pero antes, preparamos las plantillas segun el tipo de salida seleccionado.
-            if ( kugar ) {
-                fitxersortidakugar << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
-                fitxersortidakugar << "<!DOCTYPE KugarData [\n" ;
-                fitxersortidakugar << "\t<!ELEMENT KugarData (Row* )>\n" ;
-                fitxersortidakugar << "\t\t<!ATTLIST KugarData\n";
-                fitxersortidakugar << "\t\tTemplate CDATA #REQUIRED>\n";
-                fitxersortidakugar << "\t<!ELEMENT Row EMPTY>\n";
-                fitxersortidakugar << "\t<!ATTLIST Row \n";
-                fitxersortidakugar << "\t\tlevel CDATA #REQUIRED\n";
-                fitxersortidakugar << "\t\tfinicial CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tffinal CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tcuenta CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tdescripcion CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tsaldoant CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tdebe CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\thaber CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tsaldo CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tdebeej CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\thaberej CDATA #IMPLIED\n";
-                fitxersortidakugar << "\t\tsaldoej CDATA #IMPLIED>\n";
-                fitxersortidakugar << "]>\n\n";
-                fitxersortidakugar << "<KugarData Template=\"" << g_confpr->value( CONF_DIR_KUGAR ).toAscii().constData() << "balance.kut\">\n";
-                fitxersortidakugar << "\t<Row";
-                fitxersortidakugar << " level=\"0\"";
-                fitxersortidakugar << " finicial='" << finicial.toAscii().constData() << "'";
-                fitxersortidakugar << " ffinal='" << ffinal.toAscii().constData() << "'/>\n";
-            } // end if
 
             if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt << "                                        Balance \n" ;
-                fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() << "   Fecha Final: " << ffinal.toAscii().constData() << endl;
-                fitxersortidatxt << "Cuenta            Denominacion                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
-                fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
+                fitxersortidatxt << "Balance de sumas y saldos. \n\n" ;
+                fitxersortidatxt << "Fecha inicial: " << finicial.toAscii().constData() << "   Fecha final: " << ffinal.toAscii().constData() << endl << endl;
+                fitxersortidatxt << "Cuenta            Denominacion                        Saldo ant.        Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+                fitxersortidatxt << "_____________________________________________________________________________________________________________________________________________\n";
             } // end if
 
             if ( html ) {
@@ -281,10 +239,6 @@ void BalancePrintView::presentar ( const char* tipus )
                 cuentas->nextRecord();
             } // end while
 
-            /// Ir&aacute; contando las l&iacute;neas impresas en el impreso de Kugar.
-            float linea = 1;
-            /// Determina cu&aacute;ntas l&iacute;neas caben para el impreso de Kugar.
-            float lineaskugar = 53;
             tsaldoant = tdebe = thaber = tsaldo = debeej = haberej = saldoej = 0;
             /// Ahora imprimimos los valores.
             arbol->inicia();
@@ -320,7 +274,7 @@ void BalancePrintView::presentar ( const char* tipus )
                 /// Imprimimos l&iacute;nea seg&uacute;n formato.
                 /// Presentaci&oacute;n en txt normal.
                 if ( txt ) {
-                    fitxersortidatxt << lcuenta.toAscii().constData() <<  ldenominacion.left ( 40 ).toAscii().constData() << " " << lsaldoant.toAscii().constData() << " " <<  ldebe.toAscii().constData() << " " <<  lhaber.toAscii().constData() << " " << lsaldo.toAscii().constData() << " " << ldebeej.toAscii().constData() << " " << lhaberej.toAscii().constData() << " " << lsaldoej.toAscii().constData() << " ";
+                    fitxersortidatxt << lcuenta.leftJustified(17, ' ').toAscii().constData() <<  ldenominacion.leftJustified(26, ' ', true).toAscii().constData() << " " << lsaldoant.rightJustified(19, ' ').toAscii().constData() << " " <<  ldebe.rightJustified(12, ' ').toAscii().constData() << " " <<  lhaber.rightJustified(12, ' ').toAscii().constData() << " " << lsaldo.rightJustified(12, ' ').toAscii().constData() << " " << ldebeej.rightJustified(12, ' ').toAscii().constData() << " " << lhaberej.rightJustified(12, ' ').toAscii().constData() << " " << lsaldoej.rightJustified(12, ' ').toAscii().constData() << endl;
                 } // end if
 
                 /// Presentaci&oacute;n en html normal.
@@ -328,38 +282,6 @@ void BalancePrintView::presentar ( const char* tipus )
                     fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.toAscii().constData() << "</td><td class=assentamentbalanc>" <<  ldenominacion.left ( 40 ).toAscii().constData() << "</td><td class=dosdecimals>" << lsaldoant.toAscii().constData() << "</td><td class=dosdecimals>" << ldebe.toAscii().constData() << "</td><td class=dosdecimals>" << lhaber.toAscii().constData() << "</td><td class=dosdecimals>" << lsaldo.toAscii().constData() << "</td><td class=dosdecimals>" << ldebeej.toAscii().constData() << "</td><td class=dosdecimals>" << lhaberej.toAscii().constData() << "</td><td class=dosdecimals>" << lsaldoej.toAscii().constData() << endl;
                 } // end if
 
-                /// Presentaci&oacute;n en Kugar seg&uacute;n plantilla balance.kut
-                if ( kugar ) {
-                    /// Primero vamos a establecer si hay que imprimir una l&iacute;nea
-                    /// de cabecera (Detail 0 en balance.kut) con los datos del
-                    /// per&iacute;odo.
-                    if ( fmod ( linea, lineaskugar ) == 0 ) {
-                        fitxersortidakugar << "\t<Row";
-                        fitxersortidakugar << " level=\"0\"";
-                        fitxersortidakugar << " finicial='" << finicial.toAscii().constData() << "'";
-                        fitxersortidakugar << " ffinal='" << ffinal.toAscii().constData() << "'/>\n";
-                    } // end if
-                    if ( linea == lineaskugar ) {
-                        /// A partir de la segunda p&aacute;gina alguna l&iacute;nea m&aacute;s.
-                        lineaskugar = 54;
-                        linea = lineaskugar;
-                    }
-                    /// Ahora, imprimimos tantas l&iacute;neas como nos permite la
-                    /// variable "lineaskugar" sin imprimir cabecera (Detail 1 en
-                    /// balance.kut). Una l&iacute;nea por cada iteraci&oacute;n del buble.
-                    fitxersortidakugar << "\t<Row";
-                    fitxersortidakugar << " level=\"1\"";
-                    fitxersortidakugar << " cuenta='" << lcuenta.toAscii().constData() << "'";
-                    fitxersortidakugar << " descripcion='" << ldenominacion.toAscii().constData() << "'";
-                    fitxersortidakugar << " saldoant='" << lsaldoant.toAscii().constData() << "'";
-                    fitxersortidakugar << " debe='" << ldebe.toAscii().constData() << "'";
-                    fitxersortidakugar << " haber='" << lhaber.toAscii().constData() << "'";
-                    fitxersortidakugar << " saldo='" << lsaldo.toAscii().constData() << "'";
-                    fitxersortidakugar << " debeej='" << ldebeej.toAscii().constData() << "'";
-                    fitxersortidakugar << " haberej='" << lhaberej.toAscii().constData() << "'";
-                    fitxersortidakugar << " saldoej='" << lsaldoej.toAscii().constData() << "'/>\n";
-                    linea++;
-                } // end if
             } // end while
 
             /// Hacemos la actualizaci&oacute;n de los saldos totales en
@@ -375,35 +297,20 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Imprimimos la l&iacute;nea con los resultados totalizados.
             /// Presentaci&oacute;n txt normal.
             if ( txt ) {
-                fitxersortidatxt << "                                            __________________________________________________________________________________________________\n";
-                fitxersortidatxt << "                                            Totales " <<  totalsaldoant.toAscii().constData() << " " << totaldebe.toAscii().constData() << " " <<  totalhaber.toAscii().constData() << " " <<  totalsaldo.toAscii().constData()  << " " << totaldebeej.toAscii().constData() << " " <<  totalhaberej.toAscii().constData() << " " <<  totalsaldoej.toAscii().constData() << endl;
-            }
+                fitxersortidatxt << "_____________________________________________________________________________________________________________________________________________\n";
+                fitxersortidatxt << QString("Totales:").leftJustified(51, ' ').toAscii().constData() << totalsaldoant.rightJustified(12, ' ').toAscii().constData() << " " << totaldebe.rightJustified(12, ' ').toAscii().constData() << " " <<  totalhaber.rightJustified(12, ' ').toAscii().constData() << " " <<  totalsaldo.rightJustified(12, ' ').toAscii().constData()  << " " << totaldebeej.rightJustified(12, ' ').toAscii().constData() << " " <<  totalhaberej.rightJustified(12, ' ').toAscii().constData() << " " <<  totalsaldoej.rightJustified(12, ' ').toAscii().constData() << endl;
+            } // end if
 
             /// Presentaci&oacute;n html normal.
             if ( html ) {
                 fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.toAscii().constData() << "</td><td class=dosdecimals>" << totaldebe.toAscii().constData() << "</td><td class=dosdecimals>" << totalhaber.toAscii().constData() << "</td><td class=dosdecimals>" << totalsaldo.toAscii().constData() << "</td></tr>\n</table>\n</body>\n</html>\n";
-            }
-
-            /// Presentaci&oacute;n Kugar.
-            if ( kugar ) {
-                fitxersortidakugar << "\t<Row";
-                fitxersortidakugar << " level=\"2\"";
-                fitxersortidakugar << " tsaldoant='" << totalsaldoant.toAscii().constData() << "'";
-                fitxersortidakugar << " tdebe='" << totaldebe.toAscii().constData() << "'";
-                fitxersortidakugar << " thaber='" << totalhaber.toAscii().constData() << "'";
-                fitxersortidakugar << " tsaldo='" << totalsaldo.toAscii().constData() << "'";
-                fitxersortidakugar << " tdebeej='" << totaldebeej.toAscii().constData() << "'";
-                fitxersortidakugar << " thaberej='" << totalhaberej.toAscii().constData() << "'";
-                fitxersortidakugar << " tsaldoej='" << totalsaldoej.toAscii().constData() << "'/>\n";
-                fitxersortidakugar << "</KugarData>\n";
-            }
+            } // end if
 
             /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
             delete arbol;
             mainCompany() ->commit();
 
             filetxt.close();
-            filekugar.close();
             filehtml.close();
             /// Dependiendo del formato de salida ejecutaremos el programa correspondiente.
             /// Presentaci&oacxute;n txt normal.
@@ -415,17 +322,12 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Presentaci&oacute;n html normal.
             if ( html ) {
                 blWebBrowser(g_confpr->value( CONF_DIR_USER ) + "balance.html");
-            }
+            } // end if
 
-            /// Presentaci&oacute;n Kugar normal.
-            if ( kugar ) {
-                QString cadena = "kugar " + g_confpr->value( CONF_DIR_USER ) + "balance.kud";
-                system ( cadena.toAscii().constData() );
-            }
-        }
-    }
+        } // end if
+    } // end if
 #endif
-    
+
 }
 
 
@@ -438,8 +340,7 @@ void BalancePrintView::on_mui_canales_clicked()
     BL_FUNC_DEBUG
     BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
     selcanales->exec();
-    selcanales->firstcanal();
-    
+    selcanales->firstCanal();
 }
 
 
@@ -448,12 +349,13 @@ void BalancePrintView::on_mui_canales_clicked()
 /** Presenta la ventana de selecci&oacute;n de centros de coste \ref BcCentroCosteSeleccionarView. */
 /**
 **/
-void BalancePrintView::on_mui_ccostes_clicked()
+void BalancePrintView::on_mui_centroCostes_clicked()
 {
     BL_FUNC_DEBUG
     BcCentroCosteSeleccionarView *selccostes = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
-    
 }
+
+
 

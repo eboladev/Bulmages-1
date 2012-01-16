@@ -76,7 +76,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         addDbField ( "volumenundarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Volumen unidad" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "ArticuloView_ArticuloView", this );
+        int res = g_plugins->run ( "ArticuloView_ArticuloView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -119,7 +119,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
 #endif
 
         /// Disparamos los plugins.
-        g_plugins->lanza ( "ArticuloView_ArticuloView_Post", this );
+        g_plugins->run ( "ArticuloView_ArticuloView_Post", this );
 
         insertWindow ( windowTitle(), this, FALSE );
         dialogChanges_readValues();
@@ -196,7 +196,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
     BL_FUNC_DEBUG
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ArticuloView_load", this );
+    int res = g_plugins->run ( "ArticuloView_load", this );
     if ( res != 0 ) {
         return 0;
     } // end if
@@ -281,7 +281,7 @@ int ArticuloView::afterSave()
 	throw -1;
     } // end if
     /// Disparamos los plugins
-    g_plugins->lanza ( "ArticuloView_guardar_post", this );
+    g_plugins->run ( "ArticuloView_guardar_post", this );
 
     
     return 0;

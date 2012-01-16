@@ -56,6 +56,7 @@ int entryPoint ( BcBulmaCont *bcont )
     BcCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( _ ( "Resumen cuenta" ), bcont );
+    doc1->setObjectName("mui_resumenCuenta");
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );

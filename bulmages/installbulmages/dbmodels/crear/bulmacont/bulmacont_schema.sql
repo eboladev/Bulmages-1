@@ -521,11 +521,11 @@ CREATE TABLE ejercicios (
 \echo -n ':: Funcion abre asientos ... '
 CREATE FUNCTION abreasientos() RETURNS integer
     AS '
---DECLARE bs RECORD;
---DECLARE res RECORD;
+--DECLARE rs RECORD;
+--DECLARE rs2 RECORD;
 BEGIN
---    FOR bs IN SELECT * FROM asiento ORDER BY idasiento DESC LOOP
---      SELECT INTO res cambiaasiento(bs.idasiento, bs.idasiento * 3);
+--    FOR rs IN SELECT * FROM asiento ORDER BY idasiento DESC LOOP
+--      SELECT INTO rs2 cambiaasiento(rs.idasiento, rs.idasiento * 3);
 --    END LOOP;
 --  Abrir los asientos es modificar el campo ordenasiento de los mismos para que se reorganicen
     UPDATE asiento SET ordenasiento = ordenasiento * 3;
@@ -541,13 +541,13 @@ CREATE FUNCTION cambiaasiento(integer, integer) RETURNS integer
 DECLARE
     idinicial ALIAS FOR $1;
     idfinal ALIAS FOR $2;
-    bs RECORD;
+    rs RECORD;
 BEGIN
     -- Esta funcion cambia un asiento de sitio, el asiento inicial y lo pone en el asiento final
     -- El problema es que si el asiento final debe estar vacio.
-    SELECT INTO bs * FROM asiento WHERE idasiento = idinicial;
+    SELECT INTO rs * FROM asiento WHERE idasiento = idinicial;
     IF FOUND THEN
-        INSERT INTO asiento (idasiento, fecha, descripcion, comentariosasiento) VALUES (idfinal, bs.fecha, bs.descripcion, bs.comentariosasiento);
+        INSERT INTO asiento (idasiento, fecha, descripcion, comentariosasiento) VALUES (idfinal, rs.fecha, rs.descripcion, rs.comentariosasiento);
         UPDATE borrador SET idasiento = idfinal WHERE idasiento = idinicial;
         UPDATE apunte SET idasiento = idfinal WHERE idasiento = idinicial;
         DELETE FROM asiento WHERE idasiento = idinicial;
@@ -1665,13 +1665,13 @@ CREATE FUNCTION reordenaasientos(integer) RETURNS integer
     AS '
 DECLARE
     ejercicio ALIAS FOR $1;
-    bs RECORD;
+    rs RECORD;
     cont integer;
 BEGIN
     cont := 1;
-    FOR bs IN SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha) = ejercicio ORDER BY fecha, ordenasiento LOOP
-        IF (cont <> bs.ordenasiento) THEN
-            UPDATE asiento SET ordenasiento = cont WHERE idasiento = bs.idasiento;
+    FOR rs IN SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha) = ejercicio ORDER BY fecha, ordenasiento LOOP
+        IF (cont <> rs.ordenasiento) THEN
+            UPDATE asiento SET ordenasiento = cont WHERE idasiento = rs.idasiento;
         END IF;
         cont := cont + 1;
     END LOOP;
@@ -1684,11 +1684,11 @@ END;
 CREATE OR REPLACE FUNCTION reordenaasientosall() RETURNS integer
     AS '
 DECLARE
-    bs RECORD;
+    rs RECORD;
     ejercicio integer;
 BEGIN
-    FOR bs IN SELECT DISTINCT EXTRACT (YEAR FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
-        ejercicio = bs.ano;
+    FOR rs IN SELECT DISTINCT EXTRACT (YEAR FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
+        ejercicio = rs.ano;
         PERFORM reordenaasientos(ejercicio);
     END LOOP;
     RETURN 0;
@@ -2011,9 +2011,9 @@ CREATE TRIGGER cambiadoivat
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	bs RECORD;
+	rs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.13.1-0001'' WHERE nombre = ''DatabaseRevision'';
 	ELSE

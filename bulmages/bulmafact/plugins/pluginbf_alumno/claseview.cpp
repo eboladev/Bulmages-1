@@ -47,7 +47,7 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
     setupUi ( this );
     mui_tab->setDisabled ( TRUE );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ClaseView_ClaseView", this );
+    int res = g_plugins->run ( "ClaseView_ClaseView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -55,7 +55,7 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
     setEditMode();
     m_cursorclasees = NULL;
     m_item = NULL;
-    res = g_plugins->lanza ( "ClaseView_ClaseView_Post", this );
+    res = g_plugins->run ( "ClaseView_ClaseView_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -131,7 +131,7 @@ void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ClaseView_on_mui_lista_currentItemChanged_Post", this );
+    int res = g_plugins->run ( "ClaseView_on_mui_lista_currentItemChanged_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -152,7 +152,7 @@ void ClaseView::on_mui_guardar_clicked()
 
     try {
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "ClaseView_on_mui_guardar_clicked", this );
+        int res = g_plugins->run ( "ClaseView_on_mui_guardar_clicked", this );
         if ( res != 0 ) {
             return;
         } // end if

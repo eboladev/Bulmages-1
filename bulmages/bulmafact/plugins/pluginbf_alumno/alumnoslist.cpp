@@ -42,7 +42,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlumnosList_AlumnosList", this );
+    int res = g_plugins->run ( "AlumnosList_AlumnosList", this );
     if ( res != 0 )
         return;
     mdb_idalumno = "";
@@ -65,7 +65,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlumnosList_AlumnosList", this );
+    int res = g_plugins->run ( "AlumnosList_AlumnosList", this );
     if ( res != 0 )
         return;
 
@@ -341,7 +341,7 @@ AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "AlumnosListSubForm_AlumnosListSubForm", this );
+    int res = g_plugins->run ( "AlumnosListSubForm_AlumnosListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "alumno" );

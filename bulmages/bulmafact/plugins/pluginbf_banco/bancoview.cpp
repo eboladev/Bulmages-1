@@ -50,7 +50,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
     m_item = NULL;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BancoView_BancoView", this );
+    int res = g_plugins->run ( "BancoView_BancoView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -158,7 +158,7 @@ int BancoView::save()
 //	mainCompany()->begin();
 	
         /// Disparamos los plugins.
-        int res1 = g_plugins->lanza ( "BancoView_Guardar_Pre", this );
+        int res1 = g_plugins->run ( "BancoView_Guardar_Pre", this );
         if ( res1 != 0 ) {
             return -1;
         } // end if
@@ -189,7 +189,7 @@ int BancoView::save()
         } // end if
 
         /// Disparamos los plugins.
-        int res2 = g_plugins->lanza ( "BancoView_Guardar_Post", this );
+        int res2 = g_plugins->run ( "BancoView_Guardar_Post", this );
         if ( res2 != 0 ) {
 //            mainCompany() ->rollback();
             return -1;

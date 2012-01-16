@@ -173,7 +173,7 @@ void SocioView::imprimir()
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "SocioView_imprimir", this );
+    int res = g_plugins->run ( "SocioView_imprimir", this );
     if ( res != 0 ) {
         return;
     } // end if

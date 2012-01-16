@@ -85,7 +85,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     
     m_nomTicketDefecto = _("Ticket actual");
 
-    g_plugins->lanza ( "BtTicket_BtTicket_Post", this );
+    g_plugins->run ( "BtTicket_BtTicket_Post", this );
 
     start();
     
@@ -95,7 +95,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 BtTicket::~BtTicket()
 {
     BL_FUNC_DEBUG
-    g_plugins->lanza ( "Des_BtTicket_BtTicket_Post", this );
+    g_plugins->run ( "Des_BtTicket_BtTicket_Post", this );
     
 }
 
@@ -148,7 +148,7 @@ BlDbRecord * BtTicket::agregarLinea()
     m_listaLineas->append ( item );
 
     g_plugParams = (void *) item;
-    g_plugins->lanza("BtTicket_agregarLinea_Post", this);
+    g_plugins->run("BtTicket_agregarLinea_Post", this);
 
     
     return item;
@@ -158,7 +158,7 @@ void BtTicket::pintar()
 {
     BlDebug::blDebug ( "BtTicket::pintar", 0, "Metodo para reimplementar en clases derivadas" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BtTicket_pintar", this );
+    int res = g_plugins->run ( "BtTicket_pintar", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -217,7 +217,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
     
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BtTicket_insertarArticulo_Post", this );
+    g_plugins->run ( "BtTicket_insertarArticulo_Post", this );
 
     /// Pintamos el ticket ya que se ha modificado.
     pintar();
@@ -235,7 +235,7 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
     } // end if
 
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BtTicket_borrarArticulo", this );
+    g_plugins->run ( "BtTicket_borrarArticulo", this );
 
     /// Registramos el cambio en el control de logs.
     agregarLog("BORRAR ARTICULO "+m_lineaActual->dbValue("nomarticulo")+"  Cantidad:"+cantidad.toQString('.'));
@@ -327,9 +327,9 @@ void BtTicket::imprimir(bool doSave)
     } // end if
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BtTicket_imprimir", this );
+    int res = g_plugins->run ( "BtTicket_imprimir", this );
     if ( res != 0 ) {
-        g_plugins->lanza("BtTicket_imprimir_Post", this);
+        g_plugins->run("BtTicket_imprimir_Post", this);
         BlDebug::blDebug("END BtTicket::imprimir",0);
         return;
     } // end if
@@ -347,7 +347,7 @@ void BtTicket::imprimir(bool doSave)
     } // end if    
 
 
-    g_plugins->lanza("BtTicket_imprimir_Post", this);
+    g_plugins->run("BtTicket_imprimir_Post", this);
     BlDebug::blDebug("END BtTicket::imprimir",0);
 }
 
@@ -465,7 +465,7 @@ void BtTicket::ponerPrecio ( QString precio )
 
     m_lineaActual->setDbValue ( "pvplalbaran", valor.toQString('0', valor.precision()) );
 
-    g_plugins->lanza ( "BtTicket_ponerPrecio_Post", this );
+    g_plugins->run ( "BtTicket_ponerPrecio_Post", this );
     
     /// Registramos el cambio en el control de logs.
     agregarLog("PONER PRECIO "+m_lineaActual->dbValue("nomarticulo")+" Precio:" + precio);
@@ -486,7 +486,7 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
     
     delete cur;
 
-    g_plugins->lanza ( "BtTicket_insertarArticuloCodigo_Post", this );
+    g_plugins->run ( "BtTicket_insertarArticuloCodigo_Post", this );
     
     
 
@@ -506,7 +506,7 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
     
     delete cur;
     
-    g_plugins->lanza ( "BtTicket_insertarArticuloCodigoNL_Post", this );
+    g_plugins->run ( "BtTicket_insertarArticuloCodigoNL_Post", this );
     
     BlDebug::blDebug("END BtTicket::insertarArticuloCodigoNL",0);
 }
@@ -605,7 +605,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
         return;
 
     g_plugParams = (void *) linea;
-    g_plugins->lanza("BtTicket_borrarLinea", this);
+    g_plugins->run("BtTicket_borrarLinea", this);
        
     int numlinea = listaLineas()->indexOf ( linea );
 
@@ -646,7 +646,7 @@ QString BtTicket::exportXML() {
     } // end for
     m_textoXML += "\t</LISTALINEAS>\n";
     
-    g_plugins->lanza ( "BtTicket_exportXML_Post", this );    
+    g_plugins->run ( "BtTicket_exportXML_Post", this );    
     
     m_textoXML += "</BTTICKET>\n";
     
@@ -663,7 +663,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     /* Para que los plugins tambien puedan tratar sus cosas ponemos el texto XML a disposicion de todos en la variable m_textoXML */
     m_textoXML = text;
 
-    g_plugins->lanza ( "BtTicket_syncXML", this );
+    g_plugins->run ( "BtTicket_syncXML", this );
     
     QDomDocument doc ( "mydocument" );
 
@@ -714,7 +714,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
         } // end if
     } // end while
     
-    g_plugins->lanza ( "BtTicket_syncXML_Post", this ); 
+    g_plugins->run ( "BtTicket_syncXML_Post", this ); 
     
     return 1;
 }
@@ -755,7 +755,7 @@ int BtTicket::generateRML ( const QString &arch )
     m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BtTicket_generateRML", this );
+    int res = g_plugins->run ( "BtTicket_generateRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if

@@ -67,7 +67,7 @@ BlPlugins::~BlPlugins()
 /**
 \param libs
 **/
-void BlPlugins::cargaLibs ( const QString &libs )
+void BlPlugins::loadLibs ( const QString &libs )
 {
     BL_FUNC_DEBUG
 
@@ -110,10 +110,10 @@ void BlPlugins::cargaLibs ( const QString &libs )
 \param clase
 \return
 **/
-int BlPlugins::lanza ( const char *func, void *clase )
+int BlPlugins::run ( const char *func, void *clase )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlPlugins::lanza", 0, func );
+    BlDebug::blDebug ( "BlPlugins::run", 0, func );
     int a = 0;
     QList<MyPrototype> funcAddressList;
     
@@ -161,10 +161,10 @@ int BlPlugins::lanza ( const char *func, void *clase )
 /**
 \return
 **/
-int BlPlugins::lanza ( const char *func, void *clase, void **ret )
+int BlPlugins::run ( const char *func, void *clase, void **ret )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlPlugins::lanza", 0, func );
+    BlDebug::blDebug ( "BlPlugins::run", 0, func );
     int a = 0;
     QList<MyPrototype1> funcAddressList;
     

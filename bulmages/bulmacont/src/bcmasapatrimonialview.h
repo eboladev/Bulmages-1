@@ -45,8 +45,8 @@ public:
     BcMasaPatrimonialView ( BcCompany *, QWidget *parent = 0, Qt::WFlags fl = 0 );
     ~BcMasaPatrimonialView();
     void inicializa1 ( QString );
-    QString getidmasa();
-    QString getnommasa();
+    QString getIdMasa();
+    QString getNomMasa();
 
 public slots:
     virtual void on_mui_nuevasuma_clicked();

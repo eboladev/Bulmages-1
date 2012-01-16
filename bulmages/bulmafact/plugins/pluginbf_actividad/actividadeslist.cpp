@@ -46,7 +46,7 @@ ActividadesList::ActividadesList ( QWidget *parent, Qt::WFlags flag, edmode edit
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ActividadesList_ActividadesList", this );
+    int res = g_plugins->run ( "ActividadesList_ActividadesList", this );
     if ( res != 0 )
         return;
         
@@ -71,7 +71,7 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ActividadesList_ActividadesList", this );
+    int res = g_plugins->run ( "ActividadesList_ActividadesList", this );
     if ( res != 0 )
         return;
 
@@ -283,7 +283,7 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm (
     BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ActividadesListSubForm_ActividadesListSubForm", this );
+    int res = g_plugins->run ( "ActividadesListSubForm_ActividadesListSubForm", this );
     if ( res != 0 )
         return;
         

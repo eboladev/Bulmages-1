@@ -415,8 +415,8 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
     
     /// Juntamos todos los XML en uno solo dentro del .bulmages
     mergeAllXML();
-    
-    blMsgInfo("En la creación de ventanas");
+    /// TODO
+    //blMsgInfo(_("En la creacion de ventanas"));
     return 0;
 }
 
@@ -1577,7 +1577,7 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
     if (accion->objectName().startsWith("autoform_")) {
 	BlAutoForm *form = genBlAutoForm(accion->objectName().right( accion->objectName().size() - 9));

@@ -203,7 +203,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 	 }
     } // END IF
 
-    g_plugins->lanza ( "BfBulmaFact_closeEvent", this );
+    g_plugins->run ( "BfBulmaFact_closeEvent", this );
 
     /// Borramos el BfCompany
     delete m_company;
@@ -223,14 +223,10 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 \param w
 \return
 **/
-#ifdef AREA_QMDI
-    void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
-#else
-    void BfBulmaFact::informaindexador ( QWidget *w )
-#endif
-
+void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
 {
     BL_FUNC_DEBUG
+#ifdef AREA_QMDI
 
     /// Si no esta inicializado company no se le puede informar.
     if ( m_company == NULL ) {
@@ -245,8 +241,30 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
         return;
     } // end if
     m_company->selectWindow ( w->windowTitle(), w );
+#endif
 
-    
+}
+
+void BfBulmaFact::informaindexador ( QWidget *w )
+{
+    BL_FUNC_DEBUG
+#ifndef AREA_QMDI
+
+    /// Si no esta inicializado company no se le puede informar.
+    if ( m_company == NULL ) {
+        
+        return;
+    } // end if
+
+    /// No existe una ventana que activar.
+    if ( w == NULL ) {
+        m_company->deselectWindow();
+        
+        return;
+    } // end if
+    m_company->selectWindow ( w->windowTitle(), w );
+#endif
+
 }
 
 

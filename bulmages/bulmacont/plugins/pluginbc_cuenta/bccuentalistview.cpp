@@ -54,7 +54,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BcCuentaListView_BcCuentaListView", this );
+    int res = g_plugins->run ( "BcCuentaListView_BcCuentaListView", this );
     if ( res != 0 ) {
         
         return;
@@ -65,12 +65,12 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _ ( "Selector de articulos" ) );
+        setWindowTitle ( _ ( "Selector de cuenta." ) );
         mui_imprimir->setHidden ( TRUE );
     } // end if
 
     mui_nivel->clear();
-    for ( int i = comp->numdigitosempresa(); i >= 2; i-- ) {
+    for ( int i = comp->numDigitosEmpresa(); i >= 2; i-- ) {
         /// Inicializamos la tabla de nivel.
         mui_nivel->insertItem ( i, QString::number ( i ) );
     } // end for
@@ -402,7 +402,7 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
+    g_plugins->run ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
     
 }
 

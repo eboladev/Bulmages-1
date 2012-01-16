@@ -42,7 +42,7 @@ TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TutoresList_TutoresList", this );
+    int res = g_plugins->run ( "TutoresList_TutoresList", this );
     if ( res != 0 )
         return;
     mdb_idcliente = "";
@@ -64,7 +64,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     BL_FUNC_DEBUG
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TutoresList_TutoresList", this );
+    int res = g_plugins->run ( "TutoresList_TutoresList", this );
     if ( res != 0 )
         return;
 
@@ -262,7 +262,7 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "TutoresListSubForm_TutoresListSubForm", this );
+    int res = g_plugins->run ( "TutoresListSubForm_TutoresListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "cliente" );

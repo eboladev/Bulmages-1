@@ -35,7 +35,6 @@
 #include "bcplancontablelistview.h"
 #include "bccuentaview.h"
 
-BcPlanContableListView *g_plancontable;
 BcBulmaCont *g_pluginbc_cuenta = NULL;
 
 ///
@@ -50,7 +49,6 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_pluginbc_cuenta = bcont;
-    g_plancontable = NULL;
 
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
@@ -58,11 +56,11 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Cuentas Contables" ), bcont->menuBar() );
+        pPluginMenu = new QMenu ( _ ( "&Cuentas" ), bcont->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCuentas" ) );
     } // end if
 
-    BlAction *accionA = new BlAction ( _ ( "&Plan Contable" ), 0 );
+    BlAction *accionA = new BlAction ( _ ( "&Plan contable" ), 0 );
     accionA->setStatusTip ( _ ( "Permite ver y modificar el plan contable" ) );
     accionA->setWhatsThis ( _ ( "Permite ver y modificar el plan contable" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
@@ -77,16 +75,23 @@ int entryPoint ( BcBulmaCont *bcont )
     return 0;
 }
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
+    BL_FUNC_DEBUG
+
     if (accion->objectName() == "mui_actionPlanContable") {
-        if (g_plancontable == NULL) {
-            g_plancontable = new BcPlanContableListView ( g_pluginbc_cuenta->company(), 0 );
-            g_plancontable->inicializa();
-            g_pluginbc_cuenta->company()->pWorkspace() ->addSubWindow ( g_plancontable );
-        } // end if
-        g_plancontable->hide();
-        g_plancontable->show();
+      
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionPlanContable" );
+
+	if (!g_pluginbc_cuenta->company()->showWindow("BcPlanContableListView")) {
+	    BcPlanContableListView *plan = new BcPlanContableListView( g_pluginbc_cuenta->company(), 0 );
+	    plan->setObjectName("BcPlanContableListView");
+	    plan->inicializa();
+	    g_pluginbc_cuenta->company()->pWorkspace() ->addSubWindow ( plan );
+	    plan->show();
+	} // end if
+
     } // end if
+
     return 0;
 }
 
@@ -368,7 +373,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                     cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
                     cador = " || ' ' ||";
                 } // end while
-                QString cadwhere1 = " codigo = '" + blExtendStringWithZeros(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numdigitosempresa()).replace("'","''") + "'";
+                QString cadwhere1 = " codigo = '" + blExtendStringWithZeros(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numDigitosEmpresa()).replace("'","''") + "'";
                 QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " +cadwhere1+ " OR " + cadwhere + "LIKE  upper('%" + bl->m_entrada.replace("'","''") + "%')";
                 bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
                 bl->clear();
@@ -425,7 +430,7 @@ int BcSubForm_pressedAsterisk ( BcSubForm *sub, void **ppCodigo )
 int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
     if (wid->tableName() != "cuenta") return 0;
     QString texto = wid->text();
-    QString codigo = blExtendStringWithZeros(wid->text(), ((BcCompany *)wid->mainCompany())->numdigitosempresa() );
+    QString codigo = blExtendStringWithZeros(wid->text(), ((BcCompany *)wid->mainCompany())->numDigitosEmpresa() );
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
     BlDbRecordSet *cur = wid->mainCompany() ->loadQuery ( SQLQuery );
     if ( cur->numregistros() == 1 ) {

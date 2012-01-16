@@ -48,7 +48,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         setupUi ( this );
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "ProyectoView_ProyectoView", this ) ) return;
+        if ( g_plugins->run ( "ProyectoView_ProyectoView", this ) ) return;
 
         setTitleName ( _ ( "Proyecto" ) );
         setDbTableName ( "presupuestoc" );

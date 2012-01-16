@@ -39,7 +39,7 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
     setDbTableName ( "lpresupuesto" );
     setDbFieldId ( "idlpresupuesto" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView", this );
+    int res = g_plugins->run ( "ListLinPresupuestoView_ListLinPresupuestoView", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -61,7 +61,7 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
     setOrdenPorQuery ( FALSE );
 
     /// Lanzamos los plugins
-    g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView_Post", this );
+    g_plugins->run ( "ListLinPresupuestoView_ListLinPresupuestoView_Post", this );
     
 }
 

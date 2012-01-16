@@ -1,19 +1,18 @@
 ###########################################
-# Plugin for bulmacont                    #
+# Plugin for bulmafact                    #
 ###########################################
-#pluginbc_balancearbol
+#pluginbf_correoexperimental
 
-set (plugin pluginbc_balancearbol)
+set (plugin pluginbf_correoexperimental)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-file(GLOB plugin_UIS *.ui)
-
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbc_balancearbol.h bcplancontablearbol.h pluginbc_balancearbol.h)
+file(GLOB plugin_NO_MOCS pluginbf_correoexperimental.h pdefs_pluginbf_correoexperimental.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
+file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
@@ -30,15 +29,16 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmacont/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/
-   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
-   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/
-)
-
-#   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_cuenta/
-#   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_cuenta/
-
+	${CMAKE_BINARY_DIR}/bulmafact/src/
+	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepedido/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -51,17 +51,12 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_BALANCEARBOL)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CORREOEXPERIMENTAL)
 ENDIF(WIN32)
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
-ADD_DEFINITIONS(-DQT_PLUGIN)
-
-if(APPLE)
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
-endif(APPLE)
 
 # i18n
 if(WIN32)
@@ -81,10 +76,12 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES ca_ES fr_FR)
+                                ALL LANGUAGES es_ES ca_ES en_US fr_FR)
 endif(USE_GETTEXT)
 
+
 # build sources, moc'd sources, and rcc'd sources
+
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
@@ -93,29 +90,21 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+install_targets(/lib/bulmafact/plugins ${plugin})
 
-add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento pluginbc_cuenta)
-
-install_targets(/lib/bulmacont/plugins ${plugin})
-
-# Instalamos el archivo README para las descripciones de BulmaSetup
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.es.${plugin})
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
 
-# Instalamos el archivo README para las descripciones de BulmaSetup
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR}/README.ca @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.ca.${plugin})
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.ca.${plugin})
 
-# Instalamos el archivo README para las descripciones de BulmaSetup
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.fr.${plugin})
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.fr.${plugin})
 
-# Instalamos el archivo README para las descripciones de BulmaSetup
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.en.${plugin})
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
-set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
-   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
-#GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
+
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clientealbaran)

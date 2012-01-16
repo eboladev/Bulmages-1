@@ -73,7 +73,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "PresupuestoView_PresupuestoView", this );
+        int res = g_plugins->run ( "PresupuestoView_PresupuestoView", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -102,7 +102,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
 
         insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
-        g_plugins->lanza ( "PresupuestoView_PresupuestoView_Post", this );
+        g_plugins->run ( "PresupuestoView_PresupuestoView_Post", this );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el presupuesto" ), this );
@@ -131,7 +131,7 @@ PresupuestoView::~PresupuestoView()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    g_plugins->lanza ( "PresupuestoView_DesPresupuestoView", this );
+    g_plugins->run ( "PresupuestoView_DesPresupuestoView", this );
     
 }
 
@@ -360,7 +360,7 @@ int PresupuestoView::beforeDelete()
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    g_plugins->lanza ( "Presupuesto_beforeDelete", this );
+    g_plugins->run ( "Presupuesto_beforeDelete", this );
     m_listalineas->remove();
     m_listadescuentos->remove();
 
@@ -402,7 +402,7 @@ int PresupuestoView::afterSave()
     m_listalineas->save();
     m_listadescuentos->save();
     /// Disparamos los plugins.
-    g_plugins->lanza ( "Presupuesto_afterSave_Post", this );
+    g_plugins->run ( "Presupuesto_afterSave_Post", this );
 
     
     return 0;

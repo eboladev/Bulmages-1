@@ -52,7 +52,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "ContratoView_ContratoView", this );
+        int res = g_plugins->run ( "ContratoView_ContratoView", this );
         if ( res != 0 )
             return;
 
@@ -315,7 +315,7 @@ void ContratoView::on_mui_facturar_clicked()
         } else {
             // GENERAMOS LA FACTURA
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-            int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+            int resur = g_plugins->run ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
                 blMsgInfo ( _( "no se pudo crear instancia de factura") );
                 return;

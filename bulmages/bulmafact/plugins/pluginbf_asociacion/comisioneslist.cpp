@@ -43,7 +43,7 @@ ComisionesList::ComisionesList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ComisionesList_ComisionesList", this );
+    int res = g_plugins->run ( "ComisionesList_ComisionesList", this );
     if ( res != 0 )
         return;
     mdb_idcomision = "";
@@ -66,7 +66,7 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ComisionesList_ComisionesList", this );
+    int res = g_plugins->run ( "ComisionesList_ComisionesList", this );
     if ( res != 0 )
         return;
 
@@ -261,7 +261,7 @@ ComisionesListSubForm::ComisionesListSubForm ( QWidget *parent ) : BfSubForm ( p
 {
     BL_FUNC_DEBUG
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ComisionesListSubForm_ComisionesListSubForm", this );
+    int res = g_plugins->run ( "ComisionesListSubForm_ComisionesListSubForm", this );
     if ( res != 0 )
         return;
     setDbTableName ( "comision" );

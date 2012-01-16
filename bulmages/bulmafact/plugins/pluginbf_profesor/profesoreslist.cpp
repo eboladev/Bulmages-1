@@ -46,7 +46,7 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ProfesoresList_ProfesoresList", this );
+    int res = g_plugins->run ( "ProfesoresList_ProfesoresList", this );
     if ( res != 0 )
         return;
         
@@ -70,7 +70,7 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     setupUi ( this );
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ProfesoresList_ProfesoresList", this );
+    int res = g_plugins->run ( "ProfesoresList_ProfesoresList", this );
     if ( res != 0 )
         return;
 
@@ -326,7 +326,7 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
     BL_FUNC_DEBUG
     
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "ProfesoresListSubForm_ProfesoresListSubForm", this );
+    int res = g_plugins->run ( "ProfesoresListSubForm_ProfesoresListSubForm", this );
     if ( res != 0 )
         return;
         

@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 
-#ifndef BTESCPRINTER_H
-#define BTESCPRINTER_H
+#ifndef BLESCPRINTER_H
+#define BLESCPRINTER_H
 
 #include <QString>
 #include <QByteArray>

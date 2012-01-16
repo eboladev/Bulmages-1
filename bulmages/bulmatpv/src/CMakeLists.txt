@@ -33,6 +33,11 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
+
+if(USE_QMDIAREA)
+      ADD_DEFINITIONS("-D'AREA_QMDI'" )
+endif(USE_QMDIAREA)
+
 # generate rules for building source files from the resources
 #
 

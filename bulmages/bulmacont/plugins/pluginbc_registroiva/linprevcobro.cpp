@@ -242,7 +242,7 @@ void linprevcobro::setcodigocuenta ( QString val )
 {
     BL_FUNC_DEBUG
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
-    mdb_codigocuenta = blExtendStringWithZeros ( val, company->numdigitosempresa() );
+    mdb_codigocuenta = blExtendStringWithZeros ( val, company->numDigitosEmpresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
@@ -367,7 +367,7 @@ void linprevcobro::setcodigoctacliente ( QString val )
 {
     BL_FUNC_DEBUG
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
-    mdb_codigoctacliente = blExtendStringWithZeros ( val, company->numdigitosempresa() );
+    mdb_codigoctacliente = blExtendStringWithZeros ( val, company->numDigitosEmpresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {

@@ -1,6 +1,9 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +26,6 @@
 #define BLBANKEDIT_H
 
 #include <QLineEdit>
-
 #include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_blbankeditbase.h"
@@ -36,16 +38,16 @@ class BL_EXPORT BlBankEdit : public BlWidget, public Ui_BlBankEditBase
 public:
     BlBankEdit ( QWidget *parent = 0 );
     ~BlBankEdit();
-    virtual void setText ( QString val );
-    virtual void setFieldValue ( QString val );
+    virtual void setText ( QString text );
+    virtual void setFieldValue ( QString value );
     virtual QString text();
     virtual QString fieldValue();
     void checkControlDigit();
 
 public slots:
-    virtual void s_cuentatextChanged ( const QString & );
-    virtual void s_cuentalostFocus();
-    virtual void s_returnPressed();
+    virtual void bankAccountChanged ( const QString & );
+    virtual void bankAccountLostFocus();
+    virtual void returnKeyPressed();
     virtual void selectAll();
     virtual void setFocus();
 

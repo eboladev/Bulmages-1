@@ -57,7 +57,7 @@ int entryPoint ( BcBulmaCont *bcont )
     BlAction *accionA = new BlAction ( _ ( "&Libro Mayor" ), 0 );
     accionA->setStatusTip ( _ ( "Permite ver el mayor" ) );
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del mayor" ) );
-    accionA->setObjectName("mui_actionLibro");
+    accionA->setObjectName("mui_actionMayor");
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/bank-statement.png")));
     bcont->toolBar->addAction ( accionA );
     //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -71,14 +71,21 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "mui_actionLibro") {
-        if (g_mayor == NULL) {
+int BlAction_actionTriggered(BlAction *accion) {
+    BL_FUNC_DEBUG
+
+    if (accion->objectName() == "mui_actionMayor") {
+      
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionMayor" );
+
+	if (!g_pluginbc_mayor->company()->showWindow("BcExtractoView")) {
             g_mayor = new BcExtractoView ( g_pluginbc_mayor->company(), 0 );
-            g_pluginbc_mayor->company() ->pWorkspace() ->addSubWindow ( g_mayor );
-        } // end if
-        g_mayor->hide();
-        g_mayor->show();
+	    g_mayor->setObjectName("BcExtractoView");
+            g_pluginbc_mayor->company()->pWorkspace()->addSubWindow ( g_mayor );
+	    g_mayor->show();
+	} // end if
+	
     } // end if
+
     return 0;
 }

@@ -72,7 +72,7 @@ void Abrevs::on_mui_aparcar_clicked()
     emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
     
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_aparcar_clicked", this);
+    g_plugins->run("Abrevs_on_mui_aparcar_clicked", this);
 
     BtTicket *tick;
     if ( nomticket == emp->ticketActual()->nomTicketDefecto()) {
@@ -89,7 +89,7 @@ void Abrevs::on_mui_aparcar_clicked()
     emp->pulsaTecla ( Qt::Key_F4, "" );
 
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_aparcar_clicked_Post", this);
+    g_plugins->run("Abrevs_on_mui_aparcar_clicked_Post", this);
     
     /// Ponemos el nuevo bloqueo
     tick->setDbValue("bloqueadoticket", "TRUE");
@@ -151,6 +151,6 @@ void Abrevs::on_mui_recuperar_clicked()
     Tickets * trab = new Tickets ( mainCompany(), 0 );
     trab->exec();
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_recuperar_clicked_Post", this);
+    g_plugins->run("Abrevs_on_mui_recuperar_clicked_Post", this);
 }
 

@@ -31,7 +31,7 @@ Orden: 70
 
 Comentarios: Le format de sortie est ODS. Il est basé sur le plugincanualesods,
 crée par Fco. Javier à partir d'un code de Tomeu Borràs. Ensuite,
-Adeladia Clavaguera et Leopold Palomo ont crée le caaslods, qui sont les comptes annuels des associations à but non lucratif. Ils ont crée ensuite reportods dans lequel est intégré, canuales et caaslods et y sont ajoutés le restant des comptes annuels existant publiésdans le BOE. 
+Adeladia Clavaguera et Leopold Palomo ont crée le ccaa2ods, qui sont les comptes annuels des associations à but non lucratif. Ils ont crée ensuite reportods dans lequel est intégré, canuales et ccaa2ods et y sont ajoutés le restant des comptes annuels existant publiésdans le BOE. 
 
 Cependant on a remarqué que reportods était le même que les deux autres, il fut décidé de substituer canuales par reportods intégrant dans un nouveau canuales tous les comptes annuels.
 

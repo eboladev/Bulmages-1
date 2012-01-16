@@ -33,7 +33,7 @@ class BL_EXPORT BlRadioButton : public QRadioButton
     Q_OBJECT
 
 private:
-    QString m_valorcampo;
+    QString m_fieldValue;
 
 public:
     BlRadioButton ( QWidget *parent );

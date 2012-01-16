@@ -78,7 +78,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 
-int BlAction_triggered(BlAction *accion) {
+int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionFacturasClientes") {
         if ( g_facturasList ) {
             g_facturasList->hide();
