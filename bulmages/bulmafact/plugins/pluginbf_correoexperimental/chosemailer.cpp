@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDir>
 #include "chosemailer.h"
 
 
@@ -31,8 +32,8 @@
     /// En Windows "exploraremos" los directorios que haya dentro del clasico ProgramFiles, facilitando el uso al usuario.
     QString PATHSEP = ";";
     QString PATH_EXTENSION = ".exe";
-    QString dirusuario = getenv ( "UserProfile" );
-    dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
+    // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre.
+    QString dirusuario = QDir::fromNativeSeparators ( QString( qgetenv("UserProfile") ) );
 #endif // Q_OS_WIN32
 
 
