@@ -2,19 +2,53 @@
 .SH NAME
 bulmafact \- billing program
 .SH SYNOPSIS
-\fBbulmafact \fI[ database | user | password ]\fB
+bulmafact [\fIoption\fR...]
 \f1
 .SH DESCRIPTION
 bulmafact is billing program for small amd midle bussines.
-.TP
-\fBdatabase \f1
-the database to connect. We recoment to use bulmasetup to install the example database suplied. 
-.TP
-\fBuser \f1
-the user for the access to the database.
-.TP
-\fBpassword \f1
-the user password for the access to the database.
+.SH "OPTIONS"
+.PP
+\fB\-d \fR\fB\fIdbname\fR\fR, \fB\-\-dbname \fR\fB\fIdbname\fR\fR
+.RS 4
+Specifies the name of the database to connect to\&. We recomend you to use bulmasetup to install the database.
+.RE
+.PP
+\fB\-U \fR\fB\fIusername\fR\fR, \fB\-\-username \fR\fB\fIusername\fR\fR
+.RS 4
+Connect to the database as the user
+\fIusername\fR
+instead of the default\&. (You must have permission to do so, of course\&.)
+.RE
+.PP
+\fB\-W \fR\fB\fIpassword\fR\fR, \fB\-\-password \fR\fB\fIpassword\fR\fR
+.sp
+Force bulmags to ask for a password. This option is never essential, since bulmages will automatically prompt for a password if the server demands password authentication\&. However,
+bulmages
+will waste a connection attempt finding out that the server wants a password\&.In some cases it is worth typing
+\fB\-W\fR
+to avoid the extra connection attempt\&.
+.RE
+.PP
+\fB\-h \fR\fB\faddress\fR\fR, \fB\-\-host \fR\fB\fIaddress\fR\fR
+.RS 4
+Specifies the server ip address which the server is listening for connections\&. If not set, to the localhost usually 127.0.0.1\&.
+.RE
+.PP
+\fB\-p \fR\fB\fIport\fR\fR, \fB\-\-port \fR\fB\fIport\fR\fR
+.RS 4
+Specifies the TCP port or the local Unix\-domain socket file extension on which the server is listening for connections\&. Defaults to the value of the
+\fBPGPORT\fR
+environment variable or, if not set, to the port specified at compile time, usually 5432\&.
+.RE
+\fB\-V\fR, \fB\-\-version\fR
+.RS 4
+Print the
+psql
+version and exit\&.
+\fB\-"?"\fR, \fB\-\-help\fR
+.RS 4
+Print the
+basic help and exit\&.
 .SH AUTHOR
 bulmafact was written by the IGLUES team <info\@iglues.org>
 .SH REPORTING BUGS
@@ -22,8 +56,8 @@ Report bugs to <info\@iglues.org>
 .SH COPYRIGHT
 Copyright (C) 2005 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO war- ranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .SH COMMENTS
-This man page was written using \fBxmltoman(1)\f1.
+This man page was written by Daniel Ripoll Osma (info@danielripoll.es)
 .SH FILES
 /etc/bulmages/bulmages.conf
 .SH SEE ALSO
-bulmasetup(1) bulmages.conf(1) bulmages(1) bulmacont(1) bulmatpv(1)
+bulmasetup(1) bulmages(1) bulmages.conf(1) bulmacont(1) bulmacont.conf(1) bulmafact.conf(1) bulmatpv(1) bulmatpv.conf(1)
