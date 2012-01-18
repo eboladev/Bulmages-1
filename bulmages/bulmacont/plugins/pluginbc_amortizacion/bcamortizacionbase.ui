@@ -214,7 +214,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="nomamortizacion"/>
+        <widget class="QLineEdit" name="mui_nombreAmortizacion"/>
        </item>
       </layout>
      </item>
@@ -234,7 +234,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="agrupacion"/>
+        <widget class="QLineEdit" name="mui_agrupacion"/>
        </item>
       </layout>
      </item>
@@ -298,7 +298,7 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="numcuotas">
+          <widget class="QLineEdit" name="mui_numeroCuotas">
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -314,7 +314,7 @@
           </widget>
          </item>
          <item row="3" column="3">
-          <widget class="QComboBox" name="periodicidad">
+          <widget class="QComboBox" name="mui_periodicidad">
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -354,7 +354,7 @@
           </widget>
          </item>
          <item row="3" column="6">
-          <widget class="QLineEdit" name="valorcompra">
+          <widget class="QLineEdit" name="mui_valorCompra">
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -457,21 +457,21 @@
              <number>6</number>
             </property>
             <item row="0" column="4">
-             <widget class="QRadioButton" name="metodoporcentual">
+             <widget class="QRadioButton" name="mui_metodoPorcentual">
               <property name="text">
                <string>Porcent&amp;ual</string>
               </property>
              </widget>
             </item>
             <item row="0" column="3">
-             <widget class="QRadioButton" name="metododecremental">
+             <widget class="QRadioButton" name="mui_metodoDecremental">
               <property name="text">
                <string>&amp;Decremental</string>
               </property>
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="QRadioButton" name="metodoincremental">
+             <widget class="QRadioButton" name="mui_metodoIncremental">
               <property name="text">
                <string>&amp;Incremental</string>
               </property>
@@ -494,7 +494,7 @@
              </spacer>
             </item>
             <item row="0" column="1">
-             <widget class="QRadioButton" name="metodolineal">
+             <widget class="QRadioButton" name="mui_metodoLineal">
               <property name="text">
                <string>Li&amp;neal</string>
               </property>
@@ -544,7 +544,7 @@
           </widget>
          </item>
          <item>
-          <widget class="BcAmortizacionSubForm" name="mui_listcuotas"/>
+          <widget class="BcAmortizacionSubForm" name="mui_listaCuotas"/>
          </item>
         </layout>
        </item>
@@ -580,7 +580,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="amortizado">
+          <widget class="QLineEdit" name="mui_amortizado">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -1066,7 +1066,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="pendiente">
+          <widget class="QLineEdit" name="mui_pendiente">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -1633,22 +1633,22 @@
  <tabstops>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
-  <tabstop>nomamortizacion</tabstop>
-  <tabstop>agrupacion</tabstop>
+  <tabstop>mui_nombreAmortizacion</tabstop>
+  <tabstop>mui_agrupacion</tabstop>
   <tabstop>tabWidget3</tabstop>
-  <tabstop>numcuotas</tabstop>
-  <tabstop>periodicidad</tabstop>
-  <tabstop>valorcompra</tabstop>
-  <tabstop>metodolineal</tabstop>
-  <tabstop>metodoincremental</tabstop>
-  <tabstop>metododecremental</tabstop>
-  <tabstop>metodoporcentual</tabstop>
+  <tabstop>mui_numeroCuotas</tabstop>
+  <tabstop>mui_periodicidad</tabstop>
+  <tabstop>mui_valorCompra</tabstop>
+  <tabstop>mui_metodoLineal</tabstop>
+  <tabstop>mui_metodoIncremental</tabstop>
+  <tabstop>mui_metodoDecremental</tabstop>
+  <tabstop>mui_metodoPorcentual</tabstop>
   <tabstop>mui_btcalcular</tabstop>
-  <tabstop>mui_listcuotas</tabstop>
+  <tabstop>mui_listaCuotas</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
-  <tabstop>pendiente</tabstop>
-  <tabstop>amortizado</tabstop>
+  <tabstop>mui_pendiente</tabstop>
+  <tabstop>mui_amortizado</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>
