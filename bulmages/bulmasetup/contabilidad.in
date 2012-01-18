@@ -49,8 +49,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
         #Comprobamos que exista la imagen y si es asi la presentamos.
         if (self.database != None):
-            if (os.path.exists('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '/es/logo.jpg' )):
-                self.pixmap = QtGui.QPixmap('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '/es/logo.jpg')
+            if (os.path.exists(plugins.openreports + 'openreports_' + self.database + '/es/logo.jpg' )):
+                self.pixmap = QtGui.QPixmap(plugins.openreports + 'openreports_' + self.database + '/es/logo.jpg')
                 self.mui_img.setPixmap(self.pixmap)
 
     def inicializar(self):
@@ -323,36 +323,36 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generando plantillas RML y PYS', None, QtGui.QApplication.UnicodeUTF8))
         # Creamos el directorio especifico para guardar las plantillas
         for language in self.languages:
-            functions.multios().mkdir_p(str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" %(self.database,language)),0755)
+            functions.multios().mkdir_p(str( plugins.openreports + "openreports_%s/%s" %(self.database,language)),0755)
         i = 1
-        while (os.path.exists('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))):
+        while (os.path.exists(plugins.openreports + 'openreports_' + self.database + '_old' + str(i))):
             i = i + 1
 
         # Hacemos un backup de openreports
-        functions.multios().copy(str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database + "_old" + str(i)) )
+        functions.multios().copy(str(plugins.openreports + "openreports_" + self.database),str(plugins.openreports + "openreports_" + self.database + "_old" + str(i)) )
 
-        self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))
+        self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + plugins.openreports + 'openreports_' + self.database + '_old' + str(i))
 
         # Copiamos los archivos genericos
         # Copiamos las plantillas
         for language in self.languages:
-            functions.multios().copy(str(plugins.confopenreports + language + "/canuales.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/diario.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/extracto.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla1.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/estilos.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/listado.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/canuales.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/diario.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/extracto.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla1.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/estilos.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/listado.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
             if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
-                functions.multios().copy(str(plugins.confopenreports + language + "/logo.jpg"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
-            functions.multios().copy(str(plugins.confopenreports + language + "/ficha.rml"),str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" % (self.database,language)) )
+                functions.multios().copy(str(plugins.confopenreports + language + "/logo.jpg"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/ficha.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
         
         #END copiamos las plantillas
 
         # Pasamos el logotipo
         if (self.mui_textfile.text() != ""):
             if (self.mui_textfile.text() != ""):
-                functions.multios().copy(str(self.mui_textfile.text()),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"%s/logo.jpg" % language) )
+                functions.multios().copy(str(self.mui_textfile.text()),str(plugins.openreports + "openreports_" + self.database +"%s/logo.jpg" % language) )
 
 
         # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
@@ -365,7 +365,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                 # Si el plugin tiene archivo de autoforms lo copiamos
                 if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
                    # Aqui copiamos el archivo
-                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str("@BULMAGES_CONFIG_DIR@/" + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
+                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str(plugins.openreports + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
             # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Tratamos toda la cadena de categorias.
@@ -377,7 +377,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                     while (self.j < len ( self.arra)):
                 # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s" % language))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str(plugins.openreports + "openreports_" + self.database +"/%s" % language))
                         self.j = self.j + 1
             self.i = self.i + 1
 
@@ -405,7 +405,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
         # Escribimos el parametro como lo deseamos
         locale = QtCore.QLocale()
-        self.out << "\n\nCONF_DIR_OPENREPORTS @BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
+        self.out << "\n\nCONF_DIR_OPENREPORTS " + plugins.openreports + "openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
 
 
         # Terminamos de poner el resto de las linea.

@@ -15,7 +15,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
 
     def on_mui_aceptar_released(self):
 
-        functions.multios().decompress( str(self.mui_filename.text()), '@BULMAGES_CONFIG_DIR@/')
+        functions.multios().decompress( str(self.mui_filename.text()), plugins.configfiles)
 
         self.nomdb = self.mui_dbname.text()
 
@@ -25,12 +25,12 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.proceso.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = functions.psql + ' -f @BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.nomdb + functions.end_sql
+        self.command = functions.psql + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.nomdb + functions.end_sql
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 
         # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
-        os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
+        os.remove(str(plugins.configfiles + self.database + '.sql'))
 
         Yes = 'Ok'
         yasta = QtGui.QMessageBox(self)

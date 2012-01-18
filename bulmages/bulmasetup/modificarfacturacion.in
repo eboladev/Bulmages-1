@@ -41,10 +41,10 @@ class ModificarFacturacion( Facturacion):
         self.mui_textBrowser.clear()
 
         self.writecommand("===== Backup =====<br>")
-        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        self.command = functions.pg_dump + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
-        #functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        #functions.pg_dump + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.database
 
         self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
 
@@ -52,29 +52,29 @@ class ModificarFacturacion( Facturacion):
         self.conftpv = 'bulmatpv_' + self.database + '.conf'
         self.quehehecho = 0
 
-        if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conffact):
-            self.writecommand('Buscando archivo de configuracion: ' + '@BULMAGES_CONFIG_DIR@/' + self.conffact + '<br>')
+        if os.path.exists(plugins.configfiles + self.conffact):
+            self.writecommand('Buscando archivo de configuracion: ' + plugins.configfiles + self.conffact + '<br>')
             self.quehehecho = 1
         else:
-            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.conffact + '</font>')
-        if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conftpv):
-            self.writecommand('Buscando archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.conftpv + '<br>')
+            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: ' + plugins.configfiles + self.conffact + '</font>')
+        if os.path.exists(plugins.configfiles + self.conftpv):
+            self.writecommand('Buscando archivo de configuracion: ' + plugins.configfiles + self.conftpv + '<br>')
             self.quehehecho = 2
 
         if self.quehehecho == 1:
             self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-            files=['@BULMAGES_CONFIG_DIR@/' + self.conffact, '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']
+            files=[plugins.configfiles + self.conffact, plugins.configfiles + self.database + '.sql']
             destination=self.directorio + '/' + self.database + '.tar.gz'
             functions.multios().compress(files,destination)
         if self.quehehecho == 2:
             self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-            files=['@BULMAGES_CONFIG_DIR@/' + self.conffact, '@BULMAGES_CONFIG_DIR@/' + self.conftpv,'@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']
+            files=[plugins.configfiles + self.conffact, plugins.configfiles + self.conftpv, plugins.configfiles + self.database + '.sql']
             destination=self.directorio + '/' + self.database + '.tar.gz'
             functions.multios().compress(files,destination)
 
         self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + " =====<br><br>")
 
-        os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))
+        os.remove(str(plugins.configfiles + self.database + '.sql'))
         self.writecommand('Eliminando archivos temporales')
 
     def on_mui_aceptar_released(self):

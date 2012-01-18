@@ -30,7 +30,7 @@ class multios():
             shutil.copy(src,dst)
         # Solo propagamos permisos en caso de que el destino no sea un directorio.
         if os.path.isdir(dst) == False:
-	    shutil.copystat(src,dst)
+            shutil.copystat(src,dst)
         
     def touch(self,filename):
         """ Given a file do a "touch" in a multiplataform way
@@ -105,12 +105,19 @@ if os.name == 'posix':
     as_postgres2 = "su postgres -c \'"
     end_sql = '\"'
     end_sql2 = "\'"
+    psql = as_postgres + multios().search_executable("psql")
+    psql2 = as_postgres2 + multios().search_executable("psql")
+    pg_dump = multios().search_executable("pg_dump")
+    createdb = as_postgres + "createdb" + ' -E UNICODE '
 else:
     as_postgres = ''
     as_postgres2 = as_postgres
     end_sql = ''
     end_sql2 = end_sql
+    psql = os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe") 
+    psql2 = os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe") 
+    pg_dump = os.getcwd().replace("bulmasetup","pgsql\\bin\\pg_dump.exe") 
+    createdb = os.getcwd().replace("bulmasetup","pgsql\\bin\\createdb.exe") + " "
     
-psql = as_postgres + multios().search_executable("psql")
-psql2 = as_postgres2 + multios().search_executable("psql")
-pg_dump = multios().search_executable("pg_dump")
+
+

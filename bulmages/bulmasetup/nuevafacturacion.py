@@ -45,35 +45,38 @@ class NuevaFacturacion(Facturacion):
 
         os.chdir(gettempdir())
         # Creamos la base de datos
-        self.command = functions.as_postgres + 'createdb -E UNICODE ' + self.database + functions.end_sql
+        self.command = functions.createdb + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = functions.psql + ' -1 ' + self.database + ' < '+ plugins.pathdbbulmafact +'bulmafact_schema.sql' + functions.end_sql
+        self.command = functions.psql + ' -1 ' + ' -f '+ plugins.pathdbbulmafact +'bulmafact_schema.sql ' + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos los datos minimos
-        self.command = functions.psql + ' ' + self.database + ' < ' + plugins.pathdbbulmafact + 'bulmafact_data.sql' + functions.end_sql
+        self.command = functions.psql + ' ' + ' -f ' + plugins.pathdbbulmafact + 'bulmafact_data.sql ' + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Aplicamos el parche de bulmatpv si es necesario
         if (self.mui_soporteTPV.isChecked()):
-            self.command = functions.psql + ' -1 ' + self.database + ' < ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql' + functions.end_sql
+            self.command = functions.psql + ' -1 ' + ' -f ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
 
         # Cambiamos el nombre de la empresa
         self.nomempresa = unicode(self.mui_nomempresa.text()).encode('utf8')
-        print self.nomempresa
-        self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
-        self.command = functions.psql2 + ' ' + self.database + ' -c \"' +self.subcomand+ '\"' + functions.end_sql2
+        if os.name == 'posix':
+            self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
+        else:
+            self.subcomand = 'UPDATE configuracion set valor=\'' +self.nomempresa +'\' WHERE nombre = \'NombreEmpresa\';'
+        
+        self.command = functions.psql2 + ' -c \"' +self.subcomand+ '\"' + ' ' + self.database + functions.end_sql2
         self.writecommand(self.command)
         os.system(self.command.toAscii().data())
 

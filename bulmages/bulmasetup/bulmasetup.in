@@ -7,10 +7,15 @@ __author__ = "Tomeu Borras <tborras@conetxia.com>"
 __all__ = ["bulmasetup"]
 __doc__ = "Sistema de instalacion y mantenimiento de Bases de Datos para BulmaGes.\r\n"
 
+import os
 import commands
 import sys
 
-sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup')
+if os.name == 'posix':
+    sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup')
+else:
+    sys.path.append(os.getcwd().replace("bulmasetup","share\\bulmages\\bulmasetup"))
+
 
 from config import *
 from bulmasetupbase import *
@@ -34,7 +39,19 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
         self.setupUi(self)
 
         # Detecta si hemos accedido como 'root' o no y deshabilita las opciones que necesitan esos permisos.
-        if commands.getstatusoutput("whoami")[1] == 'root':
+        if os.name == 'posix':
+            if commands.getstatusoutput("whoami")[1] == 'root':
+                self.nuevo_usuario.setEnabled(True)
+                self.editar_usuario.setEnabled(True)
+                self.eliminar_usuario.setEnabled(True)
+                self.permisos_usuario.setEnabled(True)
+                self.mui_crearbulmafact.setEnabled(True)
+                self.mui_crearbulmacont.setEnabled(True)
+                self.eliminar_empresa.setEnabled(True)
+                self.mui_adminempresas.setEnabled(True)
+                self.mui_restbackup.setEnabled(True)
+                self.mui_creabackup.setEnabled(True)
+        else:
             self.nuevo_usuario.setEnabled(True)
             self.editar_usuario.setEnabled(True)
             self.eliminar_usuario.setEnabled(True)
@@ -45,8 +62,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
             self.mui_adminempresas.setEnabled(True)
             self.mui_restbackup.setEnabled(True)
             self.mui_creabackup.setEnabled(True)
-
-
+                
+                
         # Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_nuevo_usuario_released(self):
         win = NuevoUsuario()

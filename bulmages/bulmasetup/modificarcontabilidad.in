@@ -43,12 +43,12 @@ class ModificarContabilidad(Contabilidad):
         self.confcont = 'bulmacont_' + self.database + '.conf'
 
         if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.confcont):
-            self.writecommand('Buscando archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.confcont + '<br>')
+            self.writecommand('Buscando archivo de configuracion: ' + plugins.configfiles + self.confcont + '<br>')
         else:
-            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: @BULMAGES_CONFIG_DIR@/' + self.confcont + '</font>')
+            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: ' + plugins.configfiles + self.confcont + '</font>')
 
         self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-        functions.multios().compress(list(['@BULMAGES_CONFIG_DIR@/' + self.confcont, '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql']), str(self.directorio + '/' + self.database + '.tar.gz'))
+        functions.multios().compress(list([plugins.configfiles + self.confcont, plugins.configfiles + self.database + '.sql']), str(self.directorio + '/' + self.database + '.tar.gz'))
 
         self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + ' =====<br><br>')
 
