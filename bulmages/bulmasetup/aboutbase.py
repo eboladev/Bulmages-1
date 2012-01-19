@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'aboutbase.ui'
 #
-# Created: Mon Jul  6 10:42:17 2009
-#      by: PyQt4 UI code generator 4.4.4
+# Created: Thu Jan 19 17:51:52 2012
+#      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -176,7 +176,7 @@ class Ui_About(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
         About.setPalette(palette)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/images/iglues.org.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/images/iglues.org.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         About.setWindowIcon(icon)
         self.hboxlayout = QtGui.QHBoxLayout(About)
         self.hboxlayout.setSpacing(5)
@@ -193,7 +193,8 @@ class Ui_About(object):
         self.label = QtGui.QLabel(About)
         self.label.setMinimumSize(QtCore.QSize(48, 48))
         self.label.setMaximumSize(QtCore.QSize(48, 48))
-        self.label.setPixmap(QtGui.QPixmap(":/images/iglues.org.svg"))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/images/iglues.org.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.hboxlayout1.addWidget(self.label)
@@ -288,13 +289,17 @@ class Ui_About(object):
 
     def retranslateUi(self, About):
         About.setWindowTitle(QtGui.QApplication.translate("About", "Acerca de Iglues/BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_lbversion.setText(QtGui.QApplication.translate("About", "BulmaSetup GPL - Version 0.13.0", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_lbversion.setText(QtGui.QApplication.translate("About", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">BulmaSetup GPL - Version 0.13.0</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.TabWidget.setTabText(self.TabWidget.indexOf(self.Acercade_2), QtGui.QApplication.translate("About", "&Acerca de", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit_autores.setHtml(QtGui.QApplication.translate("About", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.TabWidget.setTabText(self.TabWidget.indexOf(self.autores_2), QtGui.QApplication.translate("About", "A&utores", None, QtGui.QApplication.UnicodeUTF8))
         self.TabWidget.setTabText(self.TabWidget.indexOf(self.soporte_2), QtGui.QApplication.translate("About", "Sopor&te", None, QtGui.QApplication.UnicodeUTF8))
         self.TabWidget.setTabText(self.TabWidget.indexOf(self.licencia_2), QtGui.QApplication.translate("About", "Acuerdo de &licencia", None, QtGui.QApplication.UnicodeUTF8))

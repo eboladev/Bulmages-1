@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/images/iconbulmafact.svg</normaloff>:/images/iconbulmafact.svg</iconset>
+    <normaloff>:/images/iconbulmafact.png</normaloff>:/images/iconbulmafact.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -643,7 +643,7 @@
          <widget class="QWidget" name="tab">
           <attribute name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/iconbulmafact.svg</normaloff>:/images/iconbulmafact.svg</iconset>
+            <normaloff>:/images/iconbulmafact.png</normaloff>:/images/iconbulmafact.png</iconset>
           </attribute>
           <attribute name="title">
            <string>Plugins BulmaFact</string>
@@ -691,7 +691,7 @@
          <widget class="QWidget" name="tab_2">
           <attribute name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/iconbulmatpv.svg</normaloff>:/images/iconbulmatpv.svg</iconset>
+            <normaloff>:/images/iconbulmatpv.png</normaloff>:/images/iconbulmatpv.png</iconset>
           </attribute>
           <attribute name="title">
            <string>Plugins BulmaTPV</string>
@@ -846,7 +846,7 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/images/backup_database.svg</normaloff>:/images/backup_database.svg</iconset>
+         <normaloff>:/images/backup_database.png</normaloff>:/images/backup_database.png</iconset>
        </property>
       </widget>
      </item>
