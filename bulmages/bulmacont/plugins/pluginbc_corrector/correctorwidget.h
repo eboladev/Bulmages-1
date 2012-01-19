@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -30,6 +32,7 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 
+
 /** Busca errores y incoherencias en la contabilidad y las reporta al usuario en forma de
     listado.
     Esta clase realiza una serie de consultas determinadas en busca de determinados errores
@@ -40,51 +43,38 @@
     El corrector solo tiene una instancia en toda la ejecucion del programa, es la clase
     empresa la que se encarga de construirlo y una vez construido permanece siempre en
     ejecucion. */
-class correctorwidget : public QWidget, public Ui_correctorbase
+class CorrectorWidget : public QWidget, public Ui_correctorbase
 {
     Q_OBJECT
 
 public:
     /// Base de datos con la que se esta operando.
-    BlPostgreSqlClient *dbConnection;
+    BlPostgreSqlClient *m_dbConnection;
     /// Empresa que ha hecho la instancia del corrector.
-    BcCompany *company;
+    BcCompany *m_company;
     /// El informe generado se forma en HTML y se presenta mediante este QString.
-    QString textBrowser;
+    QString m_textBrowser;
     /// El corrector es una ventana del tipo dock, que se puede anexar a las esquinas
     /// del worspace de la aplicacion. Este puntero apunta a la ventana contenedora del
     /// corrector.
-    BlDockWidget *dock;
+    BlDockWidget *m_dockWidget;
     QAction *m_viewCorrector;
 
 public:
-    correctorwidget ( QWidget* parent = 0, Qt::WFlags fl = 0 );
-    ~correctorwidget();
+    CorrectorWidget ( QWidget *parent = 0, Qt::WFlags flags = 0 );
+    ~CorrectorWidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
     /// funcion setCompany  para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
-    void setCompany  ( BcCompany *empres ) {
-        company = empres;
-        dbConnection = empres->bdempresa();
-    }
+    void setCompany  ( BcCompany *company );
     void agregarError ( QString, QString, QString );
 
 public slots:
     virtual void on_mui_corregir_clicked();
     virtual void on_mui_configurar_clicked();
     virtual void alink ( const QUrl &url );
-    virtual void cambia ( bool a ) {
-        if ( a ) {
-            dock->hide();
-            dock->show();
-            dock->showMaximized();
-            m_viewCorrector->setChecked ( TRUE );
-        } else {
-            dock->hide();
-            m_viewCorrector->setChecked ( FALSE );
-        } // end if
-    };
+    virtual void cambia ( bool a );
 };
 
 #endif
