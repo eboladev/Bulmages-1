@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,37 +25,62 @@
 #include "confreglasview.h"
 #include "pluginbc_asiento.h"
 
+
 /** Inicializacion de la clase.
     En el constructor del corrector no se hacen tareas especiales. */
 /**
 \param parent
 \param fl
 **/
-correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
-        : QWidget ( parent, fl )
+CorrectorWidget::CorrectorWidget ( QWidget* parent, Qt::WFlags flags )
+        : QWidget ( parent, flags )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
-    
+    QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );    
 }
 
 
 ///
 /**
 **/
-correctorwidget::~correctorwidget()
+CorrectorWidget::~CorrectorWidget()
 {
     BL_FUNC_DEBUG
-    
 }
+
+
+///
+/**
+**/
+void CorrectorWidget::setCompany  ( BcCompany *company ) {
+    m_company = company;
+    m_dbConnection = company->bdempresa();
+}
+
+
+///
+/**
+**/
+void CorrectorWidget::cambia ( bool a ) {
+    if ( a ) {
+	m_dockWidget->hide();
+	m_dockWidget->show();
+	m_dockWidget->showMaximized();
+	m_viewCorrector->setChecked ( TRUE );
+    } else {
+	m_dockWidget->hide();
+	m_viewCorrector->setChecked ( FALSE );
+    } // end if
+}
+
 
 
 /** Se ha pulsado sobre el boton de configuracion de reglas.
     Activa la ventana de correcion de reglas \ref confreglasview */
 /**
 **/
-void correctorwidget::on_mui_configurar_clicked()
+void CorrectorWidget::on_mui_configurar_clicked()
 {
     BL_FUNC_DEBUG
     confreglasview *conf = new confreglasview();
@@ -68,17 +95,17 @@ void correctorwidget::on_mui_configurar_clicked()
     empresa y sacar la ventana de resultados. */
 /**
 **/
-void correctorwidget::on_mui_corregir_clicked()
+void CorrectorWidget::on_mui_corregir_clicked()
 {
     BL_FUNC_DEBUG
-    textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
+    m_textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     BlDbRecordSet *cur;
     BlDbRecordSet *cur2;
 
     /// Calculo de asientos abiertos.
     QString query;
     query.sprintf ( "SELECT *, asiento.idasiento AS idas FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL" );
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> con fecha <B>" + cur->value( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
@@ -90,7 +117,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de insercion en cuentas intermedias (con hijos).
     /// --------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento = asiento.idasiento" );
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->value( "codigo" ) + "</B> no hija..";
@@ -108,7 +135,7 @@ void correctorwidget::on_mui_corregir_clicked()
     query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento ";
     query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento ";
     query += " ORDER BY ordenasiento";
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         float ing, gas, act, pas, net;
         ing = cur->value( "ingresos" ).toFloat();
@@ -129,7 +156,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// --------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe <> 0" );
     BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(query) );
-    cur = dbConnection->loadQuery ( query, "hola1" );
+    cur = m_dbConnection->loadQuery ( query, "hola1" );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
@@ -141,7 +168,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de cuentas con insercion en el haber que lo tienen bloqueado.
     /// ---------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nohaber AND apunte.idasiento = asiento.idasiento AND apunte.haber <> 0" );
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
@@ -153,7 +180,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de amortizaciones con plazos expirados.
     /// -----------------------------------------------
     query = "SELECT * FROM linamortizacion WHERE fechaprevista < now() AND idasiento IS NULL";
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->value( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->value( "fechaprevista" ) + "</B>.";
@@ -165,7 +192,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de asientos con IVA y sin facturas asociadas.
     /// -----------------------------------------------------
     query = "SELECT * FROM borrador, cuenta WHERE cuenta.idcuenta = borrador.idcuenta AND codigo LIKE '%47%' AND idasiento NOT IN (SELECT idborrador FROM registroiva)";
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->value( "codigo" ) + ") sin que haya una factura asociada.";
@@ -179,7 +206,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// -----------------------------------------------------
     /// La longitud del codigo es valida si es mayor que 'x' e igual a 'x' + 'y'.
     query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
 
     /// Longitud de x.
     int longitudx = cur->value( "valor" ).replace(QString("y"), QString("")).trimmed().length();
@@ -187,7 +214,7 @@ void correctorwidget::on_mui_corregir_clicked()
 
     /// Busca errores.
     query = "SELECT * FROM cuenta WHERE char_length(codigo) > '" + QString::number(longitudx) + "' AND char_length(codigo) != '" + QString::number(totallongitud) + "'";
-    cur2 = dbConnection->loadQuery ( query );
+    cur2 = m_dbConnection->loadQuery ( query );
 
     while ( !cur2->eof() ) {
 	QString cadena;
@@ -203,7 +230,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Busca codigos de cuentas repetidos.
     /// -----------------------------------------------------
     query = "SELECT codigo, COUNT(codigo) AS repeticiones FROM cuenta GROUP BY codigo HAVING ( COUNT(codigo) > 1 )";
-    cur = dbConnection->loadQuery ( query );
+    cur = m_dbConnection->loadQuery ( query );
 
     while ( !cur->eof() ) {
 	QString cadena;
@@ -213,7 +240,7 @@ void correctorwidget::on_mui_corregir_clicked()
 	
 	
 	query = "SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '" + cur->value( "codigo" ) + "'";
-	cur2 = dbConnection->loadQuery ( query );
+	cur2 = m_dbConnection->loadQuery ( query );
 	while ( !cur2->eof() ) {
 	    /// Muestra las 3 primeras letras de la descripcion de la cuenta.
 	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->value("descripcion").left(7) + "...</B>' <a name='idcuenta' href='#idcuenta=" + cur2->value( "idcuenta" ) + "'>corregir</a></td></tr>";
@@ -222,16 +249,15 @@ void correctorwidget::on_mui_corregir_clicked()
 	delete cur2;
 		
 	//agregarError ( cadena, "idcuenta", "idcuenta=" + cur->value( "idcuenta" ) );
-	textBrowser += "<HR><table><tr><td>" + cadena + "</td></tr>" + cadena2 + "</table>";
+	m_textBrowser += "<HR><table><tr><td>" + cadena + "</td></tr>" + cadena2 + "</table>";
 
 	cur->nextRecord();
     } // end while
     
     delete cur;
     
-    
-    textBrowser += "</BODY></HTML>";
-    mui_browser->setHtml ( textBrowser );
+    m_textBrowser += "</BODY></HTML>";
+    mui_browser->setHtml ( m_textBrowser );
     
 }
 
@@ -243,7 +269,7 @@ void correctorwidget::on_mui_corregir_clicked()
 /**
 \param url
 **/
-void correctorwidget::alink ( const QUrl &url )
+void CorrectorWidget::alink ( const QUrl &url )
 {
     BL_FUNC_DEBUG
 
@@ -262,7 +288,7 @@ void correctorwidget::alink ( const QUrl &url )
     if ( list[0] == "ver" ) {
 	// TODO.
     } else if ( list[0] == "idasiento" ) {
-//        BcAsientoView * view = company->intapuntsempresa();
+//        BcAsientoView * view = m_company->intapuntsempresa();
         BcAsientoView * view = g_asiento;
         bool ok;
         view->muestraAsiento ( list[1].toInt ( &ok ) );
@@ -272,14 +298,14 @@ void correctorwidget::alink ( const QUrl &url )
       /// Recalcula un codigo de cuenta no duplicado.
       /// 0) Busca el codigo de la cuenta.
       query = "SELECT codigo FROM cuenta WHERE idcuenta = '" + list[1] + "';";
-      cur = dbConnection->loadQuery ( query );
+      cur = m_dbConnection->loadQuery ( query );
       
       codigoOld = cur->value( "codigo" );
       delete cur;
 
       /// 1) Coge el codigo padre 'las x'.      
       query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
-      cur = dbConnection->loadQuery ( query );
+      cur = m_dbConnection->loadQuery ( query );
 
       /// Longitud de x.
       int longitudx = cur->value( "valor" ).replace(QString("y"), QString("")).trimmed().length();
@@ -298,7 +324,7 @@ void correctorwidget::alink ( const QUrl &url )
 	
 	/// Comprueba que el nuevo codigo no este en uso.
 	query = "SELECT idcuenta, codigo FROM cuenta WHERE codigo = '" + codigoNew + "'";
-	cur = dbConnection->loadQuery ( query );
+	cur = m_dbConnection->loadQuery ( query );
 
 	if (cur->numregistros() == 0) {
 	    break;
@@ -316,13 +342,13 @@ void correctorwidget::alink ( const QUrl &url )
       /// 4) Renombra el codigo de la cuenta.
       if ( QMessageBox::Apply == res) {
 	  query = "UPDATE cuenta SET codigo = '" + codigoNew + "' WHERE idcuenta = '" + list[1] + "'";
-	  cur = dbConnection->loadQuery ( query );
+	  cur = m_dbConnection->loadQuery ( query );
 	  blMsgInfo(_("Cambiado con exito."));
       } // end if
       
       
     } else {
-        /*        BcAsientoView *view = company->intapuntsempresa();
+        /*        BcAsientoView *view = m_company->intapuntsempresa();
                 bool ok;
                 view->muestraAsiento(linker.toInt(&ok));
         */
@@ -340,9 +366,9 @@ void correctorwidget::alink ( const QUrl &url )
 \param texto1
 \param texto2
 **/
-void correctorwidget::agregarError ( QString texto, QString texto1, QString texto2 )
+void CorrectorWidget::agregarError ( QString texto, QString texto1, QString texto2 )
 {
     BL_FUNC_DEBUG
-    textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><!-- a name='masinfo' href='#" + texto1 + "'>+ info</a --></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
+    m_textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><!-- a name='masinfo' href='#" + texto1 + "'>+ info</a --></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
     
 }
