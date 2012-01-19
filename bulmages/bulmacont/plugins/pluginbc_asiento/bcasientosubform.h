@@ -39,8 +39,8 @@ public:
     BcAsientoSubForm ( QWidget *parent = 0, const char *name = 0 );
     ~BcAsientoSubForm();
     virtual void load ( QString );
-    BlFixed totaldebe ( QString );
-    BlFixed totalhaber ( QString );
+    BlFixed totalDebe ( QString );
+    BlFixed totalHaber ( QString );
 
 public slots:
     virtual void s_pintaMenu ( QMenu *menu );

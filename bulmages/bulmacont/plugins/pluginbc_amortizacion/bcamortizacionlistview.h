@@ -38,15 +38,15 @@ class PLUGINBC_AMORTIZACION_EXPORT BcAmortizacionListView : public BlFormList, p
 
 private:
     /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
-    QString mdb_idamortizacion;
+    QString m_idAmortizacion;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
-    QString mdb_nomamortizacion;
+    QString m_nomAmortizacion;
 
 public:
-    BcAmortizacionListView ( BcCompany *, QWidget * );
+    BcAmortizacionListView ( BcCompany *company, QWidget *parent );
     ~BcAmortizacionListView();
     void inicializaTabla();
-    void editar ( int );
+    void editar ( int row );
     virtual void crear();
     virtual void remove();
 

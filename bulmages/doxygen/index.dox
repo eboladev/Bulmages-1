@@ -1,0 +1,161 @@
+/**
+ * \mainpage BulmaGés - Qt/C++ Business Management Software
+ *
+\htmlonly
+<a href="https://gitorious.org"><img src="https://gitorious.org/img/logo.png?1294322727" style="width:180; height:51; border:none; float:right; background:url('https://gitorious.org/img/header-bg.png');" alt="Gitorious powered by SourceForge.net" /></a>
+<a href="https://github.com"><img width=120 src="https://github.com/github/media/raw/master/logos/github_logo_social_coding_outlined.png" style="padding-right: 20px; border:none; float:right;" alt="Documentation powered by Github.com" /></a>
+\endhtmlonly
+ * \section overview Overview
+ * 
+ * BulmaGés is a modular application that has the goal to cover the needs
+ * of business management for any small or medium firm in the free
+ * software environment. Four areas are clearly identified where the
+ * software can operate: 
+ * - Accounting - BulmaCont
+ * - Billing and invoicing - BulmaFact
+ * - Point of Sale Terminal - BulmaTPV
+ * - Configurate the suite - BulmaSetup
+ *
+ * If you do not know what Qt is, you have two options:
+ * - Just forget about BulmaGés.
+ * - Learn more about Qt by downloading it and/or reading excellent <a
+ *   href="http://doc.trolltech.com/">official Qt documentation</a>
+ *
+ * The choice is yours, but if you are really interested in
+ * cross-platform (Windows/Linux/BSD/UNIX/Mac/Others) software
+ * development, We would definitely recommend you the second choice ^_^
+ *
+ * Despite the fact that these applications are made to operate
+ * as a single one, their modularity allows them to operate
+ * independently, helping therefore in a progressive migration from other
+ * applications or in the adoption of those tools that for a specific firm needs.
+ *
+ * BulmaGés is free software and is released under the GPL
+ * license. Both the software and the code can be obtained freely
+ * through the Internet or through the different distributions (CD)
+ * provided by the IGLUES association.
+ *
+ * BulmaGés offers maximum quality in a complete integral management
+ * tool, which can be configured to adapt to the needs of any firm by
+ * means of a system of modules and plug-ins depending on the industry
+ * and the size of the firm. 
+ * 
+  * \section platforms Platforms supported
+ * The developers work mainly with GNU/Linux but Bulmagés can work in multiple platforms. 
+ * Bulmagés has been currently tested with Qt 4.8 and PostgreSQL 9.1.2 on the following
+ * platforms:
+ * - linux-g++
+ * - win32-g++ (MinGW)
+ * - macosx-g++
+ *
+ * We have also developed a BulmaTPV version specific for using with:
+ * - Nintendo DS
+ * 
+ * No testing has been done on other systems. Of course, help for port it
+ * and make it work on any other platform that it currently does not work on
+ * are always welcome!
+ * BulmaGés is developed by different people that have collaborated with
+ * the project, some of them are active currently and some are not. In
+ * general these are people related to the Iglues Association (www.iglues.org). 
+ *
+ * \section scope What's the scope of BulmaGés?
+ * Currently the main scope of the program is firms, associations and
+ * organizations willing to maintain a management system either for
+ * accounting, or billing and invoicing or sales. The accounting system
+ * is the Spanish one, and the accounting plans included are the Spanish
+ * accounting plans. Nevertheless, the accounting system (and invoicing)
+ * can be adapted to other accounting systems, simply by changing the
+ * accounting plan. 
+ *
+ * \section getting Getting latest version of BulmaGés
+ *
+ * Check <a href="https://gitorious.org/bulmages/bulmages">BulmaGés
+ * project's page at SourceForge.net</a>. Also, you may wish to read
+ * latest version documentation available at the <a
+ * href="http://quazip.sourceforge.net/">QuaZIP web site</a>.
+ *
+ * \section Requirements
+ *
+ * To be able to use BulmaGés the code has to be compiled and an
+ * installation has to be performed. The software can be run and tried
+ * without installation, but it is only advisable at the development
+ * level. The suite uses a PostgreSQL database to store the data.
+ *
+ * \section Directory structure
+ * These are the main directories of svn and their corresponding explanations.
+ * - bulmalib: There are some common libraries for the various projects.
+ * - bulmages: It contains the program launcher.
+ * - bulmacont: The accounting program folder.
+ * - bulmasetup: The configuration program folder
+ * - bulmafact: The facturation program folder
+ * - installbulmages: Components needed to perform an installation can be found here. (Conf files, etc.)
+ * - scripts: It contains useful scripts for the project.
+ * - images: It contains images (resources) used jointly with the bulmages.qrc file.
+ * - ModulesCMake:  CMake code needed to construct the suite.
+ * - doc:  Suite documentation.
+ *
+ * \section building Building, testing and installing
+ *
+ * \note Instructions given in this section assume that you are
+ * using some UNIX dialect, but the build process should be very similar
+ * on win32-g++ platform too.
+ *
+ * To compile the code the following is needed:
+ * - <a href="https://qt.nokia.com/downloads/">Qt library</a>, at least  4.3. 
+ * - Python 2.7 and PyQt4 
+ * -  <a href="http://www.cmake.org/HTML/index.html">cmake</a>, at least version 2.4.8
+ * - libpq/libpqxx and PostgreSQL (at least 8.1)
+ * In order to run all the programs and plug-ins additional components are needed.
+ * - python-psycopg2 to run bulmasetup correctly
+ * - python-reportlab to generate some reports.
+ * - python-ooolib and ooolib-perl for the plug-ins that generate documents in openoffice format
+ *
+ * To build it on some UNIX dialect:
+\verbatim
+$ mkdir -p /wherever/you/want/to/compile
+$ cmake /wherever/source/of/bulmages/is/bulmages-x.y.x/bulmages
+$ make
+\endverbatim
+ *
+ * Make sure that you have Qt 4 and  PostgreSQL installed with all required headers and
+ * utilities (not just library) and that you run cmake utility.
+ *
+ * If you need to specify additional include path or libraries, use
+ * cmake features (see <a href="http://www.cmake.org/Wiki/CMake">cmake wiki</a>).
+ * For example:
+ *
+\verbatim
+$ cmake -DPATH=/home/user/qtdir:$PATH ../bulmages
+\endverbatim
+ * (note presence of "-D" before PATH)
+ *
+ * To install compiled BulmaGés:
+\verbatim
+$ make install
+\endverbatim
+ * It install the software in /usr/local (Unix platform), or
+ * %PROGRAMFILES%\bulmages\ in MSWindows.
+ *
+ * Note: When the program is developed or updated it is recomended to reinstall it.
+ * 
+ * \section bugs Bugs
+ *
+ * BulmaGés is currently at the continous development state. Therefore,
+ * there are may appear bugs and other bad things.
+ * Bug reports and  patches are always welcome (see "contacts" below).
+ *
+ * \section contacts Authors and contacts
+ *
+ * This program is mainly developed by <a href="http://www.iglues.org">Iglues</a>,
+ * Also, there is some external developers and collaborators.
+ * If you find some kind of bug or have any sugestion, please be 
+ * welcome to report it.
+ * 
+ * Also, we have some mailing list to contact us.
+ *  - List of the debian maintainers
+ *  <a href="https://lists.berlios.de/pipermail/bulmages-pkg-debian/">bulmages-pkg-debian Archives</a> (go to <a href="https://lists.berlios.de/mailman/listinfo/bulmages-pkg-debian">Subscribe/Unsuscribe/Preferences</a>)
+ *  - The main list
+ *  <a href="https://lists.berlios.de/pipermail/bulmages-main/">bulmages-main Archives</a> (go to <a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Subscribe/Unsuscribe/Preferences</a>)
+ *
+ * Copyright (C) 2012 BulmaGés - Iglues
+ **/
