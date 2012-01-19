@@ -633,7 +633,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_descuadre">
+      <widget class="QLineEdit" name="mui_descuadre">
        <property name="minimumSize">
         <size>
          <width>150</width>
@@ -799,7 +799,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_saldoCuenta">
+      <widget class="QLineEdit" name="mui_saldoCuenta">
        <property name="enabled">
         <bool>true</bool>
        </property>

@@ -573,7 +573,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
 
 
-        int numasiento1 = asiento ->idasiento().toInt();
+        int numasiento1 = asiento ->idAsiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number ( numasiento1 );
         mainCompany() ->begin();

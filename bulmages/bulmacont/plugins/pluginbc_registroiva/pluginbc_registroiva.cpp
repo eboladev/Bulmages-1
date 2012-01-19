@@ -136,12 +136,12 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 \param as
 \return
 **/
-int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
+int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *asientoForm )
 {
     BL_FUNC_DEBUG
     
     
-    BcCompany *companyact = as->companyact();
+    BcCompany *companyact = asientoForm->company();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
     BlDbRecordSet *curvalor = companyact->loadQuery ( query );
@@ -156,7 +156,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las
     /// preguntamos antes de cerrar nada.
-    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + as->dbValue ( "idasiento" ) + " AND codigo SIMILAR TO '" + companyact->sanearCadena ( cuentas.toAscii().constData() ) + "' GROUP BY contra";
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + asientoForm->dbValue ( "idasiento" ) + " AND codigo SIMILAR TO '" + companyact->sanearCadena ( cuentas.toAscii().constData() ) + "' GROUP BY contra";
 
     BlDbRecordSet *cursborr = companyact->loadQuery ( SQLQuery );
     while ( !cursborr->eof() ) {
@@ -179,22 +179,21 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 \param as
 \return
 **/
-int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
+int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *asientoSubForm )
 {
     BL_FUNC_DEBUG
     
-    as->save();
+    asientoSubForm->save();
     try {
-        int idborrador = as->dbValue ( "idborrador" ).toInt();
-        RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->mainCompany(), 0 );
+        int idborrador = asientoSubForm->dbValue ( "idborrador" ).toInt();
+        RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) asientoSubForm->mainCompany(), 0 );
         nuevae->inicializa1 ( idborrador );
-        ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addSubWindow ( nuevae );
+        ( ( BcCompany * ) asientoSubForm->mainCompany() ) ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar un apunte" ) );
         return 0;
     } // end try
-    
     
     return 0;
 }

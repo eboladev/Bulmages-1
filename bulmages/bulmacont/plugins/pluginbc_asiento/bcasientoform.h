@@ -38,25 +38,25 @@ class PLUGINBC_ASIENTO_EXPORT BcAsientoForm : public BcForm
     Q_OBJECT
 
 public:
-    enum estadoasiento {ASVacio = 0, ASAbierto = 1, ASCerrado = 2};
+    enum EstadoAsiento {AsientoVacio = 0, AsientoAbierto = 1, AsientoCerrado = 2};
 
 protected:
-    BcAsientoSubForm *listalineas;
+    BcAsientoSubForm *m_listaLineas;
 
 public:
-    BcAsientoForm ( BcCompany *, QWidget *parent );
+    BcAsientoForm ( BcCompany *company, QWidget *parent );
     virtual ~BcAsientoForm();
-    BcCompany *companyact();
+    BcCompany *company();
     int load ( QString );
-    BlFixed totaldebe ( QString );
-    BlFixed totalhaber ( QString );
+    BlFixed totalDebe ( QString );
+    BlFixed totalHaber ( QString );
     void vaciar();
     void abrir();
     void cerrar();
-    estadoasiento estadoBcAsientoForm();
+    EstadoAsiento estadoBcAsientoForm();
     int save();
-    void setidasiento ( QString val );
-    QString idasiento();
+    void setIdAsiento ( QString val );
+    QString idAsiento();
     /// Establece cual es la lista subformulario del presupuesto.
     void setListLinAsiento1 ( BcAsientoSubForm *a );
     virtual int remove ( bool );

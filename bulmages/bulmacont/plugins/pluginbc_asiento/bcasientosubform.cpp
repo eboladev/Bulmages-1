@@ -139,7 +139,7 @@ void BcAsientoSubForm::load ( QString idasiento )
 \param idasiento
 \return
 **/
-BlFixed BcAsientoSubForm::totaldebe ( QString idasiento )
+BlFixed BcAsientoSubForm::totalDebe ( QString idasiento )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idasiento) );
@@ -159,7 +159,7 @@ BlFixed BcAsientoSubForm::totaldebe ( QString idasiento )
 \param idasiento
 \return
 **/
-BlFixed BcAsientoSubForm::totalhaber ( QString idasiento )
+BlFixed BcAsientoSubForm::totalHaber ( QString idasiento )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idasiento) );
