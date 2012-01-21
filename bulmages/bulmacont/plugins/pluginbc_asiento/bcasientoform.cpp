@@ -28,15 +28,14 @@
 #include "blfunctions.h"
 #include "blplugins.h"
 #include "bccompany.h"
-// #include "bcplancontablearbol.h"
 #include "blmainwindow.h"
 
 ///
 /**
-\param comp
+\param company
 \param parent
 **/
-BcAsientoForm::BcAsientoForm ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
+BcAsientoForm::BcAsientoForm ( BcCompany *company, QWidget *parent ) : BcForm ( company, parent )
 {
     BL_FUNC_DEBUG
     setTitleName ( _ ( "Asiento contable" ) );
@@ -48,11 +47,9 @@ BcAsientoForm::BcAsientoForm ( BcCompany *comp, QWidget *parent ) : BcForm ( com
     addDbField ( "comentariosasiento", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios del asiento" ) );
     addDbField ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Orden de asiento" ) );
     addDbField ( "clase", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Tipo de asiento" ) );
-    listalineas = NULL;
+    m_listaLineas = NULL;
     /// Llamamos a los scripts
     blScript(this);
-
-    
 }
 
 
@@ -62,7 +59,6 @@ BcAsientoForm::BcAsientoForm ( BcCompany *comp, QWidget *parent ) : BcForm ( com
 BcAsientoForm::~BcAsientoForm()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -72,7 +68,6 @@ BcAsientoForm::~BcAsientoForm()
 void BcAsientoForm::pintaIdAsiento ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -82,7 +77,6 @@ void BcAsientoForm::pintaIdAsiento ( QString )
 void BcAsientoForm::pintaDescripcion ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -92,7 +86,6 @@ void BcAsientoForm::pintaDescripcion ( QString )
 void BcAsientoForm::pintaFecha ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -102,7 +95,6 @@ void BcAsientoForm::pintaFecha ( QString )
 void BcAsientoForm::pintaComentariosAsiento ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -112,7 +104,6 @@ void BcAsientoForm::pintaComentariosAsiento ( QString )
 void BcAsientoForm::pintaOrdenAsiento ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -122,7 +113,6 @@ void BcAsientoForm::pintaOrdenAsiento ( QString )
 void BcAsientoForm::pintaClase ( QString )
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -132,7 +122,6 @@ void BcAsientoForm::pintaClase ( QString )
 void BcAsientoForm::calculaPintaTotales()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -142,11 +131,7 @@ void BcAsientoForm::calculaPintaTotales()
 void BcAsientoForm::trataEstadoBcAsientoForm()
 {
     BL_FUNC_DEBUG
-    
 }
-
-
-
 
 
 /** Metodo que se encarga del borrado completo de un asiento.
@@ -173,7 +158,7 @@ int BcAsientoForm::remove ( bool atendido )
                                             QMessageBox::Cancel ) ) {
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
                 mainCompany() ->begin();
-                listalineas->remove();
+                m_listaLineas->remove();
                 error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
                 error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
                 if ( error ) {
@@ -189,7 +174,7 @@ int BcAsientoForm::remove ( bool atendido )
             } // end switch
         } else {
             mainCompany() ->begin();
-            listalineas->remove();
+            m_listaLineas->remove();
             error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
             error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
             if ( error ) {
@@ -216,9 +201,8 @@ void BcAsientoForm::vaciar()
     DBclear();
 
     /// Vaciamos compeltamente el subformulario para que no quede ningun tipo de restos
-    listalineas->setColumnCount ( 0 );
-    listalineas->setRowCount ( 0 );
-    
+    m_listaLineas->setColumnCount ( 0 );
+    m_listaLineas->setRowCount ( 0 );
 }
 
 
@@ -228,7 +212,7 @@ void BcAsientoForm::vaciar()
 void BcAsientoForm::pintar()
 {
     BL_FUNC_DEBUG
-    pintaIdAsiento ( idasiento() );
+    pintaIdAsiento ( idAsiento() );
     pintaDescripcion ( dbValue ( "descripcion" ) );
     pintaFecha ( dbValue ( "fecha" ) );
     pintaComentariosAsiento ( dbValue ( "comentariosasiento" ) );
@@ -243,13 +227,13 @@ void BcAsientoForm::pintar()
 
 /// Esta funci&oacute; carga un asiento.
 /**
-\param idasiento
+\param idAsiento
 \return
 **/
-int BcAsientoForm::load ( QString idasiento )
+int BcAsientoForm::load ( QString idAsiento )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idasiento) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString("idasiento = '%1'").arg(idAsiento) );
 
     if ( dialogChanges_isChanged() ) {
         switch ( QMessageBox::warning ( this, "BulmaCont",
@@ -271,14 +255,14 @@ int BcAsientoForm::load ( QString idasiento )
         } // end switch
     } // end if
 
-    QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
+    QString query = "SELECT * FROM asiento WHERE idasiento = " + idAsiento;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         DBload ( cur );
     } // end if
     delete cur;
     trataEstadoBcAsientoForm();
-    listalineas->load ( idasiento );
+    m_listaLineas->load ( idAsiento );
     pintar();
 
     dialogChanges_readValues();
@@ -291,11 +275,10 @@ int BcAsientoForm::load ( QString idasiento )
 /**
 \return
 **/
-BlFixed BcAsientoForm::totaldebe ( QString idasiento )
+BlFixed BcAsientoForm::totalDebe ( QString idAsiento )
 {
     BL_FUNC_DEBUG
-    
-    return listalineas->totaldebe ( idasiento );
+    return m_listaLineas->totalDebe ( idAsiento );
 }
 
 
@@ -303,11 +286,10 @@ BlFixed BcAsientoForm::totaldebe ( QString idasiento )
 /**
 \return
 **/
-BlFixed BcAsientoForm::totalhaber ( QString idbudget )
+BlFixed BcAsientoForm::totalHaber ( QString idbudget )
 {
     BL_FUNC_DEBUG
-    
-    return listalineas->totalhaber ( idbudget );
+    return m_listaLineas->totalHaber ( idbudget );
 }
 
 
@@ -318,7 +300,7 @@ BlFixed BcAsientoForm::totalhaber ( QString idbudget )
 void BcAsientoForm::abrir()
 {
     BL_FUNC_DEBUG
-    if ( estadoBcAsientoForm() != ASCerrado ) {
+    if ( estadoBcAsientoForm() != AsientoCerrado ) {
         
         return;
     } // end if
@@ -341,13 +323,15 @@ void BcAsientoForm::abrir()
 void BcAsientoForm::cerrar()
 {
     BL_FUNC_DEBUG
-    if ( estadoBcAsientoForm() != ASAbierto ) {
-	
+
+    if ( estadoBcAsientoForm() != AsientoAbierto ) {
         return;
     } // end if
+
     if ( save() )
         return;
     QString id = dbValue ( "idasiento" );
+
     if ( id == "" ) {
 	
         return;
@@ -358,7 +342,6 @@ void BcAsientoForm::cerrar()
     vaciar();
     dialogChanges_readValues();
     load ( id );
-    
 }
 
 
@@ -366,12 +349,12 @@ void BcAsientoForm::cerrar()
 /**
 \return
 **/
-BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
+BcAsientoForm::EstadoAsiento BcAsientoForm::estadoBcAsientoForm()
 {
     BL_FUNC_DEBUG
     if ( dbValue ( "idasiento" ) == "" ) {
         
-        return ASVacio;
+        return AsientoVacio;
     } // end if
 
     QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + dbValue ( "idasiento" );
@@ -384,16 +367,12 @@ BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
     QString numborr = cur->value( "cuenta" );
     delete cur;
 
-
     if ( numborr == "0" ) {
-        
-        return ASVacio;
+        return AsientoVacio;
     } else if ( numap != "0" ) {
-        
-        return ASCerrado;
+        return AsientoCerrado;
     } else {
-        
-        return ASAbierto;
+        return AsientoAbierto;
     } // end if
 }
 
@@ -409,8 +388,8 @@ int BcAsientoForm::save()
     mainCompany() ->begin();
     try {
         dbSave ( id );
-        setidasiento ( id );
-        listalineas->save();
+        setIdAsiento ( id );
+        m_listaLineas->save();
 
         /// Disparamos los plugins
         int res = g_plugins->run ( "BcAsientoForm_guardaAsiento1_post", this );
@@ -419,7 +398,7 @@ int BcAsientoForm::save()
 
         mainCompany() ->commit();
 
-        if ( estadoBcAsientoForm() == ASCerrado ) {
+        if ( estadoBcAsientoForm() == AsientoCerrado ) {
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT cierraasiento(" + id + ")" );
             delete cur;
         } // end if
@@ -441,10 +420,9 @@ int BcAsientoForm::save()
 /**
 \return
 **/
-BcCompany *BcAsientoForm::companyact()
+BcCompany *BcAsientoForm::company()
 {
     BL_FUNC_DEBUG
-    
     return mainCompany();
 }
 
@@ -453,12 +431,11 @@ BcCompany *BcAsientoForm::companyact()
 /**
 \param val
 **/
-void BcAsientoForm::setidasiento ( QString val )
+void BcAsientoForm::setIdAsiento ( QString val )
 {
     BL_FUNC_DEBUG
     setDbValue ( "idasiento", val );
-    listalineas->setColumnValue ( "idasiento", val );
-    
+    m_listaLineas->setColumnValue ( "idasiento", val );
 }
 
 
@@ -466,10 +443,9 @@ void BcAsientoForm::setidasiento ( QString val )
 /**
 \return
 **/
-QString BcAsientoForm::idasiento()
+QString BcAsientoForm::idAsiento()
 {
     BL_FUNC_DEBUG
-    
     return dbValue ( "idasiento" );
 }
 
@@ -481,7 +457,6 @@ QString BcAsientoForm::idasiento()
 void BcAsientoForm::setListLinAsiento1 ( BcAsientoSubForm *a )
 {
     BL_FUNC_DEBUG
-    listalineas = a;
-    
+    m_listaLineas = a;
 }
 

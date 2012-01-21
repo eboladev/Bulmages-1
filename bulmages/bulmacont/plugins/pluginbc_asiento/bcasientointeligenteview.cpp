@@ -298,7 +298,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
             g_asiento ->vaciar();
             g_asiento ->dialogChanges_readValues();
             g_asiento ->iniciar_asiento_nuevo();
-            numasiento = g_asiento ->idasiento().toInt();
+            numasiento = g_asiento ->idAsiento().toInt();
             creaAsiento();
             g_asiento ->cerrar();
             g_asiento ->dialogChanges_readValues();

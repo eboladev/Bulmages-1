@@ -7,49 +7,191 @@ BulmaGés programs use a configuration file called bulmages.conf for its initial
 .SH CONFIGURATION OPTIONS
 The valid configuration options are:
 .TP
-\fBPLUGINGS\f1
+\fBPLUGINS\f1
 The BulmaGés applications have several plugins witch can be added or removeb by simply adding it or removing it at the bulmages.conf.
-
+.TP
 Bulmacont plugins:
-\fBpluginregistrodeiva \f1It allows to register the invoices to make the spanish listing model 377 for Hacienda. This meens that you can specify associated data of invoicing to the accounting that are necessary to obtain some obligatory information.
-\fBplugincorrector \f1It allows to test the accounting database for errors.
-\fBplugincanualesods \f1It allows to get the balances, the annual accounts, in format ods for this spanish official documents: For the Plan General Contable of 2008: Cuentas Anuales PGC, Cuentas Anuales Abreviadas PGC, Cuentas Anuales PYMES For the Plan General Contable related to the year 2007 or before: Cuentas Anuales PGC, Cuentas A. Abreviadas Sin Lucro 
-\fBplugin \f1Example of plugins. It does not has utility if you don't need to talk about plugins.
-BfBulmaFact plugins:
-\fBcomercialbf \f1It allows to input comercial data associated to the clients in the client register with specific cells. The data are the visits, the name of comercial associated to the client and the results of the visit.
-\fBetiquetado \f1It allows to get one codebar for the articles to put labels to the products.
-\fBinformeclientessxc\f1It allows to get reports of sales of clients and purchases to suppliers in format sxc.
-\fBplugin \f1Example of plugins. It does not has utility if you don't need to talk about plugins.
-\fBpluginalmacen \f1It improves the management of the store extending the data.
-\fBpuginasterisk \f1It allows to the invoicing management using asterisk callcenter. It allows to file in the system through the callcenter of asterisk.
-\fBpluginbarcodeopen \f1It allows to open any document using the identification of the barcode. It's just needed to select the fast opening then, to pas the document by the reader and then, the related document will be opened.
-\fBplugincatalogo \f1It allows the product catalogue impression.
-\fBplugincontratos \f1It allows the clients contract control and it allows to generate the invoicing associated to these contracts.
-\fBplugincuadrante \f1It allows the elaboration of quadrants of the workers assigning to them timetables in the different stores.
-\fBpluginimpresionesmultiples \f1Plugin of Multiple impressions. It adds one checkbox in each one of the members of the listing of budgets, orders, letters patents and invoices that allow to select them and to erase them together. Also It adds three buttons of menu in each one of these listings with the following functionalities: 1. - To invert the selection: It invests the state of checkbox added. 2. - To print multiple elements: Print the directly selected elements. 3. - Multiple send of emails: It prepares one email to send the selected documents like attachments.
-\fBplugininformeclientes \f1It allows to the impression of the report of purchases and sales by clients.
-\fBplugininventario \f1It allows the control of inventories.
-\fBpluginmail \f1It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.
-\fBpluginpromedios \f1It adds one new tab at the article cards. This new tab has the averages of the information from the purchases and sales.
-\fBpluginq19 \f1It adds the format of banking transactions to make claims of money receptions.
-\fBplugintarifas \f1It allows the control of lists of prices for clients. The clients are subscribed to specific lists to be able to give different prices for different clients.
-\fBpluginticket \f1It allows the impression of tickets.
-\fBplugintipostrabajo \f1It allows to specify the type of task developed by the workers in the company.
-\fBplugintrazabilidad \f1It allows the control of traceability by lots. It adds a table of material movements and a field "lot". That field allows to identify products from its purchase to its sale.
-\fBpluginsyncbulmacont \f1It allows one synchronization betwen BulmaFact and Bulmacont. This synchronization forces to add one book entry in the accounting everytime one invoice, client, bank, or payment its added.
+.PP
+\fBpluginbc_registrodeiva \f1
+.RS 4
+It allows to register the invoices to make the spanish listing model 377 for Hacienda. This meens that you can specify associated data of invoicing to the accounting that are necessary to obtain some obligatory information.
+.RE
+.PP
+\fBpluginbc_corrector \f1
+.RS 4
+It allows to test the accounting database for errors.
+.RE
+.PP
+\fBpluginbc_canualesods \f1
+.RS 4
+It allows to get the balances, the annual accounts, in format ods for this spanish official documents: For the Plan General Contable of 2008: Cuentas Anuales PGC, Cuentas Anuales Abreviadas PGC, Cuentas Anuales PYMES For the Plan General Contable related to the year 2007 or before: Cuentas Anuales PGC, Cuentas A. Abreviadas Sin Lucro 
+.RE
+.TP
+BulmaFact plugins:
+.PP
+\fBcomercialbf \f1
+.RS 4
+It allows to input comercial data associated to the clients in the client register with specific cells. The data are the visits, the name of comercial associated to the client and the results of the visit.
+.RE
+.PP
+\fBetiquetado \f1
+.RS 4
+It allows to get one codebar for the articles to put labels to the products.
+.RE
+.PP
+\fBinformeclientessxc\f1
+.RS 4
+It allows to get reports of sales of clients and purchases to suppliers in format sxc.
+.RE
+.PP
+\fBpluginbf_ \f1
+.RS 4
+Example of pluginbf_s. It does not has utility if you don't need to talk about pluginbf_s.
+.RE
+.PP
+\fBpluginbf_almacen \f1
+.RS 4
+It improves the management of the store extending the data.
+.RE
+.PP
+\fBpuginasterisk \f1
+.RS 4
+It allows to the invoicing management using asterisk callcenter. It allows to file in the system through the callcenter of asterisk.
+.RE
+.PP
+\fBpluginbf_barcodeopen \f1
+.RS 4
+It allows to open any document using the identification of the barcode. It's just needed to select the fast opening then, to pas the document by the reader and then, the related document will be opened.
+.RE
+.PP
+\fBpluginbf_catalogo \f1
+.RS 4
+It allows the product catalogue impression.
+.RE
+.PP
+\fBpluginbf_contratos \f1
+.RS 4
+It allows the clients contract control and it allows to generate the invoicing associated to these contracts.
+.RE
+.PP
+\fBpluginbf_cuadrante \f1
+.RS 4
+It allows the elaboration of quadrants of the workers assigning to them timetables in the different stores.
+.RE
+.PP
+\fBpluginbf_impresionesmultiples \f1
+.RS 4
+Plugin of Multiple impressions. It adds one checkbox in each one of the members of the listing of budgets, orders, letters patents and invoices that allow to select them and to erase them together. Also It adds three buttons of menu in each one of these listings with the following functionalities: 1. - To invert the selection: It invests the state of checkbox added. 2. - To print multiple elements: Print the directly selected elements. 3. - Multiple send of emails: It prepares one email to send the selected documents like attachments.
+.RE
+.PP
+\fBpluginbf_informeclientes \f1
+.RS 4
+It allows to the impression of the report of purchases and sales by clients.
+.RE
+.PP
+\fBpluginbf_inventario \f1
+.RS 4
+It allows the control of inventories.
+.RE
+.PP
+\fBpluginbf_mail \f1
+.RS 4
+It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.
+.RE
+.PP
+\fBpluginbf_promedios \f1
+.RS 4
+It adds one new tab at the article cards. This new tab has the averages of the information from the purchases and sales.
+.RE
+.PP
+\fBpluginbf_q19 \f1
+.RS 4
+It adds the format of banking transactions to make claims of money receptions.
+.RE
+.PP
+\fBpluginbf_tarifas \f1
+.RS 4
+It allows the control of lists of prices for clients. The clients are subscribed to specific lists to be able to give different prices for different clients.
+.RE
+.PP
+\fBpluginbf_ticket \f1
+.RS 4
+It allows the impression of tickets.
+.RE
+.PP
+\fBpluginbf_tipostrabajo \f1
+.RS 4
+It allows to specify the type of task developed by the workers in the company.
+.RE
+.PP
+\fBpluginbf_trazabilidad \f1
+.RS 4
+It allows the control of traceability by lots. It adds a table of material movements and a field "lot". That field allows to identify products from its purchase to its sale.
+.RE
+.PP
+\fBpluginbf_syncbulmacont \f1
+.RS 4
+It allows one synchronization betwen BulmaFact and Bulmacont. This synchronization forces to add one book entry in the accounting everytime one invoice, client, bank, or payment its added.
+.RE
+.TP
 Bulmalib plugins:
-\fBpluginclipboardbf\f1It allows to paste from a spreadsheet in the invoices to stick contents on a fast way in the billing.
-\fBpluginsubformods\f1It allows to export any subform to format of spreadsheet sxc. It adds one pop-up menu option that allows to export to spreadsheet in all the subforms.
-\fBpluginsubformsxc\f1It allows to export any subform to format of spreadsheet ods. It adds one pop-up menu option that allows to export to spreadsheet in all the subforms.
+.PP
+\fBpluginbl_clipboardbf\f1
+.RS 4
+It allows to paste from a spreadsheet in the invoices to stick contents on a fast way in the billing.
+.RE
+.PP
+\fBpluginbl_subformods\f1
+.RS 4
+It allows to export any subform to format of spreadsheet sxc. It adds one pop-up menu option that allows to export to spreadsheet in all the subforms.
+.RE
+.PP
+\fBpluginbl_subformsxc\f1
+.RS 4
+It allows to export any subform to format of spreadsheet ods. It adds one pop-up menu option that allows to export to spreadsheet in all the subforms.
+.RE
+.TP
 Bulmatpv plugins:
-\fBpluginticket \f1It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.
-\fBpluginabrevs\f1Abreviations
-\fBpluginadmin\f1x, y, z, and the buttons exit
-\fBpluginartgraficos\f1It shows the grid to select products.
-\fBplugincobrar\f1It shows the button to receive.
-\fBplugintecladonumerico\f1It adds the numeric keyboard
-\fBpluginticketbasico\f1Ticket
-\fBplugintotal\f1It shows the total in the tickets.
+.PP
+\fBpluginbt_ticket \f1
+.RS 4
+It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.
+.RE
+.PP
+\fBpluginbt_abrevs\f1
+.RS 4
+Abreviations
+.RE
+.PP
+\fBpluginbt_admin\f1
+.RS 4
+x, y, z, and the buttons exit
+.RE
+.PP
+\fBpluginbt_artgraficos\f1
+.RS 4
+It shows the grid to select products.
+.RE
+.PP
+\fBpluginbt_cobrar\f1
+.RS 4
+It shows the button to receive.
+.RE
+.PP
+\fBpluginbt_tecladonumerico\f1
+.RS 4
+It adds the numeric keyboard
+.RE
+.PP
+\fBpluginbt_ticketbasico\f1
+.RS 4
+Ticket
+.RE
+.PP
+\fBpluginbt_total\f1
+.RS 4
+It shows the total in the tickets.
+.RE
 .SH AUTHOR
 bulmages was written by the IGLUES team <info\@iglues.org>
 .SH REPORTING BUGS
@@ -57,8 +199,8 @@ Report bugs to <info\@iglues.org>
 .SH COPYRIGHT
 Copyright (C) 2005 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO war- ranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .SH COMMENTS
-This man page was written using \fBxmltoman(1)\f1.
+This man page was written by Daniel Ripoll Osma (info@danielripoll.es)
 .SH FILES
 /etc/bulmages/bulmages.conf
 .SH SEE ALSO
-bulmasetup(1) bulmages(1) bulmacont(1) bulmafact(1) bulmatpv(1) bulmacont.conf(1) bulmafact.conf(1) bulmatpv.conf(1)
+bulmasetup(1) bulmages(1) bulmacont(1) bulmacont.conf(1) bulmafact(1) bulmafact.conf(1) bulmatpv(1) bulmatpv.conf(1)

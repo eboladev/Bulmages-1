@@ -74,13 +74,13 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
             self.proceso.waitForFinished(-1)
 
             if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
-                if os.path.exists('@BULMAGES_CONFIG_DIR@/bulmafact_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
-                    os.remove('@BULMAGES_CONFIG_DIR@/bulmafact_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
-                if os.path.exists('@BULMAGES_CONFIG_DIR@/bulmatpv_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
-                    os.remove('@BULMAGES_CONFIG_DIR@/bulmatpv_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
+                if os.path.exists(plugins.configfiles + 'bulmafact_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
+                    os.remove(plugins.configfiles + 'bulmafact_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
+                if os.path.exists(plugins.configfiles + 'bulmatpv_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
+                    os.remove(plugins.configfiles + 'bulmatpv_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
             if (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
-                if os.path.exists('@BULMAGES_CONFIG_DIR@/bulmacont_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
-                    os.remove('@BULMAGES_CONFIG_DIR@/bulmacont_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
+                if os.path.exists(plugins.configfiles + 'bulmacont_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
+                    os.remove(plugins.configfiles + 'bulmacont_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
 
         self.lista_empresas.clear()
         self.buscarEmpresas()

@@ -64,12 +64,12 @@ private:
     QString m_idctaamortizacion;
     /// Esta variable indica cu&aacute;l es la amortizaci&oacute;n que se est&aacute;
     /// ense&ntilde;ando. Si no tiene valor es que no se esta mostrando ninguna.
-    QString m_idamortizacion;
+    QString m_idAmortizacion;
 
 public:
-    BcAmortizacionView ( BcCompany *, QWidget * );
+    BcAmortizacionView ( BcCompany *company, QWidget *parent );
     ~BcAmortizacionView();
-    virtual int load ( QString idamortizacion );
+    virtual int load ( QString idAmortizacion );
     virtual int save();
     virtual int remove();
 

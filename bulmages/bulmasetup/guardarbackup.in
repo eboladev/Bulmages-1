@@ -57,7 +57,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 
         self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"@HOME_DIR@")
         destination=str(self.directorio + '/' + self.database + '.tar.gz')
-        self.command = functions.pg_dump + ' -f ' + '@BULMAGES_CONFIG_DIR@/' + self.database + '.sql ' + self.database
+        self.command = functions.pg_dump + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 
@@ -74,29 +74,29 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 
         if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
             self.quehehecho = 1
-            if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conffact):
+            if os.path.exists(plugins.configfiles + self.conffact):
                 self.quehehecho = 1
             else:
-                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>@BULMAGES_CONFIG_DIR@/', None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
+                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>' + plugins.configfiles, None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
                 error.exec_()
-            if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.conftpv):
+            if os.path.exists(plugins.configfiles + self.conftpv):
                 self.quehehecho = 2
         elif (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
             self.quehehecho = 3
-            if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.confcont):
+            if os.path.exists(plugins.configfiles + self.confcont):
                 self.quehehecho = 3
             else:
-                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>@BULMAGES_CONFIG_DIR@/', None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
+                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>' + plugins.configfiles, None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
                 error.exec_()
 
         if self.quehehecho == 1:
-            files=[str('@BULMAGES_CONFIG_DIR@/' + self.conffact), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
+            files=[str('@BULMAGES_CONFIG_DIR@/' + self.conffact), str(plugins.configfiles + self.database + '.sql')]
             functions.multios().compress(files,destination)
         if self.quehehecho == 2:
-            files=[str('@BULMAGES_CONFIG_DIR@/' + self.conffact), str('@BULMAGES_CONFIG_DIR@/' + self.conftpv), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
+            files=[str('@BULMAGES_CONFIG_DIR@/' + self.conffact), str(plugins.configfiles + self.conftpv), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
             functions.multios().compress(files,destination)
         if self.quehehecho == 3:
-            files=[str('@BULMAGES_CONFIG_DIR@/' + self.confcont), str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql')]
+            files=[str('@BULMAGES_CONFIG_DIR@/' + self.confcont), str(plugins.configfiles + self.database + '.sql')]
             functions.multios().compress(files,destination)
 
         os.remove(str('@BULMAGES_CONFIG_DIR@/' + self.database + '.sql'))

@@ -1,21 +1,34 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
 import sys
 import plugins
 from plugins import PluginsBulmaSetup
 
 #Variables para la version de produccion
-plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
-plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
-plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
-plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
-plugins.pathdbplugins = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/plugins/'
-plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
-plugins.confsharebulmages = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
-plugins.confopenreports = '@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/'
-plugins.cmakeinstallprefix = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
-
+if os.name == 'posix':
+    plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
+    plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
+    plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
+    plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
+    plugins.pathdbplugins = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/plugins/'
+    plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
+    plugins.confsharebulmages = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
+    plugins.confopenreports = '@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/'
+    plugins.cmakeinstallprefix = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
+    plugins.openreports = '@BULMAGES_OPTWARE_DIR@/'
+else:
+    plugins.pathdbbulmafact = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\crear\\bulmafact\\")
+    plugins.pathdbbulmacont = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\crear\\bulmacont\\")
+    plugins.pathdbbulmatpv = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\crear\\bulmatpv\\")
+    plugins.pathdbparches = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\actualizar\\")
+    plugins.pathdbplugins = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\plugins\\")
+    plugins.configfiles = os.getcwd().replace("bulmasetup","etc\\")
+    plugins.confsharebulmages = os.getcwd().replace("bulmasetup","share\\bulmages\\")
+    plugins.confopenreports = os.getcwd().replace("bulmasetup","share\\bulmages\\openreports\\")
+    plugins.cmakeinstallprefix = os.getcwd().replace("bulmasetup","share\\bulmages\\")
+    plugins.openreports = os.getcwd().replace("bulmasetup","openreports\\")
 
 # Variables para la version de desarrollo
 #sys.path.append('/home/talvarez/bulmages/trunk/bulmages/bulmasetup')

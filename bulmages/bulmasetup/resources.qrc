@@ -14,10 +14,16 @@
         <file>bulmasetup_editarusuario.xpm</file>
         <file>bulmasetup_eliminarusuario.xpm</file>
         <file>iglues.org.svg</file>
+        <file>iglues.org.png</file>
         <file>bulmasetup_aceptar.xpm</file>
         <file>iconbulmafact.svg</file>
         <file>iconbulmacont.svg</file>
         <file>iconbulmatpv.svg</file>
+
+        <file>iconbulmafact.png</file>
+        <file>iconbulmacont.png</file>
+        <file>iconbulmatpv.png</file>
+
         <file>terminal.png</file>
 	<file>add_user_postgresql.svg</file>
 	<file>edit_user_postgresql.svg</file>
@@ -26,5 +32,14 @@
 	<file>trash_company.svg</file>
 	<file>backup_database.svg</file>
 	<file>restore_database.svg</file>
+
+	<file>add_user_postgresql.png</file>
+	<file>edit_user_postgresql.png</file>
+	<file>trash_user_postgresql.png</file>
+	<file>manage_company.png</file>
+	<file>trash_company.png</file>
+	<file>backup_database.png</file>
+	<file>restore_database.png</file>
+
     </qresource>
 </RCC>

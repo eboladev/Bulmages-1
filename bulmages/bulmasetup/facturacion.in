@@ -73,8 +73,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         #Comprobamos que exista la imagen y si es asi la presentamos.
         if (self.database != None):
-            if (os.path.exists('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + 'es/logo.jpg' )):
-                self.pixmap = QtGui.QPixmap('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + 'es/logo.jpg')
+            if (os.path.exists(plugins.openreports + 'openreports_' + self.database + 'es/logo.jpg' )):
+                self.pixmap = QtGui.QPixmap(plugins.openreports + 'openreports_' + self.database + 'es/logo.jpg')
                 self.mui_img.setPixmap(self.pixmap)
 
     def inicializar(self):
@@ -122,34 +122,34 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         # Creamos el directorio especifico para guardar las plantillas y los idiomas
         
         for language in self.languages:
-            functions.multios().mkdir_p(str("@BULMAGES_OPTWARE_DIR@/openreports_%s/%s" %(self.database,language)),0755)
+            functions.multios().mkdir_p(str(plugins.openreports + "openreports_%s/%s" %(self.database,language)),0755)
 
 
         i = 1
-        while (os.path.exists('@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))):
+        while (os.path.exists(plugins.openreports + 'openreports_' + self.database + '_old' + str(i))):
             i = i + 1
 
         # Hacemos un backup de openreports
-        functions.multios().copy(str("@BULMAGES_OPTWARE_DIR@/openreports_%s" % self.database),str("@BULMAGES_OPTWARE_DIR@/openreports_%s_old%s" % (self.database,str(i))))
+        functions.multios().copy(str(plugins.openreports + "openreports_%s" % self.database),str(plugins.openreports + "openreports_%s_old%s" % (self.database,str(i))))
 
-        self.writecommand(QtGui.QApplication.translate("Facturacion",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '@BULMAGES_OPTWARE_DIR@/openreports_' + self.database + '_old' + str(i))
+        self.writecommand(QtGui.QApplication.translate("Facturacion",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + plugins.openreports + 'openreports_' + self.database + '_old' + str(i))
 
         # Copiamos los archivos genericos
         # Copiamos las plantillas en cada idioma
         for language in self.languages:
-            functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/informereferencia.rml" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/plantilla.rml" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/plantilla1.rml" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/estilos.rml" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/listado.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/informereferencia.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/plantilla.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/plantilla1.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/estilos.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/listado.rml" % language) )
             if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
-                functions.multios().copy(str(plugins.confopenreports+ "%s/logo.jpg" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/logo.jpg" % language) )
-            functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/ficha.rml" % language) )
+                functions.multios().copy(str(plugins.confopenreports+ "%s/logo.jpg" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/logo.jpg" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/ficha.rml" % language) )
             # Pasamos el logotipo
             if (self.mui_textfile.text() != ""):
-                functions.multios().copy(str(self.mui_textfile.text()),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"%s/logo.jpg" % language) )
+                functions.multios().copy(str(self.mui_textfile.text()),str(plugins.openreports + "openreports_" + self.database +"%s/logo.jpg" % language) )
         # END Copiamos las plantillas en cada idioma
-	
+    
 
         # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
         self.i = 0
@@ -162,7 +162,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                 # Si el plugin tiene archivo de autoforms lo copiamos
                 if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
                    # Aqui copiamos el archivo
-                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str("@BULMAGES_CONFIG_DIR@/" + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
+                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str(plugins.configfiles + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
 
                 # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
@@ -175,7 +175,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     while (self.j < len ( self.arra)):
                         # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/" % language + self.arra[self.j]))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str(plugins.openreports + "openreports_" + self.database +"/%s/" % language + self.arra[self.j]))
                         self.j = self.j + 1
             self.i = self.i + 1
 
@@ -198,7 +198,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     while (self.j < len ( self.arra)):
                         # Copiamos las plantillas
                         for language in self.languages:
-                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str("@BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/%s/" % language + self.arra[self.j]))
+                            functions.multios().copy(str(plugins.confopenreports + "%s/" % language + self.arra[self.j]),str(plugins.openreports + "openreports_" + self.database +"/%s/" % language + self.arra[self.j]))
                         self.j = self.j + 1
             self.i = self.i + 1
 
@@ -227,17 +227,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             # and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
             if (self.text.contains("CONF_DIR_OPENREPORTS")):
                 # Escribimos el parametro como lo deseamos
-                #self.out << "\n\nCONF_DIR_OPENREPORTS @BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/\n\n"
+                #self.out << "\n\nCONF_DIR_OPENREPORTS "+plugins.openreports+"openreports_" + self.database +"/\n\n"
                 self.encontradoopenreports = 1;
 
             if (self.text.contains("CONF_DIR_IMG_ARTICLES")):
                 # Escribimos el parametro como lo deseamos
-                #self.out << "\n\nCONF_DIR_IMG_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
+                #self.out << "\n\nCONF_DIR_IMG_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
                 self.encontradoarticles = 1;
 
             if (self.text.contains("CONF_STYLESHEET")):
                 # Escribimos el parametro como lo deseamos
-                #self.out << "\n\nCONF_DIR_IMG_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
+                #self.out << "\n\nCONF_DIR_IMG_ARTICLES "+plugins.openreports+"/imgarticles_" + self.database +"/\n\n"
                 self.encontradostylesheet = 1;
 
             self.out << self.text << "\n"
@@ -245,7 +245,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         if (self.encontradoopenreports == 0):
                 # Escribimos el parametro como lo deseamos
-            self.out << "\n\nCONF_DIR_OPENREPORTS @BULMAGES_OPTWARE_DIR@/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
+            self.out << "\n\nCONF_DIR_OPENREPORTS "+plugins.openreports+"openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
 
         if (self.encontradostylesheet == 0):
             # Escribimos el parametro como lo deseamos
@@ -269,7 +269,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         functions.multios().touch(BulmafactConf)
 
         # Creamos el directorio especifico para guardar las imagenes
-        functions.multios().mkdir_p(str("@BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database), 0777)
+        functions.multios().mkdir_p(str(plugins.openreports + "imgarticles_" + self.database), 0777)
 
 
         # Hacemos un backup del archivo
@@ -318,7 +318,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         # Si hay que aplicar un plugin entonces lo escribimos
                         if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
                             self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
-                            self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            if os.name == 'posix':
+                                self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            else:
+                                self.out << self.terminador << self.mui_plugins.item(self.i,10).text().replace(".so",".dll")
                             self.terminador = "; \\\n";
                 self.i = self.i + 1
             self.x = self.x + 1
@@ -385,7 +388,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                             # Si hay que aplicar un plugin entonces lo escribimos
                             if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3):
                                 self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
-                                self.out << self.terminador << self.mui_plugins1.item(self.i,10).text()
+                                if os.name == 'posix':
+                                    self.out << self.terminador << self.mui_plugins1.item(self.i,10).text()
+                                else:
+                                    self.out << self.terminador << self.mui_plugins1.item(self.i,10).text().replace(".so",".dll")
                                 self.terminador = "; \\\n";
                     self.i = self.i + 1
                 self.x = self.x + 1
@@ -405,8 +411,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
             if (self.encontradoarticles == 0):
                     # Escribimos el parametro como lo deseamos
-                self.out << "\n\nCONF_DIR_THUMB_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
-                self.out << "\n\nCONF_DIR_IMG_ARTICLES @BULMAGES_OPTWARE_DIR@/imgarticles_" + self.database +"/\n\n"
+                self.out << "\n\nCONF_DIR_THUMB_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
+                self.out << "\n\nCONF_DIR_IMG_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
 
 
 

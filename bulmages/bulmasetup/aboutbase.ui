@@ -502,7 +502,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/images/iglues.org.svg</normaloff>:/images/iglues.org.svg</iconset>
+    <normaloff>:/images/iglues.org.png</normaloff>:/images/iglues.org.png</iconset>
   </property>
   <layout class="QHBoxLayout">
    <property name="spacing">
@@ -545,7 +545,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="resources.qrc">:/images/iglues.org.svg</pixmap>
+          <pixmap resource="resources.qrc">:/images/iglues.org.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>

@@ -1,4 +1,4 @@
-/***************************************************************************
+/**********************************[20~*****************************************
  *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -45,7 +45,7 @@
 \param emp
 \param parent
 **/
-BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm ( emp, parent )
+BcExtractoView::BcExtractoView ( BcCompany *company, QWidget *parent, int ) : BcForm ( company, parent )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
@@ -54,44 +54,44 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     setTitleName ( _ ( "Extracto de cuentas" ) );
     setDbTableName ( "apunte" );
 
-    mui_list->setMainCompany ( emp );
+    mui_list->setMainCompany ( company );
 
     connect (mui_list, SIGNAL(openAsiento()), this, SLOT(openAsiento()) );
 
     /// Iniciamos los componentes
-    m_codigoinicial->setMainCompany ( emp );
-    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
-    m_codigoinicial->setTableName ( "cuenta" );
-    m_codigoinicial->setFieldId("idcuenta");
-    m_codigoinicial->m_valores["descripcion"] = "";
-    m_codigoinicial->m_valores["codigo"] = "";
+    mui_cuentaInicial->setMainCompany ( company );
+    mui_cuentaInicial->setLabel ( _ ( "Cuenta inicial:" ) );
+    mui_cuentaInicial->setTableName ( "cuenta" );
+    mui_cuentaInicial->setFieldId("idcuenta");
+    mui_cuentaInicial->m_valores["descripcion"] = "";
+    mui_cuentaInicial->m_valores["codigo"] = "";
 
-    m_codigofinal->setMainCompany ( emp );
-    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
-    m_codigofinal->setTableName ( "cuenta" );
-    m_codigofinal->setFieldId("idcuenta");
-    m_codigofinal->m_valores["descripcion"] = "";
-    m_codigofinal->m_valores["codigo"] = "";
+    mui_cuentaFinal->setMainCompany ( company );
+    mui_cuentaFinal->setLabel ( _ ( "Cuenta Final:" ) );
+    mui_cuentaFinal->setTableName ( "cuenta" );
+    mui_cuentaFinal->setFieldId("idcuenta");
+    mui_cuentaFinal->m_valores["descripcion"] = "";
+    mui_cuentaFinal->m_valores["codigo"] = "";
 
-    mui_codigocontrapartida->setMainCompany ( emp );
-    mui_codigocontrapartida->setLabel ( _ ( "Cuenta contrapartida:" ) );
-    mui_codigocontrapartida->setTableName ( "cuenta" );
-    mui_codigocontrapartida->setFieldId("idcuenta");
-    mui_codigocontrapartida->m_valores["descripcion"] = "";
-    mui_codigocontrapartida->m_valores["codigo"] = "";
+    mui_codigoContrapartida->setMainCompany ( company );
+    mui_codigoContrapartida->setLabel ( _ ( "Cuenta contrapartida:" ) );
+    mui_codigoContrapartida->setTableName ( "cuenta" );
+    mui_codigoContrapartida->setFieldId("idcuenta");
+    mui_codigoContrapartida->m_valores["descripcion"] = "";
+    mui_codigoContrapartida->m_valores["codigo"] = "";
 
 
-    m_codigoinicial->hideLabel();
-    m_codigofinal->hideLabel();
-    mui_codigocontrapartida->hideLabel();
+    mui_cuentaInicial->hideLabel();
+    mui_cuentaFinal->hideLabel();
+    mui_codigoContrapartida->hideLabel();
 
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 1, 1, QDate::currentDate().year() );
-    m_fechainicial1->setText ( cadena );
+    mui_fechaInicial->setText ( cadena );
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
-    m_fechafinal1->setText ( cadena );
+    mui_fechaFinal->setText ( cadena );
     m_cursorcta = NULL;
     insertWindow ( windowTitle(), this );
 
@@ -189,8 +189,8 @@ void BcExtractoView::on_mui_actualizar_clicked()
 void BcExtractoView::accept()
 {
     BL_FUNC_DEBUG
-    QString codinicial = m_codigoinicial->fieldValue("codigo");
-    QString codfinal = m_codigofinal->fieldValue("codigo");
+    QString codinicial = mui_cuentaInicial->fieldValue("codigo");
+    QString codfinal = mui_cuentaFinal->fieldValue("codigo");
     QString query;
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
     /// nosotros.
@@ -201,7 +201,7 @@ void BcExtractoView::accept()
         codfinal = "9999999";
     } // end if
     
-    if ( mui_asAbiertos->isChecked() ) {
+    if ( mui_incluirAsientosAbiertos->isChecked() ) {
 	/// Incluye asientos abiertos.
 	query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte UNION SELECT idcuenta FROM borrador) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
     } else {
@@ -302,9 +302,9 @@ void BcExtractoView::botonGuardar()
 
     if ( !fn.isEmpty() ) {
         BcLibroMayorImprimir libromayor ( mainCompany() );
-        QString finicial = m_fechainicial1->text().toAscii().constData();
-        QString ffinal = m_fechafinal1->text().toAscii().constData();
-        libromayor.inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), finicial, ffinal );
+        QString finicial = mui_fechaInicial->text().toAscii().constData();
+        QString ffinal = mui_fechaFinal->text().toAscii().constData();
+        libromayor.inicializa1 ( mui_cuentaInicial->text(), mui_cuentaFinal->text(), finicial, ffinal );
         libromayor.inicializa2 ( ( char * ) fn.toAscii().constData() );
         libromayor.accept();
     } // end if
@@ -321,16 +321,15 @@ void BcExtractoView::botonGuardar()
 void BcExtractoView::vaciar()
 {
     BL_FUNC_DEBUG
-    inicialdebe->setText ( "0" );
-    inicialhaber->setText ( "0" );
-    inicialsaldo->setText ( "0" );
-    totaldebeparcial->setText ( "0" );
-    totalhaberparcial->setText ( "0" );
-    totalsaldoparcial->setText ( "0" );
-    totaldebe->setText ( "0" );
-    totalhaber->setText ( "0" );
-    totalsaldo->setText ( "0" );
-    
+    mui_inicialDebe->setText ( "0" );
+    mui_inicialHaber->setText ( "0" );
+    mui_inicialSaldo->setText ( "0" );
+    mui_totalParcialDebe->setText ( "0" );
+    mui_totalParcialHaber->setText ( "0" );
+    mui_totalParcialSaldo->setText ( "0" );
+    mui_totalDebe->setText ( "0" );
+    mui_totalHaber->setText ( "0" );
+    mui_totalSaldo->setText ( "0" );
 }
 
 
@@ -351,7 +350,7 @@ int BcExtractoView::save()
 {
     BL_FUNC_DEBUG
     if (m_tratarpunteos) {
-	if (! mui_asAbiertos->isChecked() ) 
+	if (! mui_incluirAsientosAbiertos->isChecked() ) 
 	    mui_list->save();
     } // end if
     return 0;
@@ -378,9 +377,9 @@ void BcExtractoView::presentar()
     BlFixed debeparcial ( "0.00" ), haberparcial ( "0.00" ), saldoparcial ( "0.00" );
     BlFixed debefinal ( "0.00" ), haberfinal ( "0.00" ), saldofinal ( "0.00" );
     QString idcuenta;
-    QString finicial = m_fechainicial1->text();
-    QString ffinal = m_fechafinal1->text();
-    QString contra = mui_codigocontrapartida->fieldValue("codigo");
+    QString finicial = mui_fechaInicial->text();
+    QString ffinal = mui_fechaFinal->text();
+    QString contra = mui_codigoContrapartida->fieldValue("codigo");
     QString cad;
     QString cadaux;
     BlDbRecordSet *cursorapt = NULL;
@@ -391,9 +390,9 @@ void BcExtractoView::presentar()
         /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
         QString tipopunteo;
         tipopunteo = "";
-        if ( mui_punteotodos->isChecked() ) {
+        if ( mui_apuntesTodos->isChecked() ) {
             tipopunteo = "";
-        } else if ( mui_punteopunteado->isChecked() ) {
+        } else if ( mui_apuntesPunteados->isChecked() ) {
             tipopunteo = " AND punteo = TRUE ";
         } else {
             tipopunteo = " AND punteo = FALSE ";
@@ -405,8 +404,8 @@ void BcExtractoView::presentar()
 
         idcuenta = m_cursorcta->value( "idcuenta" );
         /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
-        codigocuenta->setText ( m_cursorcta->value( "codigo" ) );
-        nombrecuenta->setText ( m_cursorcta->value( "descripcion" ) );
+        mui_codigoCuenta->setText ( m_cursorcta->value( "codigo" ) );
+        mui_nombreCuenta->setText ( m_cursorcta->value( "descripcion" ) );
         /// Hacemos la consulta de los apuntes a listar en la base de datos.
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
@@ -423,7 +422,7 @@ void BcExtractoView::presentar()
         } // end if
         QString tabla;
         QString cont;
-        if ( mui_asAbiertos->isChecked() ) {
+        if ( mui_incluirAsientosAbiertos->isChecked() ) {
             tabla = "borrador";
             cont = " FALSE AS punteo, *, descripcion AS descripcionapunte ";
         } else {
@@ -435,17 +434,17 @@ void BcExtractoView::presentar()
             tipopunteo += " AND " + tabla + ".contrapartida = id_cuenta('" + contra + "') ";
         } // end if
         bool ok = FALSE;
-        mui_saldosup->text().toFloat ( &ok );
+        mui_saldoSuperiorA->text().toFloat ( &ok );
         if ( ok ) {
-            saldosup = " AND " + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
+            saldosup = " AND " + tabla + ".debe + " + tabla + ".haber >= " + mui_saldoSuperiorA->text();
         } // end if
         ok = FALSE;
-        mui_saldoinf->text().toFloat ( &ok );
+        mui_saldoInferiorA->text().toFloat ( &ok );
         if ( ok ) {
-            saldoinf = " AND " + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
+            saldoinf = " AND " + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoInferiorA->text();
         } // end if
         QString clase = "";
-        if (mui_apcierre->isChecked()) {
+        if (mui_ocultarAperturas->isChecked()) {
           clase = " AND clase < 2 ";
         } // end if
         
@@ -475,9 +474,9 @@ void BcExtractoView::presentar()
             cursoraux = NULL;
 
             /// Establecemos los saldos iniciales
-            inicialdebe->setText ( debeinicial.toQString() );
-            inicialhaber->setText ( haberinicial.toQString() );
-            inicialsaldo->setText ( saldoinicial.toQString() );
+            mui_inicialDebe->setText ( debeinicial.toQString() );
+            mui_inicialHaber->setText ( haberinicial.toQString() );
+            mui_inicialSaldo->setText ( saldoinicial.toQString() );
             saldo = saldoinicial;
             debefinal = debeinicial;
             haberfinal = haberinicial;
@@ -499,12 +498,12 @@ void BcExtractoView::presentar()
             } // end while
 
             saldofinal = debefinal - haberfinal;
-            totaldebe->setText ( debefinal.toQString() );
-            totalhaber->setText ( haberfinal.toQString() );
-            totalsaldo->setText ( saldofinal.toQString() );
-            totaldebeparcial->setText ( debeparcial.toQString() );
-            totalhaberparcial->setText ( haberparcial.toQString() );
-            totalsaldoparcial->setText ( saldoparcial.toQString() );
+            mui_totalDebe->setText ( debefinal.toQString() );
+            mui_totalHaber->setText ( haberfinal.toQString() );
+            mui_totalSaldo->setText ( saldofinal.toQString() );
+            mui_totalParcialDebe->setText ( debeparcial.toQString() );
+            mui_totalParcialHaber->setText ( haberparcial.toQString() );
+            mui_totalParcialSaldo->setText ( saldoparcial.toQString() );
         } // end if
         delete cursorapt;
         cursorapt = NULL;
@@ -532,10 +531,10 @@ void BcExtractoView::presentar()
 void BcExtractoView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int )
 {
     BL_FUNC_DEBUG
-    m_codigoinicial->setText ( codinicial );
-    m_codigofinal->setText ( codfinal );
-    m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
-    m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
+    mui_cuentaInicial->setText ( codinicial );
+    mui_cuentaFinal->setText ( codfinal );
+    mui_fechaInicial->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
+    mui_fechaFinal->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
     
 }
 
@@ -724,16 +723,16 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         QString salida = "";
         BlFixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
         BlFixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
-        QString finicial = m_fechainicial1->text();
-        QString ffinal = m_fechafinal1->text();
-        QString contra = mui_codigocontrapartida->fieldValue("codigo");
+        QString finicial = mui_fechaInicial->text();
+        QString ffinal = mui_fechaFinal->text();
+        QString contra = mui_codigoContrapartida->fieldValue("codigo");
 
         /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
         QString tipopunteo;
         tipopunteo = "";
-        if ( mui_punteotodos->isChecked() ) {
+        if ( mui_apuntesTodos->isChecked() ) {
             tipopunteo = "";
-        } else if ( mui_punteopunteado->isChecked() ) {
+        } else if ( mui_apuntesPunteados->isChecked() ) {
             tipopunteo = " AND punteo = TRUE ";
         } else {
             tipopunteo = " AND punteo = FALSE ";
@@ -768,7 +767,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         } // end if
         QString tabla;
         QString cont;
-        if ( mui_asAbiertos->isChecked() ) {
+        if ( mui_incluirAsientosAbiertos->isChecked() ) {
             tabla = "borrador";
             cont = " FALSE AS punteo, * ";
         } else {
@@ -780,7 +779,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.centrocoste ";
         query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
 
-        if ( !mui_asAbiertos->isChecked() ) {
+        if ( !mui_incluirAsientosAbiertos->isChecked() ) {
             query += " LEFT JOIN (SELECT idapunte AS id, idcuenta AS idcuentacontra, codigo AS codcontrapartida, descripcion AS desccontrapartida FROM contrapart LEFT JOIN cuenta ON contrapart.contra = cuenta.idcuenta) AS t7 ON t7.id = t1.idapunte ";
         }
 
@@ -832,7 +831,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         salida += "<td> Debe </td>";
         salida += "<td> Haber </td>";
         salida += "<td> Saldo </td>";
-        if ( !mui_asAbiertos->isChecked() ) {
+        if ( !mui_incluirAsientosAbiertos->isChecked() ) {
             salida += "<td> Contrapartida </td>";
         } // end if
         salida += "</tr>\n";
@@ -861,7 +860,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
             salida +=  "<td>" + cursorapt->value( "debe" ) + "</td>";
             salida +=  "<td>" + cursorapt->value( "haber" ) + "</td>";
             salida +=  "<td>" + saldofinal.toQString() + "</td>";
-            if ( !mui_asAbiertos->isChecked() ) {
+            if ( !mui_incluirAsientosAbiertos->isChecked() ) {
                 salida +=  "<td>" + cursorapt->value( "codcontrapartida" ) + " - " + cursorapt->value( "desccontrapartida" ) + "</td>";
             } // end if
             salida +=  "</tr>\n";
@@ -903,8 +902,8 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 void BcExtractoView::imprimir()
 {
     BL_FUNC_DEBUG
-    QString finicial = m_fechainicial1->text();
-    QString ffinal = m_fechafinal1->text();
+    QString finicial = mui_fechaInicial->text();
+    QString ffinal = mui_fechaFinal->text();
 
     /// Copiamos el archivo.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "extracto.rml";
@@ -924,8 +923,8 @@ void BcExtractoView::imprimir()
     file.close();
     QString fitxersortidatxt = "";
 
-    QString codinicial = m_codigoinicial->fieldValue("codigo");
-    QString codfinal = m_codigofinal->fieldValue("codigo");
+    QString codinicial = mui_cuentaInicial->fieldValue("codigo");
+    QString codfinal = mui_cuentaFinal->fieldValue("codigo");
 
     QString query;
 

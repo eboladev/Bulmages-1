@@ -20,7 +20,6 @@
 
 #include "bcamortizacionlistview.h"
 #include "bcamortizacionview.h"
-
 #include "bccompany.h"
 
 
@@ -31,8 +30,8 @@
 \param emp
 \param parent
 **/
-BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent )
-        : BlFormList ( emp, parent )
+BcAmortizacionListView::BcAmortizacionListView ( BcCompany *company, QWidget *parent )
+        : BlFormList ( company, parent )
 {
     BL_FUNC_DEBUG
 
@@ -56,8 +55,6 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
    
     /// Lanzamos los posibles scripts
     blScript(this);
-
-    
 }
 
 
@@ -70,7 +67,6 @@ BcAmortizacionListView::~BcAmortizacionListView()
 {
     BL_FUNC_DEBUG
     mainCompany() ->removeWindow ( this );
-    
 }
 
 
@@ -82,10 +78,9 @@ BcAmortizacionListView::~BcAmortizacionListView()
 void BcAmortizacionListView::crear()
 {
     BL_FUNC_DEBUG
-    BcAmortizacionView *amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addSubWindow ( amor );
-    amor->show();
-    
+    BcAmortizacionView *amortizacionView = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addSubWindow ( amortizacionView );
+    amortizacionView->show();
 }
 
 
@@ -97,12 +92,12 @@ void BcAmortizacionListView::remove()
 {
     BL_FUNC_DEBUG
     try {
-        QString codigo = mui_listado->dbValue ( "idamortizacion" );
-        if ( codigo != "" ) {
-            QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
+        QString idAmortizacion = mui_listado->dbValue ( "idamortizacion" );
+        if ( idAmortizacion != "" ) {
+            QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + idAmortizacion;
             mainCompany() ->begin();
             mainCompany() ->runQuery ( query );
-            query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
+            query = "DELETE FROM amortizacion WHERE idamortizacion = " + idAmortizacion;
             mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
             presentar();
@@ -111,7 +106,6 @@ void BcAmortizacionListView::remove()
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al borrar la amortizacion.") );
 	blMsgError(_("Error al borrar la amortizacion."));
     } // end try
-    
 }
 
 
@@ -130,18 +124,17 @@ void BcAmortizacionListView::editar ( int row )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Fila '%1'")).arg(QString::number(row)) );
-    mdb_idamortizacion = mui_listado->dbValue ( "idamortizacion" );
-    mdb_nomamortizacion = mui_listado->dbValue ( "nomamortizacion" );
+    m_idAmortizacion = mui_listado->dbValue ( "idamortizacion" );
+    m_nomAmortizacion = mui_listado->dbValue ( "nomamortizacion" );
     if ( editMode() ) {
         /// Creamos el objeto BcMasaPatrimonialView, y lo lanzamos.
-        BcAmortizacionView * amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
-        amor->load ( mdb_idamortizacion );
-        mainCompany() ->pWorkspace() ->addSubWindow ( amor );
-        amor->show();
+        BcAmortizacionView * amortizacionView = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
+        amortizacionView->load ( m_idAmortizacion );
+        mainCompany()->pWorkspace()->addSubWindow ( amortizacionView );
+        amortizacionView->show();
     } else {
         close();
-        emit ( selected ( mdb_idamortizacion ) );
+        emit ( selected ( m_idAmortizacion ) );
     } // end if
-    
 }
 

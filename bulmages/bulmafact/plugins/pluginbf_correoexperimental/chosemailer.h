@@ -27,6 +27,7 @@
 #include <QUrl>
 #include <QDir>
 #include <QDirIterator>
+#include <QString>
 
 #include "blfunctions.h"
 #include "blconfiguration.h"

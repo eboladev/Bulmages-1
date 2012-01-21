@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>654</width>
     <height>618</height>
    </rect>
   </property>
@@ -78,7 +78,7 @@
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QLineEdit" name="inicialhaber">
+       <widget class="QLineEdit" name="mui_inicialHaber">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -147,7 +147,7 @@
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QLineEdit" name="inicialdebe">
+       <widget class="QLineEdit" name="mui_inicialDebe">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -209,7 +209,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLineEdit" name="codigocuenta">
+       <widget class="QLineEdit" name="mui_codigoCuenta">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -268,7 +268,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="nombrecuenta">
+       <widget class="QLineEdit" name="mui_nombreCuenta">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -327,7 +327,7 @@
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="QLineEdit" name="inicialsaldo">
+       <widget class="QLineEdit" name="mui_inicialSaldo">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -401,7 +401,7 @@
        <number>5</number>
       </property>
       <item row="4" column="4">
-       <widget class="QLineEdit" name="mui_saldoinf">
+       <widget class="QLineEdit" name="mui_saldoInferiorA">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -424,7 +424,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="mui_saldosup">
+       <widget class="QLineEdit" name="mui_saldoSuperiorA">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -447,7 +447,7 @@
        </widget>
       </item>
       <item row="2" column="0" colspan="2">
-       <widget class="QCheckBox" name="mui_asAbiertos">
+       <widget class="QCheckBox" name="mui_incluirAsientosAbiertos">
         <property name="text">
          <string>&amp;Incluir asientos abiertos</string>
         </property>
@@ -464,7 +464,7 @@
        </widget>
       </item>
       <item row="2" column="4">
-       <widget class="BlSearchWidget" name="mui_codigocontrapartida"/>
+       <widget class="BlSearchWidget" name="mui_codigoContrapartida" native="true"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="textLabel1">
@@ -477,7 +477,7 @@
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="BlDateSearch" name="m_fechainicial1">
+       <widget class="BlDateSearch" name="mui_fechaInicial" native="true">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -487,7 +487,7 @@
        </widget>
       </item>
       <item row="0" column="1" colspan="2">
-       <widget class="BlSearchWidget" name="m_codigoinicial">
+       <widget class="BlSearchWidget" name="mui_cuentaInicial" native="true">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -507,7 +507,7 @@
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="BlDateSearch" name="m_fechafinal1">
+       <widget class="BlDateSearch" name="mui_fechaFinal" native="true">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -537,7 +537,7 @@
        </widget>
       </item>
       <item row="0" column="4">
-       <widget class="BlSearchWidget" name="m_codigofinal">
+       <widget class="BlSearchWidget" name="mui_cuentaFinal" native="true">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -597,7 +597,7 @@
           </spacer>
          </item>
          <item row="0" column="1">
-          <widget class="QRadioButton" name="mui_punteonopunteado">
+          <widget class="QRadioButton" name="mui_apuntesNoPunteados">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -610,7 +610,7 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QRadioButton" name="mui_punteopunteado">
+          <widget class="QRadioButton" name="mui_apuntesPunteados">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -623,7 +623,7 @@
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QRadioButton" name="mui_punteotodos">
+          <widget class="QRadioButton" name="mui_apuntesTodos">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -642,7 +642,7 @@
        </widget>
       </item>
       <item row="3" column="0" colspan="2">
-       <widget class="QCheckBox" name="mui_apcierre">
+       <widget class="QCheckBox" name="mui_ocultarAperturas">
         <property name="text">
          <string>Ocultar aperturas y cierres</string>
         </property>
@@ -1070,7 +1070,7 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QLineEdit" name="totaldebeparcial">
+       <widget class="QLineEdit" name="mui_totalPacialDebe">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1147,7 +1147,7 @@
        </widget>
       </item>
       <item row="0" column="4">
-       <widget class="QLineEdit" name="totalhaberparcial">
+       <widget class="QLineEdit" name="mui_totalParcialHaber">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1220,7 +1220,7 @@
        </widget>
       </item>
       <item row="0" column="6">
-       <widget class="QLineEdit" name="totalsaldoparcial">
+       <widget class="QLineEdit" name="mui_totalParcialSaldo">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1310,7 +1310,7 @@
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QLineEdit" name="totaldebe">
+       <widget class="QLineEdit" name="mui_totalDebe">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1387,7 +1387,7 @@
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="QLineEdit" name="totalhaber">
+       <widget class="QLineEdit" name="mui_totalHaber">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1460,7 +1460,7 @@
        </widget>
       </item>
       <item row="1" column="6">
-       <widget class="QLineEdit" name="totalsaldo">
+       <widget class="QLineEdit" name="mui_totalSaldo">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1545,14 +1545,14 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>codigocuenta</tabstop>
-  <tabstop>nombrecuenta</tabstop>
-  <tabstop>inicialhaber</tabstop>
-  <tabstop>inicialdebe</tabstop>
-  <tabstop>inicialsaldo</tabstop>
-  <tabstop>totaldebe</tabstop>
-  <tabstop>totalhaber</tabstop>
-  <tabstop>totalsaldo</tabstop>
+  <tabstop>mui_codigoCuenta</tabstop>
+  <tabstop>mui_nombreCuenta</tabstop>
+  <tabstop>mui_inicialHaber</tabstop>
+  <tabstop>mui_inicialDebe</tabstop>
+  <tabstop>mui_inicialSaldo</tabstop>
+  <tabstop>mui_totalDebe</tabstop>
+  <tabstop>mui_totalHaber</tabstop>
+  <tabstop>mui_totalSaldo</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>
