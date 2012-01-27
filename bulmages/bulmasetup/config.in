@@ -18,6 +18,7 @@ if os.name == 'posix':
     plugins.confopenreports = '@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/'
     plugins.cmakeinstallprefix = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
     plugins.openreports = '@BULMAGES_OPTWARE_DIR@/'
+    plugins.homedir = "@HOME_DIR@"
 else:
     plugins.pathdbbulmafact = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\crear\\bulmafact\\")
     plugins.pathdbbulmacont = os.getcwd().replace("bulmasetup","share\\bulmages\\dbmodels\\crear\\bulmacont\\")
@@ -29,6 +30,7 @@ else:
     plugins.confopenreports = os.getcwd().replace("bulmasetup","share\\bulmages\\openreports\\")
     plugins.cmakeinstallprefix = os.getcwd().replace("bulmasetup","share\\bulmages\\")
     plugins.openreports = os.getcwd().replace("bulmasetup","openreports\\")
+    plugins.homedir = ""
 
 # Variables para la version de desarrollo
 #sys.path.append('/home/talvarez/bulmages/trunk/bulmages/bulmasetup')

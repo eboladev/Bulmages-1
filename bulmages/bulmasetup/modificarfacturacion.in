@@ -46,7 +46,7 @@ class ModificarFacturacion( Facturacion):
         self.proceso.waitForFinished(-1)
         #functions.pg_dump + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.database
 
-        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
+        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup",plugins.homedir)
 
         self.conffact = 'bulmafact_' + self.database + '.conf'
         self.conftpv = 'bulmatpv_' + self.database + '.conf'

@@ -6,6 +6,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from restbackupbase import *
 import functions
+import plugins
 
 class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
     def __init__(self, parent = None):
@@ -43,7 +44,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.accept()
 
     def on_mui_filesearch_released(self):
-        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","@HOME_DIR@","TAR.GZ (*.tar.gz)")
+        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup", plugins.homedir,"TAR.GZ (*.tar.gz)")
         self.mui_filename.setText(self.openfile)
 
         self.arra = self.openfile.split('/')
