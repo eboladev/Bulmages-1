@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -34,7 +36,7 @@
 #include "bldockwidget.h"
 
 
-BlDockWidget *doc1;
+BlDockWidget *dockWidget;
 QAction *viewCorrector;
 
 
@@ -50,22 +52,22 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_corrector", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    BcCompany *emp = bcont->company();
+    BcCompany *company = bcont->company();
     /// Vamos a probar con un docwindow.
-    doc1 = new BlDockWidget ( _ ( "Corrector" ), bcont );
-    doc1->setObjectName("mui_corrector");
-    doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+    dockWidget = new BlDockWidget ( _ ( "Corrector" ), bcont );
+    dockWidget->setObjectName("mui_corrector");
+    dockWidget->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    doc1->setGeometry ( 100, 100, 100, 500 );
-    doc1->resize ( 330, 400 );
-    bcont->addDockWidget ( Qt::RightDockWidgetArea, doc1 );
-    doc1->show();
+    dockWidget->setGeometry ( 100, 100, 100, 500 );
+    dockWidget->resize ( 330, 400 );
+    bcont->addDockWidget ( Qt::RightDockWidgetArea, dockWidget );
+    dockWidget->show();
 
-    correctorwidget *corr = new correctorwidget ( doc1 );
-    corr->setCompany  ( emp );
-    corr->dock = doc1;
+    CorrectorWidget *corrector = new CorrectorWidget ( dockWidget );
+    corrector->setCompany  ( company );
+    corrector->m_dockWidget = dockWidget;
 
-    doc1->setWidget ( corr );
+    dockWidget->setWidget ( corrector );
     
     QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
 
@@ -77,8 +79,8 @@ int entryPoint ( BcBulmaCont *bcont )
     viewCorrector->setStatusTip ( _ ( "Muestra/oculta el corrector" ) );
     viewCorrector->setWhatsThis ( _ ( "Corrector.\n\nMuestra/oculta el corrector" ) );
 
-    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
-    QObject::connect ( doc1, SIGNAL ( visibilityStateChanged ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
+    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corrector, SLOT ( cambia ( bool ) ) );
+    QObject::connect ( dockWidget, SIGNAL ( visibilityStateChanged ( bool ) ), corrector, SLOT ( cambia ( bool ) ) );
 
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );
@@ -86,14 +88,14 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Mientras no haya icono para el corrector lo mantengo quitado.
 //    bcont->toolBar->addAction ( viewCorrector );
 
-    corr->m_viewCorrector = viewCorrector;
+    corrector->m_viewCorrector = viewCorrector;
 
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + company->dbName() + ".cfn" );
     if ( file.exists () ) {
-        doc1->show();
+        dockWidget->show();
         viewCorrector->setChecked ( TRUE );
     } else {
-        doc1->hide();
+        dockWidget->hide();
         viewCorrector->setChecked ( FALSE );
     } // end if
 
@@ -107,8 +109,8 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )
 {
-    BcCompany * emp = bcont->company();
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
+    BcCompany *company = bcont->company();
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + company->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {
