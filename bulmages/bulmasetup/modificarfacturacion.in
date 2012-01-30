@@ -80,7 +80,7 @@ class ModificarFacturacion( Facturacion):
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible
         self.tabWidget.setCurrentIndex(3)
-
+        self.mui_textBrowser.clear()
         if (self.mui_actualizarDB.checkState() == Qt.Checked ):
             self.actualizarDatabase()
 
@@ -91,9 +91,11 @@ class ModificarFacturacion( Facturacion):
             self.process.start(self.command)
             self.process.waitForFinished(-1)
 
-        self.mui_textBrowser.clear()
+
         self.actualizarPlugins()
         self.writeConfig()
+        # Escribimos el mensaje de finalizacion de la actualizacion para que queda constancia de ello.
+        self.writecommand(" === Finalizado === ")
 
     def on_mui_permisos_released(self):
         win = ModificarUsuario()

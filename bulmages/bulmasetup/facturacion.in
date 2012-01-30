@@ -891,6 +891,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.i = self.i + 1
 
     def actualizarDatabase(self):
+        self.writecommand(QtGui.QApplication.translate("Facturacion",'ACTUALIZANDO BASE DE DATOS', None, QtGui.QApplication.UnicodeUTF8))
+        # Desactivamos el mostrado de errores ya que si el parche no es el adecuado entonces produce errores que no son tales
+        self.mostrarErrores = "FALSE"
         # Aplicamos el parche de bulmatpv
         if (self.mui_soporteTPV.isChecked()):
             self.command = functions.as_postgres + 'psql -1 ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"' + functions.end_sql
@@ -907,6 +910,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.process.start(self.command)
             self.process.waitForFinished(-1)
             self.writecommand(self.process.readAllStandardOutput())
+        # Reactivamos el mostrado de errores
+        self.mostrarErrores = "TRUE"
 
 
     def on_mui_categoria_currentIndexChanged(self, index):
