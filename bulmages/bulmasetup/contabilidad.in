@@ -498,7 +498,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                         # Si hay que aplicar un plugin entonces lo escribimos
                         if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
                             self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
-                            self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            if os.name == 'posix':
+                                self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            else:
+                                self.out << self.terminador << self.mui_plugins.item(self.i,10).text().replace(".so",".dll")
                             self.terminador = "; \\\n";
                 self.i = self.i + 1
             self.x = self.x + 1
