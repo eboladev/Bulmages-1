@@ -22,7 +22,6 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
 
         self.connect(self.CheckBox_password, SIGNAL("stateChanged(int)"), self.activaTexto)
         self.connect(self.listWidget, SIGNAL("itemSelectionChanged()"), self.activaGuardar)
-        self.psql = functions.multios().search_executable('psql')
 
     def initListaUsuarios(self):
         self.listWidget.clear()
@@ -60,15 +59,18 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
                 if self.username.contains("  (su)"):
                     self.username.remove("  (su)")
                 break
-
+                
         if (self.CheckBox_password.isChecked()):
             self.password = self.lineEdit.text()
-            self.execCommand(self.psql + "template1 -c \"ALTER ROLE " + str(self.username) + " WITH PASSWORD '" + str(self.password) + "'\"")
-
+            if os.name == 'posix':
+                self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH PASSWORD '" + str(self.password) + "'\"" + " template1")
+            else:
+                self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH PASSWORD \"" + str(self.password) + "\"\"" + " template1")
+            
         if (self.Radial_su.isChecked()):
-            self.execCommand(self.psql + "template1 -c \"ALTER ROLE " + str(self.username) + " WITH superuser\"")
+            self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH superuser\""  + " template1")
         else:
-            self.execCommand(self.psql + "template1 -c \"ALTER ROLE " + str(self.username) + " WITH nosuperuser\"")
+            self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH nosuperuser\"" + " template1")
 
         self.initListaUsuarios()
 
