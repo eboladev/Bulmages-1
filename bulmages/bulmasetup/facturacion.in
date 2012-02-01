@@ -257,7 +257,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
 
     def writeConfig(self):
-        self.writecommand(QtGui.QApplication.translate("Facturacion",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))
+        self.writecommand(QtGui.QApplication.translate("Facturacion",' === ESCRIBIENDO CONFIGURACION ===', None, QtGui.QApplication.UnicodeUTF8))
         self.writecommand(QtGui.QApplication.translate("Facturacion","Escribiendo configuracion en ", None, QtGui.QApplication.UnicodeUTF8)+ plugins.configfiles + "bulmafact_" + self.database + ".conf " )
 
 
@@ -848,32 +848,33 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         if (libreria == ''):
             return ''
 
+        # Hacemos una busqueda grep de la libreria en el archivo de configuracion.
+        # Esta busqueda no es precisa ya que el archivo podria estar comentado, pero es lo mejor que hay por el momento.
         self.process1 = QtCore.QProcess()
         self.mfile = QFile(plugins.configfiles + 'bulmafact_' + self.database + '.conf')
         if (self.mfile.exists()):
-            if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmafact_' + self.database + '.conf')) == None:
-                self.version = ''
-            #~ self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmafact_' + self.database + '.conf'
-            #~ self.writecommand(self.command)
-            #~ self.process1.start(self.command)
-            #~ self.process1.waitForFinished(-1)
-            #~ self.version = self.process1.readAllStandardOutput()
+            if os.name == 'posix':
+                if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmafact_' + self.database + '.conf')) != None:
+                    self.version = 'Sin Determinar'
+            else:
+                if functions.multios().grep(libreria.replace(".so",".dll"),str(plugins.configfiles + 'bulmafact_' + self.database + '.conf')) != None:
+                    self.version = 'Sin Determinar'
 
 
-
+        # Hacemos una busqueda grep de la libreria en el archivo de configuracion.
+        # Esta busqueda no es precisa ya que el archivo podria estar comentado, pero es lo mejor que hay por el momento.
         if (self.version == ''):
             self.mfile = QFile(plugins.configfiles + 'bulmatpv_' + self.database + '.conf')
             if (self.mfile.exists()):
-                if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmatpv_' + self.database + '.conf')) == None:
-                    self.version = ''
-                #~ self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmatpv_' + self.database + '.conf'
-                #~ self.writecommand(self.command)
-                #~ self.process1.start(self.command)
-                #~ self.process1.waitForFinished(-1)
-                #~ self.version = self.process1.readAllStandardOutput()
+                if os.name == 'posix':
+                    if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmatpv_' + self.database + '.conf')) != None:
+                        self.version = 'Sin Determinar'
+                else:
+                    if functions.multios().grep(libreria.replace(".so",".dll"),str(plugins.configfiles + 'bulmatpv_' + self.database + '.conf')) != None:
+                        self.version = 'Sin Determinar'
 
         if (self.version != ''):
-            self.version = '0.12'
+            self.version = 'Sin Determinar'
         return QString(self.version)
 
     def buscaPlugins1(self):
@@ -891,9 +892,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.i = self.i + 1
 
     def actualizarDatabase(self):
+        self.writecommand(QtGui.QApplication.translate("Facturacion",'ACTUALIZANDO BASE DE DATOS', None, QtGui.QApplication.UnicodeUTF8))
+        # Desactivamos el mostrado de errores ya que si el parche no es el adecuado entonces produce errores que no son tales
+        self.mostrarErrores = "FALSE"
         # Aplicamos el parche de bulmatpv
         if (self.mui_soporteTPV.isChecked()):
-            self.command = functions.as_postgres + 'psql -1 ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"' + functions.end_sql
+            #self.command = functions.as_postgres + 'psql -1 ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"' + functions.end_sql
+            self.command = functions.psql + ' -t -f ' + plugins.pathdbbulmatpv+'bulmatpv_schema.sql ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -907,6 +912,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.process.start(self.command)
             self.process.waitForFinished(-1)
             self.writecommand(self.process.readAllStandardOutput())
+        # Reactivamos el mostrado de errores
+        self.mostrarErrores = "TRUE"
 
 
     def on_mui_categoria_currentIndexChanged(self, index):

@@ -8,6 +8,7 @@ from guardarbackupbase import *
 from empresa import Empresa
 from config import *
 import functions
+import plugins
 # Libreria de acceso a bases de datos PostgreSQL
 import psycopg2
 
@@ -55,7 +56,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
                 break
             i = i + 1
 
-        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"@HOME_DIR@")
+        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),plugins.homedir)
         destination=str(self.directorio + '/' + self.database + '.tar.gz')
         self.command = functions.pg_dump + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.database
         self.proceso.start(self.command)

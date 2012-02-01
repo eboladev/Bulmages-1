@@ -39,7 +39,7 @@ class ModificarContabilidad(Contabilidad):
         self.writecommand(self.process.readAllStandardOutput())
 
 
-        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","@HOME_DIR@")
+        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup",plugins.homedir)
         self.confcont = 'bulmacont_' + self.database + '.conf'
 
         if os.path.exists('@BULMAGES_CONFIG_DIR@/' + self.confcont):
@@ -59,14 +59,18 @@ class ModificarContabilidad(Contabilidad):
 
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
 
+        self.mui_textBrowser.clear()
         if (self.mui_actualizarDB.checkState() == Qt.Checked ):
             self.actualizarDatabase()
-        self.mui_textBrowser.clear()
+		
         self.actualizarPlugins()
         self.writeConfig()
-
+        # Escribimos el mensaje de finalizacion de la actualizacion para que queda constancia de ello.
+        self.writecommand(" === Finalizado === ")
+		
+		
     def on_mui_permisos_released(self):
         win = ModificarUsuario()
         win.exec_()
