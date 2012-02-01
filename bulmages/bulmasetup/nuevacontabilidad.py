@@ -46,32 +46,32 @@ class NuevaContabilidad(Contabilidad):
             return
 
         # Creamos la base de datos
-        self.command = functions.as_postgres + 'createdb -E UNICODE ' + self.nomdb + functions.end_sql
+        self.command = functions.createdb + self.nomdb + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = functions.psql + ' -1 ' + self.nomdb + ' < '+ plugins.pathdbbulmacont +'bulmacont_schema.sql' + functions.end_sql
+        self.command = functions.psql + ' -1 ' + ' -f '+ plugins.pathdbbulmacont +'bulmacont_schema.sql ' + self.nomdb + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos los datos minimos
-        self.command = functions.psql + ' ' + self.nomdb + ' < ' + plugins.pathdbbulmacont + 't_configuracion_data.sql' + functions.end_sql
+        self.command = functions.psql + ' -1 ' + ' -f '+ plugins.pathdbbulmacont +'t_configuracion_data.sql ' + self.nomdb + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cambiamos el nombre de la empresa
         self.nomempresa = self.mui_nomempresa.text()
-        self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
-        self.command = functions.psql2 + ' ' + self.nomdb + ' -c \"' +self.subcomand+ '\"' + functions.end_sql2
+        if os.name == 'posix':
+            self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
+        else:
+            self.subcomand = 'UPDATE configuracion set valor=\'' +self.nomempresa +'\' WHERE nombre = \'NombreEmpresa\';'
+        self.command = functions.psql2 + ' -c \"' +self.subcomand+ '\"' + ' ' + self.nomdb + functions.end_sql2
         self.writecommand(self.command)
         os.system(self.command.toAscii().data())
-        #~ self.process.start(self.command)
-        #~ self.process.waitForFinished(-1)
-
 
         self.actualizarPlugins()
         self.writeConfig()
