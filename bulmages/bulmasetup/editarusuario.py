@@ -68,9 +68,15 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
                 self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH PASSWORD \"" + str(self.password) + "\"\"" + " template1")
             
         if (self.Radial_su.isChecked()):
-            self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH superuser\""  + " template1")
+	    if os.name == 'posix':
+		self.execCommand(functions.psql + " -c 'ALTER ROLE " + str(self.username) + " WITH superuser'"  + " template1" + functions.end_sql)
+	    else:
+		self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH superuser\""  + " template1")
         else:
-            self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH nosuperuser\"" + " template1")
+	    if os.name == 'posix':
+		self.execCommand(functions.psql + " -c 'ALTER ROLE " + str(self.username) + " WITH nosuperuser'" + " template1")
+	    else:
+		self.execCommand(functions.psql + " -c \"ALTER ROLE " + str(self.username) + " WITH nosuperuser\"" + " template1")
 
         self.initListaUsuarios()
 
