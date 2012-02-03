@@ -50,7 +50,7 @@ public:
     virtual QString fieldValue();
 
 public slots:
-    void m_activated ( int index );
+    void activatedItem ( int index );
 
 signals:
     void valueChanged ( QString );
