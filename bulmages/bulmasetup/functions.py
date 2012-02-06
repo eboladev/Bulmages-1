@@ -109,6 +109,7 @@ if os.name == 'posix':
     psql2 = as_postgres2 + multios().search_executable("psql")
     pg_dump = multios().search_executable("pg_dump")
     createdb = as_postgres + "createdb" + ' -E UNICODE '
+    createuser = as_postgres + "createuser"
 else:
     as_postgres = ''
     as_postgres2 = as_postgres
@@ -118,6 +119,7 @@ else:
     psql2 = os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe") 
     pg_dump = os.getcwd().replace("bulmasetup","pgsql\\bin\\pg_dump.exe") 
     createdb = os.getcwd().replace("bulmasetup","pgsql\\bin\\createdb.exe") + " "
+    createuser = os.getcwd().replace("bulmasetup","pgsql\\bin\\createuser.exe") + " "
     
 
 
