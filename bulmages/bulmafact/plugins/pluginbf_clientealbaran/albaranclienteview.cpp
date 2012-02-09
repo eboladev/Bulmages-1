@@ -219,7 +219,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->run ( "SNewPedidoClienteView", ( BfCompany * ) mainCompany() );
                 if ( !resur ) {
-                    blMsgInfo ( "no se pudo crear instancia de factura" );
+                    blMsgInfo (_( "no se pudo crear instancia de pedido cliente" ));
                     return;
                 } // end if
                 bud = ( PedidoClienteView * ) g_plugParams;
