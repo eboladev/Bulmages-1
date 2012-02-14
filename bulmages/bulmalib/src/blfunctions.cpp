@@ -1501,9 +1501,12 @@ bool blRemoveDirectory( const QString &direcorytoremove )
     bool res = true;
     QString removeDirectory = QUrl ( direcorytoremove, QUrl::TolerantMode ).toString();
     QDir dir ( removeDirectory );
+
+    /// The directory does not exists or it's a file
     if ( !dir.exists() )
         return true;
 
+    /// Remove each file in the folder, and for the folders it calls this function again
     foreach ( QFileInfo fi,
               dir.entryInfoList ( QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot, QDir::DirsFirst ) ) {
         if ( fi.isDir() )
@@ -1513,7 +1516,9 @@ bool blRemoveDirectory( const QString &direcorytoremove )
 
         if ( !res )
             return false;
-    }
+    } // end foreach
+
+    /// When the directory is empty, we can delete it
     res = dir.rmdir ( removeDirectory );
 
     return res;
