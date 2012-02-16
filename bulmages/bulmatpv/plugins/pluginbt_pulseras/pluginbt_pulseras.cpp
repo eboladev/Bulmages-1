@@ -220,19 +220,23 @@ int BtTicket_pintar(BtTicket *tick) {
 }
 
 
-int BtTicket_borrarArticulo(BtTicket *tick) {
+int BtTicket_borrarLinea(BtTicket *tick) {
     BL_FUNC_DEBUG
     /// Facturamos todas las pulseras del ticket
-    for ( int i = 0; i < g_pulseras.size(); ++i ) {
-	Pulsera * pul = g_pulseras.at(i);
-	if (pul->m_lineaticket == tick->lineaActBtTicket()) {
-	   delete pul;
-	} // end if
+    int j= 0;
+    while (j < g_pulseras.size()) {
+	Pulsera * pul = g_pulseras.at(j);
 	if (pul->m_lineaticketfraccion == tick->lineaActBtTicket()) {
 	   pul->m_lineaticketfraccion = NULL;
 	   pul->m_sinfracciones = TRUE;
 	} // end if
-    } // end for  
+	if (pul->m_lineaticket == tick->lineaActBtTicket()) {
+	   g_pulseras.removeAt(j);
+	   delete pul;
+	} else {
+	   j ++;
+	} // end if
+    } // end while  
     return 0;
 }
 
@@ -315,15 +319,25 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 
     } // end while
 
+
     /// Borramos todas las pulseras del sistema que no se han sincronizado porque significa que las han borrado en otro lado.
-    for (int i = 0; i < g_pulseras.size(); ++i) {
-	Pulsera * pul = g_pulseras.at(i);
+
+    int j=0;
+    while (j < g_pulseras.size()) {
+	Pulsera * pul = g_pulseras.at(j);
 	if (pul->m_ticketpulsera == tick) {
 	  if (!pulserasusadas.contains(pul)) {
+	      g_pulseras.removeAt(j);
 	      delete pul;
+	  } else  {
+	      j++;
 	  } // end if
+	} else {
+	  j++;
 	} // end if
-    } // end for
+	
+    } // end while
+
     return 0;
 } 
 
