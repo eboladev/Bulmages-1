@@ -190,7 +190,13 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + dbValue ( "refalbaranp" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
-        PedidoProveedorView * pedpro = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+	/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+	int resur = g_plugins->run ( "SNewPedidoProveedorView", ( BfCompany * ) mainCompany() );
+	if ( !resur ) {
+	      blMsgInfo (_( "no se pudo crear instancia de pedido proveedor" ));
+	      return;
+	} // end if
+	PedidoProveedorView * pedpro = ( PedidoProveedorView * ) g_plugParams;
         pedpro->load ( cur->value( "idpedidoproveedor" ) );
         mainCompany() ->m_pWorkspace->addSubWindow ( pedpro );
         pedpro->show();

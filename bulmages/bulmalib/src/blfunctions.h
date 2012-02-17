@@ -166,4 +166,7 @@ bool BL_EXPORT blMoveFile(const QString &oldName, const QString &newName);
 ///Delets a file
 bool BL_EXPORT blRemove(const QString &filetoremove);
 
+///Delets a directory and all its contents
+bool BL_EXPORT blRemoveDirectory(const QString &directorytoremove);
+
 #endif

@@ -74,6 +74,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             self.j = self.j + 1
 
     def actualizarDatabase(self):
+        self.writecommand(QtGui.QApplication.translate("Contabilidad",'ACTUALIZANDO BASE DE DATOS', None, QtGui.QApplication.UnicodeUTF8))
+        # Desactivamos el mostrado de errores ya que si el parche no es el adecuado entonces produce errores que no son tales
+        self.mostrarErrores = "FALSE"
         self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql"]
         os.chdir(gettempdir())
         #Parcheamos todo lo que hay que parchear
@@ -83,8 +86,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             self.process.start(self.command)
             self.process.waitForFinished(-1)
             self.writecommand(self.process.readAllStandardOutput())
-            self.actualizarPlugins()
-
+            #self.actualizarPlugins()
+        # Reactivamos el mostrado de errores
+        self.mostrarErrores = "TRUE"
 
     def buscaPlugins1(self):
         self.plugins = self.execQuery('SELECT nombre, valor FROM configuracion WHERE nombre LIKE \'DBRev-%\'')
@@ -102,21 +106,34 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             self.i = self.i + 1
 
     def buscaPluginInstalado(self, plugin, libreria):
-        self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
-        if (len(self.version) > 2):
+    
+        # Si la base de datos no existe no hace falta comprobar nada.
+        if (self.database == None):
+            return ''
+            
+        # self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
+        self.version = self.executeone('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'')
+        if (self.version <> None):
             return self.version
-
+            
+        self.version = ''
         if (libreria == ''):
             return ''
 
+        # Hacemos una busqueda grep de la libreria en el archivo de configuracion.
+        # Esta busqueda no es precisa ya que el archivo podria estar comentado, pero es lo mejor que hay por el momento.
         self.process1 = QtCore.QProcess()
         self.mfile = QFile(plugins.configfiles + 'bulmacont_' + self.database + '.conf')
         if (self.mfile.exists()):
-            if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmacont_' + self.database + '.conf')) == None:
-                self.version = ''
-
+            if os.name == 'posix':
+                if functions.multios().grep(libreria,str(plugins.configfiles + 'bulmacont_' + self.database + '.conf')) != None:
+                    self.version = 'Sin Determinar'
+            else:
+                if functions.multios().grep(libreria.replace(".so",".dll"),str(plugins.configfiles + 'bulmacont_' + self.database + '.conf')) != None:
+                    self.version = 'Sin Determinar'
+                    
         if (self.version != ''):
-            self.version = '0.12'
+            self.version = 'Sin Determinar'
         return QString(self.version)
 
 
@@ -182,9 +199,13 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             while (self.i < self.mui_plugins.rowCount()):
                 # Si el plugin tiene el orden adecuado lo consideramos.
                 if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):
-                    self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
+                    self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
                     if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-                        self.writecommand('Ha que actualizar ' + self.mui_plugins.item(self.i,0).text())
+                        self.writecommand(QtGui.QApplication.translate("Contabilidad",'Actualizando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
+                        self.writecommand('============ \n ' )
+                        # Si hay parche de actualizacion lo aplicamos
+                        # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
+                        # lugar de comprobar la longitud del archivo.
                         # Comprueba que el archivo existe.
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() > 3):
                             self.command = functions.psql + ' -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + functions.end_sql
@@ -217,7 +238,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                     self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
                     if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
                         # Si no esta chequeado hacemos un borrado del plugin
-                        if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size > 3 ):
+                        if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size() > 3 ):
                             # Aplicamos el parche  de borrado.
                             self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database + functions.end_sql
                             self.writecommand(self.command)
@@ -477,7 +498,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                         # Si hay que aplicar un plugin entonces lo escribimos
                         if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
                             self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
-                            self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            if os.name == 'posix':
+                                self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            else:
+                                self.out << self.terminador << self.mui_plugins.item(self.i,10).text().replace(".so",".dll")
                             self.terminador = "; \\\n";
                 self.i = self.i + 1
             self.x = self.x + 1

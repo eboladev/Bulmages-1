@@ -20,6 +20,9 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
 
         # Establecemos cual va a ser la base de datos con la que trabajaremos todo el rato
         self.process = QtCore.QProcess()
+        
+        #Establecemos un parametro que permite mostrar o no mostrar errores. En la actualizacon hay errores que son normales y no se deberian mostrar, por eso este parametro
+        self.mostrarErrores = "TRUE"
 
         """Hacemos una conexion de prueba para comprobar si esta creado el usuario ROOT en PostgreSQL
         Ya que es necesario para poder administrar los permisos de las Bases de Datos.
@@ -150,7 +153,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         self.mui_textBrowser.append("<font size=\"-2\">" + QString(self.process.readAllStandardOutput()) + "</font>")
 
     def readErrors(self):
-        self.mui_textBrowser.append("<font color =\"#FF0000\">error: " + QString(self.process.readAllStandardError()) + "</font>")
+        if (self.mostrarErrores == "TRUE"):
+	    self.mui_textBrowser.append("<font color =\"#FF0000\">error: " + QString(self.process.readAllStandardError()) + "</font>")
 
     def finished(self, code, st):
         self.mui_textBrowser.append("<font color =\"#00FF00\">Done.</font><BR>")

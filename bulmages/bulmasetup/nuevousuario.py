@@ -16,18 +16,25 @@ class NuevoUsuario(Ui_NuevoUsuario, Empresa):
         Empresa.__init__(self,parent)
         self.setupUi(self)
         self.proceso = QtCore.QProcess()
-        self.psql = functions.multios().search_executable('psql')
 
     def on_mui_botonera_accepted(self):
         # Creamos el usuario
 
         if (self.mui_superusuario.isChecked()):
-            self.execComando(functions.as_postgres + "createuser -s -d -r  \'" + self.mui_nombre.text() + "\'" + functions.end_sql)
+            if os.name == 'posix':
+                self.execComando(functions.createuser + " -s -d -r  \'" + self.mui_nombre.text() + "\'" + functions.end_sql)
+            else:
+                self.execComando(functions.createuser + " -s -d -r  " + self.mui_nombre.text() + functions.end_sql)
+            
         else:
-            self.execComando(functions.as_postgres + "createuser -S -d -r  \'" + self.mui_nombre.text() + "\'" + functions.end_sql)
+            if os.name == 'posix':
+                self.execComando(functions.createuser + " -S -d -r  \'" + self.mui_nombre.text() + "\'" + functions.end_sql)
+            else:
+                self.execComando(functions.createuser + " -S -d -r  " + self.mui_nombre.text() + functions.end_sql)
 
+            
         # Cambiamos el password del usuario
-        self.execComando(self.psql + " template1 -c \"ALTER ROLE " + self.mui_nombre.text() + " WITH PASSWORD '" + self.mui_password.text() + "'\"")
+        self.execComando(functions.psql + " template1 -c \"ALTER ROLE " + str(self.mui_nombre.text()) + " WITH PASSWORD '" + str(self.mui_password.text()) + "'\"")
 
         # Y como ya hemos acabado, cerramos la aplicacion.
         self.accept()

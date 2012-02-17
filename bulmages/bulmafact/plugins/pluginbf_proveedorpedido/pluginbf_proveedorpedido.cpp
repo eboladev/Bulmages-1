@@ -144,3 +144,11 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     return 0;
 } // end if
 
+/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
+/// Sino que se llama desde multiples partes del sistema.
+int SNewPedidoProveedorView ( BfCompany *v )
+{
+    PedidoProveedorView *h = new PedidoProveedorView ( v, 0 );
+    g_plugParams = h;
+    return 1;
+}

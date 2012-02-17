@@ -26,7 +26,7 @@
 
 /** Inicializa todos los componentes a NULL para que no haya confusiones sobre
     si un elemento ha sido inicializado o no.
-    Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
+    Hace la conexion del SIGNAL activated con activatedItem para tratar el evento.
 */
 /**
 \param parent
@@ -36,7 +36,7 @@ BfBuscarBanco::BfBuscarBanco ( QWidget *parent )
 {
     BL_FUNC_DEBUG
     m_cursorcombo = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
     
 }
 
@@ -133,7 +133,7 @@ QString BfBuscarBanco::fieldValue()
 /**
 \param index
 **/
-void BfBuscarBanco::m_activated ( int index )
+void BfBuscarBanco::activatedItem ( int index )
 {
     BL_FUNC_DEBUG
     if ( index > 0 ) {

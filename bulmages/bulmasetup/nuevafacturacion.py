@@ -51,7 +51,7 @@ class NuevaFacturacion(Facturacion):
         self.process.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = functions.psql + ' -1 ' + ' -f '+ plugins.pathdbbulmafact +'bulmafact_schema.sql ' + self.database + functions.end_sql
+        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmafact +'bulmafact_schema.sql ' + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
@@ -64,7 +64,7 @@ class NuevaFacturacion(Facturacion):
 
         # Aplicamos el parche de bulmatpv si es necesario
         if (self.mui_soporteTPV.isChecked()):
-            self.command = functions.psql + ' -1 ' + ' -f ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql ' + self.database + functions.end_sql
+            self.command = functions.psql + ' ' + ' -f ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)

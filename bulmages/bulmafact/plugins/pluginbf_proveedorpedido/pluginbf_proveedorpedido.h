@@ -29,6 +29,7 @@
 #include "pdefs_pluginbf_proveedorpedido.h"
 #include "blaction.h"
 
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int SNewPedidoProveedorView (BfCompany *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
