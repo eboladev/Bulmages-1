@@ -110,7 +110,6 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
     BL_FUNC_DEBUG
-
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
         return;
@@ -120,7 +119,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     if ( linea->fieldName() == "nomtarifa" ) {
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
         QString value = comboBox->currentText();
-        QString idvalue = comboBox->idtarifa();
+        QString idvalue = comboBox->id();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idtarifa", idvalue );
     } else if ( linea->fieldName() == "nomalmacen" ) {
@@ -158,7 +157,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     if ( linea->fieldName() == "nomtarifa" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
-        comboBox->setIdTarifa ( m_subform->lineaat ( index.row() ) ->dbValue ( "idtarifa" ) );
+        comboBox->setId ( m_subform->lineaat ( index.row() ) ->dbValue ( "idtarifa" ) );
     } else if ( linea->fieldName() == "nomalmacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BfBuscarAlmacen *comboBox = static_cast<BfBuscarAlmacen*> ( editor );
