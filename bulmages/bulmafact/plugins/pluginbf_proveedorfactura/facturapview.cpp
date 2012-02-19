@@ -189,7 +189,13 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + dbValue ( "reffacturap" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * albpro = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+	/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+	int resur = g_plugins->run ( "SNewAlbaranProveedorView", ( BfCompany * ) mainCompany() );
+	if ( !resur ) {
+	    blMsgInfo (_( "no se pudo crear instancia de albaran proveedor" ));
+	    return;
+	} // end if
+	AlbaranProveedorView * albpro = ( AlbaranProveedorView * ) g_plugParams;
         albpro->load ( cur->value( "idalbaranp" ) );
         mainCompany() ->m_pWorkspace->addSubWindow ( albpro );
         albpro->show();

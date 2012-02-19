@@ -1492,13 +1492,45 @@ bool blRemove(const QString &filetoremove )
     
 }
 
+
+/// Funci&oacute;n para borrar un directorio y todo su contenido
+bool blRemoveDirectory( const QString &direcorytoremove )
+{
+    BL_FUNC_DEBUG
+
+    bool res = true;
+    QString removeDirectory = QUrl ( direcorytoremove, QUrl::TolerantMode ).toString();
+    QDir dir ( removeDirectory );
+
+    /// The directory does not exists or it's a file
+    if ( !dir.exists() )
+        return true;
+
+    /// Remove each file in the folder, and for the folders it calls this function again
+    foreach ( QFileInfo fi,
+              dir.entryInfoList ( QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot, QDir::DirsFirst ) ) {
+        if ( fi.isDir() )
+            res = blRemoveDirectory ( fi.absoluteFilePath () );
+        else
+            res = blRemove ( fi.absoluteFilePath() );
+
+        if ( !res )
+            return false;
+    } // end foreach
+
+    /// When the directory is empty, we can delete it
+    res = dir.rmdir ( removeDirectory );
+
+    return res;
+}
+
+
 bool blMoveFile( const QString &oldName, const QString &newName )
 {
     ///Funcion para mover archivos, pudiendo mover entre particiones y con direcciones tolerantes multiplataforma.
     BL_FUNC_DEBUG
     QDir rootDir;
-    
-    
+
     // Transforma las direcciones en tolerantes, para  que funcione en totas las plataformas.
     QString oldFile = QUrl(oldName, QUrl::TolerantMode).toString();
     QString newFile = QUrl(newName, QUrl::TolerantMode).toString();

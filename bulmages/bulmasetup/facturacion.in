@@ -897,7 +897,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mostrarErrores = "FALSE"
         # Aplicamos el parche de bulmatpv
         if (self.mui_soporteTPV.isChecked()):
-            #self.command = functions.as_postgres + 'psql -1 ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"' + functions.end_sql
+            #self.command = functions.as_postgres + 'psql ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"' + functions.end_sql
             self.command = functions.psql + ' -t -f ' + plugins.pathdbbulmatpv+'bulmatpv_schema.sql ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)

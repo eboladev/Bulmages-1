@@ -266,7 +266,7 @@ BEGIN
     IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
 	SELECT INTO rs crearef() AS m;
 	IF FOUND THEN
-	    NEW.refpedidoproveedor := asd.m;
+	    NEW.refpedidoproveedor := rs.m;
 	END IF;
     END IF;
 

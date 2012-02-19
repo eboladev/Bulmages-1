@@ -27,8 +27,8 @@
 #include "blfunctions.h"
 
 
-QString g_minAlias = ( QString ) "";
-QString g_maxAlias = ( QString ) "";
+QString g_minAlias =  "";
+QString g_maxAlias =  "";
 
 QTime g_ultimRefrescAlias;
 int g_maxLenAlias = 0;
@@ -40,9 +40,7 @@ int g_minLenAlias = 0;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-
     BL_FUNC_DEBUG
-    
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Alias", "0.11.2");
 
@@ -57,6 +55,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 void invalidaEstadAlias ( void )
 {
+    BL_FUNC_DEBUG
     g_minAlias = ( QString ) "";
     g_maxAlias = ( QString ) "";
     g_minLenAlias = 0;
@@ -66,31 +65,31 @@ void invalidaEstadAlias ( void )
 
 bool posibleAlias ( QString alias, BlMainCompany *eb )
 {
-    if ( MILISEG_REFRESCO_ESTAD_ALIAS &&
-            ( g_ultimRefrescAlias.elapsed() > MILISEG_REFRESCO_ESTAD_ALIAS ) ) {
+    BL_FUNC_DEBUG
+    if ( MILISEG_REFRESCO_ESTAD_ALIAS && ( g_ultimRefrescAlias.elapsed() > MILISEG_REFRESCO_ESTAD_ALIAS ) ) {
         invalidaEstadAlias();
-    }
-    if ( ( g_minAlias == ( QString ) "" ) && ( g_maxAlias == ( QString ) "" ) ) {
+    }// end if
+    if ( ( g_minAlias ==  "" ) && ( g_maxAlias == "" ) ) {
         BlDbRecordSet *cur = eb ->loadQuery (
                                  "SELECT \
-   (SELECT cadalias FROM alias ORDER by cadalias  USING ~<~ LIMIT 1) as minalias,\
-   (SELECT cadalias FROM alias ORDER by cadalias  USING ~>~ LIMIT 1) as maxalias,\
+   (SELECT cadalias FROM alias ORDER by cadalias  ASC LIMIT 1) as minalias,\
+   (SELECT cadalias FROM alias ORDER by cadalias  DESC LIMIT 1) as maxalias,\
    (SELECT max(length(cadalias)) FROM alias ) as maxlenalias,\
    (SELECT min(length(cadalias)) FROM alias ) as minlenalias" );
+	
         g_minAlias = cur->value( "minalias" );
         g_maxAlias = cur->value( "maxalias" );
         g_minLenAlias = cur->valorInt ( "minlenalias" );
         g_maxLenAlias = cur->valorInt ( "maxlenalias" );
 
-        // si la taula alias es buida posem un max impossible per evitar tornar
-        // a buscar fins que en donin un d'alta (en l'alta posen NULL a g_maxAlias)
-        if ( g_maxAlias == ( QString ) "" ) {
-            g_maxAlias = "";
-        }
+	delete cur;
+	
+//	blMsgError("Min Alias:" + g_minAlias + "Max Alias: " + g_maxAlias + "Min len:" + QString::number(g_minLenAlias) +" max" +  QString::number(g_maxLenAlias) + "alias:" + alias);
+	
         g_ultimRefrescAlias.restart();
-    }
-    return ( ( g_minAlias != ( QString ) "" ) && ( g_minAlias != ( QString ) "" )
-             && ( alias != ( QString ) "" )
+    }// end if
+    return ( ( g_minAlias !=  "" ) && ( g_maxAlias !=  "" )
+             && ( alias != "" )
              && ( g_minAlias <= alias ) && ( g_maxAlias >= alias )
              && ( g_minLenAlias <= alias.length() )
              && ( g_maxLenAlias >= alias.length() )
@@ -170,6 +169,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 
 int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 {
+    BL_FUNC_DEBUG
     bool encontrado = FALSE;
 
     if ( busc->tableName() == "articulo" ) {
@@ -187,9 +187,9 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
             if ( !cur->eof() ) {
                 busc->setId ( cur->value( "idarticulo" ) );
                 encontrado = TRUE;
-            }
+            }// end if
             delete cur;
-        }
+        }// end if
 
         if ( encontrado ) {
             return -1;
@@ -199,85 +199,25 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
     return 0;
 }
 
-/*
-
-int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel )
-{
-    BL_FUNC_DEBUG
-
-    bool encontrado = FALSE;
-    if ( posibleAlias ( baDel->entrada(), baDel->mainCompany() ) ) {
-        QString SQLQuery = "SELECT codigocompletoarticulo,nomarticulo,cadalias FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
-        QString valors[1] = {baDel->entrada() };
-        BlDbRecordSet *cur = baDel->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
-
-        if ( !cur->eof() ) {
-            baDel->insertItem ( 0, cur->value( "codigocompletoarticulo" )
-                                + ".-" + cur->value( "nomarticulo" )
-                                + " (" + cur->value( "cadalias" ) + ") ",
-                                QVariant ( cur->value( "codigocompletoarticulo" ) )
-                              );
-            baDel->setEditText ( baDel->entrada() );
-            encontrado = TRUE;
-        }
-        delete cur;
-    }
-
-    if ( encontrado ) {
-	
-        return -1;
-    } // end if
-
-    
-    return 0;
-
-}
-
-
-int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
-{
-    BL_FUNC_DEBUG
-    BlDbSubFormField *camp = sf->m_campoactual;
-    if  ( camp->fieldName() == "codigocompletoarticulo" ) {
-      if ( posibleAlias ( camp->text(), sf->mainCompany() ) ) {
-        QString SQLQuery = "SELECT codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
-        QString valors[1] = { camp->text() };
-        BlDbRecordSet *cur = sf->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
-        if ( !cur->eof() ) {
-            camp->setText( cur->value( "codigocompletoarticulo" ) ); 
-        }
-        delete cur;
-      }
-    }
-    
-
-    return 0;
-
-}
-
-*/
-
-
-
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "codigocompletoarticulo" ) {
-      QString val = sub->m_campoactual->text();
-        QString valors[1] = {val};
-        QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
+      /// Buscamos el codigo correspondiente.
+        QString val = sub->m_campoactual->text();
+        QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = '"+ sub->mainCompany() ->sanearCadena(val) + "'";
 	BlDbSubFormField *camp = sub->m_campoactual;
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query,1, valors);
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query);
 
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
 	} else {
 
-           /// No hay codigos y buscamos alias
+           /// No hay codigos, pero puede que exista algun alias que se corresponda.
            if (posibleAlias(val, sub->mainCompany())) {
-             QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
-             BlDbRecordSet *cur1 = sub->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
+             QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias LIKE '" + sub->mainCompany() ->sanearCadena(val) + "'||'%'";
+             BlDbRecordSet *cur1 = sub->mainCompany() ->loadQuery ( SQLQuery );
           
              if ( !cur1->eof() ) {
                 sub->m_registrolinea->setDbValue ( "idarticulo", cur1->value( "idarticulo" ) );
@@ -302,7 +242,8 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 }
 
 
-int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
+int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
+{
   BL_FUNC_DEBUG
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
@@ -312,10 +253,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
            // aquest valor encara que l'usuari nomes hagi escrit
            // un prefix que permeti mes candidats
           if ( bl->entrada().indexOf ( ".-" ) < 0 )  {
-                QString cadwhere = "";
+		QString val = bl->m_entrada;
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper($1||'%') OR upper(nomarticulo) LIKE  upper($1||'%') ORDER BY nomarticulo";
-                bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery, bl->m_entrada  );
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->mainCompany() ->sanearCadena(val) + "'||'%') OR upper(nomarticulo) LIKE  upper('" + bl->mainCompany() ->sanearCadena(val) + "'||'%') ORDER BY nomarticulo";
+		bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery );
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
                     QMapIterator<QString, QString> i ( bl->m_valores );
@@ -335,8 +276,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 } // end while
                 delete bl->m_cursorcombo;
                 if (posibleAlias(bl->m_entrada,bl->mainCompany())) {
-                  QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo, cadalias, nomarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1 ORDER BY nomarticulo";
-                  bl->m_cursorcombo = bl->mainCompany() ->load( SQLQuery, bl->m_entrada );
+		  /// Con los alias no vamos a hacer distincion de mayusculas  y minusculas.
+                  QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo, cadalias, nomarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias LIKE '" + bl->mainCompany() ->sanearCadena(val) + "%' ORDER BY nomarticulo";
+
+                  bl->m_cursorcombo = bl->mainCompany() ->load( SQLQuery );
                   while ( !bl->m_cursorcombo->eof() ) {
                     bl->addItem ( bl->m_cursorcombo->value( "codigocompletoarticulo" )
                                 + ".-" + bl->m_cursorcombo->value( "nomarticulo" )

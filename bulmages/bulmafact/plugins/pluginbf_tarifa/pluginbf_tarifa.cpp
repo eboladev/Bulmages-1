@@ -104,7 +104,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
     BusquedaTarifa *bus = new BusquedaTarifa ( cli->m_frameplugin );
     bus->setObjectName ( QString::fromUtf8 ( "mui_idtarifa" ) );
     bus->setMainCompany ( cli->mainCompany() );
-    bus->setIdTarifa ( "" );
+    bus->setId ( "" );
     hboxLayout160->addWidget ( bus );
 
     /// 1) Comprueba si existe un 'layout' dentro de m_frameplugin

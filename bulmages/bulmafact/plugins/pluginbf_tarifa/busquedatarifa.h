@@ -26,27 +26,20 @@
 #include "blcombobox.h"
 
 
+
 class BusquedaTarifa : public BlComboBox
 {
     Q_OBJECT
 
 private:
-    BlDbRecordSet *m_cursorcombo;
     QString m_codigotarifa;
 
 public:
     BusquedaTarifa ( QWidget *parent = 0 );
     ~BusquedaTarifa();
-    virtual void setIdTarifa ( QString idtarifa );
-    virtual QString fieldValue();
-    virtual void setFieldValue( QString idtarifa );
-    QString idtarifa();
-
-public slots:
+    virtual void setId ( QString idtarifa );
+    QString id();
     void m_activated ( int index );
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

@@ -31,10 +31,9 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
         : BlComboBox ( parent )
 {
     BL_FUNC_DEBUG
-    m_cursorcombo = NULL;
-    setMouseTracking ( TRUE );
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    
+    m_comboRecordSet = NULL;
+    m_codigotarifa = "";
+    setTableName("tarifa");
 }
 
 
@@ -52,28 +51,38 @@ BusquedaTarifa::~BusquedaTarifa()
 /**
 \param idtarifa
 **/
-void BusquedaTarifa::setIdTarifa ( QString idtarifa )
+void BusquedaTarifa::setId ( QString idtarifa )
 {
     BL_FUNC_DEBUG
-//    mdb_idtarifa = idtarifa;
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
-    } // end if
 
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tarifa" );
-    int i = 0;
-    int i1 = 0;
-    clear();
-    addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
-        i++;
-        if ( m_cursorcombo->value( "idtarifa" ) == idtarifa )
-            i1 = i;
-        addItem ( m_cursorcombo->value( "nomtarifa" ) );
-        m_cursorcombo->nextRecord();
-    }
-    setCurrentIndex ( i1 );
-    
+    try {
+        /// Si no existe la mainCompany() pq aun no ha sido establecida salimos
+        if ( !mainCompany() ) return;
+
+	if ( m_comboRecordSet != NULL ) {
+	    delete m_comboRecordSet;
+	} // end if
+
+	m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM tarifa" );
+	int i = 0;
+	int i1 = 0;
+	clear();
+	addItem ( "--" );
+	while ( !m_comboRecordSet->eof() ) {
+	    i++;
+	    if ( m_comboRecordSet->value( "idtarifa" ) == idtarifa )
+		i1 = i;
+	    addItem ( m_comboRecordSet->value( "nomtarifa" ) );
+	    m_comboRecordSet->nextRecord();
+	}
+
+	setCurrentIndex ( i1 );
+	
+    } catch ( ... ) {
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al establecer la tarifa.") );
+        blMsgError(_("Error al establecer la tarifa."));
+    } // end try
+
 }
 
 
@@ -81,7 +90,7 @@ void BusquedaTarifa::m_activated ( int index )
 {
     BL_FUNC_DEBUG
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->value( "idtarifa", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "idtarifa", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -91,14 +100,14 @@ void BusquedaTarifa::m_activated ( int index )
 }
 
 
-QString BusquedaTarifa::idtarifa()
+QString BusquedaTarifa::id()
 {
     BL_FUNC_DEBUG
 
     int index = currentIndex();
     if ( index > 0 ) {
         
-        return ( m_cursorcombo->value( "idtarifa", index - 1 ) );
+        return ( m_comboRecordSet->value( "idtarifa", index - 1 ) );
     } else {
         
         return "";
@@ -107,18 +116,4 @@ QString BusquedaTarifa::idtarifa()
 }
 
 
-QString BusquedaTarifa::fieldValue()
-{
-    BL_FUNC_DEBUG
-    
-    return idtarifa();
-}
-
-
-void BusquedaTarifa::setFieldValue ( QString idtarifa )
-{
-    BL_FUNC_DEBUG
-    setIdTarifa ( idtarifa );
-    
-}
 

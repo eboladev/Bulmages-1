@@ -52,13 +52,13 @@ class NuevaContabilidad(Contabilidad):
         self.process.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = functions.psql + ' -1 ' + ' -f '+ plugins.pathdbbulmacont +'bulmacont_schema.sql ' + self.nomdb + functions.end_sql
+        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmacont +'bulmacont_schema.sql ' + self.nomdb + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos los datos minimos
-        self.command = functions.psql + ' -1 ' + ' -f '+ plugins.pathdbbulmacont +'t_configuracion_data.sql ' + self.nomdb + functions.end_sql
+        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmacont +'t_configuracion_data.sql ' + self.nomdb + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)

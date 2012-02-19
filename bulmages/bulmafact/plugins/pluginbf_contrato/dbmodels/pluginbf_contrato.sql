@@ -105,7 +105,7 @@ DECLARE
 BEGIN
 	SELECT INTO rs REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
 	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || rs.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
-	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO asd idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
+	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO rs idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
 	RAISE NOTICE '%', txt;
 	EXECUTE txt;
 	RETURN 0;
