@@ -161,13 +161,17 @@ void BlPicture::refresh_combo_pics_dir ( QComboBox *desple, QDir ruta, QString &
     QString ruta_actual_imagen = desple->currentText();
 
     QStringList rutas;
+    bool existe_imagen = false;
 
     /// Poner en la lista las rutas de las im&aacute;genes detectadas en la carpeta
     foreach(QFileInfo f, images ) {
         rutas << f.absoluteFilePath();
+        if ( ruta.absolutePath() == rutas.last() ) {
+            existe_imagen = true;
+        } // end if
     } // end foreach
 
-    if (rutas.count() != desple->count() )
+    if ( rutas.count() != desple->count() || !existe_imagen )
     {
         /// Borrar todos los elementos de la lista
         desple->clear();
