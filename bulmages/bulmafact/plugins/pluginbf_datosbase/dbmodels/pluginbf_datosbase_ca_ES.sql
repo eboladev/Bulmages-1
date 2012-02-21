@@ -116,7 +116,7 @@ BEGIN
 
 	SELECT INTO ds * from forma_pago;
 	IF NOT FOUND THEN
-	    INSERT INTO forma_pago (descforma_pago) VALUES ('Efectivo');
+	    INSERT INTO forma_pago (descforma_pago, idforma_pago) VALUES ('Efectivo',1);
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Cheque');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Tarjeta');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Pagaré');
@@ -144,7 +144,7 @@ BEGIN
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estats Units','us','usa');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
+		INSERT INTO provincia (idpais, provincia, idprovincia) VALUES (bs.idpais, 'Araba',1);
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Albacete');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alicante');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Almería');

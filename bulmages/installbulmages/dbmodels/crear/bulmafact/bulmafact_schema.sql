@@ -2213,7 +2213,7 @@ END;
 
 \echo -n ':: Funcion crearef para crear codigos de referencia ... '
 CREATE FUNCTION crearef() RETURNS character varying(15)
-AS '
+AS $$
 DECLARE
     rs RECORD;
     result character varying(15);
@@ -2284,7 +2284,7 @@ BEGIN
     END LOOP;
     RETURN result;
 END;
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 
 -- ** albaran **
@@ -3295,9 +3295,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.13.1-0003'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.13.1-0004'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0003'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0004'');
     END IF;
 
     RETURN 0;

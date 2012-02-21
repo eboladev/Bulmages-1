@@ -77,6 +77,81 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 -- ================================== ACTUALIZACION  ===================================
 
+\echo -n ':: Funcion crearef para crear codigos de referencia ... '
+CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15)
+AS $$
+DECLARE
+    rs RECORD;
+    result character varying(15);
+    efound boolean;
+
+BEGIN
+    efound := FALSE;
+
+    WHILE efound = FALSE LOOP
+	result := random_string(6);
+	efound := TRUE;
+
+	SELECT INTO rs idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idalbaran FROM albaran WHERE refalbaran = result;
+
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idfactura FROM factura WHERE reffactura = result;
+
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idcobro FROM cobro WHERE refcobro = result;
+
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idalbaranp FROM albaranp WHERE refalbaranp = result;
+
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idfacturap FROM facturap WHERE reffacturap = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+	SELECT INTO rs idpago FROM pago WHERE refpago = result;
+
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+-- PLUGINS
+
+    END LOOP;
+    RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
 
 \echo -n ':: Funcion que muestra cadena de texto sin acentos ... '
 CREATE OR REPLACE FUNCTION sinacentos (text) RETURNS text AS $$
@@ -113,9 +188,9 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.13.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.13.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0004'');
 	END IF;
 	RETURN 0;
 END;
