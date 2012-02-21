@@ -68,6 +68,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blgenericcomboboxdelegate.cpp
 			blprogressbar.cpp
 			blmainwindow.cpp
+            		blpicture.cpp
 			blbankedit.cpp
 			blmonthcalendar.cpp
 			blsearchwidget.cpp
@@ -94,6 +95,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			bldoublespinbox.h
 			blwidget.h
 			blmainwindow.h
+	            	blpicture.h
 			blformlist.h
 			blformlistfilter.h
 			bldatelineedit.h
@@ -116,7 +118,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blaction.h)
 
 
-#			blworkspace.h
+#           blworkspace.h
 
 
 set (bulmalib_HDRS	blmaincompanypointer.h
@@ -134,6 +136,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blfunctions.h
 			blimportexport.h
 			blmaincompany.h
+	            	blpicture.h
 			blplugins.h
 			blpostgresqlclient.h
 			blargparser.h)
