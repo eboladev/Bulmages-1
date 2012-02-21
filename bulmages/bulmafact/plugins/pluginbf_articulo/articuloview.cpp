@@ -168,7 +168,7 @@ void ArticuloView::pintarPost()
 
     if ( archivo.exists() ) {
         /// Muestra la imagen si existe el archivo.
-        mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
+        mui_imagen->load_picture ( archivoimagen );
     } else  {
         /// Muestra la imagen por defecto.
 
@@ -257,12 +257,11 @@ int ArticuloView::afterSave()
 
 #ifdef Q_OS_WIN32
 	QString g = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "\\" + cur1->value( "codigocompletoarticulo" ) + ".png";
-	result = mui_imagen->pixmap()->save ( g, "PNG" );
 #else
 	QString g = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "/" + cur1->value( "codigocompletoarticulo" ) + ".png";
-	result = mui_imagen->pixmap()->save ( g, "PNG" );
 #endif
 
+        result = mui_imagen->save_picture ( g, "PNG" );
         if ( result == false ) {
             blMsgError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
