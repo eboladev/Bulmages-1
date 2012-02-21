@@ -265,7 +265,6 @@ int BfSubForm_BfSubForm ( BfSubForm *sub )
     /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
     /// calculo del PVP en funcion del cliente y otros parametros.
     QObject::connect ( sub->m_delegate, SIGNAL ( cant_changed ( BlDbSubFormRecord * ) ), sub, SLOT ( calculaPVP ( BlDbSubFormRecord * ) ) );
-    
     return 0;
 }
 
@@ -300,6 +299,5 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
         sub->m_registrolinea->setDbValue ( "pvp" + sub->tableName(), res );
     } // end if
 
-    
     return 0;
 }

@@ -61,6 +61,8 @@ public:
     virtual void setId ( QString idalmacen );
     QString id();
     void setMainCompany ( BfCompany * );
+    
+public slots:
     void m_activated ( int index );
 };
 
