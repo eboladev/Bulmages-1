@@ -7,6 +7,7 @@ from PyQt4.QtCore import *
 from restbackupbase import *
 import functions
 import plugins
+import string
 
 class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
     def __init__(self, parent = None):
@@ -15,12 +16,15 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.proceso = QtCore.QProcess()
 
     def on_mui_aceptar_released(self):
-
         functions.multios().decompress( str(self.mui_filename.text()), plugins.configfiles)
-
         self.nomdb = self.mui_dbname.text()
-        self.database = self.mui_filename.text().replace(".tar.gz","")
-        self.database = os.path.basename(self.database)
+	if os.name == 'posix':
+	    self.database = str(self.mui_filename.text().replace(".tar.gz",""))
+	    while (string.find(self.database, "/") <> -1):
+		index = string.find(self.database, "/")
+		self.database = self.database[index +1:]
+	else:
+	    self.database = os.path.basename(self.database)
 
         # Verificamos el nombre de la base de datos
         if (self.nomdb == None or self.nomdb == 'postgres' or self.nomdb == 'template0' or self.nomdb == 'template1' or self.nomdb == ''):
@@ -32,7 +36,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
             message.addButton('Cerrar', QtGui.QMessageBox.AcceptRole)
             message.exec_()
             return
-        
+
         # Creamos la base de datos
         self.command = functions.createdb + self.nomdb + functions.end_sql
         self.proceso.start(self.command)
