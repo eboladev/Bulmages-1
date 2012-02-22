@@ -38,18 +38,30 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
         self.proceso.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        if (os.path.exists( plugins.configfiles + self.database):
+        if (os.path.exists( plugins.configfiles + self.database + ".sql")):
 	    self.command = functions.psql + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.nomdb + functions.end_sql
 	    self.proceso.start(self.command)
 	    self.proceso.waitForFinished(-1)
 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
 	    os.remove(str(plugins.configfiles + self.database + '.sql'))
-	elif (os.path.exists (plugins.configfiles + self.database):
+	elif (os.path.exists (plugins.configfiles + "etc/" + self.database + ".sql")):
 	    self.command = functions.psql + ' -f ' + plugins.configfiles + "etc/" +  self.database + '.sql ' + self.nomdb + functions.end_sql
 	    self.proceso.start(self.command)
 	    self.proceso.waitForFinished(-1)
 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
 	    os.remove(str(plugins.configfiles + "etc/" + self.database + '.sql'))
+            os.rename(str(plugins.configfiles + "etc/bulmafact_" + self.database + '.conf', plugins.configfiles + "bulmafact_" + self.database + ".conf"))
+            os.rename(str(plugins.configfiles + "etc/bulmacont_" + self.database + '.conf', plugins.configfiles + "bulmacont_" + self.database + ".conf"))
+            os.rename(str(plugins.configfiles + "etc/bulmatpv_" + self.database + '.conf', plugins.configfiles + "bulmatpv_" + self.database + ".conf"))
+	elif (os.path.exists (plugins.configfiles + "etc/bulmages/" + self.database + ".sql")):
+	    self.command = functions.psql + ' -f ' + plugins.configfiles + "etc/bulmages/" +  self.database + '.sql ' + self.nomdb + functions.end_sql
+	    self.proceso.start(self.command)
+	    self.proceso.waitForFinished(-1)
+	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
+	    os.remove(str(plugins.configfiles + "etc/bulmages/" + self.database + '.sql'))
+            os.rename(str(plugins.configfiles + "etc/bulmages/bulmafact_" + self.database + '.conf', plugins.configfiles + "bulmafact_" + self.database + ".conf"))
+            os.rename(str(plugins.configfiles + "etc/bulmages/bulmacont_" + self.database + '.conf', plugins.configfiles + "bulmacont_" + self.database + ".conf"))
+            os.rename(str(plugins.configfiles + "etc/bulmages/bulmatpv_" + self.database + '.conf', plugins.configfiles + "bulmatpv_" + self.database + ".conf"))
 
 
 
