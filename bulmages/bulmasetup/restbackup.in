@@ -18,13 +18,8 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
     def on_mui_aceptar_released(self):
         functions.multios().decompress( str(self.mui_filename.text()), plugins.configfiles)
         self.nomdb = self.mui_dbname.text()
-	if os.name == 'posix':
-	    self.database = str(self.mui_filename.text().replace(".tar.gz",""))
-	    while (string.find(self.database, "/") <> -1):
-		index = string.find(self.database, "/")
-		self.database = self.database[index +1:]
-	else:
-	    self.database = os.path.basename(self.database)
+	self.database = str(self.mui_filename.text().replace(".tar.gz",""))
+	self.database = os.path.basename(self.database)
 
         # Verificamos el nombre de la base de datos
         if (self.nomdb == None or self.nomdb == 'postgres' or self.nomdb == 'template0' or self.nomdb == 'template1' or self.nomdb == ''):
