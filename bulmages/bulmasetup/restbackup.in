@@ -50,11 +50,11 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
 	    self.proceso.waitForFinished(-1)
 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
 	    os.remove(str(plugins.configfiles + "etc/" + self.database + '.sql'))
-	    if (os.path.exists(plugins.configfiles + "etc/bulmafact_" + self.database + '.conf'):
+	    if (os.path.exists(plugins.configfiles + "etc/bulmafact_" + self.database + '.conf')):
 		os.rename(str(plugins.configfiles + "etc/bulmafact_" + self.database + '.conf'), plugins.configfiles + "bulmafact_" + self.database + ".conf")
-	    if (os.path.exists(plugins.configfiles + "etc/bulmacont_" + self.database + '.conf'):
+	    if (os.path.exists(plugins.configfiles + "etc/bulmacont_" + self.database + '.conf')):
 		os.rename(str(plugins.configfiles + "etc/bulmacont_" + self.database + '.conf'), plugins.configfiles + "bulmacont_" + self.database + ".conf")
-	    if (os.path.exists(plugins.configfiles + "etc/bulmatpv_" + self.database + '.conf'):
+	    if (os.path.exists(plugins.configfiles + "etc/bulmatpv_" + self.database + '.conf')):
 		os.rename(str(plugins.configfiles + "etc/bulmatpv_" + self.database + '.conf'), plugins.configfiles + "bulmatpv_" + self.database + ".conf")
 	elif (os.path.exists (plugins.configfiles + "etc/bulmages/" + self.database + ".sql")):
 	    self.command = functions.psql + ' -f ' + plugins.configfiles + "etc/bulmages/" +  self.database + '.sql ' + self.nomdb + functions.end_sql
@@ -62,11 +62,11 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
 	    self.proceso.waitForFinished(-1)
 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
 	    os.remove(str(plugins.configfiles + "etc/bulmages/" + self.database + '.sql'))
-	    if (os.path.exists(plugins.configfiles + "etc/bulmages/bulmafact_" + self.database + '.conf'):
+	    if (os.path.exists(plugins.configfiles + "etc/bulmages/bulmafact_" + self.database + '.conf')):
 		os.rename(str(plugins.configfiles + "etc/bulmages/bulmafact_" + self.database + '.conf'), plugins.configfiles + "bulmafact_" + self.database + ".conf")
-	    if (os.path.exists(plugins.configfiles + "etc/bulmages/bulmacont_" + self.database + '.conf'):
+	    if (os.path.exists(plugins.configfiles + "etc/bulmages/bulmacont_" + self.database + '.conf')):
 		os.rename(str(plugins.configfiles + "etc/bulmages/bulmacont_" + self.database + '.conf'), plugins.configfiles + "bulmacont_" + self.database + ".conf")
-	    if (os.path.exists(plugins.configfiles + "etc/bulmages/bulmatpv_" + self.database + '.conf'):
+	    if (os.path.exists(plugins.configfiles + "etc/bulmages/bulmatpv_" + self.database + '.conf')):
 		os.rename(str(plugins.configfiles + "etc/bulmages/bulmatpv_" + self.database + '.conf'), plugins.configfiles + "bulmatpv_" + self.database + ".conf")
 
 
