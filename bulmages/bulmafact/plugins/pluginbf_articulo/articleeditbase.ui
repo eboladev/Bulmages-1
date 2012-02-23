@@ -771,7 +771,7 @@
            <number>4</number>
           </property>
           <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="mui_imagen">
+           <widget class="BlPicture" name="mui_imagen">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -785,7 +785,7 @@
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Box</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Sunken</enum>
@@ -1271,6 +1271,11 @@
    <extends>QLineEdit</extends>
    <header>bldoublespinbox.h</header>
   </customwidget>
+  <customwidget>
+   <class>BlPicture</class>
+   <extends>QLabel</extends>
+   <header>blpicture.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
@@ -1294,7 +1299,6 @@
   <tabstop>mui_obserarticulo</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../bulmages.qrc"/>
   <include location="../../../bulmages.qrc"/>
  </resources>
  <connections/>

@@ -144,7 +144,7 @@ BEGIN
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estados Unidos','us','usa');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
+		INSERT INTO provincia (idpais, provincia, idprovincia) VALUES (bs.idpais, 'Araba', 1);
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Albacete');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alicante');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Almería');

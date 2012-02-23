@@ -37,7 +37,7 @@ BfBuscarAlmacen::BfBuscarAlmacen ( QWidget *parent, const char * )
     m_comboRecordSet = NULL;
     m_codigoalmacen = "";
     setTableName("almacen");
-    
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
 }
 
 
@@ -99,6 +99,7 @@ void BfBuscarAlmacen::setId ( QString idalmacen )
         } else {
             setCurrentIndex ( i2 );
         } // end if
+        m_activated ( currentIndex() );
     } catch ( ... ) {
         BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al establecer el almacen.") );
         blMsgError(_("Error al establecer el almacen."));
@@ -152,13 +153,12 @@ void BfBuscarAlmacen::setMainCompany ( BfCompany *comp )
 void BfBuscarAlmacen::m_activated ( int index )
 {
     BL_FUNC_DEBUG
-
+    
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->value( "idalmacen", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-
     
 }
 

@@ -703,9 +703,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
     QString codigocompleto = rec->dbValue ( "codigocompletoarticulo" );
 
     cur = mainCompany() ->load ( "SELECT * FROM articulo WHERE codigocompletoarticulo = $1", codigocompleto  );
-
     if ( !cur->eof() ) {
-
         /// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
         /// el cliente y la tarifa asignada si procede.
         if ( !mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty() ) {
@@ -716,7 +714,6 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
             if ( cur3->numregistros() > 0 ) {
                 /// A) Se dispone de tarifa especial.
                 rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
-
                 /// Disparamos los plugins.
                 int res = g_plugins->run ( "BfSubForm_calculaPVP", this );
                 if ( res != 0 ) {

@@ -82,6 +82,14 @@ BEGIN
 
 	END IF;
 
+	SELECT INTO rs * FROM pg_attribute WHERE attname=''ingresopartida'';
+	IF NOT FOUND THEN
+		ALTER TABLE partida ADD COLUMN ingresopartida BOOLEAN;
+		ALTER TABLE partida ALTER COLUMN ingresopartida SET NOT NULL;
+		ALTER TABLE partida ALTER COLUMN ingresopartida SET DEFAULT TRUE;
+	END IF;
+
+
 	SELECT INTO rs * FROM pg_tables  WHERE tablename=''acontable'';
 
 	IF NOT FOUND THEN
