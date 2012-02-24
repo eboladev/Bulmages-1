@@ -56,6 +56,8 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS $$
 DECLARE
 	bs RECORD;
 	ds RECORD;
+	fpago RECORD;
+	prov RECORD;
 BEGIN
 
 	SELECT INTO ds * FROM tipo_iva;
@@ -116,7 +118,7 @@ BEGIN
 
 	SELECT INTO ds * from forma_pago;
 	IF NOT FOUND THEN
-	    INSERT INTO forma_pago (descforma_pago, idforma_pago) VALUES ('Efectivo',1);
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Efectivo');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Cheque');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Tarjeta');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Pagaré');
@@ -144,7 +146,7 @@ BEGIN
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estats Units','us','usa');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
-		INSERT INTO provincia (idpais, provincia, idprovincia) VALUES (bs.idpais, 'Araba',1);
+		INSERT INTO provincia (idpais, provincia, idprovincia) VALUES (bs.idpais, 'Araba');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Albacete');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alicante');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Almería');
@@ -200,10 +202,21 @@ BEGIN
 	END IF;
 
 	
+
 	SELECT INTO ds * FROM cliente;
 	IF NOT FOUND THEN
-	    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',1,1);
+
+	    SELECT INTO fpago idforma_pago FROM forma_pago WHERE descforma_pago = 'Efectivo';
+	    IF FOUND THEN
+		SELECT INTO prov idprovincia FROM provincia WHERE provincia='Zaragoza';
+		IF FOUND THEN
+		    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',fpago.idforma_pago,prov.idprovincia);
+		END IF;
+	    END IF;
+
+
 	END IF;
+
 
 	RETURN 0;
 END;
