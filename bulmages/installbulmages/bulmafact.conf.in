@@ -8,6 +8,9 @@ CONF_SPLASH_BULMAFACT         @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splas
 CONF_MAIN_WINDOW_TITLE Facturación GPL
 
 
+#Traspaso de informacion extendida de los articulos en los documentos.
+CONF_USE_DESCARTICULO         FALSE
+
 # Estos parametros indican si los numeradores son automaticos.
 CONF_NUM_AUT_PRESUP           YES
 CONF_NUM_AUT_FACTURA          YES
@@ -62,6 +65,8 @@ CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmafac
 
 # Hoja de estilo a utilizar
 CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmafact_es_ES.css
+
+
 
 
 # NOTA PARA DESARROLLADORES:

@@ -53,6 +53,10 @@
 /// La URL que el visor HTML debe visitar
 #define CONF_URL_CONTENTS             52
 
+/// Traspaso de informacion extendida de los articulos en los documentos.
+#define CONF_USE_DESCARTICULO         53
+
+
 ///Indica el color de fondo del libro diario. (obsoleto)
 #define CONF_BG_DIARIO               106
 /// Indica el color de la letra del diario en el pijama opcion 1.(obsoleto)
