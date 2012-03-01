@@ -146,7 +146,7 @@ BEGIN
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estats Units','us','usa');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
-		INSERT INTO provincia (idpais, provincia, idprovincia) VALUES (bs.idpais, 'Araba');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Albacete');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alicante');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Almería');
@@ -201,7 +201,6 @@ BEGIN
 	    END IF;
 	END IF;
 
-	
 
 	SELECT INTO ds * FROM cliente;
 	IF NOT FOUND THEN
@@ -216,7 +215,6 @@ BEGIN
 
 
 	END IF;
-
 
 	RETURN 0;
 END;

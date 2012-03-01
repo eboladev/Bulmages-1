@@ -215,7 +215,6 @@ BEGIN
 
 
 	END IF;
-	
 
 	RETURN 0;
 END;
