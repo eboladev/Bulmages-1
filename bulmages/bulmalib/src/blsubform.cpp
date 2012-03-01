@@ -544,6 +544,23 @@ int BlSubForm::columnCount()
 }
 
 
+/// Column position given its name
+/**
+\return
+**/
+int BlSubForm::columnNumber ( const QString &headerName )
+{
+    BL_FUNC_DEBUG
+
+    int i = -1;
+    const int total_filas = mui_listcolumnas->rowCount();
+    for ( int col = 0; col < total_filas && i == -1; col++ )
+        if ( mui_listcolumnas->item ( col, 1 )->text() == headerName )
+            i = col;
+    return i;
+}
+
+
 ///
 /**
 \param i
@@ -552,7 +569,7 @@ void BlSubForm::showColumn ( int i )
 {
     BL_FUNC_DEBUG
     mui_list->showColumn ( i );
-    
+    mui_listcolumnas->item ( i, 0 )->setCheckState( Qt::Checked );
 }
 
 
@@ -590,7 +607,7 @@ void BlSubForm::hideColumn ( int i )
 {
     BL_FUNC_DEBUG
     mui_list->hideColumn ( i );
-    
+    mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Unchecked );
 }
 
 
