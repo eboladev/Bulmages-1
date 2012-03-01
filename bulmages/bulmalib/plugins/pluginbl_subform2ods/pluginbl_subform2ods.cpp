@@ -194,10 +194,8 @@ void PluginBl_SubForm2ODS::sacaods()
         } // end if
     } // end for
 
-    y += 1;
+    y++;
 
-//    bool resultconvdouble, resultconvinteger;
-//    double resultadodouble, resultadointeger;
 
     /// Sacamos el contenido
     for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {
@@ -205,17 +203,20 @@ void PluginBl_SubForm2ODS::sacaods()
         int x = 1;
 
         for ( int j = 0; j < subf->mui_listcolumnas->rowCount(); ++j ) {
-            if ( subf->mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
+
+	    int columna = subf->mui_listcolumnas->item ( j, 3 )->text().toInt();
+	    
+	    if ( !(subf->headerList()->at( columna )->options() & BlSubFormHeader::DbHideView) ) {
+
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
-                QString textocontenido = blStringToPython( subf->mui_list->item ( i, j ) ->text() );
-
+                QString textocontenido = blStringToPython( subf->mui_list->item ( i, columna ) ->text() );
 
                 //TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
-                if ( subf->headerList() -> at ( j )-> fieldType() == BlDbField::DbNumeric) {
+                if ( subf->headerList() -> at ( columna )-> fieldType() == BlDbField::DbNumeric) {
                         /// Es 'double'.
                         fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido.replace(".","").replace(",",".") + "')\n\n";
-                } else if ( subf->headerList() -> at ( j )-> fieldType() == BlDbField::DbInt) {
+                } else if ( subf->headerList() -> at ( columna )-> fieldType() == BlDbField::DbInt) {
                         /// Es 'double'.
                         fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido.replace(".","").replace(",",".") + "')\n\n";
                 } else {
@@ -223,9 +224,9 @@ void PluginBl_SubForm2ODS::sacaods()
                     textocontenido.replace ( QString ( "\n" ), QString ( "\\n\\\n" ) );
                     fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', u'" + textocontenido + "')\n\n";
                 } // end if
-
             } // end if
-        } // end for blXMLEncode(subf->mui_list->item(i, j)->text())
+
+        } // end for
 
         y++;
 

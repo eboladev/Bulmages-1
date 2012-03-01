@@ -2533,13 +2533,17 @@ void BlSubForm::loadConfigXML()
 void BlSubForm::on_mui_confcol_clicked()
 {
     BL_FUNC_DEBUG
+    
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
         if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked ) {
             mui_list->showColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
+            headerList()->at(i)->setOptions( headerList()->at(i)->options() & ~BlSubFormHeader::DbHideView );
         } else {
             /// Coge el valor de la columna de 'order' para ocultarla.
             mui_list->hideColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
+            headerList()->at(i)->setOptions( headerList()->at(i)->options() | BlSubFormHeader::DbHideView );
         } // end if
+
     } // end for
     
 }
