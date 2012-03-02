@@ -67,9 +67,9 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
 	  m_userName = argument;
 
 #ifdef Q_OS_WIN32
-      QString sys_user = qgetenv("USER");
-#else
       QString sys_user = qgetenv("USERNAME");
+#else
+      QString sys_user = qgetenv("USER");
 #endif
 
       if (m_userName.compare(sys_user) != 0) {
