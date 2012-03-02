@@ -568,8 +568,10 @@ int BlSubForm::columnNumber ( const QString &headerName )
 void BlSubForm::showColumn ( int i )
 {
     BL_FUNC_DEBUG
-    mui_list->showColumn ( i );
-    mui_listcolumnas->item ( i, 0 )->setCheckState( Qt::Checked );
+
+    QString field = mui_listcolumnas->item ( i, 1)->text();
+    mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Checked );
+    on_mui_confcol_clicked();
 }
 
 
@@ -606,8 +608,10 @@ void BlSubForm::setColumnWidth ( int i, int j )
 void BlSubForm::hideColumn ( int i )
 {
     BL_FUNC_DEBUG
-    mui_list->hideColumn ( i );
+
+    QString field = mui_listcolumnas->item ( i, 1)->text();
     mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Unchecked );
+    on_mui_confcol_clicked();
 }
 
 
