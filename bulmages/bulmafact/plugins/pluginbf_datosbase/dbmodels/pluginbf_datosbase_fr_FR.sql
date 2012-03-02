@@ -11,7 +11,7 @@ SET log_min_messages TO WARNING;
 BEGIN;
 
 --
--- Estas primeras funciones cambiaran los tipos de columnas que est� como flotantes a NUMERIC.
+-- Estas primeras funciones cambiaran los tipos de columnas que estan como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
@@ -62,22 +62,22 @@ BEGIN
 
 	SELECT INTO ds * FROM tipo_iva;
 	IF NOT FOUND THEN
-            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Exento');
-            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Super Reducido');
-            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Reducido');
+            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Exempt');
+            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Super Réduit');
+            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Réduit');
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('General');
 	
-	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Exento';
+	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Exempt';
             IF FOUND THEN
 		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 0, '01/01/1973', 0);
     	    END IF;
 
-            SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Super Reducido';
+            SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Super Réduit';
 	    IF FOUND THEN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 4, '01/01/1973', 0.5);
 	    END IF;
 
-            SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Reducido';
+            SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Réduit';
 	    IF FOUND THEN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 7, '01/01/1973', 2);
            INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 8, '01/07/2010', 2);
@@ -88,7 +88,7 @@ BEGIN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
            INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 18, '01/07/2010', 4);
  	    END IF;
-        END IF;
+    END IF;
 	
 	SELECT INTO ds * FROM almacen;
 	IF NOT FOUND THEN
@@ -97,53 +97,58 @@ BEGIN
 	
 	SELECT INTO ds * FROM familia;
 	IF NOT FOUND THEN
-	    INSERT INTO familia (codigofamilia, nombrefamilia) VALUES ('000', 'Varios');
+	    INSERT INTO familia (codigofamilia, nombrefamilia) VALUES ('000', 'Plusieurs');
 	END IF;
 	
 	SELECT INTO ds * FROM tipo_articulo;
 	IF NOT FOUND THEN
-	    INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('000', 'Genericos');
+	    INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('000', 'Générique');
 	END IF;
 
 	SELECT INTO ds * FROM articulo;
 	IF NOT FOUND THEN
-	    INSERT INTO articulo (codarticulo, nomarticulo, idtipo_iva, idfamilia) VALUES ('001', 'VARIOS', 1, 1);
+	    INSERT INTO articulo (codarticulo, nomarticulo, idtipo_iva, idfamilia) VALUES ('001', 'PLUSIEURS', 1, 1);
 	END IF;
 	
 	SELECT INTO ds * FROM trabajador;
 	IF NOT FOUND THEN
-	    INSERT INTO trabajador (nomtrabajador) VALUES ('Sin Definir');
+	    INSERT INTO trabajador (nomtrabajador) VALUES ('Indéfini');
 	END IF;
 	
 
 	SELECT INTO ds * from forma_pago;
 	IF NOT FOUND THEN
-	    INSERT INTO forma_pago (descforma_pago) VALUES ('Efectivo');
-	    INSERT INTO forma_pago (descforma_pago) VALUES ('Cheque');
-	    INSERT INTO forma_pago (descforma_pago) VALUES ('Tarjeta');
-	    INSERT INTO forma_pago (descforma_pago) VALUES ('Pagaré');
-	    INSERT INTO forma_pago (descforma_pago) VALUES ('Transferencia');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Espèces');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Chèque');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Carte');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Billet à Ordre');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Transférer');
 	END IF;
 
 	SELECT INTO ds * FROM serie_factura;
 	IF NOT FOUND THEN
 	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('DD', 'Principal');
-	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('REC', 'Rectificativa');
-	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('BBB', 'Facturación de Pruebas');
+	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('REC', 'Amendement');
+	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('BBB', 'Facturation d''essai');
 	END IF;
 
 	SELECT INTO ds * FROM pais;
 	IF NOT FOUND THEN
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('España','es','esp');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Alemania','de','deu');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Francia','fr','fra');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Bélgica','ne','nel');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Italia','it','ita');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Espagne','es','esp');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Allemagne','de','deu');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('France','fr','fra');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Belgique','ne','nel');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Italie','it','ita');
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Portugal','pt','prt');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Reino Unido','gb','gbr');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Turquía','tr','tur');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Polonia','pl','pol');
-	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estados Unidos','us','usa');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Royaume-Uni','gb','gbr');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Turquie','tr','tur');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Pologne','pl','pol');
+	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('États-Unis','us','usa');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Andorre','ad','and');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Maroc','ma','mar');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Algérie','dz','dza');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Pays-Bas','nl','nld');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Irlande','ie','irl');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
@@ -205,11 +210,11 @@ BEGIN
 	SELECT INTO ds * FROM cliente;
 	IF NOT FOUND THEN
 
-	    SELECT INTO fpago idforma_pago FROM forma_pago WHERE descforma_pago = 'Efectivo';
+	    SELECT INTO fpago idforma_pago FROM forma_pago WHERE descforma_pago = 'Espèces';
 	    IF FOUND THEN
 		SELECT INTO prov idprovincia FROM provincia WHERE provincia='Zaragoza';
 		IF FOUND THEN
-		    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',fpago.idforma_pago,prov.idprovincia);
+		    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Client Espèces','12345678Z',fpago.idforma_pago,prov.idprovincia);
 		END IF;
 	    END IF;
 

@@ -11,7 +11,7 @@ SET log_min_messages TO WARNING;
 BEGIN;
 
 --
--- Estas primeras funciones cambiaran los tipos de columnas que est� como flotantes a NUMERIC.
+-- Estas primeras funciones cambiaran los tipos de columnas que estan como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
@@ -88,7 +88,7 @@ BEGIN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
            INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 18, '01/07/2010', 4);
  	    END IF;
-        END IF;
+    END IF;
 	
 	SELECT INTO ds * FROM almacen;
 	IF NOT FOUND THEN
@@ -144,6 +144,11 @@ BEGIN
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Turquía','tr','tur');
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Polonia','pl','pol');
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estados Unidos','us','usa');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Andorra','ad','and');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Marruecos','ma','mar');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Argelia','dz','dza');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Países Bajos','nl','nld');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Irlanda','ie','irl');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
