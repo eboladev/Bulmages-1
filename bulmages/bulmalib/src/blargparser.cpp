@@ -65,6 +65,17 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
 	  break;
 	case 'U':
 	  m_userName = argument;
+
+#ifdef Q_OS_WIN32
+      QString sys_user = qgetenv("USER");
+#else
+      QString sys_user = qgetenv("USERNAME");
+#endif
+
+      if (m_userName.compare(sys_user) != 0) {
+        // Si el usuario indicado no coincide con el que ha lanzado el programa, preguntar la contraseña aunque no se indique "-W"
+        m_askPassword = true;
+      } // end if
 	  break;
       } // end switch
 
