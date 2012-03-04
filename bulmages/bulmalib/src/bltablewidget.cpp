@@ -259,7 +259,6 @@ tabla y emite signals si lo considera adecuado.
 bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
 {
 //   BL_FUNC_DEBUG  No hacemos debug por no saturar el fichero
-
     if ( event->type() == QEvent::KeyPress ) {
 //        BlDebug::blDebug ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
@@ -286,8 +285,12 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
     if ( event->type() == QEvent::KeyRelease ) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        int col = currentColumn();
-        int row = currentRow();
+        
+        /// Visualmente las coordinadas son diferentes a la tabla real y para recalcular
+        /// la nueva posicion hay que utilizar las coordenadas reales. visualColumn de un visualColumn devuelve
+        /// la columna real.
+        int col = visualColumn(currentColumn());
+        int row = visualRow(currentRow());
 
         m_teclasalida = 0;
         /// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos
