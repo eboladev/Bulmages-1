@@ -176,7 +176,7 @@ void PluginBl_SubForm2ODS::sacaods()
         } // end if
     } // end for
 
-    y += 1;
+//    y += 1;
     x = 1;
     /// Sacamos las cabeceras con los nombres de los campos de la base de datos.
     for ( int h = 0; h < subf->mui_listcolumnas->rowCount(); ++h ) {

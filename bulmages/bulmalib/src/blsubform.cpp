@@ -286,7 +286,6 @@ void BlSubForm::columnMovedByUser ( int, int oldIndex, int newIndex )
 {
     BL_FUNC_DEBUG
     mui_listcolumnas->moveRow ( oldIndex, newIndex );
-    
 }
 
 
@@ -1158,7 +1157,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
     } // end while
 
     if (!invalido) {
-       mui_list->setCurrentCell ( nrow, ncol );
+       mui_list->setCurrentCell ( mui_list->visualRow(nrow), mui_list->visualColumn(ncol) );
     } else {
        BlDebug::blDebug("No hay mas elementos editables en el subformulario", 2);
     } // end if
@@ -1214,7 +1213,7 @@ void BlSubForm::pintar()
     mui_list->setColumnCount ( m_lcabecera.count() );
     pintaCabeceras();
     if ( m_primero ) {
-        loadConfig();	
+        loadConfig();
 	/// Preparamos el menu de subformulario
 	preparaMenu();
     } // end if
@@ -1802,7 +1801,6 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSubForm::on_mui_list_cellReposition", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
-
     /// Implementacion del semaforo
     static bool semaforo = FALSE;
     if ( semaforo )
@@ -2459,7 +2457,7 @@ void BlSubForm::loadConfigXML()
 			mui_listcolumnas->item ( j, 0 ) ->setCheckState ( Qt::Unchecked );
 		    } // end if
 		} // end if
-	    } // end for	    
+	    } // end for
 	} // end if
     } // end form
 
@@ -2504,7 +2502,7 @@ void BlSubForm::loadConfigXML()
 		if ( mui_listcolumnas->item(j,3) -> text().toInt() == linea.toInt()) {
                     mui_listcolumnas->moveRow ( j, i );
 		} // end if
-	    } // end for	    
+	    } // end for
 	} // end if
     } // end for
 

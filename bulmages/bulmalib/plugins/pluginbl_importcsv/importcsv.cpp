@@ -107,7 +107,37 @@ void ImportCSV::on_mui_aceptar_clicked()
 	    } // end if
 	    list2.replaceInStrings(QRegExp("^$"), "''");
 	    /// Montamos el query
-	    QString query = "INSERT INTO " + mui_combotablas->currentText() +" ("+list1.join(",").replace("\"","")+") VALUES("+list2.join(",").replace("\"","'")+")";
+	    QString query = "";
+	    
+	    if (mui_insert->isChecked()) {
+		    query = "INSERT INTO " + mui_combotablas->currentText() +" ("+list1.join(",").replace("\"","")+") VALUES("+list2.join(",").replace("\"","'")+")";
+	    } else {
+		    query = "UPDATE " + mui_combotablas->currentText() + " SET ";
+		    int condition = -1;
+		    
+		    for (int i = 0; i < list1.size(); ++i) {
+			query += list1[i].replace("\"", "") + " = " + list2[i].replace("\"", "'");
+
+			if (i + 1 < list1.size()) {
+			    query += ", ";
+			} // end if
+
+			QString compara = mui_updateField->text().trimmed();
+			
+			if (list1.at(i).trimmed() == compara) {
+			    condition = i;
+			} // end if
+		    } // end for
+
+		    if (condition == -1) {
+			/// No se ha encontrado el campo para condicion de actualizar.
+			throw -100;
+		    }
+		    
+		    query += " WHERE " + mui_updateField->text().trimmed() + " = '" + list2.at(condition) + "'";
+
+	    } // end if
+	    
 	    mainCompany()->runQuery(query);
 	} // end while
 	mainCompany()->commit();
