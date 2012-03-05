@@ -237,6 +237,7 @@ void ProveedorList::editar ( int row )
         mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
+        close();
         emit ( selected ( m_idprovider ) );
     } // end if
     

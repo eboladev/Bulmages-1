@@ -1,26 +1,18 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginbf_proveedor
+#pluginbf_proveedorcodigos
 
-set (plugin pluginbf_proveedor)
-ADD_DEFINITIONS(-D${plugin})
-
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
-
+set (plugin pluginbf_proveedorcodigos)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-file(GLOB plugin_UIS *.ui)
-
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbf_proveedor.h)
+file(GLOB plugin_NO_MOCS pluginbf_proveedorcodigos.h pdefs_pluginbf_proveedorcodigos.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
+file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
@@ -35,26 +27,34 @@ include_directories(
         ${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+
+# generate rules for building source files from the resources
+#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_PROVEEDOR)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_ALIAS)
 ENDIF(WIN32)
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
+# build sources, moc'd sources, and rcc'd sources
+if(APPLE)
+  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+endif(APPLE)
 
 # i18n
 if(WIN32)
@@ -77,14 +77,9 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES ca_ES en_US fr_FR)
 endif(USE_GETTEXT)
 
-# build sources, moc'd sources, and rcc'd sources
-
-if(APPLE)
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
-endif(APPLE)
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
-	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS} ${pluginprofesor_RCC_SRCS})
+	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
 
 set_target_properties( ${plugin} PROPERTIES 
@@ -107,25 +102,11 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
 
-add_dependencies(${plugin} bulmafact bulmalib)
+
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
+install(DIRECTORY dbmodels/ 
+		DESTINATION share/bulmages/dbmodels/plugins
+		PATTERN ".svn" EXCLUDE)
 
 
-FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css VAR_CSS_es_ES)
-FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
-
-FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
-FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
-
-FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css VAR_CSS_fr_FR)
-FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_fr_FR.css "${VAR_CSS_fr_FR}" )
-
-FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css VAR_CSS_en_US)
-FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_US.css "${VAR_CSS_en_US}" )
-
-
-install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
-
-install(DIRECTORY openreports/ 
-      DESTINATION share/bulmages/openreports
-      PATTERN ".svn" EXCLUDE)
 
