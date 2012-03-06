@@ -737,7 +737,6 @@ QString BlDbRecord::dbValue ( QString nomb )
 
     if ( !campo ) {
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Campo: '%1' no encontrado.")).arg(nomb) );
-	blMsgError(QString(_("Campo: '%1' no encontrado.")).arg(nomb));
     } else if ( campo->fieldName() == nomb ) {
         valor = campo->fieldValue();
     } // end if
@@ -973,19 +972,6 @@ int BlDbRecord::parseTags ( QString &buff, int tipoEscape )
 
     return 1;
 }
-
-/*
-int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
-{
-    QString fitxersortidatxt = "";
-
-    substrConf ( buff );
-    buff.replace ( "[ficha]", m_tableName.toAscii() );
-    buff.replace ( "[story]", story().toAscii() );
-
-    return 1;
-}
-*/
 
 
 /// Este metodo es usado en las impresiones con RML para generar una cuadricula con el registro.

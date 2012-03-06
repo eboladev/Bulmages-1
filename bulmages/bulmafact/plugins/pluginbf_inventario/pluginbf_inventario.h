@@ -34,6 +34,7 @@ extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_load ( BlForm * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_guardar_Post ( BlForm * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BlAction_actionTriggered(BlAction *);
+extern "C" PLUGINBF_INVENTARIO_EXPORT int BlSubForm_campoCompleto ( BfSubForm * );
 
 #endif
 
