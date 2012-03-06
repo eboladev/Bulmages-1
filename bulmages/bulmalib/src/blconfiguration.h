@@ -217,6 +217,7 @@
 /// Hoja de estilo a usar con bulmages
 #define CONF_STYLESHEET              430
 #define CONF_CUPS_DEFAULT_PRINTER    440
+#define CONF_CUPS_TICKET_PRINTER     441
 /// Impresora de tickets
 #define CONF_TICKET_PRINTER_FILE     450
 /// Visor de TPV

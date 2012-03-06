@@ -649,7 +649,8 @@ void BlFormList::trataPermisos ( QString nomtabla )
 /**
  **/
 void BlFormList::guardaFiltrosXML() {
-      QString aux = "";
+    BL_FUNC_DEBUG
+    QString aux = "";
     QFile file ( nameFileConfig() );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {

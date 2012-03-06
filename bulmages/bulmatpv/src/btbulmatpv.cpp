@@ -38,7 +38,7 @@
 #include "btaboutview.h"
 #include "blperiodicitycombobox.h"
 #include "blmainwindow.h"
-
+#include "blplugins.h"
 
 /** Prepara la pantalla principal para que tenga todos los componentes.
     Crea el workspace y lo inicializa.
@@ -63,14 +63,12 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     pWorkspace->setScrollBarsEnabled ( TRUE );
 #endif
 
-//     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
     m_pb->setMaximum ( 100 );
     m_pb->setMinimum ( 0 );
     m_pb->setValue ( 0 );
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
     m_pb->setVisible ( FALSE );
-//     setCentralWidget ( m_frame1 );
 
 
     m_stackedWidget = new QStackedWidget(this);
@@ -106,8 +104,6 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     m_pb->setVisible ( FALSE );
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
-
-    
 }
 
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
@@ -129,7 +125,7 @@ void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 BtBulmaTPV::~BtBulmaTPV()
 {
     BL_FUNC_DEBUG
-    delete m_company;
+    delete pWorkspace;
 	
 /*
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
@@ -191,10 +187,32 @@ void BtBulmaTPV::s_About()
 */
 /**
 **/
-void BtBulmaTPV::closeEvent ( QCloseEvent * )
+void BtBulmaTPV::closeEvent ( QCloseEvent *event )
 {
     BL_FUNC_DEBUG
-    
+
+
+    /// Antes de salir hacemos un mensaje de advertencia.
+    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+	 QMessageBox msgBox;
+	 msgBox.setText(_("Seguro que desea abandonar el programa "));
+	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
+	 msgBox.setStandardButtons( QMessageBox::Close | QMessageBox::Cancel);
+	 msgBox.setDefaultButton(QMessageBox::Cancel);
+	 int ret = msgBox.exec();
+
+	 if (ret == QMessageBox::Cancel) {
+	   event->ignore();
+	   
+	   return;
+	 }
+    } // END IF
+
+    g_plugins->run ( "BtBulmaTPV_closeEvent", this );
+
+    /// Borramos el BfCompany
+    delete m_company;
+    m_company = NULL;
 }
 
 
