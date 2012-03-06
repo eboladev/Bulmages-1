@@ -25,6 +25,8 @@ Incompatibles: libpluginbf_inventariosimple.so
 
 Categorias: Facturació genèrica; Experimentals;
 
+Reports: inf_stockminimos.rml
+
 Orden: 550
 
 Comentarios: Imprescindible al control d'estoc.
