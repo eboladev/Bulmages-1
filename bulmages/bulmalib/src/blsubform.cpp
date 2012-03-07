@@ -545,17 +545,28 @@ int BlSubForm::columnCount()
 
 /// Column position given its name
 /**
+\param headerName
+\param in_mui_list is true when the visible column in the table is needed. In other case, we look for the row in mui_listcolumnas
 \return
 **/
-int BlSubForm::columnNumber ( const QString &headerName )
+int BlSubForm::columnNumber ( const QString &headerName, bool in_mui_list /* default is false: in mui_listcolumnas */ )
 {
     BL_FUNC_DEBUG
 
     int i = -1;
     const int total_filas = mui_listcolumnas->rowCount();
-    for ( int col = 0; col < total_filas && i == -1; col++ )
-        if ( mui_listcolumnas->item ( col, 1 )->text() == headerName )
-            i = col;
+    for ( int col = 0; col < total_filas && i == -1; col++ ) {
+        if ( mui_listcolumnas->item ( col, 1 )->text() == headerName ) {
+            if (in_mui_list) {
+                // Column visible in the table mui_list
+                i = mui_listcolumnas->item ( col, 3 )->text().toInt();
+            }
+            else {
+                // Column as row in mui_listcolumnas
+                i = col;
+            } // end if
+        } // end if
+    } // end for
     return i;
 }
 
