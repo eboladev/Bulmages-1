@@ -130,15 +130,12 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     BL_FUNC_DEBUG
 
     /// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
-
     if ( !rec->exists ( "idarticulo" ) ) {
-        
         return;
     } // end if
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
     if ( !cur ) {
-        
         return;
     } // end if
 

@@ -1979,7 +1979,8 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
         it->setCheckState ( Qt::Checked );
     } // end if
 
-    if ( opt & BlSubFormHeader::DbDisableView ) {
+    /// Si el item esta desabilitado y no estamos en modo experto no podemos mostrarlo.
+    if  (( opt & BlSubFormHeader::DbDisableView ) && (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE")) {
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
