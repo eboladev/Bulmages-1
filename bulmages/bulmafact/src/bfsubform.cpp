@@ -130,15 +130,12 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     BL_FUNC_DEBUG
 
     /// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
-
     if ( !rec->exists ( "idarticulo" ) ) {
-        
         return;
     } // end if
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
     if ( !cur ) {
-        
         return;
     } // end if
 
@@ -205,7 +202,13 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                     || m_tablename == "lfacturap"
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura" ) {
-                rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) );
+
+		if (g_confpr->value(CONF_USE_DESCARTICULO) == "TRUE" || g_confpr->value(CONF_USE_DESCARTICULO) == "T" || g_confpr->value(CONF_USE_DESCARTICULO) == "1") {
+			rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) +"\n" + cur->value("obserarticulo") );
+
+		} else {
+			rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) );
+		} // end if
                 rec->setDbValue ( "cant" + m_tablename, "1.00" );
                 rec->setDbValue ( "descuento" + m_tablename, "0.00" );
                 calculaPVP ( rec );

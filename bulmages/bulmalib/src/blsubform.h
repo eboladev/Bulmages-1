@@ -265,6 +265,11 @@ public:
     void setCurrentItem ( int row, int col );
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
+    /// Devuelve la posici&oacute;n de la columna con el nombre indicado.
+    int columnNumber ( const QString &, bool in_mui_list = false );
+    /// Mostrar u ocultar una columna
+    void setColumnVisible ( int, bool ); // inline
+    void setColumnVisible ( const QString &, bool ); // inline
     /// Muestra la columna indicada en el subformulario.
     void showColumn ( int i );
     /// Devuelve el ancho de la columna indicada.
@@ -401,6 +406,23 @@ signals:
     void pintaMenu ( QMenu * );
     void trataMenu ( QAction * );
 };
+
+
+inline void BlSubForm::setColumnVisible ( int i, bool visible )
+{
+    if ( visible ) {
+        showColumn ( i );
+    }
+    else {
+        hideColumn ( i );
+    } // end if
+}
+
+
+inline void BlSubForm::setColumnVisible ( const QString &headerName, bool visible )
+{
+    setColumnVisible ( columnNumber ( headerName ), visible );
+}
 
 #endif
 

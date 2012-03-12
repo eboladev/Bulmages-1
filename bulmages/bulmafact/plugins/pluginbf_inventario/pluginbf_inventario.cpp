@@ -136,14 +136,10 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
     BL_FUNC_DEBUG
 
-    if ( subform->currentColumn() < 1 ) {
-        return 0;
-    } // end if
-
-    BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->currentRow(), subform->currentColumn() - 1 );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->currentRow(), subform->currentColumn()  );
     camp->refresh();
-
     if ( camp->fieldName() == "cant" + subform->tableName() ) {
+      
         BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
         QObject *wid = subform->parent();
         while ( wid
@@ -157,11 +153,15 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( !wid ) return 0;
 
         BlForm *fich = ( BlForm * ) wid;
-        QString idalmacen = fich->dbValue ( "idalmacen" );
+	BlComboBox *combo = wid->findChild<BlComboBox *>("mui_idalmacen");
+	if (!combo) return 0;
+	
+        QString idalmacen = combo->id ();
         if ( idalmacen == "" ) return 0;
 
         if ( rec->dbValue ( "idarticulo" ) == "" ) return 0;
 
+	
         QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->dbValue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
         BlDbRecordSet *cur1 = subform->mainCompany() ->loadQuery ( query1 );
         BlFixed stock ( "0" );
@@ -171,14 +171,72 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         } // end if
         delete cur1;
 
-
-
         QString query = "SELECT * FROM minimsalmacen where idarticulo=" + rec->dbValue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
         BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
             BlFixed val = BlFixed ( cur->value( "valminimsalmacen" ) );
             BlFixed valb = BlFixed ( camp->fieldValue() );
+            if ( stock - valb <= val )
+                blMsgWarning ( _ ( "Stock minimo superado" ) );
+        } // end if
+        delete cur;
+    } // end if
+    return 0;
+}
+
+
+
+int BlSubForm_campoCompleto ( BfSubForm *subform )
+{
+    BL_FUNC_DEBUG
+  
+    QString camp1 = subform->dbValue("cantlpresupuesto");
+    if (camp1 == "")
+	camp1 = subform->dbValue("cantlpedidocliente");
+    if (camp1 == "")
+	camp1 = subform->dbValue("cantlalbaran");
+
+    if ( camp1 != "" ) {
+      
+        BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
+	
+        QObject *wid = subform->parent();
+        while ( wid
+                && ( wid->objectName() != "PresupuestoClienteBase" )
+                && ( wid->objectName() != "PedidoClienteBase" )
+                && ( wid->objectName() != "AlbaranClienteBase" )
+              ) {
+            wid = wid->parent();
+        } // end if
+
+        if ( !wid ) return 0;
+
+        BlForm *fich = ( BlForm * ) wid;
+	BlComboBox *combo = wid->findChild<BlComboBox *>("mui_idalmacen");
+	if (!combo) return 0;
+	
+        QString idalmacen = combo->id ();
+        if ( idalmacen == "" ) return 0;
+
+        if ( rec->dbValue ( "idarticulo" ) == "" ) return 0;
+
+	
+        QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->dbValue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
+        BlDbRecordSet *cur1 = subform->mainCompany() ->loadQuery ( query1 );
+        BlFixed stock ( "0" );
+        if ( !cur1 ) return 0;
+        if ( !cur1->eof() ) {
+            stock = BlFixed ( cur1->value( "stock" ) );
+        } // end if
+        delete cur1;
+
+        QString query = "SELECT * FROM minimsalmacen where idarticulo=" + rec->dbValue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
+        BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( query );
+        if ( !cur ) return 0;
+        if ( !cur->eof() ) {
+            BlFixed val = BlFixed ( cur->value( "valminimsalmacen" ) );
+            BlFixed valb = BlFixed ( camp1 );
             if ( stock - valb <= val )
                 blMsgWarning ( _ ( "Stock minimo superado" ) );
         } // end if

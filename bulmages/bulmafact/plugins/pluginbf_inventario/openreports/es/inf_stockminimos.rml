@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Articulos Bajo Minimos Stock" author="Tomeu Borras" allowSplitting="20">
+<!-- pathtitle="&Articulos\Informes\Articulos Bajo Minimos Stock (PDF)" -->
+	<pageTemplate id="main">
+		<pageGraphics>
+		<!-- EL LOGO DE CABECERA -->
+		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
+
+		<!-- EL DRAFT -->
+			<!-- setFont name="Helvetica" size="100"/>
+			<fill color="(1,0.9,0.9)"/>
+			<stroke color="(1,0.9,0.9)"/>
+			<translate dx="13cm" dy="-10.5cm"/>
+			<rotate degrees="30"/>
+			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
+			<lineMode width="4mm"/>
+			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
+		<rotate degrees="-30"/>
+		<translate dx="-13cm" dy="10.5cm"/ -->
+
+		<!-- EL PIE DE PAGINA -->
+		<setFont name="Helvetica" size="8"/>		
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<drawString x="13.3cm" y="0.5cm">www.bulmageswin.com -- info@bulmageswin.com --</drawString>
+
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<setFont name="Helvetica" size="22"/>
+		<drawString x="18cm" y="19.5cm">Informe de Stocks Minimos</drawString>
+		</pageGraphics>
+	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	</pageTemplate>
+</template>
+<stylesheet>
+	<blockTableStyle id="tabla">
+		<blockAlignment value="RIGHT" start="0,1" stop="-1,-1"/>
+		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
+		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
+		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,-1"/>
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="6" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="6" start="0,1" stop="-1,-1"/>
+		<blockFont name="Helvetica" size="6" start="1,1" stop="1,-1"/>
+		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+		<blockTopPadding length="0cm" start="0,0" stop="-1,-1"/>
+		<blockBottomPadding length="0cm" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+</stylesheet>
+
+
+<story>
+<title> Articulos Bajo Minimos Stock</title>
+
+<blockTable style="tabla">
+  <tr><td>Almacen</td><td>Articulo</td><td>Stock</td><td>Stock Minimo</td></tr>
+<!--QUERY="SELECT * FROM (SELECT stock_almacen.idarticulo, stock_almacen.idalmacen, valminimsalmacen, stock FROM stock_almacen 
+LEFT JOIN minimsalmacen 
+ON stock_almacen.idarticulo = minimsalmacen.idarticulo 
+AND stock_almacen.idalmacen = minimsalmacen.idalmacen 
+WHERE minimsalmacen.valminimsalmacen >= stock_almacen.stock ) AS t1
+LEFT JOIN articulo ON articulo.idarticulo = t1.idarticulo
+LEFT JOIN almacen ON almacen.idalmacen = t1.idalmacen
+ORDER BY t1.idalmacen"-->
+<tr>
+<td topPadding="0" bottomPadding="0"><para>[nomalmacen]</para></td>
+<td topPadding="0" bottomPadding="0"><para>[codigocompletoarticulo] [nomarticulo]</para></td>
+<td topPadding="0" bottomPadding="0"><para>[stock]</para></td>
+<td topPadding="0" bottomPadding="0"><para>[valminimsalmacen]</para></td>
+</tr>
+<!--END QUERY-->
+</blockTable>
+
+
+</story>
+</document>

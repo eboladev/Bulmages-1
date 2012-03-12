@@ -11,7 +11,7 @@ SET log_min_messages TO WARNING;
 BEGIN;
 
 --
--- Estas primeras funciones cambiaran los tipos de columnas que est� como flotantes a NUMERIC.
+-- Estas primeras funciones cambiaran los tipos de columnas que estan como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
@@ -56,6 +56,8 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS $$
 DECLARE
 	bs RECORD;
 	ds RECORD;
+	fpago RECORD;
+	prov RECORD;
 BEGIN
 
 	SELECT INTO ds * FROM tipo_iva;
@@ -86,7 +88,7 @@ BEGIN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
            INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 18, '01/07/2010', 4);
  	    END IF;
-        END IF;
+    END IF;
 	
 	SELECT INTO ds * FROM almacen;
 	IF NOT FOUND THEN
@@ -116,7 +118,7 @@ BEGIN
 
 	SELECT INTO ds * from forma_pago;
 	IF NOT FOUND THEN
-	    INSERT INTO forma_pago (descforma_pago, idforma_pago) VALUES ('Efectivo',1);
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Efectivo');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Cheque');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Tarjeta');
 	    INSERT INTO forma_pago (descforma_pago) VALUES ('Pagaré');
@@ -142,9 +144,14 @@ BEGIN
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Turquía','tr','tur');
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Polonia','pl','pol');
 	INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Estados Unidos','us','usa');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Andorra','ad','and');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Marruecos','ma','mar');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Argelia','dz','dza');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Países Bajos','nl','nld');
+    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('Irlanda','ie','irl');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
-		INSERT INTO provincia (idpais, provincia, idprovincia) VALUES (bs.idpais, 'Araba', 1);
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Albacete');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alicante');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Almería');
@@ -199,10 +206,19 @@ BEGIN
 	    END IF;
 	END IF;
 
-	
+
 	SELECT INTO ds * FROM cliente;
 	IF NOT FOUND THEN
-	    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',1,1);
+
+	    SELECT INTO fpago idforma_pago FROM forma_pago WHERE descforma_pago = 'Efectivo';
+	    IF FOUND THEN
+		SELECT INTO prov idprovincia FROM provincia WHERE provincia='Zaragoza';
+		IF FOUND THEN
+		    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',fpago.idforma_pago,prov.idprovincia);
+		END IF;
+	    END IF;
+
+
 	END IF;
 
 	RETURN 0;

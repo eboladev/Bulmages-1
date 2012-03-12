@@ -82,6 +82,7 @@ add_subdirectory(pluginbf_proveedorfactura)
 add_subdirectory(pluginbf_proveedoralbaran)
 add_subdirectory(pluginbf_proveedorpedido)
 
+add_subdirectory(pluginbf_proveedorcodigos)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginbf_qwebcam)

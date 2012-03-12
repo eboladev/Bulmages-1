@@ -85,10 +85,20 @@ SELECT drop_if_exists_proc('actpvparticulo', '');
 \echo -n ':: Funcion para actualizar precios de venta segun precios de coste ... '
 CREATE OR REPLACE FUNCTION actpvparticulo() RETURNS "trigger" AS '
 DECLARE
+    rs RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.actualizarmargenarticulo  = TRUE THEN
 	NEW.pvparticulo := NEW.preciocostearticulo + NEW.preciocostearticulo * NEW.margenarticulo / 100;
+
+	SELECT INTO rs * FROM pg_attribute WHERE attname =''pvpivaincarticulo'';
+	IF FOUND THEN
+	    SELECT INTO bs * FROM tasa_iva where idtipo_iva= NEW.idtipo_iva ORDER BY fechatasa_iva DESC LIMIT 1;
+	    IF FOUND THEN
+		NEW.pvpivaincarticulo := NEW.pvparticulo * (100 + bs.porcentasa_iva) / 100;
+	    END IF;
+	END IF;
     END IF;
 
     RETURN NEW;
@@ -153,9 +163,9 @@ BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_PrecioCoste'';
 
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''PluginBf_PrecioCoste'';
+		UPDATE CONFIGURACION SET valor=''0.13.1-0001'' WHERE nombre=''PluginBf_PrecioCoste'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_PrecioCoste'', ''0.10.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_PrecioCoste'', ''0.13.1-0001'');
 	END IF;
 
 	RETURN 0;

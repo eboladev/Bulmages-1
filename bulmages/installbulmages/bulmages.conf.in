@@ -74,8 +74,12 @@ CONF_FONTSIZE_BULMAGES		10
 # Refresco de los listados tras el cierre de una ficha.
 CONF_REFRESH_LIST		TRUE
 
+#Impresora por defecto
 CONF_CUPS_DEFAULT_PRINTER       None
  
+#Impresora de tickets por defecto.
+CONF_CUPS_TICKET_PRINTER        None
+
 # Sistema de configuracion global, permite que todos los usuarios o empresas compartan archivos de configuracion.
 
 # Indica si hay que usar el .bulmages de cada usuario para las configuraicones o si todos los usuarios usaran un directorio compartido.

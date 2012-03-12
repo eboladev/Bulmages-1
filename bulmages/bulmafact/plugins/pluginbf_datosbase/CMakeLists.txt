@@ -1,4 +1,4 @@
-set (docs README.es)
+set (docs README.es README.ca README.en README.fr)
 
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins

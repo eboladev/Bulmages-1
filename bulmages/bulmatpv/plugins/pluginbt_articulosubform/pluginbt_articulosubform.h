@@ -28,7 +28,7 @@
 
 extern "C" PLUGINBT_ARTICULOSUBFORM_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_ARTICULOSUBFORM_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-
+extern "C" PLUGINBT_ARTICULOSUBFORM_EXPORT int  BtBulmaTPV_closeEvent(BtBulmaTPV *);
 
 #endif
 

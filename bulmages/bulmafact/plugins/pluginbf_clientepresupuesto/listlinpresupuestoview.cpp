@@ -43,10 +43,10 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
     if ( res != 0 ) {
         return;
     } // end if
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Id articulo" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo completo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre del articulo" ) );
-    addSubFormHeader ( "idlpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "No de linea" ) );
+    addSubFormHeader ( "idlpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "No de linea" ) );
     addSubFormHeader ( "desclpresupuesto", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     addSubFormHeader ( "pvplpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio de venta s/IVA" ) );
@@ -54,8 +54,8 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "ivalpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% I.V.A." ) );
     addSubFormHeader ( "reqeqlpresupuesto", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% Recargo E.Q." ) );
     addSubFormHeader ( "descuentolpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
-    addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id presupuesto" ) );
-    addSubFormHeader ( "ordenlpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
+    addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _ ( "Id presupuesto" ) );
+    addSubFormHeader ( "ordenlpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Orden" ) );
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );

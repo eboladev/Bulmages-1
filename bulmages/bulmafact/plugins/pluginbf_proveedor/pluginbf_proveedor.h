@@ -28,12 +28,40 @@
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_proveedor.h"
 #include "blaction.h"
+#include "bfsubform.h"
+
 
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int SNewProveedorView (BfCompany *);
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlAction_actionTriggered(BlAction *);
+
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
+
+
+class SubForm_Proveedor : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_Proveedor ( BlSubForm * );
+    ~SubForm_Proveedor();
+
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+    void editarProveedor( QString);
+    void nuevoProveedor();
+    void seleccionarProveedor(BfSubForm *sub=NULL);
+};
 
 #endif
 

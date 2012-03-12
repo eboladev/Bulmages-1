@@ -43,10 +43,10 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
         return;
     } // end if
     addSubFormHeader ( "puntlpedidocliente", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Punteo" ) );
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Id articulo" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo completo articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre articulo" ) );
-    addSubFormHeader ( "numlpedidocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "No de linea" ) );
+    addSubFormHeader ( "numlpedidocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "No de linea" ) );
     addSubFormHeader ( "desclpedidocliente", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     addSubFormHeader ( "pvplpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio de venta s/IVA" ) );
@@ -54,8 +54,8 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "ivalpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% I.V.A." ) );
     addSubFormHeader ( "reqeqlpedidocliente", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% Recargo E.Q." ) );
     addSubFormHeader ( "descuentolpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
-    addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pedido cliente" ) );
-    addSubFormHeader ( "ordenlpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
+    addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _ ( "Id pedido cliente" ) );
+    addSubFormHeader ( "ordenlpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Orden" ) );
 
     /// Establecemos los modos de comportamiento del subformulario
     setInsert ( TRUE );

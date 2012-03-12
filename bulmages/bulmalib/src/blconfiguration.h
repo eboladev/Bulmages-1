@@ -53,6 +53,10 @@
 /// La URL que el visor HTML debe visitar
 #define CONF_URL_CONTENTS             52
 
+/// Traspaso de informacion extendida de los articulos en los documentos.
+#define CONF_USE_DESCARTICULO         53
+
+
 ///Indica el color de fondo del libro diario. (obsoleto)
 #define CONF_BG_DIARIO               106
 /// Indica el color de la letra del diario en el pijama opcion 1.(obsoleto)
@@ -213,6 +217,7 @@
 /// Hoja de estilo a usar con bulmages
 #define CONF_STYLESHEET              430
 #define CONF_CUPS_DEFAULT_PRINTER    440
+#define CONF_CUPS_TICKET_PRINTER     441
 /// Impresora de tickets
 #define CONF_TICKET_PRINTER_FILE     450
 /// Visor de TPV

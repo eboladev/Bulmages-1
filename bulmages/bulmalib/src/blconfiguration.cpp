@@ -455,6 +455,10 @@ QString BlConfiguration::name( int i )
         return "CONF_REPLACE_STRING";
     if ( i == CONF_DIR_USER )
         return "CONF_DIR_USER";
+    if ( i == CONF_USE_DESCARTICULO )
+        return "CONF_USE_DESCARTICULO";
+    if ( i == CONF_CUPS_TICKET_PRINTER )
+        return "CONF_CUPS_TICKET_PRINTER";
     return "";
 }
 

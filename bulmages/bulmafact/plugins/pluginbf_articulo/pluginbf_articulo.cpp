@@ -282,7 +282,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idarticulo", idArticle );
         sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
-        sub->m_registrolinea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
+	sub->m_registrolinea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     delete cur;
 
@@ -423,7 +423,7 @@ void SubForm_Articulo::nuevoArticulo( )
 		if (cur->value("idarticulo") != idarticleold) {
 		  sub->lineaact()->setDbValue ( "idarticulo", cur->value("idarticulo") );
 		  sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
-		  sub->lineaact()->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
+		      sub->m_registrolinea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
 		} // end if
     } // end if
     delete cur;
@@ -462,7 +462,7 @@ void SubForm_Articulo::seleccionarArticulo ( BfSubForm *sub )
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idarticulo", idArticle );
         sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
-        sub->lineaact()->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
+	sub->m_registrolinea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     delete cur;
 
@@ -605,7 +605,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
   BL_FUNC_DEBUG
 
-  if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+  if ( bl->m_entrada.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() && bl->m_tabla == "articulo") {
            // no se si es el autoComplete o que pero em criden a
            // aquesta senyal quan omplo el combo, amb el primer valor
            // i si no m'aturo ara, recalcularia el combo amb nomes

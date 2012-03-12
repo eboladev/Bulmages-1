@@ -286,7 +286,6 @@ void BlSubForm::columnMovedByUser ( int, int oldIndex, int newIndex )
 {
     BL_FUNC_DEBUG
     mui_listcolumnas->moveRow ( oldIndex, newIndex );
-    
 }
 
 
@@ -544,6 +543,34 @@ int BlSubForm::columnCount()
 }
 
 
+/// Column position given its name
+/**
+\param headerName
+\param in_mui_list is true when the visible column in the table is needed. In other case, we look for the row in mui_listcolumnas
+\return
+**/
+int BlSubForm::columnNumber ( const QString &headerName, bool in_mui_list /* default is false: in mui_listcolumnas */ )
+{
+    BL_FUNC_DEBUG
+
+    int i = -1;
+    const int total_filas = mui_listcolumnas->rowCount();
+    for ( int col = 0; col < total_filas && i == -1; col++ ) {
+        if ( mui_listcolumnas->item ( col, 1 )->text() == headerName ) {
+            if (in_mui_list) {
+                // Column visible in the table mui_list
+                i = mui_listcolumnas->item ( col, 3 )->text().toInt();
+            }
+            else {
+                // Column as row in mui_listcolumnas
+                i = col;
+            } // end if
+        } // end if
+    } // end for
+    return i;
+}
+
+
 ///
 /**
 \param i
@@ -551,8 +578,10 @@ int BlSubForm::columnCount()
 void BlSubForm::showColumn ( int i )
 {
     BL_FUNC_DEBUG
-    mui_list->showColumn ( i );
-    
+
+    QString field = mui_listcolumnas->item ( i, 1)->text();
+    mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Checked );
+    on_mui_confcol_clicked();
 }
 
 
@@ -589,8 +618,10 @@ void BlSubForm::setColumnWidth ( int i, int j )
 void BlSubForm::hideColumn ( int i )
 {
     BL_FUNC_DEBUG
-    mui_list->hideColumn ( i );
-    
+
+    QString field = mui_listcolumnas->item ( i, 1)->text();
+    mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Unchecked );
+    on_mui_confcol_clicked();
 }
 
 
@@ -1158,7 +1189,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
     } // end while
 
     if (!invalido) {
-       mui_list->setCurrentCell ( nrow, ncol );
+       mui_list->setCurrentCell ( mui_list->visualRow(nrow), mui_list->visualColumn(ncol) );
     } else {
        BlDebug::blDebug("No hay mas elementos editables en el subformulario", 2);
     } // end if
@@ -1214,7 +1245,7 @@ void BlSubForm::pintar()
     mui_list->setColumnCount ( m_lcabecera.count() );
     pintaCabeceras();
     if ( m_primero ) {
-        loadConfig();	
+        loadConfig();
 	/// Preparamos el menu de subformulario
 	preparaMenu();
     } // end if
@@ -1802,7 +1833,6 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlSubForm::on_mui_list_cellReposition", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
-
     /// Implementacion del semaforo
     static bool semaforo = FALSE;
     if ( semaforo )
@@ -1949,7 +1979,8 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
         it->setCheckState ( Qt::Checked );
     } // end if
 
-    if ( opt & BlSubFormHeader::DbDisableView ) {
+    /// Si el item esta desabilitado y no estamos en modo experto no podemos mostrarlo.
+    if  (( opt & BlSubFormHeader::DbDisableView ) && (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE")) {
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
@@ -2459,7 +2490,7 @@ void BlSubForm::loadConfigXML()
 			mui_listcolumnas->item ( j, 0 ) ->setCheckState ( Qt::Unchecked );
 		    } // end if
 		} // end if
-	    } // end for	    
+	    } // end for
 	} // end if
     } // end form
 
@@ -2504,7 +2535,7 @@ void BlSubForm::loadConfigXML()
 		if ( mui_listcolumnas->item(j,3) -> text().toInt() == linea.toInt()) {
                     mui_listcolumnas->moveRow ( j, i );
 		} // end if
-	    } // end for	    
+	    } // end for
 	} // end if
     } // end for
 
@@ -2533,13 +2564,17 @@ void BlSubForm::loadConfigXML()
 void BlSubForm::on_mui_confcol_clicked()
 {
     BL_FUNC_DEBUG
+    
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
         if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked ) {
             mui_list->showColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
+            headerList()->at(i)->setOptions( headerList()->at(i)->options() & ~BlSubFormHeader::DbHideView );
         } else {
             /// Coge el valor de la columna de 'order' para ocultarla.
             mui_list->hideColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
+            headerList()->at(i)->setOptions( headerList()->at(i)->options() | BlSubFormHeader::DbHideView );
         } // end if
+
     } // end for
     
 }

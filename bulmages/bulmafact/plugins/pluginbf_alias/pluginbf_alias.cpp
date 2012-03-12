@@ -246,7 +246,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
 {
   BL_FUNC_DEBUG
 
-        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+        if ( bl->m_entrada.size() >= g_confpr->value(CONF_NUMCHAR_RELOAD_FILTRO).toInt() && bl->m_tabla == "articulo") {
            // no se si es el autoComplete o què però em criden a
            // aquesta senyal quan omplo el combo, amb el primer valor
            // i si no m'aturo ara, recalcularia el combo amb nomes
