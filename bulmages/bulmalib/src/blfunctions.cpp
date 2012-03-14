@@ -1107,13 +1107,20 @@ QString blStringToUsAscii ( const QString &orig )
 
 /// Trata una cadena para ser escrita dentro de un fichero en Python sin que esta
 /// rompa la sintaxis relacionada con el indentado del lenguaje
-QString blStringToPython ( QString string )
+QString blStringToPython ( QString string, bool eraseQuotes )
 {
     BL_FUNC_DEBUG
     string = string.replace ( "\n", " " );
     string = string.replace ( "\t", " " );
-    string = string.replace ( "\'", " " );
-    string = string.replace ( "\"", " " );
+
+    if (eraseQuotes) {
+      /// Se eliminan las comillas simples o dobles.
+      string = string.replace ( "\'", " " );
+      string = string.replace ( "\"", " " );
+    } else {
+      string = string.replace ( "\'", "\\\'" );
+      string = string.replace ( "\"", "\\\"" );
+    } // end if
     return string;
 }
 
