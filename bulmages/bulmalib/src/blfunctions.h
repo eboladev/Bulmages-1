@@ -140,7 +140,7 @@ QString BL_EXPORT blWindowId ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
 QString BL_EXPORT blScriptEscape ( const QString &cad );
 QString BL_EXPORT blStringToUsAscii ( const QString &orig );
-QString BL_EXPORT blStringToPython(QString string);
+QString BL_EXPORT blStringToPython(QString string, bool eraseQuotes = true);
 bool BL_EXPORT blValidateSpainCIFCode(QString cif1, QChar &digit);
 bool BL_EXPORT blValidateSpainNIFCode(QString nif1, QChar &digit);
 int BL_EXPORT blSumAllDigits(int val);

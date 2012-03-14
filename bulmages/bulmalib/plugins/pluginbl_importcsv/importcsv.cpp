@@ -68,6 +68,60 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
     mui_archivo->setText ( fileName );
 }
 
+
+QString ImportCSV::dbFieldTypeByName(QString fieldName, QString dbTable)
+{
+    QString query = "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = '" + dbTable + "' AND column_name = '" + fieldName + "';";
+    QString result = "";
+    /// Cargamos el query y lo recorremos
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+    if ( !cur->eof() ) {
+        result = cur->value("data_type");
+    } // end if
+    delete cur;
+    
+    return result;
+}
+
+
+QStringList ImportCSV::csvLineParser(QString data, QString fieldDelimiter, QString textDelimiter) {
+    QStringList values;
+     
+    bool quotes = false;
+    unsigned int pos = 0;
+    QString field = "";
+
+    while ( pos < data.length() ) {
+      QString c = QString(data.at(pos));
+      
+      if ( (!quotes) && (c == textDelimiter ) ) {
+	  quotes = true;
+      } else if ( (quotes) && (c == textDelimiter ) ) {
+	  if ( (pos + 1 < data.length()) && (QString(data.at(pos + 1)) == textDelimiter) ) {
+	      field.append(c);
+	      pos++;
+	  } else {
+	      quotes = false;
+	  } // end if
+      } else if ( (!quotes) && (c == fieldDelimiter) ) {
+	  values.append(field);
+	  field.clear();
+      } else if ( (!quotes) && (c == "\n" || c == "\r") ) {
+	  values.append(field);
+	  field.clear();
+      } else {
+	  field.append(c);
+      } // end if
+      pos++;
+    } // end while
+        
+    return values;
+}
+
+
+
+
+
 /** No precisa acciones adicionales en el destructor.
 */
 void ImportCSV::on_mui_aceptar_clicked()
@@ -86,37 +140,80 @@ void ImportCSV::on_mui_aceptar_clicked()
 	linea = file.readLine();
 	/// Dependiendo del separador que usemos hacemos un split en funcion de ello
 	if ( mui_radioSeparadorTab->isChecked() ) {
-	    list1   = linea.split ( "\t" );
+	    list1 = csvLineParser(linea, "\t");
 	} else {
-	    list1   = linea.split ( mui_separador->text() );
+	    list1 = csvLineParser(linea, mui_separador->text());
 	} // end if
+	
+	list1.replaceInStrings("\"", "");
+	
     } // end if
+
 
     mainCompany()->begin();
     try {
 	while ( !file.atEnd() ) {
+	
+	    QStringList list1Tmp = list1;
 	    /// Las lineas siguientes son los datos
 	    /// Los leemos y segun su orden los vamos colocando.
 	    linea = file.readLine();
 	    QStringList list2;
 	    /// Dependiendo del separador que usemos hacemos un split en funcion de ello
 	    if ( mui_radioSeparadorTab->isChecked() ) {
-		list2   = linea.split ( "\t" );
+		list2   = csvLineParser(linea, "\t");
 	    } else {
-		list2   = linea.split ( mui_separador->text() );
+		list2   = csvLineParser(linea, mui_separador->text());
 	    } // end if
 	    list2.replaceInStrings(QRegExp("^$"), "''");
 	    /// Montamos el query
 	    QString query = "";
+
 	    
+	    /// Si se dispone de cabecera, se puede averiguar el tipo de dato y ajustarlo en caso necesario.
+	    if ( mui_cabeceras->isChecked() ) {
+
+		for (int i = 0; i < list1.size(); ++i) {
+		    QString tipo = dbFieldTypeByName(list1.at(i), mui_combotablas->currentText());
+		    if (tipo.contains("numeric", Qt::CaseInsensitive)) {
+			/// Cambia comas a puntos cuando se trata de tipo numerico.
+			QString newString = list2.at(i);
+			list2.replace(i, newString.replace(QString(","), QString(".")));
+		    } else if (tipo.contains("character", Qt::CaseInsensitive)) {
+			/// Si el dato es un texto lo proteje entre comillas.
+			QString newString = list2.at(i);
+			list2.replace(i, "'" + mainCompany()->sanearCadenaUtf8(newString) + "'");
+		    } // end if
+		} // end for
+
+	    } // end if
+
+
 	    if (mui_insert->isChecked()) {
-		    query = "INSERT INTO " + mui_combotablas->currentText() +" ("+list1.join(",").replace("\"","")+") VALUES("+list2.join(",").replace("\"","'")+")";
+		    /// Llamar a funciones especiales en funcion de la tabla
+		    
+		    if (mui_combotablas->currentText() == "articulo") {
+			/// Si no existe la familia
+			if (!list1.contains("idfamilia", Qt::CaseInsensitive)) {
+			    blMsgError(_("Debe existir el campo idfamilia para crear nuevos registros."));
+			    return;
+			} // end if
+			
+			/// Si no existe el campo de 'codigocompletoarticulo' entonces se crea.
+			if (!list1.contains("codarticulo", Qt::CaseInsensitive)) {
+			    list1Tmp.append("codarticulo");
+			    list2.append("''"); /// Codigo de articulo vacio para que se calcule por la base de datos.
+			} // end if
+		    } // end if
+	    
+		    query = "INSERT INTO " + mui_combotablas->currentText() +" (" + list1Tmp.join(",") + ") VALUES(" + list2.join(",") + ")";
+		    
 	    } else {
 		    query = "UPDATE " + mui_combotablas->currentText() + " SET ";
 		    int condition = -1;
 		    
 		    for (int i = 0; i < list1.size(); ++i) {
-			query += list1[i].replace("\"", "") + " = " + list2[i].replace("\"", "'");
+			query += list1[i] + " = " + list2[i];
 
 			if (i + 1 < list1.size()) {
 			    query += ", ";
@@ -134,7 +231,7 @@ void ImportCSV::on_mui_aceptar_clicked()
 			throw -100;
 		    }
 		    
-		    query += " WHERE " + mui_updateField->text().trimmed() + " = '" + list2.at(condition) + "'";
+		    query += " WHERE " + mui_updateField->text().trimmed() + " = " + list2.at(condition);
 
 	    } // end if
 	    

@@ -209,7 +209,7 @@ void PluginBl_SubForm2ODS::sacaods()
 
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
-                QString textocontenido = blStringToPython( subf->mui_list->item ( i, columna ) ->text() );
+                QString textocontenido = blStringToPython( subf->mui_list->item ( i, columna ) ->text(), false );
 
                 //TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
                 if ( subf->headerList() -> at ( columna )-> fieldType() == BlDbField::DbNumeric) {
