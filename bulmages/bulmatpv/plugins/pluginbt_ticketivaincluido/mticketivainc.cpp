@@ -44,7 +44,6 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     setFocusPolicy ( Qt::NoFocus );
 	
     emp->pWorkspace()->addSubWindow ( this );
-    //setWindowTitle ( "Ticket" );
     m_parent = parent;
 	
     /// Por defecto hacemos el browser invisible porque es leeeento
@@ -54,7 +53,6 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     g_plugins->run ( "MTicketIVAInc_MTicketIVAInc_Post", this );
 	
     pintar();
-	
 	
 }
 

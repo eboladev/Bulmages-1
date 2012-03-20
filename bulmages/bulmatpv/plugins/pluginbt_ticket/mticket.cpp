@@ -41,7 +41,6 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace() ->addSubWindow ( this );
-    setWindowTitle ( "Ticket" );
     g_plugins->run ( "MTicket_MTicket_Post", this );
     
     m_parent = parent;
@@ -49,7 +48,7 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-    
+    pintar();
 }
 
 
@@ -207,7 +206,7 @@ void MTicket::on_mui_reimprimir_clicked()
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
 
-    // Si el numero de resultados devuelto = 0 entonces no existe ticket previo.
+    /// Si el numero de resultados devuelto = 0 entonces no existe ticket previo.
     if (cur->numregistros() == 0) {
 
 	blMsgInfo(_("No existe ningun ticket anterior para imprimir."));
@@ -216,7 +215,7 @@ void MTicket::on_mui_reimprimir_clicked()
 
         previousTicket->setDbValue("idalbaran", cur->value("idalbaran"));
 
-	// Cargamos las lineas de albaran
+	/// Cargamos las lineas de albaran
         cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->value("idalbaran") );
 
 	while ( !cur->eof() ) {
