@@ -49,7 +49,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     blBindTextDomain ("pluginticketbasicoivainc", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BlDockWidget ( "Ticket I.V.A. incluido", tpv, "ticketbasico" );
+    g_doc1 = new BlDockWidget ( _("Ticket I.V.A. incluido"), tpv, "ticketbasico" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     
     g_doc1->setGeometry ( 100, 100, 100, 500 );
