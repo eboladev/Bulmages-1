@@ -176,7 +176,6 @@ void PluginBl_SubForm2ODS::sacaods()
         } // end if
     } // end for
 
-//    y += 1;
     x = 1;
     /// Sacamos las cabeceras con los nombres de los campos de la base de datos.
     for ( int h = 0; h < subf->mui_listcolumnas->rowCount(); ++h ) {
@@ -210,7 +209,7 @@ void PluginBl_SubForm2ODS::sacaods()
 
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
-                QString textocontenido = blStringToPython( subf->mui_list->item ( i, columna ) ->text() );
+                QString textocontenido = blStringToPython( subf->mui_list->item ( i, columna ) ->text(), false );
 
                 //TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
                 if ( subf->headerList() -> at ( columna )-> fieldType() == BlDbField::DbNumeric) {

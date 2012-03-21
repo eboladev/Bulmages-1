@@ -56,6 +56,8 @@ public:
     ~ImportCSV();
     void rellenarTablas();
     void procesarLinea ( const QString &linea );
+    QString dbFieldTypeByName(QString fieldName, QString dbTable);
+    QStringList csvLineParser(QString data, QString fieldDelimiter = ",", QString textDelimiter = "\"");
 
 public slots:
     void on_mui_aceptar_clicked();
