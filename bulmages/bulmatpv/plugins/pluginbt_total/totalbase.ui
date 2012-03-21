@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>336</width>
-    <height>170</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>0</width>
-    <height>170</height>
+    <height>200</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -22,9 +22,9 @@
   <property name="layoutDirection">
    <enum>Qt::RightToLeft</enum>
   </property>
-  <layout class="QVBoxLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="margin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <item>
     <widget class="QLineEdit" name="mui_total">
@@ -222,17 +222,23 @@
     </layout>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+    <widget class="QCheckBox" name="mui_imprimiralcobrar">
+     <property name="enabled">
+      <bool>true</bool>
      </property>
-     <property name="sizeHint" stdset="0">
+     <property name="text">
+      <string>Imprimir ticket al cobrar</string>
+     </property>
+     <property name="iconSize">
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>16</width>
+       <height>16</height>
       </size>
      </property>
-    </spacer>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

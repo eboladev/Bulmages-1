@@ -4,6 +4,9 @@
 Total::Total ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
+    if (g_confpr->value(CONF_TPV_REIMPRIMIR) == "TRUE") {
+        mui_imprimiralcobrar->hide();
+    } // end if
 }
 
 
