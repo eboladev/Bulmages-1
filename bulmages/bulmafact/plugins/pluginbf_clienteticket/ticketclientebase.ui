@@ -1515,12 +1515,12 @@
   <customwidget>
    <class>BfClienteTicketSubForm</class>
    <extends>QWidget</extends>
-   <header>bfclientealbaransubform.h</header>
+   <header>bfclienteticketsubform.h</header>
   </customwidget>
   <customwidget>
    <class>BfClienteTicketDescuentoSubForm</class>
    <extends>QWidget</extends>
-   <header>bfclientealbarandescuentosubform.h</header>
+   <header>bfclienteticketdescuentosubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

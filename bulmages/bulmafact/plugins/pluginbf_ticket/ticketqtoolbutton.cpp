@@ -33,6 +33,11 @@
 #include "blfunctions.h"
 #include "ticketqtoolbutton.h"
 #include "presupuestoview.h"
+#include "facturaview.h"
+#include "pedidoclienteview.h"
+#include "ticketclienteview.h"
+#include "albaranclienteview.h"
+
 #include "blfixed.h"
 #include "facturaview.h"
 #include "bfcompany.h"
@@ -47,13 +52,14 @@
 \param fac
 \param parent
 **/
-TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, TicketClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
+TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, TicketClienteView *alb, FacturaView *fac , AlbaranClienteView *alb1, QWidget *parent ) : QToolButton ( parent )
 {
     BL_FUNC_DEBUG
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
     m_facturaView = fac;
+    m_albaran1ClienteView = alb1;
     setBoton();
     
 }
@@ -93,26 +99,95 @@ void TicketQToolButton::click()
 {
     BL_FUNC_DEBUG
 
-    if ( m_albaranClienteView != NULL ) {
+       if ( m_presupuestoView != NULL ) {
     
-    m_albaranClienteView->generateRML("ticket_normal.txt");
-
-    if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
-        system ( comando.toAscii().data() );
-    } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-        system ( comando.toAscii().data() );
-    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
-		blRawPrint( "ticket_normal.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
-    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-	blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
-    } else {
-		blRawPrint( "ticket_normal.txt");
-    } // end if  
-
+	  m_presupuestoView->generateRML("presupuesto_ticket.txt");
+	  
+	  if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "presupuesto_ticket.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "presupuesto_ticket.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+		      blRawPrint( "presupuesto_ticket.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+	  } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	      blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
+	  } else {
+		      blRawPrint( "presupuesto_ticket.txt");
+	  } // end if  
+	  
+    } else   if ( m_pedidoClienteView != NULL ) {
     
-    } // end if
+	  m_pedidoClienteView->generateRML("pedido_ticket.txt");
+	  
+	  if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "pedido_ticket.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "pedido_ticket.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+		      blRawPrint( "pedido_ticket.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+	  } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	      blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
+	  } else {
+		      blRawPrint( "pedido_ticket.txt");
+	  } // end if  
+	  
+    } else   if ( m_albaranClienteView != NULL ) {
+    
+	  m_albaranClienteView->generateRML("ticket_normal.txt");
+	  
+	  if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+		      blRawPrint( "ticket_normal.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+	  } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	      blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
+	  } else {
+		      blRawPrint( "ticket_normal.txt");
+	  } // end if  
+	  
+    } else     if ( m_albaran1ClienteView != NULL ) {
+    
+	  m_albaran1ClienteView->generateRML("albaran_ticket.txt");
+	  
+	  if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "albaran_ticket.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "albaran_ticket.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+		      blRawPrint( "albaran_ticket.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+	  } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	      blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
+	  } else {
+		      blRawPrint( "albaran_ticket.txt");
+	  } // end if  
+    } else     if ( m_facturaView != NULL ) {
+    
+	  m_facturaView->generateRML("factura_ticket.txt");
+	  
+	  if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "factura_ticket.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+	      QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "factura_ticket.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+	      system ( comando.toAscii().data() );
+	  } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+		      blRawPrint( "factura_ticket.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+	  } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	      blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
+	  } else {
+		      blRawPrint( "factura_ticket.txt");
+	  } // end if  
+    }
     
 }
 

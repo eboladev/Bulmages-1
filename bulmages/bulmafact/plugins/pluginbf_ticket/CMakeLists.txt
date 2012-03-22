@@ -38,6 +38,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clienteticket/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clienteticket/)
 
@@ -110,4 +112,10 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clienteticket)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clienteticket pluginbf_clientealbaran pluginbf_clientepresupuesto pluginbf_clientepedido)
+
+install(DIRECTORY openreports/ 
+      DESTINATION share/bulmages/openreports
+      PATTERN ".svn" EXCLUDE)
+
+

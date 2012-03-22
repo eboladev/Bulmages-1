@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BFCLIENTEALBARANSUBFORM_H
-#define BFCLIENTEALBARANSUBFORM_H
+#ifndef BFCLIENTETICKETSUBFORM_H
+#define BFCLIENTETICKETSUBFORM_H
 
 #include <QEvent>
 

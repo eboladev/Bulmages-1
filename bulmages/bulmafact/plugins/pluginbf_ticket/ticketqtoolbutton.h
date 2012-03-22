@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef TICKETQTOOLBUTTON_H
-#define TICKETQTOOLBUTTON_H
+#ifndef TICKET_QTOOLBUTTON_H
+#define TICKET_QTOOLBUTTON_H
 
 #include <QWidget>
 #include <QToolButton>
@@ -35,6 +35,8 @@
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
 #include "ticketclienteview.h"
+#include "albaranclienteview.h"
+
 
 
 class TicketQToolButton : public QToolButton
@@ -47,9 +49,10 @@ private:
     PedidoClienteView *m_pedidoClienteView;
     TicketClienteView *m_albaranClienteView;
     FacturaView    *m_facturaView;
+    AlbaranClienteView *m_albaran1ClienteView;
 
 public:
-    TicketQToolButton ( PresupuestoView *, PedidoClienteView *, TicketClienteView *,  FacturaView * , QWidget *parent = NULL );
+    TicketQToolButton ( PresupuestoView *, PedidoClienteView *, TicketClienteView *,  FacturaView * ,AlbaranClienteView *,  QWidget *parent = NULL );
     ~TicketQToolButton();
     void setBoton();
 public slots:
