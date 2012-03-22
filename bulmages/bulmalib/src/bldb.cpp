@@ -1497,6 +1497,19 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     } // end while
 
 
+    /// Buscamos comentarios para poder quitarlos
+    pos = buff.indexOf("<!-- COMMENT");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx541 ( "<!--\\s*COMMENT\\s*([^-]*)\\s*-->" );
+    rx541.setMinimal ( TRUE );
+    while ( ( pos = rx541.indexIn ( buff, 0 ) ) != -1 ) {
+        buff.replace ( pos, rx541.matchedLength(), "" );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+
+
     /// Buscamos establecimiento de variables y los ponemos en m_variables
     pos = buff.indexOf("<!-- SETVAR");
     cadant = buff.left(pos);
@@ -2041,8 +2054,6 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     if (profundidad == 0) {
       parseTagsPost(buff, tipoEscape);
     } // end if
-    
-    
     
     return 1;
 }

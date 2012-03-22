@@ -18,6 +18,7 @@ dicha ficha</P>
 <P style="align:justify;">Se pueden crear informes personalizados generando plantillas RML que contengan la subcadena
 impers_tabla en el nombre del fichero .rml, en el directorio de plantillas, donde (tabla) es la tabla sobre la que actua el informe (Ver opciones avanzadas de ficha
 si se desconoce el nombre de la tabla</P>
+<P style="align:justify;">También puede generar informes para la ticketera ESC/POS con plantillas del estilo <b>impers_tabla*.txt</b></P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
