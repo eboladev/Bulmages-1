@@ -52,6 +52,9 @@ typedef QMap<QString, BlFixed> base;
 BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
 {
     BL_FUNC_DEBUG
+    
+    m_nextLineIsInsert = false;
+    
     /// Inicializamos los parametros del ticket para la base de datos.
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
@@ -97,6 +100,18 @@ BtTicket::~BtTicket()
     BL_FUNC_DEBUG
     g_plugins->run ( "Des_BtTicket_BtTicket_Post", this );
     
+}
+
+
+void BtTicket::setNextLineIsInsert(bool nextLineIsInsert)
+{
+    m_nextLineIsInsert = nextLineIsInsert;
+}
+
+
+bool BtTicket::nextLineIsInsert()
+{
+    return m_nextLineIsInsert;
 }
 
 
@@ -174,6 +189,10 @@ QList<BlDbRecord *> *BtTicket::listaLineas()
 BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
     BL_FUNC_DEBUG
+
+    if (m_nextLineIsInsert) {
+	nuevaLinea = true;
+    } // end if
 
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;

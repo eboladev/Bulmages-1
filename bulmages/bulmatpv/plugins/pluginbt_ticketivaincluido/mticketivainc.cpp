@@ -27,40 +27,43 @@
 #include <QTextBrowser>
 #include <QBitmap>
 
-
 #include "mticketivainc.h"
 #include "bldb.h"
 #include "btbulmatpv.h"
 #include "btsubform.h"
 
+
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
+MTicketIVAInc::MTicketIVAInc ( BtCompany *btCompany, QWidget *parent ) : BlWidget ( btCompany, parent )
 {
     BL_FUNC_DEBUG
+
+    m_btCompany = btCompany;
+
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
-	
-    emp->pWorkspace()->addSubWindow ( this );
+
+    m_btCompany->pWorkspace()->addSubWindow ( this );
     m_parent = parent;
-	
+
     /// Por defecto hacemos el browser invisible porque es leeeento
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-    g_plugins->run ( "MTicketIVAInc_MTicketIVAInc_Post", this );
-	
     pintar();
-	
+
+    g_plugins->run ( "MTicketIVAInc_MTicketIVAInc_Post", this );
 }
+
 
 MTicketIVAInc::~MTicketIVAInc()
 {
     BL_FUNC_DEBUG
-    
 }
+
 
 void MTicketIVAInc::pintar()
 {
@@ -76,7 +79,10 @@ void MTicketIVAInc::pintar()
 	
     QString buscar;
 
-    BtTicket *ticket = ( ( BtCompany * ) mainCompany() )->ticketActual();
+    BtTicket *ticket = m_btCompany->ticketActual();
+    
+    /// Establecemos la condicion de que la sigueinte linea es una insercion segun el ticket actual.
+    mui_nextLineIsInsert->setChecked(ticket->nextLineIsInsert());
 
     QString plainTextContent = "";
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -114,7 +120,7 @@ void MTicketIVAInc::pintar()
         item = ticket->listaLineas()->at ( i );
         QString bgColor = "#FFFFFF";
         if ( item == ticket->lineaActBtTicket() ) {
-	    buscar = item->dbValue ( "nomarticulo" );
+	    buscar = item->dbValue ( "desclalbaran" );
             bgColor = "#CCCCFF";
             plainTextContent += "> ";
         } else {
@@ -127,12 +133,12 @@ void MTicketIVAInc::pintar()
         int precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
 
         plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-        plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
+        plainTextContent += item->dbValue("desclalbaran").leftJustified ( 20, ' ', TRUE ) + " ";
         plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', TRUE ) + "\n";
 
         htmlContent += "<tr>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</td>";
-        htmlContent += "<td bgcolor=\"" + bgColor + "\">" + item->dbValue ( "nomarticulo" ) + "</td>";
+        htmlContent += "<td bgcolor=\"" + bgColor + "\">" + item->dbValue ( "desclalbaran" ) + "</td>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString('0', precision) + "</td>";
         htmlContent += "</tr>";
 
@@ -184,58 +190,62 @@ void MTicketIVAInc::pintar()
     QTextCursor cursor = mui_browser->textCursor();
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
-	
-    
 }
+
 
 void MTicketIVAInc::on_mui_subir_clicked()
 {
     /// Simulamos la pulsacion de la tecla arriba
-    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
+    m_btCompany->pulsaTecla ( Qt::Key_Up );
 }
+
 
 void MTicketIVAInc::on_mui_bajar_clicked()
 {
     /// Simulamos la pulsacion de la tecla abajo
-    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
+    m_btCompany->pulsaTecla ( Qt::Key_Down );
 }
+
 
 void MTicketIVAInc::on_mui_borrar_clicked()
 {
-    BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
+    BtTicket * tick = m_btCompany->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
 }
 
+
 void MTicketIVAInc::on_mui_imprimir_clicked()
 {
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
-    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F6 );
+    m_btCompany->pulsaTecla ( Qt::Key_F6 );
 }
+
 
 void MTicketIVAInc::on_mui_borrarticket_clicked()
 {
-    BtCompany *emp = ( ( BtCompany * ) mainCompany() );
+    BL_FUNC_DEBUG
+  
     BtTicket *ticket;
     
     /// No permitimos bajo ningun concepto borrar un ticket que ya ha sido impreso.
-    if (emp->ticketActual()->dbValue("numalbaran") != "") {
+    if (m_btCompany->ticketActual()->dbValue("numalbaran") != "") {
 	blMsgInfo(_("Operacion no permitida. El ticket se ha imprimido. Debe cobrar el ticket."));
 	return;
     } // end if
     
-    QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
-    QString idtrabajador = emp->ticketActual()->dbValue ( "idtrabajador" );
-    QString nomticketdefecto = emp->ticketActual()->nomTicketDefecto();
+    QString nomticketactual = m_btCompany->ticketActual()->dbValue ( "nomticket" );
+    QString idtrabajador = m_btCompany->ticketActual()->dbValue ( "idtrabajador" );
+    QString nomticketdefecto = m_btCompany->ticketActual()->nomTicketDefecto();
     int i;
 
 
     /// Eliminamos el ticket actual y lo borra de la lista de tickets.
-    for ( i = 0; i < emp->listaTickets() ->size(); ++i ) {
-	ticket = emp->listaTickets() ->at ( i );
+    for ( i = 0; i < m_btCompany->listaTickets() ->size(); ++i ) {
+	ticket = m_btCompany->listaTickets() ->at ( i );
 	if ( (nomticketactual == ticket->dbValue ( "nomticket" )) && (idtrabajador == ticket->dbValue ( "idtrabajador" )) ) {
-	    emp->listaTickets()->removeAt(i);
+	    m_btCompany->listaTickets()->removeAt(i);
 	    delete ticket;
 	} // end if
     } // end for
@@ -244,21 +254,33 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     /// Solo agregamos a la lista si es el ticket actual.
     if (nomticketactual == nomticketdefecto) {
         /// Creamos un nuevo ticket vacio.
-	ticket = emp->newBtTicket();
+	ticket = m_btCompany->newBtTicket();
 	ticket->setDbValue("idtrabajador", idtrabajador);
-	emp->setTicketActual(ticket);
-	emp->listaTickets()->append(ticket);
+	m_btCompany->setTicketActual(ticket);
+	m_btCompany->listaTickets()->append(ticket);
     } else {
 	/// Localizamos el ticket por defecto.
-	for ( i = 0; i < emp->listaTickets() ->size(); ++i ) {
-	    ticket = emp->listaTickets() ->at ( i );
+	for ( i = 0; i < m_btCompany->listaTickets() ->size(); ++i ) {
+	    ticket = m_btCompany->listaTickets() ->at ( i );
 	    if ( (nomticketdefecto == ticket->dbValue ( "nomticket" )) && (idtrabajador == ticket->dbValue ( "idtrabajador" )) ) {
-		emp->setTicketActual(ticket);
+		m_btCompany->setTicketActual(ticket);
 	        break;
 	    } // end if
 	} // end for
     } // end if
     
     ticket->pintar();
+}
+
+
+void MTicketIVAInc::on_mui_nextLineIsInsert_toggled(bool checked)
+{
+    BL_FUNC_DEBUG
+
+    if (checked){
+        m_btCompany->ticketActual()->setNextLineIsInsert(true);
+    } else {
+	m_btCompany->ticketActual()->setNextLineIsInsert(false);
+    } // end if
 }
 

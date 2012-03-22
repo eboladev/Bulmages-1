@@ -70,23 +70,7 @@
       <number>0</number>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QCheckBox" name="mui_propiedades">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>60</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Formateado</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
+      <item row="0" column="4">
        <widget class="QToolButton" name="mui_borrarticket">
         <property name="minimumSize">
          <size>
@@ -115,12 +99,108 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>45</width>
-          <height>45</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="autoRaise">
          <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="1">
+       <widget class="QToolButton" name="mui_nextLineIsInsert">
+        <property name="minimumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Insertar en nueva linea</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../bulmages.qrc">
+          <normaloff>:/BulmaCont32x32/images/png/i_configuracion.xpm</normaloff>:/BulmaCont32x32/images/png/i_configuracion.xpm</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QToolButton" name="mui_formatear">
+        <property name="minimumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Formateado</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../bulmages.qrc">
+          <normaloff>:/BulmaCont32x32/images/png/wizard.png</normaloff>:/BulmaCont32x32/images/png/wizard.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QFrame" name="mui_plugbotones">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
         </property>
        </widget>
       </item>
@@ -339,25 +419,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="mui_plugbotones">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>0</number>
-        </property>
-       </widget>
-      </item>
-      <item>
        <spacer>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -380,50 +441,50 @@
  </resources>
  <connections>
   <connection>
-   <sender>mui_propiedades</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>mui_plainText</receiver>
-   <slot>setHidden(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>226</x>
-     <y>93</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>179</x>
-     <y>605</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_propiedades</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>mui_browser</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>229</x>
-     <y>88</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>240</x>
-     <y>137</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>mui_configurar</sender>
    <signal>toggled(bool)</signal>
    <receiver>mui_frame</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>236</x>
-     <y>11</y>
+     <x>255</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>416</x>
-     <y>55</y>
+     <x>388</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_formatear</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_plainText</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>406</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_formatear</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_browser</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>423</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>183</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>

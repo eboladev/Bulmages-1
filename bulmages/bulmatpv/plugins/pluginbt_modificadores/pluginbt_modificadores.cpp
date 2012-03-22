@@ -31,6 +31,7 @@
 #include "bldockwidget.h"
 #include "blapplication.h"
 #include "modificadoresqtoolbutton.h"
+#include "editardescripcionqtoolbutton.h"
 
 #include "tabletcanvas.h"
 
@@ -104,62 +105,95 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 
 int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
-    ModificadoresQToolButton *sel = new ModificadoresQToolButton (  (BtCompany *)tick->mainCompany(), tick );
-    sel->setFixedSize (48, 48);
-    sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    sel->setStatusTip ( _("Modificadores") );
-    sel->setToolTip ( _("Establecer los modificadores de producto") );
-    sel->setMinimumSize ( QSize ( 32, 32 ) );
-    sel->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
-    sel->setIconSize ( QSize ( 32, 32 ) );    
+    BL_FUNC_DEBUG
+  
+    ModificadoresQToolButton *modificadores = new ModificadoresQToolButton (  (BtCompany *)tick->mainCompany(), tick );
+    modificadores->setFixedSize (48, 48);
+    modificadores->setObjectName ( QString::fromUtf8 ( "modificadoresqtoolbutton" ) );
+    modificadores->setStatusTip ( _("Modificadores") );
+    modificadores->setToolTip ( _("Establecer los modificadores de producto") );
+    modificadores->setMinimumSize ( QSize ( 32, 32 ) );
+    modificadores->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
+    modificadores->setIconSize ( QSize ( 32, 32 ) );    
 
-/*    
-    MTabletQToolButton *sel1 = new MTabletQToolButton (  (BtCompany *)tick->mainCompany(), tick );
-    sel1->setFixedSize (48, 48);
-    sel1->setObjectName ( QString::fromUtf8 ( "Captura Tablet" ) );
-    sel1->setStatusTip ( _("Captura tablet") );
-    sel1->setToolTip ( _("Captura tablet") );
-    sel1->setMinimumSize ( QSize ( 32, 32 ) );
-    sel1->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadoresg.png"  ) );
-    sel1->setIconSize ( QSize ( 32, 32 ) );
-*/
-    QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QHBoxLayout ( tick->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
-        m_hboxLayout1->setMargin ( 0 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    
+    EditarDescripcionQToolButton *editarDescripcion = new EditarDescripcionQToolButton (  (BtCompany *)tick->mainCompany(), tick );
+    editarDescripcion->setFixedSize (48, 48);
+    editarDescripcion->setObjectName ( QString::fromUtf8 ( "editardescripcionqtoolbutton" ) );
+    editarDescripcion->setStatusTip ( _("Editar descripcion") );
+    editarDescripcion->setToolTip ( _("Edita la descripcion del articulo") );
+    editarDescripcion->setMinimumSize ( QSize ( 32, 32 ) );
+    editarDescripcion->setIcon ( QIcon ( ":/Images/edit_edit.png" ) );
+    editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
+    
+
+    QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");
+
+    if (frame) {
+    
+	QHBoxLayout *m_hboxLayout1 = frame->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( frame );
+	    m_hboxLayout1->setSpacing ( 5 );
+	    m_hboxLayout1->setMargin ( 0 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	
+	m_hboxLayout1->addWidget ( modificadores );
+	m_hboxLayout1->addWidget ( editarDescripcion );
+
+    } else {
+      
+	blMsgInfo("No existe el mui_plugbotones");
+	
     } // end if
-    m_hboxLayout1->addWidget ( sel );
-//    m_hboxLayout1->addWidget ( sel1 );
+  
 }
 
 
 
 int MTicket_MTicket_Post (MTicket *tick) {
-    ModificadoresQToolButton *sel = new ModificadoresQToolButton ( (BtCompany *)tick->mainCompany(), tick );
-    sel->setFixedSize (48, 48);
-    sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    sel->setStatusTip ( _("Modificadores") );
-    sel->setToolTip ( _("Establecer los modificadores de producto") );
-    sel->setMinimumSize ( QSize ( 32, 32 ) );
-    sel->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
-    sel->setIconSize ( QSize ( 32, 32 ) );
+    BL_FUNC_DEBUG
+  
+    ModificadoresQToolButton *modificadores = new ModificadoresQToolButton (  (BtCompany *)tick->mainCompany(), tick );
+    modificadores->setFixedSize (48, 48);
+    modificadores->setObjectName ( QString::fromUtf8 ( "modificadoresqtoolbutton" ) );
+    modificadores->setStatusTip ( _("Modificadores") );
+    modificadores->setToolTip ( _("Establecer los modificadores de producto") );
+    modificadores->setMinimumSize ( QSize ( 32, 32 ) );
+    modificadores->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
+    modificadores->setIconSize ( QSize ( 32, 32 ) );    
+
     
+    EditarDescripcionQToolButton *editarDescripcion = new EditarDescripcionQToolButton (  (BtCompany *)tick->mainCompany(), tick );
+    editarDescripcion->setFixedSize (48, 48);
+    editarDescripcion->setObjectName ( QString::fromUtf8 ( "editardescripcionqtoolbutton" ) );
+    editarDescripcion->setStatusTip ( _("Editar descripcion") );
+    editarDescripcion->setToolTip ( _("Edita la descripcion del articulo") );
+    editarDescripcion->setMinimumSize ( QSize ( 32, 32 ) );
+    editarDescripcion->setIcon ( QIcon ( ":/Images/edit_edit.png" ) );
+    editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
+    
+
     QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");
-//    QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+
     if (frame) {
-      QHBoxLayout *m_hboxLayout1 = frame->findChild<QHBoxLayout *> ( "hboxLayout1" );
-      if ( !m_hboxLayout1 ) {
-//	  m_hboxLayout1 = new QHBoxLayout ( tick->mui_plugbotones );
-	  m_hboxLayout1 = new QHBoxLayout ( frame );
-	  m_hboxLayout1->setSpacing ( 5 );
-	  m_hboxLayout1->setMargin ( 0 );
-	  m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-      } // end if
-      m_hboxLayout1->addWidget ( sel );
+    
+	QHBoxLayout *m_hboxLayout1 = frame->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( frame );
+	    m_hboxLayout1->setSpacing ( 5 );
+	    m_hboxLayout1->setMargin ( 0 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	
+	m_hboxLayout1->addWidget ( modificadores );
+	m_hboxLayout1->addWidget ( editarDescripcion );
+
     } else {
-      blMsgInfo("No existe el mui_plugbotones");
+      
+	blMsgInfo("No existe el mui_plugbotones");
+	
     } // end if
 }
 

@@ -34,14 +34,16 @@
 #include "ui_mticketivaincbase.h"
 #include "btsubform.h"
 
+
 class MTicketIVAInc : public BlWidget, public Ui_MTicketIVAIncBase
 {
     Q_OBJECT
 
     QWidget *m_parent;
+    BtCompany* m_btCompany;
 
 public:
-    MTicketIVAInc ( BtCompany *emp, QWidget *parent );
+    MTicketIVAInc ( BtCompany *btCompany, QWidget *parent );
     virtual ~MTicketIVAInc();
     virtual void pintar();
 
@@ -51,6 +53,7 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_borrarticket_clicked();
+    virtual void on_mui_nextLineIsInsert_toggled(bool checked);
 
 };
 
