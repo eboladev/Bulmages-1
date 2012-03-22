@@ -264,7 +264,7 @@ int BlToolButton_released(BlToolButton *bot) {
 	QObject::connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
 	/// Hacemos que las opciones de filtrado del listado ya esten bien.
-	fac->mui_cliente->setId ( fact1->dbValue ( "idcliente" ) );
+	fac->m_cliente->setId ( fact1->dbValue ( "idcliente" ) );
 	fac->on_mui_actualizar_clicked();
 
 	/// Lanzamos el dialogo.
