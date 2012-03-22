@@ -61,7 +61,7 @@ void AlbaranClienteListSubform::load ( QString query )
 void AlbaranClienteList::setidcliente ( QString val )
 {
     BL_FUNC_DEBUG
-    mui_cliente->setId ( val );
+    m_cliente->setId ( val );
     
 }
 
@@ -91,8 +91,8 @@ void AlbaranClienteList::crear()
     
     /// Si se crea el nuevo albaran desde la lista de albaranes de un cliente,
     /// entonces se crea el albaran para este cliente.
-    if (mui_cliente->id() != "") {
-	acv->mui_idcliente->setId( mui_cliente->id() );
+    if (m_cliente->id() != "") {
+	acv->mui_idcliente->setId( m_cliente->id() );
     } // end if
 
     acv->show();
@@ -156,27 +156,27 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     int res = g_plugins->run ( "AlbaranClienteList_AlbaranClienteList", this );
     if ( res != 0 )
         return;
-    mui_cliente->setMainCompany ( comp );
-    mui_articulo->setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     iniciaForm();
 
     /// Establecemos los parametros de busqueda del Cliente
-    mui_cliente->setLabel ( _ ( "Cliente:" ) );
-    mui_cliente->setTableName ( "cliente" );
-    mui_cliente->m_valores["cifcliente"] = "";
-    mui_cliente->m_valores["nomcliente"] = "";
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
 
     /// Iniciamos el buscador de trabajadores.
-    mui_idtrabajador->setMainCompany ( mainCompany() );
-    mui_idtrabajador->setQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, nomtrabajador" );
-    mui_idtrabajador->setTableName ( "trabajador" );
-    mui_idtrabajador->setFieldId ( "idtrabajador" );
-    mui_idtrabajador->m_valores["apellidostrabajador"] = "";
-    mui_idtrabajador->m_valores["nomtrabajador"] = "";
-    mui_idtrabajador->setAllowNull ( TRUE );
-    mui_idtrabajador->setId("");
+    m_idtrabajador->setMainCompany ( mainCompany() );
+    m_idtrabajador->setQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, nomtrabajador" );
+    m_idtrabajador->setTableName ( "trabajador" );
+    m_idtrabajador->setFieldId ( "idtrabajador" );
+    m_idtrabajador->m_valores["apellidostrabajador"] = "";
+    m_idtrabajador->m_valores["nomtrabajador"] = "";
+    m_idtrabajador->setAllowNull ( TRUE );
+    m_idtrabajador->setId("");
     
     /// Cargamos los filtros guardados.
     cargaFiltrosXML();
@@ -223,20 +223,20 @@ void AlbaranClienteList::setMainCompany ( BfCompany *comp )
 {
     BL_FUNC_DEBUG
     BlMainCompanyPointer::setMainCompany ( comp );
-    mui_cliente->setMainCompany ( comp );
-    mui_articulo->setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
     
     /// Iniciamos el buscador de trabajadores.
-    mui_idtrabajador->setMainCompany ( mainCompany() );
-    mui_idtrabajador->setQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, nomtrabajador" );
-    mui_idtrabajador->setTableName ( "trabajador" );
-    mui_idtrabajador->setFieldId ( "idtrabajador" );
-    mui_idtrabajador->m_valores["apellidostrabajador"] = "";
-    mui_idtrabajador->m_valores["nomtrabajador"] = "";
-    mui_idtrabajador->setAllowNull ( TRUE );   
-    mui_idtrabajador->setId("");
+    m_idtrabajador->setMainCompany ( mainCompany() );
+    m_idtrabajador->setQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, nomtrabajador" );
+    m_idtrabajador->setTableName ( "trabajador" );
+    m_idtrabajador->setFieldId ( "idtrabajador" );
+    m_idtrabajador->m_valores["apellidostrabajador"] = "";
+    m_idtrabajador->m_valores["nomtrabajador"] = "";
+    m_idtrabajador->setAllowNull ( TRUE );   
+    m_idtrabajador->setId("");
     
     
 }
@@ -267,7 +267,7 @@ void AlbaranClienteList::presentar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
     /// Esta consulta podria resultar NULA y debe tratarse el caso
     if ( cur ) {
-        mui_total->setText ( cur->value( "total" ) );
+        m_total->setText ( cur->value( "total" ) );
         delete cur;
     } // end if
 
@@ -364,15 +364,15 @@ QString AlbaranClienteList::generarFiltro()
     BL_FUNC_DEBUG
     QString filtro = "";
 
-    /// Hacemos el filtrado like del campo mui_filtro
-    filtro += mui_list->likeFilterSQL(mui_filtro->text());
+    /// Hacemos el filtrado like del campo m_filtro
+    filtro += mui_list->likeFilterSQL(m_filtro->text());
     
 
-    if ( mui_cliente->id() != "" )
-        filtro += " AND albaran.idcliente='" + mui_cliente->id() + "'";
+    if ( m_cliente->id() != "" )
+        filtro += " AND albaran.idcliente='" + m_cliente->id() + "'";
 
-    if ( mui_articulo->idarticulo() != "" )
-        filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + mui_articulo->idarticulo() + "')";
+    if ( m_articulo->idarticulo() != "" )
+        filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + m_articulo->idarticulo() + "')";
 
     /// Tratamos los elementos procesados y no procesados.
     if ( mui_procesada->currentIndex() == 1 ) {
@@ -383,14 +383,14 @@ QString AlbaranClienteList::generarFiltro()
         filtro += " AND NOT procesadoalbaran ";
     } // end if
 
-    if ( mui_fechaInicial->text() != "" )
-        filtro += " AND fechaalbaran >= '" + mui_fechaInicial->text() + "' ";
+    if ( m_fechain->text() != "" )
+        filtro += " AND fechaalbaran >= '" + m_fechain->text() + "' ";
 
-    if ( mui_fechaFinal->text() != "" )
-        filtro += " AND fechaalbaran <= '" + mui_fechaFinal->text() + "' ";
+    if ( m_fechafin->text() != "" )
+        filtro += " AND fechaalbaran <= '" + m_fechafin->text() + "' ";
 
-    if (mui_idtrabajador->id() != "") {
-	filtro += " AND idtrabajador = " + mui_idtrabajador->id();
+    if (m_idtrabajador->id() != "") {
+	filtro += " AND idtrabajador = " + m_idtrabajador->id();
     } // end if
     
     
