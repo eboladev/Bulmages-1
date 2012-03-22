@@ -31,3 +31,4 @@ extern "C" PLUGINBL_REPORT_EXPORT int BcCompany_createMainWindows_Post ( BcCompa
 
 extern "C" PLUGINBL_REPORT_EXPORT int init();
 
+extern "C" PLUGINBL_REPORT_EXPORT int init1();

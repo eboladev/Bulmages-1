@@ -15,6 +15,7 @@ public:
 
 public slots:
     virtual void elslot1();
+    virtual void elslot2();
 };
 
 

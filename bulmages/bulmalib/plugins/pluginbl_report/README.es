@@ -13,6 +13,7 @@ Descripción: <H1>Informes personalizados</H1>
 de que se disponga. Dichos informes son plantillas RML ubicadas en el directorio openreports.</P>
 <P>Los archivos deben empezar por inf_ y tener la extension .rml para aparecer en el menu</P>
 <P>Consulte la página http://www.iglues.org/wiki_users/doku.php?id=bulmages:rml para mas informacion sobre el formato RML</P>
+<P>Tambien genera informes del tipo ESC/POS y los saca por la ticketera. Es ese caso los informes son archivos <b>inf_*.txt</b></P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>

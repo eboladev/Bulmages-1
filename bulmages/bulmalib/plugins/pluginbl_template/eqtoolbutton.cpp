@@ -124,6 +124,59 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    accion->setIcon(QIcon(icon));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
+	
+// ==============================
+
+	/// Buscamos ficheros que tengan el nombre de la tabla
+	QDir dir1 ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
+	dir1.setFilter ( QDir::Files | QDir::NoSymLinks );
+	dir1.setSorting ( QDir::Size | QDir::Reversed );
+	/// Hacemos un filtrado de busqueda
+	QStringList filters1;
+	filters1 << "*impers_" + m_BlForm->tableName() + "*.txt";
+	dir1.setNameFilters ( filters1 );
+
+
+	QFileInfoList list1 = dir1.entryInfoList();
+	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
+	if (list1.size() == 0) {
+	    hide();
+	    return;
+	} // end if
+	for ( int i = 0; i < list.size(); ++i ) {
+	    QFileInfo fileInfo = list.at ( i );
+
+
+	    QFile file;
+	    file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+	    file.open ( QIODevice::ReadOnly );
+	    QTextStream stream ( &file );
+	    QString buff = stream.readAll();
+	    file.close();
+
+	    /// Buscamos Query's por tratar
+	    QString titulo = fileInfo.fileName();
+	    QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
+	    rx1.setMinimal ( TRUE );
+	    if ( rx1.indexIn ( buff, 0 )  != -1 ) {
+		titulo = rx1.cap ( 1 );
+	    } // end while
+
+
+            /// Buscamos Query's por tratar
+            QString icon = ":/Images/template2rml.png";
+            QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
+            rx2.setMinimal ( TRUE );
+            if ( rx2.indexIn ( buff, 0 )  != -1 ) {
+                icon = rx2.cap ( 1 );
+            } // end while
+
+	    QAction *accion = menu->addAction ( titulo );
+	    accion->setObjectName ( fileInfo.fileName() );
+	    accion->setIcon(QIcon(icon));
+	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
+	} // end for
+// ==============================
 	setMenu(menu);
     } else {
 	hide();
@@ -215,7 +268,6 @@ void EQToolButton::trataMenu ( QAction *action )
 	filters << "*impers_" + m_BlForm->tableName() + "*.rml";
 	dir.setNameFilters ( filters );
 
-
 	QFileInfoList list = dir.entryInfoList();
 	for ( int i = 0; i < list.size(); ++i ) {
 	    QFileInfo fileInfo = list.at ( i );
@@ -225,6 +277,41 @@ void EQToolButton::trataMenu ( QAction *action )
 		} // end if
 	    } // end if
 	} // end for
+// ==============================================
+	/// Buscamos ficheros que tengan el nombre de la tabla
+	QDir dir1 ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
+	dir1.setFilter ( QDir::Files | QDir::NoSymLinks );
+	dir1.setSorting ( QDir::Size | QDir::Reversed );
+	/// Hacemos un filtrado de busqueda
+	QStringList filters1;
+	filters1 << "*impers_" + m_BlForm->tableName() + "*.txt";
+	dir1.setNameFilters ( filters1 );
+
+	QFileInfoList list1 = dir1.entryInfoList();
+	for ( int i = 0; i < list.size(); ++i ) {
+	    QFileInfo fileInfo = list.at ( i );
+	    if ( action->objectName() == fileInfo.fileName() ) {
+		if ( m_BlForm->generateRML ( fileInfo.fileName() ) ) {
+
+		    if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + fileInfo.fileName() + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
+			system ( comando.toAscii().data() );
+		    } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + fileInfo.fileName() + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
+			system ( comando.toAscii().data() );
+		    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+				blRawPrint( fileInfo.fileName(), TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+		    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+			blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
+		    } else {
+				blRawPrint( fileInfo.fileName());
+		    } // end if  
+		  
+		  
+		} // end if
+	    } // end if
+	} // end for
+// ==============================================
     } // end if
 }
 
