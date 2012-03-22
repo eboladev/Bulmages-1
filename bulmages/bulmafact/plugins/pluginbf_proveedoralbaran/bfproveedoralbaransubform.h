@@ -27,7 +27,7 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-
+#include "pdefs_pluginbf_proveedoralbaran.h"
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes de un proveedor.
 /** */
