@@ -8,9 +8,11 @@ Nombre: Imprimir tickets
 
 Biblioteca: libpluginbf_ticket.so
 
-Descripción: <H1>Impressió de Tickets</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/icons/ticket.png" WIDTH="100"/>Impressió de Tickets</H1>
 <P>Imprimeix albarans en forma de tickets a impressores ESC/POS.</P>
-<P>Necessita de la impressora connectada al dispositiu sèries o usb. De moment no fa el control de desconnexió per la qual cosa si la impressora es bloqueja el programa també ho farà.</P>
+<P>Necessita de la impressora connectada al dispositiu sèries o usb.</P>
+<P>Este plugin pone un nuevo icono en las fichas de presupuestos, pedidos, albaranes y facturas <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/icons/ticket.png"/> la pulsación de este botón genera la impresion del documento a través de la impresora ticketera configurada en el programa.</P>
+<P>La impresión está determinada por los archivos plantilla <B>presupuesto_ticket.txt, pedido_ticket.txt, albaran_ticket.txt y factura_ticket.txt</B> que son plantillas para el formato de salida ESC/POS</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,6 +25,8 @@ ArchivoSQLdeins:
 Dependencias:
 
 Incompatibles:
+
+Reports: presupuesto_ticket.txt; pedido_ticket.txt; albaran_ticket.txt; factura_ticket.txt
 
 Categorias: Utilitats genèriques;Experimentals;
 

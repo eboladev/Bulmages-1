@@ -24,6 +24,8 @@ Dependencias:
 
 Incompatibles:
 
+Reports: presupuesto_ticket.txt; pedido_ticket.txt; albaran_ticket.txt; factura_ticket.txt
+
 Categorias: Utilites generiques;Experimental;
 
 Orden: 900

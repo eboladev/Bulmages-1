@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,42 +19,29 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#ifndef BFCLIENTETICKETDESCUENTOSUBFORM_H
+#define BFCLIENTETICKETDESCUENTOSUBFORM_H
 
-#include "bfclientealbarandescuentosubform.h"
-#include "blfunctions.h"
+#include "bfsubform.h"
+#include "bfcompany.h"
+#include "pdefs_pluginbf_clienteticket.h"
 
 
-///
-/**
-\param parent
-**/
-BfClienteTicketDescuentoSubForm::BfClienteTicketDescuentoSubForm ( QWidget *parent )
-        : BfSubForm ( parent )
+/// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
+/** */
+class PLUGINBF_CLIENTETICKET_EXPORT BfClienteTicketDescuentoSubForm : public BfSubForm
 {
-    BL_FUNC_DEBUG
+    Q_OBJECT
 
-    setDbTableName ( "dalbaran" );
-    setDbFieldId ( "iddalbaran" );
-    addSubFormHeader ( "iddalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
-    addSubFormHeader ( "conceptdalbaran", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
-    addSubFormHeader ( "proporciondalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
-    addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
-    setInsert ( TRUE );
-    
-}
+public:
+    QString mdb_idalbaran;
+    BfClienteTicketDescuentoSubForm ( QWidget *parent = 0 );
+    ~BfClienteTicketDescuentoSubForm() {}
+    ;
 
+public slots:
+    virtual void load ( QString idalbaran );
+};
 
-///
-/**
-\param idalbaran
-**/
-void BfClienteTicketDescuentoSubForm::load ( QString idalbaran )
-{
-    BL_FUNC_DEBUG
-    mdb_idalbaran = idalbaran;
-    BlSubForm::load ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
-}
+#endif
+

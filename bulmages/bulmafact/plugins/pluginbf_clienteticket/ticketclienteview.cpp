@@ -39,8 +39,8 @@
 #include "blconfiguration.h"
 #include "blfunctions.h"
 #include "bfinformereferencia.h"
-#include "bfclientealbarandescuentosubform.h"
-#include "bfclientealbaransubform.h"
+#include "bfclienteticketdescuentosubform.h"
+#include "bfclienteticketsubform.h"
 #include "blpostgresqlclient.h"
 #include "blplugins.h"
 
