@@ -45,10 +45,15 @@ private:
     QList<BlDbRecord *> *m_listaLineas;
     BlDbRecord *m_lineaActual;
     QString m_nomTicketDefecto;
+    /// Si esta en 'true' la variable 'nuevaLinea' del metodo  'insertarArticulo' se establece en true siempre.
+    bool m_nextLineIsInsert;
+
 public:
     QString m_textoXML; /* Usado al generar el XML del ticket para que los plugins puedan alterar el texto y agregar sus partes*/
 
 public:
+    void setNextLineIsInsert(bool nextLineIsTrue);
+    bool nextLineIsInsert();
     virtual void pintar();
     BtTicket ( BlMainCompany *emp = NULL, QWidget *parent = 0 );
     virtual ~BtTicket();

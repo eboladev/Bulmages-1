@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QProcess>
 #include <QDockWidget>
+#include <QString>
 #include "blwidget.h"
 #include "ui_modificadoresbase.h"
 
@@ -15,9 +16,10 @@ class Modificadores : public QDialog, BlMainCompanyPointer, public Ui_Modificado
 
 private:
     void sendKey(int tecla, QString texto);
+    QString m_fieldToModify;
 
 public:
-    Modificadores ( BlMainCompany *emp, QWidget *parent );
+    Modificadores ( BlMainCompany *emp, QWidget *parent, bool editFieldToModify = false, QString fielToModify = "" );
     virtual ~Modificadores();
     
 public slots:
