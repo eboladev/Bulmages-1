@@ -8,49 +8,65 @@
 #include "btcompany.h"
 
 
-Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
+Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent, bool editFieldToModify, QString fieldToModify ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    BlDebug::blDebug("Modificadores::Modificadores");
+    BL_FUNC_DEBUG
     
-    bool hayModificadores = FALSE;
     
     setupUi ( this );
 
-    QString idarticulo = ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
-    
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
-    while ( !cur->eof() ) {
-	hayModificadores = TRUE;
-        QPushButton * toolbutton = new QPushButton ( mui_frame );
-        toolbutton->setText ( cur->value( "nombremodificador" ) );
-
-        QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
-        if ( !m_hboxLayout1 ) {
-            m_hboxLayout1 = new QVBoxLayout ( mui_frame );
-            m_hboxLayout1->setSpacing ( 5 );
-            m_hboxLayout1->setMargin ( 5 );
-            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-        } // end if
-        m_hboxLayout1->addWidget ( toolbutton );
-        connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( modificadorClicked() ) );
-        cur->nextRecord();	
-    } // end while
-    delete cur;
-
-    mui_texto->setPlainText( ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( "textolibremodificador") );
-    
-    if (!hayModificadores) {
-	/// Si no hay modificadores predeterminados. Se situa el 'tab' en escritura texto.
+    if (editFieldToModify) {
+      
+	m_fieldToModify = fieldToModify;
 	mui_tab->setCurrentWidget(tab_texto);
-        done(0);
+	
+	mui_tab->removeTab(mui_tab->indexOf(tab_predefinidos));
+	mui_tab->removeTab(mui_tab->indexOf(tab_grafico));
+      
     } else {
-	mui_tab->setCurrentWidget(tab_predefinidos);
-    } // end if
-    BlDebug::blDebug("END Modificadores::Modificadores");
+    
+	bool hayModificadores = FALSE;
+	QString idarticulo = ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
+	
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
+	while ( !cur->eof() ) {
+	    hayModificadores = TRUE;
+	    QPushButton * toolbutton = new QPushButton ( mui_frame );
+	    toolbutton->setText ( cur->value( "nombremodificador" ) );
 
+	    QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
+	    if ( !m_hboxLayout1 ) {
+		m_hboxLayout1 = new QVBoxLayout ( mui_frame );
+		m_hboxLayout1->setSpacing ( 5 );
+		m_hboxLayout1->setMargin ( 5 );
+		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	    } // end if
+	    m_hboxLayout1->addWidget ( toolbutton );
+	    connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( modificadorClicked() ) );
+	    cur->nextRecord();
+	} // end while
+	delete cur;
+
+	m_fieldToModify = "textolibremodificador";
+//	mui_texto->setPlainText( ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( m_fieldToModify ) );
+	
+	if (!hayModificadores) {
+	    /// Si no hay modificadores predeterminados. Se situa el 'tab' en escritura texto.
+	    mui_tab->setCurrentWidget(tab_texto);
+	    done(0);
+	} else {
+	    mui_tab->setCurrentWidget(tab_predefinidos);
+	} // end if
+
+//	mui_texto->ensureCursorVisible();
+//	mui_texto->setFocus(Qt::MouseFocusReason);
+	
+    } // end if
+    
+    mui_texto->setPlainText( ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( m_fieldToModify ) ); 
+    
     mui_texto->ensureCursorVisible();
     mui_texto->setFocus(Qt::MouseFocusReason);
-    
 }
 
 
@@ -58,10 +74,9 @@ Modificadores::~Modificadores()
 {}
 
 
-
 void Modificadores::modificadorClicked()
 {
-    BlDebug::blDebug("Modificadores::trabajadorClicked");
+    BL_FUNC_DEBUG
 
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
     BtTicket *ticket = NULL;
@@ -92,9 +107,8 @@ void Modificadores::modificadorClicked()
 
     done ( 0 );
 
-    BlDebug::blDebug("END Modificadores::trabajadorClicked");
-
 }
+
 
 void Modificadores::sendKey(int tecla, QString texto)
 {
@@ -366,7 +380,7 @@ void Modificadores::on_mui_tecla_suprimir_clicked()
 void Modificadores::on_mui_aceptar_clicked()
 {
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
-    emp1->ticketActual()->lineaActBtTicket()->setDbValue ( "textolibremodificador", mui_texto->toPlainText() );
+    emp1->ticketActual()->lineaActBtTicket()->setDbValue ( m_fieldToModify, mui_texto->toPlainText() );
     done ( 0 );
 }
 

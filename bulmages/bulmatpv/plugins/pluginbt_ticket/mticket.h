@@ -37,9 +37,10 @@ class MTicket : public BlWidget, public Ui_MTicketBase
 
 private:
     QWidget* m_parent;
+    BtCompany* m_btCompany;
 
 public:
-    MTicket ( BtCompany *emp, QWidget *parent );
+    MTicket ( BtCompany *btCompany, QWidget *parent );
     virtual ~MTicket();
     virtual void pintar();
 
@@ -51,6 +52,7 @@ public slots:
     virtual void on_mui_reimprimir_clicked();
     virtual void on_mui_borrarticket_clicked();
     virtual void on_mui_formatear_clicked();
+    virtual void on_mui_nextLineIsInsert_toggled(bool checked);
 };
 
 
