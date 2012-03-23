@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+
+
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+<META name="GENERATOR" content="hevea 1.08">
+<LINK rel="stylesheet" type="text/css" href="manual.css">
+<TITLE>
+El selector de Bulmagés
+</TITLE>
+</HEAD>
+<BODY >
+<A HREF="manual003.html"><IMG SRC ="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC ="contents_motif.gif" ALT="Up"></A>
+<A HREF="manual005.html"><IMG SRC ="next_motif.gif" ALT="Next"></A>
+<HR>
+
+<H1 CLASS="chapter"><A NAME="htoc8">Capítulo&nbsp;3</A>&nbsp;&nbsp;El selector de Bulmagés</H1>
+<A NAME="toc3"></A>
+<H2 CLASS="section"><A NAME="htoc9">3.1</A>&nbsp;&nbsp;Inicio del selector</H2>
+Al iniciar BulmaGés, aparece un selector que permite seleccionar qué módulo utilizar. BulmaGés incluye, actualmente, dos módulos propios y operativos, BulmaCont,
+programa de contabilidad, y BulmaFact, programa de Facturación.
+BulmaGés no precisa instalar todas las aplicaciones que lo componen para funcionar ya que son independientes en ejecución. Pero si se utiliza con todos sus
+módulos, BulmaGés los coodina para compartir y traspasar datos automáticamente de unos a otros. Por ejemplo, la emisión de facturas en BulmaFact convertirse en
+entradas en asientos contables de BulmaCont, con lo que no habría que repetir el proceso manualmente.<BR>
+<BR>
+El Selector permite seleccionar la empresa con la cual se desea trabajar. Recordemos que BulmaCont es multiempresa y multiusuario, por lo que puede contener
+diferentes ejercicios y empresas operativos y almacenados. <BR>
+<BR>
+El selector siempre permanece en segundo plano minetras ejecuta cualquier aplicación de BulmaGés, de forma que siemrpe puede trabajar con él para abrir nuevas
+aplicaciones o nuevas sesiones dentro de estas. Si no desea mantener abierto el selector puede cerrarlo pulsando sobre el ?aspa? de la ventana que lo contiene (en
+la esquina superior derecha). Puede seguir trabajando normalmente con cualquiera de las aplicaciones sin necesidad de mantener el selector en segundo plano. Para
+volver a mostrarlo, buelva a ejecutar BulmaGés.
+Si pulsa sobre cualquier de las opciones disponibles (actualmente sólo BulmaCont y BulmaFact) entrará en la empresa por defecto del programa, habitualmente la
+empresa principal en el ejercicio en curso. 
+Para abrir una empresa diferente, o la misma empresa en otro ejercicio, debe pulsar sobre el icono de la ?fábrica? siatuado en la parte inferior izquierda del
+selector. Aparecerá una pantalla que incluye el nombre que se le haya proporcionado a la empresa, el ejercicio fiscal al que se refiere y el nombre del archivo en
+el cual se guardan los datos relativos al ejercicio en curso. 
+Todo esto será posible siempre que la empresa que se vaya a seleccionar haya sido creada anteriormente. Puede cambiar de empresa tantas veces como desee siempre
+que no esté a la mitad del proceso de introducción de datos.
+También es posible cambiar el usuario mediante esta ventana, iniciando así una nueva sesión en el programa con permisos diferentes sin necesidad de tener que
+cerrar y abrir la aplicación de nuevo.
+Si desea cambiar de empresa mientras está ejecutando BulmaCont sólo tiene que cerrar la aplicación y volver al selector para seleccionar un usuario o empresa
+diferentes.<BR>
+<BR>
+Para comenzar a utilzar BulmaCont es imprescindible abrir una empresa. BulmaCont incluye por defecto un plan contable estándard y una empresa de pruebas.
+El programa preguntará por defecto el login y el password del usuario, si es que se han creado varios en su instalación, o cogerá el usuario por defecto si sólo
+se ha creado uno.<BR>
+<BR>
+<A NAME="toc4"></A>
+<H2 CLASS="section"><A NAME="htoc10">3.2</A>&nbsp;&nbsp;Configuración de bulmagés en el selector</H2>
+Mediante el icono de la ?llave inglesa? situado en la parte inferior izquierda del selector se puede acceder a los parámetros de configuración de BulmaGés y a las
+acciones más importantes con respecto a la gestión de empresas introducidas en cada uno de los programas que lo conforman.<BR>
+<BR>
+<A NAME="toc5"></A>
+<H2 CLASS="section"><A NAME="htoc11">3.3</A>&nbsp;&nbsp;Opciones de aplicación</H2>
+El Selector contiene una pestaña por cada aplicación que incluye (BulmaCont, BulmaFact, etc.) Dentro de cada una de ellas puede encontrar las siguientes opciones:<BR>
+<BR>
+
+<H4 CLASS="subsubsection">Nuevo ejercicio</H4>
+Mediante esta opción se crea el asiento de cierre de la empresa seleccionada asignándole un número de ejercicio correlativo en función del año en curso. El
+programa genera, también el asiento de apertura de este nuevo ejercicio con los datos pre-existentes.
+Es posible generar tantos asientos de cierre y de apertura como se desee durante el ejercicio contable.<BR>
+<BR>
+
+<H4 CLASS="subsubsection">Hacer copia de seguridad</H4>
+Permite hacer una copia de seguridad de la empresa activa. La totalidad de los datos introducidos hasta el momento en la base de datos de esa empresa se guardarán
+en un archivo en la ubicación que se indique.<BR>
+<BR>
+
+<H4 CLASS="subsubsection">Restaurar copia de seguridad (<I>restore</I>)</H4>
+Opción para restaurar una copia de seguridad realizada anteriormente de la empresa seleccionada. Esta opción también puede servir para importar los datos de una
+empresa almacenados en archivo.<BR>
+<BR>
+
+<H4 CLASS="subsubsection">Crear nueva empresa</H4>
+Permite añadir una nueva empresa con su correspondiente ejercicio contable. 
+Al crear una nueva empresa, el programa solicita el nombre de la empresa, el nombre del archivo de la base de datos que la va a contener y el ejercicio contable
+en el que se va a operar.
+En la misma ventana se pueden asignar los diferentes usuarios que tienen permisos de acceso a la empresa y los tipos de permisos que poseen (lectura o
+modificación).
+La creación de una empresa implica la creación de una base de datos nueva. Por lo tanto, el usuario que ejecuta el programa debe tener privilegios para crear
+bases de datos en postgres.<BR>
+<BR>
+
+<H4 CLASS="subsubsection">Borrar empresa</H4>
+Le permite borrar una empresa existente de forma definitiva, incluyendo todos los datos que se hayan introducido hasta el momento.
+Para borrar una empresa primero es necesario seleccionar la empresa que se desee eliminar. Una vez usada esta opción, la empresa queda borrada automáticamente.<BR>
+<BR>
+<A NAME="toc6"></A>
+<H2 CLASS="section"><A NAME="htoc12">3.4</A>&nbsp;&nbsp;Parámetros del selector</H2>
+La sección de parámetros define las características de muchas de las opciones que ofrece el programa. Para más información sobre este tema, consulte al final del
+manual el ANEXO I: EL ARCHIVO DE CONFIGURACIÓN BULMAGES.CONF (PARÁMETROS DEL SELECTOR)<BR>
+<BR>
+<HR>
+<A HREF="manual003.html"><IMG SRC ="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC ="contents_motif.gif" ALT="Up"></A>
+<A HREF="manual005.html"><IMG SRC ="next_motif.gif" ALT="Next"></A>
+</BODY>
+</HTML>
