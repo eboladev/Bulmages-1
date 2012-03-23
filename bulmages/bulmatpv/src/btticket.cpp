@@ -217,7 +217,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString('.') );
 
         /// Buscamos los parametros en la base de datos.
-        QString query = "SELECT pvparticulo, codigocompletoarticulo, nomarticulo, porcentasa_iva FROM articulo LEFT JOIN (SELECT idtipo_iva, porcentasa_iva, fechatasa_iva FROM tasa_iva ) AS t1 ON articulo.idtipo_iva = t1.idtipo_iva WHERE idarticulo = " + idArticulo + " ORDER BY t1.fechatasa_iva LIMIT 1";
+        QString query = "SELECT pvparticulo, codigocompletoarticulo, nomarticulo, porcentasa_iva FROM articulo LEFT JOIN (SELECT idtipo_iva, porcentasa_iva, fechatasa_iva FROM tasa_iva ) AS t1 ON articulo.idtipo_iva = t1.idtipo_iva WHERE idarticulo = " + idArticulo + " ORDER BY t1.fechatasa_iva DESC LIMIT 1";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
 
         if ( !cur->eof() ) {
