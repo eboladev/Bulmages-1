@@ -76,11 +76,30 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
     return valor;
 }
 
+
 int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
     BL_FUNC_DEBUG
-	
-    tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", tick->lineaActBtTicket()->dbValue("pvplalbaran"));
+
+    /// Cogemos el dato del precio sin IVA porque es el precio marcado en el teclado y
+    /// para nosotros corresponde al precio IVA incluido.
+    QString precioIvaIncluido = tick->lineaActBtTicket()->dbValue("pvplalbaran");
     
+
+    /// 1) Coge el idarticulo y averigua el tipo de IVA asignado a ese articulo
+    BlDbRecordSet* rs = NULL;
+    rs = tick->mainCompany()->load ( "SELECT t2.porcentasa_iva FROM articulo AS t1 INNER JOIN tasa_iva AS t2 ON t1.idtipo_iva = t2.idtipo_iva WHERE t1.idarticulo = $1 ORDER BY fechatasa_iva DESC LIMIT 1", tick->lineaActBtTicket()->dbValue("idarticulo") );
+
+    BlFixed tasaIVA = BlFixed("0.00");
+    
+    if ( !rs->eof() ) {
+        tasaIVA = BlFixed(rs->value( "porcentasa_iva" ));
+    } // end if
+    
+    /// 3) Calcula y establece el precio IVA incluido y precio SIN IVA.
+    BlFixed precioSinIvaNuevo =  BlFixed(precioIvaIncluido.toAscii().constData()) / ( BlFixed("1.00") + (tasaIVA / BlFixed("100.00")) );
+
+    tick->lineaActBtTicket()->setDbValue("pvplalbaran",  precioSinIvaNuevo.toQString() );
+    tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", precioIvaIncluido );
     
     return 0;
 }
