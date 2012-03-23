@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Facturacion generica;
 
 Orden: 900
 

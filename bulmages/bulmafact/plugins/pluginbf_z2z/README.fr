@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturation generique;
+Categorias: Facturation avancee;Experimental;
 
 Orden: 900
 
