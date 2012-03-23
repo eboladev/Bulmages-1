@@ -27,11 +27,11 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-
+#include "pdefs_pluginbf_proveedoralbaran.h"
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes de un proveedor.
 /** */
-class BF_EXPORT BfProveedorAlbaranSubForm : public BfSubForm
+class PLUGINBF_PROVEEDORALBARAN_EXPORT BfProveedorAlbaranSubForm : public BfSubForm
 {
     Q_OBJECT
 
