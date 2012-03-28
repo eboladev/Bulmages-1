@@ -34,8 +34,8 @@ class CobrarParcialView : public BlWidget, public Ui_CobrarParcialBase
     Q_OBJECT
 
 private:
-    BtTicket *ticketOrigen;
-    BtTicket *ticketDestino;
+    BtTicket *m_ticketOrigen;
+    BtTicket *m_ticketDestino;
 
 public:
     CobrarParcialView(BtCompany *emp, QWidget *parent);
