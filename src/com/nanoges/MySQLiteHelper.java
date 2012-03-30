@@ -265,6 +265,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 				+ " TAR_CODTAR text,"
 				+ " TAR_PRECIO real);");
 		
+		/// Insercion de datos en Tarifas
+		database.execSQL(" INSERT INTO TarDatSMI ("
+				+ " TAR_CODART ,"
+				+ " TAR_CODTAR ,"
+				+ " TAR_PRECIO ) VALUES ("
+				+ " 'TAR_CODART' ,"
+				+ " 'TAR_CODTAR' ,"
+				+ " 'TAR_PRECIO');");
+		
 		/// Recibos pendientes
 		database.execSQL(" CREATE TABLE EacDatSMI ("
 				+ " EAC_FDOCUM numeric,"
@@ -274,10 +283,32 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 				+ " EAC_GASTOS real,"
 				+ " EAC_FVENCI numeric);");
 		
+		/// Insercion de datos de ejemplo en Recibos pendientes
+		database.execSQL(" INSERT INTO EacDatSMI ("
+				+ " EAC_FDOCUM ,"
+				+ " EAC_NUMDOC ,"
+				+ " EAC_CODCLI ,"
+				+ " EAC_IMPORT ,"
+				+ " EAC_GASTOS ,"
+				+ " EAC_FVENCI ) VALUES ("
+				+ " 'EAC_FDOCUM' ,"
+				+ " 'EAC_NUMDOC' ,"
+				+ " 'EAC_CODCLI' ,"
+				+ " 'EAC_IMPORT' ,"
+				+ " 'EAC_GASTOS' ,"
+				+ " 'EAC_FVENCI');");
+		
 		// Incidencias para la pda
 		database.execSQL(" CREATE TABLE IncDatSMI ("
 				+ " INC_CODIGO integer,"
 				+ " INC_NOMBRE text);");
+		
+		// Insercion de Datos de ejemplo en Incidencias para la pda
+		database.execSQL(" INSERT INTO IncDatSMI ("
+				+ " INC_CODIGO ,"
+				+ " INC_NOMBRE ) VALUES (" 
+				+ " 'INC_CODIGO' ,"
+				+ " 'INC_NOMBRE');");
 		
 		/// Observaciones para la pda
 		database.execSQL(" CREATE TABLE ObsDatSMI ("
