@@ -45,7 +45,7 @@ public class ArtistsActivity extends Activity {
 	// Will be called via the onClick attribute
 	// of the buttons in main.xml
 	public void onArticulos(View view) {
- 	   Intent intent = new Intent(view.getContext(), ArticulosActivity.class);
+ 	   Intent intent = new Intent(view.getContext(), ArtDatSMIListActivity.class);
 	   startActivityForResult(intent,0);
 
 	}

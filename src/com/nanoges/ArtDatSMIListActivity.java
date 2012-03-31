@@ -34,12 +34,6 @@ public class ArtDatSMIListActivity extends Activity {
 
         setContentView(R.layout.articulos);
         
-	    Spinner spinner = (Spinner) findViewById(R.id.mui_idruta);
-	    ArrayAdapter<CharSequence> adapte = ArrayAdapter.createFromResource(
-	            this, R.array.planets_array, android.R.layout.simple_spinner_item);
-	    adapte.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	    spinner.setAdapter(adapte);
-
 		cdatasource = new ArtDatSMIDataSource(this);
 		cdatasource.open();
 		
@@ -68,9 +62,7 @@ public class ArtDatSMIListActivity extends Activity {
 //		 		   startActivityForResult(intent,0);
 
 			    }
-			  });
-
-		
+			  });	
     }
     
 	// Will be called via the onClick attribute
