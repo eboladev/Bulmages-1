@@ -465,10 +465,6 @@ void BtTicket::agregarCantidad ( QString cantidad )
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
     } // end if
-
-
-
-
     pintar();
 }
 

@@ -317,8 +317,6 @@ void CobrarParcialView::pintar()
 
     pintarOrigen();
     pintarDestino();
-    
-    
 }
 
 
@@ -374,7 +372,6 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 		/// Transcribe.
 		actTicket->listaLineas()->at(i)->setDbValue(campo, valor);
-		
 	    } // end for
 
 	    /// Borra informacion de albaran.
@@ -420,7 +417,7 @@ void CobrarParcialView::on_mui_cancelar_clicked()
 
 void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *destino, bool lineaCompleta, float cantidad)
 {
-    BL_FUNC_DEBUG
+  BL_FUNC_DEBUG
   if (origen->listaLineas()->size() == 0) return;
   
   bool destinoExiste = false;
@@ -498,7 +495,7 @@ void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *des
 
 void CobrarParcialView::on_mui_unidad2destino_clicked()
 {
-    BL_FUNC_DEBUG
+  BL_FUNC_DEBUG
   intercambiarLineasTicket(m_ticketOrigen, m_ticketDestino);
   
 }
@@ -515,7 +512,7 @@ void CobrarParcialView::on_mui_unidad2origen_clicked()
 void CobrarParcialView::on_mui_linea2destino_clicked()
 {
     BL_FUNC_DEBUG
-      intercambiarLineasTicket(m_ticketOrigen, m_ticketDestino, true);
+    intercambiarLineasTicket(m_ticketOrigen, m_ticketDestino, true);
   
 }
 
