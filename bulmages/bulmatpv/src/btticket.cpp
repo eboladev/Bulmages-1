@@ -105,12 +105,14 @@ BtTicket::~BtTicket()
 
 void BtTicket::setNextLineIsInsert(bool nextLineIsInsert)
 {
+    BL_FUNC_DEBUG
     m_nextLineIsInsert = nextLineIsInsert;
 }
 
 
 bool BtTicket::nextLineIsInsert()
 {
+    BL_FUNC_DEBUG
     return m_nextLineIsInsert;
 }
 
@@ -171,6 +173,7 @@ BlDbRecord * BtTicket::agregarLinea()
 
 void BtTicket::pintar()
 {
+    BL_FUNC_DEBUG
     BlDebug::blDebug ( "BtTicket::pintar", 0, "Metodo para reimplementar en clases derivadas" );
     /// Disparamos los plugins.
     int res = g_plugins->run ( "BtTicket_pintar", this );
@@ -182,6 +185,7 @@ void BtTicket::pintar()
 
 QList<BlDbRecord *> *BtTicket::listaLineas()
 {
+    BL_FUNC_DEBUG
     return m_listaLineas;
 }
 
@@ -248,6 +252,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
 
 void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
 {
+    BL_FUNC_DEBUG
     /// Comprueba que haya un articulo seleccionado.
     if ( m_lineaActual == NULL ) {
         return;
@@ -264,40 +269,56 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
 }
 
 void  BtTicket::vaciarBtTicket()
-{}
+{
+    BL_FUNC_DEBUG
+}
 
 void  BtTicket::subirPosArticulo ( BlDbRecord *linea, int filas )
-{}
+{
+    BL_FUNC_DEBUG
+}
 
 void  BtTicket::bajarPosArticulo ( BlDbRecord *linea, int filas )
-{}
+{
+    BL_FUNC_DEBUG
+}
 
 void  BtTicket::inicioPosBtTicket ( BlDbRecord * )
-{}
+{
+    BL_FUNC_DEBUG
+}
 
 void  BtTicket::finPosBtTicket ( BlDbRecord * )
-{}
+{
+    BL_FUNC_DEBUG
+}
 
 BlDbRecord * BtTicket::lineaBtTicket ( int posicion )
 {
+    BL_FUNC_DEBUG
     return NULL;
 }
 
 BlDbRecord *BtTicket::lineaActBtTicket()
 {
+    BL_FUNC_DEBUG
     return m_lineaActual;
 }
 
 void BtTicket::setLineaActual ( BlDbRecord *rec )
 {
+    BL_FUNC_DEBUG
     m_lineaActual = rec;
 }
 
 void  BtTicket::setDescuentoGlobal ( BlFixed descuento )
-{}
+{
+    BL_FUNC_DEBUG
+}
 
 void BtTicket::abrircajon()
 {
+    BL_FUNC_DEBUG
     QString filestr = g_confpr->value(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
     
     QFile file ( filestr );
@@ -334,7 +355,7 @@ void BtTicket::abrircajon()
 void BtTicket::imprimir(bool doSave)
 {
 
-    BlDebug::blDebug("BtTicket::imprimir",0);
+  BL_FUNC_DEBUG
 
     if (doSave) {
         
@@ -372,7 +393,7 @@ void BtTicket::imprimir(bool doSave)
 
 
     g_plugins->run("BtTicket_imprimir_Post", this);
-    BlDebug::blDebug("END BtTicket::imprimir",0);
+
 }
 
 
@@ -380,12 +401,15 @@ void BtTicket::imprimir(bool doSave)
 
 void BtTicket::subir()
 {
-    BlDebug::blDebug("BtTicket::subir");
+  BL_FUNC_DEBUG
     int i;
 
     if ( listaLineas()->count() > 0) {
        /// Si no hay ninguna linea actual cogemos la ultima linea del ticket como linea actual
       if (m_lineaActual == NULL) {
+            i = listaLineas() ->size();
+      } else if (!listaLineas()->contains(lineaActBtTicket())) {
+	    /// Podria darse el caso de un m_lineaActual mal actualizado. Y lo protegemos aqui.
             i = listaLineas() ->size();
       } else {
             i = listaLineas() ->indexOf ( lineaActBtTicket() );
@@ -395,23 +419,33 @@ void BtTicket::subir()
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
-    BlDebug::blDebug("END BtTicket::subir");
+
 }
 
 void BtTicket::bajar()
 {
-    BlDebug::blDebug("BtTicket::bajar");
+  BL_FUNC_DEBUG
+  int i;
     if ( listaLineas()->count() > 0 ) {
-        int i = listaLineas() ->indexOf ( lineaActBtTicket() );
-        if ( i < listaLineas() ->size() - 1 ) i++;
+      if (m_lineaActual == NULL) {
+            i = 0;
+      } else if (!listaLineas()->contains(lineaActBtTicket())) {
+	    /// Podria darse el caso de un m_lineaActual mal actualizado. Y lo protegemos aqui.
+            i = 0;
+      } else {
+            i = listaLineas() ->indexOf ( lineaActBtTicket() );
+      } // end if
+      
+	if ( i < listaLineas() ->size() - 1 ) i++;
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
-    BlDebug::blDebug("END BtTicket::bajar");
+
 }
 
 void BtTicket::agregarCantidad ( QString cantidad )
 {
+    BL_FUNC_DEBUG
     BlFixed cant ( cantidad );
 
     /// Comprueba la existencia de la linea de ticket.
@@ -431,15 +465,12 @@ void BtTicket::agregarCantidad ( QString cantidad )
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
     } // end if
-
-
-
-
     pintar();
 }
 
 void BtTicket::ponerCantidad ( QString cantidad )
 {
+    BL_FUNC_DEBUG
     BlFixed cant ( cantidad );
 
     /// En el TPV si no se ponen decimales por defecto se extiende a 2. Aunque deberia ser un parametro o la longitud de los campos de la
@@ -473,6 +504,7 @@ void BtTicket::ponerCantidad ( QString cantidad )
 
 void BtTicket::ponerPrecio ( QString precio )
 {
+    BL_FUNC_DEBUG
     BlFixed valor( precio );
     
    
@@ -519,7 +551,7 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
 
 void BtTicket::insertarArticuloCodigoNL ( QString codigo )
 {
-    BlDebug::blDebug("BtTicket::insertarArticuloCodigoNL",0);
+  BL_FUNC_DEBUG
     
     QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -532,12 +564,12 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
     
     g_plugins->run ( "BtTicket_insertarArticuloCodigoNL_Post", this );
     
-    BlDebug::blDebug("END BtTicket::insertarArticuloCodigoNL",0);
 }
 
 
 int BtTicket::load ( QString id )
 {
+  BL_FUNC_DEBUG
     try {
         
         QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
@@ -625,7 +657,11 @@ int BtTicket::save()
 
 void BtTicket::borrarLinea ( BlDbRecord *linea )
 {
+    BL_FUNC_DEBUG
     if ( linea == NULL )
+        return;
+    
+    if (!listaLineas()->contains(linea) )
         return;
 
     g_plugParams = (void *) linea;

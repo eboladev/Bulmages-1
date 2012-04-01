@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2011 by Fco. Javier M. C.                               *
  *   fcojavmc@todo-redes.com                                               *
+ *   Modificado 2012 - Tomeu Borras                                        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -26,34 +27,34 @@ typedef QMap<QString, BlFixed> base;
 
 CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget (emp, parent)
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
     
-    ticketDestino = ( ( BtCompany * ) mainCompany() )->newBtTicket();
-    ticketOrigen = ( ( BtCompany * ) mainCompany() )->newBtTicket();
+    m_ticketDestino = ( ( BtCompany * ) mainCompany() )->newBtTicket();
+    m_ticketOrigen = ( ( BtCompany * ) mainCompany() )->newBtTicket();
 
     BtTicket *actTicket = ( ( BtCompany * ) mainCompany() )->ticketActual();
     
     /// Establece el nombre del ticket. Le pongo ':' para diferenciar el nombre del ticket.
-    ticketDestino->setDbValue("nomticket", actTicket->dbValue("nomticket") + ":" );
-    ticketOrigen->setDbValue("nomticket", actTicket->dbValue("nomticket") );
+    m_ticketDestino->setDbValue("nomticket", actTicket->dbValue("nomticket") + ":" );
+    m_ticketOrigen->setDbValue("nomticket", actTicket->dbValue("nomticket") );
 
     /// Coge el ticket actual y va transcribiendo la informacion de las lineas en el ticket origen.
     for (int i = 0; i < actTicket->listaLineas()->size(); ++i) {
 
-	ticketOrigen->agregarLinea();
+	m_ticketOrigen->agregarLinea();
 	/// Recorre cada campo.
 	for (int j = 0; j < actTicket->listaLineas()->at(i)->lista()->size(); ++j) {
 	    QString campo = actTicket->listaLineas()->at(i)->lista()->at(j)->fieldName();
 	    QString valor = actTicket->listaLineas()->at(i)->lista()->at(j)->fieldValue();
-	    ticketOrigen->listaLineas()->at(i)->setDbValue(campo, valor);
+	    m_ticketOrigen->listaLineas()->at(i)->setDbValue(campo, valor);
 	} // end for
     } // end for
 
     setupUi(this);
     
     /// Establece la linea seleccionada inicial a la primera del ticket.
-    if (ticketOrigen->listaLineas()->size() > 0) ticketOrigen->setLineaActual(ticketOrigen->listaLineas()->at(0));
-    if (ticketDestino->listaLineas()->size() > 0) ticketDestino->setLineaActual(ticketDestino->listaLineas()->at(0));
+    if (m_ticketOrigen->listaLineas()->size() > 0) m_ticketOrigen->setLineaActual(m_ticketOrigen->listaLineas()->at(0));
+    if (m_ticketDestino->listaLineas()->size() > 0) m_ticketDestino->setLineaActual(m_ticketDestino->listaLineas()->at(0));
     
     pintar();
         
@@ -62,7 +63,8 @@ CobrarParcialView::CobrarParcialView(BtCompany *emp, QWidget *parent) : BlWidget
 
 void CobrarParcialView::pintarTotal(BtTicket *tick, QLineEdit *lineEdit)
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
+    
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
@@ -95,7 +97,8 @@ void CobrarParcialView::pintarTotal(BtTicket *tick, QLineEdit *lineEdit)
 
 void CobrarParcialView::pintarOrigen()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
+    
     QString query;
     BlDbRecord *item;
 
@@ -105,8 +108,8 @@ void CobrarParcialView::pintarOrigen()
     QString plainTextContent = "";
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
 
-    plainTextContent += "Ticket: " + ticketOrigen->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "\n";
-    htmlContent += "Ticket: " + ticketOrigen->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "<br>";
+    plainTextContent += "Ticket: " + m_ticketOrigen->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "\n";
+    htmlContent += "Ticket: " + m_ticketOrigen->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "<br>";
 
     htmlContent += "<table border=\"0\" width=\"100%\">";
 
@@ -116,10 +119,10 @@ void CobrarParcialView::pintarOrigen()
     htmlContent += "<tr><td width=\"10%\">" + QString(_("CANT:")) + "</td><td width=\"80%\">" + QString(_("ARTICULO:")) + "</td><td width=\"10%\">" + QString(_("PRECIO:")) + "</td></tr>";
     htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
 
-    for ( int i = 0; i < ticketOrigen->listaLineas()->size(); ++i ) {
-        item = ticketOrigen->listaLineas()->at ( i );
+    for ( int i = 0; i < m_ticketOrigen->listaLineas()->size(); ++i ) {
+        item = m_ticketOrigen->listaLineas()->at ( i );
         QString bgColor = "#FFFFFF";
-        if ( item == ticketOrigen->lineaActBtTicket() ) {
+        if ( item == m_ticketOrigen->lineaActBtTicket() ) {
 	    buscar = item->dbValue ( "nomarticulo" );
             bgColor = "#CCCCFF";
             plainTextContent += "> ";
@@ -195,7 +198,7 @@ void CobrarParcialView::pintarOrigen()
     mui_browser_origen->setTextCursor( cursor );
     
     /// Pinta total.
-    pintarTotal(ticketOrigen, mui_total_ticket_origen);
+    pintarTotal(m_ticketOrigen, mui_total_ticket_origen);
     
     
 }
@@ -203,7 +206,8 @@ void CobrarParcialView::pintarOrigen()
 
 void CobrarParcialView::pintarDestino()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
+    
     QString query;
     BlDbRecord *item;
 
@@ -212,8 +216,8 @@ void CobrarParcialView::pintarDestino()
     QString plainTextContent = "";
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
 
-    plainTextContent += "Ticket: " + ticketDestino->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "\n";
-    htmlContent += "Ticket: " + ticketDestino->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "<br>";
+    plainTextContent += "Ticket: " + m_ticketDestino->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "\n";
+    htmlContent += "Ticket: " + m_ticketDestino->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)") + "<br>";
 
     htmlContent += "<table border=\"0\" width=\"100%\">";
 
@@ -223,10 +227,10 @@ void CobrarParcialView::pintarDestino()
     htmlContent += "<tr><td width=\"10%\">" + QString(_("CANT:")) + "</td><td width=\"80%\">" + QString(_("ARTICULO:")) + "</td><td width=\"10%\">" + QString(_("PRECIO:")) + "</td></tr>";
     htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
 
-    for ( int i = 0; i < ticketDestino->listaLineas()->size(); ++i ) {
-        item = ticketDestino->listaLineas()->at ( i );
+    for ( int i = 0; i < m_ticketDestino->listaLineas()->size(); ++i ) {
+        item = m_ticketDestino->listaLineas()->at ( i );
         QString bgColor = "#FFFFFF";
-        if ( item == ticketDestino->lineaActBtTicket() ) {
+        if ( item == m_ticketDestino->lineaActBtTicket() ) {
 	    buscar = item->dbValue ( "nomarticulo" );
             bgColor = "#CCCCFF";
             plainTextContent += "> ";
@@ -301,7 +305,7 @@ void CobrarParcialView::pintarDestino()
     mui_browser_destino->setTextCursor( cursor );
     
     /// Pinta total.
-    pintarTotal(ticketDestino, mui_total_ticket_destino);
+    pintarTotal(m_ticketDestino, mui_total_ticket_destino);
     
     
 }
@@ -309,38 +313,36 @@ void CobrarParcialView::pintarDestino()
 
 void CobrarParcialView::pintar()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
 
     pintarOrigen();
     pintarDestino();
-    
-    
 }
 
 
 
 CobrarParcialView::~CobrarParcialView()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
 }
 
 
 void CobrarParcialView::on_mui_aceptar_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
   
     BtTicket *actTicket = ( ( BtCompany * ) mainCompany() )->ticketActual();
 
     /// El ticket origen no puede estar vacio. Es un cobro parcial no mover ticket.
-    if (ticketOrigen->listaLineas()->size() < 1) {
+    if (m_ticketOrigen->listaLineas()->size() < 1) {
       	blMsgWarning (_("El ticket origen no puede estar vacio. Deje al menos 1 linea."));
 	return;
     } // end if
     
     /// Comprueba que el ticket destino no este vacio. En ese caso no se acepta el ticket.
-    if (ticketDestino->listaLineas()->size() > 0) {
+    if (m_ticketDestino->listaLineas()->size() > 0) {
 	/// Pone el ticket destino en la lista de tickets.
-	( ( BtCompany * ) mainCompany() )->listaTickets()->prepend(ticketDestino);
+	( ( BtCompany * ) mainCompany() )->listaTickets()->prepend(m_ticketDestino);
 
 	/// Modifica el ticket actual para reflejar los cambios de 'origen'.
 	/// Al modificar no tiene que imprimir cambios porque no existen al encontrarse en el
@@ -355,14 +357,14 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 	
 	/// Coge el ticket origen y va transcribiendo la informacion de las lineas en el ticket actual.
 	bool necesitaGuardar = FALSE;
-	for (int i = 0; i < ticketOrigen->listaLineas()->size(); ++i) {
+	for (int i = 0; i < m_ticketOrigen->listaLineas()->size(); ++i) {
 	  
 	    actTicket->agregarLinea();
 	    /// Recorre cada campo.
-	    for (int j = 0; j < ticketOrigen->listaLineas()->at(i)->lista()->size(); ++j) {
+	    for (int j = 0; j < m_ticketOrigen->listaLineas()->at(i)->lista()->size(); ++j) {
 		
-		QString campo = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldName();
-		QString valor = ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldValue();
+		QString campo = m_ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldName();
+		QString valor = m_ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldValue();
 
 		if ((campo == "idalbaran") && (!valor.isEmpty())) {
 		    necesitaGuardar = TRUE;
@@ -370,7 +372,6 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 		/// Transcribe.
 		actTicket->listaLineas()->at(i)->setDbValue(campo, valor);
-		
 	    } // end for
 
 	    /// Borra informacion de albaran.
@@ -381,21 +382,21 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 	
 	/// Agrega log.
 	actTicket->agregarLog("COBRAR PARCIAL");
-	ticketDestino->agregarLog("COBRAR PARCIAL");
+	m_ticketDestino->agregarLog("COBRAR PARCIAL");
 
 	/// Si el ticket actual se imprimio entonces tiene informacion del albaran
 	/// 'idalbaran' e 'numlalbaran'. Si es asi se tiene que guardar el nuevo ticket en
 	/// un nuevo albaran. Llamando a 'save()' es suficiente para tener informacion actualizada.
 	if (necesitaGuardar) {
-	    ticketDestino->save();
+	    m_ticketDestino->save();
 	    actTicket->save();
 	} // end if
 
 
 	/// Selecciona ticket.
 	( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
-	( ( BtCompany * ) mainCompany() )->setTicketActual(ticketDestino);
-	ticketDestino->pintar();
+	( ( BtCompany * ) mainCompany() )->setTicketActual(m_ticketDestino);
+	m_ticketDestino->pintar();
 	
 	/// Cierra ventana.
 	( ( QDialog * ) parent() )->close();
@@ -409,14 +410,14 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 void CobrarParcialView::on_mui_cancelar_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
     ( ( QDialog * ) parent() )->close();
 }
 
 
 void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *destino, bool lineaCompleta, float cantidad)
 {
-  BlDebug::blDebug( Q_FUNC_INFO);
+  BL_FUNC_DEBUG
   if (origen->listaLineas()->size() == 0) return;
   
   bool destinoExiste = false;
@@ -494,66 +495,66 @@ void CobrarParcialView::intercambiarLineasTicket(BtTicket *origen, BtTicket *des
 
 void CobrarParcialView::on_mui_unidad2destino_clicked()
 {
-  BlDebug::blDebug( Q_FUNC_INFO);
-  intercambiarLineasTicket(ticketOrigen, ticketDestino);
+  BL_FUNC_DEBUG
+  intercambiarLineasTicket(m_ticketOrigen, m_ticketDestino);
   
 }
 
 
 void CobrarParcialView::on_mui_unidad2origen_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
-    intercambiarLineasTicket(ticketDestino, ticketOrigen);
+    BL_FUNC_DEBUG
+    intercambiarLineasTicket(m_ticketDestino, m_ticketOrigen);
   
 }
 
 
 void CobrarParcialView::on_mui_linea2destino_clicked()
 {
-      BlDebug::blDebug( Q_FUNC_INFO);
-      intercambiarLineasTicket(ticketOrigen, ticketDestino, true);
+    BL_FUNC_DEBUG
+    intercambiarLineasTicket(m_ticketOrigen, m_ticketDestino, true);
   
 }
 
 
 void CobrarParcialView::on_mui_linea2origen_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);  
-    intercambiarLineasTicket(ticketDestino, ticketOrigen, true);
+    BL_FUNC_DEBUG
+    intercambiarLineasTicket(m_ticketDestino, m_ticketOrigen, true);
 }
 
 
 void CobrarParcialView::on_mui_destino_arriba_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
     /// Simulamos la pulsacion de la tecla arriba
-    ticketDestino->subir();
+    m_ticketDestino->subir();
     pintarDestino();
 }
 
 
 void CobrarParcialView::on_mui_destino_abajo_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
     /// Simulamos la pulsacion de la tecla abajo
-    ticketDestino->bajar();
+    m_ticketDestino->bajar();
     pintarDestino();
 }
 
 
 void CobrarParcialView::on_mui_origen_arriba_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
     /// Simulamos la pulsacion de la tecla arriba
-    ticketOrigen->subir();
+    m_ticketOrigen->subir();
     pintarOrigen();
 }
 
 
 void CobrarParcialView::on_mui_origen_abajo_clicked()
 {
-    BlDebug::blDebug( Q_FUNC_INFO);
+    BL_FUNC_DEBUG
     /// Simulamos la pulsacion de la tecla abajo
-    ticketOrigen->bajar();
+    m_ticketOrigen->bajar();
     pintarOrigen();
 }

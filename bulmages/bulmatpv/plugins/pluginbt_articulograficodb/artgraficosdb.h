@@ -27,6 +27,7 @@
 #include <QDomDocument>
 #include <QTableWidget>
 #include <QWindowsStyle>
+#include <QSignalMapper>
 
 #include "blfunctions.h"
 #include "blwidget.h"
@@ -90,7 +91,10 @@ public:
     int m_pantallaActual;
     QList<FamiliaArticulos> m_listfamilias;
     QList<QWidget *> m_pantallas;
+    QString m_padreFamiliaAnterior;
+    //QString m_firstIdFamilia;
     QTableWidget *mui_list;
+    QWidget *m_widget;
 
 public:
     ArtGraficosDb ( BlMainCompany *emp, QWidget *parent );
@@ -98,12 +102,20 @@ public:
     void muestraPantalla ( int );
     void renderPantallas();
     void ponPantallas();
-
+    void ponListaPantallas(int familiaMostrar = 0);
+    
+private:
+     QSignalMapper *m_signalMapperCategory;
+     QSignalMapper *m_signalMapperChildCategory;
+    
 public slots:
     virtual void on_mui_botonSiguiente_pressed();
     virtual void on_mui_botonAnterior_pressed();
     virtual void cellClicked ( int, int );
-    virtual void pulsadoBoton();
+    virtual void categorySelected_pressed(const QString &idFamilia = "0");
+    virtual void homeButton_clicked();
+    virtual void previousButton_clicked();
+    virtual void categoryChanged_clicked(const QString &idFamilia = "0");
 };
 
 #endif

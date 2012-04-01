@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2011 by Fco. Javier M. C.                               *
  *   fcojavmc@todo-redes.com                                               *
+ *   Modificado 2012 - Tomeu Borras                                        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -49,7 +50,6 @@ PluginBt_CobrarParcialIVAIncluido::PluginBt_CobrarParcialIVAIncluido()
 PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -58,7 +58,7 @@ PluginBt_CobrarParcialIVAIncluido::~PluginBt_CobrarParcialIVAIncluido()
 **/
 void PluginBt_CobrarParcialIVAIncluido::inicializa( BtBulmaTPV *btpv)
 {
-
+    BL_FUNC_DEBUG
     setMainCompany( btpv->company() );
 }
 
@@ -69,6 +69,7 @@ void PluginBt_CobrarParcialIVAIncluido::inicializa( BtBulmaTPV *btpv)
 **/
 void PluginBt_CobrarParcialIVAIncluido::cobrarParcial ()
 {
+    BL_FUNC_DEBUG
     QDialog *diag = new QDialog();
     diag->setWindowTitle(_("Cobrar parcial"));
     CobrarParcialView *cobra = new CobrarParcialView((BtCompany *) mainCompany(), diag);
@@ -96,8 +97,10 @@ int entryPoint ( BtBulmaTPV *bges )
 }
 
 
+
 int Cambio_ivainc_pre ( Cambio *cambio )
 {
+    BL_FUNC_DEBUG
     cambio->setMinimumWidth(cambio->geometry().width() + 100);
 
     cambio->mui_pluginFrame->setMinimumWidth(110);

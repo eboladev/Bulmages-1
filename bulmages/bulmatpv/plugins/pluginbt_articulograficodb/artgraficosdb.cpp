@@ -32,6 +32,7 @@
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QSizePolicy>
+#include <QList>
 
 #include "artgraficosdb.h"
 #include "blconfiguration.h"
@@ -60,6 +61,7 @@ void BtLabel::mousePressEvent ( QMouseEvent * e ) {
      }// end if
 }
 
+
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     BL_FUNC_DEBUG
@@ -69,7 +71,13 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
 
     m_numPantallas = 0;
     m_pantallaActual = 0;
-
+    
+    m_widget = 0;
+    m_signalMapperCategory = 0;
+    m_signalMapperChildCategory = 0;
+ 
+    m_padreFamiliaAnterior = "0";
+    
     /// Vaciamos el stack de widgets
     while (mui_stack->currentWidget()) mui_stack->removeWidget(mui_stack->currentWidget());
 
@@ -79,18 +87,22 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
 
     // Renderiza las pantallas y las almacena para mostrar cuando sea necesario.
     renderPantallas ();
-	
+
+    ponListaPantallas();
     // Muestra la primera pantalla creada
-    muestraPantalla ( 0 );
+    //muestraPantalla ( 0 );
 
     
 }
+
 
 ArtGraficosDb::~ArtGraficosDb()
 {
     BL_FUNC_DEBUG
 
     /// Libera la memoria de las pantallas.
+    //limpiaListaPantallas();
+    
     for ( int i = 0; i < m_pantallas.count(); i++ ) {
         QWidget *pantalla = m_pantallas.at ( i );
         delete pantalla;
@@ -98,6 +110,7 @@ ArtGraficosDb::~ArtGraficosDb()
 
     
 }
+
 
 void ArtGraficosDb::cellClicked ( int row, int column )
 {
@@ -126,6 +139,7 @@ void ArtGraficosDb::cellClicked ( int row, int column )
     
 }
 
+
 void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 {
     BL_FUNC_DEBUG
@@ -142,6 +156,7 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 
     
 }
+
 
 void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
@@ -361,69 +376,17 @@ void ArtGraficosDb::renderPantallas ()
 void ArtGraficosDb::ponPantallas()
 {
     BL_FUNC_DEBUG
-    int contadorBotones = 0;
-    int columnasBotones;
-    int j;
-    int indice;
-    QList <QVBoxLayout *> listaVBoxLayout;
-
     
-    /// Establece el numero de columnas a mostrar. Minimo 1.
-    if ( g_confpr->value( CONF_TPV_CATEGORIES_COLUMNS ).toInt() > 1 ) {
-      columnasBotones = g_confpr->value( CONF_TPV_CATEGORIES_COLUMNS ).toInt();
-    } else {
-      columnasBotones = 1;
-    } // end if
-    
-    QHBoxLayout *hboxLayout1 = new QHBoxLayout;
-    hboxLayout1->setSpacing ( 0 );
-    hboxLayout1->setMargin ( 0 );
-    hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-
-    /// Crea los QVBoxLayout necesarios para colocar los botones.
-    for (j = 0; j < columnasBotones; j++) {
-	QVBoxLayout *vlayout = new QVBoxLayout;
-	listaVBoxLayout.append ( vlayout );
-	hboxLayout1->addLayout ( vlayout );
-    } // end for
-    
-    
-    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
-    QWidget *widget = new QWidget;
-
     BlDbRecordSet *familias;
     familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
-
+    
+   
     int i = 0;
 
     FamiliaArticulos fa;
 
     while ( !familias->eof() ) {
       
-        QString titulo = familias->value( "nombrefamilia" );
-        QPushButton *pb = new QPushButton ( titulo, g_pantallas );
-	
-	QColor pbColor = QColor(familias->value( "colortpvfamilia" ));
-
-	if ( pbColor.isValid() ) {
-	    /// Si el color es valido entonces lo utiliza para pintar el boton de ese color.
-	    QString pbStyles = "QPushButton { background-color: " + familias->value( "colortpvfamilia" ) + "; }";
-	    pb->setStyleSheet(pbStyles);
-	    style()->unpolish(pb);
-	    style()->polish(pb);
-	} // end if
-	
-        pb->setText ( titulo );
-        pb->setObjectName ( QString::number ( i ) );
-        pb->setMaximumHeight ( 200 );
-
-        /// Hago la conexion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
-        connect ( pb, SIGNAL ( pressed() ), this, SLOT ( pulsadoBoton() ) );
-
-	/// Divide a partes iguales los botones entre las columnas.
-	indice = contadorBotones % columnasBotones;
-	listaVBoxLayout[indice]->addWidget ( pb );
-
         fa.m_nombrefamilia = familias->value( "nombrefamilia" );
         fa.m_idfamilia = familias->value( "idfamilia" );
 
@@ -454,36 +417,226 @@ void ArtGraficosDb::ponPantallas()
         fa.m_listaarticulos.clear();
         familias->nextRecord();
         i++;
-	contadorBotones++;
 
         delete articulos;
 
     } // end while
 
+    delete familias;
+   
+}   
 
+
+void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
+{
+    BL_FUNC_DEBUG
+    
+    int contadorBotones = 0;
+    int columnasBotones;
+    int j;
+    int indice;
+
+    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
+    if (m_widget) {
+	m_widget->hide();
+	delete m_widget;
+    } // end if
+      
+    m_widget = new QWidget(this);
+    m_widget->show();
+    m_signalMapperCategory = new QSignalMapper(m_widget);
+    m_signalMapperChildCategory = new QSignalMapper(m_widget);
+    
+    QList <QVBoxLayout *> listaVBoxLayout;
+    
+    /// Establece el numero de columnas a mostrar. Minimo 1.
+    if ( g_confpr->value( CONF_TPV_CATEGORIES_COLUMNS ).toInt() > 1 ) {
+      columnasBotones = g_confpr->value( CONF_TPV_CATEGORIES_COLUMNS ).toInt();
+    } else {
+      columnasBotones = 1;
+    } // end if
+   
+   
+    QVBoxLayout *mainLayout = new QVBoxLayout(m_widget);
+    mainLayout->setObjectName ( QString::fromUtf8 ( "mainLayout" ) );
+
+    QHBoxLayout *topLayout = new QHBoxLayout;
+    topLayout->setObjectName ( QString::fromUtf8 ( "topLayout" ) );
+
+    QHBoxLayout *buttonsLayout = new QHBoxLayout;
+    buttonsLayout->setObjectName ( QString::fromUtf8 ( "buttonsLayout" ) );
+    
+    
+    QToolButton *previousButton = new QToolButton(m_widget);
+    previousButton->setText("Atras");
+    previousButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    previousButton->setFixedHeight(42);
+
+    topLayout->addWidget( previousButton );
+    connect(previousButton, SIGNAL(clicked()),this, SLOT(previousButton_clicked()), Qt::QueuedConnection);
+    
+    QToolButton *homeButton = new QToolButton(m_widget);
+    homeButton->setText("Inicio");
+    homeButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    homeButton->setFixedHeight(42);
+    
+    topLayout->addWidget( homeButton );
+    connect(homeButton, SIGNAL(clicked()),this, SLOT(homeButton_clicked()), Qt::QueuedConnection);
+        
+
+    /// Crea los QVBoxLayout necesarios para colocar los botones.
+    for (j = 0; j < columnasBotones; j++) {
+	QVBoxLayout *columnButtonLayout = new QVBoxLayout;
+	
+	columnButtonLayout->setObjectName(QString("columnButtonLayout") + QString::number(j));
+	listaVBoxLayout.append ( columnButtonLayout );
+	buttonsLayout->addLayout ( columnButtonLayout );
+    } // end for
+    
+ 
+    BlDbRecordSet *familias;
+    //familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
+    
+    if (familiaMostrar == 0) {
+    
+	familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+	
+    } else {
+      
+	familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia = " + QString::number(familiaMostrar) + " ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+    } // end if
+    
+    int i = 0;
+
+    while ( !familias->eof() ) {
+      
+        QString titulo = familias->value( "nombrefamilia" );
+	m_padreFamiliaAnterior = familias->value( "padreanterior" );
+	
+	if (i == 0) {
+	  categorySelected_pressed( familias->value( "idfamilia" ) );
+	} // end if
+		
+	QHBoxLayout* categoryButton = new QHBoxLayout;
+	categoryButton->setObjectName(QString("hboxBotones") + QString::number(i));
+	categoryButton->setSpacing(0);
+	
+	QPushButton *childCategoryButton = new QPushButton ( ">", m_widget );
+	childCategoryButton->setFixedWidth(42);
+	childCategoryButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+	
+	if (familias->value( "hijos" ).toInt() == 0) {
+	    childCategoryButton->hide();
+	} // end if
+	if (familias->value( "padrefamilia" ).toInt() == 0) {
+	    homeButton->hide();
+	    previousButton->hide();
+	} // end if
+
+	
+        QPushButton *button = new QPushButton ( titulo, m_widget );
+	button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	
+	connect(button, SIGNAL(pressed()), m_signalMapperCategory, SLOT(map()));
+	m_signalMapperCategory->setMapping(button, familias->value( "idfamilia" ));
+
+	connect(childCategoryButton, SIGNAL(clicked()), m_signalMapperChildCategory, SLOT(map()));
+	m_signalMapperChildCategory->setMapping(childCategoryButton, familias->value( "idfamilia" ));
+	
+
+	QColor buttonColor = QColor(familias->value( "colortpvfamilia" ));
+
+	if ( buttonColor.isValid() ) {
+	    /// Si el color es valido entonces lo utiliza para pintar el boton de ese color.
+	    QString buttonStyles = "QPushButton { background-color: " + familias->value( "colortpvfamilia" ) + "; }";
+	    button->setStyleSheet(buttonStyles);
+	    style()->unpolish(button);
+	    style()->polish(button);
+
+  	    childCategoryButton->setStyleSheet(buttonStyles);
+	    style()->unpolish(childCategoryButton);
+	    style()->polish(childCategoryButton);
+
+	} // end if
+	
+        button->setText ( titulo );
+        button->setObjectName ( QString::number ( i ) );
+
+	/// Divide a partes iguales los botones entre las columnas.
+	indice = contadorBotones % columnasBotones;
+
+	categoryButton->addWidget( button );
+	categoryButton->addWidget( childCategoryButton );
+	
+	listaVBoxLayout[indice]->addLayout ( categoryButton );
+
+	familias->nextRecord();
+        i++;
+	contadorBotones++;
+	
+    } // end while
+
+    connect(m_signalMapperCategory, SIGNAL(mapped(const QString &)), this, SLOT(categorySelected_pressed(const QString &)) );
+    connect(m_signalMapperChildCategory, SIGNAL(mapped(const QString &)), this, SLOT(categoryChanged_clicked(const QString &)), Qt::QueuedConnection);
+    
     delete familias;
 
     /// Rellena con botones vacios para que todas las columnas tengan el mismo numero de botones.
     indice++;
     while (indice < columnasBotones) {
-        QPushButton *pb = new QPushButton ();
-        pb->setMaximumHeight ( 200 );
-	pb->setEnabled(FALSE);
-	listaVBoxLayout[indice]->addWidget ( pb );
+        QPushButton *button = new QPushButton (m_widget);
+	button->setEnabled(FALSE);
+	button->setFlat(TRUE);
+	button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	listaVBoxLayout[indice]->addWidget ( button );
 	indice++;
     } // end while
 
-    /// Agrego el widget al BLDockWidget
-    widget->setLayout ( hboxLayout1 );
-
-    g_pantallas->setWidget ( widget );
-
+    mainLayout->addLayout ( topLayout );
+    mainLayout->addLayout ( buttonsLayout );
     
-}
+    /// Agrego el widget al BLDockWidget
+    m_widget->setLayout ( mainLayout );
+   
+    g_pantallas->setWidget ( m_widget );
+   
+}   
 
 
-void ArtGraficosDb::pulsadoBoton()
+void ArtGraficosDb::homeButton_clicked()
+{
+   BL_FUNC_DEBUG
+
+   ponListaPantallas( 0 );
+} 
+
+void ArtGraficosDb::previousButton_clicked()
+{
+   BL_FUNC_DEBUG
+
+   ponListaPantallas(m_padreFamiliaAnterior.toInt());
+}  
+
+
+void ArtGraficosDb::categorySelected_pressed(const QString &idFamilia)
 {
     BL_FUNC_DEBUG
-    muestraPantalla ( sender()->objectName().toInt() );
+
+    /// Busco la pantalla a mostrar en funcion del idFamilia.  
+    for (int i = 0; i < m_listfamilias.size(); ++i) {
+	if (m_listfamilias.at(i).m_idfamilia == idFamilia) {
+	    muestraPantalla(i);
+	    break;
+	} // end if
+    } // end for
+
 }
+
+
+void ArtGraficosDb::categoryChanged_clicked(const QString &idFamilia)
+{
+   BL_FUNC_DEBUG
+
+   ponListaPantallas(idFamilia.toInt());
+}
+
