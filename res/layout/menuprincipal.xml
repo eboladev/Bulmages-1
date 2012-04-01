@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:layout_x="36dp"
+        android:layout_y="102dp"
+        android:onClick="onArticulos"
+        android:text="Artículos" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_x="36dp"
+        android:layout_y="44dp"
+        android:onClick="onClientes"
+        android:text="Clientes" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_x="36dp"
+        android:layout_y="163dp"
+        android:onClick="onMapa"
+        android:text="Mapa" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_x="36dp"
+        android:layout_y="225dp"
+        android:onClick="onClick"
+        android:text="Caja" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="75dp"
+        android:layout_x="36dp"
+        android:layout_y="287dp"
+        android:onClick="onConfiguracion"
+        android:text="Sincronización" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_x="36dp"
+        android:layout_y="658dp"
+        android:onClick="onConfiguracion"
+        android:text="Configuración" />
+    </AbsoluteLayout>

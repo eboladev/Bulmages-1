@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nanoges"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="7" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        
+		<uses-library android:name="com.google.android.maps" />
+        
+        <activity
+            android:label="@string/app_name"
+            android:name=".NanoGesActivity" 
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ArtistsActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".AlbumsActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".MenuPrincipalActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ClientesActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".CliDatSMIListActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ArtDatSMIListActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        
+		<activity android:name=".MapaActivity" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		
+        <activity
+            android:label="@string/app_name"
+            android:name=".ClienteActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ArticulosActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ArticuloActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        
+        <activity
+            android:label="@string/app_name"
+            android:name=".SupClienteActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        
+        <activity
+            android:label="@string/app_name"
+            android:name=".PedidosActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>    
+        <activity
+            android:label="@string/app_name"
+            android:name=".SupPedidoActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>  
+        <activity
+            android:label="@string/app_name"
+            android:name=".PedidoActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>  
+        <activity
+            android:label="@string/app_name"
+            android:name=".LPedidosActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>  
+        <activity
+            android:label="@string/app_name"
+            android:name=".LPedidoActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>  
+    </application>
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+		    
+</manifest>
