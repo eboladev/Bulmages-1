@@ -196,7 +196,7 @@ int main ( int argc, char **argv )
         if (g_confpr->value(CONF_TPV_FULLSCREEN) == "TRUE") {
             bges->showFullScreen();
         } else {
-            bges->showMaximized();
+           bges->showMaximized();
         } // end if
 
 	int height = bges->height();
@@ -212,9 +212,6 @@ int main ( int argc, char **argv )
             for (int i = 0; i < listItems; i++) {
             
                 dock = dockedList.value(i);
-		
-                dock->widget()->setMaximumSize(dock->widget()->width(), dock->widget()->height());
-                dock->widget()->setMinimumSize(dock->widget()->width(), dock->widget()->height());
                 
                 dock->setFeatures(QDockWidget::NoDockWidgetFeatures);
 
@@ -231,37 +228,9 @@ int main ( int argc, char **argv )
         /// Disparamos los plugins con entryPoint.
         g_plugins->run ( "exitPoint", bges );
 
-        // Bloqueamos el esquema de ventanas si asi se nos pide
+        // Desbloqueamos el esquema de ventanas al salir para guardar configuraciones
         if (g_confpr->value(CONF_BLOCK_WINDOWS) == "TRUE") {
-      
-            QList<QDockWidget *> dockedList = bges->findChildren<QDockWidget *>();
-            int listItems = dockedList.count();
-            
-            QDockWidget *dock = NULL;
-            
-            for (int i = 0; i < listItems; i++) {
-            
-                dock = dockedList.value(i);
-		
-                dock->widget()->setMaximumSize(dock->widget()->width()+150, dock->widget()->height()+150);
-                dock->widget()->setMinimumSize(dock->widget()->width()-150, dock->widget()->height()-150);
-		
-                dock->setFeatures(QDockWidget::AllDockWidgetFeatures);
-            } // end for
-      
-	    bges->showNormal();
-	    
-	    bges->setMaximumHeight(height);
-	    
-	    // Ponemos el TPV en modo a pantalla completa si asi se nos pide
-	    if (g_confpr->value(CONF_TPV_FULLSCREEN) == "TRUE") {
-		bges->showFullScreen();
-	    } else {
-		bges->showMaximized();
-	    } // end if
-        } // end if
-	
-	
+      	
 	/// Liberamos memoria.
 	delete bges;
 	delete g_theApp;
