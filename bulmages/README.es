@@ -110,7 +110,7 @@ Para ejecutar todos los programas y plugins además existen componentes adiciona
 Estructura de directorios
 =========================
 
-Estos son los directorios principales del svn y sus respectivas explicaciones.
+Estos son los directorios principales del git y sus respectivas explicaciones.
 
 - bulmalib
 Hay algunas librerias que son comunes a varios de los proyectos. Acceso a PostgreSql,
@@ -241,7 +241,7 @@ Si tiene algún comentario, sugerencia, error encontrado, lo mejor que puede
 hacer es informar a los desarrolladores. Para hacerlo puede:
 
 - subscribirse a la llista de correo de BulmaGés:
-http://llistes.bulma.net/mailman/listinfo/bulmages
+https://lists.berlios.de/mailman/listinfo/bulmages-main
 
 lista de tráfico medio donde los desarrolladores y la gente del proyecto
 utilizan para intercambiar noticias, dudas, etc sobre BulmaGés.

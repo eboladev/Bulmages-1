@@ -67,7 +67,7 @@ Pour la partie greffons on a besoin d'autres composants aditionnels.
 Structure des répertoires
 =========================
 
-Ce sont les répertoires principaux du svn et leurs explications respectives.
+Ce sont les répertoires principaux du git et leurs explications respectives.
 
 - bulmalib
 Il ya quelques librairies qui sont communes à plusieurs projets. L'accès à PostgreSql et à la configuration de quelques widgets spécifiques. Elles sont les librairies principales de la suite.
@@ -177,7 +177,7 @@ Pous (bugs), commentaires, problèmes, etc
 Si vous avez des commentaires, suggestion, des erreurs rencontrées, le mieux à faire est de les rapporter aux développeurs. Pour le faire, vous pouvez :
 
 - Souscrire à la liste de couriel de BulmaGés:
-  http://llistes.bulma.net/mailman/listinfo/bulmages
+https://lists.berlios.de/mailman/listinfo/bulmages-main
 
 Liste de trafic moyenne, où les développeurs et les gens du projet s'échangent des notes, des questions, etc... sur BulmaGes.
 
