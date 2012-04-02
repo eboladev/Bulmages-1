@@ -89,6 +89,7 @@ class ArtGraficosDb : public BlWidget, public Ui_ArtGraficosDbBase
 public:
     int m_numPantallas;
     int m_pantallaActual;
+    bool m_paginadoListaPantallas;
     QList<FamiliaArticulos> m_listfamilias;
     QList<QWidget *> m_pantallas;
     QString m_padreFamiliaAnterior;

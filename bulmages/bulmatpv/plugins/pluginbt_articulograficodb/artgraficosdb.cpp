@@ -71,6 +71,7 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
 
     m_numPantallas = 0;
     m_pantallaActual = 0;
+    m_paginadoListaPantallas = (g_confpr->value(CONF_TPV_CATEGORY_TREE) == "TRUE") ? true : false;
     
     m_widget = 0;
     m_signalMapperCategory = 0;
@@ -498,12 +499,21 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     //familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
     
     if (familiaMostrar == 0) {
-    
-	familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+      
+      if (m_paginadoListaPantallas) {
+	
+	  familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+
+      } else {
+	
+	familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
+	
+      } //end if
 	
     } else {
       
 	familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia = " + QString::number(familiaMostrar) + " ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+	
     } // end if
     
     int i = 0;
@@ -525,14 +535,24 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
 	childCategoryButton->setFixedWidth(42);
 	childCategoryButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 	
-	if (familias->value( "hijos" ).toInt() == 0) {
+	if (m_paginadoListaPantallas) {
+	  
+	  if (familias->value( "hijos" ).toInt() == 0) {
 	    childCategoryButton->hide();
-	} // end if
-	if (familias->value( "padrefamilia" ).toInt() == 0) {
-	    homeButton->hide();
-	    previousButton->hide();
-	} // end if
-
+	  } // end if
+	  
+	  if (familias->value( "padrefamilia" ).toInt() == 0) {
+	      homeButton->hide();
+	      previousButton->hide();
+	  } // end if
+	  
+	} else {
+	  
+	  childCategoryButton->hide();
+	  homeButton->hide();
+	  previousButton->hide();
+	  
+	} //end if
 	
         QPushButton *button = new QPushButton ( titulo, m_widget );
 	button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
