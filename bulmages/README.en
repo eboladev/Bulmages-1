@@ -116,7 +116,7 @@ documents in openoffice format
 Directory structure
 ===================
 
-These are the main directories of svn and their corresponding explanations.
+These are the main directories of git and their corresponding explanations.
 
 - bulmalib
 There are some common libraries for the various projects. PostgreSql,
@@ -253,7 +253,7 @@ the developers. In order to do this you can:
 
 
 - subscribe to mailing list of BulmaGés:
-http://llistes.bulma.net/mailman/listinfo/bulmages
+https://lists.berlios.de/mailman/listinfo/bulmages-main
 
 a medium traffic list where the developers and other people of the
 project exchange news, doubts, and so on about BulmaGés.
