@@ -240,8 +240,10 @@
 #define CONF_TPV_BASCULA_FILE        460
 /// Impresion al cobrar de tickets ya impresos antes 
 #define CONF_TPV_REIMPRIMIR          461
-// El texto a escribir cuando pulsamos el boton MESA
+/// El texto a escribir cuando pulsamos el boton MESA
 #define CONF_TPV_TEXTOMESA           462
+
+#define CONF_TPV_CATEGORY_TREE       463
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".

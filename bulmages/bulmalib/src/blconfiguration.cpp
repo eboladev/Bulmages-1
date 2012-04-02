@@ -459,6 +459,8 @@ QString BlConfiguration::name( int i )
         return "CONF_USE_DESCARTICULO";
     if ( i == CONF_CUPS_TICKET_PRINTER )
         return "CONF_CUPS_TICKET_PRINTER";
+    if ( i == CONF_TPV_CATEGORY_TREE )
+       return "CONF_TPV_CATEGORY_TREE";
     return "";
 }
 

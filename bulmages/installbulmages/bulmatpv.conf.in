@@ -63,3 +63,5 @@ CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmat
 #Para el plugin de sincronizacion (clientsync) debe especificarse que elemento es el master y tiene instalado el serversync
 CONF_TPV_SERVER_SYNC_IP		192.168.2.200
 
+
+CONF_TPV_CATEGORY_TREE		TRUE
