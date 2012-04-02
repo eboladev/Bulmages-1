@@ -228,9 +228,6 @@ int main ( int argc, char **argv )
         /// Disparamos los plugins con entryPoint.
         g_plugins->run ( "exitPoint", bges );
 
-        // Desbloqueamos el esquema de ventanas al salir para guardar configuraciones
-        if (g_confpr->value(CONF_BLOCK_WINDOWS) == "TRUE") {
-      	
 	/// Liberamos memoria.
 	delete bges;
 	delete g_theApp;
