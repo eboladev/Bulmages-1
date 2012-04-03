@@ -84,7 +84,7 @@ una base de datos, en concreto PostgreSql.
 
 Para compilar el código fuente se necesita:
 
-- biblioteca Qt, como mínimo 4.3 http://www.qtsoftware.com/downloads.
+- biblioteca Qt, como mínimo 4.7 http://www.qtsoftware.com/downloads.
 Esta es la biblioteca de los widgets, de la interfaz gráfica. 
 
 - python y pyqt4. python 2.4 y el "binding" pyqt4 acorde a la versión de Qt
@@ -262,12 +262,12 @@ nosotros nos gustaría.
 
 El proyecto BulmaGés tiene como fin promocionar el software libre al nivel de
 gestión empresarial y poder fomentar la pequeña industria "local" en este
-ámbito. Cree un plugins de personalizaciones para cada uno de sus clientes
+ámbito. Cree uno o varios plugins de personalizaciones para cada uno de sus clientes
 y ofrezca un servicio de mantenimiento compilando las últimas versiones de
 la suite con sus plugins especificos.
 
 Si tiene código "privado", añadalo creando un fichero CMakeLists.txt.private,
 apuntando a los directorios que necesite. De esta forma sus plugins se
-compilaran junto con todo el programa, incluso podrá actualizar el repositorio
+compilarán junto con todo el programa, incluso podrá actualizar el repositorio
 del programa y mantener sus desarrollos particulares actualizados en todo
 momento sin tener que realizar complicadas gestiones.
