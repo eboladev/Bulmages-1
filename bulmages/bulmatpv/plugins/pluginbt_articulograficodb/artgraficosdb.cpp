@@ -71,7 +71,6 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
 
     m_numPantallas = 0;
     m_pantallaActual = 0;
-    m_paginadoListaPantallas = (g_confpr->value(CONF_TPV_CATEGORY_TREE) == "TRUE") ? true : false;
     
     m_widget = 0;
     m_signalMapperCategory = 0;
@@ -436,6 +435,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     int columnasBotones;
     int j;
     int indice;
+    bool paginadoListaPantallas = (g_confpr->value(CONF_TPV_CATEGORY_TREE) == "TRUE") ? true : false;
 
     /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
     if (m_widget) {
@@ -500,7 +500,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     
     if (familiaMostrar == 0) {
       
-      if (m_paginadoListaPantallas) {
+      if (paginadoListaPantallas) {
 	
 	  familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
 
@@ -535,7 +535,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
 	childCategoryButton->setFixedWidth(42);
 	childCategoryButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 	
-	if (m_paginadoListaPantallas) {
+	if (paginadoListaPantallas) {
 	  
 	  if (familias->value( "hijos" ).toInt() == 0) {
 	    childCategoryButton->hide();

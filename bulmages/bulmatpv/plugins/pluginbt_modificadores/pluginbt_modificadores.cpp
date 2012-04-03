@@ -38,7 +38,6 @@
 //TabletCanvas *g_tablet = NULL;
 BlDockWidget *g_doc1 = NULL;
 
-
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
     BL_FUNC_DEBUG
@@ -56,7 +55,6 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
     item->addDbField ( "idmodificador7", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador8", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador9", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
-
     
 
     return 0;
@@ -90,7 +88,6 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_tablet->setWindowIcon(QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadoresg.png"  ));
     */
     
-    
     return 0;
 }
 
@@ -116,7 +113,6 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     modificadores->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
     modificadores->setIconSize ( QSize ( 32, 32 ) );    
 
-    
     EditarDescripcionQToolButton *editarDescripcion = new EditarDescripcionQToolButton (  (BtCompany *)tick->mainCompany(), tick );
     editarDescripcion->setFixedSize (48, 48);
     editarDescripcion->setObjectName ( QString::fromUtf8 ( "editardescripcionqtoolbutton" ) );
@@ -127,6 +123,19 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
     
 
+    if ( g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "FALSE") ) {
+	modificadores->hide();
+    } else {
+	modificadores->show();
+    } // end if
+    
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "FALSE") ) {
+	editarDescripcion->hide();
+    } else {
+	editarDescripcion->show();
+    } // end if
+    
+    
     QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");
 
     if (frame) {
@@ -173,7 +182,20 @@ int MTicket_MTicket_Post (MTicket *tick) {
     editarDescripcion->setMinimumSize ( QSize ( 32, 32 ) );
     editarDescripcion->setIcon ( QIcon ( ":/Images/edit_edit.png" ) );
     editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
+
     
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "FALSE") ) {
+	modificadores->hide();
+    } else {
+	modificadores->show();
+    } // end if
+    
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "FALSE") ) {
+	editarDescripcion->hide();
+    } else {
+	editarDescripcion->show();
+    } // end if
+
 
     QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");
 
