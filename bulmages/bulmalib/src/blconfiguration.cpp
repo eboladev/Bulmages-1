@@ -461,6 +461,8 @@ QString BlConfiguration::name( int i )
         return "CONF_CUPS_TICKET_PRINTER";
     if ( i == CONF_TPV_CATEGORY_TREE )
        return "CONF_TPV_CATEGORY_TREE";
+    if ( i == CONF_USE_QSCRIPT )
+       return "CONF_USE_QSCRIPT";
     return "";
 }
 

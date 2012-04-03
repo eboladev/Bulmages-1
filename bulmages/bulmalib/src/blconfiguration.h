@@ -57,6 +57,9 @@
 #define CONF_USE_DESCARTICULO         53
 
 
+/// Habilitar el uso de scripts de QScript.
+#define CONF_USE_QSCRIPT           70
+
 ///Indica el color de fondo del libro diario. (obsoleto)
 #define CONF_BG_DIARIO               106
 /// Indica el color de la letra del diario en el pijama opcion 1.(obsoleto)

@@ -43,43 +43,48 @@ Importa el script y lo lanza.
 */
 void BlFormList::blScript(QObject * obj) {
     
-    /// Lanzamos los scripts de QScript
-    QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
-    QFile scriptFile1(fileName);
-    if (scriptFile1.open(QIODevice::ReadOnly)) {
-	  QTextStream stream(&scriptFile1);
-	  QString contents = stream.readAll();
-	  QScriptValue objectValue = m_myEngine.newQObject(this);
-	  m_myEngine.globalObject().setProperty(metaObject()->className(), objectValue);
-	  QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
-	  m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
-	  m_myEngine.importExtension("qt.core");
-	  m_myEngine.importExtension("qt.gui"); 
-	  m_myEngine.evaluate(contents);
-	  scriptFile1.close();
-	  if (m_myEngine.hasUncaughtException()) {
-	    blMsgInfo(m_myEngine.uncaughtException().toString());
+    if (g_confpr->value(CONF_USE_QSCRIPT) == "TRUE" || g_confpr->value(CONF_USE_QSCRIPT) == "T" || g_confpr->value(CONF_USE_QSCRIPT) == "1" ) {
+  
+	  /// Lanzamos los scripts de QScript
+	  QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
+	  QFile scriptFile1(fileName);
+	  if (scriptFile1.open(QIODevice::ReadOnly)) {
+		QTextStream stream(&scriptFile1);
+		QString contents = stream.readAll();
+		QScriptValue objectValue = m_myEngine.newQObject(this);
+		m_myEngine.globalObject().setProperty(metaObject()->className(), objectValue);
+		QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
+		m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
+		m_myEngine.importExtension("qt.core");
+		m_myEngine.importExtension("qt.gui"); 
+		m_myEngine.evaluate(contents);
+		scriptFile1.close();
+		if (m_myEngine.hasUncaughtException()) {
+		  blMsgInfo(m_myEngine.uncaughtException().toString());
+		} // end if
 	  } // end if
+	  
+	  
+	  fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist"+".qs";
+	  scriptFile1.setFileName(fileName);
+	  if (scriptFile1.open(QIODevice::ReadOnly)) {
+		QTextStream stream(&scriptFile1);
+		QString contents = stream.readAll();
+		QScriptValue objectValue = m_myEngine.newQObject(this);
+		m_myEngine.globalObject().setProperty("BlForm", objectValue);
+		QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
+		m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
+		m_myEngine.importExtension("qt.core");
+		m_myEngine.importExtension("qt.gui"); 
+		m_myEngine.evaluate(contents);
+		scriptFile1.close();
+		if (m_myEngine.hasUncaughtException()) {
+		  blMsgInfo(m_myEngine.uncaughtException().toString());
+		} // end if
+	  } // end if
+    
     } // end if
     
-    
-    fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist"+".qs";
-    scriptFile1.setFileName(fileName);
-    if (scriptFile1.open(QIODevice::ReadOnly)) {
-	  QTextStream stream(&scriptFile1);
-	  QString contents = stream.readAll();
-	  QScriptValue objectValue = m_myEngine.newQObject(this);
-	  m_myEngine.globalObject().setProperty("BlForm", objectValue);
-	  QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
-	  m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
-	  m_myEngine.importExtension("qt.core");
-	  m_myEngine.importExtension("qt.gui"); 
-	  m_myEngine.evaluate(contents);
-	  scriptFile1.close();
-	  if (m_myEngine.hasUncaughtException()) {
-	    blMsgInfo(m_myEngine.uncaughtException().toString());
-	  } // end if
-    } // end if
 }
 
 
