@@ -248,6 +248,9 @@
 
 #define CONF_TPV_CATEGORY_TREE       463
 
+#define CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION    464
+#define CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES   	465
+
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".
 #define CONF_NUM_AUT_PRESUP          500
