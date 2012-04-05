@@ -57,6 +57,9 @@
 #define CONF_USE_DESCARTICULO         53
 
 
+/// Habilitar el uso de scripts de QScript.
+#define CONF_USE_QSCRIPT           70
+
 ///Indica el color de fondo del libro diario. (obsoleto)
 #define CONF_BG_DIARIO               106
 /// Indica el color de la letra del diario en el pijama opcion 1.(obsoleto)
@@ -244,6 +247,9 @@
 #define CONF_TPV_TEXTOMESA           462
 
 #define CONF_TPV_CATEGORY_TREE       463
+
+#define CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION    464
+#define CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES   	465
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".

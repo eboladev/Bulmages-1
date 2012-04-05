@@ -110,6 +110,9 @@ CONF_ASK_BEFORE_EXIT			TRUE
 # Si se tiene el VisorHTML Instalado esta es la URL que hay que visitar
 CONF_URL_CONTENTS		http://www.iglues.org
 
+# Usar QScript (llamar a los archivos .qs de openreports)
+CONF_USE_QSCRIPT                        FALSE
+
 # NOTA PARA DESARROLLADORES:
 # --------------------------
 # Atencion: Las lineas que se agregen en este archivo deben
