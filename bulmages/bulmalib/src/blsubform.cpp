@@ -1770,7 +1770,7 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
         rec = ( BlDbSubFormRecord * ) camp->pare();
 
     } catch ( ... ) {
-        BlDebug::blDebug ( "BlSubForm::lineaat linea inexistente", 2, QString::number ( row ) );
+        BlDebug::blDebug ( "BlSubForm::lineaat linea inexistente", 2, QString::number ( row ) + objectName() + parent()->objectName() );
         rec = NULL;
     }
     
@@ -1786,6 +1786,7 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 bool BlSubForm::campoCompleto ( int row )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlSubForm::campoCompleto()", 0, QString::number ( row ) );
     bool resultat = false;
     bool *pResultat = &resultat;
     if ( g_plugins->run ( "BlSubForm_campoCompleto", this, ( void** ) &pResultat ) ) {
@@ -2081,14 +2082,16 @@ QString BlSubForm::dbValue ( const QString &campo, int row )
         
         return rec->dbValue ( campo );
     } catch ( ... ) {
-        blMsgInfo ( _ ("Fila inexistente" ));
+        /// Este tipo de errores no deben pasar desapercibidos ya que pueden acarrear problemas muchos mas graves y en la programacion no pueden permitirse.
+        /// Por este motivo es preferible mostrar un mensaje de error alarmante.
+        blMsgInfo ( _ ("Se intentó obtener un valor en una Fila inexistente" ) + "en " + objectName() + "con " + parent()->objectName() );
         throw - 1;
     }
 }
 
 
 ///
-/**
+/** Si hay algun error da un mensaje de error.
 \param campo Nombre de la columna que debe cambiarse.
 \param row   Fila correspondiente a la casilla
 \param valor Valor que tomara la casilla
@@ -2109,7 +2112,9 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
         rec->setDbValue ( campo, valor );
         
     } catch ( ... ) {
-        blMsgInfo ( _ ("Fila inexistente" ) );
+        /// Este tipo de errores no deben pasar desapercibidos ya que pueden acarrear problemas muchos mas graves y en la programacion no pueden permitirse.
+        /// Por este motivo es preferible mostrar un mensaje de error alarmante.
+        blMsgInfo ( _ ("Se intentó establecer un valor en una Fila inexistente" ) + "en " + objectName() + "con " + parent()->objectName() );
         throw - 1;
     }
 }
@@ -2131,38 +2136,46 @@ int BlSubForm::save()
                 rec->remove();
             } // end if
         } // end while
-
-        /// Asegura que siempre la ultima linea se valide antes de guardar.
-        /// Esto evita que se pueda perder informacion.
-        if ( campoCompleto ( mui_list->rowCount() - 1 ) ) {
-            newRecord();
-        } // end if
-
+        
         /// Si no hay elementos que guardar salimos.
         if ( mui_list->rowCount() == 0 || ( ( mui_list->rowCount() == 1 ) && m_insercion ) ) {
             return 0;
         } // end if
 
+        /// Asegura que siempre la ultima linea se valide antes de guardar. Distinguiendo entre insercion y no insercion
+        /// Esto evita que se pueda perder informacion.
+        if ( m_insercion) {
+	    if (campoCompleto ( mui_list->rowCount() - 1 ) ) {
+		newRecord();
+	    } // end if
+	}// end if
+
         /// Hacemos el guardado
         for ( int j = 0; j < mui_list->rowCount() - 1; ++j ) {
             rec = lineaat ( j );
             if ( rec ) {
-                /// Si hay ordenacion de campos ahora la establecemos
-                if ( m_orden ) {
-                    rec->setDbValue ( "orden" + m_tablename, QString::number ( j ) );
-                } // end if
-                rec->refresh();
-                rec->save();
+	        /// Hay casos en los que se guarda y entremedias hay campos no completos que no deben guardarse.
+	        if (campoCompleto ( j) ) {
+		    /// Si hay ordenacion de campos ahora la establecemos
+		    if ( m_orden ) {
+			rec->setDbValue ( "orden" + m_tablename, QString::number ( j ) );
+		    } // end if
+		    rec->refresh();
+		    rec->save();
+		} // end if
             } // end if
         } // end for
+        
 
         /// Si no hay modo insercion hacemos el guardado de la ultima linea.
         if ( !m_insercion ) {
             rec = lineaat ( mui_list->rowCount() - 1 );
-            if ( m_orden )
-                rec->setDbValue ( "orden" + m_tablename, QString::number ( mui_list->rowCount() - 1 ) );
-            rec->refresh();
-            rec->save();
+	    if (campoCompleto(mui_list->rowCount() - 1)) {
+		if ( m_orden )
+		    rec->setDbValue ( "orden" + m_tablename, QString::number ( mui_list->rowCount() - 1 ) );
+		rec->refresh();
+		rec->save();
+	    }// end if
         } // end if
 
         /// Liberamos memoria
@@ -2182,7 +2195,7 @@ int BlSubForm::save()
         } // end if
     } catch ( ... ) {
 	
-        blMsgError ( _ ("Error inesperado en el guardado. [BlSubForm::guardar]" ) );
+        blMsgError ( _ ("Error inesperado en el guardado." ) );
         throw - 1;
     } // end try
     return -1;
@@ -2225,7 +2238,7 @@ int BlSubForm::remove()
         return error;
     } catch ( ... ) {
 	
-        blMsgError ( _ ("Error al borrar. [BlSubForm::borrar]" ));
+        blMsgError ( _ ("Error al borrar." ));
         return -1;
     } // end try
 }
@@ -2284,7 +2297,7 @@ int BlSubForm::remove ( int row )
 
     } catch ( ... ) {
 	
-        blMsgInfo ( _ ("Error al intentar borrar" ) );
+        blMsgInfo ( _ ("Error al borrar" ) );
         throw - 1;
     } // end try
 }
