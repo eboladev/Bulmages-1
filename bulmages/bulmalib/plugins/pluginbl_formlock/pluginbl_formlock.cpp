@@ -57,6 +57,13 @@ int entryPoint ( QMainWindow *bcont )
 }
 
 
+int BlMainCompany_init(BlMainCompany * main) {
+    BL_FUNC_DEBUG
+    main->dbPatchVersionCheck("PluginBl_FormLock", "0.11.1-0001");
+    return 0;
+}
+
+
 /// Bloquear la ficha si no lo estaba ya por otro usuario
 /**
   Antes, en "fichabloqueo" s&oacute;lo se almacenaba el nombre del campo identificador.
@@ -167,10 +174,6 @@ int BlForm_DesBlForm ( BlForm *ficha )
 int BlForm_BlForm ( BlForm *l )
 {
     BL_FUNC_DEBUG
-    
-    /// El plugin necesita un parche en la base de datos para funcionar.
-    /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
-    l->mainCompany()->dbPatchVersionCheck("PluginBl_FormLock", "0.11.1-0001");
     
     new BloqMenu ( l );
     

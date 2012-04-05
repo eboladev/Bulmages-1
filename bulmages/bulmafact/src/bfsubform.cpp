@@ -161,9 +161,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     m_registrolinea = rec;
     m_campoactual = camp;
 
-//    BlDbRecordSet *cur2 = NULL;
     BlDbRecordSet *cur = NULL;
-//    BlDbRecordSet *cur1 = NULL;
 
     /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
     BlSubForm::editFinished ( row, col, rec, camp );
@@ -577,7 +575,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
     } else if ( linea->fieldName() == "cant" + m_subform->tableName()
-                || linea->fieldName() == "pvp" + m_subform->tableName()
+                || linea->fieldName() == "pvp"
                 || linea->fieldName() == "descuento" + m_subform->tableName()
                 || linea->fieldName() == "reqeq" + m_subform->tableName()
                 || linea->fieldName() == "iva" + m_subform->tableName() ) {

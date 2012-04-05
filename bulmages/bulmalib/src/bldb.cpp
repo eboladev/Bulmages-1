@@ -622,6 +622,8 @@ int BlDbRecord::dbSave ( QString &id )
 int BlDbRecord::setDbValue ( QString nomb, QString valor )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, nomb + " --> " + valor );
+    
     BlDbField *campo;
     int error = 0;
     int i = 0;

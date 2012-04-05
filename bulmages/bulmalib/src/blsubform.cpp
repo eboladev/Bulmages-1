@@ -3385,8 +3385,6 @@ void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 
     /// Disparamos los plugins.
     g_plugins->run ( "BlSubForm_editFinished", this );
-
-
     
 }
 

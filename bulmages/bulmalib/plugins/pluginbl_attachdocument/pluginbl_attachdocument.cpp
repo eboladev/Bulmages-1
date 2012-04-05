@@ -37,7 +37,7 @@
 #include "local_blI18n.h"
 #include "pluginbl_attachdocument.h"
 #include "blform.h"
-#include "blmaincompany.h"
+
 #include "archmenu.h"
 #include "bltoolbutton.h"
 #include "blaction.h"
@@ -51,8 +51,18 @@ int entryPoint ( QMainWindow *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_attachdocument", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
+
+    
     return ( 0 );
 }
+
+
+int BlMainCompany_init(BlMainCompany * main) {
+    BL_FUNC_DEBUG
+    main->dbPatchVersionCheck("PluginBl_AttachDocument", "0.11.1-0001");
+    return 0;
+}
+
 
 
 int BlForm_load ( BlForm *ficha )
@@ -84,17 +94,6 @@ int BlForm_DesFicha ( BlForm *ficha )
 int BlForm_BlForm ( BlForm *l )
 {
     BL_FUNC_DEBUG
-
-    /// El plugin necesita un parche en la base de datos para funcionar.
-    /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
-    l->mainCompany()->dbPatchVersionCheck("PluginBl_AttachDocument", "0.11.1-0001");
-
-    /*
-    new ArchMenu ( l );
-    new EQToolButton( l );
-*/
-
-    
     return 0;
 }
 
