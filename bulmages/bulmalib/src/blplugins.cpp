@@ -137,6 +137,7 @@ int BlPlugins::run ( const char *func, void *clase )
 	} // end for
 	
 	if (!encontrado) {
+	  BlDebug::blDebug("Lanzaremos el plugin de la libreria *** " + m_plugins.at( i) -> fileName() + "***");
 	  funcAddressList.push_back(myFunction);
 	} // end if
 	
@@ -147,6 +148,7 @@ int BlPlugins::run ( const char *func, void *clase )
 	myFunction = funcAddressList.at(i);
 
 	if ( myFunction && a == 0 ) {
+	    BlDebug::blDebug("Lanzamos el plugin en orden *** " + QString::number(i) + "***");
             a = myFunction ( clase );
         } // end if
     
@@ -188,6 +190,7 @@ int BlPlugins::run ( const char *func, void *clase, void **ret )
 	} // end for
 	
 	if (!encontrado) {
+	  BlDebug::blDebug("Lanzaremos el plugin de la libreria *** " + m_plugins.at( i) -> fileName() + "***");
 	  funcAddressList.push_back(myFunction1);
 	} // end if
 	
@@ -198,6 +201,7 @@ int BlPlugins::run ( const char *func, void *clase, void **ret )
 	myFunction1 = funcAddressList.at(i);
 
 	if ( myFunction1 && a == 0 ) {
+	    BlDebug::blDebug("Lanzamos el plugin en orden *** " + QString::number(i) + "***");
             a = myFunction1 ( clase, ret );
         } // end if
     

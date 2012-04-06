@@ -59,12 +59,7 @@ extern "C" PLUGINBF_ALIAS_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_load ( ArticuloView * );
 extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
-
 extern "C" PLUGINBF_ALIAS_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
-/*
-extern "C" MY_EXPORT int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel );
-extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf ) ;
-*/
 extern "C" PLUGINBF_ALIAS_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ALIAS_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 

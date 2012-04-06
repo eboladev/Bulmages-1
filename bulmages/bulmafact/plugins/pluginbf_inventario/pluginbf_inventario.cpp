@@ -125,8 +125,10 @@ int BlForm_guardar_Post ( BlForm *fich )
 {
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form ) {
-        form->setColumnValue ( "idarticulo", fich->dbValue ( "idarticulo" ) );
-        form->save();
+        if (form->rowCount() > 0) {
+	  form->setColumnValue ( "idarticulo", fich->dbValue ( "idarticulo" ) );
+	  form->save();
+	} // end if
     } // end if
     return 0;
 }
@@ -137,6 +139,8 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     BL_FUNC_DEBUG
 
     BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->currentRow(), subform->currentColumn()  );
+    /// Si no hay campo actual salimos directamente.
+    if (!camp) return 0;
     camp->refresh();
     if ( camp->fieldName() == "cant" + subform->tableName() ) {
       
@@ -190,6 +194,12 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 int BlSubForm_campoCompleto ( BfSubForm *subform )
 {
     BL_FUNC_DEBUG
+    
+    /// Si el subformulario no tiene filas entonces no tiene sentido seguir. Y produce un error en la búsqueda de un dbValue.
+    if (subform->rowCount() == 0 || subform->currentRow() < 0) {
+      return 0;
+    } // end if
+  
   
     QString camp1 = subform->dbValue("cantlpresupuesto");
     if (camp1 == "")

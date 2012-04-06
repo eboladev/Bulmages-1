@@ -276,6 +276,12 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 {
     BL_FUNC_DEBUG
 
+    /// Si la tabla afectada es la ltarifa no tiene que actuar
+    
+    if (sub->tableName() == "ltarifa") {
+	return 0;
+    } // end if
+
     BlDbRecordSet *cur = NULL;
 
     QString cantactual = sub->m_registrolinea->dbValue ( "cant" + sub->tableName() ).replace ( ",", "." );

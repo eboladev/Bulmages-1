@@ -184,6 +184,7 @@ void BlMainCompany::init ( QString bd, QString tipo )
 
     inicializa ( bd );
     
+    g_plugins->run("BlMainCompany_init", this);
 }
 
 

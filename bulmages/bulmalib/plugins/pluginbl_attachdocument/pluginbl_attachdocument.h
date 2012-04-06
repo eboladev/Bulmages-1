@@ -33,7 +33,7 @@ extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_load ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_DesBlForm ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_BlForm ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_loadSpecs ( BlForm * );
-
+extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlMainCompany_init ( BlMainCompany * );
 
 #endif
 
