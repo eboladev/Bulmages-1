@@ -19,7 +19,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/client-quote-list.png</normaloff>:/Images/client-quote-list.png</iconset>
+    <normaloff>:/Images/rcomercial.png</normaloff>:/Images/rcomercial.png</iconset>
   </property>
   <layout class="QVBoxLayout">
    <property name="spacing">
@@ -54,7 +54,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/client-quote-list.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/rcomercial.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
