@@ -103,6 +103,7 @@
         <file alias="edit_down.png">images/oxygen/actions/48x48/edit_down.png</file>
         <file alias="attach_document.png">images/oxygen/actions/48x48/attach_document.png</file>
         <file alias="i_promocion.png">images/oxygen/actions/48x48/i_promocion.png</file>
+        <file alias="rcomercial.png">bulmafact/plugins/pluginbf_comercial/images/pathing.png</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
