@@ -113,3 +113,4 @@ install(DIRECTORY openreports/
       DESTINATION share/bulmages/openreports
       PATTERN ".svn" EXCLUDE)
 
+install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
