@@ -135,10 +135,10 @@ BEGIN
 	END IF;
 
 	IF NEW.refavale IS NULL OR NEW.refvale = '' THEN
-		SELECT INTO rs crearef() AS m;
+		SELECT INTO rs2 crearef() AS m;
 
 		IF FOUND THEN
-			NEW.refvale := rs.m;
+			NEW.refvale := rs2.m;
 		END IF;
 	END IF;
 
@@ -162,9 +162,9 @@ BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBt_Devolucion2'';
 
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBt_Devolucion2'';
+		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBt_Devolucion2'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBt_Devolucion2'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBt_Devolucion2'', ''0.11.1-0002'');
 	END IF;
 
 	RETURN 0;
