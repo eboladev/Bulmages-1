@@ -1,8 +1,9 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
  <class>ListZonaComercialBase</class>
- <widget class="QWidget" name="ListZonaComercialBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ListZonaComercialBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,37 +11,37 @@
     <height>349</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Zonas comerciales</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/Images/rcomercial.png</normaloff>:/Images/rcomercial.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <widget class="ListZonaComercialSubForm" name="mui_listado" />
+    <widget class="ListZonaComercialSubForm" name="mui_listado"/>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>277</width>
          <height>27</height>
@@ -49,15 +50,15 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
         <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
         <string>&amp;Cancelar</string>
        </property>
       </widget>
@@ -66,7 +67,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="2" margin="6" />
+ <layoutdefault spacing="2" margin="6"/>
  <customwidgets>
   <customwidget>
    <class>ListZonaComercialSubForm</class>
@@ -75,8 +76,8 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
-  <include location="../../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -85,11 +86,11 @@
    <receiver>ListZonaComercialBase</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>311</x>
      <y>563</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>6</x>
      <y>564</y>
     </hint>
