@@ -223,7 +223,7 @@ BEGIN
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBf_TallasColores'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_TallasColores'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_TallasColores'', ''0.11.1-0002'');
 	END IF;
 	RETURN 0;
 END;
