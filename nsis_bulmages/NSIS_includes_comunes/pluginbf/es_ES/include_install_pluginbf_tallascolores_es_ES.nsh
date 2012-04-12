@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_tallascolores.mo "\bulmafact\plugins\pluginbf_tallascolores\pluginbf_tallascolores_es_ES.gmo"

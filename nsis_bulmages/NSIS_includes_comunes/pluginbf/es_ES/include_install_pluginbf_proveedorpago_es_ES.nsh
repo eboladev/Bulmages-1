@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_proveedorpago.mo "\bulmafact\plugins\pluginbf_proveedorpago\pluginbf_proveedorpago_es_ES.gmo"

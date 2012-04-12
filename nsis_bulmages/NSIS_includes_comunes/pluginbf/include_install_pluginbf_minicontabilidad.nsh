@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_minicontabilidad.dll "\bulmafact\plugins\pluginbf_minicontabilidad\libpluginbf_minicontabilidad.dll"

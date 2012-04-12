@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_almacenamplia.dll "\bulmafact\plugins\pluginbf_almacenamplia\libpluginbf_almacenamplia.dll"
