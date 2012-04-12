@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'aboutbase.ui'
 #
-# Created: Thu Jan 19 17:51:52 2012
+# Created: Thu Apr 12 17:51:07 2012
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -293,7 +293,7 @@ class Ui_About(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">BulmaSetup GPL - Version 0.13.0</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">BulmaSetup GPL - Version 0.14.0</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.TabWidget.setTabText(self.TabWidget.indexOf(self.Acercade_2), QtGui.QApplication.translate("About", "&Acerca de", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit_autores.setHtml(QtGui.QApplication.translate("About", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
