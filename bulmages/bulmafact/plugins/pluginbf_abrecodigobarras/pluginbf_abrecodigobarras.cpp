@@ -64,7 +64,7 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setWhatsThis ( _("Abre documentos a partir del codigo de barras") );
     accionA->setObjectName("mui_actionAperturaRapida");
 
-
+    pPluginMenu->addAction(accionA);
     
     return 0;
 }
