@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_proveedoralbaran.mo "\bulmafact\plugins\pluginbf_proveedoralbaran\pluginbf_proveedoralbaran_ca_ES.gmo"

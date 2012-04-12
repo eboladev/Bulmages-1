@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_carterapagos.mo "\bulmafact\plugins\pluginbf_carterapagos\pluginbf_carterapagos_ca_ES.gmo"

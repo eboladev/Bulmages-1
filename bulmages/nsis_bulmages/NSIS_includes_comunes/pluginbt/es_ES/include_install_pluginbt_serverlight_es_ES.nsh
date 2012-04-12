@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbt_serverlight.mo "\bulmatpv\plugins\pluginbt_serverlight\pluginbt_serverlight_es_ES.gmo"

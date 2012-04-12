@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_correothunderbird.mo "\bulmafact\plugins\pluginbf_correothunderbird\pluginbf_correothunderbird_ca_ES.gmo"

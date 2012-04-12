@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_clientepedido.dll "\bulmafact\plugins\pluginbf_clientepedido\libpluginbf_clientepedido.dll"

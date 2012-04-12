@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_proveedorpedido.mo "\bulmafact\plugins\pluginbf_proveedorpedido\pluginbf_proveedorpedido_ca_ES.gmo"
