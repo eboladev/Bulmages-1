@@ -78,23 +78,23 @@
 
 
 !macro InstallFilesFromBuild Dest Origin
-  File "/oname=${Dest}" "C:\bulmages\build${origin}"
+  File "/oname=${Dest}" "..\bulmages\build${origin}"
 !macroend
 
 !macro InstallFilesFromSrc Dest Origin
-  File "/oname=${Dest}" "C:\bulmages${origin}"
+  File "/oname=${Dest}" "..\bulmages${origin}"
 !macroend
 
 !macro InstallFolderFromBuild Dest Origin
   ;File "/oname=${Dest}" "C:\bulmages\build${origin}"
   SetOutPath "$INSTDIR\${Dest}"
-  File /r "C:\bulmages\build\${Origin}\*"
+  File /r "..\bulmages\build\${Origin}\*"
 !macroend
 
 !macro InstallFolderFromSrc Dest Origin
   ;File "/oname=${Dest}" "C:\bulmages${origin}"
   SetOutPath "$INSTDIR\${Dest}"
-  File /r "C:\bulmages\${Origin}\*"
+  File /r "..\bulmages\${Origin}\*"
 
 !macroend
 
