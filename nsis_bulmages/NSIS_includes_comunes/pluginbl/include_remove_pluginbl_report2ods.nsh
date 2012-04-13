@@ -1,0 +1,1 @@
+Delete "$INSTDIR\program\pluginsbl\libpluginbl_report2ods.dll"

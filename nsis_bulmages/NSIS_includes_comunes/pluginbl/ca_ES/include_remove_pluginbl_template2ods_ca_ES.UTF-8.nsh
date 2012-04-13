@@ -1,0 +1,1 @@
+Delete "$INSTDIR\ca_ES\LC_MESSAGES\pluginbl_template2ods.mo"

@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_abrereferencia.dll "\bulmafact\plugins\pluginbf_abrereferencia\libpluginbf_abrereferencia.dll"

@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_inventario.mo "\bulmafact\plugins\pluginbf_inventario\pluginbf_inventario_es_ES.gmo"

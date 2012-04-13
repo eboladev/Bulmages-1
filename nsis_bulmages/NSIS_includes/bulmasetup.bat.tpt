@@ -1,0 +1,12 @@
+; Create file
+FileOpen $0 "$INSTDIR\bulmasetup\bulmasetup.bat" w
+
+FileWrite $0 "SET PATH=%PATH%;$\"$INSTDIR\Python26\$\"$\r$\n"
+FileWrite $0 "SET PYTHONPATH=%PYTHONPATH%;$\"$INSTDIR\Python26\Lib$\";$\"$INSTDIR\Python26\DDLs$\";$\"$INSTDIR\Python26\Lib\lib-tk$\"$\r$\n"
+FileWrite $0 "$\"$INSTDIR\pgsql\bin\pg_ctl.exe$\" -D $\"$INSTDIR\pgsql\data$\" -w -l $\"$INSTDIR\pgsql\data\registro$\" start$\r$\n"
+FileWrite $0 "cd $\"$INSTDIR\bulmasetup$\r$\n"
+FileWrite $0 "$\"$INSTDIR\Python26\python.exe$\" bulmasetup.py$\r$\n"
+FileWrite $0 "$\"$INSTDIR\pgsql\bin\pg_ctl.exe$\" -D $\"$INSTDIR\pgsql\data$\" -w -l $\"$INSTDIR\pgsql\data\registro$\" stop$\r$\n"
+
+; Close file
+FileClose $0

@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_printercocina.dll "\bulmafact\plugins\pluginbf_printercocina\libpluginbf_printercocina.dll"

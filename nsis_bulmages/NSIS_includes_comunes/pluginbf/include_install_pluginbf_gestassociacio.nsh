@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_gestassociacio.dll "\bulmafact\plugins\pluginbf_gestassociacio\libpluginbf_gestassociacio.dll"
