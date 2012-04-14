@@ -36,7 +36,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Reports: factura_alternativa1.rml; factura.rml; blform_FacturaView.qs; inf_detalleventasarticulo.pys; inf_resumcompras.pys; inf_familiacliente.pys
+Reports: factura_alternativa1.rml; factura.rml; blform_FacturaView.qs; inf_detalleventasarticulo.pys; inf_resumcompras.pys; inf_familiacliente.pys; inf_ventas.ui
 
 Categorias: Facturació genèrica;
 
