@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_ivaincluido.dll "\bulmafact\plugins\pluginbf_ivaincluido\libpluginbf_ivaincluido.dll"

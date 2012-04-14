@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbl_subform2pdf.dll "\bulmalib\plugins\pluginbl_subform2pdf\libpluginbl_subform2pdf.dll"

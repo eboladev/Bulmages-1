@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_asociacion.dll "\bulmafact\plugins\pluginbf_asociacion\libpluginbf_asociacion.dll"

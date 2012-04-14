@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_trazabilidad.dll "\bulmafact\plugins\pluginbf_trazabilidad\libpluginbf_trazabilidad.dll"

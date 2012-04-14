@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbt_tecladonumerico.dll "\bulmatpv\plugins\pluginbt_tecladonumerico\libpluginbt_tecladonumerico.dll"

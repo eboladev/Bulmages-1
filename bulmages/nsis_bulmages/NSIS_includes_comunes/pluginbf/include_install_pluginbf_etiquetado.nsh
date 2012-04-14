@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_etiquetado.dll "\bulmafact\plugins\pluginbf_etiquetado\libpluginbf_etiquetado.dll"

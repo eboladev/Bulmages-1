@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_proveedorfactura.dll "\bulmafact\plugins\pluginbf_proveedorfactura\libpluginbf_proveedorfactura.dll"

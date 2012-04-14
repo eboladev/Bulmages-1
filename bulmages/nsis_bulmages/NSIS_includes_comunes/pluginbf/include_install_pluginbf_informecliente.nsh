@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_informecliente.dll "\bulmafact\plugins\pluginbf_informecliente\libpluginbf_informecliente.dll"

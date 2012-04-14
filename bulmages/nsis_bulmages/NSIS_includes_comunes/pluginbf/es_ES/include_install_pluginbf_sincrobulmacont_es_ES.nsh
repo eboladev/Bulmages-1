@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_sincrobulmacont.mo "\bulmafact\plugins\pluginbf_sincrobulmacont\pluginbf_sincrobulmacont_es_ES.gmo"

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_clientealbaran.mo "\bulmafact\plugins\pluginbf_clientealbaran\pluginbf_clientealbaran_ca_ES.gmo"

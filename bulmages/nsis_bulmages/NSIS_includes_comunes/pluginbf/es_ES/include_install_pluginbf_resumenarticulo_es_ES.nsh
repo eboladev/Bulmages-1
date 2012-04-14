@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_resumenarticulo.mo "\bulmafact\plugins\pluginbf_resumenarticulo\pluginbf_resumenarticulo_es_ES.gmo"

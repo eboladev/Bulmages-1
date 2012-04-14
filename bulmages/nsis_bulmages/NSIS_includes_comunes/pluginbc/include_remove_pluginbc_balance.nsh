@@ -1,1 +1,0 @@
-Delete "$INSTDIR\program\pluginsbc\libpluginbc_balance.dll"

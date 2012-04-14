@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_printercocina.mo "\bulmafact\plugins\pluginbf_printercocina\pluginbf_printercocina_es_ES.gmo"

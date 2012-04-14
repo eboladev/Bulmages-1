@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_trabajador.dll "\bulmafact\plugins\pluginbf_trabajador\libpluginbf_trabajador.dll"

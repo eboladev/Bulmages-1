@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbl_register.dll "\privateplugins\pluginbl_register\libpluginbl_register.dll"

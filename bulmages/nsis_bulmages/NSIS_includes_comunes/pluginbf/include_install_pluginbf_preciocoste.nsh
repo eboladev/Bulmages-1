@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_preciocoste.dll "\bulmafact\plugins\pluginbf_preciocoste\libpluginbf_preciocoste.dll"

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_informecliente2sxc.mo "\bulmafact\plugins\pluginbf_informecliente2sxc\pluginbf_informecliente2sxc_ca_ES.gmo"
