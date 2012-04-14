@@ -46,8 +46,6 @@ public:
     virtual QString nombrefamilia();
     virtual void setidfamilia ( QString val );
     virtual void setcodigocompletofamilia ( QString val );
-
-
 };
 
 #endif
