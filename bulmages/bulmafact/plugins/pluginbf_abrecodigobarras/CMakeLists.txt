@@ -25,7 +25,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-        ${QT_QTSCRIPT_INCLUDE_DIR}
+    ${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
@@ -38,8 +38,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
- 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbarcodeopen/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/
+ 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_abrecodigobarras/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_abrecodigobarras/
  	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
  	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
@@ -99,8 +99,6 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 if(WIN32)
-target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_proveedorpedido ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-else(WIN32)
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)
 

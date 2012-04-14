@@ -135,8 +135,13 @@ int BlAction_actionTriggered(BlAction *accion) {
             g_pluginbf_abrecodigobarras->company()->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
-
-            PedidoProveedorView * prov = new PedidoProveedorView ( g_pluginbf_abrecodigobarras->company(), 0 );
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->run ( "SNewPedidoProveedorView", g_pluginbf_abrecodigobarras->company() );
+            if ( !resur ) {
+                blMsgInfo ( _("No se pudo crear instancia de pedido proveedor") );
+                return 0;
+            } // end if
+            PedidoProveedorView * prov = ( PedidoProveedorView *) g_plugParams;
             if ( prov->load ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return 0;
