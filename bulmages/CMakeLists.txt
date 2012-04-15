@@ -253,3 +253,5 @@ MARK_AS_ADVANCED(
 	BULMAGES_VERSION
 )
 
+message(STATUS "Working on tests")
+add_subdirectory(tests)
