@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'test_initial.h'
 **
-** Created: Sun Apr 15 23:52:20 2012
+** Created: Mon Apr 16 00:20:42 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Initial[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,12 +32,16 @@ static const uint qt_meta_data_Initial[] = {
 
  // slots: signature, parameters, type, tag, flags
        9,    8,    8,    8, 0x08,
+      24,    8,    8,    8, 0x08,
+      34,    8,    8,    8, 0x08,
+      49,    8,    8,    8, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Initial[] = {
-    "Initial\0\0toUpper()\0"
+    "Initial\0\0toUpper_data()\0toUpper()\0"
+    "testGui_data()\0testGui()\0"
 };
 
 const QMetaObject Initial::staticMetaObject = {
@@ -69,10 +73,13 @@ int Initial::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: toUpper(); break;
+        case 0: toUpper_data(); break;
+        case 1: toUpper(); break;
+        case 2: testGui_data(); break;
+        case 3: testGui(); break;
         default: ;
         }
-        _id -= 1;
+        _id -= 4;
     }
     return _id;
 }
