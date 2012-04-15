@@ -56,5 +56,4 @@ void Initial::testGui() {
 	}
 }
 
-QTEST_MAIN(Initial)
 #include "test_initial.moc"
