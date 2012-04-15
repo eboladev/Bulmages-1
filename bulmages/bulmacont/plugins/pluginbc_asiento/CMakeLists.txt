@@ -130,7 +130,7 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_fr_FR.css "${VAR_CSS_fr_FR}" )
 FILE(READ ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_en_US.css VAR_CSS_en_US)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_en_US.css "${VAR_CSS_en_US}" )
 
-install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
+install(DIRECTORY images DESTINATION share/bulmages)
 
 
 

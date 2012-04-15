@@ -103,7 +103,7 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
 FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
 
-install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
+install(DIRECTORY images DESTINATION share/bulmages)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
@@ -122,9 +122,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmafact bulmalib)
 
 install(DIRECTORY dbmodels/ 
-      DESTINATION share/bulmages/dbmodels/plugins
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/dbmodels/plugins)
 
 install(DIRECTORY openreports/ 
-      DESTINATION share/bulmages/openreports
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/openreports)

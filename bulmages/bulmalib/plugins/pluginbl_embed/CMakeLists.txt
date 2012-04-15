@@ -79,9 +79,6 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmafact bulmalib bulmacont)
 
 install(DIRECTORY openreports/ 
-      DESTINATION share/bulmages/openreports
-      PATTERN ".svn" EXCLUDE)
-
-
+      DESTINATION share/bulmages/openreports)
 
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

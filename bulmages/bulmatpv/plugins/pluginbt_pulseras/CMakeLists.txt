@@ -104,7 +104,6 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmatpv bulmalib)
 
 install(DIRECTORY icons/ 
-      DESTINATION share/bulmages/icons
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/icons)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

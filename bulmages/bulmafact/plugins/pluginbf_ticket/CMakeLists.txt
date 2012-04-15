@@ -115,7 +115,6 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clienteticket pluginbf_clientealbaran pluginbf_clientepresupuesto pluginbf_clientepedido)
 
 install(DIRECTORY openreports/ 
-      DESTINATION share/bulmages/openreports
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/openreports)
 
 

@@ -104,4 +104,4 @@ install_targets(/lib/bulmatpv/plugins ${plugin})
 FILE(READ ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css VAR_CSS)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmatpv.css "${VAR_CSS}" )
 
-install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
+install(DIRECTORY images DESTINATION share/bulmages)

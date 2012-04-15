@@ -121,5 +121,4 @@ install (FILES ${report_files} DESTINATION share/bulmages/openreports/en)
 add_dependencies(${plugin} bulmafact bulmalib)
 
 install(DIRECTORY dbmodels/ 
-      DESTINATION share/bulmages/dbmodels/plugins
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/dbmodels/plugins)

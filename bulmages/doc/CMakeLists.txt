@@ -19,8 +19,7 @@
 #                                                                       #
 #bulmacont_files  bulmacont.html  bulmafact_files  bulmafact.html  bulmasetup_files  bulmasetup.html
 install(DIRECTORY bulmacont_files  bulmafact_files  bulmasetup_files 
-				DESTINATION share/bulmages/doc
- 				PATTERN ".svn" EXCLUDE)
+				DESTINATION share/bulmages/doc)
 
 set (indexes bulmacont.html bulmafact.html bulmasetup.html)
 install(FILES ${indexes} DESTINATION share/bulmages/doc)

@@ -79,7 +79,6 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 
 add_dependencies(${plugin} bulmalib bulmacont bulmafact)
 install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
+		DESTINATION share/bulmages/dbmodels/plugins)
 
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

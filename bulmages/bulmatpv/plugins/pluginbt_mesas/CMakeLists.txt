@@ -105,11 +105,9 @@ add_dependencies(${plugin} bulmatpv bulmalib)
 
 
 install(DIRECTORY clipart/ 
-      DESTINATION share/bulmages/images/clipart
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/images/clipart)
 
 install(DIRECTORY icons/ 
-      DESTINATION share/bulmages/icons
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/icons)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

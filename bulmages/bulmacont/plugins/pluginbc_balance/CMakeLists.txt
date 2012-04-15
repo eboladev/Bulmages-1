@@ -118,6 +118,5 @@ set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
 
 #GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
 install(DIRECTORY openreports/ 
-      DESTINATION share/bulmages/openreports
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/openreports)
 

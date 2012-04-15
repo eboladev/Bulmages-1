@@ -90,8 +90,7 @@ target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LI
 install_targets(/lib/bulmacont/plugins ${plugin})
 
 install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
+		DESTINATION share/bulmages/dbmodels/plugins)
 
 
 add_dependencies(${plugin} bulmacont bulmalib)

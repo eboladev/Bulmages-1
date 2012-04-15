@@ -112,5 +112,4 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_profesor pluginbf_tutor)
 
 install(DIRECTORY openreports/ 
-      DESTINATION share/bulmages/openreports
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/openreports)

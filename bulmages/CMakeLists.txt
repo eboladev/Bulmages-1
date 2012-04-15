@@ -207,7 +207,7 @@ add_subdirectory(doc)
 set (r_files README.es README.plugins.es)
 install(FILES ${r_files} DESTINATION share/bulmages/)
 
-install(DIRECTORY images DESTINATION share/bulmages/imagesrc PATTERN ".svn" EXCLUDE)
+install(DIRECTORY images DESTINATION share/bulmages/imagesrc)
 
 # We include some kind of xdg-sudo that will search for gtksudo,kdesudo, and if not found will prompt an xterm
 IF(UNIX AND NOT WIN32)

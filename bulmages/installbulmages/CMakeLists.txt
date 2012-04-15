@@ -49,8 +49,7 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/menu/bulmatpv.menu.in ${CMAK
 
 install(DIRECTORY ainteligentes canuales planescontables rev-conf
 				openreports icons images dbmodels ayuda confs
-				DESTINATION share/bulmages
- 				PATTERN ".svn" EXCLUDE)
+				DESTINATION share/bulmages)
 
 install(FILES ${CMAKE_BINARY_DIR}/bgtrml2pdf.py DESTINATION bin RENAME bgtrml2pdf
                 PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
@@ -73,11 +72,9 @@ endforeach(fcss in ${f_css})
 
 install(DIRECTORY ainteligentes canuales planescontables ${CMAKE_BINARY_DIR}/css
             openreports icons images
-            DESTINATION share/bulmages
-            PATTERN ".svn" EXCLUDE)
+            DESTINATION share/bulmages)
 
-install(DIRECTORY man pixmaps ${CMAKE_BINARY_DIR}/applications ${CMAKE_BINARY_DIR}/menu doc DESTINATION share/
-				PATTERN ".svn" EXCLUDE)
+install(DIRECTORY man pixmaps ${CMAKE_BINARY_DIR}/applications ${CMAKE_BINARY_DIR}/menu doc DESTINATION share/)
 
 FILE(GLOB files ${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt ${CMAKE_BINARY_DIR}/version)
 install(FILES ${files} DESTINATION share/bulmages)
@@ -89,8 +86,7 @@ FILE(GLOB conf_etc
 	${CMAKE_BINARY_DIR}/bulmatpv.conf)
 install(FILES ${conf_etc} DESTINATION ${BULMAGES_CONFIG_DIR})
 
-install(DIRECTORY examples/databases DESTINATION share/bulmages/examples/
-            PATTERN ".svn" EXCLUDE)
+install(DIRECTORY examples/databases DESTINATION share/bulmages/examples/)
 
 FILE(GLOB scripts_ex ${CMAKE_BINARY_DIR}/installbulmages-db
                      ${CMAKE_BINARY_DIR}/actualizabulmacont

@@ -110,5 +110,4 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
 
 install(DIRECTORY dbmodels/ 
-      DESTINATION share/bulmages/dbmodels/plugins
-      PATTERN ".svn" EXCLUDE)
+      DESTINATION share/bulmages/dbmodels/plugins)

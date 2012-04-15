@@ -118,7 +118,7 @@ mkdir /usr/share/bulmages/bulmatpv-plugins
 
 
 
-for archivo in `find $1/bulmalib -name "README.es" | grep -v ".svn"`; do
+for archivo in `find $1/bulmalib -name "README.es"`; do
 archivo1=$archivo
 archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
 echo $archivo1
@@ -130,7 +130,7 @@ done
 
 
 
-for archivo in `find $1/bulmacont -name "README.es" | grep -v ".svn"`; do
+for archivo in `find $1/bulmacont -name "README.es"`; do
 archivo1=$archivo
 archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
 echo $archivo1
@@ -141,7 +141,7 @@ done
 
 
 
-for archivo in `find $1/bulmafact -name "README.es" | grep -v ".svn"`; do
+for archivo in `find $1/bulmafact -name "README.es"`; do
 archivo1=$archivo
 archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
 echo $archivo1
@@ -152,7 +152,7 @@ done
 
 
 
-for archivo in `find $1/bulmatpv -name "README.es" | grep -v ".svn"`; do
+for archivo in `find $1/bulmatpv -name "README.es"`; do
 archivo1=$archivo
 archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
 echo $archivo1

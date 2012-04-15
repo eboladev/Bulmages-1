@@ -118,8 +118,7 @@ add_dependencies(${plugin} bulmafact bulmalib bulmacont pluginbf_articulo plugin
 
 
 install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
+		DESTINATION share/bulmages/dbmodels/plugins)
 
 
 
