@@ -126,7 +126,7 @@
 <td><para>Total Base Imponible <font color="blue">[totalbimp]</font></para></td>
 <td><para>Total I.V.A <font color="blue">[totaliva]</font></para></td>
 <td><para>Total R.Eq <font color="blue">[totalre]</font></para></td>
-<td><para><b><font size="15"> Total <font color="blue">[total]</font></font></b></para></td>
+<td><para><font size="15"><b> Total </b></font><font color="blue" size="15"><b>[total]</b></font></para></td>
 </tr>
 </blockTable>
 </place>
