@@ -77,7 +77,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.writecommand(QtGui.QApplication.translate("Contabilidad",'ACTUALIZANDO BASE DE DATOS', None, QtGui.QApplication.UnicodeUTF8))
         # Desactivamos el mostrado de errores ya que si el parche no es el adecuado entonces produce errores que no son tales
         self.mostrarErrores = "FALSE"
-        self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql"]
+        self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql", "rev-0.14.sql"]
         os.chdir(gettempdir())
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
