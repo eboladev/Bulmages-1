@@ -1,0 +1,11 @@
+<!--Datos Empresas-->
+<setFont name="Helvetica" size="10"/>
+<drawString x="1.45cm" y="25.1cm"><!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY --></drawString>
+
+<drawString x="1.45cm" y="24.75cm"><!-- QUERY="SELECT valor AS val1 FROM configuracion WHERE nombre='CIF'" -->[val1]<!-- END QUERY --></drawString>
+
+<drawString x="1.45cm" y="24.4cm"><!-- QUERY="SELECT valor AS val2 FROM configuracion WHERE nombre='DireccionCompleta'" -->[val2]<!-- END QUERY --></drawString>
+
+<drawString x="1.45cm" y="24.05cm"><!-- QUERY="SELECT valor AS val3 FROM configuracion WHERE nombre='CodPostal'" -->[val3]<!-- END QUERY --> <!-- QUERY="SELECT valor AS val4 FROM configuracion WHERE nombre='Municipio'" -->[val4]<!-- END QUERY --></drawString>
+
+

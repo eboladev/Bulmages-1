@@ -362,6 +362,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             functions.multios().copy(str(plugins.confopenreports + language + "/extracto.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
             functions.multios().copy(str(plugins.confopenreports + language + "/plantilla.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
             functions.multios().copy(str(plugins.confopenreports + language + "/plantilla1.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
+            functions.multios().copy(str(plugins.confopenreports + language + "/plantilla_empresa.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
             functions.multios().copy(str(plugins.confopenreports + language + "/estilos.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
             functions.multios().copy(str(plugins.confopenreports + language + "/listado.rml"),str(plugins.openreports + "openreports_%s/%s" % (self.database,language)) )
             if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
