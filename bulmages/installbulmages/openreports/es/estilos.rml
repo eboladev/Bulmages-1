@@ -7,7 +7,7 @@
 	<blockTableStyle id="cabecera">	
 		<blockAlignment value="CENTER" start="0,0" stop="-1,-1"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	
-		<blockBackground colorName="(0.18,0.42,0.18)" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica" size="12" start="0,-1" stop="-1,-1"/>
 		<lineStyle kind="INNERGRID" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
@@ -30,7 +30,7 @@
 	<blockTableStyle id="tabladescuento">
 		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
 		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.18,0.42,0.18)" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
 		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
 		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
@@ -44,7 +44,7 @@
 		<blockAlignment value="RIGHT" start="0,0" stop="-1,-1"/>
 		<blockTextColor colorName="(1,1,1)" start="0,0" stop="-1,0"/>	
 		<blockBackground colorName="(1,1,1)" start="0,0" stop="-1,-1"/>
-		<blockBackground colorName="(0.18,0.42,0.18)" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,-1"/>
 		<blockFont name="Helvetica" size="12" start="0,-1" stop="-1,-1"/>
 		<lineStyle kind="INNERGRID" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
@@ -70,13 +70,13 @@
 	<blockTableStyle id="total">
 		<blockValign value="TOP"/>
 		<blockLeftPadding length="0mm" />
-		<lineStyle kind="LINEBELOW" colorName="blue" start="0,1" stop="-1,1" />
+		<lineStyle kind="LINEBELOW" colorName="(0.18,0.38,0.42)" start="0,1" stop="-1,1" />
 		<!--<lineStyle kind="GRID" />-->
 	</blockTableStyle>
 
 	<blockTableStyle id="titulo">	
 		<blockFont name="Helvetica-Bold" />
-		<blockBackground colorName="(0.18,0.42,0.18)" />
+		<blockBackground colorName="(0.18,0.38,0.42)" />
 		<blockTextColor colorName="(1,1,1)" />
 		<blockAlignment value="RIGHT" />
 	</blockTableStyle>
