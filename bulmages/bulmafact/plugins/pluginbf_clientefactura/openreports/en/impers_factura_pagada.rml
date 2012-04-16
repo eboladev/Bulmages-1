@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Factura" author="">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Factura Pagada" author="">
 	<pageTemplate id="main">
 		<pageGraphics>
 		<include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/>
 
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
+
+		<!-- PAGADA -->
+		<setFont name="Helvetica" size="34"/>
+		<fill color="(1,0.3,0.3)"/>
+		<stroke color="(1,0.3,0.3)"/>
+		<translate dx="15cm" dy="-6.5cm"/>
+		<rotate degrees="20"/>                                                                          
+		<drawString x="25mm" y="15.8cm">PAGADO</drawString>                                           
+		<lineMode width="2mm"/>                                                                         
+		<rect round="1cm" x="17.5mm" y="15cm" width="6.5cm" height="2.5cm" fill="no" stroke="yes"/>          
+		<rotate degrees="-20"/>                                                                         
+		<translate dx="-15cm" dy="6.5cm"/> 
+		
 		
 <!--IF QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
 <!--QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
@@ -86,15 +99,7 @@
 			<td>Precio/u:</td>
 			<td>Subtotal s/iva:</td>
 		</tr>
-<!--LINEAS DETALLE-->
-<tr>
-<td>[codigocompletoarticulo]</td>
-<td>[desclfactura]</td>
-<td>[cantlfactura]</td>
-<td>[pvplfactura]</td>
-<td>[totallfactura]</td>
-</tr>
-<!--END LINEAS DETALLE-->
+		[story codigocompletoarticulo, descfactura, cantfactura, pvpfactura, subtotalfactura]
 	
 <!--IF DESCUENTOS-->
 		<tr>
@@ -209,16 +214,6 @@
 </place>
 </storyPlace -->
 
-
-<!-- QUERY = "SELECT * FROM factura WHERE idfactura=[idfactura] AND idforma_pago = 8 "-->
-
-<storyPlace x="1cm" y="2cm" width="15cm" height="1cm">
-<place x="1cm" y="2cm" width="15cm" height="2.5cm">
-  <para>Para transferencias bancarias "La Caixa" 2100 0650 44 0200224097</para>
-</place>
-</storyPlace>
-
-<!-- END QUERY -->
 
 </story>
 </document>
