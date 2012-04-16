@@ -3,28 +3,34 @@
 <document>
 
 <stylesheet>
+
 	<blockTableStyle id="cabecera">	
 		<blockAlignment value="CENTER" start="0,0" stop="-1,-1"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica" size="12" start="0,-1" stop="-1,-1"/>
 		<lineStyle kind="INNERGRID" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
 		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>	
 	</blockTableStyle>
-	<blockTableStyle id="tablacontenido">	
-		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
-		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
+
+	<blockTableStyle id="tablacontenido">
+		<blockAlignment value="LEFT" start="0,0" stop="1,-1" />	
+		<blockAlignment value="RIGHT" />	
+		<blockTextColor colorName="(1,1,1)" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
-		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+		<blockAlignment value="RIGHT" start="1,1" stop="-1,-1" />
+		<blockAlignment value="LEFT" start="0,0" stop="1,-1" />
+		<blockValign value="TOP" />
+		<blockTopPadding length="1mm" start="0,1" stop="-1,-1" />
+		<!--<lineStyle kind="GRID" />-->
 	</blockTableStyle>
+
 	<blockTableStyle id="tabladescuento">
 		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
 		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
 		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
 		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
@@ -32,30 +38,96 @@
 		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
 	</blockTableStyle>
+
 	<blockTableStyle id="tablatotales">	
 		<blockAlignment value="RIGHT"/>
 		<blockAlignment value="RIGHT" start="0,0" stop="-1,-1"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	
+		<blockTextColor colorName="(1,1,1)" start="0,0" stop="-1,0"/>	
 		<blockBackground colorName="(1,1,1)" start="0,0" stop="-1,-1"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,-1"/>
 		<blockFont name="Helvetica" size="12" start="0,-1" stop="-1,-1"/>
 		<lineStyle kind="INNERGRID" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
 		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>	
 	</blockTableStyle>	
+
 	<blockTableStyle id="tabladetalle1">
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
 		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-	</blockTableStyle>	
+	</blockTableStyle>
+
 	<blockTableStyle id="tabladetalle2">
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
 		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>	
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
-	<blockTableStyle id="metatabla">	
+
+	<blockTableStyle id="metatabla">
 		<blockAlignment value="RIGHT"/>
 	</blockTableStyle>
+
+	<blockTableStyle id="total">
+		<blockValign value="TOP"/>
+		<blockLeftPadding length="0mm" />
+		<lineStyle kind="LINEBELOW" colorName="(0.18,0.38,0.42)" start="0,1" stop="-1,1" />
+		<!--<lineStyle kind="GRID" />-->
+	</blockTableStyle>
+
+	<blockTableStyle id="titulo">	
+		<blockFont name="Helvetica-Bold" />
+		<blockBackground colorName="(0.18,0.38,0.42)" />
+		<blockTextColor colorName="(1,1,1)" />
+		<blockAlignment value="RIGHT" />
+	</blockTableStyle>
+
+	<blockTableStyle id="contenido">
+		<blockAlignment value="RIGHT" />
+		<blockTextColor colorName="(0,0,0)" />
+		<blockBottomPadding length="2mm" />
+		<blockTopPadding length="-0.2cm" />
+		<blockFont name="Helvetica" size="10" />	
+		<blockBottomPadding length="0mm" start="0,-1" stop="-1,-1" />
+	</blockTableStyle>
+
+	<blockTableStyle id="preciofinal">	
+		<blockAlignment value="RIGHT"/>
+		<blockFont name="Helvetica-Bold" size="15" />
+		<blockTextColor colorName="(0,0,0)" />
+		<blockTopPadding length="-0.2cm" />
+	</blockTableStyle>
+	
+	<paraStyle 
+		name="paragrafo"
+		fontName="Helvetica"
+		fontSize="10"
+		textColor="black"
+		spaceBefore="0.0cm"
+		firstLineIndent="0.0cm"
+		parent="tablacontenido"
+	/>
+
+	<paraStyle 
+		name="paragrafo2"
+		fontName="Helvetica"
+		fontSize="10"
+		textColor="black"
+		spaceBefore="0.0cm"
+		firstLineIndent="0.0cm"
+		parent="tablacontenido"
+	/>
+
+	<paraStyle 
+		name="paragrafo2der"
+		alignment="RIGHT"
+		fontName="Helvetica"
+		fontSize="10"
+		textColor="black"
+		spaceBefore="0.0cm"
+		firstLineIndent="0.0cm"
+		parent="tablacontenido"
+	/>
+	
 </stylesheet>
 
 </document>

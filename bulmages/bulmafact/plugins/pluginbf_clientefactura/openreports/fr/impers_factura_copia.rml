@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Copia Factura" author="">
+	<pageTemplate id="main">
+		<pageGraphics>
+		<include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/>
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+
+		<!-- PAGADA -->
+		<setFont name="Helvetica" size="34"/>
+		<fill color="(1,0.3,0.3)"/>
+		<stroke color="(1,0.3,0.3)"/>
+		<translate dx="15cm" dy="-6.5cm"/>
+		<rotate degrees="20"/>                                                                          
+		<drawString x="25mm" y="15.8cm">ES COPIA</drawString>                                           
+		<lineMode width="2mm"/>                                                                         
+		<rect round="1cm" x="17.5mm" y="15cm" width="6.9cm" height="2.5cm" fill="no" stroke="yes"/>          
+		<rotate degrees="-20"/>                                                                         
+		<translate dx="-15cm" dy="6.5cm"/> 
+		
+		
+<!--IF QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
+<!--QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
+
+		<setFont name="Helvetica-Bold" size="11"/>
+		<fill color="(1,1,1)"/>
+		<drawString x="10cm" y="26.53cm">Datos del cliente:</drawString>
+
+		<!-- LOS DATOS DEL CLIENTE -->
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>
+		<drawString x="13.5cm" y="26.05cm">[idcliente]</drawString>
+		<drawString x="13.5cm" y="25.6cm">[nomcliente]</drawString>
+		<drawString x="13.5cm" y="25.15cm">[cifcliente]</drawString>
+		<drawString x="13.5cm" y="24.7cm">[dircliente]</drawString>
+		<drawString x="13.5cm" y="24.25cm">[poblcliente]</drawString>
+		<drawString x="13.5cm" y="23.8cm">[telcliente]</drawString>
+		<drawString x="13.5cm" y="23.35cm">[mailcliente]</drawString>
+
+
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>	
+		<drawString x="10cm" y="26.05cm">Nº Cliente:</drawString>
+		<drawString x="10cm" y="25.6cm">Nombre/Empresa:</drawString>
+		<drawString x="10cm" y="25.15cm">NIF/CIF:</drawString>
+		<drawString x="10cm" y="24.7cm">Dirección:</drawString>
+		<drawString x="10cm" y="24.25cm">Población:</drawString>
+		<drawString x="10cm" y="23.8cm">Teléfono:</drawString>
+		<drawString x="10cm" y="23.35cm">Dirección Email:</drawString>
+
+		<!--Fecha factura-->
+		<setFont name="Helvetica" size="11"/>
+
+		<drawString x="10cm" y="27.95cm">Fecha factura:</drawString>
+		<drawString x="10cm" y="27.5cm">Nº factura:</drawString>
+		<drawString x="17.0cm" y="27.95cm">Referencia:</drawString>
+
+		<drawString x="13.5cm" y="27.95cm">[ffactura]</drawString>
+		<drawString x="13.5cm" y="27.5cm">[codigoserie_factura] / [numfactura]</drawString>
+		<drawString x="17.0cm" y="27.5cm">[reffactura]</drawString>
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_empresa.rml" -->
+
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- FACTURA -</drawCentredString>
+
+<!--END QUERY-->
+<!--END IF QUERY-->
+
+
+		<setFont name="Helvetica" size="7"/>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
+
+		<setFont name="Helvetica" size="10"/>
+		<drawCentredString x="5.3cm" y="25.85cm">Forma de pago: <!--QUERY="SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1"-->[descforma_pago]<!--END QUERY--></drawCentredString>
+
+	</pageGraphics>
+
+
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="14.6cm" />
+
+		
+	</pageTemplate>
+
+</template>
+
+<include src="[CONF_DIR_OPENREPORTS]estilos.rml"/>
+
+<story>	
+	<blockTable style="tablacontenido" colWidths="3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm" splitByRow="2" rowheights="2" repeatRows="1">
+		<tr>
+			<td>Codigo</td>
+			<td>Concepto</td>
+			<td>Unid:</td>
+			<td>Precio/u:</td>
+			<td>Subtotal s/iva:</td>
+		</tr>
+		[story codigocompletoarticulo, descfactura, cantfactura, pvpfactura, subtotalfactura]
+	
+<!--IF DESCUENTOS-->
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2"><b><u>Descuento/s:</u></b></para></td>
+			<td></td>
+			<td><para style="paragrafo2der"><b><u>% Dto:</u></b></para></td>
+			<td><para style="paragrafo2der"><b><u>Total dto:</u></b></para></td>
+		</tr>
+
+<!--LINEAS DESCUENTO-->
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2">[conceptdfactura]</para></td>
+			<td></td>
+			<td>[proporciondfactura]%</td>
+			<td>[totaldescdfactura]</td>
+		</tr>
+<!--END LINEAS DESCUENTO-->
+<!--END IF DESCUENTOS-->
+
+
+<!--IF QUERY="SELECT comentfactura FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
+<!--QUERY="SELECT comentfactura FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2"><b><u>Comentario/s:</u></b></para></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2">[comentfactura]</para></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+<!--END QUERY-->
+<!--END IF QUERY-->
+
+	</blockTable>
+
+	
+	<storyPlace x="0cm" y="0cm" width="20cm" height="1cm">
+		<place x="1cm" y="4cm" width="19cm" height="4cm">
+			<blockTable style="total" colWidths="16.3cm,2.7cm" >
+				<tr>
+					<td colspan="2">
+						<blockTable style="titulo" colWidths="5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm">
+							<tr>
+								<td>  </td>
+								<td>Base Imponible:</td>
+								<td>  </td>
+								<td>I.V.A.%:</td>
+								<td>  </td>
+								<td>Tot I.V.A.:</td>
+								<td>  </td>
+								<td>Total:</td>
+							</tr>
+						</blockTable>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<blockTable style="contenido" colWidths="5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm" >
+						<!--TOTALES-->
+							<tr>
+								<td>  </td>
+								<td>[bimp]</td>
+								<td>  </td>
+								<td>[tbimp]%</td>
+								<td>  </td>
+								<td>[iva]</td>
+								<td>  </td>
+							</tr>
+						<!--END TOTALES-->
+						</blockTable>
+					</td>
+					<td>
+						<blockTable style="preciofinal" colWidths="2.7cm" >
+							<tr>
+								<td>[total] €</td>
+							</tr>
+						</blockTable>
+					</td>
+				</tr>
+			</blockTable>
+		</place>
+	</storyPlace>
+
+<!-- storyPlace x="16cm" y="27cm" width="15cm" height="1cm">
+<place x="16cm" y="27cm" width="15cm" height="2.5cm">
+<barCode code="code128" height="1cm">ALB [idfactura] [numfactura] [reffactura]</barCode>
+</place>
+</storyPlace -->
+
+
+</story>
+</document>
