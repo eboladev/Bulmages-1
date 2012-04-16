@@ -2,40 +2,57 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="1cm" y="25.9cm" width="11cm" file="logo.jpg"/>
+		<image x="1cm" y="27cm" width="8cm" file="logo.jpg"/>
 
 		<!-- EL PIE DE PAGINA -->
-		<setFont name="Helvetica" size="8"/>		
+		<setFont name="Helvetica-Bold" size="10"/>	
+		<drawString x="1.1cm" y="2.8cm"></drawString>
+
+		<setFont name="Helvetica" size="9"/>		
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>		      
-		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>
+
+		<drawString x="1cm" y="5.6cm"></drawString>
+		<drawString x="1cm" y="5.2cm"></drawString>
+		<drawString x="1cm" y="4.8cm"></drawString>
+		<drawString x="1cm" y="4.4cm"></drawString>
+		<drawString x="1cm" y="4.0cm"></drawString>
+		<drawString x="1cm" y="3.6cm"></drawString>
+
+		<drawString x="1cm" y="2.4cm"></drawString>
+		<drawString x="1.1cm" y="2cm"></drawString>
 
 
-			<!-- EL BORRADOR -->
-			<setFont name="Helvetica" size="100"/>
-			<fill color="(1,0.9,0.9)"/>
-			<stroke color="(1,0.9,0.9)"/>
-			<translate dx="15cm" dy="-5.5cm"/>
-			<rotate degrees="50"/>
-			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
-			<lineMode width="4mm"/>
-			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-			<rotate degrees="-50"/>
-			<translate dx="-15cm" dy="5.5cm"/>
+		<drawCentredString x="10.5cm" y="1.3cm"></drawCentredString>
+		<drawCentredString x="10.5cm" y="1.0cm"></drawCentredString>
+
+		<drawString x="0.5cm" y="14.85cm">-</drawString>
+
 
 		<!-- EL RECUADRO DONDE VA EL CLIENTE -->
-		<stroke color="(0,0,0)"/>
+		<stroke color="(0.18,0.42,0.18)"/>
 		<lineMode width="0.3mm"/>
-		<rect round="0.25cm" x="8cm" y="22.4cm" width="11cm" height="2.5cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO FECHA -->
+		<rect round="0.05cm" x="9.8cm" y="27.3cm" width="10cm" height="1.2cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO CLIENTE -->
+		<rect round="0.05cm" x="9.8cm" y="23.2cm" width="10cm" height="3.9cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO FORMA DE PAGO -->
+		<rect round="0.05cm" x="1.3cm" y="25.7cm" width="8cm" height="1.1cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO EMPRESA -->
+		<rect round="0.05cm" x="1.3cm" y="23.2cm" width="8cm" height="2.3cm" fill="no" stroke="yes"/>
 
-		<fill color="(0.7,0.7,0.7)"/>
-		<rect x="1.85cm" y="19.2cm" width="17.3cm" height="0.6cm" fill="yes" stroke="no"/>
-		<grid xs="1.85cm,3.65cm,12.3cm,13.5cm,15.2cm,16.8cm,19.15cm" ys="19.8cm,5cm"/>
+		<fill color="(0.18,0.42,0.18)" />
+		<stroke color="(0.18,0.42,0.18)" />
+		<rect x="1cm" y="21.8cm" width="19cm" height="0.6cm" fill="yes" stroke="yes"/>
+		<!--<rect x="1cm" y="6.8cm" width="19cm" height="0.6cm" fill="yes" stroke="no"/>-->
+		<!--<rect x="1cm" y="6.4cm" width="19cm" height="0.6cm" fill="no" stroke="no"/>-->
+<!-- 		<rect x="1cm" y="4.3cm" width="19cm" height="0.03cm" fill="yes" stroke="yes"/> -->
+		<rect x="1cm" y="8cm" width="19cm" height="0.05cm" fill="yes" stroke="yes"/>
+		<rect x="1cm" y="22.5cm" width="19cm" height="0.05cm" fill="yes" stroke="yes"/>
 
-		<!-- EL DETALLE -->
-		<fill color="(0.7,0.7,0.7)"/>
-		<rect x="4cm" y="21cm" width="15cm" height="0.8cm" fill="yes" stroke="no"/>
-		<grid xs="4cm,7cm,10cm,13cm,16cm,19cm" ys="20.2cm,21cm,21.8cm"/>
+
+		<setFont name="Helvetica" size="11"/>
+		<fill color="(0.18,0.42,0.18)"/>
+		<rect x="9.9cm" y="26.4cm" width="9.8cm" height="0.6cm" fill="yes" stroke="no"/>
 
 </document>

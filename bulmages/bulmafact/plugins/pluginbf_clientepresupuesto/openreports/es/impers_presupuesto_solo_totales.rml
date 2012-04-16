@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Fractura Proforma" author="">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Presupuesto sin totales parciales" author="">
 	<pageTemplate id="main">
 		<pageGraphics>
 		<include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/>
@@ -52,7 +52,7 @@
 		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_empresa.rml" -->
 
 		<setFont name="Helvetica-Bold" size="12"/>
-		<drawCentredString x="5.3cm" y="26.3cm">- F. PROFORMA -</drawCentredString>
+		<drawCentredString x="5.3cm" y="26.3cm">- PRESUPUESTO -</drawCentredString>
 
 <!--END QUERY-->
 <!--END IF QUERY-->
@@ -83,11 +83,22 @@
 			<td>Codigo</td>
 			<td>Concepto</td>
 			<td>Unid:</td>
-			<td>Precio/u:</td>
-			<td>Subtotal s/iva:</td>
+			<td></td>
+			<td></td>
 		</tr>
-		[story codigocompletoarticulo, descpresupuesto, cantpresupuesto, pvppresupuesto, subtotalpresupuesto]
+
+<!--LINEAS DETALLE-->
+<tr>
+<td>[codigocompletoarticulo]</td>
+<td>[desclpresupuesto]</td>
+<td>[cantlpresupuesto]</td>
+			<td></td>
+			<td></td>
+</tr>
+<!--END LINEAS DETALLE-->
 	
+	
+		
 <!--IF DESCUENTOS-->
 		<tr>
 			<td></td>
