@@ -90,7 +90,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 
 	QFileInfoList list = dir.entryInfoList();
 	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
-	if (list.size() == 0) {
+	if (list.size() != 0) {
 	    hayElementos = TRUE;
 	} // end if
 	for ( int i = 0; i < list.size(); ++i ) {
@@ -141,7 +141,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 
 	QFileInfoList list1 = dir1.entryInfoList();
 	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
-	if (list1.size() == 0) {
+	if (list1.size() != 0) {
 	    hayElementos = TRUE;
 	} // end if
 	for ( int i = 0; i < list1.size(); ++i ) {
