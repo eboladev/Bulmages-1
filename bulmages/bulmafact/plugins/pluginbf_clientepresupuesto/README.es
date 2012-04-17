@@ -36,7 +36,7 @@ Dependencias: libpluginbf_trabajador.so; libpluginbf_almacen.so; libpluginbf_for
 
 Incompatibles:
 
-Reports: presupuesto.rml; blform_PresupuestoView.qs; impers_presupuesto_fproforma.rml
+Reports: presupuesto.rml; blform_PresupuestoView.qs; impers_presupuesto_fproforma.rml; impers_presupuesto_excel.pys; impers_presupuesto_sin_total.rml; impers_presupuesto_solo_totales.rml; impers_presupuesto_urgente.rml
 
 Categorias: Facturacion generica;
 

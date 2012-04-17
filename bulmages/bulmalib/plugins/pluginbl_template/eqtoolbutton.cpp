@@ -42,6 +42,8 @@
 EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
     BL_FUNC_DEBUG
+    
+    bool hayElementos = FALSE;
    /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
     EQToolButton *tool = parent->findChild<EQToolButton *>("EQToolButtonG");
     if (tool) {
@@ -57,6 +59,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
     
     QFrame *plugbotones = m_BlForm->findChild<QFrame *>("mui_plugbotones");
     if (plugbotones) {
+
 	QHBoxLayout *m_hboxLayout1 = plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 	if ( !m_hboxLayout1 ) {
 	    m_hboxLayout1 = new QHBoxLayout ( plugbotones );
@@ -88,8 +91,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	QFileInfoList list = dir.entryInfoList();
 	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
 	if (list.size() == 0) {
-	    hide();
-	    return;
+	    hayElementos = TRUE;
 	} // end if
 	for ( int i = 0; i < list.size(); ++i ) {
 	    QFileInfo fileInfo = list.at ( i );
@@ -125,8 +127,8 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
 	
-// ==============================
-
+        // Buscamos plantillas TXT que tienen que salir por la ticketera.
+        
 	/// Buscamos ficheros que tengan el nombre de la tabla
 	QDir dir1 ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
 	dir1.setFilter ( QDir::Files | QDir::NoSymLinks );
@@ -140,11 +142,10 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	QFileInfoList list1 = dir1.entryInfoList();
 	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
 	if (list1.size() == 0) {
-	    hide();
-	    return;
+	    hayElementos = TRUE;
 	} // end if
-	for ( int i = 0; i < list.size(); ++i ) {
-	    QFileInfo fileInfo = list.at ( i );
+	for ( int i = 0; i < list1.size(); ++i ) {
+	    QFileInfo fileInfo = list1.at ( i );
 
 
 	    QFile file;
@@ -176,7 +177,13 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    accion->setIcon(QIcon(icon));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
-// ==============================
+
+	/// Si no hay elementos para mostrar nos ocultamos.
+	if (!hayElementos) {
+	  hide();
+	  return;
+	} // end if
+
 	setMenu(menu);
     } else {
 	hide();
@@ -277,7 +284,7 @@ void EQToolButton::trataMenu ( QAction *action )
 		} // end if
 	    } // end if
 	} // end for
-// ==============================================
+
 	/// Buscamos ficheros que tengan el nombre de la tabla
 	QDir dir1 ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
 	dir1.setFilter ( QDir::Files | QDir::NoSymLinks );
@@ -288,8 +295,8 @@ void EQToolButton::trataMenu ( QAction *action )
 	dir1.setNameFilters ( filters1 );
 
 	QFileInfoList list1 = dir1.entryInfoList();
-	for ( int i = 0; i < list.size(); ++i ) {
-	    QFileInfo fileInfo = list.at ( i );
+	for ( int i = 0; i < list1.size(); ++i ) {
+	    QFileInfo fileInfo = list1.at ( i );
 	    if ( action->objectName() == fileInfo.fileName() ) {
 		if ( m_BlForm->generateRML ( fileInfo.fileName() ) ) {
 
@@ -311,7 +318,6 @@ void EQToolButton::trataMenu ( QAction *action )
 		} // end if
 	    } // end if
 	} // end for
-// ==============================================
     } // end if
 }
 
