@@ -27,7 +27,7 @@ Section "Archivos Comunes" SecInstall
   FileWrite $4 "CONF_FLIP			@CMAKE_INSTALL_PREFIX@\bgtrml2pdf\flip.exe$\n"
   FileWrite $4 "CONF_SPOOL			@CMAKE_INSTALL_PREFIX@\program\spool.exe $\n"
   FileWrite $4 "CONF_PYTHON			@CMAKE_INSTALL_PREFIX@\Python26\python $\n"
-  FileWrite $4 "CONF_PROGDATA		@CMAKE_INSTALL_PREFIX@\  $\n"
+  FileWrite $4 "CONF_PROGDATA		@CMAKE_INSTALL_PREFIX@\share\bulmages\  $\n"
   FileWrite $4 "$\r$\n" ; we write an extra line
   FileClose $4 ; and close the file
   
