@@ -54,8 +54,8 @@ Section "Archivos Comunes" SecInstall
   
 ;  SetOutPath "$INSTDIR"
 ; Instalamos el bgtrml2pdf
-  !insertmacro InstallFolderFromSrc bgtrml2pdf "\share\bulmages\bgtrml2pdf" 
-  SetOutPath "$INSTDIR\bgtrml2pdf"
+  SetOutPath "$INSTDIR\share\bulmages\bgtrml2pdf"
+;  !insertmacro InstallFolderFromSrc bgtrml2pdf "\share\bulmages\bgtrml2pdf" 
   File /oname=flip.exe "flip.exe"    
   !insertmacro InstallFilesFromSrc bgtrml2pdf "\bin\bgtrml2pdf"
   
