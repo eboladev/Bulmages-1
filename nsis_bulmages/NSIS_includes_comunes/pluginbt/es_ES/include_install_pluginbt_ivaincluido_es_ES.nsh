@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbt_ivaincluido.mo "\bulmatpv\plugins\pluginbt_ivaincluido\pluginbt_ivaincluido_es_ES.gmo"

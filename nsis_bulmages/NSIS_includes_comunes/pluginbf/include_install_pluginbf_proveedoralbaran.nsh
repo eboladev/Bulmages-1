@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_proveedoralbaran.dll "\bulmafact\plugins\pluginbf_proveedoralbaran\libpluginbf_proveedoralbaran.dll"

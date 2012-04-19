@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbt_tecladonumerico.mo "\bulmatpv\plugins\pluginbt_tecladonumerico\pluginbt_tecladonumerico_es_ES.gmo"

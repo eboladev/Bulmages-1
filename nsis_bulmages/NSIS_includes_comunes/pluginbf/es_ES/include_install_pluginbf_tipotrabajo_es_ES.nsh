@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_tipotrabajo.mo "\bulmafact\plugins\pluginbf_tipotrabajo\pluginbf_tipotrabajo_es_ES.gmo"

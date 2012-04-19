@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_modificadores.dll "\bulmafact\plugins\pluginbf_modificadores\libpluginbf_modificadores.dll"

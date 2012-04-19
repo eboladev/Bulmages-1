@@ -1,0 +1,19 @@
+
+; Create file
+FileOpen $0 "$INSTDIR\program\bulmafact.bat" w
+
+FileWrite $0 "SET PATH=%PATH%;$\"$INSTDIR\Python26\$\"$\r$\n"
+FileWrite $0 "SET PYTHONPATH=%PYTHONPATH%;$\"$INSTDIR\Python26\Lib$\";$\"$INSTDIR\Python26\DDLs$\";$\"$INSTDIR\Python26\Lib\lib-tk$\"$\r$\n"
+FileWrite $0 "$\"$INSTDIR\pgsql\bin\pg_ctl.exe$\" -D $\"$INSTDIR\pgsql\data$\" -w -l $\"$INSTDIR\pgsql\data\registro$\" start$\r$\n"
+FileWrite $0 "if $\"%1$\"==$\"$\" GOTO solo$\r$\n"
+FileWrite $0 "$\"$INSTDIR\program\bulmafact.exe$\" -d %1 2> nul$\r$\n"
+FileWrite $0 "goto end$\r$\n"
+FileWrite $0 ":solo$\r$\n"
+FileWrite $0 "$\"$INSTDIR\program\bulmafact.exe$\" 2> nul$\r$\n"
+FileWrite $0 ":end$\r$\n"
+FileWrite $0 "$\"$INSTDIR\pgsql\bin\pg_ctl.exe$\" -D $\"$INSTDIR\pgsql\data$\" -w -l $\"$INSTDIR\pgsql\data\registro$\" stop$\r$\n"
+
+; Close file
+FileClose $0
+
+

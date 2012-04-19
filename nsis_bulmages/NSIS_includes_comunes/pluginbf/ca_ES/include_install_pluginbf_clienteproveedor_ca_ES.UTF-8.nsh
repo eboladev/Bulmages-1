@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_clienteproveedor.mo "\bulmafact\plugins\pluginbf_clienteproveedor\pluginbf_clienteproveedor_ca_ES.gmo"

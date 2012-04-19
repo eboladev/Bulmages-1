@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbl_attachdocument.dll "\bulmalib\plugins\pluginbl_attachdocument\libpluginbl_attachdocument.dll"

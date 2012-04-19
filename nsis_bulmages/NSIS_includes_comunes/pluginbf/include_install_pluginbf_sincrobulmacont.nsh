@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_sincrobulmacont.dll "\bulmafact\plugins\pluginbf_sincrobulmacont\libpluginbf_sincrobulmacont.dll"
