@@ -1,9 +1,8 @@
-# #-#-#-#-#  bulmafact_fr_FR.po  #-#-#-#-#
-# translation of bulmafact_fr_FR.po to
-# Header entry was created by KBabel!
+# English translations for PACKAGE package
+# Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2012.
 #
-# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -12,43 +11,42 @@ msgstr ""
 "PO-Revision-Date: 2009-01-26 09:35+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team:  <es@li.org>\n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: impqtoolbutton.cpp:219
 msgid " con fecha "
-msgstr ""
+msgstr " avec daté "
 
 #: impqtoolbutton.cpp:123 impqtoolbutton.cpp:154 impqtoolbutton.cpp:186
 msgid " con referencia "
-msgstr ""
+msgstr " en référence "
 
 #: ui_chosemailerbase.h:124
-#, fuzzy
 msgid "..."
-msgstr "T.V.A."
+msgstr ""
 
 #: impqtoolbutton.cpp:186
 msgid "Adjunto le enviamos el albaran numero "
-msgstr ""
+msgstr "Rattaché nous envoyer le bordereau de livraison avec numéro"
 
 #: impqtoolbutton.cpp:154
 msgid "Adjunto le enviamos el pedido numero "
-msgstr ""
+msgstr "Rattaché nous envoyer l'ordre avec numéro"
 
 #: impqtoolbutton.cpp:123
 msgid "Adjunto le enviamos el presupuesto numero "
-msgstr ""
+msgstr "Rattaché nous envoyer le budget avec numéro"
 
 #: impqtoolbutton.cpp:219
 msgid "Adjunto le enviamos la factura numero "
-msgstr ""
+msgstr "Rattaché nous envoyer la facture avec numéro"
 
 #: impqtoolbutton.cpp:185
 msgid "Albaran "
-msgstr ""
+msgstr "Bordereau de livraison"
 
 #: impqtoolbutton.cpp:124 impqtoolbutton.cpp:155 impqtoolbutton.cpp:187
 msgid ""
@@ -57,10 +55,14 @@ msgid ""
 "\n"
 "\""
 msgstr ""
+"Cordialement\n"
+"\n"
+"\n"
+"\""
 
 #: ui_chosemailerbase.h:123
 msgid "Cliente correo."
-msgstr ""
+msgstr "Client de messagerie."
 
 #: impqtoolbutton.cpp:82 impqtoolbutton.cpp:83
 msgid "Enviar por e-mail al cliente"
@@ -68,42 +70,45 @@ msgstr "Envoi par client courriel"
 
 #: impqtoolbutton.cpp:218
 msgid "Factura "
-msgstr ""
+msgstr "Facture "
 
 #: ui_chosemailerbase.h:122
 msgid "Localización"
-msgstr ""
+msgstr "Localisation"
 
 #: chosemailer.cpp:153
 msgid ""
 "No se ha encontrado el programa.\n"
 "Por favor, especifique el programa manualmente."
 msgstr ""
+"Pas trouvé le programme.\n"
+"S'il vous plaît spécifier manuellement le programme."
 
 #: chosemailer.cpp:47
 msgid "No se ha podido crear la ventana de seleccion"
-msgstr ""
+msgstr "Impossible de créer le fenêtre de sélection"
 
 #: impqtoolbutton.cpp:153
 msgid "Pedido "
-msgstr ""
+msgstr "Ordre "
 
 #: impqtoolbutton.cpp:122
 msgid "Presupuesto "
-msgstr ""
+msgstr "Budget "
 
 #: chosemailer.cpp:169
 msgid "Seleccionar"
-msgstr ""
+msgstr "Sélectionner"
 
 #: ui_chosemailerbase.h:120
 msgid "Seleccione su cliente de correo"
-msgstr ""
+msgstr "Sélectionnez votre client de messagerie"
 
 #: ui_chosemailerbase.h:121
 msgid ""
 "Seleccione, o indique la localización de su cliente de correo electronico"
 msgstr ""
+"Sélectionner, ou indiquer l'emplacement de votre client de messagerie"
 
 #: impqtoolbutton.cpp:220
 msgid ""
@@ -111,7 +116,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"Sincèrement vôtre, Cordialement\n"
+"\n"
+"\n"
 
 #: chosemailer.cpp:169
 msgid "Todos los archivos"
-msgstr ""
+msgstr "Tous les fichiers"

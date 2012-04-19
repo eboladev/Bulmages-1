@@ -39,7 +39,7 @@
 #include "bfcompany.h"
 #include "bldb.h"
 
-#include "pluginbf_correoexperimental.h"
+#include "pluginbf_correo.h"
 
 ///
 /**

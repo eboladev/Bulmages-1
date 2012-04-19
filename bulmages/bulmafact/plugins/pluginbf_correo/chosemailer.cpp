@@ -60,7 +60,7 @@ ChoseMailer::ChoseMailer(QWidget *parent) :
     /// Declaramos aqui los clientes de email, (sin .exe aunque estemos en windows)
     /// Ejemplo: mui_mailclients->addItem(QString("Programa Ejemplo"), QString("ejemplo") );
     
-    mui_mailclients->addItem(QString("..."), QString("0") );
+    mui_mailclients->addItem(QString(_("Seleccione su cliente de correo")), QString("0") );
     mui_mailclients->addItem(QString("Mozilla Thunderbird"), QString("thunderbird") );
     mui_mailclients->addItem(QString("Kmail"), QString("kmail") );
     mui_mailclients->addItem(QString("Evolution"), QString("evolution") );
