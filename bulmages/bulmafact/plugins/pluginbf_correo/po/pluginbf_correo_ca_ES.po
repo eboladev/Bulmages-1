@@ -1,5 +1,4 @@
 # Catalan translations for PACKAGE package
-# Traduccions al català del paquet «PACKAGE».
 # Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2012.
@@ -19,35 +18,35 @@ msgstr ""
 
 #: impqtoolbutton.cpp:219
 msgid " con fecha "
-msgstr ""
+msgstr " amb data "
 
 #: impqtoolbutton.cpp:123 impqtoolbutton.cpp:154 impqtoolbutton.cpp:186
 msgid " con referencia "
-msgstr ""
+msgstr " amb referència "
 
 #: ui_chosemailerbase.h:124
 msgid "..."
-msgstr "..."
+msgstr ""
 
 #: impqtoolbutton.cpp:186
 msgid "Adjunto le enviamos el albaran numero "
-msgstr ""
+msgstr "Adjunt li enviem l'albarà numero "
 
 #: impqtoolbutton.cpp:154
 msgid "Adjunto le enviamos el pedido numero "
-msgstr ""
+msgstr "Adjunt li enviem la comanda numero "
 
 #: impqtoolbutton.cpp:123
 msgid "Adjunto le enviamos el presupuesto numero "
-msgstr ""
+msgstr "Adjunt li enviem el pressupost numero "
 
 #: impqtoolbutton.cpp:219
 msgid "Adjunto le enviamos la factura numero "
-msgstr ""
+msgstr "Adjunt li enviem la factura numero "
 
 #: impqtoolbutton.cpp:185
 msgid "Albaran "
-msgstr ""
+msgstr "Albarà "
 
 #: impqtoolbutton.cpp:124 impqtoolbutton.cpp:155 impqtoolbutton.cpp:187
 msgid ""
@@ -56,53 +55,60 @@ msgid ""
 "\n"
 "\""
 msgstr ""
+"Atentament\n"
+"\n"
+"\n"
+"\""
 
 #: ui_chosemailerbase.h:123
 msgid "Cliente correo."
-msgstr ""
+msgstr "Client de correu."
 
 #: impqtoolbutton.cpp:82 impqtoolbutton.cpp:83
 msgid "Enviar por e-mail al cliente"
-msgstr "Enviar por e-mail al cliente"
+msgstr "Enviar per e-mail al client"
 
 #: impqtoolbutton.cpp:218
 msgid "Factura "
-msgstr ""
+msgstr "Factura "
 
 #: ui_chosemailerbase.h:122
 msgid "Localización"
-msgstr ""
+msgstr "Localització"
 
 #: chosemailer.cpp:153
 msgid ""
 "No se ha encontrado el programa.\n"
 "Por favor, especifique el programa manualmente."
 msgstr ""
+"No s'ha trobat el programa.\n"
+"Per favor, especifiqui el programa manualment."
 
 #: chosemailer.cpp:47
 msgid "No se ha podido crear la ventana de seleccion"
-msgstr ""
+msgstr "No s'ha pogut crear la finestra de selecció"
 
 #: impqtoolbutton.cpp:153
 msgid "Pedido "
-msgstr ""
+msgstr "Comanda "
 
 #: impqtoolbutton.cpp:122
 msgid "Presupuesto "
-msgstr ""
+msgstr "Pressupost "
 
 #: chosemailer.cpp:169
 msgid "Seleccionar"
-msgstr ""
+msgstr "Seleccionar"
 
 #: ui_chosemailerbase.h:120
 msgid "Seleccione su cliente de correo"
-msgstr ""
+msgstr "Seleccioni el seu client de correu"
 
 #: ui_chosemailerbase.h:121
 msgid ""
 "Seleccione, o indique la localización de su cliente de correo electronico"
 msgstr ""
+"Seleccioni, o indiqui la localització del seu client de correu electrònic"
 
 #: impqtoolbutton.cpp:220
 msgid ""
@@ -110,7 +116,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"Sense un altre particular, rebi cordials salutacions\n"
+"\n"
+"\n"
 
 #: chosemailer.cpp:169
 msgid "Todos los archivos"
-msgstr ""
+msgstr "Tots els arxius"
