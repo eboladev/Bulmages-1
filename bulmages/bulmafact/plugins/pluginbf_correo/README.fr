@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110211
+
+Nombre: Envoyer des documents par courriel
+
+Biblioteca: libpluginbf_correo.so
+
+Descripción: <H1>Envoyer par courriel</H1>
+<P>Il permet d'envoyer, au moyen d'un bouton nouveau dans les fiches, les documents imprimés directement par courriel. En cliquant sur le bouton envoyer par courriel on ouvre voutre client de courrier électronique avec un texte et le document joint</P>
+<P>La première fois que le plugin est démarré, démarrer une fenêtre qui nous permet de sélectionner notre client de messagerie préféré, si le lieu où il est installé dans le PATH de votre système d'exploitation, essayez de trouver votre route d'accès automatiquement, sans quoi nous le bouton (...) et sélectionnez le programme, une fois sélectionné, cliquez sur OK.</P>
+<B>Autor:</B>Daniel Ripoll Osma (info@danielripoll.es)<BR>
+<HR>
+
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilites generiques;
+
+Orden: 900
+
+Comentarios: Ce plugin actuellement est compatible avec Thunderbird, Evolution, Kmail ou Outlook. (Fonctionne autant en Unix comme Windows.)

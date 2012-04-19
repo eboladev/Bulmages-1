@@ -1,15 +1,15 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginbf_correoexperimental
+#pluginbf_correo
 
-set (plugin pluginbf_correoexperimental)
+set (plugin pluginbf_correo)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_correoexperimental.h pdefs_pluginbf_correoexperimental.h)
+file(GLOB plugin_NO_MOCS pluginbf_correo.h pdefs_pluginbf_correo.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
@@ -51,7 +51,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CORREOEXPERIMENTAL)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CORREO)
 ENDIF(WIN32)
 
 

@@ -23,7 +23,7 @@
  ***************************************************************************/
 #include <QToolButton>
 
-#include "pluginbf_correoexperimental.h"
+#include "pluginbf_correo.h"
 #include "blfunctions.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_correoexperimental", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_correo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     
     
     QString conf_email = g_confpr->value( CONF_EMAIL_CLIENT );

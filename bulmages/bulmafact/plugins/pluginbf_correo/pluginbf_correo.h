@@ -22,32 +22,32 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_CORREOEXPERIMENTAL_H
-#define PLUGINBF_CORREOEXPERIMENTAL_H
+#ifndef PLUGINBF_CORREO_H
+#define PLUGINBF_CORREO_H
 
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
 #include "albaranclienteview.h"
 #include "bfbulmafact.h"
-#include "pdefs_pluginbf_correoexperimental.h"
+#include "pdefs_pluginbf_correo.h"
 
 
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int FacturaView_FacturaView ( FacturaView * );
+extern "C" PLUGINBF_CORREO_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" PLUGINBF_CORREO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" PLUGINBF_CORREO_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
+extern "C" PLUGINBF_CORREO_EXPORT int FacturaView_FacturaView ( FacturaView * );
 
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int LaunchChoseMailer ();
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int LaunchChoseMailer ();
+extern "C" PLUGINBF_CORREO_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 #ifdef Q_OS_WIN32
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
  #endif
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 
-extern "C" PLUGINBF_CORREOEXPERIMENTAL_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CORREO_EXPORT int entryPoint ( BfBulmaFact * );
 
 #endif
 
