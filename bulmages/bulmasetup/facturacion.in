@@ -140,6 +140,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             functions.multios().copy(str(plugins.confopenreports+ "%s/informereferencia.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/informereferencia.rml" % language) )
             functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/plantilla.rml" % language) )
             functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla1.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/plantilla1.rml" % language) )
+            functions.multios().copy(str(plugins.confopenreports+ "%s/plantilla_empresa.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/plantilla_empresa.rml" % language) )
             functions.multios().copy(str(plugins.confopenreports+ "%s/estilos.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/estilos.rml" % language) )
             functions.multios().copy(str(plugins.confopenreports+ "%s/listado.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/listado.rml" % language) )
             if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):

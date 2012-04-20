@@ -28,6 +28,8 @@
 #include "blsearchwidget.h"
 #include "bldatesearch.h"
 
+#include "blfunctions.h"
+
 #include <QFile>
 #include <QTextStream>
 #include <QDomDocument>
@@ -681,6 +683,16 @@ void BlFormList::guardaFiltrosXML() {
 	    stream << "<QLINEEDIT>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</QLINEEDIT>";
 	} // end while
 	
+	QList<BlSearchWidget *> l8i = findChildren<BlSearchWidget *>();
+	QListIterator<BlSearchWidget *> it8i ( l8i );
+	while ( it8i.hasNext() ) {
+	    BlSearchWidget * item = it8i.next();
+	    QString objname = item->objectName();
+	    QString objparent = item->parent()->objectName();
+	    QString date = item->id();
+	    stream << "<BLSEARCHWIDGET>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</BLSEARCHWIDGET>";
+	} // end while
+	
 	stream << "</DOCUMENT>\n";
 	file.close();
     } // end if
@@ -728,7 +740,7 @@ void BlFormList::cargaFiltrosXML() {
 		} // end if
 	    } // end if
 	} // end if
-    } // end form
+    } // end for
   
     /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
     nodos = docElem.elementsByTagName ( "QLINEEDIT" );
@@ -749,7 +761,28 @@ void BlFormList::cargaFiltrosXML() {
 	    } // end if
 	    
 	} // end if
-    } // end form
+    } // end for
+  
+    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
+    nodos = docElem.elementsByTagName ( "BLSEARCHWIDGET" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode visible = nodos.item ( i );
+        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+
+	    /// Cogemos el nombre y el valor
+	    QString objname = e1.firstChildElement ( "OBJNAME" ).toElement().text();
+	    QString objvalue = e1.firstChildElement ( "OBJVALUE" ).toElement().text();
+	    QString objparent = e1.firstChildElement ( "OBJPARENT" ).toElement().text();
+	    BlSearchWidget *dates = findChild<BlSearchWidget *>(objname);
+	    if (dates) {
+		if (dates->parent()->objectName() == objparent) {
+		    dates->setId(objvalue);
+		} // end if
+	    } // end if
+	    
+	} // end if
+    } // end for
   
 }
 

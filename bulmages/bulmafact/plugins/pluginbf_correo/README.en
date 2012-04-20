@@ -9,8 +9,9 @@ Nombre: Send documents by email
 Biblioteca: libpluginbf_correo.so
 
 Descripción: <H1>Send documents by email</H1>
-<P>It allows to send printed documents directly by email using a new button in the records. When the button is clicked kmail is opened with the text and document attached.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<P>It allows to send printed documents directly by email using a new button in the records. When the button is clicked your email client is opened with the text and document attached.</P>
+<P>The first time the plugin is started, will pop-up a dialog window that allows you to select your preferred email client, if the program is installed in the PATH of your operating system, it will try to find your path automatically, otherwise press the button "(...)" and select the program, once selected, click OK.</P>
+<B>Autor:</B>Daniel Ripoll Osma (info@danielripoll.es)<BR>
 <HR>
 
 
@@ -28,4 +29,4 @@ Categorias: Generic utilities;
 
 Orden: 900
 
-Comentarios: It depends on kmail, but it would be easy to prepare versions for other email clients.
+Comentarios: This plugin is currently compatible with Thunderbird, Evolution, Kmail or Outlook. (Works on both Unix and Windows.)

@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbl_report2ods.dll "\bulmalib\plugins\pluginbl_report2ods\libpluginbl_report2ods.dll"

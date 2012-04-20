@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_modificadores.mo "\bulmafact\plugins\pluginbf_modificadores\pluginbf_modificadores_ca_ES.gmo"

@@ -1,6 +1,10 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *   Copyright (C) 2012 by Daniel Ripoll Osma.                             *
+ *   info@danielripoll.es                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -33,6 +37,16 @@ extern "C" PLUGINBF_CORREO_EXPORT int AlbaranClienteView_AlbaranClienteView ( Al
 extern "C" PLUGINBF_CORREO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" PLUGINBF_CORREO_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 extern "C" PLUGINBF_CORREO_EXPORT int FacturaView_FacturaView ( FacturaView * );
+
+extern "C" PLUGINBF_CORREO_EXPORT int LaunchChoseMailer ();
+extern "C" PLUGINBF_CORREO_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" PLUGINBF_CORREO_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+#ifdef Q_OS_WIN32
+extern "C" PLUGINBF_CORREO_EXPORT int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+ #endif
+extern "C" PLUGINBF_CORREO_EXPORT int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+
 extern "C" PLUGINBF_CORREO_EXPORT int entryPoint ( BfBulmaFact * );
 
 #endif

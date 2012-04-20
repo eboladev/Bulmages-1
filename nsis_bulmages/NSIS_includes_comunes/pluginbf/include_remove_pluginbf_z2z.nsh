@@ -1,0 +1,1 @@
+Delete "$INSTDIR\program\pluginsbf\libpluginbf_z2z.dll"
