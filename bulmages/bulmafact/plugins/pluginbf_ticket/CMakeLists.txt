@@ -118,4 +118,6 @@ install(DIRECTORY openreports/
       DESTINATION share/bulmages/openreports
       PATTERN ".svn" EXCLUDE)
 
-
+install(DIRECTORY icons/ 
+      DESTINATION share/bulmages/icons
+      PATTERN ".svn" EXCLUDE)
