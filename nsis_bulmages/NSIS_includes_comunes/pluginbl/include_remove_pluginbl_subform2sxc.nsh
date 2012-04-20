@@ -1,0 +1,1 @@
+Delete "$INSTDIR\program\pluginsbl\libpluginbl_subform2sxc.dll"

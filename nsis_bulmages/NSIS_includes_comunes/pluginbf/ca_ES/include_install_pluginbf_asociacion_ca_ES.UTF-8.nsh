@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_asociacion.mo "\bulmafact\plugins\pluginbf_asociacion\pluginbf_asociacion_ca_ES.gmo"

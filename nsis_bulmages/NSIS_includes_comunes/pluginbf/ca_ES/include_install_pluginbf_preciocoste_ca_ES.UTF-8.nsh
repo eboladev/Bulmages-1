@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_preciocoste.mo "\bulmafact\plugins\pluginbf_preciocoste\pluginbf_preciocoste_ca_ES.gmo"

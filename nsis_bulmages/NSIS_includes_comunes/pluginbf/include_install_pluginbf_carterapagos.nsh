@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_carterapagos.dll "\bulmafact\plugins\pluginbf_carterapagos\libpluginbf_carterapagos.dll"

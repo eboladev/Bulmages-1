@@ -1,0 +1,1 @@
+Delete "$INSTDIR\ca_ES\LC_MESSAGES\pluginbf_clientepedido.mo"

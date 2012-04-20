@@ -75,8 +75,8 @@ int entryPoint ( BlMainWindow *bcont )
     /// acceder al corrector.
     g_actionFeedsWidget = new QAction ( "&Info", 0 );
     g_actionFeedsWidget->setCheckable ( TRUE );
-    g_actionFeedsWidget->setStatusTip ( "Muestra/oculta las notificaciones de BulmagesWin 3 Fact" );
-    g_actionFeedsWidget->setWhatsThis ( "Feeds.\n\nMuestra/oculta notificaciones de BulmagesWin 3 Fact" );
+    g_actionFeedsWidget->setStatusTip ( "Muestra/oculta las notificaciones" );
+    g_actionFeedsWidget->setWhatsThis ( "Feeds.\n\nMuestra/oculta notificaciones" );
 
     /*
     QObject::connect ( g_actionFeedsWidget, SIGNAL ( toggled ( bool ) ), g_docFeedsWidget, SLOT ( cambiaVisible ( bool ) ) );

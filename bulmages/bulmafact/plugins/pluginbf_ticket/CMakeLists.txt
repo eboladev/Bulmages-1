@@ -117,4 +117,6 @@ add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_c
 install(DIRECTORY openreports/ 
       DESTINATION share/bulmages/openreports)
 
-
+install(DIRECTORY icons/ 
+      DESTINATION share/bulmages/icons
+      PATTERN ".svn" EXCLUDE)
