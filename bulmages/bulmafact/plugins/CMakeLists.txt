@@ -1,4 +1,4 @@
-add_subdirectory(pluginbf_example)
+#add_subdirectory(pluginbf_example)
 add_subdirectory(pluginbf_tarifa)
 add_subdirectory(pluginbf_comercial)
 add_subdirectory(pluginbf_cliente)
@@ -23,8 +23,7 @@ add_subdirectory(pluginbf_carterapagos)
 
 add_subdirectory(pluginbf_trazabilidad)
 add_subdirectory(pluginbf_abrecodigobarras)
-add_subdirectory(pluginbf_catalogo)
-add_subdirectory(pluginbf_informecliente)
+#add_subdirectory(pluginbf_catalogo)
 add_subdirectory(pluginbf_inventario)
 add_subdirectory(pluginbf_contrato)
 add_subdirectory(pluginbf_ticket)
@@ -40,12 +39,12 @@ add_subdirectory(pluginbf_correo)
 
 
 add_subdirectory(pluginbf_tipotrabajo)
-add_subdirectory(pluginbf_cuadrante)
-add_subdirectory(pluginbf_asterisk)
+#add_subdirectory(pluginbf_cuadrante)
+#add_subdirectory(pluginbf_asterisk)
 add_subdirectory(pluginbf_bulmatpv)
 add_subdirectory(pluginbf_debug)
 add_subdirectory(pluginbf_preciocoste)
-add_subdirectory(pluginbf_resumenarticulo)
+#add_subdirectory(pluginbf_resumenarticulo)
 add_subdirectory(pluginbf_alias)
 add_subdirectory(pluginbf_datosbase)
 
@@ -54,17 +53,17 @@ add_subdirectory(pluginbf_printercocina)
 
 add_subdirectory(pluginbf_camarero)
 
-add_subdirectory(pluginbf_bulmacont)
+#add_subdirectory(pluginbf_bulmacont)
 
-add_subdirectory(pluginbf_sincrobulmacont)
-add_subdirectory(pluginbf_informecliente2sxc)
-add_subdirectory(pluginbf_etiquetado)
-add_subdirectory(pluginbf_etiquetas)
-add_subdirectory(pluginbf_compraventa)
-add_subdirectory(pluginbf_clienteproveedor)
+#add_subdirectory(pluginbf_sincrobulmacont)
+#add_subdirectory(pluginbf_informecliente2sxc)
+#add_subdirectory(pluginbf_etiquetado)
+#add_subdirectory(pluginbf_etiquetas)
+#add_subdirectory(pluginbf_compraventa)
+#add_subdirectory(pluginbf_clienteproveedor)
 add_subdirectory(pluginbf_abrereferencia)
 
-add_subdirectory(pluginbf_corrector)
+#add_subdirectory(pluginbf_corrector)
 add_subdirectory(pluginbf_clientealbaranesfactura)
 
 add_subdirectory(pluginbf_proveedorpago)
@@ -79,12 +78,12 @@ add_subdirectory(pluginbf_proveedorfactura)
 add_subdirectory(pluginbf_proveedoralbaran)
 add_subdirectory(pluginbf_proveedorpedido)
 
-add_subdirectory(pluginbf_proveedorcodigos)
+#add_subdirectory(pluginbf_proveedorcodigos)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginbf_qwebcam)
 
-add_subdirectory(pluginbf_z2z)
+#add_subdirectory(pluginbf_z2z)
 
 # add_subdirectory(pluginbf_printercocina)
 
