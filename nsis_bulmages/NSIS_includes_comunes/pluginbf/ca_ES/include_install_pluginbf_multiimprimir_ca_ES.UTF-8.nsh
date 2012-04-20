@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild pluginbf_multiimprimir.mo "\bulmafact\plugins\pluginbf_multiimprimir\pluginbf_multiimprimir_ca_ES.gmo"

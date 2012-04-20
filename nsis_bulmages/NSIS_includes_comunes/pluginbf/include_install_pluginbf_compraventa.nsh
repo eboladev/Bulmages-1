@@ -1,0 +1,1 @@
+!insertmacro InstallFilesFromBuild libpluginbf_compraventa.dll "\bulmafact\plugins\pluginbf_compraventa\libpluginbf_compraventa.dll"

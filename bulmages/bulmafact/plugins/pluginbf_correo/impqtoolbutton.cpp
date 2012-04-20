@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
+ *   Copyright (C) 2012 by Daniel Ripoll Osma.                             *
+ *   info@danielripoll.es                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -36,6 +38,8 @@
 #include "facturaview.h"
 #include "bfcompany.h"
 #include "bldb.h"
+
+#include "pluginbf_correo.h"
 
 ///
 /**
@@ -87,12 +91,22 @@ void EmailQToolButton::setBoton()
 
 ///
 /**
+\ void
 **/
 void EmailQToolButton::click()
 {
     BL_FUNC_DEBUG
 
-
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+    if (  dir_email == "") {
+        LaunchChoseMailer();
+        } // end if
+        
+    QString bcc = "";
+    QString body = "";
+    QString subject = "";
+    QString email = "";
+    QString attached = "";
 
     if ( m_presupuestoView != NULL ) {
         m_companyact = m_presupuestoView->mainCompany();
@@ -104,7 +118,7 @@ void EmailQToolButton::click()
         QString idcliente = m_presupuestoView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->value( "mailcliente" );
+        email = curs->value( "mailcliente" );
         delete curs;
 
 
@@ -114,9 +128,13 @@ void EmailQToolButton::click()
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf";
             QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
             blMoveFile(oldName, newName);
+           
+            subject = _("Presupuesto ") + num;
+            body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
+            body += _("Atentamente\n\n\n\"");
+            attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 
-            QString cad = "kmail -s \"Presupuesto " + num + "\" --body \" Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf " + email;
-            system ( cad.toAscii().data() );
+            bfSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
@@ -131,7 +149,7 @@ void EmailQToolButton::click()
         QString idcliente = m_pedidoClienteView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->value( "mailcliente" );
+        email = curs->value( "mailcliente" );
         delete curs;
 
 
@@ -141,9 +159,13 @@ void EmailQToolButton::click()
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf";
             QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
             blMoveFile(oldName, newName);
-            
-            QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
-            system ( cad.toAscii().data() );
+                        
+            QString subject = _("Pedido ") + num;
+            QString body = _("Adjunto le enviamos el pedido numero ") + num + _(" con referencia ") + ref +"\n";
+            body += _("Atentamente\n\n\n\"");
+            QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+
+            bfSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
@@ -159,7 +181,7 @@ void EmailQToolButton::click()
         QString idcliente = m_albaranClienteView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->value( "mailcliente" );
+        email = curs->value( "mailcliente" );
         delete curs;
 
 
@@ -170,8 +192,12 @@ void EmailQToolButton::click()
             QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
             blMoveFile(oldName, newName);
 
-            QString cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
-            system ( cad.toAscii().data() );
+            subject = _("Albaran ") + num;
+            body = _("Adjunto le enviamos el albaran numero ") + num + _(" con referencia ") + ref +"\n";
+            body += _( "Atentamente\n\n\n\"");
+            attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+
+            bfSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
@@ -189,7 +215,7 @@ void EmailQToolButton::click()
         QString idcliente = m_facturaView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        QString email = curs->value( "mailcliente" );
+        email = curs->value( "mailcliente" );
         delete curs;
 
         if ( m_facturaView->generateRML() ) {
@@ -198,13 +224,14 @@ void EmailQToolButton::click()
             QString oldName =  g_confpr->value( CONF_DIR_USER ) + "factura.pdf";
             QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
             blMoveFile(oldName, newName);
+           
+            subject = _("Factura ") + num;
+            body = _("Adjunto le enviamos la factura numero ") + serie + num + _(" con fecha ") + fecha +"\n";
+            body += _("Sin otro particular, reciba un cordial saludo\n\n\n");
+            attached = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+            
 
-
-            QString cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
-            cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
-            cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
-            cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
-            system ( cad.toAscii().data() );
+            bfSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
