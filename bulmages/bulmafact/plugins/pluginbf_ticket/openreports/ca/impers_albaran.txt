@@ -1,17 +1,17 @@
-<!-- SETJUSTIFICATION "CENTER" --><!-- IMG SRC="[CONF_DIR_OPENREPORTS]logo.jpg"-->
+<!-- COMMENT>title="Ticket Factura" icon="/usr/local/share/bulmages/icons/ticket.png"</COMMENT--><!-- SETJUSTIFICATION "CENTER" --><!-- IMG SRC="[CONF_DIR_OPENREPORTS]logo.jpg"-->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CIF'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->Tel. [valor]<!-- END QUERY -->971 91 85 06<!-- SETJUSTIFICATION "LEFT" -->
 <!-- QUERY="SELECT now()::DATE AS fecha" -->Fecha: [fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
-Ticket: [numpresupuesto]
+Factura: [numfactura] [idfactura]
 <!-- TURNWHITEBLACK "1"-->
  Uds. PRODUCTO               P.U. IMPORTE
 <!-- TURNWHITEBLACK "0"-->
-<!-- QUERY="SELECT *, (cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]" --><!-- RIGHTJUSTIFIED "[cantlpresupuesto]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclpresupuesto]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplpresupuesto]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
+<!-- QUERY="SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]" --><!-- RIGHTJUSTIFIED "[cantlfactura]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclfactura]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplfactura]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
 <!-- END QUERY -->
 
 <!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
-<!-- IF ="length('[pagado]')=8"--><!-- QUERY="SELECT sum(cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
+<!-- IF ="length('[pagado]')=8"--><!-- QUERY="SELECT sum(cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
 <!-- ELSE -->Total: <!-- RIGHTJUSTIFIED "[total]" "6" " " "TRUE" -->
 
 Pagado: <!-- RIGHTJUSTIFIED "[pagado]" "6" " " "TRUE" -->
