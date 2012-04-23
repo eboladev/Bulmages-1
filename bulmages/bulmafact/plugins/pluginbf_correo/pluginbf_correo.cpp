@@ -198,15 +198,26 @@ int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &b
     QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
     runcommand += " -compose ";
     runcommand += "to='" + recipient + "',";
-    runcommand += "bcc='" + bcc + "',";
-    runcommand += "subject='" + subject + "',";
-    body.replace(",","&#44;"); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
-    runcommand += "body='" + body + "',";
+	if (bcc != "")
+		runcommand += "bcc='" + bcc + "',";
+	if (subject != "")
+		runcommand += "subject='" + subject + "',";
     if (attached != "") {
-        runcommand += "attachment='file://" + attached + "'";
+#ifdef Q_OS_WIN32
+		attached.replace("/", "\\");
+		attached.replace("\n","");
+#endif
+        runcommand += "attachment='file://" + attached + "',";
     }
-            
-    system(QString( runcommand + background).toAscii());
+	if (body != "") {
+		body.replace(",","&#44;"); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
+#ifdef Q_OS_WIN32
+		body.replace("\n", " ");
+#endif
+		runcommand += "body='" + body + "',";
+	} //end if
+
+    system(QString( runcommand + background).toAscii().data());
     
     return 0;
 }
