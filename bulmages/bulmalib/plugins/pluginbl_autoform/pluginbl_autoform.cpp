@@ -73,9 +73,8 @@ int mergeAllXML() {
    QString buff;
    d.setFilter( QDir::Files );
    QStringList filters;
-   filters << "autoform_" + g_emp->dbName() + "*.spc";
-//   d.setNameFilters(filters);
-//   const QFileInfoList *list = d.entryInfoList("autoform_" + g_emp->dbName() + "*.spc");
+   filters << "autoform_" + g_emp->dbName() + "*.spc.*";
+
    QList<QFileInfo> list = d.entryInfoList(filters);
    //if(!list) return;
    QList<QFileInfo>::iterator it;
@@ -291,8 +290,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 				  } // end if
 			      } // end for
 			      if (!encontrado) {
-				  //QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
-				  //menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
 				  /// Miramos si existe un menu Herramientas
 				  menu = g_pluginbl_autoform->newMenu ( path[0], "", "menuVentana" );
 			      } // end if
@@ -363,8 +360,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 				  } // end if
 			      } // end for
 			      if (!encontrado) {
-				  //QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
-				  //menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
 				  /// Miramos si existe un menu Herramientas
 				  menu = g_pluginbl_autoform->newMenu ( path[0], "", "menuVentana" );
 			      } // end if
@@ -416,7 +411,6 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
     /// Juntamos todos los XML en uno solo dentro del .bulmages
     mergeAllXML();
     /// TODO
-    //blMsgInfo(_("En la creacion de ventanas"));
     return 0;
 }
 
