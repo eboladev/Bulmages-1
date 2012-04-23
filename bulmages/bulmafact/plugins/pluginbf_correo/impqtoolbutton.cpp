@@ -131,7 +131,7 @@ void EmailQToolButton::click()
            
             subject = _("Presupuesto ") + num;
             body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
-            body += _("Atentamente\n\n\n\"");
+            body += _("Atentamente\n\n\n");
             attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 
             bfSendEmail( email, bcc, subject, body, attached );
@@ -162,7 +162,7 @@ void EmailQToolButton::click()
                         
             QString subject = _("Pedido ") + num;
             QString body = _("Adjunto le enviamos el pedido numero ") + num + _(" con referencia ") + ref +"\n";
-            body += _("Atentamente\n\n\n\"");
+            body += _("Atentamente\n\n\n");
             QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
 
             bfSendEmail( email, bcc, subject, body, attached );
@@ -194,7 +194,7 @@ void EmailQToolButton::click()
 
             subject = _("Albaran ") + num;
             body = _("Adjunto le enviamos el albaran numero ") + num + _(" con referencia ") + ref +"\n";
-            body += _( "Atentamente\n\n\n\"");
+            body += _( "Atentamente\n\n\n");
             attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
 
             bfSendEmail( email, bcc, subject, body, attached );
@@ -226,7 +226,7 @@ void EmailQToolButton::click()
             blMoveFile(oldName, newName);
            
             subject = _("Factura ") + num;
-            body = _("Adjunto le enviamos la factura numero ") + serie + num + _(" con fecha ") + fecha +"\n";
+            body = _("Adjunto le enviamos la factura numero ") + serie + num + _(" con fecha ") + fecha;
             body += _("Sin otro particular, reciba un cordial saludo\n\n\n");
             attached = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
             
