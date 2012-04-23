@@ -127,6 +127,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
 	
+
         // Buscamos plantillas TXT que tienen que salir por la ticketera.
         
 	/// Buscamos ficheros que tengan el nombre de la tabla
