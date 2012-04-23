@@ -108,7 +108,7 @@ BEGIN
 	      (
 		idprestamo serial,
 		fechainprestamo date NOT NULL DEFAULT now(),
-		fechafinprestamo date NOT NULL DEFAULT now() +' @ 1 week',
+		fechafinprestamo date NOT NULL DEFAULT now() +'' @ 1 week'',
 		idsocio integer NOT NULL,
 		idlibro integer NOT NULL,
 		devueltoprestamo boolean DEFAULT FALSE,
@@ -126,9 +126,9 @@ BEGIN
 
 	      ALTER TABLE cliente ADD COLUMN idzcomercial integer REFERENCES zcomercial(idzcomercial) ;
 
-	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES ('Palma', 'PM');
-	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES ('Raiguer', 'RG');
-	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES ('Llevant', 'LL');
+	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES (''Palma'', ''PM'');
+	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES (''Raiguer'', ''RG'');
+	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES (''Llevant'', ''LL'');
 
 END IF;
 RETURN 0;
