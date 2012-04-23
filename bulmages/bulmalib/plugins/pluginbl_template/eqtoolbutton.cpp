@@ -125,7 +125,6 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
 	
-// ==============================
 
 	/// Buscamos ficheros que tengan el nombre de la tabla
 	QDir dir1 ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
@@ -176,7 +175,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    accion->setIcon(QIcon(icon));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
-// ==============================
+
 	setMenu(menu);
     } else {
 	hide();
