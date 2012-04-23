@@ -225,12 +225,15 @@ int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, Q
     QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
     
     QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
-    runcommand += " -s \"" + subject + "\"";
-    runcommand += " -b" + bcc;
-    runcommand += "--body='" + body + "',";
-    if (attached != "") {
-        runcommand += "--attach" + attached;
-    }
+    if (subject != "")
+      runcommand += " -s \"" + subject + "\"";
+    if (bcc != "") 
+      runcommand += " -b " + bcc;
+    if (body != "")
+      runcommand += " --body \"" + body + "\"";
+    if (attached != "") 
+      runcommand += " --attach " + attached;
+  
     runcommand += " " + recipient;
             
     system(QString( runcommand + background).toAscii());
