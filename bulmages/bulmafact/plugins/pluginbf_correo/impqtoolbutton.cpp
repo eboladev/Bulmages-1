@@ -134,7 +134,7 @@ void EmailQToolButton::click()
             body += _("Atentamente\n\n\n\"");
             attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 
-            bfSendEmail( email, bcc, subject, body, attached );
+            blSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
@@ -165,7 +165,7 @@ void EmailQToolButton::click()
             body += _("Atentamente\n\n\n\"");
             QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
 
-            bfSendEmail( email, bcc, subject, body, attached );
+            blSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
@@ -197,7 +197,7 @@ void EmailQToolButton::click()
             body += _( "Atentamente\n\n\n\"");
             attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
 
-            bfSendEmail( email, bcc, subject, body, attached );
+            blSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 
@@ -231,7 +231,7 @@ void EmailQToolButton::click()
             attached = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
             
 
-            bfSendEmail( email, bcc, subject, body, attached );
+            blSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
 

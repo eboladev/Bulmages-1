@@ -38,6 +38,20 @@
 #include "blmainwindow.h"
 #include "local_blI18n.h"
 
+
+/// Definiciones para el email.
+#ifdef Q_OS_WIN32
+    #define CAD_COMILLAS QString("\"")
+    #define background QString("")
+#else
+    #define CAD_COMILLAS QString("")
+    #define background QString(" &")
+#endif
+
+
+
+
+
 /** Las variables estaticas de clase deben ser delcaras para reservar memoria */
 QFile *BlDebug::m_file;
 QFile *BlDebug::m_fileXML;
@@ -1558,3 +1572,167 @@ bool blMoveFile( const QString &oldName, const QString &newName )
     // Se ha movido correctamente el archivo, o se ha copiado y eliminado el original
     return true;
 }
+
+
+/// FUNCIONES DE MANEJO DEL CORREO ELECTRONICO
+/// ==========================================
+
+///
+/**
+\ param recipient
+\ param subject
+\ param body
+\ param attached
+\ return
+**/
+int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+    
+    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
+    runcommand += " -compose ";
+    runcommand += "to='" + recipient + "',";
+    runcommand += "bcc='" + bcc + "',";
+    runcommand += "subject='" + subject + "',";
+    body.replace(",","&#44;"); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
+    runcommand += "body='" + body + "',";
+    if (attached != "") {
+        runcommand += "attachment='file://" + attached + "'";
+    }
+            
+    system(QString( runcommand + background).toAscii());
+    
+    return 0;
+}
+
+///
+/**
+\ param recipient
+\ param subject
+\ param body
+\ param attached
+\ return
+**/
+int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+    
+    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
+    if (subject != "")
+      runcommand += " -s \"" + subject + "\"";
+    if (bcc != "") 
+      runcommand += " -b " + bcc;
+    if (body != "")
+      runcommand += " --body \"" + body + "\"";
+    if (attached != "") 
+      runcommand += " --attach " + attached;
+  
+    runcommand += " " + recipient;
+            
+    system(QString( runcommand + background).toAscii());
+    
+    return 0;
+}
+///
+/**
+\ param recipient
+\ param subject
+\ param body
+\ param attached
+\ return
+**/
+int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+    
+    
+    QString urlmail = " \"mailto:" + recipient;
+    urlmail += "?subject=" + subject;
+    urlmail += "&bcc=" + bcc;
+    urlmail += "&body=" + body;
+    if (attached != "") {
+        urlmail += "&attach=" + attached + "\"";
+    }
+    QString runcommand = QString(CAD_COMILLAS + dir_email + QUrl(urlmail, QUrl::TolerantMode).toString() + CAD_COMILLAS);
+    system(QString( runcommand + background).toAscii());
+    return 0;
+
+}
+
+///
+/**
+\ param recipient
+\ param subject
+\ param body
+\ param attached
+\ return
+**/
+#ifdef Q_OS_WIN32
+int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+    QString barra2;
+    
+    QString urlmail = " /c ipm.note";
+    if (attached != "") {
+        urlmail += " /a " + attached;
+    }
+    urlmail += " /m " + recipient;
+    QByteArray barray = QUrl(subject, QUrl::TolerantMode).toEncoded();
+    QByteArray barray2 = QUrl(body, QUrl::TolerantMode).toEncoded();
+    QString stringed(barray);
+    QString stringed2(barray);
+    urlmail += "?subject=" + stringed;
+    urlmail += "&body=" + stringed2;
+    
+    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS + CAD_COMILLAS + urlmail + CAD_COMILLAS);
+    
+    system(QString( runcommand + background).toAscii());
+    return 0;
+
+}
+#endif
+
+///
+/**
+\ param recipient
+\ param subject
+\ param body
+\ param attached
+\ return
+**/
+int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    
+    QString dir_email = g_confpr->value( CONF_EMAIL_CLIENT );
+      
+    QFileInfo fileinfo(dir_email);
+    QString program_name = fileinfo.fileName();
+    #ifdef Q_OS_WIN32
+        program_name.replace(".exe", "");
+    #endif
+    
+    if (program_name == "thunderbird") {
+        Thunderbird (  recipient, bcc, subject, body, attached );
+    } else if (program_name == "kmail") {
+        Kmail (  recipient, bcc, subject, body, attached );
+    } else if (program_name == "evolution") {
+        Evolution (  recipient, bcc, subject, body, attached );
+    }
+    #ifdef Q_OS_WIN32
+     else if (program_name == "Outlook") {
+        Outlook (  recipient, bcc, subject, body, attached );
+    } // end if
+    #endif
+    
+    return 0;
+    
+}
+
+
+

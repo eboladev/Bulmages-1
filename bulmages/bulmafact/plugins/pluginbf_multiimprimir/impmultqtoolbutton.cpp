@@ -105,14 +105,6 @@ void ImpQToolButton::click()
 {
     BL_FUNC_DEBUG
 
-	/// Hacer comprobacion de la variable PRINTER
-	if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-	    blMsgInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
-        
-	    return;
-	} // end if
-
-
     BlDbRecordSet *cur1 = NULL;
     BlDbRecordSet *cur = NULL;
 
@@ -348,7 +340,6 @@ void ImpQToolButton::click()
                         cur = m_companyact->loadQuery ( query );
                         if ( !cur->eof() ) {
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 2.3 ) + "cm\">" + cur->value( "nomcliente" ) + "</drawString>\n";
-//    txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->value("nomaltcliente")+"</drawString>\n";
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.5 ) + "cm\">" + cur->value( "dircliente" ) + "</drawString>\n";
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.1 ) + "cm\">" + cur->value( "cpcliente" ) + "</drawString>\n";
                         } // end if
@@ -374,12 +365,6 @@ void ImpQToolButton::click()
 
             res = g_confpr->value( CONF_DIR_USER ) + "recibos.pdf ";
 
-
-            /// En la version para windows hay problemas con las imagenes,
-            /// por eso de momento lo dejamos asi.
-#ifndef WINDOWS
-            //   buff.replace("[detallearticulos]", detalleArticulos());
-#endif
 
             if ( file.open ( QIODevice::WriteOnly ) ) {
                 QTextStream stream ( &file );
@@ -431,10 +416,22 @@ void ImpQToolButton::click()
             } // end for
         } // end if
 
-	    QString comando = "lp -d" +g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
-	    system ( comando.toAscii().data() );
-	    comando = "rm " + res;
-	    system ( comando.toAscii().data() );
+	
+#ifndef Q_OS_WIN32
+	QString comando = "";
+	if ((g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None")) {
+	  comando = "lpr " + res;
+	} else {
+	  comando = "lp -d" +g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
+	} // end if
+	system ( comando.toAscii().data() );
+	comando = "rm " + res;
+	system ( comando.toAscii().data() );
+#else
+	/// Estaria bien imprimir directamente en la impresora, pero no hay forma de hacerlo en Windows.
+	QString comando = "\"start \"\" \"" + g_confpr->value( CONF_PDF ) + "\" \"" + res + "\"\"";
+	system ( comando.toAscii().data() );
+#endif
         
 
     } catch ( ... ) {
@@ -444,8 +441,6 @@ void ImpQToolButton::click()
         if ( cur ) delete cur;
     } // end try
 }
-
-// ==================================================================================
 
 
 ///
@@ -592,13 +587,6 @@ void EmailQToolButton::click()
 {
     BL_FUNC_DEBUG
 
-    // Es posible que esto se haya cargado antes de cargar el company por eso
-    // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
-
-
-    QString res = "";
-
-
     if ( m_presupuestoList != NULL ) {
         m_companyact = ( BfCompany * ) m_presupuestoList->mainCompany();
         BlSubForm *sub = m_presupuestoList->mui_list;
@@ -610,6 +598,8 @@ void EmailQToolButton::click()
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
                 QString id = rec->dbValue ( "idpresupuesto" );
+		QString num = rec->dbValue ( "numpresupuesto" );
+		QString ref = rec->dbValue ("refpresupuesto" );
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
@@ -630,12 +620,17 @@ void EmailQToolButton::click()
                     blCreatePDF ( "presupuesto" );
                     
                     QString oldName =  g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf";
-                    QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+                    QString newName = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
                     blMoveFile(oldName, newName);
-
-                    QString cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
-                    system ( cad.toAscii().data() );
-                    res += g_confpr->value( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+    
+		    QString subject = _("Presupuesto ") + num;
+		    QString body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
+		    body += _("Atentamente\n\n\n\"");
+		    QString attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
+		    QString bcc= "";
+		    
+		    blSendEmail( email, bcc, subject, body, attached );
+		    
                 } // end if
                 pres->close();
             } // end if
@@ -656,6 +651,8 @@ void EmailQToolButton::click()
             if ( val == "TRUE" ) {
                 QString id = rec->dbValue ( "idpedidocliente" );
                 QString idcliente = rec->dbValue ( "idcliente" );
+		QString num = rec->dbValue ( "numpedidocliente" );
+		QString ref = rec->dbValue ( "refpedidocliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->value( "mailcliente" );
@@ -675,13 +672,17 @@ void EmailQToolButton::click()
                     blCreatePDF ( "pedidocliente" );
                    
                     QString oldName =  g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf";
-                    QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                    QString newName = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
                     blMoveFile(oldName, newName);
-
-
-                    QString cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
-                    system ( cad.toAscii().data() );
-                    res += g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+		    
+		    QString subject = _("Pedido ") + num;
+		    QString body = _("Adjunto le enviamos el pedido numero ") + num + _(" con referencia ") + ref +"\n";
+		    body += _("Atentamente\n\n\n\"");
+		    QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+		    QString bcc= "";
+		
+		    blSendEmail( email, bcc, subject, body, attached );
+		    
                 } // end if
                 pres->close();
             } // end if
@@ -702,6 +703,9 @@ void EmailQToolButton::click()
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
                 QString id = rec->dbValue ( "idalbaran" );
+		QString num = rec->dbValue ( "numalbaran" );
+		QString ref = rec->dbValue ( "refalbaran" );
+		
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
@@ -721,12 +725,18 @@ void EmailQToolButton::click()
                     blCreatePDF ( "albaran" );
 
                     QString oldName =  g_confpr->value( CONF_DIR_USER ) + "albaran.pdf";
-                    QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                    QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
                     blMoveFile(oldName, newName);
 
-                    QString cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
-                    system ( cad.toAscii().data() );
-                    res += g_confpr->value( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+		    
+		    QString subject = _("Albaran ") + num;
+		    QString body = _("Adjunto le enviamos el albaran numero ") + num + _(" con referencia ") + ref +"\n";
+		    body += _( "Atentamente\n\n\n\"");
+		    QString attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+		    QString bcc= "";
+		    
+		    blSendEmail( email, bcc, subject, body, attached );
+		    
                 } // end if
                 pres->close();
             } // end if
@@ -775,15 +785,14 @@ void EmailQToolButton::click()
                     QString newName = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
                     blMoveFile(oldName, newName);
 
+		    QString subject = _("Factura ") + num;
+		    QString body = _("Adjunto le enviamos la factura numero ") + serie + num + _(" con fecha ") + fecha +"\n";
+		    body += _("Sin otro particular, reciba un cordial saludo\n\n\n");
+		    QString attached = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+		    QString bcc= "";
 
-                    QString cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
-                    cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
-                    cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
-                    cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
-
-                    system ( cad.toAscii().data() );
-
-                    res += g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
+		    blSendEmail( email, bcc, subject, body, attached );
+		    
                 } // end if
                 pres->close();
             } // end if
@@ -804,6 +813,7 @@ void EmailQToolButton::click()
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString ref = rec->dbValue ( "refcobro" );
                 QString fecha = rec->dbValue ( "fcobro" );
+		fecha.replace("/", "_");
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
@@ -821,17 +831,17 @@ void EmailQToolButton::click()
                 blCreatePDF ( "recibo" );
                 
                 QString oldName =  g_confpr->value( CONF_DIR_USER ) + "recibo.pdf";
-                QString newName = g_confpr->value( CONF_DIR_USER ) + "albaran" + fecha + ref + ".pdf";
+                QString newName = g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
                 blMoveFile(oldName, newName);
+	
+		QString subject = _("Recibo ") + fecha + ref;
+		QString body = _("Adjunto le enviamos el recibo con referencia ") + ref + _(" y fecha ") + fecha +"\n";
+		body += _("Sin otro particular, reciba un cordial saludo\n\n\n");
+		QString attached = g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
+	  	QString bcc= "";
 
-
-                QString cad = "kmail -s \"Recibo " + fecha + ref + "\" --body \"Estimado cliente,\n\n";
-                cad += "Adjunto le enviamos el recibo numero " + fecha + ref + " con fecha " + fecha + "\n";
-                cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
-                cad += " --attach " + g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf " + email;
-                system ( cad.toAscii().data() );
-
-                res += g_confpr->value( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf ";
+		blSendEmail( email, bcc, subject, body, attached );
+		
                 delete pres;
             } // end if
         } // end for
@@ -841,13 +851,6 @@ void EmailQToolButton::click()
     
 }
 
-
-
-
-
-
-
-// ==================================================================================
 
 
 ///
