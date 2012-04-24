@@ -1,7 +1,0 @@
-#: pluginsubformsxc.cpp:163 pluginsubformsxc.cpp:165
-msgid "Exportando datos a SXC"
-msgstr "Exportando datos a SXC"
-
-#: pluginsubformsxc.cpp:82 pluginsubformsxc.cpp:94
-msgid "Exportar a hoja de calculo (SXC)"
-msgstr ""

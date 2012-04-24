@@ -1,7 +1,0 @@
-#!/usr/bin/make -f
-
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/cmake.mk
-
-DEB_DBG_PACKAGE_libpropertyeditor := libpropertyeditor-dbg
-DEB_DBG_PACKAGE_propertyeditor-plugins := libpropertyeditor-dbg
