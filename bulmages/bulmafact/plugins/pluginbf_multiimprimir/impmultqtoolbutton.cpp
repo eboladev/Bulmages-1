@@ -429,7 +429,7 @@ void ImpQToolButton::click()
 	system ( comando.toAscii().data() );
 #else
 	/// Estaria bien imprimir directamente en la impresora, pero no hay forma de hacerlo en Windows.
-	QString comando = "\"start \"\" \"" + g_confpr->value( CONF_PDF ) + "\" \"" + res + "\"\"";
+	QString comando = "start " + g_confpr->value( CONF_PDF ) + " " + res;
 	system ( comando.toAscii().data() );
 #endif
         
