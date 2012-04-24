@@ -1443,17 +1443,18 @@ bool blCopyFile( const QString &oldName, const QString &newName )
     QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
 
     // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
-    if(!QFile::copy(oldFile, newFile))
-    {
+    if(!QFile::copy(oldFile, newFile)) {
 	QString command = "";
 
-	#ifdef Q_OS_WIN32
-	    command = "copy \"" + oldFile + "\" \"" + newFile + "\"";
-	#else
-	    command = "cp " + oldFile + " " + newFile;
-	#endif
+		#ifdef Q_OS_WIN32
+			command = "copy \"" + oldFile + "\" \"" + newFile + "\"";
+			command.replace("/", "\\");
+			command = command + " /y";
+		#else
+			command = "cp " + oldFile + " " + newFile;
+		#endif
 
-	int result = system ( command.toAscii().data() );
+		int result = system ( command.toAscii().data() );
 
         if (result == -1) {
             return false;
@@ -1482,6 +1483,7 @@ bool blRemove(const QString &filetoremove )
 
 	#ifdef Q_OS_WIN32
 	    command = "del \"" + removeFile + "\"";
+		command.replace("/", "\\");
 	#else
 	    command = "rm " + removeFile;
 	#endif
