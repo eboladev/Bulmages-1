@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/musicExample.dir/main.cpp.o  -o musicExample -rdynamic /usr/local/lib/libReport.so -lQtScript -lQtGui -lQtSql -lQtCore -Wl,-rpath,/usr/local/lib 
