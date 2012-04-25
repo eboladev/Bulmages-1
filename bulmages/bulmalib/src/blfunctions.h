@@ -147,6 +147,7 @@ int BL_EXPORT blSumAllDigits(int val);
 bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &digit);
 
 void BL_EXPORT blRawPrint(const QString &archivo, bool diruser=TRUE, const QString &defprinter="");
+
 void BL_EXPORT blWebBrowser(const QString &uri, const QString &defbrowser="");
 
 QString BL_EXPORT blGetEnv( const char *varName );
@@ -168,5 +169,16 @@ bool BL_EXPORT blRemove(const QString &filetoremove);
 
 ///Delets a directory and all its contents
 bool BL_EXPORT blRemoveDirectory(const QString &directorytoremove);
+
+
+
+extern "C" BL_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" BL_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" BL_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+#ifdef Q_OS_WIN32
+extern "C" BL_EXPORT int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+ #endif
+extern "C" BL_EXPORT int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+
 
 #endif
