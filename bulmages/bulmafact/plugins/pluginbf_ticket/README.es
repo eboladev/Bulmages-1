@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Reports: presupuesto_ticket.txt; pedido_ticket.txt; albaran_ticket.txt; factura_ticket.txt
+Reports: presupuesto_ticket.txt; pedido_ticket.txt; albaran_ticket.txt; factura_ticket.txt; impers_factura.txt; impers_presupuesto.txt; impers_pedidocliente.txt; impers_albaran.txt
 
 Categorias: Utilidades genericas;Experimentales;
 

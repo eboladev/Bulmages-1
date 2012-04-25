@@ -145,16 +145,28 @@ void EQToolButtonMail::trataMenu ( QAction *action )
                     delete curs;
                 } // end if
 
+                QString idproveedor = m_BlForm->dbValue ( "idproveedor" );
+                if ( !idproveedor.isEmpty() ) {
+                    QString query = "SELECT emailproveedor from proveedor WHERE idproveedor=" + idproveedor;
+                    BlDbRecordSet *curs = ( ( BlForm * ) parent() )->mainCompany()->loadQuery ( query );
+                    if ( !curs->eof() ) {
+                        email = curs->value( "emailproveedor" );
+                    } // end if
+                    delete curs;
+                } // end if
+
                 QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
                 blCreatePDF ( doc );
 
                 QString oldName = g_confpr->value( CONF_DIR_USER ) + doc + ".pdf";
                 QString newName = g_confpr->value( CONF_DIR_USER ) +   doc  + num + ".pdf";
                 blMoveFile(oldName,newName);
+		
+		QString subject = doc + num;
+		QString body = "Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n";
+		QString bcc= "";
 
-                QString cad = "kmail -s \" " + doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + newName + " " + email;
-
-                system ( cad.toAscii().data() );
+		blSendEmail( email, bcc, subject , body, newName );
 
 
             } // end if

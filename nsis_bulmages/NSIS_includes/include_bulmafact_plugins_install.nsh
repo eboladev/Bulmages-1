@@ -91,6 +91,11 @@ SetOutPath "$INSTDIR\lib\bulmalib\plugins"
 !include "NSIS_includes_comunes\pluginbl\include_install_pluginbl_autoform.nsh"
 
 !insertmacro InstallFilesFromBuild libpluginbl_feeds.dll "\bulmalib\plugins\pluginbl_feeds\libpluginbl_feeds.dll"
-
+!insertmacro InstallFilesFromBuild libpluginbl_importcsv.dll "\bulmalib\plugins\pluginbl_importcsv\libpluginbl_importcsv.dll"
+!insertmacro InstallFilesFromBuild libpluginbl_template2mail.dll "\bulmalib\plugins\pluginbl_template2mail\libpluginbl_template2mail.dll"
+!insertmacro InstallFilesFromBuild libpluginbl_bloqconf.dll "\bulmalib\plugins\pluginbl_bloqconf\libpluginbl_bloqconf.dll"
+!insertmacro InstallFilesFromBuild libpluginbl_attachdocument.dll "\bulmalib\plugins\pluginbl_attachdocument\libpluginbl_attachdocument.dll"
+!insertmacro InstallFilesFromBuild libpluginbl_logo.dll "\bulmalib\plugins\pluginbl_logo\libpluginbl_logo.dll"
+!insertmacro InstallFilesFromBuild libpluginbl_formlock.dll "\bulmalib\plugins\pluginbl_formlock\libpluginbl_formlock.dll"
 
 

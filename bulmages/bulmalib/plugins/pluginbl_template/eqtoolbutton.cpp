@@ -127,8 +127,8 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	} // end for
 	
+
         // Buscamos plantillas TXT que tienen que salir por la ticketera.
-        
 	/// Buscamos ficheros que tengan el nombre de la tabla
 	QDir dir1 ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
 	dir1.setFilter ( QDir::Files | QDir::NoSymLinks );
