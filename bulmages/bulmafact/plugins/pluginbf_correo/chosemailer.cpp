@@ -127,6 +127,7 @@ int ChoseMailer::GuardarConfig()
 
     QTextStream filestr ( &file );
         if ( dir_email != "" ) {
+	    filestr << endl;
             filestr << QString("CONF_EMAIL_CLIENT").toAscii().data();
             filestr << "   ";
             filestr << QString(dir_email).toAscii().data();

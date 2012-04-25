@@ -1,0 +1,41 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+# title="Presupuesto en hoja de calculo"
+
+
+import ooolib
+
+# Crea el documento
+doc = ooolib.Calc("Presupuesto")
+
+doc.set_column_property(1, 'width', '0.5in')
+doc.set_column_property(2, 'width', '5in')
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
+doc.set_cell_value(3, 2, 'string', '[numpresupuesto]')
+doc.set_cell_value(4, 2, 'string', '[refpresupuesto]')
+
+i=4
+doc.set_cell_value(1,i,'string','CIF')
+doc.set_cell_value(2,i,'string','NOMBRE')
+doc.set_cell_value(3,i,'string','DIRECCION')
+doc.set_cell_value(4,i,'string','CP')
+doc.set_cell_value(5,i,'string','POBLACION')
+doc.set_cell_value(6,i,'string','BASE')
+doc.set_cell_value(7,i,'string','IMPUESTOS')
+doc.set_cell_value(8,i,'string','TOTAL')
+
+#i=7
+<!-- QUERY="SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]"-->
+doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+doc.set_cell_value(2,i,'string','[desclpresupuesto]')
+doc.set_cell_value(3,i,'string','[cantlpresupuesto]')
+doc.set_cell_value(4,i,'string','[pvplpresupuesto]')
+doc.set_cell_value(6,i,'string','[ivalpresupuesto]')
+i = i + 1
+<!--END QUERY-->
+
+
+# Guardamos el documento
+doc.save("impers_presupuesto_excel.ods")
