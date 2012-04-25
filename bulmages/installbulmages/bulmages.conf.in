@@ -108,7 +108,7 @@ CONF_CENTER_TEXT_FIELDS			FALSE
 CONF_ASK_BEFORE_EXIT			TRUE
 
 # Si se tiene el VisorHTML Instalado esta es la URL que hay que visitar
-CONF_URL_CONTENTS		http://www.bulmages.com/mini
+CONF_URL_CONTENTS		http://www.iglues.org/mini
 
 # Usar QScript (llamar a los archivos .qs de openreports)
 CONF_USE_QSCRIPT                        FALSE
