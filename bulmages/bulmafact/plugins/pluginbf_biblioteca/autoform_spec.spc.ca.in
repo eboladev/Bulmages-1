@@ -5,8 +5,8 @@
 <TITLE>Categorias de Libro</TITLE>
 <TABLENAME>categorialibro</TABLENAME>
 <TABLEID>idcategorialibro</TABLEID>
-<UI_INTERFACE>/home/tborras/forms_biblioteca/categorialibrobase.ui</UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/categoria.png</ICON>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/categorialibrobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/categoria.png</ICON>
   <CAMPO>
       <NOMCAMPO>idcategorialibro</NOMCAMPO>
       <NOMPCAMPO>Identificador de la categoria</NOMPCAMPO>
@@ -27,8 +27,8 @@
 <TITLE>Autor</TITLE>
 <TABLENAME>autor</TABLENAME>
 <TABLEID>idautor</TABLEID>
-<UI_INTERFACE>/home/tborras/forms_biblioteca/autorbase.ui</UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/autor.png</ICON>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/autorbase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/autor.png</ICON>
   <CAMPO>
       <NOMCAMPO>idautor</NOMCAMPO>
       <NOMPCAMPO>Identificador del autor</NOMPCAMPO>
@@ -118,8 +118,8 @@
 <TITLE>Socio</TITLE>
 <TABLENAME>socio</TABLENAME>
 <TABLEID>idsocio</TABLEID>
-<UI_INTERFACE>/home/tborras/forms_biblioteca/sociobase.ui</UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/socio.png</ICON>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/sociobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/socio.png</ICON>
   <CAMPO>
       <NOMCAMPO>idsocio</NOMCAMPO>
       <NOMPCAMPO>Identificador del socio</NOMPCAMPO>
@@ -258,8 +258,8 @@
 <TITLE>Libro</TITLE>
 <TABLENAME>libro</TABLENAME>
 <TABLEID>idlibro</TABLEID>
-<UI_INTERFACE>/home/tborras/forms_biblioteca/librobase.ui</UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/libro.png</ICON>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/librobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/libro.png</ICON>
   <CAMPO>
       <NOMCAMPO>idlibro</NOMCAMPO>
       <NOMPCAMPO>Identificador del libro</NOMPCAMPO>
@@ -317,8 +317,8 @@
 <TITLE>Prestamo</TITLE>
 <TABLENAME>prestamo</TABLENAME>
 <TABLEID>idprestamo</TABLEID>
-<UI_INTERFACE>/home/tborras/forms_biblioteca/prestamobase.ui</UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/prestamo.png</ICON>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamo.png</ICON>
   <CAMPO>
       <NOMCAMPO>idprestamo</NOMCAMPO>
       <NOMPCAMPO>Identificador del prestamo</NOMPCAMPO>
@@ -377,7 +377,7 @@
 <TABLENAME>categorialibro</TABLENAME>
 <TABLEID>idcategorialibro</TABLEID>
 <UI_INTERFACE></UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/categoria.png</ICON>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/categoria.png</ICON>
   <CAMPO>
       <NOMCAMPO>idcategorialibro</NOMCAMPO>
       <NOMPCAMPO>Categoria ID</NOMPCAMPO>
@@ -406,7 +406,7 @@
 <TABLENAME>autor</TABLENAME>
 <TABLEID>idautor</TABLEID>
 <UI_INTERFACE></UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/autor.png</ICON>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/autor.png</ICON>
   <CAMPO>
       <NOMCAMPO>idautor</NOMCAMPO>
       <NOMPCAMPO>Autor ID</NOMPCAMPO>
@@ -441,7 +441,7 @@
 <TABLENAME>socio</TABLENAME>
 <TABLEID>idsocio</TABLEID>
 <UI_INTERFACE></UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/socio.png</ICON>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/socio.png</ICON>
   <CAMPO>
       <NOMCAMPO>idsocio</NOMCAMPO>
       <NOMPCAMPO>Identificador del socio</NOMPCAMPO>
@@ -525,7 +525,7 @@
 <TABLENAME>libro</TABLENAME>
 <TABLEID>idlibro</TABLEID>
 <UI_INTERFACE></UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/categoria.png</ICON>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/categoria.png</ICON>
   <CAMPO>
       <NOMCAMPO>idlibro</NOMCAMPO>
       <NOMPCAMPO>Identificador del libro</NOMPCAMPO>
@@ -577,8 +577,8 @@
 <TITLE>Prestamos</TITLE>
 <TABLENAME>prestamo</TABLENAME>
 <TABLEID>idprestamo</TABLEID>
-<UI_INTERFACE>/home/tborras/forms_biblioteca/prestamobase.ui</UI_INTERFACE>
-<ICON>/home/tborras/forms_biblioteca/prestamo.png</ICON>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamo.png</ICON>
   <CAMPO>
       <NOMCAMPO>idprestamo</NOMCAMPO>
       <NOMPCAMPO>Identificador del prestamo</NOMPCAMPO>

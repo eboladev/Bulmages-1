@@ -24,7 +24,7 @@ Section "Archivos Comunes" SecInstall
   FileSeek $4 0 END
   FileWrite $4 "$\r$\n" ; we write a new line
   FileWrite $4 "CONF_PDF			@CMAKE_INSTALL_PREFIX@\Evince\bin\evince.exe $\n"
-  FileWrite $4 "CONF_FLIP			@CMAKE_INSTALL_PREFIX@\bgtrml2pdf\flip.exe$\n"
+  FileWrite $4 "CONF_FLIP			@CMAKE_INSTALL_PREFIX@\share\bulmages\bgtrml2pdf\flip.exe$\n"
   FileWrite $4 "CONF_SPOOL			@CMAKE_INSTALL_PREFIX@\program\spool.exe $\n"
   FileWrite $4 "CONF_PYTHON			@CMAKE_INSTALL_PREFIX@\Python26\python $\n"
   FileWrite $4 "CONF_PROGDATA		@CMAKE_INSTALL_PREFIX@\share\bulmages\  $\n"

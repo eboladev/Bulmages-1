@@ -3,15 +3,15 @@
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->Tel. [valor]<!-- END QUERY -->971 91 85 06<!-- SETJUSTIFICATION "LEFT" -->
 <!-- QUERY="SELECT now()::DATE AS fecha" -->Fecha: [fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
-Ticket: [numalbaran]
+Ticket: [numfactura]
 <!-- TURNWHITEBLACK "1"-->
  Uds. PRODUCTO               P.U. IMPORTE
 <!-- TURNWHITEBLACK "0"-->
-<!-- QUERY="SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" --><!-- RIGHTJUSTIFIED "[cantlalbaran]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclalbaran]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvpivainclalbaran]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
+<!-- QUERY="SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]" --><!-- RIGHTJUSTIFIED "[cantlfactura]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclfactura]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplfactura]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
 <!-- END QUERY -->
 
 <!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
-<!-- IF ="length('[pagado]')=8"--><!-- QUERY="SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
+<!-- IF ="length('[pagado]')=8"--><!-- QUERY="SELECT sum(cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
 <!-- ELSE -->Total: <!-- RIGHTJUSTIFIED "[total]" "6" " " "TRUE" -->
 
 Pagado: <!-- RIGHTJUSTIFIED "[pagado]" "6" " " "TRUE" -->

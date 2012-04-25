@@ -33,6 +33,7 @@ russi = Xavier Rusinyol Escriu <russi7@gmail.com>
 solomons = Oscar Serna <solomons67@mixmail.com>
 scapel = Santiago Capel <santi@kernelpanick.hacklabs.org>
 talvarez = Tony Alvarez <t.alvarezpascual@gmail.com>
+tborras = Tomeu Borras <tborras@conetxia.com>
 tborras = Tomeu Borras <tborras@gmail.com>
 the-vice = Toni Martin Lopez <thevice@gmail.com>
 the_vice = Toni Martin Lopez <thevice@gmail.com>
