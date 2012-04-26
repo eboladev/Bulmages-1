@@ -189,7 +189,14 @@ void FacturaView::on_mui_veralbaranes_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
-                bud = new AlbaranClienteView ( mainCompany(), NULL );
+	      
+		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+		int resur = g_plugins->run ( "SNewAlbaranClienteView", mainCompany() );
+		if ( !resur ) {
+		    blMsgInfo ( _ ( "No se pudo crear instancia de albaran" ) );
+		    return;
+		} // end if
+                bud = ( AlbaranClienteView * ) g_plugParams;
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                 bud->load ( cur->value( "idalbaran" ) );
                 bud->show();
