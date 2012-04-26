@@ -143,7 +143,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->load ( cur->value( "idfactura" ) );
+        bud->load ( cur->value( "idalbaran" ) );
         bud->show();
         cur->nextRecord();
     } // end while
