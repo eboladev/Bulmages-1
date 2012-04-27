@@ -53,8 +53,15 @@ public class ArtistsActivity extends Activity {
 	// Will be called via the onClick attribute
 	// of the buttons in main.xml
 	public void onClientes(View view) {
-/* 	   Intent intent = new Intent(view.getContext(), ClientesActivity.class); */
  	   Intent intent = new Intent(view.getContext(), CliDatSMIListActivity.class);
+	   startActivityForResult(intent,0);
+	}
+	
+	
+	// Will be called via the onClick attribute
+	// of the buttons in main.xml
+	public void onRutero(View view) {
+ 	   Intent intent = new Intent(view.getContext(), RuteroActivity.class);
 	   startActivityForResult(intent,0);
 	}
 	

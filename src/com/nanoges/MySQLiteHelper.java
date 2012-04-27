@@ -327,6 +327,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 				+ " VIS_NORDEN text,"
 				+ " VIS_CODCLI text);");
 				
+		database.execSQL(" INSERT INTO VisDatSMI (VIS_CODVEN, VIS_DIASEM, VIS_NORDEN, VIS_CODCLI )"
+				+ " VALUES ('1', 'X', '1', 'CLI_CODIGO');");
+		database.execSQL(" INSERT INTO VisDatSMI (VIS_CODVEN, VIS_DIASEM, VIS_NORDEN, VIS_CODCLI )"
+				+ " VALUES ('1', 'S', '2', 'CLI_CODIGO');");
+		database.execSQL(" INSERT INTO VisDatSMI (VIS_CODVEN, VIS_DIASEM, VIS_NORDEN, VIS_CODCLI )"
+				+ " VALUES ('1', 'L', '3', 'CLI_CODIGO');");
+		
+		
 		/// Familias
 		database.execSQL(" CREATE TABLE FamDatSMI ("
 				+ " FAM_CODIGO text,"
@@ -353,6 +361,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 				+ " LPC_LOTES real,"
 				+ " LPC_PROMO text);");
 		
+		database.execSQL(" INSERT INTO LinPedidosPda (LPC_PDA, LPC_DIALMA, LPC_PEDIDO, LPC_NROLIN, LPC_CODART, LPC_UNIDAD, LPC_LOTES, LPC_PROMO )"
+				+ " VALUES ('1', 'CPC_DIALMA', 'CPC_PEDIDO', 1, 'ART_CODIGO', 1, 1, 'P');");
+		
 		/// Cabeceras de pedido
 		database.execSQL(" CREATE TABLE CabPedidosPda ("
 				+ " CPC_PDA text,"
@@ -365,6 +376,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 				+ " CPC_SERURG text default '1',"
 				+ " CPC_SECCIO text,"
 				+ " CPC_EXPORTADO text default '1');");
+		
+		database.execSQL(" INSERT INTO CabPedidosPda (CPC_PDA, CPC_DIALMA, CPC_PEDIDO, CPC_CODCLI, CPC_FECHA, CPC_OBSERV, CPC_DIASER, CPC_SERURG, CPC_SECCIO, CPC_EXPORTADO )"
+				+ " VALUES ('1', 'CPC_DIALMA', 'CPC_PEDIDO', 'CLI_CODIGO', 1, 'CPC_OBSERV', 'CPC_DIASER', '1', 'CPC_SECCIO', '0');");
+		
 		
 		/// Cobros
 		database.execSQL(" CREATE TABLE logDatPDASMI ("

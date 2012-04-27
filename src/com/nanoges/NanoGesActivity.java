@@ -21,6 +21,9 @@ public class NanoGesActivity extends TabActivity {
 		Global.datasource = new CommentsDataSource(this);
 		Global.datasource.open();
         
+		Global.dbHelper = new MySQLiteHelper(this);
+		Global.database = Global.dbHelper.getWritableDatabase();
+		
         // setContentView(R.layout.menuprincipal);
      
         Resources res = getResources(); // Resource object to get Drawables
