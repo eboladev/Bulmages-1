@@ -222,10 +222,13 @@ int PedidoProveedorView::afterSave()
 }
 
 
+
 /// Impresion de un pedido a proveedor
 /** Usa la plantilla pedidoproveedor.rml */
 /**
 **/
+
+/*
 void PedidoProveedorView::imprimir()
 {
     BL_FUNC_DEBUG
@@ -390,4 +393,4 @@ void PedidoProveedorView::imprimir()
     } // end try
 }
 
-
+*/
