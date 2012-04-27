@@ -65,11 +65,6 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     m_fax->setText("--");
     m_mail->setText("--");
     m_web->setText("--");
-    m_ciudad->setText("--");
-    m_codArticuloGenerico->setText("--");
-    m_serieFacturaDefecto->setText("--");
-    m_irpf->setValue(0.00);
-    m_almacenDefecto->setText("--");
 
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'";
@@ -121,6 +116,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     } // end if
     delete cur;
 
+
     query = "SELECT * FROM configuracion WHERE nombre = 'Telefono'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
@@ -148,41 +144,6 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
       m_web->setText(cur->value("valor"));
     } // end if
     delete cur;
-   
-    query = "SELECT * FROM configuracion WHERE nombre = 'Ciudad'";
-    cur = mainCompany() ->loadQuery ( query );
-    if (!cur->eof()) {
-      m_ciudad->setText(cur->value("valor"));
-    } // end if
-    delete cur;
-    
-    query = "SELECT * FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
-    cur = mainCompany() ->loadQuery ( query );
-    if (!cur->eof()) {
-      m_codArticuloGenerico->setText(cur->value("valor"));
-    } // end if
-    delete cur;
-    
-    query = "SELECT * FROM configuracion WHERE nombre = 'SerieFacturaDefecto'";
-    cur = mainCompany() ->loadQuery ( query );
-    if (!cur->eof()) {
-      m_serieFacturaDefecto->setText(cur->value("valor"));
-    } // end if
-    delete cur;
-
-    query = "SELECT * FROM configuracion WHERE nombre = 'IRPF'";
-    cur = mainCompany() ->loadQuery ( query );
-    if (!cur->eof()) {
-      m_irpf->setValue(cur->value("valor").toDouble());
-    } // end if
-    delete cur;
-
-    query = "SELECT * FROM configuracion WHERE nombre = 'AlmacenDefecto'";
-    cur = mainCompany() ->loadQuery ( query );
-    if (!cur->eof()) {
-      m_almacenDefecto->setText(cur->value("valor"));
-    } // end if
-    delete cur;
     
     insertWindow ( windowTitle(), this, FALSE );
     
@@ -201,7 +162,7 @@ BfConfiguracionView::~BfConfiguracionView()
 
 void BfConfiguracionView::on_mui_aceptar_clicked() {
         mui_listado->save();
-
+	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='NombreEmpresa'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','"+ mainCompany()->sanearCadena(m_nombre->text())+"')");
 
@@ -210,7 +171,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CIF'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CIF','"+ mainCompany()->sanearCadena(m_cif->text())+"')");
-
+	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='DireccionCompleta'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('DireccionCompleta','"+ mainCompany()->sanearCadena(m_direccion->text())+"')");
 	
@@ -222,7 +183,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Pais'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Pais','"+ mainCompany()->sanearCadena(m_pais->text())+"')");
-
+	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Telefono'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Telefono','"+ mainCompany()->sanearCadena(m_telefono->text())+"')");
 	
@@ -235,6 +196,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Web'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Web','"+ mainCompany()->sanearCadena(m_web->text())+"')");
 	
+<<<<<<< HEAD
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Ciudad'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Ciudad','"+ mainCompany()->sanearCadena(m_ciudad->text())+"')");
 	
@@ -251,6 +213,8 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='AlmacenDefecto'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('AlmacenDefecto','"+ mainCompany()->sanearCadena(m_almacenDefecto->text())+"')");
 	
+=======
+>>>>>>> 6d6a8ee... Revert "Agregado los campos que faltaban en 'blconfiguracion'"
         close();
 	
 }
@@ -269,7 +233,7 @@ BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm (
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "nombre" );
     addSubFormHeader ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
-    addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Valor" ) );
+    addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
     
