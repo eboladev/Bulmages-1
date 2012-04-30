@@ -1,7 +1,7 @@
 --
 -- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de profesores
 --
-\echo "********* INICIADO FICHERO DE ESTRUCTURA DE ASOCIACIONES DE PADRES DE ALUMNOS *********"
+\echo "********* INICIADO FICHERO DE ESTRUCTURA DE BIBLIOTECA *********"
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
@@ -54,7 +54,7 @@ DECLARE
 	rs RECORD;
 BEGIN
 
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''zcomercial'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamo'';
     IF NOT FOUND THEN
 
 
@@ -117,19 +117,6 @@ BEGIN
 		CONSTRAINT libro_idlibro_f_key FOREIGN KEY (idlibro) REFERENCES libro (idlibro) ON UPDATE NO ACTION ON DELETE NO ACTION
 	      );
 
-
-	      CREATE TABLE zcomercial (
-		  idzcomercial SERIAL PRIMARY KEY,
-		  nomzonacomercial VARCHAR(60),
-		  avzcomercial VARCHAR(4)
-	      );
-
-	      ALTER TABLE cliente ADD COLUMN idzcomercial integer REFERENCES zcomercial(idzcomercial) ;
-
-	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES (''Palma'', ''PM'');
-	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES (''Raiguer'', ''RG'');
-	      INSERT INTO zcomercial (nomzonacomercial, avzcomercial) VALUES (''Llevant'', ''LL'');
-
 END IF;
 RETURN 0;
 
@@ -140,7 +127,7 @@ END;
 
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo "Creamos la tabla profesor 333333."
+\echo "Creamos las tablas para la gestion de bibliotecas."
 
 
 
@@ -158,9 +145,9 @@ BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Biblioteca'';
 
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.12.1-0003'' WHERE nombre=''PluginBf_Biblioteca'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0004'' WHERE nombre=''PluginBf_Biblioteca'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Biblioteca'', ''0.12.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Biblioteca'', ''0.12.1-0004'');
 	END IF;
 
 	RETURN 0;
