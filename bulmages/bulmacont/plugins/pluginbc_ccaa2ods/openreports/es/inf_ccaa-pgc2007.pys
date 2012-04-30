@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
@@ -9,6 +10,9 @@
 #<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
 #<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
 >>>>>>> arreglobulmacont
+=======
+
+>>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
 #Uso: 
 
 ###########################################################################
@@ -33,10 +37,14 @@
 ###########################################################################
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # pathtitle="Cuentas anuales\PGC 2007\Plan General Contable 2007"
 =======
 # pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007"
 >>>>>>> arreglobulmacont
+=======
+# pathtitle="Cuentas anuales\PGC 2007\Plan General Contable 2007"
+>>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
 
 # title="Cuentas anuales Plan General Contable 2007"
 # CAPGC08
