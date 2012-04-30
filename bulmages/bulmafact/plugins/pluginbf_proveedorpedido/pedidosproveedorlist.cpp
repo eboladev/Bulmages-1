@@ -194,7 +194,7 @@ QString PedidosProveedorList::generarFiltro()
 void PedidosProveedorList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Pedidos a proveedores" ) );
+    printPDF ( _ ( "Pedidos a proveedores" ) );
     
 }
 

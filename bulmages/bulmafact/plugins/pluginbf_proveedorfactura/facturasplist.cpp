@@ -272,7 +272,7 @@ void FacturasProveedorList::remove()
 void FacturasProveedorList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Facturas de proveedores" ) );
+    printPDF ( _ ( "Facturas de proveedores" ) );
     
 }
 
