@@ -3062,11 +3062,22 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
         buff.replace ( ("[" + i.key() + "]").toAscii(), i.value().toAscii() );
     } // end while
 
-
     substrConf ( buff );
-
     pos =  0;
 
+    /// Buscamos parametros en el query y los ponemos de forma literal.
+    QRegExp rx1 ( "\\[(\\w*),l\\]" );
+    while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx1.cap ( 1 ) ) ) {
+            buff.replace ( pos, rx1.matchedLength(), dbValue ( rx1.cap ( 1 ) ).toAscii() );
+            pos = 0;
+        } else {
+            pos += rx1.matchedLength();
+        }
+    } // end while
+    
+    pos =  0;
+    
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
@@ -3128,10 +3139,27 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
     while ( !cur->eof() ) {
         QByteArray salidatemp = datos;
 
+	
+        int pos =  0;
+	
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        //BlDebug::blDebug("salidatemp =",0,salidatemp);
+        QRegExp rx1 ( "\\[(\\w*),l\\]" );
+        while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
+            //BlDebug::blDebug("substituïm ",0,rx.cap(1));
+            if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
+                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ).toAscii() );
+                pos = 0;
+            } else {
+                pos += rx1.matchedLength();
+            }
+        } // end while
+
+	pos = 0;
+
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         //BlDebug::blDebug("salidatemp =",0,salidatemp);
         QRegExp rx ( "\\[(\\w*)\\]" );
-        int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             //BlDebug::blDebug("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
