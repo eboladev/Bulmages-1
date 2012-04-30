@@ -1113,10 +1113,12 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
     } // end while
 
     substrConf ( buff );
-
     
     /// Buscamos parametros en el query y los ponemos de forma literal.
     pos =  0;
+
+    
+    /// Buscamos parametros en el query y los ponemos de forma literal.
     QRegExp rx1 ( "\\[(\\w*),l\\]" );
     while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx1.cap ( 1 ) ) ) {
@@ -1126,7 +1128,6 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
             pos += rx1.matchedLength();
         }
     } // end while
-    
     
     /// Buscamos parametros en el query y los ponemos.
     pos =  0;
@@ -1674,6 +1675,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
     while ( !cur->eof() ) {
         QString salidatemp = datos;
 
+<<<<<<< HEAD
         int pos =  0;
 	
         /// Buscamos cadenas que deban ir en ASCII puro (127) por ejemplo en los tickets.
@@ -1692,6 +1694,20 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         QRegExp rx1 ( "\\[(\\w*),l\\]" );
         pos =  0;
+        while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
+            if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
+                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ) );
+                pos = 0;
+            } else {
+                pos += rx1.matchedLength();
+            }
+        } // end while
+        
+        
+	
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx1 ( "\\[(\\w*),l\\]" );
+        int pos =  0;
         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
                 salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ) );
