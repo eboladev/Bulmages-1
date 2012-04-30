@@ -190,7 +190,7 @@ void ZList::editar ( int row )
 void ZList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Cuadres de caja" ) );
+    printPDF ( _ ( "Cuadres de caja" ) );
     
 }
 

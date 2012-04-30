@@ -249,13 +249,13 @@ void BlFormList::remove()
 }
 
 
-///
-/**
+/// Metodo que dispara la impresion si no es sobreescrito por las clases derivadas.
+/** Normalmente lanza la impresion del subformulario.
 **/
 void BlFormList::imprimir()
 {
     BL_FUNC_DEBUG
-    m_listado->printPDF ( "" );
+    printPDF ( "" );
     
 }
 
@@ -425,14 +425,14 @@ void BlFormList::on_mui_actualizar_clicked()
 }
 
 
-///
-/**
+/// Captura del boton de impresion.
+/** Antes de lanzar el metodo imprimir se puede caputurar este que no va derivado en las subclases y solo se ejecuta aqui.
 **/
 void BlFormList::on_mui_imprimir_clicked()
 {
     BL_FUNC_DEBUG
-    imprimir();
     
+    imprimir();
 }
 
 
@@ -507,18 +507,16 @@ void BlFormList::on_mui_list_customContextMenuRequested ( const QPoint &p )
 }
 
 void BlFormList::contextMenuEvent ( QContextMenuEvent * ) {
-  BL_FUNC_DEBUG
-  QMenu *popup = new QMenu ( this );
+    BL_FUNC_DEBUG
+    QMenu *popup = new QMenu ( this );
 
-/// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
-  QAction *nombreobjeto = popup->addAction( objectName() );
-  nombreobjeto->setDisabled(TRUE);
-} // end if
+    /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+      QAction *nombreobjeto = popup->addAction( objectName() );
+      nombreobjeto->setDisabled(TRUE);
+    } // end if
 
     QAction *opcion = popup->exec ( QCursor::pos() );
-    
-    
 }
 
 
@@ -780,3 +778,140 @@ const QString BlFormList::nameFileDefaultConfig()
   QString nombre = directorio + "blformlist_" + objectName() + "_cfn.cfn" ;
   return nombre;
 }
+
+
+
+
+
+/// Sustituye valores en el texto pasado como variables por su valor.
+void BlFormList::substrVars (QString &buff )
+{
+
+    int pos = 0;
+    
+    ///\TODO: Este tratamiento esta repetido en BlForm::parseTags y en PedidoProveedorView::imprimir.
+    ///       Se puede simplificar?
+    /// Tratamos la sustitucion de los valores de configuracion.
+    for ( int i = 0; i < 1000; i++ ) {
+        if ( g_confpr->name( i ) != "" ) {
+            buff.replace ( "[" + g_confpr->name( i ) + "]", g_confpr->value( i ) );
+        } // end if
+    } // end for
+
+    pos =  0;
+
+    QLineEdit * lfiltro = findChild<QLineEdit *>("m_filtro");
+    if (lfiltro != 0) {
+        if (lfiltro->text() != "") {
+	    buff.replace ( "[m_filtro]", lfiltro->text() );
+	} // end if
+    } // end if
+
+    QList<BlComboBox *> l4 = findChildren<BlComboBox *>();
+    QListIterator<BlComboBox *> it4 ( l4 );
+    while ( it4.hasNext() ) {
+	BlComboBox * item = it4.next();
+        buff.replace ( "["+item->objectName()+"]", item->id() );
+    } // end while
+
+    QList<QCheckBox *> l6 = findChildren<QCheckBox *>();
+    QListIterator<QCheckBox *> it6 ( l6 );
+    while ( it6.hasNext() ) {
+	QCheckBox * item = it6.next();
+	if ( item->objectName().startsWith ( "mui_" ) && item->isChecked()) {
+	    buff.replace ( "["+item->objectName()+"]", "TRUE" );
+	} else {
+	    buff.replace ( "["+item->objectName()+"]", "FALSE" );
+	} // end if
+    } // end while
+
+      QList<BlDateSearch *> l7 = findChildren<BlDateSearch *>();
+      QListIterator<BlDateSearch *> it7 ( l7 );
+      while ( it7.hasNext() ) {
+	    BlDateSearch * item = it7.next();
+	    buff.replace ( "["+item->objectName()+"]", item->text() );
+      } // end while
+
+    QList<BlSearchWidget *> l9 = findChildren<BlSearchWidget *>();
+    QListIterator<BlSearchWidget *> it9 ( l9 );
+    while ( it9.hasNext() ) {
+	BlSearchWidget * item = it9.next();
+	buff.replace ( "["+item->objectName()+"]", item->id() );
+    } // end while
+}
+
+
+
+///
+/**
+\param titular
+**/
+void BlFormList::printPDF (  const QString &titular )
+{
+    BL_FUNC_DEBUG
+
+    QString fileName = "listado.rml";
+
+    /// Si existe un modelo de listado mas preciso se utilizara ese.
+    if (QFile::exists(g_confpr->value( CONF_DIR_OPENREPORTS )+ "listado_" + m_listado->tableName() + ".rml")) {
+	fileName =  "listado_" + m_listado->tableName() + ".rml";
+    } // end if
+    
+
+    /// Los listados siempre usan la misma plantilla para imprimir listado.
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + fileName;
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + fileName;
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString ownlogo = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
+
+    /// Copiamos el archivo.
+
+    if(!blCopyFile(archivo, archivod)){
+        blMsgError(_("Error al copiar listado.rml [ BlFormList->printPDF() ]"));
+    } // end if
+    
+    /// Copiamos el logo.
+    if(!blCopyFile(archivologo, ownlogo)){
+        blMsgError(_("Error al copiar logo.jpg [ BlFormList->printPDF() ]"));
+    } // end if
+
+    QFile file;
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+
+    QTextStream stream ( &file );
+    QString buff = stream.readAll();
+    file.close();
+    QString fitxersortidatxt;
+
+    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
+    fitxersortidatxt += m_listado->imprimir();
+    fitxersortidatxt += "</blockTable>";
+
+    /// Reemplazamos en la impresion el parametro [story] por el resultado de la impresion
+    buff.replace ( "[story]", fitxersortidatxt );
+    /// La plantilla de listados admite unicamente el parametro titular que es lo que cambia
+    /// en todos los listados
+    buff.replace ( "[titulo]", titular );
+
+    /// Ofrecer el uso de unas variables con la fecha y hora de impresi&oacute;n (por ejemplo, en el pie)
+    buff.replace ( "[fecha_actual]", QDate::currentDate().toString ( Qt::DefaultLocaleShortDate ) );
+    buff.replace ( "[hora_actual]", QTime::currentTime().toString ( "HH:mm" ) );
+
+    /// Parseamos las opciones de filtrado para que puedan ser devueltas.
+    substrVars(buff);
+    
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+        stream << buff;
+        file.close();
+    } // end if
+    
+    BlForm *ficha = new BlForm ( mainCompany(), 0 );
+    if ( !ficha->generateRML ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileName ))
+	return;
+
+    blCreateAndLoadPDF ( fileName.left ( fileName.size() - 4 ));
+}
+
+

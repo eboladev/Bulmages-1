@@ -169,7 +169,7 @@ void CarteraCobrosList::editar ( int )
 void CarteraCobrosList::on_mui_imprimir_clicked()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( tr ( "BlFormList de Vencimientos" ) );
+    printPDF ( tr ( "BlFormList de Vencimientos" ) );
     
 }
 
