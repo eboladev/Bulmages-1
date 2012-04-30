@@ -192,7 +192,7 @@ void PagosList::crear()
 void PagosList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Pagos a proveedores" ) );
+    printPDF ( _ ( "Pagos a proveedores" ) );
     
 }
 

@@ -148,7 +148,7 @@ void TutoresList::crear()
 void TutoresList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Padres" ) );
+    printPDF ( _ ( "Padres" ) );
     
 }
 

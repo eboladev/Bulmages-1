@@ -198,7 +198,7 @@ void ProfesoresList::imprimir()
 {
     BL_FUNC_DEBUG
     
-    mui_list->printPDF ( _ ( "Profesores" ) );
+    printPDF ( _ ( "Profesores" ) );
     
     
 }
