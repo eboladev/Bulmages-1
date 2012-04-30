@@ -151,6 +151,14 @@ const QString ProveedorList::generaFiltro()
     /// Hacemos el filtrado like del campo m_filtro
     filtro += mui_list->likeFilterSQL(m_filtro->text());
     
+    if ( m_facturas->isChecked()) {
+        filtro += " AND idproveedor IN (SELECT DISTINCT idproveedor FROM facturap WHERE procesadafacturap = FALSE)";
+    } // end if
+
+    if ( m_albaranes->isChecked()) {
+        filtro += " AND idproveedor IN (SELECT DISTINCT idproveedor FROM albaranp WHERE procesadoalbaranp = FALSE)";
+    } // end if
+    
     
     return ( filtro );
 }
