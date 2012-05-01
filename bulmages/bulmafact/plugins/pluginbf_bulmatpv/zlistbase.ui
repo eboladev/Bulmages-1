@@ -395,21 +395,18 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout">
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <property name="margin">
-       <number>4</number>
-      </property>
-      <item>
-       <widget class="QCheckBox" name="mui_caducados">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="textLabel1_4">
         <property name="text">
-         <string>Caducados</string>
+         <string>Fecha inicial:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="0" column="1" rowspan="2">
        <spacer>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -425,6 +422,48 @@
         </property>
        </spacer>
       </item>
+      <item row="1" column="0">
+       <widget class="BlDateSearch" name="m_fechain" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="textLabel1_4_2">
+        <property name="text">
+         <string>Fecha final:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="BlDateSearch" name="m_fechafin" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -439,6 +478,11 @@
    <class>BfSubForm</class>
    <extends>QTableWidget</extends>
    <header>bfsubform.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QWidget</extends>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <resources>
