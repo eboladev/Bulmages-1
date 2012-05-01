@@ -134,7 +134,7 @@ void ZList::presentar()
     BL_FUNC_DEBUG
 
     /// Hacemos el listado y lo presentamos.
-    mui_list->load ( "SELECT idz, fechaz, TO_CHAR(horaz, 'HH24:MI:SS') AS horaz, totalz, idalmacen, numtickets, codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen, emailalmacen, tipoalmacen, inactivoalmacen FROM z NATURAL JOIN almacen" );
+    mui_list->load ( "SELECT idz, fechaz, TO_CHAR(horaz, 'HH24:MI:SS') AS horaz, totalz, idalmacen, numtickets, codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen, emailalmacen, tipoalmacen, inactivoalmacen FROM z NATURAL JOIN almacen WHERE 1=1 " + generaFiltro() );
 
     
 }
@@ -152,6 +152,13 @@ const QString ZList::generaFiltro()
 
     /// Hacemos el filtrado like del campo m_filtro
     filtro += mui_list->likeFilterSQL(m_filtro->text());
+    
+    
+    if ( m_fechain->text() != "" )
+        filtro += " AND fechaz >= '" + m_fechain->text() + "' ";
+    if ( m_fechafin->text() != "" )
+        filtro += " AND fechaz <= '" + m_fechafin->text() + "' ";
+    
     
     return ( filtro );
 }
