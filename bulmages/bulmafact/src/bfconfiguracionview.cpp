@@ -246,7 +246,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('SerieFacturaDefecto','"+ mainCompany()->sanearCadena(m_serieFacturaDefecto->text())+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='IRPF'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('IRPF','"+ mainCompany()->sanearCadena(m_irpf->text())+"')");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('IRPF','"+ mainCompany()->sanearCadena(QString::number(m_irpf->value()))+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='AlmacenDefecto'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('AlmacenDefecto','"+ mainCompany()->sanearCadena(m_almacenDefecto->text())+"')");
