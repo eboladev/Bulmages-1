@@ -23,6 +23,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 	self.table.hideColumn(2)
 	self.table.setColumnWidth(0,450)
 	
+	self.semaforo = 0
+	
 #	self.lmen = ListaClases()
 	
 #	self.tree.setColumnCount(3)
@@ -31,7 +33,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 #	self.tree.setColumnWidth(2,20)
 	
 	
-#	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
 	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
 	self.f.seek(0,2)
 
@@ -43,7 +44,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 
     def on_mui_conectar_clicked(self):
 	print "Conexion !!"
-#	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
 	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')	
 	self.f.seek(0,2)
 	
@@ -73,6 +73,10 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		self.lmen.procesaMensaje(line.replace("\n", ""))
 
     def hazalgo(self):
+        if (self.semaforo == 0):
+	  self.semaforo=1
+	else:
+	  return
 	if self.table.rowCount() > 500:
 		self.table.clear()
 		self.table.setRowCount(0)
@@ -81,12 +85,13 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		self.table.removeRow(0)
 		
 	line = self.f.readline(300)
-	i = 0
-	while line != "" and i < 100:
+	i=0
+	while line != "" and i < 1000:
 		line = self.f.readline(300)
 		if line != "":
 			self.procesaMensaje(line)
-		i = i +1
+		i = i + 1
+	self.semaforo=0
 
     def sacaMensaje(self, mens):
 	self.table.insertRow(self.table.rowCount())
@@ -102,23 +107,50 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
     def procesaMensaje(self, mens):
 	sacamensaje = 0	
 	mensajefin = 1
-	
-	while mens.startswith(" "):
-		mens = mens[1:]
-		
-	mensaje = mens
-	
-	if mensaje.startswith("END "):
-		mensaje = mensaje[4:]
+
+	mensaje = mens.strip()
+	# Descartamos el sistema de comentarios.
+	if mensaje.startswith("<comment"):
+		return
+	if mensaje.startswith("</comment"):
+		return
+	if mensaje.startswith("</"):
 		mensajefin = 2
-		
-		
+		# Es un mensaje de cierre
+		partmsg = mensaje.split(" ")
+		if len ( partmsg) > 3:
+		  mensaje = partmsg[3]
+		else:
+		  return
+		if not "::" in mensaje:
+		  mensaje = partmsg[2]
+		if not "::" in mensaje:
+		  mensaje = partmsg[1]
+		if not "::" in mensaje:
+		  return
+	else:
+
+		# Es un mensaje de cierre
+		partmsg = mensaje.split(" ")
+		if len ( partmsg) > 3:
+		  mensaje = partmsg[3]
+		else:
+		  return
+
+		if not "::" in mensaje:
+		  mensaje = partmsg[2]
+		if not "::" in mensaje:
+		  mensaje = partmsg[1]
+		if not "::" in mensaje:
+		  return
+		  
 	lmensaje = mensaje.split("::")
 	if len(lmensaje) < 2:
 		return
+		
 	submens = lmensaje[1].split(" ")
-	lmensaje[1] = submens[0]
-	
+	lmensaje[1] = submens[0].split("(")[0]
+
 	lis = QtCore.QStringList(lmensaje[0])
 	lis1 = QtCore.QStringList(lmensaje[1])
 	if mensajefin == 2:
