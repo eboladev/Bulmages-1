@@ -28,4 +28,6 @@ Categorias: Facturation avancees;
 
 Orden: 900
 
+Reports: listado_z.rml
+
 Comentarios: On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas

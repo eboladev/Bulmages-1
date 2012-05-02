@@ -875,6 +875,7 @@ void BlFormList::printPDF (  const QString &titular )
         blMsgError(_("Error al copiar logo.jpg [ BlFormList->printPDF() ]"));
     } // end if
 
+    
     QFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
@@ -906,10 +907,11 @@ void BlFormList::printPDF (  const QString &titular )
         stream << buff;
         file.close();
     } // end if
-    
+
     BlForm *ficha = new BlForm ( mainCompany(), 0 );
-    if ( !ficha->generateRML ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileName ))
+    if ( !ficha->generateRML ( archivod ))
 	return;
+    delete ficha;
 
     blCreateAndLoadPDF ( fileName.left ( fileName.size() - 4 ));
 }

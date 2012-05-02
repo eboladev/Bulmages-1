@@ -1003,6 +1003,10 @@ QString BlDbRecord::story ( void )
 int BlDbRecord::generateRML ( const QString &arch )
 {
     BL_FUNC_DEBUG
+
+    QString archivo;
+    QString archivod = arch;
+
     /// Disparamos los plugins
     int res = g_plugins->run ( "BlDbRecord_generateRML", this );
     if ( res != 0 ) {
@@ -1016,19 +1020,20 @@ int BlDbRecord::generateRML ( const QString &arch )
     else if ( arch.right ( 3 ) == "pys" )
         tipoescape = 2;
 
-    /// Copiamos el archivo.
-    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + arch;
-    QString archivod = g_confpr->value( CONF_DIR_USER ) + arch;
-    if(!blCopyFile(archivo, archivod)){
-        blMsgError(_("Error al copiar el archivo RML [ bldb->generateRML() ]"));
+    /// Copiamos el archivo desde openreports en caso de que sea preciso.
+    if ( ! archivod.contains(g_confpr->value( CONF_DIR_USER ))) {
+	archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + arch;
+	archivod = g_confpr->value( CONF_DIR_USER ) + arch;
+	if(!blCopyFile(archivo, archivod)){
+	    blMsgError(_("Error al copiar el archivo RML [ BlDbRecord->generateRML() ]"));
+	} // end if
     } // end if
-
 
     /// Copiamos el logo
     QString ownlogo = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     if(!blCopyFile(archivologo, ownlogo)){
-        blMsgError(_("Error al copiar el archivo de logo [ bldb->generateRML() ]"));
+        blMsgError(_("Error al copiar el archivo de logo [ BlDbRecord->generateRML() ]"));
     } // end if
 
     QFile file;
