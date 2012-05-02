@@ -115,3 +115,6 @@ add_dependencies(${plugin} bulmafact bulmalib bulmatpv pluginbf_clientealbaran p
 
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins)
+
+install(DIRECTORY openreports/ 
+      DESTINATION share/bulmages/openreports)
