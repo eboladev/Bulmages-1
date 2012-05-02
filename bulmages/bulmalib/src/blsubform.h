@@ -353,7 +353,7 @@ public:
     QString likeFilterSQL(const QString &text);
 
 public slots:
-    virtual void printPDF ( const QString & );
+    virtual void printPDF (const QString & );
     virtual int remove();
     void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );

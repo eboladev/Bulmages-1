@@ -273,7 +273,7 @@ void FacturasList::editar ( int row )
 void FacturasList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Facturas a clientes" ) );
+    printPDF ( _ ( "Facturas a clientes" ) );
     
 }
 

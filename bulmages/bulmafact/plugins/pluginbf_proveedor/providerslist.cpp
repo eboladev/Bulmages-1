@@ -282,7 +282,7 @@ void ProveedorList::remove()
 void ProveedorList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Listado de Proveedores" ) );
+    printPDF ( _ ( "Listado de Proveedores" ) );
     
 }
 

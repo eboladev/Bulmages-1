@@ -28,4 +28,6 @@ Categorias: Advanced invoicing;
 
 Orden: 900
 
+Reports: listado_z.rml
+
 Comentarios: It is essential to have the POS functionality installed or otherwise this plugin will not work.

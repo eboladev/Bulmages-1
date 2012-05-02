@@ -215,7 +215,7 @@ void AlumnosList::crear()
 void AlumnosList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Alumnos" ) );
+    printPDF ( _ ( "Alumnos" ) );
     
 }
 

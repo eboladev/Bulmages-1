@@ -193,7 +193,7 @@ void CobrosList::crear()
 void CobrosList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Cobros a clientes" ) );
+    printPDF ( _ ( "Cobros a clientes" ) );
     
 }
 

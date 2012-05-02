@@ -110,7 +110,7 @@ void ContratosList::remove() {
 void ContratosList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Listado de Contratos" ) );
+    printPDF ( _ ( "Listado de Contratos" ) );
     
 }
 

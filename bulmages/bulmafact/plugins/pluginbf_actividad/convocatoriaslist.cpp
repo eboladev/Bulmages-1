@@ -146,7 +146,7 @@ void ConvocatoriasList::crear()
 void ConvocatoriasList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Convocatorias" ) );
+    printPDF ( _ ( "Convocatorias" ) );
     
 }
 

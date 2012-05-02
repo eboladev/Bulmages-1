@@ -234,7 +234,7 @@ QString ArticuloList::formaQuery()
 void ArticuloList::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( "Listado de articulos" );
+    printPDF ( "Listado de articulos" );
     
 }
 
