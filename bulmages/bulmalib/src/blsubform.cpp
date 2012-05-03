@@ -357,16 +357,23 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::loadSpecs()
 {
     BL_FUNC_DEBUG
-    QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
-    QDomDocument doc ( "mydocument" );
+    
+    QString fileToLoad = CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc";
+    
+    QFile file ( fileToLoad );
+    
+    /// If not exists return.
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         return;
-    }
+    } // end if
+
+    QDomDocument doc ( "mydocument" );
+
     if ( !doc.setContent ( &file ) ) {
         file.close();
-	
         return;
-    }
+    } // end if
+    
     file.close();
 
     QDomElement docElem = doc.documentElement();
@@ -403,7 +410,7 @@ void BlSubForm::loadSpecs()
             while ( !restrict.isNull() ) {
                 QString trestrict = restrict.text();
                 if ( trestrict == "DBNOTHING" ) {
-                    restricciones |= BlDbField::DbVarChar;
+                    restricciones |= BlDbField::DbNothing;
                 } else if ( trestrict == "DBNOTNULL" ) {
                     restricciones |= BlDbField::DbNotNull;
                 } else if ( trestrict == "DBPRIMARYKEY" ) {
@@ -444,7 +451,6 @@ void BlSubForm::loadSpecs()
         } // end if
     } // end for
 
-    
 }
 
 
