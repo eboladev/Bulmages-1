@@ -35,6 +35,8 @@
 #include <QFile>
 #include <QTextStream>
 
+#include <sys/time.h>
+
 #include <stdio.h>
 #include <sstream>
 #include <string>
@@ -67,6 +69,7 @@ public:
   static int m_indiceclases;
   
   QTime   m_time;
+  timeval m_tp;
   QString m_func;
   int m_level;
   QString m_params;  
