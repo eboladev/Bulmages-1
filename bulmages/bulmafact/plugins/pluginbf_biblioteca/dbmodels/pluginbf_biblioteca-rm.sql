@@ -1,7 +1,7 @@
 --
--- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de profesores
+-- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de biblioteca
 --
-\echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********"
+\echo "********* ELIMINADO DEL SQL PARA EL PLUGIN DE GESTION DE BIBLIOTECA *********"
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
@@ -43,10 +43,6 @@ END;
 '
 language 'plpgsql';
 
-DROP FUNCTION IF EXISTS actualizacantrecibo_insert() CASCADE;
-DROP FUNCTION IF EXISTS actualizacantrecibo_update() CASCADE;
-DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
-
 -- ========================== VARIACION DE TARIFA =======================
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
@@ -54,7 +50,7 @@ DECLARE
 	rs  RECORD;
 
 BEGIN
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''zcomercial'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamo'';
 
     IF FOUND THEN
 	ALTER TABLE cliente DROP COLUMN idzcomercial;
@@ -79,12 +75,12 @@ END;
 '   LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo "Creamos las tablas para la gestion de biblioteca"
+\echo "Eliminamos las tablas de la gestion de biblioteca"
 
--- ======================== Actualizada la revision de la base de datos a la version. =====================
+-- ======================== Elimina la revision de la base de datos en la tabla de configuracion. =====================
 
 
--- Agregamos nuevos parametros de configuracion.
+-- Eliminamos parametros de configuracion.
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
@@ -104,7 +100,7 @@ END;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
 
-\echo "Actualizada la revision de la base de datos a la version"
+\echo "Actualizada la revision de la base de datos"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
