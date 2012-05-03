@@ -200,6 +200,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     /// Desactivamos el procesado de cambios.
     m_procesacambios = FALSE;
 
+    m_columnaParaRowSpan = "";
     m_textoceldaParaRowSpan = "";
     m_filaInicialRowSpan = -1;
 
@@ -1397,6 +1398,8 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
 
+    
+
     /// Preparamos la barra de progreso
     BlProgressBar *barra = new BlProgressBar;
     if ( cur->numregistros() > 100 ) {
@@ -1408,21 +1411,26 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     /// Desactivamos el sorting debido a un error en las Qt4.
     mui_list->setSortingEnabled ( FALSE );
 
-    /// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
-    for ( int i = 0; i < m_lista.size(); ++i ) {
-        reg = m_lista.at ( i );
-        for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-            BlSubFormHeader *head = m_lcabecera.at ( j );
-            if ( head->fieldName() == m_columnaParaRowSpan ) {
-                mui_list->setSpan ( i, j, 1, 1 );
-            } // end if
-        } // end for
-    } // end for
 
+    if (m_columnaParaRowSpan != "") {
+	/// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
+	for ( int i = 0; i < m_lista.size(); ++i ) {
+	    reg = m_lista.at ( i );
+	    for ( int j = 0; j < reg->lista() ->size(); ++j ) {
+		BlSubFormHeader *head = m_lcabecera.at ( j );
+		if ( head->fieldName() == m_columnaParaRowSpan ) {
+		    mui_list->setSpan ( i, j, 1, 1 );
+		} // end if
+	    } // end for
+	} // end for
+    } // end if
+
+
+    
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
     mui_list->setRowCount ( 0 );
-
+    
     /// Vaciamos el recordset para que no contenga registros.
     BlDbSubFormRecord *rec;
     while ( !m_lista.isEmpty() ) {
@@ -1430,6 +1438,10 @@ void BlSubForm::load ( BlDbRecordSet *cur )
         if ( rec )
             delete rec;
     } // end while
+
+//    m_lista.clear();
+
+
 
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount ( m_lcabecera.count() );
@@ -1470,119 +1482,123 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     } else {
         mui_paganterior->setEnabled ( TRUE );
     } // end if
+    
+    
 
-    /// Recorremos el recordset y ponemos los registros en un orden determinado.
-    int porcentajecarga = 0;
-    while ( !cur->eof() && m_lista.count() < filpag ) {
+    
+    /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
+    QFont bold;
+    bold.setBold ( true );
+    
+    /// Rendimiento: a partir de aqu&iacute; m_lista ya no cambia, así que ya podemos usar una constante
+    /// para guardar la cantidad de elementos y no volver a invocar al m&eacute;todo size()
+    const int m_lista_size = cur->numregistros() > filpag? filpag : cur->numregistros();
+    
+    /// Establecemos el rango de la barra, que iterara sobre las filas.
+    barra->setRange ( 0, m_lista_size );
+    
+    /// Inicializamos la tabla con las filas necesarias.
+    mui_list->setRowCount ( m_lista_size );
+    
+    /// Hay datos que solo precisamos coger una unica vez y almacenarlo en variables.
+    const int ncolumnas = m_lcabecera.size();
+    for ( int j = 0; j < ncolumnas; ++j ) {
+	/// Pone en negrita el texto de la cabecera de las columnas editables
+	if ( ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
+	  mui_list->horizontalHeaderItem ( j ) -> setFont( bold );
+	} // end if
+    } // end for
+
+
+    int reciterate=0;
+    while ( reciterate < m_lista_size ) {
         BlDbSubFormRecord * rec = newDbSubFormRecord();
         rec->DBload ( cur );
         m_lista.append ( rec );
-        cur->nextRecord();
-        porcentajecarga++;
-    } // end while
 
-    /// Inicializamos la tabla con las filas necesarias.
-    mui_list->setRowCount ( m_lista.count() );
-
-    /// Rendimiento: a partir de aqu&iacute; m_lista ya no cambia, así que ya podemos usar una constante
-    /// para guardar la cantidad de elementos y no volver a invocar al m&eacute;todo size()
-    const int m_lista_size = m_lista.size();
-
-    /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
-    QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
-    QFont bold;
-    bold.setBold ( true );
-
-    barra->setRange ( 0, m_lista_size );
-    for ( int i = 0; i < m_lista_size; ++i ) {
-        reg = m_lista.at ( i );
-        for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-           /// Pone en negrita el texto de la cabecera de las columnas editables
-           if ( i == 0 && ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
-              mui_list->horizontalHeaderItem ( j ) -> setFont( bold );
-           } // end if
-            camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
-            /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
-            if ( patronFecha.exactMatch ( camp->fieldValue() ) ) {
-                camp->set
-                ( camp->fieldValue().left ( 10 ) );
-            } // end if
-            /// Rellena la tabla con los datos.
-            mui_list->setItem ( i, j, camp );
+        for ( int j = 0; j < ncolumnas; ++j ) {
+	    /// Rellena la tabla con los datos.
+            camp = ( BlDbSubFormField * ) rec->lista() ->at ( j );
+            mui_list->setItem ( reciterate, j, camp );
         } // end for
-        barra->setValue ( i );
-    } // end for
+	
+        cur->nextRecord();
+	barra->setValue(reciterate++);
+    } // end while
 
     /// Establece el "rowSpan" de la tabla.
     QString textoCeldaAnterior;
     QString textoCeldaActual;
 
+    
     /// Recorre las filas.
     m_filaInicialRowSpan = -1;
 
     /// Pone el 'rowSpan' a las filas que son iguales.
-    for ( int i = 0; i < m_lista_size; ++i ) {
-        reg = m_lista.at ( i );
-        for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-            BlSubFormHeader *head = m_lcabecera.at ( j );
-            if ( head->fieldName() == m_columnaParaRowSpan ) {
-                camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
-                textoCeldaActual = camp->fieldValue();
-                /// Mira lo que hay en la fila anterior si existe.
-                if ( i > 0 ) {
-                    reg2 = m_lista.at ( i - 1 );
-                    camp2 = ( BlDbSubFormField * ) reg2->lista() ->at ( j );
-                    textoCeldaAnterior = camp2->fieldValue();
-                    if ( textoCeldaActual == textoCeldaAnterior ) {
-                        /// activamos el indice de celdas iguales
-                        if ( m_filaInicialRowSpan == -1 ) {
-                            m_filaInicialRowSpan = i - 1;
-                        } // end if
-                        /// hay un registro despu&eacute;s. No, dibuja 'rowSpan'.
-                        if ( i == ( m_lista_size - 1 ) ) {
-                            ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo );
-                            mui_list->setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1 );
+    if (m_columnaParaRowSpan != "") {
+	for ( int i = 0; i < m_lista_size; ++i ) {
+	    reg = m_lista.at ( i );
+	    for ( int j = 0; j < reg->lista() ->size(); ++j ) {
+		BlSubFormHeader *head = m_lcabecera.at ( j );
+		if ( head->fieldName() == m_columnaParaRowSpan ) {
+		    camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
+		    textoCeldaActual = camp->fieldValue();
+		    /// Mira lo que hay en la fila anterior si existe.
+		    if ( i > 0 ) {
+			reg2 = m_lista.at ( i - 1 );
+			camp2 = ( BlDbSubFormField * ) reg2->lista() ->at ( j );
+			textoCeldaAnterior = camp2->fieldValue();
+			if ( textoCeldaActual == textoCeldaAnterior ) {
+			    /// activamos el indice de celdas iguales
+			    if ( m_filaInicialRowSpan == -1 ) {
+				m_filaInicialRowSpan = i - 1;
+			    } // end if
+			    /// hay un registro despu&eacute;s. No, dibuja 'rowSpan'.
+			    if ( i == ( m_lista_size - 1 ) ) {
+				ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo );
+				mui_list->setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1 );
 
-                            if ( coloraponerfondo == FALSE ) {
-                                colorfondo = m_colorfondo2;
-                                coloraponerfondo = TRUE;
-                            } else {
-                                colorfondo = m_colorfondo1;
-                                coloraponerfondo = FALSE;
-                            } // end if
+				if ( coloraponerfondo == FALSE ) {
+				    colorfondo = m_colorfondo2;
+				    coloraponerfondo = TRUE;
+				} else {
+				    colorfondo = m_colorfondo1;
+				    coloraponerfondo = FALSE;
+				} // end if
 
-                        } // end if
-                    } else {
-                        /// Comprobamos si queda algo pendiente de hacer 'rowSpan'.
-                        if ( m_filaInicialRowSpan != -1 ) {
-                            /// 'rowSpan' desde inicio iguales hasta fila anterior.
-                            ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan, colorfondo );
-                            mui_list->setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1 );
+			    } // end if
+			} else {
+			    /// Comprobamos si queda algo pendiente de hacer 'rowSpan'.
+			    if ( m_filaInicialRowSpan != -1 ) {
+				/// 'rowSpan' desde inicio iguales hasta fila anterior.
+				ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan, colorfondo );
+				mui_list->setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1 );
 
-                            if ( coloraponerfondo == FALSE ) {
-                                colorfondo = m_colorfondo2;
-                                coloraponerfondo = TRUE;
-                            } else {
-                                colorfondo = m_colorfondo1;
-                                coloraponerfondo = FALSE;
-                            } // end if
-                        } else {
-                            /// El registro s&oacute;lo tiene una fila.
-                            ponItemColorFondo ( mui_list, i - 1, 1, colorfondo );
-                            if ( coloraponerfondo == FALSE ) {
-                                colorfondo = m_colorfondo2;
-                                coloraponerfondo = TRUE;
-                            } else {
-                                colorfondo = m_colorfondo1;
-                                coloraponerfondo = FALSE;
-                            } // end if
-                        } // end if
-                        m_filaInicialRowSpan = -1;
-                    } // end if
-                } // end if
-            } // end if
-        } // end for
-    } // end for
+				if ( coloraponerfondo == FALSE ) {
+				    colorfondo = m_colorfondo2;
+				    coloraponerfondo = TRUE;
+				} else {
+				    colorfondo = m_colorfondo1;
+				    coloraponerfondo = FALSE;
+				} // end if
+			    } else {
+				/// El registro s&oacute;lo tiene una fila.
+				ponItemColorFondo ( mui_list, i - 1, 1, colorfondo );
+				if ( coloraponerfondo == FALSE ) {
+				    colorfondo = m_colorfondo2;
+				    coloraponerfondo = TRUE;
+				} else {
+				    colorfondo = m_colorfondo1;
+				    coloraponerfondo = FALSE;
+				} // end if
+			    } // end if
+			    m_filaInicialRowSpan = -1;
+			} // end if
+		    } // end if
+		} // end if
+	    } // end for
+	} // end for
+    } // end if
 
     /// Si est&aacute; definido no aplicamos ninguna ordenaci&oacute;n.
     if ( !m_ordenporquery ) {
@@ -1718,18 +1734,15 @@ void BlSubForm::load ( QString query )
                  /// ... usar el mismo n&uacute;mero de fila
                  fila_futura = active_row;
               } // end if
+          } else {
+		/// Si la fila era la &uacute;ltima, seguir en la &uacute;ltima, pase lo que pase
+               fila_futura = rowCount() - 1;
           } // end if
 
-           /// Si la fila era la &uacute;ltima, seguir en la &uacute;ltima, pase lo que pase
-           else
-           {
-               fila_futura = rowCount() - 1;
-           } // end if
-
-           if ( fila_futura > -1 ) {
+          if ( fila_futura > -1 ) {
                mui_list->setCurrentCell ( fila_futura, active_col ) ;
                mui_list->scrollToItem ( mui_list->currentItem(), QAbstractItemView::PositionAtCenter ) ;
-           } // end if
+          } // end if
 
         } // end if
         /// Fin de Restaurar la posición anterior a la carga si es posible
