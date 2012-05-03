@@ -6,6 +6,7 @@ __doc__ = "Sistema de Depuracion para BulmaGes a partir de los logs.\r\n"
 
 import sys
 import re
+import os
 from depurator import *
 from principal import *
 from PyQt4.QtGui import *
@@ -16,9 +17,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
     def __init__(self, *args):
         apply(QtGui.QMainWindow.__init__, (self,) + args)
 	self.setupUi(self)
-#	self.table.hide()
-#	self.tree.hide()
-#	self.ejecuta()
+
 	self.table.setColumnCount(3)
 	self.table.hideColumn(1)
 	self.table.hideColumn(2)
@@ -26,16 +25,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 	
 	self.semaforo = 0
 	
-#	self.lmen = ListaClases()
-	
-#	self.tree.setColumnCount(3)
-#	self.tree.setColumnWidth(0,200)
-#	self.tree.setColumnWidth(1,20)
-#	self.tree.setColumnWidth(2,20)
-	
-	
-#	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
-#	self.f.seek(0,2)
+
 	self.f = None
 
 	self.t = QtCore.QTimer()
@@ -52,7 +42,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 
     def on_mui_conectar_clicked(self):
 	print "Conexion !!"
-	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')	
+	
+	self.f = open(os.getenv("HOME")+"/.bulmages/bulmagesout.xml", 'r')	
 	self.f.seek(0,2)
 
     def on_mui_tableclear_triggered(self):
@@ -120,20 +111,32 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		return
 	if mensaje.startswith("</comment"):
 		return
+		
+	# Quitamos los argumentos entre parentesis.
+	matchObj = re.search('(\(.*\))', mens)
+	print matchObj.group(1)
+	mensaje = mensaje.replace (matchObj.group(1), " ")
+	print mensaje
+		
 	if mensaje.startswith("</"):
+		mensaje = mensaje.replace("</", "  ")
 		mensajefin = 2
 		# Es un mensaje de cierre
 		partmsg = mensaje.split(" ")
-		if len ( partmsg) > 3:
-		  mensaje = partmsg[3]
-		else:
-		  return
+		if len (partmsg) > 4:
+		    mensaje = partmsg[4]
+		if not "::" in mensaje:
+		    if len ( partmsg) > 3:
+		      mensaje = partmsg[3]
 		if not "::" in mensaje:
 		  mensaje = partmsg[2]
 		if not "::" in mensaje:
 		  mensaje = partmsg[1]
 		if not "::" in mensaje:
-		  return
+		    mensaje = partmsg[0]
+		if not "::" in mensaje:
+		    print "Descartado: " + mensaje
+		    return
 		  
 		# Buscamos el tiempo invertido
 		matchObj = re.search('time=\"([0-9]+)\"', mens)
@@ -141,20 +144,23 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		tiempo = int(matchObj.group(1))
 		  
 	else:
-
+		mensaje = mensaje.replace("<",  " ")
 		# Es un mensaje de apertura
 		partmsg = mensaje.split(" ")
-		if len ( partmsg) > 3:
-		  mensaje = partmsg[3]
-		else:
-		  return
-
+		if len (partmsg) > 4:
+		    mensaje = partmsg[4]
+		if not "::" in mensaje:
+		    if len ( partmsg) > 3:
+		      mensaje = partmsg[3]
 		if not "::" in mensaje:
 		  mensaje = partmsg[2]
 		if not "::" in mensaje:
 		  mensaje = partmsg[1]
 		if not "::" in mensaje:
-		  return
+		    mensaje = partmsg[0]
+		if not "::" in mensaje:
+		    print "Descartado: " + mensaje
+		    return
 		  
 		  
 
@@ -163,10 +169,14 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 	lmensaje = mensaje.split("::")
 	if len(lmensaje) < 2:
 		return
-		
-	# Ya tenemos clase y subclase.
-	submens = lmensaje[1].split(" ")
-	lmensaje[1] = submens[0].split("(")[0]
+	if len (lmensaje) > 2:
+	  	submens = lmensaje[2].split(" ")
+		lmensaje[1] = submens[0].split("(")[0]
+
+	else:
+		# Ya tenemos clase y subclase.
+		submens = lmensaje[1].split(" ")
+		lmensaje[1] = submens[0].split("(")[0]
 
 	lis = QtCore.QStringList(lmensaje[0])
 	lis1 = QtCore.QStringList(lmensaje[1])
