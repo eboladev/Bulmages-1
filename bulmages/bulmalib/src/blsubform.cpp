@@ -359,11 +359,19 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::loadSpecs()
 {
     BL_FUNC_DEBUG
+<<<<<<< HEAD
 
     QString fileToLoad = CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc";
 
     QFile file ( fileToLoad );
 
+=======
+    
+    QString fileToLoad = CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc";
+    
+    QFile file ( fileToLoad );
+    
+>>>>>>> 8230e4f... Arreglado fallo al añadir un campo al Subformulario
     /// If not exists return.
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         return;
@@ -375,7 +383,11 @@ void BlSubForm::loadSpecs()
         file.close();
         return;
     } // end if
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8230e4f... Arreglado fallo al añadir un campo al Subformulario
     file.close();
 
     QDomElement docElem = doc.documentElement();
