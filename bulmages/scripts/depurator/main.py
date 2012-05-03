@@ -5,10 +5,11 @@ __all__ = ["depurator"]
 __doc__ = "Sistema de Depuracion para BulmaGes a partir de los logs.\r\n"
 
 import sys
+import re
 from depurator import *
 from principal import *
-from PyQt4 import *
-
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
 
 
 class HelloWindow(QtGui.QMainWindow, Ui_Principal):
@@ -33,24 +34,25 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 #	self.tree.setColumnWidth(2,20)
 	
 	
-	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
-	self.f.seek(0,2)
+#	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
+#	self.f.seek(0,2)
+	self.f = None
 
 	self.t = QtCore.QTimer()
 	self.connect(self.t, QtCore.SIGNAL("timeout()"), self.hazalgo)
 	self.connect(self.mui_clear, QtCore.SIGNAL("triggered()"), self.on_mui_clear_clicked)
 	self.connect(self.mui_conectar, QtCore.SIGNAL("triggered()"), self.on_mui_conectar_clicked)
+	self.connect(self.mui_abrir_traza, QtCore.SIGNAL("triggered()"), self.on_mui_abrir_traza_clicked)
 	self.t.start(100)
+
+    def on_mui_abrir_traza_clicked(self):
+        print "Abriendo!!"
+        self.openfile = QFileDialog.getOpenFileName(self,"Traza - Elija archivo de traza", "~/.bulmages","XML (*.xml)")
+	self.f = open(self.openfile, 'r')
 
     def on_mui_conectar_clicked(self):
 	print "Conexion !!"
 	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')	
-	self.f.seek(0,2)
-	
-    def on_mui_conectar_triggered(self):
-#	print "Conexion !!"
-#	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
-	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
 	self.f.seek(0,2)
 
     def on_mui_tableclear_triggered(self):
@@ -73,6 +75,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		self.lmen.procesaMensaje(line.replace("\n", ""))
 
     def hazalgo(self):
+        if (self.f == None):
+	  return
         if (self.semaforo == 0):
 	  self.semaforo=1
 	else:
@@ -107,10 +111,12 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
     def procesaMensaje(self, mens):
 	sacamensaje = 0	
 	mensajefin = 1
+	tiempo = 0
 
 	mensaje = mens.strip()
 	# Descartamos el sistema de comentarios.
 	if mensaje.startswith("<comment"):
+		self.sacaMensaje(mensaje)
 		return
 	if mensaje.startswith("</comment"):
 		return
@@ -128,9 +134,15 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		  mensaje = partmsg[1]
 		if not "::" in mensaje:
 		  return
+		  
+		# Buscamos el tiempo invertido
+		matchObj = re.search('time=\"([0-9]+)\"', mens)
+		print matchObj.group(1)
+		tiempo = int(matchObj.group(1))
+		  
 	else:
 
-		# Es un mensaje de cierre
+		# Es un mensaje de apertura
 		partmsg = mensaje.split(" ")
 		if len ( partmsg) > 3:
 		  mensaje = partmsg[3]
@@ -144,10 +156,15 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		if not "::" in mensaje:
 		  return
 		  
+		  
+
+
+		  
 	lmensaje = mensaje.split("::")
 	if len(lmensaje) < 2:
 		return
 		
+	# Ya tenemos clase y subclase.
 	submens = lmensaje[1].split(" ")
 	lmensaje[1] = submens[0].split("(")[0]
 
@@ -164,19 +181,34 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		lis.insert(1, "1")
 		lis.insert(2, "0")
 
+
+	ttiempo=0
+	ttiempomax=0
+	ttiempomin=9999999
+	# Tratamos el arbol.
 	
-
-
-
-#	fla = QtCore.Qt.MatchFlags.MatchExactly()
-
 	ldtree = self.tree.findItems(lmensaje[0], QtCore.Qt.MatchExactly)
 	if len(ldtree) > 0:
 		titem = ldtree[0]
 		texto = titem.text(mensajefin).toInt()
 		texto = texto[0] + 1
 		titem.setText(mensajefin, QtCore.QString.number(texto))
+		# Ponemos el tiempo total consumido en la funcion.
 
+		if str(titem.text(3)) <> "":
+		  ttiempo = int(str(titem.text(3)))
+		titem.setText(3,QtCore.QString.number(ttiempo + tiempo))
+		if str(titem.text(4)) <> "":
+		    ttiempomax = int(str(titem.text(4)))
+		if tiempo > ttiempomax:
+		    titem.setText(4,QtCore.QString.number(tiempo))
+		if str(titem.text(5)) <> "":
+		    ttiempomin = int(str(titem.text(5)))
+		if tiempo < ttiempomin:
+		    titem.setText(5,QtCore.QString.number(tiempo))
+
+
+		# Bajamos en el arbol de llamadas y vamos actualizando los datos.
 		encontrado = 0
 		i = 0
 		while i < titem.childCount():
@@ -189,27 +221,74 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 				titem1.setText(mensajefin, QtCore.QString.number(texto))
 				if titem1.checkState(0) == QtCore.Qt.Checked:
 					sacamensaje = 1
+					
+				# Ponemos el tiempo total consumido en la funcion.
+				ttiempo=0
+				ttiempomax=0
+				ttiempomin=999
+				if str(titem1.text(3)) <> "":
+				  ttiempo = int(str(titem1.text(3)))
+				titem1.setText(3,QtCore.QString.number(ttiempo + tiempo))
+				if str(titem1.text(4)) <> "":
+				   ttiempomax = int(str(titem1.text(4)))
+				if tiempo > ttiempomax:
+				   titem1.setText(4,QtCore.QString.number(tiempo))
+				if str(titem1.text(5)) <> "":
+				   ttiempomin = int(str(titem1.text(5)))
+				if tiempo < ttiempomin:
+				   titem1.setText(5,QtCore.QString.number(tiempo))
+
+				  
 			i = i +1
 				
-				
-		if encontrado == 0:
 
-			
+		# Si no hemos encontrado el elemento lo insertamos.
+		if encontrado == 0:
 			titem1 = QtGui.QTreeWidgetItem(lis1)
 			titem1.setCheckState(0, QtCore.Qt.Unchecked)
 			titem.addChild(titem1)
+			# Ponemos el tiempo total consumido en la funcion.
+			titem1.setText(3,QtCore.QString.number(tiempo))
+			titem1.setText(4,QtCore.QString.number(ttiempomax))
+			titem1.setText(5,QtCore.QString.number(ttiempomin))
+			titem1.setTextAlignment(1,Qt.AlignRight)
+			titem1.setTextAlignment(2,Qt.AlignRight)
+			titem1.setTextAlignment(3,Qt.AlignRight)
+			titem1.setTextAlignment(4,Qt.AlignRight)
+			titem1.setTextAlignment(5,Qt.AlignRight)
+
+
+			
 		
 	else:
+		# Agregamos la clase y el metodo (una clase nunca va sola)
 		titem =  QtGui.QTreeWidgetItem(lis)
 #		titem.setCheckState(0, QtCore.Qt.Unchecked)
 		titem.setTextColor(0, QtGui.QColor(255,0,0))
+		# Ponemos el tiempo total consumido en la funcion.
+		titem.setText(3,QtCore.QString.number(tiempo))
+		titem.setText(4,QtCore.QString.number(ttiempomax))
+		titem.setText(5,QtCore.QString.number(ttiempomin))
+		titem.setTextAlignment(1,Qt.AlignRight)
+		titem.setTextAlignment(2,Qt.AlignRight)
+		titem.setTextAlignment(3,Qt.AlignRight)
+		titem.setTextAlignment(4,Qt.AlignRight)
+		titem.setTextAlignment(5,Qt.AlignRight)
 		self.tree.addTopLevelItem(titem)
 
 		
 		titem1 = QtGui.QTreeWidgetItem(lis1)
 		titem1.setCheckState(0, QtCore.Qt.Unchecked)
 		titem.addChild(titem1)
-
+		# Ponemos el tiempo total consumido en la funcion.
+		titem1.setText(3,QtCore.QString.number(tiempo))
+		titem1.setText(4,QtCore.QString.number(ttiempomax))
+		titem1.setText(5,QtCore.QString.number(ttiempomin))
+		titem1.setTextAlignment(1,Qt.AlignRight)
+		titem1.setTextAlignment(2,Qt.AlignRight)
+		titem1.setTextAlignment(3,Qt.AlignRight)
+		titem1.setTextAlignment(4,Qt.AlignRight)
+		titem1.setTextAlignment(5,Qt.AlignRight)
 
 	if sacamensaje == 1:
 		self.sacaMensaje(mens)
