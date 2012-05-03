@@ -33,7 +33,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 	self.connect(self.mui_clear, QtCore.SIGNAL("triggered()"), self.on_mui_clear_clicked)
 	self.connect(self.mui_conectar, QtCore.SIGNAL("triggered()"), self.on_mui_conectar_clicked)
 	self.connect(self.mui_abrir_traza, QtCore.SIGNAL("triggered()"), self.on_mui_abrir_traza_clicked)
-	self.t.start(100)
+	self.t.start(10)
 
     def on_mui_abrir_traza_clicked(self):
         print "Abriendo!!"
@@ -79,12 +79,15 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 	while self.table.rowCount() > 1000:
 		self.table.removeRow(0)
 		
-	line = self.f.readline(300)
+	line = self.f.readline(3000)
 	i=0
-	while line != "" and i < 1000:
-		line = self.f.readline(300)
-		if line != "":
+#	while line != "" and i < 10000:
+	while len(line) > 3 and i < 100:
+		print "[" + line + "]"
+		print len(line)
+		if len(line) > 3:
 			self.procesaMensaje(line)
+		line = self.f.readline(3000)
 		i = i + 1
 	self.semaforo=0
 
@@ -114,9 +117,10 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		
 	# Quitamos los argumentos entre parentesis.
 	matchObj = re.search('(\(.*\))', mens)
-	print matchObj.group(1)
-	mensaje = mensaje.replace (matchObj.group(1), " ")
-	print mensaje
+	if matchObj != None:
+		mensaje = mensaje.replace (matchObj.group(1), " ")
+	else:
+		print "Descartado: "+ mensaje
 		
 	if mensaje.startswith("</"):
 		mensaje = mensaje.replace("</", "  ")
@@ -140,8 +144,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 		  
 		# Buscamos el tiempo invertido
 		matchObj = re.search('time=\"([0-9]+)\"', mens)
-		print matchObj.group(1)
-		tiempo = int(matchObj.group(1))
+		if matchObj != None:
+		    tiempo = int(matchObj.group(1))
 		  
 	else:
 		mensaje = mensaje.replace("<",  " ")
