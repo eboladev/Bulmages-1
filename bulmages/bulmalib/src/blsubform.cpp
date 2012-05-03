@@ -1398,8 +1398,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
 
-    
-
     /// Preparamos la barra de progreso
     BlProgressBar *barra = new BlProgressBar;
     if ( cur->numregistros() > 100 ) {
@@ -1424,8 +1422,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
 	    } // end for
 	} // end for
     } // end if
-
-
     
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
@@ -1438,10 +1434,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
         if ( rec )
             delete rec;
     } // end while
-
-//    m_lista.clear();
-
-
 
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount ( m_lcabecera.count() );
@@ -1483,9 +1475,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
         mui_paganterior->setEnabled ( TRUE );
     } // end if
     
-    
-
-    
     /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
     QFont bold;
     bold.setBold ( true );
@@ -1509,7 +1498,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
 	} // end if
     } // end for
 
-
     int reciterate=0;
     while ( reciterate < m_lista_size ) {
         BlDbSubFormRecord * rec = newDbSubFormRecord();
@@ -1529,7 +1517,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     /// Establece el "rowSpan" de la tabla.
     QString textoCeldaAnterior;
     QString textoCeldaActual;
-
     
     /// Recorre las filas.
     m_filaInicialRowSpan = -1;
