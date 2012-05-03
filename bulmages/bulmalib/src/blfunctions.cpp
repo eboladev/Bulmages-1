@@ -33,6 +33,7 @@
 #include <QUrl>
 #include <QIODevice>
 
+
 #include "blfunctions.h"
 #include "blconfiguration.h"
 #include "blmainwindow.h"
@@ -64,6 +65,21 @@ QString BlDebug::m_mensajesanulados[7000];
 QString BlDebug::m_clasesanuladas[7000];
 int BlDebug::m_indiceclases;
 
+// int timeval_subtract (result, x, y)
+//      struct timeval *result, *x, *y;
+// {
+//   /* Perform the carry for the later subtraction by updating y. */
+//   if (x->tv_usec < y->tv_usec) {
+//     int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
+//     y->tv_usec -= 1000000 * nsec;
+//     y->tv_sec += nsec;
+//   }
+//   if (x->tv_usec - y->tv_usec > 1000000) {
+//     int nsec = (y->tv_usec - x->tv_usec) / 1000000;
+//     y->tv_usec += 1000000 * nsec;
+//     y->tv_sec -= nsec;
+//   }
+
 
 BlDebug::BlDebug(const QString &func, int level, const QString &params) {
     try {
@@ -77,6 +93,7 @@ BlDebug::BlDebug(const QString &func, int level, const QString &params) {
 	m_func = func;
 	m_level = level;
 	m_params = params;
+ 	gettimeofday(&m_tp, NULL);
 	m_time.start();
 
 	static int semaforo = 0;
@@ -203,8 +220,14 @@ BlDebug::~BlDebug() {
                 *BlDebug::m_out << "    ";
             } // end for
 
+	    timeval tp, endtime;
+	    gettimeofday(&endtime, NULL);
+
+	    //timeval_subtract(&tp, &endtime, &m_tp);
+	    int elapsedtime = endtime.tv_sec * 1000000 + endtime.tv_usec - m_tp.tv_sec * 1000000 - m_tp.tv_usec;
+	    
             QString cad1 = m_func;
-            cad1 = "</" + cad1 + " time=\"" + QString::number ( m_time.elapsed() ) + "\" result=\"" + m_params + "\" >";
+            cad1 = "</" + cad1 + " time=\"" + QString::number ( elapsedtime ) + "\" result=\"" + m_params + "\" >";
 
 
             *BlDebug::m_outXML << cad1  << "\n" << flush;
@@ -760,7 +783,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
         static QString mensajesanulados[7000];
         static QString clasesanuladas[7000];
         static int indiceclases = 0;
-        static QTime t;
+        static QElapsedTimer t;
 
         if ( !semaforo ) {
             t.start();
