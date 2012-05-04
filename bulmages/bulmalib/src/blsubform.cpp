@@ -735,7 +735,7 @@ void BlSubForm::hideConfig()
 {
     BL_FUNC_DEBUG
     mui_configurador->hide();
-    
+    emit toogledConfig ( mui_configurador->isVisible() );
 }
 
 
@@ -746,7 +746,28 @@ void BlSubForm::showConfig()
 {
     BL_FUNC_DEBUG
     mui_configurador->show();
-    
+    emit toogledConfig ( mui_configurador->isVisible() );
+}
+
+///
+/**
+**/
+void BlSubForm::hideMenu()
+{
+    BL_FUNC_DEBUG
+    mui_menusubform->hide();
+    emit toogledMenuConfig ( mui_menusubform->isVisible() );
+}
+
+
+///
+/**
+**/
+void BlSubForm::showMenu()
+{
+    BL_FUNC_DEBUG
+    mui_menusubform->show();
+    emit toogledMenuConfig ( mui_menusubform->isVisible() );
 }
 
 
@@ -1277,7 +1298,7 @@ int BlSubForm::inicializar()
 
     int filpag = mui_filaspagina->text().toInt();
     if ( filpag <= 0 )
-        filpag = 500;
+        filpag = 100;
 
     int pagact = mui_paginaact->text().toInt();
     if ( pagact <= 0 )
@@ -1448,7 +1469,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     /// Tratamos con la paginacion.
     int filpag = mui_filaspagina->text().toInt();
     if ( filpag <= 0 ) {
-        filpag = 500;
+        filpag = 100;
     } // end if
 
     int pagact = mui_paginaact->text().toInt();
@@ -1457,23 +1478,9 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     } // end if
 
     /// Ponemos los datos sobre la consulta.
-    mui_numfilas->setText ( QString::number ( cur->numregistros() ) );
-    int numpag = cur->numregistros() / filpag + 1;
+    mui_numfilas->setText ( QString::number ( m_numtotalregistros ) );
+    int numpag = m_numtotalregistros / filpag + 1;
     mui_numpaginas->setText ( QString::number ( numpag ) );
-
-    /// Si el numero de elementos es igual al numero de filas por pagina habilitamos la pagina siguiente
-    if ( filpag == cur->numregistros() ) {
-        mui_pagsiguiente->setEnabled ( TRUE );
-    } else {
-        mui_pagsiguiente->setDisabled ( TRUE );
-    } // end if
-
-    /// Si la pagina actual es 1 deshabilitamos la pagina anterior
-    if ( pagact ==  1 ) {
-        mui_paganterior->setDisabled ( TRUE );
-    } else {
-        mui_paganterior->setEnabled ( TRUE );
-    } // end if
     
     /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
     QFont bold;
@@ -1491,8 +1498,9 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     
     /// Hay datos que solo precisamos coger una unica vez y almacenarlo en variables.
     const int ncolumnas = m_lcabecera.size();
+
+    /// Pone en negrita el texto de la cabecera de las columnas editables
     for ( int j = 0; j < ncolumnas; ++j ) {
-	/// Pone en negrita el texto de la cabecera de las columnas editables
 	if ( ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
 	  mui_list->horizontalHeaderItem ( j ) -> setFont( bold );
 	} // end if
@@ -1509,7 +1517,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
             camp = ( BlDbSubFormField * ) rec->lista() ->at ( j );
             mui_list->setItem ( reciterate, j, camp );
         } // end for
-	
         cur->nextRecord();
 	barra->setValue(reciterate++);
     } // end while
@@ -1614,6 +1621,29 @@ void BlSubForm::load ( BlDbRecordSet *cur )
         on_mui_confcol_clicked();
     } // end if
 
+    /// Si no estamos en la ultima pagina habilitamos el boton de ir a la siguiente y a la ultima.
+    if ( pagact < mui_numpaginas->text().toInt() ) {
+        mui_pagsiguiente->setEnabled ( TRUE );
+	m_pagsig->setEnabled( TRUE);
+	m_ultpag->setEnabled( TRUE);
+    } else {
+        mui_pagsiguiente->setDisabled ( TRUE );
+	m_pagsig->setDisabled( TRUE);
+	m_ultpag->setDisabled( TRUE);
+    } // end if
+
+    /// Si la pagina actual es 1 deshabilitamos la pagina anterior
+    if ( pagact ==  1 ) {
+        mui_paganterior->setDisabled ( TRUE );
+	m_pripag->setDisabled( TRUE);
+	m_pagant->setDisabled( TRUE);
+    } else {
+        mui_paganterior->setEnabled ( TRUE );
+	m_pripag->setEnabled( TRUE);
+	m_pagant->setEnabled( TRUE);
+    } // end if
+
+
     /// Reactivamos el sorting
     mui_list->setSortingEnabled ( m_sorting );
 
@@ -1628,6 +1658,13 @@ void BlSubForm::load ( BlDbRecordSet *cur )
       resizeRowsToContents();
     } // end if
     
+    /// Pintamos las cabeceras Verticales
+    QStringList headers1;
+    int filaspag = (mui_filaspagina->value() >0 ? mui_filaspagina->value() : 100);
+    for ( int i = filaspag * (mui_paginaact->value() -1) +1; i < filaspag * (mui_paginaact->value()) +1; i++ ) {
+        headers1 << QString::number(i);
+    } // end for
+    mui_list->setVerticalHeaderLabels ( headers1 );
     
 }
 
@@ -1649,7 +1686,6 @@ void BlSubForm::load ( QString query )
     BL_FUNC_DEBUG
     /// Si el query no existe no hacemos nada.
     if ( query == "" ) {
-	
         return;
     } // end if
 
@@ -1681,13 +1717,34 @@ void BlSubForm::load ( QString query )
                 next_active_row_id = dbValue(dbFieldId(), active_row + 1);
             } // end if
         } // end if
+        
+        
         /// Fin de Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
-
         m_query = query;
+	
+	/// Debemos calcular el numero total de registros que tiene el query (para la paginacion)
+	/// Para ello alteramos el query y hacemos un count de todo igual.
+	QRegExp rx70 ( "^SELECT (.*) FROM .*" );
+	rx70.setMinimal ( TRUE );
+	rx70.setCaseSensitivity(Qt::CaseInsensitive);
+	if ( rx70.indexIn ( query, 0 )  != -1 ) {
+	    QString countQuery = query;
+	    countQuery.replace(rx70.cap(1), " COALESCE(count (*), 0) AS cuenta ");
+
+	    countQuery = countQuery.left(countQuery.indexOf("ORDER BY"));
+	    
+	    countQuery.replace (rx70.cap(2), "");
+	    BlDbRecordSet *curcuenta = mainCompany() ->loadQuery ( countQuery, "" );
+	    m_numtotalregistros = curcuenta->value("cuenta").toInt();
+	    delete curcuenta;
+	} // end if
+	
+	
+	
         /// Tratramos con la paginacion.
         int limit = mui_filaspagina->text().toInt();
         if ( limit <= 0 ) {
-            limit = 500;
+            limit = 100;
         } // end if
 
         int pagact = mui_paginaact->text().toInt();
@@ -2970,6 +3027,30 @@ void BlSubForm::on_mui_pagsiguiente_clicked()
 
 ///
 /**
+ * **/
+void BlSubForm::on_mui_ultpag_clicked()
+{
+    BL_FUNC_DEBUG
+    int pag = mui_numpaginas->text().toInt();
+    mui_paginaact->setValue ( pag );
+    confquery();
+}
+
+///
+/**
+ * **/
+void BlSubForm::on_mui_pripag_clicked()
+{
+    BL_FUNC_DEBUG
+    int pag = 1;
+    mui_paginaact->setValue ( pag );
+    confquery();
+}
+
+
+
+///
+/**
 **/
 void BlSubForm::on_mui_paganterior_clicked()
 {
@@ -3123,6 +3204,46 @@ void BlSubForm::preparaMenu() {
     sel2->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel2 );    
     connect (sel2, SIGNAL(released()), this, SLOT(resizeRowsToContents()));   
+    
+    /// Principio Pagina
+    m_pripag = new QToolButton ( mui_menusubform );
+    m_pripag->setStatusTip ( "Pagina Anterior" );
+    m_pripag->setToolTip ( "Pagina Anterior" );
+    m_pripag->setMinimumSize ( QSize ( 18, 18 ) );
+    m_pripag->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_start.png" ) );
+    m_pripag->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( m_pripag );    
+    connect (m_pripag, SIGNAL(released()), this, SLOT(on_mui_pripag_clicked())); 
+    
+    /// Pagina Anterior
+    m_pagant = new QToolButton ( mui_menusubform );
+    m_pagant->setStatusTip ( "Pagina Anterior" );
+    m_pagant->setToolTip ( "Pagina Anterior" );
+    m_pagant->setMinimumSize ( QSize ( 18, 18 ) );
+    m_pagant->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_back.png" ) );
+    m_pagant->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( m_pagant );    
+    connect (m_pagant, SIGNAL(released()), this, SLOT(on_mui_paganterior_clicked())); 
+    
+    /// Pagina Siguiente
+    m_pagsig = new QToolButton ( mui_menusubform );
+    m_pagsig->setStatusTip ( "Pagina Siguiente" );
+    m_pagsig->setToolTip ( "Pagina Siguiente" );
+    m_pagsig->setMinimumSize ( QSize ( 18, 18 ) );
+    m_pagsig->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_forward.png" ) );
+    m_pagsig->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( m_pagsig );    
+    connect (m_pagsig, SIGNAL(released()), this, SLOT(on_mui_pagsiguiente_clicked())); 
+    
+    /// Ultima Pagina
+    m_ultpag = new QToolButton ( mui_menusubform );
+    m_ultpag->setStatusTip ( "Ultima Pagina" );
+    m_ultpag->setToolTip ( "Ultima Pagina" );
+    m_ultpag->setMinimumSize ( QSize ( 18, 18 ) );
+    m_ultpag->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_finish.png" ) );
+    m_ultpag->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( m_ultpag );    
+    connect (m_ultpag, SIGNAL(released()), this, SLOT(on_mui_ultpag_clicked())); 
     
     /// Ver configuracion del subformulario
     QToolButton *sel3 = new QToolButton ( mui_menusubform );
