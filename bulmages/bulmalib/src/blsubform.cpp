@@ -1430,20 +1430,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     /// Desactivamos el sorting debido a un error en las Qt4.
     mui_list->setSortingEnabled ( FALSE );
 
-
-    if (m_columnaParaRowSpan != "") {
-	/// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
-	for ( int i = 0; i < m_lista.size(); ++i ) {
-	    reg = m_lista.at ( i );
-	    for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-		BlSubFormHeader *head = m_lcabecera.at ( j );
-		if ( head->fieldName() == m_columnaParaRowSpan ) {
-		    mui_list->setSpan ( i, j, 1, 1 );
-		} // end if
-	    } // end for
-	} // end for
-    } // end if
-    
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
     mui_list->setRowCount ( 0 );
@@ -1729,8 +1715,9 @@ void BlSubForm::load ( QString query )
 	rx70.setCaseSensitivity(Qt::CaseInsensitive);
 	if ( rx70.indexIn ( query, 0 )  != -1 ) {
 	    QString countQuery = query;
-	    countQuery.replace(rx70.cap(1), " COALESCE(count (*), 0) AS cuenta ");
 
+	    countQuery = countQuery.replace( countQuery.indexOf(rx70.cap(1), 0), rx70.cap(1).length(), " COALESCE(count (*), 0) AS cuenta " );
+	   
 	    countQuery = countQuery.left(countQuery.indexOf("ORDER BY"));
 	    
 	    countQuery.replace (rx70.cap(2), "");
