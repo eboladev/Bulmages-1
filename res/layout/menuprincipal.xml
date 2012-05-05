@@ -23,6 +23,8 @@
         android:onClick="onClientes"
         android:text="Clientes" />
 
+
+        
     <Button
         android:id="@+id/button1"
         android:layout_width="401dp"
@@ -56,6 +58,16 @@
         android:text="Sincronización" />
 
     <Button
+        android:id="@+id/button7"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_x="36dp"
+        android:layout_y="352dp"
+        android:onClick="onRutero"
+        android:text="Rutero" />
+
+    <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,4 +76,5 @@
         android:layout_y="658dp"
         android:onClick="onConfiguracion"
         android:text="Configuración" />
+        
     </AbsoluteLayout>
