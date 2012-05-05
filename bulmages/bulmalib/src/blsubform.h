@@ -31,6 +31,7 @@
 #include <QWidget>
 #include <QHeaderView>
 #include <QPalette>
+#include <QToolButton>
 
 #include "blfunctions.h"
 #include "ui_blsubformbase.h"
@@ -141,9 +142,15 @@ private:
     virtual void load ( BlDbRecordSet *cur );
     const QString nameFileConfig(); 
     const QString nameFileDefaultConfig(); 
-
+    QToolButton *m_pagsig;
+    QToolButton *m_pagant;
+    QToolButton *m_pripag;
+    QToolButton *m_ultpag;
+    /// Contiene el numero total de registros del query establecido.
+    int m_numtotalregistros;
 
 private:
+    /// El query que se va a cargar.
     QString m_query;
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
@@ -295,6 +302,11 @@ public:
     void hideConfig();
     /// Muestra el configurador del subformulario
     void showConfig();
+    /// Oculta el menu del subformulario
+    void hideMenu();
+    /// Muestra el menu del subformulario
+    void showMenu();
+    
     /// Hace la impresion del subformulario en formato de tabla RML.
     QString imprimir();
     void sortItems ( int col, Qt::SortOrder orden );
@@ -353,7 +365,7 @@ public:
     QString likeFilterSQL(const QString &text);
 
 public slots:
-    virtual void printPDF ( const QString & );
+    virtual void printPDF (const QString & );
     virtual int remove();
     void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );
@@ -369,6 +381,8 @@ public slots:
     virtual void on_mui_list_ctrlDown ( int row, int col );
     virtual void on_mui_pagsiguiente_clicked();
     virtual void on_mui_paganterior_clicked();
+    virtual void on_mui_ultpag_clicked();
+    virtual void on_mui_pripag_clicked();
     virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_cellDoubleClicked ( int row, int col );

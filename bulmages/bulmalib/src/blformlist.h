@@ -77,7 +77,8 @@ public:
     void guardaFiltrosXML();
     void cargaFiltrosXML();
     virtual const QString generaFiltro();
-
+    void substrVars (QString &buff );
+    void printPDF (  const QString &titular );
 
 public slots:
     virtual void on_mui_list_customContextMenuRequested ( const QPoint & );

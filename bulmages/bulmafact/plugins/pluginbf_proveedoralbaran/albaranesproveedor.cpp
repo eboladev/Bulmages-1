@@ -328,7 +328,7 @@ void AlbaranesProveedor::editar ( int row )
 void AlbaranesProveedor::imprimir()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( _ ( "Albaranes de proveedor" ) );
+    printPDF ( _ ( "Albaranes de proveedor" ) );
     
 }
 
