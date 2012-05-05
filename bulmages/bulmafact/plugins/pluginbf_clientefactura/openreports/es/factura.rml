@@ -107,10 +107,11 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b><u>Descuento/s:</u></b></para></td>
+			<td><para style="paragrafo2"><b>Descuento/s:</b></para></td>
 			<td></td>
-			<td><para style="paragrafo2der"><b><u>% Dto:</u></b></para></td>
-			<td><para style="paragrafo2der"><b><u>Total dto:</u></b></para></td>
+			<td><para style="paragrafo2der"><b>% Dto:</b></para></td>
+			<td><para style="paragrafo2der"><b>Total dto:</b></para></td>
+
 		</tr>
 
 <!--LINEAS DESCUENTO-->
@@ -124,9 +125,9 @@
 <!--END LINEAS DESCUENTO-->
 <!--END IF DESCUENTOS-->
 
-
-<!--IF QUERY="SELECT comentfactura FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
-<!--QUERY="SELECT comentfactura FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
+ 
+ <!--IF QUERY="SELECT comentfactura FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
+<!--QUERY="SELECT replace(comentfactura,'<','\n') AS comment FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
 		<tr>
 			<td></td>
 			<td></td>
@@ -137,7 +138,7 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b><u>Comentario/s:</u></b></para></td>
+			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -145,7 +146,7 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2">[comentfactura]</para></td>
+			<td><para style="paragrafo2">[comment,l]</para></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -203,18 +204,41 @@
 		</place>
 	</storyPlace>
 
-<!-- storyPlace x="16cm" y="27cm" width="15cm" height="1cm">
-<place x="16cm" y="27cm" width="15cm" height="2.5cm">
-<barCode code="code128" height="1cm">ALB [idfactura] [numfactura] [reffactura]</barCode>
+
+
+ <!-- IF QUERY = "SELECT * FROM vencimientoc WHERE idfactura=[idfactura]" -->
+ 	<storyPlace x="0cm" y="0cm" width="20cm" height="1cm">
+		<place x="15cm" y="2cm" width="19cm" height="4cm">
+			<blockTable style="tablavencimientos" colWidths="2.3cm,1.7cm" >
+		<tr>
+		  <td>Vencimiento/s:</td>
+			<td></td>
+		</tr>
+ <!-- QUERY = "SELECT * FROM vencimientoc WHERE idfactura=[idfactura]" -->
+
+				<tr>
+					<td>[fechavencimientoc]</td>
+					<td>[cantvencimientoc] €</td>
+				</tr>
+
+ <!-- END QUERY-->
+ 			</blockTable>
+		</place>
+	</storyPlace> 
+ <!-- END IF QUERY-->
+
+<storyPlace x="16cm" y="0cm" width="15cm" height="1cm">
+<place x="16cm" y="0cm" width="15cm" height="2.5cm">
+<barCode code="code128" height="1cm">FAC [idfactura] [numfactura] [reffactura]</barCode>
 </place>
-</storyPlace -->
+</storyPlace>
 
 
 <!-- QUERY = "SELECT * FROM factura WHERE idfactura=[idfactura] AND idforma_pago = 8 "-->
 
 <storyPlace x="1cm" y="2cm" width="15cm" height="1cm">
 <place x="1cm" y="2cm" width="15cm" height="2.5cm">
-  <para>Para transferencias bancarias "La Caixa" 2100 0650 44 0200224097</para>
+  <para>Para transferencias bancarias "La Caixa" ............</para>
 </place>
 </storyPlace>
 

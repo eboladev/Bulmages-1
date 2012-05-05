@@ -235,7 +235,8 @@ int BfForm::parseTags ( QString &buff, int tipoEscape )
             buff.replace ( pos, rx3.matchedLength(), "" );
             pos = 0;
         } else {
-            pos += rx3.matchedLength();
+	    buff.replace ( pos, rx3.matchedLength(),  rx3.cap ( 1 ) );
+            pos =0;
         } // end if
     } // end while
 

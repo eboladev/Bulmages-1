@@ -1105,12 +1105,24 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
     } // end while
 
     substrConf ( buff );
-
     pos =  0;
 
+    
+    /// Buscamos parametros en el query y los ponemos de forma literal.
+    QRegExp rx1 ( "\\[(\\w*),l\\]" );
+    while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx1.cap ( 1 ) ) ) {
+            buff.replace ( pos, rx1.matchedLength(), dbValue ( rx1.cap ( 1 ) ) );
+            pos = 0;
+        } else {
+            pos += rx1.matchedLength();
+        }
+    } // end while
+    
+    pos =  0;
+    
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
-    QString tmp;
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
                         
@@ -1583,9 +1595,24 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
     while ( !cur->eof() ) {
         QString salidatemp = datos;
 
+	
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx1 ( "\\[(\\w*),l\\]" );
+        int pos =  0;
+        while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
+            if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
+                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ) );
+                pos = 0;
+            } else {
+                pos += rx1.matchedLength();
+            }
+        } // end while
+        
+        
+	
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         QRegExp rx ( "\\[(\\w*)\\]" );
-        int pos =  0;
+        pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
