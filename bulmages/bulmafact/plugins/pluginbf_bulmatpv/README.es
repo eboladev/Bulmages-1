@@ -29,6 +29,6 @@ Categorias: Facturacion avanzada;
 
 Orden: 900
 
-Reports: listado_z.rml; inf_cuadrescaja.rml
+Reports: listado_z.rml; inf_cuadrescaja.rml; inf_resumenventasarticulo.pys
 
 Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará.
