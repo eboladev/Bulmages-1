@@ -157,7 +157,7 @@ void Subform_Cuenta::s_trataMenu ( QAction *action )
         if ( idcuenta != "" )
             editarCuenta ( idcuenta );
     } else if ( action->text() == _ ( "Seleccionar cuenta" ) ) {
-        seleccionarCuenta ( sub );
+        seleccionarCuenta ( );
     } else if ( action->text() == _ ( "Nueva cuenta" )  ) {
         nuevoCuenta();
     } // end if
@@ -197,34 +197,35 @@ void Subform_Cuenta::nuevoCuenta( )
 ///
 /**
 **/
-void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
+void Subform_Cuenta::seleccionarCuenta ( )
 {
     BL_FUNC_DEBUG
-/*
-    CuentaList *artlist = new CuentaList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+
+    BlSubForm *sub = (BlSubForm *) parent();
+
+    BcCuentaListView *artlist = new BcCuentaListView ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();
     while ( !artlist->isHidden() )
         g_theApp->processEvents();
     sub->setEnabled ( true );
-    QString idArticle = artlist->idcuenta();
+    QString idcuenta = artlist->idcuenta();
     delete artlist;
 
     /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
-    if ( idArticle == "" ) {
-        
+    if ( idcuenta == "" ) {
         return;
     } // end if
 
-    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idcuenta = " + idArticle );
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cuenta WHERE idcuenta = " + idcuenta );
     if ( !cur->eof() ) {
-        sub->lineaact()->setDbValue ( "idcuenta", idArticle );
-        sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
-        sub->lineaact()->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
+        sub->lineaact()->setDbValue ( "idcuenta", idcuenta );
+        sub->lineaact()->setDbValue ( "codigo", cur->value( "codigo" ) );
+        sub->lineaact()->setDbValue ( "descripcion", cur->value( "descripcion" ) );
     } // end if
     delete cur;
-*/
+
     
 }
 
@@ -450,4 +451,48 @@ int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
     return 0;
 }
 
+
+
+/// Miramos de poner los iconos del menu de subformularios
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    BL_FUNC_DEBUG
+    BlSubFormHeader *header = sub->header ( "codigo" );
+    if ( header ) {
+	Subform_Cuenta *subformods = new Subform_Cuenta ( sub );
+	
+	QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+	    m_hboxLayout1->setSpacing (0 );
+	    m_hboxLayout1->setMargin ( 0 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	
+	if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+	  QToolButton *sel = new QToolButton ( sub->mui_menusubform );
+	  sel->setStatusTip ( "Nueva Cuenta" );
+	  sel->setToolTip ( "Nueva Cuenta" );
+	  sel->setMinimumSize ( QSize ( 18, 18 ) );
+	  sel->setIcon ( QIcon ( ":/Images/account.png" ) );
+	  sel->setIconSize ( QSize ( 18, 18 ) );    
+	  m_hboxLayout1->addWidget ( sel );
+	  sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoCuenta()));
+	
+	  QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
+	  sel1->setStatusTip ( "Seleccionar Cuenta" );
+	  sel1->setToolTip ( "Seleccionar Cuenta" );
+	  sel1->setMinimumSize ( QSize ( 18, 18 ) );
+	  sel1->setIcon ( QIcon ( ":/Images/account_plan.png" ) );
+	  sel1->setIconSize ( QSize ( 18, 18 ) );    
+	  m_hboxLayout1->addWidget ( sel1 );
+	  sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarCuenta()));
+	} // end if
+    } // end if
+    return 0;
+}
 

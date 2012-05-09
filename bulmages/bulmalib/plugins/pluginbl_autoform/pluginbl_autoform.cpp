@@ -899,6 +899,8 @@ void SubForm_AutoForm::s_trataMenu ( QAction *action )
     BlSubForm *sub = ( BlSubForm * ) parent();
     QString opc = action->text();
     QString tablename = action->objectName().left(action->objectName().size() - 1 );
+    if (action->objectName().right(1) != "E" && action->objectName().right(1) != "S")
+        return;
     if ( opc.startsWith (_( "Editar " )) ) {
         QString id = sub->dbValue ( sub->dbFieldId() );
         if ( id != "" ) {
@@ -917,7 +919,6 @@ void SubForm_AutoForm::s_trataMenu ( QAction *action )
     } else if ( opc.startsWith (_ ( "Nuevo " ))  ) {
 //         QString title = opc.right(opc.size()- QString(_("Nuevo ")).size());
 	nuevoElemento(tablename);
-      
     } // end if
 }
 
