@@ -1041,7 +1041,7 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         self.plot.yValueAxis.rangeRound             = 'both'
         self.plot.yValueAxis.requiredRange          = 30
         self.plot.yValueAxis.valueSteps             = None
-        self.plot.yValueAxis.valueStep              = None
+        self.plot.yValueAxis.valueStep              = 1
         self.plot.yValueAxis.forceZero              = 0
         self.plot.yValueAxis.labels.fontSize        = 7
         self.plot.yValueAxis.labels.dy              = 0
