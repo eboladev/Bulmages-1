@@ -5,8 +5,8 @@
 #<!--PARAM NAME="fecha_inicial" TYPE="date"-->
 #<!--PARAM NAME="fecha_final" TYPE="date"-->
 
-# pathtitle="&Ventas\Informes\Detalle de ventas por articulo"
-# title="Detalle de ventas por artículo"
+# pathtitle="&Ventas\Informes\Detalle de ventas por articulo (IVA inc)"
+# title="Detalle de ventas por artículo (IVA inc)"
 
 import ooolib
 
