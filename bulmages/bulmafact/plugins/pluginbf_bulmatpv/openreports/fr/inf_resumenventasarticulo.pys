@@ -1,0 +1,55 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+#<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
+#<!--PARAM NAME="fecha_inicial" TYPE="date"-->
+#<!--PARAM NAME="fecha_final" TYPE="date"-->
+
+# pathtitle="&Ventas\Informes\Resumen de ventas por articulo"
+# title="Resumen de ventas por articulo"
+
+import ooolib
+
+# Crea el documento
+doc = ooolib.Calc("Resumen de ventas (por articulo)")
+
+doc.set_column_property(1, 'width', '0.5in')
+doc.set_column_property(2, 'width', '5in')
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2, 2, 'string', 'RESUMEN DE VENTAS (POR ARTICULO) [fecha_inicial] - [fecha_final]')
+
+
+doc.set_cell_value(1, 4, 'string', 'Codigo')
+doc.set_cell_value(2, 4, 'string', "Articulo")
+doc.set_cell_value(3, 4, 'string', 'Cantidad')
+doc.set_cell_value(4, 4, 'string', 'Precio Medio')
+doc.set_cell_value(5, 4, 'string', 'Total Base Imponible')
+doc.set_cell_value(6, 4, 'string', 'Total Impuestos')
+doc.set_cell_value(7, 4, 'string', 'Total')
+
+i = 5
+
+<!-- QUERY = "SELECT bimp, imp, codigocompletoarticulo, sinacentos(nomarticulo) AS nomarticulo, total, numero, preciomedio FROM articulo
+LEFT JOIN
+    (SELECT   sum(cantlalbaran * pvpivainclalbaran) - sum(cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS imp
+     , sum (cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS bimp
+     ,sum(cantlalbaran * pvpivainclalbaran) AS total, idarticulo, sum(cantlalbaran) AS numero, avg(pvpivainclalbaran) AS preciomedio FROM lalbaran
+     WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE fechaalbaran >= '[fecha_inicial]' AND fechaalbaran <= '[fecha_final]')  GROUP BY idarticulo
+    ) AS t1 ON t1.idarticulo = articulo.idarticulo ORDER BY codigocompletoarticulo"-->
+
+doc.set_cell_value(1, i, 'string', '[codigocompletoarticulo]')
+doc.set_cell_value(2, i, 'string', "[nomarticulo]")
+doc.set_cell_value(3, i, 'float', '[numero]')
+doc.set_cell_value(4, i, 'float', '[preciomedio]')
+doc.set_cell_value(5, i, 'float', '[bimp]')
+doc.set_cell_value(6, i, 'float', '[imp]')
+doc.set_cell_value(7, i, 'float', '[total]')
+
+i = i + 1
+<!--END QUERY-->
+
+doc.set_cell_value(5, i+1, 'formula', "=SUM(E4:E"+str(i-1)+")")
+
+
+# Guardamos el documento
+doc.save("inf_resumenventasarticulo.ods")
