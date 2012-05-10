@@ -548,6 +548,10 @@ void BcAsientoList::cargaAsientos()
     
 }
 
+void BcAsientoList::on_mui_inicio_released() {
+      BL_FUNC_DEBUG
+      botonInicio();
+}
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de inicio.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si
@@ -568,6 +572,10 @@ void BcAsientoList::botonInicio()
     
 }
 
+void BcAsientoList::on_mui_fin_released() {
+      BL_FUNC_DEBUG
+      botonFin();
+}
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de fin.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si existen
@@ -585,6 +593,13 @@ void BcAsientoList::botonFin()
     } // end if
     } // end if
     
+}
+
+
+
+void BcAsientoList::on_mui_siguiente_released() {
+      BL_FUNC_DEBUG
+      botonSiguiente();
 }
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de siguiente registro.
@@ -611,6 +626,11 @@ void BcAsientoList::botonSiguiente()
     } // end if
 }
 
+
+void BcAsientoList::on_mui_anterior_released() {
+      BL_FUNC_DEBUG
+      botonAnterior();
+}
 
 /// Slot que responde a la pulsaci&oacute;n del botÃ³n de anterior registro.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si

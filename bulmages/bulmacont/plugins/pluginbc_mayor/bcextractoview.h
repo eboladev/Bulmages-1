@@ -57,7 +57,6 @@ public:
     void imprimir();
 
 public slots:
-//    virtual void on_mui_imprimir_clicked();
     virtual void on_mui_actualizar_clicked();
     virtual void accept();
     virtual void on_mui_casacion_clicked();
@@ -72,7 +71,10 @@ public slots:
     virtual void on_mui_configurar_clicked();
     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
     virtual void openAsiento();
-
+    virtual void on_mui_inicio_released();
+    virtual void on_mui_fin_released();
+    virtual void on_mui_siguiente_released();
+    virtual void on_mui_anterior_released();
 };
 
 

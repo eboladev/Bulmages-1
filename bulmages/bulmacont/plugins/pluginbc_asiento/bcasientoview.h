@@ -66,6 +66,10 @@ public slots:
     void botonFin();
     void botonSiguiente();
     void botonAnterior();
+    virtual void on_mui_inicio_released();
+    virtual void on_mui_fin_released();
+    virtual void on_mui_siguiente_released();
+    virtual void on_mui_anterior_released();
 };
 
 

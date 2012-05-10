@@ -991,4 +991,22 @@ void BcExtractoView::imprimir()
 }
 
 
+void BcExtractoView::on_mui_inicio_released() {
+      BL_FUNC_DEBUG
+      botonInicio();
+}
 
+void BcExtractoView::on_mui_anterior_released() {
+      BL_FUNC_DEBUG
+      botonAnterior();
+}
+
+void BcExtractoView::on_mui_siguiente_released() {
+      BL_FUNC_DEBUG
+      botonSiguiente();
+}
+
+void BcExtractoView::on_mui_fin_released() {
+      BL_FUNC_DEBUG
+      botonFin();
+}
