@@ -32,7 +32,7 @@ add_subdirectory(pluginbc_cuentaresumen)
 add_subdirectory(pluginbc_duplicarasiento)
 add_subdirectory(pluginbc_bloqueofechas)
 add_subdirectory(pluginbc_asiento)
-add_subdirectory(pluginbc_cuentasanuales)
+#add_subdirectory(pluginbc_cuentasanuales)
 add_subdirectory(pluginbc_amortizacion)
 add_subdirectory(pluginbc_cuenta)
 
