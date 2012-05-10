@@ -11,11 +11,11 @@
 import ooolib
 
 # Crea el documento
-doc = ooolib.Calc("Detalle de ventas articulo [nomarticulo]")
+doc = ooolib.Calc(u"Detalle de ventas articulo [nomarticulo]")
 
 #doc.set_column_property(2, 'width', '5in')
 doc.set_cell_property('bold', True)
-doc.set_cell_value(1, 2, 'string', 'DETALLE DE VENTAS ([nomarticulo])')
+doc.set_cell_value(1, 2, 'string', u'DETALLE DE VENTAS ([nomarticulo])')
 i = 4
 
 doc.set_cell_value(1, i, 'string', 'fechaalbaran')
