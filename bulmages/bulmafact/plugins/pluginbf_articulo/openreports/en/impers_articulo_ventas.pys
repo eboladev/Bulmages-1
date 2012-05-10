@@ -1,0 +1,61 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+#<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
+#<!--PARAM NAME="fecha_inicial" TYPE="date"-->
+#<!--PARAM NAME="fecha_final" TYPE="date"-->
+
+# pathtitle="&Ventas\Informes\Detalle de ventas por articulo"
+# title="Detalle de ventas por artículo"
+
+import ooolib
+
+# Crea el documento
+doc = ooolib.Calc("Detalle de ventas articulo [nomarticulo]")
+
+#doc.set_column_property(2, 'width', '5in')
+doc.set_cell_property('bold', True)
+doc.set_cell_value(1, 2, 'string', 'DETALLE DE VENTAS ([nomarticulo])')
+i = 4
+
+doc.set_cell_value(1, i, 'string', 'fechaalbaran')
+doc.set_cell_value(2, i, 'string', "totvendido")
+doc.set_cell_value(3, i, 'string', 'totaleuros')
+doc.set_cell_value(4, i, 'string', "preciomedio")
+doc.set_cell_value(5, i, 'string',  'cantidadmedia')
+doc.set_cell_value(6, i, 'string', 'cantmax')
+doc.set_cell_value(7, i, 'string', 'cantmin')
+doc.set_cell_value(8, i, 'string', 'preciomax')
+doc.set_cell_value(9, i, 'string', 'preciomin')
+
+
+i = 5
+
+<!-- QUERY="SELECT  fechaalbaran, sum(cantlalbaran) AS totvendido
+, sum(cantlalbaran::NUMERIC(12,5) * pvpivainclalbaran::NUMERIC(12,5))::NUMERIC(12,3) AS totaleuros
+, avg(pvpivainclalbaran)::NUMERIC(12,3) as preciomedio
+, avg(cantlalbaran)::NUMERIC(12,3) as cantidadmedia
+, max(cantlalbaran) as cantmax
+, min(cantlalbaran) as cantmin
+, max(pvpivainclalbaran) as preciomax
+, min(pvpivainclalbaran) as preciomin
+FROM lalbaran
+LEFT JOIN articulo AS t1 ON lalbaran.idarticulo = t1.idarticulo   
+LEFT JOIN albaran AS t2 ON lalbaran.idalbaran = t2.idalbaran                                                                                                                                
+WHERE t1.idarticulo = [idarticulo]
+AND fechaalbaran >= '[fecha_inicial]'
+AND fechaalbaran <= '[fecha_final]' GROUP BY fechaalbaran ORDER BY fechaalbaran DESC"-->
+doc.set_cell_value(1, i, 'string', '[fechaalbaran]')
+doc.set_cell_value(2, i, 'string', "[totvendido]")
+doc.set_cell_value(3, i, 'string', '[totaleuros]')
+doc.set_cell_value(4, i, 'string', "[preciomedio]")
+doc.set_cell_value(5, i, 'string',  '[cantidadmedia]')
+doc.set_cell_value(6, i, 'string', '[cantmax]')
+doc.set_cell_value(7, i, 'string', '[cantmin]')
+doc.set_cell_value(8, i, 'string', '[preciomax]')
+doc.set_cell_value(9, i, 'string', '[preciomin]')
+
+i = i + 1
+<!-- END QUERY -->
+# Guardamos el documento
+doc.save("impers_articulo_ventas.ods")
