@@ -37,7 +37,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     setFileConfig ( "asientotabla" );
     setDbFieldId ( "idborrador" );
     addSubFormHeader ( "idapunte", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id apunte" ) );
-    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
+    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
     addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo" ) );
     addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre de la cuenta" ) );
     addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Descripcion del apunte" ) );

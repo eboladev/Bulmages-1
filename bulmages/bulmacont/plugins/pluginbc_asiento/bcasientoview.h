@@ -83,7 +83,7 @@ private:
     void pintaClase ( QString val );
     void pintaComentariosAsiento ( QString text );
     virtual void calculaPintaTotales();
-    void prepareSave();
+    virtual int save();
 
 public:
     BcAsientoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );

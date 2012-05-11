@@ -59,7 +59,8 @@ int entryPoint ( BcBulmaCont *bcont )
     accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_balance.xpm" ) ) );
     accionA->setObjectName("mui_actionBalance");
     pPluginMenu->addAction ( accionA );
-
+    bcont->toolBar->addAction ( accionA );
+    
     return 0;
 }
 
