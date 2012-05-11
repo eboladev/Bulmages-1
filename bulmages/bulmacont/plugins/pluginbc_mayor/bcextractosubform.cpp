@@ -75,35 +75,7 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
     setOrdenEnabled ( FALSE );
     setOrdenPorQuery ( FALSE );
     setDelete ( FALSE );
-    connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
-    connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
-
-    
+ 
 }
 
-
-
-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
-/**
-\param menu
-**/
-void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
-{
-    BL_FUNC_DEBUG
-    menu->addSeparator();
-    menu->addAction ( _ ( "Mostrar asiento" ) );
-}
-
-/// Slot que trata la activacion de un elemento en el menu contextual.
-/**
-\param action
-/return
-**/
-void BcExtractoSubForm::s_trataMenu ( QAction *action )
-{
-    BL_FUNC_DEBUG
-    if ( !action ) return;
-    if ( action->text() == _ ( "Mostrar asiento" ) )
-	emit openAsiento();
-}
 

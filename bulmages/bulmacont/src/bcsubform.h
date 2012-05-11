@@ -57,7 +57,6 @@ public:
     BcCompany *mainCompany();
     BcSubForm ( QWidget *parent = 0 );
     virtual ~BcSubForm();
-    virtual void boton_asiento();
     virtual void createMenu ( QMenu * );
     virtual void execMenuAction ( QAction * );
     virtual void setMainCompany ( BlMainCompany *c );

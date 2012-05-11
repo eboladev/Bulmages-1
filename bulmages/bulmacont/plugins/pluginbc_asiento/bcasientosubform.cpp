@@ -78,31 +78,6 @@ BcAsientoSubForm::~BcAsientoSubForm()
 }
 
 
-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
-/**
-\param menu
-**/
-void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
-{
-    BL_FUNC_DEBUG
-    menu->addSeparator();
-    menu->addAction ( _ ( "Mostrar asiento" ) );
-}
-
-/// Slot que trata la activacion de un elemento en el menu contextual.
-/**
-\param action
-/return
-**/
-void BcAsientoSubForm::s_trataMenu ( QAction *action )
-{
-    BL_FUNC_DEBUG
-    if ( !action ) return;
-    if ( action->text() == _ ( "Mostrar asiento" ) )
-        boton_asiento();
-   
-}
-
 /// Carga lineas de asiento (apuntes).
 /**
 \param idasiento

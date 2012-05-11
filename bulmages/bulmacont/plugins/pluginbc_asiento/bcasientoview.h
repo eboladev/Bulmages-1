@@ -140,5 +140,23 @@ protected:
     bool eventFilter ( QObject *obj, QEvent *event );
 };
 
+
+
+
+class SubForm_Asiento : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_Asiento ( BlSubForm * );
+    ~SubForm_Asiento();
+public slots:
+    void mostrarAsiento ();
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
+
+
+
 #endif
 

@@ -319,68 +319,6 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 }
 
 
-/// Muestra la ventana de asiento.
-/**
-**/
-void BcSubForm::boton_asiento()
-{
-    BL_FUNC_DEBUG
-/*
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QString numasiento = dbValue ( "idasiento" );
-    if ( numasiento != "" ) {
-        companyact->intapuntsempresa() ->muestraAsiento ( numasiento.toInt() );
-        companyact->muestraapuntes1();
-    } // end if
-*/
-    
-}
-
-
-
-
-
-
-
-/// Si el parametro pasado es un:
-/// 0 -> del per&iacute;odo actual.
-/// 1 -> del mes actual mirado a partir de la fecha de inicio.
-/// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
-/**
-\param tipo
-**/
-/*
-void BcSubForm::boton_balance1 ( int tipo )
-{
-    BL_FUNC_DEBUG
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QString fecha = dbValue ( "fecha" ).left ( 10 );
-    QString codigo = dbValue ( "codigo" );
-    QDate fecha1, fecha2, fechaact, fechaact1;
-    if ( fecha != "" && codigo != "" ) {
-        fechaact = blNormalizeDate ( fecha );
-        switch ( tipo ) {
-        case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact1.year(), fechaact.month(), fechaact.day() );
-            break;
-        case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
-            break;
-        case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
-            break;
-        } // end switch
-        mainCompany() ->balanceempresa() ->inicializa1 ( codigo, codigo, fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), "0" );
-        companyact->balanceempresa() ->accept();
-        companyact->librobalance();
-    } // end if
-    
-}
-*/
-
 
 /// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con
 /// Un sistema en cascada en lugar del tipico signal-slot
