@@ -92,11 +92,6 @@ void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
     BL_FUNC_DEBUG
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
-    menu->addSeparator();
-    menu->addAction ( _ ( "Mostrar diario (dia)" ) );
-    menu->addAction ( _ ( "Mostrar diario (mes)" ) );
-    menu->addAction ( _ ( "Mostrar diario (ano)" ) );
-    
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -110,12 +105,5 @@ void BcExtractoSubForm::s_trataMenu ( QAction *action )
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
 	emit openAsiento();
-    if ( action->text() == _ ( "Mostrar diario (dia)" ) )
-        boton_diario1 ( 0 );
-    if ( action->text() == _ ( "Mostrar diario (mes)" ) )
-        boton_diario1 ( 1 );
-    if ( action->text() == _ ( "Mostrar diario (ano)" ) )
-        boton_diario1 ( 2 );
-    
 }
 

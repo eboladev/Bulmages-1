@@ -69,5 +69,22 @@ public slots:
     virtual void openAsiento();
 };
 
+
+class SubForm_Diario : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_Diario ( BlSubForm * );
+    ~SubForm_Diario();
+    void boton_diario1 ( int );
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+    virtual void botonera();
+    virtual void botonera1();
+    virtual void botonera2();
+};
+
 #endif
 

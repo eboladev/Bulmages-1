@@ -340,43 +340,6 @@ void BcSubForm::boton_asiento()
 
 
 
-/// Si el parametro pasado es un:
-/// 0 -> del d&iacute;a actual
-/// 1 -> del mes actual
-/// 2 -> del a&ntilde;o actual
-/**
-\param tipo
-**/
-void BcSubForm::boton_diario1 ( int tipo )
-{
-    BL_FUNC_DEBUG
-/*
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QDate fecha1, fecha2, fechaact, fechaact1;
-    fechaact = blNormalizeDate ( dbValue ( "fecha" ).left ( 10 ) );
-    fechaact1 = blNormalizeDate ( dbValue ( "fecha" ).left ( 10 ) );
-    if ( dbValue ( "fecha" ).left ( 10 ) != "" ) {
-        switch ( tipo ) {
-        case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact1.year(), fechaact1.month(), fechaact1.day() );
-            break;
-        case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
-            break;
-        case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
-            break;
-        } // end switch
-        companyact->diarioempresa() ->inicializa1 ( ( char * ) fecha1.toString ( "dd/MM/yyyy" ).toAscii().constData(), ( char * ) fecha2.toString ( "dd/MM/yyyy" ).toAscii().constData(), 0 );
-    } // end if
-    companyact->diarioempresa() ->accept();
-    companyact->librodiario();
-*/
-    
-}
 
 
 /// Si el parametro pasado es un:

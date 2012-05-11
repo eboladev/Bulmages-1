@@ -32,6 +32,8 @@
 extern "C" PLUGINBC_DIARIO_EXPORT BcDiarioView *g_diario;
 extern "C" PLUGINBC_DIARIO_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_DIARIO_EXPORT int BlAction_actionTriggered(BlAction *);
+extern "C" PLUGINBC_DIARIO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBC_DIARIO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 #endif
 
