@@ -96,13 +96,7 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
     if ( action->text() == _ ( "Mostrar asiento" ) )
       
 	emit cellDoubleClicked ( 0, 0);
-    
-    if ( action->text() == _ ( "Mostrar extracto (dia)" ) )
-        boton_extracto1 ( 0 );
-    if ( action->text() == _ ( "Mostrar extracto (mes)" ) )
-        boton_extracto1 ( 1 );
-    if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
-        boton_extracto1 ( 2 );
+   
 
     
 }
@@ -128,9 +122,7 @@ void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
     QMenu *popup = new QMenu ( this );
     QAction *mostapunte = popup->addAction ( "Mostrar asiento" );
     popup->addSeparator();
-    QAction *mostextractodia = popup->addAction ( "Mostrar extracto (dia)" );
-    QAction *mostextractomes = popup->addAction ( "Mostrar extracto (mes)" );
-    QAction *mostextractoano = popup->addAction ( "Mostrar extracto (ano)" );
+
 
     if ( m_delete ) {
         del = popup->addAction ( _( "Borrar registro" ) );
@@ -147,15 +139,6 @@ void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
 
     if ( opcion == mostapunte ) {
         boton_asiento();
-    } // end if
-    if ( opcion == mostextractodia ) {
-        boton_extracto1 ( 0 );
-    } // end if
-    if ( opcion == mostextractomes ) {
-        boton_extracto1 ( 1 );
-    } // end if
-    if ( opcion == mostextractoano ) {
-        boton_extracto1 ( 2 );
     } // end if
     if ( opcion == ajust ) {
         resizeColumnsToContents();

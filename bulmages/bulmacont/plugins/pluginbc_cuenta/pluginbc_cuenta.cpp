@@ -97,7 +97,7 @@ int BlAction_actionTriggered(BlAction *accion) {
 
 
 /// --------------------------------------------------------------
-/// --------- Implemento la edicion de articulos -----------------
+/// --------- Implemento la edicion de cuentas -----------------
 /// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
 /// Aparezca el identificador de articulo como elemento y permite de forma sencilla
 /// La creacion, la edicion, y la seleccion.

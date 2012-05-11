@@ -67,10 +67,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
     } // end if
     QMenu *popup = new QMenu ( this );
     QAction *mostapunte = popup->addAction ( "Mostrar asiento" );
-    popup->addSeparator();
-    QAction *mostextractodia = popup->addAction ( "Mostrar extracto (dia)" );
-    QAction *mostextractomes = popup->addAction ( "Mostrar extracto (mes)" );
-    QAction *mostextractoano = popup->addAction ( "Mostrar extracto (ano)" );
 
 
     if ( m_delete )
@@ -104,15 +100,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
     } // end if
     if ( opcion == verconfig ) {
         showConfig();
-    } // end if
-    if ( opcion == mostextractodia ) {
-        boton_extracto1 ( 0 );
-    } // end if
-    if ( opcion == mostextractomes ) {
-        boton_extracto1 ( 1 );
-    } // end if
-    if ( opcion == mostextractoano ) {
-        boton_extracto1 ( 2 );
     } // end if
     delete popup;
     

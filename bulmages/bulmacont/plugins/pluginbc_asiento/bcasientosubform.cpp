@@ -87,11 +87,6 @@ void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
     BL_FUNC_DEBUG
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
-    menu->addSeparator();
-    menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
-    menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
-    menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
-    
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -105,14 +100,7 @@ void BcAsientoSubForm::s_trataMenu ( QAction *action )
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
-    if ( action->text() == _ ( "Mostrar extracto (dia)" ) )
-        boton_extracto1 ( 0 );
-    if ( action->text() == _ ( "Mostrar extracto (mes)" ) )
-        boton_extracto1 ( 1 );
-    if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
-        boton_extracto1 ( 2 );
-
-    
+   
 }
 
 /// Carga lineas de asiento (apuntes).

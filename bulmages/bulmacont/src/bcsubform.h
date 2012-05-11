@@ -58,7 +58,6 @@ public:
     BcSubForm ( QWidget *parent = 0 );
     virtual ~BcSubForm();
     virtual void boton_asiento();
-    virtual void boton_extracto1 ( int );
     virtual void boton_diario1 ( int );
     virtual void createMenu ( QMenu * );
     virtual void execMenuAction ( QAction * );

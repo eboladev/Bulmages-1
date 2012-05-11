@@ -78,5 +78,26 @@ public slots:
 };
 
 
+
+
+
+class SubForm_Mayor : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_Mayor ( BlSubForm * );
+    ~SubForm_Mayor();
+    void boton_extracto1 ( int );
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+    virtual void botonera();
+    virtual void botonera1();
+    virtual void botonera2();
+};
+
+
+
 #endif
 
