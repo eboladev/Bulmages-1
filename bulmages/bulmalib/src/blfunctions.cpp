@@ -291,8 +291,6 @@ QString blXMLEscape ( const QString& param )
     text.replace ( '"', "&quot;" );
     text.replace ( "<", "&lt;" );
     text.replace ( ">", "&gt;" );
-    text.replace ( "\n", "<br />" );
-
     return text;
 }
 
@@ -346,13 +344,6 @@ QString blXMLEncode ( const QString &string )
     QChar *data = cadena.data();
 
     /// Cambia tambien otros caracteres no adecuados.
-    /*
-        cadenatmp.replace ( "&", "&#38;" );
-        cadenatmp.replace ( ">", "&#62;" );
-        cadenatmp.replace ( "<", "&#60;" );
-        cadenatmp.replace ( "\"", "&#34;" );
-        cadenatmp.replace ( "\'", "&#39;" );
-    */
     int i;
     for ( i = 0; i < cadena.length(); i++ ) {
         if ( data->unicode() > 127 ) {
@@ -974,7 +965,7 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
 
     numero = numero.replace ( ",", "." );
     QString decimal_break = ".";
-    //echo "test run on ".$numero."<br>";
+
     QString entero = numero.split ( decimal_break ).at ( 0 );
     QString decimal = numero.split ( decimal_break ).at ( 1 );
 
@@ -987,7 +978,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
     if ( decimal.size() > 2 ) {
         decimal = decimal.right ( 2 );
     } // end if
-    //echo "entero ".$entero."<br> decimal ".$decimal."<br>";
 
     QString entero_breakdown = entero;
 
@@ -1004,7 +994,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
         breakdown["entero" + breakdown_key + "number"] = /*floor(*/ QString::number ( entero_breakdown.toLongLong() / breakdown_key.toLongLong() );
 
         if ( breakdown["entero" + breakdown_key+"number"].toLongLong() > 0 ) {
-            //echo " further process <br>";
             breakdown["entero" + breakdown_key+"100"] = /*floor(*/ QString::number ( breakdown["entero" + breakdown_key + "number"].toLongLong() / 100 );
             breakdown["entero" + breakdown_key+"10"] = /*floor( */ QString::number ( ( breakdown["entero" + breakdown_key + "number"].toLongLong() % 100 ) / 10 );
             breakdown["entero" + breakdown_key+"1"] = /*floor(*/   QString::number ( breakdown["entero" + breakdown_key + "number"].toLongLong() % 10 );
@@ -1036,7 +1025,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
                         num_string += numeros["decenas" + tens + ctens + "0"];
                     } // end if
                 } else {
-                    //echo " decenas ".numeros["decenas"][$tens][$ctens]."<br>";
                     if ( numeros.contains ( "decenas" + tens + ctens ) ) {
                         num_string += numeros["decenas" + tens + ctens];
                     }
