@@ -386,8 +386,8 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 	
 
 	  QToolButton *sel = new QToolButton ( sub->mui_menusubform );
-	  sel->setStatusTip ( "Diario (dia)" );
-	  sel->setToolTip ( "Diario (dia)" );
+	  sel->setStatusTip ( "Mostrar Asiento" );
+	  sel->setToolTip ( "Mostrar Asiento" );
 	  sel->setMinimumSize ( QSize ( 18, 18 ) );
 	  sel->setIcon ( QIcon ( ":/Images/book.png" ) );
 	  sel->setIconSize ( QSize ( 18, 18 ) );    

@@ -25,6 +25,6 @@ Incompatibles:
 
 Categorias: Contabilidad general;Experimentales;
 
-Orden:
+Orden: 190
 
 Comentarios: Imprescindible en una empresa normal.

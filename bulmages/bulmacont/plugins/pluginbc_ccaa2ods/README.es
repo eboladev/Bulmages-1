@@ -27,7 +27,7 @@ Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.
 
 Categorias: Contabilidad general
 
-Orden: 70
+Orden: 180
 
 Comentarios: El formato de salida es ods. Esta basado en el plugincanualesods,
 creado por Fco. Javier a partir de un código de Tomeu Borràs. A partir de esto,
