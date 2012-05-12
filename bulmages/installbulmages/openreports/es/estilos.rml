@@ -4,8 +4,7 @@
 
 <stylesheet>
 
-<<<<<<< HEAD
-=======
+
 	<blockTableStyle id="tablavencimientos">
 		<blockAlignment value="RIGHT" start="1,1" stop="-1,-1"/>
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
@@ -20,7 +19,6 @@
 		<blockTopMargin length="-0cm" />
 	</blockTableStyle>
 
->>>>>>> plantillasimpresion
 	<blockTableStyle id="cabecera">	
 		<blockAlignment value="CENTER" start="0,0" stop="-1,-1"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	
