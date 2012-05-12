@@ -37,7 +37,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     setFileConfig ( "asientotabla" );
     setDbFieldId ( "idborrador" );
     addSubFormHeader ( "idapunte", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id apunte" ) );
-    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
+    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
     addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo" ) );
     addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre de la cuenta" ) );
     addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Descripcion del apunte" ) );
@@ -77,43 +77,6 @@ BcAsientoSubForm::~BcAsientoSubForm()
     
 }
 
-
-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
-/**
-\param menu
-**/
-void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
-{
-    BL_FUNC_DEBUG
-    menu->addSeparator();
-    menu->addAction ( _ ( "Mostrar asiento" ) );
-    menu->addSeparator();
-    menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
-    menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
-    menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
-    
-}
-
-/// Slot que trata la activacion de un elemento en el menu contextual.
-/**
-\param action
-/return
-**/
-void BcAsientoSubForm::s_trataMenu ( QAction *action )
-{
-    BL_FUNC_DEBUG
-    if ( !action ) return;
-    if ( action->text() == _ ( "Mostrar asiento" ) )
-        boton_asiento();
-    if ( action->text() == _ ( "Mostrar extracto (dia)" ) )
-        boton_extracto1 ( 0 );
-    if ( action->text() == _ ( "Mostrar extracto (mes)" ) )
-        boton_extracto1 ( 1 );
-    if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
-        boton_extracto1 ( 2 );
-
-    
-}
 
 /// Carga lineas de asiento (apuntes).
 /**

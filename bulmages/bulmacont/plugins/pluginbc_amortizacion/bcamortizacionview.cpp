@@ -495,7 +495,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
                 QString idasiento = dbValue("idasiento");
                 ((BcCompany *)mainCompany())->intapuntsempresa()->muestraAsiento(idasiento.toInt());
         */
-        boton_asiento();
+//        boton_asiento();
     } // end if
 
     if ( opcion->text() == _ ( "Desvincular asiento" ) || opcion->text() == _ ( "Borrar asiento" ) ) {

@@ -41,10 +41,6 @@ public:
     virtual void load ( QString );
     BlFixed totalDebe ( QString );
     BlFixed totalHaber ( QString );
-
-public slots:
-    virtual void s_pintaMenu ( QMenu *menu );
-    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

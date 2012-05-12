@@ -97,7 +97,7 @@ int BlAction_actionTriggered(BlAction *accion) {
 
 
 /// --------------------------------------------------------------
-/// --------- Implemento la edicion de articulos -----------------
+/// --------- Implemento la edicion de cuentas -----------------
 /// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
 /// Aparezca el identificador de articulo como elemento y permite de forma sencilla
 /// La creacion, la edicion, y la seleccion.
@@ -347,7 +347,6 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "codigo" ) {
    QString query = "SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('" + sub->m_campoactual->text() + "%')";
-// blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcuenta", cur->value( "idcuenta" ) );

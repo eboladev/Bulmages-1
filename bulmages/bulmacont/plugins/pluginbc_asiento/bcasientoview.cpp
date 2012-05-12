@@ -301,7 +301,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
     /// Cambiar la fecha del asiento.
     if ( estadoBcAsientoForm() != BcAsientoForm::AsientoCerrado && estadoBcAsientoForm() != BcAsientoForm::AsientoVacio ) {
         setDbValue ( "fecha", mui_fecha->text() );
-        BcAsientoForm::save();
+        save();
     } else {
         iniciar_asiento_nuevo();
     } // end if
@@ -393,13 +393,23 @@ void BcAsientoView::muestraAsiento ( QString v )
 /// Prepara para guardar.
 /**
 **/
-void BcAsientoView::prepareSave()
+int BcAsientoView::save()
 {
     BL_FUNC_DEBUG
     setDbValue ( "fecha", mui_fecha->text() );
     setDbValue ( "ordenasiento", mui_ordenAsiento->text() );
     setDbValue ( "comentariosasiento", mui_comentariosAsiento->toPlainText() );
     setDbValue ( "clase", QString::number ( mui_claseAsiento->currentIndex() ) );
+    
+    /// Miramos el campo fecha y lo completamos.
+    for (int i =0; i < mui_list->rowCount() ; i++) {
+	QString fecha = mui_list->dbValue("fecha",i);
+	if (fecha == "") {
+	    mui_list->setDbValue("fecha", i, mui_fecha->text());
+	} // end if
+    } // end for
+    
+    return BcAsientoForm::save();
     
 }
 
@@ -558,6 +568,10 @@ void BcAsientoList::cargaAsientos()
     
 }
 
+void BcAsientoList::on_mui_inicio_released() {
+      BL_FUNC_DEBUG
+      botonInicio();
+}
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de inicio.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si
@@ -570,14 +584,18 @@ void BcAsientoList::botonInicio()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
-    if ( m_cursorAsientos->numregistros() != 0 ) {
-        m_cursorAsientos->firstRecord();
-        load ( m_cursorAsientos->value( "idasiento" ) );
-    } // end if
+	if ( m_cursorAsientos->numregistros() != 0 ) {
+	    m_cursorAsientos->firstRecord();
+	    load ( m_cursorAsientos->value( "idasiento" ) );
+	} // end if
     } // end if
     
 }
 
+void BcAsientoList::on_mui_fin_released() {
+      BL_FUNC_DEBUG
+      botonFin();
+}
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de fin.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si existen
@@ -589,12 +607,19 @@ void BcAsientoList::botonFin()
 {
     BL_FUNC_DEBUG
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
-    if ( m_cursorAsientos->numregistros() != 0 ) {
-        m_cursorAsientos->lastRecord();
-        load ( m_cursorAsientos->value( "idasiento" ) );
-    } // end if
+	if ( m_cursorAsientos->numregistros() != 0 ) {
+	    m_cursorAsientos->lastRecord();
+	    load ( m_cursorAsientos->value( "idasiento" ) );
+	} // end if
     } // end if
     
+}
+
+
+
+void BcAsientoList::on_mui_siguiente_released() {
+      BL_FUNC_DEBUG
+      botonSiguiente();
 }
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de siguiente registro.
@@ -621,6 +646,11 @@ void BcAsientoList::botonSiguiente()
     } // end if
 }
 
+
+void BcAsientoList::on_mui_anterior_released() {
+      BL_FUNC_DEBUG
+      botonAnterior();
+}
 
 /// Slot que responde a la pulsaci&oacute;n del botÃ³n de anterior registro.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si
@@ -885,7 +915,6 @@ void BcAsientoView::on_mui_cerrarAsiento_clicked()
         blMsgInfo ( _("Asiento descuadrado, no se puede cerrar.") );
         return;
     } // end if
-    prepareSave();
     cerrar();
 }
 
@@ -896,8 +925,7 @@ void BcAsientoView::on_mui_cerrarAsiento_clicked()
 void BcAsientoView::on_mui_guardarAsiento_clicked()
 {
     BL_FUNC_DEBUG
-    prepareSave();
-    BcAsientoForm::save();
+    save();
     
 }
 

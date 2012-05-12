@@ -36,13 +36,6 @@ class PLUGINBC_MAYOR_EXPORT BcExtractoSubForm : public BcSubForm
 public:
     BcExtractoSubForm ( QWidget *parent = 0, const char *name = 0 );
     virtual ~BcExtractoSubForm();
-
-public slots:
-    virtual void s_pintaMenu ( QMenu *menu );
-    virtual void s_trataMenu ( QAction *action );
-    
-signals:
-    void openAsiento();
 };
 
 

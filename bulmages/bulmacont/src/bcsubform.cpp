@@ -93,13 +93,6 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
     BL_FUNC_DEBUG
 
     /// Si no es un campo de tipo debe o haber salimos.
-    /*
-        if ( camp->fieldName() != "debe" && camp->fieldName() != "haber" && camp->fieldName() != "fecha" ) {
-	    
-            return;
-        } // end if
-    */
-
     if ( camp->fieldName() == "fecha" ) {
         BlDbSubFormRecord *recant = lineaat ( row - 1 );
         if ( recant ) {
@@ -131,14 +124,8 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
         return;
     } // end if
 
-    BlDbSubFormRecord *recant = lineaat ( row - 1 );
-    if ( recant ) {
-        rec->setDbValue ( camp->fieldName(), recant->dbValue ( camp->fieldName() ) );
-        return;
-    } // end if
+    BlSubForm::pressedPlus(row, col, rec, camp);
 
-
-    
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + *
@@ -319,142 +306,6 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 }
 
 
-/// Muestra la ventana de asiento.
-/**
-**/
-void BcSubForm::boton_asiento()
-{
-    BL_FUNC_DEBUG
-/*
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QString numasiento = dbValue ( "idasiento" );
-    if ( numasiento != "" ) {
-        companyact->intapuntsempresa() ->muestraAsiento ( numasiento.toInt() );
-        companyact->muestraapuntes1();
-    } // end if
-*/
-    
-}
-
-
-/// Si el parametro pasado es un:
-/// 0 -> del d&iacute;a actual
-/// 1 -> del mes actual
-/// 2 -> del a&ntilde;o actual
-/**
-\param tipo
-**/
-void BcSubForm::boton_extracto1 ( int tipo )
-{
-    BL_FUNC_DEBUG
-/*
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QDate fecha1, fecha2, fechaact;
-    QString fecha = dbValue ( "fecha" ).left ( 10 );
-    QString codigo = dbValue ( "codigo" );
-    if ( fecha != "" && codigo != "" ) {
-        fechaact = blNormalizeDate ( fecha );
-        switch ( tipo ) {
-        case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            break;
-        case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
-            break;
-        case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
-            break;
-        } // end switch
-        companyact->extractoempresa() ->inicializa1 ( codigo, codigo, fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), 0 );
-        companyact->extractoempresa() ->accept();
-        companyact->libromayor();
-    } // end if
-*/
-    
-}
-
-
-/// Si el parametro pasado es un:
-/// 0 -> del d&iacute;a actual
-/// 1 -> del mes actual
-/// 2 -> del a&ntilde;o actual
-/**
-\param tipo
-**/
-void BcSubForm::boton_diario1 ( int tipo )
-{
-    BL_FUNC_DEBUG
-/*
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QDate fecha1, fecha2, fechaact, fechaact1;
-    fechaact = blNormalizeDate ( dbValue ( "fecha" ).left ( 10 ) );
-    fechaact1 = blNormalizeDate ( dbValue ( "fecha" ).left ( 10 ) );
-    if ( dbValue ( "fecha" ).left ( 10 ) != "" ) {
-        switch ( tipo ) {
-        case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact1.year(), fechaact1.month(), fechaact1.day() );
-            break;
-        case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
-            break;
-        case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
-            break;
-        } // end switch
-        companyact->diarioempresa() ->inicializa1 ( ( char * ) fecha1.toString ( "dd/MM/yyyy" ).toAscii().constData(), ( char * ) fecha2.toString ( "dd/MM/yyyy" ).toAscii().constData(), 0 );
-    } // end if
-    companyact->diarioempresa() ->accept();
-    companyact->librodiario();
-*/
-    
-}
-
-
-/// Si el parametro pasado es un:
-/// 0 -> del per&iacute;odo actual.
-/// 1 -> del mes actual mirado a partir de la fecha de inicio.
-/// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
-/**
-\param tipo
-**/
-/*
-void BcSubForm::boton_balance1 ( int tipo )
-{
-    BL_FUNC_DEBUG
-    BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QString fecha = dbValue ( "fecha" ).left ( 10 );
-    QString codigo = dbValue ( "codigo" );
-    QDate fecha1, fecha2, fechaact, fechaact1;
-    if ( fecha != "" && codigo != "" ) {
-        fechaact = blNormalizeDate ( fecha );
-        switch ( tipo ) {
-        case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact1.year(), fechaact.month(), fechaact.day() );
-            break;
-        case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
-            break;
-        case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
-            break;
-        } // end switch
-        mainCompany() ->balanceempresa() ->inicializa1 ( codigo, codigo, fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), "0" );
-        companyact->balanceempresa() ->accept();
-        companyact->librobalance();
-    } // end if
-    
-}
-*/
-
 
 /// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con
 /// Un sistema en cascada en lugar del tipico signal-slot
@@ -464,9 +315,6 @@ void BcSubForm::boton_balance1 ( int tipo )
 void BcSubForm::createMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
-    menu->addAction ( _ ( "Submenu de contabilidad" ) );
-    menu->addSeparator();
-    
 }
 
 
@@ -490,9 +338,6 @@ void BcSubForm::execMenuAction ( QAction * )
 BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate ( parent )
 {
     BL_FUNC_DEBUG
-//    m_subform = ( BlSubForm * ) parent;
-//    installEventFilter ( this );
-    
 }
 
 
@@ -545,17 +390,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 	
         return editor;
     } else {
-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->fieldType() == BlDbField::DbInt) {
-        //QSpinBox *editor = new QSpinBox(parent);
-        //return editor;
-        /*        QLineEdit *editor = new QLineEdit ( parent );
-		
-                return editor;
-        */
-        //} else {
         return BlSubFormDelegate::createEditor ( parent, opcion, index );
-        //} // end if
     } // end if
 }
 
@@ -573,25 +408,14 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-	
         return;
     } // end if
 
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName().startsWith ( "desc" ) ) {
-
-//    if (linea->fieldName() == "desc" + m_subform->tableName()) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-
-//    Este return sobra.
-//        return;
-
-        // TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
-        //        con decimales. Ademas no se que es lo que tiene que hacer
-        //
-        //    } else if (linea->fieldName() == "debe" || linea->fieldName() == "haber" + m_subform->tableName()) {
     } else if ( linea->fieldName() == "debe" || linea->fieldName() == "haber" ) {
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
@@ -612,24 +436,8 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = ( ( QLineEdit * ) comboBox ) ->text();
         model->setData ( index, value );
     } else {
-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->fieldType() == BlDbField::DbInt) {
-        //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-        //    spinBox->interpretText();
-        //    int value = spinBox->value();
-        //    model->setData(index, value);
-        //} else {
         BlSubFormDelegate::setModelData ( editor, model, index );
-        //} // end if
-
-        /*QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
-                QString value = lineedit->text();
-                model->setData ( index, value );
-        */
     } // end if
-
-
-    
 }
 
 
@@ -643,7 +451,6 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
     BL_FUNC_DEBUG
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
-    //if (linea->fieldName() == "desc" + m_subform->tableName()) {
     if ( linea->fieldName().startsWith ( "desc" ) ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
@@ -668,20 +475,8 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         ( ( QLineEdit * ) bf ) ->setText ( value );
         ( ( QLineEdit * ) bf ) ->selectAll();
     } else {
-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->fieldType() == BlDbField::DbInt) {
-        //    int value = index.model()->data(index, Qt::DisplayRole).toInt();
-        //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-        //    spinBox->setValue(value);
-        //} else {
         BlSubFormDelegate::setEditorData ( editor, index );
-        //} // end if
-        /*        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-                QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
-                lineedit->setText ( value );
-        */
     } // end if
-    
 }
 
 
