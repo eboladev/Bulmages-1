@@ -93,13 +93,6 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
     BL_FUNC_DEBUG
 
     /// Si no es un campo de tipo debe o haber salimos.
-    /*
-        if ( camp->fieldName() != "debe" && camp->fieldName() != "haber" && camp->fieldName() != "fecha" ) {
-	    
-            return;
-        } // end if
-    */
-
     if ( camp->fieldName() == "fecha" ) {
         BlDbSubFormRecord *recant = lineaat ( row - 1 );
         if ( recant ) {
@@ -131,14 +124,8 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
         return;
     } // end if
 
-    BlDbSubFormRecord *recant = lineaat ( row - 1 );
-    if ( recant ) {
-        rec->setDbValue ( camp->fieldName(), recant->dbValue ( camp->fieldName() ) );
-        return;
-    } // end if
+    BlSubForm::pressedPlus(row, col, rec, camp);
 
-
-    
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + *
@@ -328,9 +315,6 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 void BcSubForm::createMenu ( QMenu *menu )
 {
     BL_FUNC_DEBUG
-    menu->addAction ( _ ( "Submenu de contabilidad" ) );
-    menu->addSeparator();
-    
 }
 
 
@@ -354,9 +338,6 @@ void BcSubForm::execMenuAction ( QAction * )
 BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate ( parent )
 {
     BL_FUNC_DEBUG
-//    m_subform = ( BlSubForm * ) parent;
-//    installEventFilter ( this );
-    
 }
 
 
@@ -409,17 +390,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 	
         return editor;
     } else {
-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->fieldType() == BlDbField::DbInt) {
-        //QSpinBox *editor = new QSpinBox(parent);
-        //return editor;
-        /*        QLineEdit *editor = new QLineEdit ( parent );
-		
-                return editor;
-        */
-        //} else {
         return BlSubFormDelegate::createEditor ( parent, opcion, index );
-        //} // end if
     } // end if
 }
 
@@ -437,25 +408,14 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-	
         return;
     } // end if
 
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     if ( linea->fieldName().startsWith ( "desc" ) ) {
-
-//    if (linea->fieldName() == "desc" + m_subform->tableName()) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-
-//    Este return sobra.
-//        return;
-
-        // TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
-        //        con decimales. Ademas no se que es lo que tiene que hacer
-        //
-        //    } else if (linea->fieldName() == "debe" || linea->fieldName() == "haber" + m_subform->tableName()) {
     } else if ( linea->fieldName() == "debe" || linea->fieldName() == "haber" ) {
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
@@ -476,24 +436,8 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = ( ( QLineEdit * ) comboBox ) ->text();
         model->setData ( index, value );
     } else {
-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->fieldType() == BlDbField::DbInt) {
-        //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-        //    spinBox->interpretText();
-        //    int value = spinBox->value();
-        //    model->setData(index, value);
-        //} else {
         BlSubFormDelegate::setModelData ( editor, model, index );
-        //} // end if
-
-        /*QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
-                QString value = lineedit->text();
-                model->setData ( index, value );
-        */
     } // end if
-
-
-    
 }
 
 
@@ -507,7 +451,6 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
     BL_FUNC_DEBUG
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
-    //if (linea->fieldName() == "desc" + m_subform->tableName()) {
     if ( linea->fieldName().startsWith ( "desc" ) ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
@@ -532,20 +475,8 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         ( ( QLineEdit * ) bf ) ->setText ( value );
         ( ( QLineEdit * ) bf ) ->selectAll();
     } else {
-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->fieldType() == BlDbField::DbInt) {
-        //    int value = index.model()->data(index, Qt::DisplayRole).toInt();
-        //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-        //    spinBox->setValue(value);
-        //} else {
         BlSubFormDelegate::setEditorData ( editor, index );
-        //} // end if
-        /*        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-                QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
-                lineedit->setText ( value );
-        */
     } // end if
-    
 }
 
 
