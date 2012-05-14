@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->                                                                                    
+<!--PARAM NAME="fecha_inicial" TYPE="date"-->                                                                                             
+<!--PARAM NAME="fecha_final" TYPE="date"-->  
+
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<!-- # pathtitle="&Ventas\Informes\Cuadres de Caja" -->  
+<document>
+Q<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Listado" author="" allowSplitting="20">
+	<pageTemplate id="main">
+		<pageGraphics>
+		<!-- EL LOGO DE CABECERA -->
+		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<setFont name="Helvetica" size="22"/>
+		<drawString x="18cm" y="19.5cm">Cuadres de Caja</drawString>
+		</pageGraphics>
+	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	</pageTemplate>
+</template>
+<stylesheet>
+	<blockTableStyle id="tabla4">
+		<blockAlignment value="RIGHT" start="0,1" stop="-1,-1"/>
+		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+	</blockTableStyle>
+</stylesheet>
+
+<story>
+
+<blockTable colWidths="4.00cm, 4.0cm, 4.0cm, 4cm, 4cm, 4cm"  repeatRows="1">
+<tr>
+<td> Fecha></td>
+<td> Hora </td>
+<td> Tickets </td>
+<td> Base Imponible </td>
+<td> Impuestos </td>
+<td> Total </td>
+</tr>
+<!-- QUERY="SELECT * from z  LEFT JOIN
+(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
+ON z.idz = t1.idz WHERE fechaz >= '[fecha_inicial]' AND fechaz<= '[fecha_final]' order by fechaz DESC" -->
+<tr>
+<td>[fechaz]</td>
+<td>[horaz]</td>
+<td>[numtickets]</td>
+<td>[sb1]</td>
+<td>[sb2]</td>
+<td>[totalz]</td>
+</tr>
+<!-- END QUERY -->
+
+<!-- QUERY="SELECT sum(numtickets) AS tnumtickets, sum(sb1) AS tsb1, sum(sb2) AS tsb2, sum (sb1 + sb2) AS ttot from z  LEFT JOIN
+(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
+ON z.idz = t1.idz
+WHERE fechaz >= '[fecha_inicial]' AND fechaz<= '[fecha_final]'" -->
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><para><b>Totales:</b></para></td>
+<td> </td>
+<td><para><b>[tnumtickets]</b></para></td>
+<td><para><b>[tsb1]</b></para></td>
+<td><para><b>[tsb2]</b></para></td>
+<td><para><b>[ttot]</b></para></td>
+</tr>
+
+<!-- END QUERY -->
+</blockTable>
+	<spacer length="5mm" width="1mm"/>		
+</story>
+</document>

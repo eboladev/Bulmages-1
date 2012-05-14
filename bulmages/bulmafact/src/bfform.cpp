@@ -235,7 +235,8 @@ int BfForm::parseTags ( QString &buff, int tipoEscape )
             buff.replace ( pos, rx3.matchedLength(), "" );
             pos = 0;
         } else {
-            pos += rx3.matchedLength();
+	    buff.replace ( pos, rx3.matchedLength(),  rx3.cap ( 1 ) );
+            pos =0;
         } // end if
     } // end while
 
@@ -374,7 +375,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
             
                         if ( parametros_story[j].trimmed() == "desc" + tableName() ){
                             ///Impresion del descripcion de los articulos
-                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
+                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ) + "</para></td>\n";
                         } // end if
             
                         if ( parametros_story[j].trimmed() == "cant" + tableName() ){
@@ -415,7 +416,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
                     ///Impresion de los contenidos
                     fitxersortidatxt += "<tr>";
                     fitxersortidatxt += "    <td>" + blStringEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
-                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
+                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ) + "</para></td>\n";
                     fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
                     fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
                     fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
@@ -567,14 +568,10 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
         //   buff.replace("[detallearticulos]", detalleArticulos());
 #endif
 
-// a ver. No se porque pongo esto aqui.
-// Como que he sacado codigo de generateRML(arch) para ponerlo aqui (porque me parece que es parseTags
-// quien deberia tratar todos los tags y porque asi aprovecho el proceso de escribir el fichero en el
-// encoding correcto que ya esta hecho en Ficha) pues he copiado tambien esto, pero yo hubiera dicho
-// que C++ ya haria el delete solito y si
-// no es asi, porque en generateRML había dos catchs y solo uno hacia delete?
+
     } catch ( ... ) {
-    
+	// Tratamiento de errores, en caso de tener alguna incidenca (que es posible al depender de factores externos puede quedar memoria reservada
+	// sin liberar. C++ no tiene recolector de basura con lo que hay que liberar toda la memoria.
         if ( cur ) delete cur;
         throw ( -1 );
         

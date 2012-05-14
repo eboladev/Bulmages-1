@@ -108,6 +108,7 @@ void BcDiarioView::on_mui_configurar_clicked()
 {
     BL_FUNC_DEBUG
     mui_list->showConfig();
+    mui_list->showMenu();
     
 }
 

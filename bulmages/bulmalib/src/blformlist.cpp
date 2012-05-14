@@ -488,6 +488,8 @@ void BlFormList::on_mui_configurar_toggled ( bool checked )
     BL_FUNC_DEBUG
     if ( checked ) {
         m_listado->showConfig();
+	m_listado->showMenu();
+	
     } else {
         m_listado->hideConfig();
     } // end if

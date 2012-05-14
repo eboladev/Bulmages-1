@@ -26,7 +26,7 @@ Reports: balance.rml
 
 Categorias: Contabilidad general;Experimentales;
 
-Orden: 20
+Orden: 100
 
 Comentarios: -
 

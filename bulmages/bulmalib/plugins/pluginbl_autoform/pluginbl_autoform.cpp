@@ -893,10 +893,11 @@ void SubForm_AutoForm::s_trataMenu ( QAction *action )
     BlSubForm *sub = ( BlSubForm * ) parent();
     QString opc = action->text();
     QString tablename = action->objectName().left(action->objectName().size() - 1 );
+    if (action->objectName().right(1) != "E" && action->objectName().right(1) != "S")
+        return;
     if ( opc.startsWith (_( "Editar " )) ) {
         QString id = sub->dbValue ( sub->dbFieldId() );
         if ( id != "" ) {
-// 	   QString title = opc.right(opc.size()- QString(_("Editar ")).size());
             BlAutoForm * bud = genBlAutoForm (tablename);
             if ( bud->load ( id ) ) {
                 delete bud;
@@ -906,12 +907,9 @@ void SubForm_AutoForm::s_trataMenu ( QAction *action )
             bud->show();
 	} // end if
     } else if ( opc.startsWith (_( "Seleccionar " )) ) {
-//         QString title = opc.right(opc.size()- QString(_("Seleccionar ")).size());
         seleccionarElemento(sub, tablename);
     } else if ( opc.startsWith (_ ( "Nuevo " ))  ) {
-//         QString title = opc.right(opc.size()- QString(_("Nuevo ")).size());
 	nuevoElemento(tablename);
-      
     } // end if
 }
 

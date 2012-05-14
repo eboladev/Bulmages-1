@@ -12,8 +12,8 @@ doc.set_column_property(1, 'width', '0.5in')
 doc.set_column_property(2, 'width', '5in')
 doc.set_cell_property('bold', True)
 doc.set_cell_value(2, 2, 'string', 'Libros de un Autor')
-doc.set_cell_value(3, 2, 'string', '[idautor]')
-doc.set_cell_value(4, 2, 'string', '[nomautor]')
+doc.set_cell_value(3, 2, 'string', u'[idautor]')
+doc.set_cell_value(4, 2, 'string', u'[nomautor]')
 
 i=4
 doc.set_cell_value(1,i,'string','ISBN')
@@ -22,7 +22,7 @@ doc.set_cell_value(2,i,'string','TITULO')
 
 <!-- QUERY="SELECT * FROM libro WHERE idautor = [idautor]" -->
 doc.set_cell_value(1,i,'string','isblibro')
-doc.set_cell_value(2,i,'string','[titulolibro]')
+doc.set_cell_value(2,i,'string', u'[titulolibro]')
 i =  i + 1
 <!-- END QUERY -->
 
