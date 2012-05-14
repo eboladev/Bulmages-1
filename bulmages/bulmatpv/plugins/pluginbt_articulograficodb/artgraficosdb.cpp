@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *   Copyright (C) 2009 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
@@ -472,18 +473,29 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     previousButton->setText("Atras");
     previousButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     previousButton->setFixedHeight(42);
-
-    topLayout->addWidget( previousButton );
-    connect(previousButton, SIGNAL(clicked()),this, SLOT(previousButton_clicked()), Qt::QueuedConnection);
     
     QToolButton *homeButton = new QToolButton(m_widget);
     homeButton->setText("Inicio");
     homeButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     homeButton->setFixedHeight(42);
     
-    topLayout->addWidget( homeButton );
-    connect(homeButton, SIGNAL(clicked()),this, SLOT(homeButton_clicked()), Qt::QueuedConnection);
-        
+    if ( columnasBotones > 1 ) {
+      
+      topLayout->addWidget( previousButton );
+      connect(previousButton, SIGNAL(clicked()),this, SLOT(previousButton_clicked()), Qt::QueuedConnection);
+      
+      topLayout->addWidget( homeButton );
+      connect(homeButton, SIGNAL(clicked()),this, SLOT(homeButton_clicked()), Qt::QueuedConnection);
+      
+    } else {
+      
+      mainLayout->addWidget( previousButton );
+      connect(previousButton, SIGNAL(clicked()),this, SLOT(previousButton_clicked()), Qt::QueuedConnection);
+      
+      mainLayout->addWidget( homeButton );
+      connect(homeButton, SIGNAL(clicked()),this, SLOT(homeButton_clicked()), Qt::QueuedConnection);
+      
+    }
 
     /// Crea los QVBoxLayout necesarios para colocar los botones.
     for (j = 0; j < columnasBotones; j++) {
