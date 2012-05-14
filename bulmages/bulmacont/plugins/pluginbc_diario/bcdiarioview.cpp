@@ -103,11 +103,18 @@ void BcDiarioView::on_mui_actualizar_released()
 
 ///
 /**
+\param checked
 **/
-void BcDiarioView::on_mui_configurar_released()
+void BcDiarioView::on_mui_configurar_toggled ( bool checked )
 {
     BL_FUNC_DEBUG
-    mui_list->showConfig();
+    if ( checked ) {
+        mui_list->showConfig();
+	//mui_list->showMenu();
+	
+    } else {
+        mui_list->hideConfig();
+    } // end if
     
 }
 
