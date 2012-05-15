@@ -473,6 +473,8 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
 {
     BL_FUNC_DEBUG
 
+    int resur;
+
     /// Si no se ha seleccionado ninguna accion salimos.
     if ( ! opcion )
         return;
@@ -509,7 +511,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
     if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
 
-        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;
@@ -547,7 +549,17 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         } // end if
         delete cur;
 
-        BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( ( ( BcCompany * ) mainCompany() ), 0 );
+	resur =   g_plugins->run ( "SNewBcAsientoInteligenteView", (BcCompany *) mainCompany() );
+        if ( ! resur) {
+            blMsgInfo(_("No se pudo crear instancia de asientos inteligentes"));
+            return;
+        } // end if
+        BcAsientoInteligenteView *nueva = (BcAsientoInteligenteView *) g_plugParams;
+	
+	nueva->show();
+	
+	blMsgInfo("Aqui estoy");
+	
         nueva->inicializa ( 0 );
 
         nueva->muestraPlantilla ( "amortizacion" );
@@ -565,7 +577,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;

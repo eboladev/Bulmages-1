@@ -4,6 +4,7 @@
 #pluginbc_amortizacion
 
 set (plugin pluginbc_amortizacion)
+ADD_DEFINITIONS(-D${plugin})
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -52,7 +53,7 @@ ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
-ADD_DEFINITIONS(-DQT_PLUGIN)
+#ADD_DEFINITIONS(-DQT_PLUGIN)
 
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
@@ -89,9 +90,9 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 if(WIN32)
-target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-else(WIN32)
 target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+else(WIN32)
+target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)
 
 add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento)

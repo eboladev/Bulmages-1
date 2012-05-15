@@ -35,10 +35,11 @@
 #include "bcasientoview.h"
 #include "bccompany.h"
 #include "bcasientolistview.h"
+#include "bcasientointeligenteview.h"
 
 BcAsientoView *g_asiento;
 BcBulmaCont *g_pluginbc_asiento = NULL;
-
+BcAsientoInteligenteView *g_asientoInteligente = NULL;
 
 ///
 /**
@@ -252,7 +253,14 @@ int SNewBcAsientoView ( BcCompany * )
     return 1;
 }
 
-
+/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
+/// Sino que se llama desde multiples partes del sistema.
+int SNewBcAsientoInteligenteView ( BcCompany *company )
+{
+    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( company, 0 );
+    g_plugParams = nueva;
+    return 1;
+}
 
 
 
