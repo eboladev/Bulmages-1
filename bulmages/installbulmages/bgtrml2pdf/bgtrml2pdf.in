@@ -102,7 +102,7 @@ class NumberedCanvas(canvas.Canvas):
         self._currentPage =0
         self._pageCounter=0
         self.pages={}
-
+"""
     def showPage(self):
         self._currentPage +=1
         if not self._flag:
@@ -132,7 +132,7 @@ class NumberedCanvas(canvas.Canvas):
         #)
 
     def save(self):
-        """add page info to each page (page x of y)"""
+        #add page info to each page (page x of y)
         # reset page counter
         self._pageNumber = 0
         for code in self._codes:
@@ -142,7 +142,7 @@ class NumberedCanvas(canvas.Canvas):
             canvas.Canvas.showPage(self)
 #        self.restoreState()
         self._doc.SaveToFile(self._filename, self)
-
+"""
 class PageCount(platypus.Flowable):
     def draw(self):
         self.canv.beginForm("pageCount")
