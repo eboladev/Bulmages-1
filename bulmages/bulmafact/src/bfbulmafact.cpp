@@ -514,6 +514,13 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
     pWorkspace->cascade();
 #endif
   
-    
+
+}
+
+
+void BfBulmaFact::resizeEvent ( QResizeEvent * event )
+{
+    BlMainWindow::resizeEvent(event);
+    emit resizeEventCalled();
 }
 
