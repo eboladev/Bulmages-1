@@ -375,7 +375,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
             
                         if ( parametros_story[j].trimmed() == "desc" + tableName() ){
                             ///Impresion del descripcion de los articulos
-                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ) + "</para></td>\n";
+                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
                         } // end if
             
                         if ( parametros_story[j].trimmed() == "cant" + tableName() ){
@@ -416,7 +416,7 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
                     ///Impresion de los contenidos
                     fitxersortidatxt += "<tr>";
                     fitxersortidatxt += "    <td>" + blStringEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
-                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ) + "</para></td>\n";
+                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
                     fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
                     fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
                     fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";

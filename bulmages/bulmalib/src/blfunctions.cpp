@@ -291,6 +291,7 @@ QString blXMLEscape ( const QString& param )
     text.replace ( '"', "&quot;" );
     text.replace ( "<", "&lt;" );
     text.replace ( ">", "&gt;" );
+    text.replace ( "\n", "<br />" );
     return text;
 }
 
