@@ -689,8 +689,9 @@ class _rml_flowable(object):
             for key in txt_n.attrib.keys():
                 if key in ('rml_except', 'rml_loop', 'rml_tag'):
                     del txt_n.attrib[key]
-            if not n.tag == 'bullet':
-                txt_n.text = bgutils.xml2str(self._textual(n))
+            # Si se hace el xml2str entonces no funcionan los tags encadenados <b><u>...</u></b> y se duplican las cadenas.
+            #if not n.tag == 'bullet':
+            #    txt_n.text = bgutils.xml2str(self._textual(n))
             txt_n.tail = n.tail and bgutils.xml2str(bgutils._process_text(self, n.tail.replace('\n',''))) or ''
             rc1 += etree.tostring(txt_n)
         return rc1
