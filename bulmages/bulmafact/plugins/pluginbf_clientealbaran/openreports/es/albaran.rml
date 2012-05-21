@@ -197,8 +197,8 @@
 	</storyPlace>
 
 
-<storyPlace x="16cm" y="0cm" width="15cm" height="1cm">
-<place x="16cm" y="0cm" width="15cm" height="2.5cm">
+<storyPlace x="16cm" y="1cm" width="15cm" height="1cm">
+<place x="16cm" y="1cm" width="15cm" height="2.5cm">
 <barCode code="code128" height="1cm">ALB [idalbaran] [numalbaran] [refalbaran]</barCode>
 </place>
 </storyPlace>
