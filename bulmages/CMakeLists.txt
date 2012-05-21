@@ -69,7 +69,9 @@ endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
 
 # ######### General setup ##########
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
-find_package(Qt4 REQUIRED) 
+find_package(Qt4 REQUIRED)
+
+
 
 if(NOT QT4_FOUND)
   message(FATAL_ERROR "Bulmages needs QT4 to compile")
@@ -87,6 +89,14 @@ endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.7)
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
+
+INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPythonInterp.cmake)
+
+
+
+if(NOT PYTHON_EXECUTABLE)
+  message("Without python you will not be able to run bulmasetup or create pdfs")
+endif(NOT PYTHON_EXECUTABLE)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
 option(USE_QMDIAREA "Enable new QMdiArea" OFF)
