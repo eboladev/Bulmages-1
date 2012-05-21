@@ -66,6 +66,12 @@
 
 	</pageGraphics>
 
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="14.6cm" />
+
+		
+	</pageTemplate>
+
 
 		<!-- FRAME DE CONTENIDOS -->
 		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="14.6cm" />
@@ -99,10 +105,11 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b><u>Descuento/s:</u></b></para></td>
+
+			<td><para style="paragrafo2"><b>Descuento/s:</b></para></td>
 			<td></td>
-			<td><para style="paragrafo2der"><b><u>% Dto:</u></b></para></td>
-			<td><para style="paragrafo2der"><b><u>Total dto:</u></b></para></td>
+			<td><para style="paragrafo2der"><b>% Dto:</b></para></td>
+			<td><para style="paragrafo2der"><b>Total dto:</b></para></td>
 		</tr>
 
 <!--LINEAS DESCUENTO-->
@@ -129,7 +136,7 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b><u>Comentario/s:</u></b></para></td>
+			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -137,24 +144,29 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2">[comentpresupuesto]</para></td>
+			<td><para style="paragrafo2">[comentpresupuesto,l]</para></td>
 			<td></td>
 			<td></td>
 			<td></td>
 		</tr>
 <!--END QUERY-->
 <!--END IF QUERY-->
-
+<!-- IF QUERY = "SELECT vencpresupuesto FROM presupuesto WHERE idpresupuesto=[idpresupuesto] AND vencpresupuesto IS NOT NULL"-->
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b>Este presupuesto es válido hasta: [vencpresupuesto]</b><br/><br/>
-			NOTA: Es imprescindible la presentación de este presupuesto para mantener los precios y condiciones.
-			</para></td>
+			<td><para style="paragrafo2">Este presupuesto es válido hasta: <b>[vencpresupuesto]</b></para></td>
 			<td></td>
 			<td></td>
 			<td></td>
 		</tr>
-
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2">Es imprescindible la presentación de este presupuesto para mantener los precios y condiciones.</para></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+<!-- END IF QUERY -->
 	</blockTable>
 
 	
