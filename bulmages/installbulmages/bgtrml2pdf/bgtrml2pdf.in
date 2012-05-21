@@ -1,19 +1,42 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>).
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
 
 import sys
-from StringIO import StringIO
 import copy
 import reportlab
 import re
 from reportlab.pdfgen import canvas
 from reportlab import platypus
-import cStringIO
 
 import os
+import logging
 from lxml import etree
 import base64
 from reportlab.platypus.doctemplate import ActionFlowable
+
+from reportlab.lib.units import inch,cm,mm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.lib.pagesizes import A4, letter
 
 from reportlab.graphics.shapes import Group, Drawing, Ellipse, Wedge, String, STATE_DEFAULTS, ArcPath, Polygon, Rect, PolyLine, Line
 from reportlab.graphics.shapes import Drawing, _DrawingEditorMixin, colors  
@@ -26,14 +49,100 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.lib.validators import Auto  
 from reportlab.graphics.charts.lineplots import GridLinePlot  
 
-
 sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bgtrml2pdf')
 
 import bgutils
 import bgcolor
+from safe_eval import safe_eval as eval
+
+
+
+g_styles = 0
+
+
+
+
+
+try:
+    from cStringIO import StringIO
+    _hush_pyflakes = [ StringIO ]
+except ImportError:
+    from StringIO import StringIO
+
+_logger = logging.getLogger(__name__)
 
 encoding = 'utf-8'
 
+def _open_image(filename, path=None):
+    """Attempt to open a binary file and return the descriptor
+    """
+    if os.path.isfile(filename):
+        return open(filename, 'rb')
+    for p in (path or []):
+        if p and os.path.isabs(p):
+            fullpath = os.path.join(p, filename)
+            if os.path.isfile(fullpath):
+                return open(fullpath, 'rb')
+        try:
+            if p:
+                fullpath = os.path.join(p, filename)
+            else:
+                fullpath = filename
+            return open(fullpath)
+        except IOError:
+            pass
+    raise IOError("File %s cannot be found in image path" % filename)
+
+class NumberedCanvas(canvas.Canvas):
+    def __init__(self, *args, **kwargs):
+        canvas.Canvas.__init__(self, *args, **kwargs)
+        self._codes = []
+        self._flag=False
+        self._pageCount=0
+        self._currentPage =0
+        self._pageCounter=0
+        self.pages={}
+"""
+    def showPage(self):
+        self._currentPage +=1
+        if not self._flag:
+           self._pageCount += 1
+        else:
+            self.pages.update({self._currentPage:self._pageCount})
+        self._codes.append({'code': self._code, 'stack': self._codeStack})
+        self._startPage()
+        self._flag=False
+
+    def pageCount(self):
+        if self.pages.get(self._pageCounter,False):
+            self._pageNumber=0
+        self._pageCounter +=1
+        key=self._pageCounter
+        if not self.pages.get(key,False):
+            while not self.pages.get(key,False):
+                key = key + 1
+	# TBR -- No ponemos el pageCount porque hay que controlarlo desde el script y no se puede seleccionar donde ni como ponerlo.
+
+        #self.setFont("Helvetica", 8)
+        #self.drawRightString((self._pagesize[0]-30), (self._pagesize[1]-40),
+        #    "Page %(this)i of %(total)i" % {
+        #       'this': self._pageNumber+1,
+        #       'total': self.pages.get(key,False),
+        #    }
+        #)
+
+    def save(self):
+        #add page info to each page (page x of y)
+        # reset page counter
+        self._pageNumber = 0
+        for code in self._codes:
+            self._code = code['code']
+            self._codeStack = code['stack']
+            self.pageCount()
+            canvas.Canvas.showPage(self)
+#        self.restoreState()
+        self._doc.SaveToFile(self._filename, self)
+"""
 class PageCount(platypus.Flowable):
     def draw(self):
         self.canv.beginForm("pageCount")
@@ -46,16 +155,23 @@ class PageReset(platypus.Flowable):
         self.canv._pageNumber = 0
 
 class _rml_styles(object,):
-    def __init__(self, nodes = {}, localcontext = None):
+    def __init__(self, nodes, localcontext):
         self.localcontext = localcontext
         self.styles = {}
+        self.styles_obj = {}
         self.names = {}
         self.table_styles = {}
+        self.default_style = reportlab.lib.styles.getSampleStyleSheet()
+
         for node in nodes:
             for style in node.findall('blockTableStyle'):
                 self.table_styles[style.get('id')] = self._table_style_get(style)
             for style in node.findall('paraStyle'):
-                self.styles[style.get('name')] = self._para_style_update(style)
+                sname = style.get('name')
+                self.styles[sname] = self._para_style_update(style)
+
+                self.styles_obj[sname] = reportlab.lib.styles.ParagraphStyle(sname, self.default_style["Normal"], **self.styles[sname])
+
             for variable in node.findall('initialize'):
                 for name in variable.findall('name'):
                     self.names[ name.get('id')] = name.get('value')
@@ -84,7 +200,7 @@ class _rml_styles(object,):
 
     def _table_style_get(self, style_node):
         styles = []
-        for node in style_node.getchildren():
+        for node in style_node:
             start = bgutils.tuple_int_get(node, 'start', (0,0) )
             stop = bgutils.tuple_int_get(node, 'stop', (-1,-1) )
             if node.tag=='blockValign':
@@ -123,21 +239,27 @@ class _rml_styles(object,):
 
     def para_style_get(self, node):
         style = False
-        if node.get('style'):
-            if node.get('style') in self.styles:
-                styles = reportlab.lib.styles.getSampleStyleSheet()
-                sname = node.get('style')
-                style = reportlab.lib.styles.ParagraphStyle(sname, styles["Normal"], **self.styles[sname])
+        sname = node.get('style')
+        if sname:
+            if sname in self.styles_obj:
+                style = self.styles_obj[sname]
             else:
-                sys.stderr.write('Warning: style not found, %s - setting default!\n' % (node.get('style'),) )
+                _logger.warning('Warning: style not found, %s - setting default!\n' % (node.get('style'),) )
         if not style:
-            styles = reportlab.lib.styles.getSampleStyleSheet()
-            style = copy.deepcopy(styles['Normal'])
-        style.__dict__.update(self._para_style_update(node))
+            style = self.default_style['Normal']
+        para_update = self._para_style_update(node)
+        if para_update:
+            # update style only is necessary
+            style = copy.deepcopy(style)
+            style.__dict__.update(para_update)
         return style
 
 class _rml_doc(object):
-    def __init__(self, node, localcontext, images={}, path='.', title=None):
+    def __init__(self, node, localcontext=None, images=None, path='.', title=None):
+        if images is None:
+            images = {}
+        if localcontext is None:
+            localcontext = {}
         self.localcontext = localcontext
         self.etree = node
         self.filename = self.etree.get('filename')
@@ -155,12 +277,6 @@ class _rml_doc(object):
 		    nodo.getparent().insert(nodo.getparent().index(nodo), nnnode)
 	    nodo.getparent().remove(nodo)
 
-    def get_localcontext(self):
-        return self.localcontext
-
-    def get_etree(self):
-        return self.etree
-
     def docinit(self, els):
         from reportlab.lib.fonts import addMapping
         from reportlab.pdfbase import pdfmetrics
@@ -170,37 +286,62 @@ class _rml_doc(object):
             for font in node.findall('registerFont'):
                 name = font.get('fontName').encode('ascii')
                 fname = font.get('fontFile').encode('ascii')
-                pdfmetrics.registerFont(TTFont(name, fname ))
+                if name not in pdfmetrics._fonts:
+                    pdfmetrics.registerFont(TTFont(name, fname))
                 addMapping(name, 0, 0, name)    #normal
                 addMapping(name, 0, 1, name)    #italic
                 addMapping(name, 1, 0, name)    #bold
                 addMapping(name, 1, 1, name)    #italic and bold
 
+    def setTTFontMapping(self,face, fontname, filename, mode='all'):
+        from reportlab.lib.fonts import addMapping
+        from reportlab.pdfbase import pdfmetrics
+        from reportlab.pdfbase.ttfonts import TTFont
+
+        if fontname not in pdfmetrics._fonts:
+            pdfmetrics.registerFont(TTFont(fontname, filename))
+        if (mode == 'all'):
+            addMapping(face, 0, 0, fontname)    #normal
+            addMapping(face, 0, 1, fontname)    #italic
+            addMapping(face, 1, 0, fontname)    #bold
+            addMapping(face, 1, 1, fontname)    #italic and bold
+        elif (mode== 'normal') or (mode == 'regular'):
+            addMapping(face, 0, 0, fontname)    #normal
+        elif (mode == 'italic'):
+            addMapping(face, 0, 1, fontname)    #italic
+        elif (mode == 'bold'):
+            addMapping(face, 1, 0, fontname)    #bold
+        elif (mode == 'bolditalic'):
+            addMapping(face, 1, 1, fontname)    #italic and bold
+
     def _textual_image(self, node):
         rc = ''
-        for n in node.getchildren():
+        for n in node:
             rc +=( etree.tostring(n) or '') + n.tail
         return base64.decodestring(node.tostring())
 
     def _images(self, el):
         result = {}
-        for node in el.findall('image'):
+        for node in el.findall('.//image'):
             rc =( node.text or '')
             result[node.get('name')] = base64.decodestring(rc)
         return result
 
     def render(self, out):
-        el = self.etree.findall('docinit')
+        el = self.etree.findall('.//docinit')
         if el:
             self.docinit(el)
 
-        el = self.etree.findall('stylesheet')
-        self.styles = _rml_styles(el,self.localcontext)
+        el = self.etree.findall('.//stylesheet')
+        global g_styles 
+        g_styles = _rml_styles(el,self.localcontext)
+        self.styles = g_styles
 
-        el = self.etree.findall('images')
+        el = self.etree.findall('.//images')
         if el:
             self.images.update( self._images(el[0]) )
-        el = self.etree.findall('template')
+
+        el = self.etree.findall('.//template')
         if len(el):
             pt_obj = _rml_template(self.localcontext, out, el[0], self, images=self.images, path=self.path, title=self.title)
             el = bgutils._child_get(self.etree, self, 'story')
@@ -208,19 +349,19 @@ class _rml_doc(object):
         else:
             self.canvas = canvas.Canvas(out)
             pd = self.etree.find('pageDrawing')[0]
-            pd_obj = _rml_canvas(self.canvas, self.localcontext, self, self, self.styles, self.images, path=self.path, title=self.title)
+            pd_obj = _rml_canvas(self.canvas, self.localcontext, None, self, self.images, path=self.path, title=self.title)
             pd_obj.render(pd)
 
             self.canvas.showPage()
             self.canvas.save()
 
-
-
 class _rml_canvas(object):
-    def __init__(self, canvas, localcontext, doc_tmpl=None, doc=None, styles=None, images={}, path='.', title=None):
+    def __init__(self, canvas, localcontext, doc_tmpl=None, doc=None, images=None, path='.', title=None):
+        if images is None:
+            images = {}
         self.localcontext = localcontext
         self.canvas = canvas
-        self.styles = styles
+        self.styles = doc.styles
         self.doc_tmpl = doc_tmpl
         self.doc = doc
         self.images = images
@@ -246,7 +387,7 @@ class _rml_canvas(object):
             if n.tag == 'pageNumber':
                 rc += str(self.canvas.getPageNumber())
             rc += bgutils._process_text(self, n.tail)
-        return rc
+        return rc.replace('\n','')
 
     def _drawString(self, node):
         v = bgutils.attr_get(node, ['x','y'])
@@ -255,13 +396,13 @@ class _rml_canvas(object):
         self.canvas.drawString(text=text, **v)
     def _pieChart(self, node):
         self.d = PieChart(node, 400, 200)
-        renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
+        renderPDF.draw(self.d, self.canvas, **bgbgutils.attr_get(node, ['x','y']))
     def _barChart(self, node):
         self.d = BarChart(node, 400, 200)
-        renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
+        renderPDF.draw(self.d, self.canvas, **bgbgutils.attr_get(node, ['x','y']))
     def _linePlot(self, node):
         self.d = LinePlot(node, 400, 200)
-        renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
+        renderPDF.draw(self.d, self.canvas, **bgbgutils.attr_get(node, ['x','y']))
     def _drawCenteredString(self, node):
         v = bgutils.attr_get(node, ['x','y'])
         text=self._textual(node, **v)
@@ -318,7 +459,7 @@ class _rml_canvas(object):
         self.canvas.circle(x_cen=bgutils.unit_get(node.get('x')), y_cen=bgutils.unit_get(node.get('y')), r=bgutils.unit_get(node.get('radius')), **bgutils.attr_get(node, [], {'fill':'bool','stroke':'bool'}))
 
     def _place(self, node):
-        flows = _rml_flowable(self.doc, self.localcontext, images=self.images, path=self.path,        title=self.title).render(node)
+        flows = _rml_flowable(self.doc, self.localcontext, images=self.images, path=self.path, title=self.title).render(node)
         infos = bgutils.attr_get(node, ['x','y','width','height'])
 
         infos['y']+=infos['height']
@@ -351,48 +492,66 @@ class _rml_canvas(object):
 
     def _image(self, node):
         import urllib
+        import urlparse
         from reportlab.lib.utils import ImageReader
-        if not node.get('file') :
+        nfile = node.get('file')
+        if not nfile:
             if node.get('name'):
                 image_data = self.images[node.get('name')]
-                s = cStringIO.StringIO(image_data)
+                _logger.debug("Image %s used", node.get('name'))
+                s = StringIO(image_data)
             else:
-                import base64
+                newtext = node.text
                 if self.localcontext:
-                   res = bgutils._regex.findall(node.text)
-                   for key in res:
-                       newtext = eval(key, {}, self.localcontext)
-                       node.text = newtext
-                image_data = base64.decodestring(node.text)
-                if not image_data: return False
-                s = cStringIO.StringIO(image_data)
+                    res = bgutils._regex.findall(newtext)
+                    for key in res:
+                        newtext = eval(key, {}, self.localcontext) or ''
+                image_data = None
+                if newtext:
+                    image_data = base64.decodestring(newtext)
+                if image_data:
+                    s = StringIO(image_data)
+                else:
+                    _logger.debug("No image data!")
+                    return False
         else:
-            if node.get('file') in self.images:
-                s = cStringIO.StringIO(self.images[node.get('file')])
+            if nfile in self.images:
+                s = StringIO(self.images[nfile])
             else:
                 try:
-                    u = urllib.urlopen(str(node.get('file')))
-                    s = cStringIO.StringIO(u.read())
-                except:
-                    u = file(os.path.join(self.path,str(node.get('file'))), 'rb')
-                    s = cStringIO.StringIO(u.read())
-        img = ImageReader(s)
-        (sx,sy) = img.getSize()
-
-        args = {}
-        for tag in ('width','height','x','y'):
-            if node.get(tag):
-                args[tag] = bgutils.unit_get(node.get(tag))
-        if ('width' in args) and (not 'height' in args):
-            args['height'] = sy * args['width'] / sx
-        elif ('height' in args) and (not 'width' in args):
-            args['width'] = sx * args['height'] / sy
-        elif ('width' in args) and ('height' in args):
-            if (float(args['width'])/args['height'])>(float(sx)>sy):
-                args['width'] = sx * args['height'] / sy
-            else:
+                    up = urlparse.urlparse(str(nfile))
+                except ValueError:
+                    up = False
+                if up and up.scheme:
+                    # RFC: do we really want to open external URLs?
+                    # Are we safe from cross-site scripting or attacks?
+                    _logger.debug("Retrieve image from %s", nfile)
+                    u = urllib.urlopen(str(nfile))
+                    s = StringIO(u.read())
+                else:
+                    _logger.debug("Open image file %s ", nfile)
+                    s = _open_image(nfile, path=self.path)
+        try:
+            img = ImageReader(s)
+            (sx,sy) = img.getSize()
+            _logger.debug("Image is %dx%d", sx, sy)
+            args = { 'x': 0.0, 'y': 0.0 }
+            for tag in ('width','height','x','y'):
+                if node.get(tag):
+                    args[tag] = bgutils.unit_get(node.get(tag))
+            if ('width' in args) and (not 'height' in args):
                 args['height'] = sy * args['width'] / sx
-        self.canvas.drawImage(img, **args)
+            elif ('height' in args) and (not 'width' in args):
+                args['width'] = sx * args['height'] / sy
+            elif ('width' in args) and ('height' in args):
+                if (float(args['width'])/args['height'])>(float(sx)>sy):
+                    args['width'] = sx * args['height'] / sy
+                else:
+                    args['height'] = sy * args['width'] / sx
+            self.canvas.drawImage(img, **args)
+        finally:
+            s.close()
+#        self.canvas._doc.SaveToFile(self.canvas._filename, self.canvas)
 
     def _path(self, node):
         self.path = self.canvas.beginPath()
@@ -419,6 +578,20 @@ class _rml_canvas(object):
             self.path.close()
         self.canvas.drawPath(self.path, **bgutils.attr_get(node, [], {'fill':'bool','stroke':'bool'}))
 
+    def setFont(self, node):
+        fontname = node.get('name')
+        if fontname not in pdfmetrics.getRegisteredFontNames()\
+             or fontname not in pdfmetrics.standardFonts:
+                # let reportlab attempt to find it
+                try:
+                    pdfmetrics.getFont(fontname)
+                except Exception:
+                    _logger.debug('Could not locate font %s, substituting default: %s',
+                                 fontname,
+                                 self.canvas._fontname)
+                    fontname = self.canvas._fontname
+        return self.canvas.setFont(fontname, bgutils.unit_get(node.get('size')))
+
     def render(self, node):
         tags = {
             'drawCentredString': self._drawCenteredString,
@@ -431,24 +604,23 @@ class _rml_canvas(object):
             'curves': self._curves,
             'fill': lambda node: self.canvas.setFillColor(bgcolor.get(node.get('color'))),
             'stroke': lambda node: self.canvas.setStrokeColor(bgcolor.get(node.get('color'))),
-            'setFont': lambda node: self.canvas.setFont(node.get('name'), bgutils.unit_get(node.get('size'))),
+            'setFont': self.setFont ,
             'place': self._place,
             'circle': self._circle,
             'lineMode': self._line_mode,
             'path': self._path,
             'rotate': lambda node: self.canvas.rotate(float(node.get('degrees'))),
             'translate': self._translate,
-            'image': self._image,
-            'pieChart': self._pieChart,
-            'barChart': self._barChart,
-            'linePlot': self._linePlot
+            'image': self._image
         }
         for n in bgutils._child_get(node, self):
             if n.tag in tags:
                 tags[n.tag](n)
 
 class _rml_draw(object):
-    def __init__(self, localcontext ,node, styles, images={}, path='.', title=None):
+    def __init__(self, localcontext, node, styles, images=None, path='.', title=None):
+        if images is None:
+            images = {}
         self.localcontext = localcontext
         self.node = node
         self.styles = styles
@@ -459,18 +631,53 @@ class _rml_draw(object):
 
     def render(self, canvas, doc):
         canvas.saveState()
-        cnv = _rml_canvas(canvas, self.localcontext, None, doc, self.styles, images=self.images, path=self.path, title=self.canvas_title)
+        cnv = _rml_canvas(canvas, self.localcontext, doc, self.styles, images=self.images, path=self.path, title=self.canvas_title)
         cnv.render(self.node)
         canvas.restoreState()
 
+class _rml_StoryPlace(platypus.flowables.Flowable):
+    def __init__(self, node, localcontext, styles, self2):
+	    self.localcontext = localcontext
+	    self.node = node
+	    self.styles = styles
+	    self.self2 = self2
+	    self.width = bgutils.unit_get(node.get('width'))
+	    self.height = bgutils.unit_get(node.get('height'))
+	    self.x = bgutils.unit_get(node.get('x'))
+	    self.y = bgutils.unit_get(node.get('y'))
+    def wrap(self, *args):
+	    return (self.width, self.height)
+    def draw(self):
+	    canvas = self.canv
+	    canvas.restoreState()
+	    drw = _rml_draw(self.localcontext ,self.node, self.styles)
+	    drw.render(self.canv, self.self2.doc)
+	    canvas.saveState()
+
+class _rml_Illustration(platypus.flowables.Flowable):
+    def __init__(self, node, localcontext, styles, self2):
+        self.localcontext = (localcontext or {}).copy()
+        self.node = node
+        self.styles = styles
+        self.width = bgutils.unit_get(node.get('width'))
+        self.height = bgutils.unit_get(node.get('height'))
+        self.self2 = self2
+    def wrap(self, *args):
+        return (self.width, self.height)
+    def draw(self):
+        drw = _rml_draw(self.localcontext ,self.node,self.styles, images=self.self2.images, path=self.self2.path, title=self.self2.title)
+        drw.render(self.canv, None)
+
 class _rml_flowable(object):
-    def __init__(self, doc=None, localcontext=None, images={}, path='.', title=None):
+    def __init__(self, doc, localcontext, images=None, path='.', title=None):
+        global g_styles
+        if images is None:
+            images = {}
         self.localcontext = localcontext
         self.doc = doc
-        if hasattr(doc, 'styles'):
-           self.styles = doc.styles
-        else:
-           self.styles = _rml_styles()
+        self.styles = g_styles
+
+           
         self.images = images
         self.path = path
         self.title = title
@@ -482,16 +689,16 @@ class _rml_flowable(object):
             for key in txt_n.attrib.keys():
                 if key in ('rml_except', 'rml_loop', 'rml_tag'):
                     del txt_n.attrib[key]
-            if True or not self._textual(n).isspace():
-                txt_n.text = bgutils.xml2str(self._textual(n))
-                txt_n.tail = ''
-                rc1 += etree.tostring(txt_n)
-        #rc1 += bgutils._process_text(self, node.tail or '')
+            # Si se hace el xml2str entonces no funcionan los tags encadenados <b><u>...</u></b> y se duplican las cadenas.
+            #if not n.tag == 'bullet':
+            #    txt_n.text = bgutils.xml2str(self._textual(n))
+            txt_n.tail = n.tail and bgutils.xml2str(bgutils._process_text(self, n.tail.replace('\n',''))) or ''
+            rc1 += etree.tostring(txt_n)
         return rc1
 
     def _table(self, node):
-        childs = bgutils._child_get(node,self,'tr')
-        if not childs:
+        children = bgutils._child_get(node,self,'tr')
+        if not children:
             return None
         length = 0
         colwidths = None
@@ -499,13 +706,15 @@ class _rml_flowable(object):
         data = []
         styles = []
         posy = 0
-        for tr in childs:
+        for tr in children:
             paraStyle = None
             if tr.get('style'):
                 st = copy.deepcopy(self.styles.table_styles[tr.get('style')])
-                for s in st._cmds:
-                    s[1][1] = posy
-                    s[2][1] = posy
+                for si in range(len(st._cmds)):
+                    s = list(st._cmds[si])
+                    s[1] = (s[1][0],posy)
+                    s[2] = (s[2][0],posy)
+                    st._cmds[si] = tuple(s)
                 styles.append(st)
             if tr.get('paraStyle'):
                 paraStyle = self.styles.styles[tr.get('paraStyle')]
@@ -563,49 +772,39 @@ class _rml_flowable(object):
             table.setStyle(s)
         return table
 
-
     def _storyPlace(self, node):
-	    class StoryPlace(platypus.flowables.Flowable):
-		    def __init__(self, node, localcontext, styles, self2):
-			    self.localcontext = localcontext
-			    self.node = node
-			    self.styles = styles
-			    self.self2 = self2
-			    self.width = bgutils.unit_get(node.get('width'))
-			    self.height = bgutils.unit_get(node.get('height'))
-			    self.x = bgutils.unit_get(node.get('x'))
-			    self.y = bgutils.unit_get(node.get('y'))
-		    def wrap(self, *args):
-			    return (self.width, self.height)
-		    def draw(self):
-			    canvas = self.canv
-			    canvas.restoreState()
-			    drw = _rml_draw(self.localcontext ,self.node, self.styles)
-			    drw.render(self.canv, self.self2.doc)
-			    canvas.saveState()
-	    return StoryPlace(node, self.localcontext,  self.styles, self)
+	    return _rml_StoryPlace(node, self.localcontext,  self.styles, self)
 
     def _illustration(self, node):
-        class Illustration(platypus.flowables.Flowable):
-            def __init__(self, node, localcontext, styles, self2):
-                self.localcontext = localcontext
-                self.node = node
-                self.styles = styles
-                self.width = bgutils.unit_get(node.get('width'))
-                self.height = bgutils.unit_get(node.get('height'))
-                self.self2 = self2
-            def wrap(self, *args):
-                return (self.width, self.height)
-            def draw(self):
-                canvas = self.canv
-                drw = _rml_draw(self.localcontext ,self.node,self.styles, images=self.self2.images, path=self.self2.path, title=self.self2.title)
-                drw.render(self.canv, None)
-        return Illustration(node, self.localcontext, self.styles, self)
+        return _rml_Illustration(node, self.localcontext, self.styles, self)
 
     def _textual_image(self, node):
         return base64.decodestring(node.text)
 
+    def _pto(self, node):
+        sub_story = []
+        pto_header = None
+        pto_trailer = None
+        for node in bgutils._child_get(node, self):
+            if node.tag == etree.Comment:
+                node.text = ''
+                continue
+            elif node.tag=='pto_header':
+                pto_header = self.render(node)
+            elif node.tag=='pto_trailer':
+                pto_trailer = self.render(node)
+            else:
+                flow = self._flowable(node)
+                if flow:
+                    if isinstance(flow,list):
+                        sub_story = sub_story + flow
+                    else:
+                        sub_story.append(flow)
+        return platypus.flowables.PTOContainer(sub_story, trailer=pto_trailer, header=pto_header)
+
     def _flowable(self, node, extra_style=None):
+        if node.tag=='pto':
+            return self._pto(node)
         if node.tag=='para':
             style = self.styles.para_style_get(node)
             if extra_style:
@@ -622,21 +821,26 @@ class _rml_flowable(object):
                 from reportlab.graphics.barcode import common
                 from reportlab.graphics.barcode import fourstate
                 from reportlab.graphics.barcode import usps
-            except Exception, e:
+                from reportlab.graphics.barcode import createBarcodeDrawing
+
+            except ImportError:
+                _logger.warning("Cannot use barcode renderers:", exc_info=True)
                 return None
-            args = bgutils.attr_get(node, [], {'ratio':'float','xdim':'unit','height':'unit','checksum':'int','quiet':'int','width':'unit','stop':'bool','bearers':'int','barWidth':'float','barHeight':'float','humanReadable':'int'})
+            args = bgutils.attr_get(node, [], {'ratio':'float','xdim':'unit','height':'unit','checksum':'int','quiet':'int','width':'unit','stop':'bool','bearers':'int','barWidth':'float','barHeight':'float'})
             codes = {
                 'codabar': lambda x: common.Codabar(x, **args),
                 'code11': lambda x: common.Code11(x, **args),
-                'code128': lambda x: code128.Code128(x, **args),
-                'standard39': lambda x: code39.Standard39(x, **args),
-                'standard93': lambda x: code93.Standard93(x, **args),
+                'code128': lambda x: code128.Code128(str(x), **args),
+                'standard39': lambda x: code39.Standard39(str(x), **args),
+                'standard93': lambda x: code93.Standard93(str(x), **args),
                 'i2of5': lambda x: common.I2of5(x, **args),
-                'extended39': lambda x: code39.Extended39(x, **args),
-                'extended93': lambda x: code93.Extended93(x, **args),
+                'extended39': lambda x: code39.Extended39(str(x), **args),
+                'extended93': lambda x: code93.Extended93(str(x), **args),
                 'msi': lambda x: common.MSI(x, **args),
                 'fim': lambda x: usps.FIM(x, **args),
                 'postnet': lambda x: usps.POSTNET(x, **args),
+                'ean13': lambda x: createBarcodeDrawing('EAN13', value=str(x), **args),
+                'qrcode': lambda x: createBarcodeDrawing('QR', value=x, **args),
             }
             code = 'code128'
             if node.get('code'):
@@ -661,43 +865,34 @@ class _rml_flowable(object):
             styles = reportlab.lib.styles.getSampleStyleSheet()
             style = styles['Title']
             return platypus.Paragraph(self._textual(node), style, **(bgutils.attr_get(node, [], {'bulletText':'str'})))
-        elif re.match('^h([1-9]+[0-9]*)$', (node.text or '')):
+        elif re.match('^h([1-9]+[0-9]*)$', (node.tag or '')):
             styles = reportlab.lib.styles.getSampleStyleSheet()
-            style = styles['Heading'+str(node.get[1:])]
+            style = styles['Heading'+str(node.tag[1:])]
             return platypus.Paragraph(self._textual(node), style, **(bgutils.attr_get(node, [], {'bulletText':'str'})))
         elif node.tag=='image':
+            image_data = False
             if not node.get('file'):
                 if node.get('name'):
-                    image_data = self.doc.images[node.get('name')].read()
+                    if node.get('name') in self.doc.images:
+                        _logger.debug("Image %s read ", node.get('name'))
+                        image_data = self.doc.images[node.get('name')].read()
+                    else:
+                        _logger.warning("Image %s not defined", node.get('name'))
+                        return False
                 else:
                     import base64
+                    newtext = node.text
                     if self.localcontext:
                         newtext = bgutils._process_text(self, node.text or '')
-                        node.text = newtext
-                    image_data = base64.decodestring(node.text)
-                if not image_data: return False
-                image = cStringIO.StringIO(image_data)
-                return platypus.Image(image, mask=(250,255,250,255,250,255), **(bgutils.attr_get(node, ['width','height'])))
+                    image_data = base64.decodestring(newtext)
+                if not image_data:
+                    _logger.debug("No inline image data")
+                    return False
+                image = StringIO(image_data)
             else:
-                return platypus.Image(node.get('file'), mask=(250,255,250,255,250,255), **(bgutils.attr_get(node, ['width','height'])))
-            from reportlab.lib.utils import ImageReader
-            name = str(node.get('file'))
-            img = ImageReader(name)
-            (sx,sy) = img.getSize()
-            args = {}
-            for tag in ('width','height'):
-                if node.get(tag):
-                    args[tag] = bgutils.unit_get(node.get(tag))
-            if ('width' in args) and (not 'height' in args):
-                args['height'] = sy * args['width'] / sx
-            elif ('height' in args) and (not 'width' in args):
-                args['width'] = sx * args['height'] / sy
-            elif ('width' in args) and ('height' in args):
-                if (float(args['width'])/args['height'])>(float(sx)>sy):
-                    args['width'] = sx * args['height'] / sy
-                else:
-                    args['height'] = sy * args['width'] / sx
-            return platypus.Image(name, mask=(250,255,250,255,250,255), **args)
+                _logger.debug("Image get from file %s", node.get('file'))
+                image = _open_image(node.get('file'), path=self.doc.path)
+            return platypus.Image(image, mask=(250,255,250,255,250,255), **(bgutils.attr_get(node, ['width','height'])))
         elif node.tag=='spacer':
             if node.get('width'):
                 width = bgutils.unit_get(node.get('width'))
@@ -709,7 +904,7 @@ class _rml_flowable(object):
             return self.render(node)
         elif node.tag == 'pageNumberReset':
             return PageReset()
-        elif node.tag in ('pageBreak', 'nextPage'):
+        elif node.tag in ('page_rmleak', 'nextPage'):
             return platypus.PageBreak()
         elif node.tag=='condPageBreak':
             return platypus.CondPageBreak(**(bgutils.attr_get(node, ['height'])))
@@ -730,33 +925,7 @@ class _rml_flowable(object):
             color_hr=node.get('color')  or 'black'
             thickness_hr=node.get('thickness') or 1
             lineCap_hr=node.get('lineCap') or 'round'
-            #return platypus.flowables.HRFlowable(width=width_hr,color=color.get(color_hr),thickness=float(thickness_hr),lineCap=str(lineCap_hr))
-            return platypus.flowables.HRFlowable(width=width_hr,color=color_hr,thickness=float(thickness_hr),lineCap=str(lineCap_hr))
-        elif node.tag == 'keepInFrame':
-	    if node.get('maxWidth'):
-	      maxWidth = bgutils.unit_get(node.get('maxWidth'))
-	    else:
-	      maxWidth = bgutils.unit_get('1cm')
-
-	    if node.get('maxHeight'):
-	      maxHeight = bgutils.unit_get(node.get('maxHeight'))
-	    else:
-	      maxHeight = bgutils.unit_get('1cm')
-	    
-	    if node.get('onOverflow'):
-	      mmode = node.get('onOverflow')
-	    else:
-	      mmode = "truncate"
-	      
-	    style = self.styles.para_style_get(node)
-            result = []
-            for i in self._textual(node).split('\n'):
-                result.append(platypus.Paragraph(i, style, **(bgutils.attr_get(node, [], {'bulletText':'str'}))))
-
-	    # return patypus.KeepInFrame(width, height, paragraphs, mode=mode)
-	    # return platypus.KeepInFrame(100, 100, node, mode=platypus.overflow)
-	    #return platypus.KeepInFrame(maxWidth, maxHeight)
-	    return platypus.KeepInFrame(maxWidth, maxHeight, result, mmode)
+            return platypus.flowables.HRFlowable(width=width_hr,color=bgcolor.get(color_hr),thickness=float(thickness_hr),lineCap=str(lineCap_hr))
         else:
             sys.stderr.write('Warning: flowable not yet implemented: %s !\n' % (node.tag,))
             return None
@@ -800,24 +969,37 @@ class TinyDocTemplate(platypus.BaseDocTemplate):
         self.handle_frameBegin()
     def afterFlowable(self, flowable):
         if isinstance(flowable, PageReset):
+            self.canv._pageCount=self.page
+            self.page=0
+            self.canv._flag=True
             self.canv._pageNumber = 0
 
 class _rml_template(object):
-    def __init__(self, localcontext, out, node, doc, images={}, path='.', title=None):
+    def __init__(self, localcontext, out, node, doc, images=None, path='.', title=None):
+        if images is None:
+            images = {}
+        if not localcontext:
+            localcontext={'internal_header':True}
         self.localcontext = localcontext
         self.images= images
         self.path = path
         self.title = title
-        if not node.get('pageSize'):
-            pageSize = (bgutils.unit_get('21cm'), bgutils.unit_get('29.7cm'))
-        else:
+
+        pagesize_map = {'a4': A4,
+                    'us_letter': letter
+                    }
+        pageSize = A4
+        if self.localcontext.get('company'):
+            pageSize = pagesize_map.get(self.localcontext.get('company').paper_format, A4)
+        if node.get('pageSize'):
             ps = map(lambda x:x.strip(), node.get('pageSize').replace(')', '').replace('(', '').split(','))
             pageSize = ( bgutils.unit_get(ps[0]),bgutils.unit_get(ps[1]) )
 
-        self.doc_tmpl = TinyDocTemplate(out, pagesize=pageSize, **bgutils.attr_get(node, ['leftMargin','rightMargin','topMargin','bottomMargin'], {'allowSplitting':'int','showBoundary':'bool','title':'str','author':'str'}))
+        self.doc_tmpl = TinyDocTemplate(out, pagesize=pageSize, **bgutils.attr_get(node, ['leftMargin','rightMargin','topMargin','bottomMargin'], {'allowSplitting':'int','showBoundary':'bool','rotation':'int','title':'str','author':'str'}))
         self.page_templates = []
         self.styles = doc.styles
         self.doc = doc
+        self.image=[]
         pts = node.findall('pageTemplate')
         for pt in pts:
             frames = []
@@ -827,10 +1009,12 @@ class _rml_template(object):
                     frame.lastFrame = True
                 frames.append( frame )
             try :
-                gr = pt.findall('pageGraphics') or pt.getchildren()[1].findall('pageGraphics')
-            except :
+                gr = pt.findall('pageGraphics')\
+                    or pt[1].findall('pageGraphics')
+            except Exception: # FIXME: be even more specific, perhaps?
                 gr=''
             if len(gr):
+#                self.image=[ n for n in bgutils._child_get(gr[0], self) if n.tag=='image' or not self.localcontext]
                 drw = _rml_draw(self.localcontext,gr[0], self.doc, images=images, path=self.path, title=self.title)
                 self.page_templates.append( platypus.PageTemplate(frames=frames, onPage=drw.render, **bgutils.attr_get(pt, [], {'id':'str'}) ))
             else:
@@ -839,17 +1023,24 @@ class _rml_template(object):
         self.doc_tmpl.addPageTemplates(self.page_templates)
 
     def render(self, node_stories):
+        if self.localcontext and not self.localcontext.get('internal_header',False):
+            del self.localcontext['internal_header']
         fis = []
-        r = _rml_flowable(self.doc, self.localcontext, images=self.images, path=self.path, title=self.title)
+        r = _rml_flowable(self.doc,self.localcontext, images=self.images, path=self.path, title=self.title)
         story_cnt = 0
         for node_story in node_stories:
             if story_cnt > 0:
                 fis.append(platypus.PageBreak())
             fis += r.render(node_story)
+            # Reset Page Number with new story tag
+            fis.append(PageReset())
             story_cnt += 1
-        if self.localcontext:
+        if self.localcontext and self.localcontext.get('internal_header',False):
+            self.doc_tmpl.afterFlowable(fis)
+            self.doc_tmpl.build(fis,canvasmaker=NumberedCanvas)
+        else:
             fis.append(PageCount())
-        self.doc_tmpl.build(fis)
+            self.doc_tmpl.build(fis)
 
 class PieChart(_DrawingEditorMixin,Drawing):  
     def __init__(self,node,width=400,height=200,*args,**kw):  
@@ -881,7 +1072,7 @@ class PieChart(_DrawingEditorMixin,Drawing):
         for td in node.findall('categorie'):
 		categories.append(td.text)
 		if (td.get('color')):
-		    tupla = bgcolor.get(str(td.get('color')))
+		    tupla = bgbgcolor.get(str(td.get('color')))
 		    self._colors.append(Color(tupla[0], tupla[1], tupla[2]))
 		else:
 		    self._colors.append(self._colors1[i])
@@ -914,7 +1105,7 @@ class BarChart(_DrawingEditorMixin,Drawing):
         for td in node.findall('categorie'):
 		categories.append(td.text)
 		if (td.get('color')):
-		    tupla = bgcolor.get(str(td.get('color')))
+		    tupla = bgbgcolor.get(str(td.get('color')))
 		    self._colors.append(Color(tupla[0], tupla[1], tupla[2]))
 		else:
 		    self._colors.append(self._colors1[i])
@@ -926,8 +1117,8 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self.bar.data             = data
         self.bar.categoryAxis.categoryNames = categories
         self.bar.categoryAxis.labels.fillColor = None  
-        self.bar.width                      = bgutils.unit_get(node.get('width')) or 200
-        self.bar.height                     = bgutils.unit_get(node.get('height')) or 150
+        self.bar.width                      = bgbgutils.unit_get(node.get('width')) or 200
+        self.bar.height                     = bgbgutils.unit_get(node.get('height')) or 150
         self.bar.x                          = 30
         self.bar.y                          = 15
         self.bar.barSpacing                 = 5
@@ -939,8 +1130,8 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self.bar.valueAxis.valueMax         = None#10#  
         self.bar.categoryAxis.visible       = 1  
         self.bar.categoryAxis.visibleTicks  = 0  
-        self.bar.barLabels.fontSize         = bgutils.unit_get(node.get('fontSize')) or 6
-        self.bar.valueAxis.labels.fontSize  = bgutils.unit_get(node.get('fontSize')) or 6
+        self.bar.barLabels.fontSize         = bgbgutils.unit_get(node.get('fontSize')) or 6
+        self.bar.valueAxis.labels.fontSize  = bgbgutils.unit_get(node.get('fontSize')) or 6
         self.bar.strokeWidth                = 0.1  
         self.bar.bars.strokeWidth           = 0.5  
         n = len(self.bar.data)  
@@ -950,22 +1141,22 @@ class BarChart(_DrawingEditorMixin,Drawing):
         #_ = ['Vodafone Group', 'UBS', 'British Petroleum', 'Royal bk of Scotland', 'HSBC Holdings', 'Total Elf Fina', 'Repsol', 'Novartis', 'BNP Paribas', 'Schneider Electric' ]  
         _ = categories
         #self.legend.colorNamePairs  = [(Auto(chart=self.bar),(t,'%.2f'% d[0])) for t,d in zip(_,self.bar.data)]  
-        self.legend.columnMaximum   = bgutils.unit_get(node.get('columnMaximum')) or 10
+        self.legend.columnMaximum   = bgbgutils.unit_get(node.get('columnMaximum')) or 10
         self.legend.fontName        = 'Helvetica'  
-        self.legend.fontSize        = bgutils.unit_get(node.get('fontSize')) or 5.5
+        self.legend.fontSize        = bgbgutils.unit_get(node.get('fontSize')) or 5.5
         self.legend.boxAnchor       = 'w'  
-        self.legend.x               = (bgutils.unit_get(node.get('width')) or 200) + 60
-        self.legend.y               = (bgutils.unit_get(node.get('height')) or self.height ) / 2
+        self.legend.x               = (bgbgutils.unit_get(node.get('width')) or 200) + 60
+        self.legend.y               = (bgbgutils.unit_get(node.get('height')) or self.height ) / 2
         self.legend.dx              = 8  
         self.legend.dy              = 8  
         self.legend.alignment       = 'right'  
-        self.legend.yGap            = bgutils.unit_get(node.get('fontSize')) or 0
+        self.legend.yGap            = bgbgutils.unit_get(node.get('fontSize')) or 0
         self.legend.deltay          = 11  
         self.legend.dividerLines    = 1|2|4  
         self.legend.subCols.rpad    = 10  
         self.legend.dxTextSpace     = 5  
         self.legend.strokeWidth     = 0  
-        self.legend.dividerOffsY    = bgutils.unit_get(node.get('fontSize')) or 6
+        self.legend.dividerOffsY    = bgbgutils.unit_get(node.get('fontSize')) or 6
         self.legend.colEndCallout   = TotalAnnotator(rText='%.2f'%sum([x[0] for x in self.bar.data]), fontName='Helvetica-Bold', fontSize=self.legend.fontSize*1.1)  
         
         self.legend.colorNamePairs = zip(self._colors, categories)  
@@ -986,7 +1177,7 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         for tj in node.findall('serie'):
 		self._catNames.append(tj.find("name").text)
 		if (tj.get('color')):
-		    tupla = bgcolor.get(str(tj.get('color')))
+		    tupla = bgbgcolor.get(str(tj.get('color')))
 		    self._colors.append(Color(tupla[0], tupla[1], tupla[2]))
 		else:
 		    self._colors.append(self._colors1[i])
@@ -998,8 +1189,8 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         self._add(self,GridLinePlot(),name='plot',validate=None,desc=None)
         self.plot.y                             = 40
         self.plot.x                             = 30 
-        self.plot.width                      = bgutils.unit_get(node.get('width'))-2*self.plot.x or self.width-2*self.plot.x
-        self.plot.height                     = bgutils.unit_get(node.get('height'))-2*self.plot.y or self.height-2*self.plot.y
+        self.plot.width                      = bgbgutils.unit_get(node.get('width'))-2*self.plot.x or self.width-2*self.plot.x
+        self.plot.height                     = bgbgutils.unit_get(node.get('height'))-2*self.plot.y or self.height-2*self.plot.y
         self.plot.xValueAxis.xLabelFormat       = '{mmm} {yy}'
         self.plot.xValueAxis.monthName = [ 'Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre' ]
         self.plot.lineLabels.fontSize           = 4
@@ -1083,24 +1274,41 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         self.legend.colorNamePairs  = [(self._colors[i], self._catNames[i]) for i in xrange(len(self.plot.data))]
 
 
-
-def parseNode(rml, localcontext = {},fout=None, images={}, path='.',title=None):
+def parseNode(rml, localcontext=None, fout=None, images=None, path='.', title=None):
     node = etree.XML(rml)
     r = _rml_doc(node, localcontext, images, path, title=title)
-    fp = cStringIO.StringIO()
+    #try to override some font mappings
+    try:
+        from customfonts import SetCustomFonts
+        SetCustomFonts(r)
+    except ImportError:
+        # means there is no custom fonts mapping in this system.
+        pass
+    except Exception:
+        _logger.warning('Cannot set font mapping', exc_info=True)
+        pass
+    fp = StringIO()
     r.render(fp)
     return fp.getvalue()
 
-def parseString(rml, localcontext = {},fout=None, images={}, path='.',title=None):
+def parseString(rml, localcontext=None, fout=None, images=None, path='.', title=None):
     node = etree.XML(rml)
     r = _rml_doc(node, localcontext, images, path, title=title)
+
+    #try to override some font mappings
+    try:
+        from customfonts import SetCustomFonts
+        SetCustomFonts(r)
+    except Exception:
+        pass
+
     if fout:
         fp = file(fout,'wb')
         r.render(fp)
         fp.close()
         return fout
     else:
-        fp = cStringIO.StringIO()
+        fp = StringIO()
         r.render(fp)
         return fp.getvalue()
 
@@ -1119,5 +1327,4 @@ if __name__=="__main__":
         print 'Try \'trml2pdf --help\' for more information.'
 
 
-
-
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
