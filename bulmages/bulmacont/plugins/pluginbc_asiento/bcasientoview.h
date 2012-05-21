@@ -66,6 +66,10 @@ public slots:
     void botonFin();
     void botonSiguiente();
     void botonAnterior();
+    virtual void on_mui_inicio_released();
+    virtual void on_mui_fin_released();
+    virtual void on_mui_siguiente_released();
+    virtual void on_mui_anterior_released();
 };
 
 
@@ -79,7 +83,7 @@ private:
     void pintaClase ( QString val );
     void pintaComentariosAsiento ( QString text );
     virtual void calculaPintaTotales();
-    void prepareSave();
+    virtual int save();
 
 public:
     BcAsientoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
@@ -135,6 +139,24 @@ public:
 protected:
     bool eventFilter ( QObject *obj, QEvent *event );
 };
+
+
+
+
+class SubForm_Asiento : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_Asiento ( BlSubForm * );
+    ~SubForm_Asiento();
+public slots:
+    void mostrarAsiento ();
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
+
+
 
 #endif
 

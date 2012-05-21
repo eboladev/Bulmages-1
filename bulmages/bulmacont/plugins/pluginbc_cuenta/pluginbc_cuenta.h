@@ -42,7 +42,9 @@ extern "C" PLUGINBC_CUENTA_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCom
 extern "C" PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm *, void **);
 extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
 extern "C" PLUGINBC_CUENTA_EXPORT int BlAction_actionTriggered ( BlAction *);
-
+extern "C" PLUGINBC_CUENTA_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+  
+  
 class Subform_Cuenta : public QObject
 {
     Q_OBJECT
@@ -51,10 +53,9 @@ public:
     Subform_Cuenta ( BlSubForm * );
     ~Subform_Cuenta();
     void editarCuenta( QString);
-    void nuevoCuenta();
-    void seleccionarCuenta(BlSubForm *);
-
 public slots:
+    void nuevoCuenta();
+    void seleccionarCuenta();
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };

@@ -46,6 +46,7 @@
 #include "pdefs_pluginbc_asiento.h"
 
 
+
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
 /** Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas
     predefinidas, o asientos plantilla (\ref ainteligentesview).

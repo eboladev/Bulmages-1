@@ -93,7 +93,7 @@ BcDiarioView::~BcDiarioView()
 
 /**
 **/
-void BcDiarioView::on_mui_actualizar_clicked()
+void BcDiarioView::on_mui_actualizar_released()
 {
     BL_FUNC_DEBUG
     accept();
@@ -103,11 +103,18 @@ void BcDiarioView::on_mui_actualizar_clicked()
 
 ///
 /**
+\param checked
 **/
-void BcDiarioView::on_mui_configurar_clicked()
+void BcDiarioView::on_mui_configurar_toggled ( bool checked )
 {
     BL_FUNC_DEBUG
-    mui_list->showConfig();
+    if ( checked ) {
+        mui_list->showConfig();
+	//mui_list->showMenu();
+	
+    } else {
+        mui_list->hideConfig();
+    } // end if
     
 }
 
@@ -221,7 +228,6 @@ void BcDiarioView::presentar()
 
         QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM " + tabla2 + tabla + " LEFT JOIN cuenta ON cuenta.idcuenta = " + tabla + ".idcuenta ";
         query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = " + tabla + ".idc_coste ";
-//         query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
         query += " LEFT JOIN (SELECT ordenasiento, fecha, idasiento FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
         query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = " + tabla + ".idcanal";
         if ( mui_asAbiertos->isChecked() ) {
@@ -305,7 +311,7 @@ void BcDiarioView::presentar()
 /// Boton de impresion del diario.
 /**
 **/
-void BcDiarioView::on_mui_imprimir_clicked()
+void BcDiarioView::on_mui_imprimir_released()
 {
     BL_FUNC_DEBUG
     mui_list->printPDF ( "diario" );
@@ -320,7 +326,6 @@ void BcDiarioView::on_mui_imprimir_clicked()
 void BcDiarioView::on_mui_list_cellDoubleClicked ( int, int columna )
 {
     BL_FUNC_DEBUG
-
     openAsiento();
 }
 
