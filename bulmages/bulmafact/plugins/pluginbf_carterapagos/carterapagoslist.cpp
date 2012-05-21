@@ -166,7 +166,7 @@ void CarteraPagosList::editar ( int )
 void CarteraPagosList::on_mui_imprimir_clicked()
 {
     BL_FUNC_DEBUG
-    mui_list->printPDF ( tr ( "Listado de Vencimientos" ) );
+    printPDF ( tr ( "Listado de Vencimientos" ) );
     
 }
 

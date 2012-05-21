@@ -159,7 +159,7 @@ void JDirectivaList::imprimir()
 {
     BL_FUNC_DEBUG
     
-    mui_list->printPDF ( _ ( "Actividades" ) );
+    printPDF ( _ ( "Actividades" ) );
     
     
 }

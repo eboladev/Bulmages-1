@@ -41,6 +41,8 @@
 #include "bldoublespinbox.h"
 #include "bltexteditdelegate.h"
 
+#include "blform.h"
+
 // Necesito exportar algunos datos.
 QModelIndex BL_EXPORT g_index;
 QWidget BL_EXPORT *g_editor;
@@ -2985,15 +2987,15 @@ void BlSubForm::on_mui_paganterior_clicked()
 /**
 \param titular
 **/
-void BlSubForm::printPDF ( const QString &titular )
+void BlSubForm::printPDF (  const QString &titular )
 {
     BL_FUNC_DEBUG
 
+    QString fileName = "listado.rml";
+
     /// Los listados siempre usan la misma plantilla para imprimir listado.
-    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
-//    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + titular + ".rml";
-    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
-//    QString archivod = g_confpr->value( CONF_DIR_USER ) + titular + ".rml";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + fileName;
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + fileName;
     QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     QString ownlogo = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 
@@ -3032,16 +3034,19 @@ void BlSubForm::printPDF ( const QString &titular )
     buff.replace ( "[hora_actual]", QTime::currentTime().toString ( "HH:mm" ) );
 
     if ( file.open ( QIODevice::WriteOnly ) ) {
-
         QTextStream stream ( &file );
         stream << buff;
-
         file.close();
     } // end if
-
-    blCreateAndLoadPDF ( "listado" );
     
+    BlForm *ficha = new BlForm ( mainCompany(), 0 );
+    if ( !ficha->generateRML ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileName ))
+	return;
+
+    blCreateAndLoadPDF ( fileName.left ( fileName.size() - 4 ));
 }
+
+
 
 void BlSubForm::preparaMenu() {
     BL_FUNC_DEBUG
