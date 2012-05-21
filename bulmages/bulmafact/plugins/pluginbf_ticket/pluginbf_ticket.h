@@ -34,7 +34,7 @@ extern "C" PLUGINBF_TICKET_EXPORT int TicketClienteView_TicketClienteView ( Tick
 extern "C" PLUGINBF_TICKET_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
 extern "C" PLUGINBF_TICKET_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
 extern "C" PLUGINBF_TICKET_EXPORT int FacturaView_FacturaView ( FacturaView * );
-extern "C" PLUGINBF_TICKET_EXPORT int AlbaranClienteView_AlbaranClienteView(PresupuestoView *);
+extern "C" PLUGINBF_TICKET_EXPORT int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *);
 
 
 extern "C" PLUGINBF_TICKET_EXPORT int entryPoint ( BfBulmaFact * );
