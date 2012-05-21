@@ -200,11 +200,9 @@ void BcAsientoView::on_mui_nuevoAsiento_clicked()
                                         | QMessageBox::Cancel,
                                         QMessageBox::Save ) ) {
         case QMessageBox::Save: // The user clicked the Retry again button or pressed Enter
-            // try again
             save();
             break;
         case QMessageBox::Discard: // The user clicked the Quit or pressed Escape
-            // exit
             break;
         case QMessageBox::Cancel:
 	default:
@@ -238,9 +236,21 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
             QString query = "SELECT COALESCE(MAX(ordenasiento) + 1, 1) AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left ( 10 ).right ( 4 ) + "'";
             cur = mainCompany() ->loadQuery ( query );
             ordenasiento = cur->value( "orden" );
+	    delete cur;
         } else {
             ordenasiento = nuevoordenasiento;
         } // end if
+
+	/// Revisamos la existencia del ejercicio
+	query = "SELECT * FROM ejercicios where ejercicio = extract('year' FROM '"+ mainCompany() ->sanearCadena ( fecha ) +"'::date)";
+	cur = mainCompany() ->loadQuery ( query );
+        if ( cur->eof() ) {
+	    blMsgInfo("Debe crear el ejercicio antes de poder introducir asientos con esta fecha. Vaya a Herramientas->Bloqueo de Fechas para crearlo");
+	    mainCompany() ->rollback();
+	    delete cur;
+	    return;
+	} // end if
+        delete cur;
 
         /// Creamos el asiento en la base de datos.
         query = "INSERT INTO asiento ( fecha, ordenasiento) VALUES ('" + mainCompany() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";

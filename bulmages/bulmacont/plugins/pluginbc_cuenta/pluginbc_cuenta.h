@@ -43,22 +43,25 @@ extern "C" PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm *, v
 extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
 extern "C" PLUGINBC_CUENTA_EXPORT int BlAction_actionTriggered ( BlAction *);
 extern "C" PLUGINBC_CUENTA_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
-  
-  
-class Subform_Cuenta : public QObject
+
+
+
+class SubForm_Cuenta : public QObject
 {
     Q_OBJECT
 
 public:
-    Subform_Cuenta ( BlSubForm * );
-    ~Subform_Cuenta();
-    void editarCuenta( QString);
+    SubForm_Cuenta ( BlSubForm * );
+    ~SubForm_Cuenta();
 public slots:
+    void editarCuenta( QString);
     void nuevoCuenta();
-    void seleccionarCuenta();
+    void seleccionarCuenta(BlSubForm *);
+
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
+
 
 
 #endif
