@@ -40,6 +40,7 @@ SetOutPath "$INSTDIR\lib\bulmatpv\plugins"
 !insertmacro InstallFilesFromBuild libpluginbt_ticketivaincluido.dll  "\bulmatpv\plugins\pluginbt_ticketivaincluido\libpluginbt_ticketivaincluido.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_visor.dll  "\bulmatpv\plugins\pluginbt_visor\libpluginbt_visor.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_totalivaincluido.dll  "\bulmatpv\plugins\pluginbt_totalivaincluido\libpluginbt_totalivaincluido.dll"
+!insertmacro InstallFilesFromBuild libpluginbt_total.dll  "\bulmatpv\plugins\pluginbt_total\libpluginbt_total.dll"
 
 
 
