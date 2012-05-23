@@ -13,7 +13,7 @@ SetOutPath "$INSTDIR\lib\bulmatpv\plugins"
 !insertmacro InstallFilesFromBuild libpluginbt_camareros.dll  "\bulmatpv\plugins\pluginbt_camareros\libpluginbt_camareros.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_cambio.dll  "\bulmatpv\plugins\pluginbt_cambio\libpluginbt_cambio.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_cambioivaincluido.dll  "\bulmatpv\plugins\pluginbt_cambioivaincluido\libpluginbt_cambioivaincluido.dll"
-;!insertmacro InstallFilesFromBuild libpluginbt_cliente.dll  "\bulmatpv\plugins\pluginbt_clienet\libpluginbt_cliente.dll"
+!insertmacro InstallFilesFromBuild libpluginbt_cliente.dll  "\bulmatpv\plugins\pluginbt_clienet\libpluginbt_cliente.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_clientsync.dll  "\bulmatpv\plugins\pluginbt_clientsync\libpluginbt_clientsync.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_cobrar.dll  "\bulmatpv\plugins\pluginbt_cobrar\libpluginbt_cobrar.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_cobrarparcialivaincluido.dll  "\bulmatpv\plugins\pluginbt_cobrarparcialivaincluido\libpluginbt_cobrarparcialivaincluido.dll"
@@ -40,6 +40,7 @@ SetOutPath "$INSTDIR\lib\bulmatpv\plugins"
 !insertmacro InstallFilesFromBuild libpluginbt_ticketivaincluido.dll  "\bulmatpv\plugins\pluginbt_ticketivaincluido\libpluginbt_ticketivaincluido.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_visor.dll  "\bulmatpv\plugins\pluginbt_visor\libpluginbt_visor.dll"
 !insertmacro InstallFilesFromBuild libpluginbt_totalivaincluido.dll  "\bulmatpv\plugins\pluginbt_totalivaincluido\libpluginbt_totalivaincluido.dll"
+!insertmacro InstallFilesFromBuild libpluginbt_total.dll  "\bulmatpv\plugins\pluginbt_total\libpluginbt_total.dll"
 
 
 
