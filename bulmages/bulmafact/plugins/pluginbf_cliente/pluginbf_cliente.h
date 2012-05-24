@@ -29,7 +29,7 @@
 #include "pdefs_pluginbf_cliente.h"
 #include "blaction.h"
 
-extern "C" PLUGINBF_CLIENTE_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTE_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBF_CLIENTE_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_CLIENTE_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" PLUGINBF_CLIENTE_EXPORT int SNewClienteView (BfCompany *);

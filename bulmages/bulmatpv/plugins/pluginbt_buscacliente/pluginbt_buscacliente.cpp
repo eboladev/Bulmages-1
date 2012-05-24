@@ -29,7 +29,7 @@
 #include "btticket.h"
 #include "blapplication.h"
 #include "bldockwidget.h"
-
+#include "blformlist.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -89,5 +89,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
     } // end if
     return 0;
 }
+
+
 
 

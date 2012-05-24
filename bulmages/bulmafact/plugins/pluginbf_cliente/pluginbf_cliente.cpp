@@ -31,15 +31,12 @@
 ClientsList *g_clientesList = NULL;
 BfBulmaFact *g_pluginbf_cliente = NULL;
 
-
-
-
 ///
 /**
 \param bges
 \return
 **/
-int entryPoint ( BfBulmaFact *bges )
+int entryPoint ( BlMainWindow *bges )
 {
     BL_FUNC_DEBUG
 
@@ -47,35 +44,37 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_cliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
+    if (bges->objectName() != "BtBulmaTPVBase") {
+    g_pluginbf_cliente = (BfBulmaFact * ) bges;
+	
+	if ( g_pluginbf_cliente->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
-    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
+	    /// Miramos si existe un menu Ventas
+	    QMenu *pPluginMenu = g_pluginbf_cliente->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
+	    pPluginMenu->addSeparator();
 
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
 
-        g_pluginbf_cliente = bges;
-        
-        BlAction *accionA = new BlAction ( _ ( "&Clientes" ), 0 );
-        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
-        accionA->setStatusTip ( _ ( "Clientes" ) );
-        accionA->setWhatsThis ( _ ( "Clientes" ) );
-        accionA->setObjectName("mui_actionClientes");
+	    
+	    BlAction *accionA = new BlAction ( _ ( "&Clientes" ), 0 );
+	    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
+	    accionA->setStatusTip ( _ ( "Clientes" ) );
+	    accionA->setWhatsThis ( _ ( "Clientes" ) );
+	    accionA->setObjectName("mui_actionClientes");
 
-        pPluginMenu->addAction ( accionA );
-        bges->Listados->addAction ( accionA );
+	    pPluginMenu->addAction ( accionA );
+	    g_pluginbf_cliente->Listados->addAction ( accionA );
 
-        BlAction *accionB = new BlAction ( _ ( "&Nuevo cliente" ), 0 );
-        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
-        accionB->setStatusTip ( _ ( "Nuevo cliente" ) );
-        accionB->setWhatsThis ( _ ( "Nuevo cliente" ) );
-        accionB->setObjectName("mui_actionNuevoCliente");
+	    BlAction *accionB = new BlAction ( _ ( "&Nuevo cliente" ), 0 );
+	    accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
+	    accionB->setStatusTip ( _ ( "Nuevo cliente" ) );
+	    accionB->setWhatsThis ( _ ( "Nuevo cliente" ) );
+	    accionB->setObjectName("mui_actionNuevoCliente");
 
-        pPluginMenu->addAction ( accionB );
-        bges->Fichas->addAction ( accionB );
+	    pPluginMenu->addAction ( accionB );
+	    g_pluginbf_cliente->Fichas->addAction ( accionB );
 
+	} // end if
     } // end if
-
 
     return 0;
 }
