@@ -733,9 +733,6 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
 
 
 
-
-
-// ==============================
         // Miramos el IVA del articulo y lo ponemos.
 	QString query = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1";
 
@@ -776,8 +773,6 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
         } // end if
         if ( cur1 != NULL )
             delete cur1;
-// ==============================
-
     } // end if
 
     delete cur;
