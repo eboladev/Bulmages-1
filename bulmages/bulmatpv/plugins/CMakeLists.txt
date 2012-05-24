@@ -42,7 +42,7 @@ endif(NOT WIN32)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)
-add_subdirectory(pluginbt_stockcompras)
+#add_subdirectory(pluginbt_stockcompras)
 endif(NOT APPLE)
 
 
