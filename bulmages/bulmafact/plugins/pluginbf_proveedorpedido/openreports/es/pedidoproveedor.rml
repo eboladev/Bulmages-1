@@ -196,8 +196,8 @@
 	</storyPlace>
 
 
-<storyPlace x="15cm" y="1cm" width="15cm" height="1cm">
-<place x="15cm" y="0cm" width="15cm" height="2.5cm">
+<storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
+<place x="13.5cm" y="1cm" width="10cm" height="1cm">
 <barCode code="code128" height="1cm">PEDP [numpedidoproveedor] [refpedidoproveedor]</barCode>
 </place>
 </storyPlace>
