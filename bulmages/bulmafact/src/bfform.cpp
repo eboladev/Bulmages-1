@@ -160,7 +160,7 @@ void BfForm::calculaypintatotales()
     /// Calculamos el total de IVA.
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
-fprintf(stderr, "IVA\n");
+
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
     
         BlFixed piva ( it.key().toAscii().constData() );

@@ -142,12 +142,11 @@ void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tota
 /**
 \param id
 **/
-void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
+void PedidoProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 {
     BL_FUNC_DEBUG
-    mui_lineasDetalle->setColumnValue ( "idproveedor", id );
+    mui_lineasDetalle->setIdProveedor ( id );
     mui_idforma_pago->setIdProveedor ( id );
-    
 }
 
 
@@ -156,6 +155,7 @@ void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
 **/
 void PedidoProveedorView::on_mui_descuentos_editFinish ( int, int )
 {
+    BL_FUNC_DEBUG
     calculaypintatotales();
 }
 
@@ -165,6 +165,7 @@ void PedidoProveedorView::on_mui_descuentos_editFinish ( int, int )
 **/
 void PedidoProveedorView::on_mui_lineasDetalle_editFinish ( int, int )
 {
+    BL_FUNC_DEBUG
     calculaypintatotales();
 }
 
