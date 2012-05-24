@@ -1595,10 +1595,24 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
     while ( !cur->eof() ) {
         QString salidatemp = datos;
 
+        int pos =  0;
+	
+        /// Buscamos cadenas que deban ir en ASCII puro (127) por ejemplo en los tickets.
+        QRegExp rx2 ( "\\[(\\w*),a\\]" );
+        while ( ( pos = rx2.indexIn ( salidatemp, pos ) ) != -1 ) {
+            if ( cur->numcampo ( rx2.cap ( 1 ) ) != -1 ) {
+		    /// Esta salida normalmente es para una ticketera, con lo que no entran, para nada, caracteres especiales.
+                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur->value( rx2.cap ( 1 ), -1, TRUE )) );
+                pos = 0;
+            } else {
+                pos += rx2.matchedLength();
+            }
+        } // end while
+	
 	
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         QRegExp rx1 ( "\\[(\\w*),l\\]" );
-        int pos =  0;
+        pos =  0;
         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
                 salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ) );

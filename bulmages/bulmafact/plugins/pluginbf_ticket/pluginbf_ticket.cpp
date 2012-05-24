@@ -84,7 +84,6 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
     BL_FUNC_DEBUG
-//================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, NULL, NULL,l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -95,7 +94,6 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-//================================
     
     return 0;
 }
@@ -109,7 +107,6 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 int TicketClienteView_TicketClienteView ( TicketClienteView *l )
 {
     BL_FUNC_DEBUG
-//================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, l, NULL,NULL, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -120,7 +117,6 @@ int TicketClienteView_TicketClienteView ( TicketClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-//================================
     
     return 0;
 }
