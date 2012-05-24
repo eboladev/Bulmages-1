@@ -58,7 +58,7 @@ public:
     virtual int beforeDelete();
 
 public slots:
-    virtual void on_mui_proveedor_valueChanged ( QString );
+    virtual void on_mui_idproveedor_valueChanged ( QString );
     virtual void on_mui_descuentos_editFinish ( int, int );
     virtual void on_mui_lineasDetalle_editFinish ( int, int );
 };
