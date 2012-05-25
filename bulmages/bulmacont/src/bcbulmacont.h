@@ -50,6 +50,9 @@ class BC_EXPORT BcBulmaCont : public BlMainWindow, public Ui_BcBulmaContBase
 {
     Q_OBJECT
 
+protected:
+    virtual void resizeEvent ( QResizeEvent * event );
+
 private:
     BcCompany *m_company;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
@@ -130,6 +133,9 @@ public slots:
     virtual void informaIndexador ( QMdiSubWindow *w );
     virtual void on_actionIndexador_triggered();
     virtual void on_actionCerrar_Asientos_triggered();
+
+signals:
+    void resizeEventCalled();
 };
 
 #endif

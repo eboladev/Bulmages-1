@@ -44,6 +44,9 @@ class BF_EXPORT BfBulmaFact: public BlMainWindow, public Ui_BfBulmaFactBase
 {
     Q_OBJECT
 
+protected:
+    virtual void resizeEvent ( QResizeEvent * event );
+
 private:
     /// El workSpace que se va a usar con la aplicacion.
     BlWorkspace *pWorkspace;
@@ -88,6 +91,9 @@ private slots:
     void informaindexador ( QWidget *w );
     void setActionIndexador ( bool );
     void documentacionError ( const QString );
+
+signals:
+    void resizeEventCalled();
 };
 
 #endif

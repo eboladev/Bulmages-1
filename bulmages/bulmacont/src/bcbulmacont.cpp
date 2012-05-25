@@ -646,3 +646,10 @@ BlWorkspace *BcBulmaCont::workspace()
     return m_pWorkspace;
 }
 
+
+void BcBulmaCont::resizeEvent ( QResizeEvent * event )
+{
+    BlMainWindow::resizeEvent(event);
+    emit resizeEventCalled();
+}
+

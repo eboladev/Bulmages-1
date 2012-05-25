@@ -21,6 +21,7 @@ set(QT_USE_QTUITOOLS true)
 set(QT_USE_QTXML true) # uitools depends on xml
 set(QT_USE_QTSCRIPT true)
 set(QT_USE_QTWEBKIT true)
+set(QT_USE_QTNETWORK true)
 
 
 # if you want to add some private code

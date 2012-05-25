@@ -26,6 +26,7 @@ set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTUITOOLS true)
 set(QT_USE_QTXML true)
 set(QT_USE_QTSCRIPT true)
+set(QT_USE_QTNETWORK true)
 
 include(${QT_USE_FILE})
 
