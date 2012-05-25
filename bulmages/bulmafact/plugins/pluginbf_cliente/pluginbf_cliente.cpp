@@ -45,16 +45,13 @@ int entryPoint ( BlMainWindow *bges )
     blBindTextDomain ( "pluginbf_cliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     if (bges->objectName() != "BtBulmaTPVBase") {
-    g_pluginbf_cliente = (BfBulmaFact * ) bges;
-	
+	g_pluginbf_cliente = (BfBulmaFact * ) bges;
 	if ( g_pluginbf_cliente->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
 	    /// Miramos si existe un menu Ventas
 	    QMenu *pPluginMenu = g_pluginbf_cliente->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
 	    pPluginMenu->addSeparator();
 
-
-	    
 	    BlAction *accionA = new BlAction ( _ ( "&Clientes" ), 0 );
 	    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
 	    accionA->setStatusTip ( _ ( "Clientes" ) );
