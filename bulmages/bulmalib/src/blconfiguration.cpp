@@ -467,8 +467,12 @@ QString BlConfiguration::name( int i )
         return "CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES";
     if ( i == CONF_USE_QSCRIPT )
        return "CONF_USE_QSCRIPT";
+    if ( i == CONF_PRECALC_CODARTICULO )
+       return "CONF_PRECALC_CODARTICULO";
     return "";
 }
+
+
 
 
 

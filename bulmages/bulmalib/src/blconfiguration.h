@@ -275,6 +275,10 @@
 
 #define CONF_BLOCK_WINDOWS	     530
 
+
+/// El sistema precalcula el codigo de articulo o solo lo pone al final cuando se guarda (El precalculo puede dar problemas en entornos multiusuario).
+#define CONF_PRECALC_CODARTICULO     540
+
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550
 ///Indica el color de fondo alternativo del pijama del libro diario.

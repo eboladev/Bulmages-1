@@ -434,8 +434,8 @@ DECLARE
 
 BEGIN
     -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
-    IF NEW.codarticulo = '''' THEN
-	SELECT INTO rs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+    IF NEW.codarticulo = '' OR NEW.codarticulo ISNULL THEN
+	SELECT INTO rs max(codarticulo::int)::varchar AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 
 	IF FOUND THEN
 	    IF is_number(rs.m) THEN
@@ -3295,9 +3295,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.13.1-0004'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.13.1-0005'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0004'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0005'');
     END IF;
 
     RETURN 0;
