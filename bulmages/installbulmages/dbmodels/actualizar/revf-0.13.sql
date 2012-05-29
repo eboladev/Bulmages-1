@@ -184,7 +184,7 @@ SELECT drop_if_exists_proc('calculacodigocompletoarticulo', '');
 
 \echo -n ':: Funcion que calcula el codigo completo del articulo ... '
 CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
-AS '
+AS $$
 DECLARE
     rs RECORD;
     codigocompleto character varying(100);
@@ -201,13 +201,13 @@ BEGIN
 		codnumeric := codnumeric +1;
 		NEW.codarticulo := CAST (codnumeric AS varchar);
 		WHILE length(NEW.codarticulo) < 4 LOOP
-		    NEW.codarticulo := ''0'' || NEW.codarticulo;
+		    NEW.codarticulo := '0' || NEW.codarticulo;
 		END LOOP;
 	    ELSE
-		NEW.codarticulo := ''0000'';
+		NEW.codarticulo := '0000';
 	    END IF;
 	ELSE
-	    NEW.codarticulo = ''0000'';
+	    NEW.codarticulo = '0000';
 	END IF;
     END IF;
 
@@ -222,7 +222,7 @@ BEGIN
     NEW.codigocompletoarticulo := codigocompleto;
     RETURN NEW;
 END;
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 
 \echo -n ':: Disparador que calcula el codigo completo del articulo ... '
