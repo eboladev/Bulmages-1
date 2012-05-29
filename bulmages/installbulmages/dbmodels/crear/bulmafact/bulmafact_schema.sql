@@ -434,8 +434,8 @@ DECLARE
 
 BEGIN
     -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
-    IF NEW.codarticulo = '''' THEN
-	SELECT INTO rs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+    IF NEW.codarticulo = '' OR NEW.codarticulo ISNULL THEN
+	SELECT INTO rs max(codarticulo::int)::varchar AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 
 	IF FOUND THEN
 	    IF is_number(rs.m) THEN
