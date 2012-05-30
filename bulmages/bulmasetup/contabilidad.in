@@ -81,7 +81,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         os.chdir(gettempdir())
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
-            self.command = functions.psql + ' -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + functions.end_sql
+            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbparches + self.parche) + ' ' + self.database  + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -208,7 +208,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                         # lugar de comprobar la longitud del archivo.
                         # Comprueba que el archivo existe.
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() > 3):
-                            self.command = functions.psql + ' -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + functions.end_sql
+                            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) + ' ' + self.database + functions.end_sql
                             self.writecommand(self.command)
                             self.process.start(self.command)
                             self.process.waitForFinished(-1)
@@ -217,7 +217,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                             locale = QtCore.QLocale()
                             self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size() - 4) + "_" + locale.name().left(5) + ".sql"
                             if (QFile.exists(self.filename)):
-                                self.command = functions.psql + ' -t -f ' + self.filename + ' ' + self.database + functions.end_sql
+                                self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
                                 self.writecommand(self.command)
                                 self.process.start(self.command)
                                 self.process.waitForFinished(-1)
@@ -240,7 +240,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                         # Si no esta chequeado hacemos un borrado del plugin
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size() > 3 ):
                             # Aplicamos el parche  de borrado.
-                            self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database + functions.end_sql
+                            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) +' '+ self.database + functions.end_sql
                             self.writecommand(self.command)
                             self.process.start(self.command)
                             self.process.waitForFinished(-1)
