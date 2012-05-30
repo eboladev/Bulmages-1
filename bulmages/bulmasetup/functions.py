@@ -98,9 +98,19 @@ class multios():
             return True
         except:
             return None
+
+    def correctFileName(self, filename):
+        """ In old Windows Operating Systems can we have problems with filenames and spaces if whe 
+        """ do not use "
+        """
+        if os.name == 'nt':
+           filename = "\"" + filename + "\""
+        return filename
+
           
 # Su only exists on posix systems
 if os.name == 'posix':
+    # LINUX - UNIX
     as_postgres = 'su postgres -c \"'
     as_postgres2 = "su postgres -c \'"
     end_sql = '\"'
@@ -110,7 +120,20 @@ if os.name == 'posix':
     pg_dump = multios().search_executable("pg_dump")
     createdb = as_postgres + "createdb" + ' -E UNICODE '
     createuser = as_postgres + "createuser"
+elif os.name=='nt':
+    #Win XP
+    as_postgres = ''
+    as_postgres2 = as_postgres
+    end_sql = ''
+    end_sql2 = end_sql
+    psql = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe") + "\""
+    print psql
+    psql2 = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe")  + "\""
+    pg_dump = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\pg_dump.exe")  + "\""
+    createdb = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\createdb.exe") +"\"" + " "
+    createuser = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\createuser.exe") + "\"" + " "
 else:
+    # Other Windows
     as_postgres = ''
     as_postgres2 = as_postgres
     end_sql = ''

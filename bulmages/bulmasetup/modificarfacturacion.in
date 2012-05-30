@@ -87,7 +87,7 @@ class ModificarFacturacion( Facturacion):
         # Aplicamos el parche de bulmatpv si es necesario
         if (self.mui_soporteTPV.isChecked()):
             #self.command = functions.psql +' ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql' + functions.end_sql
-            self.command = functions.psql + ' -t -f ' + plugins.pathdbbulmatpv+'bulmatpv_schema.sql ' + self.database + functions.end_sql
+            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbbulmatpv+'bulmatpv_schema.sql') + ' ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)

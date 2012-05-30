@@ -130,7 +130,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             self.writecommand(QString("----") + self.database + QString("----"))
             self.subcomand = query
             self.guardaQuery(self.subcomand)
-            os.chdir('/tmp')
+            if os.name != 'nt':
+               os.chdir('/tmp')
             self.command = functions.psql+' -t -f ' + gettempdir() + '/query.sql' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
@@ -142,7 +143,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         if (self.database != ''):
             self.subcomand = query
             self.guardaQuery(self.subcomand)
-            os.chdir('/tmp')
+            if os.name != 'nt':
+               os.chdir('/tmp')
             self.command = functions.psql + ' -t -f ' + gettempdir() + '/query.sql template1' + functions.end_sql
             self.process.start(self.command)
             self.process.waitForFinished(-1)
