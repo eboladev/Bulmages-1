@@ -250,9 +250,6 @@ void PedidoProveedorView::on_mui_duplicar_released()
         PedidoProveedorView *bud = new PedidoProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
-        /// Cargamos un elemento que no existe para inicializar bien la clase.
-//         bud->inicialize();
-
         bud->setDbValue ( "comentpedidoproveedor", fpv->dbValue ( "comentpedidoproveedor" ) );
         bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
         bud->setDbValue ( "refpedidoproveedor", fpv->dbValue ( "refpedidoproveedor" ) );
