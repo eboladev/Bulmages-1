@@ -72,12 +72,9 @@
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout">
-        <property name="spacing">
-         <number>4</number>
-        </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="margin">
-         <number>4</number>
+         <number>0</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar">
@@ -222,6 +219,41 @@
           </property>
           <property name="checked">
            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_duplicar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Duplicar pedido</string>
+          </property>
+          <property name="whatsThis">
+           <string>Duplicar pedido</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/BulmaCont32x32/images/png/igualant.xpm</normaloff>:/BulmaCont32x32/images/png/igualant.xpm</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
           </property>
          </widget>
         </item>
