@@ -374,7 +374,7 @@
        <widget class="QLineEdit" name="mui_descpedidoproveedor"/>
       </item>
       <item row="0" column="6">
-       <widget class="QCheckBox" name="mui_tramitadoPedido">
+       <widget class="QCheckBox" name="mui_procesadopedidoproveedor">
         <property name="layoutDirection">
          <enum>Qt::RightToLeft</enum>
         </property>
@@ -1324,7 +1324,7 @@
   <tabstop>mui_refpedidoproveedor</tabstop>
   <tabstop>mui_descpedidoproveedor</tabstop>
   <tabstop>mui_numpedidoproveedor</tabstop>
-  <tabstop>mui_tramitadoPedido</tabstop>
+  <tabstop>mui_procesadopedidoproveedor</tabstop>
   <tabstop>mui_contactpedidoproveedor</tabstop>
   <tabstop>mui_telpedidoproveedor</tabstop>
   <tabstop>discounts</tabstop>
