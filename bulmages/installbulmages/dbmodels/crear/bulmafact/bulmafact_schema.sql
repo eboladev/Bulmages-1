@@ -1213,7 +1213,7 @@ CREATE TABLE lpedidocliente (
     pvplpedidocliente numeric(12, 2),
     prevlpedidocliente date,
     ivalpedidocliente numeric(12, 2),
-    reqeqlpedidocliente NUMERIC(12,2),
+    reqeqlpedidocliente NUMERIC(12,2) DEFAULT 0,
     descuentolpedidocliente numeric(12, 2),
     idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
     ordenlpedidocliente integer,
@@ -3298,6 +3298,7 @@ BEGIN
 	UPDATE CONFIGURACION SET valor = ''0.14.1-0001'' WHERE nombre = ''DatabaseRevision'';
     ELSE
 	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0001'');
+
     END IF;
 
     RETURN 0;
