@@ -1213,7 +1213,7 @@ CREATE TABLE lpedidocliente (
     pvplpedidocliente numeric(12, 2),
     prevlpedidocliente date,
     ivalpedidocliente numeric(12, 2),
-    reqeqlpedidocliente NUMERIC(12,2),
+    reqeqlpedidocliente NUMERIC(12,2) DEFAULT 0,
     descuentolpedidocliente numeric(12, 2),
     idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
     ordenlpedidocliente integer,
@@ -3295,9 +3295,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.13.1-0005'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.13.1-0006'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0005'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0006'');
     END IF;
 
     RETURN 0;

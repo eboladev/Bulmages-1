@@ -233,6 +233,25 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
 
 
 
+
+-- Cambiamos la tabla lpedidocliente para que tenga el default 0 en el recargo de equivalencia
+\echo -n ':: Cambiamos la tabla lpedidocliente para que tenga el default 0 en el recargo de equivalencia '
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+
+BEGIN
+
+   ALTER TABLE lpedidocliente ALTER COLUMN reqeqlpedidocliente SET DEFAULT 0;
+   UPDATE lpedidocliente SET reqeqlpedidocliente = 0 WHERE reqeqlpedidocliente IS NULL;
+
+   RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
+
+
+
 -- =====================================================================================
 
 -- Agregamos nuevos parametros de configuracion
@@ -243,9 +262,9 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.13.1-0005'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.13.1-0006'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0005'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0006'');
 	END IF;
 	RETURN 0;
 END;
