@@ -45,7 +45,7 @@ public:
     void inicializa1 ( QString, QString, int );
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n imprimir en el formulario.
     /// Realiza la impresi&oacute;n del listado que tenemos en pantalla.
-    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_imprimir_released();
 
 private:
     /// Muestra en pantalla los resultados para los datos introducidos.
@@ -55,7 +55,7 @@ public slots:
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n actualizar en el formulario.
     /// Supuestamente debe repintar el formulario con las nuevas opciones de filtrado
     /// que se hayan elegido.
-    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_actualizar_released();
     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n imprimir.
     /// Es invocado desde la clase \ref empresa
     virtual void boton_imprimir();
@@ -64,9 +64,26 @@ public slots:
     virtual void botonGuardar();
     /// SLOT que responde a la activaci&oacute;n del bot&oacute;n de configurar listado.
     /// Muestra el configurador de subform3 \ref subform3
-    virtual void on_mui_configurar_clicked();
+    virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
     virtual void openAsiento();
+};
+
+
+class SubForm_Diario : public QObject
+{
+    Q_OBJECT
+
+public:
+    SubForm_Diario ( BlSubForm * );
+    ~SubForm_Diario();
+    void boton_diario1 ( int );
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+    virtual void botonera();
+    virtual void botonera1();
+    virtual void botonera2();
 };
 
 #endif

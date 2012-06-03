@@ -1,6 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
+<<<<<<< HEAD
 
+=======
+#<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
+#<!--PARAM NAME="fechainicialactual" TYPE="date"-->
+#<!--PARAM NAME="fechafinalactual" TYPE="date"-->
+#<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
+#<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
+>>>>>>> arreglobulmacont
 #Uso: 
 
 ###########################################################################
@@ -24,7 +32,11 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
+<<<<<<< HEAD
 # pathtitle="Cuentas anuales\PGC 2007\Plan General Contable 2007"
+=======
+# pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007"
+>>>>>>> arreglobulmacont
 
 # title="Cuentas anuales Plan General Contable 2007"
 # CAPGC08

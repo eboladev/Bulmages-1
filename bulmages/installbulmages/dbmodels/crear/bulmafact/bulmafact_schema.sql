@@ -426,7 +426,7 @@ END
 
 \echo -n ':: Funcion que calcula el codigo completo del articulo ... '
 CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
-AS '
+AS $$
 DECLARE
     rs RECORD;
     codigocompleto character varying(100);
@@ -434,8 +434,8 @@ DECLARE
 
 BEGIN
     -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
-    IF NEW.codarticulo = '''' THEN
-	SELECT INTO rs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+    IF NEW.codarticulo = '' OR NEW.codarticulo ISNULL THEN
+	SELECT INTO rs max(codarticulo::int)::varchar AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 
 	IF FOUND THEN
 	    IF is_number(rs.m) THEN
@@ -443,13 +443,13 @@ BEGIN
 		codnumeric := codnumeric +1;
 		NEW.codarticulo := CAST (codnumeric AS varchar);
 		WHILE length(NEW.codarticulo) < 4 LOOP
-		    NEW.codarticulo := ''0'' || NEW.codarticulo;
+		    NEW.codarticulo := '0' || NEW.codarticulo;
 		END LOOP;
 	    ELSE
-		NEW.codarticulo := ''0000'';
+		NEW.codarticulo := '0000';
 	    END IF;
 	ELSE
-	    NEW.codarticulo = ''0000'';
+	    NEW.codarticulo = '0000';
 	END IF;
     END IF;
 
@@ -464,7 +464,7 @@ BEGIN
     NEW.codigocompletoarticulo := codigocompleto;
     RETURN NEW;
 END;
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 
 \echo -n ':: Disparador que calcula el codigo completo del articulo ... '
@@ -1213,7 +1213,7 @@ CREATE TABLE lpedidocliente (
     pvplpedidocliente numeric(12, 2),
     prevlpedidocliente date,
     ivalpedidocliente numeric(12, 2),
-    reqeqlpedidocliente NUMERIC(12,2),
+    reqeqlpedidocliente NUMERIC(12,2) DEFAULT 0,
     descuentolpedidocliente numeric(12, 2),
     idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
     ordenlpedidocliente integer,
@@ -3295,9 +3295,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.13.1-0004'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.13.1-0006'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0004'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0006'');
     END IF;
 
     RETURN 0;

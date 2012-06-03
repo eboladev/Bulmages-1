@@ -99,10 +99,10 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b><u>Descuento/s:</u></b></para></td>
+			<td><para style="paragrafo2"><b>Descuento/s:</b></para></td>
 			<td></td>
-			<td><para style="paragrafo2der"><b><u>% Dto:</u></b></para></td>
-			<td><para style="paragrafo2der"><b><u>Total dto:</u></b></para></td>
+			<td><para style="paragrafo2der"><b>% Dto:</b></para></td>
+			<td><para style="paragrafo2der"><b>Total dto:</b></para></td>
 		</tr>
 
 <!--LINEAS DESCUENTO-->
@@ -129,7 +129,7 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2"><b><u>Comentario/s:</u></b></para></td>
+			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -137,7 +137,7 @@
 
 		<tr>
 			<td></td>
-			<td><para style="paragrafo2">[comentpedidoproveedor]</para></td>
+			<td><para style="paragrafo2">[comentpedidoproveedor,l]</para></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -196,8 +196,8 @@
 	</storyPlace>
 
 
-<storyPlace x="15cm" y="1cm" width="15cm" height="1cm">
-<place x="15cm" y="0cm" width="15cm" height="2.5cm">
+<storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
+<place x="13.5cm" y="1cm" width="10cm" height="1cm">
 <barCode code="code128" height="1cm">PEDP [numpedidoproveedor] [refpedidoproveedor]</barCode>
 </place>
 </storyPlace>

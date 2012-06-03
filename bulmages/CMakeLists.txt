@@ -69,7 +69,9 @@ endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
 
 # ######### General setup ##########
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
-find_package(Qt4 REQUIRED) 
+find_package(Qt4 REQUIRED)
+
+
 
 if(NOT QT4_FOUND)
   message(FATAL_ERROR "Bulmages needs QT4 to compile")
@@ -87,6 +89,32 @@ endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.7)
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
+
+if (${CMAKE_VERSION} VERSION_GREATER 2.8.1)
+   INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPythonInterp.cmake)
+else()
+   IF(WIN32 AND NOT UNIX)
+      if(EXISTS "C:/Python27/python.exe")
+         message(STATUS "Found Python: C:/Python27/python.exe")
+         set(PYTHON_EXECUTABLE "C:/Python27/python.exe" CACHE STRING "Where python is installed")
+      endif()
+   ENDIF(WIN32 AND NOT UNIX)
+   IF(UNIX AND NOT WIN32)
+      if(EXISTS "/usr/bin/python")
+        message(STATUS "Found Python: /usr/bin/python")
+        set(PYTHON_EXECUTABLE "/usr/bin/python" CACHE STRING "Where python is installed")
+      endif()
+      if(EXISTS "/usr/local/bin/python")
+       message(STATUS "Found Python: /usr/local/bin/python")
+       set(PYTHON_EXECUTABLE "/usr/local/bin/python" CACHE STRING "Where python is installed")
+      endif()
+   ENDIF(UNIX AND NOT WIN32)
+endif()
+
+
+if(NOT PYTHON_EXECUTABLE)
+  message(STATUS "Python was not found: Without this you will not be able to run bulmasetup or create pdfs")
+endif(NOT PYTHON_EXECUTABLE)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
 option(USE_QMDIAREA "Enable new QMdiArea" OFF)

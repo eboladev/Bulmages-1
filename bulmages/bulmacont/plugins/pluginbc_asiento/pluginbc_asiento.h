@@ -26,12 +26,17 @@
 #include "bccompany.h"
 #include "pdefs_pluginbc_asiento.h"
 #include "bcasientoview.h"
+#include "bcasientointeligenteview.h"
 #include "blaction.h"
 
 extern "C" PLUGINBC_ASIENTO_EXPORT BcAsientoView *g_asiento;
+extern "C" PLUGINBC_ASIENTO_EXPORT BcAsientoInteligenteView *g_asientoInteligente;
 extern "C" PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
+extern "C" PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoInteligenteView ( BcCompany *);
 extern "C" PLUGINBC_ASIENTO_EXPORT int BlAction_actionTriggered(BlAction *);
+extern "C" PLUGINBC_ASIENTO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBC_ASIENTO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 #endif
 

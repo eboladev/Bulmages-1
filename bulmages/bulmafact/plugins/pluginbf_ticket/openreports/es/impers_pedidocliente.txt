@@ -7,7 +7,7 @@ Factura: [numpedidocliente] [idpedidocliente]
 <!-- TURNWHITEBLACK "1"-->
  Uds. PRODUCTO               P.U. IMPORTE
 <!-- TURNWHITEBLACK "0"-->
-<!-- QUERY="SELECT *, (cantlpedidocliente*pvplpedidocliente)::NUMERIC(12,2) AS subtotal FROM lpedidocliente  WHERE idpedidocliente=[idpedidocliente]" --><!-- RIGHTJUSTIFIED "[cantlpedidocliente]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclpedidocliente]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplpedidocliente]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
+<!-- QUERY="SELECT *, (cantlpedidocliente*pvplpedidocliente)::NUMERIC(12,2) AS subtotal FROM lpedidocliente  WHERE idpedidocliente=[idpedidocliente]" --><!-- RIGHTJUSTIFIED "[cantlpedidocliente]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclpedidocliente,a]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplpedidocliente]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
 <!-- END QUERY -->
 
 <!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->

@@ -410,11 +410,9 @@ void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
 {
     BL_FUNC_DEBUG
 
-    /// Creamos el men&uacute;.
-//    QMenu *pPluginMenu = new QMenu ( _ ( "&Cuentas Anuales" ) );
-    /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
 
+    /// Miramos si existe la opcion de menu antes del menu Herramientas
+    QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
     
     
     QMenu *pgc08 = new QMenu ( _ ( "&PGC 2008" ) );
@@ -460,13 +458,9 @@ void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
     pgc07->addAction ( accion1 );
 
 
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-//    bcont->menuBar() ->addMenu ( pPluginMenu );
 
     empresaact = bcont->company();
     dbConnection = empresaact->bdempresa();
-
-    
 }
 
 
@@ -484,8 +478,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     PluginBc_CuentasAnuales2ODS *plug = new PluginBc_CuentasAnuales2ODS();
     plug->inicializa ( bcont );
-    /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
-    /// del programa para indicar que el plugin se ha cargado.
+
     return 0;
 }
 

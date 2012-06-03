@@ -36,11 +36,6 @@ class PLUGINBC_ASIENTO_EXPORT BcAsientoListSubForm : public BcSubForm
 public:
     BcAsientoListSubForm ( QWidget *parent = 0, const char *name = 0 );
     virtual ~BcAsientoListSubForm();
-
-public slots:
-//    virtual void contextMenuEvent ( QContextMenuEvent * );
-    virtual void s_pintaMenu ( QMenu *menu );
-    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

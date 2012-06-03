@@ -26,10 +26,13 @@
 #include "blmaincompany.h"
 #include "pdefs_pluginbc_mayor.h"
 #include "blaction.h"
+#include "blsubform.h"
+
 
 extern "C" PLUGINBC_MAYOR_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_MAYOR_EXPORT int BlAction_actionTriggered(BlAction *);
-
+extern "C" PLUGINBC_MAYOR_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBC_MAYOR_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 #endif
 

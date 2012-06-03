@@ -33,6 +33,10 @@
 #include "pluginbc_amortizacion.h"
 #include "bcamortizacionlistview.h"
 
+#include "bcasientointeligenteview.h"
+#include "bcasientoview.h"
+
+
 BcBulmaCont *g_pluginbc_amortizacion = NULL;
 
 ///

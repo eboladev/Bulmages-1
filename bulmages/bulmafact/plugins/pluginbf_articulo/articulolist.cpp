@@ -142,6 +142,7 @@ void ArticuloList::editar ( int row )
 }
 
 
+
 /// No requiere de ninguna accion adicional
 /**
 **/
@@ -287,28 +288,6 @@ void ArticuloList::on_mui_importar_clicked()
 }
 
 
-/** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
-    EN LA LLAMADA DE SUBMENUS
-*/
-/**
-\return
-**/
-void ArticuloList::submenu ( const QPoint & )
-{
-    BL_FUNC_DEBUG
-    int a = mui_list->currentRow();
-    if ( a < 0 )
-        return;
-    QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _ ( "Editar articulo" ) );
-    QAction *del = popup->addAction ( _ ( "Borrar articulo" ) );
-    QAction *opcion = popup->exec ( QCursor::pos() );
-    if ( opcion == del )
-        on_mui_borrar_clicked();
-    if ( opcion == edit )
-        on_mui_editar_clicked();
-    delete popup;
-}
 
 
 ///

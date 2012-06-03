@@ -51,16 +51,17 @@ class PLUGINBF_PROVEEDORPEDIDO_EXPORT PedidoProveedorView : public BfForm, publi
 public:
     PedidoProveedorView ( BfCompany *, QWidget *parent = 0 );
     ~PedidoProveedorView();
-    void inicialize();
+//     void inicialize();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
 
 public slots:
-    virtual void on_mui_proveedor_valueChanged ( QString );
+    virtual void on_mui_idproveedor_valueChanged ( QString );
     virtual void on_mui_descuentos_editFinish ( int, int );
     virtual void on_mui_lineasDetalle_editFinish ( int, int );
+    virtual void on_mui_duplicar_released();
 };
 
 #endif

@@ -26,7 +26,7 @@ Incompatibles:
 
 Categorias: Contabilidad general;
 
-Orden: 70
+Orden: 130
 
 Comentarios: El formato de salida es ods. Esta basado en el plugincanualesods,
 creado por Fco. Javier a partir de un código de Tomeu Borràs. A partir de esto,

@@ -39,13 +39,6 @@ class PLUGINBC_DIARIO_EXPORT BcDiarioSubForm : public BcSubForm
 public:
     BcDiarioSubForm ( QWidget *parent = 0, const char *name = 0 );
     virtual ~BcDiarioSubForm();
-
-public slots:
-    virtual void s_pintaMenu ( QMenu *menu );
-    virtual void s_trataMenu ( QAction *action );
-    
-signals:
-    void openAsiento();
 };
 
 #endif

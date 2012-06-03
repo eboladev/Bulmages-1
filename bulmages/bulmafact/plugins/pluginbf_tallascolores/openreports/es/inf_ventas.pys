@@ -33,11 +33,11 @@ doc.set_cell_value(5,4,'string','cant')
 
 <!-- SUBQUERY="SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran>='[fecha_inicial]' AND fechaalbaran<='[fecha_final]'"-->
 
-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
-doc.set_cell_value(2,i,'string','[nomarticulo]')
-doc.set_cell_value(3,i,'string','[nomtc_talla]')
-doc.set_cell_value(4,i,'string','[nomtc_color]')
-doc.set_cell_value(5,i,'string','[cant]')
+doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
+doc.set_cell_value(2,i,'string', u'[nomarticulo]')
+doc.set_cell_value(3,i,'string', u'[nomtc_talla]')
+doc.set_cell_value(4,i,'string', u'[nomtc_color]')
+doc.set_cell_value(5,i,'string', u'[cant]')
 i = i + 1
 
 <!-- END SUBQUERY-->

@@ -66,6 +66,8 @@ CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmafac
 # Hoja de estilo a utilizar
 CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmafact_es_ES.css
 
+# Indica si debe precalcularse el codigo de articulo o no. (En entornos multiusuario el precalculo puede dar problemas si se introducen articulos desde varios puestos).
+CONF_PRECALC_CODARTICULO   TRUE
 
 
 

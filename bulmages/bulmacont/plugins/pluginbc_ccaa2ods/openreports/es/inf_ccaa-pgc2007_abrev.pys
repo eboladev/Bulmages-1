@@ -1,6 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+#<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
+#<!--PARAM NAME="fechainicialactual" TYPE="date"-->
+#<!--PARAM NAME="fechafinalactual" TYPE="date"-->
+#<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
+#<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
 #Uso: 
 ###########################################################################
  #   Copyright (C) 2009 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   #
@@ -25,7 +29,7 @@
  ###########################################################################/
 
 
-# pathtitle="Cuentas anuales\PGC 2007\Plan General Contable 2007 (Abreviada)"
+# pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007 (Abreviada)"
 
 # title="Cuentas anuales Plan General Contable 2007 (Abreviada)"
 # CAPGC07

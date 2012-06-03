@@ -61,20 +61,17 @@ public:
     void inicializar();
     void manageArticle ( int );
 
-private:
-    void generarPedidoCliente();
-
 public:
     QString detalleArticulos();
 
 public slots:
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales();
-    virtual void on_mui_pasarapedido_clicked();
     virtual void on_m_descuentos_editFinish ( int, int );
     virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_idcliente_valueChanged ( QString id );
     virtual void on_mui_idalmacen_valueChanged ( QString id );
+    virtual void on_mui_duplicar_released();
 };
 
 #endif

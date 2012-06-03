@@ -51,20 +51,20 @@ class NuevaFacturacion(Facturacion):
         self.process.waitForFinished(-1)
 
         # Cargamos la esquematica de la base de datos
-        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmafact +'bulmafact_schema.sql ' + self.database + functions.end_sql
+        self.command = functions.psql + ' ' + ' -f '+ functions.multios().correctFileName(plugins.pathdbbulmafact +'bulmafact_schema.sql')+ ' ' + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Cargamos los datos minimos
-        self.command = functions.psql + ' ' + ' -f ' + plugins.pathdbbulmafact + 'bulmafact_data.sql ' + self.database + functions.end_sql
+        self.command = functions.psql + ' ' + ' -f ' + functions.multios().correctFileName(plugins.pathdbbulmafact + 'bulmafact_data.sql') + ' ' + self.database + functions.end_sql
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
 
         # Aplicamos el parche de bulmatpv si es necesario
         if (self.mui_soporteTPV.isChecked()):
-            self.command = functions.psql + ' ' + ' -f ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql ' + self.database + functions.end_sql
+            self.command = functions.psql + ' ' + ' -f ' + functions.multios().correctFileName(plugins.pathdbbulmatpv + 'bulmatpv_schema.sql') + ' ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)

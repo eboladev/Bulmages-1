@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', 'DETALLE DE VENTAS (POR CLIENTE)')
 i = 5
 <!--QUERY="SELECT cliente.nomcliente, articulo.nomarticulo, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran FROM cliente, articulo, albaran, lalbaran WHERE cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo ORDER BY cliente.nomcliente, albaran.fechaalbaran desc"-->
 
-doc.set_cell_value(1,i,'string','[nomcliente]')
-doc.set_cell_value(2,i,'string',"[nomarticulo]")
-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
-doc.set_cell_value(4, i, 'string', "[desclalbaran]")
-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
+doc.set_cell_value(1,i,'string', u'[nomcliente]')
+doc.set_cell_value(2,i,'string', u"[nomarticulo]")
+doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
+doc.set_cell_value(4, i, 'string', u"[desclalbaran]")
+doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
 i = i + 1
 <!--END QUERY-->
 
