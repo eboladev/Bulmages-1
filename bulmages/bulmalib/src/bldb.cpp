@@ -1082,80 +1082,80 @@ int BlDbRecord::generateRML ( const QString &arch )
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
     stream.setCodec ( codec );
-if (tipoescape != 0) {
-    QString buff = stream.readAll();
-    file.close();
+    if (tipoescape != 0) {
+	QString buff = stream.readAll();
+	file.close();
 
-    /// Hacemos el tratamiento avanzado de TAGS
-    if ( !parseTags ( buff, tipoescape ) ) {
-        return 0;
+	/// Hacemos el tratamiento avanzado de TAGS
+	if ( !parseTags ( buff, tipoescape ) ) {
+	    return 0;
+	} // end if
+
+	if ( file.open ( QIODevice::WriteOnly ) ) {
+	    QTextStream stream ( &file );
+	    stream.setCodec ( codec );
+	    if ( ( !ascii ) && ( codec->canEncode ( buff ) ) ) {
+		// para ficheros UTF-8, UTF-16, UTF-32 asi vale
+		// para otros sin caracteres ajenos al encoding tambien vale
+		BlDebug::blDebug ( "Llistat sense referències de caracters", 0, " " );
+		stream << buff;
+	    } else { // para otros con caracteres no codificables
+		// tenemos que usar referencias numericas de caracteres de XML
+		BlDebug::blDebug ( "Llistat amb referències de caracters", 0, " " );
+		QString::const_iterator i;
+		for ( i = buff.begin(); i != buff.end(); ++i ) {
+		    if ( ( codec->canEncode ( *i ) ) && ( ( !ascii ) || ( ( *i ).unicode() < 128 ) ) ) {
+			stream << *i; // si puedo lo escribo
+		    } else { // si no pogo referencia numerica de caracter &12345;
+			uint codepoint = 0;
+			// el caracter puede no caber en un QChar.
+			if ( ( *i ).isHighSurrogate() ) {
+			    // sospecho que o este caso o el siguiente nunca se
+			    // dara pero no lo se seguro y si es asi no se cual
+			    QChar high = *i;
+			    i++;
+			    if ( i == buff.end() )
+				break;
+			    QChar low = *i;
+			    codepoint = QChar::surrogateToUcs4 ( high, low );
+			}  else {
+			    if ( ( *i ).isLowSurrogate() ) {
+				// sospecho que o este caso o el anterior nunca se
+				// dara pero no lo se seguro y si es asi no se cual
+				QChar low = *i;
+				i++;
+				if ( i == buff.end() )
+				    break;
+				QChar high = *i;
+				codepoint = QChar::surrogateToUcs4 ( high, low );
+			    } else {
+				// este caso es mas normal, caracter entre 0 i 2^16
+				codepoint = ( *i ).unicode();
+			    } // end if
+			} // end if
+			BlDebug::blDebug ( ( QString ) "escric " + *i + " com " + codepoint, 0 );
+			stream << "&#" << codepoint << ";" ;
+		    } // end if
+		} // end for
+		
+	    }
+	    file.close();
+	} // end if
+
+    } else {
+	QByteArray buff = file.readAll();
+	file.close();
+
+	/// Hacemos el tratamiento avanzado de TAGS
+	if ( !parseTags ( buff, tipoescape ) ) {
+	    return 0;
+	} // end if
+
+	if ( file.open ( QIODevice::WriteOnly ) ) {
+	    file.write(buff);
+	    file.close();
+	} // end if
     } // end if
-
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file );
-        stream.setCodec ( codec );
-        if ( ( !ascii ) && ( codec->canEncode ( buff ) ) ) {
-            // para ficheros UTF-8, UTF-16, UTF-32 asi vale
-            // para otros sin caracteres ajenos al encoding tambien vale
-            BlDebug::blDebug ( "Llistat sense referències de caracters", 0, " " );
-            stream << buff;
-        } else { // para otros con caracteres no codificables
-            // tenemos que usar referencias numericas de caracteres de XML
-            BlDebug::blDebug ( "Llistat amb referències de caracters", 0, " " );
-            QString::const_iterator i;
-            for ( i = buff.begin(); i != buff.end(); ++i ) {
-                if ( ( codec->canEncode ( *i ) ) && ( ( !ascii ) || ( ( *i ).unicode() < 128 ) ) ) {
-                    stream << *i; // si puedo lo escribo
-                } else { // si no pogo referencia numerica de caracter &12345;
-                    uint codepoint = 0;
-                    // el caracter puede no caber en un QChar.
-                    if ( ( *i ).isHighSurrogate() ) {
-                        // sospecho que o este caso o el siguiente nunca se
-                        // dara pero no lo se seguro y si es asi no se cual
-                        QChar high = *i;
-                        i++;
-                        if ( i == buff.end() )
-                            break;
-                        QChar low = *i;
-                        codepoint = QChar::surrogateToUcs4 ( high, low );
-                    }  else {
-                        if ( ( *i ).isLowSurrogate() ) {
-                            // sospecho que o este caso o el anterior nunca se
-                            // dara pero no lo se seguro y si es asi no se cual
-                            QChar low = *i;
-                            i++;
-                            if ( i == buff.end() )
-                                break;
-                            QChar high = *i;
-                            codepoint = QChar::surrogateToUcs4 ( high, low );
-                        } else {
-                            // este caso es mas normal, caracter entre 0 i 2^16
-                            codepoint = ( *i ).unicode();
-                        } // end if
-                    } // end if
-                    BlDebug::blDebug ( ( QString ) "escric " + *i + " com " + codepoint, 0 );
-                    stream << "&#" << codepoint << ";" ;
-                } // end if
-            } // end for
-            
-        }
-        file.close();
-    } // end if
-
-} else {
-    QByteArray buff = file.readAll();
-    file.close();
-
-    /// Hacemos el tratamiento avanzado de TAGS
-    if ( !parseTags ( buff, tipoescape ) ) {
-        return 0;
-    } // end if
-
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        file.write(buff);
-        file.close();
-    } // end if
-} // end if
     
     return 1;
 }
@@ -2035,7 +2035,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     rx46.setMinimal ( TRUE );
     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
-        buff.replace ( pos, rx46.matchedLength(), ldetalle );
+        buff.replace ( pos, rx46.cap(0).toAscii().size(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
 	cadant = buff.left(pos);
@@ -2134,7 +2134,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     rx46.setMinimal ( TRUE );
     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
-        buff.replace ( pos, rx46.matchedLength(), ldetalle );
+        buff.replace ( pos, rx46.cap(0).toAscii().size(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
 	cadant = buff.left(pos);
@@ -2150,7 +2150,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     rx47.setMinimal ( TRUE );
     while ( ( pos = rx47.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
-        buff.replace ( pos, rx47.matchedLength(), ldetalle );
+        buff.replace ( pos, rx47.cap(0).toAscii().size(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- LEFTJUSTIFIED");
 	cadant = buff.left(pos);
@@ -3067,11 +3067,22 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
         buff.replace ( ("[" + i.key() + "]").toAscii(), i.value().toAscii() );
     } // end while
 
-
     substrConf ( buff );
-
     pos =  0;
 
+    /// Buscamos parametros en el query y los ponemos de forma literal.
+    QRegExp rx1 ( "\\[(\\w*),l\\]" );
+    while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx1.cap ( 1 ) ) ) {
+            buff.replace ( pos, rx1.matchedLength(), dbValue ( rx1.cap ( 1 ) ).toAscii() );
+            pos = 0;
+        } else {
+            pos += rx1.matchedLength();
+        }
+    } // end while
+    
+    pos =  0;
+    
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
@@ -3133,12 +3144,38 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
     while ( !cur->eof() ) {
         QByteArray salidatemp = datos;
 
-        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        //BlDebug::blDebug("salidatemp =",0,salidatemp);
-        QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
+	
+        /// Buscamos cadenas que deban ir en ASCII puro (127) por ejemplo en los tickets.
+        QRegExp rx2 ( "\\[(\\w*),a\\]" );
+        while ( ( pos = rx2.indexIn ( salidatemp, pos ) ) != -1 ) {
+            if ( cur->numcampo ( rx2.cap ( 1 ) ) != -1 ) {
+		    /// Esta salida normalmente es para una ticketera, con lo que no entran, para nada, caracteres especiales.
+                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur->value( rx2.cap ( 1 ), -1, TRUE )).toAscii() );
+                pos = 0;
+            } else {
+                pos += rx2.matchedLength();
+            }
+        } // end while
+	
+        pos =  0;
+	
+        /// Buscamos cadenas que deban ir tal cual estan en la base de datos, sin ningún parseado.
+        QRegExp rx1 ( "\\[(\\w*),l\\]" );
+        while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
+            if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
+                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ).toAscii() );
+                pos = 0;
+            } else {
+                pos += rx1.matchedLength();
+            }
+        } // end while
+
+	pos = 0;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx ( "\\[(\\w*)\\]" );
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
-            //BlDebug::blDebug("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
@@ -3148,7 +3185,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
                     salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
                     break;
                 default:
-                    salidatemp.replace ( pos, rx.matchedLength(), cur->value( rx.cap ( 1 ), -1, TRUE ).toAscii() );
+                    salidatemp.replace ( pos, rx.cap(0).toAscii().size(), cur->value( rx.cap ( 1 ), -1, TRUE ).toAscii() );
                     break;
                 } // emd switch
                 pos = 0;
@@ -3166,7 +3203,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
 }
 
 
-/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/// Trata las lineas de detalle encontradas dentro de los tags <!--EXISTS -->
 /**
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.

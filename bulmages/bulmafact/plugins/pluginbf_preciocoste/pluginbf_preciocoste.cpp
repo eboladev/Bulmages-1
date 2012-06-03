@@ -177,7 +177,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             return -1;
         } // end if
 
-        cur1 = subform->mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+        cur1 = subform->mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->value( "idtipo_iva" ) + " ORDER BY fechatasa_iva DESC LIMIT 1" );
         if ( !cur->eof() ) {
             if ( subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"

@@ -59,7 +59,6 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
 
-
     BlAction *accionA = new BlAction ( _ ( "&Cuentas Anuales" ), 0 );
     accionA->setStatusTip ( _ ( "Cuentas anuales" ) );
     accionA->setWhatsThis ( _ ( "Cuentas anuales" ) );

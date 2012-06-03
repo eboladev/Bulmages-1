@@ -28,7 +28,6 @@
 #include <QDomDocument>
 #include <QDomNode>
 #include <QInputDialog>
-#include "bluiloader.h"
 
 
 #include "autoform.h"
@@ -471,10 +470,6 @@ int BlAutoForm::afterSave () {
 BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo, const QString &interfacefile ) : BlFormList ( comp, parent, flag, editmodo ) {
     BL_FUNC_DEBUG
     setupUi ( this );
-    /// Disparamos los plugins.
-//     int res = g_plugins->run ( "SociosList_SociosList", this );
-//     if ( res != 0 )
-//         return;
 
     mui_list->setMainCompany ( comp );
 
@@ -487,7 +482,7 @@ BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlag
      QFile file(interfacefile);
      file.open(QFile::ReadOnly);
      QWidget *myWidget = loader.load(&file, 0);
-//      m_busqueda->addTab(myWidget, "Datos Generales");
+
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
     QHBoxLayout *layout = new QHBoxLayout(m_busqueda);

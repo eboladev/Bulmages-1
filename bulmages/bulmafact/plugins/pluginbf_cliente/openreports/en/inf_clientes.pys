@@ -16,9 +16,9 @@ doc.set_cell_value(2, 2, 'string', 'LISTADO CLIENTES')
 i = 5
 <!--QUERY="SELECT * FROM cliente"-->
 
-doc.set_cell_value(1,i,'string','[cifcliente]')
-doc.set_cell_value(2,i,'string',"[nomcliente]")
-doc.set_cell_value(3,i,'string','[telcliente]')
+doc.set_cell_value(1,i,'string', u'[cifcliente]')
+doc.set_cell_value(2,i,'string', u"[nomcliente]")
+doc.set_cell_value(3,i,'string', u'[telcliente]')
 i = i + 1
 <!--END QUERY-->
 

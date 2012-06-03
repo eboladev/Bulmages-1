@@ -13,8 +13,8 @@ doc.set_column_property(1, 'width', '0.5in')
 doc.set_column_property(2, 'width', '5in')
 doc.set_cell_property('bold', True)
 doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
-doc.set_cell_value(3, 2, 'string', '[numpresupuesto]')
-doc.set_cell_value(4, 2, 'string', '[refpresupuesto]')
+doc.set_cell_value(3, 2, 'string', u'[numpresupuesto]')
+doc.set_cell_value(4, 2, 'string', u'[refpresupuesto]')
 
 i=4
 doc.set_cell_value(1,i,'string','CIF')
@@ -28,11 +28,11 @@ doc.set_cell_value(8,i,'string','TOTAL')
 
 #i=7
 <!-- QUERY="SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]"-->
-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
-doc.set_cell_value(2,i,'string','[desclpresupuesto]')
-doc.set_cell_value(3,i,'string','[cantlpresupuesto]')
-doc.set_cell_value(4,i,'string','[pvplpresupuesto]')
-doc.set_cell_value(6,i,'string','[ivalpresupuesto]')
+doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
+doc.set_cell_value(2,i,'string', u'[desclpresupuesto]')
+doc.set_cell_value(3,i,'string', u'[cantlpresupuesto]')
+doc.set_cell_value(4,i,'string', u'[pvplpresupuesto]')
+doc.set_cell_value(6,i,'string', u'[ivalpresupuesto]')
 i = i + 1
 <!--END QUERY-->
 

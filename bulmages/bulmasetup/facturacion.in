@@ -660,7 +660,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
                         # lugar de comprobar la longitud del archivo.
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() > 3 ):
-                            self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() +' '+ self.database + functions.end_sql
+                            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) +' '+ self.database + functions.end_sql
                             self.writecommand(self.command)
                             self.process.start(self.command)
                             self.process.waitForFinished(-1)
@@ -670,7 +670,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                             self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size()-4) + "_" + locale.name().left(5) + ".sql"
                             print self.filename
                             if (QFile.exists(self.filename)):
-                                self.command = functions.psql + ' -t -f ' + self.filename + ' ' + self.database + functions.end_sql
+                                self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
                                 self.writecommand(self.command)
                                 self.process.start(self.command)
                                 self.process.waitForFinished(-1)
@@ -693,7 +693,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         # Si no esta chequeado hacemos un borrado del plugin
                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size() > 3):
                             # Aplicamos el parche  de borrado.
-                            self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database + functions.end_sql
+                            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) +' '+ self.database + functions.end_sql
                             self.writecommand(self.command)
                             self.process.start(self.command)
                             self.process.waitForFinished(-1)
@@ -715,7 +715,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
                             if (QFile.exists(plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text()) and self.mui_plugins1.item(self.i,4).text().size() > 4):
                                 self.writecommand(QtGui.QApplication.translate("Facturacion",'Actualizando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
-                                self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database + functions.end_sql
+                                self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text()) +' '+ self.database + functions.end_sql
                                 self.writecommand(self.command)
                                 self.process.start(self.command)
                                 self.process.waitForFinished(-1)
@@ -725,7 +725,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                                 self.filename = plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text().left(self.mui_plugins1.item(self.i,4).text().size() -4) + "_" + locale.name().left(5) + ".sql"
                                 print self.filename
                                 if (QFile.exists(self.filename)):
-                                    self.command = functions.psql + ' -t -f ' + self.filename + ' ' + self.database + functions.end_sql
+                                    self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
                                     self.writecommand(self.command)
                                     self.process.start(self.command)
                                     self.process.waitForFinished(-1)
@@ -748,7 +748,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                             # Si no esta chequeado hacemos un borrado del plugin
                             if (QFile.exists(plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text()) and self.mui_plugins1.item(self.i,9).text().size() > 3):
                                 # Aplicamos el parche  de borrado.
-                                self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database + functions.end_sql
+                                self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text()) +' '+ self.database + functions.end_sql
                                 self.writecommand(self.command)
                                 self.process.start(self.command)
                                 self.process.waitForFinished(-1)
@@ -899,7 +899,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         # Aplicamos el parche de bulmatpv
         if (self.mui_soporteTPV.isChecked()):
             #self.command = functions.as_postgres + 'psql ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"' + functions.end_sql
-            self.command = functions.psql + ' -t -f ' + plugins.pathdbbulmatpv+'bulmatpv_schema.sql ' + self.database + functions.end_sql
+            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbbulmatpv+'bulmatpv_schema.sql') + ' ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -908,7 +908,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql", "revf-0.12.sql", "revf-0.13.sql"]
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
-            self.command = functions.psql + ' -t -f  ' + plugins.pathdbparches + self.parche + ' ' + self.database + functions.end_sql
+            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbparches + self.parche) + ' ' + self.database + functions.end_sql
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)

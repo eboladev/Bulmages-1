@@ -73,7 +73,6 @@ public:
     void imprimir();
     void remove();
     void crear();
-    void submenu ( const QPoint & );
 
 public slots:
     virtual void on_mui_importar_clicked();

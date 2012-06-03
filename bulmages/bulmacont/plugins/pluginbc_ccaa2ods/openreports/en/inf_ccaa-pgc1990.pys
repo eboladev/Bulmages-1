@@ -1,6 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
+#<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
+#<!--PARAM NAME="fechainicialactual" TYPE="date"-->
+#<!--PARAM NAME="fechafinalactual" TYPE="date"-->
+#<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
+#<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
+
 #Uso: 
 
 ###########################################################################
@@ -26,7 +32,8 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-# pathtitle="Cuentas anuales\PGC 1990\Plan General Contable 1990"
+
+# pathtitle="&Cuentas anuales\PGC 1990\Plan General Contable 1990"
 # title="Cuentas anuales Plan General Contable 1990"
 # CAPGC07
 

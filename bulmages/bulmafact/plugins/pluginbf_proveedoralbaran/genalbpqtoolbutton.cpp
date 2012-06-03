@@ -91,7 +91,6 @@ void GenAlbProQToolButton::click()
     BL_FUNC_DEBUG
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
-//        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
         generarAlbaranProveedor();
     }// end if
 
@@ -188,6 +187,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
                 linea1->setDbValue ( "ivalalbaranp", linea->dbValue ( "ivalpedidoproveedor" ) );
+                linea1->setDbValue ( "reqeqlalbaranp", linea->dbValue ( "reqeqlpedidoproveedor" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for

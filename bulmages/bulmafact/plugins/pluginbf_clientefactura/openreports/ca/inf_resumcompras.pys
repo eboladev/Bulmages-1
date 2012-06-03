@@ -33,11 +33,11 @@ i = 5
 <!--SUBQUERY="SELECT SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 )::NUMERIC(12,2) AS base, SUM(cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 *  ivalfacturap/100 )::NUMERIC(12,2) AS impuestos FROM lfacturap NATURAL LEFT JOIN facturap WHERE facturap.idproveedor = [idproveedor] AND ffacturap >= '[fecha_inicial]' AND ffacturap<= '[fecha_final]'"-->
 
 
-doc.set_cell_value(1,i,'string','[cifproveedor]')
-doc.set_cell_value(2,i,'string','[nomproveedor]')
-doc.set_cell_value(3,i,'string','[dirproveedor]')
-doc.set_cell_value(4,i,'string','[cpproveedor]')
-doc.set_cell_value(5,i,'string','[poblproveedor]')
+doc.set_cell_value(1,i,'string', u'[cifproveedor]')
+doc.set_cell_value(2,i,'string', u'[nomproveedor]')
+doc.set_cell_value(3,i,'string', u'[dirproveedor]')
+doc.set_cell_value(4,i,'string', u'[cpproveedor]')
+doc.set_cell_value(5,i,'string', u'[poblproveedor]')
 
 
 doc.set_cell_value(6,i,'float','[base]')
