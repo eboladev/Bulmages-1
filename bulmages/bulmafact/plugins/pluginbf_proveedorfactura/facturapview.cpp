@@ -449,4 +449,71 @@ void FacturaProveedorView::imprimirFacturaProveedor()
 }
 
 
+/// Se encarga de generar una factura a partir de un albar&aacute;n.
+/** Primero de todo busca una factura por referencia que tenga este albaran.
+    Si dicha factura existe entonces la cargamos y terminamos.
+    Si no existe dicha factura el sistema avisa y permite crear una poniendo
+    Todos los datos del albaran automaticamente en ella.
+*/
+/**
+\return
+**/
+void FacturaProveedorView::on_mui_duplicar_released()
+{
+    BL_FUNC_DEBUG
+    FacturaProveedorView *fpv = this ;
+
+
+    FacturaProveedorView *bud = NULL;
+    BlDbRecordSet *cur = NULL;
+
+    try {
+        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+        /// el siguiente cur->eof() el programa fallar&aacute;.
+        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
+
+        /// Creamos la factura.
+        FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
+
+        bud->setDbValue ( "comentfacturap", fpv->dbValue ( "comentfacturap" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffacturap", fpv->dbValue ( "reffacturap" ) );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+        bud->inicializar();
+        bud->show();
+
+        /// Traspasamos las lineas de factura
+        QString l;
+        BlDbSubFormRecord *linea, *linea1;
+        for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
+            linea = fpv->m_listalineas->lineaat ( i );
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                bud->getlistalineas() ->newRecord();
+                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclfacturap" ) );
+                linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlfacturap" ) );
+                linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplfacturap" ) );
+                linea1->setDbValue ( "descuentolfacturap", linea->dbValue ( "descuentolfacturap" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalfacturap" ) );
+                linea1->setDbValue ( "reqeqlfacturap", linea->dbValue ( "reqeqlfacturap" ) );
+            } // end if
+        } // end for
+        bud->calculaypintatotales();
+
+    } catch ( ... ) {
+        blMsgInfo ( _ ( "Error inesperado" ), this );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
+
+}
+
+
+
 

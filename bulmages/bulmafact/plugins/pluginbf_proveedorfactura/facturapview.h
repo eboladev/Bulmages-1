@@ -59,6 +59,7 @@ public slots:
     virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_veralbaranes_clicked();
     virtual void on_mui_idproveedor_valueChanged ( QString );
+    virtual void on_mui_duplicar_released();
 };
 
 #endif
