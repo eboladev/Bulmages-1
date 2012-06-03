@@ -50,50 +50,52 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_articulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    g_pluginbf_articulo = bges;
 
-    if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
+    if (bges->objectName() != "BtBulmaTPVBase") {
+	g_pluginbf_articulo = (BfBulmaFact * ) bges;
+	if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
-        /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
-        pPluginMenu->addSeparator();
+	    /// Miramos si existe un menu Articulos
+	    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
+	    pPluginMenu->addSeparator();
 
-        /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
-        
+	    /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
+	    
 
-        BlAction *accionA = g_pbf_articulo_actionA = new BlAction ( _ ( "&Articulos" ), 0 );
-        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
-        accionA->setStatusTip ( _ ( "Articulos" ) );
-        accionA->setWhatsThis ( _ ( "Articulos" ) );
-        accionA->setObjectName("mui_actionArticulos");
-        pPluginMenu->addAction ( accionA );
-        bges->Listados->addAction ( accionA );
+	    BlAction *accionA = g_pbf_articulo_actionA = new BlAction ( _ ( "&Articulos" ), 0 );
+	    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
+	    accionA->setStatusTip ( _ ( "Articulos" ) );
+	    accionA->setWhatsThis ( _ ( "Articulos" ) );
+	    accionA->setObjectName("mui_actionArticulos");
+	    pPluginMenu->addAction ( accionA );
+	    bges->Listados->addAction ( accionA );
 
-        BlAction *accionB = g_pbf_articulo_actionB = new BlAction ( _ ( "&Nuevo articulo" ), 0 );
-        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
-        accionB->setStatusTip ( _ ( "Nuevo articulo" ) );
-        accionB->setWhatsThis ( _ ( "Nuevo articulo" ) );
-        accionB->setObjectName("mui_actionArticuloNuevo");
-        pPluginMenu->addAction ( accionB );
-        bges->Fichas->addAction ( accionB );
+	    BlAction *accionB = g_pbf_articulo_actionB = new BlAction ( _ ( "&Nuevo articulo" ), 0 );
+	    accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
+	    accionB->setStatusTip ( _ ( "Nuevo articulo" ) );
+	    accionB->setWhatsThis ( _ ( "Nuevo articulo" ) );
+	    accionB->setObjectName("mui_actionArticuloNuevo");
+	    pPluginMenu->addAction ( accionB );
+	    bges->Fichas->addAction ( accionB );
 
-        pPluginMenu->addSeparator();
-        BlAction *accionC = g_pbf_articulo_actionC = new BlAction ( _ ( "&Tipos de articulo" ), 0 );
-        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-type.png" ) ) );
-        accionC->setStatusTip ( _ ( "Tipos de articulo" ) );
-        accionC->setWhatsThis ( _ ( "Tipos de articulo" ) );
-        accionC->setObjectName("mui_actionArticulosTipo");
-        pPluginMenu->addAction ( accionC );
-        bges->Fichas->addAction ( accionC );
+	    pPluginMenu->addSeparator();
+	    BlAction *accionC = g_pbf_articulo_actionC = new BlAction ( _ ( "&Tipos de articulo" ), 0 );
+	    accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-type.png" ) ) );
+	    accionC->setStatusTip ( _ ( "Tipos de articulo" ) );
+	    accionC->setWhatsThis ( _ ( "Tipos de articulo" ) );
+	    accionC->setObjectName("mui_actionArticulosTipo");
+	    pPluginMenu->addAction ( accionC );
+	    bges->Fichas->addAction ( accionC );
 
-        pPluginMenu->addSeparator();
-        BlAction *accionD = g_pbf_articulo_actionD = new BlAction ( _ ( "&Familias" ), 0 );
-        accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
-        accionD->setStatusTip ( _ ( "Familias" ) );
-        accionD->setWhatsThis ( _ ( "Familias" ) );
-        accionD->setObjectName("mui_actionFamilias");
-        pPluginMenu->addAction ( accionD );
-        bges->Fichas->addAction ( accionD );
+	    pPluginMenu->addSeparator();
+	    BlAction *accionD = g_pbf_articulo_actionD = new BlAction ( _ ( "&Familias" ), 0 );
+	    accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
+	    accionD->setStatusTip ( _ ( "Familias" ) );
+	    accionD->setWhatsThis ( _ ( "Familias" ) );
+	    accionD->setObjectName("mui_actionFamilias");
+	    pPluginMenu->addAction ( accionD );
+	    bges->Fichas->addAction ( accionD );
+	} // end if
     } // end if
 
     return 0;
@@ -358,8 +360,9 @@ void SubForm_Articulo::s_trataMenu ( QAction *action )
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar articulo" ) ) {
         QString idarticulo = sub->dbValue ( "idarticulo" );
-        if ( idarticulo != "" )
+        if ( idarticulo != "" ) {
             editarArticulo ( idarticulo );
+	} // end if
     } else if ( action->text() == _ ( "Seleccionar articulo" ) ) {
         seleccionarArticulo ( sub );
     } else if ( action->text() == _ ( "Nuevo articulo" )  ) {
@@ -378,16 +381,21 @@ void SubForm_Articulo::editarArticulo ( QString idarticulo )
     BL_FUNC_DEBUG
     BlSubForm * subf = ( BlSubForm * ) parent();
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
+    /// Desabilitamos el borrado automatico de la clase y lo realizaremos manualmente para que no se llame al isHidden sobre un objeto eliminado.
+    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idarticulo ) ) {
         delete art;
-	
         return;
     } // end if
-    art->hide();
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    subf->setEnabled ( false );
     art->show();
-    
+    while ( !art->isHidden() )
+        g_theApp->processEvents();
+    subf->setEnabled ( true );
+    delete art;
 }
 
 

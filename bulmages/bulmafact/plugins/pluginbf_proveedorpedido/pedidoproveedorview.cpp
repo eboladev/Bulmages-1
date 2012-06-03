@@ -142,12 +142,11 @@ void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tota
 /**
 \param id
 **/
-void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
+void PedidoProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 {
     BL_FUNC_DEBUG
-    mui_lineasDetalle->setColumnValue ( "idproveedor", id );
+    mui_lineasDetalle->setIdProveedor ( id );
     mui_idforma_pago->setIdProveedor ( id );
-    
 }
 
 
@@ -156,6 +155,7 @@ void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
 **/
 void PedidoProveedorView::on_mui_descuentos_editFinish ( int, int )
 {
+    BL_FUNC_DEBUG
     calculaypintatotales();
 }
 
@@ -165,6 +165,7 @@ void PedidoProveedorView::on_mui_descuentos_editFinish ( int, int )
 **/
 void PedidoProveedorView::on_mui_lineasDetalle_editFinish ( int, int )
 {
+    BL_FUNC_DEBUG
     calculaypintatotales();
 }
 
@@ -219,6 +220,71 @@ int PedidoProveedorView::afterSave()
     m_listalineas->save();
     m_listadescuentos->save();
     return 0;
+}
+
+/// Se encarga de generar una factura a partir de un albar&aacute;n.
+/** Primero de todo busca una factura por referencia que tenga este albaran.
+    Si dicha factura existe entonces la cargamos y terminamos.
+    Si no existe dicha factura el sistema avisa y permite crear una poniendo
+    Todos los datos del albaran automaticamente en ella.
+*/
+/**
+\return
+**/
+void PedidoProveedorView::on_mui_duplicar_released()
+{
+    BL_FUNC_DEBUG
+    PedidoProveedorView *fpv = this ;
+
+
+    PedidoProveedorView *bud = NULL;
+    BlDbRecordSet *cur = NULL;
+
+    try {
+        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+        /// el siguiente cur->eof() el programa fallar&aacute;.
+        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
+
+        /// Creamos la factura.
+        PedidoProveedorView *bud = new PedidoProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
+
+        bud->setDbValue ( "comentpedidoproveedor", fpv->dbValue ( "comentpedidoproveedor" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "refpedidoproveedor", fpv->dbValue ( "refpedidoproveedor" ) );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+        bud->pintar();
+        bud->show();
+
+        /// Traspasamos las lineas de factura
+        QString l;
+        BlDbSubFormRecord *linea, *linea1;
+        for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
+            linea = fpv->m_listalineas->lineaat ( i );
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                bud->getlistalineas() ->newRecord();
+                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                linea1->setDbValue ( "desclpedidoproveedor", linea->dbValue ( "desclpedidoproveedor" ) );
+                linea1->setDbValue ( "cantlpedidoproveedor", linea->dbValue ( "cantlpedidoproveedor" ) );
+                linea1->setDbValue ( "pvplpedidoproveedor", linea->dbValue ( "pvplpedidoproveedor" ) );
+                linea1->setDbValue ( "descuentolpedidoproveedor", linea->dbValue ( "descuentolpedidoproveedor" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalpedidoproveedor", linea->dbValue ( "ivalpedidoproveedor" ) );
+                linea1->setDbValue ( "reqeqlpedidoproveedor", linea->dbValue ( "reqeqlpedidoproveedor" ) );
+            } // end if
+        } // end for
+        bud->calculaypintatotales();
+
+    } catch ( ... ) {
+        blMsgInfo ( _ ( "Error inesperado" ), this );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
+
 }
 
 

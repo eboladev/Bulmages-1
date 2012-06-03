@@ -2673,7 +2673,7 @@ void BlSubForm::bBajar ( ) {
 }
 
 
-///
+/// Pulsación de la / para que sea propagada y reimplementada en las clases derivadas.
 /**
 **/
 void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
@@ -2704,7 +2704,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 }
 
 
-///
+/// Pulsacion del * para que sea propagado y reimplementado en las clases derivadas
 /**
 **/
 void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
@@ -3522,9 +3522,15 @@ void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *rec, BlDbSubFormF
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
+/// Incorpora el funcionamiento por defecto que es copiar el contenido de la celda superior.
+void BlSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     BL_FUNC_DEBUG
+    BlDbSubFormRecord *recant = lineaat ( row - 1 );
+    if ( recant ) {
+        rec->setDbValue ( camp->fieldName(), recant->dbValue ( camp->fieldName() ) );
+        return;
+    } // end if
     
 }
 
@@ -3658,6 +3664,8 @@ QString BlSubForm::exportXML() {
 }
 
 
+/// Genera la parte de una sentencia SQL con las opciones de filtrado LIKE a partir de los campos que esten en el subformulario.
+/// \param text Texto con el que se crean todas las consultas del tipo LIKE.
 QString BlSubForm::likeFilterSQL(const QString &text)
 {
     BL_FUNC_DEBUG
@@ -3671,10 +3679,10 @@ QString BlSubForm::likeFilterSQL(const QString &text)
 	for (int i=0; i < headerList()->count(); i++) {
 	  if (headerList()->at(i)->fieldType() == BlDbField::DbVarChar) {  
 	    if (andor) {
-	      result += " lower(" + headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
+	      result += " lower(" + headerList()->at(i)->fieldName() + "::text) LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
 	      andor = false;
 	    } else {
-	      result += " OR lower(" + headerList()->at(i)->fieldName() + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
+	      result += " OR lower(" + headerList()->at(i)->fieldName() + "::text) LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
 	    } // end if
 	  } // end if
 	} // end for

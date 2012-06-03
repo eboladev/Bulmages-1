@@ -147,28 +147,6 @@ void PedidoClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total,
 }
 
 
-///
-/**
-**/
-void PedidoClienteView::on_mui_verpresupuesto_clicked()
-{
-    BL_FUNC_DEBUG
-
-    
-}
-
-
-/** Genera un Albaran a Cliente a partir de los datos
-    que tiene el pedido.
-*/
-/**
-\return
-**/
-void PedidoClienteView::generarAlbaran()
-{
-    BL_FUNC_DEBUG
-    
-}
 
 
 ///
@@ -246,15 +224,6 @@ void PedidoClienteView::s_pintaTotales()
 }
 
 
-///
-/**
-**/
-void PedidoClienteView::on_mui_pasaraalbaran_clicked()
-{
-    BL_FUNC_DEBUG
-    generarAlbaran();
-    
-}
 
 
 ///
@@ -289,4 +258,79 @@ void PedidoClienteView::on_mui_idalmacen_valueChanged ( QString id )
     m_listalineas->setIdAlmacen ( id );
     
 }
+
+
+
+/// Se encarga de generar una pedidocliente a partir de un albar&aacute;n.
+/** Primero de todo busca una pedidocliente por referencia que tenga este pedidocliente.
+    Si dicha pedidocliente existe entonces la cargamos y terminamos.
+    Si no existe dicha pedidocliente el sistema avisa y permite crear una poniendo
+    Todos los datos del pedidocliente automaticamente en ella.
+*/
+/**
+\return
+**/
+void PedidoClienteView::on_mui_duplicar_released()
+{
+    BL_FUNC_DEBUG
+    PedidoClienteView *fpv = this ;
+
+
+    PedidoClienteView *bud = NULL;
+    BlDbRecordSet *cur = NULL;
+
+    try {
+        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+        /// el siguiente cur->eof() el programa fallar&aacute;.
+        /// Comprobamos que existe una pedidocliente con esos datos, y en caso afirmativo lo mostramos.
+
+        /// Creamos la pedidocliente.
+        PedidoClienteView *bud = new PedidoClienteView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
+	bud->inicializar();
+
+        bud->setDbValue ( "comentpedidocliente", fpv->dbValue ( "comentpedidocliente" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "refpedidocliente", fpv->dbValue ( "refpedidocliente" ) );
+        bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
+        bud->pintar();
+        bud->show();
+
+        /// Traspasamos las lineas de pedidocliente
+        QString l;
+        BlDbSubFormRecord *linea, *linea1;
+        for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
+            linea = fpv->m_listalineas->lineaat ( i );
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                bud->getlistalineas() ->newRecord();
+                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                linea1->setDbValue ( "desclpedidocliente", linea->dbValue ( "desclpedidocliente" ) );
+                linea1->setDbValue ( "cantlpedidocliente", linea->dbValue ( "cantlpedidocliente" ) );
+                linea1->setDbValue ( "pvplpedidocliente", linea->dbValue ( "pvplpedidocliente" ) );
+                linea1->setDbValue ( "descuentolpedidocliente", linea->dbValue ( "descuentolpedidocliente" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalpedidocliente", linea->dbValue ( "ivalpedidocliente" ) );
+                linea1->setDbValue ( "reqeqlpedidocliente", linea->dbValue ( "reqeqlpedidocliente" ) );
+            } // end if
+        } // end for
+        bud->calculaypintatotales();
+
+    } catch ( ... ) {
+        blMsgInfo ( _ ( "Error inesperado" ), this );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
+
+}
+
+
+
+
+
+
+
 

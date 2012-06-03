@@ -95,6 +95,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *company, QWidget *parent )
     mui_listaCuotas->addSubFormHeader ( "fechaprevista", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Fecha prevista" ) );
     mui_listaCuotas->addSubFormHeader ( "cantidad", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     mui_listaCuotas->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Id asiento" ) );
+    mui_listaCuotas->addSubFormHeader ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _ ( "Num. asiento" ) );
     mui_listaCuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _ ( "Id lineas de amortizacion" ) );
     mui_listaCuotas->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( "Id amortizacion" ) );
     mui_listaCuotas->setInsert ( FALSE );
@@ -473,6 +474,8 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
 {
     BL_FUNC_DEBUG
 
+    int resur;
+
     /// Si no se ha seleccionado ninguna accion salimos.
     if ( ! opcion )
         return;
@@ -495,7 +498,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
                 QString idasiento = dbValue("idasiento");
                 ((BcCompany *)mainCompany())->intapuntsempresa()->muestraAsiento(idasiento.toInt());
         */
-        boton_asiento();
+//        boton_asiento();
     } // end if
 
     if ( opcion->text() == _ ( "Desvincular asiento" ) || opcion->text() == _ ( "Borrar asiento" ) ) {
@@ -509,7 +512,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
     if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
 
-        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;
@@ -522,9 +525,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
     if ( opcion->text() == _ ( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
         QString fecha = dbValue ( "fechaprevista" );
-        //            fprintf(stderr, "Fecha: %s\n", fecha.toAscii().constData());
         QString cant = dbValue ( "cantidad" );
-        //            fprintf(stderr, "Cuota: %s\n", cant.toAscii().constData());
 
         QString cuenta, cuentaamort;
         QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + dbValue ( "idamortizacion" );
@@ -547,7 +548,15 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         } // end if
         delete cur;
 
-        BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( ( ( BcCompany * ) mainCompany() ), 0 );
+	resur =   g_plugins->run ( "SNewBcAsientoInteligenteView", (BcCompany *) mainCompany() );
+        if ( ! resur) {
+            blMsgInfo(_("No se pudo crear instancia de asientos inteligentes"));
+            return;
+        } // end if
+        BcAsientoInteligenteView *nueva = (BcAsientoInteligenteView *) g_plugParams;
+	
+	nueva->show();
+	
         nueva->inicializa ( 0 );
 
         nueva->muestraPlantilla ( "amortizacion" );
@@ -565,7 +574,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        resur = g_plugins->run ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
             blMsgInfo(_("No se pudo crear instancia de asientos"));
             return;
@@ -588,7 +597,10 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
         QString idlinamortizacion = dbValue ( "idlinamortizacion" );
         SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
         mainCompany() ->runQuery ( SQLQuery );
+	
+	setDbValue("idasiento", currentRow(), QString::number ( numasiento1 ));
+	setDbValue("ordenasiento",currentRow(), ordenasiento);
+	
     } // end if
-//    on_mui_confquery_clicked();
 }
 

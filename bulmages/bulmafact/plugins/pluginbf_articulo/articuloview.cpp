@@ -59,7 +59,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         setDbTableName ( "articulo" );
         setDbFieldId ( "idarticulo" );
         addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador" ) );
-        addDbField ( "codarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo" ) );
+        addDbField ( "codarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo" ) );
         addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Nombre del articulo" ) );
         addDbField ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Abreviacion" ) );
         addDbField ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Observaciones" ) );
@@ -408,7 +408,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
 */
 void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
     BL_FUNC_DEBUG
-    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty()) {
+    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty() && g_confpr->value(CONF_PRECALC_CODARTICULO) == "TRUE") {
         QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
 
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );

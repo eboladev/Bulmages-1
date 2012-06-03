@@ -6,7 +6,7 @@
 
 Nombre: Balance Comptes annuels
 
-Biblioteca: libpluginbc_ccaa2ods.so
+Biblioteca: 
 
 Descripción: <H1>Balances Comptes annuels</H1>
 <P>Permet d'obtenir une balance de comptes annuels pour les plans comptables espagnols de 2007 : Comptes annuels, abrégés et des PMIs. Et pour les plans comptables avant 2008: Comptes annuels et abrégés des associations à but non lucratif. </P>
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys
+Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys; fbalance.ui
 
 
 Categorias: Comptabilite generale

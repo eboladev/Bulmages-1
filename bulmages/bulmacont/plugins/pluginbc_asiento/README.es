@@ -27,7 +27,7 @@ Reports:
 
 Categorias: Contabilidad general;Experimentales;
 
-Orden: 10
+Orden: 20
 
 Comentarios: -
 

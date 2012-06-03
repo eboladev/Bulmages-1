@@ -7,7 +7,7 @@ Factura: [numfactura] [idfactura]
 <!-- TURNWHITEBLACK "1"-->
  Uds. PRODUCTO               P.U. IMPORTE
 <!-- TURNWHITEBLACK "0"-->
-<!-- QUERY="SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]" --><!-- RIGHTJUSTIFIED "[cantlfactura]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclfactura]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplfactura]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
+<!-- QUERY="SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]" --><!-- RIGHTJUSTIFIED "[cantlfactura]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclfactura,a]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvplfactura]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
 <!-- END QUERY -->
 
 <!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
