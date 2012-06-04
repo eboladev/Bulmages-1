@@ -52,7 +52,6 @@ public:
     virtual int afterSave();
     virtual int cargarPost ( QString id );
     virtual int beforeDelete();
-    virtual void imprimirFacturaProveedor();
 
 public slots:
     virtual void on_m_descuentos_editFinish ( int, int );
