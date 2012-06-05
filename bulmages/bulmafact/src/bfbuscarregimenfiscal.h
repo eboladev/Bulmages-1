@@ -42,7 +42,7 @@ public:
     virtual void setFieldValue ( QString regimen );
 
 public slots:
-    virtual void m_activated ( int index );
+    virtual void activatedItem ( int index );
 
 signals:
     void valueChanged ( QString );
