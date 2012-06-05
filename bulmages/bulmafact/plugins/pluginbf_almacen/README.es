@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica; Colmados;
 
 Orden: 800
 

@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;Restauracion;
+Categorias: Experimentales;Restauracion; Colmados;
 
 Orden: 690
 
