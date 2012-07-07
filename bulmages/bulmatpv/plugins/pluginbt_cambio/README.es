@@ -22,6 +22,8 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
+Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+
 Orden:
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

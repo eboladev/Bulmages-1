@@ -24,4 +24,6 @@ Incompatibles:
 
 Orden: 5
 
+Categorias: Utilidades avanzadas; Restauracion; Colmados;
+
 Comentarios: 

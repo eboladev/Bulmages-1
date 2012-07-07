@@ -36,7 +36,7 @@ Dependencias: libpluginbf_articulo.so;libpluginbf_proveedor.so
 
 Incompatibles:
 
-Categorias: Asociaciones de padres de alumnos; Facturacion generica;
+Categorias: Asociaciones de padres de alumnos; Facturacion generica; Colmados;
 
 Reports: blform_FacturaProveedorView.qs
 

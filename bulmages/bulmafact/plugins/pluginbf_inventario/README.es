@@ -25,7 +25,7 @@ Dependencias: libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles: libpluginbf_inventariosimple.so
 
-Categorias: Facturacion generica; Experimentales;
+Categorias: Facturacion generica; Experimentales; Colmados;
 
 Reports: inf_stockminimos.rml
 
