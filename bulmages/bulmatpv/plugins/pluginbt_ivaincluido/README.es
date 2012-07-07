@@ -24,7 +24,7 @@ Incompatibles:
 
 Orden: 510
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimentales;IVA incluido; Colmados;
 
 
 Comentarios: Ideal para meter los codigos de barras como alias y poder tickarlos.

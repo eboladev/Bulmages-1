@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturacion avanzada; Experimentales; Colmados;
 
 Orden: 800
 

@@ -285,168 +285,74 @@ int FacturaProveedorView::afterSave()
 }
 
 
-/** Imprime una factura de proveedor
+
+
+
+/// Se encarga de generar una factura a partir de un albar&aacute;n.
+/** Primero de todo busca una factura por referencia que tenga este albaran.
+    Si dicha factura existe entonces la cargamos y terminamos.
+    Si no existe dicha factura el sistema avisa y permite crear una poniendo
+    Todos los datos del albaran automaticamente en ella.
 */
-/// \DEPRECATED: No se prevee que se tengan que imprimir facturas de proveedor.
 /**
 \return
 **/
-void FacturaProveedorView::imprimirFacturaProveedor()
+void FacturaProveedorView::on_mui_duplicar_released()
 {
-    /// Hacemos el lanzamiento de plugins para este caso.
-    int res = g_plugins->run ( "imprimirFacturaProveedor", this );
-    if ( res )
-        return;
+    BL_FUNC_DEBUG
+    FacturaProveedorView *fpv = this ;
 
-    base basesimp;
 
-    /// Copiamos el archivo.
-    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "facturap.rml";
-    QString archivod = g_confpr->value( CONF_DIR_USER ) + "facturap.rml";
-    blCopyFile(archivo, archivod);
-    
-    /// Copiamos el logo
-    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-    QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
-    blCopyFile(archivologo, logousuario);
+    FacturaProveedorView *bud = NULL;
+    BlDbRecordSet *cur = NULL;
 
-    QFile file;
-    file.setFileName ( archivod );
-    file.open ( QIODevice::ReadOnly );
-    QTextStream stream ( &file );
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt = "";
+    try {
+        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+        /// el siguiente cur->eof() el programa fallar&aacute;.
+        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
 
-    /// Linea de totales del presupuesto
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" );
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
-    if ( !cur->eof() ) {
-        buff.replace ( "[dirproveedor]", cur->value( "dirproveedor" ) );
-        buff.replace ( "[poblproveedor]", cur->value( "poblproveedor" ) );
-        buff.replace ( "[telproveedor]", cur->value( "telproveedor" ) );
-        buff.replace ( "[nomproveedor]", cur->value( "nomproveedor" ) );
-        buff.replace ( "[cifproveedor]", cur->value( "cifproveedor" ) );
-    } // end if
-    delete cur;
+        /// Creamos la factura.
+        FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
-    buff.replace ( "[numfacturap]", dbValue ( "numfacturap" ) );
-    buff.replace ( "[ffacturap]", dbValue ( "ffacturap" ) );
-    buff.replace ( "[comentfacturap]", dbValue ( "comentfacturap" ) );
-    buff.replace ( "[descfacturap]", dbValue ( "descfacturap" ) );
-    buff.replace ( "[reffacturap]", dbValue ( "reffacturap" ) );
+        bud->setDbValue ( "comentfacturap", fpv->dbValue ( "comentfacturap" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffacturap", fpv->dbValue ( "reffacturap" ) );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+        bud->inicializar();
+        bud->show();
 
-    /// Impresion de la tabla de contenidos.
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "        <td>" + _ ( "Codigo" ) + "</td>\n";
-    fitxersortidatxt += "        <td>" + _ ( "Concepto" ) + "</td>\n";
-    fitxersortidatxt += "        <td>" + _ ( "Cant." ) + "</td>\n";
-    fitxersortidatxt += "        <td>" + _ ( "Precio" ) + "</td>\n";
-    fitxersortidatxt += "        <td>" + _ ( "Desc." ) + "</td>\n";
-    fitxersortidatxt += "        <td>" + _ ( "Total" ) + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
-    QString l;
-
-    /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
-    int i = 0;
-
-    BlDbSubFormRecord *linea;
-    for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
-        linea = m_listalineas->lineaat ( i );
-        BlFixed base = BlFixed ( linea->dbValue ( "cantlfacturap" ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvplfacturap" ).toAscii().constData() );
-        basesimp[linea->dbValue ( "ivalfacturap" ) ] = basesimp[linea->dbValue ( "ivalfacturap" ) ] + base - base * BlFixed ( linea->dbValue ( "descuentolfacturap" ).toAscii().constData() ) / 100;
-
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "        <td>" + linea->dbValue ( "codigocompletoarticulo" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->dbValue ( "desclfacturap" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->dbValue ( "cantlfacturap" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->dbValue ( "pvplfacturap" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->dbValue ( "descuentolfacturap" ) + " %</td>\n";
-        fitxersortidatxt += "        <td>" + ( base - base * BlFixed ( linea->dbValue ( "descuentolfacturap" ) ) / 100 ).toQString() + "</td>\n";
-        fitxersortidatxt += "</tr>";
-        i++;
-    } // end for
-
-    while ( i++ < 15 )
-        fitxersortidatxt += "<tr></tr>";
-
-    fitxersortidatxt += "</blockTable>\n";
-    buff.replace ( "[story]", fitxersortidatxt );
-
-    BlFixed basei ( "0.00" );
-    base::Iterator it;
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei = basei + it.value();
-    } // end for
-
-    /// Impresion de los descuentos.
-    fitxersortidatxt = "";
-    BlFixed porcentt ( "0.00" );
-    BlDbSubFormRecord *linea1;
-    if ( m_listadescuentos->rowCount() ) {
-        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "        <td>" + _ ( "Descuento" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + _ ( "Porcentaje" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + _ ( "Total" ) + "</td>\n";
-        fitxersortidatxt += "</tr>\n";
-        for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
-            linea1 = m_listadescuentos->lineaat ( i );
-            porcentt = porcentt + BlFixed ( linea1->dbValue ( "proporciondfacturap" ).toAscii().constData() );
-            fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "        <td>" + linea1->dbValue ( "conceptdfacturap" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + linea1->dbValue ( "proporciondfacturap" ) + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporciondfacturap" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
-            fitxersortidatxt += "</tr>";
+        /// Traspasamos las lineas de factura
+        QString l;
+        BlDbSubFormRecord *linea, *linea1;
+        for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
+            linea = fpv->m_listalineas->lineaat ( i );
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                bud->getlistalineas() ->newRecord();
+                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclfacturap" ) );
+                linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlfacturap" ) );
+                linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplfacturap" ) );
+                linea1->setDbValue ( "descuentolfacturap", linea->dbValue ( "descuentolfacturap" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalfacturap" ) );
+                linea1->setDbValue ( "reqeqlfacturap", linea->dbValue ( "reqeqlfacturap" ) );
+            } // end if
         } // end for
-        fitxersortidatxt += "</blockTable>\n";
-    } // end if
-    buff.replace ( "[descuentos]", fitxersortidatxt );
+        bud->calculaypintatotales();
 
-    /// Impresion de los totales.
-    fitxersortidatxt = "";
-    QString tr1 = "";   /// Rellena el primer tr de titulares.
-    QString tr2 = "";   /// Rellena el segundo tr de cantidades.
-    fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
+    } catch ( ... ) {
+        blMsgInfo ( _ ( "Error inesperado" ), this );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
 
-    BlFixed totbaseimp ( "0.00" );
-    BlFixed parbaseimp ( "0.00" );
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > 0 ) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "        <td>" + _ ( "Base " ) + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
-    } // end for
-
-    BlFixed totiva ( "0.0" );
-    BlFixed pariva ( "0.0" );
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > 0 ) {
-            pariva = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
-        } else {
-            pariva = it.value() * BlFixed ( it.key() ) / 100;
-        } // end if
-        totiva = totiva + pariva;
-        tr1 += "        <td>" + _ ( "IVA " ) + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf ( "%s", pariva.toQString().toAscii().constData() ) + "</td>\n";
-    } // end for
-    tr1 += "        <td>" + _ ( "Total " ) + "</td>\n";
-    tr2 += "        <td>" + l.sprintf ( "%s", ( totiva + totbaseimp ).toQString().toAscii().constData() ) + "</td>\n";
-    fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
-    buff.replace ( "[totales]", fitxersortidatxt );
-
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file ) ;
-        stream << buff;
-        file.close();
-    } // end if
-    blCreateAndLoadPDF ( "facturap" );
 }
+
 
 
 
