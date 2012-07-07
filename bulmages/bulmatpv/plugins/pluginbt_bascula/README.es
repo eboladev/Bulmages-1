@@ -27,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilidades avanzadas; Experimentales; Colmados;
 
 Orden: 10
 

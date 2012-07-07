@@ -24,7 +24,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles: libpluginbf_etiquetas.so
 
-Categorias: Experimentales;
+Categorias: Experimentales; Colmados;
 
 Orden:
 

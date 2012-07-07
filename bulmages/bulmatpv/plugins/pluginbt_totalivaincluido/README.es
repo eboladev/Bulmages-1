@@ -24,7 +24,7 @@ Incompatibles: libpluginbt_total.so
 
 Orden:
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimentales;IVA incluido; Colmados;
 
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

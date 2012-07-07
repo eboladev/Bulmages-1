@@ -34,7 +34,8 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
         : BlComboBox ( parent )
 {
     BL_FUNC_DEBUG
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    // El activatedItem esta en la clase padre con lo que aqui no es muy necesario.
+    // connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
     addItem ( "Normal" );
     addItem ( "Intracomunitario" );
     addItem ( "Extracomunitario" );
@@ -91,7 +92,7 @@ void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
 /**
 \param index
 **/
-void BfBuscarRegimenFiscal::m_activated ( int index )
+void BfBuscarRegimenFiscal::activatedItem ( int index )
 {
     BL_FUNC_DEBUG
     if ( index > 0 ) {

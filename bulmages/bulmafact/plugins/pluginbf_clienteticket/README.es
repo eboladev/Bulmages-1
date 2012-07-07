@@ -40,7 +40,7 @@ Incompatibles:
 
 Reports:
 
-Categorias: IVA incluido;
+Categorias: IVA incluido; Colmados;
 
 Orden: 622
 

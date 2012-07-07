@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada; Colmados;
 
 Orden: 900
 
