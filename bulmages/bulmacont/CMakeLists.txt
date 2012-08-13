@@ -41,7 +41,6 @@ add_subdirectory(plugins)
 SET(QT_USE_QTUITOOLS TRUE)
 SET(QT_USE_QTXML TRUE) # uitools depends on xml
 SET(QT_USE_QTWEBKIT TRUE)
-SET(QT_USE_QTNETWORK TRUE)
 
 # if you want to add some private code
 # simple put your add_directory in a
