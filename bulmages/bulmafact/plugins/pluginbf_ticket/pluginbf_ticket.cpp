@@ -48,18 +48,20 @@ int entryPoint ( BfBulmaFact * )
 
 
 int PresupuestoView_PresupuestoView(PresupuestoView *l) {
-       BL_FUNC_DEBUG
-       TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(l, NULL, NULL,  NULL,NULL, l->mui_plugbotones);
+    BL_FUNC_DEBUG
+    TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(l, NULL, NULL,  NULL,NULL, l->mui_plugbotones);
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
        m_hboxLayout1->setMargin(5);
        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-	}// end if
-       m_hboxLayout1->addWidget(mui_exporta_efactura2);
-       return 0;
+    }// end if
+    m_hboxLayout1->addWidget(mui_exporta_efactura2);
+    return 0;
 }
+
+
 
 int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
        BL_FUNC_DEBUG
@@ -130,7 +132,6 @@ int TicketClienteView_TicketClienteView ( TicketClienteView *l )
 int FacturaView_FacturaView ( FacturaView *l )
 {
     BL_FUNC_DEBUG
-//================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, NULL, l,NULL, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -141,7 +142,5 @@ int FacturaView_FacturaView ( FacturaView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-//================================
-    
     return 0;
 }
