@@ -83,9 +83,6 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
         g_maxLenAlias = cur->valorInt ( "maxlenalias" );
 
 	delete cur;
-	
-//	blMsgError("Min Alias:" + g_minAlias + "Max Alias: " + g_maxAlias + "Min len:" + QString::number(g_minLenAlias) +" max" +  QString::number(g_maxLenAlias) + "alias:" + alias);
-	
         g_ultimRefrescAlias.restart();
     }// end if
     return ( ( g_minAlias !=  "" ) && ( g_maxAlias !=  "" )
