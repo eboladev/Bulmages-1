@@ -289,12 +289,10 @@ const QString BlFormList::generaFiltro()
 
     /// Protecci&oacute;n para el caso de no existir m_filtro.
     if (lfiltro != 0) {
-
         if (lfiltro->text() != "") {
 	    /// Hacemos el filtrado like del campo m_filtro
 	    filtro += m_listado->likeFilterSQL(lfiltro->text());
 	} // end if
-	
     } // end if
 
     QList<BlComboBox *> l4 = findChildren<BlComboBox *>();
