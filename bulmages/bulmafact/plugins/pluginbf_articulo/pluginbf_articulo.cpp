@@ -622,7 +622,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
            if ( bl->entrada().indexOf ( ".-" ) < 0 )  {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('"+bl->m_entrada+"'||'%') OR upper(nomarticulo) LIKE upper('"+bl->m_entrada+"'||'%') ORDER BY nomarticulo";
+	       /// Establezco un limite maximo de 50 elementos ya que es imposible buscar en una lista mayor. Ademas en este caso es mejor poner otro digito del codigo.
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('"+bl->m_entrada+"'||'%') OR upper(nomarticulo) LIKE upper('"+bl->m_entrada+"'||'%') ORDER BY nomarticulo LIMIT 50";
                 bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery);
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
