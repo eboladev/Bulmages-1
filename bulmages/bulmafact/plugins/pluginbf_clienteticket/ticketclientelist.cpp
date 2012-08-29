@@ -394,6 +394,7 @@ QString TicketClienteList::generarFiltro()
 	filtro += " AND idtrabajador = " + m_idtrabajador->id();
     } // end if
     
+    filtro += " AND ticketalbaran = TRUE";
     
     return ( filtro );
 }
