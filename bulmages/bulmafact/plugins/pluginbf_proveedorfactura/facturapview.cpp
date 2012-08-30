@@ -281,6 +281,9 @@ int FacturaProveedorView::afterSave()
     m_listalineas->save();
     m_listadescuentos->save();
     
+    /// Disparamos los plugins.
+    g_plugins->run ( "FacturaProveedorView_afterSave_Post", this );
+    
     return 0;
 }
 

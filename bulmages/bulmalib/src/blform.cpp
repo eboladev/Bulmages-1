@@ -938,6 +938,10 @@ int BlForm::save()
 
         afterSave();
 
+	        /// Lanzamos los plugins.
+        if ( g_plugins->run ( "BlForm_afterSave_Post", this ) ) return 0;
+	
+	
 	mainCompany() ->commit();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
