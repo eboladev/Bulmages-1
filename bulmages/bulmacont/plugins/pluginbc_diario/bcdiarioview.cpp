@@ -266,13 +266,26 @@ void BcDiarioView::presentar()
             cadand = " AND ";
         } // end if
 
+        
+        /// El calculo de los canales
         QString ccanales = scanal->cadCanal();
-        if ( ccanales != "" ) {
-            ccanales = " " + tabla + ".idcanal IN (" + ccanales + ") ";
-            cad += cadwhere + cadand + ccanales;
-            cadwhere = "";
-            cadand = " AND ";
-        } // end if
+        if (scanal->sinCanal()) {
+	  if ( ccanales != "" ) {
+	      ccanales = " ("+tabla+".idcanal ISNULL OR "+tabla+".idcanal IN (" + ccanales + ")) ";
+	  } else {
+	      ccanales = " "+tabla+".idcanal ISNULL ";	    
+	  } // end if
+	} else {
+	  if ( ccanales != "" ) {
+	      ccanales = " ("+tabla+".idcanal <> NULL OR "+tabla+".idcanal IN (" + ccanales + ")) ";
+	  } else {
+	      ccanales = " "+tabla+".idcanal <> NULL ";	    
+	  } // end if
+	} // end if
+        cad += cadwhere + cadand + ccanales;
+        cadwhere = "";
+        cadand = " AND ";
+        
 
         bool ok = FALSE;
         mui_saldosup->text().toFloat ( &ok );

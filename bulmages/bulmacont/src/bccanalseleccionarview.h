@@ -55,6 +55,7 @@ public:
     int nextCanal();
     QString cadCanal();
     QString nomCanal();
+    bool sinCanal();
 
 public slots:
     void on_mui_todo_clicked();
