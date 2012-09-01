@@ -173,14 +173,8 @@ void BalanceView::presentar()
     int nivel = mui_nivel->currentText().toInt();
     bool jerarquico = mui_balanceJerarquico->isChecked();
 
-    /// A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la
-    /// ejecuci&oacute;n del programa.
-    /// Se genera un &aacute;rbol din&aacute;mico en la memoria RAM que contendra todas
-    /// y cada una de las cuentas del PGC con sus saldos.
-    //if (sumasysaldosButton->isChecked()) {
     /// Balance de Sumas y Saldos.
     presentarSyS ( fechaInicial, fechaFinal, cuentaInicial, cuentaFinal, nivel, 0, jerarquico );
-    //} // end if
 }
 
 
@@ -223,20 +217,28 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         delete ramas;
 
         /// Sacamos la subcadena para centros de coste y canales.
-        // Consideraciones para centros de coste y canales
-        QString cadand = "";
         BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
         BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes = " AND apunte.idc_coste IN (" + ccostes + ") ";
-            cadand = " AND ";
+ ;
         } // end if
 
         QString ccanales = scanal->cadCanal();
-        if ( ccanales != "" ) {
-            ccanales = cadand + " apunte.idcanal IN (" + ccanales + ") ";
-        } // end if
+        if (scanal->sinCanal()) {
+	  if ( ccanales != "" ) {
+	      ccanales = " AND (apunte.idcanal ISNULL OR apunte.idcanal IN (" + ccanales + ")) ";
+	  } else {
+	      ccanales = " AND apunte.idcanal ISNULL ";	    
+	  } // end if
+	} else {
+	  if ( ccanales != "" ) {
+	      ccanales = " AND (apunte.idcanal <> NULL OR apunte.idcanal IN (" + ccanales + ")) ";
+	  } else {
+	      ccanales = " AND apunte.idcanal <> NULL ";	    
+	  } // end if
+	} // end if
 
         QString wherecostesycanales = ccostes + ccanales;
 

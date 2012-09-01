@@ -74,8 +74,18 @@ void BcCanalSeleccionarView::cargaCanales()
     BlDbRecordSet *cursoraux1;
     /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
+    /// Ponemos el canal base (sin canal y lo checkeamos)
+    it = new QTreeWidgetItem ( m_listCanales );
+    Lista[idcanal] = it;
+    it->setText ( 3, _("-1") );
+    it->setText ( 1, _("Sin Canal") );
+    it->setText ( 0, _("Sin Canal") );
+    it->setCheckState ( 0, Qt::Checked );
+    it->setExpanded ( TRUE );
+    
+    
     mainCompany() ->begin();
-    cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM canal", "canalillos" );
+    cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM canal" );
     mainCompany() ->commit();
     while ( !cursoraux1->eof() ) {
         idcanal = atoi ( cursoraux1->value( "idcanal" ).toAscii() );
@@ -84,7 +94,7 @@ void BcCanalSeleccionarView::cargaCanales()
         it->setText ( 3, cursoraux1->value( "idcanal" ) );
         it->setText ( 1, cursoraux1->value( "descripcion" ) );
         it->setText ( 0, cursoraux1->value( "nombre" ) );
-        it->setCheckState ( 0, Qt::Unchecked );
+        it->setCheckState ( 0, Qt::Checked );
         it->setExpanded ( TRUE );
         cursoraux1->nextRecord();
     } // end while
@@ -105,25 +115,30 @@ int BcCanalSeleccionarView::firstCanal()
     BL_FUNC_DEBUG
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
-    
+    ++ ( *m_iterador );
     return nextCanal();
+}
+
+
+bool BcCanalSeleccionarView::sinCanal()
+{
+    BL_FUNC_DEBUG
+    QTreeWidgetItemIterator iterador( m_listCanales ) ;
+    return ( *iterador ) ->checkState ( 0 ) == Qt::Checked ;
 }
 
 
 /// Esta funci&oacute;n devuelve el siguiente canal seleccionado de la vista.
 /**
-\return
+\return idcanal siguiente o 0 si no hay siguiente.
 **/
 int BcCanalSeleccionarView::nextCanal()
 {
     BL_FUNC_DEBUG
     int idcanal = 0;
-    fprintf ( stderr, "nextCanal\n" );
     while ( ( **m_iterador ) && idcanal == 0 ) {
         if ( ( **m_iterador ) ->checkState ( 0 ) == Qt::Checked ) {
             idcanal = ( **m_iterador ) ->text ( 3 ).toInt();
-            fprintf ( stderr, "siguiente canal:%d\n", idcanal );
-            return idcanal;
         } // end if
         ++ ( *m_iterador );
     } // end while
