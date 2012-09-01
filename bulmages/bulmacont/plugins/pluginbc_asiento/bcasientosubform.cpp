@@ -52,7 +52,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     addSubFormHeader ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id centro de coste" ) );
     addSubFormHeader ( "nomc_coste", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Centro de coste" ) );
     addSubFormHeader ( "idtipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id tipo de IVA" ) );
-    addSubFormHeader ( "orden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Orden" ) );
+    addSubFormHeader ( "ordenborrador", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Orden" ) );
     addSubFormHeader ( "idborrador", BlDbField::DbInt,  BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id borrador" ) );
     addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id asiento" ) );
     addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id cuenta" ) );
@@ -61,7 +61,8 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     addSubFormHeader ( "factura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Fecha Factura" ) );
     addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Num. Factura" ) );
     setInsert ( TRUE );
-    setOrdenEnabled ( FALSE );
+    setOrdenEnabled ( TRUE );
+    setOrdenPorQuery ( FALSE );
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
     
@@ -90,7 +91,7 @@ void BcAsientoSubForm::load ( QString idasiento )
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nomcanal, descripcion AS descanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nomc_coste, descripcion AS descc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador AS idborriva FROM registroiva) AS t4 ON borrador.idborrador = t4.idborriva ";
-    SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
+    SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY ordenborrador";
     BcSubForm::load ( SQLQuery );
     
 }

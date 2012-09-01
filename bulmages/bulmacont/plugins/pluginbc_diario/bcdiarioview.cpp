@@ -291,7 +291,7 @@ void BcDiarioView::presentar()
             cad += cadand + tabla + ".contrapartida = " + mui_contrapartida->id();
         } // end if
 
-        totalcadena = query + cad + " ORDER BY ordenasiento,apunte.haber,codigo ";
+        totalcadena = query + cad + " ORDER BY ordenasiento,"+tabla+".orden"+tabla;
         mui_list->load ( totalcadena );
 
         cur = mainCompany() ->loadQuery ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
