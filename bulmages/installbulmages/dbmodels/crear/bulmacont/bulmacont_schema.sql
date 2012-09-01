@@ -270,7 +270,7 @@ CREATE TABLE apunte (
     marcaconciliacion character(12),
     idc_coste integer REFERENCES c_coste(idc_coste),
     idtipoiva integer,
-    orden integer,
+    ordenapunte integer,
     punteo boolean DEFAULT false
 );
 
@@ -294,7 +294,7 @@ CREATE TABLE borrador (
 -- El campo idapunte no se utiliza, existe la combinacion idasiento, orden que lo sustituye.
     idapunte integer,
     idtipoiva integer,
-    orden integer
+    ordenborrador integer
 );
 
 
@@ -624,7 +624,7 @@ BEGIN
     ctadebe := 0;
     ctahaber := 0;
     descuadre := 0;
-    FOR cont IN SELECT idcuenta,idapunte, debe, haber, orden FROM apunte WHERE idasiento = midasiento ORDER BY orden LOOP
+    FOR cont IN SELECT idcuenta,idapunte, debe, haber, ordenapunte FROM apunte WHERE idasiento = midasiento ORDER BY ordenapunte LOOP
 	-- Si es el debe maximo lo hacemos constar.
 	IF cont.debe >= maxdebe THEN
             maxdebe := cont.debe;
@@ -642,8 +642,8 @@ BEGIN
         descuadre := descuadre - cont.haber;
         -- Si es el descuadre inicializamos las variables.
         IF descuadre = 0 AND ctadebe <> 0 AND ctahaber <> 0 THEN
-            UPDATE apunte SET contrapartida= ctahaber WHERE haber=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
-            UPDATE apunte SET contrapartida= ctadebe WHERE debe=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
+            UPDATE apunte SET contrapartida= ctahaber WHERE haber=0 AND idasiento = midasiento AND ordenapunte <= cont.ordenapunte AND contrapartida ISNULL;
+            UPDATE apunte SET contrapartida= ctadebe WHERE debe=0 AND idasiento = midasiento AND ordenapunte <= cont.ordenapunte AND contrapartida ISNULL;
             maxdebe := 0;
             maxhaber := 0;
             apmaxdebe:=0;
@@ -690,7 +690,7 @@ BEGIN
         apmaxhaber := 0;
         salidadebe := FALSE;
         salidahaber := FALSE;
-        FOR cont IN SELECT idapunte, debe, haber FROM apunte WHERE idasiento = apt.idasiento ORDER BY orden LOOP
+        FOR cont IN SELECT idapunte, debe, haber FROM apunte WHERE idasiento = apt.idasiento ORDER BY ordenapunte LOOP
             -- Si es la cuenta que estamos buscando lo hacemos constar.
             IF cont.idapunte = midapunte THEN
                 IF cont.debe > 0 THEN
@@ -769,7 +769,7 @@ BEGIN
         apmaxhaber := 0;
         salidadebe := FALSE;
         salidahaber := FALSE;
-        FOR cont IN SELECT * FROM borrador WHERE idasiento = apt.idasiento ORDER BY orden LOOP
+        FOR cont IN SELECT * FROM borrador WHERE idasiento = apt.idasiento ORDER BY ordenborrador LOOP
             -- Si es la cuenta que estamos buscando lo hacemos constar.
             IF cont.idborrador = midapunte THEN
                 IF cont.debe > 0 THEN
@@ -1646,11 +1646,11 @@ BEGIN
      -- // Linia afegida per Josep B.
     FOR mrecord IN SELECT * from borrador WHERE idasiento = id_asiento LOOP
 	INSERT INTO apunte (codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe,
-		    haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, orden) VALUES
+		    haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, ordenapunte) VALUES
 		    (mrecord.codigoborrador, mrecord.idasiento, mrecord.iddiario, mrecord.fecha, mrecord.conceptocontable,
 		    mrecord.idcuenta, mrecord.descripcion, mrecord.debe, mrecord.haber, mrecord.contrapartida,
 		    mrecord.comentario, mrecord.idcanal, mrecord.marcaconciliacion, mrecord.idc_coste, mrecord.idtipoiva,
-		    mrecord.orden);
+		    mrecord.ordenborrador);
     END LOOP;
     -- Cuando cerramos el asiento, tambien recalculamos todas las contrapartidas.	
     PERFORM contraasiento(id_asiento);
@@ -1848,7 +1848,7 @@ BEGIN
 			a := 1;
 			i := 0;
 		ELSE
-			INSERT INTO borrador (idasiento, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, idc_coste, orden) VALUES(NEW.idasiento, NEW.fecha, NEW.conceptocontable, NEW.idcuenta, NEW.descripcion, tdebe * ccostes.porcentc_costedist / 100, thaber * ccostes.porcentc_costedist / 100, NEW.contrapartida, NEW.comentario, NEW.idcanal, ccostes.idc_coste, NEW.orden);
+			INSERT INTO borrador (idasiento, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, idc_coste, ordenborrador) VALUES(NEW.idasiento, NEW.fecha, NEW.conceptocontable, NEW.idcuenta, NEW.descripcion, tdebe * ccostes.porcentc_costedist / 100, thaber * ccostes.porcentc_costedist / 100, NEW.contrapartida, NEW.comentario, NEW.idcanal, ccostes.idc_coste, NEW.ordenborrador);
 		END IF;
 	END LOOP;
 	

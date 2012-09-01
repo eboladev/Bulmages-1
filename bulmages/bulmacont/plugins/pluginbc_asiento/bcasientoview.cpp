@@ -56,10 +56,9 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
     if ( res != 0 )
         return;
 
-
     eventos_mui_ordenAsiento *eventosOrdenAsiento = new eventos_mui_ordenAsiento ( this );
     mui_ordenAsiento->installEventFilter ( eventosOrdenAsiento );
-
+    
     /// Conectamos el siganl returnPressed de mui_fecha
     connect ( mui_fecha, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_fecha_enterPressed() ) );
 
