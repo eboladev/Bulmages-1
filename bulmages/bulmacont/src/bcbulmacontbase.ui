@@ -66,6 +66,7 @@
      <string>&amp;Empresa</string>
     </property>
     <addaction name="actionConfiguracion"/>
+    <addaction name="actionModo_Experto"/>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuHerramientas">
@@ -102,6 +103,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSalir"/>
   </widget>
   <action name="actionConfiguracion">
    <property name="icon">
@@ -119,6 +121,10 @@
    </property>
   </action>
   <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="../../bulmages.qrc">
+     <normaloff>:/BulmaCont32x32/images/png/i_exit.png</normaloff>:/BulmaCont32x32/images/png/i_exit.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Salir del programa</string>
    </property>
@@ -344,6 +350,14 @@
   <action name="actionCerrar_Asientos">
    <property name="text">
     <string>Cerrar Asientos</string>
+   </property>
+  </action>
+  <action name="actionModo_Experto">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Modo Experto</string>
    </property>
   </action>
  </widget>

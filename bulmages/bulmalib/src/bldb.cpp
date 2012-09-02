@@ -327,6 +327,7 @@ BlDbRecord::BlDbRecord ( BlMainCompany *company )
     m_dbConnection = company;
     m_nuevoCampo = TRUE;
     m_tableName = "";
+    m_templateName = "";
     
 }
 
@@ -1160,13 +1161,29 @@ int BlDbRecord::generateRML ( const QString &arch )
     return 1;
 }
 
+void BlDbRecord::setTemplateName(const QString &name) {
+    BL_FUNC_DEBUG
+    m_templateName = name;
+}
+
 QString BlDbRecord::templateName ( void ) {
     BL_FUNC_DEBUG
+	  /// Si esta establecido un template usamos ese.
+	  if (m_templateName != "") {
+	      QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + m_templateName + ".rml");
+	      if (f.exists()) {
+		  return ( m_templateName );
+	      } // end if
+	  } // end if
+	  
+	  /// Si existe un archivo con el nombre de la tabla usamos ese
 	  QFile f( g_confpr->value( CONF_DIR_OPENREPORTS ) + tableName() + ".rml");
 	  if (f.exists()) {
 	      return ( tableName() );
 	  } // end if
-    return QString ( "ficha" );
+	  
+	  /// Si no hay nada establecemos usamos el archivo ficha.
+	  return QString ( "ficha" );
 }
 
 
