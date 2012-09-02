@@ -29,7 +29,7 @@
 \param parent
 **/
 BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BcCompany *emp, QWidget *parent )
-        : QDialog ( parent ), BlMainCompanyPointer ( emp )
+        : QWidget ( parent ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG
     setupUi ( this );

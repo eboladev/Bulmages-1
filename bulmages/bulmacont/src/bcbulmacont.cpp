@@ -31,7 +31,6 @@
 #include "bcaboutview.h"
 #include "blplugins.h"
 
-
 ///
 /**
 \param parent
@@ -633,6 +632,22 @@ void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toAscii().constData() );
 #endif
+}
+
+
+///
+/**
+ * Activa o desactiva el modo Experto.
+**/
+void BcBulmaCont::on_actionModo_Experto_triggered()
+{
+    BL_FUNC_DEBUG
+    if ( actionModo_Experto->isChecked() == TRUE ) {
+       g_confpr->setValue(CONF_MODO_EXPERTO, "TRUE");
+    } else {
+       g_confpr->setValue(CONF_MODO_EXPERTO, "FALSE");
+    } // end if
+    
 }
 
 
