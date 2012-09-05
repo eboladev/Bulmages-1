@@ -34,7 +34,7 @@ IVAincluidoView::~IVAincluidoView()
 void IVAincluidoView::on_mui_calcula_sin_iva_clicked()
 {
 
-    QString SQlQuery = "SELECT * FROM tasa_iva WHERE idtipo_iva = '" + m_trab->mui_idtipo_iva->id() + "'";
+    QString SQlQuery = "SELECT * FROM tasa_iva WHERE idtipo_iva = '" + m_trab->mui_idtipo_iva->id() + "' ORDER BY fechatasa_iva DESC LIMIT 1";
     BlDbRecordSet *cur = m_trab->mainCompany() ->loadQuery ( SQlQuery );
    
     if ( !cur->eof() ) {
@@ -52,7 +52,7 @@ void IVAincluidoView::on_mui_calcula_sin_iva_clicked()
 */
 void IVAincluidoView::on_mui_calcula_iva_inc_clicked()
 {
-    QString SQlQuery = "SELECT * FROM tasa_iva WHERE idtipo_iva = '" + m_trab->mui_idtipo_iva->id() + "'";
+    QString SQlQuery = "SELECT * FROM tasa_iva WHERE idtipo_iva = '" + m_trab->mui_idtipo_iva->id() + "' ORDER BY fechatasa_iva DESC LIMIT 1";
     BlDbRecordSet *cur = m_trab->mainCompany() ->loadQuery ( SQlQuery );
 
     if ( !cur->eof() ) {
