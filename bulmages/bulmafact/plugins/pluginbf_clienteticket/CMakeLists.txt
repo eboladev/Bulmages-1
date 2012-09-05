@@ -138,4 +138,6 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_US.css "${VAR_CSS_en_US}" )
 
 install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
 
-
+install(DIRECTORY openreports/ 
+      DESTINATION share/bulmages/openreports
+      PATTERN ".svn" EXCLUDE)

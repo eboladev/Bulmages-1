@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Listado" author="" allowSplitting="20">
+	<pageTemplate id="main">
+		<pageGraphics>
+		<!-- EL LOGO DE CABECERA -->
+		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<setFont name="Helvetica" size="22"/>
+		<drawString x="18cm" y="19.5cm">Tickets Vendidos</drawString>
+		</pageGraphics>
+	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	</pageTemplate>
+</template>
+<stylesheet>
+	<blockTableStyle id="tabla">
+		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
+		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.42,0.18)" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="(1,1,1)" start="0,0" stop="-1,0"/>
+		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
+		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
+		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
+		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+</stylesheet>
+
+<story>
+<para>
+Fecha Inicial: [m_fechain]
+Fecha Final : [m_fechafin]
+Articulo: [m_articulo]
+Cliente: [m_cliente]
+Filtraje: [m_filtro]
+Procesamiento: [mui_procesada]
+Trabajador: [m_idtrabajador]
+
+
+
+</para>
+	[story]
+	<spacer length="5mm" width="1mm"/>		
+	<para>
+<!-- QUERY = "SELECT sum(totalalbaran) AS ttotal, sum(impalbaran) AS timp FROM  albaran WHERE 
+CASE WHEN '[m_fechain]' <> '' THEN fechaalbaran >= NULLIF('[m_fechain]','')::DATE ELSE TRUE END
+AND
+CASE WHEN '[m_fechafin]'<> '' THEN fechaalbaran <= NULLIF('[m_fechafin]','')::DATE ELSE TRUE END
+"
+-->
+Total Tickets: [ttotal]
+</para><para>
+Total Impuestos: [timp]
+<!-- END QUERY -->
+
+</para>
+</story>
+</document>
