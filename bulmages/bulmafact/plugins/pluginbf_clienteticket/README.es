@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Reports:
+Reports: listado_ticket.rml
 
 Categorias: IVA incluido; Colmados;
 
