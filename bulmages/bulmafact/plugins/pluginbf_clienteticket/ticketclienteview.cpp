@@ -229,7 +229,7 @@ void TicketClienteView::calculaypintatotales() {
 	totallinea.setPrecision(2);
 	total = total + totallinea;
 	
-	BlFixed ivalinea = totallinea / (BlFixed("1.00") + (ivalin / BlFixed("100.00")));
+	BlFixed ivalinea = totallinea - totallinea / (BlFixed("1.00") + (ivalin / BlFixed("100.00")));
 	ivalinea.setPrecision(2);
 	impuestos = impuestos + ivalinea;
 		
