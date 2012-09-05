@@ -1165,6 +1165,41 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
 		valor = combo1->currentText();
 	   } // end if
             
+	  QPlainTextEdit *l5 = findChild<QPlainTextEdit *>(rx5.cap( 1 ));
+	  if ( l5 ) {
+	      valor = l5->toPlainText();
+	  } // end if
+
+	  QTextEdit * l1 = findChild<QTextEdit *>(rx5.cap( 1 ));
+	  if ( l1 ) {
+	      valor = l1->toPlainText();
+	  } // end if
+
+	  QLineEdit * l2 = findChild<QLineEdit *>(rx5.cap( 1 ));
+	  if ( l2 ) {
+	      valor = l2->text();
+	  } // end if
+
+	  QCheckBox  *l6 = findChild<QCheckBox *>(rx5.cap( 1 ));
+	  if ( l6 ) {
+	      if (l6->isChecked()) {
+		  valor = "TRUE";
+	      } else {
+		  valor = "FALSE";
+	      } // end if
+	  } // end if
+
+	  BlDateSearch * l7 = findChild<BlDateSearch *>(rx5.cap( 1 ));
+	  if ( l7 ) {
+		valor = l7->text();
+	  } // end if
+	  
+	  BlSearchWidget  *l8 = findChild<BlSearchWidget *>(rx5.cap( 1 ));
+	  if ( l8 ) {
+		  valor = l8->id();
+	  } // end if
+	  
+	  
 	   if ( valor != "") {
 	      switch ( tipoEscape ) {
 	      case 1:
@@ -1181,6 +1216,8 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
 	   } else {
 	         pos += rx5.matchedLength();
 	   } // end if
+	   
+
     } // end while
     
     

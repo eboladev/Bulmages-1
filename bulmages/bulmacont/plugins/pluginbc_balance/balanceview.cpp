@@ -84,7 +84,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     mui_cuentaFinal->m_valores["codigo"] = "";
     mui_cuentaFinal->hideLabel();
 
-    QString query = "select distinct length(codigo) AS orden from cuenta ORDER BY orden DESC";
+    QString query = "SELECT DISTINCT length(codigo) AS orden FROM cuenta ORDER BY orden DESC";
     BlDbRecordSet *niveles = NULL;
     /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
     /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
@@ -254,6 +254,8 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         query += " LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE  fecha < '" + fechaInicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
 
 
+	blMsgInfo(query);
+	
         /// Poblamos el &aacute;rbol de hojas (cuentas).
         hojas = mainCompany() ->loadQuery ( query );
         while ( !hojas->eof() ) {
