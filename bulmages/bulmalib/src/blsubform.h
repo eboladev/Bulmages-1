@@ -140,6 +140,7 @@ public:
 
 private:
     virtual void load ( BlDbRecordSet *cur );
+    const QString nameFileQuery();
     const QString nameFileConfig();
     const QString nameFileDefaultConfig();
     QToolButton *m_pagsig;

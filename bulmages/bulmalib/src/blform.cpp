@@ -565,6 +565,8 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
       QAction *nombreobjeto = popup->addAction( objectName() );
       nombreobjeto->setDisabled(TRUE);
+      QAction *claseobjeto = popup->addAction( metaObject()->className() );
+      claseobjeto->setDisabled(TRUE);
     } // end if
     
     /// Lanzamos el evento para que pueda ser capturado por terceros. Y pongan sus opciones.
