@@ -51,7 +51,6 @@ BfSubForm::BfSubForm ( QWidget *parent ) : BlSubForm ( parent )
     /// Disparamos los plugins.
     int res = g_plugins->run ( "BfSubForm_BfSubForm", this );
     if ( res != 0 ) {
-        
         return;
     } // end if
 
@@ -66,7 +65,6 @@ BfSubForm::~BfSubForm()
 {
     BL_FUNC_DEBUG
     delete m_delegate;
-    
 }
 
 
@@ -78,7 +76,6 @@ void BfSubForm::load ( QString query )
 {
     BL_FUNC_DEBUG
     BlSubForm::load ( query );
-    
 }
 
 
@@ -262,7 +259,6 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     /// Disparamos los plugins.
     int res = g_plugins->run ( "BfSubForm_on_mui_list_editFinished", this );
     if ( res != 0 ) {
-        
         return;
     } // end if
 

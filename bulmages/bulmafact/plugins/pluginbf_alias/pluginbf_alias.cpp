@@ -231,7 +231,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 
         delete cur;
 	
-	return 1;
+//	return 1; //Comentado porque no permite propagaciones y deberia hacerlo.
 
     } // end if
     

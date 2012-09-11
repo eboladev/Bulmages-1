@@ -873,7 +873,7 @@ void BlSubForm::setColumnCount ( int i )
 void BlSubForm::createMenu ( QMenu * )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm:: CreaMenu", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -883,7 +883,7 @@ void BlSubForm::createMenu ( QMenu * )
 void BlSubForm::execMenuAction ( QAction * )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm:: execMenuAction", 0, "funcion para ser sobreescrita" );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -1174,7 +1174,7 @@ void BlSubForm::pintaCabeceras()
 void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::situarse", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString::number ( row ) + " " + QString::number ( col ) );
 
     unsigned int nrow = row;
     unsigned int ncol = col;
@@ -1238,7 +1238,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
 **/
 void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
 {
-    BlDebug::blDebug ( "BlSubForm::situarse1", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString::number ( row ) + " " + QString::number ( col ) );
     unsigned int nrow = row;
     unsigned int ncol = col;
     BlSubFormHeader *linea = m_lcabecera.at ( ncol );
@@ -1410,7 +1410,7 @@ void BlSubForm::ponItemColorFondo ( QTableWidget *twidget, int filainicial, int 
 void BlSubForm::load ( BlDbRecordSet *cur )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::cargar", 0, objectName() );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, objectName() );
     m_procesacambios = FALSE;
 
 
@@ -1672,11 +1672,57 @@ void BlSubForm::setOrdenPorQuery ( bool ordenactivado )
 void BlSubForm::load ( QString query )
 {
     BL_FUNC_DEBUG
+
+
+    /// Si hay Querys almacenados en ficheros van a sustituir el query pasado. De esta forma podemos ampliar los subformularios sin programar.
+    if (nameFileQuery() != "") {
+	QFile file ( nameFileQuery() );
+
+
+	QDomDocument doc ( "mydocument" );
+	if ( file.open ( QIODevice::ReadOnly ) ) {
+	    
+	    if ( doc.setContent ( &file ) ) {
+		file.close();
+
+		QDomElement docElem = doc.documentElement();
+
+		/// Establecemos el orden de columna
+		QString squery = docElem.firstChildElement ( "QUERY" ).toElement().text();
+		if (squery != "") {
+		    BlDebug::blDebug(Q_FUNC_INFO, 0, squery);
+		    
+		    /// Empezamos la sustitucion
+		    /// Buscamos parametros en el query y los ponemos.
+		    int pos =  0;
+		    QRegExp rx ( "\\[(\\w*)\\]" );
+		    while ( ( pos = rx.indexIn ( squery, pos ) ) != -1 ) {
+				/// Encontrada una variable, buscamos en el query 
+				QString var = rx.cap(1);
+				QRegExp rx1 (  var + "\\s*=\\s*(\\w*)\\s*");
+				int pos1 = 0;
+				if ( ( pos1 = rx1.indexIn ( query, pos1 ) ) != -1 ) {
+				     squery = squery.replace("[" + var + "]", rx1.cap(1));
+				} // end if
+			    pos += rx.matchedLength();
+		    } // end while
+		    query = squery;
+		} // end if
+	    
+	    } else {
+		file.close();
+		return;
+	    } // end if
+	    
+         } // end if
+
+    } // end if
+    
     /// Si el query no existe no hacemos nada.
     if ( query == "" ) {
         return;
-    } // end if
-
+    } // end if 
+    
     try {
 
         /// Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
@@ -1807,7 +1853,7 @@ BlDbSubFormRecord *BlSubForm::lineaact()
 BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::lineaat()", 0, QString::number ( row ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString::number ( row ) );
     BlDbSubFormRecord *rec = NULL;
     try {
         /// Si la lista no tiene suficientes elementos devolvemos NULL
@@ -1823,7 +1869,7 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
         rec = ( BlDbSubFormRecord * ) camp->pare();
 
     } catch ( ... ) {
-        BlDebug::blDebug ( "BlSubForm::lineaat linea inexistente", 2, QString::number ( row ) + objectName() + parent()->objectName() );
+        BlDebug::blDebug ( Q_FUNC_INFO, 2," inexistente" + QString::number ( row ) + objectName() + parent()->objectName() );
         rec = NULL;
     }
 
@@ -1839,10 +1885,10 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 bool BlSubForm::campoCompleto ( int row )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::campoCompleto()", 0, QString::number ( row ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString::number ( row ) );
     bool resultat = false;
     bool *pResultat = &resultat;
-    if ( g_plugins->run ( "BlSubForm_campoCompleto", this, ( void** ) &pResultat ) ) {
+    if ( g_plugins->run ( Q_FUNC_INFO, this, ( void** ) &pResultat ) ) {
 
         return resultat;
     } else {
@@ -1886,7 +1932,7 @@ bool BlSubForm::campoCompleto ( int row )
 void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::on_mui_list_cellReposition", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
     /// Implementacion del semaforo
     static bool semaforo = FALSE;
     if ( semaforo )
@@ -1954,7 +2000,7 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::on_mui_list_cellChanged", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
 
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
@@ -2017,7 +2063,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::addSubFormHeader", 0,  nom );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0,  nom );
 
     BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
@@ -2081,7 +2127,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
 void BlSubForm::setColumnValue ( QString campo, QString valor )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubForm::setColumnValue", 0, campo + " -- " + valor );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, campo + " -- " + valor );
     BlDbSubFormRecord *rec;
 
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
@@ -2363,14 +2409,46 @@ int BlSubForm::remove ( int row )
 **/
 int BlSubForm::cerrarEditor()
 {
-
+    BL_FUNC_DEBUG
     return 0;
 }
+
+
+/// Sacamos cual es el archivo de Querys
+const QString BlSubForm::nameFileQuery()
+{
+    BL_FUNC_DEBUG
+  
+  
+    QString nombre = "";
+    QString directorio = g_confpr->value(CONF_DIR_USER);
+    if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
+        directorio = g_confpr->value(CONF_DIR_CONFIG);
+    } // end if
+
+    QString empresa = mainCompany()->dbName();
+    if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
+        empresa  = "";
+    } // end if
+
+    nombre = directorio + m_fileconfig + "_" + empresa + "_tableQuery.sql" ;
+    BlDebug::blDebug( "BlSubForm::nameFileQuery . Fichero de Querys" + nombre);
+    if (QFile::exists(nombre)) return nombre;
+	
+    nombre = CONFIG_DIR_CONFIG + m_fileconfig + "_" + empresa + "_tableQuery.sql";
+    BlDebug::blDebug( "BlSubForm::nameFileQuery . Fichero de Querys" + nombre);
+    if (QFile::exists(nombre)) return nombre;
+    
+    return "";
+}
+
 
 
 /// Sacamos cual es el archivo en el que guardar/cargar configuraciones
 const QString BlSubForm::nameFileConfig()
 {
+    BL_FUNC_DEBUG
+      
     QString directorio = g_confpr->value(CONF_DIR_USER);
     if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
         directorio = g_confpr->value(CONF_DIR_CONFIG);
@@ -2389,6 +2467,7 @@ const QString BlSubForm::nameFileConfig()
 /// Lo usamos para mejorar la presentacion en la primera ejecucion ya que la primera impresion es la que queda.
 const QString BlSubForm::nameFileDefaultConfig()
 {
+    BL_FUNC_DEBUG
     QString directorio = g_confpr->value(CONF_DIR_DEFAULT_CONFS);
 
     QString nombre = directorio + m_fileconfig + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" ;
@@ -2512,14 +2591,14 @@ void BlSubForm::loadConfigXML()
 
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-
         return;
-    }
+    } // end if
+    
     if ( !doc.setContent ( &file ) ) {
         file.close();
-
         return;
-    }
+    } // end if
+    
     file.close();
 
     QDomElement docElem = doc.documentElement();
@@ -2900,8 +2979,6 @@ void BlSubForm::on_mui_confquery_clicked()
     } // end if
     mui_paginaact->setValue ( 1 );
     load ( mui_query->toPlainText() );
-//  load(m_query);
-
 }
 
 
@@ -2932,7 +3009,7 @@ void BlSubForm::confquery()
 **/
 void BlSubForm::on_mui_list_ctrlUp ( int row, int col )
 {
-    BlDebug::blDebug ( "BlSubForm::on_mui_list_ctrlUp", 0, " (" + QString::number ( row ) + "," + QString::number ( col ) + ")" );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, " (" + QString::number ( row ) + "," + QString::number ( col ) + ")" );
     if ( ! m_orden )
         return;
     if ( row >= mui_list->rowCount() - 1 || row == 0 )
@@ -3292,6 +3369,10 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
         QAction *nombreobjeto = popup->addAction( objectName() );
         nombreobjeto->setDisabled(TRUE);
+        QAction *claseobjeto = popup->addAction( metaObject()->className() );
+        claseobjeto->setDisabled(TRUE);
+        QAction *fileconfig = popup->addAction( m_fileconfig );
+        fileconfig->setDisabled(TRUE);
     } // end if
 
     /// Lanzamos el evento para que pueda ser capturado por terceros.
@@ -3741,7 +3822,7 @@ BlSubFormDelegate::~BlSubFormDelegate()
 QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
     BlSubFormHeader *linea;
     linea = m_subform->headerList() ->at ( index.column() );
     g_fieldName = linea->fieldName();
@@ -3791,7 +3872,7 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
 
     /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
@@ -3843,7 +3924,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
 
 
     g_index = index;
@@ -3894,10 +3975,10 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 //    BL_FUNC_DEBUG  /* No hacemos debug porque da problemas
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
-        BlDebug::blDebug ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        BlDebug::blDebug ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         /// Si hemos pulsado ademas el Shift se lo pasamos al editor de texto para que haga un salto de linea
@@ -3919,10 +4000,10 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end switch
     } else if ( event->type() == QEvent::KeyRelease ) {
-        BlDebug::blDebug ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        BlDebug::blDebug ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         /// Si hemos pulsado ademas el Shift se lo pasamos al editor de texto para que haga un salto de linea
