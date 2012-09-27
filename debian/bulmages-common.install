@@ -1,8 +1,0 @@
-usr/share/bulmages/README.es
-usr/share/bulmages/version
-usr/bin/bgtrml2pdf
-usr/share/bulmages/bgtrml2pdf/bgcolor.py
-usr/share/bulmages/bgtrml2pdf/bgutils.py
-usr/share/bulmages/bgtrml2pdf/svgimage.py
-usr/share/bulmages/icons/*
-etc/bulmages/bulmages.conf
