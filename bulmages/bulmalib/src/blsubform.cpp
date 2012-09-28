@@ -359,10 +359,11 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::loadSpecs()
 {
     BL_FUNC_DEBUG
-
+    
     QString fileToLoad = CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc";
-
+    
     QFile file ( fileToLoad );
+    
 
     /// If not exists return.
     if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -375,7 +376,6 @@ void BlSubForm::loadSpecs()
         file.close();
         return;
     } // end if
-
     file.close();
 
     QDomElement docElem = doc.documentElement();

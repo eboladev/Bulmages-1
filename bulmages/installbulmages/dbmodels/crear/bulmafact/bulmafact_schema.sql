@@ -3295,9 +3295,16 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
+<<<<<<< HEAD
 	UPDATE CONFIGURACION SET valor = ''0.13.1-0006'' WHERE nombre = ''DatabaseRevision'';
     ELSE
 	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0006'');
+=======
+	UPDATE CONFIGURACION SET valor = ''0.14.1-0001'' WHERE nombre = ''DatabaseRevision'';
+    ELSE
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0001'');
+
+>>>>>>> release
     END IF;
 
     RETURN 0;
@@ -3305,4 +3312,4 @@ END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.13.1"
+\echo "Actualizada la revision de la base de datos a la version 0.14.1"

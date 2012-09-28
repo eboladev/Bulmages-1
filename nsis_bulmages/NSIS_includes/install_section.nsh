@@ -40,22 +40,9 @@ Section "Archivos Comunes" SecInstall
   Push "$INSTDIR\etc\bulmages.conf" #file to replace in
   Call AdvReplaceInFile
   
-  
-  ; Generamos todos los confs 
-  ;SetOutPath "$INSTDIR\confs"
-  ;File confs\*
-  
-  ;SetOutPath "$INSTDIR\bgtrml2pdf"
-  ;CONFIG FILES...
-  ;File /oname=bgtrml2pdf "bgtrml2pdf\bgtrml2pdf"
-  ;File /oname=bgcolor.py "bgtrml2pdf\bgcolor.py"
-  ;File /oname=bgutils.py "bgtrml2pdf\bgutils.py"
-  ;File /oname=svgimage.py "bgtrml2pdf\svgimage.py"
-  
 ;  SetOutPath "$INSTDIR"
 ; Instalamos el bgtrml2pdf
   SetOutPath "$INSTDIR\share\bulmages\bgtrml2pdf"
-;  !insertmacro InstallFolderFromSrc bgtrml2pdf "\share\bulmages\bgtrml2pdf" 
   File /oname=flip.exe "flip.exe"    
   !insertmacro InstallFilesFromSrc bgtrml2pdf "\bin\bgtrml2pdf"
   
@@ -115,13 +102,13 @@ Section "Archivos Comunes" SecInstall
   !include "NSIS_includes\bulmasetup.bat.tpt"
   File /oname=bulmasetup.vbs "bulmasetup.vbs"
   
-  CreateDirectory "$SMPROGRAMS\Bulmages\Tools"
-  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\pgAdmin3.lnk" "$INSTDIR\pgsql\bin\pgAdmin3.vbs" "" "$INSTDIR\pgsql\bin\pgsql.ico" 0 SW_SHOWNORMAL
+  CreateDirectory "$SMPROGRAMS\Bulmages\Herramientas"
+  CreateShortCut "$SMPROGRAMS\Bulmages\Herramientas\pgAdmin3.lnk" "$INSTDIR\pgsql\bin\pgAdmin3.vbs" "" "$INSTDIR\pgsql\bin\pgsql.ico" 0 SW_SHOWNORMAL
 ;  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Backup.lnk" "$INSTDIR\program\Bulmages_Backup_Tool.exe" "" "$INSTDIR\program\backup.ico" 0 SW_SHOWNORMAL
 ;  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Restore.lnk" "$INSTDIR\program\Bulmages_Restore_Tool.exe" "" "$INSTDIR\program\restore.ico" 0 SW_SHOWNORMAL
-  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Desinstalar.lnk" "$INSTDIR\desinstalar.exe" "" "" 0
+  CreateShortCut "$SMPROGRAMS\Bulmages\Herramientas\Desinstalar.lnk" "$INSTDIR\desinstalar.exe" "" "" 0
 ;  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Nueva_Empresa.lnk" "$INSTDIR\program\Bulmages_CreateCompany_Tool.exe" "" "$INSTDIR\program\nuevaemp.ico" 0 SW_SHOWNORMAL
-  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BulmaSetup.lnk" "$INSTDIR\bulmasetup\bulmasetup.vbs" "" "$INSTDIR\program\nuevaemp.ico" 0 SW_SHOWNORMAL
+  CreateShortCut "$SMPROGRAMS\Bulmages\BulmaSetup.lnk" "$INSTDIR\bulmasetup\bulmasetup.vbs" "" "$INSTDIR\program\nuevaemp.ico" 0 SW_SHOWNORMAL
   
   ;Initialize PostgreSQL
   DetailPrint 'Iniciando base de datos...'
@@ -192,11 +179,9 @@ Section "BulmaFact"
   !include "NSIS_includes\include_bulmafact_es_ES_install.nsh"
 
   ;Shortcuts
-  CreateDirectory "$SMPROGRAMS\Bulmages\Fact"
-
+  CreateDirectory "$SMPROGRAMS\Bulmages"
   SetOutPath "$INSTDIR\program"
-  CreateShortCut "$SMPROGRAMS\Bulmages\Fact\Facturacion.lnk" "$INSTDIR\program\bulmafact.vbs" "" "$INSTDIR\program\Bulmages_fact_install.ico" 0 SW_SHOWMAXIMIZED
-  ;CreateShortCut "$SMPROGRAMS\Bulmages\Fact\BG_Fact (demo).lnk" "$INSTDIR\program\bulmafact.vbs" "demo_tpv" "$INSTDIR\program\Bulmages_fact_install.ico" 0 SW_SHOWMAXIMIZED
+  CreateShortCut "$SMPROGRAMS\Bulmages\Facturacion.lnk" "$INSTDIR\program\bulmafact.vbs" "" "$INSTDIR\program\Bulmages_fact_install.ico" 0 SW_SHOWMAXIMIZED
 
   
 SectionEnd
@@ -243,31 +228,10 @@ Section "BulmaCont"
 
 
   ;Shortcuts
-  CreateDirectory "$SMPROGRAMS\Bulmages\Cont"
-
-
+  CreateDirectory "$SMPROGRAMS\Bulmages"
   SetOutPath "$INSTDIR\program"
-  CreateShortCut "$SMPROGRAMS\Bulmages\Cont\Contabilidad.lnk" "$INSTDIR\program\bulmacont.vbs" "" "$INSTDIR\program\Bulmages_cont_install.ico" 0 SW_SHOWMAXIMIZED
+  CreateShortCut "$SMPROGRAMS\Bulmages\Contabilidad.lnk" "$INSTDIR\program\bulmacont.vbs" "" "$INSTDIR\program\Bulmages_cont_install.ico" 0 SW_SHOWMAXIMIZED
 
-;  CreateShortCut "$SMPROGRAMS\Bulmages\Cont\BG_cont.lnk" "$INSTDIR\program\bulmacont.vbs" "" "$INSTDIR\program\Bulmages_cont_install.ico" 0 SW_SHOWMAXIMIZED
-;  CreateShortCut "$SMPROGRAMS\Bulmages\Cont\BG_cont (demo).lnk" "$INSTDIR\program\bulmacont.vbs" "demo_cont" "$INSTDIR\program\Bulmages_cont_install.ico" 0 SW_SHOWMAXIMIZED
-
- ; SetOutPath "$INSTDIR"
-
-  ;DetailPrint 'Activando base de datos...'
-  ;nsExec::Exec '"$INSTDIR\pgsql\bin\pg_ctl.exe" -D "$INSTDIR\pgsql\data" -w -l "$INSTDIR\pgsql\data\registro" start'
-
-  ;DetailPrint 'Creando base de datos demo_cont...'
-  ;nsExec::Exec '"$INSTDIR\pgsql\bin\createdb.exe" demo_cont'
-;  nsExec::Exec '"$INSTDIR\pgsql\bin\createdb.exe" cont'
-
-  ;Load data to demo database
-  ;DetailPrint 'Cargando la base de datos con datos...'
-  ;nsExec::Exec '"$INSTDIR\pgsql\bin\psql.exe" -f "$INSTDIR\db\demo_cont.sql" -d demo_cont'
-;  nsExec::Exec '"$INSTDIR\pgsql\bin\psql.exe" -f "$INSTDIR\db\cont.sql" -d cont'
-
-  ;DetailPrint 'Desactivando base de datos...'
-  ;nsExec::Exec '"$INSTDIR\pgsql\bin\pg_ctl.exe" -D "$INSTDIR\pgsql\data" -w -l "$INSTDIR\pgsql\data\registro" stop'
 
 SectionEnd
 
@@ -310,15 +274,13 @@ Section "BulmaTPV"
   
   SetOutPath "$INSTDIR\program"
   
-  CreateDirectory "$SMPROGRAMS\Bulmages\TPV"
-  CreateShortCut "$SMPROGRAMS\Bulmages\TPV\TPV .lnk" "$INSTDIR\program\bulmatpv.vbs" "" "$INSTDIR\program\Bulmages_tpv_bar_install.ico" 0 SW_SHOWMAXIMIZED
+  ;Shortcuts
+  CreateDirectory "$SMPROGRAMS\Bulmages"
+  CreateShortCut "$SMPROGRAMS\Bulmages\TPV .lnk" "$INSTDIR\program\bulmatpv.vbs" "" "$INSTDIR\program\Bulmages_tpv_bar_install.ico" 0 SW_SHOWMAXIMIZED
 
 
   SetOutPath "$INSTDIR"
 
-  ;Create directories for article images.
-  ;CreateDirectory "$INSTDIR\pgsql\data\img_articles"
-  ;SetOutPath "$INSTDIR\pgsql\data\img_articles"
-  ;File img_articles\*
+
   
 SectionEnd

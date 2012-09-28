@@ -29,6 +29,10 @@ Categorias: Facturacion avanzada; Colmados;
 
 Orden: 900
 
+<<<<<<< HEAD
 Reports: listado_z.rml; inf_cuadrescaja.rml; inf_resumenventasarticulo.pys
+=======
+Reports: listado_z.rml; inf_cuadrescaja.rml
+>>>>>>> release
 
 Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará.

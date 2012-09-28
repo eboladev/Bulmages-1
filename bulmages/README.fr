@@ -1,12 +1,12 @@
 ========================================
 Logiciel de Gestion d'entreprise BulmaGés
-(C) 2003 - 2010 Asociación IGLUES
+(C) 2003 - 2015 Asociación IGLUES
 http://www.iglues.org
 
 ========================================
 #README.fr
 
-BulmaGés 0.13.0 (janvier 2011)
+BulmaGés 0.14.0 (Juny 2012)
 
 Contenu
 ---------
