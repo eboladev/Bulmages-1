@@ -102,13 +102,13 @@ Section "Archivos Comunes" SecInstall
   !include "NSIS_includes\bulmasetup.bat.tpt"
   File /oname=bulmasetup.vbs "bulmasetup.vbs"
   
-  CreateDirectory "$SMPROGRAMS\Bulmages\Tools"
-  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\pgAdmin3.lnk" "$INSTDIR\pgsql\bin\pgAdmin3.vbs" "" "$INSTDIR\pgsql\bin\pgsql.ico" 0 SW_SHOWNORMAL
+  CreateDirectory "$SMPROGRAMS\Bulmages\Herramientas"
+  CreateShortCut "$SMPROGRAMS\Bulmages\Herramientas\pgAdmin3.lnk" "$INSTDIR\pgsql\bin\pgAdmin3.vbs" "" "$INSTDIR\pgsql\bin\pgsql.ico" 0 SW_SHOWNORMAL
 ;  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Backup.lnk" "$INSTDIR\program\Bulmages_Backup_Tool.exe" "" "$INSTDIR\program\backup.ico" 0 SW_SHOWNORMAL
 ;  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Restore.lnk" "$INSTDIR\program\Bulmages_Restore_Tool.exe" "" "$INSTDIR\program\restore.ico" 0 SW_SHOWNORMAL
-  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Desinstalar.lnk" "$INSTDIR\desinstalar.exe" "" "" 0
+  CreateShortCut "$SMPROGRAMS\Bulmages\Herramientas\Desinstalar.lnk" "$INSTDIR\desinstalar.exe" "" "" 0
 ;  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BG_Nueva_Empresa.lnk" "$INSTDIR\program\Bulmages_CreateCompany_Tool.exe" "" "$INSTDIR\program\nuevaemp.ico" 0 SW_SHOWNORMAL
-  CreateShortCut "$SMPROGRAMS\Bulmages\Tools\BulmaSetup.lnk" "$INSTDIR\bulmasetup\bulmasetup.vbs" "" "$INSTDIR\program\nuevaemp.ico" 0 SW_SHOWNORMAL
+  CreateShortCut "$SMPROGRAMS\Bulmages\BulmaSetup.lnk" "$INSTDIR\bulmasetup\bulmasetup.vbs" "" "$INSTDIR\program\nuevaemp.ico" 0 SW_SHOWNORMAL
   
   ;Initialize PostgreSQL
   DetailPrint 'Iniciando base de datos...'

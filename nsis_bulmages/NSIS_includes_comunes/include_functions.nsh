@@ -137,15 +137,15 @@ FunctionEnd
 
 
 ; Devuelve el 'size' del archivo
-Function FileSize
+;Function FileSize
  
-  Exch $0
-  Push $1
-  FileOpen $1 $0 "r"
-  FileSeek $1 0 END $0
-  FileClose $1
-  Pop $1
-  Exch $0
+;  Exch $0
+;  Push $1
+;  FileOpen $1 $0 "r"
+;  FileSeek $1 0 END $0
+;  FileClose $1
+;  Pop $1
+;  Exch $0
  
-FunctionEnd
+;FunctionEnd
 
