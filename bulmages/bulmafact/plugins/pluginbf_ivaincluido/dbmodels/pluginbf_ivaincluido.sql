@@ -84,7 +84,7 @@ DROP FUNCTION aux() CASCADE;
 
 \echo -n ':: Funcion que calcula el total de un albaran a cliente ... '
 CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
-AS '
+AS $$
 DECLARE
     idp ALIAS FOR $1;
     totalBImponibleLineas numeric(12, 2);
@@ -141,7 +141,7 @@ BEGIN
 
     RETURN totalTotal;
 END;
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 
 \echo -n ':: Funcion que calcula la Base Imponible total de un albaran a cliente ... '
