@@ -364,6 +364,7 @@ void BlSubForm::loadSpecs()
     
     QFile file ( fileToLoad );
     
+
     /// If not exists return.
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         return;
@@ -375,7 +376,6 @@ void BlSubForm::loadSpecs()
         file.close();
         return;
     } // end if
-
     file.close();
 
     QDomElement docElem = doc.documentElement();
@@ -3779,23 +3779,7 @@ QString BlSubForm::likeFilterSQL(const QString &text)
             } // end if
         } // end for
 
-    result += " ) ";
-	result += " AND (";
-	bool andor = TRUE;
-    
-	/// Recorre todas las columnas.
-	for (int i=0; i < headerList()->count(); i++) {
-	  if (headerList()->at(i)->fieldType() == BlDbField::DbVarChar) {  
-	    if (andor) {
-	      result += " lower(" + headerList()->at(i)->fieldName() + "::text) LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
-	      andor = false;
-	    } else {
-	      result += " OR lower(" + headerList()->at(i)->fieldName() + "::text) LIKE lower('%" + mainCompany()->sanearCadenaUtf8(text) + "%') ";
-	    } // end if
-	  } // end if
-	} // end for
-	
-	result += " ) ";
+        result += " ) ";
     } // end if
 
     return result;

@@ -37,20 +37,7 @@ extern "C" PLUGINBF_CORREO_EXPORT int AlbaranClienteView_AlbaranClienteView ( Al
 extern "C" PLUGINBF_CORREO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" PLUGINBF_CORREO_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 extern "C" PLUGINBF_CORREO_EXPORT int FacturaView_FacturaView ( FacturaView * );
-<<<<<<< HEAD:bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h
 extern "C" PLUGINBF_CORREO_EXPORT int LaunchChoseMailer ();
-=======
-
-extern "C" PLUGINBF_CORREO_EXPORT int LaunchChoseMailer ();
-extern "C" PLUGINBF_CORREO_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
-extern "C" PLUGINBF_CORREO_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
-extern "C" PLUGINBF_CORREO_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
-#ifdef Q_OS_WIN32
-extern "C" PLUGINBF_CORREO_EXPORT int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
- #endif
-extern "C" PLUGINBF_CORREO_EXPORT int bfSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
-
->>>>>>> 9129262... Nueva versión del PluginBf_Correo finalizada.:bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h
 extern "C" PLUGINBF_CORREO_EXPORT int entryPoint ( BfBulmaFact * );
 
 #endif

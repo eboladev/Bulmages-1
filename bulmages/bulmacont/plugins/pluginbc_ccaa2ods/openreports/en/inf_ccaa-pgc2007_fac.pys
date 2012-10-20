@@ -1,13 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
-<<<<<<< HEAD
 #<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
 #<!--PARAM NAME="fechainicialactual" TYPE="date"-->
 #<!--PARAM NAME="fechafinalactual" TYPE="date"-->
 #<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
 #<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
-=======
->>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
 
 #Uso: 
 
@@ -31,11 +28,8 @@
 #   Free Software Foundation, Inc.,                                       #
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
-<<<<<<< HEAD
+
 # pathtitle="&Cuentas anuales\Simplificats\Simplificats Fundacions i Asociaciones Catalanes"
-=======
-# pathtitle="Cuentas anuales\Simplificats\Simplificats Fundacions i Asociaciones Catalanes"
->>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
 # title="Comptes Anuals Simplificats Pla de Comptabilitat de les Fundacions i les Associacion subjectes a la legislaci� de la Generalitat de Catalunya 2008"
 # CASFAC08
 import psycopg2

@@ -302,6 +302,7 @@ int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
 
 
 
+
 /// --------------------------------------------------------------
 /// --------- Implemento la edicion de cuentas -----------------
 /// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
@@ -475,8 +476,6 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 }
 
 
-
->>>>>>> f13c49c... Arreglo conflico con el informe de cuadres de caja
 /// Miramos de poner los iconos del menu de subformularios
 ///
 /**
@@ -485,8 +484,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     BL_FUNC_DEBUG
-
-    BlSubFormHeader *header = sub->header ( "codigo" );
+    BlSubFormHeader *header = sub->header ( "codigo1" );
     if (!header) 
         header = sub->header ( "codigo" );
     if ( header ) {
@@ -523,4 +521,5 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 
     return 0;
 }
+
 

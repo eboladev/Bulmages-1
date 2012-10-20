@@ -3180,14 +3180,6 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
         /// Buscamos cadenas que deban ir tal cual estan en la base de datos, sin ningún parseado.
         QRegExp rx1 ( "\\[(\\w*),l\\]" );
         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
-	
-        int pos =  0;
-	
-        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        //BlDebug::blDebug("salidatemp =",0,salidatemp);
-        QRegExp rx1 ( "\\[(\\w*),l\\]" );
-        while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
-            //BlDebug::blDebug("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
                 salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ).toAscii() );
                 pos = 0;

@@ -196,25 +196,6 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Web'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Web','"+ mainCompany()->sanearCadena(m_web->text())+"')");
 	
-<<<<<<< HEAD
-	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Ciudad'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Ciudad','"+ mainCompany()->sanearCadena(m_ciudad->text())+"')");
-	
-	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CodArticuloGenerico'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CodArticuloGenerico','"+ mainCompany()->sanearCadena(m_codArticuloGenerico->text())+"')");
-
-	
-	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='SerieFacturaDefecto'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('SerieFacturaDefecto','"+ mainCompany()->sanearCadena(m_serieFacturaDefecto->text())+"')");
-	
-	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='IRPF'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('IRPF','"+ mainCompany()->sanearCadena(QString::number(m_irpf->value()))+"')");
-	
-	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='AlmacenDefecto'");
-	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('AlmacenDefecto','"+ mainCompany()->sanearCadena(m_almacenDefecto->text())+"')");
-	
-=======
->>>>>>> 6d6a8ee... Revert "Agregado los campos que faltaban en 'blconfiguracion'"
         close();
 	
 }

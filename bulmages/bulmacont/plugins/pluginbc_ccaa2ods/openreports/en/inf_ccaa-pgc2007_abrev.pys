@@ -1,13 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
+
 #<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
 #<!--PARAM NAME="fechainicialactual" TYPE="date"-->
 #<!--PARAM NAME="fechafinalactual" TYPE="date"-->
 #<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
 #<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
-=======
->>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
 
 #Uso: 
 ###########################################################################
@@ -33,12 +31,8 @@
  ###########################################################################/
 
 
-<<<<<<< HEAD
-# pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007 (Abreviada)"
-=======
-# pathtitle="Cuentas anuales\PGC 2007\Plan General Contable 2007 (Abreviada)"
 
->>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
+# pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007 (Abreviada)"
 # title="Cuentas anuales Plan General Contable 2007 (Abreviada)"
 # CAPGC07
 import psycopg2

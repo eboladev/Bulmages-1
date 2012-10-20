@@ -131,12 +131,8 @@ void EmailQToolButton::click()
            
             subject = _("Presupuesto ") + num;
             body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
-<<<<<<< HEAD
-
+            
             body += _("Atentamente\n\n\n\"");
-=======
-            body += _("Atentamente\n\n\n");
->>>>>>> 9ebdab9... Arreglos para que el pluginbf_correo funcione bien con thunderbird y Windows
             attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 
             blSendEmail( email, bcc, subject, body, attached );

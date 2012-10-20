@@ -1,15 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
-<<<<<<< HEAD
 #<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
 #<!--PARAM NAME="fechainicialactual" TYPE="date"-->
 #<!--PARAM NAME="fechafinalactual" TYPE="date"-->
 #<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
 #<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
 
-=======
->>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
 #Uso: 
 
 ###########################################################################
@@ -35,12 +32,9 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-<<<<<<< HEAD
 
 # pathtitle="&Cuentas anuales\PGC 1990\Plan General Contable 1990"
-=======
-# pathtitle="Cuentas anuales\PGC 1990\Plan General Contable 1990"
->>>>>>> 536fd8c... Agreglo archivos de informe que no permitian crear bien las empresas de bulmacont
+
 # title="Cuentas anuales Plan General Contable 1990"
 # CAPGC07
 

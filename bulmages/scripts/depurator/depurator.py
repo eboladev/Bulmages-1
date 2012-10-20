@@ -42,7 +42,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
     def on_mui_conectar_clicked(self):
 	print "Conexion !!"
 	
-<<<<<<< HEAD
 	self.f = open(os.getenv("HOME")+"/.bulmages/bulmagesout.xml", 'r')	
 	self.f.seek(0,2)
 
