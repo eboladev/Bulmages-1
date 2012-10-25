@@ -42,6 +42,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
     def on_mui_conectar_clicked(self):
 	print "Conexion !!"
 	
+<<<<<<< HEAD
 	self.f = open(os.getenv("HOME")+"/.bulmages/bulmagesout.xml", 'r')	
 	self.f.seek(0,2)
 
@@ -474,4 +475,4 @@ if (__name__=='__main__'):
 
 	lmen.imprimir()
 	
->>>>>>> 3267088... Arreglo el depurator para que trabaje con los nuevos archivos XML
+>>>>>>> release

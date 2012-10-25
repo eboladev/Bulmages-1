@@ -133,7 +133,10 @@
 			<td></td>
 
 			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
+<<<<<<< HEAD
 
+=======
+>>>>>>> release
 			<td></td>
 			<td></td>
 			<td></td>
@@ -201,12 +204,20 @@
 	</storyPlace>
 
 
+<<<<<<< HEAD
 <storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
 <place x="13.5cm" y="1cm" width="10cm" height="1cm">
 <barCode code="code128" height="1cm">PED [idpedidocliente] [numpedidocliente] [refpedidocliente]</barCode>
 </place>
 </storyPlace>
 
+=======
+<storyPlace x="0cm" y="0cm" width="15cm" height="1cm">
+<place x="16cm" y="0cm" width="15cm" height="2.5cm">
+<barCode code="code128" height="1cm">PED [idpedidocliente] [numpedidocliente] [refpedidocliente]</barCode>
+</place>
+</storyPlace>
+>>>>>>> release
 
 
 </story>

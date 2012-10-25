@@ -130,6 +130,7 @@ int main ( int argc, char **argv )
       /// Verifica la version de la base de datos para funcionar adecuadamente.
       bges->company()->dbVersionCheck("DatabaseRevision", "0.14.1-0001");
 
+
       splashScr->show();
       splashScr->setMessage ( _( "Leyendo configuracion" ) );
       splashScr->setProgressBar ( 2 );

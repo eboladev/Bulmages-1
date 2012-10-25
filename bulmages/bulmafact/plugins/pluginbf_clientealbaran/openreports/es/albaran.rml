@@ -99,10 +99,18 @@
 
 		<tr>
 			<td></td>
+<<<<<<< HEAD
+=======
+
+>>>>>>> release
 			<td><para style="paragrafo2"><b>Descuento/s:</b></para></td>
 			<td></td>
 			<td><para style="paragrafo2der"><b>% Dto:</b></para></td>
 			<td><para style="paragrafo2der"><b>Total dto:</b></para></td>
+<<<<<<< HEAD
+=======
+
+>>>>>>> release
 		</tr>
 
 <!--LINEAS DESCUENTO-->
@@ -129,7 +137,13 @@
 
 		<tr>
 			<td></td>
+<<<<<<< HEAD
 			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
+=======
+
+			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
+
+>>>>>>> release
 			<td></td>
 			<td></td>
 			<td></td>
@@ -137,7 +151,13 @@
 
 		<tr>
 			<td></td>
+<<<<<<< HEAD
 			<td><para style="paragrafo2">[comentalbaran,l]</para></td>
+=======
+
+			<td><para style="paragrafo2">[comentalbaran,l]</para></td>
+
+>>>>>>> release
 			<td></td>
 			<td></td>
 			<td></td>
@@ -197,8 +217,13 @@
 	</storyPlace>
 
 
+<<<<<<< HEAD
 <storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
 <place x="13.5cm" y="1cm" width="10cm" height="1cm">
+=======
+<storyPlace x="16cm" y="0cm" width="15cm" height="1cm">
+<place x="16cm" y="0cm" width="15cm" height="2.5cm">
+>>>>>>> release
 <barCode code="code128" height="1cm">ALB [idalbaran] [numalbaran] [refalbaran]</barCode>
 </place>
 </storyPlace>

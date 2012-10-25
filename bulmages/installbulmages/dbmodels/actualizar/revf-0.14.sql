@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
 	rs RECORD;
 BEGIN
-	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.14.1%'' OR valor = ''0.13.1-0004'');
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.14.1%'' OR valor = ''0.13.1-0006'');
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
