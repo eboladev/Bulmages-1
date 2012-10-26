@@ -1,8 +1,0 @@
-?package(bulmafact):\
-	needs="X11"\
-	section="Applications/Office"\
-	title="Iglues BulmaFact"\
-	longtitle="Iglues BulmaFact: billing application"\
-	command="/usr/bin/bulmafact"\
-	icon32x32="/usr/share/bulmages/icons/icon_bulmafact_32x32.xpm"\
-   icon16x16="/usr/share/bulmages/icons/icon_bulmafact_16x16.xpm"

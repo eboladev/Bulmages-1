@@ -1,9 +1,0 @@
-?package(bulmages):\
-	needs="X11"\
-	section="Applications/Office"\
-	title="Iglues BulmaGes"\
-	longtitle="Iglues Bulmages: the launcher"\
-	command="/usr/bin/bulmages"\
-	icon32x32="/usr/share/bulmages/icons/icon_bulmages_32x32.xpm"\
-   icon16x16="/usr/share/bulmages/icons/icon_bulmages_16x16.xpm"
-
