@@ -1,1 +1,0 @@
-Delete "$INSTDIR\program\pluginsbl\libpluginbl_attachdocument.dll"

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbt_cambioivaincluido.dll "\bulmatpv\plugins\pluginbt_cambioivaincluido\libpluginbt_cambioivaincluido.dll"

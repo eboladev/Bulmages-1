@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_clientepedido.mo "\bulmafact\plugins\pluginbf_clientepedido\pluginbf_clientepedido_es_ES.gmo"

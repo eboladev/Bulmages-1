@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_tipotrabajo.dll "\bulmafact\plugins\pluginbf_tipotrabajo\libpluginbf_tipotrabajo.dll"

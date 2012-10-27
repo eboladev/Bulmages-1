@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_carteracobros.dll "\bulmafact\plugins\pluginbf_carteracobros\libpluginbf_carteracobros.dll"

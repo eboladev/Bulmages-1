@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_minicontabilidad.mo "\bulmafact\plugins\pluginbf_minicontabilidad\pluginbf_minicontabilidad_es_ES.gmo"

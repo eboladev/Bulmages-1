@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_etiquetado.mo "\bulmafact\plugins\pluginbf_etiquetado\pluginbf_etiquetado_es_ES.gmo"

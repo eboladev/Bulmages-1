@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_gestassociacio.mo "\bulmafact\plugins\pluginbf_gestassociacio\pluginbf_gestassociacio_es_ES.gmo"

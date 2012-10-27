@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbl_subform2ods.mo "\bulmalib\plugins\pluginbl_subform2ods\pluginbl_subform2ods_es_ES.gmo"

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_inventario.dll "\bulmafact\plugins\pluginbf_inventario\libpluginbf_inventario.dll"

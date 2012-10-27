@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbt_ivaincluido.dll "\bulmatpv\plugins\pluginbt_ivaincluido\libpluginbt_ivaincluido.dll"

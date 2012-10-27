@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_tallascolores.dll "\bulmafact\plugins\pluginbf_tallascolores\libpluginbf_tallascolores.dll"

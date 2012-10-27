@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbt_controlcaja.mo "\bulmatpv\plugins\pluginbt_controlcaja\pluginbt_controlcaja_es_ES.gmo"

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_clientepresupuesto.dll "\bulmafact\plugins\pluginbf_clientepresupuesto\libpluginbf_clientepresupuesto.dll"

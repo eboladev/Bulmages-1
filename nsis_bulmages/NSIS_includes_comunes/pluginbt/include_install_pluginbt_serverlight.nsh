@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbt_serverlight.dll "\bulmatpv\plugins\pluginbt_serverlight\libpluginbt_serverlight.dll"
