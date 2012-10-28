@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbt_accesobotones.mo "\bulmatpv\plugins\pluginbt_accesobotones\pluginbt_accesobotones_es_ES.gmo"

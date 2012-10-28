@@ -1,1 +1,0 @@
-;!insertmacro InstallFilesFromBuild pluginbt_articulograficodb.mo "\bulmatpv\plugins\pluginbt_articulograficodb\pluginbt_articulograficodb_es_ES.gmo"

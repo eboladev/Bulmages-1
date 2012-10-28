@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_clientealbaran.dll "\bulmafact\plugins\pluginbf_clientealbaran\libpluginbf_clientealbaran.dll"

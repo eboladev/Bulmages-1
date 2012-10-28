@@ -1,0 +1,4 @@
+nsis_bulmages/nsis_fapacges han sido extraidos al repositorio:
+bulmages-extra/nsis_bulmages.
+
+https://gitorious.org/bulmages-extra/nsis_bulmages

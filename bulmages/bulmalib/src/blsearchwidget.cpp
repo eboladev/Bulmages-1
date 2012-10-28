@@ -555,7 +555,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
                     cadwhere = cadwhere + cador + " upper( COALESCE(" + i.key() + ",'')::varchar ) LIKE  upper('%" + mainCompany()->sanearCadenaUtf8(cod) + "%')";
                     cador = " OR ";
                 } // end while
-                QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
+                QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere + " LIMIT 50";
 
                 m_cursorcombo = mainCompany() ->loadQuery ( SQLQuery );
                 clear();

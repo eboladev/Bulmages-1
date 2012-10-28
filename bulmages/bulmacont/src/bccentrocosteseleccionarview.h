@@ -39,7 +39,7 @@ class BcCompany;
     Tambi&eacute;n se utiliza para establecer el centro de coste por defecto, utlidad
     que permite introducir asientos directamente en un centro de coste sin tener que
     teclearlo en cada apunte. */
-class BC_EXPORT BcCentroCosteSeleccionarView : public QDialog, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
+class BC_EXPORT BcCentroCosteSeleccionarView : public QWidget, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_compraventa.mo "\bulmafact\plugins\pluginbf_compraventa\pluginbf_compraventa_ca_ES.gmo"

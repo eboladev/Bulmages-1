@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_clientecobro.mo "\bulmafact\plugins\pluginbf_clientecobro\pluginbf_clientecobro_es_ES.gmo"

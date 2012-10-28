@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbt_ticketivaincluido.dll "\bulmatpv\plugins\pluginbt_ticketivaincluido\libpluginbt_ticketivaincluido.dll"

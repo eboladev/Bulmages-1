@@ -19,6 +19,7 @@ que haya para dicha ficha</P>
 BulmaGes sustituyendo los tags especiales por sus correspondientes valores</P>
 <P>Para ligar una plantilla con una ficha el programa buscara todos aquellos archivos cuyo nombre empiece por impers_ y contenga el
 nombre de la tabla asociada a dicha ficha</P>
+<P>El plugin utiliza el par√metro de configuraci√n <B>CONF_ODS</B> para abrir los documentos generados.</P>
 <P>Visite <A HREF="http://www.iglues.org/wiki1/doku.php?id=bulmages:rml" TARGET="_blank">http://www.iglues.org/wiki1/doku.php?id=bulmages:rml</A> para encontrar informacion mas detallada</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_formasdepago.dll "\bulmafact\plugins\pluginbf_formasdepago\libpluginbf_formasdepago.dll"

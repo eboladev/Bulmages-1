@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbl_subform2pdf.mo "\bulmalib\plugins\pluginbl_subform2pdf\pluginbl_subform2pdf_es_ES.gmo"

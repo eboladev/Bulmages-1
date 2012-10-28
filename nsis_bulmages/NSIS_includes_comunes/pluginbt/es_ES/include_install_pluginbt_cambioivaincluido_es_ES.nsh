@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbt_cambioivaincluido.mo "\bulmatpv\plugins\pluginbt_cambioivaincluido\pluginbt_cambioivaincluido_es_ES.gmo"

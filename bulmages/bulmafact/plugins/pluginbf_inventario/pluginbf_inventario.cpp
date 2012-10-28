@@ -127,6 +127,13 @@ int BlForm_guardar_Post ( BlForm *fich )
     if ( form ) {
         if (form->rowCount() > 0) {
 	  form->setColumnValue ( "idarticulo", fich->dbValue ( "idarticulo" ) );
+	  int i = form->rowCount();
+	   while (--i > 0) {
+	    if (form->lineaat(i)->dbValue("valminimsalmacen") == "0,00") {
+	      form->remove(i);
+	    } // end if
+	  } // end while
+
 	  form->save();
 	} // end if
     } // end if

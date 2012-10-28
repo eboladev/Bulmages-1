@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbl_template2mail.mo "\bulmalib\plugins\pluginbl_template2mail\pluginbl_template2mail_es_ES.gmo"

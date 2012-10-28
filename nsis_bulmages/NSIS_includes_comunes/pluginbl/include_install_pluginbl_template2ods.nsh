@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbl_template2ods.dll "\bulmalib\plugins\pluginbl_template2ods\libpluginbl_template2ods.dll"

@@ -16,9 +16,10 @@ file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
-SET (QT_USE_QTWEBKIT TRUE)
+set (QT_USE_QTWEBKIT true)
 set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTNETWORK TRUE)
+set(QT_USE_QTNETWORK true)
+
 
 INCLUDE( ${QT_USE_FILE} )
 

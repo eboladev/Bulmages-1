@@ -32,7 +32,7 @@ class BcCompany;
 
 ///
 /** */
-class BC_EXPORT BcCanalSeleccionarView : public QDialog, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
+class BC_EXPORT BcCanalSeleccionarView : public QWidget, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -55,6 +55,7 @@ public:
     int nextCanal();
     QString cadCanal();
     QString nomCanal();
+    bool sinCanal();
 
 public slots:
     void on_mui_todo_clicked();

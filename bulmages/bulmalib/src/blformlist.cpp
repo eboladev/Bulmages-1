@@ -35,6 +35,7 @@
 #include <QDomDocument>
 #include <QDomNode>
 #include <QCheckBox>
+#include <QPlainTextEdit>
 
 
 /**  procedimiento de QtScript
@@ -148,6 +149,7 @@ BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget
     BL_FUNC_DEBUG
     m_modo = modo;
     m_listado = NULL;
+    m_plantilla = "";
     
 }
 
@@ -164,6 +166,7 @@ BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
     BL_FUNC_DEBUG
     m_modo = modo;
     m_listado = NULL;
+    m_plantilla = "";
     
 }
 
@@ -289,12 +292,10 @@ const QString BlFormList::generaFiltro()
 
     /// Protecci&oacute;n para el caso de no existir m_filtro.
     if (lfiltro != 0) {
-
         if (lfiltro->text() != "") {
 	    /// Hacemos el filtrado like del campo m_filtro
 	    filtro += m_listado->likeFilterSQL(lfiltro->text());
 	} // end if
-	
     } // end if
 
     QList<BlComboBox *> l4 = findChildren<BlComboBox *>();
@@ -835,12 +836,28 @@ void BlFormList::substrVars (QString &buff )
 
     pos =  0;
 
-    QLineEdit * lfiltro = findChild<QLineEdit *>("m_filtro");
-    if (lfiltro != 0) {
-        if (lfiltro->text() != "") {
-	    buff.replace ( "[m_filtro]", lfiltro->text() );
-	} // end if
-    } // end if
+
+    QList<QLineEdit *> combos = findChildren<QLineEdit *>();
+    QListIterator<QLineEdit *> itcombos ( combos );
+    while ( itcombos.hasNext() ) {
+	QLineEdit * item = itcombos.next();
+        buff.replace ( "["+item->objectName()+"]", item->text() );
+    } // end while
+    
+    
+    QList<QPlainTextEdit *> ptext = findChildren<QPlainTextEdit *>();
+    QListIterator<QPlainTextEdit *> itptext ( ptext );
+    while ( itptext.hasNext() ) {
+	QPlainTextEdit * item = itptext.next();
+        buff.replace ( "["+item->objectName()+"]", item->toPlainText() );
+    } // end while
+    
+    QList<QTextEdit *> ptext1 = findChildren<QTextEdit *>();
+    QListIterator<QTextEdit *> itptext1 ( ptext1 );
+    while ( itptext1.hasNext() ) {
+	QTextEdit * item = itptext1.next();
+        buff.replace ( "["+item->objectName()+"]", item->toPlainText() );
+    } // end while
 
     QList<BlComboBox *> l4 = findChildren<BlComboBox *>();
     QListIterator<BlComboBox *> it4 ( l4 );
@@ -849,6 +866,14 @@ void BlFormList::substrVars (QString &buff )
         buff.replace ( "["+item->objectName()+"]", item->id() );
     } // end while
 
+    
+    QList<QComboBox *> l41 = findChildren<QComboBox *>();
+    QListIterator<QComboBox *> it41 ( l41 );
+    while ( it41.hasNext() ) {
+	QComboBox * item = it41.next();
+        buff.replace ( "["+item->objectName()+"]", item->currentText() );
+    } // end while
+    
     QList<QCheckBox *> l6 = findChildren<QCheckBox *>();
     QListIterator<QCheckBox *> it6 ( l6 );
     while ( it6.hasNext() ) {
@@ -888,10 +913,11 @@ void BlFormList::printPDF (  const QString &titular )
     QString fileName = "listado.rml";
 
     /// Si existe un modelo de listado mas preciso se utilizara ese.
-    if (QFile::exists(g_confpr->value( CONF_DIR_OPENREPORTS )+ "listado_" + m_listado->tableName() + ".rml")) {
+    if (QFile::exists(g_confpr->value( CONF_DIR_OPENREPORTS )+ "listado_" + m_plantilla + ".rml")) {
+	fileName = "listado_" + m_plantilla + ".rml";
+    } else if (QFile::exists(g_confpr->value( CONF_DIR_OPENREPORTS )+ "listado_" + m_listado->tableName() + ".rml")) {
 	fileName =  "listado_" + m_listado->tableName() + ".rml";
     } // end if
-    
 
     /// Los listados siempre usan la misma plantilla para imprimir listado.
     QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + fileName;

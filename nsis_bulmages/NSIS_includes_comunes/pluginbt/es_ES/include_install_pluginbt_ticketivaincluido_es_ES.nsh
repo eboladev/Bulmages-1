@@ -1,1 +1,0 @@
-;!insertmacro InstallFilesFromBuild pluginbt_ticketivaincluido.mo "\bulmatpv\plugins\pluginbt_ticketivaincluido\pluginbt_ticketivaincluido_es_ES.gmo"

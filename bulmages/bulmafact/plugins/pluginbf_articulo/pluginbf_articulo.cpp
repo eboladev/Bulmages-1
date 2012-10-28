@@ -104,8 +104,6 @@ int entryPoint ( BfBulmaFact *bges )
 int exitPoint ( BfBulmaFact *bges ) {
     BL_FUNC_DEBUG
     
-    /* delete g_articulosList; */ // Es borrado al vaciar el windowList
-    
     delete g_pbf_articulo_actionA;
     delete g_pbf_articulo_actionB;
     delete g_pbf_articulo_actionC;
@@ -149,6 +147,7 @@ int BlAction_actionTriggered(BlAction *accion) {
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
+    BL_FUNC_DEBUG
     if ( comp->hasTablePrivilege ( "articulo", "SELECT" ) ) {
         g_articulosList = new ArticuloList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_articulosList );
@@ -160,6 +159,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
+    BL_FUNC_DEBUG
     if ( busq->tableName() == "articulo" ) {
 
         QDialog *diag = new QDialog ( 0 );
@@ -256,9 +256,9 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-
+    BL_FUNC_DEBUG
+    
     if ( sub->m_campoactual->fieldName() != "codigocompletoarticulo" ) {
-        
         return 0;
     } // end if
 
@@ -462,7 +462,6 @@ void SubForm_Articulo::seleccionarArticulo ( BfSubForm *sub )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        
         return;
     } // end if
 
@@ -473,8 +472,6 @@ void SubForm_Articulo::seleccionarArticulo ( BfSubForm *sub )
 	sub->m_registrolinea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     delete cur;
-
-    
 }
 
 
@@ -598,14 +595,23 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     BL_FUNC_DEBUG
     if ( sub->m_campoactual->fieldName() == "codigocompletoarticulo" ) {
         QString params[1]= {  sub->m_campoactual->text() };
-	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
+        QString query = "SELECT idarticulo, idtipo_articulo FROM articulo WHERE codigocompletoarticulo = $1";
         BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
         } // end if
-        delete cur;
+	
+	/// Si hay un campo tipo_articulo lo ponemos.
+	if (sub->existsHeader("codtipo_articulo")) {
+	    query = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + cur->value( "idtipo_articulo" );
+	    BlDbRecordSet *cur1 = sub->mainCompany() -> loadQuery( query );
+	    if ( !cur1->eof() ) {
+		sub->m_registrolinea->setDbValue ( "codtipo_articulo", cur1->value( "codtipo_articulo" ) );
+	    } // end if
+	    delete cur1;
+	} // end if
+        delete cur;	
     } // end if
-    
     return 0;
 }
 
@@ -622,7 +628,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
            if ( bl->entrada().indexOf ( ".-" ) < 0 )  {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('"+bl->m_entrada+"'||'%') OR upper(nomarticulo) LIKE upper('"+bl->m_entrada+"'||'%') ORDER BY nomarticulo";
+	       /// Establezco un limite maximo de 50 elementos ya que es imposible buscar en una lista mayor. Ademas en este caso es mejor poner otro digito del codigo.
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('"+bl->m_entrada+"'||'%') OR upper(nomarticulo) LIKE upper('"+bl->m_entrada+"'||'%') ORDER BY nomarticulo LIMIT 50";
                 bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery);
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {

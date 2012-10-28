@@ -101,6 +101,9 @@ public:
     /// Devuelvo el codigo cuenta del hijo que hay en el BcPlanContableArbol para esa cuenta. El primer parametro indica el codigo de
     /// cuenta que representa la hoja padre. El segundo parametro indica que se busque hasta ese nivel del BcPlanContableArbol.
     QString hijoMayor ( QString, unsigned int nivel = 4 );
+    
+    /// Devuelve TRUE si la hoja no tiene hijos y false en caso contrario
+    bool hojaFinal() {return hojaactiva->ramas == NULL;};
 };
 
 #endif

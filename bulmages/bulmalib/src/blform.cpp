@@ -565,6 +565,8 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
       QAction *nombreobjeto = popup->addAction( objectName() );
       nombreobjeto->setDisabled(TRUE);
+      QAction *claseobjeto = popup->addAction( metaObject()->className() );
+      claseobjeto->setDisabled(TRUE);
     } // end if
     
     /// Lanzamos el evento para que pueda ser capturado por terceros. Y pongan sus opciones.
@@ -938,6 +940,10 @@ int BlForm::save()
 
         afterSave();
 
+	        /// Lanzamos los plugins.
+        if ( g_plugins->run ( "BlForm_afterSave_Post", this ) ) return 0;
+	
+	
 	mainCompany() ->commit();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
@@ -1070,12 +1076,14 @@ void BlForm::pintarPost()
 /// Permite que el programa introduzca variables de impresion propias sin tener 
 /// Que introducir datos en el registro de base de datos de ficha.
 void BlForm::setVar(const QString &varname, const QString &varvalue) {
+      BL_FUNC_DEBUG
           m_globalvars[varname ] = varvalue;
 }
 
 /// Permite que el programa introduzca variables de impresion propias sin tener 
 /// Que introducir datos en el registro de base de datos de ficha.
 void BlForm::clearVars() {
+      BL_FUNC_DEBUG
           m_globalvars.clear();
 }
 
@@ -1087,10 +1095,10 @@ void BlForm::clearVars() {
 ///    2 --> ParseoPython
 void BlForm::substrVars ( QString &buff, int tipoEscape )
 {
-
-    int pos = 0;
-
+    BL_FUNC_DEBUG
+    
     /// Tratamos la sustitucion de variables de m_variables
+    int pos = 0;
     QMapIterator<QString, QString> i ( m_variables );
     while ( i.hasNext() ) {
         i.next();
@@ -1105,10 +1113,10 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
     } // end while
 
     substrConf ( buff );
-    pos =  0;
 
     
     /// Buscamos parametros en el query y los ponemos de forma literal.
+    pos =  0;
     QRegExp rx1 ( "\\[(\\w*),l\\]" );
     while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx1.cap ( 1 ) ) ) {
@@ -1119,9 +1127,9 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
         }
     } // end while
     
-    pos =  0;
     
     /// Buscamos parametros en el query y los ponemos.
+    pos =  0;
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
@@ -1135,7 +1143,6 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
                 break;
             default:
                 buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ) );
-
             } // end switch
 
             pos = 0;
@@ -1144,6 +1151,78 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
         }
     } // end while
 
+    /// Buscamos elementos existentes en el formulario / subformulario y los sustituimos
+    /// Buscamos parametros en el query y los ponemos.
+    /// NOTE: Esta sustitucion solo tiene sentido hacerse una vez en todo el informe.
+    pos = 0;
+    QRegExp rx5 ( "\\[(\\w*)\\]" );
+    while ( ( pos = rx5.indexIn ( buff, pos ) ) != -1 ) {
+	   QString valor = "";
+            BlComboBox *combo = findChild <BlComboBox *>(rx5.cap( 1 ));
+	   if (combo) {
+	     valor = combo->id();
+	   } // end if
+	   QComboBox *combo1 = findChild <QComboBox *>(rx5.cap( 1 ));
+	   if (combo1) {
+		valor = combo1->currentText();
+	   } // end if
+            
+	  QPlainTextEdit *l5 = findChild<QPlainTextEdit *>(rx5.cap( 1 ));
+	  if ( l5 ) {
+	      valor = l5->toPlainText();
+	  } // end if
+
+	  QTextEdit * l1 = findChild<QTextEdit *>(rx5.cap( 1 ));
+	  if ( l1 ) {
+	      valor = l1->toPlainText();
+	  } // end if
+
+	  QLineEdit * l2 = findChild<QLineEdit *>(rx5.cap( 1 ));
+	  if ( l2 ) {
+	      valor = l2->text();
+	  } // end if
+
+	  QCheckBox  *l6 = findChild<QCheckBox *>(rx5.cap( 1 ));
+	  if ( l6 ) {
+	      if (l6->isChecked()) {
+		  valor = "TRUE";
+	      } else {
+		  valor = "FALSE";
+	      } // end if
+	  } // end if
+
+	  BlDateSearch * l7 = findChild<BlDateSearch *>(rx5.cap( 1 ));
+	  if ( l7 ) {
+		valor = l7->text();
+	  } // end if
+	  
+	  BlSearchWidget  *l8 = findChild<BlSearchWidget *>(rx5.cap( 1 ));
+	  if ( l8 ) {
+		  valor = l8->id();
+	  } // end if
+	  
+	  
+	   if ( valor != "") {
+	      switch ( tipoEscape ) {
+	      case 1:
+		  buff.replace ( pos, rx5.matchedLength(), blXMLEscape ( valor ) );
+		  break;
+	      case 2:
+		  buff.replace ( pos, rx5.matchedLength(), blPythonEscape ( valor ) );
+		  break;
+	      default:
+		  buff.replace ( pos, rx5.matchedLength(),  valor  );
+
+	      } // end switch
+	      pos = 0;
+	   } else {
+	         pos += rx5.matchedLength();
+	   } // end if
+	   
+
+    } // end while
+    
+    
 }
 
 

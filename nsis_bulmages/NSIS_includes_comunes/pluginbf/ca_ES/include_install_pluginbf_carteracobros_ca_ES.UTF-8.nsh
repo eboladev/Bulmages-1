@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_carteracobros.mo "\bulmafact\plugins\pluginbf_carteracobros\pluginbf_carteracobros_ca_ES.gmo"

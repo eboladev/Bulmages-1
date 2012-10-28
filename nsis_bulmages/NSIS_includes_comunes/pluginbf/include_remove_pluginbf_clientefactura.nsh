@@ -1,1 +1,0 @@
-Delete "$INSTDIR\program\pluginsbf\libpluginbf_clientefactura.dll"

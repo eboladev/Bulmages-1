@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_resumenarticulo.dll "\bulmafact\plugins\pluginbf_resumenarticulo\libpluginbf_resumenarticulo.dll"
