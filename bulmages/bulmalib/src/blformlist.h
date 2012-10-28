@@ -47,6 +47,7 @@ private:
     QScriptEngine m_myEngine;
     const QString nameFileConfig(); 
     const QString nameFileDefaultConfig(); 
+    QString m_plantilla;   /// Si hay una plantilla de impresion esta especificada aqui.
     
 protected:
     void setSubForm ( BlSubForm * );
@@ -79,6 +80,7 @@ public:
     virtual const QString generaFiltro();
     void substrVars (QString &buff );
     void printPDF (  const QString &titular );
+    void setPlantilla(const QString &plan) { m_plantilla = plan;};
 
 public slots:
     virtual void on_mui_list_customContextMenuRequested ( const QPoint & );

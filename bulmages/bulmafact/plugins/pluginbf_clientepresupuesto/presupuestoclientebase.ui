@@ -77,7 +77,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_guardar_2">
+         <widget class="QToolButton" name="mui_guardar">
           <property name="minimumSize">
            <size>
             <width>32</width>

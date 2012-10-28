@@ -1,6 +1,6 @@
 <ui version="4.0" >
  <class>BcCanalSeleccionarBase</class>
- <widget class="QDialog" name="BcCanalSeleccionarBase" >
+ <widget class="QWidget" name="BcCanalSeleccionarBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

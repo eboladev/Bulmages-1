@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_proveedorpedido.dll "\bulmafact\plugins\pluginbf_proveedorpedido\libpluginbf_proveedorpedido.dll"

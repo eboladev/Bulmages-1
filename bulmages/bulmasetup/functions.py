@@ -100,7 +100,7 @@ class multios():
             return None
 
     def correctFileName(self, filename):
-        """ In old Windows Operating Systems can we have problems with filenames and spaces
+        """ In old Windows Operating Systems we can have problems with filenames and spaces
         """
         if os.name == 'nt':
            filename = "\"" + filename + "\""

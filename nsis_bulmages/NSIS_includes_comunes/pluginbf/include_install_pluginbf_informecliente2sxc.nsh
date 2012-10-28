@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_informecliente2sxc.dll "\bulmafact\plugins\pluginbf_informecliente2sxc\libpluginbf_informecliente2sxc.dll"

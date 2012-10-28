@@ -124,6 +124,8 @@ TicketClienteList::TicketClienteList ( QWidget *parent, Qt::WFlags flag, edmode 
     if ( res != 0 )
         return;
     mdb_idalbaran = "";
+    setPlantilla( "ticket" );
+    
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
@@ -164,6 +166,7 @@ TicketClienteList::TicketClienteList ( BfCompany *comp, QWidget *parent, Qt::WFl
     /// Establecemos los parametros de busqueda del Cliente
     m_cliente->setLabel ( _ ( "Cliente:" ) );
     m_cliente->setTableName ( "cliente" );
+    setPlantilla( "ticket" );
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
 
@@ -394,6 +397,7 @@ QString TicketClienteList::generarFiltro()
 	filtro += " AND idtrabajador = " + m_idtrabajador->id();
     } // end if
     
+    filtro += " AND ticketalbaran = TRUE";
     
     return ( filtro );
 }

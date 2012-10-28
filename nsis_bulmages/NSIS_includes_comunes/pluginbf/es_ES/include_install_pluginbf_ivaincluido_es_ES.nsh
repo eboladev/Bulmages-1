@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_ivaincluido.mo "\bulmafact\plugins\pluginbf_ivaincluido\pluginbf_ivaincluido_es_ES.gmo"

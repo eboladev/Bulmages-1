@@ -339,7 +339,7 @@ void BalancePrintView::on_mui_canales_clicked()
 {
     BL_FUNC_DEBUG
     BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
-    selcanales->exec();
+    selcanales->show();
     selcanales->firstCanal();
 }
 
@@ -353,7 +353,7 @@ void BalancePrintView::on_mui_centroCostes_clicked()
 {
     BL_FUNC_DEBUG
     BcCentroCosteSeleccionarView *selccostes = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
-    selccostes->exec();
+    selccostes->show();
     selccostes->firstccoste();
 }
 

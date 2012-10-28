@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_clientecobro.dll "\bulmafact\plugins\pluginbf_clientecobro\libpluginbf_clientecobro.dll"

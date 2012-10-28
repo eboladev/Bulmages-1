@@ -62,6 +62,9 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     setTitleName ( _ ( "Balance" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos.
     setDbTableName ( "asiento" );
+    
+    /// Para imprimir usaremos la plantilla balance
+    setTemplateName("balance");
 
     mui_cuentaInicial->setMainCompany ( emp );
     /// Arreglamos la cuenta.
@@ -81,23 +84,17 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     mui_cuentaFinal->m_valores["codigo"] = "";
     mui_cuentaFinal->hideLabel();
 
-    /// Inicializamos la tabla de nivel.
-    mui_nivel->insertItem ( 0, "2" );
-    mui_nivel->insertItem ( 1, "3" );
-    mui_nivel->insertItem ( 2, "4" );
-    mui_nivel->insertItem ( 3, "5" );
-    mui_nivel->insertItem ( 4, "6" );
-    mui_nivel->insertItem ( 5, "7" );
-    mui_nivel->insertItem ( 6, "8" );
-    mui_nivel->insertItem ( 7, "9" );
-    mui_nivel->insertItem ( 8, "10" );
-    mui_nivel->insertItem ( 9, "11" );
-    mui_nivel->insertItem ( 10, "12" );
-    mui_nivel->insertItem ( 11, "13" );
-    mui_nivel->insertItem ( 12, "14" );
-    mui_nivel->insertItem ( 13, "15" );
-    mui_nivel->insertItem ( 14, "16" );
-    mui_nivel->insertItem ( 15, "17" );
+    QString query = "SELECT DISTINCT length(codigo) AS orden FROM cuenta ORDER BY orden DESC";
+    BlDbRecordSet *niveles = NULL;
+    /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
+    /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
+    niveles = mainCompany() ->loadQuery ( query );
+
+    while ( !niveles->eof() ) {
+	mui_nivel->insertItem ( 0, niveles->value("orden") );
+	niveles->nextRecord();
+    } // end while
+    delete niveles;
 
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
@@ -173,14 +170,8 @@ void BalanceView::presentar()
     int nivel = mui_nivel->currentText().toInt();
     bool jerarquico = mui_balanceJerarquico->isChecked();
 
-    /// A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la
-    /// ejecuci&oacute;n del programa.
-    /// Se genera un &aacute;rbol din&aacute;mico en la memoria RAM que contendra todas
-    /// y cada una de las cuentas del PGC con sus saldos.
-    //if (sumasysaldosButton->isChecked()) {
     /// Balance de Sumas y Saldos.
     presentarSyS ( fechaInicial, fechaFinal, cuentaInicial, cuentaFinal, nivel, 0, jerarquico );
-    //} // end if
 }
 
 
@@ -223,20 +214,28 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         delete ramas;
 
         /// Sacamos la subcadena para centros de coste y canales.
-        // Consideraciones para centros de coste y canales
-        QString cadand = "";
         BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
         BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes = " AND apunte.idc_coste IN (" + ccostes + ") ";
-            cadand = " AND ";
+ ;
         } // end if
 
         QString ccanales = scanal->cadCanal();
-        if ( ccanales != "" ) {
-            ccanales = cadand + " apunte.idcanal IN (" + ccanales + ") ";
-        } // end if
+        if (scanal->sinCanal()) {
+	  if ( ccanales != "" ) {
+	      ccanales = " AND (apunte.idcanal ISNULL OR apunte.idcanal IN (" + ccanales + ")) ";
+	  } else {
+	      ccanales = " AND apunte.idcanal ISNULL ";	    
+	  } // end if
+	} else {
+	  if ( ccanales != "" ) {
+	      ccanales = " AND (apunte.idcanal <> NULL OR apunte.idcanal IN (" + ccanales + ")) ";
+	  } else {
+	      ccanales = " AND apunte.idcanal <> NULL ";	    
+	  } // end if
+	} // end if
 
         QString wherecostesycanales = ccostes + ccanales;
 
@@ -255,6 +254,8 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         query += " LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE  fecha < '" + fechaInicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
 
 
+	blMsgInfo(query);
+	
         /// Poblamos el &aacute;rbol de hojas (cuentas).
         hojas = mainCompany() ->loadQuery ( query );
         while ( !hojas->eof() ) {
@@ -274,7 +275,8 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         mui_list->clear();
 
         /// Ponemos las columnas
-        mui_list->setColumnWidth ( CUENTA, 100 );
+
+        mui_list->setColumnWidth ( CUENTA, 250 );
         mui_list->setColumnWidth ( DENOMINACION, 150 );
         mui_list->setColumnWidth ( SALDO_ANT, 100 );
         mui_list->setColumnWidth ( DEBE, 100 );
@@ -283,6 +285,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         mui_list->setColumnWidth ( DEBEEJ, 100 );
         mui_list->setColumnWidth ( HABEREJ, 100 );
         mui_list->setColumnWidth ( SALDOEJ, 100 );
+
 
         /// Cada hoja del &aacute;rbol usara uno de estos Widgets para mostrarse.
         QTreeWidgetItem *it;
@@ -308,10 +311,14 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
 
             if ( lcuenta >= cuentaInicial and lcuenta <= cuentaFinal ) {
                 /// Acumulamos los totales para al final poder escribirlos.
-                tsaldoant = tsaldoant + BlFixed ( lsaldoant );
-                tsaldo = tsaldo + BlFixed ( lsaldo );
-                tdebe = tdebe + BlFixed ( ldebe );
-                thaber = thaber + BlFixed ( lhaber );
+                /// Solo si son del nivel seleccionado o son hojas finales ya que en un jerarquico no se puede acumular
+                /// TODO: No funciona bien en todos los niveles. Principalmente si el arbol no es normalizado
+                if (lcuenta.length() == nivel) {
+		    tsaldoant = tsaldoant + BlFixed ( lsaldoant );
+		    tsaldo = tsaldo + BlFixed ( lsaldo );
+		    tdebe = tdebe + BlFixed ( ldebe );
+		    thaber = thaber + BlFixed ( lhaber );
+	        } // end if
 
                 /// Las variables de las filas en formato espa&ntilde;ol.
                 lsaldoant = QString::number ( lsaldoant.toDouble(), 'f', 2 );
@@ -426,21 +433,4 @@ void BalanceView::accept()
     presentar();
 }
 
-
-
-/// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
-/** Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del
-    balance y lo ejecuta en modo Modal. */
-/**
-**/
-void BalanceView::imprimir()
-{
-    BL_FUNC_DEBUG
-
-    BalancePrintView *balance = new BalancePrintView ( mainCompany(), 0 );
-    balance->inicializa ( mui_cuentaInicial->fieldValue("codigo"), mui_cuentaFinal->fieldValue("codigo"), mui_fechaInicial->text(), mui_fechaFinal->text(), FALSE );
-    blCenterOnScreen(balance);
-    balance->setWindowModality(Qt::ApplicationModal);
-    balance->show();
-}
 

@@ -158,7 +158,7 @@ void generarVencimientos (FacturaView *art) {
 \param art
 \return
 **/
-int BlForm_guardar_Post ( BlForm *art )
+int BlForm_afterSave_Post ( BlForm *art )
 {
     BL_FUNC_DEBUG
     try {
@@ -188,14 +188,12 @@ int BlForm_guardar_Post ( BlForm *art )
 			} else if (msgBox.clickedButton() == regenerarButton) {
 				QString query = "DELETE FROM vencimientoc WHERE idfactura="+ art->dbValue("idfactura");
 				art->mainCompany()->runQuery(query);
-				generarVencimientos( (FacturaView *)art);
+				generarVencimientos( (FacturaView *) art);
 			} // end if
 		} else {
-			generarVencimientos((FacturaView *)art);
+			generarVencimientos((FacturaView *) art);
 		} // end if
         } // end if
-
-        
         return 0;
     } catch ( ... ) {
         
@@ -216,7 +214,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
     l->setDbFieldId ( "idvencimientoc" );
     l->addSubFormHeader ( "idvencimientoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , QApplication::translate("TrabajadorView", "Id vencimiento"));
     l->addSubFormHeader ( "fechavencimientoc", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , QApplication::translate ( "TrabajadorView", "Fecha" ) );
-    l->addSubFormHeader ( "cantvencimientoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Cantidad" ) );
+    l->addSubFormHeader ( "cantvencimientoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Cantidad" ) );
     l->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Forma de pago" ) );
     l->addSubFormHeader ( "procesadovencimientoc", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Procesado" ) );
     l->addSubFormHeader ( "idfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id factura" ) );

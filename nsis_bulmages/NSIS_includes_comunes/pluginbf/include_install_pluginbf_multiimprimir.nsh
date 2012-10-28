@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_multiimprimir.dll "\bulmafact\plugins\pluginbf_multiimprimir\libpluginbf_multiimprimir.dll"

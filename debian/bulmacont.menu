@@ -1,9 +1,0 @@
-?package(bulmacont):\
-	needs="X11"\
-	section="Applications/Office"\
-	title="Iglues BulmaCont"\
-	longtitle="Iglues BulmaCont: accounting application"\
-	command="/usr/bin/bulmacont"\
-	icon32x32="/usr/share/bulmages/icons/icon_bulmacont_32x32.xpm"\
-   icon16x16="/usr/share/bulmages/icons/icon_bulmacont_16x16.xpm"
-

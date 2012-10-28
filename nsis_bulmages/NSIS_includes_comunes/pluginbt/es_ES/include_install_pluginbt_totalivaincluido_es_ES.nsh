@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbt_totalivaincluido.mo "\bulmatpv\plugins\pluginbt_totalivaincluido\pluginbt_totalivaincluido_es_ES.gmo"

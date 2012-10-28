@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbt_accesobotones.dll "\bulmatpv\plugins\pluginbt_accesobotones\libpluginbt_accesobotones.dll"

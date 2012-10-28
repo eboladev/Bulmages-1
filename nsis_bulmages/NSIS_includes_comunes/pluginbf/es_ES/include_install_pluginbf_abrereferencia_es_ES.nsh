@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_abrereferencia.mo "\bulmafact\plugins\pluginbf_abrereferencia\pluginbf_abrereferencia_es_ES.gmo"

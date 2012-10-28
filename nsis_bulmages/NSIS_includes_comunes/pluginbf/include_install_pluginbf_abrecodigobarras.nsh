@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_abrecodigobarras.dll "\bulmafact\plugins\pluginbf_abrecodigobarras\libpluginbf_abrecodigobarras.dll"

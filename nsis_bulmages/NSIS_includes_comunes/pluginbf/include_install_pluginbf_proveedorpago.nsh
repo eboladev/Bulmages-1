@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild libpluginbf_proveedorpago.dll "\bulmafact\plugins\pluginbf_proveedorpago\libpluginbf_proveedorpago.dll"

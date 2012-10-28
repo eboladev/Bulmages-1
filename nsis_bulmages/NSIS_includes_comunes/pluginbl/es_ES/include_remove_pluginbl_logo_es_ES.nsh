@@ -1,1 +1,0 @@
-Delete "$INSTDIR\es_ES\LC_MESSAGES\pluginbl_logo.mo"

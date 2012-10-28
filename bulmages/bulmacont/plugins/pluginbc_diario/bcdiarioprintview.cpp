@@ -97,7 +97,7 @@ QString BcDiarioPrintView::montaQuery()
     } else {
         tabla = "apunte";
     } // end if
-    query = "SELECT asiento.ordenasiento, " + tabla + ".contrapartida, " + tabla + ".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, " + tabla + ".conceptocontable," + tabla + ".descripcion AS descapunte, to_char(" + tabla + ".debe,'MI999G999G990D99') AS debe, to_char(" + tabla + ".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, " + tabla + ".idc_coste, " + tabla + ".idcanal, cuenta.codigo AS codigocuenta FROM asiento, " + tabla + ", cuenta WHERE asiento.idasiento=" + tabla + ".idasiento AND " + tabla + ".idcuenta = cuenta.idcuenta AND " + tabla + ".fecha >= '" + finicial + "' AND " + tabla + ".fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " ORDER BY asiento.ordenasiento, " + tabla + ".orden";
+    query = "SELECT asiento.ordenasiento, " + tabla + ".contrapartida, " + tabla + ".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, " + tabla + ".conceptocontable," + tabla + ".descripcion AS descapunte, to_char(" + tabla + ".debe,'MI999G999G990D99') AS debe, to_char(" + tabla + ".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, " + tabla + ".idc_coste, " + tabla + ".idcanal, cuenta.codigo AS codigocuenta FROM asiento, " + tabla + ", cuenta WHERE asiento.idasiento=" + tabla + ".idasiento AND " + tabla + ".idcuenta = cuenta.idcuenta AND " + tabla + ".fecha >= '" + finicial + "' AND " + tabla + ".fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " ORDER BY asiento.ordenasiento, " + tabla + ".orden" + tabla;
     
     return query;
 }

@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_formasdepago.mo "\bulmafact\plugins\pluginbf_formasdepago\pluginbf_formasdepago_ca_ES.gmo"

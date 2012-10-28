@@ -115,7 +115,7 @@ public:
     virtual int cerrarEditor ( QWidget *editor );
 
 signals:
-     void cant_changed(BlDbSubFormRecord *) const;
+    void cant_changed(BlDbSubFormRecord *) const;
 };
 
 
@@ -137,15 +137,18 @@ public:
     BlDbSubFormRecord *m_registrolinea;
     /// Usada para pasar parametros a los plugins.
     BlDbSubFormField  *m_campoactual;
-    
+
 private:
     virtual void load ( BlDbRecordSet *cur );
-    const QString nameFileConfig(); 
-    const QString nameFileDefaultConfig(); 
+    const QString nameFileQuery();
+    const QString nameFileConfig();
+    const QString nameFileDefaultConfig();
     QToolButton *m_pagsig;
     QToolButton *m_pagant;
     QToolButton *m_pripag;
     QToolButton *m_ultpag;
+    QToolButton *m_subeCol;
+    QToolButton *m_bajaCol;
     /// Contiene el numero total de registros del query establecido.
     int m_numtotalregistros;
 
@@ -306,7 +309,7 @@ public:
     void hideMenu();
     /// Muestra el menu del subformulario
     void showMenu();
-    
+
     /// Hace la impresion del subformulario en formato de tabla RML.
     QString imprimir();
     void sortItems ( int col, Qt::SortOrder orden );
@@ -359,9 +362,9 @@ public:
 
     /// Metodos relacionados con el menu superior del SubFormulario
     void preparaMenu();
-    
+
     virtual QString exportXML();
-    
+
     QString likeFilterSQL(const QString &text);
 
 public slots:
@@ -405,7 +408,7 @@ public slots:
     virtual void bpressedSlash ( );
     virtual void bSubir ( );
     virtual void bBajar ( );
-    
+
 signals:
     void toogledConfig ( bool );
     void toogledMenuConfig ( bool );
@@ -426,8 +429,7 @@ inline void BlSubForm::setColumnVisible ( int i, bool visible )
 {
     if ( visible ) {
         showColumn ( i );
-    }
-    else {
+    } else {
         hideColumn ( i );
     } // end if
 }

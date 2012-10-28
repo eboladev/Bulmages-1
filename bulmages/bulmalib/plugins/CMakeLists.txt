@@ -1,5 +1,5 @@
 
-add_subdirectory(pluginbl_subform2sxc)
+#add_subdirectory(pluginbl_subform2sxc)
 add_subdirectory(pluginbl_subform2ods)
 add_subdirectory(pluginbl_clipboard)
 add_subdirectory(pluginbl_template)

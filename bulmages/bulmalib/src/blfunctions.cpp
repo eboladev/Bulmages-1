@@ -1639,16 +1639,18 @@ int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, Q
     if (bcc != "") 
       runcommand += " -b " + bcc;
     if (body != "")
-      runcommand += " --body \"" + body + "\"";
+      runcommand += " --body \"" + body.replace("\"","") + "\"";
     if (attached != "") 
       runcommand += " --attach " + attached;
   
     runcommand += " " + recipient;
-            
+    
     system(QString( runcommand + background).toAscii());
     
     return 0;
 }
+
+
 ///
 /**
 \ param recipient

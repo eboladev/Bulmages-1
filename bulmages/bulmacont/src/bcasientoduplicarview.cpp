@@ -103,33 +103,12 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     QString asientof = aofinal->text();
     QString query1, query2;
     QString textidasiento;
-    //int ordeninicial = 0;
-    //int idasientoinicial = 0;
 
     QString idasiento;
     QString ordenasiento;
 
     QString textordeninicial;
     QDate fedinicial = blNormalizeDate ( fdinicial->text() );
-
-    /*
-        /// Buscamos el orden asiento para la duplicaci&oacute;n.
-        QString query = "SELECT max(ordenasiento) AS orden FROM asiento ";
-        mainCompany()->begin();
-        BlDbRecordSet *cur = mainCompany()->loadQuery(query);
-        if (!cur->eof()) {
-            ordeninicial = atoi(cur->value("orden").toAscii()) + 1;
-        } // end if
-        delete cur;
-
-        query1 = "SELECT max(idasiento) AS maxim FROM asiento";
-        BlDbRecordSet *cursaux = mainCompany()->loadQuery(query1);
-        if (!cursaux->eof()) {
-            idasiento = atoi(cursaux->value("maxim").toAscii());
-            idasientoinicial = atoi(cursaux->value("maxim").toAscii()) + 1;
-        } // end if
-        delete cursaux;
-    */
 
     query1 = "SELECT * FROM asiento WHERE ordenasiento >= " + asientoi + " AND ordenasiento <= " + asientof + " AND EXTRACT (YEAR FROM fecha) = EXTRACT (YEAR FROM '" + fedinicial.toString ( "dd/MM/yyyy" ) + "'::date)";
     BlDbRecordSet *curasiento = mainCompany() ->loadQuery ( query1 );
@@ -171,11 +150,11 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
             if ( textcontrapartida == "" ) {
                 textcontrapartida = "NULL";
             } // end if
-            QString textorden = curborrador->value( "orden" );
+            QString textorden = curborrador->value( "ordenborrador" );
             if ( textorden == "" ) {
                 textorden = "0";
             } // end if
-            query2 = "INSERT INTO borrador (orden, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida) VALUES (" + textorden + "," + idasiento + "," + textiddiario + ",'" + textfecha + "','" + textconceptocontable + "'," + textidcuenta + ",'" + textdescripcion + "'," + textdebe + "," + texthaber + "," + textcontrapartida + ")";
+            query2 = "INSERT INTO borrador (ordenborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida) VALUES (" + textorden + "," + idasiento + "," + textiddiario + ",'" + textfecha + "','" + textconceptocontable + "'," + textidcuenta + ",'" + textdescripcion + "'," + textdebe + "," + texthaber + "," + textcontrapartida + ")";
             mainCompany() ->runQuery ( query2 );
             curborrador->nextRecord();
         } // end while

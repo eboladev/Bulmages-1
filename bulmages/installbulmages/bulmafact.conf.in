@@ -50,12 +50,9 @@ CONF_IDALMACEN_DEFECTO        0
 
 CONF_PLUGINS_BULMAFACT        libpluginbf_q19@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbf_multiimprimir@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbf_informecliente@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbf_informecliente2sxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbf_correo@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbf_promedios@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbl_template@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginbl_subform2sxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbl_embed@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbl_subform2ods@CMAKE_SHARED_LIBRARY_SUFFIX@
 

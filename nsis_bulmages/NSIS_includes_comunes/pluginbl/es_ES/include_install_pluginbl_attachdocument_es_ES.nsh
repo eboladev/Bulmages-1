@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbl_attachdocument.mo "\bulmalib\plugins\pluginbl_attachdocument\pluginbl_attachdocument_es_ES.gmo"

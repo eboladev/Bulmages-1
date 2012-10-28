@@ -28,6 +28,10 @@ Categorias: Facturation avancees;
 
 Orden: 900
 
+<<<<<<< HEAD
 Reports: listado_z.rml; inf_cuadrescaja.rml; inf_resumenventasarticulo.pys
+=======
+Reports: listado_z.rml; inf_cuadrescaja.rml
+>>>>>>> release
 
 Comentarios: On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas

@@ -45,7 +45,6 @@ public:
     BalanceView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
     void inicializa ( QString, QString, QString, QString, QString );
     ~BalanceView();
-    void imprimir();
     virtual void accept();
 
 private:

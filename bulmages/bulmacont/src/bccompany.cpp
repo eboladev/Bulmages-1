@@ -24,7 +24,6 @@
 
 #include "bccompany.h"
 #include "blcompanydialog.h"
-// #include "bcplancontablelistview.h"
 #include "bccanalview.h"
 #include "bccentrocosteview.h"
 #include "bcmasapatrimoniallistview.h"
@@ -35,9 +34,10 @@
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
 #include "blplugins.h"
-//#include "bcmodelo347listview.h"
 #include "blcountryview.h"
 #include "bcbulmacont.h"
+#include "bldockwidget.h"
+
 
 #ifndef Q_OS_WIN32
 #include <unistd.h>
@@ -202,6 +202,54 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         selccostes = new BcCentroCosteSeleccionarView ( this, 0 );
         selcanales = new BcCanalSeleccionarView ( this, 0 );
 
+	
+	
+/**
+ *
+ *
+ *
+ *
+ */	
+// =================================================
+    /// Vamos a probar con un docwindow.
+    BlDockWidget *doc1 = new BlDockWidget ( _ ( "Selector de Canales" ), m_bulmacont );
+    doc1->setObjectName("mui_selcanales");
+    doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+
+    doc1->setGeometry ( 100, 100, 100, 500 );
+    doc1->resize ( 330, 250 );
+    m_bulmacont->addDockWidget ( Qt::RightDockWidgetArea, doc1 );
+
+    doc1->show();
+
+    doc1->setWidget ( selcanales );
+
+// =================================================	
+	
+    
+/**
+ *
+ *
+ *
+ *
+ */	
+// =================================================
+    /// Vamos a probar con un docwindow.
+    BlDockWidget *doc2 = new BlDockWidget ( _ ( "Selector de Centros de Coste" ), m_bulmacont );
+    doc2->setObjectName("mui_selcostes");
+    doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+
+    doc2->setGeometry ( 100, 100, 100, 500 );
+    doc2->resize ( 330, 250 );
+    m_bulmacont->addDockWidget ( Qt::RightDockWidgetArea, doc2 );
+
+    doc2->show();
+
+    doc2->setWidget ( selccostes );
+
+// =================================================
+    
+    
         /// Inicializamos las ventanas de uso generalizado.
 
         /// pb = 90%
@@ -540,7 +588,7 @@ BcCanalSeleccionarView *BcCompany::getselcanales()
 void BcCompany::centroCosteDefecto()
 {
     BL_FUNC_DEBUG
-    selccostes->exec();
+    selccostes->show();
     
 }
 
@@ -551,7 +599,7 @@ void BcCompany::centroCosteDefecto()
 void BcCompany::canalDefecto()
 {
     BL_FUNC_DEBUG
-    selcanales->exec();
+    selcanales->show();
     
 }
 

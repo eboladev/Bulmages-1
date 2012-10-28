@@ -1,1 +1,0 @@
-!insertmacro InstallFilesFromBuild pluginbf_almacenamplia.mo "\bulmafact\plugins\pluginbf_almacenamplia\pluginbf_almacenamplia_es_ES.gmo"

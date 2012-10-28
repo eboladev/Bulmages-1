@@ -117,6 +117,7 @@ protected:
     QList<BlDbField *> m_lista;         /// Lista de campos que conforman la tabla de la BD.
     QString m_tableName;                /// Nombre de la tabla por defecto que se utiliza.
     QString m_campoid;                  /// Nombre del campo identificador en la tabla.
+    QString m_templateName;             /// Nombre del archivo de impresion. Por defecto se usa el tableName.
     bool    m_nuevoCampo;               /// Indicador sobre si es un nuevo registro o un registro modificado.
     QMap<QString,QString> m_variables;  /// Son elementos que han sido incrustados e inicializados por programas
                                         ///   externos, generalmente el RML
@@ -158,6 +159,7 @@ public:
     virtual int generateRML ( const QString & );
     virtual QString exportXML();
     virtual void syncXML(const QString &);
+    virtual void setTemplateName(const QString &);
 
     //===========
     virtual int parseTags ( QByteArray &buff, int tipoEscape = 0 );

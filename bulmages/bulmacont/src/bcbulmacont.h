@@ -133,6 +133,7 @@ public slots:
     virtual void informaIndexador ( QMdiSubWindow *w );
     virtual void on_actionIndexador_triggered();
     virtual void on_actionCerrar_Asientos_triggered();
+    virtual void on_actionModo_Experto_triggered();
 
 signals:
     void resizeEventCalled();
