@@ -151,7 +151,7 @@ bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &digit);
 
 void BL_EXPORT blRawPrint(const QString &archivo, bool diruser=TRUE, const QString &defprinter="");
 
-void BL_EXPORT blWebBrowser(const QString &uri, const QString &defbrowser="");
+int BL_EXPORT blWebBrowser(const QString &uri, const QString &defbrowser="");
 
 QString BL_EXPORT blGetEnv( const char *varName );
 
