@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Joint provider addition and costumer addition
+
+Biblioteca: libpluginbf_clienteproveedor.so
+
+Descripción: <H1>It adds a provider each time a costumer is added, with the same fiscal code and uses the same date in the provider. It is common to have costumers and providers jointly especially in buying and selling operations.</H1>
+<P>It creates a provider each time a costumers is created and uses the data of the costumer.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_cliente.so; libpluginbf_proveedor.so
+
+Incompatibles:
+
+Categorias: Advanced invoicing; Experimentals;
+
+Orden: 900
+
+Comentarios: Ideal for businesses where the costumeres are both a costumer and a provider.

@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Alta de proveïdor conjunta amb alta de client
+
+Biblioteca: libpluginbf_clienteproveedor.so
+
+Descripción: <H1>Crea un proveïdor cada cop que es crea un client, assignant-li el mateix CIF i utilitza les dades d'aquest client al proveïdor. És freqüent tenir clients i proveïdors junts principalment en operacions de compra-venda.</H1>
+<P>Crea un proveïdor cada cop que es crea un client. I utilitza les dades d'aquest client.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_cliente.so; libpluginbf_proveedor.so
+
+Incompatibles:
+
+Categorias: Facturació avançada; Experimentals;
+
+Orden: 900
+
+Comentarios: Ideal per a negocis on els clients són al mateix temps client i proveïdor.

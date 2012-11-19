@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.fr
+#20080501
+
+Nombre: Horaire du personel
+
+Biblioteca: libpluginbf_cuadrante.so
+
+Descripción: <H1>Horaire du personel</H1>
+<P>Gère la création d'horaire de travail en pouvant assigner les heures qui  correspondent à chaque travailleur et la plublication du planing au format PDF.  </P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: PluginBf_Cuadrante
+
+ArchivoSQLpatch: pluginbf_cuadrante.sql
+
+ArchivoSQLdeins: pluginbf_cuadrante-rm.sql
+
+Dependencias: libpluginbf_asterisk.so;libpluginbf_trabajador.so;libpluginbf_almacenamplia.so;libpluginbf_tipotrabajo.so
+
+Incompatibles:
+
+Reports: cuadrante.rml
+
+Categorias: Utilites avancees; Experimental;
+
+Orden: 780
+
+Comentarios: Très utile dans des systèmes de contrôle de personnel et en combinaison avec le pluginasterisk.

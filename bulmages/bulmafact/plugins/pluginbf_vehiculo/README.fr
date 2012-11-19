@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.fr
+#20080501
+
+Nombre: Flotte de Véhicules
+
+Biblioteca: libpluginbf_vehiculo.so
+
+Descripción: <H1>Véhicules</H1>
+<P>Gestion de la flotte de véhicules de l'entrerpise. Kilométrages, etc...</P>
+<B>Auteur :</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: PluginBf_Vehiculos
+
+ArchivoSQLpatch: pluginbf_vehiculos.sql
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Facturation avancee; Experimental;
+
+Orden: 900
+
+Comentarios: No está terminado
