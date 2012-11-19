@@ -1,0 +1,361 @@
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_compraventabase.h:880
+msgid "&Aceptar"
+msgstr "&Accept"
+
+#: ui_compraventabase.h:881
+msgid "&Cancelar"
+msgstr "&Cancel"
+
+#: pluginbf_compraventa.cpp:78
+#, fuzzy
+msgid "&CompraVenta"
+msgstr "&Commentaries:"
+
+#: ui_compraventabase.h:906
+#, fuzzy
+msgid "&Detalle Compras"
+msgstr "&Details"
+
+#: ui_compraventabase.h:889
+#, fuzzy
+msgid "&Detalle Ventas"
+msgstr "&Details"
+
+#: compraventaview.cpp:467 compraventaview.cpp:588
+msgid "&No"
+msgstr "&No"
+
+#: compraventaview.cpp:467 compraventaview.cpp:588
+msgid "&Si"
+msgstr "&Yes"
+
+#: ui_compraventabase.h:900 ui_compraventabase.h:901 ui_compraventabase.h:902
+#: ui_compraventabase.h:903 ui_compraventabase.h:904 ui_compraventabase.h:905
+msgid "0.00"
+msgstr ""
+
+#: ui_compraventabase.h:857 ui_compraventabase.h:860
+#, fuzzy
+msgid "Agregar a factura"
+msgstr "<HR><B>Treating Invoice "
+
+#: compraventaview.cpp:84
+msgid "Almacen"
+msgstr "Warehouse"
+
+#: ui_compraventabase.h:888
+#, fuzzy
+msgid "Almacen:"
+msgstr "Warehouse"
+
+#: ui_compraventabase.h:895
+#, fuzzy
+msgid "Base imponible:"
+msgstr "Tax basis"
+
+#: ui_compraventabase.h:829 ui_compraventabase.h:832
+msgid "Borrar albaran"
+msgstr "Erase letters patent"
+
+#: compraventaview.cpp:83
+msgid "Cliente"
+msgstr "Client"
+
+#: compraventaview.cpp:111
+msgid "Cliente:"
+msgstr "Client:"
+
+#: compraventaview.cpp:89
+msgid "Comentario"
+msgstr "Commentary"
+
+#: compraventaview.cpp:69
+#, fuzzy
+msgid "Comentario albaran proveedor"
+msgstr "Error when erasing the supplier"
+
+#: compraventaview.cpp:90
+#, fuzzy
+msgid "Comentario privado"
+msgstr "Commentary"
+
+#: ui_compraventabase.h:893 ui_compraventabase.h:910
+#, fuzzy
+msgid "Comentario&s"
+msgstr ""
+"#-#-#-#-#  bulmacont_en_US.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comments\n"
+"#-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#\n"
+"Commentaries"
+
+#: ui_compraventabase.h:892 ui_compraventabase.h:909
+#, fuzzy
+msgid "Comentarios privados:"
+msgstr "Commentaries:"
+
+#: ui_compraventabase.h:891 ui_compraventabase.h:908
+#, fuzzy
+msgid "Comentarios publicos:"
+msgstr "Commentaries:"
+
+#: compraventaview.cpp:79
+#, fuzzy
+msgid "Compra Venta"
+msgstr "Import accounts "
+
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
+#, fuzzy
+msgid "CompraVenta"
+msgstr "Commentary"
+
+#: compraventaview.cpp:94
+msgid "Descripcion"
+msgstr "Description"
+
+#: compraventaview.cpp:74
+#, fuzzy
+msgid "Descripcion albaran proveedor"
+msgstr "Direction of the supplier"
+
+#: ui_compraventabase.h:878
+msgid "Descripcion:"
+msgstr "Description:"
+
+#: ui_compraventabase.h:890 ui_compraventabase.h:907
+#, fuzzy
+msgid "Descuen&tos"
+msgstr "Discount"
+
+#: ui_compraventabase.h:894
+#, fuzzy
+msgid "Descuentos:"
+msgstr "Discount:"
+
+#: compraventaview.cpp:138
+#, fuzzy
+msgid "Error al crear el albaran a cliente"
+msgstr "Error when creating the client"
+
+#: compraventaview.cpp:533 compraventaview.cpp:684
+#, fuzzy
+msgid "Error inesperado"
+msgstr "</B> Inserted"
+
+#: compraventaview.cpp:714
+msgid "Error inesperado en la impresion"
+msgstr "Unexpected printing error"
+
+#: compraventaview.cpp:587
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este albaran. "
+"Desea abrirla para verificar?"
+msgstr ""
+
+#: compraventaview.cpp:466
+msgid ""
+"Existe una factura de este proveedor con la misma referencia que este "
+"albaran. Desea rehacerla ?"
+msgstr ""
+
+#: compraventaview.cpp:465
+#, fuzzy
+msgid "Factura de proveedor existente"
+msgstr "Selector of suppliers"
+
+#: compraventaview.cpp:586
+msgid "Factura existente"
+msgstr ""
+
+#: compraventaview.cpp:68
+#, fuzzy
+msgid "Fecha albaran proveedor"
+msgstr "NIF of the supplier"
+
+#: compraventaview.cpp:86
+#, fuzzy
+msgid "Fecha de creacion"
+msgstr "Date of the seat"
+
+#: ui_compraventabase.h:884
+#, fuzzy
+msgid "Fecha de creacion:"
+msgstr "&Date of the seat:"
+
+#: compraventaview.cpp:91
+msgid "Forma de pago"
+msgstr "Mode of payment"
+
+#: ui_compraventabase.h:886
+msgid "Forma de pago:"
+msgstr "Mode of payment:"
+
+#: ui_compraventabase.h:850 ui_compraventabase.h:853
+msgid "Generar factura a partir de este albaran"
+msgstr ""
+
+#: ui_compraventabase.h:822 ui_compraventabase.h:825
+#, fuzzy
+msgid "Guardar albaran"
+msgstr "Keep balance"
+
+#: ui_compraventabase.h:820
+msgid "Hoja de Compra Venta"
+msgstr ""
+
+#: ui_compraventabase.h:896
+#, fuzzy
+msgid "I.R.P.F.:"
+msgstr "I.R.P.F (-"
+
+#: compraventaview.cpp:82
+msgid "Id albaran"
+msgstr "Id letters patent"
+
+#: compraventaview.cpp:66
+#, fuzzy
+msgid "Id albaran proveedor"
+msgstr "NIF of the supplier"
+
+#: compraventaview.cpp:72
+msgid "Id almacen"
+msgstr "id warehouse"
+
+#: compraventaview.cpp:71
+#, fuzzy
+msgid "Id forma de pago"
+msgstr "Mode of payment"
+
+#: compraventaview.cpp:70
+#, fuzzy
+msgid "Id proveedor"
+msgstr "ID supplier"
+
+#: ui_compraventabase.h:836 ui_compraventabase.h:839
+msgid "Imprimir albaran"
+msgstr "Print letters patent"
+
+#: ui_compraventabase.h:897
+#, fuzzy
+msgid "Impuestos:"
+msgstr "Imputation"
+
+#: ui_compraventabase.h:872 ui_compraventabase.h:875
+#, fuzzy
+msgid "Mostrar/ocultar cabecera"
+msgstr "Show/hide filter"
+
+#: compraventaview.cpp:67
+#, fuzzy
+msgid "Numero albaran proveedor"
+msgstr "Error when erasing the supplier"
+
+#: compraventaview.cpp:85
+#, fuzzy
+msgid "Numero de albaran"
+msgstr "Number of fax"
+
+#: ui_compraventabase.h:879
+#, fuzzy
+msgid "Numero de albaran:"
+msgstr "Number of fax:"
+
+#: compraventaview.cpp:87
+#, fuzzy
+msgid "Persona de contacto"
+msgstr "Number of quotas"
+
+#: ui_compraventabase.h:885
+#, fuzzy
+msgid "Persona de contacto:"
+msgstr "Account of assets:"
+
+#: compraventaview.cpp:93 ui_compraventabase.h:882
+#, fuzzy
+msgid "Procesado"
+msgstr "Pro&cessings"
+
+#: ui_compraventabase.h:898
+#, fuzzy
+msgid "R.E.:"
+msgstr "R.E."
+
+#: compraventaview.cpp:95
+msgid "Referencia"
+msgstr "Reference"
+
+#: compraventaview.cpp:73
+#, fuzzy
+msgid "Referencia albaran proveedor"
+msgstr "Direction of the supplier"
+
+#: ui_compraventabase.h:870
+#, fuzzy
+msgid "Referencia:"
+msgstr "Reference"
+
+#: ui_compraventabase.h:864 ui_compraventabase.h:867
+#, fuzzy
+msgid "Registrar cobro a cliente"
+msgstr "Publish client"
+
+#: compraventaview.cpp:88
+#, fuzzy
+msgid "Telefono de contacto"
+msgstr "Description of the account"
+
+#: ui_compraventabase.h:887
+#, fuzzy
+msgid "Telefono de contacto:"
+msgstr "Description of the account"
+
+#: compraventaview.cpp:710
+msgid "Tiene que guardar el documento antes de poder procesarlo."
+msgstr "You have to save the document before being able to process it."
+
+#: compraventaview.cpp:571
+#, fuzzy
+msgid "Tiene que seleccionar un cliente"
+msgstr "Must select an element"
+
+#: compraventaview.cpp:450
+#, fuzzy
+msgid "Tiene que seleccionar un proveedor"
+msgstr "Must select an element"
+
+#: ui_compraventabase.h:899
+#, fuzzy
+msgid "Total:"
+msgstr "Total"
+
+#: compraventaview.cpp:92
+msgid "Trabajador"
+msgstr "Worker"
+
+#: ui_compraventabase.h:883
+#, fuzzy
+msgid "Trabajador:"
+msgstr "Worker"
+
+#: ui_compraventabase.h:843 ui_compraventabase.h:846
+#, fuzzy
+msgid "Ver pedidos con la misma referencia"
+msgstr "All with the same date"

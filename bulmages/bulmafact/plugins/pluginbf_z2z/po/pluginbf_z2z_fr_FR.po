@@ -1,0 +1,110 @@
+# Header entry was created by Lokalize.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
+"PO-Revision-Date: 2011-02-14 11:37+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
+#: ui_z2zbase.h:384
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_z2zbase.h:385
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: ui_z2zbase.h:391
+msgid "&Detalle"
+msgstr "&Détail"
+
+#: pluginbf_z2z.cpp:54
+msgid "&Herramientas"
+msgstr "&Outils"
+
+#: pluginbf_z2z.cpp:58
+msgid "&Traspaso de Z"
+msgstr ""
+
+#: ui_z2zbase.h:394
+msgid "1"
+msgstr "1"
+
+#: ui_z2zbase.h:371 ui_z2zbase.h:374
+msgid "Borrar factura"
+msgstr "Effacer la Facture"
+
+#: z2zview.cpp:59
+msgid "Error al crear la factura"
+msgstr "Erreur à la création de la facture"
+
+#: z2zview.cpp:272
+msgid "Error en el traspaso"
+msgstr "Erreur dans la cession"
+
+#: ui_z2zbase.h:395
+msgid "Excluir Articulo"
+msgstr "Exclure l'article"
+
+#: ui_z2zbase.h:392
+msgid "Excluir Familias"
+msgstr "Exclure la famille"
+
+#: ui_z2zbase.h:364 ui_z2zbase.h:367
+msgid "Guardar factura"
+msgstr "Sauvegarder la Facture"
+
+#: ui_z2zbase.h:378 ui_z2zbase.h:381
+msgid "Imprimir factura"
+msgstr "Imprimer la facture"
+
+#: z2zview.cpp:108
+msgid "Lista vacia"
+msgstr "Liste vide"
+
+#: ui_z2zbase.h:397
+msgid "No cambiar precios de articulos"
+msgstr "Ne pas changer le prix des articles"
+
+#: ui_z2zbase.h:396
+msgid "Num Minimo lineas ticket"
+msgstr "N° minimum de ligne ticket"
+
+#: ui_z2zbase.h:398
+msgid "Opciones"
+msgstr "Options"
+
+#: ui_z2zbase.h:386
+msgid "Referencias"
+msgstr "Références"
+
+#: ui_z2zbase.h:387
+msgid "Total Tickets"
+msgstr "Tickets Totaux"
+
+#: ui_z2zbase.h:388
+msgid "Total Traspasable"
+msgstr "Total cession"
+
+#: ui_z2zbase.h:389
+msgid "Total aprox a Traspasar"
+msgstr "Total approx cession"
+
+#: ui_z2zbase.h:390
+msgid "Traspasar"
+msgstr "Cession"
+
+#: pluginbf_z2z.cpp:59 pluginbf_z2z.cpp:60 ui_z2zbase.h:362
+msgid "Traspaso de Z"
+msgstr "Cession de Z"

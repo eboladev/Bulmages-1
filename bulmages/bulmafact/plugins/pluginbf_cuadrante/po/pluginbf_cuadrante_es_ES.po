@@ -1,0 +1,367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: ui_cuadrante1base.h:309
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_cuadrante1base.h:310
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: pluginbf_cuadrante.cpp:74
+msgid "&Cuadrante Diario"
+msgstr ""
+
+#: pluginbf_cuadrante.cpp:68
+msgid "&Cuadrante Semanal"
+msgstr ""
+
+#: pluginbf_cuadrante.cpp:64
+msgid "&Herramientas"
+msgstr "&Herramientas"
+
+#: ui_cuadrantebase.h:300 ui_cuadrantediariobase.h:285
+msgid "1"
+msgstr "1"
+
+#: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271 ui_cuadrantediariobase.h:304
+#: ui_cuadrantediariobase.h:307
+msgid "Actualizar"
+msgstr "Actualizar"
+
+#: cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
+#: cuadranteview.cpp:58 ui_cuadrante1base.h:308
+msgid "Almacen"
+msgstr "Almacen"
+
+#: cuadrante1view.cpp:63
+msgid "Apartura tarde"
+msgstr "Apartura tarde"
+
+#: ui_cuadrante1base.h:328
+msgid "Apertura Manyana"
+msgstr "Apertura Manyana"
+
+#: ui_cuadrante1base.h:330
+msgid "Apertura Tarde"
+msgstr "Apertura Tarde"
+
+#: cuadrante1view.cpp:61
+msgid "Apertura manyana"
+msgstr "Apertura manyana"
+
+#: ui_cuadrante1base.h:321 ui_cuadrante1base.h:324
+msgid "Borrar almacen"
+msgstr "Borrar almacen"
+
+#: ui_cuadrante1base.h:329
+msgid "Cierre Manyana"
+msgstr "Cierre Manyana"
+
+#: ui_cuadrante1base.h:331
+msgid "Cierre Tarde"
+msgstr "Cierre Tarde"
+
+#: cuadrante1view.cpp:62
+msgid "Cierre manyana"
+msgstr "Cierre manyana"
+
+#: cuadrante1view.cpp:64
+msgid "Cierre tarde"
+msgstr "Cierre tarde"
+
+#: cuadrante1view.cpp:60 ui_cuadrante1base.h:307
+msgid "Comentarios"
+msgstr "Comentarios"
+
+#: cuadrantediarioview.cpp:353 cuadranteview.cpp:314
+#, qt-format
+msgid "Consulta: '%1'."
+msgstr ""
+
+#: ui_cuadrante1base.h:327 ui_cuadrantebase.h:258 ui_cuadrantebase.h:266
+#: ui_cuadrantebase.h:274 ui_cuadrantebase.h:282 ui_cuadrantebase.h:290
+#: ui_cuadrantebase.h:298 ui_cuadrantediariobase.h:294
+#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
+#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
+#: ui_cuadrantediariobase.h:334
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_cuadrante1base.h:319
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: cuadrante1view.cpp:54 ui_cuadrantebase.h:249 ui_cuadrantediariobase.h:281
+#: ui_cuadrantediariobase.h:282
+msgid "Cuadrante"
+msgstr "Cuadrante"
+
+#: ui_cuadrante1base.h:302
+msgid "Cuadrante y Uso Horario"
+msgstr "Cuadrante y Uso Horario"
+
+#: cuadrantediarioview.cpp:172 cuadranteview.cpp:152
+msgid "Domingo"
+msgstr "Domingo"
+
+#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:255 ui_cuadrantediariobase.h:288
+#: ui_cuadrantediariobase.h:291
+msgid "Editar"
+msgstr "Editar"
+
+#: cuadrante1view.cpp:86 cuadranteview.cpp:71
+msgid "Error al crear el almacen"
+msgstr "Error al crear el almacen"
+
+#: cuadrantediarioview.cpp:99
+msgid "Error al iniciar el cuadrante"
+msgstr "Error al iniciar el cuadrante"
+
+#: cuadrantediarioview.cpp:71 cuadrante1view.cpp:59 ui_cuadrante1base.h:332
+msgid "Fecha"
+msgstr "Fecha"
+
+#: pluginbf_cuadrante.cpp:213
+msgid "Fecha final ausencia"
+msgstr "Fecha final ausencia"
+
+#: pluginbf_cuadrante.cpp:212
+msgid "Fecha inicial ausencia"
+msgstr "Fecha inicial ausencia"
+
+#: cuadrante1view.cpp:65 ui_cuadrante1base.h:333
+msgid "Festivo"
+msgstr "Festivo"
+
+#: cuadrantediarioview.cpp:292 cuadranteview.cpp:253
+msgid "Fiesta general"
+msgstr "Fiesta general"
+
+#: cuadranteview.cpp:160
+msgid "Generando Informe"
+msgstr "Generando Informe"
+
+#: ui_cuadrante1base.h:313 ui_cuadrante1base.h:316
+msgid "Guardar almacen"
+msgstr "Guardar almacen"
+
+#: cuadrantediarioview.cpp:72
+msgid "Hora"
+msgstr "Hora"
+
+#: cuadrante1view.cpp:74
+msgid "Hora Fin"
+msgstr "Hora Fin"
+
+#: cuadrante1view.cpp:73
+msgid "Hora Inicio"
+msgstr "Hora Inicio"
+
+#: ui_cuadrante1base.h:304 ui_cuadrante1base.h:306
+msgid "Horario"
+msgstr "Horario"
+
+#: cuadrante1view.cpp:75
+msgid "ID Cuadrante"
+msgstr "ID Cuadrante"
+
+#: pluginbf_cuadrante.cpp:215
+msgid "ID ausencia"
+msgstr "ID ausencia"
+
+#: cuadrante1view.cpp:57
+msgid "ID cuadrante"
+msgstr "ID cuadrante"
+
+#: cuadrante1view.cpp:77
+msgid "ID horario"
+msgstr "ID horario"
+
+#: cuadrante1view.cpp:76 pluginbf_cuadrante.cpp:216
+msgid "ID trabajador"
+msgstr "ID trabajador"
+
+#: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287 ui_cuadrantediariobase.h:320
+#: ui_cuadrantediariobase.h:323
+msgid "Igual que la Semana Anterior"
+msgstr "Igual que la Semana Anterior"
+
+#: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263 ui_cuadrantediariobase.h:296
+#: ui_cuadrantediariobase.h:299
+msgid "Imprimir"
+msgstr "Imprimir"
+
+#: cuadrantediarioview.cpp:169 cuadranteview.cpp:152
+msgid "Jueves"
+msgstr "Jueves"
+
+#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279 ui_cuadrantediariobase.h:312
+#: ui_cuadrantediariobase.h:315
+msgid "Limpiar Cuadrante"
+msgstr "Limpiar Cuadrante"
+
+#: cuadrantediarioview.cpp:166 cuadranteview.cpp:152
+msgid "Lunes"
+msgstr "Lunes"
+
+#: cuadrantediarioview.cpp:167 cuadranteview.cpp:152
+msgid "Martes"
+msgstr "Martes"
+
+#: cuadrantediarioview.cpp:168 cuadranteview.cpp:152
+msgid "Miercoles"
+msgstr "Miercoles"
+
+#: pluginbf_cuadrante.cpp:214
+msgid "Motivo"
+msgstr "Motivo"
+
+#: cuadrante1view.cpp:72
+msgid "Nombre Trabajador"
+msgstr "Nombre Trabajador"
+
+#: cuadrantediarioview.cpp:291 cuadranteview.cpp:252
+msgid "Normal"
+msgstr "Normal"
+
+#: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295 ui_cuadrantediariobase.h:328
+#: ui_cuadrantediariobase.h:331
+msgid "Ocultar Panel"
+msgstr "Ocultar Panel"
+
+#: pluginbf_cuadrante.cpp:69 pluginbf_cuadrante.cpp:75
+msgid "Permite realizar Plannings Laborales"
+msgstr ""
+
+#: pluginbf_cuadrante.cpp:70 pluginbf_cuadrante.cpp:76
+msgid "Podra destinar los trabajadores a distintos almacenes"
+msgstr ""
+
+#: cuadrantediarioview.cpp:171 cuadranteview.cpp:152
+msgid "Sabado"
+msgstr "Sabado"
+
+#: ui_cuadrantediariobase.h:283
+msgid "Validaciones"
+msgstr "Validaciones"
+
+#: cuadrantediarioview.cpp:170 cuadranteview.cpp:152
+msgid "Viernes"
+msgstr "Viernes"
