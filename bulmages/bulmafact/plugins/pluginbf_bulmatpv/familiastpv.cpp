@@ -51,11 +51,8 @@ FamiliasTPV::~FamiliasTPV()
 void FamiliasTPV::on_mui_seleccionarcolor_clicked()
 {
 
-    QColor coloractual;
-
-    if (QColor::isValidColor(mui_colortpvfamilia->text())) {
-        coloractual.setNamedColor(mui_colortpvfamilia->text());
-    } else {
+    QColor coloractual(mui_colortpvfamilia->text());
+    if (! coloractual.isValid()){
 	coloractual.setNamedColor("#FFFFFF");
     } // end if
 

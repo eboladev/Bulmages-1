@@ -84,9 +84,9 @@ STRING(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_MAJOR_VERSION "${Q
 STRING(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1" QT_MINOR_VERSION "${QTVERSION}")
 STRING(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_PATCH_VERSION "${QTVERSION}")
 
-if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.7)
-    message(FATAL_ERROR " Bulmages needs >= QT4.7 to compile")
-endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.7)
+if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.6)
+    message(FATAL_ERROR " Bulmages needs >= QT4.6 to compile")
+endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.6)
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
