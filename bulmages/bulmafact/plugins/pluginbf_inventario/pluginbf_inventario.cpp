@@ -113,6 +113,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int BlForm_load ( BlForm *fich )
 {
+    BL_FUNC_DEBUG
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form )
         form->load ( "SELECT * FROM minimsalmacen NATURAL LEFT JOIN almacen WHERE idarticulo = " + fich->dbValue ( "idarticulo" ) );
@@ -123,17 +124,19 @@ int BlForm_load ( BlForm *fich )
 
 int BlForm_guardar_Post ( BlForm *fich )
 {
+    BL_FUNC_DEBUG
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form ) {
         if (form->rowCount() > 0) {
 	  form->setColumnValue ( "idarticulo", fich->dbValue ( "idarticulo" ) );
 	  int i = form->rowCount();
-	   while (--i > 0) {
-	    if (form->lineaat(i)->dbValue("valminimsalmacen") == "0,00") {
-	      form->remove(i);
+	   while (--i >= 0) {
+	    if ((form->lineaat(i)->dbValue("valminimsalmacen") == "0,00") && (form->lineaat(i)->dbValue("idalmacen") != "")) {
+		//form->remove(i);
+		form->lineaat(i)->setDbValue("idarticulo", "");
+		form->lineaat(i)->setDbValue("idalmacen", "");
 	    } // end if
 	  } // end while
-
 	  form->save();
 	} // end if
     } // end if
