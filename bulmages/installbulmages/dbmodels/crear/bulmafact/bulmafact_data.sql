@@ -47,7 +47,6 @@ INSERT INTO configuracion (nombre, valor) VALUES ('DireccionCompleta', 'Sin defi
 INSERT INTO configuracion (nombre, valor) VALUES ('Ciudad', 'Sin definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('CodArticuloGenerico', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('SerieFacturaDefecto', '**CAMBIAME**');
-INSERT INTO configuracion (nombre, valor) VALUES ('IRPF', '0');
 INSERT INTO configuracion (nombre, valor) VALUES ('CodCuenta', 'xxxxyyy');
 \echo -n ':: Configuraciones ... '
 COMMIT;
