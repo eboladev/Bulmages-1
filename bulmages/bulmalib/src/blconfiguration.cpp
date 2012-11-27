@@ -525,7 +525,12 @@ bool BlConfiguration::readConfig ( QString fich )
             QString cad = in.readLine();
             /// Hacemos la lectura de lineas de configuracion multilinea.
             while ( cad.endsWith ( "\\" ) ) {
-                cad = cad.left ( cad.length() - 2 ) + in.readLine().trimmed();
+                cad = cad.left ( cad.length() - 2 );
+		QString cod = in.readLine().trimmed();
+		// Si hay un comentario se tiene en cuenta como termina el comentario para la siguiente linea o no.
+		// Tambien se podria saltar directamente la linea (pero entonces comentar la ultima linea de un string daria problemas)
+		if (cod.startsWith("#")) cod = cod.right(2);
+		cad = cad + cod;
             } // end while
 
             QString simplificada = cad.simplified();
