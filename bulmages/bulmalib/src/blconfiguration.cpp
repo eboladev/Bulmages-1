@@ -527,9 +527,13 @@ bool BlConfiguration::readConfig ( QString fich )
             while ( cad.endsWith ( "\\" ) ) {
                 cad = cad.left ( cad.length() - 2 );
 		QString cod = in.readLine().trimmed();
-		// Si hay un comentario se tiene en cuenta como termina el comentario para la siguiente linea o no.
-		// Tambien se podria saltar directamente la linea (pero entonces comentar la ultima linea de un string daria problemas)
-		if (cod.startsWith("#")) cod = cod.right(2);
+		// Si hay un comentario se pasa directamente a la siguiente linea aunque si el comentario termina en punto y como se lo da por finalizado.
+		if (cod.startsWith("#")) {
+		    if (cod.endsWith(";"))
+			cod = ";";
+		    else
+			cod = "\\";
+		} // end if
 		cad = cad + cod;
             } // end while
 
