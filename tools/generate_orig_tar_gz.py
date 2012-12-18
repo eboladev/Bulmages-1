@@ -1,76 +1,43 @@
 #!/usr/bin/env python
 
-import re
 import sys
-import time
+# Prevent cluttering with bgversion.pyc & co
+sys.dont_write_bytecode = True
 import os
 import argparse
 
-# From python-git package
-import git
+import bgversion
 
 class opt:
-    version_only = False
+    force_version = ""
+    mode = ""
+    print_only = ""
+
+class glb:
+    version = ""
+    mode = ""
+    filename = ""
+    bg_version = None
 
 def main():
+    
+    glb.bg_version = bgversion.BgVersion()
     parsea_argv()
+    consolidate_glb()
 
-    # Get the upstream version from CMakelists
-    # ----------------------------------------
-    #
-    # You can test the regexp with
-    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
-    #
-    # example_str:  "SET( BULMAGES_VERSION 0.14.0 )"
-    regexp_ver_str = r"BULMAGES_VERSION ([^\s]+)"
-
-    filename = 'bulmages/CMakeLists.txt'
-    regexp_ver = re.compile(regexp_ver_str)
-
-    # Just to detect comments
-    regexp_comm_str = r'^\s*#'
-    regexp_comm = re.compile(regexp_comm_str)
-
-    upstream_version = ""
-
-    with open(filename, 'r') as file:
-        for line in file:
-            if regexp_comm.match(line):
-                # Comment line
-                continue
-            match = regexp_ver.search(line) # search instead of match because it is not 
-                                            # anchored at the beginning of the line
-            if match :
-                upstream_version = match.groups()[0]
-                break
-        file.close()
-
-    if not upstream_version:
-        print("upstream version no encontrada en %s" % filename)
-        sys.exit(-1)
-
-    # Get the date and hash of the latest commit
-    # ------------------------------------------
-    # See http://packages.python.org/GitPython/0.3.1/tutorial.html
-    repo = git.Repo('.')
-    commit = repo.commit("HEAD")
-    timestamp = time.strftime("%Y%m%d.%H%M", time.gmtime(commit.committed_date))
-    hash = commit.hexsha[:8]
-
-    debian_orig_version = upstream_version + "." + timestamp + "." + hash
-
-    if opt.version_only:
-        print debian_orig_version
-        sys.exit(0)
-
-    print "Version: " + debian_orig_version
+    if glb.version:
+        full_version = glb.version
+    else:
+        code_version = glb.bg_version.obtain_code_version(glb.filename)
+        (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info()
+        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
 
     # Now we create the .orig.tar.gz
-    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132.f070fef1.orig.tar.gz \
+    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
     # ../mtelleria-bulmages
 
     cur_basedir = os.path.basename(os.getcwd())
-    cmdline = "tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s" % (debian_orig_version, cur_basedir)
+    cmdline = "tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s" % (full_version, cur_basedir)
 
     print "Cmdline: %s" % cmdline
     try:
@@ -81,17 +48,53 @@ def main():
     
     os.system(cmdline)
 
+def consolidate_glb() :
+    if opt.force_version:
+        glb.version = opt.force_version
+
+    if opt.mode:
+        glb.mode = opt.mode
+
+    (active_branch, active_commit) = glb.bg_version.get_git_info()
+
+
+    # First we decide if we are in mode master or mode release
+    # --------------------------------------------------------
+
+    # First preference active_branch (unless we are detached)
+    if not glb.mode and active_branch:
+        if 'release' in active_branch:
+            glb.mode = 'release'
+        elif 'master' in active_branch:
+            glb.mode = 'master'
+    else:
+        # Default mode
+        glb.mode = 'master'
+    
+
 def parsea_argv() :
 
     parser = argparse.ArgumentParser(description='Generates the orig.tar.gz with version info from CMakeLists and git.')
 
-    parser.add_argument('--version-only',
+    parser.add_argument('--print-only',
                         action = 'store_true',
                         help = 'print only version number and do not launch tar')
 
+    parser.add_argument("--force-version", 
+                        help = "force this version to be used in CMakesList")
+
+    parser.add_argument("--mode", choices = ["master", "release"],
+                        help = "master or release mode (default: search in active branch or master if not found)")
+
+    parser.add_argument("--filename", default="bulmages/CMakeLists.txt",
+                        help = "CMakeLists.txt file to be used for parsing and replacing")
+
     args = parser.parse_args()
 
-    opt.version_only = args.version_only
+    opt.force_version = args.force_version
+    opt.mode = args.mode
+    opt.print_only = args.print_only
+    glb.filename = args.filename
 
 if __name__ == '__main__':
     main()
