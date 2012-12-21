@@ -19,7 +19,7 @@ class opt:
 
 class glb:
     commit = ""
-    version = ""
+    code_version = ""
     mode = ""
     filename = ""
     bg_version = None
@@ -34,25 +34,27 @@ def main():
     
     if opt.reset :
         # We reset the value to git's content
-        glb.bg_version.reset_code_version(glb.filename)
+        glb.bg_version.reset_cmakelists_version(glb.filename)
         sys.exit(0)
 
-    if glb.version :
-        full_version = glb.version
+    if glb.code_version :
+        full_version = glb.code_version
     else:
         # We look at the version in bulmages/CMakeLists.txt
         # (temporary checkout included)
-        code_version = glb.bg_version.obtain_code_version(glb.filename, glb.commit)
+        cmakelists_version = glb.bg_version.obtain_cmakelists_version(glb.filename, glb.commit)
         (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info(glb.commit)
 
-        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
+        glb.code_version, full_version = bgversion.assemble_code_and_full_versions(cmakelists_version, 
+                                                                                   ts_date, ts_time, short_hash, glb.mode)
 
     if opt.print_only:
-        print glb.version
+        print glb.code_version
         print full_version
         sys.exit(0)
 
-    glb.bg_version.set_code_version(glb.filename, glb.version)
+    if glb.code_version != cmakelists_version:
+        glb.bg_version.set_cmakelists_version(glb.filename, glb.code_version)
 
 
 def consolidate_glb():
@@ -60,7 +62,7 @@ def consolidate_glb():
         glb.commit = opt.commit
 
     if opt.force_version:
-        glb.version = opt.force_version
+        glb.code_version = opt.force_version
 
     if opt.mode:
         glb.mode = opt.mode
@@ -85,7 +87,7 @@ def consolidate_glb():
     if not glb.commit:
         glb.commit = active_commit
 
-    # NOTE 1: glb.version is left intentionally unchanged either defined or not
+    # NOTE 1: glb.code_version is left intentionally unchanged either defined or not
         
 # ----------------------------------------------------------------------
 
@@ -94,7 +96,7 @@ def consolidate_glb():
 # Missing point: nargs='?' for optional position arguments
 def parse_argv():
 
-    parser = argparse.ArgumentParser(description='Computes the version and revision and updates CMakeLists.txt.')
+    parser = argparse.ArgumentParser(description='Computes the code and full versions and updates CMakeLists.txt.')
 
     parser.add_argument("commit", 
                         help = "commit reference used in the computation, defaults to the current checked out work-copy",
@@ -115,7 +117,7 @@ def parse_argv():
 
     parser.add_argument('--print-only',
                         action = 'store_true',
-                        help = 'Compute the version and revision and print to stdout')
+                        help = 'Compute the code and full versions print to stdout')
 
     args = parser.parse_args()
 

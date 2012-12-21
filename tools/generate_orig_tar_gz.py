@@ -14,7 +14,7 @@ class opt:
     print_only = ""
 
 class glb:
-    version = ""
+    code_version = ""
     mode = ""
     filename = ""
     bg_version = None
@@ -25,12 +25,13 @@ def main():
     parsea_argv()
     consolidate_glb()
 
-    if glb.version:
-        full_version = glb.version
+    if glb.code_version:
+        full_version = glb.code_version
     else:
-        code_version = glb.bg_version.obtain_code_version(glb.filename)
+        cmakelists_version = glb.bg_version.obtain_cmakelists_version(glb.filename)
         (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info()
-        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
+        glb.code_version, full_version = bgversion.assemble_code_and_full_versions(cmakelists_version, 
+                                                                                   ts_date, ts_time, short_hash, glb.mode)
 
     # Now we create the .orig.tar.gz
     # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
@@ -50,7 +51,7 @@ def main():
 
 def consolidate_glb() :
     if opt.force_version:
-        glb.version = opt.force_version
+        glb.code_version = opt.force_version
 
     if opt.mode:
         glb.mode = opt.mode
@@ -81,7 +82,7 @@ def parsea_argv() :
                         help = 'print only version number and do not launch tar')
 
     parser.add_argument("--force-version", 
-                        help = "force this version to be used in CMakesList")
+                        help = "force this version to be used as full version in the orig.tar.gz file")
 
     parser.add_argument("--mode", choices = ["master", "release"],
                         help = "master or release mode (default: search in active branch or master if not found)")

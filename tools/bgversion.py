@@ -43,8 +43,8 @@ class BgVersion:
     def get_git_info(self):
         return (self.active_branch, self.active_commit)
 
-    def obtain_code_version(self, filename, target_commit = None):
-        """Get version from CMakeLists.txt in this commit or another"""
+    def obtain_cmakelists_version(self, filename, target_commit = None):
+        """Get cmakelists_version from CMakeLists.txt in this commit or another"""
 
         # By default we use the active_commit
         if not target_commit:
@@ -72,7 +72,7 @@ class BgVersion:
             checkout_cmd = "git checkout %s -- %s" % (target_commit, filename)
             _do_command_or_exit(checkout_cmd)
 
-        version = ""
+        cmakelists_version = ""
 
         with open(filename, 'r') as file:
             for line in file:
@@ -82,11 +82,11 @@ class BgVersion:
                 match = BgVersion.regexp_ver.search(line) # search instead of match because it is not 
                                                     # anchored at the beginning of the line
                 if match :
-                    version = match.groups()[0]
+                    cmakelists_version = match.groups()[0]
                     break
             file.close()
 
-        # We backtrack the commit and restore a possibly changed work version
+        # We backtrack the commit and restore a possibly changed work cmakelists_version
         if tempdir:
             checkout_cmd = "git checkout %s -- %s" % (self.active_commit, filename)
             _do_command_or_exit(checkout_cmd)
@@ -96,11 +96,11 @@ class BgVersion:
 
             shutil.rmtree(tempdir)
 
-        if not version:
-            print("version no encontrada en %s" % filename)
+        if not cmakelists_version:
+            print("CMakeLists cmakelists_version no encontrada en %s" % filename)
             sys.exit(-1)
 
-        return version
+        return cmakelists_version
 
     def obtain_git_version_info(self, target_commit = None):
         if not target_commit:
@@ -114,9 +114,16 @@ class BgVersion:
 
         return (ts_date, ts_time, short_hash)
     
-    def set_code_version(self, filename, version, create_debian_patch = False):
+    def set_cmakelists_version(self, filename, version, create_debian_patch = False):
 
         if create_debian_patch :
+            auto_patch_name = "bgversion_auto_codeversion_upgrade.patch"
+            
+            # If the patch exists we remove it
+            if os.path.isfile("debian/patches/"+auto_patch_name):
+                # The -r removes the patch file as well (otherwise only the series file would be changed)
+                cmdline = "QUILT_PATCHES=debian/patches quilt delete -r %s" % auto_patch_name
+                _do_command_or_exit(cmdline)
             
             # First we do quilt push -a if we have a patch
             cmdline = "QUILT_PATCHES=debian/patches quilt series"
@@ -126,7 +133,7 @@ class BgVersion:
                 _do_command_or_exit(cmdline)
 
             # Now we start a new patch and mark CMakeLists.txt to be modified
-            cmdline = "QUILT_PATCHES=debian/patches quilt new bgversion_auto_codeversion_upgrade.patch"
+            cmdline = "QUILT_PATCHES=debian/patches quilt new %s" % auto_patch_name
             _do_command_or_exit(cmdline)
             
             cmdline = "QUILT_PATCHES=debian/patches quilt add %s" % filename
@@ -163,7 +170,7 @@ class BgVersion:
             cmdline = "QUILT_PATCHES=debian/patches quilt pop -a"
             _do_command_or_exit(cmdline)
 
-    def reset_code_version(self, filename):
+    def reset_cmakelists_version(self, filename):
         if not filename:
             print "Filename CMakeLists.txt not specified"
             sys.exit(-1)
@@ -183,21 +190,18 @@ class BgVersion:
 # ADAPT THIS TO COMPUTE THE VERSION
 # This is a library function not belonging to bg_version class
 
-def assemble_version_and_revision(code_version, ts_date, ts_time, commit_short_hexsha, mode):
-    version = ""
+def assemble_code_and_full_versions(cmakelists_version, ts_date, ts_time, commit_short_hexsha, mode):
     if mode == 'master':
-        version = "%s.%s.%s" % (code_version, ts_date, ts_time)
-        revision = commit_short_hexsha
+        code_version = "%s.%s.%s" % (cmakelists_version, ts_date, ts_time)
+        full_version = "%s-%s" % (code_version, commit_short_hexsha)
     elif mode == "release":
-        version = code_version
-        revision = commit_short_hexsha
+        code_version = cmakelists_version
+        full_version = "%s-%s" % (code_version, commit_short_hexsha)
     else:
         print "mode master/release not specified"
         sys.exit(-1)
 
-    full_version = "%s-%s" % (version, revision)
-
-    return (version, full_version)
+    return (code_version, full_version)
 # -------------------------------------------------------------------------------------------
 
 def _do_command_or_exit(cmdline, verbose=False):
