@@ -23,11 +23,10 @@
 
 #include <QString>
 
-#include "blfixed.h"
-#include "bfcompany.h"
-#include "bldb.h"
-#include "bfform.h"
 
+
+
+#ifdef __NOCOMPILE
 
 /// Administra los datos de una contrato a cliente.
 /** Intermedia entre la base de datos y la pantalla de presentacion.
@@ -63,3 +62,4 @@ public:
 
 #endif
 
+#endif

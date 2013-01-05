@@ -26,7 +26,6 @@
 #include <QCheckBox>
 
 
-#include "contrato.h"
 #include "bldatesearch.h"
 #include "bfbuscarformapago.h"
 #include "bfbuscarseriefactura.h"
@@ -56,7 +55,7 @@ public slots:
 #include "ui_contratobase.h"
 /// Muestra y administra la ventana de una contrato a cliente.
 /** */
-class ContratoView : public Contrato, public Ui_ContratoBase
+class ContratoView : public BfForm, public Ui_ContratoBase
 {
     Q_OBJECT
 
@@ -64,21 +63,8 @@ public:
     ContratoView ( BfCompany *, QWidget *parent = 0 );
     ~ContratoView();
     void inicializar();
-    void pintaidcliente ( QString id );
-    void pintafincontrato ( QString id );
-    void pintaffincontrato ( QString id );
-    void pintadescontrato ( QString id );
-    void pintarefcontrato ( QString id );
-    void pintanomcontrato ( QString id );
-    void pintaperiodicidadcontrato ( QString id );
-    void pintaloccontrato ( QString id );
-
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
-    virtual int save();
-    virtual int load ( QString id );
-    virtual int remove() {
-        return Contrato::remove();
-    };
+    virtual int afterSave();
+    virtual int cargarPost ( QString id );
 
 public slots:
     virtual void on_subform2_itemDoubleClicked ( QTableWidgetItem * );

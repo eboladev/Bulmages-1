@@ -694,6 +694,28 @@ void BlFormList::guardaFiltrosXML() {
 	    stream << "<BLSEARCHWIDGET>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</BLSEARCHWIDGET>";
 	} // end while
 	
+	
+	QList<BlComboBox *> l9i = findChildren<BlComboBox *>();
+	QListIterator<BlComboBox *> it9i ( l9i );
+	while ( it9i.hasNext() ) {
+	    BlComboBox * item = it9i.next();
+	    QString objname = item->objectName();
+	    QString objparent = item->parent()->objectName();
+	    QString date = item->id();
+	    stream << "<BLCOMBOBOX>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</BLCOMBOBOX>";
+	} // end while
+	
+	
+	QList<QComboBox *> l10i = findChildren<QComboBox *>();
+	QListIterator<QComboBox *> it10i ( l10i );
+	while ( it10i.hasNext() ) {
+	    QComboBox * item = it10i.next();
+	    QString objname = item->objectName();
+	    QString objparent = item->parent()->objectName();
+	    QString date = item->currentText();
+	    stream << "<QCOMBOBOX>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</QCOMBOBOX>";
+	} // end while
+	
 	stream << "</DOCUMENT>\n";
 	file.close();
     } // end if
@@ -779,6 +801,28 @@ void BlFormList::cargaFiltrosXML() {
 	    if (dates) {
 		if (dates->parent()->objectName() == objparent) {
 		    dates->setId(objvalue);
+		} // end if
+	    } // end if
+	    
+	} // end if
+    } // end for
+  
+  
+    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
+    nodos = docElem.elementsByTagName ( "QCOMBOBOX" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode visible = nodos.item ( i );
+        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+
+	    /// Cogemos el nombre y el valor
+	    QString objname = e1.firstChildElement ( "OBJNAME" ).toElement().text();
+	    QString objvalue = e1.firstChildElement ( "OBJVALUE" ).toElement().text();
+	    QString objparent = e1.firstChildElement ( "OBJPARENT" ).toElement().text();
+	    QComboBox *dates = findChild<QComboBox *>(objname);
+	    if (dates) {
+		if (dates->parent()->objectName() == objparent) {
+		    dates->setCurrentIndex(dates->findText(objvalue));
 		} // end if
 	    } // end if
 	    

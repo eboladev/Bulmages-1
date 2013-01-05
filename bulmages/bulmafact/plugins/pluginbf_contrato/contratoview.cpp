@@ -44,13 +44,27 @@
 \return
 **/
 ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
-        : Contrato ( comp, parent )
+        : BfForm ( comp, parent )
 {
     BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
 
+	setTitleName ( _ ( "Contrato" ) );
+	setDbTableName ( "contrato" );
+	setDbFieldId ( "idcontrato" );
+	addDbField ( "idcontrato",  BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id contrato" ) );
+	addDbField ( "idcliente",   BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cliente" ) );
+	addDbField ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia contrato" ) );
+	addDbField ( "descontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+	addDbField ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+	addDbField ( "loccontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+	addDbField ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+	addDbField ( "fincontrato",  BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+	addDbField ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+	blScript(this);
+	
         /// Disparamos los plugins.
         int res = g_plugins->run ( "ContratoView_ContratoView", this );
         if ( res != 0 )
@@ -109,24 +123,29 @@ void ContratoView::inicializar()
 \param id
 \return
 **/
-int ContratoView::load ( QString id )
+int ContratoView::cargarPost ( QString id )
 {
     BL_FUNC_DEBUG
     try {
+      /*
         Contrato::load ( id );
         if ( dbValue ( "idcontrato" ) != "" ) {
             setWindowTitle ( _ ( "Contrato" ) + " " + dbValue ( "refcontrato" ) + " " + dbValue ( "idcontrato" ) );
             insertWindow ( windowTitle(), this );
         } // end if
+        */
         mui_lineas->load ( id );
         subform2->load ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + id + " AND reffactura = '" + dbValue ( "refcontrato" ) + "'" );
-        dialogChanges_readValues();
+        //dialogChanges_readValues();
     } catch ( ... ) {
         return -1;
     } // end try
     
     return 0;
 }
+
+
+
 
 
 /** Guardado de la ficha en la base de datos.
@@ -138,20 +157,12 @@ int ContratoView::load ( QString id )
 /**
 \return
 **/
-int ContratoView::save()
+int ContratoView::afterSave()
 {
     BL_FUNC_DEBUG
     try {
-        setDbValue ( "refcontrato", mui_refcontrato->text() );
-        setDbValue ( "nomcontrato", mui_nomcontrato->text() );
-        setDbValue ( "idcliente", mui_idcliente->id() );
-        setDbValue ( "fincontrato", mui_fincontrato->text() );
-        setDbValue ( "ffincontrato", mui_ffincontrato->text() );
-        setDbValue ( "loccontrato", mui_loccontrato->text() );
-        setDbValue ( "descontrato", mui_descontrato->toPlainText() );
-        setDbValue ( "periodicidadcontrato", mui_periodicidadcontrato->periodo() );
-        Contrato::save();
-        dialogChanges_readValues();
+            mui_lineas->setColumnValue ( "idcontrato", dbValue ( "idcontrato" ) );
+	    mui_lineas->save();
     } catch ( ... ) {
 	
         throw - 1;
@@ -159,6 +170,8 @@ int ContratoView::save()
     
     return 0;
 }
+
+
 
 
 ///
@@ -172,101 +185,6 @@ void ContratoView::on_m_cliente_valueChanged ( QString id )
     
 }
 
-
-///
-/**
-\param id
-**/
-void ContratoView::pintaidcliente ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_idcliente->setId ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintafincontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_fincontrato->setText ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintaffincontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_ffincontrato->setText ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintadescontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_descontrato->setText ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintarefcontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_refcontrato->setText ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintanomcontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_nomcontrato->setText ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintaperiodicidadcontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_periodicidadcontrato->setperiodo ( id );
-    
-}
-
-
-///
-/**
-\param id
-**/
-void ContratoView::pintaloccontrato ( QString id )
-{
-    BL_FUNC_DEBUG
-    mui_loccontrato->setText ( id );
-    
-}
 
 
 ///
