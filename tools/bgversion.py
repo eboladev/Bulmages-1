@@ -32,13 +32,18 @@ class BgVersion:
         # We see current git parameters
 
         # See http://packages.python.org/GitPython/0.3.1/tutorial.html
-        self.repo = git.Repo(git_dir)
-        self.active_commit = self.repo.commit().hexsha
+        try:
+            self.repo = git.Repo(git_dir)
+            self.active_commit = self.repo.commit().hexsha
 
-        if self.repo.head.is_detached:
-            self.active_branch = None
-        else:
-            self.active_branch = self.repo.active_branch.name
+            if self.repo.head.is_detached:
+                self.active_branch = None
+            else:
+                self.active_branch = self.repo.active_branch.name
+        except git.InvalidRepositoryError:
+            self.repo = None
+            self.active_commit = ""
+            self.active_branch = ""
 
     def get_git_info(self):
         return (self.active_branch, self.active_commit)
@@ -105,6 +110,9 @@ class BgVersion:
     def obtain_git_version_info(self, target_commit = None):
         if not target_commit:
             target_commit = self.active_commit
+
+        if not self.repo :
+            return ("", "", "")
 
         commit = self.repo.commit(target_commit)
         timestamp_gmt = time.gmtime(commit.committed_date)

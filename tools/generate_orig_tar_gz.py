@@ -37,8 +37,13 @@ def main():
     # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
     # ../mtelleria-bulmages
 
+
     cur_basedir = os.path.basename(os.getcwd())
-    cmdline = "tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s" % (full_version, cur_basedir)
+    cmdline = "tar --exclude=.git --exclude=debian -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s" % (full_version, cur_basedir)
+
+    if opt.print_only :
+        print cmdline
+        sys.exit(0)
 
     print "Cmdline: %s" % cmdline
     try:

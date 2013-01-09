@@ -6,9 +6,6 @@ sys.dont_write_bytecode = True
 import argparse
 import bgversion
 
-# From python-git package
-import git
-
 class opt:
     commit = ""
     force_version = ""
