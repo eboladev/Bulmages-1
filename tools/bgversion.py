@@ -115,7 +115,7 @@ class BgVersion:
             return ("", "", "")
 
         commit = self.repo.commit(target_commit)
-        timestamp_gmt = time.gmtime(commit.committed_date)
+        timestamp_gmt = time.gmtime(commit.authored_date)
         ts_date = time.strftime("%Y%m%d", timestamp_gmt)
         ts_time = time.strftime("%H%M", timestamp_gmt)
         short_hash = commit.hexsha[:8]
