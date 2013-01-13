@@ -62,7 +62,7 @@ extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_guardar_post ( ArticuloView * 
 extern "C" PLUGINBF_ALIAS_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
 extern "C" PLUGINBF_ALIAS_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ALIAS_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
-
+extern "C" PLUGINBF_ALIAS_EXPORT int BlSubForm_likeFilterSQL_Post (BlSubForm *, void **);
 
 #endif
 

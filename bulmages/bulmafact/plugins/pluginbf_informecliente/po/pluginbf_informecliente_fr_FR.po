@@ -1,0 +1,84 @@
+# Header entry was created by Lokalize.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:11+0200\n"
+"PO-Revision-Date: 2011-02-11 16:32+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
+#: informeqtoolbutton.cpp:463
+msgid "Articulo"
+msgstr "Article"
+
+#: informeqtoolbutton.cpp:465
+msgid "C. Entr."
+msgstr "C. entr."
+
+#: informeqtoolbutton.cpp:466
+msgid "C. Fact."
+msgstr "C. Fact."
+
+#: informeqtoolbutton.cpp:464
+msgid "C. Ped."
+msgstr "C. Com"
+
+#: informeqtoolbutton.cpp:266
+msgid "Cobrado"
+msgstr "Encaisser"
+
+#: informeqtoolbutton.cpp:199 informeqtoolbutton.cpp:231
+#: informeqtoolbutton.cpp:264 informeqtoolbutton.cpp:311
+msgid "Entregado"
+msgstr "Livrer"
+
+#: informeqtoolbutton.cpp:200 informeqtoolbutton.cpp:232
+#: informeqtoolbutton.cpp:265 informeqtoolbutton.cpp:312
+msgid "Facturado"
+msgstr "Facturer"
+
+#: informeqtoolbutton.cpp:132
+msgid "Generando Informe"
+msgstr "Générer un rapport"
+
+#: informeqtoolbutton.cpp:488
+msgid "Generando informe"
+msgstr "Générer un rapport"
+
+#: informeqtoolbutton.cpp:313
+msgid "Pagado"
+msgstr "Payer"
+
+#: informeqtoolbutton.cpp:198 informeqtoolbutton.cpp:230
+#: informeqtoolbutton.cpp:263 informeqtoolbutton.cpp:310
+msgid "Pedido"
+msgstr "Commande"
+
+#: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
+msgid "Pres."
+msgstr "Pres."
+
+#: informeqtoolbutton.cpp:469
+msgid "V. Entr."
+msgstr "V. entr."
+
+#: informeqtoolbutton.cpp:470
+msgid "V. Fact."
+msgstr "V. Fact."
+
+#: informeqtoolbutton.cpp:468
+msgid "V. Ped."
+msgstr "V. Com"
+
+#: informeqtoolbutton.cpp:467
+msgid "V. Pres."
+msgstr "V. Pres."

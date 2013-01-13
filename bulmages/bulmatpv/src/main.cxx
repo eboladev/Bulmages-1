@@ -139,15 +139,22 @@ int main ( int argc, char **argv )
         splashScr->setProgressBar ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-        QString confEsp = CONFGLOBAL + bges->company()->dbName() + ".conf";
+        QString confGlobalEsp = CONFGLOBAL + bges->company()->dbName() + ".conf";
         QDir archivoConf;
-        
-        if ( !archivoConf.exists ( confEsp ) ) {
-            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
+        if ( !archivoConf.exists ( confGlobalEsp ) ) {
+            QString mensaje = "-->" + _("El archivo '") + confGlobalEsp + _("' no existe. <--\n");
             fprintf ( stderr, "%s", mensaje.toAscii().constData() );
         } else {
-            g_confpr->readConfig ( confEsp );
+            g_confpr->readConfig ( confGlobalEsp );
         } // end if
+     
+      QString confLocalEsp = g_confpr->getLocalDir() + QString("bulmatpv_") + bges->company()->dbName() + ".conf";
+      if ( !archivoConf.exists ( confLocalEsp ) ) {
+          QString mensaje = "-->" + _("El archivo '") + confLocalEsp + _("' no existe. <--\n");
+          fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+      } else {
+          g_confpr->readConfig ( confLocalEsp );
+      } // end if
 
         // Pone el color de fondo del workspace si esta definido y es un color valido.
         if ( QColor(g_confpr->value( CONF_BACKGROUND_COLOR )).isValid() ) {

@@ -274,6 +274,14 @@ CREATE TABLE tasa_iva (
 );
 
 
+\echo -n ':: IRPF ... '
+CREATE TABLE irpf (
+    idirpf serial PRIMARY KEY,
+    fechairpf date NOT NULL,
+    tasairpf  numeric(12,2)
+);
+
+
 -- ** serie_factura **
 -- Tabla con series de IVA, codigo y descripcion.
 -- Basicamente sirve para garantizar la integridad referencial en las series de facturacion.
@@ -1481,8 +1489,7 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
-
+    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
         totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
@@ -2888,8 +2895,7 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
-
+    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
         totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
@@ -2988,8 +2994,7 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
-
+    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
         totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
@@ -3088,8 +3093,7 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
-
+    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechaalbaran FROM albaran WHERE idalbaran = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
         totalIRPF := totalBImponibleLineas * (rs.valor / 100);
     END IF;
@@ -3295,9 +3299,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.14.1-0001'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.14.1-0002'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0001'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0002'');
     END IF;
 
     RETURN 0;

@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Catàleg d'articles
+
+Biblioteca: libpluginbf_catalogo.so
+
+Descripción: <H1>Catàleg d'Articles</H1>
+<P>Permet la creació d'un catàleg d'articles a través de la plantilla RML de catàleg d'articles.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_articulo.so
+
+Incompatibles:
+
+Categorias: Experimentals;
+
+Orden: 450
+
+Comentarios: 

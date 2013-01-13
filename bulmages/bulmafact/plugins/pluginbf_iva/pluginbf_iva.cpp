@@ -25,6 +25,7 @@
 #include "blfunctions.h"
 #include "listtipoivaview.h"
 #include "listtasaivaview.h"
+#include "listirpfview.h"
 
 
 BfBulmaFact *g_pluginbf_iva = NULL;
@@ -72,6 +73,16 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addAction ( accionB );
         bges->Listados->addAction ( accionB );
 
+        /// Menu para tratar los IRPF's y discriminarlos por fechas.
+        BlAction *accionC = new BlAction ( _ ( "&Retenciones IRPF" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vattax.png" ) ) );
+        accionC->setStatusTip ( _ ( "Retenciones IRPF" ) );
+        accionC->setWhatsThis ( _ ( "Retenciones IRPF" ) );
+        accionC->setObjectName("mui_actionIRPF");
+        pPluginMenu->addAction ( accionC );
+        bges->Listados->addAction ( accionC );
+	
+	
     } // end if
     return 0;
 }
@@ -92,6 +103,11 @@ int BlAction_actionTriggered(BlAction *accion) {
          pag->show();
     } // end if
 
+    if (accion->objectName() == "mui_actionIRPF") {
+         ListIRPFView *pag = new ListIRPFView ( g_pluginbf_iva->company(), NULL );
+         g_pluginbf_iva->company()->m_pWorkspace->addSubWindow ( pag );
+         pag->show();
+    } // end if
     
     return 0;
 }

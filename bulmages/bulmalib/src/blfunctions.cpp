@@ -1310,7 +1310,7 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
 }
 
 
-void blWebBrowser(const QString &uri, const QString &defbrowser) {
+int blWebBrowser(const QString &uri, const QString &defbrowser) {
     BL_FUNC_DEBUG
     QString browser = "";
     if (browser.isEmpty()) {
@@ -1327,11 +1327,13 @@ void blWebBrowser(const QString &uri, const QString &defbrowser) {
     
     if (browser.isEmpty()) {
         QDesktopServices::openUrl(QUrl(uri, QUrl::TolerantMode));
+        return 0;
     }
     
     else {
         QString webcommand = commas + browser + commas + QUrl(uri, QUrl::TolerantMode).toString() + inbackground;
-        system ( webcommand.toAscii().data() );
+        int result = system ( webcommand.toAscii().data() );
+        return result;
     } // end if
 
 }

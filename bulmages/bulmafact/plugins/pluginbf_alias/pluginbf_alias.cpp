@@ -197,6 +197,17 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 }
 
 
+/// En la busqueda por filtro de articulos incluiremos aquellos que tengan alias.
+int BlSubForm_likeFilterSQL_Post (BlSubForm *sub, void ** squery) {
+    BL_FUNC_DEBUG
+    if (sub->tableName() == "articulo")  {
+	QString * tquery = (QString *) *squery;
+	*tquery = " OR articulo.idarticulo IN (SELECT idarticulo from alias WHERE cadalias LIKE '%"+*tquery+"%')"; 
+    } // end if
+    return 0;
+}
+
+
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     BL_FUNC_DEBUG

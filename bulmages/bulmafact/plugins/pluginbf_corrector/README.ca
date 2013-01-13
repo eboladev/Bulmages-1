@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Corrector de Facturació
+
+Biblioteca: libpluginbf_corrector.so
+
+Descripción: <H1>Corrector de Facturació</H1>
+<P>Efectura diversos tests sobre la facturació per trobar errors i incoherències que han de ser supervisades. És útil per mantenir la facturació en un estat òptim de coherència de dades i per prevenir errors que a la llarga poden resultar costosos.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD:
+
+ArchivoSQLpatch:
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilitats genèriques;
+
+Orden: 900
+
+Comentarios: No està acabat.

@@ -328,6 +328,7 @@ public:
     bool readConfig ( QString );
     void saveConfig();
     QString name( int );
+    QString getLocalDir();
 };
 
 

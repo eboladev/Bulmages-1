@@ -175,35 +175,43 @@
 			<blockTable style="total" colWidths="16.3cm,2.7cm" >
 				<tr>
 					<td colspan="2">
-						<blockTable style="titulo" colWidths="5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm">
-							<tr>
-								<td>  </td>
-								<td>Base Imponible:</td>
-								<td>  </td>
-								<td>I.V.A.%:</td>
-								<td>  </td>
-								<td>Tot I.V.A.:</td>
-								<td>  </td>
-								<td>Total:</td>
-							</tr>
-						</blockTable>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<blockTable style="contenido" colWidths="5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm" >
-						<!--TOTALES-->
-							<tr>
-								<td>  </td>
-								<td>[bimp]</td>
-								<td>  </td>
-								<td>[tbimp]%</td>
-								<td>  </td>
-								<td>[iva]</td>
-								<td>  </td>
-							</tr>
-						<!--END TOTALES-->
-						</blockTable>
+                                                <blockTable style="titulo" colWidths="2.65cm, 3.2cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 1.15cm, 2.7cm">
+                                                        <tr>
+                                                                <td>  </td>
+                                                                <td>Base Imponible:</td>
+                                                                <td>  </td>
+                                                                <td>I.V.A.%:</td>
+                                                                <td>  </td>
+                                                                <td>Tot I.V.A.:</td>
+                                                                <td>  </td>
+                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= '[fechapresupuesto]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->I.R.P.F.%:<!-- END QUERY--></td>
+                                                                <td>  </td>
+                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= '[fechapresupuesto]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->Tot I.R.P.F.:<!-- END QUERY--></td>
+                                                                <td>  </td>
+                                                                <td>Total:</td>
+                                                        </tr>
+                                                </blockTable>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td>
+                                                <blockTable style="contenido" colWidths="2.65cm, 3.2cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 1.15cm" >
+                                                <!--TOTALES-->
+                                                        <tr>
+                                                                <td>  </td>
+                                                                <td>[bimp]</td>
+                                                                <td>  </td>
+                                                                <td>[tbimp]%</td>
+                                                                <td>  </td>
+                                                                <td>[iva]</td>
+                                                                <td>  </td>
+								<td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= '[fechapresupuesto]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->[tasairpf] %<!-- END QUERY--></td>
+                                                                <td>  </td>
+                                                                <td><!-- QUERY="SELECT (replace('[bimp]',',','.')::NUMERIC(12,2) * tasairpf)::NUMERIC(12,2) AS teirpf FROM irpf WHERE fechairpf <= '[fechapresupuesto]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1"-->[teirpf]<!-- END QUERY--></td>
+                                                                <td>  </td>
+                                                        </tr>
+                                                <!--END TOTALES-->
+                                                </blockTable>
 					</td>
 					<td>
 						<blockTable style="preciofinal" colWidths="2.7cm" >

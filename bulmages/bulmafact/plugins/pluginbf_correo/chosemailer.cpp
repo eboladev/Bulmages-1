@@ -115,10 +115,7 @@ int ChoseMailer::GuardarConfig()
      
      /// Guardamos la configuracion, quiza sea interesante extraer este metodo hacia bulmalib posteriormente.
     
-    QString m_dirLocalConf = dirusuario + "/.bulmages/bulmafact.conf";
-    
-    
-    QFile file ( m_dirLocalConf );
+    QFile file ( g_confpr->getLocalDir() + "bulmafact.conf" );
     if ( !file.open ( QIODevice::Append | QIODevice::Text ) )
         return 1;
     // end if
@@ -143,7 +140,7 @@ int ChoseMailer::GuardarConfig()
 **/
 void ChoseMailer::on_mui_mailclients_currentIndexChanged(int index)
 {
-    /// Detectamos si el index ha cambiado, y en ese caso seteamos CONF_EMAIL_CLIENT y mui_location con la posible localizacion del cliente de email
+    /// Detectamos si el index ha cambiado, y en ese caso seteamos mui_location con la posible localizacion del cliente de email
     
     BL_FUNC_DEBUG
     
