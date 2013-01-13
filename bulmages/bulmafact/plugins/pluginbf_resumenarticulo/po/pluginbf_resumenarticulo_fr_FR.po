@@ -1,0 +1,94 @@
+# Header entry was created by Lokalize.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
+"PO-Revision-Date: 2011-02-14 09:10+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: listlresarticulo.cpp:35 listlresarticulo.cpp:79 listlresarticulo.cpp:122
+#: listlresarticulo.cpp:166
+msgid "CIF"
+msgstr "CIF"
+
+#: listlresarticulo.cpp:41 listlresarticulo.cpp:84 listlresarticulo.cpp:127
+#: listlresarticulo.cpp:171
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: listlresarticulo.cpp:36 listlresarticulo.cpp:80
+msgid "Cliente"
+msgstr "Client"
+
+#: plufinbf_resumenarticulo.cpp:58
+msgid "Compras"
+msgstr "Achats"
+
+#: listlresarticulo.cpp:40 listlresarticulo.cpp:83 listlresarticulo.cpp:126
+#: listlresarticulo.cpp:170
+msgid "Descripcion"
+msgstr "Description "
+
+#: listlresarticulo.cpp:44 listlresarticulo.cpp:87 listlresarticulo.cpp:130
+#: listlresarticulo.cpp:174
+msgid "Descuento"
+msgstr "Remise"
+
+#: plufinbf_resumenarticulo.cpp:70
+msgid "Entregas"
+msgstr ""
+
+#: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
+#: listlresarticulo.cpp:169
+msgid "Fecha"
+msgstr "Date"
+
+#: listlresarticulo.cpp:43 listlresarticulo.cpp:86 listlresarticulo.cpp:129
+#: listlresarticulo.cpp:173
+msgid "IVA"
+msgstr "TVA"
+
+#: listlresarticulo.cpp:38
+msgid "Num. Factura"
+msgstr "N° de Facture"
+
+#: listlresarticulo.cpp:81 listlresarticulo.cpp:168
+msgid "Num. albaran"
+msgstr "Num. bulletin"
+
+#: listlresarticulo.cpp:124
+msgid "Num. factura"
+msgstr "N° de Facture"
+
+#: listlresarticulo.cpp:85 listlresarticulo.cpp:128 listlresarticulo.cpp:172
+msgid "Precio"
+msgstr "Prix"
+
+#: listlresarticulo.cpp:42
+msgid "Precio Venta"
+msgstr "Prix de ventes /TVA"
+
+#: listlresarticulo.cpp:123 listlresarticulo.cpp:167
+msgid "Proveedor"
+msgstr "Fournisseur"
+
+#: plufinbf_resumenarticulo.cpp:76
+msgid "Recogidas"
+msgstr ""
+
+#: listlresarticulo.cpp:37
+msgid "Serie Factura"
+msgstr "Série de facture"
+
+#: plufinbf_resumenarticulo.cpp:64
+msgid "Ventas"
+msgstr "Ventes"

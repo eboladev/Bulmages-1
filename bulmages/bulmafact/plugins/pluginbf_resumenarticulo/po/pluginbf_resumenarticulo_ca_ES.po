@@ -1,0 +1,108 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: listlresarticulo.cpp:35 listlresarticulo.cpp:79 listlresarticulo.cpp:122
+#: listlresarticulo.cpp:166
+#, fuzzy
+msgid "CIF"
+msgstr "C.I.F.:"
+
+#: listlresarticulo.cpp:41 listlresarticulo.cpp:84 listlresarticulo.cpp:127
+#: listlresarticulo.cpp:171
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: listlresarticulo.cpp:36 listlresarticulo.cpp:80
+#, fuzzy
+msgid "Cliente"
+msgstr "Següent"
+
+#: plufinbf_resumenarticulo.cpp:58
+msgid "Compras"
+msgstr "Compres"
+
+#: listlresarticulo.cpp:40 listlresarticulo.cpp:83 listlresarticulo.cpp:126
+#: listlresarticulo.cpp:170
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: listlresarticulo.cpp:44 listlresarticulo.cpp:87 listlresarticulo.cpp:130
+#: listlresarticulo.cpp:174
+#, fuzzy
+msgid "Descuento"
+msgstr "Document:"
+
+#: plufinbf_resumenarticulo.cpp:70
+msgid "Entregas"
+msgstr ""
+
+#: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
+#: listlresarticulo.cpp:169
+msgid "Fecha"
+msgstr "Data"
+
+#: listlresarticulo.cpp:43 listlresarticulo.cpp:86 listlresarticulo.cpp:129
+#: listlresarticulo.cpp:173
+msgid "IVA"
+msgstr "IVA"
+
+#: listlresarticulo.cpp:38
+#, fuzzy
+msgid "Num. Factura"
+msgstr "Factura"
+
+#: listlresarticulo.cpp:81 listlresarticulo.cpp:168
+#, fuzzy
+msgid "Num. albaran"
+msgstr "Imprimeix albarà"
+
+#: listlresarticulo.cpp:124
+#, fuzzy
+msgid "Num. factura"
+msgstr "Nova facturació"
+
+#: listlresarticulo.cpp:85 listlresarticulo.cpp:128 listlresarticulo.cpp:172
+#, fuzzy
+msgid "Precio"
+msgstr "Adreça:"
+
+#: listlresarticulo.cpp:42
+#, fuzzy
+msgid "Precio Venta"
+msgstr "Percent&ual"
+
+#: listlresarticulo.cpp:123 listlresarticulo.cpp:167
+#, fuzzy
+msgid "Proveedor"
+msgstr "NIF del proveïdor"
+
+#: plufinbf_resumenarticulo.cpp:76
+msgid "Recogidas"
+msgstr ""
+
+#: listlresarticulo.cpp:37
+#, fuzzy
+msgid "Serie Factura"
+msgstr "Factura"
+
+#: plufinbf_resumenarticulo.cpp:64
+msgid "Ventas"
+msgstr "Vendes"

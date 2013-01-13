@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Informe Clients.
+
+Biblioteca: libpluginbf_informecliente.so
+
+Descripción: <H1>Informe Clientss</H1>
+<P>Genera un informe de vendes a clientes configurable mitjançant RML.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_cliente.so
+
+Incompatibles:
+
+Categorias: Facturació avançada; 
+
+Orden: 900
+
+Comentarios: 

@@ -1,0 +1,106 @@
+# Header entry was created by Lokalize.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
+"PO-Revision-Date: 2011-02-10 17:51+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: pluginbf_corrector.cpp:72
+#, fuzzy
+msgid "&Corrector"
+msgstr "&Contracts"
+
+#: ui_confreglasbase.h:284
+msgid "Apunte con Cuenta"
+msgstr "Libellé de compte"
+
+#: ui_confreglasbase.h:292
+msgid "Apunte con Descripcion"
+msgstr "Libellé"
+
+#: ui_confreglasbase.h:285
+msgid "Apunte con Saldo"
+msgstr "Libellé de solde"
+
+#: ui_confreglasbase.h:295
+msgid "Cerrar"
+msgstr "Fermer"
+
+#: ui_confreglasbase.h:281
+msgid "Comprobacion por asientos"
+msgstr "Vérification des écritures"
+
+#: ui_confreglasbase.h:282
+msgid "Condicion:"
+msgstr "Condition :"
+
+#: ui_correctorbase.h:102 ui_correctorbase.h:105
+msgid "Configurar"
+msgstr "Configurer"
+
+#: ui_correctorbase.h:93
+msgid "Corrector"
+msgstr "Correcteur"
+
+#: pluginbf_corrector.cpp:75
+msgid ""
+"Corrector.\n"
+"\n"
+"Muestra/oculta el corrector"
+msgstr ""
+"Correcteur.\n"
+"\n"
+"Montrer/Occulter  le correcteur"
+
+#: ui_correctorbase.h:95 ui_correctorbase.h:98
+msgid "Corregir"
+msgstr "Corriger"
+
+#: ui_confreglasbase.h:283
+msgid "Deben existir registros que cumplan esta condicion en el periodo"
+msgstr ""
+"Il doit exister des registres qui remplissent cette condition dans cette "
+"période"
+
+#: pluginbf_corrector.cpp:74
+#, fuzzy
+msgid "Muestra/oculta el corrector"
+msgstr "Montrer/cacher filtre"
+
+#: ui_confreglasbase.h:294
+msgid "Periodicidad"
+msgstr "Périodicité"
+
+#: ui_confreglasbase.h:280
+msgid "Regla:"
+msgstr "Règle :"
+
+#: ui_confreglasbase.h:276
+msgid "Reglas de Corrector"
+msgstr "Règle du correcteur"
+
+#: ui_confreglasbase.h:293
+msgid "Reglas sobre Apuntes"
+msgstr "Règle sur les notes"
+
+#: ui_confreglasbase.h:288
+msgid "igual"
+msgstr "Egal"
+
+#: ui_confreglasbase.h:290
+msgid "mayor"
+msgstr "plus grand"
+
+#: ui_confreglasbase.h:289
+msgid "menor"
+msgstr "plus petit"

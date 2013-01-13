@@ -40,11 +40,10 @@ void ArticuloTPV::on_mui_seleccionarcolor_clicked()
 
     QColor coloractual;
 
-    if (QColor::isValidColor(mui_colortpvarticulo->text())) {
-        coloractual.setNamedColor(mui_colortpvarticulo->text());
-    } else {
-	coloractual.setNamedColor("#FFFFFF");
-    } // end if
+    coloractual.setNamedColor(mui_colortpvarticulo->text());
+    if (!coloractual.isValid()){
+        coloractual.setNamedColor("#FFFFFF");
+    }
 
     QColorDialog colordialog;
     QColor color = colordialog.getColor(coloractual, this);

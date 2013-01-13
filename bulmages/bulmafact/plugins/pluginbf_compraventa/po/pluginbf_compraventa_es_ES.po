@@ -1,0 +1,413 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: ui_compraventabase.h:880
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_compraventabase.h:881
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: pluginbf_compraventa.cpp:78
+msgid "&CompraVenta"
+msgstr "&CompraVenta"
+
+#: ui_compraventabase.h:906
+msgid "&Detalle Compras"
+msgstr "&Detalle Compras"
+
+#: ui_compraventabase.h:889
+msgid "&Detalle Ventas"
+msgstr "&Detalle Ventas"
+
+#: compraventaview.cpp:467 compraventaview.cpp:588
+msgid "&No"
+msgstr "&No"
+
+#: compraventaview.cpp:467 compraventaview.cpp:588
+msgid "&Si"
+msgstr "&Si"
+
+#: ui_compraventabase.h:900 ui_compraventabase.h:901 ui_compraventabase.h:902
+#: ui_compraventabase.h:903 ui_compraventabase.h:904 ui_compraventabase.h:905
+msgid "0.00"
+msgstr "0.00"
+
+#: ui_compraventabase.h:857 ui_compraventabase.h:860
+msgid "Agregar a factura"
+msgstr "Agregar a factura"
+
+#: compraventaview.cpp:84
+msgid "Almacen"
+msgstr "Almacen"
+
+#: ui_compraventabase.h:888
+msgid "Almacen:"
+msgstr "Almacen:"
+
+#: ui_compraventabase.h:895
+msgid "Base imponible:"
+msgstr "Base imponible:"
+
+#: ui_compraventabase.h:829 ui_compraventabase.h:832
+msgid "Borrar albaran"
+msgstr "Borrar albaran"
+
+#: compraventaview.cpp:83
+msgid "Cliente"
+msgstr "Cliente"
+
+#: compraventaview.cpp:111
+msgid "Cliente:"
+msgstr "Cliente:"
+
+#: compraventaview.cpp:89
+msgid "Comentario"
+msgstr "Comentario"
+
+#: compraventaview.cpp:69
+msgid "Comentario albaran proveedor"
+msgstr "Comentario albaran proveedor"
+
+#: compraventaview.cpp:90
+msgid "Comentario privado"
+msgstr "Comentario privado"
+
+#: ui_compraventabase.h:893 ui_compraventabase.h:910
+msgid "Comentario&s"
+msgstr "Comentario&s"
+
+#: ui_compraventabase.h:892 ui_compraventabase.h:909
+msgid "Comentarios privados:"
+msgstr "Comentarios privados:"
+
+#: ui_compraventabase.h:891 ui_compraventabase.h:908
+msgid "Comentarios publicos:"
+msgstr "Comentarios publicos:"
+
+#: compraventaview.cpp:79
+msgid "Compra Venta"
+msgstr "Compra Venta"
+
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
+msgid "CompraVenta"
+msgstr "CompraVenta"
+
+#: compraventaview.cpp:94
+msgid "Descripcion"
+msgstr "Descripcion"
+
+#: compraventaview.cpp:74
+msgid "Descripcion albaran proveedor"
+msgstr "Descripcion albaran proveedor"
+
+#: ui_compraventabase.h:878
+msgid "Descripcion:"
+msgstr "Descripcion:"
+
+#: ui_compraventabase.h:890 ui_compraventabase.h:907
+msgid "Descuen&tos"
+msgstr "Descuen&tos"
+
+#: ui_compraventabase.h:894
+msgid "Descuentos:"
+msgstr "Descuentos:"
+
+#: compraventaview.cpp:138
+msgid "Error al crear el albaran a cliente"
+msgstr "Error al crear el albaran a cliente"
+
+#: compraventaview.cpp:533 compraventaview.cpp:684
+msgid "Error inesperado"
+msgstr "Error inesperado"
+
+#: compraventaview.cpp:714
+msgid "Error inesperado en la impresion"
+msgstr "Error inesperado en la impresion"
+
+#: compraventaview.cpp:587
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este albaran. "
+"Desea abrirla para verificar?"
+msgstr ""
+"Existe una factura a este cliente con la misma referencia que este albaran. "
+"Desea abrirla para verificar?"
+
+#: compraventaview.cpp:466
+msgid ""
+"Existe una factura de este proveedor con la misma referencia que este "
+"albaran. Desea rehacerla ?"
+msgstr ""
+"Existe una factura de este proveedor con la misma referencia que este "
+"albaran. Desea rehacerla ?"
+
+#: compraventaview.cpp:465
+msgid "Factura de proveedor existente"
+msgstr "Factura de proveedor existente"
+
+#: compraventaview.cpp:586
+msgid "Factura existente"
+msgstr "Factura existente"
+
+#: compraventaview.cpp:68
+msgid "Fecha albaran proveedor"
+msgstr "Fecha albaran proveedor"
+
+#: compraventaview.cpp:86
+msgid "Fecha de creacion"
+msgstr "Fecha de creacion"
+
+#: ui_compraventabase.h:884
+msgid "Fecha de creacion:"
+msgstr "Fecha de creacion:"
+
+#: compraventaview.cpp:91
+msgid "Forma de pago"
+msgstr "Forma de pago"
+
+#: ui_compraventabase.h:886
+msgid "Forma de pago:"
+msgstr "Forma de pago:"
+
+#: ui_compraventabase.h:850 ui_compraventabase.h:853
+msgid "Generar factura a partir de este albaran"
+msgstr "Generar factura a partir de este albaran"
+
+#: ui_compraventabase.h:822 ui_compraventabase.h:825
+msgid "Guardar albaran"
+msgstr "Guardar albaran"
+
+#: ui_compraventabase.h:820
+msgid "Hoja de Compra Venta"
+msgstr "Hoja de Compra Venta"
+
+#: ui_compraventabase.h:896
+msgid "I.R.P.F.:"
+msgstr "I.R.P.F.:"
+
+#: compraventaview.cpp:82
+msgid "Id albaran"
+msgstr "Id albaran"
+
+#: compraventaview.cpp:66
+msgid "Id albaran proveedor"
+msgstr "Id albaran proveedor"
+
+#: compraventaview.cpp:72
+msgid "Id almacen"
+msgstr "Id almacen"
+
+#: compraventaview.cpp:71
+msgid "Id forma de pago"
+msgstr "Id forma de pago"
+
+#: compraventaview.cpp:70
+msgid "Id proveedor"
+msgstr "Id proveedor"
+
+#: ui_compraventabase.h:836 ui_compraventabase.h:839
+msgid "Imprimir albaran"
+msgstr "Imprimir albaran"
+
+#: ui_compraventabase.h:897
+msgid "Impuestos:"
+msgstr "Impuestos:"
+
+#: ui_compraventabase.h:872 ui_compraventabase.h:875
+msgid "Mostrar/ocultar cabecera"
+msgstr "Mostrar/ocultar cabecera"
+
+#: compraventaview.cpp:67
+msgid "Numero albaran proveedor"
+msgstr "Numero albaran proveedor"
+
+#: compraventaview.cpp:85
+msgid "Numero de albaran"
+msgstr "Numero de albaran"
+
+#: ui_compraventabase.h:879
+msgid "Numero de albaran:"
+msgstr "Numero de albaran:"
+
+#: compraventaview.cpp:87
+msgid "Persona de contacto"
+msgstr "Persona de contacto"
+
+#: ui_compraventabase.h:885
+msgid "Persona de contacto:"
+msgstr "Persona de contacto:"
+
+#: compraventaview.cpp:93 ui_compraventabase.h:882
+msgid "Procesado"
+msgstr "Procesado"
+
+#: ui_compraventabase.h:898
+msgid "R.E.:"
+msgstr "R.E.:"
+
+#: compraventaview.cpp:95
+msgid "Referencia"
+msgstr "Referencia"
+
+#: compraventaview.cpp:73
+msgid "Referencia albaran proveedor"
+msgstr "Referencia albaran proveedor"
+
+#: ui_compraventabase.h:870
+msgid "Referencia:"
+msgstr "Referencia:"
+
+#: ui_compraventabase.h:864 ui_compraventabase.h:867
+msgid "Registrar cobro a cliente"
+msgstr "Registrar cobro a cliente"
+
+#: compraventaview.cpp:88
+msgid "Telefono de contacto"
+msgstr "Telefono de contacto"
+
+#: ui_compraventabase.h:887
+msgid "Telefono de contacto:"
+msgstr "Telefono de contacto:"
+
+#: compraventaview.cpp:710
+msgid "Tiene que guardar el documento antes de poder procesarlo."
+msgstr "Tiene que guardar el documento antes de poder procesarlo."
+
+#: compraventaview.cpp:571
+msgid "Tiene que seleccionar un cliente"
+msgstr "Tiene que seleccionar un cliente"
+
+#: compraventaview.cpp:450
+msgid "Tiene que seleccionar un proveedor"
+msgstr "Tiene que seleccionar un proveedor"
+
+#: ui_compraventabase.h:899
+msgid "Total:"
+msgstr "Total:"
+
+#: compraventaview.cpp:92
+msgid "Trabajador"
+msgstr "Trabajador"
+
+#: ui_compraventabase.h:883
+msgid "Trabajador:"
+msgstr "Trabajador:"
+
+#: ui_compraventabase.h:843 ui_compraventabase.h:846
+msgid "Ver pedidos con la misma referencia"
+msgstr "Ver pedidos con la misma referencia"

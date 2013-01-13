@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Plugin for Webcam
+
+Biblioteca: libpluginbf_qwebcam.so
+
+Descripción: <H1>Plugin for Webcam</H1>
+<P>Plugin for Webcam.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Generic invoicing;
+
+Orden: 70
+
+Comentarios: 

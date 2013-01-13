@@ -1,0 +1,45 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110211
+
+Nombre: Démonstration du fonctionement des greffons
+
+Biblioteca: libpluginbf_example.so
+
+Descripción: <H1>Exemple</H1>
+<P>Sert à montrer le fonctionnement des greffons.<br><br>C'est principalement un exemple de programmation.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilites avancees;
+
+Orden: 90
+
+Comentarios: 
+
+Compilation
+===========
+
+Le plugin sera compilé avec le reste de bulmages et il sera placé en bulmages/installbulmages/plugins avec le nom libplugin.so 
+
+
+Instalation
+===========
+
+Former la directive CONF_PLUGINS_BULMAFACT pour qu'elle contienne l'appel à ce plugin. Cette directive peut d'une manière globale dans les archives /etc/bulmages.conf ou être personnalisée avec les archives /etc/bulmafact_<<database>>.conf
+
+Copie tous les fichiers *.qm dans le répertoire /usr/share/bulmages/traducciones
+
+

@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Listes de Preus
+
+Biblioteca: libpluginbf_resumenarticulo.so
+
+Descripción: <H1>Listes de Preus</H1>
+<P>Permet el control de llistes de preus a les quals se subscriu cada client.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Facturació avançada; Experimentals;
+
+Orden: 900
+
+Comentarios: 

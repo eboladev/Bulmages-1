@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110211
+
+Nombre: Rapport de clients sur feuille de calcul.
+
+Biblioteca: libpluginbf_informecliente2sxc.so
+
+Descripción: <H1>Rapport de clients sur feuille de calcul</H1>
+<P>Générer un rapport de totaux  au format SXC qu'on ouvre directementavec kspread.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_cliente.so
+
+Incompatibles:
+
+Categorias: Facturation avancees; Experimental;
+
+Orden: 860
+
+Comentarios: 

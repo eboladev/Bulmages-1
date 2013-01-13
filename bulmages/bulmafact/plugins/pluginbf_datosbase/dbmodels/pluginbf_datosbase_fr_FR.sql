@@ -87,9 +87,16 @@ BEGIN
 	    IF FOUND THEN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
            INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 18, '01/07/2010', 4);
- 	    END IF;
-    END IF;
+	    END IF;
+	END IF;
 	
+	SELECT INTO ds * FROM irpf;
+	IF NOT FOUND THEN
+            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/1901', 15);
+            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/2011', 19);
+            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/2012', 21);
+	END IF;
+
 	SELECT INTO ds * FROM almacen;
 	IF NOT FOUND THEN
 	    INSERT INTO almacen (codigoalmacen, nomalmacen) VALUES ('000', 'Principal');

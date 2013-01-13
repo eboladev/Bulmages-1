@@ -1,0 +1,26 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:14+0200\n"
+"PO-Revision-Date: 2011-03-11 14:33+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan\n"
+"Language: Catalan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_alias.cpp:115
+msgid "Alias"
+msgstr "Àlias"
+
+#: pluginbf_alias.cpp:116
+msgid "Id articulo"
+msgstr "ID Article"
+
+#: pluginbf_alias.cpp:117
+msgid "Id validacion"
+msgstr "Id validació"

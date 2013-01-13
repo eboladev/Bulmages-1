@@ -1,0 +1,82 @@
+# Header entry was created by Lokalize.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:13+0200\n"
+"PO-Revision-Date: 2011-02-07 08:26+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
+#: pluginbf_asterisk.cpp:104
+msgid "Almacen"
+msgstr "Magasin"
+
+#: pluginbf_asterisk.cpp:168
+msgid "Apellidos"
+msgstr "Noms"
+
+#: pluginbf_asterisk.cpp:105
+msgid "Apertura manyanas"
+msgstr "Ouverture de matinée"
+
+#: pluginbf_asterisk.cpp:107
+msgid "Apertura tardes"
+msgstr "Ouverture de soirée"
+
+#: pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
+msgid "Audicion"
+msgstr "Audition"
+
+#: pluginbf_asterisk.cpp:106
+msgid "Cierre manyanas"
+msgstr "Fermeture de matinée"
+
+#: pluginbf_asterisk.cpp:108
+msgid "Cierre tardes"
+msgstr "Fermeture de soirée"
+
+#: pluginbf_asterisk.cpp:131
+msgid "Extension."
+msgstr "Extension."
+
+#: pluginbf_asterisk.cpp:102 pluginbf_asterisk.cpp:165
+msgid "Fecha"
+msgstr "Date"
+
+#: pluginbf_asterisk.cpp:103 pluginbf_asterisk.cpp:166
+msgid "Hora"
+msgstr "Feuille"
+
+#: pluginbf_asterisk.cpp:110 pluginbf_asterisk.cpp:170
+msgid "Id almacen"
+msgstr "Id magasin"
+
+#: pluginbf_asterisk.cpp:112 pluginbf_asterisk.cpp:172
+msgid "Id trabajador"
+msgstr "Id Ouvrier"
+
+#: pluginbf_asterisk.cpp:111 pluginbf_asterisk.cpp:171
+msgid "Id validacion"
+msgstr "Id validation"
+
+#: pluginbf_asterisk.cpp:56
+msgid "Password."
+msgstr "Mot de passe."
+
+#: pluginbf_asterisk.cpp:167
+msgid "Trabajador"
+msgstr "Salarié"
+
+#: pluginbf_asterisk.cpp:57
+msgid "Valida siempre."
+msgstr "Toujours valide."

@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Presence control through Asterisk unit
+
+Biblioteca: libpluginbf_asterisk.so
+
+Descripción: <H1>Asterisk</H1>
+<P>It presents all validations performed by the users and in the corresponding stores. It modifies the stores and workers files in order for them to present a table with performed validations.</P>
+<P>It requieres the store and quadrants plugins, without which it will not work.
+It also includes in the source code examples of scripts of validation written in php to be started in the unit with agi.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: PluginBf_Asterisk
+
+ArchivoSQLpatch: pluginbf_asterisk.sql
+
+ArchivoSQLdeins: pluginbf_asterisk-rm.sql
+
+Dependencias: libpluginbf_almacen.so; libpluginbf_cuadrante.so
+
+Incompatibles:
+
+Categorias: Advanced utilities: Experimentals;
+
+Orden: 900
+
+Comentarios: 

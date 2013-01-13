@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110208
+
+Nombre: Catalogue d'article
+
+Biblioteca: libpluginbf_catalogo.so
+
+Descripción: <H1>Catalogue d'article</H1>
+<P>Il permet la création d'un catalogue d'articles par le biais du RML de catalogue d'articles.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_articulo.so
+
+Incompatibles:
+
+Categorias: Experimentals;
+
+Orden: 450
+
+Comentarios:

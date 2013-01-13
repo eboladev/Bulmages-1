@@ -62,7 +62,7 @@ void initConfiguration ( QString config )
 ///
 /// En Linux:
 /// 1) /etc/bulmages/ -> Opciones genericas para todos los usuarios.
-/// 2) /home/~/.bulmages/  -> Opciones especificas para cada usuario.
+/// 2) ~/.bulmages/  -> Opciones especificas para cada usuario.
 ///
 /// En Windows:
 /// 1) %ProgramFiles%\bulmages\etc\ -> Opciones genericas para todos los usuarios.
@@ -98,13 +98,13 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     QDir dirGlobalConf ( m_dirGlobalConf );
 
 #ifndef Q_OS_WIN32
-    QString dirusuario = getenv ( "HOME" );
+    QString userdir = getenv ( "HOME" );
 #else
-    QString dirusuario = getenv ( "UserProfile" );
-    dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
+    QString userdir = getenv ( "UserProfile" );
+    userdir.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
 #endif
 
-    m_dirLocalConf = dirusuario + "/.bulmages/";
+    m_dirLocalConf = userdir + "/.bulmages/";
     m_genericGlobalConfFile = "bulmages.conf";
     m_programGlobalConfFile = nombreprograma + ".conf";
     m_genericLocalConfFile = m_genericGlobalConfFile;
@@ -147,7 +147,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
         readConfig ( m_dirGlobalConf + m_programGlobalConfFile );
     }// end if
 
-    /// Comprobamos si el usuario tiene creado su '/home/~/.bulmages/' directorio
+    /// Comprobamos si el usuario tiene creado el directorio de configuracion en su carpeta de usuario directorio
     /// de configuracion.
     if ( !dirGlobalConf.exists ( m_dirLocalConf ) ) {
         if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == TRUE ) {
@@ -483,10 +483,9 @@ QString BlConfiguration::name( int i )
 **/
 void BlConfiguration::saveConfig()
 {
-    QString dir1 = getenv ( "HOME" );
-    dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
+    QString confFile = m_dirLocalConf + m_programGlobalConfFile;
 
-    QFile file ( dir1 );
+    QFile file ( confFile );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
         return;
 
@@ -514,7 +513,7 @@ bool BlConfiguration::readConfig ( QString fich )
 {
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
-        QString cadaux1 = "Leyendo configuracion" + fich + "\n";
+        QString cadaux1 = "Leyendo configuracion: '" + fich + "'\n";
         fprintf ( stderr, "%s", cadaux1.toAscii().constData() );
         fprintf ( stderr, "%s", "\n" );
         QTextStream in ( &arch );
@@ -526,7 +525,16 @@ bool BlConfiguration::readConfig ( QString fich )
             QString cad = in.readLine();
             /// Hacemos la lectura de lineas de configuracion multilinea.
             while ( cad.endsWith ( "\\" ) ) {
-                cad = cad.left ( cad.length() - 2 ) + in.readLine().trimmed();
+                cad = cad.left ( cad.length() - 2 );
+		QString cod = in.readLine().trimmed();
+		// Si hay un comentario se pasa directamente a la siguiente linea aunque si el comentario termina en punto y como se lo da por finalizado.
+		if (cod.startsWith("#")) {
+		    if (cod.endsWith(";"))
+			cod = ";";
+		    else
+			cod = "\\";
+		} // end if
+		cad = cad + cod;
             } // end while
 
             QString simplificada = cad.simplified();
@@ -580,3 +588,7 @@ void BlConfiguration::setValue ( int i, QString valor )
     m_valores[i] = valor;
 }
 
+QString BlConfiguration::getLocalDir()
+{
+    return m_dirLocalConf;
+}

@@ -163,6 +163,7 @@ int BlPlugins::run ( const char *func, void *clase )
 /**
 \return
 **/
+
 int BlPlugins::run ( const char *func, void *clase, void **ret )
 {
     BL_FUNC_DEBUG
@@ -210,6 +211,7 @@ int BlPlugins::run ( const char *func, void *clase, void **ret )
     
     return a;
 }
+
 
 
 ///

@@ -1,0 +1,31 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Accounting in invoicing
+
+Biblioteca: libpluginbf_bulmacont.so
+
+Descripción: <H1>Accounting in bulmaFact</H1>
+<P>Opens an accounting instance together with invoicing to be able to use accounting screens
+in invoicing.<P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Caracteristicas: Advanced utilities; Experimentals;
+
+Orden: 800
+
+Comentarios:

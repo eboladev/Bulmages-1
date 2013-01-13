@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Control de presència per centraleta Asterisk
+
+Biblioteca: libpluginbf_asterisk.so
+
+Descripción: <H1>Asterisk</H1>
+<P>Presenta totes les validacions realitzades als usuaris i als magatzems corresponents. Modifica la fitxa de magatzems i treballadors perquè presentin un quadre de validacions realitzades.</P>
+<P>Requereix el pluginalmacen i el plugincuadrante, sense els quals no funcionarà. 
+També inclou en el codi font exemples d'scripts de validació fets en php per ser posats en marxa a la centraleta amb agi.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: PluginBf_Asterisk
+
+ArchivoSQLpatch: pluginbf_asterisk.sql
+
+ArchivoSQLdeins: pluginbf_asterisk-rm.sql
+
+Dependencias: libpluginbf_almacen.so; libpluginbf_cuadrante.so
+
+Incompatibles:
+
+Categorias: Utilitats avançades; Experimentals;
+
+Orden: 900
+
+Comentarios: 

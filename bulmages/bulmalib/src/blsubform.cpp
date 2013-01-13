@@ -3778,10 +3778,18 @@ QString BlSubForm::likeFilterSQL(const QString &text)
                 } // end if
             } // end if
         } // end for
-
+        
+        /// Llamamos a plugins para extender la busqueda por filtro (si es necesario).
+	QString parquery = text;
+	QString *pparquery = &parquery;
+	g_plugins->run ( "BlSubForm_likeFilterSQL_Post", (void *) this, ( void ** ) &pparquery );
+	if (parquery != text) 
+	    result  += parquery;
+    
         result += " ) ";
     } // end if
 
+    
     return result;
 }
 
