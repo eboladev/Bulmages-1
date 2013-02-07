@@ -176,7 +176,6 @@ void BfForm::calculaypintatotales()
             QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
             QString tot = mainCompany()->PGEval ( evpariva );
             pariva = BlFixed ( tot );
-//            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
             QString evpariva = it.value().toQString() + " * " + piva.toQString() + " / 100";
 	    QString tot = mainCompany()->PGEval ( evpariva );
@@ -196,9 +195,13 @@ void BfForm::calculaypintatotales()
         BlFixed preqeq ( it.key().toAscii().constData() );
         
         if ( porcentt > BlFixed ( "0.00" ) ) {
-            parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
+            QString evparre = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + preqeq.toQString() + " / 100";
+            QString tot = mainCompany()->PGEval ( evparre );
+            parreqeq = BlFixed ( tot );
         } else {
-            parreqeq = it.value() * preqeq / 100;
+            QString evparre = it.value().toQString() + " * " + preqeq.toQString() + " / 100";
+	    QString tot = mainCompany()->PGEval ( evparre );
+            parreqeq = BlFixed ( tot );
         } // end if
         
         totreqeq = totreqeq + parreqeq;
