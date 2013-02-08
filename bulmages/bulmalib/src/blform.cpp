@@ -63,11 +63,8 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
+    m_firstLoad = TRUE;
     dialogChanges_readValues();
-
-
-    
-    
 }
 
 
@@ -142,6 +139,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
+    m_firstLoad = TRUE;
     dialogChanges_readValues();    
     
 }
@@ -168,6 +166,12 @@ void BlForm::loadSpecs()
 {
     BL_FUNC_DEBUG
     
+    if (m_firstLoad) {
+	m_firstLoad = FALSE;
+    } else {
+      return;
+    }// end if
+    
         /// Disparamos los plugins
     int res1 = g_plugins->run ( "BlForm_loadSpecs", this );
     if ( res1 != 0 ) {
@@ -189,6 +193,223 @@ void BlForm::loadSpecs()
     file.close();
 
     QDomElement docElem = doc.documentElement();
+    
+    
+    QDomNodeList tabnodos = docElem.elementsByTagName ( "TAB" );
+    for ( int i = 0; i < tabnodos.count(); i++ ) {
+        QDomNode ventana = tabnodos.item ( i );
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+	   QString name = e1.firstChildElement ( "NAME" ).toElement().text();
+           QString interfacefile = e1.firstChildElement ( "UI_INTERFACE" ).toElement().text();
+            QTabWidget *tab =  findChild<QTabWidget *>();
+	    if (tab) {
+	      BlUiLoader loader(mainCompany());
+	      QFile file(interfacefile);
+	      file.open(QFile::ReadOnly);
+	      QWidget *myWidget = loader.load(&file, this);
+	      tab->insertTab(-1,myWidget,name);
+	    } else {
+	      blMsgInfo("Se ha encontrado una especificacion TAB para una ficha que no posee QTabWidget");
+	    } // end if
+		QDomNodeList nodos = e1.elementsByTagName ( "CAMPO" );
+		for ( int j = 0; j < nodos.count(); j++ ) {
+		    QDomNode ventana = nodos.item ( j );
+		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+		    if ( !e1.isNull() ) { /// the node was really an element.
+			BlDbField::DbType type = BlDbField::DbVarChar;
+			QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+			if ( exists ( nomheader ) ) return ;
+			QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+			QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
+			if ( typeheader == "DBVARCHAR" ) {
+			    type = BlDbField::DbVarChar;
+			} else if ( typeheader == "DBINT" ) {
+			    type = BlDbField::DbInt;
+			} else if ( typeheader == "DBNUMERIC" ) {
+			    type = BlDbField::DbNumeric;
+			} else if ( typeheader == "DBBOOLEAN" ) {
+			    type = BlDbField::DbBoolean;
+			} else if ( typeheader == "DBDATE" ) {
+			    type = BlDbField::DbDate;
+			} // end if
+
+			int restricciones = ( int ) BlDbField::DbNothing;
+			QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
+			while ( !restrict.isNull() ) {
+			    QString trestrict = restrict.text();
+			    if ( trestrict == "DBNOTHING" ) {
+				restricciones |= BlDbField::DbNothing;
+			    } else if ( trestrict == "DBNOTNULL" ) {
+				restricciones |= BlDbField::DbNotNull;
+			    } else if ( trestrict == "DBPRIMARYKEY" ) {
+				restricciones |= BlDbField::DbPrimaryKey;
+			    } else if ( trestrict == "DBNOSAVE" ) {
+				restricciones |= BlDbField::DbNoSave;
+			    } else if ( trestrict == "DBAUTO" ) {
+				restricciones |= BlDbField::DbAuto;
+			    } else if ( trestrict == "DBAUTO" ) {
+				restricciones |= BlDbField::DbAuto;
+			    } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
+				restricciones |= BlDbField::DbDupPrimaryKey;
+			    } else if ( trestrict == "DBREQUIRED" ) {
+				restricciones |= BlDbField::DbRequired;
+			    } else if ( trestrict == "DBNOLOAD" ) {
+				restricciones |= BlDbField::DbNoLoad;
+			    } // end if
+			    restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
+			} // end while
+
+			addDbField ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, nompheader );
+			
+			
+			QString tipocampo = e1.firstChildElement ( "TIPOCAMPO" ).toElement().text();
+			if (tipocampo == "BLCOMBOBOX") {
+			    QString nombre= "mui_"+nomheader;
+			    BlComboBox * combo = findChild<BlComboBox *>(nombre);
+			    QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+			    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+			    QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+			    
+			    
+			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+			    combo->setQuery ( query );
+			    combo->setTableName ( tablename );
+			    combo->setFieldId ( fieldid );
+			    QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+			    for ( int j = 0; j < nodos.count(); j++ ) {
+				QDomNode ventana = nodos.item ( j );
+				QString va = ventana.toElement().text(); /// try to convert the node to an element.
+				combo->m_valores[va] = "";
+			    } // end for
+			    combo->setAllowNull ( TRUE );
+			    combo->setId ( "" );
+			} // end if
+
+			if (tipocampo == "BLSEARCHWIDGET") {
+			    QString nombre= "mui_"+nomheader;
+			    BlSearchWidget * search = findChild<BlSearchWidget *>(nombre);
+			    QString label = e1.firstChildElement ( "LABEL" ).toElement().text();
+			    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+			    QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+			    
+			    
+			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
+			    search->setLabel ( label );
+			    search->setTableName ( tablename );
+			    search->setFieldId ( fieldid );
+			    QDomNodeList nodos = e1.elementsByTagName ( "VALOR" );
+			    for ( int j = 0; j < nodos.count(); j++ ) {
+				QDomNode ventana = nodos.item ( j );
+				QString va = ventana.toElement().text(); /// try to convert the node to an element.
+				search->m_valores[va] = "";
+			    } // end for
+			    search->setId ( "" );
+			} // end if
+
+		    } // end if
+		} // end for
+		
+		
+		/// Cargamos los subformularios
+		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
+		for ( int j = 0; j < nodoss.count(); j++ ) {
+		    QDomNode ventana = nodoss.item ( j );
+		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+		    if ( !e1.isNull() ) { /// the node was really an element.
+			BlDbField::DbType type = BlDbField::DbVarChar;
+			QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+			if ( exists ( nomheader ) ) return;
+			QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+			BlSubForm * subform = findChild<BlSubForm *>("mui_" + nomheader);
+			QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
+			QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
+			QString fileconfig = e1.firstChildElement ( "FILECONFIG" ).toElement().text();
+			
+			QString allowinsert = e1.firstChildElement ( "ALLOWINSERT" ).toElement().text();
+			QString allowdelete = e1.firstChildElement ( "ALLOWDELETE" ).toElement().text();
+			QString setsorting = e1.firstChildElement ( "SETSORTING" ).toElement().text();
+			///
+			
+			subform->setDbTableName ( tablename );
+			subform->setDbFieldId ( fieldid );
+			subform->setFileConfig ( fileconfig );
+			
+			/// Hacemos el tratamiento de los headers
+			    QDomNodeList nodos = e1.elementsByTagName ( "HEADER" );
+			    for ( int j = 0; j < nodos.count(); j++ ) {
+				QDomNode ventana = nodos.item ( j );
+				QDomElement header = ventana.toElement();
+				
+				BlDbField::DbType type = BlDbField::DbVarChar;
+				QString nomheader = header.firstChildElement ( "NOMCAMPO" ).toElement().text();
+				QString nompheader = header.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+				QString typeheader = header.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
+				if ( typeheader == "DBVARCHAR" ) {
+				    type = BlDbField::DbVarChar;
+				} else if ( typeheader == "DBINT" ) {
+				    type = BlDbField::DbInt;
+				} else if ( typeheader == "DBNUMERIC" ) {
+				    type = BlDbField::DbNumeric;
+				} else if ( typeheader == "DBBOOLEAN" ) {
+				    type = BlDbField::DbBoolean;
+				} else if ( typeheader == "DBDATE" ) {
+				    type = BlDbField::DbDate;
+				} // end if
+
+				int restricciones = ( int ) BlDbField::DbNothing;
+				QDomElement restrict = header.firstChildElement ( "RESTRICTIONSCAMPO" );
+				while ( !restrict.isNull() ) {
+				    QString trestrict = restrict.text();
+				    if ( trestrict == "DBNOTHING" ) {
+					restricciones |= BlDbField::DbNothing;
+				    } else if ( trestrict == "DBNOTNULL" ) {
+					restricciones |= BlDbField::DbNotNull;
+				    } else if ( trestrict == "DBPRIMARYKEY" ) {
+					restricciones |= BlDbField::DbPrimaryKey;
+				    } else if ( trestrict == "DBNOSAVE" ) {
+					restricciones |= BlDbField::DbNoSave;
+				    } else if ( trestrict == "DBAUTO" ) {
+					restricciones |= BlDbField::DbAuto;
+				    } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
+					restricciones |= BlDbField::DbDupPrimaryKey;
+				    } else if ( trestrict == "DBREQUIRED" ) {
+					restricciones |= BlDbField::DbRequired;
+				    } else if ( trestrict == "DBNOLOAD" ) {
+					restricciones |= BlDbField::DbNoLoad;
+				    } // end if
+				    restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
+				} // end while
+				int opciones = ( int ) BlSubFormHeader::DbNone;
+				QDomElement opci = header.firstChildElement ( "OPTIONSHEADER" );
+				while ( !opci.isNull() ) {
+				    QString topci = opci.text();
+				    if ( topci == "DBNONE" ) {
+					opciones |= BlSubFormHeader::DbNone;
+				    } else if ( topci == "DBREADONLY" ) {
+					opciones |= BlSubFormHeader::DbReadOnly;
+				    } else if ( topci == "DBHIDEVIEW" ) {
+					opciones |= BlSubFormHeader::DbHideView;
+				    } else if ( topci == "DBNOWRITE" ) {
+					opciones |= BlSubFormHeader::DbNoWrite;
+				    } else if ( topci == "DBDISABLEVIEW" ) {
+					opciones |= BlSubFormHeader::DbDisableView;
+				    } // end if
+				    opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
+				} // end while
+				subform->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
+			    } // end for			
+			subform->setInsert ( allowinsert == "TRUE" );
+			subform->setDelete ( allowdelete == "TRUE" );
+			subform->setSortingEnabled ( setsorting == "TRUE" );
+			subform->inicializar();
+			
+		    } // end if
+		} // end for
+	} // end if
+    } // end for
+    
+    
     QDomElement principal = docElem.firstChildElement ( "FICHA" );
     /// Cogemos la coordenada X
     QString tablename = principal.firstChildElement ( "TABLENAME" ).toElement().text();
@@ -538,14 +759,12 @@ void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString tit
     BL_FUNC_DEBUG
     if ( mainCompany() != NULL ) {
         mainCompany() ->insertWindow ( nom, obj, compdup, titulo );
-    } // end if
-
-    /// De Forma rapida hacemos un tratamiento de los permisos
-    setDbTableName ( tableName() );
-    /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
-    /// De configuracion por lo que si no es este no es ninguno.
-    loadSpecs();
-    
+	/// De Forma rapida hacemos un tratamiento de los permisos
+	setDbTableName ( tableName() );
+	/// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
+	/// De configuracion por lo que si no es este no es ninguno.
+	loadSpecs();
+    } // end if 
 }
 
 
@@ -899,6 +1118,56 @@ int BlForm::load ( QString id, bool paint )
         /// Activamos documentos adicionales
         activateDocuments();
 
+	
+	/// Cargamos los subformularios de specificaciones
+    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
+    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc");
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        return 0;
+    } // end if
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+	blMsgInfo("Error al parsear el archivo de especificaciones");
+        return 0;
+    } // end if
+    file.close();
+    
+    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
+    QDomElement docElem = doc.documentElement();
+    
+    QDomNodeList nodos = docElem.elementsByTagName ( "TAB" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode autoform = nodos.item ( i );
+        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+
+		/// Cargamos los subformularios
+		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
+		for ( int j = 0; j < nodoss.count(); j++ ) {
+		    QDomNode ventana = nodoss.item ( j );
+		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+		    if ( !e1.isNull() ) { /// the node was really an element.
+			BlDbField::DbType type = BlDbField::DbVarChar;
+			QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+			BlSubForm * subform = findChild<BlSubForm *>("mui_" + nomheader);
+			if (subform) {
+			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
+			   QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+			   /// Sustituimos las variables encontradas.
+			   substrVars(query,0);
+			   subform->load(query);
+			} // end if
+		    } // end if
+		} // end for
+	} // end if
+    } // end for
+
+	
+	
+	
+	
+	
         if ( paint == TRUE ) {
             pintar();
         } // end if
@@ -1045,6 +1314,64 @@ int BlForm::beforeSave()
 int BlForm::afterSave()
 {
     BL_FUNC_DEBUG
+    
+    
+    /// Guardamos datos de los subformularios de especificaciones
+    
+    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
+    QFile file (  CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        return 0;
+    } // end if
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+	blMsgInfo("Error al parsear el archivo de autoformularios");
+        return 0;
+    } // end if
+    file.close();
+    
+    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
+    QDomElement docElem = doc.documentElement();
+    
+    QDomNodeList nodos = docElem.elementsByTagName ( "AUTOFORM" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode autoform = nodos.item ( i );
+        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+	
+		/// Cargamos los subformularios
+		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
+		for ( int j = 0; j < nodoss.count(); j++ ) {
+		    QDomNode ventana = nodoss.item ( j );
+		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+		    if ( !e1.isNull() ) { /// the node was really an element.
+			BlDbField::DbType type = BlDbField::DbVarChar;
+			QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+			BlSubForm * subform = findChild<BlSubForm *>("mui_" + nomheader);
+			if (subform) {
+			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
+			   QString vinculos = e1.firstChildElement ( "VINCULOS" ).toElement().text();
+			   /// Sustituimos las variables que informa el campo
+			    QStringList listavinculos = vinculos.split(",");
+			    for (int j1 = 0; j1 < listavinculos.size(); ++j1) {
+				  
+				  int posicion = listavinculos.at(j1).indexOf("=");
+				  QString campo = listavinculos.at(j1).left(posicion);
+				  QString valor = listavinculos.at(j1).right(listavinculos.at(j1).size() - posicion -1);
+			    
+				  subform->setColumnValue ( campo, dbValue ( valor ) );
+			    } // end for
+
+			    subform->save();
+			} // end if
+		    } // end if
+		} // end for
+
+	} // end if
+    } // end for
+    
+    
     
     return 0;
 }

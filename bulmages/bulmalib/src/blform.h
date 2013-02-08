@@ -46,6 +46,8 @@ private:
     edmode m_modo;
     QString m_title;
     QScriptEngine m_myEngine;
+    bool m_firstLoad;
+
     
 protected:
     void setSelectMode();
