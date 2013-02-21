@@ -77,9 +77,11 @@ int BlForm_load ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
 
-    /// Si el usuario s&oacute;lo tiene permisos de lectura sobre la ficha no es necesario bloquearla
-    if ( !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "UPDATE" )
-      && !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "DELETE" ) ) {
+    /// No seguir con el bloqueo si la ficha es visible (que significa que estamos haciendo la carga post-guardado de BlForm::save())
+    /// o si el usuario s&oacute;lo tiene permisos de lectura
+    if ( ficha->isVisible()
+      || ( !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "UPDATE" )
+        && !ficha->mainCompany() ->hasTablePrivilege ( ficha->tableName(), "DELETE" ) ) ) {
         return 0;
     }
 
@@ -92,23 +94,45 @@ int BlForm_load ( BlForm *ficha )
                                           ficha->dbValue ( ficha->fieldId() ),
                                           ficha->mainCompany()->currentUser() );
 
+    int res = 0;
+
     if ( !cur1->eof() ) {
-       blMsgInfo ( _ ( "Esta ficha está siendo utilizada por el usuario \"%1\". Usted no podrá hacer cambios en este momento." )
-               .arg( cur1->value("usuariobloqueo") ) );
 
-        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos,
-        /// y si hay uno de cancelar mostramos "Cerrar": as&iacute; tenemos una ficha de s&oacute;lo lectura
-        QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
-        pbut = ficha->findChild<QAbstractButton *> ( "mui_guardar" );
-        if ( pbut ) pbut->setEnabled ( FALSE );
-        pbut = ficha->findChild<QAbstractButton *> ( "mui_aceptar" );
-        if ( pbut ) pbut->setEnabled ( FALSE );
-        pbut = ficha->findChild<QAbstractButton *> ( "mui_cancelar" );
-        if ( pbut ) pbut->setText("Cerrar");
-        pbut = ficha->findChild<QAbstractButton *> ( "mui_borrar" );
-        if ( pbut ) pbut->setEnabled ( FALSE );
+       /// Ofrecer al usuario la oportunidad de desbloquear la ficha
+       QString msg = _ ( "La ficha parece estar en uso por otra persona.\nSe recomienda no hacer cambios en este momento.\nFicha bloqueada para \"%1\" el %2 a las %3." )
+                   .arg( cur1->value("usuariobloqueo") ).arg( cur1->value("fechabloqueo") ).arg( cur1->value("horabloqueo").left(5) );
+       res = QMessageBox::question ( NULL,
+                         _ ( "Ficha en uso" ),
+                         msg,
+                         _ ( "&Ver en sólo lectura" ),
+                         _ ( "&Desbloquear" ),
+                         0, 1 );
 
-    } else {
+       /// El usuario decide ver la ficha en s&oacute;lo lectura
+       if ( res == 0 ) {
+
+           /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos,
+           /// y si hay uno de cancelar mostramos "Cerrar": as&iacute; tenemos una ficha de s&oacute;lo lectura
+           QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
+           pbut = ficha->findChild<QAbstractButton *> ( "mui_guardar" );
+           if ( pbut ) pbut->setEnabled ( FALSE );
+           pbut = ficha->findChild<QAbstractButton *> ( "mui_aceptar" );
+           if ( pbut ) pbut->setEnabled ( FALSE );
+           pbut = ficha->findChild<QAbstractButton *> ( "mui_cancelar" );
+           if ( pbut ) pbut->setText("Cerrar");
+           pbut = ficha->findChild<QAbstractButton *> ( "mui_borrar" );
+           if ( pbut ) pbut->setEnabled ( FALSE );
+       } // end if
+
+       /// El usuario decide desbloquear de todos modos
+       else if ( res == 1 ) {
+
+           BlForm_DesBlForm ( ficha );
+       }
+    }
+
+    /// Si no hab&iacute;a un bloqueo activado o el usuario actual ha desbloqueado el bloqueo de otra persona, bloquear en su nombre
+    if ( cur1->eof() || res == 1 ) {
 
         query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ($1,$2,$3)";
         ficha->mainCompany()->run ( query, 
@@ -132,6 +156,7 @@ int BlForm_load ( BlForm *ficha )
 int BlForm_DesBlForm ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
+blMsgInfo("BlForm_DesBlForm");
 
     if (!ficha->fieldId().isEmpty()) {
     if ( ficha->dbValue(ficha->fieldId()) != "") {
