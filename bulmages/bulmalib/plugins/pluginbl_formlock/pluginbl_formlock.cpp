@@ -156,7 +156,6 @@ int BlForm_load ( BlForm *ficha )
 int BlForm_DesBlForm ( BlForm *ficha )
 {
     BL_FUNC_DEBUG
-blMsgInfo("BlForm_DesBlForm");
 
     if (!ficha->fieldId().isEmpty()) {
     if ( ficha->dbValue(ficha->fieldId()) != "") {
