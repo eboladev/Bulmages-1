@@ -45,7 +45,7 @@
 \param bcont
 \return
 **/
-int entryPoint ( QMainWindow *bcont )
+int entryPoint ( QMainWindow *bges )
 {
     BL_FUNC_DEBUG
 
@@ -198,8 +198,12 @@ int BlForm_DesBlForm ( BlForm *ficha )
 int BlForm_BlForm ( BlForm *l )
 {
     BL_FUNC_DEBUG
-    
+
     new BloqMenu ( l );
+
+    /// Eliminar los bloqueos de usuarios no conectados (son restos de un cierre precipitado por alg&uacute;n fallo)
+    QString query = QString ( "DELETE FROM bloqueo WHERE usuariobloqueo NOT IN (SELECT usename FROM pg_stat_activity WHERE datname = '%1');" ).arg ( l->mainCompany()->dbName() );
+    l->mainCompany()->runQuery(query);
     
     return 0;
 }
