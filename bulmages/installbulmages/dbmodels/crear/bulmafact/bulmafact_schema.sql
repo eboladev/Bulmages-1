@@ -1491,7 +1491,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
@@ -2897,7 +2897,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
@@ -2996,7 +2996,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
@@ -3095,7 +3095,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechaalbaran FROM albaran WHERE idalbaran = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP

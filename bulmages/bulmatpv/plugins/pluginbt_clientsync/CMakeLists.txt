@@ -18,6 +18,7 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
 set(QT_USE_QTSCRIPT true)
+set(QT_USE_QTNETWORK true)
 
 INCLUDE( ${QT_USE_FILE} )
 
