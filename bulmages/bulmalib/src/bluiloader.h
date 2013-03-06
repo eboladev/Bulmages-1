@@ -18,7 +18,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+/*
+Esta clase es un cargador de interficies graficas. Es una derivacion del cargador por defecto de Qt con la salvedad de
+iniciar todos los componentes con la base de datos a utilizar.
+Como todos los elementos derivan de BlWidget solo hay que utilizar el metodo setMainCompany en todos ellos y asi quedan preparados
+para trabajar con la base de datos.
+*/
 #ifndef BLUILOADER_H
 #define BLUILOADER_H
 

@@ -19,7 +19,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+/*
+Estas dos clases proporcionan la funcionalidad de la lista de ventanas abiertas.
+Es un dockwidget que integra un QListWidget donde cada ventana abierta inserta un elemento.
+*/
 #include <typeinfo>
 
 #include <QObject>

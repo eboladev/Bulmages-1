@@ -9,10 +9,9 @@ Nombre: Adjuntar documentos
 Biblioteca: libpluginbl_attachdocument.so
 
 Descripción: <H1>Adjuntar documentos</H1>
-<P>Permite asociar archivos a fichas para abrirlas posteriormente. Guarda un vínculo a la aplicación.</P>
-<P>Una vez instalado el plugin en todas las fichas del programa aparecerá una opción en el menú contextual
-de la ficha que nos permitirá agregar referéncias a la ficha, ver los archivos existentes y borrar las
-referéncias</P>
+<P>Permite adjuntar archivos con fichas para abrirlos posteriormente y tenerlos siempre visibles junto a las fichas. Solo almacena un vinculo al documento con lo que el almacenado y protección del mismo debe realizarse de forma independiente.</P>
+<P>Una vez instalado el plugin en todas las fichas del programa aparecerá una opción en el menú y menú contextual
+de la ficha que nos permitirá agregar referéncias, ver los archivos existentes y borrarlas. Al borrar una referencia no se altera el archivo referenciado.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>

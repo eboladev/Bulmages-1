@@ -83,7 +83,7 @@ int BlAction_actionTriggered(BlAction *accion) {
 } // end if
 
 
-///
+/// Con esta llamada cuando abrimos la ficha de un cliente incrustamos la parte de contratos en una pestanya.
 /**
 \param art
 \return
@@ -91,12 +91,11 @@ int BlAction_actionTriggered(BlAction *accion) {
 int ClienteView_ClienteView ( ClienteView *art )
 {
     BL_FUNC_DEBUG
-    /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un insertWindow y no es deseable.
+    /// Para que no se muestre el listado en el Indexador debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un insertWindow que presenta el elemento en el indexador.
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, _("Contratos") );
     l->setEditMode();
-    
     return 0;
 }
 

@@ -20,7 +20,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+/*
+Esta clase sirve de base para todos los componentes visuales de bulmages que acaban operando con la
+base de datos y les proporciona la base de datos con la que trabajar.
+Deriva de BlMainCompanyPointer para obtener los metodos de trabajo con la base de datos y de
+QWidget para servir de base a todos los componentes visuales de Qt.
+*/
 #ifndef BLWIDGET_H
 #define BLWIDGET_H
 

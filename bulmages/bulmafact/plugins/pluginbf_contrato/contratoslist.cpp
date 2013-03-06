@@ -45,7 +45,7 @@
 \return
 **/
 ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
+        : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
