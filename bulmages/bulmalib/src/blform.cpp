@@ -983,7 +983,6 @@ void BlForm::pintar()
         } // end for
     } // end for
     pintarPost();
-    
 }
 
 
@@ -1096,7 +1095,6 @@ int BlForm::load ( QString id, bool paint )
         /// Lanzamos los plugins.
         if ( g_plugins->run ( "BlForm_load", this ) ) return 0;
         cargarPost ( id );
-
 	/// Cargamos los subformularios de specificaciones
     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
     QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc");
@@ -1167,7 +1165,7 @@ int BlForm::load ( QString id, bool paint )
         if ( paint == TRUE ) {
             pintar();
         } // end if
-
+	
         dialogChanges_readValues();
         insertWindow ( m_title + dbValue(m_campoid), this, TRUE, wtitle );
     } catch ( ... ) {
@@ -1561,7 +1559,10 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
 
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
-
+    
+    buff.replace("@!--", "<!--");
+    buff.replace("--@", "-->");
+    
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx70.setMinimal ( TRUE );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {

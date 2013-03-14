@@ -37,6 +37,7 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WFlags flags )
     qt_x11_set_global_double_buffer(false);
 #endif
     setAttribute(Qt::WA_StaticContents);
+    m_descripcion = "";
 }
 
 
@@ -50,6 +51,7 @@ BlWidget::BlWidget ( BlMainCompany *company, QWidget *parent, Qt::WFlags flags )
         : QWidget ( parent, flags ), BlMainCompanyPointer ( company )
 {
     BL_FUNC_DEBUG
+    m_descripcion = "";
     
 }
 
@@ -88,3 +90,10 @@ bool BlWidget::event ( QEvent * event )
 }
 #endif
 
+QString BlWidget::descripcion() const {
+  return m_descripcion;
+}
+
+void BlWidget::setDescripcion(const QString &d) {
+  m_descripcion = d;
+}

@@ -45,7 +45,11 @@ QWidget para servir de base a todos los componentes visuales de Qt.
 class BL_EXPORT BlWidget : public QWidget, public BlMainCompanyPointer
 {
     Q_OBJECT
-
+    Q_PROPERTY (QString descripcion READ descripcion WRITE setDescripcion)
+    
+private:
+    QString m_descripcion;
+    
 protected:
     virtual void paintEvent(QPaintEvent *event);
 
@@ -57,6 +61,8 @@ public:
     BlWidget ( QWidget *parent = 0, Qt::WFlags flags = 0 );
     BlWidget ( BlMainCompany *company, QWidget *parent = 0, Qt::WFlags flags = 0 );
     virtual ~BlWidget();
+    QString descripcion() const;
+    void setDescripcion(const QString &);
 
 signals:
     void showed(QObject * object = 0);

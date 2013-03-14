@@ -282,9 +282,22 @@ int FacturaView::cargarPost ( QString idbudget )
     g_plugins->run ( "FacturaView_cargarPost_Post", this );
 
     calculaypintatotales();
-
     
     return 0;
+}
+
+/** Pintar una factura.
+*/
+/**
+\param idbudget
+\return
+**/
+void FacturaView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + mui_ffactura->text());
 }
 
 

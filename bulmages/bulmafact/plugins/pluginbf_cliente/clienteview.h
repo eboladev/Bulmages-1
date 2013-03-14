@@ -45,6 +45,7 @@ public:
     void deactivateDocuments();
     virtual int beforeSave();
     virtual int afterSave();
+    virtual void pintarPost();
 
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.

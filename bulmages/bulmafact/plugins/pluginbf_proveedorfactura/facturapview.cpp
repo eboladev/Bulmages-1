@@ -288,7 +288,15 @@ int FacturaProveedorView::afterSave()
 }
 
 
+/** Pintar un pedido.
+*/
+void FacturaProveedorView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
 
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idproveedor->fieldValue("nomproveedor") + "\n" + mui_ffacturap->text());
+}
 
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.

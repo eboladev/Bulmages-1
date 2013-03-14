@@ -51,6 +51,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual void pintarPost();
     void inicializar();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed, BlFixed );
 

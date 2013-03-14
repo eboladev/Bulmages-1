@@ -254,6 +254,20 @@ int PresupuestoView::cargarPost ( QString idbudget )
 }
 
 
+/** Pintar un presupuesto.
+*/
+/**
+\param idbudget
+\return
+**/
+void PresupuestoView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + mui_fpresupuesto->text());
+}
+
 ///
 /**
 \return

@@ -180,7 +180,10 @@ void ArticuloView::pintarPost()
 
     } // end if
 
-    
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( dbValue("codigocompletoarticulo") + "\n" + dbValue("nomarticulo"));
+
 }
 
 

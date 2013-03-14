@@ -68,6 +68,7 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 	    QString interfacefile = e1.firstChildElement ( "UI_INTERFACE" ).toElement().text();
 	    QString title = e1.firstChildElement ( "TITLE" ).toElement().text();
 	    QString objname = e1.firstChildElement ( "OBJECTNAME" ).toElement().text();
+	    QString objdesc = e1.firstChildElement ( "OBJECTDESCRIPTION" ).toElement().text();
 	    QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
 	    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 	    QString tableid = e1.firstChildElement ( "TABLEID" ).toElement().text();
@@ -75,7 +76,7 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 	    if ( tablename == mui_list->tableName()) {
 
 		/// Creamos el AutoForm, lo configuramos y lo presentamos.
-		formulario = new BlAutoForm(mainCompany(), 0, 0, BL_EDIT_MODE, interfacefile);
+		formulario = new BlAutoForm(mainCompany(), 0, 0, BL_EDIT_MODE, interfacefile, objdesc);
 		formulario->setWindowTitle(title);
 		formulario->setTitleName ( title );
 		
@@ -168,8 +169,6 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 			    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 			    QString fieldid = e1.firstChildElement ( "FIELDID" ).toElement().text();
 			    
-			    
-			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
 			    search->setLabel ( label );
 			    search->setTableName ( tablename );
 			    search->setFieldId ( fieldid );
@@ -300,17 +299,18 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 \param f
 \param modo
 **/
-BlAutoForm::BlAutoForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo, const QString &interfacefile ) : BlForm ( emp, parent, f, modo )
+BlAutoForm::BlAutoForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo, const QString &interfacefile, const QString &objdesc ) : BlForm ( emp, parent, f, modo )
 {
     BL_FUNC_DEBUG
     
     setupUi(this);
     
+    
+    
      BlUiLoader loader(emp);
      QFile file(interfacefile);
      file.open(QFile::ReadOnly);
      QWidget *myWidget = loader.load(&file, 0);
-     
      
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
@@ -319,15 +319,14 @@ BlAutoForm::BlAutoForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
     layout->addWidget ( myWidget );
     layout->setMargin ( 0 );
     layout->setSpacing ( 0 );
-    
     layout->addWidget(myWidget);
 
     file.close();
    
     setAttribute ( Qt::WA_DeleteOnClose );
     blCenterOnScreen ( this );
-
     
+    m_objdesc = objdesc;
 }    
 
 void BlAutoForm::launch() {
@@ -396,6 +395,23 @@ int BlAutoForm::load ( QString id, bool paint) {
 	} // end if
     } // end for
   return 0;
+}
+
+
+/** PostPintado el formulario.
+*/
+/**
+\param idbudget
+\return
+**/
+void BlAutoForm::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    QString buff = m_objdesc;
+    parseTags(buff);
+    setDescripcion( buff);
+    
 }
 
 

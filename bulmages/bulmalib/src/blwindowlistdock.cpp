@@ -35,6 +35,7 @@ Es un dockwidget que integra un QListWidget donde cada ventana abierta inserta u
 
 #include "blwindowlistdock.h"
 #include "local_blI18n.h"
+#include "blwidget.h"
 
 ///
 /**
@@ -43,7 +44,8 @@ Es un dockwidget que integra un QListWidget donde cada ventana abierta inserta u
 BlListWidget::BlListWidget ( QWidget * parent ) : QListWidget ( parent )
 {
     BL_FUNC_DEBUG
-    
+    setItemDelegate(new ListDelegate(this));
+    setContextMenuPolicy(Qt::CustomContextMenu);   
 }
 
 
@@ -62,13 +64,20 @@ BlListWidget::~BlListWidget()
 \param l
 \param p
 **/
-BlListWidgetItem::BlListWidgetItem ( BlListWidget *l, QPixmap &p ) : QListWidgetItem ( l )
+BlListWidgetItem::BlListWidgetItem ( BlListWidget *l, QPixmap &p, const QString &title, const QString &desc ) : QListWidgetItem ( l )
 {
     BL_FUNC_DEBUG
-    setIcon ( QIcon ( p ) );
-    m_list = l;
     
+    setIcon ( QIcon ( p ) );
+    setData(Qt::DisplayRole, title);
+    setData(Qt::UserRole + 1, desc);
+    setData(Qt::DecorationRole, p);
+
 }
+
+
+
+
 
 
 ///
@@ -89,7 +98,7 @@ void BlListWidgetItem::setObject ( QObject *m )
 {
     BL_FUNC_DEBUG
     m_obj = m;
-    
+    m_delete = ((QWidget *)m)->testAttribute(Qt::WA_DeleteOnClose);
 }
 
 
@@ -113,7 +122,19 @@ void BlListWidgetItem::setTitle ( QString titulo )
     BL_FUNC_DEBUG
     m_titulo = titulo;
     setText ( titulo );
+    setToolTip(titulo);
     
+}
+
+
+///
+/**
+\param m
+**/
+void BlListWidgetItem::setDesc (const QString &desc )
+{
+    BL_FUNC_DEBUG
+    setData(Qt::UserRole + 1, desc); 
 }
 
 ///
@@ -171,7 +192,6 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
     setObjectName ( "Indexador" );
     connect ( m_listBox, SIGNAL ( itemDoubleClicked ( QListWidgetItem * ) ), this, SLOT ( dclicked() ) );
     connect ( m_listBox, SIGNAL ( itemClicked ( QListWidgetItem * ) ), this, SLOT ( clicked() ) );
-    
 }
 
 
@@ -304,6 +324,7 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlWindowListDock::insertWindow", 0, name );
+    
     try {
 	/// Comprobamos que haya un titulo y de no ser el caso se pone el nombre.
 	if (title == "") 
@@ -317,9 +338,11 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
             if ( listWidgetItem->object() == object ) {
                 listWidgetItem->setName ( name );
 		listWidgetItem->setTitle ( title );
+		listWidgetItem->setDesc( ((BlWidget *)object)->descripcion() );
+
                 return 0;
             } // end if
-
+	    
             /// Comprobamos ventanas duplicadas.
             if ( listWidgetItem->name() == name && checkDuplication ) {
                 ( ( QWidget * ) listWidgetItem->object() ) ->hide();
@@ -330,11 +353,14 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
         } // end while
 
         if ( i >= m_listBox->count() ) {
+	    BlListWidgetItem *listWidgetItem=NULL;
             QPixmap icon = ( ( QWidget * ) object ) ->windowIcon().pixmap ( 32, 32 );
-            BlListWidgetItem *listWidgetItem = new BlListWidgetItem ( m_listBox, icon );
+	    listWidgetItem = new BlListWidgetItem (  NULL, icon, title, ((BlWidget *)object)->descripcion()  );
+	    m_listBox->insertItem(m_listBox->currentRow()+1, listWidgetItem);
             listWidgetItem->setObject ( object );
             listWidgetItem->setName ( name );
-	    listWidgetItem->setTitle ( title );
+	    //listWidgetItem->setTitle ( title);
+	    //listWidgetItem->setDesc( ( );
         } // end if
 
     } catch ( ... ) {
@@ -451,3 +477,124 @@ void BlWindowListDock::closeEvent ( QCloseEvent * )
     
 }
 
+// ============================================
+
+
+	ListDelegate::ListDelegate(QObject *parent)
+{
+ 
+}
+ 
+void ListDelegate::paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const{
+      
+    BlListWidgetItem * item = (BlListWidgetItem *) index.internalPointer();
+    QRect r = option.rect;
+    
+    //Color: #C4C4C4
+    QPen linePen(QColor::fromRgb(211,211,211), 1, Qt::SolidLine);
+    
+    //Color: #005A83
+    QPen lineMarkedPen(QColor::fromRgb(0,90,131), 1, Qt::SolidLine);
+    
+    //Color: #333
+    QPen fontPen(QColor::fromRgb(51,51,51), 1, Qt::SolidLine);
+    
+    //Color: #fff
+    QPen fontMarkedPen(Qt::white, 1, Qt::SolidLine);
+    
+    if(option.state & QStyle::State_Selected){
+	QLinearGradient gradientSelected(r.left(),r.top(),r.left(),r.height()+r.top());
+	gradientSelected.setColorAt(0.0, QColor::fromRgb(119,213,247));
+	gradientSelected.setColorAt(0.9, QColor::fromRgb(27,134,183));
+	gradientSelected.setColorAt(1.0, QColor::fromRgb(0,120,174));
+	painter->setBrush(gradientSelected);
+	painter->drawRect(r);
+	
+	//BORDER
+	painter->setPen(lineMarkedPen);
+	painter->drawLine(r.topLeft(),r.topRight());
+	painter->drawLine(r.topRight(),r.bottomRight());
+	painter->drawLine(r.bottomLeft(),r.bottomRight());
+	painter->drawLine(r.topLeft(),r.bottomLeft());
+	
+	painter->setPen(fontMarkedPen);
+    
+    } else {
+	//BACKGROUND
+	//ALTERNATING COLORS
+	// painter->setBrush( (index.row() % 2) ? Qt::white : QColor(252,252,252) );
+	// painter->drawRect(r);
+
+
+	if (item->m_delete) {
+	    painter->setBrush(  Qt::white  );
+	    painter->drawRect(r);
+	} else {
+	    painter->setBrush(  QColor(222,222,222) );
+	    painter->drawRect(r);
+	} // end if
+
+	
+	//BORDER
+	painter->setPen(linePen);
+	painter->drawLine(r.topLeft(),r.topRight());
+	painter->drawLine(r.topRight(),r.bottomRight());
+	painter->drawLine(r.bottomLeft(),r.bottomRight());
+	painter->drawLine(r.topLeft(),r.bottomLeft());
+	
+	painter->setPen(fontPen);
+    }
+    
+    //GET TITLE, DESCRIPTION AND ICON
+    QIcon ic = QIcon(qvariant_cast<QPixmap>(index.data(Qt::DecorationRole)));
+    QString title = index.data(Qt::DisplayRole).toString();
+    QString description = index.data(Qt::UserRole + 1).toString();
+    
+    int imageSpace = 10;
+    if (!ic.isNull()) {
+    //ICON
+    //r = option.rect.adjusted(5, 10, -10, -10);
+    if (item->m_delete) {
+	r = option.rect.adjusted(5, -5, -5, -15);
+    } else {
+	r = option.rect.adjusted(5, 0, -5, -10);
+    } // end if
+
+    ic.paint(painter, r, Qt::AlignVCenter|Qt::AlignLeft);
+    imageSpace = 50;
+}
+ 
+//TITLE
+//r = option.rect.adjusted(imageSpace, 0, -10, -30);
+
+if (item->m_delete) {
+    r = option.rect.adjusted(imageSpace, 0, -5, -40);
+    painter->setFont( QFont( "Lucida Grande", 11, QFont::Bold ) );
+} else {
+    r = option.rect.adjusted(imageSpace, 10, -5, -10);
+    painter->setFont( QFont( "Lucida Grande", 12, QFont::Bold ) );
+} // end if
+
+painter->drawText(r.left(), r.top(), r.width(), r.height(), Qt::AlignBottom|Qt::AlignLeft, title, &r);
+ 
+//DESCRIPTION
+//r = option.rect.adjusted(imageSpace, 30, -10, 0);
+r = option.rect.adjusted(imageSpace, 20, -5, 0);
+painter->setFont( QFont( "Lucida Grande", 9, QFont::Normal ) );
+painter->drawText(r.left(), r.top(), r.width(), r.height(), Qt::AlignLeft, description, &r);
+}
+ 
+QSize ListDelegate::sizeHint ( const QStyleOptionViewItem & option, const QModelIndex & index ) const{
+BlListWidgetItem * item = (BlListWidgetItem *) index.internalPointer();
+if (item->m_delete) {
+    return QSize(200, 60); // very dumb value
+} else {
+    return QSize(200, 40); // very dumb value
+} // end if
+
+}
+ 
+ListDelegate::~ListDelegate()
+{
+ 
+}

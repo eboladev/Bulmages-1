@@ -173,8 +173,20 @@ int ClienteView::cargarPost ( QString idcliente )
     /// Lanzamos los plugins de carga
     g_plugins->run ( "ClienteView_cargarPost_Post", this );
 
-    
     return 0;
+}
+
+/** Pintar un cliente
+*/
+/**
+\param idbudget
+\return
+**/
+void ClienteView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( "\n" + dbValue("nomcliente"));
 }
 
 

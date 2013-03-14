@@ -1302,7 +1302,8 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     substrConf ( buff );
     buff.replace ( "[ficha]", m_tableName.toAscii() );
     buff.replace ( "[story]", story().toAscii() );
-
+    buff.replace("@!--", "<!--");
+    buff.replace("--@", "-->");
     
     static int profundidad = 0;
     profundidad ++;

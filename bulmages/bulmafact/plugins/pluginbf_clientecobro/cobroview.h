@@ -53,6 +53,7 @@ public:
     virtual int parseTags ( QString &buff );
     virtual QString templateName(void) ;
     virtual int afterSave();
+    virtual void pintarPost();
 };
 
 #endif

@@ -56,6 +56,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual void pintarPost();
 
 public slots:
     virtual void on_mui_idproveedor_valueChanged ( QString );

@@ -85,6 +85,7 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
 }
 
 
+
 ///
 /**
 **/
@@ -94,3 +95,12 @@ PagoView::~PagoView()
     
 }
 
+/** Pintar un albaran de proveedor
+*/
+void PagoView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idproveedor->fieldValue("nomproveedor") + "\n" + mui_fechapago->text());
+}

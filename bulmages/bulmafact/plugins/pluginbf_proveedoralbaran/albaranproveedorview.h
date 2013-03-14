@@ -55,6 +55,7 @@ public:
     virtual int afterSave();
     virtual int cargarPost ( QString id );
     virtual int beforeDelete();
+    virtual void pintarPost();
 
 public slots:
     virtual void on_m_descuentos_editFinish ( int, int );

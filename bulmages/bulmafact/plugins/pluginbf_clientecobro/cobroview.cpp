@@ -133,8 +133,18 @@ void CobroView::imprimir()
         return;
     } // end if
     BfForm::imprimir();
+}
 
-    
+/** Pintar un cobro.
+*/
+/**
+**/
+void CobroView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + mui_fechacobro->text());
 }
 
 

@@ -198,6 +198,22 @@ int PedidoClienteView::cargarPost ( QString idbudget )
 }
 
 
+
+/** Pintar un pedido.
+*/
+/**
+\param idbudget
+\return
+**/
+void PedidoClienteView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + mui_fechapedidocliente->text());
+}
+
+
 /// Guardamos el pedido cliente.
 /**
 \return

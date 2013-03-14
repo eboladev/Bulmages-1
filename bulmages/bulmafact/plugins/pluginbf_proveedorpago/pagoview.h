@@ -45,6 +45,7 @@ class PagoView : public BfForm, public Ui_PagoBase
 public:
     PagoView ( BfCompany *, QWidget * );
     ~PagoView();
+    virtual void pintarPost();
 };
 
 #endif

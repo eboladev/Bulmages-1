@@ -1345,6 +1345,7 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 	    QString interfacefile = e1.firstChildElement ( "UI_INTERFACE" ).toElement().text();
 	    QString title = e1.firstChildElement ( "TITLE" ).toElement().text();
 	    QString objname = e1.firstChildElement ( "OBJECTNAME" ).toElement().text();
+	    QString objdesc = e1.firstChildElement ( "OBJECTDESCRIPTION" ).toElement().text();
 	    QString fileicon = e1.firstChildElement ( "ICON" ).toElement().text();
 	    QString tablename = e1.firstChildElement ( "TABLENAME" ).toElement().text();
 	    QString tableid = e1.firstChildElement ( "TABLEID" ).toElement().text();
@@ -1352,7 +1353,7 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 	    if ( tablename == formname) {
 
 		/// Creamos el AutoForm, lo configuramos y lo presentamos.
-		formulario = new BlAutoForm(g_emp, 0, 0, BL_EDIT_MODE, interfacefile);
+		formulario = new BlAutoForm(g_emp, 0, 0, BL_EDIT_MODE, interfacefile, objdesc);
 		formulario->setWindowTitle(title);
 		formulario->setTitleName ( title );
 		

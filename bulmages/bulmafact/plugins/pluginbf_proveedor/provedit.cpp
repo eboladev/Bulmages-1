@@ -178,4 +178,15 @@ int ProveedorView::cargarPost ( QString idprov )
     return 0;
 }
 
-
+/** Pintar un proveedor
+*/
+/**
+\param idbudget
+\return
+**/
+void ProveedorView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( "\n" + dbValue("nomproveedor"));
+}
