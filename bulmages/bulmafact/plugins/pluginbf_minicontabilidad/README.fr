@@ -31,6 +31,6 @@ Orden: 210
 
 Reports: presupuestocontable.pys; presupuestocontable.rml; blform_PresupuestoContableView.qs; inf_ventas.ui; inf_informeeconomico.rml; inf_balance.rml;inf_diario.rml
 
-Categorias: Associations des parents d'élèves; Experimental; Facturation generique;
+Categorias: Associations des parents d'élèves; Experimental;
 
 Comentarios:
