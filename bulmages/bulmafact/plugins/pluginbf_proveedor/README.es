@@ -43,6 +43,6 @@ Orden: 301
 Reports: blform_ProveedorView.qs
 
 
-Categorias: Asociaciones de padres de alumnos; Facturacion generica; Colmados;
+Categorias: Asociaciones de padres de alumnos;Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Comentarios:

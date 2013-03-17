@@ -40,7 +40,7 @@ Incompatibles:
 
 Reports: albaran.rml; blform_AlbaranClienteView.qs
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 
 Orden: 622
 

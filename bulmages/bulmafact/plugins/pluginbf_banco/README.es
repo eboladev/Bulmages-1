@@ -28,7 +28,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Orden: 880
 

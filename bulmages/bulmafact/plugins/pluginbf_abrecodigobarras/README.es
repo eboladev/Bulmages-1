@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas; Colmados;
+Categorias: Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Orden: 600
 

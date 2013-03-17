@@ -42,6 +42,6 @@ Orden: 300
 
 Reports: inf_clientes.rml; informecliente.rml; informeclientes.rml; blform_ClienteView.qs; inf_detalleventascliente.pys; inf_clientes.pys
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica;Colmados;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Comentarios:

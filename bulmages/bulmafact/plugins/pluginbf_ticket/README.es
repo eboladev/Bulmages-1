@@ -28,7 +28,7 @@ Incompatibles:
 
 Reports: impers_factura.txt; impers_presupuesto.txt; impers_pedidocliente.txt; impers_albaran.txt
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilidades genericas;Experimentales;IVA incluido;Colmados;Talleres;Distribución;Restauración;
 
 Orden: 900
 

@@ -40,7 +40,7 @@ Incompatibles:
 
 Reports: listado_ticket.rml
 
-Categorias: IVA incluido; Colmados;
+Categorias: IVA incluido;Colmados;Talleres;Restauración;
 
 Orden: 622
 

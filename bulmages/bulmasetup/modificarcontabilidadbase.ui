@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
+    <width>1013</width>
     <height>608</height>
    </rect>
   </property>
@@ -114,10 +114,6 @@
            </layout>
           </item>
          </layout>
-         <zorder>mui_seltodos</zorder>
-         <zorder>mui_vertodos</zorder>
-         <zorder>label_5</zorder>
-         <zorder>label_5</zorder>
         </widget>
        </item>
        <item>
@@ -146,7 +142,7 @@
            <item row="1" column="0" colspan="2">
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Nombre Base de Datos</string>
+              <string>Base de Datos (Sin espacios)</string>
              </property>
              <property name="buddy">
               <cstring>mui_nomdb</cstring>

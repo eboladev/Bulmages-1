@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales; Colmados;
+Categorias: Facturacion avanzada;Distribución;Distribución Alimentaria;Servicios Generales;Restauración;Colmados;
 
 Orden: 800
 

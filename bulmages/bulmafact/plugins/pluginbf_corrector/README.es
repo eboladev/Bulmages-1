@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilidades genericas;Biblioteca;Experimentales;IVA incluido;Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Orden: 900
 

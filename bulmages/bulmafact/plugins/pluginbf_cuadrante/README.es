@@ -26,7 +26,7 @@ Incompatibles:
 
 Reports: cuadrante.rml
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilidades avanzadas;Experimentales;Servicios Generales;
 
 Orden: 780
 

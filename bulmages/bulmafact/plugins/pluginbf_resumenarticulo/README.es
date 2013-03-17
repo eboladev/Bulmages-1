@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturacion avanzada;Distribución;Distribución Alimentaria;Servicios Generales;
 
 Orden: 900
 

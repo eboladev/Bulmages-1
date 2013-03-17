@@ -27,7 +27,7 @@ Dependencias: libpluginbf_articulo
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Restauracion;
+Categorias: Facturacion avanzada;Restauración;
 
 Orden: 750
 

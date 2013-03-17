@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;IVA incluido; Colmados;
+Categorias: Experimentales;IVA incluido; Colmados;Restauración;
 
 Orden: 610
 

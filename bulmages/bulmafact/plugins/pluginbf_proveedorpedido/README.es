@@ -38,7 +38,7 @@ Incompatibles:
 
 Reports: pedidoproveedor.rml; blform_PedidoProveedorView.qs
 
-Categorias: Facturacion generica; Colmados;
+Categorias: Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Orden: 630
 

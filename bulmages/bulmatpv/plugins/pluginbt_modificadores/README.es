@@ -24,6 +24,6 @@ Incompatibles:
 
 Orden: 900
 
-Categorias: Experimentales; Restauracion;
+Categorias: Experimentales; Restauración;
 
 Comentarios: 

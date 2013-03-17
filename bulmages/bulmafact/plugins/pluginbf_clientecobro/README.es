@@ -40,7 +40,7 @@ Incompatibles: libpluginbf_carteracobros.so
 
 Reports: recibo.rml; blform_CobroView.qs
 
-Categorias: Facturacion generica;
+Categorias: Facturacion avanzada;Distribución;Distribución Alimentaria;Servicios Generales;Restauración;
 
 Orden: 624
 

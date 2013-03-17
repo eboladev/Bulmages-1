@@ -33,6 +33,6 @@ Incompatibles:
 
 Orden: 60
 
-Categorias: Facturacion generica; Colmados;
+Categorias: Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Restauración;
 
 Comentarios:

@@ -31,7 +31,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+Categorias: Restauración;
 
 Orden: 900
 

@@ -23,7 +23,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Utilidades avanzadas;Experimentales;
 
 Orden: 70
 

@@ -107,12 +107,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.cadcategorias = self.cadcategorias.replace(' ;',';')
         self.arra = self.cadcategorias.split(';')
         self.arra.sort()
-        self.j = 0
-        self.mui_categoria.addItem(QtGui.QApplication.translate("Facturacion",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        self.j = 1
         while (self.j < len ( self.arra)):
+            print self.arra[self.j].decode('string-escape').decode("utf-8")
             if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
                 self.mui_categoria.addItem( self.arra[self.j].decode('string-escape').decode("utf-8"))
             self.j = self.j + 1
+        self.mui_categoria.addItem(QtGui.QApplication.translate("Facturacion",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
 
         #Ponemos la pestanya de seleccion de plugins como la visible.
         self.tabWidget.setCurrentIndex(0)

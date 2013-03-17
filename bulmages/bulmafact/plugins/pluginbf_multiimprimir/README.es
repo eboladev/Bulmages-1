@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas; Asociaciones de padres de alumnos;
+Categorias: Asociaciones de padres de alumnos;Utilidades genericas;Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
 
 Orden: 900
 

@@ -36,7 +36,7 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles:
 
-Categorias: Facturacion generica; Colmados;
+Categorias: Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Restauración;
 
 Reports: blform_AlbaranProveedorView.qs
 

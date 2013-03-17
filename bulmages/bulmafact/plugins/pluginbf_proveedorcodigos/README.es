@@ -32,6 +32,6 @@ Orden: 301
 Reports:
 
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada;Talleres;Distribución;Distribución Alimentaria;Restauración;
 
 Comentarios:

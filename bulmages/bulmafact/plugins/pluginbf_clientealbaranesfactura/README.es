@@ -24,7 +24,7 @@ Dependencias: libpluginbf_cliente.so; libpluginbf_clientealbaran.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 
 Orden: 622
 

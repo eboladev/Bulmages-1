@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Distribución Alimentaria;
 
 Orden: 730
 
