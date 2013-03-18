@@ -149,7 +149,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/ficha.rml" % language) )
             # Pasamos el logotipo
             if (self.mui_textfile.text() != ""):
-                functions.multios().copy(str(self.mui_textfile.text()),str(plugins.openreports + "openreports_" + self.database +"%s/logo.jpg" % language) )
+                functions.multios().copy(str(self.mui_textfile.text()),str(plugins.openreports + "openreports_" + self.database +"/%s/logo.jpg" % language) )
         # END Copiamos las plantillas en cada idioma
     
 
