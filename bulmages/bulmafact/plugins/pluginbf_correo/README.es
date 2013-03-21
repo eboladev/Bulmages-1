@@ -27,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Colmados;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
+Categorias: Utilidades genericas;Colmados; Ferreterías; Droguerías;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 900
 

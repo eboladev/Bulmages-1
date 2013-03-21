@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Distribución;Distribución Alimentaria;
+Categorias: Distribución; Supermercados;Distribución Alimentaria;
 
 Orden: 900
 

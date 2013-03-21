@@ -24,7 +24,7 @@ Incompatibles: libpluginbt_total.so
 
 Orden:
 
-Categorias: Experimentales;IVA incluido; Colmados;
+Categorias: Experimentales;IVA incluido; Restauración; Tallas y Colores; Colmados; Parques Infantiles;
 
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

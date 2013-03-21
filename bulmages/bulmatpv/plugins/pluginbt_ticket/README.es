@@ -24,4 +24,6 @@ Incompatibles: libpluginbt_ivaincluido.so;libpluginbt_ticketivaincluido.so
 
 Orden: 4
 
+Categorias: Utilidades avanzadas; Experimentales; Restauración; Tallas y Colores; Colmados; Parques Infantiles;
+
 Comentarios: Ideal para bares, cafeterías y restaurantes.

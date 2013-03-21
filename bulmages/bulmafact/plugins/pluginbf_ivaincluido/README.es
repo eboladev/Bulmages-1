@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;IVA incluido; Colmados;Restauración;
+Categorias: Experimentales;IVA incluido; Colmados; Ferreterías; Droguerías;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 610
 

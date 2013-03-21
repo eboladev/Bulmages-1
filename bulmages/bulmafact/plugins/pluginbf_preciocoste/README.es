@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;Distribución;Distribución Alimentaria;Servicios Generales;Restauración;Colmados;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Restauración; Parques Infantiles; Tallas y Colores;Colmados; Ferreterías; Droguerías;
 
 Orden: 800
 

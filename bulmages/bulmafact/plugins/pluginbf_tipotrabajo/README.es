@@ -23,7 +23,7 @@ Dependencias: libpluginbf_trabajador.so; libpluginbf_cuadrante.so; libpluginbf_a
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Restauración;
+Categorias: Facturacion avanzada;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 900
 

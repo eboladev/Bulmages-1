@@ -43,6 +43,6 @@ Orden: 301
 Reports: blform_ProveedorView.qs
 
 
-Categorias: Asociaciones de padres de alumnos;Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
+Categorias: Asociaciones de padres de alumnos;Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Comentarios:

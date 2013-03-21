@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;Colmados;Restauración;
+Categorias: Facturacion avanzada;Colmados; Ferreterías; Droguerías;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 900
 

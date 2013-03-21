@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;IVA incluido;Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
+Categorias: Utilidades genericas;IVA incluido;Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 900
 

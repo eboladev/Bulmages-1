@@ -28,7 +28,7 @@ Dependencias: libpluginbf_banco.so
 
 Incompatibles:
 
-Categorias: IVA incluido;Colmados;Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración;
+Categorias: IVA incluido;Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 823
 

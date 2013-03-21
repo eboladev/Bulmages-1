@@ -23,7 +23,7 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilidades avanzadas; Experimentales; Ferreterías; Droguerías; Supermercados;
 
 Orden: 10
 

@@ -24,7 +24,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas;Distribución;Distribución Alimentaria;Servicios Generales;
+Categorias: Utilidades avanzadas;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 450
 

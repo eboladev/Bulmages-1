@@ -22,7 +22,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauración;
+Categorias: Utilidades avanzadas; Experimentales; Restauración; Tallas y Colores;
 
 Orden: 500
 

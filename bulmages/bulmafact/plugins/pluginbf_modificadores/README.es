@@ -27,7 +27,7 @@ Dependencias: libpluginbf_articulo
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;Restauración;
+Categorias: Facturacion avanzada;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 750
 

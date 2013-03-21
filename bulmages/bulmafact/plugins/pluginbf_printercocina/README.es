@@ -31,7 +31,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Restauración;
+Categorias: Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 900
 

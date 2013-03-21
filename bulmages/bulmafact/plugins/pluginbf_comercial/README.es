@@ -29,7 +29,7 @@ Incompatibles:
 
 Reports: rutascomerciales.rml
 
-Categorias: Facturacion avanzada;Distribución;Distribución Alimentaria;Servicios Generales;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 700
 

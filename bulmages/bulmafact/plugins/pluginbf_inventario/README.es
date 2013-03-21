@@ -25,7 +25,7 @@ Dependencias: libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles: libpluginbf_inventariosimple.so
 
-Categorias: Colmados;Facturacion generica;Distribución;Distribución Alimentaria;Restauración;
+Categorias: Colmados; Ferreterías; Droguerías;Facturacion generica;Distribución; Supermercados;Distribución Alimentaria;Restauración; Parques Infantiles; Tallas y Colores;
 
 Reports: inf_stockminimos.rml
 

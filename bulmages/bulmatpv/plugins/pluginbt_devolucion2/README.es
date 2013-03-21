@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles: libpluginbt_devolucion.so
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilidades genericas;Experimentales; Colmados; Tallas y Colores;
 
 Orden: 50
 

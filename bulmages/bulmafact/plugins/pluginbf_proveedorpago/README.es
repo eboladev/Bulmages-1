@@ -30,7 +30,7 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles: libpluginbf_carterapagos.so
 
-Categorias: Colmados;Facturacion generica;Talleres;
+Categorias: Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;
 
 Reports: blform_PagoView.qs
 

@@ -38,7 +38,7 @@ Incompatibles:
 
 Reports: presupuesto.rml; blform_PresupuestoView.qs; impers_presupuesto_fproforma.rml; impers_presupuesto_excel.pys; impers_presupuesto_sin_total.rml; impers_presupuesto_solo_totales.rml; impers_presupuesto_urgente.rml
 
-Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
+Categorias: Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 620
 

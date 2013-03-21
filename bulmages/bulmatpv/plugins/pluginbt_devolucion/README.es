@@ -24,4 +24,6 @@ Incompatibles: libpluginbt_devolucion2.so
 
 Orden: 50
 
+Categorias: Utilidades avanzadas;
+
 Comentarios: Ideal todo tipo de comercio.

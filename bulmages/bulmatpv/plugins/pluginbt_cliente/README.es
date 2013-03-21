@@ -24,7 +24,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauración;
+Categorias: Utilidades avanzadas; Experimentales; Restauración; Colmados; Tallas y Colores; Parques Infantiles;
 
 Orden: 500
 

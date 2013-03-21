@@ -36,7 +36,7 @@ Orden: 450
 
 Reports: 
 
-Categorias: Facturacion avanzada;Distribución;Distribución Alimentaria;Servicios Generales;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Comentarios:
 

@@ -22,7 +22,7 @@ Dependencias: libplugintpv.so; libpluginbt_ivaincluido.so
 
 Incompatibles: libpluginbt_ticket.so
 
-Categorias: Experimentales;IVA incluido; Colmados;
+Categorias: Experimentales;IVA incluido; Colmados; Restauración; Tallas y Colores; Parques Infantiles;
 
 Orden: 4
 
