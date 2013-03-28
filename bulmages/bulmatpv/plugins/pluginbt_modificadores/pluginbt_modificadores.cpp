@@ -32,6 +32,7 @@
 #include "blapplication.h"
 #include "modificadoresqtoolbutton.h"
 #include "editardescripcionqtoolbutton.h"
+#include "blfunctions.h"
 
 #include "tabletcanvas.h"
 
@@ -103,7 +104,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     BL_FUNC_DEBUG
-  
+
     ModificadoresQToolButton *modificadores = new ModificadoresQToolButton (  (BtCompany *)tick->mainCompany(), tick );
     modificadores->setFixedSize (48, 48);
     modificadores->setObjectName ( QString::fromUtf8 ( "modificadoresqtoolbutton" ) );
