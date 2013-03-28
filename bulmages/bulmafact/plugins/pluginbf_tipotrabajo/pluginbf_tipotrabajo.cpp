@@ -24,7 +24,6 @@
 
 #include "pluginbf_tipotrabajo.h"
 #include "listtipostrabajoview.h"
-#include "busquedatipotrabajo.h"
 #include "bfbuscararticulo.h"
 
 BfBulmaFact *g_pluginbf_tipotrabajo = NULL;
@@ -90,8 +89,13 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     hboxLayout160->addWidget ( textLabel2_9_26 );
     textLabel2_9_26->setText ( _("Tipo de trabajo") );
 
-    BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo ( trab->m_frameplugin );
+    BlComboBox *tipotraba = new BlComboBox ( trab->m_frameplugin );
     tipotraba->setMainCompany ( trab->mainCompany() );
+    tipotraba->setQuery ( "SELECT * FROM tipotrabajo ORDER BY nomtipotrabajo" );
+    tipotraba->setTableName ( "tipotrabajo" );
+    tipotraba->setFieldId ( "idtipotrabajo" );
+    tipotraba->m_valores["nomtipotrabajo"] = "";
+    
     tipotraba->setId ( "" );
     tipotraba->setObjectName ( QString::fromUtf8 ( "tipotraba" ) );
     hboxLayout160->addWidget ( tipotraba );
@@ -121,13 +125,11 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 {
 
-    BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
+    BlComboBox * l = trab->findChild<BlComboBox *> ( "tipotraba" );
     QString query = "UPDATE trabajador SET ";
-    query += " id = " + l->id();
+    query += " idtipotrabajo = " + l->id();
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
-    trab->mainCompany() ->begin();
     trab->mainCompany() ->runQuery ( query );
-    trab->mainCompany() ->commit();
     return 0;
 }
 
@@ -141,7 +143,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
     BL_FUNC_DEBUG
     if (trab) {
-	BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
+	BlComboBox * l = trab->findChild<BlComboBox *> ( "tipotraba" );
 	if (l) {
 	    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
 	    if ( !cur->eof() ) {
@@ -163,6 +165,8 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     BL_FUNC_DEBUG
 
+/*    
+    
     BfSubForm *form = new BfSubForm ( alm );
     delete form->m_delegate;
     form->m_delegate = new QSubForm3BfDelegate ( form );
@@ -182,6 +186,8 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->setSortingEnabled ( FALSE );
 
     alm->mui_tab->addTab ( form, "Trabajadores Requeridos" );
+    
+*/    
     return 0;
 }
 
@@ -222,6 +228,10 @@ int BlForm_guardar_Post ( BlForm *fich )
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
+
+
+
+#ifdef _NO_COMPILE
 
 
 ///
@@ -318,4 +328,5 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     
 }
 
+#endif
 

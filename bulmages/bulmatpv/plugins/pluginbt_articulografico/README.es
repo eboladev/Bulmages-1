@@ -27,6 +27,6 @@ Incompatibles: libpluginbt_articulosubform.so
 
 Orden: 40
 
-Categorias: Experimentales;IVA incluido; Restauración;
+Categorias: Experimentales;IVA incluido;
 
 Comentarios: Ideal para bares, cafeterías y restaurantes.

@@ -247,9 +247,9 @@ int BlDbRecordSet::numcampo ( const QString &campo )
 {
     BL_FUNC_DEBUG
     int val = -1;
-    if ( m_campos.contains ( campo ) )
+    if ( m_campos.contains ( campo ) ) {
         val =  m_campos.value ( campo );
-    
+    } // end if
     return val;
 }
 

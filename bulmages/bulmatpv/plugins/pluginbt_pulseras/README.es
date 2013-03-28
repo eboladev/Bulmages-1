@@ -22,7 +22,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauración; Parques Infantiles;
+Categorias: Utilidades avanzadas; Experimentales; Parques Infantiles;
 
 Orden: 5
 

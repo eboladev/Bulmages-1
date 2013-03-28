@@ -24,7 +24,7 @@ Dependencias: libplugintpv.so; libpluginbt_ivaincluido.so
 
 Incompatibles: libpluginbt_articulosubform.so; libpluginbt_articulografico.so
 
-Categorias: Experimentales;IVA incluido; Colmados;
+Categorias: Experimentales;IVA incluido; Colmados; Restauración;
 
 Orden: 40
 
