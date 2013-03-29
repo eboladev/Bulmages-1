@@ -570,7 +570,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                     self.mui_plugins.hideRow(self.i)
                 self.i = self.i + 1
 
-        if (self.mui_categoria.currentIndex() > 0):
+        if (self.mui_categoria.currentIndex() < self.mui_categoria.count() -1 ):
             # Vamos a trabajar con el combo Box
             cat = self.mui_categoria.currentText()
             self.i = 0

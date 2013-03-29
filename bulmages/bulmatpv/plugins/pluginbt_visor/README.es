@@ -27,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Colmados; Restauración; Tallas y Colores;
+Categorias: Utilidades avanzadas; Experimentales; Colmados; Restauración; Tallas y Colores; Supermercados;
 
 Orden: 10
 

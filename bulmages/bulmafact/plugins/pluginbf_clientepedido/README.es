@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
+Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 
 Reports: blform_PedidoClienteView.qs; pedidocliente.rml; impers_pedidocliente_urgente.rml
 

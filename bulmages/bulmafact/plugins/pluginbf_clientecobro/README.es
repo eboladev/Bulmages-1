@@ -40,7 +40,7 @@ Incompatibles: libpluginbf_carteracobros.so
 
 Reports: recibo.rml; blform_CobroView.qs
 
-Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Restauración; Parques Infantiles; Tallas y Colores;
+Categorias: Facturacion avanzada;Servicios Generales;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 624
 

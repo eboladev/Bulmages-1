@@ -25,6 +25,6 @@ Incompatibles: libpluginbt_ivaincluido.so; libpluginbt_totalivaincluido.so
 
 Orden: 99
 
-Categorias: Experimentales; Ferreterías; Droguerías; Supermercados;
+Categorias: Experimentales; Ferreterías; Droguerías;
 
 Comentarios: Ideal para tiendas.
