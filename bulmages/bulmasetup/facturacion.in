@@ -19,6 +19,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         
         self.languages = ["es","ca","fr","en"]
 
+        # Asignamos un estado para que siempre este
+        self.estado = None
+
         # Ocultamos la columna de las descripciones.
         self.mui_plugins.setColumnCount(13)
         self.mui_plugins1.setColumnCount(13)
@@ -521,6 +524,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
     def on_mui_plugins_cellClicked(self, row, col):
         if (self.semaforo == 1):
+            if (self.estado == None):
+                self.estado = not(self.mui_plugins.item(row,0).checkState())
             if (self.estado != self.mui_plugins.item(row,0).checkState()):
                 # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
                 if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
@@ -595,6 +600,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
     def on_mui_plugins1_cellClicked(self, row, col):
         if (self.semaforo == 1):
+            if (self.estado == None):
+                self.estado = not(self.mui_plugins1.item(row,0).checkState())
             if (self.estado != self.mui_plugins1.item(row,0).checkState()):
                 if (self.mui_plugins1.item(row, 0).checkState() == Qt.Unchecked):
                 # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:

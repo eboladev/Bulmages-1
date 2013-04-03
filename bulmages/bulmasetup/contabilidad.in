@@ -19,6 +19,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         
         self.languages = ["es","ca","fr","en"]
 
+        # Establecemos un estado
+        self.estado = None
+
         # Ocultamos la columna de las descripciones.
         self.mui_plugins.setColumnCount(13)
         self.mui_plugins.hideColumn(1)
@@ -301,6 +304,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,8).text()+ QtGui.QApplication.translate("Contabilidad","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,5).text() + QtGui.QApplication.translate("Contabilidad", "<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,6).text() + QtGui.QApplication.translate("Contabilidad","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,11).text() )
 
         if (self.semaforo == 1):
+            if (self.estado == None):
+                self.estado = not(self.mui_plugins.item(row,0).checkState())
             if (self.estado != self.mui_plugins.item(row,0).checkState()):
                     # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
                 if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
