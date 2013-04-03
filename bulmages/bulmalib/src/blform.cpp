@@ -181,7 +181,7 @@ int BlForm::mergeAllXML() {
    } // end for
 
    if (hayconfs) {
-      QFile file1(g_confpr->value(CONF_DIR_USER) + objectName() + "_mautoform_spec.spc");
+      QFile file1(g_confpr->value(CONF_DIR_USER) + objectName() + "_" + mainCompany()->dbName() + "_mautoform_spec.spc");
       if ( file1.open ( QIODevice::WriteOnly ) ) {
 	    QTextStream stream ( &file1 );
 	    stream <<  buff;
@@ -214,7 +214,7 @@ void BlForm::loadSpecs()
         return;
     } // end if
     
-    QFile file ( g_confpr->value(CONF_DIR_USER) + objectName() + "_mautoform_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + objectName() + "_" + mainCompany()->dbName() + "_mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         return;

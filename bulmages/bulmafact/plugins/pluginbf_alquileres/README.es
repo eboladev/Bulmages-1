@@ -26,7 +26,7 @@ Dependencias: libpluginbl_autoform.so; libpluginbl_template.so; libpluginbl_temp
 
 Incompatibles:
 
-Orden: 29
+Orden: 900
 
 Reports: impers_contrato_alquiler.rml
 

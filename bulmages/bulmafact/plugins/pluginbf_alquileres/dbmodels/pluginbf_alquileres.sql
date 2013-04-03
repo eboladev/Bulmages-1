@@ -69,6 +69,43 @@ BEGIN
 	  PRIMARY KEY (idvivienda)
 	);
 
+	CREATE TABLE ingvivienda
+	(
+	  idingvivienda serial NOT NULL,
+	  fechaingvivienda date,
+	  descingvivienda character varying,
+	  cantingvivienda numeric(12,2),
+	  idvivienda integer,
+	  CONSTRAINT ingvivienda_idingvivienda_pkey PRIMARY KEY (idingvivienda ),
+	  CONSTRAINT ingvivienda_idvivienda_fkey FOREIGN KEY (idvivienda)
+	      REFERENCES vivienda (idvivienda) MATCH SIMPLE
+	      ON UPDATE NO ACTION ON DELETE NO ACTION
+	);
+
+	CREATE TABLE gasvivienda
+	(
+	  idgasvivienda serial NOT NULL,
+	  idvivienda integer,
+	  descgasvivienda character varying,
+	  fechagasvivienda date,
+	  cantgasvivienda numeric(12,2),
+	  CONSTRAINT gasvivienda_idgasvivienda_pkey PRIMARY KEY (idgasvivienda ),
+	  CONSTRAINT gasvivienda_idvivienda_fkey FOREIGN KEY (idvivienda)
+	      REFERENCES vivienda (idvivienda) MATCH SIMPLE
+	      ON UPDATE NO ACTION ON DELETE NO ACTION
+	);
+
+	ALTER TABLE contrato ADD COLUMN idvivienda INTEGER;
+	ALTER TABLE contrato ADD CONSTRAINT idviviendafk FOREIGN KEY (idvivienda) REFERENCES vivienda(idvivienda);
+	ALTER TABLE contrato ADD COLUMN actividadcontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN representantecontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN cifrepresentantecontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN dirrepresentantecontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN representanteempcontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN cifrepresentanteempcontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN dirrepresentanteempcontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN textocantidadcontrato VARCHAR;
+	ALTER TABLE contrato ADD COLUMN fianzacontrato VARCHAR;
     END IF;
 
 RETURN 0;
