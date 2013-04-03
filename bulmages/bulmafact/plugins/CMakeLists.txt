@@ -105,6 +105,7 @@ add_subdirectory(pluginbf_inventariosimple)
 
 # ========= PLUGINS DE AUTOFORMS
 add_subdirectory(pluginbf_biblioteca)
+add_subdirectory(pluginbf_alquileres)
 
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")

@@ -73,7 +73,7 @@ int mergeAllXML() {
    QString buff;
    d.setFilter( QDir::Files );
    QStringList filters;
-   filters << "autoform_" + g_emp->dbName() + "*.spc*";
+   filters << "autoform_" + g_emp->dbName() + "_*.spc*";
 
    QList<QFileInfo> list = d.entryInfoList(filters);
    //if(!list) return;

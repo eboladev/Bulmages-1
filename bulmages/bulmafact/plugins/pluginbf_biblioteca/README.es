@@ -6,7 +6,7 @@
 
 Nombre: Biblioteca (AutoForms)
 
-Biblioteca: 
+Biblioteca: libpluginbf_biblioteca
 
 Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/categoria.png" WIDTH="48"/><BR>Gestion de biblioteca</H1>
 <PARA>Este plugin realiza la gestion de una sencilla biblioteca. </PARA>
@@ -34,6 +34,6 @@ Categorias: AutoForms;Biblioteca;Experimentales;
 
 Comentarios: Este plugin sirve como ejemplo del uso de AutoForms.
 
-AutoFormFile: autoform_pluginbf_biblioteca_spec.spc.es
+AutoFormFile: autoform__pluginbf_biblioteca_spec.spc.es
 
 

@@ -66,12 +66,13 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.cadcategorias = self.cadcategorias.replace(' ;',';')
         self.arra = self.cadcategorias.split(';')
         self.arra.sort()
-        self.j = 0
-        self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        self.j = 1
         while (self.j < len ( self.arra)):
             if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
                 self.mui_categoria.addItem( self.arra[self.j])
             self.j = self.j + 1
+        self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setCurrentIndex(self.j)
 
     def actualizarDatabase(self):
         self.writecommand(QtGui.QApplication.translate("Contabilidad",'ACTUALIZANDO BASE DE DATOS', None, QtGui.QApplication.UnicodeUTF8))
@@ -386,9 +387,16 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Si el plugin tiene archivo de autoforms lo copiamos
                 if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
-                   # Aqui copiamos el archivo
-                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str(plugins.openreports + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
-            # Si hay que aplicar un plugin entonces lo escribimos
+                   # Aqui spliteamos y copiamos cada archivo
+                   self.cadautoforms = self.mui_plugins.item(self.i,12).text().replace('; ',';')
+                   self.cadautoforms = self.cadautoforms.replace(' ;',';')
+                   self.arra = self.cadautoforms.split(';')
+                   self.arra.sort()
+                   self.j = 0
+                   while (self.j < len ( self.arra)):
+                       functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.arra[self.j]), str(plugins.configfiles + self.arra[self.j].replace("__","_" + self.database + "_") ) )
+                       self.j = self.j + 1
+                # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Tratamos toda la cadena de categorias.
                     self.cadreports = self.mui_plugins.item(self.i,11).text().replace('; ',';')
@@ -497,7 +505,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                             self.terminador = ""
                             self.out << "CONF_PLUGINS_BULMACONT   "
                         # Si hay que aplicar un plugin entonces lo escribimos
-                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
+                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3 and self.mui_plugins.item(self.i,10).text().contains(".so")):
                             self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
                             if os.name == 'posix':
                                 self.out << self.terminador << self.mui_plugins.item(self.i,10).text()

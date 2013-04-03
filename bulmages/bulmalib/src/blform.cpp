@@ -129,7 +129,7 @@ void BlForm::blScript(QObject * obj) {
 BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), BlDialogChanges ( this )
 {
     BL_FUNC_DEBUG
-
+    
     /// Disparamos los plugins
     int res = g_plugins->run ( "BlForm_BlForm", this );
     if ( res != 0 ) {
@@ -141,7 +141,6 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     m_modo = modo;
     m_firstLoad = TRUE;
     dialogChanges_readValues();    
-    
 }
 
 
@@ -158,6 +157,41 @@ BlForm::~BlForm()
 }
 
 
+/// Junta todos los XML en uno solo dentro del .bulmages
+int BlForm::mergeAllXML() {
+   BL_FUNC_DEBUG
+   QDir d(CONFIG_DIR_CONFIG);
+   QString buff;
+   d.setFilter( QDir::Files );
+   QStringList filters;
+   filters << objectName() + "_" + mainCompany()->dbName() + "_*.spc*";
+   bool hayconfs = FALSE;
+   
+   QList<QFileInfo> list = d.entryInfoList(filters);
+   QList<QFileInfo>::iterator it;
+   for (it = list.begin(); it != list.end(); ++it) {
+	hayconfs = TRUE;
+        QFile fich(it->absoluteFilePath ());
+        if (!fich.open ( QIODevice::ReadOnly )) {
+              blMsgInfo("Error al abrir el archivo de autoformularios");
+             return 0;
+        } // end if
+        buff += fich.readAll();
+	fich.close();
+   } // end for
+
+   if (hayconfs) {
+      QFile file1(g_confpr->value(CONF_DIR_USER) + objectName() + "_mautoform_spec.spc");
+      if ( file1.open ( QIODevice::WriteOnly ) ) {
+	    QTextStream stream ( &file1 );
+	    stream <<  buff;
+      } // end if
+      file1.close();
+   } // end if
+   
+   return 0;
+}
+
 
 ///
 /**
@@ -167,10 +201,11 @@ void BlForm::loadSpecs()
     BL_FUNC_DEBUG
     
     if (m_firstLoad) {
+        mergeAllXML();
 	m_firstLoad = FALSE;
     } else {
-      return;
-    }// end if
+        return;
+    } // end if
     
         /// Disparamos los plugins
     int res1 = g_plugins->run ( "BlForm_loadSpecs", this );
@@ -179,15 +214,13 @@ void BlForm::loadSpecs()
         return;
     } // end if
     
-    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
+    QFile file ( g_confpr->value(CONF_DIR_USER) + objectName() + "_mautoform_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-        
         return;
     } // end if
     if ( !doc.setContent ( &file ) ) {
         file.close();
-        
         return;
     } // end if
     file.close();

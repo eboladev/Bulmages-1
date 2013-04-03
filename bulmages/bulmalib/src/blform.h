@@ -54,6 +54,7 @@ protected:
     void setEditMode();
     bool editMode();
     bool selectMode();
+    int mergeAllXML();
 
 public:
     BlForm ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );

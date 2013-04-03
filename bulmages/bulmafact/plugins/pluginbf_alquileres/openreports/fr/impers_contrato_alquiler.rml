@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="0cm" bottomMargin="0cm" title="Contrato Alquiler Local Comercial" author="Tomeu Borrás">
+	<pageTemplate id="main">
+		<frame id="mf" x1="3cm" y1="2cm" width="15cm" height="25.7cm" />
+	</pageTemplate>
+</template>
+
+<stylesheet>
+  <paraStyle name="mystyle" firstLineIndent="2cm" alignment="justify" spaceAfter="0.5cm" fontSize="12" textColor="black" leading="18" />
+</stylesheet>
+
+
+<story>	
+  <para style="mystyle">En Palma de Mallorca, a dia <!--QUERY="SELECT EXTRACT('day' FROM '[fincontrato]'::DATE) AS dinicio"-->[dinicio]<!--END QUERY--> de <!-- QUERY="SELECT a, 
+CASE WHEN a=1 THEN 'Enero'
+     WHEN a=2 THEN 'Febrero'
+     WHEN a=3 THEN 'Marzo'
+     WHEN a=4 THEN 'Abril'
+     WHEN a=5 THEN 'Mayo'
+     WHEN a=6 THEN 'Junio'
+     WHEN a=7 THEN 'Julio'
+     WHEN a=8 THEN 'Agosto'
+     WHEN a=9 THEN 'Setiembre'
+     WHEN a=10 THEN 'Octubre'
+     WHEN a=11 THEN 'Noviembre'   
+     ELSE 'Diciembre'
+       END AS b FROM (SELECT EXTRACT('mon' from '[fincontrato]'::DATE) AS a) AS t1" -->[b]<!-- END QUERY--> de <!--QUERY="SELECT EXTRACT('year' FROM '[fincontrato]'::DATE) AS dinicio"-->[dinicio]<!--END QUERY-->. </para>
+
+ <spacer length="1cm" width="2cm"/>
+  
+ 
+
+ 
+ <title><center><b>REUNIDOS</b></center></title>
+ <!-- IF = " '[representanteempcontrato]' <> '' "-->
+ <para style="mystyle">De una parte, D. [representanteempcontrato], mayor de edad, con domicilio en [dirrepresentanteempcontrato] con DNI [cifrepresentanteempcontrato], como representante legal de <!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->[valor]<!-- END QUERY--> con CIF <!--QUERY = "SELECT * FROM configuracion WHERE nombre='CIF'"-->[valor]<!-- END QUERY--> y domicilio en <!--QUERY = "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'"-->[valor]<!-- END QUERY-->, en su calidad de arrendador.</para>
+ <!-- ELSE -->
+  <para style="mystyle">De una parte, D. <!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->[valor]<!-- END QUERY--> con CIF <!--QUERY = "SELECT * FROM configuracion WHERE nombre='CIF'"-->[valor]<!-- END QUERY--> y domicilio en <!--QUERY = "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'"-->[valor]<!-- END QUERY-->, en su calidad de arrendador.</para>
+ <!-- END IF -->
+ 
+ 
+  <!-- IF = " '[representantecontrato]' <> '' "-->
+    <para style="mystyle">Y de otra D. [representantecontrato], mayor de edad, con DNI. [cifrepresentantecontrato], como representante legal de <!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->[nomcliente] con CIF. [cifcliente] y domicilio en [dircliente], en su calidad de arrendatario.<!-- END QUERY --></para>
+ <!-- ELSE -->
+ <para style="mystyle">Y de otra D. <!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->[nomcliente] con DNI. [cifcliente] y domicilio en [dircliente], en su calidad de arrendatario.<!-- END QUERY --></para>
+ <!-- END IF -->
+
+ 
+
+ <para style="mystyle">Actuando en su propio nombre y derecho<!-- / en nombre de xxxxxxxxxxxxxxxxx, --> los otorgantes se reconocen la capacidad legal necesaria para este acto, a cuyo fin, con carácter previo.</para>
+
+ <spacer length="1cm" width="2cm"/>
+ <title><center><b>EXPONEN</b></center></title>
+ <spacer length="1cm" width="2cm"/>
+
+
+ 
+  <para style="mystyle"><b>I.-</b> Que <!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->[valor]<!-- END QUERY--> es titular propietaria del inmueble LOCAL DE NEGOCIO, con acceso por la calle <!--QUERY = "SELECT * FROM vivienda WHERE idvivienda=[idvivienda]"-->[dirvivienda], de [metrosvivienda] m2 de superficie aproximada; le corresponden una cuota de copropiedad de 100%.<!-- END QUERY--></para>
+   
+   
+<para style="mystyle"><b>II.-</b> Que los otorgantes han convenido en el arrendamiento del meritado inmueble, para destinarlo a [actividadcontrato], lo que llevan a efecto en este acto y según las siguientes ...</para>
+ 
+
+ 
+ <spacer length="1cm" width="2cm"/>
+ <title><center><b>CONDICIONES:</b></center></title>
+  <spacer length="1cm" width="2cm"/>
+  
+  
+ <para style="mystyle"><b>Primera:</b> El presente contrato se formaliza al amparo de lo dispuesto en la vigente Ley de Arrendamientos Urbanos núm 29/1994 de fecha 29 de noviembre de 1.994; razón por la que, al referirse a finca urbana destinada a uso distinto al de vivienda, se regirá en primer lugar por lo estipulado en este propio contrato, en su defecto, por lo dispuesto en la citada Ley de Arrendamientos Urbanos y, supletoriamente, por lo dispuesto en el vigente Código Civil.</para>
+  
+ <para style="mystyle"><b>Segunda:</b> <!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->[valor]<!-- END QUERY--> (en lo sucesivo LA ARRENDADORA), cede en arrendamiento a <!--QUERY = "SELECT * FROM cliente WHERE idcliente=[idcliente]"-->[nomcliente]<!--END QUERY--> (en lo sucesivo LA ARRENDATARIA), quién en tal concepto lo recibe, el inmueble LOCAL, ya descrito en el expositivo primero del presente contrato, al que se remiten los otorgantes.</para>
+  
+ <para style="mystyle"><b>Tercera:</b> La duración del presente contrato será la de CINCO AÑOS, renovables, contados a partir del mismo día de hoy, de tal modo que el día [ffincontrato] quedará el contrato automáticamente resuelto y rescindido, salvo que expresamente y por escrito convengan los otorgantes otra cosa. En el supuesto de que la arrendadora actual arrendataria tendrá preferencia para la renovación del contrato, frente a terceros y en igualdad de condiciones.</para>
+  
+ 
+ <!-- IF = " '[textocantidadcontrato]' <> '' " -->
+ <para style="mystyle"><b>Cuarta:</b> El precio o alquiler convenido para este arrendamiento es el de [textocantidadcontrato] mensuales, pagaderos por adelantado, dentro de los siete primeros días de cada mes mediante transferencia bancaria en la cuenta "La Caixa" 2100-0650-43-0200233671) . Sobre el precio indicado se aplicará el correspondiente recargo del IVA (Impuesto sobre el Valor Añadido), al tipo legalmente aplicable en cada momento.</para>
+ <!-- ELSE -->
+ <para style="mystyle"><b>Cuarta:</b> El precio o alquiler convenido para este arrendamiento es el de <!-- QUERY = "SELECT * FROM lcontrato WHERE idcontrato=[idcontrato]" -->[pvplcontrato]<!--END QUERY-->'- Euros mensuales, pagaderos por adelantado, dentro de los siete primeros días de cada mes, en el domicilio de la arrendadora u otro por ella designado. Sobre el precio indicado se aplicará el correspondiente recargo del IVA (Impuesto sobre el Valor Añadido), al tipo legalmente aplicable en cada momento.</para>
+ 
+ <!-- END IF -->
+ 
+ 
+ <para style="mystyle"> En la fecha en que se cumpla cada año de vigencia del presente contrato, durante el plazo pactado en la anterior condición Tercera, se actualizará el alquiler convenido aplicando a la renta correspondiente a la anualidad anterior la variación porcentual experimentada por el Indice General Nacional del Sistema de Indices de Precios al Consumo en el período de los doce meses inmediatamente anteriores a la fecha de cada actualización, tomando como mes de referencia para la primera actualización el que corresponda al último índice que estuviera publicado en la fecha de celebración del contrato y, en las sucesivas, el que corresponda al último aplicado. La no aplicación de la actualización en la fecha convenida no supondrá en ningún caso renuncia a la misma.</para>
+  
+ <para style="mystyle"> En caso de prórroga del presente contrato, bien por la tácita reconducción o bien por cualquier otra causa, se procederá igualmente a actualizar la renta establecida también anualmente, en la misma forma e idéntico criterio al descrito en el apartado anterior.</para>
+  
+ <para style="mystyle"><b>Quinta:</b> Serán a cargo de la arrendataria el pago de los siguientes conceptos:</para>
+ <para style="mystyle"> - El importe de todos los impuestos que graven el inmueble, IBI, tasa de incineradora y todo tipo de tasas en general.</para>
+  
+ <para style="mystyle"> - El importe de todos los gastos derivados de la ocupación y mantenimiento del inmueble del que se trata, incluidos gastos de consumo de agua, luz, gas, teléfono, recogida de basuras, gastos de comunidad, etc.</para>
+  
+ <para style="mystyle"> - El importe de todos los gastos necesarios para la obtención de las licencias de apertura y ejercicio de la actividad a desarrollar en el inmueble, incluido el impuesto de actividades económicas y cuántos otros impuestos y gastos de toda índole pueden afectar o sean consecuencia del ejercicio de la actividad de que se trata, tanto si rigen en la actualidad como si son de nueva creación en el futuro. </para>
+  
+ <para style="mystyle"> - El importe de todos los gastos del personal (incluidos salarios, seguridad social, etc.) empleado en la explotación del negocio a instalar en el local, que se entenderá siempre y entodo caso como personal a cargo único y exclusivo de la arrendataria; de tal modo que al finalizar el contrato no se les pueda exigir ningún tipo de responsabilidad a la arrendadora ni por posible relación laboral ni de ninguna otra clase por esos conceptos.</para>
+  
+ <para style="mystyle"><b>Sexta:</b>El inmueble alquilado será destinado precisamente a la actividad de [actividadcontrato], quedándole prohibido a la arrendataria la realización en él de cualquier otra actividad distinta, sin el permiso expreso y por escrito de la arrendadora.</para>
+  
+ <para style="mystyle"><b>Séptima:</b>La arrendataria recibe el local en condiciones suficientes a sus necesidades, perfectamente conocedora de su actual situación y circunstancias, sin derecho a exigir instalaciones de ningún tipo a la propiedad.</para>
+  
+ <para style="mystyle">Todas las reparaciones necesarias para el mantenimiento o conservación del local, incluso las reparaciones necesarias, serán integras a cargo de la arrendataria, incluidas las relativas a cristales, cerraduras y demás útiles y utensilios de las instalaciones y su adecuado uso y entretenimiento.</para>
+  
+ <para style="mystyle"><b>Octava:</b> Expresamente se le prohibe a la arrendataria lo siguiente:</para>
+  
+ <para style="mystyle"> - Con carácter general, la facultad de realizar cualquier tipo de obra o reforma en el inmueble alquilado sin contar para ello con el previo consentimiento escrito de la arrendadora. Caso de que se realizaran obras con dicho consentimiento (y sin perjuicio de lo que particularmente se conviniera al momento de la preceptiva autorización) todos los gastos derivados de tales obras o reforma serían íntegros a cargo de la arrendataria.</para>
+  
+ <para style="mystyle"> - Igualmente con carácter general, la facultaqd de ceder o traspasar a cualquiera tercera persona, total o parcialmente, el local alquilado, así como la facultad de poder introducir a terceras personas ajenas a este contrato en la explotación de la actividad a desarrollar en el inmueble, sin el previo permiso escrito de la arrendadora. Ahora bien, si una vez iniciada la explotación del citado negocio en el local la arrendataria desea traspasarlo, podrá hacerlo siempre y cuando el/los cesionario/s ofrezca/n las debidas garantías a la arrendadora en orden al total y pleno cumplimiento del presente contrato y limitado el traspaso al tiempo que reste hasta cumplir los CINCO AÑOS de plazo pactado en la anterior condicion TERCERA. En caso de traspaso, la participación de la propietaria en el precio del mismo, será del quince por ciento y además podra elevar la renta en el porcentaje establecido en el art. 32.2 de la vigente L.A.U. 29/1994.</para>
+  
+ <para style="mystyle"> - La instalacion de motores y maquinaria que puedan afectar a la consistencia, solidez o conservación del inmueble.</para>
+  
+ <para style="mystyle"><b>Novena:</b> La arrendataria renuncia expresamente al derecho a la indemnización que se establece en el artículo 34 de la vigente Ley de Arrendamientos Urbanos, núm. 29/1994, para el supuesto de que la arrendadora no consienta renovar el presente contrato, una vez expirado el plazo de CINCO AÑOS convenido en la anterior condición TERCERA; renuncia que será válida en todo caso, tanto si la arrendataria continua ejerciendo la misma actividad en otro inmueble, como si es la arrendadora o un tercero quiénes inician en el inmueble que aquí se trata el desarrollo de cualquier actividad, igual o afín, a la desarrollada por la arrendataria durante la vigencia del presente contrato. Asimismo, la arrendataria también renuncia expresamente al derecho que se establece en el artículo 31 de la citada Ley, para el caso de que la arrendadora proceda a la venta del local alquilado.</para>
+  
+ <para style="mystyle"><b>Decima:</b> La arrendataria se obliga a suscribir una póliza de responsabilidad civil para garantizar cumplidamente cualquier daño o perjuicio que, por cualquier causa y de cualquier tipo, se pueda ocasionar tanto a terceros como al propio local alquilado.</para>
+  
+ <para style="mystyle"><b>Undécima:</b> En este acto la arrendataria entrega a la arrendadora la cantidad de [fianzacontrato] en concepto de fianza, para responder con ella, y hasta donde alcance, de las obligaciones que contrae en este acto, sin perjuicio del derecho que le asiste a la arrendadora de reclamarle a la primera mayor cantidad, si ello fuere procedente. La devolución de la misma a la arrendataria se realizará al finalizar el arrendamiento, en el caso de que no se produzcan desperfectos.</para>
+  
+ <para style="mystyle"> Y en prueba de conformidad, firman los otorgan el presente contrato extendido en cinco folios de papel común, por duplicado y a un solo efecto, en lugar y fecha al principio indicados.</para>
+    
+  
+ <pre> EL ARRENDADOR                                                       EL ARRENDATARIO</pre>
+ 
+</story>
+</document>
