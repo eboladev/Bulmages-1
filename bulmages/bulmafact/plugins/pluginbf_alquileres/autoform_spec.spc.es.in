@@ -46,7 +46,9 @@
 
 <AUTOFORM>
 <OBJECTNAME>Direccion</OBJECTNAME>
-<TITLE>Direccion de la vivienda</TITLE>
+<OBJECTDESCRIPTION>[nomvivienda]
+[dirvivienda] @!--QUERY="SELECT now()::DATE AS f"--@[f]@!--END QUERY--@</OBJECTDESCRIPTION>
+<TITLE>Vivienda</TITLE>
 <TABLENAME>vivienda</TABLENAME>
 <TABLEID>idvivienda</TABLEID>
 <UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_alquileres/vivienda.ui</UI_INTERFACE>
