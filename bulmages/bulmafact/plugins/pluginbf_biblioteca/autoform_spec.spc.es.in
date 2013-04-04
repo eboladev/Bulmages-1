@@ -1,7 +1,6 @@
-<DOCUMENT>
-
 <AUTOFORM>
 <OBJECTNAME>CategoriasDeLibro</OBJECTNAME>
+<OBJECTDESCRIPTION>[nomcategorialibro]</OBJECTDESCRIPTION>
 <TITLE>Categorias de Libro</TITLE>
 <TABLENAME>categorialibro</TABLENAME>
 <TABLEID>idcategorialibro</TABLEID>
@@ -24,6 +23,8 @@
 
 <AUTOFORM>
 <OBJECTNAME>AutorDeLibro</OBJECTNAME>
+<OBJECTDESCRIPTION>[nomautor]
+[fechanacimientoautor]</OBJECTDESCRIPTION>
 <TITLE>Autor</TITLE>
 <TABLENAME>autor</TABLENAME>
 <TABLEID>idautor</TABLEID>
@@ -104,7 +105,7 @@
   </HEADER>
   <HEADER>
       <NOMCAMPO>titulolibro</NOMCAMPO>
-      <NOMPCAMPO>Fecha Final del prestamo</NOMPCAMPO>
+      <NOMPCAMPO>Fecha Final del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
       <RESTRICTIONSCAMPO>DBREQUIRED</RESTRICTIONSCAMPO>
@@ -116,55 +117,57 @@
 <AUTOFORM>
 <OBJECTNAME>Socio</OBJECTNAME>
 <TITLE>Socio</TITLE>
-<TABLENAME>socio</TABLENAME>
-<TABLEID>idsocio</TABLEID>
-<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/sociobase.ui</UI_INTERFACE>
-<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/socio.png</ICON>
+<OBJECTDESCRIPTION>[nomasociado]
+[apellido1asociado] [apellido2asociado]</OBJECTDESCRIPTION>
+<TABLENAME>asociado</TABLENAME>
+<TABLEID>idasociado</TABLEID>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/asociadobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/asociado.png</ICON>
   <CAMPO>
-      <NOMCAMPO>idsocio</NOMCAMPO>
-      <NOMPCAMPO>Identificador del socio</NOMPCAMPO>
+      <NOMCAMPO>idasociado</NOMCAMPO>
+      <NOMPCAMPO>Identificador del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBPRIMARYKEY</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>nomsocio</NOMCAMPO>
-      <NOMPCAMPO>Nombre del socio</NOMPCAMPO>
+      <NOMCAMPO>nomasociado</NOMCAMPO>
+      <NOMPCAMPO>Nombre del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>apellido1socio</NOMCAMPO>
-      <NOMPCAMPO>Primer apellido del socio</NOMPCAMPO>
+      <NOMCAMPO>apellido1asociado</NOMCAMPO>
+      <NOMPCAMPO>Primer apellido del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>apellido2socio</NOMCAMPO>
-      <NOMPCAMPO>Segundo apellido del socio</NOMPCAMPO>
+      <NOMCAMPO>apellido2asociado</NOMCAMPO>
+      <NOMPCAMPO>Segundo apellido del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>telsocio</NOMCAMPO>
-      <NOMPCAMPO>Telefono del socio</NOMPCAMPO>
+      <NOMCAMPO>telasociado</NOMCAMPO>
+      <NOMPCAMPO>Telefono del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>mailsocio</NOMCAMPO>
-      <NOMPCAMPO>email del socio</NOMPCAMPO>
+      <NOMCAMPO>mailasociado</NOMCAMPO>
+      <NOMPCAMPO>email del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>dirsocio</NOMCAMPO>
-      <NOMPCAMPO>Dirección del socio</NOMPCAMPO>
+      <NOMCAMPO>dirasociado</NOMCAMPO>
+      <NOMPCAMPO>Dirección del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>fechanacimientosocio</NOMCAMPO>
-      <NOMPCAMPO>Fecha de nacimiento del socio</NOMPCAMPO>
+      <NOMCAMPO>fechanacimientoasociado</NOMCAMPO>
+      <NOMPCAMPO>Fecha de nacimiento del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
   </CAMPO>
@@ -186,12 +189,12 @@
       <NOMCAMPO>list</NOMCAMPO>
       <NOMPCAMPO>Reservas</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
-      <FILECONFIG>reservassocio</FILECONFIG>
+      <FILECONFIG>reservasasociado</FILECONFIG>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
-      <QUERY>SELECT * FROM prestamo LEFT JOIN libro ON libro.idlibro = prestamo.idlibro WHERE idsocio=[idsocio] </QUERY>
-      <VINCULOS>idsocio=idsocio</VINCULOS>
-      <TABLENAME>prestamo</TABLENAME>
-      <FIELDID>idprestamo</FIELDID>
+      <QUERY>SELECT * FROM prestamolibro LEFT JOIN libro ON libro.idlibro = prestamolibro.idlibro WHERE idasociado=[idasociado] </QUERY>
+      <VINCULOS>idasociado=idasociado</VINCULOS>
+      <TABLENAME>prestamolibro</TABLENAME>
+      <FIELDID>idprestamolibro</FIELDID>
       <ALLOWNULL>TRUE</ALLOWNULL>
       <ALLOWINSERT>TRUE</ALLOWINSERT>
       <ALLOWDELETE>TRUE</ALLOWDELETE>
@@ -212,37 +215,37 @@
  <RESTRICTIONSCAMPO>DBNOSAVE</RESTRICTIONSCAMPO>
 </HEADER>
   <HEADER>
-      <NOMCAMPO>idsocio</NOMCAMPO>
-      <NOMPCAMPO>Identificador del socio</NOMPCAMPO>
+      <NOMCAMPO>idasociado</NOMCAMPO>
+      <NOMPCAMPO>Identificador del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
       <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
   </HEADER>
   <HEADER>
-      <NOMCAMPO>idprestamo</NOMCAMPO>
-      <NOMPCAMPO>Identificador del prestamo</NOMPCAMPO>
+      <NOMCAMPO>idprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Identificador del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBPRIMARYKEY</RESTRICTIONSCAMPO>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
       <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
   </HEADER>
   <HEADER>
-      <NOMCAMPO>fechainprestamo</NOMCAMPO>
-      <NOMPCAMPO>Fecha inicial del prestamo</NOMPCAMPO>
+      <NOMCAMPO>fechainprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Fecha inicial del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
       <RESTRICTIONSCAMPO>DBREQUIRED</RESTRICTIONSCAMPO>
   </HEADER>
   <HEADER>
-      <NOMCAMPO>fechafinprestamo</NOMCAMPO>
-      <NOMPCAMPO>Fecha Final del prestamo</NOMPCAMPO>
+      <NOMCAMPO>fechafinprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Fecha Final del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
       <RESTRICTIONSCAMPO>DBREQUIRED</RESTRICTIONSCAMPO>
   </HEADER>
   <HEADER>
-      <NOMCAMPO>devueltoprestamo</NOMCAMPO>
+      <NOMCAMPO>devueltoprestamolibro</NOMCAMPO>
       <NOMPCAMPO>Devuelto</NOMPCAMPO>
       <DBTYPECAMPO>DBBOOLEAN</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
@@ -256,6 +259,8 @@
 <AUTOFORM>
 <OBJECTNAME>Libro</OBJECTNAME>
 <TITLE>Libro</TITLE>
+<OBJECTDESCRIPTION>[titulolibro]
+[isbnlibro]</OBJECTDESCRIPTION>
 <TABLENAME>libro</TABLENAME>
 <TABLEID>idlibro</TABLEID>
 <UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/librobase.ui</UI_INTERFACE>
@@ -314,46 +319,48 @@
 <AUTOFORM>
 <MENUENTRY>Maest&amp;ro\Nuevo Prestamo</MENUENTRY>
 <OBJECTNAME>Prestamo</OBJECTNAME>
+<OBJECTDESCRIPTION>@!--QUERY="SELECT nomasociado FROM asociado WHERE idasociado = [idasociado]"--@[nomasociado]@!--END QUERY--@
+@!--QUERY="SELECT titulolibro FROM libro WHERE idlibro = [idlibro]"--@[titulolibro]@!--END QUERY--@</OBJECTDESCRIPTION>
 <TITLE>Prestamo</TITLE>
-<TABLENAME>prestamo</TABLENAME>
-<TABLEID>idprestamo</TABLEID>
-<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamobase.ui</UI_INTERFACE>
-<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamo.png</ICON>
+<TABLENAME>prestamolibro</TABLENAME>
+<TABLEID>idprestamolibro</TABLEID>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamolibrobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamolibro.png</ICON>
   <CAMPO>
-      <NOMCAMPO>idprestamo</NOMCAMPO>
-      <NOMPCAMPO>Identificador del prestamo</NOMPCAMPO>
+      <NOMCAMPO>idprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Identificador del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBPRIMARYKEY</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>fechainprestamo</NOMCAMPO>
-      <NOMPCAMPO>Fecha Inicial del prestamo</NOMPCAMPO>
+      <NOMCAMPO>fechainprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Fecha Inicial del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>fechafinprestamo</NOMCAMPO>
-      <NOMPCAMPO>Fecha Final del prestamo</NOMPCAMPO>
+      <NOMCAMPO>fechafinprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Fecha Final del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>devueltoprestamo</NOMCAMPO>
-      <NOMPCAMPO>Devolución del prestamo</NOMPCAMPO>
+      <NOMCAMPO>devueltoprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Devolución del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBBOOLEAN</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>idsocio</NOMCAMPO>
+      <NOMCAMPO>idasociado</NOMCAMPO>
       <NOMPCAMPO>Socio</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
       <TIPOCAMPO>BLSEARCHWIDGET</TIPOCAMPO>
-      <TABLENAME>socio</TABLENAME>
-      <FIELDID>idsocio</FIELDID>
-      <VALOR>apellido1socio</VALOR>
-      <VALOR>apellido2socio</VALOR>
-      <VALOR>nomsocio</VALOR>
+      <TABLENAME>asociado</TABLENAME>
+      <FIELDID>idasociado</FIELDID>
+      <VALOR>apellido1asociado</VALOR>
+      <VALOR>apellido2asociado</VALOR>
+      <VALOR>nomasociado</VALOR>
       <LABEL>Socio</LABEL>
   </CAMPO>
   <CAMPO>
@@ -438,69 +445,69 @@
 <MENUENTRY>Maest&amp;ro\Socios</MENUENTRY>
 <OBJECTNAME>Socios</OBJECTNAME>
 <TITLE>Socios</TITLE>
-<TABLENAME>socio</TABLENAME>
-<TABLEID>idsocio</TABLEID>
+<TABLENAME>asociado</TABLENAME>
+<TABLEID>idasociado</TABLEID>
 <UI_INTERFACE></UI_INTERFACE>
-<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/socio.png</ICON>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/asociado.png</ICON>
   <CAMPO>
-      <NOMCAMPO>idsocio</NOMCAMPO>
-      <NOMPCAMPO>Identificador del socio</NOMPCAMPO>
+      <NOMCAMPO>idasociado</NOMCAMPO>
+      <NOMPCAMPO>Identificador del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBPRIMARYKEY</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>nomsocio</NOMCAMPO>
-      <NOMPCAMPO>Nombre del socio</NOMPCAMPO>
+      <NOMCAMPO>nomasociado</NOMCAMPO>
+      <NOMPCAMPO>Nombre del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>apellido1socio</NOMCAMPO>
-      <NOMPCAMPO>Primer apellido del socio</NOMPCAMPO>
+      <NOMCAMPO>apellido1asociado</NOMCAMPO>
+      <NOMPCAMPO>Primer apellido del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>apellido2socio</NOMCAMPO>
-      <NOMPCAMPO>Segundo apellido del socio</NOMPCAMPO>
+      <NOMCAMPO>apellido2asociado</NOMCAMPO>
+      <NOMPCAMPO>Segundo apellido del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>telsocio</NOMCAMPO>
-      <NOMPCAMPO>Telefono del socio</NOMPCAMPO>
+      <NOMCAMPO>telasociado</NOMCAMPO>
+      <NOMPCAMPO>Telefono del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
       <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
  </CAMPO>
   <CAMPO>
-      <NOMCAMPO>mailsocio</NOMCAMPO>
-      <NOMPCAMPO>email del socio</NOMPCAMPO>
+      <NOMCAMPO>mailasociado</NOMCAMPO>
+      <NOMPCAMPO>email del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
       <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>       
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>dirsocio</NOMCAMPO>
-      <NOMPCAMPO>Dirección del socio</NOMPCAMPO>
+      <NOMCAMPO>dirasociado</NOMCAMPO>
+      <NOMPCAMPO>Dirección del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
       <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>fechanacimientosocio</NOMCAMPO>
-      <NOMPCAMPO>Fecha de nacimiento del socio</NOMPCAMPO>
+      <NOMCAMPO>fechanacimientoasociado</NOMCAMPO>
+      <NOMPCAMPO>Fecha de nacimiento del asociado</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
       <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
@@ -575,44 +582,44 @@
 <MENUENTRY>Maest&amp;ro\Prestamos</MENUENTRY>
 <OBJECTNAME>Prestamos</OBJECTNAME>
 <TITLE>Prestamos</TITLE>
-<TABLENAME>prestamo</TABLENAME>
-<TABLEID>idprestamo</TABLEID>
-<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamobase.ui</UI_INTERFACE>
-<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamo.png</ICON>
+<TABLENAME>prestamolibro</TABLENAME>
+<TABLEID>idprestamolibro</TABLEID>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamolibrobase.ui</UI_INTERFACE>
+<ICON>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_biblioteca/prestamolibro.png</ICON>
   <CAMPO>
-      <NOMCAMPO>idprestamo</NOMCAMPO>
-      <NOMPCAMPO>Identificador del prestamo</NOMPCAMPO>
+      <NOMCAMPO>idprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Identificador del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBINT</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBPRIMARYKEY</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>fechainprestamo</NOMCAMPO>
-      <NOMPCAMPO>Fecha Inicial del prestamo</NOMPCAMPO>
+      <NOMCAMPO>fechainprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Fecha Inicial del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>fechafinprestamo</NOMCAMPO>
-      <NOMPCAMPO>Fecha Final del prestamo</NOMPCAMPO>
+      <NOMCAMPO>fechafinprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Fecha Final del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBDATE</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>devueltoprestamo</NOMCAMPO>
-      <NOMPCAMPO>Devolución del prestamo</NOMPCAMPO>
+      <NOMCAMPO>devueltoprestamolibro</NOMCAMPO>
+      <NOMPCAMPO>Devolución del prestamolibro</NOMPCAMPO>
       <DBTYPECAMPO>DBBOOL</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTNULL</RESTRICTIONSCAMPO>
        <OPTIONSHEADER>DBNOWRITE</OPTIONSHEADER>
       <OPTIONSHEADER>DBHIDEVIEW</OPTIONSHEADER>
   </CAMPO>
   <CAMPO>
-      <NOMCAMPO>idsocio</NOMCAMPO>
+      <NOMCAMPO>idasociado</NOMCAMPO>
       <NOMPCAMPO>Socio</NOMPCAMPO>
       <DBTYPECAMPO>DBint</DBTYPECAMPO>
       <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
@@ -635,4 +642,3 @@
  <VINCULOS>idlibro=[idlibro],titulolibro=[titulolibro]</VINCULOS> <!-- Campos a modificar en el subformulario con los resultados del query, separados por comas. -->
 </SUBFORMSEARCHEDIT>
 
-</DOCUMENT>

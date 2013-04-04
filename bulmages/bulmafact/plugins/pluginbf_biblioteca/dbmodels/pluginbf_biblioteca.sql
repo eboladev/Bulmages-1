@@ -54,7 +54,7 @@ DECLARE
 	rs RECORD;
 BEGIN
 
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamo'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamolibro'';
     IF NOT FOUND THEN
 
 
@@ -75,19 +75,19 @@ BEGIN
 		CONSTRAINT idpais FOREIGN KEY (idpais) REFERENCES pais (idpais)
 	      );
 
-	      CREATE TABLE socio
+	      CREATE TABLE asociado
 	      (
-		idsocio serial NOT NULL,
-		nomsocio character varying(50),
-		apellido1socio character varying(50),
-		apellido2socio character varying(50),
-		fechanacimientosocio date,
-		telsocio character varying(20),
-		mailsocio character varying(50),
-		dirsocio character varying(100),
+		idasociado serial NOT NULL,
+		nomasociado character varying(50),
+		apellido1asociado character varying(50),
+		apellido2asociado character varying(50),
+		fechanacimientoasociado date,
+		telasociado character varying(20),
+		mailasociado character varying(50),
+		dirasociado character varying(100),
 		idprovincia integer,
-		CONSTRAINT idsocioprimarykey PRIMARY KEY (idsocio),
-		CONSTRAINT socioprovincia FOREIGN KEY (idprovincia) REFERENCES provincia (idprovincia) ON UPDATE NO ACTION ON DELETE NO ACTION
+		CONSTRAINT idasociadoprimarykey PRIMARY KEY (idasociado),
+		CONSTRAINT asociadoprovincia FOREIGN KEY (idprovincia) REFERENCES provincia (idprovincia) ON UPDATE NO ACTION ON DELETE NO ACTION
 	      );
 
 	      CREATE TABLE libro
@@ -104,16 +104,16 @@ BEGIN
 	      );
 
 
-	      CREATE TABLE prestamo
+	      CREATE TABLE prestamolibro
 	      (
-		idprestamo serial,
-		fechainprestamo date NOT NULL DEFAULT now(),
-		fechafinprestamo date NOT NULL DEFAULT now() +'' @ 1 week'',
-		idsocio integer NOT NULL,
+		idprestamolibro serial,
+		fechainprestamolibro date NOT NULL DEFAULT now(),
+		fechafinprestamolibro date NOT NULL DEFAULT now() +'' @ 1 week'',
+		idasociado integer NOT NULL,
 		idlibro integer NOT NULL,
-		devueltoprestamo boolean DEFAULT FALSE,
-		CONSTRAINT prestamo_idprestamo_p_key PRIMARY KEY (idprestamo),
-		CONSTRAINT socio_idsocio_f_key FOREIGN KEY (idsocio) REFERENCES socio (idsocio) ON UPDATE NO ACTION ON DELETE NO ACTION,
+		devueltoprestamolibro boolean DEFAULT FALSE,
+		CONSTRAINT prestamolibro_idprestamolibro_p_key PRIMARY KEY (idprestamolibro),
+		CONSTRAINT asociado_idasociado_f_key FOREIGN KEY (idasociado) REFERENCES asociado (idasociado) ON UPDATE NO ACTION ON DELETE NO ACTION,
 		CONSTRAINT libro_idlibro_f_key FOREIGN KEY (idlibro) REFERENCES libro (idlibro) ON UPDATE NO ACTION ON DELETE NO ACTION
 	      );
 
