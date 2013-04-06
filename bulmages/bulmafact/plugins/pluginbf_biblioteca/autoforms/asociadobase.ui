@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>574</width>
+    <height>363</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Datos personales</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Nombre</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_nomasociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="3">
+        <widget class="QLineEdit" name="mui_nomasociado"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Primer Apellido</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_apellido1asociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" colspan="3">
+        <widget class="QLineEdit" name="mui_apellido1asociado"/>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Segundo Apellido</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_apellido2asociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2" colspan="3">
+        <widget class="QLineEdit" name="mui_apellido2asociado"/>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Fecha de Nacimiento</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_fechanacimientoasociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>30</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="3">
+        <widget class="BlDateSearch" name="mui_fechanacimientoasociado">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Telefono</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_telasociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Correo Electronico</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_mailasociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="3">
+        <widget class="QLineEdit" name="mui_mailasociado"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Direccion</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_dirasociado</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1" colspan="4">
+        <widget class="QLineEdit" name="mui_dirasociado"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Provincia</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_idprovincia</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1" colspan="2">
+        <widget class="BlComboBox" name="mui_idprovincia"/>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLineEdit" name="mui_telasociado"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Reservas</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="BlSubForm" name="mui_list" native="true"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QLineEdit</extends>
+   <header>bldatesearch.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlSubForm</class>
+   <extends>QWidget</extends>
+   <header>blsubform.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
