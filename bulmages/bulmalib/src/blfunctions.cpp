@@ -611,6 +611,20 @@ void blCreateODS ( const QString arch )
 	blMsgError(_("Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"));
     } // end if
 
+    /// Borramos algun archivo que pudiera haber
+#ifdef Q_OS_WIN32
+    cadena = g_confpr->value( CONF_DIR_USER );
+    cadena.replace("/", "\\");
+    cadena = "\"del \"" + arch + ".odt\"\"";
+#else
+    cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + arch + ".odt";
+#endif
+    result1 = system ( cadena.toAscii() );
+    if (result1 == -1) {
+	blMsgError(_("Error al borrar archivo .odt [ blfunctions->blCreateODS() ]"));
+    } // end if
+    
+    
     /// Hacemos la invocacion del python
 #ifdef Q_OS_WIN32
 
@@ -655,6 +669,25 @@ void blCreateAndLoadODS ( const QString arch )
       } // end if
     } // end if
 
+    if (QFile::exists(g_confpr->value( CONF_DIR_USER ) + arch + ".odt")) {
+      QString cadena = "";
+#ifdef Q_OS_WIN32
+    if (g_confpr->value( CONF_ODS ).isEmpty()) {
+	    /// Abre con el programa por defecto del sistema.
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_DIR_USER ) + arch +  ".odt" + "\"\"";
+    } else {
+	    /// Abre con la configuracion forzada.
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_ODS ) + "\" \"" + g_confpr->value( CONF_DIR_USER ) +  arch + ".odt" + "\"\"";
+    } // end if
+#else
+      cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".odt &";
+#endif
+      int result = system ( cadena.toAscii() );
+      if (result == -1) {
+	  blMsgError(_("Error al ejecutar ootext [ blfunctions->blCreateAndLoadODS() ]"));
+      } // end if
+    } // end if
+    
 }
 
 /// Genera un 'PDF' a partir de un 'RML' usando 'bgtrml2pdf' y adem&aacute;s lo muestra con el visor
