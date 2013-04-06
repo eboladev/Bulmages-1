@@ -9,33 +9,65 @@ import ooolib
 # Crea el documento
 doc = ooolib.Calc("Presupuesto")
 
-doc.set_column_property(1, 'width', '0.5in')
-doc.set_column_property(2, 'width', '5in')
+doc.set_column_property(1, 'width', '1in')
+doc.set_column_property(2, 'width', '4in')
 doc.set_cell_property('bold', True)
 doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
 doc.set_cell_value(3, 2, 'string', u'[numpresupuesto]')
 doc.set_cell_value(4, 2, 'string', u'[refpresupuesto]')
 
-i=4
+i=3
 doc.set_cell_value(1,i,'string','CIF')
 doc.set_cell_value(2,i,'string','NOMBRE')
 doc.set_cell_value(3,i,'string','DIRECCION')
 doc.set_cell_value(4,i,'string','CP')
 doc.set_cell_value(5,i,'string','POBLACION')
-doc.set_cell_value(6,i,'string','BASE')
-doc.set_cell_value(7,i,'string','IMPUESTOS')
-doc.set_cell_value(8,i,'string','TOTAL')
+i = i + 1
 
-#i=7
-<!-- QUERY="SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]"-->
+<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->
+doc.set_cell_value(1,i,'string','[cifcliente]')
+doc.set_cell_value(2,i,'string','[nomcliente]')
+doc.set_cell_value(3,i,'string','[dircliente]')
+doc.set_cell_value(4,i,'string','[cpcliente]')
+doc.set_cell_value(5,i,'string','[poblcliente]')
+<!-- END QUERY-->
+
+i=6
+doc.set_cell_value(1,i,'string','CODIGO')
+doc.set_cell_value(2,i,'string','NOMBRE')
+doc.set_cell_value(3,i,'string','CANTIDAD')
+doc.set_cell_value(4,i,'string','PVP UND')
+doc.set_cell_value(5,i,'string','IVA')
+doc.set_cell_value(6,i,'string','TOTAL')
+
+i=7
+<!-- QUERY="SELECT *, (cantlpresupuesto * pvplpresupuesto)::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = [idpresupuesto] ORDER BY ordenlpresupuesto"-->
 doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
 doc.set_cell_value(2,i,'string', u'[desclpresupuesto]')
-doc.set_cell_value(3,i,'string', u'[cantlpresupuesto]')
-doc.set_cell_value(4,i,'string', u'[pvplpresupuesto]')
-doc.set_cell_value(6,i,'string', u'[ivalpresupuesto]')
+doc.set_cell_value(3,i,'float', u'[cantlpresupuesto]')
+doc.set_cell_value(4,i,'float', u'[pvplpresupuesto]')
+doc.set_cell_value(5,i,'float', u'[ivalpresupuesto]')
+doc.set_cell_value(6,i,'float', u'[totallpresupuesto]')
+i = i + 1
+<!--END QUERY-->
+j = i
+i =  i + 3
+
+<!-- QUERY="SELECT ivalpresupuesto::INTEGER, SUM (cantlpresupuesto * pvplpresupuesto)::NUMERIC(12,2) AS bimp FROM lpresupuesto WHERE idpresupuesto = [idpresupuesto] GROUP BY ivalpresupuesto  ORDER BY ivalpresupuesto"-->
+doc.set_cell_value(5,i,'string', u'Base: [ivalpresupuesto]%')
+#doc.set_cell_value(7,i,'formula', u"=SUMAR.SI(E7:E"+str(j)+";\"=[ivalpresupuesto]\";F7:F"+str(j)+")")
+doc.set_cell_value(6,i,'float', '[bimp]')
 i = i + 1
 <!--END QUERY-->
 
+i =  i +3
+doc.set_row_property(i, 'height', '0.5in')
+doc.set_cell_property('color', '#0000ff')
+#doc.set_cell_property('background', '#ff0000')
+doc.set_cell_property('fontsize', '14')
+doc.set_cell_value(5,i,'string', u'TOTAL')
+doc.set_cell_property('bold', True)
+doc.set_cell_value(6,i,'formula', u'=SUM(F7:F'+str(j-1)+')')
 
 # Guardamos el documento
 doc.save("impers_presupuesto_excel.ods")
