@@ -111,16 +111,16 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''DBRev-BulmaTPV'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.14.1-0002'' WHERE nombre=''DBRev-BulmaTPV'';
+		UPDATE CONFIGURACION SET valor=''0.15.0-0001'' WHERE nombre=''DBRev-BulmaTPV'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.14.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.15.0-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.13.1"
+\echo "Actualizada la revision de la base de datos a la version 0.15.0"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;

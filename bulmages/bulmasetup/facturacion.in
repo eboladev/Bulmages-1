@@ -911,7 +911,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.process.waitForFinished(-1)
 
 
-        self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql", "revf-0.12.sql", "revf-0.13.sql", "revf-0.14.sql"]
+        self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql", "revf-0.12.sql", "revf-0.13.sql", "revf-0.14.sql", "revf-0.15.sql"]
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
             self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbparches + self.parche) + ' ' + self.database + functions.end_sql
