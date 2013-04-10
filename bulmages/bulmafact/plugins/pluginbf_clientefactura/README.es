@@ -38,7 +38,7 @@ Incompatibles:
 
 Reports: factura.rml; blform_FacturaView.qs; inf_detalleventasarticulo.pys; inf_resumcompras.pys; inf_familiacliente.pys; inf_ventas.ui; impers_factura_grafica.rml; impers_factura_copia.rml; impers_factura_pagada.rml
 
-Categorias: Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;
+Categorias: Facturacion generica;Talleres;Distribución; Distribución Alimentaria;Servicios Generales;Alquileres;
 
 Orden: 623
 

@@ -74,6 +74,7 @@ add_subdirectory(pluginbf_clientepedido)
 add_subdirectory(pluginbf_clientealbaran)
 add_subdirectory(pluginbf_clientefactura)
 add_subdirectory(pluginbf_clienteticket)
+add_subdirectory(pluginbf_clientefacturaivainc)
 
 add_subdirectory(pluginbf_proveedorfactura)
 add_subdirectory(pluginbf_proveedoralbaran)

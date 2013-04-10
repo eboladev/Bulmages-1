@@ -269,6 +269,12 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvp" + m_tablename));
 	rec->setDbValue ( "total" + m_tablename, total.toQString('0',2) );
       } // end if
+      if (existsHeader("cant" + m_tablename) && existsHeader("pvpivainc" + m_tablename) && existsHeader("total" + m_tablename) ) {
+	/// El campo total es calculado, asi que tratamos su actualización aqui aunque bien podri
+	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvpivainc" + m_tablename));
+	rec->setDbValue ( "total" + m_tablename, total.toQString('0',2) );
+      } // end if
+      
     } // end if
     
     /// Refrescamos el registro.
@@ -710,21 +716,32 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
             m_idTarifa = cur3->value( "idtarifa" );
             if ( cur3->numregistros() > 0 ) {
                 /// A) Se dispone de tarifa especial.
-                rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
+                if (rec->exists("pvp" + m_tablename))
+		    rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
+                if (rec->exists("pvpivainc" + m_tablename))
+		    rec->setDbValue ( "pvpivainc" + m_tablename, cur3->value( "pvpltarifa" ) );
+
                 /// Disparamos los plugins.
                 int res = g_plugins->run ( "BfSubForm_calculaPVP", this );
                 if ( res != 0 ) {
-		    
                     return;
                 } // end if
 
             } else {
+	      
                 /// B) No tiene tarifa especial se usa la asignada por defecto.
-                rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvp" + m_tablename))
+		    rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvpivainc" + m_tablename))
+		    rec->setDbValue ( "pvpivainc" + m_tablename, cur->value( "pvpivaincarticulo" ) );
+		
             } // end if
         } else {
             /// Sin cliente asignado se usa la tarifa asignada por defecto.
-            rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvp" + m_tablename))
+		    rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvpivainc" + m_tablename))
+		    rec->setDbValue ( "pvpivainc" + m_tablename, cur->value( "pvpivaincarticulo" ) );
         } // end if
 
 

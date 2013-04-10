@@ -1332,6 +1332,7 @@ CREATE TABLE factura (
     idforma_pago integer REFERENCES forma_pago(idforma_pago),   
     UNIQUE (idalmacen, codigoserie_factura, numfactura),
     idtrabajador integer REFERENCES trabajador(idtrabajador),
+    ticketfactura boolean DEFAULT FALSE,
     totalfactura NUMERIC(12, 2) DEFAULT 0,
     bimpfactura NUMERIC(12, 2) DEFAULT 0,
     impfactura NUMERIC(12, 2) DEFAULT 0
@@ -2337,6 +2338,7 @@ CREATE TABLE albaran (
     totalalbaran NUMERIC(12, 2) DEFAULT 0,
     bimpalbaran NUMERIC(12, 2) DEFAULT 0,
     impalbaran NUMERIC(12, 2) DEFAULT 0,
+    ticketalbaran boolean DEFAULT FALSE,
     UNIQUE (idalmacen, numalbaran)
 );
 

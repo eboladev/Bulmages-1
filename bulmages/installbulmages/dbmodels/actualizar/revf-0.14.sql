@@ -96,6 +96,16 @@ BEGIN
 
     DELETE FROM configuracion WHERE nombre=''IRPF'';
 
+    SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketfactura'';
+    IF NOT FOUND THEN
+	ALTER TABLE factura ADD COLUMN ticketfactura boolean DEFAULT FALSE;
+    END IF;
+
+    SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketalbaran'';
+    IF NOT FOUND THEN
+	ALTER TABLE factura ADD COLUMN ticketfactura boolean DEFAULT FALSE;
+    END IF;
+
    RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -319,9 +329,9 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.14.1-0002'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.14.1-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0003'');
 	END IF;
 	RETURN 0;
 END;

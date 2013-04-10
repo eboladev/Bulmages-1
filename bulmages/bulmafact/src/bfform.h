@@ -48,7 +48,6 @@ public:
     BfSubForm* getlistalineas();
     BfSubForm* getlistadescuentos();
     virtual void imprimir();
-    virtual QString templateName(void) ;
     virtual int generateRML ( void );
     virtual int generateRML ( const QString &arch );
     virtual void calculaypintatotales();

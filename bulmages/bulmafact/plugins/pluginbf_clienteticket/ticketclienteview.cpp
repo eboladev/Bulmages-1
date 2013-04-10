@@ -79,9 +79,12 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "procesadoalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Procesado" ) );
         addDbField ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
         addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+        addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Ticket" ) );
         addDbField ( "cambiosalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos antes de imprimir" ) );
         addDbField ( "cambiospostalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos tras imprimir" ) );
 
+	setDbValue("ticketalbaran", "TRUE");
+	
         /// Disparamos los plugins.
         int res = g_plugins->run ( "TicketClienteView_TicketClienteView", this );
         if ( res != 0 )
@@ -204,15 +207,7 @@ void TicketClienteView::s_pintaTotales()
 void TicketClienteView::calculaypintatotales() {
   
   if (!m_listalineas) return;
-  //blMsgInfo("Calculo y pinto los totales");
-  /*
- *     m_totalBases->setText ( base.toQString() );
-    m_totalTaxes->setText ( iva.toQString() );
-    m_totalalbaran->setText ( total.toQString() );
-    m_totalDiscounts->setText ( desc.toQString() );
-    m_totalIRPF->setText ( QString ( irpf.toQString() ) );
-    m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    */
+
   BlFixed total("0.00");
   BlFixed impuestos("0.00");
   BlFixed bimp("0.00");
@@ -338,6 +333,20 @@ int TicketClienteView::afterSave()
 
     
     return 0;
+}
+
+/** Pintar un ticket.
+*/
+/**
+\param idbudget
+\return
+**/
+void TicketClienteView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + mui_fechaalbaran->text());
 }
 
 

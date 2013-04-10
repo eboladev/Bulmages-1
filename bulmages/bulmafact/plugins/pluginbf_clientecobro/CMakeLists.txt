@@ -47,6 +47,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefacturaivainc/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefacturaivainc/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/)
 
@@ -113,7 +115,7 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clientealbaran pluginbf_clientepedido pluginbf_clientepresupuesto)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clientefacturaivainc pluginbf_clientealbaran pluginbf_clientepedido pluginbf_clientepresupuesto)
 
 FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css VAR_CSS_es_ES)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )

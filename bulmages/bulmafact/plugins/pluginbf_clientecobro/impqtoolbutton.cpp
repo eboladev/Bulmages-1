@@ -31,6 +31,7 @@
 #include <QMap>
 #include <QList>
 #include "facturaview.h"
+#include "facturaivaincclienteview.h"
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
 #include "blfixed.h"
@@ -244,6 +245,60 @@ void GenCobroQToolButton::click()
         } // end if
     }// end if
 
+
+    
+    if ( m_object->objectName() == "FacturaIVAIncClienteBase" ) {
+        FacturaIVAIncClienteView *fpv = ( FacturaIVAIncClienteView * ) m_object;
+        int nuevo = 1;
+        /// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
+        QString query = "SELECT * FROM cobro WHERE refcobro ='" + fpv->dbValue ( "reffactura" ) + "'";
+        BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
+        if ( cur->numregistros() > 0 ) {
+            QMessageBox msgBox;
+            msgBox.setText ( tr ( "Ya existe un cobro con esta referencia\n" ) );
+            msgBox.setInformativeText ( tr ( "Desea abrir el cobro existente, registrar un nuevo cobro o salir?" ) );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
+            QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
+            msgBox.setDefaultButton ( QMessageBox::Cancel );
+            msgBox.exec();
+            /// Se ha pulsado sobre la opcion abrir
+            if ( msgBox.clickedButton() == openButton ) {
+
+                while ( !cur->eof() ) {
+                    CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+                    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
+                    bud->load ( cur->value( "idcobro" ) );
+                    bud->pintar();
+                    bud->show();
+                    cur->nextRecord();
+                } // end while
+                nuevo = 0;
+            } // end if
+
+            /// Se ha pulsado sobre la opcion cancelar
+            if ( msgBox.clickedButton() == abortButton )
+                nuevo = 0;
+        } // end if
+        delete cur;
+
+        /// Creacion de un cobro nuevo a partir de la factura.
+        if ( nuevo ) {
+            CobroView *bud = new CobroView ( fpv->mainCompany(), 0 );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
+            bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
+            bud->setDbValue ( "cantcobro", fpv->m_totalfactura->text() );
+            bud->setDbValue ( "refcobro", fpv->dbValue ( "reffactura" ) );
+            bud->setDbValue ( "comentcobro", fpv->dbValue ( "descfactura" ) );
+            bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+            bud->pintar();
+            bud->show();
+        } // end if
+
+	/// Marcamnos la factura como procesada ya que el cobro es inicialmente por el importe total
+	fpv->mui_procesadafactura->setChecked(TRUE);
+
+    }// end if
     
 }
 

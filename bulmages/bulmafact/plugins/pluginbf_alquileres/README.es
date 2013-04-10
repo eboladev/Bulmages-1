@@ -28,7 +28,7 @@ Incompatibles:
 
 Orden: 900
 
-Reports: impers_contrato_alquiler.rml
+Reports: impers_contrato_alquiler.rml;impers_contrato_odt.pys;contrato_plantilla1.odt
 
 Categorias: AutoForms;Alquileres;Experimentales;
 

@@ -1,0 +1,155 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+          
+# title="Contrato en Procesador de Textos"
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+import ezodf
+from ezodf.xmlns import CN
+
+#odt = newdoc(doctype='odt', filename='contrato_plantilla.odt')
+odt = ezodf.opendoc("[CONF_DIR_OPENREPORTS]contrato_plantilla1.odt")
+#odt.body += ezodf.Heading("Chapter 1")
+#odt.body += ezodf.Paragraph("This is a paragraph.")
+
+params = {}
+
+#paragraphs = odt.body.filter(kind='Paragraph')
+paragraphs = odt.body
+#paragraphs = odt.body.findall(CN('text:p'))
+
+
+# Toma de parametros
+# ==================
+
+params["representanteempcontrato"] = u'[representanteempcontrato]'
+params["dirrepresentanteempcontrato"] = u'[dirrepresentanteempcontrato]'
+params["cifrepresentanteempcontrato"] = u'[cifrepresentanteempcontrato]'
+params["representantecontrato"] = u'[representantecontrato]'
+params["cifrepresentantecontrato"] = u'[cifrepresentantecontrato]'
+params["dirrepresentantecontrato"] = u'[dirrepresentantecontrato]'
+params["textocantidadcontrato"] = u'[textocantidadcontrato]'
+params["fianzacontrato"] = u'[fianzacontrato]'
+
+
+#<!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->
+params['nomempresa'] = u'[valor]'
+#<!-- END QUERY-->
+
+params["curdate"] = ''
+<!--QUERY="SELECT EXTRACT('day' FROM '[fincontrato]'::DATE) AS dinicio"-->
+params["curdate"] += '[dinicio] de '
+<!--END QUERY-->
+<!-- QUERY="SELECT a, 
+CASE WHEN a=1 THEN 'Enero'
+     WHEN a=2 THEN 'Febrero'
+     WHEN a=3 THEN 'Marzo'
+     WHEN a=4 THEN 'Abril'
+     WHEN a=5 THEN 'Mayo'
+     WHEN a=6 THEN 'Junio'
+     WHEN a=7 THEN 'Julio'
+     WHEN a=8 THEN 'Agosto'
+     WHEN a=9 THEN 'Setiembre'
+     WHEN a=10 THEN 'Octubre'
+     WHEN a=11 THEN 'Noviembre'   
+     ELSE 'Diciembre'
+       END AS b FROM (SELECT EXTRACT('mon' from '[fincontrato]'::DATE) AS a) AS t1" -->
+params["curdate"] += '[b] de '
+<!-- END QUERY-->
+<!--QUERY="SELECT EXTRACT('year' FROM '[fincontrato]'::DATE) AS dinicio"-->
+params["curdate"] += '[dinicio]'
+<!--END QUERY-->
+
+params["enddate"] = ''
+<!--QUERY="SELECT EXTRACT('day' FROM '[ffincontrato]'::DATE) AS dinicio"-->
+params["enddate"] += '[dinicio] de '
+<!--END QUERY-->
+<!-- QUERY="SELECT a, 
+CASE WHEN a=1 THEN 'Enero'
+     WHEN a=2 THEN 'Febrero'
+     WHEN a=3 THEN 'Marzo'
+     WHEN a=4 THEN 'Abril'
+     WHEN a=5 THEN 'Mayo'
+     WHEN a=6 THEN 'Junio'
+     WHEN a=7 THEN 'Julio'
+     WHEN a=8 THEN 'Agosto'
+     WHEN a=9 THEN 'Setiembre'
+     WHEN a=10 THEN 'Octubre'
+     WHEN a=11 THEN 'Noviembre'   
+     ELSE 'Diciembre'
+       END AS b FROM (SELECT EXTRACT('mon' from '[ffincontrato]'::DATE) AS a) AS t1" -->
+params["enddate"] += '[b] de '
+<!-- END QUERY-->
+<!--QUERY="SELECT EXTRACT('year' FROM '[ffincontrato]'::DATE) AS dinicio"-->
+params["enddate"] += '[dinicio]'
+<!--END QUERY-->
+
+<!--QUERY = "SELECT * FROM vivienda WHERE idvivienda=[idvivienda]"-->
+params["dirvivienda"] = u'[dirvivienda]'
+params["metrosvivienda"] = '[metrosvivienda]'
+<!-- END QUERY-->
+
+
+
+<!--QUERY = "SELECT * FROM configuracion WHERE nombre='CIF'"-->
+params["cifempresa"] = u'[valor]'
+<!-- END QUERY-->
+
+<!--QUERY = "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'"-->
+params["dircompleta"] = u'[valor]'
+<!-- END QUERY-->
+
+<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->
+params["nomcliente"] = u'[nomcliente]'
+params["cifcliente"] = u'[cifcliente]'
+params["dircliente"] = u'[dircliente]'
+<!-- END QUERY -->
+
+'''
+ 
+
+
+
+
+'''
+
+
+for obj in paragraphs: 
+
+  for index, object in params.iteritems():
+    if (obj.xmlnode.text):
+      obj.xmlnode.text = obj.xmlnode.text.replace("["+index+"]",object)
+    if (obj.xmlnode.tail):
+      obj.xmlnode.tail = obj.xmlnode.tail.replace("["+index+"]",object)
+    for nodo in obj.xmlnode.iterdescendants():
+      if (nodo.text):
+        nodo.text = nodo.text.replace("["+index+"]",object)
+      if (nodo.tail):
+        nodo.tail = nodo.tail.replace("["+index+"]",object)
+			  
+#    string1 = pp.xmlnode.text
+#    if (string1 <> None):
+#      pp.xmlnode.text = string1.replace("a","b")
+  
+#  print obj.plaintext()
+#  print str(obj.kind())
+#  if obj.plaintext() <> None:
+#      obj.text(obj.text())
+
+
+  #obj.text("hola")
+
+# Asi podemos reemplazar un paragrafo por otro.
+#  np = ezodf.Paragraph(" 23" + obj.plaintext())
+#  odt.body.replace(obj, np)
+
+
+#  obj.append_text("MEMUERO")
+
+  
+#odt.body.insert(3, ezodf.Paragraph('New first paragraph.'))
+  
+odt.saveas("impers_contrato_odt.odt")

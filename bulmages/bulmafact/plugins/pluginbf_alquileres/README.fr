@@ -6,7 +6,7 @@
 
 Nombre: Alquileres (AutoForms)
 
-Biblioteca: 
+Biblioteca: libpluginbf_alquileres
 
 Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/pluginbf_alquileres/vivienda.png" WIDTH="48"/><BR>Gestion de alquileres</H1>
 <PARA>Este plugin realiza la gestion de una sencilla de arrendamientos. </PARA>
@@ -26,9 +26,9 @@ Dependencias: libpluginbl_autoform.so; libpluginbl_template.so; libpluginbl_temp
 
 Incompatibles:
 
-Orden: 29
+Orden: 900
 
-Reports: impers_contrato_alquiler.rml
+Reports: impers_contrato_alquiler.rml;impers_contrato_odt.pys;contrato_plantilla1.odt
 
 Categorias: AutoForms;Alquileres;Experimentales;
 

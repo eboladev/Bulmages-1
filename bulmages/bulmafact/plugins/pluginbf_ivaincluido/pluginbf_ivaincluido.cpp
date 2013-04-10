@@ -34,7 +34,7 @@ int entryPoint ( BfBulmaFact *bges )
     BL_FUNC_DEBUG
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_IVAIncluido", "0.14.1-0000");
+    bges->company()->dbPatchVersionCheck("PluginBf_IVAIncluido", "0.15.1-0000");
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

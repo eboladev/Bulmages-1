@@ -978,14 +978,6 @@ int BfForm::generateRML ( void )
 }
 
 
-QString BfForm::templateName ( void )
-{
-    BL_FUNC_DEBUG
-    
-    
-    return tableName();
-}
-
 ///
 /**
 \param arch archivo a generar
