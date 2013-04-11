@@ -94,7 +94,7 @@ void BfForm::calculaypintatotales()
     if (!exists(campfecha)) 
       campfecha = "f" + tableName();
     if (exists(campfecha)) {
-        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= "+QString (dbValue(campfecha)=="" ? "now()" : "'" + dbValue(campfecha) +"'::DATE") + " AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1";
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= "+QString (dbValue(campfecha)=="" ? "now()" : "'" + dbValue(campfecha) +"'::DATE") + " ORDER BY fechairpf DESC LIMIT 1";
 	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
 	if ( cur ) {
 	    if ( !cur->eof() ) {
