@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Asociaciones de padres de alumnos;Utilidades genericas;Experimentales;
+Categorias: Asociaciones de padres de alumnos;Utilidades genericas;Experimentales; Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 90
 
