@@ -208,7 +208,6 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
   
   if (!m_listalineas) return;
 
-/*  
   
   BlFixed total("0.00");
   BlFixed impuestos("0.00");
@@ -249,7 +248,8 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
         } // end for
     } // end if
     
-    
+
+   
    for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
         linea = m_listalineas->lineaat ( i );
         BlFixed cant ( linea->dbValue ( "cantlfactura" ));
@@ -257,14 +257,15 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
 	BlFixed ivalin ( linea->dbValue ( "ivalfactura"));
 	BlFixed reqeq ( linea->dbValue ( "reqeqlfactura"));
 	BlFixed descl ( linea->dbValue ( "descuentolfactura"));
+
 	descl = (descl + porcentt) / BlFixed("100");
-	
-	BlFixed totallinea = cant * pvpund * (1 - descl);
+	BlFixed totallinea = cant * pvpund * (BlFixed("1.00") - descl);
 	
 	BlFixed baselinea = totallinea / (BlFixed("1.00") + ivalin / BlFixed("100"));
 	BlFixed ivalinea = totallinea - baselinea;
 	BlFixed reqeqlinea = baselinea * (reqeq / BlFixed("100"));
 	totalreq = totalreq + reqeqlinea;
+	
 	
 	totallinea.setPrecision(2);
 	total = total + totallinea + reqeqlinea;
@@ -273,6 +274,7 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
 	impuestos = impuestos + ivalinea;
 	
 	desc = desc + baselinea * descl;
+
 		
     } // end for
     // Calculamos la base imponible
@@ -287,7 +289,7 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
     m_totalIRPF->setText ( QString ( totalirpf.toQString() ) );
     m_totalReqEq->setText ( QString ( totalreq.toQString() ) );
     
-*/
+
   
 }
 
