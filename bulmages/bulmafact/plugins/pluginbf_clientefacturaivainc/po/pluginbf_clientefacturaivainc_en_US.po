@@ -1,0 +1,528 @@
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <en@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bfclientefacturadescuentosubform.cpp:43 bfclientefacturasubform.cpp:56
+msgid "% Descuento"
+msgstr "% Discount"
+
+#: bfclientefacturasubform.cpp:55
+msgid "% Recargo E.Q."
+msgstr "% Surcharge E.Q."
+
+#: ui_facturaivaincclientebase.h:794
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_facturaivaincclientebase.h:795
+msgid "&Cancelar"
+msgstr "&Cancel"
+
+#: ui_facturaivaincclientebase.h:774
+#, fuzzy
+msgid "&Detalle"
+msgstr "&Details"
+
+#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
+msgid "&No"
+msgstr "&No"
+
+#: pluginbf_clientefacturaivainc.cpp:68
+msgid "&Nuevo facturaivainc a cliente"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
+msgid "&Si"
+msgstr "&Yes"
+
+#: pluginbf_clientefacturaivainc.cpp:59
+msgid "&FacturaIVAInces a clientes"
+msgstr ""
+
+#: pluginbf_clientefacturaivainc.cpp:55
+msgid "&Ventas"
+msgstr ""
+
+#: ui_facturaivaincclientebase.h:788 ui_facturaivaincclientebase.h:789
+#: ui_facturaivaincclientebase.h:790 ui_facturaivaincclientebase.h:791
+#: ui_facturaivaincclientebase.h:792 ui_facturaivaincclientebase.h:793
+msgid "0.00"
+msgstr ""
+
+#: ui_facturaivaincclientelistbase.h:504 ui_facturaivaincclientelistbase.h:507
+msgid "Actualizar listado"
+msgstr "Update listing"
+
+#: facturaivaincclienteview.cpp:70
+msgid "Almacen"
+msgstr "Warehouse"
+
+#: ui_facturaivaincclientebase.h:773
+#, fuzzy
+msgid "Almacen:"
+msgstr "Warehouse"
+
+#: facturaivaincclientelist.cpp:435
+#, fuzzy
+msgid "Base imponible"
+msgstr "Tax basis"
+
+#: ui_facturaivaincclientebase.h:783
+#, fuzzy
+msgid "Base imponible:"
+msgstr "Tax basis"
+
+#: ui_facturaivaincclientelistbase.h:472 ui_facturaivaincclientelistbase.h:475
+msgid "Borrar factura"
+msgstr "Erase letters patent"
+
+#: ui_facturaivaincclientebase.h:744 ui_facturaivaincclientebase.h:747
+msgid "Borrar facturaivainc"
+msgstr ""
+
+#: ui_facturaivaincclientelistbase.h:511
+msgid "Buscar:"
+msgstr "Look for:"
+
+#: bfclientefacturasubform.cpp:50
+msgid "Cantidad"
+msgstr "Amount"
+
+#: facturaivaincclienteview.cpp:69
+msgid "Cliente"
+msgstr "Client"
+
+#: facturaivaincclientelist.cpp:165 facturaivaincclienteview.cpp:103
+msgid "Cliente:"
+msgstr "Client:"
+
+#: bfclientefacturasubform.cpp:46
+msgid "Codigo completo articulo"
+msgstr "Complete code article"
+
+#: facturaivaincclientelist.cpp:423
+#, fuzzy
+msgid "Codigo de almacen"
+msgstr "Code warehouse"
+
+#: facturaivaincclienteview.cpp:75
+msgid "Comentario"
+msgstr "Commentary"
+
+#: facturaivaincclienteview.cpp:76
+#, fuzzy
+msgid "Comentario privado"
+msgstr "Commentary"
+
+#: ui_facturaivaincclientebase.h:778
+msgid "Comentario&s"
+msgstr "Commentaries"
+
+#: facturaivaincclientelist.cpp:433
+#, fuzzy
+msgid "Comentarios del factura"
+msgstr "Commentaries of the seat"
+
+#: ui_facturaivaincclientebase.h:777
+#, fuzzy
+msgid "Comentarios privados:"
+msgstr "Commentaries:"
+
+#: ui_facturaivaincclientebase.h:776
+#, fuzzy
+msgid "Comentarios publicos:"
+msgstr "Commentaries:"
+
+#: bfclientefacturadescuentosubform.cpp:42
+msgid "Concepto descuento"
+msgstr "Discount concept"
+
+#: ui_facturaivaincclientelistbase.h:496 ui_facturaivaincclientelistbase.h:499
+msgid "Configurar listado"
+msgstr "Form listing"
+
+#: ui_facturaivaincclientelistbase.h:502
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_facturaivaincclientelistbase.h:478
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_facturaivaincclientelistbase.h:470
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_facturaivaincclientelistbase.h:494
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_facturaivaincclientelistbase.h:462
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_facturaivaincclientelistbase.h:486
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: facturaivaincclientelist.cpp:322
+#, fuzzy
+msgid "Debe seleccionar una linea"
+msgstr "It must select a family"
+
+#: facturaivaincclientelist.cpp:425 facturaivaincclienteview.cpp:80
+#: bfclientefacturasubform.cpp:49
+msgid "Descripcion"
+msgstr "Description"
+
+#: facturaivaincclientelist.cpp:429
+#, fuzzy
+msgid "Descripcion de forma de pago"
+msgstr "Description of the type of article"
+
+#: ui_facturaivaincclientebase.h:765
+msgid "Descripcion:"
+msgstr "Description:"
+
+#: ui_facturaivaincclientebase.h:775
+#, fuzzy
+msgid "Descuen&tos"
+msgstr "Discount"
+
+#: ui_facturaivaincclientebase.h:782
+#, fuzzy
+msgid "Descuentos:"
+msgstr "Discount:"
+
+#: ui_facturaivaincclientelistbase.h:464 ui_facturaivaincclientelistbase.h:467
+#, fuzzy
+msgid "Editar factura"
+msgstr "Id letters patent"
+
+#: facturaivaincclientelist.cpp:336
+#, fuzzy
+msgid "Error al borrar el factura a cliente"
+msgstr "Error when erasing a client"
+
+#: facturaivaincclienteview.cpp:118
+#, fuzzy
+msgid "Error al crear el factura a cliente"
+msgstr "Error when creating the client"
+
+#: genalbqtoolbutton.cpp:227 genalbqtoolbutton.cpp:359
+#, fuzzy
+msgid "Error inesperado"
+msgstr "</B> Inserted"
+
+#: genalbqtoolbutton.cpp:157
+msgid ""
+"Existe un factura a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:289
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: ui_facturaivaincclientelistbase.h:510
+msgid "F5"
+msgstr "F5"
+
+#: genalbqtoolbutton.cpp:288
+msgid "Factura ya existe"
+msgstr ""
+
+#: facturaivaincclientelist.cpp:426
+#, fuzzy
+msgid "Fecha de factura"
+msgstr "Date of the purchase"
+
+#: facturaivaincclienteview.cpp:72
+#, fuzzy
+msgid "Fecha de creacion"
+msgstr "Date of the seat"
+
+#: ui_facturaivaincclientebase.h:769
+#, fuzzy
+msgid "Fecha de creacion:"
+msgstr "&Date of the seat:"
+
+#: ui_facturaivaincclientelistbase.h:451
+#, fuzzy
+msgid "Fecha final:"
+msgstr "Final &date:"
+
+#: ui_facturaivaincclientelistbase.h:450
+#, fuzzy
+msgid "Fecha inicial:"
+msgstr "Initial &date:"
+
+#: ui_facturaivaincclientelistbase.h:488 ui_facturaivaincclientelistbase.h:491
+#, fuzzy
+msgid "Filtrar facturaes"
+msgstr "Filter balance"
+
+#: facturaivaincclienteview.cpp:77
+msgid "Forma de pago"
+msgstr "Mode of payment"
+
+#: ui_facturaivaincclientebase.h:771
+msgid "Forma de pago:"
+msgstr "Mode of payment:"
+
+#: ui_facturaivaincclientebase.h:740
+#, fuzzy
+msgid "Guardar factura"
+msgstr "Keep balance"
+
+#: ui_facturaivaincclientebase.h:737
+msgid "Guardar facturaivainc"
+msgstr ""
+
+#: ui_facturaivaincclientebase.h:784
+#, fuzzy
+msgid "I.R.P.F.:"
+msgstr "I.R.P.F (-"
+
+#: bfclientefacturasubform.cpp:54
+msgid "I.V.A."
+msgstr "I.V.A."
+
+#: facturaivaincclientelist.cpp:432
+#, fuzzy
+msgid "ID factura"
+msgstr "Id letters patent"
+
+#: facturaivaincclientelist.cpp:434
+#, fuzzy
+msgid "ID almacen"
+msgstr "id warehouse"
+
+#: facturaivaincclientelist.cpp:431
+msgid "ID cliente"
+msgstr "ID client"
+
+#: facturaivaincclientelist.cpp:428
+#, fuzzy
+msgid "ID forma de pago"
+msgstr "Mode of payment"
+
+#: facturaivaincclientelist.cpp:430
+#, fuzzy
+msgid "ID trabajador"
+msgstr "Worker"
+
+#: facturaivaincclienteview.cpp:68 bfclientefacturadescuentosubform.cpp:44
+#: bfclientefacturasubform.cpp:57
+msgid "Id factura"
+msgstr "Id letters patent"
+
+#: bfclientefacturasubform.cpp:45
+msgid "Id articulo"
+msgstr "Id article"
+
+#: bfclientefacturadescuentosubform.cpp:41
+msgid "Id descuento"
+msgstr ""
+
+#: ui_facturaivaincclientelistbase.h:480 ui_facturaivaincclientelistbase.h:483
+msgid "Imprimir listado"
+msgstr "Print listing"
+
+#: ui_facturaivaincclientebase.h:751 ui_facturaivaincclientebase.h:754
+#, fuzzy
+msgid "Imprimir facturaivainc"
+msgstr "Print accounts"
+
+#: facturaivaincclientelist.cpp:436
+#, fuzzy
+msgid "Impuestos"
+msgstr "Imputation"
+
+#: ui_facturaivaincclientebase.h:785
+#, fuzzy
+msgid "Impuestos:"
+msgstr "Imputation"
+
+#: ui_facturaivaincclientebase.h:759 ui_facturaivaincclientebase.h:762
+#, fuzzy
+msgid "Mostrar/ocultar cabecera"
+msgstr "Show/hide filter"
+
+#: ui_facturaivaincclientelistbase.h:449
+#, fuzzy
+msgid "Mostrar:"
+msgstr "Show seat"
+
+#: bfclientefacturasubform.cpp:48
+msgid "No linea"
+msgstr ""
+
+#: bfclientefacturasubform.cpp:47
+msgid "Nombre articulo"
+msgstr "Name article"
+
+#: facturaivaincclientelist.cpp:427
+msgid "Nombre de cliente"
+msgstr "Name of client"
+
+#: ui_facturaivaincclientelistbase.h:456 ui_facturaivaincclientelistbase.h:459
+#, fuzzy
+msgid "Nuevo factura"
+msgstr "Id letters patent"
+
+#: pluginbf_clientefacturaivainc.cpp:70 pluginbf_clientefacturaivainc.cpp:71
+#: ui_facturaivaincclientebase.h:735
+msgid "Nuevo facturaivainc a cliente"
+msgstr ""
+
+#: facturaivaincclientelist.cpp:424 facturaivaincclienteview.cpp:71
+#, fuzzy
+msgid "Numero de factura"
+msgstr "Number of fax"
+
+#: ui_facturaivaincclientebase.h:766
+msgid "Numero de facturaivainc:"
+msgstr ""
+
+#: bfclientefacturasubform.cpp:58
+msgid "Orden"
+msgstr "Order"
+
+#: bfclientefacturasubform.cpp:52
+msgid "P.V.P."
+msgstr "P.V.P."
+
+#: facturaivaincclienteview.cpp:73
+#, fuzzy
+msgid "Persona de contacto"
+msgstr "Number of quotas"
+
+#: ui_facturaivaincclientebase.h:770
+#, fuzzy
+msgid "Persona de contacto:"
+msgstr "Account of assets:"
+
+#: facturaivaincclienteview.cpp:79 ui_facturaivaincclientebase.h:767
+#, fuzzy
+msgid "Procesado"
+msgstr "Pro&cessings"
+
+#: ui_facturaivaincclientebase.h:786
+#, fuzzy
+msgid "R.E.:"
+msgstr "R.E."
+
+#: facturaivaincclienteview.cpp:81
+msgid "Referencia"
+msgstr "Reference"
+
+#: facturaivaincclientelist.cpp:422
+#, fuzzy
+msgid "Referencia de factura"
+msgstr "Reference"
+
+#: ui_facturaivaincclientebase.h:757
+#, fuzzy
+msgid "Referencia:"
+msgstr "Reference"
+
+#: ui_facturaivaincclientebase.h:781
+msgid "Registro"
+msgstr ""
+
+#: facturaivaincclienteview.cpp:82 ui_facturaivaincclientebase.h:779
+msgid "Sucesos antes de imprimir"
+msgstr ""
+
+#: facturaivaincclienteview.cpp:83 ui_facturaivaincclientebase.h:780
+msgid "Sucesos tras imprimir"
+msgstr ""
+
+#: facturaivaincclienteview.cpp:74
+#, fuzzy
+msgid "Telefono de contacto"
+msgstr "Description of the account"
+
+#: ui_facturaivaincclientebase.h:772
+#, fuzzy
+msgid "Telefono de contacto:"
+msgstr "Description of the account"
+
+#: facturaivaincclienteview.cpp:65
+msgid "FacturaIVAInc"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:156
+msgid "FacturaIVAInc ya existe"
+msgstr ""
+
+#: facturaivaincclientelist.cpp:347 pluginbf_clientefacturaivainc.cpp:61
+#: pluginbf_clientefacturaivainc.cpp:62
+msgid "FacturaIVAInces a clientes"
+msgstr ""
+
+#: ui_facturaivaincclientelistbase.h:448
+msgid "FacturaIVAIncs a clientes"
+msgstr ""
+
+#: facturaivaincclientelist.cpp:209
+msgid "FacturaIVAIncs no procesados"
+msgstr ""
+
+#: facturaivaincclientelist.cpp:208
+msgid "FacturaIVAIncs procesados"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
+#, fuzzy
+msgid "Tiene que seleccionar un cliente"
+msgstr "Must select an element"
+
+#: facturaivaincclientelist.cpp:207
+msgid "Todos los facturaivaincs"
+msgstr ""
+
+#: facturaivaincclientelist.cpp:437
+msgid "Total"
+msgstr "Total"
+
+#: bfclientefacturasubform.cpp:53
+msgid "Total Linea"
+msgstr "Total of the line"
+
+#: ui_facturaivaincclientebase.h:787
+#, fuzzy
+msgid "Total:"
+msgstr "Total"
+
+#: ui_facturaivaincclientelistbase.h:453
+#, fuzzy
+msgid "Total: "
+msgstr "Total"
+
+#: facturaivaincclienteview.cpp:78 ui_facturaivaincclientelistbase.h:452
+msgid "Trabajador"
+msgstr "Worker"
+
+#: ui_facturaivaincclientebase.h:768
+#, fuzzy
+msgid "Trabajador:"
+msgstr "Worker"

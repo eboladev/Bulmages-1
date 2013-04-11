@@ -37,7 +37,7 @@ Incompatibles:
 
 Orden: 60
 
-Categorias: Utilidades genericas;
+Categorias: Utilidades genericas; Colmados; Ferreter¨ªas; Droguer¨ªas;Facturacion generica;Talleres;Distribuci¨®n; Supermercados;Distribuci¨®n Alimentaria;Servicios Generales;Alquileres;Restauraci¨®n; Parques Infantiles; Tallas y Colores;
 
 
 Comentarios: Su funcionamiento se basa en que haya un documento RML cuyo nombre
