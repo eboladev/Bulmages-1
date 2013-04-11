@@ -208,6 +208,8 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
   
   if (!m_listalineas) return;
 
+/*  
+  
   BlFixed total("0.00");
   BlFixed impuestos("0.00");
   BlFixed bimp("0.00");
@@ -284,6 +286,8 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
     m_totalDiscounts->setText ( desc.toQString() );
     m_totalIRPF->setText ( QString ( totalirpf.toQString() ) );
     m_totalReqEq->setText ( QString ( totalreq.toQString() ) );
+    
+*/
   
 }
 
