@@ -3304,6 +3304,7 @@ BEGIN
 	UPDATE CONFIGURACION SET valor = ''0.15.0-0001'' WHERE nombre = ''DatabaseRevision'';
     ELSE
 	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0001'');
+
     END IF;
 
     RETURN 0;
