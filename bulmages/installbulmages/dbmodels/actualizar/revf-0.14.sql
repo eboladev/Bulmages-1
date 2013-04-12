@@ -103,7 +103,7 @@ BEGIN
 
     SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketalbaran'';
     IF NOT FOUND THEN
-	ALTER TABLE factura ADD COLUMN ticketfactura boolean DEFAULT FALSE;
+	ALTER TABLE albaran ADD COLUMN ticketalbaran boolean DEFAULT FALSE;
     END IF;
 
    RETURN 0;
