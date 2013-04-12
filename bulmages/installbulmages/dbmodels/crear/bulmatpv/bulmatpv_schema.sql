@@ -60,7 +60,6 @@ BEGIN
 	IF NOT FOUND THEN
 	    ALTER TABLE albaran ADD COLUMN horaalbaran TIME DEFAULT now();
 	    ALTER TABLE albaran ADD COLUMN anuladoalbaran boolean;
-	    ALTER TABLE albaran ADD COLUMN ticketalbaran boolean;
 	    ALTER TABLE albaran ADD COLUMN recogidoalbaran boolean;
 	    CREATE TABLE z (
 		idz SERIAL PRIMARY KEY,
@@ -72,7 +71,10 @@ BEGIN
 	    );
 	END IF;
 
-
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketalbaran'';
+	IF NOT FOUND THEN
+	    ALTER TABLE albaran ADD COLUMN ticketalbaran boolean;
+	END IF;
 
 	SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketfactura'';
 	IF NOT FOUND THEN
