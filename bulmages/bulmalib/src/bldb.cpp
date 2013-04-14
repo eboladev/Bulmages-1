@@ -949,6 +949,7 @@ void BlDbRecord::substrConf ( QString &buff )
     for ( int i = 0; i < 1000; i++ ) {
         if ( g_confpr->name( i ) != "" ) {
             buff.replace ( "[" + g_confpr->name( i ) + "]", g_confpr->value( i ) );
+            buff.replace ( "[" + g_confpr->name( i ) + ",l]", g_confpr->value( i ).replace("\\","\\\\") );
         } // end if
     } // end for
 }
@@ -3075,6 +3076,7 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
     while ( j.hasNext() ) {
         j.next();
         buff.replace ( ("[" + j.key() + "]").toAscii(), j.value().toAscii() );
+        buff.replace ( ("[" + j.key() + ",l]").toAscii(), j.value().toAscii().replace("\\","\\\\") );
     } // end while
     
     
@@ -3083,6 +3085,7 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
     while ( i.hasNext() ) {
         i.next();
         buff.replace ( ("[" + i.key() + "]").toAscii(), i.value().toAscii() );
+        buff.replace ( ("[" + i.key() + ",l]").toAscii(), i.value().toAscii().replace("\\","\\\\") );
     } // end while
 
     substrConf ( buff );
