@@ -1644,11 +1644,19 @@ int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &b
     runcommand += "to='" + recipient + "',";
     runcommand += "bcc='" + bcc + "',";
     runcommand += "subject='" + subject + "',";
+    #ifndef  Q_OS_WIN32
     body.replace(",","&#44;"); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
+    #else
+    body.replace(","," "); // convertim les comes en espais ja que Windows no suporta altre cosa..
+    #endif
     runcommand += "body='" + body + "',";
     if (attached != "") {
-        runcommand += "attachment='file://" + attached + "'";
-    }
+        runcommand += "attachment='" + attached + "'";
+    } // end if
+    
+    #ifdef Q_OS_WIN32
+    runcommand.replace("\n"," ");
+    #endif
             
     system(QString( runcommand + background).toAscii());
     
@@ -1767,20 +1775,18 @@ int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
     #ifdef Q_OS_WIN32
         program_name.replace(".exe", "");
     #endif
-    
     if (program_name == "thunderbird") {
         Thunderbird (  recipient, bcc, subject, body, attached );
     } else if (program_name == "kmail") {
         Kmail (  recipient, bcc, subject, body, attached );
     } else if (program_name == "evolution") {
         Evolution (  recipient, bcc, subject, body, attached );
-    }
+    } // end if
     #ifdef Q_OS_WIN32
      else if (program_name == "Outlook") {
         Outlook (  recipient, bcc, subject, body, attached );
     } // end if
     #endif
-    
     return 0;
     
 }
