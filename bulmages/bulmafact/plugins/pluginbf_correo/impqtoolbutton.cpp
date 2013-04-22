@@ -57,7 +57,6 @@ EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *p
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    
 }
 
 
@@ -67,7 +66,6 @@ EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *p
 EmailQToolButton::~EmailQToolButton()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -132,7 +130,7 @@ void EmailQToolButton::click()
             subject = _("Presupuesto ") + num;
             body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
 
-            body += _("Atentamente\n\n\n\"");
+            body += _("Atentamente\n\n\n");
             attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 
             blSendEmail( email, bcc, subject, body, attached );
@@ -164,7 +162,7 @@ void EmailQToolButton::click()
             QString subject = _("Pedido ") + num;
             QString body = _("Adjunto le enviamos el pedido numero ") + num + _(" con referencia ") + ref +"\n";
 
-            body += _("Atentamente\n\n\n\"");
+            body += _("Atentamente\n\n\n");
             QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
 
             blSendEmail( email, bcc, subject, body, attached );
@@ -198,7 +196,7 @@ void EmailQToolButton::click()
             subject = _("Albaran ") + num;
             body = _("Adjunto le enviamos el albaran numero ") + num + _(" con referencia ") + ref +"\n";
 
-            body += _( "Atentamente\n\n\n\"");
+            body += _( "Atentamente\n\n\n");
             attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
 
             blSendEmail( email, bcc, subject, body, attached );
