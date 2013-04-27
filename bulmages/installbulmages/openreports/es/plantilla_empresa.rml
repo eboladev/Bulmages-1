@@ -9,8 +9,8 @@
 <drawString x="1.45cm" y="24.05cm"><!-- QUERY="SELECT valor AS val3 FROM configuracion WHERE nombre='CodPostal'" -->[val3]<!-- END QUERY --> <!-- QUERY="SELECT valor AS val4 FROM configuracion WHERE nombre='Municipio'" -->[val4]<!-- END QUERY --></drawString>
 
 
-<place x="17cm" y="2.5cm" width="10cm" height="3cm">
-<barCode code="qrcode" height="3cm">
+<place x="7.5cm" y="23.7cm" width="10cm" height="2cm">
+<barCode code="qrcode" height="2cm" width="2cm">
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY -->
 
 <!-- QUERY="SELECT valor AS val1 FROM configuracion WHERE nombre='CIF'" -->[val1]<!-- END QUERY -->

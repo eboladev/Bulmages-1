@@ -5,70 +5,34 @@
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<!--<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>-->
+		<image x="1cm" y="18.8cm" width="5cm" file="logo.jpg"/>
 
-		<!-- EL DRAFT -->
-			<setFont name="Helvetica" size="100"/>
-			<fill color="(1,0.9,0.9)"/>
-			<stroke color="(1,0.9,0.9)"/>
-			<translate dx="13cm" dy="-10.5cm"/>
-			<rotate degrees="30"/>
-			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
-			<lineMode width="4mm"/>
-			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-		<rotate degrees="-30"/>
-		<translate dx="-13cm" dy="10.5cm"/>
 
-		<!-- EL PIE DE PAGINA -->
-		<setFont name="Helvetica" size="8"/>		
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<drawString x="13.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
-		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>	
+
+		<!-- EL RECUADRO DONDE VA EL CLIENTE -->
+		<stroke color="(0.18,0.38,0.42)"/>
+		<lineMode width="0.3mm"/>
+		<!-- EL RECUADRO FECHA -->
+		<rect round="0.05cm" x="7.8cm" y="19.3cm" width="20.5cm" height="1.0cm" fill="no" stroke="yes"/>
+
+
+		
+		<!-- EL NUMERO DE PAGINA -->
+		<drawRightString x="29.5cm" y="0.3cm"><pageNumber/></drawRightString> 	
 
 
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">[titulo]</drawString>
+		<setFont name="Helvetica" size="14"/>
+		<drawString x="10cm" y="19.5cm">[titulo]</drawString>
 		</pageGraphics>
-	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="18cm"/>
 	</pageTemplate>
 </template>
-<stylesheet>
-	<blockTableStyle id="tabla">
-		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
-		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
-		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
-		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
-		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="8" start="0,0" stop="0,-1"/>
-		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-	</blockTableStyle>
-	<paraStyle name="text"
-		fontName="Helvetica"
-		fontSize="10"
-		alignment="LEFT"
-		leftIndent="0.15cm"
-		rightIndent="0.15cm"
-	/>
-	<paraStyle name="checked"
-		fontName="Helvetica-Bold"
-		fontSize="12"
-		alignment="CENTER"
-	/>
-	<paraStyle name="number"
-		fontName="Helvetica"
-		fontSize="10"
-		alignment="RIGHT"
-		leftIndent="0.15cm"
-		rightIndent="0.15cm"
-	/>
-</stylesheet>
+
+<include src="[CONF_DIR_OPENREPORTS]estilos.rml"/>
+
+
 
 <story>
 	[story]

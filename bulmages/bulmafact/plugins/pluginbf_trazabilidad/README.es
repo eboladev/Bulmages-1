@@ -20,7 +20,7 @@ ArchivoSQLpatch: pluginbf_trazabilidad.sql
 
 ArchivoSQLdeins: pluginbf_trazabilidad-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_cliente.so; libpluginbf_articulo.so
 
 Incompatibles:
 

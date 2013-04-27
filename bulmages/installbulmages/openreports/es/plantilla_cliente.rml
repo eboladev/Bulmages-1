@@ -12,7 +12,7 @@
 		<drawString x="13.5cm" y="25.6cm">[nomcliente]</drawString>
 		<drawString x="13.5cm" y="25.15cm">[cifcliente]</drawString>
 		<drawString x="13.5cm" y="24.7cm">[dircliente]</drawString>
-		<drawString x="13.5cm" y="24.25cm">[poblcliente]</drawString>
+		<drawString x="13.5cm" y="24.25cm">[cpcliente] [poblcliente]</drawString>
 		<drawString x="13.5cm" y="23.8cm">[telcliente]</drawString>
 		<drawString x="13.5cm" y="23.35cm">[mailcliente]</drawString>
 
@@ -28,7 +28,12 @@
 		<drawString x="10cm" y="23.35cm">Dirección Email:</drawString>
 
 
+<place x="17.95cm" y="24.6cm" width="10cm" height="2cm">
+<barCode code="qrcode" height="2cm" width="2cm">
+[nomcliente] [dircliente] [poblcliente] [cpcliente] [telcliente] [cifcliente] [mailcliente]
 
+</barCode>
+</place>
 
 
 

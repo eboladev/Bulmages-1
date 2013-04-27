@@ -32,7 +32,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_cliente.so
+Dependencias: libpluginbf_cliente.so; libpluginbf_seriesfactura.so; libpluginbf_articulo.so; libpluginbf_iva.so; libpluginbf_almacen.so; libpluginbf_trabajador.so; libpluginbf_formasdepago.so
 
 Incompatibles:
 

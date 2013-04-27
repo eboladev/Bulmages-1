@@ -19,7 +19,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_cliente.so; libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles:
 
