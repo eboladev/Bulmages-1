@@ -1,0 +1,10 @@
+		<!--Fecha presupuesto-->
+		<setFont name="Helvetica" size="11"/>
+
+		<drawString x="10cm" y="27.95cm">Fecha presupuesto:</drawString>
+		<drawString x="10cm" y="27.5cm">Nº presupuesto:</drawString>
+		<drawString x="17.0cm" y="27.95cm">Referencia:</drawString>
+
+		<drawString x="13.5cm" y="27.95cm">[fpresupuesto]</drawString>
+		<drawString x="13.5cm" y="27.5cm">[codigoserie_presupuesto] / [numpresupuesto]</drawString>
+		<drawString x="17.0cm" y="27.5cm">[refpresupuesto]</drawString>

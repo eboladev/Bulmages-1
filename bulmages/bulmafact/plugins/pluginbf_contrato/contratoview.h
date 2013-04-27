@@ -65,6 +65,7 @@ public:
     void inicializar();
     virtual int afterSave();
     virtual int cargarPost ( QString id );
+    virtual void pintarPost ( );
 
 public slots:
     virtual void on_subform2_itemDoubleClicked ( QTableWidgetItem * );

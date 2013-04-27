@@ -90,6 +90,22 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
 }
 
 
+/** Pintar un contrato.
+*/
+/**
+\param idbudget
+\return
+**/
+void ContratoView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + dbValue("nomcontrato"));
+}
+
+
+
 /** Al destruir la clase provocamos que se refresque el listado de contratos.
     Para que salga actualizado.
 */

@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Reports: albaran.rml; blform_AlbaranClienteView.qs
+Reports: albaran.rml; blform_AlbaranClienteView.qs; plantilla_frame.rml; plantilla_finalbaran.rml; plantilla_barcodealbaran.rml; plantilla_desalbaran.rml; plantilla_cliente.rml; plantilla_empresa.rml; plantilla_cabeceraalbaran.rml
 
 Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 

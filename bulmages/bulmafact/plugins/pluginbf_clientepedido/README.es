@@ -40,7 +40,7 @@ Incompatibles:
 
 Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 
-Reports: blform_PedidoClienteView.qs; pedidocliente.rml; impers_pedidocliente_urgente.rml
+Reports: blform_PedidoClienteView.qs; pedidocliente.rml; impers_pedidocliente_urgente.rml; plantilla_frame.rml; plantilla_finpedido.rml; plantilla_barcodepedido.rml; plantilla_despedido.rml; plantilla_cliente.rml; plantilla_empresa.rml; plantilla_cabecerapedido.rml
 
 Orden: 621
 

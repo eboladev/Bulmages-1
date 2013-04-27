@@ -11,7 +11,7 @@
 		<setFont name="Helvetica-Bold" size="12"/>
 		<drawString x="1.7cm" y="25cm">Nombre fiscal de tu Empresa</drawString>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="15.3cm" y="25cm">Llibre Diari</drawString>
+		<drawString x="15.3cm" y="25cm">Libro Diario</drawString>
 		<!-- EL PIE DE PAGINA -->
 		<setFont name="Helvetica" size="8"/>
 		<fill color="(0,0,0)"/>	

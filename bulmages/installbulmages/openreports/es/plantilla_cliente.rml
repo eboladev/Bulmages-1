@@ -1,0 +1,41 @@
+<!--IF QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
+<!--QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
+
+		<setFont name="Helvetica-Bold" size="11"/>
+		<fill color="(1,1,1)"/>
+		<drawString x="10cm" y="26.53cm">Datos del cliente:</drawString>
+
+		<!-- LOS DATOS DEL CLIENTE -->
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>
+		<drawString x="13.5cm" y="26.05cm">[idcliente]</drawString>
+		<drawString x="13.5cm" y="25.6cm">[nomcliente]</drawString>
+		<drawString x="13.5cm" y="25.15cm">[cifcliente]</drawString>
+		<drawString x="13.5cm" y="24.7cm">[dircliente]</drawString>
+		<drawString x="13.5cm" y="24.25cm">[poblcliente]</drawString>
+		<drawString x="13.5cm" y="23.8cm">[telcliente]</drawString>
+		<drawString x="13.5cm" y="23.35cm">[mailcliente]</drawString>
+
+
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>	
+		<drawString x="10cm" y="26.05cm">Nº Cliente:</drawString>
+		<drawString x="10cm" y="25.6cm">Nombre/Empresa:</drawString>
+		<drawString x="10cm" y="25.15cm">NIF/CIF:</drawString>
+		<drawString x="10cm" y="24.7cm">Dirección:</drawString>
+		<drawString x="10cm" y="24.25cm">Población:</drawString>
+		<drawString x="10cm" y="23.8cm">Teléfono:</drawString>
+		<drawString x="10cm" y="23.35cm">Dirección Email:</drawString>
+
+
+
+
+
+
+
+<!--END QUERY-->
+<!--END IF QUERY-->
+
+
+		<setFont name="Helvetica" size="10"/>
+		<drawCentredString x="5.3cm" y="25.85cm">F. pago: <!--QUERY="SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1"-->[descforma_pago]<!--END QUERY--></drawCentredString>

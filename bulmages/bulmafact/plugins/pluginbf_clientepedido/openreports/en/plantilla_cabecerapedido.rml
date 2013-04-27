@@ -1,0 +1,10 @@
+		<!--Fecha pedidocliente-->
+		<setFont name="Helvetica" size="11"/>
+
+		<drawString x="10cm" y="27.95cm">Fecha pedido:</drawString>
+		<drawString x="10cm" y="27.5cm">Nº pedido:</drawString>
+		<drawString x="17.0cm" y="27.95cm">Referencia:</drawString>
+
+		<drawString x="13.5cm" y="27.95cm">[fechapedidocliente]</drawString>
+		<drawString x="13.5cm" y="27.5cm">[numpedidocliente]</drawString>
+		<drawString x="17.0cm" y="27.5cm">[refpedidocliente]</drawString>

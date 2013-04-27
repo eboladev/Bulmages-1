@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Extracte de Comptes" author="Tomeu Borras" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Extracto de Cuentas" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="2.5cm" y="18.54cm" width="5cm" file="logo.jpg"/>
+		<image x="2.5cm" y="28.54cm" width="2.5cm" file="logo.jpg"/>
 
 		<!-- EL DRAFT -->
 			<!--setFont name="Helvetica" size="100"/>
@@ -20,33 +20,49 @@
 		<translate dx="-15cm" dy="5.5cm"/-->
 
 		<!-- EL PIE DE PAGINA -->
-<!--		<setFont name="Helvetica" size="8"/>		
+		<setFont name="Helvetica" size="8"/>		
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="0.5cm">www.iglues.org  info@iglues.org </drawString>
--->
+		<drawString x="7.3cm" y="0.5cm">-Iglues-</drawString>
+
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">Extracte de Comptes</drawString>
+		<drawString x="18cm" y="27.5cm">Extracto de Cuentas</drawString>
 		</pageGraphics>
-	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	<frame id="column" x1="1cm" y1="1cm" width="21cm" height="26.5cm"/>
 	</pageTemplate>
 </template>
 <stylesheet>
 	<blockTableStyle id="tabla">
 		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
 		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="7" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="7" start="0,1" stop="-1,-1"/>
+		<blockFont name="Helvetica" size="7" start="1,1" stop="1,-1"/>
+		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+		<blockTopPadding length="0.03cm" start="0,0" stop="-1,-1"/>
+		<blockBottomPadding length="0.1cm" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+	<blockTableStyle id="tablaextracto">
+		<blockAlignment value="RIGHT" start="0,0" stop="-1,-1"/>
+		<blockAlignment value="LEFT" start="0,0" stop="2,-1"/>
+		<blockAlignment value="LEFT" start="6,0" stop="6,-1"/>
 		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
 		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
 		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
 		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
-		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
+		<blockFont name="Helvetica" size="6" start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="7" start="0,-1" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="7" start="0,0" stop="-1,0"/>
+
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+		<blockTopPadding length="-0.03cm" start="0,1" stop="-1,-2"/>
+		<blockBottomPadding length="-0.15cm" start="0,1" stop="-1,-2"/>
 	</blockTableStyle>
+
 </stylesheet>
 
 <story>

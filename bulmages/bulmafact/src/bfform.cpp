@@ -305,14 +305,20 @@ void BfForm::parseTagsBf ( QString &buff, int tipoEscape )
 
         BlFixed irpf ( "0" );
         
-        cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
-        
-        if ( cur ) {
-            if ( !cur->eof() ) {
-                irpf = BlFixed ( cur->value( "valor" ) );
-            } // end if
-            delete cur;
-        } // end if
+	/// El calculo del IRPF basandonos en la fecha.
+	QString campfecha = "fecha" +  tableName();
+	if (!exists(campfecha)) 
+	  campfecha = "f" + tableName();
+	if (exists(campfecha)) {
+	    QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= "+QString (dbValue(campfecha)=="" ? "now()" : "'" + dbValue(campfecha) +"'::DATE") + " ORDER BY fechairpf DESC LIMIT 1";
+	    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	    if ( cur ) {
+		if ( !cur->eof() ) {
+		    irpf = BlFixed ( cur->value( "tasairpf" ) );
+		} // end if
+		delete cur;
+	    } // end if
+	} // end if
 
         if ( exists ( "id" + tableName() ) )
             buff.replace ( "[id" + tableName() + "]", blStringEscape ( dbValue ( "id" + tableName() ), tipoEscape ) );

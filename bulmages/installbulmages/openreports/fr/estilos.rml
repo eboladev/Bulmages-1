@@ -4,6 +4,7 @@
 
 <stylesheet>
 
+
 	<blockTableStyle id="tablavencimientos">
 		<blockAlignment value="RIGHT" start="1,1" stop="-1,-1"/>
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
@@ -17,7 +18,7 @@
 		<blockBottomMargin length="0mm" />
 		<blockTopMargin length="-0cm" />
 	</blockTableStyle>
-	
+
 	<blockTableStyle id="cabecera">	
 		<blockAlignment value="CENTER" start="0,0" stop="-1,-1"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	

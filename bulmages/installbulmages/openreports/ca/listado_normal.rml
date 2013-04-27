@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="LListat" author="Tomeu Borras" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Listado" author="Tomeu Borras" allowSplitting="20">
 
 	<pageTemplate id="main">
 		<pageGraphics>
@@ -9,11 +9,11 @@
 			<image x="3cm" y="26cm" width="17cm" file="logo.jpg"/>
 	
 			<!-- EL PIE DE PAGINA -->
-<!--			<setFont name="Helvetica" size="8"/>		
+			<setFont name="Helvetica" size="8"/>		
 			<fill color="(0,0,0)"/>	
 			<stroke color="(0,0,0)"/>
-			<drawString x="7.3cm" y="1.2cm">www.iglues.org info@iglues.org </drawString>
-	-->
+			<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>
+	
 			<fill color="(0,0,0)"/>	
 			<stroke color="(0,0,0)"/>
 			<setFont name="Helvetica" size="22"/>
