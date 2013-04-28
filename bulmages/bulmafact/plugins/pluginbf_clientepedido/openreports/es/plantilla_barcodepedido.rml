@@ -1,5 +1,13 @@
-<storyPlace x="0cm" y="0cm" width="15cm" height="1cm">
-<place x="16cm" y="0cm" width="15cm" height="2.5cm">
-<barCode code="code128" height="1cm">PED [idpedidocliente] [numpedidocliente] [refpedidocliente]</barCode>
-</place>
+<storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
+		<translate dx="2cm" dy="21cm"/>
+		<rotate degrees="90"/>                                                                            
+		
+		<place x="1.57cm" y="0.82cm" width="10cm" height="1cm">
+		<barCode code="code128" height="1cm">PED [idpedidocliente] [numpedidocliente] [refpedidocliente]</barCode>
+		</place>
+		
+		<rotate degrees="-90"/>                                                                         
+		<translate dx="-2cm" dy="-21cm"/> 
+
+
 </storyPlace>

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
           
-# title="Contrato en Procesador de Textos"
+# title="Contrato Local Comercial (ODT)"
 
 import sys
 reload(sys)
@@ -33,7 +33,7 @@ params["cifrepresentantecontrato"] = u'[cifrepresentantecontrato]'
 params["dirrepresentantecontrato"] = u'[dirrepresentantecontrato]'
 params["textocantidadcontrato"] = u'[textocantidadcontrato]'
 params["fianzacontrato"] = u'[fianzacontrato]'
-
+params["bancocontrato"] = u'[bancocontrato]'
 
 #<!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->
 params['nomempresa'] = u'[valor]'

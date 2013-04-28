@@ -1,4 +1,16 @@
-<FICHA>
+<DOCUMENT>
+<TAB>
+<NAME>Alquiler</NAME>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_alquileres/alcontrato.ui</UI_INTERFACE>
+
+
+    <CAMPO>
+        <NOMCAMPO>bancocontrato</NOMCAMPO>
+        <NOMPCAMPO>Banco Ingresos</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
     <CAMPO>
         <NOMCAMPO>idvivienda</NOMCAMPO>
         <NOMPCAMPO>Local</NOMPCAMPO>
@@ -69,12 +81,8 @@
         <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
     </CAMPO>
 
-    <CAMPO>
-        <NOMCAMPO>fianzacontrato</NOMCAMPO>
-        <NOMPCAMPO>Fianza contrato</NOMPCAMPO>
-        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
-        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
-    </CAMPO>
 
 
-</FICHA>
+</TAB>
+
+</DOCUMENT>

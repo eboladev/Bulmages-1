@@ -108,6 +108,12 @@ BEGIN
 	ALTER TABLE contrato ADD COLUMN fianzacontrato VARCHAR;
     END IF;
 
+
+    SELECT INTO rs * FROM pg_attribute WHERE attname = ''bancocontrato'';
+    IF NOT FOUND THEN
+	ALTER TABLE contrato ADD COLUMN bancocontrato VARCHAR;
+    END IF;
+
 RETURN 0;
 
 
@@ -135,9 +141,9 @@ BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Alquileres'';
 
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.14.1-0001'' WHERE nombre=''PluginBf_Alquileres'';
+		UPDATE CONFIGURACION SET valor=''0.15.0-0001'' WHERE nombre=''PluginBf_Alquileres'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Alquileres'', ''0.14.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Alquileres'', ''0.15.0-0001'');
 	END IF;
 
 	RETURN 0;
@@ -145,7 +151,7 @@ END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version"
+\echo "Actualizada la revision de la base de datos a la version 0.15.0-0001"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;

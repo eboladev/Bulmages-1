@@ -1,5 +1,13 @@
 <storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
-<place x="13.5cm" y="1cm" width="10cm" height="1cm">
-<barCode code="code128" height="1cm">ALB [idalbaran] [numalbaran] [refalbaran]</barCode>
-</place>
+		<translate dx="2cm" dy="21cm"/>
+		<rotate degrees="90"/>                                                                            
+		
+		<place x="1.57cm" y="0.82cm" width="10cm" height="1cm">
+		<barCode code="code128" height="1cm">ALB [idalbaran] [numalbaran] [refalbaran]</barCode>
+		</place>
+		
+		<rotate degrees="-90"/>                                                                         
+		<translate dx="-2cm" dy="-21cm"/> 
+
+
 </storyPlace>

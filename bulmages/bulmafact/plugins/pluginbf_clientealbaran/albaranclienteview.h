@@ -46,12 +46,13 @@ class PLUGINBF_CLIENTEALBARAN_EXPORT AlbaranClienteView : public BfForm, public 
     Q_OBJECT
 
 public:
-    virtual int afterSave();
-    virtual int beforeDelete();
-    virtual int cargarPost ( QString );
     AlbaranClienteView ( BfCompany *, QWidget * );
     ~AlbaranClienteView();
     void inicializar();
+    virtual int afterSave();
+    virtual int beforeDelete();
+    virtual int cargarPost ( QString );
+    virtual void pintarPost ( );
 
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
 

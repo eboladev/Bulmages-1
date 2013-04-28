@@ -62,7 +62,7 @@ int entryPoint ( BlMainWindow *bcont )
 
     g_docFeedsWidget->resize ( 260, 220 );
     g_docFeedsWidget->setMinimumSize(260, 220);
-    bcont->addDockWidget ( Qt::LeftDockWidgetArea, g_docFeedsWidget );
+    bcont->addDockWidget ( Qt::RightDockWidgetArea, g_docFeedsWidget );
     g_docFeedsWidget->show();
 
 
