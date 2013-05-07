@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: FacturaIVAIncs a clientes
+Nombre: Factura a partir de IVA incluido a clientes
 
 Biblioteca: libpluginbf_clientefacturaivainc.so
 
@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so;libpluginbf_ivaincluido.so
 
 Incompatibles: libpluginbf_clientefactura.so
 
-Reports: facturaIVAINC.rml
+Reports: facturaIVAINC.rml; plantilla_desfacturaIVAINC.rml; plantilla_barcodeIVAINC.rml; plantilla_finfraIVAINC.rml
 
 Categorias: IVA incluido;Colmados; Ferreterías; Droguerías;Talleres;Restauración; Parques Infantiles; Tallas y Colores; Supermercados;
 
