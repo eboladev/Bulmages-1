@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so;libpluginbf_ivaincluido.so
 
 Incompatibles: libpluginbf_clientefactura.so
 
-Reports: facturaIVAINC.rml; plantilla_desfacturaIVAINC.rml; plantilla_barcodeIVAINC.rml; plantilla_finfraIVAINC.rml
+Reports: facturaIVAINC.rml; plantilla_desfacturaIVAINC.rml; plantilla_barcodeIVAINC.rml; plantilla_finfraIVAINC.rml; plantilla_frame.rml
 
 Categorias: IVA incluido;Colmados; Ferreterías; Droguerías;Talleres;Restauración; Parques Infantiles; Tallas y Colores; Supermercados;
 

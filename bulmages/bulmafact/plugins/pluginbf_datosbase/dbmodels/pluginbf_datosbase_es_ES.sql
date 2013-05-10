@@ -96,9 +96,9 @@ BEGIN
 
 	SELECT INTO ds * FROM irpf;
 	IF NOT FOUND THEN
-            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/1901', 15);
-            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/2011', 19);
-            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/2012', 21);
+            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/1901', 0);
+            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/2011', 0);
+            INSERT INTO irpf (fechairpf, tasairpf) VALUES ('01/01/2012', 0);
 	END IF;
 
 	SELECT INTO ds * FROM almacen;
@@ -118,7 +118,7 @@ BEGIN
 
 	SELECT INTO ds * FROM articulo;
 	IF NOT FOUND THEN
-	    INSERT INTO articulo (codarticulo, nomarticulo, idtipo_iva, idfamilia) VALUES ('001', 'VARIOS', 1, 1);
+	    INSERT INTO articulo (codarticulo, nomarticulo, idtipo_iva, idfamilia) VALUES ('001', 'VARIOS', 4, 1);
 	END IF;
 	
 	SELECT INTO ds * FROM trabajador;
@@ -228,9 +228,20 @@ BEGIN
 		    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',fpago.idforma_pago,prov.idprovincia);
 		END IF;
 	    END IF;
-
-
 	END IF;
+
+
+	SELECT INTO ds * FROM proveedor;
+	IF NOT FOUND THEN
+	    SELECT INTO fpago idforma_pago FROM forma_pago WHERE descforma_pago = 'Efectivo';
+	    IF FOUND THEN
+		SELECT INTO prov idprovincia FROM provincia WHERE provincia='Zaragoza';
+		IF FOUND THEN
+		    INSERT INTO proveedor (nomproveedor, cifproveedor,idforma_pago, idprovincia, cpproveedor) VALUES ('Proveedor Contado','12345678Z',fpago.idforma_pago,prov.idprovincia, '06789');
+		END IF;
+	    END IF;
+	END IF;
+
 
 	RETURN 0;
 END;
