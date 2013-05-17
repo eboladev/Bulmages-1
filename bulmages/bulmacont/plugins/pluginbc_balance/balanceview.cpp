@@ -252,9 +252,6 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         query += " LEFT OUTER JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, COALESCE(sum(debe),0) AS debe, COALESCE(sum(haber),0) AS haber, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldop FROM apunte WHERE fecha >= '" + fechaInicial + "' AND fecha <= '" + fechaFinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = cuenta.idcuenta ";
 
         query += " LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0) - COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE  fecha < '" + fechaInicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
-
-
-	blMsgInfo(query);
 	
         /// Poblamos el &aacute;rbol de hojas (cuentas).
         hojas = mainCompany() ->loadQuery ( query );
