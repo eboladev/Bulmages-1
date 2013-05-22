@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+
+<document>
+  <template pageSize="(29.7cm, 21cm)" title="Evolucion en numero de alumnos" author="Tomeu Borras" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla1">
+
+      <blockLeftPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockRightPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockBottomPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockTopPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockAlignment value="LEFT" start="0,0" stop="-1,-1"/>
+      <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Times-Roman"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Times-Roman" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Times-Roman"/>
+    <paraStyle name="Table Contents" fontName="Times-Roman"/>
+    <paraStyle name="Table Heading" fontName="Times-Roman" alignment="CENTER"/>
+  </stylesheet>
+  <images/>
+  <story>
+    <para style="Standard">Evolucion de Alumnos</para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+
+
+<para> Evolución de Alumnos</para>
+<illustration width="10cm" height="9cm">
+<barChart x="0cm" y="0cm" >               
+<!-- QUERY="SELECT * FROM actividad
+	LEFT JOIN ( 
+		SELECT idactividad, count(idalumno) AS total from alumnoactividad
+		GROUP BY idactividad
+	) AS t1
+ON t1.idactividad = actividad.idactividad
+WHERE idprofesor = [idprofesor]
+ORDER BY finicialactividad"-->
+<categorie color="(1,0.4,0.6)">[nombreactividad]</categorie>
+<data>[total]</data>
+<!--END QUERY-->
+</barChart>  
+</illustration>
+  </story>
+</document>
+

@@ -781,7 +781,8 @@ CREATE TABLE pago (
     previsionpago boolean DEFAULT FALSE,
     comentpago character varying(500),
     idtrabajador integer REFERENCES trabajador(idtrabajador),
-    idbanco integer REFERENCES banco(idbanco)
+    idbanco integer REFERENCES banco(idbanco),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago)
 );
 
 \echo -n ':: Funcion que crea restricciones en pago ... '
@@ -3301,9 +3302,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.15.0-0001'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.16.0-0001'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0001'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.16.0-0001'');
 
     END IF;
 
@@ -3312,4 +3313,4 @@ END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.15.0"
+\echo "Actualizada la revision de la base de datos a la version 0.16.0"

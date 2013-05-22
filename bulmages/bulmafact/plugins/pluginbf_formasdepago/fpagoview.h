@@ -34,7 +34,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana de formas de pago.
 /** */
-class PLUGINBF_FORMASDEPAGO_EXPORT FPagoView : public BfForm, private Ui_FPagoBase
+class PLUGINBF_FORMASDEPAGO_EXPORT FPagoView : public BfForm, public Ui_FPagoBase
 {
     Q_OBJECT
 

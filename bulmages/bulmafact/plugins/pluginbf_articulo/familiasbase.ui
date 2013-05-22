@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>550</height>
+    <width>1045</width>
+    <height>794</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -321,6 +321,29 @@
        <string>Datos de la familia</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0" colspan="5">
+        <widget class="QLabel" name="label1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Descripcion:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="5">
+        <widget class="QTextEdit" name="mui_descFamilia">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label2">
          <property name="text">
@@ -334,44 +357,7 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="5">
-        <widget class="QTextEdit" name="mui_descFamilia">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>100</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="3">
-        <widget class="QLineEdit" name="mui_nomFamilia">
-         <property name="maxLength">
-          <number>50</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QLineEdit" name="mui_codFamilia">
-         <property name="maxLength">
-          <number>12</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="textLabel1">
-         <property name="text">
-          <string>Nombre:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>mui_nomFamilia</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4" rowspan="2">
+       <item row="0" column="4" rowspan="3">
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Imputacion Contable</string>
@@ -397,6 +383,13 @@
          </layout>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="mui_codCompletoFamilia">
+         <property name="maxLength">
+          <number>50</number>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="2">
         <widget class="QLabel" name="label3">
          <property name="text">
@@ -410,23 +403,40 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="5">
-        <widget class="QLabel" name="label1">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+       <item row="2" column="0">
+        <widget class="QLabel" name="textLabel1">
          <property name="text">
-          <string>Descripcion:</string>
+          <string>Nombre:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_nomFamilia</cstring>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="mui_codCompletoFamilia">
+       <item row="2" column="1" colspan="3">
+        <widget class="QLineEdit" name="mui_nomFamilia">
          <property name="maxLength">
           <number>50</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLineEdit" name="mui_codFamilia">
+         <property name="maxLength">
+          <number>12</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="3">
+        <widget class="QFrame" name="m_frameplugin">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
         </widget>
        </item>

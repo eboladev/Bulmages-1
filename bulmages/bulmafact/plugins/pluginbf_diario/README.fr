@@ -1,0 +1,34 @@
+#######
+#Plugins
+#######
+#README.fr
+20080501
+
+Nombre: Journal
+
+Biblioteca: libpluginbf_diario.so
+
+Descripción: <H1>Livre du journal</H1>
+<P>Permet de lister le livre du journal.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias: libpluginbf_asiento.so;
+
+Incompatibles:
+
+Reports: balance.rml
+
+Categorias: Comptabilité générale ; Experimental ;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

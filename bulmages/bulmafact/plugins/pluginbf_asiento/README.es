@@ -1,0 +1,35 @@
+#######
+#Plugins
+#######
+#README.es
+20080501
+
+Nombre: Asiento
+
+Biblioteca: libpluginbf_asiento.so
+
+Descripción: <H1>Asiento Contable</H1>
+<P>Introducción de asientos contables.</P>
+<P>Permite hacer la introducción de asientos contables mediante un subformulario. Este plugin es imprescindible para el correcto funcionamiento de la contabilidad.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Contabilidad general;Experimentales;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

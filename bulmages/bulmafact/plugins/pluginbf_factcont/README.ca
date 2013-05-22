@@ -1,0 +1,33 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Professors
+
+Biblioteca: libpluginbf_profesor.so
+
+Descripción: <H1>Professors</H1>
+<P>Gestiona bé les dades dels professors/monitors de les activitats</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: PluginBf_Profesor
+
+ArchivoSQLpatch: pluginbf_profesor.sql
+
+ArchivoSQLdeins: pluginbf_profesor-rm.sql
+
+Dependencias:
+
+Incompatibles:
+
+Reports: profesor.rml; impers_profesor_alumnos.rml; impers_profesor_numalumnos.rml; blform_ProfesorView.qs
+
+Categorias: Associacions de pares i mares d'alumnes; Experimentals;
+
+Orden: 222
+
+
+Comentarios:

@@ -37,6 +37,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
     BL_FUNC_DEBUG
+    setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setTitleName ( _ ( "Proveedor" ) );
@@ -64,8 +65,14 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "recargoeqproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Recargo de Equivalencia" ) );
         addDbField ( "irpfproveedor", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
 
-        setupUi ( this );
 
+
+        /// Disparamos los plugins.
+        int res = g_plugins->run ( "ProveedorView_ProveedorView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
+	
         /// Deshabilitamos los tabs que aun no se usan.
 	int i;
 	

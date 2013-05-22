@@ -93,6 +93,16 @@ add_subdirectory(pluginbf_z2z)
 # simple put your add_directory in a
 # CMakeLists.txt.private
 
+
+# ======= PLUGINS DE CONTABILIDAD INTEGRADA
+add_subdirectory(pluginbf_cuenta)
+add_subdirectory(pluginbf_asiento)
+add_subdirectory(pluginbf_bloqueofechas)
+add_subdirectory(pluginbf_diario)
+add_subdirectory(pluginbf_mayor)
+add_subdirectory(pluginbf_balance)
+
+
 # ======== PLUGINS DE GESTION ALUMNOS
 add_subdirectory(pluginbf_profesor)
 add_subdirectory(pluginbf_alumno)

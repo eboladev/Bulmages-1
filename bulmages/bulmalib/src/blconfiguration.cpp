@@ -469,6 +469,8 @@ QString BlConfiguration::name( int i )
        return "CONF_USE_QSCRIPT";
     if ( i == CONF_PRECALC_CODARTICULO )
        return "CONF_PRECALC_CODARTICULO";
+    if ( i == CONF_CONT_NUMDIGITOSEMPRESA )
+       return "CONF_CONT_NUMDIGITOSEMPRESA";
     return "";
 }
 

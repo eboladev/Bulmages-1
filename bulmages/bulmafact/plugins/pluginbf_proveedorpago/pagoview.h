@@ -46,6 +46,7 @@ public:
     PagoView ( BfCompany *, QWidget * );
     ~PagoView();
     virtual void pintarPost();
+    virtual int afterSave();
 };
 
 #endif

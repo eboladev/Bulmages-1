@@ -83,6 +83,10 @@ DECLARE
     rs RECORD;
 BEGIN
 
+    SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idforma_pago'' AND relname=''pago'';
+    IF NOT FOUND THEN
+        ALTER TABLE pago ADD COLUMN idforma_pago INTEGER REFERENCES forma_pago(idforma_pago);
+    END IF;
 
 
    RETURN 0;
@@ -103,9 +107,9 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.15.0-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.15.0-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0002'');
 	END IF;
 	RETURN 0;
 END;

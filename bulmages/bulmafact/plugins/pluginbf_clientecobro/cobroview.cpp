@@ -71,6 +71,13 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de Pago" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
+        /// Disparamos los plugins.
+        int res = g_plugins->run ( "CobroView_CobroView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
+	
+	
         insertWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_readValues();
@@ -167,6 +174,9 @@ int CobroView::afterSave()
     } // end if
     delete cur;
     delete cur1;
+
+    /// Disparamos los plugins.
+    g_plugins->run ( "CobroView_afterSave_Post", this );  
     
     return 0;
 }

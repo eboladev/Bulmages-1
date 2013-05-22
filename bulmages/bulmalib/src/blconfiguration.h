@@ -296,6 +296,9 @@
 #define CONF_REPLACE_STRING          567
 
 
+/// Sistema de configuracion contable
+#define CONF_CONT_NUMDIGITOSEMPRESA  568
+
 typedef QMap<int, QString> mapa;
 
 

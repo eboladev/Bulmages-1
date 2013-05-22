@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>550</height>
+    <width>952</width>
+    <height>817</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -35,7 +35,7 @@
      <property name="title">
       <string>Informacion de la forma de pago:</string>
      </property>
-     <layout class="QGridLayout" name="_2">
+     <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="label_1">
         <property name="text">
@@ -205,7 +205,27 @@
       <item row="7" column="1">
        <widget class="BfBuscarBanco" name="mui_idbanco"/>
       </item>
+      <item row="8" column="0" colspan="2">
+       <widget class="QWidget" name="mui_plugin_frame" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>2</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item row="9" column="0" colspan="2">
+       <widget class="QFrame" name="m_frameplugin">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0" colspan="2">
        <spacer>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -220,16 +240,6 @@
          </size>
         </property>
        </spacer>
-      </item>
-      <item row="8" column="0" colspan="2">
-       <widget class="QWidget" name="mui_plugin_frame" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>2</height>
-         </size>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>

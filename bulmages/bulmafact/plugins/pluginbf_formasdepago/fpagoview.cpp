@@ -126,6 +126,13 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     mdb_idforma_pago = m_cursorFPagoView->value( "idforma_pago", row );
     m_item = cur;
 
+    
+    /// Disparamos los plugins.
+    int res = g_plugins->run ( "FPagoView_currentItemChanged_Post", this );
+    if ( res != 0 ) {
+	return;
+    } // end if
+    
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
     

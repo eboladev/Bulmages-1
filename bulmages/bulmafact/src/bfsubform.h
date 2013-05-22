@@ -78,6 +78,7 @@ public:
     virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
+    virtual void pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );

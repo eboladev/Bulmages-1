@@ -1,0 +1,4 @@
+#ProfesoresListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_profesor-list.png);
+}
+
