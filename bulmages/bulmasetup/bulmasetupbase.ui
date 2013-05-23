@@ -215,68 +215,6 @@ p, li { white-space: pre-wrap; }
          <string>Gestión de Empresas</string>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <widget class="QPushButton" name="mui_crearbulmacont">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="text">
-            <string>Nueva Empresa de Contabilidad</string>
-           </property>
-           <property name="icon">
-            <iconset resource="resources.qrc">
-             <normaloff>:/images/iconbulmacont.png</normaloff>:/images/iconbulmacont.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>38</width>
-             <height>38</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="mui_crearbulmafact">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="text">
-            <string>Nueva Empresa de Facturación / TPV</string>
-           </property>
-           <property name="icon">
-            <iconset resource="resources.qrc">
-             <normaloff>:/images/iconbulmafact.png</normaloff>:/images/iconbulmafact.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>38</width>
-             <height>38</height>
-            </size>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="mui_adminempresas">
            <property name="enabled">
@@ -397,6 +335,37 @@ p, li { white-space: pre-wrap; }
             <size>
              <width>32</width>
              <height>32</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2">
+          <widget class="QPushButton" name="mui_crearbulmafact">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string>Crear Nueva Empresa</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/images/iconbulmafact.png</normaloff>:/images/iconbulmafact.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>38</width>
+             <height>38</height>
             </size>
            </property>
           </widget>
