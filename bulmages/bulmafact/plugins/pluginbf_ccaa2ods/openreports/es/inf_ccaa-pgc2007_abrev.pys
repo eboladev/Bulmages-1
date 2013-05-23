@@ -1,0 +1,596 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#<!--IFACE SRC="[CONF_DIR_OPENREPORTS]fbalance.ui"-->
+#<!--PARAM NAME="fechainicialactual" TYPE="date"-->
+#<!--PARAM NAME="fechafinalactual" TYPE="date"-->
+#<!--PARAM NAME="fechainicialanterior" TYPE="date"-->
+#<!--PARAM NAME="fechafinalanterior" TYPE="date"-->
+#Uso: 
+###########################################################################
+ #   Copyright (C) 2009 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   #
+ #   Copyright (C) 2009 by Leopold Palomo Avellaneda <leo@alaxarxa.net>    #
+ #   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     #
+ #   Copyright (C) 2005 by Tomeu Borras Riera <tborras@conetxia.com>       #
+ #                                                                         #
+ #   This program is free software; you can redistribute it and/or modify  #
+ #   it under the terms of the GNU General Public License as published by  #
+ #   the Free Software Foundation; either version 2 of the License, or     #
+ #   (at your option) any later version.                                   #
+ #                                                                         #
+ #   This program is distributed in the hope that it will be useful,       #
+ #   but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+ #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+ #   GNU General Public License for more details.                          #
+ #                                                                         #
+ #   You should have received a copy of the GNU General Public License     #
+ #   along with this program; if not, write to the                         #
+ #   Free Software Foundation, Inc.,                                       #
+ #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ ###########################################################################/
+
+
+# pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007 (Abreviada)"
+
+# title="Cuentas anuales Plan General Contable 2007 (Abreviada)"
+# CAPGC07
+import psycopg2
+import psycopg2.extras
+import ooolib
+import os
+import sys
+
+encoding = 'UTF-8'
+
+def saldoCuenta(cuenta):
+   global conn
+#   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialactual]' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
+
+
+
+   cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+   
+   cur1.execute(query)
+   totalsaldos = cur1.fetchall()
+   for totalsaldo in totalsaldos:
+      return float(totalsaldo['saldo'])
+
+def saldoCuentaAnt(cuenta):
+   global conn
+#   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialanterior]' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]'AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
+
+   cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+   
+   cur1.execute(query)
+   totalsaldos = cur1.fetchall()
+   for totalsaldo in totalsaldos:
+      return float(totalsaldo['saldo'])
+
+
+def saldoCuentaP(cuenta):
+   return -(saldoCuenta(cuenta))
+
+def saldoCuentaAntP(cuenta):
+   return -(saldoCuentaAnt(cuenta))
+
+
+try:
+   conn = psycopg2.connect("dbname='[CONF_DBNAME]' user='[CONF_DBUSER]'")
+except:
+        sys.exit("I am unable to connect to the database")
+
+cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+cur.execute('SELECT * FROM cuenta ORDER BY codigo')
+cuentas = cur.fetchall()
+
+doc = ooolib.Calc('ACTIVO')
+doc.set_column_property(1, 'width', '0.1in')
+doc.set_column_property(2, 'width', '5in')
+doc.set_column_property(4, 'width', '1.6in')
+doc.set_column_property(5, 'width', '1.6in')
+
+
+# i = 3
+
+# ============================
+
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,2, 'string', 'BALANCE DE PYMES A [fechaactual]' )
+doc.set_cell_value(2,4, 'string', 'ACTIVO')
+doc.set_cell_value(3,4, 'string', 'NOTAS')
+doc.set_cell_value(4,3, 'string', 'Ejercicio Periodo')
+doc.set_cell_value(5,3, 'string', 'Ejercicio Periodo')
+doc.set_cell_value(4,4, 'string', '[fechainicialactual] a [fechafinalactual]')
+doc.set_cell_value(5,4, 'string', '[fechainicialanterior] a [fechafinalanterior]')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,6, 'string', 'A) ACTIVO NO CORRIENTE')
+doc.set_cell_value(4,6, 'formula', '=D8+D9+D10+D11+D12+D13')
+doc.set_cell_value(5,6, 'formula', '=E8+E9+E10+E11+E12+E13')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,8, 'string', 'I. Inmovilizado intangible.')
+doc.set_cell_value(4,8, 'float', '' + str(saldoCuenta ( 20 ) + saldoCuenta ( 280 ) + saldoCuenta ( 290 )) + '')
+doc.set_cell_value(5,8, 'float', '' + str(saldoCuentaAnt ( 20 ) + saldoCuentaAnt ( 280 ) + saldoCuentaAnt ( 290 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,9, 'string', 'II. Inmovilizado material.')
+doc.set_cell_value(4,9, 'float', '' + str(saldoCuenta ( 21 ) + saldoCuenta ( 281 ) + saldoCuenta ( 291 ) + saldoCuenta ( 23 )) + '')
+doc.set_cell_value(5,9, 'float', '' + str(saldoCuentaAnt ( 21 ) + saldoCuentaAnt ( 281 ) + saldoCuentaAnt ( 291 ) + saldoCuentaAnt ( 23 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,10, 'string', 'III. Inversiones inmobiliarias.')
+doc.set_cell_value(4,10, 'float', '' + str(saldoCuenta ( 22 ) + saldoCuenta ( 282 ) + saldoCuenta ( 292 )) + '')
+doc.set_cell_value(5,10, 'float', '' + str(saldoCuentaAnt ( 22 ) + saldoCuentaAnt ( 282 ) + saldoCuentaAnt ( 292 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,11, 'string', 'IV. Inversiones en empresas del grupo y asociadas a largo plazo.')
+doc.set_cell_value(4,11, 'float', '' + str(saldoCuenta ( 2403 ) + saldoCuenta ( 2404 ) + saldoCuenta ( 2413 ) + saldoCuenta ( 2414 ) + saldoCuenta ( 2423 ) + saldoCuenta ( 2424 ) + saldoCuenta ( 2493 ) + saldoCuenta ( 2494 ) + saldoCuenta ( 2933 ) + saldoCuenta ( 2934 ) + saldoCuenta ( 2943 ) + saldoCuenta ( 2944 ) + saldoCuenta ( 2953 ) + saldoCuenta ( 2954 )) + '')
+doc.set_cell_value(5,11, 'float', '' + str(saldoCuentaAnt ( 2403 ) + saldoCuentaAnt ( 2404 ) + saldoCuentaAnt ( 2413 ) + saldoCuentaAnt ( 2414 ) + saldoCuentaAnt ( 2423 ) + saldoCuentaAnt ( 2424 ) + saldoCuentaAnt ( 2493 ) + saldoCuentaAnt ( 2494 ) + saldoCuentaAnt ( 2933 ) + saldoCuentaAnt ( 2934 ) + saldoCuentaAnt ( 2943 ) + saldoCuentaAnt ( 2944 ) + saldoCuentaAnt ( 2953 ) + saldoCuentaAnt ( 2954 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,12, 'string', 'V. Inversiones financieras a largo plazo.')
+doc.set_cell_value(4,12, 'float', '' + str(saldoCuenta ( 2405 ) + saldoCuenta ( 2415 ) + saldoCuenta ( 2425 ) + saldoCuenta ( 2495 ) + saldoCuenta ( 250 ) + saldoCuenta ( 251 ) + saldoCuenta ( 252 ) + saldoCuenta ( 253 ) + saldoCuenta ( 254 ) + saldoCuenta ( 255 ) + saldoCuenta ( 258 ) + saldoCuenta ( 259 ) + saldoCuenta ( 26 ) + saldoCuenta ( 2935 ) + saldoCuenta ( 2945 ) + saldoCuenta ( 2955 ) + saldoCuenta ( 296 ) + saldoCuenta ( 297 ) + saldoCuenta ( 298 )) + '')
+doc.set_cell_value(5,12, 'float', '' + str(saldoCuentaAnt ( 2405 ) + saldoCuentaAnt ( 2415 ) + saldoCuentaAnt ( 2425 ) + saldoCuentaAnt ( 2495 ) + saldoCuentaAnt ( 250 ) + saldoCuentaAnt ( 251 ) + saldoCuentaAnt ( 252 ) + saldoCuentaAnt ( 253 ) + saldoCuentaAnt ( 254 ) + saldoCuentaAnt ( 255 ) + saldoCuentaAnt ( 258 ) + saldoCuentaAnt ( 259 ) + saldoCuentaAnt ( 26 ) + saldoCuentaAnt ( 2935 ) + saldoCuentaAnt ( 2945 ) + saldoCuentaAnt ( 2955 ) + saldoCuentaAnt ( 296 ) + saldoCuentaAnt ( 297 ) + saldoCuentaAnt ( 298 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,13, 'string', 'VI. Activos por Impuesto diferido.')
+doc.set_cell_value(4,13, 'float', '' + str(saldoCuenta ( 474 )) + '')
+doc.set_cell_value(5,13, 'float', '' + str(saldoCuentaAnt ( 474 )) + '')
+doc.set_cell_property('bold', False)
+
+
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,15, 'string', 'B) ACTIVO CORRIENTE')
+doc.set_cell_value(4,15, 'formula', '=D17+D18+D22+D23+D24+D25')
+doc.set_cell_value(5,15, 'formula', '=E17+E18+E22+E23+E24+E25')
+doc.set_cell_property('bold', False)
+
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,17, 'string', 'I. Existencias.')
+doc.set_cell_value(4,17, 'float', '' + str(saldoCuenta ( 30 ) + saldoCuenta ( 31 ) + saldoCuenta ( 32 ) + saldoCuenta ( 33 ) + saldoCuenta ( 34 ) + saldoCuenta ( 35 ) + saldoCuenta ( 36 ) + saldoCuenta ( 39 ) + saldoCuenta ( 407 )) + '')
+doc.set_cell_value(5,17, 'float', '' + str(saldoCuentaAnt ( 30 ) + saldoCuentaAnt ( 31 ) + saldoCuentaAnt ( 32 ) + saldoCuentaAnt ( 33 ) + saldoCuentaAnt ( 34 ) + saldoCuentaAnt ( 35 ) + saldoCuentaAnt ( 36 ) + saldoCuentaAnt ( 39 ) + saldoCuentaAnt ( 407 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,18, 'string', 'II. Deudores comerciales y otras cuentas a cobrar.')
+doc.set_cell_value(4,18, 'formula', '=D19+D20+D21')
+doc.set_cell_value(5,18, 'formula', '=E19+E20+E21')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_value(2,19, 'string', '1. Clientes por ventas y Prestaciones de servicios.')
+doc.set_cell_value(4,19, 'float', '' + str(saldoCuenta ( 430 ) + saldoCuenta ( 431 ) + saldoCuenta ( 432 ) + saldoCuenta ( 433 ) + saldoCuenta ( 434 ) + saldoCuenta ( 435 ) + saldoCuenta ( 436 ) + saldoCuenta ( 437 ) + saldoCuenta ( 490 ) + saldoCuenta ( 493 )) + '')
+doc.set_cell_value(5,19, 'float', '' + str(saldoCuentaAnt ( 430 ) + saldoCuentaAnt ( 431 ) + saldoCuentaAnt ( 432 ) + saldoCuentaAnt ( 433 ) + saldoCuentaAnt ( 434 ) + saldoCuentaAnt ( 435 ) + saldoCuentaAnt ( 436 ) + saldoCuentaAnt ( 437 ) + saldoCuentaAnt ( 490 ) + saldoCuentaAnt ( 493 )) + '')
+
+doc.set_cell_value(2,20, 'string', '2. Accionistas (socios) por desembolsos exigidos.')
+doc.set_cell_value(4,20, 'float', '' + str(saldoCuenta ( 5580 )) + '')
+doc.set_cell_value(5,20, 'float', '' + str(saldoCuentaAnt ( 5580 )) + '')
+
+doc.set_cell_value(2,21, 'string', '3. Otros deudores.')
+doc.set_cell_value(4,21, 'float', '' + str(saldoCuenta ( 44 ) + saldoCuenta ( 460 ) + saldoCuenta ( 470 ) + saldoCuenta ( 471 ) + saldoCuenta ( 472 ) + saldoCuenta ( 544 )) + '')
+doc.set_cell_value(5,21, 'float', '' + str(saldoCuentaAnt ( 44 ) + saldoCuentaAnt ( 460 ) + saldoCuentaAnt ( 470 ) + saldoCuentaAnt ( 471 ) + saldoCuentaAnt ( 472 ) + saldoCuentaAnt ( 544 )) + '')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,22, 'string', 'III. Inversiones en empresas del grupo y asociadas a corto plazo.')
+doc.set_cell_value(4,22, 'float', '' + str(saldoCuenta ( 5303 ) + saldoCuenta ( 5304 ) + saldoCuenta ( 5313 ) + saldoCuenta ( 5314 ) + saldoCuenta ( 5323 ) + saldoCuenta ( 5324 ) + saldoCuenta ( 5333 ) + saldoCuenta ( 5334 ) + saldoCuenta ( 5343 ) + saldoCuenta ( 5344 ) + saldoCuenta ( 5353 ) + saldoCuenta ( 5354 ) + saldoCuenta ( 5393 ) + saldoCuenta ( 5394 ) + saldoCuenta ( 5523 ) + saldoCuenta ( 5524 ) + saldoCuenta ( 5933 ) + saldoCuenta ( 5934 ) + saldoCuenta ( 5943 ) + saldoCuenta ( 5944 ) + saldoCuenta ( 5953 ) + saldoCuenta ( 5954 )) + '')
+doc.set_cell_value(5,22, 'float', '' + str(saldoCuentaAnt ( 5303 ) + saldoCuentaAnt ( 5304 ) + saldoCuentaAnt ( 5313 ) + saldoCuentaAnt ( 5314 ) + saldoCuentaAnt ( 5323 ) + saldoCuentaAnt ( 5324 ) + saldoCuentaAnt ( 5333 ) + saldoCuentaAnt ( 5334 ) + saldoCuentaAnt ( 5343 ) + saldoCuentaAnt ( 5344 ) + saldoCuentaAnt ( 5353 ) + saldoCuentaAnt ( 5354 ) + saldoCuentaAnt ( 5393 ) + saldoCuentaAnt ( 5394 ) + saldoCuentaAnt ( 5523 ) + saldoCuentaAnt ( 5524 ) + saldoCuentaAnt ( 5933 ) + saldoCuentaAnt ( 5934 ) + saldoCuentaAnt ( 5943 ) + saldoCuentaAnt ( 5944 ) + saldoCuentaAnt ( 5953 ) + saldoCuentaAnt ( 5954 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,23, 'string', 'IV. Inversiones financieras a corto plazo.')
+doc.set_cell_value(4,23, 'float', '' + str(saldoCuenta ( 5305 ) + saldoCuenta ( 5315 ) + saldoCuenta ( 5325 ) + saldoCuenta ( 5335 ) + saldoCuenta ( 5345 ) + saldoCuenta ( 5355 ) + saldoCuenta ( 5395 ) + saldoCuenta ( 540 ) + saldoCuenta ( 541 ) + saldoCuenta ( 542 ) + saldoCuenta ( 543 ) + saldoCuenta ( 545 ) + saldoCuenta ( 546 ) + saldoCuenta ( 547 ) + saldoCuenta ( 548 ) + saldoCuenta ( 549 ) + saldoCuenta ( 551 ) + saldoCuenta ( 5525 ) + saldoCuenta ( 5590 ) + saldoCuenta ( 565 ) + saldoCuenta ( 566 ) + saldoCuenta ( 5935 ) + saldoCuenta ( 5945 ) + saldoCuenta ( 5955 ) + saldoCuenta ( 596 ) + saldoCuenta ( 597 ) + saldoCuenta ( 598 )) + '')
+doc.set_cell_value(5,23, 'float', '' + str(saldoCuentaAnt ( 5305 ) + saldoCuentaAnt ( 5315 ) + saldoCuentaAnt ( 5325 ) + saldoCuentaAnt ( 5335 ) + saldoCuentaAnt ( 5345 ) + saldoCuentaAnt ( 5355 ) + saldoCuentaAnt ( 5395 ) + saldoCuentaAnt ( 540 ) + saldoCuentaAnt ( 541 ) + saldoCuentaAnt ( 542 ) + saldoCuentaAnt ( 543 ) + saldoCuentaAnt ( 545 ) + saldoCuentaAnt ( 546 ) + saldoCuentaAnt ( 547 ) + saldoCuentaAnt ( 548 ) + saldoCuentaAnt ( 549 ) + saldoCuentaAnt ( 551 ) + saldoCuentaAnt ( 5525 ) + saldoCuentaAnt ( 5590 ) + saldoCuentaAnt ( 565 ) + saldoCuentaAnt ( 566 ) + saldoCuentaAnt ( 5935 ) + saldoCuentaAnt ( 5945 ) + saldoCuentaAnt ( 5955 ) + saldoCuentaAnt ( 596 ) + saldoCuentaAnt ( 597 ) + saldoCuentaAnt ( 598 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,24, 'string', 'V. Periodificaciones a corto plazo.')
+doc.set_cell_value(4,24, 'float', '' + str(saldoCuenta ( 480 ) + saldoCuenta ( 567 )) + '')
+doc.set_cell_value(5,24, 'float', '' + str(saldoCuentaAnt ( 480 ) + saldoCuentaAnt ( 567 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,25, 'string', 'VI. Efectivo y otros activos liquidos equivalentes.')
+doc.set_cell_value(4,25, 'float', '' + str(saldoCuenta ( 57 )) + '')
+doc.set_cell_value(5,25, 'float', '' + str(saldoCuentaAnt ( 57 )) + '')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,27, 'string', 'TOTAL ACTIVO (A+B)')
+doc.set_cell_value(4,27, 'formula', '=D6+D15')
+doc.set_cell_value(5,27, 'formula', '=E6+E15')
+doc.set_cell_property('bold', False)
+
+
+
+
+
+
+
+doc.new_sheet("PATRIMONIO NETO Y PASIVO")
+doc.set_column_property(1, 'width', '0.1in')
+doc.set_column_property(2, 'width', '5in')
+doc.set_column_property(4, 'width', '1.6in')
+doc.set_column_property(5, 'width', '1.6in')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,2, 'string', 'BALANCE DE PYMES A [fechaactual]' )
+doc.set_cell_value(2,4, 'string', 'PATRIMONIO NETO Y PASIVO')
+doc.set_cell_value(3,4, 'string', 'NOTAS')
+doc.set_cell_value(4,3, 'string', 'Ejercicio Periodo')
+doc.set_cell_value(5,3, 'string', 'Ejercicio Periodo')
+doc.set_cell_value(4,4, 'string', '[fechainicialactual] a [fechafinalactual]')
+doc.set_cell_value(5,4, 'string', '[fechainicialanterior] a [fechafinalanterior]')
+doc.set_cell_property('bold', False)
+
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,6, 'string', 'A) PATRIMONIO NETO')
+doc.set_cell_value(4,6, 'formula', '=D8+D19')
+doc.set_cell_value(5,6, 'formula', '=E8+E19')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,8, 'string', 'A-1) Fondos propios.')
+doc.set_cell_value(4,8, 'formula', '=D9+D12+D13+D14+D15+D16+D17+D18')
+doc.set_cell_value(5,8, 'formula', '=E9+E12+E13+E14+E15+E16+E17+E18')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,9, 'string', 'I. Capital.')
+doc.set_cell_value(4,9, 'formula', '=D10+D11')
+doc.set_cell_value(5,9, 'formula', '=E10+E11')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_value(2,10, 'string', '1. Capital escriturado.')
+doc.set_cell_value(4,10, 'float', '' + str(saldoCuentaP ( 100 ) + saldoCuentaP ( 101 ) + saldoCuentaP ( 102 )) + '')
+doc.set_cell_value(5,10, 'float', '' + str(saldoCuentaAntP ( 100 ) + saldoCuentaAntP ( 101 ) + saldoCuentaAntP ( 102 )) + '')
+
+doc.set_cell_value(2,11, 'string', '2. (Capital no exigido).')
+doc.set_cell_value(4,11, 'float', '' + str(saldoCuentaP ( 1030 ) + saldoCuentaP ( 1040 )) + '')
+doc.set_cell_value(5,11, 'float', '' + str(saldoCuentaAntP ( 1030 ) + saldoCuentaAntP ( 1040 )) + '')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,12, 'string', 'II. Prima de emision.')
+doc.set_cell_value(4,12, 'float', '' + str(saldoCuentaP ( 110 )) + '')
+doc.set_cell_value(5,12, 'float', '' + str(saldoCuentaAntP ( 110 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,13, 'string', 'III. Reservas.')
+doc.set_cell_value(4,13, 'float', '' + str(saldoCuentaP ( 112 ) + saldoCuentaP ( 113 ) + saldoCuentaP ( 114 ) + saldoCuentaP ( 119 )) + '')
+doc.set_cell_value(5,13, 'float', '' + str(saldoCuentaAntP ( 112 ) + saldoCuentaAntP ( 113 ) + saldoCuentaAntP ( 114 ) + saldoCuentaAntP ( 119 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,14, 'string', 'IV. (Acciones y participaciones en patrimonio propias).')
+doc.set_cell_value(4,14, 'float', '' + str(saldoCuentaP ( 108 ) + saldoCuentaP ( 109 )) + '')
+doc.set_cell_value(5,14, 'float', '' + str(saldoCuentaAntP ( 108 ) + saldoCuentaAntP ( 109 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,15, 'string', 'V. Resultados de ejercicios anteriores.')
+doc.set_cell_value(4,15, 'float', '' + str(saldoCuentaP ( 120 ) + saldoCuentaP ( 121 )) + '')
+doc.set_cell_value(5,15, 'float', '' + str(saldoCuentaAntP ( 120 ) + saldoCuentaAntP ( 121 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,16, 'string', 'VI. Otras aportaciones de socios.')
+doc.set_cell_value(4,16, 'float', '' + str(saldoCuentaP ( 118 )) + '')
+doc.set_cell_value(5,16, 'float', '' + str(saldoCuentaAntP ( 118 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,17, 'string', 'VII. Resultado del ejercicio.')
+doc.set_cell_value(4,17, 'formula', '=RESULTADO.D33')
+doc.set_cell_value(5,17, 'formula', '=RESULTADO.E33')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,18, 'string', 'VIII. (Dividendo a cuenta).')
+doc.set_cell_value(4,18, 'float', '' + str(saldoCuentaP ( 557 )) + '')
+doc.set_cell_value(5,18, 'float', '' + str(saldoCuentaAntP ( 557 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,19, 'string', 'A-2) Subvenciones, donaciones y legados recibidos.')
+doc.set_cell_value(4,19, 'float', '' + str(saldoCuentaP ( 130 ) + saldoCuentaP ( 131 ) + saldoCuentaP ( 132 )) + '')
+doc.set_cell_value(5,19, 'float', '' + str(saldoCuentaAntP ( 130 ) + saldoCuentaAntP ( 131 ) + saldoCuentaAntP ( 132 )) + '')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,21, 'string', 'B) PASIVO NO CORRIENTE')
+doc.set_cell_value(4,21, 'formula', '=D23+D24+D28+D29+D30')
+doc.set_cell_value(5,21, 'formula', '=E23+E24+E28+E29+E30')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,23, 'string', 'I. Provisiones a largo plazo.')
+doc.set_cell_value(4,23, 'float', '' + str(saldoCuentaP ( 14 )) + '')
+doc.set_cell_value(5,23, 'float', '' + str(saldoCuentaAntP ( 14 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,24, 'string', 'II. Deudas a largo plazo.')
+doc.set_cell_value(4,24, 'formula', '=D25+D26+D27')
+doc.set_cell_value(5,24, 'formula', '=E25+E26+E27')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_value(2,25, 'string', '1. Deudas con entidades de credito.')
+doc.set_cell_value(4,25, 'float', '' + str(saldoCuentaP ( 1605 ) + saldoCuentaP ( 170 )) + '')
+doc.set_cell_value(5,25, 'float', '' + str(saldoCuentaAntP ( 1605 ) + saldoCuentaAntP ( 170 )) + '')
+
+doc.set_cell_value(2,26, 'string', '2. Acreedores por arrendamiento financiero')
+doc.set_cell_value(4,26, 'float', '' + str(saldoCuentaP ( 1625 ) + saldoCuentaP ( 174 )) + '')
+doc.set_cell_value(5,26, 'float', '' + str(saldoCuentaAntP ( 1625 ) + saldoCuentaAntP ( 174 )) + '')
+
+doc.set_cell_value(2,27, 'string', '3. Otras deudas a largo plazo.')
+doc.set_cell_value(4,27, 'float', '' + str(saldoCuentaP ( 1615 ) + saldoCuentaP ( 1635 ) + saldoCuentaP ( 171 ) + saldoCuentaP ( 172 ) + saldoCuentaP ( 173 ) + saldoCuentaP ( 175 ) + saldoCuentaP ( 176 ) + saldoCuentaP ( 177 ) + saldoCuentaP ( 179 ) + saldoCuentaP ( 180 ) + saldoCuentaP ( 185 )) + '')
+doc.set_cell_value(5,27, 'float', '' + str(saldoCuentaAntP ( 1615 ) + saldoCuentaAntP ( 1635 ) + saldoCuentaAntP ( 171 ) + saldoCuentaAntP ( 172 ) + saldoCuentaAntP ( 173 ) + saldoCuentaAntP ( 175 ) + saldoCuentaAntP ( 176 ) + saldoCuentaAntP ( 177 ) + saldoCuentaAntP ( 179 ) + saldoCuentaAntP ( 180 ) + saldoCuentaAntP ( 185 )) + '')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,28, 'string', 'III. Deudas con empresas del grupo y asociadas a largo plazo.')
+doc.set_cell_value(4,28, 'float', '' + str(saldoCuentaP ( 1603 ) + saldoCuentaP ( 1604 ) + saldoCuentaP ( 1613 ) + saldoCuentaP ( 1614 ) + saldoCuentaP ( 1623 ) + saldoCuentaP ( 1624 ) + saldoCuentaP ( 1633 ) + saldoCuentaP ( 1634 )) + '')
+doc.set_cell_value(5,28, 'float', '' + str(saldoCuentaAntP ( 1603 ) + saldoCuentaAntP ( 1604 ) + saldoCuentaAntP ( 1613 ) + saldoCuentaAntP ( 1614 ) + saldoCuentaAntP ( 1623 ) + saldoCuentaAntP ( 1624 ) + saldoCuentaAntP ( 1633 ) + saldoCuentaAntP ( 1634 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,29, 'string', 'IV. Pasivos por impuesto diferido')
+doc.set_cell_value(4,29, 'float', '' + str(saldoCuentaP ( 479 )) + '')
+doc.set_cell_value(5,29, 'float', '' + str(saldoCuentaAntP ( 479 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,30, 'string', 'V. Periodificaciones a largo plazo')
+doc.set_cell_value(4,30, 'float', '' + str(saldoCuentaP ( 181 )) + '')
+doc.set_cell_value(5,30, 'float', '' + str(saldoCuentaAntP ( 181 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,32, 'string', 'C) PASIVO CORRIENTE')
+doc.set_cell_value(4,32, 'formula', '=D34+D35+D39+D40+D43')
+doc.set_cell_value(5,32, 'formula', '=E34+E35+E39+E40+E43')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,34, 'string', 'I. Provisiones a corto plazo.')
+doc.set_cell_value(4,34, 'float', '' + str(saldoCuentaP ( 499 ) + saldoCuentaP ( 529 )) + '')
+doc.set_cell_value(5,34, 'float', '' + str(saldoCuentaAntP ( 499 ) + saldoCuentaAntP ( 529 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,35, 'string', 'II. Deudas a corto plazo.')
+doc.set_cell_value(4,35, 'formula', '=D36+D37+D38')
+doc.set_cell_value(5,35, 'formula', '=E36+E37+E38')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_value(2,36, 'string', '1. Deudas con entidades de credito.')
+doc.set_cell_value(4,36, 'float', '' + str(saldoCuentaP ( 5105 ) + saldoCuentaP ( 520 ) + saldoCuentaP ( 527 )) + '')
+doc.set_cell_value(5,36, 'float', '' + str(saldoCuentaAntP ( 5105 ) + saldoCuentaAntP ( 520 ) + saldoCuentaAntP ( 527 )) + '')
+
+doc.set_cell_value(2,37, 'string', '2. Acreedores por arrendamiento financiero')
+doc.set_cell_value(4,37, 'float', '' + str(saldoCuentaP ( 5125 ) + saldoCuentaP ( 524 )) + '')
+doc.set_cell_value(5,37, 'float', '' + str(saldoCuentaAntP ( 5125 ) + saldoCuentaAntP ( 524 )) + '')
+
+doc.set_cell_value(2,38, 'string', '3. Otras deudas a corto plazo.')
+doc.set_cell_value(4,38, 'float', '' + str(saldoCuentaP ( 1034 ) + saldoCuentaP ( 1044 ) + saldoCuentaP ( 190 ) + saldoCuentaP ( 192 ) + saldoCuentaP ( 194 ) + saldoCuentaP ( 500 ) + saldoCuentaP ( 505 ) + saldoCuentaP ( 506 ) + saldoCuentaP ( 509 ) + saldoCuentaP ( 5115 ) + saldoCuentaP ( 5135 ) + saldoCuentaP ( 51 ) + saldoCuentaP ( 45 ) + saldoCuentaP ( 521 ) + saldoCuentaP ( 522 ) + saldoCuentaP ( 523 ) + saldoCuentaP ( 525 ) + saldoCuentaP ( 526 ) + saldoCuentaP ( 528 ) + saldoCuentaP (551 ) + saldoCuentaP ( 5525 ) + saldoCuentaP ( 555 ) + saldoCuentaP ( 5565 ) + saldoCuentaP ( 5566 ) + saldoCuentaP ( 5595 ) + saldoCuentaP ( 560 ) + saldoCuentaP ( 561 )) + '')
+doc.set_cell_value(5,38, 'float', '' + str(saldoCuentaAntP ( 1034 ) + saldoCuentaAntP ( 1044 ) + saldoCuentaAntP ( 190 ) + saldoCuentaAntP ( 192 ) + saldoCuentaAntP ( 194 ) + saldoCuentaAntP ( 500 ) + saldoCuentaAntP ( 505 ) + saldoCuentaAntP ( 506 ) + saldoCuentaAntP ( 509 ) + saldoCuentaAntP ( 5115 ) + saldoCuentaAntP ( 5135 ) + saldoCuentaAntP ( 51 ) + saldoCuentaAntP ( 45 ) + saldoCuentaAntP ( 521 ) + saldoCuentaAntP ( 522 ) + saldoCuentaAntP ( 523 ) + saldoCuentaAntP ( 525 ) + saldoCuentaAntP ( 526 ) + saldoCuentaAntP ( 528 ) + saldoCuentaAntP ( 551 ) + saldoCuentaAntP ( 5525 ) + saldoCuentaAntP ( 555 ) + saldoCuentaAntP ( 5565 ) + saldoCuentaAntP ( 5566 ) + saldoCuentaAntP ( 5595 ) + saldoCuentaAntP ( 560 ) + saldoCuentaAntP ( 561 )) + '')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,39, 'string', 'III. Deudas con empresas del grupo y asociadas a corto plazo.')
+doc.set_cell_value(4,39, 'float', '' + str(saldoCuentaP ( 5103 ) + saldoCuentaP ( 5104 ) + saldoCuentaP ( 5113 ) + saldoCuentaP ( 5114 ) + saldoCuentaP ( 5123 ) + saldoCuentaP ( 5124 ) + saldoCuentaP ( 5133 ) + saldoCuentaP ( 5134 ) + saldoCuentaP ( 5143 ) + saldoCuentaP ( 5144 ) + saldoCuentaP ( 5523 ) + saldoCuentaP ( 5524 ) + saldoCuentaP ( 5563 ) + saldoCuentaP ( 5564 )) + '')
+doc.set_cell_value(5,39, 'float', '' + str(saldoCuentaAntP ( 5103 ) + saldoCuentaAntP ( 5104 ) + saldoCuentaAntP ( 5113 ) + saldoCuentaAntP ( 5114 ) + saldoCuentaAntP ( 5123 ) + saldoCuentaAntP ( 5124 ) + saldoCuentaAntP ( 5133 ) + saldoCuentaAntP ( 5134 ) + saldoCuentaAntP ( 5143 ) + saldoCuentaAntP ( 5144 ) + saldoCuentaAntP ( 5523 ) + saldoCuentaAntP ( 5524 ) + saldoCuentaAntP ( 5563 ) + saldoCuentaAntP ( 5564 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,40, 'string', 'IV. Acreedores comerciales y otras cuentas a pagar.')
+doc.set_cell_value(4,40, 'formula', '=D41+D42')
+doc.set_cell_value(5,40, 'formula', '=E41+E42')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_value(2,41, 'string', '1. Proveedores.')
+doc.set_cell_value(4,41, 'float', '' + str(saldoCuentaP ( 400 ) + saldoCuentaP ( 401 ) + saldoCuentaP ( 403 ) + saldoCuentaP ( 404 ) + saldoCuentaP ( 405 ) + saldoCuentaP ( 406 )) + '')
+doc.set_cell_value(5,41, 'float', '' + str(saldoCuentaAntP ( 400 ) + saldoCuentaAntP ( 401 ) + saldoCuentaAntP ( 403 ) + saldoCuentaAntP ( 404 ) + saldoCuentaAntP ( 405 ) + saldoCuentaAntP ( 406 )) + '')
+
+doc.set_cell_value(2,42, 'string', '2. Otros acreedores.')
+doc.set_cell_value(4,42, 'float', '' + str(saldoCuentaP ( 41 ) + saldoCuentaP ( 438 ) + saldoCuentaP ( 465 ) + saldoCuentaP ( 475 ) + saldoCuentaP ( 476 ) + saldoCuentaP ( 477 )) + '')
+doc.set_cell_value(5,42, 'float', '' + str(saldoCuentaAntP ( 41 ) + saldoCuentaAntP ( 438 ) + saldoCuentaAntP ( 465 ) + saldoCuentaAntP ( 475 ) + saldoCuentaAntP ( 476 ) + saldoCuentaAntP ( 477 )) + '')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,43, 'string', 'V. Periodificaciones a corto plazo.')
+doc.set_cell_value(4,43, 'float', '' + str(saldoCuentaP ( 485 ) + saldoCuentaP ( 568 )) + '')
+doc.set_cell_value(5,43, 'float', '' + str(saldoCuentaAntP ( 485 ) + saldoCuentaAntP ( 568 )) + '')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,45, 'string', 'TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)')
+doc.set_cell_value(4,45, 'formula', '=D6+D21+D32')
+doc.set_cell_value(5,45, 'formula', '=E6+E21+E32')
+doc.set_cell_property('bold', False)
+
+
+
+
+
+
+
+doc.new_sheet("RESULTADO")
+doc.set_column_property(1, 'width', '0.1in')
+doc.set_column_property(2, 'width', '5.5in')
+doc.set_column_property(4, 'width', '1.6in')
+doc.set_column_property(5, 'width', '1.6in')
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,2, 'string', 'CUENTA DE PERDIDAS Y GANANCIAS DE PYMES A [fechaactual]')
+doc.set_cell_value(2,4, 'string', '(Debe) Haber')
+doc.set_cell_value(3,4, 'string', 'NOTAS')
+doc.set_cell_value(4,3, 'string', 'Ejercicio Periodo')
+doc.set_cell_value(5,3, 'string', 'Ejercicio Periodo')
+doc.set_cell_value(4,4, 'string', '[fechainicialactual] a [fechafinalactual]')
+doc.set_cell_value(5,4, 'string', '[fechainicialanterior] a [fechafinalanterior]')
+doc.set_cell_property('bold', False)
+
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,6, 'string', '1. Importe neto de la cifra de negocios.')
+doc.set_cell_value(4,6, 'float', '' + str(saldoCuentaP ( 700 ) + saldoCuentaP ( 701 ) + saldoCuentaP ( 702 ) + saldoCuentaP ( 703 ) + saldoCuentaP ( 704 ) + saldoCuentaP ( 705 ) + saldoCuentaP ( 706 ) + saldoCuentaP ( 708 ) + saldoCuentaP ( 709 )) + '')
+doc.set_cell_value(5,6, 'float', '' + str(saldoCuentaAntP ( 700 ) + saldoCuentaAntP ( 701 ) + saldoCuentaAntP ( 702 ) + saldoCuentaAntP ( 703 ) + saldoCuentaAntP ( 704 ) + saldoCuentaAntP ( 705 ) + saldoCuentaAntP ( 706 ) + saldoCuentaAntP ( 708 ) + saldoCuentaAntP ( 709 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,7, 'string', '2. Variacion de existencias de productos terminados y en curso de fabricacion.')
+doc.set_cell_value(4,7, 'float', '' + str(saldoCuentaP ( 6930 ) + saldoCuentaP ( 71 ) + saldoCuentaP ( 7930 )) + '')
+doc.set_cell_value(5,7, 'float', '' + str(saldoCuentaAntP ( 6930 ) + saldoCuentaAntP ( 71 ) + saldoCuentaAntP ( 7930 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,8, 'string', '3. Trabajos realizados por la empresa para su activo.')
+doc.set_cell_value(4,8, 'float', '' + str(saldoCuentaP ( 73 )) + '')
+doc.set_cell_value(5,8, 'float', '' + str(saldoCuentaAntP ( 73 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,9, 'string', '4. Aprovisionamientos.')
+doc.set_cell_value(4,9, 'float', '' + str(saldoCuentaP ( 600 ) + saldoCuentaP ( 601 ) + saldoCuentaP ( 602 ) + saldoCuentaP ( 606 ) + saldoCuentaP ( 607 ) + saldoCuentaP ( 608 ) + saldoCuentaP ( 609 ) + saldoCuentaP ( 61 ) + saldoCuentaP ( 6931 ) + saldoCuentaP ( 6932 ) + saldoCuentaP ( 6933 ) + saldoCuentaP ( 7931 ) + saldoCuentaP ( 7932 ) + saldoCuentaP ( 7933 )) + '')
+doc.set_cell_value(5,9, 'float', '' + str(saldoCuentaAntP ( 600 ) + saldoCuentaAntP ( 601 ) + saldoCuentaAntP ( 602 ) + saldoCuentaAntP ( 606 ) + saldoCuentaAntP ( 607 ) + saldoCuentaAntP ( 608 ) + saldoCuentaAntP ( 609 ) + saldoCuentaAntP ( 61 ) + saldoCuentaAntP ( 6931 ) + saldoCuentaAntP ( 6932 ) + saldoCuentaAntP ( 6933 ) + saldoCuentaAntP ( 7931 ) + saldoCuentaAntP ( 7932 ) + saldoCuentaAntP ( 7933 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,10, 'string', '5. Otros ingresos de explotacion.')
+doc.set_cell_value(4,10, 'float', '' + str(saldoCuentaP ( 740 ) + saldoCuentaP ( 747 ) + saldoCuentaP ( 75 )) + '')
+doc.set_cell_value(5,10, 'float', '' + str(saldoCuentaAntP ( 740 ) + saldoCuentaAntP ( 747 ) + saldoCuentaAntP ( 75 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,11, 'string', '6. Gastos de personal.')
+doc.set_cell_value(4,11, 'float', '' + str(saldoCuentaP ( 64 )) + '')
+doc.set_cell_value(5,11, 'float', '' + str(saldoCuentaAntP ( 64 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,12, 'string', '7. Otros gastos de explotacion.')
+doc.set_cell_value(4,12, 'float', '' + str(saldoCuentaP ( 62 ) + saldoCuentaP ( 631 ) + saldoCuentaP ( 634 ) + saldoCuentaP ( 636 ) + saldoCuentaP ( 639 ) + saldoCuentaP ( 65 ) + saldoCuentaP ( 694 ) + saldoCuentaP ( 695 ) + saldoCuentaP ( 794 ) + saldoCuentaP ( 7954 )) + '')
+doc.set_cell_value(5,12, 'float', '' + str(saldoCuentaAntP ( 62 ) + saldoCuentaAntP ( 631 ) + saldoCuentaAntP ( 634 ) + saldoCuentaAntP ( 636 ) + saldoCuentaAntP ( 639 ) + saldoCuentaAntP ( 65 ) + saldoCuentaAntP ( 694 ) + saldoCuentaAntP ( 695 ) + saldoCuentaAntP ( 794 ) + saldoCuentaAntP ( 7954 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,13, 'string', '8. Amortizacion del inmovilizado.')
+doc.set_cell_value(4,13, 'float', '' + str(saldoCuentaP ( 68 )) + '')
+doc.set_cell_value(5,13, 'float', '' + str(saldoCuentaAntP ( 68 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,14, 'string', '9. Imputacion de subvenciones de inmovilizado no financiero y otras.')
+doc.set_cell_value(4,14, 'float', '' + str(saldoCuentaP ( 746 )) + '')
+doc.set_cell_value(5,14, 'float', '' + str(saldoCuentaAntP ( 746 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,15, 'string', '10. Excesos de provisiones.')
+doc.set_cell_value(4,15, 'float', '' + str(saldoCuentaP ( 7951 ) + saldoCuentaP ( 7952 ) + saldoCuentaP ( 7955 )) + '')
+doc.set_cell_value(5,15, 'float', '' + str(saldoCuentaAntP ( 7951 ) + saldoCuentaAntP ( 7952 ) + saldoCuentaAntP ( 7955 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,16, 'string', '11. Deterioro y resultado por enajenaciones del inmovilizado.')
+doc.set_cell_value(4,16, 'float', '' + str(saldoCuentaP ( 670 ) + saldoCuentaP ( 671 ) + saldoCuentaP ( 672 ) + saldoCuentaP ( 690 ) + saldoCuentaP ( 691 ) + saldoCuentaP ( 692 ) + saldoCuentaP ( 770 ) + saldoCuentaP ( 771 ) + saldoCuentaP ( 772 ) + saldoCuentaP ( 790 ) + saldoCuentaP ( 791 ) + saldoCuentaP ( 792 )) + '')
+doc.set_cell_value(5,16, 'float', '' + str(saldoCuentaAntP ( 670 ) + saldoCuentaAntP ( 671 ) + saldoCuentaAntP ( 672 ) + saldoCuentaAntP ( 690 ) + saldoCuentaAntP ( 691 ) + saldoCuentaAntP ( 692 ) + saldoCuentaAntP ( 770 ) + saldoCuentaAntP ( 771 ) + saldoCuentaAntP ( 772 ) + saldoCuentaAntP ( 790 ) + saldoCuentaAntP ( 791 ) + saldoCuentaAntP ( 792 )) + '')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,18, 'string', 'A) RESULTADO DE EXPLOTACION')
+doc.set_cell_value(4,18, 'formula', '=D6+D7+D8+D9+D10+D11+D12+D13+D14+D15+D16')
+doc.set_cell_value(5,18, 'formula', '=E6+E7+E8+E9+E10+E11+E12+E13+E14+E15+E16')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,19, 'string', '(1+2+3+4+5+6+7+8+9+10+11)')
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,21, 'string', '12. Ingresos financieros.')
+doc.set_cell_value(4,21, 'float', '' + str(saldoCuentaP ( 760 ) + saldoCuentaP ( 761 ) + saldoCuentaP ( 762 ) + saldoCuentaP ( 769 )) + '')
+doc.set_cell_value(5,21, 'float', '' + str(saldoCuentaAntP ( 760 ) + saldoCuentaAntP ( 761 ) + saldoCuentaAntP ( 762 ) + saldoCuentaAntP ( 769 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,22, 'string', '13. Gastos financieros.')
+doc.set_cell_value(4,22, 'float', '' + str(saldoCuentaP ( 660 ) + saldoCuentaP ( 661 ) + saldoCuentaP ( 662 ) + saldoCuentaP ( 664 ) + saldoCuentaP ( 665 ) + saldoCuentaP ( 669 )) + '')
+doc.set_cell_value(5,22, 'float', '' + str(saldoCuentaAntP ( 660 ) + saldoCuentaAntP ( 661 ) + saldoCuentaAntP ( 662 ) + saldoCuentaAntP ( 664 ) + saldoCuentaAntP ( 665 ) + saldoCuentaAntP ( 669 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,23, 'string', '14. Variacion de valor razonable en instrumentos financieros.')
+doc.set_cell_value(4,23, 'float', '' + str(saldoCuentaP ( 663 ) + saldoCuentaP ( 763 )) + '')
+doc.set_cell_value(5,23, 'float', '' + str(saldoCuentaAntP ( 663 ) + saldoCuentaAntP ( 763 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,24, 'string', '15. Diferencias de cambio.')
+doc.set_cell_value(4,24, 'float', '' + str(saldoCuentaP ( 668 ) + saldoCuentaP ( 768 )) + '')
+doc.set_cell_value(5,24, 'float', '' + str(saldoCuentaAntP ( 668 ) + saldoCuentaAntP ( 768 )) + '')
+doc.set_cell_property('bold', False)
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,25, 'string', '16. Deterioro y resultado por enajenaciones de instrumentos financieros.')
+doc.set_cell_value(4,25, 'float', '' + str(saldoCuentaP ( 666 ) + saldoCuentaP ( 667 ) + saldoCuentaP ( 673 ) + saldoCuentaP ( 675 ) + saldoCuentaP ( 696 ) + saldoCuentaP ( 697 ) + saldoCuentaP ( 698 ) + saldoCuentaP ( 699 ) + saldoCuentaP ( 766 ) + saldoCuentaP ( 773 ) + saldoCuentaP ( 775 ) + saldoCuentaP ( 796 ) + saldoCuentaP ( 797 ) + saldoCuentaP ( 798 ) + saldoCuentaP ( 799 )) + '')
+doc.set_cell_value(5,25, 'float', '' + str(saldoCuentaAntP ( 666 ) + saldoCuentaAntP ( 667 ) + saldoCuentaAntP ( 673 ) + saldoCuentaAntP ( 675 ) + saldoCuentaAntP ( 696 ) + saldoCuentaAntP ( 697 ) + saldoCuentaAntP ( 698 ) + saldoCuentaAntP ( 699 ) + saldoCuentaAntP ( 766 ) + saldoCuentaAntP ( 773 ) + saldoCuentaAntP ( 775 ) + saldoCuentaAntP ( 796 ) + saldoCuentaAntP ( 797 ) + saldoCuentaAntP ( 798 ) + saldoCuentaAntP ( 799 )) + '')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,27, 'string', 'B) RESULTADO FINANCIERO (12+13+14+15+16 )')
+doc.set_cell_value(4,27, 'formula', '=D21+D22+D23+D24+D25')
+doc.set_cell_value(5,27, 'formula', '=E21+E22+E23+E24+E25')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,29, 'string', 'C) RESULTADO ANTES DE IMPUESTOS (A+B)')
+doc.set_cell_value(4,29, 'formula', '=D18+D27')
+doc.set_cell_value(5,29, 'formula', '=E18+E27')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,31, 'string', '17. Impuestos sobre beneficios.')
+doc.set_cell_value(4,31, 'float', '' + str(saldoCuentaP ( 6300 ) + saldoCuentaP ( 6301 ) + saldoCuentaP ( 633 ) + saldoCuentaP ( 638 )) + '')
+doc.set_cell_value(5,31, 'float', '' + str(saldoCuentaAntP ( 6300 ) + saldoCuentaAntP ( 6301 ) + saldoCuentaAntP ( 633 ) + saldoCuentaAntP ( 638 )) + '')
+doc.set_cell_property('bold', False)
+
+
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2,33, 'string', 'D) RESULTADO DEL EJERCICIO (C + 17)')
+doc.set_cell_value(4,33, 'formula', '=D29+D31')
+doc.set_cell_value(5,33, 'formula', '=E29+E31')
+doc.set_cell_property('bold', False)
+
+# Guardamos el documento
+doc.save("inf_ccaa-pgc2007_abrev.ods")
+
+conn.close()
+

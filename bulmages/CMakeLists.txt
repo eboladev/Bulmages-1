@@ -193,8 +193,8 @@ message(STATUS "Working on bulmalib")
 add_subdirectory(bulmalib)
 
 ########### bulmacont ##########
-message(STATUS "Working on bulmacont")
-add_subdirectory(bulmacont)
+#message(STATUS "Working on bulmacont")
+#add_subdirectory(bulmacont)
 
 ########### bulmafact ##########
 message(STATUS "Working on bulmafact")

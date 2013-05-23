@@ -54,9 +54,9 @@ add_subdirectory(pluginbf_printercocina)
 
 add_subdirectory(pluginbf_camarero)
 
-add_subdirectory(pluginbf_bulmacont)
+#add_subdirectory(pluginbf_bulmacont)
 
-add_subdirectory(pluginbf_sincrobulmacont)
+#add_subdirectory(pluginbf_sincrobulmacont)
 add_subdirectory(pluginbf_informecliente2sxc)
 add_subdirectory(pluginbf_etiquetado)
 add_subdirectory(pluginbf_etiquetas)
@@ -101,6 +101,7 @@ add_subdirectory(pluginbf_bloqueofechas)
 add_subdirectory(pluginbf_diario)
 add_subdirectory(pluginbf_mayor)
 add_subdirectory(pluginbf_balance)
+add_subdirectory(pluginbf_ccaa2ods)
 
 
 # ======== PLUGINS DE GESTION ALUMNOS
