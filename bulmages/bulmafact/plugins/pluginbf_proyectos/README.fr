@@ -1,0 +1,33 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110205
+
+Nombre: Projets comptables
+
+Biblioteca: libpluginbc_proyectos.so
+
+Descripción: <H1>Projets comptables</H1>
+<P>Permet le contrôl de projets au niveau budgétaire dans la comptabilité.</P>
+<HR>
+
+ParmBD: PluginBc_Proyectos
+
+ArchivoSQLpatch: pluginbc_proyectos.sql
+
+ArchivoSQLdeins: pluginbc_proyectos-rm.sql
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Comptabilite generale ; Experimental;
+
+Orden: 90
+
+Comentarios: Pour l'installer il faut appliquer le patch, placé dans dbmodels, aux bases de données choisies pour fonctionner avec ce greffon.
+
+Configure la directive CONF_PLUGINS_BULMACONT pour qu'il contienne l'appel à ce greffon. Cette directive peut être un mode global dans le fichier /etc/bulmages.conf ou personnalisé avec les fichiers /etc/bulmacont_<<database>>.conf
+
+

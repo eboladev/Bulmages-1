@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBC_CUENTARESUMEN_H
+#define PDEFS_PLUGINBC_CUENTARESUMEN_H
+
+
+#ifdef Q_OS_WIN32
+
+#ifdef PLUGINBC_CUENTARESUMEN
+#define PLUGINBC_CUENTARESUMEN_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBC_CUENTARESUMEN_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBC_CUENTARESUMEN_EXPORT
+
+#endif
+
+
+#endif
+

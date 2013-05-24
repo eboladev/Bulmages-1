@@ -102,6 +102,7 @@ add_subdirectory(pluginbf_diario)
 add_subdirectory(pluginbf_mayor)
 add_subdirectory(pluginbf_balance)
 add_subdirectory(pluginbf_ccaa2ods)
+add_subdirectory(pluginbf_cuentaresumen)
 
 
 # ======== PLUGINS DE GESTION ALUMNOS
