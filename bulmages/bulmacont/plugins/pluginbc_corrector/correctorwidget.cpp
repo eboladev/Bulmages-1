@@ -32,7 +32,7 @@
 \param parent
 \param fl
 **/
-CorrectorWidget::CorrectorWidget ( QWidget* parent, Qt::WFlags flags )
+CorrectorWidget::CorrectorWidget ( QWidget* parent, Qt::WindowFlags flags )
         : QWidget ( parent, flags )
 {
     BL_FUNC_DEBUG
@@ -67,10 +67,10 @@ void CorrectorWidget::cambia ( bool a ) {
 	m_dockWidget->hide();
 	m_dockWidget->show();
 	m_dockWidget->showMaximized();
-	m_viewCorrector->setChecked ( TRUE );
+	m_viewCorrector->setChecked ( true );
     } else {
 	m_dockWidget->hide();
-	m_viewCorrector->setChecked ( FALSE );
+	m_viewCorrector->setChecked ( false );
     } // end if
 }
 

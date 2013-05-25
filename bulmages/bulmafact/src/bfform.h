@@ -41,7 +41,7 @@ public:
 
 public:
     BfCompany *mainCompany();
-    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE );
     virtual ~BfForm();
     void setListaLineas ( BfSubForm *form );
     void setListaDescuentos ( BfSubForm *form );

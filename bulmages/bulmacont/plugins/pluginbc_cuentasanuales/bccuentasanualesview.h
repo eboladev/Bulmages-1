@@ -22,7 +22,7 @@
 #ifndef BALANCESVIEW_H
 #define BALANCESVIEW_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "blfunctions.h"
 #include "ui_bccuentasanualesbase.h"

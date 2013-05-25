@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "q19qtoolbutton1.h"
 #include "blfunctions.h"
@@ -111,7 +111,7 @@ void Q19QToolButton1::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 /// La primera vez se ponen las cabeceras
                 if ( j == 0 ) {
                     cabeceraPresentador ( out, rec->dbValue ( "idfactura" ) );

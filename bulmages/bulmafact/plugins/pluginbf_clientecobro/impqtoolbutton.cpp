@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "impqtoolbutton.h"
 #include "blfunctions.h"
 
@@ -26,10 +26,10 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 #include "facturaview.h"
 #include "facturaivaincclienteview.h"
 #include "albaranclienteview.h"
@@ -141,7 +141,7 @@ void GenCobroQToolButton::click()
         } // end if
 
 	/// Marcamnos la factura como procesada ya que el cobro es inicialmente por el importe total
-	fpv->mui_procesadafactura->setChecked(TRUE);
+	fpv->mui_procesadafactura->setChecked(true);
 
     }// end if
 
@@ -296,7 +296,7 @@ void GenCobroQToolButton::click()
         } // end if
 
 	/// Marcamnos la factura como procesada ya que el cobro es inicialmente por el importe total
-	fpv->mui_procesadafactura->setChecked(TRUE);
+	fpv->mui_procesadafactura->setChecked(true);
 
     }// end if
     

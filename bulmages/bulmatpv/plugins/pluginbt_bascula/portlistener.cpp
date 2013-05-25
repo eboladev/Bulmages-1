@@ -1,6 +1,6 @@
 
 #include "portlistener.h"
-#include <QtDebug>
+#include <QtCore/QtDebug>
 #include <time.h>
 #include "blfunctions.h"
 #ifdef Q_OS_WIN32
@@ -71,11 +71,11 @@ void PortListener::comm() {
     fprintf(stderr,"Recibimos ACK %d\n", buffer[0]);
     buffer[0] = '@';
     buffer[1] = '1';
-    buffer[2] = pvp[0].toAscii();
-    buffer[3] = pvp[1].toAscii();
-    buffer[4] = pvp[2].toAscii();
-    buffer[5] = pvp[3].toAscii();
-    buffer[6] = pvp[4].toAscii();
+    buffer[2] = pvp[0].toLatin1();
+    buffer[3] = pvp[1].toLatin1();
+    buffer[4] = pvp[2].toLatin1();
+    buffer[5] = pvp[3].toLatin1();
+    buffer[6] = pvp[4].toLatin1();
     buffer[7] = 13; // CR
     buffer[8] = 10; // LF
     buffer[9] = 2;
@@ -167,10 +167,11 @@ void PortListener::onReadyRead()
       QString cant = buffer.left(buffer.indexOf("kg"));  
       cant.replace("S", "");
       //qDebug() << "cant:[" << cant << "]\n";
-      fprintf(stderr,"\ncant:[%s]\n", cant.toAscii().data());
+      fprintf(stderr,"\ncant:[%s]\n", cant.toLatin1().data());
       QChar *data = cant.data();
       while (!data->isNull()) {
-	  fprintf(stderr,"\n[%d-%c]\n", data->toAscii(), data->toAscii());
+	  //fprintf(stderr,"\n[%d-%c]\n", data->toLatin1(), data->toLatin1());
+	  fprintf(stderr,"\n[%d-%c]\n", data->unicode(), data->unicode());
 	  ++data;
       } // end while      
       

@@ -7,9 +7,9 @@
  *   Modified by: Fco. Javier M. C. (2008)                                 *
  ***************************************************************************/
 
-#include <QString>
-#include <QChar>
-#include <QLocale>
+#include <QtCore/QString>
+#include <QtCore/QChar>
+#include <QtCore/QLocale>
 
 #include "stdio.h"
 
@@ -37,7 +37,7 @@ BlFixed::BlFixed ( int x, int p )
 BlFixed::BlFixed ( QString a )
 {
     BL_FUNC_DEBUG
-    fromBlFixed ( a.toAscii() );
+    fromBlFixed ( a.toLatin1() );
     
 }
 

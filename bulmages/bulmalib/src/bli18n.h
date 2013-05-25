@@ -24,7 +24,7 @@
 
 #include <locale.h>
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "bldefs.h"
 

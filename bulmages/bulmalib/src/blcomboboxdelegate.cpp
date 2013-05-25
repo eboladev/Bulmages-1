@@ -33,7 +33,7 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
 {
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
-    m_null = TRUE;
+    m_null = true;
 }
 
 

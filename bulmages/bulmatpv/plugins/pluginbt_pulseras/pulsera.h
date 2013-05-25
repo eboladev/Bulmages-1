@@ -25,8 +25,8 @@
 #ifndef PULSERA_H
 #define PULSERA_H
 
-#include <QString>
-#include <QDateTime>
+#include <QtCore/QString>
+#include <QtCore/QDateTime>
 #include "btticket.h"
 #include "pdefs_pluginbt_pulseras.h"
 

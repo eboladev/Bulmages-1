@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLabel>
-#include <QTextBrowser>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
 
 #include "mticket.h"
 #include "bldb.h"
@@ -48,8 +48,8 @@ MTicket::MTicket ( BtCompany *company, QWidget *parent ) : BlWidget ( company, p
     
     m_parent = parent;
     
-    mui_plainText->setVisible(FALSE);
-    mui_frame->setVisible(FALSE);
+    mui_plainText->setVisible(false);
+    mui_frame->setVisible(false);
 
     pintar();
 }
@@ -138,9 +138,9 @@ void MTicket::pintar()
 	totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
 	htmlContent += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + totalLinea.toQString() + "</TD>";
 	
-	plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-        plainTextContent += item->dbValue("desclalbaran").leftJustified ( 20, ' ', TRUE ) + " ";
-        plainTextContent += totalLinea.toQString().rightJustified ( 9, ' ', TRUE ) + "\n";
+	plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', true ) + " ";
+        plainTextContent += item->dbValue("desclalbaran").leftJustified ( 20, ' ', true ) + " ";
+        plainTextContent += totalLinea.toQString().rightJustified ( 9, ' ', true ) + "\n";
 	
         htmlContent += "</TR>";
     } // end for
@@ -204,7 +204,7 @@ void MTicket::on_mui_reimprimir_clicked()
     BL_FUNC_DEBUG
 
     BtTicket *previousTicket = new BtTicket( m_btCompany );
-    BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = true ORDER BY idalbaran DESC LIMIT 1" );
 
     /// Si el numero de resultados devuelto = 0 entonces no existe ticket previo.
     if (cur->numregistros() == 0) {
@@ -224,7 +224,7 @@ void MTicket::on_mui_reimprimir_clicked()
     	    cur->nextRecord();
         } // end while
 
-	previousTicket->imprimir(FALSE);
+	previousTicket->imprimir(false);
 
 	delete previousTicket;
 

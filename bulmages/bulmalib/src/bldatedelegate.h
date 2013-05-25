@@ -23,7 +23,7 @@
 #define BLDATEDELEGATE_H
 
 #include "bldatesearch.h"
-#include <QStyledItemDelegate>
+#include <QtWidgets/QStyledItemDelegate>
 
 
 /** Calendario flotante para seleccionar fechas en un campo de listado.

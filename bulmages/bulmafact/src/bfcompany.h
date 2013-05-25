@@ -22,8 +22,8 @@
 #ifndef BFCOMPANY_H
 #define BFCOMPANY_H
 
-#include <QObject>
-#include <QLibraryInfo>
+#include <QtCore/QObject>
+#include <QtCore/QLibraryInfo>
 
 #include "blpostgresqlclient.h"
 #include "blwindowlistdock.h"

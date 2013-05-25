@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QMenu>
-#include <QAction>
-#include <QTextStream>
-#include <QFile>
-#include <QHBoxLayout>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QTextStream>
+#include <QtCore/QFile>
+#include <QtWidgets/QHBoxLayout>
 
 #include "blfixed.h"
 #include "blmaincompany.h"
@@ -43,7 +43,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
     BL_FUNC_DEBUG
     
-    bool hayElementos = FALSE;
+    bool hayElementos = false;
    /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
     EQToolButton *tool = parent->findChild<EQToolButton *>("EQToolButtonG");
     if (tool) {
@@ -91,7 +91,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	QFileInfoList list = dir.entryInfoList();
 	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
 	if (list.size() != 0) {
-	    hayElementos = TRUE;
+	    hayElementos = true;
 	} // end if
 	for ( int i = 0; i < list.size(); ++i ) {
 	    QFileInfo fileInfo = list.at ( i );
@@ -107,7 +107,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    /// Buscamos Query's por tratar
 	    QString titulo = fileInfo.fileName();
 	    QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
-	    rx1.setMinimal ( TRUE );
+	    rx1.setMinimal ( true );
 	    if ( rx1.indexIn ( buff, 0 )  != -1 ) {
 		titulo = rx1.cap ( 1 );
 	    } // end while
@@ -116,7 +116,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
             /// Buscamos Query's por tratar
             QString icon = ":/Images/template2rml.png";
             QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
-            rx2.setMinimal ( TRUE );
+            rx2.setMinimal ( true );
             if ( rx2.indexIn ( buff, 0 )  != -1 ) {
                 icon = rx2.cap ( 1 );
             } // end while
@@ -143,7 +143,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	QFileInfoList list1 = dir1.entryInfoList();
 	// Si no hay elementos que mostrar entonces ocultamos el boton ya que no lleva a ninguna parte.
 	if (list1.size() != 0) {
-	    hayElementos = TRUE;
+	    hayElementos = true;
 	} // end if
 	for ( int i = 0; i < list1.size(); ++i ) {
 	    QFileInfo fileInfo = list1.at ( i );
@@ -159,7 +159,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    /// Buscamos Query's por tratar
 	    QString titulo = fileInfo.fileName();
 	    QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
-	    rx1.setMinimal ( TRUE );
+	    rx1.setMinimal ( true );
 	    if ( rx1.indexIn ( buff, 0 )  != -1 ) {
 		titulo = rx1.cap ( 1 );
 	    } // end while
@@ -168,7 +168,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
             /// Buscamos Query's por tratar
             QString icon = ":/Images/template2rml.png";
             QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
-            rx2.setMinimal ( TRUE );
+            rx2.setMinimal ( true );
             if ( rx2.indexIn ( buff, 0 )  != -1 ) {
                 icon = rx2.cap ( 1 );
             } // end while
@@ -236,7 +236,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         /// Buscamos Query's por tratar
         QString titulo = fileInfo.fileName();
         QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
+        rx1.setMinimal ( true );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx1.cap ( 1 );
         } // end while
@@ -244,7 +244,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         /// Buscamos Query's por tratar
         QString icon = ":/Images/template2rml.png";
         QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
-        rx2.setMinimal ( TRUE );
+        rx2.setMinimal ( true );
         if ( rx2.indexIn ( buff, 0 )  != -1 ) {
             icon = rx2.cap ( 1 );
         } // end while
@@ -303,12 +303,12 @@ void EQToolButton::trataMenu ( QAction *action )
 
 		    if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
 			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + fileInfo.fileName() + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
-			system ( comando.toAscii().data() );
+			system ( comando.toLatin1().data() );
 		    } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + fileInfo.fileName() + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-			system ( comando.toAscii().data() );
+			system ( comando.toLatin1().data() );
 		    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
-				blRawPrint( fileInfo.fileName(), TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+				blRawPrint( fileInfo.fileName(), true, g_confpr->value( CONF_TICKET_PRINTER_FILE));
 		    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 			blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
 		    } else {

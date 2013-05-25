@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
-#include <QApplication>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QApplication>
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"

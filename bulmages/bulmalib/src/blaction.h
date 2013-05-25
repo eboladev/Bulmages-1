@@ -27,8 +27,8 @@ Esta clase, analoga a BlWidget, permite que las acciones sean inicializadas con
 #ifndef BLACTION_H
 #define BLACTION_H
 
-#include <QToolButton>
-#include <QAction>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QAction>
 #include "blmaincompanypointer.h"
 
 

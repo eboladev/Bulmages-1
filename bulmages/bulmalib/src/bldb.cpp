@@ -18,20 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QTextStream>
-#include <QLocale>
-#include <QDebug>
-#include <QTextCodec>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QLocale>
+#include <QtCore/QDebug>
+#include <QtCore/QTextCodec>
 #include <QXmlStreamReader>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QHBoxLayout>
-#include <QObject>
-#include <QCheckBox>
-#include <QInputDialog>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtWidgets/QHBoxLayout>
+#include <QtCore/QObject>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QInputDialog>
 #include "bluiloader.h"
-#include <QPushButton>
+#include <QtWidgets/QPushButton>
 
 #include "bldb.h"
 #include "blplugins.h"
@@ -325,7 +325,7 @@ BlDbRecord::BlDbRecord ( BlMainCompany *company )
 {
     BL_FUNC_DEBUG
     m_dbConnection = company;
-    m_nuevoCampo = TRUE;
+    m_nuevoCampo = true;
     m_tableName = "";
     m_templateName = "";
     
@@ -385,8 +385,8 @@ void BlDbRecord::setDbTableName ( QString tableName )
 
 /// Establece el tipo de operacion que se realizara en la base de datos.
 /**
-Si se establece TRUE entonces se hara una insercion del registro en la tabla por
-defecto. Si por el contrario se establece como FALSE se hara una modificacion de los
+Si se establece true entonces se hara una insercion del registro en la tabla por
+defecto. Si por el contrario se establece como false se hara una modificacion de los
 registros que coincidan en sus PrimaryKey con los datos del registro.
 
 Este metodo es de uso interno. Es la propia clase la que regula si es una insercion
@@ -481,7 +481,7 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
 {
     BL_FUNC_DEBUG
     try {
-        m_nuevoCampo = FALSE;
+        m_nuevoCampo = false;
 
         BlDbField *campo;
         int error = 0;
@@ -491,9 +491,9 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
                 QString nom = campo->fieldName();
                 QString val = cur->value( nom );
                 if ( ( campo->fieldRestrictions() & BlDbField::DbPrimaryKey ) && ( val == "" ) )
-                    m_nuevoCampo = TRUE;
+                    m_nuevoCampo = true;
                 if ( ( campo->fieldRestrictions() & BlDbField::DbDupPrimaryKey ) && ( val == "" ) )
-                    m_nuevoCampo = TRUE;
+                    m_nuevoCampo = true;
                 error += campo->set ( val );
                 /// Al ser una carga consideramos que los cambios estan inicializados.
                 campo->resetCambio();
@@ -514,7 +514,7 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
 void BlDbRecord::DBclear()
 {
     BL_FUNC_DEBUG
-    m_nuevoCampo = TRUE;
+    m_nuevoCampo = true;
     BlDbField *campo;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
@@ -600,7 +600,7 @@ int BlDbRecord::dbSave ( QString &id )
             BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'.")).arg(query) );
             m_dbConnection->runQuery ( query );
         } // end if
-        m_nuevoCampo = FALSE;
+        m_nuevoCampo = false;
 
         /// Emitimos la se&ntilde;al apropiada en el BlApplication.
         g_theApp->emitDbTableChanged ( m_tableName );
@@ -751,7 +751,7 @@ QString BlDbRecord::dbValue ( QString nomb )
 /// Indica si un campo esta inicializado en el registro o no.
 /**
 \param nomb Campo del que queremos saber si existe o no
-\return TRUE si existe o FALSE si no existe
+\return true si existe o false si no existe
 
 NOTA: ESTA FUNCION TIENE ALGUN ERROR CON m_lista mal inicializado.
 **/
@@ -759,7 +759,7 @@ bool BlDbRecord::exists ( QString nomb )
 {
     BL_FUNC_DEBUG
     BlDbField *campo;
-    bool existe = FALSE;
+    bool existe = false;
     int i = 0;
 
     if (!m_lista.isEmpty()) {
@@ -770,7 +770,7 @@ bool BlDbRecord::exists ( QString nomb )
 	} // end while
 	if ( campo ) {
 	    if ( campo->fieldName() == nomb ) {
-		existe = TRUE;
+		existe = true;
 	    } // end if
 	} // end if
       } // end if
@@ -879,7 +879,7 @@ int BlDbRecord::remove()
             } // end if
         } // end for
 
-        if ( m_nuevoCampo == FALSE ) {
+        if ( m_nuevoCampo == false ) {
             m_dbConnection->runQuery ( "DELETE FROM " + m_tableName + " WHERE " + querywhere );
         } // end if
 
@@ -961,7 +961,7 @@ void BlDbRecord::substrConf ( QByteArray &buff )
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 1000; i++ ) {
         if ( g_confpr->name( i ) != "" ) {
-            buff.replace ( QString("[" + g_confpr->name( i ) + "]").toAscii(), g_confpr->value( i ).toAscii() );
+            buff.replace ( QString("[" + g_confpr->name( i ) + "]").toLatin1(), g_confpr->value( i ).toLatin1() );
         } // end if
     } // end for
 }
@@ -1041,7 +1041,7 @@ int BlDbRecord::generateRML ( const QString &arch )
     QFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
-    bool ascii = FALSE;
+    bool ascii = false;
     /// Antes de abrir un fichero como QTextStream debemos saber en que codificacion
     /// esta, si no leeremos basura (potencialmente). Los ficheros XML deberian
     /// declararlo en la primera instruccion de proceso (<?xml ... encoding=""?>)
@@ -1222,7 +1222,7 @@ QString BlDbRecord::exportXML() {
     val = "<BLDBRECORD>\n";
     val += "\t<TABLENAME>" + blXMLEncode(m_tableName) + "</TABLENAME>\n";
     val += "\t<CAMPOID>" + blXMLEncode(m_campoid) + "</CAMPOID>\n";
-    val += "\t<NUEVOCAMPO>" + blXMLEncode(QString(m_nuevoCampo ? "TRUE" : "FALSE")) + "</NUEVOCAMPO>\n";
+    val += "\t<NUEVOCAMPO>" + blXMLEncode(QString(m_nuevoCampo ? "true" : "false")) + "</NUEVOCAMPO>\n";
 
     int i = 0;
     campo = m_lista.value ( i );
@@ -1255,10 +1255,10 @@ void BlDbRecord::syncXML(const QString &text) {
     principal = docElem.firstChildElement ( "CAMPOID" );
     m_campoid = principal.text();
     principal = docElem.firstChildElement ( "NUEVOCAMPO" );
-    if (principal.text() == "TRUE") {
-        m_nuevoCampo = TRUE;
+    if (principal.text() == "true") {
+        m_nuevoCampo = true;
     } else {
-        m_nuevoCampo = FALSE;
+        m_nuevoCampo = false;
     } // end if
 
     /// Cogemos la coordenada X
@@ -1301,8 +1301,8 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 
 
     substrConf ( buff );
-    buff.replace ( "[ficha]", m_tableName.toAscii() );
-    buff.replace ( "[story]", story().toAscii() );
+    buff.replace ( "[ficha]", m_tableName.toLatin1() );
+    buff.replace ( "[story]", story().toLatin1() );
     buff.replace("@!--", "<!--");
     buff.replace("--@", "-->");
     
@@ -1314,7 +1314,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QByteArray cadant;
 
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx70.setMinimal ( TRUE );
+    rx70.setMinimal ( true );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
         QString cadarchivo = rx70.cap ( 1 );
 
@@ -1346,7 +1346,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 	    
 	    /// Vamos a buscar parametros tipo PARAM para configurar el dialogo.
 	    QRegExp rx700 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*LABEL\\s*=\\s*\"([^\"]*)\"\\s*TABLE\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-	    rx700.setMinimal ( TRUE );
+	    rx700.setMinimal ( true );
 	    int pos1 = 0;
 	    while ( ( pos1 = rx700.indexIn ( buff, pos1 ) ) != -1 ) {
 		QString name = rx700.cap ( 1 );
@@ -1375,7 +1375,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 	    
 	      /// Vamos a buscar parametros tipo PARAM BLCOMBOBOX para configurar el dialogo.
 	      QRegExp rx701 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-	      rx701.setMinimal ( TRUE );
+	      rx701.setMinimal ( true );
 	      int pos2 = 0;
 	      while ( ( pos2 = rx701.indexIn ( buff, pos2 ) ) != -1 ) {
 		  QString name = rx701.cap ( 1 );
@@ -1528,7 +1528,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx541 ( "<!--\\s*COMMENT\\s*([^-]*)\\s*-->" );
-    rx541.setMinimal ( TRUE );
+    rx541.setMinimal ( true );
     while ( ( pos = rx541.indexIn ( buff, 0 ) ) != -1 ) {
         buff.replace ( pos, rx541.matchedLength(), "" );
         pos = buff.indexOf("<!--");
@@ -1541,9 +1541,9 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx54.setMinimal ( TRUE );
+    rx54.setMinimal ( true );
     while ( ( pos = rx54.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray valor = rx54.cap ( 2 ).toAscii();
+        QByteArray valor = rx54.cap ( 2 ).toLatin1();
         substrVars ( valor, tipoEscape );
         m_variables[rx54.cap ( 1 ) ] = valor;
         buff.replace ( pos, rx54.matchedLength(), "" );
@@ -1559,10 +1559,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx19.setMinimal ( TRUE );
+    rx19.setMinimal ( true );
     while ( ( pos = rx19.indexIn ( buff, 0 ) ) != -1 ) {
         QString ldetalle = parseIncludeFileTXT ( rx19.cap ( 1 ), tipoEscape );
-        buff.replace ( pos, rx19.matchedLength(), ldetalle.toAscii() );
+        buff.replace ( pos, rx19.matchedLength(), ldetalle.toLatin1() );
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
@@ -1572,10 +1572,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
-    rx9.setMinimal ( TRUE );
+    rx9.setMinimal ( true );
     while ( ( pos = rx9.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = parseExists ( rx9.cap ( 1 ), rx9.cap ( 2 ).toAscii() );
-        buff.replace ( pos, rx9.matchedLength(), ldetalle.toAscii() );
+        QString ldetalle = parseExists ( rx9.cap ( 1 ), rx9.cap ( 2 ).toLatin1() );
+        buff.replace ( pos, rx9.matchedLength(), ldetalle.toLatin1() );
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
@@ -1585,10 +1585,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
-    rx4.setMinimal ( TRUE );
+    rx4.setMinimal ( true );
     while ( ( pos = rx4.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toAscii() );
-        buff.replace ( pos, rx4.matchedLength(), ldetalle.toAscii() );
+        QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toLatin1() );
+        buff.replace ( pos, rx4.matchedLength(), ldetalle.toLatin1() );
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
@@ -1599,9 +1599,9 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
-    rx1.setMinimal ( TRUE );
+    rx1.setMinimal ( true );
     while ( ( pos = rx1.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toAscii(), tipoEscape );
+        QByteArray ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toLatin1(), tipoEscape );
         buff.replace ( pos, rx1.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1616,10 +1616,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 	cadant = buff.left(pos);
 	buff = buff.right(buff.length()-pos);
 	QRegExp rx4 ( "<!--\\s*IF\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY"+QString::number(aux)+"\\s*-->" );
-	rx4.setMinimal ( TRUE );
+	rx4.setMinimal ( true );
 	while ( ( pos = rx4.indexIn ( buff, 0 ) ) != -1 ) {
-	    QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toAscii() );
-	    buff.replace ( pos, rx4.matchedLength(), ldetalle.toAscii() );
+	    QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toLatin1() );
+	    buff.replace ( pos, rx4.matchedLength(), ldetalle.toLatin1() );
 	    pos = buff.indexOf("<!--");
 	} // end while
 	buff = cadant + buff;
@@ -1628,9 +1628,9 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 	cadant = buff.left(pos);
 	buff = buff.right(buff.length()-pos);
 	QRegExp rx1 ( "<!--\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY"+QString::number(aux)+"\\s*-->" );
-	rx1.setMinimal ( TRUE );
+	rx1.setMinimal ( true );
 	while ( ( pos = rx1.indexIn ( buff, 0 ) ) != -1 ) {
-	    QByteArray ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toAscii(), tipoEscape );
+	    QByteArray ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toLatin1(), tipoEscape );
 	    buff.replace ( pos, rx1.matchedLength(), ldetalle );
 	    pos = buff.indexOf("<!--");
 	} // end while
@@ -1643,10 +1643,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
-    rx14.setMinimal ( TRUE );
+    rx14.setMinimal ( true );
     while ( ( pos = rx14.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = parseIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ).toAscii() );
-        buff.replace ( pos, rx14.matchedLength(), ldetalle.toAscii() );
+        QString ldetalle = parseIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ).toLatin1() );
+        buff.replace ( pos, rx14.matchedLength(), ldetalle.toLatin1() );
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
@@ -1656,10 +1656,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
-    rx7.setMinimal ( TRUE );
+    rx7.setMinimal ( true );
     while ( ( pos = rx7.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = parseQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ).toAscii(), tipoEscape );
-        buff.replace ( pos, rx7.matchedLength(), ldetalle.toAscii() );
+        QString ldetalle = parseQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ).toLatin1(), tipoEscape );
+        buff.replace ( pos, rx7.matchedLength(), ldetalle.toLatin1() );
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
@@ -1669,10 +1669,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
-    rx11.setMinimal ( TRUE );
+    rx11.setMinimal ( true );
     while ( ( pos = rx11.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = parseIf ( rx11.cap ( 1 ), rx11.cap ( 2 ).toAscii(), rx11.cap ( 3 ).toAscii() );
-        buff.replace ( pos, rx11.matchedLength(), ldetalle.toAscii() );
+        QString ldetalle = parseIf ( rx11.cap ( 1 ), rx11.cap ( 2 ).toLatin1(), rx11.cap ( 3 ).toLatin1() );
+        buff.replace ( pos, rx11.matchedLength(), ldetalle.toLatin1() );
         pos = buff.indexOf("<!--");
     } // end while
     buff = cadant + buff;
@@ -1682,7 +1682,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx39 ( "<!--\\s*SETCHARACTERPRINTMODE\\s*\"([^\"]*)\"\\s*-->" );
-    rx39.setMinimal ( TRUE );
+    rx39.setMinimal ( true );
     while ( ( pos = rx39.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetCharacterPrintMode ( rx39.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx39.matchedLength(), ldetalle );
@@ -1698,7 +1698,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx49 ( "<!--\\s*SETCHARACTERSPACING\\s*\"([^\"]*)\"\\s*-->" );
-    rx49.setMinimal ( TRUE );
+    rx49.setMinimal ( true );
     while ( ( pos = rx49.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetCharacterSpacing ( rx49.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx49.matchedLength(), ldetalle );
@@ -1711,7 +1711,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx59 ( "<!--\\s*SETCHARACTERCODETABLE\\s*\"([^\"]*)\"\\s*-->" );
-    rx59.setMinimal ( TRUE );
+    rx59.setMinimal ( true );
     while ( ( pos = rx59.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetCharacterCodeTable ( rx59.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx59.matchedLength(), ldetalle );
@@ -1724,7 +1724,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx69 ( "<!--\\s*SETUNDERLINEMODE\\s*\"([^\"]*)\"\\s*-->" );
-    rx69.setMinimal ( TRUE );
+    rx69.setMinimal ( true );
     while ( ( pos = rx69.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetUnderlineMode ( rx69.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx69.matchedLength(), ldetalle );
@@ -1741,7 +1741,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx79 ( "<!--\\s*SETCHARACTERSIZE\\s*\"([^\"]*)\"\\s*-->" );
-    rx79.setMinimal ( TRUE );
+    rx79.setMinimal ( true );
     while ( ( pos = rx79.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetCharacterSize ( rx79.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx79.matchedLength(), ldetalle );
@@ -1757,7 +1757,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx89 ( "<!--\\s*SETSMOOTHING\\s*\"([^\"]*)\"\\s*-->" );
-    rx89.setMinimal ( TRUE );
+    rx89.setMinimal ( true );
     while ( ( pos = rx89.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetCharacterSize ( rx89.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx89.matchedLength(), ldetalle );
@@ -1770,7 +1770,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx99 ( "<!--\\s*SETDOUBLESTRIKE\\s*\"([^\"]*)\"\\s*-->" );
-    rx99.setMinimal ( TRUE );
+    rx99.setMinimal ( true );
     while ( ( pos = rx99.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetDoubleStrike ( rx99.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx99.matchedLength(), ldetalle );
@@ -1783,7 +1783,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx02 ( "<!--\\s*TURNUPSIDEDOWN\\s*\"([^\"]*)\"\\s*-->" );
-    rx02.setMinimal ( TRUE );
+    rx02.setMinimal ( true );
     while ( ( pos = rx02.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseTurnUpsideDown ( rx02.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx02.matchedLength(), ldetalle );
@@ -1796,7 +1796,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx12 ( "<!--\\s*TURN90CWROTATION\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx12.setMinimal ( TRUE );
+    rx12.setMinimal ( true );
     while ( ( pos = rx12.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseTurn90CWRotation (rx12.cap(1), rx12.cap(2), tipoEscape );
         buff.replace ( pos, rx12.matchedLength(), ldetalle );
@@ -1812,7 +1812,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx22 ( "<!--\\s*TURNWHITEBLACK\\s*\"([^\"]*)\"\\s*-->" );
-    rx22.setMinimal ( TRUE );
+    rx22.setMinimal ( true );
     while ( ( pos = rx22.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseTurnWhiteBlack( rx22.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx22.matchedLength(), ldetalle );
@@ -1828,7 +1828,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx32 ( "<!--\\s*SETCOLOR\\s*\"([^\"]*)\"\\s*-->" );
-    rx32.setMinimal ( TRUE );
+    rx32.setMinimal ( true );
     while ( ( pos = rx32.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetColor( rx32.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx32.matchedLength(), ldetalle );
@@ -1841,7 +1841,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx42 ( "<!--\\s*HORIZONTALTAB\\s*-->" );
-    rx42.setMinimal ( TRUE );
+    rx42.setMinimal ( true );
     while ( ( pos = rx42.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseHorizontalTab( tipoEscape );
         buff.replace ( pos, rx42.matchedLength(), ldetalle );
@@ -1854,7 +1854,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx52 ( "<!--\\s*SETHORIZONTALTABPOS\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx52.setMinimal ( TRUE );
+    rx52.setMinimal ( true );
     while ( ( pos = rx52.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetHorizontalTabPos (rx52.cap(1), rx52.cap(2), tipoEscape );
         buff.replace ( pos, rx52.matchedLength(), ldetalle );
@@ -1868,7 +1868,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx62 ( "<!--\\s*SETLEFTMARGIN\\s*\"([^\"]*)\"\\s*-->" );
-    rx62.setMinimal ( TRUE );
+    rx62.setMinimal ( true );
     while ( ( pos = rx62.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetLeftMargin( rx62.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx62.matchedLength(), ldetalle );
@@ -1881,7 +1881,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx72 ( "<!--\\s*SETPRINTINGAREAWIDTH\\s*\"([^\"]*)\"\\s*-->" );
-    rx72.setMinimal ( TRUE );
+    rx72.setMinimal ( true );
     while ( ( pos = rx72.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetPrintingAreaWidth( rx72.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx72.matchedLength(), ldetalle );
@@ -1894,7 +1894,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx92 ( "<!--\\s*SETHABSOLUTEPOS\\s*\"([^\"]*)\"\\s*-->" );
-    rx92.setMinimal ( TRUE );
+    rx92.setMinimal ( true );
     while ( ( pos = rx92.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetHAbsolutePos( rx92.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx92.matchedLength(), ldetalle );
@@ -1908,7 +1908,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx03 ( "<!--\\s*SETHRELATIVEPOS\\s*\"([^\"]*)\"\\s*-->" );
-    rx03.setMinimal ( TRUE );
+    rx03.setMinimal ( true );
     while ( ( pos = rx03.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetHRelativePos( rx03.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx03.matchedLength(), ldetalle );
@@ -1921,7 +1921,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx13 ( "<!--\\s*SETBARCODEFORMAT\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx13.setMinimal ( TRUE );
+    rx13.setMinimal ( true );
     while ( ( pos = rx13.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetBarcodeFormat( rx13.cap ( 1 ), rx13.cap ( 2 ),rx13.cap ( 3 ),rx13.cap ( 4 ),tipoEscape );
         buff.replace ( pos, rx13.matchedLength(), ldetalle );
@@ -1934,7 +1934,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx23.setMinimal ( TRUE );
+    rx23.setMinimal ( true );
     while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parsePrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
         buff.replace ( pos, rx23.matchedLength(), ldetalle );
@@ -1947,7 +1947,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
-    rx33.setMinimal ( TRUE );
+    rx33.setMinimal ( true );
     while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx33.matchedLength(), ldetalle );
@@ -1960,7 +1960,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx34 ( "<!--\\s*SETBARCODEWIDTH\\s*\"([^\"]*)\"\\s*-->" );
-    rx34.setMinimal ( TRUE );
+    rx34.setMinimal ( true );
     while ( ( pos = rx34.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetBarCodeWidth( rx34.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx34.matchedLength(), ldetalle );
@@ -1973,7 +1973,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx35 ( "<!--\\s*SELECTPAGEMODE\\s*-->" );
-    rx35.setMinimal ( TRUE );
+    rx35.setMinimal ( true );
     while ( ( pos = rx35.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSelectPageMode( tipoEscape );
         buff.replace ( pos, rx35.matchedLength(), ldetalle );
@@ -1986,7 +1986,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx36 ( "<!--\\s*SETPRINTAREA\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx36.setMinimal ( TRUE );
+    rx36.setMinimal ( true );
     while ( ( pos = rx36.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetPrintArea( rx36.cap ( 1 ), rx36.cap ( 2 ), rx36.cap ( 3 ), rx36.cap ( 4 ), tipoEscape );
         buff.replace ( pos, rx36.matchedLength(), ldetalle );
@@ -1999,7 +1999,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx37 ( "<!--\\s*SETPRINTDIRECTION\\s*\"([^\"]*)\"\\s*-->" );
-    rx37.setMinimal ( TRUE );
+    rx37.setMinimal ( true );
     while ( ( pos = rx37.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetPrintDirection( rx37.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx37.matchedLength(), ldetalle );
@@ -2012,7 +2012,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx38 ( "<!--\\s*SETVABSOLUTEPOS\\s*\"([^\"]*)\"\\s*-->" );
-    rx38.setMinimal ( TRUE );
+    rx38.setMinimal ( true );
     while ( ( pos = rx38.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetVAbsolutePos( rx38.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx38.matchedLength(), ldetalle );
@@ -2025,7 +2025,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx41 ( "<!--\\s*SETVRELATIVEPOS\\s*\"([^\"]*)\"\\s*-->" );
-    rx41.setMinimal ( TRUE );
+    rx41.setMinimal ( true );
     while ( ( pos = rx41.indexIn ( buff, pos ) ) != -1 ) {
         QByteArray ldetalle = parseSetVRelativePos( rx41.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx41.matchedLength(), ldetalle );
@@ -2038,7 +2038,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx45 ( "<!--\\s*CUTPAPER\\s*\"([^\"]*)\"\\s*-->" );
-    rx45.setMinimal ( TRUE );
+    rx45.setMinimal ( true );
     while ( ( pos = rx45.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseCutPaper( rx45.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx45.matchedLength(), ldetalle );
@@ -2051,10 +2051,10 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx46.setMinimal ( TRUE );
+    rx46.setMinimal ( true );
     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
-        buff.replace ( pos, rx46.cap(0).toAscii().size(), ldetalle );
+        buff.replace ( pos, rx46.cap(0).toLatin1().size(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
 	cadant = buff.left(pos);
@@ -2068,7 +2068,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx44.setMinimal ( TRUE );
+    rx44.setMinimal ( true );
     while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
         buff.replace ( pos, rx44.matchedLength(), ldetalle );
@@ -2106,7 +2106,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx82 ( "<!--\\s*SETJUSTIFICATION\\s*\"([^\"]*)\"\\s*-->" );
-    rx82.setMinimal ( TRUE );
+    rx82.setMinimal ( true );
     while ( ( pos = rx82.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetJustification( rx82.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx82.matchedLength(), ldetalle );
@@ -2123,7 +2123,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx23.setMinimal ( TRUE );
+    rx23.setMinimal ( true );
     while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parsePrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
         buff.replace ( pos, rx23.matchedLength(), ldetalle );
@@ -2136,7 +2136,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
-    rx33.setMinimal ( TRUE );
+    rx33.setMinimal ( true );
     while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx33.matchedLength(), ldetalle );
@@ -2150,10 +2150,10 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx46.setMinimal ( TRUE );
+    rx46.setMinimal ( true );
     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
-        buff.replace ( pos, rx46.cap(0).toAscii().size(), ldetalle );
+        buff.replace ( pos, rx46.cap(0).toLatin1().size(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
 	cadant = buff.left(pos);
@@ -2166,10 +2166,10 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx47 ( "<!--\\s*LEFTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx47.setMinimal ( TRUE );
+    rx47.setMinimal ( true );
     while ( ( pos = rx47.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
-        buff.replace ( pos, rx47.cap(0).toAscii().size(), ldetalle );
+        buff.replace ( pos, rx47.cap(0).toLatin1().size(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- LEFTJUSTIFIED");
 	cadant = buff.left(pos);
@@ -2182,7 +2182,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
-    rx44.setMinimal ( TRUE );
+    rx44.setMinimal ( true );
     while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
         buff.replace ( pos, rx44.matchedLength(), ldetalle );
@@ -2195,7 +2195,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx29 ( "<!--\\s*IMG\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx29.setMinimal ( TRUE );
+    rx29.setMinimal ( true );
     while ( ( pos = rx29.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = parseIncludeImg ( rx29.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx29.matchedLength(), ldetalle );
@@ -2211,9 +2211,9 @@ int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
     cadant = buff.left(pos);
     buff = buff.right(buff.length()-pos);
     QRegExp rx791 ( "<!--\\s*PNGRAW64\\s*DATA\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx791.setMinimal ( TRUE );
+    rx791.setMinimal ( true );
     while ( ( pos = rx791.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = parsePngRaw64 ( rx791.cap ( 1 ).toAscii(), tipoEscape );
+        QByteArray ldetalle = parsePngRaw64 ( rx791.cap ( 1 ).toLatin1(), tipoEscape );
         buff.replace ( pos, rx791.matchedLength(), ldetalle );
 	buff = cadant + buff;
         pos = buff.indexOf("<!-- PNGRAW64");
@@ -2237,7 +2237,7 @@ QByteArray BlDbRecord::parseIfQuery ( const QString &query, const QByteArray &da
 {
     BL_FUNC_DEBUG
     QByteArray result = "";
-    QByteArray query1 = query.toAscii();
+    QByteArray query1 = query.toLatin1();
 
     /// Buscamos parametros en el query y los ponemos.
     substrVars ( query1 );
@@ -2263,7 +2263,7 @@ QByteArray BlDbRecord::parseIf ( const QString &query, const QByteArray &datos, 
 {
     BL_FUNC_DEBUG
     QByteArray result = "";
-    QByteArray query1 = query.toAscii();
+    QByteArray query1 = query.toLatin1();
 
     /// Buscamos parametros en el query y los ponemos.
     substrVars ( query1 );
@@ -2435,15 +2435,15 @@ QByteArray BlDbRecord::parseSetCharacterCodeTable ( const QString &param, int ti
 QByteArray BlDbRecord::parseSetUnderlineMode ( const QString &param, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.setUnderlineMode(modo);
     
@@ -2478,16 +2478,16 @@ QByteArray BlDbRecord::parseSetCharacterSize ( const QString &param, int tipoEsc
 QByteArray BlDbRecord::parseSetSmoothing ( const QString &param, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
 
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.setSmoothing(modo);
     
@@ -2503,16 +2503,16 @@ QByteArray BlDbRecord::parseSetSmoothing ( const QString &param, int tipoEscape 
 QByteArray BlDbRecord::parseSetDoubleStrike ( const QString &param, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
 
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.setDoubleStrike(modo);
     
@@ -2528,16 +2528,16 @@ QByteArray BlDbRecord::parseSetDoubleStrike ( const QString &param, int tipoEsca
 QByteArray BlDbRecord::parseTurnUpsideDown ( const QString &param, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
 
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.turnUpsideDown(modo);
     
@@ -2554,19 +2554,19 @@ QByteArray BlDbRecord::parseTurnUpsideDown ( const QString &param, int tipoEscap
 QByteArray BlDbRecord::parseTurn90CWRotation ( const QString &param, const QString &param1, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
-    bool extra = FALSE;
+    bool modo=false;
+    bool extra = false;
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
-    if (param1.contains("TRUE") || param1.contains("t") || param1.contains("1"))
-        extra = TRUE;
+    if (param1.contains("true") || param1.contains("t") || param1.contains("1"))
+        extra = true;
 
     pr.turn90CWRotation(modo,extra);
     
@@ -2583,15 +2583,15 @@ QByteArray BlDbRecord::parseTurn90CWRotation ( const QString &param, const QStri
 QByteArray BlDbRecord::parseTurnWhiteBlack ( const QString &param, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.turnWhiteBlack(modo);
     
@@ -2819,7 +2819,7 @@ QByteArray BlDbRecord::parsePrintBarCode ( const QString &param, const QString &
         system = code128;
 
 
-    pr.printBarCode(system, param1.toInt(), param2.toAscii().data());
+    pr.printBarCode(system, param1.toInt(), param2.toLatin1().data());
     
     return pr.buffer();
 
@@ -2835,16 +2835,16 @@ QByteArray BlDbRecord::parseRightJustified ( const QString &param, const QString
 {
 
     BL_FUNC_DEBUG
-    bool truncate = FALSE;
-    if (param3.contains("TRUE"))
-        truncate = TRUE;
+    bool truncate = false;
     if (param3.contains("true"))
-        truncate = TRUE;
+        truncate = true;
+    if (param3.contains("true"))
+        truncate = true;
     if (param3.contains("1"))
-        truncate = TRUE;
+        truncate = true;
 
     
-    return param.rightJustified(param1.toInt(), param2.at(0), truncate).toAscii();
+    return param.rightJustified(param1.toInt(), param2.at(0), truncate).toLatin1();
 }
 
 /// Trata el parseLeftJustified
@@ -2856,16 +2856,16 @@ QByteArray BlDbRecord::parseLeftJustified ( const QString &param, const QString 
 {
 
     BL_FUNC_DEBUG
-    bool truncate = FALSE;
-    if (param3.contains("TRUE"))
-        truncate = TRUE;
+    bool truncate = false;
     if (param3.contains("true"))
-        truncate = TRUE;
+        truncate = true;
+    if (param3.contains("true"))
+        truncate = true;
     if (param3.contains("1"))
-        truncate = TRUE;
+        truncate = true;
 
     
-    return param.leftJustified(param1.toInt(), param2.at(0), truncate).toAscii();
+    return param.leftJustified(param1.toInt(), param2.at(0), truncate).toLatin1();
 }
 
 
@@ -3020,15 +3020,15 @@ QByteArray BlDbRecord::parseSetVRelativePos ( const QString &param, int tipoEsca
 QByteArray BlDbRecord::parseCutPaper ( const QString &param, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.cutPaper(modo);
     
@@ -3046,15 +3046,15 @@ QByteArray BlDbRecord::parseCutPaper ( const QString &param, int tipoEscape )
 QByteArray BlDbRecord::parseCutPaperAndFeed ( const QString &param, const QString &param1, int tipoEscape )
 {
     BL_FUNC_DEBUG
-    bool modo=FALSE;
+    bool modo=false;
     BlEscPrinter pr;
     pr.clearBuffer();
-    if (param.contains("TRUE"))
-        modo = TRUE;
     if (param.contains("true"))
-        modo = TRUE;
+        modo = true;
+    if (param.contains("true"))
+        modo = true;
     if (param.contains("1"))
-        modo = TRUE;
+        modo = true;
 
     pr.cutPaperAndFeed(modo, param1.toInt());
     
@@ -3075,8 +3075,8 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
     QMapIterator<QString, QString> j ( m_globalvars );
     while ( j.hasNext() ) {
         j.next();
-        buff.replace ( ("[" + j.key() + "]").toAscii(), j.value().toAscii() );
-        buff.replace ( ("[" + j.key() + ",l]").toAscii(), j.value().toAscii().replace("\\","\\\\") );
+        buff.replace ( ("[" + j.key() + "]").toLatin1(), j.value().toLatin1() );
+        buff.replace ( ("[" + j.key() + ",l]").toLatin1(), j.value().toLatin1().replace("\\","\\\\") );
     } // end while
     
     
@@ -3084,8 +3084,8 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
     QMapIterator<QString, QString> i ( m_variables );
     while ( i.hasNext() ) {
         i.next();
-        buff.replace ( ("[" + i.key() + "]").toAscii(), i.value().toAscii() );
-        buff.replace ( ("[" + i.key() + ",l]").toAscii(), i.value().toAscii().replace("\\","\\\\") );
+        buff.replace ( ("[" + i.key() + "]").toLatin1(), i.value().toLatin1() );
+        buff.replace ( ("[" + i.key() + ",l]").toLatin1(), i.value().toLatin1().replace("\\","\\\\") );
     } // end while
 
     substrConf ( buff );
@@ -3095,7 +3095,7 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
     QRegExp rx1 ( "\\[(\\w*),l\\]" );
     while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx1.cap ( 1 ) ) ) {
-            buff.replace ( pos, rx1.matchedLength(), dbValue ( rx1.cap ( 1 ) ).toAscii() );
+            buff.replace ( pos, rx1.matchedLength(), dbValue ( rx1.cap ( 1 ) ).toLatin1() );
             pos = 0;
         } else {
             pos += rx1.matchedLength();
@@ -3111,13 +3111,13 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
                         
             switch ( tipoEscape ) {
             case 1:
-                buff.replace ( pos, rx.matchedLength(), blXMLEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
+                buff.replace ( pos, rx.matchedLength(), blXMLEscape ( dbValue ( rx.cap ( 1 ) ) ).toLatin1() );
                 break;
             case 2:
-                buff.replace ( pos, rx.matchedLength(), blPythonEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
+                buff.replace ( pos, rx.matchedLength(), blPythonEscape ( dbValue ( rx.cap ( 1 ) ) ).toLatin1() );
                 break;
             default:
-                buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ).toAscii() );
+                buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ).toLatin1() );
 
             } // end switch
 
@@ -3140,7 +3140,7 @@ QByteArray BlDbRecord::parseQuery ( const QString &query, const QByteArray &dato
 {
     BL_FUNC_DEBUG
     QByteArray result = "";
-    QByteArray query1 = query.toAscii();
+    QByteArray query1 = query.toLatin1();
 
     /// Buscamos parametros en el query y los ponemos.
     substrVars ( query1, tipoEscape );
@@ -3172,7 +3172,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
         while ( ( pos = rx2.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx2.cap ( 1 ) ) != -1 ) {
 		    /// Esta salida normalmente es para una ticketera, con lo que no entran, para nada, caracteres especiales.
-                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur->value( rx2.cap ( 1 ), -1, TRUE )).toAscii() );
+                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur->value( rx2.cap ( 1 ), -1, true )).toLatin1() );
                 pos = 0;
             } else {
                 pos += rx2.matchedLength();
@@ -3185,7 +3185,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
         QRegExp rx1 ( "\\[(\\w*),l\\]" );
         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
-                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ).toAscii() );
+                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, true ).toLatin1() );
                 pos = 0;
             } else {
                 pos += rx1.matchedLength();
@@ -3200,13 +3200,13 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &da
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->value( rx.cap ( 1 ), -1, true ) ).toLatin1()  );
                     break;
                 case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, true ) ).toLatin1()  );
                     break;
                 default:
-                    salidatemp.replace ( pos, rx.cap(0).toAscii().size(), cur->value( rx.cap ( 1 ), -1, TRUE ).toAscii() );
+                    salidatemp.replace ( pos, rx.cap(0).toLatin1().size(), cur->value( rx.cap ( 1 ), -1, true ).toLatin1() );
                     break;
                 } // emd switch
                 pos = 0;
@@ -3234,7 +3234,7 @@ QByteArray BlDbRecord::parseExists ( const QString &query, const QByteArray &dat
     BL_FUNC_DEBUG
 
     QByteArray result = "";
-    QByteArray query1 = query.toAscii();
+    QByteArray query1 = query.toLatin1();
 
     /// Buscamos parametros en el query y los ponemos.
     substrVars ( query1 );

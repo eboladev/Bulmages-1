@@ -21,9 +21,9 @@
 #ifndef BLCOUNTRYVIEW_H
 #define BLCOUNTRYVIEW_H
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QCloseEvent>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QCloseEvent>
 
 #include "ui_blcountrybase.h"
 #include "blpostgresqlclient.h"

@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "devolucion.h"
 #include "blfixed.h"
@@ -15,7 +15,7 @@ Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     setupUi ( this );
 
     m_ticket = NULL;
-    mui_browser->setOpenLinks ( FALSE );
+    mui_browser->setOpenLinks ( false );
     m_totalin = "";
 }
 
@@ -86,7 +86,7 @@ void Devolucion::on_mui_vale_clicked()
 
     cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->value( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toLatin1();
     delete cur;
 
     cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
@@ -115,14 +115,14 @@ void Devolucion::on_mui_vale_clicked()
 
     cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        cliente.cif = cur->value( "cifcliente" ).toAscii();
-        cliente.nombre = cur->value( "nomcliente" ).toAscii();
+        cliente.cif = cur->value( "cifcliente" ).toLatin1();
+        cliente.nombre = cur->value( "nomcliente" ).toLatin1();
     } // end if
     delete cur;
 
     cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toLatin1() ;
     delete cur;
 
 
@@ -164,12 +164,12 @@ void Devolucion::on_mui_vale_clicked()
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
 
-    QByteArray qba = m_ticket->dbValue ( "refalbaran" ).toAscii();
+    QByteArray qba = m_ticket->dbValue ( "refalbaran" ).toLatin1();
     char* barcode = qba.data();
     pr.setJustification ( BlEscPrinter::center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
     pr.printBarCode ( code39, qba.size(), barcode );
-    pr.cutPaperAndFeed ( TRUE, 10 );
+    pr.cutPaperAndFeed ( true, 10 );
     pr.print();
 
     m_ticket->save();
@@ -303,7 +303,7 @@ void Devolucion::pintar()
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        BlFixed piva ( it.key().toAscii().constData() );
+        BlFixed piva ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
@@ -317,7 +317,7 @@ void Devolucion::pintar()
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        BlFixed preqeq ( it.key().toAscii().constData() );
+        BlFixed preqeq ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "registroiva.h"
 #include "bccompany.h"
@@ -277,8 +277,8 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cur = mainCompany() ->loadQuery ( SQLQuery );
 
         while ( !cur->eof() ) {
-            fprintf ( stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->value( "idborrador" ).toAscii().constData(), cur->value( "contrapartida" ).toAscii().constData(), cur->value( "codigo" ).toAscii().constData() );
-            registro = atoi ( cur->value( "idborrador" ).toAscii().constData() );
+            fprintf ( stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->value( "idborrador" ).toLatin1().constData(), cur->value( "contrapartida" ).toLatin1().constData(), cur->value( "codigo" ).toLatin1().constData() );
+            registro = atoi ( cur->value( "idborrador" ).toLatin1().constData() );
             cur->nextRecord();
         } //end while
 
@@ -544,7 +544,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         query.sprintf ( "SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden <> ''" );
         recordset = mainCompany() ->loadQuery ( query, "recordset" );
         if ( !recordset->eof() ) {
-            numord = 1 + atoi ( recordset->value( "numorden" ).toAscii().constData() );
+            numord = 1 + atoi ( recordset->value( "numorden" ).toLatin1().constData() );
         } else {
             numord = 1;
         } // end if

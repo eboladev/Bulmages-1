@@ -2,10 +2,10 @@
 
 
 #include "qextserialenumerator.h"
-#include <QDebug>
-#include <QMetaType>
-#include <QStringList>
-#include <QDir>
+#include <QtCore/QDebug>
+#include <QtCore/QMetaType>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QDir>
 
 QextSerialEnumerator::QextSerialEnumerator( )
 {

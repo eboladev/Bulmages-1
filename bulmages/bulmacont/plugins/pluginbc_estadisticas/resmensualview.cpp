@@ -387,7 +387,7 @@ void resmensualview::generargrafico ( float *h1, char**t2 )
 
 // GDC_SetColor  = setcolor;        /* see README */
     GDC_PlotColor = 0xFFFFFF;
-// GDC_grid = FALSE;
+// GDC_grid = false;
 
 // GDC_xtitle="fy.1998";
 

@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "convocatoriaview.h"
 #include "bfcompany.h"
@@ -52,7 +52,7 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
         addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del actividad" ) );
         addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id profesor" ) );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 
         /// Establecemos los parametros de busqueda de Profesor
         mui_idprofesor->setMainCompany ( comp );

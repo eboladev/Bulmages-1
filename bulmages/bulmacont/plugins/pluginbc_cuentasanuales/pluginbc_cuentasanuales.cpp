@@ -20,16 +20,16 @@
 
 #include <cstdio>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextCodec>
-#include <QLocale>
-#include <QInputDialog>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
+#include <QtWidgets/QInputDialog>
 
 #include "pluginbc_cuentasanuales.h"
 #include "bccompany.h"
@@ -48,7 +48,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_cuentasanuales", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_cuentasanuales", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_cuentasAnuales = NULL;
 

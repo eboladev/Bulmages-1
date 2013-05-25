@@ -18,16 +18,16 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QMenu>
-#include <QToolButton>
-#include <QPlainTextEdit>
-#include <QTextEdit>
-#include <QCheckBox>
-#include <QFile>
-#include <QTextStream>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QInputDialog>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtWidgets/QInputDialog>
 #include "bluiloader.h"
 
 
@@ -49,7 +49,7 @@
 \param f
 \param modo
 **/
-BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), BlDbRecord ( NULL ), BlDialogChanges ( this )
+BlForm::BlForm ( QWidget *parent, Qt::WindowFlags f, edmode modo ) : BlWidget ( parent, f ), BlDbRecord ( NULL ), BlDialogChanges ( this )
 {
     BL_FUNC_DEBUG
 
@@ -63,7 +63,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
-    m_firstLoad = TRUE;
+    m_firstLoad = true;
     dialogChanges_readValues();
 }
 
@@ -77,7 +77,7 @@ Importa el script y lo lanza.
 void BlForm::blScript(QObject * obj) {
     BL_FUNC_DEBUG
     
-    if (g_confpr->value(CONF_USE_QSCRIPT) == "TRUE" || g_confpr->value(CONF_USE_QSCRIPT) == "T" || g_confpr->value(CONF_USE_QSCRIPT) == "1" ) {
+    if (g_confpr->value(CONF_USE_QSCRIPT) == "true" || g_confpr->value(CONF_USE_QSCRIPT) == "T" || g_confpr->value(CONF_USE_QSCRIPT) == "1" ) {
     
 	QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+metaObject()->className()+".qs";
 	QFile scriptFile1(fileName);
@@ -126,7 +126,7 @@ void BlForm::blScript(QObject * obj) {
 \param f
 \param modo
 **/
-BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), BlDialogChanges ( this )
+BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WindowFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), BlDialogChanges ( this )
 {
     BL_FUNC_DEBUG
     
@@ -139,7 +139,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     setContextMenuPolicy ( Qt::CustomContextMenu );
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
-    m_firstLoad = TRUE;
+    m_firstLoad = true;
     dialogChanges_readValues();    
 }
 
@@ -165,12 +165,12 @@ int BlForm::mergeAllXML() {
    d.setFilter( QDir::Files );
    QStringList filters;
    filters << objectName() + "_" + mainCompany()->dbName() + "_*.spc*";
-   bool hayconfs = FALSE;
+   bool hayconfs = false;
    
    QList<QFileInfo> list = d.entryInfoList(filters);
    QList<QFileInfo>::iterator it;
    for (it = list.begin(); it != list.end(); ++it) {
-	hayconfs = TRUE;
+	hayconfs = true;
         QFile fich(it->absoluteFilePath ());
         if (!fich.open ( QIODevice::ReadOnly )) {
               blMsgInfo("Error al abrir el archivo de autoformularios");
@@ -202,7 +202,7 @@ void BlForm::loadSpecs()
     
     if (m_firstLoad) {
         mergeAllXML();
-	m_firstLoad = FALSE;
+	m_firstLoad = false;
     } else {
         return;
     } // end if
@@ -315,7 +315,7 @@ void BlForm::loadSpecs()
 				QString va = ventana.toElement().text(); /// try to convert the node to an element.
 				combo->m_valores[va] = "";
 			    } // end for
-			    combo->setAllowNull ( TRUE );
+			    combo->setAllowNull ( true );
 			    combo->setId ( "" );
 			} // end if
 
@@ -432,9 +432,9 @@ void BlForm::loadSpecs()
 				} // end while
 				subform->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
 			    } // end for			
-			subform->setInsert ( allowinsert == "TRUE" );
-			subform->setDelete ( allowdelete == "TRUE" );
-			subform->setSortingEnabled ( setsorting == "TRUE" );
+			subform->setInsert ( allowinsert == "true" );
+			subform->setDelete ( allowdelete == "true" );
+			subform->setSortingEnabled ( setsorting == "true" );
 			subform->inicializar();
 			
 		    } // end if
@@ -580,7 +580,7 @@ void BlForm::generaCampo ( const QString &objname, const QString &textname, cons
 		      QString va = ventana.toElement().text(); /// try to convert the node to an element.
 		      combo->m_valores[va] = "";
 		  } // end for
-		  combo->setAllowNull ( TRUE );
+		  combo->setAllowNull ( true );
 		  combo->setId ( "" );
 		  hboxLayout160->addWidget ( combo );	      
 	    } else {
@@ -814,11 +814,11 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     QMenu *popup = new QMenu ( this );
     
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
       QAction *nombreobjeto = popup->addAction( objectName() );
-      nombreobjeto->setDisabled(TRUE);
+      nombreobjeto->setDisabled(true);
       QAction *claseobjeto = popup->addAction( metaObject()->className() );
-      claseobjeto->setDisabled(TRUE);
+      claseobjeto->setDisabled(true);
     } // end if
     
     /// Lanzamos el evento para que pueda ser capturado por terceros. Y pongan sus opciones.
@@ -827,7 +827,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     createMenu ( popup );
     QAction *avconfig = NULL;
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
       avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
     } // end if
 
@@ -887,7 +887,7 @@ void BlForm::setDbTableName ( QString nomtabla )
        if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "INSERT" )
          && !mainCompany() ->hasTablePrivilege ( nomtabla, "UPDATE" ) ) {
           pbut = findChild<QAbstractButton *> ( "mui_guardar" );
-          if ( pbut ) pbut->setDisabled ( TRUE );
+          if ( pbut ) pbut->setDisabled ( true );
           pbut = findChild<QAbstractButton *> ( "mui_aceptar" );
           if ( pbut ) pbut->hide();
           pbut = findChild<QAbstractButton *> ( "mui_cancelar" );
@@ -896,7 +896,7 @@ void BlForm::setDbTableName ( QString nomtabla )
 
        if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "DELETE" ) ) {
           pbut = findChild<QAbstractButton *> ( "mui_borrar" );
-          if ( pbut ) pbut->setDisabled ( TRUE );
+          if ( pbut ) pbut->setDisabled ( true );
        } // end if
     } // end if
 }
@@ -1008,9 +1008,9 @@ void BlForm::pintar()
         QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->fieldName() + "_*" ) );
         for ( int i = 0; i < l10.size(); ++i ) {
             if ( l10.at ( i ) ->fieldValue() == campo->fieldValue() ) {
-                l10.at ( i ) ->setChecked ( TRUE );
+                l10.at ( i ) ->setChecked ( true );
             } else {
-                l10.at ( i ) ->setChecked ( FALSE );
+                l10.at ( i ) ->setChecked ( false );
             } // end if
 		if ( readOnly ) l10.at ( i ) ->setDisabled( true );
         } // end for
@@ -1080,10 +1080,10 @@ void BlForm::recogeValores()
         if ( l9 ) {
             switch ( l9->checkState() ) {
                 case Qt::Checked:
-                    campo->set ( "TRUE" );
+                    campo->set ( "true" );
                     break;
                 case Qt::Unchecked:
-                    campo->set ( "FALSE" );
+                    campo->set ( "false" );
                     break;
                 case Qt::PartiallyChecked:
                 default:
@@ -1195,12 +1195,12 @@ int BlForm::load ( QString id, bool paint )
         /// Activamos documentos adicionales
         activateDocuments();
 	
-        if ( paint == TRUE ) {
+        if ( paint == true ) {
             pintar();
         } // end if
 	
         dialogChanges_readValues();
-        insertWindow ( m_title + dbValue(m_campoid), this, TRUE, wtitle );
+        insertWindow ( m_title + dbValue(m_campoid), this, true, wtitle );
     } catch ( ... ) {
         
         return -1;
@@ -1246,7 +1246,7 @@ int BlForm::save()
         load ( id );
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
-        if (g_confpr->value(CONF_REFRESH_LIST) == "TRUE") {
+        if (g_confpr->value(CONF_REFRESH_LIST) == "true") {
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {
@@ -1304,7 +1304,7 @@ int BlForm::remove()
         err =  BlDbRecord::remove();
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
-        if (g_confpr->value(CONF_REFRESH_LIST) == "TRUE") {
+        if (g_confpr->value(CONF_REFRESH_LIST) == "true") {
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {
@@ -1538,9 +1538,9 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
 	  QCheckBox  *l6 = findChild<QCheckBox *>(rx5.cap( 1 ));
 	  if ( l6 ) {
 	      if (l6->isChecked()) {
-		  valor = "TRUE";
+		  valor = "true";
 	      } else {
-		  valor = "FALSE";
+		  valor = "false";
 	      } // end if
 	  } // end if
 
@@ -1597,7 +1597,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     buff.replace("--@", "-->");
     
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx70.setMinimal ( TRUE );
+    rx70.setMinimal ( true );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
         QString cadarchivo = rx70.cap ( 1 );
 
@@ -1628,7 +1628,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
 	    
 	    /// Vamos a buscar parametros tipo PARAM BLSEARCHWIDGET para configurar el dialogo.
 	    QRegExp rx700 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*LABEL\\s*=\\s*\"([^\"]*)\"\\s*TABLE\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-	    rx700.setMinimal ( TRUE );
+	    rx700.setMinimal ( true );
 	    int pos1 = 0;
 	    while ( ( pos1 = rx700.indexIn ( buff, pos1 ) ) != -1 ) {
 		QString name = rx700.cap ( 1 );
@@ -1654,7 +1654,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
 	    
 	    /// Vamos a buscar parametros tipo PARAM BLCOMBOBOX para configurar el dialogo.
 	    QRegExp rx701 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*TABLEID\\s*=\\s*\"([^\"]*)\"\\s*VALUES\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-	    rx701.setMinimal ( TRUE );
+	    rx701.setMinimal ( true );
 	    int pos2 = 0;
 	    while ( ( pos2 = rx701.indexIn ( buff, pos2 ) ) != -1 ) {
 		QString name = rx701.cap ( 1 );
@@ -1803,7 +1803,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos establecimiento de variables y los ponemos en m_variables
     pos = 0;
     QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx54.setMinimal ( TRUE );
+    rx54.setMinimal ( true );
     while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1 ) {
         QString valor = rx54.cap ( 2 );
         substrVars ( valor, tipoEscape );
@@ -1819,7 +1819,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos Query's en condicional
     pos = 0;
     QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx19.setMinimal ( TRUE );
+    rx19.setMinimal ( true );
     while ( ( pos = rx19.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseIncludeFile ( rx19.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx19.matchedLength(), ldetalle );
@@ -1829,7 +1829,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos Existencia de Ficheros
     pos = 0;
     QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
-    rx9.setMinimal ( TRUE );
+    rx9.setMinimal ( true );
     while ( ( pos = rx9.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseExists ( rx9.cap ( 1 ), rx9.cap ( 2 ) );
         buff.replace ( pos, rx9.matchedLength(), ldetalle );
@@ -1839,7 +1839,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos Query's en condicional
     pos = 0;
     QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
-    rx4.setMinimal ( TRUE );
+    rx4.setMinimal ( true );
     while ( ( pos = rx4.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
         buff.replace ( pos, rx4.matchedLength(), ldetalle );
@@ -1849,7 +1849,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos Query's por tratar
     pos = 0;
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
-    rx1.setMinimal ( TRUE );
+    rx1.setMinimal ( true );
     while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ), tipoEscape );
         buff.replace ( pos, rx1.matchedLength(), ldetalle );
@@ -1862,7 +1862,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
 	/// Buscamos Query's en condicional
 	pos = 0;
 	QRegExp rx4 ( "<!--\\s*IF\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY"+QString::number(aux)+"\\s*-->" );
-	rx4.setMinimal ( TRUE );
+	rx4.setMinimal ( true );
 	while ( ( pos = rx4.indexIn ( buff, pos ) ) != -1 ) {
 	    QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
 	    buff.replace ( pos, rx4.matchedLength(), ldetalle );
@@ -1871,7 +1871,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
       
 	pos = 0;
 	QRegExp rx1 ( "<!--\\s*QUERY"+QString::number(aux)+"\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY"+QString::number(aux)+"\\s*-->" );
-	rx1.setMinimal ( TRUE );
+	rx1.setMinimal ( true );
 	while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
 	    QString ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ), tipoEscape );
 	    buff.replace ( pos, rx1.matchedLength(), ldetalle );
@@ -1882,7 +1882,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos SubQuery's en condicional
     pos = 0;
     QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
-    rx14.setMinimal ( TRUE );
+    rx14.setMinimal ( true );
     while ( ( pos = rx14.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ) );
         buff.replace ( pos, rx14.matchedLength(), ldetalle );
@@ -1892,7 +1892,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos SubQuery's por tratar
     pos = 0;
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
-    rx7.setMinimal ( TRUE );
+    rx7.setMinimal ( true );
     while ( ( pos = rx7.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ), tipoEscape );
         buff.replace ( pos, rx7.matchedLength(), ldetalle );
@@ -1902,7 +1902,7 @@ int BlForm::parseTags ( QString &buff, int tipoEscape )
     /// Buscamos Query's en condicional
     pos = 0;
     QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
-    rx11.setMinimal ( TRUE );
+    rx11.setMinimal ( true );
     while ( ( pos = rx11.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = parseIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap ( 3 ) );
         buff.replace ( pos, rx11.matchedLength(), ldetalle );
@@ -2037,7 +2037,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
         while ( ( pos = rx2.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx2.cap ( 1 ) ) != -1 ) {
 		    /// Esta salida normalmente es para una ticketera, con lo que no entran, para nada, caracteres especiales.
-                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur->value( rx2.cap ( 1 ), -1, TRUE )) );
+                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur->value( rx2.cap ( 1 ), -1, true )) );
                 pos = 0;
             } else {
                 pos += rx2.matchedLength();
@@ -2050,7 +2050,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
         pos =  0;
         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx1.cap ( 1 ) ) != -1 ) {
-                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, TRUE ) );
+                salidatemp.replace ( pos, rx1.matchedLength(), cur->value( rx1.cap ( 1 ), -1, true ) );
                 pos = 0;
             } else {
                 pos += rx1.matchedLength();
@@ -2066,13 +2066,13 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) )  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->value( rx.cap ( 1 ), -1, true ) )  );
                     break;
                 case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) )  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, true ) )  );
                     break;
                 default:
-                    salidatemp.replace ( pos, rx.matchedLength(), cur->value( rx.cap ( 1 ), -1, TRUE ) );
+                    salidatemp.replace ( pos, rx.matchedLength(), cur->value( rx.cap ( 1 ), -1, true ) );
                     break;
                 } // emd switch
                 pos = 0;

@@ -24,12 +24,12 @@
 #ifndef PLUGINBC_CUENTASANUALES2ODS_H
 #define PLUGINBC_CUENTASANUALES2ODS_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QTextStream>
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"

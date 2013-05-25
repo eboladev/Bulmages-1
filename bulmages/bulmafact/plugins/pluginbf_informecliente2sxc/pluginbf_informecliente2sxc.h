@@ -21,10 +21,10 @@
 #ifndef PLUGINBF_INFORMECLIENTE2SXC_H
 #define PLUGINBF_INFORMECLIENTE2SXC_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtCore/QObject>
 
 #include "clientslist.h"
 #include "providerslist.h"

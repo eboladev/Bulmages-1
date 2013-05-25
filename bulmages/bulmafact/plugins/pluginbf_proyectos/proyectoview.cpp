@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 #include <fstream>
 
 #include "proyectoview.h"
@@ -79,9 +79,9 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         mui_ingresos->addSubFormHeader ( "idlingpresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _ ( "Id linea de Ingreso Presupuesto" ) );
         mui_ingresos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Proyecto" ) );
         mui_ingresos->addSubFormHeader ( "ordenlingpresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-        mui_ingresos->setInsert ( TRUE );
-        mui_ingresos->setOrdenEnabled ( TRUE );
-        mui_ingresos->setOrdenPorQuery ( FALSE );
+        mui_ingresos->setInsert ( true );
+        mui_ingresos->setOrdenEnabled ( true );
+        mui_ingresos->setOrdenPorQuery ( false );
 
 
         /// Inicializamos el listado.
@@ -98,13 +98,13 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         mui_gastos->addSubFormHeader ( "idlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _ ( "Id linea de Ingreso Presupuesto" ) );
         mui_gastos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Proyecto" ) );
         mui_gastos->addSubFormHeader ( "ordenlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-        mui_gastos->setInsert ( TRUE );
-        mui_gastos->setOrdenEnabled ( TRUE );
-        mui_gastos->setOrdenPorQuery ( FALSE );
+        mui_gastos->setInsert ( true );
+        mui_gastos->setOrdenEnabled ( true );
+        mui_gastos->setOrdenPorQuery ( false );
 
 
         dialogChanges_readValues();
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	/// Llamamos a los scripts
         blScript(this);
 
@@ -235,9 +235,9 @@ void ProyectoView::on_mui_geninforme_clicked()
     fitxersortidatxt += "doc.save(\"informeproyectoc.ods\")\n";
 
     QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "informeproyectoc.ods";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "rm " + archivod;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     QFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) )  {
@@ -248,9 +248,9 @@ void ProyectoView::on_mui_geninforme_clicked()
     } // end if
 
     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = g_confpr->value( CONF_ODS )  + " " + g_confpr->value( CONF_DIR_USER ) + "informeproyectoc.ods &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
 }
 

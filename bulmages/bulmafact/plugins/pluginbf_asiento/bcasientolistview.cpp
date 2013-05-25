@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QComboBox>
-#include <QDateTime>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QDateTime>
 
 #include "bcasientolistview.h"
 #include "bcasientoview.h"
@@ -35,7 +35,7 @@
 \param flag
 \param edmode
 **/
-BcAsientoListView::BcAsientoListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode )
+BcAsientoListView::BcAsientoListView ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode )
         : BlFormList ( comp, parent, flag )
 {
     BL_FUNC_DEBUG

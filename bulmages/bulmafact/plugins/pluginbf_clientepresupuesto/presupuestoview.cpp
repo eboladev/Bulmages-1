@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QFile>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "blfunctions.h"
 #include "listlinpresupuestoview.h"
@@ -100,7 +100,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->run ( "PresupuestoView_PresupuestoView_Post", this );
 	blScript(this);
@@ -380,7 +380,7 @@ void PresupuestoView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclpresupuesto", linea->dbValue ( "desclpresupuesto" ) );
                 linea1->setDbValue ( "cantlpresupuesto", linea->dbValue ( "cantlpresupuesto" ) );
                 linea1->setDbValue ( "pvplpresupuesto", linea->dbValue ( "pvplpresupuesto" ) );

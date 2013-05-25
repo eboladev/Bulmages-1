@@ -22,8 +22,8 @@
 #ifndef BLESCPRINTER_H
 #define BLESCPRINTER_H
 
-#include <QString>
-#include <QByteArray>
+#include <QtCore/QString>
+#include <QtCore/QByteArray>
 #include "bldefs.h"
 
 

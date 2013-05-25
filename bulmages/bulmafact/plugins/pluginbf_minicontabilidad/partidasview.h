@@ -49,7 +49,7 @@ private:
     QTreeWidgetItem *m_init;
 
 public:
-    PartidasView ( BfCompany *, QWidget *parent = 0, bool selectMode = FALSE );
+    PartidasView ( BfCompany *, QWidget *parent = 0, bool selectMode = false );
     ~PartidasView();
     bool trataModificado();
     void mostrarplantilla();

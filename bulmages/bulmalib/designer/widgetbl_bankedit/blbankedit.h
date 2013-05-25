@@ -1,10 +1,10 @@
 #ifndef BLBANKEDIT_H
 #define BLBANKEDIT_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QtDesigner/QDesignerExportWidget>
 
-#include <QtGui>
+#include <QtGui/QtGui>
 #include "../../src/ui_blbankeditbase.h"
 
 

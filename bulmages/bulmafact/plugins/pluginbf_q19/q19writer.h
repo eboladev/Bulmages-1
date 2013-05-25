@@ -20,10 +20,10 @@
 #ifndef IMPQWRITER_H
 #define IMPQWRITER_H
 
-#include <QString>
-#include <QStringList>
-#include <QRegExp>
-#include <QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QRegExp>
+#include <QtCore/QTextStream>
 
 #include "bfcompany.h"
 #include "blfunctions.h"

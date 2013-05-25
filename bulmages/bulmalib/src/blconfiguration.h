@@ -27,8 +27,8 @@
 #include <iomanip>
 #include <stdlib.h>
 
-#include <QString>
-#include <QMap>
+#include <QtCore/QString>
+#include <QtCore/QMap>
 
 #include "blfunctions.h"
 #include "blapplication.h"

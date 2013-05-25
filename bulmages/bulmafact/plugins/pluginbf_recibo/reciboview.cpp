@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "reciboview.h"
 #include "bfcompany.h"
@@ -58,7 +58,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "pagadorecibo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Pagado" ) );
         addDbField ( "devueltorecibo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Devuelto" ) );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 
         mui_idforma_pago->setMainCompany ( comp );
 
@@ -82,8 +82,8 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_list->addSubFormHeader ( "cantlrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad Linea Recibo" ) );
         mui_list->addSubFormHeader ( "conceptolrecibo", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto" ) );
 
-        mui_list->setInsert ( TRUE );
-        mui_list->setOrdenEnabled ( TRUE );
+        mui_list->setInsert ( true );
+        mui_list->setOrdenEnabled ( true );
 
         mui_list->load("SELECT * from lrecibo WHERE 1=2");
 
@@ -205,7 +205,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
 
    try {
    setDbValue("idrecibo", "");
-   setNuevo(TRUE);
+   setNuevo(true);
 
    mui_fecharecibo->setText("");
    recogeValores();

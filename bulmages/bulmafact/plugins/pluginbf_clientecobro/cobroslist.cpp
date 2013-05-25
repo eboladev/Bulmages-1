@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QTextStream>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
 
 #include "blconfiguration.h"
 #include "cobroslist.h"
@@ -36,7 +36,7 @@
     Mete la ventana en el workSpace.
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
-CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+CobrosList::CobrosList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -67,7 +67,7 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -338,9 +338,9 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
     addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del trabajador" ) );
     addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apellidos del trabajador" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

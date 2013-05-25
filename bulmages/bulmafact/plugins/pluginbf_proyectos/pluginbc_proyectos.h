@@ -21,7 +21,7 @@
 #ifndef PLUGINBC_PROYECTOS_H
 #define PLUGINBC_PROYECTOS_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "bcbulmacont.h"
 #include "bccentrocosteview.h"

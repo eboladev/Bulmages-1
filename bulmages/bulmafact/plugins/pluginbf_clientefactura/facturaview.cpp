@@ -21,13 +21,13 @@
 
 #include <fstream>
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLayout>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
 
 #include "blplugins.h"
 #include "albaranclientelist.h"
@@ -104,15 +104,15 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         mui_idforma_pago->setId ( "" );
         mui_idtrabajador->setId ( "0" );
 
-        m_totalBases->setReadOnly ( TRUE );
+        m_totalBases->setReadOnly ( true );
         m_totalBases->setAlignment ( Qt::AlignRight );
-        m_totalTaxes->setReadOnly ( TRUE );
+        m_totalTaxes->setReadOnly ( true );
         m_totalTaxes->setAlignment ( Qt::AlignRight );
-        m_totalDiscounts->setReadOnly ( TRUE );
+        m_totalDiscounts->setReadOnly ( true );
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
-        m_totalfactura->setReadOnly ( TRUE );
+        m_totalfactura->setReadOnly ( true );
         m_totalfactura->setAlignment ( Qt::AlignRight );
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la factura" ), this );
@@ -375,7 +375,7 @@ void FacturaView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclfactura" ) );
                 linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlfactura" ) );
                 linea1->setDbValue ( "pvplfactura", linea->dbValue ( "pvplfactura" ) );

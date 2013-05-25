@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbc_proyectos.h"
 #include "blformlist.h"
@@ -42,7 +42,7 @@ int entryPoint ( BcBulmaCont *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_proyectos", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_proyectos", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_pluginbc_proyectos = bges;
     BlAction *accionA = new BlAction ( _ ( "&Proyectos" ), 0 );
@@ -79,7 +79,7 @@ int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
-    l->mui_actualizar->setDisabled ( TRUE );
+    l->mui_actualizar->setDisabled ( true );
 //    l->setEditMode();
     ccoste->tabWidget->addTab ( l, _ ( "Proyectos asociados" ) );
     return 0;

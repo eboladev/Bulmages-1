@@ -1,7 +1,7 @@
 #ifndef PORTLISTENER_H_
 #define PORTLISTENER_H_
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "qextserialport.h"
 #include "btbulmatpv.h"
 #include "btcompany.h"

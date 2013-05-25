@@ -20,13 +20,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QLayout>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLayout>
+#include <QtCore/QTextStream>
 
 #include "pedidoproveedorview.h"
 #include "bfcompany.h"
@@ -95,7 +95,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         setListaDescuentos ( mui_descuentos );
 
         dialogChanges_readValues();
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido a proveedor" ), this );
@@ -276,7 +276,7 @@ void PedidoProveedorView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclpedidoproveedor", linea->dbValue ( "desclpedidoproveedor" ) );
                 linea1->setDbValue ( "cantlpedidoproveedor", linea->dbValue ( "cantlpedidoproveedor" ) );
                 linea1->setDbValue ( "pvplpedidoproveedor", linea->dbValue ( "pvplpedidoproveedor" ) );

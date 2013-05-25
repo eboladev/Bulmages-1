@@ -1,7 +1,7 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 
 #include "blwidget.h"
 #include "ui_adminbase.h"

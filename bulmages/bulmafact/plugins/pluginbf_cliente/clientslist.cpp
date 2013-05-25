@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QTextStream>
-#include <QFileDialog>
-#include <QCheckBox>
-#include <QMessageBox>
-#include <QMenu>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
 
 #include "clientslist.h"
 #include "clienteview.h"
@@ -38,7 +38,7 @@
     Hace una presentacion inicial.
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
-ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
@@ -60,11 +60,11 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de clientes" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_exportar->setHidden ( TRUE );
-        mui_importar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_exportar->setHidden ( true );
+        mui_importar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
     
     /// Cargamos los filtros guardados.
@@ -113,11 +113,11 @@ const QString ClientsList::generaFiltro()
     filtro += mui_list->likeFilterSQL(m_filtro->text());
     
     if ( m_facturas->isChecked()) {
-        filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM factura WHERE procesadafactura = FALSE)";
+        filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM factura WHERE procesadafactura = false)";
     } // end if
 
     if ( m_albaranes->isChecked()) {
-        filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM albaran WHERE procesadoalbaran = FALSE)";
+        filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM albaran WHERE procesadoalbaran = false)";
     } // end if
     
     
@@ -368,9 +368,9 @@ ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : BfSub
     addSubFormHeader ( "faltacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de alta del cliente" ) );
     addSubFormHeader ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del cliente" ) );
     addSubFormHeader ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "articulolist.h"
 #include "comparticulolistview.h"
@@ -44,8 +44,8 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
     addSubFormHeader ( "cantcomparticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad de componente de articulo" ) );
     addSubFormHeader ( "idcomponente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id componente" ) );
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey | BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id articulo" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( false );
     
 }
 

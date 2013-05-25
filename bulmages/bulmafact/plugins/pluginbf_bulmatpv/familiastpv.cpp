@@ -19,19 +19,19 @@
  ***************************************************************************/
 
 
-#include <QColorDialog>
+#include <QtWidgets/QColorDialog>
 
 #include "familiastpv.h"
 
 
-FamiliasTPV::FamiliasTPV(QWidget *parent, Qt::WFlags fl) : BlWidget (parent, fl)
+FamiliasTPV::FamiliasTPV(QWidget *parent, Qt::WindowFlags fl) : BlWidget (parent, fl)
 {
     setupUi(this);
     /// Por defecto todos los campos estan desactivados.
-    mui_visibletpvfamilia->setEnabled(FALSE);
-    mui_ordentpvfamilia->setEnabled(FALSE);
-    mui_colortpvfamilia->setEnabled(FALSE);
-    mui_seleccionarcolor->setEnabled(FALSE);
+    mui_visibletpvfamilia->setEnabled(false);
+    mui_ordentpvfamilia->setEnabled(false);
+    mui_colortpvfamilia->setEnabled(false);
+    mui_seleccionarcolor->setEnabled(false);
     mui_visibletpvfamilia->setCheckState(Qt::Checked);
     mui_ordentpvfamilia->setText("");
     mui_colortpvfamilia->setText("");

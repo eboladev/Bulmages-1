@@ -23,14 +23,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QRadioButton>
-#include <QLineEdit>
-#include <QComboBox>
-#include <QToolButton>
-#include <QCheckBox>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include <bldatesearch.h>
 
@@ -193,7 +193,7 @@ void BalancePrintView::presentar ( const char* tipus )
             BcPlanContableArbol *arbol;
             arbol = new BcPlanContableArbol;
             while ( !ramas->eof() ) {
-                if ( atoi ( ramas->value( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
+                if ( atoi ( ramas->value( "nivel" ).toLatin1().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
                     arbol->nuevaRama ( ramas );
                 } // end if
                 ramas->nextRecord();
@@ -208,7 +208,7 @@ void BalancePrintView::presentar ( const char* tipus )
             if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
                 fitxersortidatxt << "Balance de sumas y saldos. \n\n" ;
-                fitxersortidatxt << "Fecha inicial: " << finicial.toAscii().constData() << "   Fecha final: " << ffinal.toAscii().constData() << endl << endl;
+                fitxersortidatxt << "Fecha inicial: " << finicial.toLatin1().constData() << "   Fecha final: " << ffinal.toLatin1().constData() << endl << endl;
                 fitxersortidatxt << "Cuenta            Denominacion                        Saldo ant.        Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
                 fitxersortidatxt << "_____________________________________________________________________________________________________________________________________________\n";
             } // end if
@@ -224,13 +224,13 @@ void BalancePrintView::presentar ( const char* tipus )
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"9\" class=titolbalanc> Balance <hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td colspan=\"9\" class=periodebalanc> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
+                fitxersortidahtml << "<tr><td colspan=\"9\" class=periodebalanc> Data Inicial: " << finicial.toLatin1().constData() << " -  Data Final: " << ffinal.toLatin1().constData() << "<hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td class=titolcolumnabalanc>lcuenta</td><td class=titolcolumnabalanc> ldenominacion</td><td class=titolcolumnabalanc>lsaldoant</td><td class=titolcolumnabalanc>ldebe</td><td class=titolcolumnabalanc>lhaber</td><td class=titolcolumnabalanc>lsaldo</td><td class=titolcolumnabalanc> ldebeej  </td><td class=titolcolumnabalanc> lhaberej </td><td class=titolcolumnabalanc> lsaldoej </td></tr>\n";
             } // end if
 
             /// Vamos a recopilar todos los apuntes agrupados por cuenta para poder
             /// establecer as&iacute; los valores de cada cuenta.
-            query.sprintf ( "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.toAscii().constData(), finicial.toAscii().constData(), ffinal.toAscii().constData(), finicial.toAscii().constData() );
+            query.sprintf ( "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.toLatin1().constData(), finicial.toLatin1().constData(), ffinal.toLatin1().constData(), finicial.toLatin1().constData() );
             BlDbRecordSet *cuentas;
             cuentas = mainCompany() ->loadQuery ( query, "Periodo" );
             /// Para cada cuenta con sus apuntes hechos hay que actualizar hojas
@@ -275,12 +275,12 @@ void BalancePrintView::presentar ( const char* tipus )
                 /// Imprimimos l&iacute;nea seg&uacute;n formato.
                 /// Presentaci&oacute;n en txt normal.
                 if ( txt ) {
-                    fitxersortidatxt << lcuenta.leftJustified(17, ' ').toAscii().constData() <<  ldenominacion.leftJustified(26, ' ', true).toAscii().constData() << " " << lsaldoant.rightJustified(19, ' ').toAscii().constData() << " " <<  ldebe.rightJustified(12, ' ').toAscii().constData() << " " <<  lhaber.rightJustified(12, ' ').toAscii().constData() << " " << lsaldo.rightJustified(12, ' ').toAscii().constData() << " " << ldebeej.rightJustified(12, ' ').toAscii().constData() << " " << lhaberej.rightJustified(12, ' ').toAscii().constData() << " " << lsaldoej.rightJustified(12, ' ').toAscii().constData() << endl;
+                    fitxersortidatxt << lcuenta.leftJustified(17, ' ').toLatin1().constData() <<  ldenominacion.leftJustified(26, ' ', true).toLatin1().constData() << " " << lsaldoant.rightJustified(19, ' ').toLatin1().constData() << " " <<  ldebe.rightJustified(12, ' ').toLatin1().constData() << " " <<  lhaber.rightJustified(12, ' ').toLatin1().constData() << " " << lsaldo.rightJustified(12, ' ').toLatin1().constData() << " " << ldebeej.rightJustified(12, ' ').toLatin1().constData() << " " << lhaberej.rightJustified(12, ' ').toLatin1().constData() << " " << lsaldoej.rightJustified(12, ' ').toLatin1().constData() << endl;
                 } // end if
 
                 /// Presentaci&oacute;n en html normal.
                 if ( html ) {
-                    fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.toAscii().constData() << "</td><td class=assentamentbalanc>" <<  ldenominacion.left ( 40 ).toAscii().constData() << "</td><td class=dosdecimals>" << lsaldoant.toAscii().constData() << "</td><td class=dosdecimals>" << ldebe.toAscii().constData() << "</td><td class=dosdecimals>" << lhaber.toAscii().constData() << "</td><td class=dosdecimals>" << lsaldo.toAscii().constData() << "</td><td class=dosdecimals>" << ldebeej.toAscii().constData() << "</td><td class=dosdecimals>" << lhaberej.toAscii().constData() << "</td><td class=dosdecimals>" << lsaldoej.toAscii().constData() << endl;
+                    fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.toLatin1().constData() << "</td><td class=assentamentbalanc>" <<  ldenominacion.left ( 40 ).toLatin1().constData() << "</td><td class=dosdecimals>" << lsaldoant.toLatin1().constData() << "</td><td class=dosdecimals>" << ldebe.toLatin1().constData() << "</td><td class=dosdecimals>" << lhaber.toLatin1().constData() << "</td><td class=dosdecimals>" << lsaldo.toLatin1().constData() << "</td><td class=dosdecimals>" << ldebeej.toLatin1().constData() << "</td><td class=dosdecimals>" << lhaberej.toLatin1().constData() << "</td><td class=dosdecimals>" << lsaldoej.toLatin1().constData() << endl;
                 } // end if
 
             } // end while
@@ -299,12 +299,12 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Presentaci&oacute;n txt normal.
             if ( txt ) {
                 fitxersortidatxt << "_____________________________________________________________________________________________________________________________________________\n";
-                fitxersortidatxt << QString("Totales:").leftJustified(51, ' ').toAscii().constData() << totalsaldoant.rightJustified(12, ' ').toAscii().constData() << " " << totaldebe.rightJustified(12, ' ').toAscii().constData() << " " <<  totalhaber.rightJustified(12, ' ').toAscii().constData() << " " <<  totalsaldo.rightJustified(12, ' ').toAscii().constData()  << " " << totaldebeej.rightJustified(12, ' ').toAscii().constData() << " " <<  totalhaberej.rightJustified(12, ' ').toAscii().constData() << " " <<  totalsaldoej.rightJustified(12, ' ').toAscii().constData() << endl;
+                fitxersortidatxt << QString("Totales:").leftJustified(51, ' ').toLatin1().constData() << totalsaldoant.rightJustified(12, ' ').toLatin1().constData() << " " << totaldebe.rightJustified(12, ' ').toLatin1().constData() << " " <<  totalhaber.rightJustified(12, ' ').toLatin1().constData() << " " <<  totalsaldo.rightJustified(12, ' ').toLatin1().constData()  << " " << totaldebeej.rightJustified(12, ' ').toLatin1().constData() << " " <<  totalhaberej.rightJustified(12, ' ').toLatin1().constData() << " " <<  totalsaldoej.rightJustified(12, ' ').toLatin1().constData() << endl;
             } // end if
 
             /// Presentaci&oacute;n html normal.
             if ( html ) {
-                fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.toAscii().constData() << "</td><td class=dosdecimals>" << totaldebe.toAscii().constData() << "</td><td class=dosdecimals>" << totalhaber.toAscii().constData() << "</td><td class=dosdecimals>" << totalsaldo.toAscii().constData() << "</td></tr>\n</table>\n</body>\n</html>\n";
+                fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.toLatin1().constData() << "</td><td class=dosdecimals>" << totaldebe.toLatin1().constData() << "</td><td class=dosdecimals>" << totalhaber.toLatin1().constData() << "</td><td class=dosdecimals>" << totalsaldo.toLatin1().constData() << "</td></tr>\n</table>\n</body>\n</html>\n";
             } // end if
 
             /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
@@ -317,7 +317,7 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Presentaci&oacxute;n txt normal.
             if ( txt ) {
                 QString cadena = g_confpr->value( CONF_EDITOR ) + " " + g_confpr->value( CONF_DIR_USER ) + "balance.txt";
-                system ( cadena.toAscii().constData() );
+                system ( cadena.toLatin1().constData() );
             } // end if
 
             /// Presentaci&oacute;n html normal.

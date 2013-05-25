@@ -1,7 +1,7 @@
 #ifndef PLBLREPORT
 #define PLBLREPORT
 
-#include <QObject>
+#include <QtCore/QObject>
 
 
 

@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "comisionview.h"
 #include "bfcompany.h"
@@ -65,13 +65,13 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Socio" ) );
         mui_list->addSubFormHeader ( "cargomiembrocomision", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
 
-        mui_list->setInsert ( TRUE );
-        mui_list->setDelete ( TRUE );
-        mui_list->setSortingEnabled ( FALSE );
+        mui_list->setInsert ( true );
+        mui_list->setDelete ( true );
+        mui_list->setSortingEnabled ( false );
         
         mui_list->load("SELECT * from miembrocomision NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);

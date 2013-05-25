@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "blapplication.h"
 #include "blform.h"
 #include "blfunctions.h"
@@ -50,7 +50,7 @@ BlApplication::~BlApplication()
 }
 
 
-#if CONFIG_DEBUG == TRUE
+#if CONFIG_DEBUG == true
 ///
 /**
 \param object
@@ -64,8 +64,8 @@ bool BlApplication::notify ( QObject *object, QEvent *event )
     try {
         return QApplication::notify ( object, event );
     } catch ( ... ) {
-        fprintf(stderr, _("Error inesperado en el sistema de notificaciones.\n").toAscii());
-        return FALSE;
+        fprintf(stderr, _("Error inesperado en el sistema de notificaciones.\n").toLatin1());
+        return false;
     } // end try
 
 }

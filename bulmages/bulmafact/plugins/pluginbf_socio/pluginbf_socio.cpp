@@ -150,7 +150,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_socio", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_socio", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );

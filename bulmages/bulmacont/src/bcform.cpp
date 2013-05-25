@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "bcform.h"
 #include "blplugins.h"
@@ -34,7 +34,7 @@ class Fixed;
 \param parent
 \param f
 **/
-BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
+BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WindowFlags f )
         : BlForm ( comp, parent, f )
 {
     BL_FUNC_DEBUG

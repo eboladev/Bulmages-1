@@ -20,7 +20,7 @@
 #ifndef BLSPAINBANKACCOUNTNUMBER_H
 #define BLSPAINBANKACCOUNTNUMBER_H
 
-#include <QString>
+#include <QtCore/QString>
 #include "bldefs.h"
 
 /// Esta clase implementa el C&oacute;digo Cuenta Cliente (CCC) de un banco.
@@ -38,7 +38,7 @@ public:
     /// Calcula y devuelve los digitos de control del ccc.
     QString getdc();
     /// Comprueba si es un numero de cuenta valido.
-    /// Devuelve TRUE si es un CCC correcto. FALSE en caso contrario.
+    /// Devuelve true si es un CCC correcto. false en caso contrario.
     bool cuentaesvalida();
     /// Devuelve el CCC separando sus miembros por la cadena \c sep.
     QString getcodigo ( QString sep = "" );

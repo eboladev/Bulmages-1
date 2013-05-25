@@ -23,9 +23,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLabel>
-#include <QTextBrowser>
-#include <QBitmap>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
+#include <QtGui/QBitmap>
 
 #include "mticketivainc.h"
 #include "bldb.h"
@@ -50,8 +50,8 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *btCompany, QWidget *parent ) : BlWidge
     m_parent = parent;
 
     /// Por defecto hacemos el browser invisible porque es leeeento
-    mui_plainText->setVisible(FALSE);
-    mui_frame->setVisible(FALSE);
+    mui_plainText->setVisible(false);
+    mui_frame->setVisible(false);
 
     pintar();
 
@@ -132,9 +132,9 @@ void MTicketIVAInc::pintar()
         BlFixed totalLinea = cant * pvpund;
         int precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
 
-        plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-        plainTextContent += item->dbValue("desclalbaran").leftJustified ( 20, ' ', TRUE ) + " ";
-        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', TRUE ) + "\n";
+        plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', true ) + " ";
+        plainTextContent += item->dbValue("desclalbaran").leftJustified ( 20, ' ', true ) + " ";
+        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', true ) + "\n";
 
         htmlContent += "<tr>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</td>";
@@ -151,7 +151,7 @@ void MTicketIVAInc::pintar()
 		    htmlContent += "<tr>";
 		    htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
 		    QString text1 = item->dbValue("imglalbaran");
-		    QByteArray text = QByteArray::fromBase64(text1.toAscii());
+		    QByteArray text = QByteArray::fromBase64(text1.toLatin1());
 
 				  
 		    QFile file("/tmp/imagen"+QString::number(i)+".png");

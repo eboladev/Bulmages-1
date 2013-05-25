@@ -24,8 +24,8 @@
 #ifndef ALBARANPROVEEDORVIEW_H
 #define ALBARANPROVEEDORVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "bldatesearch.h"
 #include "bfbuscarformapago.h"

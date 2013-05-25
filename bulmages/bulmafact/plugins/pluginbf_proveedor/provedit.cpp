@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -79,11 +79,11 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
 	for (i = 0; i < mui_tab->count(); i++) {
 	
 	    if (mui_tab->widget(i)->objectName() == "tabDivisiones") {
-		mui_tab->setTabEnabled(i, FALSE);
+		mui_tab->setTabEnabled(i, false);
 	    } else if (mui_tab->widget(i)->objectName() == "tabProductosSuministrados") {
-		mui_tab->setTabEnabled(i, FALSE);    
+		mui_tab->setTabEnabled(i, false);    
 	    } else if (mui_tab->widget(i)->objectName() == "tabContratos") {
-		mui_tab->setTabEnabled(i, FALSE);
+		mui_tab->setTabEnabled(i, false);
 	    } // end if
 	    	    
 	} // end for
@@ -102,7 +102,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idprovincia->setId ( "" );
 
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         dialogChanges_readValues();
 
         /// Disparamos los plugins.

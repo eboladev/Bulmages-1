@@ -21,8 +21,8 @@
 #ifndef DATOSVIEW_H
 #define DATOSVIEW_H
 
-#include <QWidget>
-#include <QDialog>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QDialog>
 
 #include "ui_datosbase.h"
 

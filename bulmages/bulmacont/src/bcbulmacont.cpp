@@ -22,9 +22,9 @@
 #include <unistd.h>
 #endif
 
-#include <QPixmap>
-#include <QEvent>
-#include <QProgressBar>
+#include <QtGui/QPixmap>
+#include <QtCore/QEvent>
+#include <QtWidgets/QProgressBar>
 
 #include "bcbulmacont.h"
 #include "blconfiguration.h"
@@ -37,7 +37,7 @@
 \param f
 \param DB
 **/
-BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
+BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WindowFlags f, QString DB )
         : BlMainWindow ( parent, f )
 {
     BL_FUNC_DEBUG
@@ -49,7 +49,7 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     m_pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 #else
-    m_pWorkspace->setScrollBarsEnabled ( TRUE );
+    m_pWorkspace->setScrollBarsEnabled ( true );
 #endif
 
     QFrame *m_frame1 = new QFrame();
@@ -58,7 +58,7 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     m_pb->setMinimum ( 0 );
     m_pb->setValue ( 0 );
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
-    m_pb->setVisible ( FALSE );
+    m_pb->setVisible ( false );
 
     setCentralWidget ( m_frame1 );
 
@@ -82,7 +82,7 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
-    m_list->setVisible ( FALSE );
+    m_list->setVisible ( false );
 
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace ( m_pWorkspace );
@@ -93,8 +93,8 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
 
     m_company->setListVentanas ( m_list );
 
-    m_list->setVisible ( TRUE );
-    m_pb->setVisible ( FALSE );
+    m_list->setVisible ( true );
+    m_pb->setVisible ( false );
 
     initStatusBar();
     statusBar() ->showMessage ( DB, 2000 );
@@ -312,10 +312,10 @@ void BcBulmaCont::on_actionPantalla_Completa_triggered()
 void BcBulmaCont::on_actionIndexador_triggered()
 {
     BL_FUNC_DEBUG
-    if ( actionIndexador->isChecked() == TRUE ) {
-        m_company->s_indexadorCambiaEstado ( TRUE );
+    if ( actionIndexador->isChecked() == true ) {
+        m_company->s_indexadorCambiaEstado ( true );
     } else {
-        m_company->s_indexadorCambiaEstado ( FALSE );
+        m_company->s_indexadorCambiaEstado ( false );
     } // end if
 }
 
@@ -327,10 +327,10 @@ void BcBulmaCont::on_actionIndexador_triggered()
 void BcBulmaCont::setActionIndexador ( bool visible )
 {
     BL_FUNC_DEBUG
-    if ( visible == TRUE ) {
-        actionIndexador->setChecked ( TRUE );
+    if ( visible == true ) {
+        actionIndexador->setChecked ( true );
     } else {
-        actionIndexador->setChecked ( FALSE );
+        actionIndexador->setChecked ( false );
     } // end if
 }
 
@@ -514,7 +514,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 {
     BL_FUNC_DEBUG
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "true" ) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
@@ -606,7 +606,7 @@ void BcBulmaCont::informaIndexador ( QWidget *w )
     m_company->selectWindow ( w->windowTitle(), w );
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
-    printf ( "%s", texto.toAscii().constData() );
+    printf ( "%s", texto.toLatin1().constData() );
 #endif
 }
 
@@ -630,7 +630,7 @@ void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
     m_company->selectWindow ( w->windowTitle(), w );
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
-    printf ( "%s", texto.toAscii().constData() );
+    printf ( "%s", texto.toLatin1().constData() );
 #endif
 }
 
@@ -642,10 +642,10 @@ void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
 void BcBulmaCont::on_actionModo_Experto_triggered()
 {
     BL_FUNC_DEBUG
-    if ( actionModo_Experto->isChecked() == TRUE ) {
-       g_confpr->setValue(CONF_MODO_EXPERTO, "TRUE");
+    if ( actionModo_Experto->isChecked() == true ) {
+       g_confpr->setValue(CONF_MODO_EXPERTO, "true");
     } else {
-       g_confpr->setValue(CONF_MODO_EXPERTO, "FALSE");
+       g_confpr->setValue(CONF_MODO_EXPERTO, "false");
     } // end if
     
 }

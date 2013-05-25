@@ -19,12 +19,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "q19writer.h"
 
 /// Necesarios para importacion de efactura
-#include <QString>
-#include <QFileDialog>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
 #include "blfixed.h"
 #include "bfcompany.h"
 

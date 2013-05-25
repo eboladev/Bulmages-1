@@ -21,7 +21,7 @@
 #ifndef EFACTURAENVIO_H
 #define EFACTURAENVIO_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include <ui_efacturaenviobase.h>
 #include "bfcompany.h"

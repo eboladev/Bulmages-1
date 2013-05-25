@@ -20,11 +20,11 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QLineEdit>
-#include <QTabWidget>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTabWidget>
 
 #include "bfcompany.h"
 #include "pluginbf_vehiculo.h"
@@ -101,7 +101,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_vehiculo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_vehiculo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );

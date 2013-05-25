@@ -23,20 +23,20 @@
 #include <fstream>
 #include <iostream>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QProcess>
-#include <QTextStream>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QMenuBar>
-#include <QDir>
-#include <QFileInfo>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QProcess>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtWidgets/QMenuBar>
+#include <QtCore/QDir>
+#include <QtCore/QFileInfo>
 
 #include "blworkspace.h"
 #include "autoform.h"
@@ -60,7 +60,7 @@ int entryPoint ( BlMainWindow *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_autoform", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_autoform", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }
@@ -241,7 +241,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 					    QString va = ventana.toElement().text(); /// try to convert the node to an element.
 					    combo->m_valores[va] = "";
 					} // end for
-					combo->setAllowNull ( TRUE );
+					combo->setAllowNull ( true );
 					combo->setId ( "" );
 				    } // end if
 
@@ -282,10 +282,10 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 		  
 		  if (path.size() > 1) {
 			      QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
-			      bool encontrado = FALSE;
+			      bool encontrado = false;
 			      for (int j = 0; j < allPButtons.size(); ++j) {
 				  if (allPButtons.at(j)->title() == path[0]) {
-				      encontrado = TRUE;
+				      encontrado = true;
 				      menu = allPButtons.at(j);
 				  } // end if
 			      } // end for
@@ -303,10 +303,10 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 
 		  for (int x = 1; x < path.size()-1; ++x) {
 		      QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
-		      bool encontrado = FALSE;
+		      bool encontrado = false;
 		      for (int j = 0; j < allPButtons.size(); ++j) {
 			  if (allPButtons.at(j)->title() == path[x]) {
-			      encontrado = TRUE;
+			      encontrado = true;
 			      menu = allPButtons.at(j);
 			  } // end if
 		      } // end for
@@ -352,10 +352,10 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 		  
 		  if (path.size() > 1) {
 			      QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
-			      bool encontrado = FALSE;
+			      bool encontrado = false;
 			      for (int j = 0; j < allPButtons.size(); ++j) {
 				  if (allPButtons.at(j)->title() == path[0]) {
-				      encontrado = TRUE;
+				      encontrado = true;
 				      menu = allPButtons.at(j);
 				  } // end if
 			      } // end for
@@ -373,10 +373,10 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 
 		  for (int x = 1; x < path.size()-1; ++x) {
 		      QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
-		      bool encontrado = FALSE;
+		      bool encontrado = false;
 		      for (int j = 0; j < allPButtons.size(); ++j) {
 			  if (allPButtons.at(j)->title() == path[x]) {
-			      encontrado = TRUE;
+			      encontrado = true;
 			      menu = allPButtons.at(j);
 			  } // end if
 		      } // end for
@@ -730,7 +730,7 @@ BlAutoFormList * genBlAutoFormList (const QString &tname )
 				QString va = ventana.toElement().text(); /// try to convert the node to an element.
 				combo->m_valores[va] = "";
 			    } // end for
-			    combo->setAllowNull ( TRUE );
+			    combo->setAllowNull ( true );
 			    combo->setId ( "" );
 			} // end if
 
@@ -983,7 +983,7 @@ void SubForm_AutoForm::nuevoElemento( const QString &tablename )
 			formulario  = genBlAutoForm(blautoformlist) ;
 			
 			if (formulario) {
-				    formulario->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+				    formulario->setAttribute ( Qt::WA_DeleteOnClose, false );
 				    
 				    formulario->mainCompany() ->m_pWorkspace->addSubWindow ( formulario );
 				    formulario->setEnabled(false);
@@ -1435,7 +1435,7 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 				QString va = ventana.toElement().text(); /// try to convert the node to an element.
 				combo->m_valores[va] = "";
 			    } // end for
-			    combo->setAllowNull ( TRUE );
+			    combo->setAllowNull ( true );
 			    combo->setId ( "" );
 			} // end if
 
@@ -1551,9 +1551,9 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 				} // end while
 				subform->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
 			    } // end for			
-			subform->setInsert ( allowinsert == "TRUE" );
-			subform->setDelete ( allowdelete == "TRUE" );
-			subform->setSortingEnabled ( setsorting == "TRUE" );
+			subform->setInsert ( allowinsert == "true" );
+			subform->setDelete ( allowdelete == "true" );
+			subform->setSortingEnabled ( setsorting == "true" );
 			subform->inicializar();
 			
 		    } // end if
@@ -1716,7 +1716,7 @@ int BlAction_actionTriggered(BlAction *accion) {
 							  QString va = ventana.toElement().text(); /// try to convert the node to an element.
 							  combo->m_valores[va] = "";
 						      } // end for
-						      combo->setAllowNull ( TRUE );
+						      combo->setAllowNull ( true );
 						      combo->setId ( "" );
 						  } // end if
 

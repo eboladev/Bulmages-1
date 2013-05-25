@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
 #include <fstream>
 
 #include "bfcompany.h"
@@ -66,7 +66,7 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
 		if (rec->dbValue("descforma_pago") != "Transferencia") 
 			blMsgInfo("Hay Vencimientos que no pueden ser Remesados");
 		if (rec->dbValue("estadovencimientop") != "Pendiente") 
@@ -79,7 +79,7 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
 	mui_total->setText(a.toQString());
 	mui_numop->setText(QString::number(numop));
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
@@ -329,7 +329,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     if ( clientedomiciliacion.size() > 12 ) {
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("CIF del proveedor es demasiado largo.") );
     } // end if
-    cab_indob.append ( clientedomiciliacion.toAscii() );
+    cab_indob.append ( clientedomiciliacion.toLatin1() );
 
 
 
@@ -344,7 +344,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     /// Total Importe domiciliacion Longitud: 12
     QString importe = curvencimiento->value( "cantvencimientop" ).remove ( '.' ).remove ( ',' );
     importe = importe.rightJustified ( 12, '0' );
-    cab_indob.append ( importe.toAscii() );
+    cab_indob.append ( importe.toLatin1() );
 
 
 // el campo numero de banco.
@@ -355,18 +355,18 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     } // end if
     bancocliente = bancocliente.leftJustified ( 20, ' ' );
     QString ent_recept = bancocliente.left ( 4 );
-    cab_indob.append ( ent_recept.toAscii() );
+    cab_indob.append ( ent_recept.toLatin1() );
 
     /// Oficina domiciliacion del fichero Longitud: 4
     QString ofi_recept = bancocliente.right ( 16 );
     ofi_recept = bancocliente.left ( 4 );
-    cab_indob.append ( ofi_recept.toAscii() );
+    cab_indob.append ( ofi_recept.toLatin1() );
 
 
     /// cuenta domiciliacion del fichero Longitud: 10
     QString cta_recept  = bancocliente.right ( 10 );
     cta_recept = bancocliente.left ( 10 );
-    cab_indob.append ( cta_recept.toAscii() );
+    cab_indob.append ( cta_recept.toLatin1() );
 
 /// Libre
     cab_indob.append(" ");
@@ -380,12 +380,12 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     /// DC domiciliacion del fichero Longitud: 2
     QString dc_recept  = bancocliente.right ( 12 );
     dc_recept = bancocliente.left ( 2 );
-    cab_indob.append ( dc_recept.toAscii() );
+    cab_indob.append ( dc_recept.toLatin1() );
 
     /// Espacio libre Longitud: 7
     cab_indob.append ( QString ( 7, ' ' ).toLatin1() );
 
-    out << cab_indob.toAscii() << "\n";
+    out << cab_indob.toLatin1() << "\n";
 
 
 /// HACEMOS EL SEGUNDO REGISTRO
@@ -399,18 +399,18 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
 
     nomdomiciliacion = nomdomiciliacion.leftJustified ( 36, ' ' );
     nomdomiciliacion = nomdomiciliacion.left(36);
-    cab_indob.append ( nomdomiciliacion.toAscii() );
+    cab_indob.append ( nomdomiciliacion.toLatin1() );
 
     /// Espacio libre Longitud: 7
     cab_indob.append ( QString ( 7, ' ' ).toLatin1() );
 
-    out << cab_indob.toAscii() << "\n";
+    out << cab_indob.toLatin1() << "\n";
 
     delete curproveedor;
     delete curvencimiento;
 
     
-    return cab_indob.toAscii();
+    return cab_indob.toLatin1();
 }
 
 
@@ -461,38 +461,38 @@ QByteArray Q34View::totalGeneral ( QTextStream &out, QString importes, QString d
 
 
     /// Espacio libre Longitud: 12
-    cab_indob.append ( QString ( 12, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 12, ' ' ).toLatin1() );
 
 
     /// Espacio libre Longitud: 3
-    cab_indob.append ( QString ( 3, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 3, ' ' ).toLatin1() );
 
     /// Suma de Importes Longitud: 12
     QString importe = importes;
     importe = importe.rightJustified ( 12, '0' );
-    cab_indob.append ( importe.toAscii() );
+    cab_indob.append ( importe.toLatin1() );
 
     /// Numero de domiciliaciones : 8
     QString coddev = domiciliaciones;
     coddev = coddev.rightJustified ( 8, '0' );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Numero total registros : 10
     coddev = registros;
     coddev = coddev.rightJustified ( 10, '0' );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Espacio libre Longitud: 6
-    cab_indob.append ( QString ( 6, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 6, ' ' ).toLatin1() );
 
     /// Espacio libre Longitud: 7
-    cab_indob.append ( QString ( 7, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 7, ' ' ).toLatin1() );
 
 
     /// Imprimimos los resultados
-    out << cab_indob.toAscii() << "\n";
+    out << cab_indob.toLatin1() << "\n";
     
-    return cab_indob.toAscii();
+    return cab_indob.toLatin1();
 }
 
 
@@ -521,7 +521,7 @@ void Q34View::on_mui_aceptar_clicked()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 /// La primera vez se ponen las cabeceras
                 if ( j == 0 ) {
                     cabeceraPresentador ( out, rec->dbValue ( "idvencimientop" ) );

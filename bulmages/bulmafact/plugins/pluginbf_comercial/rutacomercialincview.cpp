@@ -20,15 +20,15 @@
 
 #include <fstream>
 
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QFile>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "rutacomercialincview.h"
 #include "bfcompany.h"

@@ -25,11 +25,11 @@ Es un dockwidget que integra un QListWidget donde cada ventana abierta inserta u
 */
 #include <typeinfo>
 
-#include <QObject>
-#include <QPixmap>
-#include <QImage>
-#include <QPainter>
-#include <QVBoxLayout>
+#include <QtCore/QObject>
+#include <QtGui/QPixmap>
+#include <QtGui/QImage>
+#include <QtGui/QPainter>
+#include <QtWidgets/QVBoxLayout>
 
 #include <map>
 
@@ -203,7 +203,7 @@ void BlWindowListDock::dclicked()
     BL_FUNC_DEBUG
     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
-        if ( widget->isMaximized() == TRUE ) {
+        if ( widget->isMaximized() == true ) {
             widget->showNormal();
         } else {
             widget->showMaximized();
@@ -458,7 +458,7 @@ void BlWindowListDock::removeWindow ( QObject *obj )
 void BlWindowListDock::setVisibilityState ( bool visible )
 {
     BL_FUNC_DEBUG
-    if ( visible == TRUE ) {
+    if ( visible == true ) {
         this->show();
     } else {
         this->hide();
@@ -473,7 +473,7 @@ void BlWindowListDock::setVisibilityState ( bool visible )
 void BlWindowListDock::closeEvent ( QCloseEvent * )
 {
     BL_FUNC_DEBUG
-    emit ( visibilityStateChanged ( FALSE ) );
+    emit ( visibilityStateChanged ( false ) );
     
 }
 

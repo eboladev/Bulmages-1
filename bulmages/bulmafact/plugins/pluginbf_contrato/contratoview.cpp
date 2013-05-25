@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLayout>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
 
 #include <fstream>
 
@@ -82,7 +82,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["nomcliente"] = "";
         /// Inicializamos BfForm
         setListaLineas ( mui_lineas );
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la contrato" ) );
     }
@@ -230,7 +230,7 @@ void ContratoView::on_mui_facturar_clicked()
     BL_FUNC_DEBUG
     int periodo = 1;
     QString query;
-    bool end = FALSE;
+    bool end = false;
     while ( !end ) {
         query = "SELECT ('" + dbValue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo - 1 ) + "* '" + dbValue ( "periodicidadcontrato" ) + "'::INTERVAL) AS finperiodo";
         query += ", ('" + dbValue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo ) + "* '" + dbValue ( "periodicidadcontrato" ) + "'::INTERVAL) AS ffinperiodo";
@@ -279,7 +279,7 @@ void ContratoView::on_mui_facturar_clicked()
                     linea1 = fac->getlistalineas() ->lineaat ( fac->getlistalineas() ->rowCount() - 1 );
                     /// Haciendo la nueva linea antes nos evitamos problemas de foco
                     fac->getlistalineas() ->newRecord();
-                    fac->getlistalineas() ->setProcesarCambios ( FALSE );
+                    fac->getlistalineas() ->setProcesarCambios ( false );
                     linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                     linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                     linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
@@ -305,7 +305,7 @@ void ContratoView::on_mui_facturar_clicked()
                     delete cur;
 
 
-                    fac->getlistalineas() ->setProcesarCambios ( TRUE );
+                    fac->getlistalineas() ->setProcesarCambios ( true );
                     linea1->refresh();
                 } // end if
             } // end for
@@ -319,7 +319,7 @@ void ContratoView::on_mui_facturar_clicked()
         query = "SELECT (now() < '" + dbValue ( "fincontrato" ) + "'::DATE + '" + dbValue ( "periodicidadcontrato" ) + "'::INTERVAL *" + QString::number ( periodo ) + " ) AS dato";
         cur = mainCompany() ->loadQuery ( query );
         if ( cur->value( "dato" ) == "t" ) {
-            end = TRUE;
+            end = true;
         }// end if
         delete cur1;
         periodo++;
@@ -359,9 +359,9 @@ FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, cons
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id cliente" ) );
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QPushButton>
-#include <QRadioButton>
-#include <QMenu>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QMenu>
 
 #include "bcamortizacionview.h"
 #include "bccompany.h"
@@ -98,8 +98,8 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *company, QWidget *parent )
     mui_listaCuotas->addSubFormHeader ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _ ( "Num. asiento" ) );
     mui_listaCuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _ ( "Id lineas de amortizacion" ) );
     mui_listaCuotas->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( "Id amortizacion" ) );
-    mui_listaCuotas->setInsert ( FALSE );
-    mui_listaCuotas->setOrdenEnabled ( FALSE );
+    mui_listaCuotas->setInsert ( false );
+    mui_listaCuotas->setOrdenEnabled ( false );
 
     /// Fin de nuevas amortizaciones
     insertWindow ( windowTitle(), this );
@@ -211,7 +211,7 @@ int BcAmortizacionView::load ( QString idAmortizacion )
         m_idAmortizacion = idAmortizacion;
         BlDbRecord::load ( m_idAmortizacion );
 
-        mui_listaCuotas->setInsert ( TRUE );
+        mui_listaCuotas->setInsert ( true );
 
         /// se ha cargado de la base de datos.
         mui_nombreAmortizacion->setText ( dbValue ( "nomamortizacion" ) );
@@ -270,7 +270,7 @@ int BcAmortizacionView::load ( QString idAmortizacion )
 
         /// Deshabilitamos el bot&oacute;n de calcular, porque la amortizaci&oacute;n ya
         /// est&aacute; hecha.
-        mui_btcalcular->setDisabled ( TRUE );
+        mui_btcalcular->setDisabled ( true );
         dialogChanges_readValues();
         mainCompany() ->insertWindow ( windowTitle() + dbValue ( "idamortizacion" ), this );
 
@@ -303,9 +303,9 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
         valcuota = mui_valorCompra->text().toDouble() / ncuotas;
         valcuotastr.sprintf ( "%10.2f", valcuota );
         for ( int i = 0; i < ncuotas; i++ ) {
-            mui_listaCuotas->setInsert ( TRUE );
+            mui_listaCuotas->setInsert ( true );
             mui_listaCuotas->newRecord();
-            mui_listaCuotas->setInsert ( FALSE );
+            mui_listaCuotas->setInsert ( false );
             BlDbSubFormRecord *rec = mui_listaCuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -331,9 +331,9 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
         for ( int i = 1; i <= ncuotas; i++ ) {
             valcuota = mui_valorCompra->text().toDouble() * i / total;
             valcuotastr.sprintf ( "%10.2f", valcuota );
-            mui_listaCuotas->setInsert ( TRUE );
+            mui_listaCuotas->setInsert ( true );
             mui_listaCuotas->newRecord();
-            mui_listaCuotas->setInsert ( FALSE );
+            mui_listaCuotas->setInsert ( false );
             BlDbSubFormRecord *rec = mui_listaCuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -358,9 +358,9 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
         for ( int i = 0; i < ncuotas; i++ ) {
             valcuota = mui_valorCompra->text().toDouble() * ( ncuotas - i ) / total;
             valcuotastr.sprintf ( "%10.2f", valcuota );
-            mui_listaCuotas->setInsert ( TRUE );
+            mui_listaCuotas->setInsert ( true );
             mui_listaCuotas->newRecord();
-            mui_listaCuotas->setInsert ( FALSE );
+            mui_listaCuotas->setInsert ( false );
             BlDbSubFormRecord *rec = mui_listaCuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -390,9 +390,9 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
                 valcuota = mui_valorCompra->text().toDouble() - total;
             } // end if
             valcuotastr.sprintf ( "%10.2f", valcuota );
-            mui_listaCuotas->setInsert ( TRUE );
+            mui_listaCuotas->setInsert ( true );
             mui_listaCuotas->newRecord();
-            mui_listaCuotas->setInsert ( FALSE );
+            mui_listaCuotas->setInsert ( false );
             BlDbSubFormRecord *rec = mui_listaCuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -408,7 +408,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
             } // end if
         } // end for
     } // end if
-    mui_listaCuotas->setInsert ( TRUE );
+    mui_listaCuotas->setInsert ( true );
 }
 
 
@@ -452,15 +452,15 @@ void BcAmortizacionSubForm::createMenu ( QMenu *menu )
     QAction *opt4 = menu->addAction ( _ ( "Borrar asiento" ) );
 
     if ( dbValue ( "idasiento" ) == "" ) {
-        opt1->setEnabled ( TRUE );
-        opt2->setEnabled ( FALSE );
-        opt3->setEnabled ( FALSE );
-        opt4->setEnabled ( FALSE );
+        opt1->setEnabled ( true );
+        opt2->setEnabled ( false );
+        opt3->setEnabled ( false );
+        opt4->setEnabled ( false );
     } else {
-        opt1->setEnabled ( FALSE );
-        opt2->setEnabled ( TRUE );
-        opt3->setEnabled ( TRUE );
-        opt4->setEnabled ( TRUE );
+        opt1->setEnabled ( false );
+        opt2->setEnabled ( true );
+        opt3->setEnabled ( true );
+        opt4->setEnabled ( true );
     } // end if
 }
 

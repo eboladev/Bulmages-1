@@ -20,12 +20,12 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QDrag>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtGui/QDrag>
+#include <QtWidgets/QMenu>
 
 #include "cuadrantediarioview.h"
 #include "cuadrante1view.h"
@@ -60,8 +60,8 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );
 
-        mui_listtrabajadores->setDragEnabled ( TRUE );
-        mui_cuadrante->setAcceptDrops ( TRUE );
+        mui_listtrabajadores->setDragEnabled ( true );
+        mui_cuadrante->setAcceptDrops ( true );
 // mui_cuadrante->verticalHeader()->hide();
 
         inicializaTrabajadores();
@@ -84,16 +84,16 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
             mui_listvalidaciones->addSubFormHeader ( "idvalasterisk", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Validacion" ) );
             mui_listvalidaciones->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Trabajador" ) );
         */
-        mui_listvalidaciones->setInsert ( FALSE );
-        mui_listvalidaciones->setDelete ( FALSE );
-        mui_listvalidaciones->setSortingEnabled ( FALSE );
+        mui_listvalidaciones->setInsert ( false );
+        mui_listvalidaciones->setDelete ( false );
+        mui_listvalidaciones->setSortingEnabled ( false );
         dialogChanges_setExcludedObject ( mui_listvalidaciones->mui_list );
 
 
         inicializaCuadrante ( QDate::currentDate() );
 
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al iniciar el cuadrante" ) );
@@ -294,13 +294,13 @@ void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const Q
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {
         mainCompany() ->begin();
-        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = false WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
         mainCompany() ->commit();
     } // end if
 
     if ( opcion == fiesta ) {
         mainCompany() ->begin();
-        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = true WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
         mainCompany() ->commit();
     } // end if
 

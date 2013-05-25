@@ -23,11 +23,9 @@
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
-#set(QT_USE_QTXML true)
+set(QT_USE_QTXML true)
 set(QT_USE_QTSCRIPT true)
-
-#set(QT_USE_QTUITOOLS true)
-#INCLUDE(${QT_USE_FILE})
+set(QT_USE_QTUITOOLS true)
 
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
@@ -172,13 +170,16 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blformlistfilterbase.ui
 			blbankeditbase.ui)
 
+#message(FATAL_ERROR "La ruta: ${Qt5Widgets_INCLUDES} ${QT_INCLUDE_DIR}")
+
 if (USE_GETTEXT)
     include_directories(
-      ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
+      ${QT_INCLUDE_DIR}
       ${GETTEXT_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR}
       ${QT_QTSCRIPT_INCLUDE_DIR}
+      ${Qt5Widgets_INCLUDES}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -186,8 +187,9 @@ if (USE_GETTEXT)
       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
 else (USE_GETTEXT)
     include_directories(
-      ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
+      ${QT_INCLUDE_DIR}
+      ${QT_QTWIDGETS_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR}
       ${QT_QTSCRIPT_INCLUDE_DIR}
       ${CMAKE_CURRENT_BINARY_DIR}
@@ -202,9 +204,9 @@ if(USE_QMDIAREA)
 endif(USE_QMDIAREA)
 
 # generate rules for building source files from the resources
-QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
-QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
+QT5_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
+QT5_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 
 # generate rules for building source files that moc generates
@@ -234,6 +236,8 @@ add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}
 set_target_properties( bulmalib PROPERTIES 
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
+
+qt5_use_modules(bulmalib UiTools Xml Core Widgets Script)
 
 IF(USE_GETTEXT)
 	target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} ${GETTEXT_LIBRARIES} )

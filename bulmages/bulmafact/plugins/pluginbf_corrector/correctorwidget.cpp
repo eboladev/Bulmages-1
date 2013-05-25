@@ -31,7 +31,7 @@
 \param parent
 \param fl
 **/
-correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
+correctorwidget::correctorwidget ( QWidget* parent, Qt::WindowFlags fl )
         : BlWidget ( parent, fl )
 {
     BL_FUNC_DEBUG

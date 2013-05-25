@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QCheckBox>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QCheckBox>
 
 #include "bldialogchanges.h"
 #include "blfixed.h"
@@ -83,7 +83,7 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "cambiosalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos antes de imprimir" ) );
         addDbField ( "cambiospostalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos tras imprimir" ) );
 
-	setDbValue("ticketalbaran", "TRUE");
+	setDbValue("ticketalbaran", "true");
 	
         /// Disparamos los plugins.
         int res = g_plugins->run ( "TicketClienteView_TicketClienteView", this );
@@ -113,7 +113,7 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setFieldValue ( "0" );
         mui_idtrabajador->setFieldValue ( "0" );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->run ( "TicketClienteView_TicketClienteView_Post", this );
 	blScript(this);

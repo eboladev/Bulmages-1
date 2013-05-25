@@ -22,18 +22,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTableWidget>
-#include <QLabel>
-#include <QHeaderView>
-#include <QFile>
-#include <QDomDocument>
-#include <QPicture>
-#include <QPainter>
-#include <QPushButton>
-#include <QScrollArea>
-#include <QScrollBar>
-#include <QSizePolicy>
-#include <QList>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QHeaderView>
+#include <QtCore/QFile>
+#include <QtXml/QDomDocument>
+#include <QtGui/QPicture>
+#include <QtGui/QPainter>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QScrollBar>
+#include <QtWidgets/QSizePolicy>
+#include <QtCore/QList>
 
 #include "artgraficosdb.h"
 #include "blconfiguration.h"
@@ -379,7 +379,7 @@ void ArtGraficosDb::ponPantallas()
     BL_FUNC_DEBUG
     
     BlDbRecordSet *familias;
-    familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
+    familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = true ORDER BY ordentpvfamilia, nombrefamilia" );
     
    
     int i = 0;
@@ -393,7 +393,7 @@ void ArtGraficosDb::ponPantallas()
 
         /// Llenamos la lista de articulos
         BlDbRecordSet *articulos;
-        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo, etiquetavisibletpvarticulo, abrevarticulo, colortpvarticulo FROM articulo WHERE visibletpvarticulo = TRUE AND idfamilia = " + fa.m_idfamilia + " ORDER BY ordentpvarticulo, nomarticulo" );
+        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo, etiquetavisibletpvarticulo, abrevarticulo, colortpvarticulo FROM articulo WHERE visibletpvarticulo = true AND idfamilia = " + fa.m_idfamilia + " ORDER BY ordentpvarticulo, nomarticulo" );
 
         while ( !articulos->eof() ) {
 
@@ -402,9 +402,9 @@ void ArtGraficosDb::ponPantallas()
             na.m_nombrearticulo = articulos->value( "nomarticulo" );
 
 	    if (articulos->value( "etiquetavisibletpvarticulo" ) == "f") {
-	      na.m_etiquetavisible = FALSE;
+	      na.m_etiquetavisible = false;
 	    } else {
-	      na.m_etiquetavisible = TRUE;
+	      na.m_etiquetavisible = true;
 	    } // end if
 	    
 	    na.m_etiquetaarticulo = articulos->value( "abrevarticulo" );
@@ -436,7 +436,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     int columnasBotones;
     int j;
     int indice;
-    bool paginadoListaPantallas = (g_confpr->value(CONF_TPV_CATEGORY_TREE) == "TRUE") ? true : false;
+    bool paginadoListaPantallas = (g_confpr->value(CONF_TPV_CATEGORY_TREE) == "true") ? true : false;
 
     /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
     if (m_widget) {
@@ -508,23 +508,23 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     
  
     BlDbRecordSet *familias;
-    //familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
+    //familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = true ORDER BY ordentpvfamilia, nombrefamilia" );
     
     if (familiaMostrar == 0) {
       
       if (paginadoListaPantallas) {
 	
-	  familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+	  familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = true AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = true AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
 
       } else {
 	
-	familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
+	familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = true ORDER BY ordentpvfamilia, nombrefamilia" );
 	
       } //end if
 	
     } else {
       
-	familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia = " + QString::number(familiaMostrar) + " ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
+	familias = mainCompany()->loadQuery ( "SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = true AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = true AND t1.padrefamilia = " + QString::number(familiaMostrar) + " ORDER BY t1.ordentpvfamilia, t1.nombrefamilia" );
 	
     } // end if
     
@@ -617,8 +617,8 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     indice++;
     while (indice < columnasBotones) {
         QPushButton *button = new QPushButton (m_widget);
-	button->setEnabled(FALSE);
-	button->setFlat(TRUE);
+	button->setEnabled(false);
+	button->setFlat(true);
 	button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	listaVBoxLayout[indice]->addWidget ( button );
 	indice++;

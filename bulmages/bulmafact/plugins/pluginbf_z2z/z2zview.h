@@ -22,9 +22,9 @@
 #ifndef FACTURAVIEW_H
 #define FACTURAVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "blfunctions.h"
 #include "ui_z2zbase.h"

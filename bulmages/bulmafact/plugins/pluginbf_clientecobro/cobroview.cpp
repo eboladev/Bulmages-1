@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "cobroview.h"
 #include "bfcompany.h"
@@ -78,7 +78,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         } // end if
 	
 	
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);
@@ -169,7 +169,7 @@ int CobroView::afterSave()
 
     if ( cur->value( "total" ) == cur1->value( "totalc" ) ) {
         blMsgInfo ( _("Toda la referencia esta cobrada. Se procesaran todos los documentos con esta referencia") );
-        QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
+        QString query2 = "UPDATE factura set procesadafactura = true WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
         mainCompany()->runQuery ( query2 );
     } // end if
     delete cur;

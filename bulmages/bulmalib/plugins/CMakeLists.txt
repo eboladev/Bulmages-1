@@ -20,7 +20,8 @@ add_subdirectory(pluginbl_autoform)
 
 if(NOT WIN32)
 if(NOT APPLE)
-add_subdirectory(pluginbl_embed)
+# En Qt5 ya no existen las funciones de embebido.
+#add_subdirectory(pluginbl_embed)
 #exaro esta dando actualmente problemas de compilacion y esta huerfano. Por este motivo esta comentado.
 #add_subdirectory(pluginbl_exaro)
 endif(NOT APPLE)

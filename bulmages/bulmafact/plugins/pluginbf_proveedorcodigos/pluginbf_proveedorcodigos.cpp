@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 #include <stdio.h>
-#include <QTime>
-#include <QWidget>
+#include <QtCore/QTime>
+#include <QtWidgets/QWidget>
 
 #include "pluginbf_proveedorcodigos.h"
 #include "bfcompany.h"
@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_proveedorcodigos", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_proveedorcodigos", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_ultimRefrescAlias.start();
     return 0;
@@ -97,7 +97,7 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
            );
            
 */
-  return FALSE;
+  return false;
 }
 
 ///
@@ -124,9 +124,9 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _ ( "Id proveedor" ) );
 
     
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Codigos Proveedor" );
@@ -181,7 +181,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 {
   /*
     BL_FUNC_DEBUG
-    bool encontrado = FALSE;
+    bool encontrado = false;
 
     if ( busc->tableName() == "articulo" ) {
         QString val = busc->m_inputBusqueda->text();
@@ -197,7 +197,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
             BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
             if ( !cur->eof() ) {
                 busc->setId ( cur->value( "idarticulo" ) );
-                encontrado = TRUE;
+                encontrado = true;
             }// end if
             delete cur;
         }// end if

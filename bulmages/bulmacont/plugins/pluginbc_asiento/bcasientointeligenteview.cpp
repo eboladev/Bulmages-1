@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QPixmap>
-#include <QLabel>
-#include <QDomDocument>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QLabel>
+#include <QtXml/QDomDocument>
 
 #include "bcasientointeligenteview.h"
 #include "bccompany.h"
@@ -73,7 +73,7 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
     variablesapunte[VAR_APUNT_CIFCUENTA][0] = "$cifcuenta$";
     mainCompany() ->insertWindow ( windowTitle(), this );
     setModo ( 0 );
-    g_asiento->mui_inteligente->setDisabled ( TRUE );
+    g_asiento->mui_inteligente->setDisabled ( true );
     /// Llamamos a los scripts
     blScript(this);
     
@@ -88,7 +88,7 @@ BcAsientoInteligenteView::~BcAsientoInteligenteView()
     BL_FUNC_DEBUG
     borraWidgets();
     mainCompany() ->removeWindow ( this );
-    g_asiento->mui_inteligente->setEnabled ( TRUE );
+    g_asiento->mui_inteligente->setEnabled ( true );
     
 }
 
@@ -292,7 +292,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
         } else {
             /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
             /// Asi que debemos facilitar las cosas al m&aacute;ximo.
-            variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
+            variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toLatin1().constData();
             recogeValores();
             g_asiento ->setFecha ( fechaasiento->text() );
             g_asiento ->vaciar();
@@ -592,16 +592,16 @@ void BcAsientoInteligenteView::creaAsiento()
         for ( int i = 0; i < litems.count(); i++ ) {
             QDomNode item = litems.item ( i );
             codcuenta = aplicaVariable ( item.firstChildElement ( "codcuenta" ).text() );
-            query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii().constData() );
+            query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", codcuenta.toLatin1().constData() );
             cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
-                idcuenta = atoi ( cur1->value( "idcuenta" ).toAscii().constData() );
+                idcuenta = atoi ( cur1->value( "idcuenta" ).toLatin1().constData() );
             } // end if
             delete cur1;
 
             contrapartida = aplicaVariable ( item.firstChildElement ( "contrapartida" ).text() );
-            query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii().constData() );
+            query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", contrapartida.toLatin1().constData() );
             cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
@@ -615,7 +615,7 @@ void BcAsientoInteligenteView::creaAsiento()
             fecha = aplicaVariable ( item.firstChildElement ( "fecha" ).text() );
             conceptocontable = aplicaVariable ( item.firstChildElement ( "conceptocontable" ).text() );
             descripcion = aplicaVariable ( item.firstChildElement ( "descripcion" ).text() );
-            query.sprintf ( "INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii().constData(), debe.toAscii().constData(), haber.toAscii().constData(), fecha.toAscii().constData(), conceptocontable.toAscii().constData(), descripcion.toAscii().constData(), orden++ );
+            query.sprintf ( "INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toLatin1().constData(), debe.toLatin1().constData(), haber.toLatin1().constData(), fecha.toLatin1().constData(), conceptocontable.toLatin1().constData(), descripcion.toLatin1().constData(), orden++ );
             mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
         } // end for

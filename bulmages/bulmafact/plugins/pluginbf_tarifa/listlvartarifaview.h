@@ -2,7 +2,7 @@
 #ifndef LISTLVARTARIFAVIEW_H
 #define LISTLVARTARIFAVIEW_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "bfbulmafact.h"
 #include "bfsubform.h"
 

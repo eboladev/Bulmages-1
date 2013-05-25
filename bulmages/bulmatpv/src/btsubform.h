@@ -22,7 +22,7 @@
 #ifndef BTSUBFORM_H
 #define BTSUBFORM_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "blfunctions.h"
 #include "btcompany.h"

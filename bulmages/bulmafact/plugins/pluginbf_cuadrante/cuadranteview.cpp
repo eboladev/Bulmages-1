@@ -20,12 +20,12 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QDrag>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtGui/QDrag>
+#include <QtWidgets/QMenu>
 
 #include "cuadranteview.h"
 #include "cuadrante1view.h"
@@ -58,14 +58,14 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );
 
-        mui_listtrabajadores->setDragEnabled ( TRUE );
-        mui_cuadrante->setAcceptDrops ( TRUE );
+        mui_listtrabajadores->setDragEnabled ( true );
+        mui_cuadrante->setAcceptDrops ( true );
 // mui_cuadrante->verticalHeader()->hide();
 
         inicializaTrabajadores();
         inicializaCuadrante ( QDate::currentDate() );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );
@@ -255,13 +255,13 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {
         mainCompany() ->begin();
-        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = false WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
         mainCompany() ->commit();
     } // end if
 
     if ( opcion == fiesta ) {
         mainCompany() ->begin();
-        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = true WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
         mainCompany() ->commit();
     } // end if
 

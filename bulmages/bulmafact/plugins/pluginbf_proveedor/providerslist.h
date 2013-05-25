@@ -59,7 +59,7 @@ private:
     QString m_nomprovider;
 
 public:
-    ProveedorList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
+    ProveedorList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     virtual ~ProveedorList();
     void presentar();
     void editar ( int );

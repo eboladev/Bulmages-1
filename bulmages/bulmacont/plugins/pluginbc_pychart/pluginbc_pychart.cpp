@@ -9,7 +9,7 @@
 
 #include <qobject.h>
 //Added by qt3to4:
-#include <QPixmap>
+#include <QtGui/QPixmap>
 #include <Q3PopupMenu>
 
 

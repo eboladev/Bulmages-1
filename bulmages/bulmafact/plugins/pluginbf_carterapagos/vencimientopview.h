@@ -22,9 +22,9 @@
 #ifndef VENCIMIENTOPVIEW_H
 #define VENCIMIENTOPVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_vencimientopbase.h"
 #include "blpostgresqlclient.h"

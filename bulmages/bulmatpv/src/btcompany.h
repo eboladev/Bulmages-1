@@ -26,8 +26,8 @@
 #ifndef BTCOMPANY_H
 #define BTCOMPANY_H
 
-#include <QObject>
-#include <QLibraryInfo>
+#include <QtCore/QObject>
+#include <QtCore/QLibraryInfo>
 
 
 

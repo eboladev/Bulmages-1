@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "bfclienteticketsubform.h"
 #include "blfunctions.h"
@@ -56,8 +56,8 @@ BfClienteTicketSubForm::BfClienteTicketSubForm ( QWidget *parent )
     addSubFormHeader ( "descuentolalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
     addSubFormHeader ( "ordenlalbaran", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
     /// Disparamos los plugins.
     g_plugins->run ( "BfClienteTicketSubForm_BfClienteTicketSubForm_Post", this );
     

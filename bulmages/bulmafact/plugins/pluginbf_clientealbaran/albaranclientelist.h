@@ -68,8 +68,8 @@ private:
     QString mdb_idalbaran;
 
 public:
-    AlbaranClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    AlbaranClienteList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    AlbaranClienteList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    AlbaranClienteList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     void setMainCompany ( BfCompany * );
     ~AlbaranClienteList();
     void presentar();

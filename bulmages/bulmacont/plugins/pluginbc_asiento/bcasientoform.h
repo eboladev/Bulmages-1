@@ -22,7 +22,7 @@
 #ifndef BCASIENTOFORM_H
 #define BCASIENTOFORM_H
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "blfixed.h"
 #include "bcform.h"

@@ -22,9 +22,9 @@
 #ifndef BCASIENTOINTELIGENTEIMPORTARXML_H
 #define BCASIENTOINTELIGENTEIMPORTARXML_H
 
-#include <QMap>
-#include <QString>
-#include <qxml.h>
+#include <QtCore/QMap>
+#include <QtCore/QString>
+#include <QtXml/qxml.h>
 
 #include "blwidget.h"
 #include "bccompany.h"

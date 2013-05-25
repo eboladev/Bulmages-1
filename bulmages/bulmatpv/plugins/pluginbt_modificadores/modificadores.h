@@ -1,10 +1,10 @@
 #ifndef MODIFICADORES_H
 #define MODIFICADORES_H
 
-#include <QDialog>
-#include <QProcess>
-#include <QDockWidget>
-#include <QString>
+#include <QtWidgets/QDialog>
+#include <QtCore/QProcess>
+#include <QtWidgets/QDockWidget>
+#include <QtCore/QString>
 #include "blwidget.h"
 #include "ui_modificadoresbase.h"
 

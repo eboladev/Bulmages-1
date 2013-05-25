@@ -27,12 +27,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLabel>
-#include <QTextBrowser>
-#include <QTcpServer>
-#include <QTcpSocket>
-#include <QDomDocument>
-#include <QBuffer>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
+#include <QtNetwork/QTcpServer>
+#include <QtNetwork/QTcpSocket>
+#include <QtXml/QDomDocument>
+#include <QtCore/QBuffer>
 
 #include "serverlight.h"
 #include "bldb.h"
@@ -95,15 +95,15 @@ void ServerLight::readyRead() {
     fprintf(stderr, "\nPaquete recibido:\n");
     fprintf(stderr, array);
     fprintf(stderr, "\nPaquete finalizado :\n");
-    fprintf(stderr, QString::number(array.size()).toAscii());
+    fprintf(stderr, QString::number(array.size()).toLatin1());
     fprintf(stderr, "\nFin Paquete recibido :\n");
     
     /// Si se detecta el final de la transmision se procesa la informacion.
     if (texto.contains("</DOCUMENT>", Qt::CaseInsensitive)) {
     
 	if (texto.contains("<GETCOMMAND>categoria_articulo</GETCOMMAND>", Qt::CaseInsensitive)) {
-	    fprintf(stderr, categoryArticleXML().toAscii() );
-	    socket->write(categoryArticleXML().toAscii());
+	    fprintf(stderr, categoryArticleXML().toLatin1() );
+	    socket->write(categoryArticleXML().toLatin1());
 	    /// Hay que cerrar el socket despues del envio.
 	    g_buffers[socket] = "";
 	    g_buffers.remove(socket);
@@ -137,7 +137,7 @@ void ServerLight::send(const QString & texto) {
 	if (socket != (QTcpSocket *) sender()) {
 	  //mui_plainText->appendPlainText("Enviando mensaje a:" + socket->peerAddress().toString() + "\n");
 	  QString txt = _("Enviando mensaje a:") + socket->peerAddress().toString() + "\n";
-	  //fprintf(stderr, txt.toAscii() );
+	  //fprintf(stderr, txt.toLatin1() );
 	  socket->write(texto.toLatin1());
 	} // end if
     } // end for
@@ -154,7 +154,7 @@ void ServerLight::processTicketDataXML(QString data)
     BtTicket *ticketActual;
     
     fprintf(stdout, "\n==========MENSAJE COMPLETO ===============\n");
-    fprintf(stdout, data.toAscii());
+    fprintf(stdout, data.toLatin1());
     fprintf(stdout, "\n=========================\n");
     
     ticketActual = emp->ticketActual();
@@ -168,8 +168,8 @@ void ServerLight::processTicketDataXML(QString data)
     QDomDocument doc ( "mydocument" );
     if ( !doc.setContent ( data, true, er, erline ) ) {
       
-	//fprintf(stderr, er->toAscii());
-	//fprintf(stderr, QString::number(*erline).toAscii());
+	//fprintf(stderr, er-.toLatin1());
+	//fprintf(stderr, QString::number(*erline).toLatin1());
       
 	fprintf(stderr, "Error en documento XML.\n");
         return;
@@ -212,7 +212,7 @@ void ServerLight::processTicketDataXML(QString data)
 	    linea->setDbValue("cantlalbaran", cantarticulo);	    
 	    
 	    if (imagen != "") {
-	      QByteArray bytes1 = QByteArray::fromBase64(imagen.toAscii());
+	      QByteArray bytes1 = QByteArray::fromBase64(imagen.toLatin1());
 	      QByteArray bytes;
 	      QBuffer buffer(&bytes);
 	      QImage img;

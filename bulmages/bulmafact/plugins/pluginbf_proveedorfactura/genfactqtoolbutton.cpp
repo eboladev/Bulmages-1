@@ -22,11 +22,11 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QWidget>
 
 #include "genfactqtoolbutton.h"
 #include "blfunctions.h"
@@ -184,7 +184,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclalbaranp" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlalbaranp" ) );
                 linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplalbaranp" ) );
@@ -194,7 +194,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
                 linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalalbaranp" ) );
                 linea1->setDbValue ( "reqeqlfacturap", linea->dbValue ( "reqeqlalbaranp" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
         bud->calculaypintatotales();
@@ -291,7 +291,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclpedidoproveedor" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlpedidoproveedor" ) );
                 linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplpedidoproveedor" ) );
@@ -301,7 +301,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
                 linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalpedidoproveedor" ) );
                 linea1->setDbValue ( "reqeqlfacturap", linea->dbValue ( "reqeqlpedidoproveedor" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
         bud->calculaypintatotales();

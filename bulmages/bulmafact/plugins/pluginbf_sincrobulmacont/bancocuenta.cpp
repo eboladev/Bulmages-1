@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "bancocuenta.h"
 
@@ -22,7 +22,7 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
     lineedit_banco->setObjectName("mui_cuenta_banco");
     lineedit_banco->setFixedWidth(100);
     lineedit_banco->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de este banco. La cuenta debe existir en la contabilidad."));
-    lineedit_banco->setEnabled(FALSE);
+    lineedit_banco->setEnabled(false);
     QLabel *label_banco = new QLabel(_("Cuenta contable:"));
 
     QHBoxLayout *layout_banco = new QHBoxLayout;
@@ -59,9 +59,9 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
     BlDbRecordSet *rec;
 
     if ( m_bancoview->idBanco().isEmpty() ) {
-      m_bancoview->findChild<QWidget *>("mui_cuenta_banco")->setEnabled(FALSE);
+      m_bancoview->findChild<QWidget *>("mui_cuenta_banco")->setEnabled(false);
     } else {
-      m_bancoview->findChild<QWidget *>("mui_cuenta_banco")->setEnabled(TRUE);
+      m_bancoview->findChild<QWidget *>("mui_cuenta_banco")->setEnabled(true);
 
       /*
       QString query = "SELECT prefcuentabanco FROM banco WHERE idbanco = '" + m_bancoview->idBanco() + "' LIMIT 1";

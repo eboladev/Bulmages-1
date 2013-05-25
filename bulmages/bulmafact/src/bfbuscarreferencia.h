@@ -22,8 +22,8 @@
 #ifndef BFBUSCARREFERENCIA_H
 #define BFBUSCARREFERENCIA_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "blwidget.h"
 #include "blfunctions.h"

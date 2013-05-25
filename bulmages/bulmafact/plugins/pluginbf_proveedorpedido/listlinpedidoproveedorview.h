@@ -22,7 +22,7 @@
 #ifndef LISTLINPEDIDOPROVEEDORVIEW_H
 #define LISTLINPEDIDOPROVEEDORVIEW_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

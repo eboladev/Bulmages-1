@@ -22,8 +22,8 @@
 #ifndef BLDATELINEEDIT_H
 #define BLDATELINEEDIT_H
 
-#include <QLineEdit>
-#include <QKeyEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QKeyEvent>
 
 #include "blfunctions.h"
 

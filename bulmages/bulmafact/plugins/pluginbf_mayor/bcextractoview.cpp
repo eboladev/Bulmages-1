@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QWidget>
-#include <QToolButton>
-#include <QLayout>
-#include <QTextStream>
-#include <QCheckBox>
-#include <QFileDialog>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLayout>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QFileDialog>
 
 #include "blmainwindow.h"
 #include "bfbulmafact.h"
@@ -95,7 +95,7 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
     m_cursorcta = NULL;
     insertWindow ( windowTitle(), this );
 
-    m_tratarpunteos = TRUE;
+    m_tratarpunteos = true;
 
 
     /// Conectamos los botones del menu con las acciones de esta ventana.
@@ -303,10 +303,10 @@ void BcExtractoView::botonGuardar()
 
     if ( !fn.isEmpty() ) {
         BcLibroMayorImprimir libromayor ( mainCompany() );
-        QString finicial = mui_fechaInicial->text().toAscii().constData();
-        QString ffinal = mui_fechaFinal->text().toAscii().constData();
+        QString finicial = mui_fechaInicial->text().toLatin1().constData();
+        QString ffinal = mui_fechaFinal->text().toLatin1().constData();
         libromayor.inicializa1 ( mui_cuentaInicial->text(), mui_cuentaFinal->text(), finicial, ffinal );
-        libromayor.inicializa2 ( ( char * ) fn.toAscii().constData() );
+        libromayor.inicializa2 ( ( char * ) fn.toLatin1().constData() );
         libromayor.accept();
     } // end if
 */
@@ -394,9 +394,9 @@ void BcExtractoView::presentar()
         if ( mui_apuntesTodos->isChecked() ) {
             tipopunteo = "";
         } else if ( mui_apuntesPunteados->isChecked() ) {
-            tipopunteo = " AND punteo = TRUE ";
+            tipopunteo = " AND punteo = true ";
         } else {
-            tipopunteo = " AND punteo = FALSE ";
+            tipopunteo = " AND punteo = false ";
         } // end if
 
 
@@ -417,7 +417,7 @@ void BcExtractoView::presentar()
         BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
-            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
+            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
         } // end if
 */        
 
@@ -427,7 +427,7 @@ void BcExtractoView::presentar()
         QString cont;
         if ( mui_incluirAsientosAbiertos->isChecked() ) {
             tabla = "borrador";
-            cont = " FALSE AS punteo, *, descripcion AS descripcionapunte ";
+            cont = " false AS punteo, *, descripcion AS descripcionapunte ";
         } else {
             tabla = "apunte";
             cont = " *, descripcion AS descripcionapunte ";
@@ -436,12 +436,12 @@ void BcExtractoView::presentar()
         if ( contra != "" ) {
             tipopunteo += " AND " + tabla + ".contrapartida = id_cuenta('" + contra + "') ";
         } // end if
-        bool ok = FALSE;
+        bool ok = false;
         mui_saldoSuperiorA->text().toFloat ( &ok );
         if ( ok ) {
             saldosup = " AND " + tabla + ".debe + " + tabla + ".haber >= " + mui_saldoSuperiorA->text();
         } // end if
-        ok = FALSE;
+        ok = false;
         mui_saldoInferiorA->text().toFloat ( &ok );
         if ( ok ) {
             saldoinf = " AND " + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoInferiorA->text();
@@ -581,7 +581,7 @@ void BcExtractoView::on_mui_casacion_clicked()
 	    return;
 	} // end if
 	
-        QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
+        QString query = "SELECT * FROM apunte WHERE punteo = false AND haber <> 0 AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
         BlDbRecordSet *curshaber = mainCompany() ->loadQuery ( query );
 
         BlProgressBar barra;
@@ -590,14 +590,14 @@ void BcExtractoView::on_mui_casacion_clicked()
         barra.setText ( _ ( "Cargando extracto de cuentas" ) );
 
         while ( !curshaber->eof() ) {
-            query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->value( "haber" ) + " AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
-            BlDbRecordSet *cursdebe = mainCompany() ->loadQuery ( query.toAscii(), "cursdebe" );
+            query =  "SELECT * FROM apunte WHERE punteo = false AND debe = " + curshaber->value( "haber" ) + " AND idcuenta = " + m_cursorcta->value( "idcuenta" ) + " ORDER BY fecha";
+            BlDbRecordSet *cursdebe = mainCompany() ->loadQuery ( query.toLatin1(), "cursdebe" );
 
             if ( !cursdebe->eof() ) {
-                query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->value( "idapunte" );
+                query = "UPDATE apunte set punteo = true WHERE idapunte = " + curshaber->value( "idapunte" );
                 mainCompany() ->begin();
                 mainCompany() ->runQuery ( query );
-                query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + cursdebe->value( "idapunte" );
+                query = "UPDATE apunte SET punteo = true WHERE idapunte = " + cursdebe->value( "idapunte" );
                 mainCompany() ->runQuery ( query );
                 mainCompany() ->commit();
             } // end if
@@ -608,9 +608,9 @@ void BcExtractoView::on_mui_casacion_clicked()
         } // end while
 
         delete curshaber;
-	m_tratarpunteos = FALSE;
+	m_tratarpunteos = false;
         presentar();
-	m_tratarpunteos = TRUE;
+	m_tratarpunteos = true;
     } catch ( ... ) {
         blMsgError ( _("Se produjo un error en la casacion") );
     } // end try
@@ -639,13 +639,13 @@ void BcExtractoView::on_mui_guardarPunteo_clicked()
             fn = fn + ".pto";
         } // end if
         FILE * mifile;
-        mifile = fopen ( ( char * ) fn.toAscii().constData(), "wt" );
+        mifile = fopen ( ( char * ) fn.toLatin1().constData(), "wt" );
         if ( mifile != NULL ) {
             QString query;
-            query = "SELECT * FROM apunte WHERE punteo = TRUE";
+            query = "SELECT * FROM apunte WHERE punteo = true";
             BlDbRecordSet *cursp = mainCompany() ->loadQuery ( query );
             while ( !cursp->eof() ) {
-                fprintf ( mifile, "%s\n", cursp->value( "idapunte" ).toAscii().constData() );
+                fprintf ( mifile, "%s\n", cursp->value( "idapunte" ).toLatin1().constData() );
                 cursp->nextRecord();
             } // end while
             delete cursp;
@@ -675,12 +675,12 @@ void BcExtractoView::on_mui_borrarPunteo_clicked()
         if ( valor == QMessageBox::Yes ) {
 
             mainCompany() ->begin();
-            mainCompany() ->runQuery ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->value( "idcuenta" ) );
+            mainCompany() ->runQuery ( "UPDATE apunte SET punteo = false WHERE idcuenta =" + m_cursorcta->value( "idcuenta" ) );
             mainCompany() ->commit();
 
-	    m_tratarpunteos = FALSE;
+	    m_tratarpunteos = false;
 	    presentar();
-	    m_tratarpunteos = TRUE;
+	    m_tratarpunteos = true;
         } // end if
     } catch ( ... ) {
         blMsgInfo ( _ ( "Se ha producido un error." ) );
@@ -710,21 +710,21 @@ void BcExtractoView::on_mui_cargarPunteos_clicked()
             } // end if
             QTextStream filestr ( &file );
             mainCompany()->begin();
-            QString query = "UPDATE apunte SET punteo = FALSE";
+            QString query = "UPDATE apunte SET punteo = false";
             mainCompany() ->runQuery ( query );
             QString a = filestr.readLine();
             while ( !a.isNull() ) {
                 QString query;
-                query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + a;
+                query = "UPDATE apunte SET punteo = true WHERE idapunte = " + a;
                 mainCompany() ->runQuery ( query );
                 a = filestr.readLine();
             } // end while
             mainCompany()->commit();
             file.close();
         } // end if
-	m_tratarpunteos = FALSE;
+	m_tratarpunteos = false;
         presentar();
-	m_tratarpunteos = TRUE;
+	m_tratarpunteos = true;
     } catch ( ... ) {
         blMsgInfo ( _("Error en la carga del punteo.") );
         mainCompany()->rollback();
@@ -756,9 +756,9 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         if ( mui_apuntesTodos->isChecked() ) {
             tipopunteo = "";
         } else if ( mui_apuntesPunteados->isChecked() ) {
-            tipopunteo = " AND punteo = TRUE ";
+            tipopunteo = " AND punteo = true ";
         } else {
-            tipopunteo = " AND punteo = FALSE ";
+            tipopunteo = " AND punteo = false ";
         } // end if
 
         if ( contra != "" ) {
@@ -785,18 +785,18 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
-            ccostes.sprintf ( " AND t5.idc_coste IN (%s) ", ccostes.toAscii().constData() );
+            ccostes.sprintf ( " AND t5.idc_coste IN (%s) ", ccostes.toLatin1().constData() );
         } // end if
         QString ccanales = scanal->cadCanal();
         if ( ccanales != "" ) {
-            ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
+            ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toLatin1().constData() );
         } // end if
 */
         QString tabla;
         QString cont;
         if ( mui_incluirAsientosAbiertos->isChecked() ) {
             tabla = "borrador";
-            cont = " FALSE AS punteo, * ";
+            cont = " false AS punteo, * ";
         } else {
             tabla = "apunte";
             cont = " * ";

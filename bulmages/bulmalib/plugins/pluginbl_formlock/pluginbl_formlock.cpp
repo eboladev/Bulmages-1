@@ -20,18 +20,18 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QFile>
-#include <QMenu>
-#include <QMenuBar>
-#include <QToolButton>
-#include <QPushButton>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QPushButton>
 
 #include "local_blI18n.h"
 #include "pluginbl_formlock.h"
@@ -51,7 +51,7 @@ int entryPoint ( QMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_formlock", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_formlock", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return ( 0 );
 }
@@ -115,13 +115,13 @@ int BlForm_load ( BlForm *ficha )
            /// y si hay uno de cancelar mostramos "Cerrar": as&iacute; tenemos una ficha de s&oacute;lo lectura
            QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
            pbut = ficha->findChild<QAbstractButton *> ( "mui_guardar" );
-           if ( pbut ) pbut->setEnabled ( FALSE );
+           if ( pbut ) pbut->setEnabled ( false );
            pbut = ficha->findChild<QAbstractButton *> ( "mui_aceptar" );
-           if ( pbut ) pbut->setEnabled ( FALSE );
+           if ( pbut ) pbut->setEnabled ( false );
            pbut = ficha->findChild<QAbstractButton *> ( "mui_cancelar" );
            if ( pbut ) pbut->setText("Cerrar");
            pbut = ficha->findChild<QAbstractButton *> ( "mui_borrar" );
-           if ( pbut ) pbut->setEnabled ( FALSE );
+           if ( pbut ) pbut->setEnabled ( false );
        } // end if
 
        /// El usuario decide desbloquear de todos modos

@@ -17,7 +17,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QPushButton>
+#include <QtWidgets/QPushButton>
 
 #include "pluginbt_devolucion2.h"
 #include "blfunctions.h"
@@ -81,7 +81,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_devolucion2", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_devolucion2", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_doc1 = new BlDockWidget ( _ ( "Articulo" ), tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );

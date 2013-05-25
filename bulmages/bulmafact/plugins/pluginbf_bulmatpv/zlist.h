@@ -40,7 +40,7 @@ private:
     QString m_idz;
 
 public:
-    ZList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    ZList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0 );
     ~ZList();
     void presentar();
     void editar ( int );

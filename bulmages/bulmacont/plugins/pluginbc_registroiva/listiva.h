@@ -22,9 +22,9 @@
 #ifndef LISTIVA_H
 #define LISTIVA_H
 
-#include <QObject>
-#include <QList>
-#include <QMutableListIterator>
+#include <QtCore/QObject>
+#include <QtCore/QList>
+#include <QtCore/QMutableListIterator>
 
 #include "bccompany.h"
 #include "iva.h"

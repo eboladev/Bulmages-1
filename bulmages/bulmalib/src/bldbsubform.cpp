@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeyEvent>
-#include <QEvent>
-#include <QFile>
-#include <QLocale>
-#include <QRegExp>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtCore/QFile>
+#include <QtCore/QLocale>
+#include <QtCore/QRegExp>
 
 #include "bldbsubform.h"
 #include "blsubform.h"
@@ -147,10 +147,10 @@ void BlDbSubFormField::refresh()
     if ( this->fieldType() == BlDbField::DbBoolean ) {
         switch ( checkState() ) {
             case Qt::Checked:
-                BlDbField::set ( "TRUE" );
+                BlDbField::set ( "true" );
                 break;
             case Qt::Unchecked:
-                BlDbField::set ( "FALSE" );
+                BlDbField::set ( "false" );
                 break;
             case Qt::PartiallyChecked:
             default:
@@ -186,9 +186,9 @@ int BlDbSubFormField::set ( QString val )
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
 
-        if ( val == "TRUE" || val == "t" ) {
+        if ( val == "true" || val == "t" ) {
             setCheckState ( Qt::Checked );
-        } else if ( val == "FALSE" || val == "f" ) {
+        } else if ( val == "false" || val == "f" ) {
             setCheckState ( Qt::Unchecked );
         } else {
             /// El triestado si usa si el campo booleano admite el valor nulo.
@@ -201,7 +201,7 @@ int BlDbSubFormField::set ( QString val )
     } else {
 	  setText ( fieldValue() );
 
-	  if ( g_confpr->value( CONF_CENTER_TEXT_FIELDS ) == "TRUE"
+	  if ( g_confpr->value( CONF_CENTER_TEXT_FIELDS ) == "true"
 	  && fieldType() == BlDbField::DbVarChar )
 	  {
 		setTextAlignment(Qt::AlignCenter);
@@ -214,7 +214,7 @@ int BlDbSubFormField::set ( QString val )
 /// Comparacion entre campos
 /**
 \param other El campo con el que hay que comprarar
-\return TRUE si se considere este el campo mas grande, FALSE en caso contrario.
+\return true si se considere este el campo mas grande, false en caso contrario.
 **/
 bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
 {
@@ -255,7 +255,7 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
         BlDebug::blDebug ( "tipo desconocido", 0 );
     }
     
-    return FALSE;
+    return false;
 }
 
 

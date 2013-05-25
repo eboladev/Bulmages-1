@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_TIPOTRABAJO_H
 #define PLUGINBF_TIPOTRABAJO_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 
 #include "bfbulmafact.h"

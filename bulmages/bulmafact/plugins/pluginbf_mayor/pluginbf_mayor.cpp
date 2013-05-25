@@ -20,15 +20,15 @@
 
 #include <cstdio>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "pluginbf_mayor.h"
 #include "bcextractoview.h"
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_mayor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_mayor", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_mayor = NULL;
 
@@ -223,16 +223,16 @@ void SubForm_Mayor::boton_extracto1 ( int tipo )
         fechaact = blNormalizeDate ( fecha );
         switch ( tipo ) {
         case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+            fecha1.setDate ( fechaact.year(), fechaact.month(), fechaact.day() );
+            fecha2.setDate ( fechaact.year(), fechaact.month(), fechaact.day() );
             break;
         case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
+            fecha1.setDate ( fechaact.year(), fechaact.month(), 1 );
+            fecha2.setDate ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
             break;
         case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
+            fecha1.setDate ( fechaact.year(), 1, 1 );
+            fecha2.setDate ( fechaact.year(), 12, 31 );
             break;
         } // end switch
         
@@ -414,8 +414,8 @@ int BlToolButton_released(BlToolButton *bot) {
 	    
 	    QString codigo = cur->value ( "codigo" );
 	    if ( codigo != "" ) {
-		fecha1.setYMD ( QDate::currentDate().year(), 1, 1 );
-		fecha2.setYMD ( QDate::currentDate().year(), 12, 31 );
+		fecha1.setDate ( QDate::currentDate().year(), 1, 1 );
+		fecha2.setDate ( QDate::currentDate().year(), 12, 31 );
 		g_mayor = new BcExtractoView (fact1->mainCompany(), 0 );
 		g_mayor->setObjectName("BcExtractoView");
 		g_pluginbf_mayor->company()->pWorkspace()->addSubWindow ( g_mayor );
@@ -444,8 +444,8 @@ int BlToolButton_released(BlToolButton *bot) {
 	    
 	    QString codigo = cur->value ( "codigo" );
 	    if ( codigo != "" ) {
-		fecha1.setYMD ( QDate::currentDate().year(), 1, 1 );
-		fecha2.setYMD ( QDate::currentDate().year(), 12, 31 );
+		fecha1.setDate ( QDate::currentDate().year(), 1, 1 );
+		fecha2.setDate ( QDate::currentDate().year(), 12, 31 );
 		g_mayor = new BcExtractoView (fact1->mainCompany(), 0 );
 		g_mayor->setObjectName("BcExtractoView");
 		g_pluginbf_mayor->company()->pWorkspace()->addSubWindow ( g_mayor );

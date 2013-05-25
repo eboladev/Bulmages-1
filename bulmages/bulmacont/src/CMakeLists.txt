@@ -57,7 +57,7 @@ set(QT_USE_QTXML true)
 set(QT_USE_QTSCRIPT true)
 
 
-INCLUDE(${QT_USE_FILE})
+#INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -80,12 +80,12 @@ endif(USE_QMDIAREA)
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
+QT5_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 
 IF(WIN32)
 set(bulmacont_RCCS ../../bulmages.qrc)
-QT4_ADD_RESOURCES(bulmacont_RCC_SRCS ${bulmacont_RCCS})
+QT5_ADD_RESOURCES(bulmacont_RCC_SRCS ${bulmacont_RCCS})
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBC_BULMACONT)
 ENDIF(WIN32)
 

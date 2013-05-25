@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QFile>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 #include <fstream>
 
 #include <blplugins.h>
@@ -81,7 +81,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listIva->addSubFormHeader ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "idregistroiva" ) );
     mui_listIva->addSubFormHeader ( "baseiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "baseiva" ) );
     mui_listIva->addSubFormHeader ( "ivaiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "ivaiva" ) );
-    mui_listIva->setInsert ( FALSE );
+    mui_listIva->setInsert ( false );
 
     mui_listPrevCobro->setDbTableName ( "prevcobro" );
     mui_listPrevCobro->setDbFieldId ( "idprevcobro" );
@@ -105,7 +105,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listPrevCobro->addSubFormHeader ( "tipoctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipoctacliente" ) );
     mui_listPrevCobro->addSubFormHeader ( "tipocuenta", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipocuenta" ) );
 
-    mui_listPrevCobro->setInsert ( TRUE );
+    mui_listPrevCobro->setInsert ( true );
     mainCompany() ->insertWindow ( windowTitle(), this );
     g_plugins->run ( "RegistroIvaView_RegistroIvaView_Post", this );
     

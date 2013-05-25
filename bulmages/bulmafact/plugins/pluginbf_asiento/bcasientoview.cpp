@@ -20,16 +20,16 @@
 
 #include <stdlib.h>
 
-#include <QLineEdit>
-#include <QToolButton>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QInputDialog>
-#include <QColor>
-#include <QFont>
-#include <QStringList>
-#include <QLayout>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QInputDialog>
+#include <QtGui/QColor>
+#include <QtGui/QFont>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QLabel>
 
 #include "blmainwindow.h"
 #include "bfbulmafact.h"
@@ -109,9 +109,9 @@ void BcAsientoView::calculaPintaTotales()
 
     /// Si hay descuadre no se permite cerrar el asiento. Y si el asiento esta abierto y cuadrado se permite el cierre del asiento.
     if ( desc != 0 ) {
-        mui_cerrarAsiento->setEnabled ( FALSE );
+        mui_cerrarAsiento->setEnabled ( false );
     } else if ( !mui_abrirAsiento->isEnabled() ) {
-        mui_cerrarAsiento->setEnabled ( TRUE );
+        mui_cerrarAsiento->setEnabled ( true );
     } // end ir
     
 }
@@ -139,11 +139,11 @@ void BcAsientoView::trataEstadoBcAsientoForm()
 void BcAsientoView::modoAsientoAbierto()
 {
     BL_FUNC_DEBUG
-    mui_descuadre->setEnabled ( TRUE );
-    mui_abrirAsiento->setEnabled ( FALSE );
-    mui_cerrarAsiento->setEnabled ( TRUE );
-    mui_inteligente->setEnabled ( TRUE );
-    mui_list->setInsert ( TRUE );
+    mui_descuadre->setEnabled ( true );
+    mui_abrirAsiento->setEnabled ( false );
+    mui_cerrarAsiento->setEnabled ( true );
+    mui_inteligente->setEnabled ( true );
+    mui_list->setInsert ( true );
 
     //mui_list->mui_list->setBackgroundColor(Qt::lightGray);
     /// Los apuntes deben ser editables.
@@ -165,10 +165,10 @@ void BcAsientoView::modoAsientoAbierto()
 void BcAsientoView::modoAsientoCerrado()
 {
     BL_FUNC_DEBUG
-    mui_abrirAsiento->setEnabled ( TRUE );
-    mui_cerrarAsiento->setEnabled ( FALSE );
-    mui_inteligente->setEnabled ( TRUE );
-    mui_list->setInsert ( FALSE );
+    mui_abrirAsiento->setEnabled ( true );
+    mui_cerrarAsiento->setEnabled ( false );
+    mui_inteligente->setEnabled ( true );
+    mui_list->setInsert ( false );
 
     /// Los apuntes deben dejar de ser editables (aunque no se graben sus posibles
     /// modificaciones por estar en modo CERRADO).
@@ -294,9 +294,9 @@ void BcAsientoView::on_mui_fecha_enterPressed()
 {
     BL_FUNC_DEBUG
     /// Usamos un semaforo para prevenir de entradas concurrentes.
-    static bool semaforo = FALSE;
+    static bool semaforo = false;
     if ( semaforo ) return;
-    semaforo = TRUE;
+    semaforo = true;
     /// Cambiar la fecha del asiento.
     if ( estadoBcAsientoForm() != BcAsientoForm::AsientoCerrado && estadoBcAsientoForm() != BcAsientoForm::AsientoVacio ) {
         setDbValue ( "fecha", mui_fecha->text() );
@@ -304,7 +304,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
     } else {
         iniciar_asiento_nuevo();
     } // end if
-    semaforo = FALSE;
+    semaforo = false;
     
 }
 
@@ -429,7 +429,7 @@ int BcAsientoView::afterSave()
 **/
 void BcAsientoView::on_mui_borrar_clicked()
 {
-    bool atendido = TRUE; // asumimos que habra que atender al dialogo de confirmacion de borrado
+    bool atendido = true; // asumimos que habra que atender al dialogo de confirmacion de borrado
     on_mui_borrar_clicked ( atendido );
 }
 
@@ -979,7 +979,7 @@ void BcAsientoView::asientoRegularizacion ( QString finicial, QString ffinal )
         while (!curcomp -> eof() ) {                                                       
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
                 muestraAsiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::remove ( FALSE );                                                
+                BcAsientoForm::remove ( false );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
         delete curcomp;*/ 
@@ -1098,7 +1098,7 @@ void BcAsientoView::asientoCierre ( QString finicial, QString ffinal )
         while (!curcomp -> eof() ) {
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
                 muestraAsiento(curcomp->value("idasiento").toInt());
-                BcAsientoForm::remove ( FALSE );
+                BcAsientoForm::remove ( false );
                 curcomp->nextRecord();
         } // end if
         delete curcomp;
@@ -1176,7 +1176,7 @@ void BcAsientoView::asientoApertura ( QString ffinal )
         while (!curcomp -> eof() ) {                                                       
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
                 muestraAsiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::remove ( FALSE );                                                
+                BcAsientoForm::remove ( false );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
         delete curcomp; 

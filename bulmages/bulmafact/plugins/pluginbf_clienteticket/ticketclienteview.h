@@ -24,8 +24,8 @@
 #ifndef TICKETCLIENTEVIEW_H
 #define TICKETCLIENTEVIEW_H
 
-#include <QWidget>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
 
 #include "bfform.h"
 #include "ui_ticketclientebase.h"

@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "inventariosview.h"
 #include "bfcompany.h"
@@ -83,7 +83,7 @@ void InventariosView::presentar()
 \param comp
 \param parent
 **/
-InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode )
 {
     BL_FUNC_DEBUG
@@ -269,9 +269,9 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "idinventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Id inventario" ) );
     addSubFormHeader ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del inventario" ) );
     addSubFormHeader ( "fechainventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha del inventario" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

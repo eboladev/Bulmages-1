@@ -51,7 +51,7 @@ void BcPlanContableArbol::nuevaRama ( BlDbRecordSet *ramas )
 
     /// Rellenamos los valores de inicializacion para una hoja.
     hoja = new tipohoja;
-    hoja->idcuenta = atoi ( ramas->value( "idcuenta" ).toAscii().constData() );
+    hoja->idcuenta = atoi ( ramas->value( "idcuenta" ).toLatin1().constData() );
     hoja->codigo = QString ( ramas->value( "codigo" ) );
     hoja->descripcion = QString ( ramas->value( "descripcion" ) );
     hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
@@ -125,10 +125,10 @@ void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **
     tipohoja *hoja;
     int nivel;
     BlDbRecordSet *ptrcuentas = *cuentas;
-    nivel = atoi ( ptrcuentas->value( "nivel" ).toAscii().constData() );
+    nivel = atoi ( ptrcuentas->value( "nivel" ).toLatin1().constData() );
     ptrcuentas->nextRecord();
     guia = NULL;
-    while ( !ptrcuentas->eof() && ( atoi ( ptrcuentas->value( "nivel" ).toAscii().constData() ) > nivel ) ) {
+    while ( !ptrcuentas->eof() && ( atoi ( ptrcuentas->value( "nivel" ).toLatin1().constData() ) > nivel ) ) {
         /// Reservamos un huequecito de memoria para almacenar los datos de la rama.
         rama = new tiporama;
         if ( !guia ) {
@@ -138,7 +138,7 @@ void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **
             guia = guia->sgte;
         } // end if
         hoja = new tipohoja; /// Idem para una hojita.
-        hoja->idcuenta = atoi ( ptrcuentas->value( "idcuenta" ).toAscii().constData() );
+        hoja->idcuenta = atoi ( ptrcuentas->value( "idcuenta" ).toLatin1().constData() );
         hoja->codigo = ptrcuentas->value( "codigo" );
         hoja->descripcion = ptrcuentas->value( "descripcion" );
         hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );

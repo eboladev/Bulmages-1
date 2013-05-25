@@ -1,5 +1,5 @@
-#include <QWidget>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
 
 #include "tickets.h"
 #include "blfunctions.h"
@@ -59,7 +59,7 @@ void Tickets::ticketClicked()
 	    } // end if	
 	
 	    /// Pintamos los tickets bloqueados como no seleccionables.
-	    if (ticket->dbValue( "bloqueadoticket") == "TRUE" && ticket->dbValue("nomticket") != "" ) {
+	    if (ticket->dbValue( "bloqueadoticket") == "true" && ticket->dbValue("nomticket") != "" ) {
 		  if( QMessageBox::warning(this, _("Ticket bloqueado"),
                                 _("Este ticket esta bloqueado por otro terminal.\nDesea abrirlo de todos modos?"),
                                  QMessageBox::Yes
@@ -71,9 +71,9 @@ void Tickets::ticketClicked()
 	    } // end if	  
 	  
 	  
-	    emp1 ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+	    emp1 ->ticketActual()->setDbValue("bloqueadoticket", "false");
             emp1 ->setTicketActual ( ticket );
-	    ticket->setDbValue("bloqueadoticket", "TRUE");
+	    ticket->setDbValue("bloqueadoticket", "true");
             ticket->pintar();
 	    i = emp1->listaTickets()->size();
 	} // end if

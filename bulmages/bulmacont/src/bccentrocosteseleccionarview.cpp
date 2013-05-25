@@ -84,7 +84,7 @@ void BcCentroCosteSeleccionarView::cargacostes()
         item->setText ( 1, cursoraux1->value( "descripcion" ) );
         item->setText ( 0, cursoraux1->value( "nombre" ) );
         item->setCheckState ( 0, Qt::Unchecked );
-// descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
+// descomentarlo si Qt>=4.2        item->setExpanded(true);
         Lista[idc_coste] = item;
 
         cursoraux1->nextRecord ();
@@ -104,7 +104,7 @@ void BcCentroCosteSeleccionarView::cargacostes()
         item->setText ( 1, cursoraux2->value( "descripcion" ) );
         item->setText ( 0, cursoraux2->value( "nombre" ) );
         item->setCheckState ( 0, Qt::Unchecked );
-// descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
+// descomentarlo si Qt>=4.2        item->setExpanded(true);
         Lista[idc_coste] = item;
 
         cursoraux2->nextRecord();
@@ -173,7 +173,7 @@ QString BcCentroCosteSeleccionarView::cadcoste()
     idc_coste = firstccoste();
     while ( idc_coste ) {
         if ( ccostes != "" )
-            ccostes.sprintf ( "%s, %d", ccostes.toAscii().constData(), idc_coste );
+            ccostes.sprintf ( "%s, %d", ccostes.toLatin1().constData(), idc_coste );
         else
             ccostes.sprintf ( "%d", idc_coste );
         idc_coste = nextccoste();
@@ -196,7 +196,7 @@ QString BcCentroCosteSeleccionarView::nomcoste()
     fprintf ( stderr, "nomcoste()\n" );
 
     if ( ( *m_iterador ) ->checkState ( 0 ) == Qt::Checked ) {
-        fprintf ( stderr, "nomcoste: %s\n", ( *m_iterador ) ->text ( 0 ).toAscii().constData() );
+        fprintf ( stderr, "nomcoste: %s\n", ( *m_iterador ) ->text ( 0 ).toLatin1().constData() );
         return ( *m_iterador ) ->text ( 0 );
     } else {
         return "";

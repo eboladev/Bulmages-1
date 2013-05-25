@@ -24,18 +24,26 @@
 
 
 PROJECT(bulmages)
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
 
 SET( BULMAGES_VERSION 1.5.0 )
+
+
+set(CMAKE_CXX_FLAGS "-fPIC")
+
+set(QT5_MODULE_PATH "/usr/lib/x86_64-linux-gnu/cmake")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake")
+
+
+set (USE_QMDIAREA TRUE)
 
 STRING( REGEX MATCHALL "[0-9]+" BULMAGES_VERSIONS ${BULMAGES_VERSION} )
 LIST( GET BULMAGES_VERSIONS 0 BULMAGES_VERSION_MAJOR)
 LIST( GET BULMAGES_VERSIONS 1 BULMAGES_VERSION_MINOR)
 LIST( GET BULMAGES_VERSIONS 2 BULMAGES_VERSION_PATCH)
-SET( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake" )
 
 # Differences between CMake 2.4 and 2.6
-if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
+if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8.0)
    message(STATUS "Using cmake version ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" )
    # some developers may be using an cmake cvs version which didn't have set_property() yet
    # Tell them that a more recent version is required.
@@ -65,18 +73,36 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
    # list command no longer ignores empty elements.
    cmake_policy(SET CMP0007 OLD)
 
-endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
+endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8.0)
+message(STATUS ${QT5_MODULE_PATH})
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindQt.cmake)
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindQt5.cmake)
+INCLUDE(${QT5_MODULE_PATH}/Qt5Core/Qt5CoreMacros.cmake)
+#INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/QtCTestMacros.cmake)
+INCLUDE(${QT5_MODULE_PATH}/Qt5Widgets/Qt5WidgetsMacros.cmake)
+INCLUDE(${QT5_MODULE_PATH}/Qt5Widgets/Qt5WidgetsConfig.cmake)
+
 
 
 # ######### General setup ##########
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
-find_package(Qt4 REQUIRED)
+#find_package(Qt5)
 
 
 
-if(NOT QT4_FOUND)
-  message(FATAL_ERROR "Bulmages needs QT4 to compile")
-endif(NOT QT4_FOUND)
+if(NOT QT5_FOUND)
+  message(FATAL_ERROR "Bulmages needs QT5 to compile")
+endif(NOT QT5_FOUND)
+
+IF (QT5_FOUND)
+ find_package(Qt5Core REQUIRED)
+# find_package(Qt5Widgets REQUIRED)
+
+# find_package(Qt5Gui REQUIRED)
+# find_package(Qt5Network REQUIRED)
+# find_package(Qt5Script REQUIRED)
+ENDIF(QT5_FOUND)
+
 
 ###############################################
 # and now the version string given by qmake
@@ -84,9 +110,9 @@ STRING(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_MAJOR_VERSION "${Q
 STRING(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1" QT_MINOR_VERSION "${QTVERSION}")
 STRING(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_PATCH_VERSION "${QTVERSION}")
 
-if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.6)
-    message(FATAL_ERROR " Bulmages needs >= QT4.6 to compile")
-endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.6)
+if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 5.0)
+    message(FATAL_ERROR " Bulmages needs >= QT5.0 to compile")
+endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 5.0)
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
@@ -118,7 +144,7 @@ if(NOT PYTHON_EXECUTABLE)
 endif(NOT PYTHON_EXECUTABLE)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
-option(USE_QMDIAREA "Enable new QMdiArea" OFF)
+option(USE_QMDIAREA "Enable new QMdiArea" ON)
 option(ENABLE_PCH  "Enable precompiled headers" OFF)
 
 if(NOT PGSQL_FOUND)
@@ -201,8 +227,8 @@ message(STATUS "Working on bulmafact")
 add_subdirectory(bulmafact)
 
 ########### bulmages launcher ##########
-message(STATUS "Working on bulmages")
-add_subdirectory(bulmages)
+#message(STATUS "Working on bulmages")
+#add_subdirectory(bulmages)
 
 ########### bulmatpv ##########
 message(STATUS "Working on bulmatpv")

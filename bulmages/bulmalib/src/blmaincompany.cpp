@@ -180,7 +180,7 @@ void BlMainCompany::init ( QString bd, QString tipo )
     } // end if
     /// Hacemos visible el ProgressBar mientras se habre la base de datos y se cargan
     /// los datos de la en las ventanas.
-    m_progressbar->setVisible ( TRUE );
+    m_progressbar->setVisible ( true );
 
     inicializa ( bd );
     

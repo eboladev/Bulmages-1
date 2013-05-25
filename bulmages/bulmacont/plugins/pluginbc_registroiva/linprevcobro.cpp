@@ -241,7 +241,7 @@ void linprevcobro::guardalinprevcobro()
 void linprevcobro::setcodigocuenta ( QString val )
 {
     BL_FUNC_DEBUG
-    fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
+    fprintf ( stderr, "setcodigocuenta(%s)\n", val.toLatin1().constData() );
     mdb_codigocuenta = blExtendStringWithZeros ( val, company->numDigitosEmpresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
@@ -261,7 +261,7 @@ void linprevcobro::setcodigocuenta ( QString val )
 void linprevcobro::setidcuenta ( QString val )
 {
     BL_FUNC_DEBUG
-    fprintf ( stderr, "setidcuenta(%s)\n", val.toAscii().constData() );
+    fprintf ( stderr, "setidcuenta(%s)\n", val.toLatin1().constData() );
     mdb_idcuenta = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idcuenta + "";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
@@ -366,7 +366,7 @@ int linprevcobro::creaPago()
 void linprevcobro::setcodigoctacliente ( QString val )
 {
     BL_FUNC_DEBUG
-    fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
+    fprintf ( stderr, "setcodigocuenta(%s)\n", val.toLatin1().constData() );
     mdb_codigoctacliente = blExtendStringWithZeros ( val, company->numDigitosEmpresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );
@@ -386,7 +386,7 @@ void linprevcobro::setcodigoctacliente ( QString val )
 void linprevcobro::setidctacliente ( QString val )
 {
     BL_FUNC_DEBUG
-    fprintf ( stderr, "setidcuenta(%s)\n", val.toAscii().constData() );
+    fprintf ( stderr, "setidcuenta(%s)\n", val.toLatin1().constData() );
     mdb_idctacliente = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idctacliente + "";
     BlDbRecordSet *cur = dbConnection->loadQuery ( SQLQuery );

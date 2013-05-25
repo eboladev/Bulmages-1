@@ -21,13 +21,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QWidget>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QWidget>
 
 #include "catalogoqtoolbutton.h"
 #include "blfunctions.h"

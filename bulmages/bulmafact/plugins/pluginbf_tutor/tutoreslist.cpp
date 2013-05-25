@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QTextStream>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
 
 #include "blconfiguration.h"
 #include "tutoreslist.h"
@@ -36,7 +36,7 @@
     Mete la ventana en el workSpace.
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
-TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+TutoresList::TutoresList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -58,7 +58,7 @@ TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -290,9 +290,9 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del cliente" ) );
     addSubFormHeader ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

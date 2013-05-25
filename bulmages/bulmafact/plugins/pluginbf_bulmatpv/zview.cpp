@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include <fstream>
 
@@ -83,12 +83,12 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "bimpalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Base Imponible" ) );
         mui_list->addSubFormHeader ( "impalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
 
-        mui_list->setInsert ( FALSE );
-        mui_list->setDelete ( FALSE );
-        mui_list->setSortingEnabled ( TRUE );
+        mui_list->setInsert ( false );
+        mui_list->setDelete ( false );
+        mui_list->setSortingEnabled ( true );
 
         dialogChanges_readValues();
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );

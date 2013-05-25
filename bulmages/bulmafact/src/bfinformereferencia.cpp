@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QString>
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QString>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "bfinformereferencia.h"
 #include "bfcompany.h"
@@ -174,7 +174,7 @@ void BfInformeCliente::generarInforme()
       SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
       SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
-      fprintf ( stdout, "%s\n", SQLQuery.toAscii().constData() );
+      fprintf ( stdout, "%s\n", SQLQuery.toLatin1().constData() );
 
       cur = companyact->loadQuery ( SQLQuery );
       while ( !cur->eof() ) {

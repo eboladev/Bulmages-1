@@ -21,8 +21,8 @@
  ***************************************************************************/
 
 #include <unistd.h>
-#include <QCheckBox>
-#include <QTextStream>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
 
 #include "bcdiarioprintview.h"
 #include "bfcompany.h"
@@ -87,11 +87,11 @@ QString BcDiarioPrintView::montaQuery()
     BcCentroCosteSeleccionarView *scoste = ( ( BfCompany * ) mainCompany() ) ->getselccostes();
     QString ccostes = scoste->cadcoste();
     if ( ccostes != "" ) {
-        ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
+        ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
     } // end if
     QString ccanales = scanal->cadCanal();
     if ( ccanales != "" ) {
-        ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
+        ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toLatin1().constData() );
     } // end if
 */
     QString tabla;
@@ -187,7 +187,7 @@ void BcDiarioPrintView::presentar ( const char *tipus )
             if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
                 fitxersortidatxt << "                                        LLIBRE DIARI \n" ;
-                fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
+                fitxersortidatxt << "Data Inicial: " << finicial.toLatin1().constData() << "   Data Final: " << ffinal.toLatin1().constData() << endl;
                 fitxersortidatxt << "ASIENTO   FECHA    SUBCUENTA   DESCRIPCION                                   DEBE     HABER \n" ;
                 fitxersortidatxt << "_______________________________________________________________________________________________\n";
             } // end if
@@ -197,12 +197,12 @@ void BcDiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
                 fitxersortidahtml << "    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n";
-                fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"" << g_confpr->value( CONF_PLANTILLA ).toAscii().constData() << "\" TYPE=\"text/css\" MEDIA=screen>\n";
+                fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"" << g_confpr->value( CONF_PLANTILLA ).toLatin1().constData() << "\" TYPE=\"text/css\" MEDIA=screen>\n";
                 fitxersortidahtml << "  <title> Llibre Diari </title>\n";
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titoldiari> Llibre diari <hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td colspan=\"6\" class=periodediari> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
+                fitxersortidahtml << "<tr><td colspan=\"6\" class=periodediari> Data Inicial: " << finicial.toLatin1().constData() << " -  Data Final: " << ffinal.toLatin1().constData() << "<hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripcio</td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
             } // end if
             QString query = montaQuery();
@@ -211,15 +211,15 @@ void BcDiarioPrintView::presentar ( const char *tipus )
             mainCompany() ->commit();
 
             for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
-                fechaasiento = cursoraux->value( "fechaasiento" ).toAscii().constData();
-                idasiento = atoi ( cursoraux->value( "ordenasiento" ).toAscii() );
-                fecha = cursoraux->value( "fecha" ).toAscii().constData();
-                descripcion = cursoraux->value( "descripcion" ).toAscii().constData();
-                concepto = cursoraux->value( "conceptocontable" ).toAscii().constData();
-                debe = atof ( cursoraux->value( "debe" ).toAscii() );
-                haber = atof ( cursoraux->value( "haber" ).toAscii() );
-                idcuenta = atoi ( cursoraux->value( "idcuenta" ).toAscii() );
-                codigocuenta = cursoraux->value( "codigocuenta" ).toAscii().constData();
+                fechaasiento = cursoraux->value( "fechaasiento" ).toLatin1().constData();
+                idasiento = atoi ( cursoraux->value( "ordenasiento" ).toLatin1() );
+                fecha = cursoraux->value( "fecha" ).toLatin1().constData();
+                descripcion = cursoraux->value( "descripcion" ).toLatin1().constData();
+                concepto = cursoraux->value( "conceptocontable" ).toLatin1().constData();
+                debe = atof ( cursoraux->value( "debe" ).toLatin1() );
+                haber = atof ( cursoraux->value( "haber" ).toLatin1() );
+                idcuenta = atoi ( cursoraux->value( "idcuenta" ).toLatin1() );
+                codigocuenta = cursoraux->value( "codigocuenta" ).toLatin1().constData();
                 data = fecha.left ( 10 );
                 if ( txt ) {
                     /// Presentaci&oacute;n txt normal.
@@ -244,7 +244,7 @@ void BcDiarioPrintView::presentar ( const char *tipus )
         if ( txt ) {
             /// Presentaci&oacute; txt normal.
             QString cadaux = g_confpr->value( CONF_EDITOR ) + " diairo.txt";
-            system ( cadaux.toAscii() );
+            system ( cadaux.toLatin1() );
         }
         if ( html ) {
             /// Presentaci&oacute; html normal.
@@ -276,7 +276,7 @@ void BcDiarioPrintView::presentar ( const char *tipus )
             if ( txtapren ) {
                 /// Presentaci&oacute;n txt formato aprendizaje.
                 fitxersortidatxt << "                                                      LLIBRE DIARI \n" ;
-                fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
+                fitxersortidatxt << "Data Inicial: " << finicial.toLatin1().constData() << "   Data Final: " << ffinal.toLatin1().constData() << endl;
                 fitxersortidatxt << "___________________________________________________________________________________________________________________________________\n";
             } // end if
             if ( htmlapren ) {
@@ -290,13 +290,13 @@ void BcDiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"7\" class=titoldiariapren> Llibre diari <hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
+                fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.toLatin1().constData() << " -  Data Final: " << ffinal.toLatin1().constData() << "<hr></td></tr>\n\n";
             } // end if
             mainCompany() ->begin();
             cursoraux = mainCompany() -> loadQuery ( "SELECT * FROM asiento WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' ORDER BY fecha" );
 
             for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
-                int idasiento = atoi ( cursoraux->value( "idasiento" ).toAscii() );
+                int idasiento = atoi ( cursoraux->value( "idasiento" ).toLatin1() );
                 if ( txtapren ) {
                     /// Presentaci&oacute;n txt formato aprendizaje.
                     fitxersortidatxt << "_________________________________________________________   " << idasiento << "   ___________________________________________________________________\n";
@@ -315,12 +315,12 @@ void BcDiarioPrintView::presentar ( const char *tipus )
                 while ( !cursasiento->eof() ) {
                     if ( txtapren ) {
                         /// Presentaci&oacute;n txt formato aprendizaje.
-                        sprintf ( codicompte, "( %s )", cursasiento->value( "codigo" ).toAscii().constData() );
-                        fitxersortidatxt <<  atof ( cursasiento->value( "debe" ).toAscii() ) << "  " <<  codicompte << "  " << cursasiento->value( "nomcuenta" ).toAscii().constData() << endl;
+                        sprintf ( codicompte, "( %s )", cursasiento->value( "codigo" ).toLatin1().constData() );
+                        fitxersortidatxt <<  atof ( cursasiento->value( "debe" ).toLatin1() ) << "  " <<  codicompte << "  " << cursasiento->value( "nomcuenta" ).toLatin1().constData() << endl;
                     } // end if
                     if ( htmlapren ) {
                         /// Presentaci&oacute;n html formato aprendizaje.
-                        fitxersortidahtml << " <tr><td class=deurediariapren> " << atof ( cursasiento->value( "debe" ).toAscii() ) << " </td><td class=codidiariapren> ( " << cursasiento->value( "codigo" ).toAscii().constData() << " ) </td><td class=nomcomptediariapren> " << cursasiento->value( "nomcuenta" ).toAscii().constData() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
+                        fitxersortidahtml << " <tr><td class=deurediariapren> " << atof ( cursasiento->value( "debe" ).toLatin1() ) << " </td><td class=codidiariapren> ( " << cursasiento->value( "codigo" ).toLatin1().constData() << " ) </td><td class=nomcomptediariapren> " << cursasiento->value( "nomcuenta" ).toLatin1().constData() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
                     } // end if
                     cursasiento->nextRecord();
                 } // end while
@@ -334,12 +334,12 @@ void BcDiarioPrintView::presentar ( const char *tipus )
                 while ( !cursasiento->eof() ) {
                     if ( txtapren ) {
                         /// Presentaci&oacute;n txt formato aprendizaje.
-                        sprintf ( codicompte, "( %s )", cursasiento->value( "codigo" ).toAscii().constData() );
-                        fitxersortidatxt << "                                                                 a  " <<  cursasiento->value( "nomcuenta" ).toAscii().constData() << "  " << codicompte << "  " <<  atof ( cursasiento->value( "haber" ).toAscii() ) << endl;
+                        sprintf ( codicompte, "( %s )", cursasiento->value( "codigo" ).toLatin1().constData() );
+                        fitxersortidatxt << "                                                                 a  " <<  cursasiento->value( "nomcuenta" ).toLatin1().constData() << "  " << codicompte << "  " <<  atof ( cursasiento->value( "haber" ).toLatin1() ) << endl;
                     } // end if
                     if ( htmlapren ) {
                         /// Presentaci&oacute;n html formato aprendizaje.
-                        fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->value( "nomcuenta" ).toAscii().constData() << " </td><td class=codidiariapren> ( " << cursasiento->value( "codigo" ).toAscii().constData() << " ) </td><td class=haverdiariapren> " <<  atof ( cursasiento->value( "haber" ).toAscii() ) << " </td></tr>\n";
+                        fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->value( "nomcuenta" ).toLatin1().constData() << " </td><td class=codidiariapren> ( " << cursasiento->value( "codigo" ).toLatin1().constData() << " ) </td><td class=haverdiariapren> " <<  atof ( cursasiento->value( "haber" ).toLatin1() ) << " </td></tr>\n";
                     } // end if
                     cursasiento->nextRecord();
                 } // end while
@@ -360,12 +360,12 @@ void BcDiarioPrintView::presentar ( const char *tipus )
             if ( txtapren ) {
                 /// Presentaci&oacute;n txt formato aprendizaje.
                 QString cadaux = g_confpr->value( CONF_EDITOR ) + " diario.txt";
-                system ( cadaux.toAscii() );
+                system ( cadaux.toLatin1() );
             } // end if
             if ( htmlapren ) {
                 /// Presentaci&oacute;n html formato aprendizaje.
                 QString cadaux = g_confpr->value( CONF_NAVEGADOR ) + " diario.txt";
-                system ( cadaux.toAscii() );
+                system ( cadaux.toLatin1() );
             } // end if
         } // end if
     } // end if

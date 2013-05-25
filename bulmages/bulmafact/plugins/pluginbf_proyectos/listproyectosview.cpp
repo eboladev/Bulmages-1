@@ -32,7 +32,7 @@
 \param emp
 \param parent
 **/
-ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
+ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( emp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -49,15 +49,15 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     mui_listado->addSubFormHeader ( "nombrepresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Nombre" ) );
     mui_listado->addSubFormHeader ( "comentpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Comentarios" ) );
     mui_listado->addSubFormHeader ( "archpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Archivo" ) );
-    mui_listado->setInsert ( FALSE );
+    mui_listado->setInsert ( false );
 
     presentar();
     if ( editMode() ) {
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de Proyectos" ) );
-        mui_crear->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
+        mui_crear->setHidden ( true );
+        mui_borrar->setHidden ( true );
     } // end if
 
     /// Lanzamos los posibles scripts

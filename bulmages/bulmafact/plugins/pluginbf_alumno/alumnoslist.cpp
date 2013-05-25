@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QTextStream>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
 
 #include "blconfiguration.h"
 #include "alumnoslist.h"
@@ -36,7 +36,7 @@
     Mete la ventana en el workSpace.
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
-AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlumnosList::AlumnosList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -59,7 +59,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -84,11 +84,11 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de alumnos" ) );
-        mui_editar->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
 	/// Vamos a permitir la insercion de alumnos desde un listado en QDialog generando una insercion de alumnos tambien en QDialog
-//        mui_crear->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+//        mui_crear->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
 
     mui_idclase->setMainCompany ( mainCompany() );
@@ -96,7 +96,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     mui_idclase->setTableName ( "clase" );
     mui_idclase->setFieldId ( "idclase" );
     mui_idclase->m_valores["nomclase"] = "";
-    mui_idclase->setAllowNull ( TRUE );
+    mui_idclase->setAllowNull ( true );
     mui_idclase->setId ( "" );
 
     hideBusqueda();
@@ -314,7 +314,7 @@ void AlumnosList::setMainCompany ( BfCompany *comp )
     mui_idclase->setTableName ( "clase" );
     mui_idclase->setFieldId ( "idclase" );
     mui_idclase->m_valores["nomclase"] = "";
-    mui_idclase->setAllowNull ( TRUE );
+    mui_idclase->setAllowNull ( true );
     mui_idclase->setId ( "" );
     
 
@@ -352,9 +352,9 @@ AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "apellido2alumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "2o apellido" ) );
     addSubFormHeader ( "fechanacimientoalumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "F. Nacimiento" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

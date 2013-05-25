@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QObject>
-#include <QDomDocument>
-#include <QInputDialog>
+#include <QtCore/QObject>
+#include <QtXml/QDomDocument>
+#include <QtWidgets/QInputDialog>
 
 #include "bccompany.h"
 #include "blcompanydialog.h"
@@ -625,7 +625,7 @@ void BcCompany::guardaConf()
         stream << "\t\t\t<Y>" + QString::number ( m_bulmacont->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmacont->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmacont->height() ) + "</HEIGHT>\n";
-        stream << "\t\t\t<INDEXADOR>" + ( m_bulmacont->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
+        stream << "\t\t\t<INDEXADOR>" + ( m_bulmacont->actionIndexador->isChecked() ? QString ( "true" ) : QString ( "false" ) ) + "</INDEXADOR>\n";
         stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmacont->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
         stream << "\t</PRINCIPAL>\n";
 
@@ -639,9 +639,9 @@ void BcCompany::guardaConf()
             stream << "\t\t<VY>" + QString::number ( wid->parentWidget() ->y() ) + "</VY>\n";
             stream << "\t\t<VWIDTH>" + QString::number ( wid->width() ) + "</VWIDTH>\n";
             stream << "\t\t<VHEIGHT>" + QString::number ( wid->height() ) + "</VHEIGHT>\n";
-            stream << "\t\t<VVISIBLE>" + ( wid->isVisible() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VVISIBLE>\n";
-            stream << "\t\t<VMAXIMIZED>" + ( wid->isMaximized() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VMAXIMIZED>\n";
-            stream << "\t\t<VACTIVEWINDOW>" + ( m_bulmacont->workspace() ->activeWindow() == wid ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VACTIVEWINDOW>";
+            stream << "\t\t<VVISIBLE>" + ( wid->isVisible() ? QString ( "true" ) : QString ( "false" ) ) + "</VVISIBLE>\n";
+            stream << "\t\t<VMAXIMIZED>" + ( wid->isMaximized() ? QString ( "true" ) : QString ( "false" ) ) + "</VMAXIMIZED>\n";
+            stream << "\t\t<VACTIVEWINDOW>" + ( m_bulmacont->workspace() ->activeWindow() == wid ? QString ( "true" ) : QString ( "false" ) ) + "</VACTIVEWINDOW>";
             stream << "\t</VENTANA>\n";
         } // end for
 
@@ -695,16 +695,16 @@ void BcCompany::cargaConf()
 
     /// Cogemos el indexador
     QString indexador = principal.firstChildElement ( "INDEXADOR" ).toElement().text();
-    if ( indexador == "TRUE" ) {
-        s_indexadorCambiaEstado ( TRUE );
-        m_bulmacont->actionIndexador->setChecked ( TRUE );
+    if ( indexador == "true" ) {
+        s_indexadorCambiaEstado ( true );
+        m_bulmacont->actionIndexador->setChecked ( true );
     } else {
-        s_indexadorCambiaEstado ( FALSE );
-        m_bulmacont->actionIndexador->setChecked ( FALSE );
+        s_indexadorCambiaEstado ( false );
+        m_bulmacont->actionIndexador->setChecked ( false );
     } // end if
 
     /// Cogemos el ancho del indexador
-    m_bulmacont->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
+    m_bulmacont->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toLatin1() ) ) );
 
 
     /// Tratamos cada ventana
@@ -729,15 +729,15 @@ void BcCompany::cargaConf()
                     /// Establecemos la geometria de la ventana principal.
                     wid->resize ( vwidth.toInt(), vheight.toInt() );
                     wid->parentWidget() ->move ( vx.toInt(), vy.toInt() );
-                    if ( vvisible == "TRUE" ) {
+                    if ( vvisible == "true" ) {
                         wid->showNormal();
                     } else {
                         wid->hide();
                     } // end if
-                    if ( vmaximized == "TRUE" ) {
+                    if ( vmaximized == "true" ) {
                         wid->showMaximized();
                     }
-                    if ( vactivewindow == "TRUE" ) {
+                    if ( vactivewindow == "true" ) {
                         activewindow = wid;
                     }
                 } // end if

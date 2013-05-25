@@ -22,11 +22,11 @@
 #ifndef BCCANALVIEW_H
 #define BCCANALVIEW_H
 
-#include <QWidget>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QCloseEvent>
-#include <QTextStream>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QTextStream>
 
 #include "ui_bccanalbase.h"
 #include "bldialogchanges.h"

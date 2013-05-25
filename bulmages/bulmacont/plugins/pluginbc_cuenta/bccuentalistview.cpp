@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QFile>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QComboBox>
-#include <QTextStream>
-#include <QMenu>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QFile>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QFileDialog>
 
 #include "bccuentalistview.h"
 #include "bccompany.h"
@@ -48,7 +48,7 @@
 \param editmodo
 \return
 **/
-BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -66,7 +66,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de cuenta." ) );
-        mui_imprimir->setHidden ( TRUE );
+        mui_imprimir->setHidden ( true );
     } // end if
 
     mui_nivel->clear();
@@ -398,9 +398,9 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
         addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "P.V.P. articulo" ) );
         addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Disponible en stock" ) );
     */
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     /// Disparamos los plugins.
     g_plugins->run ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
     

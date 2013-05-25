@@ -20,13 +20,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QLayout>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLayout>
+#include <QtGui/QCloseEvent>
 
 
 #include "pedidoclienteview.h"
@@ -92,7 +92,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->setTableName ( "cliente" );
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido cliente" ), this );
@@ -321,7 +321,7 @@ void PedidoClienteView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclpedidocliente", linea->dbValue ( "desclpedidocliente" ) );
                 linea1->setDbValue ( "cantlpedidocliente", linea->dbValue ( "cantlpedidocliente" ) );
                 linea1->setDbValue ( "pvplpedidocliente", linea->dbValue ( "pvplpedidocliente" ) );

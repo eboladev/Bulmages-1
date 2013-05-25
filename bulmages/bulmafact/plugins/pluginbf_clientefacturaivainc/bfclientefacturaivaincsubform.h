@@ -22,7 +22,7 @@
 #ifndef BFCLIENTEFACTURAIVAINCSUBFORM_H
 #define BFCLIENTEFACTURAIVAINCSUBFORM_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

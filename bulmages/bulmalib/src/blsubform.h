@@ -27,11 +27,10 @@
 #ifndef BLSUBFORM_H
 #define BLSUBFORM_H
 
-#include <Qt>
-#include <QWidget>
-#include <QHeaderView>
-#include <QPalette>
-#include <QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QHeaderView>
+#include <QtGui/QPalette>
+#include <QtWidgets/QToolButton>
 
 #include "blfunctions.h"
 #include "ui_blsubformbase.h"
@@ -242,8 +241,8 @@ public:
     /// Establece el modo de funcionamiento del scroll horizontal.
     void setHorizontalScrollMode ( QAbstractItemView::ScrollMode mode );
     /// Establece los colores para dibujar el fondo de las filas.
-    /// Si la propiedad 'alternatingRowColors' est&aacute; en TRUE entonces de usan
-    /// los dos colores, si est&aacute; en FALSE s&oacute;lo se usa 'ColorFondo1'.
+    /// Si la propiedad 'alternatingRowColors' est&aacute; en true entonces de usan
+    /// los dos colores, si est&aacute; en false s&oacute;lo se usa 'ColorFondo1'.
     /// Estos valores corresponden a QPalette::Base y QPalette::AlternateBase.
     void setColorFondo1 ( QString color );
     void setColorFondo2 ( QString color );

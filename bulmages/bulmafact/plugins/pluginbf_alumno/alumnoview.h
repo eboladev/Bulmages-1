@@ -25,9 +25,9 @@
 #ifndef ALUMNOVIEW_H
 #define ALUMNOVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"

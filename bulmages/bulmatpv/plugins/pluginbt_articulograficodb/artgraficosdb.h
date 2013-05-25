@@ -24,10 +24,9 @@
 #ifndef ARTGRAFICOSDB_H
 #define ARTGRAFICOSDB_H
 
-#include <QDomDocument>
-#include <QTableWidget>
-#include <QWindowsStyle>
-#include <QSignalMapper>
+#include <QtXml/QDomDocument>
+#include <QtWidgets/QTableWidget>
+#include <QtCore/QSignalMapper>
 
 #include "blfunctions.h"
 #include "blwidget.h"

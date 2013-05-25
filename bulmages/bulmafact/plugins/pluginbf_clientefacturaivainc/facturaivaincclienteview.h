@@ -24,8 +24,8 @@
 #ifndef FACTURAIVAINCCLIENTEVIEW_H
 #define FACTURAIVAINCCLIENTEVIEW_H
 
-#include <QWidget>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
 
 #include "bfform.h"
 #include "ui_facturaivaincclientebase.h"

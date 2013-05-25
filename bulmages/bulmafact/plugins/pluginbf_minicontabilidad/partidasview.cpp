@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMap>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QMap>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "partidasview.h"
 #include "bfcompany.h"
@@ -53,17 +53,17 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool selectMode )
     m_listPartidas->setColumnWidth ( 0, 200 );
     m_listPartidas->setColumnWidth ( 1, 100 );
 
-    m_listPartidas->setColumnHidden ( COL_IDPARTIDA, TRUE );
-    m_listPartidas->setColumnHidden ( COL_CODIGOPARTIDA, TRUE );
+    m_listPartidas->setColumnHidden ( COL_IDPARTIDA, true );
+    m_listPartidas->setColumnHidden ( COL_CODIGOPARTIDA, true );
 
-    m_semaforoPintar = FALSE;
+    m_semaforoPintar = false;
 
     m_idpartida = "";
 
-    mui_nombrePartida->setEnabled ( FALSE );
-    mui_descPartida->setEnabled ( FALSE );
-    mui_codigoCompletoPartida->setEnabled ( FALSE );
-    mui_codigoPartida->setEnabled ( FALSE );
+    mui_nombrePartida->setEnabled ( false );
+    mui_descPartida->setEnabled ( false );
+    mui_codigoCompletoPartida->setEnabled ( false );
+    mui_codigoPartida->setEnabled ( false );
 
 
     if ( selectMode ) {
@@ -79,7 +79,7 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool selectMode )
     } else {
         setEditMode();
         setAttribute ( Qt::WA_DeleteOnClose );
-        mainCompany()->insertWindow ( windowTitle(), this, FALSE );
+        mainCompany()->insertWindow ( windowTitle(), this, false );
     } // end if
 
     pintar();
@@ -105,7 +105,7 @@ void PartidasView::pintar()
 {
     BL_FUNC_DEBUG
     /// Activamos el semaforo de pintado para que no haya slots concurrentes.
-    m_semaforoPintar = TRUE;
+    m_semaforoPintar = true;
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
@@ -157,7 +157,7 @@ void PartidasView::pintar()
     m_idpartida = "";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
+    m_semaforoPintar = false; /// Desactivamos el semaforo de pintado.
     
 }
 
@@ -246,7 +246,7 @@ void PartidasView::on_m_listPartidas_currentItemChanged ( QTreeWidgetItem *curre
 	return;
     } // end if
 
-    m_semaforoPintar = TRUE;
+    m_semaforoPintar = true;
     /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
 
     if ( previous ) {
@@ -266,7 +266,7 @@ void PartidasView::on_m_listPartidas_currentItemChanged ( QTreeWidgetItem *curre
     } // end if
 
     mostrarplantilla();
-    m_semaforoPintar = FALSE;
+    m_semaforoPintar = false;
     
 }
 
@@ -279,10 +279,10 @@ void PartidasView::mostrarplantilla()
     BL_FUNC_DEBUG
     QString query;
     if ( !m_idpartida.isEmpty() ) {
-        mui_nombrePartida->setEnabled ( TRUE );
-        mui_descPartida->setEnabled ( TRUE );
-        mui_codigoCompletoPartida->setEnabled ( TRUE );
-        mui_codigoPartida->setEnabled ( TRUE );
+        mui_nombrePartida->setEnabled ( true );
+        mui_descPartida->setEnabled ( true );
+        mui_codigoCompletoPartida->setEnabled ( true );
+        mui_codigoPartida->setEnabled ( true );
 
         query = "SELECT * from partida WHERE idpartida = " + m_idpartida;
         BlDbRecordSet *cursorpartida = mainCompany()->loadQuery ( query );
@@ -294,10 +294,10 @@ void PartidasView::mostrarplantilla()
         } // end if
         delete cursorpartida;
     } else {
-        mui_nombrePartida->setEnabled ( FALSE );
-        mui_descPartida->setEnabled ( FALSE );
-        mui_codigoCompletoPartida->setEnabled ( FALSE );
-        mui_codigoPartida->setEnabled ( FALSE );
+        mui_nombrePartida->setEnabled ( false );
+        mui_descPartida->setEnabled ( false );
+        mui_codigoCompletoPartida->setEnabled ( false );
+        mui_codigoPartida->setEnabled ( false );
         mui_nombrePartida->setText ( "" );
         mui_descPartida->setPlainText ( "" );
         mui_codigoCompletoPartida->setText ( "" );
@@ -327,7 +327,7 @@ bool PartidasView::trataModificado()
         } // end if
     } // end if
     
-    return ( FALSE );
+    return ( false );
 }
 
 
@@ -358,7 +358,7 @@ int PartidasView::save()
         QTreeWidgetItem *posicionCursor;
         posicionCursor = m_listPartidas->currentItem();
         if ( posicionCursor ) {
-            posicionCursor->setSelected ( TRUE );
+            posicionCursor->setSelected ( true );
             /// Pintamos los datos en el listado.
             pintar ( posicionCursor );
         } // end if
@@ -564,7 +564,7 @@ void PartidasView::on_mui_aceptar_clicked()
 **/
 void PartidasView::setSelectMode()
 {
-    m_selectMode = TRUE;
+    m_selectMode = true;
 }
 
 
@@ -573,7 +573,7 @@ void PartidasView::setSelectMode()
 **/
 void PartidasView::setEditMode()
 {
-    m_selectMode = FALSE;
+    m_selectMode = false;
 }
 
 

@@ -22,11 +22,11 @@
 #ifndef Q19VIEW_H
 #define Q19VIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-#include <QTextStream>
-#include <QFileDialog>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
 
 #include "ui_q19base.h"
 #include "bfform.h"

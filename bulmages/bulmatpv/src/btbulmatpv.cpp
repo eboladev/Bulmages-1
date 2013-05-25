@@ -18,19 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QImage>
-#include <QPixmap>
-#include <QToolButton>
-#include <QMenuBar>
-#include <QFile>
-#include <QStatusBar>
-#include <QMessageBox>
-#include <QPrinter>
-#include <QApplication>
-#include <QTextStream>
-#include <QPainter>
-#include <QWorkspace>
-#include <QProgressBar>
+#include <QtGui/QImage>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QMenuBar>
+#include <QtCore/QFile>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QMessageBox>
+#include <QtPrintSupport/QPrinter>
+#include <QtWidgets/QApplication>
+#include <QtCore/QTextStream>
+#include <QtGui/QPainter>
+#include <QtWidgets/QProgressBar>
 
 #include "blworkspace.h"
 #include "btbulmatpv.h"
@@ -53,14 +52,14 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     BL_FUNC_DEBUG
     
     setupUi ( this );
-    setUpdatesEnabled ( TRUE );
+    setUpdatesEnabled ( true );
     pWorkspace = new BlWorkspace ( this );
     
 #ifdef AREA_QMDI    
     pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 #else
-    pWorkspace->setScrollBarsEnabled ( TRUE );
+    pWorkspace->setScrollBarsEnabled ( true );
 #endif
 
     QProgressBar *m_pb = new QProgressBar();
@@ -68,7 +67,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     m_pb->setMinimum ( 0 );
     m_pb->setValue ( 0 );
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
-    m_pb->setVisible ( FALSE );
+    m_pb->setVisible ( false );
 
 
     m_stackedWidget = new QStackedWidget(this);
@@ -95,13 +94,13 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 // ============== OJO El listventanas no se utiliza pero lo pongo para poder usar componentes de bulmafact.
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     BlWindowListDock *list = new BlWindowListDock ( 0 );
-    list->setVisible ( FALSE );
+    list->setVisible ( false );
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     list->setWorkspace ( pWorkspace );
 
     m_company->setListVentanas ( list );
 
-    m_pb->setVisible ( FALSE );
+    m_pb->setVisible ( false );
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
 }
@@ -193,7 +192,7 @@ void BtBulmaTPV::closeEvent ( QCloseEvent *event )
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "true" ) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));

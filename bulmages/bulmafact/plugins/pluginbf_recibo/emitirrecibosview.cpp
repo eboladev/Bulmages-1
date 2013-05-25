@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "emitirrecibosview.h"
 #include "bfcompany.h"
@@ -66,7 +66,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
         mui_idactividad->m_valores["nombreactividad"] = "";
 
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
     
@@ -102,7 +102,7 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 
         QDate fechain = m_fechain->date();
         QDate fechafin = m_fechafin->date();
-	bool haylineas = FALSE;
+	bool haylineas = false;
 
 	mui_log->append("<H2>"+cur->value("nomcliente")+"</H2>");
 	
@@ -120,7 +120,7 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 	  if (cur->value("sociocliente") == "t") {
 	    query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur->value("cuotacuotaporalumno") + ", 'Cuota por "  +cur->value("numhijos")+" alumno/s')";
 	    mainCompany() -> runQuery(query);
-	    haylineas = TRUE;
+	    haylineas = true;
 
 	    mui_log->append("<H3>Cuota Socio "+cur->value("nomcliente")+"</H3>");
 	    
@@ -176,7 +176,7 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 	      mainCompany() -> runQuery(query);
 	      mui_log->append("<H3>"+cur1->value("nombreactividad")+" Cuota por "  +cur1->value("nombrealumno")+"</H3>");
 	      cur1 -> nextRecord();
-	      haylineas = TRUE;
+	      haylineas = true;
 
 
 	      
@@ -195,7 +195,7 @@ void EmitirRecibosView::on_mui_crear_clicked() {
 
 
 	/// Si al final resulta que no habia lineas o que estamos en el modo recibos separados se hace un delete del recibo.
-        if (haylineas == FALSE || !mui_recibounico->isChecked()) {
+        if (haylineas == false || !mui_recibounico->isChecked()) {
 	  mainCompany()->runQuery("DELETE FROM recibo WHERE idrecibo = "+ idrecibo);
 	} // end if
 

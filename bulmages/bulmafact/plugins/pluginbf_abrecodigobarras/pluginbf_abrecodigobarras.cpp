@@ -22,14 +22,14 @@
 
 #include <stdio.h>
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QStringList>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "pluginbf_abrecodigobarras.h"
 #include "bfcompany.h"
@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_abrecodigobarras", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_abrecodigobarras", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_pluginbf_abrecodigobarras = bges;
 

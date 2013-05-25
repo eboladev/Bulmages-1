@@ -22,7 +22,7 @@
 #ifndef COMISIONESLIST_H
 #define COMISIONESLIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -58,8 +58,8 @@ private:
     QString mdb_idcomision;
 
 public:
-    ComisionesList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    ComisionesList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ComisionesList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ComisionesList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~ComisionesList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

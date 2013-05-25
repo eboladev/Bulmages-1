@@ -1,10 +1,10 @@
 #include "total.h"
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 Total::Total ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
-    if (g_confpr->value(CONF_TPV_REIMPRIMIR) == "TRUE") {
+    if (g_confpr->value(CONF_TPV_REIMPRIMIR) == "true") {
         mui_imprimiralcobrar->hide();
     } // end if
 }

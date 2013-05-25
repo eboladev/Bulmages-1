@@ -1,10 +1,10 @@
 #ifndef BLPROGRESSBAR_H
 #define BLPROGRESSBAR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QtDesigner/QDesignerExportWidget>
 
-#include <QtGui>
+#include <QtGui/QtGui>
 #include "../../src/ui_blprogressbarbase.h"
 
 

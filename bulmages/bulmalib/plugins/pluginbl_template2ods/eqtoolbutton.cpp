@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QMenu>
-#include <QAction>
-#include <QTextStream>
-#include <QFile>
-#include <QHBoxLayout>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QTextStream>
+#include <QtCore/QFile>
+#include <QtWidgets/QHBoxLayout>
 
 #include "blfixed.h"
 #include "blmaincompany.h"
@@ -110,7 +110,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    /// Buscamos Query's por tratar
 	    QString titulo = fileInfo.fileName();
 	    QRegExp rx1 ( " title\\s*=\\s*\"(.*)\"" );
-	    rx1.setMinimal ( TRUE );
+	    rx1.setMinimal ( true );
 	    if ( rx1.indexIn ( buff, 0 )  != -1 ) {
 		titulo = rx1.cap ( 1 );
 	    } // end while
@@ -119,7 +119,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
             /// Buscamos Query's por tratar
             QString icon = ":/Images/template2ods.png";
             QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
-            rx2.setMinimal ( TRUE );
+            rx2.setMinimal ( true );
             if ( rx2.indexIn ( buff, 0 )  != -1 ) {
                 icon = rx2.cap ( 1 );
             } // end if
@@ -183,7 +183,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         /// Buscamos Query's por tratar
         QString titulo = fileInfo.fileName();
         QRegExp rx1 ( " title\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
+        rx1.setMinimal ( true );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx1.cap ( 1 );
         } // end while
@@ -191,7 +191,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         /// Buscamos Query's por tratar
         QString icon = ":/Images/template2ods.png";
         QRegExp rx2 ( "icon\\s*=\\s*\"(.*)\"" );
-        rx2.setMinimal ( TRUE );
+        rx2.setMinimal ( true );
         if ( rx2.indexIn ( buff, 0 )  != -1 ) {
             icon = rx2.cap ( 1 );
         } // end while

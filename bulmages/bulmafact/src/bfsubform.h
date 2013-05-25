@@ -22,7 +22,7 @@
 #ifndef BFSUBFORM_H
 #define BFSUBFORM_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bltablewidget.h"

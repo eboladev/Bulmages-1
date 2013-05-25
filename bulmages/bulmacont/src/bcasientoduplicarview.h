@@ -39,7 +39,7 @@ public:
     int idasiento;
 
 public:
-    DuplicarAsientoView ( BcCompany *, QWidget *, Qt::WFlags flag = 0 );
+    DuplicarAsientoView ( BcCompany *, QWidget *, Qt::WindowFlags flag = 0 );
     ~DuplicarAsientoView();
     void inicializa ( QString, QString );
 

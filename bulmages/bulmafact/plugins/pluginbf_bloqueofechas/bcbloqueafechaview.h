@@ -22,7 +22,7 @@
 #ifndef BCBLOQUEAFECHAVIEW_H
 #define BCBLOQUEAFECHAVIEW_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "blfunctions.h"
 #include "ui_bcbloqueafechabase.h"

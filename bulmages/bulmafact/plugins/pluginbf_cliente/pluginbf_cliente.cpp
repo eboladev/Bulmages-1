@@ -42,7 +42,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_cliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_cliente", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     if (bges->objectName() != "BtBulmaTPVBase") {
 	g_pluginbf_cliente = (BfBulmaFact * ) bges;

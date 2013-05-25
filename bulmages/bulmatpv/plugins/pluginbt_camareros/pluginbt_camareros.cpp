@@ -28,8 +28,8 @@
 #include "bldockwidget.h"
 #include "blapplication.h"
 
-#include <QHBoxLayout>
-#include <QToolButton>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QToolButton>
 
 #include "trabajadores.h"
 
@@ -45,7 +45,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_camareros", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_camareros", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;

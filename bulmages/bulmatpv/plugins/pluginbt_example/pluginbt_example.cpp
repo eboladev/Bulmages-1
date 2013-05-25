@@ -21,10 +21,10 @@
  ***************************************************************************/
 
 ///Dependencias de QT
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
 
 ///Dependencias de C++
 #include <cstdio>
@@ -52,7 +52,7 @@ int entryPoint ( BtBulmaTPV *btpv )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_example", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
 }

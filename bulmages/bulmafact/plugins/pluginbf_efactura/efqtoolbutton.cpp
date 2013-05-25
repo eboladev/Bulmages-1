@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "efqtoolbutton.h"
 #include "facturaview.h"
 #include "blfunctions.h"
@@ -26,8 +26,8 @@
 #include "blwidget.h"
 
 /// Para Exportacion de efacturas
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 #include <QtXml/QXmlInputSource>
 #include <QtXml/QXmlSimpleReader>
 

@@ -20,15 +20,15 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "pagoview.h"
 #include "bfcompany.h"
@@ -86,11 +86,11 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         mui_idforma_pago->setTableName ( "forma_pago" );
         mui_idforma_pago->setFieldId ( "idforma_pago" );
         mui_idforma_pago->m_valores["descforma_pago"] = "";
-        mui_idforma_pago->setAllowNull ( FALSE );
+        mui_idforma_pago->setAllowNull ( false );
         mui_idforma_pago->setId ( "" );
 	
 	
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);
@@ -138,7 +138,7 @@ int PagoView::afterSave()
 
     if ( cur->value( "total" ) == cur1->value( "totalp" ) ) {
         blMsgInfo ( _("Toda la referencia esta pagada. Se procesaran todos los documentos con esta referencia") );
-        QString query2 = "UPDATE facturap set procesadafacturap = TRUE WHERE reffacturap='" + dbValue ( "refpago" ) + "'";
+        QString query2 = "UPDATE facturap set procesadafacturap = true WHERE reffacturap='" + dbValue ( "refpago" ) + "'";
         mainCompany()->runQuery ( query2 );
     } // end if
     delete cur;

@@ -54,7 +54,7 @@ private:
     QString mdb_codigocuenta;
 
 public:
-    BcCuentaListView ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    BcCuentaListView ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     virtual ~BcCuentaListView();
     QString formaQuery();
     QString idcuenta();

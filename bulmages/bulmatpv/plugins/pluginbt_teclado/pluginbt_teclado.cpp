@@ -31,13 +31,11 @@
 #include "blmainwindow.h"
 #include "blplugins.h"
 
-#include <QHBoxLayout>
-#include <QToolButton>
-#include <QProcess>
-#include <QDockWidget>
-#ifndef Q_OS_WIN32
-#include <QX11EmbedContainer>
-#endif
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QProcess>
+#include <QtWidgets/QDockWidget>
+
 
 
 QDockWidget *g_docteclado = NULL;
@@ -53,7 +51,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_teclado", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_teclado", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;

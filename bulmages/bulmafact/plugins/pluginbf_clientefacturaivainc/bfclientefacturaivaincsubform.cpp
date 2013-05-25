@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "bfclientefacturaivaincsubform.h"
 #include "blfunctions.h"
@@ -56,8 +56,8 @@ BfClienteFacturaIVAIncSubForm::BfClienteFacturaIVAIncSubForm ( QWidget *parent )
     addSubFormHeader ( "descuentolfactura", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id factura" ) );
     addSubFormHeader ( "ordenlfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
     /// Disparamos los plugins.
     g_plugins->run ( "BfClienteFacturaIVAIncSubForm_BfClienteFacturaIVAIncSubForm_Post", this );
     

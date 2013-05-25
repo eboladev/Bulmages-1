@@ -1,8 +1,8 @@
 #ifndef ARTGRAFICOS_H
 #define ARTGRAFICOS_H
 
-#include <QDomDocument>
-#include <QTableWidget>
+#include <QtXml/QDomDocument>
+#include <QtWidgets/QTableWidget>
 
 #include "blfunctions.h"
 #include "blwidget.h"

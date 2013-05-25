@@ -48,7 +48,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *company, QWidget *pa
     mui_listado->addSubFormHeader ( "fechacompra", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha compra" ) );
     mui_listado->addSubFormHeader ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha 1 cuota" ) );
     mui_listado->addSubFormHeader ( "numcuotas", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Num cuotas" ) );
-    mui_listado->setInsert ( FALSE );
+    mui_listado->setInsert ( false );
     presentar();
 
     insertWindow ( windowTitle() );

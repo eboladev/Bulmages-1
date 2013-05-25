@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_AMPLIAALMACEN_H
 #define PLUGINBF_AMPLIAALMACEN_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "bfbulmafact.h"
 #include "bfcompany.h"

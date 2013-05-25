@@ -20,9 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
-#include <QLabel>
-#include <QTextBrowser>
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
 
 #include "pluginbt_aliastallasycolores.h"
 #include "blfunctions.h"
@@ -62,7 +62,7 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            BlDbRecord * rec = tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), TRUE );
+            BlDbRecord * rec = tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), true );
             rec->setDbValue ( "idtc_talla", cur->value( "idtc_talla" ) );
             rec->setDbValue ( "idtc_color", cur->value( "idtc_color" ) );
             rec->setDbValue ( "nomtc_talla", cur->value( "nomtc_talla" ) );
@@ -89,7 +89,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            BlDbRecord * rec = tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), TRUE );
+            BlDbRecord * rec = tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), true );
             rec->setDbValue ( "idtc_talla", cur->value( "idtc_talla" ) );
             rec->setDbValue ( "idtc_color", cur->value( "idtc_color" ) );
             rec->setDbValue ( "nomtc_talla", cur->value( "nomtc_talla" ) );
@@ -140,7 +140,7 @@ int MTicket_pintar ( MTicket *mtick )
     htmlContent += "<TR><TD colspan=\"6\" width=\"100%\"><HR></TD></TR>";
     
     plainTextContent += "\n";
-    plainTextContent += "  " + QString(_("CANT:").rightJustified( 7, ' ', TRUE )) + "  " + QString(_("ARTI:").leftJustified ( 15, ' ', TRUE )) + "  " + QString(_("TALLA:").leftJustified( 7, ' ', TRUE ))+ "  " + QString(_("COLOR:").leftJustified( 7, ' ', TRUE ))+ "  " + QString(_("PRECIO:").rightJustified( 9, ' ', TRUE )) + "\n";
+    plainTextContent += "  " + QString(_("CANT:").rightJustified( 7, ' ', true )) + "  " + QString(_("ARTI:").leftJustified ( 15, ' ', true )) + "  " + QString(_("TALLA:").leftJustified( 7, ' ', true ))+ "  " + QString(_("COLOR:").leftJustified( 7, ' ', true ))+ "  " + QString(_("PRECIO:").rightJustified( 9, ' ', true )) + "\n";
     plainTextContent += "-----------------------------------------------------------\n";
     
     
@@ -166,11 +166,11 @@ int MTicket_pintar ( MTicket *mtick )
         htmlContent += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</TD>";
         htmlContent += "</TR>";
 	  
-	plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-	plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
-	plainTextContent += item->dbValue("nomtc_talla").leftJustified ( 7, ' ', TRUE ) + " ";
-	plainTextContent += item->dbValue("nomtc_color").leftJustified ( 7, ' ', TRUE ) + " ";
-	plainTextContent += totalLinea.toQString().leftJustified ( 9, ' ', TRUE ) + "\n";
+	plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', true ) + " ";
+	plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', true ) + " ";
+	plainTextContent += item->dbValue("nomtc_talla").leftJustified ( 7, ' ', true ) + " ";
+	plainTextContent += item->dbValue("nomtc_color").leftJustified ( 7, ' ', true ) + " ";
+	plainTextContent += totalLinea.toQString().leftJustified ( 9, ' ', true ) + "\n";
 	
     }// end for
     
@@ -234,7 +234,7 @@ int MTicket_pintar ( MTicket *mtick )
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        BlFixed piva ( it.key().toAscii().constData() );
+        BlFixed piva ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
@@ -248,7 +248,7 @@ int MTicket_pintar ( MTicket *mtick )
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        BlFixed preqeq ( it.key().toAscii().constData() );
+        BlFixed preqeq ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {
@@ -311,7 +311,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   htmlContent += "<tr><td>" + QString(_("CANT:")) + "</td><td width=\"30%\">" + QString(_("ARTI:")) + "</td><td>" + QString(_("TALLA:")) + "</td><td>" + QString(_("COLOR:")) + "</td><td>" + QString(_("PREC:")) + "</td></tr>";
   htmlContent += "<tr><td colspan=\"5\" width=\"100%\" ><hr></td></tr>";
   plainTextContent += "\n";
-  plainTextContent += "  " + QString(_("CANT:").rightJustified( 7, ' ', TRUE )) + "  " + QString(_("ARTI:").leftJustified ( 15, ' ', TRUE )) + "  " + QString(_("TALLA:").leftJustified( 7, ' ', TRUE ))+ "  " + QString(_("COLOR:").leftJustified( 7, ' ', TRUE ))+ "  " + QString(_("PRECIO:").leftJustified( 9, ' ', TRUE )) + "\n";
+  plainTextContent += "  " + QString(_("CANT:").rightJustified( 7, ' ', true )) + "  " + QString(_("ARTI:").leftJustified ( 15, ' ', true )) + "  " + QString(_("TALLA:").leftJustified( 7, ' ', true ))+ "  " + QString(_("COLOR:").leftJustified( 7, ' ', true ))+ "  " + QString(_("PRECIO:").leftJustified( 9, ' ', true )) + "\n";
   plainTextContent += "-----------------------------------------------------------\n";
   
 //   if (tick->dbValue("nomticket") != "") {
@@ -339,11 +339,11 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
       htmlContent += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</TD>";
       htmlContent += "</TR>";
       
-      plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-      plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
-      plainTextContent += item->dbValue("nomtc_talla").leftJustified ( 7, ' ', TRUE ) + " ";
-      plainTextContent += item->dbValue("nomtc_color").leftJustified ( 7, ' ', TRUE ) + " ";
-      plainTextContent += totalLinea.toQString().leftJustified ( 9, ' ', TRUE ) + "\n";
+      plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', true ) + " ";
+      plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', true ) + " ";
+      plainTextContent += item->dbValue("nomtc_talla").leftJustified ( 7, ' ', true ) + " ";
+      plainTextContent += item->dbValue("nomtc_color").leftJustified ( 7, ' ', true ) + " ";
+      plainTextContent += totalLinea.toQString().leftJustified ( 9, ' ', true ) + "\n";
       
   } // end for
   
@@ -503,7 +503,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 //     BlFixed pariva ( "0.00" );
 //     
 //     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-//         BlFixed piva ( it.key().toAscii().constData() );
+//         BlFixed piva ( it.key().toLatin1().constData() );
 //         if ( porcentt > BlFixed ( "0.00" ) ) {
 //             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
 //         } else {
@@ -518,7 +518,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 //     BlFixed parreqeq ( "0.00" );
 //     
 //     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-//         BlFixed preqeq ( it.key().toAscii().constData() );
+//         BlFixed preqeq ( it.key().toLatin1().constData() );
 //         if ( porcentt > BlFixed ( "0.00" ) ) {
 //             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
 //         } else {
@@ -615,7 +615,7 @@ int BtTicket_imprimir(BtTicket *tick)
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->value( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toLatin1();
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
@@ -645,14 +645,14 @@ int BtTicket_imprimir(BtTicket *tick)
     
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        cliente.cif = cur->value( "cifcliente" ).toAscii();
-        cliente.nombre = cur->value( "nomcliente" ).toAscii();
+        cliente.cif = cur->value( "cifcliente" ).toLatin1();
+        cliente.nombre = cur->value( "nomcliente" ).toLatin1();
     } // end if
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toLatin1() ;
     delete cur;
 
     BlDbRecord *linea;
@@ -707,12 +707,12 @@ int BtTicket_imprimir(BtTicket *tick)
         BlFixed pvp = BlFixed ( linea->dbValue ( "pvplalbaran" ) );
         pvp = pvp + pvp * iva / BlFixed ( "100" );
         BlFixed pvptotal = BlFixed ( linea->dbValue ( "cantlalbaran" ) ) * pvp;
-        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + "  " );
+        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', true ) + "  " );
         pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
         QString pvpstr = pvp.toQString();
         QString pvptotalstr = pvptotal.toQString();
-        pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );
-        pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', TRUE ) );
+        pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', true ) + " " );
+        pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', true ) );
         pr.printText ( "\n" );
     } // end for
     
@@ -733,18 +733,18 @@ int BtTicket_imprimir(BtTicket *tick)
     pr.setJustification ( BlEscPrinter::center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
-    QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
+    QByteArray qba = tick->dbValue ( "refalbaran" ).toLatin1();
     char* barcode = qba.data();
     pr.setJustification ( BlEscPrinter::center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
     pr.printBarCode ( code39, qba.size(), barcode );
-    pr.cutPaperAndFeed ( TRUE, 10 );
+    pr.cutPaperAndFeed ( true, 10 );
     pr.print();
     
     /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
-        system ( comando.toAscii().data() );
+        system ( comando.toLatin1().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
@@ -811,7 +811,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->value( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toLatin1();
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
@@ -841,8 +841,8 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
 	if (cur->value("idcliente") != g_confpr->value(CONF_IDCLIENTE_DEFECTO)) {
-        cliente.cif = cur->value( "cifcliente" ).toAscii();
-        cliente.nombre = cur->value( "nomcliente" ).toAscii();
+        cliente.cif = cur->value( "cifcliente" ).toLatin1();
+        cliente.nombre = cur->value( "nomcliente" ).toLatin1();
 	} else {
 	cliente.cif = "";
         cliente.nombre = "";
@@ -852,7 +852,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toLatin1() ;
     delete cur;
 
     BlDbRecord *linea;
@@ -908,15 +908,15 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         linea = tick->listaLineas()->at ( i );
         BlFixed pvp = BlFixed ( linea->dbValue ( "pvpivainclalbaran" ) );	
         BlFixed pvptotal = BlFixed ( linea->dbValue ( "cantlalbaran" ) ) * pvp;
-        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 3, ' ', TRUE ) + " " );
+        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 3, ' ', true ) + " " );
         pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 21, ' ', true ) + " " );
         pr.printText ( linea->dbValue ( "nomtc_talla" ).leftJustified ( 3, ' ', true ) + " " );
         pr.printText ( linea->dbValue ( "nomtc_color" ).leftJustified ( 3, ' ', true ) + " " );	
 		
         QString pvpstr = pvp.toQString();
         QString pvptotalstr = pvptotal.toQString();
-        pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );
-        pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', TRUE ) );
+        pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', true ) + " " );
+        pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', true ) );
         pr.printText ( "\n" );
     } // end for
     pr.setUnderlineMode ( 0 );
@@ -942,23 +942,23 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     pr.setJustification ( BlEscPrinter::center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
-    QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
+    QByteArray qba = tick->dbValue ( "refalbaran" ).toLatin1();
     char* barcode = qba.data();
     pr.setJustification ( BlEscPrinter::center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
     pr.printBarCode ( code39, qba.size(), barcode );
-    pr.cutPaperAndFeed ( TRUE, 10 );
+    pr.cutPaperAndFeed ( true, 10 );
     pr.print();
 
     /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
-        system ( comando.toAscii().data() );
+        system ( comando.toLatin1().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
-        system ( comando.toAscii().data() );
+        system ( comando.toLatin1().data() );
     } // end if
     
     return 1;

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "impqtoolbutton.h"
 #include "blfunctions.h"
 
@@ -26,10 +26,10 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "facturapview.h"
 #include "blfixed.h"
@@ -123,7 +123,7 @@ void ImpQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 QString id = rec->dbValue ( "idalbaran" );
 
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -139,7 +139,7 @@ void ImpQToolButton::click()
                     return;
                 } // end if
                 m_companyact->pWorkspace() ->addSubWindow ( pres );
-                m_companyact->insertWindow ( pres->windowTitle(), pres, FALSE );
+                m_companyact->insertWindow ( pres->windowTitle(), pres, false );
                 pres->show();
 
                 // El calculo de descuentos es complejo
@@ -162,7 +162,7 @@ void ImpQToolButton::click()
                         linea1 = fac->getlistalineas() ->lineaat ( fac->getlistalineas() ->rowCount() - 1 );
                         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
                         fac->getlistalineas() ->newRecord();
-                        fac->getlistalineas() ->setProcesarCambios ( FALSE );
+                        fac->getlistalineas() ->setProcesarCambios ( false );
                         linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                         linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );
                         linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlalbaran" ) );
@@ -174,12 +174,12 @@ void ImpQToolButton::click()
                         linea1->setDbValue ( "descuentolfactura", desc.toQString ( '.' ) );
                         linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                         linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
-                        fac->getlistalineas() ->setProcesarCambios ( TRUE );
+                        fac->getlistalineas() ->setProcesarCambios ( true );
                         linea1->refresh();
                     } // end if
                 } // end for
 
-                pres->mui_procesadoalbaran->setChecked ( TRUE );
+                pres->mui_procesadoalbaran->setChecked ( true );
             } // end if
         } // end for
 

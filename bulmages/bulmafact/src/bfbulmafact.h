@@ -22,8 +22,7 @@
 #ifndef BFBULMAFACT_H
 #define BFBULMAFACT_H
 
-#include <QWorkspace>
-#include <QMdiSubWindow>
+#include <QtWidgets/QMdiSubWindow>
 
 #include "blfunctions.h"
 #include "blmainwindow.h"

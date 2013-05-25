@@ -22,7 +22,7 @@
 #ifndef BFABOUTVIEW_H
 #define BFABOUTVIEW_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include <ui_bfaboutbase.h>

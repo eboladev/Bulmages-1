@@ -1,5 +1,5 @@
-#include <QWidget>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
 
 #include "blmainwindow.h"
 #include "trabajadores.h"
@@ -18,7 +18,7 @@ Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent, bool deleteOnC
     m_validUser = false;
     m_deleteOnClose = deleteOnClose;
     
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE gerentetrabajador = TRUE" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE gerentetrabajador = true" );
     /// Si no hay gerentes entra cualquier ya que sino no se podria entrar nunca.
     if (cur->eof()) {
        m_validUser = true;
@@ -72,14 +72,14 @@ void Trabajadores::closeEvent(QCloseEvent *event)
 void Trabajadores::trabajadorClicked()
 {
 
-    bool encontrado = FALSE;
+    bool encontrado = false;
 
     /// Buscamos cual ha sido el trabajador pulsado.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
     while ( !encontrado && !cur->eof() ) {
         if ( ( ( QPushButton * ) sender() ) ->text() == cur->value( "nomtrabajador" ) + " " + cur->value( "apellidostrabajador" )  
 	&& ((cur->value("passwordtrabajador") == mui_password->text() || cur->value("passwordtrabajador") == "")) ) {
-            encontrado = TRUE;
+            encontrado = true;
 
         } else {
             cur->nextRecord();

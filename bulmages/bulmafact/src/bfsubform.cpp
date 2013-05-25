@@ -19,12 +19,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QComboBox>
-#include <QAbstractItemView>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QAbstractItemView>
 
 #include "bfsubform.h"
 #include "blfunctions.h"
@@ -43,7 +43,7 @@
 BfSubForm::BfSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
     BL_FUNC_DEBUG
-    setDelete ( TRUE );
+    setDelete ( true );
     m_delegate = new BfSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
@@ -253,7 +253,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura" ) {
 
-		if (g_confpr->value(CONF_USE_DESCARTICULO) == "TRUE" || g_confpr->value(CONF_USE_DESCARTICULO) == "T" || g_confpr->value(CONF_USE_DESCARTICULO) == "1") {
+		if (g_confpr->value(CONF_USE_DESCARTICULO) == "true" || g_confpr->value(CONF_USE_DESCARTICULO) == "T" || g_confpr->value(CONF_USE_DESCARTICULO) == "1") {
 			rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) +"\n" + cur->value("obserarticulo") );
 
 		} else {

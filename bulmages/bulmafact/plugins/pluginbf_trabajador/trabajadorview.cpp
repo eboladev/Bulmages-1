@@ -18,13 +18,13 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QPixmap>
-#include <QLabel>
-#include <QDialog>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QCheckBox>
 
 #include "trabajadorview.h"
 #include "bfcompany.h"
@@ -45,7 +45,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
     setDbTableName ( "trabajador" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_tab->setDisabled ( TRUE );
+    mui_tab->setDisabled ( true );
     /// Disparamos los plugins.
     int res = g_plugins->run ( "TrabajadorView_TrabajadorView", this );
     if ( res != 0 ) {
@@ -60,7 +60,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     pintar();
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     blScript(this);
     
 }
@@ -125,7 +125,7 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
 {
     BL_FUNC_DEBUG
     if ( !cur ) return;
-    mui_tab->setEnabled ( TRUE );
+    mui_tab->setEnabled ( true );
 
     int row = mui_lista->row ( cur );
     trataModificado();
@@ -138,9 +138,9 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
     m_moviltrabajador->setText ( m_cursortrabajadores->value( "moviltrabajador", row ) );
     m_emailtrabajador->setText ( m_cursortrabajadores->value( "emailtrabajador", row ) );
     if ( m_cursortrabajadores->value( "activotrabajador", row ) == "t" ) {
-        m_activotrabajador->setChecked ( TRUE );
+        m_activotrabajador->setChecked ( true );
     } else {
-        m_activotrabajador->setChecked ( FALSE );
+        m_activotrabajador->setChecked ( false );
     } // end if
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
@@ -169,9 +169,9 @@ void TrabajadorView::on_mui_guardar_clicked()
         if ( res != 0 ) {
             return;
         } // end if
-        QString m_textactivotrabajador = "FALSE";
+        QString m_textactivotrabajador = "false";
         if ( m_activotrabajador->isChecked() ) {
-            m_textactivotrabajador = "TRUE";
+            m_textactivotrabajador = "true";
         } // end if
         QString query = "UPDATE trabajador SET ";
         query += "  nomtrabajador='" + mainCompany() ->sanearCadena ( m_nomtrabajador->text() ) + "'";
@@ -228,10 +228,10 @@ bool TrabajadorView::trataModificado()
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
-        return ( TRUE );
+        return ( true );
     } // end if
     
-    return ( FALSE );
+    return ( false );
 }
 
 
@@ -271,7 +271,7 @@ void TrabajadorView::on_mui_borrar_clicked()
 {
     BL_FUNC_DEBUG
     try {
-        mui_tab->setDisabled ( TRUE );
+        mui_tab->setDisabled ( true );
         trataModificado();
         mainCompany() ->begin();
         QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;

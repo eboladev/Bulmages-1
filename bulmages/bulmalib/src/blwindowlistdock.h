@@ -24,9 +24,9 @@
 #ifndef BLWINDOWLISTDOCK_H
 #define BLWINDOWLISTDOCK_H
 
-#include <QDockWidget>
-#include <QListWidget>
-#include <QListWidgetItem>
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListWidgetItem>
 
 #include "blfunctions.h"
 #include "blworkspace.h"
@@ -35,8 +35,8 @@
 class BlWorkspace;
 
 
-#include <QPainter>
-#include <QAbstractItemDelegate>
+#include <QtGui/QPainter>
+#include <QtWidgets/QAbstractItemDelegate>
   
 class ListDelegate : public QAbstractItemDelegate
 {
@@ -101,7 +101,7 @@ public:
     ~BlWindowListDock();
 
 public:
-    int insertWindow ( QString name, QObject *object, bool checkDuplication = TRUE, QString title="");
+    int insertWindow ( QString name, QObject *object, bool checkDuplication = true, QString title="");
     
 #ifdef AREA_QMDI
     int selectWindow ( QString nombre, QMdiSubWindow *obj );

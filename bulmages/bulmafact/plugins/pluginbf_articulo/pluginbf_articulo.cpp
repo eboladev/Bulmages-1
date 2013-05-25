@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_articulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_articulo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     if (bges->objectName() != "BtBulmaTPVBase") {
 	g_pluginbf_articulo = (BfBulmaFact * ) bges;
@@ -129,13 +129,13 @@ int BlAction_actionTriggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionArticulosTipo") {
-        TipoArticuloList *pag = new TipoArticuloList ( g_pluginbf_articulo->company(), 0, FALSE );
+        TipoArticuloList *pag = new TipoArticuloList ( g_pluginbf_articulo->company(), 0, false );
         g_pluginbf_articulo->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
 
     if (accion->objectName() == "mui_actionFamilias") {
-        FamiliasView *pag = new FamiliasView ( g_pluginbf_articulo->company(), 0, FALSE );
+        FamiliasView *pag = new FamiliasView ( g_pluginbf_articulo->company(), 0, false );
         g_pluginbf_articulo->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
@@ -197,7 +197,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
         blCenterOnScreen ( diag );
 
-        TipoArticuloList *arts = new TipoArticuloList ( ( BfCompany * ) busq->mainCompany(), 0, TRUE );
+        TipoArticuloList *arts = new TipoArticuloList ( ( BfCompany * ) busq->mainCompany(), 0, true );
 
         busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -227,7 +227,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
         blCenterOnScreen ( diag );
 
-        FamiliasView *arts = new FamiliasView ( ( BfCompany * ) busq->mainCompany(), 0, TRUE );
+        FamiliasView *arts = new FamiliasView ( ( BfCompany * ) busq->mainCompany(), 0, true );
 
         busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -382,7 +382,7 @@ void SubForm_Articulo::editarArticulo ( QString idarticulo )
     BlSubForm * subf = ( BlSubForm * ) parent();
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
     /// Desabilitamos el borrado automatico de la clase y lo realizaremos manualmente para que no se llame al isHidden sobre un objeto eliminado.
-    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    art->setAttribute ( Qt::WA_DeleteOnClose, false );
 
     /// Si la carga no va bien entonces terminamos.
     if ( art->load ( idarticulo ) ) {
@@ -417,7 +417,7 @@ void SubForm_Articulo::nuevoArticulo( )
     
     ArticuloView *artlist = new ArticuloView ( ( BfCompany * ) sub->mainCompany(), 0 );
 	/// Desabilitamos el borrado automatico de la clase y lo realizaremos manualmente para que no se llame al isHidden sobre un objeto eliminado.
-    artlist->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    artlist->setAttribute ( Qt::WA_DeleteOnClose, false );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();

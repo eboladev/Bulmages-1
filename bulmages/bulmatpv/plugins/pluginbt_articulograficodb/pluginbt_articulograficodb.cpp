@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QPushButton>
-#include <QVBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 
 #include "pluginbt_articulograficodb.h"
 #include "btcompany.h"
@@ -44,7 +44,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_articulograficodb", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_articulograficodb", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Ponemos el widget de pantallas.
     g_pantallas = new BlDockWidget ( _("Pantallas"), tpv, "pantallasdock" );

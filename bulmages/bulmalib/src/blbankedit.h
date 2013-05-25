@@ -25,7 +25,7 @@
 #ifndef BLBANKEDIT_H
 #define BLBANKEDIT_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 #include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_blbankeditbase.h"

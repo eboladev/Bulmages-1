@@ -18,9 +18,9 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QMap>
-#include <QLineEdit>
-#include <QMessageBox>
+#include <QtCore/QMap>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
 
 #include "tiposarticuloview.h"
 #include "bfcompany.h"
@@ -45,11 +45,11 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool sele
     QStringList headers;
     headers << _ ( "Id" ) << _ ( "Codigo" ) << _ ( "Descripcion" );
     m_listTipos->setHeaderLabels ( headers );
-    m_semaforoPintar = FALSE;
+    m_semaforoPintar = false;
     m_idtipo = "";
 
-    mui_codigotipo_articulo->setEnabled ( FALSE );
-    mui_desctipo_articulo->setEnabled ( FALSE );
+    mui_codigotipo_articulo->setEnabled ( false );
+    mui_desctipo_articulo->setEnabled ( false );
     if ( selectMode ) {
         setSelectMode();
         groupBox1->hide();
@@ -62,7 +62,7 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool sele
     } else {
         setEditMode();
         setAttribute ( Qt::WA_DeleteOnClose );
-        mainCompany()->insertWindow ( windowTitle(), this, FALSE );
+        mainCompany()->insertWindow ( windowTitle(), this, false );
     } // end if
     pintar();
     blScript(this);
@@ -86,7 +86,7 @@ TipoArticuloList::~TipoArticuloList()
 void TipoArticuloList::setSelectMode()
 {
     BL_FUNC_DEBUG
-    m_selectMode = TRUE;
+    m_selectMode = true;
     
 }
 
@@ -97,7 +97,7 @@ void TipoArticuloList::setSelectMode()
 void TipoArticuloList::setEditMode()
 {
     BL_FUNC_DEBUG
-    m_selectMode = FALSE;
+    m_selectMode = false;
     
 }
 
@@ -109,7 +109,7 @@ void TipoArticuloList::setEditMode()
 void TipoArticuloList::pintar()
 {
     BL_FUNC_DEBUG
-    m_semaforoPintar = TRUE;
+    m_semaforoPintar = true;
     BlDbRecordSet *cursoraux1 = NULL;
     try {
         QTreeWidgetItem * it;
@@ -134,7 +134,7 @@ void TipoArticuloList::pintar()
         m_idtipo = "";
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_readValues();
-        m_semaforoPintar = FALSE;
+        m_semaforoPintar = false;
         
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error en la carga" ) );
@@ -223,7 +223,7 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
 {
     BL_FUNC_DEBUG
     if ( m_semaforoPintar ) return;
-    m_semaforoPintar = TRUE;
+    m_semaforoPintar = true;
 
     /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
     QString idtipoold = "";
@@ -244,7 +244,7 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
     } // end if
 
     mostrarplantilla();
-    m_semaforoPintar = FALSE;
+    m_semaforoPintar = false;
     
 }
 
@@ -256,8 +256,8 @@ void TipoArticuloList::mostrarplantilla()
 {
     BL_FUNC_DEBUG
     if ( !m_idtipo.isEmpty() ) {
-        mui_codigotipo_articulo->setEnabled ( TRUE );
-        mui_desctipo_articulo->setEnabled ( TRUE );
+        mui_codigotipo_articulo->setEnabled ( true );
+        mui_desctipo_articulo->setEnabled ( true );
 
         QString query;
         query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
@@ -269,8 +269,8 @@ void TipoArticuloList::mostrarplantilla()
         delete cursortipo;
 
     } else {
-        mui_codigotipo_articulo->setEnabled ( FALSE );
-        mui_desctipo_articulo->setEnabled ( FALSE );
+        mui_codigotipo_articulo->setEnabled ( false );
+        mui_desctipo_articulo->setEnabled ( false );
         mui_codigotipo_articulo->setText ( "" );
         mui_desctipo_articulo->setText ( "" );
     } // end if
@@ -297,9 +297,9 @@ bool TipoArticuloList::trataModificado()
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
         
-        return TRUE;
+        return true;
     } // end if
-    return FALSE;
+    return false;
 }
 
 

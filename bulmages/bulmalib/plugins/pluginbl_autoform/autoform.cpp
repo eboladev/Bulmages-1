@@ -18,16 +18,16 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QMenu>
-#include <QToolButton>
-#include <QPlainTextEdit>
-#include <QTextEdit>
-#include <QCheckBox>
-#include <QFile>
-#include <QTextStream>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QInputDialog>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtWidgets/QInputDialog>
 
 
 #include "autoform.h"
@@ -158,7 +158,7 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 				QString va = ventana.toElement().text(); /// try to convert the node to an element.
 				combo->m_valores[va] = "";
 			    } // end for
-			    combo->setAllowNull ( TRUE );
+			    combo->setAllowNull ( true );
 			    combo->setId ( "" );
 			} // end if
 
@@ -275,9 +275,9 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 				
 
 			    } // end for			
-			subform->setInsert ( allowinsert == "TRUE" );
-			subform->setDelete ( allowdelete == "TRUE" );
-			subform->setSortingEnabled ( setsorting == "TRUE" );
+			subform->setInsert ( allowinsert == "true" );
+			subform->setDelete ( allowdelete == "true" );
+			subform->setSortingEnabled ( setsorting == "true" );
 			subform->inicializar();
 			
 		    } // end if
@@ -299,7 +299,7 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
 \param f
 \param modo
 **/
-BlAutoForm::BlAutoForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo, const QString &interfacefile, const QString &objdesc ) : BlForm ( emp, parent, f, modo )
+BlAutoForm::BlAutoForm ( BlMainCompany *emp, QWidget *parent, Qt::WindowFlags f, edmode modo, const QString &interfacefile, const QString &objdesc ) : BlForm ( emp, parent, f, modo )
 {
     BL_FUNC_DEBUG
     
@@ -331,7 +331,7 @@ BlAutoForm::BlAutoForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
 
 void BlAutoForm::launch() {
    BL_FUNC_DEBUG
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
         blScript(this);
@@ -483,7 +483,7 @@ int BlAutoForm::afterSave () {
 
 // ================ BLAUTOFORMLIST =====================
 
-BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo, const QString &interfacefile ) : BlFormList ( comp, parent, flag, editmodo ) {
+BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo, const QString &interfacefile ) : BlFormList ( comp, parent, flag, editmodo ) {
     BL_FUNC_DEBUG
     setupUi ( this );
 

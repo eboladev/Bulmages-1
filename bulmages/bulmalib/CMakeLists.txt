@@ -27,11 +27,11 @@ set(QT_USE_QTUITOOLS true)
 set(QT_USE_QTXML true)
 set(QT_USE_QTSCRIPT true)
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 include_directories(
       ${QT_INCLUDE_DIR}
-      ${QT_QTUITOOLS_INCLUDE_DIR}
+      ${QT_QTWIDGETS_INCLUDE_DIR}
       ${QT_QTSCRIPT_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR})
 
@@ -47,7 +47,7 @@ ENDIF(USE_PCH)
 
 add_subdirectory(src)
 add_subdirectory(plugins)
-add_subdirectory(designer)
+#add_subdirectory(designer)
 
 set (r_files README.Bulmalib.es)
 install(FILES ${r_files} DESTINATION share/bulmages/)

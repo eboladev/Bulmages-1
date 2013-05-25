@@ -22,7 +22,7 @@
 #ifndef BLERRORDIALOG_H
 #define BLERRORDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include "ui_blerrordialogbase.h"

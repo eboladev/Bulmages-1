@@ -22,12 +22,12 @@
 #ifndef MODGEN_H
 #define MODGEN_H
 
-#include <QFile>
-#include <QThread>
-#include <QProgressDialog>
-#include <QEvent>
-#include <QTextStream>
-#include <QObject>
+#include <QtCore/QFile>
+#include <QtCore/QThread>
+#include <QtWidgets/QProgressDialog>
+#include <QtCore/QEvent>
+#include <QtCore/QTextStream>
+#include <QtCore/QObject>
 
 #include "blfunctions.h"
 
@@ -53,7 +53,7 @@ public:
 class BC_EXPORT BcPsProgressDialog : public QProgressDialog
 {
 public:
-    BcPsProgressDialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera );
+    BcPsProgressDialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WindowFlags bandera );
     //void customEvent(QCustomEvent *);
 };
 

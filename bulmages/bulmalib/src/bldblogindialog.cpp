@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QString>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QString>
+#include <QtWidgets/QLabel>
 
 #include "bldblogindialog.h"
 #include "blpostgresqlclient.h"
@@ -48,7 +48,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
     BL_FUNC_DEBUG
     setWindowTitle ( name );
     setupUi ( this );
-    grpAuthError->setVisible ( TRUE );
+    grpAuthError->setVisible ( true );
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
     validate();
@@ -103,10 +103,10 @@ void BlDbLoginDialog::validate()
     /// Si es v&aacute;lido abrimos el selector y si no mostramos un error y limpiamos
     /// el formulario.
     if ( m_authOK ) {
-        grpAuthError->setVisible ( FALSE );
+        grpAuthError->setVisible ( false );
         done ( 1 );
     } else {
-        grpAuthError->setVisible ( TRUE );
+        grpAuthError->setVisible ( true );
         lblAuthError->setText ( _ ( "Error: usuario y/o contrasenya incorrectos" ) );
         m_login->setText ( "" );
         m_password->setText ( "" );

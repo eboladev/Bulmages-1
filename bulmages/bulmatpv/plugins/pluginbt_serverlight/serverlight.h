@@ -30,8 +30,8 @@
 #ifndef SERVERLIGHT_H
 #define SERVERLIGHT_H
 
-#include <QObject>
- #include <QTcpServer>
+#include <QtCore/QObject>
+ #include <QtNetwork/QTcpServer>
  
 #include "btticket.h"
 #include "btcompany.h"

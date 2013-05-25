@@ -32,7 +32,7 @@ class ArticuloTPV : public BlWidget, public Ui_ArticuloTPVBase
     Q_OBJECT
   
 public:
-    ArticuloTPV(QWidget *parent, Qt::WFlags fl = 0);
+    ArticuloTPV(QWidget *parent, Qt::WindowFlags fl = 0);
     ~ArticuloTPV();
 
 public slots:

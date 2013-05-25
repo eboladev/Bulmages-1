@@ -18,10 +18,10 @@
 #ifndef PLUGINBC_ESTADISTICAS_H
 #define PLUGINBC_ESTADISTICAS_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include <qwidgetplugin.h>
 #include <qiconset.h>

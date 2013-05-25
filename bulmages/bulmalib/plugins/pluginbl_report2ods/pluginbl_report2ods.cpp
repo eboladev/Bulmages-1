@@ -19,16 +19,16 @@
  ***************************************************************************/
 
 #include <stdio.h>
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QProcess>
-#include <QTextStream>
-#include <QMenuBar>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QProcess>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenuBar>
 
 #include "local_blI18n.h"
 #include "pluginbl_report2ods.h"
@@ -95,7 +95,7 @@ int init (  )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_report2ods", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_report2ods", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
 
@@ -127,14 +127,14 @@ int init (  )
         /// Buscamos el titulo
         QString titulo = fileInfo.fileName();
         QRegExp rx3 ( "title\\s*=\\s*\"(.*)\"" );
-        rx3.setMinimal ( TRUE );
+        rx3.setMinimal ( true );
         if ( rx3.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx3.cap ( 1 );
         } // end if
 
         QString pathtitulo = fileInfo.fileName();
         QRegExp rx1 ( "pathtitle\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
+        rx1.setMinimal ( true );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             pathtitulo = rx1.cap ( 1 );
 	} else {
@@ -144,7 +144,7 @@ int init (  )
         /// Buscamos el icono
         QString icon = ":/Images/template2ods.png";
         QRegExp rx4 ( " icon\\s*=\\s*\"(.*)\"" );
-        rx4.setMinimal ( TRUE );
+        rx4.setMinimal ( true );
         if ( rx4.indexIn ( buff, 0 )  != -1 ) {
             icon = rx4.cap ( 1 );
         } // end if
@@ -155,10 +155,10 @@ int init (  )
 
 	if (path.size() > 1) {
 		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
-		    bool encontrado = FALSE;
+		    bool encontrado = false;
 		    for (int j = 0; j < allPButtons.size(); ++j) {
 			if (allPButtons.at(j)->title() == path[0]) {
-			    encontrado = TRUE;
+			    encontrado = true;
 			    menu = allPButtons.at(j);
 			} // end if
 		    } // end for
@@ -180,10 +180,10 @@ int init (  )
 
 	for (int i = 1; i < path.size()-1; ++i) {
 	    QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
-	    bool encontrado = FALSE;
+	    bool encontrado = false;
 	    for (int j = 0; j < allPButtons.size(); ++j) {
 		if (allPButtons.at(j)->title() == path[i]) {
-		    encontrado = TRUE;
+		    encontrado = true;
 		    menu = allPButtons.at(j);
 		} // end if
 	    } // end for

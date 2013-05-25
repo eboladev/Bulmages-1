@@ -23,11 +23,11 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
 
 #include "promocionarclaseview.h"
 #include "bfcompany.h"
@@ -55,7 +55,7 @@ PromocionarClaseView::PromocionarClaseView ( BfCompany *comp, QWidget *parent ) 
         mui_idclaseor->setTableName ( "clase" );
         mui_idclaseor->setFieldId ( "idclase" );
         mui_idclaseor->m_valores["nomclase"] = "";
-        mui_idclaseor->setAllowNull ( TRUE );
+        mui_idclaseor->setAllowNull ( true );
         mui_idclaseor->setId ( "" );
 
 	
@@ -64,10 +64,10 @@ PromocionarClaseView::PromocionarClaseView ( BfCompany *comp, QWidget *parent ) 
         mui_idclasedest->setTableName ( "clase" );
         mui_idclasedest->setFieldId ( "idclase" );
         mui_idclasedest->m_valores["nomclase"] = "";
-        mui_idclasedest->setAllowNull ( TRUE );
+        mui_idclasedest->setAllowNull ( true );
         mui_idclasedest->setId ( "" );
 	
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 /*	
         pintar();
         dialogChanges_readValues();

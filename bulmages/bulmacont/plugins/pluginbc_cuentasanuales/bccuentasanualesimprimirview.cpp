@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTextStream>
-#include <QLineEdit>
-#include <QLocale>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QLocale>
 
 #include "bcasientoview.h"
 #include "bccuentasanualesimprimirview.h"
@@ -134,7 +134,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
     arbolP1 = new BcPlanContableArbol;
     arbolP2 = new BcPlanContableArbol;
     while ( !ramas->eof() ) {
-        if ( atoi ( ramas->value( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
+        if ( atoi ( ramas->value( "nivel" ).toLatin1().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
             arbolP1->nuevaRama ( ramas );
             arbolP2->nuevaRama ( ramas );
         } // end if
@@ -179,7 +179,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
         hojas->nextRecord();
     } // end while
     mainCompany() ->commit();
-    asientoReg->on_mui_borrar_clicked ( FALSE ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
+    asientoReg->on_mui_borrar_clicked ( false ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
 
     /// Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
 //    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial1, ffinal1 );
@@ -198,7 +198,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
     } // end while
     delete hojas;
     mainCompany() ->commit();
-    asientoReg->on_mui_borrar_clicked ( FALSE ); /// borramos indicando que no queremos confirmacion
+    asientoReg->on_mui_borrar_clicked ( false ); /// borramos indicando que no queremos confirmacion
 
     QDomNodeList lcuentas = m_doc.elementsByTagName ( "CUENTA" );
     for ( int i = 0; i < lcuentas.count(); i++ ) {
@@ -229,9 +229,9 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
     /** Fin de la version con ARBOL **/
 
     /// Hacemos el calculo recursivo del balance.
-    bool terminado = FALSE;
+    bool terminado = false;
     while ( !terminado ) {
-        terminado = TRUE;
+        terminado = true;
         /// Recogemos los valores de cuenta.
         QDomNodeList litems = m_doc.elementsByTagName ( "FORMULA" );
         for ( int i = 0; i < litems.count(); i++ ) {
@@ -264,7 +264,7 @@ bool BcCuentasAnualesImprimirView::procesaFormula ( const QDomNode &formula )
     QString codigo = formula.parentNode().firstChildElement ( "CONCEPTO" ).toElement().text();
     //
     if ( !valor.isNull() ) {
-        return TRUE;
+        return true;
     } // end if
     BlFixed tvaloract = BlFixed ( "0.0" );
     BlFixed tvalorant = BlFixed ( "0.0" );
@@ -275,27 +275,27 @@ bool BcCuentasAnualesImprimirView::procesaFormula ( const QDomNode &formula )
         QDomElement e1 = item.toElement(); /// Try to convert the node to an element.
         if ( !e1.isNull() ) { /// The node was really an element.
             if ( !procesaOperador ( item ) )
-                return FALSE;
+                return false;
             QString valoract, valorant;
             if ( valorItem ( item, valoract, valorant ) ) {
                 tvaloract = tvaloract + BlFixed ( valoract );
                 tvalorant = tvalorant + BlFixed ( valorant );
             } else
-                return FALSE;
+                return false;
         } // end if
     } // end for
     QString tvaloracts = tvaloract.toQString();
     QString tvalorants = tvalorant.toQString();
     agregaValores ( formula, tvaloracts, tvalorants );
     
-    return TRUE;
+    return true;
 }
 
 
 /** Pseudocodigo
-    Si el operador ya tiene value(devuelve TRUE)
-    Si la formula ya tiene valor le ponemos el valor y devuelve TRUE
-    devuelve FALSE */
+    Si el operador ya tiene value(devuelve true)
+    Si la formula ya tiene valor le ponemos el valor y devuelve true
+    devuelve false */
 /**
 \param operador
 \return
@@ -305,7 +305,7 @@ bool BcCuentasAnualesImprimirView::procesaOperador ( const QDomNode &operador )
     BL_FUNC_DEBUG
     QDomElement valor = operador.firstChildElement ( "VALORACT" );
     if ( !valor.isNull() )
-        return TRUE;
+        return true;
     /// Miramos la f&oacute;rmula.
     QDomElement lineaid = operador.firstChildElement ( "LINEAID" );
 
@@ -321,9 +321,9 @@ bool BcCuentasAnualesImprimirView::procesaOperador ( const QDomNode &operador )
                     QString valoract, valorant;
                     if ( valorItem ( formula, valoract, valorant ) ) {
                         agregaValores ( operador, valoract, valorant );
-                        return TRUE;
+                        return true;
                     } else {
-                        return FALSE;
+                        return false;
                     } // end if
                 } // end if
             } // end if
@@ -331,7 +331,7 @@ bool BcCuentasAnualesImprimirView::procesaOperador ( const QDomNode &operador )
     } // end if
 
     
-    return FALSE;
+    return false;
 }
 
 
@@ -347,12 +347,12 @@ bool BcCuentasAnualesImprimirView::valorItem ( const QDomNode &formula, QString 
     BL_FUNC_DEBUG
     QDomElement valor = formula.namedItem ( "VALORACT" ).toElement();
     if ( valor.isNull() ) {
-        return FALSE;
+        return false;
     } // end if
     valoract = valor.text();
     valorant = formula.namedItem ( "VALORANT" ).toElement().text();
     
-    return TRUE;
+    return true;
 }
 
 

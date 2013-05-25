@@ -22,13 +22,12 @@
 #ifndef BCCOMPANY_H
 #define BCCOMPANY_H
 
-#include <QMessageBox>
-#include <QString>
-#include <QWorkspace>
-#include <QWidget>
-#include <QSizePolicy>
-#include <QDir>
-#include <QLibraryInfo>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QSizePolicy>
+#include <QtCore/QDir>
+#include <QtCore/QLibraryInfo>
 
 #include "blpostgresqlclient.h"
 #include "blwindowlistdock.h"

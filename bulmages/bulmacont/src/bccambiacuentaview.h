@@ -32,7 +32,7 @@ class BC_EXPORT BcCambiaCuentaView : public QDialog, public Ui_BcCambiaCuentaBas
 {
     Q_OBJECT
 public:
-    BcCambiaCuentaView ( BcCompany *, QWidget *, Qt::WFlags flag = 0 );
+    BcCambiaCuentaView ( BcCompany *, QWidget *, Qt::WindowFlags flag = 0 );
     ~BcCambiaCuentaView();
 
 public slots:

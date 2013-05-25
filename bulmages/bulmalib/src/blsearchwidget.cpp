@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 
 #include "blsearchwidget.h"
 #include "blmaincompany.h"
@@ -47,7 +47,7 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
         m_valores.insert ( i.key(), "" );
     } // end while
 
-    m_semaforo = FALSE;
+    m_semaforo = false;
     m_mask = "";
     
     /// Establecemos la delegacion del foco en el texto
@@ -75,7 +75,7 @@ BlSearchWidget::~BlSearchWidget()
 void BlSearchWidget::pinta()
 {
     BL_FUNC_DEBUG
-    m_semaforo = TRUE;
+    m_semaforo = true;
     QString cad = "";
 
     if (m_mask == "") {
@@ -106,7 +106,7 @@ void BlSearchWidget::pinta()
 
     m_textBusqueda->setText ( cad );
 
-    m_semaforo = FALSE;
+    m_semaforo = false;
     emit ( valueChanged ( mdb_id ) );
     
 }
@@ -304,7 +304,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     } // end while
 
 
-    bool encontrado = FALSE;
+    bool encontrado = false;
     QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
@@ -315,7 +315,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
             i.next();
             m_valores[i.key() ] = cur->value( i.key() );
         } // end while
-        encontrado = TRUE;
+        encontrado = true;
     } // end if
     delete cur;
 
@@ -344,7 +344,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
                 i.next();
                 m_valores.insert ( i.key(), cur->value( i.key() ) );
             } // end while
-            encontrado = TRUE;
+            encontrado = true;
         } // end if
         delete cur;
     } // end if
@@ -529,11 +529,11 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbCompleterComboBox::s_editTextChanged", 0, cod );
-    static bool semaforo = FALSE;
+    static bool semaforo = false;
     if ( semaforo ) {
         return;
     } else {
-        semaforo = TRUE;
+        semaforo = true;
     } // end if
     m_entrada = cod;
     if ( !g_plugins->run ( "BlDbCompleterComboBox_textChanged", this ) ) {
@@ -581,7 +581,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
     } // end if
     g_plugins->run ( "BlDbCompleterComboBox_textChanged_Post", this );
     setEditText ( cod );
-    semaforo = FALSE;
+    semaforo = false;
     
 }
 

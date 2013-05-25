@@ -22,11 +22,11 @@
 #ifndef BLFORM_H
 #define BLFORM_H
 
-#include <QWidget>
-#include <QCloseEvent>
-#include <QtScript>
-#include <QScriptEngine>
-#include <QDomElement>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtScript/QtScript>
+#include <QtScript/QScriptEngine>
+#include <QtXml/QDomElement>
 
 #include "bldialogchanges.h"
 #include "bldoublespinbox.h"
@@ -57,8 +57,8 @@ protected:
     int mergeAllXML();
 
 public:
-    BlForm ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
-    BlForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BlForm ( QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BlForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE );
     void substrVars(QString &buff, int tipoEscape = 0);
     virtual ~BlForm();
     virtual int save();
@@ -67,12 +67,12 @@ public:
     virtual int beforeDelete();
     virtual int remove();
     virtual int removeWindow();
-    virtual void insertWindow ( QString , QObject *, bool compdup = TRUE, QString titulo = "" );
+    virtual void insertWindow ( QString , QObject *, bool compdup = true, QString titulo = "" );
     void setDbTableName ( QString );
     void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();
-    virtual int load ( QString id, bool paint = TRUE );
+    virtual int load ( QString id, bool paint = true );
     virtual int cargarPost ( QString id );
     virtual void recogeValores();
     virtual void createMenu ( QMenu * );

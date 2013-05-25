@@ -39,7 +39,7 @@ BlComboBox::BlComboBox ( QWidget *parent )
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
     connect ( g_theApp, SIGNAL ( dbTableChanged ( const QString & ) ), this, SLOT ( onDbTableChanged ( const QString & ) ) );
-    m_allowNull = TRUE;
+    m_allowNull = true;
 
     
 }
@@ -122,7 +122,7 @@ void BlComboBox::setId ( QString id )
 
 	setCurrentIndex ( i1 );
     } catch(...) {
-	fprintf(stderr, _("Error de Base de Datos en BlComboBox::setId.\n").toAscii());
+	fprintf(stderr, _("Error de Base de Datos en BlComboBox::setId.\n").toLatin1());
 	exit(0);
     } // end try
     

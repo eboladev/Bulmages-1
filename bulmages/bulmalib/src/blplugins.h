@@ -22,8 +22,8 @@
 #ifndef BLPLUGINS_H
 #define BLPLUGINS_H
 
-#include <QList>
-#include <QLibrary>
+#include <QtCore/QList>
+#include <QtCore/QLibrary>
 
 #include "blfunctions.h"
 

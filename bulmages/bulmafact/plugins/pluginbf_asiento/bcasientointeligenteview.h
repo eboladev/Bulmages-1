@@ -25,17 +25,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <QObject>
-#include <QWidget>
-#include <QLineEdit>
-#include <QToolButton>
-#include <QComboBox>
-#include <QLabel>
-#include <QLayout>
-#include <QToolButton>
-#include <QDateTime>
-#include <QPixmap>
-#include <QDomDocument>
+#include <QtCore/QObject>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QDateTime>
+#include <QtGui/QPixmap>
+#include <QtXml/QDomDocument>
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"

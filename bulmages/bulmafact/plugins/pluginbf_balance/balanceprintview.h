@@ -24,7 +24,7 @@
 #ifndef BALANCEPRINTVIEW_H
 #define BALANCEPRINTVIEW_H
 
-//#include <QDialog>
+//#include <QtWidgets/QDialog>
 
 #include "ui_balanceprintbase.h"
 #include "blpostgresqlclient.h"

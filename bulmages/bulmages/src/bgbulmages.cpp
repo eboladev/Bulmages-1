@@ -21,9 +21,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include <QAction>
-#include <QFile>
-#include <QMessageBox>
+#include <QtWidgets/QAction>
+#include <QtCore/QFile>
+#include <QtWidgets/QMessageBox>
 
 #include "bgbulmages.h"
 
@@ -171,6 +171,6 @@ void BgBulmaGes::launchBulmaSetup()
 void BgBulmaGes::runCommand ( QString command )
 {
     command = command + QString ( " &" );
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 }
 

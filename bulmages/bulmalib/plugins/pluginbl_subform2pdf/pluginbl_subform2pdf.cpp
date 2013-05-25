@@ -23,10 +23,10 @@
 
 #include <stdio.h>
 
-#include <QFile>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "pluginbl_subform2pdf.h"
 
@@ -41,7 +41,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_subform2pdf", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_subform2pdf", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;

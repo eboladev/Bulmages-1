@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_ASTERISK_H
 #define PLUGINBF_ASTERISK_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "bfbulmafact.h"
 #include "trabajadorview.h"

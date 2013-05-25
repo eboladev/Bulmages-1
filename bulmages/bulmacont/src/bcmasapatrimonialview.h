@@ -22,7 +22,7 @@
 #ifndef MPATRIMONIALVIEW_H
 #define MPATRIMONIALVIEW_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "blfunctions.h"
 #include "ui_bcmasapatrimonialbase.h"
@@ -42,7 +42,7 @@ public:
     QString idmpatrimonial;
 
 public:
-    BcMasaPatrimonialView ( BcCompany *, QWidget *parent = 0, Qt::WFlags fl = 0 );
+    BcMasaPatrimonialView ( BcCompany *, QWidget *parent = 0, Qt::WindowFlags fl = 0 );
     ~BcMasaPatrimonialView();
     void inicializa1 ( QString );
     QString getIdMasa();

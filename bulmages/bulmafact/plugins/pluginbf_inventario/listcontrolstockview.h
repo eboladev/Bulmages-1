@@ -21,7 +21,7 @@
 #ifndef LISTCONTROLSTOCKVIEW_H
 #define LISTCONTROLSTOCKVIEW_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

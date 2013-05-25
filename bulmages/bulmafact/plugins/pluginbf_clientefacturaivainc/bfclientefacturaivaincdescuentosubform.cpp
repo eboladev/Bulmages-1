@@ -20,10 +20,10 @@
 
 
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "bfclientefacturaivaincdescuentosubform.h"
 #include "blfunctions.h"
@@ -44,7 +44,7 @@ BfClienteFacturaIVAIncDescuentoSubForm::BfClienteFacturaIVAIncDescuentoSubForm (
     addSubFormHeader ( "conceptdfactura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondfactura", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id factura" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

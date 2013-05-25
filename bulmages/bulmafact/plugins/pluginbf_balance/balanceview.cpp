@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QToolButton>
-#include <QPixmap>
-#include <QFont>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QToolButton>
+#include <QtGui/QPixmap>
+#include <QtGui/QFont>
 
 #include "balanceview.h"
 #include "bfcompany.h"

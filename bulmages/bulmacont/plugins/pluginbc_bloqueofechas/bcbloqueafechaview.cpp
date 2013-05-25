@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QInputDialog>
-#include <QDate>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QInputDialog>
+#include <QtCore/QDate>
 
 #include "bcbloqueafechaview.h"
 #include "bccompany.h"
@@ -120,7 +120,7 @@ void BcBloqueaFechaView::inicializa()
     mui_treeWidget->setHeaderLabels ( cabecera );
 
     mui_treeWidget->clear();
-    mui_treeWidget->setSortingEnabled ( FALSE );
+    mui_treeWidget->setSortingEnabled ( false );
 
     /// Consultamos a la base de datos.
     consultabd.sprintf ( "SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC" );
@@ -141,7 +141,7 @@ void BcBloqueaFechaView::inicializa()
         itemlevel0->per = curEjer->value( "periodo" );
 
 
-        consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->value( "ejercicio" ).toAscii().constData() );
+        consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->value( "ejercicio" ).toLatin1().constData() );
         curPeri = mainCompany() ->loadQuery ( consultabd );
         while ( !curPeri->eof() ) {
             switch ( curPeri->value( "periodo" ).toInt() ) {
@@ -219,11 +219,11 @@ void BcBloqueaFechaView::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *
     if ( columna == 1 ) {
         if ( item->text ( 1 ) == qsbloqueado ) {
             item->setText ( 1, qsabierto );
-            QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
+            QString consultabd = "UPDATE ejercicios SET bloqueado = false WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
             error = mainCompany() ->runQuery ( consultabd );
         } else {
             item->setText ( 1, qsbloqueado );
-            QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
+            QString consultabd = "UPDATE ejercicios SET bloqueado = true WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
             error = mainCompany() ->runQuery ( consultabd );
         } // end if
     } // end if
@@ -253,8 +253,8 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
     ejer++;
 
     /// Presentamos el dialogo preguntado que ejercicio crear.
-    bool ok = FALSE;
-    ejer = QInputDialog::getInteger ( this, _ ( "Introduzca Ejercicio a Crear" ),
+    bool ok = false;
+    ejer = QInputDialog::getInt ( this, _ ( "Introduzca Ejercicio a Crear" ),
                                       _ ( "Ponga el anyo:" ), ejer, 0, 10000, 1, &ok );
 
     /// Comprobamos que el ejercicio introducido sea valido.

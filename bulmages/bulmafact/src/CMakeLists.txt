@@ -46,7 +46,7 @@ ELSE(WIN32)
     set(QT_USE_QTDBUS true)
 ENDIF(WIN32)
 
-INCLUDE(${QT_USE_FILE})
+#INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -69,11 +69,11 @@ endif(USE_QMDIAREA)
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
+QT5_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
 set(bulmafact_RCCS ../../bulmages.qrc)
-QT4_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
+QT5_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
 
 IF(WIN32)
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBF_BULMAFACT)

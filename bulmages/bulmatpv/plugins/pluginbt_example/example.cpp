@@ -19,9 +19,9 @@
  ***************************************************************************/
 
 /// Dependencias de Qt
-#include <QWidget>
-#include <QCheckBox>
-#include <QMainWindow>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMainWindow>
 
 /// Dependencias de BulmaGes
 #include "example.h"

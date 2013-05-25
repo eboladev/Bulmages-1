@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 /// Necesarios para importacion de efactura
-#include <QString>
-#include <QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QWidget>
 
 #include "q19qtoolbutton.h"
 #include "blfunctions.h"
@@ -109,7 +109,7 @@ void Q19QToolButton::click()
         BlDbSubFormRecord *rec = sub->lineaat ( i );
         rec->refresh();
         QString val = rec->dbValue ( "selector" );
-        if ( val == "TRUE" ) {
+        if ( val == "true" ) {
 	   if (m_cobrosList) {
 	      ids = ids + (ids.length()>0 ?",":"")+rec->dbValue ( "idcobro" );
 	   } else {

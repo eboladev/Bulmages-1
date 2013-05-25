@@ -22,7 +22,7 @@
 #ifndef BCPLANCONTABLELISTVIEW_H
 #define BCPLANCONTABLELISTVIEW_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
@@ -70,7 +70,7 @@ public:
     void imprimir();
 
 public:
-    BcPlanContableListView ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
+    BcPlanContableListView ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~BcPlanContableListView();
     int inicializa();
     virtual void on_mui_borrar_clicked();

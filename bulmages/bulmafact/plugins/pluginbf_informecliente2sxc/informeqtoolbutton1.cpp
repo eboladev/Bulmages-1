@@ -21,14 +21,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <QWidget>
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QInputDialog>
+#include <QtWidgets/QWidget>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QInputDialog>
 
 #include "informeqtoolbutton1.h"
 #include "blfunctions.h"
@@ -93,7 +93,7 @@ void InformeQToolButton1::click()
 
     // Solicitamos el ejercicio
     bool ok;
-    int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
+    int anyo = QInputDialog::getInt ( this, _ ( "Ejercicio del Informe" ),
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
     QString fitxersortidatxt = "";
@@ -223,9 +223,9 @@ void InformeQToolButton1::click()
     } // end if
 
     QString cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + informeclientessxcperl;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     
 }
@@ -250,7 +250,7 @@ QString InformeQToolButton1::generarCliente ( QString idcliente, int row, int an
         QString SQLQuery = "select sum(cantcobro) AS total, idcliente from cobro ";
         SQLQuery += " WHERE fechacobro >= ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes - 1 ) + " mon'::INTERVAL ";
         SQLQuery += " AND fechacobro < ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes ) + " mon'::INTERVAL ";
-        SQLQuery += " AND idcliente = " + idcliente + " AND previsioncobro = FALSE GROUP BY idcliente";
+        SQLQuery += " AND idcliente = " + idcliente + " AND previsioncobro = false GROUP BY idcliente";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( mes + 3 ) + ", " + QString::number ( row ) + ");\n";
@@ -333,7 +333,7 @@ void InformeProveedorQToolButton1::click()
 
     // Solicitamos el ejercicio
     bool ok;
-    int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
+    int anyo = QInputDialog::getInt( this, _ ( "Ejercicio del Informe" ),
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
@@ -464,9 +464,9 @@ void InformeProveedorQToolButton1::click()
     } // end if
 
     QString cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + informeproveedoressxcperl;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     
 }
@@ -488,7 +488,7 @@ QString InformeProveedorQToolButton1::generarProveedor ( QString idproveedor, in
         QString SQLQuery = "select sum(cantpago) AS total, idproveedor from pago ";
         SQLQuery += " WHERE fechapago >= ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes - 1 ) + " mon'::INTERVAL ";
         SQLQuery += " AND fechapago < ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes ) + " mon'::INTERVAL ";
-        SQLQuery += " AND idproveedor = " + idproveedor + " AND previsionpago = FALSE GROUP BY idproveedor";
+        SQLQuery += " AND idproveedor = " + idproveedor + " AND previsionpago = false GROUP BY idproveedor";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( mes + 3 ) + ", " + QString::number ( row ) + ");\n";

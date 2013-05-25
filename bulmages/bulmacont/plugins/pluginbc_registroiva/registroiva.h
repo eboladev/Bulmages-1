@@ -22,7 +22,7 @@
 #ifndef REGISTROIVA_H
 #define REGISTROIVA_H
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "blfixed.h"
 #include "listiva.h"

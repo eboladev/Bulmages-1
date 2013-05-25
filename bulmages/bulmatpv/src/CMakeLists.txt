@@ -19,7 +19,7 @@ set(QT_USE_QTUITOOLS true)
 set(QT_USE_QTSCRIPT true)
 
 
-INCLUDE(${QT_USE_FILE})
+#INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -42,14 +42,14 @@ endif(USE_QMDIAREA)
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
+QT5_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
 
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 IF(WIN32)
 set(bulmatpv_RCCS ../../bulmages.qrc)
-QT4_ADD_RESOURCES(bulmatpv_RCC_SRCS ${bulmatpv_RCCS})
+QT5_ADD_RESOURCES(bulmatpv_RCC_SRCS ${bulmatpv_RCCS})
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBT_BULMATPV)
 ENDIF(WIN32)
 

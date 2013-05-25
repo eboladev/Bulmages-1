@@ -20,11 +20,11 @@
 
 #include <stdlib.h>
 
-#include <QMap>
-#include <QPixmap>
-#include <QKeyEvent>
-#include <QFileDialog>
-#include <QTextStream>
+#include <QtCore/QMap>
+#include <QtGui/QPixmap>
+#include <QtGui/QKeyEvent>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QTextStream>
 
 #include "bcplancontablelistview.h"
 #include "blfunctions.h"
@@ -39,7 +39,7 @@
 \param flag
 \param editmode
 **/
-BcPlanContableListView::BcPlanContableListView ( BfCompany *emp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+BcPlanContableListView::BcPlanContableListView ( BfCompany *emp, QWidget *parent, Qt::WindowFlags flag, edmode editmode )
         : BfForm ( emp, parent, flag ), BlImportExport ( emp )
 {
     BL_FUNC_DEBUG

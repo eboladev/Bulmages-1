@@ -22,9 +22,9 @@
 #ifndef RECIBOVIEW_H
 #define RECIBOVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 
 #include "blpostgresqlclient.h"

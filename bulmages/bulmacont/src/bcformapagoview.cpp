@@ -103,12 +103,12 @@ void BcFormaPagoView::pintar ( QString idfpago )
     } // end while
 
     if ( mui_comboFPago->currentIndex() == -1 ) {
-        mui_nombreFPago->setEnabled ( FALSE );
-        mui_plazoPrimerPago->setEnabled ( FALSE );
-        mui_numeroPlazos->setEnabled ( FALSE );
-        mui_tipoPlazoPrimerPago->setEnabled ( FALSE );
-        mui_plazoEntreRecibos->setEnabled ( FALSE );
-        mui_tipoPlazoEntreRecibos->setEnabled ( FALSE );
+        mui_nombreFPago->setEnabled ( false );
+        mui_plazoPrimerPago->setEnabled ( false );
+        mui_numeroPlazos->setEnabled ( false );
+        mui_tipoPlazoPrimerPago->setEnabled ( false );
+        mui_plazoEntreRecibos->setEnabled ( false );
+        mui_tipoPlazoEntreRecibos->setEnabled ( false );
 
         mui_nombreFPago->setText ( "" );
         mui_plazoPrimerPago->setText ( "" );
@@ -119,12 +119,12 @@ void BcFormaPagoView::pintar ( QString idfpago )
         dialogChanges_readValues();
         
     } else {
-        mui_nombreFPago->setEnabled ( TRUE );
-        mui_plazoPrimerPago->setEnabled ( TRUE );
-        mui_numeroPlazos->setEnabled ( TRUE );
-        mui_tipoPlazoPrimerPago->setEnabled ( TRUE );
-        mui_plazoEntreRecibos->setEnabled ( TRUE );
-        mui_tipoPlazoEntreRecibos->setEnabled ( TRUE );
+        mui_nombreFPago->setEnabled ( true );
+        mui_plazoPrimerPago->setEnabled ( true );
+        mui_numeroPlazos->setEnabled ( true );
+        mui_tipoPlazoPrimerPago->setEnabled ( true );
+        mui_plazoEntreRecibos->setEnabled ( true );
+        mui_tipoPlazoEntreRecibos->setEnabled ( true );
 
         dialogChanges_readValues();
         mostrarPlantilla ( posicion );

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDir>
+#include <QtCore/QDir>
 #include "chosemailer.h"
 
 
@@ -125,9 +125,9 @@ int ChoseMailer::GuardarConfig()
     QTextStream filestr ( &file );
         if ( dir_email != "" ) {
 	    filestr << endl;
-            filestr << QString("CONF_EMAIL_CLIENT").toAscii().data();
+            filestr << QString("CONF_EMAIL_CLIENT").toLatin1().data();
             filestr << "   ";
-            filestr << QString(dir_email).toAscii().data();
+            filestr << QString(dir_email).toLatin1().data();
             filestr << endl;
         } // end if
     file.close();    
@@ -236,7 +236,7 @@ int ChoseMailer::SearchExecutable ( QString &program )
     
     /// Iteramos el PATH (con las modificaciones correspondientes) en busqueda del ejecutable.
     for (int i = 0; i < SPLITED_PATH.size(); ++i) {
-        QString posibleProgram = SPLITED_PATH.at(i).toAscii() + PATH_EXTEND +  currentItem + PATH_EXTENSION;
+        QString posibleProgram = SPLITED_PATH.at(i).toLatin1() + PATH_EXTEND +  currentItem + PATH_EXTENSION;
         posibleProgram = QUrl(posibleProgram, QUrl::TolerantMode).toString();
         
         QDir dir;

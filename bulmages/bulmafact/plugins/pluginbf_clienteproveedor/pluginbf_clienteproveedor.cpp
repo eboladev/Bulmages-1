@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_clienteproveedor.h"
 #include "bfform.h"
@@ -37,7 +37,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clienteproveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clienteproveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 int BlForm_guardar_Post ( BlForm *l )
 {
     BL_FUNC_DEBUG
-    bool guardar = FALSE;
+    bool guardar = false;
     if ( l->tableName() == "cliente" ) {
 
         BfForm *fich = new BfForm ( ( BfCompany * ) l->mainCompany(), l );
@@ -82,10 +82,10 @@ int BlForm_guardar_Post ( BlForm *l )
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
             fich->load ( cur->value( "idproveedor" ) );
-            guardar = TRUE;
+            guardar = true;
         } else {
             if ( QMessageBox::question ( l, "Crear proveedor", "Desea crear un proveedor con los datos del cliente", QMessageBox::Yes | QMessageBox::No ) == QMessageBox::Yes ) {
-                guardar = TRUE;
+                guardar = true;
             } // end if
         } // end if
         delete cur;

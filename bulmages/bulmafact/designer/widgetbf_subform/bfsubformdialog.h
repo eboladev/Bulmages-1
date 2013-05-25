@@ -1,7 +1,7 @@
 #ifndef BFSUBFORMDIALOG_H
 #define BFSUBFORMDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 #include "ui_bfsubformdialogbase.h"
 

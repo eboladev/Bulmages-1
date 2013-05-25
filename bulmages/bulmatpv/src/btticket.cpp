@@ -22,19 +22,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QCloseEvent>
-#include <QFile>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QTextStream>
-#include <QHBoxLayout>
-#include <QObject>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QHBoxLayout>
+#include <QtCore/QObject>
+#include <QtWidgets/QPushButton>
 
 
-#include <QCheckBox>
-#include <QInputDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QInputDialog>
 #include "bluiloader.h"
 
 
@@ -76,7 +76,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     // Control de cambios realizados en los tickets tras guardar
     addDbField ( "cambiospostalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Cambios tras guardar" ) );
 
-    setDbValue ( "ticketalbaran", "TRUE" );
+    setDbValue ( "ticketalbaran", "true" );
     setDbValue ( "idalmacen", g_confpr->value( CONF_IDALMACEN_DEFECTO ) );
     setDbValue ( "idcliente", g_confpr->value( CONF_IDCLIENTE_DEFECTO ) );
     setDbValue ( "idtrabajador", g_confpr->value( CONF_IDTRABAJADOR_DEFECTO ) );
@@ -208,7 +208,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
             m_lineaActual = item;
     }// end for
 
-    if ( m_lineaActual && nuevaLinea == FALSE ) {
+    if ( m_lineaActual && nuevaLinea == false ) {
         /// Ya hay una linea con este articulo (es un agregado)
         BlFixed cantidadib ( m_lineaActual->dbValue ( "cantlalbaran" ) );
         BlFixed cant1 = cantidadib + cantidad;
@@ -332,7 +332,7 @@ void BtTicket::abrircajon()
     /// El comando de apertura de cajon
     for (int i = 0; i < secuencia.size(); ++i) {
 	    QString cad = QChar(secuencia.at(i).toInt());
-	    file.write ( cad.toAscii(), 1 );
+	    file.write ( cad.toLatin1(), 1 );
     } // end for
 
     file.close();
@@ -340,7 +340,7 @@ void BtTicket::abrircajon()
 
     if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-        system ( comando.toAscii().data() );
+        system ( comando.toLatin1().data() );
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
@@ -379,12 +379,12 @@ void BtTicket::imprimir(bool doSave)
 
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
-        system ( comando.toAscii().data() );
+        system ( comando.toLatin1().data() );
     } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-        system ( comando.toAscii().data() );
+        system ( comando.toLatin1().data() );
     } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
-		blRawPrint( "ticket_normal.txt", TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+		blRawPrint( "ticket_normal.txt", true, g_confpr->value( CONF_TICKET_PRINTER_FILE));
     } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 	blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
     } else {
@@ -557,7 +557,7 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     
     if ( !cur->eof() ) {
-        insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), TRUE );
+        insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), true );
     } // end if
     
     delete cur;

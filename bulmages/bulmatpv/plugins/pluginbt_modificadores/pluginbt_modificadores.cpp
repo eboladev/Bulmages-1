@@ -20,8 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
-#include <QBuffer>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QBuffer>
 
 #include "pluginbt_modificadores.h"
 #include "blconfiguration.h"
@@ -72,7 +72,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_modificadores", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_modificadores", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     /*
@@ -124,13 +124,13 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
     
 
-    if ( g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "FALSE") ) {
+    if ( g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "false") ) {
 	modificadores->hide();
     } else {
 	modificadores->show();
     } // end if
     
-    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "FALSE") ) {
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "false") ) {
 	editarDescripcion->hide();
     } else {
 	editarDescripcion->show();
@@ -185,13 +185,13 @@ int MTicket_MTicket_Post (MTicket *tick) {
     editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
 
     
-    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "FALSE") ) {
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "false") ) {
 	modificadores->hide();
     } else {
 	modificadores->show();
     } // end if
     
-    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "FALSE") ) {
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "false") ) {
 	editarDescripcion->hide();
     } else {
 	editarDescripcion->show();
@@ -279,7 +279,7 @@ int BtCompany_cobrar_1(BtCompany *comp) {
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
       filename.remove(' ');
       QString cadena = "rm " + filename;
-      system (cadena.toAscii());
+      system (cadena.toLatin1());
       g_tablet->erasePixmap();
       return 0;
 }
@@ -295,7 +295,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
     
     if ( semaforo == 0 ) {
         semaforo = 1;
-	  if (g_tablet->m_vacio == TRUE) {
+	  if (g_tablet->m_vacio == true) {
 	      tick->lineaActBtTicket()->setDbValue ( "imglalbaran", "" );
 	  } else {
 	      QByteArray bytes;

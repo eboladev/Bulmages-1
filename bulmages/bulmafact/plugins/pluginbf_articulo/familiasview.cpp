@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMap>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QMap>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "familiasview.h"
 #include "bfcompany.h"
@@ -54,18 +54,18 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
     m_listFamilias->setColumnWidth ( 0, 200 );
     m_listFamilias->setColumnWidth ( 1, 100 );
 
-    m_listFamilias->setColumnHidden ( COL_IDFAMILIA, TRUE );
-    m_listFamilias->setColumnHidden ( COL_CODFAMILIA, TRUE );
-    m_listFamilias->setColumnHidden ( COL_PRODUCTOFISICOFAMILIA, TRUE );
+    m_listFamilias->setColumnHidden ( COL_IDFAMILIA, true );
+    m_listFamilias->setColumnHidden ( COL_CODFAMILIA, true );
+    m_listFamilias->setColumnHidden ( COL_PRODUCTOFISICOFAMILIA, true );
 
-    m_semaforoPintar = FALSE;
+    m_semaforoPintar = false;
 
     m_idfamilia = "";
 
-    mui_nomFamilia->setEnabled ( FALSE );
-    mui_descFamilia->setEnabled ( FALSE );
-    mui_codCompletoFamilia->setEnabled ( FALSE );
-    mui_codFamilia->setEnabled ( FALSE );
+    mui_nomFamilia->setEnabled ( false );
+    mui_descFamilia->setEnabled ( false );
+    mui_codCompletoFamilia->setEnabled ( false );
+    mui_codFamilia->setEnabled ( false );
     
     /// Disparamos los plugins.
     int res = g_plugins->run ( "FamiliasView_FamiliasView", this );
@@ -83,7 +83,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool selectMode )
     } else {
         setEditMode();
         setAttribute ( Qt::WA_DeleteOnClose );
-        mainCompany()->insertWindow ( windowTitle(), this, FALSE );
+        mainCompany()->insertWindow ( windowTitle(), this, false );
     } // end if
 
     pintar();
@@ -109,7 +109,7 @@ void FamiliasView::pintar()
 {
     BL_FUNC_DEBUG
     /// Activamos el semaforo de pintado para que no haya slots concurrentes.
-    m_semaforoPintar = TRUE;
+    m_semaforoPintar = true;
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
@@ -164,7 +164,7 @@ void FamiliasView::pintar()
     m_idfamilia = "";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
-    m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
+    m_semaforoPintar = false; /// Desactivamos el semaforo de pintado.
     
 }
 
@@ -257,7 +257,7 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
     BL_FUNC_DEBUG
 
     if ( m_semaforoPintar ) return;
-    m_semaforoPintar = TRUE;
+    m_semaforoPintar = true;
 
     /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.    
     if ( previous ) {
@@ -284,7 +284,7 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
     } // end if
 
     mostrarplantilla();
-    m_semaforoPintar = FALSE;
+    m_semaforoPintar = false;
 
     
 }
@@ -298,10 +298,10 @@ void FamiliasView::mostrarplantilla()
     BL_FUNC_DEBUG
     QString query;
     if ( !m_idfamilia.isEmpty() ) {
-        mui_nomFamilia->setEnabled ( TRUE );
-        mui_descFamilia->setEnabled ( TRUE );
-        mui_codCompletoFamilia->setEnabled ( TRUE );
-        mui_codFamilia->setEnabled ( TRUE );
+        mui_nomFamilia->setEnabled ( true );
+        mui_descFamilia->setEnabled ( true );
+        mui_codCompletoFamilia->setEnabled ( true );
+        mui_codFamilia->setEnabled ( true );
 
         query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
         BlDbRecordSet *cursorfamilia = mainCompany()->loadQuery ( query );
@@ -312,17 +312,17 @@ void FamiliasView::mostrarplantilla()
             mui_codFamilia->setText ( cursorfamilia->value( "codigofamilia" ) );
 
             if ( cursorfamilia->value( "productofisicofamilia" ) == "t" ) {
-                mui_productofamilia->setChecked ( TRUE );
+                mui_productofamilia->setChecked ( true );
             } else {
-                mui_serviciofamilia->setChecked ( TRUE );
+                mui_serviciofamilia->setChecked ( true );
             } // end if
         } // end if
         delete cursorfamilia;
     } else {
-        mui_nomFamilia->setEnabled ( FALSE );
-        mui_descFamilia->setEnabled ( FALSE );
-        mui_codCompletoFamilia->setEnabled ( FALSE );
-        mui_codFamilia->setEnabled ( FALSE );
+        mui_nomFamilia->setEnabled ( false );
+        mui_descFamilia->setEnabled ( false );
+        mui_codCompletoFamilia->setEnabled ( false );
+        mui_codFamilia->setEnabled ( false );
         mui_nomFamilia->setText ( "" );
         mui_descFamilia->setPlainText ( "" );
         mui_codCompletoFamilia->setText ( "" );
@@ -352,7 +352,7 @@ bool FamiliasView::trataModificado()
         } // end if
     } // end if
     
-    return ( FALSE );
+    return ( false );
 }
 
 
@@ -380,9 +380,9 @@ int FamiliasView::save()
 	} // end if
 
         if ( mui_productofamilia->isChecked() ) {
-            prodfam = " TRUE ";
+            prodfam = " true ";
         } else {
-            prodfam = " FALSE ";
+            prodfam = " false ";
         } // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
                         mainCompany()->sanearCadena ( mui_nomFamilia->text() ) + "', descfamilia = '" +
@@ -404,7 +404,7 @@ int FamiliasView::save()
         QTreeWidgetItem *posicionCursor;
         posicionCursor = m_listFamilias->currentItem();
         if ( posicionCursor ) {
-            posicionCursor->setSelected ( TRUE );
+            posicionCursor->setSelected ( true );
             /// Pintamos los datos en el listado.
             pintar ( posicionCursor );
         } // end if
@@ -616,7 +616,7 @@ void FamiliasView::on_mui_aceptar_clicked()
 **/
 void FamiliasView::setSelectMode()
 {
-    m_selectMode = TRUE;
+    m_selectMode = true;
 }
 
 
@@ -625,7 +625,7 @@ void FamiliasView::setSelectMode()
 **/
 void FamiliasView::setEditMode()
 {
-    m_selectMode = FALSE;
+    m_selectMode = false;
 }
 
 

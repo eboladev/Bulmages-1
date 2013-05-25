@@ -1,4 +1,4 @@
-#include <QtGui>
+#include <QtGui/QtGui>
 #include <QtDesigner>
 
 #include "bfsubform.h"

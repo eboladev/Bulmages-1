@@ -25,8 +25,8 @@
 #ifndef BLPOSTGRESQLCLIENT_H
 #define BLPOSTGRESQLCLIENT_H
 
-#include <QString>
-#include <QHash>
+#include <QtCore/QString>
+#include <QtCore/QHash>
 
 #ifdef DISTRO_DEBIAN
 #include <postgresql/libpq-fe.h>
@@ -119,7 +119,7 @@ public:
     /// Devuelve el n&uacute;mero de registros del cursor.
     int numregistros();
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString value( int posicion, int registro = -1, bool localeformat = FALSE );
+    QString value( int posicion, int registro = -1, bool localeformat = false );
     /// Devuelve el tipo de dato de una determinada posicion de un query
     int fieldType(int posicion);
     bool error();
@@ -136,7 +136,7 @@ public:
 
 public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString value( const QString &campo, int registro = -1, bool localeformat = FALSE );
+    QString value( const QString &campo, int registro = -1, bool localeformat = false );
     /// Avanza el puntero de recorrido en forma de cola una posici&oacute;n.
     int nextRecord();
     /// Retrocede el puntero de recorrido en forma de cola una posici&oacute;n.

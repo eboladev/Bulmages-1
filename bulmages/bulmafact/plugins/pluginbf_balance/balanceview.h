@@ -22,7 +22,7 @@
 #ifndef BALANCEVIEW_H
 #define BALANCEVIEW_H
 
-#include <QLayout>
+#include <QtWidgets/QLayout>
 
 #include "ui_balancebase.h"
 #include "blpostgresqlclient.h"

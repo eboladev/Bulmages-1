@@ -22,7 +22,7 @@
 #ifndef BCDIARIOIMPRIMIR2TXT_H
 #define BCDIARIOIMPRIMIR2TXT_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #ifndef Q_OS_WIN32
 #include <unistd.h>

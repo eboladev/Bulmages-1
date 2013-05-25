@@ -20,13 +20,13 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "pluginbc_depuracion.h"
 #include "blconfiguration.h"
@@ -41,19 +41,19 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_depuracion", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_depuracion", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro" );
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
     BlAction *accionA = new BlAction ( _ ( "&Modo debug" ), 0 );
-    accionA->setCheckable ( TRUE );
+    accionA->setCheckable ( true );
 
-    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
-        accionA->setChecked ( TRUE );
+    if ( g_confpr->value( CONF_DEBUG ) == "true" ) {
+        accionA->setChecked ( true );
     } else {
-        accionA->setChecked ( FALSE );
+        accionA->setChecked ( false );
     }
 
     accionA->setStatusTip ( _ ( "Activa/Desactiva el modo debug" ) );
@@ -70,9 +70,9 @@ int entryPoint ( BcBulmaCont *bcont )
 int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionDebug") {
         if (accion->isChecked ()) {
-            g_confpr->setValue( CONF_DEBUG, "TRUE");
+            g_confpr->setValue( CONF_DEBUG, "true");
         } else {
-            g_confpr->setValue( CONF_DEBUG, "FALSE");
+            g_confpr->setValue( CONF_DEBUG, "false");
         } // end if
     } // end if
     return 0;

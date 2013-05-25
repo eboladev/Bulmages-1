@@ -1,7 +1,7 @@
 #ifndef TICKETSDEVUELTOS_H
 #define TICKETSDEVUELTOS_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 
 #include "blwidget.h"
 #include "ui_ticketsdevueltosbase.h"

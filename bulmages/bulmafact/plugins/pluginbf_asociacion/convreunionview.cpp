@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "convreunionview.h"
 #include "bfcompany.h"
@@ -69,9 +69,9 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         mui_list->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Socio" ) );
         mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre Socio" ) );
 
-        mui_list->setInsert ( TRUE );
-        mui_list->setDelete ( TRUE );
-        mui_list->setSortingEnabled ( FALSE );
+        mui_list->setInsert ( true );
+        mui_list->setDelete ( true );
+        mui_list->setSortingEnabled ( false );
 
 	 /// Hacemos una carga vacia para que se inicie bien el subformulario
          mui_list->load("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
@@ -85,14 +85,14 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         mui_ordendia->addSubFormHeader ( "textoordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Texto" ) );
         mui_ordendia->addSubFormHeader ( "resolucionordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Resolucion" ) );
 
-        mui_ordendia->setInsert ( TRUE );
-        mui_ordendia->setDelete ( TRUE );
-        mui_ordendia->setSortingEnabled ( FALSE );
+        mui_ordendia->setInsert ( true );
+        mui_ordendia->setDelete ( true );
+        mui_ordendia->setSortingEnabled ( false );
         
 	 /// Hacemos una carga vacia para que se inicie bien el subformulario
          mui_ordendia->load("SELECT * from ordendiareunion WHERE 1 = 2");
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
         blScript(this);
@@ -201,7 +201,7 @@ void ConvReunionView::on_mui_email_clicked (  )
     delete cur;
 
     QString cad = "kmail -s \" El Subject\" --body \" Adjunto remito \n Atentamente\n\"  -b \"" + bcc + "\"";
-    system ( cad.toAscii().data() );
+    system ( cad.toLatin1().data() );
 
     
 }
@@ -221,10 +221,10 @@ void ConvReunionView::on_m_agregarconvocados_clicked()
     while ( !cur->eof() ) {
         linea1 = mui_list->lineaat ( mui_list->rowCount() - 1 );
         mui_list->newRecord();
-        mui_list->setProcesarCambios ( FALSE );
+        mui_list->setProcesarCambios ( false );
         linea1->setDbValue ( "idcliente", cur->value( "idcliente" ) );
         linea1->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
-        mui_list->setProcesarCambios ( TRUE );
+        mui_list->setProcesarCambios ( true );
         cur->nextRecord();
     } // end while
     
@@ -248,10 +248,10 @@ int ConvReunionView::junta()
     while (! cur->eof()) {
         linea1 = mui_list->lineaat ( mui_list->rowCount() - 1 );
         mui_list->newRecord();
-        mui_list->setProcesarCambios ( FALSE );
+        mui_list->setProcesarCambios ( false );
         linea1->setDbValue ( "idcliente", cur->value( "idcliente" ) );
         linea1->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
-        mui_list->setProcesarCambios ( TRUE );
+        mui_list->setProcesarCambios ( true );
         cur->nextRecord();
     } // end while
     

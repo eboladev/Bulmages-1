@@ -78,7 +78,7 @@ class NuevaFacturacion(Facturacion):
         
         self.command = functions.psql2 + ' -c \"' +self.subcomand+ '\"' + ' ' + self.database + functions.end_sql2
         self.writecommand(self.command)
-        os.system(self.command.toAscii().data())
+        os.system(self.command.toLatin1().data())
 
         self.actualizarPlugins()
 

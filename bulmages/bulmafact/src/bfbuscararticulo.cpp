@@ -171,13 +171,13 @@ BfBuscarArticuloDelegate::~BfBuscarArticuloDelegate()
 void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
 {
     BL_FUNC_DEBUG
-    static bool semaforo = FALSE;
+    static bool semaforo = false;
 
     if ( semaforo ) {
         
         return;
     } else {
-        semaforo = TRUE;
+        semaforo = true;
     } // end if
     m_entrada = cod;
     if ( !g_plugins->run ( "BfBuscarArticuloDelegate_textChanged", this ) ) {
@@ -208,7 +208,7 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
     g_plugins->run ( "BfBuscarArticuloDelegate_textChanged_Post", this );
     setEditText ( cod );
 
-    semaforo = FALSE;
+    semaforo = false;
     
 }
 

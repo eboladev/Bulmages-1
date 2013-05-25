@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QMessageBox>
-#include <QTextStream>
+#include <QtCore/QFile>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextStream>
 
 #include "bfcompany.h"
 #include "blconfiguration.h"
@@ -36,7 +36,7 @@
 \param flag
 \return
 **/
-PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -67,7 +67,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \param flags
 \return
 **/
-PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo )
+PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
@@ -354,9 +354,9 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

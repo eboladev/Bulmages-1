@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 
 #include "bcextractosubform.h"
 
@@ -71,10 +71,10 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BfSubFo
     addSubFormHeader ( "nombrec_coste", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Centro Coste" ) );
     addSubFormHeader ( "idtipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "idtipoiva" ) );
     addSubFormHeader ( "orden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Orden" ) );
-    setInsert ( FALSE );
-    setOrdenEnabled ( FALSE );
-    setOrdenPorQuery ( FALSE );
-    setDelete ( FALSE );
+    setInsert ( false );
+    setOrdenEnabled ( false );
+    setOrdenPorQuery ( false );
+    setDelete ( false );
  
 }
 

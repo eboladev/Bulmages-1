@@ -22,15 +22,15 @@
 
 #define QUITACORRECTOR
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QFile>
-#include <QMenu>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
+#include <QtWidgets/QMenu>
 
 #include "pluginbl_feeds.h"
 #ifdef QUITACORRECTOR
@@ -54,7 +54,7 @@ int entryPoint ( BlMainWindow *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_feeds", g_confpr->value ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_feeds", g_confpr->value ( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     g_docFeedsWidget = new BlDockWidget ( "Info", bcont );
@@ -74,7 +74,7 @@ int entryPoint ( BlMainWindow *bcont )
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
     g_actionFeedsWidget = new QAction ( "&Info", 0 );
-    g_actionFeedsWidget->setCheckable ( TRUE );
+    g_actionFeedsWidget->setCheckable ( true );
     g_actionFeedsWidget->setStatusTip ( "Muestra/oculta las notificaciones" );
     g_actionFeedsWidget->setWhatsThis ( "Feeds.\n\nMuestra/oculta notificaciones" );
 
@@ -92,7 +92,7 @@ int entryPoint ( BlMainWindow *bcont )
 */
 
     g_docFeedsWidget->show();
-    g_actionFeedsWidget->setChecked ( TRUE );
+    g_actionFeedsWidget->setChecked ( true );
 
 
     BlDebug::blDebug ( "Iniciado correctamente el plugin Feeds", 10 );

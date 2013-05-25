@@ -22,7 +22,7 @@
 #ifndef BFCLIENTEALBARANSUBFORM_H
 #define BFCLIENTEALBARANSUBFORM_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

@@ -99,7 +99,7 @@ bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
             if ( !strLinea.contains ( ",", Qt::CaseInsensitive ) ) {
                 linea->setText ( linea->text() + "," );
             } // end if
-            return TRUE;
+            return true;
         } // end switch
     } // end if
     

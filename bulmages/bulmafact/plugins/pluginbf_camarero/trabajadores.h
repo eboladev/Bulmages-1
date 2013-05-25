@@ -1,9 +1,9 @@
 #ifndef TRABAJADORESS_H
 #define TRABAJADORESS_H
 
-#include <QDialog>
-#include <QProcess>
-#include <QDockWidget>
+#include <QtWidgets/QDialog>
+#include <QtCore/QProcess>
+#include <QtWidgets/QDockWidget>
 #include "blwidget.h"
 #include "ui_trabajadoresbase.h"
 

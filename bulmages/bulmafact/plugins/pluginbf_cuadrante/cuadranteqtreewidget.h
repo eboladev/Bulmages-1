@@ -22,9 +22,9 @@
 #ifndef CUADRANTEQTREEWIDGET_H
 #define CUADRANTEQTREEWIDGET_H
 
-#include <QEvent>
-#include <QTreeWidget>
-#include <QStyledItemDelegate>
+#include <QtCore/QEvent>
+#include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QStyledItemDelegate>
 #include "blfunctions.h"
 
 

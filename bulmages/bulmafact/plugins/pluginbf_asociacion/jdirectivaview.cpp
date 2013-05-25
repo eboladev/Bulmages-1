@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "jdirectivaview.h"
 #include "bfcompany.h"
@@ -69,14 +69,14 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "apellido2cliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Ap 2 Socio" ) );
         mui_list->addSubFormHeader ( "cargomiembrojdirectiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
 
-        mui_list->setInsert ( TRUE );
-        mui_list->setDelete ( TRUE );
-        mui_list->setSortingEnabled ( FALSE );
+        mui_list->setInsert ( true );
+        mui_list->setDelete ( true );
+        mui_list->setSortingEnabled ( false );
         
 	// Cargar una contradiccion para que el subformulario deje insertar elementos.
         mui_list->load("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);

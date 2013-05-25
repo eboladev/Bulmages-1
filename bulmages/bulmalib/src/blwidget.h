@@ -29,12 +29,12 @@ QWidget para servir de base a todos los componentes visuales de Qt.
 #ifndef BLWIDGET_H
 #define BLWIDGET_H
 
-#include <QWidget>
-#include <QCloseEvent>
-#include <QPainter>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtGui/QPainter>
 
-#include <QHideEvent>
-#include <QShowEvent>
+#include <QtGui/QHideEvent>
+#include <QtGui/QShowEvent>
 
 #include "blmaincompanypointer.h"
 #include "bldialogchanges.h"
@@ -58,8 +58,8 @@ protected:
 #endif
 
 public:
-    BlWidget ( QWidget *parent = 0, Qt::WFlags flags = 0 );
-    BlWidget ( BlMainCompany *company, QWidget *parent = 0, Qt::WFlags flags = 0 );
+    BlWidget ( QWidget *parent = 0, Qt::WindowFlags flags = 0 );
+    BlWidget ( BlMainCompany *company, QWidget *parent = 0, Qt::WindowFlags flags = 0 );
     virtual ~BlWidget();
     QString descripcion() const;
     void setDescripcion(const QString &);

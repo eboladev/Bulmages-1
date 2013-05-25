@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeyEvent>
-#include <QEvent>
-#include <QLineEdit>
-#include <QTextEdit>
-#include <QBrush>
-#include <QColor>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextEdit>
+#include <QtGui/QBrush>
+#include <QtGui/QColor>
 
 #include "bltablewidget.h"
 #include "blconfiguration.h"
@@ -268,7 +268,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
         /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
         /// busqueda de que celda es.
         if ( row < 0 ) {
-            return TRUE;
+            return true;
         } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         switch ( key ) {
@@ -277,7 +277,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
 	  case Qt::Key_Backtab:
         case Qt::Key_Tab:
             m_teclasalida = key;
-            return TRUE;
+            return true;
         } // end switch
     } // end if
 
@@ -297,7 +297,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
         /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
         /// busqueda de que celda es.
         if ( row < 0 ) {
-            return TRUE;
+            return true;
         } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         switch ( key ) {
@@ -308,59 +308,59 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
 //		if ( ! ( mod & Qt::ShiftModifier ) ) {
                 m_teclasalida = key;
                 emit cellRePosition ( row, col );
-                return TRUE;
+                return true;
                 break;
 //		}// end if
         case Qt::Key_Slash:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedSlash ( row, col );
-                return TRUE;
+                return true;
             } // end if
             break;
         case Qt::Key_Minus:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedMinus ( row, col );
-                return TRUE;
+                return true;
             } // end if
             break;
         case Qt::Key_Plus:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedPlus ( row, col );
-                return TRUE;
+                return true;
             } // end if
             break;
         case Qt::Key_Asterisk:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedAsterisk ( row, col );
-                return TRUE;
+                return true;
             } // end if
             break;
         case Qt::Key_F2:
             emit pressedAsterisk ( row, col );
-            return TRUE;
+            return true;
             break;
         case Qt::Key_Up:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit ctrlUp ( row, col );
-                return TRUE;
+                return true;
             } // end if
             /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
         case Qt::Key_Down:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit ctrlDown ( row, col );
-                return TRUE;
+                return true;
             } // end if
             /// Al pulsar la tecla 'abajo' se considera que es el fin de la edici&oacute; de la celda.
-            return TRUE;
+            return true;
         case Qt::Key_Left:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit ctrlLeft ( row, col );
-                return TRUE;
+                return true;
             } // end if
         case Qt::Key_Right:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit ctrlRight ( row, col );
-                return TRUE;
+                return true;
             } // end if
         } // end switch
     } // end if

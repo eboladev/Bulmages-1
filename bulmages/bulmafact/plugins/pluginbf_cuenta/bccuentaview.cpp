@@ -28,7 +28,7 @@
 \param parent
 \param fl
 **/
-BcCuentaView::BcCuentaView ( BfCompany  *emp, QWidget *parent, Qt::WFlags fl )
+BcCuentaView::BcCuentaView ( BfCompany  *emp, QWidget *parent, Qt::WindowFlags fl )
         : BfForm ( emp, parent, fl )
 {
     BL_FUNC_DEBUG
@@ -93,7 +93,7 @@ BcCuentaView::BcCuentaView ( BfCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_idprovincia->setFieldId ( "idprovincia" );
     mui_idprovincia->m_valores["provincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
-    mui_idprovincia->setAllowNull(TRUE);
+    mui_idprovincia->setAllowNull(true);
     mui_idprovincia->setId("");
 
     /// Arreglamos la cuenta
@@ -151,22 +151,22 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
         int tipocuenta = cur2->value( "tipocuenta" ).toInt();
         switch ( tipocuenta ) {
         case 0:
-            mui_tipocuenta_0->setChecked ( TRUE );
+            mui_tipocuenta_0->setChecked ( true );
             break;
         case 1:
-            mui_tipocuenta_1->setChecked ( TRUE );
+            mui_tipocuenta_1->setChecked ( true );
             break;
         case 2:
-            mui_tipocuenta_2->setChecked ( TRUE );
+            mui_tipocuenta_2->setChecked ( true );
             break;
         case 3:
-            mui_tipocuenta_3->setChecked ( TRUE );
+            mui_tipocuenta_3->setChecked ( true );
             break;
         case 4:
-            mui_tipocuenta_4->setChecked ( TRUE );
+            mui_tipocuenta_4->setChecked ( true );
             break;
         case 5:
-            mui_tipocuenta_5->setChecked ( TRUE );
+            mui_tipocuenta_5->setChecked ( true );
             break;
         } // end switch
     } else {

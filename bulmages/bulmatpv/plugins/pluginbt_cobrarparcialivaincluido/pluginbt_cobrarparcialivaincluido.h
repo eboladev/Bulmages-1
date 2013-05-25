@@ -21,10 +21,10 @@
 #ifndef PLUGINBT_COBRARPARCIALIVAINCLUIDO_H
 #define PLUGINBT_COBRARPARCIALIVAINCLUIDO_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtCore/QObject>
 
 #include "btbulmatpv.h"
 #include "blmaincompanypointer.h"

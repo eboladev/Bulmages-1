@@ -19,15 +19,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLayout>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QWidget>
-#include <QDateTime>
-#include <QTextStream>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtCore/QDateTime>
+#include <QtCore/QTextStream>
 #include <fstream>
 
 #include "z2zview.h"
@@ -52,7 +52,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 
     try {
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
     

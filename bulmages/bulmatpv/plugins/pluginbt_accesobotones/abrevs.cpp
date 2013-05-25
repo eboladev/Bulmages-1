@@ -1,5 +1,5 @@
-#include <QWidget>
-#include <QMainWindow>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMainWindow>
 
 #include "abrevs.h"
 #include "blfunctions.h"
@@ -69,7 +69,7 @@ void Abrevs::on_mui_aparcar_clicked()
     emp->ticketActual() ->setDbValue ( "nomticket", emp->valorBtInput() );
 
     /// Quitamos el bloqueo
-    emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
+    emp->ticketActual() ->setDbValue( "bloqueadoticket", "false");
     
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->run("Abrevs_on_mui_aparcar_clicked", this);
@@ -92,7 +92,7 @@ void Abrevs::on_mui_aparcar_clicked()
     g_plugins->run("Abrevs_on_mui_aparcar_clicked_Post", this);
     
     /// Ponemos el nuevo bloqueo
-    tick->setDbValue("bloqueadoticket", "TRUE");
+    tick->setDbValue("bloqueadoticket", "true");
     
     tick->pintar();
 }
@@ -120,7 +120,7 @@ void Abrevs::on_mui_recuperar_clicked()
 	      } // end if	
 	  
 	      /// Pintamos los tickets bloqueados como no seleccionables.
-	      if (ticket->dbValue( "bloqueadoticket") == "TRUE" ) {
+	      if (ticket->dbValue( "bloqueadoticket") == "true" ) {
 		    if( QMessageBox::warning(this, _("Ticket bloqueado"),
 				  _("Este ticket esta bloqueado por otro terminal.\nDesea abrirlo de todos modos?"),
 				  QMessageBox::Yes
@@ -134,9 +134,9 @@ void Abrevs::on_mui_recuperar_clicked()
 	      } // end if	  
 	    
 	    
-	      emp ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+	      emp ->ticketActual()->setDbValue("bloqueadoticket", "false");
 	      emp ->setTicketActual ( ticket );
-	      ticket->setDbValue("bloqueadoticket", "TRUE");
+	      ticket->setDbValue("bloqueadoticket", "true");
 	      ticket->pintar();
 	      
 	      /// Borra el valor del Input.

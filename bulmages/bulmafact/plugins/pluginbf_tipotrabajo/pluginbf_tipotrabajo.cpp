@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_tipotrabajo.h"
 #include "listtipostrabajoview.h"
@@ -42,7 +42,7 @@ int entryPoint ( BfBulmaFact *bges )
     g_pluginbf_tipotrabajo = bges;
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     BlAction *accion = new BlAction (  _("&Tipos de trabajo"), 0 );
     accion->setStatusTip ( _("Tipos de trabajo") );
@@ -181,9 +181,9 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->addSubFormHeader ( "idtipotrabajo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID tipo de trabajo" ) );
     form->addSubFormHeader ( "origidtipotrabajo", BlDbField::DbInt, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Id tipo de trabajo" ) );
 
-    form->setInsert ( TRUE );
-    form->setDelete ( TRUE );
-    form->setSortingEnabled ( FALSE );
+    form->setInsert ( true );
+    form->setDelete ( true );
+    form->setSortingEnabled ( false );
 
     alm->mui_tab->addTab ( form, "Trabajadores Requeridos" );
     

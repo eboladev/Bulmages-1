@@ -25,7 +25,7 @@
 /// (sin demasiados problemas cual es la configuracion que le corresponde).
 
 #include "QTextStream"
-#include <QDir>
+#include <QtCore/QDir>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -51,7 +51,7 @@ void initConfiguration ( QString config )
     BlConfiguration *confpr = new BlConfiguration ( config );
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    blBindTextDomain ("bulmalib", confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
+    blBindTextDomain ("bulmalib", confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
     blTextDomain ("bulmalib");
     g_confpr = confpr;
 }
@@ -121,17 +121,17 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     /// Directorios y archivos obligatorios (sale si no existe):
     if ( !dirGlobalConf.exists() ) {
         mensaje = "--> ERROR: El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
         exit ( -1 );
     } else {
         if ( !genericGlobalConfFile.exists ( m_dirGlobalConf + m_genericGlobalConfFile ) ) {
             mensaje = "--> ERROR: El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
             exit ( -1 );
         } else {
             /// 1) Leemos la configuracion del archivo generico global.
             mensaje = "--> Leyendo el archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "'<--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
             readConfig ( m_dirGlobalConf + m_genericGlobalConfFile );
         }// end if
     } // end if
@@ -139,44 +139,44 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     /// Directorios y archivos opcionales:
     if ( !programGlobalConfFile.exists ( m_dirGlobalConf + m_programGlobalConfFile ) ) {
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
     } else {
         /// 2) Leemos la configuracion del archivo especifico global.
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
         readConfig ( m_dirGlobalConf + m_programGlobalConfFile );
     }// end if
 
     /// Comprobamos si el usuario tiene creado el directorio de configuracion en su carpeta de usuario directorio
     /// de configuracion.
     if ( !dirGlobalConf.exists ( m_dirLocalConf ) ) {
-        if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == TRUE ) {
+        if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == true ) {
             mensaje = "--> Se ha creado el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
         } else {
             mensaje = "--> ERROR: No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
             exit ( -1 );
         }// end if
     } // end if
 
     if ( !genericLocalConfFile.exists ( m_dirLocalConf + m_genericLocalConfFile ) ) {
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
     } else {
         /// 3) Leemos la configuracion del archivo generico local.
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
         readConfig ( m_dirLocalConf + m_genericLocalConfFile );
     }// end if
 
     if ( !programLocalConfFile.exists ( m_dirLocalConf + m_programLocalConfFile ) ) {
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
     } else {
         /// 4) Leemos la configuracion del archivo especifico local.
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
         readConfig ( m_dirLocalConf + m_programLocalConfFile );
     }// end if
 
@@ -494,9 +494,9 @@ void BlConfiguration::saveConfig()
     QTextStream filestr ( &file );
     for ( int i = 0; i < 1000; i++ ) {
         if ( name( i ) != "" ) {
-            filestr << name( i ).toAscii().data();
+            filestr << name( i ).toLatin1().data();
             filestr << "   ";
-            filestr << value( i ).toAscii().data();
+            filestr << value( i ).toLatin1().data();
             filestr << endl;
         } // end if
     } // end for
@@ -516,7 +516,7 @@ bool BlConfiguration::readConfig ( QString fich )
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
         QString cadaux1 = "Leyendo configuracion: '" + fich + "'\n";
-        fprintf ( stderr, "%s", cadaux1.toAscii().constData() );
+        fprintf ( stderr, "%s", cadaux1.toLatin1().constData() );
         fprintf ( stderr, "%s", "\n" );
         QTextStream in ( &arch );
         
@@ -552,9 +552,9 @@ bool BlConfiguration::readConfig ( QString fich )
         } // end while
         arch.close();
         fprintf ( stderr, "%s", "FIN Leyendo configuracion\n" );
-        return TRUE;
+        return true;
     } // end if
-    return FALSE;
+    return false;
 }
 
 

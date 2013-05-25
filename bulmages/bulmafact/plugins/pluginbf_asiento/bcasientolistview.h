@@ -41,7 +41,7 @@ private:
     void rellenaListaEjercicio();
 
 public:
-    BcAsientoListView ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    BcAsientoListView ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~BcAsientoListView();
     void presentar();
     void imprimir();

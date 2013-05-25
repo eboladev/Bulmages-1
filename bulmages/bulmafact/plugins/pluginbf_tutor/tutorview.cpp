@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "tutorview.h"
 #include "bfcompany.h"
@@ -82,7 +82,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         mui_idprovincia->setFieldId ( "idprovincia" );
         mui_idprovincia->m_valores["provincia"] = "";
         mui_idprovincia->m_valores["descpais"] = "";
-        mui_idprovincia->setAllowNull ( TRUE );
+        mui_idprovincia->setAllowNull ( true );
         mui_idprovincia->setId ( "" );
 
 
@@ -96,8 +96,8 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 	mui_listrecibos->addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
 	mui_listrecibos->addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID Tutor" ) );
 	mui_listrecibos->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
-	mui_listrecibos->setInsert ( FALSE );
-	mui_listrecibos->setSortingEnabled ( TRUE );
+	mui_listrecibos->setInsert ( false );
+	mui_listrecibos->setSortingEnabled ( true );
 
         /// Establecemos los parametros de busqueda de Profesor
         m_idalumno1->setMainCompany ( comp );
@@ -131,7 +131,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         mui_alumnosList->load ( "0" );
 
 	
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
         blScript(this);
@@ -379,8 +379,8 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 //    addSubFormHeader ( "porcentalumnocliente", BlDbField::DbNumeric, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Porcentaje Fact." ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
-    setInsert ( TRUE );
-    setSortingEnabled ( TRUE );
+    setInsert ( true );
+    setSortingEnabled ( true );
     
     
 }

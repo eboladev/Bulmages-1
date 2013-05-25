@@ -20,14 +20,14 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QFile>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
 
 #include "pluginbf_corrector.h"
 #include "correctorwidget.h"
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_corrector", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_corrector", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     BlMainCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
@@ -70,7 +70,7 @@ int entryPoint ( BfBulmaFact *bcont )
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
     viewCorrector = new QAction ( _("&Corrector"), 0 );
-    viewCorrector->setCheckable ( TRUE );
+    viewCorrector->setCheckable ( true );
     viewCorrector->setStatusTip ( _("Muestra/oculta el corrector") );
     viewCorrector->setWhatsThis ( _("Corrector.\n\nMuestra/oculta el corrector") );
 
@@ -82,10 +82,10 @@ int entryPoint ( BfBulmaFact *bcont )
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
-        viewCorrector->setChecked ( TRUE );
+        viewCorrector->setChecked ( true );
     } else {
         doc1->hide();
-        viewCorrector->setChecked ( FALSE );
+        viewCorrector->setChecked ( false );
     } // end if
 
     

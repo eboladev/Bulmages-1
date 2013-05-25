@@ -215,10 +215,10 @@ void BcMasaPatrimonialListView::on_mui_borrar_clicked()
     row = mui_tabla->currentRow();
     idMasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
     QString query;
-    query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idMasa.toAscii().constData() );
+    query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idMasa.toLatin1().constData() );
     mainCompany() ->begin();
     mainCompany() ->runQuery ( query );
-    query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idMasa.toAscii().constData() );
+    query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idMasa.toLatin1().constData() );
     mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     inicializaTabla();

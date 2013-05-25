@@ -21,7 +21,7 @@
 #ifndef BUSQUEDAESTADOINCIDENCIA_H
 #define BUSQUEDAESTADOINCIDENCIA_H
 
-#include <QComboBox>
+#include <QtWidgets/QComboBox>
 
 #include "blfunctions.h"
 

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 #include "bltexteditdelegate.h"
 #include "local_blI18n.h"
 
@@ -65,7 +65,7 @@ bool BlTextEditDelegate::eventFilter ( QObject *object, QEvent *event )
 	  case Qt::Key_Return:
 	  case Qt::Key_Enter:
 		event->ignore();
-		return TRUE;
+		return true;
 	      break;
 	  } // end switch
     } // end if

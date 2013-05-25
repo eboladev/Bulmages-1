@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QMenu>
-#include <QAction>
-#include <QTextStream>
-#include <QFile>
-#include <QToolButton>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QTextStream>
+#include <QtCore/QFile>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QPushButton>
 
 
 #include "blfixed.h"

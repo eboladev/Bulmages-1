@@ -25,7 +25,7 @@
 #ifndef BLCOMBOBOX_H
 #define BLCOMBOBOX_H
 
-#include <QComboBox>
+#include <QtWidgets/QComboBox>
 #include "blwidget.h"
 #include "blform.h"
 

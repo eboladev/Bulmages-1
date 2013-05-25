@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QCheckBox>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QCheckBox>
 
 #include "bldialogchanges.h"
 #include "blfixed.h"
@@ -79,7 +79,7 @@ FacturaIVAIncClienteView::FacturaIVAIncClienteView ( BfCompany *comp, QWidget *p
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de pago" ) );
 
-	setDbValue("ticketfactura", "TRUE");
+	setDbValue("ticketfactura", "true");
 	
         /// Disparamos los plugins.
         int res = g_plugins->run ( "FacturaIVAIncClienteView_FacturaIVAIncClienteView", this );
@@ -113,7 +113,7 @@ FacturaIVAIncClienteView::FacturaIVAIncClienteView ( BfCompany *comp, QWidget *p
 
 	setTemplateName("facturaIVAINC");
 	
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->run ( "FacturaIVAIncClienteView_FacturaIVAIncClienteView_Post", this );
 	blScript(this);
@@ -243,7 +243,7 @@ void FacturaIVAIncClienteView::calculaypintatotales() {
     if ( m_listadescuentos->rowCount() ) {
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
-            BlFixed propor ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() );
+            BlFixed propor ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toLatin1().constData() );
             porcentt = porcentt + propor;
         } // end for
     } // end if

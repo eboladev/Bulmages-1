@@ -24,8 +24,8 @@
 #ifndef ALBARANCLIENTEVIEW_H
 #define ALBARANCLIENTEVIEW_H
 
-#include <QWidget>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
 
 #include "bfform.h"
 #include "ui_albaranclientebase.h"

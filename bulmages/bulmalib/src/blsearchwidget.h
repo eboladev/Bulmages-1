@@ -22,8 +22,8 @@
 #ifndef BLSEARCHWIDGET_H
 #define BLSEARCHWIDGET_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "blfunctions.h"
 #include "blwidget.h"
@@ -63,7 +63,7 @@ public:
     virtual QString fieldValue();
     virtual QString fieldValue(QString campo);
     virtual QString tableName();
-    virtual void setId ( QString val, bool cargarvalores = TRUE );
+    virtual void setId ( QString val, bool cargarvalores = true );
     virtual void setFieldValue ( QString val );
     virtual void setFieldValue ( QString campo, QString val );
     virtual void setLabel(QString label);

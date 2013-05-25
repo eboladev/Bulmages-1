@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCheckBox>
-#include <QFile>
-#include <QMessageBox>
-#include <QTextStream>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QFile>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextStream>
 
 #include "facturaivaincclientelist.h"
 #include "facturaivaincclienteview.h"
@@ -114,7 +114,7 @@ void FacturaIVAIncClienteList::crear()
 \param editmodo
 \return
 **/
-FacturaIVAIncClienteList::FacturaIVAIncClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturaIVAIncClienteList::FacturaIVAIncClienteList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -148,7 +148,7 @@ FacturaIVAIncClienteList::FacturaIVAIncClienteList ( QWidget *parent, Qt::WFlags
 \param editmodo
 \return
 **/
-FacturaIVAIncClienteList::FacturaIVAIncClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturaIVAIncClienteList::FacturaIVAIncClienteList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -177,7 +177,7 @@ FacturaIVAIncClienteList::FacturaIVAIncClienteList ( BfCompany *comp, QWidget *p
     m_idtrabajador->setFieldId ( "idtrabajador" );
     m_idtrabajador->m_valores["apellidostrabajador"] = "";
     m_idtrabajador->m_valores["nomtrabajador"] = "";
-    m_idtrabajador->setAllowNull ( TRUE );
+    m_idtrabajador->setAllowNull ( true );
     m_idtrabajador->setId("");
     
     /// Cargamos los filtros guardados.
@@ -235,7 +235,7 @@ void FacturaIVAIncClienteList::setMainCompany ( BfCompany *comp )
     m_idtrabajador->setFieldId ( "idtrabajador" );
     m_idtrabajador->m_valores["apellidostrabajador"] = "";
     m_idtrabajador->m_valores["nomtrabajador"] = "";
-    m_idtrabajador->setAllowNull ( TRUE );   
+    m_idtrabajador->setAllowNull ( true );   
     m_idtrabajador->setId("");
     
     
@@ -397,7 +397,7 @@ QString FacturaIVAIncClienteList::generarFiltro()
 	filtro += " AND idtrabajador = " + m_idtrabajador->id();
     } // end if
     
-    filtro += " AND ticketfactura = TRUE";
+    filtro += " AND ticketfactura = true";
     
     return ( filtro );
 }
@@ -440,9 +440,9 @@ FacturaIVAIncClienteListSubform::FacturaIVAIncClienteListSubform ( QWidget *pare
     addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base imponible" ) );
     addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
     addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

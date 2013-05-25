@@ -14,7 +14,7 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_EN.css "${VAR_CSS_en_EN}" )
 
 add_subdirectory(src)
 add_subdirectory(plugins)
-add_subdirectory(designer)
+#add_subdirectory(designer)
 
 
 set(QT_USE_QTUITOOLS true)

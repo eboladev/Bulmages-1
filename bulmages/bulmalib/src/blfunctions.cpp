@@ -23,15 +23,15 @@
 /// utilizadas de forma regular en el programa. Implementadas en blfunctions.cpp
 /// Dichas funciones normalmente son de uso general, por lo que es normal ver este
 /// archivo incluido en la practica totalidad de los demas ficheros.
-#include <QString>
-#include <QTextEdit>
-#include <QDir>
-#include <QTextStream>
-#include <QLocale>
-#include <QProcess>
-#include <QDesktopServices>
-#include <QUrl>
-#include <QIODevice>
+#include <QtCore/QString>
+#include <QtWidgets/QTextEdit>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QLocale>
+#include <QtCore/QProcess>
+#include <QtGui/QDesktopServices>
+#include <QtCore/QUrl>
+#include <QtCore/QIODevice>
 
 
 #include "blfunctions.h"
@@ -88,7 +88,7 @@ BlDebug::BlDebug(const QString &func, int level, const QString &params) {
 	if (!g_confpr ) return;
 
 	/// Si no hay modo debug salimos directamente
-	if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+	if (g_confpr->value(CONF_DEBUG) == "false" ) return;
 
 	m_func = func;
 	m_level = level;
@@ -185,7 +185,7 @@ void BlDebug::blDebug(const QString &text, int level, const QString &params) {
       if (!g_confpr ) throw -1;
       
       /// Si no hay modo debug salimos directamente
-      if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+      if (g_confpr->value(CONF_DEBUG) == "false" ) return;
 
   
             for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
@@ -212,7 +212,7 @@ BlDebug::~BlDebug() {
       if (!g_confpr ) return;
       
       /// Si no hay modo debug salimos directamente
-      if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+      if (g_confpr->value(CONF_DEBUG) == "false" ) return;
 
        if ( m_level == 0 || m_level == 1 ) {
             for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
@@ -252,12 +252,12 @@ QString blTextEditor ( QString texto )
     QTextEdit *ed = new QTextEdit ();
     ed->setFixedSize ( 450, 250 );
     ed->setPlainText ( texto );
-    g_main->setEnabled ( FALSE );
+    g_main->setEnabled ( false );
     ed->show();
     while ( !ed->isHidden() ) {
         g_theApp->processEvents();
     } // end while
-    g_main->setEnabled ( TRUE );
+    g_main->setEnabled ( true );
     QString vuelta = ed->toPlainText();
     delete ed;
     return vuelta;
@@ -535,7 +535,7 @@ QString blExtendCodeLength ( QString cad, unsigned int num1 )
 void blReplaceStringInFile ( QString archivo, QString texto1, QString texto2, QString archivo2 )
 {
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
-    int result = system ( cadena.toAscii().data() );
+    int result = system ( cadena.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."));
     } // end if
@@ -557,7 +557,7 @@ void blCreatePDF ( const QString arch )
     cadsys = "\"" + g_confpr->value( CONF_PYTHON ) + "\" \"" + g_confpr->value( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
 
-    int result1 = system ( cadsys.toAscii() );
+    int result1 = system ( cadsys.toLatin1() );
     if (result1 == -1) {
 	blMsgError(_("Error en PYTHON [ blfunctions->blCreatePDF() ]"));
     } // end if
@@ -568,7 +568,7 @@ void blCreatePDF ( const QString arch )
     cadsys = "\"" + g_confpr->value( CONF_FLIP ) + "\" -u \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
     
-    int result2 = system ( cadsys.toAscii().data() );
+    int result2 = system ( cadsys.toLatin1().data() );
     if (result2 == -1) {
 	blMsgError(_("Error en FLIP [ blfunctions->blCreatePDF() ]"));
     } // end if
@@ -578,7 +578,7 @@ void blCreatePDF ( const QString arch )
 #else
 
     cadsys = "bgtrml2pdf " + arch + ".rml > " + arch + ".pdf";
-    int result3 = system ( cadsys.toAscii().data() );
+    int result3 = system ( cadsys.toLatin1().data() );
     if (result3 == -1) {
 	blMsgError(_("Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"));
     } // end if
@@ -606,7 +606,7 @@ void blCreateODS ( const QString arch )
 #else
     QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + arch + ".ods";
 #endif
-    int result1 = system ( cadena.toAscii() );
+    int result1 = system ( cadena.toLatin1() );
     if (result1 == -1) {
 	blMsgError(_("Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"));
     } // end if
@@ -619,7 +619,7 @@ void blCreateODS ( const QString arch )
 #else
     cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + arch + ".odt";
 #endif
-    result1 = system ( cadena.toAscii() );
+    result1 = system ( cadena.toLatin1() );
     if (result1 == -1) {
 	blMsgError(_("Error al borrar archivo .odt [ blfunctions->blCreateODS() ]"));
     } // end if
@@ -637,7 +637,7 @@ void blCreateODS ( const QString arch )
 #else
     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + arch + ".pys";
 #endif
-    int result2 = system ( cadena.toAscii() );
+    int result2 = system ( cadena.toLatin1() );
     if (result2 == -1) {
 	blMsgError(_("Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"));
     } // end if
@@ -663,7 +663,7 @@ void blCreateAndLoadODS ( const QString arch )
 #else
       cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".ods &";
 #endif
-      int result = system ( cadena.toAscii() );
+      int result = system ( cadena.toLatin1() );
       if (result == -1) {
 	  blMsgError(_("Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"));
       } // end if
@@ -682,7 +682,7 @@ void blCreateAndLoadODS ( const QString arch )
 #else
       cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".odt &";
 #endif
-      int result = system ( cadena.toAscii() );
+      int result = system ( cadena.toLatin1() );
       if (result == -1) {
 	  blMsgError(_("Error al ejecutar ootext [ blfunctions->blCreateAndLoadODS() ]"));
       } // end if
@@ -704,7 +704,7 @@ void blCreateAndLoadPDF ( const QString arch )
     QString cadsys = g_confpr->value( CONF_PDF ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf &";C:
 #endif
     
-    int result = system ( cadsys.toAscii().data() );
+    int result = system ( cadsys.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"));
     } // end if
@@ -719,7 +719,7 @@ void blSendPDFMail ( const QString arch, const QString to, const QString subject
     //FIXME: REVISAR PARAMETROS de mailsend o la posibilidad de anyadir otros programas
     //para enviar correo desde la ventana de configuracion del programa.
     QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
-    int result = system ( cadsys.toAscii().data() );
+    int result = system ( cadsys.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"));
     } // end if
@@ -738,7 +738,7 @@ QString blWindowId ( const QString &app )
         cad = "xwininfo -int | grep Window | awk '{print $4}' > /tmp/xwinfo";
     } // end if
 
-    int result = system ( cad.toAscii() );
+    int result = system ( cad.toLatin1() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"));
     } // end if
@@ -765,14 +765,14 @@ QString blWindowId ( const QString &app )
 void blDebugOn ()
 {
     BL_FUNC_DEBUG
-    g_confpr->setValue ( CONF_DEBUG, "TRUE" );
+    g_confpr->setValue ( CONF_DEBUG, "true" );
 }
 
 
 void blDebugOff ()
 {
     BL_FUNC_DEBUG
-    g_confpr->setValue ( CONF_DEBUG, "FALSE" );
+    g_confpr->setValue ( CONF_DEBUG, "false" );
 }
 
 
@@ -783,7 +783,7 @@ void blDebugOff ()
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
-#if CONFIG_DEBUG == TRUE
+#if CONFIG_DEBUG == true
 #ifdef OLD_DEBUG
 void blDebug ( const QString &cad, int nivel, const QString &param )
 {
@@ -795,7 +795,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
     static bool semaforo = 0;
 
 
-    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_DEBUG ) == "true" ) {
         static QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
         static QTextStream out ( &file );
 
@@ -1229,14 +1229,14 @@ bool blValidateSpainNIFCode ( QString nif1, QChar &digit )
 
     /// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
     if ( nif1.size() < 5 ) {
-        return TRUE;
+        return true;
     } // end if
 
     int modulo = nif.toInt() % 23;
     digit = QChar ( g_spainNIFCode[modulo] );
     if ( nif1[8] == QChar ( g_spainNIFCode[modulo] ) )
-        return TRUE;
-    return FALSE;
+        return true;
+    return false;
 
 }
 
@@ -1273,7 +1273,7 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
     cif = cif.replace ( "_", "" );
     /// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
     if ( cif.size() < 5 ) {
-        return TRUE;
+        return true;
     } // end if
     int valpar = cif[2].digitValue() + cif[4].digitValue() + cif[6].digitValue();
     int valimpar = blSumAllDigits ( cif[1].digitValue() * 2 ) + blSumAllDigits ( cif[3].digitValue() * 2 ) + blSumAllDigits ( cif[5].digitValue() * 2 ) + blSumAllDigits ( cif[7].digitValue() * 2 );
@@ -1284,23 +1284,23 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
     if ( cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W' ) {
         digit = g_spainCIFCode[d-1];
         if ( cif[8] == g_spainCIFCode[d-1] ) {
-            return TRUE;
+            return true;
         } else {
-            return FALSE;
+            return false;
         } // end if
     } // end if
     if ( cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'C' || cif[0] == 'D' || cif[0] == 'E' || cif[0] == 'F' || cif[0] == 'G' || cif[0] == 'H' || cif[0] == 'I' || cif[0] == 'J' || cif[0] == 'U' || cif[0] == 'V' ) {
         digit = QString::number ( d % 10 ) [0];
         if ( cif[8].digitValue() == d % 10 ) {
-            return TRUE;
+            return true;
         } else {
-            return FALSE;
+            return false;
         } // end if
     } //end if
     if ( cif[8] == QChar ( g_validateSpainCIFCode[d-1] ) || cif[8].digitValue() == d % d ) {
-        return TRUE;
+        return true;
     } //end if
-    return FALSE;
+    return false;
 }
 
 
@@ -1318,14 +1318,14 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
       
       #ifndef Q_OS_WIN32
 	      QString comando = "lp -d" + printer + " " + dir + archivo;
-	      system ( comando.toAscii().data() );
+	      system ( comando.toLatin1().data() );
       #else
 	      /* TODO: Eliminar CONF_SPOOL porque ya se imprime en 'raw' directamente desde BulmaLib.
 	       *
 	      QString comando = "\"" + g_confpr->value(CONF_SPOOL)  + "\" \"" + dir + archivo + "\" " + printer;
 	      comando.replace("/","\\");
 	      comando = "\"" + comando + "\"";
-	      system ( comando.toAscii().data() );
+	      system ( comando.toLatin1().data() );
 	      */
 
 	      /// Lee el contenido del archivo y lo manda a la impresora.
@@ -1365,7 +1365,7 @@ int blWebBrowser(const QString &uri, const QString &defbrowser) {
     
     else {
         QString webcommand = commas + browser + commas + QUrl(uri, QUrl::TolerantMode).toString() + inbackground;
-        int result = system ( webcommand.toAscii().data() );
+        int result = system ( webcommand.toLatin1().data() );
         return result;
     } // end if
 
@@ -1515,7 +1515,7 @@ bool blCopyFile( const QString &oldName, const QString &newName )
 			command = "cp " + oldFile + " " + newFile;
 		#endif
 
-		int result = system ( command.toAscii().data() );
+		int result = system ( command.toLatin1().data() );
 
         if (result == -1) {
             return false;
@@ -1549,7 +1549,7 @@ bool blRemove(const QString &filetoremove )
 	    command = "rm " + removeFile;
 	#endif
 
-        int result = system ( command.toAscii().data() );
+        int result = system ( command.toLatin1().data() );
         if (result == -1) {
             return false;
             } // end if
@@ -1658,7 +1658,7 @@ int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &b
     runcommand.replace("\n"," ");
     #endif
             
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     
     return 0;
 }
@@ -1688,7 +1688,7 @@ int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, Q
   
     runcommand += " " + recipient;
     
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     
     return 0;
 }
@@ -1716,7 +1716,7 @@ int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &bod
         urlmail += "&attach=" + attached + "\"";
     }
     QString runcommand = QString(CAD_COMILLAS + dir_email + QUrl(urlmail, QUrl::TolerantMode).toString() + CAD_COMILLAS);
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     return 0;
 
 }
@@ -1750,7 +1750,7 @@ int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body,
     
     QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS + CAD_COMILLAS + urlmail + CAD_COMILLAS);
     
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     return 0;
 
 }

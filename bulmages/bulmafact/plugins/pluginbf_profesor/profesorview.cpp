@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "profesorview.h"
 #include "bfcompany.h"
@@ -73,7 +73,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         mui_idprovincia->setFieldId ( "idprovincia" );
         mui_idprovincia->m_valores["provincia"] = "";
         mui_idprovincia->m_valores["descpais"] = "";
-        mui_idprovincia->setAllowNull ( TRUE );
+        mui_idprovincia->setAllowNull ( true );
         mui_idprovincia->setId ( "" );
 
         m_actividades->setMainCompany ( mainCompany() );
@@ -86,10 +86,10 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
 	m_actividades->addSubFormHeader ( "finicialactividad", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha Inicial" ) );
 	m_actividades->addSubFormHeader ( "ffinalactividad", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha Final" ) );
 	
-	m_actividades->setInsert ( FALSE );
-	m_actividades->setSortingEnabled ( TRUE );
+	m_actividades->setInsert ( false );
+	m_actividades->setSortingEnabled ( true );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);

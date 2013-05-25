@@ -22,7 +22,7 @@
 #ifndef BLDATESEARCH_H
 #define BLDATESEARCH_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "blfunctions.h"
 #include "blmaincompanypointer.h"

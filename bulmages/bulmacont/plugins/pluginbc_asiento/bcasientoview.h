@@ -22,9 +22,9 @@
 #ifndef BCASIENTOVIEW_H
 #define BCASIENTOVIEW_H
 
-#include <QWidget>
-#include <QString>
-#include <QFrame>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFrame>
 
 #include "blconfiguration.h"
 #include "bldatesearch.h"

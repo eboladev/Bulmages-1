@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QComboBox>
-#include <QLabel>
-#include <QPixmap>
-#include <QCheckBox>
-#include <QFileDialog>
-#include <QCloseEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QFileDialog>
+#include <QtGui/QCloseEvent>
 
 #include "articuloview.h"
 #include "bfcompany.h"
@@ -121,7 +121,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins.
         g_plugins->run ( "ArticuloView_ArticuloView_Post", this );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         dialogChanges_readValues();
 	
 	blScript(this);  /// La clase se hace scriptable.
@@ -293,10 +293,10 @@ int ArticuloView::afterSave()
 bool ArticuloView::compruebaCiclos(QString idart) {
   BL_FUNC_DEBUG
   static QList<QString> lista;
-  bool result = FALSE;
+  bool result = false;
   
   /// Comprueba que no este duplicado un path
-  if (lista.contains(idart)) return TRUE;
+  if (lista.contains(idart)) return true;
   
   lista.append(idart);
   
@@ -411,7 +411,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
 */
 void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
     BL_FUNC_DEBUG
-    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty() && g_confpr->value(CONF_PRECALC_CODARTICULO) == "TRUE") {
+    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty() && g_confpr->value(CONF_PRECALC_CODARTICULO) == "true") {
         QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
 
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );

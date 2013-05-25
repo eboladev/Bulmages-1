@@ -68,8 +68,8 @@ private:
     QString mdb_idfactura;
 
 public:
-    FacturaIVAIncClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    FacturaIVAIncClienteList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    FacturaIVAIncClienteList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    FacturaIVAIncClienteList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     void setMainCompany ( BfCompany * );
     ~FacturaIVAIncClienteList();
     void presentar();

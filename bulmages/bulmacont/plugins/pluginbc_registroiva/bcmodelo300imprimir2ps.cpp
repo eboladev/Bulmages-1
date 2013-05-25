@@ -24,11 +24,11 @@
 #include <iostream>
 #include <unistd.h>
 
-#include <QString>
-#include <QComboBox>
-#include <QRadioButton>
-#include <QLineEdit>
-#include <QMessageBox>
+#include <QtCore/QString>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
 
 #include "bcmodelo300imprimir2ps.h"
 #include "blconfiguration.h"
@@ -53,7 +53,7 @@ BcModelo300Imprimir2PS::BcModelo300Imprimir2PS ( QWidget *parent ) : QDialog ( p
     metabase->inicializa ( "bulmages" ); ///[TODO] CAMBIAR!!!!
 
     metabase->begin();
-    fprintf ( stderr, "%s\n", query.toAscii().constData() );
+    fprintf ( stderr, "%s\n", query.toLatin1().constData() );
     BlDbRecordSet *cur = metabase->loadQuery ( query, "bancos" );
 
     int nTuples = cur->numregistros();
@@ -67,7 +67,7 @@ BcModelo300Imprimir2PS::BcModelo300Imprimir2PS ( QWidget *parent ) : QDialog ( p
         nombresccc[i] += cur->value( "codigo" );
 
         numerccc[i] = cur->value( "bancoent_cuenta" );
-//        cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
+//        cout << nombresccc[i].toLatin1().constData() << "\t" << numerccc[i].toLatin1().constData() << "\n";
         combocuentas->addItem ( nombresccc[i] );
         cur->nextRecord();
     } // end for
@@ -107,8 +107,8 @@ void BcModelo300Imprimir2PS::accept()
     } else
         ccc = new BlSpainBankAccountNumber ( banco->text(), entidad->text(), dc->text(), cuenta->text() );
 
-//    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toAscii().constData() << "\n";
-//    cout << "dc=" << ccc->getdc().toAscii().constData() << "\n";
+//    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toLatin1().constData() << "\n";
+//    cout << "dc=" << ccc->getdc().toLatin1().constData() << "\n";
 
     if ( !ccc->cuentaesvalida() ) {
         switch ( QMessageBox::warning ( this,
@@ -164,7 +164,7 @@ void BcModelo300Imprimir2PS::generaps()
 //        cout << "Convirtiendo a postscript...\n";
         if ( m_es_borrador ) {
             command = "pdftops " + pdfname + " " + tempname;
-            system ( command.toAscii().constData() );
+            system ( command.toLatin1().constData() );
         } else {
             BcPsProgressDialog progress ( _ ( "Creando formulario" ), _ ( "&Cancelar" ), 0, 50, this, 0 );
             this->convierte_a_postscript = new BcPsThread ( pdfname, tempname, &progress );
@@ -187,7 +187,7 @@ void BcModelo300Imprimir2PS::generaps()
     /// Ahora tengo que procesar tempname y generar psname.
     if ( doit ) {
         psname = QString ( getenv ( "HOME" ) ) + "/.bulmages/mod300.ps";
-//        cout << psname.toAscii().constData();
+//        cout << psname.toLatin1().constData();
         m_fich.setFileName ( psname );
         if ( m_fich.open ( QIODevice::WriteOnly ) ) {
             m_output.setDevice ( &m_fich );
@@ -252,12 +252,12 @@ void BcModelo300Imprimir2PS::generaps()
             m_fichlec.close();
             m_fich.close();
 
-//            cout << "Se supone que tengo que leer los formularios desde " << g_confpr->value(CONF_PROGDATA).toAscii().constData() << "\n";
+//            cout << "Se supone que tengo que leer los formularios desde " << g_confpr->value(CONF_PROGDATA).toLatin1().constData() << "\n";
 //            cout << "[TODO] OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
 //            cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 
             command = "rm " + tempname + "; kghostview " + psname;
-            system ( command.toAscii().constData() );
+            system ( command.toLatin1().constData() );
         } else {
 	    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error, no se ha abierto el archivo.") );
         } // end if

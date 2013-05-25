@@ -1,13 +1,13 @@
 #include "mesas.h"
 #include "btbulmatpv.h"
-#include <QWidget>
-#include <QMenu>
-#include <QSvgRenderer>
-#include <QFileDialog>
-#include <QInputDialog>
-#include <QTextStream>
-#include <QDomDocument>
-#include <QTimer>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMenu>
+#include <QtSvg/QSvgRenderer>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QInputDialog>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
+#include <QtCore/QTimer>
 
 #include "blmainwindow.h"
 #include "blplugins.h"
@@ -17,7 +17,7 @@ Mesas *g_mesas;
 Mesa  *g_mesaAct;
 /// Modo configuracion de mesas o no.
 bool g_bloqueo;
-/// Modo selector de mesas: normal (TRUE) o especial (FALSE) (no activa mesas).
+/// Modo selector de mesas: normal (true) o especial (false) (no activa mesas).
 bool g_selectMode;
 bool g_joinTables;
 QList<QString> g_selectedTables;
@@ -45,8 +45,8 @@ void Mesas::on_mui_mesas_clicked()
 {
 
     /// Se asegura que esta en modo normal.
-    g_selectMode = TRUE;
-    g_joinTables = FALSE;
+    g_selectMode = true;
+    g_joinTables = false;
 
     if (m_centralWidget == NULL) {
         /// Creamos y presentamos el plugin de mesas.
@@ -60,7 +60,7 @@ void Mesas::on_mui_mesas_clicked()
         m_distro->exportXML();
     } // end if
 
-    m_distro->mui_table_move -> setChecked (FALSE);
+    m_distro->mui_table_move -> setChecked (false);
 
 }
 
@@ -75,9 +75,9 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
 
   m_background = "";
   g_escala = 200;
-  g_bloqueo = TRUE;
-  g_selectMode = TRUE;
-  g_joinTables = FALSE;
+  g_bloqueo = true;
+  g_selectMode = true;
+  g_joinTables = false;
 
   mui_borrar -> setVisible(!g_bloqueo);
   mui_cambiar_imagen -> setVisible(!g_bloqueo);
@@ -110,16 +110,16 @@ void DistroMesas::on_mui_table_move_toggled(bool togg) {
   /// Si se vuelve a pulsar antes de completarse el procedimiento este queda cancelado
   /// y el boton vuelve a su estado de reposo.
 
-  if (g_selectMode == TRUE) {
+  if (g_selectMode == true) {
       /// Modo especial.
-      g_selectMode = FALSE;
-      g_joinTables = TRUE;
+      g_selectMode = false;
+      g_joinTables = true;
       g_selectedTables.clear();
       
   } else {
       /// Modo normal.
-      g_selectMode = TRUE;
-      g_joinTables = FALSE;
+      g_selectMode = true;
+      g_joinTables = false;
       g_selectedTables.clear();
   } // end if
   
@@ -217,9 +217,9 @@ void DistroMesas::paintEvent ( QPaintEvent * event ) {
 	QList<Mesa *> mesas = findChildren<Mesa *>();
 	for (int i = 0; i < mesas.size(); ++i) {
 	    if ( mesas.at(i)->m_pantalla == m_pantallaactual) {
-		mesas.at(i)->setVisible(TRUE);
+		mesas.at(i)->setVisible(true);
 	    } else {
-		mesas.at(i)->setVisible(FALSE);
+		mesas.at(i)->setVisible(false);
 	    } // end if
 	} // end for
 	
@@ -279,7 +279,7 @@ void DistroMesas::importXML(const QString val) {
 		but->setText(mesa->m_pantalla);
 		but->setMinimumHeight(42);
 		but->setMinimumWidth(42);
-		but->setCheckable(TRUE);
+		but->setCheckable(true);
 		mui_espaciopantallas->addWidget(but);
 		connect(but, SIGNAL(clicked()), this, SLOT(cambiarPantalla()));
 	    } // end if
@@ -296,11 +296,11 @@ void DistroMesas::importXML(const QString val) {
 
 void DistroMesas::cambiarPantalla() {
   m_pantallaactual = ((QToolButton *)sender())->text();
-  ((QToolButton *) sender())->setChecked(TRUE);
+  ((QToolButton *) sender())->setChecked(true);
   QList<QToolButton *> allPButtons = findChildren<QToolButton *>(QRegExp("p_*"));
   for (int i = 0; i < allPButtons.size(); ++i) {
       if (allPButtons.at(i) != sender()) {
-	  allPButtons.at(i)->setChecked(FALSE);
+	  allPButtons.at(i)->setChecked(false);
       } // end if
   } // end for
   repaint();
@@ -317,7 +317,7 @@ void DistroMesas::on_mui_nuevapantalla_clicked() {
 	QToolButton *but = new QToolButton(this);
 	but->setObjectName("p_" + text);
 	but->setText(text);
-	but->setCheckable(TRUE);
+	but->setCheckable(true);
 	but->setMinimumHeight(42);
 	but->setMinimumWidth(42);
 	mui_espaciopantallas->addWidget(but);
@@ -692,10 +692,10 @@ void Mesa::mouseReleaseEvent(QMouseEvent* event)
 	      
 	      emp->joinTickets(ticket1, ticket2);
 	      
-	      g_selectMode = TRUE;
-	      g_joinTables = FALSE;
+	      g_selectMode = true;
+	      g_joinTables = false;
 	      g_selectedTables.clear();
-	      g_mesas->m_distro->mui_table_move -> setChecked (FALSE);
+	      g_mesas->m_distro->mui_table_move -> setChecked (false);
 
 	      update();
 	      
@@ -757,7 +757,7 @@ void Mesa::abrirMesa() {
         if ( m_nombreMesa == ticket->dbValue ( "nomticket" )) {
 
             /// Quitamos el bloqueo
-            emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
+            emp->ticketActual() ->setDbValue( "bloqueadoticket", "false");
             
             /// Llamamos a plugins para poder hacer lo pertinente
             g_plugins->run("Abrevs_on_mui_aparcar_clicked", this);
@@ -773,7 +773,7 @@ void Mesa::abrirMesa() {
             g_plugins->run("Abrevs_on_mui_aparcar_clicked_Post", this);
             
             /// Ponemos el nuevo bloqueo
-            ticket->setDbValue("bloqueadoticket", "TRUE");
+            ticket->setDbValue("bloqueadoticket", "true");
             
             ticket->pintar();
 
@@ -799,7 +799,7 @@ void Mesa::abrirMesa() {
     tick ->setDbValue ( "nomticket", m_nombreMesa );
 
     /// Quitamos el bloqueo
-    emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
+    emp->ticketActual() ->setDbValue( "bloqueadoticket", "false");
     
     /// Llamamos a plugins para poder hacer lo pertinente
      g_plugins->run("Abrevs_on_mui_aparcar_clicked", this);
@@ -815,7 +815,7 @@ void Mesa::abrirMesa() {
     g_plugins->run("Abrevs_on_mui_aparcar_clicked_Post", this);
     
     /// Ponemos el nuevo bloqueo
-    tick->setDbValue("bloqueadoticket", "TRUE");
+    tick->setDbValue("bloqueadoticket", "true");
     
     tick->pintar();
 

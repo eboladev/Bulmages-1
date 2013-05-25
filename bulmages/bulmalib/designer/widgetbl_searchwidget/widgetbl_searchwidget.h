@@ -19,11 +19,11 @@
  ***************************************************************************/
 
 #include <QtDesigner>
-#include <QtGui>
+#include <QtGui/QtGui>
 #include <QtPlugin>
 #include <QDesignerCustomWidgetInterface>
-#include <QList>
-#include <QWidget>
+#include <QtCore/QList>
+#include <QtWidgets/QWidget>
 
 #include "blsearchwidget.h"
 

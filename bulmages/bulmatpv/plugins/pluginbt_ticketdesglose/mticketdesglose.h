@@ -22,9 +22,9 @@
 #ifndef MTICKET1_H
 #define MTICKET1_H
 
-#include <QLabel>
-#include <QTableWidget>
-#include <QTextBrowser>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTextBrowser>
 
 #include "btticket.h"
 #include "btcompany.h"

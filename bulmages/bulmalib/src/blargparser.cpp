@@ -36,9 +36,9 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
    m_host = "";
    m_port = "";
    m_userName = "";
-   m_showVersion = FALSE;
-   m_askPassword = FALSE;
-   m_showHelp = FALSE;
+   m_showVersion = false;
+   m_askPassword = false;
+   m_showHelp = false;
    m_confReplaceString = "";
    
    QString argument = "";

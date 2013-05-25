@@ -27,8 +27,8 @@ para trabajar con la base de datos.
 #ifndef BLUILOADER_H
 #define BLUILOADER_H
 
-#include <QWidget>
-#include <QUiLoader>
+#include <QtWidgets/QWidget>
+#include <QtUiTools/QUiLoader>
 #include "blform.h"
 #include "blformlist.h"
 

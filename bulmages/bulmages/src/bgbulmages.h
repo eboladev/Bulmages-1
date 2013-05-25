@@ -40,11 +40,11 @@
 #ifndef BGBULMAGES_H
 #define BGBULMAGES_H
 
-#include <QObject>
-#include <QSystemTrayIcon>
-#include <QDialog>
-#include <QMenu>
-#include <QString>
+#include <QtCore/QObject>
+#include <QtWidgets/QSystemTrayIcon>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QMenu>
+#include <QtCore/QString>
 
 #include "blfunctions.h"
 #include "ui_bgbulmagesbase.h"

@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "socioview.h"
 #include "bfcompany.h"
@@ -90,7 +90,7 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         mui_idprovincia->setFieldId ( "idprovincia" );
         mui_idprovincia->m_valores["provincia"] = "";
         mui_idprovincia->m_valores["descpais"] = "";
-        mui_idprovincia->setAllowNull ( TRUE );
+        mui_idprovincia->setAllowNull ( true );
         mui_idprovincia->setId ( "" );
 
 	mui_idtiposocio->setMainCompany ( mainCompany() );
@@ -99,7 +99,7 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         mui_idtiposocio->setFieldId ( "idtiposocio" );
         mui_idtiposocio->m_valores["nombretiposocio"] = "";
         mui_idtiposocio->m_valores["cuotatiposocio"] = "";
-        mui_idtiposocio->setAllowNull ( TRUE );
+        mui_idtiposocio->setAllowNull ( true );
         mui_idtiposocio->setId ( "" );
 
 	mui_listrecibos->setMainCompany( mainCompany() );
@@ -111,13 +111,13 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 	mui_listrecibos->addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
 	mui_listrecibos->addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID Tutor" ) );
 	mui_listrecibos->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
-	mui_listrecibos->setInsert ( FALSE );
-	mui_listrecibos->setSortingEnabled ( TRUE );
+	mui_listrecibos->setInsert ( false );
+	mui_listrecibos->setSortingEnabled ( true );
 
 // =========================================
 
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
         blScript(this);
@@ -254,8 +254,8 @@ ListAlumnosSocioView::ListAlumnosSocioView ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "porcentalumnocliente", BlDbField::DbNumeric, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Porcentaje Fact." ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
-    setInsert ( TRUE );
-    setSortingEnabled ( TRUE );
+    setInsert ( true );
+    setSortingEnabled ( true );
     
     
 }

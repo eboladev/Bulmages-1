@@ -26,9 +26,9 @@
 #ifndef SERVERSYNC_H
 #define SERVERSYNC_H
 
-#include <QLabel>
-#include <QTableWidget>
- #include <QTcpServer>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTableWidget>
+ #include <QtNetwork/QTcpServer>
 
 #include "btticket.h"
 #include "btcompany.h"

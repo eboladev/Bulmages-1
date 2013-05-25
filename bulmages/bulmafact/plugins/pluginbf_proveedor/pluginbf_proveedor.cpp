@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_proveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_proveedor", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_proveedor = bges;
 
     if ( bges->company()->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
@@ -272,7 +272,7 @@ void SubForm_Proveedor::nuevoProveedor( )
     
     ProveedorView *artlist = new ProveedorView ( ( BfCompany * ) sub->mainCompany(), 0 );
 	/// Desabilitamos el borrado automatico de la clase y lo realizaremos manualmente para que no se llame al isHidden sobre un objeto eliminado.
-    artlist->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    artlist->setAttribute ( Qt::WA_DeleteOnClose, false );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();

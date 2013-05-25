@@ -22,7 +22,7 @@
 #ifndef ALMACENESLISTVIEW_H
 #define ALMACENESLISTVIEW_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blformlist.h"
@@ -40,8 +40,8 @@ private:
     QString m_idalmacen;
 
 public:
-    AlmacenesListView ( QWidget *parent = 0, Qt::WFlags flag = 0 );
-    AlmacenesListView ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    AlmacenesListView ( QWidget *parent = 0, Qt::WindowFlags flag = 0 );
+    AlmacenesListView ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0 );
     ~AlmacenesListView();
     void presentar();
     void editar ( int );
