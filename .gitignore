@@ -1,8 +1,6 @@
 blconfig.h
 build
-*.cmake
 *.conf
-*.css
 *.depends
 *.pot_list
 actualizabulmacont
