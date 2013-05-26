@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                    #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -33,9 +34,6 @@ set(CMAKE_CXX_FLAGS "-fPIC")
 
 set(QT5_MODULE_PATH "/usr/lib/x86_64-linux-gnu/cmake")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake")
-
-
-set (USE_QMDIAREA TRUE)
 
 STRING( REGEX MATCHALL "[0-9]+" BULMAGES_VERSIONS ${BULMAGES_VERSION} )
 LIST( GET BULMAGES_VERSIONS 0 BULMAGES_VERSION_MAJOR)

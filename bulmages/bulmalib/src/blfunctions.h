@@ -109,7 +109,7 @@ void BL_EXPORT blReplaceStringInFile ( QString, QString, QString, QString );
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString BL_EXPORT blTextEditor ( QString texto );
 
-#if CONFIG_DEBUG == true
+#if CONFIG_DEBUG == TRUE
 #ifdef OLD_DEBUG
 void BL_EXPORT blDebug ( const QString &cad, int nivel = 0, const QString & param = "" );
 #endif

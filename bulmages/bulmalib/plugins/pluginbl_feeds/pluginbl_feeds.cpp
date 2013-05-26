@@ -20,7 +20,6 @@
 
 #include <stdio.h>
 
-#define QUITACORRECTOR
 
 #include <QtWidgets/QAction>
 #include <QtWidgets/QMessageBox>
@@ -32,10 +31,10 @@
 #include <QtCore/QFile>
 #include <QtWidgets/QMenu>
 
+#include <QWebView>
+
 #include "pluginbl_feeds.h"
-#ifdef QUITACORRECTOR
 #include "visorhtml.h"
-#endif
 #include "bfcompany.h"
 #include "bldockwidget.h"
 

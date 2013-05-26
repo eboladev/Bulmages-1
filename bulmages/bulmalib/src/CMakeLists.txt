@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                    #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -17,15 +18,15 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
-
-
-#Bulmalib
+#########################################################################
+#Bulmalib                                                               #
+#########################################################################
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTUITOOLS true)
+#set(QT_USE_QTXML true)
+#set(QT_USE_QTSCRIPT true)
+#set(QT_USE_QTUITOOLS true)
 
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
@@ -116,7 +117,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blaction.h)
 
 
-#           blworkspace.h
+
 
 
 set (bulmalib_HDRS	blmaincompanypointer.h
@@ -169,6 +170,7 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blsearchwidgetbase.ui
 			blformlistfilterbase.ui
 			blbankeditbase.ui)
+
 
 #message(FATAL_ERROR "La ruta: ${Qt5Widgets_INCLUDES} ${QT_INCLUDE_DIR}")
 
@@ -237,7 +239,7 @@ set_target_properties( bulmalib PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-qt5_use_modules(bulmalib UiTools Xml Core Widgets Script)
+qt5_use_modules(bulmalib UiTools Xml Core Widgets Script WebKit)
 
 IF(USE_GETTEXT)
 	target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} ${GETTEXT_LIBRARIES} )

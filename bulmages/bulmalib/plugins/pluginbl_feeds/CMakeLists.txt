@@ -14,12 +14,12 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set (QT_USE_QTWEBKIT true)
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTNETWORK true)
-
+#set(QT_USE_QTASSISTANT false)
+#set(QT_USE_QTXML true)
+#set (QT_USE_QTWEBKIT true)
+#set(QT_USE_QTSCRIPT true)
+#set(QT_USE_QTNETWORK true)
+find_package(Qt5WebKit REQUIRED)
 
 #INCLUDE( ${QT_USE_FILE} )
 
@@ -41,6 +41,7 @@ include_directories(
 QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
 
 
 IF(WIN32)
@@ -83,6 +84,9 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
+
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)

@@ -92,6 +92,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     pbarra.setBrush ( QPalette::Base, colorfondobarra );
     m_barra->setPalette ( pbarra );
     
+    fprintf(stderr, "Ya no en el constructor de BlSplashScreen \n");
 }
 
 
@@ -101,6 +102,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
 BlSplashScreen::~BlSplashScreen()
 {
     BL_FUNC_DEBUG
+    fprintf(stderr,"En el destructor de BlSplashScreen");
 #ifndef Q_OS_WIN32
     delete l0;
 #endif

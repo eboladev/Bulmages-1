@@ -79,7 +79,7 @@ int main ( int argc, char **argv )
        //QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toLatin1().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toLatin1().constData() ) ) );
+      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toUtf8().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toUtf8().constData() ) ) );
 
       /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
       argParser = new BlArgParser( g_theApp->arguments().size(), argv );
@@ -101,11 +101,12 @@ int main ( int argc, char **argv )
          return 0;
       } // end if
 
+
       /// Cargamos el BlSplashScreen.
       splashScr = new BlSplashScreen ( g_confpr->value( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
       splashScr->setMessage ( _( "Iniciando clases" ) );
       splashScr->setProgressBar ( 1 );
-      
+
       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
       login1 = new BlDbLoginDialog ( 0, "" );
       if ( !login1->authOK() || argParser->askPassword() ) {
@@ -199,8 +200,13 @@ int main ( int argc, char **argv )
 
       valorSalida = g_theApp->exec();
 
+
+      
       /// Disparamos los plugins con entryPoint.
       g_plugins->run ( "exitPoint", bges );
+      
+
+
    } catch ( ... ) {
       blMsgInfo ( _( "Error inesperado en BulmaFact. El programa se cerrara." ) );
    } // end try
@@ -210,6 +216,7 @@ int main ( int argc, char **argv )
    delete g_theApp;
    delete g_plugins;
    delete g_confpr;  /* El ultimo a eliminar ya que los destructores lo utilizan */
+   
 
 
    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );

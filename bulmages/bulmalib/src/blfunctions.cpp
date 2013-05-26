@@ -65,31 +65,15 @@ QString BlDebug::m_mensajesanulados[7000];
 QString BlDebug::m_clasesanuladas[7000];
 int BlDebug::m_indiceclases;
 
-// int timeval_subtract (result, x, y)
-//      struct timeval *result, *x, *y;
-// {
-//   /* Perform the carry for the later subtraction by updating y. */
-//   if (x->tv_usec < y->tv_usec) {
-//     int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
-//     y->tv_usec -= 1000000 * nsec;
-//     y->tv_sec += nsec;
-//   }
-//   if (x->tv_usec - y->tv_usec > 1000000) {
-//     int nsec = (y->tv_usec - x->tv_usec) / 1000000;
-//     y->tv_usec += 1000000 * nsec;
-//     y->tv_sec -= nsec;
-//   }
-
 
 BlDebug::BlDebug(const QString &func, int level, const QString &params) {
     try {
-      
 	/// Si el objeto confpr no esta creado puede dar segmentation fault.
 	if (!g_confpr ) return;
 
 	/// Si no hay modo debug salimos directamente
 	if (g_confpr->value(CONF_DEBUG) == "false" ) return;
-
+	
 	m_func = func;
 	m_level = level;
 	m_params = params;
@@ -178,7 +162,6 @@ BlDebug::BlDebug(const QString &func, int level, const QString &params) {
 }
 
 void BlDebug::blDebug(const QString &text, int level, const QString &params) {
-
     try {
       
       /// Si el objeto confpr no esta creado puede dar segmentation fault.
@@ -187,18 +170,17 @@ void BlDebug::blDebug(const QString &text, int level, const QString &params) {
       /// Si no hay modo debug salimos directamente
       if (g_confpr->value(CONF_DEBUG) == "false" ) return;
 
-  
-            for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
-                *BlDebug::m_outXML << "    ";
-                *BlDebug::m_out << "    ";
-            } // end for
+      for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
+	  *BlDebug::m_outXML << "    ";
+	  *BlDebug::m_out << "    ";
+      } // end for
+      
+      QString cad1;
+      cad1 = "<comment  result=\"" + text + "\"  params=\"" + params + "\"></comment>";
 
-            QString cad1;
-            cad1 = "<comment  result=\"" + text + "\"  params=\"" + params + "\"></comment>";
 
-
-            *BlDebug::m_outXML << cad1  << "\n" << flush;
-            *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
+      *BlDebug::m_outXML << cad1  << "\n" << flush;
+      *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
     } catch(...) {
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
     } // end try
@@ -783,7 +765,7 @@ void blDebugOff ()
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
-#if CONFIG_DEBUG == true
+#if CONFIG_DEBUG == TRUE
 #ifdef OLD_DEBUG
 void blDebug ( const QString &cad, int nivel, const QString &param )
 {

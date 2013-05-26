@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                    #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -34,10 +35,10 @@ file(GLOB bulmafact_UIS *.ui)
 
 set(bulmafactEx main.cxx)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTWEBKIT true)
+#set(QT_USE_QTASSISTANT false)
+#set(QT_USE_QTXML true)
+#set(QT_USE_QTSCRIPT true)
+#set(QT_USE_QTWEBKIT true)
 
 IF(WIN32)
     # En MS-Windows no hay soporte directo de QtDBus.
@@ -89,6 +90,8 @@ set_target_properties( libbulmafact PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}"
   OUTPUT_NAME bulmafact )
+
+qt5_use_modules(libbulmafact UiTools Xml Core Widgets Script)
 
 target_link_libraries(libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
