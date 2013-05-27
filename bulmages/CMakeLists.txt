@@ -31,7 +31,18 @@ SET( BULMAGES_VERSION 1.5.0 )
 
 set(CMAKE_CXX_FLAGS "-fPIC")
 
-set(QT5_MODULE_PATH "/usr/lib/x86_64-linux-gnu/cmake")
+find_package(Qt5Core REQUIRED)
+
+  message(STATUS "El root: ${Qt5Core_LIBRARIES}")
+
+  message(STATUS "El root: ${_qt5Core_install_prefix}")
+
+IF(WIN32)
+set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/cmake")
+ELSE(WIN32)
+set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/x86_64-linux-gnu/cmake")
+ENDIF(WIN32)
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake")
 
 STRING( REGEX MATCHALL "[0-9]+" BULMAGES_VERSIONS ${BULMAGES_VERSION} )
@@ -83,9 +94,6 @@ INCLUDE(${QT5_MODULE_PATH}/Qt5Widgets/Qt5WidgetsConfig.cmake)
 
 # ######### General setup ##########
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
-#find_package(Qt5)
-
-
 
 if(NOT QT5_FOUND)
   message(FATAL_ERROR "Bulmages needs QT5 to compile")
@@ -93,11 +101,6 @@ endif(NOT QT5_FOUND)
 
 IF (QT5_FOUND)
  find_package(Qt5Core REQUIRED)
-# find_package(Qt5Widgets REQUIRED)
-
-# find_package(Qt5Gui REQUIRED)
-# find_package(Qt5Network REQUIRED)
-# find_package(Qt5Script REQUIRED)
 ENDIF(QT5_FOUND)
 
 
