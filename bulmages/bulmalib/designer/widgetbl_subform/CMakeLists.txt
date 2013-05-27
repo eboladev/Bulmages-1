@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS ../../src/blsubformbase.ui)
 
-
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTDESIGNER true)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-#INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
 	${PGSQL_INCLUDE_DIR}
 	${QT_INCLUDE_DIR}

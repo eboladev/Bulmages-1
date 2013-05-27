@@ -35,20 +35,6 @@ file(GLOB bulmafact_UIS *.ui)
 
 set(bulmafactEx main.cxx)
 
-#set(QT_USE_QTASSISTANT false)
-#set(QT_USE_QTXML true)
-#set(QT_USE_QTSCRIPT true)
-#set(QT_USE_QTWEBKIT true)
-
-IF(WIN32)
-    # En MS-Windows no hay soporte directo de QtDBus.
-    #set(QT_USE_QTDBUS true)
-ELSE(WIN32)
-    set(QT_USE_QTDBUS true)
-ENDIF(WIN32)
-
-#INCLUDE(${QT_USE_FILE})
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
@@ -61,10 +47,6 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
-
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
 
 # generate rules for building source files from the resources
 #

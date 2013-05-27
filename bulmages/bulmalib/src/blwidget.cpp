@@ -32,10 +32,6 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WindowFlags flags )
         : QWidget ( parent, flags), BlMainCompanyPointer()
 {
     BL_FUNC_DEBUG
-#ifdef AREA_QMDI
-    /// Deshabilita el doble buffer de las X11. Va todo mucho mas rapido, pero no dibuja bien.
-    /// qt_x11_set_global_double_buffer(false);
-#endif
     setAttribute(Qt::WA_StaticContents);
     m_descripcion = "";
 }
@@ -77,7 +73,6 @@ void BlWidget::paintEvent ( QPaintEvent * )
 }
 
 
-#ifdef AREA_QMDI
 bool BlWidget::event ( QEvent * event )
 {
     if (event->type() == QEvent::HideToParent) {
@@ -88,7 +83,7 @@ bool BlWidget::event ( QEvent * event )
 
     return QWidget::event(event);
 }
-#endif
+
 
 QString BlWidget::descripcion() const {
   return m_descripcion;

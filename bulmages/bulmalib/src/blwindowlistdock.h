@@ -27,6 +27,8 @@
 #include <QtWidgets/QDockWidget>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QListWidgetItem>
+#include <QtGui/QPainter>
+#include <QtWidgets/QAbstractItemDelegate>
 
 #include "blfunctions.h"
 #include "blworkspace.h"
@@ -35,8 +37,6 @@
 class BlWorkspace;
 
 
-#include <QtGui/QPainter>
-#include <QtWidgets/QAbstractItemDelegate>
   
 class ListDelegate : public QAbstractItemDelegate
 {
@@ -102,13 +102,7 @@ public:
 
 public:
     int insertWindow ( QString name, QObject *object, bool checkDuplication = true, QString title="");
-    
-#ifdef AREA_QMDI
     int selectWindow ( QString nombre, QMdiSubWindow *obj );
-#else
-    int selectWindow ( QString nombre, QObject *obj );
-#endif
-    
     int deselectWindow();
     void removeWindow ( QObject * );
     void setVisibilityState ( bool );

@@ -19,14 +19,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
 file(GLOB plugin_NO_MOCS pdefs_pluginbf_factcont.h pluginbf_factcont.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-
-#INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}

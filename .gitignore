@@ -19,7 +19,6 @@ installbulmages-db
 install_manifest.txt
 local_blI18n.h
 Makefile
-menu/
 update_message_catalog_lang
 version
 applications

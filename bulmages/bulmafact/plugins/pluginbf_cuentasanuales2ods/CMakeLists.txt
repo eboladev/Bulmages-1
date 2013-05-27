@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                                     #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -17,6 +18,7 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
+#########################################################################
 
 
 ###########################################
@@ -34,13 +36,6 @@ file(GLOB plugin_UIS *.ui)
 # Exclude files with no QObject macro.
 file(GLOB plugin_NO_MOCS pdefs_pluginbc_cuentasanuales2ods.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-#INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
       ${QT_INCLUDE_DIR}

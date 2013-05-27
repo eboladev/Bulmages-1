@@ -24,10 +24,6 @@
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
-#set(QT_USE_QTXML true)
-#set(QT_USE_QTSCRIPT true)
-#set(QT_USE_QTUITOOLS true)
-
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
 			blspainbankaccountnumber.cpp
@@ -201,10 +197,6 @@ else (USE_GETTEXT)
       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
 endif(USE_GETTEXT)
 
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
-
 # generate rules for building source files from the resources
 QT5_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
 QT5_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
@@ -273,11 +265,5 @@ endif(USE_GETTEXT)
 
 install_targets(/lib bulmalib)
 install (FILES ${bulmalib_HDRS} DESTINATION include)
-
-
-
-if(USE_PCH)
-   add_dependencies( bulmalib  bulmalib_pch )
-endif(USE_PCH)
 
 ADD_LOCAL_BLI18N_HEADER( bulmalib )

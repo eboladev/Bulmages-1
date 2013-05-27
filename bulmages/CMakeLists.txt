@@ -18,8 +18,7 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
-
-
+#########################################################################
 # ########## Project setup ##########
 
 
@@ -142,8 +141,7 @@ if(NOT PYTHON_EXECUTABLE)
 endif(NOT PYTHON_EXECUTABLE)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
-option(USE_QMDIAREA "Enable new QMdiArea" ON)
-option(ENABLE_PCH  "Enable precompiled headers" OFF)
+option(ALLOW_DEBUG "Enable Debugging Code" ON)
 
 if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
@@ -178,20 +176,6 @@ endif(NOT WIN32)
 # Remove directory to prevent that css files can grow with plugins css merge.
 FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
 
-SET(USE_PCH FALSE)
-IF(ENABLE_PCH)
-	IF(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
-		FIND_PACKAGE(PCHSupport)
-	    IF(PCHSupport_FOUND)
-	        SET(USE_PCH TRUE)
-	        MESSAGE(STATUS "Enabling precompiled headers for GCC ${gcc_compiler_version}") 
-	    ELSE(PCHSupport_FOUND)
-	        MESSAGE(STATUS "Sorry, precompiled headers require GCC >= 3.4") 
-	    ENDIF(PCHSupport_FOUND)
-	ELSE(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
-		MESSAGE(STATUS "Sorry, precompiled headers require CMake >= 2.6") 
-	ENDIF(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
-ENDIF(ENABLE_PCH)
 
 ##############################################################################
 # Sets the location of nonstandard shared libraries
@@ -296,11 +280,6 @@ SET(CPACK_PACKAGE_EXECUTABLES "bulmacont" "bulmafact" "bulmatpv")
 
 
 INCLUDE(CPack)
-
-#if(BULMAGES_CONFIG_DIR STREQUAL "")
-#   set (BULMAGES_CONFIG_DIR /etc/bulmages)
-#endif(BULMAGES_CONFIG_DIR STREQUAL "")
-
 
 MARK_AS_ADVANCED(
 	BULMAGES_VERSION

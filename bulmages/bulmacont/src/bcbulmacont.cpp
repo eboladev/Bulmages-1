@@ -45,12 +45,8 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WindowFlags f, QString DB )
 
     m_pWorkspace = new BlWorkspace ( this );
     
-#ifdef AREA_QMDI
     m_pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-#else
-    m_pWorkspace->setScrollBarsEnabled ( true );
-#endif
 
     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
@@ -74,11 +70,8 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WindowFlags f, QString DB )
     m_company->init ( DB, "BulmaCont" );
     m_company->setWorkspace ( m_pWorkspace );
 
-#ifdef AREA_QMDI
     connect ( m_pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaIndexador ( QMdiSubWindow * ) ) );
-#else
-    connect ( m_pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaIndexador ( QWidget * ) ) );
-#endif
+
     
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
@@ -256,13 +249,8 @@ void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
 {
     BL_FUNC_DEBUG
     
-#ifdef AREA_QMDI
     m_pWorkspace->tileSubWindows();
-#else
-    m_pWorkspace->tile();
-#endif
-    
-    
+
 }
 
 
@@ -273,11 +261,8 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     BL_FUNC_DEBUG
 
-#ifdef AREA_QMDI
     m_pWorkspace->cascadeSubWindows ();
-#else
-    m_pWorkspace->cascade();
-#endif
+
 
 }
 
@@ -590,31 +575,13 @@ void BcBulmaCont::on_actionPaises_triggered()
 void BcBulmaCont::informaIndexador ( QWidget *w )
 {
     BL_FUNC_DEBUG
-#ifndef AREA_QMDI
-    /// No existe una ventana que activar.
-    if ( m_company == NULL ) {
-	
-        return;
-    } // end if
-
-    if ( w == NULL ) {
-        m_company->deselectWindow();
-	
-        return;
-    } // end if
-    m_company->deselectWindow();
-    m_company->selectWindow ( w->windowTitle(), w );
-
-    QString texto = "Window activated. " + w->windowTitle() + "\n";
-    printf ( "%s", texto.toLatin1().constData() );
-#endif
 }
 
 
 void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
 {
     BL_FUNC_DEBUG
-#ifdef AREA_QMDI
+
     /// No existe una ventana que activar.
     if ( m_company == NULL ) {
 	
@@ -631,7 +598,7 @@ void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toLatin1().constData() );
-#endif
+
 }
 
 

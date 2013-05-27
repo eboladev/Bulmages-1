@@ -13,12 +13,6 @@ file(GLOB plugin_NO_MOCS pluginbf_clientealbaranfacturar.h pdefs_pluginbf_client
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 file(GLOB plugin_UIS *.ui)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-#INCLUDE(${QT_USE_FILE})
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}

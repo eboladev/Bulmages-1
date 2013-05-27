@@ -107,11 +107,7 @@ int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QStri
 \param obj
 \return
 **/
-#ifdef AREA_QMDI
   int BlMainCompany::selectWindow ( QString nom, QMdiSubWindow *obj )
-#else
-  int BlMainCompany::selectWindow ( QString nom, QObject *obj )
-#endif
 {
     BL_FUNC_DEBUG
     
@@ -302,11 +298,8 @@ bool BlMainCompany::showWindow(QString objectName)
 		( ( QWidget * ) m_windowListDock->ventana(i) )->showNormal();
 	    } // end if
 	    
-	    #ifdef AREA_QMDI
-		m_pWorkspace->setActiveSubWindow(( QMdiSubWindow *)m_windowListDock->ventana(i));
-	    #else
-		m_pWorkspace->setActiveWindow(( QWidget * )m_windowListDock->ventana(i));
-	    #endif
+	    m_pWorkspace->setActiveSubWindow(( QMdiSubWindow *)m_windowListDock->ventana(i));
+
 	    
 	} // end if
 

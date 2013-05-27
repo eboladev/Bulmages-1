@@ -56,13 +56,10 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     setAnimated ( false );
     setUpdatesEnabled ( true );
     pWorkspace = new BlWorkspace ( this );
-    
-#ifdef AREA_QMDI    
+      
     pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-#else
-    pWorkspace->setScrollBarsEnabled ( true );
-#endif
+
     
     QFrame *m_frame1 = new QFrame();
     m_pb = new QProgressBar();
@@ -84,11 +81,8 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_company->init ( bd, "BulmaFact" );
     m_company->setWorkspace ( pWorkspace );
 
-#ifdef AREA_QMDI
     connect ( pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
-#else
-    connect ( pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
-#endif
+
     
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
@@ -225,7 +219,6 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
 {
     BL_FUNC_DEBUG
-#ifdef AREA_QMDI
 
     /// Si no esta inicializado company no se le puede informar.
     if ( m_company == NULL ) {
@@ -240,30 +233,12 @@ void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
         return;
     } // end if
     m_company->selectWindow ( w->windowTitle(), w );
-#endif
 
 }
 
 void BfBulmaFact::informaindexador ( QWidget *w )
 {
     BL_FUNC_DEBUG
-#ifndef AREA_QMDI
-
-    /// Si no esta inicializado company no se le puede informar.
-    if ( m_company == NULL ) {
-        
-        return;
-    } // end if
-
-    /// No existe una ventana que activar.
-    if ( w == NULL ) {
-        m_company->deselectWindow();
-        
-        return;
-    } // end if
-    m_company->selectWindow ( w->windowTitle(), w );
-#endif
-
 }
 
 
@@ -490,13 +465,7 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 {
     BL_FUNC_DEBUG
 
-#ifdef AREA_QMDI
     pWorkspace->tileSubWindows();
-#else
-    pWorkspace->tile();
-#endif
-    
-    
 }
 
 
@@ -507,12 +476,7 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     BL_FUNC_DEBUG
     
-#ifdef AREA_QMDI
     pWorkspace->cascadeSubWindows();
-#else
-    pWorkspace->cascade();
-#endif
-  
 
 }
 

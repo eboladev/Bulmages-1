@@ -55,12 +55,8 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     setUpdatesEnabled ( true );
     pWorkspace = new BlWorkspace ( this );
     
-#ifdef AREA_QMDI    
     pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-#else
-    pWorkspace->setScrollBarsEnabled ( true );
-#endif
 
     QProgressBar *m_pb = new QProgressBar();
     m_pb->setMaximum ( 100 );

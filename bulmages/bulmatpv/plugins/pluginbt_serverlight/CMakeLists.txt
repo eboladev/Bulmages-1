@@ -14,14 +14,6 @@ file(GLOB plugin_UIS *.ui)
 file(GLOB plugin_NO_MOCS pdefs_pluginbt_serverlight.h pluginbt_serverlight.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTNETWORK true)
-
-#INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}

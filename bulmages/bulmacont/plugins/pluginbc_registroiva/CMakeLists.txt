@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
 file(GLOB plugin_NO_MOCS pdefs_pluginbc_registroiva.h listivaview.h linprevcobro.h listlinprevcobro.h iva.h registroiva.h listlinprevcobroview.h pluginbc_registroiva.h listiva.h bcmodeloaeat.h bcmodelo300imprimir2ps.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-#INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}

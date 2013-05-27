@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
+#########################################################################
 
 
 
@@ -37,14 +38,6 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_EN.css "${VAR_CSS_en_EN}" )
 
 add_subdirectory(src)
 add_subdirectory(plugins)
-#add_subdirectory(designer)
-
-
-#set(QT_USE_QTUITOOLS true)
-#set(QT_USE_QTXML true) # uitools depends on xml
-#set(QT_USE_QTSCRIPT true)
-#set(QT_USE_QTWEBKIT true)
-
 
 # if you want to add some private code
 # simple put your add_directory in a

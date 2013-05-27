@@ -207,10 +207,9 @@ void BlWindowListDock::dclicked()
             widget->showNormal();
         } else {
             widget->showMaximized();
-        } // end if
-#ifdef AREA_QMDI        
+        } // end if    
         widget->parentWidget()->activateWindow();
-#endif
+
     } // end if
     
 }
@@ -226,12 +225,8 @@ void BlWindowListDock::clicked()
     if ( widget != NULL ) {
         widget->show();
 	if (widget->parentWidget()) widget->parentWidget() ->raise();
-
-#ifdef AREA_QMDI
 	if (widget->parentWidget()) widget->parentWidget()->activateWindow();
-#else
-        m_pWorkspace->setActiveWindow ( widget );
-#endif
+
      
     } // end if
     
@@ -377,11 +372,8 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
 \param obj
 \return
 **/
-#ifdef AREA_QMDI
+
   int BlWindowListDock::selectWindow ( QString nombre, QMdiSubWindow *obj )
-#else
-  int BlWindowListDock::selectWindow ( QString nombre, QObject *obj )
-#endif
 {
     BL_FUNC_DEBUG
     try {
@@ -389,13 +381,8 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
         while ( i < m_listBox->count() ) {
             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Encuentra la ventana en la lista.
-#ifdef AREA_QMDI
 	    if ( m->object() == obj->widget() ) {
-#else
-	    if ( m->object() == obj ) {
-#endif
                 m_listBox->setCurrentItem ( m );
-		
                 return 0;
             } // end if
             i++;

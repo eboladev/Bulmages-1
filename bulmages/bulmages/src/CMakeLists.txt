@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                                     #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -32,20 +33,6 @@ set(bulmages_RCCS bgbulmages.qrc)
 set(bulmages_MOCS bgbulmages.h)
 
 set(bulmagesEx main.cxx)
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT false)
-set(QT_USE_QTWEBKIT false)
-
-IF(WIN32)
-    # En MS-Windows no hay soporte directo de QtDBus.
-    #set(QT_USE_QTDBUS true)
-ELSE(WIN32)
-    set(QT_USE_QTDBUS true)
-ENDIF(WIN32)
-
-#INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}

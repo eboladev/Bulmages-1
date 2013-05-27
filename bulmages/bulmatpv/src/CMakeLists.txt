@@ -13,14 +13,6 @@ set(bulmatpv_MOCS btbulmatpv.h
 	   btsubform.h
 	   btinput.h)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTUITOOLS true)
-set(QT_USE_QTSCRIPT true)
-
-
-#INCLUDE(${QT_USE_FILE})
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
@@ -32,11 +24,6 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
-
-
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
 
 # generate rules for building source files from the resources
 #

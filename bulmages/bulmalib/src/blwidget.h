@@ -52,10 +52,8 @@ private:
     
 protected:
     virtual void paintEvent(QPaintEvent *event);
-
-#ifdef AREA_QMDI
     bool event ( QEvent *event );
-#endif
+
 
 public:
     BlWidget ( QWidget *parent = 0, Qt::WindowFlags flags = 0 );

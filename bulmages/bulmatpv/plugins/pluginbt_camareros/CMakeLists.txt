@@ -17,15 +17,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
 
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSVG true)
-set(QT_USE_QTSCRIPT true)
-
-
-#INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}

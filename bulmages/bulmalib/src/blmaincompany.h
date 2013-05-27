@@ -62,13 +62,7 @@ public:
     void setProgressBar ( QProgressBar *pb );
     int insertWindow ( QString nom, QObject *obj, bool compdup = true, QString titulo = "" );
     bool showWindow (QString objectName);
-
-#ifdef AREA_QMDI
     int selectWindow ( QString nom, QMdiSubWindow *obj );
-#else
-    int selectWindow ( QString nom, QObject *obj );
-#endif
-    
     void removeWindow ( QObject *nom );
     void s_indexadorCambiaEstado ( bool );
     void muestraPaises();
