@@ -50,7 +50,7 @@ BlApplication::~BlApplication()
 }
 
 
-#if CONFIG_DEBUG == true
+#if CONFIG_DEBUG == TRUE
 ///
 /**
 \param object

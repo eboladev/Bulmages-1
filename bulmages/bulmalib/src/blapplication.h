@@ -41,7 +41,7 @@ public:
     BlApplication ( int &argc, char **argv );
     ~BlApplication();
     
-#if CONFIG_DEBUG == true
+#if CONFIG_DEBUG == TRUE
     virtual bool notify ( QObject *object, QEvent *event );
 #endif
     

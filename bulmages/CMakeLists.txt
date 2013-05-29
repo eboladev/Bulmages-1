@@ -28,14 +28,11 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
 
 SET( BULMAGES_VERSION 1.5.0 )
 
-
-set(CMAKE_CXX_FLAGS "-fPIC")
+IF(NOT WIN32)
+  set(CMAKE_CXX_FLAGS "-fPIC")
+ENDIF(NOT WIN32)
 
 find_package(Qt5Core REQUIRED)
-
-  message(STATUS "El root: ${Qt5Core_LIBRARIES}")
-
-  message(STATUS "El root: ${_qt5Core_install_prefix}")
 
 IF(WIN32)
 set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/cmake")

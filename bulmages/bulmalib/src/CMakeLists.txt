@@ -24,6 +24,8 @@
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
+find_package(Qt5Core REQUIRED)
+
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
 			blspainbankaccountnumber.cpp
@@ -136,24 +138,6 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blpostgresqlclient.h
 			blargparser.h)
 
-			
-			
-#headers that are not moc'ed
-#			blpostgresqlclient.h 
-#			blconfiguration.h 
-#			blspainbankaccountnumber.h 
-#			blfunctions.h 
-#			dialogchanges.h 
-#			blfixed.h 
-#			blimportexport.h 
-#			blplugins.h 
-#			bldb.h 
-#			bldbsubform.h 
-#			blmaincompany.h 
-#			blmainwindow.h
-#			blargparser.h
-
-
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS	bldblogindialogbase.ui
 			blcompanydialogbase.ui
@@ -167,17 +151,12 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blformlistfilterbase.ui
 			blbankeditbase.ui)
 
-
-#message(FATAL_ERROR "La ruta: ${Qt5Widgets_INCLUDES} ${QT_INCLUDE_DIR}")
-
 if (USE_GETTEXT)
     include_directories(
       ${PGSQL_INCLUDE_DIR}
       ${QT_INCLUDE_DIR}
       ${GETTEXT_INCLUDE_DIR}
-      ${QT_QTXML_INCLUDE_DIR}
-      ${QT_QTSCRIPT_INCLUDE_DIR}
-      ${Qt5Widgets_INCLUDES}
+      ${Qt5Core_INCLUDE_DIRS}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -187,9 +166,7 @@ else (USE_GETTEXT)
     include_directories(
       ${PGSQL_INCLUDE_DIR}
       ${QT_INCLUDE_DIR}
-      ${QT_QTWIDGETS_INCLUDE_DIR}
-      ${QT_QTXML_INCLUDE_DIR}
-      ${QT_QTSCRIPT_INCLUDE_DIR}
+      ${Qt5Core_INCLUDE_DIRS}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -205,9 +182,6 @@ QT5_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 # generate rules for building source files that moc generates
 
-#ADD_DEFINITIONS(${QT_DEFINITIONS})
-#ADD_DEFINITIONS(-DQT_SHARED)
-
 IF(WIN32)
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
 ENDIF(WIN32)
@@ -215,12 +189,6 @@ ENDIF(WIN32)
 IF(USE_GETTEXT)
 ADD_DEFINITIONS(-DUSE_GETTEXT)
 ENDIF(USE_GETTEXT)
-
-
-# Defines if we want our own debugging code
-#ADD_DEFINITIONS(-DDEPURA_DEBUG)
-
-
 
 # build sources, moc'd sources, and rcc'd sources
 

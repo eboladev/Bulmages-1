@@ -45,7 +45,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QStatusBar>
 #ifdef Q_OS_WIN32
-	#include <qt_windows.h>
+	#include <QtCore/qt_windows.h>
 #endif
 
 #include "bldefs.h"
