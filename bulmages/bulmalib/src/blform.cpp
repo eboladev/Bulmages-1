@@ -77,7 +77,7 @@ Importa el script y lo lanza.
 void BlForm::blScript(QObject * obj) {
     BL_FUNC_DEBUG
     
-    if (g_confpr->value(CONF_USE_QSCRIPT) == "true" || g_confpr->value(CONF_USE_QSCRIPT) == "T" || g_confpr->value(CONF_USE_QSCRIPT) == "1" ) {
+    if (g_confpr->valueTrue(CONF_USE_QSCRIPT)) {
     
 	QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+metaObject()->className()+".qs";
 	QFile scriptFile1(fileName);
@@ -814,7 +814,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     QMenu *popup = new QMenu ( this );
     
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
       QAction *nombreobjeto = popup->addAction( objectName() );
       nombreobjeto->setDisabled(true);
       QAction *claseobjeto = popup->addAction( metaObject()->className() );
@@ -827,7 +827,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     createMenu ( popup );
     QAction *avconfig = NULL;
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
       avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
     } // end if
 
@@ -1246,7 +1246,7 @@ int BlForm::save()
         load ( id );
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
-        if (g_confpr->value(CONF_REFRESH_LIST) == "true") {
+        if (g_confpr->valueTrue(CONF_REFRESH_LIST)) {
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {
@@ -1304,7 +1304,7 @@ int BlForm::remove()
         err =  BlDbRecord::remove();
 
         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
-        if (g_confpr->value(CONF_REFRESH_LIST) == "true") {
+        if (g_confpr->valueTrue(CONF_REFRESH_LIST)) {
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {

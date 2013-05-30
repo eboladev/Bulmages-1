@@ -327,6 +327,7 @@ public:
     BlConfiguration ( QString nombreprograma );
     ~BlConfiguration();
     QString value( int );
+    bool valueTrue(int);
     void setValue ( int, QString );
     bool readConfig ( QString );
     void saveConfig();

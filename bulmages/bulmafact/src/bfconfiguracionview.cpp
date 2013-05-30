@@ -56,7 +56,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     mui_listado->setMainCompany ( mainCompany() );
     mui_listado->load();
-    if (g_confpr->value(CONF_MODO_EXPERTO) != "true") {
+    if (!g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
      tabWidget->removeTab(tabWidget->indexOf(tab_2));
     } // end if
 

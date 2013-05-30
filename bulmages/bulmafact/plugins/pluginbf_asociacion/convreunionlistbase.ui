@@ -463,22 +463,4 @@
   <include location="../../../bulmages.qrc"/>
   <include location="../pluginbf_profesor/gestionaula.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>241</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>228</x>
-     <y>69</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
 </ui>

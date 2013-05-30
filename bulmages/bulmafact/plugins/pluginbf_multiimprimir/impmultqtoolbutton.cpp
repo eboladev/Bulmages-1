@@ -419,7 +419,7 @@ void ImpQToolButton::click()
 	
 #ifndef Q_OS_WIN32
 	QString comando = "";
-	if ((g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None")) {
+	if ((g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none")) {
 	  comando = "lpr " + res;
 	} else {
 	  comando = "lp -d" +g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + res;

@@ -79,9 +79,9 @@ void PluginBl_Report::elslot2( )
     } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 	QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + sender()->objectName() + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
 	system ( comando.toLatin1().data() );
-    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
+    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER).toLower() != "none") {
 		blRawPrint( sender()->objectName(), true, g_confpr->value( CONF_TICKET_PRINTER_FILE));
-    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none") {
 	blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
     } else {
 		blRawPrint( sender()->objectName());

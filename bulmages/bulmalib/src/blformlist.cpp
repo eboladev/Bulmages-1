@@ -46,7 +46,7 @@ Importa el script y lo lanza.
 */
 void BlFormList::blScript(QObject * obj) {
     
-    if (g_confpr->value(CONF_USE_QSCRIPT) == "true" || g_confpr->value(CONF_USE_QSCRIPT) == "T" || g_confpr->value(CONF_USE_QSCRIPT) == "1" ) {
+    if (g_confpr->valueTrue(CONF_USE_QSCRIPT)) {
   
 	  /// Lanzamos los scripts de QScript
 	  QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
@@ -516,7 +516,7 @@ void BlFormList::contextMenuEvent ( QContextMenuEvent * ) {
     QMenu *popup = new QMenu ( this );
 
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
       QAction *nombreobjeto = popup->addAction( objectName() );
       nombreobjeto->setDisabled(true);
     } // end if
@@ -540,7 +540,7 @@ void BlFormList::submenu ( const QPoint & )
     QMenu *popup = new QMenu ( this );
     
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
       QAction *nombreobjeto = popup->addAction( objectName() );
       nombreobjeto->setDisabled(true);
     } // end if
@@ -571,6 +571,12 @@ void BlFormList::on_mui_list_toogledConfig ( bool check )
     
 }
 
+
+void BlFormList::on_mui_filtrar_toggled(bool checked) {
+    QWidget *bbusqueda = findChild<QWidget *> ( "m_busqueda" );
+    if (bbusqueda) bbusqueda->setVisible(checked);
+    
+}
 
 ///
 /**
@@ -836,12 +842,12 @@ void BlFormList::cargaFiltrosXML() {
 const QString BlFormList::nameFileConfig() 
 {
    QString directorio = g_confpr->value(CONF_DIR_USER);
-   if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "true") {
+   if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_USER)) {
       directorio = g_confpr->value(CONF_DIR_CONFIG);
    } // end if
 
    QString empresa = mainCompany()->dbName();
-   if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "true") {
+   if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
       empresa  = "";
    } // end if
 

@@ -563,6 +563,29 @@ bool BlConfiguration::readConfig ( QString fich )
 \param i Par&aacute;metro del que se quiere el valor.
 \return El valor que tiene dicho par&aacute;metro.
 **/
+bool BlConfiguration::valueTrue( int i )
+{
+    if ( m_valores.contains ( i ) ) {
+    
+	/// Si el valor incluye una variable de substitucion y esta existe se realiza.
+	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
+	QString valor = m_valores[i];
+	
+	if (i != CONF_REPLACE_STRING)
+	    valor.replace("${CONF_REPLACE_STRING}", value(CONF_REPLACE_STRING));
+    
+        return ( valor.toLower() == "true" || valor.toLower() == "t" || valor == "1" || valor.toLower() == "yes" || valor.toLower() == "y");
+    } // end if
+    fprintf ( stderr, "BlConfiguration : %s", "Busqueda de valor sin establecer\n" );
+    return false;
+}
+
+
+/// Devuelve el valor de un campo determinado.
+/**
+\param i Par&aacute;metro del que se quiere el valor.
+\return El valor que tiene dicho par&aacute;metro.
+**/
 QString BlConfiguration::value( int i )
 {
     if ( m_valores.contains ( i ) ) {
@@ -576,6 +599,7 @@ QString BlConfiguration::value( int i )
     
         return ( valor );
     } // end if
+    fprintf ( stderr, "BlConfiguration : %s", "Busqueda de valor sin establecer\n" );
     return "";
 }
 

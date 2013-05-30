@@ -436,7 +436,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
     int columnasBotones;
     int j;
     int indice;
-    bool paginadoListaPantallas = (g_confpr->value(CONF_TPV_CATEGORY_TREE) == "true") ? true : false;
+    bool paginadoListaPantallas = g_confpr->valueTrue(CONF_TPV_CATEGORY_TREE);
 
     /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
     if (m_widget) {

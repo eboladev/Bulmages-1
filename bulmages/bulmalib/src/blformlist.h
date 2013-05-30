@@ -95,6 +95,7 @@ public slots:
     virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked();
+    virtual void on_mui_filtrar_toggled(bool checked);
     virtual void contextMenuEvent ( QContextMenuEvent * );
 
 signals:

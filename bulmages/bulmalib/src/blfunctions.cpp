@@ -72,7 +72,7 @@ BlDebug::BlDebug(const QString &func, int level, const QString &params) {
 	if (!g_confpr ) return;
 
 	/// Si no hay modo debug salimos directamente
-	if (g_confpr->value(CONF_DEBUG) == "false" ) return;
+	if (!g_confpr->valueTrue(CONF_DEBUG)) return;
 	
 	m_func = func;
 	m_level = level;
@@ -168,7 +168,7 @@ void BlDebug::blDebug(const QString &text, int level, const QString &params) {
       if (!g_confpr ) throw -1;
       
       /// Si no hay modo debug salimos directamente
-      if (g_confpr->value(CONF_DEBUG) == "false" ) return;
+      if (!g_confpr->valueTrue(CONF_DEBUG)) return;
 
       for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
 	  *BlDebug::m_outXML << "    ";
@@ -194,7 +194,7 @@ BlDebug::~BlDebug() {
       if (!g_confpr ) return;
       
       /// Si no hay modo debug salimos directamente
-      if (g_confpr->value(CONF_DEBUG) == "false" ) return;
+      if (!g_confpr->valueTrue(CONF_DEBUG)) return;
 
        if ( m_level == 0 || m_level == 1 ) {
             for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
@@ -777,7 +777,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
     static bool semaforo = 0;
 
 
-    if ( g_confpr->value( CONF_DEBUG ) == "true" ) {
+    if ( g_confpr->valueTrue( CONF_DEBUG )) {
         static QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
         static QTextStream out ( &file );
 
@@ -1476,14 +1476,22 @@ bool blCopyFile( const QString &oldName, const QString &newName )
     BL_FUNC_DEBUG
 
     // Si es el mismo archivo, no lo copia.
-    if(oldName.compare(newName) == 0)
-    {
+    if(oldName.compare(newName) == 0) {
         return true;
     } // end if
     
     // Transforma las direcciones en tolerantes, para  que funcione en totas las plataformas.
     QString oldFile = QUrl(oldName, QUrl::TolerantMode).toString();
     QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
+
+    
+#ifdef Q_OS_WIN32
+//# La compatibilidad con Win32 no esta garantizada usando el QUrl::TolerantMode
+    oldFile = oldName;
+    newFile = newName;
+#endif
+    
+    
 
     // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
     if(!QFile::copy(oldFile, newFile)) {
@@ -1493,6 +1501,7 @@ bool blCopyFile( const QString &oldName, const QString &newName )
 			command = "copy \"" + oldFile + "\" \"" + newFile + "\"";
 			command.replace("/", "\\");
 			command = command + " /y";
+			
 		#else
 			command = "cp " + oldFile + " " + newFile;
 		#endif
@@ -1501,9 +1510,9 @@ bool blCopyFile( const QString &oldName, const QString &newName )
 
         if (result == -1) {
             return false;
-            }
+        } // end if
     } // end if
-
+    
     // Se ha copiado correctamente el archivo
     return true;
 }

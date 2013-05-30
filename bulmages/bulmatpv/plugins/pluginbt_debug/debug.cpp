@@ -46,7 +46,7 @@ CambiarDebug::CambiarDebug ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( 
 
     
     /// Comprovamos el estado de CONF_DEBUG en los archivos de configuracion y checkeamos mui_debug, segun estos.
-    if ( g_confpr->value( CONF_DEBUG ) == "true" ) {
+    if ( g_confpr->valueTrue( CONF_DEBUG )) {
         mui_debug->setChecked ( true );
         BlDebug::blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
     } else {

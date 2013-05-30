@@ -745,7 +745,7 @@ int BtTicket_imprimir(BtTicket *tick)
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toLatin1().data() );
-    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none") {
         BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
 		blRawPrint ("bulmatpv_ticket_tc.esc");
@@ -954,7 +954,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toLatin1().data() );
-    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none") {
         BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";

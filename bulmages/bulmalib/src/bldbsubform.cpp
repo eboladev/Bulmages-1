@@ -201,7 +201,7 @@ int BlDbSubFormField::set ( QString val )
     } else {
 	  setText ( fieldValue() );
 
-	  if ( g_confpr->value( CONF_CENTER_TEXT_FIELDS ) == "true"
+	  if ( g_confpr->valueTrue( CONF_CENTER_TEXT_FIELDS )
 	  && fieldType() == BlDbField::DbVarChar )
 	  {
 		setTextAlignment(Qt::AlignCenter);

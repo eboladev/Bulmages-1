@@ -278,7 +278,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     g_plugins->run ( "BlSubForm_BlSubForm_Post", this );
     m_procesacambios = true;
 
-    if (g_confpr->value(CONF_MODO_EXPERTO) != "true") {
+    if (!g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
         mui_selectorblsubform->removeTab(mui_selectorblsubform->indexOf(tab3));
     } // end if
 
@@ -1641,7 +1641,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
     m_procesacambios = true;
 
     /// Ajustamos las columnas al contenido.
-    if (g_confpr->value(CONF_RESIZEROWSTOCONTENTS) == "true") {
+    if (g_confpr->valueTrue(CONF_RESIZEROWSTOCONTENTS)) {
         mui_listcolumnas->resizeRowsToContents();
         resizeRowsToContents();
     } // end if
@@ -2080,7 +2080,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
     } // end if
 
     /// Si el item esta desabilitado y no estamos en modo experto no podemos mostrarlo.
-    if  (( opt & BlSubFormHeader::DbDisableView ) && (g_confpr->value(CONF_MODO_EXPERTO) != "true")) {
+    if  (( opt & BlSubFormHeader::DbDisableView ) && (!g_confpr->valueTrue(CONF_MODO_EXPERTO))) {
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
@@ -2422,12 +2422,12 @@ const QString BlSubForm::nameFileQuery()
   
     QString nombre = "";
     QString directorio = g_confpr->value(CONF_DIR_USER);
-    if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "true") {
+    if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_USER)) {
         directorio = g_confpr->value(CONF_DIR_CONFIG);
     } // end if
 
     QString empresa = mainCompany()->dbName();
-    if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "true") {
+    if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
         empresa  = "";
     } // end if
 
@@ -2450,12 +2450,12 @@ const QString BlSubForm::nameFileConfig()
     BL_FUNC_DEBUG
       
     QString directorio = g_confpr->value(CONF_DIR_USER);
-    if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "true") {
+    if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_USER)) {
         directorio = g_confpr->value(CONF_DIR_CONFIG);
     } // end if
 
     QString empresa = mainCompany()->dbName();
-    if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "true") {
+    if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
         empresa  = "";
     } // end if
 
@@ -3366,7 +3366,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     QMenu *popup = new QMenu ( this );
 
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "true") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
         QAction *nombreobjeto = popup->addAction( objectName() );
         nombreobjeto->setDisabled(true);
         QAction *claseobjeto = popup->addAction( metaObject()->className() );

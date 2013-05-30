@@ -411,7 +411,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
 */
 void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
     BL_FUNC_DEBUG
-    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty() && g_confpr->value(CONF_PRECALC_CODARTICULO) == "true") {
+    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty() && g_confpr->valueTrue(CONF_PRECALC_CODARTICULO)) {
         QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
 
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );

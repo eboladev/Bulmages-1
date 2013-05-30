@@ -124,13 +124,13 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
     
 
-    if ( g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "false") ) {
+    if ( g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (!g_confpr->valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES)) ) {
 	modificadores->hide();
     } else {
 	modificadores->show();
     } // end if
     
-    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "false") ) {
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (!g_confpr->valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION)) ) {
 	editarDescripcion->hide();
     } else {
 	editarDescripcion->show();
@@ -185,13 +185,13 @@ int MTicket_MTicket_Post (MTicket *tick) {
     editarDescripcion->setIconSize ( QSize ( 32, 32 ) );    
 
     
-    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == "false") ) {
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (!g_confpr->valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES)) ) {
 	modificadores->hide();
     } else {
 	modificadores->show();
     } // end if
     
-    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == "false") ) {
+    if ( (g_confpr->value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (!g_confpr->valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION)) ) {
 	editarDescripcion->hide();
     } else {
 	editarDescripcion->show();

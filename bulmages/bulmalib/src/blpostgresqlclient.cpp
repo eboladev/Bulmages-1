@@ -140,7 +140,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
             m_error = true;
             BlDebug::blDebug ( PQerrorMessage ( conn ) );
             BlDebug::blDebug ( "QUERY command failed [" + SQLQuery + "]", 10 );
-            if ( g_confpr->value( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( g_confpr->valueTrue( CONF_ALERTAS_DB )) {
                 BlErrorDialog ( _ ( "Error al hacer la consulta con la base de datos." ) + QString ( "\n:: " ) + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
@@ -594,7 +594,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
         conn = PQconnectdb ( conexion.toLatin1().data() );
         if ( PQstatus ( conn ) == CONNECTION_BAD ) {
             BlDebug::blDebug ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
-            if ( passwd != "" && g_confpr->value( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( passwd != "" && g_confpr->valueTrue( CONF_ALERTAS_DB )) {
                 BlDebug::blDebug ( PQerrorMessage ( conn ), 2 );
             } else {
                 BlDebug::blDebug ( PQerrorMessage ( conn ), 0 );

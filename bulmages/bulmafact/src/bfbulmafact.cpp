@@ -181,7 +181,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "true" ) {
+    if ( g_confpr->valueTrue( CONF_ASK_BEFORE_EXIT )) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));

@@ -50,7 +50,7 @@ int entryPoint ( BcBulmaCont *bcont )
     BlAction *accionA = new BlAction ( _ ( "&Modo debug" ), 0 );
     accionA->setCheckable ( true );
 
-    if ( g_confpr->value( CONF_DEBUG ) == "true" ) {
+    if ( g_confpr->valueTrue( CONF_DEBUG )) {
         accionA->setChecked ( true );
     } else {
         accionA->setChecked ( false );

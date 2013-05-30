@@ -253,7 +253,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura" ) {
 
-		if (g_confpr->value(CONF_USE_DESCARTICULO) == "true" || g_confpr->value(CONF_USE_DESCARTICULO) == "T" || g_confpr->value(CONF_USE_DESCARTICULO) == "1") {
+		if (g_confpr->valueTrue(CONF_USE_DESCARTICULO)) {
 			rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) +"\n" + cur->value("obserarticulo") );
 
 		} else {
