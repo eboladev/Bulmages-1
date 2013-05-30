@@ -6,10 +6,10 @@
 
 Nombre: Contabilidad
 
-Biblioteca: libpluginbf_factcont.so
+Biblioteca: libpluginbf_factcont
 
-Descripción: <H1>Profesores</H1>
-<P>Gestionar los cobros realizados a los clientes.</P>
+Descripción: <H1>Contabilidad</H1>
+<P>Gestionar la contabilidad de la empresa.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,9 +23,9 @@ Dependencias:
 
 Incompatibles:
 
-Reports: profesor.rml; impers_profesor_alumnos.rml; impers_profesor_numalumnos.rml; blform_ProfesorView.qs
+Reports: PlanContable.xml
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Contabilidad general;Experimentales;
 
 Orden: 222
 

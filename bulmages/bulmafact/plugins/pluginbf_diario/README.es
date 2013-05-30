@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias: libpluginbf_asiento.so;
+Dependencias: libpluginbf_factcont;
 
 Incompatibles:
 
@@ -26,7 +26,7 @@ Reports: balance.rml
 
 Categorias: Contabilidad general;Experimentales;
 
-Orden: 25
+Orden: 901
 
 Comentarios: -
 

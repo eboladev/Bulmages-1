@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias: libpluginbf_asiento.so;
+Dependencias: libpluginbf_factcont;
 
 Incompatibles:
 
@@ -26,7 +26,7 @@ Reports:
 
 Categorias: Contabilidad general;Experimentales;
 
-Orden: 35
+Orden: 902
 
 Comentarios: -
 

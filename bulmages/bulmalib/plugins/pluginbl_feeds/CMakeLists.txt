@@ -73,7 +73,7 @@ target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
 
-install_targets(/lib/bulmafact/plugins ${plugin})
+install_targets(/lib/bulmalib/plugins ${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.es.${plugin})

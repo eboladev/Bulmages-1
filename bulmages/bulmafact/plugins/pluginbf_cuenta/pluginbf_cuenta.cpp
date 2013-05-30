@@ -24,6 +24,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QWidget>
+#include <QtWidgets/QFileDialog>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtCore/QObject>
@@ -35,7 +36,7 @@
 #include "bcplancontablelistview.h"
 #include "bccuentaview.h"
 #include "bfsubform.h"
-
+#include "blimportexport.h"
 
 BfBulmaFact * g_pluginbf_cuenta=NULL;
 
@@ -74,6 +75,25 @@ int entryPoint ( BlMainWindow *bcont )
     g_pluginbf_cuenta->menuBar() ->insertMenu ( g_pluginbf_cuenta->menuMaestro->menuAction(), pPluginMenu );
     g_pluginbf_cuenta->Listados->addAction ( accionA );
 
+    QString query = "SELECT * FROM cuenta";
+    BlDbRecordSet *cur = g_pluginbf_cuenta->company()->loadQuery(query);
+    if (cur->eof()) {
+      blMsgInfo(_("No ha importado un plan de cuentas. Deberia importarlo antes de usar el programa."));
+      QFile filexml ( QFileDialog::getOpenFileName ( NULL,
+		      _ ( "Elija el archivo" ),
+		      g_confpr->value(CONF_DIR_OPENREPORTS),
+		      _ ( "Plan contable (*.xml)" ) ) );
+      if ( filexml.open ( QIODevice::ReadOnly ) ) {
+	    BcPlanContableListView *plan = new BcPlanContableListView( g_pluginbf_cuenta->company(), 0 );
+	    plan->setObjectName("BcPlanContableListView");
+	    plan->inicializa();
+	    plan->XML2Bulmages ( filexml, IMPORT_CUENTAS );
+	    filexml.close();
+	    delete plan;
+      } else {
+	  blMsgInfo ( "Error al abrir archivo\n" );
+      } // end if
+    } // end if
     
     return 0;
 }

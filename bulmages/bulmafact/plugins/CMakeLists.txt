@@ -95,6 +95,7 @@ add_subdirectory(pluginbf_z2z)
 
 
 # ======= PLUGINS DE CONTABILIDAD INTEGRADA
+add_subdirectory(pluginbf_factcont)
 add_subdirectory(pluginbf_cuenta)
 add_subdirectory(pluginbf_asiento)
 add_subdirectory(pluginbf_bloqueofechas)

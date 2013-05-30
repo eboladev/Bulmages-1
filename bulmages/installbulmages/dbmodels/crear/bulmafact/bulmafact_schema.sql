@@ -3302,9 +3302,9 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.16.0-0001'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.15.0-0002'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.16.0-0001'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0002'');
 
     END IF;
 

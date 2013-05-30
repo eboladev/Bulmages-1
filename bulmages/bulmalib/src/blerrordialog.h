@@ -40,7 +40,7 @@ public:
     void showFrame();
 
 public slots:
-    virtual void s_mostrarDetalles();
+    virtual void on_pushButton2_released();
 };
 
 #endif
