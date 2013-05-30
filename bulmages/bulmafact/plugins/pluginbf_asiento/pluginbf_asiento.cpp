@@ -514,9 +514,12 @@ int BlToolButton_released(BlToolButton *bot) {
 
 
 int FacturaView_afterSave_Post(FacturaView *fact) {
-
+    BL_FUNC_DEBUG
+  
     QString idasiento = "";
- 
+    QString fecha = fact->dbValue("ffactura");
+    if (fecha == "") fecha = "now()";
+      
     QString query = "SELECT idasiento FROM factura WHERE idfactura = " + fact->dbValue("idfactura");
     BlDbRecordSet *cur = fact->mainCompany()->loadQuery(query);
     if (!cur->eof()) {
@@ -531,7 +534,8 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
     delete cur;
 
   if (idasiento == "") {
-      query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+fact->dbValue("ffactura")+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"','"+fact->dbValue("descfactura")+"',1)";
+
+      query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"','"+fact->dbValue("descfactura")+"',1)";
 
       fact->mainCompany()->runQuery(query);
       
@@ -548,14 +552,29 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
   query = "SELECT * FROM cliente WHERE idcliente = "+fact->dbValue("idcliente");
   cur = fact->mainCompany()->loadQuery(query);
   if (!cur->eof()) {
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffactura")+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',"+cur->value("idcuenta")+","+fact->m_totalfactura->text().replace(",",".")+",'"+fact->dbValue("descfactura")+"')";
+      if (cur->value("idcuenta") == "") {
+	  blMsgInfo("No se pudo crear el asiento ya que el cliente no tiene cuenta asociada");
+	  delete cur;
+	  return 0;
+      } /// end if
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',"+cur->value("idcuenta")+","+fact->m_totalfactura->text().replace(",",".")+",'"+fact->dbValue("descfactura")+"')";
 
       fact->mainCompany()->runQuery(query);
   } // end if
   delete cur;
   
+  
+  query = "SELECT id_cuenta('47300001') AS id";
+  cur = fact->mainCompany()->loadQuery(query);
+  if (cur->value("id") == "0") {
+       blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IRPF 47300001");
+       delete cur;
+       return 0;
+  } // end if
+  delete cur;
+  
   // El apunte por el irpf
-  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffactura")+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',id_cuenta('47300001'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfactura")+"')";
+  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',id_cuenta('47300001'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfactura")+"')";
 
   fact->mainCompany()->runQuery(query);
   
@@ -569,8 +588,19 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
       while ( codint.length() <  g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - cur->value("ivalfactura").length() ) {
 	  codint = codint + "0";
       } // end while
-      codint = codint + cur->value("ivalfactura");	  
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffactura")+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',id_cuenta('"+codint+"'),"+cur->value("subbase")+",'"+fact->dbValue("descfactura")+"')";
+      codint = codint + cur->value("ivalfactura");	
+      
+      query = "SELECT id_cuenta('"+codint+"') AS id";
+      BlDbRecordSet *cur1 = fact->mainCompany()->loadQuery(query);
+      if (cur1->value("id") == "0") {
+	  blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IVA "+ codint);
+	  delete cur1;
+	  delete cur;
+	  return 0;
+      } // end if
+      delete cur1;
+      
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',id_cuenta('"+codint+"'),"+cur->value("subbase")+",'"+fact->dbValue("descfactura")+"')";
 
       fact->mainCompany()->runQuery(query);
       cur->nextRecord();
@@ -582,16 +612,19 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
   
   
   /// Los apuntes por servicio u obra.
-  
-  
-  
   query = "SELECT idcuenta, SUM(cantlfactura*pvplfactura*(1-descuentolfactura/100))::NUMERIC(12,2) AS subbase FROM lfactura " \
   "LEFT JOIN articulo AS t1 ON t1.idarticulo = lfactura.idarticulo " \
   "LEFT JOIN familia ON t1.idfamilia = familia.idfamilia WHERE idfactura = "+fact->dbValue("idfactura")+"  GROUP BY idcuenta" ;
 
   cur = fact->mainCompany()->loadQuery(query);
   while (!cur->eof()) {	  
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffactura")+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',"+cur->value("idcuenta")+","+cur->value("subbase")+",'"+fact->dbValue("descfactura")+"')";
+    
+      if (cur->value("idcuenta") == "") {
+	blMsgInfo("No se pudo crear el asiento porque hay una familia sin cuenta asociada de venta o de servicio");
+	delete cur;
+	return 0;
+      } // end if
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',"+cur->value("idcuenta")+","+cur->value("subbase")+",'"+fact->dbValue("descfactura")+"')";
 
       fact->mainCompany()->runQuery(query);
       cur->nextRecord();
@@ -668,9 +701,11 @@ int CobroView_afterSave_Post(CobroView *fact) {
       } // end if
     } // end if
   
-
+  QString fecha = curcobro->value("fechacobro");
+  if (fecha == "") fecha = "now()";
+    
   if (idasiento == "") {
-      query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+curcobro->value("fechacobro")+"','Cobro. Cliente"+ curcobro->value("refcobro") +"','"+curcobro->value("comentcobro")+"',1)";
+      query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+fecha+"','Cobro. Cliente"+ curcobro->value("refcobro") +"','"+curcobro->value("comentcobro")+"',1)";
 
       fact->mainCompany()->runQuery(query);
       
@@ -686,7 +721,13 @@ int CobroView_afterSave_Post(CobroView *fact) {
   query = "SELECT * FROM cliente WHERE idcliente = "+fact->dbValue("idcliente");
   BlDbRecordSet *cur = fact->mainCompany()->loadQuery(query);
   if (!cur->eof()) {
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+curcobro->value("fechacobro")+"','Cobro. Cliente"+ curcobro->value("refcobro") +"',"+cur->value("idcuenta")+","+curcobro->value("cantcobro").replace(",",".")+",'"+curcobro->value("comentcobro")+"')";
+      if (cur->value("idcuenta") == "") {
+	 blMsgInfo("No se puede crear el asiento porque el cliente no tiene una cuenta asociada");
+	 delete curcobro;
+	 delete cur;
+	 return 0;
+      } // end if
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Cobro. Cliente"+ curcobro->value("refcobro") +"',"+cur->value("idcuenta")+","+curcobro->value("cantcobro").replace(",",".")+",'"+curcobro->value("comentcobro")+"')";
 
       fact->mainCompany()->runQuery(query);
   } // end if
@@ -697,7 +738,14 @@ int CobroView_afterSave_Post(CobroView *fact) {
   query = "SELECT * FROM forma_pago WHERE idforma_pago = "+curcobro->value("idforma_pago");
   cur = fact->mainCompany()->loadQuery(query);
   if (!cur->eof()) {
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+curcobro->value("fechacobro")+"','Cobro. Cliente"+ curcobro->value("refcobro") +"',"+cur->value("idcuenta")+","+curcobro->value("cantcobro").replace(",",".")+",'"+curcobro->value("comentcobro")+"')";
+      if (cur->value("idcuenta") == "") {
+	 blMsgInfo("No se puede crear el asiento porque la forma de pago no tiene una cuenta asociada");
+	 delete curcobro;
+	 delete cur;
+	 return 0;
+      } // end if
+    
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Cobro. Cliente"+ curcobro->value("refcobro") +"',"+cur->value("idcuenta")+","+curcobro->value("cantcobro").replace(",",".")+",'"+curcobro->value("comentcobro")+"')";
 
       fact->mainCompany()->runQuery(query);
   } // end if
@@ -759,9 +807,11 @@ int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
 
 int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
     BL_FUNC_DEBUG
-    blMsgError("factura de proveedor");
     QString idasiento = "";
- 
+    QString fecha = fact->dbValue("ffacturap");
+    if (fecha == "") fecha = "now()";
+    
+    
     QString query = "SELECT idasiento FROM facturap WHERE idfacturap = " + fact->dbValue("idfacturap");
     BlDbRecordSet *cur = fact->mainCompany()->loadQuery(query);
     if (!cur->eof()) {
@@ -776,7 +826,7 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
     delete cur;
 
   if (idasiento == "") {
-      query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+fact->dbValue("ffacturap")+"','Fra. Proveedor"+ fact->dbValue("codigoserie_facturap") + fact->dbValue("numfacturap") +"','"+fact->dbValue("descfacturap")+"',1)";
+      query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+fecha+"','Fra. Proveedor"+ fact->dbValue("codigoserie_facturap") + fact->dbValue("numfacturap") +"','"+fact->dbValue("descfacturap")+"',1)";
 
       fact->mainCompany()->runQuery(query);
       
@@ -790,20 +840,34 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
   }// end if
   
   
-  blMsgError("Insercion del asiento");
-  
   /// El apunte por cuenta del proveedor.
   query = "SELECT * FROM proveedor WHERE idproveedor = "+fact->dbValue("idproveedor");
   cur = fact->mainCompany()->loadQuery(query);
   if (!cur->eof()) {
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffacturap")+"','Fra. Proveedor " + fact->dbValue("numfacturap") +"',"+cur->value("idcuenta")+","+fact->m_totalfacturap->text().replace(",",".")+",'"+fact->dbValue("descfacturap")+"')";
-      blMsgError(query);
+       if (cur->value("idcuenta") == "") {
+	 blMsgInfo("No se puede crear el asiento porque el proveedor no tiene cuenta asociada");
+	 delete cur;
+	 return 0;
+       } // end if
+    
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Proveedor " + fact->dbValue("numfacturap") +"',"+cur->value("idcuenta")+","+fact->m_totalfacturap->text().replace(",",".")+",'"+fact->dbValue("descfacturap")+"')";
       fact->mainCompany()->runQuery(query);
   } // end if
   delete cur;
   
+  
+  query = "SELECT id_cuenta('47300001') AS id";
+  cur = fact->mainCompany()->loadQuery(query);
+  if (cur->value("id") == "0") {
+       blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IRPF 47300001");
+       delete cur;
+       return 0;
+  } // end if
+  delete cur;
+  
+  
   // El apunte por el irpf
-  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffacturap")+"','Fra. Proveedor "+ fact->dbValue("numfacturap") +"',id_cuenta('47300001'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfacturap")+"')";
+  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Proveedor "+ fact->dbValue("numfacturap") +"',id_cuenta('47300001'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfacturap")+"')";
 
   fact->mainCompany()->runQuery(query);
   
@@ -817,8 +881,20 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
       while ( codint.length() <  g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - cur->value("ivalfacturap").length() ) {
 	  codint = codint + "0";
       } // end while
-      codint = codint + cur->value("ivalfacturap");	  
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffacturap")+"','Fra. Proveedor"+ fact->dbValue("codigoserie_facturap") + fact->dbValue("numfacturap") +"',id_cuenta('"+codint+"'),"+cur->value("subbase")+",'"+fact->dbValue("descfacturap")+"')";
+      codint = codint + cur->value("ivalfacturap");	
+      
+      
+      query = "SELECT id_cuenta('"+codint+"') AS id";
+      BlDbRecordSet *cur1 = fact->mainCompany()->loadQuery(query);
+      if (cur1->value("id") == "0") {
+	  blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IVA "+ codint);
+	  delete cur1;
+	  delete cur;
+	  return 0;
+      } // end if
+      delete cur1;
+      
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Proveedor"+ fact->dbValue("codigoserie_facturap") + fact->dbValue("numfacturap") +"',id_cuenta('"+codint+"'),"+cur->value("subbase")+",'"+fact->dbValue("descfacturap")+"')";
 
       fact->mainCompany()->runQuery(query);
       cur->nextRecord();
@@ -839,7 +915,18 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
 
   cur = fact->mainCompany()->loadQuery(query);
   while (!cur->eof()) {	  
-      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fact->dbValue("ffacturap")+"','Fra. Proveedor "+ fact->dbValue("numfacturap") +"',"+cur->value("idcuentav")+","+cur->value("subbase")+",'"+fact->dbValue("descfacturap")+"')";
+    
+    
+    
+    
+      if (cur->value("idcuentav") == "") {
+	blMsgInfo("No se pudo crear el asiento porque hay una familia sin cuenta asociada de compra o de suministro");
+	delete cur;
+	return 0;
+      } // end if
+    
+    
+      query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Proveedor "+ fact->dbValue("numfacturap") +"',"+cur->value("idcuentav")+","+cur->value("subbase")+",'"+fact->dbValue("descfacturap")+"')";
 
       fact->mainCompany()->runQuery(query);
       cur->nextRecord();
@@ -935,6 +1022,15 @@ int PagoView_afterSave_Post(PagoView *fact) {
   query = "SELECT * FROM proveedor WHERE idproveedor = "+fact->dbValue("idproveedor");
   BlDbRecordSet *cur = fact->mainCompany()->loadQuery(query);
   if (!cur->eof()) {
+    
+          if (cur->value("idcuenta") == "") {
+	 blMsgInfo("No se puede crear el asiento porque el proveedor no tiene una cuenta asociada");
+	 delete curpago;
+	 delete cur;
+	 return 0;
+      } // end if
+      
+      
       query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+curpago->value("fechapago")+"','Pago. Proveedor"+ curpago->value("refpago") +"',"+cur->value("idcuenta")+","+curpago->value("cantpago").replace(",",".")+",'"+curpago->value("comentpago")+"')";
 
       fact->mainCompany()->runQuery(query);
@@ -946,6 +1042,15 @@ int PagoView_afterSave_Post(PagoView *fact) {
   query = "SELECT * FROM forma_pago WHERE idforma_pago = "+curpago->value("idforma_pago");
   cur = fact->mainCompany()->loadQuery(query);
   if (!cur->eof()) {
+    
+      if (cur->value("idcuenta") == "") {
+	 blMsgInfo("No se puede crear el asiento porque la forma de pago no tiene una cuenta asociada");
+	 delete curpago;
+	 delete cur;
+	 return 0;
+      } // end if
+      
+      
       query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+curpago->value("fechapago")+"','Pago. Proveedor"+ curpago->value("refpago") +"',"+cur->value("idcuenta")+","+curpago->value("cantpago").replace(",",".")+",'"+curpago->value("comentpago")+"')";
 
       fact->mainCompany()->runQuery(query);
