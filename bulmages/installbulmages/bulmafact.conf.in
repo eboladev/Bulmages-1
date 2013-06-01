@@ -71,6 +71,11 @@ CONF_PRECALC_CODARTICULO   TRUE
 # -------------------------------------
 
 CONF_CONT_NUMDIGITOSEMPRESA          8
+CONF_CONT_CTA_CLIENTES               4300
+CONF_CONT_CTA_PROVEEDORES            4000
+CONF_CONT_CTA_VENTAPRODUCTO          700
+CONF_CONT_CTA_COMPRAPRODUCTO         600
+CONF_CONT_CTA_FPAGO                  570
 
 #--------------------------------------------------------------------#
 #                                                                    #

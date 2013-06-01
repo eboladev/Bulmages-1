@@ -639,7 +639,7 @@ int ClienteView_Guardar_Pre(ClienteView *cliente) {
     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
     /// siguiente que le corresponda.
     QString query;
-    QString codpadre = "4300";
+    QString codpadre = g_confpr->value(CONF_CONT_CTA_CLIENTES);
     QString codint = codpadre;
     int tipocuenta = 0;
     
@@ -658,8 +658,6 @@ int ClienteView_Guardar_Pre(ClienteView *cliente) {
         codint.setNum ( valor );
 
     } else {
-
-	// PONER UN PARAMETRO APROPIADO
         while ( codint.length() <  g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - 1 ) {
             codint = codint + "0";
         } // end while
@@ -728,7 +726,7 @@ int ProveedorView_Guardar_Pre(ProveedorView *proveedor) {
     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
     /// siguiente que le corresponda.
     QString query;
-    QString codpadre = "4000";
+    QString codpadre = g_confpr->value(CONF_CONT_CTA_PROVEEDORES);
     QString codint = codpadre;
     int tipocuenta = 0;
     
@@ -849,7 +847,7 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
 	      /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
 	      /// siguiente que le corresponda.
 	      QString query;
-	      QString codpadre = "700";
+	      QString codpadre = g_confpr->value(CONF_CONT_CTA_VENTAPRODUCTO);
 	      QString codint = codpadre;
 	      int tipocuenta = 0;
 	      
@@ -897,7 +895,7 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
 	      /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
 	      /// siguiente que le corresponda.
 	      QString query;
-	      QString codpadre = "600";
+	      QString codpadre = g_confpr->value(CONF_CONT_CTA_COMPRAPRODUCTO);
 	      QString codint = codpadre;
 	      int tipocuenta = 0;
 	      
@@ -1031,7 +1029,7 @@ int FPagoView_Guardar_Pre ( FPagoView *fam )
 	      /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
 	      /// siguiente que le corresponda.
 	      QString query;
-	      QString codpadre = "570";
+	      QString codpadre = g_confpr->value(CONF_CONT_CTA_FPAGO);
 	      QString codint = codpadre;
 	      int tipocuenta = 0;
 	      
@@ -1107,153 +1105,3 @@ int FPagoView_currentItemChanged_Post ( FPagoView *fam )
 
 
 
-
-/*
-
-int ClienteView_cargarPost_Post ( ClienteView *cliente )
-{
-    BlDbRecordSet *rec;
-
-    cliente->mainCompany()->begin();
-  
-    // 1) coge idcuentabanco de banco.
-    // 2) se conecta a contabilidad.
-    // 3) busca el codigo cuenta usando el idcuenta de banco.
-    // 4) rellena qlineedit con codigo cuenta.
-    
-    QString query = "SELECT idcuentacliente FROM cliente WHERE idcliente = '" + cliente->dbValue(cliente->fieldId()) + "' LIMIT 1";
-    
-    
-    rec = cliente->mainCompany()->loadQuery(query);
-    
-    // Si no hay datos en idcuenta no se hace nada.
-    if ( rec != NULL ) {
-
-	cliente->mainCompany()->run("SELECT conectabulmacont()");
-	
-	QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentacliente") + "' LIMIT 1";
-	rec = cliente->mainCompany()->loadQuery(query);
-	
-	cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->setText( rec->value("codigo") );
-	
-    } // end if
-
-  
-    cliente->mainCompany()->commit();
-
-    return 0;
-}
-
-
-int ClienteView_Guardar_Pre ( ClienteView *cliente )
-{
-    BlDbRecordSet *rec;
-
-    /// En la creacion del cliente no existe ID.
-    if ( !cliente->dbValue ( cliente->fieldId() ).isEmpty() ) {
-    
-      QString query = "SELECT idcuentacliente FROM cliente WHERE idcliente = '" + cliente->dbValue(cliente->fieldId()) + "' LIMIT 1";
-
-      rec = cliente->mainCompany()->loadQuery(query);
-
-      if ( rec != NULL ) {
-	  cliente->setDbValue("idcuentacliente", cliente->dbValue("idcuentacliente"));
-      } // end if
-      
-      delete rec;
-
-    } else {
-      cliente->setDbValue("idcuentacliente", "0");
-    } // end if
-
-    return 0;
-}
-
-
-int ClienteView_Guardar_Post ( ClienteView *cliente )
-{
-    BlDbRecordSet *rec_cliente;
-    BlDbRecordSet *tmp_cliente;
-    BlDbRecordSet *rsa;
-    QString query;
-
-    try {
-
-      cliente->mainCompany()->run("SELECT conectabulmacont()");
-      
-      /// Hace la comprobacion de los datos introducidos y que son validos en la contabilidad.
-      /// La cuenta que se especifique tiene que existir en la contabilidad. No se crean de forma
-      /// automatica.
-      QString cuentacliente = cliente->mainCompany()->sanearCadena(cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->text());
-
-      if ( cliente->dbValue(cliente->fieldId()).isEmpty() ) return -1;
-
-      
-      if (cuentacliente.isEmpty()) {
-
-	/// En el caso de dejar vacio el campo de cuenta preferente
-	/// se mira si antes se hizo utilizo la cuenta preferente
-	/// y restaura la cuenta original.
-	query = "SELECT origenidcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-	tmp_cliente = cliente->mainCompany()->loadQuery(query);
-
-	if (!tmp_cliente->value("origenidcuentacliente").isEmpty()) {
-	    /// Restaura cuenta original
-	    query = "UPDATE cliente SET idcuentacliente = " + tmp_cliente->value("origenidcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-	    cliente->mainCompany()->runQuery(query);
-	    
-	    /// Vacia campo origen.
-	    query = "UPDATE cliente SET origenidcuentacliente = NULL WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-	    cliente->mainCompany()->runQuery(query);
-	} // end if
-	
-      } else {
-	/// Verifica que el idcuenta guardado y el codigo introducido coincidan
-	/// si no coinciden entonces el codigo ha cambiado y se tiene que buscar
-	/// a que idcuenta corresponde y hacer la actualizacion.
-	
-	query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + cliente->dbValue("idcuentacliente") + "'";
-	rsa = cliente->mainCompany()->loadQuery(query);
-	if (rsa != NULL) {
-	  
-	  if (rsa->value("codigo") != cuentacliente) {
-		  
-	      QString query_cliente = "SELECT idcuenta FROM bc_cuenta WHERE codigo = '" + cuentacliente + "' LIMIT 1";
-	      rec_cliente = cliente->mainCompany()->loadQuery(query_cliente);
-	      
-	      if (rec_cliente->numregistros() <= 0) {
-		throw -300;
-	      } // end if
-
-	      /// Almacena la informacion de la cuenta antes de sobreescribirla.
-	      /// Verifica primero que el campo este vacio.
-	      query = "SELECT origenidcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-	      tmp_cliente = cliente->mainCompany()->loadQuery(query);
-	      
-	      if (tmp_cliente->value("origenidcuentacliente").isEmpty()) {
-		query = "SELECT idcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-		tmp_cliente = cliente->mainCompany()->loadQuery(query);
-		query = "UPDATE cliente SET origenidcuentacliente = " + tmp_cliente->value("idcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-		cliente->mainCompany()->runQuery(query);
-	      } // end if
-
-	      query = "UPDATE cliente SET idcuentacliente = " + rec_cliente->value("idcuenta") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
-	      cliente->mainCompany()->runQuery(query);
-	      
-	    } // end if
-	    
-	  } // end if
-	  
-	} // end if
-	
-    } catch (int e) {
-	if (e == -300) {
-	  blMsgError(_("La cuenta no existe en la contabilidad."));
-	} // end if
-	throw -1;
-    } // end try
-
-    return 0;
-}
-
-*/

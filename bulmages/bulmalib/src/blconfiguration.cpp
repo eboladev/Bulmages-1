@@ -471,12 +471,18 @@ QString BlConfiguration::name( int i )
        return "CONF_PRECALC_CODARTICULO";
     if ( i == CONF_CONT_NUMDIGITOSEMPRESA )
        return "CONF_CONT_NUMDIGITOSEMPRESA";
+    if ( i == CONF_CONT_CTA_CLIENTES )
+       return "CONF_CONT_CTA_CLIENTES";
+    if ( i == CONF_CONT_CTA_PROVEEDORES )
+       return "CONF_CONT_CTA_PROVEEDORES";
+    if ( i == CONF_CONT_CTA_VENTAPRODUCTO )
+       return "CONF_CONT_CTA_VENTAPRODUCTO";
+    if ( i == CONF_CONT_CTA_COMPRAPRODUCTO )
+       return "CONF_CONT_CTA_COMPRAPRODUCTO";
+    if ( i == CONF_CONT_CTA_FPAGO )
+       return "CONF_CONT_CTA_FPAGO";
     return "";
 }
-
-
-
-
 
 /// This method writes the configuration of the system to the home bulmages.conf file
 /// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del

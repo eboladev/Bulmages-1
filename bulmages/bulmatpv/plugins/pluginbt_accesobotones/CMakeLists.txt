@@ -27,13 +27,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
-# generate rules for building source files from the resources
-#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-
 # generate rules for building source files that moc generates
 QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
 IF(WIN32)
@@ -77,7 +73,12 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
+if(WIN32)
 target_link_libraries(${plugin} libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+ELSE(WIN32)
+target_link_libraries(${plugin} libbulmatpv bulmalib)
+qt5_use_modules(${plugin} Widgets)
+ENDIF(WIN32)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})

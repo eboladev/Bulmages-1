@@ -298,6 +298,13 @@
 
 /// Sistema de configuracion contable
 #define CONF_CONT_NUMDIGITOSEMPRESA  568
+#define CONF_CONT_CTA_CLIENTES               569
+#define CONF_CONT_CTA_PROVEEDORES            570
+#define CONF_CONT_CTA_VENTAPRODUCTO          571
+#define CONF_CONT_CTA_COMPRAPRODUCTO         572
+#define CONF_CONT_CTA_FPAGO                  573
+
+
 
 typedef QMap<int, QString> mapa;
 

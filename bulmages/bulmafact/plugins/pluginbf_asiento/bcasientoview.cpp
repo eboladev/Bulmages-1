@@ -582,11 +582,9 @@ void BcAsientoList::on_mui_inicio_released() {
 void BcAsientoList::botonInicio()
 {
     BL_FUNC_DEBUG
-    if(mainCompany()->pWorkspace()->activeWindow() == this) {
-	if ( m_cursorAsientos->numregistros() != 0 ) {
+    if ( m_cursorAsientos->numregistros() != 0 ) {
 	    m_cursorAsientos->firstRecord();
 	    load ( m_cursorAsientos->value( "idasiento" ) );
-	} // end if
     } // end if
     
 }
@@ -605,13 +603,10 @@ void BcAsientoList::on_mui_fin_released() {
 void BcAsientoList::botonFin()
 {
     BL_FUNC_DEBUG
-    if(mainCompany()->pWorkspace()->activeWindow() == this) {
-	if ( m_cursorAsientos->numregistros() != 0 ) {
-	    m_cursorAsientos->lastRecord();
-	    load ( m_cursorAsientos->value( "idasiento" ) );
-	} // end if
+    if ( m_cursorAsientos->numregistros() != 0 ) {
+      m_cursorAsientos->lastRecord();
+      load ( m_cursorAsientos->value( "idasiento" ) );
     } // end if
-    
 }
 
 
@@ -632,17 +627,16 @@ void BcAsientoList::on_mui_siguiente_released() {
 void BcAsientoList::botonSiguiente()
 {
     BL_FUNC_DEBUG
-    if (mainCompany()->pWorkspace()->activeWindow() == this) {
-        ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
-        if ( m_cursorAsientos->numregistros() == 0 ) {
-	    return;
-        } // end if
-
-        if ( !m_cursorAsientos->isLastRecord() ) {
-            m_cursorAsientos->nextRecord();
-            load ( m_cursorAsientos->value( "idasiento" ) );
-        }// end if
+    ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
+    if ( m_cursorAsientos->numregistros() == 0 ) {
+	return;
     } // end if
+
+    if ( !m_cursorAsientos->isLastRecord() ) {
+	m_cursorAsientos->nextRecord();
+	load ( m_cursorAsientos->value( "idasiento" ) );
+    }// end if
+
 }
 
 
@@ -662,17 +656,13 @@ void BcAsientoList::on_mui_anterior_released() {
 void BcAsientoList::botonAnterior()
 {
     BL_FUNC_DEBUG
-    
-    if (mainCompany()->pWorkspace()->activeWindow() == this) {
-        ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
-        if ( m_cursorAsientos->numregistros() == 0 ) {
-            return;
-        } // end if
+    if ( m_cursorAsientos->numregistros() == 0 ) {
+	return;
+    } // end if
 
-        if ( !m_cursorAsientos->isFirstRecord() ) {
-            m_cursorAsientos->previousRecord();
-            load ( m_cursorAsientos->value( "idasiento" ) );
-        } // end if
+    if ( !m_cursorAsientos->isFirstRecord() ) {
+	m_cursorAsientos->previousRecord();
+	load ( m_cursorAsientos->value( "idasiento" ) );
     } // end if
 }
 
