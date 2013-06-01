@@ -666,14 +666,17 @@ int BlPostgreSqlClient::formatofecha()
 int BlPostgreSqlClient::begin()
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug("=============== BEGIN ==================");
     if ( m_insideTransaction ) {
-        BlDebug::blDebug ( "Ya estamos dentro de una transaccion", 0 );
+        BlDebug::blDebug ( "Doble inicio de transaccion", 0 );
+	blMsgError("Doble inicio de transaccion");
         return -1;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "BEGIN" );
     if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
         BlDebug::blDebug ( "BEGIN command failed" );
+	blMsgError("No se pudo iniciar la transaccion");
         PQclear ( res );
         return -1;
     } // end if
@@ -693,6 +696,7 @@ int BlPostgreSqlClient::begin()
 void BlPostgreSqlClient::commit()
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug("=============== COMMIT ==================");
     if ( !m_insideTransaction ) {
 	
         return;
@@ -714,6 +718,7 @@ void BlPostgreSqlClient::commit()
 void BlPostgreSqlClient::rollback()
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug("=============== ROLLBACK ==================");
     if ( !m_insideTransaction ) {
 	
         return;
@@ -879,7 +884,7 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
             throw 42501;
 	
 	
-        /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
+        /// Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result=PQexecParams(  conn, ( const char * ) Query.toUtf8()  , 
                      numParams, NULL, params, NULL, NULL, 0);
         
@@ -888,7 +893,6 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
             throw - 1;
         if ( PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus ( result ) != 2 )
             throw - 1;
-	
 
         PQclear ( result );
 	

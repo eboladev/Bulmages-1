@@ -69,9 +69,13 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
+if(WIN32)
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-
 qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
+else(WIN32)
+target_link_libraries(${plugin} bulmalib)
+qt5_use_modules(${plugin} Widgets WebKit WebKitWidgets)
+endif(WIN32)
 
 install_targets(/lib/bulmalib/plugins ${plugin})
 

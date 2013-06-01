@@ -808,7 +808,7 @@ int FamiliasView_FamiliasView ( FamiliasView *fam )
     cta1->setMainCompany(fam->mainCompany());
     cta1->setLabel ( _ ( "Cuenta contable compras:" ) );
     cta1->setTableName ( "cuenta" );
-    cta1->setFieldId("idcuentav");
+    cta1->setFieldId("idcuenta");
     cta1->m_valores["descripcion"] = "";
     cta1->m_valores["codigo"] = "";
     cta1->setObjectName("mui_idcuentav");
@@ -834,6 +834,7 @@ int FamiliasView_FamiliasView ( FamiliasView *fam )
 
 int FamiliasView_Guardar_Pre ( FamiliasView *fam )
 {
+    BL_FUNC_DEBUG
     QString query;
   
     try {
@@ -867,7 +868,6 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
 		  codint.setNum ( valor );
 
 	      } else {
-
 		  // PONER UN PARAMETRO APROPIADO
 		  while ( codint.length() <  g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - 1 ) {
 		      codint = codint + "0";
@@ -883,13 +883,11 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
 	
 	      fam->findChild<BlSearchWidget *>("mui_idcuenta")->setText(codint);
 	      
-	      blMsgError("Se ha creado la cuenta " + codint);
+	      blMsgInfo("Se ha creado la cuenta " + codint);
 	} else {
 	      query = "UPDATE familia SET idcuenta = "+idcuenta+" WHERE idfamilia = " + fam->idFamiliaModified();
 	      fam->mainCompany()->runQuery(query);
 	      fam->findChild<BlSearchWidget *>("mui_idcuenta")->setId(idcuenta);
-
-	      
 	} // end if
 	
 	/// LA cuenta para compras
@@ -934,18 +932,17 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
 	
 	      fam->findChild<BlSearchWidget *>("mui_idcuentav")->setText(codint);
 	      
-	      blMsgError("Se ha creado la cuenta " + codint);
+	      blMsgInfo("Se ha creado la cuenta " + codint);
 	} else {
 	      query = "UPDATE familia SET idcuentav = "+idcuentav+" WHERE idfamilia = " + fam->idFamiliaModified();
 	      fam->mainCompany()->runQuery(query);
 	      fam->findChild<BlSearchWidget *>("mui_idcuentav")->setId(idcuenta);
-
-	      
 	} // end if
 	
 	
     } catch (int e) {
-	throw -1;
+	blMsgError(_("Se ha producido un error al guardar las cuentas asociadas a la familia"));
+	return -1;
     } // end try
 
   
@@ -1078,7 +1075,8 @@ int FPagoView_Guardar_Pre ( FPagoView *fam )
 	      
 	} // end if
     } catch (int e) {
-	throw -1;
+	blMsgError(_("Error en la gestion de las cuentas contables asociadas"));
+	return -1;
     } // end try
 
   

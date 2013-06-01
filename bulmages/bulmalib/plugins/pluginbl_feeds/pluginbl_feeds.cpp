@@ -49,7 +49,7 @@ QAction *g_actionFeedsWidget;
 **/
 int entryPoint ( BlMainWindow *bcont )
 {
-    BlDebug::blDebug ( "Entrada del plugin Feeds", 10 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -77,24 +77,9 @@ int entryPoint ( BlMainWindow *bcont )
     g_actionFeedsWidget->setStatusTip ( "Muestra/oculta las notificaciones" );
     g_actionFeedsWidget->setWhatsThis ( "Feeds.\n\nMuestra/oculta notificaciones" );
 
-    /*
-    QObject::connect ( g_actionFeedsWidget, SIGNAL ( toggled ( bool ) ), g_docFeedsWidget, SLOT ( cambiaVisible ( bool ) ) );
-    QObject::connect ( g_docFeedsWidget, SIGNAL ( cambiaEstadoVisible ( bool ) ), g_actionFeedsWidget, SLOT ( setChecked ( bool ) ) );
-
-    
-    /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bcont->newMenu ( "Venta&na", "menuVentana", "menuAcerca_de" );
-
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( g_actionFeedsWidget );
-
-*/
-
     g_docFeedsWidget->show();
     g_actionFeedsWidget->setChecked ( true );
 
-
-    BlDebug::blDebug ( "Iniciado correctamente el plugin Feeds", 10 );
     return 0;
 }
 

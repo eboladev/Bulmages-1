@@ -380,14 +380,15 @@ int FamiliasView::save()
 	} // end if
 
         if ( mui_productofamilia->isChecked() ) {
-            prodfam = " true ";
+            prodfam = " TRUE ";
         } else {
-            prodfam = " false ";
+            prodfam = " FALSE ";
         } // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
                         mainCompany()->sanearCadena ( mui_nomFamilia->text() ) + "', descfamilia = '" +
                         mainCompany()->sanearCadena ( mui_descFamilia->toPlainText() ) + "' , codigofamilia = '" +
                         mainCompany()->sanearCadena ( mui_codFamilia->text() ) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
+
         int error = mainCompany()->runQuery ( query );
         if ( error ) {
             throw -1;
