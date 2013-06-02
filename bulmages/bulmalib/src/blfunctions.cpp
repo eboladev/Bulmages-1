@@ -875,6 +875,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
 void blMsgInfo ( QString cad, QWidget *parent )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug(cad);
     QMessageBox msgBox;
     msgBox.information ( parent,
                          _ ( "Informacion del programa" ),
@@ -886,6 +887,7 @@ void blMsgInfo ( QString cad, QWidget *parent )
 void blMsgWarning ( QString cad, QWidget *parent )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug(cad);
     QMessageBox msgBox;
     msgBox.warning ( parent,
                      _ ( "Aviso del programa" ),
@@ -897,6 +899,7 @@ void blMsgWarning ( QString cad, QWidget *parent )
 void blMsgError ( QString cad, QWidget *parent )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug(cad);
     QMessageBox msgBox;
     msgBox.critical ( parent,
                       _ ( "Error del programa" ),

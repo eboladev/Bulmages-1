@@ -754,9 +754,6 @@ void BlForm::closeEvent ( QCloseEvent *e )
                 return;
             } // end if
         } // end if
-        /// \TODO Este removeWindow encubre un bug. Debe tratarse de otra forma el
-        /// sacar las ventanas de listventanas.
-//        removeWindow();
         e->accept();
     } catch ( ... ) {
         blMsgInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
@@ -976,7 +973,7 @@ void BlForm::pintar()
         /// Buscamos un BlDoubleSpinBox con nombre coincidente.
         BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->fieldName() );
         if ( l8 ) {
-            l8->setValue ( campo->fieldValue().toDouble() );
+            l8->setValue ( campo->fieldValue().replace(",",".").toDouble() );
 		if ( readOnly ) l8->setDisabled( true );
             /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
             QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->fieldName()+"';";
@@ -1297,6 +1294,7 @@ int BlForm::remove()
 {
     BL_FUNC_DEBUG
     try {
+        mainCompany()->begin();
         /// Lanzamos los plugins.
         if ( g_plugins->run ( "BlForm_borrar", this ) ) return 0;
         beforeDelete();
@@ -1312,11 +1310,11 @@ int BlForm::remove()
                         lista.at(i)->presentar();
                 } // end for
         } // end if
-
+	mainCompany()->commit();
         
         return err;
     } catch ( ... ) {
-        
+        mainCompany()->rollback();
         return -1;
     } // end try
 }

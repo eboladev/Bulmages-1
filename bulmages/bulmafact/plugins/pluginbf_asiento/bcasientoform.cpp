@@ -149,45 +149,49 @@ int BcAsientoForm::remove ( bool atendido )
 {
     BL_FUNC_DEBUG
     int error;
-    if ( dbValue ( "idasiento" ) != "" ) {
-        if ( atendido ) {
-            switch ( QMessageBox::warning ( 0,
-                                            _ ( "Borrar asiento" ),
-                                            _ ( "Se va a borrar el asiento. ¿Esta seguro?" ),
-                                            QMessageBox::Ok,
-                                            QMessageBox::Cancel ) ) {
-            case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-                mainCompany() ->begin();
-                m_listaLineas->remove();
-                error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
-                error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
-                if ( error ) {
-                    mainCompany() ->rollback();
-                    return -1;
-                } // end if
-                mainCompany() ->commit();
-                vaciar();
-                dialogChanges_readValues();
-                return 3;
-            case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
-                return 2;
-            } // end switch
-        } else {
-            mainCompany() ->begin();
-            m_listaLineas->remove();
-            error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
-            error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
-            if ( error ) {
-                mainCompany() ->rollback();
-                return -1;
-            } // end if
-            mainCompany() ->commit();
-            vaciar();
-            dialogChanges_readValues();
-            return 3;
-        } // end if
-    } // end if
-    
+    try {
+        mainCompany()->begin();
+	if ( dbValue ( "idasiento" ) != "" ) {
+	    if ( atendido ) {
+		switch ( QMessageBox::warning ( 0,
+						_ ( "Borrar asiento" ),
+						_ ( "Se va a borrar el asiento. ¿Esta seguro?" ),
+						QMessageBox::Ok,
+						QMessageBox::Cancel ) ) {
+		case QMessageBox::Ok: /// Retry clicked or Enter pressed.
+		    m_listaLineas->remove();
+		    error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
+		    error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
+		    if ( error ) {
+			mainCompany() ->rollback();
+			return -1;
+		    } // end if
+		    mainCompany() ->commit();
+		    vaciar();
+		    dialogChanges_readValues();
+		    return 3;
+		case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
+		    mainCompany()->commit();
+		    return 2;
+		} // end switch
+	    } else {
+		m_listaLineas->remove();
+		error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
+		error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
+		if ( error ) {
+		    mainCompany() ->rollback();
+		    return -1;
+		} // end if
+		mainCompany() ->commit();
+		vaciar();
+		dialogChanges_readValues();
+		return 3;
+	    } // end if
+	} // end if
+    } catch(...) {
+	blMsgError("Error inesperado borrando el asiento");
+	mainCompany()->rollback();
+    } // end try
     return 0;
 }
 

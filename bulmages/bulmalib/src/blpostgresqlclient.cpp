@@ -31,6 +31,9 @@
 #include "blerrordialog.h"
 
 
+int g_num_begins=0;
+int g_global_commit=true;
+
 ///
 /**
 \return
@@ -518,8 +521,6 @@ BlPostgreSqlClient::BlPostgreSqlClient()
 {
     BL_FUNC_DEBUG
     conn = NULL;
-    m_insideTransaction = false;
-    
 }
 
 
@@ -666,22 +667,28 @@ int BlPostgreSqlClient::formatofecha()
 int BlPostgreSqlClient::begin()
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug("=============== BEGIN ==================");
-    if ( m_insideTransaction ) {
-        BlDebug::blDebug ( "Doble inicio de transaccion", 0 );
-	blMsgError("Doble inicio de transaccion");
-        return -1;
+    /// Podemos hacer transacciones en cascada, en cuyo caso las previas son obviadas. Salvo en caso de hacer un rollback.
+    /// Esto es debido a que un formulario puede solicitar el borrado de otro formulario y ambos harán begin. Interesa que si uno de los dos falla
+    /// Se obvie toda la transaccion.
+    if (g_num_begins == 0) {
+      /// Es la primera transaccion y ponemos el commit a true, porque para empezar no habrá rollback.
+      g_global_commit = true;
+      BlDebug::blDebug("=============== BEGIN ==================");
+      PGresult *res;
+      res = PQexec ( conn, "BEGIN" );
+      if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
+	  BlDebug::blDebug ( "BEGIN command failed" );
+	  blMsgError("No se pudo iniciar la transaccion");
+	  PQclear ( res );
+	  g_num_begins = 0;
+	  return -1;
+      } // end if
+    } else {
+          BlDebug::blDebug("=============== BEGIN ANIDADO ==================");
     } // end if
-    PGresult *res;
-    res = PQexec ( conn, "BEGIN" );
-    if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
-        BlDebug::blDebug ( "BEGIN command failed" );
-	blMsgError("No se pudo iniciar la transaccion");
-        PQclear ( res );
-        return -1;
-    } // end if
-    PQclear ( res );
-    m_insideTransaction = true;
+    g_num_begins ++;
+    
+    // PQclear ( res );
     
     return ( 0 );
 }
@@ -696,16 +703,20 @@ int BlPostgreSqlClient::begin()
 void BlPostgreSqlClient::commit()
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug("=============== COMMIT ==================");
-    if ( !m_insideTransaction ) {
-	
-        return;
+    g_num_begins--;
+    if (g_num_begins == 0) {
+	 if (g_global_commit) {
+	      BlDebug::blDebug("=============== COMMIT ==================");
+	      PGresult *res;
+	      res = PQexec ( conn, "COMMIT" );
+	      PQclear ( res );
+	 } else {
+	      BlDebug::blDebug("=============== ROLLBACK DENTRO DE TRANSACCION ANIDADA ==================");
+	      PGresult *res;
+	      res = PQexec ( conn, "ROLLBACK" );
+	      PQclear ( res );
+	 } // end if
     } // end if
-    PGresult *res;
-    res = PQexec ( conn, "COMMIT" );
-    PQclear ( res );
-    m_insideTransaction = false;
-    
 }
 
 
@@ -718,16 +729,15 @@ void BlPostgreSqlClient::commit()
 void BlPostgreSqlClient::rollback()
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug("=============== ROLLBACK ==================");
-    if ( !m_insideTransaction ) {
-	
-        return;
+    g_num_begins--;
+    if ( g_num_begins == 0) {
+	BlDebug::blDebug("=============== ROLLBACK ==================");
+	PGresult *res;
+	res = PQexec ( conn, "ROLLBACK" );
+	PQclear ( res );
+    } else {
+	g_global_commit= false;
     } // end if
-    PGresult *res;
-    res = PQexec ( conn, "ROLLBACK" );
-    PQclear ( res );
-    m_insideTransaction = false;
-    
 }
 
 
