@@ -765,7 +765,7 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
-        spinBox->setValue ( value.toDouble() );
+        spinBox->setValue ( value.replace(",",".").toDouble() );
         spinBox->selectAll();
     } else if ( linea->fieldName() == "desctipo_iva" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();

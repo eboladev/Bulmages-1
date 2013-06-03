@@ -3851,7 +3851,6 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
         editor->setDecimals(linea->numericPrecision());
-
         return editor;
     } else if ( linea->fieldType() == BlDbField::DbInt ) {
         QSpinBox * editor = new QSpinBox ( parent );
@@ -3895,7 +3894,6 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     g_fieldName = linea->fieldName();
 
     if ( g_plugins->run ( "BlSubFormDelegate_setModelData", ( void * ) this ) ) {
-
         return;
     } // end if
 
@@ -3942,7 +3940,6 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     g_fieldName = linea->fieldName();
 
     if ( g_plugins->run ( "BlSubFormDelegate_setEditorData", ( void * ) this ) ) {
-
         return;
     } // end if
 
@@ -3953,7 +3950,7 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     } else if ( linea->fieldType() == BlDbField::DbNumeric ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
-        spinBox->setValue ( value.toDouble() );
+        spinBox->setValue ( value.replace(",",".").toDouble() );
         spinBox->selectAll();
     } else if ( linea->fieldType() == BlDbField::DbInt ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
