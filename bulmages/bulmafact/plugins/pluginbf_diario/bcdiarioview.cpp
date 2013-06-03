@@ -356,3 +356,8 @@ void BcDiarioView::openAsiento()
     asiento ->setFocus();
 }
 
+void BcDiarioView::on_mui_filtrar_toggled(bool check) {
+  BL_FUNC_DEBUG
+  frame->setVisible(check);
+}
+

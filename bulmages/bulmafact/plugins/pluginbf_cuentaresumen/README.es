@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Contabilidad general;Experimentales;
 
 Orden: 40
 

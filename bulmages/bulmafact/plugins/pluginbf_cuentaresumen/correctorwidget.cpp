@@ -18,10 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "bfasientoview.h"
-#include "pluginbf_asiento.h"
+#include "bcasientoview.h"
+//#include "pluginbf_asiento.h"
 #include "correctorwidget.h"
+#include "pdefs_pluginbf_cuentaresumen.h"
 
+/// USamos un extern para la variable global de asiento.
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT BcAsientoView *g_asiento;
 
 /** Inicializacion de la clase.
     En el constructor del corrector no se hacen tareas especiales. */

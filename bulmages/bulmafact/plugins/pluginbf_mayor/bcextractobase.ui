@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>699</width>
+    <width>836</width>
     <height>618</height>
    </rect>
   </property>
@@ -1728,22 +1728,5 @@
   <include location="../../../bulmages.qrc"/>
   <include location="../../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>frame</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>153</x>
-     <y>44</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>224</x>
-     <y>116</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

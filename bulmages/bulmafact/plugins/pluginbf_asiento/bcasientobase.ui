@@ -1225,22 +1225,5 @@
   <include location="../../../bulmages.qrc"/>
   <include location="../../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>mui_detalles</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>frame</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>241</x>
-     <y>43</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>56</x>
-     <y>95</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

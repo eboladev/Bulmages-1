@@ -67,6 +67,7 @@ public slots:
     virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
     virtual void openAsiento();
+    virtual void on_mui_filtrar_toggled(bool check);
 };
 
 

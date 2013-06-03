@@ -75,6 +75,7 @@ public slots:
     virtual void on_mui_fin_released();
     virtual void on_mui_siguiente_released();
     virtual void on_mui_anterior_released();
+    virtual void on_mui_filtrar_toggled(bool check);
 };
 
 

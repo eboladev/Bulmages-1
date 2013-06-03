@@ -473,6 +473,12 @@ void BcAsientoView::on_mui_list_editFinish ( int, int )
 }
 
 
+void BcAsientoView::on_mui_detalles_toggled( bool check) {
+  BL_FUNC_DEBUG
+  frame->setVisible(check);
+}
+
+
 /// =========================================================================================
 ///                       LISTASIENTOS
 /// =========================================================================================

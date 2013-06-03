@@ -225,7 +225,6 @@ void BcExtractoView::accept()
 void BcExtractoView::botonSiguiente()
 {
     BL_FUNC_DEBUG
-    if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           if ( !m_cursorcta->isLastRecord() ) {
               save();
@@ -233,8 +232,6 @@ void BcExtractoView::botonSiguiente()
               presentar();
           } // end if
       } // end if
-    } // end if
-    
 }
 
 
@@ -244,7 +241,6 @@ void BcExtractoView::botonSiguiente()
 void BcExtractoView::botonAnterior()
 {
     BL_FUNC_DEBUG
-    if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           if ( !m_cursorcta->isFirstRecord() ) {
               save();
@@ -252,8 +248,6 @@ void BcExtractoView::botonAnterior()
               presentar();
           } // end if
       } // end if
-    } // end if
-    
 }
 
 /// Retrocede al principio de las cuentas.
@@ -262,14 +256,12 @@ void BcExtractoView::botonAnterior()
 void BcExtractoView::botonInicio()
 {
     BL_FUNC_DEBUG
-    if(mainCompany()->pWorkspace()->activeWindow() == this) {
+
       if ( m_cursorcta != NULL ) {
           save();
           m_cursorcta->firstRecord();
           presentar();
       } // end if
-    } // end if
-    
 }
 
 /// Avanza al final de las cuentas.
@@ -278,14 +270,11 @@ void BcExtractoView::botonInicio()
 void BcExtractoView::botonFin()
 {
     BL_FUNC_DEBUG
-    if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           save();
           m_cursorcta->lastRecord();
           presentar();
       } // end if
-    } // end if
-    
 }
 
 
@@ -1036,4 +1025,9 @@ void BcExtractoView::on_mui_siguiente_released() {
 void BcExtractoView::on_mui_fin_released() {
       BL_FUNC_DEBUG
       botonFin();
+}
+
+void BcExtractoView::on_mui_filtrar_toggled(bool check) {
+  BL_FUNC_DEBUG
+  frame->setVisible(check);
 }

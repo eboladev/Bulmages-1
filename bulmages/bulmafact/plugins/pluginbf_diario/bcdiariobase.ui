@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>667</width>
+    <width>808</width>
     <height>550</height>
    </rect>
   </property>
@@ -298,7 +298,7 @@
        </widget>
       </item>
       <item row="2" column="5">
-       <widget class="BlSearchWidget" name="mui_contrapartida"/>
+       <widget class="BlSearchWidget" name="mui_contrapartida" native="true"/>
       </item>
       <item row="1" column="0" colspan="2">
        <widget class="QLabel" name="textLabel1_3_2">
@@ -334,7 +334,7 @@
        <widget class="QLineEdit" name="mui_saldoinf"/>
       </item>
       <item row="0" column="2">
-       <widget class="BlDateSearch" name="mui_fechainicial">
+       <widget class="BlDateSearch" name="mui_fechainicial" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -360,7 +360,7 @@
        </widget>
       </item>
       <item row="0" column="5">
-       <widget class="BlDateSearch" name="mui_fechafinal">
+       <widget class="BlDateSearch" name="mui_fechafinal" native="true">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -598,22 +598,5 @@
   <include location="../../../bulmages.qrc"/>
   <include location="../../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>frame</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>155</x>
-     <y>37</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>249</x>
-     <y>88</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

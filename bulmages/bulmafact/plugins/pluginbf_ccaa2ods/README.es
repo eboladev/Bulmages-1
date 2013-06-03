@@ -6,7 +6,7 @@
 
 Nombre: Cuentas anuales 
 
-Biblioteca: 
+Biblioteca: libpluginbf_ccaaods
 
 Descripción: <H1>Cuentas anuales</H1>
 <P>Permite obtener un balance de cuentas anuales para los planes contables españoles del 2007: Cuentas anuales, abreviadas y de pymes. Y para los planes contables anteriores al 2008: Cuentas anuales y abreviadas de asociaciones sin animo de lucro. </P>
@@ -25,7 +25,7 @@ Incompatibles:
 Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys; fbalance.ui
 
 
-Categorias: Contabilidad general
+Categorias: Contabilidad general;Experimentales;
 
 Orden: 180
 

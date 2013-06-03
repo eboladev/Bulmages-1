@@ -25,8 +25,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-   ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_asiento/
-   ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_asiento/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_asiento/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_asiento/)
 
 # generate rules for building source files from the resources
 #QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
