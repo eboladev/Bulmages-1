@@ -39,58 +39,46 @@
 	<blockTableStyle id="tabla">
 		<blockTopPadding length="0"/>
 		<blockBottomPadding length="0"/>
-		<blockAlignment value="LEFT" start="0,1" stop="1,-1"/>
-		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
-		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,1,0)" start="5,1" stop="5,-1"/>
-		<blockTextColor colorName="(0,1,0)" start="8,1" stop="8,-1"/>
-		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="6" start="0,0" stop="-1,0"/>
-		<blockFont name="Helvetica" size="6" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="6" start="1,1" stop="1,-1"/>
+		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
+		<blockAlignment value="RIGHT" start="1,0" stop="-1,-1"/>
+
 	</blockTableStyle>
 	<paraStyle name="rojo" alignment="right" textColor="red" fontSize="6"/>
 </stylesheet>
 
 <story>
 
-<blockTable style="tabla" repeatRows="1">
+<blockTable style="tabla" colWidths="4cm,10cm,3cm,3cm,3cm" repeatRows="1">
 <tr>
 <td>Codigo</td>
 <td>Descripcion</td>
-<td>Saldo Anterior</td>
 <td>Debe</td>
 <td>Haber</td>
 <td>Saldo</td>
-<td>Debe Ej</td>
-<td>Haber Ej</td>
-<td>Saldo Ej</td>
+
 </tr>
-<!--QUERY="SELECT * FROM balancetemp ORDER BY codigo, nivel"-->
+
+<!-- QUERY1= "SELECT descripcion, codigo AS cod1 FROM cuenta ORDER BY codigo" -->
+ 
+<!--QUERY2 = "SELECT COALESCE(sum(apunte.debe),0) AS tdebe, COALESCE(sum(apunte.haber),0) as thaber  FROM apunte 
+LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta 
+WHERE cuenta.codigo LIKE '[cod1]%' " -->
+
+ <!-- QUERY3="SELECT TRUE WHERE [tdebe] + [thaber]<>0" -->
 <tr>
-<td>[codigo]</td>
+<td>[cod1]</td>
 <td>[descripcion]</td>
-<td>[asaldo]</td>
 <td>[tdebe]</td>
 <td>[thaber]</td>
-<!-- IF ="[tsaldo] < 0" -->
-<td><para style="rojo">[tsaldo]</para></td>
-<!-- ELSE -->
-<td  >[tsaldo]</td>
-<!-- END IF -->
-
-<td>[ejdebe]</td>
-<td>[ejhaber]</td>
-<!-- IF ="[tsaldo] < 0" -->
-<td><para style="rojo">[ejsaldo]</para></td>
-<!-- ELSE -->
-<td  >[ejsaldo]</td>
-<!-- END IF -->
+<td><!--QUERY4=" SELECT [tdebe] - [thaber] AS tsaldo "-->[tsaldo]<!--END QUERY4--></td>
 </tr>
-<!--END QUERY-->
+
+ <!-- END QUERY3 -->
+ 
+<!-- END QUERY2-->
+
+<!-- END QUERY1-->
+
 </blockTable>		
 </story>
 </document>
