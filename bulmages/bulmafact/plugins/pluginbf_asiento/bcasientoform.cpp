@@ -389,16 +389,18 @@ int BcAsientoForm::save()
 {
     BL_FUNC_DEBUG
     QString id;
-    mainCompany() ->begin();
     try {
+	mainCompany() ->begin();
         dbSave ( id );
         setIdAsiento ( id );
         m_listaLineas->save();
 
         /// Disparamos los plugins
         int res = g_plugins->run ( "BcAsientoForm_guardaAsiento1_post", this );
-        if ( res != 0 )
+        if ( res != 0 ) {
+	    mainCompany()->commit();
             return 0;
+	} // end if
 
         mainCompany() ->commit();
 
@@ -413,8 +415,7 @@ int BcAsientoForm::save()
         return 0;
     } catch ( ... ) {
         mainCompany() ->rollback();
-	blMsgError(_("Error en el guardardo"));
-        
+	blMsgError(_("Error en el guardardo del asiento"));
         return -1;
     } // end try
 }

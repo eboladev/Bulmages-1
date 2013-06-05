@@ -1499,7 +1499,7 @@ StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
     QString query = "INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX', 'Una descripcion auxiliar de cuenta')";
     dbConnection->runQuery ( query );
     for ( int i = 0; i <= 12; i++ ) {
-        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, " + QString::number ( i ) + ", false)";
+        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ("+QString::number(QDate::currentDate().year())+", " + QString::number ( i ) + ", false)";
         dbConnection->runQuery ( query2 );
     } // end for
     dbConnection->commit();

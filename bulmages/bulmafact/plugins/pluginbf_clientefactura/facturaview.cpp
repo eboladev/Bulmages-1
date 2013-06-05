@@ -390,7 +390,7 @@ void FacturaView::on_mui_duplicar_released()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        blMsgInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado duplicando la factura" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

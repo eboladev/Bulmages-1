@@ -515,7 +515,7 @@ int BlToolButton_released(BlToolButton *bot) {
 
 int FacturaView_afterSave_Post(FacturaView *fact) {
     BL_FUNC_DEBUG
-  
+try {  
     QString idasiento = "";
     QString fecha = fact->dbValue("ffactura");
     if (fecha == "") fecha = "now()";
@@ -535,12 +535,37 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
 
   if (idasiento == "") {
 
+    query= "SELECT * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM '"+fecha+"'::date) AND periodo = 0";
+    cur = fact->mainCompany()->loadQuery(query);
+    if (cur->eof()) {
+      delete cur;
+      blMsgInfo(_("Ejercicio contable inexistente. No se puede crear el asiento."));
+      return 0;
+    } // end if
+    if ( cur->value("bloqueado") == "t") {
+      delete cur;
+      blMsgInfo(_("Ejercicio contable bloqueado. No se puede crear el asiento."));
+      return 0;
+    } // end if
+    delete cur;
+      
+
+    query = "SELECT * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM '"+fecha+"'::date) AND periodo = EXTRACT (MONTH FROM '"+fecha+"'::date)";
+    cur = fact->mainCompany()->loadQuery(query);
+    if ( cur->value("bloqueado") == "t") {
+      delete cur;
+      blMsgInfo(_("Ejercicio contable bloqueado. No se puede crear el asiento."));
+      return 0;
+    } // end if
+    delete cur;
+    
+    
       query = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"','"+fact->dbValue("descfactura")+"',1)";
 
       fact->mainCompany()->runQuery(query);
       
       query = "SELECT max(idasiento) AS id FROM asiento ";
-      BlDbRecordSet *cur = fact->mainCompany()->loadQuery(query);
+      cur = fact->mainCompany()->loadQuery(query);
       if (!cur->eof()) {
 	  idasiento = cur->value("id");
       } // end if
@@ -607,10 +632,6 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
   } // end while
   delete cur;
   
-  
-  
-  
-  
   /// Los apuntes por servicio u obra.
   query = "SELECT idcuenta, SUM(cantlfactura*pvplfactura*(1-descuentolfactura/100))::NUMERIC(12,2) AS subbase FROM lfactura " \
   "LEFT JOIN articulo AS t1 ON t1.idarticulo = lfactura.idarticulo " \
@@ -638,6 +659,10 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
   query = "SELECT cierraasiento("+idasiento+")";
   fact->mainCompany()->runQuery(query);
   
+} catch(...) {
+  blMsgInfo("No se pudo crear el asiento contable");
+  return 0;
+} // end try
   return 0;
 }
 
