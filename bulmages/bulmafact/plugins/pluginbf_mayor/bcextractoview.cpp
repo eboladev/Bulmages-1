@@ -400,15 +400,14 @@ void BcExtractoView::presentar()
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
         /// no se pueden implementar.
-	QString ccostes = "";
-/*
-        BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
-        BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
-        QString ccostes = scoste->cadcoste();
+
+        QString ccostes = "";
+	g_plugins->run("PgetSelCostes", &ccostes);
+	
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
         } // end if
-*/        
+        
 
         
         
@@ -443,9 +442,11 @@ void BcExtractoView::presentar()
         
         /// El calculo de los canales
         QString ccanales = "";
-/*
-        QString ccanales = scanal->cadCanal();
-        if (scanal->sinCanal()) {
+	g_plugins->run("PgetSelCanales", &ccanales);
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	
+        if (sincanal) {
 	  if ( ccanales != "" ) {
 	      ccanales = " AND ("+tabla+".idcanal ISNULL OR "+tabla+".idcanal IN (" + ccanales + ")) ";
 	  } else {
@@ -458,7 +459,7 @@ void BcExtractoView::presentar()
 	      ccanales = " AND "+tabla+".idcanal <> NULL ";	    
 	  } // end if
 	} // end if
-*/	
+	
 	
         query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + saldosup + saldoinf + ") AS t2 ";
         query += " LEFT JOIN (SELECT idcuenta AS idc, descripcion, codigo, tipocuenta FROM cuenta) AS t9 ON t2.idcuenta = t9.idc) AS t1";
@@ -767,8 +768,8 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
         /// no se pueden implementar.
-        QString ccostes="";
-        QString ccanales = "";
+	QString ccostes = "";
+	QString ccanales = "";
 /*
         BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
         BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();

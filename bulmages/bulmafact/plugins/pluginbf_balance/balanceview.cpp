@@ -215,19 +215,22 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         delete ramas;
 
         QString ccostes = "";
+	g_plugins->run("PgetSelCostes", &ccostes);
+
+	
         QString ccanales = "";
-/*
+	g_plugins->run("PgetSelCanales", &ccanales);
+	
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	
+
         /// Sacamos la subcadena para centros de coste y canales.
-        BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
-        BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
-        QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes = " AND apunte.idc_coste IN (" + ccostes + ") ";
- ;
         } // end if
 
-        QString ccanales = scanal->cadCanal();
-        if (scanal->sinCanal()) {
+        if (sincanal) {
 	  if ( ccanales != "" ) {
 	      ccanales = " AND (apunte.idcanal ISNULL OR apunte.idcanal IN (" + ccanales + ")) ";
 	  } else {
@@ -240,7 +243,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
 	      ccanales = " AND apunte.idcanal <> NULL ";	    
 	  } // end if
 	} // end if
-*/
+
         QString wherecostesycanales = ccostes + ccanales;
 
         /// Ahora, usaremos el &aacute;rbol para poner los datos a cada hoja (cuenta)

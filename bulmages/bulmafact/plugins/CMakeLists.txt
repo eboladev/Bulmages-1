@@ -104,7 +104,7 @@ add_subdirectory(pluginbf_mayor)
 add_subdirectory(pluginbf_balance)
 add_subdirectory(pluginbf_ccaa2ods)
 add_subdirectory(pluginbf_cuentaresumen)
-
+add_subdirectory(pluginbf_canalyccoste)
 
 # ======== PLUGINS DE GESTION ALUMNOS
 add_subdirectory(pluginbf_profesor)

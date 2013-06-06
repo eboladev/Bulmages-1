@@ -247,11 +247,19 @@ void BcDiarioView::presentar()
             cadand = " AND ";
         } // end if
 
-/*
-        // Consideraciones para centros de coste y canales
-        BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
-        BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
-        QString ccostes = scoste->cadcoste();
+
+        
+        QString ccostes = "";
+	g_plugins->run("PgetSelCostes", &ccostes);
+
+	
+        QString ccanales = "";
+	g_plugins->run("PgetSelCanales", &ccanales);
+	
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	
+	
         if ( ccostes != "" ) {
             ccostes = " " + tabla + ".idc_coste IN (" + ccostes + ") ";
             cad += cadwhere + cadand + ccostes;
@@ -261,8 +269,7 @@ void BcDiarioView::presentar()
 
         
         /// El calculo de los canales
-        QString ccanales = scanal->cadCanal();
-        if (scanal->sinCanal()) {
+        if (sincanal) {
 	  if ( ccanales != "" ) {
 	      ccanales = " ("+tabla+".idcanal ISNULL OR "+tabla+".idcanal IN (" + ccanales + ")) ";
 	  } else {
@@ -278,7 +285,7 @@ void BcDiarioView::presentar()
         cad += cadwhere + cadand + ccanales;
         cadwhere = "";
         cadand = " AND ";
-*/        
+     
 
         bool ok = false;
         mui_saldosup->text().toFloat ( &ok );
