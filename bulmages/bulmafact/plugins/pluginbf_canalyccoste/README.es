@@ -9,7 +9,7 @@ Nombre: Balance
 Biblioteca: libpluginbf_canalyccoste.so
 
 Descripción: <H1>Balance jerarquico</H1>
-<P>Permite hacer un canalyccoste jerárquico.</P>
+<P>Permite la generación de canales y de centros de coste en la contabilidad.</P>
 <HR>
 
 ParmBD: -

@@ -158,3 +158,97 @@ int PgetSinCanal(bool &text) {
 
     
     
+/// ==============================================================
+
+int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
+{
+    BL_FUNC_DEBUG
+    int ret = 0;
+    if ( g_fieldName == "nomcanal" ) {
+        BlComboBox * editor = new BlComboBox ( g_editor );
+        editor->setObjectName ( "EditCanal" );
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+        editor->setQuery ( "SELECT * FROM canal ORDER BY nombre" );
+	editor->m_valores["nombre"] = "";
+        editor->setTableName ("canal");
+	editor->setFieldId("idcanal");
+	editor->setAllowNull (true);
+	editor->setId("");
+        g_plugParams =  editor;
+        ret = -1;
+    } // end if
+
+    if ( g_fieldName == "nomc_coste" ) {
+        BlComboBox * editor = new BlComboBox ( g_editor );
+        editor->setObjectName ( "EditCCoste" );
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+        editor->setQuery ( "SELECT * FROM c_coste ORDER BY nombre" );
+	editor->m_valores["nombre"] = "";
+        editor->setTableName ("c_coste");
+	editor->setFieldId("idc_coste");
+	editor->setAllowNull (true);
+	editor->setId("");
+        g_plugParams =  editor;
+        ret = -1;
+    } // end if
+    
+
+    return ret;
+}
+
+
+
+/// Hay cosas que deberian estar en el plugin de alumno
+int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
+{
+    BL_FUNC_DEBUG
+    int ret = 0;
+    if ( g_editor->objectName() == "EditCanal"  || g_editor->objectName() =="EditCCoste") {
+        BlComboBox * comboBox = ( BlComboBox * ) g_editor;
+        QString value = comboBox->currentText();
+        g_model->setData ( g_index, value );
+        ret = -1;
+    } // end if
+    
+    return ret;
+}
+
+
+int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
+{
+    BL_FUNC_DEBUG
+    int ret = 0;
+    if ( g_editor->objectName() == "EditCanal" || g_editor->objectName() == "EditCCoste" ) {
+        QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
+        BlComboBox *comboBox = ( BlComboBox * ) g_editor ;
+        comboBox->setId ( value );
+        ret = -1;
+    } // end if
+    return ret;
+}
+
+int BlSubForm_editFinished ( BlSubForm *sub )
+{
+    BL_FUNC_DEBUG
+    if ( sub->m_campoactual->fieldName() == "nomcanal" ) {
+        QString params[1]= {  sub->m_campoactual->text() };
+	QString query = "SELECT idcanal FROM canal WHERE nombre = $1";
+        BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idcanal", cur->value( "idcanal" ) );
+        } // end if
+        delete cur;
+    } // end if
+    if ( sub->m_campoactual->fieldName() == "nomc_coste" ) {
+        QString params[1]= {  sub->m_campoactual->text() };
+	QString query = "SELECT idc_coste FROM c_coste WHERE nombre = $1";
+        BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idc_coste", cur->value( "idc_coste" ) );
+        } // end if
+        delete cur;
+    } // end if
+    
+    return 0;
+}
+    

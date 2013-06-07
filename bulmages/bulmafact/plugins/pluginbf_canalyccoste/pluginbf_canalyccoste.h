@@ -33,5 +33,8 @@ extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int BlAction_actionTriggered(BlAction *)
 extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int PgetSelCostes(QString &);
 extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int PgetSelCanales(QString &);
 extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int PgetSinCanal(bool &);
+extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" PLUGINBC_CANALYCCOSTE_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 #endif
 
