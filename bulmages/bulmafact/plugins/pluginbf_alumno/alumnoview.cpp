@@ -25,7 +25,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QCloseEvent>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtWidgets/QFileDialog>
 
@@ -154,7 +154,7 @@ void AlumnoView::pintarPost()
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {
@@ -203,7 +203,7 @@ int AlumnoView::beforeDelete()
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {
@@ -283,7 +283,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {

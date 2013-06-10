@@ -23,7 +23,7 @@
 #include <QtCore/QObject>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QToolButton>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QMessageBox>
@@ -312,7 +312,7 @@ QString PresupuestoView::detalleArticulos()
             texto += "<para><pre>" + cur->value( "obserarticulo" ) + "</pre></para></td>\n";
         } // end if
         QString file = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + cur->value( "codigocompletoarticulo" ) + ".jpg";
-        QFile f ( file );
+        BlFile f ( file );
         if ( f.exists() ) {
             texto += "    <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
                      "        <image file=\"" + g_confpr->value( CONF_DIR_IMG_ARTICLES ) + cur->value( "codigocompletoarticulo" ) + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"

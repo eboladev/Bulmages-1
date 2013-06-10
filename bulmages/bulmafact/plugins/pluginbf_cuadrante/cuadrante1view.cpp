@@ -22,7 +22,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QCloseEvent>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include "cuadrante1view.h"

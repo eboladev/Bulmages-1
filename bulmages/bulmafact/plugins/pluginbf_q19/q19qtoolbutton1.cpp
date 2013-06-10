@@ -95,7 +95,7 @@ void Q19QToolButton1::click()
         QString fileName = QFileDialog::getSaveFileName ( this, _( "Save File" ),
                            "",
                            _( "*.q19" ) );
-        QFile file ( fileName );
+        BlFile file ( fileName );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
             return;
 

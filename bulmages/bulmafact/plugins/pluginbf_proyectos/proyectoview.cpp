@@ -20,7 +20,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QCloseEvent>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <fstream>
 
@@ -239,7 +239,7 @@ void ProyectoView::on_mui_geninforme_clicked()
     cadena = "rm " + archivod;
     system ( cadena.toLatin1() );
 
-    QFile file ( archivod );
+    BlFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) )  {
         QTextStream stream ( &file );
         stream.setCodec ( "UTF-8" );

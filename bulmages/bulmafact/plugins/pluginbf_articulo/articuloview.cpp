@@ -36,7 +36,7 @@
 #include "comparticulolistview.h"
 #include "blfunctions.h"
 #include "blplugins.h"
-
+#include "blfile.h"
 
 /** Se encarga de la inicializacion de todos los componentes de la ventana de 'Articulo'.
     Inicializa la gestion de cambios para que se considere que no hay cambios realizados
@@ -163,7 +163,7 @@ void ArticuloView::pintarPost()
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
 #endif
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {
@@ -384,7 +384,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
 #endif
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {

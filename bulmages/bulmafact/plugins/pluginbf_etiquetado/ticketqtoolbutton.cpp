@@ -30,6 +30,7 @@
 #include "blfixed.h"
 #include "bfcompany.h"
 #include "bldb.h"
+#include "blfile.h"
 
 
 ///
@@ -83,7 +84,7 @@ void TicketQToolButton::click()
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "etiquetas.rml";
     blCopyFile(archivo,archivod);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

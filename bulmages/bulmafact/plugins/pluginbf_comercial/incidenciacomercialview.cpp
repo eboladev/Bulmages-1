@@ -25,7 +25,7 @@
 #include <QtCore/QObject>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QToolButton>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtWidgets/QLayout>
 #include <QtGui/QCloseEvent>

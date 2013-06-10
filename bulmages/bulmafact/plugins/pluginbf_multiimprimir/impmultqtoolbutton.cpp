@@ -42,7 +42,7 @@
 #include "bfcompany.h"
 #include "bldb.h"
 #include "impmultqtoolbutton.h"
-
+#include "blfile.h"
 
 ///
 /**
@@ -279,7 +279,7 @@ void ImpQToolButton::click()
             QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
             blCopyFile(archivologo,logousuario);
             
-            QFile file;
+            BlFile file;
             file.setFileName ( archivod );
             file.open ( QIODevice::ReadOnly );
             QTextStream stream ( &file );

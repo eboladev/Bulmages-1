@@ -28,6 +28,7 @@
 #include "bfcompany.h"
 #include "pluginbf_diario.h"
 #include "bcdiarioview.h"
+#include "blfile.h"
 
 
 
@@ -169,13 +170,13 @@ void BcDiarioPrintView::presentar ( const char *tipus )
         QString archivohtml = g_confpr->value( CONF_DIR_USER ) + "diario.html";
 
 
-        QFile filehtml;
+        BlFile filehtml;
         filehtml.setFileName ( archivohtml );
         filehtml.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidahtml ( &filehtml );
 
 
-        QFile filetxt;
+        BlFile filetxt;
         filetxt.setFileName ( archivo );
         filetxt.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidatxt ( &filetxt );
@@ -259,13 +260,13 @@ void BcDiarioPrintView::presentar ( const char *tipus )
         QString archivohtml = g_confpr->value( CONF_DIR_USER ) + "diario.html";
 
 
-        QFile filehtml;
+        BlFile filehtml;
         filehtml.setFileName ( archivohtml );
         filehtml.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidahtml ( &filehtml );
 
 
-        QFile filetxt;
+        BlFile filetxt;
         filetxt.setFileName ( archivo );
         filetxt.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidatxt ( &filetxt );

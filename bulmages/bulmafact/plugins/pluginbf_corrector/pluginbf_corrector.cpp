@@ -27,7 +27,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtCore/QObject>
-#include <QtCore/QFile>
+#include "blfile.h"
 
 #include "pluginbf_corrector.h"
 #include "correctorwidget.h"
@@ -79,7 +79,7 @@ int entryPoint ( BfBulmaFact *bcont )
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( viewCorrector );
 
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
+    BlFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( true );
@@ -99,7 +99,7 @@ int entryPoint ( BfBulmaFact *bcont )
 int BfBulmaFact_closeEvent ( BfBulmaFact *bcont )
 {
     BlMainCompany * emp = bcont->company();
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
+    BlFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

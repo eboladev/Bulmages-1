@@ -51,8 +51,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
     grpAuthError->setVisible ( true );
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
-    validate();
-    
+//    validate();  
 }
 
 
@@ -78,20 +77,18 @@ void BlDbLoginDialog::validate()
 
     g_confpr->setValue ( CONF_LOGIN_USER, m_login->text() );
     g_confpr->setValue ( CONF_PASSWORD_USER, m_password->text() );
+    g_confpr->setValue ( CONF_SERVIDOR, m_host->text() );
+    g_confpr->setValue ( CONF_PUERTO, m_port->text() );
+    g_confpr->setValue ( CONF_DBNAME, m_db->text());
 
     /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new BlPostgreSqlClient();
-    if ( !metabase->inicializa ( "bulmafact" ) ) {
+    if ( !metabase->inicializa (m_db->text() ) ) {
         m_authOK = true;
+    } else {
+	g_confpr->setValue( CONF_DBNAME, ""); // Vaciamos el DBNAME para que saque el selector.
     } // end if
     delete metabase;
-    if ( !m_authOK ) {
-        metabase = new BlPostgreSqlClient();
-        if ( !metabase->inicializa ( "bulmacont" ) ) {
-            m_authOK = true;
-        } // end if
-        delete metabase;
-    } // end if
     if ( !m_authOK ) {
         metabase = new BlPostgreSqlClient();
         if ( !metabase->inicializa ( "template1" ) ) {

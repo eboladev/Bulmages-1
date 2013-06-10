@@ -35,6 +35,7 @@
 #include "bfcompany.h"
 #include "bfbulmafact.h"
 #include "bldockwidget.h"
+#include "blfile.h"
 
 
 ResumCtaWidget *g_res;
@@ -87,7 +88,7 @@ int entryPoint ( BfBulmaFact *bfact )
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );
 
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
+    BlFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( true );
@@ -183,7 +184,7 @@ int BfSubForm_on_mui_list_cellChanged_post ( BfSubForm *subform )
 **/
 int BfBulmaFact_closeEvent ( BfBulmaFact *bfact )  {
     BL_FUNC_DEBUG
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
+    BlFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

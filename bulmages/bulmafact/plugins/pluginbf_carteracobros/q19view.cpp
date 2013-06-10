@@ -20,7 +20,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QCloseEvent>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include <fstream>
@@ -552,7 +552,7 @@ void Q19View::on_mui_aceptar_clicked()
     try {
 
 
-        QFile file ( mui_archivo->text() );
+        BlFile file ( mui_archivo->text() );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
             return;
 

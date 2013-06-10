@@ -123,6 +123,7 @@
 #define CONF_SERVIDOR                181
 /// Indica por defecto que puerto tiene el servidor de bases de datos para conectar con el.
 #define CONF_PUERTO                  182
+#define CONF_DBNAME                  183
 
 /// Indica que visor de documentos PDF va a utilizar el programa.
 #define CONF_SPOOL					 191

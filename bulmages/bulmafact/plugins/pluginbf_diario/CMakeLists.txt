@@ -111,4 +111,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
+install(DIRECTORY openreports/ 
+      DESTINATION share/bulmages/openreports
+      PATTERN ".svn" EXCLUDE)
 

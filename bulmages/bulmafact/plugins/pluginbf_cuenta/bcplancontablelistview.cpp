@@ -31,6 +31,7 @@
 #include "bccuentaview.h"
 #include "bfcompany.h"
 #include "bcimages.h"
+#include "blfile.h"
 
 ///
 /**
@@ -565,7 +566,7 @@ void BcPlanContableListView::imprimir()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
@@ -614,7 +615,7 @@ void BcPlanContableListView::imprimir()
 void BcPlanContableListView::on_mui_exportar_clicked()
 {
     BL_FUNC_DEBUG
-    QFile filexml ( QFileDialog::getSaveFileName ( this,
+    BlFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Plan contable (*.xml)" ) ) );
@@ -633,7 +634,7 @@ void BcPlanContableListView::on_mui_exportar_clicked()
 void BcPlanContableListView::on_mui_importar_clicked()
 {
     BL_FUNC_DEBUG
-    QFile filexml ( QFileDialog::getOpenFileName ( this,
+    BlFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
                     "/usr/share/bulmages",
                     _ ( "Plan contable (*.xml)" ) ) );

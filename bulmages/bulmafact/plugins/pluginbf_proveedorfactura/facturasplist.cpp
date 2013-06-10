@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtCore/QString>
 

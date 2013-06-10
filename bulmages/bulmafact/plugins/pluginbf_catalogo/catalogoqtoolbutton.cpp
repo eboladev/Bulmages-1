@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtCore/QString>
 #include <QtWidgets/QFileDialog>
@@ -97,7 +97,7 @@ void CatalogoQToolButton::click()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo,logousuario);
     
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
@@ -142,7 +142,7 @@ QString CatalogoQToolButton::detalleArticulos()
         texto += "<td><para><H1>" + blXMLEncode ( cur->value( "nomarticulo" ) ) + "</H1></para>";
         texto += "<para>" + blXMLEncode ( cur->value( "obserarticulo" ) ) + "</para></td></tr><tr>\n";
         QString file = g_confpr->value( CONF_DIR_IMG_ARTICLES ) + blXMLEncode ( cur->value( "codigocompletoarticulo" ) ) + ".jpg";
-        QFile f ( file );
+        BlFile f ( file );
         if ( f.exists() ) {
             texto += "<td><!-- illustration x=\"0\" y=\"0\" height=\"5cm\" -->\n"
                      "<image file=\"" + g_confpr->value( CONF_DIR_IMG_ARTICLES ) +

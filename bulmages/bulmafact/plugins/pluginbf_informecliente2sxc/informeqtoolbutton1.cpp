@@ -22,7 +22,7 @@
 #include <stdlib.h>
 
 #include <QtWidgets/QWidget>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtCore/QString>
 #include <QtWidgets/QFileDialog>
@@ -215,7 +215,7 @@ void InformeQToolButton1::click()
     QString informeclientessxcperl = g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.perl";
     blRemove(informeclientessxcperl);
 
-    QFile file ( informeclientessxcperl );
+    BlFile file ( informeclientessxcperl );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << fitxersortidatxt;
@@ -456,7 +456,7 @@ void InformeProveedorQToolButton1::click()
     QString informeproveedoressxcperl = g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.perl";
     blRemove(informeproveedoressxcperl);
 
-    QFile file ( informeproveedoressxcperl );
+    BlFile file ( informeproveedoressxcperl );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << fitxersortidatxt;

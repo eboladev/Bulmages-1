@@ -21,7 +21,7 @@
 #include <QtCore/QMap>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include "familiasview.h"
@@ -556,7 +556,7 @@ void FamiliasView::on_mui_imprimir_clicked()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
     
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

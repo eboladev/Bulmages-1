@@ -26,6 +26,7 @@
 #include "bfcompany.h"
 #include "bcasientoview.h"
 #include "pluginbf_asiento.h"
+#include "blfile.h"
 
 #define TIPO_CTA         0
 #define TIPO_FECHA       1
@@ -345,7 +346,7 @@ void BcAsientoInteligenteView::mostrarPlantilla()
     /// Vamos a intentar borrar todos los datos antes de empezar.
     borraWidgets();
     if ( mui_comboainteligentes->currentIndex() != -1 ) {
-        QFile f ( listasientos.at ( mui_comboainteligentes->currentIndex() ) );
+        BlFile f ( listasientos.at ( mui_comboainteligentes->currentIndex() ) );
         if ( !f.open ( QIODevice::ReadOnly ) )
             return;
         if ( !m_doc.setContent ( &f ) ) {

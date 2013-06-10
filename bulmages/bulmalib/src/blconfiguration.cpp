@@ -257,6 +257,8 @@ QString BlConfiguration::name( int i )
         return "CONF_SERVIDOR";
     if ( i == CONF_PUERTO )
         return "CONF_PUERTO";
+    if ( i == CONF_DBNAME )
+       return "CONF_DBNAME";
     if ( i == CONF_SPOOL )
         return "CONF_SPOOL";
     if ( i == CONF_FLIP )

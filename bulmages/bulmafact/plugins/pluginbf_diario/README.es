@@ -22,7 +22,7 @@ Dependencias: libpluginbf_factcont;
 
 Incompatibles:
 
-Reports: balance.rml
+Reports: diario.rml
 
 Categorias: Contabilidad general;Experimentales;
 

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
@@ -250,7 +250,7 @@ void BcCuentaListView::on_mui_exportar_clicked()
 {
     /*
         BL_FUNC_DEBUG
-        QFile filexml ( QFileDialog::getSaveFileName ( this,
+        BlFile filexml ( QFileDialog::getSaveFileName ( this,
                         _( "Elija el archivo" ),
                         g_confpr->value( CONF_DIR_USER ),
                         _( "Clientes (*.xml)" ) ) );
@@ -278,7 +278,7 @@ void BcCuentaListView::on_mui_importar_clicked()
 {
     /*
         BL_FUNC_DEBUG
-        QFile filexml ( QFileDialog::getOpenFileName ( this,
+        BlFile filexml ( QFileDialog::getOpenFileName ( this,
                         _( "Elija el archivo" ),
                         g_confpr->value( CONF_DIR_USER ),
                         _( "Clientes (*.xml)" ) ) );

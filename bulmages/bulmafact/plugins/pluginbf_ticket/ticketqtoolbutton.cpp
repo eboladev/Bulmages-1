@@ -22,7 +22,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtCore/QString>
 #include <QtWidgets/QFileDialog>

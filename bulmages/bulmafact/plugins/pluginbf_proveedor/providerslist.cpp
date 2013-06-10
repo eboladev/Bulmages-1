@@ -21,7 +21,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QCheckBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtWidgets/QFileDialog>
 #include <QtCore/QTextStream>
 
@@ -292,7 +292,7 @@ void ProveedorList::imprimir()
 **/
 void ProveedorList::on_mui_exportar_clicked()
 {
-    QFile filexml ( QFileDialog::getSaveFileName ( this,
+    BlFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Seleccione el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Proveedores (*.xml)" ) ) );
@@ -311,7 +311,7 @@ void ProveedorList::on_mui_exportar_clicked()
 **/
 void ProveedorList::on_mui_importar_clicked()
 {
-    QFile filexml ( QFileDialog::getOpenFileName ( this,
+    BlFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Proveedores (*.xml)" ) ) );

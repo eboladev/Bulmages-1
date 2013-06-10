@@ -37,6 +37,8 @@
 #include "bccuentaview.h"
 #include "bfsubform.h"
 #include "blimportexport.h"
+#include "blfile.h"
+
 
 BfBulmaFact * g_pluginbf_cuenta=NULL;
 
@@ -79,7 +81,7 @@ int entryPoint ( BlMainWindow *bcont )
     BlDbRecordSet *cur = g_pluginbf_cuenta->company()->loadQuery(query);
     if (cur->eof()) {
       blMsgInfo(_("No ha importado un plan de cuentas. Deberia importarlo antes de usar el programa."));
-      QFile filexml ( QFileDialog::getOpenFileName ( NULL,
+      BlFile filexml ( QFileDialog::getOpenFileName ( NULL,
 		      _ ( "Elija el archivo" ),
 		      g_confpr->value(CONF_DIR_OPENREPORTS),
 		      _ ( "Plan contable (*.xml)" ) ) );

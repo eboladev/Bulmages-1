@@ -22,7 +22,7 @@
 #include <stdlib.h>
 
 #include <QtWidgets/QWidget>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtCore/QString>
 #include <QtWidgets/QFileDialog>
@@ -98,7 +98,7 @@ void InformeQToolButton::click()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
@@ -397,7 +397,7 @@ void InformeArtQToolButton::click()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

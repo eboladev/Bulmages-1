@@ -252,7 +252,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     /// Declaramos una variable de tipo QDomDocument que usaremos
     /// para cargar los datos del fichero en memoria
     QDomDocument doc ( "efactura" );
-    QFile file ( fichero );
+    BlFile file ( fichero );
 
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

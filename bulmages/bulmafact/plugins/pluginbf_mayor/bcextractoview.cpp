@@ -37,6 +37,7 @@
 #include "bcextractosubform.h"
 #include "blprogressbar.h"
 #include "blfunctions.h"
+#include "blfile.h"
 
 /// Este archivo contiene la implementaci&oacute;n de la clase BcExtractoView que saca el
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
@@ -694,7 +695,7 @@ void BcExtractoView::on_mui_cargarPunteos_clicked()
                      _ ( "Punteo (*.pto);;Todos los archivos (*)" ) );
 
         if ( !fn.isEmpty() ) {
-            QFile file ( fn );
+            BlFile file ( fn );
             if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
                 return;
             } // end if
@@ -932,7 +933,7 @@ void BcExtractoView::imprimir()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
     
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

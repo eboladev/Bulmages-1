@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include "inventariosview.h"
@@ -185,7 +185,7 @@ void InventariosView::on_mui_imprimir_clicked()
     blCopyFile(archivologo, logousuario);
 
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

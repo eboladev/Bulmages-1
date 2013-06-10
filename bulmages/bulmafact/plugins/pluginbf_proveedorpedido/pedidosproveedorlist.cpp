@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include "pedidosproveedorlist.h"

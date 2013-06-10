@@ -32,6 +32,7 @@
 #include "blimportexport.h"
 #include "bfinformereferencia.h"
 #include "blplugins.h"
+#include "blfile.h"
 
 
 /** Inicializa todos los componentes del listado.
@@ -195,7 +196,7 @@ void ClientsList::remove()
 void ClientsList::on_mui_exportar_clicked()
 {
     BL_FUNC_DEBUG
-    QFile filexml ( QFileDialog::getSaveFileName (
+    BlFile filexml ( QFileDialog::getSaveFileName (
                         this,
                         _ ( "Elija el archivo" ),
                         g_confpr->value( CONF_DIR_USER ),
@@ -218,7 +219,7 @@ void ClientsList::on_mui_exportar_clicked()
 void ClientsList::on_mui_importar_clicked()
 {
     BL_FUNC_DEBUG
-    QFile filexml ( QFileDialog::getOpenFileName (
+    BlFile filexml ( QFileDialog::getOpenFileName (
                         this,
                         _ ( "Elija el archivo" ),
                         g_confpr->value( CONF_DIR_USER ),

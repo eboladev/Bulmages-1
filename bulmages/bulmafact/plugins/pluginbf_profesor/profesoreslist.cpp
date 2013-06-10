@@ -23,7 +23,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QCheckBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtWidgets/QCheckBox>
 #include <QtCore/QTextStream>
 #include <QtWidgets/QMenu>

@@ -21,6 +21,7 @@
 
 #include <QtWidgets/QWidget>
 #include "q19writer.h"
+#include "blfile.h"
 
 /// Necesarios para importacion de efactura
 #include <QtCore/QString>
@@ -98,7 +99,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 		bool bancUnic = ( curcobro->value( "idbanco",0 ) == curcobro->value( "idbanco",curcobro->numregistros()-1 ) );
 		BlDebug::blDebug ( "bancUnic=",0,bancUnic?"si":"no" );
 		QString idbanc ( "" );
-		QFile file;
+		BlFile file;
 		QTextStream out ( &file );
 		/*
 		   http://www.cam.es/1/empresas/servicios/pdf/c19.pdf

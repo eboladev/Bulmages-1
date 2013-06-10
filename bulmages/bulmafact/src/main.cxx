@@ -76,7 +76,6 @@ int main ( int argc, char **argv )
       initPlugins();
 
       /// Definimos la codificaci&oacute;n a Unicode.
-       //QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
       g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toUtf8().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toUtf8().constData() ) ) );
@@ -109,11 +108,33 @@ int main ( int argc, char **argv )
 
       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
       login1 = new BlDbLoginDialog ( 0, "" );
-      if ( !login1->authOK() || argParser->askPassword() ) {
+
+
          if( !argParser->userName().isEmpty() ) {
             login1->m_login->setText( argParser->userName() );
-            login1->m_password->setFocus();
+	 } // end if
+	 
+         login1->m_password->setFocus();
+	    
+	 if (!argParser->host().isEmpty()) {
+	    login1->m_host->setText(argParser->host());
+	 } else {
+	    login1->m_host->setText(g_confpr->value(CONF_SERVIDOR));
+	 } // end if
+	    
+	 if (!argParser->port().isEmpty()) {
+	    login1->m_port->setText(argParser->port());
+	 } else {
+	    login1->m_port->setText(g_confpr->value(CONF_PUERTO));
          } // end if
+         if (argParser->dbName().isEmpty()) {
+	    login1->m_db->setText(g_confpr->value(CONF_DBNAME));
+	 } else {
+	    login1->m_db->setText(argParser->dbName());
+	 } // end if
+	 
+      login1->validate();	 
+      if ( !login1->authOK() || argParser->askPassword() ) {
          login1->exec();
       } // end if
       /// Si la autentificacion falla una segunda vez abortamos el programa.
@@ -122,7 +143,7 @@ int main ( int argc, char **argv )
       } // end if
       delete login1;
 
-      bges = new BfBulmaFact ( argParser->dbName() );
+      bges = new BfBulmaFact ( g_confpr->value(CONF_DBNAME) );
       bges->hide();
       g_main = bges;
 

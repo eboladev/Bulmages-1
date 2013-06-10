@@ -29,7 +29,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QCheckBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include <bldatesearch.h>
@@ -169,13 +169,13 @@ void BalancePrintView::presentar ( const char* tipus )
         QString archivo = g_confpr->value( CONF_DIR_USER ) + "balance.txt";
         QString archivohtml = g_confpr->value( CONF_DIR_USER ) + "balance.html";
 
-        QFile filehtml;
+        BlFile filehtml;
         filehtml.setFileName ( archivohtml );
         filehtml.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidahtml ( &filehtml );
 
 
-        QFile filetxt;
+        BlFile filetxt;
         filetxt.setFileName ( archivo );
         filetxt.open ( QIODevice::WriteOnly );
         QTextStream fitxersortidatxt ( &filetxt );

@@ -20,7 +20,7 @@
 
 #include <QtCore/QDir>
 #include "chosemailer.h"
-
+#include "blfile.h"
 
 #ifndef Q_OS_WIN32
     /// Detectamos las variables de entorno de usuario, para guardar la configuracion
@@ -115,7 +115,7 @@ int ChoseMailer::GuardarConfig()
      
      /// Guardamos la configuracion, quiza sea interesante extraer este metodo hacia bulmalib posteriormente.
     
-    QFile file ( g_confpr->getLocalDir() + "bulmafact.conf" );
+    BlFile file ( g_confpr->getLocalDir() + "bulmafact.conf" );
     if ( !file.open ( QIODevice::Append | QIODevice::Text ) )
         return 1;
     // end if

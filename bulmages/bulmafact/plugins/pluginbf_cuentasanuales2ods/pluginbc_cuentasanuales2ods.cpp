@@ -380,7 +380,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
     cadena = "rm " + archivod;
     system ( cadena.toLatin1() );
 
-    QFile file ( archivod );
+    BlFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream.setCodec ( "UTF-8" );

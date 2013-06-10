@@ -22,7 +22,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QCloseEvent>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtCore/QTextStream>
 #include <QtGui/QDrag>
 #include <QtWidgets/QMenu>
@@ -408,7 +408,7 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
@@ -476,7 +476,7 @@ void CuadranteDiarioView::saveConfig()
 {
     BL_FUNC_DEBUG
     QString aux = "";
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
+    BlFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -503,7 +503,7 @@ void CuadranteDiarioView::saveConfig()
 void CuadranteDiarioView::loadConfig()
 {
     BL_FUNC_DEBUG
-    QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
+    BlFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {

@@ -20,7 +20,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QCheckBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 #include <QtWidgets/QCheckBox>
 #include <QtCore/QTextStream>
 
@@ -205,7 +205,7 @@ void RutaComercialList::imprimir()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

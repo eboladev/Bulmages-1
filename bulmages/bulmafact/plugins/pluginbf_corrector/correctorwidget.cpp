@@ -129,6 +129,160 @@ void correctorwidget::on_mui_corregir_clicked()
     delete cur;
 
 
+    
+    /// Calculo de asientos abiertos.
+    query.sprintf ( "SELECT *, asiento.idasiento AS idas FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL" );
+    cur = mainCompany()->loadQuery ( query );
+    while ( !cur->eof() ) {
+        QString cadena;
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> con fecha <B>" + cur->value( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idas" ) );
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+    /// Calculo de insercion en cuentas intermedias (con hijos).
+    /// --------------------------------------------------------
+    query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento = asiento.idasiento" );
+    cur = mainCompany()->loadQuery ( query );
+    while ( !cur->eof() ) {
+        QString cadena;
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->value( "codigo" ) + "</B> no hija..";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+    /// Calculo de la ecuacion fundamental contable A+G = P+N+I
+    /// -------------------------------------------------------
+    query = " SELECT asiento.idasiento AS idasiento, asiento.ordenasiento AS ordenasiento, ingresos, activos, gastos, netos, pasivos FROM asiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS ingresos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 4 GROUP BY idasiento) AS ing ON asiento.idasiento = ing.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS gastos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 5 GROUP BY idasiento) AS gas ON asiento.idasiento = gas.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS activos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 1 GROUP BY idasiento) AS act ON act.idasiento = asiento.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento ";
+    query += " ORDER BY ordenasiento";
+    cur = mainCompany()->loadQuery ( query );
+    while ( !cur->eof() ) {
+        float ing, gas, act, pas, net;
+        ing = cur->value( "ingresos" ).toFloat();
+        gas = cur->value( "gastos" ).toFloat();
+        act = cur->value( "activos" ).toFloat();
+        pas = cur->value( "pasivos" ).toFloat();
+        net = cur->value( "netos" ).toFloat();
+        if ( abs( act + gas + pas + net + ing ) > 0.01 ) {
+            QString cadena;
+            cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
+            agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        } // end if
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+    /// Calculo de cuentas con insercion en el debe que lo tienen bloqueado.
+    /// --------------------------------------------------------------------
+    query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe <> 0" );
+    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(query) );
+    cur = mainCompany()->loadQuery ( query, "hola1" );
+    while ( !cur->eof() ) {
+        QString cadena;
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+    /// Calculo de cuentas con insercion en el haber que lo tienen bloqueado.
+    /// ---------------------------------------------------------------------
+    query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nohaber AND apunte.idasiento = asiento.idasiento AND apunte.haber <> 0" );
+    cur = mainCompany()->loadQuery ( query );
+    while ( !cur->eof() ) {
+        QString cadena;
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+    /// Calculo de amortizaciones con plazos expirados.
+    /// -----------------------------------------------
+    query = "SELECT * FROM linamortizacion WHERE fechaprevista < now() AND idasiento IS NULL";
+    cur = mainCompany()->loadQuery ( query );
+    while ( !cur->eof() ) {
+        QString cadena;
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->value( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->value( "fechaprevista" ) + "</B>.";
+        agregarError ( cadena, "amortizacion", "idamortizacion=" + cur->value( "idamortizacion" ) );
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+    /// Calculo de asientos con IVA y sin facturas asociadas.
+    /// -----------------------------------------------------
+    query = "SELECT * FROM borrador, cuenta WHERE cuenta.idcuenta = borrador.idcuenta AND codigo LIKE '%47%' AND idasiento NOT IN (SELECT idborrador FROM registroiva)";
+    cur = mainCompany()->loadQuery ( query );
+    while ( !cur->eof() ) {
+        QString cadena;
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->value( "codigo" ) + ") sin que haya una factura asociada.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cur->nextRecord();
+    } // end while
+    delete cur;
+
+
+    /// Verifica la longitud de las cuentas.
+    /// -----------------------------------------------------
+    /// La longitud del codigo es valida si es mayor que 'x' e igual a 'x' + 'y'.
+    query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
+    cur = mainCompany()->loadQuery ( query );
+
+    /// Longitud de x.
+    int longitudx = cur->value( "valor" ).replace(QString("y"), QString("")).trimmed().length();
+    int totallongitud = cur->value( "valor" ).trimmed().length();
+
+    /// Busca errores.
+    query = "SELECT * FROM cuenta WHERE char_length(codigo) > '" + QString::number(longitudx) + "' AND char_length(codigo) != '" + QString::number(totallongitud) + "'";
+    BlDbRecordSet *cur2 = mainCompany()->loadQuery ( query );
+
+    while ( !cur2->eof() ) {
+	QString cadena;
+	cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur2->value( "codigo" ) + "</B> no tiene la longitud adecuada.";
+	agregarError ( cadena, "", "" );
+	cur2->nextRecord();
+    } // end while
+
+    delete cur2;
+    delete cur;
+
+    
+    /// Busca codigos de cuentas repetidos.
+    /// -----------------------------------------------------
+    query = "SELECT codigo, COUNT(codigo) AS repeticiones FROM cuenta GROUP BY codigo HAVING ( COUNT(codigo) > 1 )";
+    cur = mainCompany()->loadQuery ( query );
+
+    while ( !cur->eof() ) {
+	QString cadena;
+	QString cadena2;
+	
+	cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->value( "codigo" ) + "</B> esta repedido <B>" + cur->value( "repeticiones" ) + "</B> veces:<BR>";
+	
+	
+	query = "SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '" + cur->value( "codigo" ) + "'";
+	cur2 = mainCompany()->loadQuery ( query );
+	while ( !cur2->eof() ) {
+	    /// Muestra las 3 primeras letras de la descripcion de la cuenta.
+	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->value("descripcion").left(7) + "...</B>' <a name='idcuenta' href='#idcuenta=" + cur2->value( "idcuenta" ) + "'>corregir</a></td></tr>";
+	    cur2->nextRecord();
+	} // end while
+	delete cur2;
+		
+	//agregarError ( cadena, "idcuenta", "idcuenta=" + cur->value( "idcuenta" ) );
+	textBrowser += "<HR><table><tr><td>" + cadena + "</td></tr>" + cadena2 + "</table>";
+
+	cur->nextRecord();
+    } // end while
+    
+    delete cur;    
+    
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
     

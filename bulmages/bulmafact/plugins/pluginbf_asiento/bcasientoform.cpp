@@ -20,7 +20,7 @@
 
 #include <QtCore/QTextStream>
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QFile>
+#include "blfile.h"
 
 #include "bcasientoform.h"
 #include "bcasientoview.h"
