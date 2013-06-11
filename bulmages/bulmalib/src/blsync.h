@@ -1,7 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2013 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,44 +19,34 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BALANCEVIEW_H
-#define BALANCEVIEW_H
+#ifndef BLSYNC_H
+#define BLSYNC_H
 
-#include <QtWidgets/QLayout>
+#include <QtWidgets/QDialog>
+#include <QtNetwork/QNetworkReply>
+#include <QtNetwork/QSslError>
+#include <QtCore/QFile>
+#include "ui_blsyncbase.h"
+#include "blfunctions.h"
 
-#include "ui_balancebase.h"
-#include "blpostgresqlclient.h"
-#include "blconfiguration.h"
-#include "bcplancontablelistview.h"
-#include "bfform.h"
-
-
-class BfCompany;
-
-
-/// Balance. Muestra un balance de sumas y saldos.
-/**
-*/
-class BalanceView : public BfForm, public Ui_BalanceBase
+/** Sobrecarga los QFile para poder hacer busquedas por internet */
+class BlSync :  public QDialog, public Ui_BlSyncBase
 {
     Q_OBJECT
-
-public:
-    BalanceView ( BfCompany *, QWidget *parent = 0, int flags = 0 );
-    void inicializa ( QString, QString, QString, QString, QString );
-    ~BalanceView();
-    virtual void accept();
-    
 private:
-    /// Presenta el Balance.
-    void presentar();
-    /// Presenta el Balance de Sumas y Saldos.
-    void presentarSyS ( QString, QString, QString, QString, int, int, bool );
-
+    QString m_file;
+    QString m_destfile;
+public:
+    BlSync ( QWidget *parent, const char *name );
+    ~BlSync();
+    void sync();
+    void getFile(const QString &, const QString &) ;
 public slots:
-    void on_mui_actualizar_clicked();
+  virtual void replyFinished(QNetworkReply *);
+  virtual void slotSslErrors(QList<QSslError>);
+  virtual void slotError(QNetworkReply::NetworkError);
+  virtual void slotReadyRead();
+  virtual void downloadProgress(qint64 ,qint64 );
 };
 
-
 #endif
-

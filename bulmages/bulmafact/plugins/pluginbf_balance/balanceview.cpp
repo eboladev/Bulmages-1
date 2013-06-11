@@ -30,11 +30,6 @@
 #include "blpostgresqlclient.h"
 #include "balanceprintview.h"
 #include "bldatesearch.h"
-/*
-#include "bcbuscarcentrocoste.h"
-#include "bccentrocosteseleccionarview.h"
-#include "bccanalseleccionarview.h"
-*/
 
 #define CUENTA          0
 #define DENOMINACION    1
@@ -62,7 +57,7 @@ BalanceView::BalanceView ( BfCompany *emp, QWidget *parent, int )
     setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Balance" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos.
-    setDbTableName ( "asiento" );
+    setDbTableName ( "balance" );
     
     /// Para imprimir usaremos la plantilla balance
     setTemplateName("balance");
@@ -104,8 +99,10 @@ BalanceView::BalanceView ( BfCompany *emp, QWidget *parent, int )
     mui_fechaInicial->setText ( cadena );
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
     mui_fechaFinal->setText ( cadena );
-
-    mainCompany() ->insertWindow ( windowTitle(), this );
+    
+    insertWindow ( windowTitle(), this, false );
+    
+	
     /// Llamamos a los scripts
     blScript(this);
 }
@@ -171,6 +168,10 @@ void BalanceView::presentar()
     int nivel = mui_nivel->currentText().toInt();
     bool jerarquico = mui_balanceJerarquico->isChecked();
 
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( fechaInicial + "--"+ fechaFinal + "\n" + cuentaInicial);
+
+    
     /// Balance de Sumas y Saldos.
     presentarSyS ( fechaInicial, fechaFinal, cuentaInicial, cuentaFinal, nivel, 0, jerarquico );
 }
@@ -436,5 +437,6 @@ void BalanceView::accept()
     BL_FUNC_DEBUG
     presentar();
 }
+
 
 

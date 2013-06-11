@@ -53,7 +53,7 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
 
     setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Extracto de cuentas" ) );
-    setDbTableName ( "apunte" );
+    setDbTableName ( "mayor" );
 
     mui_list->setMainCompany ( company );
 
@@ -94,7 +94,7 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
     mui_fechaFinal->setText ( cadena );
     m_cursorcta = NULL;
-    insertWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this, false );
 
     m_tratarpunteos = true;
 
@@ -397,6 +397,11 @@ void BcExtractoView::presentar()
         /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
         mui_codigoCuenta->setText ( m_cursorcta->value( "codigo" ) );
         mui_nombreCuenta->setText ( m_cursorcta->value( "descripcion" ) );
+	
+	/// Para que salga en el indexador modificadoel titulo hacemos un setDescripcion y un insertWindow
+	setDescripcion(m_cursorcta->value( "codigo" ) + " " + m_cursorcta->value( "descripcion" ) );
+        insertWindow ( windowTitle(), this, true );
+	
         /// Hacemos la consulta de los apuntes a listar en la base de datos.
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n

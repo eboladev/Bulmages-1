@@ -78,6 +78,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blcp850eurotextcodec.cpp
 			bluiloader.cpp
 			blfile.cpp
+			blsync.cpp
 			blaction.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
@@ -114,6 +115,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blbankedit.h
 			bluiloader.h
 			blfile.h
+			blsync.h
 			blaction.h)
 
 
@@ -151,6 +153,7 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blprogressbarbase.ui
 			blsearchwidgetbase.ui
 			blformlistfilterbase.ui
+			blsyncbase.ui
 			blbankeditbase.ui)
 
 if (USE_GETTEXT)

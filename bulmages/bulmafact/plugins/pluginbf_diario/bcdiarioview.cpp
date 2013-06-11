@@ -70,7 +70,7 @@ BcDiarioView::BcDiarioView ( BfCompany  *emp, QWidget *parent, int )
     /// como el a&ntilde;o inicial.
     mui_fechainicial->setText ( "01/01/" + QString::number(QDate::currentDate().year()) );
     mui_fechafinal->setText ( "31/12/" + QString::number(QDate::currentDate().year()) );
-    insertWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this, false );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -201,7 +201,6 @@ void BcDiarioView::accept()
 {
     BL_FUNC_DEBUG
     presentar();
-    
 }
 
 
@@ -248,7 +247,9 @@ void BcDiarioView::presentar()
         } // end if
 
 
-        
+        setDescripcion(mui_fechainicial->text() + " -- " + mui_fechafinal->text());
+        insertWindow ( windowTitle(), this, true );
+	
         QString ccostes = "";
 	g_plugins->run("PgetSelCostes", &ccostes);
 

@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtCore/QFile>
 #include <QtCore/QTextStream>
 #include <QtCore/QLocale>
 #include <QtCore/QDebug>
@@ -39,6 +38,7 @@
 #include "blescprinter.h"
 #include "blsearchwidget.h"
 #include "bldatesearch.h"
+#include "blfile.h"
 
 ///
 /**
@@ -1038,7 +1038,7 @@ int BlDbRecord::generateRML ( const QString &arch )
         blMsgError(_("Error al copiar el archivo de logo [ BlDbRecord->generateRML() ]"));
     } // end if
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     bool ascii = false;

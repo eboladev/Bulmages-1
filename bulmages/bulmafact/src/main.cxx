@@ -42,6 +42,9 @@
 #include "blplugins.h"
 #include "blsplashscreen.h"
 
+
+#include "blsync.h"
+
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmafact_")
 
 
@@ -143,6 +146,8 @@ int main ( int argc, char **argv )
       } // end if
       delete login1;
 
+
+      
       bges = new BfBulmaFact ( g_confpr->value(CONF_DBNAME) );
       bges->hide();
       g_main = bges;
@@ -176,6 +181,11 @@ int main ( int argc, char **argv )
           g_confpr->readConfig ( confLocalEsp );
       } // end if
 
+      BlSync *sync = new BlSync(0,0);
+      sync->exec();
+      delete sync;
+      
+      
 
       // Pone el color de fondo del workspace si esta definido y es un color valido.
       if ( QColor(g_confpr->value( CONF_BACKGROUND_COLOR )).isValid() ) {

@@ -22,30 +22,25 @@
 
 #include "blfunctions.h"
 #include "blconfiguration.h"
-#include "blfile.h"
+#include "blsync.h"
 #include "blmainwindow.h"
 #include "blmaincompany.h"
 
-QNetworkAccessManager *manager;
+QNetworkAccessManager *syncManager;
 
 
-BlFile::BlFile() : QFile () {
+BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
   BL_FUNC_DEBUG
+    setWindowTitle ( name );
+    setupUi ( this );
+    sync();
 }
 
-BlFile::BlFile(QString file) : QFile (file) {
-  BL_FUNC_DEBUG
-  m_file = file;
-}
 
-void BlFile::sync() {
+
+void BlSync::sync() {
   BL_FUNC_DEBUG  
 
-//  if (!exists() {
-  
-      QFileInfo fileInfo(m_file);
-      QString filename(fileInfo.fileName());
-      
       QString user = g_confpr->value(CONF_LOGIN_USER);
       QString dbname = g_confpr->value(CONF_DBNAME);
     #ifdef Q_OS_WIN32
@@ -54,96 +49,118 @@ void BlFile::sync() {
       QString platform = "LINUX";
     #endif
       
-      QString url = "http://www.bulmages.com/bulmaincloud/"+platform+"/"+user+"/"+dbname+"/"+filename;
-      fprintf(stderr, "Iniciando descarga %s\n", url.toLatin1().constData());
       
-      manager = new QNetworkAccessManager(this);
+      // Cogemos la lista de ficheros
+      
+      QString url = "http://www.bulmages.com/bulmaincloud/files.txt";
+      
+      syncManager = new QNetworkAccessManager(this);
+      connect(syncManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+      
+
+    
+
+      getFile("files.txt", g_confpr->value(CONF_DIR_USER));
+      
+      QFile file ( g_confpr->value(CONF_DIR_USER)+"files.txt" );
+      /// If not exists return.
+      if ( !file.open ( QIODevice::ReadOnly ) ) {
+	  blMsgInfo("No se pudo abrir archivo de indices");
+	  return;
+      } // end if
+      QTextStream in(&file);
+      QString line = in.readLine();
+      while (!line.isNull()) {
+	  QStringList arch = line.split(" ");
+	  QString filename = arch[0];
+	  QString dest = arch[1];
+	  dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
+	  getFile(filename, dest);
+	  line = in.readLine();
+      } // end while
+ 
+
+    
+}
+
+void BlSync::getFile(const QString & name, const QString & dest) {
+  BL_FUNC_DEBUG
+  
+      QString url = "http://www.bulmages.com/bulmaincloud/ALL/ALL/"+name;
       QNetworkRequest request;
       request.setUrl(QUrl(url));
       request.setRawHeader("User-Agent", "BgBrowser 1.0");
     
-      QNetworkReply *reply = manager->get(request);
+      m_destfile = dest+name;
+
+      QString user = g_confpr->value(CONF_LOGIN_USER);
+      QString dbname = g_confpr->value(CONF_DBNAME);
+    #ifdef Q_OS_WIN32
+      QString platform = "MS_WIN";
+    #else
+      QString platform = "LINUX";
+    #endif
+      
+      QNetworkReply *reply = syncManager->get(request);
+      
       connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
       connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
-
       connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
 	    this, SLOT(slotError(QNetworkReply::NetworkError)));
       connect(reply, SIGNAL(sslErrors(QList<QSslError>)),
 	    this, SLOT(slotSslErrors(QList<QSslError>)));
-      connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 
-      while (reply->isRunning()) {
-	QApplication::processEvents();
-      } // end while
- 
-//  }// end if
- 
-      url = "http://www.bulmages.com/bulmaincloud/ALL/"+user+"/"+dbname+"/"+filename;
+
       fprintf(stderr, "Iniciando descarga %s\n", url.toLatin1().constData());
       request.setUrl(QUrl(url));
-      reply = manager->get(request);
+      reply = syncManager->get(request);
       while (reply->isRunning()) {
 	QApplication::processEvents();
       } // end while
-      if (reply->error() == QNetworkReply::NoError) {
-	return;
-      } // end if
-
-      url = "http://www.bulmages.com/bulmaincloud/ALL/ALL/"+filename;
-      fprintf(stderr, "Iniciando descarga %s\n", url.toLatin1().constData());
-      request.setUrl(QUrl(url));
-      reply = manager->get(request);
-      while (reply->isRunning()) {
-	QApplication::processEvents();
-      } // end while
-    
 }
 
-void 	BlFile::setFileName(const QString & name) {
-  BL_FUNC_DEBUG
-  m_file = name;
-  sync();
-  QFile::setFileName(name);
+
+
+
+BlSync::~BlSync() {
 }
 
-BlFile::~BlFile() {
+void BlSync::slotSslErrors(QList<QSslError>) {
+//  fprintf(stderr, "Error de autentificacion descargando %s\n", fileName().toLatin1().constData());
 }
 
-void BlFile::slotSslErrors(QList<QSslError>) {
-  fprintf(stderr, "Error de autentificacion descargando %s\n", fileName().toLatin1().constData());
+void BlSync::slotError(QNetworkReply::NetworkError) {
+//  fprintf(stderr,"Error descargando %s\n", fileName().toLatin1().constData());
 }
 
-void BlFile::slotError(QNetworkReply::NetworkError) {
-  fprintf(stderr,"Error descargando %s\n", fileName().toLatin1().constData());
-}
-
-void BlFile::slotReadyRead() {
+void BlSync::slotReadyRead() {
 
 }
 
 
 
-void BlFile::replyFinished(QNetworkReply * reply) {
+void BlSync::replyFinished(QNetworkReply * reply) {
   
   if (reply->error() == QNetworkReply::NoError) {
       
       fprintf(stderr,"Descarga completa %s\n", m_file.toLatin1().constData());
       
-      QFile localFile(m_file);
+      QFile localFile(m_destfile);
       if (!localFile.open(QIODevice::WriteOnly)) {
-	  fprintf(stderr,"Error en la escritura del archivo %s\n", m_file.toLatin1().constData());
+	  fprintf(stderr,"Error en la escritura del archivo %s\n", m_destfile.toLatin1().constData());
 	  return;
       } // end if
       const QByteArray sdata = reply->readAll();
       localFile.write(sdata);
       localFile.close();
-      fprintf(stderr, "Archivo escrito %s \n %s\n", m_file.toLatin1().constData(), sdata.data());
+      fprintf(stderr, "Archivo escrito %s \n %s\n", m_destfile.toLatin1().constData(), sdata.data());
   } else {
-      fprintf(stderr,"Error descargando %s\n", fileName().toLatin1().constData());
+      blMsgInfo("Error descargando: " + m_destfile);
+      fprintf(stderr,"Error descargando %s\n", m_destfile.toLatin1().constData());
   }
   reply->deleteLater();
 }
 
-void BlFile::downloadProgress(qint64 a,qint64 b) {
+void BlSync::downloadProgress(qint64 a,qint64 b) {
   fprintf(stderr,"Descarga en proceso\n");
 }

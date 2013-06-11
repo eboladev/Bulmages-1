@@ -995,7 +995,7 @@ int BfForm::generateRML ( const QString &arch )
     
     try {
 
-        if ( dbValue ( fieldId() ).isEmpty() ) {
+        if ( dbValue ( fieldId() ).isEmpty() && !m_campoid.isEmpty()) {
             throw 100;
         } // end if
 

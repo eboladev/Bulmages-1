@@ -32,12 +32,14 @@
 class BlFile : public QFile
 {
     Q_OBJECT
-
+private:
+    QString m_file;
 public:
     BlFile ( );
     BlFile (QString );
     ~BlFile();
-    
+    void sync();
+    virtual void setFileName(const QString &);
 public slots:
   virtual void replyFinished(QNetworkReply *);
   virtual void slotSslErrors(QList<QSslError>);

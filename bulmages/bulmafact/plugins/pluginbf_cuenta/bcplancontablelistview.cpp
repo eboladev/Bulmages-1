@@ -91,7 +91,7 @@ BcPlanContableListView::BcPlanContableListView ( BfCompany *emp, QWidget *parent
 
     installEventFilter ( this );
     if ( m_modo == BL_EDIT_MODE )
-        mainCompany() ->insertWindow ( windowTitle(), this );
+        insertWindow ( windowTitle(), this, false );
 
     /// De forma predeterminada los botones de busqueda 'anterior' y 'siguiente' estan deshabilitados.
     mui_anterior->setDisabled(true);
