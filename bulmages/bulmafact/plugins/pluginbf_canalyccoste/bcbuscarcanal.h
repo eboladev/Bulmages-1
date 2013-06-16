@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 
 
-class BC_EXPORT BcBuscarCanalDelegate : public BlComboBoxDelegate
+class BcBuscarCanalDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
 
@@ -40,7 +40,7 @@ public:
 
 
 
-class BC_EXPORT BcBuscarCanal : public BlComboBox
+class BcBuscarCanal : public BlComboBox
 {
     Q_OBJECT
 

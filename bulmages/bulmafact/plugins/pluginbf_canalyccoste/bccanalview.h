@@ -36,7 +36,7 @@
 class BfCompany;
 
 
-class BC_EXPORT BcCanalView : public BfForm, public Ui_BcCanalBase
+class BcCanalView : public BfForm, public Ui_BcCanalBase
 {
     Q_OBJECT
 

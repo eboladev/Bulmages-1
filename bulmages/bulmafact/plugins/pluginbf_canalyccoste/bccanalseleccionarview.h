@@ -32,7 +32,7 @@ class BfCompany;
 
 ///
 /** */
-class BC_EXPORT BcCanalSeleccionarView : public QWidget, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
+class BcCanalSeleccionarView : public QWidget, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

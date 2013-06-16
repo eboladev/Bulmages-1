@@ -30,7 +30,7 @@
 #include "blfunctions.h"
 
 /** Sobrecarga los QFile para poder hacer busquedas por internet */
-class BlSync :  public QDialog, public Ui_BlSyncBase
+class BL_EXPORT BlSync :  public QDialog, public Ui_BlSyncBase
 {
     Q_OBJECT
 private:
@@ -41,6 +41,8 @@ public:
     ~BlSync();
     void sync();
     void getFile(const QString &, const QString &) ;
+    virtual int exec();
+
 public slots:
   virtual void replyFinished(QNetworkReply *);
   virtual void slotSslErrors(QList<QSslError>);

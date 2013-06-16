@@ -26,10 +26,12 @@
 #include <QtNetwork/QSslError>
 #include <QtCore/QFile>
 
+#include "blfunctions.h"
+
 
 
 /** Sobrecarga los QFile para poder hacer busquedas por internet */
-class BlFile : public QFile
+class BL_EXPORT  BlFile : public QFile
 {
     Q_OBJECT
 private:

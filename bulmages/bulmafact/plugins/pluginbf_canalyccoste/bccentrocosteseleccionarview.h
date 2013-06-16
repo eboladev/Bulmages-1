@@ -22,6 +22,9 @@
 #ifndef BCCENTROCOSTESELECCIONARVIEW_H
 #define BCCENTROCOSTESELECCIONARVIEW_H
 
+
+#include "pdefs_pluginbf_canalyccoste.h"
+
 #include <QtWidgets/QTreeWidgetItemIterator>
 
 #include "blfunctions.h"
@@ -39,7 +42,7 @@ class BfCompany;
     Tambi&eacute;n se utiliza para establecer el centro de coste por defecto, utlidad
     que permite introducir asientos directamente en un centro de coste sin tener que
     teclearlo en cada apunte. */
-class BC_EXPORT BcCentroCosteSeleccionarView : public QWidget, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
+class BcCentroCosteSeleccionarView : public QWidget, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

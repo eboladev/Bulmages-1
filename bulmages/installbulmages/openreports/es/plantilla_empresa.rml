@@ -8,6 +8,19 @@
 
 <drawString x="1.45cm" y="24.05cm"><!-- QUERY="SELECT valor AS val3 FROM configuracion WHERE nombre='CodPostal'" -->[val3]<!-- END QUERY --> <!-- QUERY="SELECT valor AS val4 FROM configuracion WHERE nombre='Municipio'" -->[val4]<!-- END QUERY --></drawString>
 
+<drawString x="1.45cm" y="23.7cm"><!-- QUERY="SELECT valor AS val2 FROM configuracion WHERE nombre='Provincia'" -->[val2]<!-- END QUERY --></drawString>
+
+<drawString x="1.45cm" y="23.35cm"><!-- QUERY="SELECT valor AS val3 FROM configuracion WHERE nombre='Telefono'" -->[val3]<!-- END QUERY --></drawString>
+
+
+<!-- EL PIE DE PAGINA -->                                                                                                           
+<setFont name="Helvetica" size="8"/>                                                                                                
+<fill color="(0,0,0)"/>>                                                                                                            
+<stroke color="(0,0,0)"/>                                                                                                           
+<drawString x="7.0cm" y="0.5cm"><!-- QUERY="SELECT valor AS val4 FROM configuracion WHERE nombre='Email'" -->[val4] <!-- END QUERY --></drawString>
+<drawString x="10.7cm" y="0.5cm"><!-- QUERY="SELECT valor AS val5 FROM configuracion WHERE nombre='Web'" -->[val5] <!-- END QUERY --></drawString>
+
+
 
 <place x="7.5cm" y="23.7cm" width="10cm" height="2cm">
 <barCode code="qrcode" height="2cm" width="2cm">

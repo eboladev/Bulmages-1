@@ -31,7 +31,7 @@
 class BfCompany;
 
 
-class BC_EXPORT BcBuscarCentroCosteDelegate : public BlComboBoxDelegate
+class BcBuscarCentroCosteDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
 
@@ -41,7 +41,7 @@ public:
 };
 
 
-class BC_EXPORT BcBuscarCentroCoste : public BlComboBox
+class BcBuscarCentroCoste : public BlComboBox
 {
     Q_OBJECT
 

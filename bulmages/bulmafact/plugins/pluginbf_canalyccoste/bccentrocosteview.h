@@ -38,7 +38,7 @@ class BfCompany;
 
 /// Visualiza un centro de coste.
 /** */
-class BC_EXPORT BcCentroCosteView : public BfForm, public Ui_BcCentroCosteBase
+class BcCentroCosteView : public BfForm, public Ui_BcCentroCosteBase
 {
     Q_OBJECT
 
