@@ -195,6 +195,10 @@ IF(USE_GETTEXT)
 ADD_DEFINITIONS(-DUSE_GETTEXT)
 ENDIF(USE_GETTEXT)
 
+IF (ALLOW_DEBUG)
+ADD_DEFINITIONS(-DALLOW_DEBUG)
+ENDIF(ALLOW_DEBUG)
+
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}

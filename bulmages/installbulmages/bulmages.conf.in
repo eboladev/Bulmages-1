@@ -113,6 +113,10 @@ CONF_URL_CONTENTS		http://www.bulmages.com/?page_id=13
 # Usar QScript (llamar a los archivos .qs de openreports)
 CONF_USE_QSCRIPT                        FALSE
 
+# Opciones de sincronizacion
+CONF_SYNC                           FALSE
+CONF_URL_SYNC                       http://www.bulmages.com/bulmaincloud/
+
 # NOTA PARA DESARROLLADORES:
 # --------------------------
 # Atencion: Las lineas que se agregen en este archivo deben

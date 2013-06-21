@@ -50,7 +50,7 @@ BlApplication::~BlApplication()
 }
 
 
-#if CONFIG_DEBUG == TRUE
+
 ///
 /**
 \param object
@@ -60,16 +60,14 @@ BlApplication::~BlApplication()
 bool BlApplication::notify ( QObject *object, QEvent *event )
 {
     ///   Esta funcion es llamada continuamente y por eso no la depuramos (BL_FUNC_DEBUG).
-
     try {
         return QApplication::notify ( object, event );
     } catch ( ... ) {
-        fprintf(stderr, _("Error inesperado en el sistema de notificaciones.\n").toLatin1());
+        fprintf(stderr, "%s\n", _("Error inesperado en el sistema de notificaciones.").toLatin1().constData());
         return false;
     } // end try
-
 }
-#endif
+
 
 
 ///

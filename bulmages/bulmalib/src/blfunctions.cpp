@@ -758,119 +758,6 @@ void blDebugOff ()
 }
 
 
-/// cad = String a presentar como texto de depuracion o como mensaje de error.
-/// nivel 0 = normal.
-/// nivel 1 = Bajo.
-/// nivel 2 = Alto (sale un popup).
-/// nivel 4 = Comienza depuracion indiscriminada.
-/// nivel 5 = Termina depuracion indiscriminada.
-/// nivel 10 = Salida a terminal.
-#if CONFIG_DEBUG == TRUE
-#ifdef OLD_DEBUG
-void blDebug ( const QString &cad, int nivel, const QString &param )
-{
-    /// Si el objeto confpr no esta creado puede dar segmentation fault.
-    if ( g_confpr == NULL ) {
-        return;
-    } // end if
-
-    static bool semaforo = 0;
-
-
-    if ( g_confpr->valueTrue( CONF_DEBUG )) {
-        static QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
-        static QTextStream out ( &file );
-
-        static QFile filexml ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.xml" );
-        static QTextStream outxml ( &filexml );
-
-        static int auxxml = 0;
-        static int supnivel = 0;
-        static int indice = 0;
-        static QString mensajesanulados[7000];
-        static QString clasesanuladas[7000];
-        static int indiceclases = 0;
-        static QElapsedTimer t;
-
-        if ( !semaforo ) {
-            t.start();
-            if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-                return;
-            if ( !filexml.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-                return;
-            semaforo = 1;
-        } // end if
-
-
-        if ( nivel == 5 ) {
-            supnivel = 0;
-            nivel = 2;
-        } // end if
-        if ( nivel == 4 ) {
-            supnivel = 2;
-            nivel = 2;
-        } // end if
-        if ( nivel == 0 || nivel == 1 ) {
-            /// Si la cadena contiene END bajamos el nivel
-            if ( !cad.startsWith ( "END" ) ) {
-                auxxml ++;
-                if ( auxxml > 20 ) auxxml = 1;
-            } // end if
-            for ( int i = 0; i < auxxml; i++ ) {
-                outxml << "    ";
-                out << "    ";
-            } // end for
-
-            QString cad1 = cad;
-            if ( cad.startsWith ( "END" ) ) {
-                cad1 = "</" + cad1.remove ( 0, 4 ) + " time=\"" + QString::number ( t.elapsed() ) + "\" result=\"" + param + "\" >";
-            } else if ( cad.contains ( " " ) ) {
-                cad1 = "    <COMENT value=\"" + cad + " " + param + "\"></COMENT>";
-            } else {
-                cad1 = "<" + cad1 + " time=\"" + QString::number ( t.elapsed() ) + "\" param=\"" + param + "\" >";
-            } // end if
-
-            outxml << cad1  << "\n" << flush;
-            out << cad << " " << param << "\n" << flush;
-	    
-            if ( cad.startsWith ( "END" ) ) {
-                auxxml --;
-                if ( auxxml < 0 ) auxxml = 20;
-            } // end if
-        } // end if
-        for ( int i = 0; i < indice; i++ ) {
-            if ( cad == mensajesanulados[i] ) {
-                return;
-            } // end if
-        } // end for
-        for ( int i = 0; i < indiceclases; i++ ) {
-            if ( cad.left ( cad.indexOf ( "::" ) ) == clasesanuladas[i] ) {
-                return;
-            } // end if
-        } // end for
-
-        if ( nivel == 2 || ( supnivel == 2 && nivel == 0 ) || nivel == 3 ) {
-            out << cad << " " << param << "\n" << flush;
-            int err = QMessageBox::information ( NULL,
-                                                 _ ( "Informacion de depuracion" ),
-                                                 cad + " " + param,
-                                                 _ ( "&Continuar" ),
-                                                 _ ( "&Omitir" ),
-                                                 _ ( "Omitir &clase" ),
-                                                 0, 1 );
-            if ( err == 1 ) {
-                mensajesanulados[indice++] = cad;
-            } // end if
-            if ( err == 2 ) {
-                clasesanuladas[indiceclases++] = cad.left ( cad.indexOf ( "::" ) );
-            } // end if
-        } // end if
-
-        file.flush();
-    }
-}
-#endif
-#endif
 
 void blMsgInfo ( QString cad, QWidget *parent )
 {
@@ -1785,5 +1672,10 @@ int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
     
 }
 
+/*
+inline int  blfprintf(FILE *fp,const char *format,...)
+{
+   return 0; 
+}
 
-
+*/

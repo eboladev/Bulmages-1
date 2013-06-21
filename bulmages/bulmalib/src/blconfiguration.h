@@ -56,6 +56,10 @@
 /// Traspaso de informacion extendida de los articulos en los documentos.
 #define CONF_USE_DESCARTICULO         53
 
+/// Temas de syncronizacion
+#define CONF_SYNC		      60
+#define CONF_URL_SYNC                 61
+
 
 /// Habilitar el uso de scripts de QScript.
 #define CONF_USE_QSCRIPT           70

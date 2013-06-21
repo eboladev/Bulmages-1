@@ -39,7 +39,10 @@ BlFile::BlFile(QString file) : QFile (file) {
 }
 
 void BlFile::sync() {
-  BL_FUNC_DEBUG  
+  BL_FUNC_DEBUG 
+  
+  /// Esta clase esta clausurada
+  return;
 
 //  if (!exists() {
   

@@ -40,11 +40,7 @@ private:
 public:
     BlApplication ( int &argc, char **argv );
     ~BlApplication();
-    
-#if CONFIG_DEBUG == TRUE
     virtual bool notify ( QObject *object, QEvent *event );
-#endif
-    
     void emitDbTableChanged(const QString &table);
 
 signals:

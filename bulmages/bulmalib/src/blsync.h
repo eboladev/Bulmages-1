@@ -34,7 +34,6 @@ class BL_EXPORT BlSync :  public QDialog, public Ui_BlSyncBase
 {
     Q_OBJECT
 private:
-    QString m_file;
     QString m_destfile;
 public:
     BlSync ( QWidget *parent, const char *name );

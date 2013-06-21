@@ -53,7 +53,7 @@ void BlSync::sync() {
       
       // Cogemos la lista de ficheros
       
-      QString url = "http://www.bulmages.com/bulmaincloud/files.txt";
+      QString url = g_confpr->value(CONF_URL_SYNC) + "files.txt";
       
       syncManager = new QNetworkAccessManager(this);
       connect(syncManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
@@ -93,6 +93,12 @@ void BlSync::sync() {
 	  if (descarga) {
 	      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
 	      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
+	      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
+#ifdef MS_WIN
+	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
+#else		  
+	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
+#endif		 
 	      getFile(filename, dest);
 	      if (arch[3] == "T") {
 		reinicio = true;
@@ -104,7 +110,7 @@ void BlSync::sync() {
       blCopyFile(g_confpr->value(CONF_DIR_USER)+"files.txt", g_confpr->value(CONF_DIR_USER)+"lfiles.txt");
       
 /// Configuraciones personalizadas
-      url = "http://www.bulmages.com/bulmaincloud/filesp.txt";
+      url = g_confpr->value(CONF_URL_SYNC) + "filesp.txt";
       
       getFile("filesp.txt", g_confpr->value(CONF_DIR_USER));
 
@@ -141,6 +147,12 @@ void BlSync::sync() {
 	  if (descarga) {
 	      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
 	      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
+	      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
+#ifdef MS_WIN
+	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
+#else		  
+	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
+#endif
 	      getFile(filename, dest);
 	      if (arch[3] == "T") {
 		reinicio = true;
@@ -171,23 +183,12 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       QString platform = "LINUX";
     #endif
   
-      QString url = "http://www.bulmages.com/bulmaincloud/"+platform+"/"+dbname+"/"+name;
+      QString url = g_confpr->value(CONF_URL_SYNC) + platform+"/"+dbname+"/"+name;
       QNetworkRequest request;
       request.setUrl(QUrl(url));
       request.setRawHeader("User-Agent", "BgBrowser 1.0");
-    
-
       
       QNetworkReply *reply = syncManager->get(request);
-      
-/*      
-      connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
-      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
-      connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
-	    this, SLOT(slotError(QNetworkReply::NetworkError)));
-      connect(reply, SIGNAL(sslErrors(QList<QSslError>)),
-	    this, SLOT(slotSslErrors(QList<QSslError>)));
-*/
 
       fprintf(stderr, "Iniciando descarga %s\n", url.toLatin1().constData());
       request.setUrl(QUrl(url));
@@ -202,10 +203,7 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       } // end if
       delete reply;
       
-      
-      
-      
-      url = "http://www.bulmages.com/bulmaincloud/ALL/"+dbname+"/"+name;
+      url = g_confpr->value(CONF_URL_SYNC) + "ALL/"+dbname+"/"+name;
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
       while (reply->isRunning()) {
@@ -218,7 +216,7 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       } // end if
       delete reply;
       
-      url = "http://www.bulmages.com/bulmaincloud/"+platform+"/ALL/"+name;
+      url = g_confpr->value(CONF_URL_SYNC) +platform+"/ALL/"+name;
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
       while (reply->isRunning()) {
@@ -233,7 +231,7 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       
       
       
-      url = "http://www.bulmages.com/bulmaincloud/ALL/ALL/"+name;
+      url = g_confpr->value(CONF_URL_SYNC) + "ALL/ALL/"+name;
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
       while (reply->isRunning()) {
@@ -272,8 +270,6 @@ void BlSync::replyFinished(QNetworkReply * reply) {
   
   if (reply->error() == QNetworkReply::NoError) {
       
-      fprintf(stderr,"Descarga completa %s\n", m_file.toLatin1().constData());
-      
       QFile localFile(m_destfile);
       if (!localFile.open(QIODevice::WriteOnly)) {
 	  fprintf(stderr,"Error en la escritura del archivo %s\n", m_destfile.toLatin1().constData());
@@ -285,8 +281,7 @@ void BlSync::replyFinished(QNetworkReply * reply) {
       fprintf(stderr, "Archivo escrito %s \n %s\n", m_destfile.toLatin1().constData(), sdata.data());
   } else {
       fprintf(stderr,"Error descargando %s\n", m_destfile.toLatin1().constData());
-  }
-  //reply->deleteLater();
+  } // end if
 }
 
 void BlSync::downloadProgress(qint64 a,qint64 b) {
@@ -295,5 +290,7 @@ void BlSync::downloadProgress(qint64 a,qint64 b) {
 
 int BlSync::exec() {
   BL_FUNC_DEBUG
-  sync();
+  if (g_confpr->valueTrue(CONF_SYNC)) {
+      sync();
+  } // end if
 }

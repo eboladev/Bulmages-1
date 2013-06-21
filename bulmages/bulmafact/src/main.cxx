@@ -115,9 +115,12 @@ int main ( int argc, char **argv )
 
          if( !argParser->userName().isEmpty() ) {
             login1->m_login->setText( argParser->userName() );
+	 } else {
+	    login1->m_login->setText( g_confpr->value(CONF_LOGIN_USER));
 	 } // end if
 	 
          login1->m_password->setFocus();
+	 login1->m_password->setText(g_confpr->value(CONF_PASSWORD_USER));
 	    
 	 if (!argParser->host().isEmpty()) {
 	    login1->m_host->setText(argParser->host());
