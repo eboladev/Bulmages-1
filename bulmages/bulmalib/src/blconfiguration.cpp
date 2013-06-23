@@ -201,8 +201,6 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
 #endif
         readConfig ( m_dirLocalConf + m_programLocalConfFile );
     }// end if
-
-    fprintf ( stderr, "Configuraciones cargadas");
 }
 
 
@@ -508,8 +506,13 @@ QString BlConfiguration::name( int i )
        return "CONF_SYNC";
     if ( i == CONF_URL_SYNC )
        return "CONF_URL_SYNC";
+    if ( i == CONF_LOGIN_USER )
+       return "CONF_LOGIN_USER";
+    if ( i == CONF_PASSWORD_USER )
+       return "CONF_PASSWORD_USER";
     return "";
 }
+
 
 /// This method writes the configuration of the system to the home bulmages.conf file
 /// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del
@@ -586,8 +589,9 @@ bool BlConfiguration::readConfig ( QString fich )
         } // end while
         arch.close();
 
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "%s", "FIN Leyendo configuracion\n" );
-
+#endif
         return true;
     } // end if
     return false;

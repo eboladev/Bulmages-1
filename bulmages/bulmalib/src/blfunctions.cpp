@@ -156,7 +156,9 @@ BlDebug::BlDebug(const QString &func, int level, const QString &params) {
 	    } // end if
 	} // end if
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+#endif
     } // end try
     
 }
@@ -182,7 +184,9 @@ void BlDebug::blDebug(const QString &text, int level, const QString &params) {
       *BlDebug::m_outXML << cad1  << "\n" << flush;
       *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+#endif
     } // end try
 }
 
@@ -221,7 +225,9 @@ BlDebug::~BlDebug() {
         } // end if
 
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+#endif
     } // end try
       
 }
@@ -1672,10 +1678,3 @@ int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
     
 }
 
-/*
-inline int  blfprintf(FILE *fp,const char *format,...)
-{
-   return 0; 
-}
-
-*/

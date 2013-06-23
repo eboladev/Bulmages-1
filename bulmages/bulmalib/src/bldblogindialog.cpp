@@ -50,8 +50,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
     setupUi ( this );
     grpAuthError->setVisible ( true );
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
-    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
-//    validate();  
+    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) ); 
 }
 
 
@@ -71,8 +70,6 @@ BlDbLoginDialog::~BlDbLoginDialog()
 void BlDbLoginDialog::validate()
 {
     BL_FUNC_DEBUG
-    // inicializa escapa correctamente, la cadena de conexión no debe escaparse como el sql
-    //m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
     g_confpr->setValue ( CONF_LOGIN_USER, m_login->text() );
@@ -105,8 +102,6 @@ void BlDbLoginDialog::validate()
     } else {
         grpAuthError->setVisible ( true );
         lblAuthError->setText ( _ ( "Error: usuario y/o contrasenya incorrectos" ) );
-        m_login->setText ( "" );
-        m_password->setText ( "" );
         m_login->setFocus();
     } // end if
     

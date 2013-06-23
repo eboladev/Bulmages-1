@@ -35,12 +35,12 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
   
     BL_FUNC_DEBUG
 
-    fprintf(stderr, "En el constructor de BlSplashScreen \n");
-
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {
+#ifdef CONFIG_DEBUG
         QString mensaje = "BlSplashScreen: No existe el archivo " + appSplash + "\n";
         fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
         m_image0 = new QPixmap ( 350, 263 );
         m_image0->fill ( QColor ( QColor ( 150, 150, 200 ) ) );
     } else {
@@ -92,7 +92,6 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     pbarra.setBrush ( QPalette::Base, colorfondobarra );
     m_barra->setPalette ( pbarra );
     
-    fprintf(stderr, "Ya no en el constructor de BlSplashScreen \n");
 }
 
 
@@ -102,7 +101,6 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
 BlSplashScreen::~BlSplashScreen()
 {
     BL_FUNC_DEBUG
-    fprintf(stderr,"En el destructor de BlSplashScreen");
 #ifndef Q_OS_WIN32
     delete l0;
 #endif

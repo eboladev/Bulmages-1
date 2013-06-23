@@ -66,7 +66,6 @@ void BcCentroCosteSeleccionarView::cargacostes()
     BL_FUNC_DEBUG
     /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
     /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
-    fprintf ( stderr, "Ahora nos toca rellenar las listas.\n" );
     QMap <int, QTreeWidgetItem *> Lista;
     QTreeWidgetItem *item;
     int padre;
@@ -97,8 +96,6 @@ void BcCentroCosteSeleccionarView::cargacostes()
     while ( !cursoraux2->eof() ) {
         padre = cursoraux2->value( "padre" ).toInt();
         idc_coste = cursoraux2->value( "idc_coste" ).toInt();
-        fprintf ( stderr, "Cuentas de subnivel:%d", padre );
-
         item = new QTreeWidgetItem ( Lista[padre] );
         item->setText ( 3, cursoraux2->value( "idc_coste" ) );
         item->setText ( 1, cursoraux2->value( "descripcion" ) );
@@ -193,10 +190,7 @@ QString BcCentroCosteSeleccionarView::nomcoste()
     BL_FUNC_DEBUG
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
-    fprintf ( stderr, "nomcoste()\n" );
-
     if ( ( *m_iterador ) ->checkState ( 0 ) == Qt::Checked ) {
-        fprintf ( stderr, "nomcoste: %s\n", ( *m_iterador ) ->text ( 0 ).toLatin1().constData() );
         return ( *m_iterador ) ->text ( 0 );
     } else {
         return "";

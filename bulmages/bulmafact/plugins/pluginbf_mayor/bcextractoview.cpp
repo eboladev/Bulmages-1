@@ -641,7 +641,6 @@ void BcExtractoView::on_mui_guardarPunteo_clicked()
             query = "SELECT * FROM apunte WHERE punteo = true";
             BlDbRecordSet *cursp = mainCompany() ->loadQuery ( query );
             while ( !cursp->eof() ) {
-                fprintf ( mifile, "%s\n", cursp->value( "idapunte" ).toLatin1().constData() );
                 cursp->nextRecord();
             } // end while
             delete cursp;

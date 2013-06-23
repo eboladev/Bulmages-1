@@ -379,13 +379,17 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
     } else if ( mui_metodoPorcentual->isChecked() ) {
         /// El m&eacute;todo de amortizaci&oacute;n es el incremental.
         double porcent = ( double ) 1 / ( double ) ncuotas;
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "El coeficiente es: %10.2f\n", porcent );
+#endif
         double total = 0;
         for ( int i = 0; i < ncuotas; i++ ) {
             if ( i < ( ncuotas - 1 ) ) {
                 valcuota = ( mui_valorCompra->text().toDouble() - total ) * porcent;
                 total += valcuota;
+#ifdef CONFIG_DEBUG
                 fprintf ( stderr, "cuota: %10.2f -- total: %10.2f\n", valcuota, total );
+#endif
             } else {
                 valcuota = mui_valorCompra->text().toDouble() - total;
             } // end if

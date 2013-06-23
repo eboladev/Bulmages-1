@@ -1025,17 +1025,20 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
     QString value;
     int num;
     QString Query = "select * from configuracion where nombre = '" + sanearCadenaUtf8(nombre) + "'";
-    fprintf ( stderr, "%s\n", Query.toLatin1().data() );
     result = PQexec ( conn, Query.toLatin1().data() );
     if ( !result || PQresultStatus ( result ) != PGRES_TUPLES_OK ) {
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "SQL command failed: %s\n", Query.toLatin1().data() );
         fprintf ( stderr, "%s\n", PQerrorMessage ( conn ) );
+#endif
         PQclear ( result );
         return "";
     } // end if
     num = PQntuples ( result );
     if ( num > 1 ) {
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "Aviso: Hay %d valores para el campo %s en la tabla configuracion\n", num, nombre.toLatin1().data() );
+#endif
     } // end if
     if ( num == 0 ) {
         value = "";

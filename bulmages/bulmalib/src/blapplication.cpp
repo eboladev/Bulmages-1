@@ -63,7 +63,9 @@ bool BlApplication::notify ( QObject *object, QEvent *event )
     try {
         return QApplication::notify ( object, event );
     } catch ( ... ) {
+#ifdef CONFIG_DEBUG
         fprintf(stderr, "%s\n", _("Error inesperado en el sistema de notificaciones.").toLatin1().constData());
+#endif
         return false;
     } // end try
 }

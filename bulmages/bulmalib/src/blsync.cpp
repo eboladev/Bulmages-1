@@ -63,7 +63,9 @@ void BlSync::sync() {
       QFile file ( g_confpr->value(CONF_DIR_USER)+"files.txt" );
       /// If not exists return.
       if ( !file.open ( QIODevice::ReadOnly ) ) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr,"No se pudo abrir archivo de indices\n");
+#endif
 	  return;
       } // end if
       QTextStream in(&file);
@@ -94,7 +96,7 @@ void BlSync::sync() {
 	      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
 	      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
 	      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
-#ifdef MS_WIN
+#ifdef Q_OS_WIN32
 	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
 #else		  
 	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
@@ -117,7 +119,9 @@ void BlSync::sync() {
       QFile pfile ( g_confpr->value(CONF_DIR_USER)+"filesp.txt" );
       /// If not exists return.
       if ( !pfile.open ( QIODevice::ReadOnly ) ) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr,"No se pudo abrir archivo de indices\n");
+#endif
 	  return;
       } // end if
       QTextStream pin(&pfile);
@@ -148,7 +152,7 @@ void BlSync::sync() {
 	      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
 	      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
 	      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
-#ifdef MS_WIN
+#ifdef Q_OS_WIN32
 	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
 #else		  
 	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
@@ -190,7 +194,9 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       
       QNetworkReply *reply = syncManager->get(request);
 
+#ifdef CONFIG_DEBUG
       fprintf(stderr, "Iniciando descarga %s\n", url.toLatin1().constData());
+#endif
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
       while (reply->isRunning()) {
@@ -267,25 +273,32 @@ void BlSync::slotReadyRead() {
 
 
 void BlSync::replyFinished(QNetworkReply * reply) {
-  
+  BL_FUNC_DEBUG
   if (reply->error() == QNetworkReply::NoError) {
       
       QFile localFile(m_destfile);
       if (!localFile.open(QIODevice::WriteOnly)) {
+
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr,"Error en la escritura del archivo %s\n", m_destfile.toLatin1().constData());
+#endif
 	  return;
       } // end if
       const QByteArray sdata = reply->readAll();
       localFile.write(sdata);
       localFile.close();
+#ifdef CONFIG_DEBUG
       fprintf(stderr, "Archivo escrito %s \n %s\n", m_destfile.toLatin1().constData(), sdata.data());
+#endif
   } else {
+#ifdef CONFIG_DEBUG
       fprintf(stderr,"Error descargando %s\n", m_destfile.toLatin1().constData());
+#endif
   } // end if
 }
 
 void BlSync::downloadProgress(qint64 a,qint64 b) {
-  fprintf(stderr,"Descarga en proceso\n");
+
 }
 
 int BlSync::exec() {

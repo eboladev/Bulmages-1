@@ -122,7 +122,9 @@ void BlComboBox::setId ( QString id )
 
 	setCurrentIndex ( i1 );
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	fprintf(stderr, _("Error de Base de Datos en BlComboBox::setId.\n").toLatin1().constData());
+#endif
 	exit(0);
     } // end try
     

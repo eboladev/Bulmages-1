@@ -1825,7 +1825,9 @@ bool ImportBulmaFact::endElement ( const QString&, const QString&, const QString
     BL_FUNC_DEBUG
     valores[qName] = cadintermedia;
     cadintermedia = "";
+#ifdef CONFIG_DEBUG
     fprintf ( stderr, "Tag de Cierre: %s\n", qName.toLatin1().data() );
+#endif
     if ( qName == "CLIENTE" )
         trataCliente();
     if ( qName == "PROVEEDOR" )
@@ -1890,14 +1892,14 @@ bool ImportBulmaFact::characters ( const QString& n1 )
 void ImportBulmaFact::printcontents()
 {
     BL_FUNC_DEBUG
-    fprintf ( stderr, "Impresion de contenidos\n" );
     tvalores::Iterator it;
     for ( it = valores.begin(); it != valores.end(); ++it ) {
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "Valores encontrados clave: %s Valor:%s\n",
                   it.key().toLatin1().data(),
                   it.value().toLatin1().data() );
+#endif
     } // end for
-    fprintf ( stderr, "Fin de impresion de contenidos\n" );
     
 }
 

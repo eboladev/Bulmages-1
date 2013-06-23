@@ -113,7 +113,9 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 
 	setCurrentIndex ( i1 );
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	fprintf(stderr, "Error de Base de Datos en BlComboBoxDelegate::setId\n");
+#endif
 	exit(0);
     } // end try
 }
