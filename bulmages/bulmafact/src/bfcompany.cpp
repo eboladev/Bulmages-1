@@ -102,69 +102,6 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
 
 
-/** Crea y Presenta la ventana de formas de pago.
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_FPago()
-{
-    BL_FUNC_DEBUG
-    /*
-       FPagoView *f = new FPagoView ( this, NULL );
-       m_pWorkspace->addSubWindow ( f );
-       f->show();
-    */
-    
-}
-
-
-/** Crea y Presenta la ventana de trabajadores
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_trabajadores()
-{
-    BL_FUNC_DEBUG  
-}
-
-
-/** Crea y Presenta la ventana de bancos
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_bancos()
-{
-    BL_FUNC_DEBUG
-}
-
-
-/** Crea y Presenta la ventana de Series de Factura
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_seriesFactura()
-{
-    BL_FUNC_DEBUG
-   
-}
-
-
-
-
-
-/** Crea una instancia de ListAlmacenView y la presenta.
-*/
-/**
-\return
-**/
-void BfCompany::s_almacenes()
-{
-    BL_FUNC_DEBUG
-}
 
 
 /** Crea una instancia de BfConfiguracionView y la presenta.
@@ -181,26 +118,6 @@ void BfCompany::s_newBfConfiguracionView()
 }
 
 
-/** Crea y muestra el listado de Tipos de IVA
-*/
-/**
-**/
-void BfCompany::s_TipoIVAView()
-{
-    BL_FUNC_DEBUG
-    
-}
-
-
-/** Crea y muestra el listado de Tasas de IVA
-*/
-/**
-**/
-void BfCompany::s_TasaIVAView()
-{
-    BL_FUNC_DEBUG
-   
-}
 
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.

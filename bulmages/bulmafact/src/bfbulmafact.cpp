@@ -129,16 +129,6 @@ BfBulmaFact::~BfBulmaFact()
 }
 
 
-/// \TODO: Revisar este metodo.
-/**
-**/
-void BfBulmaFact::s_FPago()
-{
-    BL_FUNC_DEBUG
-    m_company->s_FPago();
-    
-}
-
 
 /** Intercambia entre el modo ventana completa y el modo ventana normal
 */
@@ -317,28 +307,6 @@ void BfBulmaFact::on_actionIndexador_triggered()
 
 ///
 /**
-**/
-void BfBulmaFact::on_actionTipoIVA_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_TipoIVAView();
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionTasaIVA_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_TasaIVAView();
-    
-}
-
-
-///
-/**
 \return
 **/
 BlWorkspace * BfBulmaFact::workspace()
@@ -370,37 +338,6 @@ void BfBulmaFact::on_actionPaises_triggered()
 }
 
 
-///
-/**
-**/
-void BfBulmaFact::on_actionSeries_de_Factura_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_seriesFactura();
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionTrabajadores_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_trabajadores();
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionBancos_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_bancos();
-    
-}
 
 
 ///
@@ -428,17 +365,6 @@ void BfBulmaFact::on_actionAcerta_de_triggered()
 ///
 /**
 **/
-void BfBulmaFact::on_actionAlmacenes_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_almacenes();
-    
-}
-
-
-///
-/**
-**/
 void BfBulmaFact::on_actionParametros_triggered()
 {
     BL_FUNC_DEBUG
@@ -447,15 +373,6 @@ void BfBulmaFact::on_actionParametros_triggered()
 }
 
 
-///
-/**
-**/
-void BfBulmaFact::on_actionFormas_de_Pago_triggered()
-{
-    BL_FUNC_DEBUG
-    s_FPago();
-    
-}
 
 
 ///
@@ -479,6 +396,16 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
     pWorkspace->cascadeSubWindows();
 
 }
+
+///
+/**
+**/
+void BfBulmaFact::on_actionSalir_triggered()
+{
+    BL_FUNC_DEBUG
+    close();
+}
+
 
 
 void BfBulmaFact::resizeEvent ( QResizeEvent * event )

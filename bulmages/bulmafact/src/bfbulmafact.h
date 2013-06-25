@@ -64,25 +64,18 @@ public:
 
 public slots:
     virtual void closeEvent ( QCloseEvent *event );
-    virtual void s_FPago();
     virtual void s_ventanaCompleta();
     virtual void s_About();
     virtual void on_actionDocumentacion_triggered();
-    virtual void on_actionPaises_triggered();
-    virtual void on_actionSeries_de_Factura_triggered();
-    virtual void on_actionTrabajadores_triggered();
-    virtual void on_actionBancos_triggered();
     virtual void on_actionVentana_Completa_triggered();
     virtual void on_actionAcerta_de_triggered();
-    virtual void on_actionAlmacenes_triggered();
     virtual void on_actionParametros_triggered();
-    virtual void on_actionFormas_de_Pago_triggered();
     virtual void on_actionIndexador_triggered();
-    virtual void on_actionTipoIVA_triggered();
     virtual void on_actionModo_Experto_triggered();
-    virtual void on_actionTasaIVA_triggered();
     virtual void on_actionOrdenar_Ventanas_triggered();
     virtual void on_actionOrganizaci_n_en_Cascada_triggered();
+    virtual void on_actionSalir_triggered();
+    virtual void on_actionPaises_triggered();
 
 private slots:
     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
