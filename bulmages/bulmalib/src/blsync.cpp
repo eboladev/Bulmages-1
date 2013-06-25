@@ -19,6 +19,7 @@
  ***************************************************************************/
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtCore/QFileInfo>
+#include <QtWidgets/QProgressBar>
 
 #include "blfunctions.h"
 #include "blconfiguration.h"
@@ -26,7 +27,9 @@
 #include "blmainwindow.h"
 #include "blmaincompany.h"
 
+
 QNetworkAccessManager *syncManager;
+QProgressBar *g_barra;
 
 
 BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
@@ -40,6 +43,9 @@ BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
 void BlSync::sync() {
       BL_FUNC_DEBUG  
   
+      g_barra = new QProgressBar(0);
+      g_barra->show();
+	
       QString user = g_confpr->value(CONF_LOGIN_USER);
       QString dbname = g_confpr->value(CONF_DBNAME);
     #ifdef Q_OS_WIN32
@@ -171,6 +177,8 @@ void BlSync::sync() {
 	blMsgInfo("Debe reiniciar el programa para que los cambios surjan efecto");
 	exit(1);
       } // end if
+      
+      delete g_barra;
 }
 
 void BlSync::getFile(const QString & name, const QString & dest) {
@@ -193,7 +201,8 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       request.setRawHeader("User-Agent", "BgBrowser 1.0");
       
       QNetworkReply *reply = syncManager->get(request);
-
+      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+      
 #ifdef CONFIG_DEBUG
       fprintf(stderr, "Iniciando descarga %s\n", url.toLatin1().constData());
 #endif
@@ -212,6 +221,7 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       url = g_confpr->value(CONF_URL_SYNC) + "ALL/"+dbname+"/"+name;
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
+      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
       while (reply->isRunning()) {
 	QApplication::processEvents();
       } // end while
@@ -225,6 +235,7 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       url = g_confpr->value(CONF_URL_SYNC) +platform+"/ALL/"+name;
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
+      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
       while (reply->isRunning()) {
 	QApplication::processEvents();
       } // end while
@@ -240,6 +251,7 @@ void BlSync::getFile(const QString & name, const QString & dest) {
       url = g_confpr->value(CONF_URL_SYNC) + "ALL/ALL/"+name;
       request.setUrl(QUrl(url));
       reply = syncManager->get(request);
+      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
       while (reply->isRunning()) {
 	QApplication::processEvents();
       } // end while
@@ -298,6 +310,10 @@ void BlSync::replyFinished(QNetworkReply * reply) {
 }
 
 void BlSync::downloadProgress(qint64 a,qint64 b) {
+      /// Preparamos la barra de progreso
+	g_barra->setRange(0,b);
+        g_barra->setValue  ( a );
+//        g_barra->setText ( _ ( "Descarga en Curso " ) + m_destfile);
 
 }
 
