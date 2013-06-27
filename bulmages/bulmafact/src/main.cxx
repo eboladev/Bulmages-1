@@ -184,6 +184,8 @@ int main ( int argc, char **argv )
           g_confpr->readConfig ( confLocalEsp );
       } // end if
 
+      splashScr->setMessage ( _( "Buscando Actualizaciones" ) );
+      splashScr->setProgressBar ( 5 );
       BlSync *sync = new BlSync(0,0);
       sync->exec();
       delete sync;
@@ -209,19 +211,19 @@ int main ( int argc, char **argv )
       } // end if
 
       splashScr->setMessage ( _( "Cargando plugins" ) );
-      splashScr->setProgressBar ( 10 );
+      splashScr->setProgressBar ( 15 );
 
       /// Hacemos la carga de las librerias que contienen los plugins.
       g_plugins->loadLibs ( g_confpr->value( CONF_PLUGINS_BULMAFACT ) );
 
       splashScr->setMessage ( _( "Lanzando plugins" ) );
-      splashScr->setProgressBar ( 20 );
+      splashScr->setProgressBar ( 25 );
 
       /// Disparamos los plugins con entryPoint.
       g_plugins->run ( "entryPoint", bges );
 
       splashScr->setMessage ( _( "Inicializando componentes" ) );
-      splashScr->setProgressBar ( 30 );
+      splashScr->setProgressBar ( 35 );
 
       /// Lanzamos la creacion de las ventanas principales.
       bges->createMainWindows ( splashScr );

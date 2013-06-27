@@ -203,6 +203,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
     if ( bd == "" ) {
+	blMsgError("Debe seleccionar una empresa");
         exit ( 1 );
     } // end if
     

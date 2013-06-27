@@ -120,17 +120,11 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     /// Comprobamos la existencia de los directorios y archivos de configuracion.
     /// Directorios y archivos obligatorios (sale si no existe):
     if ( !dirGlobalConf.exists() ) {
-#ifdef CONFIG_DEBUG
-        mensaje = "--> ERROR: El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
-        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
-#endif
+        blMsgError("El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo");
         exit ( -1 );
     } else {
         if ( !genericGlobalConfFile.exists ( m_dirGlobalConf + m_genericGlobalConfFile ) ) {
-#ifdef CONFIG_DEBUG
-            mensaje = "--> ERROR: El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
-            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
-#endif
+	    blMsgError("El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo.");
             exit ( -1 );
         } else {
             /// 1) Leemos la configuracion del archivo generico global.
@@ -166,10 +160,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
             fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
 #endif
         } else {
-#ifdef CONFIG_DEBUG
-            mensaje = "--> ERROR: No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
-#endif
+	    blMsgError( "No se ha podido crear el directorio '" + m_dirLocalConf + "'.");
             exit ( -1 );
         }// end if
     } // end if

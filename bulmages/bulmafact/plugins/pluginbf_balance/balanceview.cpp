@@ -188,7 +188,8 @@ void BalanceView::presentar()
 **/
 void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QString cuentaInicial, QString cuentaFinal, int nivel, int, bool jerarquico )
 {
-    BL_FUNC_DEBUG
+    BL_FUNC_DEBUG   
+    
     BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
     BlDbRecordSet *ramas = NULL;
     BlDbRecordSet *hojas = NULL;
@@ -346,10 +347,11 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
                         /// La hoja cuelga de la ra&iacute;z principal.
                         it = new QTreeWidgetItem ( mui_list, datos );
                     } else {
-                        while ( ptrIt.key() >= nivelActual )
+                        while ( ptrIt.key() >= nivelActual ) {
                             /// Ascendemos por el &aacute;rbol para colgar la hoja en el
                             /// lugar correcto.
                             ptrIt--;
+			} // end while
                         it = new QTreeWidgetItem ( ptrIt.value(), datos );
                     } // end if
                     /// Insertamos el widget (hoja actual) en la tabla controlada y obtenemos
@@ -359,11 +361,16 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
                     /// Borramos el resto de niveles que cuelgan, para no seguir colgando por
                     /// esa rama.
                     i = ptrIt + 1;
-                    while ( i != ptrList.constEnd() ) {
+/* TBR
+ * Este arreglo debe ser una importante criba de velocidad. Pero no se porque falla y genera un segfault.
+ * Por lo que la comento hasta encontrar un poco de tiempo para seguir este error.
+ *                    while ( i != ptrList.constEnd() ) {
                         /// Borra todas las entradas con la misma clave.
                         ptrList.remove ( i.key() );
                         ++i;
                     } // end while
+*/
+
                 } else { /// sin jerarquizar...
                     it = new QTreeWidgetItem ( mui_list, datos );
                 } // end if
@@ -403,6 +410,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         } // end while
         mui_list->resizeColumnToContents ( 1 );
 
+	
         /// Hacemos la actualizaci&oacute;n de los saldos totales en formato
         /// espa&ntilde;ol y los ponemos en su Widget.
         QString totsaldoant = tsaldoant.toQString();
