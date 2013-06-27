@@ -161,7 +161,11 @@ void EQToolButtonMail::trataMenu ( QAction *action )
                 QString oldName = g_confpr->value( CONF_DIR_USER ) + doc + ".pdf";
                 QString newName = g_confpr->value( CONF_DIR_USER ) +   doc  + num + ".pdf";
                 blMoveFile(oldName,newName);
-		
+#ifdef Q_OS_WIN32
+		/// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+		/// Por eso pasamos una posible ruta relativa a absoluta.
+		newName = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/"+ doc + num + ".pdf";
+#endif
 		QString subject = doc + num;
 		QString body = "Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n";
 		QString bcc= "";

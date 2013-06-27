@@ -131,8 +131,13 @@ void EmailQToolButton::click()
             body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
 
             body += _("Atentamente\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/presupuesto" + num + ".pdf";
+#else
             attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
-
+#endif
             blSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
@@ -163,8 +168,13 @@ void EmailQToolButton::click()
             QString body = _("Adjunto le enviamos el pedido numero ") + num + _(" con referencia ") + ref +"\n";
 
             body += _("Atentamente\n\n\n");
-            QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
-
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/pedidocliente" + num + ".pdf";
+#else
+            attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+#endif
             blSendEmail( email, bcc, subject, body, attached );
 
         } // end if
@@ -197,7 +207,13 @@ void EmailQToolButton::click()
             body = _("Adjunto le enviamos el albaran numero ") + num + _(" con referencia ") + ref +"\n";
 
             body += _( "Atentamente\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/albaran" + num + ".pdf";
+#else
             attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+#endif
 
             blSendEmail( email, bcc, subject, body, attached );
 
@@ -233,7 +249,13 @@ void EmailQToolButton::click()
             body = _("Adjunto le enviamos la factura numero ") + serie + num + _(" con fecha ") + fecha +"\n";
 
             body += _("Sin otro particular, reciba un cordial saludo\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/factura" + serie + num + ".pdf";
+#else
             attached = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+#endif
             
 
             blSendEmail( email, bcc, subject, body, attached );

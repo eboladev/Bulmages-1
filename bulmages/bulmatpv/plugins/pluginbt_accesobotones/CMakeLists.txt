@@ -65,8 +65,7 @@ if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
 
-add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
-	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
 
 set_target_properties( ${plugin} PROPERTIES 
@@ -79,6 +78,7 @@ ELSE(WIN32)
 target_link_libraries(${plugin} libbulmatpv bulmalib)
 qt5_use_modules(${plugin} Widgets)
 ENDIF(WIN32)
+
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})

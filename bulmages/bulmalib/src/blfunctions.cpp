@@ -1538,13 +1538,16 @@ int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &b
     #endif
     runcommand += "body='" + body + "',";
     if (attached != "") {
-        runcommand += "attachment='" + attached + "'";
+      #ifdef Q_OS_WIN32
+      attached.replace("/","\\");
+      #endif
+      runcommand += "attachment='" + attached + "'";
     } // end if
     
     #ifdef Q_OS_WIN32
     runcommand.replace("\n"," ");
     #endif
-            
+       
     system(QString( runcommand + background).toLatin1());
     
     return 0;

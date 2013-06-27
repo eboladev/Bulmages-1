@@ -221,6 +221,7 @@ message(STATUS "Working on bulmasetup")
 add_subdirectory(bulmasetup)
 
 
+
 ########### private code ########
 if(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
    message(STATUS "Private code inserted")
@@ -284,4 +285,5 @@ INCLUDE(CPack)
 MARK_AS_ADVANCED(
 	BULMAGES_VERSION
 )
+
 
