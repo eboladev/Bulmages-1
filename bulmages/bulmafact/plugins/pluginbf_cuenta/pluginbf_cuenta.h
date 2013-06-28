@@ -71,6 +71,7 @@ public slots:
     void editarCuenta( QString);
     void nuevoCuenta();
     void seleccionarCuenta(BlSubForm *);
+    void seleccionarCuenta();
 
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );

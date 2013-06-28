@@ -71,8 +71,6 @@ void BlMainCompany::setWorkspace ( BlWorkspace *qw )
 {
     BL_FUNC_DEBUG
     m_pWorkspace = qw;
-    connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deselectWindow() ) );
-    
 }
 
 

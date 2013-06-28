@@ -60,9 +60,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     setInsert ( true );
     setOrdenEnabled ( true );
     setOrdenPorQuery ( false );
-    connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
-    connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
-    
+
 }
 
 

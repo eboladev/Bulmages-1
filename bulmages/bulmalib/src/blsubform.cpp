@@ -591,7 +591,7 @@ void BlSubForm::showColumn ( int i )
 
     QString field = mui_listcolumnas->item ( i, 1)->text();
     mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Checked );
-    on_mui_confcol_clicked();
+    on_mui_confcol_released();
 }
 
 
@@ -631,7 +631,7 @@ void BlSubForm::hideColumn ( int i )
 
     QString field = mui_listcolumnas->item ( i, 1)->text();
     mui_listcolumnas->item ( i, 0 )->setCheckState ( Qt::Unchecked );
-    on_mui_confcol_clicked();
+    on_mui_confcol_released();
 }
 
 
@@ -1334,7 +1334,7 @@ int BlSubForm::inicializar()
     /// Ordenamos la tabla.
     mui_list->ordenar();
     /// configuramos que registros son visibles y que registros no lo son.
-    on_mui_confcol_clicked();
+    on_mui_confcol_released();
     m_procesacambios = true;
 
     return 0;
@@ -1606,7 +1606,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
         /// Preparamos el menu de subformulario
         preparaMenu();
     } else {
-        on_mui_confcol_clicked();
+        on_mui_confcol_released();
     } // end if
 
     /// Si no estamos en la ultima pagina habilitamos el boton de ir a la siguiente y a la ultima.
@@ -2696,7 +2696,7 @@ void BlSubForm::loadConfigXML()
         mui_menusubform->setVisible(false);
     } // end if
 
-    on_mui_confcol_clicked();
+    on_mui_confcol_released();
 
     m_primero = false;
 
@@ -2707,7 +2707,7 @@ void BlSubForm::loadConfigXML()
 ///
 /**
 **/
-void BlSubForm::on_mui_confcol_clicked()
+void BlSubForm::on_mui_confcol_released()
 {
     BL_FUNC_DEBUG
 
@@ -2970,7 +2970,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
 /**
 \return
 **/
-void BlSubForm::on_mui_confquery_clicked()
+void BlSubForm::on_mui_confquery_released()
 {
     BL_FUNC_DEBUG
     if ( mainCompany() == NULL ) {
@@ -3077,7 +3077,7 @@ void BlSubForm::on_mui_list_ctrlDown ( int row, int col )
 ///
 /**
 **/
-void BlSubForm::on_mui_pagsiguiente_clicked()
+void BlSubForm::bPagSig()
 {
     BL_FUNC_DEBUG
     int pag = mui_paginaact->text().toInt();
@@ -3090,7 +3090,7 @@ void BlSubForm::on_mui_pagsiguiente_clicked()
 ///
 /**
  * **/
-void BlSubForm::on_mui_ultpag_clicked()
+void BlSubForm::bUltPag()
 {
     BL_FUNC_DEBUG
     int pag = mui_numpaginas->text().toInt();
@@ -3101,7 +3101,7 @@ void BlSubForm::on_mui_ultpag_clicked()
 ///
 /**
  * **/
-void BlSubForm::on_mui_pripag_clicked()
+void BlSubForm::bPriPag()
 {
     BL_FUNC_DEBUG
     int pag = 1;
@@ -3114,7 +3114,7 @@ void BlSubForm::on_mui_pripag_clicked()
 ///
 /**
 **/
-void BlSubForm::on_mui_paganterior_clicked()
+void BlSubForm::bPagAnt()
 {
     BL_FUNC_DEBUG
     int pag = mui_paginaact->text().toInt();
@@ -3283,7 +3283,7 @@ void BlSubForm::preparaMenu()
     m_pripag->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_start.png" ) );
     m_pripag->setIconSize ( QSize ( 18, 18 ) );
     m_hboxLayout1->addWidget ( m_pripag );
-    connect (m_pripag, SIGNAL(released()), this, SLOT(on_mui_pripag_clicked()));
+    connect (m_pripag, SIGNAL(released()), this, SLOT(bPriPag()));
 
     /// Pagina Anterior
     m_pagant = new QToolButton ( mui_menusubform );
@@ -3293,7 +3293,7 @@ void BlSubForm::preparaMenu()
     m_pagant->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_back.png" ) );
     m_pagant->setIconSize ( QSize ( 18, 18 ) );
     m_hboxLayout1->addWidget ( m_pagant );
-    connect (m_pagant, SIGNAL(released()), this, SLOT(on_mui_paganterior_clicked()));
+    connect (m_pagant, SIGNAL(released()), this, SLOT(bPagAnt()));
 
     /// Pagina Siguiente
     m_pagsig = new QToolButton ( mui_menusubform );
@@ -3303,7 +3303,7 @@ void BlSubForm::preparaMenu()
     m_pagsig->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_forward.png" ) );
     m_pagsig->setIconSize ( QSize ( 18, 18 ) );
     m_hboxLayout1->addWidget ( m_pagsig );
-    connect (m_pagsig, SIGNAL(released()), this, SLOT(on_mui_pagsiguiente_clicked()));
+    connect (m_pagsig, SIGNAL(released()), this, SLOT(bPagSig()));
 
     /// Ultima Pagina
     m_ultpag = new QToolButton ( mui_menusubform );
@@ -3313,7 +3313,7 @@ void BlSubForm::preparaMenu()
     m_ultpag->setIcon ( QIcon ( ":/BulmaCont32x32/images/png/i_finish.png" ) );
     m_ultpag->setIconSize ( QSize ( 18, 18 ) );
     m_hboxLayout1->addWidget ( m_ultpag );
-    connect (m_ultpag, SIGNAL(released()), this, SLOT(on_mui_ultpag_clicked()));
+    connect (m_ultpag, SIGNAL(released()), this, SLOT(bUltPag()));
 
     /// Ver configuracion del subformulario
     QToolButton *sel3 = new QToolButton ( mui_menusubform );
@@ -3486,7 +3486,7 @@ void BlSubForm::toogleMenuConfig()
 ///
 /**
 **/
-void BlSubForm::on_mui_botonCerrar_clicked()
+void BlSubForm::on_mui_botonCerrar_released()
 {
     BL_FUNC_DEBUG
     toogleConfig();

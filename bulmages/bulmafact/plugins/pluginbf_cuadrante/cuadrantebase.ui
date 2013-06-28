@@ -535,7 +535,7 @@
    <sender>mui_ocultar</sender>
    <signal>toggled(bool)</signal>
    <receiver>frame_2</receiver>
-   <slot>setShown(bool)</slot>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
      <x>279</x>

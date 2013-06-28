@@ -50,6 +50,7 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
     m_semaforo = false;
     m_mask = "";
     
+
     /// Establecemos la delegacion del foco en el texto
     setFocusProxy(m_textBusqueda);
     
@@ -503,6 +504,7 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
+    connect ( this, SIGNAL (customContextMenuRequested( const QPoint & )), this, SLOT ( popMenu(const QPoing &)));
     setContextMenuPolicy ( Qt::CustomContextMenu );
     
 }
@@ -642,7 +644,7 @@ QString BlDbCompleterComboBox::entrada()
 ///
 /**
 **/
-void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
+void BlDbCompleterComboBox::popMenu ( const QPoint & )
 {
     BL_FUNC_DEBUG
     QMenu *popup = new QMenu ( this );
@@ -689,6 +691,7 @@ BlDbEditComboBox::BlDbEditComboBox ( QWidget *parent )
     setEditable ( true );
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
+    connect ( this, SIGNAL (customContextMenuRequested( const QPoint & )), this, SLOT ( popMenu(const QPoing &)));
     setContextMenuPolicy ( Qt::CustomContextMenu );
 }
 
@@ -781,7 +784,7 @@ QString BlDbEditComboBox::entrada()
 ///
 /**
 **/
-void BlDbEditComboBox::on_customContextMenuRequested ( const QPoint & )
+void BlDbEditComboBox::popMenu ( const QPoint & )
 {
     BL_FUNC_DEBUG
     QMenu *popup = new QMenu ( this );

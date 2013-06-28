@@ -215,7 +215,7 @@ void ClienteView::on_mui_informe_clicked()
 */
 /**
 **/
-void ClienteView::on_mui_cifcliente_lostFocus()
+void ClienteView::on_mui_cifcliente_editingFinished()
 {
     BL_FUNC_DEBUG
     QChar digito;

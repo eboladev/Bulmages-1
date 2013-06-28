@@ -1383,7 +1383,7 @@
    <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
    <receiver>frame</receiver>
-   <slot>setShown(bool)</slot>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>25</x>

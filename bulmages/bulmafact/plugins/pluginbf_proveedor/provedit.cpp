@@ -156,7 +156,7 @@ int ProveedorView::afterSave()
 */
 /**
 **/
-void ProveedorView::on_mui_cifproveedor_lostFocus()
+void ProveedorView::on_mui_cifproveedor_editingFinished()
 {
     BL_FUNC_DEBUG
     QChar digito;

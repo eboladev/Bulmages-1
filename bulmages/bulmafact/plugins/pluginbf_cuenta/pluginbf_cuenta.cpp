@@ -401,11 +401,11 @@ void SubForm_Cuenta::s_pintaMenu ( QMenu *menu )
     BlSubFormHeader *header = sub->header ( "codigocuenta" );
     if ( header ) {
         menu->addSeparator();
-        menu->addAction ( QIcon ( ":/ImgGestionAula/icons/cuenta.png" ), _ ( "Nuevo cuenta" ) );
+        menu->addAction ( QIcon ( ":/Images/account.png" ), _ ( "Nueva cuenta" ) );
         QString idcuenta = sub->dbValue ( "idcuenta" );
-        if ( idcuenta != "" ) menu->addAction ( QIcon ( ":/ImgGestionAula/icons/cuenta.png" ), _ ( "Editar cuenta" ) );
+        if ( idcuenta != "" ) menu->addAction ( QIcon ( ":/Images/account.png" ), _ ( "Editar cuenta" ) );
         if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
-            menu->addAction ( QIcon ( ":/ImgGestionAula/icons/cuenta-list.png" ), _ ( "Seleccionar cuenta" ) );
+            menu->addAction ( QIcon ( ":/Images/account_plan.png" ), _ ( "Seleccionar cuenta" ) );
         } // end if
     } // end if
     
@@ -485,6 +485,11 @@ void SubForm_Cuenta::nuevoCuenta( )
 }
 
 
+void SubForm_Cuenta::seleccionarCuenta ( ) 
+{
+  seleccionarCuenta(NULL);
+}
+
 ///
 /**
 **/
@@ -563,7 +568,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
           sel->setStatusTip ( _("Nueva cuenta") );
           sel->setToolTip ( _("Nueva cuenta") );
           sel->setMinimumSize ( QSize ( 18, 18 ) );
-          sel->setIcon ( QIcon ( ":/ImgGestionAula/icons/cuenta.png" ) );
+          sel->setIcon ( QIcon ( ":/Images/account.png" ) );
           sel->setIconSize ( QSize ( 18, 18 ) );    
           m_hboxLayout1->addWidget ( sel );
           sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoCuenta()));
@@ -572,7 +577,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
           sel1->setStatusTip ( _("Seleccionar cuenta") );
           sel1->setToolTip ( _("Seleccionar cuenta") );
           sel1->setMinimumSize ( QSize ( 18, 18 ) );
-          sel1->setIcon ( QIcon ( ":/ImgGestionAula/icons/cuenta-list.png" ) );
+          sel1->setIcon ( QIcon ( ":/Images/account_plan.png" ) );
           sel1->setIconSize ( QSize ( 18, 18 ) );
           m_hboxLayout1->addWidget ( sel1 );
           sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarCuenta()));

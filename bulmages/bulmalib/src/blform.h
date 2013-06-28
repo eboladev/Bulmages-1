@@ -101,7 +101,7 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_guardar_clicked();
-    virtual void on_customContextMenuRequested ( const QPoint &pos );
+    virtual void popMenu ( const QPoint &pos );
     virtual void on_mui_imprimir_clicked();
 
 signals:

@@ -61,7 +61,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WindowFlags f, edmode modo ) : BlWidget ( 
 
     m_title = windowTitle();
     setContextMenuPolicy ( Qt::CustomContextMenu );
-    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
+    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( popMenu ( const QPoint & ) ) );
     m_modo = modo;
     m_firstLoad = true;
     dialogChanges_readValues();
@@ -137,7 +137,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WindowFlags f, edmode 
     } // end if
 
     setContextMenuPolicy ( Qt::CustomContextMenu );
-    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
+    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( popMenu ( const QPoint & ) ) );
     m_modo = modo;
     m_firstLoad = true;
     dialogChanges_readValues();    
@@ -801,7 +801,7 @@ void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString tit
 ///
 /**
 **/
-void BlForm::on_customContextMenuRequested ( const QPoint & )
+void BlForm::popMenu ( const QPoint & )
 {
     BL_FUNC_DEBUG
     
