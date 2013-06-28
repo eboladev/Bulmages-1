@@ -95,7 +95,7 @@ void PluginBl_Report::elslot2( )
 void PluginBl_Report::elslot1( )
 {
     BL_FUNC_DEBUG
-
+    
     BlForm *ficha = new BlForm ( g_pluginbl_report_emp, 0 );
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
@@ -229,7 +229,7 @@ int init (  )
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
+        QObject::connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
         menu->addAction ( accion );
     } // end for
 
@@ -357,7 +357,7 @@ int init1 (  )
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot2() ) );
+        mcont->connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot2() ) );
         menu->addAction ( accion );
     } // end for
 

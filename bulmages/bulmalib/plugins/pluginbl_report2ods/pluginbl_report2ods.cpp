@@ -202,7 +202,7 @@ int init (  )
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
+        mcont->connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
         menu->addAction ( accion );
     } // end for
 

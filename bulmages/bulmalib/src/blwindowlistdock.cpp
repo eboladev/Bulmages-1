@@ -201,6 +201,7 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
 void BlWindowListDock::dclicked()
 {
     BL_FUNC_DEBUG
+
     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
         if ( widget->isMaximized() == true ) {
@@ -211,7 +212,6 @@ void BlWindowListDock::dclicked()
         widget->parentWidget()->activateWindow();
 
     } // end if
-    
 }
 
 
@@ -221,15 +221,30 @@ void BlWindowListDock::dclicked()
 void BlWindowListDock::clicked()
 {
     BL_FUNC_DEBUG
+
     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
-        widget->show();
 	if (widget->parentWidget()) widget->parentWidget() ->raise();
 	if (widget->parentWidget()) widget->parentWidget()->activateWindow();
 
-     
+	/// Buscamos la ventana correspondiente y la borramos.
+	int i = 0;
+	bool maximized = false;
+	while ( i < m_listBox->count() ) {
+	    BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
+	    if ( ( ( QWidget * ) m->object() ) ->isMaximized ( ) ) {
+	        maximized = true;
+	    } // end if
+	    i++;
+	} // end while
+	
+	if (maximized) {
+	  widget->showMaximized();
+	} else {
+	  widget->show();
+	} // end if
+	
     } // end if
-    
 }
 
 
@@ -388,6 +403,7 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
             i++;
         } // end while
     } catch ( ... ) {
+        BlDebug::blDebug ( "BlWindowListDock::selectWindow", 2, "Error en la Seleccion" );
         throw - 1;
     } // end try
     

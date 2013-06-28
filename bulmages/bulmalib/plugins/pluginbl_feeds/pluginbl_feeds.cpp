@@ -59,8 +59,8 @@ int entryPoint ( BlMainWindow *bcont )
     g_docFeedsWidget = new BlDockWidget ( "Info", bcont );
     g_docFeedsWidget->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_docFeedsWidget->resize ( 260, 220 );
-    g_docFeedsWidget->setMinimumSize(260, 220);
+    g_docFeedsWidget->setGeometry ( 100, 100, 100, 500 );
+    g_docFeedsWidget->resize ( 330, 400 );
     bcont->addDockWidget ( Qt::RightDockWidgetArea, g_docFeedsWidget );
     g_docFeedsWidget->show();
 

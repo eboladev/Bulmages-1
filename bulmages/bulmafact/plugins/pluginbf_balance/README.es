@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias: libpluginbf_factcont;
+Dependencias: libpluginbf_factcont
 
 Incompatibles:
 
