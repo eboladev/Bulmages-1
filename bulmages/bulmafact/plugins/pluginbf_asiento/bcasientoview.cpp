@@ -58,9 +58,6 @@ BcAsientoView::BcAsientoView ( BfCompany *emp, QWidget *parent, int )
 
     eventos_mui_ordenAsiento *eventosOrdenAsiento = new eventos_mui_ordenAsiento ( this );
     mui_ordenAsiento->installEventFilter ( eventosOrdenAsiento );
-    
-    /// Conectamos el siganl returnPressed de mui_fecha
-    connect ( mui_fecha, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_fecha_enterPressed() ) );
 
     mui_list->setMainCompany ( emp );
     setListLinAsiento1 ( mui_list );
@@ -290,7 +287,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
 /**
 \return
 **/
-void BcAsientoView::on_mui_fecha_enterPressed()
+void BcAsientoView::on_mui_fecha_returnPressed()
 {
     BL_FUNC_DEBUG
     /// Usamos un semaforo para prevenir de entradas concurrentes.
@@ -309,18 +306,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
 }
 
 
-/// Se ha pulsado sobre el bot&oacute;n de duplicar asiento.
-/** Inicializa el di&aacute;logo de duplicaci&oacute;n de asientos y lo presenta.
-    Cuando se ha terminado carga el cursor de presentaci&oacute;n y repinta el asiento
-    para que actualize los cambios. */
-/**
-**/
-void BcAsientoView::on_mui_duplicar_clicked()
-{
-    BL_FUNC_DEBUG
 
-    
-}
 
 
 /// Se ha pulsado sobre el bot&oacute;n de generar asientos inteligentes.

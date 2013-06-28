@@ -64,7 +64,7 @@ int entryPoint ( BfBulmaFact *bcont )
     BlAction *accionA = new BlAction ( _ ( "&Canal" ), 0 );
     accionA->setStatusTip ( _ ( "Ver Canales" ) );
     accionA->setWhatsThis ( _ ( "Ver Canales" ) );
-    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_canalyccoste.xpm" ) ) );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_canales.xpm" ) ) );
     accionA->setObjectName("mui_actionCanal");
     pPluginMenu->addAction ( accionA );
     bcont->Listados->addAction ( accionA );
@@ -72,7 +72,7 @@ int entryPoint ( BfBulmaFact *bcont )
     BlAction *accionB = new BlAction ( _ ( "&Centros de Coste" ), 0 );
     accionB->setStatusTip ( _ ( "Ver Centros de Coste" ) );
     accionB->setWhatsThis ( _ ( "Ver Centros de Coste" ) );
-    accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_canalyccoste.xpm" ) ) );
+    accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_centroCoste.xpm" ) ) );
     accionB->setObjectName("mui_actionCCoste");
     pPluginMenu->addAction ( accionB );
     bcont->Listados->addAction ( accionB );

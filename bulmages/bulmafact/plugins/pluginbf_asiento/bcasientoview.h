@@ -112,9 +112,8 @@ public slots:
     virtual void on_mui_cerrarAsiento_clicked();
     virtual void on_mui_guardarAsiento_clicked();
     virtual void on_mui_nuevoAsiento_clicked();
-    virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
-    virtual void on_mui_fecha_enterPressed();
+    virtual void on_mui_fecha_returnPressed();
     virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_list_toogledConfig ( bool check );
     virtual void on_mui_detalles_toggled( bool check);

@@ -38,6 +38,7 @@
 #include "blconfiguration.h"
 #include "blcompanydialog.h"
 
+#define isSet(i) (m_valores.contains ( i ))
 
 /// El objeto global g_confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
@@ -602,13 +603,13 @@ bool BlConfiguration::valueTrue( int i )
 	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
 	QString valor = m_valores[i];
 	
-	if (i != CONF_REPLACE_STRING)
+	if (i != CONF_REPLACE_STRING && isSet ( CONF_REPLACE_STRING) )
 	    valor.replace("${CONF_REPLACE_STRING}", value(CONF_REPLACE_STRING));
     
         return ( valor.toLower() == "true" || valor.toLower() == "t" || valor == "1" || valor.toLower() == "yes" || valor.toLower() == "y");
     } // end if
 #ifdef CONFIG_DEBUG
-    fprintf ( stderr, "BlConfiguration : %s %s", "Busqueda de valor sin establecer\n", name(i).toLatin1().constData() );
+    fprintf ( stderr, "BlConfiguration : %s %s\n", "Busqueda de valor sin establecer\n", name(i).toLatin1().constData() );
 #endif
     return false;
 }
@@ -627,13 +628,13 @@ QString BlConfiguration::value( int i )
 	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
 	QString valor = m_valores[i];
 	
-	if (i != CONF_REPLACE_STRING)
+	if (i != CONF_REPLACE_STRING  && isSet ( CONF_REPLACE_STRING))
 	    valor.replace("${CONF_REPLACE_STRING}", value(CONF_REPLACE_STRING));
     
         return ( valor );
     } // end if
 #ifdef CONFIG_DEBUG
-    fprintf ( stderr, "BlConfiguration : %s %s", "Busqueda de valor sin establecer\n", name(i).toLatin1().constData() );
+    fprintf ( stderr, "BlConfiguration : %s %s\n", "Busqueda de valor sin establecer\n", name(i).toLatin1().constData() );
 #endif
     return "";
 }
