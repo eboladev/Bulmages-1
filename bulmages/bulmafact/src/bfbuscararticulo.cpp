@@ -144,7 +144,6 @@ BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
     BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setEditable ( true );
-//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
     
 }

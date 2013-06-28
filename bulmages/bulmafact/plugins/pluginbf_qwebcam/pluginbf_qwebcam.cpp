@@ -53,7 +53,7 @@ void myplugin1::inicializa(bulmafact *bges) {
     planCuentas->setWhatsThis("QWebCams");
     bges->menuArticulos->addSeparator();
     bges->menuArticulos->addAction(planCuentas);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+    connect(planCuentas, SIGNAL(triggered(bool)), this, SLOT(elslot()));
 }
 
 

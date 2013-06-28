@@ -81,7 +81,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( planCuentas );
     bges->Listados->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
     
 }
 

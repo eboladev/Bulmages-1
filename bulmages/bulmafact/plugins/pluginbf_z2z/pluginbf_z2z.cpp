@@ -59,7 +59,6 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setStatusTip ( _("Traspaso de Z") );
     accionA->setWhatsThis ( _("Traspaso de Z") );
     accionA->setObjectName("mui_actionZ2Z");
-    //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accionA );
     

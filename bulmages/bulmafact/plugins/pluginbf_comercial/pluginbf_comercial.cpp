@@ -101,13 +101,13 @@ void PluginBf_Comercial::inicializa ( BfBulmaFact *bges )
     planCuentas1->setStatusTip ( _ ( "Zonas comerciales" ) );
     planCuentas1->setWhatsThis ( _ ( "Zonas comerciales" ) );
     bges->menuMaestro->addAction ( planCuentas1 );
-    connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+    connect ( planCuentas1, SIGNAL ( triggered(bool) ), this, SLOT ( elslot1() ) );
     /// Creamos la opci&oacute;n para Rutas Comerciales que dispare el m&eacute;todo adecuado.
     QAction *planCuentas = new QAction ( _ ( "&Rutas comerciales" ), 0 );
     planCuentas->setStatusTip ( _ ( "Rutas comerciales" ) );
     planCuentas->setWhatsThis ( _ ( "Rutas comerciales" ) );
     bges->menuMaestro->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
     
 }
 

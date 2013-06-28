@@ -244,8 +244,8 @@ int entryPoint ( BlMainWindow *bges )
     accion1->setStatusTip ( _ ( "Embeber Aplicacion" ) );
     accion1->setWhatsThis ( _ ( "Embeber Aplicacion" ) );
 
-    mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
-    mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
+    mcont->connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot() ) );
+    mcont->connect ( accion1, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
 
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bges->newMenu ( "&Herramientas", "menuHerramientas", "menuAcerca_de" );
@@ -377,7 +377,7 @@ int init67 (  )
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( embedPYS() ) );
+        mcont->connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( embedPYS() ) );
         menu->addAction ( accion );
     } // end for
 

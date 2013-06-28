@@ -94,7 +94,7 @@ int entryPoint ( BlMainWindow *bges )
     accion->setWhatsThis ( _ ( "Importacion CSV" ) );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/document-import.png" ) ) );
 	
-    mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
+    mcont->connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot() ) );
     
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );

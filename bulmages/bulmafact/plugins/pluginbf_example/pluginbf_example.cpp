@@ -123,7 +123,7 @@ void PluginBf_Example::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( _ ( "&Prueba de plugin" ), 0 );
     accion->setStatusTip ( _ ( "Muestra statustip" ) );
     accion->setWhatsThis ( _ ( "Muestra que es esto" ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    connect ( accion, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
