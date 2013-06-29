@@ -22,7 +22,7 @@ Dependencias: libpluginbf_factcont;
 
 Incompatibles:
 
-Reports: canalyccoste.rml
+Reports:
 
 Categorias: Contabilidad general;Experimentales;
 
