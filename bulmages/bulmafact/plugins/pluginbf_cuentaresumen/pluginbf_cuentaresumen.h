@@ -32,7 +32,7 @@
 extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget * );
 extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
-extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int BfSubForm_on_mui_list_cellChanged_post ( BfSubForm * );
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int BfBulmaFact_closeEvent ( BfBulmaFact * );
 
 

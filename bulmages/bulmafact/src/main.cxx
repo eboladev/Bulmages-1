@@ -142,6 +142,7 @@ int main ( int argc, char **argv )
       login1->validate();	 
       if ( !login1->authOK() || argParser->askPassword() ) {
          login1->exec();
+	 g_confpr->setValue ( CONF_DBNAME, login1->m_db->text());
       } // end if
       /// Si la autentificacion falla una segunda vez abortamos el programa.
       if ( !login1->authOK() ) {

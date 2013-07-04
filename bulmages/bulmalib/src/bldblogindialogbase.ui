@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>507</width>
-    <height>432</height>
+    <width>829</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,7 @@
   <property name="windowTitle">
    <string>Lanzador Bulmages</string>
   </property>
-  <layout class="QVBoxLayout">
-   <property name="spacing">
-    <number>5</number>
-   </property>
-   <property name="margin">
-    <number>5</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="grpAuthError">
      <property name="title">
@@ -142,14 +136,14 @@
     </widget>
    </item>
    <item>
-    <spacer>
+    <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>198</height>
       </size>
      </property>
     </spacer>

@@ -197,6 +197,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
     nuevae->exec();
     BlDebug::blDebug ( "Vamos a cambiar la empresa", 0 );
     QString bd = nuevae->dbName();
+    g_confpr->setValue ( CONF_DBNAME, bd);
     BlDebug::blDebug ( "Empresa cambiada a " + bd, 0 );
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
@@ -204,7 +205,6 @@ QString BlMainCompany::searchCompany ( QString tipo )
 	blMsgError("Debe seleccionar una empresa");
         exit ( 1 );
     } // end if
-    
     return bd;
 }
 

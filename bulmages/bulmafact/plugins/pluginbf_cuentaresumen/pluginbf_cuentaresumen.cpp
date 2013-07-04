@@ -149,7 +149,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bfta )
 \param subform
 \return
 **/
-int BfSubForm_on_mui_list_cellChanged_post ( BfSubForm *subform )
+int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
     BL_FUNC_DEBUG
     if ( subform->currentRow() < 0 )
