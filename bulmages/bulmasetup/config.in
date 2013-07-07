@@ -32,6 +32,7 @@ else:
     plugins.openreports = os.getcwd().replace("bulmasetup","openreports\\")
     plugins.homedir = ""
 
+
 # Variables para la version de desarrollo
 #sys.path.append('/home/talvarez/bulmages/trunk/bulmages/bulmasetup')
 #plugins.pathdbbulmafact = '/usr/local/share/bulmages/dbmodels/crear/bulmafact/'
