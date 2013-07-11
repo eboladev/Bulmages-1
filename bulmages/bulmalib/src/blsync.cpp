@@ -19,6 +19,8 @@
  ***************************************************************************/
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtCore/QFileInfo>
+#include <QtCore/QUrl>
+#include <QtCore/QDir>
 #include <QtWidgets/QProgressBar>
 
 #include "blfunctions.h"
@@ -55,6 +57,7 @@ void BlSync::sync() {
     #endif
       
       bool reinicio = false;
+      bool actualizaciones = false;
       
       
       // Cogemos la lista de ficheros
@@ -72,50 +75,73 @@ void BlSync::sync() {
 #ifdef CONFIG_DEBUG
 	  fprintf(stderr,"No se pudo abrir archivo de indices\n");
 #endif
-	  return;
-      } // end if
-      QTextStream in(&file);
-      QString line = in.readLine();
-      while (!line.isNull()) {
-	  QStringList arch = line.split(" ");
-	  QString filename = arch[0];
-	  QString dest = arch[1];
-	  QString date= arch[2];
-	  
-	  bool descarga = true;
-	  
-	  QFile file1 ( g_confpr->value(CONF_DIR_USER)+"lfiles.txt");
-	  if (file1.open(QIODevice::ReadOnly)) {
-	      QTextStream lin(&file1);
-	      QString lline = lin.readLine();
-	      while (!lline.isNull()) {
-		  QStringList larch = lline.split(" ");
-		  if (filename == larch[0] && date == larch[2]) {
-		     descarga = false;
-		     break;
+      } else {
+	  QTextStream in(&file);
+	  QString line = in.readLine();
+	  while (!line.isNull()) {
+	    
+	      if (!line.startsWith("#") && !(line == "\n")) {
+		  QStringList arch = line.split(" ");
+		  QString filename = arch[0];
+		  QString dest = arch[1];
+		  QString date= arch[2];
+		  
+		  bool descarga = true;
+		  
+		  QFile file1 ( g_confpr->value(CONF_DIR_USER)+"lfiles.txt");
+		  if (file1.open(QIODevice::ReadOnly)) {
+		      QTextStream lin(&file1);
+		      QString lline = lin.readLine();
+		      while (!lline.isNull()) {
+			  if (!lline.startsWith("#") && !(lline == "\n")) {
+			      QStringList larch = lline.split(" ");
+			      if (filename == larch[0] && date == larch[2]) {
+				descarga = false;
+				break;
+			      } // end if
+			  } // end if
+			  lline = lin.readLine();
+		      } // end while
+		      file1.close();
 		  } // end if
-		  lline = lin.readLine();
-	      } // end while
-	      file1.close();
-	  } // end if
-	  if (descarga) {
-	      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
-	      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
-	      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
-#ifdef Q_OS_WIN32
-	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
-#else		  
-	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
-#endif		 
-	      getFile(filename, dest);
-	      if (arch[3] == "T") {
-		reinicio = true;
-	      }// end if
-	  } // end if
-	  line = in.readLine();
-      } // end while
- 
-      blCopyFile(g_confpr->value(CONF_DIR_USER)+"files.txt", g_confpr->value(CONF_DIR_USER)+"lfiles.txt");
+		  if (descarga) {
+		    
+		    if (!actualizaciones) {
+			QMessageBox msgBox;
+			msgBox.setText(_("Hay actualizaciones pendientes de realizar."));
+			msgBox.setInformativeText(_("Desea actualizar ahora?"));
+			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+			msgBox.setDefaultButton(QMessageBox::Ok);
+			int ret = msgBox.exec();
+			if (ret == QMessageBox::Cancel) {
+			  close();
+			  return;
+			} // end if
+			actualizaciones = true;
+		    } // end if
+		    
+		      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
+		      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
+		      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
+	#ifdef Q_OS_WIN32
+		      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
+	#else		  
+		      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
+	#endif		 
+		      getFile(filename, dest);
+		      if (arch[3] == "T") {
+			reinicio = true;
+		      }// end if
+		  } // end if
+	      } // end if
+	      line = in.readLine();
+	  } // end while
+    
+	  blCopyFile(g_confpr->value(CONF_DIR_USER)+"files.txt", g_confpr->value(CONF_DIR_USER)+"lfiles.txt");
+
+
+      } // end if
+
       
 /// Configuraciones personalizadas
       url = g_confpr->value(CONF_URL_SYNC) + "filesp.txt";
@@ -128,50 +154,71 @@ void BlSync::sync() {
 #ifdef CONFIG_DEBUG
 	  fprintf(stderr,"No se pudo abrir archivo de indices\n");
 #endif
-	  return;
-      } // end if
-      QTextStream pin(&pfile);
-      QString pline = pin.readLine();
-      while (!pline.isNull()) {
-	  QStringList arch = pline.split(" ");
-	  QString filename = arch[0];
-	  QString dest = arch[1];
-	  QString date= arch[2];
-	  
-	  bool descarga = true;
-	  
-	  QFile file1 ( g_confpr->value(CONF_DIR_USER)+"lfilesp.txt");
-	  if (file1.open(QIODevice::ReadOnly)) {
-	      QTextStream lin(&file1);
-	      QString lline = lin.readLine();
-	      while (!lline.isNull()) {
-		  QStringList larch = lline.split(" ");
-		  if (filename == larch[0] && date == larch[2]) {
-		     descarga = false;
-		     break;
+      } else {
+	  QTextStream pin(&pfile);
+	  QString pline = pin.readLine();
+	  while (!pline.isNull()) {
+	  if (!(pline.startsWith("#")) && !(pline == "\n")) {
+		  QStringList arch = pline.split(" ");
+		  QString filename = arch[0];
+		  QString dest = arch[1];
+		  QString date= arch[2];
+		  
+		  bool descarga = true;
+		  
+		  QFile file1 ( g_confpr->value(CONF_DIR_USER)+"lfilesp.txt");
+		  if (file1.open(QIODevice::ReadOnly)) {
+		      QTextStream lin(&file1);
+		      QString lline = lin.readLine();
+		      while (!lline.isNull()) {
+			  if (!(lline.startsWith("#")) && !(lline == "\n")) {
+			      QStringList larch = lline.split(" ");
+			      if (filename == larch[0] && date == larch[2]) {
+				descarga = false;
+				break;
+			      } // end if
+			  } // end if
+			  lline = lin.readLine();
+		      } // end while
+		      file1.close();
 		  } // end if
-		  lline = lin.readLine();
-	      } // end while
-	      file1.close();
-	  } // end if
-	  if (descarga) {
-	      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
-	      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
-	      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
-#ifdef Q_OS_WIN32
-	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
-#else		  
-	      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
-#endif
-	      getFile(filename, dest);
-	      if (arch[3] == "T") {
-		reinicio = true;
-	      }// end if
-	  } // end if
-	  pline = pin.readLine();
-      } // end while
- 
-      blCopyFile(g_confpr->value(CONF_DIR_USER)+"filesp.txt", g_confpr->value(CONF_DIR_USER)+"lfilesp.txt");
+		  
+		    if (!actualizaciones) {
+			QMessageBox msgBox;
+			msgBox.setText(_("Hay actualizaciones pendientes de realizar."));
+			msgBox.setInformativeText(_("Desea actualizar ahora?"));
+			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+			msgBox.setDefaultButton(QMessageBox::Ok);
+			int ret = msgBox.exec();
+			if (ret == QMessageBox::Cancel) {
+			  close();
+			  return;
+			} // end if
+			actualizaciones = true;
+		    } // end if
+		  
+		  if (descarga) {
+		      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
+		      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
+		      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
+	#ifdef Q_OS_WIN32
+		      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES).replace("program","program1"));
+	#else		  
+		      dest.replace("[CONF_EJECUTABLES]", g_confpr->value(CONF_EJECUTABLES));
+	#endif
+		      getFile(filename, dest);
+		      if (arch[3] == "T") {
+			reinicio = true;
+		      }// end if
+		  } // end if
+	      } // end if
+	      pline = pin.readLine();
+	  } // end while
+    
+	  blCopyFile(g_confpr->value(CONF_DIR_USER)+"filesp.txt", g_confpr->value(CONF_DIR_USER)+"lfilesp.txt");
+
+      } // end if
+
       
       if (reinicio) {
 	blMsgInfo("Debe reiniciar el programa para que los cambios surjan efecto");
@@ -287,7 +334,10 @@ void BlSync::slotReadyRead() {
 void BlSync::replyFinished(QNetworkReply * reply) {
   BL_FUNC_DEBUG
   if (reply->error() == QNetworkReply::NoError) {
-      
+      /// Si el destino esta en una carpeta inexistente crea el path primero.
+      QUrl url(m_destfile);
+      QDir dir ("..");
+      dir.mkpath(url.path());
       QFile localFile(m_destfile);
       if (!localFile.open(QIODevice::WriteOnly)) {
 
