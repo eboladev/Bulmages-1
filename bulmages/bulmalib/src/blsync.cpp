@@ -335,9 +335,15 @@ void BlSync::replyFinished(QNetworkReply * reply) {
   BL_FUNC_DEBUG
   if (reply->error() == QNetworkReply::NoError) {
       /// Si el destino esta en una carpeta inexistente crea el path primero.
-      QUrl url(m_destfile);
-      QDir dir ("..");
-      dir.mkpath(url.path());
+      QFileInfo url(m_destfile);
+      QDir dir = url.dir();
+      QDir dir1("");
+      bool ok = dir1.mkpath(dir.path());
+       if(!ok)	{
+	//error message, could not create the required directory structure!
+	QMessageBox::critical(this, _("Error!"), "Error creating directory structure" + dir1.path() + dir.path());
+	return;
+	} // end if
       QFile localFile(m_destfile);
       if (!localFile.open(QIODevice::WriteOnly)) {
 
