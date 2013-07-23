@@ -144,6 +144,7 @@ void BlSync::sync() {
 
       
 /// Configuraciones personalizadas
+     
       url = g_confpr->value(CONF_URL_SYNC) + "filesp.txt";
       
       getFile("filesp.txt", g_confpr->value(CONF_DIR_USER));
@@ -166,7 +167,7 @@ void BlSync::sync() {
 		  
 		  bool descarga = true;
 		  
-		  QFile file1 ( g_confpr->value(CONF_DIR_USER)+"lfilesp.txt");
+		  QFile file1 ( g_confpr->value(CONF_DIR_USER)+"lfilesp_"+dbname+"_"+user+"_.txt");
 		  if (file1.open(QIODevice::ReadOnly)) {
 		      QTextStream lin(&file1);
 		      QString lline = lin.readLine();
@@ -182,22 +183,24 @@ void BlSync::sync() {
 		      } // end while
 		      file1.close();
 		  } // end if
-		  
-		    if (!actualizaciones) {
-			QMessageBox msgBox;
-			msgBox.setText(_("Hay actualizaciones pendientes de realizar."));
-			msgBox.setInformativeText(_("Desea actualizar ahora?"));
-			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-			msgBox.setDefaultButton(QMessageBox::Ok);
-			int ret = msgBox.exec();
-			if (ret == QMessageBox::Cancel) {
-			  close();
-			  return;
-			} // end if
-			actualizaciones = true;
-		    } // end if
-		  
+		  	  
 		  if (descarga) {
+		    
+		    
+		      if (!actualizaciones) {
+			  QMessageBox msgBox;
+			  msgBox.setText(_("Hay actualizaciones pendientes de realizar."));
+			  msgBox.setInformativeText(_("Desea actualizar ahora?"));
+			  msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+			  msgBox.setDefaultButton(QMessageBox::Ok);
+			  int ret = msgBox.exec();
+			  if (ret == QMessageBox::Cancel) {
+			    close();
+			    return;
+			  } // end if
+			  actualizaciones = true;
+		      } // end if
+		    
 		      dest.replace("[CONF_DIR_OPENREPORTS]", g_confpr->value(CONF_DIR_OPENREPORTS));
 		      dest.replace("[CONFIG_DIR_CONFIG]", CONFIG_DIR_CONFIG);
 		      dest.replace("[CONF_DIR_PLUGINS]", g_confpr->value(CONF_DIR_PLUGINS).replace(";",""));
@@ -215,7 +218,7 @@ void BlSync::sync() {
 	      pline = pin.readLine();
 	  } // end while
     
-	  blCopyFile(g_confpr->value(CONF_DIR_USER)+"filesp.txt", g_confpr->value(CONF_DIR_USER)+"lfilesp.txt");
+	  blCopyFile(g_confpr->value(CONF_DIR_USER)+"filesp.txt", g_confpr->value(CONF_DIR_USER)+"lfilesp_"+dbname+"_"+user+"_.txt");
 
       } // end if
 

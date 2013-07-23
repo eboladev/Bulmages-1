@@ -2937,7 +2937,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
         /// Si es un n&uacute;mero con decimales, tenerlo en cuenta
         if ( value->fieldType() & BlDbField::DbNumeric ) {
             int prec = value->text().section(",", 1).count();
-            field += spanish.toString ( value->text().toDouble(), 'f', prec );
+            field += spanish.toString ( value->text().replace(",",".").toDouble(), 'f', prec );
         } else
             field += blXMLEncode ( value->text() );
     }

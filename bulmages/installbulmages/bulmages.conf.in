@@ -115,7 +115,7 @@ CONF_USE_QSCRIPT                        FALSE
 
 # Opciones de sincronizacion
 CONF_SYNC                           FALSE
-CONF_URL_SYNC                       http://www.bulmages.com/bulmaincloud/
+CONF_URL_SYNC                       http://updates.bulmages.com/
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------

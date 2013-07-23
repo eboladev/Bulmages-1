@@ -1551,9 +1551,9 @@ BlAutoForm * genBlAutoForm( const QString &formname) {
 				} // end while
 				subform->addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
 			    } // end for			
-			subform->setInsert ( allowinsert == "true" );
-			subform->setDelete ( allowdelete == "true" );
-			subform->setSortingEnabled ( setsorting == "true" );
+			subform->setInsert ( allowinsert.toLower() == "true" );
+			subform->setDelete ( allowdelete.toLower() == "true" );
+			subform->setSortingEnabled ( setsorting.toLower() == "true" );
 			subform->inicializar();
 			
 		    } // end if

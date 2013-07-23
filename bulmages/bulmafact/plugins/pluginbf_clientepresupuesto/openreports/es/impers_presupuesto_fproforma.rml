@@ -9,7 +9,6 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		
-		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_cabecerapresupuesto.rml" -->
 		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_empresa.rml" -->
 		
 <!--IF QUERY="SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1"-->
@@ -29,7 +28,8 @@
 		<drawString x="13.5cm" y="24.25cm">[poblcliente]</drawString>
 		<drawString x="13.5cm" y="23.8cm">[telcliente]</drawString>
 		<drawString x="13.5cm" y="23.35cm">[mailcliente]</drawString>
-
+<!-- END QUERY -->
+<!-- END IF QUERY -->
 
 		<setFont name="Helvetica" size="10"/>
 		<fill color="(0,0,0)"/>	
