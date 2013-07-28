@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>350</height>
+    <width>971</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -156,6 +156,16 @@
          </widget>
         </item>
         <item>
+         <widget class="QFrame" name="mui_plugbotones">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="sp2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -223,6 +233,19 @@
       <property name="spacing">
        <number>4</number>
       </property>
+      <item row="4" column="1" colspan="2">
+       <widget class="BfBuscarBanco" name="mui_idbanco">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="textLabel1_2_3">
         <property name="text">
@@ -365,19 +388,6 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1" colspan="2">
-       <widget class="BfBuscarBanco" name="mui_idbanco">
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::StrongFocus</enum>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="3">
        <spacer name="sp4">
         <property name="orientation">
@@ -403,6 +413,16 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="5" column="1" colspan="2">
+       <widget class="BlComboBox" name="mui_idforma_pago"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Forma de Pago</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -480,6 +500,11 @@
    <class>BlSearchWidget</class>
    <extends>QWidget</extends>
    <header>blsearchwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

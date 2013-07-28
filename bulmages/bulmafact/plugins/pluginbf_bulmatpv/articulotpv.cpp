@@ -19,12 +19,12 @@
  ***************************************************************************/
 
 
-#include <QColorDialog>
+#include <QtWidgets/QColorDialog>
 
 #include "articulotpv.h"
 
 
-ArticuloTPV::ArticuloTPV(QWidget *parent, Qt::WFlags fl) : BlWidget (parent, fl)
+ArticuloTPV::ArticuloTPV(QWidget *parent, Qt::WindowFlags fl) : BlWidget (parent, fl)
 {
     setupUi(this);
 }

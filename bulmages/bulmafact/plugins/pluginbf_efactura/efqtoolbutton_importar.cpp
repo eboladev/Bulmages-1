@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "efqtoolbutton_importar.h"
 #include "facturasplist.h"
@@ -252,7 +252,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     /// Declaramos una variable de tipo QDomDocument que usaremos
     /// para cargar los datos del fichero en memoria
     QDomDocument doc ( "efactura" );
-    QFile file ( fichero );
+    BlFile file ( fichero );
 
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;
@@ -319,13 +319,13 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QMap <QString, QString> mapa_dfactura;
 
     for ( int i = 0; i < numdescuentos; i++ ) {
-        descuentos->setInsert ( FALSE );
+        descuentos->setInsert ( false );
         mapa_dfactura = lista_mapas_dfactura.at ( i );
 
         rec->setDbValue ( "conceptdfacturap", mapa_dfactura["conceptdfactura"] );
         rec->setDbValue ( "proporciondfacturap", mapa_dfactura["proporciondfactura"] );
 
-        descuentos->setInsert ( TRUE );
+        descuentos->setInsert ( true );
         descuentos->newRecord();
 
         rec = descuentos->lista() ->last();
@@ -381,7 +381,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QString idarticulo, nomarticulo;
 
     for ( int i = 0; i < numlineas; i++ ) {
-        lineas->setInsert ( FALSE ); /// Hace falta que este en el bucle? preguntar a Tomeu
+        lineas->setInsert ( false ); /// Hace falta que este en el bucle? preguntar a Tomeu
         mapa_lfactura = lista_mapas_lfactura.at ( i );
 
         /// Comprobamos que existe un articulo con ese codigo en la BD
@@ -424,7 +424,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         rec->setDbValue ( "ivalfacturap", mapa_lfactura["ivalfactura"] );
         rec->setDbValue ( "descuentolfacturap", mapa_lfactura["descuentolfactura"] );
 
-        lineas->setInsert ( TRUE );
+        lineas->setInsert ( true );
         lineas->newRecord();
 
         rec = lineas->lista() ->last();

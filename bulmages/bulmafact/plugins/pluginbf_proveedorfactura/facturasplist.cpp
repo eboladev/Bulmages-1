@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QFile>
-#include <QTextStream>
-#include <QString>
+#include <QtWidgets/QMessageBox>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtCore/QString>
 
 #include "facturasplist.h"
 #include "bfcompany.h"
@@ -40,7 +40,7 @@
 \param flag
 \return
 **/
-FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -73,7 +73,7 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
 \param parent
 \return
 **/
-FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -377,9 +377,9 @@ FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) :
     addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
     addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base imponible" ) );
     addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

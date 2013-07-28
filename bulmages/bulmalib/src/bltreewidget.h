@@ -24,7 +24,7 @@
 #ifndef BLTREEWIDGET_H
 #define BLTREEWIDGET_H
 
-#include <QTreeWidget>
+#include <QtWidgets/QTreeWidget>
 #include "blfunctions.h"
 
 

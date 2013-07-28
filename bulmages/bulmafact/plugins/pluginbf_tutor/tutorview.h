@@ -25,7 +25,7 @@
 #ifndef TUTORVIEW_H
 #define TUTORVIEW_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "blpostgresqlclient.h"
 #include "bfform.h"

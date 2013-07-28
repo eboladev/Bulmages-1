@@ -22,14 +22,14 @@
 #include <fstream>
 #include <iostream>
 
-#include <QString>
-#include <QComboBox>
-#include <QRadioButton>
-#include <QLineEdit>
+#include <QtCore/QString>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QLineEdit>
 #include <QCustomEvent>
-#include <QTextStream>
-#include <QMessageBox>
-#include <QObject>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
 
 #include "bcmodeloaeat.h"
 #include "blconfiguration.h"
@@ -164,7 +164,7 @@ void BcPsGenerateModel::escrizqder ( float valor, int x, int y )
     QString cad1, cad2;
     formatdigits ( &cad1, &cad2, valor );
 //    cout << "Si le digo" << valor << " me sale:\n";
-//    cout << "OJO!!!:"<< cad1.toAscii().constData() << " ," << cad2.toAscii().constData() <<"\n";
+//    cout << "OJO!!!:"<< cad1.toLatin1().constData() << " ," << cad2.toLatin1().constData() <<"\n";
     escrizq ( cad1, x, y );
     escrder ( cad2, x, y );
     
@@ -239,14 +239,14 @@ void BcPsThread::run()
     QString command;
     /// Lo borro para asegurarme de que Acrobat no me pregunte "overwrite?".
     command = "rm -f " + m_tempname;
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 //    cout << "Llamando a XVfb...\n";
     system ( "Xvfb :5.0 -ac -fbdir /tmp -screen 0 800x600x8 &" );
     system ( "xmodmap -display :5.0 /usr/X11R6/lib/X11/xmodmap.std" );
 //    cout << "XVfb iniciado...\n";
 //    cout << "Iniciando acrobat reader...\n";
     command = "acroread -display :5.0 -geometry 800x600+0+0 -tempFile +useFrontEndProgram " + m_pdfname + " &";
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 //    cout << "Acrobat reader iniciado...\n";
 
     QString macrofilename = QString ( getenv ( "HOME" ) ) + "/.bulmages/macrotmp";
@@ -273,7 +273,7 @@ void BcPsThread::run()
     m_output << "KeyStrRelease Control_L\n";
     macro.close();
     command = "xmacroplay :5.0 < " + macrofilename;
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 
     sleep ( 1 );
     //QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
@@ -292,7 +292,7 @@ void BcPsThread::run()
     m_output << "KeyStrRelease Return\n";
     macro.close();
     command = "xmacroplay :5.0 < " + macrofilename;
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 
     sleep ( 3 );
     //QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
@@ -305,11 +305,11 @@ void BcPsThread::run()
     m_output << "KeyStrRelease Control_L\n";
     macro.close();
     command = "xmacroplay :5.0 < " + macrofilename;
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 
     /// Con este comando busco el servidor Xvfb que corra en el display :5.0 y lo mato.
     command = "kill $(ps aux|grep 'Xvfb :5.0'|grep -v grep|awk '{print $2}')";
-    system ( command.toAscii().constData() );
+    system ( command.toLatin1().constData() );
 //    cout << "Se acabo!!\n";
     
 }
@@ -324,7 +324,7 @@ void BcPsThread::run()
 \param widget
 \param bandera
 **/
-BcPsProgressDialog::BcPsProgressDialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera )
+BcPsProgressDialog::BcPsProgressDialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WindowFlags bandera )
         : QProgressDialog ( etiqueta, btcancelar, minimo, maximo, widget, bandera )
 {
     BL_FUNC_DEBUG

@@ -24,8 +24,8 @@
 #ifndef TICKETCLIENTEVIEW_H
 #define TICKETCLIENTEVIEW_H
 
-#include <QWidget>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
 
 #include "bfform.h"
 #include "ui_ticketclientebase.h"
@@ -49,10 +49,10 @@ public:
     virtual int afterSave();
     virtual int beforeDelete();
     virtual int cargarPost ( QString );
-    TicketClienteView ( BfCompany *, QWidget * );
+    TicketClienteView ( BfCompany *, QWidget *parent = 0 );
     ~TicketClienteView();
     void inicializar();
-
+    virtual void pintarPost();
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     void calculaypintatotales();
 

@@ -21,10 +21,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
 
 #include <cstdio>
 
@@ -376,23 +376,23 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "canualesods.py";
 
     QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "canualesods.ods";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "rm " + archivod;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     QFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream.setCodec ( "UTF-8" );
-        stream << archivosalida.toAscii();
+        stream << archivosalida.toLatin1();
         file.close();
     } else
         blMsgError ( _ ( "ERROR: No se ha podido crear el archivo" ) );
 
     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + "canualesods.ods &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     
 }
 
@@ -474,7 +474,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugincanualesods", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugincanualesods", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     PluginBc_CuentasAnuales2ODS *plug = new PluginBc_CuentasAnuales2ODS();
     plug->inicializa ( bcont );

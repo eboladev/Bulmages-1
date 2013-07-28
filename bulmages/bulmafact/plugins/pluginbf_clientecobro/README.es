@@ -40,7 +40,7 @@ Incompatibles: libpluginbf_carteracobros.so
 
 Reports: recibo.rml; blform_CobroView.qs
 
-Categorias: Facturacion generica;
+Categorias: Facturacion avanzada;Servicios Generales;Restauración; Parques Infantiles; Tallas y Colores;Alquileres;
 
 Orden: 624
 

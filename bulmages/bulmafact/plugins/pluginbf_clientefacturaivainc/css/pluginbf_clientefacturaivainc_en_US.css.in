@@ -1,0 +1,8 @@
+#AlbaranClienteBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_clientefacturaivainc-new.png);
+}
+
+#AlbaranClienteListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_clientefacturaivainc-list.png);
+}
+

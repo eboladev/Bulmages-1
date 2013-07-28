@@ -20,10 +20,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QTextStream>
-#include <QHBoxLayout>
-#include <QToolButton>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbt_bascula.h"
 #include "blfunctions.h"
@@ -50,7 +50,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbascula", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbascula", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
     QString portName = g_confpr->value( CONF_TPV_BASCULA_FILE );              // update this to use your port of choice

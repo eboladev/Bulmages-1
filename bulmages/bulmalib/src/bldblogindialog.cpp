@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QString>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QString>
+#include <QtWidgets/QLabel>
 
 #include "bldblogindialog.h"
 #include "blpostgresqlclient.h"
@@ -48,11 +48,9 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
     BL_FUNC_DEBUG
     setWindowTitle ( name );
     setupUi ( this );
-    grpAuthError->setVisible ( TRUE );
+    grpAuthError->setVisible ( true );
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
-    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
-    validate();
-    
+    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) ); 
 }
 
 
@@ -72,26 +70,22 @@ BlDbLoginDialog::~BlDbLoginDialog()
 void BlDbLoginDialog::validate()
 {
     BL_FUNC_DEBUG
-    // inicializa escapa correctamente, la cadena de conexión no debe escaparse como el sql
-    //m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
     g_confpr->setValue ( CONF_LOGIN_USER, m_login->text() );
     g_confpr->setValue ( CONF_PASSWORD_USER, m_password->text() );
+    g_confpr->setValue ( CONF_SERVIDOR, m_host->text() );
+    g_confpr->setValue ( CONF_PUERTO, m_port->text() );
+    g_confpr->setValue ( CONF_DBNAME, m_db->text());
 
     /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new BlPostgreSqlClient();
-    if ( !metabase->inicializa ( "bulmafact" ) ) {
+    if ( !metabase->inicializa (m_db->text() ) ) {
         m_authOK = true;
+    } else {
+	g_confpr->setValue( CONF_DBNAME, ""); // Vaciamos el DBNAME para que saque el selector.
     } // end if
     delete metabase;
-    if ( !m_authOK ) {
-        metabase = new BlPostgreSqlClient();
-        if ( !metabase->inicializa ( "bulmacont" ) ) {
-            m_authOK = true;
-        } // end if
-        delete metabase;
-    } // end if
     if ( !m_authOK ) {
         metabase = new BlPostgreSqlClient();
         if ( !metabase->inicializa ( "template1" ) ) {
@@ -103,13 +97,11 @@ void BlDbLoginDialog::validate()
     /// Si es v&aacute;lido abrimos el selector y si no mostramos un error y limpiamos
     /// el formulario.
     if ( m_authOK ) {
-        grpAuthError->setVisible ( FALSE );
+        grpAuthError->setVisible ( false );
         done ( 1 );
     } else {
-        grpAuthError->setVisible ( TRUE );
+        grpAuthError->setVisible ( true );
         lblAuthError->setText ( _ ( "Error: usuario y/o contrasenya incorrectos" ) );
-        m_login->setText ( "" );
-        m_password->setText ( "" );
         m_login->setFocus();
     } // end if
     

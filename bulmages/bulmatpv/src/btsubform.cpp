@@ -19,12 +19,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QComboBox>
-#include <QAbstractItemView>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QAbstractItemView>
 
 #include "btsubform.h"
 #include "bltexteditdelegate.h"
@@ -38,7 +38,7 @@
 BtSubForm::BtSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
     BL_FUNC_DEBUG
-    setDelete ( TRUE );
+    setDelete ( true );
     m_delegate = new BtSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
@@ -459,10 +459,10 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Enter:
             if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
-                return TRUE;
+                return true;
             } // end if
         case Qt::Key_Tab:
-            return TRUE;
+            return true;
         } // end switch
         return QStyledItemDelegate::eventFilter ( obj, event );
     } // end if
@@ -479,11 +479,11 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Enter:
             if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
-                return TRUE;
+                return true;
             } // end if
         case Qt::Key_Tab:
             QApplication::sendEvent ( m_subform->mui_list, event );
-            return TRUE;
+            return true;
         } // end switch
         return QStyledItemDelegate::eventFilter ( obj, event );
     } // end if

@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                    #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -17,25 +18,37 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
-
-
+#########################################################################
 # ########## Project setup ##########
 
 
 
 PROJECT(bulmages)
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
 
-SET( BULMAGES_VERSION 0.14.0 )
+SET( BULMAGES_VERSION 1.5.0 )
+
+IF(NOT WIN32)
+  set(CMAKE_CXX_FLAGS "-fPIC")
+ENDIF(NOT WIN32)
+
+find_package(Qt5Core REQUIRED)
+
+IF(WIN32)
+set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/cmake")
+ELSE(WIN32)
+set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/x86_64-linux-gnu/cmake")
+ENDIF(WIN32)
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake")
 
 STRING( REGEX MATCHALL "[0-9]+" BULMAGES_VERSIONS ${BULMAGES_VERSION} )
 LIST( GET BULMAGES_VERSIONS 0 BULMAGES_VERSION_MAJOR)
 LIST( GET BULMAGES_VERSIONS 1 BULMAGES_VERSION_MINOR)
 LIST( GET BULMAGES_VERSIONS 2 BULMAGES_VERSION_PATCH)
-SET( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake" )
 
 # Differences between CMake 2.4 and 2.6
-if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
+if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8.0)
    message(STATUS "Using cmake version ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" )
    # some developers may be using an cmake cvs version which didn't have set_property() yet
    # Tell them that a more recent version is required.
@@ -65,18 +78,28 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
    # list command no longer ignores empty elements.
    cmake_policy(SET CMP0007 OLD)
 
-endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
+endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8.0)
+message(STATUS ${QT5_MODULE_PATH})
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindQt.cmake)
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindQt5.cmake)
+INCLUDE(${QT5_MODULE_PATH}/Qt5Core/Qt5CoreMacros.cmake)
+#INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/QtCTestMacros.cmake)
+INCLUDE(${QT5_MODULE_PATH}/Qt5Widgets/Qt5WidgetsMacros.cmake)
+INCLUDE(${QT5_MODULE_PATH}/Qt5Widgets/Qt5WidgetsConfig.cmake)
+
 
 
 # ######### General setup ##########
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
-find_package(Qt4 REQUIRED)
 
+if(NOT QT5_FOUND)
+  message(FATAL_ERROR "Bulmages needs QT5 to compile")
+endif(NOT QT5_FOUND)
 
+IF (QT5_FOUND)
+ find_package(Qt5Core REQUIRED)
+ENDIF(QT5_FOUND)
 
-if(NOT QT4_FOUND)
-  message(FATAL_ERROR "Bulmages needs QT4 to compile")
-endif(NOT QT4_FOUND)
 
 ###############################################
 # and now the version string given by qmake
@@ -84,9 +107,9 @@ STRING(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_MAJOR_VERSION "${Q
 STRING(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1" QT_MINOR_VERSION "${QTVERSION}")
 STRING(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_PATCH_VERSION "${QTVERSION}")
 
-if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.6)
-    message(FATAL_ERROR " Bulmages needs >= QT4.6 to compile")
-endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.6)
+if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 5.0)
+    message(FATAL_ERROR " Bulmages needs >= QT5.0 to compile")
+endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 5.0)
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
@@ -118,8 +141,7 @@ if(NOT PYTHON_EXECUTABLE)
 endif(NOT PYTHON_EXECUTABLE)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
-option(USE_QMDIAREA "Enable new QMdiArea" OFF)
-option(ENABLE_PCH  "Enable precompiled headers" OFF)
+option(ALLOW_DEBUG "Enable Debugging Code" ON)
 
 if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
@@ -154,20 +176,6 @@ endif(NOT WIN32)
 # Remove directory to prevent that css files can grow with plugins css merge.
 FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
 
-SET(USE_PCH FALSE)
-IF(ENABLE_PCH)
-	IF(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
-		FIND_PACKAGE(PCHSupport)
-	    IF(PCHSupport_FOUND)
-	        SET(USE_PCH TRUE)
-	        MESSAGE(STATUS "Enabling precompiled headers for GCC ${gcc_compiler_version}") 
-	    ELSE(PCHSupport_FOUND)
-	        MESSAGE(STATUS "Sorry, precompiled headers require GCC >= 3.4") 
-	    ENDIF(PCHSupport_FOUND)
-	ELSE(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
-		MESSAGE(STATUS "Sorry, precompiled headers require CMake >= 2.6") 
-	ENDIF(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
-ENDIF(ENABLE_PCH)
 
 ##############################################################################
 # Sets the location of nonstandard shared libraries
@@ -193,16 +201,16 @@ message(STATUS "Working on bulmalib")
 add_subdirectory(bulmalib)
 
 ########### bulmacont ##########
-message(STATUS "Working on bulmacont")
-add_subdirectory(bulmacont)
+#message(STATUS "Working on bulmacont")
+#add_subdirectory(bulmacont)
 
 ########### bulmafact ##########
 message(STATUS "Working on bulmafact")
 add_subdirectory(bulmafact)
 
 ########### bulmages launcher ##########
-message(STATUS "Working on bulmages")
-add_subdirectory(bulmages)
+#message(STATUS "Working on bulmages")
+#add_subdirectory(bulmages)
 
 ########### bulmatpv ##########
 message(STATUS "Working on bulmatpv")
@@ -211,6 +219,7 @@ add_subdirectory(bulmatpv)
 ########### bulmasetup ##########
 message(STATUS "Working on bulmasetup")
 add_subdirectory(bulmasetup)
+
 
 
 ########### private code ########
@@ -273,12 +282,8 @@ SET(CPACK_PACKAGE_EXECUTABLES "bulmacont" "bulmafact" "bulmatpv")
 
 INCLUDE(CPack)
 
-#if(BULMAGES_CONFIG_DIR STREQUAL "")
-#   set (BULMAGES_CONFIG_DIR /etc/bulmages)
-#endif(BULMAGES_CONFIG_DIR STREQUAL "")
-
-
 MARK_AS_ADVANCED(
 	BULMAGES_VERSION
 )
+
 

@@ -21,10 +21,10 @@
 #ifndef _EQTOOLBUTTON_
 #define _EQTOOLBUTTON_
 
-#include <QWidget>
-#include <QString>
-#include <QMap>
-#include <QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtCore/QMap>
+#include <QtWidgets/QToolButton>
 
 #include "blmaincompany.h"
 #include "blfunctions.h"

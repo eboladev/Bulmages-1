@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtCore/QTextStream>
 
 #include "blfunctions.h"
 #include "blfixed.h"
@@ -42,7 +42,7 @@
 #include "bfcompany.h"
 #include "bldb.h"
 #include "impmultqtoolbutton.h"
-
+#include "blfile.h"
 
 ///
 /**
@@ -121,7 +121,7 @@ void ImpQToolButton::click()
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
-                if ( val == "TRUE" ) {
+                if ( val == "true" ) {
                     QString id = rec->dbValue ( "idpresupuesto" );
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->run ( "SNewPresupuestoView", m_companyact );
@@ -157,7 +157,7 @@ void ImpQToolButton::click()
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
-                if ( val == "TRUE" ) {
+                if ( val == "true" ) {
                     QString id = rec->dbValue ( "idfactura" );
 		    QString num = rec->dbValue ( "numfactura" );
 		    QString serie = rec->dbValue ( "codigoserie_factura" );
@@ -195,7 +195,7 @@ void ImpQToolButton::click()
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
-                if ( val == "TRUE" ) {
+                if ( val == "true" ) {
                     QString id = rec->dbValue ( "idpedidocliente" );
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -234,7 +234,7 @@ void ImpQToolButton::click()
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
-                if ( val == "TRUE" ) {
+                if ( val == "true" ) {
                     QString id = rec->dbValue ( "idalbaran" );
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -279,7 +279,7 @@ void ImpQToolButton::click()
             QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
             blCopyFile(archivologo,logousuario);
             
-            QFile file;
+            BlFile file;
             file.setFileName ( archivod );
             file.open ( QIODevice::ReadOnly );
             QTextStream stream ( &file );
@@ -296,7 +296,7 @@ void ImpQToolButton::click()
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
 
-                if ( val == "TRUE" ) {
+                if ( val == "true" ) {
                     QString id = rec->dbValue ( "idcobro" );
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->run ( "SNewCobroView", m_companyact );
@@ -388,7 +388,7 @@ void ImpQToolButton::click()
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
-                if ( val == "TRUE" ) {
+                if ( val == "true" ) {
                     QString id = rec->dbValue ( "idrecibo" );
 
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -419,18 +419,18 @@ void ImpQToolButton::click()
 	
 #ifndef Q_OS_WIN32
 	QString comando = "";
-	if ((g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None")) {
+	if ((g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none")) {
 	  comando = "lpr " + res;
 	} else {
 	  comando = "lp -d" +g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
 	} // end if
-	system ( comando.toAscii().data() );
+	system ( comando.toLatin1().data() );
 	comando = "rm " + res;
-	system ( comando.toAscii().data() );
+	system ( comando.toLatin1().data() );
 #else
 	/// Estaria bien imprimir directamente en la impresora, pero no hay forma de hacerlo en Windows.
 	QString comando = "start " + g_confpr->value( CONF_PDF ) + " " + res;
-	system ( comando.toAscii().data() );
+	system ( comando.toLatin1().data() );
 #endif
         
 
@@ -514,10 +514,10 @@ void SelQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
-                rec->setDbValue ( "selector", "FALSE" );
+            if ( rec->dbValue ( "selector" ) == "true" ) {
+                rec->setDbValue ( "selector", "false" );
             } else {
-                rec->setDbValue ( "selector", "TRUE" );
+                rec->setDbValue ( "selector", "true" );
             } // end if
         } // end for
     }
@@ -596,7 +596,7 @@ void EmailQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 QString id = rec->dbValue ( "idpresupuesto" );
 		QString num = rec->dbValue ( "numpresupuesto" );
 		QString ref = rec->dbValue ("refpresupuesto" );
@@ -648,7 +648,7 @@ void EmailQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 QString id = rec->dbValue ( "idpedidocliente" );
                 QString idcliente = rec->dbValue ( "idcliente" );
 		QString num = rec->dbValue ( "numpedidocliente" );
@@ -701,7 +701,7 @@ void EmailQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 QString id = rec->dbValue ( "idalbaran" );
 		QString num = rec->dbValue ( "numalbaran" );
 		QString ref = rec->dbValue ( "refalbaran" );
@@ -755,7 +755,7 @@ void EmailQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 QString id = rec->dbValue ( "idfactura" );
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString num = rec->dbValue ( "numfactura" );
@@ -808,7 +808,7 @@ void EmailQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 QString id = rec->dbValue ( "idcobro" );
                 QString idcliente = rec->dbValue ( "idcliente" );
                 QString ref = rec->dbValue ( "refcobro" );
@@ -934,12 +934,12 @@ void ProcesarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idpresupuesto" );
                 separador = ",";
             } // end if
         } // end for
-        QString query = "UPDATE presupuesto set procesadopresupuesto = TRUE WHERE idpresupuesto in ("+ids+")";
+        QString query = "UPDATE presupuesto set procesadopresupuesto = true WHERE idpresupuesto in ("+ids+")";
         if (separador == ",") 
           m_companyact->runQuery ( query );
     } // end if
@@ -958,12 +958,12 @@ void ProcesarQToolButton::click()
 
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idpedidocliente" );
                 separador = ",";
             } // end if
         } // end for
-        QString query = "UPDATE pedidocliente set procesadopedidocliente = TRUE WHERE idpedidocliente in ("+ids+")";
+        QString query = "UPDATE pedidocliente set procesadopedidocliente = true WHERE idpedidocliente in ("+ids+")";
         if (separador == ",") 
           m_companyact->runQuery ( query );
     } // end if
@@ -982,12 +982,12 @@ void ProcesarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idalbaran" );
                 separador = ",";
             } // end if
         } // end for
-        QString query = "UPDATE albaran set procesadoalbaran = TRUE WHERE idalbaran in ("+ids+")";
+        QString query = "UPDATE albaran set procesadoalbaran = true WHERE idalbaran in ("+ids+")";
         if (separador == ",") 
           m_companyact->runQuery ( query );
     } // end if
@@ -1006,13 +1006,13 @@ void ProcesarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idfactura" );
                 separador = ",";
             } // end if
         } // end for
 
-        QString query = "UPDATE factura set procesadafactura = TRUE WHERE idfactura in ("+ids+")";
+        QString query = "UPDATE factura set procesadafactura = true WHERE idfactura in ("+ids+")";
         if (separador == ",") 
           m_companyact->runQuery ( query );
     } // end if
@@ -1028,12 +1028,12 @@ void ProcesarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idcobro" );
                 separador = ",";
             } // end if
         } // end for
-        QString query = "UPDATE cobro set previsioncobro = FALSE WHERE idcobro in ("+ids+")";
+        QString query = "UPDATE cobro set previsioncobro = false WHERE idcobro in ("+ids+")";
         if (separador == ",") 
           m_companyact->runQuery ( query );
     } // end if
@@ -1126,7 +1126,7 @@ void SumarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idpresupuesto" );
                 separador = ",";
             } // end if
@@ -1153,7 +1153,7 @@ void SumarQToolButton::click()
 
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idpedidocliente" );
                 separador = ",";
             } // end if
@@ -1180,7 +1180,7 @@ void SumarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idalbaran" );
                 separador = ",";
             } // end if
@@ -1207,7 +1207,7 @@ void SumarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idfactura" );
                 separador = ",";
             } // end if
@@ -1232,7 +1232,7 @@ void SumarQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 ids += separador + rec->dbValue ( "idcobro" );
                 separador = ",";
             } // end if

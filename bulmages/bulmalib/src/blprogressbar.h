@@ -22,8 +22,8 @@
 #ifndef BLPROGRESSBAR_H
 #define BLPROGRESSBAR_H
 
-#include <QProgressBar>
-#include <QDialog>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include "ui_blprogressbarbase.h"

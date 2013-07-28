@@ -62,7 +62,7 @@ private:
     QString mdb_refcontrato;
 
 public:
-    ContratosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
+    ContratosList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~ContratosList();
     void presenta();
     QString idcontrato();

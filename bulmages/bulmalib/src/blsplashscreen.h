@@ -24,16 +24,16 @@
 #ifndef BLSPLASHSCREEN_H
 #define BLSPLASHSCREEN_H
 
-#include <QDialog>
-#include <QPixmap>
-#include <QLabel>
-#include <QTimer>
-#include <QTextBrowser>
-#include <QPalette>
-#include <QProgressBar>
-#include <QDesktopWidget>
-#include <QFile>
-#include <QSplashScreen>
+#include <QtWidgets/QDialog>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTimer>
+#include <QtWidgets/QTextBrowser>
+#include <QtGui/QPalette>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QDesktopWidget>
+#include <QtCore/QFile>
+#include <QtWidgets/QSplashScreen>
 
 #include <stdlib.h>
 #include <stdio.h>

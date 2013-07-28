@@ -23,8 +23,8 @@
 #ifndef CORRECTORWIDGET_H
 #define CORRECTORWIDGET_H
 
-#include <QString>
-#include <QObject>
+#include <QtCore/QString>
+#include <QtCore/QObject>
 
 #include "blfunctions.h"
 #include "bldockwidget.h"
@@ -61,7 +61,7 @@ public:
     QAction *m_viewCorrector;
 
 public:
-    CorrectorWidget ( QWidget *parent = 0, Qt::WFlags flags = 0 );
+    CorrectorWidget ( QWidget *parent = 0, Qt::WindowFlags flags = 0 );
     ~CorrectorWidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la

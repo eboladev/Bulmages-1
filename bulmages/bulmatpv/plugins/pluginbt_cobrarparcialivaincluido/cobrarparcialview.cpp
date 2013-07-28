@@ -135,9 +135,9 @@ void CobrarParcialView::pintarOrigen()
         BlFixed totalLinea = cant * pvpund;
         int precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
 
-        plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-        plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
-        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', TRUE ) + "\n";
+        plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', true ) + " ";
+        plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', true ) + " ";
+        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', true ) + "\n";
 
         htmlContent += "<tr>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</td>";
@@ -154,7 +154,7 @@ void CobrarParcialView::pintarOrigen()
 		    htmlContent += "<tr>";
 		    htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
 		    QString text1 = item->dbValue("imglalbaran");
-		    QByteArray text = QByteArray::fromBase64(text1.toAscii());
+		    QByteArray text = QByteArray::fromBase64(text1.toLatin1());
 
 				  
 		    QFile file("/tmp/imagen"+QString::number(i)+".png");
@@ -243,9 +243,9 @@ void CobrarParcialView::pintarDestino()
         BlFixed totalLinea = cant * pvpund;
         int precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
 
-        plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
-        plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
-        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', TRUE ) + "\n";
+        plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', true ) + " ";
+        plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', true ) + " ";
+        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', true ) + "\n";
 
         htmlContent += "<tr>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</td>";
@@ -261,7 +261,7 @@ void CobrarParcialView::pintarDestino()
 		    htmlContent += "<tr>";
 		    htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
 		    QString text1 = item->dbValue("imglalbaran");
-		    QByteArray text = QByteArray::fromBase64(text1.toAscii());
+		    QByteArray text = QByteArray::fromBase64(text1.toLatin1());
 
 				  
 		    QFile file("/tmp/imagen"+QString::number(i)+".png");
@@ -356,7 +356,7 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 	} // end for
 	
 	/// Coge el ticket origen y va transcribiendo la informacion de las lineas en el ticket actual.
-	bool necesitaGuardar = FALSE;
+	bool necesitaGuardar = false;
 	for (int i = 0; i < m_ticketOrigen->listaLineas()->size(); ++i) {
 	  
 	    actTicket->agregarLinea();
@@ -367,7 +367,7 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 		QString valor = m_ticketOrigen->listaLineas()->at(i)->lista()->at(j)->fieldValue();
 
 		if ((campo == "idalbaran") && (!valor.isEmpty())) {
-		    necesitaGuardar = TRUE;
+		    necesitaGuardar = true;
 		} // end if
 
 		/// Transcribe.
@@ -394,7 +394,7 @@ void CobrarParcialView::on_mui_aceptar_clicked()
 
 
 	/// Selecciona ticket.
-	( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+	( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue("bloqueadoticket", "false");
 	( ( BtCompany * ) mainCompany() )->setTicketActual(m_ticketDestino);
 	m_ticketDestino->pintar();
 	

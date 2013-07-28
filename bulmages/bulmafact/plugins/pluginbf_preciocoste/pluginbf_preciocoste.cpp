@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_preciocoste.h"
 
@@ -38,7 +38,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_preciocoste", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_preciocoste", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }

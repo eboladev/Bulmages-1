@@ -22,7 +22,7 @@
 #ifndef BLMAINWINDOW_H
 #define BLMAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 #include "bldefs.h"
 
 

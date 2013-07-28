@@ -22,7 +22,7 @@
 #ifndef COBROSLIST_H
 #define COBROSLIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -58,8 +58,8 @@ private:
     QString mdb_idcobro;
 
 public:
-    CobrosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    CobrosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    CobrosList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    CobrosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~CobrosList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

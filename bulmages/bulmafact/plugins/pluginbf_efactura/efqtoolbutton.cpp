@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "efqtoolbutton.h"
 #include "facturaview.h"
 #include "blfunctions.h"
@@ -26,8 +26,8 @@
 #include "blwidget.h"
 
 /// Para Exportacion de efacturas
-#include <QFile>
-#include <QTextStream>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 #include <QtXml/QXmlInputSource>
 #include <QtXml/QXmlSimpleReader>
 
@@ -178,7 +178,7 @@ void EFQToolButton::exporta_factura_ubl()
 
     QString query = "";
 
-    QFile *file_in  = new QFile ( _PLANTILLA_ );
+    BlFile *file_in  = new BlFile ( _PLANTILLA_ );
 
     if ( !file_in->open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al abir la plantilla de factura.") );
@@ -235,7 +235,7 @@ void EFQToolButton::exporta_factura_ubl()
     nombrearchivo += QString ( m_factura->dbValue ( "idfactura" ) );
     nombrearchivo += ".xml";
 
-    QFile *file_out = new QFile ( nombrearchivo );
+    BlFile *file_out = new BlFile ( nombrearchivo );
 
     if ( !file_out->open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _("Error al crear el archivo de salida.") );
@@ -428,7 +428,7 @@ void EFQToolButton::exporta_factura_ubl()
 
     /// Parseamos fichero XML ---------------------------
 
-    QFile *file = new QFile ( nombrearchivo );
+    BlFile *file = new BlFile ( nombrearchivo );
 
     if ( !file->open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
 	BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Error. No se pudo abrir el archivo '%1' para su parseo.")).arg(nombrearchivo) );

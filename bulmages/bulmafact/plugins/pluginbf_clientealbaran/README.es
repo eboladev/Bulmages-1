@@ -34,13 +34,13 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_cliente.so
+Dependencias: libpluginbf_cliente.so; libpluginbf_seriesfactura.so; libpluginbf_articulo.so; libpluginbf_iva.so; libpluginbf_almacen.so; libpluginbf_trabajador.so; libpluginbf_formasdepago.so
 
 Incompatibles:
 
-Reports: albaran.rml; blform_AlbaranClienteView.qs
+Reports: albaran.rml; blform_AlbaranClienteView.qs; plantilla_frame.rml; plantilla_finalbaran.rml; plantilla_barcodealbaran.rml; plantilla_desalbaran.rml; plantilla_cliente.rml; plantilla_empresa.rml; plantilla_cabeceraalbaran.rml
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 
 Orden: 622
 

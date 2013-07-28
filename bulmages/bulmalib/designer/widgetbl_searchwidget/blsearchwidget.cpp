@@ -1,4 +1,4 @@
-#include <QFrame>
+#include <QtWidgets/QFrame>
 #include "blsearchwidget.h"
 
 

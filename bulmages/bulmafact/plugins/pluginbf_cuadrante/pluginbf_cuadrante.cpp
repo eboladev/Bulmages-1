@@ -20,14 +20,14 @@
 
 #include <stdio.h>
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QStringList>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "pluginbf_cuadrante.h"
 #include "bfcompany.h"
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_cuadrante", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_cuadrante", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_cuadrante = bges;
 
     /// Creamos el men&uacute;.
@@ -214,9 +214,9 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     l->addSubFormHeader ( "motivoausencia", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Motivo" ) );
     l->addSubFormHeader ( "idausencia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID ausencia" ) );
     l->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     trab->mui_tab->addTab ( l, "Ausencias" );
     trab->dialogChanges_setExcludedObject ( l->mui_list );
 

@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
 
 #include "compraventaview.h"
 #include "clientslist.h"
@@ -129,7 +129,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         /// Conectamos algunos elementos para que funcionen.
 //     connect ( mui_idalmacen, SIGNAL ( valueChanged ( QString ) ), this, SLOT ( on_mui_idalmacen_valueChanged ( QString ) ) );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 
         /// Disparamos los plugins por flanco descendente.
         g_plugins->run ( "CompraVentaView_CompraVentaView_Post", this );
@@ -508,7 +508,7 @@ void CompraVentaView::generarFacturaProveedor()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclalbaranp" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlalbaranp" ) );
                 linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplalbaranp" ) );
@@ -521,7 +521,7 @@ void CompraVentaView::generarFacturaProveedor()
                 linea1->setDbValue ( "impesplfacturap", linea->dbValue ( "impesplalbaranp" ) );
                 linea1->setDbValue ( "kiloolivalfacturap", linea->dbValue ( "kiloolivalalbaranp" ) );
                 linea1->setDbValue ( "rendimientolfacturap", linea->dbValue ( "rendimientolalbaranp" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
 
@@ -639,7 +639,7 @@ void CompraVentaView::generarFactura()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );
                 linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlalbaran" ) );
@@ -654,7 +654,7 @@ void CompraVentaView::generarFactura()
                 linea1->setDbValue ( "kiloolivalfactura", linea->dbValue ( "kiloolivalalbaran" ) );
                 linea1->setDbValue ( "litroolivalfactura", linea->dbValue ( "litroolivalalbaran" ) );
                 linea1->setDbValue ( "rendimientolfactura", linea->dbValue ( "rendimientolalbaran" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
                 linea1->refresh();
             } // end if
         } // end for
@@ -665,10 +665,10 @@ void CompraVentaView::generarFactura()
                 linea1 = m_listadescuentos->lineaat ( i );
                 if ( linea1->dbValue ( "proporciondalbaran" ) != "" ) {
                     linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-                    bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+                    bud->getlistadescuentos() ->setProcesarCambios ( false );
                     linea->setDbValue ( "conceptdfactura", linea1->dbValue ( "conceptdalbaran" ) );
                     linea->setDbValue ( "proporciondfactura", linea1->dbValue ( "proporciondalbaran" ) );
-                    bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+                    bud->getlistadescuentos() ->setProcesarCambios ( true );
                     bud->getlistadescuentos() ->newRecord();
                 } // end if
             } // end for
@@ -678,7 +678,7 @@ void CompraVentaView::generarFactura()
         bud->save();
         bud->close();
 
-        mui_procesadoalbaran->setChecked ( TRUE );
+        mui_procesadoalbaran->setChecked ( true );
 
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error inesperado" ), this );

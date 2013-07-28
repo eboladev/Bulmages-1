@@ -21,13 +21,13 @@
 #ifndef CHOSEMAILER_H
 #define CHOSEMAILER_H
 
-#include <QDialog>
-#include <QToolButton>
-#include <QFileDialog>
-#include <QUrl>
-#include <QDir>
-#include <QDirIterator>
-#include <QString>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QUrl>
+#include <QtCore/QDir>
+#include <QtCore/QDirIterator>
+#include <QtCore/QString>
 
 #include "blfunctions.h"
 #include "blconfiguration.h"

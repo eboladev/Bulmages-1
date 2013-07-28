@@ -1,7 +1,7 @@
 #ifndef PLBLREPORT2ODS
 #define PLBLREPORT2ODS
 
-#include <QObject>
+#include <QtCore/QObject>
 
 
 class PluginBl_Report2ODS : public QObject

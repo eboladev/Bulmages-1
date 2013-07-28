@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QTextStream>
-#include <QFileDialog>
-#include <QCheckBox>
-#include <QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMessageBox>
 
 #include "zlist.h"
 #include "zview.h"
@@ -38,7 +38,7 @@
 \param flag
 \return
 **/
-ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
+ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag )
         : BlFormList ( comp, parent, flag )
 {
     BL_FUNC_DEBUG
@@ -62,9 +62,9 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     mui_list->addSubFormHeader ( "numtickets", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tickets" ) );
     mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id. almacen" ) );
 
-    mui_list->setInsert ( FALSE );
-    mui_list->setDelete ( FALSE );
-    mui_list->setSortingEnabled ( TRUE );
+    mui_list->setInsert ( false );
+    mui_list->setDelete ( false );
+    mui_list->setSortingEnabled ( true );
     
     /// Cargamos los filtros guardados.
     cargaFiltrosXML();

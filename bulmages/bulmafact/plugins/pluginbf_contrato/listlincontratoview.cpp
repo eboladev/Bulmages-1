@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "listlincontratoview.h"
 #include "blfunctions.h"
@@ -46,8 +46,8 @@ ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( paren
     addSubFormHeader ( "pvplcontrato", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "PVPl contrato" ) );
     addSubFormHeader ( "idcontrato", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id contrato" ) );
     addSubFormHeader ( "ordenlcontrato", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
     
 }
 

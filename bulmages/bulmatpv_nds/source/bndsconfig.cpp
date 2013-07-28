@@ -200,7 +200,7 @@ Wifi_AccessPoint* BndsConfig::findAP(string ssidName)
 
 	static Wifi_AccessPoint ap;
 	
-	Wifi_InitDefault(FALSE);
+	Wifi_InitDefault(false);
 	
 	Wifi_ScanMode(); //this allows us to search for APs
 

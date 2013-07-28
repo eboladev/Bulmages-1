@@ -23,9 +23,9 @@
 #ifndef BLAPPLICATION_H
 #define BLAPPLICATION_H
 
-#include <QApplication>
-#include <QWidget>
-#include <QMainWindow>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMainWindow>
 #include "bldefs.h"
 #include "blconfig.h"
 
@@ -40,11 +40,7 @@ private:
 public:
     BlApplication ( int &argc, char **argv );
     ~BlApplication();
-    
-#if CONFIG_DEBUG == TRUE
     virtual bool notify ( QObject *object, QEvent *event );
-#endif
-    
     void emitDbTableChanged(const QString &table);
 
 signals:

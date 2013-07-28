@@ -20,13 +20,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QLayout>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLayout>
+#include <QtCore/QTextStream>
 
 #include "pedidoproveedorview.h"
 #include "bfcompany.h"
@@ -95,7 +95,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         setListaDescuentos ( mui_descuentos );
 
         dialogChanges_readValues();
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido a proveedor" ), this );
@@ -222,6 +222,17 @@ int PedidoProveedorView::afterSave()
     return 0;
 }
 
+/** Pintar un pedido.
+*/
+void PedidoProveedorView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idproveedor->fieldValue("nomproveedor") + "\n" + mui_fechapedidoproveedor->text());
+}
+
+
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
 /** Primero de todo busca una factura por referencia que tenga este albaran.
     Si dicha factura existe entonces la cargamos y terminamos.
@@ -265,7 +276,7 @@ void PedidoProveedorView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclpedidoproveedor", linea->dbValue ( "desclpedidoproveedor" ) );
                 linea1->setDbValue ( "cantlpedidoproveedor", linea->dbValue ( "cantlpedidoproveedor" ) );
                 linea1->setDbValue ( "pvplpedidoproveedor", linea->dbValue ( "pvplpedidoproveedor" ) );

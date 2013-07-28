@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QMenu>
-#include <QAction>
-#include <QTextStream>
-#include <QFile>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QTextStream>
+#include <QtCore/QFile>
 
 #include "blfixed.h"
 #include "blmaincompany.h"
@@ -92,7 +92,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
         /// Buscamos Query's por tratar
         QString titulo = fileInfo.fileName();
         QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
+        rx1.setMinimal ( true );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx1.cap ( 1 );
         } // end while
@@ -161,7 +161,11 @@ void EQToolButtonMail::trataMenu ( QAction *action )
                 QString oldName = g_confpr->value( CONF_DIR_USER ) + doc + ".pdf";
                 QString newName = g_confpr->value( CONF_DIR_USER ) +   doc  + num + ".pdf";
                 blMoveFile(oldName,newName);
-		
+#ifdef Q_OS_WIN32
+		/// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+		/// Por eso pasamos una posible ruta relativa a absoluta.
+		newName = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/"+ doc + num + ".pdf";
+#endif
 		QString subject = doc + num;
 		QString body = "Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n";
 		QString bcc= "";

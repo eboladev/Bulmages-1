@@ -24,7 +24,7 @@
 
 #include <stdlib.h>
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "blpostgresqlclient.h"
 #include "bldialogchanges.h"

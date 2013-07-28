@@ -58,7 +58,7 @@
 // Qt
 
 #include <QtCore>
-#include <QtGui>
+#include <QtGui/QtGui>
 #include <QtAssistant>
 #include <QtUiTools>
 #include <QtXml>

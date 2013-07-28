@@ -42,14 +42,14 @@
 #ifndef TABLETCANVAS_H
 #define TABLETCANVAS_H
 
-#include <QWidget>
-#include <QPixmap>
-#include <QPoint>
-#include <QTabletEvent>
-#include <QColor>
-#include <QBrush>
-#include <QPen>
-#include <QPoint>
+#include <QtWidgets/QWidget>
+#include <QtGui/QPixmap>
+#include <QtCore/QPoint>
+#include <QtGui/QTabletEvent>
+#include <QtGui/QColor>
+#include <QtGui/QBrush>
+#include <QtGui/QPen>
+#include <QtCore/QPoint>
 
 #include "blfunctions.h"
 

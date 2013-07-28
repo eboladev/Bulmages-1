@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "genalbqtoolbutton.h"
 #include "blfunctions.h"
@@ -26,10 +26,10 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 #include "facturaview.h"
 #include "ticketclienteview.h"
 #include "pedidoclienteview.h"
@@ -190,7 +190,7 @@ void GenAlbQToolButton::generarFactura1()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclalbaran", linea->dbValue ( "desclpedidocliente" ) );
                 linea1->setDbValue ( "cantlalbaran", linea->dbValue ( "cantlpedidocliente" ) );
                 linea1->setDbValue ( "pvplalbaran", linea->dbValue ( "pvplpedidocliente" ) );
@@ -199,7 +199,7 @@ void GenAlbQToolButton::generarFactura1()
                 linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
 
@@ -208,10 +208,10 @@ void GenAlbQToolButton::generarFactura1()
             linea1 = fpv->m_listadescuentos->lineaat ( i );
             if ( linea1->dbValue ( "proporciondpedidocliente" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-                bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+                bud->getlistadescuentos() ->setProcesarCambios ( false );
                 linea->setDbValue ( "conceptdalbaran", linea1->dbValue ( "conceptdpedidocliente" ) );
                 linea->setDbValue ( "proporciondalbaran", linea1->dbValue ( "proporciondpedidocliente" ) );
-                bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+                bud->getlistadescuentos() ->setProcesarCambios ( true );
                 bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
@@ -221,7 +221,7 @@ void GenAlbQToolButton::generarFactura1()
         bud->show();
 
 	/// Procesamos el pedido
-	fpv->mui_procesadopedidocliente->setChecked(TRUE);
+	fpv->mui_procesadopedidocliente->setChecked(true);
 
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error inesperado" ), this );
@@ -322,7 +322,7 @@ void GenAlbQToolButton::generarFactura2()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclalbaran", linea->dbValue ( "desclpresupuesto" ) );
                 linea1->setDbValue ( "cantlalbaran", linea->dbValue ( "cantlpresupuesto" ) );
                 linea1->setDbValue ( "pvplalbaran", linea->dbValue ( "pvplpresupuesto" ) );
@@ -331,7 +331,7 @@ void GenAlbQToolButton::generarFactura2()
                 linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
 
@@ -340,10 +340,10 @@ void GenAlbQToolButton::generarFactura2()
             linea1 = fpv->m_listadescuentos->lineaat ( i );
             if ( linea1->dbValue ( "proporciondpresupuesto" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-                bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+                bud->getlistadescuentos() ->setProcesarCambios ( false );
                 linea->setDbValue ( "conceptdalbaran", linea1->dbValue ( "conceptdpresupuesto" ) );
                 linea->setDbValue ( "proporciondalbaran", linea1->dbValue ( "proporciondpresupuesto" ) );
-                bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+                bud->getlistadescuentos() ->setProcesarCambios ( true );
                 bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
@@ -353,7 +353,7 @@ void GenAlbQToolButton::generarFactura2()
         bud->show();
 
 	/// Procesamos el presupuesto
-	fpv->mui_procesadopresupuesto->setChecked(TRUE);
+	fpv->mui_procesadopresupuesto->setChecked(true);
 
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error inesperado" ), this );

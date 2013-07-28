@@ -22,8 +22,8 @@
 #ifndef BFBUSCARREFERENCIA_H
 #define BFBUSCARREFERENCIA_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "blwidget.h"
 #include "blfunctions.h"
@@ -45,10 +45,10 @@ public:
     virtual QString fieldValue();
 
 public slots:
-    virtual void on_mui_informe_clicked();
+    virtual void on_mui_informe_released();
     virtual void on_mui_referencia_editingFinished();
-    virtual void on_mui_rferencia_returnPressed();
-    virtual void on_mui_abrirtodo_clicked();
+    virtual void mui_rferencia_returnPressed();
+    virtual void on_mui_abrirtodo_released();
 
 signals:
     void valueChanged ( const QString &);

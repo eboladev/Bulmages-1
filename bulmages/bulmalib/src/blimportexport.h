@@ -23,8 +23,8 @@
 #ifndef BLIMPORTEXPORT_H
 #define BLIMPORTEXPORT_H
 
-#include <QFile>
-#include <QString>
+#include <QtCore/QFile>
+#include <QtCore/QString>
 
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"

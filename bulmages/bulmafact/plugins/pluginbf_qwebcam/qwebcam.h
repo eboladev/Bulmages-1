@@ -21,12 +21,12 @@
 #ifndef QWEBCAM_H
 #define QWEBCAM_H
 
-#include <QImage>
-#include <QPixmap>
-#include <QObject>
-#include <QLabel>
-#include <QTimer>
-#include <QDebug>
+#include <QtGui/QImage>
+#include <QtGui/QPixmap>
+#include <QtCore/QObject>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
 
 #include <cv.h>
 #include <highgui.h>

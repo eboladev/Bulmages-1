@@ -21,7 +21,7 @@
  **
  ****************************************************************************/
 
-#include <QtGui>
+#include <QtWidgets/QtWidgets>
 
 #include "blmonthcalendar.h"
 

@@ -24,7 +24,7 @@ Dependencias: libpluginbf_almacen.so
 
 Incompatibles: 
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturacion avanzada; Experimentales;Distribución; Supermercados;Distribución Alimentaria;Alquileres;
 
 Orden: 860
 

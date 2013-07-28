@@ -22,7 +22,7 @@
 #ifndef BCABOUTVIEW_H
 #define BCABOUTVIEW_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "blfunctions.h"
 #include "ui_bcaboutbase.h"

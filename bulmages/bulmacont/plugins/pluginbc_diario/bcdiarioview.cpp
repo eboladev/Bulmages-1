@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QColor>
-#include <QLayout>
-#include <QCheckBox>
-#include <QPixmap>
-#include <QTextStream>
-#include <QFileDialog>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QColor>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QCheckBox>
+#include <QtGui/QPixmap>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
 
 #include "bccompany.h"
 #include "bcdiarioview.h"
@@ -132,24 +132,24 @@ void BcDiarioView::inicializa1 ( QString finicial, QString ffinal, int )
 
     s1 = finicial;
     s2 = s1.mid ( 0, 2 );
-    dia = atoi ( s2.toAscii() );
+    dia = atoi ( s2.toLatin1() );
     s2 = s1.mid ( 3, 2 );
-    mes = atoi ( s2.toAscii() );
+    mes = atoi ( s2.toLatin1() );
     s2 = s1.mid ( 6, 4 );
-    ano = atoi ( s2.toAscii() );
-    fecha1aux.setYMD ( ano, mes, dia );
+    ano = atoi ( s2.toLatin1() );
+    fecha1aux.setDate ( ano, mes, dia );
     QString cadena2;
     cadena2.sprintf ( "%2.2d/%2.2d/%4.4d", fecha1aux.day(), fecha1aux.month(), fecha1aux.year() );
     mui_fechainicial->setText ( cadena2 );
 
     s1 = ffinal;
     s2 = s1.mid ( 0, 2 );
-    dia = atoi ( s2.toAscii() );
+    dia = atoi ( s2.toLatin1() );
     s2 = s1.mid ( 3, 2 );
-    mes = atoi ( s2.toAscii() );
+    mes = atoi ( s2.toLatin1() );
     s2 = s1.mid ( 6, 4 );
-    ano = atoi ( s2.toAscii() );
-    fecha1aux.setYMD ( ano, mes, dia );
+    ano = atoi ( s2.toLatin1() );
+    fecha1aux.setDate ( ano, mes, dia );
     cadena2.sprintf ( "%2.2d/%2.2d/%4.4d", fecha1aux.day(), fecha1aux.month(), fecha1aux.year() );
     mui_fechafinal->setText ( cadena2 );
     
@@ -187,8 +187,8 @@ void BcDiarioView::botonGuardar()
         QString finicial = mui_fechainicial->text();
         QString ffinal = mui_fechafinal->text();
         diariop.setMainCompany ( mainCompany() );
-        diariop.inicializa1 ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
-        diariop.inicializa2 ( ( char * ) fn.toAscii().constData() );
+        diariop.inicializa1 ( ( char * ) finicial.toLatin1().constData(), ( char * ) ffinal.toLatin1().constData() );
+        diariop.inicializa2 ( ( char * ) fn.toLatin1().constData() );
         diariop.accept();
     } // end if
     
@@ -286,13 +286,13 @@ void BcDiarioView::presentar()
         cadand = " AND ";
         
 
-        bool ok = FALSE;
+        bool ok = false;
         mui_saldosup->text().toFloat ( &ok );
         if ( ok ) {
             cad += cadand + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
             cadand = " AND ";
         } // end if
-        ok = FALSE;
+        ok = false;
         mui_saldoinf->text().toFloat ( &ok );
         if ( ok ) {
             cad += cadand + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();

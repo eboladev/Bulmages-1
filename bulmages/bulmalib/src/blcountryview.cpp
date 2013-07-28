@@ -37,7 +37,7 @@ BlCountryView::BlCountryView ( BlMainCompany *company, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-    mui_datospais->setDisabled ( TRUE );
+    mui_datospais->setDisabled ( true );
 
     mui_list->setMainCompany ( company );
     mui_listprovincias->setMainCompany ( company );
@@ -49,9 +49,9 @@ BlCountryView::BlCountryView ( BlMainCompany *company, QWidget *parent )
     mui_list->addSubFormHeader ( "descpais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre pais" ) );
     mui_list->addSubFormHeader ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo 2 digitos" ) );
     mui_list->addSubFormHeader ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo 3 digitos" ) );
-    mui_list->setInsert ( FALSE );
-    mui_list->setDelete ( FALSE );
-    mui_list->setSortingEnabled ( TRUE );
+    mui_list->setInsert ( false );
+    mui_list->setDelete ( false );
+    mui_list->setSortingEnabled ( true );
 
     /// Preparamos la lista de provincias.
     mui_listprovincias->setDbTableName ( "provincia" );
@@ -59,9 +59,9 @@ BlCountryView::BlCountryView ( BlMainCompany *company, QWidget *parent )
     mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id provincia" ) );
     mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pais" ) );
     mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Provincia" ) );
-    mui_listprovincias->setInsert ( TRUE );
-    mui_listprovincias->setDelete ( TRUE );
-    mui_listprovincias->setSortingEnabled ( FALSE );
+    mui_listprovincias->setInsert ( true );
+    mui_listprovincias->setDelete ( true );
+    mui_listprovincias->setSortingEnabled ( false );
 
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setTitleName ( _ ( "Pais" ) );
@@ -130,8 +130,8 @@ void BlCountryView::mostrarplantilla()
     BL_FUNC_DEBUG
 
     if ( m_countryId != "0" ) {
-        mui_datospais->setEnabled ( TRUE );
-        load ( m_countryId, FALSE );
+        mui_datospais->setEnabled ( true );
+        load ( m_countryId, false );
         mui_descpais->setText ( dbValue ( "descpais" ) );
         mui_cod2pais->setText ( dbValue ( "cod2pais" ) );
         mui_cod3pais->setText ( dbValue ( "cod3pais" ) );
@@ -228,7 +228,7 @@ void BlCountryView::on_mui_borrar_clicked()
             mainCompany() ->commit();
             m_countryId = "0";
             pintar();
-            mui_datospais->setDisabled ( TRUE );
+            mui_datospais->setDisabled ( true );
         } catch ( ... ) {
             blMsgInfo ( _ ( "Error al intentar borrar el pais" ) );
             mainCompany() ->rollback();

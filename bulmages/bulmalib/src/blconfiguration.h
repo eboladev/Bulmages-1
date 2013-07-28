@@ -27,8 +27,8 @@
 #include <iomanip>
 #include <stdlib.h>
 
-#include <QString>
-#include <QMap>
+#include <QtCore/QString>
+#include <QtCore/QMap>
 
 #include "blfunctions.h"
 #include "blapplication.h"
@@ -55,6 +55,10 @@
 
 /// Traspaso de informacion extendida de los articulos en los documentos.
 #define CONF_USE_DESCARTICULO         53
+
+/// Temas de syncronizacion
+#define CONF_SYNC		      60
+#define CONF_URL_SYNC                 61
 
 
 /// Habilitar el uso de scripts de QScript.
@@ -123,6 +127,7 @@
 #define CONF_SERVIDOR                181
 /// Indica por defecto que puerto tiene el servidor de bases de datos para conectar con el.
 #define CONF_PUERTO                  182
+#define CONF_DBNAME                  183
 
 /// Indica que visor de documentos PDF va a utilizar el programa.
 #define CONF_SPOOL					 191
@@ -296,6 +301,16 @@
 #define CONF_REPLACE_STRING          567
 
 
+/// Sistema de configuracion contable
+#define CONF_CONT_NUMDIGITOSEMPRESA  568
+#define CONF_CONT_CTA_CLIENTES               569
+#define CONF_CONT_CTA_PROVEEDORES            570
+#define CONF_CONT_CTA_VENTAPRODUCTO          571
+#define CONF_CONT_CTA_COMPRAPRODUCTO         572
+#define CONF_CONT_CTA_FPAGO                  573
+
+
+
 typedef QMap<int, QString> mapa;
 
 
@@ -324,6 +339,7 @@ public:
     BlConfiguration ( QString nombreprograma );
     ~BlConfiguration();
     QString value( int );
+    bool valueTrue(int);
     void setValue ( int, QString );
     bool readConfig ( QString );
     void saveConfig();

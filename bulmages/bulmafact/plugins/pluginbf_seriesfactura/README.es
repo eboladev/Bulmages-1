@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica;Colmados; Ferreterías; Droguerías;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 750
 

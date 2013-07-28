@@ -18,10 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeyEvent>
-#include <QEvent>
-#include <QLineEdit>
-#include <QTextEdit>
+#include <QtGui/QKeyEvent>
+#include <QtGui/QDrag>
+#include <QtCore/QMimeData>
+#include <QtCore/QEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextEdit>
 
 #include "cuadranteqtreewidget.h"
 #include "blconfiguration.h"

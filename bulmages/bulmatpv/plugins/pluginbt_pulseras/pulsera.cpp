@@ -39,7 +39,7 @@ Pulsera::Pulsera(BtTicket *tick, const QString nombres, BlDbRecord *linea, const
   g_pulseras.append(this);
   m_lineaticket = linea;
   m_lineaticketfraccion = NULL;
-  m_sinfracciones = FALSE;
+  m_sinfracciones = false;
   
 }
 

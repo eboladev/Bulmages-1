@@ -26,9 +26,9 @@
 
 #include <errno.h>
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QRadioButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QRadioButton>
 
 #include "blfunctions.h"
 #include "ui_bcregistroivaimprimirbase.h"

@@ -42,7 +42,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tutor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tutor", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_tutor = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
@@ -430,7 +430,7 @@ void SubForm_Tutor::nuevoTutor( )
     
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    art->setAttribute ( Qt::WA_DeleteOnClose, false );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     subf->setEnabled(false);
     art->hide();

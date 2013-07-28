@@ -26,10 +26,10 @@
 #ifndef BTTICKET_H
 #define BTTICKET_H
 
-#include <QWidget>
-#include <QCloseEvent>
-#include <QLabel>
-#include <QTime>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTime>
 
 #include "blfunctions.h"
 #include "blwidget.h"
@@ -62,7 +62,7 @@ public:
     QList<BlDbRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
     /// El parametro nuevalinea indica que se inserte en nueva linea.
-    BlDbRecord * insertarArticulo ( QString idArticulo, BlFixed cantidad = BlFixed ( "1" ), bool nuevaLinea = FALSE );
+    BlDbRecord * insertarArticulo ( QString idArticulo, BlFixed cantidad = BlFixed ( "1" ), bool nuevaLinea = false );
     void borrarArticulo ( BlDbRecord *linea, BlFixed cantidad = BlFixed ( "1" ) );
     void vaciarBtTicket();
     void subirPosArticulo ( BlDbRecord *linea, int filas = 1 );
@@ -73,13 +73,13 @@ public:
     BlDbRecord *lineaActBtTicket();
     void setLineaActual ( BlDbRecord * );
     void setDescuentoGlobal ( BlFixed descuento );
-    virtual void imprimir(bool doSave = TRUE);
+    virtual void imprimir(bool doSave = true);
     virtual void abrircajon();
     int save();
     int load ( QString );
     void borrarLinea ( BlDbRecord *linea );
     virtual QString exportXML();
-    virtual bool syncXML(const QString &text, bool insertarSiempre = FALSE);
+    virtual bool syncXML(const QString &text, bool insertarSiempre = false);
     void agregarLog(const QString &log);
     
 public slots:

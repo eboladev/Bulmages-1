@@ -23,7 +23,7 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "listcontrolstockview.h"
 #include "bfcompany.h"

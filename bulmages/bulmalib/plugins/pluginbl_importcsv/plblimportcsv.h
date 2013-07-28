@@ -1,7 +1,7 @@
 #ifndef PLBLIMPORTCSV
 #define PLBLIMPORTCSV
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "blfunctions.h"
 

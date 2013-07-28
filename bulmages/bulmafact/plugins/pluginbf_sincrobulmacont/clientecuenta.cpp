@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "clientecuenta.h"
 

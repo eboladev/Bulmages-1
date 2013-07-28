@@ -22,8 +22,7 @@
 #ifndef BTBULMATPV_H
 #define BTBULMATPV_H
 
-#include <QWorkspace>
-#include <QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 
 #include "blfunctions.h"
 #include "blworkspace.h"

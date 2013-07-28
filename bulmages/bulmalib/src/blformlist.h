@@ -22,10 +22,10 @@
 #ifndef BLFORMLIST_H
 #define BLFORMLIST_H
 
-#include <QWidget>
-#include <QCloseEvent>
-#include <QtScript>
-#include <QScriptEngine>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtScript/QtScript>
+#include <QtScript/QScriptEngine>
 
 #include "bldialogchanges.h"
 #include "blfunctions.h"
@@ -53,8 +53,8 @@ protected:
     void setSubForm ( BlSubForm * );
 
 public:
-    BlFormList ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
-    BlFormList ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BlFormList ( QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BlFormList ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE );
     virtual void editar ( int );
     virtual void imprimir();
     virtual void presentar();
@@ -95,6 +95,7 @@ public slots:
     virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked();
+    virtual void on_mui_filtrar_toggled(bool checked);
     virtual void contextMenuEvent ( QContextMenuEvent * );
 
 signals:

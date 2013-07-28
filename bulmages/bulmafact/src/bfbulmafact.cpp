@@ -18,20 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QImage>
-#include <QPixmap>
-#include <QToolButton>
-#include <QMenuBar>
-#include <QFile>
-#include <QStatusBar>
-#include <QMessageBox>
-#include <QPrinter>
-#include <QApplication>
-#include <QTextStream>
-#include <QPainter>
-#include <QWorkspace>
-#include <QMainWindow>
-#include <QProgressBar>
+#include <QtGui/QImage>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QMenuBar>
+#include <QtCore/QFile>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QMessageBox>
+#include <QtPrintSupport/QPrinter>
+#include <QtWidgets/QApplication>
+#include <QtCore/QTextStream>
+#include <QtGui/QPainter>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QProgressBar>
 
 
 #include "blworkspace.h"
@@ -54,16 +53,13 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    setAnimated ( FALSE );
-    setUpdatesEnabled ( TRUE );
+    setAnimated ( false );
+    setUpdatesEnabled ( true );
     pWorkspace = new BlWorkspace ( this );
-    
-#ifdef AREA_QMDI    
+      
     pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-#else
-    pWorkspace->setScrollBarsEnabled ( TRUE );
-#endif
+
     
     QFrame *m_frame1 = new QFrame();
     m_pb = new QProgressBar();
@@ -71,7 +67,7 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_pb->setMinimum ( 0 );
     m_pb->setValue ( 0 );
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
-    m_pb->setVisible ( FALSE );
+    m_pb->setVisible ( false );
     setCentralWidget ( m_frame1 );
     /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
     QVBoxLayout *vboxlayout = new QVBoxLayout ( this->centralWidget() );
@@ -85,15 +81,12 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_company->init ( bd, "BulmaFact" );
     m_company->setWorkspace ( pWorkspace );
 
-#ifdef AREA_QMDI
     connect ( pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
-#else
-    connect ( pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
-#endif
+
     
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
-    m_list->setVisible ( FALSE );
+    m_list->setVisible ( false );
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace ( pWorkspace );
 
@@ -102,8 +95,8 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
 
     m_company->setListVentanas ( m_list );
 
-    m_list->setVisible ( TRUE );
-    m_pb->setVisible ( FALSE );
+    m_list->setVisible ( true );
+    m_pb->setVisible ( false );
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
     
@@ -135,16 +128,6 @@ BfBulmaFact::~BfBulmaFact()
     
 }
 
-
-/// \TODO: Revisar este metodo.
-/**
-**/
-void BfBulmaFact::s_FPago()
-{
-    BL_FUNC_DEBUG
-    m_company->s_FPago();
-    
-}
 
 
 /** Intercambia entre el modo ventana completa y el modo ventana normal
@@ -188,7 +171,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+    if ( g_confpr->valueTrue( CONF_ASK_BEFORE_EXIT )) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
@@ -226,7 +209,6 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
 {
     BL_FUNC_DEBUG
-#ifdef AREA_QMDI
 
     /// Si no esta inicializado company no se le puede informar.
     if ( m_company == NULL ) {
@@ -241,30 +223,12 @@ void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
         return;
     } // end if
     m_company->selectWindow ( w->windowTitle(), w );
-#endif
 
 }
 
 void BfBulmaFact::informaindexador ( QWidget *w )
 {
     BL_FUNC_DEBUG
-#ifndef AREA_QMDI
-
-    /// Si no esta inicializado company no se le puede informar.
-    if ( m_company == NULL ) {
-        
-        return;
-    } // end if
-
-    /// No existe una ventana que activar.
-    if ( w == NULL ) {
-        m_company->deselectWindow();
-        
-        return;
-    } // end if
-    m_company->selectWindow ( w->windowTitle(), w );
-#endif
-
 }
 
 
@@ -301,10 +265,10 @@ void BfBulmaFact::documentacionError ( const QString docError )
 void BfBulmaFact::setActionIndexador ( bool visible )
 {
     BL_FUNC_DEBUG
-    if ( visible == TRUE ) {
-        actionIndexador->setChecked ( TRUE );
+    if ( visible == true ) {
+        actionIndexador->setChecked ( true );
     } else {
-        actionIndexador->setChecked ( FALSE );
+        actionIndexador->setChecked ( false );
     } // end if
     
 }
@@ -317,10 +281,10 @@ void BfBulmaFact::setActionIndexador ( bool visible )
 void BfBulmaFact::on_actionModo_Experto_triggered()
 {
     BL_FUNC_DEBUG
-    if ( actionModo_Experto->isChecked() == TRUE ) {
-       g_confpr->setValue(CONF_MODO_EXPERTO, "TRUE");
+    if ( actionModo_Experto->isChecked() == true ) {
+       g_confpr->setValue(CONF_MODO_EXPERTO, "true");
     } else {
-       g_confpr->setValue(CONF_MODO_EXPERTO, "FALSE");
+       g_confpr->setValue(CONF_MODO_EXPERTO, "false");
     } // end if
     
 }
@@ -332,33 +296,11 @@ void BfBulmaFact::on_actionModo_Experto_triggered()
 void BfBulmaFact::on_actionIndexador_triggered()
 {
     BL_FUNC_DEBUG
-    if ( actionIndexador->isChecked() == TRUE ) {
-        m_company->s_indexadorCambiaEstado ( TRUE );
+    if ( actionIndexador->isChecked() == true ) {
+        m_company->s_indexadorCambiaEstado ( true );
     } else {
-        m_company->s_indexadorCambiaEstado ( FALSE );
+        m_company->s_indexadorCambiaEstado ( false );
     } // end if
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionTipoIVA_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_TipoIVAView();
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionTasaIVA_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_TasaIVAView();
     
 }
 
@@ -396,37 +338,6 @@ void BfBulmaFact::on_actionPaises_triggered()
 }
 
 
-///
-/**
-**/
-void BfBulmaFact::on_actionSeries_de_Factura_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_seriesFactura();
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionTrabajadores_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_trabajadores();
-    
-}
-
-
-///
-/**
-**/
-void BfBulmaFact::on_actionBancos_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_bancos();
-    
-}
 
 
 ///
@@ -454,17 +365,6 @@ void BfBulmaFact::on_actionAcerta_de_triggered()
 ///
 /**
 **/
-void BfBulmaFact::on_actionAlmacenes_triggered()
-{
-    BL_FUNC_DEBUG
-    m_company->s_almacenes();
-    
-}
-
-
-///
-/**
-**/
 void BfBulmaFact::on_actionParametros_triggered()
 {
     BL_FUNC_DEBUG
@@ -473,15 +373,6 @@ void BfBulmaFact::on_actionParametros_triggered()
 }
 
 
-///
-/**
-**/
-void BfBulmaFact::on_actionFormas_de_Pago_triggered()
-{
-    BL_FUNC_DEBUG
-    s_FPago();
-    
-}
 
 
 ///
@@ -491,13 +382,7 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 {
     BL_FUNC_DEBUG
 
-#ifdef AREA_QMDI
     pWorkspace->tileSubWindows();
-#else
-    pWorkspace->tile();
-#endif
-    
-    
 }
 
 
@@ -508,14 +393,19 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     BL_FUNC_DEBUG
     
-#ifdef AREA_QMDI
     pWorkspace->cascadeSubWindows();
-#else
-    pWorkspace->cascade();
-#endif
-  
 
 }
+
+///
+/**
+**/
+void BfBulmaFact::on_actionSalir_triggered()
+{
+    BL_FUNC_DEBUG
+    close();
+}
+
 
 
 void BfBulmaFact::resizeEvent ( QResizeEvent * event )

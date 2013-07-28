@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QMenu>
-#include <QAction>
-#include <QTextStream>
-#include <QFile>
-#include <QToolButton>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QTextStream>
+#include <QtCore/QFile>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QPushButton>
 
 #include "local_blI18n.h"
 #include "blfixed.h"
@@ -95,15 +95,15 @@ void BloqMenu::trataMenu ( QAction *action )
         QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
         if ( m_BlForm->mainCompany() ->hasTablePrivilege ( m_BlForm->tableName(), "UPDATE" ) ) {
            pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_guardar" );
-           if ( pbut ) pbut->setEnabled ( TRUE );
+           if ( pbut ) pbut->setEnabled ( true );
            pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_aceptar" );
-           if ( pbut ) pbut->setEnabled ( TRUE );
+           if ( pbut ) pbut->setEnabled ( true );
            pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_cancelar" );
            if ( pbut ) pbut->setText("Cancelar");
         }
         if ( m_BlForm->mainCompany() ->hasTablePrivilege ( m_BlForm->tableName(), "DELETE" ) ) {
            pbut = m_BlForm->findChild<QAbstractButton *> ( "mui_borrar" );
-           if ( pbut ) pbut->setEnabled ( TRUE );
+           if ( pbut ) pbut->setEnabled ( true );
         }
     } // end if
 }

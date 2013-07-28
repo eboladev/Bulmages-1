@@ -24,4 +24,6 @@ Incompatibles: libpluginbt_ivaincluido.so;libpluginbt_ticketivaincluido.so
 
 Orden: 4
 
+Categorias: Utilidades avanzadas; Experimentales;
+
 Comentarios: Ideal para bares, cafeterías y restaurantes.

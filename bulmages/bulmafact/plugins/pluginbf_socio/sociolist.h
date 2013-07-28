@@ -21,7 +21,7 @@
 #ifndef SOCIOLIST_H
 #define SOCIOLIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -54,8 +54,8 @@ private:
     QString mdb_idcliente;
 
 public:
-    SociosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    SociosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    SociosList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    SociosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~SociosList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

@@ -22,8 +22,8 @@
 #ifndef BCMODELO300IMPRIMIR2PS_H
 #define BCMODELO300IMPRIMIR2PS_H
 
-#include <QCheckBox>
-#include <QDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include "ui_bcmodelo300base.h"

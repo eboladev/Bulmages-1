@@ -24,7 +24,7 @@
 #include "bccompany.h"
 #include "bcasientoview.h"
 #include "pluginbc_asiento.h"
-#include <QMenu>
+#include <QtWidgets/QMenu>
 
 
 ///
@@ -65,7 +65,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablasoportado->addSubFormHeader ( "factemitida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idtipoiva" ) );
     mui_tablasoportado->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "orden" ) );
     mui_tablasoportado->addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idasiento" ) );
-    mui_tablasoportado->setInsert ( FALSE );
+    mui_tablasoportado->setInsert ( false );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Repercutido.
     mui_tablarepercutido->setMainCompany ( emp );
@@ -89,7 +89,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablarepercutido->addSubFormHeader ( "factemitida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "idtipoiva" ) );
     mui_tablarepercutido->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "orden" ) );
     mui_tablarepercutido->addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idasiento" ) );
-    mui_tablarepercutido->setInsert ( FALSE );
+    mui_tablarepercutido->setInsert ( false );
 
     /// Definiciones para la tabla de repercutido
     mui_totalRepercutido->setMainCompany ( emp );
@@ -98,7 +98,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_totalRepercutido->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "nombretipoiva" ) );
     mui_totalRepercutido->addSubFormHeader ( "tivaiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tivaiva" ) );
     mui_totalRepercutido->addSubFormHeader ( "tbaseiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tbaseiva" ) );
-    mui_totalRepercutido->setInsert ( FALSE );
+    mui_totalRepercutido->setInsert ( false );
 
     /// Definiciones para la tabla de soportado
     mui_totalSoportado->setMainCompany ( emp );
@@ -107,7 +107,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_totalSoportado->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "nombretipoiva" ) );
     mui_totalSoportado->addSubFormHeader ( "tivaiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tivaiva" ) );
     mui_totalSoportado->addSubFormHeader ( "tbaseiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tbaseiva" ) );
-    mui_totalSoportado->setInsert ( FALSE );
+    mui_totalSoportado->setInsert ( false );
 
     /// Fin de las definiciones para la tabla de IVA.
     
@@ -226,12 +226,12 @@ void ListRegistroIvaView::inicializa()
     m_ivar->setText ( cur->value( "tbaseiva" ) );
     delete cur;
 
-    query.sprintf ( "SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ", finicial->text().toAscii().constData(), ffinal->text().toAscii().constData() );
+    query.sprintf ( "SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ", finicial->text().toLatin1().constData(), ffinal->text().toLatin1().constData() );
     mui_tablasoportado->load ( query );
 
     /// Hacemos el c&aacute;culo de los que no pertenecen a IVA soportado porque
     /// as&iacute; entran todos.
-    query.sprintf ( "SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().toAscii().constData(), ffinal->text().toAscii().constData() );
+    query.sprintf ( "SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().toLatin1().constData(), ffinal->text().toLatin1().constData() );
     mui_tablarepercutido->load ( query );
     
 }

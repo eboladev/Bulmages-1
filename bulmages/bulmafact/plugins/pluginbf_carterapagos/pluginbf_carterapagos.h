@@ -21,10 +21,10 @@
 #ifndef PLUGINBF_CARTERAPAGOS_H
 #define PLUGINBF_CARTERAPAGOS_H
 
-#include <QStringList>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "bfcompany.h"
 #include "bfbulmafact.h"

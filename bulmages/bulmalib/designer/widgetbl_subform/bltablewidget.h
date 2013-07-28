@@ -1,8 +1,8 @@
 #ifndef BLTABLEWIDGET_H
 #define BLTABLEWIDGET_H
 
-#include <QTableWidget>
-#include <QWidget>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QWidget>
 
 
 class BlTableWidget : public QTableWidget

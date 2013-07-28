@@ -20,19 +20,19 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QFile>
-#include <QMenu>
-#include <QMenuBar>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QDesktopServices>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QHBoxLayout>
+#include <QtGui/QDesktopServices>
 
 #include "local_blI18n.h"
 #include "pluginbl_attachdocument.h"
@@ -49,7 +49,7 @@ int entryPoint ( QMainWindow *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_attachdocument", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_attachdocument", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
     

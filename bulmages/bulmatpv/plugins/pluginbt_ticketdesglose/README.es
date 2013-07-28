@@ -22,6 +22,8 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Orden:
+Orden: 67
+
+Categorias: Utilidades avanzadas; Restauración; Colmados; Tallas y Colores;
 
 Comentarios: 

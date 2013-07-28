@@ -20,12 +20,12 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QWidget>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QFileDialog>
 
 #include "local_blI18n.h"
 #include "blmaincompany.h"

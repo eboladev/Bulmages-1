@@ -480,21 +480,5 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setHidden(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>45</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>69</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
 </ui>

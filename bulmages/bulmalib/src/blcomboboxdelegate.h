@@ -22,7 +22,7 @@
 #ifndef BLCOMBOBOXDELEGATE_H
 #define BLCOMBOBOXDELEGATE_H
 
-#include <QComboBox>
+#include <QtWidgets/QComboBox>
 
 #include "blwidget.h"
 #include "blform.h"

@@ -39,7 +39,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_cambio", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_cambio", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;

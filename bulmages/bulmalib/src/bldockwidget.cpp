@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QObject>
-#include <QPixmap>
-#include <QImage>
-#include <QPainter>
-#include <QVBoxLayout>
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QObject>
+#include <QtGui/QPixmap>
+#include <QtGui/QImage>
+#include <QtGui/QPainter>
+#include <QtWidgets/QVBoxLayout>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 #include <map>
 
 #include "bldockwidget.h"
@@ -79,7 +79,7 @@ BlDockWidget::~BlDockWidget()
 void BlDockWidget::setVisibilityState ( bool visible )
 {
     BL_FUNC_DEBUG
-    if ( visible == TRUE ) {
+    if ( visible == true ) {
         this->show();
     } else {
         this->hide();
@@ -94,7 +94,7 @@ void BlDockWidget::setVisibilityState ( bool visible )
 void BlDockWidget::closeEvent ( QCloseEvent * )
 {
     BL_FUNC_DEBUG
-    emit ( visibilityStateChanged ( FALSE ) );
+    emit ( visibilityStateChanged ( false ) );
     
 }
 

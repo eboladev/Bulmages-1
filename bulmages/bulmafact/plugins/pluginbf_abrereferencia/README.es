@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas; Colmados;
+Categorias: Facturacion avanzada;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;Colmados; Ferreterías; Droguerías;
 
 Orden: 900
 

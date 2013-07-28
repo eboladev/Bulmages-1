@@ -22,15 +22,15 @@
 #ifndef BCCUENTASANUALESIMPRIMIRVIEW_H
 #define BCCUENTASANUALESIMPRIMIRVIEW_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "ui_bccuentasanualesimprimirbase.h"
 
 #include <errno.h>
 #include <sys/types.h>
 
-#include <QDomNode>
-#include <QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtXml/QDomDocument>
 
 #ifndef Q_OS_WIN32
 #include <unistd.h>

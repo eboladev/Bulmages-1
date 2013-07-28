@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;Restauracion; Colmados;
+Categorias: Restauración; Parques Infantiles; Tallas y Colores; Colmados; Ferreterías; Droguerías;
 
 Orden: 690
 

@@ -21,12 +21,14 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+/*
+Esta clase, analoga a BlWidget, permite que las acciones sean inicializadas con 
+*/
 #ifndef BLACTION_H
 #define BLACTION_H
 
-#include <QToolButton>
-#include <QAction>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QAction>
 #include "blmaincompanypointer.h"
 
 

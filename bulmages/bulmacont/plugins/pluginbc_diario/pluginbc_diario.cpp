@@ -20,15 +20,15 @@
 
 #include <cstdio>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "pluginbc_diario.h"
 #include "bcdiarioview.h"
@@ -49,7 +49,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_diario", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_diario", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_diario = NULL;
     g_pluginbc_diario = bcont;
@@ -222,16 +222,16 @@ void SubForm_Diario::boton_diario1 ( int tipo )
         fechaact = blNormalizeDate ( fecha );
         switch ( tipo ) {
         case 0:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+            fecha1.setDate ( fechaact.year(), fechaact.month(), fechaact.day() );
+            fecha2.setDate ( fechaact.year(), fechaact.month(), fechaact.day() );
             break;
         case 1:
-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
+            fecha1.setDate ( fechaact.year(), fechaact.month(), 1 );
+            fecha2.setDate ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
             break;
         case 2:
-            fecha1.setYMD ( fechaact.year(), 1, 1 );
-            fecha2.setYMD ( fechaact.year(), 12, 31 );
+            fecha1.setDate ( fechaact.year(), 1, 1 );
+            fecha2.setDate ( fechaact.year(), 12, 31 );
             break;
         } // end switch
         
@@ -241,7 +241,7 @@ void SubForm_Diario::boton_diario1 ( int tipo )
             g_pluginbc_diario->company()->pWorkspace()->addSubWindow ( g_diario );
 	} // end if
         
-        g_diario ->inicializa1 ( ( char * ) fecha1.toString ( "dd/MM/yyyy" ).toAscii().constData(), ( char * ) fecha2.toString ( "dd/MM/yyyy" ).toAscii().constData(), 0 );
+        g_diario ->inicializa1 ( ( char * ) fecha1.toString ( "dd/MM/yyyy" ).toLatin1().constData(), ( char * ) fecha2.toString ( "dd/MM/yyyy" ).toLatin1().constData(), 0 );
         g_diario ->accept();
 	g_diario->hide();
 	g_diario->show();

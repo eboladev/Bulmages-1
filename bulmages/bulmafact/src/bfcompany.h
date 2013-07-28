@@ -22,8 +22,8 @@
 #ifndef BFCOMPANY_H
 #define BFCOMPANY_H
 
-#include <QObject>
-#include <QLibraryInfo>
+#include <QtCore/QObject>
+#include <QtCore/QLibraryInfo>
 
 #include "blpostgresqlclient.h"
 #include "blwindowlistdock.h"
@@ -49,19 +49,9 @@ public:
     BfCompany ( BfBulmaFact *bges );
     virtual ~BfCompany();
     void createMainWindows ( BlSplashScreen * );
-    void s_FPago();
-    void s_Familias();
-    void s_trabajadores();
-    void s_bancos();
-    void s_seriesFactura();
     void s_newBfConfiguracionView();
-    void s_almacenes();
-    void viewPagosList();
-    void s_TipoIVAView();
-    void s_TasaIVAView();
     void guardaConf();
     void cargaConf();
-    void *newPagoView();
 };
 
 #endif

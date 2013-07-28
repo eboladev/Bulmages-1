@@ -22,10 +22,10 @@
 #ifndef COBROVIEW_H
 #define COBROVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-#include <QTextStream>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
 
 #include "ui_q19base.h"
 #include "blpostgresqlclient.h"

@@ -22,8 +22,8 @@
 #ifndef BFBUSCARTIPOARTICULO_H
 #define BFBUSCARTIPOARTICULO_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "blwidget.h"
 #include "blsearchwidget.h"

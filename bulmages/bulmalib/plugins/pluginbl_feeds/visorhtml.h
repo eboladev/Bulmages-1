@@ -21,10 +21,10 @@
 #ifndef FEEDSWIDGET_H
 #define FEEDSWIDGET_H
 
-#include <QDockWidget>
-#include <QString>
-#include <QObject>
-#include <QWidget>
+#include <QtWidgets/QDockWidget>
+#include <QtCore/QString>
+#include <QtCore/QObject>
+#include <QtWidgets/QWidget>
 
 #include "blfunctions.h"
 #include "ui_visorhtmlbase.h"
@@ -44,7 +44,7 @@ public:
     QDockWidget *dock;
 
 public:
-    visorhtml ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+    visorhtml ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
     ~visorhtml();
 
 public slots:

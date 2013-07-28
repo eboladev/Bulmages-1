@@ -20,13 +20,13 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "pluginbf_debug.h"
 #include "blconfiguration.h"
@@ -43,17 +43,17 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_debug", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_debug", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al modo de depuraci&oacuteMm.
     BlAction *accionA = new BlAction ( _("&Modo depuracion"), 0 );
-    accionA->setCheckable ( TRUE );
+    accionA->setCheckable ( true );
 
-    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
-        accionA->setChecked ( TRUE );
+    if ( g_confpr->valueTrue( CONF_DEBUG )) {
+        accionA->setChecked ( true );
     } else {
-        accionA->setChecked ( FALSE );
+        accionA->setChecked ( false );
     }
 
     accionA->setStatusTip ( _ ( "Activa/desactiva el modo de depuracion" ) );
@@ -70,9 +70,9 @@ int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionDebug") {
 
         if (accion->isChecked ()) {
-            g_confpr->setValue( CONF_DEBUG, "TRUE");
+            g_confpr->setValue( CONF_DEBUG, "true");
         } else {
-            g_confpr->setValue( CONF_DEBUG, "FALSE");
+            g_confpr->setValue( CONF_DEBUG, "false");
         } // end if
 
     } // end if

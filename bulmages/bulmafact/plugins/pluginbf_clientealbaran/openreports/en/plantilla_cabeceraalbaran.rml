@@ -1,0 +1,10 @@
+		<!--Fecha albaran-->
+		<setFont name="Helvetica" size="11"/>
+
+		<drawString x="10cm" y="27.95cm">Fecha albarán:</drawString>
+		<drawString x="10cm" y="27.5cm">Nº albarán:</drawString>
+		<drawString x="17.0cm" y="27.95cm">Referencia:</drawString>
+
+		<drawString x="13.5cm" y="27.95cm">[fechaalbaran]</drawString>
+		<drawString x="13.5cm" y="27.5cm">[numalbaran]</drawString>
+		<drawString x="17.0cm" y="27.5cm">[refalbaran]</drawString>

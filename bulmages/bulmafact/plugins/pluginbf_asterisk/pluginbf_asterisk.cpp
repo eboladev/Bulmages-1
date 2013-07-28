@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_asterisk.h"
 
@@ -38,7 +38,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_asterisk", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_asterisk", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }
@@ -110,9 +110,9 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( "Id almacen" ) );
     l->addSubFormHeader ( "idvalasterisk", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id validacion" ) );
     l->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     trab->dialogChanges_setExcludedObject ( l->mui_list );
     trab->mui_tab->addTab ( l, "Validaciones Asterisk" );
     return 0;
@@ -170,9 +170,9 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     l->addSubFormHeader ( "idalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
     l->addSubFormHeader ( "idvalasterisk", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id validacion" ) );
     l->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
 
     alm->mui_tab->addTab ( l, "Validaciones Asterisk" );
 
@@ -196,9 +196,9 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     query += " passasterisktrabajador = '" + l->text() + "'";
     query += " ,validasiempreasterisktrabajador = ";
     if ( l9->isChecked() ) {
-        query += "TRUE";
+        query += "true";
     } else {
-        query += "FALSE";
+        query += "false";
     } // end if
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
     trab->mainCompany() ->begin();

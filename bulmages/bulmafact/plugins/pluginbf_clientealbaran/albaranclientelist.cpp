@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCheckBox>
-#include <QFile>
-#include <QMessageBox>
-#include <QTextStream>
+#include <QtWidgets/QCheckBox>
+#include "blfile.h"
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextStream>
 
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
@@ -114,7 +114,7 @@ void AlbaranClienteList::crear()
 \param editmodo
 \return
 **/
-AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -147,7 +147,7 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \param editmodo
 \return
 **/
-AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -175,7 +175,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     m_idtrabajador->setFieldId ( "idtrabajador" );
     m_idtrabajador->m_valores["apellidostrabajador"] = "";
     m_idtrabajador->m_valores["nomtrabajador"] = "";
-    m_idtrabajador->setAllowNull ( TRUE );
+    m_idtrabajador->setAllowNull ( true );
     m_idtrabajador->setId("");
     
     /// Cargamos los filtros guardados.
@@ -235,7 +235,7 @@ void AlbaranClienteList::setMainCompany ( BfCompany *comp )
     m_idtrabajador->setFieldId ( "idtrabajador" );
     m_idtrabajador->m_valores["apellidostrabajador"] = "";
     m_idtrabajador->m_valores["nomtrabajador"] = "";
-    m_idtrabajador->setAllowNull ( TRUE );   
+    m_idtrabajador->setAllowNull ( true );   
     m_idtrabajador->setId("");
     
     
@@ -434,9 +434,9 @@ AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSub
     addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base imponible" ) );
     addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
     addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

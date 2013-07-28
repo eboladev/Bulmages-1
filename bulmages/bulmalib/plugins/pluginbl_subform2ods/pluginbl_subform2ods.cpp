@@ -23,11 +23,11 @@
 
 #include <stdio.h>
 
-#include <QFile>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QLocale>
-#include <QProcess>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
+#include <QtCore/QProcess>
 
 #include "pluginbl_subform2ods.h"
 
@@ -42,7 +42,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_subform2ods", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_subform2ods", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;
@@ -249,8 +249,8 @@ void PluginBl_SubForm2ODS::sacaods()
     cadena2 = "rm " + archivod;
 #endif
 
-    system ( cadena1.toAscii().data() );
-    system ( cadena2.toAscii().data() );
+    system ( cadena1.toLatin1().data() );
+    system ( cadena2.toLatin1().data() );
 
     QFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) )  {
@@ -274,7 +274,7 @@ void PluginBl_SubForm2ODS::sacaods()
     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
 #endif
 
-    system ( cadena.toAscii().data() );
+    system ( cadena.toLatin1().data() );
 
     /// Si no existe el archivo avisamos
     if (!QFile::exists(g_confpr->value( CONF_DIR_USER ) + "listadoods.ods") ) {
@@ -296,7 +296,7 @@ void PluginBl_SubForm2ODS::sacaods()
     cadena = g_confpr->value(CONF_ODS)  + " " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods &";
 #endif
 
-    int result = system ( cadena.toAscii().data() );
+    int result = system ( cadena.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar el editor de ODS."));
     } // end if
@@ -415,9 +415,9 @@ void PluginBl_SubForm2ODS::sacaods1()
     fitxersortidatxt += "doc.save(\"listadoods.ods\")\n";
 
     QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "rm " + archivod;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     QFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) )  {
@@ -428,9 +428,9 @@ void PluginBl_SubForm2ODS::sacaods1()
     } // end if
 
     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = g_confpr->value(CONF_ODS) + " " + g_confpr->value( CONF_DIR_USER ) + "listadoods.ods &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     
 }

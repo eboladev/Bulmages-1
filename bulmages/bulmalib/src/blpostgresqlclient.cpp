@@ -20,9 +20,9 @@
 
 /// Contiene la implementacion de las clases 'BlDbRecordSet' y 'BlPostgreSqlClient' que proveen
 /// acceso a las bases de datos de postgres de forma sencilla y eficiente.
-#include <QMessageBox>
-#include <QApplication>
-#include <QLocale>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QApplication>
+#include <QtCore/QLocale>
 
 #include <climits>
 #include <cmath>
@@ -30,6 +30,9 @@
 #include "blpostgresqlclient.h"
 #include "blerrordialog.h"
 
+
+int g_num_begins=0;
+int g_global_commit=true;
 
 ///
 /**
@@ -120,7 +123,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
     } ;
     try {
         conn = conn1;
-        m_error = FALSE;
+        m_error = false;
         m_query = SQLQuery;
         if ( pristineQuery.isNull() ) {
             m_pristineQuery = SQLQuery; // a falta de + info. Qui ens cridi ja ho sobreescriurà
@@ -137,10 +140,10 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
         case PGRES_NONFATAL_ERROR:
         case PGRES_FATAL_ERROR:
         case NULL:
-            m_error = TRUE;
+            m_error = true;
             BlDebug::blDebug ( PQerrorMessage ( conn ) );
             BlDebug::blDebug ( "QUERY command failed [" + SQLQuery + "]", 10 );
-            if ( g_confpr->value( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( g_confpr->valueTrue( CONF_ALERTAS_DB )) {
                 BlErrorDialog ( _ ( "Error al hacer la consulta con la base de datos." ) + QString ( "\n:: " ) + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
@@ -247,9 +250,9 @@ int BlDbRecordSet::numcampo ( const QString &campo )
 {
     BL_FUNC_DEBUG
     int val = -1;
-    if ( m_campos.contains ( campo ) )
+    if ( m_campos.contains ( campo ) ) {
         val =  m_campos.value ( campo );
-    
+    } // end if
     return val;
 }
 
@@ -437,7 +440,7 @@ int BlDbRecordSet::lastRecord()
 }
 
 
-/// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n final, o si est&aacute; vacio.
+/// Devuelve true si el registro est&aacute; en la posici&oacute;n final, o si est&aacute; vacio.
 /**
 \return
 **/
@@ -447,9 +450,9 @@ bool BlDbRecordSet::eof()
     
     if (this == NULL) return true;
     
-    bool result = FALSE;
+    bool result = false;
     if ( nregistros == 0 ) {
-        result = TRUE;
+        result = true;
     } // end if
     result = registroactual >= nregistros;
     
@@ -457,7 +460,7 @@ bool BlDbRecordSet::eof()
 }
 
 
-/// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n inicial, o si est&aacute; vacio.
+/// Devuelve true si el registro est&aacute; en la posici&oacute;n inicial, o si est&aacute; vacio.
 /**
 \return
 **/
@@ -472,7 +475,7 @@ bool BlDbRecordSet::bof()
 }
 
 
-/// Devuelve TRUE si es el &uacute;ltimo registro a considerar.
+/// Devuelve true si es el &uacute;ltimo registro a considerar.
 /**
 \return
 **/
@@ -484,7 +487,7 @@ bool BlDbRecordSet::isLastRecord()
 }
 
 
-/// devuelve TRUE si es el primer registro a consear e el query.
+/// devuelve true si es el primer registro a consear e el query.
 /**
 \return
 **/
@@ -518,8 +521,6 @@ BlPostgreSqlClient::BlPostgreSqlClient()
 {
     BL_FUNC_DEBUG
     conn = NULL;
-    m_insideTransaction = FALSE;
-    
 }
 
 
@@ -591,10 +592,10 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
         } // end if
 
         BlDebug::blDebug ( conexion, 0 );
-        conn = PQconnectdb ( conexion.toAscii().data() );
+        conn = PQconnectdb ( conexion.toLatin1().data() );
         if ( PQstatus ( conn ) == CONNECTION_BAD ) {
             BlDebug::blDebug ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
-            if ( passwd != "" && g_confpr->value( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( passwd != "" && g_confpr->valueTrue( CONF_ALERTAS_DB )) {
                 BlDebug::blDebug ( PQerrorMessage ( conn ), 2 );
             } else {
                 BlDebug::blDebug ( PQerrorMessage ( conn ), 0 );
@@ -632,7 +633,7 @@ int BlPostgreSqlClient::formatofecha()
     QString query = "";
     PGresult *res;
     query = "SET DATESTYLE TO SQL, European";
-    res = PQexec ( conn, query.toAscii().data() );
+    res = PQexec ( conn, query.toLatin1().data() );
     if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
         BlDebug::blDebug ( "Cambio del formato de fecha command failed" );
     } // end if
@@ -640,7 +641,7 @@ int BlPostgreSqlClient::formatofecha()
 
     /// Establecemos la codificacion por defecto a UNICODE.
     query = "SET client_encoding = 'UTF8'";
-    res = PQexec ( conn, query.toAscii().data() );
+    res = PQexec ( conn, query.toLatin1().data() );
     if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
         BlDebug::blDebug ( "Cambio del formato de codificacion" );
     } // end if
@@ -648,7 +649,7 @@ int BlPostgreSqlClient::formatofecha()
 
     /// Establecemos la zona horaria de Madrid
     query = "SET TIME ZONE  'Europe/Madrid'";
-    res = PQexec ( conn, query.toAscii().data() );
+    res = PQexec ( conn, query.toLatin1().data() );
     if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
         BlDebug::blDebug ( "Cambio de zona horaria" );
     } // end if
@@ -666,19 +667,28 @@ int BlPostgreSqlClient::formatofecha()
 int BlPostgreSqlClient::begin()
 {
     BL_FUNC_DEBUG
-    if ( m_insideTransaction ) {
-        BlDebug::blDebug ( "Ya estamos dentro de una transaccion", 0 );
-        return -1;
+    /// Podemos hacer transacciones en cascada, en cuyo caso las previas son obviadas. Salvo en caso de hacer un rollback.
+    /// Esto es debido a que un formulario puede solicitar el borrado de otro formulario y ambos harán begin. Interesa que si uno de los dos falla
+    /// Se obvie toda la transaccion.
+    if (g_num_begins == 0) {
+      /// Es la primera transaccion y ponemos el commit a true, porque para empezar no habrá rollback.
+      g_global_commit = true;
+      BlDebug::blDebug("=============== BEGIN ==================");
+      PGresult *res;
+      res = PQexec ( conn, "BEGIN" );
+      if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
+	  BlDebug::blDebug ( "BEGIN command failed" );
+	  blMsgError("No se pudo iniciar la transaccion");
+	  PQclear ( res );
+	  g_num_begins = 0;
+	  return -1;
+      } // end if
+    } else {
+          BlDebug::blDebug("=============== BEGIN ANIDADO ==================");
     } // end if
-    PGresult *res;
-    res = PQexec ( conn, "BEGIN" );
-    if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
-        BlDebug::blDebug ( "BEGIN command failed" );
-        PQclear ( res );
-        return -1;
-    } // end if
-    PQclear ( res );
-    m_insideTransaction = TRUE;
+    g_num_begins ++;
+    
+    // PQclear ( res );
     
     return ( 0 );
 }
@@ -693,15 +703,20 @@ int BlPostgreSqlClient::begin()
 void BlPostgreSqlClient::commit()
 {
     BL_FUNC_DEBUG
-    if ( !m_insideTransaction ) {
-	
-        return;
+    g_num_begins--;
+    if (g_num_begins == 0) {
+	 if (g_global_commit) {
+	      BlDebug::blDebug("=============== COMMIT ==================");
+	      PGresult *res;
+	      res = PQexec ( conn, "COMMIT" );
+	      PQclear ( res );
+	 } else {
+	      BlDebug::blDebug("=============== ROLLBACK DENTRO DE TRANSACCION ANIDADA ==================");
+	      PGresult *res;
+	      res = PQexec ( conn, "ROLLBACK" );
+	      PQclear ( res );
+	 } // end if
     } // end if
-    PGresult *res;
-    res = PQexec ( conn, "COMMIT" );
-    PQclear ( res );
-    m_insideTransaction = FALSE;
-    
 }
 
 
@@ -714,15 +729,15 @@ void BlPostgreSqlClient::commit()
 void BlPostgreSqlClient::rollback()
 {
     BL_FUNC_DEBUG
-    if ( !m_insideTransaction ) {
-	
-        return;
+    g_num_begins--;
+    if ( g_num_begins == 0) {
+	BlDebug::blDebug("=============== ROLLBACK ==================");
+	PGresult *res;
+	res = PQexec ( conn, "ROLLBACK" );
+	PQclear ( res );
+    } else {
+	g_global_commit= false;
     } // end if
-    PGresult *res;
-    res = PQexec ( conn, "ROLLBACK" );
-    PQclear ( res );
-    m_insideTransaction = FALSE;
-    
 }
 
 
@@ -817,7 +832,7 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
 /// \retval 0 Si la ejecucion fue correcta
 /// \retval 1 en caso contrario
 
-#include <qtextcodec.h>
+#include <QtCore/QTextCodec>
 
 ///
 /**
@@ -879,7 +894,7 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
             throw 42501;
 	
 	
-        /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
+        /// Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result=PQexecParams(  conn, ( const char * ) Query.toUtf8()  , 
                      numParams, NULL, params, NULL, NULL, 0);
         
@@ -888,7 +903,6 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
             throw - 1;
         if ( PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus ( result ) != 2 )
             throw - 1;
-	
 
         PQclear ( result );
 	
@@ -965,8 +979,8 @@ QString BlPostgreSqlClient::sanearCadena ( QString cadena )
     /// Reservamos (la funci&oacute;n de postgres lo necesita) un buffer del
     /// doble de car&aacute;cteres + 1 que la cadena original.
     buffer = ( char * ) malloc ( ( sizeof ( char ) * longitud * 2 ) + 1 );
-    PQescapeString ( buffer, cadena.toAscii().constData(), cadena.toAscii().size() );
-    cadenaLimpia = QString::fromAscii ( buffer );
+    PQescapeString ( buffer, cadena.toLatin1().constData(), cadena.toLatin1().size() );
+    cadenaLimpia = QString::fromLatin1 ( buffer );
     free ( buffer );
     
     return cadenaLimpia;
@@ -1011,17 +1025,20 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
     QString value;
     int num;
     QString Query = "select * from configuracion where nombre = '" + sanearCadenaUtf8(nombre) + "'";
-    fprintf ( stderr, "%s\n", Query.toAscii().data() );
-    result = PQexec ( conn, Query.toAscii().data() );
+    result = PQexec ( conn, Query.toLatin1().data() );
     if ( !result || PQresultStatus ( result ) != PGRES_TUPLES_OK ) {
-        fprintf ( stderr, "SQL command failed: %s\n", Query.toAscii().data() );
+#ifdef CONFIG_DEBUG
+        fprintf ( stderr, "SQL command failed: %s\n", Query.toLatin1().data() );
         fprintf ( stderr, "%s\n", PQerrorMessage ( conn ) );
+#endif
         PQclear ( result );
         return "";
     } // end if
     num = PQntuples ( result );
     if ( num > 1 ) {
-        fprintf ( stderr, "Aviso: Hay %d valores para el campo %s en la tabla configuracion\n", num, nombre.toAscii().data() );
+#ifdef CONFIG_DEBUG
+        fprintf ( stderr, "Aviso: Hay %d valores para el campo %s en la tabla configuracion\n", num, nombre.toLatin1().data() );
+#endif
     } // end if
     if ( num == 0 ) {
         value = "";
@@ -1035,19 +1052,19 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
 
 
 /// Comprueba si el usuario actual tiene permisos para actuar sobre una tabla y
-/// devuelve TRUE o FALSE.
+/// devuelve true o false.
 /// \param table La tabla que se quiere consultar.
 /// \param privilege El tipo de permiso "SELECT", "INSERT" o "UPDATE".
-/// \return TRUE si se tiene permiso, FALSE si no se lo tiene.
+/// \return true si se tiene permiso, false si no se lo tiene.
 bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
 {
     BL_FUNC_DEBUG
     /// Comprobamos que tengamos permisos para trabajar con articulos.
     BlDbRecordSet *rs = loadQuery ( "SELECT has_table_privilege('" + table + "', '" + privilege + "') AS pins" );
-    bool hasPrivilege = FALSE;
+    bool hasPrivilege = false;
     if ( rs ) {
         if ( rs->value( "pins" ) == "t" ) {
-            hasPrivilege = TRUE;
+            hasPrivilege = true;
         } // end if
         delete rs;
     } // end if
@@ -1059,7 +1076,7 @@ bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
 /// Comprueba si existe alg&uacute;n registro en la tabla que cumpla cierta condici&oacute;n
 /// \param table
 /// \param cond Condición, por defecto ninguna (se comprueba si hay algún registro en la tabla)
-/// \return TRUE si existe algún registro
+/// \return true si existe algún registro
 bool BlPostgreSqlClient::existsAnyRecord ( QString table, QString cond )
 {
    BL_FUNC_DEBUG

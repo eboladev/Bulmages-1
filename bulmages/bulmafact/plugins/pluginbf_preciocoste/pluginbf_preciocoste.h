@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_PRECIOCOSTE_H
 #define PLUGINBF_PRECIOCOSTE_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blform.h"

@@ -31,7 +31,7 @@
 \param parent
 \param flag
 **/
-BcCambiaCuentaView::BcCambiaCuentaView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
+BcCambiaCuentaView::BcCambiaCuentaView ( BcCompany *emp, QWidget *parent, Qt::WindowFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG

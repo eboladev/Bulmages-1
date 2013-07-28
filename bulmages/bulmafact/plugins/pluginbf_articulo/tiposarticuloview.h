@@ -49,7 +49,7 @@ private:
     bool m_semaforoPintar;
 
 public:
-    TipoArticuloList ( BfCompany *, QWidget *parent = 0, bool selectMode = FALSE );
+    TipoArticuloList ( BfCompany *, QWidget *parent = 0, bool selectMode = false );
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();

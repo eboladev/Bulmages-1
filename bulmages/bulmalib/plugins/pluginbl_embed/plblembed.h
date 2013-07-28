@@ -3,7 +3,7 @@
 
 #ifndef Q_OS_WIN32
 
-#include <QObject>
+#include <QtCore/QObject>
 
 
 

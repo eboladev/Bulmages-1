@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_TIPOTRABAJO_H
 #define PLUGINBF_TIPOTRABAJO_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 
 #include "bfbulmafact.h"
@@ -43,6 +43,9 @@ extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlAction_actionTriggered(BlAction *);
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
+
+#ifdef _NO_COMPILE
+
 class QSubForm3BfDelegate : public BfSubFormDelegate
 {
 public:
@@ -52,6 +55,8 @@ public:
     virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 };
+
+#endif
 
 #endif
 

@@ -19,9 +19,9 @@
  ***************************************************************************/
 
 
-#include <QWidget>
-#include <QCheckBox>
-#include <QMainWindow>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMainWindow>
 
 #include "debug.h"
 #include "blfunctions.h"
@@ -46,11 +46,11 @@ CambiarDebug::CambiarDebug ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( 
 
     
     /// Comprovamos el estado de CONF_DEBUG en los archivos de configuracion y checkeamos mui_debug, segun estos.
-    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
-        mui_debug->setChecked ( TRUE );
+    if ( g_confpr->valueTrue( CONF_DEBUG )) {
+        mui_debug->setChecked ( true );
         BlDebug::blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
     } else {
-        mui_debug->setChecked ( FALSE );
+        mui_debug->setChecked ( false );
         BlDebug::blDebug ( ( Q_FUNC_INFO,  _("Debug desactivado") ), 0 );
     }
 
@@ -80,10 +80,10 @@ void CambiarDebug::on_mui_debug_stateChanged ( int state )
     BL_FUNC_DEBUG
     /// Establecemos el estado de CONF_DEBUG, sobreescribiendo lo establecido por los archivos y sin guardar el estado
     if (state == Qt::Checked) {
-        g_confpr->setValue( CONF_DEBUG, "TRUE");
+        g_confpr->setValue( CONF_DEBUG, "true");
         BlDebug::blDebug ( ( Q_FUNC_INFO, _("Debug activado") ), 0 );
     } else if (state == Qt::Unchecked) {
-        g_confpr->setValue( CONF_DEBUG, "FALSE");
+        g_confpr->setValue( CONF_DEBUG, "false");
         BlDebug::blDebug ( ( Q_FUNC_INFO,  _("Debug desactivado") ), 0 );
     } // end if
 

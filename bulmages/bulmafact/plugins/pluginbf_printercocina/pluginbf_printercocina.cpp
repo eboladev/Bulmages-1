@@ -19,7 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_printercocina.h"
 #include "blcombobox.h"
@@ -37,7 +37,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_printercocina", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_printercocina", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }
@@ -78,7 +78,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
     pcocina->setFieldId ( "idprintercocina" );
     pcocina->m_valores["nombreprintercocina"] = "";
     pcocina->m_valores["colaprintercocina"] = "";
-    pcocina->setAllowNull ( TRUE );
+    pcocina->setAllowNull ( true );
     pcocina->setId ( "" );
     hboxLayout160->addWidget ( pcocina );
 

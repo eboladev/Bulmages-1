@@ -27,6 +27,7 @@
 #include "clienteview.h"
 #include "bfbuscarreferencia.h"
 #include "facturaview.h"
+#include "facturaivaincclienteview.h"
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
 #include "pdefs_pluginbf_clientecobro.h"
@@ -42,6 +43,6 @@ extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int FacturaView_FacturaView ( FacturaVie
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BlAction_actionTriggered(BlAction *);
-
+extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int FacturaIVAIncClienteView_FacturaIVAIncClienteView ( FacturaIVAIncClienteView * );
 #endif
 

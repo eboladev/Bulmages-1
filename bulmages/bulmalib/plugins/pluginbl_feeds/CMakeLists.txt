@@ -14,20 +14,10 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set (QT_USE_QTWEBKIT true)
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTNETWORK true)
-
-
-INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
@@ -35,13 +25,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
-# generate rules for building source files from the resources
-#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 
 IF(WIN32)
@@ -83,8 +69,15 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
+if(WIN32)
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-install_targets(/lib/bulmafact/plugins ${plugin})
+qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
+else(WIN32)
+target_link_libraries(${plugin} bulmalib)
+qt5_use_modules(${plugin} Widgets WebKit WebKitWidgets)
+endif(WIN32)
+
+install_targets(/lib/bulmalib/plugins ${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.es.${plugin})

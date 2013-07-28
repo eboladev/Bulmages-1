@@ -22,9 +22,9 @@
 #ifndef COBROVIEW_H
 #define COBROVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "blfunctions.h"
 #include "ui_profesorbase.h"

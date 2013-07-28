@@ -20,9 +20,9 @@
 #ifndef PLUGINBL_AUTOFORMH
 #define PLUGINBL_AUTOFORMH
 
-#include "QObject"
-#include "QMenu"
-#include "QAction"
+#include <QtCore/QObject>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
 
 
 #include "blmainwindow.h"

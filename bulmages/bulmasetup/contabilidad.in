@@ -19,6 +19,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         
         self.languages = ["es","ca","fr","en"]
 
+        # Establecemos un estado
+        self.estado = None
+
         # Ocultamos la columna de las descripciones.
         self.mui_plugins.setColumnCount(13)
         self.mui_plugins.hideColumn(1)
@@ -66,18 +69,19 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.cadcategorias = self.cadcategorias.replace(' ;',';')
         self.arra = self.cadcategorias.split(';')
         self.arra.sort()
-        self.j = 0
-        self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        self.j = 1
         while (self.j < len ( self.arra)):
             if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
                 self.mui_categoria.addItem( self.arra[self.j])
             self.j = self.j + 1
+        self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setCurrentIndex(self.j)
 
     def actualizarDatabase(self):
         self.writecommand(QtGui.QApplication.translate("Contabilidad",'ACTUALIZANDO BASE DE DATOS', None, QtGui.QApplication.UnicodeUTF8))
         # Desactivamos el mostrado de errores ya que si el parche no es el adecuado entonces produce errores que no son tales
         self.mostrarErrores = "FALSE"
-        self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql", "rev-0.14.sql"]
+        self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql", "rev-0.14.sql", "rev-0.15.sql"]
         os.chdir(gettempdir())
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
@@ -300,6 +304,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,8).text()+ QtGui.QApplication.translate("Contabilidad","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,5).text() + QtGui.QApplication.translate("Contabilidad", "<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,6).text() + QtGui.QApplication.translate("Contabilidad","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,11).text() )
 
         if (self.semaforo == 1):
+            if (self.estado == None):
+                self.estado = not(self.mui_plugins.item(row,0).checkState())
             if (self.estado != self.mui_plugins.item(row,0).checkState()):
                     # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
                 if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
@@ -386,9 +392,16 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Si el plugin tiene archivo de autoforms lo copiamos
                 if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
-                   # Aqui copiamos el archivo
-                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str(plugins.openreports + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
-            # Si hay que aplicar un plugin entonces lo escribimos
+                   # Aqui spliteamos y copiamos cada archivo
+                   self.cadautoforms = self.mui_plugins.item(self.i,12).text().replace('; ',';')
+                   self.cadautoforms = self.cadautoforms.replace(' ;',';')
+                   self.arra = self.cadautoforms.split(';')
+                   self.arra.sort()
+                   self.j = 0
+                   while (self.j < len ( self.arra)):
+                       functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.arra[self.j]), str(plugins.configfiles + self.arra[self.j].replace("__","_" + self.database + "_") ) )
+                       self.j = self.j + 1
+                # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
                 # Tratamos toda la cadena de categorias.
                     self.cadreports = self.mui_plugins.item(self.i,11).text().replace('; ',';')
@@ -497,7 +510,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                             self.terminador = ""
                             self.out << "CONF_PLUGINS_BULMACONT   "
                         # Si hay que aplicar un plugin entonces lo escribimos
-                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
+                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3 and self.mui_plugins.item(self.i,10).text().contains(".so")):
                             self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
                             if os.name == 'posix':
                                 self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
@@ -570,7 +583,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                     self.mui_plugins.hideRow(self.i)
                 self.i = self.i + 1
 
-        if (self.mui_categoria.currentIndex() > 0):
+        if (self.mui_categoria.currentIndex() < self.mui_categoria.count() -1 ):
             # Vamos a trabajar con el combo Box
             cat = self.mui_categoria.currentText()
             self.i = 0

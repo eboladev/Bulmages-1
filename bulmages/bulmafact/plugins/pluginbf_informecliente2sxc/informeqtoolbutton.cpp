@@ -21,14 +21,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <QWidget>
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QInputDialog>
+#include <QtWidgets/QWidget>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QInputDialog>
 
 #include "informeqtoolbutton.h"
 #include "blfunctions.h"
@@ -92,7 +92,7 @@ void InformeQToolButton::click()
 
     // Solicitamos el ejercicio
     bool ok;
-    int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
+    int anyo = QInputDialog::getInt ( this, _ ( "Ejercicio del Informe" ),
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
     QString fitxersortidatxt = "";
@@ -216,7 +216,7 @@ void InformeQToolButton::click()
     QString informeclientessxcperl = g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.perl";
     blRemove(informeclientessxcperl);
     
-    QFile file ( informeclientessxcperl );
+    BlFile file ( informeclientessxcperl );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << fitxersortidatxt;
@@ -224,9 +224,9 @@ void InformeQToolButton::click()
     } // end if
 
     QString cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + informeclientessxcperl;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "kspread " + informeclientessxc + " &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     
 }
@@ -334,7 +334,7 @@ void InformeProveedorQToolButton::click()
 
     // Solicitamos el ejercicio
     bool ok;
-    int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
+    int anyo = QInputDialog::getInt ( this, _ ( "Ejercicio del Informe" ),
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
     QString fitxersortidatxt = "";
@@ -456,7 +456,7 @@ void InformeProveedorQToolButton::click()
     blRemove(informeproveedoressxcperl);
     
     
-    QFile file ( informeproveedoressxcperl );
+    BlFile file ( informeproveedoressxcperl );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << fitxersortidatxt;
@@ -464,9 +464,9 @@ void InformeProveedorQToolButton::click()
     } // end if
 
     QString cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + informeproveedoressxcperl;
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
-    system ( cadena.toAscii() );
+    system ( cadena.toLatin1() );
 
     
 }

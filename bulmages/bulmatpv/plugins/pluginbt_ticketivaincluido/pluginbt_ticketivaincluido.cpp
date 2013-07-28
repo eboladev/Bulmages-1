@@ -20,11 +20,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
-#include <QLineEdit>
-#include <QTableWidget>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTableWidget>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "pluginbt_ticketivaincluido.h"
 #include "blfunctions.h"
@@ -46,7 +46,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    blBindTextDomain ("pluginticketbasicoivainc", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
+    blBindTextDomain ("pluginticketbasicoivainc", g_confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _("Ticket I.V.A. incluido"), tpv, "ticketbasico" );

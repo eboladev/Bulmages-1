@@ -24,7 +24,7 @@
 #ifndef SOCIOVIEW_H
 #define SOCIOVIEW_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "blpostgresqlclient.h"
 #include "bfform.h"

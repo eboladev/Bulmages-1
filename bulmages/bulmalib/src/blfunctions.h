@@ -27,13 +27,13 @@
 #ifndef BLFUNCTIONS_H
 #define BLFUNCTIONS_H
 
-#include <QDateTime>
-#include <QMessageBox>
-#include <QDesktopWidget>
-#include <QString>
-#include <QTime>
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QDateTime>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QDesktopWidget>
+#include <QtCore/QString>
+#include <QtCore/QTime>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include <sys/time.h>
 
@@ -42,10 +42,10 @@
 #include <string>
 #include <math.h>
 
-#include <QMainWindow>
-#include <QStatusBar>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QStatusBar>
 #ifdef Q_OS_WIN32
-	#include <qt_windows.h>
+	#include <QtCore/qt_windows.h>
 #endif
 
 #include "bldefs.h"
@@ -109,19 +109,15 @@ void BL_EXPORT blReplaceStringInFile ( QString, QString, QString, QString );
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString BL_EXPORT blTextEditor ( QString texto );
 
-#if CONFIG_DEBUG == TRUE
-#ifdef OLD_DEBUG
-void BL_EXPORT blDebug ( const QString &cad, int nivel = 0, const QString & param = "" );
-#endif
+#ifdef CONFIG_DEBUG
 #define BL_FUNC_DEBUG  BlDebug __llamada_debug(Q_FUNC_INFO, 0);
 #else
-#ifdef OLD_DEBUG
-#define blDebug(...)       // sin debug
-#endif
 #define BL_FUNC_DEBUG      // sin debug
 #endif
 void BL_EXPORT blDebugOn();
 void BL_EXPORT blDebugOff();
+
+// int  blfprintf(FILE *fp,const char *format,...);
 
 
 void BL_EXPORT blMsgInfo ( QString cad, QWidget *parent = 0 );
@@ -149,7 +145,7 @@ bool BL_EXPORT blValidateSpainNIFCode(QString nif1, QChar &digit);
 int BL_EXPORT blSumAllDigits(int val);
 bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &digit);
 
-void BL_EXPORT blRawPrint(const QString &archivo, bool diruser=TRUE, const QString &defprinter="");
+void BL_EXPORT blRawPrint(const QString &archivo, bool diruser=true, const QString &defprinter="");
 
 int BL_EXPORT blWebBrowser(const QString &uri, const QString &defbrowser="");
 

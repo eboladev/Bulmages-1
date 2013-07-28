@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTextStream>
-#include <QMessageBox>
-#include <QFile>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QFile>
 
 #include "bcasientoform.h"
 #include "bcasientoview.h"

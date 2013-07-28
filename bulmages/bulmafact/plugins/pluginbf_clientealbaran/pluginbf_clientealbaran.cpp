@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
     if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
@@ -306,7 +306,7 @@ int BlToolButton_released(BlToolButton *bot) {
 	} // end for
 
 	/// Procesamos el albaran.
-	bud->mui_procesadoalbaran->setChecked ( TRUE );
+	bud->mui_procesadoalbaran->setChecked ( true );
 	bud->save();
 	delete bud;
 

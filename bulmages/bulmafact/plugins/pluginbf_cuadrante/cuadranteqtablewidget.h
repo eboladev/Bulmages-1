@@ -22,12 +22,12 @@
 #ifndef CUADRANTEQTABLEWIDGET_H
 #define CUADRANTEQTABLEWIDGET_H
 
-#include <QEvent>
-#include <QTableWidget>
-#include <QTableWidgetItem>
-#include <QStyledItemDelegate>
-#include <QLabel>
-#include <QMenu>
+#include <QtCore/QEvent>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTableWidgetItem>
+#include <QtWidgets/QStyledItemDelegate>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMenu>
 #include "blfunctions.h"
 #include "blwidget.h"
 

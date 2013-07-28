@@ -21,7 +21,7 @@
 #ifndef LISTLINCONTRATOVIEW_H
 #define LISTLINCONTRATOVIEW_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

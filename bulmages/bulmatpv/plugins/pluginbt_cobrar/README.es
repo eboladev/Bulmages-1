@@ -24,4 +24,6 @@ Incompatibles:
 
 Orden: 40
 
+Categorias: Utilidades avanzadas; Experimentales; Restauración; Tallas y Colores; Colmados; Parques Infantiles;
+
 Comentarios: Ideal para bares, cafeterías y restaurantes.

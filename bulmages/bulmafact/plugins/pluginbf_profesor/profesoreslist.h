@@ -24,7 +24,7 @@
 #ifndef PROFESORES_H
 #define PROFESORES_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -59,8 +59,8 @@ private:
     QString mdb_idprofesor;
 
 public:
-    ProfesoresList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    ProfesoresList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ProfesoresList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ProfesoresList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~ProfesoresList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

@@ -22,7 +22,7 @@
 #ifndef ABOUTFAPACVIEW_H
 #define ABOUTFAPACVIEW_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include <ui_aboutfapacbase.h>

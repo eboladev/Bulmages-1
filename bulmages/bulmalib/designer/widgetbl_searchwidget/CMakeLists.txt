@@ -10,19 +10,9 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS ../../src/blsearchwidgetbase.ui)
 
-
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTDESIGNER true)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
 	${QT_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-	${QT_QTDESIGNER_INCLUDE_DIR}
 	${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -30,8 +20,8 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS})
-QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS})
+QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 
 IF(WIN32)

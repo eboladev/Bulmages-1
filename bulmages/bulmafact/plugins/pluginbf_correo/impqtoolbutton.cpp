@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "impqtoolbutton.h"
 #include "blfunctions.h"
@@ -28,10 +28,10 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "presupuestoview.h"
 #include "blfixed.h"
@@ -57,7 +57,6 @@ EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *p
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    
 }
 
 
@@ -67,7 +66,6 @@ EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *p
 EmailQToolButton::~EmailQToolButton()
 {
     BL_FUNC_DEBUG
-    
 }
 
 
@@ -132,9 +130,14 @@ void EmailQToolButton::click()
             subject = _("Presupuesto ") + num;
             body = _("Adjunto le enviamos el presupuesto numero ") + num + _(" con referencia ") + ref +"\n";
 
-            body += _("Atentamente\n\n\n\"");
+            body += _("Atentamente\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/presupuesto" + num + ".pdf";
+#else
             attached = g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
-
+#endif
             blSendEmail( email, bcc, subject, body, attached );
         } // end if
     } // end if
@@ -164,9 +167,14 @@ void EmailQToolButton::click()
             QString subject = _("Pedido ") + num;
             QString body = _("Adjunto le enviamos el pedido numero ") + num + _(" con referencia ") + ref +"\n";
 
-            body += _("Atentamente\n\n\n\"");
-            QString attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
-
+            body += _("Atentamente\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/pedidocliente" + num + ".pdf";
+#else
+            attached = g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+#endif
             blSendEmail( email, bcc, subject, body, attached );
 
         } // end if
@@ -198,8 +206,14 @@ void EmailQToolButton::click()
             subject = _("Albaran ") + num;
             body = _("Adjunto le enviamos el albaran numero ") + num + _(" con referencia ") + ref +"\n";
 
-            body += _( "Atentamente\n\n\n\"");
+            body += _( "Atentamente\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/albaran" + num + ".pdf";
+#else
             attached = g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+#endif
 
             blSendEmail( email, bcc, subject, body, attached );
 
@@ -235,7 +249,13 @@ void EmailQToolButton::click()
             body = _("Adjunto le enviamos la factura numero ") + serie + num + _(" con fecha ") + fecha +"\n";
 
             body += _("Sin otro particular, reciba un cordial saludo\n\n\n");
+#ifdef Q_OS_WIN32
+	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
+	    /// Por eso pasamos una posible ruta relativa a absoluta.
+            attached = QDir(g_confpr->value( CONF_DIR_USER )).absolutePath() + "/factura" + serie + num + ".pdf";
+#else
             attached = g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+#endif
             
 
             blSendEmail( email, bcc, subject, body, attached );

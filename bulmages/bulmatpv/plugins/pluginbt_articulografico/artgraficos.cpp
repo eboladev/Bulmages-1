@@ -1,12 +1,12 @@
-#include <QTableWidget>
-#include <QLabel>
-#include <QHeaderView>
-#include <QFile>
-#include <QDomDocument>
-#include <QPicture>
-#include <QPainter>
-#include <QPushButton>
-#include <QTextStream>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QHeaderView>
+#include <QtCore/QFile>
+#include <QtXml/QDomDocument>
+#include <QtGui/QPicture>
+#include <QtGui/QPainter>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QTextStream>
 
 #include "artgraficos.h"
 #include "blconfiguration.h"
@@ -61,7 +61,7 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
             m_lineaActual = item;
     }// end for
 
-    if ( m_lineaActual && nuevaLinea == FALSE ) {
+    if ( m_lineaActual && nuevaLinea == false ) {
         /// Ya hay una linea con este articulo (es un agregado)
         BlFixed cantidadib ( m_lineaActual->dbValue ( "cantlalbaran" ) );
         BlFixed cant1 = cantidadib + BlFixed("1");

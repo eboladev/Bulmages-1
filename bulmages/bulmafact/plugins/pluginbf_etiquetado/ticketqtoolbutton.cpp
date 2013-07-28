@@ -18,18 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "ticketqtoolbutton.h"
 #include "blfunctions.h"
 
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtCore/QTextStream>
 #include "blfixed.h"
 #include "bfcompany.h"
 #include "bldb.h"
+#include "blfile.h"
 
 
 ///
@@ -83,7 +84,7 @@ void TicketQToolButton::click()
     QString archivod = g_confpr->value( CONF_DIR_USER ) + "etiquetas.rml";
     blCopyFile(archivo,archivod);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

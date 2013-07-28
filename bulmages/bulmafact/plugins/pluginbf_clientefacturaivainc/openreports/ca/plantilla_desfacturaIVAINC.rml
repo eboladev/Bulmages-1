@@ -1,0 +1,93 @@
+<!-- IF ="NOT EXISTS (SELECT * FROM lfactura WHERE descuentolfactura > 0 AND idfactura=[idfactura])"-->
+	<blockTable style="tablacontenido" colWidths="3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm" splitByRow="2" rowheights="2" repeatRows="1">
+		<tr>
+			<td>Codigo</td>
+			<td>Concepto</td>
+			<td>Unid:</td>
+			<td>Precio/u:</td>
+			<td>Subtotal s/iva:</td>
+		</tr>
+<!--QUERY="SELECT *, (cantlfactura*pvpivainclfactura*(100-descuentolfactura)/100)::NUMERIC(12,2) AS totallfactura FROM lfactura 
+LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura= [idfactura] ORDER BY ordenlfactura"-->
+<tr>
+<td>[codigocompletoarticulo]</td>
+<td>[desclfactura]</td>
+<td>[cantlfactura]</td>
+<td>[pvpivainclfactura]</td>
+<td>[totallfactura]</td>
+</tr>
+<!--END QUERY-->
+</blockTable>
+
+<!-- ELSE -->
+
+<blockTable style="tablacontenido" colWidths="2.50cm, 6.5cm, 1.8cm, 2cm, 2.5cm, 2.9cm" splitByRow="2" rowheights="2" repeatRows="1">
+		<tr>
+			<td>Codigo</td>
+			<td>Concepto</td>
+			<td>Unid:</td>
+			<td>Precio/u:</td>
+			<td>% Descuento:</td>
+			<td>Subtotal s/iva:</td>
+		</tr>
+<!--QUERY="SELECT *, (cantlfactura*pvpivainclfactura*(100-descuentolfactura)/100)::NUMERIC(12,2) AS totallfactura FROM lfactura 
+LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura= [idfactura] ORDER BY ordenlfactura"-->
+<tr>
+<td>[codigocompletoarticulo]</td>
+<td>[desclfactura]</td>
+<td>[cantlfactura]</td>
+<td>[pvplfactura]</td>
+<td>[descuentolfactura]%</td>
+<td>[totallfactura]</td>
+</tr>
+<!--END QUERY-->
+</blockTable>
+
+<!-- END IF -->
+
+<!--IF QUERY="SELECT * FROM dfactura WHERE idfactura=[idfactura]" -->
+<blockTable style="tablacontenido" colWidths="13.00cm, 2.5cm, 3.00cm">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td><para style="paragrafo2"><b>Descuento/s:</b></para></td>
+			<td><para style="paragrafo2der"><b>% Dto:</b></para></td>
+			<td></td>
+		</tr>
+
+<!--QUERY="SELECT * FROM dfactura WHERE idfactura=[idfactura]"-->
+		<tr>
+
+			<td><para style="paragrafo2">[conceptdfactura]</para></td>
+			<td>[proporciondfactura]%</td>
+			<td></td>
+		</tr>
+<!--END QUERY-->
+</blockTable>
+<!--END IF QUERY-->
+
+ 
+<!--IF QUERY="SELECT comentfactura FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
+<!--QUERY="SELECT replace(comentfactura,'<','\n') AS comment FROM factura WHERE length(comentfactura) > 0 AND idfactura = [idfactura]"-->
+<blockTable style="tablacontenido" colWidths="1.00cm, 17.5cm">
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2">[comment,l]</para></td>
+		</tr>
+<!--END QUERY-->
+</blockTable>
+<!--END IF QUERY-->

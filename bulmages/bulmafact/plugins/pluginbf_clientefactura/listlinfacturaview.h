@@ -22,7 +22,7 @@
 #ifndef LISTLINFACTURAVIEW_H
 #define LISTLINFACTURAVIEW_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

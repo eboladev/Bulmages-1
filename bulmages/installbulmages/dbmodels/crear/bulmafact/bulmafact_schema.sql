@@ -781,7 +781,8 @@ CREATE TABLE pago (
     previsionpago boolean DEFAULT FALSE,
     comentpago character varying(500),
     idtrabajador integer REFERENCES trabajador(idtrabajador),
-    idbanco integer REFERENCES banco(idbanco)
+    idbanco integer REFERENCES banco(idbanco),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago)
 );
 
 \echo -n ':: Funcion que crea restricciones en pago ... '
@@ -1332,6 +1333,7 @@ CREATE TABLE factura (
     idforma_pago integer REFERENCES forma_pago(idforma_pago),   
     UNIQUE (idalmacen, codigoserie_factura, numfactura),
     idtrabajador integer REFERENCES trabajador(idtrabajador),
+    ticketfactura boolean DEFAULT FALSE,
     totalfactura NUMERIC(12, 2) DEFAULT 0,
     bimpfactura NUMERIC(12, 2) DEFAULT 0,
     impfactura NUMERIC(12, 2) DEFAULT 0
@@ -1491,7 +1493,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
@@ -2337,6 +2339,7 @@ CREATE TABLE albaran (
     totalalbaran NUMERIC(12, 2) DEFAULT 0,
     bimpalbaran NUMERIC(12, 2) DEFAULT 0,
     impalbaran NUMERIC(12, 2) DEFAULT 0,
+    ticketalbaran boolean DEFAULT FALSE,
     UNIQUE (idalmacen, numalbaran)
 );
 
@@ -2897,7 +2900,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
@@ -2996,7 +2999,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
@@ -3095,7 +3098,7 @@ BEGIN
 
     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechaalbaran FROM albaran WHERE idalbaran = idp) ORDER BY fechairpf DESC LIMIT 1;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
     END IF;
 
     FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
@@ -3299,9 +3302,10 @@ BEGIN
     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 
     IF FOUND THEN
-	UPDATE CONFIGURACION SET valor = ''0.14.1-0002'' WHERE nombre = ''DatabaseRevision'';
+	UPDATE CONFIGURACION SET valor = ''0.15.0-0002'' WHERE nombre = ''DatabaseRevision'';
     ELSE
-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0002'');
+	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0002'');
+
     END IF;
 
     RETURN 0;
@@ -3309,4 +3313,4 @@ END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.14.1"
+\echo "Actualizada la revision de la base de datos a la version 0.16.0"

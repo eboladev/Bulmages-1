@@ -23,15 +23,15 @@
 /// utilizadas de forma regular en el programa. Implementadas en blfunctions.cpp
 /// Dichas funciones normalmente son de uso general, por lo que es normal ver este
 /// archivo incluido en la practica totalidad de los demas ficheros.
-#include <QString>
-#include <QTextEdit>
-#include <QDir>
-#include <QTextStream>
-#include <QLocale>
-#include <QProcess>
-#include <QDesktopServices>
-#include <QUrl>
-#include <QIODevice>
+#include <QtCore/QString>
+#include <QtWidgets/QTextEdit>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QLocale>
+#include <QtCore/QProcess>
+#include <QtGui/QDesktopServices>
+#include <QtCore/QUrl>
+#include <QtCore/QIODevice>
 
 
 #include "blfunctions.h"
@@ -65,31 +65,15 @@ QString BlDebug::m_mensajesanulados[7000];
 QString BlDebug::m_clasesanuladas[7000];
 int BlDebug::m_indiceclases;
 
-// int timeval_subtract (result, x, y)
-//      struct timeval *result, *x, *y;
-// {
-//   /* Perform the carry for the later subtraction by updating y. */
-//   if (x->tv_usec < y->tv_usec) {
-//     int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
-//     y->tv_usec -= 1000000 * nsec;
-//     y->tv_sec += nsec;
-//   }
-//   if (x->tv_usec - y->tv_usec > 1000000) {
-//     int nsec = (y->tv_usec - x->tv_usec) / 1000000;
-//     y->tv_usec += 1000000 * nsec;
-//     y->tv_sec -= nsec;
-//   }
-
 
 BlDebug::BlDebug(const QString &func, int level, const QString &params) {
     try {
-      
 	/// Si el objeto confpr no esta creado puede dar segmentation fault.
 	if (!g_confpr ) return;
 
 	/// Si no hay modo debug salimos directamente
-	if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
-
+	if (!g_confpr->valueTrue(CONF_DEBUG)) return;
+	
 	m_func = func;
 	m_level = level;
 	m_params = params;
@@ -172,35 +156,37 @@ BlDebug::BlDebug(const QString &func, int level, const QString &params) {
 	    } // end if
 	} // end if
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+#endif
     } // end try
     
 }
 
 void BlDebug::blDebug(const QString &text, int level, const QString &params) {
-
     try {
       
       /// Si el objeto confpr no esta creado puede dar segmentation fault.
       if (!g_confpr ) throw -1;
       
       /// Si no hay modo debug salimos directamente
-      if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+      if (!g_confpr->valueTrue(CONF_DEBUG)) return;
 
-  
-            for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
-                *BlDebug::m_outXML << "    ";
-                *BlDebug::m_out << "    ";
-            } // end for
+      for ( int i = 0; i <= BlDebug::m_auxxml; i++ ) {
+	  *BlDebug::m_outXML << "    ";
+	  *BlDebug::m_out << "    ";
+      } // end for
+      
+      QString cad1;
+      cad1 = "<comment  result=\"" + text + "\"  params=\"" + params + "\"></comment>";
 
-            QString cad1;
-            cad1 = "<comment  result=\"" + text + "\"  params=\"" + params + "\"></comment>";
 
-
-            *BlDebug::m_outXML << cad1  << "\n" << flush;
-            *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
+      *BlDebug::m_outXML << cad1  << "\n" << flush;
+      *BlDebug::m_out << "|" << text << " " << params << "\n" << flush;
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+#endif
     } // end try
 }
 
@@ -212,7 +198,7 @@ BlDebug::~BlDebug() {
       if (!g_confpr ) return;
       
       /// Si no hay modo debug salimos directamente
-      if (g_confpr->value(CONF_DEBUG) == "FALSE" ) return;
+      if (!g_confpr->valueTrue(CONF_DEBUG)) return;
 
        if ( m_level == 0 || m_level == 1 ) {
             for ( int i = 0; i < BlDebug::m_auxxml; i++ ) {
@@ -239,7 +225,9 @@ BlDebug::~BlDebug() {
         } // end if
 
     } catch(...) {
+#ifdef CONFIG_DEBUG
 	  fprintf(stderr, "Error en el tratamiento de la depuracion");
+#endif
     } // end try
       
 }
@@ -252,12 +240,12 @@ QString blTextEditor ( QString texto )
     QTextEdit *ed = new QTextEdit ();
     ed->setFixedSize ( 450, 250 );
     ed->setPlainText ( texto );
-    g_main->setEnabled ( FALSE );
+    g_main->setEnabled ( false );
     ed->show();
     while ( !ed->isHidden() ) {
         g_theApp->processEvents();
     } // end while
-    g_main->setEnabled ( TRUE );
+    g_main->setEnabled ( true );
     QString vuelta = ed->toPlainText();
     delete ed;
     return vuelta;
@@ -535,7 +523,7 @@ QString blExtendCodeLength ( QString cad, unsigned int num1 )
 void blReplaceStringInFile ( QString archivo, QString texto1, QString texto2, QString archivo2 )
 {
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
-    int result = system ( cadena.toAscii().data() );
+    int result = system ( cadena.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."));
     } // end if
@@ -557,7 +545,7 @@ void blCreatePDF ( const QString arch )
     cadsys = "\"" + g_confpr->value( CONF_PYTHON ) + "\" \"" + g_confpr->value( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
 
-    int result1 = system ( cadsys.toAscii() );
+    int result1 = system ( cadsys.toLatin1() );
     if (result1 == -1) {
 	blMsgError(_("Error en PYTHON [ blfunctions->blCreatePDF() ]"));
     } // end if
@@ -568,7 +556,7 @@ void blCreatePDF ( const QString arch )
     cadsys = "\"" + g_confpr->value( CONF_FLIP ) + "\" -u \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
     
-    int result2 = system ( cadsys.toAscii().data() );
+    int result2 = system ( cadsys.toLatin1().data() );
     if (result2 == -1) {
 	blMsgError(_("Error en FLIP [ blfunctions->blCreatePDF() ]"));
     } // end if
@@ -578,7 +566,7 @@ void blCreatePDF ( const QString arch )
 #else
 
     cadsys = "bgtrml2pdf " + arch + ".rml > " + arch + ".pdf";
-    int result3 = system ( cadsys.toAscii().data() );
+    int result3 = system ( cadsys.toLatin1().data() );
     if (result3 == -1) {
 	blMsgError(_("Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"));
     } // end if
@@ -606,11 +594,25 @@ void blCreateODS ( const QString arch )
 #else
     QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + arch + ".ods";
 #endif
-    int result1 = system ( cadena.toAscii() );
+    int result1 = system ( cadena.toLatin1() );
     if (result1 == -1) {
 	blMsgError(_("Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"));
     } // end if
 
+    /// Borramos algun archivo que pudiera haber
+#ifdef Q_OS_WIN32
+    cadena = g_confpr->value( CONF_DIR_USER );
+    cadena.replace("/", "\\");
+    cadena = "\"del \"" + arch + ".odt\"\"";
+#else
+    cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + arch + ".odt";
+#endif
+    result1 = system ( cadena.toLatin1() );
+    if (result1 == -1) {
+	blMsgError(_("Error al borrar archivo .odt [ blfunctions->blCreateODS() ]"));
+    } // end if
+    
+    
     /// Hacemos la invocacion del python
 #ifdef Q_OS_WIN32
 
@@ -623,7 +625,7 @@ void blCreateODS ( const QString arch )
 #else
     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + arch + ".pys";
 #endif
-    int result2 = system ( cadena.toAscii() );
+    int result2 = system ( cadena.toLatin1() );
     if (result2 == -1) {
 	blMsgError(_("Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"));
     } // end if
@@ -649,12 +651,31 @@ void blCreateAndLoadODS ( const QString arch )
 #else
       cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".ods &";
 #endif
-      int result = system ( cadena.toAscii() );
+      int result = system ( cadena.toLatin1() );
       if (result == -1) {
 	  blMsgError(_("Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"));
       } // end if
     } // end if
 
+    if (QFile::exists(g_confpr->value( CONF_DIR_USER ) + arch + ".odt")) {
+      QString cadena = "";
+#ifdef Q_OS_WIN32
+    if (g_confpr->value( CONF_ODS ).isEmpty()) {
+	    /// Abre con el programa por defecto del sistema.
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_DIR_USER ) + arch +  ".odt" + "\"\"";
+    } else {
+	    /// Abre con la configuracion forzada.
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_ODS ) + "\" \"" + g_confpr->value( CONF_DIR_USER ) +  arch + ".odt" + "\"\"";
+    } // end if
+#else
+      cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".odt &";
+#endif
+      int result = system ( cadena.toLatin1() );
+      if (result == -1) {
+	  blMsgError(_("Error al ejecutar ootext [ blfunctions->blCreateAndLoadODS() ]"));
+      } // end if
+    } // end if
+    
 }
 
 /// Genera un 'PDF' a partir de un 'RML' usando 'bgtrml2pdf' y adem&aacute;s lo muestra con el visor
@@ -671,7 +692,7 @@ void blCreateAndLoadPDF ( const QString arch )
     QString cadsys = g_confpr->value( CONF_PDF ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf &";C:
 #endif
     
-    int result = system ( cadsys.toAscii().data() );
+    int result = system ( cadsys.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"));
     } // end if
@@ -686,7 +707,7 @@ void blSendPDFMail ( const QString arch, const QString to, const QString subject
     //FIXME: REVISAR PARAMETROS de mailsend o la posibilidad de anyadir otros programas
     //para enviar correo desde la ventana de configuracion del programa.
     QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
-    int result = system ( cadsys.toAscii().data() );
+    int result = system ( cadsys.toLatin1().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"));
     } // end if
@@ -705,7 +726,7 @@ QString blWindowId ( const QString &app )
         cad = "xwininfo -int | grep Window | awk '{print $4}' > /tmp/xwinfo";
     } // end if
 
-    int result = system ( cad.toAscii() );
+    int result = system ( cad.toLatin1() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"));
     } // end if
@@ -732,134 +753,22 @@ QString blWindowId ( const QString &app )
 void blDebugOn ()
 {
     BL_FUNC_DEBUG
-    g_confpr->setValue ( CONF_DEBUG, "TRUE" );
+    g_confpr->setValue ( CONF_DEBUG, "true" );
 }
 
 
 void blDebugOff ()
 {
     BL_FUNC_DEBUG
-    g_confpr->setValue ( CONF_DEBUG, "FALSE" );
+    g_confpr->setValue ( CONF_DEBUG, "false" );
 }
 
 
-/// cad = String a presentar como texto de depuracion o como mensaje de error.
-/// nivel 0 = normal.
-/// nivel 1 = Bajo.
-/// nivel 2 = Alto (sale un popup).
-/// nivel 4 = Comienza depuracion indiscriminada.
-/// nivel 5 = Termina depuracion indiscriminada.
-/// nivel 10 = Salida a terminal.
-#if CONFIG_DEBUG == TRUE
-#ifdef OLD_DEBUG
-void blDebug ( const QString &cad, int nivel, const QString &param )
-{
-    /// Si el objeto confpr no esta creado puede dar segmentation fault.
-    if ( g_confpr == NULL ) {
-        return;
-    } // end if
-
-    static bool semaforo = 0;
-
-
-    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
-        static QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
-        static QTextStream out ( &file );
-
-        static QFile filexml ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.xml" );
-        static QTextStream outxml ( &filexml );
-
-        static int auxxml = 0;
-        static int supnivel = 0;
-        static int indice = 0;
-        static QString mensajesanulados[7000];
-        static QString clasesanuladas[7000];
-        static int indiceclases = 0;
-        static QElapsedTimer t;
-
-        if ( !semaforo ) {
-            t.start();
-            if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-                return;
-            if ( !filexml.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-                return;
-            semaforo = 1;
-        } // end if
-
-
-        if ( nivel == 5 ) {
-            supnivel = 0;
-            nivel = 2;
-        } // end if
-        if ( nivel == 4 ) {
-            supnivel = 2;
-            nivel = 2;
-        } // end if
-        if ( nivel == 0 || nivel == 1 ) {
-            /// Si la cadena contiene END bajamos el nivel
-            if ( !cad.startsWith ( "END" ) ) {
-                auxxml ++;
-                if ( auxxml > 20 ) auxxml = 1;
-            } // end if
-            for ( int i = 0; i < auxxml; i++ ) {
-                outxml << "    ";
-                out << "    ";
-            } // end for
-
-            QString cad1 = cad;
-            if ( cad.startsWith ( "END" ) ) {
-                cad1 = "</" + cad1.remove ( 0, 4 ) + " time=\"" + QString::number ( t.elapsed() ) + "\" result=\"" + param + "\" >";
-            } else if ( cad.contains ( " " ) ) {
-                cad1 = "    <COMENT value=\"" + cad + " " + param + "\"></COMENT>";
-            } else {
-                cad1 = "<" + cad1 + " time=\"" + QString::number ( t.elapsed() ) + "\" param=\"" + param + "\" >";
-            } // end if
-
-            outxml << cad1  << "\n" << flush;
-            out << cad << " " << param << "\n" << flush;
-	    
-            if ( cad.startsWith ( "END" ) ) {
-                auxxml --;
-                if ( auxxml < 0 ) auxxml = 20;
-            } // end if
-        } // end if
-        for ( int i = 0; i < indice; i++ ) {
-            if ( cad == mensajesanulados[i] ) {
-                return;
-            } // end if
-        } // end for
-        for ( int i = 0; i < indiceclases; i++ ) {
-            if ( cad.left ( cad.indexOf ( "::" ) ) == clasesanuladas[i] ) {
-                return;
-            } // end if
-        } // end for
-
-        if ( nivel == 2 || ( supnivel == 2 && nivel == 0 ) || nivel == 3 ) {
-            out << cad << " " << param << "\n" << flush;
-            int err = QMessageBox::information ( NULL,
-                                                 _ ( "Informacion de depuracion" ),
-                                                 cad + " " + param,
-                                                 _ ( "&Continuar" ),
-                                                 _ ( "&Omitir" ),
-                                                 _ ( "Omitir &clase" ),
-                                                 0, 1 );
-            if ( err == 1 ) {
-                mensajesanulados[indice++] = cad;
-            } // end if
-            if ( err == 2 ) {
-                clasesanuladas[indiceclases++] = cad.left ( cad.indexOf ( "::" ) );
-            } // end if
-        } // end if
-
-        file.flush();
-    }
-}
-#endif
-#endif
 
 void blMsgInfo ( QString cad, QWidget *parent )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug(cad);
     QMessageBox msgBox;
     msgBox.information ( parent,
                          _ ( "Informacion del programa" ),
@@ -871,6 +780,7 @@ void blMsgInfo ( QString cad, QWidget *parent )
 void blMsgWarning ( QString cad, QWidget *parent )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug(cad);
     QMessageBox msgBox;
     msgBox.warning ( parent,
                      _ ( "Aviso del programa" ),
@@ -882,6 +792,7 @@ void blMsgWarning ( QString cad, QWidget *parent )
 void blMsgError ( QString cad, QWidget *parent )
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug(cad);
     QMessageBox msgBox;
     msgBox.critical ( parent,
                       _ ( "Error del programa" ),
@@ -1196,14 +1107,14 @@ bool blValidateSpainNIFCode ( QString nif1, QChar &digit )
 
     /// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
     if ( nif1.size() < 5 ) {
-        return TRUE;
+        return true;
     } // end if
 
     int modulo = nif.toInt() % 23;
     digit = QChar ( g_spainNIFCode[modulo] );
     if ( nif1[8] == QChar ( g_spainNIFCode[modulo] ) )
-        return TRUE;
-    return FALSE;
+        return true;
+    return false;
 
 }
 
@@ -1240,7 +1151,7 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
     cif = cif.replace ( "_", "" );
     /// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
     if ( cif.size() < 5 ) {
-        return TRUE;
+        return true;
     } // end if
     int valpar = cif[2].digitValue() + cif[4].digitValue() + cif[6].digitValue();
     int valimpar = blSumAllDigits ( cif[1].digitValue() * 2 ) + blSumAllDigits ( cif[3].digitValue() * 2 ) + blSumAllDigits ( cif[5].digitValue() * 2 ) + blSumAllDigits ( cif[7].digitValue() * 2 );
@@ -1251,23 +1162,23 @@ bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
     if ( cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W' ) {
         digit = g_spainCIFCode[d-1];
         if ( cif[8] == g_spainCIFCode[d-1] ) {
-            return TRUE;
+            return true;
         } else {
-            return FALSE;
+            return false;
         } // end if
     } // end if
     if ( cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'C' || cif[0] == 'D' || cif[0] == 'E' || cif[0] == 'F' || cif[0] == 'G' || cif[0] == 'H' || cif[0] == 'I' || cif[0] == 'J' || cif[0] == 'U' || cif[0] == 'V' ) {
         digit = QString::number ( d % 10 ) [0];
         if ( cif[8].digitValue() == d % 10 ) {
-            return TRUE;
+            return true;
         } else {
-            return FALSE;
+            return false;
         } // end if
     } //end if
     if ( cif[8] == QChar ( g_validateSpainCIFCode[d-1] ) || cif[8].digitValue() == d % d ) {
-        return TRUE;
+        return true;
     } //end if
-    return FALSE;
+    return false;
 }
 
 
@@ -1285,14 +1196,14 @@ void blRawPrint(const QString &archivo, bool diruser, const QString &defprinter)
       
       #ifndef Q_OS_WIN32
 	      QString comando = "lp -d" + printer + " " + dir + archivo;
-	      system ( comando.toAscii().data() );
+	      system ( comando.toLatin1().data() );
       #else
 	      /* TODO: Eliminar CONF_SPOOL porque ya se imprime en 'raw' directamente desde BulmaLib.
 	       *
 	      QString comando = "\"" + g_confpr->value(CONF_SPOOL)  + "\" \"" + dir + archivo + "\" " + printer;
 	      comando.replace("/","\\");
 	      comando = "\"" + comando + "\"";
-	      system ( comando.toAscii().data() );
+	      system ( comando.toLatin1().data() );
 	      */
 
 	      /// Lee el contenido del archivo y lo manda a la impresora.
@@ -1332,7 +1243,7 @@ int blWebBrowser(const QString &uri, const QString &defbrowser) {
     
     else {
         QString webcommand = commas + browser + commas + QUrl(uri, QUrl::TolerantMode).toString() + inbackground;
-        int result = system ( webcommand.toAscii().data() );
+        int result = system ( webcommand.toLatin1().data() );
         return result;
     } // end if
 
@@ -1461,14 +1372,22 @@ bool blCopyFile( const QString &oldName, const QString &newName )
     BL_FUNC_DEBUG
 
     // Si es el mismo archivo, no lo copia.
-    if(oldName.compare(newName) == 0)
-    {
+    if(oldName.compare(newName) == 0) {
         return true;
     } // end if
     
     // Transforma las direcciones en tolerantes, para  que funcione en totas las plataformas.
     QString oldFile = QUrl(oldName, QUrl::TolerantMode).toString();
     QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
+
+    
+#ifdef Q_OS_WIN32
+//# La compatibilidad con Win32 no esta garantizada usando el QUrl::TolerantMode
+    oldFile = oldName;
+    newFile = newName;
+#endif
+    
+    
 
     // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
     if(!QFile::copy(oldFile, newFile)) {
@@ -1478,17 +1397,18 @@ bool blCopyFile( const QString &oldName, const QString &newName )
 			command = "copy \"" + oldFile + "\" \"" + newFile + "\"";
 			command.replace("/", "\\");
 			command = command + " /y";
+			
 		#else
 			command = "cp " + oldFile + " " + newFile;
 		#endif
 
-		int result = system ( command.toAscii().data() );
+		int result = system ( command.toLatin1().data() );
 
         if (result == -1) {
             return false;
-            }
+        } // end if
     } // end if
-
+    
     // Se ha copiado correctamente el archivo
     return true;
 }
@@ -1516,7 +1436,7 @@ bool blRemove(const QString &filetoremove )
 	    command = "rm " + removeFile;
 	#endif
 
-        int result = system ( command.toAscii().data() );
+        int result = system ( command.toLatin1().data() );
         if (result == -1) {
             return false;
             } // end if
@@ -1611,13 +1531,24 @@ int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &b
     runcommand += "to='" + recipient + "',";
     runcommand += "bcc='" + bcc + "',";
     runcommand += "subject='" + subject + "',";
+    #ifndef  Q_OS_WIN32
     body.replace(",","&#44;"); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
+    #else
+    body.replace(","," "); // convertim les comes en espais ja que Windows no suporta altre cosa..
+    #endif
     runcommand += "body='" + body + "',";
     if (attached != "") {
-        runcommand += "attachment='file://" + attached + "'";
-    }
-            
-    system(QString( runcommand + background).toAscii());
+      #ifdef Q_OS_WIN32
+      attached.replace("/","\\");
+      #endif
+      runcommand += "attachment='" + attached + "'";
+    } // end if
+    
+    #ifdef Q_OS_WIN32
+    runcommand.replace("\n"," ");
+    #endif
+       
+    system(QString( runcommand + background).toLatin1());
     
     return 0;
 }
@@ -1647,7 +1578,7 @@ int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, Q
   
     runcommand += " " + recipient;
     
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     
     return 0;
 }
@@ -1675,7 +1606,7 @@ int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &bod
         urlmail += "&attach=" + attached + "\"";
     }
     QString runcommand = QString(CAD_COMILLAS + dir_email + QUrl(urlmail, QUrl::TolerantMode).toString() + CAD_COMILLAS);
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     return 0;
 
 }
@@ -1709,7 +1640,7 @@ int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body,
     
     QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS + CAD_COMILLAS + urlmail + CAD_COMILLAS);
     
-    system(QString( runcommand + background).toAscii());
+    system(QString( runcommand + background).toLatin1());
     return 0;
 
 }
@@ -1734,23 +1665,19 @@ int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
     #ifdef Q_OS_WIN32
         program_name.replace(".exe", "");
     #endif
-    
     if (program_name == "thunderbird") {
         Thunderbird (  recipient, bcc, subject, body, attached );
     } else if (program_name == "kmail") {
         Kmail (  recipient, bcc, subject, body, attached );
     } else if (program_name == "evolution") {
         Evolution (  recipient, bcc, subject, body, attached );
-    }
+    } // end if
     #ifdef Q_OS_WIN32
      else if (program_name == "Outlook") {
         Outlook (  recipient, bcc, subject, body, attached );
     } // end if
     #endif
-    
     return 0;
     
 }
-
-
 

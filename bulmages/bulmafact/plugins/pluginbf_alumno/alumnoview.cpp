@@ -23,11 +23,11 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
 
 #include "alumnoview.h"
 #include "bfcompany.h"
@@ -83,10 +83,10 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_idclase->setTableName ( "clase" );
         mui_idclase->setFieldId ( "idclase" );
         mui_idclase->m_valores["nomclase"] = "";
-        mui_idclase->setAllowNull ( TRUE );
+        mui_idclase->setAllowNull ( true );
         mui_idclase->setId ( "" );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
         blScript(this);
@@ -154,7 +154,7 @@ void AlumnoView::pintarPost()
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {
@@ -203,7 +203,7 @@ int AlumnoView::beforeDelete()
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {
@@ -283,7 +283,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
     QString archivoimagen;
     archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
-    QFile archivo;
+    BlFile archivo;
     archivo.setFileName ( archivoimagen );
 
     if ( archivo.exists() ) {
@@ -330,8 +330,8 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 //    addSubFormHeader ( "porcentalumnocliente", BlDbField::DbNumeric, BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Porcentaje" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
-    setInsert ( TRUE );
-    setOrdenEnabled ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( false );
     
     
 }
@@ -362,8 +362,8 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre actividad" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id actividad" ) );
 
-    setInsert ( TRUE );
-    setOrdenEnabled ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( false );
     
     
 }

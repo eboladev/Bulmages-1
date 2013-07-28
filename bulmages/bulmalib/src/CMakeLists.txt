@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                    #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -17,17 +18,13 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
-
-
-#Bulmalib
+#########################################################################
+#Bulmalib                                                               #
+#########################################################################
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
-#set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-#set(QT_USE_QTUITOOLS true)
-#INCLUDE(${QT_USE_FILE})
+find_package(Qt5Core REQUIRED)
 
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
@@ -80,6 +77,8 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blescprinter.cpp
 			blcp850eurotextcodec.cpp
 			bluiloader.cpp
+			blfile.cpp
+			blsync.cpp
 			blaction.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
@@ -115,10 +114,12 @@ set(bulmalib_MOCS	bldblogindialog.h
 			bltoolbutton.h
 			blbankedit.h
 			bluiloader.h
+			blfile.h
+			blsync.h
 			blaction.h)
 
 
-#           blworkspace.h
+
 
 
 set (bulmalib_HDRS	blmaincompanypointer.h
@@ -141,24 +142,6 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blpostgresqlclient.h
 			blargparser.h)
 
-			
-			
-#headers that are not moc'ed
-#			blpostgresqlclient.h 
-#			blconfiguration.h 
-#			blspainbankaccountnumber.h 
-#			blfunctions.h 
-#			dialogchanges.h 
-#			blfixed.h 
-#			blimportexport.h 
-#			blplugins.h 
-#			bldb.h 
-#			bldbsubform.h 
-#			blmaincompany.h 
-#			blmainwindow.h
-#			blargparser.h
-
-
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS	bldblogindialogbase.ui
 			blcompanydialogbase.ui
@@ -170,15 +153,15 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blprogressbarbase.ui
 			blsearchwidgetbase.ui
 			blformlistfilterbase.ui
+			blsyncbase.ui
 			blbankeditbase.ui)
 
 if (USE_GETTEXT)
     include_directories(
-      ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
+      ${QT_INCLUDE_DIR}
       ${GETTEXT_INCLUDE_DIR}
-      ${QT_QTXML_INCLUDE_DIR}
-      ${QT_QTSCRIPT_INCLUDE_DIR}
+      ${Qt5Core_INCLUDE_DIRS}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -186,10 +169,9 @@ if (USE_GETTEXT)
       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
 else (USE_GETTEXT)
     include_directories(
-      ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
-      ${QT_QTXML_INCLUDE_DIR}
-      ${QT_QTSCRIPT_INCLUDE_DIR}
+      ${QT_INCLUDE_DIR}
+      ${Qt5Core_INCLUDE_DIRS}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -197,20 +179,13 @@ else (USE_GETTEXT)
       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
 endif(USE_GETTEXT)
 
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
-
 # generate rules for building source files from the resources
-QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
-QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
+QT5_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
+QT5_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 
 # generate rules for building source files that moc generates
-
-#ADD_DEFINITIONS(${QT_DEFINITIONS})
-#ADD_DEFINITIONS(-DQT_SHARED)
 
 IF(WIN32)
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
@@ -220,11 +195,9 @@ IF(USE_GETTEXT)
 ADD_DEFINITIONS(-DUSE_GETTEXT)
 ENDIF(USE_GETTEXT)
 
-
-# Defines if we want our own debugging code
-#ADD_DEFINITIONS(-DDEPURA_DEBUG)
-
-
+IF (ALLOW_DEBUG)
+ADD_DEFINITIONS(-DALLOW_DEBUG)
+ENDIF(ALLOW_DEBUG)
 
 # build sources, moc'd sources, and rcc'd sources
 
@@ -234,6 +207,8 @@ add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}
 set_target_properties( bulmalib PROPERTIES 
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
+
+qt5_use_modules(bulmalib UiTools Xml Core Widgets Script WebKit)
 
 IF(USE_GETTEXT)
 	target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} ${GETTEXT_LIBRARIES} )
@@ -267,11 +242,5 @@ endif(USE_GETTEXT)
 
 install_targets(/lib bulmalib)
 install (FILES ${bulmalib_HDRS} DESTINATION include)
-
-
-
-if(USE_PCH)
-   add_dependencies( bulmalib  bulmalib_pch )
-endif(USE_PCH)
 
 ADD_LOCAL_BLI18N_HEADER( bulmalib )

@@ -19,22 +19,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLayout>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QWidget>
-#include <QDateTime>
-#include <QTextStream>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtCore/QDateTime>
+#include <QtCore/QTextStream>
 #include <fstream>
 
 #include "z2zview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "blplugins.h"
-
+#include "blfile.h"
 
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.
@@ -52,7 +52,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 
     try {
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
     
@@ -157,14 +157,14 @@ void Z2ZView::on_mui_traspasar_clicked()
         db->inicializa ( g_confpr->value( CONF_FACT_ALT ) );
         db->begin();
 
-        QFile file ( g_confpr->value( CONF_DIR_USER ) + "z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        BlFile file ( g_confpr->value( CONF_DIR_USER ) + "z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file.open ( QIODevice::WriteOnly ) ) {
             return;
         } // end if
         QTextStream stream ( &file );
 
-        QFile file1 ( g_confpr->value( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        BlFile file1 ( g_confpr->value( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file1.open ( QIODevice::WriteOnly ) ) {
             file.close();
@@ -172,7 +172,7 @@ void Z2ZView::on_mui_traspasar_clicked()
         } // end if
         QTextStream stream1 ( &file1 );
 
-        QFile file2 ( g_confpr->value( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        BlFile file2 ( g_confpr->value( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file2.open ( QIODevice::WriteOnly ) ) {
             file.close();
@@ -181,7 +181,7 @@ void Z2ZView::on_mui_traspasar_clicked()
         } // end if
         QTextStream stream2 ( &file2 );
 
-        QFile file3 ( g_confpr->value( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
+        BlFile file3 ( g_confpr->value( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString ( "dd_MM_yyyy_hh_mm" ) + ".sql" );
         /// Guardado del orden y de configuraciones varias.
         if ( ! file3.open ( QIODevice::WriteOnly ) ) {
             file.close();

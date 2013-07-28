@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QTextStream>
-#include <QFileDialog>
-#include <QCheckBox>
-#include <QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMessageBox>
 
 #include "carteracobroslist.h"
 #include "blmaincompany.h"
@@ -44,7 +44,7 @@
 \param editmode
 \return
 **/
-CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode modo )
+CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode modo )
         : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
@@ -80,9 +80,9 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( tr ( "Selector de vencimientocs" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
     
     /// Cargamos los filtros guardados.
@@ -332,7 +332,7 @@ void CarteraCobrosList::on_mui_suma_clicked() {
             BlDbSubFormRecord *rec = mui_list->lineaat ( i );
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
-            if ( val == "TRUE" ) {
+            if ( val == "true" ) {
                 a = a + BlFixed ( rec->dbValue ( "cantvencimientoc" ) );
             } // end if
         } // end for
@@ -363,9 +363,9 @@ CarteraCobrosListSubForm::CarteraCobrosListSubForm ( QWidget *parent, const char
     addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, tr ( "Forma de pago" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, tr ( "Cliente" ) );
     addSubFormHeader ( "estadovencimientoc", BlDbField::DbVarChar, BlDbField::DbNotNull , BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, tr ( "Estado" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

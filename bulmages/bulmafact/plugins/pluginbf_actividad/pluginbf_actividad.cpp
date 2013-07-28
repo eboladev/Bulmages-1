@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_actividad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_actividad", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_actividad = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
@@ -60,7 +60,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionA->setObjectName("mui_actionActividades");
         pPluginMenu->addAction ( accionA );
         bges->Listados->addAction ( accionA );
-        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         BlAction *accionB = new BlAction ( _ ( "&Nueva actividad" ), 0 );
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad_add.png" ) ) );
@@ -69,7 +68,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setObjectName("mui_actionActividadNueva");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
-        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
         pPluginMenu->addSeparator();
 
@@ -80,7 +78,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionC->setObjectName("mui_actionActividadTipos");
         pPluginMenu->addAction ( accionC );
         bges->Fichas->addAction ( accionC );
-        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
         
     } // end if
 

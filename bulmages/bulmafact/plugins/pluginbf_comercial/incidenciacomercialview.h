@@ -21,10 +21,10 @@
 #ifndef INCIDENCIACOMERCIALVIEW_H
 #define INCIDENCIACOMERCIALVIEW_H
 
-#include <QLineEdit>
-#include <QTextEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_incidenciacomercialbase.h"
 #include "blpostgresqlclient.h"

@@ -22,7 +22,7 @@
 #ifndef CONVREUNIONLIST_H
 #define CONVREUNIONLIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -58,8 +58,8 @@ private:
     QString mdb_idreunion;
 
 public:
-    ConvReunionList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    ConvReunionList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ConvReunionList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ConvReunionList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~ConvReunionList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

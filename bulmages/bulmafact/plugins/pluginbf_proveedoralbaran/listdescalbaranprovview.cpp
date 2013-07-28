@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "listdescalbaranprovview.h"
 #include "blfunctions.h"
@@ -41,7 +41,7 @@ ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView ( QWidget *parent )
     addSubFormHeader ( "conceptdalbaranp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

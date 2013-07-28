@@ -21,14 +21,14 @@
 #ifndef INFORMEQTOOLBUTTON_H
 #define INFORMEQTOOLBUTTON_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 
 #include "articulolist.h"
 #include "clientslist.h"

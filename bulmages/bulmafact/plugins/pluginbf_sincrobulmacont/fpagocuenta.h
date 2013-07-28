@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "fpagoview.h"
 #include "bfbuscarbanco.h"

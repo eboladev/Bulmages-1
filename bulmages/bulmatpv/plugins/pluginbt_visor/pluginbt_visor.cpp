@@ -20,8 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "pluginbt_visor.h"
 #include "blfunctions.h"
@@ -47,7 +47,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginvisor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginvisor", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_file = new QFile ( g_confpr->value( CONF_TPV_VISOR_FILE ) );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
@@ -81,11 +81,11 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
     BL_FUNC_DEBUG
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
-        g_file->write ( tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).leftJustified ( 4, ' ', TRUE ).toAscii());
+        g_file->write ( tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).leftJustified ( 4, ' ', true ).toLatin1());
         g_file->write ( " " );	
-        g_file->write ( tick->lineaActBtTicket()->dbValue ( "nomarticulo" ).leftJustified ( 15, ' ', TRUE ).toAscii());
+        g_file->write ( tick->lineaActBtTicket()->dbValue ( "nomarticulo" ).leftJustified ( 15, ' ', true ).toLatin1());
         g_file->write ( "P.V.P. : ");
-	g_file->write ( tick->lineaActBtTicket()->dbValue ( "pvpivainclalbaran" ).toAscii());
+	g_file->write ( tick->lineaActBtTicket()->dbValue ( "pvpivainclalbaran" ).toLatin1());
         g_file->flush();
         g_file->close();
     } // end if

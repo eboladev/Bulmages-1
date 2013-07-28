@@ -1,9 +1,9 @@
 #ifndef PLBLBLOQCONF_H
 #define PLBLBLOQCONF_H
 
-#include <QObject>
-#include <QMenu>
-#include <QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
 
 
 class PluginBl_BloqConf : public QObject

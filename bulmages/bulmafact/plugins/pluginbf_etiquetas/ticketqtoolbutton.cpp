@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "ticketqtoolbutton.h"
 #include "blfunctions.h"
 
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 #include "facturapview.h"
 #include "blfixed.h"
 #include "facturaview.h"

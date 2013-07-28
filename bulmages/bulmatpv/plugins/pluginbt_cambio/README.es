@@ -22,7 +22,7 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+Categorias: Utilidades avanzadas; Experimentales; Restauración; Tallas y Colores; Colmados; Parques Infantiles;
 
 Orden:
 

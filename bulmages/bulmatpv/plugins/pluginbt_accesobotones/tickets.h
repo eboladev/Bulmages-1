@@ -1,9 +1,9 @@
 #ifndef TICKETS_H
 #define TICKETS_H
 
-#include <QDialog>
-#include <QProcess>
-#include <QDockWidget>
+#include <QtWidgets/QDialog>
+#include <QtCore/QProcess>
+#include <QtWidgets/QDockWidget>
 #include "blwidget.h"
 #include "ui_ticketsbase.h"
 

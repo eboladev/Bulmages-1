@@ -31,7 +31,7 @@
 \param parent
 \param editomodo
 **/
-TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG

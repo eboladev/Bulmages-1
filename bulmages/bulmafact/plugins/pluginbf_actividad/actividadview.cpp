@@ -23,10 +23,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 
 #include "actividadview.h"
 #include "bfcompany.h"
@@ -81,7 +81,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
             return;
         } // end if
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 
         /// Inicializamos el subformulario de alumnos
         mui_alumnosList->setMainCompany ( comp );
@@ -101,7 +101,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         mui_idtipoactividad->setTableName ( "tipoactividad" );
         mui_idtipoactividad->setFieldId ( "idtipoactividad" );
         mui_idtipoactividad->m_valores["nombretipoactividad"] = "";
-        mui_idtipoactividad->setAllowNull ( FALSE );
+        mui_idtipoactividad->setAllowNull ( false );
 
         pintar();
         dialogChanges_readValues();
@@ -217,8 +217,8 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "bancoalumnoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Banco alumno" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
-    setInsert ( TRUE );
-    setSortingEnabled ( TRUE );
+    setInsert ( true );
+    setSortingEnabled ( true );
 }
 
 ///
@@ -252,8 +252,8 @@ ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "CIF" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
-    setInsert ( TRUE );
-    setSortingEnabled ( TRUE );
+    setInsert ( true );
+    setSortingEnabled ( true );
     
     
 }
@@ -292,8 +292,8 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
     addSubFormHeader ( "nombrealumno1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "fechafaltaasistenciaalumnoactividad", BlDbField::DbDate, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Fecha de la falta" ) );
 
-    setInsert ( TRUE );
-    setSortingEnabled ( TRUE );
+    setInsert ( true );
+    setSortingEnabled ( true );
     
     
 }

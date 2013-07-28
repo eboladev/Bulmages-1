@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_PRINTERCOCINA_H
 #define PLUGINBF_PRINTERCOCINA_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "bfbulmafact.h"
 #include "blform.h"
 #include "bfsubform.h"

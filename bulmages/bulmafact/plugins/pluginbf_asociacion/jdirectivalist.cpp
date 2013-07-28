@@ -21,12 +21,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QTextStream>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include "blfile.h"
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
 
 #include "blconfiguration.h"
 #include "jdirectivalist.h"
@@ -38,7 +38,7 @@
     Mete la ventana en el workSpace.
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
-JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -63,7 +63,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -289,9 +289,9 @@ JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( p
     addSubFormHeader ( "fechainjdirectiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de constitucion" ) );
     addSubFormHeader ( "fechafinjdirectiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de disolucion" ) );
     
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
     
 }

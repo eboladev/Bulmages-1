@@ -22,9 +22,9 @@
 #ifndef CUADRANTE1VIEW_H
 #define CUADRANTE1VIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_cuadrante1base.h"
 #include "blpostgresqlclient.h"

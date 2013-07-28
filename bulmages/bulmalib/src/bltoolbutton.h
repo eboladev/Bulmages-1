@@ -24,8 +24,8 @@
 #ifndef BLTOOLBUTTON_H
 #define BLTOOLBUTTON_H
 
-#include <QToolButton>
-#include <QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
 

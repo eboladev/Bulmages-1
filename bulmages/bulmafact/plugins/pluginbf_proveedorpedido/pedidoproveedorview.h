@@ -22,9 +22,9 @@
 #ifndef PEDIDOPROVEEDORVIEW_H
 #define PEDIDOPROVEEDORVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_pedidoproveedorbase.h"
 #include "listlinpedidoproveedorview.h"
@@ -56,6 +56,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual void pintarPost();
 
 public slots:
     virtual void on_mui_idproveedor_valueChanged ( QString );

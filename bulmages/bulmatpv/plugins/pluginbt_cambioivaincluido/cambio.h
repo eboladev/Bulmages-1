@@ -2,7 +2,7 @@
 #define COBRAR_H
 
 #include "blwidget.h"
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 #include "ui_cambiobase.h"
 #include "btcompany.h"
 

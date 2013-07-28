@@ -21,12 +21,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Qt>
-#include <QObject>
-#include <qnamespace.h>
-#include <QFile>
-#include <QTextStream>
-#include <QDomDocument>
+#include <QtCore/QObject>
+#include <QtCore/qnamespace.h>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
 
 
 
@@ -220,7 +219,7 @@ void BtCompany::z()
     while ( !curfechas->eof() ) {
         
         
-        query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
+        query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz IS NULL AND ticketalbaran = true AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
         BlDbRecordSet *cur = loadQuery ( query );
         QString numtickets = cur->value( "numtickets" );
         QString total = cur->value( "total" );
@@ -238,7 +237,7 @@ void BtCompany::z()
         
         delete cur;
         
-        query = "UPDATE albaran SET idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
+        query = "UPDATE albaran SET idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = true AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
         runQuery ( query );
 
         commit();
@@ -247,8 +246,8 @@ void BtCompany::z()
 
 		if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 			QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-			system ( comando.toAscii().data() );
-		} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+			system ( comando.toLatin1().data() );
+		} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none") {
 			BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
 		} else {
 			blRawPrint("informe_Z.txt");
@@ -270,8 +269,8 @@ void BtCompany::x()
 
     if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-        system ( comando.toAscii().data() );
-    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        system ( comando.toLatin1().data() );
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none") {
         BlDebug::blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
 		blRawPrint("informe_X.txt");
@@ -314,7 +313,7 @@ void BtCompany::cobrar(bool imprimir)
             return;
         }// end if
 
-        if (imprimir || g_confpr->value(CONF_TPV_REIMPRIMIR) == "TRUE") {
+        if (imprimir || g_confpr->valueTrue(CONF_TPV_REIMPRIMIR)) {
             m_ticketActual->imprimir(false);
         }// end if
 
@@ -458,7 +457,7 @@ void BtCompany::cargaConf()
     m_bulmaTPV->setGeometry ( nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt() );
 
     /// Cogemos el ancho del indexador
-    m_bulmaTPV->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
+    m_bulmaTPV->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toLatin1() ) ) );
 
     
 }
@@ -489,7 +488,7 @@ void BtCompany::compruebaUltimaZ()
         if ( (curDiferencia->value("diferencia")).toInt() > 1 ) {
         
             // Comprobamos si hay tickets pendientes desde la ultima Z
-            query = "SELECT COUNT(idalbaran) AS numtickets FROM albaran where ticketalbaran = TRUE AND idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->value("fechaz") + "'";
+            query = "SELECT COUNT(idalbaran) AS numtickets FROM albaran where ticketalbaran = true AND idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->value("fechaz") + "'";
             BlDbRecordSet *curNumtickets = loadQuery ( query );
             
             if ( (curNumtickets->value("numtickets")).toInt() > 1 ) {
@@ -611,13 +610,13 @@ void BtCompany::syncXML(const QString &textxml) {
     /// Borramos los nodos que no aparecen en la sincronizacion ya que al parecer se deben haber borrado.
     int x = 0;
     while (x < m_listaTickets.size() -1 ) {
-        bool encontrado = FALSE;
+        bool encontrado = false;
 		BtTicket *linea1 = m_listaTickets.at(x);
 		int i = 0;
 		while (i < nodos.count() && !encontrado) {
 			QString nombre1 = nodos.item(i++).toElement().firstChildElement("NOMTICKET").text();
 			if (nombre1 == linea1->dbValue("nomticket")) {
-			encontrado = TRUE;
+			encontrado = true;
 			} // end if
 		} // end while
 		

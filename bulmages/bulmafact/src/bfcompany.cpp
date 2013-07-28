@@ -20,12 +20,11 @@
 
 #include "stdio.h"
 
-#include <Qt>
-#include <QObject>
-#include <qnamespace.h>
-#include <QFile>
-#include <QTextStream>
-#include <QDomDocument>
+#include <QtCore/QObject>
+#include <QtCore/qnamespace.h>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
 
 #include "blcompanydialog.h"
 #include "blfunctions.h"
@@ -77,9 +76,9 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
     BL_FUNC_DEBUG
 
     /// Comprobamos que tengamos permisos para trabajar con 'Paises'.
-    m_bulmafact->actionPaises->setEnabled ( FALSE );
+    m_bulmafact->actionPaises->setEnabled ( false );
     if ( hasTablePrivilege ( "pais", "SELECT" ) ) {
-        m_bulmafact->actionPaises->setEnabled ( TRUE );
+        m_bulmafact->actionPaises->setEnabled ( true );
     } // end if
 
 
@@ -103,69 +102,6 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
 
 
-/** Crea y Presenta la ventana de formas de pago.
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_FPago()
-{
-    BL_FUNC_DEBUG
-    /*
-       FPagoView *f = new FPagoView ( this, NULL );
-       m_pWorkspace->addSubWindow ( f );
-       f->show();
-    */
-    
-}
-
-
-/** Crea y Presenta la ventana de trabajadores
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_trabajadores()
-{
-    BL_FUNC_DEBUG  
-}
-
-
-/** Crea y Presenta la ventana de bancos
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_bancos()
-{
-    BL_FUNC_DEBUG
-}
-
-
-/** Crea y Presenta la ventana de Series de Factura
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-/**
-**/
-void BfCompany::s_seriesFactura()
-{
-    BL_FUNC_DEBUG
-   
-}
-
-
-
-
-
-/** Crea una instancia de ListAlmacenView y la presenta.
-*/
-/**
-\return
-**/
-void BfCompany::s_almacenes()
-{
-    BL_FUNC_DEBUG
-}
 
 
 /** Crea una instancia de BfConfiguracionView y la presenta.
@@ -182,26 +118,6 @@ void BfCompany::s_newBfConfiguracionView()
 }
 
 
-/** Crea y muestra el listado de Tipos de IVA
-*/
-/**
-**/
-void BfCompany::s_TipoIVAView()
-{
-    BL_FUNC_DEBUG
-    
-}
-
-
-/** Crea y muestra el listado de Tasas de IVA
-*/
-/**
-**/
-void BfCompany::s_TasaIVAView()
-{
-    BL_FUNC_DEBUG
-   
-}
 
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
@@ -227,9 +143,9 @@ void BfCompany::guardaConf()
 	  stream << "\t\t\t<Y>" + QString::number ( m_bulmafact->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmafact->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
-	  stream << "\t\t\t<INDEXADOR>" + ( QString ( m_bulmafact->actionIndexador->isChecked() ? "TRUE" : "FALSE" ) ) + "</INDEXADOR>\n";
+	  stream << "\t\t\t<INDEXADOR>" + ( QString ( m_bulmafact->actionIndexador->isChecked() ? "true" : "false" ) ) + "</INDEXADOR>\n";
         stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmafact->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
-	  stream << "\t\t\t<MAXIMIZED>" + QString ( isMaximized ? "TRUE" : "FALSE" ) + "</MAXIMIZED>\n";
+	  stream << "\t\t\t<MAXIMIZED>" + QString ( isMaximized ? "true" : "false" ) + "</MAXIMIZED>\n";
         stream << "\t</PRINCIPAL>\n";
 
         for ( int i = 0; i < m_windowListDock->numVentanas(); i++ ) {
@@ -241,9 +157,9 @@ void BfCompany::guardaConf()
             stream << "\t\t<VY>" + QString::number ( wid->parentWidget() ->y() ) + "</VY>\n";
             stream << "\t\t<VWIDTH>" + QString::number ( wid->width() ) + "</VWIDTH>\n";
             stream << "\t\t<VHEIGHT>" + QString::number ( wid->height() ) + "</VHEIGHT>\n";
-            stream << "\t\t<VVISIBLE>" + ( wid->isVisible() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VVISIBLE>\n";
-            stream << "\t\t<VMAXIMIZED>" + ( wid->isMaximized() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VMAXIMIZED>\n";
-            stream << "\t\t<VACTIVEWINDOW>" + ( m_bulmafact->workspace() ->activeWindow() == wid ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VACTIVEWINDOW>\n";
+            stream << "\t\t<VVISIBLE>" + ( wid->isVisible() ? QString ( "true" ) : QString ( "false" ) ) + "</VVISIBLE>\n";
+            stream << "\t\t<VMAXIMIZED>" + ( wid->isMaximized() ? QString ( "true" ) : QString ( "false" ) ) + "</VMAXIMIZED>\n";
+            stream << "\t\t<VACTIVEWINDOW>" + ( m_bulmafact->workspace() ->activeWindow() == wid ? QString ( "true" ) : QString ( "false" ) ) + "</VACTIVEWINDOW>\n";
             stream << "\t</VENTANA>\n";
         } // end for
 
@@ -288,23 +204,23 @@ void BfCompany::cargaConf()
     QString nheight = principal.firstChildElement ( "HEIGHT" ).toElement().text();
 
     /// Si est&aacute; maximizada, ignoramos las otras dimensiones
-    if (principal.firstChildElement ( "MAXIMIZED" ).toElement().text() == "TRUE")
+    if (principal.firstChildElement ( "MAXIMIZED" ).toElement().text() == "true")
 	 m_bulmafact->setWindowState(Qt::WindowMaximized);
     else /// Establecemos la geometria de la ventana principal.
 	 m_bulmafact->setGeometry ( nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt() );
 
     /// Cogemos el indexador
     QString indexador = principal.firstChildElement ( "INDEXADOR" ).toElement().text();
-    if ( indexador == "TRUE" ) {
-        s_indexadorCambiaEstado ( TRUE );
-        m_bulmafact->actionIndexador->setChecked ( TRUE );
+    if ( indexador == "true" ) {
+        s_indexadorCambiaEstado ( true );
+        m_bulmafact->actionIndexador->setChecked ( true );
     } else {
-        s_indexadorCambiaEstado ( FALSE );
-        m_bulmafact->actionIndexador->setChecked ( FALSE );
+        s_indexadorCambiaEstado ( false );
+        m_bulmafact->actionIndexador->setChecked ( false );
     } // end if
 
     /// Cogemos el ancho del indexador
-    m_bulmafact->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
+    m_bulmafact->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toLatin1() ) ) );
 
     /// Tratamos cada ventana
     QWidget *activewindow = NULL;
@@ -328,13 +244,13 @@ void BfCompany::cargaConf()
                     /// Establecemos la geometria de la ventana principal.
                     wid->resize ( vwidth.toInt(), vheight.toInt() );
                     wid->parentWidget() ->move ( vx.toInt(), vy.toInt() );
-                    if ( vvisible == "TRUE" ) {
+                    if ( vvisible == "true" ) {
                         wid->showNormal();
                     } // end if
-                    if ( vmaximized == "TRUE" ) {
+                    if ( vmaximized == "true" ) {
                         wid->showMaximized();
                     }
-                    if ( vactivewindow == "TRUE" ) {
+                    if ( vactivewindow == "true" ) {
                         activewindow = wid;
                     }
                 } // end if

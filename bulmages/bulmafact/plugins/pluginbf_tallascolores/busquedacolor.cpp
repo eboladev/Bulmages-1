@@ -173,7 +173,7 @@ BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
     setTableName ( "tc_color" );
     setFieldId ( "idtc_color" );
     m_valores["nomtc_color"] = "";
-    setAllowNull(FALSE);
+    setAllowNull(false);
     
 }
 

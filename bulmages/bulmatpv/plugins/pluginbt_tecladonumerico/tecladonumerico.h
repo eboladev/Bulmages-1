@@ -1,9 +1,9 @@
 #ifndef TECLADONUMERICO_H
 #define TECLADONUMERICO_H
 
-#include <QWidget>
-#include <QTableWidget>
-#include <QFile>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QTableWidget>
+#include <QtCore/QFile>
 
 #include "blfunctions.h"
 #include "ui_tecladonumericobase.h"

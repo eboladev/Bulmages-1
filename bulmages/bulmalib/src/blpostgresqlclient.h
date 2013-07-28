@@ -25,8 +25,8 @@
 #ifndef BLPOSTGRESQLCLIENT_H
 #define BLPOSTGRESQLCLIENT_H
 
-#include <QString>
-#include <QHash>
+#include <QtCore/QString>
+#include <QtCore/QHash>
 
 #ifdef DISTRO_DEBIAN
 #include <postgresql/libpq-fe.h>
@@ -119,7 +119,7 @@ public:
     /// Devuelve el n&uacute;mero de registros del cursor.
     int numregistros();
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString value( int posicion, int registro = -1, bool localeformat = FALSE );
+    QString value( int posicion, int registro = -1, bool localeformat = false );
     /// Devuelve el tipo de dato de una determinada posicion de un query
     int fieldType(int posicion);
     bool error();
@@ -136,7 +136,7 @@ public:
 
 public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString value( const QString &campo, int registro = -1, bool localeformat = FALSE );
+    QString value( const QString &campo, int registro = -1, bool localeformat = false );
     /// Avanza el puntero de recorrido en forma de cola una posici&oacute;n.
     int nextRecord();
     /// Retrocede el puntero de recorrido en forma de cola una posici&oacute;n.
@@ -175,7 +175,6 @@ private:
     QString m_pgTty; /// Indica algunos par&aacute;metros de la conexi&oacute;n (Desgraciadamente no se cuales).
     QString m_pgDbName; /// Indica el nombre de la base de datos con la que se conecta.
     PGconn *conn; /// Representa la conexi&oacute;n.
-    bool m_insideTransaction; /// Indica si estamos dentro de una transacci&oacute;n.
     QString m_currentUser;   /// Indica el usuario que se ha conectado.
     /// escapa una cadena per a posar-la a la cadena de connexió a PostgreSQL
     QString &escCadConn(QString t) ;

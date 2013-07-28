@@ -176,7 +176,7 @@ int BndsModifier::exec()
 	int pulsadoClick;
 	int grosorX = 1;
 	int grosorY = 2;
-	bool tactil = FALSE;
+	bool tactil = false;
 	int origenX = 0;
 	int origenY = 0;
 	
@@ -210,11 +210,11 @@ int BndsModifier::exec()
 	
 	    if ((pulsado & KEY_TOUCH) && ((touch.px >= limXmin) && (touch.px <= limXmax) && (touch.py >= limYmin) && (touch.py <= limYmax)) ) {
 		/// Se esta pulsando en la pantalla tactil.
-		if (tactil == FALSE) {
+		if (tactil == false) {
 		    /// Se acaba de pulsar en la pantalla tactil. Se registra la posicion inicial.
 		    origenX = touch.px;
 		    origenY = touch.py;
-		    tactil = TRUE;
+		    tactil = true;
 		} // end if
 		
 		//drawRectangle8bpp ( touch.px - (grosorX / 2), touch.py - (grosorY / 2), touch.px + (grosorX / 2), touch.py + (grosorY / 2), 1, buffer);
@@ -226,7 +226,7 @@ int BndsModifier::exec()
 		
 	    } else {
 		/// No se esta pulsando la pantalla tactil.
-		tactil = FALSE;
+		tactil = false;
 	    } // end if
 
 

@@ -22,7 +22,7 @@
 #ifndef PAGOSLIST_H
 #define PAGOSLIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -55,8 +55,8 @@ private:
     QString mdb_idpago;
 
 public:
-    PagosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    PagosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    PagosList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    PagosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~PagosList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

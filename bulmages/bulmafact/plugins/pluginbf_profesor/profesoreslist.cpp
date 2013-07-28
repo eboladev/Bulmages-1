@@ -21,12 +21,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QTextStream>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include "blfile.h"
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
 
 #include "blconfiguration.h"
 #include "profesoreslist.h"
@@ -38,7 +38,7 @@
     Mete la ventana en el workSpace.
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
-ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -62,7 +62,7 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -338,9 +338,9 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
     addSubFormHeader ( "telprofesor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Telefono" ) );
     addSubFormHeader ( "poblprofesor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Poblacion" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
     
 }

@@ -21,10 +21,10 @@
 #ifndef PLUGINBF_CATALOGO_H
 #define PLUGINBF_CATALOGO_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtCore/QObject>
 
 #include "articulolist.h"
 #include "bfbulmafact.h"

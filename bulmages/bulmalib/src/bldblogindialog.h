@@ -22,7 +22,7 @@
 #ifndef BLDBLOGINDIALOG_H
 #define BLDBLOGINDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include "ui_bldblogindialogbase.h"

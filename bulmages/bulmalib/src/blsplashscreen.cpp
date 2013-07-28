@@ -30,17 +30,17 @@
 \param appName
 \param appVersion
 **/
-BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString appVersion ) : QSplashScreen ( 0, Qt::FramelessWindowHint )
+BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString appVersion ) : QSplashScreen ()
 {
   
     BL_FUNC_DEBUG
 
-    fprintf(stderr, "En el constructor de BlSplashScreen \n");
-
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {
+#ifdef CONFIG_DEBUG
         QString mensaje = "BlSplashScreen: No existe el archivo " + appSplash + "\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
         m_image0 = new QPixmap ( 350, 263 );
         m_image0->fill ( QColor ( QColor ( 150, 150, 200 ) ) );
     } else {
@@ -82,7 +82,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     m_label1->setGeometry ( 0, m_image0->height() - 50, m_image0->width(), 50 );
 
     m_barra = new QProgressBar ( this );
-    m_barra->setTextVisible ( FALSE );
+    m_barra->setTextVisible ( false );
     /// Poniendo el minimo y maximo a 0 hace el efecto especial.
     m_barra->setRange ( 0, 100 );
     m_barra->setGeometry ( 0, m_image0->height() - 65, m_image0->width(), 15 );

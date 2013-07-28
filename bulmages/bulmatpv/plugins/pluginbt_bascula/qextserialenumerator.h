@@ -8,9 +8,9 @@
 #define _QEXTSERIALENUMERATOR_H_
 
 
-#include <QString>
-#include <QList>
-#include <QObject>
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtCore/QObject>
 #include "qextserialport_global.h"
 
 #ifdef Q_OS_WIN
@@ -37,7 +37,7 @@ struct QextPortInfo {
 
 #ifdef Q_OS_WIN
 #ifdef QT_GUI_LIB
-#include <QWidget>
+#include <QtWidgets/QWidget>
 class QextSerialEnumerator;
 
 class QextSerialRegistrationWidget : public QWidget

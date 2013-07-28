@@ -38,7 +38,7 @@ BfBuscarTrabajador::BfBuscarTrabajador ( QWidget *parent )
 
     m_comboRecordSet = NULL;
     setTableName("trabajador");
-    setAllowNull(TRUE);
+    setAllowNull(true);
 
     
 }

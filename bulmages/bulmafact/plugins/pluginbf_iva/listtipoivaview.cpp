@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "listtipoivaview.h"
 #include "bfcompany.h"
@@ -104,7 +104,7 @@ ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
     setDbFieldId ( "idtipo_iva" );
     addSubFormHeader ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Tipo IVA" ) );
     addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Tipo IVA" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

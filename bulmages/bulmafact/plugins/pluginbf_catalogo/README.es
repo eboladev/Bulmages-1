@@ -24,7 +24,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Experimentales;
+Categorias: Utilidades avanzadas;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 450
 

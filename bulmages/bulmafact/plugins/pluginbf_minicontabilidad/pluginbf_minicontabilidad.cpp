@@ -47,7 +47,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_minicontabilidad = bges;
 
 
@@ -93,7 +93,7 @@ int BlAction_actionTriggered(BlAction *accion) {
     BL_FUNC_DEBUG
 
     if (accion->objectName() == "mui_actionContablesPartidas") {
-        PartidasView *pag = new PartidasView ( g_pluginbf_minicontabilidad->company(), 0, FALSE );
+        PartidasView *pag = new PartidasView ( g_pluginbf_minicontabilidad->company(), 0, false );
         g_pluginbf_minicontabilidad->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
     } // end if
@@ -137,7 +137,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
         blCenterOnScreen ( diag );
 
-        PartidasView *arts = new PartidasView ( ( BfCompany * ) busq->mainCompany(), 0, TRUE );
+        PartidasView *arts = new PartidasView ( ( BfCompany * ) busq->mainCompany(), 0, true );
 
         busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -309,7 +309,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
         blCenterOnScreen ( diag );
 
-        PartidasView *arts = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, TRUE );
+        PartidasView *arts = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, true );
 
         diag->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -415,7 +415,7 @@ void SubForm_MiniContabilidad::s_trataMenu ( QAction *action )
 void SubForm_MiniContabilidad::gestionarPartidas (  BfSubForm *sub )
 {
     BL_FUNC_DEBUG
-    PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, FALSE );
+    PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, false );
     sub->mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     
@@ -435,7 +435,7 @@ void SubForm_MiniContabilidad::seleccionarPartida ( BfSubForm *sub )
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
         blCenterOnScreen ( diag );
 
-        PartidasView *arts = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, TRUE );
+        PartidasView *arts = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, true );
 
         diag->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 

@@ -1,0 +1,88 @@
+<DOCUMENT>
+<TAB>
+<NAME>Alquiler</NAME>
+<UI_INTERFACE>@CMAKE_INSTALL_PREFIX@/share/bulmages/autoforms/pluginbf_alquileres/alcontrato.ui</UI_INTERFACE>
+
+
+    <CAMPO>
+        <NOMCAMPO>bancocontrato</NOMCAMPO>
+        <NOMPCAMPO>Banco Ingresos</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>idvivienda</NOMCAMPO>
+        <NOMPCAMPO>Local</NOMPCAMPO>
+        <DBTYPECAMPO>DBINTEGER</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+      <TIPOCAMPO>BLCOMBOBOX</TIPOCAMPO>
+      <QUERY>SELECT * FROM vivienda ORDER BY nomvivienda</QUERY>
+      <TABLENAME>vivienda</TABLENAME>
+      <FIELDID>idvivienda</FIELDID>
+      <VALOR>idvivienda</VALOR>
+      <VALOR>nomvivienda</VALOR>
+      <ALLOWNULL>TRUE</ALLOWNULL>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>actividadcontrato</NOMCAMPO>
+        <NOMPCAMPO>Actividad Contrato</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>representantecontrato</NOMCAMPO>
+        <NOMPCAMPO>Representante arrendatario</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>cifrepresentantecontrato</NOMCAMPO>
+        <NOMPCAMPO>CIF representantecontrato</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>dirrepresentantecontrato</NOMCAMPO>
+        <NOMPCAMPO>Direccion representante contrato</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>representanteempcontrato</NOMCAMPO>
+        <NOMPCAMPO>Nuestro representante</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>cifrepresentanteempcontrato</NOMCAMPO>
+        <NOMPCAMPO>CIF nuestro representante</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>dirrepresentanteempcontrato</NOMCAMPO>
+        <NOMPCAMPO>Dirección Nuestro representante</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+    <CAMPO>
+        <NOMCAMPO>textocantidadcontrato</NOMCAMPO>
+        <NOMPCAMPO>Texto de cantidad mensual</NOMPCAMPO>
+        <DBTYPECAMPO>DBVARCHAR</DBTYPECAMPO>
+        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
+    </CAMPO>
+
+
+
+</TAB>
+
+</DOCUMENT>

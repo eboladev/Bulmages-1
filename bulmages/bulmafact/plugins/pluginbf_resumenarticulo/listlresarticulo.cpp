@@ -43,9 +43,9 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalfactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolfactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 
@@ -86,9 +86,9 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 
@@ -129,9 +129,9 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 
@@ -173,9 +173,9 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

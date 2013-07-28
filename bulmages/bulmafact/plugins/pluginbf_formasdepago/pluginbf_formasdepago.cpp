@@ -40,7 +40,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_formasdepago", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_formasdepago", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_formasdepago = bges;
 
     if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
@@ -95,7 +95,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 	editor->m_valores["descforma_pago"] = "";
         editor->setTableName ("forma_pago");
 	editor->setFieldId("idforma_pago");
-	editor->setAllowNull (FALSE);
+	editor->setAllowNull (false);
 	editor->setId("");
         g_plugParams =  editor;
 	

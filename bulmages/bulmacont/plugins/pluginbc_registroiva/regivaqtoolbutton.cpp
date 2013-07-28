@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QWidget>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtWidgets/QWidget>
 
 #include "regivaqtoolbutton.h"
 #include "blfunctions.h"

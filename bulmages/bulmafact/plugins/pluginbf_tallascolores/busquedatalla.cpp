@@ -71,7 +71,7 @@ BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
     setTableName ( "tc_talla" );
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
-    setAllowNull(FALSE);
+    setAllowNull(false);
     
 }
 

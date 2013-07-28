@@ -22,8 +22,8 @@
 #ifndef BLTEXTEDITDELEGATE_H
 #define BLTEXTEDITDELEGATE_H
 
-#include <QTextEdit>
-#include <QWidget>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QWidget>
 #include "blfunctions.h"
 
 

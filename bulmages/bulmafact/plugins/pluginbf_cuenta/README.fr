@@ -1,0 +1,34 @@
+#######
+#Plugins
+#######
+#README.fr
+20110204
+
+Nombre: Plan comptable
+
+Biblioteca: libpluginbf_cuenta.so
+
+Descripción: <H1>Plan comptable</H1>
+<P>Permet de gérer les comptes comptables.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias: libpluginbf_asiento.so;
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Comptabilite generales ; Experimental;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

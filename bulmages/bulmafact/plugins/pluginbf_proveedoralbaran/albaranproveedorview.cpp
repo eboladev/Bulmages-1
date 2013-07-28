@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
-#include <QComboBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QObject>
-#include <QToolButton>
-#include <QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
 
 #include "albaranproveedorview.h"
 #include "bfcompany.h"
@@ -87,17 +87,17 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idproveedor->m_valores["cifproveedor"] = "";
         mui_idproveedor->m_valores["nomproveedor"] = "";
 
-        m_totalBases->setReadOnly ( TRUE );
+        m_totalBases->setReadOnly ( true );
         m_totalBases->setAlignment ( Qt::AlignRight );
-        m_totalTaxes->setReadOnly ( TRUE );
+        m_totalTaxes->setReadOnly ( true );
         m_totalTaxes->setAlignment ( Qt::AlignRight );
-        m_totalDiscounts->setReadOnly ( TRUE );
+        m_totalDiscounts->setReadOnly ( true );
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
-        m_totalalbaranp->setReadOnly ( TRUE );
+        m_totalalbaranp->setReadOnly ( true );
         m_totalalbaranp->setAlignment ( Qt::AlignRight );
         mui_idforma_pago->setId ( "0" );
         mui_idalmacen->setId ( "0" );
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran proveedor" ), this );
@@ -287,7 +287,15 @@ int AlbaranProveedorView::afterSave()
     return 0;
 }
 
+/** Pintar un albaran de proveedor
+*/
+void AlbaranProveedorView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
 
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idproveedor->fieldValue("nomproveedor") + "\n" + mui_fechaalbaranp->text());
+}
 
 
 /// Se encarga de generar una albaran a partir de un albar&aacute;n.
@@ -334,7 +342,7 @@ void AlbaranProveedorView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclalbaranp", linea->dbValue ( "desclalbaranp" ) );
                 linea1->setDbValue ( "cantlalbaranp", linea->dbValue ( "cantlalbaranp" ) );
                 linea1->setDbValue ( "pvplalbaranp", linea->dbValue ( "pvplalbaranp" ) );

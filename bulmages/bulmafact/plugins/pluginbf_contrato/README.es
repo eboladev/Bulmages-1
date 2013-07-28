@@ -26,7 +26,7 @@ Dependencias: libpluginbf_clientefactura.so
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;
 
 Orden: 830
 

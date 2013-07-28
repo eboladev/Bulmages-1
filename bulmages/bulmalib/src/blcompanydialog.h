@@ -22,9 +22,9 @@
 #ifndef BLCOMPANYDIALOG_H
 #define BLCOMPANYDIALOG_H
 
-#include <QString>
-#include <QDialog>
-#include <QFile>
+#include <QtCore/QString>
+#include <QtWidgets/QDialog>
+#include <QtCore/QFile>
 
 #include "blfunctions.h"
 #include "ui_blcompanydialogbase.h"

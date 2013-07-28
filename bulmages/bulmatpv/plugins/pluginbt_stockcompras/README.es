@@ -23,4 +23,7 @@ Dependencias: libpluginbf_articulo.so
 Incompatibles:
 
 Orden: 50
+
+Categorias: Experimentales;IVA incluido;  Restauración; Tallas y Colores; Colmados; Parques Infantiles;
+
 Comentarios: Ideal todo tipo de comercio.

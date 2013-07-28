@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 
 #include "bcasientolistsubform.h"
 
@@ -45,10 +45,10 @@ BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
     addSubFormHeader ( "totalhaberborrador", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Haber borrador" ) );
     addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id asiento" ) );
     addSubFormHeader ( "clase", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Clase" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setOrdenPorQuery ( TRUE );
-//    setOrdenEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setOrdenPorQuery ( true );
+//    setOrdenEnabled ( true );
 
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );

@@ -112,6 +112,20 @@
 		<blockTopPadding length="-0.2cm" />
 	</blockTableStyle>
 	
+	
+	<blockTableStyle id="tabla">
+		<blockAlignment value="RIGHT" start="0,1" stop="-1,-1"/>
+		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.18,0.38,0.42)" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
+		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
+		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
+		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+	
 	<paraStyle 
 		name="paragrafo"
 		fontName="Helvetica"

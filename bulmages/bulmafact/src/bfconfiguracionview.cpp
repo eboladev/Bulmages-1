@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "bfconfiguracionview.h"
 #include "bfcompany.h"
@@ -56,7 +56,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     mui_listado->setMainCompany ( mainCompany() );
     mui_listado->load();
-    if (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE") {
+    if (!g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
      tabWidget->removeTab(tabWidget->indexOf(tab_2));
     } // end if
 
@@ -145,7 +145,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     } // end if
     delete cur;
     
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     
 }
 
@@ -215,8 +215,8 @@ BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "nombre" );
     addSubFormHeader ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
+    setInsert ( false );
+    setDelete ( false );
     
 }
 

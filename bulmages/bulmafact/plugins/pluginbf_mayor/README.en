@@ -1,0 +1,34 @@
+#######
+#Plugins
+#######
+#README.en
+20080501
+
+Nombre: Mayor
+
+Biblioteca: libpluginbf_mayor.so
+
+Descripción: <H1>Libro Mayor</H1>
+<P>Permite Listar el libro mayor.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias: libpluginbf_asiento.so;
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Contabilidad general;Experimentales;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

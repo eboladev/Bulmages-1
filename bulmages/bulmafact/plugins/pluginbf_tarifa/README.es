@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 600
 

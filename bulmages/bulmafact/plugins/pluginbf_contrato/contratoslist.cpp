@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QTextStream>
-#include <QFileDialog>
-#include <QCheckBox>
-#include <QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMessageBox>
 
 #include "contratoslist.h"
 #include "bfcompany.h"
@@ -44,8 +44,8 @@
 \param editmode
 \return
 **/
-ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
+ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmode )
+        : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -70,10 +70,10 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de contratos" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
+        mui_crear->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
     
     
@@ -337,9 +337,9 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : B
     addSubFormHeader ( "fincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de alta del contrato" ) );
     addSubFormHeader ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del contrato" ) );
     addSubFormHeader ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del contrato" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

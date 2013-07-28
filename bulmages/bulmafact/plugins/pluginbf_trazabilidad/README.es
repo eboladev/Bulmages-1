@@ -20,11 +20,11 @@ ArchivoSQLpatch: pluginbf_trazabilidad.sql
 
 ArchivoSQLdeins: pluginbf_trazabilidad-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_cliente.so; libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Distribución Alimentaria;
 
 Orden: 730
 

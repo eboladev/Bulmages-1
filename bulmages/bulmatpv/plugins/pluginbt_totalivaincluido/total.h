@@ -26,7 +26,7 @@
 #ifndef TOTALIVAINC_H
 #define TOTALIVAINC_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 
 #include "blwidget.h"
 #include "ui_totalbase.h"

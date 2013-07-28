@@ -24,12 +24,12 @@
 
 #include <stdlib.h>
 
-#include <QMessageBox>
-#include <QLineEdit>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QRadioButton>
+#include <QtGui/QCloseEvent>
 
 #include "ui_bccuentabase.h"
 #include "blpostgresqlclient.h"
@@ -48,7 +48,7 @@ class BcCuentaView : public BcForm, public Ui_BcCuentaBase
     Q_OBJECT
 
 public:
-    BcCuentaView ( BcCompany *emp, QWidget *, Qt::WFlags fl = 0 );
+    BcCuentaView ( BcCompany *emp, QWidget *, Qt::WindowFlags fl = 0 );
     ~BcCuentaView();
     int nuevacuenta ( QString );
 };

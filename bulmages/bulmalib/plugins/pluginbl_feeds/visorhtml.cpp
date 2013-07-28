@@ -27,19 +27,19 @@
 
 #define CREAVARIABLESWEB
 #ifdef CREAVARIABLESWEB
-#include <QWebView>
-#include <QWebPage>
-#include <QWebFrame>
+#include <QtWebKitWidgets/QWebView>
+#include <QtWebKitWidgets/QWebPage>
+#include <QtWebKitWidgets/QWebFrame>
 #endif
-#include <QRegExp>
-#include <QTextStream>
-#include <QDockWidget>
-#include <QNetworkAccessManager>
-#include <QEventLoop>
-#include <QFileDialog>
-#include <QNetworkRequest>
-#include <QNetworkReply>
-#include <QObject>
+#include <QtCore/QRegExp>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QDockWidget>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtCore/QEventLoop>
+#include <QtWidgets/QFileDialog>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkReply>
+#include <QtCore/QObject>
 
 // Claves para el array de licencia
 #define USUARIO 0
@@ -82,7 +82,7 @@ void download(const QUrl &url, const QString &filename)
 \param parent
 \param fl
 **/
-visorhtml::visorhtml ( QWidget* parent, Qt::WFlags fl )
+visorhtml::visorhtml ( QWidget* parent, Qt::WindowFlags fl )
         : QWidget ( parent, fl )
 {
     BlDebug::blDebug ( "visorhtml::visorhtml", 0 );

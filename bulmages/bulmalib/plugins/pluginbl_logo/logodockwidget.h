@@ -22,9 +22,9 @@
 #ifndef LOGODOCK_H
 #define LOGODOCK_H
 
-#include <QWidget>
-#include <QString>
-#include <QPixmap>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtGui/QPixmap>
 
 #include "bldockwidget.h"
 

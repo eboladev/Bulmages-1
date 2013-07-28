@@ -20,15 +20,15 @@
 
 #include <cstdio>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "pluginbc_cuenta.h"
 #include "bccuentalistview.h"
@@ -47,7 +47,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbc_cuenta = bcont;
 
     QMenu *pPluginMenu;
@@ -284,7 +284,7 @@ int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
     BlDbRecordSet *cur = wid->mainCompany() ->loadQuery ( SQLQuery );
     if ( cur->numregistros() == 1 ) {
         /// Ponemos el id sin hacer una carga adicional
-        wid->setId( cur->value( "idcuenta" ), FALSE);
+        wid->setId( cur->value( "idcuenta" ), false);
         /// Inicializamos los valores de vuelta a ""
         QMapIterator<QString, QString> i ( wid->m_valores );
         while ( i.hasNext() ) {
@@ -403,7 +403,7 @@ void SubForm_Cuenta::nuevoCuenta( )
     BL_FUNC_DEBUG
     BlSubForm * subf = ( BlSubForm * ) parent();
     BcCuentaView * art = new BcCuentaView ( ( BcCompany * ) subf->mainCompany(), 0 );
-    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    art->setAttribute ( Qt::WA_DeleteOnClose, false );
     
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     subf->setEnabled(false);

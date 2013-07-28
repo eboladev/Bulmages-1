@@ -22,9 +22,9 @@
 #ifndef FACTURAVIEW_H
 #define FACTURAVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_facturabase.h"
 #include "bldatesearch.h"
@@ -53,6 +53,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual void pintarPost();
 
 public slots:
     virtual void on_m_descuentos_editFinish ( int, int );

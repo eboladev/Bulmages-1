@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110203
+
+Nombre: Bloquer les dates
+
+Biblioteca: libpluginbf_bloqueofechas.so
+
+Descripción: <H1>Bloquer les dates</H1>
+<P>Permet de bloquer et débloquer les dates de façon à ce qu'on ne puisse pas modifier la comptabilité selon les dates bloquées. </P>
+<P>Le blocage fonctionne pour les mois et les ans</P>
+<HR>
+
+ParmBD:
+
+ArchivoSQLpatch:
+
+ArchivoSQLdeins:
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Comptabilite generale ; Experimental;
+
+Orden:
+
+Comentarios: Indispensable dans une entreprise normale.

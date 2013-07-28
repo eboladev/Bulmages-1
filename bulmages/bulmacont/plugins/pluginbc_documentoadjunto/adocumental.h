@@ -21,12 +21,12 @@
 #ifndef ADOCUMENTAL_H
 #define ADOCUMENTAL_H
 
-#include <QFileDialog>
-#include <QFileInfo>
-#include <QWidget>
-#include <QMessageBox>
-#include <QDialog>
-#include <QTableWidgetItem>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QFileInfo>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QTableWidgetItem>
 
 #include "ui_adocumentalbase.h"
 #include "blpostgresqlclient.h"

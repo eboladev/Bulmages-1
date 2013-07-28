@@ -58,7 +58,7 @@ private:
     QString mdb_conceptopresupuestocontable;
 
 public:
-    PresupuestoContableList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
+    PresupuestoContableList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     virtual ~PresupuestoContableList();
     void presentar();
     void editar ( int );

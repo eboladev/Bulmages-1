@@ -21,7 +21,7 @@
 #ifndef COBRARPARCIAL_H
 #define COBRARPARCIAL_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "blwidget.h"
 #include "btcompany.h"

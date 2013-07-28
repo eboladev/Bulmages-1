@@ -46,7 +46,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
                 self.eliminar_usuario.setEnabled(True)
                 self.permisos_usuario.setEnabled(True)
                 self.mui_crearbulmafact.setEnabled(True)
-                self.mui_crearbulmacont.setEnabled(True)
                 self.eliminar_empresa.setEnabled(True)
                 self.mui_adminempresas.setEnabled(True)
                 self.mui_restbackup.setEnabled(True)
@@ -57,7 +56,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
             self.eliminar_usuario.setEnabled(True)
             self.permisos_usuario.setEnabled(True)
             self.mui_crearbulmafact.setEnabled(True)
-            self.mui_crearbulmacont.setEnabled(True)
             self.eliminar_empresa.setEnabled(True)
             self.mui_adminempresas.setEnabled(True)
             self.mui_restbackup.setEnabled(True)
@@ -87,11 +85,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
         # Evento al hacer clic en el Boton para crear nueva Empresa de Facturacion
     def on_mui_crearbulmafact_released(self):
         win = NuevaFacturacion()
-        win.exec_()
-
-        # Evento al hacer clck en el Boton para crear nueva Empresa de Contablidad
-    def on_mui_crearbulmacont_released(self):
-        win = NuevaContabilidad()
         win.exec_()
 
         # Evento al hacer clck en el Boton para eliminar Empresas

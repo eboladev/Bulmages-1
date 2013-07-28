@@ -19,16 +19,16 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
 
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.es.in ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.es @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.es DESTINATION share/bulmages/autoforms/ RENAME autoform_${plugin}_spec.spc.es)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.es DESTINATION share/bulmages/autoforms/ RENAME autoform__${plugin}_spec.spc.es)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.ca.in ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.ca @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.ca DESTINATION share/bulmages/autoforms/ RENAME autoform_${plugin}_spec.spc.ca)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.ca DESTINATION share/bulmages/autoforms/ RENAME autoform__${plugin}_spec.spc.ca)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.fr.in ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.fr @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.fr DESTINATION share/bulmages/autoforms/ RENAME autoform_${plugin}_spec.spc.fr)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.fr DESTINATION share/bulmages/autoforms/ RENAME autoform__${plugin}_spec.spc.fr)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/autoform_spec.spc.en.in ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.en @ONLY)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.en DESTINATION share/bulmages/autoforms/ RENAME autoform_${plugin}_spec.spc.en)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/autoform_spec.spc.en DESTINATION share/bulmages/autoforms/ RENAME autoform__${plugin}_spec.spc.en)
 
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)

@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_alumno", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_alumno", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_alumno = bges;
 
 
@@ -376,7 +376,7 @@ void SubForm_Alumno::nuevoAlumno( )
     BL_FUNC_DEBUG
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    art->setAttribute ( Qt::WA_DeleteOnClose, false );
     
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     subf->setEnabled(false);

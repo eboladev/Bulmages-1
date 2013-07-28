@@ -19,9 +19,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QToolButton>
-#include <QLineEdit>
-#include <QCheckBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QCheckBox>
 
 #include "pluginbf_camarero.h"
 #include "trabajadores.h"
@@ -40,7 +40,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_camarero", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_camarero", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }
@@ -123,7 +123,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     
     QCheckBox * l1 = trab->findChild<QCheckBox *> ( "mui_admintrabajador" );
     query = "UPDATE trabajador SET ";
-    query += " admintrabajador = " + QString(l1->isChecked()?"TRUE":"FALSE");
+    query += " admintrabajador = " + QString(l1->isChecked()?"true":"false");
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
     trab->mainCompany() ->begin();
     trab->mainCompany() ->runQuery ( query );
@@ -131,7 +131,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 
     QCheckBox * l2 = trab->findChild<QCheckBox *> ( "mui_gerentetrabajador" );
     query = "UPDATE trabajador SET ";
-    query += " gerentetrabajador = " + QString(l2->isChecked()?"TRUE":"FALSE");
+    query += " gerentetrabajador = " + QString(l2->isChecked()?"true":"false");
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
     trab->mainCompany() ->begin();
     trab->mainCompany() ->runQuery ( query );

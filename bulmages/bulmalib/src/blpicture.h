@@ -21,11 +21,11 @@
 #ifndef BLPICTURE_H
 #define BLPICTURE_H
 
-#include <QComboBox>
-#include <QLabel>
-#include <QDir>
-#include <QString>
-#include <QMouseEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtCore/QDir>
+#include <QtCore/QString>
+#include <QtGui/QMouseEvent>
 #include "blfunctions.h"
 
 class BL_EXPORT BlPicture

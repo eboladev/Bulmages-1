@@ -71,8 +71,6 @@ void BlMainCompany::setWorkspace ( BlWorkspace *qw )
 {
     BL_FUNC_DEBUG
     m_pWorkspace = qw;
-    connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deselectWindow() ) );
-    
 }
 
 
@@ -107,11 +105,7 @@ int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QStri
 \param obj
 \return
 **/
-#ifdef AREA_QMDI
   int BlMainCompany::selectWindow ( QString nom, QMdiSubWindow *obj )
-#else
-  int BlMainCompany::selectWindow ( QString nom, QObject *obj )
-#endif
 {
     BL_FUNC_DEBUG
     
@@ -180,7 +174,7 @@ void BlMainCompany::init ( QString bd, QString tipo )
     } // end if
     /// Hacemos visible el ProgressBar mientras se habre la base de datos y se cargan
     /// los datos de la en las ventanas.
-    m_progressbar->setVisible ( TRUE );
+    m_progressbar->setVisible ( true );
 
     inicializa ( bd );
     
@@ -203,13 +197,14 @@ QString BlMainCompany::searchCompany ( QString tipo )
     nuevae->exec();
     BlDebug::blDebug ( "Vamos a cambiar la empresa", 0 );
     QString bd = nuevae->dbName();
+    g_confpr->setValue ( CONF_DBNAME, bd);
     BlDebug::blDebug ( "Empresa cambiada a " + bd, 0 );
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
     if ( bd == "" ) {
+	blMsgError("Debe seleccionar una empresa");
         exit ( 1 );
     } // end if
-    
     return bd;
 }
 
@@ -302,11 +297,8 @@ bool BlMainCompany::showWindow(QString objectName)
 		( ( QWidget * ) m_windowListDock->ventana(i) )->showNormal();
 	    } // end if
 	    
-	    #ifdef AREA_QMDI
-		m_pWorkspace->setActiveSubWindow(( QMdiSubWindow *)m_windowListDock->ventana(i));
-	    #else
-		m_pWorkspace->setActiveWindow(( QWidget * )m_windowListDock->ventana(i));
-	    #endif
+	    m_pWorkspace->setActiveSubWindow(( QMdiSubWindow *)m_windowListDock->ventana(i));
+
 	    
 	} // end if
 

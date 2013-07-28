@@ -34,13 +34,13 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_cliente.so
+Dependencias: libpluginbf_cliente.so; libpluginbf_seriesfactura.so; libpluginbf_articulo.so; libpluginbf_iva.so; libpluginbf_almacen.so; libpluginbf_trabajador.so; libpluginbf_formasdepago.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacion generica;Talleres;Distribución;Distribución Alimentaria;Servicios Generales;
 
-Reports: blform_PedidoClienteView.qs; pedidocliente.rml; impers_pedidocliente_urgente.rml
+Reports: blform_PedidoClienteView.qs; pedidocliente.rml; impers_pedidocliente_urgente.rml; plantilla_frame.rml; plantilla_finpedido.rml; plantilla_barcodepedido.rml; plantilla_despedido.rml; plantilla_cliente.rml; plantilla_empresa.rml; plantilla_cabecerapedido.rml
 
 Orden: 621
 

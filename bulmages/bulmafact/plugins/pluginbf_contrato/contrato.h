@@ -21,7 +21,7 @@
 #ifndef CONTRATO_H
 #define CONTRATO_H
 
-#include <QString>
+#include <QtCore/QString>
 
 
 

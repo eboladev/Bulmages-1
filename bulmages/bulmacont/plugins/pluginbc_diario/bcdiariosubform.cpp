@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 #include "bcdiariosubform.h"
 
 
@@ -60,14 +60,14 @@ BcDiarioSubForm::BcDiarioSubForm ( QWidget *parent, const char * ) : BcSubForm (
     addSubFormHeader ( "iddiario", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "iddiario" ) );
     addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "idcuenta" ) );
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
-    setListadoPijama ( FALSE );
+    setListadoPijama ( false );
     setColumnToRowSpan ( "ordenasiento" );
     setColorFondo1 ( g_confpr->value( CONF_BG_DIARIO ) );
     setColorFondo2 ( g_confpr->value( CONF_BG_ALT_DIARIO ) );
-    setInsert ( FALSE );
-    setOrdenEnabled ( FALSE );
-    setOrdenPorQuery ( TRUE );
-    setDelete ( FALSE );
+    setInsert ( false );
+    setOrdenEnabled ( false );
+    setOrdenPorQuery ( true );
+    setDelete ( false );
     
 }
 

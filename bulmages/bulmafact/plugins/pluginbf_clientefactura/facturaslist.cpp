@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QMessageBox>
-#include <QTextStream>
+#include "blfile.h"
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextStream>
 
 #include "bfbuscararticulo.h"
 #include "bldatesearch.h"
@@ -41,7 +41,7 @@
 \param flag
 \param editmodo
 **/
-FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturasList::FacturasList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -73,7 +73,7 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 \param flag
 \param editmodo
 **/
-FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -100,7 +100,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     mui_seriefactura->setFieldId ( "codigoserie_factura" );
     mui_seriefactura->m_valores["codigoserie_factura"] = "";
     mui_seriefactura->m_valores["descserie_factura"] = "";
-    mui_seriefactura->setAllowNull ( TRUE );
+    mui_seriefactura->setAllowNull ( true );
     mui_seriefactura->setId("");
 
     /// Iniciamos el buscador de almacenes.
@@ -110,7 +110,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     mui_almacen->setFieldId ( "codigoalmacen" );
     mui_almacen->m_valores["codigoalmacen"] = "";
     mui_almacen->m_valores["nomalmacen"] = "";
-    mui_almacen->setAllowNull ( TRUE );
+    mui_almacen->setAllowNull ( true );
     mui_almacen->setId("");
     
     /// Cargamos los filtros guardados.
@@ -176,9 +176,9 @@ void FacturasList::presentar()
     /// Esta consulta podria resultar en NULL y por tanto debe tratarse el caso
     /// Usamos el localeformat porque los datos son presentados en pantalla y el punto decimal debe salir bien.
     if ( cur ) {
-        mui_totalbimponible->setText ( cur->value( "base", -1, TRUE ) );
-        mui_totalimpuestos->setText ( cur->value( "impuestos", -1, TRUE ) );
-        mui_totalfacturas->setText ( cur->value( "total", -1, TRUE ) );
+        mui_totalbimponible->setText ( cur->value( "base", -1, true ) );
+        mui_totalimpuestos->setText ( cur->value( "impuestos", -1, true ) );
+        mui_totalfacturas->setText ( cur->value( "total", -1, true ) );
         delete cur;
     } // end if
 
@@ -331,7 +331,7 @@ void FacturasList::setMainCompany ( BfCompany *comp )
     mui_seriefactura->setFieldId ( "codigoserie_factura" );
     mui_seriefactura->m_valores["codigoserie_factura"] = "";
     mui_seriefactura->m_valores["descserie_factura"] = "";
-    mui_seriefactura->setAllowNull ( TRUE );
+    mui_seriefactura->setAllowNull ( true );
     mui_seriefactura->setId("");
 
     /// Iniciamos el buscador de almacenes.
@@ -341,7 +341,7 @@ void FacturasList::setMainCompany ( BfCompany *comp )
     mui_almacen->setFieldId ( "codigoalmacen" );
     mui_almacen->m_valores["codigoalmacen"] = "";
     mui_almacen->m_valores["nomalmacen"] = "";
-    mui_almacen->setAllowNull ( TRUE );
+    mui_almacen->setAllowNull ( true );
     mui_almacen->setId("");
 
     
@@ -446,9 +446,9 @@ FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfS
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
     addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id Forma de Pago" ) );
     addSubFormHeader ( "descforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

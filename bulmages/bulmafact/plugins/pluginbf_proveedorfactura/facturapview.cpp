@@ -20,13 +20,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QLayout>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLayout>
+#include <QtCore/QTextStream>
 
 #include "facturapview.h"
 #include "bfcompany.h"
@@ -88,15 +88,15 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 
-        m_totalBases->setReadOnly ( TRUE );
+        m_totalBases->setReadOnly ( true );
         m_totalBases->setAlignment ( Qt::AlignRight );
-        m_totalTaxes->setReadOnly ( TRUE );
+        m_totalTaxes->setReadOnly ( true );
         m_totalTaxes->setAlignment ( Qt::AlignRight );
-        m_totalDiscounts->setReadOnly ( TRUE );
+        m_totalDiscounts->setReadOnly ( true );
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
-        m_totalfacturap->setReadOnly ( TRUE );
+        m_totalfacturap->setReadOnly ( true );
         m_totalfacturap->setAlignment ( Qt::AlignRight );
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la factura proveedor" ), this );
@@ -288,7 +288,15 @@ int FacturaProveedorView::afterSave()
 }
 
 
+/** Pintar un pedido.
+*/
+void FacturaProveedorView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
 
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idproveedor->fieldValue("nomproveedor") + "\n" + mui_ffacturap->text());
+}
 
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -334,7 +342,7 @@ void FacturaProveedorView::on_mui_duplicar_released()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclfacturap" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlfacturap" ) );
                 linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplfacturap" ) );

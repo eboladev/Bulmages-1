@@ -5,6 +5,8 @@
 file(GLOB bulmatpv_SRC *.c *.cpp)
 file(GLOB bulmatpv_UIS *.ui)
 
+find_package(Qt5Core REQUIRED)
+
 set(bulmatpvEx main.cxx)
 
 set(bulmatpv_MOCS btbulmatpv.h
@@ -13,77 +15,15 @@ set(bulmatpv_MOCS btbulmatpv.h
 	   btsubform.h
 	   btinput.h)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTUITOOLS true)
-set(QT_USE_QTSCRIPT true)
-
-
-INCLUDE(${QT_USE_FILE})
-
 include_directories(
-    ${QT_INCLUDE_DIR}
+	${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
-	${QT_QTXML_INCLUDE_DIR}
-        ${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
-
-
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
-
-# generate rules for building source files from the resources
-#
-
-# generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
-
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
-
-IF(WIN32)
-set(bulmatpv_RCCS ../../bulmages.qrc)
-QT4_ADD_RESOURCES(bulmatpv_RCC_SRCS ${bulmatpv_RCCS})
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBT_BULMATPV)
-ENDIF(WIN32)
-
-
-#ADD_DEFINITIONS(${QT_DEFINITIONS})
-ADD_DEFINITIONS(-DQT_SHARED)
-# build sources, moc'd sources, and rcc'd sources
-# # generate rules for building source files from the resources
-# build sources, moc'd sources, and rcc'd sources
-
-
-add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
-        ${bulmatpv_SRC} ${bulmatpv_MOCS} ${bulmatpv_RCC_SRCS})
-
-set_target_properties( libbulmatpv PROPERTIES
-  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
-  VERSION "${BULMAGES_VERSION}"
-  OUTPUT_NAME bulmatpv )
-
-target_link_libraries( libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-
-add_executable(bulmatpv   ${bulmatpvEx} ${bulmatpv_RCC_SRCS})
-
-# i18n
-if(WIN32)
-ADD_DEFINITIONS("-D_(String)=blI18n(\\\"bulmatpv\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=blI18n(\\\"bulmatpv\\\",String)" )
-endif(WIN32)
-
-if(NOT WIN32)
-ADD_DEFINITIONS("-D'_(String)=blI18n(\"bulmatpv\",String)'" )
-ADD_DEFINITIONS("-D'N_(String,Int)=blI18n(\"bulmatpv\",String)'" )
-endif(NOT WIN32)
-
 
 if(USE_GETTEXT)
    set(bulmatpv_i18n ${bulmatpvEx} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
@@ -94,9 +34,56 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES ca_ES fr_FR)
 endif(USE_GETTEXT)
 
-target_link_libraries( bulmatpv libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+# i18n
+if(WIN32)
+ADD_DEFINITIONS("-D_(String)=blI18n(\\\"bulmatpv\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=blI18n(\\\"bulmatpv\\\",String)" )
+else(WIN32)
+ADD_DEFINITIONS("-D'_(String)=blI18n(\"bulmatpv\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=blI18n(\"bulmatpv\",String)'" )
+endif(WIN32)
+
+# generate rules for building source files that moc generates
+# build sources, moc'd sources, and rcc'd sources
+# # generate rules for building source files from the resources
+# build sources, moc'd sources, and rcc'd sources
+QT5_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
+
+IF(WIN32)
+set(bulmatpv_RCCS ../../bulmages.qrc)
+QT5_ADD_RESOURCES(bulmatpv_RCC_SRCS ${bulmatpv_RCCS})
+ENDIF(WIN32)
+
+ADD_DEFINITIONS(-DQT_SHARED)
 
 
+
+add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
+        ${bulmatpv_SRC} ${bulmatpv_MOCS} ${bulmatpv_RCC_SRCS})
+
+IF(WIN32)
+set_property(TARGET libbulmatpv PROPERTY COMPILE_DEFINITIONS BT_BULMATPV QWT_MAKEDLL)
+ENDIF(WIN32)
+
+set_target_properties(libbulmatpv PROPERTIES
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}"
+  OUTPUT_NAME bulmatpv )
+
+target_link_libraries(libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+
+IF(WIN32)
+  add_executable(bulmatpv  ${bulmatpvEx} ${bulmatpv_RCC_SRCS} )
+  target_link_libraries(bulmatpv libbulmatpv  bulmalib ${PGSQL_LIBRARIES} )
+  qt5_use_modules(bulmatpv UiTools Xml Core Widgets Script WebKit)
+ELSE(WIN32)
+  add_executable(bulmatpv  ${bulmatpvEx})
+  target_link_libraries(bulmatpv libbulmatpv)
+ENDIF(WIN32)
+
+qt5_use_modules(libbulmatpv UiTools Xml Core Widgets Script WebKit)
 
 add_dependencies(libbulmatpv bulmalib)
 add_dependencies(bulmatpv libbulmatpv )

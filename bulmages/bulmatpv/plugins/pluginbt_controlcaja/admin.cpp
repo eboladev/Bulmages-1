@@ -1,5 +1,5 @@
 #include "admin.h"
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "blmainwindow.h"
 

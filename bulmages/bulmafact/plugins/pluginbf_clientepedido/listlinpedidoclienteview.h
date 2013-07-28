@@ -22,7 +22,7 @@
 #ifndef LISTLINPEDIDOCLIENTEVIEW_H
 #define LISTLINPEDIDOCLIENTEVIEW_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

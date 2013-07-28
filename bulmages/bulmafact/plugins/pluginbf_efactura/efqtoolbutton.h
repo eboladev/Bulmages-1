@@ -21,8 +21,8 @@
 // #ifndef EFQTOOLBUTTON_H
 // #define EFQTOOLBUTTON_H
 
-#include <QWidget>
-#include <QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "blfixed.h"

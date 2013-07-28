@@ -22,8 +22,8 @@
 #ifndef BTABOUTVIEW_H
 #define BTABOUTVIEW_H
 
-#include <QDialog>
-#include <QString>
+#include <QtWidgets/QDialog>
+#include <QtCore/QString>
 
 #include "blfunctions.h"
 #include "ui_btaboutbase.h"

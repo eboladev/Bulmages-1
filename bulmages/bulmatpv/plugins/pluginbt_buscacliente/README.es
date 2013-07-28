@@ -23,6 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Orden: 99
+
+Categorias: Experimentales; Ferreterías; Droguerías;
 
 Comentarios: Ideal para comercios donde haya que buscar los clientes.

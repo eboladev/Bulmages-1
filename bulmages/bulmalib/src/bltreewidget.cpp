@@ -21,7 +21,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 #include "blfunctions.h"
 #include "bltreewidget.h"
 #include "blplugins.h"

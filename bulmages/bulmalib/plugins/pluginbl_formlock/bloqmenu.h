@@ -21,9 +21,9 @@
 #ifndef _BLOQMENU_
 #define _BLOQMENU_
 
-#include <QWidget>
-#include <QString>
-#include <QMap>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtCore/QMap>
 
 #include "blfunctions.h"
 #include "blmaincompany.h"

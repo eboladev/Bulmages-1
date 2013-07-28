@@ -59,8 +59,8 @@ private:
     QString m_idpedidocliente;
 
 public:
-    PedidosClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    PedidosClienteList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    PedidosClienteList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    PedidosClienteList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~PedidosClienteList();
     void presentar();
     void imprimir();

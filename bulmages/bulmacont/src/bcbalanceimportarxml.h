@@ -22,8 +22,8 @@
 #ifndef BCBALANCEIMPORTARXML_H
 #define BCBALANCEIMPORTARXML_H
 
-#include <QMap>
-#include <qxml.h>
+#include <QtCore/QMap>
+#include <QtXml/qxml.h>
 
 #include "bccompany.h"
 #include "blwidget.h"

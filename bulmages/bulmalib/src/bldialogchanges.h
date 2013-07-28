@@ -22,7 +22,7 @@
 #ifndef BLDIALOGCHANGES_H
 #define BLDIALOGCHANGES_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "blfunctions.h"
 

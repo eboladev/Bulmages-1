@@ -1,7 +1,7 @@
 #ifndef MESAS_H
 #define MESAS_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 #include "btcompany.h"
 #include "blwidget.h"
 #include "ui_distromesasbase.h"

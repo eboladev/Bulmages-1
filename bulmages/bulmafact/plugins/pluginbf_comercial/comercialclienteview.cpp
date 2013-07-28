@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "comercialclienteview.h"
 #include "blfunctions.h"
@@ -64,7 +64,7 @@ void ComercialClienteView::setMainCompany ( BfCompany *comp )
     mui_idzonacomercial->setFieldId ( "idzonacomercial" );
 //    mui_idzonacomercial->m_valores["idzonacomercial"] = "";
     mui_idzonacomercial->m_valores["nomzonacomercial"] = "";
-    mui_idzonacomercial->setAllowNull ( TRUE );
+    mui_idzonacomercial->setAllowNull ( true );
     mui_idzonacomercial->setId ( "" );
 
 

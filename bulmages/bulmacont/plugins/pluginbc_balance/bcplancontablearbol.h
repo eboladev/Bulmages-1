@@ -22,7 +22,7 @@
 #ifndef BCPLANCONTABLEARBOL_H
 #define BCPLANCONTABLEARBOL_H
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
@@ -102,7 +102,7 @@ public:
     /// cuenta que representa la hoja padre. El segundo parametro indica que se busque hasta ese nivel del BcPlanContableArbol.
     QString hijoMayor ( QString, unsigned int nivel = 4 );
     
-    /// Devuelve TRUE si la hoja no tiene hijos y false en caso contrario
+    /// Devuelve true si la hoja no tiene hijos y false en caso contrario
     bool hojaFinal() {return hojaactiva->ramas == NULL;};
 };
 

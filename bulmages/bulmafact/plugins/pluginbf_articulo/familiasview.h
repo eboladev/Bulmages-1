@@ -49,7 +49,7 @@ private:
     QTreeWidgetItem *m_init;
     
 public:
-    FamiliasView ( BfCompany *, QWidget *parent = 0, bool selectMode = FALSE );
+    FamiliasView ( BfCompany *, QWidget *parent = 0, bool selectMode = false );
     ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();

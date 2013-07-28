@@ -21,8 +21,8 @@
 #ifndef EFACTURA_H
 #define EFACTURA_H
 
-#include <QWidget>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
 
 #include <ui_efacturabase.h>
 #include "bfcompany.h"

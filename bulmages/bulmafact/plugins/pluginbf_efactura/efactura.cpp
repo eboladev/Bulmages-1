@@ -20,9 +20,9 @@
 
 #include "efactura.h"
 #include "blfunctions.h"
-#include <QFileDialog>
-#include <QLineEdit>
-#include <QString>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QString>
 
 
 /// Constructor de la clase EFactura (el form)

@@ -22,7 +22,7 @@
 	#include <libintl.h>
 #endif
 
-#include <QLocale>
+#include <QtCore/QLocale>
 
 #include "bli18n.h"
 #include "blfunctions.h"

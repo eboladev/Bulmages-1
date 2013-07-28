@@ -21,11 +21,11 @@
 #ifndef PLUGINBC_EXAMPLE_H
 #define PLUGINBC_EXAMPLE_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"

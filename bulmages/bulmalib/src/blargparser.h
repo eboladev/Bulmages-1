@@ -23,8 +23,8 @@
 #ifndef BLARGPARSER_H
 #define BLARGPARSER_H
 
-#include <QString>
-#include <QTextStream>
+#include <QtCore/QString>
+#include <QtCore/QTextStream>
 #include "blconfiguration.h"
 #include "blfunctions.h"
 

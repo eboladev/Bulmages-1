@@ -21,7 +21,7 @@
 #ifndef EFACTURARECEPCION_H
 #define EFACTURARECEPCION_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include <ui_efacturarecepcionbase.h>
 #include "bfcompany.h"

@@ -81,7 +81,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( planCuentas );
     bges->Listados->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
     
 }
 
@@ -97,7 +97,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_compraventa", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_compraventa", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     PluginBf_CompraVenta *plug = new PluginBf_CompraVenta();
     plug->inicializa ( bges );

@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QWaitCondition>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtCore/QWaitCondition>
 
 #include "listlinpresupuestoview.h"
 #include "blfunctions.h"
@@ -56,9 +56,9 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "descuentolpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _ ( "Id presupuesto" ) );
     addSubFormHeader ( "ordenlpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Orden" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
-    setOrdenPorQuery ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
+    setOrdenPorQuery ( false );
 
     /// Lanzamos los plugins
     g_plugins->run ( "ListLinPresupuestoView_ListLinPresupuestoView_Post", this );

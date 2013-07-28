@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include <fstream>
 
@@ -74,7 +74,7 @@ VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
         addDbField ( "estadovencimientop", BlDbField::DbVarChar, BlDbField::DbNothing, QApplication::translate ( "Vencimiento", "estado de Vencimiento" ) );
         addDbField ( "cantvencimientop", BlDbField::DbNumeric, BlDbField::DbNothing, QApplication::translate ( "Vencimiento", "cantidad de Vencimiento" ) );
         addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNothing, QApplication::translate ( "Vencimiento", "idproveedor de Vencimiento" ) );
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);

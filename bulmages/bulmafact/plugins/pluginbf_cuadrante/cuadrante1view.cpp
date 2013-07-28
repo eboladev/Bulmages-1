@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 
 #include "cuadrante1view.h"
 #include "bfcompany.h"
@@ -75,12 +75,12 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "idcuadrante",    BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  _ ( "ID Cuadrante" ) );
         mui_list->addSubFormHeader ( "idtrabajador",   BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbNone,  _ ( "ID trabajador" ) );
         mui_list->addSubFormHeader ( "idhorario",      BlDbField::DbInt,     BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  _ ( "ID horario" ) );
-        mui_list->setInsert ( TRUE );
-        mui_list->setDelete ( TRUE );
-        mui_list->setSortingEnabled ( FALSE );
+        mui_list->setInsert ( true );
+        mui_list->setDelete ( true );
+        mui_list->setSortingEnabled ( false );
 
         dialogChanges_readValues();
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );

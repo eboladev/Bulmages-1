@@ -71,7 +71,7 @@ class NuevaContabilidad(Contabilidad):
             self.subcomand = 'UPDATE configuracion set valor=\'' +self.nomempresa +'\' WHERE nombre = \'NombreEmpresa\';'
         self.command = functions.psql2 + ' -c \"' +self.subcomand+ '\"' + ' ' + self.nomdb + functions.end_sql2
         self.writecommand(self.command)
-        os.system(self.command.toAscii().data())
+        os.system(self.command.toLatin1().data())
 
         self.actualizarPlugins()
         self.writeConfig()

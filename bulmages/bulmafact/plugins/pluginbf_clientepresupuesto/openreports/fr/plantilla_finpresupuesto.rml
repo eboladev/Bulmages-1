@@ -1,0 +1,96 @@
+	<storyPlace x="0cm" y="0cm" width="20cm" height="1cm">
+		<place x="1cm" y="4cm" width="19cm" height="4cm">
+			<blockTable style="total" colWidths="16.3cm,2.7cm" >
+				<tr>
+					<td colspan="2">
+                                                <blockTable style="titulo" colWidths="2.65cm, 3.2cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 1.15cm, 2.7cm">
+							<tr>
+                                                                <td>  </td>
+                                                                <td>Base Imponible:</td>
+                                                                <td>  </td>
+                                                                <td>I.V.A.%:</td>
+                                                                <td>  </td>
+                                                                <td>Tot I.V.A.:</td>
+                                                                <td>  </td>
+                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = [idpresupuesto]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->I.R.P.F.%:<!-- END QUERY--></td>
+                                                                <td>  </td>
+                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = [idpresupuesto]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->Tot I.R.P.F.:<!-- END QUERY--></td>
+                                                                <td>  </td>
+                                                                <td>Total:</td>
+							</tr>
+						</blockTable>
+					</td>
+				</tr>
+				<tr>
+					<td>
+                                                <blockTable style="contenido" colWidths="2.65cm, 3.2cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 0.5cm, 1.75cm, 0.5cm, 1.9cm, 1.15cm" >
+<!-- QUERY1 = "SELECT COALESCE(SUM(proporciondpresupuesto/100),0) AS tdesc FROM dpresupuesto WHERE idpresupuesto=[idpresupuesto]" -->
+
+<!-- QUERY2 = "SELECT DISTINCT ivalpresupuesto FROM lpresupuesto WHERE idpresupuesto = [idpresupuesto]"-->
+
+<!-- QUERY3 = "SELECT SUM(cantlpresupuesto * pvplpresupuesto * (1-descuentolpresupuesto/100)*(1-[tdesc]))::NUMERIC(12,2) AS bimp, SUM(cantlpresupuesto * pvplpresupuesto * (1-descuentolpresupuesto/100)*(ivalpresupuesto/100)*(1-[tdesc]))::NUMERIC(12,2) AS iva  FROM lpresupuesto WHERE idpresupuesto=[idpresupuesto] AND ivalpresupuesto=[ivalpresupuesto]" -->
+							<tr>
+                                                                <td>  </td>
+                                                                <td>[bimp]</td>
+                                                                <td>  </td>
+                                                                <td>[ivalpresupuesto]%</td>
+                                                                <td>  </td>
+                                                                <td>[iva]</td>
+                                                                <td>  </td>
+								<td><!-- QUERY4="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = [idpresupuesto]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->[tasairpf] %<!-- END QUERY4--></td>
+                                                                <td>  </td>
+								<td><!-- QUERY5="SELECT (replace('[bimp]',',','.')::NUMERIC(12,2) * tasairpf/100)::NUMERIC(12,2) AS tmirpf FROM irpf WHERE fechairpf <= '[fpresupuesto]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1"-->[tmirpf]<!-- END QUERY5--></td>
+                                                                <td>  </td>
+							</tr>
+<!-- END QUERY3 -->
+<!-- END QUERY2 -->
+
+<!--END QUERY1-->
+						</blockTable>
+					</td>
+					<td>
+						<blockTable style="preciofinal" colWidths="2.7cm" >
+							<tr>
+								<td>[total] €</td>
+							</tr>
+						</blockTable>
+					</td>
+				</tr>
+			</blockTable>
+		</place>
+	</storyPlace>
+
+
+
+ <!-- IF QUERY = "SELECT * FROM vencimientoc WHERE idpresupuesto=[idpresupuesto]" -->
+ 	<storyPlace x="0cm" y="0cm" width="20cm" height="1cm">
+		<place x="15cm" y="2cm" width="19cm" height="4cm">
+			<blockTable style="tablavencimientos" colWidths="2.3cm,1.7cm" >
+		<tr>
+		  <td>Vencimiento/s:</td>
+			<td></td>
+		</tr>
+ <!-- QUERY = "SELECT * FROM vencimientoc WHERE idpresupuesto=[idpresupuesto]" -->
+
+				<tr>
+					<td>[fechavencimientoc]</td>
+					<td>[cantvencimientoc] €</td>
+				</tr>
+
+ <!-- END QUERY-->
+ 			</blockTable>
+		</place>
+	</storyPlace> 
+ <!-- END IF QUERY-->
+
+
+
+<!-- QUERY = "SELECT * FROM presupuesto WHERE idpresupuesto=[idpresupuesto] AND idforma_pago = 8 "-->
+
+<storyPlace x="1cm" y="2cm" width="15cm" height="1cm">
+<place x="1cm" y="2cm" width="15cm" height="2.5cm">
+  <para>Para transferencias bancarias "La Caixa" ............</para>
+</place>
+</storyPlace>
+
+<!-- END QUERY -->

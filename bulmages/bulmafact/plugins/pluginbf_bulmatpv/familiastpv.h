@@ -22,7 +22,7 @@
 #ifndef FAMILIASTPV_H
 #define FAMILIASTPV_H
 
-#include <QTreeWidgetItem>
+#include <QtWidgets/QTreeWidgetItem>
 
 #include "blwidget.h"
 #include "blfunctions.h"
@@ -38,7 +38,7 @@ private:
     FamiliasView *m_familiasview;
   
 public:
-    FamiliasTPV(QWidget *parent, Qt::WFlags fl = 0);
+    FamiliasTPV(QWidget *parent, Qt::WindowFlags fl = 0);
     ~FamiliasTPV();
 
 public slots:

@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "genpedqtoolbutton.h"
 #include "blfunctions.h"
@@ -183,7 +183,7 @@ void GenPedQToolButton::generarFactura1()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclpedidocliente", linea->dbValue ( "desclpresupuesto" ) );
                 linea1->setDbValue ( "cantlpedidocliente", linea->dbValue ( "cantlpresupuesto" ) );
                 linea1->setDbValue ( "pvplpedidocliente", linea->dbValue ( "pvplpresupuesto" ) );
@@ -192,7 +192,7 @@ void GenPedQToolButton::generarFactura1()
                 linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
 
@@ -201,10 +201,10 @@ void GenPedQToolButton::generarFactura1()
             linea1 = fpv->m_listadescuentos->lineaat ( i );
             if ( linea1->dbValue ( "proporciondpedidocliente" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-                bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+                bud->getlistadescuentos() ->setProcesarCambios ( false );
                 linea->setDbValue ( "conceptdpedidocliente", linea1->dbValue ( "conceptdpresupuesto" ) );
                 linea->setDbValue ( "proporciondpedidocliente", linea1->dbValue ( "proporciondpresupuesto" ) );
-                bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+                bud->getlistadescuentos() ->setProcesarCambios ( true );
                 bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
@@ -214,7 +214,7 @@ void GenPedQToolButton::generarFactura1()
         bud->show();
 
 	/// Procesamos el presupuesto
-	fpv->mui_procesadopresupuesto->setChecked(TRUE);
+	fpv->mui_procesadopresupuesto->setChecked(true);
 
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error inesperado" ), this );

@@ -22,8 +22,8 @@
 #ifndef BLRADIOBUTTON_H
 #define BLRADIOBUTTON_H
 
-#include <QRadioButton>
-#include <QString>
+#include <QtWidgets/QRadioButton>
+#include <QtCore/QString>
 
 #include "blfunctions.h"
 

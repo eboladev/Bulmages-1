@@ -45,11 +45,11 @@
 #define COL_CANTIDADPREVISTAPREVCOBRO  15
 #define COL_IDCTACLIENTE               16
 
-#include <QMessageBox>
-#include <QPixmap>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QMenu>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QPixmap>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtWidgets/QMenu>
 
 #include "blconfiguration.h"
 #include "bcasientoview.h"
@@ -274,12 +274,12 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     QAction *menucobro = popup->addAction ( _ ( "Cobro" ) );
     QAction *menupago = popup->addAction ( _ ( "Pago" ) );
 
-    menugenerarasiento->setVisible ( FALSE );
-    menudesvinculaasiento->setVisible ( FALSE );
-    menuverasiento->setVisible ( FALSE );
-    menuverfact->setVisible ( FALSE );
-    menucobro->setVisible ( FALSE );
-    menupago->setVisible ( FALSE );
+    menugenerarasiento->setVisible ( false );
+    menudesvinculaasiento->setVisible ( false );
+    menuverasiento->setVisible ( false );
+    menuverfact->setVisible ( false );
+    menucobro->setVisible ( false );
+    menupago->setVisible ( false );
 
     BlDbRecordSet *cur;
     QString query;
@@ -291,18 +291,18 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
         return;
     } // end if
     if ( col == COL_TIPOPREVCOBRO ) {
-        menucobro->setVisible ( TRUE );
-        menupago->setVisible ( TRUE );
+        menucobro->setVisible ( true );
+        menupago->setVisible ( true );
     } // end if
 
     if ( linea->idasiento() == "" ) {
-        menugenerarasiento->setVisible ( TRUE );
+        menugenerarasiento->setVisible ( true );
     } else {
-        menudesvinculaasiento->setVisible ( TRUE );
-        menuverasiento->setVisible ( TRUE );
+        menudesvinculaasiento->setVisible ( true );
+        menuverasiento->setVisible ( true );
     } // end if
     if ( linea->idregistroiva() != "" ) {
-        menuverfact->setVisible ( TRUE );
+        menuverfact->setVisible ( true );
     } // end if
 
     QAction *opcion = popup->exec ( pos );

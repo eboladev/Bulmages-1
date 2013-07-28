@@ -2018,16 +2018,16 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.14.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.15.0-0001'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.15.0-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.14.1"
+\echo "Actualizada la revision de la base de datos a la version 0.15.0"
 
 \echo -n ':: '
 COMMENT ON SCHEMA public IS 'Standard public schema';

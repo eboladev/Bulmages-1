@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bcmasapatrimonialview.h"
 #include "bcmasapatrimoniallistview.h"
@@ -31,7 +31,7 @@
 \param parent
 \param fl
 **/
-BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, Qt::WFlags fl )
+BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, Qt::WindowFlags fl )
         : QDialog ( parent, fl ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG
@@ -356,19 +356,19 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
     if ( idmpatrimonial == "" ) {
         mainCompany() ->begin();
         query.sprintf ( "INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')" );
-        mainCompany() ->runQuery ( query.toAscii() );
+        mainCompany() ->runQuery ( query.toLatin1() );
         query.sprintf ( "SELECT MAX(idmpatrimonial) as id FROM mpatrimonial" );
         BlDbRecordSet *curs = mainCompany() ->loadQuery ( query, "cargaid" );
         mainCompany() ->commit();
-        idmpatrimonial = curs->value( "id" ).toAscii();
+        idmpatrimonial = curs->value( "id" ).toLatin1();
     } // end if
 
     /// Ponemos los datos correctos sobre la masa patrimonial.
     QString text = descmpatrimonial->text();
-    query.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s", text.toAscii().constData(), idmpatrimonial.toAscii().constData() );
+    query.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s", text.toLatin1().constData(), idmpatrimonial.toLatin1().constData() );
     mainCompany() ->runQuery ( query );
 
-    query.sprintf ( "DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.toAscii().constData() );
+    query.sprintf ( "DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.toLatin1().constData() );
     mainCompany() ->runQuery ( query );
 
     for ( i = 0; i < componentessuma->rowCount(); i++ ) {
@@ -377,12 +377,12 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 
         if ( tipo == "cuenta" ) {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (%s, NULL, %s, true)",
-                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
-                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toLatin1().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toLatin1().constData() );
         } else {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (NULL, %s, %s, true)",
-                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
-                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toLatin1().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toLatin1().constData() );
         } // end if
         mainCompany() ->runQuery ( query );
     } // end for
@@ -393,12 +393,12 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 
         if ( tipo == "cuenta" ) {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (%s, NULL, %s, false)",
-                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
-                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toLatin1().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toLatin1().constData() );
         } else {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (NULL, %s, %s, false)",
-                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
-                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toLatin1().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toLatin1().constData() );
         } // end if
         mainCompany() ->runQuery ( query );
     } // end for
@@ -415,6 +415,6 @@ QString BcMasaPatrimonialView::getNomMasa()
 {
     BL_FUNC_DEBUG
     
-    return descmpatrimonial->text().toAscii();
+    return descmpatrimonial->text().toLatin1();
 }
 

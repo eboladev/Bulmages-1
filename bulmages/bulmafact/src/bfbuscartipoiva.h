@@ -22,8 +22,8 @@
 #ifndef BFBUSCARTIPOIVA_H
 #define BFBUSCARTIPOIVA_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "blcombobox.h"
 #include "blpostgresqlclient.h"

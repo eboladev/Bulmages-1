@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "listalmacenview.h"
 #include "bfcompany.h"
@@ -52,7 +52,7 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->load();
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     blScript(this);
     
 }
@@ -97,7 +97,7 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id almacen" ) );
     addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre almacen" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

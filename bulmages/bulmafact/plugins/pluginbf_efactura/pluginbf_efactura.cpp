@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QToolButton>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QToolButton>
 
 #include <stdio.h>
 
@@ -141,7 +141,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_efactura", confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_efactura", confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     efacturabf *efact = new efacturabf();
     efact->inicializa ( bges );

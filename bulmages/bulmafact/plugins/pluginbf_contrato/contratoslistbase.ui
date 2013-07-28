@@ -494,22 +494,4 @@
  <resources>
   <include location="../../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>273</x>
-     <y>41</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>246</x>
-     <y>73</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
 </ui>

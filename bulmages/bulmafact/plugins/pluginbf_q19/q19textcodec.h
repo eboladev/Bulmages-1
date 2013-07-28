@@ -12,8 +12,8 @@
 #ifndef Q19TEXTCODEC_H
 #define Q19TEXTCODEC_H
 
-#include <qtextcodec.h>
-#include <qregexp.h>
+#include <QtCore/QTextCodec>
+#include <QtCore/QRegExp>
 
 /**
 	@author Xavi Drudis Ferran <xdrudis@tinet.cat>

@@ -37,7 +37,7 @@ Orden: 450
 
 Reports: impers_vencimientoc.rml
 
-Categorias: Facturacion avanzada;Experimentales;
+Categorias: Facturacion avanzada;Experimentales;Distribución;Distribución Alimentaria;
 
 Comentarios:
 

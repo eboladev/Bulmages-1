@@ -23,11 +23,11 @@
 #define AUTOFORM_H
 
 
-#include <QWidget>
-#include <QCloseEvent>
-#include <QtScript>
-#include <QScriptEngine>
-#include <QUiLoader>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
+#include <QtScript/QtScript>
+#include <QtScript/QScriptEngine>
+#include <QtUiTools/QUiLoader>
 
 #include "pdefs_pluginbl_autoform.h"
 #include "blform.h"
@@ -40,11 +40,13 @@ class PLUGINBL_AUTOFORM_EXPORT BlAutoForm : public BlForm, public Ui_AutoFormBas
 {
     Q_OBJECT
 public:
-    BlAutoForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE, const QString &interfacefile = "");
+    BlAutoForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE, const QString &interfacefile = "", const QString &objdesc="");
     ~BlAutoForm();
-    virtual int load ( QString id, bool paint = TRUE );
+    virtual int load ( QString id, bool paint = true );
     virtual int afterSave();
+    virtual void pintarPost ();
     void launch();
+    QString m_objdesc;
 };
 
 
@@ -55,7 +57,7 @@ class PLUGINBL_AUTOFORM_EXPORT BlAutoFormList : public BlFormList, public Ui_Aut
 {
   Q_OBJECT
 public:
-  BlAutoFormList ( BlMainCompany *comp=NULL, QWidget *parent=0, Qt::WFlags flag=0, edmode editmodo = BL_EDIT_MODE, const QString &interfacefile = "" );
+  BlAutoFormList ( BlMainCompany *comp=NULL, QWidget *parent=0, Qt::WindowFlags flag=0, edmode editmodo = BL_EDIT_MODE, const QString &interfacefile = "" );
   ~BlAutoFormList();
   void launch();
   BlAutoForm * createAutoForm();

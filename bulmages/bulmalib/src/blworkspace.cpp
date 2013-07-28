@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QAction>
-#include <QList>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QAction>
+#include <QtCore/QList>
 
 #include "blworkspace.h"
 #include "local_blI18n.h"
@@ -32,9 +32,6 @@
 BlWorkspace::BlWorkspace ( QWidget * )
 {
     BL_FUNC_DEBUG
-#ifdef AREA_QMDI
-    fprintf(stderr, "AREA_QMDI active\n");
-#endif
 }
 
 
@@ -49,7 +46,7 @@ BlWorkspace::~BlWorkspace()
 
 
 
-#ifdef AREA_QMDI    
+
 ///
 /**
 \param w
@@ -115,46 +112,3 @@ QWidget *BlWorkspace::activeWindow () const
     return QApplication::activeWindow ();
 }
 
-#else
-
-///
-/**
-\param w
-**/
-void BlWorkspace::addWindow ( QWidget * w )
-{
-    BL_FUNC_DEBUG
-    int tamdispW;
-    int tamdispH;
-    int tamventanadecoW;
-    int tamventanadecoH;
-    int tamventanaW;
-    int tamventanaH;
-    int margen = 10;
-
-    QWorkspace::addWindow ( w );
-
-    /// Se comprueba el tama&ntilde;o de la ventana que esta dise&ntilde;ada con Designer:
-    /// S&oacute;lo si la ventana es m&aacute;s grande que el espacio de representaci&oacute;n
-    /// se ajusta para caber dentro.
-    /// Crea un QAction para manejar la tecla rapida ESC para cerrar la ventana.
-    QAction *accionEsc = new QAction ( w );
-    accionEsc->setShortcut ( _ ( "Esc" ) );
-    connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
-    w->addAction ( accionEsc );
-    
-}
-
-
-///
-/**
-\param w
-**/
-void BlWorkspace::addSubWindow ( QWidget * w )
-{
-    BL_FUNC_DEBUG
-    BlWorkspace::addWindow ( w );
-    
-}
-
-#endif

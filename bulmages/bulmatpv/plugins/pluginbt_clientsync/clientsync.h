@@ -26,9 +26,9 @@
 #ifndef CLIENTSYNC_H
 #define CLIENTSYNC_H
 
-#include <QLabel>
-#include <QTableWidget>
- #include <QTcpSocket>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTableWidget>
+ #include <QtNetwork/QTcpSocket>
 
 #include "btticket.h"
 #include "btcompany.h"

@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QFile>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "blfunctions.h"
 #include "presupuestocontableview.h"
@@ -67,9 +67,9 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 	mui_list->addSubFormHeader ( "nombrepartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Concepto" ) );
 	mui_list->addSubFormHeader ( "conceptolpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
 	mui_list->addSubFormHeader ( "saldolpresupuestocontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Saldo" ) );
-	mui_list->setInsert ( FALSE );
-	mui_list->setDelete ( FALSE );
-	mui_list->setSortingEnabled ( TRUE );
+	mui_list->setInsert ( false );
+	mui_list->setDelete ( false );
+	mui_list->setSortingEnabled ( true );
 
 
         /// Disparamos los plugins.
@@ -83,7 +83,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 
         setListaLineas ( mui_list );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->run ( "PresupuestoContableView_PresupuestoContableView_Post", this );
 	blScript(this);

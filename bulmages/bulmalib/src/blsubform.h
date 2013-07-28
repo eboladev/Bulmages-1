@@ -27,11 +27,10 @@
 #ifndef BLSUBFORM_H
 #define BLSUBFORM_H
 
-#include <Qt>
-#include <QWidget>
-#include <QHeaderView>
-#include <QPalette>
-#include <QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QHeaderView>
+#include <QtGui/QPalette>
+#include <QtWidgets/QToolButton>
 
 #include "blfunctions.h"
 #include "ui_blsubformbase.h"
@@ -242,8 +241,8 @@ public:
     /// Establece el modo de funcionamiento del scroll horizontal.
     void setHorizontalScrollMode ( QAbstractItemView::ScrollMode mode );
     /// Establece los colores para dibujar el fondo de las filas.
-    /// Si la propiedad 'alternatingRowColors' est&aacute; en TRUE entonces de usan
-    /// los dos colores, si est&aacute; en FALSE s&oacute;lo se usa 'ColorFondo1'.
+    /// Si la propiedad 'alternatingRowColors' est&aacute; en true entonces de usan
+    /// los dos colores, si est&aacute; en false s&oacute;lo se usa 'ColorFondo1'.
     /// Estos valores corresponden a QPalette::Base y QPalette::AlternateBase.
     void setColorFondo1 ( QString color );
     void setColorFondo2 ( QString color );
@@ -374,22 +373,22 @@ public slots:
     virtual void on_mui_list_cellRePosition ( int, int );
     void on_mui_list_cellChanged ( int, int );
     virtual void contextMenuEvent ( QContextMenuEvent * );
-    virtual void on_mui_confcol_clicked();
-    virtual void on_mui_confquery_clicked();
+    virtual void on_mui_confcol_released();
+    virtual void on_mui_confquery_released();
     void on_mui_list_pressedSlash ( int row, int col );
     void on_mui_list_pressedAsterisk ( int row, int col );
     void on_mui_list_pressedPlus ( int row, int col );
     void on_mui_list_pressedMinus ( int row, int col );
     virtual void on_mui_list_ctrlUp ( int row, int col );
     virtual void on_mui_list_ctrlDown ( int row, int col );
-    virtual void on_mui_pagsiguiente_clicked();
-    virtual void on_mui_paganterior_clicked();
-    virtual void on_mui_ultpag_clicked();
-    virtual void on_mui_pripag_clicked();
+    virtual void bPagSig();
+    virtual void bPagAnt();
+    virtual void bUltPag();
+    virtual void bPriPag();
     virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_cellDoubleClicked ( int row, int col );
-    virtual void on_mui_botonCerrar_clicked();
+    virtual void on_mui_botonCerrar_released();
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
     virtual void editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
     virtual void pressedAsterisk ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );

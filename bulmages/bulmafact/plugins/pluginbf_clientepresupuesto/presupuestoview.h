@@ -22,9 +22,9 @@
 #ifndef PRESUPUESTOCLIENTE_H
 #define PRESUPUESTOCLIENTE_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_presupuestoclientebase.h"
 #include "blpostgresqlclient.h"
@@ -57,6 +57,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual void pintarPost();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     void inicializar();
     void manageArticle ( int );

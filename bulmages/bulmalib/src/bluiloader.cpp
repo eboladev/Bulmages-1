@@ -18,7 +18,7 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "bluiloader.h"
 #include "blcombobox.h"
 #include "blsubform.h"
@@ -55,7 +55,7 @@ QWidget *BlUiLoader::createWidget ( const QString &className, QWidget *parent, c
         ((BlComboBox *) widget)->setFieldId ( "idprovincia" );
         ((BlComboBox *) widget)->m_valores["provincia"] = "";
         ((BlComboBox *) widget)->m_valores["descpais"] = "";
-        ((BlComboBox *) widget)->setAllowNull ( TRUE );
+        ((BlComboBox *) widget)->setAllowNull ( true );
         ((BlComboBox *) widget)->setId ( "" );
     } // end if
     

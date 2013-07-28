@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "fpagoview.h"
 #include "bfcompany.h"
@@ -37,7 +37,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     BL_FUNC_DEBUG
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    groupBox1->setDisabled ( TRUE );
+    groupBox1->setDisabled ( true );
     setTitleName ( _ ( "Forma de Pago" ) );
     setDbTableName ( "forma_pago" );
     setEditMode();
@@ -116,7 +116,7 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 {
     BL_FUNC_DEBUG
     if ( !cur ) return;
-    groupBox1->setEnabled ( TRUE );
+    groupBox1->setEnabled ( true );
     int row = mui_lista->row ( cur );
     trataModificado();
     mui_descforma_pago->setText ( m_cursorFPagoView->value( "descforma_pago", row ) );
@@ -126,6 +126,13 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     mdb_idforma_pago = m_cursorFPagoView->value( "idforma_pago", row );
     m_item = cur;
 
+    
+    /// Disparamos los plugins.
+    int res = g_plugins->run ( "FPagoView_currentItemChanged_Post", this );
+    if ( res != 0 ) {
+	return;
+    } // end if
+    
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_readValues();
     
@@ -209,9 +216,9 @@ bool FPagoView::trataModificado()
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
         
-        return ( TRUE );
+        return ( true );
     } // end if
-    return ( FALSE );
+    return ( false );
 }
 
 
@@ -258,7 +265,7 @@ void FPagoView::on_mui_borrar_clicked()
         mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         pintar();
-        groupBox1->setDisabled ( TRUE );
+        groupBox1->setDisabled ( true );
         
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al intentar borrar la forma de pago" ) );
@@ -273,7 +280,7 @@ void FPagoView::on_mui_borrar_clicked()
 void FPagoView::setSelectMode()
 {
     BL_FUNC_DEBUG
-    m_selectMode = TRUE;
+    m_selectMode = true;
     
 }
 
@@ -284,7 +291,7 @@ void FPagoView::setSelectMode()
 void FPagoView::setEditMode()
 {
     BL_FUNC_DEBUG
-    m_selectMode = FALSE;
+    m_selectMode = false;
     
 }
 

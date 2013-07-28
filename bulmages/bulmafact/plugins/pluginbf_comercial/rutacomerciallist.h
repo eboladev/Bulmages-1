@@ -21,7 +21,7 @@
 #ifndef RUTACOMERCIALLIST_H
 #define RUTACOMERCIALLIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "bfbuscararticulo.h"

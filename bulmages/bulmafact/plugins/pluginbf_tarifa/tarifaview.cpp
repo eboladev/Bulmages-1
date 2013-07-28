@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
+#include <QtGui/QCloseEvent>
 
 #include "tarifaview.h"
 #include "bfcompany.h"
@@ -59,10 +59,10 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     /// Desactivamos los campos que solo se utilizan si existe un 'idtarifa',
     /// es decir, si estamos creando una nueva tarifa no tenemos que emplear
     /// estos campos.
-    mui_list->setEnabled ( FALSE );
-    mui_filtro->setEnabled ( FALSE );
-    mui_actualizar->setEnabled ( FALSE );
-    mui_borrar->setEnabled ( FALSE );
+    mui_list->setEnabled ( false );
+    mui_filtro->setEnabled ( false );
+    mui_actualizar->setEnabled ( false );
+    mui_borrar->setEnabled ( false );
 
     insertWindow ( _ ( "Tarifa edicion" ), this );
 
@@ -149,10 +149,10 @@ int TarifaView::load ( QString idtarifa )
     m_idtarifa = idtarifa;
 
     /// Si se ha guardado bien entonces de habilitan los botones y demas.
-    mui_list->setEnabled ( TRUE );
-    mui_filtro->setEnabled ( TRUE );
-    mui_actualizar->setEnabled ( TRUE );
-    mui_borrar->setEnabled ( TRUE && mainCompany()->hasTablePrivilege ( tableName(), "DELETE" ) );
+    mui_list->setEnabled ( true );
+    mui_filtro->setEnabled ( true );
+    mui_actualizar->setEnabled ( true );
+    mui_borrar->setEnabled ( true && mainCompany()->hasTablePrivilege ( tableName(), "DELETE" ) );
 
     setDbValue ( "idtarifa", m_idtarifa );
     BlDbRecord::load ( m_idtarifa );

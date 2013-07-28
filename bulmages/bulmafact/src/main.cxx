@@ -30,9 +30,9 @@
     Y por &uacute;ltimo crea el objeto del tipo \ref BfBulmaFact que es la aplicaci&oacute;n
     de ventanas. */
 
-#include <QDir>
-#include <QString>
-#include <QTextCodec>
+#include <QtCore/QDir>
+#include <QtCore/QString>
+#include <QtCore/QTextCodec>
 
 #include "bfbulmafact.h"
 #include "blapplication.h"
@@ -41,6 +41,9 @@
 #include "bldblogindialog.h"
 #include "blplugins.h"
 #include "blsplashscreen.h"
+
+
+#include "blsync.h"
 
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmafact_")
 
@@ -66,7 +69,7 @@ int main ( int argc, char **argv )
 
       /// Inicializa el sistema de traducciones 'gettext'.
       setlocale(LC_ALL, "");
-      blBindTextDomain ("bulmafact", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
+      blBindTextDomain ("bulmafact", g_confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
       blTextDomain ("bulmafact");
       
       /// Iniciamos la clase QApplication para el uso de las Qt.
@@ -76,13 +79,12 @@ int main ( int argc, char **argv )
       initPlugins();
 
       /// Definimos la codificaci&oacute;n a Unicode.
-       QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toUtf8().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toUtf8().constData() ) ) );
 
       /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
-      argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
+      argParser = new BlArgParser( g_theApp->arguments().size(), argv );
 
       g_confpr->setValue( CONF_REPLACE_STRING, argParser->confReplaceString() );
       
@@ -101,19 +103,46 @@ int main ( int argc, char **argv )
          return 0;
       } // end if
 
+
       /// Cargamos el BlSplashScreen.
       splashScr = new BlSplashScreen ( g_confpr->value( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
       splashScr->setMessage ( _( "Iniciando clases" ) );
       splashScr->setProgressBar ( 1 );
-      
+
       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
       login1 = new BlDbLoginDialog ( 0, "" );
-      if ( !login1->authOK() || argParser->askPassword() ) {
+
+
          if( !argParser->userName().isEmpty() ) {
             login1->m_login->setText( argParser->userName() );
-            login1->m_password->setFocus();
+	 } else {
+	    login1->m_login->setText( g_confpr->value(CONF_LOGIN_USER));
+	 } // end if
+	 
+         login1->m_password->setFocus();
+	 login1->m_password->setText(g_confpr->value(CONF_PASSWORD_USER));
+	    
+	 if (!argParser->host().isEmpty()) {
+	    login1->m_host->setText(argParser->host());
+	 } else {
+	    login1->m_host->setText(g_confpr->value(CONF_SERVIDOR));
+	 } // end if
+	    
+	 if (!argParser->port().isEmpty()) {
+	    login1->m_port->setText(argParser->port());
+	 } else {
+	    login1->m_port->setText(g_confpr->value(CONF_PUERTO));
          } // end if
+         if (argParser->dbName().isEmpty()) {
+	    login1->m_db->setText(g_confpr->value(CONF_DBNAME));
+	 } else {
+	    login1->m_db->setText(argParser->dbName());
+	 } // end if
+	 
+      login1->validate();	 
+      if ( !login1->authOK() || argParser->askPassword() ) {
          login1->exec();
+	 g_confpr->setValue ( CONF_DBNAME, login1->m_db->text());
       } // end if
       /// Si la autentificacion falla una segunda vez abortamos el programa.
       if ( !login1->authOK() ) {
@@ -121,7 +150,9 @@ int main ( int argc, char **argv )
       } // end if
       delete login1;
 
-      bges = new BfBulmaFact ( argParser->dbName() );
+
+      
+      bges = new BfBulmaFact ( g_confpr->value(CONF_DBNAME) );
       bges->hide();
       g_main = bges;
 
@@ -129,7 +160,7 @@ int main ( int argc, char **argv )
       delete argParser;
 
       /// Verifica la version de la base de datos para funcionar adecuadamente.
-      bges->company()->dbVersionCheck("DatabaseRevision", "0.14.1-0002");
+      bges->company()->dbVersionCheck("DatabaseRevision", "0.15.0-0002");
 
 
       splashScr->show();
@@ -141,7 +172,7 @@ int main ( int argc, char **argv )
       QDir archivoConf;
       if ( !archivoConf.exists ( confGlobalEsp ) ) {
          QString mensaje = "-->" + _("El archivo '") + confGlobalEsp + _("' no existe. <--\n");
-         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+         fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
       } else {
          g_confpr->readConfig ( confGlobalEsp );
       } // end if
@@ -149,11 +180,18 @@ int main ( int argc, char **argv )
       QString confLocalEsp = g_confpr->getLocalDir() + QString("bulmafact_") + bges->company()->dbName() + ".conf";
       if ( !archivoConf.exists ( confLocalEsp ) ) {
           QString mensaje = "-->" + _("El archivo '") + confLocalEsp + _("' no existe. <--\n");
-          fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+          fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
       } else {
           g_confpr->readConfig ( confLocalEsp );
       } // end if
 
+      splashScr->setMessage ( _( "Buscando Actualizaciones" ) );
+      splashScr->setProgressBar ( 5 );
+      BlSync *sync = new BlSync(0,0);
+      sync->exec();
+      delete sync;
+      
+      
 
       // Pone el color de fondo del workspace si esta definido y es un color valido.
       if ( QColor(g_confpr->value( CONF_BACKGROUND_COLOR )).isValid() ) {
@@ -174,19 +212,19 @@ int main ( int argc, char **argv )
       } // end if
 
       splashScr->setMessage ( _( "Cargando plugins" ) );
-      splashScr->setProgressBar ( 10 );
+      splashScr->setProgressBar ( 15 );
 
       /// Hacemos la carga de las librerias que contienen los plugins.
       g_plugins->loadLibs ( g_confpr->value( CONF_PLUGINS_BULMAFACT ) );
 
       splashScr->setMessage ( _( "Lanzando plugins" ) );
-      splashScr->setProgressBar ( 20 );
+      splashScr->setProgressBar ( 25 );
 
       /// Disparamos los plugins con entryPoint.
       g_plugins->run ( "entryPoint", bges );
 
       splashScr->setMessage ( _( "Inicializando componentes" ) );
-      splashScr->setProgressBar ( 30 );
+      splashScr->setProgressBar ( 35 );
 
       /// Lanzamos la creacion de las ventanas principales.
       bges->createMainWindows ( splashScr );
@@ -199,8 +237,13 @@ int main ( int argc, char **argv )
 
       valorSalida = g_theApp->exec();
 
+
+      
       /// Disparamos los plugins con entryPoint.
       g_plugins->run ( "exitPoint", bges );
+      
+
+
    } catch ( ... ) {
       blMsgInfo ( _( "Error inesperado en BulmaFact. El programa se cerrara." ) );
    } // end try
@@ -210,6 +253,7 @@ int main ( int argc, char **argv )
    delete g_theApp;
    delete g_plugins;
    delete g_confpr;  /* El ultimo a eliminar ya que los destructores lo utilizan */
+   
 
 
    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );

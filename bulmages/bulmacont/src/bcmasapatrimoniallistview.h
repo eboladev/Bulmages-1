@@ -22,8 +22,8 @@
 #ifndef BCMASAPATRIMONIALLISTVIEW_H
 #define BCMASAPATRIMONIALLISTVIEW_H
 
-#include <QWidget>
-#include <QStringList>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMessageBox>
 
 #include "blfunctions.h"
 #include "ui_bcmasapatrimoniallistbase.h"
