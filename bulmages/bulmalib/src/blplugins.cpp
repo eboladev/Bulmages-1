@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QString>
-#include <QLibrary>
-#include <QStringList>
+#include <QtCore/QString>
+#include <QtCore/QLibrary>
+#include <QtWidgets/QMessageBox>
 
 #include "blplugins.h"
 #include "blconfiguration.h"
@@ -71,7 +71,7 @@ void BlPlugins::loadLibs ( const QString &libs )
 {
     BL_FUNC_DEBUG
 
-    bool cargado = FALSE;
+    bool cargado = false;
     /// Hacemos la carga de los plugins.
     QString cad = libs;
 
@@ -82,14 +82,14 @@ void BlPlugins::loadLibs ( const QString &libs )
     QStringList plugins = cad.split ( ";" );
     QString libErrorString;
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
-        cargado = FALSE;
+        cargado = false;
         for ( QStringList::Iterator ot = dirs.begin(); ot != dirs.end(); ++ot ) {
             QString file = *ot + *it;
             QLibrary *lib = new QLibrary ( file );
             lib->load();
             libErrorString += lib->errorString();
             if ( lib->isLoaded() ) {
-                cargado = TRUE;
+                cargado = true;
                 m_plugins.append ( lib );
 	    } else {
 	        delete lib;

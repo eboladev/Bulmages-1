@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLayout>
 
 #include <fstream>
 
@@ -48,7 +48,7 @@ InventarioView::InventarioView ( BfCompany *comp, QWidget *parent )
     subform2->setMainCompany ( comp );
     mui_idfamilia->setMainCompany ( comp );
     setListControlStock ( subform2 );
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     
 }
 

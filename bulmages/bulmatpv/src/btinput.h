@@ -1,7 +1,7 @@
 #ifndef BTINPUT_H
 #define BTINPUT_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "blfunctions.h"
 #include "blwidget.h"

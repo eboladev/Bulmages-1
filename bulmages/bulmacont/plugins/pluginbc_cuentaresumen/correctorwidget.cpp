@@ -30,7 +30,7 @@
 \param parent
 \param fl
 **/
-ResumCtaWidget::ResumCtaWidget ( BcCompany *emp, QWidget* parent, Qt::WFlags fl )
+ResumCtaWidget::ResumCtaWidget ( BcCompany *emp, QWidget* parent, Qt::WindowFlags fl )
         : QWidget ( parent, fl ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG

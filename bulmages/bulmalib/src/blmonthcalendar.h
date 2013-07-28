@@ -24,11 +24,11 @@
 #ifndef BLMONTHCALENDAR_H
 #define BLMONTHCALENDAR_H
 
-#include <QDate>
-#include <QWidget>
-#include <QTextBrowser>
-#include <QMultiHash>
-#include <QString>
+#include <QtCore/QDate>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QTextBrowser>
+#include <QtCore/QMultiHash>
+#include <QtCore/QString>
 
 #include "blfunctions.h"
 

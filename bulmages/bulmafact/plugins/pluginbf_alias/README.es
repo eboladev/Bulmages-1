@@ -25,7 +25,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles: 
 
-Categorias: Utilidades genericas;
+Categorias: Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 28
 

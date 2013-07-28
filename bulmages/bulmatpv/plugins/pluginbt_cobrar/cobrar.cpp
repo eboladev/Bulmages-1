@@ -1,5 +1,5 @@
 #include "cobrar.h"
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 Cobrar::Cobrar ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {

@@ -24,6 +24,6 @@ Incompatibles:
 
 Orden:
 
-Categorias: Experimentales;IVA incluido;Colmados;
+Categorias: Experimentales;IVA incluido;Colmados; Restauración; Tallas y Colores; Parques Infantiles;
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

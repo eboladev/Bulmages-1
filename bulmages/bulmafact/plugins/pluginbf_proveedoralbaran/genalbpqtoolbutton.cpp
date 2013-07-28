@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "genalbpqtoolbutton.h"
 #include "blfunctions.h"
@@ -178,7 +178,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->newRecord();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                bud->getlistalineas() ->setProcesarCambios ( false );
                 linea1->setDbValue ( "desclalbaranp", linea->dbValue ( "desclpedidoproveedor" ) );
                 linea1->setDbValue ( "cantlalbaranp", linea->dbValue ( "cantlpedidoproveedor" ) );
                 linea1->setDbValue ( "pvplalbaranp", linea->dbValue ( "pvplpedidoproveedor" ) );
@@ -188,7 +188,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
                 linea1->setDbValue ( "ivalalbaranp", linea->dbValue ( "ivalpedidoproveedor" ) );
                 linea1->setDbValue ( "reqeqlalbaranp", linea->dbValue ( "reqeqlpedidoproveedor" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                bud->getlistalineas() ->setProcesarCambios ( true );
             } // end if
         } // end for
         bud->calculaypintatotales();

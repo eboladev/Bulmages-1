@@ -23,8 +23,8 @@
 
 #include "efacturarecepcion.h"
 #include "blfunctions.h"
-#include <QFileDialog>
-#include <QLineEdit>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QLineEdit>
 
 #define EMAIL "efactura@conetxia.com"
 #define DIREMAIL "/home/arturo/efacturamail"

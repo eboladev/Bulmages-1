@@ -25,6 +25,6 @@ Incompatibles: libpluginbt_articulografico.so
 
 Orden:
 
-Categorias: Experimentales;
+Categorias: Experimentales; Ferreterías; Droguerías; Supermercados;
 
 Comentarios: Ideal para Sistemas con muchos articulos.

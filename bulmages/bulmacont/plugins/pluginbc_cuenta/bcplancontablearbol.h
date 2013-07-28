@@ -22,7 +22,7 @@
 #ifndef BCPLANCONTABLEARBOL_H
 #define BCPLANCONTABLEARBOL_H
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"

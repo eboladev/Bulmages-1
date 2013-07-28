@@ -65,7 +65,7 @@ private:
 
 
 public:
-    CarteraCobrosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode modo = BL_EDIT_MODE );
+    CarteraCobrosList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode modo = BL_EDIT_MODE );
     ~CarteraCobrosList();
     void presenta();
     QString idvencimientoc();

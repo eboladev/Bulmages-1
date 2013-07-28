@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "listdescpedidoclienteview.h"
 #include "blfunctions.h"
@@ -41,7 +41,7 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView ( QWidget *parent
     addSubFormHeader ( "conceptdpedidocliente", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pedido" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

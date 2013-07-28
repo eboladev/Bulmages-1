@@ -36,7 +36,7 @@ private:
     BlForm *m_BlForm;
 
 public:
-    BlFormConfig ( BlMainCompany *, BlForm *parent = 0, Qt::WFlags f = 0 );
+    BlFormConfig ( BlMainCompany *, BlForm *parent = 0, Qt::WindowFlags f = 0 );
     ~BlFormConfig();
 public slots:
     virtual void on_editarScript_released();

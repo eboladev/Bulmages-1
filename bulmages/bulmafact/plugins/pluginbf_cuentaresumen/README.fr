@@ -1,0 +1,31 @@
+#######
+#Plugins
+#######
+#README.fr
+20110204
+
+Nombre: Résumé d'un compte
+
+Biblioteca: libpluginbf_cuentaresumen.so
+
+Descripción: <H1>Résumé de comptes</H1>
+<P>Montrer le résumé des comptes qui ont été seléctionnés,
+Affiche : le solde, débit, crédit, libellé et d'autres données.</P>
+<P>Une fois installé le greffon est dans le menu<B>Afficher</B> l'option résumé de compte apparait, ouvre une fenêtre ancrée qui sera actualisée chaque fois qu'un compte est introduit dans le système par un sous formulaire ou par un dialogue de recherche de compte</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilité générique;
+
+Orden: 40
+
+Comentarios: -

@@ -21,13 +21,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <QWidget>
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtWidgets/QWidget>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "informeqtoolbutton.h"
 #include "blfunctions.h"
@@ -98,7 +98,7 @@ void InformeQToolButton::click()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
@@ -397,7 +397,7 @@ void InformeArtQToolButton::click()
     QString logousuario = g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
     blCopyFile(archivologo, logousuario);
 
-    QFile file;
+    BlFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

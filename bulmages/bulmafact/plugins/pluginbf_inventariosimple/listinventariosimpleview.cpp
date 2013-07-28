@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "listinventariosimpleview.h"
 #include "bfcompany.h"
@@ -53,7 +53,7 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
     mui_listado->setMainCompany ( comp );
     mui_listado->inicializar();
     mui_listado->load();
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     blScript(this);
     
 }
@@ -98,8 +98,8 @@ ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : B
     addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id Inventario" ) );
     addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
     addSubFormHeader ( "stockinventariosimple", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Stock" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
     
 }
 

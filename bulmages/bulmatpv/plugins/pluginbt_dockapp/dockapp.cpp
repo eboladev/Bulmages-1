@@ -1,20 +1,17 @@
 #include "dockapp.h"
 #include "btbulmatpv.h"
 #include "blfunctions.h"
-#include <QWidget>
-#include <QMenu>
-#include <QSvgRenderer>
-#include <QFileDialog>
-#include <QInputDialog>
-#include <QTextStream>
-#include <QDomDocument>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMenu>
+#include <QtSvg/QSvgRenderer>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QInputDialog>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
 
 #include "blmainwindow.h"
 #include "blplugins.h"
 
-#ifndef Q_OS_WIN32
-#include <QX11EmbedContainer>
-#endif
 
 
 QDockWidget *g_doc2;

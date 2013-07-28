@@ -22,15 +22,15 @@
 #include <fstream>
 #include <iostream>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QProcess>
-#include <QTextStream>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QProcess>
+#include <QtCore/QTextStream>
 
 #include "pluginbl_bloqconf.h"
 #include "plblbloqconf.h"
@@ -75,13 +75,13 @@ void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
     menu->addSeparator();
     QAction * ac = new QAction("Bloqueo Configuracion" , menu);
     ac->setObjectName("actionBloqueoConfiguracion");
-    ac -> setCheckable(TRUE);
+    ac -> setCheckable(true);
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
             if (file.permissions() & QFile::WriteOwner) {
-              ac->setChecked(FALSE);
+              ac->setChecked(false);
             } else {
-              ac->setChecked(TRUE);
+              ac->setChecked(true);
             } // end if
     
     
@@ -105,11 +105,11 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
             if (file.permissions() & QFile::WriteOwner) {
               sub->saveConfig();
               QString cad = "chmod a-w " + archivo;
-              system ( cad.toAscii().constData() );
+              system ( cad.toLatin1().constData() );
             } else {
               sub->saveConfig();
               QString cad = "chmod a+w " + archivo;
-              system ( cad.toAscii().constData() );
+              system ( cad.toLatin1().constData() );
             } // end if
     } // end if
     
@@ -126,7 +126,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_bloqconf", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_bloqconf", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
     PluginBl_BloqConf *mcont = new PluginBl_BloqConf;
@@ -169,17 +169,17 @@ int BlAction_actionTriggered(BlAction *accion) {
 
     if (accion->objectName() == "mui_actionBloqConf") {
         QString cad = "chmod a-w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
-        system ( cad.toAscii().constData() );
+        system ( cad.toLatin1().constData() );
         blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
     }
     if (accion->objectName() == "mui_actionUnlockConf") {
         QString cad = "chmod a+w " + g_confpr->value(CONF_DIR_USER) + "*.cfn";
-        system ( cad.toAscii().constData() );
+        system ( cad.toLatin1().constData() );
         blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
     }
     if (accion->objectName() == "mui_actionDeleteConf") {
         QString cad = "rm" + g_confpr->value(CONF_DIR_USER) + "*.cfn";
-        system ( cad.toAscii().constData() );
+        system ( cad.toLatin1().constData() );
         blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
     }
 

@@ -1,6 +1,6 @@
-#include <QWidget>
-#include <QPushButton>
-#include <QKeyEvent>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
+#include <QtGui/QKeyEvent>
 
 #include "modificadores.h"
 #include "blfunctions.h"
@@ -25,12 +25,12 @@ Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent, bool editFie
       
     } else {
     
-	bool hayModificadores = FALSE;
+	bool hayModificadores = false;
 	QString idarticulo = ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
 	
 	BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
 	while ( !cur->eof() ) {
-	    hayModificadores = TRUE;
+	    hayModificadores = true;
 	    QPushButton * toolbutton = new QPushButton ( mui_frame );
 	    toolbutton->setText ( cur->value( "nombremodificador" ) );
 
@@ -81,7 +81,7 @@ void Modificadores::modificadorClicked()
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
     BtTicket *ticket = NULL;
     BtTicket *ticketv = NULL;
-    bool encontrado = FALSE;
+    bool encontrado = false;
 
     QString idarticulo = emp1->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
 
@@ -89,7 +89,7 @@ void Modificadores::modificadorClicked()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
     while ( !encontrado ) {
         if ( ( ( QPushButton * ) sender() ) ->text() == cur->value( "nombremodificador" ) ) {
-            encontrado = TRUE;
+            encontrado = true;
         } else {
             cur->nextRecord();
         } // end if

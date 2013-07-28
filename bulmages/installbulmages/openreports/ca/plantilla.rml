@@ -54,5 +54,8 @@
 		<setFont name="Helvetica" size="11"/>
 		<fill color="(0.18,0.38,0.42)"/>
 		<rect x="9.9cm" y="26.4cm" width="9.8cm" height="0.6cm" fill="yes" stroke="no"/>
+		
+		<!-- EL NUMERO DE PAGINA -->
+		<drawRightString x="19.5cm" y="0.3cm"><pageNumber/></drawRightString> 
 
 </document>

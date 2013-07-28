@@ -20,9 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
-#include <QLineEdit>
-#include <QTableWidget>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTableWidget>
 
 #include "pluginbt_articulosubform.h"
 #include "blfunctions.h"
@@ -117,7 +117,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_articulosubform", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_articulosubform", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     
     return 0;
 }

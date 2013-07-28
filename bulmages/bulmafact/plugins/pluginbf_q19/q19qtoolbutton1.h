@@ -20,14 +20,14 @@
 #ifndef IMPQTOOLBUTTON1_H
 #define IMPQTOOLBUTTON1_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 #include "facturaslist.h"
 
 

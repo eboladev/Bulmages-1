@@ -21,9 +21,9 @@
 #ifndef CONTRATOVIEW_H
 #define CONTRATOVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 
 #include "bldatesearch.h"
@@ -65,6 +65,7 @@ public:
     void inicializar();
     virtual int afterSave();
     virtual int cargarPost ( QString id );
+    virtual void pintarPost ( );
 
 public slots:
     virtual void on_subform2_itemDoubleClicked ( QTableWidgetItem * );

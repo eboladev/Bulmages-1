@@ -49,7 +49,7 @@ void BndsTicket::addArticle(BndsArticle* article, BndsModifier *modifier)
 {
 
     list<BndsTicketLine*> ticketLinesList = ticketLines();
-    bool previousExist = FALSE;
+    bool previousExist = false;
 
     
     /// Si existe modificador siempre se crea una linea de ticket nueva.
@@ -61,7 +61,7 @@ void BndsTicket::addArticle(BndsArticle* article, BndsModifier *modifier)
 		/// Comprueba que esa linea no tenga modificadores.
 		if ( (*itTicketLine)->getModifier() == ( BndsModifier* ) 0 ) {
 		    (*itTicketLine)->setQuantityArticle( (*itTicketLine)->quantityArticle() + 1 );
-		    previousExist = TRUE;
+		    previousExist = true;
 		} // end if
 
 	    } // end if
@@ -72,7 +72,7 @@ void BndsTicket::addArticle(BndsArticle* article, BndsModifier *modifier)
     
 
     /// Si no existia antes entonces se crea entrada en la lista de articulos en el ticket.
-    if (previousExist == FALSE) {
+    if (previousExist == false) {
      
 	BndsTicketLine *ticketLine = new BndsTicketLine();
 	ticketLine->setArticle(article);

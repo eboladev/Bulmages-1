@@ -21,7 +21,7 @@
 #ifndef INCIDENCIACOMERCIAL_H
 #define INCIDENCIACOMERCIAL_H
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "bfcompany.h"
 #include "bfform.h"

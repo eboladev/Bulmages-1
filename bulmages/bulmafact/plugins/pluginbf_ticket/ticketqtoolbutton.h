@@ -21,14 +21,14 @@
 #ifndef TICKET_QTOOLBUTTON_H
 #define TICKET_QTOOLBUTTON_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 
 
 #include "facturaview.h"

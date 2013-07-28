@@ -1,10 +1,10 @@
 #ifndef BFSUBFORM_H
 #define BFSUBFORM_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtDesigner/QDesignerExportWidget>
 
-#include <QtGui>
+#include <QtGui/QtGui>
 
 
 class QDESIGNER_WIDGET_EXPORT BfSubForm : public QTableWidget

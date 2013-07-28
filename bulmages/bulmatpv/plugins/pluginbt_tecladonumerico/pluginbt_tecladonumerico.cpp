@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#include <QtWidgets/QDockWidget>
 
 #include "pluginbt_tecladonumerico.h"
 #include "blfunctions.h"
@@ -43,7 +43,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugintecladonumerico", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugintecladonumerico", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _ ( "Teclado Numerico" ), tpv, "tecladonumericodock" );

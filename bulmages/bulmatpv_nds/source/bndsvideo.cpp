@@ -249,11 +249,11 @@ int BndsVideo::eventTemplateListA(bool previousPage, bool modificador)
 {
     /// Procesa los eventos de la pantalla tactil.
     /// En funcion del numero de elementos devuelve que recuadro u opcion se ha seleccionado.
-    static bool rebote = TRUE;
+    static bool rebote = true;
     touchRead(&m_touch);
 
     if ((m_touch.px > 0) && (m_touch.py > 0) && rebote) {
-	rebote = FALSE;
+	rebote = false;
 	
 	/// Coordenadas de otras opciones:
 	
@@ -324,7 +324,7 @@ int BndsVideo::eventTemplateListA(bool previousPage, bool modificador)
 
 
     } else if ((m_touch.px == 0) && (m_touch.py == 0) && !rebote)  {
-	rebote = TRUE;
+	rebote = true;
     } // end if
 
 
@@ -386,11 +386,11 @@ int BndsVideo::eventTemplateListB()
   
     /// Procesa los eventos de la pantalla tactil.
     /// En funcion del numero de elementos devuelve que recuadro u opcion se ha seleccionado.
-    static bool rebote = TRUE;
+    static bool rebote = true;
     touchRead(&m_touch);
 
     if ((m_touch.px > 0) && (m_touch.py > 0) && rebote) {
-	rebote = FALSE;
+	rebote = false;
 
 	/// Boton - cantidad.
 	if ( ((m_touch.px >= 5) && (m_touch.px <= 47)) && ((m_touch.py >= 4) && (m_touch.py <= 39)) ) {
@@ -428,7 +428,7 @@ int BndsVideo::eventTemplateListB()
 	} // end if
 
     } else if ((m_touch.px == 0) && (m_touch.py == 0) && !rebote)  {
-	rebote = TRUE;
+	rebote = true;
     } // end if
 	
     return 0;

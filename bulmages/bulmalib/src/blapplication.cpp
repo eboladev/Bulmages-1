@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "blapplication.h"
 #include "blform.h"
 #include "blfunctions.h"
@@ -50,7 +50,7 @@ BlApplication::~BlApplication()
 }
 
 
-#if CONFIG_DEBUG == TRUE
+
 ///
 /**
 \param object
@@ -60,16 +60,16 @@ BlApplication::~BlApplication()
 bool BlApplication::notify ( QObject *object, QEvent *event )
 {
     ///   Esta funcion es llamada continuamente y por eso no la depuramos (BL_FUNC_DEBUG).
-
     try {
         return QApplication::notify ( object, event );
     } catch ( ... ) {
-        fprintf(stderr, _("Error inesperado en el sistema de notificaciones.\n").toAscii());
-        return FALSE;
-    } // end try
-
-}
+#ifdef CONFIG_DEBUG
+        fprintf(stderr, "%s\n", _("Error inesperado en el sistema de notificaciones.").toLatin1().constData());
 #endif
+        return false;
+    } // end try
+}
+
 
 
 ///

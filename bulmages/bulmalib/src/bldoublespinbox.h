@@ -22,11 +22,11 @@
 #ifndef BLDOUBLESPINBOX_H
 #define BLDOUBLESPINBOX_H
 
-#include <QDoubleSpinBox>
-#include <QEvent>
-#include <QKeyEvent>
-#include <QAbstractSpinBox>
-#include <QLineEdit>
+#include <QtWidgets/QDoubleSpinBox>
+#include <QtCore/QEvent>
+#include <QtGui/QKeyEvent>
+#include <QtWidgets/QAbstractSpinBox>
+#include <QtWidgets/QLineEdit>
 
 #include "blfunctions.h"
 

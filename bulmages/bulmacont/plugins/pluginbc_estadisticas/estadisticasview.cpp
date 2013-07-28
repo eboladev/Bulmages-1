@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 #include "estadisticasview.h"
-#include <QLabel>
+#include <QtWidgets/QLabel>
 
 #ifdef GDCHART
 #include "gdc.h"
@@ -206,7 +206,7 @@ void estadisticasview::sacapie ( float *p1, char **lbl1, int numslices1 )
     int    expl[] = { 0, 0, 0, 0, 0, 20, 0 };
 
     /* set missing slices */
-    unsigned char missing[] = { FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE };
+    unsigned char missing[] = { false, false, false, false, false, false, true };
 
     /* colors */
     unsigned long clr[] = { 0xFF4040L, 0x80FF80L, 0x8080FFL, 0xFF80FFL, 0xFFFF80L, 0x80FFFFL, 0x0080FFL };
@@ -215,7 +215,7 @@ void estadisticasview::sacapie ( float *p1, char **lbl1, int numslices1 )
     /* a lot of options are set here for illustration */
     /* none need be - see gdcpie.h for defaults */
     /* GDCPIE_title = "Sample\nPIE"; */
-    GDCPIE_label_line = TRUE;
+    GDCPIE_label_line = true;
     GDCPIE_label_dist = 15;    /* dist. labels to slice edge */
     /* can be negative */
     GDCPIE_LineColor = 0x000000L;

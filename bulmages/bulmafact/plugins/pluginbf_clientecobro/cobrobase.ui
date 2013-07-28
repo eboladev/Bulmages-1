@@ -207,6 +207,19 @@
          </spacer>
         </item>
         <item>
+         <widget class="QFrame" name="mui_plugbotones">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="textLabel1_2_2_3_2_2">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

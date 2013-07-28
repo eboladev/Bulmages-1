@@ -22,9 +22,9 @@
 #ifndef BLTABLEWIDGET_H
 #define BLTABLEWIDGET_H
 
-#include <QEvent>
-#include <QTableWidget>
-#include <QStyledItemDelegate>
+#include <QtCore/QEvent>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QStyledItemDelegate>
 
 #include "blfunctions.h"
 

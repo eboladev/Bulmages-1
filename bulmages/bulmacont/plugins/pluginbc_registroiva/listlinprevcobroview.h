@@ -24,8 +24,8 @@
 #ifndef LISTLINPREVCOBROVIEW1_H
 #define LISTLINPREVCOBROVIEW1_H
 
-#include <QEvent>
-#include <QTableWidget>
+#include <QtCore/QEvent>
+#include <QtWidgets/QTableWidget>
 
 #include "listlinprevcobro.h"
 #include "bccompany.h"

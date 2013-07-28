@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QWidget>
 
 #include "pluginbf_sincrobulmacont.h"
 #include "blfunctions.h"
@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bf )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_sincrobulmacont", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_sincrobulmacont", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }

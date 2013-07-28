@@ -18,13 +18,13 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QPixmap>
-#include <QLabel>
-#include <QDialog>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QCheckBox>
 
 #include "bancoview.h"
 #include "bfcompany.h"
@@ -44,7 +44,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
     setDbTableName ( "banco" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    groupBox1->setDisabled ( TRUE );
+    groupBox1->setDisabled ( true );
     setEditMode();
     m_cursorbancos = NULL;
     m_item = NULL;
@@ -115,7 +115,7 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 {
     BL_FUNC_DEBUG
     if ( cur )
-        groupBox1->setEnabled ( TRUE );
+        groupBox1->setEnabled ( true );
     int row = mui_lista->row ( cur );
     trataModificado();
     mui_nombanco->setText ( m_cursorbancos->value( "nombanco", row ) );
@@ -233,10 +233,10 @@ bool BancoView::trataModificado()
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
-        return ( TRUE );
+        return ( true );
     } // end if
     
-    return ( FALSE );
+    return ( false );
 }
 
 

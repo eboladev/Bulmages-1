@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QMenu>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include "blfile.h"
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMenu>
+#include <QtCore/QTextStream>
 
 #include "pagoslist.h"
 #include "bfcompany.h"
@@ -38,7 +38,7 @@
 \param parent
 \param flag
 **/
-PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PagosList::PagosList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -63,7 +63,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 \param parent
 \param flag
 **/
-PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -266,9 +266,9 @@ PagosListSubForm::PagosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
     addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de trabajador" ) );
     addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apellidos trabajador" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
 }
 
 PagosListSubForm::~PagosListSubForm()

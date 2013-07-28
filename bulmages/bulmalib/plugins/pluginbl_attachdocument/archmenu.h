@@ -21,10 +21,10 @@
 #ifndef ARCHMENU_H
 #define ARCHMENU_H
 
-#include <QWidget>
-#include <QString>
-#include <QMap>
-#include <QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtCore/QMap>
+#include <QtWidgets/QToolButton>
 
 #include "blfunctions.h"
 #include "blmaincompany.h"

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Factura" author="">
+	<pageTemplate id="main">
+		<pageGraphics>
+		<include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/>
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_cabecerafactura.rml" -->
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_empresa.rml" -->
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_cliente.rml" -->
+
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- FACTURA -</drawCentredString>
+		
+		
+		<setFont name="Helvetica" size="7"/>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
+
+
+
+	</pageGraphics>
+
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_frame.rml" -->
+
+		
+	</pageTemplate>
+
+</template>
+
+<include src="[CONF_DIR_OPENREPORTS]estilos.rml"/>
+
+<story>	
+
+	
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_desfacturaIVAINC.rml" -->
+
+	
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_finfraIVAINC.rml" -->
+
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_barcodeIVAINC.rml" -->
+
+</story>
+</document>

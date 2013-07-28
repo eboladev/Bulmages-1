@@ -20,11 +20,11 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QLineEdit>
-#include <QTabWidget>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTabWidget>
 
 #include "bfcompany.h"
 #include "pluginbf_contrato.h"
@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_contrato", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_contrato", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     /// Miramos si existe un menu Ventas
@@ -83,7 +83,7 @@ int BlAction_actionTriggered(BlAction *accion) {
 } // end if
 
 
-///
+/// Con esta llamada cuando abrimos la ficha de un cliente incrustamos la parte de contratos en una pestanya.
 /**
 \param art
 \return
@@ -91,12 +91,11 @@ int BlAction_actionTriggered(BlAction *accion) {
 int ClienteView_ClienteView ( ClienteView *art )
 {
     BL_FUNC_DEBUG
-    /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un insertWindow y no es deseable.
+    /// Para que no se muestre el listado en el Indexador debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un insertWindow que presenta el elemento en el indexador.
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, _("Contratos") );
     l->setEditMode();
-    
     return 0;
 }
 

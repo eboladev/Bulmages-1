@@ -121,8 +121,9 @@ struct PortSettings
     long Timeout_Millisec;
 };
 
-#include <QIODevice>
-#include <QMutex>
+#include <QtCore/QIODevice>
+#include <QtCore/QMutex>
+#include <QtCore/QSocketNotifier>
 #ifdef Q_OS_UNIX
 #include <stdio.h>
 #include <termios.h>
@@ -131,10 +132,9 @@ struct PortSettings
 #include <sys/time.h>
 #include <sys/ioctl.h>
 #include <sys/select.h>
-#include <QSocketNotifier>
 #elif (defined Q_OS_WIN)
 #include <windows.h>
-#include <QThread>
+#include <QtCore/QThread>
 #include <QReadWriteLock>
 #include <QtCore/private/qwineventnotifier_p.h>
 #endif

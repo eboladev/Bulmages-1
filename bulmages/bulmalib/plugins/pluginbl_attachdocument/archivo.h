@@ -23,11 +23,11 @@
 #define IMPORTCSV_H
 
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-#include <QWidget>
-#include <QMap>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QMap>
 
 #include "blfunctions.h"
 #include "ui_archivobase.h"

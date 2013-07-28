@@ -21,9 +21,9 @@
 #ifndef RESUMCTAIDGET_H
 #define RESUMCTAWIDGET_H
 
-#include <QDockWidget>
-#include <QString>
-#include <QObject>
+#include <QtWidgets/QDockWidget>
+#include <QtCore/QString>
+#include <QtCore/QObject>
 
 #include "ui_correctorbase.h"
 #include "blpostgresqlclient.h"
@@ -55,7 +55,7 @@ public:
     QDockWidget *dock;
 
 public:
-    ResumCtaWidget ( BcCompany *emp, QWidget* parent = 0, Qt::WFlags fl = 0 );
+    ResumCtaWidget ( BcCompany *emp, QWidget* parent = 0, Qt::WindowFlags fl = 0 );
     ~ResumCtaWidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la

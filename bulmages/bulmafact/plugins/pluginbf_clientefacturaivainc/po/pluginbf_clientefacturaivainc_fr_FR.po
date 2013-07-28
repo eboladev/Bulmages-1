@@ -1,0 +1,487 @@
+# Header entry was created by Lokalize.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
+"PO-Revision-Date: 2011-02-10 07:59+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
+#: bfclientefacturadescuentosubform.cpp:43 bfclientefacturasubform.cpp:56
+msgid "% Descuento"
+msgstr "% Remise"
+
+#: bfclientefacturasubform.cpp:55
+msgid "% Recargo E.Q."
+msgstr "% Recharge E.Q."
+
+#: ui_facturaivaincclientebase.h:794
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_facturaivaincclientebase.h:795
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: ui_facturaivaincclientebase.h:774
+msgid "&Detalle"
+msgstr "&Détail"
+
+#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
+msgid "&No"
+msgstr "&Non"
+
+#: pluginbf_clientefacturaivainc.cpp:68
+msgid "&Nuevo facturaivainc a cliente"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
+msgid "&Si"
+msgstr "&Oui"
+
+#: pluginbf_clientefacturaivainc.cpp:59
+msgid "&FacturaIVAInces a clientes"
+msgstr "FacturaIVAIncs clients"
+
+#: pluginbf_clientefacturaivainc.cpp:55
+msgid "&Ventas"
+msgstr ""
+
+#: ui_facturaivaincclientebase.h:788 ui_facturaivaincclientebase.h:789
+#: ui_facturaivaincclientebase.h:790 ui_facturaivaincclientebase.h:791
+#: ui_facturaivaincclientebase.h:792 ui_facturaivaincclientebase.h:793
+msgid "0.00"
+msgstr "0.00"
+
+#: ui_facturaivaincclientelistbase.h:504 ui_facturaivaincclientelistbase.h:507
+msgid "Actualizar listado"
+msgstr "Actualiser la liste"
+
+#: facturaivaincclienteview.cpp:70
+msgid "Almacen"
+msgstr "Magasin"
+
+#: ui_facturaivaincclientebase.h:773
+msgid "Almacen:"
+msgstr "Magasin :"
+
+#: facturaivaincclientelist.cpp:435
+msgid "Base imponible"
+msgstr "Base Imposable"
+
+#: ui_facturaivaincclientebase.h:783
+msgid "Base imponible:"
+msgstr "Base Imposable :"
+
+#: ui_facturaivaincclientelistbase.h:472 ui_facturaivaincclientelistbase.h:475
+msgid "Borrar factura"
+msgstr "Effacer le bulletin"
+
+#: ui_facturaivaincclientebase.h:744 ui_facturaivaincclientebase.h:747
+msgid "Borrar facturaivainc"
+msgstr "Effacer le facturaivainc"
+
+#: ui_facturaivaincclientelistbase.h:511
+msgid "Buscar:"
+msgstr "Chercher :"
+
+#: bfclientefacturasubform.cpp:50
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: facturaivaincclienteview.cpp:69
+msgid "Cliente"
+msgstr "Client"
+
+#: facturaivaincclientelist.cpp:165 facturaivaincclienteview.cpp:103
+msgid "Cliente:"
+msgstr "Client :"
+
+#: bfclientefacturasubform.cpp:46
+msgid "Codigo completo articulo"
+msgstr "Code complet article"
+
+#: facturaivaincclientelist.cpp:423
+msgid "Codigo de almacen"
+msgstr "Code magasin"
+
+#: facturaivaincclienteview.cpp:75
+msgid "Comentario"
+msgstr "Libellé"
+
+#: facturaivaincclienteview.cpp:76
+msgid "Comentario privado"
+msgstr "Commentaire privé"
+
+#: ui_facturaivaincclientebase.h:778
+msgid "Comentario&s"
+msgstr "Libellé&s"
+
+#: facturaivaincclientelist.cpp:433
+msgid "Comentarios del factura"
+msgstr "Libellés du bulletin"
+
+#: ui_facturaivaincclientebase.h:777
+msgid "Comentarios privados:"
+msgstr "Commentaires privés :"
+
+#: ui_facturaivaincclientebase.h:776
+msgid "Comentarios publicos:"
+msgstr "Commentaires publics :"
+
+#: bfclientefacturadescuentosubform.cpp:42
+msgid "Concepto descuento"
+msgstr "Raison de la remise"
+
+#: ui_facturaivaincclientelistbase.h:496 ui_facturaivaincclientelistbase.h:499
+msgid "Configurar listado"
+msgstr "Configurer la liste"
+
+#: ui_facturaivaincclientelistbase.h:502
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_facturaivaincclientelistbase.h:478
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_facturaivaincclientelistbase.h:470
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_facturaivaincclientelistbase.h:494
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_facturaivaincclientelistbase.h:462
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_facturaivaincclientelistbase.h:486
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: facturaivaincclientelist.cpp:322
+msgid "Debe seleccionar una linea"
+msgstr "Vous devez sélectionner une ligne"
+
+#: facturaivaincclientelist.cpp:425 facturaivaincclienteview.cpp:80
+#: bfclientefacturasubform.cpp:49
+msgid "Descripcion"
+msgstr "Description "
+
+#: facturaivaincclientelist.cpp:429
+msgid "Descripcion de forma de pago"
+msgstr "Forme de paiement "
+
+#: ui_facturaivaincclientebase.h:765
+msgid "Descripcion:"
+msgstr "Descripción :"
+
+#: ui_facturaivaincclientebase.h:775
+msgid "Descuen&tos"
+msgstr "Remises"
+
+#: ui_facturaivaincclientebase.h:782
+msgid "Descuentos:"
+msgstr "Remises :"
+
+#: ui_facturaivaincclientelistbase.h:464 ui_facturaivaincclientelistbase.h:467
+msgid "Editar factura"
+msgstr "Editer le bulletin"
+
+#: facturaivaincclientelist.cpp:336
+msgid "Error al borrar el factura a cliente"
+msgstr "Erreur d'effacement d'un bulletin de livraison"
+
+#: facturaivaincclienteview.cpp:118
+msgid "Error al crear el factura a cliente"
+msgstr "Erreur dans la création du bulletin"
+
+#: genalbqtoolbutton.cpp:227 genalbqtoolbutton.cpp:359
+msgid "Error inesperado"
+msgstr "Erreur inattendue"
+
+#: genalbqtoolbutton.cpp:157
+msgid ""
+"Existe un factura a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+"Il existe un bulletin de livraison pour ce client avec la même référence que "
+"cette commande. Souhaitez l'ouvrir pour vérifier ?"
+
+#: genalbqtoolbutton.cpp:289
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+"Il existe un bulletin de livraison pour ce client avec la même référence que "
+"cette commande. Souhaitez l'ouvrir pour vérifier ?"
+
+#: ui_facturaivaincclientelistbase.h:510
+msgid "F5"
+msgstr "F5"
+
+#: genalbqtoolbutton.cpp:288
+msgid "Factura ya existe"
+msgstr "La facture existe déjà "
+
+#: facturaivaincclientelist.cpp:426
+msgid "Fecha de factura"
+msgstr "Date du bulletin"
+
+#: facturaivaincclienteview.cpp:72
+msgid "Fecha de creacion"
+msgstr "Date de création"
+
+#: ui_facturaivaincclientebase.h:769
+msgid "Fecha de creacion:"
+msgstr "Date de création :"
+
+#: ui_facturaivaincclientelistbase.h:451
+msgid "Fecha final:"
+msgstr "Date finale :"
+
+#: ui_facturaivaincclientelistbase.h:450
+msgid "Fecha inicial:"
+msgstr "Date initiale :"
+
+#: ui_facturaivaincclientelistbase.h:488 ui_facturaivaincclientelistbase.h:491
+msgid "Filtrar facturaes"
+msgstr "Filtrer les bulletins"
+
+#: facturaivaincclienteview.cpp:77
+msgid "Forma de pago"
+msgstr "Forme de paiement"
+
+#: ui_facturaivaincclientebase.h:771
+msgid "Forma de pago:"
+msgstr "Forme de paiement :"
+
+#: ui_facturaivaincclientebase.h:740
+msgid "Guardar factura"
+msgstr "Sauvegarder le bulletin"
+
+#: ui_facturaivaincclientebase.h:737
+msgid "Guardar facturaivainc"
+msgstr "Sauvegarder le facturaivainc"
+
+#: ui_facturaivaincclientebase.h:784
+msgid "I.R.P.F.:"
+msgstr "I.R.P.F.:"
+
+#: bfclientefacturasubform.cpp:54
+msgid "I.V.A."
+msgstr "T.V.A."
+
+#: facturaivaincclientelist.cpp:432
+msgid "ID factura"
+msgstr "Id bulletin"
+
+#: facturaivaincclientelist.cpp:434
+msgid "ID almacen"
+msgstr "ID du magasin"
+
+#: facturaivaincclientelist.cpp:431
+msgid "ID cliente"
+msgstr "Id client"
+
+#: facturaivaincclientelist.cpp:428
+msgid "ID forma de pago"
+msgstr "Id Forme de paiement"
+
+#: facturaivaincclientelist.cpp:430
+msgid "ID trabajador"
+msgstr "Id Ouvrier"
+
+#: facturaivaincclienteview.cpp:68 bfclientefacturadescuentosubform.cpp:44
+#: bfclientefacturasubform.cpp:57
+msgid "Id factura"
+msgstr "Id bulletin"
+
+#: bfclientefacturasubform.cpp:45
+msgid "Id articulo"
+msgstr "Id article"
+
+#: bfclientefacturadescuentosubform.cpp:41
+msgid "Id descuento"
+msgstr "Id remise"
+
+#: ui_facturaivaincclientelistbase.h:480 ui_facturaivaincclientelistbase.h:483
+msgid "Imprimir listado"
+msgstr "Imprimer la liste"
+
+#: ui_facturaivaincclientebase.h:751 ui_facturaivaincclientebase.h:754
+msgid "Imprimir facturaivainc"
+msgstr "Imprimer le facturaivainc"
+
+#: facturaivaincclientelist.cpp:436
+msgid "Impuestos"
+msgstr "Impôts"
+
+#: ui_facturaivaincclientebase.h:785
+msgid "Impuestos:"
+msgstr "Impôts :"
+
+#: ui_facturaivaincclientebase.h:759 ui_facturaivaincclientebase.h:762
+msgid "Mostrar/ocultar cabecera"
+msgstr "Montrer/cacher l'entête"
+
+#: ui_facturaivaincclientelistbase.h:449
+msgid "Mostrar:"
+msgstr "Afficher :"
+
+#: bfclientefacturasubform.cpp:48
+msgid "No linea"
+msgstr ""
+
+#: bfclientefacturasubform.cpp:47
+msgid "Nombre articulo"
+msgstr "Nom article"
+
+#: facturaivaincclientelist.cpp:427
+msgid "Nombre de cliente"
+msgstr "Nom du client"
+
+#: ui_facturaivaincclientelistbase.h:456 ui_facturaivaincclientelistbase.h:459
+msgid "Nuevo factura"
+msgstr "Nouveau bulletin"
+
+#: pluginbf_clientefacturaivainc.cpp:70 pluginbf_clientefacturaivainc.cpp:71
+#: ui_facturaivaincclientebase.h:735
+msgid "Nuevo facturaivainc a cliente"
+msgstr "Nouveau facturaivainc client"
+
+#: facturaivaincclientelist.cpp:424 facturaivaincclienteview.cpp:71
+msgid "Numero de factura"
+msgstr "Numéro du bulletin"
+
+#: ui_facturaivaincclientebase.h:766
+msgid "Numero de facturaivainc:"
+msgstr "N° de facturaivainc :"
+
+#: bfclientefacturasubform.cpp:58
+msgid "Orden"
+msgstr "Ordre"
+
+#: bfclientefacturasubform.cpp:52
+msgid "P.V.P."
+msgstr "P.V.P."
+
+#: facturaivaincclienteview.cpp:73
+msgid "Persona de contacto"
+msgstr "Contact"
+
+#: ui_facturaivaincclientebase.h:770
+msgid "Persona de contacto:"
+msgstr "Contact :"
+
+#: facturaivaincclienteview.cpp:79 ui_facturaivaincclientebase.h:767
+msgid "Procesado"
+msgstr "Accusé"
+
+#: ui_facturaivaincclientebase.h:786
+msgid "R.E.:"
+msgstr "R.E.:"
+
+#: facturaivaincclienteview.cpp:81
+msgid "Referencia"
+msgstr "Référence"
+
+#: facturaivaincclientelist.cpp:422
+msgid "Referencia de factura"
+msgstr "Référence du bulletin"
+
+#: ui_facturaivaincclientebase.h:757
+msgid "Referencia:"
+msgstr "Référence :"
+
+#: ui_facturaivaincclientebase.h:781
+msgid "Registro"
+msgstr "Registre"
+
+#: facturaivaincclienteview.cpp:82 ui_facturaivaincclientebase.h:779
+msgid "Sucesos antes de imprimir"
+msgstr "Evénements avant d'imprimer"
+
+#: facturaivaincclienteview.cpp:83 ui_facturaivaincclientebase.h:780
+msgid "Sucesos tras imprimir"
+msgstr "Evénements après l'imprission"
+
+#: facturaivaincclienteview.cpp:74
+msgid "Telefono de contacto"
+msgstr "Téléphone du contact"
+
+#: ui_facturaivaincclientebase.h:772
+msgid "Telefono de contacto:"
+msgstr "Téléphone du contact :"
+
+#: facturaivaincclienteview.cpp:65
+msgid "FacturaIVAInc"
+msgstr "FacturaIVAInc"
+
+#: genalbqtoolbutton.cpp:156
+msgid "FacturaIVAInc ya existe"
+msgstr "Le facturaivainc existe déjà"
+
+#: facturaivaincclientelist.cpp:347 pluginbf_clientefacturaivainc.cpp:61
+#: pluginbf_clientefacturaivainc.cpp:62
+msgid "FacturaIVAInces a clientes"
+msgstr "FacturaIVAIncs clients"
+
+#: ui_facturaivaincclientelistbase.h:448
+msgid "FacturaIVAIncs a clientes"
+msgstr "FacturaIVAIncs clients"
+
+#: facturaivaincclientelist.cpp:209
+msgid "FacturaIVAIncs no procesados"
+msgstr "FacturaIVAIncs non traités"
+
+#: facturaivaincclientelist.cpp:208
+msgid "FacturaIVAIncs procesados"
+msgstr "FacturaIVAIncs traités"
+
+#: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
+msgid "Tiene que seleccionar un cliente"
+msgstr "Vous devez sélectionner un client"
+
+#: facturaivaincclientelist.cpp:207
+msgid "Todos los facturaivaincs"
+msgstr "Tous les facturaivaincs"
+
+#: facturaivaincclientelist.cpp:437
+msgid "Total"
+msgstr "Total"
+
+#: bfclientefacturasubform.cpp:53
+msgid "Total Linea"
+msgstr "Total de la ligne"
+
+#: ui_facturaivaincclientebase.h:787
+msgid "Total:"
+msgstr "Total :"
+
+#: ui_facturaivaincclientelistbase.h:453
+msgid "Total: "
+msgstr "Total : "
+
+#: facturaivaincclienteview.cpp:78 ui_facturaivaincclientelistbase.h:452
+msgid "Trabajador"
+msgstr "Salarié"
+
+#: ui_facturaivaincclientebase.h:768
+msgid "Trabajador:"
+msgstr "Salarié :"
+
+#~ msgid "Nº linea"
+#~ msgstr "N° de ligne"

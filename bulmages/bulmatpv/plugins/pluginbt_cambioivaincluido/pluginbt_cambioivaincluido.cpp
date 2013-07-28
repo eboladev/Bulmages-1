@@ -38,7 +38,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_cambioivaincluido", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_cambioivaincluido", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;
@@ -66,7 +66,7 @@ int BtCompany_cobrar ( BtCompany *etpv )
     diag->setModal ( true );
 
     etpv->ticketActual()->abrircajon();
-//    TipoArticuloList *tip = ( ( BfCompany * ) mainCompany() ) ->newTipoArticuloList ( diag, TRUE );
+//    TipoArticuloList *tip = ( ( BfCompany * ) mainCompany() ) ->newTipoArticuloList ( diag, true );
 //    connect ( tip, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

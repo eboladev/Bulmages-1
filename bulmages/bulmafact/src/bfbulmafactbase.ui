@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>798</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de">
@@ -301,22 +301,5 @@
  <resources>
   <include location="../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>actionSalir</sender>
-   <signal>activated()</signal>
-   <receiver>BfBulmaFactBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>374</x>
-     <y>275</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

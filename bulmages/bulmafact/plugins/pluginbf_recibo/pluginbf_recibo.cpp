@@ -22,7 +22,7 @@
  ***************************************************************************/
 
 #include <stdio.h>
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_recibo.h"
 #include "bfcompany.h"
@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_recibo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_recibo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_recibo = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
@@ -197,7 +197,7 @@ void EmitirRecibos::elslot()
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->mui_actividad->setChecked(TRUE);
+    bud->mui_actividad->setChecked(true);
     bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
     bud->show();
     

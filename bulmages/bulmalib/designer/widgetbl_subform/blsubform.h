@@ -1,10 +1,10 @@
 #ifndef BLSUBFORM_H
 #define BLSUBFORM_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QtDesigner/QDesignerExportWidget>
 
-#include <QtGui>
+#include <QtGui/QtGui>
 #include "../../src/ui_blsubformbase.h"
 
 

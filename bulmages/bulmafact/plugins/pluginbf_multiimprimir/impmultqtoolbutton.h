@@ -20,14 +20,14 @@
 #ifndef IMPMULTQTOOLBUTTON_H
 #define IMPMULTQTOOLBUTTON_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 #include "pedidosclientelist.h"
 #include "presupuestolist.h"
 #include "facturaslist.h"

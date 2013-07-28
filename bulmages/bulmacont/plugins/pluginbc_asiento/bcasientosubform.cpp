@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 
 #include "bcasientosubform.h"
 #include "blplugins.h"
@@ -60,9 +60,9 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id. Registro IVA" ) );
     addSubFormHeader ( "factura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Fecha Factura" ) );
     addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Num. Factura" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
-    setOrdenPorQuery ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
+    setOrdenPorQuery ( false );
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
     

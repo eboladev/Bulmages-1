@@ -21,11 +21,11 @@
  ***************************************************************************/
 
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "pluginbf_tallascolores.h"
 #include "bfcompany.h"
@@ -52,7 +52,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "PluginBf_TallasColores", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "PluginBf_TallasColores", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
 
@@ -143,9 +143,9 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSubFormHeader ( "idtc_tallaa", BlDbField::DbInt, BlDbField::DbDupPrimaryKey| BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  "idtc_talla"  );
 
     
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, _("Tallas y colores") );
@@ -313,7 +313,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
 
 int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 {
-    bool encontrado = FALSE;
+    bool encontrado = false;
 
     if ( busc->tableName() == "articulo" ) {
 
@@ -323,7 +323,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
         BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             busc->setId ( cur->value( "idarticulo" ) );
-            encontrado = TRUE;
+            encontrado = true;
         }
         delete cur;
 

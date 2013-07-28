@@ -22,8 +22,8 @@
 
 #include "efacturaenvio.h"
 #include "blfunctions.h"
-#include <QFileDialog>
-#include <QLineEdit>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QLineEdit>
 
 
 ///

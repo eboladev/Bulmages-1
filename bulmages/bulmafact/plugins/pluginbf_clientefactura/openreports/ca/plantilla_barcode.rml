@@ -1,0 +1,5 @@
+<storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
+<place x="13.5cm" y="1cm" width="10cm" height="1cm">
+<barCode code="code128" height="1cm">FAC [idfactura] [numfactura] [reffactura]</barCode>
+</place>
+</storyPlace>

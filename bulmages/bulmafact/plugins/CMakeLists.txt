@@ -54,9 +54,9 @@ add_subdirectory(pluginbf_printercocina)
 
 add_subdirectory(pluginbf_camarero)
 
-add_subdirectory(pluginbf_bulmacont)
+#add_subdirectory(pluginbf_bulmacont)
 
-add_subdirectory(pluginbf_sincrobulmacont)
+#add_subdirectory(pluginbf_sincrobulmacont)
 add_subdirectory(pluginbf_informecliente2sxc)
 add_subdirectory(pluginbf_etiquetado)
 add_subdirectory(pluginbf_etiquetas)
@@ -74,6 +74,7 @@ add_subdirectory(pluginbf_clientepedido)
 add_subdirectory(pluginbf_clientealbaran)
 add_subdirectory(pluginbf_clientefactura)
 add_subdirectory(pluginbf_clienteticket)
+add_subdirectory(pluginbf_clientefacturaivainc)
 
 add_subdirectory(pluginbf_proveedorfactura)
 add_subdirectory(pluginbf_proveedoralbaran)
@@ -92,6 +93,19 @@ add_subdirectory(pluginbf_z2z)
 # simple put your add_directory in a
 # CMakeLists.txt.private
 
+
+# ======= PLUGINS DE CONTABILIDAD INTEGRADA
+add_subdirectory(pluginbf_factcont)
+add_subdirectory(pluginbf_cuenta)
+add_subdirectory(pluginbf_asiento)
+add_subdirectory(pluginbf_bloqueofechas)
+add_subdirectory(pluginbf_diario)
+add_subdirectory(pluginbf_mayor)
+add_subdirectory(pluginbf_balance)
+add_subdirectory(pluginbf_ccaa2ods)
+add_subdirectory(pluginbf_cuentaresumen)
+add_subdirectory(pluginbf_canalyccoste)
+
 # ======== PLUGINS DE GESTION ALUMNOS
 add_subdirectory(pluginbf_profesor)
 add_subdirectory(pluginbf_alumno)
@@ -105,6 +119,7 @@ add_subdirectory(pluginbf_inventariosimple)
 
 # ========= PLUGINS DE AUTOFORMS
 add_subdirectory(pluginbf_biblioteca)
+add_subdirectory(pluginbf_alquileres)
 
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")

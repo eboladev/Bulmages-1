@@ -39,9 +39,10 @@ public:
     ~ProveedorView();
     virtual int beforeSave();
     virtual int afterSave();
+    virtual void pintarPost();
 
 public slots:
-    virtual void on_mui_cifproveedor_lostFocus();
+    virtual void on_mui_cifproveedor_editingFinished();
 
 public:
     virtual int cargarPost ( QString );

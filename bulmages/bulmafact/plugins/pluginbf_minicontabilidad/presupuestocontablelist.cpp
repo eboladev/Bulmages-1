@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QTextStream>
-#include <QFileDialog>
-#include <QCheckBox>
-#include <QMessageBox>
-#include <QMenu>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
 
 #include "presupuestocontablelist.h"
 #include "presupuestocontableview.h"
@@ -38,7 +38,7 @@
     Hace una presentacion inicial.
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
-PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
@@ -59,10 +59,10 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de presupuesto contable" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
+        mui_crear->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
     
     
@@ -225,9 +225,9 @@ PresupuestoContableListSubform::PresupuestoContableListSubform ( QWidget *parent
     addSubFormHeader ( "idpresupuestocontable", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID presupuestocontable" ) );
     addSubFormHeader ( "fechapresupuestocontable", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
     addSubFormHeader ( "conceptopresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F." ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

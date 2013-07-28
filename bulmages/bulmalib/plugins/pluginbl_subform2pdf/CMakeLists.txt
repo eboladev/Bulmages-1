@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                                     #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -17,6 +18,7 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
+#########################################################################
 
 ###########################################
 # Plugin for bulmalib                     #
@@ -46,12 +48,12 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/)
 
 # generate rules for building source files from the resources
-#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
 IF(WIN32)

@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QLocale>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtCore/QLocale>
 
 #include "bcsubform.h"
 #include "blfunctions.h"

@@ -32,6 +32,6 @@ Orden: 301
 Reports:
 
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada;Talleres;Distribución; Supermercados;Distribución Alimentaria;Restauración; Parques Infantiles; Tallas y Colores;
 
 Comentarios:

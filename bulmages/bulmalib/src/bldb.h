@@ -22,8 +22,8 @@
 #ifndef BLDB_H
 #define BLDB_H
 
-#include <QString>
-#include <QList>
+#include <QtCore/QString>
+#include <QtCore/QList>
 
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
@@ -49,7 +49,7 @@ public:
     - DbVarChar = Cadena de texto de longitud indeterminada.
     - DbDate    = Fecha en formato Europeo (dd/mm/yyyy).
     - DbNumeric = Numero en punto fijo.
-    - DbBoolean = Valor Booleano (TRUE / FALSE) (t / f).
+    - DbBoolean = Valor Booleano (true / false) (t / f).
     - DbTime    = Hora.
     */
     enum DbType {DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean = 5, DbTime = 6};

@@ -20,14 +20,14 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QToolButton>
-#include <QImage>
-#include <QLabel>
-#include <QPixmap>
-#include <QFrame>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QToolButton>
+#include <QtGui/QImage>
+#include <QtWidgets/QLabel>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QFrame>
 
 #include "pluginbc_documentoadjunto.h"
 #include "bccompany.h"
@@ -49,7 +49,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_documentoadjunto", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_documentoadjunto", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     QPixmap *img = new QPixmap ( napuntedoc );
     QPixmap *img1 = new QPixmap ( ndoc );

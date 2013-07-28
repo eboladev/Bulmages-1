@@ -1,0 +1,35 @@
+#######
+#Plugins
+#######
+#README.fr
+20110201
+
+Nombre: Ecriture
+
+Biblioteca: libpluginbf_asiento.so
+
+Descripción: <H1>Ecriture Comptable</H1>
+<P>Introduction des écritures comptables.</P>
+<P>Permet de faire l'introduction des écritures comptables au moyen d'un sous formulaire. Ce greffon est indispensable pour le fonctionnement correcte de la comptabilité.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Comptabilite generale ; Experimental;
+
+Orden: 10
+
+Comentarios: -
+
+
+    

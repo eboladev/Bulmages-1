@@ -19,11 +19,11 @@
  ***************************************************************************/
 
 #include "blescprinter.h"
-#include <QImage>
-#include <QFile>
-#include <QString>
+#include <QtGui/QImage>
+#include <QtCore/QFile>
+#include <QtCore/QString>
 #include "blcp850eurotextcodec.h"
-#include <QChar>
+#include <QtCore/QChar>
 #include <math.h>
 
 #include "blfunctions.h"
@@ -98,7 +98,7 @@ void BlEscPrinter::printImage ( QString path )
             if ( img.width() / 8 > 65535 || img.height() > 2303 ) {
                 //ERROR IMAGE too large
             } else {
-                int numBytes = img.numBytes();
+                int numBytes = img.byteCount();
                 char* data = ( char* ) img.bits();
 
                 char XL = ( char ) ( bytesX );
@@ -138,7 +138,7 @@ void BlEscPrinter::printImageRaw ( QByteArray &arr )
             if ( img.width() / 8 > 65535 || img.height() > 2303 ) {
                 //ERROR IMAGE too large
             } else {
-                int numBytes = img.numBytes();
+                int numBytes = img.byteCount();
                 char* data = ( char* ) img.bits();
 
                 char XL = ( char ) ( bytesX );
@@ -650,9 +650,9 @@ void BlEscPrinter::test()
     turnUpsideDown ( 0 );
     printText ( "turnUpsideDown ( 0 )\n" );
 
-    turn90CWRotation ( TRUE, TRUE );
+    turn90CWRotation ( true, true );
     printText ( "turn90CWRotation ( 1 )\n" );
-    turn90CWRotation ( FALSE, FALSE );
+    turn90CWRotation ( false, false );
     printText ( "turn90CWRotation ( 0 )\n" );
 
     turnWhiteBlack ( 1 );
@@ -666,10 +666,10 @@ void BlEscPrinter::test()
     printText ( "setColor ( black )\n" );
 
     //MECHANISM CONTROL COMMANDS
-    turnUnidirPrintMode (  TRUE ); //No on TM-t88II TM-L60II
-    printText ( "turnUnidirPrintMode ( TRUE )\n" );
-    turnUnidirPrintMode (  FALSE ); //No on TM-t88II TM-L60II
-    printText ( "turnUnidirPrintMode ( FALSE )\n" );
+    turnUnidirPrintMode (  true ); //No on TM-t88II TM-L60II
+    printText ( "turnUnidirPrintMode ( true )\n" );
+    turnUnidirPrintMode (  false ); //No on TM-t88II TM-L60II
+    printText ( "turnUnidirPrintMode ( false )\n" );
 
     //PRINT POSITION COMMANDS
     char tabspos[2] = {8, 30};
@@ -704,7 +704,7 @@ void BlEscPrinter::test()
 
     //QRCODE
     QByteArray tmp;
-    tmp = QString ( "Esto es un QRCODE. Un es pregunta quantes dades es poden arribar a posar en un qrcode" ).toAscii();
+    tmp = QString ( "Esto es un QRCODE. Un es pregunta quantes dades es poden arribar a posar en un qrcode" ).toUtf8();
     char* qrdata = tmp.data();
     unsigned short numData = tmp.size();
     printQRCode ( qrModel2, 8, qrlevelL, numData, qrdata );
@@ -755,7 +755,7 @@ void BlEscPrinter::test()
     }
     printAndReturnStandardMode();
 
-    cutPaperAndFeed ( TRUE, 10 );
+    cutPaperAndFeed ( true, 10 );
     print();
 }
 

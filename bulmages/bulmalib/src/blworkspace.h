@@ -22,17 +22,16 @@
 #ifndef BLWORKSPACE_H
 #define BLWORKSPACE_H
 
-#include <QObject>
-#include <QWidget>
-#include <QMdiArea>
-#include <QMdiSubWindow>
-#include <QWorkspace>
+#include <QtCore/QObject>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMdiArea>
+#include <QtWidgets/QMdiSubWindow>
 
 #include "blfunctions.h"
 #include "blwindowlistdock.h"
 
 
-#ifdef AREA_QMDI
+
 class BL_EXPORT BlWorkspace : public QMdiArea
 {
 
@@ -49,22 +48,6 @@ public:
 //    void deselectDockAll();
 };
 
-
-#else
-
-class BL_EXPORT BlWorkspace : public QWorkspace
-{
-//    Q_OBJECT
-
-public:
-    BlWorkspace ( QWidget * );
-    ~BlWorkspace();
-
-    void addWindow ( QWidget * );
-    void addSubWindow ( QWidget * );
-};
-
-#endif
 
 #endif
 

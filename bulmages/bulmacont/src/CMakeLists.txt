@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                                     #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -17,6 +18,7 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
+#########################################################################
 
 ###########################################
 # bulmacont                               #
@@ -51,14 +53,6 @@ set(bulmacont_MOCS bcbulmacont.h
 #file(GLOB bulmacont_NO_MOCS bcmodelo300imprimir2ps.h)
 #list(REMOVE_ITEM bulmacont_MOCS ${bulmacont_NO_MOCS}) 
 
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-
-INCLUDE(${QT_USE_FILE})
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
@@ -72,20 +66,16 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmacont/src/
 	${CMAKE_SOURCE_DIR}/bulmacont/src/)
 
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
-
 # generate rules for building source files from the resources
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
+QT5_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 
 IF(WIN32)
 set(bulmacont_RCCS ../../bulmages.qrc)
-QT4_ADD_RESOURCES(bulmacont_RCC_SRCS ${bulmacont_RCCS})
+QT5_ADD_RESOURCES(bulmacont_RCC_SRCS ${bulmacont_RCCS})
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBC_BULMACONT)
 ENDIF(WIN32)
 

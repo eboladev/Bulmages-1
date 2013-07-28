@@ -1,0 +1,8 @@
+#FacturaIVAIncClienteBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/es_ES/pluginbf_clientefacturaivainc-new.png);
+}
+
+#FacturaIVAIncClienteListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/es_ES/pluginbf_clientefacturaivainc-list.png);
+}
+

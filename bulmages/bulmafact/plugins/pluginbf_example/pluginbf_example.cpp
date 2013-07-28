@@ -20,10 +20,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
 
 #include <cstdio>
 
@@ -40,7 +40,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_example", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
@@ -70,7 +70,6 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_actionTriggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionExample") {
-        fprintf ( stderr, "S'ha activado el slot\n" );
         QMessageBox::warning ( 0,
                 _ ( "Titulo de la ventana" ),
                 _ ( "Mensaje." ),
@@ -124,7 +123,7 @@ void PluginBf_Example::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( _ ( "&Prueba de plugin" ), 0 );
     accion->setStatusTip ( _ ( "Muestra statustip" ) );
     accion->setWhatsThis ( _ ( "Muestra que es esto" ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    connect ( accion, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
@@ -138,7 +137,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_example", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_example", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     PluginBf_Example *plug = new PluginBf_Example();
     plug->inicializa ( bges );

@@ -20,9 +20,9 @@
 
 #include <stdio.h>
 
-#include <QMessageBox>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 
 #include "pedidosproveedorlist.h"
 #include "blfunctions.h"
@@ -36,7 +36,7 @@
 \param parent
 \param flag
 **/
-PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -62,7 +62,7 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
 \param parent
 \param flag
 **/
-PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -343,9 +343,9 @@ PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : B
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
     addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id proveedor" ) );
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

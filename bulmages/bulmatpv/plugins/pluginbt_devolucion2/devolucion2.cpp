@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include <vector>
 #include "devolucion2.h"
@@ -13,7 +13,7 @@ typedef QMap<QString, BlFixed> base;
 Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( ( QDialog* ) this );
-    this->mui_tablesFrame->setDisabled ( TRUE );
+    this->mui_tablesFrame->setDisabled ( true );
 
     m_ticket = NULL;
     /*
@@ -76,7 +76,7 @@ Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
         BlFixed totiva ( "0.00" );
         BlFixed pariva ( "0.00" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            BlFixed piva ( it.key().toAscii().constData() );
+            BlFixed piva ( it.key().toLatin1().constData() );
             if ( porcentt > BlFixed ( "0.00" ) ) {
                 pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
             } else {
@@ -89,7 +89,7 @@ Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
         BlFixed totreqeq ( "0.00" );
         BlFixed parreqeq ( "0.00" );
         for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-            BlFixed preqeq ( it.key().toAscii().constData() );
+            BlFixed preqeq ( it.key().toLatin1().constData() );
             if ( porcentt > BlFixed ( "0.00" ) ) {
                 parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
             } else {
@@ -126,11 +126,11 @@ void Devolucion::on_mui_refLineEdit_returnPressed()
     if ( !curs->eof() ) {
         m_ticket = new BtTicket ( mainCompany(), NULL );
         m_ticket->load ( curs->value( "idalbaran" ) );
-        this->mui_tablesFrame->setEnabled ( TRUE );
+        this->mui_tablesFrame->setEnabled ( true );
         pintar();
 
     } else {
-        this->mui_tablesFrame->setDisabled ( TRUE );
+        this->mui_tablesFrame->setDisabled ( true );
     }
     delete curs;
 
@@ -205,7 +205,7 @@ void Devolucion::pintar()
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        mui_clienteLabel->setText ( cur->value( "cifcliente" ).toAscii() + " " + cur->value( "nomcliente" ).toAscii() );
+        mui_clienteLabel->setText ( cur->value( "cifcliente" ).toLatin1() + " " + cur->value( "nomcliente" ).toLatin1() );
     }
     delete cur;
     mui_fechaLabel->setText ( m_ticket->dbValue ( "fechalbaran" ) + " " + m_ticket->dbValue ( "horaalbaran" ) );
@@ -230,7 +230,7 @@ void Devolucion::pintar()
     mui_ticketTable->horizontalHeaderItem ( 2 )->setText ( _ ( "P.U." ) );
     mui_ticketTable->horizontalHeaderItem ( 3 )->setText ( _ ( "Total" ) );
     mui_ticketTable->horizontalHeaderItem ( 4 )->setText ( _ ( "Linea" ) );
-    mui_ticketTable->setColumnHidden ( 4, TRUE );
+    mui_ticketTable->setColumnHidden ( 4, true );
 
     if ( mui_devolverTable->columnCount() < numCols )
         mui_devolverTable->setColumnCount ( numCols );
@@ -245,7 +245,7 @@ void Devolucion::pintar()
     mui_devolverTable->horizontalHeaderItem ( 2 )->setText ( _ ( "P.U." ) );
     mui_devolverTable->horizontalHeaderItem ( 3 )->setText ( _ ( "Total" ) );
     mui_devolverTable->horizontalHeaderItem ( 4 )->setText ( _ ( "Linea" ) );
-    mui_devolverTable->setColumnHidden ( 4, TRUE );
+    mui_devolverTable->setColumnHidden ( 4, true );
 
 
     int tmp = 0;
@@ -516,7 +516,7 @@ void Devolucion::refreshDevolver() {
         if (m_listadescuentos->rowCount()) {
             for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
                 linea1 = m_listadescuentos->lineaat(i);
-                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toLatin1().constData());
                 porcentt = porcentt + propor;
             } // end for
         } // end if
@@ -539,7 +539,7 @@ void Devolucion::refreshDevolver() {
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        BlFixed piva ( it.key().toAscii().constData() );
+        BlFixed piva ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
@@ -553,7 +553,7 @@ void Devolucion::refreshDevolver() {
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        BlFixed preqeq ( it.key().toAscii().constData() );
+        BlFixed preqeq ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {

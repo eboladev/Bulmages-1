@@ -20,15 +20,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
 file(GLOB plugin_NO_MOCS pdefs_pluginbf_tutor.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
-#set(plugintutor_RCCS gestionaula.qrc)
-
-INCLUDE( ${QT_USE_FILE} )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
@@ -42,13 +33,13 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
-#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-#QT4_ADD_RESOURCES(plugintutor_RCC_SRCS ${plugintutor_RCCS})
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT5_ADD_RESOURCES(plugintutor_RCC_SRCS ${plugintutor_RCCS})
+#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
 IF(WIN32)

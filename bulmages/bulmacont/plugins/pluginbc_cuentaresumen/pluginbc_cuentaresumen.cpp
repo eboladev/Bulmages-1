@@ -20,15 +20,15 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QMenu>
-#include <QMenuBar>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 
 #include "pluginbc_cuentaresumen.h"
 #include "correctorwidget.h"
@@ -51,7 +51,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_cuentaresumen", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_cuentaresumen", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     BcCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.
@@ -77,8 +77,8 @@ int entryPoint ( BcBulmaCont *bcont )
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
     viewCorrector = new QAction ( _ ( "&Resumen Cta" ), 0 );
-    viewCorrector->setCheckable ( TRUE );
-    viewCorrector->setChecked ( TRUE );
+    viewCorrector->setCheckable ( true );
+    viewCorrector->setChecked ( true );
     viewCorrector->setStatusTip ( _ ( "Muestra/oculta el resumen de cuenta" ) );
     viewCorrector->setWhatsThis ( _ ( "Corrector.\n\nMuestra/oculta el corrector" ) );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( setVisibilityState ( bool ) ) );
@@ -90,10 +90,10 @@ int entryPoint ( BcBulmaCont *bcont )
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( file.exists () ) {
         doc1->show();
-        viewCorrector->setChecked ( TRUE );
+        viewCorrector->setChecked ( true );
     } else {
         doc1->hide();
-        viewCorrector->setChecked ( FALSE );
+        viewCorrector->setChecked ( false );
     } // end if
 
     

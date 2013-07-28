@@ -14,17 +14,13 @@ file(GLOB plugin_UIS *.ui)
 file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientealbaran.h pluginbf_clientealbaran.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
 
 
-INCLUDE(${QT_USE_FILE})
+#INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -49,12 +45,12 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/)
 
 # generate rules for building source files from the resources
-#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")

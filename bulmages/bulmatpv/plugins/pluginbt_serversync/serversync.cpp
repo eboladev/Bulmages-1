@@ -23,10 +23,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLabel>
-#include <QTextBrowser>
-#include <QTcpServer>
-#include <QTcpSocket>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
+#include <QtNetwork/QTcpServer>
+#include <QtNetwork/QTcpSocket>
 
 #include "serversync.h"
 #include "bldb.h"

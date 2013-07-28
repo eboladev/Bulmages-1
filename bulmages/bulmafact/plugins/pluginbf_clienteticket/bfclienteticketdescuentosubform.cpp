@@ -20,10 +20,10 @@
 
 
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "bfclienteticketdescuentosubform.h"
 #include "blfunctions.h"
@@ -44,7 +44,7 @@ BfClienteTicketDescuentoSubForm::BfClienteTicketDescuentoSubForm ( QWidget *pare
     addSubFormHeader ( "conceptdalbaran", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

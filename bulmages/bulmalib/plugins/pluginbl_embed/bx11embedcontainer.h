@@ -23,8 +23,8 @@
 #define BX11EMBEDCONTAINER_H
 
 
-#include <QWidget>
-#include <QCloseEvent>
+#include <QtWidgets/QWidget>
+#include <QtGui/QCloseEvent>
 #include "blwidget.h"
 #include <QX11EmbedContainer>
 

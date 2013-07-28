@@ -1,6 +1,6 @@
 
-#include <QLabel>
-#include <QTextBrowser>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
 
 #include "mticketdesglose.h"
 #include "bldb.h"
@@ -111,7 +111,7 @@ void MTicketDesglose::pintar()
         if (m_listadescuentos->rowCount()) {
             for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
                 linea1 = m_listadescuentos->lineaat(i);
-                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toLatin1().constData());
                 porcentt = porcentt + propor;
             } // end for
         } // end if
@@ -134,7 +134,7 @@ void MTicketDesglose::pintar()
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        BlFixed piva ( it.key().toAscii().constData() );
+        BlFixed piva ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
@@ -148,7 +148,7 @@ void MTicketDesglose::pintar()
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        BlFixed preqeq ( it.key().toAscii().constData() );
+        BlFixed preqeq ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {

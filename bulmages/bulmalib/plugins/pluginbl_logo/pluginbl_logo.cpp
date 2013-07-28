@@ -20,15 +20,15 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QProcess>
-#include <QTextStream>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QProcess>
+#include <QtCore/QTextStream>
 
 #include "local_blI18n.h"
 #include "pluginbl_logo.h"
@@ -43,7 +43,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_logo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_logo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     LogoDockWidget *doc1 = new LogoDockWidget ( _("Logotipo"), g_main );

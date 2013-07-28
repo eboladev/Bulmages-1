@@ -22,14 +22,14 @@
 #ifndef REGIVAQTOOLBUTTON_H
 #define REGIVAQTOOLBUTTON_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "bccompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 
 
 #include "bcasientoview.h"

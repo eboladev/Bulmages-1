@@ -22,9 +22,9 @@
 #ifndef LISTCUOTASPORACTIVIDADVIEW_H
 #define LISTCUOTASPORACTIVIDADVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"

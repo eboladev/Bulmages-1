@@ -17,7 +17,7 @@
 #ifndef ESTADISTICASVIEW_H
 #define ESTADISTICASVIEW_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #ifdef ESTADISTICAS
 #include "estadisticasdlg.h"

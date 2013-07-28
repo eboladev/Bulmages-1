@@ -21,7 +21,7 @@
 #include <qobject.h>
 #include <qmessagebox.h>
 //Added by qt3to4:
-#include <QPixmap>
+#include <QtGui/QPixmap>
 
 int estadisticasview::inicializa ( BlPostgreSqlClient *conexion, int tipo )
 {

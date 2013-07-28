@@ -98,25 +98,25 @@ void BcDiarioImprimir2TXT::accept()
         mainCompany() ->begin();
         cursoraux = mainCompany() -> loadQuery ( "SELECT * FROM asiento WHERE fecha >= '" + QString ( finicial ) + "' AND fecha <= '" + QString ( ffinal ) + "' ORDER BY fecha" );
         for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
-            fechaasiento = cursoraux->value( "fechaasiento" ).toAscii().constData();
-            idasiento = atoi ( cursoraux->value( "idasiento" ).toAscii() );
+            fechaasiento = cursoraux->value( "fechaasiento" ).toLatin1().constData();
+            idasiento = atoi ( cursoraux->value( "idasiento" ).toLatin1() );
             cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM apunte where idasiento = " + cursoraux->value( "idasiento" ) + " ORDER BY idapunte" );
             for ( ; !cursoraux1->eof(); cursoraux1->nextRecord() ) {
-                fecha = cursoraux1->value( 4 ).toAscii().constData();
-                descripcion = cursoraux1->value( 5 ).toAscii().constData();
-                concepto = cursoraux->value( 1 ).toAscii().constData();
-                debe = atof ( cursoraux1->value( 8 ).toAscii() );
-                haber = atof ( cursoraux1->value( 9 ).toAscii() );
-                idcuenta = atoi ( cursoraux1->value( "idcuenta" ).toAscii() );
+                fecha = cursoraux1->value( 4 ).toLatin1().constData();
+                descripcion = cursoraux1->value( 5 ).toLatin1().constData();
+                concepto = cursoraux->value( 1 ).toLatin1().constData();
+                debe = atof ( cursoraux1->value( 8 ).toLatin1() );
+                haber = atof ( cursoraux1->value( 9 ).toLatin1() );
+                idcuenta = atoi ( cursoraux1->value( "idcuenta" ).toLatin1() );
 
                 cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->value( "idcuenta" ) );
 
                 if ( !cursoraux2->eof() ) {
-                    codigocuenta = cursoraux2->value( "codigo" ).toAscii().constData();
+                    codigocuenta = cursoraux2->value( "codigo" ).toLatin1().constData();
                 } // end if
                 cursoraux2->cerrar();
                 delete cursoraux2;
-                fprintf ( mifile, "%5d %-10.10s %10s %-30.30s %9.2f %9.2f\n", idasiento, fecha.toAscii().data(), codigocuenta.toAscii().data(), descripcion.toAscii().data(), debe, haber );
+                fprintf ( mifile, "%5d %-10.10s %10s %-30.30s %9.2f %9.2f\n", idasiento, fecha.toLatin1().data(), codigocuenta.toLatin1().data(), descripcion.toLatin1().data(), debe, haber );
             } // end for
             cursoraux1->cerrar();
             delete cursoraux1;
@@ -129,7 +129,7 @@ void BcDiarioImprimir2TXT::accept()
 
     /// Hacemos la llamada de sistema para imprimir.
     QString cadaux = g_confpr->value( CONF_EDITOR ) + " diario.txt";
-    system ( cadaux.toAscii().constData() );
+    system ( cadaux.toLatin1().constData() );
     
 }
 

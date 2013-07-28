@@ -25,11 +25,11 @@
 #define BTWINDOWSSTYLE_H
 
 
-#include <QWindowsStyle>
+#include <QtWidgets/QProxyStyle>
 #include "blfunctions.h"
 
 
-class BT_EXPORT BtWindowsStyle : public QWindowsStyle
+class BT_EXPORT BtWindowsStyle : public QProxyStyle
 {
 
 public:

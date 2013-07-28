@@ -21,9 +21,9 @@
 #ifndef EDITARDESCRIPCIONQTOOLBUTTON_H
 #define EDITARDESCRIPCIONQTOOLBUTTON_H
 
-#include <QObject>
-#include <QToolButton>
-#include <QString>
+#include <QtCore/QObject>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "btcompany.h"
 
 

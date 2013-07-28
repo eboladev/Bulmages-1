@@ -41,14 +41,13 @@ public:
 
 public:
     BfCompany *mainCompany();
-    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WindowFlags f = 0, edmode modo = BL_EDIT_MODE );
     virtual ~BfForm();
     void setListaLineas ( BfSubForm *form );
     void setListaDescuentos ( BfSubForm *form );
     BfSubForm* getlistalineas();
     BfSubForm* getlistadescuentos();
     virtual void imprimir();
-    virtual QString templateName(void) ;
     virtual int generateRML ( void );
     virtual int generateRML ( const QString &arch );
     virtual void calculaypintatotales();

@@ -76,8 +76,8 @@ void BcCanalView::pintar()
     /// Si el combocoste no esta vacio se muestra el registro que contiene.
     if ( idcanal != 0 ) {
         /// Habilita los campos para ser editados.
-        mui_nomCanal->setEnabled ( TRUE );
-        mui_descCanal->setEnabled ( TRUE );
+        mui_nomCanal->setEnabled ( true );
+        mui_descCanal->setEnabled ( true );
         mostrarPlantilla();
     } else {
         idcanal = mui_idCanal->id().toInt();
@@ -99,7 +99,7 @@ void BcCanalView::on_mui_idCanal_valueChanged ( QString numcombo )
 {
     BL_FUNC_DEBUG
     int idcanal1 = numcombo.toInt();
-    static bool flipflop = FALSE;
+    static bool flipflop = false;
 
     if ( dialogChanges_isChanged() && flipflop ) {
         if ( QMessageBox::warning ( this,
@@ -113,18 +113,18 @@ void BcCanalView::on_mui_idCanal_valueChanged ( QString numcombo )
     /// campos de texto.
     if ( idcanal1 == 0 ) {
         mui_nomCanal->setText ( "" );
-        mui_nomCanal->setEnabled ( FALSE );
+        mui_nomCanal->setEnabled ( false );
         mui_descCanal->setPlainText ( "" );
-        mui_descCanal->setEnabled ( FALSE );
-        flipflop = FALSE;
+        mui_descCanal->setEnabled ( false );
+        flipflop = false;
         return;
     } else {
         /// Habilita los campos para ser editados.
-        mui_nomCanal->setEnabled ( TRUE );
-        mui_descCanal->setEnabled ( TRUE );
+        mui_nomCanal->setEnabled ( true );
+        mui_descCanal->setEnabled ( true );
     } // end if
 
-    flipflop = TRUE;
+    flipflop = true;
     idcanal = idcanal1;
     mostrarPlantilla();
     
@@ -161,9 +161,9 @@ void BcCanalView::on_mui_guardar_clicked()
     QString desc = mui_descCanal->toPlainText();
     QString query;
     QTextStream ( &query ) << "UPDATE canal SET nombre = '"
-    << mainCompany() ->sanearCadena ( nom ).toAscii().constData()
+    << mainCompany() ->sanearCadena ( nom ).toLatin1().constData()
     << "', descripcion = '"
-    << mainCompany() ->sanearCadena ( desc ).toAscii().constData()
+    << mainCompany() ->sanearCadena ( desc ).toLatin1().constData()
     << "' WHERE idcanal = '" << idcanal << "'";
     mainCompany() ->runQuery ( query );
     dialogChanges_readValues();
@@ -193,7 +193,7 @@ void BcCanalView::on_mui_crear_clicked()
     query = "";
     QTextStream ( &query ) << "SELECT MAX(idcanal) AS id FROM canal";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "queryy" );
-    idcanal = atoi ( cur->value( "id" ).toAscii() );
+    idcanal = atoi ( cur->value( "id" ).toLatin1() );
     delete cur;
     mainCompany() ->commit();
     pintar();

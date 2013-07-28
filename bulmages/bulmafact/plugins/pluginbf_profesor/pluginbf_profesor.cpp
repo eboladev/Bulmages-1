@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_profesor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_profesor", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_profesor = bges;
 
     if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
@@ -67,7 +67,6 @@ int entryPoint ( BfBulmaFact *bges )
         accionA->setObjectName("mui_actionProfesores");
         pPluginMenu->addAction ( accionA );
         bges->Listados->addAction ( accionA );
-        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         BlAction *accionB = new BlAction ( _ ( "&Nuevo profesor" ), 0 );
         accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor_add.png" ) ) );
@@ -76,14 +75,12 @@ int entryPoint ( BfBulmaFact *bges )
         accionB->setObjectName("mui_actionProfesorNuevo");
         pPluginMenu->addAction ( accionB );
         bges->Fichas->addAction ( accionB );
-        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
         BlAction *accionC = new BlAction ( _ ( "About FAPAC" ), 0 );
         accionC->setStatusTip ( _ ( "About FAPAC" ) );
         accionC->setWhatsThis ( _ ( "About FAPAC" ) );
         accionC->setObjectName("mui_actionAboutFapac");
         bges->menuAcerca_de->addAction ( accionC );
-        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
     } // end if
 

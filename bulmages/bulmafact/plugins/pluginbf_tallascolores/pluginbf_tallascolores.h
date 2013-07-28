@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_TALLASCOLORES_H
 #define PLUGINBF_TALLASCOLORES_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "bfbulmafact.h"
 #include "articuloview.h"

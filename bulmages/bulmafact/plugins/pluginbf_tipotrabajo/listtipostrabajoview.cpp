@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "bfcompany.h"
 #include "blconfiguration.h"
@@ -55,7 +55,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->addSubFormHeader ( "idtipotrabajo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id tipo trabajo" ) );
     mui_listado->addSubFormHeader ( "nomtipotrabajo", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre tipo trabajo" ) );
     mui_listado->addSubFormHeader ( "colortipotrabajo", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _ ( "Color tipo trabajo" ) );
-    mui_listado->setInsert ( TRUE );
+    mui_listado->setInsert ( true );
 
     mui_listado->load ( "SELECT * FROM tipotrabajo" );
     insertWindow ( windowTitle(), this );

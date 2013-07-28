@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "listlinpedidoproveedorview.h"
 #include "blfunctions.h"
@@ -49,9 +49,9 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
     addSubFormHeader ( "descuentolpedidoproveedor", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _ ( "Id pedido" ) );
     addSubFormHeader ( "ordenlpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _ ( "Orden" ) );
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
-    setOrdenPorQuery ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
+    setOrdenPorQuery ( false );
     
 }
 

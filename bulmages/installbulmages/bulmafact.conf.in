@@ -5,7 +5,7 @@
 #--------------------------------------------------------------------#
 
 CONF_SPLASH_BULMAFACT         @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmafact.jpg
-CONF_MAIN_WINDOW_TITLE Facturación GPL
+CONF_MAIN_WINDOW_TITLE Gestión GPL
 
 
 #Traspaso de informacion extendida de los articulos en los documentos.
@@ -44,9 +44,9 @@ CONF_BG_DESCFACTURASCLIENTE   #C3CC33
 CONF_BG_LISTARTICULOS         #DDFFDD
 
 CONF_SERIE_FACTURA_DEFECTO    DD
-CONF_IDTRABAJADOR_DEFECTO     0
-CONF_IDFORMA_PAGO_DEFECTO     0
-CONF_IDALMACEN_DEFECTO        0
+CONF_IDTRABAJADOR_DEFECTO     1
+CONF_IDFORMA_PAGO_DEFECTO     1
+CONF_IDALMACEN_DEFECTO        1
 
 CONF_PLUGINS_BULMAFACT        libpluginbf_q19@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbf_multiimprimir@CMAKE_SHARED_LIBRARY_SUFFIX@; \
@@ -65,6 +65,67 @@ CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmaf
 
 # Indica si debe precalcularse el codigo de articulo o no. (En entornos multiusuario el precalculo puede dar problemas si se introducen articulos desde varios puestos).
 CONF_PRECALC_CODARTICULO   TRUE
+
+# -------------------------------------
+# Contabilidad integrada
+# -------------------------------------
+
+CONF_CONT_NUMDIGITOSEMPRESA          8
+CONF_CONT_CTA_CLIENTES               4300
+CONF_CONT_CTA_PROVEEDORES            4000
+CONF_CONT_CTA_VENTAPRODUCTO          700
+CONF_CONT_CTA_COMPRAPRODUCTO         600
+CONF_CONT_CTA_FPAGO                  570
+
+#--------------------------------------------------------------------#
+#                                                                    #
+#                 ARCHIVO DE CONFIGURACION DE BULMACONT              #
+#                                                                    #
+#--------------------------------------------------------------------#
+
+# Estos valores indican el fondo y la fuente de la ventana de apuntes.
+CONF_BG_APUNTES                #CCCC33
+CONF_FG_APUNTES                #333333
+CONF_BG_APUNTESA               #FFFFFF
+CONF_FG_APUNTESA               #000000
+CONF_FONTSIZE_APUNTES          10
+CONF_FONTFAMILY_APUNTES        helvetica
+
+CONF_CONTRAPARTIDA_APUNTES     YES
+CONF_CANAL_APUNTES             YES
+CONF_CCOSTE_APUNTES            YES
+
+CONF_CONTRAPARTIDA_EXTRACTO    YES
+CONF_CANAL_EXTRACTO            YES
+CONF_CCOSTE_EXTRACTO           YES
+
+
+CONF_CONTRAPARTIDA_DIARIO      YES
+CONF_CANAL_DIARIO              YES
+CONF_CCOSTE_DIARIO             YES
+
+
+# Estos valores indican el fondo de la ventan del diario.
+CONF_BG_DIARIO                 #66CCCC
+CONF_BG_ALT_DIARIO             #6699CC
+CONF_FONTSIZE_DIARIO           12
+CONF_FONTFAMILY_DIARIO         Arial
+CONF_FG_DIARIO1                #CC0000
+CONF_FG_DIARIO2                #000000
+
+# Parametros de configuracion de la ventana de Extracto.
+CONF_BG_EXTRACTO               #0099CC
+
+# Parametros de configuracion de las ventanas de Balance.
+CONF_BG_BALANCE                #FFCC99
+CONF_BG_BALANCETREE            #CCCC66
+
+
+CONF_DIR_AINTELIGENTES         @CMAKE_INSTALL_PREFIX@/share/bulmages/ainteligentes/
+
+
+
+CONF_DIR_CANUALES             @CMAKE_INSTALL_PREFIX@/share/bulmages/canuales/
 
 
 

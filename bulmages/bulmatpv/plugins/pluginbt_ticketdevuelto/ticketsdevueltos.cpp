@@ -1,6 +1,6 @@
 #include "ticketsdevueltos.h"
 #include "blfixed.h"
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
@@ -24,7 +24,7 @@ void TicketsDevueltos::on_mui_cancelar_clicked()
 
 void TicketsDevueltos::on_mui_ref_returnPressed()
 {
-    QString query1 = "UPDATE albaran SET olvidadoalbaran = TRUE WHERE refalbaran = '" + mui_ref->text() + "'";
+    QString query1 = "UPDATE albaran SET olvidadoalbaran = true WHERE refalbaran = '" + mui_ref->text() + "'";
     mainCompany()->runQuery ( query1 );
     mui_ref->setText ( "" );
 }

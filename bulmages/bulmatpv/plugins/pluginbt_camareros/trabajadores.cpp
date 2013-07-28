@@ -1,5 +1,5 @@
-#include <QWidget>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
 
 #include "blmainwindow.h"
 #include "trabajadores.h"
@@ -73,14 +73,14 @@ void Trabajadores::trabajadorClicked()
     BtCompany *emp1 = ( BtCompany * ) mainCompany();
     BtTicket *ticket = NULL;
     BtTicket *ticketv = NULL;
-    bool encontrado = FALSE;
+    bool encontrado = false;
 
     /// Buscamos cual ha sido el trabajador pulsado.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
     while ( !encontrado && !cur->eof() ) {
         if ( ( ( QPushButton * ) sender() ) ->text() == cur->value( "nomtrabajador" ) + " " + cur->value( "apellidostrabajador" )  
 	&& ((cur->value("passwordtrabajador") == mui_password->text() || cur->value("passwordtrabajador") == "")) ) {
-            encontrado = TRUE;
+            encontrado = true;
 
         } else {
             cur->nextRecord();
@@ -112,35 +112,35 @@ void Trabajadores::trabajadorClicked()
       if(cur->value("admintrabajador") == "t") {
 	QToolButton *toolz = g_main->findChild<QToolButton *> ( "mui_z" );
 	if (toolz) {
-	    toolz->setEnabled(TRUE);
+	    toolz->setEnabled(true);
 	} // end if	
 
 	QToolButton *toolx = g_main->findChild<QToolButton *> ( "mui_x" );
 	if (toolx) {
-	    toolx->setEnabled(TRUE);
+	    toolx->setEnabled(true);
 	} // end if	
 
 	QToolButton *toolborraticket = g_main->findChild<QToolButton *> ( "mui_borrarticket" );
 	if (toolborraticket) {
-	    toolborraticket->setEnabled(TRUE);
+	    toolborraticket->setEnabled(true);
 	} // end if
 
       } else {
 
 	QToolButton *toolz = g_main->findChild<QToolButton *> ( "mui_z" );
 	if (toolz) {
-	    toolz->setEnabled(FALSE);
+	    toolz->setEnabled(false);
 	} // end if	
 	
 	QToolButton *toolx = g_main->findChild<QToolButton *> ( "mui_x" );
 	if (toolx) {
-	    toolx->setEnabled(FALSE);
+	    toolx->setEnabled(false);
 	} // end if	
 
 
 	QToolButton *toolborraticket = g_main->findChild<QToolButton *> ( "mui_borrarticket" );
 	if (toolborraticket) {
-	    toolborraticket->setEnabled(FALSE);
+	    toolborraticket->setEnabled(false);
 	} // end if
 	
       } // end if

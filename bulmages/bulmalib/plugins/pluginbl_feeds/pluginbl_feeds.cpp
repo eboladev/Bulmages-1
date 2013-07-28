@@ -20,22 +20,21 @@
 
 #include <stdio.h>
 
-#define QUITACORRECTOR
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QFile>
-#include <QMenu>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
+#include <QtWidgets/QMenu>
+
+#include <QWebView>
 
 #include "pluginbl_feeds.h"
-#ifdef QUITACORRECTOR
 #include "visorhtml.h"
-#endif
 #include "bfcompany.h"
 #include "bldockwidget.h"
 
@@ -50,19 +49,19 @@ QAction *g_actionFeedsWidget;
 **/
 int entryPoint ( BlMainWindow *bcont )
 {
-    BlDebug::blDebug ( "Entrada del plugin Feeds", 10 );
+    BL_FUNC_DEBUG
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_feeds", g_confpr->value ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_feeds", g_confpr->value ( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     g_docFeedsWidget = new BlDockWidget ( "Info", bcont );
     g_docFeedsWidget->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_docFeedsWidget->resize ( 260, 220 );
-    g_docFeedsWidget->setMinimumSize(260, 220);
-    bcont->addDockWidget ( Qt::LeftDockWidgetArea, g_docFeedsWidget );
+    g_docFeedsWidget->setGeometry ( 100, 100, 100, 500 );
+    g_docFeedsWidget->resize ( 330, 400 );
+    bcont->addDockWidget ( Qt::RightDockWidgetArea, g_docFeedsWidget );
     g_docFeedsWidget->show();
 
 
@@ -74,28 +73,13 @@ int entryPoint ( BlMainWindow *bcont )
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
     g_actionFeedsWidget = new QAction ( "&Info", 0 );
-    g_actionFeedsWidget->setCheckable ( TRUE );
+    g_actionFeedsWidget->setCheckable ( true );
     g_actionFeedsWidget->setStatusTip ( "Muestra/oculta las notificaciones" );
     g_actionFeedsWidget->setWhatsThis ( "Feeds.\n\nMuestra/oculta notificaciones" );
 
-    /*
-    QObject::connect ( g_actionFeedsWidget, SIGNAL ( toggled ( bool ) ), g_docFeedsWidget, SLOT ( cambiaVisible ( bool ) ) );
-    QObject::connect ( g_docFeedsWidget, SIGNAL ( cambiaEstadoVisible ( bool ) ), g_actionFeedsWidget, SLOT ( setChecked ( bool ) ) );
-
-    
-    /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bcont->newMenu ( "Venta&na", "menuVentana", "menuAcerca_de" );
-
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( g_actionFeedsWidget );
-
-*/
-
     g_docFeedsWidget->show();
-    g_actionFeedsWidget->setChecked ( TRUE );
+    g_actionFeedsWidget->setChecked ( true );
 
-
-    BlDebug::blDebug ( "Iniciado correctamente el plugin Feeds", 10 );
     return 0;
 }
 

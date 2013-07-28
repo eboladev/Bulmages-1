@@ -24,7 +24,7 @@ Incompatibles:
 
 Orden: 810
 
-Categorias: Experimentales; Restauracion;
+Categorias: Experimentales; Restauración;
 
 
 Comentarios: 

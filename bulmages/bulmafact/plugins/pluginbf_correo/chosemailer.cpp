@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDir>
+#include <QtCore/QDir>
 #include "chosemailer.h"
-
+#include "blfile.h"
 
 #ifndef Q_OS_WIN32
     /// Detectamos las variables de entorno de usuario, para guardar la configuracion
@@ -61,7 +61,7 @@ ChoseMailer::ChoseMailer(QWidget *parent) :
     /// Ejemplo: mui_mailclients->addItem(QString("Programa Ejemplo"), QString("ejemplo") );
     
     mui_mailclients->addItem(QString(_("Seleccione su cliente de correo")), QString("0") );
-    mui_mailclients->addItem(QString("Mozilla Thunderbird"), QString("thunderbird") );
+    mui_mailclients->addItem(QString("Mozilla Thunderbird (Recomendado!!)"), QString("thunderbird") );
     mui_mailclients->addItem(QString("Kmail"), QString("kmail") );
     mui_mailclients->addItem(QString("Evolution"), QString("evolution") );
     #ifdef Q_OS_WIN32
@@ -115,7 +115,7 @@ int ChoseMailer::GuardarConfig()
      
      /// Guardamos la configuracion, quiza sea interesante extraer este metodo hacia bulmalib posteriormente.
     
-    QFile file ( g_confpr->getLocalDir() + "bulmafact.conf" );
+    BlFile file ( g_confpr->getLocalDir() + "bulmafact.conf" );
     if ( !file.open ( QIODevice::Append | QIODevice::Text ) )
         return 1;
     // end if
@@ -125,9 +125,9 @@ int ChoseMailer::GuardarConfig()
     QTextStream filestr ( &file );
         if ( dir_email != "" ) {
 	    filestr << endl;
-            filestr << QString("CONF_EMAIL_CLIENT").toAscii().data();
+            filestr << QString("CONF_EMAIL_CLIENT").toLatin1().data();
             filestr << "   ";
-            filestr << QString(dir_email).toAscii().data();
+            filestr << QString(dir_email).toLatin1().data();
             filestr << endl;
         } // end if
     file.close();    
@@ -236,7 +236,7 @@ int ChoseMailer::SearchExecutable ( QString &program )
     
     /// Iteramos el PATH (con las modificaciones correspondientes) en busqueda del ejecutable.
     for (int i = 0; i < SPLITED_PATH.size(); ++i) {
-        QString posibleProgram = SPLITED_PATH.at(i).toAscii() + PATH_EXTEND +  currentItem + PATH_EXTENSION;
+        QString posibleProgram = SPLITED_PATH.at(i).toLatin1() + PATH_EXTEND +  currentItem + PATH_EXTENSION;
         posibleProgram = QUrl(posibleProgram, QUrl::TolerantMode).toString();
         
         QDir dir;

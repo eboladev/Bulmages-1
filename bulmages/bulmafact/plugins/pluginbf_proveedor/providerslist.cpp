@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QFileDialog>
-#include <QTextStream>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include "blfile.h"
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QTextStream>
 
 #include "providerslist.h"
 #include "blfunctions.h"
@@ -40,7 +40,7 @@
 \param editmode
 \return
 **/
-ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
@@ -61,11 +61,11 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de proveedores" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_exportar->setHidden ( TRUE );
-        mui_importar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_exportar->setHidden ( true );
+        mui_importar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
     
     
@@ -152,11 +152,11 @@ const QString ProveedorList::generaFiltro()
     filtro += mui_list->likeFilterSQL(m_filtro->text());
     
     if ( m_facturas->isChecked()) {
-        filtro += " AND idproveedor IN (SELECT DISTINCT idproveedor FROM facturap WHERE procesadafacturap = FALSE)";
+        filtro += " AND idproveedor IN (SELECT DISTINCT idproveedor FROM facturap WHERE procesadafacturap = false)";
     } // end if
 
     if ( m_albaranes->isChecked()) {
-        filtro += " AND idproveedor IN (SELECT DISTINCT idproveedor FROM albaranp WHERE procesadoalbaranp = FALSE)";
+        filtro += " AND idproveedor IN (SELECT DISTINCT idproveedor FROM albaranp WHERE procesadoalbaranp = false)";
     } // end if
     
     
@@ -292,7 +292,7 @@ void ProveedorList::imprimir()
 **/
 void ProveedorList::on_mui_exportar_clicked()
 {
-    QFile filexml ( QFileDialog::getSaveFileName ( this,
+    BlFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Seleccione el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Proveedores (*.xml)" ) ) );
@@ -311,7 +311,7 @@ void ProveedorList::on_mui_exportar_clicked()
 **/
 void ProveedorList::on_mui_importar_clicked()
 {
-    QFile filexml ( QFileDialog::getOpenFileName ( this,
+    BlFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Proveedores (*.xml)" ) ) );
@@ -379,9 +379,9 @@ ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion de correo electronico" ) );
     addSubFormHeader ( "urlproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion de URL" ) );
     addSubFormHeader ( "clavewebproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Clave de acceso a la web del proveedor" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     
 }
 

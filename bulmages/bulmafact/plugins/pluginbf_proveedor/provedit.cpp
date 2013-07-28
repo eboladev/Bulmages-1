@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QCloseEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -37,6 +37,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
     BL_FUNC_DEBUG
+    setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setTitleName ( _ ( "Proveedor" ) );
@@ -64,19 +65,25 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "recargoeqproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Recargo de Equivalencia" ) );
         addDbField ( "irpfproveedor", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
 
-        setupUi ( this );
 
+
+        /// Disparamos los plugins.
+        int res = g_plugins->run ( "ProveedorView_ProveedorView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
+	
         /// Deshabilitamos los tabs que aun no se usan.
 	int i;
 	
 	for (i = 0; i < mui_tab->count(); i++) {
 	
 	    if (mui_tab->widget(i)->objectName() == "tabDivisiones") {
-		mui_tab->setTabEnabled(i, FALSE);
+		mui_tab->setTabEnabled(i, false);
 	    } else if (mui_tab->widget(i)->objectName() == "tabProductosSuministrados") {
-		mui_tab->setTabEnabled(i, FALSE);    
+		mui_tab->setTabEnabled(i, false);    
 	    } else if (mui_tab->widget(i)->objectName() == "tabContratos") {
-		mui_tab->setTabEnabled(i, FALSE);
+		mui_tab->setTabEnabled(i, false);
 	    } // end if
 	    	    
 	} // end for
@@ -95,7 +102,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idprovincia->setId ( "" );
 
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         dialogChanges_readValues();
 
         /// Disparamos los plugins.
@@ -149,7 +156,7 @@ int ProveedorView::afterSave()
 */
 /**
 **/
-void ProveedorView::on_mui_cifproveedor_lostFocus()
+void ProveedorView::on_mui_cifproveedor_editingFinished()
 {
     BL_FUNC_DEBUG
     QChar digito;
@@ -178,4 +185,15 @@ int ProveedorView::cargarPost ( QString idprov )
     return 0;
 }
 
-
+/** Pintar un proveedor
+*/
+/**
+\param idbudget
+\return
+**/
+void ProveedorView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+    /// Escribimos como descripcion el nombre del proveedor para que aparezca en el titulo y en el dockwidget
+    setDescripcion( "\n" + dbValue("nomproveedor"));
+}

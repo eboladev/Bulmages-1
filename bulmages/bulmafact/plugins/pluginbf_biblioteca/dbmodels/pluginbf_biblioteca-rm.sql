@@ -50,18 +50,18 @@ DECLARE
 	rs  RECORD;
 
 BEGIN
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamo'';
+    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamolibro'';
 
     IF FOUND THEN
 	ALTER TABLE cliente DROP COLUMN idzcomercial;
 
 	DROP TABLE zcomercial;
 
-	DROP TABLE prestamo;
+	DROP TABLE prestamolibro;
 
 	DROP TABLE libro;
 
-	DROP TABLE socio;
+	DROP TABLE asociado;
 
 	DROP TABLE autor;
 

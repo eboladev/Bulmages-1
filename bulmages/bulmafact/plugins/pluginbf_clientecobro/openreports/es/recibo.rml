@@ -1,98 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(21cm, 14.9cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Recibo" author="Tomeu Borras" allowSplitting="20">
+<template pageSize="(21cm, 8.9cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Recibo" author="Tomeu Borras" allowSplitting="20">
 
 	<pageTemplate id="main">
 
 		<pageGraphics>
-			<!-- EL LOGO DE CABECERA -->
-			<image x="3cm" y="11cm" width="5cm" file="logo.jpg"/>
-	
-			<!-- EL PIE DE PAGINA -->
-			<setFont name="Helvetica" size="8"/>		
-			<fill color="(0,0,0)"/>	
-			<stroke color="(0,0,0)"/>
-			<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org -- ESTA PLANTILLA ES DE MUESTRA. --</drawString>
-	
-			<fill color="(0,0,0)"/>	
-			<stroke color="(0,0,0)"/>
-			
-			<setFont name="Helvetica-Bold" size="22"/>
-			<drawString x="2cm" y="8.75cm">RECIBO</drawString>
-			
-			<lineMode width="1.5" />
+		  
+		<translate dx="0cm" dy="-20.5cm"/> 
+		
+		<!-- EL LOGO DE CABECERA -->
+		<image x="2cm" y="27cm" width="5cm" file="logo.jpg"/>
 
-			<lines>
-				1.5cm 8cm 19.5cm 8cm
-			</lines>
+		<!-- EL RECUADRO DONDE VA EL CLIENTE -->
+		<stroke color="(0.18,0.38,0.42)"/>
+		<lineMode width="0.3mm"/>
+		<!-- EL RECUADRO FECHA -->
+		<rect round="0.05cm" x="9.8cm" y="27.3cm" width="10cm" height="1.2cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO CLIENTE -->
+		<rect round="0.05cm" x="9.8cm" y="23.2cm" width="10cm" height="3.9cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO FORMA DE PAGO -->
+		<rect round="0.05cm" x="1.3cm" y="25.7cm" width="8cm" height="1.1cm" fill="no" stroke="yes"/>
+		<!-- EL RECUADRO EMPRESA -->
+		<rect round="0.05cm" x="1.3cm" y="23.2cm" width="8cm" height="2.3cm" fill="no" stroke="yes"/>
 
-<!--IF QUERY="SELECT * FROM CLIENTE WHERE idcliente = [idcliente]"-->
-<!--QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->
 
-			<setFont name="Helvetica-Bold" size="16"/>
-			<drawString x="13cm" y="2.5cm">TOTAL:</drawString>
-			<drawString x="13cm" y="8.75cm">FECHA:</drawString>
-			
-			<setFont name="Helvetica" size="12"/>
-			<drawString x="16cm" y="2.5cm">[cantcobro] &#8364;</drawString>
-			<drawString x="16cm" y="8.75cm">[fechacobro]</drawString>
-			
-			<setFont name="Helvetica-Bold" size="12"/>
-			<drawString x="3cm" y="7.2cm">Referencia:</drawString>
-			<drawString x="3cm" y="6.2cm">Cliente:</drawString>
-			<drawString x="3cm" y="5.2cm">CIF Cliente:</drawString>
-			<drawString x="3cm" y="4.2cm">Comentario:</drawString>
-			
-			<setFont name="Helvetica" size="12"/>
-			<drawString x="13cm" y="7.2cm">[refcobro]</drawString>
-			<drawString x="13cm" y="6.2cm">[nomcliente]</drawString>
-			<drawString x="13cm" y="5.2cm">[cifcliente]</drawString>
-			<drawString x="13cm" y="4.2cm">[comentcobro]</drawString>
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		
 
-<!--END QUERY-->
-<!--END IF QUERY-->
+		
+		<!-- IN CLU DE FILE="[CONF_DIR_OPENREPORTS]plantilla_cabecerafactura.rml" -->
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_empresa.rml" -->
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_cliente.rml" -->
 
-			<lineMode width="1.5" />
-			<lines>
-				1.5cm 3.7cm 19.5cm 3.7cm
-			</lines>
-			
-			<!-- FRAME DE CONTENIDOS -->
-			<frame id="column" x1="1cm" y1="2cm" width="19cm" height="7cm"/>
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- RECIBO -</drawCentredString>
+		
+		<setFont name="Helvetica-Bold" size="22"/>
+		<drawCentredString x="15.3cm" y="27.5cm">- [cantcobro] €-</drawCentredString>
+		
+		
+		<setFont name="Helvetica-Bold" size="12"/>
+		
+		<drawString x="1.5cm" y="22.7cm">Fecha: [fechacobro]</drawString>
+		
+		<setFont name="Helvetica" size="9"/>
+		<drawString x="1.5cm" y="22.2cm">[comentcobro]</drawString>
+		
+		
+		<translate dx="0cm" dy="20.5cm"/> 
+
 		</pageGraphics>
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="1cm" width="19cm" height="8cm" />
+		
 	</pageTemplate>
+
+
 	
 </template>
 
-<stylesheet>
-	<blockTableStyle id="tablacontenido">	
-		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
-		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
-		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
-		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
-		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
-		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-	</blockTableStyle>
-	
-	<blockTableStyle id="metatabla">	
-		<blockAlignment value="LEFT"/>
-	</blockTableStyle>		
-</stylesheet>
+<include src="[CONF_DIR_OPENREPORTS]estilos.rml"/>
 
 <story>
-
-	<blockTable style="metatabla">
-		<tr>
-		<td>
-		</td>
-		</tr>
-	</blockTable>
-	
-</story>
+		<storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
+		<translate dx="2cm" dy="0.7cm"/>
+		<rotate degrees="90"/>                                                                            
+		
+		<place x="1.57cm" y="0.82cm" width="10cm" height="1cm">
+		<barCode code="code128" height="1cm">REC [idcobro] [refcobro]</barCode>
+		</place>
+	      </storyPlace>
+		
+  </story>
 </document>

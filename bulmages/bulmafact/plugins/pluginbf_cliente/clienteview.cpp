@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QToolButton>
-#include <QWidget>
-#include <QComboBox>
-#include <QCloseEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtGui/QCloseEvent>
 
 #include "clienteview.h"
 #include "bfcompany.h"
@@ -97,7 +97,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         mui_idforma_pago->setId ( 0 );
 
         /// Metemos la ventana en el workSpace.
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         dialogChanges_readValues();
         /// Disparamos los plugins.
         res = g_plugins->run ( "ClienteView_ClienteView_Post", this );
@@ -173,8 +173,20 @@ int ClienteView::cargarPost ( QString idcliente )
     /// Lanzamos los plugins de carga
     g_plugins->run ( "ClienteView_cargarPost_Post", this );
 
-    
     return 0;
+}
+
+/** Pintar un cliente
+*/
+/**
+\param idbudget
+\return
+**/
+void ClienteView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( "\n" + dbValue("nomcliente"));
 }
 
 
@@ -203,7 +215,7 @@ void ClienteView::on_mui_informe_clicked()
 */
 /**
 **/
-void ClienteView::on_mui_cifcliente_lostFocus()
+void ClienteView::on_mui_cifcliente_editingFinished()
 {
     BL_FUNC_DEBUG
     QChar digito;
@@ -224,11 +236,11 @@ void ClienteView::on_mui_cifcliente_lostFocus()
 void ClienteView::activateDocuments()
 {
     BL_FUNC_DEBUG
-    mui_tab->setTabEnabled ( 2, TRUE );
-    mui_tab->setTabEnabled ( 3, TRUE );
-    mui_tab->setTabEnabled ( 4, TRUE );
-    mui_tab->setTabEnabled ( 5, TRUE );
-    mui_tab->setTabEnabled ( 6, TRUE );
+    mui_tab->setTabEnabled ( 2, true );
+    mui_tab->setTabEnabled ( 3, true );
+    mui_tab->setTabEnabled ( 4, true );
+    mui_tab->setTabEnabled ( 5, true );
+    mui_tab->setTabEnabled ( 6, true );
     
 }
 
@@ -240,11 +252,11 @@ void ClienteView::activateDocuments()
 void ClienteView::deactivateDocuments()
 {
     BL_FUNC_DEBUG
-    mui_tab->setTabEnabled ( 2, FALSE );
-    mui_tab->setTabEnabled ( 3, FALSE );
-    mui_tab->setTabEnabled ( 4, FALSE );
-    mui_tab->setTabEnabled ( 5, FALSE );
-    mui_tab->setTabEnabled ( 6, FALSE );
+    mui_tab->setTabEnabled ( 2, false );
+    mui_tab->setTabEnabled ( 3, false );
+    mui_tab->setTabEnabled ( 4, false );
+    mui_tab->setTabEnabled ( 5, false );
+    mui_tab->setTabEnabled ( 6, false );
     
 }
 

@@ -22,7 +22,7 @@
 #ifndef BLERRORDIALOG_H
 #define BLERRORDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 #include "blfunctions.h"
 #include "ui_blerrordialogbase.h"
@@ -40,7 +40,7 @@ public:
     void showFrame();
 
 public slots:
-    virtual void s_mostrarDetalles();
+    virtual void on_pushButton2_released();
 };
 
 #endif

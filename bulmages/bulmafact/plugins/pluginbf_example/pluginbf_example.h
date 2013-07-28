@@ -21,10 +21,10 @@
 #ifndef PLUGINBF_EXAMPLE_H
 #define PLUGINBF_EXAMPLE_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtCore/QObject>
 
 #include "blapplication.h"
 #include "bfbulmafact.h"

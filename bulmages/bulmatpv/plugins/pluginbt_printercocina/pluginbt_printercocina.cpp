@@ -25,7 +25,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#include <QtWidgets/QDockWidget>
 
 #include "pluginbt_printercocina.h"
 #include "blfunctions.h"
@@ -122,7 +122,7 @@ int impresionCocina(BtTicket *tick) {
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->value( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toLatin1();
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
@@ -151,14 +151,14 @@ int impresionCocina(BtTicket *tick) {
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        cliente.cif = cur->value( "cifcliente" ).toAscii();
-        cliente.nombre = cur->value( "nomcliente" ).toAscii();
+        cliente.cif = cur->value( "cifcliente" ).toLatin1();
+        cliente.nombre = cur->value( "nomcliente" ).toLatin1();
     } // end if
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toLatin1() ;
     delete cur;
 
     BlDbRecord *linea;
@@ -166,7 +166,7 @@ int impresionCocina(BtTicket *tick) {
 
     BlDbRecordSet *curimpresoras = tick -> mainCompany() -> loadQuery ( "SELECT * FROM printercocina" );
     while ( !curimpresoras->eof() ) {
-      bool hayalgoqueimprimir = FALSE;
+      bool hayalgoqueimprimir = false;
 
       BlEscPrinter pr ( g_confpr->value(CONF_DIR_USER) + "bulmatpv_cocina.txt" );
       pr.initializePrinter();
@@ -218,8 +218,8 @@ int impresionCocina(BtTicket *tick) {
             BlFixed cantlalbaran (linea->dbValue("cantlalbaran"));
             if (undcocina != cantlalbaran) {
               BlFixed resta = cantlalbaran - undcocina;
-              hayalgoqueimprimir = TRUE;
-              pr.printText ( resta.toQString().rightJustified ( 5, ' ', TRUE ) + " " );
+              hayalgoqueimprimir = true;
+              pr.printText ( resta.toQString().rightJustified ( 5, ' ', true ) + " " );
               pr.printText ( blStringToUsAscii(linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true )) + " " );
               pr.printText ( "\n" );
 
@@ -227,7 +227,7 @@ int impresionCocina(BtTicket *tick) {
 	      if (resta > 0) {
 	                BlDbRecordSet *componentes = tick -> mainCompany() -> loadQuery( "SELECT sinacentos(articulo.nomarticulo) AS nomarticulo2, comparticulo.cantcomparticulo AS cantarticulo2  FROM comparticulo LEFT JOIN articulo ON comparticulo.idcomponente = articulo.idarticulo WHERE comparticulo.idarticulo = " + linea->dbValue ( "idarticulo" ) );
 		        while ( !componentes->eof() ) {
-	            	    pr.printText("* <!-- RIGHTJUSTIFIED \"" + componentes->value("cantarticulo2") + "\" \"5\" \" \" \"TRUE\"--> <!-- LEFTJUSTIFIED \"" + componentes->value("nomarticulo2") + "\" \"18\" \" \" \"TRUE\"-->\n");
+	            	    pr.printText("* <!-- RIGHTJUSTIFIED \"" + componentes->value("cantarticulo2") + "\" \"5\" \" \" \"true\"--> <!-- LEFTJUSTIFIED \"" + componentes->value("nomarticulo2") + "\" \"18\" \" \" \"true\"-->\n");
 	    		    componentes->nextRecord();
 			} // end while
 	      } // end if
@@ -242,12 +242,12 @@ int impresionCocina(BtTicket *tick) {
        /// Terminamos la impresion
       pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
 /*
-      QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
+      QByteArray qba = tick->dbValue ( "refalbaran" ).toLatin1();
       char* barcode = qba.data();
       pr.setJustification ( BlEscPrinter::center );
       pr.setBarcodeFormat ( 2, 50, both, fontB );
       pr.printBarCode ( code39, qba.size(), barcode );
-      pr.cutPaperAndFeed ( TRUE, 10 );
+      pr.cutPaperAndFeed ( true, 10 );
       pr.print();
 */
 
@@ -260,7 +260,7 @@ int impresionCocina(BtTicket *tick) {
       
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {
-			  blRawPrint("ticket_cocina.txt", TRUE, curimpresoras->value("colaprintercocina"));
+			  blRawPrint("ticket_cocina.txt", true, curimpresoras->value("colaprintercocina"));
        } // end if
 
        curimpresoras->nextRecord();

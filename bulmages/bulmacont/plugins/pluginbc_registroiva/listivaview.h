@@ -23,9 +23,9 @@
 #ifndef LISTIVAVIEW_H
 #define LISTIVAVIEW_H
 
-#include <QTableWidget>
-#include <QMenu>
-#include <QEvent>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QMenu>
+#include <QtCore/QEvent>
 
 #include "listiva.h"
 #include "iva.h"

@@ -1,5 +1,6 @@
 # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
 # leo@alaxarxa.net                                                      #
+# Modified (C) 2013 by Daniel Ripoll                                    #
 # http://www.iglues.org                                                 #
 #                                                                       #
 # This program is free software; you can redistribute it and/or modify  #
@@ -34,20 +35,6 @@ file(GLOB bulmafact_UIS *.ui)
 
 set(bulmafactEx main.cxx)
 
-set(QT_USE_QTASSISTANT false)
-set(QT_USE_QTXML true)
-set(QT_USE_QTSCRIPT true)
-set(QT_USE_QTWEBKIT true)
-
-IF(WIN32)
-    # En MS-Windows no hay soporte directo de QtDBus.
-    #set(QT_USE_QTDBUS true)
-ELSE(WIN32)
-    set(QT_USE_QTDBUS true)
-ENDIF(WIN32)
-
-INCLUDE(${QT_USE_FILE})
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
@@ -61,40 +48,42 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 
-if(USE_QMDIAREA)
-      ADD_DEFINITIONS("-D'AREA_QMDI'" )
-endif(USE_QMDIAREA)
-
 # generate rules for building source files from the resources
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
-QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
+QT5_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
+QT5_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
 set(bulmafact_RCCS ../../bulmages.qrc)
-QT4_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
-
-IF(WIN32)
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBF_BULMAFACT)
-ENDIF(WIN32)
+QT5_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
 
 
 add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
 		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} ${bulmafact_RCC_SRCS})
 
-
+IF(WIN32)
+set_property(TARGET libbulmafact PROPERTY COMPILE_DEFINITIONS BF_BULMAFACT QWT_MAKEDLL)
+ENDIF(WIN32)
 
 set_target_properties( libbulmafact PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}"
   OUTPUT_NAME bulmafact )
 
+qt5_use_modules(libbulmafact UiTools Xml Core Widgets Script WebKit)
+
 target_link_libraries(libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+#target_link_libraries(bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
-
-add_executable(bulmafact ${bulmafactEx} ${bulmafact_RCC_SRCS})
-
+IF(WIN32)
+  add_executable(bulmafact  ${bulmafactEx} ${bulmafact_RCC_SRCS} )
+  target_link_libraries(bulmafact libbulmafact  bulmalib ${PGSQL_LIBRARIES} )
+  qt5_use_modules(bulmafact UiTools Xml Core Widgets Script WebKit)
+ELSE(WIN32)
+  add_executable(bulmafact  ${bulmafactEx})
+  target_link_libraries(bulmafact libbulmafact)
+ENDIF(WIN32)
 
 
 # i18n
@@ -119,7 +108,6 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES ca_ES en_US fr_FR)
 endif(USE_GETTEXT)
 
-target_link_libraries(bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 add_dependencies(libbulmafact bulmalib)
 add_dependencies(bulmafact libbulmafact)

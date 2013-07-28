@@ -22,7 +22,7 @@
 #ifndef BFINFORMEREFERENCIA_H
 #define BFINFORMEREFERENCIA_H
 
-#include <QString>
+#include <QtCore/QString>
 #include "bldefs.h"
 
 class BfCompany;

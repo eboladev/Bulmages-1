@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "listcoloresview.h"
 #include "bfcompany.h"
@@ -52,7 +52,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->load();
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     blScript(this);
     
 }
@@ -100,7 +100,7 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Color" ) );
     addSubFormHeader ( "rgbtc_color", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "RGB Color" ) );
     addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Color" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

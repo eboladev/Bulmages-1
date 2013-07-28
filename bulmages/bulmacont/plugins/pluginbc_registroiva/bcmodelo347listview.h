@@ -33,7 +33,7 @@ class BC_EXPORT BcModelo347ListView : public QDialog, public Ui_BcModelo347ListB
     Q_OBJECT
 
 public:
-    BcModelo347ListView ( BcCompany *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window );
+    BcModelo347ListView ( BcCompany *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WindowFlags f = Qt::Window );
     ~BcModelo347ListView();
 
 private slots:

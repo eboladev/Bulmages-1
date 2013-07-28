@@ -41,7 +41,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_inventario", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_inventario", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 
 
@@ -97,9 +97,9 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSubFormHeader ( "valminimsalmacen", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Minimo" ) );
     l->addSubFormHeader ( "idminimsalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id minimo almacen" ) );
     l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id articulo" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     art->dialogChanges_setExcludedObject ( l->mui_list );
     
     return 0;

@@ -19,6 +19,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         
         self.languages = ["es","ca","fr","en"]
 
+        # Asignamos un estado para que siempre este
+        self.estado = None
+
         # Ocultamos la columna de las descripciones.
         self.mui_plugins.setColumnCount(13)
         self.mui_plugins1.setColumnCount(13)
@@ -107,12 +110,14 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.cadcategorias = self.cadcategorias.replace(' ;',';')
         self.arra = self.cadcategorias.split(';')
         self.arra.sort()
-        self.j = 0
-        self.mui_categoria.addItem(QtGui.QApplication.translate("Facturacion",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        self.j = 1
         while (self.j < len ( self.arra)):
             if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
                 self.mui_categoria.addItem( self.arra[self.j].decode('string-escape').decode("utf-8"))
             self.j = self.j + 1
+        self.mui_categoria.addItem(QtGui.QApplication.translate("Facturacion",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        #Ponemos como categoria por defecto la ultima
+        self.mui_categoria.setCurrentIndex(self.j)
 
         #Ponemos la pestanya de seleccion de plugins como la visible.
         self.tabWidget.setCurrentIndex(0)
@@ -148,7 +153,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             functions.multios().copy(str(plugins.confopenreports+ "%s/ficha.rml" % language),str(plugins.openreports + "openreports_" + self.database +"/%s/ficha.rml" % language) )
             # Pasamos el logotipo
             if (self.mui_textfile.text() != ""):
-                functions.multios().copy(str(self.mui_textfile.text()),str(plugins.openreports + "openreports_" + self.database +"%s/logo.jpg" % language) )
+                functions.multios().copy(str(self.mui_textfile.text()),str(plugins.openreports + "openreports_" + self.database +"/%s/logo.jpg" % language) )
         # END Copiamos las plantillas en cada idioma
     
 
@@ -162,8 +167,16 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
                 # Si el plugin tiene archivo de autoforms lo copiamos
                 if (self.mui_plugins.item(self.i, 12).text() != '' and len (self.mui_plugins.item(self.i,12).text()) > 3):
-                   # Aqui copiamos el archivo
-                   functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.mui_plugins.item(self.i,12).text()), str(plugins.configfiles + self.mui_plugins.item(self.i,12).text().replace("autoform_","autoform_" + self.database + "_") ) )
+                   # Aqui spliteamos y copiamos cada archivo
+                   self.cadautoforms = self.mui_plugins.item(self.i,12).text().replace('; ',';')
+                   self.cadautoforms = self.cadautoforms.replace(' ;',';')
+                   self.arra = self.cadautoforms.split(';')
+                   self.arra.sort()
+                   self.j = 1
+                   while (self.j < len ( self.arra)):
+                       functions.multios().copy(str(plugins.confsharebulmages + "autoforms/" + self.arra[self.j]), str(plugins.configfiles + self.arra[self.j].replace("__","_" + self.database + "_") ) )
+                       self.j = self.j + 1
+
 
                 # Si hay que aplicar un plugin entonces lo escribimos
                 if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
@@ -246,12 +259,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         if (self.encontradoopenreports == 0):
                 # Escribimos el parametro como lo deseamos
-            self.out << "\n\nCONF_DIR_OPENREPORTS "+plugins.openreports+"openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
-
+            if os.name == 'posix':
+                self.out << "\n\nCONF_DIR_OPENREPORTS "+plugins.openreports+"openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
+            else:
+                self.out << "\n\nCONF_DIR_OPENREPORTS ..\\openreports\\openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
         if (self.encontradostylesheet == 0):
             # Escribimos el parametro como lo deseamos
-            self.out << "\n\nCONF_STYLESHEET " + plugins.cmakeinstallprefix +"css/bulmafact_" +str(locale.name().left(5))+".css\n\n"
-
+            if os.name == 'posix':
+                 self.out << "\n\nCONF_STYLESHEET " + plugins.cmakeinstallprefix +"css/bulmafact_" +str(locale.name().left(5))+".css\n\n"
+            else:
+                 self.out << "\n\nCONF_STYLESHEET ..\\css/bulmafact_" +str(locale.name().left(5))+".css\n\n"
+			
         # Cerramos los ficheros.
         self.file.close()
         self.file1.close()
@@ -317,7 +335,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                             self.terminador = ""
                             self.out << "CONF_PLUGINS_BULMAFACT   "
                         # Si hay que aplicar un plugin entonces lo escribimos
-                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
+                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3 and self.mui_plugins.item(self.i,10).text().contains(".so")):
                             self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
                             if os.name == 'posix':
                                 self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
@@ -387,7 +405,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                                 self.out << "CONF_PLUGINS_BULMATPV   "
                             self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                             # Si hay que aplicar un plugin entonces lo escribimos
-                            if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3):
+                            if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3 and self.mui_plugins.item(self.i,10).text().contains(".so")):
                                 self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                                 if os.name == 'posix':
                                     self.out << self.terminador << self.mui_plugins1.item(self.i,10).text()
@@ -398,13 +416,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                 self.x = self.x + 1
             self.out << "\n"
 
-            # Terminamos de poner el resto de las linea.
-#        while (not (self.text.isNull()) ):
-#          self.out << self.text << "\n"
-#          self.text = self.vin.readLine()
-
-
-
             # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
             self.encontradoarticles = 0;
             self.text = self.vin.readLine()
@@ -412,8 +423,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
             if (self.encontradoarticles == 0):
                     # Escribimos el parametro como lo deseamos
-                self.out << "\n\nCONF_DIR_THUMB_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
-                self.out << "\n\nCONF_DIR_IMG_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
+                if os.name == 'posix':
+					self.out << "\n\nCONF_DIR_THUMB_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
+					self.out << "\n\nCONF_DIR_IMG_ARTICLES "+plugins.openreports+"imgarticles_" + self.database +"/\n\n"
+                else:
+					self.out << "\n\nCONF_DIR_THUMB_ARTICLES ..\\openreports\\imgarticles_" + self.database +"/\n\n"
+					self.out << "\n\nCONF_DIR_IMG_ARTICLES ..\\openreports\\imgarticles_" + self.database +"/\n\n"
 
 
 
@@ -425,7 +440,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     def marcar(self, plug, rec, first = 0):
         i = 0
         if plug !="":
-            print "marcar " + plug
             while (i < self.mui_plugins1.rowCount()):
                 if (self.mui_plugins1.item(i,10).text() == plug):
                     if (self.mui_plugins1.item(i, 0).checkState() == Qt.Unchecked or first == 1):
@@ -459,15 +473,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                                 for self.dep in self.arr:
                                     self.marcar(self.dep,1)
                 i = i + 1
-            print "fin de marcar " + plug
 
     def desmarcar(self, plug, rec, first = 0):
         i = 0
         if plug !="":
-            print "desmarcar " + plug 
             # Iteramos para la lista de plugins de bulmafact
             while (i < self.mui_plugins1.rowCount()):
-                print self.mui_plugins1.item(i,10).text() + " --> " + self.mui_plugins1.item(i,5).text()
                 if (self.mui_plugins1.item(i, 0).checkState() == Qt.Checked or first == 1):
                     # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
                     if (plug == self.mui_plugins1.item(i,10).text()) :
@@ -479,14 +490,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         if self.arr != ['']:
                             for self.dep in self.arr:
                                 if (self.dep == plug):
-                                    print "ENCONTRADO " + self.dep
                                     self.desmarcar(self.mui_plugins1.item(i,10).text(),1)
                                     self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
                 i = i + 1
             i = 0
         # Iteramos para la lista de plugins de bulmaTPV
         while (i < self.mui_plugins.rowCount()):
-            print self.mui_plugins.item(i,10).text() + " --> " + self.mui_plugins.item(i,5).text()
             if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
                 # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
                 if (plug == self.mui_plugins.item(i,10).text()) :
@@ -498,12 +507,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     if self.arr != ['']:
                         for self.dep in self.arr:
                             if (self.dep == plug):
-                                print "ENCONTRADO " + self.dep
                                 self.desmarcar(self.mui_plugins.item(i,10).text(),1)
                                 self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
             i = i + 1
-        print "fin desmarcar " + plug
-
 
     def on_mui_chosefile_pressed(self):
         self.fileName = QtGui.QFileDialog.getOpenFileName(self, "Open File", "~", "Images (*.jpg)")
@@ -520,6 +526,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
     def on_mui_plugins_cellClicked(self, row, col):
         if (self.semaforo == 1):
+            if (self.estado == None):
+                self.estado = not(self.mui_plugins.item(row,0).checkState())
             if (self.estado != self.mui_plugins.item(row,0).checkState()):
                 # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
                 if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
@@ -594,6 +602,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
     def on_mui_plugins1_cellClicked(self, row, col):
         if (self.semaforo == 1):
+            if (self.estado == None):
+                self.estado = not(self.mui_plugins1.item(row,0).checkState())
             if (self.estado != self.mui_plugins1.item(row,0).checkState()):
                 if (self.mui_plugins1.item(row, 0).checkState() == Qt.Unchecked):
                 # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
@@ -668,7 +678,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                             # Tambien tenemos que hacer las comprobaciones de idioma.
                             locale = QtCore.QLocale()
                             self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size()-4) + "_" + locale.name().left(5) + ".sql"
-                            print self.filename
                             if (QFile.exists(self.filename)):
                                 self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
                                 self.writecommand(self.command)
@@ -723,7 +732,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                                 # Tambien tenemos que hacer las comprobaciones de idioma.
                                 locale = QtCore.QLocale()
                                 self.filename = plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text().left(self.mui_plugins1.item(self.i,4).text().size() -4) + "_" + locale.name().left(5) + ".sql"
-                                print self.filename
                                 if (QFile.exists(self.filename)):
                                     self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
                                     self.writecommand(self.command)
@@ -905,7 +913,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.process.waitForFinished(-1)
 
 
-        self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql", "revf-0.12.sql", "revf-0.13.sql", "revf-0.14.sql"]
+        self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql", "revf-0.12.sql", "revf-0.13.sql", "revf-0.14.sql", "revf-0.15.sql"]
         #Parcheamos todo lo que hay que parchear
         for self.parche in self.revisiones:
             self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbparches + self.parche) + ' ' + self.database + functions.end_sql
@@ -957,8 +965,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                 if (self.mui_plugins1.item(self.i, 0).checkState() != Qt.Checked ):
                     self.mui_plugins1.hideRow(self.i)
                 self.i = self.i + 1
-
-        if (self.mui_categoria.currentIndex() > 0):
+        # Si la categoria no es la ultima entonces ocultamos. Si es la ultima es que hay que mostrarlo todo.
+        if (self.mui_categoria.currentIndex() < self.mui_categoria.count()-1):
             # Vamos a trabajar con el combo Box
             cat = self.mui_categoria.currentText()
             self.i = 0

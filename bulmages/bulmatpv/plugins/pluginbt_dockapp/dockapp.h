@@ -1,7 +1,7 @@
 #ifndef DOCKAPP_H
 #define DOCKAPP_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 #include "btcompany.h"
 #include "blwidget.h"
 

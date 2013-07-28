@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "listirpfview.h"
 #include "bfcompany.h"
@@ -94,7 +94,7 @@ ListIRPFSubForm::ListIRPFSubForm ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idirpf", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id IRPF" ) );
     addSubFormHeader ( "tasairpf", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Porcentaje IRPF" ) );
     addSubFormHeader ( "fechairpf", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha Entrada en Vigor" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

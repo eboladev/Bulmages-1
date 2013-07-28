@@ -23,7 +23,7 @@ Dependencias: libpluginbt_cobrarivaincluido.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas;
+Categorias: Utilidades avanzadas; Restauración; Parques Infantiles;
 
 Orden: 90
 

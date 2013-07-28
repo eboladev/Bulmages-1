@@ -19,11 +19,11 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_cliente.so; libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 900
 

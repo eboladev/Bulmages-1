@@ -23,18 +23,18 @@
 #include <fstream>
 #include <stdio.h>
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QString>
-#include <QList>
-#include <QTableWidgetItem>
-#include <QTableWidget>
-#include <QStringList>
-#include <QHeaderView>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QTextStream>
-#include <QTextCodec>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtWidgets/QTableWidgetItem>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QHeaderView>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
 
 #include "blcompanydialog.h"
 #include "blpostgresqlclient.h"
@@ -176,7 +176,7 @@ bool BlCompanyDialog::close ( bool )
     BL_FUNC_DEBUG
     on_mui_cancelar_clicked();
     
-    return TRUE;
+    return true;
 }
 
 
@@ -202,7 +202,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
 
     m_tipo = tipo;
     setCompanyType ( "" );
-    setDestroyMode ( FALSE );
+    setDestroyMode ( false );
     /// Si el m_modo es false (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if ( !isDestroyMode() )
@@ -267,7 +267,7 @@ void BlCompanyDialog::accept()
     /// (S&oacute;lo necesitamos comprobar una celda de la fila) y luego
     /// recupera la informaci&oacute;n de la fila actual.
     if ( ( mui_empresas->currentRow() != -1 ) &&
-            ( mui_empresas->isItemSelected ( mui_empresas->item ( mui_empresas->currentRow(), 0 ) ) == TRUE ) ) {
+            ( mui_empresas->isItemSelected ( mui_empresas->item ( mui_empresas->currentRow(), 0 ) ) == true ) ) {
         itemfilaactual0 = mui_empresas->item ( mui_empresas->currentRow(), 0 );
         setCompanyName ( itemfilaactual0->text() );
         itemfilaactual2 = mui_empresas->item ( mui_empresas->currentRow(), 2 );
@@ -299,7 +299,7 @@ void BlCompanyDialog::mui_empresasdobleclick()
 void BlCompanyDialog::loadFile()
 {
     BL_FUNC_DEBUG
-    mui_empresas->setSortingEnabled(FALSE);
+    mui_empresas->setSortingEnabled(false);
     QString dir1 = g_confpr->value( CONF_DIR_USER ) + LISTEMPRESAS;
 
     /// Si el archivo no existe hacemos una recarga.
@@ -336,7 +336,7 @@ void BlCompanyDialog::loadFile()
         } // end if
     } // end while
     file.close();
-    mui_empresas->setSortingEnabled(TRUE);
+    mui_empresas->setSortingEnabled(true);
     
 }
 
@@ -405,7 +405,7 @@ void BlCompanyDialog::findCompanyDatabase ( QString empresa, QFile *file )
     QString nomdb = "";
     QString ano;
     QString tipo;
-    mui_empresas->setSortingEnabled(FALSE);
+    mui_empresas->setSortingEnabled(false);
     if ( !empresa.startsWith ( "template" ) ) {
         db1 = new BlPostgreSqlClient();
         db1->inicializa ( empresa );
@@ -450,16 +450,16 @@ void BlCompanyDialog::findCompanyDatabase ( QString empresa, QFile *file )
             // end if
             /// Independientemente de si deben mostrarse o no hay que guardarlas
             /// en el archivo.
-            filestr << nombre.toAscii() << "\t";
-            filestr << ano.toAscii() << "\t";
-            filestr << nomdb.toAscii() << "\t";
-            filestr << tipo.toAscii() << endl;
+            filestr << nombre.toLatin1() << "\t";
+            filestr << ano.toLatin1() << "\t";
+            filestr << nomdb.toLatin1() << "\t";
+            filestr << tipo.toLatin1() << endl;
             nomdb = "";
         } // end if
 
         delete db1;
     } // end if
-    mui_empresas->setSortingEnabled(TRUE);
+    mui_empresas->setSortingEnabled(true);
     
 }
 
@@ -489,10 +489,10 @@ void BlCompanyDialog::preparamui_empresas()
     QStringList nombrecolumnas;
     nombrecolumnas << _ ( "Nombre" ) << _ ( "Anyo" ) << _ ( "Archivo" ) << _ ( "Tipo" );
     mui_empresas->setHorizontalHeaderLabels ( nombrecolumnas );
-    mui_empresas->horizontalHeader() ->setResizeMode ( 0, QHeaderView::Stretch );
+    mui_empresas->horizontalHeader() ->setSectionResizeMode ( 0, QHeaderView::Stretch );
 
     mui_empresas->verticalHeader() ->hide();
-    mui_empresas->setShowGrid ( FALSE );
+    mui_empresas->setShowGrid ( false );
     /// Si es el modo de facturaci&oacute;n ocultamos la fecha.
     if ( m_tipo == "BulmaFact" )
         mui_empresas->hideColumn ( ABRE_ANO );    

@@ -32,7 +32,7 @@ class TarifaListView : public BlFormList, private Ui_TarifaListBase, public BlIm
     Q_OBJECT
 
 public:
-    TarifaListView ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    TarifaListView ( BfCompany *comp, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~TarifaListView();
     void editar(int);
     void remove();

@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QFile>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QComboBox>
-#include <QTextStream>
-#include <QMenu>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include "blfile.h"
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QFileDialog>
 
 #include "articulolist.h"
 #include "blimportexport.h"
@@ -52,7 +52,7 @@
 \param editmodo
 \return
 **/
-ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
     BL_FUNC_DEBUG
@@ -73,11 +73,11 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
         mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_exportar->setHidden ( TRUE );
-        mui_importar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
+        mui_editar->setHidden ( true );
+        mui_borrar->setHidden ( true );
+        mui_exportar->setHidden ( true );
+        mui_importar->setHidden ( true );
+        mui_imprimir->setHidden ( true );
     } // end if
     
     cargaFiltrosXML();
@@ -246,7 +246,7 @@ void ArticuloList::imprimir()
 void ArticuloList::on_mui_exportar_clicked()
 {
     BL_FUNC_DEBUG
-    QFile filexml ( QFileDialog::getSaveFileName ( this,
+    BlFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Articulos (*.xml)" ) ) );
@@ -271,7 +271,7 @@ void ArticuloList::on_mui_exportar_clicked()
 void ArticuloList::on_mui_importar_clicked()
 {
     BL_FUNC_DEBUG
-    QFile filexml ( QFileDialog::getOpenFileName ( this,
+    BlFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->value( CONF_DIR_USER ),
                     _ ( "Articulos (*.xml)" ) ) );
@@ -412,9 +412,9 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
     addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion tipo de I.V.A." ) );
     addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "P.V.P. articulo" ) );
     addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Disponible en stock" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
 
     /// Disparamos los plugins.
     g_plugins->run ( "ArticuloListSubForm_ArticuloListSubForm_Post", this );

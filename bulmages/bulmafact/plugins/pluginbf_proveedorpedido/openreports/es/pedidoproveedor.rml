@@ -59,16 +59,14 @@
 
 
 		<setFont name="Helvetica" size="7"/>
-		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros. [idforma_pago] [totalpedidoproveedor]</drawString>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
 
 		<setFont name="Helvetica" size="10"/>
 		<drawCentredString x="5.3cm" y="25.85cm">Forma de pago: <!--QUERY="SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1"-->[descforma_pago]<!--END QUERY--></drawCentredString>
 
 	</pageGraphics>
 
-
-		<!-- FRAME DE CONTENIDOS -->
-		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="14.6cm" />
+	<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_frame.rml" -->
 
 		
 	</pageTemplate>
@@ -195,13 +193,19 @@
 		</place>
 	</storyPlace>
 
-
 <storyPlace x="1cm" y="1cm" width="10cm" height="1cm">
-<place x="13.5cm" y="1cm" width="10cm" height="1cm">
-<barCode code="code128" height="1cm">PEDP [numpedidoproveedor] [refpedidoproveedor]</barCode>
-</place>
-</storyPlace>
+		<translate dx="2cm" dy="21cm"/>
+		<rotate degrees="90"/>                                                                            
+		
+		<place x="1.57cm" y="0.82cm" width="10cm" height="1cm">
+		<barCode code="code128" height="1cm">PEDP [numpedidoproveedor] [refpedidoproveedor]</barCode>
+		</place>
+		
+		<rotate degrees="-90"/>                                                                         
+		<translate dx="-2cm" dy="-21cm"/> 
 
+
+</storyPlace>
 
 </story>
 </document>

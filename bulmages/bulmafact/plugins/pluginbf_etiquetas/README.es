@@ -24,7 +24,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles: libpluginbf_etiquetado.so
 
-Categorias: Experimentales;
+Categorias: Utilidades genericas;Experimentales;Colmados; Ferreterías; Droguerías;Distribución; Supermercados;Distribución Alimentaria;
 
 Orden:
 

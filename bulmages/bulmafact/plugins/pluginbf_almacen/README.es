@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica; Colmados;
+Categorias: Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Orden: 800
 

@@ -35,7 +35,6 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
 {
     BL_FUNC_DEBUG
     // El activatedItem esta en la clase padre con lo que aqui no es muy necesario.
-    // connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
     addItem ( "Normal" );
     addItem ( "Intracomunitario" );
     addItem ( "Extracomunitario" );

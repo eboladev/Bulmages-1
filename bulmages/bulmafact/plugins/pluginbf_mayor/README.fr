@@ -1,0 +1,34 @@
+#######
+#Plugins
+#######
+#README.fr
+20080501
+
+Nombre: Grand livre
+
+Biblioteca: libpluginbf_mayor.so
+
+Descripción: <H1>Grand livre</H1>
+<P>Permet de consulter le Grand Livre.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias: libpluginbf_asiento.so;
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Comptabilite ; Experimental;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

@@ -32,7 +32,7 @@ Incompatibles:
 
 Reports:
 
-Categorias: Utilidades genericas;
+Categorias: Utilidades genericas; Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 950
 

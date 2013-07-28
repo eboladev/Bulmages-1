@@ -489,7 +489,7 @@
    <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
    <receiver>groupBox1</receiver>
-   <slot>setShown(bool)</slot>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>21</x>

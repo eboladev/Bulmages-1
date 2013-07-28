@@ -22,9 +22,9 @@
 #ifndef PEDIDOCLIENTEVIEW_H
 #define PEDIDOCLIENTEVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "listlinpedidoclienteview.h"
 #include "listdescpedidoclienteview.h"
@@ -51,6 +51,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int afterSave();
     virtual int beforeDelete();
+    virtual void pintarPost();
     void inicializar();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed, BlFixed );
 

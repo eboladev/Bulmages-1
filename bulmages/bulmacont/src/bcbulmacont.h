@@ -24,15 +24,15 @@
 
 #include <errno.h>
 
-#include <QPrinter>
-#include <QString>
-#include <QPixmap>
-#include <QMainWindow>
-#include <QEvent>
-#include <QAction>
-#include <QToolButton>
-#include <QMessageBox>
-#include <QMdiSubWindow>
+#include <QtPrintSupport/QPrinter>
+#include <QtCore/QString>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QMainWindow>
+#include <QtCore/QEvent>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMdiSubWindow>
 
 #include "blfunctions.h"
 #include "ui_bcbulmacontbase.h"
@@ -60,7 +60,7 @@ private:
     BlWindowListDock *m_list;
 
 public:
-    BcBulmaCont ( QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "" );
+    BcBulmaCont ( QWidget *parent = 0, Qt::WindowFlags f = Qt::Window, QString DB = "" );
     ~BcBulmaCont();
     BcCompany *company();
     /// Exporta menues.

@@ -21,9 +21,9 @@
 #ifndef CORRECTORWIDGET_H
 #define CORRECTORWIDGET_H
 
-#include <QDockWidget>
-#include <QString>
-#include <QObject>
+#include <QtWidgets/QDockWidget>
+#include <QtCore/QString>
+#include <QtCore/QObject>
 
 #include "blfunctions.h"
 #include "ui_correctorbase.h"
@@ -55,7 +55,7 @@ public:
     QDockWidget *dock;
 
 public:
-    correctorwidget ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+    correctorwidget ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
     ~correctorwidget();
     void agregarError ( QString, QString, QString );
     void setMensaje ( QString mensaje );

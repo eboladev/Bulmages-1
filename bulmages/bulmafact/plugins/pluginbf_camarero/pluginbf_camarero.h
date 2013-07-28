@@ -21,7 +21,7 @@
 #ifndef PLUGINBF_CAMARERO_H
 #define PLUGINBF_CAMARERO_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "bfbulmafact.h"
 #include "blform.h"
 #include "bfsubform.h"

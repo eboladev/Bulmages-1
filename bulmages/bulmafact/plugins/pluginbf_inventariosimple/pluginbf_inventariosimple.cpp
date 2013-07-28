@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
     g_pluginbf_inventariosimple = bges;
 
 
@@ -90,9 +90,9 @@ int ActividadView_ActividadView(ActividadView *act) {
     l->addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Articulo" ) );
     l->addSubFormHeader ( "fechaprestamo", BlDbField::DbDate, BlDbField::DbNothing | BlDbField::DbRequired, BlSubFormHeader::DbNone, _( "Fecha Prestamo" ) );
     l->addSubFormHeader ( "cantprestamo", BlDbField::DbNumeric, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbNone , _( "Cantidad" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     act->dialogChanges_setExcludedObject ( l->mui_list );
 
     act->mui_tab->addTab ( l, "Material" );
@@ -176,8 +176,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     list->addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _ ( "Id Inventario" ) );
     list->addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
     list->addSubFormHeader ( "stockinventariosimple", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Stock" ) );
-    list->setInsert ( FALSE );
-    list->setOrdenEnabled ( TRUE );
+    list->setInsert ( false );
+    list->setOrdenEnabled ( true );
     list->load("SELECT * FROM inventariosimple");
     list->setSelectMode();
     sub->connect(list, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), list, SLOT(hide()));
@@ -302,8 +302,8 @@ void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
     list->addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _ ( "Id Inventario" ) );
     list->addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
     list->addSubFormHeader ( "stockinventariosimple", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Stock" ) );
-    list->setInsert ( FALSE );
-    list->setOrdenEnabled ( TRUE );
+    list->setInsert ( false );
+    list->setOrdenEnabled ( true );
     list->load("SELECT * FROM inventariosimple");
     list->setSelectMode();
     sub->connect(list, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), list, SLOT(hide()));

@@ -1,5 +1,5 @@
 #include <QtDesigner>
-#include <QtGui>
+#include <QtGui/QtGui>
 
 #include "bfsubform.h"
 #include "bfsubformdialog.h"

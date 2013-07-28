@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "pluginbf_promedios.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -36,7 +36,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_promedios", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_promedios", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     return 0;
 }

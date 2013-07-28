@@ -114,7 +114,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         planCuentas->setWhatsThis ( _ ( "Socios" ) );
         pPluginMenu->addAction ( planCuentas );
         bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo socio" ), 0 );
         npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
@@ -122,7 +122,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         npago->setWhatsThis ( _ ( "Nuevo socio" ) );
         pPluginMenu->addAction ( npago );
         bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        connect ( npago, SIGNAL ( triggered(bool) ), this, SLOT ( elslot1() ) );
 
 	QAction *tiposoc = new QAction ( _ ( "&Tipos de socio" ), 0 );
         tiposoc->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
@@ -130,7 +130,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         tiposoc->setWhatsThis ( _ ( "Tipos de socio" ) );
         pPluginMenu->addAction ( tiposoc );
         bges->Fichas->addAction ( tiposoc );
-        connect ( tiposoc, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        connect ( tiposoc, SIGNAL ( triggered(bool) ), this, SLOT ( elslot2() ) );
     }// end if
     
 }
@@ -150,7 +150,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_socio", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_socio", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );

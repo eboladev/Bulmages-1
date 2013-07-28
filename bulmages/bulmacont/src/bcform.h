@@ -42,7 +42,7 @@ public:
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer
     /// traspaso de mensajes.
     BcCompany *mainCompany();
-    BcForm ( BcCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0 );
+    BcForm ( BcCompany *comp, QWidget *parent = 0, Qt::WindowFlags f = 0 );
     virtual ~BcForm();
     void setListaLineas ( BcSubForm * form );
     BcSubForm* listalineas();

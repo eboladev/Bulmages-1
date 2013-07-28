@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
+#include <QtWidgets/QMenu>
 
 #include "blformlist.h"
 #include "blmaincompany.h"
@@ -30,12 +30,12 @@
 
 #include "blfunctions.h"
 
-#include <QFile>
-#include <QTextStream>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QCheckBox>
-#include <QPlainTextEdit>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QPlainTextEdit>
 
 
 /**  procedimiento de QtScript
@@ -46,7 +46,7 @@ Importa el script y lo lanza.
 */
 void BlFormList::blScript(QObject * obj) {
     
-    if (g_confpr->value(CONF_USE_QSCRIPT) == "TRUE" || g_confpr->value(CONF_USE_QSCRIPT) == "T" || g_confpr->value(CONF_USE_QSCRIPT) == "1" ) {
+    if (g_confpr->valueTrue(CONF_USE_QSCRIPT)) {
   
 	  /// Lanzamos los scripts de QScript
 	  QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
@@ -144,7 +144,7 @@ bool BlFormList::selectMode()
 \param f
 \param modo
 **/
-BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f )
+BlFormList::BlFormList ( QWidget *parent, Qt::WindowFlags f, edmode modo ) : BlWidget ( parent, f )
 {
     BL_FUNC_DEBUG
     m_modo = modo;
@@ -161,7 +161,7 @@ BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget
 \param f
 \param modo
 **/
-BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f )
+BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WindowFlags f, edmode modo ) : BlWidget ( emp, parent, f )
 {
     BL_FUNC_DEBUG
     m_modo = modo;
@@ -312,7 +312,7 @@ const QString BlFormList::generaFiltro()
     while ( it6.hasNext() ) {
 	QCheckBox * item = it6.next();
 	if ( item->objectName().startsWith ( "mui_" ) && item->isChecked()) {
-	    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " = TRUE";
+	    filtro += " AND " + item->objectName().right(item->objectName().size()-4) + " = true";
 	} // end if
     } // end while
 
@@ -516,9 +516,9 @@ void BlFormList::contextMenuEvent ( QContextMenuEvent * ) {
     QMenu *popup = new QMenu ( this );
 
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
       QAction *nombreobjeto = popup->addAction( objectName() );
-      nombreobjeto->setDisabled(TRUE);
+      nombreobjeto->setDisabled(true);
     } // end if
 
     QAction *opcion = popup->exec ( QCursor::pos() );
@@ -540,9 +540,9 @@ void BlFormList::submenu ( const QPoint & )
     QMenu *popup = new QMenu ( this );
     
     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
-    if (g_confpr->value(CONF_MODO_EXPERTO) == "TRUE") {
+    if (g_confpr->valueTrue(CONF_MODO_EXPERTO)) {
       QAction *nombreobjeto = popup->addAction( objectName() );
-      nombreobjeto->setDisabled(TRUE);
+      nombreobjeto->setDisabled(true);
     } // end if
     
     
@@ -571,6 +571,12 @@ void BlFormList::on_mui_list_toogledConfig ( bool check )
     
 }
 
+
+void BlFormList::on_mui_filtrar_toggled(bool checked) {
+    QWidget *bbusqueda = findChild<QWidget *> ( "m_busqueda" );
+    if (bbusqueda) bbusqueda->setVisible(checked);
+    
+}
 
 ///
 /**
@@ -638,16 +644,16 @@ void BlFormList::trataPermisos ( QString nomtabla )
        if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "INSERT" ) ) {
 
           pbut = findChild<QAbstractButton *> ( "mui_crear" );
-          if ( pbut ) pbut->setDisabled ( TRUE );
+          if ( pbut ) pbut->setDisabled ( true );
           pbut = findChild<QAbstractButton *> ( "mui_importar" );
-          if ( pbut ) pbut->setDisabled ( TRUE );
+          if ( pbut ) pbut->setDisabled ( true );
           pbut = findChild<QAbstractButton *> ( "mui_exportar" );
-          if ( pbut ) pbut->setDisabled ( TRUE );
+          if ( pbut ) pbut->setDisabled ( true );
        } // end if
 
        if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "DELETE" ) ) {
           pbut = findChild<QAbstractButton *> ( "mui_borrar" );
-          if ( pbut ) pbut->setDisabled ( TRUE );
+          if ( pbut ) pbut->setDisabled ( true );
        } // end if
     } // end if
 }
@@ -836,12 +842,12 @@ void BlFormList::cargaFiltrosXML() {
 const QString BlFormList::nameFileConfig() 
 {
    QString directorio = g_confpr->value(CONF_DIR_USER);
-   if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
+   if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_USER)) {
       directorio = g_confpr->value(CONF_DIR_CONFIG);
    } // end if
 
    QString empresa = mainCompany()->dbName();
-   if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
+   if (g_confpr->valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
       empresa  = "";
    } // end if
 
@@ -923,9 +929,9 @@ void BlFormList::substrVars (QString &buff )
     while ( it6.hasNext() ) {
 	QCheckBox * item = it6.next();
 	if ( item->objectName().startsWith ( "mui_" ) && item->isChecked()) {
-	    buff.replace ( "["+item->objectName()+"]", "TRUE" );
+	    buff.replace ( "["+item->objectName()+"]", "true" );
 	} else {
-	    buff.replace ( "["+item->objectName()+"]", "FALSE" );
+	    buff.replace ( "["+item->objectName()+"]", "false" );
 	} // end if
     } // end while
 

@@ -68,8 +68,8 @@ private:
     QString mdb_idalbaran;
 
 public:
-    TicketClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    TicketClienteList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    TicketClienteList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    TicketClienteList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     void setMainCompany ( BfCompany * );
     ~TicketClienteList();
     void presentar();

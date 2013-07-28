@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QMessageBox>
-#include <QTextStream>
+#include "blfile.h"
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QTextStream>
 
 #include "bfbuscararticulo.h"
 #include "bldatesearch.h"
@@ -188,9 +188,9 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
     addSubFormHeader ( "idlalbaran", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Id albaran cliente" ) );
     addSubFormHeader ( "idlalbaranp", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Id albaran proveedor" ) );
 
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( FALSE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( false );
     
 }
 

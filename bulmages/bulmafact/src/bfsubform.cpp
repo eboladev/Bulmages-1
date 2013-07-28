@@ -19,12 +19,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QComboBox>
-#include <QAbstractItemView>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QAbstractItemView>
 
 #include "bfsubform.h"
 #include "blfunctions.h"
@@ -43,7 +43,7 @@
 BfSubForm::BfSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
     BL_FUNC_DEBUG
-    setDelete ( TRUE );
+    setDelete ( true );
     m_delegate = new BfSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
@@ -79,6 +79,57 @@ void BfSubForm::load ( QString query )
 }
 
 
+
+
+/// Se ha pulsado la combinacion de teclas Ctrl + +
+/**
+\param row Fila en la que se ha hecho la pulsacion
+\param col Columna en la que se ha hecho la pulsacion
+\return
+**/
+void BfSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+{
+    BL_FUNC_DEBUG
+
+    /// Si no es un campo de tipo debe o haber salimos.
+    if ( camp->fieldName() == "fecha" ) {
+        BlDbSubFormRecord *recant = lineaat ( row - 1 );
+        if ( recant ) {
+            rec->setDbValue ( "fecha", recant->dbValue ( "fecha" ) );
+        } // end if
+        return;
+    } // end if
+
+    if ( camp->fieldName() == "debe" || camp->fieldName() == "haber" ) {
+
+        /// Ponemos los campos a cero en esta fila
+        rec->setDbValue ( "debe", "0" );
+        rec->setDbValue ( "haber", "0" );
+
+        /// Hacemos las sumas y las restamos
+        BlFixed debe = sumarCampo ( "debe" );
+        BlFixed haber = sumarCampo ( "haber" );
+        BlFixed result = debe - haber;
+
+        /// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
+        if ( result > 0 ) {
+            rec->setDbValue ( "haber", result.toQString() );
+        } // end if
+
+        if ( result < 0 ) {
+            result = result * -1;
+            rec->setDbValue ( "debe", result.toQString() );
+        } // end if
+        return;
+    } // end if
+
+    BlSubForm::pressedPlus(row, col, rec, camp);
+
+}
+
+
+
+
 ///
 /**
 \param row
@@ -99,6 +150,10 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
         return;
     } // end if
 
+    
+    
+
+    
     
 }
 
@@ -198,7 +253,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura" ) {
 
-		if (g_confpr->value(CONF_USE_DESCARTICULO) == "TRUE" || g_confpr->value(CONF_USE_DESCARTICULO) == "T" || g_confpr->value(CONF_USE_DESCARTICULO) == "1") {
+		if (g_confpr->valueTrue(CONF_USE_DESCARTICULO)) {
 			rec->setDbValue ( "desc" + m_tablename, cur->value( "nomarticulo" ) +"\n" + cur->value("obserarticulo") );
 
 		} else {
@@ -262,6 +317,73 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         return;
     } // end if
 
+    
+    
+    
+    /// Ponemos el tratamiento segun bulmacont
+    
+
+    if ( camp->fieldName() == "codigo" && camp->text() != "*" ) {
+        QString codigoext = blExtendStringWithZeros ( camp->text(), ( g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() ));
+        QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            rec->setDbValue ( "idcuenta", cur->value( "idcuenta" ) );
+            rec->setDbValue ( "codigo", cur->value( "codigo" ) );
+            rec->setDbValue ( "tipocuenta", cur->value( "tipocuenta" ) );
+            rec->setDbValue ( "descripcioncuenta", cur->value( "descripcion" ) );
+            if ( rec->exists ( "idc_coste" ) && cur->value( "idc_coste" ) != "" ) {
+                rec->setDbValue ( "idc_coste", cur->value( "idc_coste" ) );
+                QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->value( "idc_coste" );
+                BlDbRecordSet *curss = mainCompany() ->loadQuery ( query1 );
+                rec->setDbValue ( "nomc_coste", curss->value( "nombre" ) );
+                delete curss;
+            } // end if
+        } else {
+	    BlDebug::blDebug ( Q_FUNC_INFO, 0, _("No existe la cuenta.") );
+            return;
+        } // end if
+        delete cur;
+    } // end if
+    if ( camp->fieldName() == "nomcanal" ) {
+        QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            rec->setDbValue ( "idcanal", cur->value( "idcanal" ) );
+        } else {
+            rec->setDbValue ( "idcanal", "" );
+        } // end if
+        delete cur;
+    } // end if
+    if ( camp->fieldName() == "nomc_coste" ) {
+        QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            rec->setDbValue ( "idc_coste", cur->value( "idc_coste" ) );
+        } else {
+            rec->setDbValue ( "idc_coste", "" );
+        } // end if
+        delete cur;
+    } // end if
+    if ( camp->fieldName() == "fecha" ) {
+        QString nfecha = blNormalizeDate ( camp->text() ).toString ( "dd/MM/yyyy" );
+        rec->setDbValue ( "fecha", nfecha );
+    } // end if
+    if ( camp->fieldName() == "debe" ) {
+        if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
+            rec->setDbValue ( "haber", "0.00" );
+        } // end if
+    } // end if
+    if ( camp->fieldName() == "haber" ) {
+        if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
+            rec->setDbValue ( "debe", "0.00" );
+        } // end if
+    } // end if
+    
+    
+    
+    
+    
     /// Hago la actualizacion del campo total
     if ( (camp->fieldName() == "codigocompletoarticulo") || (camp->fieldName() == "cant" + m_tablename) || (camp->fieldName() == "pvp" + m_tablename)) {
       if (existsHeader("cant" + m_tablename) && existsHeader("pvp" + m_tablename) && existsHeader("total" + m_tablename) ) {
@@ -269,6 +391,12 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvp" + m_tablename));
 	rec->setDbValue ( "total" + m_tablename, total.toQString('0',2) );
       } // end if
+      if (existsHeader("cant" + m_tablename) && existsHeader("pvpivainc" + m_tablename) && existsHeader("total" + m_tablename) ) {
+	/// El campo total es calculado, asi que tratamos su actualización aqui aunque bien podri
+	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvpivainc" + m_tablename));
+	rec->setDbValue ( "total" + m_tablename, total.toQString('0',2) );
+      } // end if
+      
     } // end if
     
     /// Refrescamos el registro.
@@ -637,7 +765,7 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
-        spinBox->setValue ( value.toDouble() );
+        spinBox->setValue ( value.replace(",",".").toDouble() );
         spinBox->selectAll();
     } else if ( linea->fieldName() == "desctipo_iva" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
@@ -710,21 +838,32 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
             m_idTarifa = cur3->value( "idtarifa" );
             if ( cur3->numregistros() > 0 ) {
                 /// A) Se dispone de tarifa especial.
-                rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
+                if (rec->exists("pvp" + m_tablename))
+		    rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
+                if (rec->exists("pvpivainc" + m_tablename))
+		    rec->setDbValue ( "pvpivainc" + m_tablename, cur3->value( "pvpltarifa" ) );
+
                 /// Disparamos los plugins.
                 int res = g_plugins->run ( "BfSubForm_calculaPVP", this );
                 if ( res != 0 ) {
-		    
                     return;
                 } // end if
 
             } else {
+	      
                 /// B) No tiene tarifa especial se usa la asignada por defecto.
-                rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvp" + m_tablename))
+		    rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvpivainc" + m_tablename))
+		    rec->setDbValue ( "pvpivainc" + m_tablename, cur->value( "pvpivaincarticulo" ) );
+		
             } // end if
         } else {
             /// Sin cliente asignado se usa la tarifa asignada por defecto.
-            rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvp" + m_tablename))
+		    rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+                if (rec->exists("pvpivainc" + m_tablename))
+		    rec->setDbValue ( "pvpivainc" + m_tablename, cur->value( "pvpivaincarticulo" ) );
         } // end if
 
 

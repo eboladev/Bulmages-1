@@ -22,7 +22,7 @@
 #ifndef BFCLIENTETICKETSUBFORM_H
 #define BFCLIENTETICKETSUBFORM_H
 
-#include <QEvent>
+#include <QtCore/QEvent>
 
 #include "bfcompany.h"
 #include "bfsubform.h"

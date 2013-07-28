@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QPlainTextEdit>
-#include <QTextEdit>
-#include <QTableWidget>
-#include <QComboBox>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QCheckBox>
 
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
@@ -58,7 +58,7 @@ BlDialogChanges::~BlDialogChanges()
 bool BlDialogChanges::dialogChanges_isObjectExcluded ( QObject *item )
 {
     BL_FUNC_DEBUG
-    bool excluido = FALSE;
+    bool excluido = false;
 
     QListIterator<QObject *> it_excluidos ( m_listaExcluidos );
     /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
@@ -66,7 +66,7 @@ bool BlDialogChanges::dialogChanges_isObjectExcluded ( QObject *item )
     while ( it_excluidos.hasNext() ) {
         /// Comparamos
         if ( it_excluidos.next() == ( QObject * ) item ) {
-            excluido = TRUE;
+            excluido = true;
         } // end if
     } // end while
     
@@ -293,10 +293,10 @@ QString BlDialogChanges::retrieveValues ( QString qsWidget )
                            values += "";
                            break;
                         case Qt::Checked:
-                           values += "TRUE";
+                           values += "true";
                            break;
                         case Qt::Unchecked:
-                           values += "FALSE";
+                           values += "false";
                            break;
                     } // end switch
                 } // end if

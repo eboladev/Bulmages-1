@@ -24,9 +24,9 @@
 #ifndef LISTLINPREVCOBRO_H
 #define LISTLINPREVCOBRO_H
 
-#include <QObject>
-#include <QList>
-#include <QMutableListIterator>
+#include <QtCore/QObject>
+#include <QtCore/QList>
+#include <QtCore/QMutableListIterator>
 
 #include "bccompany.h"
 #include "blpostgresqlclient.h"

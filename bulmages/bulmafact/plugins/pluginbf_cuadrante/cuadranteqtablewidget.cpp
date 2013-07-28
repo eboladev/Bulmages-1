@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeyEvent>
-#include <QEvent>
-#include <QLineEdit>
-#include <QTextEdit>
-#include <QMenu>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QMenu>
 
 #include "cuadranteqtablewidget.h"
 #include "blconfiguration.h"
@@ -105,7 +105,7 @@ bool CuadranteQTableWidget::dropMimeData ( int row, int column, const QMimeData 
         ( ( CuadranteQTextDocument * ) cellWidget ( row, column ) ) ->addTrabajador ( data->text() );
     }
     
-    return ( TRUE );
+    return ( true );
 }
 
 
@@ -174,12 +174,12 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     } // end if
 
     if ( sel == fest ) {
-        QString query = "UPDATE cuadrante SET fiestacuadrante = TRUE WHERE idcuadrante = " + mdb_idcuadrante;
+        QString query = "UPDATE cuadrante SET fiestacuadrante = true WHERE idcuadrante = " + mdb_idcuadrante;
         mainCompany() ->runQuery ( query );
     } // end if
 
     if ( sel == nofest ) {
-        QString query = "UPDATE cuadrante SET fiestacuadrante = FALSE WHERE idcuadrante = " + mdb_idcuadrante;
+        QString query = "UPDATE cuadrante SET fiestacuadrante = false WHERE idcuadrante = " + mdb_idcuadrante;
         mainCompany() ->runQuery ( query );
     } // end if
 
@@ -206,7 +206,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
 **/
 void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent *  )
 {
-    /*QTableWidgetItem::setSelected(TRUE);*/
+    /*QTableWidgetItem::setSelected(true);*/
 }
 
 
@@ -565,7 +565,7 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
 {
     BL_FUNC_DEBUG
 
-    bool conflicto = FALSE;
+    bool conflicto = false;
     QString query = "SELECT * FROM horario NATURAL LEFT JOIN cuadrante  WHERE idtrabajador = " + idtrabajador;
     query += " AND ((horainhorario < '" + horain + "' AND horafinhorario > '" + horain + "')";
     query += " OR (horainhorario > '" + horain + "' AND horafinhorario < '" + horafin + "')";
@@ -576,7 +576,7 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
     if ( cur ) {
         if ( cur->numregistros() > 1 ) {
 
-            conflicto = TRUE;
+            conflicto = true;
         } // end if
         delete cur;
     }
@@ -586,7 +586,7 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
     if ( cur ) {
         if ( !cur->eof() ) {
 
-            conflicto = TRUE;
+            conflicto = true;
         } // end if
         delete cur;
     } // end if

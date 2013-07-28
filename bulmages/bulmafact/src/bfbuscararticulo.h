@@ -22,8 +22,8 @@
 #ifndef BUSQUEDAARTICULO_H
 #define BUSQUEDAARTICULO_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 #include "blcombobox.h"
 #include "blpostgresqlclient.h"

@@ -22,16 +22,16 @@
 
 #include <stdio.h>
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QStringList>
-#include <QClipboard>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QLocale>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QClipboard>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
+#include <QtCore/QLocale>
 
 #include "blmaincompany.h"
 #include "pluginbl_clipboard.h"
@@ -47,7 +47,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_clipboard", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_clipboard", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;

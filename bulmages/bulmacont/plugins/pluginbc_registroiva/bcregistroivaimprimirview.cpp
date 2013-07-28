@@ -137,8 +137,8 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             int num1;
             BlDbRecordSet *cursorapt;
             mainCompany() ->begin();
-            query.sprintf ( "SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData() );
-            fprintf ( stderr, "%s\n", query.toAscii().constData() );
+            query.sprintf ( "SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toLatin1().constData(), fechafinal1->text().toLatin1().constData() );
+            fprintf ( stderr, "%s\n", query.toLatin1().constData() );
             cursorapt = mainCompany() ->loadQuery ( query, "mycursor" );
             mainCompany() ->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
@@ -148,8 +148,8 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
                 fitxersortidatxt << "                                        IVA Repercutido \n" ;
-                fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() <<
-                "   Fecha Final: " << ffinal.toAscii().constData() << endl;
+                fitxersortidatxt << "Fecha Inicial: " << finicial.toLatin1().constData() <<
+                "   Fecha Final: " << ffinal.toLatin1().constData() << endl;
                 fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripcion                        Base imponible    Factura \n" ;
                 fitxersortidatxt << "__________________________________________________________________________________________________________\n";
             } // end if
@@ -164,7 +164,7 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"10\" class=titoliva> IVA Repercutido <hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
+                fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.toLatin1().constData() << " -  Data Final: " << ffinal.toLatin1().constData() << "<hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripcion</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             } // end if
             while ( !cursorapt->eof() ) {
@@ -176,18 +176,18 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 numberstr = numberstr.left ( numberstr.length() - 2 ) + "." + numberstr.right ( 2 );
                 if ( txt ) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << cursorapt->value( "ordenasiento" ).toAscii().data() << " " <<
-                    data.toAscii().constData() << " " <<
-                    cursorapt->value( "contrapartida" ).toAscii().constData() << " " << cursorapt->value( "descripcion" ).toAscii().constData() << " " << cursorapt->value( "baseimp" ).toAscii().constData() << " " <<
-                    cursorapt->value( "iva" ).toAscii().constData() << " " <<
-                    numberstr.toAscii().constData() << " " <<
-                    cursorapt->value( "factura" ).toAscii().constData() << " " <<
-                    cursorapt->value( "cif" ).toAscii().constData() << " " <<
+                    fitxersortidatxt << cursorapt->value( "ordenasiento" ).toLatin1().data() << " " <<
+                    data.toLatin1().constData() << " " <<
+                    cursorapt->value( "contrapartida" ).toLatin1().constData() << " " << cursorapt->value( "descripcion" ).toLatin1().constData() << " " << cursorapt->value( "baseimp" ).toLatin1().constData() << " " <<
+                    cursorapt->value( "iva" ).toLatin1().constData() << " " <<
+                    numberstr.toLatin1().constData() << " " <<
+                    cursorapt->value( "factura" ).toLatin1().constData() << " " <<
+                    cursorapt->value( "cif" ).toLatin1().constData() << " " <<
                     endl;
                 } // end if
                 if ( html ) {
                     /// Presentaci&oacute;n html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->value( "idasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->value( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->value( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->value( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->value( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << numberstr.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->value( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->value( "cif" ).toAscii().constData() << "</td></tr> \n";
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->value( "idasiento" ).toLatin1().constData() << "</td><td class=dataiva>" << data.toLatin1().constData() << "</td><td class=contrapartidaiva>" << cursorapt->value( "contrapartida" ).toLatin1().constData() << "</td><td class=descripcioiva>" << cursorapt->value( "descripcion" ).toLatin1().constData() << "</td><td class=baseimponibleiva>" << cursorapt->value( "baseimp" ).toLatin1().constData() << "</td><td class=tipusiva>" << cursorapt->value( "iva" ).toLatin1().constData() << "</td><td class=quotaiva>" << numberstr.toLatin1().constData() << "</td><td class=facturaiva>" << cursorapt->value( "factura" ).toLatin1().constData() << "</td><td class=cifiva>" << cursorapt->value( "cif" ).toLatin1().constData() << "</td></tr> \n";
                 } // end if
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
                 cursorapt->nextRecord();
@@ -204,8 +204,8 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             BlFixed tivar ( "0" );
             BlFixed tbaseimpr ( "0" );
             while ( !cur->eof() ) {
-                BlFixed baseiva ( cur->value( "tbaseiva" ).replace ( ".", "" ).toAscii().constData() );
-                BlFixed porcent ( cur->value( "porcentajetipoiva" ).replace ( ".", "" ).toAscii().constData() );
+                BlFixed baseiva ( cur->value( "tbaseiva" ).replace ( ".", "" ).toLatin1().constData() );
+                BlFixed porcent ( cur->value( "porcentajetipoiva" ).replace ( ".", "" ).toLatin1().constData() );
                 BlFixed baseimp = baseiva * 1000000 / porcent;
                 QString numberstr = baseimp.toQString();
 
@@ -214,9 +214,9 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 QString iva = QString::number ( cursorapt->value( "tbaseiva" ).toDouble(), 'f', 2 );
                 QString bi = QString::number ( numberstr.toDouble(), 'f', 2 );
 
-                fitxersortidatxt << cur->value( "nombretipoiva" ).toAscii().constData() << " IVA: ";
-                fitxersortidatxt << iva.toAscii().constData() << " BI: ";
-                fitxersortidatxt << bi.toAscii().constData() << endl;
+                fitxersortidatxt << cur->value( "nombretipoiva" ).toLatin1().constData() << " IVA: ";
+                fitxersortidatxt << iva.toLatin1().constData() << " BI: ";
+                fitxersortidatxt << bi.toLatin1().constData() << endl;
 
                 tivar = tivar + baseiva;
                 tbaseimpr = tbaseimpr + baseimp;
@@ -226,8 +226,8 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             delete cur;
 
             mainCompany() ->begin();
-            query.sprintf ( "SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData() );
-            fprintf ( stderr, "%s\n", query.toAscii().constData() );
+            query.sprintf ( "SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().toLatin1().constData(), fechafinal1->text().toLatin1().constData() );
+            fprintf ( stderr, "%s\n", query.toLatin1().constData() );
             cursorapt = mainCompany() ->loadQuery ( query, "mycursor" );
             mainCompany() ->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
@@ -267,11 +267,11 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 /// Acumulamos los totales para al final poder escribirlos.
                 if ( txt ) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << cursorapt->value( "ordenasiento" ).toAscii().constData() <<  data.toAscii().constData() <<  cursorapt->value( "codigo" ).toAscii().constData() <<  cursorapt->value( "descripcion" ).left ( 30 ).toAscii().constData() << " " <<   bi.toAscii().constData() << " " <<  cuota.toAscii().constData() << "%" <<  iva.toAscii().constData() <<  total.toAscii().constData() <<  "  " <<  cursorapt->value( "factura" ).right ( 8 ).toAscii().constData() <<   cursorapt->value( "cif" ).toAscii().constData() << endl;
+                    fitxersortidatxt << cursorapt->value( "ordenasiento" ).toLatin1().constData() <<  data.toLatin1().constData() <<  cursorapt->value( "codigo" ).toLatin1().constData() <<  cursorapt->value( "descripcion" ).left ( 30 ).toLatin1().constData() << " " <<   bi.toLatin1().constData() << " " <<  cuota.toLatin1().constData() << "%" <<  iva.toLatin1().constData() <<  total.toLatin1().constData() <<  "  " <<  cursorapt->value( "factura" ).right ( 8 ).toLatin1().constData() <<   cursorapt->value( "cif" ).toLatin1().constData() << endl;
                 }
                 if ( html ) {
                     /// Presentaci&oacute;n html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->value( "ordenasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->value( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->value( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->value( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->value( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << total.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->value( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->value( "cif" ).toAscii().constData() << "</td></tr> \n";
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->value( "ordenasiento" ).toLatin1().constData() << "</td><td class=dataiva>" << data.toLatin1().constData() << "</td><td class=contrapartidaiva>" << cursorapt->value( "contrapartida" ).toLatin1().constData() << "</td><td class=descripcioiva>" << cursorapt->value( "descripcion" ).toLatin1().constData() << "</td><td class=baseimponibleiva>" << cursorapt->value( "baseimp" ).toLatin1().constData() << "</td><td class=tipusiva>" << cursorapt->value( "iva" ).toLatin1().constData() << "</td><td class=quotaiva>" << total.toLatin1().constData() << "</td><td class=facturaiva>" << cursorapt->value( "factura" ).toLatin1().constData() << "</td><td class=cifiva>" << cursorapt->value( "cif" ).toLatin1().constData() << "</td></tr> \n";
                 }
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
                 cursorapt->nextRecord();
@@ -288,8 +288,8 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             BlFixed tivas ( "0" );
             BlFixed tbaseimps ( "0" );
             while ( !cur->eof() ) {
-                BlFixed baseiva ( cur->value( "tbaseiva" ).toAscii().constData() );
-                BlFixed porcent ( cur->value( "porcentajetipoiva" ).toAscii().constData() );
+                BlFixed baseiva ( cur->value( "tbaseiva" ).toLatin1().constData() );
+                BlFixed porcent ( cur->value( "porcentajetipoiva" ).toLatin1().constData() );
                 BlFixed ivacalculado = baseiva * porcent / 100;
                 QString numberstr = ivacalculado.toQString();
 
@@ -301,9 +301,9 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
                 if ( j == 0 ) {
                     fitxersortidatxt << endl;
                 } // end if
-                fitxersortidatxt << cur->value( "nombretipoiva" ).toAscii().constData() << " BI: ";
-                fitxersortidatxt <<  bi.toAscii().constData() << " IVA: ";
-                fitxersortidatxt << iva.toAscii().constData() << endl;
+                fitxersortidatxt << cur->value( "nombretipoiva" ).toLatin1().constData() << " BI: ";
+                fitxersortidatxt <<  bi.toLatin1().constData() << " IVA: ";
+                fitxersortidatxt << iva.toLatin1().constData() << endl;
 
                 tivas = tivas + ivacalculado;
                 tbaseimps = tbaseimps + baseiva;
@@ -316,7 +316,7 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
             if ( txt ) {
                 filetxt.close();
                 QString comando = g_confpr->value( CONF_EDITOR ) + " " + archivo + " &";
-                system ( comando.toAscii() );
+                system ( comando.toLatin1() );
             } // end if
             if ( html ) {
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";

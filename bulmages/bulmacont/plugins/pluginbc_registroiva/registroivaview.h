@@ -21,9 +21,9 @@
 #ifndef REGISTROIVAVIEW_H
 #define REGISTROIVAVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_registroivabase.h"
 #include "registroiva.h"
@@ -92,18 +92,18 @@ public:
     virtual void pintaidfpago ( const QString & ) {}
     ;
     virtual void pintafactemitida ( const QString &val ) {
-        if ( val == "t" || val == "TRUE" )
-            m_factEmitida->setChecked ( TRUE );
+        if ( val == "t" || val == "true" )
+            m_factEmitida->setChecked ( true );
         else
-            m_factSoportada->setChecked ( TRUE );
+            m_factSoportada->setChecked ( true );
     };
     virtual void pintarectificaaregistroiva ( const QString & ) {}
     ;
     virtual void pintaincregistro ( const QString &val ) {
-        if ( val == "t" || val == "TRUE" )
-            m_incregistroIVA->setChecked ( TRUE );
+        if ( val == "t" || val == "true" )
+            m_incregistroIVA->setChecked ( true );
         else
-            m_incregistroIVA->setChecked ( FALSE );
+            m_incregistroIVA->setChecked ( false );
     };
 
     virtual void recalculaIva() {

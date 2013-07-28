@@ -20,15 +20,15 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <QToolButton>
-#include <QFile>
-#include <QTextStream>
-#include <QLayout>
-#include <QCloseEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtGui/QCloseEvent>
 
 #include "incidenciacomercialview.h"
 #include "bfcompany.h"

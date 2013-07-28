@@ -20,13 +20,13 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "pluginbf_z2z.h"
 #include "blconfiguration.h"
@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
     BL_FUNC_DEBUG
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_z2z", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_z2z", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_pluginbf_z2z = bges->company();
 
@@ -59,7 +59,6 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setStatusTip ( _("Traspaso de Z") );
     accionA->setWhatsThis ( _("Traspaso de Z") );
     accionA->setObjectName("mui_actionZ2Z");
-    //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accionA );
     

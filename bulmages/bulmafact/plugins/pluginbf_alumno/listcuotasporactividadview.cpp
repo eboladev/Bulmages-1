@@ -22,13 +22,13 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMessageBox>
 
 #include "listcuotasporactividadview.h"
 #include "bfcompany.h"
@@ -52,7 +52,7 @@ ListCuotasPorActividadView::ListCuotasPorActividadView ( BfCompany *comp, QWidge
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->load();
-    insertWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, false );
     blScript(this);
     
 }
@@ -96,7 +96,7 @@ ListCuotasPorActividadSubForm::ListCuotasPorActividadSubForm ( QWidget *parent )
     setDbFieldId ( "numactividadescuotaporactividad" );
     addSubFormHeader ( "numactividadescuotaporactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Numero de actividads" ) );
     addSubFormHeader ( "descuentocuotaporactividad", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento en actividades" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
     
 }

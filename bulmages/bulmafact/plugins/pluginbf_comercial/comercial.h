@@ -21,7 +21,7 @@
 #ifndef COMERCIAL_H
 #define COMERCIAL_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include "bfbulmafact.h"
 #include "blwidget.h"

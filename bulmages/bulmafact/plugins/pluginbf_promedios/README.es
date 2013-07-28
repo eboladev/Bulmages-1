@@ -43,7 +43,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Experimentales;Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Restauración; Parques Infantiles; Tallas y Colores;
 
 Orden: 900
 

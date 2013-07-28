@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 #include "fpagocuenta.h"
 #include "bfbuscarbanco.h"
@@ -25,7 +25,7 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
     lineedit_fpago->setObjectName("mui_cuenta_forma_pago");
     lineedit_fpago->setFixedWidth(100);
     lineedit_fpago->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de esta forma de pago. La cuenta debe existir en la contabilidad."));
-    lineedit_fpago->setEnabled(FALSE);
+    lineedit_fpago->setEnabled(false);
     QLabel *label_fpago = new QLabel(_("Cuenta contable:"));
 
 
@@ -61,18 +61,18 @@ void FPagoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
     /// Si se ha seleccionado un banco entonces las cuentas contables establecidas en ellos tienen
     /// mas prioridad que las establecidas en las formas de pago.
     if (m_fpagoview->findChild<BfBuscarBanco *>("mui_idbanco")->currentIndex() > 0) {
-        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(FALSE);
+        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(false);
         m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText("");
 	return;
     } else {
-        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(TRUE);
+        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(true);
     } // end if
 
     if ( m_fpagoview->idFormaPago().isEmpty() ) {
-      m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(FALSE);
+      m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(false);
     } else {
       /*
-      m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(TRUE);
+      m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(true);
       
       QString query = "SELECT prefcuentaforma_pago FROM forma_pago WHERE idforma_pago = '" + m_fpagoview->idFormaPago() + "' LIMIT 1";
 
@@ -122,10 +122,10 @@ void FPagoCuenta::mui_idbanco_currentIndexChanged ( int index )
     /// Si se ha seleccionado un banco entonces las cuentas contables establecidas en ellos tienen
     /// mas prioridad que las establecidas en las formas de pago.
     if (index > 0) {
-        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(FALSE);
+        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(false);
         m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText("");
     } else {
-        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(TRUE);
+        m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(true);
     } // end if
 }
 

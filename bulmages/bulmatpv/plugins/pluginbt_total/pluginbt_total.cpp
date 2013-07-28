@@ -46,7 +46,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugintotal", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugintotal", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _ ( "Total" ), tpv, "plugintotaldock" );
@@ -150,7 +150,7 @@ int BtTicket_pintar ( BtTicket *tick )
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        BlFixed piva ( it.key().toAscii().constData() );
+        BlFixed piva ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
@@ -163,7 +163,7 @@ int BtTicket_pintar ( BtTicket *tick )
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        BlFixed preqeq ( it.key().toAscii().constData() );
+        BlFixed preqeq ( it.key().toLatin1().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {

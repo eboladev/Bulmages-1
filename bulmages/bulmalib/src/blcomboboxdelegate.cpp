@@ -33,7 +33,7 @@ BlComboBoxDelegate::BlComboBoxDelegate ( QWidget *parent  )
 {
     BL_FUNC_DEBUG
     m_comboRecordSet = NULL;
-    m_null = TRUE;
+    m_null = true;
 }
 
 
@@ -113,8 +113,8 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 
 	setCurrentIndex ( i1 );
     } catch(...) {
-	fprintf(stderr, "Error de Base de Datos en BlComboBoxDelegate::setId\n");
-	exit(0);
+	blMsgError( "Error de Base de Datos en BlComboBoxDelegate::setId");
+	throw -1;
     } // end try
 }
 

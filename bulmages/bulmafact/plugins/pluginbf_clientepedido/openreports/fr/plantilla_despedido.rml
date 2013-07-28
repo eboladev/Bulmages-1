@@ -1,0 +1,91 @@
+<!-- IF ="NOT EXISTS (SELECT * FROM lpedidocliente WHERE descuentolpedidocliente > 0 AND idpedidocliente=[idpedidocliente])"-->
+<blockTable style="tablacontenido" colWidths="3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm" splitByRow="2" rowheights="2" repeatRows="1">
+		<tr>
+			<td>Codigo</td>
+			<td>Concepto</td>
+			<td>Unid:</td>
+			<td>Precio/u:</td>
+			<td>Subtotal s/iva:</td>
+		</tr>
+<!--QUERY="SELECT *, (cantlpedidocliente*pvplpedidocliente*(1-descuentolpedidocliente/100))::NUMERIC(12,2) AS totallpedidocliente FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo=articulo.idarticulo WHERE idpedidocliente= [idpedidocliente]"-->
+<tr>
+<td>[codigocompletoarticulo]</td>
+<td>[desclpedidocliente]</td>
+<td>[cantlpedidocliente]</td>
+<td>[pvplpedidocliente]</td>
+<td>[totallpedidocliente]</td>
+</tr>
+<!--END QUERY-->
+</blockTable>
+
+<!-- ELSE -->
+
+<blockTable style="tablacontenido" colWidths="2.50cm, 6.5cm, 1.8cm, 2cm, 2.5cm, 2.9cm" splitByRow="2" rowheights="2" repeatRows="1">
+		<tr>
+			<td>Codigo</td>
+			<td>Concepto</td>
+			<td>Unid:</td>
+			<td>Precio/u:</td>
+			<td>% Descuento:</td>
+			<td>Subtotal s/iva:</td>
+		</tr>
+<!--QUERY="SELECT *, (cantlpedidocliente*pvplpedidocliente*(1-descuentolpedidocliente/100))::NUMERIC(12,2) AS totallpedidocliente FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo=articulo.idarticulo WHERE idpedidocliente= [idpedidocliente]"-->
+<tr>
+<td>[codigocompletoarticulo]</td>
+<td>[desclpedidocliente]</td>
+<td>[cantlpedidocliente]</td>
+<td>[pvplpedidocliente]</td>
+<td>[descuentolpedidocliente]%</td>
+<td>[totallpedidocliente]</td>
+</tr>
+<!--END QUERY-->
+</blockTable>
+
+<!-- END IF -->
+
+<!--IF QUERY="SELECT * FROM dpedidocliente WHERE idpedidocliente=[idpedidocliente]" -->
+<blockTable style="tablacontenido" colWidths="13.00cm, 2.5cm, 3.00cm">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td><para style="paragrafo2"><b>Descuento/s:</b></para></td>
+			<td><para style="paragrafo2der"><b>% Dto:</b></para></td>
+			<td></td>
+		</tr>
+
+<!--QUERY="SELECT * FROM dpedidocliente WHERE idpedidocliente=[idpedidocliente]"-->
+		<tr>
+
+			<td><para style="paragrafo2">[conceptdpedidocliente]</para></td>
+			<td>[proporciondpedidocliente]%</td>
+			<td></td>
+		</tr>
+<!--END QUERY-->
+</blockTable>
+<!--END IF QUERY-->
+
+ 
+<!--IF QUERY="SELECT comentpedidocliente FROM pedidocliente WHERE length(comentpedidocliente) > 0 AND idpedidocliente = [idpedidocliente]"-->
+<!--QUERY="SELECT replace(comentpedidocliente,'<','\n') AS comment FROM pedidocliente WHERE length(comentpedidocliente) > 0 AND idpedidocliente = [idpedidocliente]"-->
+<blockTable style="tablacontenido" colWidths="1.00cm, 17.5cm">
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2"><b>Comentario/s:</b></para></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><para style="paragrafo2">[comment,l]</para></td>
+		</tr>
+<!--END QUERY-->
+</blockTable>
+<!--END IF QUERY-->

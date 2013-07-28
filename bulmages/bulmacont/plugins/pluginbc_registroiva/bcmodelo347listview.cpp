@@ -19,9 +19,9 @@
  ***************************************************************************/
 
 #include <errno.h>
-#include <QLocale>
-#include <QFile>
-#include <QTextStream>
+#include <QtCore/QLocale>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 
 #include "bcmodelo347listview.h"
 #include "blfunctions.h"
@@ -34,7 +34,7 @@
 \param parent
 \param f
 **/
-BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, QWidget *parent, Qt::WFlags f )
+BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, QWidget *parent, Qt::WindowFlags f )
         : QDialog ( parent, f ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG
@@ -174,7 +174,7 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
             cif = tablaventas->item ( i, 2 ) ->text();
             cp = tablaventas->item ( i, 3 ) ->text();
             importe = tablaventas->item ( i, 4 ) ->text();
-            listado << qSetFieldWidth ( 9 ) << left << codigo.toAscii().constData() << qSetFieldWidth ( 50 ) << descripcion.toAscii().constData() << qSetFieldWidth ( 11 ) << cif.toAscii().constData() << qSetFieldWidth ( 6 ) << cp.toAscii().constData() << qSetFieldWidth ( 12 ) << right << importe.toAscii() << endl;
+            listado << qSetFieldWidth ( 9 ) << left << codigo.toLatin1().constData() << qSetFieldWidth ( 50 ) << descripcion.toLatin1().constData() << qSetFieldWidth ( 11 ) << cif.toLatin1().constData() << qSetFieldWidth ( 6 ) << cp.toLatin1().constData() << qSetFieldWidth ( 12 ) << right << importe.toLatin1() << endl;
         } // end for
         numcompras = tablacompras->rowCount();
         listado << "\nCuenta     Acreedor                       CIF/NIF     CP  Importe\n";
@@ -186,12 +186,12 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
             cif = tablacompras->item ( i, 2 ) ->text();
             cp = tablacompras->item ( i, 3 ) ->text();
             importe = tablacompras->item ( i, 4 ) ->text();
-            listado << qSetFieldWidth ( 9 ) << left << codigo.toAscii().constData() << qSetFieldWidth ( 50 ) << descripcion.toAscii().constData() << qSetFieldWidth ( 11 ) << cif.toAscii().constData() << qSetFieldWidth ( 6 ) << cp.toAscii().constData() << qSetFieldWidth ( 12 ) << right << importe.toAscii() << endl;
+            listado << qSetFieldWidth ( 9 ) << left << codigo.toLatin1().constData() << qSetFieldWidth ( 50 ) << descripcion.toLatin1().constData() << qSetFieldWidth ( 11 ) << cif.toLatin1().constData() << qSetFieldWidth ( 6 ) << cp.toLatin1().constData() << qSetFieldWidth ( 12 ) << right << importe.toLatin1() << endl;
         } // end for
         fichero.close();
     } // end if
-    QString comando = g_confpr->value( CONF_EDITOR ).toAscii() + " " + fichero.fileName();
-    system ( comando.toAscii().constData() );
+    QString comando = g_confpr->value( CONF_EDITOR ).toLatin1() + " " + fichero.fileName();
+    system ( comando.toLatin1().constData() );
 
     
 }

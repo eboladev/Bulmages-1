@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 
 #include "acontableview.h"
 #include "bfcompany.h"
@@ -49,7 +49,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         setDbTableName ( "acontable" );
         setDbFieldId ( "idacontable" );
 	
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 
         /// Activamos el listado de lineas de recibo
         mui_list->setMainCompany( comp );
@@ -64,8 +64,8 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         mui_list->addSubFormHeader ( "debeacontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Ingreso" ) );
         mui_list->addSubFormHeader ( "haberacontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Gasto" ) );
 
-        mui_list->setInsert ( TRUE );
-        mui_list->setOrdenEnabled ( TRUE );
+        mui_list->setInsert ( true );
+        mui_list->setOrdenEnabled ( true );
 
         // ======================================================
 

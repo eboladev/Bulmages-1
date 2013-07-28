@@ -81,21 +81,21 @@ void BcCanalSeleccionarView::cargaCanales()
     it->setText ( 1, _("Sin Canal") );
     it->setText ( 0, _("Sin Canal") );
     it->setCheckState ( 0, Qt::Checked );
-    it->setExpanded ( TRUE );
+    it->setExpanded ( true );
     
     
     mainCompany() ->begin();
     cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM canal" );
     mainCompany() ->commit();
     while ( !cursoraux1->eof() ) {
-        idcanal = atoi ( cursoraux1->value( "idcanal" ).toAscii() );
+        idcanal = atoi ( cursoraux1->value( "idcanal" ).toLatin1() );
         it = new QTreeWidgetItem ( m_listCanales );
         Lista[idcanal] = it;
         it->setText ( 3, cursoraux1->value( "idcanal" ) );
         it->setText ( 1, cursoraux1->value( "descripcion" ) );
         it->setText ( 0, cursoraux1->value( "nombre" ) );
         it->setCheckState ( 0, Qt::Checked );
-        it->setExpanded ( TRUE );
+        it->setExpanded ( true );
         cursoraux1->nextRecord();
     } // end while
 
@@ -162,7 +162,7 @@ QString BcCanalSeleccionarView::cadCanal()
     idcanal = firstCanal();
     while ( idcanal ) {
         if ( ccanales != "" )
-            ccanales.sprintf ( "%s, %d", ccanales.toAscii().constData(), idcanal );
+            ccanales.sprintf ( "%s, %d", ccanales.toLatin1().constData(), idcanal );
         else
             ccanales.sprintf ( "%d", idcanal );
         idcanal = nextCanal();

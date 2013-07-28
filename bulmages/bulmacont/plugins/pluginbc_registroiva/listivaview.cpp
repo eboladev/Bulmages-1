@@ -29,10 +29,10 @@
 #define COL_BASEIVA         6
 #define COL_IVAIVA          7
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
+#include <QtCore/QTextStream>
 
 #include "bccompany.h"
 #include "listivaview.h"
@@ -238,7 +238,7 @@ bool ListIvaView::eventFilter ( QObject *obj, QEvent *ev )
                 if (col == COL_DESCLPRESUPUESTO) {
                     setText(row,col,blTextEditor(text(row,col)));
                     valueBudgetLineChanged(row,col);
-                    return TRUE;
+                    return true;
                 }// end if
                 break;
             case Qt::Key_Return:
@@ -258,7 +258,7 @@ bool ListIvaView::eventFilter ( QObject *obj, QEvent *ev )
                     setCurrentCell(row+1, COL_CODARTICULO);
                     break;
                 }// end switch
-                return TRUE;
+                return true;
                 break;
             }// end switch
         }// end if

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 #include "blfunctions.h"
 #include "bcconfiguracionview.h"
@@ -45,7 +45,7 @@ BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
 
     mui_subform->setMainCompany ( mainCompany() );
     mui_subform->load();
-    //mui_subform->setResizeMode(QHeaderView::Stretch);
+    mui_subform->setSectionResizeMode(QHeaderView::Stretch);
 
     mainCompany() ->insertWindow ( windowTitle(), this );
     
@@ -190,8 +190,8 @@ BcConfiguracionSubForm::BcConfiguracionSubForm ( QWidget *parent ) : BcSubForm (
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView, "Nombre" );
     addSubFormHeader ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
+    setInsert ( false );
+    setDelete ( false );
     
 }
 

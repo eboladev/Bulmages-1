@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
 
 #include "impqtoolbutton.h"
 #include "blfunctions.h"
@@ -140,7 +140,7 @@ void GenPagoQToolButton::click()
         } // end if
 
 	/// Marcamnos la factura como procesada ya que el cobro es inicialmente por el importe total
-	fpv->mui_procesadafacturap->setChecked(TRUE);
+	fpv->mui_procesadafacturap->setChecked(true);
     } // end if
 
     if ( m_object->objectName() == "AlbaranProveedorBase" ) {

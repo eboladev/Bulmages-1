@@ -31,7 +31,7 @@
 \param parent
 \param flag
 **/
-DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
+DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::WindowFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
     BL_FUNC_DEBUG

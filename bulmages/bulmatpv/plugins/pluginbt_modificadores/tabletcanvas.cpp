@@ -39,7 +39,7 @@
 **
 ****************************************************************************/
 
-#include <QtGui>
+#include <QtGui/QtGui>
 #include <math.h>
 
 #include "tabletcanvas.h"
@@ -59,7 +59,7 @@ TabletCanvas::TabletCanvas()
     alphaChannelType = NoAlpha;
     colorSaturationType = NoSaturation;
     lineWidthType = LineWidthPressure;
-    m_vacio = TRUE;
+    m_vacio = true;
 }
 
 void TabletCanvas::erasePixmap()
@@ -70,7 +70,7 @@ void TabletCanvas::erasePixmap()
         painter.drawPixmap(0, 0, pixmap);
     painter.end();
     update();
-    m_vacio = TRUE;
+    m_vacio = true;
 }
 
 
@@ -130,7 +130,7 @@ void TabletCanvas::tabletEvent(QTabletEvent *event)
                 updateBrush(event);
                 QPainter painter(&pixmap);
                 paintPixmap(painter, event);
-		m_vacio = FALSE;
+		m_vacio = false;
             }
             break;
         default:
@@ -169,7 +169,7 @@ void TabletCanvas::mouseMoveEvent(QMouseEvent *event) {
 //                updateBrush(event);
                 QPainter painter(&pixmap);
                 painter.drawLine(polyLine[1], event->pos());
-		m_vacio = FALSE;
+		m_vacio = false;
             }
     update();
 }

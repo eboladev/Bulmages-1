@@ -22,9 +22,9 @@
 #ifndef PAGOVIEW_H
 #define PAGOVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_pagobase.h"
 #include "blpostgresqlclient.h"
@@ -45,6 +45,8 @@ class PagoView : public BfForm, public Ui_PagoBase
 public:
     PagoView ( BfCompany *, QWidget * );
     ~PagoView();
+    virtual void pintarPost();
+    virtual int afterSave();
 };
 
 #endif

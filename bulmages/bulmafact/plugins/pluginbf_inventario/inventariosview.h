@@ -51,7 +51,7 @@ class InventariosView : public BlFormList, public Ui_InventariosBase
     Q_OBJECT
 
 public:
-    InventariosView ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
+    InventariosView ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~InventariosView();
     void inicializa();
     void presentar();

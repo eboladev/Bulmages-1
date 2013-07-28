@@ -59,8 +59,8 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
     mui_cdistribuidos->addSubFormHeader ( "idc_costedist", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id" ) );
     mui_cdistribuidos->addSubFormHeader ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Destinatario" ) );
     mui_cdistribuidos->addSubFormHeader ( "iddestc_coste", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Origen" ) );
-    mui_cdistribuidos->setInsert ( TRUE );
-    mui_cdistribuidos->setOrdenEnabled ( FALSE );
+    mui_cdistribuidos->setInsert ( true );
+    mui_cdistribuidos->setOrdenEnabled ( false );
     idc_coste = 0;
 
 
@@ -76,7 +76,7 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
     headers << _ ( "Nombre" ) << _ ( "Descripcion" ) << _ ( "Id centro de coste" );
     mui_list->setColumnWidth ( 0, 200 );
     mui_list->setHeaderLabels ( headers );
-    mui_list->setColumnHidden ( COL_IDC_COSTE, TRUE );
+    mui_list->setColumnHidden ( COL_IDC_COSTE, true );
     dialogChanges_setExcludedObject ( mui_list );
     dialogChanges_readValues();
     insertWindow ( windowTitle(), this );
@@ -114,8 +114,8 @@ void BcCentroCosteView::repintar()
     /// Cargamos las cuentas de primer nivel.
     cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
     while ( !cursoraux1->eof() ) {
-        padre = atoi ( cursoraux1->value( "padre" ).toAscii() );
-        idc_coste1 = atoi ( cursoraux1->value( "idc_coste" ).toAscii() );
+        padre = atoi ( cursoraux1->value( "padre" ).toLatin1() );
+        idc_coste1 = atoi ( cursoraux1->value( "idc_coste" ).toLatin1() );
         it = new QTreeWidgetItem ( mui_list );
         Lista[idc_coste1] = it;
         it->setText ( COL_IDC_COSTE, cursoraux1->value( "idc_coste" ) );
@@ -233,7 +233,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
     QTreeWidgetItem *it;
     it = mui_list->currentItem();
     if ( it ) {
-        idc_coste = atoi ( it->text ( COL_IDC_COSTE ).toAscii() );
+        idc_coste = atoi ( it->text ( COL_IDC_COSTE ).toLatin1() );
         query.sprintf ( "INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
@@ -244,7 +244,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
     } // end if
     query.sprintf ( "SELECT MAX(idc_coste) AS id_coste FROM c_coste" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
-    idc_coste = atoi ( cur->value( "id_coste" ).toAscii() );
+    idc_coste = atoi ( cur->value( "id_coste" ).toLatin1() );
     delete cur;
     mainCompany() ->commit();
     repintar();

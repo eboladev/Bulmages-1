@@ -65,7 +65,7 @@ private:
     QString mdb_refcontrato;
 
 public:
-    CarteraPagosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode modo = BL_EDIT_MODE );
+    CarteraPagosList ( BfCompany *, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode modo = BL_EDIT_MODE );
     ~CarteraPagosList();
     void presenta();
     QString idvencimientop();

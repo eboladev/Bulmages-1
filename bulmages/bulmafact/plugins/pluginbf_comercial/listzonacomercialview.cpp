@@ -20,12 +20,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QWidget>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QLayout>
 #include <fstream>
 
 #include "listzonacomercialview.h"
@@ -79,7 +79,7 @@ ListZonaComercialSubForm::ListZonaComercialSubForm ( QWidget *parent ) : BfSubFo
     setDbFieldId ( "idzonacomercial" );
     addSubFormHeader ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "ID zona comercial" ) );
     addSubFormHeader ( "nomzonacomercial", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre de la zona comercial" ) );
-    setInsert ( TRUE );
+    setInsert ( true );
     
 }
 

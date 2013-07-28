@@ -21,11 +21,11 @@
 #ifndef PLUGINBF_PROVEEDORCODIGOS_H
 #define PLUGINBF_PROVEEDORCODIGOS_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
 
 #include "bfcompany.h"
 #include "bfbulmafact.h"

@@ -22,9 +22,9 @@
 #ifndef PRESUPUESTOCONTABLE_H
 #define PRESUPUESTOCONTABLE_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_presupuestocontablebase.h"
 #include "blpostgresqlclient.h"

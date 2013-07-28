@@ -22,7 +22,7 @@
 #ifndef BLDOCKWIDGET_H
 #define BLDOCKWIDGET_H
 
-#include <QDockWidget>
+#include <QtWidgets/QDockWidget>
 
 #include "blworkspace.h"
 #include "blfunctions.h"

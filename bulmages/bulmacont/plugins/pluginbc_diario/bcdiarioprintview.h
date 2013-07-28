@@ -26,9 +26,9 @@
 
 #include <errno.h>
 
-#include <QWidget>
-#include <QToolButton>
-#include <QRadioButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QRadioButton>
 
 #include "blfunctions.h"
 #include "ui_bcdiarioprintbase.h"

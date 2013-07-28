@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <stdio.h>
-#include <QTime>
+#include <QtCore/QTime>
 
 #include "pluginbf_carterapagos.h"
 #include "bfcompany.h"
@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
  
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Creamos el men&uacute;.
     /// Miramos si existe un menu Ventas
@@ -97,9 +97,9 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
     l->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Forma de Pago" ) );
     l->addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id Articulo" ) );
     l->addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "ID Forma de Pago" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Vencimientos" );
@@ -218,9 +218,9 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
     l->addSubFormHeader ( "idfacturap", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id Articulo" ) );
     l->addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, QApplication::translate ( "TrabajadorView", "ID Forma de Pago" ) );
     l->addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "Proveedor", "Id Proveedor" ) );
-    l->setInsert ( TRUE );
-    l->setDelete ( TRUE );
-    l->setSortingEnabled ( FALSE );
+    l->setInsert ( true );
+    l->setDelete ( true );
+    l->setSortingEnabled ( false );
     factp->dialogChanges_setExcludedObject ( l->mui_list );
 
     factp->discounts->addTab ( l, "Vencimientos" );

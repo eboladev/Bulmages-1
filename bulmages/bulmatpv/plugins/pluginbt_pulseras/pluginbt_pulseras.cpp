@@ -31,9 +31,9 @@
 
 #include "pulsera.h"
 
-#include <QHBoxLayout>
-#include <QDomDocument>
-#include <QDomNode>
+#include <QtWidgets/QHBoxLayout>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNode>
 
 #define ARTICULO_HORA_COMPLETA "36"
 #define ARTICULO_HORA_FRACCION "37"
@@ -53,7 +53,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_pulseras", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_pulseras", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;
@@ -122,7 +122,7 @@ int BlToolButton_released(BlToolButton *toolbutton) {
     if (nomticket != "") {
 	if (toolbutton->objectName() == "mui_pulseramas") {
 	    /// Agregar pulsera al ticket actual.
-	    BlDbRecord *lineaticket = g_pluginbt_pulseras_emp->ticketActual()->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
+	    BlDbRecord *lineaticket = g_pluginbt_pulseras_emp->ticketActual()->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), true );
 	    Pulsera *pul = new Pulsera(g_pluginbt_pulseras_emp->ticketActual(), entrada, lineaticket);
 	    fprintf(stderr,"Pulsera Agregada, voy a pintar \n");
 	    g_pluginbt_pulseras_emp->ticketActual()->pintar();
@@ -134,9 +134,9 @@ int BlToolButton_released(BlToolButton *toolbutton) {
 	       Pulsera * pul = g_pulseras.at(i);
 	       if (pul->m_nombrepulsera == entrada) {
 		    BtTicket * ticket = pul->m_ticketpulsera;
-		    g_pluginbt_pulseras_emp ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+		    g_pluginbt_pulseras_emp ->ticketActual()->setDbValue("bloqueadoticket", "false");
 		    g_pluginbt_pulseras_emp ->setTicketActual ( ticket );
-		    ticket->setDbValue("bloqueadoticket", "TRUE");
+		    ticket->setDbValue("bloqueadoticket", "true");
 		    ticket->pintar();
 		    /// Borra el valor del Input.
 		    g_pluginbt_pulseras_emp->pulsaTecla ( Qt::Key_F4, "" );
@@ -190,7 +190,7 @@ int BtTicket_pintar(BtTicket *tick) {
 	    if (pul->m_ticketpulsera == tick) {
 		if (!pul->m_lineaticket ) {
 		    blMsgInfo("MENSAJE DE DEPURACION. Creo una linea de ticket que ya deberia existir.");
-		    pul->m_lineaticket = tick->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), TRUE );
+		    pul->m_lineaticket = tick->insertarArticulo ( ARTICULO_HORA_COMPLETA, BlFixed("1"), true );
 		} // end if
 		int minutos = (pul->m_horainicial.secsTo(QTime::currentTime ()) + 1) / 60;
 		if (minutos < 0 ) minutos = minutos * -1; /* En el imposible caso de tiempos negativos se pone un absurdo */
@@ -200,7 +200,7 @@ int BtTicket_pintar(BtTicket *tick) {
 		/// Superada la primera hora empiezan las fracciones de 15 minutos.
 		if (minutos > MINUTOS_INICIALES && !pul->m_sinfracciones) {
 		  if (!pul->m_lineaticketfraccion ) {
-		    pul->m_lineaticketfraccion = tick->insertarArticulo ( ARTICULO_HORA_FRACCION, BlFixed("1"), TRUE );
+		    pul->m_lineaticketfraccion = tick->insertarArticulo ( ARTICULO_HORA_FRACCION, BlFixed("1"), true );
 		  } // end if
 		  int fraccionesminutos = (minutos - MINUTOS_INICIALES) / MINUTOS_FRACCION +1;
 		  pul->m_lineaticketfraccion->setDbValue("cantlalbaran", QString::number(fraccionesminutos));	
@@ -228,7 +228,7 @@ int BtTicket_borrarLinea(BtTicket *tick) {
 	Pulsera * pul = g_pulseras.at(j);
 	if (pul->m_lineaticketfraccion == tick->lineaActBtTicket()) {
 	   pul->m_lineaticketfraccion = NULL;
-	   pul->m_sinfracciones = TRUE;
+	   pul->m_sinfracciones = true;
 	} // end if
 	if (pul->m_lineaticket == tick->lineaActBtTicket()) {
 	   g_pulseras.removeAt(j);
@@ -250,7 +250,7 @@ int BtTicket_exportXML_Post(BtTicket *tick) {
 	tick->m_textoXML += "\t\t<PULSERA>\n";
 	tick->m_textoXML += "\t\t\t<NOMBREPULSERA>"+pul->m_nombrepulsera+"</NOMBREPULSERA>\n";
 	tick->m_textoXML += "\t\t\t<HORAINICIALPULSERA>"+pul->m_horainicial.toString("h:m")+"</HORAINICIALPULSERA>\n";
-	tick->m_textoXML += "\t\t\t<SINFRACCIONESPULSERA>"+(pul->m_sinfracciones? QString("TRUE"):QString("FALSE"))+"</SINFRACCIONESPULSERA>\n";
+	tick->m_textoXML += "\t\t\t<SINFRACCIONESPULSERA>"+(pul->m_sinfracciones? QString("true"):QString("false"))+"</SINFRACCIONESPULSERA>\n";
 	tick->m_textoXML += "\t\t</PULSERA>\n";
       } // end if
   } // end for
@@ -280,7 +280,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	QDomElement ehora = ventana.firstChildElement("HORAINICIALPULSERA");
 	QDomElement efracciones = ventana.firstChildElement("SINFRACCIONESPULSERA");
 	
-	bool encontrado = FALSE;
+	bool encontrado = false;
 	Pulsera * puls = NULL;
 	
 	/// Buscamos la pulsera correspondiente a esta.
@@ -289,7 +289,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	    Pulsera * pul = g_pulseras.at(j);
 	    if (pul->m_ticketpulsera == tick) {
 	      if (pul->m_nombrepulsera == enombre.text()) {
-		 encontrado = TRUE;
+		 encontrado = true;
 		 puls = pul;
 	      } // end if
 	    } // end if
@@ -314,7 +314,7 @@ int BtTicket_syncXML_Post(BtTicket *tick) {
 	puls->m_lineaticket = lineaticket;
 	puls->m_lineaticketfraccion = lineafticket;
 	puls->m_horainicial = QTime::fromString(ehora.text(), "h:m");
-	puls->m_sinfracciones = (efracciones.text() == "TRUE");
+	puls->m_sinfracciones = (efracciones.text() == "true");
 	pulserasusadas.append(puls);
 
     } // end while

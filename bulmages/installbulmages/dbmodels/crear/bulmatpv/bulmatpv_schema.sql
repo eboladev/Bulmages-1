@@ -60,7 +60,6 @@ BEGIN
 	IF NOT FOUND THEN
 	    ALTER TABLE albaran ADD COLUMN horaalbaran TIME DEFAULT now();
 	    ALTER TABLE albaran ADD COLUMN anuladoalbaran boolean;
-	    ALTER TABLE albaran ADD COLUMN ticketalbaran boolean;
 	    ALTER TABLE albaran ADD COLUMN recogidoalbaran boolean;
 	    CREATE TABLE z (
 		idz SERIAL PRIMARY KEY,
@@ -72,6 +71,15 @@ BEGIN
 	    );
 	END IF;
 
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketalbaran'';
+	IF NOT FOUND THEN
+	    ALTER TABLE albaran ADD COLUMN ticketalbaran boolean;
+	END IF;
+
+	SELECT INTO rs * FROM pg_attribute WHERE attname = ''ticketfactura'';
+	IF NOT FOUND THEN
+	    ALTER TABLE factura ADD COLUMN ticketfactura boolean;
+	END IF;
 
 	SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idz'' AND relname=''albaran'';
 	IF NOT FOUND THEN
@@ -105,16 +113,16 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''DBRev-BulmaTPV'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.14.1-0001'' WHERE nombre=''DBRev-BulmaTPV'';
+		UPDATE CONFIGURACION SET valor=''0.15.0-0001'' WHERE nombre=''DBRev-BulmaTPV'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.14.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.15.0-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.13.1"
+\echo "Actualizada la revision de la base de datos a la version 0.15.0"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;

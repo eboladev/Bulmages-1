@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "bcbalanceimportarxml.h"
 #include "bccompany.h"
@@ -92,7 +92,7 @@ bool BcBalanceImportarXML::endElement ( const QString &a, const QString &b, cons
     Adem&aacute;s se asigna la variable global m_tag con el nombre del tag para poder
     hacer el almacenamiento de datos en el caso de que sea un tag secundario.
     \param qName el nombre del tag que se ha encontrado.
-    \return TRUE para no detener la ejecucion del parser en caso de error. */
+    \return true para no detener la ejecucion del parser en caso de error. */
 bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
     BL_FUNC_DEBUG
@@ -111,7 +111,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
         delete cur;
     } // end if
     if ( m_tag == "mpatrimonial" ) {
-        SQLQuery.sprintf ( "INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_tvalores["idbalance"] ).toAscii().constData() );
+        SQLQuery.sprintf ( "INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_tvalores["idbalance"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idmpatrimonial) AS idmpatrimonial FROM mpatrimonial";
@@ -123,7 +123,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
         delete cur;
     } // end if
     
-    return TRUE;
+    return true;
 }
 
 
@@ -137,14 +137,14 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
     argumentados en el paso 1 puedan coincidir. (Es el problema de los identificadores
     autonum&eacute;ricos).
     \param qName El nombre del tag cerrado.
-    \return TRUE para no detener la ejecucion del parser SAX. */
+    \return true para no detener la ejecucion del parser SAX. */
 bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const QString& qName )
 {
     BL_FUNC_DEBUG
     m_tag = qName;
     QString SQLQuery;
     if ( qName == "balance" ) {
-        SQLQuery.sprintf ( "UPDATE balance SET nombrebalance = '%s' WHERE idbalance = %s\n", m_tvalores["nombrebalance"].toAscii().constData(), m_tvalores["idbalance"].toAscii().constData() );
+        SQLQuery.sprintf ( "UPDATE balance SET nombrebalance = '%s' WHERE idbalance = %s\n", m_tvalores["nombrebalance"].toLatin1().constData(), m_tvalores["idbalance"].toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
@@ -155,33 +155,33 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
         /// Cuando todo haya terminado debemos actualizar el cambo idmpatrimonial de los
         /// compmasap para que la cosa funcione.
         m_identmasasp[m_tvalores["idmasa"]] = m_tvalores["idmpatrimonial_nueva"];
-        SQLQuery.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s\n", m_tvalores["descmpatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
+        SQLQuery.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s\n", m_tvalores["descmpatrimonial"].toLatin1().constData(), m_tvalores["idmpatrimonial_nueva"].toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         if ( m_tvalores["orden"] != "" ) {
-            SQLQuery.sprintf ( "UPDATE mpatrimonial SET orden = %s WHERE idmpatrimonial = %s\n", m_tvalores["orden"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
+            SQLQuery.sprintf ( "UPDATE mpatrimonial SET orden = %s WHERE idmpatrimonial = %s\n", m_tvalores["orden"].toLatin1().constData(), m_tvalores["idmpatrimonial_nueva"].toLatin1().constData() );
             mainCompany() ->begin();
             mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["orden"] = "";
         } // end if
         if ( m_tvalores["tabulacion"] != "" ) {
-            SQLQuery.sprintf ( "UPDATE mpatrimonial SET tabulacion = %s WHERE idmpatrimonial = %s\n", m_tvalores["tabulacion"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
+            SQLQuery.sprintf ( "UPDATE mpatrimonial SET tabulacion = %s WHERE idmpatrimonial = %s\n", m_tvalores["tabulacion"].toLatin1().constData(), m_tvalores["idmpatrimonial_nueva"].toLatin1().constData() );
             mainCompany() ->begin();
             mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["tabulacion"] = "";
         } // end if
         if ( m_tvalores["opdesc"] != "" ) {
-            SQLQuery.sprintf ( "UPDATE mpatrimonial SET opdesc = %s WHERE idmpatrimonial = %s\n", m_tvalores["opdesc"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
+            SQLQuery.sprintf ( "UPDATE mpatrimonial SET opdesc = %s WHERE idmpatrimonial = %s\n", m_tvalores["opdesc"].toLatin1().constData(), m_tvalores["idmpatrimonial_nueva"].toLatin1().constData() );
             mainCompany() ->begin();
             mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["opdesc"] = "";
         } // end if
         if ( m_tvalores["tipompatrimonial"] != "" ) {
-            SQLQuery.sprintf ( "UPDATE mpatrimonial SET tipompatrimonial = %s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
+            SQLQuery.sprintf ( "UPDATE mpatrimonial SET tipompatrimonial = %s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].toLatin1().constData(), m_tvalores["idmpatrimonial_nueva"].toLatin1().constData() );
             mainCompany() ->begin();
             mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
@@ -191,7 +191,7 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
     m_tag = "";
     m_data = "";
     
-    return TRUE;
+    return true;
 }
 
 
@@ -199,13 +199,13 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
 /** Estos elementos no requieren que se haga primero una inserci&oacute;n y luego una
     actualizaci&oacute;n.
     \param qName el nombre del tag abierto.
-    \return TRUE para no detener la ejecuci&oacute;n del algoritmo. */
+    \return true para no detener la ejecuci&oacute;n del algoritmo. */
 bool BcBalanceImportarXML::startElement2 ( const QString&, const QString&, const QString &qName, const QXmlAttributes& )
 {
     BL_FUNC_DEBUG
     m_tag = qName;
     
-    return TRUE;
+    return true;
 }
 
 
@@ -214,7 +214,7 @@ bool BcBalanceImportarXML::startElement2 ( const QString&, const QString&, const
     sencillos. Se usa el mapa m_identmasasp para saber que identificadores de masa se
     han usado en el paso 0.
     \param qName contiene el valor del tag que se acaba de cerrar.
-    \return TRUE para no detener nunca la ejecucion del algoritmo.  */
+    \return true para no detener nunca la ejecucion del algoritmo.  */
 bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const QString &qName )
 {
     BL_FUNC_DEBUG
@@ -225,7 +225,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     /// As&iacute; nos aseguramos que ya existen los valores de idmpatrimonial y
     /// masaperteneciente.
     if ( m_tag == "compmasap" ) {
-        SQLQuery.sprintf ( "INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["masaperteneciente"]] ).toAscii().constData() );
+        SQLQuery.sprintf ( "INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["masaperteneciente"]] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idcompmasap) AS idcompmasap FROM compmasap";
@@ -237,7 +237,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
         delete cur;
     } // end if
     if ( m_tag == "compbalance" ) {
-        SQLQuery.sprintf ( "INSERT INTO compbalance (idbalance) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_tvalores["idbalance"] ).toAscii().constData() );
+        SQLQuery.sprintf ( "INSERT INTO compbalance (idbalance) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_tvalores["idbalance"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idcompbalance) AS idcompbalance FROM compbalance";
@@ -254,28 +254,28 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
         /// Actualizamos el idmasapatrimonial del compmasap, que es el que m&aacute;s
         /// dolores de cabeza causa.
         if ( m_tvalores["idmpatrimonial"] != "" && m_tvalores["codigo"] == "" ) {
-            SQLQuery.sprintf ( "UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["idmpatrimonial"]] ).toAscii().constData(), mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
+            SQLQuery.sprintf ( "UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["idmpatrimonial"]] ).toLatin1().constData(), mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toLatin1().constData() );
             mainCompany() ->begin();
             mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
         } // end if
         if ( m_tvalores["codigo"] != "" ) {
             SQLQuery.sprintf ( "UPDATE compmasap SET idcuenta = id_cuenta('%s') WHERE idcompmasap = %s\n",
-                               mainCompany() ->sanearCadena ( m_tvalores["codigo"] ).toAscii().constData(),
-                               mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
+                               mainCompany() ->sanearCadena ( m_tvalores["codigo"] ).toLatin1().constData(),
+                               mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toLatin1().constData() );
             mainCompany() ->begin();
             mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
         } // end if
         SQLQuery.sprintf ( "UPDATE compmasap SET signo = '%s' WHERE idcompmasap = %s\n",
-                           mainCompany() ->sanearCadena ( m_tvalores["signo"] ).toAscii().constData(),
-                           mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
+                           mainCompany() ->sanearCadena ( m_tvalores["signo"] ).toLatin1().constData(),
+                           mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compmasap SET nombre = '%s' WHERE idcompmasap = %s\n",
-                           mainCompany() ->sanearCadena ( m_tvalores["nombre"] ).toAscii().constData(),
-                           mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
+                           mainCompany() ->sanearCadena ( m_tvalores["nombre"] ).toLatin1().constData(),
+                           mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
@@ -285,26 +285,26 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     if ( m_tag == "compbalance" ) {
         /// Con los componentes del balance tambi&eacute;n intervienen las masas patrimoniales.
         SQLQuery.sprintf ( "UPDATE compbalance SET idmpatrimonial = %s WHERE idcompbalance = %s\n",
-                           mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["idmpatrimonial"]] ).toAscii().constData(),
-                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
+                           mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["idmpatrimonial"]] ).toLatin1().constData(),
+                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compbalance SET orden = %s WHERE idcompbalance = %s\n",
-                           mainCompany() ->sanearCadena ( m_tvalores["orden"] ).toAscii().constData(),
-                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
+                           mainCompany() ->sanearCadena ( m_tvalores["orden"] ).toLatin1().constData(),
+                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compbalance SET concepto = '%s' WHERE idcompbalance = %s\n",
-                           mainCompany() ->sanearCadena ( m_tvalores["concepto"] ).toAscii().constData(),
-                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
+                           mainCompany() ->sanearCadena ( m_tvalores["concepto"] ).toLatin1().constData(),
+                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compbalance SET tabulacion = %s WHERE idcompbalance = %s\n",
-                           mainCompany() ->sanearCadena ( m_tvalores["tabulacion"] ).toAscii().constData(),
-                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
+                           mainCompany() ->sanearCadena ( m_tvalores["tabulacion"] ).toLatin1().constData(),
+                           mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toLatin1().constData() );
         mainCompany() ->begin();
         mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
@@ -314,7 +314,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     m_tag = "";
     m_data = "";
     
-    return TRUE;
+    return true;
 }
 
 
@@ -322,7 +322,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
 /// tupla (tag, valor) en el mapa m_tvalores.
 /** Para que pueda ser utilizado posteriormente
     \param ch El valor del tag abierto.
-    \return TRUE porque no nos interesa abortar la ejecucion del algoritmo. */
+    \return true porque no nos interesa abortar la ejecucion del algoritmo. */
 bool BcBalanceImportarXML::characters ( const QString& ch )
 {
     BL_FUNC_DEBUG
@@ -331,6 +331,6 @@ bool BcBalanceImportarXML::characters ( const QString& ch )
         m_tvalores[m_tag] = m_data;
     } // end if
     
-    return TRUE;
+    return true;
 }
 

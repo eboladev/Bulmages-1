@@ -1,0 +1,106 @@
+<ui version="4.0" >
+ <class>BcCanalSeleccionarBase</class>
+ <widget class="QWidget" name="BcCanalSeleccionarBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>391</width>
+    <height>362</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Selector de Canales</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_canales.xpm</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <item row="1" column="0" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="0" column="2" >
+      <widget class="QPushButton" name="mui_nada" >
+       <property name="text" >
+        <string>S. Nada</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="mui_invertir" >
+       <property name="text" >
+        <string>Invertir</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3" >
+      <widget class="QPushButton" name="mui_todo" >
+       <property name="text" >
+        <string>S. Todo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4" >
+      <widget class="QPushButton" name="mui_cerrar" >
+       <property name="text" >
+        <string>Cerrar</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>68</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QTreeWidget" name="m_listCanales" />
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <resources>
+  <include location="../../bulmages.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>mui_cerrar</sender>
+   <signal>clicked()</signal>
+   <receiver>BcCanalSeleccionarBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>349</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>379</x>
+     <y>356</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

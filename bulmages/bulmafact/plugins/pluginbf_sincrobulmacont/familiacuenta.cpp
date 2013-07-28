@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "familiacuenta.h"
 
 
@@ -21,14 +21,14 @@ FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
     lineedit_venta->setObjectName("mui_cuenta_venta");
     lineedit_venta->setFixedWidth(100);
     lineedit_venta->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de esta familia. La cuenta debe existir en la contabilidad."));
-    lineedit_venta->setEnabled(FALSE);
+    lineedit_venta->setEnabled(false);
     QLabel *label_venta = new QLabel(_("Cuenta venta:"));
 
     QLineEdit *lineedit_compra = new QLineEdit();
     lineedit_compra->setObjectName("mui_cuenta_compra");
     lineedit_compra->setFixedWidth(100);
     lineedit_compra->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de esta familia. La cuenta debe existir en la contabilidad."));
-    lineedit_compra->setEnabled(FALSE);
+    lineedit_compra->setEnabled(false);
     QLabel *label_compra = new QLabel(_("Cuenta compra:"));
 
 
@@ -70,11 +70,11 @@ void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curr
     BlDbRecordSet *rec2;
 
     if ( m_familiasview->idFamilia().isEmpty() ) {
-      m_familiasview->findChild<QWidget *>("mui_cuenta_venta")->setEnabled(FALSE);
-      m_familiasview->findChild<QWidget *>("mui_cuenta_compra")->setEnabled(FALSE);
+      m_familiasview->findChild<QWidget *>("mui_cuenta_venta")->setEnabled(false);
+      m_familiasview->findChild<QWidget *>("mui_cuenta_compra")->setEnabled(false);
     } else {
-      m_familiasview->findChild<QWidget *>("mui_cuenta_venta")->setEnabled(TRUE);
-      m_familiasview->findChild<QWidget *>("mui_cuenta_compra")->setEnabled(TRUE);
+      m_familiasview->findChild<QWidget *>("mui_cuenta_venta")->setEnabled(true);
+      m_familiasview->findChild<QWidget *>("mui_cuenta_compra")->setEnabled(true);
 /*      
       QString query = "SELECT prefcuentaventafamilia, prefcuentacomprafamilia FROM familia WHERE idfamilia = '" + m_familiasview->idFamilia() + "' LIMIT 1";
 

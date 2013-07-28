@@ -22,7 +22,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Facturacion generica; Experimentales;
+Categorias: Facturacion generica; Experimentales; Restauración; Tallas y Colores; Colmados; Parques Infantiles;
 
 Orden: 50
 

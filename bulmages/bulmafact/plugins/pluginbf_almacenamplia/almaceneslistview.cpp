@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QCheckBox>
+#include "blfile.h"
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QTextStream>
 
 #include "almaceneslistview.h"
 #include "bfcompany.h"
@@ -38,7 +38,7 @@
 \param flag
 \return
 **/
-AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
+AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WindowFlags flag )
         : BlFormList ( NULL, parent, flag )
 {
     BL_FUNC_DEBUG
@@ -56,9 +56,9 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
     mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
     mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo almacen" ) );
     mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre almacen" ) );
-    mui_list->setInsert ( FALSE );
-    mui_list->setDelete ( FALSE );
-    mui_list->setSortingEnabled ( TRUE );
+    mui_list->setInsert ( false );
+    mui_list->setDelete ( false );
+    mui_list->setSortingEnabled ( true );
 
     hideBusqueda();
     /// Llamamos a los scripts
@@ -74,7 +74,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
 \param flag
 \return
 **/
-AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
+AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag )
         : BlFormList ( comp, parent, flag )
 {
     BL_FUNC_DEBUG
@@ -92,9 +92,9 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
     mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
     mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo almacen" ) );
     mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre almacen" ) );
-    mui_list->setInsert ( FALSE );
-    mui_list->setDelete ( FALSE );
-    mui_list->setSortingEnabled ( TRUE );
+    mui_list->setInsert ( false );
+    mui_list->setDelete ( false );
+    mui_list->setSortingEnabled ( true );
 
     presentar();
     m_idalmacen = "";

@@ -10,8 +10,8 @@
 #ifndef BLFIXED_H
 #define BLFIXED_H
 
-#include <QString>
-#include <QChar>
+#include <QtCore/QString>
+#include <QtCore/QChar>
 
 #include "blfunctions.h"
 

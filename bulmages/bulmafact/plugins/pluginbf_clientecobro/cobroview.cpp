@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 
 #include "cobroview.h"
 #include "bfcompany.h"
@@ -71,7 +71,14 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de Pago" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
-        insertWindow ( windowTitle(), this, FALSE );
+        /// Disparamos los plugins.
+        int res = g_plugins->run ( "CobroView_CobroView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
+	
+	
+        insertWindow ( windowTitle(), this, false );
         pintar();
         dialogChanges_readValues();
 	blScript(this);
@@ -133,8 +140,18 @@ void CobroView::imprimir()
         return;
     } // end if
     BfForm::imprimir();
+}
 
-    
+/** Pintar un cobro.
+*/
+/**
+**/
+void CobroView::pintarPost ( )
+{
+    BL_FUNC_DEBUG
+
+    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
+    setDescripcion( mui_idcliente->fieldValue("nomcliente") + "\n" + mui_fechacobro->text());
 }
 
 
@@ -152,11 +169,14 @@ int CobroView::afterSave()
 
     if ( cur->value( "total" ) == cur1->value( "totalc" ) ) {
         blMsgInfo ( _("Toda la referencia esta cobrada. Se procesaran todos los documentos con esta referencia") );
-        QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
+        QString query2 = "UPDATE factura set procesadafactura = true WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
         mainCompany()->runQuery ( query2 );
     } // end if
     delete cur;
     delete cur1;
+
+    /// Disparamos los plugins.
+    g_plugins->run ( "CobroView_afterSave_Post", this );  
     
     return 0;
 }

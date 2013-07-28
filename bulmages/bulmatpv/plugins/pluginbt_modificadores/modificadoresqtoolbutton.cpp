@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
 #include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-#include <QBuffer>
+#include <QtCore/QString>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QMap>
+#include <QtCore/QList>
+#include <QtCore/QBuffer>
 
 
 #include "tabletcanvas.h"
@@ -158,7 +158,7 @@ void MTabletQToolButton::click()
     BL_FUNC_DEBUG
     /*
 	  BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
-	  if (g_tablet->m_vacio == TRUE) {
+	  if (g_tablet->m_vacio == true) {
 	      ticket->lineaActBtTicket()->setDbValue ( "imglalbaran", "" );
 	  } else {
 	      QByteArray bytes;

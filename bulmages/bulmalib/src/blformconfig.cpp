@@ -19,7 +19,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 //#include <QTextDocument>
 
 #include "blformconfig.h"
@@ -31,7 +31,7 @@
 \param parent
 \param f
 **/
-BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidget ( emp, parent, f )
+BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WindowFlags f ) : BlWidget ( emp, parent, f )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
@@ -131,9 +131,9 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
 
 void BlFormConfig::on_editarScript_released() {
   QString cadena = "touch " +g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs";
-  system ( cadena.toAscii().data() );
+  system ( cadena.toLatin1().data() );
   cadena = g_confpr->value(CONF_EDITOR) +" "+ g_confpr->value( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs &";
-  int result = system ( cadena.toAscii().data() );
+  int result = system ( cadena.toLatin1().data() );
 }
 
 /// No requiere de acciones especiales en el destructor.

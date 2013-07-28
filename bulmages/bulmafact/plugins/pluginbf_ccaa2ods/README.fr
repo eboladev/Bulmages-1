@@ -1,0 +1,40 @@
+#######
+#Plugins
+#######
+#README.fr
+20110203
+
+Nombre: Balance Comptes annuels
+
+Biblioteca: 
+
+Descripción: <H1>Balances Comptes annuels</H1>
+<P>Permet d'obtenir une balance de comptes annuels pour les plans comptables espagnols de 2007 : Comptes annuels, abrégés et des PMIs. Et pour les plans comptables avant 2008: Comptes annuels et abrégés des associations à but non lucratif. </P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys; fbalance.ui
+
+
+Categorias: Comptabilite generale
+
+Orden: 70
+
+Comentarios: Le format de sortie est ODS. Il est basé sur le plugincanualesods,
+crée par Fco. Javier à partir d'un code de Tomeu Borràs. Ensuite,
+Adeladia Clavaguera et Leopold Palomo ont crée le ccaa2ods, qui sont les comptes annuels des associations à but non lucratif. Ils ont crée ensuite reportods dans lequel est intégré, canuales et ccaa2ods et y sont ajoutés le restant des comptes annuels existant publiésdans le BOE. 
+
+Cependant on a remarqué que reportods était le même que les deux autres, il fut décidé de substituer canuales par reportods intégrant dans un nouveau canuales tous les comptes annuels.
+
+(c) 2008 Adelaida Clavaguera et Leopold Palomo.
+(c) 2006 Fco. Javier M. C.   
+(c) 2005 Tomeu Borras.

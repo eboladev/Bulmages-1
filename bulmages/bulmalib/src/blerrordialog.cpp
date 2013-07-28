@@ -20,12 +20,15 @@
 
 #include "blerrordialog.h"
 
+#include "blfunctions.h"
+
 
 ///
 /**
 **/
 void BlErrorDialog::hideFrame()
 {
+    BL_FUNC_DEBUG
     m_framedetalles->hide();
 }
 
@@ -35,6 +38,7 @@ void BlErrorDialog::hideFrame()
 **/
 void BlErrorDialog::showFrame()
 {
+    BL_FUNC_DEBUG
     m_framedetalles->show();
 }
 
@@ -42,8 +46,9 @@ void BlErrorDialog::showFrame()
 ///
 /**
 **/
-void BlErrorDialog::s_mostrarDetalles()
+void BlErrorDialog::on_pushButton2_released()
 {
+    BL_FUNC_DEBUG
     if ( m_framedetalles->isVisible() ) {
         hideFrame();
     } else {
@@ -58,9 +63,9 @@ void BlErrorDialog::s_mostrarDetalles()
 **/
 BlErrorDialog::BlErrorDialog ( QWidget *parent ) : QDialog ( parent )
 {
+    BL_FUNC_DEBUG
     setupUi ( this );
-    QObject::connect ( pushButton1, SIGNAL ( clicked ( bool ) ), this, SLOT ( close() ) );
-    QObject::connect ( pushButton2, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_mostarDetalles() ) );
+    connect ( pushButton1, SIGNAL ( released ( ) ), this, SLOT ( close() ) );
 }
 
 
@@ -71,10 +76,12 @@ BlErrorDialog::BlErrorDialog ( QWidget *parent ) : QDialog ( parent )
 **/
 BlErrorDialog::BlErrorDialog ( QString mensaje, QString descripcion )
 {
+    BL_FUNC_DEBUG
     setupUi ( this );
     hideFrame();
     m_mensaje->setText ( mensaje );
     m_detalles->setPlainText ( descripcion );
+    connect ( pushButton1, SIGNAL ( released ( ) ), this, SLOT ( close() ) );
     exec();
 }
 

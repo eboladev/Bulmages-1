@@ -26,8 +26,8 @@
 #ifndef MTICKETIVAINC_H
 #define MTICKETIVAINC_H
 
-#include <QLabel>
-#include <QTableWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTableWidget>
 
 #include "btticket.h"
 #include "btcompany.h"

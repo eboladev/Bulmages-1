@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "listlinpedidoclienteview.h"
 #include "blfunctions.h"
@@ -58,9 +58,9 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "ordenlpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Orden" ) );
 
     /// Establecemos los modos de comportamiento del subformulario
-    setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
-    setOrdenPorQuery ( FALSE );
+    setInsert ( true );
+    setOrdenEnabled ( true );
+    setOrdenPorQuery ( false );
 
     /// Lanzamos los plugins
     g_plugins->run ( "ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this );

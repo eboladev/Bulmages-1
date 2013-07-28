@@ -20,9 +20,9 @@
 #ifndef IMPQTOOLBUTTON_H
 #define IMPQTOOLBUTTON_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "cobroslist.h"

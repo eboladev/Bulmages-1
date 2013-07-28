@@ -19,10 +19,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
 
 #include <cstdio>
 
@@ -89,7 +89,7 @@ int entryPoint ( BtBulmaTPV *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_cobrarparcialivaincluido", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_cobrarparcialivaincluido", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_PluginBt_CobrarParcialIVAIncluido = new PluginBt_CobrarParcialIVAIncluido();
     g_PluginBt_CobrarParcialIVAIncluido->inicializa(bges);

@@ -24,8 +24,11 @@
 #ifndef BLWINDOWLISTDOCK_H
 #define BLWINDOWLISTDOCK_H
 
-#include <QDockWidget>
-#include <QListWidget>
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListWidgetItem>
+#include <QtGui/QPainter>
+#include <QtWidgets/QAbstractItemDelegate>
 
 #include "blfunctions.h"
 #include "blworkspace.h"
@@ -34,9 +37,23 @@
 class BlWorkspace;
 
 
+  
+class ListDelegate : public QAbstractItemDelegate
+{
+public:
+ListDelegate(QObject *parent = 0);
+  
+void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+QSize sizeHint ( const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+  
+virtual ~ListDelegate();
+  
+};
+    
+
 class BL_EXPORT BlListWidget : public QListWidget
 {
-    Q_OBJECT
+Q_OBJECT
 
 public:
     BlListWidget ( QWidget * parent = 0 );
@@ -46,20 +63,24 @@ public:
 
 class BL_EXPORT BlListWidgetItem : public QListWidgetItem
 {
+  
 private:
     QObject *m_obj;
     QString m_nombre;
     QString m_titulo;
-    BlListWidget *m_list;
+public:
+    bool m_delete;
 
 public:
-    BlListWidgetItem ( BlListWidget *l, QPixmap &p );
+    BlListWidgetItem ( BlListWidget *l, QPixmap &p, const QString &title="", const QString &desc="" );
     ~BlListWidgetItem();
     void setObject ( QObject *m );
     void setName ( QString m );
     void setTitle (QString titulo);
+    void setDesc (const QString &desc );
     QObject *object();
     QString name();
+
 };
 
 
@@ -80,14 +101,8 @@ public:
     ~BlWindowListDock();
 
 public:
-    int insertWindow ( QString name, QObject *object, bool checkDuplication = TRUE, QString title="" );
-    
-#ifdef AREA_QMDI
+    int insertWindow ( QString name, QObject *object, bool checkDuplication = true, QString title="");
     int selectWindow ( QString nombre, QMdiSubWindow *obj );
-#else
-    int selectWindow ( QString nombre, QObject *obj );
-#endif
-    
     int deselectWindow();
     void removeWindow ( QObject * );
     void setVisibilityState ( bool );

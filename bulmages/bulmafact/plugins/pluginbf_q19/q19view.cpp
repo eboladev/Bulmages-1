@@ -20,12 +20,12 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QFileDialog>
-#include <QCalendarWidget>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCalendarWidget>
 #include "bfcompany.h"
 #include "blconfiguration.h"
 //#include "bldatesearch.h"
@@ -59,7 +59,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
         mui_fecha->setDate(QDate::currentDate());
         mui_fecha->calendarWidget()->setFirstDayOfWeek(Qt::Monday);
 
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
         dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
@@ -105,7 +105,7 @@ Q19View::~Q19View()
  		BlDbSubFormRecord *rec = sub->lineaat ( i );
  		rec->refresh();
  		QString val = rec->dbValue ( "selector" );
- 		if ( val == "TRUE" )
+ 		if ( val == "true" )
  		{
  			ids = ids + ( ids.length() >0 ?",":"" ) +rec->dbValue ( "idfactura" );
  			factures++;

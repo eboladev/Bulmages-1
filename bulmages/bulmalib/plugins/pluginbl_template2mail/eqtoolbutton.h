@@ -21,9 +21,9 @@
 #ifndef _EQTOOLBUTTON_
 #define _EQTOOLBUTTON_
 
-#include <QWidget>
-#include <QString>
-#include <QMap>
+#include <QtWidgets/QWidget>
+#include <QtCore/QString>
+#include <QtCore/QMap>
 
 #include "blmaincompany.h"
 #include "blfunctions.h"

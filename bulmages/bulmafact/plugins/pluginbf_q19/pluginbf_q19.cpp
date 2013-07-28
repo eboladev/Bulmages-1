@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include "pluginbf_q19.h"
 #include "blfunctions.h"
@@ -40,7 +40,7 @@ int entryPoint ( BfBulmaFact * )
     new Q19TextCodec(); // no us espanteu, els codecs els arxiva i destrueix QT (espero)
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_q19", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_q19", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     
     return 0;

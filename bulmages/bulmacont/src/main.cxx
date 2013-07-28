@@ -32,9 +32,9 @@
     Y por &uacute;ltimo crea el objeto del tipo \ref BcBulmaCont que es la aplicaci&oacute;n
     de ventanas. */
 
-#include <QDir>
-#include <QString>
-#include <QTextCodec>
+#include <QtCore/QDir>
+#include <QtCore/QString>
+#include <QtCore/QTextCodec>
 
 #include "bcbulmacont.h"
 #include "blapplication.h"
@@ -67,7 +67,7 @@ int main ( int argc, char **argv )
 
       /// Inicializa el sistema de traducciones 'gettext'.
       setlocale(LC_ALL, "");
-      blBindTextDomain ("bulmacont", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
+      blBindTextDomain ("bulmacont", g_confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
       blTextDomain ("bulmacont");
 
       /// Iniciamos la clase QApplication para el uso de las Qt.
@@ -80,7 +80,7 @@ int main ( int argc, char **argv )
       QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
       QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+      g_theApp->setFont ( QFont ( g_confpr->value( CONF_FONTFAMILY_BULMAGES ).toLatin1().constData(), atoi ( g_confpr->value( CONF_FONTSIZE_BULMAGES ).toLatin1().constData() ) ) );
 
       /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
       argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
@@ -130,7 +130,7 @@ int main ( int argc, char **argv )
       delete argParser;
 
       /// Verifica la version de la base de datos para funcionar adecuadamente.
-      bges->company()->dbVersionCheck("DatabaseRevision", "0.14.1-0001");
+      bges->company()->dbVersionCheck("DatabaseRevision", "0.15.0-0001");
 
 
       splashScr->show();
@@ -142,7 +142,7 @@ int main ( int argc, char **argv )
       QDir archivoConf;
       if ( !archivoConf.exists ( confGlobalEsp ) ) {
          QString mensaje = "-->" + _("El archivo '") + confGlobalEsp + _("' no existe. <--\n");
-         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+         fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
       } else {
          g_confpr->readConfig ( confGlobalEsp );
       } // end if
@@ -150,7 +150,7 @@ int main ( int argc, char **argv )
       QString confLocalEsp = g_confpr->getLocalDir() + QString("bulmacont_") + bges->company()->dbName() + ".conf";
       if ( !archivoConf.exists ( confLocalEsp ) ) {
           QString mensaje = "-->" + _("El archivo '") + confLocalEsp + _("' no existe. <--\n");
-          fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+          fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
       } else {
           g_confpr->readConfig ( confLocalEsp );
       } // end if

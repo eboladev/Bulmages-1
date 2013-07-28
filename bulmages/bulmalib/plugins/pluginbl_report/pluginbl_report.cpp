@@ -20,17 +20,17 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QProcess>
-#include <QTextStream>
-#include <QMenu>
-#include <QMenuBar>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtCore/QObject>
+#include <QtCore/QProcess>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 
 #include "local_blI18n.h"
 #include "pluginbl_report.h"
@@ -75,13 +75,13 @@ void PluginBl_Report::elslot2( )
     
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
 	QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + sender()->objectName() + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
-	system ( comando.toAscii().data() );
+	system ( comando.toLatin1().data() );
     } else if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 	QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + sender()->objectName() + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
-	system ( comando.toAscii().data() );
-    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER) != "None") {
-		blRawPrint( sender()->objectName(), TRUE, g_confpr->value( CONF_TICKET_PRINTER_FILE));
-    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	system ( comando.toLatin1().data() );
+    } else if (!g_confpr->value(CONF_CUPS_TICKET_PRINTER).isEmpty() && g_confpr->value(CONF_CUPS_TICKET_PRINTER).toLower() != "none") {
+		blRawPrint( sender()->objectName(), true, g_confpr->value( CONF_TICKET_PRINTER_FILE));
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).toLower() == "none") {
 	blMsgError(_("Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon."));
     } else {
 		blRawPrint( sender()->objectName());
@@ -95,7 +95,7 @@ void PluginBl_Report::elslot2( )
 void PluginBl_Report::elslot1( )
 {
     BL_FUNC_DEBUG
-
+    
     BlForm *ficha = new BlForm ( g_pluginbl_report_emp, 0 );
     if ( !ficha->generateRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
@@ -115,7 +115,7 @@ int init (  )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_report", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_report", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     PluginBl_Report *mcont = new PluginBl_Report;
 
@@ -150,14 +150,14 @@ int init (  )
         /// Buscamos el titulo
         QString titulo = fileInfo.fileName();
         QRegExp rx3 ( " title\\s*=\\s*\"(.*)\"" );
-        rx3.setMinimal ( TRUE );
+        rx3.setMinimal ( true );
         if ( rx3.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx3.cap ( 1 );
         } // end while
 
         QString pathtitulo = fileInfo.fileName();
         QRegExp rx1 ( "pathtitle\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
+        rx1.setMinimal ( true );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             pathtitulo = rx1.cap ( 1 );
         } else {
@@ -167,7 +167,7 @@ int init (  )
         /// Buscamos el icono
         QString icon = ":/Images/template2rml.png";
         QRegExp rx6 ( " icon\\s*=\\s*\"(.*)\"" );
-        rx6.setMinimal ( TRUE );
+        rx6.setMinimal ( true );
         if ( rx6.indexIn ( buff, 0 )  != -1 ) {
             icon = rx6.cap ( 1 );
         } // end while
@@ -180,10 +180,10 @@ int init (  )
 
 	if (path.size() > 1) {
 		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
-		    bool encontrado = FALSE;
+		    bool encontrado = false;
 		    for (int j = 0; j < allPButtons.size(); ++j) {
 			if (allPButtons.at(j)->title() == path[0]) {
-			    encontrado = TRUE;
+			    encontrado = true;
 			    menu = allPButtons.at(j);
 			} // end if
 		    } // end for
@@ -207,10 +207,10 @@ int init (  )
 
 	for (int i = 1; i < path.size()-1; ++i) {
 	    QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
-	    bool encontrado = FALSE;
+	    bool encontrado = false;
 	    for (int j = 0; j < allPButtons.size(); ++j) {
 		if (allPButtons.at(j)->title() == path[i]) {
-		    encontrado = TRUE;
+		    encontrado = true;
 		    menu = allPButtons.at(j);
 		} // end if
 	    } // end for
@@ -229,7 +229,7 @@ int init (  )
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
+        QObject::connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
         menu->addAction ( accion );
     } // end for
 
@@ -278,14 +278,14 @@ int init1 (  )
         /// Buscamos el titulo
         QString titulo = fileInfo.fileName();
         QRegExp rx3 ( " title\\s*=\\s*\"(.*)\"" );
-        rx3.setMinimal ( TRUE );
+        rx3.setMinimal ( true );
         if ( rx3.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx3.cap ( 1 );
         } // end while
 
         QString pathtitulo = fileInfo.fileName();
         QRegExp rx1 ( "pathtitle\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
+        rx1.setMinimal ( true );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             pathtitulo = rx1.cap ( 1 );
         } else {
@@ -295,7 +295,7 @@ int init1 (  )
         /// Buscamos el icono
         QString icon = ":/Images/template2rml.png";
         QRegExp rx6 ( " icon\\s*=\\s*\"(.*)\"" );
-        rx6.setMinimal ( TRUE );
+        rx6.setMinimal ( true );
         if ( rx6.indexIn ( buff, 0 )  != -1 ) {
             icon = rx6.cap ( 1 );
         } // end while
@@ -308,10 +308,10 @@ int init1 (  )
 
 	if (path.size() > 1) {
 		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
-		    bool encontrado = FALSE;
+		    bool encontrado = false;
 		    for (int j = 0; j < allPButtons.size(); ++j) {
 			if (allPButtons.at(j)->title() == path[0]) {
-			    encontrado = TRUE;
+			    encontrado = true;
 			    menu = allPButtons.at(j);
 			} // end if
 		    } // end for
@@ -335,10 +335,10 @@ int init1 (  )
 
 	for (int i = 1; i < path.size()-1; ++i) {
 	    QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
-	    bool encontrado = FALSE;
+	    bool encontrado = false;
 	    for (int j = 0; j < allPButtons.size(); ++j) {
 		if (allPButtons.at(j)->title() == path[i]) {
-		    encontrado = TRUE;
+		    encontrado = true;
 		    menu = allPButtons.at(j);
 		} // end if
 	    } // end for
@@ -357,7 +357,7 @@ int init1 (  )
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
-        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot2() ) );
+        mcont->connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot2() ) );
         menu->addAction ( accion );
     } // end for
 

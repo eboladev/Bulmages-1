@@ -22,8 +22,6 @@
 #ifndef BLDBSUBFORM_H
 #define BLDBSUBFORM_H
 
-#include <Qt>
-
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
 #include "bltablewidget.h"

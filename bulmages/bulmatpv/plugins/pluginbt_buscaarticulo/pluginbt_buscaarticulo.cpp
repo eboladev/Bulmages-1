@@ -20,7 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#include <QtWidgets/QDockWidget>
 
 #include "pluginbt_buscaarticulo.h"
 #include "btcompany.h"
@@ -50,7 +50,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_buscaarticulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_buscaarticulo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     g_pluginbt_buscaarticulo_emp = tpv->company();
 

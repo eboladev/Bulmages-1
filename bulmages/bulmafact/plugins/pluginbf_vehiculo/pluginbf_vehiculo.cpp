@@ -20,11 +20,11 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QLineEdit>
-#include <QTabWidget>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTabWidget>
 
 #include "bfcompany.h"
 #include "pluginbf_vehiculo.h"
@@ -79,7 +79,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( _("&Nuevo vehiculo"), 0 );
     accion->setStatusTip ( _("Vehiculos") );
     accion->setWhatsThis ( _("Vehiculos") );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    connect ( accion, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->addMenu ( pPluginMenu );
@@ -101,7 +101,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_vehiculo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_vehiculo", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );

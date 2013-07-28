@@ -40,7 +40,7 @@ Incompatibles:
 
 Reports: listado_ticket.rml
 
-Categorias: IVA incluido; Colmados;
+Categorias: IVA incluido;Colmados; Ferreterías; Droguerías;Talleres;Restauración; Parques Infantiles; Tallas y Colores; Supermercados;
 
 Orden: 622
 

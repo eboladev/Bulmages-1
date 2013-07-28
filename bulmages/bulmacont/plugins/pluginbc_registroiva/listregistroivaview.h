@@ -31,8 +31,8 @@
 #ifndef LISTREGISTROIVAVIEW_H
 #define LISTREGISTROIVAVIEW_H
 
-#include <QWidget>
-#include <QLineEdit>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
 
 #include "ui_listregistroivabase.h"
 #include "bccompany.h"

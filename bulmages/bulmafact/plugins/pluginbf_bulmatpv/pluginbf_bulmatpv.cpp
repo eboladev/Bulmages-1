@@ -20,11 +20,11 @@
 
 #include <stdio.h>
 
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QLineEdit>
-#include <QTabWidget>
+#include <QtWidgets/QAction>
+#include <QtCore/QObject>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTabWidget>
 
 #include "bfcompany.h"
 #include "pluginbf_bulmatpv.h"
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_bulmatpv", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_bulmatpv", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Miramos si existe un menu Ventas
     QMenu *pPluginMenu = NULL;
@@ -136,9 +136,9 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
 	QString estado;
 	
 	if ( famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->checkState() == Qt::Checked ) {
-	  estado = "TRUE";
+	  estado = "true";
 	} else {
-	  estado = "FALSE";	  
+	  estado = "false";	  
 	} // end if
       
 	query = "UPDATE familia SET visibletpvfamilia = '" + estado + "', ordentpvfamilia = '" + famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->text() + "', colortpvfamilia = '" + famv->findChild<QLineEdit *>("mui_colortpvfamilia")->text() + "'" + " WHERE idfamilia = " + famv->idFamiliaModified();
@@ -167,19 +167,19 @@ int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
     BlDbRecordSet *rec2;
 
     if ( famv->idFamilia().isEmpty() ) {
-      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(FALSE);
-      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(FALSE);
-      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(FALSE);
-      famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(FALSE);
+      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(false);
+      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(false);
+      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(false);
+      famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(false);
       famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setCheckState(Qt::Checked);
       famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setText("");
       famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setText("");
 
     } else {
-      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(TRUE);
-      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(TRUE);
-      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(TRUE);
-      famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(TRUE);
+      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(true);
+      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(true);
+      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(true);
+      famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(true);
       
       famv->mainCompany()->begin();  
     

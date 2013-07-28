@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QFile>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QComboBox>
-#include <QTextStream>
-#include <QMenu>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QFile>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QTextStream>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QFileDialog>
 
 #include "articulolisttpv.h"
 #include "blimportexport.h"
@@ -51,7 +51,7 @@
 \param editmodo
 \return
 **/
-ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WindowFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     BL_FUNC_DEBUG
@@ -261,9 +261,9 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
     addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion tipo de I.V.A." ) );
     addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "P.V.P. articulo" ) );
     addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Disponible en stock" ) );
-    setInsert ( FALSE );
-    setDelete ( FALSE );
-    setSortingEnabled ( TRUE );
+    setInsert ( false );
+    setDelete ( false );
+    setSortingEnabled ( true );
     /// Disparamos los plugins.
     g_plugins->run ( "ArticuloList1SubForm1_ArticuloList1SubForm1_Post", this );
     

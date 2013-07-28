@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QEvent>
 
 #include "bfproveedoralbaransubform.h"
 #include "blfunctions.h"
@@ -57,9 +57,9 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
     addSubFormHeader ( "descuentolalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _ ( "Id albaran" ) );
     addSubFormHeader ( "ordenlalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, _ ( "Orden" ) );
-    setInsert ( TRUE );
-    setDelete ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setInsert ( true );
+    setDelete ( true );
+    setOrdenEnabled ( true );
     /// Disparamos los plugins.
     g_plugins->run ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm_Post", this );
     

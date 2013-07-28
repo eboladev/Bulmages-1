@@ -22,7 +22,7 @@
 #ifndef JDIRECTIVALIST_H
 #define JDIRECTIVALIST_H
 
-#include <QLineEdit>
+#include <QtWidgets/QLineEdit>
 
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -58,8 +58,8 @@ private:
     QString mdb_idjdirectiva;
 
 public:
-    JDirectivaList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    JDirectivaList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    JDirectivaList ( QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    JDirectivaList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WindowFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~JDirectivaList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

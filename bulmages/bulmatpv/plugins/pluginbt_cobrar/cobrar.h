@@ -1,7 +1,7 @@
 #ifndef COBRAR_H
 #define COBRAR_H
 
-#include <QTableWidget>
+#include <QtWidgets/QTableWidget>
 
 #include "blwidget.h"
 #include "ui_cobrarbase.h"

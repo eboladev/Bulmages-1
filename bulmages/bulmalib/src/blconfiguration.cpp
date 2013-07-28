@@ -25,7 +25,7 @@
 /// (sin demasiados problemas cual es la configuracion que le corresponde).
 
 #include "QTextStream"
-#include <QDir>
+#include <QtCore/QDir>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -38,6 +38,7 @@
 #include "blconfiguration.h"
 #include "blcompanydialog.h"
 
+#define isSet(i) (m_valores.contains ( i ))
 
 /// El objeto global g_confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
@@ -51,7 +52,7 @@ void initConfiguration ( QString config )
     BlConfiguration *confpr = new BlConfiguration ( config );
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    blBindTextDomain ("bulmalib", confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
+    blBindTextDomain ("bulmalib", confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
     blTextDomain ("bulmalib");
     g_confpr = confpr;
 }
@@ -120,68 +121,78 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     /// Comprobamos la existencia de los directorios y archivos de configuracion.
     /// Directorios y archivos obligatorios (sale si no existe):
     if ( !dirGlobalConf.exists() ) {
-        mensaje = "--> ERROR: El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        blMsgError("El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo");
         exit ( -1 );
     } else {
         if ( !genericGlobalConfFile.exists ( m_dirGlobalConf + m_genericGlobalConfFile ) ) {
-            mensaje = "--> ERROR: El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+	    blMsgError("El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo.");
             exit ( -1 );
         } else {
             /// 1) Leemos la configuracion del archivo generico global.
+#ifdef CONFIG_DEBUG
             mensaje = "--> Leyendo el archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "'<--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
             readConfig ( m_dirGlobalConf + m_genericGlobalConfFile );
         }// end if
     } // end if
 
     /// Directorios y archivos opcionales:
     if ( !programGlobalConfFile.exists ( m_dirGlobalConf + m_programGlobalConfFile ) ) {
+#ifdef CONFIG_DEBUG
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
     } else {
         /// 2) Leemos la configuracion del archivo especifico global.
+#ifdef CONFIG_DEBUG
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
         readConfig ( m_dirGlobalConf + m_programGlobalConfFile );
     }// end if
 
     /// Comprobamos si el usuario tiene creado el directorio de configuracion en su carpeta de usuario directorio
     /// de configuracion.
     if ( !dirGlobalConf.exists ( m_dirLocalConf ) ) {
-        if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == TRUE ) {
+        if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == true ) {
+#ifdef CONFIG_DEBUG
             mensaje = "--> Se ha creado el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
         } else {
-            mensaje = "--> ERROR: No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+	    blMsgError( "No se ha podido crear el directorio '" + m_dirLocalConf + "'.");
             exit ( -1 );
         }// end if
     } // end if
 
     if ( !genericLocalConfFile.exists ( m_dirLocalConf + m_genericLocalConfFile ) ) {
+#ifdef CONFIG_DEBUG
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
     } else {
         /// 3) Leemos la configuracion del archivo generico local.
+#ifdef CONFIG_DEBUG
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
         readConfig ( m_dirLocalConf + m_genericLocalConfFile );
     }// end if
 
     if ( !programLocalConfFile.exists ( m_dirLocalConf + m_programLocalConfFile ) ) {
+#ifdef CONFIG_DEBUG
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
     } else {
         /// 4) Leemos la configuracion del archivo especifico local.
+#ifdef CONFIG_DEBUG
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        fprintf ( stderr, "%s", mensaje.toLatin1().constData() );
+#endif
         readConfig ( m_dirLocalConf + m_programLocalConfFile );
     }// end if
-
-   
-    fprintf ( stderr, "Configuraciones cargadas");
 }
 
 
@@ -257,6 +268,8 @@ QString BlConfiguration::name( int i )
         return "CONF_SERVIDOR";
     if ( i == CONF_PUERTO )
         return "CONF_PUERTO";
+    if ( i == CONF_DBNAME )
+       return "CONF_DBNAME";
     if ( i == CONF_SPOOL )
         return "CONF_SPOOL";
     if ( i == CONF_FLIP )
@@ -469,11 +482,28 @@ QString BlConfiguration::name( int i )
        return "CONF_USE_QSCRIPT";
     if ( i == CONF_PRECALC_CODARTICULO )
        return "CONF_PRECALC_CODARTICULO";
+    if ( i == CONF_CONT_NUMDIGITOSEMPRESA )
+       return "CONF_CONT_NUMDIGITOSEMPRESA";
+    if ( i == CONF_CONT_CTA_CLIENTES )
+       return "CONF_CONT_CTA_CLIENTES";
+    if ( i == CONF_CONT_CTA_PROVEEDORES )
+       return "CONF_CONT_CTA_PROVEEDORES";
+    if ( i == CONF_CONT_CTA_VENTAPRODUCTO )
+       return "CONF_CONT_CTA_VENTAPRODUCTO";
+    if ( i == CONF_CONT_CTA_COMPRAPRODUCTO )
+       return "CONF_CONT_CTA_COMPRAPRODUCTO";
+    if ( i == CONF_CONT_CTA_FPAGO )
+       return "CONF_CONT_CTA_FPAGO";
+    if ( i == CONF_SYNC )
+       return "CONF_SYNC";
+    if ( i == CONF_URL_SYNC )
+       return "CONF_URL_SYNC";
+    if ( i == CONF_LOGIN_USER )
+       return "CONF_LOGIN_USER";
+    if ( i == CONF_PASSWORD_USER )
+       return "CONF_PASSWORD_USER";
     return "";
 }
-
-
-
 
 
 /// This method writes the configuration of the system to the home bulmages.conf file
@@ -492,9 +522,9 @@ void BlConfiguration::saveConfig()
     QTextStream filestr ( &file );
     for ( int i = 0; i < 1000; i++ ) {
         if ( name( i ) != "" ) {
-            filestr << name( i ).toAscii().data();
+            filestr << name( i ).toLatin1().data();
             filestr << "   ";
-            filestr << value( i ).toAscii().data();
+            filestr << value( i ).toLatin1().data();
             filestr << endl;
         } // end if
     } // end for
@@ -513,9 +543,10 @@ bool BlConfiguration::readConfig ( QString fich )
 {
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
+#ifdef CONFIG_DEBUG
         QString cadaux1 = "Leyendo configuracion: '" + fich + "'\n";
-        fprintf ( stderr, "%s", cadaux1.toAscii().constData() );
-        fprintf ( stderr, "%s", "\n" );
+        fprintf ( stderr, "%s\n", cadaux1.toLatin1().constData() );
+#endif
         QTextStream in ( &arch );
         
         // Esto es necesario para que se lean bien los caracteres especiales
@@ -549,10 +580,38 @@ bool BlConfiguration::readConfig ( QString fich )
             } // end for
         } // end while
         arch.close();
+
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "%s", "FIN Leyendo configuracion\n" );
-        return TRUE;
+#endif
+        return true;
     } // end if
-    return FALSE;
+    return false;
+}
+
+
+/// Devuelve el valor de un campo determinado.
+/**
+\param i Par&aacute;metro del que se quiere el valor.
+\return El valor que tiene dicho par&aacute;metro.
+**/
+bool BlConfiguration::valueTrue( int i )
+{
+    if ( m_valores.contains ( i ) ) {
+    
+	/// Si el valor incluye una variable de substitucion y esta existe se realiza.
+	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
+	QString valor = m_valores[i];
+	
+	if (i != CONF_REPLACE_STRING && isSet ( CONF_REPLACE_STRING) )
+	    valor.replace("${CONF_REPLACE_STRING}", value(CONF_REPLACE_STRING));
+    
+        return ( valor.toLower() == "true" || valor.toLower() == "t" || valor == "1" || valor.toLower() == "yes" || valor.toLower() == "y");
+    } // end if
+#ifdef CONFIG_DEBUG
+    fprintf ( stderr, "BlConfiguration : %s %s\n", "Busqueda de valor sin establecer\n", name(i).toLatin1().constData() );
+#endif
+    return false;
 }
 
 
@@ -569,11 +628,14 @@ QString BlConfiguration::value( int i )
 	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
 	QString valor = m_valores[i];
 	
-	if (i != CONF_REPLACE_STRING)
+	if (i != CONF_REPLACE_STRING  && isSet ( CONF_REPLACE_STRING))
 	    valor.replace("${CONF_REPLACE_STRING}", value(CONF_REPLACE_STRING));
     
         return ( valor );
     } // end if
+#ifdef CONFIG_DEBUG
+    fprintf ( stderr, "BlConfiguration : %s %s\n", "Busqueda de valor sin establecer\n", name(i).toLatin1().constData() );
+#endif
     return "";
 }
 

@@ -16,11 +16,11 @@
 
 #include <stdio.h>
 
-#include <QDateTime>
-#include <QTextStream>
-#include <QObject>
-#include <QString>
-#include <QMessageBox>
+#include <QtCore/QDateTime>
+#include <QtCore/QTextStream>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtWidgets/QMessageBox>
 #include <QXmlDefaultHandler>
 
 #include "blapplication.h"
@@ -252,7 +252,7 @@ void BlImportExport::setFFinal ( QString f )
 void BlImportExport::setModoTest()
 {
     BL_FUNC_DEBUG
-    m_modoTest = TRUE;
+    m_modoTest = true;
     
 }
 
@@ -263,7 +263,7 @@ void BlImportExport::setModoTest()
 void BlImportExport::setModoNormal()
 {
     BL_FUNC_DEBUG
-    m_modoTest = FALSE;
+    m_modoTest = false;
     
 }
 
@@ -276,7 +276,7 @@ bool BlImportExport::modoTest()
 {
     BL_FUNC_DEBUG
     
-    return ( m_modoTest == TRUE );
+    return ( m_modoTest == true );
 }
 
 ///
@@ -472,7 +472,7 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
             if ( !cod.isEmpty() ) {
                 QString padre = searchParent ( cod );
                 QString idgrupo = cod.left ( 1 );
-                query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'" + cod + "', '" + titulo + "', '" + nif + "', " + padre + ", 'importada de ContaPlus','" + domicilio + poblacion + provincia + codpostal + "','','','','','')";
+                query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (true, true, 1,'" + cod + "', '" + titulo + "', '" + nif + "', " + padre + ", 'importada de ContaPlus','" + domicilio + poblacion + provincia + codpostal + "','','','','','')";
                 dbConnection->begin();
                 int error = dbConnection->runQuery ( query );
                 if ( error ) {
@@ -1470,7 +1470,7 @@ int BlImportExport::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
 int BlImportExport::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
 {
     BL_FUNC_DEBUG
-    bool noerror = TRUE;
+    bool noerror = true;
     ImportBulmaFact handler ( this, dbConnection, tip );
     QXmlInputSource source ( &fichero );
     QXmlSimpleReader reader;
@@ -1499,7 +1499,7 @@ StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
     QString query = "INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX', 'Una descripcion auxiliar de cuenta')";
     dbConnection->runQuery ( query );
     for ( int i = 0; i <= 12; i++ ) {
-        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, " + QString::number ( i ) + ", FALSE)";
+        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ("+QString::number(QDate::currentDate().year())+", " + QString::number ( i ) + ", false)";
         dbConnection->runQuery ( query2 );
     } // end for
     dbConnection->commit();
@@ -1527,7 +1527,7 @@ bool StructureParser::startDocument()
     BL_FUNC_DEBUG
     indent = "";
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1596,7 +1596,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
     } // end if
     cadintermedia = "";
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1745,7 +1745,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
         m_baseIva = cadintermedia;
     cadintermedia = "";
     
-    return TRUE;
+    return true;
 }
 
 ///
@@ -1758,7 +1758,7 @@ bool StructureParser::characters ( const QString& n1 )
     BL_FUNC_DEBUG
     cadintermedia += n1;
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1798,7 +1798,7 @@ bool ImportBulmaFact::startDocument()
     BL_FUNC_DEBUG
     indent = "";
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1811,7 +1811,7 @@ bool ImportBulmaFact::startElement ( const QString&, const QString&, const QStri
     BL_FUNC_DEBUG
     cadintermedia = "";
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1825,7 +1825,9 @@ bool ImportBulmaFact::endElement ( const QString&, const QString&, const QString
     BL_FUNC_DEBUG
     valores[qName] = cadintermedia;
     cadintermedia = "";
-    fprintf ( stderr, "Tag de Cierre: %s\n", qName.toAscii().data() );
+#ifdef CONFIG_DEBUG
+    fprintf ( stderr, "Tag de Cierre: %s\n", qName.toLatin1().data() );
+#endif
     if ( qName == "CLIENTE" )
         trataCliente();
     if ( qName == "PROVEEDOR" )
@@ -1863,7 +1865,7 @@ bool ImportBulmaFact::endElement ( const QString&, const QString&, const QString
     if ( qName == "DPEDIDOCLIENTE" )
         trataDPedidoCliente();
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1880,7 +1882,7 @@ bool ImportBulmaFact::characters ( const QString& n1 )
         val = "";
     cadintermedia += val;
     
-    return TRUE;
+    return true;
 }
 
 
@@ -1890,14 +1892,14 @@ bool ImportBulmaFact::characters ( const QString& n1 )
 void ImportBulmaFact::printcontents()
 {
     BL_FUNC_DEBUG
-    fprintf ( stderr, "Impresion de contenidos\n" );
     tvalores::Iterator it;
     for ( it = valores.begin(); it != valores.end(); ++it ) {
+#ifdef CONFIG_DEBUG
         fprintf ( stderr, "Valores encontrados clave: %s Valor:%s\n",
-                  it.key().toAscii().data(),
-                  it.value().toAscii().data() );
+                  it.key().toLatin1().data(),
+                  it.value().toLatin1().data() );
+#endif
     } // end for
-    fprintf ( stderr, "Fin de impresion de contenidos\n" );
     
 }
 

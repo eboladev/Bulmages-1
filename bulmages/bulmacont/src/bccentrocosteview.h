@@ -22,10 +22,10 @@
 #ifndef BCCENTROCOSTEVIEW_H
 #define BCCENTROCOSTEVIEW_H
 
-#include <QWidget>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QCloseEvent>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QCloseEvent>
 
 #include "ui_bccentrocostebase.h"
 #include "blpostgresqlclient.h"

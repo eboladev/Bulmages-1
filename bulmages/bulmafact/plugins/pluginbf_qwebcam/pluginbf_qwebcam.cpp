@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "pluginbf_qwebcamp.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
@@ -53,7 +53,7 @@ void myplugin1::inicializa(bulmafact *bges) {
     planCuentas->setWhatsThis("QWebCams");
     bges->menuArticulos->addSeparator();
     bges->menuArticulos->addAction(planCuentas);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+    connect(planCuentas, SIGNAL(triggered(bool)), this, SLOT(elslot()));
 }
 
 
@@ -70,7 +70,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_qwebcam", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_qwebcam", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
 //    myplugin1 *plug = new myplugin1();
 //    plug->inicializa(bges);

@@ -25,9 +25,9 @@
 #ifndef PROMOCIONARCURSO_H
 #define PROMOCIONARCURSO_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"

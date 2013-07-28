@@ -21,8 +21,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "QWidget"
-#include "QWindowsStyle"
+#include "QtWidgets/QWidget"
 
 #include "btwindowsstyle.h"
 
@@ -42,7 +41,7 @@ int BtWindowsStyle::pixelMetric( PixelMetric pm, const QStyleOption * opt, const
     {
        return 35;
     }
-    return  QWindowsStyle::pixelMetric( pm, 0, widget );
+    return  QProxyStyle::pixelMetric( pm, 0, widget );
 
 }
 

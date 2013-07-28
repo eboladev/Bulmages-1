@@ -36,7 +36,7 @@ Orden: 450
 
 Reports: 
 
-Categorias: Facturacion avanzada;Experimentales;
+Categorias: Facturacion avanzada;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;
 
 Comentarios:
 

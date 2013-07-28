@@ -20,11 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QProcess>
-
-#ifndef Q_OS_WIN32
-#include <QX11EmbedContainer>
-#endif
+#include <QtCore/QProcess>
 
 #include "pluginbt_accesobotones.h"
 #include "btcompany.h"
@@ -48,7 +44,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginabrevs", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginabrevs", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( _("Abreviaturas"), tpv, "abrevsdock" );

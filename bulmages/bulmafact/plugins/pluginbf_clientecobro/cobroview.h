@@ -22,9 +22,9 @@
 #ifndef COBROVIEW_H
 #define COBROVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QCheckBox>
 
 #include "ui_cobrobase.h"
 #include "blpostgresqlclient.h"
@@ -53,6 +53,7 @@ public:
     virtual int parseTags ( QString &buff );
     virtual QString templateName(void) ;
     virtual int afterSave();
+    virtual void pintarPost();
 };
 
 #endif

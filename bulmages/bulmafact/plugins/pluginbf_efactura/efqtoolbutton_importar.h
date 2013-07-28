@@ -21,12 +21,12 @@
 // #ifndef EFQTOOLBUTTON_IMPORTAR_H
 // #define EFQTOOLBUTTON_IMPORTAR_H
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QToolButton>
+#include <QtCore/QString>
 #include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 
 #include "bfcompany.h"
 #include "blfunctions.h"

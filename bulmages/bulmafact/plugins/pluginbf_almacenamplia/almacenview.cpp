@@ -20,10 +20,10 @@
 
 #include <fstream>
 
-#include <QMessageBox>
-#include <QCloseEvent>
-#include <QFile>
-#include <QTextStream>
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QCloseEvent>
+#include "blfile.h"
+#include <QtCore/QTextStream>
 
 #include "almacenview.h"
 #include "bfcompany.h"
@@ -71,7 +71,7 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         mui_tipoalmacen_a->setFieldValue ( "Almacen" );
 
         dialogChanges_readValues();
-        insertWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen." ) );
