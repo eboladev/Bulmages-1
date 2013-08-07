@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlarmaBase</class>
+ <widget class="QWidget" name="AlarmaBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>641</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Importar CSV</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_boton_listado.32x32.png</normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_boton_listado.32x32.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Subject</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_subjectalarma"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Fecha</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="BlDateSearch" name="mui_fechaalarma"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Hora</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTimeEdit" name="mui_horaalarma"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Mensaje</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="mui_textoalarma"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
+        <string>Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QLineEdit</extends>
+   <header>bldatesearch.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local">local_blI18n.h</include>
+ </includes>
+ <resources>
+  <include location="../../../bulmages.qrc"/>
+ </resources>
+ <connections/>
+</ui>
