@@ -59,6 +59,8 @@ extern "C" PLUGINBF_CUENTA_EXPORT int FPagoView_FPagoView ( FPagoView * );
 extern "C" PLUGINBF_CUENTA_EXPORT int FPagoView_Guardar_Pre ( FPagoView * );
 extern "C" PLUGINBF_CUENTA_EXPORT int FPagoView_currentItemChanged_Post ( FPagoView * );
 
+extern "C" PLUGINBF_CUENTA_EXPORT int Plugin_open(BfCompany * );
+
 class SubForm_Cuenta : public QObject
 {
     Q_OBJECT

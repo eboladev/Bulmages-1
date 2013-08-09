@@ -24,16 +24,23 @@
 
 #include <QtWidgets/QMainWindow>
 #include "bldefs.h"
-
+#include "blworkspace.h"
+#include "blmaincompany.h"
 
 class BL_EXPORT BlMainWindow : public QMainWindow
 {
     Q_OBJECT
-
+protected:
+    /// El workSpace que se va a usar con la aplicacion.
+    BlWorkspace *pWorkspace;
+    /// El puntero el BlMainCompany para que se pueda usar esta superclase 
+    BlMainCompany *m_pcompany;
+    
 public:
     BlMainWindow ( QWidget * parent = 0, Qt::WindowFlags flags = 0 );
     ~BlMainWindow();
     QMenu *newMenu(const QString &name,const QString &objname, const QString &before="");
+    BlMainCompany *company();
 };
 
 

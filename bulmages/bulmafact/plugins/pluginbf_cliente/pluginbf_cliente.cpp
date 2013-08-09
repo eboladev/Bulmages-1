@@ -28,6 +28,7 @@
 
 
 
+
 ClientsList *g_clientesList = NULL;
 BfBulmaFact *g_pluginbf_cliente = NULL;
 
@@ -147,4 +148,38 @@ int SNewClienteView ( BfCompany *v )
     ClienteView *h = new ClienteView ( v, 0 );
     g_plugParams = h;
     return 1;
+}
+
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "cliente") {
+        ClienteView * bud = new ClienteView ( comp, NULL );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
+
+  } // end if
+  return 0;
+}
+
+
+
+int CorrectorWidget_corregir(BlWidget *corrector) {
+   BL_FUNC_DEBUG
+   QString query = "SELECT * FROM cliente";
+   BlDbRecordSet *cur = corrector->mainCompany()->loadQuery ( query );
+   while ( ! cur->eof() ) {
+       QChar digito;
+       if ( ! blValidateSpainCIFNIFCode ( cur->value( "cifcliente" ), digito ) ) {
+           QString cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ," + cur->value( "cifcliente" ) + " <B>" + cur->value( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString ( digito );
+//            agregarError ( cadena, "cliente", cur->value( "idcliente" ) );
+	   *(QString *) g_plugParams += cadena;
+       } // end if
+       cur->nextRecord();
+   } // end while
+   delete cur;
 }

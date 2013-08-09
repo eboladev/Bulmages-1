@@ -80,6 +80,8 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_company->setProgressBar ( m_pb );
     m_company->init ( bd, "BulmaFact" );
     m_company->setWorkspace ( pWorkspace );
+    /// Para que bulmalib pueda usar el BlMainCompany mantengo un puntero a el desde BlMainWindow
+    m_pcompany = m_company;
 
     connect ( pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
 

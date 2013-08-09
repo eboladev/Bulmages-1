@@ -37,7 +37,7 @@ extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_cargarPost_Post (Pr
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BlAction_actionTriggered(BlAction *);
 
-
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int Plugin_open(BfCompany * );
 
 #endif
 

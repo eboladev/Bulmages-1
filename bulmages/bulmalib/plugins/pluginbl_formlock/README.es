@@ -13,6 +13,8 @@ Descripción: <H1>Bloqueos</H1>
 ficha que esta intentando abrir ya esta siendo utilizada. El plugin permite ver la ficha aunque desabilita los botones de guardado, eliminación y de aceptar.</P>
 <P>Este plugin es importante en entornos multi-usuario ya que sin el se puede cometer facilmente un cambio que sea borrado por otro usuario.</P>
 <P>Este plugin mantiene una tabla de bloqueos en la que almacena la tabla de ficha, el identificador y el usuario que la ha abierto. Al destruir la ficha el plugin elimina la referencia correspondiente de la tabla de bloqueos.</P>
+<h2>Instalación</h2>
+<P>Este plugin no requiere de ninguna acción por parte del usuario para configurarlo. En la instalación manual debe aplicarse el parche que se proporciona a la base de datos a la que afecta.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>

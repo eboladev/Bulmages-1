@@ -42,5 +42,7 @@ extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int AlbaranProveedorView_AlbaranProveed
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int BlAction_actionTriggered(BlAction *);
 
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int Plugin_open(BfCompany * );
+
 #endif
 

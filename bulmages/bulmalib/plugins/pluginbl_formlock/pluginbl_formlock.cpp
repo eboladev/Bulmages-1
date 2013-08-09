@@ -45,7 +45,7 @@
 \param bcont
 \return
 **/
-int entryPoint ( QMainWindow *bges )
+int entryPoint ( BlMainWindow *bges )
 {
     BL_FUNC_DEBUG
 
@@ -53,13 +53,7 @@ int entryPoint ( QMainWindow *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_formlock", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
-    return ( 0 );
-}
-
-
-int BlMainCompany_init(BlMainCompany * main) {
-    BL_FUNC_DEBUG
-    main->dbPatchVersionCheck("PluginBl_FormLock", "0.11.1-0001");
+    bges->company()->dbPatchVersionCheck("PluginBl_FormLock", "0.11.1-0001");
     return 0;
 }
 

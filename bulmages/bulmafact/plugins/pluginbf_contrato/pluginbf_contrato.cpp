@@ -30,6 +30,7 @@
 #include "pluginbf_contrato.h"
 #include "blfunctions.h"
 #include "contratoslist.h"
+#include "contratoview.h"
 #include "blform.h"
 
 BfBulmaFact *g_pluginbf_contrato = NULL;
@@ -115,4 +116,21 @@ int BlForm_load ( BlForm *fich )
         return 0;
     } // end if
     return 0;
+}
+
+
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "actividad") {
+	ContratoView *bud = new ContratoView ( comp, 0 );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
+
+  } // end if
+  return 0;
 }

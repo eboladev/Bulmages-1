@@ -25,7 +25,6 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QtGui/QCloseEvent>
-#include "blfile.h"
 #include <QtCore/QTextStream>
 
 #include "emitirrecibosview.h"
@@ -33,6 +32,7 @@
 #include "blconfiguration.h"
 #include "bldatesearch.h"
 #include "blfunctions.h"
+#include "blfile.h"
 
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.

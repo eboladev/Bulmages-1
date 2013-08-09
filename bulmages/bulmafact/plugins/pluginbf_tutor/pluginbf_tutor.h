@@ -43,6 +43,8 @@ extern "C" PLUGINBF_TUTOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidg
 extern "C" PLUGINBF_TUTOR_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 extern "C" PLUGINBF_TUTOR_EXPORT int BlAction_actionTriggered(BlAction *);
 
+extern "C" PLUGINBF_TUTOR_EXPORT int Plugin_open(BfCompany * );
+
 class SubForm_Tutor : public QObject
 {
     Q_OBJECT

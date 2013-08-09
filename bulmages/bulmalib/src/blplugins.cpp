@@ -114,6 +114,12 @@ int BlPlugins::run ( const char *func, void *clase )
 {
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlPlugins::run", 0, func );
+    
+    if (m_plugins.size() == 0) {
+      blMsgInfo("Aun no se han cargado los plugins para la llamada " + QString(func));
+      return 0;
+    } // end if
+    
     int a = 0;
     QList<MyPrototype> funcAddressList;
     

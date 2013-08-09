@@ -9,7 +9,9 @@ Nombre: Recibos
 Biblioteca: libpluginbf_recibo.so
 
 Descripción: <H1>Recibos</H1>
-<P>Gestionar los recibos emitidos por la asociacion. Es bastante frecuente que una asociación emita recibos a sus socios. Mediante este plugin tenemos toda la funcionalidad de emitir y controlar el pago de los recibos a socios.</P>
+<P>Gestionar los recibos emitidos por la asociacion. Mediante este plugin tenemos toda la funcionalidad de emitir y controlar el pago de los recibos a socios.</P>
+<P>La plantilla de los recibos es <B>recibod.rml</B> que genera los documentos PDF de ésta</P>
+<P></P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

@@ -7,7 +7,7 @@ http://www.iglues.org
 ========================================
 #README.es
 
-BulmaGés 0.14.0 (Junio 2012)
+BulmaGés 1.5 (Mayo 2013)
 
 Contenido
 ---------
@@ -28,12 +28,10 @@ BulmaGés es una aplicación modular que pretende cubrir las necesidades de
 gestión empresarial de cualquier pequeña y mediana empresa dentro del entorno
 del software libre. Se identifican claramente cuatro áreas que en las que el
 software puede actuar: 
-a) Contabilidad - BulmaCont
-b) Facturación - BulmaFact
-c) Terminal Punto de Venta - BulmaTPV
+a) Gestión (Contabilidad, Facturación, Comerciales, Almacén) - BulmaFact
+b) Terminal Punto de Venta - BulmaTPV
 
-En la actualidad (Mayo 2009), la aplicación de contabilidad (BulmaCont), facturación 
-(BulmaFact) y el terminal Punto de Venta (BulmaTPV) ya son operativos.
+En la actualidad (Agosto 2013), todos los programas y módulos son operativos.
 
 Características
 ===============
@@ -48,31 +46,33 @@ diferentes distribuciones (CD) que facilita la asociación IGLUES.
 
 BulmaGés ofrece la máxima calidad de una completa herramienta de gestión
 integrada configurable para adaptarse a las necesidades de la empresa mediante
-un sistema de módulos y plugins en función del sector en el que se opere y el
+un sistema de módulos y plugins en función del sector empresarial en el que se opere y el
 tamaño de la organización.
 
 BulmaGés puede funcionar en múltiples plataformas. Los desarrolladores trabajan
 principalmente con GNU/Linux. También se puede utilizar en MacOSX y en
 MSWindows. Las limitaciones están en los requerimientos, más que en la
-suite. El aplicativo puede ser ejecutado en local y en remoto, sin límites de
-licencias, empresas o usuarios. 
+suite. El aplicativo puede ser ejecutado localmente o en remoto, sin límites de
+licencias, número de empresas o usuarios. 
 
 BulmaGés es una suite de software que incluye varios binarios, una biblioteca, 
-un programa de configuración, enlaze con base de datos, múltiples scripts, 
-múltiples plugins (pequeñas bibliotecas) y cierta documentación. Todo ello hace
-que sea un software complejo. 
+un programa de configuración, enlace con base de datos, múltiples scripts, 
+múltiples plugins (pequeñas bibliotecas) y documentación. Todo ello hace
+que sea un software complejo por su gran tamaño y cantidad de opciones.
 
 BulmaGés está desarrollado por diferentes personas que han colaborado en
 el proyecto, algunas activas actualmente y otras no. En general son personas en
 torno a la Asociación Iglues (www.iglues.org). 
 
 El ámbito de aplicación del programa es el de empresas, asociaciones o entidades
-que deseen llevar un sistema de gestión ya sea a nivel de contabilidad, o de 
-factuaración o de venta. El sistema de contabilidad es el hispano, teniendo
+que deseen utilizar un sistema de gestión ya sea a nivel de contabilidad, de 
+factuaración ,de venta u otros. El sistema de contabilidad es el hispano, teniendo
 incorporados los planes contables españoles. Ahora bien, el sistema de
 contabilidad (facturación) se puede adaptar a otros sistemas contables,
 únicamente cambiando el plan contable.
 
+En BulmaGés, es la modularidad, junto a un sistema sencillo de amplicación / adaptación 
+lo que proporciona la lógica de la empresa. Siendo un software altamente adaptable y económico.
 
 Requerimientos
 ==============
@@ -84,13 +84,13 @@ una base de datos, en concreto PostgreSql.
 
 Para compilar el código fuente se necesita:
 
-- biblioteca Qt, como mínimo 4.7 http://www.qtsoftware.com/downloads.
+- biblioteca Qt, como mínimo 5.0 http://www.qtsoftware.com/downloads.
 Esta es la biblioteca de los widgets, de la interfaz gráfica. 
 
-- python y pyqt4. python 2.4 y el "binding" pyqt4 acorde a la versión de Qt
+- python y pyqt4. python 2.7 y el "binding" pyqt4 acorde a la versión de Qt
 instalada. 
 
-- cmake, como mínimo versión 2.4.8 http://www.cmake.org/HTML/index.html. Es la
+- cmake, como mínimo versión 2.4.10 http://www.cmake.org/HTML/index.html. Es la
 herramienta de construcción del software.
 
 - libpq y postgresql. Se necesita como mínimo PostgreSql 8.1. Para poder
@@ -104,7 +104,7 @@ Para ejecutar todos los programas y plugins además existen componentes adiciona
 
 - python-reportlab para generar algunos informes.
 
-- python-ooolib y ooolib-perl para los plugins que generan documentos en formato openoffice
+- python-ooolib y ezodf para los plugins que generan documentos en formato openoffice
 
 
 Estructura de directorios
@@ -119,9 +119,6 @@ configuración y algunos widgets raros. Son las librerías principales de la sui
 - bulmages
 Contiene el lanzador del programa.
 
-- bulmacont
-Directorio del programa bulmacont.
- 
 - bulmasetup
 Directorio del programa bulmasetup, para realizar la configuración del programa.
 
@@ -151,15 +148,15 @@ Construir la suite
 
 Se puede obtener de varias manera el directorio con el código fuente de la
 suite. Sea descargandose el comprimido (tar.bz2, tar.gz, tgz, zip, etc) o
-haciendo un checkout del repositorio subversion: 
+haciendo un checkout del repositorio git: 
 
-svn checkout http://svn.berlios.de/svnroot/repos/bulmages/trunk/bulmages 
+git clone bulmages.gitorious.com
 
-Dentro del directorio hay que hacer:
+Para compilar directorio hay que crear un directorio de compilación (la compilación esta separada del fuente) :
 
 1) mkdir build
 2) cd build
-3) cmake ../
+3) cmake ../ (dependiendo de donde se cree el directorio se usara una ruta u otra)
 4) make
 
 Hasta aquí, si todos los requerimientos han sido completados, la suite debería

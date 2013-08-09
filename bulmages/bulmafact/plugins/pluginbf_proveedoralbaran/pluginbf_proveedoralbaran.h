@@ -39,6 +39,6 @@ extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int ProveedorView_cargarPost_Post (P
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BlAction_actionTriggered(BlAction *);
-
+extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int Plugin_open(BfCompany * );
 #endif
 

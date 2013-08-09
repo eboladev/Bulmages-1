@@ -58,3 +58,13 @@ QMenu *BlMainWindow::newMenu ( const QString &name, const QString &objname, cons
 }
 
 
+///
+/**
+\return
+**/
+BlMainCompany * BlMainWindow::company()
+{
+    BL_FUNC_DEBUG
+    
+    return m_pcompany;
+}

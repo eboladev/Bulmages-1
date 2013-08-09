@@ -235,13 +235,29 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 /// Sino que se llama desde multiples partes del sistema.
 int SNewFacturaView ( BfCompany *v )
 {
+  BL_FUNC_DEBUG
     FacturaView *h = new FacturaView ( v, 0 );
     g_plugParams = h;
     return 1;
 }
 
 
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "factura") {
+        FacturaView * bud = new FacturaView ( comp, NULL );
+        comp->m_pWorkspace->addSubWindow ( bud );
+        bud->inicializar();
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
 
+  } // end if
+  return 0;
+}
 
 
 

@@ -40,6 +40,6 @@ extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int ClienteView_cargarPost_Post (C
 extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BlAction_actionTriggered(BlAction *);
-
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int Plugin_open(BfCompany * );
 #endif
 

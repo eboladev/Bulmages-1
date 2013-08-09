@@ -16,6 +16,7 @@ add_subdirectory(pluginbl_logo)
 #add_subdirectory(pluginbl_backup)
 add_subdirectory(pluginbl_feeds)
 add_subdirectory(pluginbl_autoform)
+add_subdirectory(pluginbl_alarm)
 
 
 if(NOT WIN32)

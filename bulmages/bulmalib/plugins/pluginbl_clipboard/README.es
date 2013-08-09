@@ -9,8 +9,7 @@ Nombre: Pegar desde el portapapeles
 Biblioteca: libpluginbl_clipboard.so
 
 Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/png/i_xClipboard.png" WIDTH="100"/><BR>Pegar desde el portapapeles</H1>
-<P>Permite pegar desde una hoja de calculo en las
-facturas. Pega contenidos de forma rápida en la facturación.</P>
+<P>Pega contenidos de forma rápida en los subformularios.</P>
 
 <P>Es importante que la primera fila de la hoja de cálculo contenga los nombres de campo exactos en los que va a ser insertada la columna de datos. </P><BR>
 
@@ -28,6 +27,8 @@ nombres de las columnas en las opciones avanzadas de subformulario.</P>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/pluginbl_clipboard/pluginbl_clipboard3.png"/><BR>
 
 <P>Las hojas de calculo soportadas son OpenOffice, LibreOffice y KOffice. No se ha verificado su funcionamiento en otras hojas de cálculo.</P>
+<h2>Instalación</h2>
+<P>Este plugin no requiere de ninguna acción por parte del usuario adicionales para su correcto funcionamiento tanto si se instala manualmente como con BulmaSetup</P> 
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>

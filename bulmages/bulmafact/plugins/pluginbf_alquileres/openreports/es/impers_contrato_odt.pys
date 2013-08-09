@@ -129,27 +129,5 @@ for obj in paragraphs:
         nodo.text = nodo.text.replace("["+index+"]",object)
       if (nodo.tail):
         nodo.tail = nodo.tail.replace("["+index+"]",object)
-			  
-#    string1 = pp.xmlnode.text
-#    if (string1 <> None):
-#      pp.xmlnode.text = string1.replace("a","b")
-  
-#  print obj.plaintext()
-#  print str(obj.kind())
-#  if obj.plaintext() <> None:
-#      obj.text(obj.text())
 
-
-  #obj.text("hola")
-
-# Asi podemos reemplazar un paragrafo por otro.
-#  np = ezodf.Paragraph(" 23" + obj.plaintext())
-#  odt.body.replace(obj, np)
-
-
-#  obj.append_text("MEMUERO")
-
-  
-#odt.body.insert(3, ezodf.Paragraph('New first paragraph.'))
-  
 odt.saveas("impers_contrato_odt.odt")
