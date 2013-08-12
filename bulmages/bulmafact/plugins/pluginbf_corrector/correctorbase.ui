@@ -65,6 +65,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="mui_configurar">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="minimumSize">
         <size>
          <width>32</width>
@@ -117,10 +120,17 @@
     </layout>
    </item>
    <item>
-    <widget class="QTextBrowser" name="mui_browser"/>
+    <widget class="QWebView" name="mui_browser" native="true"/>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>qwebview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc"/>
  </resources>

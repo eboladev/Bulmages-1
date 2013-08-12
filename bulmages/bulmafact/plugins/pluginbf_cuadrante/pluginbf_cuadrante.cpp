@@ -54,16 +54,7 @@ int entryPoint ( BfBulmaFact *bges )
     g_pluginbf_cuadrante = bges;
 
     /// Creamos el men&uacute;.
-    QMenu *pPluginMenu;
-    
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _("&Herramientas"), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
-    } // end if
+    QMenu *pPluginMenu = bges->newMenu(_("&Herramientas"), "menuHerramientas", "menuAcerca_de");
 
     BlAction *accionA = new BlAction ( _("&Cuadrante Semanal"), 0 );
     accionA->setStatusTip ( _("Permite realizar Plannings Laborales") );

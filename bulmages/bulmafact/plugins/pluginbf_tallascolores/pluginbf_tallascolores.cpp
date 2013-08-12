@@ -54,19 +54,8 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "PluginBf_TallasColores", g_confpr->value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
 
+    QMenu *pPluginMenu = bges->newMenu(_("&Tallas y colores"), "menuTallasyColores", "menuAcerca_de");
 
-
-
-
-    QMenu *pPluginMenuTallasColores;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ("Tallas y colores");
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenuTallasColores ) {
-        pPluginMenuTallasColores = new QMenu ( _ ( "&Tallas y colores" ), bges->menuBar() );
-        pPluginMenuTallasColores->setObjectName ( QString::fromUtf8 ( "Tallas y colores" ) );
-    } // end if
     /// Creamos el men&uacute;.
 
     BlAction *accionA = new BlAction ( _ ( "&Tallas" ), 0 );
@@ -74,17 +63,14 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setWhatsThis ( _ ( "Tallas" ) );
     accionA->setObjectName("mui_actionTallas");    
     
-    pPluginMenuTallasColores->addAction ( accionA );
+    pPluginMenu->addAction ( accionA );
 
     BlAction *accionB = new BlAction ( _ ( "&Colores" ), 0 );
     accionB->setStatusTip ( _ ( "Colores" ) );
     accionB->setWhatsThis ( _ ( "Colores" ) );
     accionB->setObjectName("mui_actionColores");
 
-    pPluginMenuTallasColores->addAction ( accionB );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenuTallasColores );
+    pPluginMenu->addAction ( accionB );
 
     return 0;
 }

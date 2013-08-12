@@ -511,15 +511,52 @@ int Plugin_open(BfCompany * comp) {
   BL_FUNC_DEBUG
   QString cad = *((QString*)g_plugParams);
   QStringList args = cad.split("_");
-  if (args[0] == "actividad") {
+  if (args[0] == "proveedor") {
 	ProveedorView * bud = new ProveedorView ( comp, 0 );
         comp->m_pWorkspace->addSubWindow ( bud );
 	QString id =  args[1];
 	bud->load(id);
         bud->show();
-
-  } // end if
+  } // end if  
   return 0;
 }
 
 
+int CorrectorWidget_corregir(BlWidget *corrector) {
+   BL_FUNC_DEBUG
+   
+    /// En Windows no se soportan las rutas relativas para el HTML
+#ifdef Q_OS_WIN32
+	    QString cupath = QDir::currentPath().replace("program", "").replace(".bulmages","");
+	    QString src= g_confpr->value( CONF_PROGDATA).replace("..",cupath);
+#else
+	    QString src = g_confpr->value( CONF_PROGDATA);
+#endif
+	  
+    QString query = "SELECT * FROM proveedor WHERE coalesce(length(cifproveedor),0) < 6";
+    BlDbRecordSet *cur = corrector->mainCompany() ->loadQuery ( query );
+    while ( ! cur->eof() ) {
+
+           QString cadena = "<HR><table><tr><td colspan=2><img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->value( "nomproveedor" ) + "</B> no tiene CIF.</td></tr><tr><td><a name='masinfo' href='abredoc?op=masinfo&tabla=proveedor&id=" + cur->value( "idproveedor" ) + "'>+info</a></td><td></td></tr></table>";
+	   *(QString *) g_plugParams += cadena;
+	
+        cur->nextRecord();
+    } // end while
+    delete cur;
+	    
+	    
+    query = "SELECT * FROM proveedor";
+   cur = corrector->mainCompany()->loadQuery ( query );
+   while ( ! cur->eof() ) {
+       QChar digito;
+       if ( ! blValidateSpainCIFNIFCode ( cur->value( "cifproveedor" ), digito ) ) {
+           QString cadena = "<HR><table><tr><td colspan=2><img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor ," + cur->value( "cifproveedor" ) + " <B>" + cur->value( "nomproveedor" ) + "</B> tiene CIF invalido. Digito de Control:" + QString ( digito ) + "</td></tr><tr><td><a name='masinfo' href='abredoc?op=masinfo&tabla=proveedor&id=" + cur->value( "idproveedor" ) + "'>+info</a></td><td></td></tr></table>";
+	   *(QString *) g_plugParams += cadena;
+       } // end if
+       cur->nextRecord();
+   } // end while
+   delete cur;
+   
+
+   return 0;
+}

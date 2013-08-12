@@ -260,5 +260,27 @@ int Plugin_open(BfCompany * comp) {
 }
 
 
+int CorrectorWidget_corregir(BlWidget *corrector) {
+   BL_FUNC_DEBUG
+   
+    /// En Windows no se soportan las rutas relativas para el HTML
+#ifdef Q_OS_WIN32
+	    QString cupath = QDir::currentPath().replace("program", "").replace(".bulmages","");
+	    QString src= g_confpr->value( CONF_PROGDATA).replace("..",cupath);
+#else
+	    QString src = g_confpr->value( CONF_PROGDATA);
+#endif
+	  
+    QString query = "SELECT * from factura WHERE reffactura NOT IN (SELECT refalbaran FROM albaran)";
+    BlDbRecordSet *cur = corrector->mainCompany() ->loadQuery ( query );
+    while ( ! cur->eof() ) {
+           QString cadena = "<HR><table><tr><td colspan=2><img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La factura num. <B>" + cur->value( "numfactura" ) + "</B> No esta avalada por ningun albaran, esto puede ser causa de descontrol en el stock.</td></tr><tr><td><a name='masinfo' href='abredoc?op=masinfo&tabla=factura&id=" + cur->value( "idfactura" ) + "'>+info</a></td><td></td></tr></table>";
+	   *(QString *) g_plugParams += cadena;
+        cur->nextRecord();
+    } // end while
+    delete cur;
+   return 0;
+}
+
 
 

@@ -80,7 +80,14 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+if(WIN32)
+target_link_libraries(${plugin} bulmalib libbulmafact ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
+else(WIN32)
+target_link_libraries(${plugin} bulmalib libbulmafact)
+qt5_use_modules(${plugin} Widgets WebKit WebKitWidgets)
+endif(WIN32)
+
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)

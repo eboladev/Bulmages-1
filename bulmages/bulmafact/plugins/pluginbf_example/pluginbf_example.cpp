@@ -46,15 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// del programa para indicar que el plugin se ha cargado.
     bges->setWindowTitle ( _ ( "Prueba de plugin para BfBulmaFact." ) );
 
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Herramientas" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
-    } // end if
+    QMenu *pPluginMenu = bges->newMenu(_("&Herramientas"), "menuHerramientas", "menuAcerca_de");
    
     /// Creamos el men&uacute;.
     BlAction *accionA = new BlAction ( _ ( "&Prueba de plugin" ), 0 );
@@ -63,8 +55,6 @@ int entryPoint ( BfBulmaFact *bges )
     accionA->setObjectName("mui_actionExample");
     pPluginMenu->addAction ( accionA );
    
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
     return 0;
 }
 

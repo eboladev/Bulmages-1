@@ -59,8 +59,9 @@ int entryPoint ( BfBulmaFact *bcont )
     accionA->setStatusTip ( _ ( "Activa/desactiva el modo de depuracion" ) );
     accionA->setWhatsThis ( _ ( "Depuracion.\n\nActiva/desactiva el modo de depuracion" ) );
     accionA->setObjectName("mui_actionDebug");
-    bcont->menuVentana->addSeparator();
-    bcont->menuVentana->addAction ( accionA );
+    QMenu *pPluginMenu = bcont->newMenu(_("&Herramientas"), "menuHerramientas", "menuAcerca_de");
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accionA );
     
     return 0;
 }

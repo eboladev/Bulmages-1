@@ -131,9 +131,24 @@ void visoralarm::presentar() {
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( ! cur->eof() ) {
         if (cur->value("expirada") == "f") {
+	#ifdef Q_OS_WIN32
+	    QString cupath = QDir::currentPath().replace("program", "").replace(".bulmages","");
+	    QString src= g_confpr->value( CONF_PROGDATA).replace("..",cupath);
+	    cadena = "<img src='file:///" + src +"icons/chrono.png'>&nbsp;&nbsp;  <BR> " +cur->value( "fechaalarma" ) +" " + cur->value( "horaalarma" )  +" <br><b>" +cur->value( "subjectalarma" ) +"</b><BR>" + cur->value("textoalarma");
+	#else
 	    cadena = "<img src='file://" + g_confpr->value( CONF_PROGDATA ) +"icons/chrono.png'>&nbsp;&nbsp;  <BR> " +cur->value( "fechaalarma" ) +" " + cur->value( "horaalarma" )  +" <br><b>" +cur->value( "subjectalarma" ) +"</b><BR>" + cur->value("textoalarma");
+	#endif
+
 	} else {
-	    cadena = "<br><img src='file://" + g_confpr->value( CONF_PROGDATA ) +"icons/chrono.png'>&nbsp;&nbsp;  <BR> " +" <font color='red'>" + cur->value( "fechaalarma" )  + cur->value( "horaalarma" )  +" <br><b>" +cur->value( "subjectalarma" ) +"</b><BR>" + cur->value("textoalarma") + " </font>";
+	#ifdef Q_OS_WIN32
+	    QString cupath = QDir::currentPath().replace("program", "").replace(".bulmages","");
+	    QString src= g_confpr->value( CONF_PROGDATA).replace("..",cupath);
+	  cadena = "<br><img src='file:///" + src +"icons/chrono.png'>&nbsp;&nbsp;  <BR> " +" <font color='red'>" + cur->value( "fechaalarma" )  + cur->value( "horaalarma" )  +" <br><b>" +cur->value( "subjectalarma" ) +"</b><BR>" + cur->value("textoalarma") + " </font>";
+		
+	#else
+	  cadena = "<br><img src='file://" + g_confpr->value( CONF_PROGDATA ) +"icons/chrono.png'>&nbsp;&nbsp;  <BR> " +" <font color='red'>" + cur->value( "fechaalarma" )  + cur->value( "horaalarma" )  +" <br><b>" +cur->value( "subjectalarma" ) +"</b><BR>" + cur->value("textoalarma") + " </font>";
+	#endif
+
 	} // end if
         agregarError ( cadena, "alarma", cur->value( "idalarma" ) );
         cur->nextRecord();
