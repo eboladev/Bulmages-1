@@ -69,7 +69,7 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
                 i = i + 1
 
             self.proceso = QtCore.QProcess()
-            command = functions.as_postgres + 'dropdb ' + str(self.lista_empresas.item(i,1).text()) + functions.end_sql
+            command = functions.dropdb + str(self.lista_empresas.item(i,1).text()) + functions.end_sql
             self.proceso.start(command)
             self.proceso.waitForFinished(-1)
 

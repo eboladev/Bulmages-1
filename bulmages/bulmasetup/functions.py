@@ -118,6 +118,7 @@ if os.name == 'posix':
     psql2 = as_postgres2 + multios().search_executable("psql")
     pg_dump = multios().search_executable("pg_dump")
     createdb = as_postgres + "createdb" + ' -E UNICODE '
+    dropdb = as_postgres + "dropdb "
     createuser = as_postgres + "createuser"
 elif os.name=='nt':
     #Win XP
@@ -130,6 +131,7 @@ elif os.name=='nt':
     psql2 = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe")  + "\""
     pg_dump = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\pg_dump.exe")  + "\""
     createdb = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\createdb.exe") +"\"" + " "
+    dropdb = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\dropdb.exe") +"\"" + " "
     createuser = "\"" + os.getcwd().replace("bulmasetup","pgsql\\bin\\createuser.exe") + "\"" + " "
 else:
     # Other Windows
@@ -141,6 +143,7 @@ else:
     psql2 = os.getcwd().replace("bulmasetup","pgsql\\bin\\psql.exe") 
     pg_dump = os.getcwd().replace("bulmasetup","pgsql\\bin\\pg_dump.exe") 
     createdb = os.getcwd().replace("bulmasetup","pgsql\\bin\\createdb.exe") + " "
+    dropdb = os.getcwd().replace("bulmasetup","pgsql\\bin\\dropdb.exe") + " "
     createuser = os.getcwd().replace("bulmasetup","pgsql\\bin\\createuser.exe") + " "
     
 
