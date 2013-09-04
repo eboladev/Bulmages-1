@@ -42,6 +42,7 @@
 #include "bgbulmages.h"
 #include "blfunctions.h"
 #include "blconfiguration.h"
+#include "mainwindow.h"
 
 
 int main ( int argc, char **argv )
@@ -60,7 +61,6 @@ int main ( int argc, char **argv )
     QApplication app(argc, argv);
 
     /// Definimos la codificaci&oacute;n a Unicode.
-    QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
     QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -72,7 +72,9 @@ int main ( int argc, char **argv )
 
     BgBulmaGes bges;
     bges.hide();
-
+    
+    MainWindow mein;
+    mein.show();
     return app.exec();
 }
 

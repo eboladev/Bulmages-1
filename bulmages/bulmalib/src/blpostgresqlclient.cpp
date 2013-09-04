@@ -616,10 +616,65 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
     } catch ( ... ) {
         BlDebug::blDebug ( "Error en la conexion postgresifcace2::inicializa", 2 );
     } // end try
-
-    
     return 0;
 }
+
+/// Inicializa la conexi&oacute;n con la base de datos mediante los par&aacute;metro
+/// especificados. Precisamente no lo hace el constructor debido a la ausencia de
+/// dichos datos.
+/// \param nomdb Indica el nombre de la base de datos.
+/// \param user Indica el usuario que hace la operacion a ojos de la base de datos.
+/// \param passwd Indica la contrasenya que utiliza el usuario para autentificarse.
+/// \return Si todo va bien devuelve 0, en caso contrario devuelve 1.
+int BlPostgreSqlClient::inicializa ( QString nomdb, QString host, QString port, QString user, QString passwd, QString opt, QString tty )
+{
+    BL_FUNC_DEBUG
+    BlDebug::blDebug ( "BlPostgreSqlClient::inicializa", 0, nomdb );
+    QString conexion;
+
+    try {
+        /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
+        /// Ahora si se pone -- se considera conexion local.
+        if ( m_pgHost != "--" ) {
+            conexion = "host = '" + escCadConn(host)+"'";
+        } // end if
+        conexion += " port = '" + escCadConn(port)+"'";
+        conexion += " dbname = '" + escCadConn(nomdb)+"'";
+        if ( user != "" ) {
+            conexion += " user = '" + escCadConn(user)+"'";
+        } // end if
+        if ( passwd != "" ) {
+            conexion += " password = '" + escCadConn(passwd)+"'";
+        } // end if
+
+        BlDebug::blDebug ( conexion, 0 );
+        conn = PQconnectdb ( conexion.toLatin1().data() );
+        if ( PQstatus ( conn ) == CONNECTION_BAD ) {
+            BlDebug::blDebug ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
+            if ( passwd != "" && g_confpr->valueTrue( CONF_ALERTAS_DB )) {
+                BlDebug::blDebug ( PQerrorMessage ( conn ), 2 );
+            } else {
+                BlDebug::blDebug ( PQerrorMessage ( conn ), 0 );
+            } // end if
+            return 1;
+        } // end if
+        BlDebug::blDebug ( "La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0 );
+        formatofecha();
+
+        /// Buscamos cual es el usuario ejecutando y lo almacenamos.
+        BlDbRecordSet *rs = loadQuery ( "SELECT current_user" );
+        if ( !rs->eof() ) {
+            m_currentUser = rs->value( "current_user" );
+        } else {
+            m_currentUser = "";
+        } // end if
+        delete rs;
+    } catch ( ... ) {
+        BlDebug::blDebug ( "Error en la conexion postgresifcace2::inicializa", 2 );
+    } // end try
+    return 0;
+}
+
 
 
 /// Cambia el formato de fecha de la base de datos para que usemos la

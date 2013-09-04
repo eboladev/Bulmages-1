@@ -190,6 +190,7 @@ public:
     const QString currentUser();
     /// La clase debe ser inicializada con algunos par&aacute;metros para poder funcionar.
     int inicializa ( QString nomdb );
+    int inicializa ( QString nomdb, QString host, QString port, QString user, QString passwd, QString opt, QString tty );
     /// Inicia una transacci&oacute;n.
     int begin();
     /// Termina una transacci&oacute;n.

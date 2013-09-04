@@ -953,6 +953,7 @@ CREATE TABLE presupuesto (
     bimppresupuesto numeric(12, 2) DEFAULT 0,
     imppresupuesto  numeric(12, 2) DEFAULT 0,
     totalpresupuesto numeric(12, 2) DEFAULT 0,
+    irpfpresupuesto numeric(12,2) DEFAULT 0,
     UNIQUE (idalmacen, numpresupuesto)
 );
 
@@ -1141,6 +1142,7 @@ CREATE TABLE pedidocliente (
     idtrabajador integer REFERENCES trabajador(idtrabajador),
     totalpedidocliente numeric(12,2) DEFAULT 0,
     bimppedidocliente NUMERIC(12,2) DEFAULT 0,
+    irpfpedidocliente numeric(12,2) DEFAULT 0,
     imppedidocliente NUMERIC(12,2) DEFAULT 0
 );
 
@@ -1336,6 +1338,7 @@ CREATE TABLE factura (
     ticketfactura boolean DEFAULT FALSE,
     totalfactura NUMERIC(12, 2) DEFAULT 0,
     bimpfactura NUMERIC(12, 2) DEFAULT 0,
+    irpffactura numeric(12,2) DEFAULT 0,
     impfactura NUMERIC(12, 2) DEFAULT 0
 );
 
@@ -1491,9 +1494,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpffactura FROM factura WHERE idfactura = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpffactura / 100);
     END IF;
 
     FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
@@ -2339,6 +2342,7 @@ CREATE TABLE albaran (
     totalalbaran NUMERIC(12, 2) DEFAULT 0,
     bimpalbaran NUMERIC(12, 2) DEFAULT 0,
     impalbaran NUMERIC(12, 2) DEFAULT 0,
+    irpfalbaran numeric(12,2) DEFAULT 0,
     ticketalbaran boolean DEFAULT FALSE,
     UNIQUE (idalmacen, numalbaran)
 );
@@ -2898,9 +2902,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpfpresupuesto FROM presupuesto WHERE idpresupuesto = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfpresupuesto / 100);
     END IF;
 
     FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
@@ -2997,9 +3001,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpfpedidocliente FROM pedidocliente WHERE idpedidocliente = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfpedidocliente / 100);
     END IF;
 
     FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
@@ -3096,9 +3100,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechaalbaran FROM albaran WHERE idalbaran = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpfalbaran FROM albaran WHERE idalbaran = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfalbaran / 100);
     END IF;
 
     FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP

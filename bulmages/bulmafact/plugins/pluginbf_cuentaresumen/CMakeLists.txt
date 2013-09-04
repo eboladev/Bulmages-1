@@ -24,9 +24,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_asiento/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_asiento/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -79,13 +77,13 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 if(WIN32)
-target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 else(WIN32)
-target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 endif(WIN32)
 
 #think to put here which modules must be compiled "before" this
-add_dependencies(${plugin} bulmafact bulmafact bulmalib pluginbf_asiento)
+add_dependencies(${plugin} bulmafact bulmafact bulmalib)
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 

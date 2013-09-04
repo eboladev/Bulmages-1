@@ -209,8 +209,8 @@ message(STATUS "Working on bulmafact")
 add_subdirectory(bulmafact)
 
 ########### bulmages launcher ##########
-#message(STATUS "Working on bulmages")
-#add_subdirectory(bulmages)
+message(STATUS "Working on bulmages")
+add_subdirectory(bulmages)
 
 ########### bulmatpv ##########
 message(STATUS "Working on bulmatpv")

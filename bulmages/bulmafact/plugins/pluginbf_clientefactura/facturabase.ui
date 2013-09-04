@@ -31,7 +31,7 @@
    <property name="margin">
     <number>4</number>
    </property>
-   <item row="0" column="0" colspan="6">
+   <item row="0" column="0" colspan="7">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>5</number>
@@ -386,7 +386,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" colspan="6">
+   <item row="2" column="0" colspan="7">
     <widget class="QTabWidget" name="m_desdfgs">
      <property name="enabled">
       <bool>true</bool>
@@ -478,7 +478,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="3" column="3">
     <widget class="QLabel" name="label4_3">
      <property name="text">
       <string>I.R.P.F.:</string>
@@ -488,7 +488,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="3">
+   <item row="3" column="4">
     <widget class="QLabel" name="label4">
      <property name="text">
       <string>Impuestos:</string>
@@ -498,7 +498,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="4">
+   <item row="3" column="5">
     <widget class="QLabel" name="label4_2">
      <property name="text">
       <string>R.E.:</string>
@@ -508,7 +508,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="5">
+   <item row="3" column="6">
     <widget class="QLabel" name="label1">
      <property name="text">
       <string>Total:</string>
@@ -679,7 +679,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="2">
+   <item row="4" column="3">
     <widget class="QLineEdit" name="m_totalIRPF">
      <property name="minimumSize">
       <size>
@@ -758,7 +758,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="3">
+   <item row="4" column="4">
     <widget class="QLineEdit" name="m_totalTaxes">
      <property name="minimumSize">
       <size>
@@ -837,7 +837,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="4">
+   <item row="4" column="5">
     <widget class="QLineEdit" name="m_totalReqEq">
      <property name="minimumSize">
       <size>
@@ -916,7 +916,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="5">
+   <item row="4" column="6">
     <widget class="QLineEdit" name="m_totalfactura">
      <property name="enabled">
       <bool>true</bool>
@@ -992,7 +992,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="6">
+   <item row="5" column="0" colspan="7">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>5</number>
@@ -1029,7 +1029,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" colspan="6">
+   <item row="1" column="0" colspan="7">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
       <size>
@@ -1306,15 +1306,36 @@
      </layout>
     </widget>
    </item>
+   <item row="4" column="2">
+    <widget class="QLineEdit" name="mui_irpffactura">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>0.00</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>% I.R.P.F:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2"/>
  <customwidgets>
-  <customwidget>
-   <class>BlDateSearch</class>
-   <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
-  </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>
    <extends>QWidget</extends>
@@ -1331,6 +1352,21 @@
    <header>bfbuscarreferencia.h</header>
   </customwidget>
   <customwidget>
+   <class>BfBuscarAlmacen</class>
+   <extends>QComboBox</extends>
+   <header>bfbuscaralmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QLineEdit</extends>
+   <header>../../bulmalib/src/bldatesearch.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BfBuscarTrabajador</class>
+   <extends>QComboBox</extends>
+   <header>bfbuscartrabajador.h</header>
+  </customwidget>
+  <customwidget>
    <class>ListLinFacturaView</class>
    <extends>QWidget</extends>
    <header>listlinfacturaview.h</header>
@@ -1344,16 +1380,6 @@
    <class>BfBuscarSerieFactura</class>
    <extends>QComboBox</extends>
    <header>bfbuscarseriefactura.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BfBuscarAlmacen</class>
-   <extends>QComboBox</extends>
-   <header>bfbuscaralmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BfBuscarTrabajador</class>
-   <extends>QComboBox</extends>
-   <header>bfbuscartrabajador.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
