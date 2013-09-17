@@ -195,7 +195,7 @@ void BlSearchWidget::setText ( const QString &val )
 void BlSearchWidget::setFieldValue ( QString campo, QString val )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSearchWidget::setcifprofesor", 0, val );
+    BlDebug::blDebug ( "BlSearchWidget::setFieldValue", 0, val );
 
     QString SQLQuery("");
     SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = $1";
@@ -284,12 +284,12 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     } // end if
     
     if ( m_semaforo ) {
-	
         return;
     } // end if
-
+    m_semaforo = true;
 
     if ( g_plugins->run ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
+        m_semaforo = false;
         return;
     } // end if
 
@@ -372,7 +372,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         m_textBusqueda->setText ( cad );
     } // end if
     
-
+    m_semaforo = false;
 }
 
 

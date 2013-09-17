@@ -7,7 +7,7 @@
 			<td>Precio/u:</td>
 			<td>Subtotal s/iva:</td>
 		</tr>
-<!--QUERY="SELECT *, (cantlpresupuesto*pvplpresupuesto*(1-descuentolpresupuesto/100))::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo=articulo.idarticulo WHERE idpresupuesto= [idpresupuesto]"-->
+<!--QUERY="SELECT *, (cantlpresupuesto*pvplpresupuesto*(1-descuentolpresupuesto/100))::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo=articulo.idarticulo WHERE idpresupuesto= [idpresupuesto] ORDER BY ordenlpresupuesto"-->
 <tr>
 <td>[codigocompletoarticulo]</td>
 <td>[desclpresupuesto]</td>
@@ -29,7 +29,7 @@
 			<td>% Descuento:</td>
 			<td>Subtotal s/iva:</td>
 		</tr>
-<!--QUERY="SELECT *, (cantlpresupuesto*pvplpresupuesto*(1-descuentolpresupuesto/100))::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo=articulo.idarticulo WHERE idpresupuesto= [idpresupuesto]"-->
+<!--QUERY="SELECT *, (cantlpresupuesto*pvplpresupuesto*(1-descuentolpresupuesto/100))::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo=articulo.idarticulo WHERE idpresupuesto= [idpresupuesto] ORDER BY ordenlpresupuesto"-->
 <tr>
 <td>[codigocompletoarticulo]</td>
 <td>[desclpresupuesto]</td>

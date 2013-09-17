@@ -95,7 +95,8 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura libpluginbf_clientecobro libpluginbf_proveedorfactura libpluginbf_proveedorpago)
+
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clientecobro pluginbf_proveedorfactura pluginbf_proveedorpago)
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 
