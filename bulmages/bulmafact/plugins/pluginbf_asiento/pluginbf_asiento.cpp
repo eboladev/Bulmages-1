@@ -589,17 +589,17 @@ try {
   delete cur;
   
   
-  query = "SELECT id_cuenta('47300001') AS id";
+  query = "SELECT id_cuenta('"+blExtendStringWithZeros("473.1", (g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt()))+"') AS id";
   cur = fact->mainCompany()->loadQuery(query);
   if (cur->value("id") == "0") {
-       blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IRPF 47300001");
+       blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IRPF " + blExtendStringWithZeros("473.1", (g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt())));
        delete cur;
        return 0;
   } // end if
   delete cur;
   
   // El apunte por el irpf
-  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',id_cuenta('47300001'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfactura")+"')";
+  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, debe, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Cliente"+ fact->dbValue("codigoserie_factura") + fact->dbValue("numfactura") +"',id_cuenta('"+blExtendStringWithZeros("473.1", (g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt()))+"'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfactura")+"')";
 
   fact->mainCompany()->runQuery(query);
   

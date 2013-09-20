@@ -8,7 +8,7 @@
 		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
 
 		<!-- EL DRAFT -->
-			<setFont name="Helvetica" size="100"/>
+			<!-- setFont name="Helvetica" size="100"/>
 			<fill color="(1,0.9,0.9)"/>
 			<stroke color="(1,0.9,0.9)"/>
 			<translate dx="13cm" dy="-10.5cm"/>
@@ -17,7 +17,7 @@
 			<lineMode width="4mm"/>
 			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
 		<rotate degrees="-30"/>
-		<translate dx="-13cm" dy="10.5cm"/>
+		<translate dx="-13cm" dy="10.5cm"/ -->
 
 		<!-- EL PIE DE PAGINA -->
 		<setFont name="Helvetica" size="8"/>		
@@ -43,7 +43,9 @@
 		<blockAlignment value="RIGHT" start="1,0" stop="-1,-1"/>
 
 	</blockTableStyle>
-	<paraStyle name="rojo" alignment="right" textColor="red" fontSize="6"/>
+	<paraStyle name="rojo" alignment="right" textColor="red"/>
+	<paraStyle name="azul" alignment="right" textColor="blue"/>
+	<paraStyle name="derecha" alignment="right"/>
 </stylesheet>
 
 <story>
@@ -58,7 +60,20 @@
 
 </tr>
 
-<!-- QUERY1= "SELECT descripcion, codigo AS cod1 FROM cuenta ORDER BY codigo" -->
+<!-- QUERY1= "SELECT descripcion, codigo AS cod1, 
+      CASE 
+	WHEN length(codigo) = 2 THEN '<b>'
+	WHEN length(codigo) < 7 THEN '<font color=''blue''>'
+	  ELSE ''
+      END AS lcond1, 
+      CASE 
+	WHEN length(codigo) = 2 THEN '</b>'
+	WHEN length(codigo) < 7 THEN '</font>'
+	  ELSE ''
+      END AS lcond2
+
+      
+      FROM cuenta ORDER BY codigo" -->
  
 <!--QUERY2 = "SELECT COALESCE(sum(apunte.debe),0) AS tdebe, COALESCE(sum(apunte.haber),0) as thaber  FROM apunte 
 LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta 
@@ -66,11 +81,15 @@ WHERE cuenta.codigo LIKE '[cod1]%' " -->
 
  <!-- QUERY3="SELECT TRUE WHERE [tdebe] + [thaber]<>0" -->
 <tr>
-<td>[cod1]</td>
-<td>[descripcion]</td>
-<td>[tdebe]</td>
-<td>[thaber]</td>
-<td><!--QUERY4=" SELECT [tdebe] - [thaber] AS tsaldo "-->[tsaldo]<!--END QUERY4--></td>
+  <td><para>[lcond1,l][cod1][lcond2,l]</para></td>
+<td><para>[lcond1,l][descripcion][lcond2,l]</para></td>
+<td><para style="derecha">[lcond1,l][tdebe][lcond2,l]</para></td>
+<td><para style="derecha">[lcond1,l][thaber][lcond2,l]</para></td>
+<td><!--QUERY4=" SELECT [tdebe] - [thaber] AS tsaldo, 
+  CASE 
+    WHEN [tdebe] >= [thaber] THEN '<font>'
+      ELSE '<font color=''red''>'
+      END AS estilo_fuente"--><para style="derecha">[lcond1,l][estilo_fuente,l][tsaldo]</font>[lcond2,l]</para><!--END QUERY4--></td>
 </tr>
 
  <!-- END QUERY3 -->

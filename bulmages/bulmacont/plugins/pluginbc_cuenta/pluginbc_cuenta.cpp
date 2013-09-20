@@ -34,6 +34,7 @@
 #include "bccuentalistview.h"
 #include "bcplancontablelistview.h"
 #include "bccuentaview.h"
+#include "bccambiacuentaview.h"
 
 BcBulmaCont *g_pluginbc_cuenta = NULL;
 
@@ -67,10 +68,17 @@ int entryPoint ( BcBulmaCont *bcont )
     accionA->setObjectName("mui_actionPlanContable");
     pPluginMenu->addAction ( accionA );
 
+    BlAction *accionB = new BlAction ( _ ( "&Cambiar Cuenta" ), 0 );
+    accionB->setStatusTip ( _ ( "Permite intercambiar cuentas en el libro diario" ) );
+    accionB->setWhatsThis ( _ ( "Permite intercambiar cuentas en el libro diario" ) );
+    accionB->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
+    accionB->setObjectName("mui_actionCambiarCuentas");
+    pPluginMenu->addAction ( accionB );
+    
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->menuBar() ->insertMenu ( bcont->menuMaestro->menuAction(), pPluginMenu );
     bcont->toolBar->addAction ( accionA );
-
+    bcont->toolBar->addAction ( accionB );
     
     return 0;
 }

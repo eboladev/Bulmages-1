@@ -35,6 +35,7 @@
 #include "bccuentalistview.h"
 #include "bcplancontablelistview.h"
 #include "bccuentaview.h"
+#include "bccambiacuentaview.h"
 #include "bfsubform.h"
 #include "blimportexport.h"
 #include "blfile.h"
@@ -73,6 +74,13 @@ int entryPoint ( BlMainWindow *bcont )
     accionA->setObjectName("mui_actionPlanContable");
     pPluginMenu->addAction ( accionA );
 
+    BlAction *accionB = new BlAction ( _ ( "&Cambiar Cuenta" ), 0 );
+    accionB->setStatusTip ( _ ( "Permite intercambiar cuentas en el libro diario" ) );
+    accionB->setWhatsThis ( _ ( "Permite intercambiar cuentas en el libro diario" ) );
+    accionB->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
+    accionB->setObjectName("mui_actionCambiarCuentas");
+    pPluginMenu->addAction ( accionB );
+    
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     g_pluginbf_cuenta->menuBar() ->insertMenu ( g_pluginbf_cuenta->menuMaestro->menuAction(), pPluginMenu );
     g_pluginbf_cuenta->Listados->addAction ( accionA );
@@ -114,9 +122,18 @@ int BlAction_actionTriggered(BlAction *accion) {
 	    g_pluginbf_cuenta->company()->pWorkspace() ->addSubWindow ( plan );
 	    plan->show();
 	} // end if
-
     } // end if
 
+    
+    if (accion->objectName() == "mui_actionCambiarCuentas") {
+      
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionCambiarCuentas" );
+
+	BcCambiaCuentaView *ctac = new BcCambiaCuentaView ( g_pluginbf_cuenta->company(), 0, 0 );
+	ctac->exec();
+    } // end if
+    
+    
     return 0;
 }
 
