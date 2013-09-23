@@ -76,6 +76,7 @@ CONF_CONT_CTA_PROVEEDORES            4000
 CONF_CONT_CTA_VENTAPRODUCTO          700
 CONF_CONT_CTA_COMPRAPRODUCTO         600
 CONF_CONT_CTA_FPAGO                  570
+CONF_CONT_CTA_REGULARIZACION         129
 
 #--------------------------------------------------------------------#
 #                                                                    #

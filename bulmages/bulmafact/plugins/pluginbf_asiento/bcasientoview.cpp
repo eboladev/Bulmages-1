@@ -956,17 +956,6 @@ void BcAsientoView::asientoRegularizacion ( QString finicial, QString ffinal )
 
         mainCompany() ->begin();
 
-/*        QString querycomp = "SELECT * FROM asiento where clase = 1 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
-        BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
-        while (!curcomp -> eof() ) {                                                       
-                blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
-                muestraAsiento(curcomp->value("idasiento").toInt());                       
-                BcAsientoForm::remove ( false );                                                
-                curcomp->nextRecord();                                              
-        } // end if                                                                        
-        delete curcomp;*/ 
-
-
         /// Creamos un asiento nuevo con la fecha final indicada.
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 1)";
         mainCompany() ->runQuery ( supquery );
@@ -978,7 +967,7 @@ void BcAsientoView::asientoRegularizacion ( QString finicial, QString ffinal )
 
         /// El parametro esta en la configuracion de empresa.
         /// Buscamos la cuenta de regularizacion. Normalmente es la 129
-        QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
+        QString query = "SELECT * FROM cuenta WHERE codigo LIKE '"+g_confpr->value(CONF_CONT_CTA_REGULARIZACION)+"%' AND length(codigo)="+g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA);
         cur = mainCompany() ->loadQuery ( query );
         if ( cur->eof() ) {
           blMsgInfo(_("Cuenta de Regularizacion incorrecta. Revise la configuracion"));
@@ -988,14 +977,18 @@ void BcAsientoView::asientoRegularizacion ( QString finicial, QString ffinal )
         delete cur;
 
         /// Hacemos el calculo de saldos hasta la fecha.
-        query = "SELECT t1.codigo, t1.idcuenta, sum(t1.debe) AS sumdebe, sum(t1.haber) AS sumhaber, sum(t1.debe)-sum(t1.haber) AS saldito FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcuenta, t1.codigo ORDER BY saldito";
+        query = "SELECT t1.idcanal, t1.codigo, t1.idcuenta, coalesce(sum(t1.debe),0) AS sumdebe, coalesce(sum(t1.haber),0) AS sumhaber, coalesce(sum(t1.debe),0)-coalesce(sum(t1.haber),0) AS saldito FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber, apunte.idcanal AS idcanal FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcuenta, t1.codigo, t1.idcanal ORDER BY saldito";
         cur = mainCompany() ->loadQuery ( query );
         if ( !cur ) throw - 1;
         int orden = 0;
         while ( !cur->eof() ) {
+	    QString cidcanal = cur->value( "idcanal" );
+	    if (cidcanal == "") {
+	      cidcanal= "NULL";
+	    }// end if
             orden++;
             idcuenta = cur->value( "idcuenta" ).toInt();
-            diferencia = BlFixed ( cur->value( "sumdebe" ) ) - BlFixed ( cur->value( "sumhaber" ) );
+            diferencia =  cur->value( "saldito" );
             if ( diferencia > 0 ) {
                 totalhaber = diferencia;
                 totaldebe = 0;
@@ -1005,9 +998,16 @@ void BcAsientoView::asientoRegularizacion ( QString finicial, QString ffinal )
             }// end if
             totaldebe1 = totaldebe1 + totaldebe;
             totalhaber1 = totalhaber1 + totalhaber;
+	    /// Si la cuenta esta bloqueada entonces la desbloqueamos especialmente para luego restaurar su estado.
+	    QString querybloq = "SELECT bloqueada, nodebe, nohaber, bloqueada OR nodebe OR nohaber AS bloq FROM cuenta WHERE idcuenta="+QString::number(idcuenta);
+	    BlDbRecordSet *curbloqueada = mainCompany()->loadQuery(querybloq);
+	    if (curbloqueada->value("bloq") == "t") {
+	      mainCompany()-> runQuery("UPDATE cuenta SET bloqueada=FALSE, nodebe=FALSE, nohaber=FALSE WHERE idcuenta="+QString::number(idcuenta));
+	    } // end if
+	    
             /// Insercion de Borrador
             /// El borrador no existe, por lo que hay que hacer un insert
-            query = "INSERT INTO borrador (orden, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento) VALUES (";
+            query = "INSERT INTO borrador (ordenborrador, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento, idcanal) VALUES (";
             query +=  QString::number ( orden );
             query +=  ", '" + mainCompany() ->sanearCadena ( concepto ) + "'",
                       query +=  ", 'Asiento de Regularizacion " + finicial + "--" + ffinal + "'";
@@ -1015,44 +1015,61 @@ void BcAsientoView::asientoRegularizacion ( QString finicial, QString ffinal )
                       query +=  "," +   QString::number ( idcuenta );
             query +=  "," +   totaldebe.toQString().replace ( ",", "." );
             query +=  "," +   totalhaber.toQString().replace ( ",", "." );
-            query +=  "," +   QString::number ( idasiento ) + ")";
+            query +=  "," +   QString::number ( idasiento );
+	    query += ","+cidcanal+ ")";
 
             mainCompany() ->runQuery ( query );
 
+	    
+	    /// Restauramos el bloqueo
+	    if (curbloqueada->value("bloqueada") == "t") {
+	      mainCompany()-> runQuery("UPDATE cuenta SET bloqueada="+curbloqueada->value("bloqueada")+", nodebe="+curbloqueada->value("nodebe")+", nohaber="+curbloqueada->value("nohaber")+"  WHERE idcuenta="+QString::number(idcuenta));
+	    } // end if
+	    delete curbloqueada;
             /// Fin de la insercion de Borrador
             cur->nextRecord();
         }// end while
         delete cur;
 
+        /// Hacemos el calculo de saldos hasta la fecha.
+        query = "SELECT t1.idcanal, coalesce(sum(t1.debe),0) AS sumdebe, coalesce(sum(t1.haber),0) AS sumhaber, coalesce(sum(t1.debe),0)-coalesce(sum(t1.haber),0) AS saldito FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber, apunte.idcanal AS idcanal, apunte.idasiento AS idasiento FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND apunte.idasiento <> "+QString::number ( idasiento )+" AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcanal ORDER BY saldito";
+	cur = mainCompany()->loadQuery(query);
+	while (!cur->eof()) {
+	      QString cidcanal = cur->value("idcanal");
+	      if (cidcanal == "") cidcanal = "NULL";
+	      if ( cur->value("saldito").toFloat() < 0 ) {
+		  orden++;
+		  query = "INSERT INTO borrador (ordenborrador, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento, idcanal) VALUES (";
+		  query += QString::number ( orden );
+		  query += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";
+		  query +=  ", 'Asiento de Regularizacion " + finicial + "--" + ffinal + "'";
+		  query += ", '" + mainCompany() ->sanearCadena ( fecha ) + "'";
+		  query += "," + QString::number ( idcuenta1 );
+		  query += ", 0";
+		  query += ",ABS(" + cur->value("saldito") + ")";
+		  query += "," + QString::number ( idasiento );
+		  query += "," + cidcanal+ ")";
+		  mainCompany() ->runQuery ( query );
+	      } // end if
 
-        if ( totaldebe1 > 0 ) {
-            orden++;
-            query = "INSERT INTO borrador (orden, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento) VALUES (";
-            query += QString::number ( orden );
-            query += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";
-            query +=  ", 'Asiento de Regularizacion " + finicial + "--" + ffinal + "'";
-            query += ", '" + mainCompany() ->sanearCadena ( fecha ) + "'";
-            query += "," + QString::number ( idcuenta1 );
-            query += ", 0";
-            query += "," + totaldebe1.toQString().replace ( ",", "." );
-            query += "," + QString::number ( idasiento ) + ")";
-            mainCompany() ->runQuery ( query );
-        } // end if
 
-
-        if ( totalhaber1 > 0 ) {
-            orden++;
-            query = "INSERT INTO borrador (orden, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento) VALUES (";
-            query += QString::number ( orden );
-            query += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";
-            query += ", 'Asiento de Regularizacion " + finicial + "--" + ffinal + "'";
-            query += ", '" + mainCompany() ->sanearCadena ( fecha ) + "'";
-            query += "," + QString::number ( idcuenta1 );
-            query += "," + totalhaber1.toQString().replace ( ",", "." );
-            query += ", 0";
-            query += "," + QString::number ( idasiento ) + ")";
-            mainCompany() ->runQuery ( query );
-        }// end if
+	      if ( cur->value("saldito").toFloat() > 0 ) {
+		  orden++;
+		  query = "INSERT INTO borrador (ordenborrador, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento, idcanal) VALUES (";
+		  query += QString::number ( orden );
+		  query += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";
+		  query += ", 'Asiento de Regularizacion " + finicial + "--" + ffinal + "'";
+		  query += ", '" + mainCompany() ->sanearCadena ( fecha ) + "'";
+		  query += "," + QString::number ( idcuenta1 );
+		  query += ", ABS(" +cur->value("saldito")+")" ;
+		  query += ", 0";
+		  query += "," + QString::number ( idasiento );
+		  query += "," + cidcanal + ")";
+		  mainCompany() ->runQuery ( query );
+	      }// end if
+	      cur->nextRecord();
+	} // end while
+	delete cur;
 
         mainCompany() ->commit();
         cargaAsientos();
@@ -1098,9 +1115,8 @@ void BcAsientoView::asientoCierre ( QString finicial, QString ffinal )
         /// Si no hay asiento lo calculamos.
 
         /// Hacemos el calculo de saldos hasta la fecha.
-        QString query = "SELECT t1.codigo, t1.idcuenta, sum(t1.debe) AS sumdebe, sum(t1.haber) AS sumhaber, sum(t1.debe)-sum(t1.haber) AS saldito FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcuenta, t1.codigo ORDER BY saldito";
+        QString query = "SELECT t1.idcanal, t1.codigo, t1.idcuenta, coalesce(sum(t1.debe),0) AS sumdebe, coalesce(sum(t1.haber),0) AS sumhaber, coalesce(sum(t1.debe),0)-coalesce(sum(t1.haber),0) AS saldito, t1.idcanal AS idcanal FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber, apunte.idcanal AS idcanal FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcuenta, t1.codigo, t1.idcanal ORDER BY saldito";
 
-//        QString query = "SELECT codigo, idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%')  AND fecha <= '" + ffinal + "' AND fecha >= '" + finicial + "' GROUP BY idcuenta ORDER BY saldito";
         BlDbRecordSet *cursor = mainCompany() ->loadQuery ( query, "cursor" );
 
         int orden = 0;
@@ -1109,6 +1125,10 @@ void BcAsientoView::asientoCierre ( QString finicial, QString ffinal )
         while ( ! cursor->eof() ) {
             orden++;
             idcuenta = cursor->value( "idcuenta" ).toInt();
+	    QString cidcanal = cursor->value( "idcanal" );
+	    if (cidcanal == "") {
+	      cidcanal= "NULL";
+	    }// end if
             if ( cursor->value( "saldito" ).left ( 1 ) != "-" ) {
                 snuevohaber = cursor->value( "saldito" );
                 snuevodebe = "0";
@@ -1119,14 +1139,16 @@ void BcAsientoView::asientoCierre ( QString finicial, QString ffinal )
             if ( cursor->value( "saldito" ) != "0.00" ) {
                 /// Insercion de Borrador
                 /// El borrador no existe, por lo que hay que hacer un insert
-                query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (",
+                query = "INSERT INTO borrador (ordenborrador, conceptocontable, fecha, idcuenta, debe, haber, idasiento, idcanal) VALUES (",
                         query += QString::number ( orden );
                 query += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";
                 query += ", '" + mainCompany() ->sanearCadena ( fecha ) + "'";
                 query += "," + QString::number ( idcuenta );
                 query += "," + snuevodebe;
                 query += "," + snuevohaber;
-                query += "," + QString::number ( idasiento ) + ")";
+                query += "," + QString::number ( idasiento );
+                query += "," + cidcanal;
+		query += ")";
 
                 mainCompany() ->runQuery ( query );
 
@@ -1170,6 +1192,7 @@ void BcAsientoView::asientoApertura ( QString ffinal )
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
         int idasiento = cur->value( "id" ).toInt();
+	qDebug() << idasiento << endl;
         delete cur;
 
         /// Preparamos los datos.
@@ -1178,9 +1201,9 @@ void BcAsientoView::asientoApertura ( QString ffinal )
         QString idasientocierre;
 
         /// Buscamos el asiento de cierre del ejercicio anterior a la fecha introducida.
-//         QString SQLQuery = "SELECT * FROM asiento WHERE fecha < '" + fecha + "' AND idasiento < " + QString::number ( idasiento ) + " ORDER BY ordenasiento DESC";
 	int anyo = fecha.right( 4 ).toInt () - 1;
 	QString SQLQuery = "SELECT * FROM asiento WHERE descripcion similar to 'Asiento de Cierre%' AND EXTRACT(YEAR FROM fecha)=" + QString::number ( anyo ) + " ORDER BY ordenasiento DESC";
+	qDebug() << SQLQuery << endl;
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             idasientocierre = cur->value( "idasiento" );
@@ -1189,20 +1212,27 @@ void BcAsientoView::asientoApertura ( QString ffinal )
 
         int orden = 1;
         /// Seleccionamos todos sus registros de borrador.
-        QString SQLQuery1 = "SELECT * FROM borrador WHERE idasiento=" + idasientocierre + " ORDER BY orden";
+        QString SQLQuery1 = "SELECT * FROM borrador WHERE idasiento=" + idasientocierre + " ORDER BY ordenborrador";
+	qDebug() << SQLQuery1 << endl;
         cur = mainCompany() ->loadQuery ( SQLQuery1 );
         while ( !cur->eof() ) {
+	    qDebug() << cur->value("debe") << endl;
             QString idcuenta = cur->value( "idcuenta" );
             QString totaldebe = cur->value( "debe" );
             QString totalhaber = cur->value( "haber" );
-            SQLQuery1  = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (",
+	    QString cidcanal = cur->value( "idcanal" );
+	    if (cidcanal == "") {
+	      cidcanal= "NULL";
+	    }// end if
+            SQLQuery1  = "INSERT INTO borrador (ordenborrador, conceptocontable, fecha, idcuenta, debe, haber, idasiento, idcanal) VALUES (",
                          SQLQuery1 += QString::number ( orden++ );
             SQLQuery1 += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";
             SQLQuery1 += ", '" + mainCompany() ->sanearCadena ( fecha ) + "'";
             SQLQuery1 += ","   + idcuenta;
             SQLQuery1 += ","   + totalhaber.replace ( ",", "." );
             SQLQuery1 += ","   + totaldebe.replace ( ",", "." );
-            SQLQuery1 += ","   + QString::number ( idasiento ) + ")";
+            SQLQuery1 += ","   + QString::number ( idasiento );
+	    SQLQuery1 += ","   + cidcanal + ")";
 
             mainCompany() ->runQuery ( SQLQuery1 );
             cur->nextRecord();

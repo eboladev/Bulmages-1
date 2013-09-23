@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,43 +18,33 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BALANCEVIEW_H
-#define BALANCEVIEW_H
+#ifndef PLUGINBF_DUPLICARASIENTO_H
+#define PLUGINBF_DUPLICARASIENTO_H
 
-#include <QtWidgets/QLayout>
-
-#include "ui_balancebase.h"
+#include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
-#include "blconfiguration.h"
-#include "bcplancontablelistview.h"
-#include "bfform.h"
+#include "bfcompany.h"
+#include "bcasientoview.h"
+#include "pdefs_pluginbf_duplicarasiento.h"
 
 
-class BfCompany;
+extern "C" PLUGINBF_DUPLICARASIENTO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_DUPLICARASIENTO_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
 
 
-/// Balance. Muestra un balance de sumas y saldos.
-/**
-*/
-class BalanceView : public BfForm, public Ui_BalanceBase
+class PluginBc_DuplicarAsiento : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
-    BalanceView ( BfCompany *, QWidget *parent = 0, int flags = 0 );
-    void inicializa ( QString, QString, QString, QString, QString );
-    ~BalanceView();
-    virtual void accept();
-    void imprimir();
-    
-private:
-    /// Presenta el Balance.
-    void presentar();
-    /// Presenta el Balance de Sumas y Saldos.
-    void presentarSyS ( QString, QString, QString, QString, int, int, bool );
+    BcAsientoView *m_asiento;
+
+public:
+    PluginBc_DuplicarAsiento(BcAsientoView *as, BfCompany *comp, QWidget *parent = NULL);
+    ~PluginBc_DuplicarAsiento();
 
 public slots:
-    void on_mui_actualizar_clicked();
+    void elslot();
 };
 
 

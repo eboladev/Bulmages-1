@@ -53,8 +53,14 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
 
     setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Extracto de cuentas" ) );
-    setDbTableName ( "mayor" );
-
+    setDbTableName ( "extracto" );
+    setDbFieldId ( "idcuenta" );
+    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, _ ( "idcuenta" ) );
+    addDbField ( "fechaInicial", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaInicial" ) );
+    addDbField ( "fechaFinal", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaFinal" ) );
+    
+    setDbValue("idcuenta","0");
+    
     mui_list->setMainCompany ( company );
 
     connect (mui_list, SIGNAL(openAsiento()), this, SLOT(openAsiento()) );
@@ -915,12 +921,30 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 }
 
 
-
+void BcExtractoView::imprimir() {
+       BL_FUNC_DEBUG
+       recogeValores();
+        /// El calculo de los canales
+        QString ccanales = "";
+	g_plugins->run("PgetSelCanales", &ccanales);
+	if (ccanales != "") ccanales = ","+ccanales;
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	setVar("canales", "(" + QString(sincanal?" idcanal IS NULL OR ":"")+" idcanal IN (0"+ccanales+") )");
+	QString ccostes = "";
+	g_plugins->run("PgetSelCostes", &ccostes);
+        if ( ccostes != "" ) {
+            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
+        } // end if
+        setVar("ccostes", ccostes);
+       BfForm::imprimir();
+}
 
 
 /// Slot que responde a la Impresion del extracto
 /**
 **/
+/*
 void BcExtractoView::imprimir()
 {
     BL_FUNC_DEBUG
@@ -1011,7 +1035,7 @@ void BcExtractoView::imprimir()
     
     return;
 }
-
+*/
 
 void BcExtractoView::on_mui_inicio_released() {
       BL_FUNC_DEBUG

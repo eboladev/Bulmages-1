@@ -41,7 +41,6 @@
 #define HABEREJ         7
 #define SALDOEJ         8
 
-
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
 /**
@@ -62,6 +61,15 @@ BalanceView::BalanceView ( BfCompany *emp, QWidget *parent, int )
     /// Para imprimir usaremos la plantilla balance
     setTemplateName("balance");
 
+    setDbFieldId ( "idcuenta" );
+    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, _ ( "idcuenta" ) );
+    addDbField ( "fechaInicial", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaInicial" ) );
+    addDbField ( "fechaFinal", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaFinal" ) );
+    addDbField ( "cuentaInicial", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "cuentaInicial" ) );
+    addDbField ( "cuentaFinal", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "cuentaFinal" ) );
+    
+    setDbValue("idcuenta","0");
+    
     mui_cuentaInicial->setMainCompany ( emp );
     /// Arreglamos la cuenta.
     mui_cuentaInicial->setLabel ( _ ( "Cuenta inicial:" ) );
@@ -434,6 +442,26 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         if ( hojas ) delete hojas;
     } // end try
     
+}
+
+
+void BalanceView::imprimir() {
+       BL_FUNC_DEBUG
+       recogeValores();
+        /// El calculo de los canales
+        QString ccanales = "";
+	g_plugins->run("PgetSelCanales", &ccanales);
+	if (ccanales != "") ccanales = ","+ccanales;
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	setVar("canales", "(" + QString(sincanal?" idcanal IS NULL OR ":"")+" idcanal IN (0"+ccanales+") )");
+	QString ccostes = "";
+	g_plugins->run("PgetSelCostes", &ccostes);
+        if ( ccostes != "" ) {
+            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
+        } // end if
+        setVar("ccostes", ccostes);
+       BfForm::imprimir();
 }
 
 

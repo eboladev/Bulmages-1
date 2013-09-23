@@ -19,45 +19,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BALANCEVIEW_H
-#define BALANCEVIEW_H
+#ifndef BCASIENTODUPLICARVIEW_H
+#define BCASIENTODUPLICARVIEW_H
 
-#include <QtWidgets/QLayout>
-
-#include "ui_balancebase.h"
-#include "blpostgresqlclient.h"
-#include "blconfiguration.h"
-#include "bcplancontablelistview.h"
-#include "bfform.h"
+#include "ui_bcasientoduplicarbase.h"
+#include "blwidget.h"
+#include "pdefs_pluginbf_duplicarasiento.h"
 
 
 class BfCompany;
 
 
-/// Balance. Muestra un balance de sumas y saldos.
-/**
-*/
-class BalanceView : public BfForm, public Ui_BalanceBase
+///
+/** */
+class PLUGINBF_DUPLICARASIENTO_EXPORT DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
-    BalanceView ( BfCompany *, QWidget *parent = 0, int flags = 0 );
-    void inicializa ( QString, QString, QString, QString, QString );
-    ~BalanceView();
-    virtual void accept();
-    void imprimir();
-    
-private:
-    /// Presenta el Balance.
-    void presentar();
-    /// Presenta el Balance de Sumas y Saldos.
-    void presentarSyS ( QString, QString, QString, QString, int, int, bool );
+    int idasiento;
+
+public:
+    DuplicarAsientoView ( BfCompany *, QWidget *, Qt::WindowFlags flag = 0 );
+    ~DuplicarAsientoView();
+    void inicializa ( QString, QString );
 
 public slots:
-    void on_mui_actualizar_clicked();
+    virtual void on_mui_aceptar_clicked();
+    virtual void lostFocus();
 };
-
 
 #endif
 

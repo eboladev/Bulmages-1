@@ -494,6 +494,8 @@ QString BlConfiguration::name( int i )
        return "CONF_CONT_CTA_COMPRAPRODUCTO";
     if ( i == CONF_CONT_CTA_FPAGO )
        return "CONF_CONT_CTA_FPAGO";
+    if ( i == CONF_CONT_CTA_REGULARIZACION )
+       return "CONF_CONT_CTA_REGULARIZACION";
     if ( i == CONF_SYNC )
        return "CONF_SYNC";
     if ( i == CONF_URL_SYNC )
