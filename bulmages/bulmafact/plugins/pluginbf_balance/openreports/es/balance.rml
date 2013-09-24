@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Listado" author="Tomeu Borras" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm"  title="Balance Vertical"  author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
-		<!-- EL LOGO DE CABECERA -->
-		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
 
-		<!-- EL DRAFT -->
-			<!-- setFont name="Helvetica" size="100"/>
-			<fill color="(1,0.9,0.9)"/>
-			<stroke color="(1,0.9,0.9)"/>
-			<translate dx="13cm" dy="-10.5cm"/>
-			<rotate degrees="30"/>
-			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
-			<lineMode width="4mm"/>
-			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-		<rotate degrees="-30"/>
-		<translate dx="-13cm" dy="10.5cm"/ -->
-
-		<!-- EL PIE DE PAGINA -->
-		<setFont name="Helvetica" size="8"/>		
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantillac.rml" -->
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="13.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
-		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion. Puede personalizar sus formatos de impresion modificando las plantillas ubicadas en [CONF_DIR_OPENREPORTS]</drawString>	
+		
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- BALANCE DE SITUACION -</drawCentredString>
+
+		<setFont name="Helvetica-Bold" size="10"/>
+		<drawCentredString x="5.3cm" y="25.8cm">24/08/2013</drawCentredString>
+		<!--QUERY="SELECT * FROM cuenta WHERE idcuenta=[mui_cuentaInicial]"-->
+		<drawString x="10.3cm" y="28cm">Cuenta: [codigo]</drawString>
+		<drawString x="10.3cm" y="27.5cm">[descripcion]</drawString>
+		<!--END QUERY-->
+		<drawString x="10.3cm" y="26.5cm">Fecha Inicial: [mui_fechaInicial]</drawString>
+		<drawString x="10.3cm" y="26.0cm">Fecha Final:[mui_fechaFinal]</drawString>
+		
+		<drawString x="10.3cm" y="25.5cm">Canales:<!--QUERY="SELECT * FROM canal WHERE [canales]" -->[nombre]<!--END QUERY--></drawString>
+		
+		<drawString x="10.3cm" y="25.0cm">Contrapartida:</drawString>
+		<drawString x="10.3cm" y="24.5cm">Asientos Abiertos:</drawString>
+		<drawString x="10.3cm" y="24.0cm">Sin Asientos Especiales:</drawString>
+		<drawString x="10.3cm" y="23.5cm">Opciones Filtrado:</drawString>
+		
+		<setFont name="Helvetica" size="7"/>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
 
 
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">Balance de Situación</drawString>
-		</pageGraphics>
-	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	</pageGraphics>
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_framec.rml" -->
+
+		
 	</pageTemplate>
 </template>
 <stylesheet>
@@ -50,7 +54,7 @@
 
 <story>
 
-<blockTable style="tabla" colWidths="4cm,10cm,3cm,3cm,3cm" repeatRows="1">
+<blockTable style="tabla" colWidths="2cm,8cm,2.5cm,2.5cm,2.5cm" repeatRows="1">
 <tr>
 <td>Codigo</td>
 <td>Descripcion</td>
@@ -75,11 +79,15 @@
       
       FROM cuenta ORDER BY codigo" -->
  
-<!--QUERY2 = "SELECT COALESCE(sum(apunte.debe),0) AS tdebe, COALESCE(sum(apunte.haber),0) as thaber  FROM apunte 
-LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta 
-WHERE cuenta.codigo LIKE '[cod1]%' " -->
+<!--QUERY2 = "SELECT COALESCE(sum(ta.debe),0) AS tdebe, COALESCE(sum(ta.haber),0) as thaber 
+FROM (SELECT * FROM apunte WHERE [canales] AND apunte.fecha >='[mui_fechaInicial]' AND apunte.fecha <='[mui_fechaFinal]') AS ta
+LEFT JOIN cuenta ON ta.idcuenta = cuenta.idcuenta 
+  WHERE  cuenta.codigo LIKE '[cod1]%'" -->
 
  <!-- QUERY3="SELECT TRUE WHERE [tdebe] + [thaber]<>0" -->
+   <!-- QUERY4 = "SELECT TRUE WHERE length('[cod1]') = 2"-->
+   <tr><td></td><td></td><td></td><td></td><td></td></tr>
+   <!-- END QUERY4-->
 <tr>
   <td><para>[lcond1,l][cod1][lcond2,l]</para></td>
 <td><para>[lcond1,l][descripcion][lcond2,l]</para></td>

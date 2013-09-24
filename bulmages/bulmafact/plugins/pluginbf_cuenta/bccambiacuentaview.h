@@ -22,13 +22,14 @@
 #ifndef BCCAMBIACUENTAVIEW_H
 #define BCCAMBIACUENTAVIEW_H
 
+#include "pdefs_pluginbf_cuenta.h"
 #include "ui_bccambiacuentabase.h"
 #include "blwidget.h"
 
 class BfCompany;
 
 
-class BC_EXPORT BcCambiaCuentaView : public QDialog, public Ui_BcCambiaCuentaBase, public BlMainCompanyPointer
+class PLUGINBF_CUENTA_EXPORT BcCambiaCuentaView : public QDialog, public Ui_BcCambiaCuentaBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 public:

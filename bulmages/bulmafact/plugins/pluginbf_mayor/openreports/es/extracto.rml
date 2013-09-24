@@ -4,69 +4,120 @@
 <template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Extracto de Cuentas" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
-		<!-- EL LOGO DE CABECERA -->
-		<image x="2.5cm" y="28.54cm" width="2.5cm" file="logo.jpg"/>
 
-		<!-- EL DRAFT -->
-			<!--setFont name="Helvetica" size="100"/>
-			<fill color="(1,0.9,0.9)"/>
-			<stroke color="(1,0.9,0.9)"/>
-			<translate dx="15cm" dy="-5.5cm"/>
-			<rotate degrees="50"/>
-			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
-			<lineMode width="4mm"/>
-			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-		<rotate degrees="-50"/>
-		<translate dx="-15cm" dy="5.5cm"/-->
-
-		<!-- EL PIE DE PAGINA -->
-		<setFont name="Helvetica" size="8"/>		
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantillac.rml" -->
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="0.5cm">-Iglues-</drawString>
+		
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- EXTRACTO DE CUENTAS -</drawCentredString>
 
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="27.5cm">Extracto de Cuentas</drawString>
-		</pageGraphics>
-	<frame id="column" x1="1cm" y1="1cm" width="21cm" height="26.5cm"/>
+		<setFont name="Helvetica-Bold" size="10"/>
+		<drawCentredString x="5.3cm" y="25.8cm">24/08/2013</drawCentredString>
+		<!--QUERY="SELECT * FROM cuenta WHERE idcuenta=[mui_cuentaInicial]"-->
+		<drawString x="10.3cm" y="28cm">Cuenta: [codigo]</drawString>
+		<drawString x="10.3cm" y="27.5cm">[descripcion]</drawString>
+		<!--END QUERY-->
+		<drawString x="10.3cm" y="26.5cm">Fecha Inicial: [mui_fechaInicial]</drawString>
+		<drawString x="10.3cm" y="26.0cm">Fecha Final:[mui_fechaFinal]</drawString>
+		
+		<drawString x="10.3cm" y="25.5cm">Canales:<!--QUERY="SELECT * FROM canal WHERE [canales]" -->[nombre]<!--END QUERY--></drawString>
+		
+		<drawString x="10.3cm" y="25.0cm">Contrapartida:</drawString>
+		<drawString x="10.3cm" y="24.5cm">Asientos Abiertos:</drawString>
+		<drawString x="10.3cm" y="24.0cm">Sin Asientos Especiales:</drawString>
+		<drawString x="10.3cm" y="23.5cm">Opciones Filtrado:</drawString>
+		
+		<!--QUERY="SELECT coalesce(sum(debe),0) AS tdebe, coalesce(sum(haber),0) AS thaber, coalesce(sum(debe),0) - coalesce(sum(haber),0) AS tsaldo FROM apunte LEFT JOIN asiento ON apunte.idasiento = asiento.idasiento WHERE idcuenta =[mui_cuentaInicial] AND apunte.fecha < '[mui_fechaInicial]'"-->
+		<drawString x="1.6cm" y="25.0cm">Inicial D:[tsaldo]</drawString>
+		<drawString x="4.6cm" y="25.0cm">H:[tsaldo]</drawString>
+		<drawString x="6.6cm" y="25.0cm">S:[tsaldo]</drawString>
+		<!--SETVAR1 NAME="isaldo" VALUE="[tsaldo]"-->
+		<!-- END QUERY-->
+		<!--QUERY="SELECT coalesce(sum(debe),0) AS tdebe, coalesce(sum(haber),0) AS thaber, coalesce(sum(debe),0) - coalesce(sum(haber),0) AS tsaldo FROM apunte LEFT JOIN asiento ON apunte.idasiento = asiento.idasiento WHERE idcuenta =[mui_cuentaInicial] AND apunte.fecha <= '[mui_fechaFinal]'"-->
+		<drawString x="1.6cm" y="24.5cm">Final D:[tsaldo]</drawString>
+		<drawString x="4.6cm" y="24.5cm">H:[tsaldo]</drawString>
+		<drawString x="6.6cm" y="24.5cm">S:[tsaldo]</drawString>		<!-- END QUERY-->
+		<!--QUERY="SELECT coalesce(sum(debe),0) AS tdebe, coalesce(sum(haber),0) AS thaber, coalesce(sum(debe),0) - coalesce(sum(haber),0) AS tsaldo FROM apunte LEFT JOIN asiento ON apunte.idasiento = asiento.idasiento WHERE idcuenta =[mui_cuentaInicial]"-->
+		<drawString x="1.6cm" y="24.0cm">Actual D:[tsaldo]</drawString>
+		<drawString x="4.6cm" y="24.0cm">H:[tsaldo]</drawString>
+		<drawString x="6.6cm" y="24.0cm">S:[tsaldo]</drawString>				<!-- END QUERY-->
+
+		
+		<setFont name="Helvetica" size="7"/>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
+
+
+	</pageGraphics>
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_framec.rml" -->
+
+		
 	</pageTemplate>
 </template>
 <stylesheet>
-	<blockTableStyle id="tabla">
-		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
-		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="7" start="0,0" stop="-1,0"/>
-		<blockFont name="Helvetica" size="7" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="7" start="1,1" stop="1,-1"/>
-		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-		<blockTopPadding length="0.03cm" start="0,0" stop="-1,-1"/>
-		<blockBottomPadding length="0.1cm" start="0,0" stop="-1,-1"/>
-	</blockTableStyle>
 	<blockTableStyle id="tablaextracto">
-		<blockAlignment value="RIGHT" start="0,0" stop="-1,-1"/>
-		<blockAlignment value="LEFT" start="0,0" stop="2,-1"/>
-		<blockAlignment value="LEFT" start="6,0" stop="6,-1"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
-		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
-		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="6" start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="7" start="0,-1" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="7" start="0,0" stop="-1,0"/>
-
-		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-		<blockTopPadding length="-0.03cm" start="0,1" stop="-1,-2"/>
-		<blockBottomPadding length="-0.15cm" start="0,1" stop="-1,-2"/>
+		<blockFont name="Helvetica" size="7" start="0,0" stop="-1,-1"/>
+		<blockAlignment value="LEFT" start="0,0" stop="-1,-1" />	
+		<blockAlignment value="RIGHT" start="2,0" stop="4,-1" />
+		<blockFont name="Helvetica" size="10" start="2,0" stop="4,-1"/>
+		<blockValign value="TOP" />
+		<blockTopPadding length="1mm" start="0,0" stop="-1,-1" />
+		<blockBottomPadding length="1mm" start="0,0" stop="-1,-1" />
+		<blockLeftPadding length="1mm" start="0,0" stop="-1,-1" />
+		<blockRightPadding length="1mm" start="0,0" stop="-1,-1" />
+		<!--lineStyle kind="GRID" /-->
 	</blockTableStyle>
-
+	<paraStyle 
+		name="cuenta"
+		fontName="Helvetica"
+		fontSize="7"
+		textColor="black"
+		spaceBefore="0.0cm"
+		firstLineIndent="0.0cm"
+	/>
+	<paraStyle 
+		name="saldo"
+		fontName="Helvetica"
+		fontSize="10"
+		spaceBefore="0.0cm"
+		firstLineIndent="0.0cm"
+		alignment="right"
+	/>
 </stylesheet>
-
 <story>
-	[story]
+
+	<blockTable style="tablaextracto" colWidths="1.5cm,6cm, 2cm, 2cm,2cm,6cm">
+	<!--QUERY="SELECT idcuenta FROM cuenta WHERE idcuenta = [mui_cuentaInicial] " -->
+	<!--QUERY1="SELECT *, apunte.descripcion AS descapunte FROM apunte 
+	LEFT JOIN cuenta AS t2 ON t2.idcuenta = apunte.idcuenta 
+	LEFT JOIN (SELECT idcuenta, codigo AS codigo_contra, descripcion AS descripcion_contra FROM cuenta) AS t3 ON apunte.contrapartida=t3.idcuenta
+	WHERE apunte.idcuenta=[mui_cuentaInicial] AND apunte.fecha >= '[mui_fechaInicial]' AND apunte.fecha <= '[mui_fechaFinal]' ORDER BY fecha ASC, idapunte ASC"-->
+	  <tr>
+	    <td>[fecha]</td>
+	    <!--td>[codigo]</td-->
+	    <td><para style="cuenta">[conceptocontable] [descapunte]</para></td>
+	    <td>[debe]</td>
+	    <td>[haber]</td>
+	    <!-- QUERY2="SELECT coalesce(sum(debe),0)-coalesce(sum(haber),0) AS saldo FROM apunte LEFT JOIN asiento ON apunte.idasiento = asiento.idasiento WHERE [canales] [ccostes] AND  idcuenta =[mui_cuentaInicial] AND (apunte.fecha < '[fecha]' OR (apunte.fecha = '[fecha]' AND apunte.idapunte <= [idapunte]))"-->
+	      
+	    <td><para style="saldo">
+	      <!--QUERY3="SELECT CASE
+		WHEN [saldo] <0 THEN '<font color=''red''>'
+		  ELSE '<font color=''blue''>'
+		  END AS caso "-->
+		  [caso,l][saldo]</font>
+		<!--END QUERY3-->
+		</para>
+	      </td>
+	    <!--END QUERY2-->
+	    <td><para style="cuenta">[codigo_contra] [descripcion_contra]</para></td>
+	  </tr>
+	  <!--END QUERY1-->
+	  </blockTable>
+	<!--END QUERY-->
+	
+  
 	<spacer length="5mm" width="1mm"/>		
 </story>
 </document>
