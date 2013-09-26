@@ -608,7 +608,7 @@ try {
   query = "SELECT ivalfactura::INTEGER, SUM(cantlfactura*pvplfactura*(1-descuentolfactura/100)*ivalfactura/100)::NUMERIC(12,2) AS subbase FROM lfactura WHERE idfactura = "+fact->dbValue("idfactura")+"  GROUP BY ivalfactura" ;
   cur = fact->mainCompany()->loadQuery(query);
   while (!cur->eof()) {
-      QString codint = "472";
+      QString codint = "477";
       // PONER UN PARAMETRO APROPIADO
       while ( codint.length() <  g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - cur->value("ivalfactura").length() ) {
 	  codint = codint + "0";
@@ -881,10 +881,10 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
   delete cur;
   
   
-  query = "SELECT id_cuenta('47300001') AS id";
+  query = "SELECT id_cuenta('"+blExtendStringWithZeros("473.1", (g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt()))+"') AS id";
   cur = fact->mainCompany()->loadQuery(query);
   if (cur->value("id") == "0") {
-       blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IRPF 47300001");
+       blMsgInfo("No se puede crear el asiento porque no existe la cuenta de IRPF "+blExtendStringWithZeros("473.1", (g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt())));
        delete cur;
        return 0;
   } // end if
@@ -892,7 +892,7 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
   
   
   // El apunte por el irpf
-  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Proveedor "+ fact->dbValue("numfacturap") +"',id_cuenta('47300001'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfacturap")+"')";
+  query = "INSERT INTO borrador(idasiento, fecha, conceptocontable, idcuenta, haber, descripcion) VALUES ("+idasiento+",'"+fecha+"','Fra. Proveedor "+ fact->dbValue("numfacturap") +"',id_cuenta('"+blExtendStringWithZeros("473.1", (g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt()))+"'),"+fact->m_totalIRPF->text().replace(",",".")+",'"+fact->dbValue("descfacturap")+"')";
 
   fact->mainCompany()->runQuery(query);
   
@@ -901,7 +901,7 @@ int FacturaProveedorView_afterSave_Post(FacturaProveedorView *fact) {
   query = "SELECT ivalfacturap::INTEGER, SUM(cantlfacturap*pvplfacturap*(1-descuentolfacturap/100)*ivalfacturap/100)::NUMERIC(12,2) AS subbase FROM lfacturap WHERE idfacturap = "+fact->dbValue("idfacturap")+"  GROUP BY ivalfacturap" ;
   cur = fact->mainCompany()->loadQuery(query);
   while (!cur->eof()) {
-      QString codint = "477";
+      QString codint = "472";
       // PONER UN PARAMETRO APROPIADO
       while ( codint.length() <  g_confpr->value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - cur->value("ivalfacturap").length() ) {
 	  codint = codint + "0";

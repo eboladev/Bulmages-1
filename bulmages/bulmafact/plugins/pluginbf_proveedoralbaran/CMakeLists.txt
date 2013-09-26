@@ -38,7 +38,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/)
 
 # generate rules for building source files that moc generates
 QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)

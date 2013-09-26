@@ -34,6 +34,7 @@
 #include "bfproveedoralbaransubform.h"
 #include "pedidoproveedorview.h"
 #include "blplugins.h"
+#include "bltoolbutton.h"
 
 
 /** Inicializa todos los componentes de la ventana.
