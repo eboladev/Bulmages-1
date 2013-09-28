@@ -76,6 +76,7 @@ BlSearchWidget::~BlSearchWidget()
 void BlSearchWidget::pinta()
 {
     BL_FUNC_DEBUG
+    if (m_semaforo) return;
     m_semaforo = true;
     QString cad = "";
 
@@ -157,7 +158,6 @@ void BlSearchWidget::setId ( QString val, bool cargarvalores )
         delete cur;
     } // end if
     pinta();
-    
 }
 
 
@@ -260,7 +260,6 @@ void BlSearchWidget::on_m_inputBusqueda_editingFinished()
     BL_FUNC_DEBUG
     pinta();
     g_plugins->run ( "Busqueda_on_m_inputBusqueda_editingFinished_Post", this );
-    
 }
 
 /** SLOT que responde a la modificacion del campo de texto del Widget.
@@ -276,17 +275,17 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 {
     BL_FUNC_DEBUG
     
-    /// Si la cadena esta vacia entonces salimos sin hacer nada
-    if  (val == "") {
-        setId ( "" );
-	
-        return;
-    } // end if
-    
     if ( m_semaforo ) {
         return;
     } // end if
     m_semaforo = true;
+    
+    /// Si la cadena esta vacia entonces salimos sin hacer nada
+    if  (val == "") {
+        setId ( "" );
+	m_semaforo=false;
+        return;
+    } // end if
 
     if ( g_plugins->run ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
         m_semaforo = false;

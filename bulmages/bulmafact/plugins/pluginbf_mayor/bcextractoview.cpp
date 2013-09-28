@@ -88,6 +88,8 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
     mui_codigoContrapartida->m_valores["codigo"] = "";
 
 
+    connect(mui_cuentaInicial, SIGNAL(valueChanged(QString)), this, SLOT(cuentaIChanged ( QString )));
+    
     mui_cuentaInicial->hideLabel();
     mui_cuentaFinal->hideLabel();
     mui_codigoContrapartida->hideLabel();
@@ -1060,4 +1062,9 @@ void BcExtractoView::on_mui_fin_released() {
 void BcExtractoView::on_mui_filtrar_toggled(bool check) {
   BL_FUNC_DEBUG
   frame->setVisible(check);
+}
+
+void BcExtractoView::cuentaIChanged ( QString val) {
+  BL_FUNC_DEBUG
+  mui_cuentaFinal->setId(val);
 }

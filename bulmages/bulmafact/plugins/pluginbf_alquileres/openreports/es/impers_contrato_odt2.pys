@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
           
-# title="Contrato Local Comercial (ODT)"
+# title="Contrato Vivienda Particular"
 
 import sys
 reload(sys)
@@ -10,8 +10,8 @@ sys.setdefaultencoding('utf-8')
 import ezodf
 from ezodf.xmlns import CN
 
-#odt = newdoc(doctype='odt', filename='contrato_plantilla.odt')
-odt = ezodf.opendoc("[CONF_DIR_OPENREPORTS,l]contrato_plantilla1.odt")
+#odt = newdoc(doctype='odt', filename='contrato_plantilla2.odt')
+odt = ezodf.opendoc("[CONF_DIR_OPENREPORTS,l]contrato_plantilla2.odt")
 #odt.body += ezodf.Heading("Chapter 1")
 #odt.body += ezodf.Paragraph("This is a paragraph.")
 
