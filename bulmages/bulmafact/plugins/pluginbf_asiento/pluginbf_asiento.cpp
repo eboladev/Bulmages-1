@@ -63,13 +63,30 @@ int entryPoint ( BfBulmaFact *bcont )
 
     QMenu *pPluginMenu = bcont->newMenu(_("&Asiento"), "menuAsiento", "menuMaestro");
 
+    /// Usamos un toolBox especial para meter los botones de contabilidad.
+    QToolBar *toolCont =  bcont->findChild<QToolBar *> ( "contabilidad" );
+    if ( !toolCont) {
+	toolCont = new QToolBar(bcont);
+	toolCont->setObjectName("contabilidad");
+	toolCont->setFocusPolicy(Qt::TabFocus);
+	toolCont->setOrientation(Qt::Horizontal);
+	toolCont->setIconSize(QSize(32, 32));
+        toolCont->setWindowTitle(N_("Contabilidad", 0));
+        toolCont->setToolTip(N_("Contabilidad", 0));
+        toolCont->setStatusTip(N_("Contabilidad", 0));
+        toolCont->setWhatsThis(N_("Contabilidad", 0));
+        toolCont->setAccessibleName(N_("Contabilidad", 0));
+        toolCont->setAccessibleDescription(N_("Contabilidad", 0));
+	bcont->addToolBar(Qt::TopToolBarArea, toolCont);
+    } // end if
+    
     BlAction *accionA = new BlAction ( _ ( "&Asiento contable" ), 0 );
     accionA->setStatusTip ( _ ( "Permite ver y modificar asientos" ) );
     accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del asiento" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/book.png")));
     accionA->setObjectName("mui_actionAsientoContable");
     pPluginMenu->addAction ( accionA );
-    bcont->Listados->addAction ( accionA );
+    toolCont->addAction ( accionA );
 
 
     BlAction *accionB = new BlAction ( _ ( "&Lista de asientos contables" ), 0 );
@@ -78,7 +95,7 @@ int entryPoint ( BfBulmaFact *bcont )
     accionB->setIcon(QIcon(QString::fromUtf8(":/Images/book-list.png")));
     accionB->setObjectName("mui_actionAsientoContableLista");
     pPluginMenu->addAction ( accionB );
-    bcont->Listados->addAction ( accionB );
+    toolCont->addAction ( accionB );
 
     pPluginMenu->addSeparator();
 

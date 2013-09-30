@@ -83,8 +83,27 @@ int entryPoint ( BlMainWindow *bcont )
     
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     g_pluginbf_cuenta->menuBar() ->insertMenu ( g_pluginbf_cuenta->menuMaestro->menuAction(), pPluginMenu );
-    g_pluginbf_cuenta->Listados->addAction ( accionA );
-
+    
+    /// Usamos un toolBox especial para meter los botones de contabilidad.
+    QToolBar *toolCont =  g_pluginbf_cuenta->findChild<QToolBar *> ( "contabilidad" );
+    if ( !toolCont) {
+	toolCont = new QToolBar(g_pluginbf_cuenta);
+	toolCont->setObjectName("contabilidad");
+	toolCont->setFocusPolicy(Qt::TabFocus);
+	toolCont->setOrientation(Qt::Horizontal);
+	toolCont->setIconSize(QSize(32, 32));
+        toolCont->setWindowTitle(N_("Contabilidad", 0));
+        toolCont->setToolTip(N_("Contabilidad", 0));
+        toolCont->setStatusTip(N_("Contabilidad", 0));
+        toolCont->setWhatsThis(N_("Contabilidad", 0));
+        toolCont->setAccessibleName(N_("Contabilidad", 0));
+        toolCont->setAccessibleDescription(N_("Contabilidad", 0));
+	g_pluginbf_cuenta->addToolBar(Qt::TopToolBarArea, toolCont);
+    } // end if
+    toolCont->addAction(accionA);
+    
+    
+    /// Si no hay cuentas solicitamos para hacer una importacion de plan contable.
     QString query = "SELECT * FROM cuenta";
     BlDbRecordSet *cur = g_pluginbf_cuenta->company()->loadQuery(query);
     if (cur->eof()) {
