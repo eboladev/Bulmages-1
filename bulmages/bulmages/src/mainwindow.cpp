@@ -131,9 +131,39 @@ void MainWindow::procesaDemand(const QString &texto, QTcpSocket *sock) {
     /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
     QDomElement docElem = doc.documentElement();
 
+    QString database="";
+    QDomNodeList nodosdb = docElem.elementsByTagName ( "DATABASE" );
+    for (int j = 0; j < nodosdb.count(); j++) {
+	    database = nodosdb.item (j).toElement().text();
+    } // end for
+
+    QString user="";
+    nodosdb = docElem.elementsByTagName ( "USER" );
+    for (int j = 0; j < nodosdb.count(); j++) {
+	    user = nodosdb.item (j).toElement().text();
+    } // end for
+    
+    QString password="";
+    nodosdb = docElem.elementsByTagName ( "PASSWORD" );
+    for (int j = 0; j < nodosdb.count(); j++) {
+	    password = nodosdb.item (j).toElement().text();
+    } // end for
+    
+    QString host="localhost";
+    nodosdb = docElem.elementsByTagName ( "HOST" );
+    for (int j = 0; j < nodosdb.count(); j++) {
+	    host = nodosdb.item (j).toElement().text();
+    } // end for
+    
+    QString port="5433";
+    nodosdb = docElem.elementsByTagName ( "PORT" );
+    for (int j = 0; j < nodosdb.count(); j++) {
+	    port = nodosdb.item (j).toElement().text();
+    } // end for
+    
     QDomNodeList nodos = docElem.elementsByTagName ( "QUERY" );
     BlPostgreSqlClient db; 
-    db.inicializa("elepal", "localhost", "5432", "tborras", "M5ch1P1St1", "", "");
+    db.inicializa(database, host, port, user, password, "", "");
     QString teto = "<RESPONSE>\n";   
     int muylargo = 0;
     
