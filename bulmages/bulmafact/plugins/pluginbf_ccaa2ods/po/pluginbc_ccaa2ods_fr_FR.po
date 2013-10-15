@@ -1,0 +1,103 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2009, 2011.
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: 2011-01-31 11:04+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 1.2\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
+#: ui_datosbase.h:151
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_datosbase.h:152
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: datosview.cpp:110
+msgid "Calculando Balance y Resultados"
+msgstr "Calculer la balance et les résultats"
+
+#: datosview.cpp:36
+msgid "Cuenta"
+msgstr "Compte"
+
+#: pluginbf_ccaa2ods.cpp:204
+msgid "Cuentas Anuales &ODS"
+msgstr "Comptes annuels &ODS"
+
+#: ui_datosbase.h:147
+msgid "Datos para generar el balance"
+msgstr "Données pour générer la balance"
+
+#: datosview.cpp:85
+msgid "ERROR: Debe introducir una fecha final del balance actual."
+msgstr "ERREUR : Introduire une date finale de la balance courante."
+
+#: datosview.cpp:94
+msgid "ERROR: Debe introducir una fecha final del balance anterior."
+msgstr "ERREUR : Introduire une date finale de la balance précédente."
+
+#: datosview.cpp:81
+msgid "ERROR: Debe introducir una fecha inicial del balance actual."
+msgstr "ERREUR : Introduire une date initiale de la balance courante."
+
+#: datosview.cpp:90
+msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
+msgstr "ERREUR : Introduire une date initiale de la balance précédente."
+
+#: datosview.cpp:117
+msgid "ERROR: Ha habido un error generando el informe"
+msgstr "ERREUR : Une erreur a généré un rapport"
+
+#: datosview.cpp:41
+msgid "Fecha Final Actual"
+msgstr "Date finale courante"
+
+#: datosview.cpp:43
+msgid "Fecha Final Anterior"
+msgstr "Date finale précédente"
+
+#: datosview.cpp:40
+msgid "Fecha Inicial Actual"
+msgstr "Date initiale courante"
+
+#: datosview.cpp:42
+msgid "Fecha Inicial Anterior"
+msgstr "Date initiale précédente"
+
+#: ui_datosbase.h:150 ui_datosbase.h:155
+msgid "Fecha final del balance:"
+msgstr "Date  finale de la balance :"
+
+#: ui_datosbase.h:149 ui_datosbase.h:154
+msgid "Fecha inicial del balance:"
+msgstr "Date initiale de la balance :"
+
+#: datosview.cpp:39
+msgid "Id cuenta"
+msgstr "ID Compte"
+
+#: ui_datosbase.h:148
+msgid "Periodo actual:"
+msgstr "Période courante :"
+
+#: ui_datosbase.h:153
+msgid "Periodo anterior:"
+msgstr "Période précédente :"

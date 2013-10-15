@@ -1,0 +1,386 @@
+# #-#-#-#-#  bulmafact_en_US.po  #-#-#-#-#
+# translation of bulmafact_en_US.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:15+0200\n"
+"PO-Revision-Date: 2011-07-03 06:49+0200\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team:  English\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_profesorbase.h:528
+msgid "&Aceptar"
+msgstr "&Accept"
+
+#: pluginbf_profesor.cpp:57
+msgid "&Activitats"
+msgstr "Activities"
+
+#: ui_profesorbase.h:529
+msgid "&Cancelar"
+msgstr "&Cancel"
+
+#: ui_profesorbase.h:513
+msgid "&Datos generales"
+msgstr "&General data"
+
+#: pluginbf_profesor.cpp:72
+msgid "&Nuevo profesor"
+msgstr "&New instructor"
+
+#: pluginbf_profesor.cpp:63
+msgid "&Profesores"
+msgstr "&Instructors"
+
+#: ui_aboutfapacbase.h:146
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'DejaVu Sans'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0;text-indent:0px;\"></"
+"p></body></html>"
+
+#: pluginbf_profesor.cpp:81 pluginbf_profesor.cpp:82 pluginbf_profesor.cpp:83
+#: ui_aboutfapacbase.h:144
+msgid "About FAPAC"
+msgstr "About FaPaC"
+
+#: ui_profesorbase.h:527
+msgid "Actividades Impartidas"
+msgstr "Activities instructed"
+
+#: ui_profesoreslistbase.h:365 ui_profesoreslistbase.h:368
+msgid "Actualizar listado"
+msgstr "Update listing"
+
+#: ui_profesoreslistbase.h:310
+msgid "Banco:"
+msgstr "Bank:"
+
+#: ui_aboutfapacbase.h:151
+msgid "Barcelona"
+msgstr "Barcelona"
+
+#: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
+msgid "Borrar Profesor"
+msgstr "Erase Instructor"
+
+#: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
+#: ui_profesorbase.h:498
+msgid "Borrar cobro"
+msgstr "Erase quota"
+
+#: profesoreslist.cpp:282
+msgid "Borrar profesor"
+msgstr "Erase instructor"
+
+#: ui_profesoreslistbase.h:372
+msgid "Buscar:"
+msgstr "Search:"
+
+#: profesorview.cpp:59
+msgid "CP del profesor"
+msgstr "Instructr Postal Code"
+
+#: ui_aboutfapacbase.h:155
+msgid "Cerrar"
+msgstr "Close"
+
+#: ui_profesoreslistbase.h:314
+msgid "Cobros efectivos"
+msgstr "Electronic mail:"
+
+#: ui_profesoreslistbase.h:313
+msgid "Cobros previstos"
+msgstr "&Collections and payments"
+
+#: ui_profesorbase.h:505
+msgid "Codigo postal:"
+msgstr "Postal code:"
+
+#: profesorview.cpp:67
+msgid "Comentarios del profesor"
+msgstr "Comments on the instructor"
+
+#: ui_profesorbase.h:525
+msgid "Comentarios:"
+msgstr "Comments:"
+
+#: ui_profesoreslistbase.h:357 ui_profesoreslistbase.h:360
+msgid "Configurar listado"
+msgstr "Configure the listing"
+
+#: ui_profesorbase.h:512
+msgid "Correo electronico:"
+msgstr "Electronic mail:"
+
+#: ui_profesoreslistbase.h:363
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_profesorbase.h:493 ui_profesoreslistbase.h:339
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_profesoreslistbase.h:331
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_profesoreslistbase.h:355
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_profesorbase.h:501
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: ui_profesoreslistbase.h:323
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_profesoreslistbase.h:347
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_profesorbase.h:485
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: ui_profesorbase.h:502
+msgid "D.N.I."
+msgstr "ID:."
+
+#: profesoreslist.cpp:337
+msgid "DNI"
+msgstr "ID"
+
+#: profesorview.cpp:57
+msgid "DNI del profesor"
+msgstr "ID of the instructor"
+
+#: profesoreslist.cpp:262
+msgid "Debe seleccionar una fila primero"
+msgstr "You have to first select a row"
+
+#: profesoreslist.cpp:219
+msgid "Debe seleccionar una linea"
+msgstr "You have to select a line"
+
+#: profesorview.cpp:58
+msgid "Direccion del profesor"
+msgstr "Instructor address"
+
+#: ui_profesorbase.h:504
+msgid "Direccion:"
+msgstr "Address:"
+
+#: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
+msgid "Editar Profesor"
+msgstr "Edit instructor"
+
+#: profesoreslist.cpp:281
+msgid "Editar profesor"
+msgstr "Edit instructor"
+
+#: profesoreslist.cpp:234
+msgid "Error al borrar el cobro a cliente"
+msgstr "Error when deleting collection from a client"
+
+#: profesorview.cpp:97
+msgid "Error al crear el profesor"
+msgstr "Error when creating the instructor"
+
+#: ui_profesorbase.h:524
+msgid "Estudios"
+msgstr "Background"
+
+#: profesorview.cpp:66
+msgid "Estudios del profesor"
+msgstr "Background of the instructor"
+
+#: ui_profesorbase.h:523
+msgid "Estudios:"
+msgstr "Background:"
+
+#: ui_profesoreslistbase.h:371
+msgid "F5"
+msgstr "F5"
+
+#: profesorview.cpp:62
+msgid "Fax del profesor"
+msgstr "Instructr fax"
+
+#: profesorview.cpp:87
+msgid "Fecha Final"
+msgstr "Final Date"
+
+#: profesorview.cpp:86
+msgid "Fecha Inicial"
+msgstr "Initial Date"
+
+#: ui_profesoreslistbase.h:311
+msgid "Fecha final:"
+msgstr "Final date:"
+
+#: ui_profesoreslistbase.h:312
+msgid "Fecha inicial:"
+msgstr "Initial date:"
+
+#: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
+msgid "Filtrar Profesores"
+msgstr "Filter instructors"
+
+#: ui_aboutfapacbase.h:152
+msgid "Girona"
+msgstr "Girona"
+
+#: ui_profesorbase.h:479 ui_profesorbase.h:482
+msgid "Guardar cobro"
+msgstr "Keep changes"
+
+#: profesorview.cpp:82
+msgid "ID Actividad"
+msgstr "Activity ID"
+
+#: profesorview.cpp:55
+msgid "ID profesor"
+msgstr "Instructr ID"
+
+#: profesoreslist.cpp:335
+msgid "Id profesor"
+msgstr "Instructor ID"
+
+#: ui_profesoreslistbase.h:341 ui_profesoreslistbase.h:344
+msgid "Imprimir listado"
+msgstr "Print listing"
+
+#: ui_aboutfapacbase.h:153
+msgid "Lleida"
+msgstr "Lleida"
+
+#: profesorview.cpp:52
+msgid "Monitor"
+msgstr "Instructor"
+
+#: profesorview.cpp:63
+msgid "Movil del profesor"
+msgstr "Instructor cell phone"
+
+#: profesoreslist.cpp:336 profesorview.cpp:83
+msgid "Nombre"
+msgstr "Name"
+
+#: ui_profesorbase.h:503
+msgid "Nombre completo:"
+msgstr "Complete name:"
+
+#: profesorview.cpp:56
+msgid "Nombre del profesor"
+msgstr "Instructor name"
+
+#: ui_profesorbase.h:467
+msgid "Nuevo Monitor"
+msgstr "New instructor"
+
+#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
+msgid "Nuevo Profesor"
+msgstr "New instructor"
+
+#: pluginbf_profesor.cpp:74 pluginbf_profesor.cpp:75
+msgid "Nuevo profesor"
+msgstr "New instructor"
+
+#: ui_profesorbase.h:509
+msgid "Numero de fax:"
+msgstr "Fax number:"
+
+#: ui_profesorbase.h:526
+msgid "Otros datos"
+msgstr "Other data:"
+
+#: ui_profesorbase.h:510
+msgid "Pagina web:"
+msgstr "Web page:"
+
+#: profesoreslist.cpp:339
+msgid "Poblacion"
+msgstr "City"
+
+#: profesorview.cpp:60
+msgid "Poblacion del profesor"
+msgstr "Instructor city"
+
+#: ui_profesorbase.h:506
+msgid "Poblacion:"
+msgstr "City:"
+
+#: profesorview.cpp:85
+msgid "Precio"
+msgstr "Price"
+
+#: profesoreslist.cpp:201 pluginbf_profesor.cpp:65 pluginbf_profesor.cpp:66
+#: ui_profesoreslistbase.h:309
+msgid "Profesores"
+msgstr "Instructors"
+
+#: ui_profesorbase.h:507
+msgid "Provincia:"
+msgstr "Province:"
+
+#: ui_aboutfapacbase.h:154
+msgid "Tarragona"
+msgstr "Tarragona"
+
+#: profesoreslist.cpp:338
+msgid "Telefono"
+msgstr "Telephone:"
+
+#: profesorview.cpp:61
+msgid "Telefono del profesor"
+msgstr "Instructor telephone"
+
+#: ui_profesorbase.h:508
+msgid "Telefono fijo:"
+msgstr "Fixed telephone:"
+
+#: ui_profesorbase.h:511
+msgid "Telefono movil:"
+msgstr "Cell telephone:"
+
+#: profesorview.cpp:125
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr "You have to save the document before being able to print it."
+
+#: profesorview.cpp:84
+msgid "Tipo"
+msgstr "Type"
+
+#: profesorview.cpp:65
+msgid "Web del profesor"
+msgstr "Instructor web page:"
+
+#: profesorview.cpp:64
+msgid "eMail del profesor"
+msgstr "Instructor email"

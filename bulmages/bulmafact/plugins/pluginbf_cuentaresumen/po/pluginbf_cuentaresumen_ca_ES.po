@@ -1,0 +1,51 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbf_cuentaresumen.cpp:78
+msgid "&Resumen Cta"
+msgstr "&Resum Cta"
+
+#: pluginbf_cuentaresumen.cpp:82
+msgid ""
+"Corrector.\n"
+"\n"
+"Muestra/oculta el corrector"
+msgstr ""
+"Corrector.\n"
+"\n"
+"Mostra/amaga el corrector"
+
+#: pluginbf_cuentaresumen.cpp:81
+msgid "Muestra/oculta el resumen de cuenta"
+msgstr ""
+
+#: pluginbf_cuentaresumen.cpp:58
+#, fuzzy
+msgid "Resumen cuenta"
+msgstr "Nom del compte"
+
+#: ui_correctorbase.h:52
+#, fuzzy
+msgid "Resumen de Cuenta"
+msgstr "Descripció del compte"
+
+#~ msgid "&Ver"
+#~ msgstr "&Veure"

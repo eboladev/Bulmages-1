@@ -1,0 +1,524 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bcplancontablearbol.cpp:221
+#, qt-format
+msgid "Codigo = '%1', Numero de apunte = '%2'"
+msgstr ""
+
+#: bcplancontablearbol.cpp:524
+#, qt-format
+msgid "No se ha encontrado el campo '%1' en la hoja del arbol."
+msgstr ""
+
+#: bcplancontablelistview.cpp:48 bccuentaview.cpp:38 ui_bccuentabase.h:794
+msgid "Cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:44
+msgid "Codigo cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55
+msgid "Nombre cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:53
+msgid "Debe"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:54
+msgid "Haber"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentalistview.cpp:390 bccuentaview.cpp:43
+msgid "ID cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:48 ui_bccuentabase.h:820
+msgid "Bloqueada"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55
+msgid "Nodebe"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55
+msgid "Nohaber"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:51
+msgid "Regularizacion"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:47
+msgid "Imputacion"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55
+msgid "Grupo"
+msgstr ""
+
+#: bcplancontablelistview.cpp:55
+msgid "Tipo cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:83
+msgid "CODIGO"
+msgstr ""
+
+#: bcplancontablelistview.cpp:83
+msgid "NOMBRE"
+msgstr ""
+
+#: bcplancontablelistview.cpp:454 bcplancontablelistview.cpp:480
+msgid "Debe seleccionar una cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:484 ui_bcplancontablelistbase.h:306
+#: ui_bcplancontablelistbase.h:309 ui_bccuentabase.h:809
+msgid "Borrar cuenta"
+msgstr ""
+
+#: bcplancontablelistview.cpp:485
+msgid "Se procedera a borrar la cuenta."
+msgstr ""
+
+#: bcplancontablelistview.cpp:630 bcplancontablelistview.cpp:649
+msgid "Elija el archivo"
+msgstr ""
+
+#: bcplancontablelistview.cpp:632 bcplancontablelistview.cpp:651
+msgid "Plan contable (*.xml)"
+msgstr ""
+
+#: bccuentalistview.cpp:68
+msgid "Selector de articulos"
+msgstr ""
+
+#: bccuentalistview.cpp:313
+msgid "Editar articulo"
+msgstr ""
+
+#: bccuentalistview.cpp:314
+msgid "Borrar articulo"
+msgstr ""
+
+#: bccuentalistview.cpp:391
+msgid "Codigo Cuenta"
+msgstr ""
+
+#: bccuentalistview.cpp:392
+msgid "Nombre de la cuenta"
+msgstr ""
+
+#: pluginbf_cuenta.cpp:61
+msgid "&Cuentas Contables"
+msgstr ""
+
+#: pluginbf_cuenta.cpp:65
+msgid "&Plan Contable"
+msgstr ""
+
+#: pluginbf_cuenta.cpp:66 pluginbf_cuenta.cpp:67
+msgid "Permite ver y modificar el plan contable"
+msgstr ""
+
+#: pluginbf_cuenta.cpp:131 pluginbf_cuenta.cpp:156
+#: ui_bcplancontablelistbase.h:290 ui_bcplancontablelistbase.h:293
+msgid "Nueva cuenta"
+msgstr ""
+
+#: pluginbf_cuenta.cpp:133 pluginbf_cuenta.cpp:150
+#: ui_bcplancontablelistbase.h:298 ui_bcplancontablelistbase.h:301
+msgid "Editar cuenta"
+msgstr ""
+
+#: pluginbf_cuenta.cpp:135 pluginbf_cuenta.cpp:154
+msgid "Seleccionar cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:45
+msgid "Descripcion"
+msgstr ""
+
+#: bccuentaview.cpp:46
+msgid "Padre"
+msgstr ""
+
+#: bccuentaview.cpp:49
+msgid "NoDebe"
+msgstr ""
+
+#: bccuentaview.cpp:50
+msgid "NoHaber"
+msgstr ""
+
+#: bccuentaview.cpp:52
+msgid "Tipo de Cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:55
+msgid "Centro de coste por defecto"
+msgstr ""
+
+#: bccuentaview.cpp:56
+msgid "Entidad de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:57
+msgid "CIF de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:58
+msgid "CP de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:59
+msgid "Telefono de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:60
+msgid "Comentarios de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:61
+msgid "Banco de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:62
+msgid "Web de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:63
+msgid "E-Mail de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:64
+msgid "Direccion de la cuenta"
+msgstr ""
+
+#: bccuentaview.cpp:65
+msgid "Provincia"
+msgstr ""
+
+#: bccuentaview.cpp:66
+msgid "Poblacion"
+msgstr ""
+
+#: bccuentaview.cpp:90
+msgid "Cuenta Padre:"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:285
+msgid "Plan de cuentas"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:296
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:304
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:312 ui_bccuentabase.h:812
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:314 ui_bcplancontablelistbase.h:317
+msgid "Imprimir cuentas"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:320
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:322 ui_bcplancontablelistbase.h:325
+msgid "Exportar cuentas"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:329 ui_bcplancontablelistbase.h:332
+msgid "Importar cuentas"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:336 ui_bcplancontablelistbase.h:339
+#: ui_bccuentalistbase.h:234 ui_bccuentalistbase.h:237
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:342
+msgid "F5"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:343
+msgid "Busqueda:"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:344
+msgid "&Anterior"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:345
+msgid "Shift+F3"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:346
+msgid "&Siguiente"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:347
+msgid "F3"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:349 ui_bccuentalistbase.h:246
+msgid "1"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:350
+msgid "Plan &contable"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:351
+msgid "S&ubcuentas"
+msgstr ""
+
+#: ui_bccuentabase.h:796
+msgid "Guardar cuenta"
+msgstr ""
+
+#: ui_bccuentabase.h:799
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_bccuentabase.h:801
+msgid "Duplicar Asiento"
+msgstr ""
+
+#: ui_bccuentabase.h:805
+msgid "Cargar Asiento"
+msgstr ""
+
+#: ui_bccuentabase.h:813
+msgid "Datos de la cuenta:"
+msgstr ""
+
+#: ui_bccuentabase.h:814
+msgid "C. Coste por Defecto"
+msgstr ""
+
+#: ui_bccuentabase.h:815
+msgid "Nombre:"
+msgstr ""
+
+#: ui_bccuentabase.h:816
+msgid "Codigo:"
+msgstr ""
+
+#: ui_bccuentabase.h:817
+msgid "Opciones de cuenta:"
+msgstr ""
+
+#: ui_bccuentabase.h:818
+msgid "No Debe"
+msgstr ""
+
+#: ui_bccuentabase.h:819
+msgid "Alt+B"
+msgstr ""
+
+#: ui_bccuentabase.h:821
+msgid "Reg&ularizacion"
+msgstr ""
+
+#: ui_bccuentabase.h:822
+msgid "No Haber"
+msgstr ""
+
+#: ui_bccuentabase.h:823
+msgid "&Imputacion"
+msgstr ""
+
+#: ui_bccuentabase.h:824
+msgid "Alt+I"
+msgstr ""
+
+#: ui_bccuentabase.h:825
+msgid "Tipo de cuenta:"
+msgstr ""
+
+#: ui_bccuentabase.h:826
+msgid "A&ctivo"
+msgstr ""
+
+#: ui_bccuentabase.h:827
+msgid "Alt+C"
+msgstr ""
+
+#: ui_bccuentabase.h:828
+msgid "&Ingreso"
+msgstr ""
+
+#: ui_bccuentabase.h:829
+msgid "&Pasivo"
+msgstr ""
+
+#: ui_bccuentabase.h:830
+msgid "Alt+P"
+msgstr ""
+
+#: ui_bccuentabase.h:831
+msgid "&Gasto"
+msgstr ""
+
+#: ui_bccuentabase.h:832
+msgid "Alt+G"
+msgstr ""
+
+#: ui_bccuentabase.h:833
+msgid "&Neto"
+msgstr ""
+
+#: ui_bccuentabase.h:834
+msgid "Sin &Tipo"
+msgstr ""
+
+#: ui_bccuentabase.h:835
+msgid "Saldos:"
+msgstr ""
+
+#: ui_bccuentabase.h:836
+msgid "Debe:"
+msgstr ""
+
+#: ui_bccuentabase.h:837
+msgid "Haber:"
+msgstr ""
+
+#: ui_bccuentabase.h:838
+msgid "&Datos contables"
+msgstr ""
+
+#: ui_bccuentabase.h:839
+msgid "Nombre de la entidad:"
+msgstr ""
+
+#: ui_bccuentabase.h:840
+msgid "C.I.F.:"
+msgstr ""
+
+#: ui_bccuentabase.h:841
+msgid "Direccion:"
+msgstr ""
+
+#: ui_bccuentabase.h:842
+msgid "Telefono:"
+msgstr ""
+
+#: ui_bccuentabase.h:843
+msgid "C.P.:"
+msgstr ""
+
+#: ui_bccuentabase.h:844
+msgid "Codigo cuenta corriente.:"
+msgstr ""
+
+#: ui_bccuentabase.h:845
+msgid "Correo electronico:"
+msgstr ""
+
+#: ui_bccuentabase.h:846
+msgid "Provincia:"
+msgstr ""
+
+#: ui_bccuentabase.h:847
+msgid "URL de la pagina web:"
+msgstr ""
+
+#: ui_bccuentabase.h:848
+msgid "Poblacion:"
+msgstr ""
+
+#: ui_bccuentabase.h:849
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_bccuentabase.h:850
+msgid "&Otros datos"
+msgstr ""
+
+#: ui_bccuentabase.h:851
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_bccuentabase.h:852
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_bccuentalistbase.h:210
+msgid "Articulos"
+msgstr ""
+
+#: ui_bccuentalistbase.h:213 ui_bccuentalistbase.h:216
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_bccuentalistbase.h:220 ui_bccuentalistbase.h:223
+msgid "Filtrar listado"
+msgstr ""
+
+#: ui_bccuentalistbase.h:227 ui_bccuentalistbase.h:230
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_bccuentalistbase.h:240
+msgid "Buscar:"
+msgstr ""
+
+#: ui_bccuentalistbase.h:241
+msgid "Nivel minimo"
+msgstr ""
+
+#: ui_bccuentalistbase.h:244
+msgid "8"
+msgstr ""
+
+#: ui_bccuentalistbase.h:245
+msgid "7"
+msgstr ""
+
+#: ui_bccuentalistbase.h:247
+msgid "2"
+msgstr ""
+
+#: ui_bccuentalistbase.h:248
+msgid "3"
+msgstr ""
+
+#: ui_bccuentalistbase.h:249
+msgid "4"
+msgstr ""
+
+#: ui_bccuentalistbase.h:250
+msgid "5"
+msgstr ""
+
+#: ui_bccuentalistbase.h:251
+msgid "6"
+msgstr ""

@@ -1,0 +1,270 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: 2009-10-12 13:48+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_bcdiarioprintbase.h:159
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: ui_bcdiarioprintbase.h:157
+msgid "&Formato de aprendizaje"
+msgstr "&Formato de aprendizaje"
+
+#: ui_bcdiarioprintbase.h:158
+msgid "&Imprimir"
+msgstr "&Imprimir"
+
+#: ui_bcdiariobase.h:370
+msgid "&Incluir asientos abiertos"
+msgstr "&Incluir asientos abiertos"
+
+#: ui_bcdiarioprintbase.h:153
+msgid "&Kugar"
+msgstr "&Kugar"
+
+#: pluginbf_diario.cpp:59
+msgid "&Libro Diario"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:151
+msgid "&Texto Plano"
+msgstr "&Texto plano"
+
+#: pluginbf_diario.cpp:57
+msgid "&Ver"
+msgstr "&Ver"
+
+#: ui_bcdiariobase.h:360 ui_bcdiariobase.h:363
+msgid "Actualizar"
+msgstr "Actualizar"
+
+#: ui_bcdiariobase.h:367
+msgid "Apuntes con contrapartida:"
+msgstr "Apuntes con contrapartida:"
+
+#: ui_bcdiariobase.h:368
+msgid "Apuntes con saldo inferior a:"
+msgstr "Apuntes con saldo inferior a:"
+
+#: ui_bcdiariobase.h:369
+msgid "Apuntes con saldo superior a:"
+msgstr "Apuntes con saldo superior a:"
+
+#: bcdiariosubform.cpp:37
+msgid "Asiento"
+msgstr "Asiento"
+
+#: bcdiariosubform.cpp:51
+msgid "Canal"
+msgstr "Canal"
+
+#: bcdiariosubform.cpp:53
+msgid "Centro Coste"
+msgstr "Centro de coste"
+
+#: bcdiariosubform.cpp:45
+msgid "Comentario"
+msgstr "Comentario"
+
+#: bcdiariosubform.cpp:42
+msgid "Concepto contable"
+msgstr "Concepto contable"
+
+#: ui_bcdiariobase.h:353 ui_bcdiariobase.h:356
+msgid "Configurar listado"
+msgstr "Configurar listado"
+
+#: bcdiariosubform.cpp:49 bcdiariosubform.cpp:50
+msgid "Contrapartida"
+msgstr "Contrapartida"
+
+#: bcdiarioview.cpp:63
+msgid "Contrapartida:"
+msgstr ""
+
+#: bcdiariosubform.cpp:39
+msgid "Cuenta"
+msgstr "Cuenta"
+
+#: bcdiariosubform.cpp:43
+msgid "Debe"
+msgstr "Debe"
+
+#: bcdiariosubform.cpp:40
+msgid "Descripcion"
+msgstr "Descripción"
+
+#: bcdiariosubform.cpp:41
+msgid "Descripcion de Cuenta"
+msgstr "Descripción de cuenta"
+
+#: bcdiarioview.cpp:53 ui_bcdiariobase.h:337
+msgid "Diario"
+msgstr "Diario"
+
+#: bcdiarioview.cpp:174
+msgid "Diarios (*.txt)"
+msgstr "Diarios (*.txt)"
+
+#: ui_bcdiarioprintbase.h:150
+msgid "Documento:"
+msgstr "Documento:"
+
+#: ui_bcdiariobase.h:366
+msgid "F5"
+msgstr "F5"
+
+#: bcdiariosubform.cpp:54
+msgid "Factura"
+msgstr "Factura"
+
+#: bcdiariosubform.cpp:38
+msgid "Fecha"
+msgstr "Fecha"
+
+#: ui_bcdiariobase.h:372
+msgid "Fecha final:"
+msgstr "Fecha final:"
+
+#: ui_bcdiariobase.h:371
+msgid "Fecha inicial:"
+msgstr "Fecha inicial:"
+
+#: ui_bcdiarioprintbase.h:156
+msgid "Formato &normal"
+msgstr "Formato &normal"
+
+#: ui_bcdiarioprintbase.h:155
+msgid "Formato del listado:"
+msgstr "Formato del listado:"
+
+#: bcdiarioview.cpp:172
+msgid "Guardar Libro Diario"
+msgstr "Guardar Libro Diario"
+
+#: ui_bcdiarioprintbase.h:152
+msgid "HT&ML"
+msgstr "HT&ML"
+
+#: bcdiariosubform.cpp:44
+msgid "Haber"
+msgstr "Haber"
+
+#: ui_bcdiarioprintbase.h:149
+msgid "Impresion del Diario"
+msgstr "Impresión del Diario"
+
+#: ui_bcdiariobase.h:339 ui_bcdiariobase.h:342
+msgid "Imprimir"
+msgstr "Imprimir"
+
+#: bcdiariosubform.cpp:52
+msgid "MarcaConciliacion"
+msgstr "Marca conciliación"
+
+#: bcdiariosubform.cpp:96 bcdiariosubform.cpp:113
+msgid "Mostrar asiento"
+msgstr "Mostrar asiento"
+
+#: bcdiariosubform.cpp:100 bcdiariosubform.cpp:119
+msgid "Mostrar extracto (ano)"
+msgstr "Mostrar extracto (año)"
+
+#: bcdiariosubform.cpp:98 bcdiariosubform.cpp:115
+msgid "Mostrar extracto (dia)"
+msgstr "Mostrar extracto (día)"
+
+#: bcdiariosubform.cpp:99 bcdiariosubform.cpp:117
+msgid "Mostrar extracto (mes)"
+msgstr "Mostrar extracto (mes)"
+
+#: ui_bcdiariobase.h:346 ui_bcdiariobase.h:349
+msgid "Mostrar/ocultar filtro"
+msgstr "Mostrar/ocultar filtro"
+
+#: pluginbf_diario.cpp:60
+msgid "Permite ver el Diario"
+msgstr ""
+
+#: pluginbf_diario.cpp:76
+msgid "PluginBc_Diario"
+msgstr ""
+
+#: pluginbf_diario.cpp:61
+msgid "Podra disponer de la informacion del Diario"
+msgstr ""
+
+#: ui_bcdiarioprintbase.h:154
+msgid "Propietario"
+msgstr "Propietario"
+
+#: ui_bcdiariobase.h:373
+msgid "Total Debe:"
+msgstr "Total Debe:"
+
+#: ui_bcdiariobase.h:374
+msgid "Total Haber:"
+msgstr "Total Haber:"
+
+#: bcdiariosubform.cpp:47
+msgid "codigoborrador"
+msgstr "codigoborrador"
+
+#: bcdiariosubform.cpp:55
+msgid "idapunte"
+msgstr "idapunte"
+
+#: bcdiariosubform.cpp:35
+msgid "idasiento"
+msgstr "idasiento"
+
+#: bcdiariosubform.cpp:46
+msgid "idborrador"
+msgstr "idborrador"
+
+#: bcdiariosubform.cpp:59
+msgid "idc_coste"
+msgstr "idc_coste"
+
+#: bcdiariosubform.cpp:58
+msgid "idcanal"
+msgstr "idcanal"
+
+#: bcdiariosubform.cpp:61
+msgid "idcuenta"
+msgstr "idcuenta"
+
+#: bcdiariosubform.cpp:60
+msgid "iddiario"
+msgstr "iddiario"
+
+#: bcdiariosubform.cpp:57
+msgid "idregistroiva"
+msgstr "idregistroiva"
+
+#: bcdiariosubform.cpp:56
+msgid "idtipoiva"
+msgstr "idtipoiva"
+
+#: bcdiariosubform.cpp:48
+msgid "tipocuenta"
+msgstr "tipocuenta"
+
+#~ msgid "menuVentana"
+#~ msgstr "menuVentana"

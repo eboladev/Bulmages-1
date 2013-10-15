@@ -1,0 +1,172 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: 2009-04-19 20:39+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_datosbase.h:151
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_datosbase.h:152
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: datosview.cpp:110
+msgid "Calculando Balance y Resultados"
+msgstr "Calculando Balance y Resultados"
+
+#: datosview.cpp:36
+msgid "Cuenta"
+msgstr "Cuenta"
+
+#: pluginbf_ccaa2ods.cpp:204
+msgid "Cuentas Anuales &ODS"
+msgstr ""
+
+#: ui_datosbase.h:147
+msgid "Datos para generar el balance"
+msgstr "Datos para generar el balance"
+
+#: datosview.cpp:85
+msgid "ERROR: Debe introducir una fecha final del balance actual."
+msgstr "ERROR: Debe introducir una fecha final del balance actual."
+
+#: datosview.cpp:94
+msgid "ERROR: Debe introducir una fecha final del balance anterior."
+msgstr "ERROR: Debe introducir una fecha final del balance anterior."
+
+#: datosview.cpp:81
+msgid "ERROR: Debe introducir una fecha inicial del balance actual."
+msgstr "ERROR: Debe introducir una fecha inicial del balance actual."
+
+#: datosview.cpp:90
+msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
+msgstr "ERROR: Debe introducir una fecha inicial del balance anterior."
+
+#: datosview.cpp:117
+msgid "ERROR: Ha habido un error generando el informe"
+msgstr "ERROR: Ha habido un error generando el informe."
+
+#: datosview.cpp:41
+msgid "Fecha Final Actual"
+msgstr "Fecha final actual"
+
+#: datosview.cpp:43
+msgid "Fecha Final Anterior"
+msgstr "Fecha final anterior"
+
+#: datosview.cpp:40
+msgid "Fecha Inicial Actual"
+msgstr "Fecha inicial actual"
+
+#: datosview.cpp:42
+msgid "Fecha Inicial Anterior"
+msgstr "Fecha inicial anterior"
+
+#: ui_datosbase.h:150 ui_datosbase.h:155
+msgid "Fecha final del balance:"
+msgstr "Fecha final del balance:"
+
+#: ui_datosbase.h:149 ui_datosbase.h:154
+msgid "Fecha inicial del balance:"
+msgstr "Fecha inicial del balance:"
+
+#: datosview.cpp:39
+msgid "Id cuenta"
+msgstr "ID cuenta"
+
+#: ui_datosbase.h:148
+msgid "Periodo actual:"
+msgstr "Período actual:"
+
+#: ui_datosbase.h:153
+msgid "Periodo anterior:"
+msgstr "Período anterior:"
+
+#~ msgid "&Cuentas Anuales"
+#~ msgstr "&Cuentas Anuales"
+
+#~ msgid "&Cuentas Anuales PGC"
+#~ msgstr "&Cuentas Anuales PGC"
+
+#~ msgid "&PGC 2008"
+#~ msgstr "&PGC 2008"
+
+#~ msgid "Advertencia: ha escojido las "
+#~ msgstr "Advertencia: ha escojido las "
+
+#~ msgid "Cuentas A. Abreviadas &Sin lucro"
+#~ msgstr "Cuentas A. Abreviadas &Sin lucro"
+
+#~ msgid "Cuentas Anuales &Abreviadas PGC"
+#~ msgstr "Cuentas Anuales &Abreviadas PGC"
+
+#~ msgid "Cuentas Anuales &PYMES"
+#~ msgstr "Cuentas Anuales &PYMES"
+
+#~ msgid "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
+#~ msgstr "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
+
+#~ msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
+#~ msgstr "Cuentas Anuales Abreviadas Plan General Contable 2008"
+
+#~ msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+#~ msgstr "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+
+#~ msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+#~ msgstr "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+
+#~ msgid "Cuentas Anuales PYMES 2008"
+#~ msgstr "Cuentas Anuales PYMES 2008"
+
+#~ msgid "Cuentas Anuales Plan General Contable 2008"
+#~ msgstr "Cuentas Anuales Plan General Contable 2008"
+
+#~ msgid "Cuentas Anuales Plan General Contable hasta 2007"
+#~ msgstr "Cuentas Anuales Plan General Contable hasta 2007"
+
+#~ msgid "Cuentas Anuales del Plan General Contable 2008. "
+#~ msgstr "Cuentas Anuales del Plan General Contable 2008. "
+
+#~ msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
+#~ msgstr "Cuentas Anuales del Plan General Contable hasta 2007. "
+
+#~ msgid "Cuentas Anuales para PYMES 2008. "
+#~ msgstr "Cuentas Anuales para PYMES 2008. "
+
+#~ msgid "ERROR: Funcion no implementada todavia."
+#~ msgstr "ERROR: Funcion no implementada todavia."
+
+#~ msgid "Ejercicio actual:"
+#~ msgstr "Ejercicio actual:"
+
+#~ msgid "Ejercicio anterior:"
+#~ msgstr "Ejercicio anterior:"
+
+#~ msgid ""
+#~ "El resultado solo sera correcto si coincide con el plan contable de su "
+#~ "empresa."
+#~ msgstr ""
+#~ "El resultado solo sera correcto si coincide con el plan contable de su "
+#~ "empresa."
+
+#~ msgid "Fecha balance:"
+#~ msgstr "Fecha balance:"
+
+#~ msgid "PGC &Anterior 2008"
+#~ msgstr "PGC &Anterior 2008"

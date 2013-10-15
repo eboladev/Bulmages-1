@@ -1,0 +1,342 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2009, 2011.
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: 2011-02-15 09:27+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ui_bcamortizacionbase.h:675
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: pluginbc_amortizacion.cpp:57
+msgid "&Amortizaciones"
+msgstr "&Amortissements"
+
+#: ui_bcamortizacionbase.h:669
+msgid "&Calcular"
+msgstr "&Calculer"
+
+#: ui_bcamortizacionbase.h:676
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: ui_bcamortizacionbase.h:665
+msgid "&Decremental"
+msgstr "&Décrémenter"
+
+#: ui_bcamortizacionbase.h:666
+msgid "&Incremental"
+msgstr "&Incrémenter"
+
+#: pluginbc_amortizacion.cpp:55
+msgid "&Ver"
+msgstr "&Afficher"
+
+#: bcamortizacionview.cpp:86
+msgid "Agrupacion"
+msgstr "Groupement"
+
+#: ui_bcamortizacionbase.h:648
+msgid "Agrupacion:"
+msgstr "Groupement :"
+
+#: ui_bcamortizacionbase.h:670
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: ui_bcamortizacionbase.h:667
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: ui_bcamortizacionbase.h:674
+msgid "Amor&tizacion"
+msgstr "Amor&tissement"
+
+#: bcamortizacionview.cpp:71 ui_bcamortizacionbase.h:630
+msgid "Amortizacion"
+msgstr "Amortissement"
+
+#: ui_bcamortizacionbase.h:672
+msgid "Amortizado:"
+msgstr "Amorti :"
+
+#: bcamortizacionview.cpp:266 bcamortizacionview.cpp:293
+#: bcamortizacionview.cpp:321 bcamortizacionview.cpp:352
+#: ui_bcamortizacionbase.h:653
+msgid "Anual"
+msgstr "Annuel"
+
+# Effacer l'amortissement
+#: ui_bcamortizacionbase.h:640 ui_bcamortizacionbase.h:643
+#: ui_bcamortizacionlistbase.h:143 ui_bcamortizacionlistbase.h:146
+#: ui_bcamortizacionlistbase.h:151 ui_bcamortizacionlistbase.h:154
+msgid "Borrar amortizacion"
+msgstr "Effacer l'amortissement"
+
+#: bcamortizacionview.cpp:405 bcamortizacionview.cpp:446
+#: bcamortizacionview.cpp:455 bcamortizacionview.cpp:462
+msgid "Borrar asiento"
+msgstr "Effacer l'écriture"
+
+#: bcamortizacionview.cpp:436
+msgid "Borrar cuota"
+msgstr "Effacer le quota"
+
+#: bcamortizacionview.cpp:96
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: ui_bcamortizacionbase.h:646 ui_bcamortizacionlistbase.h:149
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_bcamortizacionlistbase.h:141
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_bcamortizacionbase.h:638
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: bcamortizacionview.cpp:53
+msgid "Cuenta activa:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:659
+msgid "Cuenta de activo:"
+msgstr "Compte d'actif :"
+
+#: bcamortizacionview.cpp:63 ui_bcamortizacionbase.h:662
+msgid "Cuenta de amortizacion:"
+msgstr "Compte d'amortissement :"
+
+#: ui_bcamortizacionbase.h:671
+msgid "Cuotas:"
+msgstr "Quotas :"
+
+#: bcamortizacionview.cpp:75
+msgid "Descripcion de la amortizacion"
+msgstr "Description de l'amortissement"
+
+#: bcamortizacionview.cpp:404 bcamortizacionview.cpp:455
+msgid "Desvincular asiento"
+msgstr "Délier l'écriture"
+
+#: bcamortizacionview.cpp:84
+msgid "Direccion del proveedor"
+msgstr "Direction du fournisseur"
+
+#: bcamortizacionview.cpp:94
+msgid "Ejercicio"
+msgstr "Exercice"
+
+#: bcamortizacionlistview.cpp:111 bcamortizacionlistview.cpp:112
+msgid "Error al borrar la amortizacion."
+msgstr ""
+
+#: bcamortizacionview.cpp:231
+msgid "Error en la carga de la amortizacion"
+msgstr "Erreur en chargement de l'amortissement"
+
+#: ui_bcamortizacionlistbase.h:157
+msgid "F5"
+msgstr "F5"
+
+#: bcamortizacionlistview.cpp:50
+msgid "Fecha 1 cuota"
+msgstr "Date 1 du quota"
+
+#: bcamortizacionview.cpp:77
+msgid "Fecha 1a cuota"
+msgstr "Date 1a du quota"
+
+#: ui_bcamortizacionbase.h:658
+msgid "Fecha 1ª cuota:"
+msgstr "Date 1.ª du quota :"
+
+#: bcamortizacionlistview.cpp:49
+msgid "Fecha compra"
+msgstr "Date d'achat"
+
+#: ui_bcamortizacionbase.h:650
+msgid "Fecha de compra:"
+msgstr "Date d'achat :"
+
+#: bcamortizacionview.cpp:76
+msgid "Fecha de la compra"
+msgstr "Date d'achat "
+
+#: bcamortizacionview.cpp:95
+msgid "Fecha prevista"
+msgstr "Date prévue"
+
+#: bcamortizacionlistview.cpp:132
+#, qt-format
+msgid "Fila '%1'"
+msgstr ""
+
+#: bcamortizacionview.cpp:400 bcamortizacionview.cpp:474
+msgid "Generar asiento"
+msgstr "Générer l'écriture"
+
+#: ui_bcamortizacionbase.h:632 ui_bcamortizacionbase.h:635
+msgid "Guardar amortizacion"
+msgstr "Sauvegarder l'amortissement"
+
+#: bcamortizacionview.cpp:87 bcamortizacionview.cpp:99
+#: bcamortizacionlistview.cpp:47
+msgid "Id amortizacion"
+msgstr "ID amortissement"
+
+#: bcamortizacionview.cpp:97
+msgid "Id asiento"
+msgstr "ID écriture"
+
+#: bcamortizacionview.cpp:89
+msgid "Id cuenta amortizacion"
+msgstr "ID Compte amortissement"
+
+#: bcamortizacionview.cpp:98
+msgid "Id lineas de amortizacion"
+msgstr "ID lignes d'amortissement"
+
+#: bcamortizacionview.cpp:88
+msgid "Identificador"
+msgstr "Identificateur"
+
+#: ui_bcamortizacionbase.h:668
+msgid "Li&neal"
+msgstr "Li&néaire "
+
+#: ui_bcamortizacionlistbase.h:133
+msgid "Listado de amortizaciones"
+msgstr "Liste des amortissements "
+
+#: bcamortizacionview.cpp:268 bcamortizacionview.cpp:295
+#: bcamortizacionview.cpp:323 bcamortizacionview.cpp:354
+#: ui_bcamortizacionbase.h:656
+msgid "Mensual"
+msgstr "Mensuel"
+
+#: bcamortizacionview.cpp:81
+msgid "Metodo"
+msgstr "Méthode"
+
+#: ui_bcamortizacionbase.h:663
+msgid "Metodo:"
+msgstr "Méthode :"
+
+#: bcamortizacionview.cpp:82
+msgid "NIF del proveedor"
+msgstr "NIF du fournisseur"
+
+#: bcamortizacionlistview.cpp:48
+msgid "Nombre"
+msgstr "Nom"
+
+#: bcamortizacionview.cpp:74
+msgid "Nombre de la amortizacion"
+msgstr "Nom de l'amortissement"
+
+#: bcamortizacionview.cpp:83
+msgid "Nombre del proveedor"
+msgstr "Nom du fournisseur"
+
+#: ui_bcamortizacionbase.h:647
+msgid "Nombre:"
+msgstr "Nom :"
+
+#: ui_bcamortizacionlistbase.h:135 ui_bcamortizacionlistbase.h:138
+msgid "Nueva amortizacion"
+msgstr "Nouvel amortissement"
+
+#: bcamortizacionlistview.cpp:51
+msgid "Num cuotas"
+msgstr "Numéro de quotas"
+
+#: bcamortizacionview.cpp:80
+msgid "Numero de cuotas"
+msgstr "Numéro de quotas"
+
+#: ui_bcamortizacionbase.h:649
+msgid "Nº de cuotas:"
+msgstr " Nº de quotas :"
+
+#: ui_bcamortizacionbase.h:673
+msgid "Pendiente:"
+msgstr "En suspens :"
+
+#: bcamortizacionview.cpp:79
+msgid "Periodicidad"
+msgstr "Périodicité"
+
+#: ui_bcamortizacionbase.h:660
+msgid "Periodicidad:"
+msgstr "Périodicité :"
+
+#: pluginbc_amortizacion.cpp:58
+msgid "Permite ver las amortizaciones"
+msgstr "Afficher les amortissements "
+
+#: pluginbc_amortizacion.cpp:59
+msgid "Podra disponer de la informacion de las amortizaciones"
+msgstr "Disponibilité des infos des amortissements"
+
+#: ui_bcamortizacionbase.h:664
+msgid "Porcent&ual"
+msgstr "Po&urcentage"
+
+#: bcamortizacionview.cpp:270 bcamortizacionview.cpp:297
+#: bcamortizacionview.cpp:325 bcamortizacionview.cpp:356
+#: ui_bcamortizacionbase.h:654
+msgid "Semestral"
+msgstr "Semestriel"
+
+#: bcamortizacionview.cpp:85
+msgid "Telefono del proveedor"
+msgstr "Téléphone du fournisseur"
+
+#: bcamortizacionview.cpp:272 bcamortizacionview.cpp:299
+#: bcamortizacionview.cpp:327 bcamortizacionview.cpp:358
+#: ui_bcamortizacionbase.h:655
+msgid "Trimestral"
+msgstr "Trimestriel"
+
+#: ui_bcamortizacionbase.h:661
+msgid "Valor de compra:"
+msgstr "Valeur d'achat :"
+
+#: bcamortizacionview.cpp:78
+msgid "Valor de la compra"
+msgstr "Valeur d'achat "
+
+#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:446
+msgid "Ver asiento"
+msgstr "Afficher l'écriture"
+
+#~ msgid "Cuenta Activo:"
+#~ msgstr "Compte activé :"
+
+#~ msgid "Cuenta de Amortizacion:"
+#~ msgstr "Compte d'amortissement :"
+
+#~ msgid "Error al borrar la amortizacion"
+#~ msgstr "Erreur d'effacement de l'amortissement"

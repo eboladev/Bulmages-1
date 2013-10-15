@@ -1,0 +1,570 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bcasientoview.cpp:336
+msgid "Asiento inexistente."
+msgstr ""
+
+#: bcasientoview.cpp:337
+msgid "Desea crear un nuevo asiento en esa posicion?"
+msgstr ""
+
+#: bcasientoview.cpp:338
+msgid "&Si"
+msgstr ""
+
+#: bcasientoview.cpp:338
+msgid "&No"
+msgstr ""
+
+#: bcasientoview.cpp:529
+msgid "No existe ningun asiento para mostrar"
+msgstr ""
+
+#: bcasientoview.cpp:914
+#, qt-format
+msgid "Fecha inicial = '%1', fecha final = '%2'."
+msgstr ""
+
+#: bcasientoview.cpp:955
+msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
+msgstr ""
+
+#: bcasientoview.cpp:1078 pluginbf_asiento.cpp:107 pluginbf_asiento.cpp:108
+msgid "Asiento de cierre"
+msgstr ""
+
+#: bcasientoview.cpp:1147 pluginbf_asiento.cpp:101 pluginbf_asiento.cpp:102
+msgid "Asiento de apertura"
+msgstr ""
+
+#: bcasientosubform.cpp:39
+msgid "Id apunte"
+msgstr ""
+
+#: bcasientosubform.cpp:40 pluginbf_asiento.cpp:176
+#: bcasientolistsubform.cpp:38
+msgid "Fecha"
+msgstr ""
+
+#: bcasientosubform.cpp:41
+msgid "Codigo"
+msgstr ""
+
+#: bcasientosubform.cpp:42
+msgid "Nombre de la cuenta"
+msgstr ""
+
+#: bcasientosubform.cpp:43
+msgid "Descripcion del apunte"
+msgstr ""
+
+#: bcasientosubform.cpp:44
+msgid "Concepto contable"
+msgstr ""
+
+#: bcasientosubform.cpp:45 bcasientolistsubform.cpp:42
+msgid "Debe"
+msgstr ""
+
+#: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
+msgid "Haber"
+msgstr ""
+
+#: bcasientosubform.cpp:47
+msgid "Contrapartida"
+msgstr ""
+
+#: bcasientosubform.cpp:48
+msgid "Comentario"
+msgstr ""
+
+#: bcasientosubform.cpp:49
+msgid "ID Canal"
+msgstr ""
+
+#: bcasientosubform.cpp:50
+msgid "Canal"
+msgstr ""
+
+#: bcasientosubform.cpp:51
+msgid "Conciliacion"
+msgstr ""
+
+#: bcasientosubform.cpp:52
+msgid "Id centro de coste"
+msgstr ""
+
+#: bcasientosubform.cpp:53
+msgid "Centro de coste"
+msgstr ""
+
+#: bcasientosubform.cpp:54
+msgid "Id tipo de IVA"
+msgstr ""
+
+#: bcasientosubform.cpp:55 bcasientolistsubform.cpp:37
+msgid "Orden"
+msgstr ""
+
+#: bcasientosubform.cpp:56
+msgid "Id borrador"
+msgstr ""
+
+#: bcasientosubform.cpp:57 bcasientoform.cpp:45 bcasientolistsubform.cpp:46
+msgid "Id asiento"
+msgstr ""
+
+#: bcasientosubform.cpp:58
+msgid "Id cuenta"
+msgstr ""
+
+#: bcasientosubform.cpp:59
+msgid "Tipo de cuenta"
+msgstr ""
+
+#: bcasientosubform.cpp:60
+msgid "Id. Registro IVA"
+msgstr ""
+
+#: bcasientosubform.cpp:61
+msgid "Fecha Factura"
+msgstr ""
+
+#: bcasientosubform.cpp:62
+msgid "Num. Factura"
+msgstr ""
+
+#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
+#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
+msgid "Mostrar asiento"
+msgstr ""
+
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
+#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
+msgid "Mostrar extracto (dia)"
+msgstr ""
+
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
+#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
+msgid "Mostrar extracto (mes)"
+msgstr ""
+
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
+#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
+msgid "Mostrar extracto (ano)"
+msgstr ""
+
+#: pluginbf_asiento.cpp:64
+msgid "&Asiento"
+msgstr ""
+
+#: pluginbf_asiento.cpp:66
+msgid "&Asiento contable"
+msgstr ""
+
+#: pluginbf_asiento.cpp:67
+msgid "Permite ver y modificar asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:68
+msgid "Podra disponer de la informacion del asiento"
+msgstr ""
+
+#: pluginbf_asiento.cpp:75
+msgid "&Lista de asientos contables"
+msgstr ""
+
+#: pluginbf_asiento.cpp:76 pluginbf_asiento.cpp:77
+msgid "Permite ver el listado de asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:85
+msgid "&Espaciar asientos contables"
+msgstr ""
+
+#: pluginbf_asiento.cpp:86 pluginbf_asiento.cpp:87
+msgid "Ordena los asientos dejando espacios entre ellos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:92
+msgid "&Reordenar asientos contables"
+msgstr ""
+
+#: pluginbf_asiento.cpp:93 pluginbf_asiento.cpp:94
+msgid "Ordena los asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:100
+msgid "Asiento de a&pertura"
+msgstr ""
+
+#: pluginbf_asiento.cpp:106
+msgid "Asiento de &cierre"
+msgstr ""
+
+#: pluginbf_asiento.cpp:112
+msgid "Asiento de &regularizacion"
+msgstr ""
+
+#: pluginbf_asiento.cpp:113 pluginbf_asiento.cpp:114
+msgid "Asiento de regularizacion"
+msgstr ""
+
+#: pluginbf_asiento.cpp:147
+msgid "Se han espaciado los asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:150
+msgid "Ha habido un error al espaciar los asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:161
+msgid "Se han ordenado los asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:164
+msgid "Ha habido un error al ordenar los asientos"
+msgstr ""
+
+#: pluginbf_asiento.cpp:176 ui_bcasientobase.h:560
+msgid "Fecha:"
+msgstr ""
+
+#: pluginbf_asiento.cpp:193 pluginbf_asiento.cpp:222
+msgid "Fecha inicial"
+msgstr ""
+
+#: pluginbf_asiento.cpp:193
+msgid "Fecha inicial ejercicio:"
+msgstr ""
+
+#: pluginbf_asiento.cpp:203 pluginbf_asiento.cpp:231
+msgid "Fecha final"
+msgstr ""
+
+#: pluginbf_asiento.cpp:203
+msgid "Fecha final ejercicio:"
+msgstr ""
+
+#: pluginbf_asiento.cpp:222
+msgid "Fecha inicial regularizacion:"
+msgstr ""
+
+#: pluginbf_asiento.cpp:231
+msgid "Fecha final regularizacion:"
+msgstr ""
+
+#: bcasientolistview.cpp:44
+msgid "Todos los asientos"
+msgstr ""
+
+#: bcasientolistview.cpp:45
+msgid "Asientos cerrados"
+msgstr ""
+
+#: bcasientolistview.cpp:46
+msgid "Asientos abiertos"
+msgstr ""
+
+#: bcasientolistview.cpp:68
+msgid "(todos)"
+msgstr ""
+
+#: bcasientolistview.cpp:236
+msgid "La fecha inicial es posterior a la fecha final."
+msgstr ""
+
+#: bcasientolistview.cpp:309
+msgid "Asientos"
+msgstr ""
+
+#: bcasientoform.cpp:42
+msgid "Asiento contable"
+msgstr ""
+
+#: bcasientoform.cpp:46
+msgid "Descripcion del asiento"
+msgstr ""
+
+#: bcasientoform.cpp:47
+msgid "Fecha del asiento"
+msgstr ""
+
+#: bcasientoform.cpp:48
+msgid "Comentarios del asiento"
+msgstr ""
+
+#: bcasientoform.cpp:49
+msgid "Orden de asiento"
+msgstr ""
+
+#: bcasientoform.cpp:50
+msgid "Tipo de asiento"
+msgstr ""
+
+#: bcasientoform.cpp:170 ui_bcasientobase.h:531 ui_bcasientobase.h:534
+msgid "Borrar asiento"
+msgstr ""
+
+#: bcasientoform.cpp:171
+msgid "Se va a borrar el asiento. ¿Esta seguro?"
+msgstr ""
+
+#: bcasientoform.cpp:428
+msgid "El asiento se ha guardado correctamente."
+msgstr ""
+
+#: bcasientoform.cpp:433
+msgid "Error en el guardardo"
+msgstr ""
+
+#: bcasientointeligenteview.cpp:59 ui_bcasientobase.h:476
+msgid "Asiento"
+msgstr ""
+
+#: bcasientointeligenteview.cpp:442
+msgid "Cuenta:"
+msgstr ""
+
+#: bcasientointeligenteview.cpp:623
+msgid "Error al crear el asiento"
+msgstr ""
+
+#: bcasientolistsubform.cpp:39
+msgid "Apuntes"
+msgstr ""
+
+#: bcasientolistsubform.cpp:40
+msgid "Borrador"
+msgstr ""
+
+#: bcasientolistsubform.cpp:41
+msgid "Comentarios"
+msgstr ""
+
+#: bcasientolistsubform.cpp:44
+msgid "Debe borrador"
+msgstr ""
+
+#: bcasientolistsubform.cpp:45
+msgid "Haber borrador"
+msgstr ""
+
+#: bcasientolistsubform.cpp:47
+msgid "Clase"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:210
+msgid "Aplicar asiento inteligente"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:500
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:212
+msgid "&Fecha del asiento:"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:213
+msgid "&Plantilla:"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:214
+msgid "Datos del asiento:"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:215
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:216
+msgid "Return"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:217
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_bcasientolistbase.h:462
+msgid "Listado de asientos"
+msgstr ""
+
+#: ui_bcasientolistbase.h:463
+msgid "&Mostrar:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:464
+msgid "&Ejercicio:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:465
+msgid "&Concepto:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:466
+msgid "Fecha &inicial:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:467
+msgid "Fecha &final:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:468
+msgid "&Partida igual a:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:469
+msgid "y   ( >="
+msgstr ""
+
+#: ui_bcasientolistbase.h:470
+msgid "y <="
+msgstr ""
+
+#: ui_bcasientolistbase.h:471
+msgid ")"
+msgstr ""
+
+#: ui_bcasientolistbase.h:472
+msgid "Debe:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:473
+msgid "Haber:"
+msgstr ""
+
+#: ui_bcasientolistbase.h:474
+msgid "Debe (borrador):"
+msgstr ""
+
+#: ui_bcasientolistbase.h:475
+msgid "Haber (borrador):"
+msgstr ""
+
+#: ui_bcasientolistbase.h:477 ui_bcasientolistbase.h:480
+msgid "Imprimir"
+msgstr ""
+
+#: ui_bcasientolistbase.h:484 ui_bcasientolistbase.h:487
+msgid "Filtrar"
+msgstr ""
+
+#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
+msgid "Configurar"
+msgstr ""
+
+#: ui_bcasientolistbase.h:498 ui_bcasientolistbase.h:501
+msgid "Actualizar"
+msgstr ""
+
+#: ui_bcasientobase.h:478 ui_bcasientobase.h:481
+msgid "Abrir asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:484
+msgid "Ctrl+A"
+msgstr ""
+
+#: ui_bcasientobase.h:486 ui_bcasientobase.h:489
+msgid "Cerrar asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:492
+msgid "Ctrl+C"
+msgstr ""
+
+#: ui_bcasientobase.h:494 ui_bcasientobase.h:497
+msgid "Guardar asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:502 ui_bcasientobase.h:505 ui_bcasientobase.h:508
+#: ui_bcasientobase.h:511
+msgid "Nuevo asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:514
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_bcasientobase.h:516 ui_bcasientobase.h:519
+msgid "Extender asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:522
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_bcasientobase.h:537
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_bcasientobase.h:539 ui_bcasientobase.h:542
+msgid "Exportar asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:546 ui_bcasientobase.h:549
+msgid "Importar asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:553 ui_bcasientobase.h:556
+msgid "Asientos inteligentes"
+msgstr ""
+
+#: ui_bcasientobase.h:559
+msgid "Ctrl+M"
+msgstr ""
+
+#: ui_bcasientobase.h:561
+msgid "Orden del asiento:"
+msgstr ""
+
+#: ui_bcasientobase.h:562
+msgid "Descuadre:"
+msgstr ""
+
+#: ui_bcasientobase.h:565
+msgid "Normal"
+msgstr ""
+
+#: ui_bcasientobase.h:566
+msgid "Regularizacion"
+msgstr ""
+
+#: ui_bcasientobase.h:567
+msgid "Cierre"
+msgstr ""
+
+#: ui_bcasientobase.h:568
+msgid "Apertura"
+msgstr ""
+
+#: ui_bcasientobase.h:570
+msgid "Saldo:"
+msgstr ""
+
+#: ui_bcasientobase.h:571
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_bcasientobase.h:572
+msgid "Total Haber:"
+msgstr ""

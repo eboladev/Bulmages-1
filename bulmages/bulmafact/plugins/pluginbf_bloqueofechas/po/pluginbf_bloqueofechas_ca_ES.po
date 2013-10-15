@@ -1,0 +1,140 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: 2009-11-27 17:56+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pluginbf_bloqueofechas.cpp:52
+msgid "&Bloqueo de Fechas"
+msgstr ""
+
+#: pluginbf_bloqueofechas.cpp:50
+msgid "&Herramientas"
+msgstr "&Eines"
+
+#: ui_bcbloqueafechabase.h:144
+msgid "1"
+msgstr "1"
+
+#: bcbloqueafechaview.cpp:82
+msgid "Abierto"
+msgstr "Obert"
+
+#: bcbloqueafechaview.cpp:182
+msgid "Abril"
+msgstr "Abril"
+
+#: bcbloqueafechaview.cpp:166
+msgid "Agosto"
+msgstr "Agost"
+
+#: ui_bcbloqueafechabase.h:136
+msgid "Agregar Ejercicio"
+msgstr "Afegir exercici"
+
+#: ui_bcbloqueafechabase.h:139
+msgid "Agregar ejercicio"
+msgstr "Afegir exercici"
+
+#: bcbloqueafechaview.cpp:81
+msgid "Bloqueado"
+msgstr "Bloquejat"
+
+#: bcbloqueafechaview.cpp:77
+msgid "Bloquear Fechas"
+msgstr "Bloqueja dates"
+
+#: ui_bcbloqueafechabase.h:134
+msgid "Bloquear fechas"
+msgstr "Bloqueja dates"
+
+#: pluginbf_bloqueofechas.cpp:53 pluginbf_bloqueofechas.cpp:54
+msgid "Bloqueo de Fechas"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:148
+msgid "Cerrar"
+msgstr "Tanca"
+
+#: ui_bcbloqueafechabase.h:142
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: bcbloqueafechaview.cpp:150
+msgid "Diciembre"
+msgstr "Desembre"
+
+#: bcbloqueafechaview.cpp:118
+msgid "Ejercicio"
+msgstr "Exercici"
+
+#: bcbloqueafechaview.cpp:271
+msgid "Ejercicios ya contemplado"
+msgstr "Exercicis ja contemplats"
+
+#: bcbloqueafechaview.cpp:194
+msgid "Enero"
+msgstr "Gener"
+
+#: bcbloqueafechaview.cpp:118
+msgid "Estado"
+msgstr "Estat"
+
+#: bcbloqueafechaview.cpp:190
+msgid "Febrero"
+msgstr "Febrer"
+
+#: ui_bcbloqueafechabase.h:146
+msgid "Hacer doble click para bloquear/desbloquear fechas"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:257
+#, fuzzy
+msgid "Introduzca Ejercicio a Crear"
+msgstr "Exercici"
+
+#: bcbloqueafechaview.cpp:170
+msgid "Julio"
+msgstr "Juliol"
+
+#: bcbloqueafechaview.cpp:174
+msgid "Junio"
+msgstr "Juny"
+
+#: bcbloqueafechaview.cpp:186
+msgid "Marzo"
+msgstr "Març"
+
+#: bcbloqueafechaview.cpp:178
+msgid "Mayo"
+msgstr "Maig"
+
+#: bcbloqueafechaview.cpp:154
+msgid "Noviembre"
+msgstr "Novembre"
+
+#: bcbloqueafechaview.cpp:158
+msgid "Octubre"
+msgstr "Octubre"
+
+#: bcbloqueafechaview.cpp:258
+msgid "Ponga el anyo:"
+msgstr "Posi l'any:"
+
+#: bcbloqueafechaview.cpp:162
+msgid "Septiembre"
+msgstr "Setembre"

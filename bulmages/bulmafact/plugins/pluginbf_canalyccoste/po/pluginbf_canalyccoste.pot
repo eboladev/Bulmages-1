@@ -1,0 +1,333 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: canalyccostesubform.cpp:36
+msgid "Id cuenta"
+msgstr ""
+
+#: canalyccostesubform.cpp:37
+msgid "Tipo cuenta"
+msgstr ""
+
+#: canalyccostesubform.cpp:38 canalyccosteview.cpp:277
+msgid "Codigo"
+msgstr ""
+
+#: canalyccostesubform.cpp:39
+msgid "Descripcion"
+msgstr ""
+
+#: canalyccostesubform.cpp:40
+msgid "Saldo apunte"
+msgstr ""
+
+#: canalyccostesubform.cpp:41
+msgid "Total debe"
+msgstr ""
+
+#: canalyccostesubform.cpp:42
+msgid "Total haber"
+msgstr ""
+
+#: canalyccostesubform.cpp:43
+msgid "Total saldo"
+msgstr ""
+
+#: canalyccostesubform.cpp:44
+msgid "Ejercicio debe"
+msgstr ""
+
+#: canalyccostesubform.cpp:45
+msgid "Ejercico haber"
+msgstr ""
+
+#: canalyccostesubform.cpp:46
+msgid "Ejercicio saldo"
+msgstr ""
+
+#: canalyccostesubform.cpp:77
+msgid "Borrar registro"
+msgstr ""
+
+#: canalyccostesubform.cpp:79
+msgid "Ajustar columa"
+msgstr ""
+
+#: canalyccostesubform.cpp:80
+msgid "Ajustar altura"
+msgstr ""
+
+#: canalyccostesubform.cpp:81
+msgid "Ajustar columnas"
+msgstr ""
+
+#: canalyccostesubform.cpp:82
+msgid "Ajustar alturas"
+msgstr ""
+
+#: canalyccostesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr ""
+
+#: canalyccosteview.cpp:61 ui_canalyccostesprintdlg.h:198
+msgid "Balance"
+msgstr ""
+
+#: canalyccosteview.cpp:68 canalyccosteprintview.cpp:56 ui_canalyccostebase.h:439
+#: ui_canalyccostetreebase.h:407
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: canalyccosteview.cpp:77 canalyccosteprintview.cpp:64 ui_canalyccostebase.h:441
+#: ui_canalyccostetreebase.h:404
+msgid "Cuenta final:"
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Denominacion"
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Saldo anterior"
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Debe"
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Haber"
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Saldo"
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Debe "
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Haber "
+msgstr ""
+
+#: canalyccosteview.cpp:277
+msgid "Saldo "
+msgstr ""
+
+#: pluginbf_canalyccoste.cpp:52
+msgid "&Ver"
+msgstr ""
+
+#: pluginbf_canalyccoste.cpp:54
+msgid "&Balance jerarquico"
+msgstr ""
+
+#: pluginbf_canalyccoste.cpp:55
+msgid "Permite realizar canalyccostes"
+msgstr ""
+
+#: pluginbf_canalyccoste.cpp:56
+msgid "Podra disponer de la informacion del canalyccoste"
+msgstr ""
+
+#: ui_canalyccostebase.h:405
+msgid "Balance de cuentas"
+msgstr ""
+
+#: ui_canalyccostebase.h:407 ui_canalyccostebase.h:410
+msgid "Filtrar canalyccoste"
+msgstr ""
+
+#: ui_canalyccostebase.h:413
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_canalyccostebase.h:415 ui_canalyccostebase.h:418
+msgid "Actualizar canalyccoste"
+msgstr ""
+
+#: ui_canalyccostebase.h:421
+msgid "F5"
+msgstr ""
+
+#: ui_canalyccostebase.h:423 ui_canalyccostebase.h:426
+msgid "Imprimir canalyccoste"
+msgstr ""
+
+#: ui_canalyccostebase.h:429
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_canalyccostebase.h:431 ui_canalyccostebase.h:434
+msgid "Configurar"
+msgstr ""
+
+#: ui_canalyccostebase.h:437
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_canalyccostebase.h:438 ui_canalyccostetreebase.h:406
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_canalyccostebase.h:440 ui_canalyccostetreebase.h:405
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_canalyccostebase.h:442 ui_canalyccostetreebase.h:408
+msgid "Nivel:"
+msgstr ""
+
+#: ui_canalyccostebase.h:443
+msgid "Balance jerarquico"
+msgstr ""
+
+#: ui_canalyccostebase.h:445
+msgid "1"
+msgstr ""
+
+#: ui_canalyccostebase.h:446
+msgid "GroupBox"
+msgstr ""
+
+#: ui_canalyccostebase.h:447 ui_canalyccostetreebase.h:413
+msgid "Saldo:"
+msgstr ""
+
+#: ui_canalyccostebase.h:448
+msgid "Haber:"
+msgstr ""
+
+#: ui_canalyccostebase.h:449 ui_canalyccostetreebase.h:410
+msgid "Saldo anterior:"
+msgstr ""
+
+#: ui_canalyccostebase.h:450
+msgid "Debe:"
+msgstr ""
+
+#: ui_canalyccostetreebase.h:382
+msgid "Balance jerarquico de Cuentas"
+msgstr ""
+
+#: ui_canalyccostetreebase.h:384 ui_canalyccostetreebase.h:387
+msgid "Borrar albaran"
+msgstr ""
+
+#: ui_canalyccostetreebase.h:391 ui_canalyccostetreebase.h:394 ui_canalyccostetreebase.h:398
+#: ui_canalyccostetreebase.h:401
+msgid "Imprimir albaran"
+msgstr ""
+
+#: ui_canalyccostetreebase.h:409
+msgid "Centro de coste:"
+msgstr ""
+
+#: ui_canalyccostetreebase.h:411
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_canalyccostetreebase.h:412
+msgid "Total Haber:"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:197
+msgid "Impresion de canalyccostes"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:199 ui_canalyccosteprintbase.h:319
+msgid "Fecha inicial"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:200 ui_canalyccosteprintbase.h:321
+msgid "Fecha final"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:201
+msgid "Formato"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:202
+msgid "&texto plano"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:203
+msgid "Alt+T"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:204
+msgid "HTML"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:205
+msgid "Acep&tar"
+msgstr ""
+
+#: ui_canalyccostesprintdlg.h:206
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:312
+msgid "Impresion del canalyccoste de sumas y saldos"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:316
+msgid "Datos del listado:"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:317
+msgid "Codigo inicial\n"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:320
+msgid "Codigo final"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:322
+msgid "Nivel de Cuentas"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:323
+msgid "Incluir &niveles superiores."
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:324
+msgid "Incl&uir resultados parciales"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:325
+msgid "Formato:"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:326
+msgid "&Texto Plano"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:327
+msgid "Propietario"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:328
+msgid "HT&ML"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:329
+msgid "&Kugar"
+msgstr ""

@@ -1,0 +1,413 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbf_canalyccoste.cpp:54
+#, fuzzy
+msgid "&Balance jerarquico"
+msgstr "Balanç jeràrquic"
+
+#: ui_canalyccostesprintdlg.h:206
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: ui_canalyccosteprintbase.h:329
+msgid "&Kugar"
+msgstr "&Kugar"
+
+#: ui_canalyccosteprintbase.h:326
+msgid "&Texto Plano"
+msgstr "&Text pla"
+
+#: pluginbf_canalyccoste.cpp:52
+msgid "&Ver"
+msgstr "&Veure"
+
+#: ui_canalyccostesprintdlg.h:202
+msgid "&texto plano"
+msgstr "&text pla"
+
+#: ui_canalyccostebase.h:445
+msgid "1"
+msgstr "1"
+
+#: ui_canalyccostesprintdlg.h:205
+#, fuzzy
+msgid "Acep&tar"
+msgstr "Accepta"
+
+#: ui_canalyccostebase.h:415 ui_canalyccostebase.h:418
+#, fuzzy
+msgid "Actualizar canalyccoste"
+msgstr "Actual·litza llistat"
+
+#: canalyccostesubform.cpp:80
+#, fuzzy
+msgid "Ajustar altura"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçada\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altura"
+
+#: canalyccostesubform.cpp:82
+#, fuzzy
+msgid "Ajustar alturas"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçades\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altures"
+
+#: canalyccostesubform.cpp:79
+#, fuzzy
+msgid "Ajustar columa"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columna\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columna"
+
+#: canalyccostesubform.cpp:81
+#, fuzzy
+msgid "Ajustar columnas"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columnes\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columnes"
+
+#: ui_canalyccostesprintdlg.h:203
+#, fuzzy
+msgid "Alt+T"
+msgstr "Alt+I"
+
+#: canalyccosteview.cpp:61 ui_canalyccostesprintdlg.h:198
+msgid "Balance"
+msgstr "Balanç"
+
+#: ui_canalyccostebase.h:405
+#, fuzzy
+msgid "Balance de cuentas"
+msgstr "Banc del compte"
+
+#: ui_canalyccostebase.h:443
+#, fuzzy
+msgid "Balance jerarquico"
+msgstr "Balanç jeràrquic"
+
+#: ui_canalyccostetreebase.h:382
+#, fuzzy
+msgid "Balance jerarquico de Cuentas"
+msgstr "Balanç jeràrquic"
+
+#: ui_canalyccostetreebase.h:384 ui_canalyccostetreebase.h:387
+msgid "Borrar albaran"
+msgstr "Esborra albarà"
+
+#: canalyccostesubform.cpp:77
+#, fuzzy
+msgid "Borrar registro"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
+
+#: ui_canalyccostetreebase.h:409
+msgid "Centro de coste:"
+msgstr "Centre de cost:"
+
+#: canalyccostesubform.cpp:38 canalyccosteview.cpp:277
+msgid "Codigo"
+msgstr "Codi"
+
+#: ui_canalyccosteprintbase.h:320
+msgid "Codigo final"
+msgstr "Codi final"
+
+#: ui_canalyccosteprintbase.h:317
+msgid "Codigo inicial\n"
+msgstr "Codi inicial\n"
+
+#: ui_canalyccostebase.h:431 ui_canalyccostebase.h:434
+msgid "Configurar"
+msgstr "Arranjament"
+
+#: ui_canalyccostebase.h:437
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_canalyccostebase.h:413
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_canalyccostebase.h:429
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: canalyccosteview.cpp:77 canalyccosteprintview.cpp:64 ui_canalyccostebase.h:441
+#: ui_canalyccostetreebase.h:404
+msgid "Cuenta final:"
+msgstr "Compte final"
+
+#: canalyccosteview.cpp:68 canalyccosteprintview.cpp:56 ui_canalyccostebase.h:439
+#: ui_canalyccostetreebase.h:407
+msgid "Cuenta inicial:"
+msgstr "Compte inicial:"
+
+#: ui_canalyccosteprintbase.h:316
+msgid "Datos del listado:"
+msgstr "Dades del llistat:"
+
+#: canalyccosteview.cpp:277
+msgid "Debe"
+msgstr "Deure"
+
+#: canalyccosteview.cpp:277
+#, fuzzy
+msgid "Debe "
+msgstr "Deure"
+
+#: ui_canalyccostebase.h:450
+#, fuzzy
+msgid "Debe:"
+msgstr "Deure"
+
+#: canalyccosteview.cpp:277
+msgid "Denominacion"
+msgstr "Denominació"
+
+#: canalyccostesubform.cpp:39
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: canalyccostesubform.cpp:44
+msgid "Ejercicio debe"
+msgstr ""
+
+#: canalyccostesubform.cpp:46
+msgid "Ejercicio saldo"
+msgstr ""
+
+#: canalyccostesubform.cpp:45
+msgid "Ejercico haber"
+msgstr ""
+
+#: ui_canalyccostebase.h:421
+msgid "F5"
+msgstr "F5"
+
+#: ui_canalyccostesprintdlg.h:200 ui_canalyccosteprintbase.h:321
+#, fuzzy
+msgid "Fecha final"
+msgstr "Data final"
+
+#: ui_canalyccostebase.h:440 ui_canalyccostetreebase.h:405
+msgid "Fecha final:"
+msgstr "Data final:"
+
+#: ui_canalyccostesprintdlg.h:199 ui_canalyccosteprintbase.h:319
+#, fuzzy
+msgid "Fecha inicial"
+msgstr "Data inicial"
+
+#: ui_canalyccostebase.h:438 ui_canalyccostetreebase.h:406
+msgid "Fecha inicial:"
+msgstr "Data inicial:"
+
+#: ui_canalyccostebase.h:407 ui_canalyccostebase.h:410
+#, fuzzy
+msgid "Filtrar canalyccoste"
+msgstr "Filtrar balanç"
+
+#: ui_canalyccostesprintdlg.h:201
+#, fuzzy
+msgid "Formato"
+msgstr "Form"
+
+#: ui_canalyccosteprintbase.h:325
+#, fuzzy
+msgid "Formato:"
+msgstr "Form"
+
+#: ui_canalyccostebase.h:446
+#, fuzzy
+msgid "GroupBox"
+msgstr "Grup"
+
+#: ui_canalyccosteprintbase.h:328
+#, fuzzy
+msgid "HT&ML"
+msgstr "HT&ML"
+
+#: ui_canalyccostesprintdlg.h:204
+msgid "HTML"
+msgstr "HTML"
+
+#: canalyccosteview.cpp:277
+msgid "Haber"
+msgstr "Haver"
+
+#: canalyccosteview.cpp:277
+#, fuzzy
+msgid "Haber "
+msgstr "Haver"
+
+#: ui_canalyccostebase.h:448
+#, fuzzy
+msgid "Haber:"
+msgstr "Haver"
+
+#: canalyccostesubform.cpp:36
+msgid "Id cuenta"
+msgstr "Id compte"
+
+#: ui_canalyccostesprintdlg.h:197
+msgid "Impresion de canalyccostes"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:312
+#, fuzzy
+msgid "Impresion del canalyccoste de sumas y saldos"
+msgstr "Balanç"
+
+#: ui_canalyccostetreebase.h:391 ui_canalyccostetreebase.h:394 ui_canalyccostetreebase.h:398
+#: ui_canalyccostetreebase.h:401
+msgid "Imprimir albaran"
+msgstr "Imprimeix albarà"
+
+#: ui_canalyccostebase.h:423 ui_canalyccostebase.h:426
+#, fuzzy
+msgid "Imprimir canalyccoste"
+msgstr "Imprimeix albarà"
+
+#: ui_canalyccosteprintbase.h:324
+#, fuzzy
+msgid "Incl&uir resultados parciales"
+msgstr "Incloure resultats parcials"
+
+#: ui_canalyccosteprintbase.h:323
+#, fuzzy
+msgid "Incluir &niveles superiores."
+msgstr "Incloure resultats parcials"
+
+#: ui_canalyccosteprintbase.h:322
+#, fuzzy
+msgid "Nivel de Cuentas"
+msgstr "Tipus de compte"
+
+#: ui_canalyccostebase.h:442 ui_canalyccostetreebase.h:408
+msgid "Nivel:"
+msgstr ""
+
+#: pluginbf_canalyccoste.cpp:55
+#, fuzzy
+msgid "Permite realizar canalyccostes"
+msgstr "Actualitza balanç"
+
+#: pluginbf_canalyccoste.cpp:56
+msgid "Podra disponer de la informacion del canalyccoste"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:327
+#, fuzzy
+msgid "Propietario"
+msgstr "Comentari"
+
+#: canalyccosteview.cpp:277
+msgid "Saldo"
+msgstr "Saldo"
+
+#: canalyccosteview.cpp:277
+#, fuzzy
+msgid "Saldo "
+msgstr "Saldo"
+
+#: canalyccosteview.cpp:277
+msgid "Saldo anterior"
+msgstr "Saldo anterior"
+
+#: ui_canalyccostebase.h:449 ui_canalyccostetreebase.h:410
+#, fuzzy
+msgid "Saldo anterior:"
+msgstr "Saldo anterior"
+
+#: canalyccostesubform.cpp:40
+msgid "Saldo apunte"
+msgstr ""
+
+#: ui_canalyccostebase.h:447 ui_canalyccostetreebase.h:413
+#, fuzzy
+msgid "Saldo:"
+msgstr "Saldo"
+
+#: canalyccostesubform.cpp:37
+#, fuzzy
+msgid "Tipo cuenta"
+msgstr "Tipus"
+
+#: ui_canalyccostetreebase.h:411
+#, fuzzy
+msgid "Total Debe:"
+msgstr "Totals:"
+
+#: ui_canalyccostetreebase.h:412
+#, fuzzy
+msgid "Total Haber:"
+msgstr "Total Haver:"
+
+#: canalyccostesubform.cpp:41
+msgid "Total debe"
+msgstr ""
+
+#: canalyccostesubform.cpp:42
+msgid "Total haber"
+msgstr ""
+
+#: canalyccostesubform.cpp:43
+msgid "Total saldo"
+msgstr ""
+
+#: canalyccostesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr "Veure el configurador de subformulari"
+
+#, fuzzy
+#~ msgid "Impresion de Balances"
+#~ msgstr "Gestió de &famílies"
+
+#~ msgid "codigo"
+#~ msgstr "codi"
+
+#~ msgid "descripcion"
+#~ msgstr "descripció"
+
+#~ msgid "tdebe"
+#~ msgstr "tdebe"
+
+#~ msgid "thaber"
+#~ msgstr "thaber"
+
+#~ msgid "tipocuenta"
+#~ msgstr "tipocuenta"
+
+#~ msgid "tsaldo"
+#~ msgstr "tsaldo"

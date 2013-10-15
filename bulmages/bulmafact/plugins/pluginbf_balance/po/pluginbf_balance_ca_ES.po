@@ -1,0 +1,413 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbf_balance.cpp:54
+#, fuzzy
+msgid "&Balance jerarquico"
+msgstr "Balanç jeràrquic"
+
+#: ui_balancesprintdlg.h:206
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: ui_balanceprintbase.h:329
+msgid "&Kugar"
+msgstr "&Kugar"
+
+#: ui_balanceprintbase.h:326
+msgid "&Texto Plano"
+msgstr "&Text pla"
+
+#: pluginbf_balance.cpp:52
+msgid "&Ver"
+msgstr "&Veure"
+
+#: ui_balancesprintdlg.h:202
+msgid "&texto plano"
+msgstr "&text pla"
+
+#: ui_balancebase.h:445
+msgid "1"
+msgstr "1"
+
+#: ui_balancesprintdlg.h:205
+#, fuzzy
+msgid "Acep&tar"
+msgstr "Accepta"
+
+#: ui_balancebase.h:415 ui_balancebase.h:418
+#, fuzzy
+msgid "Actualizar balance"
+msgstr "Actual·litza llistat"
+
+#: balancesubform.cpp:80
+#, fuzzy
+msgid "Ajustar altura"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçada\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altura"
+
+#: balancesubform.cpp:82
+#, fuzzy
+msgid "Ajustar alturas"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçades\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altures"
+
+#: balancesubform.cpp:79
+#, fuzzy
+msgid "Ajustar columa"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columna\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columna"
+
+#: balancesubform.cpp:81
+#, fuzzy
+msgid "Ajustar columnas"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columnes\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columnes"
+
+#: ui_balancesprintdlg.h:203
+#, fuzzy
+msgid "Alt+T"
+msgstr "Alt+I"
+
+#: balanceview.cpp:61 ui_balancesprintdlg.h:198
+msgid "Balance"
+msgstr "Balanç"
+
+#: ui_balancebase.h:405
+#, fuzzy
+msgid "Balance de cuentas"
+msgstr "Banc del compte"
+
+#: ui_balancebase.h:443
+#, fuzzy
+msgid "Balance jerarquico"
+msgstr "Balanç jeràrquic"
+
+#: ui_balancetreebase.h:382
+#, fuzzy
+msgid "Balance jerarquico de Cuentas"
+msgstr "Balanç jeràrquic"
+
+#: ui_balancetreebase.h:384 ui_balancetreebase.h:387
+msgid "Borrar albaran"
+msgstr "Esborra albarà"
+
+#: balancesubform.cpp:77
+#, fuzzy
+msgid "Borrar registro"
+msgstr ""
+"#-#-#-#-#  bulmafact_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
+
+#: ui_balancetreebase.h:409
+msgid "Centro de coste:"
+msgstr "Centre de cost:"
+
+#: balancesubform.cpp:38 balanceview.cpp:277
+msgid "Codigo"
+msgstr "Codi"
+
+#: ui_balanceprintbase.h:320
+msgid "Codigo final"
+msgstr "Codi final"
+
+#: ui_balanceprintbase.h:317
+msgid "Codigo inicial\n"
+msgstr "Codi inicial\n"
+
+#: ui_balancebase.h:431 ui_balancebase.h:434
+msgid "Configurar"
+msgstr "Arranjament"
+
+#: ui_balancebase.h:437
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_balancebase.h:413
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_balancebase.h:429
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: balanceview.cpp:77 balanceprintview.cpp:64 ui_balancebase.h:441
+#: ui_balancetreebase.h:404
+msgid "Cuenta final:"
+msgstr "Compte final"
+
+#: balanceview.cpp:68 balanceprintview.cpp:56 ui_balancebase.h:439
+#: ui_balancetreebase.h:407
+msgid "Cuenta inicial:"
+msgstr "Compte inicial:"
+
+#: ui_balanceprintbase.h:316
+msgid "Datos del listado:"
+msgstr "Dades del llistat:"
+
+#: balanceview.cpp:277
+msgid "Debe"
+msgstr "Deure"
+
+#: balanceview.cpp:277
+#, fuzzy
+msgid "Debe "
+msgstr "Deure"
+
+#: ui_balancebase.h:450
+#, fuzzy
+msgid "Debe:"
+msgstr "Deure"
+
+#: balanceview.cpp:277
+msgid "Denominacion"
+msgstr "Denominació"
+
+#: balancesubform.cpp:39
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: balancesubform.cpp:44
+msgid "Ejercicio debe"
+msgstr ""
+
+#: balancesubform.cpp:46
+msgid "Ejercicio saldo"
+msgstr ""
+
+#: balancesubform.cpp:45
+msgid "Ejercico haber"
+msgstr ""
+
+#: ui_balancebase.h:421
+msgid "F5"
+msgstr "F5"
+
+#: ui_balancesprintdlg.h:200 ui_balanceprintbase.h:321
+#, fuzzy
+msgid "Fecha final"
+msgstr "Data final"
+
+#: ui_balancebase.h:440 ui_balancetreebase.h:405
+msgid "Fecha final:"
+msgstr "Data final:"
+
+#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:319
+#, fuzzy
+msgid "Fecha inicial"
+msgstr "Data inicial"
+
+#: ui_balancebase.h:438 ui_balancetreebase.h:406
+msgid "Fecha inicial:"
+msgstr "Data inicial:"
+
+#: ui_balancebase.h:407 ui_balancebase.h:410
+#, fuzzy
+msgid "Filtrar balance"
+msgstr "Filtrar balanç"
+
+#: ui_balancesprintdlg.h:201
+#, fuzzy
+msgid "Formato"
+msgstr "Form"
+
+#: ui_balanceprintbase.h:325
+#, fuzzy
+msgid "Formato:"
+msgstr "Form"
+
+#: ui_balancebase.h:446
+#, fuzzy
+msgid "GroupBox"
+msgstr "Grup"
+
+#: ui_balanceprintbase.h:328
+#, fuzzy
+msgid "HT&ML"
+msgstr "HT&ML"
+
+#: ui_balancesprintdlg.h:204
+msgid "HTML"
+msgstr "HTML"
+
+#: balanceview.cpp:277
+msgid "Haber"
+msgstr "Haver"
+
+#: balanceview.cpp:277
+#, fuzzy
+msgid "Haber "
+msgstr "Haver"
+
+#: ui_balancebase.h:448
+#, fuzzy
+msgid "Haber:"
+msgstr "Haver"
+
+#: balancesubform.cpp:36
+msgid "Id cuenta"
+msgstr "Id compte"
+
+#: ui_balancesprintdlg.h:197
+msgid "Impresion de balances"
+msgstr ""
+
+#: ui_balanceprintbase.h:312
+#, fuzzy
+msgid "Impresion del balance de sumas y saldos"
+msgstr "Balanç"
+
+#: ui_balancetreebase.h:391 ui_balancetreebase.h:394 ui_balancetreebase.h:398
+#: ui_balancetreebase.h:401
+msgid "Imprimir albaran"
+msgstr "Imprimeix albarà"
+
+#: ui_balancebase.h:423 ui_balancebase.h:426
+#, fuzzy
+msgid "Imprimir balance"
+msgstr "Imprimeix albarà"
+
+#: ui_balanceprintbase.h:324
+#, fuzzy
+msgid "Incl&uir resultados parciales"
+msgstr "Incloure resultats parcials"
+
+#: ui_balanceprintbase.h:323
+#, fuzzy
+msgid "Incluir &niveles superiores."
+msgstr "Incloure resultats parcials"
+
+#: ui_balanceprintbase.h:322
+#, fuzzy
+msgid "Nivel de Cuentas"
+msgstr "Tipus de compte"
+
+#: ui_balancebase.h:442 ui_balancetreebase.h:408
+msgid "Nivel:"
+msgstr ""
+
+#: pluginbf_balance.cpp:55
+#, fuzzy
+msgid "Permite realizar balances"
+msgstr "Actualitza balanç"
+
+#: pluginbf_balance.cpp:56
+msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: ui_balanceprintbase.h:327
+#, fuzzy
+msgid "Propietario"
+msgstr "Comentari"
+
+#: balanceview.cpp:277
+msgid "Saldo"
+msgstr "Saldo"
+
+#: balanceview.cpp:277
+#, fuzzy
+msgid "Saldo "
+msgstr "Saldo"
+
+#: balanceview.cpp:277
+msgid "Saldo anterior"
+msgstr "Saldo anterior"
+
+#: ui_balancebase.h:449 ui_balancetreebase.h:410
+#, fuzzy
+msgid "Saldo anterior:"
+msgstr "Saldo anterior"
+
+#: balancesubform.cpp:40
+msgid "Saldo apunte"
+msgstr ""
+
+#: ui_balancebase.h:447 ui_balancetreebase.h:413
+#, fuzzy
+msgid "Saldo:"
+msgstr "Saldo"
+
+#: balancesubform.cpp:37
+#, fuzzy
+msgid "Tipo cuenta"
+msgstr "Tipus"
+
+#: ui_balancetreebase.h:411
+#, fuzzy
+msgid "Total Debe:"
+msgstr "Totals:"
+
+#: ui_balancetreebase.h:412
+#, fuzzy
+msgid "Total Haber:"
+msgstr "Total Haver:"
+
+#: balancesubform.cpp:41
+msgid "Total debe"
+msgstr ""
+
+#: balancesubform.cpp:42
+msgid "Total haber"
+msgstr ""
+
+#: balancesubform.cpp:43
+msgid "Total saldo"
+msgstr ""
+
+#: balancesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr "Veure el configurador de subformulari"
+
+#, fuzzy
+#~ msgid "Impresion de Balances"
+#~ msgstr "Gestió de &famílies"
+
+#~ msgid "codigo"
+#~ msgstr "codi"
+
+#~ msgid "descripcion"
+#~ msgstr "descripció"
+
+#~ msgid "tdebe"
+#~ msgstr "tdebe"
+
+#~ msgid "thaber"
+#~ msgstr "thaber"
+
+#~ msgid "tipocuenta"
+#~ msgstr "tipocuenta"
+
+#~ msgid "tsaldo"
+#~ msgstr "tsaldo"
