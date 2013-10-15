@@ -27,6 +27,7 @@ public:
     virtual int send(const QString &, QTcpSocket *sock);
     bool conectaDB();
     void procesaDemand(const QString &, QTcpSocket *sock);
+    void readyRead(QTcpSocket *socket);
 
 
 public slots:
