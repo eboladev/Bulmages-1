@@ -54,6 +54,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(tiempo()));
     timer->start(1000);
+
+    m_listaSockets.clear();
 }
 
 MainWindow::~MainWindow()
@@ -104,24 +106,29 @@ void MainWindow::activado ( QSystemTrayIcon::ActivationReason reason )
 void MainWindow::conection()
 {
     QTcpSocket *socket = m_tcpServer->nextPendingConnection();
-    QHostAddress conectadofrom = socket->peerAddress();
-    m_listaSockets.append(socket);
-    ui->mui_plainText->clear();
-    ui->mui_plainText->appendPlainText("Nueva Conexion: " + conectadofrom.toString() + "\n");
+    if (m_listaSockets.isEmpty()) {
+            QHostAddress conectadofrom = socket->peerAddress();
+            m_listaSockets.append(socket);
+            ui->mui_plainText->clear();
+            ui->mui_plainText->appendPlainText("Nueva Conexion: " + conectadofrom.toString() + "\n");
 
-    connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    connect (socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
+            connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+            connect (socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
 
-/*    while(!conectaDB()) { // Conectamos con la base de datos al inicio del socket para no ocupar siempre el canal de base de datos.
-        sleep(200);
-        qApp->processEvents();
-    } // end while
-*/
+        /*    while(!conectaDB()) { // Conectamos con la base de datos al inicio del socket para no ocupar siempre el canal de base de datos.
+                sleep(200);
+                qApp->processEvents();
+            } // end while
+        */
 
 
-    send("<COMCLEAN></COMCLEAN>\n", socket);
-//    socket->flush();
-    qDebug() << "Envio COMCLEAN" << endl;
+            send("<COMCLEAN></COMCLEAN>\n", socket);
+        //    socket->flush();
+            qDebug() << "Envio COMCLEAN" << endl;
+    } else {
+        socket->close();
+
+    }// end if
 }
 
 

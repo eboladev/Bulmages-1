@@ -39,6 +39,7 @@
 
 #include <QtGui/QtGui>
 
+#include "bgserver.h"
 #include "bgbulmages.h"
 #include "blfunctions.h"
 #include "blconfiguration.h"
@@ -63,18 +64,37 @@ int main ( int argc, char **argv )
     /// Definimos la codificaci&oacute;n a Unicode.
     QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-    if (!QSystemTrayIcon::isSystemTrayAvailable()) {
-        QMessageBox::critical(0, _("Bandeja"),
-                                 _("No se detecta ninguna bandeja en el sistema"));
-        return 1;
-    }
-    QApplication::setQuitOnLastWindowClosed(false);
-
-    BgBulmaGes bges;
-    bges.hide();
     
-    MainWindow mein;
-    mein.show();
+   QString argument=""; 
+   for(int i = 1; i < argc; i++) {
+      argument += argv[i];
+   } // end for
+   
+   if (argument.contains("-h")) {
+      qDebug() << " Options -h show help" << endl << "-s only server. No ui interfac" << endl;
+      exit(1);
+   } // end if
+   
+   BgBulmaGes *bhges;
+   
+   qDebug() << argument << endl;
+   if (!argument.contains("-s")) {
+        qDebug() << "Tray Icon" << endl;
+	if (!QSystemTrayIcon::isSystemTrayAvailable()) {
+	    QMessageBox::critical(0, _("Bandeja"),
+				    _("No se detecta ninguna bandeja en el sistema"));
+	    return 1;
+	} // end if
+	QApplication::setQuitOnLastWindowClosed(false);
+
+	bhges = new BgBulmaGes();
+	bhges->hide();
+	
+
+  } // end if
+      
+    BgServer * server = new BgServer();
+    qDebug() << "En espera " << endl;
     return app.exec();
 }
 
