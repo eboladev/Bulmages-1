@@ -15,6 +15,8 @@
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 
+
+#ifdef _NO_COMPILE
 bool g_semafor = false;
 
 /// Escapa los minimos caracteres necesarios para
@@ -38,7 +40,7 @@ void sleep(unsigned int mseconds)
     while (goal > clock());
 }
 
-
+#endif
 
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
@@ -46,24 +48,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    createTrayIcon();
-//    conectaDB();
-    createServer();
-
-
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(tiempo()));
-    timer->start(1000);
-
-    m_listaSockets.clear();
 }
 
 MainWindow::~MainWindow()
 {
-    m_tcpServer->close();
-    delete m_tcpServer;
     delete ui;
 }
+
+#ifdef _NO_COMPILE 
 
 
 void MainWindow::createServer() {
@@ -335,3 +327,5 @@ void MainWindow::on_mui_queryb_released() {
                         view->show();
 #endif
 }
+
+#endif

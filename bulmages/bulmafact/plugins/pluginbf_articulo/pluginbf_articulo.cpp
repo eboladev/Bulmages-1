@@ -391,10 +391,12 @@ void SubForm_Articulo::editarArticulo ( QString idarticulo )
     } // end if
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     subf->setEnabled ( false );
+    g_main->setEnabled (false );
     art->show();
     while ( !art->isHidden() )
         g_theApp->processEvents();
     subf->setEnabled ( true );
+    g_main->setEnabled(true);
     delete art;
 }
 
