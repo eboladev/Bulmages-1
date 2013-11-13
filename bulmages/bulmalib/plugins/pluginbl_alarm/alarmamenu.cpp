@@ -94,23 +94,25 @@ void AlQToolButton::hazMenu() {
 	addaction->setObjectName ( "addalarma" );
 	connect ( addaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
 	menu->addSeparator();
-	QString query = "SELECT * FROM alarma WHERE fichaalarma = '" + m_BlForm->tableName() + "' AND idfichaalarma= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
-	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
-	while ( !cur->eof() ) {
-	    QMenu *n1menu = menu->addMenu ( cur->value( "subjectalarma" ) );
-	    QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
-	    n1menu->addAction (addaction1);
-	    addaction1->setObjectName ( "abrir_alarma_" + cur->value( "idalarma" ) );
-	    connect ( addaction1, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
-		    
-	    QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
-	    n1menu->addAction (delaction);
-	    delaction->setObjectName ( "borrar_alarma_" + cur->value( "idalarma" ) );
-	    connect ( delaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
-	    
-	    cur->nextRecord();
-	} // end while
-	delete cur;
+	if (! m_BlForm->dbValue ( m_BlForm->fieldId()).isEmpty() ) {
+	      QString query = "SELECT * FROM alarma WHERE fichaalarma = '" + m_BlForm->tableName() + "' AND idfichaalarma= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
+	      BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
+	      while ( !cur->eof() ) {
+		  QMenu *n1menu = menu->addMenu ( cur->value( "subjectalarma" ) );
+		  QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
+		  n1menu->addAction (addaction1);
+		  addaction1->setObjectName ( "abrir_alarma_" + cur->value( "idalarma" ) );
+		  connect ( addaction1, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
+			  
+		  QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
+		  n1menu->addAction (delaction);
+		  delaction->setObjectName ( "borrar_alarma_" + cur->value( "idalarma" ) );
+		  connect ( delaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
+		  
+		  cur->nextRecord();
+	      } // end while
+	      delete cur;
+	} // end if
 	
 	setMenu(menu);
 }
@@ -140,23 +142,23 @@ void AlQToolButton::pintaMenu ( QMenu *menu )
 	ajust->addAction (addaction);
 	addaction->setObjectName ( "addalarma" );
 	ajust->addSeparator();
-	QString query = "SELECT * FROM alarma WHERE fichaalarma = '" + m_BlForm->tableName() + "' AND idfichaalarma= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
-	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
-	while ( !cur->eof() ) {
-	    QMenu *n1menu = ajust->addMenu ( cur->value( "subjectalarma" ) );
-	    QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
-	    n1menu->addAction (addaction1);
-	    addaction->setObjectName ( "abrir_alarma_" + cur->value( "idalarma" ) );
-	    
-	    QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
-	    n1menu->addAction (delaction);
-	    delaction->setObjectName ( "borrar_alarma_" + cur->value( "idalarma" ) );
-	    
-	    cur->nextRecord();
-	} // end while
-	delete cur;
-
-    
+	if (! m_BlForm->dbValue ( m_BlForm->fieldId()).isEmpty() ) {
+	    QString query = "SELECT * FROM alarma WHERE fichaalarma = '" + m_BlForm->tableName() + "' AND idfichaalarma= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
+	    BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
+	    while ( !cur->eof() ) {
+		QMenu *n1menu = ajust->addMenu ( cur->value( "subjectalarma" ) );
+		QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
+		n1menu->addAction (addaction1);
+		addaction->setObjectName ( "abrir_alarma_" + cur->value( "idalarma" ) );
+		
+		QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
+		n1menu->addAction (delaction);
+		delaction->setObjectName ( "borrar_alarma_" + cur->value( "idalarma" ) );
+		
+		cur->nextRecord();
+	    } // end while
+	    delete cur;
+	} // end if
 }
 
 

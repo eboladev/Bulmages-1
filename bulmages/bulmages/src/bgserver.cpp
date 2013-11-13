@@ -140,9 +140,12 @@ void BgServer::procesaCommand( const QString &texto, QTcpSocket *sock) {
 	    
     BlPostgreSqlClient db; 
     db.inicializa(database, host, port, user, password, "", "");
-    QString query = nodos.item (0).toElement().text();
-    db.runQuery(query);
-//    db.terminar(); // La destruccion de la variable la termina.
+    
+    for (int j = 0; j < nodos.count(); j++) {
+	QString query = nodos.item (j).toElement().text();
+	db.runQuery(query);
+    } // end for
+    
     qDebug() << "END procesaCommand" << endl;
 }
 

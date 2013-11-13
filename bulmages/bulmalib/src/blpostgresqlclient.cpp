@@ -279,35 +279,42 @@ QString BlDbRecordSet::value( int posicion, int registro, bool localeformat )
     BL_FUNC_DEBUG
     BlDebug::blDebug ( "BlDbRecordSet::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
 
+    QString val="";
     QLocale locale;
 
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
-    QString val = QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ) );
-    /// Si el campo es del tipo numeric y esmos con locales lo parseamos.
-    if ( localeformat ) {
-        if ( fieldType ( posicion ) == 1700 ) {
-            /// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
-	    // Perdona que te haga estos cambios Aron. Pero estan probando el programa y da muchos fallos.
-	    // Lo dejo medio apanyado y disculpa la intromision
-	    // No podemos usar el tipo de datos double ya que es punto flotante y en nuestro
-	    // caso debemos usar punto fijo (no implementado en C++. De ahi la clase BlFixed) para evitar errores de redondeo 
-	    // y de precision.
-            //val = locale.toString((locale.toDouble(val))); //ARON
-	    // Esto mas o menos funciona
-	    
-	    /*
-	    val.replace('.',locale.decimalPoint());
-	    QString parteentera = val.left(val.indexOf(locale.decimalPoint()));
-	    QString decimales = val.right(val.length()- val.indexOf(locale.decimalPoint()));
-	    // Si lo podemos usar formateo de locales con numeros enteros.
-	    QString val1 = locale.toString(locale.toInt(parteentera));
-	    val = val1 + decimales;
-	    */
-	    // Hasta aqui
-	    
-        } // end if
+    if ( registro < nregistros) {
+        // printf("Entrada %d %d %d\n",posicion, registro, nregistros);
+	val = QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ) );
+	/// Si el campo es del tipo numeric y esmos con locales lo parseamos.
+	if ( localeformat ) {
+	    if ( fieldType ( posicion ) == 1700 ) {
+		/// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
+		// Perdona que te haga estos cambios Aron. Pero estan probando el programa y da muchos fallos.
+		// Lo dejo medio apanyado y disculpa la intromision
+		// No podemos usar el tipo de datos double ya que es punto flotante y en nuestro
+		// caso debemos usar punto fijo (no implementado en C++. De ahi la clase BlFixed) para evitar errores de redondeo 
+		// y de precision.
+		//val = locale.toString((locale.toDouble(val))); //ARON
+		// Esto mas o menos funciona
+		
+		/*
+		val.replace('.',locale.decimalPoint());
+		QString parteentera = val.left(val.indexOf(locale.decimalPoint()));
+		QString decimales = val.right(val.length()- val.indexOf(locale.decimalPoint()));
+		// Si lo podemos usar formateo de locales con numeros enteros.
+		QString val1 = locale.toString(locale.toInt(parteentera));
+		val = val1 + decimales;
+		*/
+		// Hasta aqui
+		
+	    } // end if
+	} // end if
+    } else {
+	BlDebug::blDebug ( "BlDbRecordSet::valor", 0, "Posicion invalida" );
+	blMsgError("Error de posicion en la llamada a value");
     } // end if
     
     return ( val );

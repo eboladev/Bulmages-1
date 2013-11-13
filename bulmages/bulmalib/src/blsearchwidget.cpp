@@ -500,12 +500,11 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
     BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setEditable ( true );
+    setContextMenuPolicy ( Qt::CustomContextMenu );
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
-    connect ( this, SIGNAL (customContextMenuRequested( const QPoint & )), this, SLOT ( popMenu(const QPoing &)));
-    setContextMenuPolicy ( Qt::CustomContextMenu );
-    
+    connect ( this, SIGNAL (customContextMenuRequested( const QPoint & )), this, SLOT ( on_customContextMenuRequested(const QPoint &)));
 }
 
 
@@ -515,6 +514,29 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
 BlDbCompleterComboBox::~BlDbCompleterComboBox()
 {
     BL_FUNC_DEBUG
+}
+
+
+///
+/**
+**/
+void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
+{
+    BL_FUNC_DEBUG
+    QMenu *popup = new QMenu ( this );
+
+    /// Lanzamos el evento para que pueda ser capturado por terceros.
+    emit pintaMenu ( popup );
+
+    QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
+    QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
+
+    if ( opcion ) {
+        emit trataMenu ( opcion );
+    } // end if
+
+    delete popup;
 }
 
 
@@ -640,27 +662,7 @@ QString BlDbCompleterComboBox::entrada()
 }
 
 
-///
-/**
-**/
-void BlDbCompleterComboBox::popMenu ( const QPoint & )
-{
-    BL_FUNC_DEBUG
-    QMenu *popup = new QMenu ( this );
 
-    /// Lanzamos el evento para que pueda ser capturado por terceros.
-    emit pintaMenu ( popup );
-
-    QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
-    QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
-    QAction *opcion = popup->exec ( QCursor::pos() );
-
-    if ( opcion ) {
-        emit trataMenu ( opcion );
-    } // end if
-
-    delete popup;
-}
 
 
 

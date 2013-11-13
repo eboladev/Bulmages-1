@@ -99,7 +99,7 @@ CONF_SHOW_PROGRESS_BAR		TRUE
 CONF_DEBUG			FALSE
 
 # Indica si deben mostrarse las alertas de base de datos.
-CONF_ALERTAS_DBF		Yes
+CONF_ALERTAS_DB		Yes
 
 # Indica si deben centrarse los campos de texto
 CONF_CENTER_TEXT_FIELDS			FALSE
