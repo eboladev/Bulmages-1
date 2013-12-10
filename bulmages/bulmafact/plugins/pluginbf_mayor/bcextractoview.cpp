@@ -53,7 +53,7 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
 
     setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Extracto de cuentas" ) );
-    setDbTableName ( "extracto" );
+    setDbTableName ( "apunte" );
     setDbFieldId ( "idcuenta" );
     addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, _ ( "idcuenta" ) );
     addDbField ( "fechaInicial", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaInicial" ) );

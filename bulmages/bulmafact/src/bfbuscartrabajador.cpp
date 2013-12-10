@@ -109,13 +109,15 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
 QString BfBuscarTrabajador::id()
 {
     BL_FUNC_DEBUG
-    
 
     if ( !m_comboRecordSet ) {
-        return "0";
+        return "";
     } // end if
-
-    return m_comboRecordSet->value( "idtrabajador", currentIndex() - 1 );
+    if (currentIndex() > 0) {
+      return m_comboRecordSet->value( "idtrabajador", currentIndex() - 1 );
+    } else {
+      return "";
+    } // end if
 }
 
 

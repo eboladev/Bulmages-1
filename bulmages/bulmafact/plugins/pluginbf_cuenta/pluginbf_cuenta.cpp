@@ -1,4 +1,4 @@
-/***************************************************************************
+﻿/***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -183,6 +183,9 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         diag->setLayout ( layout );
         diag->setWindowTitle ( listcuentas->windowTitle() );
 
+	/// Ponemos el foco en el campo de busqueda.
+	listcuentas->m_filtro->setFocus();
+	
         diag->exec();
 
         if ( listcuentas->idcuenta() != "" ) {
@@ -330,6 +333,9 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BcCuentaListView *listcuentas = new BcCuentaListView ( ( BfCompany * ) sub->mainCompany(), diag, 0, BL_SELECT_MODE );
     QObject::connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
+    /// Ponemos el foco en el campo buscar
+    listcuentas->m_filtro->setFocus();
+    
     diag->exec();
         
     QString codigo= listcuentas->codigocuenta();
@@ -534,7 +540,51 @@ void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
     BL_FUNC_DEBUG
     
     if (!sub) sub= (BfSubForm *) parent();
+
+    ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
+    /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
+    /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
+    BcCuentaListView *listcuentas = new BcCuentaListView ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+ 
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    blCenterOnScreen(listcuentas);
+    listcuentas->show();
+    listcuentas->m_filtro->setFocus(Qt::PopupFocusReason);
+    while ( !listcuentas->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString codigo= listcuentas->codigocuenta();
+
+    delete listcuentas;
+
     
+    if ( codigo != "" ) {
+        QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+                sub->lineaact()->setDbValue ( "idcuenta", cur->value( "idcuenta" ) );
+                sub->lineaact()->setDbValue ( "codigo", cur->value( "codigo" ) );
+                sub->lineaact()->setDbValue ( "tipocuenta", cur->value( "tipocuenta" ) );
+                sub->lineaact()->setDbValue ( "descripcion", cur->value( "descripcion" ) );
+                if ( sub->lineaact()->exists ( "idc_coste" ) && cur->value( "idc_coste" ) != "" ) {
+                    sub->lineaact()->setDbValue ( "idc_coste", cur->value( "idc_coste" ) );
+                    QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->value( "idc_coste" );
+                    BlDbRecordSet *curss = sub->mainCompany() ->loadQuery ( query1 );
+                    sub->lineaact()->setDbValue ( "nomc_coste", curss->value( "nombre" ) );
+                    delete curss;
+                } // end if
+                if ( sub->lineaact()->exists ( "idctacliente" ) ) {
+		  sub->lineaact()->setDbValue ( "idctacliente", cur->value( "idcuenta" ) );
+		  sub->lineaact()->setDbValue ( "codigoctacliente", cur->value( "codigo" ) );
+		  sub->lineaact()->setDbValue ( "tipoctacliente", cur->value( "tipocuenta" ) );
+		  sub->lineaact()->setDbValue ( "nomctacliente", cur->value( "descripcion" ) );
+		} // end if
+        } // end if
+        delete cur;
+    } // end if
+    
+/*
     BcPlanContableListView *artlist = new BcPlanContableListView ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
@@ -547,7 +597,6 @@ void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
 
     /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCuenta == "" ) {
-        
         return;
     } // end if
 
@@ -558,6 +607,8 @@ void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
         sub->lineaact()->setDbValue ( "descripcion", cur->value( "descripcion" ) );
     } // end if
     delete cur;
+    
+*/
 }
 
 

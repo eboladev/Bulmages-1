@@ -59,17 +59,19 @@ int main ( int argc, char **argv )
     blBindTextDomain ("bulmages", g_confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
     blTextDomain ("bulmages");
 
+    /// Creamos la aplicacion principal.
     QApplication app(argc, argv);
 
     /// Definimos la codificaci&oacute;n a Unicode.
     QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-    
+   /// Leemos los argumentos pasados por linea de comandos.
    QString argument=""; 
    for(int i = 1; i < argc; i++) {
       argument += argv[i];
    } // end for
    
+   /// Si el argumento -h se pasa mostramos la ayuda y salimos.
    if (argument.contains("-h")) {
       qDebug() << " Options -h show help" << endl << "-s only server. No ui interfac" << endl;
       exit(1);
@@ -78,6 +80,8 @@ int main ( int argc, char **argv )
    BgBulmaGes *bhges;
    
    qDebug() << argument << endl;
+
+   /// Si no hay argumento -s (solo server) entonces creamos la interficie grafica. Y el Tray Icon
    if (!argument.contains("-s")) {
         qDebug() << "Tray Icon" << endl;
 	if (!QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -93,8 +97,12 @@ int main ( int argc, char **argv )
 
   } // end if
       
+    ///Creamos el servidor y lo pasamos.
     BgServer * server = new BgServer();
     qDebug() << "En espera " << endl;
+
+    /// Damos el control de la aplicacion al QApplication
     return app.exec();
 }
+
 

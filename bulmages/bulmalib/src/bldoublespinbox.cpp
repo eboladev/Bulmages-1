@@ -89,17 +89,18 @@ bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
+
         switch ( key ) {
         case Qt::Key_Period:
-            /// Se pone esto para que funcione el teclado numerico la introduccion del 'punto'
-            /// como separador decimal.
+        case Qt::Key_Comma:
+            /// Se pone esto para que funcione el teclado numerico la introduccion del 'punto' y de la coma como separador decimal.
             QLineEdit * linea = QAbstractSpinBox::lineEdit();
             /// Comprueba que en el texto no haya ya una 'coma'.
             QString strLinea = linea->text();
-            if ( !strLinea.contains ( ",", Qt::CaseInsensitive ) ) {
-                linea->setText ( linea->text() + "," );
+            if ( !strLinea.contains ( ",", Qt::CaseInsensitive ) && !strLinea.contains ( ".", Qt::CaseInsensitive )) {
+                linea->setText ( linea->text()+"." );
+		return true;
             } // end if
-            return true;
         } // end switch
     } // end if
     
