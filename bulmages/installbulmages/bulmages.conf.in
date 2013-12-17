@@ -117,6 +117,18 @@ CONF_USE_QSCRIPT                        FALSE
 CONF_SYNC                           FALSE
 CONF_URL_SYNC                       http://updates.bulmages.com/
 
+#Opciones de mail embebido
+# Servidor de correo
+CONF_SMTP_SERVER                mail.demo.com   
+# Puerto
+CONF_SMTP_PORT                  25             
+# Usuario
+CONF_SMTP_USERNAME              username 
+# Contrasenya
+CONF_SMTP_PASSWORD              password
+# Tipo de cifrado PLAIN, SSL, TLS
+CONF_SMTP_TYPE   		PLAIN                    
+
 # NOTA PARA DESARROLLADORES:
 # --------------------------
 # Atencion: Las lineas que se agregen en este archivo deben

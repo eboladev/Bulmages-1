@@ -172,6 +172,7 @@ bool BL_EXPORT blRemoveDirectory(const QString &directorytoremove);
 
 
 extern "C" BL_EXPORT int Thunderbird ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
+extern "C" BL_EXPORT int BlMail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 extern "C" BL_EXPORT int Kmail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 extern "C" BL_EXPORT int Evolution ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached );
 #ifdef Q_OS_WIN32

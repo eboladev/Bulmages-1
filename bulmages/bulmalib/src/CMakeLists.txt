@@ -80,6 +80,19 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blfile.cpp
 			blsync.cpp
 			blaction.cpp)
+			
+set (smtpclient_SRCS 	emailaddress.cpp
+			mimeattachment.cpp
+			mimecontentformatter.cpp
+			mimefile.cpp
+			mimehtml.cpp
+			mimeinlinefile.cpp
+			mimemessage.cpp
+			mimemultipart.cpp
+			mimepart.cpp
+			mimetext.cpp
+			quotedprintable.cpp
+			smtpclient.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
@@ -141,6 +154,20 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blplugins.h
 			blpostgresqlclient.h
 			blargparser.h)
+			
+set (smtpclient_HDRS 	blsmtpmime.h 
+			emailaddress.h
+			mimeattachment.h                                                                                                                                       
+			mimecontentformatter.h                                                                                                                                 
+			mimefile.h                                                                                                                                             
+			mimehtml.h                                                                                                                                             
+			mimeinlinefile.h                                                                                                                                       
+			mimemessage.h                                                                                                                                          
+			mimemultipart.h                                                                                                                                        
+			mimepart.h                                                                                                                                             
+			mimetext.h                                                                                                                                             
+			quotedprintable.h
+			smtpclient.h)
 
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS	bldblogindialogbase.ui
@@ -182,6 +209,7 @@ endif(USE_GETTEXT)
 # generate rules for building source files from the resources
 QT5_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
 QT5_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
+QT5_WRAP_CPP(smtpclient_MOC_SRCS ${smtpclient_HDRS})
 QT5_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 
@@ -202,7 +230,7 @@ ENDIF(ALLOW_DEBUG)
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}
-	${bulmalib_SRCS} ${bulmalib_MOCS} ${bulmalib_RCC_SRCS})
+	${bulmalib_SRCS} ${bulmalib_MOCS} ${bulmalib_RCC_SRCS} ${smtpclient_SRCS} ${smtpclient_MOC_SRCS})
 
 set_target_properties( bulmalib PROPERTIES 
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
@@ -242,5 +270,6 @@ endif(USE_GETTEXT)
 
 install_targets(/lib bulmalib)
 install (FILES ${bulmalib_HDRS} DESTINATION include)
+install (FILES ${smtpclient_HDRS} DESTINATION include)
 
 ADD_LOCAL_BLI18N_HEADER( bulmalib )

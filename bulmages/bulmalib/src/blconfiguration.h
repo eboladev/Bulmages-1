@@ -310,6 +310,12 @@
 #define CONF_CONT_CTA_FPAGO                  573
 #define CONF_CONT_CTA_REGULARIZACION         574
 
+#define CONF_SMTP_SERVER                     575
+#define CONF_SMTP_PORT                       576
+#define CONF_SMTP_USERNAME                   577
+#define CONF_SMTP_PASSWORD                   578
+#define CONF_SMTP_TYPE                       579
+
 
 
 typedef QMap<int, QString> mapa;
