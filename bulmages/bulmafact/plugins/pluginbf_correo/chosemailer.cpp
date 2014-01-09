@@ -130,6 +130,12 @@ int ChoseMailer::GuardarConfig()
             filestr << "   ";
             filestr << QString(dir_email).toLatin1().data();
             filestr << endl;
+	] else {
+	    filestr << endl;
+            filestr << QString("CONF_EMAIL_CLIENT").toLatin1().data();
+            filestr << "   ";
+            filestr << QString("interno").toLatin1().data();
+            filestr << endl;
         } // end if
     file.close();    
     return 0;
@@ -146,7 +152,7 @@ void ChoseMailer::on_mui_mailclients_currentIndexChanged(int index)
     BL_FUNC_DEBUG
     
     QString currentItem = mui_mailclients->itemData(mui_mailclients->currentIndex ()).toString();
-    if (currentItem != "0" ) {
+    if (currentItem != "0" || currentItem != "1")  {
         int sip = SearchExecutable(currentItem);
         if (sip == 0) {
             mui_location->setText ( programLocated );

@@ -20,11 +20,11 @@
 #                                                                       #
 #########################################################################
 # ########## Project setup ##########
+cmake_minimum_required(VERSION 2.8)
 
 
 
 PROJECT(bulmages)
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
 
 SET( BULMAGES_VERSION 1.5.0 )
 

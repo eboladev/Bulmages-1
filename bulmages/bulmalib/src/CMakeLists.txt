@@ -153,19 +153,19 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 	            	blpicture.h
 			blplugins.h
 			blpostgresqlclient.h
-			blargparser.h)
+			blargparser.h
+			blsmtpmime.h
+			mimeinlinefile.h
+			mimemessage.h
+			mimetext.h )
 			
-set (smtpclient_HDRS 	blsmtpmime.h 
-			emailaddress.h
+set (smtpclient_HDRS 	emailaddress.h
 			mimeattachment.h                                                                                                                                       
 			mimecontentformatter.h                                                                                                                                 
 			mimefile.h                                                                                                                                             
 			mimehtml.h                                                                                                                                             
-			mimeinlinefile.h                                                                                                                                       
-			mimemessage.h                                                                                                                                          
 			mimemultipart.h                                                                                                                                        
 			mimepart.h                                                                                                                                             
-			mimetext.h                                                                                                                                             
 			quotedprintable.h
 			smtpclient.h)
 
