@@ -130,7 +130,7 @@ int ChoseMailer::GuardarConfig()
             filestr << "   ";
             filestr << QString(dir_email).toLatin1().data();
             filestr << endl;
-	] else {
+	} else {
 	    filestr << endl;
             filestr << QString("CONF_EMAIL_CLIENT").toLatin1().data();
             filestr << "   ";
