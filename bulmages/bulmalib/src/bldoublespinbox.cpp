@@ -54,11 +54,10 @@ QString const BlDoubleSpinBox::text()
     BL_FUNC_DEBUG
     QString a = QDoubleSpinBox::text();
 
-/*    /// Conversi&oacute;n al formato del locale "C": un punto separa la parte decimal
-    QLocale locale;
+    /// Conversi&oacute;n al formato del locale "C": un punto separa la parte decimal
+/*    QLocale locale;
     a = locale.toString((locale.toDouble(a))); //ARON
 */
-    
     return a;
 }
 
@@ -71,7 +70,6 @@ void BlDoubleSpinBox::setValue ( double valor )
 {
     BL_FUNC_DEBUG
     QDoubleSpinBox::setValue ( valor );
-    
 }
 
 
@@ -90,18 +88,25 @@ bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
         int key = keyEvent->key();
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
 
+
         switch ( key ) {
         case Qt::Key_Period:
         case Qt::Key_Comma:
+
+	  
             /// Se pone esto para que funcione el teclado numerico la introduccion del 'punto' y de la coma como separador decimal.
             QLineEdit * linea = QAbstractSpinBox::lineEdit();
             /// Comprueba que en el texto no haya ya una 'coma'.
             QString strLinea = linea->text();
             if ( !strLinea.contains ( ",", Qt::CaseInsensitive ) && !strLinea.contains ( ".", Qt::CaseInsensitive )) {
-                linea->setText ( linea->text()+"." );
+		QLocale locale;
+                linea->setText ( linea->text() + locale.decimalPoint () );
 		return true;
             } // end if
         } // end switch
+
+
+      
     } // end if
     
     return QDoubleSpinBox::eventFilter ( obj, event );
