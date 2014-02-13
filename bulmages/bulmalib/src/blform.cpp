@@ -1126,48 +1126,50 @@ int BlForm::load ( QString id, bool paint )
         if ( g_plugins->run ( "BlForm_load", this ) ) return 0;
         cargarPost ( id );
 	/// Cargamos los subformularios de specificaciones
-    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
-    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc");
-    QDomDocument doc ( "mydocument" );
-    if ( file.open ( QIODevice::ReadOnly ) ) {
+	
+	
+	/// Cargamos el XML de descripcion de autoforms y lo procesamos.
+	QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc");
+	QDomDocument doc ( "mydocument" );
+	if ( file.open ( QIODevice::ReadOnly ) ) {
 
 
-    if ( !doc.setContent ( &file ) ) {
-        file.close();
-	blMsgInfo("Error al parsear el archivo de especificaciones");
-        return 0;
-    } // end if
-    file.close();
-    
-    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
-    QDomElement docElem = doc.documentElement();
-    
-    QDomNodeList nodos = docElem.elementsByTagName ( "TAB" );
-    for ( int i = 0; i < nodos.count(); i++ ) {
-        QDomNode autoform = nodos.item ( i );
-        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
-        if ( !e1.isNull() ) { /// the node was really an element.
-
-		/// Cargamos los subformularios
-		QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
-		for ( int j = 0; j < nodoss.count(); j++ ) {
-		    QDomNode ventana = nodoss.item ( j );
-		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
-		    if ( !e1.isNull() ) { /// the node was really an element.
-			BlDbField::DbType type = BlDbField::DbVarChar;
-			QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
-			BlSubForm * subform = findChild<BlSubForm *>("mui_" + nomheader);
-			if (subform) {
-			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
-			   QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
-			   /// Sustituimos las variables encontradas.
-			   substrVars(query,0);
-			   subform->load(query);
-			} // end if
-		    } // end if
-		} // end for
+	if ( !doc.setContent ( &file ) ) {
+	    file.close();
+	    blMsgInfo("Error al parsear el archivo de especificaciones");
+	    return 0;
 	} // end if
-    } // end form
+	file.close();
+	
+	/// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
+	QDomElement docElem = doc.documentElement();
+	
+	QDomNodeList nodos = docElem.elementsByTagName ( "TAB" );
+	for ( int i = 0; i < nodos.count(); i++ ) {
+	    QDomNode autoform = nodos.item ( i );
+	    QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+	    if ( !e1.isNull() ) { /// the node was really an element.
+
+		    /// Cargamos los subformularios
+		    QDomNodeList nodoss = e1.elementsByTagName ( "SUBFORM" );
+		    for ( int j = 0; j < nodoss.count(); j++ ) {
+			QDomNode ventana = nodoss.item ( j );
+			QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+			if ( !e1.isNull() ) { /// the node was really an element.
+			    BlDbField::DbType type = BlDbField::DbVarChar;
+			    QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+			    BlSubForm * subform = findChild<BlSubForm *>("mui_" + nomheader);
+			    if (subform) {
+			      /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
+			      QString query = e1.firstChildElement ( "QUERY" ).toElement().text();
+			      /// Sustituimos las variables encontradas.
+			      substrVars(query,0);
+			      subform->load(query);
+			    } // end if
+			} // end if
+		    } // end for
+	    } // end if
+	} // end form
     
     
     
@@ -1226,8 +1228,8 @@ int BlForm::save()
         beforeSave();
 
         dbSave ( id );
-        setDbValue ( m_campoid, id );
-
+        setDbValue ( m_campoid, id );	
+	
         /// Lanzamos los plugins.
         if ( g_plugins->run ( "BlForm_guardar_Post", this ) ) return 0;
 
@@ -1357,7 +1359,7 @@ int BlForm::afterSave()
     /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
     QDomElement docElem = doc.documentElement();
     
-    QDomNodeList nodos = docElem.elementsByTagName ( "AUTOFORM" );
+    QDomNodeList nodos = docElem.elementsByTagName ( "TAB" );
     for ( int i = 0; i < nodos.count(); i++ ) {
         QDomNode autoform = nodos.item ( i );
         QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
@@ -1382,8 +1384,9 @@ int BlForm::afterSave()
 				  int posicion = listavinculos.at(j1).indexOf("=");
 				  QString campo = listavinculos.at(j1).left(posicion);
 				  QString valor = listavinculos.at(j1).right(listavinculos.at(j1).size() - posicion -1);
-			    
+				  
 				  subform->setColumnValue ( campo, dbValue ( valor ) );
+
 			    } // end for
 
 			    subform->save();
