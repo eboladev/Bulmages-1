@@ -61,8 +61,8 @@
 	</storyPlace>
 
 
-
- <!-- IF QUERY = "SELECT * FROM vencimientoc WHERE idpresupuesto=[idpresupuesto]" -->
+<!-- QUERY1 = "SELECT * FROM pg_attribute WHERE attname='fechavencimientoc'" -->
+ <!-- QUERY2 = "SELECT COUNT(idpresupuesto) AS coun FROM vencimientoc WHERE idpresupuesto=[idpresupuesto]" -->
  	<storyPlace x="0cm" y="0cm" width="20cm" height="1cm">
 		<place x="15cm" y="2cm" width="19cm" height="4cm">
 			<blockTable style="tablavencimientos" colWidths="2.3cm,1.7cm" >
@@ -70,18 +70,20 @@
 		  <td>Vencimiento/s:</td>
 			<td></td>
 		</tr>
- <!-- QUERY = "SELECT * FROM vencimientoc WHERE idpresupuesto=[idpresupuesto]" -->
+ <!-- QUERY3 = "SELECT * FROM vencimientoc WHERE idpresupuesto=[idpresupuesto]" -->
 
 				<tr>
 					<td>[fechavencimientoc]</td>
 					<td>[cantvencimientoc] €</td>
 				</tr>
 
- <!-- END QUERY-->
+ <!-- END QUERY3-->
  			</blockTable>
 		</place>
 	</storyPlace> 
- <!-- END IF QUERY-->
+ <!-- END QUERY2-->
+<!-- END QUERY1-->
+
 
 
 

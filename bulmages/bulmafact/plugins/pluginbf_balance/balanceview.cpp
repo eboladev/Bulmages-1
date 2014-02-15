@@ -448,6 +448,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
 void BalanceView::imprimir() {
        BL_FUNC_DEBUG
        recogeValores();
+/*
         /// El calculo de los canales
         QString ccanales = "";
 	g_plugins->run("PgetSelCanales", &ccanales);
@@ -455,12 +456,8 @@ void BalanceView::imprimir() {
 	bool sincanal = true;
 	g_plugins->run("PgetSinCanal", &sincanal);
 	setVar("canales", "(" + QString(sincanal?" idcanal IS NULL OR ":"")+" idcanal IN (0"+ccanales+") )");
-	QString ccostes = "";
-	g_plugins->run("PgetSelCostes", &ccostes);
-        if ( ccostes != "" ) {
-            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
-        } // end if
-        setVar("ccostes", ccostes);
+*/
+
        BfForm::imprimir();
 }
 

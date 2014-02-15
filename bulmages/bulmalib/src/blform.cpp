@@ -1466,6 +1466,13 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
         buff.replace ( "[" + j.key() + "]", j.value() );
     } // end while
 
+    /// Tratamos la sustitucion de variables globales de programa
+    QMapIterator<QString, QString> k ( g_globalvars );
+    while ( k.hasNext() ) {
+        k.next();
+        buff.replace ( "[" + k.key() + "]", k.value() );
+    } // end while
+    
     substrConf ( buff );
 
     
@@ -1486,8 +1493,7 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
     pos =  0;
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
-        if ( exists ( rx.cap ( 1 ) ) ) {
-                        
+      if ( exists ( rx.cap ( 1 ) ) ) {
             switch ( tipoEscape ) {
             case 1:
                 buff.replace ( pos, rx.matchedLength(), blXMLEscape ( dbValue ( rx.cap ( 1 ) ) ) );

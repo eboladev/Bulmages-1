@@ -32,9 +32,6 @@
 
 
 # pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007"
-
-
-# pathtitle="&Cuentas anuales\PGC 2007\Plan General Contable 2007"
 # title="Cuentas anuales Plan General Contable 2007"
 # CAPGC08
 import psycopg2

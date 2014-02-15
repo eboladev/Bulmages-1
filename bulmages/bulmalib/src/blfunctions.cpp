@@ -51,7 +51,7 @@
 #endif
 
 
-
+QMap<QString,QString> g_globalvars; /// Son elementos que han sido incrustados e inicializados por programas
 
 
 /** Las variables estaticas de clase deben ser delcaras para reservar memoria */
@@ -1740,5 +1740,13 @@ int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
     }// end if
     return 0;
     
+}
+
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void setGVar(const QString &varname, const QString &varvalue) {
+      BL_FUNC_DEBUG
+      g_globalvars[varname ] = varvalue;
 }
 
