@@ -113,9 +113,9 @@ DECLARE
 BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''DBRev-BulmaTPV'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.15.0-0001'' WHERE nombre=''DBRev-BulmaTPV'';
+		UPDATE CONFIGURACION SET valor=''1.6.0-0001'' WHERE nombre=''DBRev-BulmaTPV'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.15.0-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''1.6.0-0001'');
 	END IF;
 	RETURN 0;
 END;
