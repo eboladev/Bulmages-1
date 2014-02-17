@@ -830,24 +830,34 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
     cur = mainCompany() ->load ( "SELECT * FROM articulo WHERE codigocompletoarticulo = $1", codigocompleto  );
     if ( !cur->eof() ) {
         /// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
-        /// el cliente y la tarifa asignada si procede.
+ 		    /// Disparamos los plugins.
+	int res = g_plugins->run ( "BfSubForm_calculaPVP", this );
+	if ( res != 0 ) {
+	    delete cur;
+	    return;
+	} // end if       /// el cliente y la tarifa asignada si procede.
         if ( !mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty() ) {
             /// Se ha seleccionado un cliente.
-            m_idArticulo = cur->value( "idarticulo" );
-            cur3 = mainCompany() ->loadQuery ( "SELECT cliente.idtarifa, ltarifa.pvpltarifa, ltarifa.idalmacen FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE ltarifa.idalmacen = " + m_idAlmacen + " AND cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + m_idArticulo );
-            m_idTarifa = cur3->value( "idtarifa" );
-            if ( cur3->numregistros() > 0 ) {
-                /// A) Se dispone de tarifa especial.
-                if (rec->exists("pvp" + m_tablename))
-		    rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
-                if (rec->exists("pvpivainc" + m_tablename))
-		    rec->setDbValue ( "pvpivainc" + m_tablename, cur3->value( "pvpltarifa" ) );
-
-                /// Disparamos los plugins.
-                int res = g_plugins->run ( "BfSubForm_calculaPVP", this );
-                if ( res != 0 ) {
-                    return;
-                } // end if
+	  
+	    /// TODO : El sistema de tarifas es opcional. Esto deberia estar en el plugin de tarifas.
+	    BlDbRecordSet *curaux = mainCompany()->loadQuery("SELECT * FROM pg_attribute WHERE attname='idtarifa'");
+	    if (!curaux->eof()) {
+		m_idArticulo = cur->value( "idarticulo" );
+		cur3 = mainCompany() ->loadQuery ( "SELECT cliente.idtarifa, ltarifa.pvpltarifa, ltarifa.idalmacen FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE ltarifa.idalmacen = " + m_idAlmacen + " AND cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + m_idArticulo );
+		if ( !cur3->eof() ) {
+		    m_idTarifa = cur3->value( "idtarifa" );
+		    /// A) Se dispone de tarifa especial.
+		    if (rec->exists("pvp" + m_tablename))
+			rec->setDbValue ( "pvp" + m_tablename, cur3->value( "pvpltarifa" ) );
+		    if (rec->exists("pvpivainc" + m_tablename))
+			rec->setDbValue ( "pvpivainc" + m_tablename, cur3->value( "pvpltarifa" ) );
+		} else {
+		    /// B) No tiene tarifa especial se usa la asignada por defecto.
+		    if (rec->exists("pvp" + m_tablename))
+			rec->setDbValue ( "pvp" + m_tablename, cur->value( "pvparticulo" ) );
+		    if (rec->exists("pvpivainc" + m_tablename))
+			rec->setDbValue ( "pvpivainc" + m_tablename, cur->value( "pvpivaincarticulo" ) );
+		} // end if
 
             } else {
 	      
@@ -858,6 +868,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
 		    rec->setDbValue ( "pvpivainc" + m_tablename, cur->value( "pvpivaincarticulo" ) );
 		
             } // end if
+            delete curaux;
         } else {
             /// Sin cliente asignado se usa la tarifa asignada por defecto.
                 if (rec->exists("pvp" + m_tablename))
