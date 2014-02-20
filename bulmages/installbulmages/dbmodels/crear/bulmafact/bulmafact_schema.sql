@@ -1670,7 +1670,8 @@ CREATE TABLE facturap (
     idtrabajador integer REFERENCES trabajador(idtrabajador),
     totalfacturap NUMERIC(12, 2) DEFAULT 0,
     bimpfacturap NUMERIC(12, 2) DEFAULT 0,
-    impfacturap NUMERIC(12, 2) DEFAULT 0
+    impfacturap NUMERIC(12, 2) DEFAULT 0,
+    irpffacturap NUMERIC(12,2) DEFAULT 0
 );
 
 
@@ -1756,7 +1757,6 @@ DECLARE
     totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     rs RECORD;
-    rs2 RECORD;
 
 BEGIN
     totalBImponibleLineas := 0;
@@ -1769,12 +1769,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs2 idproveedor FROM facturap WHERE idfacturap = idp;
-
-    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
-
+    SELECT INTO rs irpffacturap FROM facturap WHERE idfacturap = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpffacturap / 100);
     END IF;
 
     FOR rs IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
@@ -1951,7 +1948,8 @@ CREATE TABLE albaranp (
    UNIQUE (idalmacen, numalbaranp),
    totalalbaranp NUMERIC(12, 2) DEFAULT 0,
    bimpalbaranp NUMERIC(12, 2) DEFAULT 0,
-   impalbaranp NUMERIC(12, 2)
+   impalbaranp NUMERIC(12, 2),
+   irpfalbaranp NUMERIC(12,2) DEFAULT 0
 );
 
 
@@ -2054,12 +2052,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs2 idproveedor FROM albaranp WHERE idalbaranp = idp;
-
-    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
-
+    SELECT INTO rs irpfalbaranp FROM albaranp WHERE idalbaranp = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfalbaranp / 100);
     END IF;
 
     FOR rs IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
@@ -2629,7 +2624,8 @@ CREATE TABLE pedidoproveedor (
     idtrabajador integer REFERENCES trabajador(idtrabajador),
     totalpedidoproveedor NUMERIC(12, 2) DEFAULT 0,
     bimppedidoproveedor NUMERIC(12, 2) DEFAULT 0,
-    imppedidoproveedor NUMERIC(12, 2) DEFAULT 0
+    imppedidoproveedor NUMERIC(12, 2) DEFAULT 0,
+    irpfpedidoproveedor NUMERIC(12,2) DEFAULT 0
 );
 
 
@@ -2735,12 +2731,10 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs2 idproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
 
-    SELECT INTO rs irpfproveedor FROM proveedor WHERE idproveedor = rs2.idproveedor;
-
+    SELECT INTO rs irpfpedidoproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.irpfproveedor / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfpedidoproveedor / 100);
     END IF;
 
     FOR rs IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP

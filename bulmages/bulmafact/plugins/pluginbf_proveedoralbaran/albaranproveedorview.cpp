@@ -65,6 +65,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "procesadoalbaranp", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Albaran procesado" ) );
         addDbField ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia albaran proveedor" ) );
         addDbField ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion albaran proveedor" ) );
+        addDbField ( "irpfalbaranp", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF albaran" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->run ( "AlbaranProveedorView_AlbaranProveedorView", this );
@@ -98,6 +99,18 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         m_totalalbaranp->setAlignment ( Qt::AlignRight );
         mui_idforma_pago->setId ( "0" );
         mui_idalmacen->setId ( "0" );
+	
+	/// Calculamos el IRPF y lo ponemos
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= now()::DATE ORDER BY fechairpf DESC LIMIT 1";
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	if ( cur ) {
+	    if ( !cur->eof() ) {
+		mui_irpfalbaranp -> setText( cur->value( "tasairpf" ) );
+		setDbValue("irpfalbaranp", cur->value("tasairpf") );
+	    } // end if
+	    delete cur;
+	} // end if
+	
         insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {

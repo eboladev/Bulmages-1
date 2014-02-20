@@ -109,17 +109,6 @@ void BfForm::calculaypintatotales()
 	} // end if
     }// end if
 
-
-    if ( exists ( "idproveedor" ) && dbValue ( "idproveedor" ) != "" ) {
-        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" ) );
-        if ( cur ) {
-            if ( !cur->eof() ) {
-                irpf = BlFixed ( cur->value( "irpfproveedor" ) );
-            } // end if
-            delete cur;
-        } // end if
-    } // end if
-
     BlFixed descuentolinea ( "0.00" );
     
     for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {

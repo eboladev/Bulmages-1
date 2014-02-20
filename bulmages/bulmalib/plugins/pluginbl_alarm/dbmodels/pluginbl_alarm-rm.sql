@@ -67,10 +67,10 @@ DECLARE
 	rs RECORD;
 
 BEGIN
-	SELECT INTO rs * FROM pg_tables  WHERE tablename=''archivo'';
+	SELECT INTO rs * FROM pg_tables  WHERE tablename=''alarma'';
 
 	IF FOUND THEN
-	      DROP TABLE archivo;
+	      DROP TABLE alarma;
 	END IF;
 
 	RETURN 0;
@@ -89,10 +89,10 @@ DECLARE
 	rs RECORD;
 
 BEGIN
-	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBl_AttachDocument'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBl_Alarm'';
 
 	IF FOUND THEN
-		DELETE FROM CONFIGURACION WHERE nombre=''PluginBl_AttachDocument'';
+		DELETE FROM CONFIGURACION WHERE nombre=''PluginBl_Alarm'';
 	END IF;
 
 	RETURN 0;

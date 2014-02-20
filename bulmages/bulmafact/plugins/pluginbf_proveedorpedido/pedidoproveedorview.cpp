@@ -64,6 +64,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id trabajador" ) );
         addDbField ( "contactpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Persona de contacto proveedor" ) );
         addDbField ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono proveedor" ) );
+        addDbField ( "irpfpedidoproveedor", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF pedido" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->run ( "PedidoProveedorView_PedidoProveedorView", this );
@@ -94,6 +95,18 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         setListaLineas ( mui_lineasDetalle );
         setListaDescuentos ( mui_descuentos );
 
+	/// Calculamos el IRPF y lo ponemos
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= now()::DATE ORDER BY fechairpf DESC LIMIT 1";
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	if ( cur ) {
+	    if ( !cur->eof() ) {
+		mui_irpfpedidoproveedor -> setText( cur->value( "tasairpf" ) );
+		setDbValue("irpfpedidoproveedor", cur->value("tasairpf") );
+	    } // end if
+	    delete cur;
+	} // end if	
+	
+	
         dialogChanges_readValues();
         insertWindow ( windowTitle(), this, false );
 	blScript(this);

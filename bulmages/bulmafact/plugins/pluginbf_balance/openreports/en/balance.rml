@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm"  title="Balance Vertical"  author="Tomeu Borras" allowSplitting="20">
+	<pageTemplate id="main">
+		<pageGraphics>
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantillac.rml" -->
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- BALANCE DE SITUACION -</drawCentredString>
+
+		<setFont name="Helvetica-Bold" size="10"/>
+		<drawCentredString x="5.3cm" y="25.8cm">24/08/2013</drawCentredString>
+		<!--QUERY="SELECT * FROM cuenta WHERE idcuenta=[mui_cuentaInicial]"-->
+		<drawString x="10.3cm" y="28cm">Cuenta: [codigo]</drawString>
+		<drawString x="10.3cm" y="27.5cm">[descripcion]</drawString>
+		<!--END QUERY-->
+		<drawString x="10.3cm" y="26.5cm">Fecha Inicial: [mui_fechaInicial]</drawString>
+		<drawString x="10.3cm" y="26.0cm">Fecha Final:[mui_fechaFinal]</drawString>
+		
+		<drawString x="10.3cm" y="25.5cm">Canales:<!--QUERY="SELECT * FROM canal WHERE [canales]" -->[nombre]<!--END QUERY--></drawString>
+		
+		<drawString x="10.3cm" y="25.0cm">Contrapartida:</drawString>
+		<drawString x="10.3cm" y="24.5cm">Asientos Abiertos:</drawString>
+		<drawString x="10.3cm" y="24.0cm">Sin Asientos Especiales:</drawString>
+		<drawString x="10.3cm" y="23.5cm">Opciones Filtrado:</drawString>
+		
+		<setFont name="Helvetica" size="7"/>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
+
+
+	</pageGraphics>
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla_framec.rml" -->
+
+		
+	</pageTemplate>
+</template>
+<stylesheet>
+	<blockTableStyle id="tabla">
+		<blockTopPadding length="0"/>
+		<blockBottomPadding length="0"/>
+		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
+		<blockAlignment value="RIGHT" start="1,0" stop="-1,-1"/>
+
+	</blockTableStyle>
+	<paraStyle name="rojo" alignment="right" textColor="red"/>
+	<paraStyle name="azul" alignment="right" textColor="blue"/>
+	<paraStyle name="derecha" alignment="right"/>
+</stylesheet>
+
+<story>
+
+<blockTable style="tabla" colWidths="2cm,8cm,2.5cm,2.5cm,2.5cm" repeatRows="1">
+<tr>
+<td>Codigo</td>
+<td>Descripcion</td>
+<td>Debe</td>
+<td>Haber</td>
+<td>Saldo</td>
+
+</tr>
+
+<!-- QUERY1= "SELECT descripcion, codigo AS cod1, 
+      CASE 
+	WHEN length(codigo) = 2 THEN '<b>'
+	WHEN length(codigo) < 7 THEN '<font color=''blue''>'
+	  ELSE ''
+      END AS lcond1, 
+      CASE 
+	WHEN length(codigo) = 2 THEN '</b>'
+	WHEN length(codigo) < 7 THEN '</font>'
+	  ELSE ''
+      END AS lcond2
+
+      
+      FROM cuenta ORDER BY codigo" -->
+ 
+<!--QUERY2 = "SELECT COALESCE(sum(ta.debe),0) AS tdebe, COALESCE(sum(ta.haber),0) as thaber 
+FROM (SELECT * FROM apunte WHERE [canales] AND apunte.fecha >='[mui_fechaInicial]' AND apunte.fecha <='[mui_fechaFinal]') AS ta
+LEFT JOIN cuenta ON ta.idcuenta = cuenta.idcuenta 
+  WHERE  cuenta.codigo LIKE '[cod1]%'" -->
+
+ <!-- QUERY3="SELECT TRUE WHERE [tdebe] + [thaber]<>0" -->
+   <!-- QUERY4 = "SELECT TRUE WHERE length('[cod1]') = 2"-->
+   <tr><td></td><td></td><td></td><td></td><td></td></tr>
+   <!-- END QUERY4-->
+<tr>
+  <td><para>[lcond1,l][cod1][lcond2,l]</para></td>
+<td><para>[lcond1,l][descripcion][lcond2,l]</para></td>
+<td><para style="derecha">[lcond1,l][tdebe][lcond2,l]</para></td>
+<td><para style="derecha">[lcond1,l][thaber][lcond2,l]</para></td>
+<td><!--QUERY4=" SELECT [tdebe] - [thaber] AS tsaldo, 
+  CASE 
+    WHEN [tdebe] >= [thaber] THEN '<font>'
+      ELSE '<font color=''red''>'
+      END AS estilo_fuente"--><para style="derecha">[lcond1,l][estilo_fuente,l][tsaldo]</font>[lcond2,l]</para><!--END QUERY4--></td>
+</tr>
+
+ <!-- END QUERY3 -->
+ 
+<!-- END QUERY2-->
+
+<!-- END QUERY1-->
+
+</blockTable>		
+</story>
+</document>

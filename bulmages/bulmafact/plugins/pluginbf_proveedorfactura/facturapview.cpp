@@ -64,7 +64,9 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "descfacturap", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion facturap" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id trabajador" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id forma de pago" ) );
-
+        addDbField ( "irpffacturap", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
+	
+	
         /// Disparamos los plugins.
         int res = g_plugins->run ( "FacturaProveedorView_FacturaProveedorView", this );
         if ( res != 0 ) {
@@ -96,6 +98,21 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
         m_totalfacturap->setReadOnly ( true );
         m_totalfacturap->setAlignment ( Qt::AlignRight );
+	
+	
+	/// Calculamos el IRPF y lo ponemos
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= now()::DATE ORDER BY fechairpf DESC LIMIT 1";
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	if ( cur ) {
+	    if ( !cur->eof() ) {
+		mui_irpffacturap -> setText( cur->value( "tasairpf" ) );
+		setDbValue("irpffacturap", cur->value("tasairpf") );
+	    } // end if
+	    delete cur;
+	} // end if
+	
+	
+	
         insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {
@@ -330,6 +347,7 @@ void FacturaProveedorView::on_mui_duplicar_released()
         bud->setDbValue ( "comentfacturap", fpv->dbValue ( "comentfacturap" ) );
         bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
         bud->setDbValue ( "reffacturap", fpv->dbValue ( "reffacturap" ) );
+        bud->setDbValue ( "irpffacturap", fpv->dbValue ( "irpffacturap" ) );
         bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
         bud->inicializar();
         bud->show();
