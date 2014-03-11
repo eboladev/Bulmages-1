@@ -4,6 +4,9 @@
 #pluginbf_alquileres
 
 set (plugin pluginbf_alquileres)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 # Mensajes de depuracion

@@ -28,6 +28,8 @@
 
 set (plugin pluginbc_ccaa2ods)
 
+cmake_policy(SET CMP0020 OLD)
+
 
 # Instalamos el archivo README para las descripciones de BulmaSetup
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)

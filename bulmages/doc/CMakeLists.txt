@@ -27,3 +27,4 @@ install(DIRECTORY bulmacont_files  bulmafact_files  bulmasetup_files
 set (indexes bulmacont.html bulmafact.html bulmasetup.html)
 install(FILES ${indexes} DESTINATION share/bulmages/doc)
 
+cmake_policy(SET CMP0020 OLD)

@@ -23,6 +23,8 @@
 
 PROJECT(bulmacont)
 
+cmake_policy(SET CMP0020 OLD)
+
 FILE(READ css/bulmacont_es_ES.css VAR_CSS_es_ES)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_es_ES.css "${VAR_CSS_es_ES}" )
 

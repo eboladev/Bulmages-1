@@ -5,6 +5,8 @@
 
 set (plugin pluginbf_camarero)
 
+cmake_policy(SET CMP0020 OLD)
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
@@ -97,7 +99,7 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo pluginbf_trabajador)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)

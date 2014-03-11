@@ -4,6 +4,9 @@
 #pluginbf_biblioteca
 
 set (plugin pluginbf_biblioteca)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)

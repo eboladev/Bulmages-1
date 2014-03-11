@@ -23,6 +23,8 @@
 # bulmafact                                                             #
 #########################################################################
 
+cmake_policy(SET CMP0020 OLD)
+
 
 file(GLOB bulmafact_SRC *.c *.cpp)
 file(GLOB bulmafact_MOCS *.hpp *.h)
