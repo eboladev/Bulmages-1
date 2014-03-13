@@ -261,6 +261,45 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
+
+-- FUNCIONES VARIAS DE SOPORTE.
+\echo -n ':: Funcion que calcula el IVA de un articulo ... '
+CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12, 2)
+AS'
+DECLARE
+    idarticulo1 ALIAS FOR $1;
+    rs RECORD;
+
+BEGIN
+    SELECT INTO rs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo1 ORDER BY fechatasa_iva;
+
+    IF FOUND THEN
+	RETURN rs.porcentasa_iva;
+    END IF;
+
+    RETURN 0.0;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula el PVP de un articulo ... '
+CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12, 2)
+AS'
+DECLARE
+    idarticulo1 ALIAS FOR $1;
+    rs RECORD;
+
+BEGIN
+    SELECT INTO rs pvparticulo FROM articulo1 WHERE articulo.idarticulo = idarticulo;
+
+    IF FOUND THEN
+	RETURN rs.pvparticulo;
+    END IF;
+
+    RETURN 0.0;
+END;
+' LANGUAGE plpgsql;
+
 -- =====================================================================================
 
 -- Agregamos nuevos parametros de configuracion

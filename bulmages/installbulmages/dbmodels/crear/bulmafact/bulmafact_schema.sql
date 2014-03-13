@@ -2557,11 +2557,11 @@ CREATE TABLE codigobarras (
 CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
-    idarticulo ALIAS FOR $1;
+    idarticulo1 ALIAS FOR $1;
     rs RECORD;
 
 BEGIN
-    SELECT INTO rs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+    SELECT INTO rs * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo1 ORDER BY fechatasa_iva;
 
     IF FOUND THEN
 	RETURN rs.porcentasa_iva;
@@ -2576,11 +2576,11 @@ END;
 CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
-    idarticulo ALIAS FOR $1;
+    idarticulo1 ALIAS FOR $1;
     rs RECORD;
 
 BEGIN
-    SELECT INTO rs pvparticulo FROM articulo WHERE articulo.idarticulo = idarticulo;
+    SELECT INTO rs pvparticulo FROM articulo1 WHERE articulo.idarticulo = idarticulo;
 
     IF FOUND THEN
 	RETURN rs.pvparticulo;
