@@ -26,6 +26,6 @@ Incompatibles:
 
 Categorias: Utilidades genericas; Colmados; Restauración; Tallas y Colores; Supermercados;
 
-Orden:
+Orden: 100
 
 Comentarios: Perfecto en todas las instalaciones con pantalla tactil.
