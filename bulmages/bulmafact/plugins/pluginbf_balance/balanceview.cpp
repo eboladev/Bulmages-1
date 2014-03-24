@@ -41,7 +41,6 @@
 #define HABEREJ         7
 #define SALDOEJ         8
 
-
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
 /**
@@ -62,6 +61,15 @@ BalanceView::BalanceView ( BfCompany *emp, QWidget *parent, int )
     /// Para imprimir usaremos la plantilla balance
     setTemplateName("balance");
 
+    setDbFieldId ( "idcuenta" );
+    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, _ ( "idcuenta" ) );
+    addDbField ( "fechaInicial", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaInicial" ) );
+    addDbField ( "fechaFinal", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaFinal" ) );
+    addDbField ( "cuentaInicial", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "cuentaInicial" ) );
+    addDbField ( "cuentaFinal", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "cuentaFinal" ) );
+    
+    setDbValue("idcuenta","0");
+    
     mui_cuentaInicial->setMainCompany ( emp );
     /// Arreglamos la cuenta.
     mui_cuentaInicial->setLabel ( _ ( "Cuenta inicial:" ) );
@@ -297,15 +305,16 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         QTreeWidgetItem *it;
         int nivelActual;
         /// Mantenemos una tabla con &iacute;ndices de niveles del &aacute;rbol.
-        QMap <int, QTreeWidgetItem *> ptrList;
+        QMultiMap <int, QTreeWidgetItem *> ptrList;
         /// Y el iterador para controlar donde accedemos, as&iacute; como un &iacute;ndice
         /// adicional.
-        QMap <int, QTreeWidgetItem *>::const_iterator ptrIt, i;
+        QMultiMap <int, QTreeWidgetItem *>::const_iterator ptrIt, i;
         ptrList.clear();
-
+        ptrList.clear();
 
         while ( arbol->deshoja ( nivel, jerarquico ) ) {
             QString lcuenta = arbol->hojaActual ( "codigo" );
+	    qDebug() << lcuenta << endl;
             QString ldenominacion = arbol->hojaActual ( "descripcion" );
             QString lsaldoant = arbol->hojaActual ( "saldoant" );
             QString ldebe = arbol->hojaActual ( "debe" );
@@ -360,16 +369,15 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
                     mui_list->setItemExpanded ( it, true );
                     /// Borramos el resto de niveles que cuelgan, para no seguir colgando por
                     /// esa rama.
-                    i = ptrIt + 1;
-/* TBR
- * Este arreglo debe ser una importante criba de velocidad. Pero no se porque falla y genera un segfault.
- * Por lo que la comento hasta encontrar un poco de tiempo para seguir este error.
- *                    while ( i != ptrList.constEnd() ) {
-                        /// Borra todas las entradas con la misma clave.
-                        ptrList.remove ( i.key() );
-                        ++i;
-                    } // end while
-*/
+                    i = ptrList.constEnd();
+		    i--;
+		    while ( i != ptrIt && i != ptrList.begin() ) {
+			  ptrList.remove ( i.key(), i.value() );
+			  i = ptrList.constEnd();
+			  i--;
+
+		    } // end while
+
 
                 } else { /// sin jerarquizar...
                     it = new QTreeWidgetItem ( mui_list, datos );
@@ -434,6 +442,23 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
         if ( hojas ) delete hojas;
     } // end try
     
+}
+
+
+void BalanceView::imprimir() {
+       BL_FUNC_DEBUG
+       recogeValores();
+/*
+        /// El calculo de los canales
+        QString ccanales = "";
+	g_plugins->run("PgetSelCanales", &ccanales);
+	if (ccanales != "") ccanales = ","+ccanales;
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	setVar("canales", "(" + QString(sincanal?" idcanal IS NULL OR ":"")+" idcanal IN (0"+ccanales+") )");
+*/
+
+       BfForm::imprimir();
 }
 
 

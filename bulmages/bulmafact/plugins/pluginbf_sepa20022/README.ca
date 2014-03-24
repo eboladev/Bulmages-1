@@ -1,0 +1,31 @@
+#######
+#Plugins
+#######
+#README.ca
+#20080501
+
+Nombre: Remeses bancàrias
+
+Biblioteca: libpluginbf_q19.so
+
+Descripción: <H1>Remeses Bancàrias</H1>
+<P>Afegeix un botó de generació de remeses bancàries al llistat de fatures. Fuciona en conjunció amb el plugin impressions múltiples i en seleccionasr diverses factures o cobraments i donar-li al botó genera un fitxer q19 per poder passar-lo al ban. El codi de referència i devolució els genera com l'id de bd amb una F afegida al final per a les factures (per no duplicar codi si un cobrament i una factura tenen el mateix id, després no sabríem quin ha estat tornat pel banc. Veure https://lists.berlios.de/pipermail/bulmages-main/2009-February/000935.html</P>
+<P>Bulamfact marca automàticament els rebuts que s'incluen en una remesa bancària com efectius (desmarca la casella "previsió de cobrament") per facilitar la gestió de quins cal enviar al banc i quins ja han estat enviats. És responsabilitat de l'usuari que el fitxer generat arribi al banc i sugui processat o en cas contrari restablir els cobrament com a previsions, modificar-los i/o el que corrspongui.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_multiimprimir.so; libpluginbf_banco.so
+
+Incompatibles:
+
+Categorias: Facturació avançada; Experimentals; Associacions de pares i mares d'alumnes;
+
+Orden: 900
+
+Comentarios: 

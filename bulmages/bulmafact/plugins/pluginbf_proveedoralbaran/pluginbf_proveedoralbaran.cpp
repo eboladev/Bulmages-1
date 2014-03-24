@@ -26,6 +26,7 @@
 #include "albaranproveedorview.h"
 #include "albaranesproveedor.h"
 #include "genalbpqtoolbutton.h"
+#include "bltoolbutton.h"
 
 
 AlbaranesProveedor *g_albaranesProveedor = NULL;
@@ -180,4 +181,132 @@ int SNewAlbaranProveedorView ( BfCompany *v )
     return 1;
 }
 
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "actividad") {
+	AlbaranProveedorView * bud = new AlbaranProveedorView ( comp, 0 );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
 
+  } // end if
+  return 0;
+}
+
+
+
+
+///
+/**
+\param l
+\return
+**/
+int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
+{
+
+    BL_FUNC_DEBUG
+
+    BlToolButton *agalbaran = new BlToolButton ( l );
+    agalbaran->setObjectName("mui_agalbaranp12");
+    
+    agalbaran->setStatusTip ( "Agregar albaran" );
+    agalbaran->setToolTip ( "Agregar albaran" );
+    agalbaran->setMinimumSize ( QSize ( 32, 32 ) );
+    agalbaran->setMaximumSize ( QSize ( 32, 32 ) );
+    agalbaran->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-add-to-invoice.png" ) ) );
+    agalbaran->setIconSize ( QSize ( 22, 22 ) );
+    agalbaran->setContentsMargins ( 0, 0, 0, 0 );
+    
+    
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
+    
+    m_hboxLayout1->addWidget ( agalbaran );
+
+    
+
+    return 0;
+}
+
+
+int BlToolButton_released(BlToolButton *bot) {
+    BL_FUNC_DEBUG
+  if (bot->objectName() == "mui_agalbaranp12") {
+    
+
+      FacturaProveedorView *fact1 = (FacturaProveedorView *) bot->parent()->parent()->parent();
+
+      /// AGREGAR ALBARAN A LA FACTURA
+    
+        QDialog *diag = new QDialog ( 0 );
+	diag->setModal ( true );
+	AlbaranesProveedor *fac = new AlbaranesProveedor ( fact1->mainCompany(), diag, 0, BL_SELECT_MODE );
+	
+
+	QObject::connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+	/// Hacemos que las opciones de filtrado del listado ya esten bien.
+	fac->m_proveedor->setId ( fact1->dbValue ( "idproveedor" ) );
+	fac->on_mui_actualizar_clicked();
+
+	/// Lanzamos el dialogo.
+	diag->exec();
+	QString idalbaran = fac->idalbaranp();
+	delete diag;
+
+	/// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
+	if ( idalbaran == "" )
+	    return 1;
+
+	/// Creamos la factura.
+	AlbaranProveedorView *bud = new AlbaranProveedorView ( fact1->mainCompany(), NULL );
+	bud->load ( idalbaran );
+
+	/// Agregamos a comentarios que albaran se corresponde.
+	QString comm = fact1->dbValue ( "comentfacturap" ) + "(" + _ ( "ALBARAN: Num " ) + bud->dbValue ( "numalbaranp" ) + _ ( "Ref:" ) + " " + bud->dbValue ( "refalbaranp" ) + _ ( "Fecha:" ) + " " + bud->dbValue ( "fechaalbaranp" ) + ")\n";
+
+	fact1->setDbValue ( "comentfacturap", comm );
+	fact1->pintar();
+
+	/// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
+	BlDbSubFormRecord *linea, *linea1;
+	for ( int i = 0; i < bud->getlistalineas() ->rowCount(); ++i ) {
+	    linea = bud->getlistalineas() ->lineaat ( i );
+	    /// Los registros vacios no se tienen en cuenta.
+	    if ( linea->dbValue ( "idarticulo" ) != "" ) {
+		linea1 = fact1->getlistalineas() ->lineaat ( fact1->getlistalineas() ->rowCount() - 1 );
+		linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+		linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclalbaranp" ) );
+		linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlalbaranp" ) );
+		linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplalbaranp" ) );
+		linea1->setDbValue ( "descuentolfacturap", linea->dbValue ( "descuentolalbaranp" ) );
+		linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+		linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+		linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalalbaranp" ) );
+		fact1->getlistalineas() ->newRecord();
+	    } // end if
+	} // end for
+
+	/// Procesamos el albaran.
+	bud->mui_procesadoalbaranp->setChecked ( true );
+	bud->save();
+	delete bud;
+
+	/// Pintamos los totales.
+	fact1->calculaypintatotales();
+    
+      /// AGREGAR ALBARAN A LA FACTURA
+
+  } //end if
+  return 0;
+}

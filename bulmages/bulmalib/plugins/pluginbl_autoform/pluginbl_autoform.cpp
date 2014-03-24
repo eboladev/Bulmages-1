@@ -1763,7 +1763,23 @@ int BlAction_actionTriggered(BlAction *accion) {
 
 
 
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+   	BlAutoForm *form = genBlAutoForm(args[0]);
+	if (form) {
+		form->mainCompany() ->m_pWorkspace->addSubWindow ( form );
+		form->show();
+		form->load(args[1]);
+		form->pintar();
+	} // end if
+	
 
+  
+  return 0;
+}
 
 
 

@@ -494,6 +494,8 @@ QString BlConfiguration::name( int i )
        return "CONF_CONT_CTA_COMPRAPRODUCTO";
     if ( i == CONF_CONT_CTA_FPAGO )
        return "CONF_CONT_CTA_FPAGO";
+    if ( i == CONF_CONT_CTA_REGULARIZACION )
+       return "CONF_CONT_CTA_REGULARIZACION";
     if ( i == CONF_SYNC )
        return "CONF_SYNC";
     if ( i == CONF_URL_SYNC )
@@ -502,6 +504,18 @@ QString BlConfiguration::name( int i )
        return "CONF_LOGIN_USER";
     if ( i == CONF_PASSWORD_USER )
        return "CONF_PASSWORD_USER";
+    if ( i == CONF_SMTP_SERVER )
+       return "CONF_SMTP_SERVER";
+    if ( i == CONF_SMTP_PORT )
+       return "CONF_SMTP_PORT";
+    if ( i == CONF_SMTP_USERNAME )
+       return "CONF_SMTP_USERNAME";
+    if ( i == CONF_SMTP_PASSWORD )
+       return "CONF_SMTP_PASSWORD";
+    if ( i == CONF_SMTP_TYPE )
+       return "CONF_SMTP_TYPE";
+
+    
     return "";
 }
 

@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbc_proyectos.cpp:48
+msgid "&Proyectos"
+msgstr ""
+
+#: pluginbc_proyectos.cpp:49 pluginbc_proyectos.cpp:50
+msgid "Proyectos"
+msgstr ""
+
+#: pluginbc_proyectos.cpp:84
+msgid "Proyectos asociados"
+msgstr ""
+
+#: listproyectosview.cpp:46
+msgid "Identificador"
+msgstr ""
+
+#: listproyectosview.cpp:47
+msgid "C. Coste"
+msgstr ""
+
+#: listproyectosview.cpp:48
+msgid "Fecha"
+msgstr ""
+
+#: listproyectosview.cpp:49
+msgid "Nombre"
+msgstr ""
+
+#: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
+#: proyectoview.cpp:96
+msgid "Comentarios"
+msgstr ""
+
+#: listproyectosview.cpp:51
+msgid "Archivo"
+msgstr ""
+
+#: listproyectosview.cpp:58
+msgid "Selector de Proyectos"
+msgstr ""
+
+#: listproyectosview.cpp:117
+msgid "Error al borrar la amortizacion."
+msgstr ""
+
+#: listproyectosview.cpp:137
+#, qt-format
+msgid "Fila: '%1'."
+msgstr ""
+
+#: proyectoview.cpp:53
+msgid "Proyecto"
+msgstr ""
+
+#: proyectoview.cpp:56
+msgid "ID almacen"
+msgstr ""
+
+#: proyectoview.cpp:57
+msgid "Id CCoste"
+msgstr ""
+
+#: proyectoview.cpp:58
+msgid "Nom Presupuesto"
+msgstr ""
+
+#: proyectoview.cpp:59
+msgid "fecha"
+msgstr ""
+
+#: proyectoview.cpp:71 proyectoview.cpp:90
+msgid "Id. Cuenta"
+msgstr ""
+
+#: proyectoview.cpp:72 proyectoview.cpp:91
+msgid "Codigo"
+msgstr ""
+
+#: proyectoview.cpp:73 proyectoview.cpp:92
+msgid "Cuenta"
+msgstr ""
+
+#: proyectoview.cpp:74 proyectoview.cpp:93
+msgid "Cantidad"
+msgstr ""
+
+#: proyectoview.cpp:75 proyectoview.cpp:94
+msgid "Precio Und"
+msgstr ""
+
+#: proyectoview.cpp:76 proyectoview.cpp:95
+msgid "Ejercicio"
+msgstr ""
+
+#: proyectoview.cpp:78 proyectoview.cpp:97
+msgid "Descripcion"
+msgstr ""
+
+#: proyectoview.cpp:79 proyectoview.cpp:98
+msgid "Id linea de Ingreso Presupuesto"
+msgstr ""
+
+#: proyectoview.cpp:80 proyectoview.cpp:99
+msgid "Id. Proyecto"
+msgstr ""
+
+#: proyectoview.cpp:81 proyectoview.cpp:100
+msgid "Orden"
+msgstr ""
+
+#: proyectoview.cpp:113
+msgid "Error al crear el almacen"
+msgstr ""
+
+#: ui_proyectobase.h:241
+msgid "Nuevo proyecto"
+msgstr ""
+
+#: ui_proyectobase.h:244 ui_proyectobase.h:247
+msgid "Guardar Proyecto"
+msgstr ""
+
+#: ui_proyectobase.h:250
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_proyectobase.h:252 ui_proyectobase.h:255 ui_proyectobase.h:260
+#: ui_proyectobase.h:263
+msgid "Borrar proyecto"
+msgstr ""
+
+#: ui_proyectobase.h:258 ui_proyectobase.h:266 ui_listproyectosbase.h:152
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_proyectobase.h:267
+msgid "General"
+msgstr ""
+
+#: ui_proyectobase.h:268
+msgid "Gastos"
+msgstr ""
+
+#: ui_proyectobase.h:269
+msgid "Ingresos"
+msgstr ""
+
+#: ui_proyectobase.h:270
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_proyectobase.h:271
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_listproyectosbase.h:136
+msgid "Listado de Proyectos"
+msgstr ""
+
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:141
+msgid "Nueva amortizacion"
+msgstr ""
+
+#: ui_listproyectosbase.h:144
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_listproyectosbase.h:146 ui_listproyectosbase.h:149
+#: ui_listproyectosbase.h:154 ui_listproyectosbase.h:157
+msgid "Borrar amortizacion"
+msgstr ""
+
+#: ui_listproyectosbase.h:160
+msgid "F5"
+msgstr ""

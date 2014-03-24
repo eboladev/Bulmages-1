@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
           
-# title="Contrato en Procesador de Textos"
+# title="Contrato Local Comercial (ODT)"
 
 import sys
 reload(sys)
@@ -11,7 +11,7 @@ import ezodf
 from ezodf.xmlns import CN
 
 #odt = newdoc(doctype='odt', filename='contrato_plantilla.odt')
-odt = ezodf.opendoc("[CONF_DIR_OPENREPORTS]contrato_plantilla1.odt")
+odt = ezodf.opendoc("[CONF_DIR_OPENREPORTS,l]contrato_plantilla1.odt")
 #odt.body += ezodf.Heading("Chapter 1")
 #odt.body += ezodf.Paragraph("This is a paragraph.")
 
@@ -33,7 +33,7 @@ params["cifrepresentantecontrato"] = u'[cifrepresentantecontrato]'
 params["dirrepresentantecontrato"] = u'[dirrepresentantecontrato]'
 params["textocantidadcontrato"] = u'[textocantidadcontrato]'
 params["fianzacontrato"] = u'[fianzacontrato]'
-
+params["bancocontrato"] = u'[bancocontrato]'
 
 #<!--QUERY = "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'"-->
 params['nomempresa'] = u'[valor]'
@@ -129,27 +129,5 @@ for obj in paragraphs:
         nodo.text = nodo.text.replace("["+index+"]",object)
       if (nodo.tail):
         nodo.tail = nodo.tail.replace("["+index+"]",object)
-			  
-#    string1 = pp.xmlnode.text
-#    if (string1 <> None):
-#      pp.xmlnode.text = string1.replace("a","b")
-  
-#  print obj.plaintext()
-#  print str(obj.kind())
-#  if obj.plaintext() <> None:
-#      obj.text(obj.text())
 
-
-  #obj.text("hola")
-
-# Asi podemos reemplazar un paragrafo por otro.
-#  np = ezodf.Paragraph(" 23" + obj.plaintext())
-#  odt.body.replace(obj, np)
-
-
-#  obj.append_text("MEMUERO")
-
-  
-#odt.body.insert(3, ezodf.Paragraph('New first paragraph.'))
-  
 odt.saveas("impers_contrato_odt.odt")

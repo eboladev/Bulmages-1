@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/MAIN">
+        <file>bsyncserver.ico</file>
+    </qresource>
+</RCC>

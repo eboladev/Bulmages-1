@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
 	rs RECORD;
 BEGIN
-	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.14.1%'' OR valor = ''0.13.1-0006'' OR valor LIKE ''1.5.%'');
+	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.14.1%'' OR valor = ''0.13.1-0006'' OR valor LIKE ''0.15.%'' OR valor LIKE ''1.5.%'');
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
@@ -96,6 +96,19 @@ BEGIN
 
     DELETE FROM configuracion WHERE nombre=''IRPF'';
 
+    SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''irpfpresupuesto'' AND relname=''presupuesto'';
+    IF NOT FOUND THEN
+        ALTER TABLE presupuesto ADD COLUMN irpfpresupuesto NUMERIC(12,2);
+    END IF;
+
+    SELECT INTO rs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''irpfpedidocliente'' AND relname=''pedidocliente'';
+    IF NOT FOUND THEN
+        ALTER TABLE pedidocliente ADD COLUMN irpfpedidocliente NUMERIC(12,2);
+        ALTER TABLE albaran ADD COLUMN irpfalbaran NUMERIC(12,2);
+        ALTER TABLE factura ADD COLUMN irpffactura NUMERIC(12,2);
+    END IF;
+
+
    RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -128,9 +141,9 @@ BEGIN
     END LOOP;
 
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpffactura FROM factura WHERE idfactura = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpffactura / 100);
     END IF;
 
     FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
@@ -180,9 +193,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpfpresupuesto FROM presupuesto WHERE idpresupuesto = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfpresupuesto / 100);
     END IF;
 
     FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
@@ -231,9 +244,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpfpedidocliente FROM pedidocliente WHERE idpedidocliente = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfpedidocliente / 100);
     END IF;
 
     FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
@@ -282,9 +295,9 @@ BEGIN
 	totalBImponibleLineas := totalBImponibleLineas + rs.subtotal1;
     END LOOP;
 
-    SELECT INTO rs tasairpf FROM irpf WHERE fechairpf <= (SELECT fechaalbaran FROM albaran WHERE idalbaran = idp) ORDER BY fechairpf DESC LIMIT 1;
+    SELECT INTO rs irpfalbaran FROM albaran WHERE idalbaran = idp;
     IF FOUND THEN
-        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+        totalIRPF := totalBImponibleLineas * (rs.irpfalbaran / 100);
     END IF;
 
     FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP

@@ -1,0 +1,73 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2009.
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: 2011-01-31 15:45+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ui_bcasientoduplicarbase.h:239
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_bcasientoduplicarbase.h:240
+msgid "&Cerrar"
+msgstr "&Fermer"
+
+#: ui_bcasientoduplicarbase.h:233
+msgid "Asiento final:"
+msgstr "Dernière écriture :"
+
+#: ui_bcasientoduplicarbase.h:232
+msgid "Asiento inicial:"
+msgstr "Première écriture :"
+
+#: ui_bcasientoduplicarbase.h:234
+msgid "Destino:"
+msgstr "Destinataire :"
+
+#: pluginbf_duplicarasiento.cpp:44 pluginbf_duplicarasiento.cpp:45
+msgid "Duplicar Asiento"
+msgstr "Dupliquer l'assiette"
+
+#: ui_bcasientoduplicarbase.h:229
+msgid "Duplicar Asientos"
+msgstr "Dupliquer l'écriture"
+
+#: ui_bcasientoduplicarbase.h:235
+msgid "Fecha con la que quedara el asiento:"
+msgstr "Date de l'écriture restante :"
+
+#: ui_bcasientoduplicarbase.h:231
+msgid "Fecha inicial:"
+msgstr "Date initiale :"
+
+#: ui_bcasientoduplicarbase.h:238
+msgid "Mantener distacia entre fechas"
+msgstr "Maintenir la distance entre les dates"
+
+#: ui_bcasientoduplicarbase.h:230
+msgid "Origen:"
+msgstr "Origine :"
+
+#: ui_bcasientoduplicarbase.h:237
+msgid "Todos con la misma fecha"
+msgstr "Tous avec la même date"
+
+#: ui_bcasientoduplicarbase.h:236
+msgid "Tratamiento de la fecha:"
+msgstr "Traitement de la date :"

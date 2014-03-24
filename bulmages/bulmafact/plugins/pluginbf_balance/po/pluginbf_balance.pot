@@ -1,0 +1,333 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: balancesubform.cpp:36
+msgid "Id cuenta"
+msgstr ""
+
+#: balancesubform.cpp:37
+msgid "Tipo cuenta"
+msgstr ""
+
+#: balancesubform.cpp:38 balanceview.cpp:277
+msgid "Codigo"
+msgstr ""
+
+#: balancesubform.cpp:39
+msgid "Descripcion"
+msgstr ""
+
+#: balancesubform.cpp:40
+msgid "Saldo apunte"
+msgstr ""
+
+#: balancesubform.cpp:41
+msgid "Total debe"
+msgstr ""
+
+#: balancesubform.cpp:42
+msgid "Total haber"
+msgstr ""
+
+#: balancesubform.cpp:43
+msgid "Total saldo"
+msgstr ""
+
+#: balancesubform.cpp:44
+msgid "Ejercicio debe"
+msgstr ""
+
+#: balancesubform.cpp:45
+msgid "Ejercico haber"
+msgstr ""
+
+#: balancesubform.cpp:46
+msgid "Ejercicio saldo"
+msgstr ""
+
+#: balancesubform.cpp:77
+msgid "Borrar registro"
+msgstr ""
+
+#: balancesubform.cpp:79
+msgid "Ajustar columa"
+msgstr ""
+
+#: balancesubform.cpp:80
+msgid "Ajustar altura"
+msgstr ""
+
+#: balancesubform.cpp:81
+msgid "Ajustar columnas"
+msgstr ""
+
+#: balancesubform.cpp:82
+msgid "Ajustar alturas"
+msgstr ""
+
+#: balancesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr ""
+
+#: balanceview.cpp:61 ui_balancesprintdlg.h:198
+msgid "Balance"
+msgstr ""
+
+#: balanceview.cpp:68 balanceprintview.cpp:56 ui_balancebase.h:439
+#: ui_balancetreebase.h:407
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: balanceview.cpp:77 balanceprintview.cpp:64 ui_balancebase.h:441
+#: ui_balancetreebase.h:404
+msgid "Cuenta final:"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Denominacion"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Saldo anterior"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Debe"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Haber"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Saldo"
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Debe "
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Haber "
+msgstr ""
+
+#: balanceview.cpp:277
+msgid "Saldo "
+msgstr ""
+
+#: pluginbf_balance.cpp:52
+msgid "&Ver"
+msgstr ""
+
+#: pluginbf_balance.cpp:54
+msgid "&Balance jerarquico"
+msgstr ""
+
+#: pluginbf_balance.cpp:55
+msgid "Permite realizar balances"
+msgstr ""
+
+#: pluginbf_balance.cpp:56
+msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: ui_balancebase.h:405
+msgid "Balance de cuentas"
+msgstr ""
+
+#: ui_balancebase.h:407 ui_balancebase.h:410
+msgid "Filtrar balance"
+msgstr ""
+
+#: ui_balancebase.h:413
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_balancebase.h:415 ui_balancebase.h:418
+msgid "Actualizar balance"
+msgstr ""
+
+#: ui_balancebase.h:421
+msgid "F5"
+msgstr ""
+
+#: ui_balancebase.h:423 ui_balancebase.h:426
+msgid "Imprimir balance"
+msgstr ""
+
+#: ui_balancebase.h:429
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_balancebase.h:431 ui_balancebase.h:434
+msgid "Configurar"
+msgstr ""
+
+#: ui_balancebase.h:437
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_balancebase.h:438 ui_balancetreebase.h:406
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_balancebase.h:440 ui_balancetreebase.h:405
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_balancebase.h:442 ui_balancetreebase.h:408
+msgid "Nivel:"
+msgstr ""
+
+#: ui_balancebase.h:443
+msgid "Balance jerarquico"
+msgstr ""
+
+#: ui_balancebase.h:445
+msgid "1"
+msgstr ""
+
+#: ui_balancebase.h:446
+msgid "GroupBox"
+msgstr ""
+
+#: ui_balancebase.h:447 ui_balancetreebase.h:413
+msgid "Saldo:"
+msgstr ""
+
+#: ui_balancebase.h:448
+msgid "Haber:"
+msgstr ""
+
+#: ui_balancebase.h:449 ui_balancetreebase.h:410
+msgid "Saldo anterior:"
+msgstr ""
+
+#: ui_balancebase.h:450
+msgid "Debe:"
+msgstr ""
+
+#: ui_balancetreebase.h:382
+msgid "Balance jerarquico de Cuentas"
+msgstr ""
+
+#: ui_balancetreebase.h:384 ui_balancetreebase.h:387
+msgid "Borrar albaran"
+msgstr ""
+
+#: ui_balancetreebase.h:391 ui_balancetreebase.h:394 ui_balancetreebase.h:398
+#: ui_balancetreebase.h:401
+msgid "Imprimir albaran"
+msgstr ""
+
+#: ui_balancetreebase.h:409
+msgid "Centro de coste:"
+msgstr ""
+
+#: ui_balancetreebase.h:411
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_balancetreebase.h:412
+msgid "Total Haber:"
+msgstr ""
+
+#: ui_balancesprintdlg.h:197
+msgid "Impresion de balances"
+msgstr ""
+
+#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:319
+msgid "Fecha inicial"
+msgstr ""
+
+#: ui_balancesprintdlg.h:200 ui_balanceprintbase.h:321
+msgid "Fecha final"
+msgstr ""
+
+#: ui_balancesprintdlg.h:201
+msgid "Formato"
+msgstr ""
+
+#: ui_balancesprintdlg.h:202
+msgid "&texto plano"
+msgstr ""
+
+#: ui_balancesprintdlg.h:203
+msgid "Alt+T"
+msgstr ""
+
+#: ui_balancesprintdlg.h:204
+msgid "HTML"
+msgstr ""
+
+#: ui_balancesprintdlg.h:205
+msgid "Acep&tar"
+msgstr ""
+
+#: ui_balancesprintdlg.h:206
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_balanceprintbase.h:312
+msgid "Impresion del balance de sumas y saldos"
+msgstr ""
+
+#: ui_balanceprintbase.h:316
+msgid "Datos del listado:"
+msgstr ""
+
+#: ui_balanceprintbase.h:317
+msgid "Codigo inicial\n"
+msgstr ""
+
+#: ui_balanceprintbase.h:320
+msgid "Codigo final"
+msgstr ""
+
+#: ui_balanceprintbase.h:322
+msgid "Nivel de Cuentas"
+msgstr ""
+
+#: ui_balanceprintbase.h:323
+msgid "Incluir &niveles superiores."
+msgstr ""
+
+#: ui_balanceprintbase.h:324
+msgid "Incl&uir resultados parciales"
+msgstr ""
+
+#: ui_balanceprintbase.h:325
+msgid "Formato:"
+msgstr ""
+
+#: ui_balanceprintbase.h:326
+msgid "&Texto Plano"
+msgstr ""
+
+#: ui_balanceprintbase.h:327
+msgid "Propietario"
+msgstr ""
+
+#: ui_balanceprintbase.h:328
+msgid "HT&ML"
+msgstr ""
+
+#: ui_balanceprintbase.h:329
+msgid "&Kugar"
+msgstr ""

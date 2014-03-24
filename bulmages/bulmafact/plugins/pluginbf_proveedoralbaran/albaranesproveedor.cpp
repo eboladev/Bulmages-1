@@ -35,7 +35,6 @@
     Util para casos en los que aun no se haya inicializado company.
     No sera completamente operativo hasta que se haya inicializado con
     setcompany.
-
     Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
 */
 /**

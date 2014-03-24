@@ -41,7 +41,7 @@ extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int BfBuscarReferencia_on_mui_abrirt
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int BlAction_actionTriggered(BlAction *);
-
+extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int Plugin_open(BfCompany * );
 
 #endif
 

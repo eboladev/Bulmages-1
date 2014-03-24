@@ -76,8 +76,9 @@ int entryPoint ( BfBulmaFact *bcont )
 
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( setVisibilityState ( bool ) ) );
     QObject::connect ( doc1, SIGNAL ( visibilityStateChanged ( bool ) ), viewCorrector, SLOT ( setChecked ( bool ) ) );
-    bcont->menuVentana->addSeparator();
-    bcont->menuVentana->addAction ( viewCorrector );
+    QMenu *pPluginMenu = bcont->newMenu(_("&Herramientas"), "menuHerramientas", "menuAcerca_de");
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( viewCorrector );
 
     BlFile file ( g_confpr->value( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {

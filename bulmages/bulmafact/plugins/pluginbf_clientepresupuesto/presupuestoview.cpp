@@ -71,7 +71,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         addDbField ( "refpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Forma de pago" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
-
+        addDbField ( "irpfpresupuesto", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
         /// Disparamos los plugins.
         int res = g_plugins->run ( "PresupuestoView_PresupuestoView", this );
         if ( res != 0 ) {
@@ -100,6 +100,17 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
 
+	/// Calculamos el IRPF y lo ponemos
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= now()::DATE ORDER BY fechairpf DESC LIMIT 1";
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	if ( cur ) {
+	    if ( !cur->eof() ) {
+		mui_irpfpresupuesto -> setText( cur->value( "tasairpf" ) );
+		setDbValue("irpfpresupuesto", cur->value("tasairpf") );
+	    } // end if
+	    delete cur;
+	} // end if
+	
         insertWindow ( windowTitle(), this, false );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->run ( "PresupuestoView_PresupuestoView_Post", this );

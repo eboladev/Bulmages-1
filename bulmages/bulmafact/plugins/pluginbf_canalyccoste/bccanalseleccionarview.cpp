@@ -104,7 +104,28 @@ void BcCanalSeleccionarView::cargaCanales()
 
     delete cursoraux1;
     
+    
+    /// Establecemos una variable con los valores de los canales.
+ 	establecerVariableGlobal();
+    
+    /// Con esta signal cambiara la variable global
+    connect(m_listCanales, SIGNAL(activated(const QModelIndex &)), this, SLOT(establecerVariableGlobal()));
+    connect(m_listCanales, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(establecerVariableGlobal()));
+	
+    
 }
+
+
+/// Establecemos una variable global conteniendo el filtrado para canales.
+void BcCanalSeleccionarView::establecerVariableGlobal() {
+      BL_FUNC_DEBUG
+       QString ccanales = cadCanal();
+	if (ccanales != "") ccanales = ","+ccanales;
+	bool sincanal = sinCanal();
+	setGVar("canales", "(" + QString(sincanal?" idcanal IS NULL OR ":"")+" idcanal IN (0"+ccanales+") )");
+}
+
+
 
 
 /// Esta funci&oacute;n devuelve el primer canal seleccionado de la vista.

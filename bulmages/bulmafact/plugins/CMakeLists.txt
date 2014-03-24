@@ -37,6 +37,7 @@ add_subdirectory(pluginbf_promedios)
 add_subdirectory(pluginbf_multiimprimir)
 add_subdirectory(pluginbf_q19)
 add_subdirectory(pluginbf_correo)
+add_subdirectory(pluginbf_sepa20022)
 
 
 add_subdirectory(pluginbf_tipotrabajo)
@@ -105,6 +106,7 @@ add_subdirectory(pluginbf_balance)
 add_subdirectory(pluginbf_ccaa2ods)
 add_subdirectory(pluginbf_cuentaresumen)
 add_subdirectory(pluginbf_canalyccoste)
+add_subdirectory(pluginbf_duplicarasiento)
 
 # ======== PLUGINS DE GESTION ALUMNOS
 add_subdirectory(pluginbf_profesor)

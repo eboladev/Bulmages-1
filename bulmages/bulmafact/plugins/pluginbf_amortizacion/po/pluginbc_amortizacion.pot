@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bcamortizacionview.cpp:53
+msgid "Cuenta activa:"
+msgstr ""
+
+#: bcamortizacionview.cpp:63 ui_bcamortizacionbase.h:662
+msgid "Cuenta de amortizacion:"
+msgstr ""
+
+#: bcamortizacionview.cpp:71 ui_bcamortizacionbase.h:630
+msgid "Amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:74
+msgid "Nombre de la amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:75
+msgid "Descripcion de la amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:76
+msgid "Fecha de la compra"
+msgstr ""
+
+#: bcamortizacionview.cpp:77
+msgid "Fecha 1a cuota"
+msgstr ""
+
+#: bcamortizacionview.cpp:78
+msgid "Valor de la compra"
+msgstr ""
+
+#: bcamortizacionview.cpp:79
+msgid "Periodicidad"
+msgstr ""
+
+#: bcamortizacionview.cpp:80
+msgid "Numero de cuotas"
+msgstr ""
+
+#: bcamortizacionview.cpp:81
+msgid "Metodo"
+msgstr ""
+
+#: bcamortizacionview.cpp:82
+msgid "NIF del proveedor"
+msgstr ""
+
+#: bcamortizacionview.cpp:83
+msgid "Nombre del proveedor"
+msgstr ""
+
+#: bcamortizacionview.cpp:84
+msgid "Direccion del proveedor"
+msgstr ""
+
+#: bcamortizacionview.cpp:85
+msgid "Telefono del proveedor"
+msgstr ""
+
+#: bcamortizacionview.cpp:86
+msgid "Agrupacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:87 bcamortizacionview.cpp:99
+#: bcamortizacionlistview.cpp:47
+msgid "Id amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:88
+msgid "Identificador"
+msgstr ""
+
+#: bcamortizacionview.cpp:89
+msgid "Id cuenta amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:94
+msgid "Ejercicio"
+msgstr ""
+
+#: bcamortizacionview.cpp:95
+msgid "Fecha prevista"
+msgstr ""
+
+#: bcamortizacionview.cpp:96
+msgid "Cantidad"
+msgstr ""
+
+#: bcamortizacionview.cpp:97
+msgid "Id asiento"
+msgstr ""
+
+#: bcamortizacionview.cpp:98
+msgid "Id lineas de amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:231
+msgid "Error en la carga de la amortizacion"
+msgstr ""
+
+#: bcamortizacionview.cpp:266 bcamortizacionview.cpp:293
+#: bcamortizacionview.cpp:321 bcamortizacionview.cpp:352
+#: ui_bcamortizacionbase.h:653
+msgid "Anual"
+msgstr ""
+
+#: bcamortizacionview.cpp:268 bcamortizacionview.cpp:295
+#: bcamortizacionview.cpp:323 bcamortizacionview.cpp:354
+#: ui_bcamortizacionbase.h:656
+msgid "Mensual"
+msgstr ""
+
+#: bcamortizacionview.cpp:270 bcamortizacionview.cpp:297
+#: bcamortizacionview.cpp:325 bcamortizacionview.cpp:356
+#: ui_bcamortizacionbase.h:654
+msgid "Semestral"
+msgstr ""
+
+#: bcamortizacionview.cpp:272 bcamortizacionview.cpp:299
+#: bcamortizacionview.cpp:327 bcamortizacionview.cpp:358
+#: ui_bcamortizacionbase.h:655
+msgid "Trimestral"
+msgstr ""
+
+#: bcamortizacionview.cpp:400 bcamortizacionview.cpp:474
+msgid "Generar asiento"
+msgstr ""
+
+#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:446
+msgid "Ver asiento"
+msgstr ""
+
+#: bcamortizacionview.cpp:404 bcamortizacionview.cpp:455
+msgid "Desvincular asiento"
+msgstr ""
+
+#: bcamortizacionview.cpp:405 bcamortizacionview.cpp:446
+#: bcamortizacionview.cpp:455 bcamortizacionview.cpp:462
+msgid "Borrar asiento"
+msgstr ""
+
+#: bcamortizacionview.cpp:436
+msgid "Borrar cuota"
+msgstr ""
+
+#: bcamortizacionlistview.cpp:48
+msgid "Nombre"
+msgstr ""
+
+#: bcamortizacionlistview.cpp:49
+msgid "Fecha compra"
+msgstr ""
+
+#: bcamortizacionlistview.cpp:50
+msgid "Fecha 1 cuota"
+msgstr ""
+
+#: bcamortizacionlistview.cpp:51
+msgid "Num cuotas"
+msgstr ""
+
+#: bcamortizacionlistview.cpp:111 bcamortizacionlistview.cpp:112
+msgid "Error al borrar la amortizacion."
+msgstr ""
+
+#: bcamortizacionlistview.cpp:132
+#, qt-format
+msgid "Fila '%1'"
+msgstr ""
+
+#: pluginbc_amortizacion.cpp:55
+msgid "&Ver"
+msgstr ""
+
+#: pluginbc_amortizacion.cpp:57
+msgid "&Amortizaciones"
+msgstr ""
+
+#: pluginbc_amortizacion.cpp:58
+msgid "Permite ver las amortizaciones"
+msgstr ""
+
+#: pluginbc_amortizacion.cpp:59
+msgid "Podra disponer de la informacion de las amortizaciones"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:632 ui_bcamortizacionbase.h:635
+msgid "Guardar amortizacion"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:638
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:640 ui_bcamortizacionbase.h:643
+#: ui_bcamortizacionlistbase.h:143 ui_bcamortizacionlistbase.h:146
+#: ui_bcamortizacionlistbase.h:151 ui_bcamortizacionlistbase.h:154
+msgid "Borrar amortizacion"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:646 ui_bcamortizacionlistbase.h:149
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:647
+msgid "Nombre:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:648
+msgid "Agrupacion:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:649
+msgid "Nº de cuotas:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:650
+msgid "Fecha de compra:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:658
+msgid "Fecha 1ª cuota:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:659
+msgid "Cuenta de activo:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:660
+msgid "Periodicidad:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:661
+msgid "Valor de compra:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:663
+msgid "Metodo:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:664
+msgid "Porcent&ual"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:665
+msgid "&Decremental"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:666
+msgid "&Incremental"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:667
+msgid "Alt+I"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:668
+msgid "Li&neal"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:669
+msgid "&Calcular"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:670
+msgid "Alt+C"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:671
+msgid "Cuotas:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:672
+msgid "Amortizado:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:673
+msgid "Pendiente:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:674
+msgid "Amor&tizacion"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:675
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:676
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_bcamortizacionlistbase.h:133
+msgid "Listado de amortizaciones"
+msgstr ""
+
+#: ui_bcamortizacionlistbase.h:135 ui_bcamortizacionlistbase.h:138
+msgid "Nueva amortizacion"
+msgstr ""
+
+#: ui_bcamortizacionlistbase.h:141
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_bcamortizacionlistbase.h:157
+msgid "F5"
+msgstr ""

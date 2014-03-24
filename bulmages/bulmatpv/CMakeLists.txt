@@ -1,5 +1,7 @@
 PROJECT(bulmatpv)
 
+cmake_policy(SET CMP0020 OLD)
+
 add_subdirectory(src)
 add_subdirectory(plugins)
 

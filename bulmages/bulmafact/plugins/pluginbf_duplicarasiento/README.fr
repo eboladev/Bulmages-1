@@ -1,0 +1,34 @@
+#######
+#Plugins
+#######
+#README.fr
+20110205
+
+Nombre: Dupliquer les écritures comptables
+
+Biblioteca: libpluginbf_duplicarasiento.so
+
+Descripción: <H1>Duplication des écritures comptables</H1>
+<P>Dans la fenêtre d'introduction des écritures il y a un bouton qui permet de dupliquer les écritures courantes</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Comptabilite generale ; Experimental ;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

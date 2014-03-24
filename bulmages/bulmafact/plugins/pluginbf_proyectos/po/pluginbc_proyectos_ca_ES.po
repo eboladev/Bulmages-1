@@ -1,0 +1,256 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ui_proyectobase.h:270
+msgid "&Aceptar"
+msgstr "&Accepta"
+
+#: ui_proyectobase.h:271
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: pluginbc_proyectos.cpp:48
+#, fuzzy
+msgid "&Proyectos"
+msgstr "Paràmetres"
+
+#: listproyectosview.cpp:51
+#, fuzzy
+msgid "Archivo"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Fitxer\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Arxiu"
+
+#: ui_listproyectosbase.h:146 ui_listproyectosbase.h:149
+#: ui_listproyectosbase.h:154 ui_listproyectosbase.h:157
+msgid "Borrar amortizacion"
+msgstr "Esborra amortizació"
+
+#: ui_proyectobase.h:252 ui_proyectobase.h:255 ui_proyectobase.h:260
+#: ui_proyectobase.h:263
+#, fuzzy
+msgid "Borrar proyecto"
+msgstr "Esborra professor"
+
+#: listproyectosview.cpp:47
+#, fuzzy
+msgid "C. Coste"
+msgstr "Centre de Cost"
+
+#: proyectoview.cpp:74 proyectoview.cpp:93
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: proyectoview.cpp:72 proyectoview.cpp:91
+msgid "Codigo"
+msgstr "Codi"
+
+#: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
+#: proyectoview.cpp:96
+#, fuzzy
+msgid "Comentarios"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
+
+#: ui_proyectobase.h:258 ui_proyectobase.h:266 ui_listproyectosbase.h:152
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_listproyectosbase.h:144
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_proyectobase.h:250
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: proyectoview.cpp:73 proyectoview.cpp:92
+#, fuzzy
+msgid "Cuenta"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte"
+
+#: proyectoview.cpp:78 proyectoview.cpp:97
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: proyectoview.cpp:76 proyectoview.cpp:95
+msgid "Ejercicio"
+msgstr "Exercici"
+
+#: listproyectosview.cpp:117
+msgid "Error al borrar la amortizacion."
+msgstr ""
+
+#: proyectoview.cpp:113
+#, fuzzy
+msgid "Error al crear el almacen"
+msgstr "Error en la càrrega de l'amortizació"
+
+#: ui_listproyectosbase.h:160
+msgid "F5"
+msgstr "F5"
+
+#: listproyectosview.cpp:48
+msgid "Fecha"
+msgstr "Data"
+
+#: listproyectosview.cpp:137
+#, qt-format
+msgid "Fila: '%1'."
+msgstr ""
+
+#: ui_proyectobase.h:268
+msgid "Gastos"
+msgstr ""
+
+#: ui_proyectobase.h:267
+msgid "General"
+msgstr "General"
+
+#: ui_proyectobase.h:244 ui_proyectobase.h:247
+#, fuzzy
+msgid "Guardar Proyecto"
+msgstr "Desa empresa"
+
+#: proyectoview.cpp:56
+#, fuzzy
+msgid "ID almacen"
+msgstr "<LI> Magatzem <B>"
+
+#: proyectoview.cpp:57
+#, fuzzy
+msgid "Id CCoste"
+msgstr "Id"
+
+#: proyectoview.cpp:79 proyectoview.cpp:98
+#, fuzzy
+msgid "Id linea de Ingreso Presupuesto"
+msgstr "Id <HR><B>Tractant el pressupost"
+
+#: proyectoview.cpp:71 proyectoview.cpp:90
+#, fuzzy
+msgid "Id. Cuenta"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte"
+
+#: proyectoview.cpp:80 proyectoview.cpp:99
+#, fuzzy
+msgid "Id. Proyecto"
+msgstr "Id Propietari"
+
+#: listproyectosview.cpp:46
+msgid "Identificador"
+msgstr "Identificador"
+
+#: ui_proyectobase.h:269
+#, fuzzy
+msgid "Ingresos"
+msgstr "Inc registre"
+
+#: ui_listproyectosbase.h:136
+#, fuzzy
+msgid "Listado de Proyectos"
+msgstr "<HR><B>Trotant el proveïdor"
+
+#: proyectoview.cpp:58
+#, fuzzy
+msgid "Nom Presupuesto"
+msgstr "<HR><B>Tractant el pressupost"
+
+#: listproyectosview.cpp:49
+msgid "Nombre"
+msgstr "Nom"
+
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:141
+#, fuzzy
+msgid "Nueva amortizacion"
+msgstr "Id compte d'amortizació"
+
+#: ui_proyectobase.h:241
+#, fuzzy
+msgid "Nuevo proyecto"
+msgstr "Nova empresa"
+
+#: proyectoview.cpp:81 proyectoview.cpp:100
+msgid "Orden"
+msgstr "Ordre"
+
+#: proyectoview.cpp:75 proyectoview.cpp:94
+#, fuzzy
+msgid "Precio Und"
+msgstr "Adreça:"
+
+#: proyectoview.cpp:53
+#, fuzzy
+msgid "Proyecto"
+msgstr "Propietari"
+
+#: pluginbc_proyectos.cpp:49 pluginbc_proyectos.cpp:50
+#, fuzzy
+msgid "Proyectos"
+msgstr "Paràmetres"
+
+#: pluginbc_proyectos.cpp:84
+#, fuzzy
+msgid "Proyectos asociados"
+msgstr "Paràmetres"
+
+#: listproyectosview.cpp:58
+#, fuzzy
+msgid "Selector de Proyectos"
+msgstr "Sel·lector de BulmaGés"
+
+#: proyectoview.cpp:59
+#, fuzzy
+msgid "fecha"
+msgstr "Data"
+
+#, fuzzy
+#~ msgid "Error al borrar la amortizacion"
+#~ msgstr "Error en la càrrega de l'amortizació"

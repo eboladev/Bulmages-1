@@ -99,7 +99,7 @@ CONF_SHOW_PROGRESS_BAR		TRUE
 CONF_DEBUG			FALSE
 
 # Indica si deben mostrarse las alertas de base de datos.
-CONF_ALERTAS_DBF		Yes
+CONF_ALERTAS_DB		FALSE
 
 # Indica si deben centrarse los campos de texto
 CONF_CENTER_TEXT_FIELDS			FALSE
@@ -116,6 +116,18 @@ CONF_USE_QSCRIPT                        FALSE
 # Opciones de sincronizacion
 CONF_SYNC                           FALSE
 CONF_URL_SYNC                       http://updates.bulmages.com/
+
+#Opciones de mail embebido
+# Servidor de correo
+CONF_SMTP_SERVER                mail.demo.com   
+# Puerto
+CONF_SMTP_PORT                  25             
+# Usuario
+CONF_SMTP_USERNAME              username 
+# Contrasenya
+CONF_SMTP_PASSWORD              password
+# Tipo de cifrado PLAIN, SSL, TLS
+CONF_SMTP_TYPE   		PLAIN                    
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------

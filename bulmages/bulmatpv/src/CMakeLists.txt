@@ -1,11 +1,12 @@
 ###########################################
 # bulmatpv                                #
 ###########################################
+cmake_policy(SET CMP0020 OLD)
 
 file(GLOB bulmatpv_SRC *.c *.cpp)
 file(GLOB bulmatpv_UIS *.ui)
 
-find_package(Qt5Core REQUIRED)
+#find_package(Qt5Core REQUIRED)
 
 set(bulmatpvEx main.cxx)
 

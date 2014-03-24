@@ -27,6 +27,8 @@
 
 set (plugin pluginbl_subform2ods)
 
+cmake_policy(SET CMP0020 OLD)
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)

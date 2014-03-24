@@ -22,6 +22,7 @@
 #########################################################################
 # bulmages                                                             #
 #########################################################################
+cmake_policy(SET CMP0020 OLD)
 
 
 file(GLOB bulmages_SRC *.c *.cpp)
@@ -29,8 +30,8 @@ file(GLOB bulmages_SRC *.c *.cpp)
 
 file(GLOB bulmages_UIS *.ui)
 
-set(bulmages_RCCS bgbulmages.qrc)
-set(bulmages_MOCS bgbulmages.h)
+set(bulmages_RCCS bgbulmages.qrc resources.qrc)
+set(bulmages_MOCS bgbulmages.h mainwindow.h bgserver.h)
 
 set(bulmagesEx main.cxx)
 

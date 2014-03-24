@@ -12,9 +12,9 @@
                                                                 <td>  </td>
                                                                 <td>Tot I.V.A.:</td>
                                                                 <td>  </td>
-                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = [idfactura]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->I.R.P.F.%:<!-- END QUERY--></td>
+                                                                <td>I.R.P.F.%:</td>
                                                                 <td>  </td>
-                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = [idfactura]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->Tot I.R.P.F.:<!-- END QUERY--></td>
+                                                                <td>Tot I.R.P.F.:</td>
                                                                 <td>  </td>
                                                                 <td>Total:</td>
 							</tr>
@@ -37,9 +37,9 @@
                                                                 <td>  </td>
                                                                 <td>[iva]</td>
                                                                 <td>  </td>
-								<td><!-- QUERY4="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT ffactura FROM factura WHERE idfactura = [idfactura]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->[tasairpf] %<!-- END QUERY4--></td>
+								<td>[irpffactura] %</td>
                                                                 <td>  </td>
-								<td><!-- QUERY5="SELECT (replace('[bimp]',',','.')::NUMERIC(12,2) * tasairpf/100)::NUMERIC(12,2) AS tmirpf FROM irpf WHERE fechairpf <= '[ffactura]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1"-->[tmirpf]<!-- END QUERY5--></td>
+								<td><!-- QUERY4="SELECT (replace('[bimp]',',','.')::NUMERIC(12,2) * replace('[irpffactura]',',','.')::NUMERIC(12,2)/100)::NUMERIC(12,2) AS tmirpf"-->[tmirpf]<!-- END QUERY4--></td>
                                                                 <td>  </td>
 							</tr>
 <!-- END QUERY3 -->
@@ -61,7 +61,8 @@
 
 
 
- <!-- IF QUERY = "SELECT * FROM vencimientoc WHERE idfactura=[idfactura]" -->
+<!-- QUERY1 = "SELECT * FROM pg_attribute WHERE attname='fechavencimientoc'" -->
+ <!-- QUERY2 = "SELECT COUNT(idfactura) AS coun FROM vencimientoc WHERE idfactura=[idfactura]" -->
  	<storyPlace x="0cm" y="0cm" width="20cm" height="1cm">
 		<place x="15cm" y="2cm" width="19cm" height="4cm">
 			<blockTable style="tablavencimientos" colWidths="2.3cm,1.7cm" >
@@ -69,19 +70,19 @@
 		  <td>Vencimiento/s:</td>
 			<td></td>
 		</tr>
- <!-- QUERY = "SELECT * FROM vencimientoc WHERE idfactura=[idfactura]" -->
+ <!-- QUERY3 = "SELECT * FROM vencimientoc WHERE idfactura=[idfactura]" -->
 
 				<tr>
 					<td>[fechavencimientoc]</td>
 					<td>[cantvencimientoc] €</td>
 				</tr>
 
- <!-- END QUERY-->
+ <!-- END QUERY3-->
  			</blockTable>
 		</place>
 	</storyPlace> 
- <!-- END IF QUERY-->
-
+ <!-- END QUERY2-->
+<!-- END QUERY1-->
 
 
 <!-- QUERY = "SELECT * FROM factura WHERE idfactura=[idfactura] AND idforma_pago = 8 "-->

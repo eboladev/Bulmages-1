@@ -61,7 +61,7 @@ public:
     void setMensaje ( QString mensaje );
 
 public slots:
-    virtual void on_mui_corregir_clicked();
+    virtual void on_mui_corregir_released();
     virtual void on_mui_configurar_clicked();
     virtual void alink ( const QUrl &url );
     virtual void cambia ( bool a );

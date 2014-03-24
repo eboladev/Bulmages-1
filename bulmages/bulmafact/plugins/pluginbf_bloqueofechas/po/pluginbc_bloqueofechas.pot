@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bcbloqueafechaview.cpp:77
+msgid "Bloquear Fechas"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:81
+msgid "Bloqueado"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:82
+msgid "Abierto"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:118
+msgid "Ejercicio"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:118
+msgid "Estado"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:150
+msgid "Diciembre"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:154
+msgid "Noviembre"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:158
+msgid "Octubre"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:162
+msgid "Septiembre"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:166
+msgid "Agosto"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:170
+msgid "Julio"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:174
+msgid "Junio"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:178
+msgid "Mayo"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:182
+msgid "Abril"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:186
+msgid "Marzo"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:190
+msgid "Febrero"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:194
+msgid "Enero"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:257
+msgid "Introduzca Ejercicio a Crear"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:258
+msgid "Ponga el anyo:"
+msgstr ""
+
+#: bcbloqueafechaview.cpp:271
+msgid "Ejercicios ya contemplado"
+msgstr ""
+
+#: pluginbf_bloqueofechas.cpp:50
+msgid "&Herramientas"
+msgstr ""
+
+#: pluginbf_bloqueofechas.cpp:52
+msgid "&Bloqueo de Fechas"
+msgstr ""
+
+#: pluginbf_bloqueofechas.cpp:53 pluginbf_bloqueofechas.cpp:54
+msgid "Bloqueo de Fechas"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:134
+msgid "Bloquear fechas"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:136
+msgid "Agregar Ejercicio"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:139
+msgid "Agregar ejercicio"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:142
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:144
+msgid "1"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:146
+msgid "Hacer doble click para bloquear/desbloquear fechas"
+msgstr ""
+
+#: ui_bcbloqueafechabase.h:148
+msgid "Cerrar"
+msgstr ""

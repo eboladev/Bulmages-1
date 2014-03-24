@@ -4,6 +4,9 @@
 #pluginbf_proveedoralbaran
 
 set (plugin pluginbf_proveedoralbaran)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
@@ -38,7 +41,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/)
 
 # generate rules for building source files that moc generates
 QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)

@@ -44,6 +44,7 @@ extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlAction_actionTriggered(BlAction *);
+extern "C" PLUGINBF_ARTICULO_EXPORT int Plugin_open(BfCompany * );
 
 class SubForm_Articulo : public QObject
 {

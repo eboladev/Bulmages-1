@@ -3068,7 +3068,7 @@ QByteArray BlDbRecord::parseCutPaperAndFeed ( const QString &param, const QStrin
 ///    2 --> ParseoPython
 void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
 {
-
+    BL_FUNC_DEBUG
     int pos = 0;
 
     /// Tratamos la sustitucion de variables de m_variables

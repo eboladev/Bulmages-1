@@ -44,5 +44,6 @@ extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_pressedAsterisk(BlSubForm *);
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBL_AUTOFORM_EXPORT int BlAction_actionTriggered(BlAction *);
+extern "C" PLUGINBL_AUTOFORM_EXPORT int Plugin_open(BfCompany *);
 
 #endif

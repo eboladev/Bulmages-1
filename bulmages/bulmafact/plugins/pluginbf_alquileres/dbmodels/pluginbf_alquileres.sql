@@ -114,6 +114,16 @@ BEGIN
 	ALTER TABLE contrato ADD COLUMN bancocontrato VARCHAR;
     END IF;
 
+    SELECT INTO rs * FROM pg_attribute WHERE attname = ''numpropvivienda'';
+    IF NOT FOUND THEN
+	ALTER TABLE vivienda ADD COLUMN numpropvivienda VARCHAR;
+	ALTER TABLE vivienda ADD COLUMN depropvivienda VARCHAR;
+	ALTER TABLE vivienda ADD COLUMN tomopropvivienda VARCHAR;
+	ALTER TABLE vivienda ADD COLUMN libropropvivienda VARCHAR;
+	ALTER TABLE vivienda ADD COLUMN foliopropvivienda VARCHAR;
+	ALTER TABLE vivienda ADD COLUMN fincapropvivienda VARCHAR;
+    END IF;
+
 RETURN 0;
 
 
@@ -123,7 +133,7 @@ END;
 
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo "Creamos las tablas para la gestion de bibliotecas."
+\echo "Creamos las tablas para la gestion de viviendas."
 
 
 

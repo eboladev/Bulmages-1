@@ -28,6 +28,7 @@
 
 
 
+
 ClientsList *g_clientesList = NULL;
 BfBulmaFact *g_pluginbf_cliente = NULL;
 
@@ -147,4 +148,59 @@ int SNewClienteView ( BfCompany *v )
     ClienteView *h = new ClienteView ( v, 0 );
     g_plugParams = h;
     return 1;
+}
+
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "cliente") {
+        ClienteView * bud = new ClienteView ( comp, NULL );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
+
+  } // end if
+  return 0;
+}
+
+
+
+int CorrectorWidget_corregir(BlWidget *corrector) {
+   BL_FUNC_DEBUG
+   
+    /// En Windows no se soportan las rutas relativas para el HTML
+#ifdef Q_OS_WIN32
+	    QString cupath = QDir::currentPath().replace("program", "").replace(".bulmages","");
+	    QString src= g_confpr->value( CONF_PROGDATA).replace("..",cupath);
+#else
+	    QString src = g_confpr->value( CONF_PROGDATA);
+#endif
+	  
+    QString query = "SELECT * FROM cliente WHERE coalesce(length(cifcliente),0) < 6";
+    BlDbRecordSet *cur = corrector->mainCompany() ->loadQuery ( query );
+    while ( ! cur->eof() ) {
+
+           QString cadena = "<HR><table><tr><td colspan=2><img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->value( "nomcliente" ) + "</B> no tiene CIF.</td></tr><tr><td><a name='masinfo' href='abredoc?op=masinfo&tabla=cliente&id=" + cur->value( "idcliente" ) + "'>+info</a></td><td></td></tr></table>";
+	   *(QString *) g_plugParams += cadena;
+	
+        cur->nextRecord();
+    } // end while
+    delete cur;
+	    
+	    
+    query = "SELECT * FROM cliente";
+   cur = corrector->mainCompany()->loadQuery ( query );
+   while ( ! cur->eof() ) {
+       QChar digito;
+       if ( ! blValidateSpainCIFNIFCode ( cur->value( "cifcliente" ), digito ) ) {
+           QString cadena = "<HR><table><tr><td colspan=2><img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ," + cur->value( "cifcliente" ) + " <B>" + cur->value( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString ( digito ) + "</td></tr><tr><td><a name='masinfo' href='abredoc?op=masinfo&tabla=cliente&id=" + cur->value( "idcliente" ) + "'>+info</a></td><td></td></tr></table>";
+	   *(QString *) g_plugParams += cadena;
+       } // end if
+       cur->nextRecord();
+   } // end while
+   delete cur;
+   return 0;
 }

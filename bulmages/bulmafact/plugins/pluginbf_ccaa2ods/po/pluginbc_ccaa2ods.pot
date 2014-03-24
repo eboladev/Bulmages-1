@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: datosview.cpp:36
+msgid "Cuenta"
+msgstr ""
+
+#: datosview.cpp:39
+msgid "Id cuenta"
+msgstr ""
+
+#: datosview.cpp:40
+msgid "Fecha Inicial Actual"
+msgstr ""
+
+#: datosview.cpp:41
+msgid "Fecha Final Actual"
+msgstr ""
+
+#: datosview.cpp:42
+msgid "Fecha Inicial Anterior"
+msgstr ""
+
+#: datosview.cpp:43
+msgid "Fecha Final Anterior"
+msgstr ""
+
+#: datosview.cpp:81
+msgid "ERROR: Debe introducir una fecha inicial del balance actual."
+msgstr ""
+
+#: datosview.cpp:85
+msgid "ERROR: Debe introducir una fecha final del balance actual."
+msgstr ""
+
+#: datosview.cpp:90
+msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
+msgstr ""
+
+#: datosview.cpp:94
+msgid "ERROR: Debe introducir una fecha final del balance anterior."
+msgstr ""
+
+#: datosview.cpp:110
+msgid "Calculando Balance y Resultados"
+msgstr ""
+
+#: datosview.cpp:117
+msgid "ERROR: Ha habido un error generando el informe"
+msgstr ""
+
+#: pluginbf_ccaa2ods.cpp:204
+msgid "Cuentas Anuales &ODS"
+msgstr ""
+
+#: ui_datosbase.h:147
+msgid "Datos para generar el balance"
+msgstr ""
+
+#: ui_datosbase.h:148
+msgid "Periodo actual:"
+msgstr ""
+
+#: ui_datosbase.h:149 ui_datosbase.h:154
+msgid "Fecha inicial del balance:"
+msgstr ""
+
+#: ui_datosbase.h:150 ui_datosbase.h:155
+msgid "Fecha final del balance:"
+msgstr ""
+
+#: ui_datosbase.h:151
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_datosbase.h:152
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_datosbase.h:153
+msgid "Periodo anterior:"
+msgstr ""

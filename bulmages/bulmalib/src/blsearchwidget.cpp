@@ -76,6 +76,7 @@ BlSearchWidget::~BlSearchWidget()
 void BlSearchWidget::pinta()
 {
     BL_FUNC_DEBUG
+    if (m_semaforo) return;
     m_semaforo = true;
     QString cad = "";
 
@@ -157,7 +158,6 @@ void BlSearchWidget::setId ( QString val, bool cargarvalores )
         delete cur;
     } // end if
     pinta();
-    
 }
 
 
@@ -195,7 +195,7 @@ void BlSearchWidget::setText ( const QString &val )
 void BlSearchWidget::setFieldValue ( QString campo, QString val )
 {
     BL_FUNC_DEBUG
-    BlDebug::blDebug ( "BlSearchWidget::setcifprofesor", 0, val );
+    BlDebug::blDebug ( "BlSearchWidget::setFieldValue", 0, val );
 
     QString SQLQuery("");
     SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = $1";
@@ -260,7 +260,6 @@ void BlSearchWidget::on_m_inputBusqueda_editingFinished()
     BL_FUNC_DEBUG
     pinta();
     g_plugins->run ( "Busqueda_on_m_inputBusqueda_editingFinished_Post", this );
-    
 }
 
 /** SLOT que responde a la modificacion del campo de texto del Widget.
@@ -276,20 +275,20 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 {
     BL_FUNC_DEBUG
     
+    if ( m_semaforo ) {
+        return;
+    } // end if
+    m_semaforo = true;
+    
     /// Si la cadena esta vacia entonces salimos sin hacer nada
     if  (val == "") {
         setId ( "" );
-	
+	m_semaforo=false;
         return;
     } // end if
-    
-    if ( m_semaforo ) {
-	
-        return;
-    } // end if
-
 
     if ( g_plugins->run ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
+        m_semaforo = false;
         return;
     } // end if
 
@@ -372,7 +371,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         m_textBusqueda->setText ( cad );
     } // end if
     
-
+    m_semaforo = false;
 }
 
 
@@ -501,12 +500,11 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
     BL_FUNC_DEBUG
     m_cursorcombo = NULL;
     setEditable ( true );
+    setContextMenuPolicy ( Qt::CustomContextMenu );
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
-    connect ( this, SIGNAL (customContextMenuRequested( const QPoint & )), this, SLOT ( popMenu(const QPoing &)));
-    setContextMenuPolicy ( Qt::CustomContextMenu );
-    
+    connect ( this, SIGNAL (customContextMenuRequested( const QPoint & )), this, SLOT ( on_customContextMenuRequested(const QPoint &)));
 }
 
 
@@ -516,6 +514,29 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
 BlDbCompleterComboBox::~BlDbCompleterComboBox()
 {
     BL_FUNC_DEBUG
+}
+
+
+///
+/**
+**/
+void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
+{
+    BL_FUNC_DEBUG
+    QMenu *popup = new QMenu ( this );
+
+    /// Lanzamos el evento para que pueda ser capturado por terceros.
+    emit pintaMenu ( popup );
+
+    QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
+    QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
+
+    if ( opcion ) {
+        emit trataMenu ( opcion );
+    } // end if
+
+    delete popup;
 }
 
 
@@ -641,27 +662,7 @@ QString BlDbCompleterComboBox::entrada()
 }
 
 
-///
-/**
-**/
-void BlDbCompleterComboBox::popMenu ( const QPoint & )
-{
-    BL_FUNC_DEBUG
-    QMenu *popup = new QMenu ( this );
 
-    /// Lanzamos el evento para que pueda ser capturado por terceros.
-    emit pintaMenu ( popup );
-
-    QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
-    QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
-    QAction *opcion = popup->exec ( QCursor::pos() );
-
-    if ( opcion ) {
-        emit trataMenu ( opcion );
-    } // end if
-
-    delete popup;
-}
 
 
 

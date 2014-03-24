@@ -32,7 +32,7 @@ class ComercialClienteView : public BfForm, public Ui_ComercialClienteBase
 
 public:
     void setMainCompany ( BfCompany *comp );
-    ComercialClienteView ( QWidget *parent = 0 );
+    ComercialClienteView ( BfCompany *comp, QWidget *parent = 0 );
     ~ComercialClienteView();
 };
 

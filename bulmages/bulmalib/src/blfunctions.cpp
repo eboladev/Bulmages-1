@@ -38,6 +38,7 @@
 #include "blconfiguration.h"
 #include "blmainwindow.h"
 #include "local_blI18n.h"
+#include "blsmtpmime.h"
 
 
 /// Definiciones para el email.
@@ -50,7 +51,7 @@
 #endif
 
 
-
+QMap<QString,QString> g_globalvars; /// Son elementos que han sido incrustados e inicializados por programas
 
 
 /** Las variables estaticas de clase deben ser delcaras para reservar memoria */
@@ -1646,6 +1647,62 @@ int Outlook ( QString &recipient, QString &bcc, QString &subject, QString &body,
 }
 #endif
 
+
+
+int BlMail ( QString &recipient, QString &bcc, QString &subject, QString &body, QString &attached )
+{
+    BL_FUNC_DEBUG
+    SmtpClient::ConnectionType con= SmtpClient::TcpConnection;
+    if (g_confpr->value(CONF_SMTP_TYPE) == "SSL") 
+      con = SmtpClient::SslConnection;
+    if (g_confpr->value(CONF_SMTP_TYPE) == "TSL") 
+      con = SmtpClient::TlsConnection;
+    
+    SmtpClient smtp(g_confpr->value(CONF_SMTP_SERVER), g_confpr->value(CONF_SMTP_PORT).toInt(), con);
+
+    smtp.setUser(g_confpr->value(CONF_SMTP_USERNAME));
+    smtp.setPassword(g_confpr->value(CONF_SMTP_PASSWORD));
+
+    // Create a MimeMessage
+
+    MimeMessage message;
+
+    message.setSender(new EmailAddress(g_confpr->value(CONF_SMTP_USERNAME), ""));
+    message.addRecipient(new EmailAddress(recipient, ""));
+    message.setSubject(subject);
+
+    // Add some text
+
+    MimeText text;
+    text.setText(body);
+    message.addPart(&text);
+
+/*
+    // Now we create the attachment object
+    MimeAttachment attachment (new QFile("/tmp/image1.jpg"));
+
+    // the file type can be setted. (by default is application/octet-stream)
+    attachment.setContentType("image/jpg");
+
+    // Now add it to message
+    message.addPart(&attachment);
+*/
+    // Add an another attachment
+    message.addPart(new MimeAttachment(new QFile(attached)));
+
+    // Now we can send the mail
+
+    smtp.connectToHost();
+    smtp.login();
+    smtp.sendMail(message);
+    smtp.quit();
+    
+    
+    return 0;
+
+}
+
+
 ///
 /**
 \ param recipient
@@ -1671,13 +1728,25 @@ int blSendEmail ( QString &recipient, QString &bcc, QString &subject, QString &b
         Kmail (  recipient, bcc, subject, body, attached );
     } else if (program_name == "evolution") {
         Evolution (  recipient, bcc, subject, body, attached );
-    } // end if
+    } 
     #ifdef Q_OS_WIN32
      else if (program_name == "Outlook") {
         Outlook (  recipient, bcc, subject, body, attached );
     } // end if
     #endif
+    else {
+	/// Usamos el cliente definido internamente.
+	BlMail(recipient, bcc, subject, body, attached);
+    }// end if
     return 0;
     
+}
+
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void setGVar(const QString &varname, const QString &varvalue) {
+      BL_FUNC_DEBUG
+      g_globalvars[varname ] = varvalue;
 }
 

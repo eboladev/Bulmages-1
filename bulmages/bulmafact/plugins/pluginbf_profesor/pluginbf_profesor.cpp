@@ -159,8 +159,23 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         
     } // end if
     
-    
-    
     return 0;
+}
 
+
+
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "actividad") {
+	ProfesorView * bud = new ProfesorView ( comp, 0 );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
+
+  } // end if
+  return 0;
 }

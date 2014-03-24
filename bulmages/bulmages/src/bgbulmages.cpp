@@ -23,12 +23,15 @@
 
 #include <QtWidgets/QAction>
 #include <QtCore/QFile>
+#include <QtCore/QDebug>
 #include <QtWidgets/QMessageBox>
 
 #include "bgbulmages.h"
 
 BgBulmaGes::BgBulmaGes()
 {
+  
+    qDebug() << "Lanzamos el tray" << endl;
     setupUi ( this );
     setWindowTitle ( _("Lanzador BulmaGes") );
 
@@ -118,6 +121,7 @@ void BgBulmaGes::createTrayIcon()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction ( salirAction );
 
+    qDebug() << "Seguro que creamos el tray" << endl;
     trayIcon = new QSystemTrayIcon ( this );
     trayIcon->setContextMenu ( trayIconMenu );
 

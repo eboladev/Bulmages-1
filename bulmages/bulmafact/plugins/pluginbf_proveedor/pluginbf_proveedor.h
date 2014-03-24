@@ -44,7 +44,8 @@ extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubFormDelegate_setEditorData(BlSubFo
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
-
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int CorrectorWidget_corregir(BlWidget *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int Plugin_open(BfCompany *);
 
 class SubForm_Proveedor : public QObject
 {

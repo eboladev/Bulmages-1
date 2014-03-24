@@ -28,8 +28,11 @@
 #include "bfbuscarreferencia.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
+#include "facturapview.h"
+#include "bfform.h"
 #include "pdefs_pluginbf_proveedoralbaran.h"
 #include "blaction.h"
+#include "bltoolbutton.h"
 
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int SNewAlbaranProveedorView (BfCompany *);
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int entryPoint ( BfBulmaFact * );
@@ -39,6 +42,8 @@ extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int ProveedorView_cargarPost_Post (P
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BlAction_actionTriggered(BlAction *);
-
+extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int Plugin_open(BfCompany * );
+extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *);
+extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BlToolButton_released(BlToolButton *);
 #endif
 

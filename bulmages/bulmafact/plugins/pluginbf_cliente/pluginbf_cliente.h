@@ -27,6 +27,7 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_cliente.h"
+#include "blwidget.h"
 #include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTE_EXPORT int entryPoint ( BlMainWindow * );
@@ -34,7 +35,7 @@ extern "C" PLUGINBF_CLIENTE_EXPORT int BfCompany_createMainWindows_Post(BfCompan
 extern "C" PLUGINBF_CLIENTE_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" PLUGINBF_CLIENTE_EXPORT int SNewClienteView (BfCompany *);
 extern "C" PLUGINBF_CLIENTE_EXPORT int BlAction_actionTriggered(BlAction *);
-
-
+extern "C" PLUGINBF_CLIENTE_EXPORT int Plugin_open(BfCompany *);
+extern "C" PLUGINBF_CLIENTE_EXPORT int CorrectorWidget_corregir(BlWidget *);
 #endif
 

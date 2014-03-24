@@ -12,9 +12,9 @@
                                                                 <td>  </td>
                                                                 <td>Tot I.V.A.:</td>
                                                                 <td>  </td>
-                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = [idpedidocliente]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->I.R.P.F.%:<!-- END QUERY--></td>
+                                                                <td>I.R.P.F.%:</td>
                                                                 <td>  </td>
-                                                                <td><!-- QUERY="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = [idpedidocliente]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->Tot I.R.P.F.:<!-- END QUERY--></td>
+                                                                <td>Tot I.R.P.F.:</td>
                                                                 <td>  </td>
                                                                 <td>Total:</td>
 							</tr>
@@ -37,9 +37,9 @@
                                                                 <td>  </td>
                                                                 <td>[iva]</td>
                                                                 <td>  </td>
-								<td><!-- QUERY4="SELECT tasairpf FROM irpf WHERE fechairpf <= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = [idpedidocliente]) AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1" -->[tasairpf] %<!-- END QUERY4--></td>
+								<td>[irpfpedidocliente] %</td>
                                                                 <td>  </td>
-								<td><!-- QUERY5="SELECT (replace('[bimp]',',','.')::NUMERIC(12,2) * tasairpf/100)::NUMERIC(12,2) AS tmirpf FROM irpf WHERE fechairpf <= '[fechapedidocliente]'::DATE AND tasairpf > 0 ORDER BY fechairpf DESC LIMIT 1"-->[tmirpf]<!-- END QUERY5--></td>
+								<td><!-- QUERY4="SELECT (replace('[bimp]',',','.')::NUMERIC(12,2) * replace('[irpfpedidocliente]',',','.')::NUMERIC(12,2)/100)::NUMERIC(12,2) AS tmirpf"-->[tmirpf]<!-- END QUERY4--></td>
                                                                 <td>  </td>
 							</tr>
 <!-- END QUERY3 -->

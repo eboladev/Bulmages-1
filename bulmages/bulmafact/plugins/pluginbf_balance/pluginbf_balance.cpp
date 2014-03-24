@@ -59,7 +59,25 @@ int entryPoint ( BfBulmaFact *bcont )
     accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_balance.xpm" ) ) );
     accionA->setObjectName("mui_actionBalance");
     pPluginMenu->addAction ( accionA );
-    bcont->Listados->addAction ( accionA );
+    
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    /// Usamos un toolBox especial para meter los botones de contabilidad.
+    QToolBar *toolCont =  bcont->findChild<QToolBar *> ( "contabilidad" );
+    if ( !toolCont) {
+	toolCont = new QToolBar(bcont);
+	toolCont->setObjectName("contabilidad");
+	toolCont->setFocusPolicy(Qt::TabFocus);
+	toolCont->setOrientation(Qt::Horizontal);
+	toolCont->setIconSize(QSize(32, 32));
+        toolCont->setWindowTitle(N_("Contabilidad", 0));
+        toolCont->setToolTip(N_("Contabilidad", 0));
+        toolCont->setStatusTip(N_("Contabilidad", 0));
+        toolCont->setWhatsThis(N_("Contabilidad", 0));
+        toolCont->setAccessibleName(N_("Contabilidad", 0));
+        toolCont->setAccessibleDescription(N_("Contabilidad", 0));
+	bcont->addToolBar(Qt::TopToolBarArea, toolCont);
+    } // end if
+    toolCont->addAction(accionA);
     
     return 0;
 }

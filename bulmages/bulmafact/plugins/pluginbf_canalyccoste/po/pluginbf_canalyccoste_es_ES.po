@@ -1,0 +1,467 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanalyccostetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanalyccoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanalyccosteold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: pluginbf_canalyccoste.cpp:54
+msgid "&Balance jerarquico"
+msgstr "&Balance jerarquico"
+
+#: ui_canalyccostesprintdlg.h:206
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: ui_canalyccosteprintbase.h:329
+msgid "&Kugar"
+msgstr "&Kugar"
+
+#: ui_canalyccosteprintbase.h:326
+msgid "&Texto Plano"
+msgstr "&Texto Plano"
+
+#: pluginbf_canalyccoste.cpp:52
+msgid "&Ver"
+msgstr "&Ver"
+
+#: ui_canalyccostesprintdlg.h:202
+msgid "&texto plano"
+msgstr "&texto plano"
+
+#: ui_canalyccostebase.h:445
+msgid "1"
+msgstr "1"
+
+#: ui_canalyccostesprintdlg.h:205
+msgid "Acep&tar"
+msgstr "Acep&tar"
+
+#: ui_canalyccostebase.h:415 ui_canalyccostebase.h:418
+msgid "Actualizar canalyccoste"
+msgstr "Actualizar canalyccoste"
+
+#: canalyccostesubform.cpp:80
+msgid "Ajustar altura"
+msgstr "Ajustar altura"
+
+#: canalyccostesubform.cpp:82
+msgid "Ajustar alturas"
+msgstr "Ajustar alturas"
+
+#: canalyccostesubform.cpp:79
+msgid "Ajustar columa"
+msgstr "Ajustar columa"
+
+#: canalyccostesubform.cpp:81
+msgid "Ajustar columnas"
+msgstr "Ajustar columnas"
+
+#: ui_canalyccostesprintdlg.h:203
+msgid "Alt+T"
+msgstr "Alt+T"
+
+#: canalyccosteview.cpp:61 ui_canalyccostesprintdlg.h:198
+msgid "Balance"
+msgstr "Balance"
+
+#: ui_canalyccostebase.h:405
+msgid "Balance de cuentas"
+msgstr "Balance de cuentas"
+
+#: ui_canalyccostebase.h:443
+msgid "Balance jerarquico"
+msgstr "Balance jerarquico"
+
+#: ui_canalyccostetreebase.h:382
+msgid "Balance jerarquico de Cuentas"
+msgstr "Balance jerarquico de Cuentas"
+
+#: ui_canalyccostetreebase.h:384 ui_canalyccostetreebase.h:387
+msgid "Borrar albaran"
+msgstr "Borrar albaran"
+
+#: canalyccostesubform.cpp:77
+msgid "Borrar registro"
+msgstr "Borrar registro"
+
+#: ui_canalyccostetreebase.h:409
+msgid "Centro de coste:"
+msgstr "Centro de coste:"
+
+#: canalyccostesubform.cpp:38 canalyccosteview.cpp:277
+msgid "Codigo"
+msgstr "Codigo"
+
+#: ui_canalyccosteprintbase.h:320
+msgid "Codigo final"
+msgstr "Codigo final"
+
+#: ui_canalyccosteprintbase.h:317
+msgid "Codigo inicial\n"
+msgstr "Codigo inicial\n"
+
+#: ui_canalyccostebase.h:431 ui_canalyccostebase.h:434
+msgid "Configurar"
+msgstr "Configurar"
+
+#: ui_canalyccostebase.h:437
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_canalyccostebase.h:413
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_canalyccostebase.h:429
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: canalyccosteview.cpp:77 canalyccosteprintview.cpp:64 ui_canalyccostebase.h:441
+#: ui_canalyccostetreebase.h:404
+msgid "Cuenta final:"
+msgstr "Cuenta final:"
+
+#: canalyccosteview.cpp:68 canalyccosteprintview.cpp:56 ui_canalyccostebase.h:439
+#: ui_canalyccostetreebase.h:407
+msgid "Cuenta inicial:"
+msgstr "Cuenta inicial:"
+
+#: ui_canalyccosteprintbase.h:316
+msgid "Datos del listado:"
+msgstr "Datos del listado:"
+
+#: canalyccosteview.cpp:277
+msgid "Debe"
+msgstr "Debe"
+
+#: canalyccosteview.cpp:277
+msgid "Debe "
+msgstr "Debe "
+
+#: ui_canalyccostebase.h:450
+msgid "Debe:"
+msgstr "Debe:"
+
+#: canalyccosteview.cpp:277
+msgid "Denominacion"
+msgstr "Denominacion"
+
+#: canalyccostesubform.cpp:39
+msgid "Descripcion"
+msgstr "Descripción"
+
+#: canalyccostesubform.cpp:44
+msgid "Ejercicio debe"
+msgstr ""
+
+#: canalyccostesubform.cpp:46
+msgid "Ejercicio saldo"
+msgstr ""
+
+#: canalyccostesubform.cpp:45
+msgid "Ejercico haber"
+msgstr ""
+
+#: ui_canalyccostebase.h:421
+msgid "F5"
+msgstr "F5"
+
+#: ui_canalyccostesprintdlg.h:200 ui_canalyccosteprintbase.h:321
+msgid "Fecha final"
+msgstr "Fecha final"
+
+#: ui_canalyccostebase.h:440 ui_canalyccostetreebase.h:405
+msgid "Fecha final:"
+msgstr "Fecha final:"
+
+#: ui_canalyccostesprintdlg.h:199 ui_canalyccosteprintbase.h:319
+msgid "Fecha inicial"
+msgstr "Fecha inicial"
+
+#: ui_canalyccostebase.h:438 ui_canalyccostetreebase.h:406
+msgid "Fecha inicial:"
+msgstr "Fecha inicial:"
+
+#: ui_canalyccostebase.h:407 ui_canalyccostebase.h:410
+msgid "Filtrar canalyccoste"
+msgstr "Filtrar canalyccoste"
+
+#: ui_canalyccostesprintdlg.h:201
+msgid "Formato"
+msgstr "Formato"
+
+#: ui_canalyccosteprintbase.h:325
+msgid "Formato:"
+msgstr "Formato:"
+
+#: ui_canalyccostebase.h:446
+msgid "GroupBox"
+msgstr "GroupBox"
+
+#: ui_canalyccosteprintbase.h:328
+msgid "HT&ML"
+msgstr "HT&ML"
+
+#: ui_canalyccostesprintdlg.h:204
+msgid "HTML"
+msgstr "HTML"
+
+#: canalyccosteview.cpp:277
+msgid "Haber"
+msgstr "Haber"
+
+#: canalyccosteview.cpp:277
+msgid "Haber "
+msgstr "Haber "
+
+#: ui_canalyccostebase.h:448
+msgid "Haber:"
+msgstr "Haber:"
+
+#: canalyccostesubform.cpp:36
+msgid "Id cuenta"
+msgstr "ID cuenta"
+
+#: ui_canalyccostesprintdlg.h:197
+msgid "Impresion de canalyccostes"
+msgstr ""
+
+#: ui_canalyccosteprintbase.h:312
+msgid "Impresion del canalyccoste de sumas y saldos"
+msgstr "Impresión del canalyccoste de sumas y saldos"
+
+#: ui_canalyccostetreebase.h:391 ui_canalyccostetreebase.h:394 ui_canalyccostetreebase.h:398
+#: ui_canalyccostetreebase.h:401
+msgid "Imprimir albaran"
+msgstr "Imprimir albaran"
+
+#: ui_canalyccostebase.h:423 ui_canalyccostebase.h:426
+msgid "Imprimir canalyccoste"
+msgstr "Imprimir canalyccoste"
+
+#: ui_canalyccosteprintbase.h:324
+msgid "Incl&uir resultados parciales"
+msgstr "Incl&uir resultados parciales"
+
+#: ui_canalyccosteprintbase.h:323
+msgid "Incluir &niveles superiores."
+msgstr "Incluir &niveles superiores."
+
+#: ui_canalyccosteprintbase.h:322
+msgid "Nivel de Cuentas"
+msgstr "Nivel de Cuentas"
+
+#: ui_canalyccostebase.h:442 ui_canalyccostetreebase.h:408
+msgid "Nivel:"
+msgstr "Nivel:"
+
+#: pluginbf_canalyccoste.cpp:55
+msgid "Permite realizar canalyccostes"
+msgstr "Permite realizar canalyccostes"
+
+#: pluginbf_canalyccoste.cpp:56
+msgid "Podra disponer de la informacion del canalyccoste"
+msgstr "Podra disponer de la informacion del canalyccoste"
+
+#: ui_canalyccosteprintbase.h:327
+msgid "Propietario"
+msgstr "Propietario"
+
+#: canalyccosteview.cpp:277
+msgid "Saldo"
+msgstr "Saldo"
+
+#: canalyccosteview.cpp:277
+msgid "Saldo "
+msgstr "Saldo "
+
+#: canalyccosteview.cpp:277
+msgid "Saldo anterior"
+msgstr "Saldo anterior"
+
+#: ui_canalyccostebase.h:449 ui_canalyccostetreebase.h:410
+msgid "Saldo anterior:"
+msgstr "Saldo anterior:"
+
+#: canalyccostesubform.cpp:40
+msgid "Saldo apunte"
+msgstr ""
+
+#: ui_canalyccostebase.h:447 ui_canalyccostetreebase.h:413
+msgid "Saldo:"
+msgstr "Saldo:"
+
+#: canalyccostesubform.cpp:37
+msgid "Tipo cuenta"
+msgstr "Tipo cuenta"
+
+#: ui_canalyccostetreebase.h:411
+msgid "Total Debe:"
+msgstr "Total Debe:"
+
+#: ui_canalyccostetreebase.h:412
+msgid "Total Haber:"
+msgstr "Total Haber:"
+
+#: canalyccostesubform.cpp:41
+msgid "Total debe"
+msgstr ""
+
+#: canalyccostesubform.cpp:42
+msgid "Total haber"
+msgstr ""
+
+#: canalyccostesubform.cpp:43
+msgid "Total saldo"
+msgstr ""
+
+#: canalyccostesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr "Ver configurador de subformulario"
+
+#~ msgid "Impresion de Balances"
+#~ msgstr "Impresion de Balances"
+
+#~ msgid "asaldo"
+#~ msgstr "asaldo"
+
+#~ msgid "codigo"
+#~ msgstr "codigo"
+
+#~ msgid "descripcion"
+#~ msgstr "descripcion"
+
+#~ msgid "ejdebe"
+#~ msgstr "ejdebe"
+
+#~ msgid "ejhaber"
+#~ msgstr "ejhaber"
+
+#~ msgid "ejsaldo"
+#~ msgstr "ejsaldo"
+
+#~ msgid "idcuenta"
+#~ msgstr "idcuenta"
+
+#~ msgid "tdebe"
+#~ msgstr "tdebe"
+
+#~ msgid "thaber"
+#~ msgstr "thaber"
+
+#~ msgid "tipocuenta"
+#~ msgstr "tipocuenta"
+
+#~ msgid "tsaldo"
+#~ msgstr "tsaldo"

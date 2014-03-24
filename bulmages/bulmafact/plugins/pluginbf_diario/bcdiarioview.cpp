@@ -51,8 +51,14 @@ BcDiarioView::BcDiarioView ( BfCompany  *emp, QWidget *parent, int )
     setAttribute(Qt::WA_DeleteOnClose);
     setTitleName ( _ ( "Diario" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDbTableName ( "apunte" );
-
+    //setDbTableName ( "apunte" );
+    setTitleName ( _ ( "Extracto de cuentas" ) );
+    setDbTableName ( "diario" );
+    setDbFieldId ( "idcuenta" );
+    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, _ ( "idcuenta" ) );
+    addDbField ( "fechainicial", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaInicial" ) );
+    addDbField ( "fechafinal", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "fechaFinal" ) );
+    setDbValue("idcuenta","0");
     mui_list->setMainCompany ( emp );
     
     connect (mui_list, SIGNAL(openAsiento()), this, SLOT(openAsiento()) );
@@ -152,6 +158,25 @@ void BcDiarioView::inicializa1 ( QString finicial, QString ffinal, int )
     cadena2.sprintf ( "%2.2d/%2.2d/%4.4d", fecha1aux.day(), fecha1aux.month(), fecha1aux.year() );
     mui_fechafinal->setText ( cadena2 );
     
+}
+
+void BcDiarioView::imprimir() {
+       BL_FUNC_DEBUG
+       recogeValores();
+        /// El calculo de los canales
+        QString ccanales = "";
+	g_plugins->run("PgetSelCanales", &ccanales);
+	if (ccanales != "") ccanales = ","+ccanales;
+	bool sincanal = true;
+	g_plugins->run("PgetSinCanal", &sincanal);
+	setVar("canales", "(" + QString(sincanal?" idcanal IS NULL OR ":"")+" idcanal IN (0"+ccanales+") )");
+	QString ccostes = "";
+	g_plugins->run("PgetSelCostes", &ccostes);
+        if ( ccostes != "" ) {
+            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
+        } // end if
+        setVar("ccostes", ccostes);
+       BlForm::imprimir();
 }
 
 

@@ -4,6 +4,9 @@
 #pluginbf_clienteticket
 
 set (plugin pluginbf_clienteticket)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

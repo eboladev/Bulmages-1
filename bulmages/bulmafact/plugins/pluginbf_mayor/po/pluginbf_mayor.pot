@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_mayor.cpp:55
+msgid "&Ver"
+msgstr ""
+
+#: pluginbf_mayor.cpp:57
+msgid "&Libro Mayor"
+msgstr ""
+
+#: pluginbf_mayor.cpp:58
+msgid "Permite ver el mayor"
+msgstr ""
+
+#: pluginbf_mayor.cpp:59
+msgid "Podra disponer de la informacion del mayor"
+msgstr ""
+
+#: bcextractoview.cpp:52 ui_bcextractobase.h:714
+msgid "Extracto de Cuentas"
+msgstr ""
+
+#: bcextractoview.cpp:61
+msgid "Cuenta Inicial:"
+msgstr ""
+
+#: bcextractoview.cpp:68
+msgid "Cuenta Final:"
+msgstr ""
+
+#: bcextractoview.cpp:75
+msgid "Cuenta Contrapartida:"
+msgstr ""
+
+#: bcextractoview.cpp:555
+msgid "Cargando Extracto de Cuentas"
+msgstr ""
+
+#: bcextractoview.cpp:593 ui_bcextractobase.h:769 ui_bcextractobase.h:772
+msgid "Guardar punteo"
+msgstr ""
+
+#: bcextractoview.cpp:595
+msgid "Punteos (*.pto)"
+msgstr ""
+
+#: bcextractoview.cpp:631 ui_bcextractobase.h:783 ui_bcextractobase.h:786
+msgid "Borrar punteo"
+msgstr ""
+
+#: bcextractoview.cpp:632
+msgid ""
+"Se dispone a borrar el punteo. Este "
+"cambio                                                 es irrecuperable si "
+"no ha guardado su punteo.                                                 "
+"Desea continuar?"
+msgstr ""
+
+#: bcextractoview.cpp:647
+msgid "Se ha producido un error"
+msgstr ""
+
+#: bcextractoview.cpp:663 ui_bcextractobase.h:776 ui_bcextractobase.h:779
+msgid "Cargar punteo"
+msgstr ""
+
+#: bcextractoview.cpp:665
+msgid "Punteo (*.pto);;Todos los archivos (*)"
+msgstr ""
+
+#: bcextractoview.cpp:932
+msgid "Generando Extracto "
+msgstr ""
+
+#: bcextractosubform.cpp:46
+msgid "Punteo"
+msgstr ""
+
+#: bcextractosubform.cpp:47
+msgid "Fecha"
+msgstr ""
+
+#: bcextractosubform.cpp:48
+msgid "Cuenta"
+msgstr ""
+
+#: bcextractosubform.cpp:49
+msgid "Asiento"
+msgstr ""
+
+#: bcextractosubform.cpp:50
+msgid "Descripcion"
+msgstr ""
+
+#: bcextractosubform.cpp:51
+msgid "Descripcion Apunte"
+msgstr ""
+
+#: bcextractosubform.cpp:52
+msgid "Descripcion Asiento"
+msgstr ""
+
+#: bcextractosubform.cpp:53
+msgid "Concepto"
+msgstr ""
+
+#: bcextractosubform.cpp:54
+msgid "Debe"
+msgstr ""
+
+#: bcextractosubform.cpp:55
+msgid "Haber"
+msgstr ""
+
+#: bcextractosubform.cpp:56
+msgid "Saldo"
+msgstr ""
+
+#: bcextractosubform.cpp:58
+msgid "idapunte"
+msgstr ""
+
+#: bcextractosubform.cpp:59
+msgid "codigoborrador"
+msgstr ""
+
+#: bcextractosubform.cpp:60
+msgid "idasiento"
+msgstr ""
+
+#: bcextractosubform.cpp:61
+msgid "iddiario"
+msgstr ""
+
+#: bcextractosubform.cpp:62
+msgid "idcuenta"
+msgstr ""
+
+#: bcextractosubform.cpp:63
+msgid "tipocuenta"
+msgstr ""
+
+#: bcextractosubform.cpp:64
+msgid "Id contrapartida"
+msgstr ""
+
+#: bcextractosubform.cpp:65
+msgid "contrapartida"
+msgstr ""
+
+#: bcextractosubform.cpp:66
+msgid "Comentario"
+msgstr ""
+
+#: bcextractosubform.cpp:67
+msgid "idcanal"
+msgstr ""
+
+#: bcextractosubform.cpp:68
+msgid "Canal"
+msgstr ""
+
+#: bcextractosubform.cpp:69
+msgid "marcaconciliacion"
+msgstr ""
+
+#: bcextractosubform.cpp:70
+msgid "idc_coste"
+msgstr ""
+
+#: bcextractosubform.cpp:71
+msgid "Centro Coste"
+msgstr ""
+
+#: bcextractosubform.cpp:72
+msgid "idtipoiva"
+msgstr ""
+
+#: bcextractosubform.cpp:73
+msgid "Orden"
+msgstr ""
+
+#: bcextractosubform.cpp:94 bcextractosubform.cpp:111
+msgid "Mostrar asiento"
+msgstr ""
+
+#: bcextractosubform.cpp:96 bcextractosubform.cpp:113
+msgid "Mostrar diario (dia)"
+msgstr ""
+
+#: bcextractosubform.cpp:97 bcextractosubform.cpp:115
+msgid "Mostrar diario (mes)"
+msgstr ""
+
+#: bcextractosubform.cpp:98 bcextractosubform.cpp:117
+msgid "Mostrar diario (ano)"
+msgstr ""
+
+#: ui_bcextractobase.h:715
+msgid "Saldo inicial:"
+msgstr ""
+
+#: ui_bcextractobase.h:716
+msgid "Cuenta:"
+msgstr ""
+
+#: ui_bcextractobase.h:717
+msgid "Haber inicial:"
+msgstr ""
+
+#: ui_bcextractobase.h:718
+msgid "Debe inicial:"
+msgstr ""
+
+#: ui_bcextractobase.h:719
+msgid "Nombre de la cuenta:"
+msgstr ""
+
+#: ui_bcextractobase.h:720
+msgid "Apuntes con saldo superior a:"
+msgstr ""
+
+#: ui_bcextractobase.h:721
+msgid "Apuntes con saldo inferior a:"
+msgstr ""
+
+#: ui_bcextractobase.h:722
+msgid "&Incluir asientos abiertos"
+msgstr ""
+
+#: ui_bcextractobase.h:723
+msgid "Apuntes con contrapartida:"
+msgstr ""
+
+#: ui_bcextractobase.h:724
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_bcextractobase.h:725
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_bcextractobase.h:726
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: ui_bcextractobase.h:727
+msgid "Cuenta final:"
+msgstr ""
+
+#: ui_bcextractobase.h:728
+msgid "Punteo:"
+msgstr ""
+
+#: ui_bcextractobase.h:729
+msgid "Apuntes &no punteados"
+msgstr ""
+
+#: ui_bcextractobase.h:730
+msgid "Ap&untes punteados"
+msgstr ""
+
+#: ui_bcextractobase.h:731
+msgid "&Todos"
+msgstr ""
+
+#: ui_bcextractobase.h:732
+msgid "Ocultar aperturas y cierres"
+msgstr ""
+
+#: ui_bcextractobase.h:734 ui_bcextractobase.h:737
+msgid "Imprimir"
+msgstr ""
+
+#: ui_bcextractobase.h:741 ui_bcextractobase.h:744
+msgid "Mostrar/Oculatar filtro"
+msgstr ""
+
+#: ui_bcextractobase.h:748 ui_bcextractobase.h:751
+msgid "Configurar"
+msgstr ""
+
+#: ui_bcextractobase.h:755 ui_bcextractobase.h:758
+msgid "Actualizar"
+msgstr ""
+
+#: ui_bcextractobase.h:762 ui_bcextractobase.h:765
+msgid "Casacion"
+msgstr ""
+
+#: ui_bcextractobase.h:789
+msgid "Totales:"
+msgstr ""
+
+#: ui_bcextractobase.h:790
+msgid "Debe parcial:"
+msgstr ""
+
+#: ui_bcextractobase.h:791
+msgid "Haber parcial:"
+msgstr ""
+
+#: ui_bcextractobase.h:792
+msgid "Saldo parcial:"
+msgstr ""
+
+#: ui_bcextractobase.h:793
+msgid "Debe final:"
+msgstr ""
+
+#: ui_bcextractobase.h:794
+msgid "Haber final:"
+msgstr ""
+
+#: ui_bcextractobase.h:795
+msgid "Saldo final:"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:135
+msgid "Impresion del Extracto"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:136
+msgid "Formato:"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:137
+msgid "&Texto Plano"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:138
+msgid "HT&ML"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:139
+msgid "Propietario"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:140
+msgid "&Imprimir"
+msgstr ""
+
+#: ui_bcextractoimprimirbase.h:141
+msgid "&Cancelar"
+msgstr ""

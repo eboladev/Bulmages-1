@@ -169,6 +169,7 @@ void BlComboBox::activatedItem ( int index )
 QString BlComboBox::id()
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug ( "ObjectName", 2, objectName() );
     if ( currentIndex() >= 0 ) {
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
@@ -198,6 +199,8 @@ QString BlComboBox::id()
 QString BlComboBox::fieldValue()
 {
     BL_FUNC_DEBUG
+    BlDebug::blDebug ( "ObjectName:", 0, objectName() );
+    BlDebug::blDebug ( "FieldValue:", 0, id() );    
     return id();
 }
 

@@ -149,7 +149,7 @@ int init (  )
             icon = rx4.cap ( 1 );
         } // end if
 
-	QMenuBar *menubar =g_pluginbl_report2ods->menuBar();
+	QMenuBar *menubar = g_pluginbl_report2ods->menuBar();
 	QMenu *menu = NULL;
 	QStringList path = pathtitulo.split("\\");
 
@@ -163,8 +163,6 @@ int init (  )
 			} // end if
 		    } // end for
 		    if (!encontrado) {
-			//QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
-			//menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
         		/// Miramos si existe un menu Herramientas
 			menu = g_pluginbl_report2ods->newMenu ( path[0], "", "menuHerramientas" );
 		    } // end if
@@ -218,11 +216,4 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
     return 0;
 }
 
-
-int BcCompany_createMainWindows_Post ( BcCompany *cmp )
-{
-    g_pluginbl_report2ods_emp = cmp;
-    init();
-    return 0;
-}
 

@@ -1,4 +1,4 @@
-/***************************************************************************
+﻿/***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -35,6 +35,7 @@
 #include "bccuentalistview.h"
 #include "bcplancontablelistview.h"
 #include "bccuentaview.h"
+#include "bccambiacuentaview.h"
 #include "bfsubform.h"
 #include "blimportexport.h"
 #include "blfile.h"
@@ -73,10 +74,36 @@ int entryPoint ( BlMainWindow *bcont )
     accionA->setObjectName("mui_actionPlanContable");
     pPluginMenu->addAction ( accionA );
 
+    BlAction *accionB = new BlAction ( _ ( "&Cambiar Cuenta" ), 0 );
+    accionB->setStatusTip ( _ ( "Permite intercambiar cuentas en el libro diario" ) );
+    accionB->setWhatsThis ( _ ( "Permite intercambiar cuentas en el libro diario" ) );
+    accionB->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
+    accionB->setObjectName("mui_actionCambiarCuentas");
+    pPluginMenu->addAction ( accionB );
+    
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     g_pluginbf_cuenta->menuBar() ->insertMenu ( g_pluginbf_cuenta->menuMaestro->menuAction(), pPluginMenu );
-    g_pluginbf_cuenta->Listados->addAction ( accionA );
-
+    
+    /// Usamos un toolBox especial para meter los botones de contabilidad.
+    QToolBar *toolCont =  g_pluginbf_cuenta->findChild<QToolBar *> ( "contabilidad" );
+    if ( !toolCont) {
+	toolCont = new QToolBar(g_pluginbf_cuenta);
+	toolCont->setObjectName("contabilidad");
+	toolCont->setFocusPolicy(Qt::TabFocus);
+	toolCont->setOrientation(Qt::Horizontal);
+	toolCont->setIconSize(QSize(32, 32));
+        toolCont->setWindowTitle(N_("Contabilidad", 0));
+        toolCont->setToolTip(N_("Contabilidad", 0));
+        toolCont->setStatusTip(N_("Contabilidad", 0));
+        toolCont->setWhatsThis(N_("Contabilidad", 0));
+        toolCont->setAccessibleName(N_("Contabilidad", 0));
+        toolCont->setAccessibleDescription(N_("Contabilidad", 0));
+	g_pluginbf_cuenta->addToolBar(Qt::TopToolBarArea, toolCont);
+    } // end if
+    toolCont->addAction(accionA);
+    
+    
+    /// Si no hay cuentas solicitamos para hacer una importacion de plan contable.
     QString query = "SELECT * FROM cuenta";
     BlDbRecordSet *cur = g_pluginbf_cuenta->company()->loadQuery(query);
     if (cur->eof()) {
@@ -114,9 +141,18 @@ int BlAction_actionTriggered(BlAction *accion) {
 	    g_pluginbf_cuenta->company()->pWorkspace() ->addSubWindow ( plan );
 	    plan->show();
 	} // end if
-
     } // end if
 
+    
+    if (accion->objectName() == "mui_actionCambiarCuentas") {
+      
+        BlDebug::blDebug ( Q_FUNC_INFO, 0, "mui_actionCambiarCuentas" );
+
+	BcCambiaCuentaView *ctac = new BcCambiaCuentaView ( g_pluginbf_cuenta->company(), 0, 0 );
+	ctac->exec();
+    } // end if
+    
+    
     return 0;
 }
 
@@ -147,6 +183,9 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         diag->setLayout ( layout );
         diag->setWindowTitle ( listcuentas->windowTitle() );
 
+	/// Ponemos el foco en el campo de busqueda.
+	listcuentas->m_filtro->setFocus();
+	
         diag->exec();
 
         if ( listcuentas->idcuenta() != "" ) {
@@ -294,6 +333,9 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BcCuentaListView *listcuentas = new BcCuentaListView ( ( BfCompany * ) sub->mainCompany(), diag, 0, BL_SELECT_MODE );
     QObject::connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
+    /// Ponemos el foco en el campo buscar
+    listcuentas->m_filtro->setFocus();
+    
     diag->exec();
         
     QString codigo= listcuentas->codigocuenta();
@@ -498,7 +540,51 @@ void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
     BL_FUNC_DEBUG
     
     if (!sub) sub= (BfSubForm *) parent();
+
+    ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
+    /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
+    /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
+    BcCuentaListView *listcuentas = new BcCuentaListView ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+ 
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    blCenterOnScreen(listcuentas);
+    listcuentas->show();
+    listcuentas->m_filtro->setFocus(Qt::PopupFocusReason);
+    while ( !listcuentas->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString codigo= listcuentas->codigocuenta();
+
+    delete listcuentas;
+
     
+    if ( codigo != "" ) {
+        QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+                sub->lineaact()->setDbValue ( "idcuenta", cur->value( "idcuenta" ) );
+                sub->lineaact()->setDbValue ( "codigo", cur->value( "codigo" ) );
+                sub->lineaact()->setDbValue ( "tipocuenta", cur->value( "tipocuenta" ) );
+                sub->lineaact()->setDbValue ( "descripcion", cur->value( "descripcion" ) );
+                if ( sub->lineaact()->exists ( "idc_coste" ) && cur->value( "idc_coste" ) != "" ) {
+                    sub->lineaact()->setDbValue ( "idc_coste", cur->value( "idc_coste" ) );
+                    QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->value( "idc_coste" );
+                    BlDbRecordSet *curss = sub->mainCompany() ->loadQuery ( query1 );
+                    sub->lineaact()->setDbValue ( "nomc_coste", curss->value( "nombre" ) );
+                    delete curss;
+                } // end if
+                if ( sub->lineaact()->exists ( "idctacliente" ) ) {
+		  sub->lineaact()->setDbValue ( "idctacliente", cur->value( "idcuenta" ) );
+		  sub->lineaact()->setDbValue ( "codigoctacliente", cur->value( "codigo" ) );
+		  sub->lineaact()->setDbValue ( "tipoctacliente", cur->value( "tipocuenta" ) );
+		  sub->lineaact()->setDbValue ( "nomctacliente", cur->value( "descripcion" ) );
+		} // end if
+        } // end if
+        delete cur;
+    } // end if
+    
+/*
     BcPlanContableListView *artlist = new BcPlanContableListView ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
@@ -511,7 +597,6 @@ void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
 
     /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCuenta == "" ) {
-        
         return;
     } // end if
 
@@ -522,6 +607,8 @@ void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
         sub->lineaact()->setDbValue ( "descripcion", cur->value( "descripcion" ) );
     } // end if
     delete cur;
+    
+*/
 }
 
 
@@ -1111,4 +1198,18 @@ int FPagoView_currentItemChanged_Post ( FPagoView *fam )
 }
 
 
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "actividad") {
+	BcCuentaView * bud = new BcCuentaView ( comp, 0 );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
 
+  } // end if
+  return 0;
+}

@@ -45,8 +45,6 @@ class BT_EXPORT BtBulmaTPV: public BlMainWindow, public Ui_BtBulmaTPVBase
     Q_OBJECT
 
 private:
-    /// El workSpace que se va a usar con la aplicacion.
-    BlWorkspace *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     BtCompany *m_company;
     QStackedWidget *m_stackedWidget;

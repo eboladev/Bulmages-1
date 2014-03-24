@@ -44,6 +44,25 @@ BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BfCompany *emp, QWi
     mui_listCostes->setHeaderLabels ( etiquetas );
     cargacostes();
     
+    /// Establecemos una variable con los valores de los canales.
+ 	establecerVariableGlobal();
+    
+    /// Con esta signal cambiara la variable global
+    connect(mui_listCostes, SIGNAL(activated(const QModelIndex &)), this, SLOT(establecerVariableGlobal()));
+    connect(mui_listCostes, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(establecerVariableGlobal()));
+	
+    
+}
+
+
+/// Establecemos una variable global conteniendo el filtrado para canales.
+void BcCentroCosteSeleccionarView::establecerVariableGlobal() {
+      BL_FUNC_DEBUG
+ 	QString ccostes = cadcoste();
+        if ( ccostes != "" ) {
+            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toLatin1().constData() );
+        } // end if
+        setGVar("ccostes", ccostes);
 }
 
 

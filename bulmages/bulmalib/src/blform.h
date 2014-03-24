@@ -89,7 +89,7 @@ public:
     void setVar(const QString &varname, const QString &varvalue);
     void clearVars();
     virtual void loadSpecs();
-    virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type, const QDomElement &e1=NULL );
+    virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type, const QDomElement &e1 );
     virtual void activateDocuments();
     virtual void deactivateDocuments();
     void blScript(QObject * obj);

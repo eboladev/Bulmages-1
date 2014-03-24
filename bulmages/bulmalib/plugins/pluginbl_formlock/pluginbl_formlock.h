@@ -21,12 +21,12 @@
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "blmaincompany.h"
+#include "blmainwindow.h"
 #include "blform.h"
 #include "pdefs_pluginbl_formlock.h"
 
 
-extern "C" PLUGINBL_FORMLOCK_EXPORT int entryPoint ( QMainWindow * );
+extern "C" PLUGINBL_FORMLOCK_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_load ( BlForm * );
 extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_DesBlForm ( BlForm * );
 extern "C" PLUGINBL_FORMLOCK_EXPORT int BlForm_BlForm ( BlForm * );
-extern "C" PLUGINBL_FORMLOCK_EXPORT int BlMainCompany_init ( BlMainCompany * );

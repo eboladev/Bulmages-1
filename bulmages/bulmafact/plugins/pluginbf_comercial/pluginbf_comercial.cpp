@@ -161,7 +161,7 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
     cli->addDbField ( "periodocomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Periodo" ) );
     cli->addDbField ( "comentcomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios para el comercial" ) );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
-    ComercialClienteView *l = new ComercialClienteView ( cli );
+    ComercialClienteView *l = new ComercialClienteView ( cli->mainCompany(), cli );
     l->setMainCompany ( cli->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "lcomercial" ) );
     cli->mui_tab->addTab ( l, _ ( "&Comercial" ) );

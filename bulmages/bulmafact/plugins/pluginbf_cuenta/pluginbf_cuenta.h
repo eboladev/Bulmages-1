@@ -54,10 +54,11 @@ extern "C" PLUGINBF_CUENTA_EXPORT int ProveedorView_Guardar_Pre(ProveedorView *)
 extern "C" PLUGINBF_CUENTA_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );
 extern "C" PLUGINBF_CUENTA_EXPORT int FamiliasView_Guardar_Pre ( FamiliasView * );
 extern "C" PLUGINBF_CUENTA_EXPORT int FamiliasView_currentItemChanged_Post ( FamiliasView * );
-
 extern "C" PLUGINBF_CUENTA_EXPORT int FPagoView_FPagoView ( FPagoView * );
 extern "C" PLUGINBF_CUENTA_EXPORT int FPagoView_Guardar_Pre ( FPagoView * );
 extern "C" PLUGINBF_CUENTA_EXPORT int FPagoView_currentItemChanged_Post ( FPagoView * );
+
+extern "C" PLUGINBF_CUENTA_EXPORT int Plugin_open(BfCompany * );
 
 class SubForm_Cuenta : public QObject
 {

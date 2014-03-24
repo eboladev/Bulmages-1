@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_cuentaresumen.cpp:58
+msgid "Resumen cuenta"
+msgstr ""
+
+#: pluginbf_cuentaresumen.cpp:78
+msgid "&Resumen Cta"
+msgstr ""
+
+#: pluginbf_cuentaresumen.cpp:81
+msgid "Muestra/oculta el resumen de cuenta"
+msgstr ""
+
+#: pluginbf_cuentaresumen.cpp:82
+msgid ""
+"Corrector.\n"
+"\n"
+"Muestra/oculta el corrector"
+msgstr ""
+
+#: ui_correctorbase.h:52
+msgid "Resumen de Cuenta"
+msgstr ""

@@ -104,8 +104,6 @@ public:
     QMap <QString, QString> m_valores;
     /// Almacena la tabla sobre la que vamos a buscar.
     QString m_tabla;
-    
-public:
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
     /// Este cursor almacena el listado de elementos.
@@ -118,10 +116,12 @@ public:
     QString entrada();
     QString unicaEleccion(void) ;
     QString eligeUnico(void) ;
+    
 public slots:
+    virtual void on_customContextMenuRequested ( const QPoint & );
     virtual void s_editTextChanged ( const QString & );
     virtual void focusOutEvent ( QFocusEvent * event );
-    virtual void popMenu ( const QPoint &pos );
+
     
 signals:
     void pintaMenu ( QMenu * );

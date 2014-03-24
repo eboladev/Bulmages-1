@@ -27,6 +27,7 @@
 
 set (plugin pluginbl_template2mail)
 
+cmake_policy(SET CMP0020 OLD)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)

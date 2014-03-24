@@ -44,5 +44,6 @@ extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int AlbaranClienteView_AlbaranClienteVie
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int BlAction_actionTriggered(BlAction *);
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int FacturaIVAIncClienteView_FacturaIVAIncClienteView ( FacturaIVAIncClienteView * );
+extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int Plugin_open(BfCompany * );
 #endif
 

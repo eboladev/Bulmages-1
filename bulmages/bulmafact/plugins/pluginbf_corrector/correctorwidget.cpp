@@ -18,6 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QtWebKitWidgets/QWebView>
+#include <QtWebKitWidgets/QWebPage>
+#include <QtWebKitWidgets/QWebFrame>
+
 #include "correctorwidget.h"
 #include "confreglasview.h"
 #include "clienteview.h"
@@ -36,8 +40,10 @@ correctorwidget::correctorwidget ( QWidget* parent, Qt::WindowFlags fl )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
-    QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
-    
+
+    QObject::connect ( mui_browser, SIGNAL ( linkClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
+        
+    mui_browser->page()->setLinkDelegationPolicy ( QWebPage::DelegateAllLinks );
 }
 
 
@@ -70,73 +76,29 @@ void correctorwidget::on_mui_configurar_clicked()
     empresa y sacar la ventana de resultados. */
 /**
 **/
-void correctorwidget::on_mui_corregir_clicked()
+void correctorwidget::on_mui_corregir_released()
 {
     BL_FUNC_DEBUG
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     QString cadena;
-
-    QString query = "SELECT * from factura WHERE reffactura NOT IN (SELECT refalbaran FROM albaran)";
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
-    while ( ! cur->eof() ) {
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La factura num. <B>" + cur->value( "numfactura" ) + "</B> No esta avalada por ningun albaran, esto puede ser causa de descontrol en el stock.";
-        agregarError ( cadena, "factura", "idfactura=" + cur->value( "idfactura" ) );
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-    query = "SELECT * from cliente WHERE length(cifcliente) < 6";
-    cur = mainCompany() ->loadQuery ( query );
-    while ( ! cur->eof() ) {
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->value( "nomcliente" ) + "</B> no tiene CIF.";
-        agregarError ( cadena, "cliente", "idcliente=" + cur->value( "idcliente" ) );
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-    query = "SELECT * from proveedor WHERE length(cifproveedor) < 6";
-    cur = mainCompany() ->loadQuery ( query );
-    while ( ! cur->eof() ) {
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->value( "nomproveedor" ) + "</B> no tiene CIF.";
-        agregarError ( cadena, "proveedor", "idproveedor=" + cur->value( "idproveedor" ) );
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-
-    query = "SELECT * FROM cliente";
-    cur = mainCompany()->loadQuery ( query );
-    while ( ! cur->eof() ) {
-        QChar digito;
-        if ( ! blValidateSpainCIFNIFCode ( cur->value( "cifcliente" ), digito ) ) {
-            cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ," + cur->value( "cifcliente" ) + " <B>" + cur->value( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString ( digito );
-            agregarError ( cadena, "cliente", "idcliente=" + cur->value( "idcliente" ) );
-        } // end if
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-    query = "SELECT * FROM proveedor";
-    cur = mainCompany()->loadQuery ( query );
-    while ( ! cur->eof() ) {
-        QChar digito;
-        if ( ! blValidateSpainCIFNIFCode ( cur->value( "cifproveedor" ), digito ) ) {
-            cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->value( "nomproveedor" ) + "," + cur->value( "cifproveedor" ) + "</B> tiene CIF invalido. Digito de Control: " + QString ( digito );
-            agregarError ( cadena, "proveedor", "idproveedor=" + cur->value( "idproveedor" ) );
-        } // end if
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-
     
+    
+    /// En Windows no se soportan las rutas relativas para el HTML
+#ifdef Q_OS_WIN32
+	    QString cupath = QDir::currentPath().replace("program", "").replace(".bulmages","");
+	    QString src= g_confpr->value( CONF_PROGDATA).replace("..",cupath);
+#else
+	    QString src = g_confpr->value( CONF_PROGDATA);
+#endif
+      
     /// Calculo de asientos abiertos.
+    QString query;
     query.sprintf ( "SELECT *, asiento.idasiento AS idas FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL" );
-    cur = mainCompany()->loadQuery ( query );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> con fecha <B>" + cur->value( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idas" ) );
+        cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> con fecha <B>" + cur->value( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
+        agregarError ( cadena, "asiento",  cur->value( "idas" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -147,8 +109,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->value( "codigo" ) + "</B> no hija..";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cadena = "<img src='file:///" + src + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->value( "codigo" ) + "</B> no hija..";
+        agregarError ( cadena, "asiento",  cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -172,8 +134,8 @@ void correctorwidget::on_mui_corregir_clicked()
         net = cur->value( "netos" ).toFloat();
         if ( abs( act + gas + pas + net + ing ) > 0.01 ) {
             QString cadena;
-            cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
-            agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+            cadena = "<img src='file:///" + src + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
+            agregarError ( cadena, "asiento",  cur->value( "idasiento" ) );
         } // end if
         cur->nextRecord();
     } // end while
@@ -183,11 +145,11 @@ void correctorwidget::on_mui_corregir_clicked()
     /// --------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe <> 0" );
     BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_("Consulta: '%1'")).arg(query) );
-    cur = mainCompany()->loadQuery ( query, "hola1" );
+    cur = mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
+        agregarError ( cadena, "asiento",  cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -198,8 +160,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
+        agregarError ( cadena, "asiento", cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -210,7 +172,7 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->value( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->value( "fechaprevista" ) + "</B>.";
+        cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->value( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->value( "fechaprevista" ) + "</B>.";
         agregarError ( cadena, "amortizacion", "idamortizacion=" + cur->value( "idamortizacion" ) );
         cur->nextRecord();
     } // end while
@@ -222,8 +184,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->value( "codigo" ) + ") sin que haya una factura asociada.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
+        cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->value( "codigo" ) + ") sin que haya una factura asociada.";
+        agregarError ( cadena, "asiento",  cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -245,8 +207,8 @@ void correctorwidget::on_mui_corregir_clicked()
 
     while ( !cur2->eof() ) {
 	QString cadena;
-	cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur2->value( "codigo" ) + "</B> no tiene la longitud adecuada.";
-	agregarError ( cadena, "", "" );
+	cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur2->value( "codigo" ) + "</B> no tiene la longitud adecuada.";
+	agregarError ( cadena, "cuenta", cur2->value("idcuenta") );
 	cur2->nextRecord();
     } // end while
 
@@ -263,19 +225,17 @@ void correctorwidget::on_mui_corregir_clicked()
 	QString cadena;
 	QString cadena2;
 	
-	cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->value( "codigo" ) + "</B> esta repedido <B>" + cur->value( "repeticiones" ) + "</B> veces:<BR>";
+	cadena = "<img src='file:///" + src + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->value( "codigo" ) + "</B> esta repedido <B>" + cur->value( "repeticiones" ) + "</B> veces:<BR>";
 	
 	
 	query = "SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '" + cur->value( "codigo" ) + "'";
 	cur2 = mainCompany()->loadQuery ( query );
 	while ( !cur2->eof() ) {
 	    /// Muestra las 3 primeras letras de la descripcion de la cuenta.
-	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->value("descripcion").left(7) + "...</B>' <a name='idcuenta' href='#idcuenta=" + cur2->value( "idcuenta" ) + "'>corregir</a></td></tr>";
+	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->value("descripcion").left(7) + "...</B>' <a name='idcuenta' href='adf.html?op=abrir&tabla=cuenta&id=" + cur2->value( "idcuenta" ) + "'>corregir</a></td></tr>";
 	    cur2->nextRecord();
 	} // end while
 	delete cur2;
-		
-	//agregarError ( cadena, "idcuenta", "idcuenta=" + cur->value( "idcuenta" ) );
 	textBrowser += "<HR><table><tr><td>" + cadena + "</td></tr>" + cadena2 + "</table>";
 
 	cur->nextRecord();
@@ -283,9 +243,15 @@ void correctorwidget::on_mui_corregir_clicked()
     
     delete cur;    
     
+	
+    g_plugParams = &textBrowser;
+    g_plugins->run("CorrectorWidget_corregir", this);
+    
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
-    
+    mui_browser->page()->setLinkDelegationPolicy ( QWebPage::DelegateAllLinks );
+
+
 }
 
 
@@ -313,52 +279,10 @@ void correctorwidget::setMensaje ( QString mensaje )
 void correctorwidget::alink ( const QUrl &url )
 {
     BL_FUNC_DEBUG
-    QString linker = url.fragment();
-    QStringList list = linker.split ( "=" );
-    if ( list[0] == "idcliente" ) {
-        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->run ( "SNewClienteView", ( BfCompany * ) mainCompany() );
-        if ( !resur ) {
-            blMsgInfo ( "No se pudo crear instancia de cliente" );
-            return;
-        } // end if
-        ClienteView *prov = ( ClienteView * ) g_plugParams;
-        if ( prov->load ( list[1] ) ) {
-            delete prov;
-            return;
-        } // end if
-        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
-        prov->show();
-    } else if ( list[0] == "idfactura" ) {
-        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->run ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
-        if ( !resur ) {
-            blMsgInfo ( "No se pudo crear instancia de factura" );
-            return;
-        } // end if
-        FacturaView *prov = ( FacturaView * ) g_plugParams;
-        if ( prov->load ( list[1] ) ) {
-            delete prov;
-            return;
-        } // end if
-        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
-        prov->show();
-    } else if ( list[0] == "idproveedor" ) {
-        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-        int resur = g_plugins->run ( "SNewProveedorView", ( BfCompany * ) mainCompany() );
-        if ( !resur ) {
-            blMsgInfo ( "No se pudo crear instancia de cliente" );
-            return;
-        } // end if
-        ProveedorView *prov = ( ProveedorView * ) g_plugParams;
-        if ( prov->load ( list[1] ) ) {
-            delete prov;
-            return;
-        } // end if
-        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
-        prov->show();
-    }// end if
-    
+    QUrlQuery uquery(url);
+	    QString id = uquery.queryItemValue("tabla") + "_" + uquery.queryItemValue("id");
+	    g_plugParams = &id;
+	    int resur = g_plugins->run ("Plugin_open", ( BlMainCompany * ) mainCompany());
 }
 
 
@@ -373,8 +297,8 @@ void correctorwidget::alink ( const QUrl &url )
 void correctorwidget::agregarError ( QString texto, QString texto1, QString texto2 )
 {
     BL_FUNC_DEBUG
-    textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><a name='masinfo' href='#" + texto1 + "'>+ info</a></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
     
+    textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><a name='masinfo' href='abredoc?op=masinfo&tabla="+texto1+"&id=" + texto2 + "'>+info</a></td><td></td></tr></table>";
 }
 
 

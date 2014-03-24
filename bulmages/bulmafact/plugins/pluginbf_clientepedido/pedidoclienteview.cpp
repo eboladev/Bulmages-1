@@ -69,7 +69,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "comentpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
         addDbField ( "procesadopedidocliente", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Procesado" ) );
         addDbField ( "refpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
-
+        addDbField ( "irpfpedidocliente", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->run ( "PedidoClienteView_PedidoClienteView", this );
@@ -92,6 +92,18 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->setTableName ( "cliente" );
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
+	
+	/// Calculamos el IRPF y lo ponemos
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= now()::DATE ORDER BY fechairpf DESC LIMIT 1";
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	if ( cur ) {
+	    if ( !cur->eof() ) {
+		mui_irpfpedidocliente -> setText( cur->value( "tasairpf" ) );
+		setDbValue("irpfpedidocliente", cur->value("tasairpf") );
+	    } // end if
+	    delete cur;
+	} // end if
+	
         insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {

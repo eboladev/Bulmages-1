@@ -46,6 +46,7 @@ public:
     void inicializa ( QString, QString, QString, QString, QString );
     ~BalanceView();
     virtual void accept();
+    void imprimir();
     
 private:
     /// Presenta el Balance.

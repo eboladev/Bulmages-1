@@ -1,0 +1,33 @@
+#######
+#Plugins
+#######
+#README.fr
+#20110204
+
+Nombre: Joindre des documents
+
+Biblioteca: libpluginbl_alarm.so
+
+Descripción: <H1>Joindre des documents</H1>
+<P>Permet d'associer des fichiers à des fiches pour les ouvrir postérieurement. Garde un lien vers l'application.</P>
+<P>Une fois installé le greffon fait apparaitre une option dans toutes les fiches du programme dans le menu contextuel de celle-ci qui permet d'ajouter des références aux fiches, afficher les fichiers existants et effacer les références</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
+<HR>
+
+ParmBD: PluginBl_AttachDocument
+
+ArchivoSQLpatch: pluginbl_alarm.sql
+
+ArchivoSQLdeins: pluginbl_alarm-rm.sql
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Association de parents d'eleves;Utilites generales ; Experimental ;
+
+Orden: 90
+
+Comentarios:
+

@@ -95,6 +95,9 @@ void BlSync::sync() {
 		      while (!lline.isNull()) {
 			  if (!lline.startsWith("#") && !(lline == "\n")) {
 			      QStringList larch = lline.split(" ");
+#ifdef CONFIG_DEBUG
+			      fprintf( stderr," Tratando %s, %s, %s, %s\n", larch[0].toLatin1().constData(), larch[1].toLatin1().constData(), larch[2].toLatin1().constData(), larch[3].toLatin1().constData() );
+#endif
 			      if (filename == larch[0] && date == larch[2]) {
 				descarga = false;
 				break;

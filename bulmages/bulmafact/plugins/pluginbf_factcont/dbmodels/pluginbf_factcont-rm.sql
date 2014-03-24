@@ -1,5 +1,5 @@
 --
--- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de profesores
+-- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de facturacion en la contabilidad
 --
 \echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********"
 
@@ -43,9 +43,7 @@ END;
 '
 language 'plpgsql';
 
-DROP FUNCTION IF EXISTS actualizacantrecibo_insert() CASCADE;
-DROP FUNCTION IF EXISTS actualizacantrecibo_update() CASCADE;
-DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
+
 
 -- ========================== VARIACION DE TARIFA =======================
 
@@ -53,73 +51,6 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	rs  RECORD;
 BEGIN
-
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''alumnotutor'';
-    IF FOUND THEN
-        DROP TABLE alumnotutor CASCADE;
-    END IF;
-
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''alumno'';
-    IF FOUND THEN
-        DROP TABLE alumno CASCADE;
-    END IF;
-
-    SELECT INTO rs * FROM pg_tables WHERE tablename=''cuota'';
-    IF FOUND THEN
-        DROP TABLE cuota CASCADE;
-    END IF;
-    
-    SELECT INTO rs * FROM pg_tables WHERE tablename = ''socio'';
-    IF FOUND THEN
-        DROP TABLE socio CASCADE;
-    END IF;
-
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''tutor'';
-    IF FOUND THEN
-        DROP TABLE tutor CASCADE;
-    END IF;
-    
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
-    IF FOUND THEN
-        DROP TABLE faltaasistenciaalumnoactividad CASCADE;
-    END IF;
-        
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''sesionactividad'';
-    IF FOUND THEN
-        DROP TABLE sesionactividad CASCADE;
-    END IF;
-        
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''actividad'';
-    IF FOUND THEN
-        DROP TABLE actividad CASCADE;
-    END IF;
-
-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''profesor'';
-    IF FOUND THEN
-        DROP TABLE profesor CASCADE;
-    END IF;
-
--- Quitamos restricciones para la tabla de clientes
--- y agregamos unrs  menos restrictivas
-   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
-   IF NOT FOUND THEN
-      ALTER TABLE cliente ADD CONSTRAINT cliente_codcliente_key UNIQUE (codcliente);
-    END IF;
-
-   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_nomcliente_key'';
-   IF NOT FOUND THEN
-      ALTER TABLE cliente ADD constraint cliente_nomcliente_key UNIQUE (nomcliente);
-    END IF;
-
-   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_cifcliente_key'';
-   IF NOT FOUND THEN
-      ALTER TABLE cliente ADD CONSTRAINT cliente_cifcliente_key UNIQUE (cifcliente);
-    END IF;
-
-   SELECT INTO rs * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
-   IF FOUND THEN
-      ALTER TABLE cliente DROP CONSTRAINT cliente_fapac_key;
-   END IF;
 
 
     RETURN 0;
@@ -140,10 +71,10 @@ DECLARE
 	rs RECORD;
 
 BEGIN
-	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
+	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_FactCont'';
 
 	IF FOUND THEN
-		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Profesor'';
+		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_FactCont'';
 	END IF;
 
 	RETURN 0;

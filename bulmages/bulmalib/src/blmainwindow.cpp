@@ -48,7 +48,7 @@ QMenu *BlMainWindow::newMenu ( const QString &name, const QString &objname, cons
     /// Miramos si existe un menu Ventas
     QMenu *pPluginMenu = menuBar() ->findChild<QMenu *> ( objname );
     /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
+    if ( !pPluginMenu || objname == "" ) {
         QMenu *pPluginMaestro = menuBar() ->findChild<QMenu *> ( before );
         pPluginMenu = new QMenu ( name, menuBar() );
         pPluginMenu->setObjectName (  objname );
@@ -58,3 +58,13 @@ QMenu *BlMainWindow::newMenu ( const QString &name, const QString &objname, cons
 }
 
 
+///
+/**
+\return
+**/
+BlMainCompany * BlMainWindow::company()
+{
+    BL_FUNC_DEBUG
+    
+    return m_pcompany;
+}

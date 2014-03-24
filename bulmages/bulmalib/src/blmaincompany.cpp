@@ -169,6 +169,8 @@ BlMainCompany::~BlMainCompany()
 void BlMainCompany::init ( QString bd, QString tipo )
 {
     BL_FUNC_DEBUG
+    
+
     if ( bd == "" ) {
         bd = searchCompany ( tipo );
     } // end if
@@ -177,8 +179,6 @@ void BlMainCompany::init ( QString bd, QString tipo )
     m_progressbar->setVisible ( true );
 
     inicializa ( bd );
-    
-    g_plugins->run("BlMainCompany_init", this);
 }
 
 

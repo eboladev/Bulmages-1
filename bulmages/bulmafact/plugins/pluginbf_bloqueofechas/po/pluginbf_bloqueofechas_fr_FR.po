@@ -1,0 +1,142 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2009.
+# Girard Henri <aishen@free.fr>, 2011.
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: 2011-02-02 09:02+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde l10n>\n"
+"Language: frX-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: pluginbf_bloqueofechas.cpp:52
+msgid "&Bloqueo de Fechas"
+msgstr "&Bloquer les dates"
+
+#: pluginbf_bloqueofechas.cpp:50
+msgid "&Herramientas"
+msgstr "&Outils"
+
+#: ui_bcbloqueafechabase.h:144
+msgid "1"
+msgstr "1"
+
+#: bcbloqueafechaview.cpp:82
+msgid "Abierto"
+msgstr "Ouvert"
+
+#: bcbloqueafechaview.cpp:182
+msgid "Abril"
+msgstr "Avril"
+
+#: bcbloqueafechaview.cpp:166
+msgid "Agosto"
+msgstr "Août"
+
+#: ui_bcbloqueafechabase.h:136
+msgid "Agregar Ejercicio"
+msgstr "Ajouter l'exercice "
+
+#: ui_bcbloqueafechabase.h:139
+msgid "Agregar ejercicio"
+msgstr "Ajouter l'exercice "
+
+#: bcbloqueafechaview.cpp:81
+msgid "Bloqueado"
+msgstr "Bloquer"
+
+#: bcbloqueafechaview.cpp:77
+msgid "Bloquear Fechas"
+msgstr "Bloquer les dates"
+
+#: ui_bcbloqueafechabase.h:134
+msgid "Bloquear fechas"
+msgstr "Bloquer les dates"
+
+#: pluginbf_bloqueofechas.cpp:53 pluginbf_bloqueofechas.cpp:54
+msgid "Bloqueo de Fechas"
+msgstr "Bloquer les dates"
+
+#: ui_bcbloqueafechabase.h:148
+msgid "Cerrar"
+msgstr "Fermer"
+
+#: ui_bcbloqueafechabase.h:142
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: bcbloqueafechaview.cpp:150
+msgid "Diciembre"
+msgstr "Décembre"
+
+#: bcbloqueafechaview.cpp:118
+msgid "Ejercicio"
+msgstr "Exercice "
+
+#: bcbloqueafechaview.cpp:271
+msgid "Ejercicios ya contemplado"
+msgstr "Exercice déjà écoulé"
+
+#: bcbloqueafechaview.cpp:194
+msgid "Enero"
+msgstr "Janvier"
+
+#: bcbloqueafechaview.cpp:118
+msgid "Estado"
+msgstr "Etat"
+
+#: bcbloqueafechaview.cpp:190
+msgid "Febrero"
+msgstr "Février"
+
+#: ui_bcbloqueafechabase.h:146
+msgid "Hacer doble click para bloquear/desbloquear fechas"
+msgstr "Double cliquer pour bloquer/débloquer les dates"
+
+#: bcbloqueafechaview.cpp:257
+msgid "Introduzca Ejercicio a Crear"
+msgstr "Introduire l'exercice à créer"
+
+#: bcbloqueafechaview.cpp:170
+msgid "Julio"
+msgstr "Juillet"
+
+#: bcbloqueafechaview.cpp:174
+msgid "Junio"
+msgstr "Juin"
+
+#: bcbloqueafechaview.cpp:186
+msgid "Marzo"
+msgstr "Mars"
+
+#: bcbloqueafechaview.cpp:178
+msgid "Mayo"
+msgstr "Mai"
+
+#: bcbloqueafechaview.cpp:154
+msgid "Noviembre"
+msgstr "Novembre"
+
+#: bcbloqueafechaview.cpp:158
+msgid "Octubre"
+msgstr "Octobre"
+
+#: bcbloqueafechaview.cpp:258
+msgid "Ponga el anyo:"
+msgstr "Mettre l'année :"
+
+#: bcbloqueafechaview.cpp:162
+msgid "Septiembre"
+msgstr "Septembre"

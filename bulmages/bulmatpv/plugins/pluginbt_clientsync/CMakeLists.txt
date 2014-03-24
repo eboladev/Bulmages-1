@@ -5,6 +5,8 @@
 
 set (plugin pluginbt_clientsync)
 
+cmake_policy(SET CMP0020 OLD)
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
@@ -95,6 +97,6 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.en.${plugin})
 
-add_dependencies(${plugin} bulmatpv bulmalib plubinbt_accesobotones)
+add_dependencies(${plugin} bulmatpv bulmalib pluginbt_accesobotones)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

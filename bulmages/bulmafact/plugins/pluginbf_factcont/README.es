@@ -9,7 +9,7 @@ Nombre: Contabilidad
 Biblioteca: libpluginbf_factcont
 
 Descripción: <H1>Contabilidad</H1>
-<P>Gestionar la contabilidad de la empresa.</P>
+<P>Gestionar la contabilidad de la empresa. Este plugin prepara la empresa para trabajar también con el sistema de contabilidad. Aporta algunos componentes esenciales para la contabilidad y aporta documentos importantes para ésta.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

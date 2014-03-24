@@ -4,6 +4,9 @@
 #pluginbc_amortizacion
 
 set (plugin pluginbc_amortizacion)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

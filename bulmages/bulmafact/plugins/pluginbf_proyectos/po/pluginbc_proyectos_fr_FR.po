@@ -1,0 +1,295 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:07+0200\n"
+"PO-Revision-Date: 2011-03-04 12:54+0100\n"
+"Last-Translator: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ui_proyectobase.h:270
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_proyectobase.h:271
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: pluginbc_proyectos.cpp:48
+msgid "&Proyectos"
+msgstr "&Projets"
+
+#: listproyectosview.cpp:51
+msgid "Archivo"
+msgstr "Fichier"
+
+#: ui_listproyectosbase.h:146 ui_listproyectosbase.h:149
+#: ui_listproyectosbase.h:154 ui_listproyectosbase.h:157
+msgid "Borrar amortizacion"
+msgstr "Effacer l'amortissement"
+
+#: ui_proyectobase.h:252 ui_proyectobase.h:255 ui_proyectobase.h:260
+#: ui_proyectobase.h:263
+msgid "Borrar proyecto"
+msgstr "Effacer le projet"
+
+#: listproyectosview.cpp:47
+msgid "C. Coste"
+msgstr "C. de finance"
+
+#: proyectoview.cpp:74 proyectoview.cpp:93
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: proyectoview.cpp:72 proyectoview.cpp:91
+msgid "Codigo"
+msgstr "Code"
+
+#: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
+#: proyectoview.cpp:96
+msgid "Comentarios"
+msgstr "Libellés"
+
+#: ui_proyectobase.h:258 ui_proyectobase.h:266 ui_listproyectosbase.h:152
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_listproyectosbase.h:144
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_proyectobase.h:250
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: proyectoview.cpp:73 proyectoview.cpp:92
+msgid "Cuenta"
+msgstr "Compte"
+
+#: proyectoview.cpp:78 proyectoview.cpp:97
+msgid "Descripcion"
+msgstr "Description "
+
+#: proyectoview.cpp:76 proyectoview.cpp:95
+msgid "Ejercicio"
+msgstr "Exercice"
+
+#: listproyectosview.cpp:117
+msgid "Error al borrar la amortizacion."
+msgstr ""
+
+#: proyectoview.cpp:113
+msgid "Error al crear el almacen"
+msgstr "Erreur en création du magasin"
+
+#: ui_listproyectosbase.h:160
+msgid "F5"
+msgstr "F5"
+
+#: listproyectosview.cpp:48
+msgid "Fecha"
+msgstr "Date"
+
+#: listproyectosview.cpp:137
+#, qt-format
+msgid "Fila: '%1'."
+msgstr ""
+
+#: ui_proyectobase.h:268
+msgid "Gastos"
+msgstr "Frais"
+
+#: ui_proyectobase.h:267
+msgid "General"
+msgstr "Général"
+
+#: ui_proyectobase.h:244 ui_proyectobase.h:247
+msgid "Guardar Proyecto"
+msgstr "Sauvegarder le projet"
+
+#: proyectoview.cpp:56
+msgid "ID almacen"
+msgstr "ID du magasin"
+
+#: proyectoview.cpp:57
+msgid "Id CCoste"
+msgstr "ID du Cfinance"
+
+#: proyectoview.cpp:79 proyectoview.cpp:98
+msgid "Id linea de Ingreso Presupuesto"
+msgstr "Id ligne de recette budget"
+
+#: proyectoview.cpp:71 proyectoview.cpp:90
+msgid "Id. Cuenta"
+msgstr "Id. Compte "
+
+#: proyectoview.cpp:80 proyectoview.cpp:99
+msgid "Id. Proyecto"
+msgstr "ID du projet"
+
+#: listproyectosview.cpp:46
+msgid "Identificador"
+msgstr "Identificateur"
+
+#: ui_proyectobase.h:269
+msgid "Ingresos"
+msgstr "Recettes"
+
+#: ui_listproyectosbase.h:136
+msgid "Listado de Proyectos"
+msgstr "Liste de projets"
+
+#: proyectoview.cpp:58
+msgid "Nom Presupuesto"
+msgstr "Nom du budget"
+
+#: listproyectosview.cpp:49
+msgid "Nombre"
+msgstr "Nom"
+
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:141
+msgid "Nueva amortizacion"
+msgstr "Nouvel amortissement"
+
+#: ui_proyectobase.h:241
+msgid "Nuevo proyecto"
+msgstr "Nouveau projet"
+
+#: proyectoview.cpp:81 proyectoview.cpp:100
+msgid "Orden"
+msgstr "Ordre"
+
+#: proyectoview.cpp:75 proyectoview.cpp:94
+msgid "Precio Und"
+msgstr "Prix Unitaire"
+
+#: proyectoview.cpp:53
+msgid "Proyecto"
+msgstr "Projet"
+
+#: pluginbc_proyectos.cpp:49 pluginbc_proyectos.cpp:50
+msgid "Proyectos"
+msgstr "Projets"
+
+#: pluginbc_proyectos.cpp:84
+msgid "Proyectos asociados"
+msgstr "Projets associés"
+
+#: listproyectosview.cpp:58
+msgid "Selector de Proyectos"
+msgstr "Sélecteur de projets"
+
+#: proyectoview.cpp:59
+msgid "fecha"
+msgstr "Date"
+
+#~ msgid "Error al borrar la amortizacion"
+#~ msgstr "Erreur en effacement de l'amortissement"

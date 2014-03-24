@@ -69,7 +69,8 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         addDbField ( "descfactura", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de pago" ) );
-
+        addDbField ( "irpffactura", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
+	
         /// Establecemos algunos Buddies.
         mui_labelAlmacen->setText ( _ ( "Al&macen" ) );
         mui_labelAlmacen->setBuddy ( mui_idalmacen );
@@ -112,6 +113,18 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
         m_totalfactura->setReadOnly ( true );
         m_totalfactura->setAlignment ( Qt::AlignRight );
+	
+	/// Calculamos el IRPF y lo ponemos
+        QString query = "SELECT tasairpf FROM irpf WHERE fechairpf <= now()::DATE ORDER BY fechairpf DESC LIMIT 1";
+	BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+	if ( cur ) {
+	    if ( !cur->eof() ) {
+		mui_irpffactura -> setText( cur->value( "tasairpf" ) );
+		setDbValue("irpffactura", cur->value("tasairpf") );
+	    } // end if
+	    delete cur;
+	} // end if
+	
         insertWindow ( windowTitle(), this, false );
 	blScript(this);
     } catch ( ... ) {

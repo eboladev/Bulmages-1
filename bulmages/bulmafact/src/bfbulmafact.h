@@ -47,8 +47,6 @@ protected:
     virtual void resizeEvent ( QResizeEvent * event );
 
 private:
-    /// El workSpace que se va a usar con la aplicacion.
-    BlWorkspace *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     BfCompany *m_company;
     /// El listado de ventanas abiertas que esta en forma de dock en la parte izquierda.

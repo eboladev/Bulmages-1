@@ -1,0 +1,994 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pcapgc07.cpp:37
+msgid "Calculando Balance y Resultados"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Enero"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Febrero"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Marzo"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Abril"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Mayo"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Junio"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Julio"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Agosto"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Septiembre"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Octubre"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Noviembre"
+msgstr ""
+
+#: pcapgc07.cpp:42
+msgid "Diciembre"
+msgstr ""
+
+#: pcapgc08.cpp:43 pcapgc08.cpp:49 pcapymes08.cpp:69
+msgid "ACTIVO"
+msgstr ""
+
+#: pcapgc08.cpp:48 pcapgc08.cpp:348
+msgid "BALANCE AL CIERRE DEL EJERCICIO"
+msgstr ""
+
+#: pcapgc08.cpp:50 pcapgc08.cpp:351 pcapgc08.cpp:665 pcapgc08.cpp:961
+msgid "NOTAS"
+msgstr ""
+
+#: pcapgc08.cpp:51 pcapgc08.cpp:352 pcapgc08.cpp:666 pcapgc08.cpp:962
+msgid "Ejercicio N"
+msgstr ""
+
+#: pcapgc08.cpp:52 pcapgc08.cpp:353 pcapgc08.cpp:667 pcapgc08.cpp:963
+msgid "Ejercicio N-1"
+msgstr ""
+
+#: pcapgc08.cpp:58
+msgid "A) ACTIVO NO CORRIENTE"
+msgstr ""
+
+#: pcapgc08.cpp:66
+msgid "I. Inmovilizado intangible."
+msgstr ""
+
+#: pcapgc08.cpp:71
+msgid "1. Desarrollo."
+msgstr ""
+
+#: pcapgc08.cpp:75
+msgid "2. Concesiones."
+msgstr ""
+
+#: pcapgc08.cpp:79
+msgid "3. Patentes, licencias, marcas y similares."
+msgstr ""
+
+#: pcapgc08.cpp:83
+msgid "4. Fondo de comercio."
+msgstr ""
+
+#: pcapgc08.cpp:87
+msgid "5. Aplicaciones informaticas."
+msgstr ""
+
+#: pcapgc08.cpp:91
+msgid "6. Otro inmovilizado intangible."
+msgstr ""
+
+#: pcapgc08.cpp:96
+msgid "II. Inmovilizado material."
+msgstr ""
+
+#: pcapgc08.cpp:101
+msgid "1. Terrenos y construcciones."
+msgstr ""
+
+#: pcapgc08.cpp:105
+msgid "2. Instalaciones tecnicas, y otro inmovilizado material."
+msgstr ""
+
+#: pcapgc08.cpp:109
+msgid "3. Inmovilizado en curso y anticipos."
+msgstr ""
+
+#: pcapgc08.cpp:114
+msgid "III. Inversiones inmobiliarias."
+msgstr ""
+
+#: pcapgc08.cpp:119
+msgid "1. Terrenos."
+msgstr ""
+
+#: pcapgc08.cpp:123
+msgid "2. Construcciones."
+msgstr ""
+
+#: pcapgc08.cpp:128
+msgid "IV. Inversiones en empresas del grupo y asociadas a largo plazo."
+msgstr ""
+
+#: pcapgc08.cpp:133 pcapgc08.cpp:156 pcapgc08.cpp:268 pcapgc08.cpp:292
+msgid "1. Instrumentos de patrimonio."
+msgstr ""
+
+#: pcapgc08.cpp:137 pcapgc08.cpp:272
+msgid "2. Creditos a empresas."
+msgstr ""
+
+#: pcapgc08.cpp:141 pcapgc08.cpp:276 pcapgc08.cpp:300
+msgid "3. Valores representativos de deuda."
+msgstr ""
+
+#: pcapgc08.cpp:145 pcapgc08.cpp:168 pcapgc08.cpp:280 pcapgc08.cpp:304
+#: pcapgc08.cpp:524 pcapgc08.cpp:591
+msgid "4. Derivados."
+msgstr ""
+
+#: pcapgc08.cpp:147 pcapgc08.cpp:172 pcapgc08.cpp:282 pcapgc08.cpp:308
+msgid "5. Otros activos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:151
+msgid "V. Inversiones financieras a largo plazo."
+msgstr ""
+
+#: pcapgc08.cpp:160
+msgid "2. Creditos a terceros"
+msgstr ""
+
+#: pcapgc08.cpp:164
+msgid "3. Valores representativos de deuda"
+msgstr ""
+
+#: pcapgc08.cpp:177
+msgid "VI. Activos por Impuesto diferido."
+msgstr ""
+
+#: pcapgc08.cpp:185
+msgid "B) ACTIVO CORRIENTE"
+msgstr ""
+
+#: pcapgc08.cpp:193
+msgid "I. Activos no corrientes mantenidos para la venta."
+msgstr ""
+
+#: pcapgc08.cpp:199
+msgid "II. Existencias."
+msgstr ""
+
+#: pcapgc08.cpp:204
+msgid "1. Comerciales."
+msgstr ""
+
+#: pcapgc08.cpp:208
+msgid "2. Materias primas y otros aprovisionamientos."
+msgstr ""
+
+#: pcapgc08.cpp:212
+msgid "3. Productos en curso."
+msgstr ""
+
+#: pcapgc08.cpp:216
+msgid "4. Productos terminados."
+msgstr ""
+
+#: pcapgc08.cpp:220
+msgid "5. Subproductos, residuos y materiales recuperados."
+msgstr ""
+
+#: pcapgc08.cpp:224
+msgid "6. Anticipos a proveedores"
+msgstr ""
+
+#: pcapgc08.cpp:229
+msgid "III. Deudores comerciales y otras cuentas a cobrar."
+msgstr ""
+
+#: pcapgc08.cpp:234
+msgid "1. Clientes por ventas y prestaciones de servicios."
+msgstr ""
+
+#: pcapgc08.cpp:238
+msgid "2. Clientes, empresas del grupo y asociadas."
+msgstr ""
+
+#: pcapgc08.cpp:242
+msgid "3. Deudores varios."
+msgstr ""
+
+#: pcapgc08.cpp:246
+msgid "4. Personal."
+msgstr ""
+
+#: pcapgc08.cpp:250
+msgid "5. Activos por impuesto corriente."
+msgstr ""
+
+#: pcapgc08.cpp:254
+msgid "6. Otros creditos con las Administraciones Publicas."
+msgstr ""
+
+#: pcapgc08.cpp:258
+msgid "7. Accionistas (socios) por desembolsos exigidos"
+msgstr ""
+
+#: pcapgc08.cpp:263
+msgid "IV. Inversiones en empresas del grupo y asociadas a corto plazo."
+msgstr ""
+
+#: pcapgc08.cpp:287
+msgid "V. Inversiones financieras a corto plazo."
+msgstr ""
+
+#: pcapgc08.cpp:296
+msgid "2. Creditos a empresas"
+msgstr ""
+
+#: pcapgc08.cpp:313 pcapgc08.cpp:640
+msgid "VI. Periodificaciones a corto plazo."
+msgstr ""
+
+#: pcapgc08.cpp:319
+msgid "VII. Efectivo y otros activos liquidos equivalentes."
+msgstr ""
+
+#: pcapgc08.cpp:324
+msgid "1. Tesoreria."
+msgstr ""
+
+#: pcapgc08.cpp:328
+msgid "2. Otros activos liquidos equivalentes."
+msgstr ""
+
+#: pcapgc08.cpp:335
+msgid "TOTAL ACTIVO  (A + B)"
+msgstr ""
+
+#: pcapgc08.cpp:343 pcapgc08.cpp:349
+msgid "PATRIMONIO NETO Y PASIVO"
+msgstr ""
+
+#: pcapgc08.cpp:359
+msgid "A) PATRIMONIO NETO"
+msgstr ""
+
+#: pcapgc08.cpp:367
+msgid "A-1) Fondos propios."
+msgstr ""
+
+#: pcapgc08.cpp:373
+msgid "I. Capital."
+msgstr ""
+
+#: pcapgc08.cpp:378
+msgid "1. Capital escriturado."
+msgstr ""
+
+#: pcapgc08.cpp:382
+msgid "2. (Capital no exigido)."
+msgstr ""
+
+#: pcapgc08.cpp:387
+msgid "II. Prima de emision."
+msgstr ""
+
+#: pcapgc08.cpp:393
+msgid "III. Reservas."
+msgstr ""
+
+#: pcapgc08.cpp:398
+msgid "1. Legal y estatutarias."
+msgstr ""
+
+#: pcapgc08.cpp:402
+msgid "2. Otras reservas."
+msgstr ""
+
+#: pcapgc08.cpp:407
+msgid "IV. (Acciones y participaciones en patrimonio propias)."
+msgstr ""
+
+#: pcapgc08.cpp:413
+msgid "V. Resultados de ejercicios anteriores."
+msgstr ""
+
+#: pcapgc08.cpp:418
+msgid "1. Remanente."
+msgstr ""
+
+#: pcapgc08.cpp:422
+msgid "2. (Resultados negativos de ejercicios anteriores)."
+msgstr ""
+
+#: pcapgc08.cpp:427
+msgid "VI. Otras aportaciones de socios."
+msgstr ""
+
+#: pcapgc08.cpp:433
+msgid "VII. Resultado del ejercicio."
+msgstr ""
+
+#: pcapgc08.cpp:439
+msgid "VIII. (Dividendo a cuenta)."
+msgstr ""
+
+#: pcapgc08.cpp:445
+msgid "IX. Otros instrumentos de patrimonio neto."
+msgstr ""
+
+#: pcapgc08.cpp:451
+msgid "A-2) Ajustes por cambios de valor."
+msgstr ""
+
+#: pcapgc08.cpp:456
+msgid "I. Activos financieros disponibles para la venta."
+msgstr ""
+
+#: pcapgc08.cpp:460
+msgid "II. Operaciones de cobertura."
+msgstr ""
+
+#: pcapgc08.cpp:464
+msgid "III. Otros."
+msgstr ""
+
+#: pcapgc08.cpp:469
+msgid "A-3) Subvenciones, donaciones y legados recibidos."
+msgstr ""
+
+#: pcapgc08.cpp:477
+msgid "B) PASIVO NO CORRIENTE"
+msgstr ""
+
+#: pcapgc08.cpp:485
+msgid "I. Provisiones a largo plazo."
+msgstr ""
+
+#: pcapgc08.cpp:490
+msgid "1. Obligaciones por prestaciones a largo plazo al personal."
+msgstr ""
+
+#: pcapgc08.cpp:494
+msgid "2. Actuaciones medioambientales."
+msgstr ""
+
+#: pcapgc08.cpp:498
+msgid "3. Provisiones por reestructuracion."
+msgstr ""
+
+#: pcapgc08.cpp:502
+msgid "4. Otras provisiones."
+msgstr ""
+
+#: pcapgc08.cpp:507
+msgid "II. Deudas a largo plazo."
+msgstr ""
+
+#: pcapgc08.cpp:512 pcapgc08.cpp:579
+msgid "1. Obligaciones y otros valores negociables."
+msgstr ""
+
+#: pcapgc08.cpp:516 pcapgc08.cpp:583
+msgid "2. Deudas con entidades de credito."
+msgstr ""
+
+#: pcapgc08.cpp:520 pcapgc08.cpp:587
+msgid "3. Acreedores por arrendamiento financiero."
+msgstr ""
+
+#: pcapgc08.cpp:528 pcapgc08.cpp:595
+msgid "5. Otros pasivos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:533
+msgid "III. Deudas con empresas del grupo y asociadas a largo plazo."
+msgstr ""
+
+#: pcapgc08.cpp:539
+msgid "IV. Pasivos por impuesto diferido."
+msgstr ""
+
+#: pcapgc08.cpp:545
+msgid "V. Periodificaciones a largo plazo."
+msgstr ""
+
+#: pcapgc08.cpp:553
+msgid "C) PASIVO CORRIENTE"
+msgstr ""
+
+#: pcapgc08.cpp:561
+msgid ""
+"I. Pasivos vinculados con activos no corrientes mantenidos para la venta."
+msgstr ""
+
+#: pcapgc08.cpp:567
+msgid "II. Provisiones a corto plazo."
+msgstr ""
+
+#: pcapgc08.cpp:574
+msgid "III. Deudas a corto plazo."
+msgstr ""
+
+#: pcapgc08.cpp:600
+msgid "IV. Deudas con empresas del grupo y asociadas a corto plazo."
+msgstr ""
+
+#: pcapgc08.cpp:606
+msgid "V. Acreedores comerciales y otras cuentas a pagar."
+msgstr ""
+
+#: pcapgc08.cpp:611
+msgid "1. Proveedores"
+msgstr ""
+
+#: pcapgc08.cpp:615
+msgid "2. Proveedores, empresas del grupo y asociadas."
+msgstr ""
+
+#: pcapgc08.cpp:619
+msgid "3. Acreedores varios."
+msgstr ""
+
+#: pcapgc08.cpp:623
+msgid "4. Personal (remuneraciones pendientes de pago)."
+msgstr ""
+
+#: pcapgc08.cpp:627
+msgid "5. Pasivos por impuesto corriente."
+msgstr ""
+
+#: pcapgc08.cpp:631
+msgid "6. Otras deudas con las Administraciones Publicas."
+msgstr ""
+
+#: pcapgc08.cpp:635
+msgid "7. Anticipos de clientes."
+msgstr ""
+
+#: pcapgc08.cpp:649
+msgid "TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)"
+msgstr ""
+
+#: pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970 pcaapgc08.cpp:571
+msgid "PERDIDAS_Y_GANANCIAS"
+msgstr ""
+
+#: pcapgc08.cpp:662
+msgid "CUENTA DE PÉRDIDAS Y GANANCIAS CORRESPONDIENTE AL EJERCICIO TERMINADO"
+msgstr ""
+
+#: pcapgc08.cpp:673
+msgid "A) OPERACIONES CONTINUADAS"
+msgstr ""
+
+#: pcapgc08.cpp:679
+msgid "1. Importe neto de la cifra de negocios."
+msgstr ""
+
+#: pcapgc08.cpp:684
+msgid "a) Ventas."
+msgstr ""
+
+#: pcapgc08.cpp:688
+msgid "b) Prestaciones de servicios."
+msgstr ""
+
+#: pcapgc08.cpp:693
+msgid ""
+"2. Variacion de existencias de productos terminados y en curso de "
+"fabricacion."
+msgstr ""
+
+#: pcapgc08.cpp:699
+msgid "3. Trabajos realizados por la empresa para su activo."
+msgstr ""
+
+#: pcapgc08.cpp:705
+msgid "4. Aprovisionamientos."
+msgstr ""
+
+#: pcapgc08.cpp:710
+msgid "a) Consumo de mercaderias."
+msgstr ""
+
+#: pcapgc08.cpp:714
+msgid "b) Consumo de materias primas y otras materias consumibles."
+msgstr ""
+
+#: pcapgc08.cpp:718
+msgid "c) Trabajos realizados por otras empresas."
+msgstr ""
+
+#: pcapgc08.cpp:722
+msgid ""
+"d) Deterioro de mercaderias, materias primas y otros aprovisionamientos."
+msgstr ""
+
+#: pcapgc08.cpp:727
+msgid "5. Otros ingresos de explotacion."
+msgstr ""
+
+#: pcapgc08.cpp:732
+msgid "a) Ingresos accesorios y otros de gestion corriente."
+msgstr ""
+
+#: pcapgc08.cpp:736
+msgid "b) Subvenciones de explotacion incorporadas al resultado del ejercicio."
+msgstr ""
+
+#: pcapgc08.cpp:741
+msgid "6. Gastos de personal."
+msgstr ""
+
+#: pcapgc08.cpp:746
+msgid "a) Sueldos, salarios y asimilados."
+msgstr ""
+
+#: pcapgc08.cpp:750
+msgid "b) Cargas sociales."
+msgstr ""
+
+#: pcapgc08.cpp:754
+msgid "c) Provisiones."
+msgstr ""
+
+#: pcapgc08.cpp:759
+msgid "7. Otros gastos de explotacion."
+msgstr ""
+
+#: pcapgc08.cpp:764
+msgid "a) Servicios exteriores."
+msgstr ""
+
+#: pcapgc08.cpp:768
+msgid "b) Tributos."
+msgstr ""
+
+#: pcapgc08.cpp:772
+msgid ""
+"c) Perdidas, deterioro y variacion de provisiones por operaciones "
+"comerciales."
+msgstr ""
+
+#: pcapgc08.cpp:776
+msgid "d) Otros gastos de gestion corriente"
+msgstr ""
+
+#: pcapgc08.cpp:781
+msgid "8. Amortizacion del inmovilizado."
+msgstr ""
+
+#: pcapgc08.cpp:787
+msgid "9. Imputacion de subvenciones de inmovilizado no financiero y otras."
+msgstr ""
+
+#: pcapgc08.cpp:793
+msgid "10. Excesos de provisiones."
+msgstr ""
+
+#: pcapgc08.cpp:799
+msgid "11. Deterioro y resultado por enajenaciones del inmovilizado."
+msgstr ""
+
+#: pcapgc08.cpp:804 pcapgc08.cpp:897
+msgid "a) Deterioros y perdidas."
+msgstr ""
+
+#: pcapgc08.cpp:808 pcapgc08.cpp:901
+msgid "b) Resultados por enajenaciones y otras."
+msgstr ""
+
+#: pcapgc08.cpp:815
+msgid "A.1) RESULTADO DE EXPLOTACIÓN"
+msgstr ""
+
+#: pcapgc08.cpp:818
+msgid "(1+2+3+4+5+6+7+8+9+10+11)"
+msgstr ""
+
+#: pcapgc08.cpp:824
+msgid "12. Ingresos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:829
+msgid "a) De participaciones en instrumentos de patrimonio."
+msgstr ""
+
+#: pcapgc08.cpp:833
+msgid "a1) En empresas del grupo y asociadas."
+msgstr ""
+
+#: pcapgc08.cpp:837
+msgid "a2) En terceros."
+msgstr ""
+
+#: pcapgc08.cpp:841
+msgid "b) De valores negociables y otros instrumentos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:845
+msgid "b1) De empresas del grupo y asociadas."
+msgstr ""
+
+#: pcapgc08.cpp:849
+msgid "b2) De terceros."
+msgstr ""
+
+#: pcapgc08.cpp:854
+msgid "13. Gastos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:859
+msgid "a) Por deudas con empresas del grupo y asociadas."
+msgstr ""
+
+#: pcapgc08.cpp:863
+msgid "b) Por deudas con terceros."
+msgstr ""
+
+#: pcapgc08.cpp:867
+msgid "c) Por actualizacion de provisiones"
+msgstr ""
+
+#: pcapgc08.cpp:872
+msgid "14. Variacion de valor razonable en instrumentos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:877
+msgid "a) Cartera de negociacion y otros."
+msgstr ""
+
+#: pcapgc08.cpp:881
+msgid ""
+"b) Imputacion al resultado del ejercicio por activos financieros disponibles "
+"para la venta."
+msgstr ""
+
+#: pcapgc08.cpp:886
+msgid "15. Diferencias de cambio."
+msgstr ""
+
+#: pcapgc08.cpp:892
+msgid ""
+"16. Deterioro y resultado por enajenaciones de instrumentos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:907
+msgid "A.2) RESULTADO FINANCIERO (12+13+14+15+16 )"
+msgstr ""
+
+#: pcapgc08.cpp:914
+msgid "A.3) RESULTADO ANTES DE IMPUESTOS (A.1+A.2)"
+msgstr ""
+
+#: pcapgc08.cpp:921
+msgid "17. Impuestos sobre beneficios."
+msgstr ""
+
+#: pcapgc08.cpp:928
+msgid ""
+"A.4) RESULTADO DEL EJERCICIO PROCEDENTE DE OPERACIONES CONTINUADAS (A.3+17)"
+msgstr ""
+
+#: pcapgc08.cpp:936
+msgid "B) OPERACIONES INTERRUMPIDAS"
+msgstr ""
+
+#: pcapgc08.cpp:941
+msgid ""
+"18. Resultado del ejercicio procedente de operaciones interrumpidas neto de "
+"impuestos."
+msgstr ""
+
+#: pcapgc08.cpp:947
+msgid "A.5) RESULTADO DEL EJERCICIO (A.4+18)"
+msgstr ""
+
+#: pcapgc08.cpp:953 pcapgc08.cpp:959
+msgid "INGRESOS Y GASTOS"
+msgstr ""
+
+#: pcapgc08.cpp:958
+msgid ""
+"ESTADO DE INGRESOS Y GASTOS RECONOCIDOS CORRESPONDIENTE AL EJERCICIO "
+"TERMINADO"
+msgstr ""
+
+#: pcapgc08.cpp:969
+msgid "A) Resultado de la cuenta de perdidas y ganancias"
+msgstr ""
+
+#: pcapgc08.cpp:973
+msgid "Ingresos y gastos imputados directamente al patrimonio neto"
+msgstr ""
+
+#: pcapgc08.cpp:979 pcaapgc08.cpp:581
+msgid "I. Por valoracion de instrumentos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:984
+msgid "1. Activos financieros disponibles para la venta."
+msgstr ""
+
+#: pcapgc08.cpp:988 pcapgc08.cpp:1038
+msgid "2. Otros ingresos/gastos."
+msgstr ""
+
+#: pcapgc08.cpp:993
+msgid "II. Por coberturas de flujos de efectivo."
+msgstr ""
+
+#: pcapgc08.cpp:999
+msgid "III. Subvenciones, donaciones y legados recibidos."
+msgstr ""
+
+#: pcapgc08.cpp:1005
+msgid "IV. Por ganancias y perdidas actuariales y otros ajustes"
+msgstr ""
+
+#: pcapgc08.cpp:1011
+msgid "V. Efecto impositivo."
+msgstr ""
+
+#: pcapgc08.cpp:1019
+msgid ""
+"B) Total Ingresos y gastos imputados directamente al patrimonio neto (I+II"
+"+III+IV+V)"
+msgstr ""
+
+#: pcapgc08.cpp:1023
+msgid "Transferencias a la cuenta de perdidas y ganancias"
+msgstr ""
+
+#: pcapgc08.cpp:1029
+msgid "VI. Por valoracion de instrumentos financieros."
+msgstr ""
+
+#: pcapgc08.cpp:1034
+msgid "1.Activos financieros disponibles para la venta."
+msgstr ""
+
+#: pcapgc08.cpp:1043
+msgid "VII. Por coberturas de flujos de efectivo."
+msgstr ""
+
+#: pcapgc08.cpp:1049
+msgid "VIII. Subvenciones, donaciones y legados recibidos."
+msgstr ""
+
+#: pcapgc08.cpp:1055
+msgid "IX. Efecto impositivo."
+msgstr ""
+
+#: pcapgc08.cpp:1063
+msgid ""
+"C) Total transferencias a la cuenta de perdidas y ganancias (VI+VII+VIII+IX)"
+msgstr ""
+
+#: pcapgc08.cpp:1071
+msgid "TOTAL DE INGRESOS Y GASTOS RECONOCIDOS (A+ B +C)"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:74 pluginbc_cuentasanuales2ods.cpp:103
+#: pluginbc_cuentasanuales2ods.cpp:120
+msgid "Error con la base de datos"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:311
+msgid "ERROR: Debe introducir una fecha en el balance actual."
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:315
+msgid "ERROR: Debe introducir una fecha en el balance anterior."
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:372 pluginbc_cuentasanuales2ods.cpp:597
+msgid "ERROR: Funcion no implementada todavia."
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:390
+msgid "ERROR: No se ha podido crear el archivo"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:414
+msgid "&Cuentas Anuales"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:416
+msgid "&PGC 2008"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:417
+msgid "PGC &Anterior 2008"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:419 pluginbc_cuentasanuales2ods.cpp:436
+msgid "&Cuentas Anuales PGC"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:420 pluginbc_cuentasanuales2ods.cpp:421
+msgid "Cuentas Anuales Plan General Contable 2008"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:424
+msgid "Cuentas Anuales &Abreviadas PGC"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:425 pluginbc_cuentasanuales2ods.cpp:426
+msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:429
+msgid "Cuentas Anuales &PYMES"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:430 pluginbc_cuentasanuales2ods.cpp:431
+msgid "Cuentas Anuales PYMES 2008"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:437 pluginbc_cuentasanuales2ods.cpp:438
+msgid "Cuentas Anuales Plan General Contable hasta 2007"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:441
+msgid "Cuentas A. Abreviadas &Sin lucro"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:442 pluginbc_cuentasanuales2ods.cpp:443
+msgid "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:577
+msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:581
+msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:585
+msgid "Cuentas Anuales para PYMES 2008. "
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:589
+msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:593
+msgid "Cuentas Anuales del Plan General Contable 2008. "
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:601
+msgid "Advertencia: ha escojido las "
+msgstr ""
+
+#: pluginbc_cuentasanuales2ods.cpp:601
+msgid ""
+"El resultado solo sera correcto si coincide con el plan contable de su "
+"empresa."
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "ENERO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "FEBRERO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "MARZO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "ABRIL"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "MAYO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "JUNIO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "JULIO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "AGOSTO"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "SEPTIEMBRE"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "OCTUBRE"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "NOVIEMBRE"
+msgstr ""
+
+#: pcapymes08.cpp:35
+msgid "DICIEMBRE"
+msgstr ""
+
+#: pcapymes08.cpp:74 pcapymes08.cpp:202
+msgid "BALANCE DE PYMES A "
+msgstr ""
+
+#: pcapymes08.cpp:410
+msgid "CUENTA DE PÉRDIDAS Y GANANCIAS DE PYMES A "
+msgstr ""
+
+#: ui_datosbase.h:136
+msgid "Datos para generar el balance"
+msgstr ""
+
+#: ui_datosbase.h:137
+msgid "Ejercicio actual:"
+msgstr ""
+
+#: ui_datosbase.h:138 ui_datosbase.h:140
+msgid "Fecha balance:"
+msgstr ""
+
+#: ui_datosbase.h:139
+msgid "Ejercicio anterior:"
+msgstr ""
+
+#: ui_datosbase.h:141
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_datosbase.h:142
+msgid "&Cancelar"
+msgstr ""

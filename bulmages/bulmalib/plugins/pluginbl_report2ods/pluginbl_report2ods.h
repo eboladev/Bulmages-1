@@ -28,7 +28,6 @@
 
 extern "C" PLUGINBL_REPORT2ODS_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_REPORT2ODS_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
-extern "C" PLUGINBL_REPORT2ODS_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 
 int init();
 

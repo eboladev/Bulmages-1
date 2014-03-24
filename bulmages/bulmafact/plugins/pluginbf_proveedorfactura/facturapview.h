@@ -26,13 +26,15 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QCheckBox>
 
-#include "ui_facturapbase.h"
+
 #include "bfform.h"
 #include "bldatesearch.h"
 #include "bfbuscarformapago.h"
 #include "bfbuscaralmacen.h"
 #include "blfunctions.h"
 #include "pdefs_pluginbf_proveedorfactura.h"
+#include "ui_facturapbase.h"
+
 
 
 /** Implementa la pantalla de Facturas de Proveedores.

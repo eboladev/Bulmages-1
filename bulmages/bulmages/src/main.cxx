@@ -39,9 +39,11 @@
 
 #include <QtGui/QtGui>
 
+#include "bgserver.h"
 #include "bgbulmages.h"
 #include "blfunctions.h"
 #include "blconfiguration.h"
+#include "mainwindow.h"
 
 
 int main ( int argc, char **argv )
@@ -57,22 +59,50 @@ int main ( int argc, char **argv )
     blBindTextDomain ("bulmages", g_confpr->value(CONF_DIR_TRADUCCION).toLatin1().constData());
     blTextDomain ("bulmages");
 
+    /// Creamos la aplicacion principal.
     QApplication app(argc, argv);
 
     /// Definimos la codificaci&oacute;n a Unicode.
-    QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
     QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-    if (!QSystemTrayIcon::isSystemTrayAvailable()) {
-        QMessageBox::critical(0, _("Bandeja"),
-                                 _("No se detecta ninguna bandeja en el sistema"));
-        return 1;
-    }
-    QApplication::setQuitOnLastWindowClosed(false);
+   /// Leemos los argumentos pasados por linea de comandos.
+   QString argument=""; 
+   for(int i = 1; i < argc; i++) {
+      argument += argv[i];
+   } // end for
+   
+   /// Si el argumento -h se pasa mostramos la ayuda y salimos.
+   if (argument.contains("-h")) {
+      qDebug() << " Options -h show help" << endl << "-s only server. No ui interfac" << endl;
+      exit(1);
+   } // end if
+   
+   BgBulmaGes *bhges;
+   
+   qDebug() << argument << endl;
 
-    BgBulmaGes bges;
-    bges.hide();
+   /// Si no hay argumento -s (solo server) entonces creamos la interficie grafica. Y el Tray Icon
+   if (!argument.contains("-s")) {
+        qDebug() << "Tray Icon" << endl;
+	if (!QSystemTrayIcon::isSystemTrayAvailable()) {
+	    QMessageBox::critical(0, _("Bandeja"),
+				    _("No se detecta ninguna bandeja en el sistema"));
+	    return 1;
+	} // end if
+	QApplication::setQuitOnLastWindowClosed(false);
 
+	bhges = new BgBulmaGes();
+	bhges->hide();
+	
+
+  } // end if
+      
+    ///Creamos el servidor y lo pasamos.
+    BgServer * server = new BgServer();
+    qDebug() << "En espera " << endl;
+
+    /// Damos el control de la aplicacion al QApplication
     return app.exec();
 }
+
 

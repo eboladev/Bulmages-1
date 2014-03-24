@@ -391,10 +391,12 @@ void SubForm_Articulo::editarArticulo ( QString idarticulo )
     } // end if
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     subf->setEnabled ( false );
+    g_main->setEnabled (false );
     art->show();
     while ( !art->isHidden() )
         g_theApp->processEvents();
     subf->setEnabled ( true );
+    g_main->setEnabled(true);
     delete art;
 }
 
@@ -655,3 +657,19 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
    return 0;
 }
 
+
+/// Apertura de un elemento controlado a partir del parametro g_plugParams tabla_identificador
+int Plugin_open(BfCompany * comp) {
+  BL_FUNC_DEBUG
+  QString cad = *((QString*)g_plugParams);
+  QStringList args = cad.split("_");
+  if (args[0] == "actividad") {
+	ArticuloView * bud = new ArticuloView ( comp, 0 );
+        comp->m_pWorkspace->addSubWindow ( bud );
+	QString id =  args[1];
+	bud->load(id);
+        bud->show();
+
+  } // end if
+  return 0;
+}

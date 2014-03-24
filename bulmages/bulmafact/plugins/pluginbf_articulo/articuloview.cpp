@@ -249,6 +249,10 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 int ArticuloView::afterSave()
 {
     BL_FUNC_DEBUG
+    
+    /// Hacemos que se guarde el blform
+    BlForm::afterSave();
+    
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
         BlDbRecordSet * cur1 = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + dbValue ( "idarticulo" ) );

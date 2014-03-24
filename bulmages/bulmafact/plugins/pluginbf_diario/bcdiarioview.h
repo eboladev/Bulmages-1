@@ -46,6 +46,7 @@ public:
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n imprimir en el formulario.
     /// Realiza la impresi&oacute;n del listado que tenemos en pantalla.
     virtual void on_mui_imprimir_released();
+    void imprimir();
 
 private:
     /// Muestra en pantalla los resultados para los datos introducidos.

@@ -5,6 +5,8 @@
 
 set (plugin pluginbf_cuenta)
 
+cmake_policy(SET CMP0020 OLD)
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
@@ -25,6 +27,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cuenta/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cuenta/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor/

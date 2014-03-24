@@ -1,0 +1,31 @@
+#######
+#Plugins
+#######
+#README.fr
+#20080501
+
+Nombre: Remises bancaires
+
+Biblioteca: libpluginbf_q19.so
+
+Descripción: <H1>Remises bancaires</H1>
+<P>Il ajoute un bouton de génération de remises bancaires au listing de factures. Il fonctionne en conjonction avec le plugin d'impressions multiples et en choisissant plusieurs factures ou encaissements et donner à ce bouton il produit les archives q19 pour pouvoir le passer à la banque. Le code référence et le remboursement des produits comme vous allez par vous même avec un F ajoutée à la fin pour les factures (pour ne pas doubler le code si un encaissement et une facture ont ce dernier vous allez, donc nous ne saurions pas lequel nous a restitué la banque. voir https://lists.berlios.de/pipermail/bulmages-main/2009-February/000935.html</P>
+<P>Bulamfact marque automatiquement les reçus qui sont inclus dans une remise bancaire comme effectifs (démarque la case " ; prévision de paiement" ;) pour faciliter la gestion de ceux qu'il faut envoyer à la banque et ceux déjà envoyés. Il est la responsabilité de l'utilisateur que le fichier produit arrive à la banque et est traité ou en cas contraire reconstituer les encaissements comme prévisions, modifier les, et/ou ce qui correspond.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_multiimprimir.so; libpluginbf_banco.so
+
+Incompatibles:
+
+Categorias: Facturation avancees; Experimental; Association des parents d'eleves;
+
+Orden: 900
+
+Comentarios: 

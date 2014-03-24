@@ -4,6 +4,9 @@
 #pluginbf_proveedorpedido
 
 set (plugin pluginbf_proveedorpedido)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
@@ -15,7 +18,7 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-file(GLOB plugin_UIS *.ui)
+file(GLOB plugin_UIS *.ui ../pluginbf_proveedoralbaran/*.ui ../pluginbf_proveedorfactura/*.ui)
 
 
 # Exclude files with no QObject macro.

@@ -5,6 +5,9 @@
 
 set (plugin pluginbf_asiento)
 
+cmake_policy(SET CMP0020 OLD)
+
+
 #preproceso de las plantillas CSS
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
@@ -95,7 +98,8 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura libpluginbf_clientecobro libpluginbf_proveedorfactura libpluginbf_proveedorpago)
+
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clientecobro pluginbf_proveedorfactura pluginbf_proveedorpago)
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 
