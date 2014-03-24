@@ -4,6 +4,9 @@
 #pluginbf_clientealbaran
 
 set (plugin pluginbf_clientealbaran)
+
+cmake_policy(SET CMP0020 OLD)
+
 ADD_DEFINITIONS(-D${plugin})
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

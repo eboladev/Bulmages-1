@@ -398,8 +398,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
             self.x = 1
             while (self.x < 1000) :
+                # Iteramos sobre la lista de plugins disponibles en bulmatpv
                 self.i = 0
                 while (self.i < self.mui_plugins1.rowCount()):
+		    # Si el plugin tiene el orden adecuado lo consideramos.
                     if ( str(self.mui_plugins1.item(self.i,7).text()) == str(self.x)):
                         self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                         if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len (self.mui_plugins1.item (self.i, 10).text()) > 3):
@@ -408,7 +410,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                                 self.out << "CONF_PLUGINS_BULMATPV   "
                             self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                             # Si hay que aplicar un plugin entonces lo escribimos
-                            if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3 and self.mui_plugins.item(self.i,10).text().contains(".so")):
+                            if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3 and self.mui_plugins1.item(self.i,10).text().contains(".so")):
                                 self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                                 if os.name == 'posix':
                                     self.out << self.terminador << self.mui_plugins1.item(self.i,10).text()

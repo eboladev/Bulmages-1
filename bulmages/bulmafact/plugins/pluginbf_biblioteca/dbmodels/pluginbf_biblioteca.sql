@@ -145,9 +145,9 @@ BEGIN
 	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBf_Biblioteca'';
 
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.12.1-0004'' WHERE nombre=''PluginBf_Biblioteca'';
+		UPDATE CONFIGURACION SET valor=''1.6.0-0001'' WHERE nombre=''PluginBf_Biblioteca'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Biblioteca'', ''0.12.1-0004'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Biblioteca'', ''1.6.0-0001'');
 	END IF;
 
 	RETURN 0;

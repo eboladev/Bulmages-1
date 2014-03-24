@@ -21,10 +21,11 @@
 #########################################################################
 #Bulmalib                                                               #
 #########################################################################
+cmake_policy(SET CMP0020 OLD)
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
-find_package(Qt5Core REQUIRED)
+#find_package(Qt5Core REQUIRED)
 
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp

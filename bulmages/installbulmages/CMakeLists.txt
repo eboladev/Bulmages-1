@@ -20,6 +20,8 @@
 #                                                                       #
 #########################################################################
 
+cmake_policy(SET CMP0020 OLD)
+
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/version.in ${CMAKE_BINARY_DIR}/version @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmages.conf.in ${CMAKE_BINARY_DIR}/bulmages.conf @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmafact.conf.in ${CMAKE_BINARY_DIR}/bulmafact.conf @ONLY)

@@ -53,9 +53,6 @@ BEGIN
     SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamolibro'';
 
     IF FOUND THEN
-	ALTER TABLE cliente DROP COLUMN idzcomercial;
-
-	DROP TABLE zcomercial;
 
 	DROP TABLE prestamolibro;
 

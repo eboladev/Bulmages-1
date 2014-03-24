@@ -55,9 +55,9 @@ BEGIN
 
     IF FOUND THEN
       ALTER TABLE contrato DROP COLUMN idvivienda;
-      DROP TABLE vivienda;
       DROP TABLE ingvivienda;
       DROP TABLE gasvivienda;
+      DROP TABLE vivienda;
     END IF;
 
     RETURN 0;

@@ -28,8 +28,8 @@
 /**
 \param parent
 **/
-ComercialClienteView::ComercialClienteView ( QWidget *parent )
-        : BfForm ( NULL, parent )
+ComercialClienteView::ComercialClienteView ( BfCompany *comp, QWidget *parent )
+        : BfForm ( comp, parent )
 {
     BL_FUNC_DEBUG
     setupUi ( this );
@@ -66,11 +66,5 @@ void ComercialClienteView::setMainCompany ( BfCompany *comp )
     mui_idzonacomercial->m_valores["nomzonacomercial"] = "";
     mui_idzonacomercial->setAllowNull ( true );
     mui_idzonacomercial->setId ( "" );
-
-
-
-
-
-
-    
+ 
 }

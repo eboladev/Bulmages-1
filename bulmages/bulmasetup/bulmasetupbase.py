@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Thu May 23 22:04:17 2013
-#      by: PyQt4 UI code generator 4.9.3
+# Created: Fri Feb 21 22:27:59 2014
+#      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,16 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,17 +39,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.label = QtGui.QLabel(self.centralwidget)
         self.label.setMinimumSize(QtCore.QSize(209, 209))
-        self.label.setMaximumSize(QtCore.QSize(209, 209))
+        self.label.setMaximumSize(QtCore.QSize(209, 400))
         self.label.setText(_fromUtf8(""))
-        self.label.setPixmap(QtGui.QPixmap(_fromUtf8(":/images/iglues.org.png")))
+        self.label.setPixmap(QtGui.QPixmap(_fromUtf8(":/images/logo1.png")))
         self.label.setScaledContents(True)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout_2.addWidget(self.label)
-        self.label_2 = QtGui.QLabel(self.centralwidget)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.verticalLayout_2.addWidget(self.label_2)
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
@@ -177,7 +182,6 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(8)
         self.mui_acerca.setFont(font)
-        self.mui_acerca.setIcon(icon)
         self.mui_acerca.setObjectName(_fromUtf8("mui_acerca"))
         self.horizontalLayout.addWidget(self.mui_acerca)
         spacerItem1 = QtGui.QSpacerItem(388, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -200,27 +204,19 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; font-weight:600;\">BulmaSetup v 1.5</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Administracion de Bases</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">de Datos para BulmaGes</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Gestión de Usuarios", None, QtGui.QApplication.UnicodeUTF8))
-        self.nuevo_usuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevos Usuario de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.editar_usuario.setText(QtGui.QApplication.translate("MainWindow", "Editar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.permisos_usuario.setText(QtGui.QApplication.translate("MainWindow", "Modificar Permisos de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.eliminar_usuario.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Gestión de Empresas", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
-        self.eliminar_empresa.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar copia de seguridad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_creabackup.setText(QtGui.QApplication.translate("MainWindow", "Crear Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Crear Nueva Empresa", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_acerca.setText(QtGui.QApplication.translate("MainWindow", "Acerca de BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
+        MainWindow.setWindowTitle(_translate("MainWindow", "BulmaSetup", None))
+        self.groupBox_3.setTitle(_translate("MainWindow", "Gestión de Usuarios", None))
+        self.nuevo_usuario.setText(_translate("MainWindow", "Nuevos Usuario de PostgreSQL", None))
+        self.editar_usuario.setText(_translate("MainWindow", "Editar Usuarios de PostgreSQL", None))
+        self.permisos_usuario.setText(_translate("MainWindow", "Modificar Permisos de PostgreSQL", None))
+        self.eliminar_usuario.setText(_translate("MainWindow", "Eliminar Usuarios de PostgreSQL", None))
+        self.groupBox_2.setTitle(_translate("MainWindow", "Gestión de Empresas", None))
+        self.mui_adminempresas.setText(_translate("MainWindow", "Administrar Empresas Existentes", None))
+        self.eliminar_empresa.setText(_translate("MainWindow", "Eliminar Empresas Existentes", None))
+        self.mui_restbackup.setText(_translate("MainWindow", "Restaurar copia de seguridad", None))
+        self.mui_creabackup.setText(_translate("MainWindow", "Crear Copia de Seguridad", None))
+        self.mui_crearbulmafact.setText(_translate("MainWindow", "Crear Nueva Empresa", None))
+        self.mui_acerca.setText(_translate("MainWindow", "Acerca de BulmaSetup", None))
+        self.mui_salir.setText(_translate("MainWindow", "Salir", None))
 
 import resources_rc

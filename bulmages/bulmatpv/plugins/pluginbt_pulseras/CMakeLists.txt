@@ -5,6 +5,8 @@
 
 set (plugin pluginbt_pulseras)
 
+cmake_policy(SET CMP0020 OLD)
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
@@ -37,7 +39,7 @@ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBT_MESAS)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBT_PULSERAS)
 ENDIF(WIN32)
 
 

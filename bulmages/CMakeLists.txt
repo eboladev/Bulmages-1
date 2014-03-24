@@ -22,17 +22,18 @@
 # ########## Project setup ##########
 cmake_minimum_required(VERSION 2.8)
 
-
-
 PROJECT(bulmages)
 
-SET( BULMAGES_VERSION 1.5.0 )
+SET( BULMAGES_VERSION 1.6.0 )
 
 IF(NOT WIN32)
   set(CMAKE_CXX_FLAGS "-fPIC")
 ENDIF(NOT WIN32)
 
 find_package(Qt5Core REQUIRED)
+
+#set(QTDIR "/home/tborras/Qt/5.2.0/gcc_64")
+#set(_qt5Core_install_prefix "/home/tborras/Qt/5.2.0/gcc_64")
 
 IF(WIN32)
 set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/cmake")
@@ -43,6 +44,11 @@ ELSE(WIN32)
 	set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/i386-linux-gnu/cmake")
     ENDIF( CMAKE_SIZEOF_VOID_P EQUAL 8 )
 ENDIF(WIN32)
+
+#set(QT5_MODULE_PATH "${_qt5Core_install_prefix}/lib/cmake")
+
+
+#set(QT5_MODULE_PATH "/home/tborras/Qt/5.2.0/gcc_64/lib/cmake")
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake")
 
@@ -77,13 +83,21 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8.0)
    # path, i.e. with only the logical name ("kdecore"), so they don't link
    # Setting this variable to true has the effect that the link dirs are
    # listed nevertheless also with CMake 2.6.
+
+   # Automatically link Qt executable to qtmain target on Windows
+   cmake_policy(SET CMP0020 OLD)
+
+
    set(CMAKE_LINK_OLD_PATHS TRUE)
 
    # list command no longer ignores empty elements.
    cmake_policy(SET CMP0007 OLD)
 
 endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8.0)
+
 message(STATUS ${QT5_MODULE_PATH})
+message(STATUS ${QT_LIBRARIES})
+message(STATUS ${QT_INCLUDE_DIR})
 INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindQt.cmake)
 INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindQt5.cmake)
 INCLUDE(${QT5_MODULE_PATH}/Qt5Core/Qt5CoreMacros.cmake)
